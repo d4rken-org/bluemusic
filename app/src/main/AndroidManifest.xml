@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="eu.darken.bluetoothmanager"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name="eu.darken.bluetoothmanager.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/BaseAppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name="eu.darken.bluetoothmanager.screens.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="eu.darken.bluetoothmanager.screens.settings.SettingsActivity"
+            android:label="@string/navigation_label_settings"
+            android:parentActivityName="eu.darken.bluetoothmanager.screens.MainActivity"/>
+        <activity
+            android:name="eu.darken.bluetoothmanager.screens.newdevice.volumemanager.NewDeviceActivity"
+            android:label="@string/action_add_device"
+            android:parentActivityName="eu.darken.bluetoothmanager.screens.MainActivity"/>
+
+        <meta-data
+            android:name="eu.darken.bluetoothmanager.util.ui.glide.GlideConfigModule"
+            android:value="GlideModule"/>
+    </application>
+
+</manifest>

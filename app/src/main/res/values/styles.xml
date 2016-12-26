@@ -1,0 +1,45 @@
+<resources>
+
+    <style name="BaseAppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="DefaultToolbarStyle" parent="Theme.AppCompat">
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="navigationIcon">@drawable/ic_menu_white_24dp</item>
+        <item name="android:navigationIcon">@drawable/ic_menu_white_24dp</item>
+        <item name="android:id">@id/toolbar</item>
+    </style>
+
+    <style name="DefaultListItemContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="ThreeLineListItemContainer" parent="DefaultListItemContainer">
+        <item name="android:layout_height">88dp</item>
+        <item name="android:minHeight">88dp</item>
+    </style>
+
+    <style name="TwoLineListItemContainer" parent="DefaultListItemContainer">
+        <item name="android:layout_height">72dp</item>
+        <item name="android:minHeight">72dp</item>
+    </style>
+
+    <style name="OneLineSimpleListItemContainer" parent="DefaultListItemContainer">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <style name="OneLineListItemContainer" parent="DefaultListItemContainer">
+        <item name="android:layout_height">56dp</item>
+        <item name="android:minHeight">56dp</item>
+    </style>
+
+</resources>
+
