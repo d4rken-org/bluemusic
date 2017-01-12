@@ -1,4 +1,4 @@
-package eu.darken.bluetoothmanager.screens.newdevice.volumemanager;
+package eu.darken.bluetoothmanager.screens.newdevice;
 
 import dagger.Component;
 import eu.darken.bluetoothmanager.AppComponent;

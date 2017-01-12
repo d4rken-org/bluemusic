@@ -1,9 +1,9 @@
-package eu.darken.bluetoothmanager.screens.newdevice.volumemanager;
+package eu.darken.bluetoothmanager.screens.newdevice;
 
 import dagger.Module;
 import dagger.Provides;
-import eu.darken.bluetoothmanager.backend.live.DeviceSource;
-import eu.darken.bluetoothmanager.backend.known.KnownDeviceRepository;
+import eu.darken.bluetoothmanager.core.manager.BluetoothSource;
+import eu.darken.bluetoothmanager.core.device.ManagedDeviceRepo;
 import eu.darken.bluetoothmanager.util.dagger.ActivityScope;
 import eu.darken.bluetoothmanager.util.mvp.PresenterFactory;
 
@@ -13,11 +13,11 @@ public class NewDeviceModule {
 
     @Provides
     @ActivityScope
-    public PresenterFactory<NewDeviceContract.Presenter> providePresenterFactory(DeviceSource deviceSource, KnownDeviceRepository knownDeviceRepository) {
+    public PresenterFactory<NewDeviceContract.Presenter> providePresenterFactory(BluetoothSource bluetoothSource, ManagedDeviceRepo managedDeviceRepo) {
         return new PresenterFactory<NewDeviceContract.Presenter>() {
             @Override
             public NewDeviceContract.Presenter create() {
-                return new NewDevicePresenter(deviceSource, knownDeviceRepository);
+                return new NewDevicePresenter(bluetoothSource, managedDeviceRepo);
             }
 
             @Override

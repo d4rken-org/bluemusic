@@ -1,4 +1,4 @@
-package eu.darken.bluetoothmanager.backend;
+package eu.darken.bluetoothmanager.core;
 
 import android.content.Context;
 

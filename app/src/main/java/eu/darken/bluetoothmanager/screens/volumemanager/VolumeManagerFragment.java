@@ -26,14 +26,16 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import eu.darken.bluetoothmanager.App;
 import eu.darken.bluetoothmanager.R;
-import eu.darken.bluetoothmanager.backend.known.KnownDevice;
+import eu.darken.bluetoothmanager.core.device.ManagedDevice;
 import eu.darken.bluetoothmanager.screens.MainActivity;
-import eu.darken.bluetoothmanager.screens.newdevice.volumemanager.NewDeviceActivity;
+import eu.darken.bluetoothmanager.screens.newdevice.NewDeviceActivity;
 import eu.darken.bluetoothmanager.util.mvp.BasePresenterFragment;
 import eu.darken.bluetoothmanager.util.mvp.PresenterFactory;
 
 
-public class VolumeManagerFragment extends BasePresenterFragment<VolumeManagerContract.Presenter, VolumeManagerContract.View> implements VolumeManagerContract.View {
+public class VolumeManagerFragment extends BasePresenterFragment<VolumeManagerContract.Presenter, VolumeManagerContract.View> implements
+        VolumeManagerContract.View,
+        VolumeManagerAdapter.Callback {
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.fab) FloatingActionButton fab;
@@ -73,6 +75,7 @@ public class VolumeManagerFragment extends BasePresenterFragment<VolumeManagerCo
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ((MainActivity) getActivity()).setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_volume_up_white_24dp);
     }
 
     @OnClick(R.id.fab)
@@ -100,21 +103,20 @@ public class VolumeManagerFragment extends BasePresenterFragment<VolumeManagerCo
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.fragment_menu_intro, menu);
-
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
     @Override
-    public void displayDevices(List<KnownDevice> knownDevices) {
-
+    public void displayDevices(List<ManagedDevice> managedDevices) {
+        recyclerView.setAdapter(new VolumeManagerAdapter(managedDevices, this));
     }
+
 }

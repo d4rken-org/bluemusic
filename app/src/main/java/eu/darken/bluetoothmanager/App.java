@@ -5,7 +5,7 @@ import android.app.Application;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
-import eu.darken.bluetoothmanager.backend.DeviceSourceModule;
+import eu.darken.bluetoothmanager.core.DeviceSourceModule;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import eu.darken.bluetoothmanager.util.AndroidModule;

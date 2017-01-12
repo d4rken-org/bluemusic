@@ -1,4 +1,4 @@
-package eu.darken.bluetoothmanager.screens.newdevice.volumemanager;
+package eu.darken.bluetoothmanager.screens.newdevice;
 
 import android.bluetooth.BluetoothDevice;
 import android.support.v7.widget.RecyclerView;

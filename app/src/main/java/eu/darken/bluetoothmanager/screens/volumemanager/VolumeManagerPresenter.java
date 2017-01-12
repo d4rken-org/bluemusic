@@ -3,17 +3,17 @@ package eu.darken.bluetoothmanager.screens.volumemanager;
 import android.os.Bundle;
 
 import eu.darken.bluetoothmanager.App;
-import eu.darken.bluetoothmanager.backend.known.KnownDevice;
-import eu.darken.bluetoothmanager.backend.known.KnownDeviceRepository;
+import eu.darken.bluetoothmanager.core.device.ManagedDevice;
+import eu.darken.bluetoothmanager.core.device.ManagedDeviceRepo;
 
 
 public class VolumeManagerPresenter implements VolumeManagerContract.Presenter {
     static final String TAG = App.LOGPREFIX + "IntroPresenter";
-    private final KnownDeviceRepository knownDeviceRepository;
+    private final ManagedDeviceRepo managedDeviceRepo;
     VolumeManagerContract.View view;
 
-    public VolumeManagerPresenter(KnownDeviceRepository knownDeviceRepository) {
-        this.knownDeviceRepository = knownDeviceRepository;
+    public VolumeManagerPresenter(ManagedDeviceRepo managedDeviceRepo) {
+        this.managedDeviceRepo = managedDeviceRepo;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class VolumeManagerPresenter implements VolumeManagerContract.Presenter {
     @Override
     public void onAttachView(final VolumeManagerContract.View view) {
         this.view = view;
-        view.displayDevices(knownDeviceRepository.get());
+        view.displayDevices(managedDeviceRepo.get());
     }
 
     @Override
@@ -43,12 +43,12 @@ public class VolumeManagerPresenter implements VolumeManagerContract.Presenter {
     }
 
     @Override
-    public void updateDeviceVolume(KnownDevice knownDevice, float percent) {
+    public void updateDeviceVolume(ManagedDevice managedDevice, float percent) {
 
     }
 
     @Override
-    public void removeDevice(KnownDevice knownDevice) {
+    public void removeDevice(ManagedDevice managedDevice) {
 
     }
 }

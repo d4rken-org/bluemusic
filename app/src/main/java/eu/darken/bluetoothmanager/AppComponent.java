@@ -1,10 +1,10 @@
 package eu.darken.bluetoothmanager;
 
 import dagger.Component;
-import eu.darken.bluetoothmanager.backend.live.DeviceSource;
-import eu.darken.bluetoothmanager.backend.DeviceSourceModule;
-import eu.darken.bluetoothmanager.backend.known.KnownDeviceRepository;
-import eu.darken.bluetoothmanager.backend.known.KnownDeviceRepositoryModule;
+import eu.darken.bluetoothmanager.core.manager.BluetoothSource;
+import eu.darken.bluetoothmanager.core.DeviceSourceModule;
+import eu.darken.bluetoothmanager.core.device.DeviceRepoModule;
+import eu.darken.bluetoothmanager.core.device.ManagedDeviceRepo;
 import eu.darken.bluetoothmanager.util.dagger.ApplicationScope;
 import eu.darken.bluetoothmanager.util.AndroidModule;
 
@@ -13,10 +13,10 @@ import eu.darken.bluetoothmanager.util.AndroidModule;
 @Component(modules = {
         AndroidModule.class,
         DeviceSourceModule.class,
-        KnownDeviceRepositoryModule.class
+        DeviceRepoModule.class
 })
 public interface AppComponent {
-    DeviceSource deviceSource();
+    BluetoothSource deviceSource();
 
-    KnownDeviceRepository knownDeviceRepository();
+    ManagedDeviceRepo knownDeviceRepository();
 }

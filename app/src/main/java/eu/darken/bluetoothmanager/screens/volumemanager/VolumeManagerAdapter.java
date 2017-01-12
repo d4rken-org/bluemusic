@@ -1,10 +1,10 @@
 package eu.darken.bluetoothmanager.screens.volumemanager;
 
-import android.bluetooth.BluetoothDevice;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -12,15 +12,14 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import eu.darken.bluetoothmanager.R;
-
-import static eu.darken.bluetoothmanager.R.id.caption;
+import eu.darken.bluetoothmanager.core.device.ManagedDevice;
 
 
 public class VolumeManagerAdapter extends RecyclerView.Adapter<VolumeManagerAdapter.DeviceVH> {
-    private final List<BluetoothDevice> data;
+    private final List<ManagedDevice> data;
     private final Callback callback;
 
-    public VolumeManagerAdapter(List<BluetoothDevice> devices, Callback callback) {
+    public VolumeManagerAdapter(List<ManagedDevice> devices, Callback callback) {
         this.data = devices;
         this.callback = callback;
     }
@@ -41,21 +40,19 @@ public class VolumeManagerAdapter extends RecyclerView.Adapter<VolumeManagerAdap
     }
 
     public interface Callback {
-        void onDeviceSelected(BluetoothDevice bluetoothDevice);
     }
 
     public static class DeviceVH extends RecyclerView.ViewHolder {
         @BindView(R.id.name) TextView name;
-        @BindView(R.id.seekbar) TextView seekbar;
+        @BindView(R.id.seekbar) SeekBar seekbar;
 
         public DeviceVH(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        public void bind(BluetoothDevice item, Callback callback) {
+        public void bind(ManagedDevice item, Callback callback) {
             name.setText(item.getName());
-            this.itemView.setOnClickListener(view -> callback.onDeviceSelected(item));
         }
     }
 }

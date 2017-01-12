@@ -2,7 +2,7 @@ package eu.darken.bluetoothmanager.screens.volumemanager;
 
 import dagger.Module;
 import dagger.Provides;
-import eu.darken.bluetoothmanager.backend.known.KnownDeviceRepository;
+import eu.darken.bluetoothmanager.core.device.ManagedDeviceRepo;
 import eu.darken.bluetoothmanager.util.dagger.FragmentScope;
 import eu.darken.bluetoothmanager.util.mvp.PresenterFactory;
 
@@ -12,11 +12,11 @@ public class VolumeManagerModule {
 
     @Provides
     @FragmentScope
-    public PresenterFactory<VolumeManagerContract.Presenter> providePresenterFactory(KnownDeviceRepository knownDeviceRepository) {
+    public PresenterFactory<VolumeManagerContract.Presenter> providePresenterFactory(ManagedDeviceRepo managedDeviceRepo) {
         return new PresenterFactory<VolumeManagerContract.Presenter>() {
             @Override
             public VolumeManagerContract.Presenter create() {
-                return new VolumeManagerPresenter(knownDeviceRepository);
+                return new VolumeManagerPresenter(managedDeviceRepo);
             }
 
             @Override

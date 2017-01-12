@@ -1,4 +1,4 @@
-package eu.darken.bluetoothmanager.screens.newdevice.volumemanager;
+package eu.darken.bluetoothmanager.screens.newdevice;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import eu.darken.bluetoothmanager.App;
-import eu.darken.bluetoothmanager.backend.known.KnownDevice;
-import eu.darken.bluetoothmanager.backend.known.KnownDeviceRepository;
-import eu.darken.bluetoothmanager.backend.live.DeviceSource;
+import eu.darken.bluetoothmanager.core.manager.BluetoothSource;
+import eu.darken.bluetoothmanager.core.device.ManagedDevice;
+import eu.darken.bluetoothmanager.core.device.ManagedDeviceRepo;
 
 
 public class NewDevicePresenter implements NewDeviceContract.Presenter {
     static final String TAG = App.LOGPREFIX + "IntroPresenter";
     NewDeviceContract.View view;
-    final DeviceSource deviceSource;
-    private final KnownDeviceRepository knownRepo;
+    final BluetoothSource bluetoothSource;
+    private final ManagedDeviceRepo knownRepo;
 
-    public NewDevicePresenter(DeviceSource deviceSource, KnownDeviceRepository knownRepo) {
-        this.deviceSource = deviceSource;
+    public NewDevicePresenter(BluetoothSource bluetoothSource, ManagedDeviceRepo knownRepo) {
+        this.bluetoothSource = bluetoothSource;
         this.knownRepo = knownRepo;
     }
 
@@ -31,12 +31,12 @@ public class NewDevicePresenter implements NewDeviceContract.Presenter {
     @Override
     public void onAttachView(final NewDeviceContract.View view) {
         this.view = view;
-        final ArrayList<BluetoothDevice> devices = new ArrayList<>(deviceSource.getPairedDevices());
+        final ArrayList<BluetoothDevice> devices = new ArrayList<>(bluetoothSource.getPairedDevices());
         final Iterator<BluetoothDevice> iterator = devices.iterator();
         while (iterator.hasNext()) {
             final BluetoothDevice device = iterator.next();
-            for (KnownDevice knownDevice : knownRepo.get()) {
-                if (device.getAddress().equals(knownDevice.getAddress())) {
+            for (ManagedDevice managedDevice : knownRepo.get()) {
+                if (device.getAddress().equals(managedDevice.getAddress())) {
                     iterator.remove();
                     break;
                 }

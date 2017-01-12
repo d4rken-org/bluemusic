@@ -1,18 +1,23 @@
-package eu.darken.bluetoothmanager.backend.known;
+package eu.darken.bluetoothmanager.core.device;
 
 
 import android.bluetooth.BluetoothDevice;
 
-public class KnownDeviceImpl implements KnownDevice {
+public class ManagedDeviceImpl implements ManagedDevice {
     private final BluetoothDevice bluetoothDevice;
     private float volumePercentage;
 
-    public KnownDeviceImpl(BluetoothDevice bluetoothDevice) {
+    public ManagedDeviceImpl(BluetoothDevice bluetoothDevice, DeviceConfig deviceConfig) {
         this.bluetoothDevice = bluetoothDevice;
     }
 
     public void setVolumePercentage(int volumePercentage) {
         this.volumePercentage = volumePercentage;
+    }
+
+    @Override
+    public String getName() {
+        return bluetoothDevice.getName();
     }
 
     @Override

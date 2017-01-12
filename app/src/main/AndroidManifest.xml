@@ -5,6 +5,8 @@
 
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
         android:name="eu.darken.bluetoothmanager.App"
@@ -21,12 +23,23 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <receiver
+            android:name=".core.BluetoothEventReceiver"
+            android:enabled="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.bluetooth.device.action.ACL_CONNECTED"/>
+                <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED"/>/>
+            </intent-filter>
+        </receiver>
+        <service android:name=".core.EventService"/>
+
         <activity
             android:name="eu.darken.bluetoothmanager.screens.settings.SettingsActivity"
             android:label="@string/navigation_label_settings"
             android:parentActivityName="eu.darken.bluetoothmanager.screens.MainActivity"/>
         <activity
-            android:name="eu.darken.bluetoothmanager.screens.newdevice.volumemanager.NewDeviceActivity"
+            android:name="eu.darken.bluetoothmanager.screens.newdevice.NewDeviceActivity"
             android:label="@string/action_add_device"
             android:parentActivityName="eu.darken.bluetoothmanager.screens.MainActivity"/>
 

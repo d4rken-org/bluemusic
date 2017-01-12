@@ -6,7 +6,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="DefaultToolbarStyle" parent="Theme.AppCompat">
+    <style name="DefaultToolbarStyle" parent="BaseAppTheme">
         <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
