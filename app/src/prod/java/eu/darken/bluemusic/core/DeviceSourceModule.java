@@ -4,6 +4,8 @@ import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
+import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
+import eu.darken.bluemusic.core.bluetooth.LiveBluetoothSource;
 import eu.darken.bluemusic.util.dagger.ApplicationScope;
 
 
@@ -15,7 +17,7 @@ public class DeviceSourceModule {
 
     @Provides
     @ApplicationScope
-    DeviceSource provideDeviceSource() {
-        return new FakeDeviceSource(context);
+    BluetoothSource provideDeviceSource() {
+        return new LiveBluetoothSource(context);
     }
 }
