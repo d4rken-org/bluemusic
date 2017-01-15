@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.core.database;
 
-import android.bluetooth.BluetoothDevice;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -10,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
+import eu.darken.bluemusic.core.bluetooth.Device;
+import eu.darken.bluemusic.util.Tools;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import timber.log.Timber;
@@ -28,7 +29,7 @@ public class ManagedDeviceRepo {
 
     @NonNull
     public List<ManagedDevice> getDevices() {
-        final Map<String, BluetoothDevice> deviceMap = bluetoothSource.getPairedDeviceMap();
+        final Map<String, Device> deviceMap = Tools.toMap(bluetoothSource.getPairedDevices());
         final ArrayList<ManagedDevice> devices = new ArrayList<>();
 
         Realm realm = getRealm();
@@ -45,7 +46,8 @@ public class ManagedDeviceRepo {
 
     @Nullable
     public ManagedDevice getDevice(@NonNull String address) {
-        for (ManagedDevice managedDevice : getDevices()) if (managedDevice.getAddress().equals(address)) return managedDevice;
+        for (ManagedDevice managedDevice : getDevices())
+            if (managedDevice.getAddress().equals(address)) return managedDevice;
         return null;
     }
 
@@ -61,7 +63,7 @@ public class ManagedDeviceRepo {
         realm.close();
     }
 
-    public ManagedDevice manage(BluetoothDevice knownDevice) {
+    public ManagedDevice manage(Device knownDevice) {
         Realm realm = getRealm();
         realm.beginTransaction();
         final DeviceConfig object = realm.createObject(DeviceConfig.class);

@@ -32,7 +32,7 @@ android {
 
 
     defaultConfig {
-        applicationId "eu.darken.bluetoothmanager"
+        applicationId "eu.darken.bluemusic"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild

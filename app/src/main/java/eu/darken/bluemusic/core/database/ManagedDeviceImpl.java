@@ -1,16 +1,16 @@
 package eu.darken.bluemusic.core.database;
 
 
-import android.bluetooth.BluetoothDevice;
-
 import java.util.Locale;
 
+import eu.darken.bluemusic.core.bluetooth.Device;
+
 class ManagedDeviceImpl implements ManagedDevice {
-    private final BluetoothDevice bluetoothDevice;
+    private final Device device;
     private final DeviceConfig deviceConfig;
 
-    ManagedDeviceImpl(BluetoothDevice bluetoothDevice, DeviceConfig deviceConfig) {
-        this.bluetoothDevice = bluetoothDevice;
+    ManagedDeviceImpl(Device device, DeviceConfig deviceConfig) {
+        this.device = device;
         this.deviceConfig = deviceConfig;
     }
 
@@ -25,12 +25,12 @@ class ManagedDeviceImpl implements ManagedDevice {
 
     @Override
     public String getName() {
-        return bluetoothDevice.getName();
+        return device.getName();
     }
 
     @Override
     public String getAddress() {
-        return bluetoothDevice.getAddress();
+        return device.getAddress();
     }
 
     @Override

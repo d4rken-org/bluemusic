@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.core;
+package eu.darken.bluemusic.core.bluetooth;
 
 import android.content.Context;
 
@@ -15,7 +15,7 @@ public class DeviceSourceModule {
 
     @Provides
     @ApplicationScope
-    DeviceSource provideDeviceSource() {
+    BluetoothSource provideDeviceSource() {
         return new FakeDeviceSource(context);
     }
 }

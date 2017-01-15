@@ -1,7 +1,6 @@
 package eu.darken.bluemusic.core;
 
 import android.app.Service;
-import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Handler;
@@ -17,13 +16,17 @@ import javax.inject.Inject;
 
 import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.core.bluetooth.BluetoothEventReceiver;
+import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
+import eu.darken.bluemusic.core.bluetooth.Device;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.core.database.ManagedDeviceRepo;
+import eu.darken.bluemusic.util.Tools;
 import timber.log.Timber;
 
 
 public class BlueMusicService extends Service implements VolumeObserver.Callback {
     @Inject ManagedDeviceRepo managedDeviceRepo;
+    @Inject BluetoothSource bluetoothSource;
     final Map<String, ManagedDevice> activeDevices = new HashMap<>();
     final ExecutorService executor = Executors.newSingleThreadExecutor();
     private VolumeObserver contentObserver;
@@ -66,16 +69,21 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     }
 
     private void handleIntent(Intent intent) {
-        BluetoothDevice currentDevice = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE);
-        if (currentDevice == null) {
+        String address = intent.getStringExtra(BluetoothEventReceiver.EXTRA_DEVICE_ADDRESS);
+        if (address == null) {
             Timber.e("Unknown intent (%s)", intent);
             return;
         }
-        ManagedDevice device = managedDeviceRepo.getDevice(currentDevice.getAddress());
 
+        ManagedDevice device = managedDeviceRepo.getDevice(address);
         if (device == null) {
             Timber.d("Unmanaged device, creating new managed device.");
-            device = managedDeviceRepo.manage(currentDevice);
+            Device newDev = Tools.toMap(bluetoothSource.getPairedDevices()).get(address);
+            if (newDev == null) {
+                Timber.e("Can't find device: %s", address);
+                return;
+            }
+            device = managedDeviceRepo.manage(newDev);
             Timber.i("New managed device: %s", device);
         }
 

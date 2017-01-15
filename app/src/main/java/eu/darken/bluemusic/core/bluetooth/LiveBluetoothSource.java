@@ -4,10 +4,10 @@ package eu.darken.bluemusic.core.bluetooth;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
+import android.support.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 public class LiveBluetoothSource implements BluetoothSource {
 
@@ -17,16 +17,30 @@ public class LiveBluetoothSource implements BluetoothSource {
         manager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
     }
 
-    public Collection<BluetoothDevice> getPairedDevices() {
-        return manager.getAdapter().getBondedDevices();
+    public Collection<Device> getPairedDevices() {
+        Collection<Device> devices = new ArrayList<>();
+        for (BluetoothDevice realDevice : manager.getAdapter().getBondedDevices()) {
+            devices.add(new DeviceWrapper(realDevice));
+        }
+        return devices;
     }
 
-    @Override
-    public Map<String, BluetoothDevice> getPairedDeviceMap() {
-        Map<String, BluetoothDevice> deviceMap = new HashMap<>();
-        for (BluetoothDevice device : manager.getAdapter().getBondedDevices()) {
-            deviceMap.put(device.getAddress(), device);
+    private class DeviceWrapper implements Device {
+        private final BluetoothDevice realDevice;
+
+        public DeviceWrapper(BluetoothDevice realDevice) {
+            this.realDevice = realDevice;
         }
-        return deviceMap;
+
+        @Nullable
+        @Override
+        public String getName() {
+            return realDevice.getName();
+        }
+
+        @Override
+        public String getAddress() {
+            return realDevice.getAddress();
+        }
     }
 }

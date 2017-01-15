@@ -1,8 +1,8 @@
 package eu.darken.bluemusic;
 
 import dagger.Component;
-import eu.darken.bluemusic.core.DeviceSourceModule;
 import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
+import eu.darken.bluemusic.core.bluetooth.DeviceSourceModule;
 import eu.darken.bluemusic.core.database.ManagedDeviceRepo;
 import eu.darken.bluemusic.core.database.ManagedDeviceRepoModule;
 import eu.darken.bluemusic.screens.volumes.VolumeManagerComponent;

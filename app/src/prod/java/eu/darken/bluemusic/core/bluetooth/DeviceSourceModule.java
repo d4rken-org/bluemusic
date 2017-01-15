@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.core;
+package eu.darken.bluemusic.core.bluetooth;
 
 import android.content.Context;
 
