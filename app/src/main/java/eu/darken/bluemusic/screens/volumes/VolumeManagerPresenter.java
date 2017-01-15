@@ -1,19 +1,24 @@
 package eu.darken.bluemusic.screens.volumes;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+import javax.inject.Inject;
 
 import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.core.database.ManagedDeviceRepo;
+import eu.darken.ommvplib.injection.ComponentPresenter;
 
-
-public class VolumeManagerPresenter implements VolumeManagerContract.Presenter {
+@VolumeManagerScope
+public class VolumeManagerPresenter extends ComponentPresenter<VolumeManagerView, VolumeManagerComponent> {
     static final String TAG = App.LOGPREFIX + "IntroPresenter";
-    private final ManagedDeviceRepo managedDeviceRepo;
-    VolumeManagerContract.View view;
+    @Inject ManagedDeviceRepo managedDeviceRepo;
+    private VolumeManagerView view;
 
-    public VolumeManagerPresenter(ManagedDeviceRepo managedDeviceRepo) {
-        this.managedDeviceRepo = managedDeviceRepo;
+    @Inject
+    VolumeManagerPresenter() {
     }
 
     @Override
@@ -22,18 +27,13 @@ public class VolumeManagerPresenter implements VolumeManagerContract.Presenter {
     }
 
     @Override
-    public void onAttachView(final VolumeManagerContract.View view) {
+    public void onBindChange(@Nullable VolumeManagerView view) {
         this.view = view;
-        view.displayDevices(managedDeviceRepo.getDevices());
+        if (view != null) view.displayDevices(managedDeviceRepo.getDevices());
     }
 
     @Override
-    public void onDetachView() {
-        view = null;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle bundle) {
+    public void onSaveInstanceState(@NonNull Bundle bundle) {
 
     }
 
@@ -42,12 +42,10 @@ public class VolumeManagerPresenter implements VolumeManagerContract.Presenter {
 
     }
 
-    @Override
     public void updateDeviceVolume(ManagedDevice managedDevice, float percent) {
 
     }
 
-    @Override
     public void removeDevice(ManagedDevice managedDevice) {
 
     }

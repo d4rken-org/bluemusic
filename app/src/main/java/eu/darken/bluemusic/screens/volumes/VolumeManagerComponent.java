@@ -1,12 +1,11 @@
 package eu.darken.bluemusic.screens.volumes;
 
-import dagger.Component;
-import eu.darken.bluemusic.AppComponent;
-import eu.darken.bluemusic.util.dagger.FragmentScope;
+import dagger.Subcomponent;
+import eu.darken.ommvplib.injection.PresenterComponent;
 
 
-@FragmentScope
-@Component(modules = VolumeManagerModule.class, dependencies = AppComponent.class)
-public interface VolumeManagerComponent {
-    void inject(VolumeManagerFragment fragment);
+@VolumeManagerScope
+@Subcomponent(modules = {VolumeManagerModule.class})
+public interface VolumeManagerComponent extends PresenterComponent<VolumeManagerView, VolumeManagerPresenter> {
+
 }

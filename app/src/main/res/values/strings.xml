@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Bluetooth Volume Manager</string>
+    <string name="app_name">Bluetooth Volume Control</string>
     <string name="navigation_label_settings">Settings</string>
-    <string name="action_add_device">Add device</string>
 </resources>

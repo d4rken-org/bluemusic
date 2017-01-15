@@ -1,7 +1,6 @@
 package eu.darken.bluemusic.screens.volumes;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,8 +15,6 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -25,17 +22,15 @@ import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.screens.MainActivity;
-import eu.darken.bluemusic.util.mvp.BasePresenterFragment;
-import eu.darken.bluemusic.util.mvp.PresenterFactory;
+import eu.darken.ommvplib.injection.ComponentPresenterFragment;
 
 
-public class VolumeManagerFragment extends BasePresenterFragment<VolumeManagerContract.Presenter, VolumeManagerContract.View> implements
-        VolumeManagerContract.View,
-        VolumeManagerAdapter.Callback {
+public class VolumeManagerFragment extends ComponentPresenterFragment<
+        VolumeManagerView, VolumeManagerPresenter, VolumeManagerComponent>
+        implements VolumeManagerView, VolumeManagerAdapter.Callback {
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
-    @Inject PresenterFactory<VolumeManagerContract.Presenter> presenterFactory;
 
     Unbinder unbinder;
 
@@ -45,11 +40,23 @@ public class VolumeManagerFragment extends BasePresenterFragment<VolumeManagerCo
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        DaggerVolumeManagerComponent.builder()
-                .appComponent(App.Injector.INSTANCE.getAppComponent())
-                .build().inject(this);
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void inject(VolumeManagerComponent component) {
+
+    }
+
+    @Override
+    public VolumeManagerComponent createComponent() {
+        return App.Injector.INSTANCE.getAppComponent().volumeManagerComponent();
+    }
+
+    @Override
+    public Class<VolumeManagerPresenter> getTypeClazz() {
+        return VolumeManagerPresenter.class;
     }
 
     @Nullable
@@ -71,17 +78,6 @@ public class VolumeManagerFragment extends BasePresenterFragment<VolumeManagerCo
         super.onActivityCreated(savedInstanceState);
         ((MainActivity) getActivity()).setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_volume_up_white_24dp);
-    }
-
-    @Override
-    public void onPresenterReady(@NonNull VolumeManagerContract.Presenter presenter) {
-        super.onPresenterReady(presenter);
-    }
-
-    @NonNull
-    @Override
-    protected PresenterFactory<VolumeManagerContract.Presenter> getPresenterFactory() {
-        return presenterFactory;
     }
 
     @Override

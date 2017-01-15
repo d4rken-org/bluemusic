@@ -38,10 +38,6 @@
             android:name="eu.darken.bluemusic.screens.settings.SettingsActivity"
             android:label="@string/navigation_label_settings"
             android:parentActivityName="eu.darken.bluemusic.screens.MainActivity"/>
-        <activity
-            android:name="eu.darken.bluemusic.screens.newdevice.NewDeviceActivity"
-            android:label="@string/action_add_device"
-            android:parentActivityName="eu.darken.bluemusic.screens.MainActivity"/>
 
         <meta-data
             android:name="eu.darken.bluemusic.util.ui.glide.GlideConfigModule"

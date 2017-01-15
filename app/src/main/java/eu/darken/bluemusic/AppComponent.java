@@ -5,6 +5,7 @@ import eu.darken.bluemusic.core.DeviceSourceModule;
 import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
 import eu.darken.bluemusic.core.database.ManagedDeviceRepo;
 import eu.darken.bluemusic.core.database.ManagedDeviceRepoModule;
+import eu.darken.bluemusic.screens.volumes.VolumeManagerComponent;
 import eu.darken.bluemusic.util.AndroidModule;
 import eu.darken.bluemusic.util.dagger.ApplicationScope;
 
@@ -19,4 +20,6 @@ public interface AppComponent {
     BluetoothSource deviceSource();
 
     ManagedDeviceRepo knownDeviceRepository();
+
+    VolumeManagerComponent volumeManagerComponent();
 }
