@@ -5,7 +5,6 @@ import android.app.Application;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
-import eu.darken.bluemusic.core.bluetooth.DeviceSourceModule;
 import eu.darken.bluemusic.util.AndroidModule;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -48,7 +47,6 @@ public class App extends Application {
             Realm.setDefaultConfiguration(realmConfig);
             appComponent = DaggerAppComponent.builder()
                     .androidModule(new AndroidModule(app))
-                    .deviceSourceModule(new DeviceSourceModule(app))
                     .build();
         }
 

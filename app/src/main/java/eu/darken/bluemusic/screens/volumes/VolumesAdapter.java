@@ -15,11 +15,11 @@ import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 
 
-public class VolumeManagerAdapter extends RecyclerView.Adapter<VolumeManagerAdapter.DeviceVH> {
+public class VolumesAdapter extends RecyclerView.Adapter<VolumesAdapter.DeviceVH> {
     private final List<ManagedDevice> data;
     private final Callback callback;
 
-    public VolumeManagerAdapter(List<ManagedDevice> devices, Callback callback) {
+    public VolumesAdapter(List<ManagedDevice> devices, Callback callback) {
         this.data = devices;
         this.callback = callback;
     }

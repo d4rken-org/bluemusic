@@ -7,8 +7,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -16,18 +14,13 @@ import javax.inject.Inject;
 
 import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.core.bluetooth.BluetoothEventReceiver;
-import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
-import eu.darken.bluemusic.core.bluetooth.Device;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.core.database.ManagedDeviceRepo;
-import eu.darken.bluemusic.util.Tools;
 import timber.log.Timber;
 
 
 public class BlueMusicService extends Service implements VolumeObserver.Callback {
     @Inject ManagedDeviceRepo managedDeviceRepo;
-    @Inject BluetoothSource bluetoothSource;
-    final Map<String, ManagedDevice> activeDevices = new HashMap<>();
     final ExecutorService executor = Executors.newSingleThreadExecutor();
     private VolumeObserver contentObserver;
     private AudioManager audioManager;
@@ -37,9 +30,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Override
     public void onCreate() {
         Timber.v("onCreate()");
-        DaggerBlueMusicServiceComponent.builder()
-                .appComponent(App.Injector.INSTANCE.getAppComponent())
-                .build().inject(this);
+        App.Injector.INSTANCE.getAppComponent().blueMusicServiceComponent().inject(this);
         super.onCreate();
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         contentObserver = new VolumeObserver(new Handler(), audioManager);
@@ -77,16 +68,9 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
         ManagedDevice device = managedDeviceRepo.getDevice(address);
         if (device == null) {
-            Timber.d("Unmanaged device, creating new managed device.");
-            Device newDev = Tools.toMap(bluetoothSource.getPairedDevices()).get(address);
-            if (newDev == null) {
-                Timber.e("Can't find device: %s", address);
-                return;
-            }
-            device = managedDeviceRepo.manage(newDev);
-            Timber.i("New managed device: %s", device);
+            Timber.e("Can't find device: %s", address);
+            return;
         }
-
         Timber.d("Handling %s", device);
 
         String action = intent.getStringExtra(BluetoothEventReceiver.EXTRA_ACTION);
@@ -120,16 +104,11 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             } else {
                 Timber.d("Device %s has no specified target volume yet, skipping adjustments.", device);
             }
-            if (!activeDevices.containsKey(device.getAddress())) {
-                Timber.d("Now active: %s", device);
-                activeDevices.put(device.getAddress(), device);
-            }
             inProgress = false;
         } else if ("android.bluetooth.device.action.ACL_DISCONNECTED".equals(action)) {
-            Timber.d("No longer active: %s", device);
-            activeDevices.remove(device.getAddress());
-            if (activeDevices.isEmpty()) {
-                Timber.d("No more active devices, stopping service.");
+//            managedDeviceRepo.setInActive(device);
+            if (!managedDeviceRepo.hasActiveDevices()) {
+                Timber.i("No more active devices, stopping service.");
                 stopSelf();
             }
         } else {
@@ -145,11 +124,6 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             Timber.v("Device connection in progress. Ignoring volume changes.");
             return;
         }
-
-        Timber.d("New volume percentage (%.2f), updating active devices.", percentage);
-        for (ManagedDevice managedDevice : activeDevices.values()) {
-            managedDevice.setVolumePercentage(percentage);
-        }
-        managedDeviceRepo.update(activeDevices.values());
+        managedDeviceRepo.updateVolume(streamId, percentage);
     }
 }

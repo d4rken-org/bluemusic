@@ -1,11 +1,10 @@
 package eu.darken.bluemusic;
 
 import dagger.Component;
-import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
+import eu.darken.bluemusic.core.BlueMusicServiceComponent;
 import eu.darken.bluemusic.core.bluetooth.DeviceSourceModule;
-import eu.darken.bluemusic.core.database.ManagedDeviceRepo;
 import eu.darken.bluemusic.core.database.ManagedDeviceRepoModule;
-import eu.darken.bluemusic.screens.volumes.VolumeManagerComponent;
+import eu.darken.bluemusic.screens.volumes.VolumesComponent;
 import eu.darken.bluemusic.util.AndroidModule;
 import eu.darken.bluemusic.util.dagger.ApplicationScope;
 
@@ -17,9 +16,8 @@ import eu.darken.bluemusic.util.dagger.ApplicationScope;
         ManagedDeviceRepoModule.class
 })
 public interface AppComponent {
-    BluetoothSource deviceSource();
 
-    ManagedDeviceRepo knownDeviceRepository();
+    BlueMusicServiceComponent blueMusicServiceComponent();
 
-    VolumeManagerComponent volumeManagerComponent();
+    VolumesComponent volumeManagerComponent();
 }

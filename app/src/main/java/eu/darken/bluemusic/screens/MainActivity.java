@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import butterknife.ButterKnife;
 import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.R;
-import eu.darken.bluemusic.screens.volumes.VolumeManagerFragment;
+import eu.darken.bluemusic.screens.volumes.VolumesFragment;
 import eu.darken.bluemusic.util.ui.BaseActivity;
 
 
@@ -21,7 +21,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         Fragment introFragment = getSupportFragmentManager().findFragmentById(R.id.frame_content);
-        if (introFragment == null) introFragment = VolumeManagerFragment.newInstance();
+        if (introFragment == null) introFragment = VolumesFragment.newInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, introFragment).commit();
     }
 

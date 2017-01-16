@@ -8,4 +8,5 @@ public class DeviceConfig extends RealmObject {
     @PrimaryKey
     String address;
     float volumePercentage;
+    long lastConnected;
 }

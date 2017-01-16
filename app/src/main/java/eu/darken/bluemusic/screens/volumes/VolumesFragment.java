@@ -25,9 +25,9 @@ import eu.darken.bluemusic.screens.MainActivity;
 import eu.darken.ommvplib.injection.ComponentPresenterFragment;
 
 
-public class VolumeManagerFragment extends ComponentPresenterFragment<
-        VolumeManagerView, VolumeManagerPresenter, VolumeManagerComponent>
-        implements VolumeManagerView, VolumeManagerAdapter.Callback {
+public class VolumesFragment extends ComponentPresenterFragment<
+        VolumesView, VolumesPresenter, VolumesComponent>
+        implements VolumesView, VolumesAdapter.Callback {
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
@@ -35,7 +35,7 @@ public class VolumeManagerFragment extends ComponentPresenterFragment<
     Unbinder unbinder;
 
     public static Fragment newInstance() {
-        return new VolumeManagerFragment();
+        return new VolumesFragment();
     }
 
     @Override
@@ -45,18 +45,18 @@ public class VolumeManagerFragment extends ComponentPresenterFragment<
     }
 
     @Override
-    public void inject(VolumeManagerComponent component) {
+    public void inject(VolumesComponent component) {
 
     }
 
     @Override
-    public VolumeManagerComponent createComponent() {
+    public VolumesComponent createComponent() {
         return App.Injector.INSTANCE.getAppComponent().volumeManagerComponent();
     }
 
     @Override
-    public Class<VolumeManagerPresenter> getTypeClazz() {
-        return VolumeManagerPresenter.class;
+    public Class<VolumesPresenter> getTypeClazz() {
+        return VolumesPresenter.class;
     }
 
     @Nullable
@@ -102,7 +102,7 @@ public class VolumeManagerFragment extends ComponentPresenterFragment<
 
     @Override
     public void displayDevices(List<ManagedDevice> managedDevices) {
-        recyclerView.setAdapter(new VolumeManagerAdapter(managedDevices, this));
+        recyclerView.setAdapter(new VolumesAdapter(managedDevices, this));
     }
 
 }

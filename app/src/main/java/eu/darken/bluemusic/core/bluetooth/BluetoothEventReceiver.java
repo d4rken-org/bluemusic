@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.core.bluetooth;
 
+import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.content.ComponentName;
 import android.content.Context;
@@ -27,10 +28,19 @@ public class BluetoothEventReceiver extends WakefulBroadcastReceiver {
             return;
         }
 
+        if (!isValid(device)) {
+            Timber.d("Invalid device: %s", device);
+            return;
+        }
+
         Intent service = new Intent(context, BlueMusicService.class);
         service.putExtra(EXTRA_ACTION, action);
         service.putExtra(EXTRA_DEVICE_ADDRESS, device != null ? device.getAddress() : address);
         final ComponentName componentName = context.startService(service);
         if (componentName != null) Timber.v("Service is already running.");
+    }
+
+    public static boolean isValid(BluetoothDevice device) {
+        return device.getBluetoothClass().getMajorDeviceClass() == BluetoothClass.Device.Major.AUDIO_VIDEO;
     }
 }

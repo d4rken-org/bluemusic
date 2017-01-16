@@ -10,4 +10,12 @@ public interface ManagedDevice {
     float getVolumePercentage();
 
     void setVolumePercentage(float volumePercentage);
+
+    long getLastConnected();
+
+    void setLastConnected(long timestamp);
+
+    boolean isActive();
+
+    void setActive(boolean active);
 }

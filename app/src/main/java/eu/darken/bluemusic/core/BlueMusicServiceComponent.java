@@ -1,12 +1,11 @@
 package eu.darken.bluemusic.core;
 
-import dagger.Component;
-import eu.darken.bluemusic.AppComponent;
+import dagger.Subcomponent;
 import eu.darken.bluemusic.util.dagger.ServiceScope;
 
 
 @ServiceScope
-@Component(dependencies = AppComponent.class)
+@Subcomponent(modules = {})
 public interface BlueMusicServiceComponent {
     void inject(BlueMusicService blueMusicService);
 }
