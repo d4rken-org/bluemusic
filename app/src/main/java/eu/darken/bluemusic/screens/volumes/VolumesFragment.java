@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.screens.volumes;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,7 +19,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.screens.MainActivity;
@@ -45,13 +45,14 @@ public class VolumesFragment extends ComponentPresenterFragment<
     }
 
     @Override
-    public void inject(VolumesComponent component) {
+    public void inject(@NonNull VolumesComponent component) {
 
     }
 
     @Override
     public VolumesComponent createComponent() {
-        return App.Injector.INSTANCE.getAppComponent().volumeManagerComponent();
+        VolumesComponent.Builder builder = getComponentBuilder(this);
+        return builder.build();
     }
 
     @Override

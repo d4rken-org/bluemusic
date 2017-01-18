@@ -109,7 +109,6 @@ configurations.all {
     resolutionStrategy.force "com.android.support:support-v4:${supportLibVersion}"
     resolutionStrategy.force "com.android.support:design:${supportLibVersion}"
     resolutionStrategy.force "com.android.support:appcompat-v7:${supportLibVersion}"
-    resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -122,19 +121,13 @@ dependencies {
     compile "com.android.support:cardview-v7:${supportLibVersion}"
 
     // MVP lib
-    compile 'eu.darken.ommvplib:library:0.0.3'
+    compile 'eu.darken.ommvplib:library:0.0.5'
 
     // Recyclerview fast scroller
     compile 'com.futuremind.recyclerfastscroll:fastscroll:0.2.4'
 
-    // OKHttp
-    compile 'com.squareup.okhttp3:okhttp:3.4.1'
-
     // Glide
     compile 'com.github.bumptech.glide:glide:4.0.0-20160905.222409-202'
-
-    // Flow layout for tags
-    compile 'com.wefika:flowlayout:0.4.0'
 
     // RX
     compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
@@ -144,8 +137,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
 
     //Dagger
-    apt 'com.google.dagger:dagger-compiler:2.2'
-    compile 'com.google.dagger:dagger:2.2'
+    apt 'com.google.dagger:dagger-compiler:2.8'
+    compile 'com.google.dagger:dagger:2.8'
     provided 'javax.annotation:jsr250-api:1.0'
 
     //Butterknife
@@ -153,12 +146,14 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
 
     //Timber
-    compile 'com.jakewharton.timber:timber:4.1.2'
+    compile 'com.jakewharton.timber:timber:4.5.0'
 
     // jUnit
     testCompile 'junit:junit:4.12'
+
     // Mocktio
-    testCompile 'org.mockito:mockito-core:2.0.62-beta'
+    androidTestCompile 'org.mockito:mockito-core:2.6.3'
+    androidTestCompile 'com.linkedin.dexmaker:dexmaker-mockito:2.2.0'
 
     //Intrumentation tests (UI tests)
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'

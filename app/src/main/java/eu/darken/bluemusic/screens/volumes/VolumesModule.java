@@ -4,6 +4,6 @@ import dagger.Module;
 
 
 @Module
-class VolumesModule {
+public class VolumesModule {
 
 }

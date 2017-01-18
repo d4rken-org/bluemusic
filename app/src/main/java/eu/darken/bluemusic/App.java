@@ -1,11 +1,20 @@
 package eu.darken.bluemusic;
 
+import android.app.Activity;
 import android.app.Application;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
+import java.util.Map;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+
 import eu.darken.bluemusic.util.AndroidModule;
+import eu.darken.ommvplib.injection.activity.ActivityComponent;
+import eu.darken.ommvplib.injection.activity.ActivityComponentBuilder;
+import eu.darken.ommvplib.injection.activity.ActivityComponentBuilderSource;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import timber.log.Timber;
@@ -13,8 +22,8 @@ import timber.log.Timber;
 
 public class App extends Application {
     public static final String LOGPREFIX = "TMP:";
+
     private static RefWatcher refWatcher;
-    private int theme = 0;
 
     public static RefWatcher getRefWatcher() {
         return refWatcher;
@@ -28,14 +37,20 @@ public class App extends Application {
         Injector.INSTANCE.init(this);
     }
 
-    public static String prefixTag(String postfix) {
-        return LOGPREFIX + postfix;
+    public static String tag(String... postfixes) {
+        StringBuilder tag = new StringBuilder();
+        for (int i = 0; i < postfixes.length; i++) {
+            tag.append(postfixes[i]);
+            if (i != postfixes.length - 1) tag.append(":");
+        }
+        return tag.toString();
     }
 
 
-    public enum Injector {
+    public enum Injector implements ActivityComponentBuilderSource {
         INSTANCE;
-        AppComponent appComponent;
+        @Inject AppComponent appComponent;
+        @Inject Map<Class<? extends Activity>, Provider<ActivityComponentBuilder>> componentBuilders;
 
         Injector() {
         }
@@ -45,13 +60,21 @@ public class App extends Application {
                     .deleteRealmIfMigrationNeeded()
                     .build();
             Realm.setDefaultConfiguration(realmConfig);
-            appComponent = DaggerAppComponent.builder()
+            DaggerAppComponent.builder()
                     .androidModule(new AndroidModule(app))
-                    .build();
+                    .build()
+                    .injectMembers(this);
         }
 
         public AppComponent getAppComponent() {
             return appComponent;
+        }
+
+        @Override
+        public <ActivityT extends Activity, BuilderT extends ActivityComponentBuilder<ActivityT, ? extends ActivityComponent<ActivityT>>>
+        BuilderT getComponentBuilder(Class<ActivityT> activityClass) {
+            //noinspection unchecked
+            return (BuilderT) componentBuilders.get(activityClass).get();
         }
     }
 }
