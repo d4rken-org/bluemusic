@@ -3,15 +3,15 @@ package eu.darken.bluemusic.core.database;
 
 import java.util.Locale;
 
-import eu.darken.bluemusic.core.bluetooth.Device;
+import eu.darken.bluemusic.core.bluetooth.SourceDevice;
 
 class ManagedDeviceImpl implements ManagedDevice {
-    private final Device device;
+    private final SourceDevice sourceDevice;
     private final DeviceConfig deviceConfig;
-    private boolean isActive = true;
+    private boolean isActive;
 
-    ManagedDeviceImpl(Device device, DeviceConfig deviceConfig) {
-        this.device = device;
+    ManagedDeviceImpl(SourceDevice sourceDevice, DeviceConfig deviceConfig) {
+        this.sourceDevice = sourceDevice;
         this.deviceConfig = deviceConfig;
     }
 
@@ -36,12 +36,12 @@ class ManagedDeviceImpl implements ManagedDevice {
 
     @Override
     public String getName() {
-        return device.getName();
+        return sourceDevice.getName();
     }
 
     @Override
     public String getAddress() {
-        return device.getAddress();
+        return sourceDevice.getAddress();
     }
 
     @Override

@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:padding="16dp"
               android:background="?android:attr/selectableItemBackground"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              android:padding="16dp">
 
     <TextView
         android:id="@+id/name"
         style="@style/TextAppearance.AppCompat.Body2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        tools:text="Name"/>
 
     <TextView
         android:id="@+id/caption"
         style="@style/TextAppearance.AppCompat.Caption"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        tools:text="Caption"/>
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="70"/>
+
+
 </LinearLayout>

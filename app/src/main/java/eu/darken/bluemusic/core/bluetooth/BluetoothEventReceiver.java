@@ -12,35 +12,36 @@ import timber.log.Timber;
 
 
 public class BluetoothEventReceiver extends WakefulBroadcastReceiver {
-    public static final String EXTRA_ACTION = "eu.darken.bluemusic.core.bluetooth.action";
-    public static final String EXTRA_DEVICE_ADDRESS = "eu.darken.bluemusic.core.bluetooth.device.address";
+    public static final String EXTRA_DEVICE_ACTION = "eu.darken.bluemusic.core.bluetooth.action";
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Timber.v("onReceive(%s,%s)", context, intent);
-        String action = intent.getAction();
-        BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-        String address = intent.getStringExtra(EXTRA_DEVICE_ADDRESS);
-        Timber.v("Device: %s | Action: %s", device, action);
+        Timber.v("onReceive(%s, %s)", context, intent);
 
-        if (device == null && address == null) {
-            Timber.e("Unknown intent!");
-            return;
+        SourceDevice sourceDevice = new SourceDeviceWrapper((BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE));
+        String actionString = intent.getAction();
+        Timber.d("Device: %s | Action: %s", sourceDevice, actionString);
+
+        SourceDevice.Action.Type actionType = null;
+        if ("android.bluetooth.device.action.ACL_CONNECTED".equals(actionString)) {
+            actionType = SourceDevice.Action.Type.CONNECTED;
+        } else if ("android.bluetooth.device.action.ACL_DISCONNECTED".equals(actionString)) {
+            actionType = SourceDevice.Action.Type.DISCONNECTED;
         }
 
-        if (!isValid(device)) {
-            Timber.d("Invalid device: %s", device);
+        if (!isValid(sourceDevice) || actionType == null) {
+            Timber.d("Invalid device action!");
             return;
         }
+        SourceDevice.Action deviceAction = new SourceDevice.Action(sourceDevice, actionType);
 
         Intent service = new Intent(context, BlueMusicService.class);
-        service.putExtra(EXTRA_ACTION, action);
-        service.putExtra(EXTRA_DEVICE_ADDRESS, device != null ? device.getAddress() : address);
+        service.putExtra(EXTRA_DEVICE_ACTION, deviceAction);
         final ComponentName componentName = context.startService(service);
         if (componentName != null) Timber.v("Service is already running.");
     }
 
-    public static boolean isValid(BluetoothDevice device) {
-        return device.getBluetoothClass().getMajorDeviceClass() == BluetoothClass.Device.Major.AUDIO_VIDEO;
+    public static boolean isValid(SourceDevice sourceDevice) {
+        return sourceDevice.getBluetoothClass().getMajorDeviceClass() == BluetoothClass.Device.Major.AUDIO_VIDEO;
     }
 }

@@ -7,11 +7,11 @@ import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
 import eu.darken.bluemusic.util.dagger.ApplicationScope;
 
 @Module
-public class ManagedDeviceRepoModule {
+public class DeviceManagerModule {
 
     @Provides
     @ApplicationScope
-    public ManagedDeviceRepo provideManagedDeviceRepo(BluetoothSource bluetoothSource) {
-        return new ManagedDeviceRepo(bluetoothSource);
+    public DeviceManager provideManagedDeviceRepo(BluetoothSource bluetoothSource) {
+        return new DeviceManager(bluetoothSource);
     }
 }

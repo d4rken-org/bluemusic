@@ -1,13 +1,12 @@
 package eu.darken.bluemusic.core.bluetooth;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observable;
 
 public interface BluetoothSource {
-    Collection<Device> getPairedDevices();
+    Observable<Map<String, SourceDevice>> getPairedDevices();
 
-    Observable<List<Device>> getConnectedDevices();
+    Observable<Map<String, SourceDevice>> getConnectedDevices();
 
 }

@@ -6,16 +6,14 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 import io.reactivex.Observable;
-import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.PublishSubject;
 import timber.log.Timber;
 
@@ -32,36 +30,39 @@ public class LiveBluetoothSource implements BluetoothSource {
     }
 
     @Override
-    public Collection<Device> getPairedDevices() {
-        Collection<Device> devices = new ArrayList<>();
-        for (BluetoothDevice realDevice : manager.getAdapter().getBondedDevices()) {
-            if (!BluetoothEventReceiver.isValid(realDevice)) continue;
-            devices.add(new DeviceWrapper(realDevice));
-        }
-        return devices;
+    public Observable<Map<String, SourceDevice>> getPairedDevices() {
+        return Observable.defer(() -> Observable.just(manager.getAdapter().getBondedDevices()))
+                .map(bluetoothDevices -> {
+                    Map<String, SourceDevice> devices = new HashMap<>();
+                    for (BluetoothDevice realDevice : manager.getAdapter().getBondedDevices()) {
+                        final SourceDeviceWrapper deviceWrapper = new SourceDeviceWrapper(realDevice);
+                        if (!BluetoothEventReceiver.isValid(deviceWrapper)) continue;
+                        devices.put(deviceWrapper.getAddress(), deviceWrapper);
+                    }
+                    Timber.d("Paired devices (%d): %s", devices.size(), devices);
+                    return devices;
+                });
     }
 
 
     @Override
-    public Observable<List<Device>> getConnectedDevices() {
-        return Observable.defer(() -> {
-            Observable<List<BluetoothDevice>> obsHeadset = LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET);
-            Observable<List<BluetoothDevice>> obsAD2p = LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP);
-            return Observable.fromArray(obsHeadset, obsAD2p)
-                    .flatMap(obs -> obs.observeOn(Schedulers.computation()))
-                    .toList()
-                    .map(lists -> {
-                        List<Device> devices = new ArrayList<>();
-                        for (List<BluetoothDevice> bds : lists) {
-                            for (BluetoothDevice bd : bds) {
-                                final DeviceWrapper wrapper = new DeviceWrapper(bd);
-                                if (devices.contains(wrapper)) continue;
-                                devices.add(wrapper);
-                            }
-                        }
-                        return devices;
-                    });
-        });
+    public Observable<Map<String, SourceDevice>> getConnectedDevices() {
+        return Observable.defer(() -> Observable.zip(
+                LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET),
+                LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP),
+                (headSets, a2dps) -> {
+                    Set<BluetoothDevice> combined = new HashSet<>(headSets);
+                    combined.addAll(a2dps);
+                    Timber.d("Connected HEADSET devices (%d): %s", headSets.size(), headSets);
+                    Timber.d("Connected A2DP devices (%d): %s", a2dps.size(), a2dps);
+                    Timber.d("Connected COMBINED devices (%d): %s", combined.size(), combined);
+                    return combined;
+                })
+                .map(bluetoothDevices -> {
+                    Map<String, SourceDevice> devices = new HashMap<>();
+                    for (BluetoothDevice d : bluetoothDevices) devices.put(d.getAddress(), new SourceDeviceWrapper(d));
+                    return devices;
+                }));
     }
 
     private Observable<List<BluetoothDevice>> getDevicesForProfile(int desiredProfile) {
@@ -82,44 +83,4 @@ public class LiveBluetoothSource implements BluetoothSource {
         return observable;
     }
 
-    private class DeviceWrapper implements Device {
-        private final BluetoothDevice realDevice;
-
-        public DeviceWrapper(BluetoothDevice realDevice) {
-            this.realDevice = realDevice;
-        }
-
-        @Nullable
-        @Override
-        public String getName() {
-            return realDevice.getName();
-        }
-
-        @NonNull
-        @Override
-        public String getAddress() {
-            return realDevice.getAddress();
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-
-            DeviceWrapper that = (DeviceWrapper) o;
-
-            return getAddress().equals(that.getAddress());
-
-        }
-
-        @Override
-        public int hashCode() {
-            return getAddress().hashCode();
-        }
-
-        @Override
-        public String toString() {
-            return String.format(Locale.US, "Device(name=%s, address=%s)", getName(), getAddress());
-        }
-    }
 }

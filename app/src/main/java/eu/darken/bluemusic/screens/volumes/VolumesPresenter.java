@@ -11,16 +11,17 @@ import java.util.List;
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.App;
+import eu.darken.bluemusic.core.database.DeviceManager;
 import eu.darken.bluemusic.core.database.ManagedDevice;
-import eu.darken.bluemusic.core.database.ManagedDeviceRepo;
 import eu.darken.ommvplib.injection.ComponentPresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 @VolumesrScope
 public class VolumesPresenter extends ComponentPresenter<VolumesView, VolumesComponent> {
     static final String TAG = App.LOGPREFIX + "IntroPresenter";
-    @Inject ManagedDeviceRepo managedDeviceRepo;
+    @Inject DeviceManager deviceManager;
     private VolumesView view;
     private Disposable disposable;
 
@@ -37,10 +38,11 @@ public class VolumesPresenter extends ComponentPresenter<VolumesView, VolumesCom
     public void onBindChange(@Nullable VolumesView view) {
         this.view = view;
         if (view != null) {
-            disposable = managedDeviceRepo.getDevices()
-                    .subscribeOn(AndroidSchedulers.mainThread())
+            disposable = deviceManager.getDevices()
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .map(managedDevices -> {
-                        List<ManagedDevice> sorted = new ArrayList<>(managedDevices);
+                        List<ManagedDevice> sorted = new ArrayList<>(managedDevices.values());
                         Collections.sort(sorted, (d1, d2) -> Long.compare(d1.getLastConnected(), d2.getLastConnected()));
                         return sorted;
                     })
