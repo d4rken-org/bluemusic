@@ -44,6 +44,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         contentObserver = new VolumeObserver(new Handler(), audioManager);
         contentObserver.addCallback(AudioManager.STREAM_MUSIC, this);
+        contentObserver.addCallback(6, this);
         getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, contentObserver);
     }
 
@@ -76,7 +77,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     .flatMap(new Function<SourceDevice.Action, ObservableSource<ManagedDevice.Action>>() {
                         @Override
                         public ObservableSource<ManagedDevice.Action> apply(SourceDevice.Action deviceAction) throws Exception {
-                            return deviceManager.getDevices().map(deviceMap -> new ManagedDevice.Action(deviceMap.get(deviceAction.getAddress()), deviceAction.getType()));
+                            return deviceManager.loadManagedDevices().map(deviceMap -> new ManagedDevice.Action(deviceMap.get(deviceAction.getAddress()), deviceAction.getType()));
                         }
                     })
                     .subscribe(this::handleDevice);
