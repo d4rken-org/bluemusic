@@ -121,7 +121,7 @@ dependencies {
     compile "com.android.support:cardview-v7:${supportLibVersion}"
 
     // MVP lib
-    compile 'eu.darken.ommvplib:library:0.0.5'
+    compile 'eu.darken.ommvplib:library:0.0.6'
 
     // Recyclerview fast scroller
     compile 'com.futuremind.recyclerfastscroll:fastscroll:0.2.4'

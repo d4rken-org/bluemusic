@@ -68,7 +68,7 @@ public class DeviceManager {
                     realm.close();
                     return devices;
                 })
-                .doOnEach(currentDevices);
+                .doOnNext(stringManagedDeviceMap -> currentDevices.onNext(stringManagedDeviceMap));
     }
 
     public void updateVolume(int streamId, float percentage) {

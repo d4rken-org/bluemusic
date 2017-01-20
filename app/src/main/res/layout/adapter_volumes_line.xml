@@ -1,31 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="?android:attr/selectableItemBackground"
-              android:orientation="vertical"
-              android:padding="16dp">
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp">
 
-    <TextView
-        android:id="@+id/name"
-        style="@style/TextAppearance.AppCompat.Body2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Name"/>
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/caption"
-        style="@style/TextAppearance.AppCompat.Caption"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Caption"/>
+        <TextView
+            android:id="@+id/name"
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Name"/>
 
-    <SeekBar
-        android:id="@+id/seekbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:progress="70"/>
+        <TextView
+            android:id="@+id/caption"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            tools:text="Caption"/>
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Music"/>
+
+        <SeekBar
+            android:id="@+id/seekbar_music"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:progress="0"/>
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Headset"/>
+
+        <SeekBar
+            android:id="@+id/seekbar_headset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:progress="0"/>
 
 
-</LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

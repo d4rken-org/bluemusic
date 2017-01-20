@@ -51,7 +51,8 @@ public class VolumesAdapter extends RecyclerView.Adapter<VolumesAdapter.DeviceVH
         private final Context context;
         @BindView(R.id.name) TextView name;
         @BindView(R.id.caption) TextView caption;
-        @BindView(R.id.seekbar) SeekBar seekbar;
+        @BindView(R.id.seekbar_music) SeekBar seekbarMusic;
+        @BindView(R.id.seekbar_headset) SeekBar seekbarHeadset;
 
         public DeviceVH(View itemView) {
             super(itemView);
@@ -68,8 +69,8 @@ public class VolumesAdapter extends RecyclerView.Adapter<VolumesAdapter.DeviceVH
                             getString(R.string.last_seen_x, item.getLastConnected())
             );
 
-            seekbar.setMax(15);
-            seekbar.setProgress(Math.round(item.getVolumePercentage() * 15));
+            seekbarMusic.setMax(15);
+            seekbarMusic.setProgress(Math.round(item.getVolumePercentage() * 15));
         }
 
         public String getString(@StringRes int stringRes) {
