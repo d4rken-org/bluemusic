@@ -63,36 +63,34 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Override
     public int onStartCommand(Intent _intent, int flags, int startId) {
         Timber.v("onStartCommand(%s)", _intent);
-        if (_intent != null) {
-            Observable.fromCallable(() -> _intent)
+        if (_intent == null) {
+            Timber.w("Intent was null");
+            return START_STICKY;
+        }
+        SourceDevice.Event event = _intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
+        if (event != null) {
+            Observable.fromCallable(() -> event)
                     .subscribeOn(scheduler)
-                    .map(intent -> {
-                        SourceDevice.Action deviceAction = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_ACTION);
-                        if (deviceAction == null) {
-                            Timber.e("Unknown intent (%s)", intent);
-                            return null;
-                        }
-                        return deviceAction;
-                    })
-                    .flatMap(new Function<SourceDevice.Action, ObservableSource<ManagedDevice.Action>>() {
+                    .flatMap(new Function<SourceDevice.Event, ObservableSource<ManagedDevice.Action>>() {
                         @Override
-                        public ObservableSource<ManagedDevice.Action> apply(SourceDevice.Action deviceAction) throws Exception {
-                            return deviceManager.loadManagedDevices().map(deviceMap -> new ManagedDevice.Action(deviceMap.get(deviceAction.getAddress()), deviceAction.getType()));
+                        public ObservableSource<ManagedDevice.Action> apply(SourceDevice.Event deviceEvent) throws Exception {
+                            return deviceManager.load(true).map(deviceMap -> new ManagedDevice.Action(deviceMap.get(deviceEvent.getAddress()), deviceEvent.getType()));
                         }
                     })
-                    .subscribe(this::handleDevice);
-        } else Timber.w("Intent was null");
-        return super.onStartCommand(_intent, flags, startId);
+                    .subscribe(this::handleEvent);
+        }
+
+        return START_STICKY;
     }
 
-    private void handleDevice(ManagedDevice.Action event) {
+    private void handleEvent(ManagedDevice.Action event) {
         Timber.d("Handling %s", event);
         ManagedDevice device = event.getDevice();
-        if (event.getType() == SourceDevice.Action.Type.CONNECTED) {
+        if (event.getType() == SourceDevice.Event.Type.CONNECTED) {
             inProgress = true;
             handleConnect(device);
             inProgress = false;
-        } else if (event.getType() == SourceDevice.Action.Type.DISCONNECTED) {
+        } else if (event.getType() == SourceDevice.Event.Type.DISCONNECTED) {
             handleDisconnect(device);
         } else {
             Timber.w("Unknown intent action: %s", action);
@@ -131,7 +129,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     }
 
     private void handleDisconnect(ManagedDevice disconnectedDevice) {
-        final Map<String, ManagedDevice> deviceMap = deviceManager.loadManagedDevices().blockingFirst();
+        final Map<String, ManagedDevice> deviceMap = deviceManager.load(true).blockingFirst();
         boolean stop = true;
         for (ManagedDevice device : deviceMap.values()) {
             if (device.isActive()) {

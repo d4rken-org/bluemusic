@@ -14,7 +14,8 @@ import java.util.Map;
 import java.util.Set;
 
 import io.reactivex.Observable;
-import io.reactivex.subjects.PublishSubject;
+import io.reactivex.Observer;
+import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 public class LiveBluetoothSource implements BluetoothSource {
@@ -66,21 +67,28 @@ public class LiveBluetoothSource implements BluetoothSource {
     }
 
     private Observable<List<BluetoothDevice>> getDevicesForProfile(int desiredProfile) {
-        PublishSubject<List<BluetoothDevice>> observable = PublishSubject.create();
-        BluetoothProfile.ServiceListener mProfileListener = new BluetoothProfile.ServiceListener() {
-            public void onServiceConnected(int profile, BluetoothProfile proxy) {
-                Timber.d("onServiceConnected(profile=%d, proxy=%s)", profile, proxy);
-                observable.onNext(proxy.getConnectedDevices());
-                observable.onComplete();
-                adapter.closeProfileProxy(profile, proxy);
-            }
+        return new Observable<List<BluetoothDevice>>() {
+            @Override
+            protected void subscribeActual(Observer<? super List<BluetoothDevice>> observer) {
+                BluetoothProfile.ServiceListener mProfileListener = new BluetoothProfile.ServiceListener() {
+                    public void onServiceConnected(int profile, BluetoothProfile proxy) {
+                        Schedulers.computation().scheduleDirect(() -> {
+                            Timber.d("onServiceConnected(profile=%d, proxy=%s)", profile, proxy);
+                            observer.onNext(proxy.getConnectedDevices());
+                            observer.onComplete();
+                            adapter.closeProfileProxy(profile, proxy);
+                        });
+                    }
 
-            public void onServiceDisconnected(int profile) {
-                Timber.d("onServiceDisconnected(%d)", profile);
+                    public void onServiceDisconnected(int profile) {
+                        Timber.d("onServiceDisconnected(%d)", profile);
+                    }
+                };
+
+
+                adapter.getProfileProxy(context, mProfileListener, desiredProfile);
             }
         };
-        adapter.getProfileProxy(context, mProfileListener, desiredProfile);
-        return observable;
     }
 
 }

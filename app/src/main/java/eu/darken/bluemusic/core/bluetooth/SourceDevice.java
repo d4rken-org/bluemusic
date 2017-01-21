@@ -17,7 +17,7 @@ public interface SourceDevice extends Parcelable {
     @NonNull
     String getAddress();
 
-    class Action implements Parcelable {
+    class Event implements Parcelable {
         public enum Type {
             CONNECTED, DISCONNECTED
         }
@@ -25,7 +25,7 @@ public interface SourceDevice extends Parcelable {
         private final SourceDevice sourceDevice;
         private final Type type;
 
-        public Action(SourceDevice sourceDevice, Type type) {
+        public Event(SourceDevice sourceDevice, Type type) {
             this.sourceDevice = sourceDevice;
             this.type = type;
         }
@@ -44,7 +44,7 @@ public interface SourceDevice extends Parcelable {
             return type;
         }
 
-        protected Action(Parcel in) {
+        protected Event(Parcel in) {
             sourceDevice = in.readParcelable(SourceDevice.class.getClassLoader());
             type = Type.valueOf(in.readString());
         }
@@ -60,15 +60,15 @@ public interface SourceDevice extends Parcelable {
             return 0;
         }
 
-        public static final Creator<Action> CREATOR = new Creator<Action>() {
+        public static final Creator<Event> CREATOR = new Creator<Event>() {
             @Override
-            public Action createFromParcel(Parcel in) {
-                return new Action(in);
+            public Event createFromParcel(Parcel in) {
+                return new Event(in);
             }
 
             @Override
-            public Action[] newArray(int size) {
-                return new Action[size];
+            public Event[] newArray(int size) {
+                return new Event[size];
             }
         };
 

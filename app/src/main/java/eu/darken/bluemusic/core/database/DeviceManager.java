@@ -20,7 +20,7 @@ import timber.log.Timber;
 public class DeviceManager {
 
     private BluetoothSource bluetoothSource;
-    private BehaviorSubject<Map<String, ManagedDevice>> currentDevices;
+    private final BehaviorSubject<Map<String, ManagedDevice>> deviceObs = BehaviorSubject.create();
 
     public DeviceManager(BluetoothSource bluetoothSource) {
         this.bluetoothSource = bluetoothSource;
@@ -31,17 +31,14 @@ public class DeviceManager {
     }
 
     @NonNull
-    public synchronized Observable<Map<String, ManagedDevice>> getDevices() {
-        if (currentDevices == null) {
-            currentDevices = BehaviorSubject.create();
-            Observable.defer(this::loadManagedDevices)
-                    .subscribeOn(Schedulers.computation())
-                    .subscribe();
+    public Observable<Map<String, ManagedDevice>> observe() {
+        if (!deviceObs.hasValue()) {
+            return deviceObs.mergeWith(Observable.defer(() -> load(false)));
         }
-        return currentDevices;
+        return deviceObs;
     }
 
-    public synchronized Observable<Map<String, ManagedDevice>> loadManagedDevices() {
+    public Observable<Map<String, ManagedDevice>> load(boolean notify) {
         return Observable.zip(
                 bluetoothSource.getConnectedDevices(),
                 bluetoothSource.getPairedDevices(),
@@ -68,25 +65,29 @@ public class DeviceManager {
                     realm.close();
                     return devices;
                 })
-                .doOnNext(stringManagedDeviceMap -> currentDevices.onNext(stringManagedDeviceMap));
+                .doOnNext(stringManagedDeviceMap -> {
+                    if (notify) deviceObs.onNext(stringManagedDeviceMap);
+                });
     }
 
     public void updateVolume(int streamId, float percentage) {
-        loadManagedDevices().subscribe(stringManagedDeviceMap -> {
-            Timber.d("Updating volume (stream=%d, percentage=%.2f)", streamId, percentage);
-            for (ManagedDevice device : stringManagedDeviceMap.values()) {
-                if (device.isActive()) {
-                    device.setVolumePercentage(percentage);
-                    Timber.d("Updated device: %s", device);
-                    Realm realm = getRealm();
-                    realm.beginTransaction();
-                    realm.copyToRealmOrUpdate(((ManagedDeviceImpl) device).getDeviceConfig());
-                    realm.commitTransaction();
-                    realm.close();
-                }
-            }
-            loadManagedDevices().subscribe();
-        });
+        load(false)
+                .subscribeOn(Schedulers.computation())
+                .subscribe(deviceMap -> {
+                    Timber.d("Updating volume (stream=%d, percentage=%.2f)", streamId, percentage);
+                    for (ManagedDevice device : deviceMap.values()) {
+                        if (device.isActive()) {
+                            device.setVolumePercentage(percentage);
+                            Timber.d("Updated device: %s", device);
+                            Realm realm = getRealm();
+                            realm.beginTransaction();
+                            realm.copyToRealmOrUpdate(((ManagedDeviceImpl) device).getDeviceConfig());
+                            realm.commitTransaction();
+                            realm.close();
+                        }
+                    }
+                    deviceObs.onNext(deviceMap);
+                });
 
     }
 

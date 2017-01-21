@@ -12,7 +12,7 @@ import timber.log.Timber;
 
 
 public class BluetoothEventReceiver extends WakefulBroadcastReceiver {
-    public static final String EXTRA_DEVICE_ACTION = "eu.darken.bluemusic.core.bluetooth.action";
+    public static final String EXTRA_DEVICE_EVENT = "eu.darken.bluemusic.core.bluetooth.event";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -22,21 +22,21 @@ public class BluetoothEventReceiver extends WakefulBroadcastReceiver {
         String actionString = intent.getAction();
         Timber.d("Device: %s | Action: %s", sourceDevice, actionString);
 
-        SourceDevice.Action.Type actionType = null;
+        SourceDevice.Event.Type actionType = null;
         if ("android.bluetooth.device.action.ACL_CONNECTED".equals(actionString)) {
-            actionType = SourceDevice.Action.Type.CONNECTED;
+            actionType = SourceDevice.Event.Type.CONNECTED;
         } else if ("android.bluetooth.device.action.ACL_DISCONNECTED".equals(actionString)) {
-            actionType = SourceDevice.Action.Type.DISCONNECTED;
+            actionType = SourceDevice.Event.Type.DISCONNECTED;
         }
 
         if (!isValid(sourceDevice) || actionType == null) {
             Timber.d("Invalid device action!");
             return;
         }
-        SourceDevice.Action deviceAction = new SourceDevice.Action(sourceDevice, actionType);
+        SourceDevice.Event deviceEvent = new SourceDevice.Event(sourceDevice, actionType);
 
         Intent service = new Intent(context, BlueMusicService.class);
-        service.putExtra(EXTRA_DEVICE_ACTION, deviceAction);
+        service.putExtra(EXTRA_DEVICE_EVENT, deviceEvent);
         final ComponentName componentName = context.startService(service);
         if (componentName != null) Timber.v("Service is already running.");
     }

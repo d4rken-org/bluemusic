@@ -38,14 +38,14 @@ public class VolumesPresenter extends ComponentPresenter<VolumesView, VolumesCom
     public void onBindChange(@Nullable VolumesView view) {
         this.view = view;
         if (view != null) {
-            disposable = deviceManager.getDevices()
+            disposable = deviceManager.observe()
                     .subscribeOn(Schedulers.computation())
-                    .observeOn(AndroidSchedulers.mainThread())
                     .map(managedDevices -> {
                         List<ManagedDevice> sorted = new ArrayList<>(managedDevices.values());
                         Collections.sort(sorted, (d1, d2) -> Long.compare(d1.getLastConnected(), d2.getLastConnected()));
                         return sorted;
                     })
+                    .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(view::displayDevices);
         } else {
             if (disposable != null) disposable.dispose();

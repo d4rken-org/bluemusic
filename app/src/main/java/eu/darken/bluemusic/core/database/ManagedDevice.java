@@ -27,9 +27,9 @@ public interface ManagedDevice {
 
     class Action {
         private final ManagedDevice managedDevice;
-        private final SourceDevice.Action.Type deviceAction;
+        private final SourceDevice.Event.Type deviceAction;
 
-        public Action(@NonNull ManagedDevice managedDevice, @NonNull SourceDevice.Action.Type deviceAction) {
+        public Action(@NonNull ManagedDevice managedDevice, @NonNull SourceDevice.Event.Type deviceAction) {
             this.managedDevice = managedDevice;
             this.deviceAction = deviceAction;
         }
@@ -40,7 +40,7 @@ public interface ManagedDevice {
         }
 
         @NonNull
-        public SourceDevice.Action.Type getType() {
+        public SourceDevice.Event.Type getType() {
             return deviceAction;
         }
 

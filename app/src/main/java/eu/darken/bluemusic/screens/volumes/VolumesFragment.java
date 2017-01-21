@@ -78,7 +78,6 @@ public class VolumesFragment extends ComponentPresenterFragment<
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ((MainActivity) getActivity()).setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_volume_up_white_24dp);
     }
 
     @Override
