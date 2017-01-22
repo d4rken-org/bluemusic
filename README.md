@@ -1,4 +1,4 @@
-# BluetoothManager
+# Bluetooth Volume Control
 
 This app gives your Android device the ability to have individual music and voice volumes for each of your bluetooth devices.
 It remembers the volume settings for each device and restores them if necessary.
