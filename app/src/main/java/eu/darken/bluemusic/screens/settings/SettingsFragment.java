@@ -51,6 +51,9 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
         if ("core.volume.enabled".equals(preference.getKey())) {
             getPresenter().toggleService(((CheckBoxPreference) preference).isChecked());
             return true;
+        } else if ("core.bugreporting.enabled".equals(preference.getKey())) {
+            preference.setSummary(((CheckBoxPreference) preference).isChecked() ? ":)" : ":(");
+            return true;
         } else return super.onPreferenceTreeClick(preference);
     }
 

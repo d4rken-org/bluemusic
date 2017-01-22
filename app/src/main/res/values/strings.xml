@@ -7,7 +7,7 @@
 
     <string name="state_connected">Connected</string>
 
-    <string name="last_seen_x">Last seen %s</string>
+    <string name="last_seen_x">Last seen: %s</string>
     <string name="time_tag_never">Never</string>
 
     <string name="label_version">Version</string>
