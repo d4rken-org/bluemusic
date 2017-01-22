@@ -2,10 +2,10 @@ package eu.darken.bluemusic.core.bluetooth;
 
 import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.WakefulBroadcastReceiver;
 
 import javax.inject.Inject;
 
@@ -15,7 +15,7 @@ import eu.darken.bluemusic.core.service.BlueMusicService;
 import timber.log.Timber;
 
 
-public class BluetoothEventReceiver extends WakefulBroadcastReceiver {
+public class BluetoothEventReceiver extends BroadcastReceiver {
     public static final String EXTRA_DEVICE_EVENT = "eu.darken.bluemusic.core.bluetooth.event";
 
 
