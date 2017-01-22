@@ -25,18 +25,18 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
 
-    def versionMajor = 0
+    def versionMajor = 1
     def versionMinor = 0
-    def versionPatch = 1
-    def versionBuild = 0
+    def versionPatch = 0
+    def versionTag = ""
 
 
     defaultConfig {
         applicationId "eu.darken.bluemusic"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
-        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}${versionTag}"
     }
     lintOptions {
         abortOnError false
@@ -119,22 +119,14 @@ dependencies {
     compile "com.android.support:customtabs:${supportLibVersion}"
     compile "com.android.support:design:${supportLibVersion}"
     compile "com.android.support:cardview-v7:${supportLibVersion}"
+    compile "com.android.support:preference-v14:${supportLibVersion}"
 
     // MVP lib
     compile 'eu.darken.ommvplib:library:0.0.6'
 
-    // Recyclerview fast scroller
-    compile 'com.futuremind.recyclerfastscroll:fastscroll:0.2.4'
-
-    // Glide
-    compile 'com.github.bumptech.glide:glide:4.0.0-20160905.222409-202'
-
     // RX
     compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
     compile 'io.reactivex.rxjava2:rxjava:2.0.0-RC2'
-
-    // Gson
-    compile 'com.google.code.gson:gson:2.7'
 
     //Dagger
     apt 'com.google.dagger:dagger-compiler:2.8'

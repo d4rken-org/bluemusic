@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:defaultValue="5000"
+        android:digits="0123456789"
+        android:inputType="numberDecimal"
+        android:key="core.delay.systemfudge"
+        android:numeric="decimal"
+        android:summary="Time in milliseconds until volume is adjusted when a device connects."
+        android:title="Adjustment delay"/>
+</PreferenceScreen>

@@ -1,17 +1,19 @@
-package eu.darken.bluemusic.core;
+package eu.darken.bluemusic.core.service;
 
 import android.database.ContentObserver;
-import android.media.AudioManager;
 import android.os.Handler;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import timber.log.Timber;
 
 
 public class VolumeObserver extends ContentObserver {
 
-    private final AudioManager audioManager;
+    private final StreamHelper streamHelper;
 
     interface Callback {
         void onVolumeChanged(int streamId, int volume);
@@ -20,14 +22,15 @@ public class VolumeObserver extends ContentObserver {
     private final SparseArray<Callback> callbacks = new SparseArray<>();
     private final SparseIntArray volumes = new SparseIntArray();
 
-    public VolumeObserver(Handler handler, AudioManager audioManager) {
+    @Inject
+    public VolumeObserver(@Named("VolumeObserver") Handler handler, StreamHelper streamHelper) {
         super(handler);
-        this.audioManager = audioManager;
+        this.streamHelper = streamHelper;
     }
 
     public void addCallback(int streamType, Callback callback) {
         callbacks.put(streamType, callback);
-        final int volume = audioManager.getStreamVolume(streamType);
+        final int volume = streamHelper.getVolume(streamType);
         volumes.put(streamType, volume);
     }
 
@@ -43,7 +46,7 @@ public class VolumeObserver extends ContentObserver {
         for (int i = 0; i < callbacks.size(); i++) {
             int streamType = callbacks.keyAt(i);
             Callback callback = callbacks.get(streamType);
-            int newVolume = audioManager.getStreamVolume(streamType);
+            int newVolume = streamHelper.getVolume(streamType);
             int oldVolume = volumes.get(streamType);
             if (newVolume != oldVolume) {
                 Timber.v("Volume changed (type=%d, old=%d, new=%d)", streamType, oldVolume, newVolume);

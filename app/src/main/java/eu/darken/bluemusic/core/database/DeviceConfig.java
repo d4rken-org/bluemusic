@@ -7,6 +7,7 @@ import io.realm.annotations.PrimaryKey;
 public class DeviceConfig extends RealmObject {
     @PrimaryKey
     String address;
-    float volumePercentage;
+    float musicVolume;
+    float voiceVolume;
     long lastConnected;
 }

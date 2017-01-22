@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.WakefulBroadcastReceiver;
 
-import eu.darken.bluemusic.core.BlueMusicService;
+import eu.darken.bluemusic.core.service.BlueMusicService;
 import timber.log.Timber;
 
 

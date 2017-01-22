@@ -11,7 +11,6 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-import eu.darken.bluemusic.util.AndroidModule;
 import eu.darken.ommvplib.injection.activity.ActivityComponent;
 import eu.darken.ommvplib.injection.activity.ActivityComponentBuilder;
 import eu.darken.ommvplib.injection.activity.ActivityComponentBuilderSource;
@@ -21,7 +20,6 @@ import timber.log.Timber;
 
 
 public class App extends Application {
-    public static final String LOGPREFIX = "TMP:";
 
     private static RefWatcher refWatcher;
 
@@ -37,16 +35,6 @@ public class App extends Application {
         Injector.INSTANCE.init(this);
     }
 
-    public static String tag(String... postfixes) {
-        StringBuilder tag = new StringBuilder();
-        for (int i = 0; i < postfixes.length; i++) {
-            tag.append(postfixes[i]);
-            if (i != postfixes.length - 1) tag.append(":");
-        }
-        return tag.toString();
-    }
-
-
     public enum Injector implements ActivityComponentBuilderSource {
         INSTANCE;
         @Inject AppComponent appComponent;
@@ -56,7 +44,8 @@ public class App extends Application {
         }
 
         void init(App app) {
-            RealmConfiguration realmConfig = new RealmConfiguration.Builder(app, app.getCacheDir())
+            Realm.init(app);
+            RealmConfiguration realmConfig = new RealmConfiguration.Builder()
                     .deleteRealmIfMigrationNeeded()
                     .build();
             Realm.setDefaultConfiguration(realmConfig);

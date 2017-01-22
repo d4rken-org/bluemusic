@@ -6,26 +6,97 @@ import android.support.annotation.NonNull;
 import java.util.Locale;
 
 import eu.darken.bluemusic.core.bluetooth.SourceDevice;
+import eu.darken.bluemusic.core.service.StreamHelper;
 
-public interface ManagedDevice {
+public class ManagedDevice {
 
-    String getName();
+    private final SourceDevice sourceDevice;
+    private final DeviceConfig deviceConfig;
+    private boolean isActive;
+    private int maxMusicVolume;
+    private int maxVoiceVolume;
+    private StreamHelper volumes;
 
-    String getAddress();
+    ManagedDevice(SourceDevice sourceDevice, DeviceConfig deviceConfig) {
+        this.sourceDevice = sourceDevice;
+        this.deviceConfig = deviceConfig;
+    }
 
-    float getVolumePercentage();
+    DeviceConfig getDeviceConfig() {
+        return deviceConfig;
+    }
 
-    void setVolumePercentage(float volumePercentage);
+    public void setMusicVolume(float musicVolume) {
+        deviceConfig.musicVolume = musicVolume;
+    }
 
-    long getLastConnected();
+    public long getLastConnected() {
+        return deviceConfig.lastConnected;
+    }
 
-    void setLastConnected(long timestamp);
+    public void setLastConnected(long timestamp) {
+        deviceConfig.lastConnected = timestamp;
+    }
 
-    boolean isActive();
+    public String getName() {
+        return sourceDevice.getName();
+    }
 
-    void setActive(boolean active);
+    String getAddress() {
+        return sourceDevice.getAddress();
+    }
 
-    class Action {
+    public float getMusicVolume() {
+        return deviceConfig.musicVolume;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    void setActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(Locale.US, "Device(active=%b, address=%s, name=%s, musicVolume=%.2f, voiceVolume=%.2f)",
+                isActive(), getAddress(), getName(), getMusicVolume(), getVoiceVolume());
+    }
+
+    public int getMaxMusicVolume() {
+        return maxMusicVolume;
+    }
+
+    void setMaxMusicVolume(int maxMusicVolume) {
+        this.maxMusicVolume = maxMusicVolume;
+    }
+
+    public int getMaxVoiceVolume() {
+        return maxVoiceVolume;
+    }
+
+    void setMaxVoiceVolume(int maxVoiceVolume) {
+        this.maxVoiceVolume = maxVoiceVolume;
+    }
+
+    public void setVoiceVolume(float voiceVolume) {
+        deviceConfig.voiceVolume = voiceVolume;
+    }
+
+    public float getVoiceVolume() {
+        return deviceConfig.voiceVolume;
+    }
+
+    public int getRealMusicVolume() {
+        return Math.round(getMaxMusicVolume() * getMusicVolume());
+    }
+
+    public int getRealVoiceVolume() {
+        return Math.round(getMaxVoiceVolume() * getVoiceVolume());
+    }
+
+    public static class Action {
         private final ManagedDevice managedDevice;
         private final SourceDevice.Event.Type deviceAction;
 

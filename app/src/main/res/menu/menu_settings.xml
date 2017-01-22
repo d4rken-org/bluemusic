@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_settings_white_24dp"
+        android:title="@string/label_settings"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/about"
+        android:icon="@drawable/ic_info_white_24dp"
+        android:title="@string/label_about"
+        app:showAsAction="ifRoom"/>
+</menu>

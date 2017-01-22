@@ -3,10 +3,8 @@ package eu.darken.bluemusic.screens.volumes;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,19 +20,19 @@ import butterknife.Unbinder;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.screens.MainActivity;
+import eu.darken.bluemusic.screens.about.AboutFragment;
+import eu.darken.bluemusic.screens.settings.SettingsFragment;
 import eu.darken.ommvplib.injection.ComponentPresenterFragment;
 
 
-public class VolumesFragment extends ComponentPresenterFragment<
-        VolumesView, VolumesPresenter, VolumesComponent>
+public class VolumesFragment extends ComponentPresenterFragment<VolumesView, VolumesPresenter, VolumesComponent>
         implements VolumesView, VolumesAdapter.Callback {
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
 
     Unbinder unbinder;
 
-    public static Fragment newInstance() {
+    public static android.support.v4.app.Fragment newInstance() {
         return new VolumesFragment();
     }
 
@@ -75,26 +73,39 @@ public class VolumesFragment extends ComponentPresenterFragment<
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        ((MainActivity) getActivity()).setSupportActionBar(toolbar);
-    }
-
-    @Override
     public void onDestroyView() {
         if (unbinder != null) unbinder.unbind();
         super.onDestroyView();
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        //noinspection ConstantConditions
+        ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.fragment_menu_intro, menu);
+        inflater.inflate(R.menu.menu_settings, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.settings:
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frame_content, new SettingsFragment())
+                        .addToBackStack(null)
+                        .commit();
+                return true;
+            case R.id.about:
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frame_content, new AboutFragment())
+                        .addToBackStack(null)
+                        .commit();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -105,4 +116,13 @@ public class VolumesFragment extends ComponentPresenterFragment<
         recyclerView.setAdapter(new VolumesAdapter(managedDevices, this));
     }
 
+    @Override
+    public void onMusicVolumeAdjusted(ManagedDevice device, float percentage) {
+        presenter.updateMusicVolume(device, percentage);
+    }
+
+    @Override
+    public void onVoiceVolumeAdjusted(ManagedDevice device, float percentage) {
+        presenter.updateVoiceVolume(device, percentage);
+    }
 }

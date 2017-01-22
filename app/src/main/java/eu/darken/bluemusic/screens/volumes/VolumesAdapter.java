@@ -3,6 +3,7 @@ package eu.darken.bluemusic.screens.volumes;
 import android.content.Context;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,11 @@ import static android.graphics.Typeface.BOLD;
 import static android.graphics.Typeface.NORMAL;
 
 
-public class VolumesAdapter extends RecyclerView.Adapter<VolumesAdapter.DeviceVH> {
+class VolumesAdapter extends RecyclerView.Adapter<VolumesAdapter.DeviceVH> {
     private final List<ManagedDevice> data;
     private final Callback callback;
 
-    public VolumesAdapter(List<ManagedDevice> devices, Callback callback) {
+    VolumesAdapter(List<ManagedDevice> devices, Callback callback) {
         this.data = devices;
         this.callback = callback;
     }
@@ -44,40 +45,97 @@ public class VolumesAdapter extends RecyclerView.Adapter<VolumesAdapter.DeviceVH
         return data.size();
     }
 
-    public interface Callback {
+    interface Callback {
+        void onMusicVolumeAdjusted(ManagedDevice device, float percentage);
+
+        void onVoiceVolumeAdjusted(ManagedDevice device, float percentage);
     }
 
-    public static class DeviceVH extends RecyclerView.ViewHolder {
+    static class DeviceVH extends RecyclerView.ViewHolder {
         private final Context context;
         @BindView(R.id.name) TextView name;
         @BindView(R.id.caption) TextView caption;
-        @BindView(R.id.seekbar_music) SeekBar seekbarMusic;
-        @BindView(R.id.seekbar_headset) SeekBar seekbarHeadset;
+        @BindView(R.id.music_seekbar) SeekBar musicSeekbar;
+        @BindView(R.id.music_counter) TextView musicCounter;
+        @BindView(R.id.voice_seekbar) SeekBar voiceSeekbar;
+        @BindView(R.id.voice_counter) TextView voiceCounter;
 
-        public DeviceVH(View itemView) {
+        DeviceVH(View itemView) {
             super(itemView);
             context = itemView.getContext();
             ButterKnife.bind(this, itemView);
         }
 
-        public void bind(ManagedDevice item, Callback callback) {
+        void bind(ManagedDevice item, Callback callback) {
             name.setText(item.getName());
             name.setTypeface(null, item.isActive() ? BOLD : NORMAL);
+
+            String timeString;
+            if (item.getLastConnected() > 0) {
+                timeString = DateUtils.getRelativeDateTimeString(
+                        getContext(),
+                        item.getLastConnected(),
+                        DateUtils.MINUTE_IN_MILLIS,
+                        DateUtils.WEEK_IN_MILLIS,
+                        0
+                ).toString();
+            } else {
+                timeString = getString(R.string.time_tag_never);
+            }
             caption.setText(
                     item.isActive() ?
                             getString(R.string.state_connected) :
-                            getString(R.string.last_seen_x, item.getLastConnected())
+                            getString(R.string.last_seen_x, timeString)
             );
 
-            seekbarMusic.setMax(15);
-            seekbarMusic.setProgress(Math.round(item.getVolumePercentage() * 15));
+            musicSeekbar.setMax(item.getMaxMusicVolume());
+            musicSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    musicCounter.setText(String.valueOf(progress));
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    callback.onMusicVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
+                }
+            });
+            musicSeekbar.setProgress(item.getRealMusicVolume());
+
+            voiceSeekbar.setMax(item.getMaxVoiceVolume());
+            voiceSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    voiceCounter.setText(String.valueOf(progress));
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    callback.onVoiceVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
+                }
+            });
+            voiceSeekbar.setProgress(item.getRealVoiceVolume());
         }
 
-        public String getString(@StringRes int stringRes) {
+        Context getContext() {
+            return itemView.getContext();
+        }
+
+        String getString(@StringRes int stringRes) {
             return context.getString(stringRes);
         }
 
-        public String getString(@StringRes int stringRes, Object... objects) {
+        String getString(@StringRes int stringRes, Object... objects) {
             return context.getString(stringRes, objects);
         }
     }

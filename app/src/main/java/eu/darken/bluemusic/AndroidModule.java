@@ -1,12 +1,12 @@
-package eu.darken.bluemusic.util;
+package eu.darken.bluemusic;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.preference.PreferenceManager;
 
 import dagger.Module;
 import dagger.Provides;
-import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.util.dagger.ApplicationScope;
 
 
@@ -18,14 +18,21 @@ public class AndroidModule {
 
     @Provides
     @ApplicationScope
-    Context provideContext() {
+    Context context() {
         return app.getApplicationContext();
     }
 
     @Provides
     @ApplicationScope
-    SharedPreferences providePreferences(Context context) {
+    SharedPreferences preferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
+
+    @Provides
+    @ApplicationScope
+    AudioManager audioManager(Context context) {
+        return (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+    }
+
 
 }
