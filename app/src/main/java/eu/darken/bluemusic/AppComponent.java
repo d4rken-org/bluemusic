@@ -2,6 +2,7 @@ package eu.darken.bluemusic;
 
 import dagger.Component;
 import dagger.MembersInjector;
+import eu.darken.bluemusic.core.bluetooth.BluetoothEventReceiver;
 import eu.darken.bluemusic.core.bluetooth.DeviceSourceModule;
 import eu.darken.bluemusic.core.service.BlueMusicServiceComponent;
 import eu.darken.bluemusic.util.dagger.ApplicationScope;
@@ -14,6 +15,9 @@ import eu.darken.bluemusic.util.dagger.ApplicationScope;
         DeviceSourceModule.class
 })
 public interface AppComponent extends MembersInjector<App.Injector> {
+    void inject(App app);
+
+    void inject(BluetoothEventReceiver receiver);
 
     BlueMusicServiceComponent blueMusicServiceComponent();
 

@@ -1,7 +1,5 @@
 package eu.darken.bluemusic.screens;
 
-import android.content.ComponentName;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -14,13 +12,11 @@ import javax.inject.Provider;
 import butterknife.ButterKnife;
 import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.R;
-import eu.darken.bluemusic.core.service.BlueMusicService;
 import eu.darken.bluemusic.screens.volumes.VolumesFragment;
 import eu.darken.ommvplib.injection.ComponentPresenterActivity;
 import eu.darken.ommvplib.injection.fragment.FragmentComponent;
 import eu.darken.ommvplib.injection.fragment.FragmentComponentBuilder;
 import eu.darken.ommvplib.injection.fragment.FragmentComponentBuilderSource;
-import timber.log.Timber;
 
 
 public class MainActivity extends ComponentPresenterActivity<MainActivityView, MainActivityPresenter, MainActivityComponent>
@@ -30,6 +26,7 @@ public class MainActivity extends ComponentPresenterActivity<MainActivityView, M
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.BaseAppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout_main);
         ButterKnife.bind(this);
@@ -37,10 +34,6 @@ public class MainActivity extends ComponentPresenterActivity<MainActivityView, M
         Fragment introFragment = getSupportFragmentManager().findFragmentById(R.id.frame_content);
         if (introFragment == null) introFragment = VolumesFragment.newInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, introFragment).commit();
-
-        Intent service = new Intent(this, BlueMusicService.class);
-        final ComponentName componentName = startService(service);
-        if (componentName != null) Timber.v("Service is already running.");
     }
 
     @Override

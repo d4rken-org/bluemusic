@@ -7,6 +7,9 @@
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
+    <style name="Theme.LauncherToMainActivity" parent="BaseAppTheme">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>
     <style name="DefaultToolbarStyle" parent="BaseAppTheme">
         <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="android:layout_width">match_parent</item>

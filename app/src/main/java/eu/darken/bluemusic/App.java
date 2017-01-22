@@ -3,6 +3,8 @@ package eu.darken.bluemusic;
 import android.app.Activity;
 import android.app.Application;
 
+import com.bugsnag.android.Bugsnag;
+import com.bugsnag.android.Client;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -11,6 +13,8 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import eu.darken.bluemusic.util.BugsnagErrorHandler;
+import eu.darken.bluemusic.util.BugsnagTree;
 import eu.darken.ommvplib.injection.activity.ActivityComponent;
 import eu.darken.ommvplib.injection.activity.ActivityComponentBuilder;
 import eu.darken.ommvplib.injection.activity.ActivityComponentBuilderSource;
@@ -27,12 +31,24 @@ public class App extends Application {
         return refWatcher;
     }
 
+    @Inject BugsnagTree bugsnagTree;
+    @Inject BugsnagErrorHandler errorHandler;
+
     @Override
     public void onCreate() {
-        super.onCreate();
-        if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
-        refWatcher = LeakCanary.install(this);
         Injector.INSTANCE.init(this);
+        Injector.INSTANCE.getAppComponent().inject(this);
+        super.onCreate();
+
+        if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+
+        Timber.plant(bugsnagTree);
+        Client bugsnagClient = Bugsnag.init(this);
+        bugsnagClient.beforeNotify(errorHandler);
+
+        Timber.d("Bugsnag setup done!");
+
+        refWatcher = LeakCanary.install(this);
     }
 
     public enum Injector implements ActivityComponentBuilderSource {

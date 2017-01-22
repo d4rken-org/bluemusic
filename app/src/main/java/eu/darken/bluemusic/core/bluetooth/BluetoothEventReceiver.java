@@ -7,6 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.WakefulBroadcastReceiver;
 
+import javax.inject.Inject;
+
+import eu.darken.bluemusic.App;
+import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.core.service.BlueMusicService;
 import timber.log.Timber;
 
@@ -14,10 +18,18 @@ import timber.log.Timber;
 public class BluetoothEventReceiver extends WakefulBroadcastReceiver {
     public static final String EXTRA_DEVICE_EVENT = "eu.darken.bluemusic.core.bluetooth.event";
 
+
+    @Inject Settings settings;
+
     @Override
     public void onReceive(Context context, Intent intent) {
         Timber.v("onReceive(%s, %s)", context, intent);
+        App.Injector.INSTANCE.getAppComponent().inject(this);
 
+        if (!settings.isEnabled()) {
+            Timber.d("Not enabled.");
+            return;
+        }
         SourceDevice sourceDevice = new SourceDeviceWrapper((BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE));
         String actionString = intent.getAction();
         Timber.d("Device: %s | Action: %s", sourceDevice, actionString);

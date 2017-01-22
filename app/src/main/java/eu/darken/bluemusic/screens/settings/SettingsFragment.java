@@ -1,6 +1,8 @@
 package eu.darken.bluemusic.screens.settings;
 
 import android.os.Bundle;
+import android.support.v7.preference.CheckBoxPreference;
+import android.support.v7.preference.Preference;
 import android.view.MenuItem;
 
 import eu.darken.bluemusic.R;
@@ -10,6 +12,7 @@ import timber.log.Timber;
 
 
 public class SettingsFragment extends ComponentPresenterPreferenceFragment<SettingsPresenter.View, SettingsPresenter, SettingsComponent> implements SettingsPresenter.View {
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +28,7 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.settings);
-        findPreference("core.delay.systemfudge").setOnPreferenceChangeListener((preference, newValue) -> {
+        findPreference("core.volume.delay.systemfudge").setOnPreferenceChangeListener((preference, newValue) -> {
             try {
                 Timber.i("Delay: %d", Long.parseLong((String) newValue));
                 return true;
@@ -43,6 +46,13 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
         ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @Override
+    public boolean onPreferenceTreeClick(Preference preference) {
+        if ("core.volume.enabled".equals(preference.getKey())) {
+            getPresenter().toggleService(((CheckBoxPreference) preference).isChecked());
+            return true;
+        } else return super.onPreferenceTreeClick(preference);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

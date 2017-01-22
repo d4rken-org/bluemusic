@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/BaseAppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name="eu.darken.bluemusic.screens.MainActivity">
+        <activity
+            android:name="eu.darken.bluemusic.screens.MainActivity"
+            android:theme="@style/Theme.LauncherToMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -34,7 +36,9 @@
             </intent-filter>
         </receiver>
         <service android:name="eu.darken.bluemusic.core.service.BlueMusicService"/>
-
+        <meta-data
+            android:name="com.bugsnag.android.API_KEY"
+            android:value="5cfab55cc09fc23f788dd2753fb557fc"/>
     </application>
 
 </manifest>
