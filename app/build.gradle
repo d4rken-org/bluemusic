@@ -13,6 +13,29 @@ def gitSha() {
 }
 
 android {
+    def signingPropFile = new File(System.properties['user.home'], ".signing/bluemusic/signing.properties")
+    if (signingPropFile.canRead()) {
+        def Properties signingProps = new Properties()
+        signingProps.load(new FileInputStream(signingPropFile))
+        signingConfigs {
+            release {
+                storeFile new File(signingProps['release.storePath'])
+                keyAlias signingProps['release.keyAlias']
+                storePassword signingProps['release.storePassword']
+                keyPassword signingProps['release.keyPassword']
+            }
+        }
+
+        buildTypes {
+            beta {
+                signingConfig signingConfigs.release
+            }
+            release {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
 
@@ -34,14 +57,14 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled false
-            useProguard false
+            minifyEnabled true
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
-            minifyEnabled false
-            useProguard false
+            minifyEnabled true
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

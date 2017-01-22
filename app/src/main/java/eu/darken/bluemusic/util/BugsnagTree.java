@@ -13,7 +13,7 @@ import eu.darken.bluemusic.util.dagger.ApplicationScope;
 import timber.log.Timber;
 
 @ApplicationScope
-public class BugsnagTree extends Timber.Tree {
+public class BugsnagTree extends Timber.DebugTree {
     private static final int BUFFER_SIZE = 100;
 
     // Adding one to the initial size accounts for the add before remove.
