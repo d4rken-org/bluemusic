@@ -144,11 +144,16 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     "Adjusting volume (stream=%d, target=%d, current=%d, max=%d).",
                     streamId, target, currentVolume, max
             );
-            for (int volumeStep = currentVolume; volumeStep < target + 1; volumeStep++) {
-                streamHelper.setStreamVolume(streamId, volumeStep, AudioManager.FLAG_SHOW_UI);
-                try {
-                    Thread.sleep(250);
-                } catch (InterruptedException e) { Timber.e(e, null); }
+            if (currentVolume < target) {
+                for (int volumeStep = currentVolume; volumeStep <= target; volumeStep++) {
+                    streamHelper.setStreamVolume(streamId, volumeStep, AudioManager.FLAG_SHOW_UI);
+                    try { Thread.sleep(250); } catch (InterruptedException e) { Timber.e(e, null); }
+                }
+            } else {
+                for (int volumeStep = currentVolume; volumeStep >= target; volumeStep--) {
+                    streamHelper.setStreamVolume(streamId, volumeStep, AudioManager.FLAG_SHOW_UI);
+                    try { Thread.sleep(250); } catch (InterruptedException e) { Timber.e(e, null); }
+                }
             }
         } else Timber.d("Target volume of %d already set.", target);
 
