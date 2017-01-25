@@ -27,7 +27,7 @@ class SourceDeviceWrapper implements SourceDevice {
         return realDevice.getAddress();
     }
 
-    @NonNull
+    @Nullable
     @Override
     public BluetoothClass getBluetoothClass() {
         return realDevice.getBluetoothClass();

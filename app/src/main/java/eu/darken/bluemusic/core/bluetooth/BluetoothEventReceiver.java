@@ -30,21 +30,26 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
             Timber.d("Not enabled.");
             return;
         }
+
         SourceDevice sourceDevice = new SourceDeviceWrapper((BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE));
         String actionString = intent.getAction();
         Timber.d("Device: %s | Action: %s", sourceDevice, actionString);
 
-        SourceDevice.Event.Type actionType = null;
+        if (!isValid(sourceDevice)) {
+            Timber.w("Invalid device: %s", sourceDevice);
+            return;
+        }
+
+        SourceDevice.Event.Type actionType;
         if ("android.bluetooth.device.action.ACL_CONNECTED".equals(actionString)) {
             actionType = SourceDevice.Event.Type.CONNECTED;
         } else if ("android.bluetooth.device.action.ACL_DISCONNECTED".equals(actionString)) {
             actionType = SourceDevice.Event.Type.DISCONNECTED;
-        }
-
-        if (!isValid(sourceDevice) || actionType == null) {
-            Timber.d("Invalid device action!");
+        } else {
+            Timber.w("Invalid action: %s", actionString);
             return;
         }
+
         SourceDevice.Event deviceEvent = new SourceDevice.Event(sourceDevice, actionType);
 
         Intent service = new Intent(context, BlueMusicService.class);
@@ -54,6 +59,7 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
     }
 
     public static boolean isValid(SourceDevice sourceDevice) {
-        return sourceDevice.getBluetoothClass().getMajorDeviceClass() == BluetoothClass.Device.Major.AUDIO_VIDEO;
+        final BluetoothClass devClass = sourceDevice.getBluetoothClass();
+        return devClass != null && devClass.getMajorDeviceClass() == BluetoothClass.Device.Major.AUDIO_VIDEO;
     }
 }
