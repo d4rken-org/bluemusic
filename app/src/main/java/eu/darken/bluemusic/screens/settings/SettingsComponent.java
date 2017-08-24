@@ -1,16 +1,25 @@
 package eu.darken.bluemusic.screens.settings;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 import dagger.Subcomponent;
 import eu.darken.ommvplib.injection.PresenterComponent;
-import eu.darken.ommvplib.injection.fragment.FragmentComponent;
-import eu.darken.ommvplib.injection.fragment.FragmentComponentBuilder;
+import eu.darken.ommvplib.injection.fragment.support.SupportFragmentComponent;
 
 
-@SettingsScope
+@SettingsComponent.Scope
 @Subcomponent(modules = {})
-public interface SettingsComponent extends PresenterComponent<SettingsPresenter.View, SettingsPresenter>, FragmentComponent<SettingsFragment> {
+public interface SettingsComponent extends PresenterComponent<SettingsPresenter.View, SettingsPresenter>, SupportFragmentComponent<SettingsFragment> {
     @Subcomponent.Builder
-    interface Builder extends FragmentComponentBuilder<SettingsFragment, SettingsComponent> {
+    abstract class Builder extends SupportFragmentComponent.Builder<SettingsFragment, SettingsComponent> {
 
+    }
+
+    @Documented
+    @javax.inject.Scope
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface Scope {
     }
 }

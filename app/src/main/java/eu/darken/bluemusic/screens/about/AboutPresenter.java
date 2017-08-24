@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import eu.darken.ommvplib.base.Presenter;
 import eu.darken.ommvplib.injection.ComponentPresenter;
 
-@AboutScope
+@AboutComponent.Scope
 public class AboutPresenter extends ComponentPresenter<AboutPresenter.View, AboutComponent> {
 
 

@@ -14,7 +14,7 @@ import eu.darken.ommvplib.base.Presenter;
 import eu.darken.ommvplib.injection.ComponentPresenter;
 import timber.log.Timber;
 
-@SettingsScope
+@SettingsComponent.Scope
 public class SettingsPresenter extends ComponentPresenter<SettingsPresenter.View, SettingsComponent> {
 
     private final Context context;

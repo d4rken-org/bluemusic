@@ -14,7 +14,7 @@ import eu.darken.bluemusic.util.dagger.ApplicationScope;
         AndroidModule.class,
         DeviceSourceModule.class
 })
-public interface AppComponent extends MembersInjector<App.Injector> {
+public interface AppComponent extends MembersInjector<App> {
     void inject(App app);
 
     void inject(BluetoothEventReceiver receiver);

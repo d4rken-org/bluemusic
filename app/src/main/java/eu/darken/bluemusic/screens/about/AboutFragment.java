@@ -23,12 +23,6 @@ public class AboutFragment extends ComponentPresenterPreferenceFragment<AboutPre
     }
 
     @Override
-    public AboutComponent createComponent() {
-        AboutComponent.Builder builder = getComponentBuilder(this);
-        return builder.build();
-    }
-
-    @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.about);
         final Preference versionPref = findPreference("about.version");

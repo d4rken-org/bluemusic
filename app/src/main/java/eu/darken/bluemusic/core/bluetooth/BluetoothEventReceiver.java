@@ -9,9 +9,9 @@ import android.content.Intent;
 
 import javax.inject.Inject;
 
-import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.core.service.BlueMusicService;
+import eu.darken.ommvplib.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
 import timber.log.Timber;
 
 
@@ -24,7 +24,7 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Timber.v("onReceive(%s, %s)", context, intent);
-        App.Injector.INSTANCE.getAppComponent().inject(this);
+        ((HasManualBroadcastReceiverInjector) context.getApplicationContext()).broadcastReceiverInjector().inject(this);
 
         if (!settings.isEnabled()) {
             Timber.d("Not enabled.");

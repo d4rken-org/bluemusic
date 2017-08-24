@@ -1,8 +1,7 @@
-package eu.darken.bluemusic.screens.volumes;
+package eu.darken.bluemusic.screens.devices;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,15 +23,15 @@ import eu.darken.bluemusic.screens.settings.SettingsFragment;
 import eu.darken.ommvplib.injection.ComponentPresenterSupportFragment;
 
 
-public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPresenter.View, VolumesPresenter, VolumesComponent>
-        implements VolumesPresenter.View, VolumesAdapter.Callback {
+public class DevicesFragment extends ComponentPresenterSupportFragment<DevicesPresenter.View, DevicesPresenter, DevicesComponent>
+        implements DevicesPresenter.View, DevicesAdapter.Callback {
 
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
 
     Unbinder unbinder;
 
-    public static Fragment newInstance() {
-        return new VolumesFragment();
+    public static android.support.v4.app.Fragment newInstance() {
+        return new DevicesFragment();
     }
 
     @Override
@@ -42,8 +41,8 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
     }
 
     @Override
-    public Class<VolumesPresenter> getTypeClazz() {
-        return VolumesPresenter.class;
+    public Class<DevicesPresenter> getTypeClazz() {
+        return DevicesPresenter.class;
     }
 
     @Nullable
@@ -56,7 +55,7 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
 
     @Override
     public void onViewCreated(android.view.View view, @Nullable Bundle savedInstanceState) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -101,7 +100,7 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
 
     @Override
     public void displayDevices(List<ManagedDevice> managedDevices) {
-        recyclerView.setAdapter(new VolumesAdapter(managedDevices, this));
+        recyclerView.setAdapter(new DevicesAdapter(managedDevices, this));
     }
 
     @Override

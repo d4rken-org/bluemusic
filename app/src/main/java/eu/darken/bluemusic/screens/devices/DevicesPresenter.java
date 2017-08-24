@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.screens.volumes;
+package eu.darken.bluemusic.screens.devices;
 
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -20,15 +20,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-@VolumesComponent.Scope
-public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, VolumesComponent> {
+@DevicesComponent.Scope
+public class DevicesPresenter extends ComponentPresenter<DevicesPresenter.View, DevicesComponent> {
     private final StreamHelper streamHelper;
     private DeviceManager deviceManager;
     private View view;
     private Disposable disposable;
 
     @Inject
-    VolumesPresenter(DeviceManager deviceManager, StreamHelper streamHelper) {
+    DevicesPresenter(DeviceManager deviceManager, StreamHelper streamHelper) {
         this.deviceManager = deviceManager;
         this.streamHelper = streamHelper;
     }
@@ -86,7 +86,7 @@ public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, 
                 });
     }
 
-    interface View extends Presenter.View {
+    public interface View extends Presenter.View {
 
         void displayDevices(List<ManagedDevice> managedDevices);
 
