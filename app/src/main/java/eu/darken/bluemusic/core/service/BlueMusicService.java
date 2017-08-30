@@ -43,7 +43,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Override
     public void onCreate() {
         Timber.v("onCreate()");
-        App.Injector.INSTANCE.getAppComponent().blueMusicServiceComponent().inject(this);
+        ((App) getApplication()).serviceInjector().inject(this);
         super.onCreate();
         volumeObserver.addCallback(streamHelper.getMusicId(), this);
         volumeObserver.addCallback(streamHelper.getVoiceId(), this);

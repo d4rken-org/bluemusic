@@ -20,12 +20,6 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
     }
 
     @Override
-    public SettingsComponent createComponent() {
-        SettingsComponent.Builder builder = getComponentBuilder(this);
-        return builder.build();
-    }
-
-    @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.settings);
         findPreference("core.volume.delay.systemfudge").setOnPreferenceChangeListener((preference, newValue) -> {

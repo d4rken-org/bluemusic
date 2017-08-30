@@ -14,6 +14,7 @@ import javax.inject.Inject;
 
 import eu.darken.bluemusic.util.BugsnagErrorHandler;
 import eu.darken.bluemusic.util.BugsnagTree;
+import eu.darken.ommvplib.injection.ComponentSource;
 import eu.darken.ommvplib.injection.ManualInjector;
 import eu.darken.ommvplib.injection.activity.HasManualActivityInjector;
 import eu.darken.ommvplib.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
@@ -35,14 +36,13 @@ public class App
     @Inject BugsnagTree bugsnagTree;
     @Inject BugsnagErrorHandler errorHandler;
     @Inject AppComponent appComponent;
-    @Inject ManualInjector<Activity> activityInjector;
-    @Inject ManualInjector<BroadcastReceiver> receiverInjector;
-    @Inject ManualInjector<Service> serviceInjector;
+    @Inject ComponentSource<Activity> activityInjector;
+    @Inject ComponentSource<BroadcastReceiver> receiverInjector;
+    @Inject ComponentSource<Service> serviceInjector;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
         if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
 
         Realm.init(this);
@@ -50,6 +50,7 @@ public class App
                 .deleteRealmIfMigrationNeeded()
                 .build();
         Realm.setDefaultConfiguration(realmConfig);
+
         DaggerAppComponent.builder()
                 .androidModule(new AndroidModule(this))
                 .build()

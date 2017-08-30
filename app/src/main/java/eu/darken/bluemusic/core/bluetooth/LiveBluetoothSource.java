@@ -56,7 +56,6 @@ class LiveBluetoothSource implements BluetoothSource {
                 LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET).toObservable(),
                 LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP).toObservable())
                 .toList()
-                .toSingle()
                 .map(lists -> {
                     HashSet<BluetoothDevice> unique = new HashSet<>();
                     for (List<BluetoothDevice> ll : lists) unique.addAll(ll);
