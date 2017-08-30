@@ -2,25 +2,31 @@ package eu.darken.bluemusic.screens.volumes;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.screens.MainActivity;
 import eu.darken.bluemusic.screens.about.AboutFragment;
+import eu.darken.bluemusic.screens.devices.DevicesFragment;
 import eu.darken.bluemusic.screens.settings.SettingsFragment;
+import eu.darken.bluemusic.util.Preconditions;
 import eu.darken.ommvplib.injection.ComponentPresenterSupportFragment;
 
 
@@ -28,6 +34,7 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
         implements VolumesPresenter.View, VolumesAdapter.Callback {
 
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
+    @BindView(R.id.fab) FloatingActionButton fab;
 
     Unbinder unbinder;
 
@@ -60,6 +67,7 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
         super.onViewCreated(view, savedInstanceState);
     }
 
+
     @Override
     public void onDestroyView() {
         if (unbinder != null) unbinder.unbind();
@@ -69,8 +77,10 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //noinspection ConstantConditions
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        final ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+        Preconditions.checkNotNull(actionBar);
+        actionBar.setDisplayHomeAsUpEnabled(false);
+        actionBar.setTitle(R.string.app_name);
     }
 
     @Override
@@ -97,6 +107,14 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @OnClick(R.id.fab)
+    public void onFabClicked(View fab) {
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_content, new DevicesFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override

@@ -32,7 +32,7 @@ class VolumesAdapter extends RecyclerView.Adapter<VolumesAdapter.DeviceVH> {
 
     @Override
     public DeviceVH onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new DeviceVH(LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_volumes_line, parent, false));
+        return new DeviceVH(LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_devicevolumes, parent, false));
     }
 
     @Override

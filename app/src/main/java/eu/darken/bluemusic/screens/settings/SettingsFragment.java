@@ -1,12 +1,14 @@
 package eu.darken.bluemusic.screens.settings;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.Preference;
 import android.view.MenuItem;
 
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.screens.MainActivity;
+import eu.darken.bluemusic.util.Preconditions;
 import eu.darken.ommvplib.injection.ComponentPresenterPreferenceFragment;
 import timber.log.Timber;
 
@@ -36,8 +38,10 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //noinspection ConstantConditions
-        ((MainActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        final ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+        Preconditions.checkNotNull(actionBar);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle(R.string.label_settings);
     }
 
     @Override

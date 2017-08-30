@@ -25,4 +25,5 @@
 
     <string name="label_bug_reports">Bug reports</string>
     <string name="description_bug_reports">Automatic bug and crash reporting.</string>
+    <string name="label_add_device">Add device</string>
 </resources>
