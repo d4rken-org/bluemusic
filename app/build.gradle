@@ -26,9 +26,6 @@ android {
         }
 
         buildTypes {
-            beta {
-                signingConfig signingConfigs.release
-            }
             release {
                 signingConfig signingConfigs.release
             }
@@ -38,9 +35,8 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
 
-    def versionMajor = 1
+    def versionMajor = 2
     def versionMinor = 0
-    def versionPatch = 4
     def versionTag = ""
 
 
@@ -48,8 +44,8 @@ android {
         applicationId "eu.darken.bluemusic"
         minSdkVersion 18
         targetSdkVersion 25
-        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
-        versionName "${versionMajor}.${versionMinor}.${versionPatch}${versionTag}"
+        versionCode versionMajor * 10000 + versionMinor
+        versionName "${versionMajor}.${versionMinor}${versionTag}"
     }
     lintOptions {
         abortOnError false
