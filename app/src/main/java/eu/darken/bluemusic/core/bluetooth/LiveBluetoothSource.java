@@ -42,7 +42,6 @@ class LiveBluetoothSource implements BluetoothSource {
                     Map<String, SourceDevice> devices = new HashMap<>();
                     for (BluetoothDevice realDevice : manager.getAdapter().getBondedDevices()) {
                         final SourceDeviceWrapper deviceWrapper = new SourceDeviceWrapper(realDevice);
-                        if (!BluetoothEventReceiver.isValid(deviceWrapper)) continue;
                         devices.put(deviceWrapper.getAddress(), deviceWrapper);
                     }
                     Timber.d("Paired devices (%d): %s", devices.size(), devices);

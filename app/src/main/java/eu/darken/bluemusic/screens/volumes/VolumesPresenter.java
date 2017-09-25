@@ -86,6 +86,12 @@ public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, 
                 });
     }
 
+    public void deleteDevice(ManagedDevice device) {
+        deviceManager.removeDevice(device)
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+    }
+
     interface View extends Presenter.View {
 
         void displayDevices(List<ManagedDevice> managedDevices);

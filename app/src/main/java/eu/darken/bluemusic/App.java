@@ -47,6 +47,7 @@ public class App
 
         Realm.init(this);
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
+                .schemaVersion(2)
                 .deleteRealmIfMigrationNeeded()
                 .build();
         Realm.setDefaultConfiguration(realmConfig);

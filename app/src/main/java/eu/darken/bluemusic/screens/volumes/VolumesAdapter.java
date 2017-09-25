@@ -1,72 +1,64 @@
 package eu.darken.bluemusic.screens.volumes;
 
-import android.content.Context;
-import android.support.annotation.StringRes;
-import android.support.v7.widget.RecyclerView;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.PopupMenu;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.util.List;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.core.database.ManagedDevice;
+import eu.darken.bluemusic.util.ui.BasicAdapter;
+import eu.darken.bluemusic.util.ui.BasicViewHolder;
 
 import static android.graphics.Typeface.BOLD;
 import static android.graphics.Typeface.NORMAL;
 
 
-class VolumesAdapter extends RecyclerView.Adapter<VolumesAdapter.DeviceVH> {
-    private final List<ManagedDevice> data;
+class VolumesAdapter extends BasicAdapter<VolumesAdapter.ManagedDeviceVH, ManagedDevice> {
     private final Callback callback;
 
-    VolumesAdapter(List<ManagedDevice> devices, Callback callback) {
-        this.data = devices;
+    VolumesAdapter(Callback callback) {
         this.callback = callback;
     }
 
     @Override
-    public DeviceVH onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new DeviceVH(LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_devicevolumes, parent, false));
-    }
-
-    @Override
-    public void onBindViewHolder(DeviceVH holder, int position) {
-        holder.bind(data.get(position), callback);
-    }
-
-    @Override
-    public int getItemCount() {
-        return data.size();
+    public ManagedDeviceVH onCreateBaseViewHolder(LayoutInflater inflater, ViewGroup parent, int viewType) {
+        return new ManagedDeviceVH(parent, callback);
     }
 
     interface Callback {
         void onMusicVolumeAdjusted(ManagedDevice device, float percentage);
 
         void onVoiceVolumeAdjusted(ManagedDevice device, float percentage);
+
+        void onDelete(ManagedDevice device);
     }
 
-    static class DeviceVH extends RecyclerView.ViewHolder {
-        private final Context context;
+    static class ManagedDeviceVH extends BasicViewHolder<ManagedDevice> {
         @BindView(R.id.name) TextView name;
         @BindView(R.id.caption) TextView caption;
+        @BindView(R.id.overflow_icon) View menu;
         @BindView(R.id.music_seekbar) SeekBar musicSeekbar;
         @BindView(R.id.music_counter) TextView musicCounter;
         @BindView(R.id.voice_seekbar) SeekBar voiceSeekbar;
         @BindView(R.id.voice_counter) TextView voiceCounter;
+        private Callback callback;
 
-        DeviceVH(View itemView) {
-            super(itemView);
-            context = itemView.getContext();
-            ButterKnife.bind(this, itemView);
+        public ManagedDeviceVH(@NonNull ViewGroup parent, Callback callback) {
+            super(parent, R.layout.viewholder_managed_device);
+            this.callback = callback;
         }
 
-        void bind(ManagedDevice item, Callback callback) {
+        @Override
+        public void bind(@NonNull ManagedDevice item) {
+            super.bind(item);
             name.setText(item.getName());
             name.setTypeface(null, item.isActive() ? BOLD : NORMAL);
 
@@ -87,6 +79,14 @@ class VolumesAdapter extends RecyclerView.Adapter<VolumesAdapter.DeviceVH> {
                             getString(R.string.state_connected) :
                             getString(R.string.last_seen_x, timeString)
             );
+
+            menu.setOnClickListener(v -> {
+                PopupMenu popup = new PopupMenu(getContext(), v);
+                MenuInflater inflater = popup.getMenuInflater();
+                inflater.inflate(R.menu.menu_managed_device_item, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopMenuListener());
+                popup.show();
+            });
 
             musicSeekbar.setMax(item.getMaxMusicVolume());
             musicSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -127,16 +127,17 @@ class VolumesAdapter extends RecyclerView.Adapter<VolumesAdapter.DeviceVH> {
             voiceSeekbar.setProgress(item.getRealVoiceVolume());
         }
 
-        Context getContext() {
-            return itemView.getContext();
-        }
-
-        String getString(@StringRes int stringRes) {
-            return context.getString(stringRes);
-        }
-
-        String getString(@StringRes int stringRes, Object... objects) {
-            return context.getString(stringRes, objects);
+        class PopMenuListener implements PopupMenu.OnMenuItemClickListener {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.delete:
+                        callback.onDelete(getItem());
+                        return true;
+                    default:
+                        return false;
+                }
+            }
         }
     }
 }

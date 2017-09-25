@@ -26,4 +26,6 @@
     <string name="label_bug_reports">Bug reports</string>
     <string name="description_bug_reports">Automatic bug and crash reporting.</string>
     <string name="label_add_device">Add device</string>
+    <string name="progress_just_a_moment_please">Just a moment, please.</string>
+    <string name="action_remove">Remove</string>
 </resources>

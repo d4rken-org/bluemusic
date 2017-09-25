@@ -85,7 +85,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     .flatMap(new Function<SourceDevice.Event, SingleSource<ManagedDevice.Action>>() {
                         @Override
                         public SingleSource<ManagedDevice.Action> apply(SourceDevice.Event deviceEvent) throws Exception {
-                            return deviceManager.load(true).map(deviceMap -> new ManagedDevice.Action(deviceMap.get(deviceEvent.getAddress()), deviceEvent.getType()));
+                            return deviceManager.loadDevices(true).map(deviceMap -> new ManagedDevice.Action(deviceMap.get(deviceEvent.getAddress()), deviceEvent.getType()));
                         }
                     })
                     .subscribe(new SingleObserver<ManagedDevice.Action>() {
@@ -160,7 +160,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     }
 
     private void handleDisconnect() {
-        deviceManager.load(true)
+        deviceManager.loadDevices(true)
                 .subscribeOn(Schedulers.computation())
                 .subscribe(deviceMap -> {
                     boolean stop = true;
@@ -184,7 +184,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             return;
         }
         float percentage = streamHelper.getVolumePercentage(streamId);
-        deviceManager.load(false)
+        deviceManager.loadDevices(false)
                 .map(deviceMap -> {
                     Collection<ManagedDevice> active = new HashSet<>();
                     for (ManagedDevice d : deviceMap.values()) {

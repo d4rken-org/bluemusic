@@ -37,6 +37,7 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
     @BindView(R.id.fab) FloatingActionButton fab;
 
     Unbinder unbinder;
+    private VolumesAdapter adapter;
 
     public static Fragment newInstance() {
         return new VolumesFragment();
@@ -64,6 +65,8 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
     @Override
     public void onViewCreated(android.view.View view, @Nullable Bundle savedInstanceState) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new VolumesAdapter(this);
+        recyclerView.setAdapter(adapter);
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -119,7 +122,13 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
 
     @Override
     public void displayDevices(List<ManagedDevice> managedDevices) {
-        recyclerView.setAdapter(new VolumesAdapter(managedDevices, this));
+        adapter.setData(managedDevices);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onDelete(ManagedDevice device) {
+        getPresenter().deleteDevice(device);
     }
 
     @Override

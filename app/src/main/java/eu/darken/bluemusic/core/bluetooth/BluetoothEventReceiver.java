@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.core.bluetooth;
 
-import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -18,7 +17,6 @@ import timber.log.Timber;
 public class BluetoothEventReceiver extends BroadcastReceiver {
     public static final String EXTRA_DEVICE_EVENT = "eu.darken.bluemusic.core.bluetooth.event";
 
-
     @Inject Settings settings;
 
     @Override
@@ -34,11 +32,6 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
         SourceDevice sourceDevice = new SourceDeviceWrapper((BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE));
         String actionString = intent.getAction();
         Timber.d("Device: %s | Action: %s", sourceDevice, actionString);
-
-        if (!isValid(sourceDevice)) {
-            Timber.w("Invalid device: %s", sourceDevice);
-            return;
-        }
 
         SourceDevice.Event.Type actionType;
         if ("android.bluetooth.device.action.ACL_CONNECTED".equals(actionString)) {
@@ -58,8 +51,4 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
         if (componentName != null) Timber.v("Service is already running.");
     }
 
-    public static boolean isValid(SourceDevice sourceDevice) {
-        final BluetoothClass devClass = sourceDevice.getBluetoothClass();
-        return devClass != null && devClass.getMajorDeviceClass() == BluetoothClass.Device.Major.AUDIO_VIDEO;
-    }
 }
