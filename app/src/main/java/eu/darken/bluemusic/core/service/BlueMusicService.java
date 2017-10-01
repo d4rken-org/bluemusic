@@ -2,12 +2,14 @@ package eu.darken.bluemusic.core.service;
 
 import android.app.Service;
 import android.content.Intent;
-import android.media.AudioManager;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
@@ -28,8 +30,6 @@ import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
-import static android.R.attr.action;
-
 
 public class BlueMusicService extends Service implements VolumeObserver.Callback {
     @Inject DeviceManager deviceManager;
@@ -37,6 +37,8 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Inject StreamHelper streamHelper;
     @Inject VolumeObserver volumeObserver;
     @Inject Settings settings;
+    @Inject ServiceHelper serviceHelper;
+    @Inject List<ActionModule> actionModules;
     final Scheduler scheduler = Schedulers.from(Executors.newSingleThreadExecutor());
     private volatile boolean adjusting = false;
 
@@ -46,25 +48,33 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         ((App) getApplication()).serviceInjector().inject(this);
         super.onCreate();
         volumeObserver.addCallback(streamHelper.getMusicId(), this);
-        volumeObserver.addCallback(streamHelper.getVoiceId(), this);
+        volumeObserver.addCallback(streamHelper.getCallId(), this);
         getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeObserver);
+        serviceHelper.startForeground();
     }
 
     @Override
     public void onDestroy() {
+        serviceHelper.stopForeground();
         getContentResolver().unregisterContentObserver(volumeObserver);
         super.onDestroy();
     }
 
+    public class MBinder extends Binder {
+
+    }
+
+    private final MBinder binder = new MBinder();
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        return binder;
     }
 
     @Override
     public int onStartCommand(Intent _intent, int flags, int startId) {
-        Timber.v("onStartCommand(%s)", _intent);
+        Timber.v("onStartCommand(intent=%s, flags=%d, startId=%d)", _intent, flags, startId);
         if (_intent == null) {
             Timber.w("Intent was null");
             return START_STICKY;
@@ -92,22 +102,32 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         @Override
                         public void onSubscribe(Disposable d) {
                             adjusting = true;
-                            Timber.v("Incoming adjustment.");
+                            Timber.d("Incoming adjustment.");
                         }
 
                         @Override
                         public void onSuccess(ManagedDevice.Action value) {
                             Timber.d("Handling %s", event);
-                            ManagedDevice device = value.getDevice();
-                            if (event.getType() == SourceDevice.Event.Type.CONNECTED) {
-                                handleConnect(device);
-                            } else if (event.getType() == SourceDevice.Event.Type.DISCONNECTED) {
-                                handleDisconnect();
-                            } else {
-                                Timber.w("Unknown intent action: %s", action);
+                            final ManagedDevice device = value.getDevice();
+                            final CountDownLatch latch = new CountDownLatch(actionModules.size());
+                            for (ActionModule module : actionModules) {
+                                new Thread(() -> {
+                                    Timber.d("Running module %s", module);
+                                    module.handle(device, event);
+                                    latch.countDown();
+                                    Timber.d("Module %s finished", module);
+                                }).start();
                             }
+                            try {
+                                latch.await();
+                            } catch (InterruptedException e) { Timber.e(e); }
+
+                            if (event.getType() == SourceDevice.Event.Type.DISCONNECTED) {
+                                handleDisconnect();
+                            }
+
                             adjusting = false;
-                            Timber.v("Adjustment finished.");
+                            Timber.d("Adjustment finished.");
                         }
 
                         @Override
@@ -119,44 +139,6 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         }
 
         return START_STICKY;
-    }
-
-    private void handleConnect(ManagedDevice dev) {
-        float percentageMusic = dev.getMusicVolume();
-        float percentageVoice = dev.getMusicVolume();
-        if (percentageMusic != -1 || percentageVoice != -1) {
-            try {
-                long delay = settings.getFudgeDelay();
-                Timber.d("Waiting %d ms for system to screwup the volume.", delay);
-                Thread.sleep(delay);
-            } catch (InterruptedException e) { Timber.e(e, null); }
-            if (percentageMusic != -1) handleStream(streamHelper.getMusicId(), dev.getRealMusicVolume(), dev.getMaxMusicVolume());
-            if (percentageVoice != -1) handleStream(streamHelper.getVoiceId(), dev.getRealVoiceVolume(), dev.getMaxVoiceVolume());
-        } else {
-            Timber.d("Device %s has no specified target volume yet, skipping adjustments.", dev);
-        }
-    }
-
-    private void handleStream(int streamId, int target, int max) {
-        int currentVolume = streamHelper.getVolume(streamId);
-        if (currentVolume != target) {
-            Timber.i(
-                    "Adjusting volume (stream=%d, target=%d, current=%d, max=%d).",
-                    streamId, target, currentVolume, max
-            );
-            if (currentVolume < target) {
-                for (int volumeStep = currentVolume; volumeStep <= target; volumeStep++) {
-                    streamHelper.setStreamVolume(streamId, volumeStep, AudioManager.FLAG_SHOW_UI);
-                    try { Thread.sleep(250); } catch (InterruptedException e) { Timber.e(e, null); }
-                }
-            } else {
-                for (int volumeStep = currentVolume; volumeStep >= target; volumeStep--) {
-                    streamHelper.setStreamVolume(streamId, volumeStep, AudioManager.FLAG_SHOW_UI);
-                    try { Thread.sleep(250); } catch (InterruptedException e) { Timber.e(e, null); }
-                }
-            }
-        } else Timber.d("Target volume of %d already set.", target);
-
     }
 
     private void handleDisconnect() {
@@ -196,7 +178,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                 .toFlowable()
                 .flatMapIterable(managedDevices -> managedDevices)
                 .map(device -> {
-                    if (streamId == streamHelper.getVoiceId()) device.setVoiceVolume(percentage);
+                    if (streamId == streamHelper.getCallId()) device.setCallVolume(percentage);
                     else device.setMusicVolume(percentage);
                     return device;
                 })
@@ -204,9 +186,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                 .subscribe(actives -> {
                     deviceManager.update(actives)
                             .subscribeOn(Schedulers.computation())
-                            .subscribe(managedDevices -> {
-                                deviceManager.notifyChanged(managedDevices);
-                            });
+                            .subscribe();
                 });
     }
 }

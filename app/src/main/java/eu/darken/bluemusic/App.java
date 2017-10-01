@@ -24,8 +24,7 @@ import io.realm.RealmConfiguration;
 import timber.log.Timber;
 
 
-public class App
-        extends Application
+public class App extends Application
         implements HasManualActivityInjector, HasManualBroadcastReceiverInjector, HasManualServiceInjector {
     private static RefWatcher refWatcher;
 

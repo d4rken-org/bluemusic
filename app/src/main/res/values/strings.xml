@@ -27,5 +27,14 @@
     <string name="description_bug_reports">Automatic bug and crash reporting.</string>
     <string name="label_add_device">Add device</string>
     <string name="progress_just_a_moment_please">Just a moment, please.</string>
-    <string name="action_remove">Remove</string>
+    <string name="action_remove_device">Remove device</string>
+    <string name="action_edit_delay">Edit delay</string>
+    <string name="notification_channel_label_status">Status</string>
+    <string name="action_set">Set</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="msg_invalid_input">Invalid input</string>
+    <string name="msg_action_delay">How many milliseconds should we wait before reacting to this device?</string>
+    <string name="action_reset">Reset</string>
+    <string name="action_music_volume">Music volume</string>
+    <string name="action_call_volume">Call volume</string>
 </resources>

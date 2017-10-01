@@ -8,12 +8,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import butterknife.BindView;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.core.database.ManagedDevice;
+import eu.darken.bluemusic.util.DeviceHelper;
 import eu.darken.bluemusic.util.ui.BasicAdapter;
 import eu.darken.bluemusic.util.ui.BasicViewHolder;
 
@@ -36,17 +38,28 @@ class VolumesAdapter extends BasicAdapter<VolumesAdapter.ManagedDeviceVH, Manage
     interface Callback {
         void onMusicVolumeAdjusted(ManagedDevice device, float percentage);
 
-        void onVoiceVolumeAdjusted(ManagedDevice device, float percentage);
+        void onCallVolumeAdjusted(ManagedDevice device, float percentage);
 
-        void onDelete(ManagedDevice device);
+        void onToggleMusicVolumeAction(ManagedDevice device);
+
+        void onToggleCallVolumeAction(ManagedDevice device);
+
+        void onDeleteDevice(ManagedDevice device);
+
+        void onEditDelay(ManagedDevice device);
     }
 
     static class ManagedDeviceVH extends BasicViewHolder<ManagedDevice> {
+        @BindView(R.id.device_icon) ImageView icon;
         @BindView(R.id.name) TextView name;
         @BindView(R.id.caption) TextView caption;
         @BindView(R.id.overflow_icon) View menu;
+
+        @BindView(R.id.music_container) View musicContainer;
         @BindView(R.id.music_seekbar) SeekBar musicSeekbar;
         @BindView(R.id.music_counter) TextView musicCounter;
+
+        @BindView(R.id.voice_container) View voiceContainer;
         @BindView(R.id.voice_seekbar) SeekBar voiceSeekbar;
         @BindView(R.id.voice_counter) TextView voiceCounter;
         private Callback callback;
@@ -59,6 +72,7 @@ class VolumesAdapter extends BasicAdapter<VolumesAdapter.ManagedDeviceVH, Manage
         @Override
         public void bind(@NonNull ManagedDevice item) {
             super.bind(item);
+            icon.setImageResource(DeviceHelper.getIconForDevice(item.getSourceDevice()));
             name.setText(item.getName());
             name.setTypeface(null, item.isActive() ? BOLD : NORMAL);
 
@@ -84,47 +98,56 @@ class VolumesAdapter extends BasicAdapter<VolumesAdapter.ManagedDeviceVH, Manage
                 PopupMenu popup = new PopupMenu(getContext(), v);
                 MenuInflater inflater = popup.getMenuInflater();
                 inflater.inflate(R.menu.menu_managed_device_item, popup.getMenu());
+                popup.getMenu().findItem(R.id.toggle_music_volume).setChecked(getItem().getMusicVolume() != null);
+                popup.getMenu().findItem(R.id.toggle_call_volume).setChecked(getItem().getCallVolume() != null);
                 popup.setOnMenuItemClickListener(new PopMenuListener());
                 popup.show();
             });
 
-            musicSeekbar.setMax(item.getMaxMusicVolume());
-            musicSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    musicCounter.setText(String.valueOf(progress));
-                }
+            musicContainer.setVisibility(item.getMusicVolume() != null ? View.VISIBLE : View.GONE);
+            if (item.getMusicVolume() != null) {
+                musicSeekbar.setMax(item.getMaxMusicVolume());
+                musicSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        musicCounter.setText(String.valueOf(progress));
+                    }
 
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
 
-                }
+                    }
 
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-                    callback.onMusicVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
-                }
-            });
-            musicSeekbar.setProgress(item.getRealMusicVolume());
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        callback.onMusicVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
+                    }
+                });
+                musicSeekbar.setProgress(item.getRealMusicVolume());
+            }
 
-            voiceSeekbar.setMax(item.getMaxVoiceVolume());
-            voiceSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    voiceCounter.setText(String.valueOf(progress));
-                }
 
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
+            voiceContainer.setVisibility(item.getCallVolume() != null ? View.VISIBLE : View.GONE);
+            if (item.getCallVolume() != null) {
+                voiceSeekbar.setMax(item.getMaxVoiceVolume());
+                voiceSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        voiceCounter.setText(String.valueOf(progress));
+                    }
 
-                }
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
 
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-                    callback.onVoiceVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
-                }
-            });
-            voiceSeekbar.setProgress(item.getRealVoiceVolume());
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        callback.onCallVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
+                    }
+                });
+                voiceSeekbar.setProgress(item.getRealVoiceVolume());
+            }
         }
 
         class PopMenuListener implements PopupMenu.OnMenuItemClickListener {
@@ -132,7 +155,16 @@ class VolumesAdapter extends BasicAdapter<VolumesAdapter.ManagedDeviceVH, Manage
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.delete:
-                        callback.onDelete(getItem());
+                        callback.onDeleteDevice(getItem());
+                        return true;
+                    case R.id.edit_delay:
+                        callback.onEditDelay(getItem());
+                        return true;
+                    case R.id.toggle_music_volume:
+                        callback.onToggleMusicVolumeAction(getItem());
+                        return true;
+                    case R.id.toggle_call_volume:
+                        callback.onToggleCallVolumeAction(getItem());
                         return true;
                     default:
                         return false;

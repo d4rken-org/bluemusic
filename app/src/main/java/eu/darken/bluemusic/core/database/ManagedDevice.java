@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import java.util.Locale;
 
 import eu.darken.bluemusic.core.bluetooth.SourceDevice;
-import eu.darken.bluemusic.core.service.StreamHelper;
 
 public class ManagedDevice {
 
@@ -15,18 +14,21 @@ public class ManagedDevice {
     private boolean isActive;
     private int maxMusicVolume;
     private int maxVoiceVolume;
-    private StreamHelper volumes;
 
     ManagedDevice(SourceDevice sourceDevice, DeviceConfig deviceConfig) {
         this.sourceDevice = sourceDevice;
         this.deviceConfig = deviceConfig;
     }
 
+    public SourceDevice getSourceDevice() {
+        return sourceDevice;
+    }
+
     DeviceConfig getDeviceConfig() {
         return deviceConfig;
     }
 
-    public void setMusicVolume(float musicVolume) {
+    public void setMusicVolume(Float musicVolume) {
         deviceConfig.musicVolume = musicVolume;
     }
 
@@ -46,7 +48,7 @@ public class ManagedDevice {
         return sourceDevice.getAddress();
     }
 
-    public float getMusicVolume() {
+    public Float getMusicVolume() {
         return deviceConfig.musicVolume;
     }
 
@@ -61,7 +63,7 @@ public class ManagedDevice {
     @Override
     public String toString() {
         return String.format(Locale.US, "Device(active=%b, address=%s, name=%s, musicVolume=%.2f, voiceVolume=%.2f)",
-                isActive(), getAddress(), getName(), getMusicVolume(), getVoiceVolume());
+                isActive(), getAddress(), getName(), getMusicVolume(), getCallVolume());
     }
 
     public int getMaxMusicVolume() {
@@ -80,12 +82,12 @@ public class ManagedDevice {
         this.maxVoiceVolume = maxVoiceVolume;
     }
 
-    public void setVoiceVolume(float voiceVolume) {
-        deviceConfig.voiceVolume = voiceVolume;
+    public void setCallVolume(Float voiceVolume) {
+        deviceConfig.callVolume = voiceVolume;
     }
 
-    public float getVoiceVolume() {
-        return deviceConfig.voiceVolume;
+    public Float getCallVolume() {
+        return deviceConfig.callVolume;
     }
 
     public int getRealMusicVolume() {
@@ -93,8 +95,17 @@ public class ManagedDevice {
     }
 
     public int getRealVoiceVolume() {
-        return Math.round(getMaxVoiceVolume() * getVoiceVolume());
+        return Math.round(getMaxVoiceVolume() * getCallVolume());
     }
+
+    public void setActionDelay(Long actionDelay) {
+        deviceConfig.actionDelay = actionDelay;
+    }
+
+    public Long getActionDelay() {
+        return deviceConfig.actionDelay;
+    }
+
 
     public static class Action {
         private final ManagedDevice managedDevice;

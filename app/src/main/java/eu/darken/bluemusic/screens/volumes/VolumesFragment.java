@@ -1,10 +1,13 @@
 package eu.darken.bluemusic.screens.volumes;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import java.util.List;
 
@@ -21,6 +25,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import eu.darken.bluemusic.R;
+import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.screens.MainActivity;
 import eu.darken.bluemusic.screens.about.AboutFragment;
@@ -28,6 +33,7 @@ import eu.darken.bluemusic.screens.devices.DevicesFragment;
 import eu.darken.bluemusic.screens.settings.SettingsFragment;
 import eu.darken.bluemusic.util.Preconditions;
 import eu.darken.ommvplib.injection.ComponentPresenterSupportFragment;
+import timber.log.Timber;
 
 
 public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPresenter.View, VolumesPresenter, VolumesComponent>
@@ -127,8 +133,35 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
     }
 
     @Override
-    public void onDelete(ManagedDevice device) {
+    public void onDeleteDevice(ManagedDevice device) {
         getPresenter().deleteDevice(device);
+    }
+
+    @SuppressLint("InflateParams")
+    @Override
+    public void onEditDelay(ManagedDevice device) {
+        View container = getLayoutInflater().inflate(R.layout.view_dialog_delay, null);
+        EditText input = container.findViewById(R.id.input);
+        input.setText(device.getActionDelay() != null ? String.valueOf(device.getActionDelay()) : String.valueOf(Settings.DEFAULT_DELAY));
+        new AlertDialog.Builder(getContext())
+                .setTitle(R.string.action_edit_delay)
+                .setMessage(R.string.msg_action_delay)
+                .setIcon(R.drawable.ic_av_timer_white_24dp)
+                .setView(container)
+                .setPositiveButton(R.string.action_set, (dialogInterface, i) -> {
+                    try {
+                        final long delay = Long.parseLong(input.getText().toString());
+                        getPresenter().editDelay(device, delay);
+                    } catch (NumberFormatException e) {
+                        Timber.e(e);
+                        Preconditions.checkNotNull(getView());
+                        Snackbar.make(getView(), R.string.msg_invalid_input, Snackbar.LENGTH_SHORT).show();
+                    }
+                })
+                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().editDelay(device, 0))
+                .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {
+                })
+                .show();
     }
 
     @Override
@@ -137,7 +170,17 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
     }
 
     @Override
-    public void onVoiceVolumeAdjusted(ManagedDevice device, float percentage) {
-        presenter.updateVoiceVolume(device, percentage);
+    public void onCallVolumeAdjusted(ManagedDevice device, float percentage) {
+        presenter.updateCallVolume(device, percentage);
+    }
+
+    @Override
+    public void onToggleMusicVolumeAction(ManagedDevice device) {
+        getPresenter().toggleMusicVolumeAction(device);
+    }
+
+    @Override
+    public void onToggleCallVolumeAction(ManagedDevice device) {
+        getPresenter().toggleCallVolumeAction(device);
     }
 }

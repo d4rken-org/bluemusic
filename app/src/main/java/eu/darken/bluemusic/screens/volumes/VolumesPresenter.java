@@ -2,7 +2,6 @@ package eu.darken.bluemusic.screens.volumes;
 
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -56,18 +55,8 @@ public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, 
         }
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle bundle) {
-
-    }
-
-    @Override
-    public void onDestroy() {
-
-    }
-
-    void updateMusicVolume(ManagedDevice device, float percent) {
-        device.setMusicVolume(percent);
+    void updateMusicVolume(ManagedDevice device, float percentage) {
+        device.setMusicVolume(percentage);
         deviceManager.update(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
@@ -76,13 +65,13 @@ public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, 
                 });
     }
 
-    void updateVoiceVolume(ManagedDevice device, float percentage) {
-        device.setVoiceVolume(percentage);
+    void updateCallVolume(ManagedDevice device, float percentage) {
+        device.setCallVolume(percentage);
         deviceManager.update(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
-                    streamHelper.setStreamVolume(streamHelper.getVoiceId(), device.getRealVoiceVolume(), AudioManager.FLAG_SHOW_UI);
+                    streamHelper.setStreamVolume(streamHelper.getCallId(), device.getRealVoiceVolume(), AudioManager.FLAG_SHOW_UI);
                 });
     }
 
@@ -90,6 +79,36 @@ public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, 
         deviceManager.removeDevice(device)
                 .subscribeOn(Schedulers.computation())
                 .subscribe();
+    }
+
+    public void editDelay(ManagedDevice device, long delay) {
+        if (delay < 0) delay = 0;
+        device.setActionDelay(delay == 0 ? null : delay);
+        deviceManager.update(Collections.singleton(device))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+    }
+
+    public void toggleMusicVolumeAction(ManagedDevice device) {
+        if (device.getMusicVolume() == null) {
+            device.setMusicVolume(streamHelper.getVolumePercentage(streamHelper.getMusicId()));
+        } else device.setMusicVolume(null);
+
+        deviceManager.update(Collections.singleton(device))
+                .subscribeOn(Schedulers.computation())
+                .subscribe(managedDevices -> {
+                });
+    }
+
+    public void toggleCallVolumeAction(ManagedDevice device) {
+        if (device.getCallVolume() == null) {
+            device.setCallVolume(streamHelper.getVolumePercentage(streamHelper.getCallId()));
+        } else device.setCallVolume(null);
+
+        deviceManager.update(Collections.singleton(device))
+                .subscribeOn(Schedulers.computation())
+                .subscribe(managedDevices -> {
+                });
     }
 
     interface View extends Presenter.View {

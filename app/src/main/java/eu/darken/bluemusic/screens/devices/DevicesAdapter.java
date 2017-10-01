@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.screens.devices;
 
-import android.bluetooth.BluetoothClass;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.core.bluetooth.SourceDevice;
+import eu.darken.bluemusic.util.DeviceHelper;
 import eu.darken.bluemusic.util.ui.BasicViewHolder;
 import eu.darken.bluemusic.util.ui.ClickableAdapter;
 
@@ -35,15 +35,8 @@ class DevicesAdapter extends ClickableAdapter<DevicesAdapter.DeviceVH, SourceDev
             super.bind(item);
             name.setText(item.getName());
             caption.setText(item.getAddress());
-            int devClass;
 
-            if (item.getBluetoothClass() == null) devClass = BluetoothClass.Device.Major.UNCATEGORIZED;
-            else devClass = item.getBluetoothClass().getMajorDeviceClass();
-            if (devClass == BluetoothClass.Device.Major.AUDIO_VIDEO) {
-                icon.setImageResource(R.drawable.ic_headset_white_36dp);
-            } else {
-                icon.setImageResource(R.drawable.ic_devices_other_white_36dp);
-            }
+            icon.setImageResource(DeviceHelper.getIconForDevice(item));
         }
     }
 }

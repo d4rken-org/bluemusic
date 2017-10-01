@@ -8,6 +8,9 @@ public class DeviceConfig extends RealmObject {
     @PrimaryKey
     String address;
     long lastConnected;
-    float musicVolume;
-    float voiceVolume;
+
+    Long actionDelay;
+
+    Float musicVolume;
+    Float callVolume;
 }

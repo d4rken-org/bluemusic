@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.core.service.BlueMusicService;
+import eu.darken.bluemusic.core.service.ServiceHelper;
 import eu.darken.ommvplib.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
 import timber.log.Timber;
 
@@ -25,7 +26,7 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
         ((HasManualBroadcastReceiverInjector) context.getApplicationContext()).broadcastReceiverInjector().inject(this);
 
         if (!settings.isEnabled()) {
-            Timber.d("Not enabled.");
+            Timber.i("We are disabled.");
             return;
         }
 
@@ -47,7 +48,7 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
 
         Intent service = new Intent(context, BlueMusicService.class);
         service.putExtra(EXTRA_DEVICE_EVENT, deviceEvent);
-        final ComponentName componentName = context.startService(service);
+        final ComponentName componentName = ServiceHelper.startService(context, service);
         if (componentName != null) Timber.v("Service is already running.");
     }
 

@@ -10,7 +10,6 @@ import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.screens.MainActivity;
 import eu.darken.bluemusic.util.Preconditions;
 import eu.darken.ommvplib.injection.ComponentPresenterPreferenceFragment;
-import timber.log.Timber;
 
 
 public class SettingsFragment extends ComponentPresenterPreferenceFragment<SettingsPresenter.View, SettingsPresenter, SettingsComponent> implements SettingsPresenter.View {
@@ -24,15 +23,6 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.settings);
-        findPreference("core.volume.delay.systemfudge").setOnPreferenceChangeListener((preference, newValue) -> {
-            try {
-                Timber.i("Delay: %d", Long.parseLong((String) newValue));
-                return true;
-            } catch (Exception e) {
-                Timber.e(e, null);
-                return false;
-            }
-        });
     }
 
     @Override
@@ -46,10 +36,7 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
-        if ("core.volume.enabled".equals(preference.getKey())) {
-            getPresenter().toggleService(((CheckBoxPreference) preference).isChecked());
-            return true;
-        } else if ("core.bugreporting.enabled".equals(preference.getKey())) {
+        if ("core.bugreporting.enabled".equals(preference.getKey())) {
             preference.setSummary(((CheckBoxPreference) preference).isChecked() ? ":)" : ":(");
             return true;
         } else return super.onPreferenceTreeClick(preference);

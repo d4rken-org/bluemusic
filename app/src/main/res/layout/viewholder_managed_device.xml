@@ -9,45 +9,69 @@
     android:layout_marginStart="8dp"
     android:layout_marginTop="4dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
+        android:orientation="vertical"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/name"
-            style="@style/TextAppearance.AppCompat.Body2"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Name"/>
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/caption"
-            style="@style/TextAppearance.AppCompat.Caption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@id/name"
-            android:layout_below="@id/name"
-            android:paddingBottom="16dp"
-            tools:text="Caption"/>
+            <ImageView
+                android:id="@+id/device_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:contentDescription="Device type icon"
+                tools:ignore="HardcodedText"
+                tools:src="@drawable/ic_devices_other_white_24dp"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/overflow_icon"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:background="?android:attr/selectableItemBackground"
-            android:src="@drawable/ic_dots_vertical_white_24dp"/>
+            <TextView
+                android:id="@+id/name"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/device_icon"
+                android:layout_toStartOf="@+id/overflow_icon"
+                tools:text="Name"/>
+
+            <TextView
+                android:id="@+id/caption"
+                style="@style/TextAppearance.AppCompat.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/name"
+                android:layout_alignStart="@+id/name"
+                android:layout_below="@+id/name"
+                android:layout_toStartOf="@+id/overflow_icon"
+                tools:text="Caption"/>
+
+            <ImageView
+                android:id="@+id/overflow_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="Device options"
+                android:src="@drawable/ic_dots_vertical_white_24dp"
+                tools:ignore="HardcodedText"/>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/caption"
+            android:layout_marginTop="16dp"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/music_container"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:gravity="center_vertical"
@@ -56,7 +80,9 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_music_note_white_24dp"/>
+                    android:contentDescription="Music volume"
+                    android:src="@drawable/ic_music_note_white_24dp"
+                    tools:ignore="HardcodedText"/>
 
                 <SeekBar
                     android:id="@+id/music_seekbar"
@@ -76,6 +102,7 @@
 
 
             <LinearLayout
+                android:id="@+id/voice_container"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:layout_marginTop="8dp"
@@ -85,7 +112,9 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_headset_mic_white_24dp"/>
+                    android:contentDescription="Call volume"
+                    android:src="@drawable/ic_headset_mic_white_24dp"
+                    tools:ignore="HardcodedText"/>
 
                 <SeekBar
                     android:id="@+id/voice_seekbar"
@@ -103,5 +132,5 @@
                     tools:text="15"/>
             </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 </android.support.v7.widget.CardView>
