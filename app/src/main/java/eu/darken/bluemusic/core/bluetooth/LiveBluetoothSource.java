@@ -7,12 +7,15 @@ import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.schedulers.Schedulers;
@@ -51,9 +54,16 @@ class LiveBluetoothSource implements BluetoothSource {
 
     @Override
     public Single<Map<String, SourceDevice>> getConnectedDevices() {
-        return Single.defer(() -> Observable.merge(
+        final List<ObservableSource<List<BluetoothDevice>>> devicesProfiles = Arrays.asList(
                 LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET).toObservable(),
-                LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP).toObservable())
+                LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT).toObservable(),
+                LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT_SERVER).toObservable(),
+                LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEALTH).toObservable(),
+                LiveBluetoothSource.this.getDevicesForProfile(10).toObservable(), // BluetoothProfile.SAP
+                LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP).toObservable()
+        );
+
+        return Single.defer(() -> Observable.merge(devicesProfiles)
                 .toList()
                 .map(lists -> {
                     HashSet<BluetoothDevice> unique = new HashSet<>();
@@ -86,7 +96,8 @@ class LiveBluetoothSource implements BluetoothSource {
                         Timber.d("onServiceDisconnected(%d)", profile);
                     }
                 };
-                adapter.getProfileProxy(context, mProfileListener, desiredProfile);
+                final boolean success = adapter.getProfileProxy(context, mProfileListener, desiredProfile);
+                if (!success) observer.onSuccess(new ArrayList<BluetoothDevice>());
             }
         };
     }
