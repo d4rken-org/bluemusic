@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.screens.volumes;
+package eu.darken.bluemusic.screens.managed;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -9,11 +9,11 @@ import eu.darken.ommvplib.injection.PresenterComponent;
 import eu.darken.ommvplib.injection.fragment.support.SupportFragmentComponent;
 
 
-@VolumesComponent.Scope
+@ManagedDevicesComponent.Scope
 @Subcomponent(modules = {})
-public interface VolumesComponent extends PresenterComponent<VolumesPresenter.View, VolumesPresenter>, SupportFragmentComponent<VolumesFragment> {
+public interface ManagedDevicesComponent extends PresenterComponent<ManagedDevicesPresenter.View, ManagedDevicesPresenter>, SupportFragmentComponent<ManagedDevicesFragment> {
     @Subcomponent.Builder
-    abstract class Builder extends SupportFragmentComponent.Builder<VolumesFragment, VolumesComponent> {
+    abstract class Builder extends SupportFragmentComponent.Builder<ManagedDevicesFragment, ManagedDevicesComponent> {
 
     }
 

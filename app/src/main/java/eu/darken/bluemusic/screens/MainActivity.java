@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import eu.darken.bluemusic.R;
-import eu.darken.bluemusic.screens.volumes.VolumesFragment;
+import eu.darken.bluemusic.screens.managed.ManagedDevicesFragment;
 import eu.darken.ommvplib.injection.ComponentPresenterActivity;
 import eu.darken.ommvplib.injection.ComponentSource;
 import eu.darken.ommvplib.injection.ManualInjector;
@@ -28,7 +28,7 @@ public class MainActivity extends ComponentPresenterActivity<MainActivityView, M
         ButterKnife.bind(this);
 
         Fragment introFragment = getSupportFragmentManager().findFragmentById(R.id.frame_content);
-        if (introFragment == null) introFragment = VolumesFragment.newInstance();
+        if (introFragment == null) introFragment = ManagedDevicesFragment.newInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, introFragment).commit();
     }
 

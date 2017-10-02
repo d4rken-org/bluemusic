@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.screens.volumes;
+package eu.darken.bluemusic.screens.managed;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -36,17 +36,17 @@ import eu.darken.ommvplib.injection.ComponentPresenterSupportFragment;
 import timber.log.Timber;
 
 
-public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPresenter.View, VolumesPresenter, VolumesComponent>
-        implements VolumesPresenter.View, VolumesAdapter.Callback {
+public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<ManagedDevicesPresenter.View, ManagedDevicesPresenter, ManagedDevicesComponent>
+        implements ManagedDevicesPresenter.View, ManagedDevicesAdapter.Callback {
 
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
     @BindView(R.id.fab) FloatingActionButton fab;
 
     Unbinder unbinder;
-    private VolumesAdapter adapter;
+    private ManagedDevicesAdapter adapter;
 
     public static Fragment newInstance() {
-        return new VolumesFragment();
+        return new ManagedDevicesFragment();
     }
 
     @Override
@@ -56,8 +56,8 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
     }
 
     @Override
-    public Class<VolumesPresenter> getTypeClazz() {
-        return VolumesPresenter.class;
+    public Class<ManagedDevicesPresenter> getTypeClazz() {
+        return ManagedDevicesPresenter.class;
     }
 
     @Nullable
@@ -71,7 +71,7 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
     @Override
     public void onViewCreated(android.view.View view, @Nullable Bundle savedInstanceState) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new VolumesAdapter(this);
+        adapter = new ManagedDevicesAdapter(this);
         recyclerView.setAdapter(adapter);
         super.onViewCreated(view, savedInstanceState);
     }

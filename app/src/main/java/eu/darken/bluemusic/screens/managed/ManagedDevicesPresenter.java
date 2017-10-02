@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.screens.volumes;
+package eu.darken.bluemusic.screens.managed;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,15 +18,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-@VolumesComponent.Scope
-public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, VolumesComponent> {
+@ManagedDevicesComponent.Scope
+public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPresenter.View, ManagedDevicesComponent> {
     private final StreamHelper streamHelper;
     private DeviceManager deviceManager;
     private View view;
     private Disposable disposable;
 
     @Inject
-    VolumesPresenter(DeviceManager deviceManager, StreamHelper streamHelper) {
+    ManagedDevicesPresenter(DeviceManager deviceManager, StreamHelper streamHelper) {
         this.deviceManager = deviceManager;
         this.streamHelper = streamHelper;
     }
@@ -74,13 +74,13 @@ public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, 
                 });
     }
 
-    public void deleteDevice(ManagedDevice device) {
+    void deleteDevice(ManagedDevice device) {
         deviceManager.removeDevice(device)
                 .subscribeOn(Schedulers.computation())
                 .subscribe();
     }
 
-    public void editDelay(ManagedDevice device, long delay) {
+    void editDelay(ManagedDevice device, long delay) {
         if (delay < 0) delay = 0;
         device.setActionDelay(delay == 0 ? null : delay);
         deviceManager.update(Collections.singleton(device))
@@ -88,7 +88,7 @@ public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, 
                 .subscribe();
     }
 
-    public void toggleMusicVolumeAction(ManagedDevice device) {
+    void toggleMusicVolumeAction(ManagedDevice device) {
         if (device.getMusicVolume() == null) {
             device.setMusicVolume(streamHelper.getVolumePercentage(streamHelper.getMusicId()));
         } else device.setMusicVolume(null);
@@ -99,7 +99,7 @@ public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, 
                 });
     }
 
-    public void toggleCallVolumeAction(ManagedDevice device) {
+    void toggleCallVolumeAction(ManagedDevice device) {
         if (device.getCallVolume() == null) {
             device.setCallVolume(streamHelper.getVolumePercentage(streamHelper.getCallId()));
         } else device.setCallVolume(null);

@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.screens.volumes;
+package eu.darken.bluemusic.screens.managed;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.PopupMenu;
@@ -23,10 +23,10 @@ import static android.graphics.Typeface.BOLD;
 import static android.graphics.Typeface.NORMAL;
 
 
-class VolumesAdapter extends BasicAdapter<VolumesAdapter.ManagedDeviceVH, ManagedDevice> {
+class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDeviceVH, ManagedDevice> {
     private final Callback callback;
 
-    VolumesAdapter(Callback callback) {
+    ManagedDevicesAdapter(Callback callback) {
         this.callback = callback;
     }
 
@@ -64,7 +64,7 @@ class VolumesAdapter extends BasicAdapter<VolumesAdapter.ManagedDeviceVH, Manage
         @BindView(R.id.voice_counter) TextView voiceCounter;
         private Callback callback;
 
-        public ManagedDeviceVH(@NonNull ViewGroup parent, Callback callback) {
+        ManagedDeviceVH(@NonNull ViewGroup parent, Callback callback) {
             super(parent, R.layout.viewholder_managed_device);
             this.callback = callback;
         }

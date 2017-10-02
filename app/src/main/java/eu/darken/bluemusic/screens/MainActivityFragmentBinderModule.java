@@ -11,13 +11,13 @@ import eu.darken.bluemusic.screens.about.AboutComponent;
 import eu.darken.bluemusic.screens.about.AboutFragment;
 import eu.darken.bluemusic.screens.devices.DevicesComponent;
 import eu.darken.bluemusic.screens.devices.DevicesFragment;
+import eu.darken.bluemusic.screens.managed.ManagedDevicesComponent;
+import eu.darken.bluemusic.screens.managed.ManagedDevicesFragment;
 import eu.darken.bluemusic.screens.settings.SettingsComponent;
 import eu.darken.bluemusic.screens.settings.SettingsFragment;
-import eu.darken.bluemusic.screens.volumes.VolumesComponent;
-import eu.darken.bluemusic.screens.volumes.VolumesFragment;
 
 @Module(subcomponents = {
-        VolumesComponent.class,
+        ManagedDevicesComponent.class,
         DevicesComponent.class,
         SettingsComponent.class,
         AboutComponent.class
@@ -26,8 +26,8 @@ abstract class MainActivityFragmentBinderModule {
 
     @Binds
     @IntoMap
-    @FragmentKey(VolumesFragment.class)
-    abstract AndroidInjector.Factory<? extends Fragment> volumes(VolumesComponent.Builder impl);
+    @FragmentKey(ManagedDevicesFragment.class)
+    abstract AndroidInjector.Factory<? extends Fragment> volumes(ManagedDevicesComponent.Builder impl);
 
     @Binds
     @IntoMap
