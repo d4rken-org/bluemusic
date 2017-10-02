@@ -29,7 +29,13 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
             return;
         }
 
-        SourceDevice sourceDevice = new SourceDeviceWrapper((BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE));
+        final BluetoothDevice bluetoothDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+        if (bluetoothDevice == null) {
+            Timber.w("Intent didn't contain a bluetooth device!");
+            return;
+        }
+
+        SourceDevice sourceDevice = new SourceDeviceWrapper(bluetoothDevice);
         String actionString = intent.getAction();
         Timber.d("Device: %s | Action: %s", sourceDevice, actionString);
 
