@@ -30,5 +30,4 @@ public class ServiceModule {
         return Arrays.asList(m1, m2);
     }
 
-
 }

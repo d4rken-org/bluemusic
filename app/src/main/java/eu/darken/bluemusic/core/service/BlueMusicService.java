@@ -6,6 +6,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.App;
+import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.core.bluetooth.BluetoothEventReceiver;
 import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
@@ -25,6 +27,7 @@ import eu.darken.bluemusic.core.database.ManagedDevice;
 import io.reactivex.Scheduler;
 import io.reactivex.SingleObserver;
 import io.reactivex.SingleSource;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -47,22 +50,31 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         Timber.v("onCreate()");
         ((App) getApplication()).serviceInjector().inject(this);
         super.onCreate();
-        if (settings.isVolumeChangeListenerEnabled()) {
-            volumeObserver.addCallback(streamHelper.getMusicId(), this);
-            volumeObserver.addCallback(streamHelper.getCallId(), this);
-            getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeObserver);
-        }
+
+        volumeObserver.addCallback(streamHelper.getMusicId(), this);
+        volumeObserver.addCallback(streamHelper.getCallId(), this);
+        getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeObserver);
+
+        deviceManager.observe()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(stringManagedDeviceMap -> {
+                    Collection<ManagedDevice> connected = new ArrayList<>();
+                    for (ManagedDevice d : stringManagedDeviceMap.values()) {
+                        if (d.isActive()) connected.add(d);
+                    }
+                    serviceHelper.updateActiveDevices(connected);
+                });
     }
 
     @Override
     public void onDestroy() {
         Timber.v("onDestroy()");
-        serviceHelper.stopForeground();
+        serviceHelper.stop();
         getContentResolver().unregisterContentObserver(volumeObserver);
         super.onDestroy();
     }
 
-    public class MBinder extends Binder {
+    class MBinder extends Binder {
 
     }
 
@@ -93,7 +105,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             Timber.w("Intent was null");
             return START_STICKY;
         }
-        serviceHelper.startForeground();
+        serviceHelper.start();
 
         SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
         if (event != null) {
@@ -125,6 +137,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         public void onSuccess(ManagedDevice.Action value) {
                             Timber.d("Handling %s", event);
                             final ManagedDevice device = value.getDevice();
+                            serviceHelper.updateMessage(getString(R.string.status_adjusting_volumes));
                             final CountDownLatch latch = new CountDownLatch(actionModules.size());
                             for (ActionModule module : actionModules) {
                                 new Thread(() -> {
@@ -137,7 +150,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                             try {
                                 latch.await();
                             } catch (InterruptedException e) { Timber.e(e); }
-
+                            serviceHelper.updateMessage(getString(R.string.status_idle));
                             if (event.getType() == SourceDevice.Event.Type.DISCONNECTED) {
                                 handleDisconnect();
                             }
@@ -146,7 +159,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                             Timber.d("Adjustment finished.");
 
                             if (!settings.isVolumeChangeListenerEnabled()) {
-                                Timber.i("We don't want to listen to volume changes, stopping service.");
+                                Timber.d("We don't want to listen to volume changes, stopping service.");
                                 stopSelf();
                             }
                         }
@@ -174,7 +187,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         }
                     }
                     if (stop) {
-                        if (stop) Timber.i("No more active devices, stopping service.");
+                        Timber.d("No more active devices, stopping service.");
                         stopSelf();
                     }
                 });
@@ -182,6 +195,10 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
     @Override
     public void onVolumeChanged(int streamId, int volume) {
+        if (!settings.isVolumeChangeListenerEnabled()) {
+            Timber.v("Volume listener is disabled.");
+            return;
+        }
         if (adjusting || streamHelper.wasUs(streamId, volume)) {
             Timber.v("Volume change was triggered by us, ignoring it.");
             return;
@@ -204,10 +221,6 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     return device;
                 })
                 .toList()
-                .subscribe(actives -> {
-                    deviceManager.update(actives)
-                            .subscribeOn(Schedulers.computation())
-                            .subscribe();
-                });
+                .subscribe(actives -> deviceManager.update(actives).subscribeOn(Schedulers.computation()).subscribe());
     }
 }

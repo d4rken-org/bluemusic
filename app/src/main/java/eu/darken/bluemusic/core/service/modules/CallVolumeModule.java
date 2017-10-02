@@ -17,7 +17,11 @@ public class CallVolumeModule extends ActionModule {
     private final StreamHelper streamHelper;
 
     @Inject
-    public CallVolumeModule(DeviceManager deviceManager, Settings settings, StreamHelper streamHelper) {
+    public CallVolumeModule(
+            DeviceManager deviceManager,
+            Settings settings,
+            StreamHelper streamHelper
+    ) {
         super(deviceManager);
         this.settings = settings;
         this.streamHelper = streamHelper;
@@ -31,7 +35,6 @@ public class CallVolumeModule extends ActionModule {
             Timber.d("Call volume adjustment is disabled.");
             return;
         }
-
         Float percentageVoice = device.getCallVolume();
         if (percentageVoice != -1) {
             try {

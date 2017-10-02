@@ -39,8 +39,11 @@
     <string name="action_call_volume">Call volume</string>
     <string name="description_visible_volume_adjustments">Show volume window while making adjustments.</string>
     <string name="label_visible_volume_adjustments">Visible adjustments</string>
-    <string name="label_volume_listener">Automatic volume listener</string>
-    <string name="description_volume_listener">Listen to volume changes and adjust settings for connected devices.</string>
+    <string name="label_volume_listener">Volume changes</string>
+    <string name="description_volume_listener">Listen and save volume changes that have been caused by other apps or volume buttons.</string>
     <string name="label_general">General</string>
     <string name="label_other">Other</string>
+    <string name="label_no_connected_devices">No devices connected</string>
+    <string name="status_idle">Idle</string>
+    <string name="status_adjusting_volumes">Adjusting volumes</string>
 </resources>

@@ -17,7 +17,11 @@ public class MusicVolumeModule extends ActionModule {
     private final StreamHelper streamHelper;
 
     @Inject
-    public MusicVolumeModule(DeviceManager deviceManager, Settings settings, StreamHelper streamHelper) {
+    public MusicVolumeModule(
+            DeviceManager deviceManager,
+            Settings settings,
+            StreamHelper streamHelper
+    ) {
         super(deviceManager);
         this.settings = settings;
         this.streamHelper = streamHelper;
@@ -31,7 +35,6 @@ public class MusicVolumeModule extends ActionModule {
             Timber.d("Music volume adjustment is disabled.");
             return;
         }
-
         Float percentageMusic = device.getMusicVolume();
         if (percentageMusic != -1) {
             try {
