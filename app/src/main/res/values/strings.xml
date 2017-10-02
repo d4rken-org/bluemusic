@@ -47,4 +47,5 @@
 
     <string name="label_adjustment_delay">Adjustment delay</string>
     <string name="description_adjustment_delay">The delay between each volume adjustment step in milliseconds. A delay 0 means instantly setting the desired volume.</string>
+    <string name="msg_empty_devices">No devices have been added yet.\nTap the button down there.</string>
 </resources>

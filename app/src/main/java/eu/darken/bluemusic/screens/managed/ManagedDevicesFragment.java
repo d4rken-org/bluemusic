@@ -40,6 +40,7 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
         implements ManagedDevicesPresenter.View, ManagedDevicesAdapter.Callback {
 
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
+    @BindView(R.id.empty_info) View emptyInfo;
     @BindView(R.id.fab) FloatingActionButton fab;
 
     Unbinder unbinder;
@@ -130,6 +131,8 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
     public void displayDevices(List<ManagedDevice> managedDevices) {
         adapter.setData(managedDevices);
         adapter.notifyDataSetChanged();
+        recyclerView.setVisibility(managedDevices.isEmpty() ? View.GONE : View.VISIBLE);
+        emptyInfo.setVisibility(managedDevices.isEmpty() ? View.VISIBLE : View.GONE);
     }
 
     @Override
