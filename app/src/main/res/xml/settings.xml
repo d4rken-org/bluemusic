@@ -5,6 +5,19 @@
         android:key="core.volume.enabled"
         android:summary="@string/description_app_enabled"
         android:title="@string/label_app_enabled"/>
+    <EditTextPreference
+        android:defaultValue="5000"
+        android:digits="0123456789"
+        android:inputType="numberDecimal"
+        android:key="core.volume.delay.systemfudge"
+        android:numeric="decimal"
+        android:summary="@string/description_reaction_delay"
+        android:title="@string/label_reaction_delay"/>
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="core.volume.visibleadjustments"
+        android:summary="@string/description_visible_volume_adjustments"
+        android:title="@string/label_visible_volume_adjustments"/>
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="core.bugreporting.enabled"

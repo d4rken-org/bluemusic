@@ -106,7 +106,6 @@ public class ManagedDevice {
         return deviceConfig.actionDelay;
     }
 
-
     public static class Action {
         private final ManagedDevice managedDevice;
         private final SourceDevice.Event.Type deviceAction;

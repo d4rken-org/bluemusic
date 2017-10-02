@@ -37,4 +37,6 @@
     <string name="action_reset">Reset</string>
     <string name="action_music_volume">Music volume</string>
     <string name="action_call_volume">Call volume</string>
+    <string name="description_visible_volume_adjustments">Show volume window while making adjustments.</string>
+    <string name="label_visible_volume_adjustments">Visible adjustments</string>
 </resources>

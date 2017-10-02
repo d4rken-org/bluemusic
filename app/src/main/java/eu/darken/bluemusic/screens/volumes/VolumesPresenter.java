@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.screens.volumes;
 
-import android.media.AudioManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -61,7 +60,7 @@ public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, 
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
-                    streamHelper.setStreamVolume(streamHelper.getMusicId(), device.getRealMusicVolume(), AudioManager.FLAG_SHOW_UI);
+                    streamHelper.setStreamVolume(streamHelper.getMusicId(), device.getRealMusicVolume(), true);
                 });
     }
 
@@ -71,7 +70,7 @@ public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, 
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
-                    streamHelper.setStreamVolume(streamHelper.getCallId(), device.getRealVoiceVolume(), AudioManager.FLAG_SHOW_UI);
+                    streamHelper.setStreamVolume(streamHelper.getCallId(), device.getRealVoiceVolume(), true);
                 });
     }
 

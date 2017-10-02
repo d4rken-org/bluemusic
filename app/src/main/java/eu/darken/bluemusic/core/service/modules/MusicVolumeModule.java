@@ -13,11 +13,13 @@ import timber.log.Timber;
 
 @ServiceScope
 public class MusicVolumeModule extends ActionModule {
+    private final Settings settings;
     private final StreamHelper streamHelper;
 
     @Inject
-    public MusicVolumeModule(DeviceManager deviceManager, StreamHelper streamHelper) {
+    public MusicVolumeModule(DeviceManager deviceManager, Settings settings, StreamHelper streamHelper) {
         super(deviceManager);
+        this.settings = settings;
         this.streamHelper = streamHelper;
     }
 
@@ -39,11 +41,10 @@ public class MusicVolumeModule extends ActionModule {
                 Thread.sleep(delay);
             } catch (InterruptedException e) { Timber.e(e, null); }
 
-            streamHelper.modifyStream(streamHelper.getMusicId(), device.getRealMusicVolume(), device.getMaxMusicVolume());
+            streamHelper.modifyVolume(streamHelper.getMusicId(), percentageMusic, settings.isVolumeAdjustedVisibly());
         } else {
             Timber.d("Device %s has no specified target volume yet, skipping adjustments.", device);
         }
     }
-
 
 }

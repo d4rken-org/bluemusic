@@ -30,7 +30,7 @@ public class VolumeObserver extends ContentObserver {
 
     public void addCallback(int streamType, Callback callback) {
         callbacks.put(streamType, callback);
-        final int volume = streamHelper.getVolume(streamType);
+        final int volume = streamHelper.getCurrentVolume(streamType);
         volumes.put(streamType, volume);
     }
 
@@ -46,7 +46,7 @@ public class VolumeObserver extends ContentObserver {
         for (int i = 0; i < callbacks.size(); i++) {
             int streamType = callbacks.keyAt(i);
             Callback callback = callbacks.get(streamType);
-            int newVolume = streamHelper.getVolume(streamType);
+            int newVolume = streamHelper.getCurrentVolume(streamType);
             int oldVolume = volumes.get(streamType);
             if (newVolume != oldVolume) {
                 Timber.v("Volume changed (type=%d, old=%d, new=%d)", streamType, oldVolume, newVolume);

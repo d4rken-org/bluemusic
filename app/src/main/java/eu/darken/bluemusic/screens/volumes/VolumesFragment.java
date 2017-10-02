@@ -166,12 +166,12 @@ public class VolumesFragment extends ComponentPresenterSupportFragment<VolumesPr
 
     @Override
     public void onMusicVolumeAdjusted(ManagedDevice device, float percentage) {
-        presenter.updateMusicVolume(device, percentage);
+        getPresenter().updateMusicVolume(device, percentage);
     }
 
     @Override
     public void onCallVolumeAdjusted(ManagedDevice device, float percentage) {
-        presenter.updateCallVolume(device, percentage);
+        getPresenter().updateCallVolume(device, percentage);
     }
 
     @Override

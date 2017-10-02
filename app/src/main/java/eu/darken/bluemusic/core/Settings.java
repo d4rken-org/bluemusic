@@ -16,6 +16,10 @@ public class Settings {
         return preferences.getBoolean("core.bugreporting.enabled", true);
     }
 
+    public boolean isVolumeAdjustedVisibly() {
+        return preferences.getBoolean("core.volume.visibleadjustments", true);
+    }
+
     public boolean isEnabled() {
         return preferences.getBoolean("core.volume.enabled", true);
     }
