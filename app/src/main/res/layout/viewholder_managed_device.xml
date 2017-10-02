@@ -13,10 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="vertical">
 
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -24,49 +23,54 @@
                 android:id="@+id/device_icon"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_centerVertical="true"
+                android:layout_gravity="start|center_vertical"
+                android:layout_margin="16dp"
                 android:contentDescription="Device type icon"
                 tools:ignore="HardcodedText"
                 tools:src="@drawable/ic_devices_other_white_24dp"/>
 
-            <TextView
-                android:id="@+id/name"
-                style="@style/TextAppearance.AppCompat.Body2"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_toEndOf="@+id/device_icon"
-                android:layout_toStartOf="@+id/overflow_icon"
-                tools:text="Name"/>
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/caption"
-                style="@style/TextAppearance.AppCompat.Caption"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/name"
-                android:layout_alignStart="@+id/name"
-                android:layout_below="@+id/name"
-                android:layout_toStartOf="@+id/overflow_icon"
-                tools:text="Caption"/>
+                <TextView
+                    android:id="@+id/name"
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Name"/>
+
+                <TextView
+                    android:id="@+id/caption"
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Caption"/>
+            </LinearLayout>
 
             <ImageView
-                android:id="@+id/overflow_icon"
+                android:id="@+id/config_icon"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
+                android:layout_height="match_parent"
+                android:layout_gravity="end|center_vertical"
                 android:background="?android:attr/selectableItemBackground"
                 android:contentDescription="Device options"
+                android:padding="16dp"
                 android:src="@drawable/ic_dots_vertical_white_24dp"
                 tools:ignore="HardcodedText"/>
-        </RelativeLayout>
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:orientation="vertical">
 
             <LinearLayout

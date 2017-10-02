@@ -55,7 +55,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
         @BindView(R.id.device_icon) ImageView icon;
         @BindView(R.id.name) TextView name;
         @BindView(R.id.caption) TextView caption;
-        @BindView(R.id.overflow_icon) View menu;
+        @BindView(R.id.config_icon) View menu;
 
         @BindView(R.id.music_container) View musicContainer;
         @BindView(R.id.music_seekbar) SeekBar musicSeekbar;
