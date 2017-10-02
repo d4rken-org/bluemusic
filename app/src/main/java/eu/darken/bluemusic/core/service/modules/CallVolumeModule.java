@@ -41,7 +41,7 @@ public class CallVolumeModule extends ActionModule {
                 Thread.sleep(delay);
             } catch (InterruptedException e) { Timber.e(e, null); }
 
-            streamHelper.modifyVolume(streamHelper.getCallId(), percentageVoice, settings.isVolumeAdjustedVisibly());
+            streamHelper.setVolumeGradually(streamHelper.getCallId(), percentageVoice, settings.isVolumeAdjustedVisibly());
         } else {
             Timber.d("Device %s has no specified target volume yet, skipping adjustments.", device);
         }

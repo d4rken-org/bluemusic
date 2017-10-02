@@ -60,7 +60,7 @@ public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, 
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
-                    streamHelper.setStreamVolume(streamHelper.getMusicId(), device.getRealMusicVolume(), true);
+                    streamHelper.setVolumeInstant(streamHelper.getMusicId(), device.getRealMusicVolume(), true);
                 });
     }
 
@@ -70,7 +70,7 @@ public class VolumesPresenter extends ComponentPresenter<VolumesPresenter.View, 
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
-                    streamHelper.setStreamVolume(streamHelper.getCallId(), device.getRealVoiceVolume(), true);
+                    streamHelper.setVolumeInstant(streamHelper.getCallId(), device.getRealVoiceVolume(), true);
                 });
     }
 

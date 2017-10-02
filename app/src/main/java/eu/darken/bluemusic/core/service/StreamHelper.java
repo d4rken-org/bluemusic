@@ -51,12 +51,12 @@ public class StreamHelper {
         return (float) audioManager.getStreamVolume(streamId) / audioManager.getStreamMaxVolume(streamId);
     }
 
-    public void setStreamVolume(int streamId, float percent, boolean visible) {
+    public void setVolumeInstant(int streamId, float percent, boolean visible) {
         final int target = (int) (getMaxVolume(streamId) * percent);
         doSetVolume(streamId, target, visible ? AudioManager.FLAG_SHOW_UI : 0);
     }
 
-    public void modifyVolume(int streamId, float percent, boolean visible) {
+    public void setVolumeGradually(int streamId, float percent, boolean visible) {
         final int currentVolume = getCurrentVolume(streamId);
         final int max = getMaxVolume(streamId);
         final int target = (int) (max * percent);

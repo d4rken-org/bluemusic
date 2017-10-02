@@ -41,7 +41,7 @@ public class MusicVolumeModule extends ActionModule {
                 Thread.sleep(delay);
             } catch (InterruptedException e) { Timber.e(e, null); }
 
-            streamHelper.modifyVolume(streamHelper.getMusicId(), percentageMusic, settings.isVolumeAdjustedVisibly());
+            streamHelper.setVolumeGradually(streamHelper.getMusicId(), percentageMusic, settings.isVolumeAdjustedVisibly());
         } else {
             Timber.d("Device %s has no specified target volume yet, skipping adjustments.", device);
         }
