@@ -7,6 +7,8 @@ import android.support.v7.preference.Preference;
 import android.view.MenuItem;
 
 import eu.darken.bluemusic.R;
+import eu.darken.bluemusic.core.Settings;
+import eu.darken.bluemusic.core.service.ServiceHelper;
 import eu.darken.bluemusic.screens.MainActivity;
 import eu.darken.bluemusic.util.Preconditions;
 import eu.darken.ommvplib.injection.ComponentPresenterPreferenceFragment;
@@ -36,7 +38,14 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
-        if ("core.bugreporting.enabled".equals(preference.getKey())) {
+        if (Settings.PREFKEY_VOLUMELISTENER.equals(preference.getKey())) {
+            if (((CheckBoxPreference) preference).isChecked()) {
+                ServiceHelper.startService(getContext(), ServiceHelper.getIntent(getContext()));
+            } else {
+                ServiceHelper.stopService(getContext(), ServiceHelper.getIntent(getContext()));
+            }
+            return true;
+        } else if ("core.bugreporting.enabled".equals(preference.getKey())) {
             preference.setSummary(((CheckBoxPreference) preference).isChecked() ? ":)" : ":(");
             return true;
         } else return super.onPreferenceTreeClick(preference);

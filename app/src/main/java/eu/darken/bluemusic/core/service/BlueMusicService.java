@@ -47,14 +47,16 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         Timber.v("onCreate()");
         ((App) getApplication()).serviceInjector().inject(this);
         super.onCreate();
-        volumeObserver.addCallback(streamHelper.getMusicId(), this);
-        volumeObserver.addCallback(streamHelper.getCallId(), this);
-        getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeObserver);
-        serviceHelper.startForeground();
+        if (settings.isVolumeChangeListenerEnabled()) {
+            volumeObserver.addCallback(streamHelper.getMusicId(), this);
+            volumeObserver.addCallback(streamHelper.getCallId(), this);
+            getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeObserver);
+        }
     }
 
     @Override
     public void onDestroy() {
+        Timber.v("onDestroy()");
         serviceHelper.stopForeground();
         getContentResolver().unregisterContentObserver(volumeObserver);
         super.onDestroy();
@@ -73,13 +75,27 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     }
 
     @Override
-    public int onStartCommand(Intent _intent, int flags, int startId) {
-        Timber.v("onStartCommand(intent=%s, flags=%d, startId=%d)", _intent, flags, startId);
-        if (_intent == null) {
+    public boolean onUnbind(Intent intent) {
+        Timber.v("onUnbind(intent=%s)", intent);
+        return true;
+    }
+
+    @Override
+    public void onRebind(Intent intent) {
+        Timber.v("onRebind(intent=%s)", intent);
+        super.onRebind(intent);
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Timber.v("onStartCommand(intent=%s, flags=%d, startId=%d)", intent, flags, startId);
+        if (intent == null) {
             Timber.w("Intent was null");
             return START_STICKY;
         }
-        SourceDevice.Event event = _intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
+        serviceHelper.startForeground();
+
+        SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
         if (event != null) {
             bluetoothSource.getConnectedDevices()
                     .delaySubscription(1000, TimeUnit.MILLISECONDS)
@@ -128,6 +144,11 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
                             adjusting = false;
                             Timber.d("Adjustment finished.");
+
+                            if (!settings.isVolumeChangeListenerEnabled()) {
+                                Timber.i("We don't want to listen to volume changes, stopping service.");
+                                stopSelf();
+                            }
                         }
 
                         @Override
@@ -153,7 +174,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         }
                     }
                     if (stop) {
-                        Timber.i("No more active devices, stopping service.");
+                        if (stop) Timber.i("No more active devices, stopping service.");
                         stopSelf();
                     }
                 });

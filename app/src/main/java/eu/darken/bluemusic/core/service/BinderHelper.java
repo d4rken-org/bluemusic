@@ -25,7 +25,7 @@ public class BinderHelper {
         final ServiceConnection[] serviceConnection = new ServiceConnection[1];
         return Observable
                 .create((ObservableOnSubscribe<BlueMusicService.MBinder>) e -> {
-                    Intent service = new Intent(context, BlueMusicService.class);
+                    Intent service = ServiceHelper.getIntent(context);
                     serviceConnection[0] = new ServiceConnection() {
                         @Override
                         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {

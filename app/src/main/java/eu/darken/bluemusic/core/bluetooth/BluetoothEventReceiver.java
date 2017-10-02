@@ -9,7 +9,6 @@ import android.content.Intent;
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.core.Settings;
-import eu.darken.bluemusic.core.service.BlueMusicService;
 import eu.darken.bluemusic.core.service.ServiceHelper;
 import eu.darken.ommvplib.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
 import timber.log.Timber;
@@ -46,7 +45,7 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
 
         SourceDevice.Event deviceEvent = new SourceDevice.Event(sourceDevice, actionType);
 
-        Intent service = new Intent(context, BlueMusicService.class);
+        Intent service = ServiceHelper.getIntent(context);
         service.putExtra(EXTRA_DEVICE_EVENT, deviceEvent);
         final ComponentName componentName = ServiceHelper.startService(context, service);
         if (componentName != null) Timber.v("Service is already running.");

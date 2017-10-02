@@ -39,4 +39,8 @@
     <string name="action_call_volume">Call volume</string>
     <string name="description_visible_volume_adjustments">Show volume window while making adjustments.</string>
     <string name="label_visible_volume_adjustments">Visible adjustments</string>
+    <string name="label_volume_listener">Automatic volume listener</string>
+    <string name="description_volume_listener">Listen to volume changes and adjust settings for connected devices.</string>
+    <string name="label_general">General</string>
+    <string name="label_other">Other</string>
 </resources>

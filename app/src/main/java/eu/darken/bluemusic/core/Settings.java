@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import javax.inject.Inject;
 
 public class Settings {
+    public static final String PREFKEY_VOLUMELISTENER = "core.volume.changelistener";
     public static final long DEFAULT_DELAY = 5000;
     private final SharedPreferences preferences;
 
@@ -20,7 +21,11 @@ public class Settings {
         return preferences.getBoolean("core.volume.visibleadjustments", true);
     }
 
+    public boolean isVolumeChangeListenerEnabled() {
+        return preferences.getBoolean(PREFKEY_VOLUMELISTENER, false);
+    }
+
     public boolean isEnabled() {
-        return preferences.getBoolean("core.volume.enabled", true);
+        return preferences.getBoolean("core.enabled", true);
     }
 }

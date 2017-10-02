@@ -15,6 +15,7 @@ import javax.inject.Inject;
 
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.util.dagger.ServiceScope;
+import timber.log.Timber;
 
 @ServiceScope
 public class ServiceHelper {
@@ -45,11 +46,17 @@ public class ServiceHelper {
     }
 
     public void startForeground() {
+        Timber.v("startForeground()");
         service.startForeground(NOTIFICATION_ID, builder.build());
     }
 
     public void stopForeground() {
+        Timber.v("stopForeground");
         service.stopForeground(true);
+    }
+
+    public static Intent getIntent(Context context) {
+        return new Intent(context, BlueMusicService.class);
     }
 
     public static ComponentName startService(Context context, Intent intent) {
@@ -58,5 +65,9 @@ public class ServiceHelper {
         } else {
             return context.startService(intent);
         }
+    }
+
+    public static boolean stopService(Context context, Intent intent) {
+        return context.stopService(intent);
     }
 }

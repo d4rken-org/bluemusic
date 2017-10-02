@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="core.volume.enabled"
-        android:summary="@string/description_app_enabled"
-        android:title="@string/label_app_enabled"/>
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="core.volume.visibleadjustments"
-        android:summary="@string/description_visible_volume_adjustments"
-        android:title="@string/label_visible_volume_adjustments"/>
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="core.bugreporting.enabled"
-        android:summary="@string/description_bug_reports"
-        android:title="@string/label_bug_reports"/>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+                  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/label_general">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="core.volume.enabled"
+            android:summary="@string/description_app_enabled"
+            android:title="@string/label_app_enabled"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="core.volume.visibleadjustments"
+            android:summary="@string/description_visible_volume_adjustments"
+            android:title="@string/label_visible_volume_adjustments"/>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="core.volume.changelistener"
+            android:summary="@string/description_volume_listener"
+            android:title="@string/label_volume_listener"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/label_other"
+        app:title="@string/label_other">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="core.bugreporting.enabled"
+            android:summary="@string/description_bug_reports"
+            android:title="@string/label_bug_reports"/>
+    </PreferenceCategory>
 </PreferenceScreen>
