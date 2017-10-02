@@ -10,6 +10,7 @@ public class DeviceConfig extends RealmObject {
     long lastConnected;
 
     Long actionDelay;
+    Long adjustmentDelay;
 
     Float musicVolume;
     Float callVolume;

@@ -139,26 +139,53 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
 
     @SuppressLint("InflateParams")
     @Override
-    public void onEditDelay(ManagedDevice device) {
+    public void onEditReactionDelay(ManagedDevice device) {
         View container = getLayoutInflater().inflate(R.layout.view_dialog_delay, null);
         EditText input = container.findViewById(R.id.input);
-        input.setText(device.getActionDelay() != null ? String.valueOf(device.getActionDelay()) : String.valueOf(Settings.DEFAULT_DELAY));
+        input.setText(device.getActionDelay() != null ? String.valueOf(device.getActionDelay()) : String.valueOf(Settings.DEFAULT_REACTION_DELAY));
         new AlertDialog.Builder(getContext())
-                .setTitle(R.string.action_edit_delay)
-                .setMessage(R.string.msg_action_delay)
-                .setIcon(R.drawable.ic_av_timer_white_24dp)
+                .setTitle(R.string.label_reaction_delay)
+                .setMessage(R.string.description_reaction_delay)
+                .setIcon(R.drawable.ic_timer_white_24dp)
                 .setView(container)
                 .setPositiveButton(R.string.action_set, (dialogInterface, i) -> {
                     try {
                         final long delay = Long.parseLong(input.getText().toString());
-                        getPresenter().editDelay(device, delay);
+                        getPresenter().editReactionDelay(device, delay);
                     } catch (NumberFormatException e) {
                         Timber.e(e);
                         Preconditions.checkNotNull(getView());
                         Snackbar.make(getView(), R.string.msg_invalid_input, Snackbar.LENGTH_SHORT).show();
                     }
                 })
-                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().editDelay(device, 0))
+                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().editReactionDelay(device, -1))
+                .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {
+                })
+                .show();
+    }
+
+    @SuppressLint("InflateParams")
+    @Override
+    public void onEditAdjustmentDelay(ManagedDevice device) {
+        View container = getLayoutInflater().inflate(R.layout.view_dialog_delay, null);
+        EditText input = container.findViewById(R.id.input);
+        input.setText(device.getAdjustmentDelay() != null ? String.valueOf(device.getAdjustmentDelay()) : String.valueOf(Settings.DEFAULT_ADJUSTMENT_DELAY));
+        new AlertDialog.Builder(getContext())
+                .setTitle(R.string.label_adjustment_delay)
+                .setMessage(R.string.description_adjustment_delay)
+                .setIcon(R.drawable.ic_av_timer_white_24dp)
+                .setView(container)
+                .setPositiveButton(R.string.action_set, (dialogInterface, i) -> {
+                    try {
+                        final long delay = Long.parseLong(input.getText().toString());
+                        getPresenter().editAdjustmentDelay(device, delay);
+                    } catch (NumberFormatException e) {
+                        Timber.e(e);
+                        Preconditions.checkNotNull(getView());
+                        Snackbar.make(getView(), R.string.msg_invalid_input, Snackbar.LENGTH_SHORT).show();
+                    }
+                })
+                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().editAdjustmentDelay(device, -1))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {
                 })
                 .show();

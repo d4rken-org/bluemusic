@@ -1,52 +1,38 @@
 package eu.darken.bluemusic.core.service.modules;
 
+import android.support.annotation.Nullable;
+
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.core.Settings;
-import eu.darken.bluemusic.core.bluetooth.SourceDevice;
 import eu.darken.bluemusic.core.database.DeviceManager;
 import eu.darken.bluemusic.core.database.ManagedDevice;
-import eu.darken.bluemusic.core.service.ActionModule;
 import eu.darken.bluemusic.core.service.StreamHelper;
 import eu.darken.bluemusic.util.dagger.ServiceScope;
-import timber.log.Timber;
 
 @ServiceScope
-public class CallVolumeModule extends ActionModule {
-    private final Settings settings;
+public class CallVolumeModule extends BaseVolumeModel {
     private final StreamHelper streamHelper;
 
     @Inject
-    public CallVolumeModule(
-            DeviceManager deviceManager,
-            Settings settings,
-            StreamHelper streamHelper
-    ) {
-        super(deviceManager);
-        this.settings = settings;
+    public CallVolumeModule(DeviceManager deviceManager, Settings settings, StreamHelper streamHelper) {
+        super(deviceManager, settings, streamHelper);
         this.streamHelper = streamHelper;
     }
 
+    @Nullable
     @Override
-    public void handle(ManagedDevice device, SourceDevice.Event event) {
-        if (event.getType() != SourceDevice.Event.Type.CONNECTED) return;
-        Timber.d("Desired CALL volume is %s", device.getCallVolume());
-        if (device.getCallVolume() == null) {
-            Timber.d("Call volume adjustment is disabled.");
-            return;
-        }
-        Float percentageVoice = device.getCallVolume();
-        if (percentageVoice != -1) {
-            try {
-                Long delay = device.getActionDelay();
-                if (delay == null) delay = Settings.DEFAULT_DELAY;
-                Timber.d("Delaying adjustment by %s ms.", delay);
-                Thread.sleep(delay);
-            } catch (InterruptedException e) { Timber.e(e, null); }
+    Float getDesiredVolume(ManagedDevice device) {
+        return device.getCallVolume();
+    }
 
-            streamHelper.setVolumeGradually(streamHelper.getCallId(), percentageVoice, settings.isVolumeAdjustedVisibly());
-        } else {
-            Timber.d("Device %s has no specified target volume yet, skipping adjustments.", device);
-        }
+    @Override
+    String getStreamName() {
+        return "Call";
+    }
+
+    @Override
+    int getStreamId() {
+        return streamHelper.getCallId();
     }
 }

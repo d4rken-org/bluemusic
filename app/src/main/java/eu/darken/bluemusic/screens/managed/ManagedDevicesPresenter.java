@@ -60,7 +60,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
-                    streamHelper.setVolumeInstant(streamHelper.getMusicId(), device.getRealMusicVolume(), true);
+                    streamHelper.setVolume(streamHelper.getMusicId(), device.getMusicVolume(), true, 0);
                 });
     }
 
@@ -70,7 +70,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
-                    streamHelper.setVolumeInstant(streamHelper.getCallId(), device.getRealVoiceVolume(), true);
+                    streamHelper.setVolume(streamHelper.getCallId(), device.getCallVolume(), true, 0);
                 });
     }
 
@@ -80,9 +80,17 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 .subscribe();
     }
 
-    void editDelay(ManagedDevice device, long delay) {
-        if (delay < 0) delay = 0;
-        device.setActionDelay(delay == 0 ? null : delay);
+    void editReactionDelay(ManagedDevice device, long delay) {
+        if (delay < -1) delay = -1;
+        device.setActionDelay(delay == -1 ? null : delay);
+        deviceManager.update(Collections.singleton(device))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+    }
+
+    void editAdjustmentDelay(ManagedDevice device, long delay) {
+        if (delay < -1) delay = -1;
+        device.setAdjustmentDelay(delay == -1 ? null : delay);
         deviceManager.update(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe();

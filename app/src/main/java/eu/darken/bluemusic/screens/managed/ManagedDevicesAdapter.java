@@ -46,7 +46,9 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
 
         void onDeleteDevice(ManagedDevice device);
 
-        void onEditDelay(ManagedDevice device);
+        void onEditReactionDelay(ManagedDevice device);
+
+        void onEditAdjustmentDelay(ManagedDevice device);
     }
 
     static class ManagedDeviceVH extends BasicViewHolder<ManagedDevice> {
@@ -59,9 +61,9 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
         @BindView(R.id.music_seekbar) SeekBar musicSeekbar;
         @BindView(R.id.music_counter) TextView musicCounter;
 
-        @BindView(R.id.voice_container) View voiceContainer;
-        @BindView(R.id.voice_seekbar) SeekBar voiceSeekbar;
-        @BindView(R.id.voice_counter) TextView voiceCounter;
+        @BindView(R.id.call_container) View voiceContainer;
+        @BindView(R.id.call_seekbar) SeekBar voiceSeekbar;
+        @BindView(R.id.call_counter) TextView voiceCounter;
         private Callback callback;
 
         ManagedDeviceVH(@NonNull ViewGroup parent, Callback callback) {
@@ -129,7 +131,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
 
             voiceContainer.setVisibility(item.getCallVolume() != null ? View.VISIBLE : View.GONE);
             if (item.getCallVolume() != null) {
-                voiceSeekbar.setMax(item.getMaxVoiceVolume());
+                voiceSeekbar.setMax(item.getMaxCallVolume());
                 voiceSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -146,7 +148,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                         callback.onCallVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
                     }
                 });
-                voiceSeekbar.setProgress(item.getRealVoiceVolume());
+                voiceSeekbar.setProgress(item.getRealCallVolume());
             }
         }
 
@@ -157,8 +159,11 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                     case R.id.delete:
                         callback.onDeleteDevice(getItem());
                         return true;
-                    case R.id.edit_delay:
-                        callback.onEditDelay(getItem());
+                    case R.id.edit_reaction_delay:
+                        callback.onEditReactionDelay(getItem());
+                        return true;
+                    case R.id.edit_adjustment_duration:
+                        callback.onEditAdjustmentDelay(getItem());
                         return true;
                     case R.id.toggle_music_volume:
                         callback.onToggleMusicVolumeAction(getItem());

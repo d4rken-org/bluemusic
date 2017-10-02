@@ -66,7 +66,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/caption"
             android:layout_marginTop="16dp"
             android:orientation="vertical">
 
@@ -102,7 +101,7 @@
 
 
             <LinearLayout
-                android:id="@+id/voice_container"
+                android:id="@+id/call_container"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
                 android:layout_marginTop="8dp"
@@ -117,14 +116,14 @@
                     tools:ignore="HardcodedText"/>
 
                 <SeekBar
-                    android:id="@+id/voice_seekbar"
+                    android:id="@+id/call_seekbar"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:progress="0"/>
 
                 <TextView
-                    android:id="@+id/voice_counter"
+                    android:id="@+id/call_counter"
                     style="@style/TextAppearance.AppCompat.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

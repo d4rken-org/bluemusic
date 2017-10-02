@@ -69,7 +69,7 @@ public class DeviceManager {
 
                         ManagedDevice managed = new ManagedDevice(paired.get(config.address), realm.copyFromRealm(config));
                         managed.setMaxMusicVolume(streamHelper.getMaxVolume(streamHelper.getMusicId()));
-                        managed.setMaxVoiceVolume(streamHelper.getMaxVolume(streamHelper.getCallId()));
+                        managed.setMaxCallVolume(streamHelper.getMaxVolume(streamHelper.getCallId()));
                         managed.setActive(active.containsKey(managed.getAddress()));
 
                         if (active.containsKey(config.address)) config.lastConnected = System.currentTimeMillis();
@@ -139,7 +139,7 @@ public class DeviceManager {
 
                         ManagedDevice newDevice = new ManagedDevice(device, realm.copyFromRealm(config));
                         newDevice.setMaxMusicVolume(streamHelper.getMaxVolume(streamHelper.getMusicId()));
-                        newDevice.setMaxVoiceVolume(streamHelper.getMaxVolume(streamHelper.getCallId()));
+                        newDevice.setMaxCallVolume(streamHelper.getMaxVolume(streamHelper.getCallId()));
                         newDevice.setActive(active.containsKey(newDevice.getAddress()));
                         Timber.v("Loaded: %s", newDevice);
                         realm.commitTransaction();

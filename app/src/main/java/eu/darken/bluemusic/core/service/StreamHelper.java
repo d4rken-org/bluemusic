@@ -51,26 +51,25 @@ public class StreamHelper {
         return (float) audioManager.getStreamVolume(streamId) / audioManager.getStreamMaxVolume(streamId);
     }
 
-    public void setVolumeInstant(int streamId, float percent, boolean visible) {
-        final int target = (int) (getMaxVolume(streamId) * percent);
-        doSetVolume(streamId, target, visible ? AudioManager.FLAG_SHOW_UI : 0);
-    }
-
-    public void setVolumeGradually(int streamId, float percent, boolean visible) {
+    public void setVolume(int streamId, float percent, boolean visible, long delay) {
         final int currentVolume = getCurrentVolume(streamId);
         final int max = getMaxVolume(streamId);
-        final int target = (int) (max * percent);
+        final int target = Math.round(max * percent);
         if (currentVolume != target) {
-            Timber.d("Adjusting volume (stream=%d, target=%d, current=%d, max=%d).", streamId, target, currentVolume, max);
-            if (currentVolume < target) {
-                for (int volumeStep = currentVolume; volumeStep <= target; volumeStep++) {
-                    doSetVolume(streamId, volumeStep, visible ? AudioManager.FLAG_SHOW_UI : 0);
-                    try { Thread.sleep(200); } catch (InterruptedException e) { Timber.e(e, null); }
-                }
+            if (delay == 0) {
+                doSetVolume(streamId, target, visible ? AudioManager.FLAG_SHOW_UI : 0);
             } else {
-                for (int volumeStep = currentVolume; volumeStep >= target; volumeStep--) {
-                    doSetVolume(streamId, volumeStep, visible ? AudioManager.FLAG_SHOW_UI : 0);
-                    try { Thread.sleep(200); } catch (InterruptedException e) { Timber.e(e, null); }
+                Timber.d("Adjusting volume (stream=%d, target=%d, current=%d, max=%d).", streamId, target, currentVolume, max);
+                if (currentVolume < target) {
+                    for (int volumeStep = currentVolume; volumeStep <= target; volumeStep++) {
+                        doSetVolume(streamId, volumeStep, visible ? AudioManager.FLAG_SHOW_UI : 0);
+                        try { Thread.sleep(delay); } catch (InterruptedException e) { Timber.e(e, null); }
+                    }
+                } else {
+                    for (int volumeStep = currentVolume; volumeStep >= target; volumeStep--) {
+                        doSetVolume(streamId, volumeStep, visible ? AudioManager.FLAG_SHOW_UI : 0);
+                        try { Thread.sleep(delay); } catch (InterruptedException e) { Timber.e(e, null); }
+                    }
                 }
             }
         } else Timber.d("Target volume of %d already set.", target);

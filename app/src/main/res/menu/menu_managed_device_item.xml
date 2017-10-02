@@ -6,10 +6,13 @@
         android:title="@string/action_remove_device"/>
 
     <item
-        android:id="@+id/edit_delay"
+        android:id="@+id/edit_reaction_delay"
+        android:icon="@drawable/ic_timer_white_24dp"
+        android:title="@string/label_reaction_delay"/>
+    <item
+        android:id="@+id/edit_adjustment_duration"
         android:icon="@drawable/ic_av_timer_white_24dp"
-        android:title="@string/action_edit_delay"/>
-
+        android:title="@string/label_adjustment_delay"/>
     <item
         android:id="@+id/toggle_music_volume"
         android:checkable="true"
@@ -23,4 +26,5 @@
         android:checked="false"
         android:icon="@drawable/ic_headset_mic_white_24dp"
         android:title="@string/action_call_volume"/>
+
 </menu>

@@ -6,8 +6,9 @@ import android.content.SharedPreferences;
 import javax.inject.Inject;
 
 public class Settings {
-    public static final String PREFKEY_VOLUMELISTENER = "core.volume.changelistener";
-    public static final long DEFAULT_DELAY = 5000;
+    static final String PREFKEY_VOLUMELISTENER = "core.volume.changelistener";
+    public static final long DEFAULT_REACTION_DELAY = 5000;
+    public static final long DEFAULT_ADJUSTMENT_DELAY = 250;
     private final SharedPreferences preferences;
 
     @Inject

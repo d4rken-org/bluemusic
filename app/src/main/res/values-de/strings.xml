@@ -20,7 +20,7 @@
     <string name="label_app_enabled">App aktivieren</string>
     <string name="description_app_enabled">Betrifft die Fähigkeit der App auf Lautstärken- und Bluetooth-Ereignisse zu reagieren.</string>
 
-    <string name="label_reaction_delay">Verzögerung der Anpassung</string>
+    <string name="label_reaction_delay">Anpassungsverzögerung</string>
     <string name="description_reaction_delay">Zeit in Millisekunden bis die Lautstärke angepasst wird, wenn ein Gerät sich verbindet.</string>
 
     <string name="label_bug_reports">Fehlerberichte</string>

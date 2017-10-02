@@ -13,7 +13,7 @@ public class ManagedDevice {
     private final DeviceConfig deviceConfig;
     private boolean isActive;
     private int maxMusicVolume;
-    private int maxVoiceVolume;
+    private int maxCallVolume;
 
     ManagedDevice(SourceDevice sourceDevice, DeviceConfig deviceConfig) {
         this.sourceDevice = sourceDevice;
@@ -62,7 +62,7 @@ public class ManagedDevice {
 
     @Override
     public String toString() {
-        return String.format(Locale.US, "Device(active=%b, address=%s, name=%s, musicVolume=%.2f, voiceVolume=%.2f)",
+        return String.format(Locale.US, "Device(active=%b, address=%s, name=%s, musicVolume=%.2f, callVolume=%.2f)",
                 isActive(), getAddress(), getName(), getMusicVolume(), getCallVolume());
     }
 
@@ -74,16 +74,16 @@ public class ManagedDevice {
         this.maxMusicVolume = maxMusicVolume;
     }
 
-    public int getMaxVoiceVolume() {
-        return maxVoiceVolume;
+    public int getMaxCallVolume() {
+        return maxCallVolume;
     }
 
-    void setMaxVoiceVolume(int maxVoiceVolume) {
-        this.maxVoiceVolume = maxVoiceVolume;
+    void setMaxCallVolume(int maxCallVolume) {
+        this.maxCallVolume = maxCallVolume;
     }
 
-    public void setCallVolume(Float voiceVolume) {
-        deviceConfig.callVolume = voiceVolume;
+    public void setCallVolume(Float callVolume) {
+        deviceConfig.callVolume = callVolume;
     }
 
     public Float getCallVolume() {
@@ -94,8 +94,8 @@ public class ManagedDevice {
         return Math.round(getMaxMusicVolume() * getMusicVolume());
     }
 
-    public int getRealVoiceVolume() {
-        return Math.round(getMaxVoiceVolume() * getCallVolume());
+    public int getRealCallVolume() {
+        return Math.round(getMaxCallVolume() * getCallVolume());
     }
 
     public void setActionDelay(Long actionDelay) {
@@ -104,6 +104,14 @@ public class ManagedDevice {
 
     public Long getActionDelay() {
         return deviceConfig.actionDelay;
+    }
+
+    public void setAdjustmentDelay(Long adjustmentDelay) {
+        deviceConfig.adjustmentDelay = adjustmentDelay;
+    }
+
+    public Long getAdjustmentDelay() {
+        return deviceConfig.adjustmentDelay;
     }
 
     public static class Action {

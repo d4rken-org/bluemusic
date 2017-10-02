@@ -20,7 +20,7 @@
     <string name="label_app_enabled">App enabled</string>
     <string name="description_app_enabled">Toggles the apps ability to react to volume and bluetooth events.</string>
 
-    <string name="label_reaction_delay">Adjustment delay</string>
+    <string name="label_reaction_delay">Reaction delay</string>
     <string name="description_reaction_delay">Time in milliseconds until volume is adjusted when a device connects.</string>
 
     <string name="label_bug_reports">Bug reports</string>
@@ -28,16 +28,14 @@
     <string name="label_add_device">Add device</string>
     <string name="progress_just_a_moment_please">Just a moment, please.</string>
     <string name="action_remove_device">Remove device</string>
-    <string name="action_edit_delay">Edit delay</string>
     <string name="notification_channel_label_status">Status</string>
     <string name="action_set">Set</string>
     <string name="action_cancel">Cancel</string>
     <string name="msg_invalid_input">Invalid input</string>
-    <string name="msg_action_delay">How many milliseconds should we wait before reacting to this device?</string>
     <string name="action_reset">Reset</string>
     <string name="action_music_volume">Music volume</string>
     <string name="action_call_volume">Call volume</string>
-    <string name="description_visible_volume_adjustments">Show volume window while making adjustments.</string>
+    <string name="description_visible_volume_adjustments">Show the system\'s volume window while making adjustments.</string>
     <string name="label_visible_volume_adjustments">Visible adjustments</string>
     <string name="label_volume_listener">Volume changes</string>
     <string name="description_volume_listener">Listen and save volume changes that have been caused by other apps or volume buttons.</string>
@@ -46,4 +44,7 @@
     <string name="label_no_connected_devices">No devices connected</string>
     <string name="status_idle">Idle</string>
     <string name="status_adjusting_volumes">Adjusting volumes</string>
+
+    <string name="label_adjustment_delay">Adjustment delay</string>
+    <string name="description_adjustment_delay">The delay between each volume adjustment step in milliseconds. A delay 0 means instantly setting the desired volume.</string>
 </resources>
