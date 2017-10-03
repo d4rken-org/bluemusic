@@ -3,6 +3,7 @@ package eu.darken.bluemusic.core.database;
 import android.support.annotation.NonNull;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,9 +42,11 @@ public class DeviceManager {
 
     @NonNull
     public Observable<Map<String, ManagedDevice>> observe() {
-        Observable.defer(() -> loadDevices(true).toObservable())
-                .subscribeOn(Schedulers.computation())
-                .subscribe();
+        if (deviceObs.getValue() == null) {
+            Observable.defer(() -> loadDevices(true).toObservable())
+                    .subscribeOn(Schedulers.computation())
+                    .subscribe();
+        }
         return deviceObs;
     }
 
@@ -105,34 +108,32 @@ public class DeviceManager {
                 });
     }
 
-    public Single<ManagedDevice> addNewDevice(SourceDevice device) {
+    public Single<ManagedDevice> addNewDevice(SourceDevice toAdd) {
         return Single.zip(
                 bluetoothSource.getConnectedDevices(),
                 bluetoothSource.getPairedDevices(),
                 (active, paired) -> {
-
-                    if (!paired.containsKey(device.getAddress())) {
-                        Timber.e("Device isn't paired device: %s", device);
+                    if (!paired.containsKey(toAdd.getAddress())) {
+                        Timber.e("Device isn't paired device: %s", toAdd);
                         throw new IllegalArgumentException();
                     }
 
                     try (Realm realm = getRealm()) {
-
                         realm.beginTransaction();
 
-                        DeviceConfig config = realm.where(DeviceConfig.class).equalTo("address", device.getAddress()).findFirst();
+                        DeviceConfig config = realm.where(DeviceConfig.class).equalTo("address", toAdd.getAddress()).findFirst();
                         if (config != null) {
-                            Timber.e("Trying to add already known device: %s (%s)", device, config);
+                            Timber.e("Trying to add already known device: %s (%s)", toAdd, config);
                             throw new IllegalArgumentException();
                         }
 
-                        config = realm.createObject(DeviceConfig.class, device.getAddress());
+                        config = realm.createObject(DeviceConfig.class, toAdd.getAddress());
                         config.musicVolume = streamHelper.getVolumePercentage(streamHelper.getMusicId());
                         config.callVolume = null;
 
                         if (active.containsKey(config.address)) config.lastConnected = System.currentTimeMillis();
 
-                        ManagedDevice newDevice = new ManagedDevice(device, realm.copyFromRealm(config));
+                        ManagedDevice newDevice = new ManagedDevice(toAdd, realm.copyFromRealm(config));
                         newDevice.setMaxMusicVolume(streamHelper.getMaxVolume(streamHelper.getMusicId()));
                         newDevice.setMaxCallVolume(streamHelper.getMaxVolume(streamHelper.getCallId()));
                         newDevice.setActive(active.containsKey(newDevice.getAddress()));
@@ -141,7 +142,8 @@ public class DeviceManager {
                         return newDevice;
                     }
                 })
-                .doOnError(throwable -> Timber.e(throwable, null));
+                .doOnError(throwable -> Timber.e(throwable, null))
+                .doOnSuccess(newDevice -> update(Collections.singleton(newDevice)).subscribe());
     }
 
     public Completable removeDevice(ManagedDevice device) {
