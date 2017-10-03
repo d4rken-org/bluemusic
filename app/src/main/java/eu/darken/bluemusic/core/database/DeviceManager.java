@@ -53,19 +53,14 @@ public class DeviceManager {
                 bluetoothSource.getPairedDevices(),
                 (active, paired) -> {
                     final Map<String, ManagedDevice> result = new HashMap<>();
+                    if (!bluetoothSource.isEnabled().blockingGet()) return result;
 
                     Realm realm = getRealm();
                     final RealmResults<DeviceConfig> deviceConfigs = realm.where(DeviceConfig.class).findAll();
 
                     realm.beginTransaction();
                     for (DeviceConfig config : deviceConfigs) {
-                        if (!paired.containsKey(config.address)) {
-                            if (bluetoothSource.isEnabled()) {
-                                Timber.i("Deleted stale config from %s", config.address);
-                                config.deleteFromRealm();
-                            }
-                            continue;
-                        }
+                        if (!paired.containsKey(config.address)) continue;
 
                         ManagedDevice managed = new ManagedDevice(paired.get(config.address), realm.copyFromRealm(config));
                         managed.setMaxMusicVolume(streamHelper.getMaxVolume(streamHelper.getMusicId()));

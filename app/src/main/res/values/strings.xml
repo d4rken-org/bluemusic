@@ -71,4 +71,5 @@
     <string name="desc_intro_global_settings">Use the global configuration to adapt this app to fit your personal preferences and Android device.</string>
     <string name="desc_intro_primary_purpose">This app reacts to Bluetooth devices. It\'s primary purpose is to change the volume depending on which Bluetooth device is connected.</string>
     <string name="desc_intro_tap_the_button">Start by adding your first device.</string>
+    <string name="desc_bluetooth_is_disabled">Bluetooth is disabled.</string>
 </resources>

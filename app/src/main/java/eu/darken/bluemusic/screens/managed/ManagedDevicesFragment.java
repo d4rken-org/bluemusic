@@ -41,6 +41,8 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
 
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
     @BindView(R.id.empty_info) View emptyInfo;
+    @BindView(R.id.bluetooth_disabled_container) View bluetoothDisabledContainer;
+    @BindView(R.id.bluetooth_enabled_container) View bluetoothEnabledContainer;
     @BindView(R.id.fab) FloatingActionButton fab;
 
     Unbinder unbinder;
@@ -144,6 +146,13 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
     }
 
     @Override
+    public void displayBluetoothState(boolean enabled) {
+        bluetoothDisabledContainer.setVisibility(enabled ? View.GONE : View.VISIBLE);
+        bluetoothEnabledContainer.setVisibility(enabled ? View.VISIBLE : View.GONE);
+        fab.setVisibility(enabled ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
     public void updateUpgradeState(boolean isProVersion) {
         this.isProVersion = isProVersion;
         getActivity().invalidateOptionsMenu();
@@ -153,6 +162,7 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
     public void displayDevices(List<ManagedDevice> managedDevices) {
         adapter.setData(managedDevices);
         adapter.notifyDataSetChanged();
+
         recyclerView.setVisibility(managedDevices.isEmpty() ? View.GONE : View.VISIBLE);
         emptyInfo.setVisibility(managedDevices.isEmpty() ? View.VISIBLE : View.GONE);
     }

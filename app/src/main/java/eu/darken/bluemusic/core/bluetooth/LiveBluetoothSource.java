@@ -34,8 +34,8 @@ class LiveBluetoothSource implements BluetoothSource {
     }
 
     @Override
-    public boolean isEnabled() {
-        return adapter.isEnabled();
+    public Single<Boolean> isEnabled() {
+        return Single.create(e -> e.onSuccess(adapter.isEnabled()));
     }
 
     @Override

@@ -9,5 +9,5 @@ public interface BluetoothSource {
 
     Single<Map<String, SourceDevice>> getConnectedDevices();
 
-    boolean isEnabled();
+    Single<Boolean> isEnabled();
 }

@@ -7,10 +7,12 @@ import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.IAPHelper;
+import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
 import eu.darken.bluemusic.core.database.DeviceManager;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.core.service.StreamHelper;
@@ -18,21 +20,25 @@ import eu.darken.ommvplib.base.Presenter;
 import eu.darken.ommvplib.injection.ComponentPresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.Disposables;
 import io.reactivex.schedulers.Schedulers;
 
 @ManagedDevicesComponent.Scope
 public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPresenter.View, ManagedDevicesComponent> {
     private final StreamHelper streamHelper;
     private final IAPHelper iapHelper;
+    private final BluetoothSource bluetoothSource;
     private DeviceManager deviceManager;
-    private Disposable deviceSub;
-    private Disposable upgradeSub;
+    private Disposable deviceSub = Disposables.disposed();
+    private Disposable upgradeSub = Disposables.disposed();
+    private Disposable bluetoothSub = Disposables.disposed();
 
     @Inject
-    ManagedDevicesPresenter(DeviceManager deviceManager, StreamHelper streamHelper, IAPHelper iapHelper) {
+    ManagedDevicesPresenter(DeviceManager deviceManager, StreamHelper streamHelper, IAPHelper iapHelper, BluetoothSource bluetoothSource) {
         this.deviceManager = deviceManager;
         this.streamHelper = streamHelper;
         this.iapHelper = iapHelper;
+        this.bluetoothSource = bluetoothSource;
     }
 
     @Override
@@ -44,6 +50,14 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
     public void onBindChange(@Nullable View view) {
         super.onBindChange(view);
         if (view != null) {
+
+            bluetoothSub = bluetoothSource.isEnabled()
+                    .delay(1, TimeUnit.SECONDS)
+                    .repeat()
+                    .subscribeOn(Schedulers.computation())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(enabled -> onView(v -> v.displayBluetoothState(enabled)));
+
             upgradeSub = iapHelper.isProVersion()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -59,8 +73,9 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(view::displayDevices);
         } else {
-            if (deviceSub != null) deviceSub.dispose();
-            if (upgradeSub != null) upgradeSub.dispose();
+            deviceSub.dispose();
+            upgradeSub.dispose();
+            bluetoothSub.dispose();
         }
     }
 
@@ -145,6 +160,8 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
         void updateUpgradeState(boolean isProVersion);
 
         void displayDevices(List<ManagedDevice> managedDevices);
+
+        void displayBluetoothState(boolean enabled);
 
     }
 }

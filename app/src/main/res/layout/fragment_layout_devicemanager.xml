@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -15,17 +16,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:alpha="0.4"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="invisible">
+        android:visibility="invisible"
+        tools:visibility="visible">
 
-        <android.support.v4.widget.ContentLoadingProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_sentiment_very_satisfied_white_24dp"
+            tools:ignore="ContentDescription"/>
 
         <TextView
+            style="@style/TextAppearance.AppCompat.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:text="@string/label_just_a_moment_please"/>
+
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
