@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.screens.managed;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import eu.darken.bluemusic.IAPHelper;
 import eu.darken.bluemusic.core.database.DeviceManager;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.core.service.StreamHelper;
@@ -21,14 +23,16 @@ import io.reactivex.schedulers.Schedulers;
 @ManagedDevicesComponent.Scope
 public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPresenter.View, ManagedDevicesComponent> {
     private final StreamHelper streamHelper;
+    private final IAPHelper iapHelper;
     private DeviceManager deviceManager;
-    private View view;
-    private Disposable disposable;
+    private Disposable deviceSub;
+    private Disposable upgradeSub;
 
     @Inject
-    ManagedDevicesPresenter(DeviceManager deviceManager, StreamHelper streamHelper) {
+    ManagedDevicesPresenter(DeviceManager deviceManager, StreamHelper streamHelper, IAPHelper iapHelper) {
         this.deviceManager = deviceManager;
         this.streamHelper = streamHelper;
+        this.iapHelper = iapHelper;
     }
 
     @Override
@@ -38,9 +42,14 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
 
     @Override
     public void onBindChange(@Nullable View view) {
-        this.view = view;
+        super.onBindChange(view);
         if (view != null) {
-            disposable = deviceManager.observe()
+            upgradeSub = iapHelper.isProVersion()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(isProVersion -> ManagedDevicesPresenter.this.onView(v -> v.updateUpgradeState(isProVersion)));
+
+            deviceSub = deviceManager.observe()
                     .subscribeOn(Schedulers.computation())
                     .map(managedDevices -> {
                         List<ManagedDevice> sorted = new ArrayList<>(managedDevices.values());
@@ -50,7 +59,8 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(view::displayDevices);
         } else {
-            if (disposable != null) disposable.dispose();
+            if (deviceSub != null) deviceSub.dispose();
+            if (upgradeSub != null) upgradeSub.dispose();
         }
     }
 
@@ -118,7 +128,12 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 });
     }
 
+    void onUpgradeClicked(Activity activity) {
+        iapHelper.buyProVersion(activity);
+    }
+
     interface View extends Presenter.View {
+        void updateUpgradeState(boolean isProVersion);
 
         void displayDevices(List<ManagedDevice> managedDevices);
 

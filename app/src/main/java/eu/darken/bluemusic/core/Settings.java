@@ -6,7 +6,8 @@ import android.content.SharedPreferences;
 import javax.inject.Inject;
 
 public class Settings {
-    static final String PREFKEY_VOLUMELISTENER = "core.volume.changelistener";
+    private static final String PREFKEY_VOLUMELISTENER = "core.volume.changelistener";
+    public static final String PREFKEY_VISIBLE_ADJUSTMENTS = "core.volume.visibleadjustments";
     public static final long DEFAULT_REACTION_DELAY = 5000;
     public static final long DEFAULT_ADJUSTMENT_DELAY = 250;
     private final SharedPreferences preferences;
@@ -19,7 +20,7 @@ public class Settings {
     }
 
     public boolean isVolumeAdjustedVisibly() {
-        return preferences.getBoolean("core.volume.visibleadjustments", true);
+        return preferences.getBoolean(PREFKEY_VISIBLE_ADJUSTMENTS, true);
     }
 
     public boolean isVolumeChangeListenerEnabled() {

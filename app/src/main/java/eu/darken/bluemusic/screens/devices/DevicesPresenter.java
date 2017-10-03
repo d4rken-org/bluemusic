@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.screens.devices;
 
+import android.app.Activity;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import eu.darken.bluemusic.IAPHelper;
 import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
 import eu.darken.bluemusic.core.bluetooth.SourceDevice;
 import eu.darken.bluemusic.core.database.DeviceManager;
@@ -14,6 +16,7 @@ import eu.darken.ommvplib.base.Presenter;
 import eu.darken.ommvplib.injection.ComponentPresenter;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
@@ -21,18 +24,29 @@ import timber.log.Timber;
 public class DevicesPresenter extends ComponentPresenter<DevicesPresenter.View, DevicesComponent> {
     private final DeviceManager deviceManager;
     private final BluetoothSource bluetoothSource;
+    private final IAPHelper iapHelper;
+    private Disposable upgradeSub;
+    private boolean isProVersion = false;
+    private int managedDevices = 0;
 
     @Inject
-    DevicesPresenter(DeviceManager deviceManager, BluetoothSource bluetoothSource) {
+    DevicesPresenter(DeviceManager deviceManager, BluetoothSource bluetoothSource, IAPHelper iapHelper) {
         this.deviceManager = deviceManager;
         this.bluetoothSource = bluetoothSource;
+        this.iapHelper = iapHelper;
     }
 
     @Override
     public void onBindChange(@Nullable View view) {
         super.onBindChange(view);
         if (view != null) {
+            upgradeSub = iapHelper.isProVersion()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(isProVersion -> DevicesPresenter.this.isProVersion = isProVersion);
             updateList();
+        } else {
+            if (upgradeSub != null) upgradeSub.dispose();
         }
     }
 
@@ -41,9 +55,12 @@ public class DevicesPresenter extends ComponentPresenter<DevicesPresenter.View, 
                 deviceManager.loadDevices(false),
                 bluetoothSource.getPairedDevices(),
                 (known, paired) -> {
-                    List<SourceDevice> devices = new ArrayList<>();
+                    managedDevices = 0;
+                    final List<SourceDevice> devices = new ArrayList<>();
                     for (SourceDevice d : paired.values()) {
-                        if (!known.containsKey(d.getAddress())) devices.add(d);
+                        if (!known.containsKey(d.getAddress())) {
+                            devices.add(d);
+                        } else managedDevices++;
                     }
                     return devices;
                 })
@@ -53,18 +70,27 @@ public class DevicesPresenter extends ComponentPresenter<DevicesPresenter.View, 
     }
 
     void onAddDevice(SourceDevice device) {
-        Timber.i("Adding new device: %s", device);
-        deviceManager.addNewDevice(device)
-                .doOnSubscribe(disposable -> onView(View::showProgress))
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((managedDevice, throwable) -> {
-                    if (throwable != null) {
-                        onView(v -> v.showError(throwable));
-                    } else {
-                        onView(View::closeScreen);
-                    }
-                });
+        if (!isProVersion && managedDevices > 2) {
+            onView(View::showUpgradeDialog);
+        } else {
+            Timber.i("Adding new device: %s", device);
+            deviceManager.addNewDevice(device)
+                    .doOnSubscribe(disposable -> onView(View::showProgress))
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe((managedDevice, throwable) -> {
+                        if (throwable != null) {
+                            onView(v -> v.showError(throwable));
+                        } else {
+                            onView(View::closeScreen);
+                        }
+                    });
+        }
     }
+
+    void onPurchaseUpgrade(Activity activity) {
+        iapHelper.buyProVersion(activity);
+    }
+
 
     public interface View extends Presenter.View {
         void showDevices(List<SourceDevice> devices);
@@ -72,6 +98,8 @@ public class DevicesPresenter extends ComponentPresenter<DevicesPresenter.View, 
         void showError(Throwable error);
 
         void showProgress();
+
+        void showUpgradeDialog();
 
         void closeScreen();
     }

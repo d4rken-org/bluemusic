@@ -45,6 +45,7 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
 
     Unbinder unbinder;
     private ManagedDevicesAdapter adapter;
+    private boolean isProVersion = false;
 
     public static Fragment newInstance() {
         return new ManagedDevicesFragment();
@@ -100,8 +101,23 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
     }
 
     @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.upgrade).setVisible(!isProVersion);
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.upgrade:
+                new AlertDialog.Builder(getContext())
+                        .setTitle(R.string.label_premium_version)
+                        .setMessage(R.string.msg_premium_upgrade_explanation)
+                        .setIcon(R.drawable.ic_stars_white_24dp)
+                        .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onUpgradeClicked(getActivity()))
+                        .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
+                        .show();
+                return true;
             case R.id.settings:
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.frame_content, new SettingsFragment())
@@ -125,6 +141,12 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
                 .replace(R.id.frame_content, new DevicesFragment())
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void updateUpgradeState(boolean isProVersion) {
+        this.isProVersion = isProVersion;
+        getActivity().invalidateOptionsMenu();
     }
 
     @Override

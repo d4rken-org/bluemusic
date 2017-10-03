@@ -48,4 +48,12 @@
     <string name="label_adjustment_delay">Adjustment delay</string>
     <string name="description_adjustment_delay">The delay between each volume adjustment step in milliseconds. A delay 0 means instantly setting the desired volume.</string>
     <string name="msg_empty_devices">No devices have been added yet.\nTap the button down there.</string>
+
+    <string name="label_premium_version">Premium version</string>
+    <string name="action_upgrade">Upgrade</string>
+
+    <string name="msg_premium_required_additional_devices">Managing additional devices requires the premium version.</string>
+    <string name="msg_premium_required_these_extra_options">These extra options unfortunately require the premium version of this app.</string>
+    <string name="msg_premium_upgrade_explanation">Buy the premium version to enable additional features and support development.</string>
+    <string name="label_premium_version_required">Premium version required</string>
 </resources>

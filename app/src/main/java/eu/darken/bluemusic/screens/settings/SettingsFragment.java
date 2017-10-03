@@ -2,11 +2,13 @@ package eu.darken.bluemusic.screens.settings;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.Preference;
 import android.view.MenuItem;
 
 import eu.darken.bluemusic.R;
+import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.screens.MainActivity;
 import eu.darken.bluemusic.util.Preconditions;
 import eu.darken.ommvplib.injection.ComponentPresenterPreferenceFragment;
@@ -32,6 +34,30 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
         Preconditions.checkNotNull(actionBar);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(R.string.label_settings);
+    }
+
+    @Override
+    public void updatePremiumState(boolean isPremiumVersion) {
+        CheckBoxPreference visibleAdjustments = (CheckBoxPreference) findPreference(Settings.PREFKEY_VISIBLE_ADJUSTMENTS);
+        if (isPremiumVersion) {
+            visibleAdjustments.setSummary(getString(R.string.description_visible_volume_adjustments));
+        } else {
+            visibleAdjustments.setSummary(getString(R.string.description_visible_volume_adjustments) + " [" + getString(R.string.label_premium_version_required) + "]");
+        }
+        visibleAdjustments.setOnPreferenceClickListener(preference -> {
+            if (isPremiumVersion) return false;
+            else {
+                visibleAdjustments.setChecked(!visibleAdjustments.isChecked());
+                new AlertDialog.Builder(getContext())
+                        .setTitle(R.string.label_premium_version)
+                        .setMessage(R.string.msg_premium_required_these_extra_options)
+                        .setIcon(R.drawable.ic_stars_white_24dp)
+                        .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onUpgradeClicked(getActivity()))
+                        .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
+                        .show();
+                return true;
+            }
+        });
     }
 
     @Override
