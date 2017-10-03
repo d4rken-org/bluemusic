@@ -18,7 +18,7 @@
     <string name="desc_app_enabled">Toggles the apps ability to react to volume and bluetooth events.</string>
 
     <string name="label_reaction_delay">Reaction delay</string>
-    <string name="desc_reaction_delay">Time in milliseconds until volume is adjusted when a device connects.</string>
+    <string name="desc_reaction_delay">The delay in milliseconds until this app reacts a device event.</string>
 
     <string name="label_adjustment_delay">Adjustment delay</string>
     <string name="desc_adjustment_delay">The delay between each volume adjustment step in milliseconds. A delay 0 means instantly setting the desired volume.</string>
