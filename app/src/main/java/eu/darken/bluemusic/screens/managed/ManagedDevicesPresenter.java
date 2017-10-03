@@ -64,7 +64,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
         }
     }
 
-    void updateMusicVolume(ManagedDevice device, float percentage) {
+    void onUpdateMusicVolume(ManagedDevice device, float percentage) {
         device.setMusicVolume(percentage);
         deviceManager.update(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
@@ -74,7 +74,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 });
     }
 
-    void updateCallVolume(ManagedDevice device, float percentage) {
+    void onUpdateCallVolume(ManagedDevice device, float percentage) {
         device.setCallVolume(percentage);
         deviceManager.update(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
@@ -84,13 +84,13 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 });
     }
 
-    void deleteDevice(ManagedDevice device) {
+    void onDeleteDevice(ManagedDevice device) {
         deviceManager.removeDevice(device)
                 .subscribeOn(Schedulers.computation())
                 .subscribe();
     }
 
-    void editReactionDelay(ManagedDevice device, long delay) {
+    void onEditReactionDelay(ManagedDevice device, long delay) {
         if (delay < -1) delay = -1;
         device.setActionDelay(delay == -1 ? null : delay);
         deviceManager.update(Collections.singleton(device))
@@ -98,7 +98,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 .subscribe();
     }
 
-    void editAdjustmentDelay(ManagedDevice device, long delay) {
+    void onEditAdjustmentDelay(ManagedDevice device, long delay) {
         if (delay < -1) delay = -1;
         device.setAdjustmentDelay(delay == -1 ? null : delay);
         deviceManager.update(Collections.singleton(device))
@@ -106,7 +106,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 .subscribe();
     }
 
-    void toggleMusicVolumeAction(ManagedDevice device) {
+    void onToggleMusicVolumeAction(ManagedDevice device) {
         if (device.getMusicVolume() == null) {
             device.setMusicVolume(streamHelper.getVolumePercentage(streamHelper.getMusicId()));
         } else device.setMusicVolume(null);
@@ -117,7 +117,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 });
     }
 
-    void toggleCallVolumeAction(ManagedDevice device) {
+    void onToggleCallVolumeAction(ManagedDevice device) {
         if (device.getCallVolume() == null) {
             device.setCallVolume(streamHelper.getVolumePercentage(streamHelper.getCallId()));
         } else device.setCallVolume(null);
@@ -130,6 +130,15 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
 
     void onUpgradeClicked(Activity activity) {
         iapHelper.buyProVersion(activity);
+    }
+
+    void onToggleAutoplay(ManagedDevice device) {
+        device.setAutoPlayEnabled(!device.isAutoPlayEnabled());
+
+        deviceManager.update(Collections.singleton(device))
+                .subscribeOn(Schedulers.computation())
+                .subscribe(managedDevices -> {
+                });
     }
 
     interface View extends Presenter.View {

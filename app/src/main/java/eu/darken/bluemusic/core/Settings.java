@@ -2,12 +2,14 @@ package eu.darken.bluemusic.core;
 
 
 import android.content.SharedPreferences;
+import android.view.KeyEvent;
 
 import javax.inject.Inject;
 
 public class Settings {
     private static final String PREFKEY_VOLUMELISTENER = "core.volume.changelistener";
     public static final String PREFKEY_VISIBLE_ADJUSTMENTS = "core.volume.visibleadjustments";
+    public static final String PREFKEY_AUTOPLAY_KEYCODE = "core.autoplay.keycode";
     public static final long DEFAULT_REACTION_DELAY = 5000;
     public static final long DEFAULT_ADJUSTMENT_DELAY = 250;
     private final SharedPreferences preferences;
@@ -29,5 +31,13 @@ public class Settings {
 
     public boolean isEnabled() {
         return preferences.getBoolean("core.enabled", true);
+    }
+
+    public int getAutoplayKeycode() {
+        return preferences.getInt(PREFKEY_AUTOPLAY_KEYCODE, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+    }
+
+    public void setAutoplayKeycode(int keycode) {
+        preferences.edit().putInt(PREFKEY_AUTOPLAY_KEYCODE, keycode).apply();
     }
 }

@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Bluetooth Lautstärke</string>
-    <string name="description_check_out_my_apps">Vielleicht gefallen dir auch andere Apps von mir.</string>
+    <string name="desc_check_out_my_apps">Vielleicht gefallen dir auch andere Apps von mir.</string>
 
     <string name="label_settings">Einstellungen</string>
     <string name="label_about">Info</string>
 
-    <string name="state_connected">Verbunden</string>
+    <string name="label_state_connected">Verbunden</string>
 
-    <string name="last_seen_x">Zuletzt gesehen: %s</string>
-    <string name="time_tag_never">Nie</string>
+    <string name="label_last_seen_x">Zuletzt gesehen: %s</string>
+    <string name="label_time_tag_never">Nie</string>
 
     <string name="label_version">Version</string>
     <string name="label_gplus">G+</string>
@@ -18,11 +18,11 @@
     <string name="label_email">Email</string>
 
     <string name="label_app_enabled">App aktivieren</string>
-    <string name="description_app_enabled">Betrifft die Fähigkeit der App auf Lautstärken- und Bluetooth-Ereignisse zu reagieren.</string>
+    <string name="desc_app_enabled">Betrifft die Fähigkeit der App auf Lautstärken- und Bluetooth-Ereignisse zu reagieren.</string>
 
     <string name="label_reaction_delay">Anpassungsverzögerung</string>
-    <string name="description_reaction_delay">Zeit in Millisekunden bis die Lautstärke angepasst wird, wenn ein Gerät sich verbindet.</string>
+    <string name="desc_reaction_delay">Zeit in Millisekunden bis die Lautstärke angepasst wird, wenn ein Gerät sich verbindet.</string>
 
     <string name="label_bug_reports">Fehlerberichte</string>
-    <string name="description_bug_reports">Automatische Fehler- und Absturzberichte.</string>
+    <string name="desc_bug_reports">Automatische Fehler- und Absturzberichte.</string>
 </resources>

@@ -1,18 +1,21 @@
 package eu.darken.bluemusic.core.service;
 
+import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.core.bluetooth.SourceDevice;
-import eu.darken.bluemusic.core.database.DeviceManager;
 import eu.darken.bluemusic.core.database.ManagedDevice;
+import timber.log.Timber;
 
 public abstract class ActionModule {
 
-    private final DeviceManager deviceManager;
-
-    protected ActionModule(DeviceManager deviceManager) {this.deviceManager = deviceManager;}
-
     public abstract void handle(ManagedDevice device, SourceDevice.Event event);
+    
+    protected void waitAdjustmentDelay(ManagedDevice device) {
+        try {
+            Long reactionDelay = device.getActionDelay();
+            if (reactionDelay == null) reactionDelay = Settings.DEFAULT_REACTION_DELAY;
 
-    public DeviceManager getDeviceManager() {
-        return deviceManager;
+            Timber.tag(getClass().getSimpleName()).d("Delaying adjustment by %s ms.", reactionDelay);
+            Thread.sleep(reactionDelay);
+        } catch (InterruptedException e) { Timber.e(e, null); }
     }
 }

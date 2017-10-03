@@ -26,6 +26,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/progress_just_a_moment_please"/>
+            android:text="@string/label_just_a_moment_please"/>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

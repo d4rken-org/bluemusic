@@ -16,11 +16,10 @@
         android:paddingTop="8dp"
         android:visibility="gone"/>
 
-    <FrameLayout
+    <ScrollView
         android:id="@+id/empty_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.4"
         android:visibility="gone"
         tools:visibility="visible">
 
@@ -28,35 +27,117 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="16dp"
+            android:alpha="0.4"
             android:gravity="center"
-            android:orientation="vertical"
-            tools:ignore="UselessParent">
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:src="@drawable/ic_sentiment_neutral_white_48dp"
-                tools:ignore="ContentDescription"/>
+                android:layout_margin="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <TextView
-                style="@style/TextAppearance.AppCompat.Body2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="16dp"
-                android:text="@string/msg_empty_devices"/>
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_info_white_24dp"
+                    tools:ignore="ContentDescription"/>
 
-            <ImageView
-                android:layout_width="wrap_content"
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/desc_intro_primary_purpose"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:rotation="315"
-                android:src="@drawable/ic_arrow_down_thick_white_48dp"
-                tools:ignore="ContentDescription"/>
+                android:layout_margin="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_settings_white_24dp"
+                    tools:ignore="ContentDescription"/>
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/desc_intro_global_settings"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_settings_applications_white_24dp"
+                    tools:ignore="ContentDescription"/>
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/desc_intro_device_settings"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_stars_white_24dp"
+                    tools:ignore="ContentDescription"/>
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/desc_intro_upgrade"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_add_white_24dp"
+                    tools:ignore="ContentDescription"/>
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/desc_intro_tap_the_button"/>
+            </LinearLayout>
+
         </LinearLayout>
-    </FrameLayout>
+    </ScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

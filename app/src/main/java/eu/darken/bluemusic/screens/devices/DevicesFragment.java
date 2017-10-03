@@ -104,7 +104,7 @@ public class DevicesFragment extends ComponentPresenterSupportFragment<DevicesPr
     public void showUpgradeDialog() {
         new AlertDialog.Builder(getContext())
                 .setTitle(R.string.label_premium_version)
-                .setMessage(R.string.msg_premium_required_additional_devices)
+                .setMessage(R.string.desc_premium_required_additional_devices)
                 .setIcon(R.drawable.ic_stars_white_24dp)
                 .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onPurchaseUpgrade(getActivity()))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})

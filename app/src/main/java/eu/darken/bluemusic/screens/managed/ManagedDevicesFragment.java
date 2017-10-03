@@ -112,7 +112,7 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
             case R.id.upgrade:
                 new AlertDialog.Builder(getContext())
                         .setTitle(R.string.label_premium_version)
-                        .setMessage(R.string.msg_premium_upgrade_explanation)
+                        .setMessage(R.string.desc_premium_upgrade_explanation)
                         .setIcon(R.drawable.ic_stars_white_24dp)
                         .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onUpgradeClicked(getActivity()))
                         .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
@@ -159,7 +159,7 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
 
     @Override
     public void onDeleteDevice(ManagedDevice device) {
-        getPresenter().deleteDevice(device);
+        getPresenter().onDeleteDevice(device);
     }
 
     @SuppressLint("InflateParams")
@@ -170,20 +170,20 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
         input.setText(device.getActionDelay() != null ? String.valueOf(device.getActionDelay()) : String.valueOf(Settings.DEFAULT_REACTION_DELAY));
         new AlertDialog.Builder(getContext())
                 .setTitle(R.string.label_reaction_delay)
-                .setMessage(R.string.description_reaction_delay)
+                .setMessage(R.string.desc_reaction_delay)
                 .setIcon(R.drawable.ic_timer_white_24dp)
                 .setView(container)
                 .setPositiveButton(R.string.action_set, (dialogInterface, i) -> {
                     try {
                         final long delay = Long.parseLong(input.getText().toString());
-                        getPresenter().editReactionDelay(device, delay);
+                        getPresenter().onEditReactionDelay(device, delay);
                     } catch (NumberFormatException e) {
                         Timber.e(e);
                         Preconditions.checkNotNull(getView());
-                        Snackbar.make(getView(), R.string.msg_invalid_input, Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(getView(), R.string.label_invalid_input, Snackbar.LENGTH_SHORT).show();
                     }
                 })
-                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().editReactionDelay(device, -1))
+                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().onEditReactionDelay(device, -1))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {
                 })
                 .show();
@@ -197,20 +197,20 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
         input.setText(device.getAdjustmentDelay() != null ? String.valueOf(device.getAdjustmentDelay()) : String.valueOf(Settings.DEFAULT_ADJUSTMENT_DELAY));
         new AlertDialog.Builder(getContext())
                 .setTitle(R.string.label_adjustment_delay)
-                .setMessage(R.string.description_adjustment_delay)
+                .setMessage(R.string.desc_adjustment_delay)
                 .setIcon(R.drawable.ic_av_timer_white_24dp)
                 .setView(container)
                 .setPositiveButton(R.string.action_set, (dialogInterface, i) -> {
                     try {
                         final long delay = Long.parseLong(input.getText().toString());
-                        getPresenter().editAdjustmentDelay(device, delay);
+                        getPresenter().onEditAdjustmentDelay(device, delay);
                     } catch (NumberFormatException e) {
                         Timber.e(e);
                         Preconditions.checkNotNull(getView());
-                        Snackbar.make(getView(), R.string.msg_invalid_input, Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(getView(), R.string.label_invalid_input, Snackbar.LENGTH_SHORT).show();
                     }
                 })
-                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().editAdjustmentDelay(device, -1))
+                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().onEditAdjustmentDelay(device, -1))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {
                 })
                 .show();
@@ -218,21 +218,36 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
 
     @Override
     public void onMusicVolumeAdjusted(ManagedDevice device, float percentage) {
-        getPresenter().updateMusicVolume(device, percentage);
+        getPresenter().onUpdateMusicVolume(device, percentage);
     }
 
     @Override
     public void onCallVolumeAdjusted(ManagedDevice device, float percentage) {
-        getPresenter().updateCallVolume(device, percentage);
+        getPresenter().onUpdateCallVolume(device, percentage);
     }
 
     @Override
     public void onToggleMusicVolumeAction(ManagedDevice device) {
-        getPresenter().toggleMusicVolumeAction(device);
+        getPresenter().onToggleMusicVolumeAction(device);
     }
 
     @Override
     public void onToggleCallVolumeAction(ManagedDevice device) {
-        getPresenter().toggleCallVolumeAction(device);
+        getPresenter().onToggleCallVolumeAction(device);
+    }
+
+    @Override
+    public void onToggleAutoPlay(ManagedDevice item) {
+        if (isProVersion) {
+            getPresenter().onToggleAutoplay(item);
+        } else {
+            new AlertDialog.Builder(getContext())
+                    .setTitle(R.string.label_premium_version)
+                    .setMessage(R.string.desc_premium_required_this_extra_option)
+                    .setIcon(R.drawable.ic_stars_white_24dp)
+                    .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onUpgradeClicked(getActivity()))
+                    .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
+                    .show();
+        }
     }
 }

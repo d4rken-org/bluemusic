@@ -114,6 +114,14 @@ public class ManagedDevice {
         return deviceConfig.adjustmentDelay;
     }
 
+    public boolean isAutoPlayEnabled() {
+        return deviceConfig.autoplay;
+    }
+
+    public void setAutoPlayEnabled(boolean enabled) {
+        deviceConfig.autoplay = enabled;
+    }
+
     public static class Action {
         private final ManagedDevice managedDevice;
         private final SourceDevice.Event.Type deviceAction;

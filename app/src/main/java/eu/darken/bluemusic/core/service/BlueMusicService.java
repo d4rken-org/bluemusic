@@ -137,7 +137,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         public void onSuccess(ManagedDevice.Action value) {
                             Timber.d("Handling %s", event);
                             final ManagedDevice device = value.getDevice();
-                            serviceHelper.updateMessage(getString(R.string.status_adjusting_volumes));
+                            serviceHelper.updateMessage(getString(R.string.label_status_adjusting_volumes));
                             final CountDownLatch latch = new CountDownLatch(actionModules.size());
                             for (ActionModule module : actionModules) {
                                 new Thread(() -> {
@@ -150,7 +150,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                             try {
                                 latch.await();
                             } catch (InterruptedException e) { Timber.e(e); }
-                            serviceHelper.updateMessage(getString(R.string.status_idle));
+                            serviceHelper.updateMessage(getString(R.string.label_status_idle));
                             if (event.getType() == SourceDevice.Event.Type.DISCONNECTED) {
                                 handleDisconnect();
                             }

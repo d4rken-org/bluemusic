@@ -39,13 +39,13 @@ public class ServiceHelper {
         this.resHelper = resHelper;
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, resHelper.getString(R.string.notification_channel_label_status), NotificationManagerCompat.IMPORTANCE_MIN);
+            NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, resHelper.getString(R.string.label_notification_channel_status), NotificationManagerCompat.IMPORTANCE_MIN);
             notificationManager.createNotificationChannel(channel);
         }
         builder = new NotificationCompat.Builder(service, NOTIFICATION_CHANNEL_ID)
                 .setChannelId(NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentText(resHelper.getString(R.string.status_idle))
+                .setContentText(resHelper.getString(R.string.label_status_idle))
                 .setContentTitle(resHelper.getString(R.string.app_name));
     }
 

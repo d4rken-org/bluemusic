@@ -11,6 +11,7 @@ import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
+import eu.darken.bluemusic.core.service.modules.AutoplayModule;
 import eu.darken.bluemusic.core.service.modules.CallVolumeModule;
 import eu.darken.bluemusic.core.service.modules.MusicVolumeModule;
 
@@ -26,8 +27,8 @@ public class ServiceModule {
     }
 
     @Provides
-    List<ActionModule> actionModules(MusicVolumeModule m1, CallVolumeModule m2) {
-        return Arrays.asList(m1, m2);
+    List<ActionModule> actionModules(MusicVolumeModule m1, CallVolumeModule m2, AutoplayModule autoplay) {
+        return Arrays.asList(m1, m2, autoplay);
     }
 
 }

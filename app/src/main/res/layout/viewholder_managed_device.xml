@@ -61,7 +61,7 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:contentDescription="Device options"
                 android:padding="16dp"
-                android:src="@drawable/ic_dots_vertical_white_24dp"
+                android:src="@drawable/ic_settings_applications_white_24dp"
                 tools:ignore="HardcodedText"/>
         </FrameLayout>
 

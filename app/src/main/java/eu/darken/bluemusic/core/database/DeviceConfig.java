@@ -14,4 +14,6 @@ public class DeviceConfig extends RealmObject {
 
     Float musicVolume;
     Float callVolume;
+
+    boolean autoplay;
 }

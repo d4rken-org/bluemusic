@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 
 import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.core.bluetooth.SourceDevice;
-import eu.darken.bluemusic.core.database.DeviceManager;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.core.service.ActionModule;
 import eu.darken.bluemusic.core.service.StreamHelper;
@@ -14,8 +13,8 @@ abstract class BaseVolumeModel extends ActionModule {
     private final Settings settings;
     private final StreamHelper streamHelper;
 
-    BaseVolumeModel(DeviceManager deviceManager, Settings settings, StreamHelper streamHelper) {
-        super(deviceManager);
+    BaseVolumeModel(Settings settings, StreamHelper streamHelper) {
+        super();
         this.settings = settings;
         this.streamHelper = streamHelper;
     }
@@ -30,13 +29,7 @@ abstract class BaseVolumeModel extends ActionModule {
         }
         Float percentage = getDesiredVolume(device);
         if (percentage != null && percentage != -1) {
-            try {
-                Long reactionDelay = device.getActionDelay();
-                if (reactionDelay == null) reactionDelay = Settings.DEFAULT_REACTION_DELAY;
-
-                Timber.d("Delaying adjustment by %s ms.", reactionDelay);
-                Thread.sleep(reactionDelay);
-            } catch (InterruptedException e) { Timber.e(e, null); }
+            waitAdjustmentDelay(device);
 
             Long adjustmentDelay = device.getAdjustmentDelay();
             if (adjustmentDelay == null) adjustmentDelay = Settings.DEFAULT_ADJUSTMENT_DELAY;

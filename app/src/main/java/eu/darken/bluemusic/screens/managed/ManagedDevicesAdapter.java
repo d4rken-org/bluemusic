@@ -49,6 +49,8 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
         void onEditReactionDelay(ManagedDevice device);
 
         void onEditAdjustmentDelay(ManagedDevice device);
+
+        void onToggleAutoPlay(ManagedDevice item);
     }
 
     static class ManagedDeviceVH extends BasicViewHolder<ManagedDevice> {
@@ -88,12 +90,12 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                         0
                 ).toString();
             } else {
-                timeString = getString(R.string.time_tag_never);
+                timeString = getString(R.string.label_time_tag_never);
             }
             caption.setText(
                     item.isActive() ?
-                            getString(R.string.state_connected) :
-                            getString(R.string.last_seen_x, timeString)
+                            getString(R.string.label_state_connected) :
+                            getString(R.string.label_last_seen_x, timeString)
             );
 
             menu.setOnClickListener(v -> {
@@ -102,6 +104,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                 inflater.inflate(R.menu.menu_managed_device_item, popup.getMenu());
                 popup.getMenu().findItem(R.id.toggle_music_volume).setChecked(getItem().getMusicVolume() != null);
                 popup.getMenu().findItem(R.id.toggle_call_volume).setChecked(getItem().getCallVolume() != null);
+                popup.getMenu().findItem(R.id.toggle_autoplay).setChecked(getItem().isAutoPlayEnabled());
                 popup.setOnMenuItemClickListener(new PopMenuListener());
                 popup.show();
             });
@@ -170,6 +173,9 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                         return true;
                     case R.id.toggle_call_volume:
                         callback.onToggleCallVolumeAction(getItem());
+                        return true;
+                    case R.id.toggle_autoplay:
+                        callback.onToggleAutoPlay(getItem());
                         return true;
                     default:
                         return false;
