@@ -22,7 +22,7 @@ import timber.log.Timber;
 
 @ApplicationScope
 public class IAPHelper implements PurchasesUpdatedListener, BillingClientStateListener {
-    static final String SKU_UPGRADE = "eu.darken.bluemuesic.sku.proversion";
+    static final String SKU_UPGRADE = "upgrade.premium";
     private final BehaviorSubject<List<Upgrade>> upgradesPublisher = BehaviorSubject.createDefault(new ArrayList<>());
     private final BillingClient billingClient;
 
