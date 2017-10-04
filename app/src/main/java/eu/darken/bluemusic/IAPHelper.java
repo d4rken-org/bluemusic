@@ -10,6 +10,7 @@ import com.android.billingclient.api.BillingFlowParams;
 import com.android.billingclient.api.Purchase;
 import com.android.billingclient.api.PurchasesUpdatedListener;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,8 @@ public class IAPHelper implements PurchasesUpdatedListener, BillingClientStateLi
     static final String SKU_UPGRADE = "upgrade.premium";
     private final BehaviorSubject<List<Upgrade>> upgradesPublisher = BehaviorSubject.createDefault(new ArrayList<>());
     private final BillingClient billingClient;
+    private final File self;
+
 
     public static class Upgrade {
         enum Type {
@@ -49,6 +52,7 @@ public class IAPHelper implements PurchasesUpdatedListener, BillingClientStateLi
     public IAPHelper(Context context) {
         billingClient = BillingClient.newBuilder(context).setListener(this).build();
         billingClient.startConnection(this);
+        self = new File(context.getExternalFilesDir(null), "freeloader");
     }
 
     @Override
@@ -79,6 +83,9 @@ public class IAPHelper implements PurchasesUpdatedListener, BillingClientStateLi
     }
 
     public Observable<Boolean> isProVersion() {
+        if (BuildConfig.DEBUG && self.exists()) {
+            return upgradesPublisher.map(egal -> true);
+        }
         return upgradesPublisher.map(upgrades -> {
             boolean proVersion = false;
             for (Upgrade upgrade : upgrades) {
