@@ -73,7 +73,7 @@
             android:layout_marginStart="16dp"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/music_container"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
@@ -81,17 +81,22 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/music_icon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
                     android:contentDescription="Music volume"
                     android:src="@drawable/ic_music_note_white_24dp"
                     tools:ignore="HardcodedText"/>
 
                 <SeekBar
                     android:id="@+id/music_seekbar"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/music_icon"
+                    android:layout_toStartOf="@+id/music_counter"
                     android:progress="0"/>
 
                 <TextView
@@ -99,12 +104,14 @@
                     style="@style/TextAppearance.AppCompat.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:gravity="center"
                     tools:text="15"/>
-            </LinearLayout>
+            </RelativeLayout>
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/call_container"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
@@ -113,17 +120,22 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/call_icon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
                     android:contentDescription="Call volume"
                     android:src="@drawable/ic_headset_mic_white_24dp"
                     tools:ignore="HardcodedText"/>
 
                 <SeekBar
                     android:id="@+id/call_seekbar"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/call_icon"
+                    android:layout_toStartOf="@+id/call_counter"
                     android:progress="0"/>
 
                 <TextView
@@ -131,9 +143,11 @@
                     style="@style/TextAppearance.AppCompat.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:gravity="center"
                     tools:text="15"/>
-            </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

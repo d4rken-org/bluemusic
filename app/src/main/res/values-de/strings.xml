@@ -16,10 +16,4 @@
     <string name="label_website">Website</string>
     <string name="label_gplay">Google Play</string>
     <string name="label_email">Email</string>
-
-    <string name="label_app_enabled">App aktivieren</string>
-    <string name="desc_app_enabled">Betrifft die Fähigkeit der App auf Lautstärken- und Bluetooth-Ereignisse zu reagieren.</string>
-
-    <string name="label_bug_reports">Fehlerberichte</string>
-    <string name="desc_bug_reports">Automatische Fehler- und Absturzberichte.</string>
 </resources>
