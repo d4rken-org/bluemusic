@@ -8,7 +8,6 @@ import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -54,16 +53,15 @@ class LiveBluetoothSource implements BluetoothSource {
 
     @Override
     public Single<Map<String, SourceDevice>> getConnectedDevices() {
-        final List<ObservableSource<List<BluetoothDevice>>> devicesProfiles = Arrays.asList(
-                LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET).toObservable(),
-                LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT).toObservable(),
-                LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT_SERVER).toObservable(),
-                LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEALTH).toObservable(),
-                LiveBluetoothSource.this.getDevicesForProfile(10).toObservable(), // BluetoothProfile.SAP
-                LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP).toObservable()
-        );
+        final List<ObservableSource<List<BluetoothDevice>>> profiles = new ArrayList<>();
 
-        return Single.defer(() -> Observable.merge(devicesProfiles)
+        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET).toObservable());
+        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT).toObservable());
+        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT_SERVER).toObservable());
+        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEALTH).toObservable());
+        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP).toObservable());
+
+        return Single.defer(() -> Observable.merge(profiles)
                 .toList()
                 .map(lists -> {
                     HashSet<BluetoothDevice> unique = new HashSet<>();
@@ -93,10 +91,11 @@ class LiveBluetoothSource implements BluetoothSource {
                     }
 
                     public void onServiceDisconnected(int profile) {
-                        Timber.d("onServiceDisconnected(%d)", profile);
+                        Timber.v("onServiceDisconnected(profile=%d)", profile);
                     }
                 };
                 final boolean success = adapter.getProfileProxy(context, mProfileListener, desiredProfile);
+                Timber.v("getDevicesForProfile(profile=%d, success=%b)", desiredProfile, success);
                 if (!success) observer.onSuccess(new ArrayList<BluetoothDevice>());
             }
         };
