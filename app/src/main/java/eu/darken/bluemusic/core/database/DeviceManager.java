@@ -29,6 +29,7 @@ public class DeviceManager {
     private BluetoothSource bluetoothSource;
     private final StreamHelper streamHelper;
     private final BehaviorSubject<Map<String, ManagedDevice>> deviceObs = BehaviorSubject.create();
+    private volatile boolean initial = true;
 
     @Inject
     public DeviceManager(BluetoothSource bluetoothSource, StreamHelper streamHelper) {
@@ -42,10 +43,13 @@ public class DeviceManager {
 
     @NonNull
     public Observable<Map<String, ManagedDevice>> observe() {
-        if (deviceObs.getValue() == null) {
-            Observable.defer(() -> loadDevices(true).toObservable())
-                    .subscribeOn(Schedulers.computation())
-                    .subscribe();
+        synchronized (this) {
+            if (deviceObs.getValue() == null && initial) {
+                initial = false;
+                Observable.defer(() -> loadDevices(true).toObservable())
+                        .subscribeOn(Schedulers.computation())
+                        .subscribe();
+            }
         }
         return deviceObs;
     }
