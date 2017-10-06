@@ -6,6 +6,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
+import com.bugsnag.android.Bugsnag;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -25,10 +27,8 @@ import eu.darken.bluemusic.core.bluetooth.SourceDevice;
 import eu.darken.bluemusic.core.database.DeviceManager;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import io.reactivex.Scheduler;
-import io.reactivex.SingleObserver;
 import io.reactivex.SingleSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
@@ -112,8 +112,8 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             bluetoothSource.getConnectedDevices()
                     .delaySubscription(1000, TimeUnit.MILLISECONDS)
                     .subscribeOn(scheduler)
-                    .map(deviceMap -> {
-                        if (event.getType() == SourceDevice.Event.Type.CONNECTED && !deviceMap.containsKey(event.getAddress())) {
+                    .map(connectedDevices -> {
+                        if (event.getType() == SourceDevice.Event.Type.CONNECTED && !connectedDevices.containsKey(event.getAddress())) {
                             Thread.sleep(500);
                             throw new Exception("Device not yet fully connected.");
                         }
@@ -123,51 +123,60 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     .flatMap(new Function<SourceDevice.Event, SingleSource<ManagedDevice.Action>>() {
                         @Override
                         public SingleSource<ManagedDevice.Action> apply(SourceDevice.Event deviceEvent) throws Exception {
-                            return deviceManager.loadDevices(true).map(deviceMap -> new ManagedDevice.Action(deviceMap.get(deviceEvent.getAddress()), deviceEvent.getType()));
+                            return deviceManager.loadDevices(true).map(knownDevices -> {
+                                final ManagedDevice knownDevice = knownDevices.get(deviceEvent.getAddress());
+                                if (knownDevice == null) {
+                                    throw new UnmanagedDeviceException(deviceEvent);
+                                }
+                                return new ManagedDevice.Action(knownDevice, deviceEvent.getType());
+                            });
                         }
                     })
-                    .subscribe(new SingleObserver<ManagedDevice.Action>() {
-                        @Override
-                        public void onSubscribe(Disposable d) {
-                            adjusting = true;
-                            Timber.d("Incoming adjustment.");
+                    .doOnSubscribe(disposable -> {
+                        Timber.d("Handling %s", event);
+                        adjusting = true;
+                    })
+                    .doFinally(() -> {
+                        adjusting = false;
+                        Timber.d("Adjustment finished.");
+
+                        serviceHelper.updateMessage(getString(R.string.label_status_idle));
+
+                        if (!settings.isVolumeChangeListenerEnabled()) {
+                            Timber.d("We don't want to listen to volume changes, stopping service.");
+                            stopSelf();
+                        }
+                    })
+                    .subscribe((action, throwable) -> {
+                        if (throwable != null) {
+                            if (!(throwable instanceof UnmanagedDeviceException)) {
+                                Bugsnag.notify(throwable);
+                            }
+                            return;
                         }
 
-                        @Override
-                        public void onSuccess(ManagedDevice.Action value) {
-                            Timber.d("Handling %s", event);
-                            final ManagedDevice device = value.getDevice();
-                            serviceHelper.updateMessage(getString(R.string.label_status_adjusting_volumes));
-                            final CountDownLatch latch = new CountDownLatch(actionModules.size());
-                            for (ActionModule module : actionModules) {
-                                new Thread(() -> {
-                                    Timber.d("Running module %s", module);
+                        final ManagedDevice device = action.getDevice();
+                        serviceHelper.updateMessage(getString(R.string.label_status_adjusting_volumes));
+                        final CountDownLatch latch = new CountDownLatch(actionModules.size());
+                        for (ActionModule module : actionModules) {
+                            new Thread(() -> {
+                                Timber.d("Running module %s", module);
+                                try {
                                     module.handle(device, event);
+                                } catch (Exception e) {
+                                    Bugsnag.notify(e);
+                                } finally {
                                     latch.countDown();
-                                    Timber.d("Module %s finished", module);
-                                }).start();
-                            }
-                            try {
-                                latch.await();
-                            } catch (InterruptedException e) { Timber.e(e); }
-                            serviceHelper.updateMessage(getString(R.string.label_status_idle));
-                            if (event.getType() == SourceDevice.Event.Type.DISCONNECTED) {
-                                handleDisconnect();
-                            }
-
-                            adjusting = false;
-                            Timber.d("Adjustment finished.");
-
-                            if (!settings.isVolumeChangeListenerEnabled()) {
-                                Timber.d("We don't want to listen to volume changes, stopping service.");
-                                stopSelf();
-                            }
+                                }
+                                Timber.d("Module %s finished", module);
+                            }).start();
                         }
+                        try {
+                            latch.await();
+                        } catch (InterruptedException e) { Timber.e(e); }
 
-                        @Override
-                        public void onError(Throwable e) {
-                            adjusting = false;
-                            Timber.e(e, null);
+                        if (event.getType() == SourceDevice.Event.Type.DISCONNECTED) {
+                            handleDisconnect();
                         }
                     });
         }
