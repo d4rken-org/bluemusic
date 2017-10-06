@@ -58,7 +58,7 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/ic_settings_white_24dp"
+                        android:src="@drawable/ic_music_note_white_24dp"
                         tools:ignore="ContentDescription"/>
 
                     <TextView
@@ -66,7 +66,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@string/desc_intro_global_settings"/>
+                        android:text="@string/desc_intro_streams"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -79,7 +79,7 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/ic_settings_applications_white_24dp"
+                        android:src="@drawable/ic_play_circle_outline_white_24dp"
                         tools:ignore="ContentDescription"/>
 
                     <TextView
@@ -87,7 +87,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@string/desc_intro_device_settings"/>
+                        android:text="@string/desc_intro_autoplay"/>
                 </LinearLayout>
 
                 <LinearLayout

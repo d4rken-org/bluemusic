@@ -60,16 +60,16 @@
 
     <string name="desc_premium_required_additional_devices">Managing additional devices requires the premium version.</string>
     <string name="desc_premium_required_this_extra_option">This extra option unfortunately requires the premium version of this app.</string>
-    <string name="desc_premium_upgrade_explanation">Buy the premium version to enable additional features and support development.</string>
+    <string name="desc_premium_upgrade_explanation">Get the premium version to enable additional features and support development.</string>
 
     <string name="label_premium_version_required">Premium version required</string>
 
     <string name="label_autoplay">Autoplay</string>
 
-    <string name="desc_intro_upgrade">Support development and gain additional features by upgrading to the premium version.</string>
-    <string name="desc_intro_device_settings">Bluetooth devices differ. Use the device specific settings to adjust timings and features.</string>
-    <string name="desc_intro_global_settings">Use the global configuration to adapt this app to fit your personal preferences and Android device.</string>
     <string name="desc_intro_primary_purpose">This app reacts to Bluetooth devices. It\'s primary purpose is to change the volume depending on which Bluetooth device is connected.</string>
-    <string name="desc_intro_tap_the_button">Start by adding your first device.</string>
+    <string name="desc_intro_upgrade">Support development and gain additional features by upgrading to the premium version.</string>
+    <string name="desc_intro_tap_the_button">Start by adding your first device. </string>
     <string name="desc_bluetooth_is_disabled">Bluetooth is disabled.</string>
+    <string name="desc_intro_autoplay">The \'Autoplay\' function can simulate pressing \'Play\' on a bluetooth remote to trigger playback.</string>
+    <string name="desc_intro_streams">There are two types of volumes: Music, which affects media players and call volume which affects video/voice calls.</string>
 </resources>
