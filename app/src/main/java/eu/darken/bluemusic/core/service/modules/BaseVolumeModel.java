@@ -2,11 +2,11 @@ package eu.darken.bluemusic.core.service.modules;
 
 import android.support.annotation.Nullable;
 
-import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.core.bluetooth.SourceDevice;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.core.service.ActionModule;
 import eu.darken.bluemusic.core.service.StreamHelper;
+import eu.darken.bluemusic.core.settings.Settings;
 import timber.log.Timber;
 
 abstract class BaseVolumeModel extends ActionModule {

@@ -52,7 +52,7 @@ public class DevicesPresenter extends ComponentPresenter<DevicesPresenter.View, 
 
     private void updateList() {
         Single.zip(
-                deviceManager.loadDevices(false),
+                deviceManager.observe().firstOrError(),
                 bluetoothSource.getPairedDevices(),
                 (known, paired) -> {
                     managedDevices = 0;

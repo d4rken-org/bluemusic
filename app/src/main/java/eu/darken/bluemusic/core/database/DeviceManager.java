@@ -15,9 +15,13 @@ import eu.darken.bluemusic.core.service.StreamHelper;
 import eu.darken.bluemusic.util.dagger.ApplicationScope;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Single;
+import io.reactivex.SingleSource;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subjects.BehaviorSubject;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import timber.log.Timber;
@@ -28,8 +32,10 @@ public class DeviceManager {
 
     private BluetoothSource bluetoothSource;
     private final StreamHelper streamHelper;
-    private final BehaviorSubject<Map<String, ManagedDevice>> deviceObs = BehaviorSubject.create();
-    private volatile boolean initial = true;
+    private Observable<Map<String, ManagedDevice>> deviceCache;
+    private ObservableEmitter<Map<String, ManagedDevice>> emitter;
+    private Disposable enabledSub;
+
 
     @Inject
     public DeviceManager(BluetoothSource bluetoothSource, StreamHelper streamHelper) {
@@ -44,54 +50,74 @@ public class DeviceManager {
     @NonNull
     public Observable<Map<String, ManagedDevice>> observe() {
         synchronized (this) {
-            if (deviceObs.getValue() == null && initial) {
-                initial = false;
-                Observable.defer(() -> loadDevices(true).toObservable())
-                        .subscribeOn(Schedulers.computation())
-                        .subscribe();
+            if (deviceCache == null) {
+                deviceCache = Observable
+                        .create((ObservableOnSubscribe<Map<String, ManagedDevice>>) emitter -> {
+                            DeviceManager.this.emitter = emitter;
+                        })
+                        .doOnSubscribe(disposable -> {
+                            enabledSub = bluetoothSource.isEnabled()
+                                    .subscribeOn(Schedulers.io())
+                                    .flatMapSingle((Function<Boolean, SingleSource<?>>) active -> updateDevices())
+                                    .subscribe();
+                        })
+                        .doFinally(() -> {
+                            enabledSub.dispose();
+                            deviceCache = null;
+                            emitter = null;
+                        })
+                        .replay(1)
+                        .refCount();
             }
         }
-        return deviceObs;
+        return deviceCache;
     }
 
-    public Single<Map<String, ManagedDevice>> loadDevices(boolean notify) {
-        return Single.zip(
-                bluetoothSource.getConnectedDevices(),
-                bluetoothSource.getPairedDevices(),
-                (active, paired) -> {
-                    final Map<String, ManagedDevice> result = new HashMap<>();
-                    if (!bluetoothSource.isEnabled().blockingGet()) return result;
+    public Single<Map<String, ManagedDevice>> updateDevices() {
+        return bluetoothSource.isEnabled()
+                .firstOrError()
+                .flatMap((Function<Boolean, SingleSource<Map<String, ManagedDevice>>>) activeBluetooth -> {
+                    if (!activeBluetooth) return Single.just(Collections.emptyMap());
+                    return Single.zip(
+                            bluetoothSource.getConnectedDevices(),
+                            bluetoothSource.getPairedDevices(),
+                            (active, paired) -> {
+                                final Map<String, ManagedDevice> result = new HashMap<>();
+                                if (!bluetoothSource.isEnabled().blockingFirst()) return result;
 
-                    Realm realm = getRealm();
-                    final RealmResults<DeviceConfig> deviceConfigs = realm.where(DeviceConfig.class).findAll();
+                                Realm realm = getRealm();
+                                final RealmResults<DeviceConfig> deviceConfigs = realm.where(DeviceConfig.class).findAll();
 
-                    realm.beginTransaction();
-                    for (DeviceConfig config : deviceConfigs) {
-                        if (!paired.containsKey(config.address)) continue;
+                                realm.beginTransaction();
+                                for (DeviceConfig config : deviceConfigs) {
+                                    if (!paired.containsKey(config.address)) continue;
 
-                        ManagedDevice managed = new ManagedDevice(paired.get(config.address), realm.copyFromRealm(config));
-                        managed.setMaxMusicVolume(streamHelper.getMaxVolume(streamHelper.getMusicId()));
-                        managed.setMaxCallVolume(streamHelper.getMaxVolume(streamHelper.getCallId()));
-                        managed.setActive(active.containsKey(managed.getAddress()));
+                                    ManagedDevice managed = new ManagedDevice(paired.get(config.address), realm.copyFromRealm(config));
+                                    managed.setMaxMusicVolume(streamHelper.getMaxVolume(streamHelper.getMusicId()));
+                                    managed.setMaxCallVolume(streamHelper.getMaxVolume(streamHelper.getCallId()));
+                                    managed.setActive(active.containsKey(managed.getAddress()));
 
-                        if (active.containsKey(config.address)) config.lastConnected = System.currentTimeMillis();
+                                    if (active.containsKey(config.address)) config.lastConnected = System.currentTimeMillis();
 
-                        Timber.v("Loaded: %s", managed);
-                        result.put(managed.getAddress(), managed);
-                    }
+                                    Timber.v("Loaded: %s", managed);
+                                    result.put(managed.getAddress(), managed);
+                                }
 
-                    realm.commitTransaction();
-                    realm.close();
-                    return result;
+                                realm.commitTransaction();
+                                realm.close();
+                                return result;
+                            });
                 })
                 .doOnError(throwable -> Timber.e(throwable, null))
                 .doOnSuccess(stringManagedDeviceMap -> {
-                    if (notify) deviceObs.onNext(stringManagedDeviceMap);
+                    synchronized (DeviceManager.this) {
+                        if (emitter != null) emitter.onNext(stringManagedDeviceMap);
+                    }
                 });
     }
 
-    public Observable<Collection<ManagedDevice>> update(Collection<ManagedDevice> managedDevice) {
-        return Observable.just(managedDevice)
+    public Single<Map<String, ManagedDevice>> save(Collection<ManagedDevice> toSave) {
+        return Single.just(toSave)
                 .subscribeOn(Schedulers.computation())
                 .map(devices -> {
                     Realm realm = getRealm();
@@ -104,12 +130,7 @@ public class DeviceManager {
                     realm.close();
                     return devices;
                 })
-                .doOnNext(updatedDevs -> {
-                    Map<String, ManagedDevice> updatedMap = deviceObs.getValue();
-                    if (updatedMap == null) updatedMap = new HashMap<>();
-                    for (ManagedDevice d : updatedDevs) updatedMap.put(d.getAddress(), d);
-                    deviceObs.onNext(updatedMap);
-                });
+                .flatMap(managedDevices -> updateDevices());
     }
 
     public Single<ManagedDevice> addNewDevice(SourceDevice toAdd) {
@@ -147,7 +168,7 @@ public class DeviceManager {
                     }
                 })
                 .doOnError(throwable -> Timber.e(throwable, null))
-                .doOnSuccess(newDevice -> update(Collections.singleton(newDevice)).subscribe());
+                .doOnSuccess(newDevice -> save(Collections.singleton(newDevice)).subscribe());
     }
 
     public Completable removeDevice(ManagedDevice device) {
@@ -163,7 +184,7 @@ public class DeviceManager {
                     } finally {
                         e.onComplete();
                     }
-                    loadDevices(true).subscribe();
-                });
+                })
+                .doOnComplete(() -> updateDevices().subscribe());
     }
 }

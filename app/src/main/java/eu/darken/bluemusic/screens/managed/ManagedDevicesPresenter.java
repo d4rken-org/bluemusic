@@ -1,13 +1,11 @@
 package eu.darken.bluemusic.screens.managed;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -42,18 +40,10 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
     }
 
     @Override
-    public void onCreate(Bundle bundle) {
-
-    }
-
-    @Override
     public void onBindChange(@Nullable View view) {
         super.onBindChange(view);
         if (view != null) {
-
             bluetoothSub = bluetoothSource.isEnabled()
-                    .delay(1, TimeUnit.SECONDS)
-                    .repeat()
                     .subscribeOn(Schedulers.computation())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(enabled -> onView(v -> v.displayBluetoothState(enabled)));
@@ -81,7 +71,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
 
     void onUpdateMusicVolume(ManagedDevice device, float percentage) {
         device.setMusicVolume(percentage);
-        deviceManager.update(Collections.singleton(device))
+        deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
@@ -91,7 +81,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
 
     void onUpdateCallVolume(ManagedDevice device, float percentage) {
         device.setCallVolume(percentage);
-        deviceManager.update(Collections.singleton(device))
+        deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
@@ -108,7 +98,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
     void onEditReactionDelay(ManagedDevice device, long delay) {
         if (delay < -1) delay = -1;
         device.setActionDelay(delay == -1 ? null : delay);
-        deviceManager.update(Collections.singleton(device))
+        deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe();
     }
@@ -116,7 +106,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
     void onEditAdjustmentDelay(ManagedDevice device, long delay) {
         if (delay < -1) delay = -1;
         device.setAdjustmentDelay(delay == -1 ? null : delay);
-        deviceManager.update(Collections.singleton(device))
+        deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe();
     }
@@ -126,10 +116,9 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
             device.setMusicVolume(streamHelper.getVolumePercentage(streamHelper.getMusicId()));
         } else device.setMusicVolume(null);
 
-        deviceManager.update(Collections.singleton(device))
+        deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe(managedDevices -> {
-                });
+                .subscribe();
     }
 
     void onToggleCallVolumeAction(ManagedDevice device) {
@@ -137,10 +126,9 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
             device.setCallVolume(streamHelper.getVolumePercentage(streamHelper.getCallId()));
         } else device.setCallVolume(null);
 
-        deviceManager.update(Collections.singleton(device))
+        deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe(managedDevices -> {
-                });
+                .subscribe();
     }
 
     void onUpgradeClicked(Activity activity) {
@@ -150,7 +138,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
     void onToggleAutoplay(ManagedDevice device) {
         device.setAutoPlayEnabled(!device.isAutoPlayEnabled());
 
-        deviceManager.update(Collections.singleton(device))
+        deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                 });

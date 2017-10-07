@@ -27,7 +27,7 @@
     <string name="desc_visible_volume_adjustments">Show the system\'s volume window while making adjustments.</string>
 
     <string name="label_volume_listener">Volume changes</string>
-    <string name="desc_volume_listener">Listen and save volume changes that have been caused by other apps or volume buttons.</string>
+    <string name="desc_volume_listener">Stay active while a device is connected and save volume changes that have not been caused by this app.</string>
 
     <string name="label_autoplay_keytype">Autoplay key type</string>
     <string name="desc_autoplay_keytype">The key type that is send when an autoplay enabled device connects. </string>
@@ -54,7 +54,6 @@
     <string name="label_status_idle">Idle</string>
     <string name="label_status_adjusting_volumes">Adjusting volumes</string>
 
-
     <string name="label_premium_version">Premium version</string>
     <string name="action_upgrade">Upgrade</string>
 
@@ -72,4 +71,7 @@
     <string name="desc_bluetooth_is_disabled">Bluetooth is disabled.</string>
     <string name="desc_intro_autoplay">The \'Autoplay\' function can simulate pressing \'Play\' on a bluetooth remote to trigger playback.</string>
     <string name="desc_intro_streams">There are two types of volumes: Music, which affects media players and call volume which affects video/voice calls.</string>
+
+    <string name="label_status_listening_for_changes">Listening for volume changes</string>
+    <string name="action_exit">Exit</string>
 </resources>

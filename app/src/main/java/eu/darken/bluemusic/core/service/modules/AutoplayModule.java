@@ -6,10 +6,10 @@ import android.view.KeyEvent;
 
 import javax.inject.Inject;
 
-import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.core.bluetooth.SourceDevice;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.core.service.ActionModule;
+import eu.darken.bluemusic.core.settings.Settings;
 import eu.darken.bluemusic.util.dagger.ServiceScope;
 import timber.log.Timber;
 

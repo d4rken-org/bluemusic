@@ -1,8 +1,8 @@
 package eu.darken.bluemusic.core.service;
 
-import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.core.bluetooth.SourceDevice;
 import eu.darken.bluemusic.core.database.ManagedDevice;
+import eu.darken.bluemusic.core.settings.Settings;
 import timber.log.Timber;
 
 public abstract class ActionModule {

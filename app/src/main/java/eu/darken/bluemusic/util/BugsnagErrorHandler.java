@@ -6,7 +6,7 @@ import com.bugsnag.android.BeforeNotify;
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.BuildConfig;
-import eu.darken.bluemusic.core.Settings;
+import eu.darken.bluemusic.core.settings.Settings;
 import eu.darken.bluemusic.util.dagger.ApplicationScope;
 
 @ApplicationScope

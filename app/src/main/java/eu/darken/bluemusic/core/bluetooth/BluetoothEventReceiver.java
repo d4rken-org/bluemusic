@@ -8,8 +8,8 @@ import android.content.Intent;
 
 import javax.inject.Inject;
 
-import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.core.service.ServiceHelper;
+import eu.darken.bluemusic.core.settings.Settings;
 import eu.darken.ommvplib.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
 import timber.log.Timber;
 

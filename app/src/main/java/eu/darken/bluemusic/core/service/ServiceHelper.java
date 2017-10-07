@@ -28,6 +28,7 @@ public class ServiceHelper {
 
     private final static String NOTIFICATION_CHANNEL_ID = "notification.channel.core";
     private final static int NOTIFICATION_ID = 1;
+    public static final String STOP_ACTION = "STOP_SERVICE";
     private final NotificationManager notificationManager;
     private final ResHelper resHelper;
     private final NotificationCompat.Builder builder;
@@ -45,18 +46,23 @@ public class ServiceHelper {
             notificationManager.createNotificationChannel(channel);
         }
 
-        Intent intent = new Intent(service, MainActivity.class);
-        PendingIntent pi = PendingIntent.getActivity(service, 0, intent, 0);
+        Intent openIntent = new Intent(service, MainActivity.class);
+        PendingIntent openPi = PendingIntent.getActivity(service, 0, openIntent, 0);
+
+        Intent stopIntent = new Intent(service, BlueMusicService.class);
+        stopIntent.setAction(STOP_ACTION);
+        PendingIntent stopPi = PendingIntent.getService(service, 0, stopIntent, 0);
 
         builder = new NotificationCompat.Builder(service, NOTIFICATION_CHANNEL_ID)
                 .setChannelId(NOTIFICATION_CHANNEL_ID)
-                .setContentIntent(pi)
+                .setContentIntent(openPi)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentText(resHelper.getString(R.string.label_status_idle))
-                .setContentTitle(resHelper.getString(R.string.app_name));
+                .setContentTitle(resHelper.getString(R.string.app_name))
+                .addAction(new NotificationCompat.Action.Builder(0, service.getString(R.string.action_exit), stopPi).build());
     }
 
-    public void start() {
+    void start() {
         Timber.v("startForeground()");
         started = true;
         service.startForeground(NOTIFICATION_ID, builder.build());
@@ -65,8 +71,8 @@ public class ServiceHelper {
     void stop() {
         Timber.v("stopForeground()");
         started = false;
-        notificationManager.cancel(NOTIFICATION_ID);
         service.stopForeground(true);
+        notificationManager.cancel(NOTIFICATION_ID);
     }
 
     public static Intent getIntent(Context context) {

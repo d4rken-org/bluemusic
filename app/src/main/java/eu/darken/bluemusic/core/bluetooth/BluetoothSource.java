@@ -2,6 +2,7 @@ package eu.darken.bluemusic.core.bluetooth;
 
 import java.util.Map;
 
+import io.reactivex.Observable;
 import io.reactivex.Single;
 
 public interface BluetoothSource {
@@ -9,5 +10,5 @@ public interface BluetoothSource {
 
     Single<Map<String, SourceDevice>> getConnectedDevices();
 
-    Single<Boolean> isEnabled();
+    Observable<Boolean> isEnabled();
 }

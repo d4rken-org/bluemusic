@@ -20,15 +20,16 @@ import javax.inject.Inject;
 
 import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.R;
-import eu.darken.bluemusic.core.Settings;
 import eu.darken.bluemusic.core.bluetooth.BluetoothEventReceiver;
 import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
 import eu.darken.bluemusic.core.bluetooth.SourceDevice;
 import eu.darken.bluemusic.core.database.DeviceManager;
 import eu.darken.bluemusic.core.database.ManagedDevice;
+import eu.darken.bluemusic.core.settings.Settings;
 import io.reactivex.Scheduler;
 import io.reactivex.SingleSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
@@ -44,6 +45,8 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Inject List<ActionModule> actionModules;
     final Scheduler scheduler = Schedulers.from(Executors.newSingleThreadExecutor());
     private volatile boolean adjusting = false;
+    private Disposable notificationSub;
+    private Disposable isActiveSub;
 
     @Override
     public void onCreate() {
@@ -55,7 +58,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         volumeObserver.addCallback(streamHelper.getCallId(), this);
         getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeObserver);
 
-        deviceManager.observe()
+        notificationSub = deviceManager.observe()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(stringManagedDeviceMap -> {
                     Collection<ManagedDevice> connected = new ArrayList<>();
@@ -64,11 +67,19 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     }
                     serviceHelper.updateActiveDevices(connected);
                 });
+        isActiveSub = bluetoothSource.isEnabled()
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(isActive -> {
+                    if (!isActive) stopSelf();
+                });
     }
 
     @Override
     public void onDestroy() {
         Timber.v("onDestroy()");
+        notificationSub.dispose();
+        isActiveSub.dispose();
         serviceHelper.stop();
         getContentResolver().unregisterContentObserver(volumeObserver);
         super.onDestroy();
@@ -103,19 +114,19 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         Timber.v("onStartCommand(intent=%s, flags=%d, startId=%d)", intent, flags, startId);
         if (intent == null) {
             Timber.w("Intent was null");
-            return START_STICKY;
-        }
-        serviceHelper.start();
+            stopSelf();
+        } else if (intent.hasExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT)) {
+            serviceHelper.start();
 
-        SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
-        if (event != null) {
+            SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
+
             bluetoothSource.getConnectedDevices()
                     .delaySubscription(1000, TimeUnit.MILLISECONDS)
                     .subscribeOn(scheduler)
                     .map(connectedDevices -> {
                         if (event.getType() == SourceDevice.Event.Type.CONNECTED && !connectedDevices.containsKey(event.getAddress())) {
                             Thread.sleep(500);
-                            throw new Exception("Device not yet fully connected.");
+                            throw new PrematureConnectionException(event);
                         }
                         return event;
                     })
@@ -123,13 +134,14 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     .flatMap(new Function<SourceDevice.Event, SingleSource<ManagedDevice.Action>>() {
                         @Override
                         public SingleSource<ManagedDevice.Action> apply(SourceDevice.Event deviceEvent) throws Exception {
-                            return deviceManager.loadDevices(true).map(knownDevices -> {
-                                final ManagedDevice knownDevice = knownDevices.get(deviceEvent.getAddress());
-                                if (knownDevice == null) {
-                                    throw new UnmanagedDeviceException(deviceEvent);
-                                }
-                                return new ManagedDevice.Action(knownDevice, deviceEvent.getType());
-                            });
+                            return deviceManager.updateDevices()
+                                    .map(knownDevices -> {
+                                        final ManagedDevice knownDevice = knownDevices.get(deviceEvent.getAddress());
+                                        if (knownDevice == null) {
+                                            throw new UnmanagedDeviceException(deviceEvent);
+                                        }
+                                        return new ManagedDevice.Action(knownDevice, deviceEvent.getType());
+                                    });
                         }
                     })
                     .doOnSubscribe(disposable -> {
@@ -145,11 +157,14 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         if (!settings.isVolumeChangeListenerEnabled()) {
                             Timber.d("We don't want to listen to volume changes, stopping service.");
                             stopSelf();
+                        } else {
+                            serviceHelper.updateMessage(getString(R.string.label_status_listening_for_changes));
                         }
                     })
                     .subscribe((action, throwable) -> {
                         if (throwable != null) {
-                            if (!(throwable instanceof UnmanagedDeviceException)) {
+                            if (!(throwable instanceof UnmanagedDeviceException)
+                                    && !(throwable instanceof PrematureConnectionException)) {
                                 Bugsnag.notify(throwable);
                             }
                             return;
@@ -179,13 +194,17 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                             handleDisconnect();
                         }
                     });
+        } else if (ServiceHelper.STOP_ACTION.equals(intent.getAction())) {
+            stopSelf();
+        } else {
+            stopSelf();
         }
-
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     private void handleDisconnect() {
-        deviceManager.loadDevices(true)
+        deviceManager.observe()
+                .firstOrError()
                 .subscribeOn(Schedulers.computation())
                 .subscribe(deviceMap -> {
                     boolean stop = true;
@@ -213,7 +232,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             return;
         }
         float percentage = streamHelper.getVolumePercentage(streamId);
-        deviceManager.loadDevices(false)
+        deviceManager.updateDevices()
                 .map(deviceMap -> {
                     Collection<ManagedDevice> active = new HashSet<>();
                     for (ManagedDevice d : deviceMap.values()) {
@@ -230,6 +249,6 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     return device;
                 })
                 .toList()
-                .subscribe(actives -> deviceManager.update(actives).subscribeOn(Schedulers.computation()).subscribe());
+                .subscribe(actives -> deviceManager.save(actives).subscribeOn(Schedulers.computation()).subscribe());
     }
 }

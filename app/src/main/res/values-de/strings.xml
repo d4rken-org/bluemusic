@@ -33,7 +33,7 @@
     <string name="desc_visible_volume_adjustments">Zeigt das Lautstärkenfenster des Systems während Anpassungen.</string>
 
     <string name="label_volume_listener">Lautstärkenänderungen</string>
-    <string name="desc_volume_listener">Beobachtet und speichert Lautstärkenänderungen die nicht von dieser App ausgehen.</string>
+    <string name="desc_volume_listener">Aktiv bleiben und Lautstärkenänderungen speichern die nicht von dieser App ausgehen.</string>
 
     <string name="label_autoplay_keytype">Autoplay Knopf-Typ</string>
     <string name="desc_autoplay_keytype">Die Art des Knopfdruckes die simuliert wird.</string>
@@ -75,4 +75,8 @@
     <string name="desc_intro_streams">Wir unterscheiden zwei Typen von Lautstärken: Musik, welche Medienspieler und Navigation betrifft und Anruf, welche Video/Sprachanrufe betrifft.</string>
     <string name="desc_intro_upgrade">Unterstütz weitere Entwicklung und hol dir extra Funktion durch Kauf der Premium Version.</string>
     <string name="desc_intro_tap_the_button">Fange an indem du dein erstes Gerät hinzufügst.</string>
+
+    <string name="label_status_listening_for_changes">Beobachte Lautstärkeänderungen</string>
+
+    <string name="action_exit">Beenden</string>
 </resources>

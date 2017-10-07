@@ -12,11 +12,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
+import io.reactivex.SingleOnSubscribe;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
@@ -25,6 +29,7 @@ class LiveBluetoothSource implements BluetoothSource {
     private final BluetoothManager manager;
     private final Context context;
     private BluetoothAdapter adapter;
+    private Observable<Boolean> stateObs;
 
     LiveBluetoothSource(Context context) {
         this.context = context;
@@ -33,8 +38,36 @@ class LiveBluetoothSource implements BluetoothSource {
     }
 
     @Override
-    public Single<Boolean> isEnabled() {
-        return Single.create(e -> e.onSuccess(adapter.isEnabled()));
+    public Observable<Boolean> isEnabled() {
+        synchronized (this) {
+            if (stateObs == null) {
+                stateObs = Single
+                        .create((SingleOnSubscribe<Boolean>) e -> e.onSuccess(adapter.isEnabled()))
+                        .delay(1, TimeUnit.SECONDS)
+                        .repeat()
+                        .filter(new Predicate<Boolean>() {
+                            Boolean lastState = null;
+
+                            @Override
+                            public boolean test(@NonNull Boolean newState) throws Exception {
+                                if (lastState == null || lastState != newState) {
+                                    lastState = newState;
+                                    return true;
+                                }
+                                return false;
+                            }
+                        })
+                        .toObservable()
+                        .doFinally(() -> {
+                            synchronized (LiveBluetoothSource.this) {
+                                stateObs = null;
+                            }
+                        })
+                        .replay(1)
+                        .refCount();
+            }
+        }
+        return stateObs;
     }
 
     @Override

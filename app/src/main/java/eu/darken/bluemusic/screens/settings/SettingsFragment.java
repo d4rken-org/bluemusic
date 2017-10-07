@@ -15,7 +15,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.R;
-import eu.darken.bluemusic.core.Settings;
+import eu.darken.bluemusic.core.settings.Settings;
 import eu.darken.bluemusic.screens.MainActivity;
 import eu.darken.bluemusic.util.Preconditions;
 import eu.darken.ommvplib.injection.ComponentPresenterPreferenceFragment;
