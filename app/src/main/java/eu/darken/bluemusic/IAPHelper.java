@@ -15,12 +15,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import eu.darken.bluemusic.util.dagger.ApplicationScope;
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
 import timber.log.Timber;
 
-@ApplicationScope
+@AppComponent.Scope
 public class IAPHelper implements PurchasesUpdatedListener, BillingClientStateListener {
     static final String SKU_UPGRADE = "upgrade.premium";
     private final BehaviorSubject<List<Upgrade>> upgradesPublisher = BehaviorSubject.createDefault(new ArrayList<>());

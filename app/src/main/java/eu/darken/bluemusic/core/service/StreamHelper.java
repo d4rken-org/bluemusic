@@ -5,11 +5,11 @@ import android.util.SparseIntArray;
 
 import javax.inject.Inject;
 
-import eu.darken.bluemusic.util.dagger.ApplicationScope;
+import eu.darken.bluemusic.AppComponent;
 import timber.log.Timber;
 
 
-@ApplicationScope
+@AppComponent.Scope
 public class StreamHelper {
     private volatile boolean adjusting = false;
     private final AudioManager audioManager;

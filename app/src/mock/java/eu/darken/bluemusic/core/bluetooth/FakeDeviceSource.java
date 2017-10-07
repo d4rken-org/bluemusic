@@ -1,18 +1,11 @@
 package eu.darken.bluemusic.core.bluetooth;
 
-import android.content.Context;
-
 import java.util.Map;
 
+import io.reactivex.Observable;
 import io.reactivex.Single;
 
 public class FakeDeviceSource implements BluetoothSource {
-
-    private final Context context;
-
-    public FakeDeviceSource(Context context) {
-        this.context = context;
-    }
 
     @Override
     public Single<Map<String, SourceDevice>> getPairedDevices() {
@@ -25,8 +18,7 @@ public class FakeDeviceSource implements BluetoothSource {
     }
 
     @Override
-    public boolean isEnabled() {
+    public Observable<Boolean> isEnabled() {
         throw new UnsupportedOperationException();
-//        return false;
     }
 }

@@ -1,12 +1,15 @@
 package eu.darken.bluemusic;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 import dagger.Component;
 import dagger.MembersInjector;
 import eu.darken.bluemusic.core.bluetooth.DeviceSourceModule;
-import eu.darken.bluemusic.util.dagger.ApplicationScope;
 
 
-@ApplicationScope
+@AppComponent.Scope
 @Component(modules = {
         ActivityBinderModule.class,
         ServiceBinderModule.class,
@@ -14,7 +17,7 @@ import eu.darken.bluemusic.util.dagger.ApplicationScope;
         AndroidModule.class,
         DeviceSourceModule.class
 })
-interface AppComponent extends MembersInjector<App> {
+public interface AppComponent extends MembersInjector<App> {
     void inject(App app);
 
     @Component.Builder
@@ -24,4 +27,9 @@ interface AppComponent extends MembersInjector<App> {
         AppComponent build();
     }
 
+    @Documented
+    @javax.inject.Scope
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface Scope {
+    }
 }

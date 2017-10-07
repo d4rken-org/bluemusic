@@ -4,13 +4,13 @@ import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
-import eu.darken.bluemusic.util.dagger.ApplicationScope;
+import eu.darken.bluemusic.AppComponent;
 
 
 @Module
 public class DeviceSourceModule {
     @Provides
-    @ApplicationScope
+    @AppComponent.Scope
     BluetoothSource provideDeviceSource(Context context) {
         return new LiveBluetoothSource(context);
     }

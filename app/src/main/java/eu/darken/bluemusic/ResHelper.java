@@ -5,9 +5,7 @@ import android.support.annotation.StringRes;
 
 import javax.inject.Inject;
 
-import eu.darken.bluemusic.util.dagger.ApplicationScope;
-
-@ApplicationScope
+@AppComponent.Scope
 public class ResHelper {
     private final Context context;
 

@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.IAPHelper;
-import eu.darken.bluemusic.core.service.BinderHelper;
 import eu.darken.ommvplib.base.Presenter;
 import eu.darken.ommvplib.injection.ComponentPresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -17,15 +16,12 @@ import io.reactivex.schedulers.Schedulers;
 @SettingsComponent.Scope
 public class SettingsPresenter extends ComponentPresenter<SettingsPresenter.View, SettingsComponent> {
 
-    private final BinderHelper binderHelper;
     private final IAPHelper iapHelper;
-    private Disposable serviceSub = Disposables.disposed();
     private Disposable upgradeSub = Disposables.disposed();
     boolean isProVersion = false;
 
     @Inject
-    SettingsPresenter(BinderHelper binderHelper, IAPHelper iapHelper) {
-        this.binderHelper = binderHelper;
+    SettingsPresenter(IAPHelper iapHelper) {
         this.iapHelper = iapHelper;
     }
 
@@ -40,10 +36,8 @@ public class SettingsPresenter extends ComponentPresenter<SettingsPresenter.View
                         SettingsPresenter.this.isProVersion = isPremiumVersion;
                         onView(v -> v.updatePremiumState(isPremiumVersion));
                     });
-            serviceSub = binderHelper.getBinder().subscribe();
         } else {
             upgradeSub.dispose();
-            serviceSub.dispose();
         }
     }
 

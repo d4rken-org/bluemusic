@@ -9,10 +9,10 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
-import eu.darken.bluemusic.util.dagger.ApplicationScope;
+import eu.darken.bluemusic.AppComponent;
 import timber.log.Timber;
 
-@ApplicationScope
+@AppComponent.Scope
 public class BugsnagTree extends Timber.DebugTree {
     private static final int BUFFER_SIZE = 100;
 

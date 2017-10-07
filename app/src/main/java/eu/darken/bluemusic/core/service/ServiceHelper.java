@@ -20,10 +20,9 @@ import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.ResHelper;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.screens.MainActivity;
-import eu.darken.bluemusic.util.dagger.ServiceScope;
 import timber.log.Timber;
 
-@ServiceScope
+@BlueMusicServiceComponent.Scope
 public class ServiceHelper {
 
     private final static String NOTIFICATION_CHANNEL_ID = "notification.channel.core";
@@ -93,6 +92,7 @@ public class ServiceHelper {
     }
 
     void updateActiveDevices(Collection<ManagedDevice> devices) {
+        Timber.v("updateActiveDevices(devices=%s)", devices);
         final Iterator<ManagedDevice> iterator = devices.iterator();
         StringBuilder sb = new StringBuilder();
         while (iterator.hasNext()) {
@@ -105,6 +105,7 @@ public class ServiceHelper {
     }
 
     void updateMessage(String message) {
+        Timber.v("updateMessage(message=%s)", message);
         builder.setContentText(message);
         updateNotification();
     }

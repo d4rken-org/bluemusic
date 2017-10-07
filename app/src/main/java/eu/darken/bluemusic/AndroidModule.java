@@ -8,35 +8,34 @@ import android.preference.PreferenceManager;
 
 import dagger.Module;
 import dagger.Provides;
-import eu.darken.bluemusic.util.dagger.ApplicationScope;
 
 
 @Module
-public class AndroidModule {
+class AndroidModule {
     private final App app;
 
-    public AndroidModule(App app) {this.app = app;}
+    AndroidModule(App app) {this.app = app;}
 
     @Provides
-    @ApplicationScope
+    @AppComponent.Scope
     Context context() {
         return app.getApplicationContext();
     }
 
     @Provides
-    @ApplicationScope
+    @AppComponent.Scope
     SharedPreferences preferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     @Provides
-    @ApplicationScope
+    @AppComponent.Scope
     AudioManager audioManager(Context context) {
         return (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     }
 
     @Provides
-    @ApplicationScope
+    @AppComponent.Scope
     NotificationManager notificationManager(Context context) {
         return (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
     }

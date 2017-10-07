@@ -9,10 +9,10 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import eu.darken.bluemusic.AppComponent;
 import eu.darken.bluemusic.core.bluetooth.BluetoothSource;
 import eu.darken.bluemusic.core.bluetooth.SourceDevice;
 import eu.darken.bluemusic.core.service.StreamHelper;
-import eu.darken.bluemusic.util.dagger.ApplicationScope;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -27,7 +27,7 @@ import io.realm.RealmResults;
 import timber.log.Timber;
 
 
-@ApplicationScope
+@AppComponent.Scope
 public class DeviceManager {
 
     private BluetoothSource bluetoothSource;

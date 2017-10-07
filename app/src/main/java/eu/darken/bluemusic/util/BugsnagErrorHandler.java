@@ -5,11 +5,11 @@ import com.bugsnag.android.BeforeNotify;
 
 import javax.inject.Inject;
 
+import eu.darken.bluemusic.AppComponent;
 import eu.darken.bluemusic.BuildConfig;
 import eu.darken.bluemusic.core.settings.Settings;
-import eu.darken.bluemusic.util.dagger.ApplicationScope;
 
-@ApplicationScope
+@AppComponent.Scope
 public class BugsnagErrorHandler implements BeforeNotify {
     private final Settings settings;
     private final BugsnagTree bugsnagTree;

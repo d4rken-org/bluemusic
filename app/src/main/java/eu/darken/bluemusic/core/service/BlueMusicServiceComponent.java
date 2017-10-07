@@ -4,11 +4,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import dagger.Subcomponent;
-import eu.darken.bluemusic.util.dagger.ServiceScope;
 import eu.darken.ommvplib.injection.service.ServiceComponent;
 
 
-@ServiceScope
+@BlueMusicServiceComponent.Scope
 @Subcomponent(modules = {ServiceModule.class})
 public interface BlueMusicServiceComponent extends ServiceComponent<BlueMusicService> {
 
