@@ -2,6 +2,7 @@ package eu.darken.bluemusic.core.service;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
@@ -18,6 +19,7 @@ import javax.inject.Inject;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.ResHelper;
 import eu.darken.bluemusic.core.database.ManagedDevice;
+import eu.darken.bluemusic.screens.MainActivity;
 import eu.darken.bluemusic.util.dagger.ServiceScope;
 import timber.log.Timber;
 
@@ -42,8 +44,13 @@ public class ServiceHelper {
             NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, resHelper.getString(R.string.label_notification_channel_status), NotificationManagerCompat.IMPORTANCE_MIN);
             notificationManager.createNotificationChannel(channel);
         }
+
+        Intent intent = new Intent(service, MainActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(service, 0, intent, 0);
+
         builder = new NotificationCompat.Builder(service, NOTIFICATION_CHANNEL_ID)
                 .setChannelId(NOTIFICATION_CHANNEL_ID)
+                .setContentIntent(pi)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentText(resHelper.getString(R.string.label_status_idle))
                 .setContentTitle(resHelper.getString(R.string.app_name));
