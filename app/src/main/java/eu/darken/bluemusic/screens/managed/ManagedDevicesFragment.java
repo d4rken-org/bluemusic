@@ -67,7 +67,7 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
     @Nullable
     @Override
     public android.view.View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        android.view.View layout = inflater.inflate(R.layout.fragment_layout_volumemanager, container, false);
+        android.view.View layout = inflater.inflate(R.layout.fragment_layout_managed_devices, container, false);
         unbinder = ButterKnife.bind(this, layout);
         return layout;
     }
