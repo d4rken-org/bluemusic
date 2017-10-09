@@ -39,6 +39,7 @@ public class StreamHelper {
     private synchronized void doSetVolume(int streamId, int volume, int flags) {
         adjusting = true;
         lastUs.put(streamId, volume);
+        // https://stackoverflow.com/questions/6733163/notificationmanager-notify-fails-with-securityexception
         audioManager.setStreamVolume(streamId, volume, flags);
         adjusting = false;
     }
