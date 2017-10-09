@@ -27,7 +27,7 @@ public class ServiceHelper {
 
     private final static String NOTIFICATION_CHANNEL_ID = "notification.channel.core";
     private final static int NOTIFICATION_ID = 1;
-    public static final String STOP_ACTION = "STOP_SERVICE";
+    static final String STOP_ACTION = "STOP_SERVICE";
     private final NotificationManager notificationManager;
     private final ResHelper resHelper;
     private final NotificationCompat.Builder builder;
@@ -35,7 +35,7 @@ public class ServiceHelper {
     private boolean started;
 
     @Inject
-    public ServiceHelper(BlueMusicService service, NotificationManager notificationManager, ResHelper resHelper) {
+    ServiceHelper(BlueMusicService service, NotificationManager notificationManager, ResHelper resHelper) {
         this.service = service;
         this.notificationManager = notificationManager;
         this.resHelper = resHelper;
@@ -62,16 +62,17 @@ public class ServiceHelper {
     }
 
     void start() {
-        Timber.v("startForeground()");
+        Timber.v("start()");
         started = true;
         service.startForeground(NOTIFICATION_ID, builder.build());
     }
 
     void stop() {
-        Timber.v("stopForeground()");
+        Timber.v("stop()");
         started = false;
         service.stopForeground(true);
         notificationManager.cancel(NOTIFICATION_ID);
+        service.stopSelf();
     }
 
     public static Intent getIntent(Context context) {

@@ -26,6 +26,7 @@ import eu.darken.bluemusic.core.bluetooth.SourceDevice;
 import eu.darken.bluemusic.core.database.DeviceManager;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.core.settings.Settings;
+import io.reactivex.Flowable;
 import io.reactivex.Scheduler;
 import io.reactivex.SingleSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -71,7 +72,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(isActive -> {
-                    if (!isActive) stopSelf();
+                    if (!isActive) serviceHelper.stop();
                 });
     }
 
@@ -114,23 +115,22 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         Timber.v("onStartCommand(intent=%s, flags=%d, startId=%d)", intent, flags, startId);
         if (intent == null) {
             Timber.w("Intent was null");
-            stopSelf();
+            serviceHelper.stop();
         } else if (intent.hasExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT)) {
             serviceHelper.start();
 
             SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
 
             bluetoothSource.getConnectedDevices()
-                    .delaySubscription(1000, TimeUnit.MILLISECONDS)
                     .subscribeOn(scheduler)
                     .map(connectedDevices -> {
                         if (event.getType() == SourceDevice.Event.Type.CONNECTED && !connectedDevices.containsKey(event.getAddress())) {
-                            Thread.sleep(500);
+                            Timber.v("Connection not ready yet retrying.");
                             throw new PrematureConnectionException(event);
                         }
                         return event;
                     })
-                    .retry(20)
+                    .retryWhen(errors -> errors.zipWith(Flowable.range(1, 20), (n, i) -> i).flatMap(retryCount -> Flowable.timer(1, TimeUnit.SECONDS)))
                     .flatMap(new Function<SourceDevice.Event, SingleSource<ManagedDevice.Action>>() {
                         @Override
                         public SingleSource<ManagedDevice.Action> apply(SourceDevice.Event deviceEvent) throws Exception {
@@ -156,7 +156,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
                         if (!settings.isVolumeChangeListenerEnabled()) {
                             Timber.d("We don't want to listen to volume changes, stopping service.");
-                            stopSelf();
+                            serviceHelper.stop();
                         } else {
                             serviceHelper.updateMessage(getString(R.string.label_status_listening_for_changes));
                         }
@@ -195,9 +195,9 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         }
                     });
         } else if (ServiceHelper.STOP_ACTION.equals(intent.getAction())) {
-            stopSelf();
+            serviceHelper.stop();
         } else {
-            stopSelf();
+            serviceHelper.stop();
         }
         return START_NOT_STICKY;
     }
@@ -216,7 +216,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     }
                     if (stop) {
                         Timber.d("No more active devices, stopping service.");
-                        stopSelf();
+                        serviceHelper.stop();
                     }
                 });
     }
