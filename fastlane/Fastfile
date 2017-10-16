@@ -18,17 +18,18 @@ default_platform :android
 platform :android do
   before_all do
   	ensure_git_status_clean
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
   end
 
   lane :beta do
   	ensure_git_branch(branch: 'dev')
+  	git_pull
 	gradle(task: 'assemble', build_type: 'ProdRelease')
   	supply(track: 'beta')
   end
 
   lane :production do
   	ensure_git_branch(branch: 'master')
+  	git_pull
 	gradle(task: 'assemble', build_type: 'ProdRelease')
   	supply(track: 'rollout', rollout: '0.1')
   end
