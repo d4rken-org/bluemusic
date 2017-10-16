@@ -1,0 +1,9 @@
+v2.0 - 2.4
+• Improved device detection
+• Devicescan be manually added from a list of paired devices
+• Timings can be adjusted for each device
+• Listening to volume buttons can be disabled
+• Call volume adjustment can be disabled per device
+• Added premium upgrade for extra features and development support
+• Volume window popup can be hidden [premium]
+• Autoplay function per device, which simulates pressing a bluetooth controller's PLAY button [premium] Question regarding the update? Mail me!

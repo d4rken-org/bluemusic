@@ -1,0 +1,9 @@
+v2.0 - 2.4
+• Verbesserte Geräteerkennung
+• Geräte können manuell hinzugefügt werden
+• Reaktionszeiten lassen sich per Gerät anpassen
+• Externe Lautstärkeänderungen können ignoriert werden
+• Anpassung der Anruflautstärke kann ausgeschaltet werden
+• Ein optionales Premium Upgrade bietet mehr Funktionen und unterstützt weitere Entwicklung
+• Das Laustärkefenster kann versteckt werden [Premium]
+• Musik kann automatisch abgespielt werden [Premium] Fragen zum Update? Mailt mir!

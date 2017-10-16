@@ -1,0 +1,12 @@
+Diese App gibt deinem Android Gerät die Möglichkeit Lautstärken für Musik und Gespräche für jedes Bluetooth Gerät einzeln festzulegen.
+
+Es merkt sich die Lautstärken für jedes Gerät und stellt diese automatisch wieder her wenn es nötig ist.
+Die Lautstärke kann durch die App oder über die normalen Lautstärketasten konfiguriert werden.
+
+Diese App wurde dadurch motiviert das ich Spotify im Auto hören wollte, Android 7.X+ aber die Lautstärke immer wieder auf 50% zurücksetzt, wenn ein Bluetooth Gerät (z.B. Kopfhörer, Autoradio, Boxen) sich verbindet und die Lautstärke vorher über 50% war.
+Das Problem ist schon seit Sept 2016 bekannt: https://code.google.com/p/android/issues/detail?id=212402
+
+Berechtigungen erklärt:
+• 'Internet' für Fehlerberichte.
+• 'Bluetooth' um mit Bluetooth zu arbeiten.
+• 'Modify audio settings' um die Lautstärke zu ändern.
