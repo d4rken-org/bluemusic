@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
+import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,13 +27,14 @@ class LiveBluetoothSource implements BluetoothSource {
 
     private final BluetoothManager manager;
     private final Context context;
-    private BluetoothAdapter adapter;
+    @Nullable private final BluetoothAdapter adapter;
     private Observable<Boolean> stateObs;
 
     LiveBluetoothSource(Context context) {
         this.context = context;
         manager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
         adapter = manager.getAdapter();
+        if (adapter == null) Timber.w("BluetoothAdapter is null!");
     }
 
     @Override
@@ -41,7 +43,7 @@ class LiveBluetoothSource implements BluetoothSource {
             if (stateObs == null) {
                 stateObs = Observable.interval(1, TimeUnit.SECONDS)
                         .startWith(0L)
-                        .map(count -> adapter.isEnabled())
+                        .map(count -> adapter != null && adapter.isEnabled())
                         .filter(new Predicate<Boolean>() {
                             Boolean lastState = null;
 
@@ -109,6 +111,7 @@ class LiveBluetoothSource implements BluetoothSource {
         return Single
                 .create((SingleOnSubscribe<List<BluetoothDevice>>) emitter -> {
                     BluetoothProfile.ServiceListener listener = new BluetoothProfile.ServiceListener() {
+                        @SuppressWarnings("ConstantConditions")
                         public void onServiceConnected(int profile, BluetoothProfile proxy) {
                             final List<BluetoothDevice> connectedDevices = proxy.getConnectedDevices();
                             Timber.v("onServiceConnected(profile=%d, connected=%s)", profile, connectedDevices);
@@ -120,7 +123,8 @@ class LiveBluetoothSource implements BluetoothSource {
                             Timber.v("onServiceDisconnected(profile=%d)", profile);
                         }
                     };
-                    final boolean success = adapter.getProfileProxy(context, listener, desiredProfile);
+
+                    final boolean success = adapter != null && adapter.getProfileProxy(context, listener, desiredProfile);
                     Timber.v("getDevicesForProfile(profile=%d, success=%b)", desiredProfile, success);
                     if (!success) emitter.onSuccess(new ArrayList<>());
                 })
