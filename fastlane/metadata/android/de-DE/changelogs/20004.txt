@@ -6,4 +6,6 @@ v2.0 - 2.4
 • Anpassung der Anruflautstärke kann ausgeschaltet werden
 • Ein optionales Premium Upgrade bietet mehr Funktionen und unterstützt weitere Entwicklung
 • Das Laustärkefenster kann versteckt werden [Premium]
-• Musik kann automatisch abgespielt werden [Premium] Fragen zum Update? Mailt mir!
+• Musik kann automatisch abgespielt werden [Premium]
+
+Fragen zum Update? Mailt mir!
