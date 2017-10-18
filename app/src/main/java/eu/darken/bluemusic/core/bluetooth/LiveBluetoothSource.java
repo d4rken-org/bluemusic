@@ -20,7 +20,6 @@ import io.reactivex.Single;
 import io.reactivex.SingleOnSubscribe;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Predicate;
-import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 class LiveBluetoothSource implements BluetoothSource {
@@ -40,10 +39,9 @@ class LiveBluetoothSource implements BluetoothSource {
     public Observable<Boolean> isEnabled() {
         synchronized (this) {
             if (stateObs == null) {
-                stateObs = Single
-                        .create((SingleOnSubscribe<Boolean>) e -> e.onSuccess(adapter.isEnabled()))
-                        .delay(1, TimeUnit.SECONDS)
-                        .repeat()
+                stateObs = Observable.interval(1, TimeUnit.SECONDS)
+                        .startWith(0L)
+                        .map(count -> adapter.isEnabled())
                         .filter(new Predicate<Boolean>() {
                             Boolean lastState = null;
 
@@ -56,7 +54,6 @@ class LiveBluetoothSource implements BluetoothSource {
                                 return false;
                             }
                         })
-                        .toObservable()
                         .doFinally(() -> {
                             synchronized (LiveBluetoothSource.this) {
                                 stateObs = null;
@@ -111,21 +108,19 @@ class LiveBluetoothSource implements BluetoothSource {
     private Single<List<BluetoothDevice>> getDevicesForProfile(int desiredProfile) {
         return Single
                 .create((SingleOnSubscribe<List<BluetoothDevice>>) emitter -> {
-                    BluetoothProfile.ServiceListener mProfileListener = new BluetoothProfile.ServiceListener() {
+                    BluetoothProfile.ServiceListener listener = new BluetoothProfile.ServiceListener() {
                         public void onServiceConnected(int profile, BluetoothProfile proxy) {
-                            Schedulers.computation().scheduleDirect(() -> {
-                                final List<BluetoothDevice> connectedDevices = proxy.getConnectedDevices();
-                                Timber.v("onServiceConnected(profile=%d, connected=%s)", profile, connectedDevices);
-                                emitter.onSuccess(connectedDevices);
-                                adapter.closeProfileProxy(profile, proxy);
-                            });
+                            final List<BluetoothDevice> connectedDevices = proxy.getConnectedDevices();
+                            Timber.v("onServiceConnected(profile=%d, connected=%s)", profile, connectedDevices);
+                            emitter.onSuccess(connectedDevices);
+                            adapter.closeProfileProxy(profile, proxy);
                         }
 
                         public void onServiceDisconnected(int profile) {
                             Timber.v("onServiceDisconnected(profile=%d)", profile);
                         }
                     };
-                    final boolean success = adapter.getProfileProxy(context, mProfileListener, desiredProfile);
+                    final boolean success = adapter.getProfileProxy(context, listener, desiredProfile);
                     Timber.v("getDevicesForProfile(profile=%d, success=%b)", desiredProfile, success);
                     if (!success) emitter.onSuccess(new ArrayList<>());
                 })
