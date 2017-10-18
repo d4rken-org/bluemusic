@@ -23,14 +23,14 @@ platform :android do
   lane :beta do
   	ensure_git_branch(branch: 'dev')
   	git_pull
-	gradle(task: 'assemble', build_type: 'ProdRelease')
+	gradle(task: 'clean assembleRelease')
   	supply(track: 'beta')
   end
 
   lane :production do
   	ensure_git_branch(branch: 'master')
   	git_pull
-	gradle(task: 'assemble', build_type: 'ProdRelease')
+	gradle(task: 'clean assembleRelease')
   	supply(track: 'rollout', rollout: '0.1')
   end
 
