@@ -14,7 +14,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -26,7 +25,7 @@ import eu.darken.bluemusic.core.bluetooth.SourceDevice;
 import eu.darken.bluemusic.core.database.DeviceManager;
 import eu.darken.bluemusic.core.database.ManagedDevice;
 import eu.darken.bluemusic.core.settings.Settings;
-import io.reactivex.Flowable;
+import eu.darken.bluemusic.util.ui.RetryWithDelay;
 import io.reactivex.Scheduler;
 import io.reactivex.SingleSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -130,7 +129,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         }
                         return event;
                     })
-                    .retryWhen(errors -> errors.zipWith(Flowable.range(1, 20), (n, i) -> i).flatMap(retryCount -> Flowable.timer(1, TimeUnit.SECONDS)))
+                    .retryWhen(new RetryWithDelay(5, 2000))
                     .flatMap(new Function<SourceDevice.Event, SingleSource<ManagedDevice.Action>>() {
                         @Override
                         public SingleSource<ManagedDevice.Action> apply(SourceDevice.Event deviceEvent) throws Exception {
@@ -165,6 +164,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         if (throwable != null) {
                             if (!(throwable instanceof UnmanagedDeviceException)
                                     && !(throwable instanceof PrematureConnectionException)) {
+                                Timber.e("Device error: %s", throwable);
                                 Bugsnag.notify(throwable);
                             }
                             return;
@@ -179,6 +179,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                                 try {
                                     module.handle(device, event);
                                 } catch (Exception e) {
+                                    Timber.e("Module error: %s", e);
                                     Bugsnag.notify(e);
                                 } finally {
                                     latch.countDown();
