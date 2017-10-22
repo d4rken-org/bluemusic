@@ -1,0 +1,4 @@
+v2.5 - 2.6
+• Schnelleres laden wenn der Bluetooth-Adapter Status gecheckt wird
+• Reduzierter Resourcenverbrauch wenn auf Bluetooth Ereignisse reagiert wird
+• Interner Fehler beim überprüfen der Bluetoothverfügbarkeit wurde behoben
