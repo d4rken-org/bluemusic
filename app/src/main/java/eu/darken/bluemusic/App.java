@@ -7,8 +7,6 @@ import android.content.BroadcastReceiver;
 
 import com.bugsnag.android.Bugsnag;
 import com.bugsnag.android.Client;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
 
 import javax.inject.Inject;
 
@@ -24,13 +22,7 @@ import io.realm.RealmConfiguration;
 import timber.log.Timber;
 
 
-public class App extends Application
-        implements HasManualActivityInjector, HasManualBroadcastReceiverInjector, HasManualServiceInjector {
-    private static RefWatcher refWatcher;
-
-    public static RefWatcher getRefWatcher() {
-        return refWatcher;
-    }
+public class App extends Application implements HasManualActivityInjector, HasManualBroadcastReceiverInjector, HasManualServiceInjector {
 
     @Inject BugsnagTree bugsnagTree;
     @Inject BugsnagErrorHandler errorHandler;
@@ -47,7 +39,7 @@ public class App extends Application
         Realm.init(this);
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
                 .schemaVersion(2)
-                .deleteRealmIfMigrationNeeded()
+//                .deleteRealmIfMigrationNeeded()
                 .build();
         Realm.setDefaultConfiguration(realmConfig);
 
@@ -61,8 +53,6 @@ public class App extends Application
         bugsnagClient.beforeNotify(errorHandler);
 
         Timber.d("Bugsnag setup done!");
-
-        refWatcher = LeakCanary.install(this);
     }
 
     @Override
