@@ -2,6 +2,7 @@ package eu.darken.bluemusic.screens.managed;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -41,6 +42,7 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
 
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
     @BindView(R.id.empty_info) View emptyInfo;
+    @BindView(R.id.infobox_buypremium) View infoBoxBuyPremium;
     @BindView(R.id.bluetooth_disabled_container) View bluetoothDisabledContainer;
     @BindView(R.id.bluetooth_enabled_container) View bluetoothEnabledContainer;
     @BindView(R.id.fab) FloatingActionButton fab;
@@ -66,7 +68,7 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
 
     @Nullable
     @Override
-    public android.view.View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public android.view.View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         android.view.View layout = inflater.inflate(R.layout.fragment_layout_managed_devices, container, false);
         unbinder = ButterKnife.bind(this, layout);
         return layout;
@@ -90,6 +92,7 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Preconditions.checkNotNull(getActivity());
         final ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
         Preconditions.checkNotNull(actionBar);
         actionBar.setDisplayHomeAsUpEnabled(false);
@@ -155,6 +158,7 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
     @Override
     public void updateUpgradeState(boolean isProVersion) {
         this.isProVersion = isProVersion;
+        infoBoxBuyPremium.setVisibility(isProVersion ? View.GONE : View.VISIBLE);
         getActivity().invalidateOptionsMenu();
     }
 
