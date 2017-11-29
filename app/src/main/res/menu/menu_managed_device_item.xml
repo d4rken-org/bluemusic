@@ -10,7 +10,7 @@
         android:id="@+id/toggle_call_volume"
         android:checkable="true"
         android:checked="false"
-        android:icon="@drawable/ic_headset_mic_white_24dp"
+        android:icon="@drawable/ic_phone_white_24dp"
         android:title="@string/label_call_volume"/>
     <item
         android:id="@+id/toggle_autoplay"
