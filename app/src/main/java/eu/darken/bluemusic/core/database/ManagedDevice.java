@@ -20,6 +20,11 @@ public class ManagedDevice {
         this.deviceConfig = deviceConfig;
     }
 
+    public String tryGetAlias() {
+        String alias = getAlias();
+        return alias != null ? alias : getName();
+    }
+
     public String getAlias() {
         return sourceDevice.getAlias();
     }

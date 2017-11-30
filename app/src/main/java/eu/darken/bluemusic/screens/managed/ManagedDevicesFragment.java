@@ -275,12 +275,9 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
         new AlertDialog.Builder(getContext())
                 .setTitle(R.string.action_rename_device)
                 .setView(container)
-                .setPositiveButton(R.string.action_set, (dialogInterface, i) -> {
-                    getPresenter().onRenameDevice(device, input.getText().toString());
-                })
+                .setPositiveButton(R.string.action_set, (dialogInterface, i) -> getPresenter().onRenameDevice(device, input.getText().toString()))
                 .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().onRenameDevice(device, device.getName()))
-                .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {
-                })
+                .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> { })
                 .show();
     }
 }
