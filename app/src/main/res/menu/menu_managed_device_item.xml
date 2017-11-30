@@ -28,7 +28,7 @@
         android:title="@string/label_adjustment_delay"/>
     <item
         android:id="@+id/rename"
-        android:title="@string/action_rename_device"/>
+        android:title="@string/label_rename_device"/>
     <item
         android:id="@+id/delete"
         android:icon="@drawable/ic_delete_white_24dp"

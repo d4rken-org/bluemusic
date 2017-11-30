@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <eu.darken.bluemusic.util.ui.SwitchPreferenceView
+            android:id="@+id/pref_music_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:pvDescription="@string/description_music_volume"
+            app:pvIcon="@drawable/ic_music_note_white_24dp"
+            app:pvTitle="@string/label_music_volume"
+            tools:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/preference_list_divider_material"/>
+
+        <eu.darken.bluemusic.util.ui.SwitchPreferenceView
+            android:id="@+id/pref_call_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:pvDescription="@string/description_call_volume"
+            app:pvIcon="@drawable/ic_phone_white_24dp"
+            app:pvTitle="@string/label_call_volume"
+            tools:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/preference_list_divider_material"/>
+
+        <eu.darken.bluemusic.util.ui.SwitchPreferenceView
+            android:id="@+id/pref_autoplay_enabled"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:pvDescription="@string/description_autoplay"
+            app:pvIcon="@drawable/ic_play_circle_outline_white_24dp"
+            app:pvTitle="@string/label_autoplay"
+            tools:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/preference_list_divider_material"/>
+
+        <eu.darken.bluemusic.util.ui.PreferenceView
+            android:id="@+id/pref_reaction_delay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:pvDescription="@string/description_reaction_delay"
+            app:pvIcon="@drawable/ic_timer_white_24dp"
+            app:pvTitle="@string/label_reaction_delay"
+            tools:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/preference_list_divider_material"/>
+
+        <eu.darken.bluemusic.util.ui.PreferenceView
+            android:id="@+id/pref_adjustment_delay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:pvDescription="@string/description_adjustment_delay"
+            app:pvIcon="@drawable/ic_av_timer_white_24dp"
+            app:pvTitle="@string/label_adjustment_delay"
+            tools:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/preference_list_divider_material"/>
+
+        <eu.darken.bluemusic.util.ui.PreferenceView
+            android:id="@+id/pref_rename"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:pvDescription="@string/description_rename_device"
+            app:pvIcon="@drawable/ic_mode_edit_white_24dp"
+            app:pvTitle="@string/label_rename_device"
+            tools:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/preference_list_divider_material"/>
+
+        <eu.darken.bluemusic.util.ui.PreferenceView
+            android:id="@+id/pref_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:pvDescription="@string/description_forget_device"
+            app:pvIcon="@drawable/ic_delete_white_24dp"
+            app:pvTitle="@string/label_forget_device"
+            tools:visibility="visible"/>
+    </LinearLayout>
+</ScrollView>

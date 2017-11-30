@@ -9,6 +9,8 @@ import dagger.android.support.FragmentKey;
 import dagger.multibindings.IntoMap;
 import eu.darken.bluemusic.screens.about.AboutComponent;
 import eu.darken.bluemusic.screens.about.AboutFragment;
+import eu.darken.bluemusic.screens.config.ConfigComponent;
+import eu.darken.bluemusic.screens.config.ConfigFragment;
 import eu.darken.bluemusic.screens.devices.DevicesComponent;
 import eu.darken.bluemusic.screens.devices.DevicesFragment;
 import eu.darken.bluemusic.screens.managed.ManagedDevicesComponent;
@@ -20,7 +22,8 @@ import eu.darken.bluemusic.screens.settings.SettingsFragment;
         ManagedDevicesComponent.class,
         DevicesComponent.class,
         SettingsComponent.class,
-        AboutComponent.class
+        AboutComponent.class,
+        ConfigComponent.class
 })
 abstract class MainActivityFragmentBinderModule {
 
@@ -28,6 +31,11 @@ abstract class MainActivityFragmentBinderModule {
     @IntoMap
     @FragmentKey(ManagedDevicesFragment.class)
     abstract AndroidInjector.Factory<? extends Fragment> volumes(ManagedDevicesComponent.Builder impl);
+
+    @Binds
+    @IntoMap
+    @FragmentKey(ConfigFragment.class)
+    abstract AndroidInjector.Factory<? extends Fragment> config(ConfigComponent.Builder impl);
 
     @Binds
     @IntoMap

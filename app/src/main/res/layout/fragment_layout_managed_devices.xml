@@ -87,7 +87,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@string/desc_intro_autoplay"/>
+                        android:text="@string/description_autoplay"/>
                 </LinearLayout>
 
                 <LinearLayout

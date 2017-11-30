@@ -24,10 +24,10 @@
     <string name="desc_app_enabled">Aktiviert/Deaktiviert die Fähigkeit dieser App auf Bluetooth Ereignisse zu reagieren.</string>
 
     <string name="label_reaction_delay">Reaktionsverzögerung</string>
-    <string name="desc_reaction_delay">Die Verzögerung in Millisekunden bis diese App auf ein Bluetooth Ereignis reagiert.</string>
+    <string name="description_reaction_delay">Die Verzögerung in Millisekunden bis diese App auf ein Bluetooth Ereignis reagiert.</string>
 
     <string name="label_adjustment_delay">Anpassungsverzögerung</string>
-    <string name="desc_adjustment_delay">Die Verzögerung der Anpassungsschritte in Millisekunden. Eine Verzögerung on 0 heißt dass die gewünschte Lautstärke sofort gesetzt wird.</string>
+    <string name="description_adjustment_delay">Die Verzögerung der Anpassungsschritte in Millisekunden. Eine Verzögerung on 0 heißt dass die gewünschte Lautstärke sofort gesetzt wird.</string>
 
     <string name="label_visible_volume_adjustments">Sichtbare Anpassungen</string>
     <string name="desc_visible_volume_adjustments">Zeigt das Lautstärkenfenster des Systems während Anpassungen.</string>
@@ -71,7 +71,7 @@
 
     <string name="desc_bluetooth_is_disabled">Bluetooth ist deaktiviert.</string>
     <string name="desc_intro_primary_purpose">Diese App reagiert auf Bluetooth Geräte. Ihre Hauptaufgabe ist es die Lautstärke abhängig vom verbundenen Gerät anzupassen.</string>
-    <string name="desc_intro_autoplay">Die \'Autoplay\' Funktion simuliert einen Knopfdruck auf \'Abspielen\' einer Bluetoothfernsteuerung.</string>
+    <string name="description_autoplay">Die \'Autoplay\' Funktion simuliert einen Knopfdruck auf \'Abspielen\' einer Bluetoothfernsteuerung.</string>
     <string name="desc_intro_streams">Wir unterscheiden zwei Typen von Lautstärken: Musik, welche Medienspieler und Navigation betrifft und Anruf, welche Video/Sprachanrufe betrifft.</string>
     <string name="desc_intro_upgrade">Unterstütz weitere Entwicklung und hol dir extra Funktion durch Kauf der Premium Version.</string>
     <string name="desc_intro_tap_the_button">Fange an indem du dein erstes Gerät hinzufügst.</string>
@@ -79,5 +79,5 @@
     <string name="label_status_listening_for_changes">Beobachte Lautstärkeänderungen</string>
 
     <string name="action_exit">Beenden</string>
-    <string name="action_rename_device">Gerät umbenennen</string>
+    <string name="label_rename_device">Gerät umbenennen</string>
 </resources>

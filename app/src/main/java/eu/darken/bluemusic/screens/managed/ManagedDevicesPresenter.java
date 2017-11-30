@@ -89,68 +89,9 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 });
     }
 
-    void onDeleteDevice(ManagedDevice device) {
-        deviceManager.removeDevice(device)
-                .subscribeOn(Schedulers.computation())
-                .subscribe();
-    }
-
-    void onEditReactionDelay(ManagedDevice device, long delay) {
-        if (delay < -1) delay = -1;
-        device.setActionDelay(delay == -1 ? null : delay);
-        deviceManager.save(Collections.singleton(device))
-                .subscribeOn(Schedulers.computation())
-                .subscribe();
-    }
-
-    void onEditAdjustmentDelay(ManagedDevice device, long delay) {
-        if (delay < -1) delay = -1;
-        device.setAdjustmentDelay(delay == -1 ? null : delay);
-        deviceManager.save(Collections.singleton(device))
-                .subscribeOn(Schedulers.computation())
-                .subscribe();
-    }
-
-    void onToggleMusicVolumeAction(ManagedDevice device) {
-        if (device.getMusicVolume() == null) {
-            device.setMusicVolume(streamHelper.getVolumePercentage(streamHelper.getMusicId()));
-        } else device.setMusicVolume(null);
-
-        deviceManager.save(Collections.singleton(device))
-                .subscribeOn(Schedulers.computation())
-                .subscribe();
-    }
-
-    void onToggleCallVolumeAction(ManagedDevice device) {
-        if (device.getCallVolume() == null) {
-            device.setCallVolume(streamHelper.getVolumePercentage(streamHelper.getCallId()));
-        } else device.setCallVolume(null);
-
-        deviceManager.save(Collections.singleton(device))
-                .subscribeOn(Schedulers.computation())
-                .subscribe();
-    }
-
     void onUpgradeClicked(Activity activity) {
         iapHelper.buyProVersion(activity);
     }
-
-    void onToggleAutoplay(ManagedDevice device) {
-        device.setAutoPlayEnabled(!device.isAutoPlayEnabled());
-
-        deviceManager.save(Collections.singleton(device))
-                .subscribeOn(Schedulers.computation())
-                .subscribe(managedDevices -> {
-                });
-    }
-
-    void onRenameDevice(ManagedDevice device, String newAlias) {
-        device.setAlias(newAlias);
-        deviceManager.updateDevices()
-                .subscribeOn(Schedulers.computation())
-                .subscribe();
-    }
-
     interface View extends Presenter.View {
         void updateUpgradeState(boolean isProVersion);
 

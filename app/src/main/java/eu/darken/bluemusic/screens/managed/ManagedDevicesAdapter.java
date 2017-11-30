@@ -1,11 +1,8 @@
 package eu.darken.bluemusic.screens.managed;
 
 import android.support.annotation.NonNull;
-import android.support.v7.widget.PopupMenu;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -40,26 +37,14 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
 
         void onCallVolumeAdjusted(ManagedDevice device, float percentage);
 
-        void onToggleMusicVolumeAction(ManagedDevice device);
-
-        void onToggleCallVolumeAction(ManagedDevice device);
-
-        void onDeleteDevice(ManagedDevice device);
-
-        void onRenameDevice(ManagedDevice device);
-
-        void onEditReactionDelay(ManagedDevice device);
-
-        void onEditAdjustmentDelay(ManagedDevice device);
-
-        void onToggleAutoPlay(ManagedDevice item);
+        void onShowConfigScreen(ManagedDevice device);
     }
 
     static class ManagedDeviceVH extends BasicViewHolder<ManagedDevice> {
         @BindView(R.id.device_icon) ImageView icon;
         @BindView(R.id.name) TextView nameView;
         @BindView(R.id.caption) TextView caption;
-        @BindView(R.id.config_icon) View menu;
+        @BindView(R.id.config_icon) View config;
 
         @BindView(R.id.music_container) View musicContainer;
         @BindView(R.id.music_seekbar) SeekBar musicSeekbar;
@@ -101,15 +86,8 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                             getString(R.string.label_last_seen_x, timeString)
             );
 
-            menu.setOnClickListener(v -> {
-                PopupMenu popup = new PopupMenu(getContext(), v);
-                MenuInflater inflater = popup.getMenuInflater();
-                inflater.inflate(R.menu.menu_managed_device_item, popup.getMenu());
-                popup.getMenu().findItem(R.id.toggle_music_volume).setChecked(getItem().getMusicVolume() != null);
-                popup.getMenu().findItem(R.id.toggle_call_volume).setChecked(getItem().getCallVolume() != null);
-                popup.getMenu().findItem(R.id.toggle_autoplay).setChecked(getItem().isAutoPlayEnabled());
-                popup.setOnMenuItemClickListener(new PopMenuListener());
-                popup.show();
+            config.setOnClickListener(v -> {
+                callback.onShowConfigScreen(item);
             });
 
             musicContainer.setVisibility(item.getMusicVolume() != null ? View.VISIBLE : View.GONE);
@@ -134,7 +112,6 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                 musicSeekbar.setProgress(item.getRealMusicVolume());
             }
 
-
             voiceContainer.setVisibility(item.getCallVolume() != null ? View.VISIBLE : View.GONE);
             if (item.getCallVolume() != null) {
                 voiceSeekbar.setMax(item.getMaxCallVolume());
@@ -155,37 +132,6 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                     }
                 });
                 voiceSeekbar.setProgress(item.getRealCallVolume());
-            }
-        }
-
-        class PopMenuListener implements PopupMenu.OnMenuItemClickListener {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.delete:
-                        callback.onDeleteDevice(getItem());
-                        return true;
-                    case R.id.rename:
-                        callback.onRenameDevice(getItem());
-                        return true;
-                    case R.id.edit_reaction_delay:
-                        callback.onEditReactionDelay(getItem());
-                        return true;
-                    case R.id.edit_adjustment_duration:
-                        callback.onEditAdjustmentDelay(getItem());
-                        return true;
-                    case R.id.toggle_music_volume:
-                        callback.onToggleMusicVolumeAction(getItem());
-                        return true;
-                    case R.id.toggle_call_volume:
-                        callback.onToggleCallVolumeAction(getItem());
-                        return true;
-                    case R.id.toggle_autoplay:
-                        callback.onToggleAutoPlay(getItem());
-                        return true;
-                    default:
-                        return false;
-                }
             }
         }
     }

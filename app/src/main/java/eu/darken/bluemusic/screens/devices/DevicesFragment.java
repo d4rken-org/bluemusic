@@ -75,6 +75,7 @@ public class DevicesFragment extends ComponentPresenterSupportFragment<DevicesPr
         Preconditions.checkNotNull(actionBar);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(R.string.label_add_device);
+        actionBar.setSubtitle(null);
     }
 
     @Override

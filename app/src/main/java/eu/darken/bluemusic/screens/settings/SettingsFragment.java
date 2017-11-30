@@ -42,6 +42,7 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
         Preconditions.checkNotNull(actionBar);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(R.string.label_settings);
+        actionBar.setSubtitle(null);
     }
 
     @Override

@@ -57,7 +57,7 @@ public class ManagedDevice {
         return sourceDevice.getName();
     }
 
-    String getAddress() {
+    public String getAddress() {
         return sourceDevice.getAddress();
     }
 
