@@ -264,4 +264,23 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
                     .show();
         }
     }
+
+    @Override
+    public void onRenameDevice(ManagedDevice device) {
+        View container = getLayoutInflater().inflate(R.layout.view_dialog_rename, null);
+        EditText input = container.findViewById(R.id.input);
+        String current = device.getAlias();
+        if (current == null) current = device.getName();
+        input.setText(current);
+        new AlertDialog.Builder(getContext())
+                .setTitle(R.string.action_rename_device)
+                .setView(container)
+                .setPositiveButton(R.string.action_set, (dialogInterface, i) -> {
+                    getPresenter().onRenameDevice(device, input.getText().toString());
+                })
+                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().onRenameDevice(device, device.getName()))
+                .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {
+                })
+                .show();
+    }
 }

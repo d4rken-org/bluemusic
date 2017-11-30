@@ -18,4 +18,17 @@ public class DeviceHelper {
             return R.drawable.ic_devices_other_white_24dp;
         }
     }
+
+    public static String getAliasAndName(SourceDevice sourceDevice) {
+        String alias = sourceDevice.getAlias();
+        String name = sourceDevice.getName();
+        StringBuilder sb = new StringBuilder();
+        if (alias != null && !alias.equals(name)) {
+            sb.append(alias);
+            if (name != null) sb.append(" (").append(name).append(")");
+        } else {
+            sb.append(name);
+        }
+        return sb.toString();
+    }
 }

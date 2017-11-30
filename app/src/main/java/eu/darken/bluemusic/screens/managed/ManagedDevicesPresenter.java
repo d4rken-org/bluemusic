@@ -144,12 +144,18 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 });
     }
 
+    void onRenameDevice(ManagedDevice device, String newAlias) {
+        device.setAlias(newAlias);
+        deviceManager.updateDevices()
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+    }
+
     interface View extends Presenter.View {
         void updateUpgradeState(boolean isProVersion);
 
         void displayDevices(List<ManagedDevice> managedDevices);
 
         void displayBluetoothState(boolean enabled);
-
     }
 }

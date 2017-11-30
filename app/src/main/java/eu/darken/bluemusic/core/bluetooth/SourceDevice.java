@@ -17,6 +17,11 @@ public interface SourceDevice extends Parcelable {
     @NonNull
     String getAddress();
 
+    boolean setAlias(String newAlias);
+
+    @Nullable
+    String getAlias();
+
     class Event implements Parcelable {
         public enum Type {
             CONNECTED, DISCONNECTED

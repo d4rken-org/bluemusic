@@ -20,6 +20,14 @@ public class ManagedDevice {
         this.deviceConfig = deviceConfig;
     }
 
+    public String getAlias() {
+        return sourceDevice.getAlias();
+    }
+
+    public boolean setAlias(String newAlias) {
+        return sourceDevice.setAlias(newAlias);
+    }
+
     public SourceDevice getSourceDevice() {
         return sourceDevice;
     }

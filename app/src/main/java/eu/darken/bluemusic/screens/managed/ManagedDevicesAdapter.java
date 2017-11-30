@@ -46,6 +46,8 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
 
         void onDeleteDevice(ManagedDevice device);
 
+        void onRenameDevice(ManagedDevice device);
+
         void onEditReactionDelay(ManagedDevice device);
 
         void onEditAdjustmentDelay(ManagedDevice device);
@@ -55,7 +57,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
 
     static class ManagedDeviceVH extends BasicViewHolder<ManagedDevice> {
         @BindView(R.id.device_icon) ImageView icon;
-        @BindView(R.id.name) TextView name;
+        @BindView(R.id.name) TextView nameView;
         @BindView(R.id.caption) TextView caption;
         @BindView(R.id.config_icon) View menu;
 
@@ -77,8 +79,9 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
         public void bind(@NonNull ManagedDevice item) {
             super.bind(item);
             icon.setImageResource(DeviceHelper.getIconForDevice(item.getSourceDevice()));
-            name.setText(item.getName());
-            name.setTypeface(null, item.isActive() ? BOLD : NORMAL);
+
+            nameView.setText(DeviceHelper.getAliasAndName(item.getSourceDevice()));
+            nameView.setTypeface(null, item.isActive() ? BOLD : NORMAL);
 
             String timeString;
             if (item.getLastConnected() > 0) {
@@ -161,6 +164,9 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                 switch (menuItem.getItemId()) {
                     case R.id.delete:
                         callback.onDeleteDevice(getItem());
+                        return true;
+                    case R.id.rename:
+                        callback.onRenameDevice(getItem());
                         return true;
                     case R.id.edit_reaction_delay:
                         callback.onEditReactionDelay(getItem());

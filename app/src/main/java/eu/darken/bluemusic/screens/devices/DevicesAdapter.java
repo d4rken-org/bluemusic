@@ -33,7 +33,7 @@ class DevicesAdapter extends ClickableAdapter<DevicesAdapter.DeviceVH, SourceDev
         @Override
         public void bind(@NonNull SourceDevice item) {
             super.bind(item);
-            name.setText(item.getName());
+            name.setText(DeviceHelper.getAliasAndName(item));
             caption.setText(item.getAddress());
 
             icon.setImageResource(DeviceHelper.getIconForDevice(item));
