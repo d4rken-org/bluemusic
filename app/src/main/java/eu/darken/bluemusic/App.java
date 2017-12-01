@@ -10,6 +10,7 @@ import com.bugsnag.android.Client;
 
 import javax.inject.Inject;
 
+import eu.darken.bluemusic.core.settings.Settings;
 import eu.darken.bluemusic.util.BugsnagErrorHandler;
 import eu.darken.bluemusic.util.BugsnagTree;
 import eu.darken.ommvplib.injection.ComponentSource;
@@ -30,6 +31,7 @@ public class App extends Application implements HasManualActivityInjector, HasMa
     @Inject ComponentSource<Activity> activityInjector;
     @Inject ComponentSource<BroadcastReceiver> receiverInjector;
     @Inject ComponentSource<Service> serviceInjector;
+    @Inject Settings settings;
 
     @Override
     public void onCreate() {
@@ -53,6 +55,8 @@ public class App extends Application implements HasManualActivityInjector, HasMa
         bugsnagClient.beforeNotify(errorHandler);
 
         Timber.d("Bugsnag setup done!");
+
+
     }
 
     @Override
