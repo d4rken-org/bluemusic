@@ -18,10 +18,9 @@
     <string name="label_volume_listener">Volume changes</string>
     <string name="desc_volume_listener">Stay active while a device is connected and save volume changes that have not been caused by this app.</string>
     <string name="label_autoplay_keytype">Autoplay key type</string>
-    <string name="desc_autoplay_keytype">The key type that is send when an autoplay enabled device connects. </string>
+    <string name="desc_autoplay_keytype">The key type that is send when an autoplay enabled device connects.</string>
     <string name="label_state_connected">Connected</string>
-    <string name="label_last_seen_x">Last seen: %s</string>
-    <string name="label_time_tag_never">Never</string>
+    <string name="label_neverseen">Never seen</string>
     <string name="action_remove_device">Remove device</string>
     <string name="label_add_device">Add device</string>
     <string name="label_just_a_moment_please">Just a moment, please.</string>
@@ -56,7 +55,7 @@
     <string name="description_call_volume">Control the volume that affects calls when this devices connects.</string>
 
     <string name="label_autoplay">Autoplay</string>
-    <string name="description_autoplay">Simulate pressing a key on a bluetooth remote when this device connects.</string>
+    <string name="description_autoplay">Simulate pressing play on a bluetooth remote when this device connects.</string>
 
     <string name="label_reaction_delay">Reaction delay</string>
     <string name="description_reaction_delay">The delay in milliseconds until this app reacts to this device.</string>

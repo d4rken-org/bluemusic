@@ -46,11 +46,18 @@
                     tools:text="Name"/>
 
                 <TextView
-                    android:id="@+id/caption"
+                    android:id="@+id/lastseen"
                     style="@style/TextAppearance.AppCompat.Caption"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="Caption"/>
+                    tools:text="6 hours ago"/>
+
+                <TextView
+                    android:id="@+id/flags"
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Autoplay"/>
             </LinearLayout>
 
             <ImageView
