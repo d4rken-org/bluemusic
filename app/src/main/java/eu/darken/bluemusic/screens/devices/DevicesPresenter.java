@@ -39,22 +39,24 @@ public class DevicesPresenter extends ComponentPresenter<DevicesPresenter.View, 
     @Override
     public void onBindChange(@Nullable View view) {
         super.onBindChange(view);
-        if (view != null) {
+        updateProState();
+        updateList();
+    }
+
+    private void updateProState() {
+        if (getView() != null) {
             upgradeSub = iapHelper.isProVersion()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(isProVersion -> DevicesPresenter.this.isProVersion = isProVersion);
-            updateList();
-        } else {
-            if (upgradeSub != null) upgradeSub.dispose();
-        }
+
+        } else if (upgradeSub != null) upgradeSub.dispose();
     }
 
     private void updateList() {
-        Single.zip(
-                deviceManager.observe().firstOrError(),
-                bluetoothSource.getPairedDevices(),
-                (known, paired) -> {
+        if (getView() == null) return;
+        Single
+                .zip(deviceManager.observe().firstOrError(), bluetoothSource.getPairedDevices(), (known, paired) -> {
                     managedDevices = 0;
                     final List<SourceDevice> devices = new ArrayList<>();
                     for (SourceDevice d : paired.values()) {
