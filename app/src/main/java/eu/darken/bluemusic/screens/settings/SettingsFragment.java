@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.core.settings.Settings;
 import eu.darken.bluemusic.screens.MainActivity;
+import eu.darken.bluemusic.util.ApiHelper;
 import eu.darken.bluemusic.util.Preconditions;
 import eu.darken.ommvplib.injection.ComponentPresenterPreferenceFragment;
 
@@ -43,32 +44,13 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(R.string.label_settings);
         actionBar.setSubtitle(null);
+        findPreference(Settings.PREFKEY_VISIBLE_ADJUSTMENTS).setVisible(!ApiHelper.hasOreo());
     }
 
     @Override
     public void updatePremiumState(boolean isPremiumVersion) {
-        CheckBoxPreference visibleAdjustments = (CheckBoxPreference) findPreference(Settings.PREFKEY_VISIBLE_ADJUSTMENTS);
-        if (isPremiumVersion) {
-            visibleAdjustments.setSummary(getString(R.string.desc_visible_volume_adjustments));
-        } else {
-            visibleAdjustments.setSummary(getString(R.string.desc_visible_volume_adjustments) + " [" + getString(R.string.label_premium_version_required) + "]");
-        }
-        visibleAdjustments.setOnPreferenceClickListener(preference -> {
-            if (isPremiumVersion) return false;
-            else {
-                visibleAdjustments.setChecked(!visibleAdjustments.isChecked());
-                new AlertDialog.Builder(getContext())
-                        .setTitle(R.string.label_premium_version)
-                        .setMessage(R.string.desc_premium_required_this_extra_option)
-                        .setIcon(R.drawable.ic_stars_white_24dp)
-                        .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onUpgradeClicked(getActivity()))
-                        .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
-                        .show();
-                return true;
-            }
-        });
-    }
 
+    }
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
