@@ -68,4 +68,6 @@
 
     <string name="label_forget_device">Forget device</string>
     <string name="description_forget_device">Removes the device from this app and deletes its configuration. This does not unpair the device.</string>
+    <string name="label_boot_restore">Restore on boot</string>
+    <string name="description_boot_restore">Restore volume after booting/rebooting if a Bluetooth device is connected.</string>
 </resources>

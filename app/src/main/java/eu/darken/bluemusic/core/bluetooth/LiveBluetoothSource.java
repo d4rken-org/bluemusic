@@ -16,11 +16,12 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.Single;
 import io.reactivex.SingleOnSubscribe;
+import io.reactivex.SingleSource;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Predicate;
+import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 class LiveBluetoothSource implements BluetoothSource {
@@ -79,20 +80,21 @@ class LiveBluetoothSource implements BluetoothSource {
                     }
                     Timber.d("Paired devices (%d): %s", devices.size(), devices);
                     return devices;
-                });
+                })
+                .subscribeOn(Schedulers.io());
     }
 
     @Override
     public Single<Map<String, SourceDevice>> getConnectedDevices() {
-        final List<ObservableSource<List<BluetoothDevice>>> profiles = new ArrayList<>();
+        final List<SingleSource<List<BluetoothDevice>>> profiles = new ArrayList<>();
 
-        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET).toObservable());
-        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT).toObservable());
-        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT_SERVER).toObservable());
-        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEALTH).toObservable());
-        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP).toObservable());
+        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET));
+        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT));
+        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT_SERVER));
+        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEALTH));
+        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP));
 
-        return Single.defer(() -> Observable.merge(profiles)
+        return Single.defer(() -> Single.merge(profiles)
                 .toList()
                 .map(lists -> {
                     HashSet<BluetoothDevice> unique = new HashSet<>();
@@ -128,7 +130,8 @@ class LiveBluetoothSource implements BluetoothSource {
                     Timber.v("getDevicesForProfile(profile=%d, success=%b)", desiredProfile, success);
                     if (!success) emitter.onSuccess(new ArrayList<>());
                 })
-                .timeout(10, TimeUnit.SECONDS, Single.just(new ArrayList<>()));
+                .subscribeOn(Schedulers.io())
+                .timeout(8, TimeUnit.SECONDS, Single.just(new ArrayList<>()));
     }
 
 }

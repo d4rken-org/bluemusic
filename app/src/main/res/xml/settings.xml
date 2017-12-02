@@ -17,6 +17,11 @@
             android:key="core.volume.changelistener"
             android:summary="@string/desc_volume_listener"
             android:title="@string/label_volume_listener"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="core.onboot.restore"
+            android:summary="@string/description_boot_restore"
+            android:title="@string/label_boot_restore"/>
         <Preference
             android:key="core.autoplay.keycode"
             android:summary="@string/desc_autoplay_keytype"

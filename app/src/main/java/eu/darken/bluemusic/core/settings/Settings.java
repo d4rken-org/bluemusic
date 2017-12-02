@@ -12,6 +12,7 @@ public class Settings {
     public static final String PREFKEY_AUTOPLAY_KEYCODE = "core.autoplay.keycode";
     public static final String PREFKEY_INSTALLTIME = "core.metrics.installtime";
     public static final String PREFKEY_LAUNCHCOUNT = "core.metrics.launchcount";
+    public static final String PREFKEY_BOOT_RESTORE = "core.onboot.restore";
     public static final long DEFAULT_REACTION_DELAY = 5000;
     public static final long DEFAULT_ADJUSTMENT_DELAY = 250;
     private final SharedPreferences preferences;
@@ -56,5 +57,13 @@ public class Settings {
 
     public long getInstallTime() {
         return preferences.getLong(PREFKEY_INSTALLTIME, System.currentTimeMillis());
+    }
+
+    public boolean isBootRestoreEnabled() {
+        return preferences.getBoolean(PREFKEY_BOOT_RESTORE, true);
+    }
+
+    public void setBootRestoreEnabled(boolean enabled) {
+        preferences.edit().putBoolean(PREFKEY_BOOT_RESTORE, enabled).apply();
     }
 }
