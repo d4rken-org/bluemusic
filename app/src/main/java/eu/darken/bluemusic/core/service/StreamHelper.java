@@ -36,7 +36,8 @@ public class StreamHelper {
         return audioManager.getStreamMaxVolume(streamId);
     }
 
-    private synchronized void doSetVolume(int streamId, int volume, int flags) {
+    private synchronized void setVolume(int streamId, int volume, int flags) {
+        Timber.v("setVolume(streamId=%d, volume=%d, flags=%d).", streamId, volume, flags);
         adjusting = true;
         lastUs.put(streamId, volume);
         // https://stackoverflow.com/questions/6733163/notificationmanager-notify-fails-with-securityexception
@@ -52,23 +53,23 @@ public class StreamHelper {
         return (float) audioManager.getStreamVolume(streamId) / audioManager.getStreamMaxVolume(streamId);
     }
 
-    public void setVolume(int streamId, float percent, boolean visible, long delay) {
+    public void changeVolume(int streamId, float percent, boolean visible, long delay) {
         final int currentVolume = getCurrentVolume(streamId);
         final int max = getMaxVolume(streamId);
         final int target = Math.round(max * percent);
+        Timber.d("Adjusting volume (streamId=%d, target=%d, current=%d, max=%d, visible=%b).", streamId, target, currentVolume, max, visible);
         if (currentVolume != target) {
             if (delay == 0) {
-                doSetVolume(streamId, target, visible ? AudioManager.FLAG_SHOW_UI : 0);
+                setVolume(streamId, target, visible ? AudioManager.FLAG_SHOW_UI : 0);
             } else {
-                Timber.d("Adjusting volume (stream=%d, target=%d, current=%d, max=%d).", streamId, target, currentVolume, max);
                 if (currentVolume < target) {
                     for (int volumeStep = currentVolume; volumeStep <= target; volumeStep++) {
-                        doSetVolume(streamId, volumeStep, visible ? AudioManager.FLAG_SHOW_UI : 0);
+                        setVolume(streamId, volumeStep, visible ? AudioManager.FLAG_SHOW_UI : 0);
                         try { Thread.sleep(delay); } catch (InterruptedException e) { Timber.e(e, null); }
                     }
                 } else {
                     for (int volumeStep = currentVolume; volumeStep >= target; volumeStep--) {
-                        doSetVolume(streamId, volumeStep, visible ? AudioManager.FLAG_SHOW_UI : 0);
+                        setVolume(streamId, volumeStep, visible ? AudioManager.FLAG_SHOW_UI : 0);
                         try { Thread.sleep(delay); } catch (InterruptedException e) { Timber.e(e, null); }
                     }
                 }

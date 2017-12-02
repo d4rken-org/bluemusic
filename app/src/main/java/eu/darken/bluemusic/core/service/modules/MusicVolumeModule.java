@@ -10,7 +10,7 @@ import eu.darken.bluemusic.core.service.StreamHelper;
 import eu.darken.bluemusic.core.settings.Settings;
 
 @BlueMusicServiceComponent.Scope
-public class MusicVolumeModule extends BaseVolumeModel {
+public class MusicVolumeModule extends BaseVolumeModule {
     private final StreamHelper streamHelper;
 
     @Inject

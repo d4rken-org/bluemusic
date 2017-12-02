@@ -9,11 +9,11 @@ import eu.darken.bluemusic.core.service.StreamHelper;
 import eu.darken.bluemusic.core.settings.Settings;
 import timber.log.Timber;
 
-abstract class BaseVolumeModel extends ActionModule {
+abstract class BaseVolumeModule extends ActionModule {
     private final Settings settings;
     private final StreamHelper streamHelper;
 
-    BaseVolumeModel(Settings settings, StreamHelper streamHelper) {
+    BaseVolumeModule(Settings settings, StreamHelper streamHelper) {
         super();
         this.settings = settings;
         this.streamHelper = streamHelper;
@@ -34,7 +34,7 @@ abstract class BaseVolumeModel extends ActionModule {
             Long adjustmentDelay = device.getAdjustmentDelay();
             if (adjustmentDelay == null) adjustmentDelay = Settings.DEFAULT_ADJUSTMENT_DELAY;
 
-            streamHelper.setVolume(getStreamId(), percentage, settings.isVolumeAdjustedVisibly(), adjustmentDelay);
+            streamHelper.changeVolume(getStreamId(), percentage, settings.isVolumeAdjustedVisibly(), adjustmentDelay);
         } else {
             Timber.d("Device %s has no specified target volume yet, skipping adjustments.", device);
         }

@@ -75,7 +75,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
-                    streamHelper.setVolume(streamHelper.getMusicId(), device.getMusicVolume(), true, 0);
+                    streamHelper.changeVolume(streamHelper.getMusicId(), device.getMusicVolume(), true, 0);
                 });
     }
 
@@ -85,7 +85,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
-                    streamHelper.setVolume(streamHelper.getCallId(), device.getCallVolume(), true, 0);
+                    streamHelper.changeVolume(streamHelper.getCallId(), device.getCallVolume(), true, 0);
                 });
     }
 
