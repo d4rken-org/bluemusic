@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import eu.darken.bluemusic.core.bluetooth.SourceDevice;
+import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 
 /**
  * Created by darken on 15/01/17.

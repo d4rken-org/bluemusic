@@ -7,10 +7,10 @@ import dagger.Module;
 import dagger.android.AndroidInjector;
 import dagger.android.BroadcastReceiverKey;
 import dagger.multibindings.IntoMap;
-import eu.darken.bluemusic.core.bluetooth.BluetoothEventReceiver;
-import eu.darken.bluemusic.core.bluetooth.BootCheckReceiver;
-import eu.darken.bluemusic.core.bluetooth.BootCheckReceiverComponent;
-import eu.darken.bluemusic.core.bluetooth.EventReceiverComponent;
+import eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiver;
+import eu.darken.bluemusic.bluetooth.core.BootCheckReceiver;
+import eu.darken.bluemusic.bluetooth.core.BootCheckReceiverComponent;
+import eu.darken.bluemusic.bluetooth.core.EventReceiverComponent;
 
 @Module(subcomponents = {
         EventReceiverComponent.class,

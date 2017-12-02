@@ -18,7 +18,7 @@
 
 -dontobfuscate
 
--keep public interface eu.darken.bluemusic.core.bluetooth.BluetoothSource {*;}
+-keep public interface eu.darken.bluemusic.bluetooth.core.BluetoothSource {*;}
 
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**

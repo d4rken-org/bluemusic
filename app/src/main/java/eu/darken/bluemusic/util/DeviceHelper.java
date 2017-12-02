@@ -4,7 +4,7 @@ import android.bluetooth.BluetoothClass;
 import android.support.annotation.DrawableRes;
 
 import eu.darken.bluemusic.R;
-import eu.darken.bluemusic.core.bluetooth.SourceDevice;
+import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 
 public class DeviceHelper {
     @DrawableRes

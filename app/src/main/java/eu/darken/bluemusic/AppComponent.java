@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 
 import dagger.Component;
 import dagger.MembersInjector;
-import eu.darken.bluemusic.core.bluetooth.DeviceSourceModule;
+import eu.darken.bluemusic.bluetooth.core.DeviceSourceModule;
 
 
 @AppComponent.Scope

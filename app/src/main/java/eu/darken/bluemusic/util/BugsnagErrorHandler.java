@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import eu.darken.bluemusic.AppComponent;
 import eu.darken.bluemusic.BuildConfig;
-import eu.darken.bluemusic.core.settings.Settings;
+import eu.darken.bluemusic.settings.core.Settings;
 
 @AppComponent.Scope
 public class BugsnagErrorHandler implements BeforeNotify {

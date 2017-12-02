@@ -3,18 +3,6 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/upgrade"
-        android:icon="@drawable/ic_stars_white_24dp"
-        android:title="@string/action_upgrade"
-        app:showAsAction="always"/>
-
-    <item
-        android:id="@+id/settings"
-        android:icon="@drawable/ic_settings_white_24dp"
-        android:title="@string/label_settings"
-        app:showAsAction="ifRoom"/>
-
-    <item
         android:id="@+id/about"
         android:icon="@drawable/ic_info_white_24dp"
         android:title="@string/label_about"

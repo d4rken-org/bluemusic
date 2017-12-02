@@ -10,7 +10,7 @@ import com.bugsnag.android.Client;
 
 import javax.inject.Inject;
 
-import eu.darken.bluemusic.core.settings.Settings;
+import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.util.BugsnagErrorHandler;
 import eu.darken.bluemusic.util.BugsnagTree;
 import eu.darken.ommvplib.injection.ComponentSource;

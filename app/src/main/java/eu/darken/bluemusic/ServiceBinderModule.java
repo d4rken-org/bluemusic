@@ -7,8 +7,8 @@ import dagger.Module;
 import dagger.android.AndroidInjector;
 import dagger.android.ServiceKey;
 import dagger.multibindings.IntoMap;
-import eu.darken.bluemusic.core.service.BlueMusicService;
-import eu.darken.bluemusic.core.service.BlueMusicServiceComponent;
+import eu.darken.bluemusic.main.core.service.BlueMusicService;
+import eu.darken.bluemusic.main.core.service.BlueMusicServiceComponent;
 
 @Module(subcomponents = {BlueMusicServiceComponent.class})
 abstract class ServiceBinderModule {
