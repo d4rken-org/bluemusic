@@ -24,7 +24,7 @@ import eu.darken.ommvplib.injection.activity.ActivityComponent;
 @Subcomponent(modules = {
         MainActivityComponent.FragmentBinderModule.class
 })
-public interface MainActivityComponent extends ActivityComponent<MainActivity>, PresenterComponent<MainActivityView, MainActivityPresenter> {
+public interface MainActivityComponent extends ActivityComponent<MainActivity>, PresenterComponent<MainActivityPresenter.View, MainActivityPresenter> {
 
     @Subcomponent.Builder
     abstract class Builder extends ActivityComponent.Builder<MainActivity, MainActivityComponent> {

@@ -10,11 +10,14 @@ import eu.darken.bluemusic.util.ApiHelper;
 
 public class Settings {
     private static final String PREFKEY_VOLUMELISTENER = "core.volume.changelistener";
+
     public static final String PREFKEY_VISIBLE_ADJUSTMENTS = "core.volume.visibleadjustments";
     public static final String PREFKEY_AUTOPLAY_KEYCODE = "core.autoplay.keycode";
-    public static final String PREFKEY_INSTALLTIME = "core.metrics.installtime";
-    public static final String PREFKEY_LAUNCHCOUNT = "core.metrics.launchcount";
-    public static final String PREFKEY_BOOT_RESTORE = "core.onboot.restore";
+
+    private static final String PREFKEY_INSTALLTIME = "core.metrics.installtime";
+    private static final String PREFKEY_LAUNCHCOUNT = "core.metrics.launchcount";
+    private static final String PREFKEY_BOOT_RESTORE = "core.onboot.restore";
+    private static final String PREFKEY_ONBOARDING_INTRODONE = "core.onboarding.introdone";
     public static final long DEFAULT_REACTION_DELAY = 5000;
     public static final long DEFAULT_ADJUSTMENT_DELAY = 250;
     private final SharedPreferences preferences;
@@ -34,8 +37,7 @@ public class Settings {
     }
 
     public boolean isVolumeAdjustedVisibly() {
-        if (ApiHelper.hasOreo()) return true;
-        else return preferences.getBoolean(PREFKEY_VISIBLE_ADJUSTMENTS, true);
+        return ApiHelper.hasOreo() || preferences.getBoolean(PREFKEY_VISIBLE_ADJUSTMENTS, true);
     }
 
     public boolean isVolumeChangeListenerEnabled() {
@@ -68,5 +70,13 @@ public class Settings {
 
     public void setBootRestoreEnabled(boolean enabled) {
         preferences.edit().putBoolean(PREFKEY_BOOT_RESTORE, enabled).apply();
+    }
+
+    public boolean isShowOnboarding() {
+        return preferences.getBoolean(PREFKEY_ONBOARDING_INTRODONE, true);
+    }
+
+    public void setShowOnboarding(boolean show) {
+        preferences.edit().putBoolean(PREFKEY_ONBOARDING_INTRODONE, show).apply();
     }
 }

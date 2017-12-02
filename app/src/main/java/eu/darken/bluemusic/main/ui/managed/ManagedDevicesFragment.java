@@ -38,7 +38,6 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
 
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
     @BindView(R.id.empty_info) View emptyInfo;
-    @BindView(R.id.infobox_buypremium) View infoBoxBuyPremium;
     @BindView(R.id.bluetooth_disabled_container) View bluetoothDisabledContainer;
     @BindView(R.id.bluetooth_enabled_container) View bluetoothEnabledContainer;
     @BindView(R.id.fab) FloatingActionButton fab;
@@ -146,7 +145,6 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
     @Override
     public void updateUpgradeState(boolean isProVersion) {
         this.isProVersion = isProVersion;
-        infoBoxBuyPremium.setVisibility(isProVersion ? View.GONE : View.VISIBLE);
         //noinspection ConstantConditions
         getActivity().invalidateOptionsMenu();
     }

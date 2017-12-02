@@ -106,7 +106,7 @@ public class DiscoverFragment extends ComponentPresenterSupportFragment<Discover
     @Override
     public void closeScreen() {
         //noinspection ConstantConditions
-        getActivity().getSupportFragmentManager().popBackStack();
+        getActivity().finish();
     }
 
     @Override

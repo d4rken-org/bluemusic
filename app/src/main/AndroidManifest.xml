@@ -28,6 +28,7 @@
         </activity>
         <activity android:name=".settings.ui.SettingsActivity"/>
         <activity android:name=".bluetooth.ui.BluetoothActivity"/>
+        <activity android:name=".onboarding.ui.OnboardingActivity"/>
 
         <receiver
             android:name="eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiver"

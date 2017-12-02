@@ -70,10 +70,10 @@
     <string name="label_autoplay">Autoplay</string>
 
     <string name="desc_bluetooth_is_disabled">Bluetooth ist deaktiviert.</string>
-    <string name="desc_intro_primary_purpose">Diese App reagiert auf Bluetooth Geräte. Ihre Hauptaufgabe ist es die Lautstärke abhängig vom verbundenen Gerät anzupassen.</string>
+    <string name="description_intro_purpose">Diese App reagiert auf Bluetooth Geräte. Ihre Hauptaufgabe ist es die Lautstärke abhängig vom verbundenen Gerät anzupassen.</string>
     <string name="description_autoplay">Die \'Autoplay\' Funktion simuliert einen Knopfdruck auf \'Abspielen\' einer Bluetoothfernsteuerung.</string>
     <string name="desc_intro_streams">Wir unterscheiden zwei Typen von Lautstärken: Musik, welche Medienspieler und Navigation betrifft und Anruf, welche Video/Sprachanrufe betrifft.</string>
-    <string name="desc_intro_upgrade">Unterstütz weitere Entwicklung und hol dir extra Funktion durch Kauf der Premium Version.</string>
+    <string name="description_intro_premium">Unterstütz weitere Entwicklung und hol dir extra Funktion durch Kauf der Premium Version.</string>
     <string name="desc_intro_tap_the_button">Fange an indem du dein erstes Gerät hinzufügst.</string>
 
     <string name="label_status_listening_for_changes">Beobachte Lautstärkeänderungen</string>
