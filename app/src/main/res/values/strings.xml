@@ -15,7 +15,7 @@
     <string name="desc_app_enabled">Toggles the apps ability to react to volume and bluetooth events.</string>
     <string name="label_visible_volume_adjustments">Visible adjustments</string>
     <string name="desc_visible_volume_adjustments">Show the system\'s volume window while this app makes adjustments.</string>
-    <string name="label_volume_listener">Volume changes</string>
+    <string name="label_volume_listener">Observe changes</string>
     <string name="desc_volume_listener">Stay active while a device is connected and save volume changes that have not been caused by this app.</string>
     <string name="label_autoplay_keytype">Autoplay key type</string>
     <string name="desc_autoplay_keytype">The key type that is send when an autoplay enabled device connects.</string>
