@@ -45,7 +45,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@string/desc_intro_tap_the_button"/>
+                        android:text="@string/description_intro_tap_the_button"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="@string/desc_bluetooth_is_disabled"/>
+            android:text="@string/description_bluetooth_is_disabled"/>
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton

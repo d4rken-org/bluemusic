@@ -5,7 +5,7 @@
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="core.volume.enabled"
-            android:summary="@string/desc_app_enabled"
+            android:summary="@string/description_app_enabled"
             android:title="@string/label_app_enabled"/>
         <CheckBoxPreference
             android:defaultValue="true"
@@ -15,12 +15,12 @@
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="core.volume.visibleadjustments"
-            android:summary="@string/desc_visible_volume_adjustments"
+            android:summary="@string/description_visible_volume_adjustments"
             android:title="@string/label_visible_volume_adjustments"/>
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="core.volume.changelistener"
-            android:summary="@string/desc_volume_listener"
+            android:summary="@string/description_volume_listener"
             android:title="@string/label_volume_listener"/>
         <CheckBoxPreference
             android:defaultValue="true"
@@ -38,7 +38,7 @@
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="core.bugreporting.enabled"
-            android:summary="@string/desc_bug_reports"
+            android:summary="@string/description_bug_reports"
             android:title="@string/label_bug_reports"/>
     </PreferenceCategory>
 </PreferenceScreen>

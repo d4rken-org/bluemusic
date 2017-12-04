@@ -157,7 +157,7 @@ public class ConfigFragment extends ComponentPresenterSupportFragment<ConfigPres
         Preconditions.checkNotNull(getContext());
         new AlertDialog.Builder(getContext())
                 .setTitle(R.string.label_premium_version)
-                .setMessage(R.string.desc_premium_required_this_extra_option)
+                .setMessage(R.string.description_premium_required_this_extra_option)
                 .setIcon(R.drawable.ic_stars_white_24dp)
                 .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onPurchaseUpgrade(getActivity()))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})

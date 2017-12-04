@@ -8,7 +8,7 @@
             android:data="https://play.google.com/store/apps/details?id=eu.darken.bluemusic"/>
     </Preference>
     <Preference
-        android:summary="@string/desc_check_out_my_apps"
+        android:summary="@string/description_check_out_my_apps"
         android:title="@string/label_gplay">
         <intent
             android:action="android.intent.action.VIEW"

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Bluetooth Lautstärke</string>
-    <string name="desc_check_out_my_apps">Vielleicht gefallen dir auch andere Apps von mir.</string>
+    <string name="description_check_out_my_apps">Vielleicht gefallen dir auch andere Apps von mir.</string>
 
     <string name="label_settings">Einstellungen</string>
     <string name="label_about">Info</string>
@@ -18,10 +18,10 @@
     <string name="label_email">Email</string>
 
     <string name="label_bug_reports">Fehlerberichte</string>
-    <string name="desc_bug_reports">Automatische Fehler- und Absturzberichte.</string>
+    <string name="description_bug_reports">Automatische Fehler- und Absturzberichte.</string>
 
     <string name="label_app_enabled">App aktiviert</string>
-    <string name="desc_app_enabled">Aktiviert/Deaktiviert die Fähigkeit dieser App auf Bluetooth Ereignisse zu reagieren.</string>
+    <string name="description_app_enabled">Aktiviert/Deaktiviert die Fähigkeit dieser App auf Bluetooth Ereignisse zu reagieren.</string>
 
     <string name="label_reaction_delay">Reaktionsverzögerung</string>
     <string name="description_reaction_delay">Die Verzögerung in Millisekunden bis diese App auf ein Bluetooth Ereignis reagiert.</string>
@@ -30,10 +30,10 @@
     <string name="description_adjustment_delay">Die Verzögerung der Anpassungsschritte in Millisekunden. Eine Verzögerung on 0 heißt dass die gewünschte Lautstärke sofort gesetzt wird.</string>
 
     <string name="label_visible_volume_adjustments">Sichtbare Anpassungen</string>
-    <string name="desc_visible_volume_adjustments">Zeigt das Lautstärkenfenster des Systems während Anpassungen.</string>
+    <string name="description_visible_volume_adjustments">Zeigt das Lautstärkenfenster des Systems während Anpassungen.</string>
 
     <string name="label_volume_listener">Lautstärkenänderungen</string>
-    <string name="desc_volume_listener">Aktiv bleiben und Lautstärkenänderungen speichern die nicht von dieser App ausgehen.</string>
+    <string name="description_volume_listener">Aktiv bleiben und Lautstärkenänderungen speichern die nicht von dieser App ausgehen.</string>
 
     <string name="label_autoplay_keytype">Autoplay Knopf-Typ</string>
     <string name="desc_autoplay_keytype">Die Art des Knopfdruckes die simuliert wird.</string>
@@ -61,20 +61,20 @@
     <string name="label_premium_version">Premium Version</string>
     <string name="action_upgrade">Upgrade</string>
 
-    <string name="desc_premium_required_additional_devices">Verwalten zusätzliche Geräte benötigt die Premium Version.</string>
-    <string name="desc_premium_required_this_extra_option">Diese extra Option benötigt leider die Premium Version dieser App.</string>
-    <string name="desc_premium_upgrade_explanation">Gönn dir die Premium Version um zusätzliche Funktionen freizuschalten und weitere Entwicklung zu unterstützen.</string>
+    <string name="description_premium_required_additional_devices">Verwalten zusätzliche Geräte benötigt die Premium Version.</string>
+    <string name="description_premium_required_this_extra_option">Diese extra Option benötigt leider die Premium Version dieser App.</string>
+    <string name="description_premium_upgrade_explanation">Gönn dir die Premium Version um zusätzliche Funktionen freizuschalten und weitere Entwicklung zu unterstützen.</string>
 
     <string name="label_premium_version_required">Premium Version benötigt</string>
 
     <string name="label_autoplay">Autoplay</string>
 
-    <string name="desc_bluetooth_is_disabled">Bluetooth ist deaktiviert.</string>
+    <string name="description_bluetooth_is_disabled">Bluetooth ist deaktiviert.</string>
     <string name="description_intro_purpose">Diese App reagiert auf Bluetooth Geräte. Ihre Hauptaufgabe ist es die Lautstärke abhängig vom verbundenen Gerät anzupassen.</string>
     <string name="description_autoplay">Die \'Autoplay\' Funktion simuliert einen Knopfdruck auf \'Abspielen\' einer Bluetoothfernsteuerung.</string>
     <string name="desc_intro_streams">Wir unterscheiden zwei Typen von Lautstärken: Musik, welche Medienspieler und Navigation betrifft und Anruf, welche Video/Sprachanrufe betrifft.</string>
     <string name="description_intro_premium">Unterstütz weitere Entwicklung und hol dir extra Funktion durch Kauf der Premium Version.</string>
-    <string name="desc_intro_tap_the_button">Fange an indem du dein erstes Gerät hinzufügst.</string>
+    <string name="description_intro_tap_the_button">Fange an indem du dein erstes Gerät hinzufügst.</string>
 
     <string name="label_status_listening_for_changes">Beobachte Lautstärkeänderungen</string>
 

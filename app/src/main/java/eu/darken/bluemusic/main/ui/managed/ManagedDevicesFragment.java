@@ -114,7 +114,7 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
                 //noinspection ConstantConditions
                 new AlertDialog.Builder(getContext())
                         .setTitle(R.string.label_premium_version)
-                        .setMessage(R.string.desc_premium_upgrade_explanation)
+                        .setMessage(R.string.description_premium_upgrade_explanation)
                         .setIcon(R.drawable.ic_stars_white_24dp)
                         .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onUpgradeClicked(getActivity()))
                         .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
