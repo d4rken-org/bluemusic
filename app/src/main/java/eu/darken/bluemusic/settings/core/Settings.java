@@ -6,8 +6,6 @@ import android.view.KeyEvent;
 
 import javax.inject.Inject;
 
-import eu.darken.bluemusic.util.ApiHelper;
-
 public class Settings {
     private static final String PREFKEY_VOLUMELISTENER = "core.volume.changelistener";
 
@@ -39,7 +37,7 @@ public class Settings {
     }
 
     public boolean isVolumeAdjustedVisibly() {
-        return ApiHelper.hasOreo() || preferences.getBoolean(PREFKEY_VISIBLE_ADJUSTMENTS, true);
+        return preferences.getBoolean(PREFKEY_VISIBLE_ADJUSTMENTS, true);
     }
 
     public boolean isVolumeChangeListenerEnabled() {
