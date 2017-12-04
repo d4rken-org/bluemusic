@@ -1,2 +1,11 @@
 v2.7
-•
+• Improved icons, layouting and texts
+• New device settings screen
+• Renaming devices
+• Restoration after reboot
+• Restoring speaker volume after disconnect
+• Compatibility with Android 8.1
+• Better performance when loading devices
+• Added link to help translate the app
+• A welcome screen for new users
+• Couple of bugfixes and some code restructuring

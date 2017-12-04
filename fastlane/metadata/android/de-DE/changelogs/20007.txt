@@ -1,0 +1,11 @@
+v2.7
+• Verbesserte Icons, Layout und Texte
+• Neue Geräte Einstellungs-Seite
+• Umbenennen von Geräten
+• Wiederherstellen nach Neustart
+• Merken der Lautstärke vor der Anpassung
+• Kompatiblität mit Android 8.1
+• Bessere Performanz beim laden der Geräte
+• Link zu einem Übersetzungsportal für diese App
+• Ein Willkommens Bildschirm für neue Nutzer
+• Ein paar Fehler wurden behoben und der Code etwas umstrukturiert
