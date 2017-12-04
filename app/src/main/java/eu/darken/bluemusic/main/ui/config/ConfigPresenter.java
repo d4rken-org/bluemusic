@@ -64,9 +64,7 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
                         ConfigPresenter.this.device = device;
                         onView(v -> v.updateDevice(device));
                     }, e -> onView(View::finishScreen));
-        } else {
-            if (updateSub != null) updateSub.dispose();
-        }
+        } else if (updateSub != null) updateSub.dispose();
     }
 
     private void updatePro() {
@@ -74,10 +72,11 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
             upgradeSub = iapHelper.isProVersion()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(isProVersion -> ConfigPresenter.this.isProVersion = isProVersion);
-        } else {
-            if (upgradeSub != null) upgradeSub.dispose();
-        }
+                    .subscribe(isProVersion -> {
+                        ConfigPresenter.this.isProVersion = isProVersion;
+                        onView(v -> v.updateProState(isProVersion));
+                    });
+        } else if (upgradeSub != null) upgradeSub.dispose();
     }
 
     void onPurchaseUpgrade(Activity activity) {
@@ -104,7 +103,7 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
                 .subscribe();
     }
 
-    void onToggleAutoPlay() {
+    boolean onToggleAutoPlay() {
         if (isProVersion) {
             device.setAutoPlayEnabled(!device.isAutoPlayEnabled());
             deviceManager.save(Collections.singleton(device))
@@ -113,6 +112,7 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         } else {
             onView(View::showRequiresPro);
         }
+        return device.isAutoPlayEnabled();
     }
 
     void onEditReactionDelayClicked() {
@@ -142,7 +142,8 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
     }
 
     public void onRenameClicked() {
-        onView(v -> v.showRenameDialog(device.getAlias()));
+        if (isProVersion) onView(v -> v.showRenameDialog(device.getAlias()));
+        else onView(View::showRequiresPro);
     }
 
     void onRenameDevice(String newAlias) {
@@ -161,6 +162,8 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
 
 
     public interface View extends Presenter.View {
+        void updateProState(boolean isPro);
+
         void updateDevice(ManagedDevice devices);
 
         void showRequiresPro();

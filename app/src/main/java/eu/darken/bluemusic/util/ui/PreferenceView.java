@@ -2,6 +2,7 @@ package eu.darken.bluemusic.util.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,4 +79,11 @@ public class PreferenceView extends RelativeLayout {
         }
     }
 
+    public void setIcon(@DrawableRes int iconRes) {
+        icon.setImageResource(iconRes);
+    }
+
+    public void setDescription(String desc) {
+        description.setText(desc);
+    }
 }

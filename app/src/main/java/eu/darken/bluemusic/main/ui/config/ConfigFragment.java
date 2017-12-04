@@ -80,7 +80,7 @@ public class ConfigFragment extends ComponentPresenterSupportFragment<ConfigPres
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         prefMusicVolume.setOnCheckedChangedListener((v, checked) -> getPresenter().onToggleMusicVolume());
         prefCallVolume.setOnCheckedChangedListener((v, checked) -> getPresenter().onToggleCallVolume());
-        prefAutoPlay.setOnCheckedChangedListener((v, checked) -> getPresenter().onToggleAutoPlay());
+        prefAutoPlay.setOnCheckedChangedListener((v, checked) -> v.setChecked(getPresenter().onToggleAutoPlay()));
         prefReactionDelay.setOnClickListener(v -> getPresenter().onEditReactionDelayClicked());
         prefAdjustmentDelay.setOnClickListener(v -> getPresenter().onEditAdjustmentDelayClicked());
         prefRename.setOnClickListener(v -> getPresenter().onRenameClicked());
@@ -117,6 +117,15 @@ public class ConfigFragment extends ComponentPresenterSupportFragment<ConfigPres
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void updateProState(boolean isPro) {
+        prefAutoPlay.setIcon(isPro ? R.drawable.ic_play_circle_outline_white_24dp : R.drawable.ic_stars_white_24dp);
+        prefAutoPlay.setDescription(getString(R.string.description_autoplay) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
+
+        prefRename.setIcon(isPro ? R.drawable.ic_mode_edit_white_24dp : R.drawable.ic_stars_white_24dp);
+        prefRename.setDescription(getString(R.string.description_rename_device) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
     }
 
     @Override

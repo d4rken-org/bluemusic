@@ -2,6 +2,7 @@ package eu.darken.bluemusic.settings.ui.general;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -80,27 +81,28 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
     }
 
     @Override
-    public void updatePremiumState(boolean isPremiumVersion) {
+    public void updatePremiumState(boolean isPro) {
         CheckBoxPreference visibleAdjustments = (CheckBoxPreference) findPreference(Settings.PREFKEY_VISIBLE_ADJUSTMENTS);
-        if (isPremiumVersion) {
-            visibleAdjustments.setSummary(getString(R.string.desc_visible_volume_adjustments));
-        } else {
-            visibleAdjustments.setSummary(getString(R.string.desc_visible_volume_adjustments) + " [" + getString(R.string.label_premium_version_required) + "]");
-        }
+        visibleAdjustments.setIcon(isPro ? null : ContextCompat.getDrawable(getContext(), R.drawable.ic_stars_white_24dp));
+        visibleAdjustments.setSummary(getString(R.string.desc_visible_volume_adjustments) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
         visibleAdjustments.setOnPreferenceClickListener(preference -> {
-            if (isPremiumVersion) return false;
+            if (isPro) return false;
             else {
                 visibleAdjustments.setChecked(!visibleAdjustments.isChecked());
-                new AlertDialog.Builder(getContext())
-                        .setTitle(R.string.label_premium_version)
-                        .setMessage(R.string.desc_premium_required_this_extra_option)
-                        .setIcon(R.drawable.ic_stars_white_24dp)
-                        .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onUpgradeClicked(getActivity()))
-                        .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
-                        .show();
+                showRequiresPremiumDialog();
                 return true;
             }
         });
+    }
+
+    void showRequiresPremiumDialog() {
+        new AlertDialog.Builder(getContext())
+                .setTitle(R.string.label_premium_version)
+                .setMessage(R.string.desc_premium_required_this_extra_option)
+                .setIcon(R.drawable.ic_stars_white_24dp)
+                .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onUpgradeClicked(getActivity()))
+                .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
+                .show();
     }
 
     @Override
