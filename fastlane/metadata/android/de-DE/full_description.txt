@@ -1,13 +1,10 @@
-This app allows Android to remember the volume of different Bluetooth devices.
-Both music and call volume can be configured for each device.
-The timing and configuration for each Bluetooth device can be individually adjusted.
+Diese App erlaubt es Android to Lautstärke verschiedener Bluetooth Geräte zu speichern.
+Sowohl Music als auch Anruf Lautstärken können pro Gerät konfiguriert werden.
+Die Anpassung kann zeitlich individuell für jedes Bluetooth Gerät angepasst werden.
 
-This app was motivated by me trying to listen to Spotify through a car radio.
-Android 7.X+ keeps resetting the bluetooth volume to 50% everytime a device (e.g. headset, speaker, car stereo) connects and the volume was above 50%.
-Official ticket: https://code.google.com/p/android/issues/detail?id=212402
-
-Permissions explained:
-• 'Internet' for bug reports.
-• 'Bluetooth' to work with bluetooth devices.
-• 'Modify audio settings' to change volume.
-• 'Boot completed' to restore volume after reboots.
+Erklärung der Berechtigungen:
+• 'Internet' für automatische Fehlerberichte.
+• 'Bluetooth' um mit Bluetooth Geräten zu arbeiten.
+• 'Modify audio settings' um Lautstärken anzupassen.
+• 'Boot completed' um die Lautstärke nach einem Neustart wieder korrekt zu setzen.
+• 'WAKE_LOCK' um einen Fehler auf Samsung Geräten zu beheben der ansonsten zum Absturz führen kann.
