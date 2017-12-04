@@ -11,3 +11,4 @@ Permissions explained:
 • 'Bluetooth' to work with bluetooth devices.
 • 'Modify audio settings' to change volume.
 • 'Boot completed' to restore volume after reboots.
+• 'WAKE_LOCK' to fix a bug on Samsung devices where this permission is necessary to avoid an error.
