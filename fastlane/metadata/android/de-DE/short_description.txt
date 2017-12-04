@@ -1,1 +1,1 @@
-Lautstärken für Musik und Gespräche individuell per Bluetooth Gerät festlegen.
+Individual voice & music volume configuration for bluetooth devices.
