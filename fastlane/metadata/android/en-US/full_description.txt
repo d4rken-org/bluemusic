@@ -2,10 +2,6 @@ This app allows Android to remember the volume of different Bluetooth devices.
 Both music and call volume can be configured for each device.
 The timing and configuration for each Bluetooth device can be individually adjusted.
 
-This app was motivated by me trying to listen to Spotify through a car radio.
-Android 7.X+ keeps resetting the bluetooth volume to 50% everytime a device (e.g. headset, speaker, car stereo) connects and the volume was above 50%.
-Official ticket: https://code.google.com/p/android/issues/detail?id=212402
-
 Permissions explained:
 • 'Internet' for bug reports.
 • 'Bluetooth' to work with bluetooth devices.
