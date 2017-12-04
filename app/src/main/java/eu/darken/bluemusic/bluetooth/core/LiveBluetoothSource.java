@@ -117,6 +117,7 @@ class LiveBluetoothSource implements BluetoothSource {
                         public void onServiceConnected(int profile, BluetoothProfile proxy) {
                             final List<BluetoothDevice> connectedDevices = proxy.getConnectedDevices();
                             Timber.v("onServiceConnected(profile=%d, connected=%s)", profile, connectedDevices);
+                            // Fuck me, listener always calls back on the main thread...
                             emitter.onSuccess(connectedDevices);
                             adapter.closeProfileProxy(profile, proxy);
                         }
@@ -131,6 +132,7 @@ class LiveBluetoothSource implements BluetoothSource {
                     if (!success) emitter.onSuccess(new ArrayList<>());
                 })
                 .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
                 .timeout(8, TimeUnit.SECONDS, Single.just(new ArrayList<>()));
     }
 

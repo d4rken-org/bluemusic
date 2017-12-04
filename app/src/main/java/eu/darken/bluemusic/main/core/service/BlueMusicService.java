@@ -126,6 +126,11 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
             bluetoothSource.getConnectedDevices()
                     .subscribeOn(scheduler)
+                    .observeOn(scheduler)
+                    .doOnSubscribe(disposable -> {
+                        Timber.d("Handling %s", event);
+                        adjusting = true;
+                    })
                     .map(connectedDevices -> {
                         if (event.getType() == SourceDevice.Event.Type.CONNECTED && !connectedDevices.containsKey(event.getAddress())) {
                             Timber.v("Connection not ready yet retrying.");
@@ -134,41 +139,16 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         return event;
                     })
                     .retryWhen(new RetryWithDelay(5, 2000))
-                    .flatMap(deviceEvent -> deviceManager.updateDevices()
-                            .map(knownDevices -> {
-                                final ManagedDevice knownDevice = knownDevices.get(deviceEvent.getAddress());
-                                if (knownDevice == null) {
-                                    throw new UnmanagedDeviceException(deviceEvent);
-                                }
-                                return new ManagedDevice.Action(knownDevice, deviceEvent.getType());
-                            }))
-                    .doOnSubscribe(disposable -> {
-                        Timber.d("Handling %s", event);
-                        adjusting = true;
-                    })
-                    .doFinally(() -> {
-                        adjusting = false;
-                        Timber.d("Event handling finished.");
-                        serviceHelper.updateMessage(getString(R.string.label_status_idle));
-                        if (!settings.isVolumeChangeListenerEnabled()) {
-                            Timber.d("We don't want to listen to anymore volume changes, stopping service.");
-                            serviceHelper.stop();
-                        } else {
-                            serviceHelper.updateMessage(getString(R.string.label_status_listening_for_changes));
+                    .flatMap(deviceEvent -> deviceManager.updateDevices().map(knownDevices -> {
+                        final ManagedDevice knownDevice = knownDevices.get(deviceEvent.getAddress());
+                        if (knownDevice == null) {
+                            throw new UnmanagedDeviceException(deviceEvent);
                         }
-                    })
-                    .subscribe((action, throwable) -> {
-                        if (throwable != null) {
-                            if (!(throwable instanceof UnmanagedDeviceException)
-                                    && !(throwable instanceof PrematureConnectionException)) {
-                                Timber.e("Device error: %s", throwable);
-                                Bugsnag.notify(throwable);
-                            }
-                            return;
-                        }
-                        final ManagedDevice newDevice = action.getDevice();
-
+                        return new ManagedDevice.Action(knownDevice, deviceEvent.getType());
+                    }))
+                    .doOnSuccess(action -> {
                         serviceHelper.updateMessage(getString(R.string.label_status_adjusting_volumes));
+                        final ManagedDevice newDevice = action.getDevice();
 
                         final Map<String, ManagedDevice> activeDevices = deviceManager.observe()
                                 .map(map -> {
@@ -212,6 +192,24 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                                 streamHelper.setVolumes(streamSettings.load(streamHelper.getStreamIds()), settings.isVolumeAdjustedVisibly(), 0);
                             }
                         }
+                    })
+                    .doFinally(() -> {
+                        adjusting = false;
+                        Timber.d("Event handling finished.");
+                        serviceHelper.updateMessage(getString(R.string.label_status_idle));
+                        if (!settings.isVolumeChangeListenerEnabled()) {
+                            Timber.d("We don't want to listen to anymore volume changes, stopping service.");
+                            serviceHelper.stop();
+                        } else {
+                            serviceHelper.updateMessage(getString(R.string.label_status_listening_for_changes));
+                        }
+                    })
+                    .subscribe((action, throwable) -> {
+                        if (throwable != null && !(throwable instanceof UnmanagedDeviceException) && !(throwable instanceof PrematureConnectionException)) {
+                            Timber.e("Device error: %s", throwable);
+                            Bugsnag.notify(throwable);
+                        }
+
                     });
         } else if (ServiceHelper.STOP_ACTION.equals(intent.getAction())) {
             serviceHelper.stop();
