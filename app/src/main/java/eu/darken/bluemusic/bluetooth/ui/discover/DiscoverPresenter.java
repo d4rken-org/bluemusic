@@ -66,7 +66,7 @@ public class DiscoverPresenter extends ComponentPresenter<DiscoverPresenter.View
                     }
                     return devices;
                 })
-                .subscribeOn(Schedulers.computation())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(sourceDevices -> onView(v -> v.showDevices(sourceDevices)));
     }

@@ -71,6 +71,7 @@ class LiveBluetoothSource implements BluetoothSource {
 
     @Override
     public Single<Map<String, SourceDevice>> getPairedDevices() {
+        Timber.v("getPairedDevices()");
         return Single.defer(() -> Single.just(manager.getAdapter().getBondedDevices()))
                 .map(bluetoothDevices -> {
                     Map<String, SourceDevice> devices = new HashMap<>();
@@ -86,14 +87,14 @@ class LiveBluetoothSource implements BluetoothSource {
 
     @Override
     public Single<Map<String, SourceDevice>> getConnectedDevices() {
-        final List<SingleSource<List<BluetoothDevice>>> profiles = new ArrayList<>();
+        Timber.v("getConnectedDevices()");
 
+        final List<SingleSource<List<BluetoothDevice>>> profiles = new ArrayList<>();
         profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET));
         profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT));
         profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT_SERVER));
         profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEALTH));
         profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP));
-
         return Single.defer(() -> Single.merge(profiles)
                 .toList()
                 .map(lists -> {
@@ -106,7 +107,8 @@ class LiveBluetoothSource implements BluetoothSource {
                     Map<String, SourceDevice> devices = new HashMap<>();
                     for (BluetoothDevice d : combined) devices.put(d.getAddress(), new SourceDeviceWrapper(d));
                     return devices;
-                }));
+                }))
+                .subscribeOn(Schedulers.io());
     }
 
     private Single<List<BluetoothDevice>> getDevicesForProfile(int desiredProfile) {
