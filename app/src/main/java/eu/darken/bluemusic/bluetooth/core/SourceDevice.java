@@ -27,21 +27,21 @@ public interface SourceDevice extends Parcelable {
             CONNECTED, DISCONNECTED
         }
 
-        private final SourceDevice sourceDevice;
         private final Type type;
+        private final SourceDevice device;
 
-        public Event(SourceDevice sourceDevice, Type type) {
-            this.sourceDevice = sourceDevice;
+        public Event(SourceDevice device, Type type) {
+            this.device = device;
             this.type = type;
         }
 
         public String getAddress() {
-            return sourceDevice.getAddress();
+            return device.getAddress();
         }
 
         @NonNull
         public SourceDevice getDevice() {
-            return sourceDevice;
+            return device;
         }
 
         @NonNull
@@ -49,14 +49,19 @@ public interface SourceDevice extends Parcelable {
             return type;
         }
 
+        @Override
+        public String toString() {
+            return "SourceDevice.Event(type=" + type + ", device=" + device + ")";
+        }
+
         protected Event(Parcel in) {
-            sourceDevice = in.readParcelable(SourceDevice.class.getClassLoader());
+            device = in.readParcelable(SourceDevice.class.getClassLoader());
             type = Type.valueOf(in.readString());
         }
 
         @Override
         public void writeToParcel(Parcel dest, int flags) {
-            dest.writeParcelable(sourceDevice, flags);
+            dest.writeParcelable(device, flags);
             dest.writeString(type.name());
         }
 

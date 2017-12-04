@@ -3,6 +3,11 @@ package eu.darken.bluemusic.main.core.service;
 import android.media.AudioManager;
 import android.util.SparseIntArray;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.AppComponent;
@@ -75,5 +80,24 @@ public class StreamHelper {
                 }
             }
         } else Timber.d("Target volume of %d already set.", target);
+    }
+
+    public List<Integer> getStreamIds() {
+        return Arrays.asList(getMusicId(), getCallId());
+    }
+
+    public Map<Integer, Float> getVolumes() {
+        Map<Integer, Float> volumeMap = new HashMap<>();
+        for (Integer streamId : getStreamIds()) {
+            final float current = getVolumePercentage(streamId);
+            volumeMap.put(streamId, current);
+        }
+        return volumeMap;
+    }
+
+    public void setVolumes(Map<Integer, Float> volumeMap, boolean visible, long delay) {
+        for (Map.Entry<Integer, Float> entry : volumeMap.entrySet()) {
+            changeVolume(entry.getKey(), entry.getValue(), visible, delay);
+        }
     }
 }

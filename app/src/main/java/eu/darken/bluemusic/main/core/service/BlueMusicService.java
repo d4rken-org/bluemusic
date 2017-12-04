@@ -11,7 +11,9 @@ import com.bugsnag.android.Bugsnag;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 
@@ -25,12 +27,11 @@ import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.settings.core.Settings;
+import eu.darken.bluemusic.settings.core.StreamSettings;
 import eu.darken.bluemusic.util.ui.RetryWithDelay;
 import io.reactivex.Scheduler;
-import io.reactivex.SingleSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
@@ -43,6 +44,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Inject Settings settings;
     @Inject ServiceHelper serviceHelper;
     @Inject List<ActionModule> actionModules;
+    @Inject StreamSettings streamSettings;
     final Scheduler scheduler = Schedulers.from(Executors.newSingleThreadExecutor());
     private volatile boolean adjusting = false;
     private Disposable notificationSub;
@@ -118,6 +120,8 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         } else if (intent.hasExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT)) {
             serviceHelper.start();
 
+            final Map<Integer, Float> volumeMap = streamHelper.getVolumes();
+
             SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
 
             bluetoothSource.getConnectedDevices()
@@ -130,31 +134,24 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         return event;
                     })
                     .retryWhen(new RetryWithDelay(5, 2000))
-                    .flatMap(new Function<SourceDevice.Event, SingleSource<ManagedDevice.Action>>() {
-                        @Override
-                        public SingleSource<ManagedDevice.Action> apply(SourceDevice.Event deviceEvent) throws Exception {
-                            return deviceManager.updateDevices()
-                                    .map(knownDevices -> {
-                                        final ManagedDevice knownDevice = knownDevices.get(deviceEvent.getAddress());
-                                        if (knownDevice == null) {
-                                            throw new UnmanagedDeviceException(deviceEvent);
-                                        }
-                                        return new ManagedDevice.Action(knownDevice, deviceEvent.getType());
-                                    });
-                        }
-                    })
+                    .flatMap(deviceEvent -> deviceManager.updateDevices()
+                            .map(knownDevices -> {
+                                final ManagedDevice knownDevice = knownDevices.get(deviceEvent.getAddress());
+                                if (knownDevice == null) {
+                                    throw new UnmanagedDeviceException(deviceEvent);
+                                }
+                                return new ManagedDevice.Action(knownDevice, deviceEvent.getType());
+                            }))
                     .doOnSubscribe(disposable -> {
                         Timber.d("Handling %s", event);
                         adjusting = true;
                     })
                     .doFinally(() -> {
                         adjusting = false;
-                        Timber.d("Adjustment finished.");
-
+                        Timber.d("Event handling finished.");
                         serviceHelper.updateMessage(getString(R.string.label_status_idle));
-
                         if (!settings.isVolumeChangeListenerEnabled()) {
-                            Timber.d("We don't want to listen to volume changes, stopping service.");
+                            Timber.d("We don't want to listen to anymore volume changes, stopping service.");
                             serviceHelper.stop();
                         } else {
                             serviceHelper.updateMessage(getString(R.string.label_status_listening_for_changes));
@@ -169,15 +166,31 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                             }
                             return;
                         }
+                        final ManagedDevice newDevice = action.getDevice();
 
-                        final ManagedDevice device = action.getDevice();
                         serviceHelper.updateMessage(getString(R.string.label_status_adjusting_volumes));
+
+                        final Map<String, ManagedDevice> activeDevices = deviceManager.observe()
+                                .map(map -> {
+                                    final Iterator<Map.Entry<String, ManagedDevice>> it = map.entrySet().iterator();
+                                    while (it.hasNext()) if (!it.next().getValue().isActive()) it.remove();
+                                    return map;
+                                })
+                                .blockingFirst();
+
+                        if (settings.isRestoreVolumes()
+                                && event.getType() == SourceDevice.Event.Type.CONNECTED
+                                && activeDevices.size() == 1 && activeDevices.containsKey(newDevice.getAddress())) {
+                            Timber.i("Saving volumes for restoration on disconnect.");
+                            streamSettings.save(volumeMap);
+                        }
+
                         final CountDownLatch latch = new CountDownLatch(actionModules.size());
                         for (ActionModule module : actionModules) {
                             new Thread(() -> {
                                 Timber.d("Running module %s", module);
                                 try {
-                                    module.handle(device, event);
+                                    module.handle(newDevice, event);
                                 } catch (Exception e) {
                                     Timber.e("Module error: %s", e);
                                     Bugsnag.notify(e);
@@ -193,6 +206,11 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
                         if (event.getType() == SourceDevice.Event.Type.DISCONNECTED) {
                             handleDisconnect();
+                            if (settings.isRestoreVolumes()
+                                    && (activeDevices.size() == 0 || activeDevices.size() == 1 && activeDevices.containsKey(newDevice.getAddress()))) {
+                                Timber.d("Restoring volumes because, Bluetooth devices disconnected.");
+                                streamHelper.setVolumes(streamSettings.load(streamHelper.getStreamIds()), settings.isVolumeAdjustedVisibly(), 0);
+                            }
                         }
                     });
         } else if (ServiceHelper.STOP_ACTION.equals(intent.getAction())) {

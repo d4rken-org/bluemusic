@@ -9,6 +9,11 @@
             android:title="@string/label_app_enabled"/>
         <CheckBoxPreference
             android:defaultValue="true"
+            android:key="core.volume.restore"
+            android:summary="@string/description_restore_volume"
+            android:title="@string/label_restore_volume"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
             android:key="core.volume.visibleadjustments"
             android:summary="@string/desc_visible_volume_adjustments"
             android:title="@string/label_visible_volume_adjustments"/>

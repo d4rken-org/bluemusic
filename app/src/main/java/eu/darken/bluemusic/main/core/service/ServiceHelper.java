@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -41,7 +40,7 @@ public class ServiceHelper {
         this.resHelper = resHelper;
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, resHelper.getString(R.string.label_notification_channel_status), NotificationManagerCompat.IMPORTANCE_MIN);
+            NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, resHelper.getString(R.string.label_notification_channel_status), NotificationManager.IMPORTANCE_MIN);
             notificationManager.createNotificationChannel(channel);
         }
 

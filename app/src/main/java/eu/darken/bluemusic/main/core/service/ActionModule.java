@@ -8,7 +8,7 @@ import timber.log.Timber;
 public abstract class ActionModule {
 
     public abstract void handle(ManagedDevice device, SourceDevice.Event event);
-    
+
     protected void waitAdjustmentDelay(ManagedDevice device) {
         try {
             Long reactionDelay = device.getActionDelay();

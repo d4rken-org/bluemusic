@@ -76,4 +76,6 @@
     <string name="description_intro_contact">Don\'t hesitate to contact me if you have questions or even an idea for a new feature.</string>
     <string name="label_translation">Translation</string>
     <string name="description_help_translate">Help me make this app available in other languages.</string>
+    <string name="label_restore_volume">Restore volumes</string>
+    <string name="description_restore_volume">Restore the previous volume when a Bluetooth device disconnects (e.g. device speaker).</string>
 </resources>

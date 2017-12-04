@@ -18,6 +18,8 @@ public class Settings {
     private static final String PREFKEY_LAUNCHCOUNT = "core.metrics.launchcount";
     private static final String PREFKEY_BOOT_RESTORE = "core.onboot.restore";
     private static final String PREFKEY_ONBOARDING_INTRODONE = "core.onboarding.introdone";
+
+    private static final String PREFKEY_RESTORE_VOLUMES = "core.volume.restore";
     public static final long DEFAULT_REACTION_DELAY = 5000;
     public static final long DEFAULT_ADJUSTMENT_DELAY = 250;
     private final SharedPreferences preferences;
@@ -78,5 +80,9 @@ public class Settings {
 
     public void setShowOnboarding(boolean show) {
         preferences.edit().putBoolean(PREFKEY_ONBOARDING_INTRODONE, show).apply();
+    }
+
+    public boolean isRestoreVolumes() {
+        return preferences.getBoolean(PREFKEY_RESTORE_VOLUMES, true);
     }
 }
