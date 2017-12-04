@@ -70,10 +70,6 @@ public class Settings {
         return preferences.getBoolean(PREFKEY_BOOT_RESTORE, true);
     }
 
-    public void setBootRestoreEnabled(boolean enabled) {
-        preferences.edit().putBoolean(PREFKEY_BOOT_RESTORE, enabled).apply();
-    }
-
     public boolean isShowOnboarding() {
         return preferences.getBoolean(PREFKEY_ONBOARDING_INTRODONE, true);
     }
