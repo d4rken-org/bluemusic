@@ -1,0 +1,10 @@
+Quest'app consente al tuo dispositivo Android di ricordare il volume di ogni dispositivo Bluetooth.
+Entrambi i volumi, sia della musica che delle chiamate, possono essere configurati per ogni dispositivo.
+Tempi e configurazione possono essere regolati per ogni dispositivo Bluetooth.
+
+Ecco a cosa servono le autorizzazioni:
+• 'Internet' per le segnalazioni di bug.
+• 'Bluetooth' per funzionare con i dispositivi Bluetooth.
+• 'Modify audio settings' per modificare i volumi.
+• 'Boot completed' per ripristinare i volumi dopo un riavvio.
+• 'WAKE_LOCK' per correggere un bug e un errore sui dispositivi Samsung.
