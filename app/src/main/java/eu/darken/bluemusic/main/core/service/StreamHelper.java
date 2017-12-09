@@ -62,7 +62,7 @@ public class StreamHelper {
         final int currentVolume = getCurrentVolume(streamId);
         final int max = getMaxVolume(streamId);
         final int target = Math.round(max * percent);
-        Timber.d("Adjusting volume (streamId=%d, target=%d, current=%d, max=%d, visible=%b).", streamId, target, currentVolume, max, visible);
+        Timber.d("Adjusting volume (streamId=%d, target=%d, current=%d, max=%d, visible=%b, delay=%d).", streamId, target, currentVolume, max, visible, delay);
         if (currentVolume != target) {
             if (delay == 0) {
                 setVolume(streamId, target, visible ? AudioManager.FLAG_SHOW_UI : 0);
