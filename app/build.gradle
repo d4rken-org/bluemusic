@@ -32,7 +32,7 @@ android {
     }
 
     compileSdkVersion 27
-    buildToolsVersion "27.0.1"
+    buildToolsVersion "27.0.2"
 
     def versionMajor = 2
     def versionMinor = 9
@@ -112,7 +112,7 @@ tasks.withType(Test) {
     systemProperty "robolectric.logging", "stdout"
 }
 ext {
-    supportLibVersion = '27.0.1'
+    supportLibVersion = '27.0.2'
     daggerVersion = '2.13'
 }
 //noinspection GroovyAssignabilityCheck
