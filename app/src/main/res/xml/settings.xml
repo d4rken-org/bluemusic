@@ -8,7 +8,7 @@
             android:summary="@string/description_app_enabled"
             android:title="@string/label_app_enabled"/>
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="core.volume.restore"
             android:summary="@string/description_restore_volume"
             android:title="@string/label_restore_volume"/>

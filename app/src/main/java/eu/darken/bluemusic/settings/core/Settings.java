@@ -77,6 +77,6 @@ public class Settings {
     }
 
     public boolean isRestoreVolumes() {
-        return preferences.getBoolean(PREFKEY_RESTORE_VOLUMES, true);
+        return preferences.getBoolean(PREFKEY_RESTORE_VOLUMES, false);
     }
 }
