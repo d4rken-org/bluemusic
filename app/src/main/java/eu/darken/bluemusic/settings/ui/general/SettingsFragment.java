@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,11 +24,14 @@ import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.settings.ui.about.AboutFragment;
 import eu.darken.bluemusic.util.Preconditions;
-import eu.darken.ommvplib.injection.ComponentPresenterPreferenceFragment;
+import eu.darken.ommvplib.base.OMMVPLib;
+import eu.darken.ommvplib.injection.InjectedPresenter;
+import eu.darken.ommvplib.injection.PresenterInjectionCallback;
 
 
-public class SettingsFragment extends ComponentPresenterPreferenceFragment<SettingsPresenter.View, SettingsPresenter, SettingsComponent> implements SettingsPresenter.View {
+public class SettingsFragment extends PreferenceFragmentCompat implements SettingsPresenter.View {
     @Inject Settings settings;
+    @Inject SettingsPresenter presenter;
 
     public static Fragment newInstance() {
         return new SettingsFragment();
@@ -36,6 +40,10 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        OMMVPLib.<SettingsPresenter.View, SettingsPresenter>builder()
+                .presenterCallback(new PresenterInjectionCallback<>(this))
+                .presenterSource(new InjectedPresenter<>(this))
+                .attach(this);
         setHasOptionsMenu(true);
     }
 
@@ -100,7 +108,7 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
                 .setTitle(R.string.label_premium_version)
                 .setMessage(R.string.description_premium_required_this_extra_option)
                 .setIcon(R.drawable.ic_stars_white_24dp)
-                .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onUpgradeClicked(getActivity()))
+                .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> presenter.onUpgradeClicked(getActivity()))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
                 .show();
     }
@@ -133,10 +141,5 @@ public class SettingsFragment extends ComponentPresenterPreferenceFragment<Setti
             preference.setSummary(((CheckBoxPreference) preference).isChecked() ? ":)" : ":(");
             return true;
         } else return super.onPreferenceTreeClick(preference);
-    }
-
-    @Override
-    public Class<? extends SettingsPresenter> getTypeClazz() {
-        return SettingsPresenter.class;
     }
 }

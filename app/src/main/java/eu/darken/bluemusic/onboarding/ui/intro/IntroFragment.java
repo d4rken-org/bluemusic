@@ -10,25 +10,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.util.Preconditions;
-import eu.darken.ommvplib.injection.ComponentPresenterSupportFragment;
+import eu.darken.ommvplib.base.OMMVPLib;
+import eu.darken.ommvplib.injection.InjectedPresenter;
+import eu.darken.ommvplib.injection.PresenterInjectionCallback;
 
 
-public class IntroFragment extends ComponentPresenterSupportFragment<IntroPresenter.View, IntroPresenter, IntroComponent> implements IntroPresenter.View {
+public class IntroFragment extends Fragment implements IntroPresenter.View {
 
+    @Inject IntroPresenter presenter;
     Unbinder unbinder;
 
     public static Fragment newInstance() {
         return new IntroFragment();
     }
 
+
     @Override
-    public Class<IntroPresenter> getTypeClazz() {
-        return IntroPresenter.class;
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        OMMVPLib.<IntroPresenter.View, IntroPresenter>builder()
+                .presenterCallback(new PresenterInjectionCallback<>(this))
+                .presenterSource(new InjectedPresenter<>(this))
+                .attach(this);
     }
 
     @Nullable
@@ -56,7 +66,7 @@ public class IntroFragment extends ComponentPresenterSupportFragment<IntroPresen
 
     @OnClick(R.id.finish_onboarding)
     public void onFinishOnboardingClicked(View v) {
-        getPresenter().onFinishOnboardingClicked();
+        presenter.onFinishOnboardingClicked();
     }
 
     @Override

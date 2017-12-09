@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -23,15 +25,17 @@ import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.util.Preconditions;
 import eu.darken.bluemusic.util.ui.ClickableAdapter;
-import eu.darken.ommvplib.injection.ComponentPresenterSupportFragment;
+import eu.darken.ommvplib.base.OMMVPLib;
+import eu.darken.ommvplib.injection.InjectedPresenter;
+import eu.darken.ommvplib.injection.PresenterInjectionCallback;
 
 
-public class DiscoverFragment extends ComponentPresenterSupportFragment<DiscoverPresenter.View, DiscoverPresenter, DiscoverComponent>
+public class DiscoverFragment extends Fragment
         implements DiscoverPresenter.View, ClickableAdapter.OnItemClickListener<SourceDevice> {
 
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
     @BindView(R.id.progressbar) View progressBar;
-
+    @Inject DiscoverPresenter presenter;
     Unbinder unbinder;
     DiscoverAdapter adapter;
 
@@ -40,8 +44,12 @@ public class DiscoverFragment extends ComponentPresenterSupportFragment<Discover
     }
 
     @Override
-    public Class<DiscoverPresenter> getTypeClazz() {
-        return DiscoverPresenter.class;
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        OMMVPLib.<DiscoverPresenter.View, DiscoverPresenter>builder()
+                .presenterCallback(new PresenterInjectionCallback<>(this))
+                .presenterSource(new InjectedPresenter<>(this))
+                .attach(this);
     }
 
     @Nullable
@@ -88,7 +96,7 @@ public class DiscoverFragment extends ComponentPresenterSupportFragment<Discover
 
     @Override
     public void onItemClick(View view, int position, SourceDevice item) {
-        getPresenter().onAddDevice(item);
+        presenter.onAddDevice(item);
     }
 
     @Override
@@ -116,7 +124,7 @@ public class DiscoverFragment extends ComponentPresenterSupportFragment<Discover
                 .setTitle(R.string.label_premium_version)
                 .setMessage(R.string.description_premium_required_additional_devices)
                 .setIcon(R.drawable.ic_stars_white_24dp)
-                .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onPurchaseUpgrade(getActivity()))
+                .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> presenter.onPurchaseUpgrade(getActivity()))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
                 .show();
     }

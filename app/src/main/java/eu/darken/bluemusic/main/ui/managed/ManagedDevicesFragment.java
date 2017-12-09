@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -30,17 +32,19 @@ import eu.darken.bluemusic.main.ui.MainActivity;
 import eu.darken.bluemusic.main.ui.config.ConfigFragment;
 import eu.darken.bluemusic.settings.ui.SettingsActivity;
 import eu.darken.bluemusic.util.Preconditions;
-import eu.darken.ommvplib.injection.ComponentPresenterSupportFragment;
+import eu.darken.ommvplib.base.OMMVPLib;
+import eu.darken.ommvplib.injection.InjectedPresenter;
+import eu.darken.ommvplib.injection.PresenterInjectionCallback;
 
 
-public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<ManagedDevicesPresenter.View, ManagedDevicesPresenter, ManagedDevicesComponent>
-        implements ManagedDevicesPresenter.View, ManagedDevicesAdapter.Callback {
+public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPresenter.View, ManagedDevicesAdapter.Callback {
 
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
     @BindView(R.id.empty_info) View emptyInfo;
     @BindView(R.id.bluetooth_disabled_container) View bluetoothDisabledContainer;
     @BindView(R.id.bluetooth_enabled_container) View bluetoothEnabledContainer;
     @BindView(R.id.fab) FloatingActionButton fab;
+    @Inject ManagedDevicesPresenter presenter;
 
     Unbinder unbinder;
     private ManagedDevicesAdapter adapter;
@@ -53,12 +57,11 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        OMMVPLib.<ManagedDevicesPresenter.View, ManagedDevicesPresenter>builder()
+                .presenterCallback(new PresenterInjectionCallback<>(this))
+                .presenterSource(new InjectedPresenter<>(this))
+                .attach(this);
         setHasOptionsMenu(true);
-    }
-
-    @Override
-    public Class<ManagedDevicesPresenter> getTypeClazz() {
-        return ManagedDevicesPresenter.class;
     }
 
     @Nullable
@@ -116,7 +119,7 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
                         .setTitle(R.string.label_premium_version)
                         .setMessage(R.string.description_premium_upgrade_explanation)
                         .setIcon(R.drawable.ic_stars_white_24dp)
-                        .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onUpgradeClicked(getActivity()))
+                        .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> presenter.onUpgradeClicked(getActivity()))
                         .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
                         .show();
                 return true;
@@ -160,12 +163,12 @@ public class ManagedDevicesFragment extends ComponentPresenterSupportFragment<Ma
 
     @Override
     public void onMusicVolumeAdjusted(ManagedDevice device, float percentage) {
-        getPresenter().onUpdateMusicVolume(device, percentage);
+        presenter.onUpdateMusicVolume(device, percentage);
     }
 
     @Override
     public void onCallVolumeAdjusted(ManagedDevice device, float percentage) {
-        getPresenter().onUpdateCallVolume(device, percentage);
+        presenter.onUpdateCallVolume(device, percentage);
     }
 
     @Override

@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -23,11 +25,13 @@ import eu.darken.bluemusic.main.ui.MainActivity;
 import eu.darken.bluemusic.util.Preconditions;
 import eu.darken.bluemusic.util.ui.PreferenceView;
 import eu.darken.bluemusic.util.ui.SwitchPreferenceView;
-import eu.darken.ommvplib.injection.ComponentPresenterSupportFragment;
+import eu.darken.ommvplib.base.OMMVPLib;
+import eu.darken.ommvplib.injection.InjectedPresenter;
+import eu.darken.ommvplib.injection.PresenterInjectionCallback;
 import timber.log.Timber;
 
 
-public class ConfigFragment extends ComponentPresenterSupportFragment<ConfigPresenter.View, ConfigPresenter, ConfigComponent> implements ConfigPresenter.View {
+public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     private static final String ARG_ADDRESS = "device.address";
     private static final String ARG_NAME = "device.aliasorname";
     private ActionBar actionBar;
@@ -39,6 +43,7 @@ public class ConfigFragment extends ComponentPresenterSupportFragment<ConfigPres
     @BindView(R.id.pref_adjustment_delay) PreferenceView prefAdjustmentDelay;
     @BindView(R.id.pref_rename) PreferenceView prefRename;
     @BindView(R.id.pref_delete) PreferenceView prefDelete;
+    @Inject ConfigPresenter presenter;
 
     public static Fragment instantiate(ManagedDevice device) {
         Bundle bundle = new Bundle();
@@ -50,22 +55,21 @@ public class ConfigFragment extends ComponentPresenterSupportFragment<ConfigPres
     }
 
     @Override
-    public Class<? extends ConfigPresenter> getTypeClazz() {
-        return ConfigPresenter.class;
-    }
-
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        OMMVPLib.<ConfigPresenter.View, ConfigPresenter>builder()
+                .presenterCallback(new PresenterInjectionCallback<ConfigFragment, ConfigPresenter.View, ConfigPresenter, ConfigComponent>(this) {
+                    @Override
+                    public void onPresenterReady(ConfigPresenter presenter) {
+                        Preconditions.checkNotNull(getArguments());
+                        final String address = getArguments().getString(ARG_ADDRESS);
+                        presenter.setDevice(address);
+                        super.onPresenterReady(presenter);
+                    }
+                })
+                .presenterSource(new InjectedPresenter<>(this))
+                .attach(this);
         setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onPresenterReady(@NonNull ConfigPresenter presenter) {
-        Preconditions.checkNotNull(getArguments());
-        final String address = getArguments().getString(ARG_ADDRESS);
-        getPresenter().setDevice(address);
-        super.onPresenterReady(presenter);
     }
 
     @Nullable
@@ -78,13 +82,13 @@ public class ConfigFragment extends ComponentPresenterSupportFragment<ConfigPres
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        prefMusicVolume.setOnCheckedChangedListener((v, checked) -> getPresenter().onToggleMusicVolume());
-        prefCallVolume.setOnCheckedChangedListener((v, checked) -> getPresenter().onToggleCallVolume());
-        prefAutoPlay.setOnCheckedChangedListener((v, checked) -> v.setChecked(getPresenter().onToggleAutoPlay()));
-        prefReactionDelay.setOnClickListener(v -> getPresenter().onEditReactionDelayClicked());
-        prefAdjustmentDelay.setOnClickListener(v -> getPresenter().onEditAdjustmentDelayClicked());
-        prefRename.setOnClickListener(v -> getPresenter().onRenameClicked());
-        prefDelete.setOnClickListener(v -> getPresenter().onDeleteDevice());
+        prefMusicVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleMusicVolume());
+        prefCallVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleCallVolume());
+        prefAutoPlay.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleAutoPlay()));
+        prefReactionDelay.setOnClickListener(v -> presenter.onEditReactionDelayClicked());
+        prefAdjustmentDelay.setOnClickListener(v -> presenter.onEditAdjustmentDelayClicked());
+        prefRename.setOnClickListener(v -> presenter.onRenameClicked());
+        prefDelete.setOnClickListener(v -> presenter.onDeleteDevice());
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -159,7 +163,7 @@ public class ConfigFragment extends ComponentPresenterSupportFragment<ConfigPres
                 .setTitle(R.string.label_premium_version)
                 .setMessage(R.string.description_premium_required_this_extra_option)
                 .setIcon(R.drawable.ic_stars_white_24dp)
-                .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> getPresenter().onPurchaseUpgrade(getActivity()))
+                .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> presenter.onPurchaseUpgrade(getActivity()))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
                 .show();
     }
@@ -179,14 +183,14 @@ public class ConfigFragment extends ComponentPresenterSupportFragment<ConfigPres
                 .setPositiveButton(R.string.action_set, (dialogInterface, i) -> {
                     try {
                         final long newDelay = Long.parseLong(input.getText().toString());
-                        getPresenter().onEditReactionDelay(newDelay);
+                        presenter.onEditReactionDelay(newDelay);
                     } catch (NumberFormatException e) {
                         Timber.e(e);
                         Preconditions.checkNotNull(getView());
                         Snackbar.make(getView(), R.string.label_invalid_input, Snackbar.LENGTH_SHORT).show();
                     }
                 })
-                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().onEditReactionDelay(-1))
+                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> presenter.onEditReactionDelay(-1))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
                 .show();
     }
@@ -206,14 +210,14 @@ public class ConfigFragment extends ComponentPresenterSupportFragment<ConfigPres
                 .setPositiveButton(R.string.action_set, (dialogInterface, i) -> {
                     try {
                         final long newDelay = Long.parseLong(input.getText().toString());
-                        getPresenter().onEditAdjustmentDelay(newDelay);
+                        presenter.onEditAdjustmentDelay(newDelay);
                     } catch (NumberFormatException e) {
                         Timber.e(e);
                         Preconditions.checkNotNull(getView());
                         Snackbar.make(getView(), R.string.label_invalid_input, Snackbar.LENGTH_SHORT).show();
                     }
                 })
-                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().onEditAdjustmentDelay(-1))
+                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> presenter.onEditAdjustmentDelay(-1))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> { })
                 .show();
     }
@@ -228,8 +232,8 @@ public class ConfigFragment extends ComponentPresenterSupportFragment<ConfigPres
         new AlertDialog.Builder(getContext())
                 .setTitle(R.string.label_rename_device)
                 .setView(container)
-                .setPositiveButton(R.string.action_set, (dialogInterface, i) -> getPresenter().onRenameDevice(input.getText().toString()))
-                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> getPresenter().onRenameDevice(null))
+                .setPositiveButton(R.string.action_set, (dialogInterface, i) -> presenter.onRenameDevice(input.getText().toString()))
+                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> presenter.onRenameDevice(null))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> { })
                 .show();
     }

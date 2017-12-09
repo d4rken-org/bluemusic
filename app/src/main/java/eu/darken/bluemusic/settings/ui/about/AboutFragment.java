@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.MenuItem;
 
 import java.util.Locale;
@@ -13,14 +14,20 @@ import java.util.Locale;
 import eu.darken.bluemusic.BuildConfig;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.util.Preconditions;
-import eu.darken.ommvplib.injection.ComponentPresenterPreferenceFragment;
+import eu.darken.ommvplib.base.OMMVPLib;
+import eu.darken.ommvplib.injection.InjectedPresenter;
+import eu.darken.ommvplib.injection.PresenterInjectionCallback;
 import timber.log.Timber;
 
 
-public class AboutFragment extends ComponentPresenterPreferenceFragment<AboutPresenter.View, AboutPresenter, AboutComponent> implements AboutPresenter.View {
+public class AboutFragment extends PreferenceFragmentCompat implements AboutPresenter.View {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        OMMVPLib.<AboutPresenter.View, AboutPresenter>builder()
+                .presenterCallback(new PresenterInjectionCallback<>(this))
+                .presenterSource(new InjectedPresenter<>(this))
+                .attach(this);
         setHasOptionsMenu(true);
     }
 
@@ -57,10 +64,5 @@ public class AboutFragment extends ComponentPresenterPreferenceFragment<AboutPre
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public Class<? extends AboutPresenter> getTypeClazz() {
-        return AboutPresenter.class;
     }
 }
