@@ -11,13 +11,13 @@
     <string name="label_bug_reports">Bug reports</string>
     <string name="description_bug_reports">Automatic bug and crash reporting.</string>
     <string name="label_app_enabled">App enabled</string>
-    <string name="description_app_enabled">Toggles the apps ability to react to volume and bluetooth events.</string>
+    <string name="description_app_enabled">Toggles the app’s ability to react to volume and Bluetooth events.</string>
     <string name="label_visible_volume_adjustments">Visible adjustments</string>
     <string name="description_visible_volume_adjustments">Show the system\'s volume window while this app makes adjustments.</string>
     <string name="label_volume_listener">Observe changes</string>
     <string name="description_volume_listener">Stay active while a device is connected and save volume changes that have not been caused by this app.</string>
     <string name="label_autoplay_keytype">Autoplay key type</string>
-    <string name="desc_autoplay_keytype">The key type that is send when an autoplay enabled device connects.</string>
+    <string name="desc_autoplay_keytype">The key type that is sent when an autoplay enabled device connects.</string>
     <string name="label_state_connected">Connected</string>
     <string name="label_neverseen">Never seen</string>
     <string name="action_remove_device">Remove device</string>
@@ -36,7 +36,7 @@
     <string name="label_premium_version">Premium version</string>
     <string name="action_upgrade">Upgrade</string>
     <string name="description_premium_required_additional_devices">Managing additional devices requires the premium version.</string>
-    <string name="description_premium_required_this_extra_option">This extra option unfortunately requires the premium version of this app.</string>
+    <string name="description_premium_required_this_extra_option">This extra option requires the premium version of this app.</string>
     <string name="description_premium_upgrade_explanation">Get the premium version to enable additional features and support development.</string>
     <string name="label_premium_version_required">Premium version required</string>
     <string name="description_intro_purpose">This app allows your Android device to remember the volume of different Bluetooth devices.</string>
@@ -50,7 +50,7 @@
     <string name="label_call_volume">Call volume</string>
     <string name="description_call_volume">Control the volume that affects calls when this devices connects.</string>
     <string name="label_autoplay">Autoplay</string>
-    <string name="description_autoplay">Simulate pressing play on a bluetooth remote when this device connects.</string>
+    <string name="description_autoplay">Simulate pressing play on a Bluetooth remote when this device connects.</string>
     <string name="label_reaction_delay">Reaction delay</string>
     <string name="description_reaction_delay">The delay in milliseconds until this app reacts to this device.</string>
     <string name="label_adjustment_delay">Adjustment delay</string>

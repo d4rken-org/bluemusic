@@ -4,7 +4,7 @@ The timing and configuration for each Bluetooth device can be individually adjus
 
 Permissions explained:
 • 'Internet' for bug reports.
-• 'Bluetooth' to work with bluetooth devices.
+• 'Bluetooth' to work with Bluetooth devices.
 • 'Modify audio settings' to change volume.
 • 'Boot completed' to restore volume after reboots.
 • 'WAKE_LOCK' to fix a bug on Samsung devices where this permission is necessary to avoid an error.
