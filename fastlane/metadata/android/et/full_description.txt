@@ -1,0 +1,10 @@
+See rakendus võimaldab Androidil meelde jätta erinevaid sinihammast toetavate seadmete heli.
+Seadistada saab kõikide seadmete heli nii muusika kuulamise kui ka helistamise ajal.
+Kõikide sinihammast toetavate seadmete ajastust ja seadistusi saab eraldi reguleerida.
+
+Lubade taotluse selgitus:
+• „Internet“ vigade saatmise jaoks;
+• „Bluetooth“ sinihammast toetavate seadmete ühildamiseks.
+• „Modify audio settings“ heli muutmiseks;
+• 'Boot completed' heli sisselülitamiseks pärast taaskäivitust;
+• 'WAKE_LOCK' Samsungi seadmete vea parandamiseks, kuna selle loaga saab viga vältida.

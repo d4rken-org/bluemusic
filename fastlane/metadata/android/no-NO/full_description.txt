@@ -1,0 +1,10 @@
+Denne appen tillater Android å huske volumet på forskjellige Bluetooth-enheter.
+Både musikk og ringevolumet kan konfigureres for hver enhet.
+Tidspunktet og konfigurasjonen for hver Bluetooth-enhet kan justeres individuelt.
+
+Tillatelser forklart:
+• 'Internett' for feilrapporter.
+• 'Bluetooth' for å jobbe med bluetooth-enheter.
+• 'Endre lydinnstillinger' for å endre volumet.
+• 'Oppstart fullført' for å gjenopprette volumet etter omstarter.
+• 'WAKE_LOCK' for å fikse en feil på Samsung-enheter der denne tillatelsen er nødvendig for å unngå en feil.

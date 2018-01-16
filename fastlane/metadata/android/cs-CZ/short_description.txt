@@ -1,0 +1,1 @@
+Individuální hlasová a hudební konfigurace hlasitosti zařízení Bluetooth.

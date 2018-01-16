@@ -1,0 +1,10 @@
+Deze app staat Android toe het volume te onthouden van verschillende Bluetooth-apparaten.
+Zowel muziek als oproep volume kan worden geconfigureerd voor elk apparaat.
+De timing en configuratie kan voor elk Bluetooth-apparaat individueel worden aangepast.
+
+Machtigingen beschreven:
+• 'Internet' voor bug-rapporten.
+• 'Bluetooth' om te werken met Bluetooth-apparaten.
+• 'Audio-instellingen wijzigen' om volume te wijzigen.
+• 'Boot voltooid' om volume te herstellen na herstart.
+• 'WAKE_LOCK' bug fix op Samsung apparaten waar deze machtiging noodzakelijk is om te voorkomen dat een fout gebeurt.

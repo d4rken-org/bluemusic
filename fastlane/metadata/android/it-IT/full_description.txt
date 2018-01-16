@@ -1,6 +1,6 @@
 Quest'app consente al tuo dispositivo Android di ricordare il volume di ogni dispositivo Bluetooth.
-Entrambi i volumi, sia della musica che delle chiamate, possono essere configurati per ogni dispositivo.
-Tempi e configurazione possono essere regolati per ogni dispositivo Bluetooth.
+Entrambi i volumi, sia della musica che delle chiamate, possono essere configurati differentemente per ogni dispositivo.
+La sincronizzazione e la configurazione possono essere regolate differentemente per ogni dispositivo Bluetooth.
 
 Ecco a cosa servono le autorizzazioni:
 • 'Internet' per le segnalazioni di bug.

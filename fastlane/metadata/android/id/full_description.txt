@@ -1,0 +1,10 @@
+Aplikasi ini memungkinkan Android mengingat volume suara untuk perangkat Bluetooth yang berbeda.
+Volume suara musik dan panggilan dapat diatur untuk setiap perangkat.
+Pewaktuan dan pengaturan untuk setiap perangkat Bluetooth dapat disesuaikan secara tersendiri.
+
+Penjelasan perizinan:
+• 'Internet' untuk pelaporan kutu.
+• 'Bluetooth' agar dapat bekerja dengan perangkat perangkat Bluetooth.
+• 'Mengubah pengaturan audio' untuk mengubah volume suara.
+• 'Boot_COMPLETED' untuk mengembalikan volume suara setelah perangkat dinyalakan.
+• 'WAKE_LOCK' untuk memperbaiki kutu dalam perangkat Samsung sebab perizinan ini dibutuhkan untuk menghindari kesalahan.

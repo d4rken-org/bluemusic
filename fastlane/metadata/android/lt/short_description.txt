@@ -1,0 +1,1 @@
+Atskiras balso ir muzikos garsumo valdymas Bluetooh įrenginiams.

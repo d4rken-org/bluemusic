@@ -1,0 +1,10 @@
+Cette appli permet à Android de mémoriser le volume de différents périphériques Bluetooth.
+Le volume de la musique et des appels peuvent tous deux être réglés pour chaque périphérique.
+Le délai d’exécution et la configuration peuvent être réglés individuellement pour chaque périphérique Bluetooth.
+
+Explication des permissions :
+• « Internet » pour signaler les bogues.
+• « Bluetooth » pour fonctionner avec les périphériques Bluetooth.
+• « Modifier les paramètres audio » pour régler le volume.
+• « Amorçage terminé » pour restaurer le volume après redémarrage.
+• « WAKE_LOCK » pour corriger un bogue sur les appareils Samsung nécessitant que cette permission soit accordée pour éviter une erreur.

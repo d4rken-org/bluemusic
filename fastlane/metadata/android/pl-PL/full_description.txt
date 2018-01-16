@@ -1,0 +1,10 @@
+Aplikacja zezwala Androidowi na zapamiętanie głośności dla różnych urządzeń Bluetooth.
+Głośność muzyki i połączeń może zostać skonfigurowana dla każdego urządzenia.
+Czas i konfiguracja dla każdego urządzenia Bluetooth mogą być dostosowane indywidualnie.
+
+Wyjaśnienia dla wymaganych uprawnień:
+• 'Internet' dla zgłaszania błędów.
+• 'Bluetooth' do pracy z urządzeniami Bluetooth.
+• 'Modyfikacja ustawień dźwięku' do zmiany głośności.
+• 'Zakończenie uruchamiania' w celu przywrócenia głośności po ponownym uruchomieniu.
+• 'WAKE_LOCK', aby naprawić błąd w urządzeniach Samsung, gdzie wymagane jest to uprawnienie, w celu uniknięcia błędu.

@@ -1,0 +1,1 @@
+Configuració individual del volum de veu i música per als dispositius Bluetooth.

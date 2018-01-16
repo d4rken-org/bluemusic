@@ -1,0 +1,10 @@
+Aquesta aplicació permet a Android recordar el volum de diferents dispositius Bluetooth.
+Tant el volum de la música com el de les trucades es pot configurar per cada dispositiu.
+El temps i la configuració de cada dispositiu Bluetooth es poden configurar individualment.
+
+Explicació dels permisos:
+• «Internet» per als informes d'errors.
+• «Bluetooth» per funcionar amb dispositius Bluetooth.
+• «Modifica la configuració d'àudio» per canviar el volum.
+• «Inici completat» per restablir el volum després de reiniciar.
+• «WAKE_LOCK» per solucionar un error amb els dispositius Samsung. Aquest permís és necessari per evitar un error.

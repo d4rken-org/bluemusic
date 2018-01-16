@@ -1,1 +1,1 @@
-Bluetooth Lautstärken Verwaltung
+Bluetooth-Lautstärken Manager

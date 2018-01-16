@@ -9,7 +9,7 @@
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Webseite</string>
     <string name="label_gplay">Google Play</string>
-    <string name="label_email">Email</string>
+    <string name="label_email">E-Mail</string>
     <string name="label_bug_reports">Fehlerberichte</string>
     <string name="description_bug_reports">Automatische Fehler- und Absturzberichte.</string>
     <string name="label_app_enabled">App aktiviert</string>
