@@ -1,7 +1,7 @@
 package eu.darken.bluemusic.util;
 
 
-public class Preconditions {
+public class Pre {
     /**
      * Ensures that an object reference passed as a parameter to the calling
      * method is not null.

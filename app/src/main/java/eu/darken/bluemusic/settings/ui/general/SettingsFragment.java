@@ -23,7 +23,7 @@ import javax.inject.Inject;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.settings.ui.about.AboutFragment;
-import eu.darken.bluemusic.util.Preconditions;
+import eu.darken.bluemusic.util.Pre;
 import eu.darken.ommvplib.base.OMMVPLib;
 import eu.darken.ommvplib.injection.InjectedPresenter;
 import eu.darken.ommvplib.injection.PresenterInjectionCallback;
@@ -57,7 +57,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
         super.onActivityCreated(savedInstanceState);
         //noinspection ConstantConditions
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        Preconditions.checkNotNull(actionBar);
+        Pre.checkNotNull(actionBar);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(R.string.label_settings);
         actionBar.setSubtitle(null);
