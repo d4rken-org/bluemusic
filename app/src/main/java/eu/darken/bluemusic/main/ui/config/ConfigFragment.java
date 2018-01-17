@@ -158,8 +158,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
     @Override
     public void showRequiresPro() {
-        Pre.checkNotNull(getContext());
-        new AlertDialog.Builder(getContext())
+        new AlertDialog.Builder(Pre.checkNotNull(getContext()))
                 .setTitle(R.string.label_premium_version)
                 .setMessage(R.string.description_premium_required_this_extra_option)
                 .setIcon(R.drawable.ic_stars_white_24dp)
