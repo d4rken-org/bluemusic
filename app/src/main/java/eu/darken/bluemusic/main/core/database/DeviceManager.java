@@ -67,7 +67,8 @@ public class DeviceManager {
                             emitter = null;
                         })
                         .replay(1)
-                        .refCount();
+                        .refCount()
+                        .map(HashMap::new);
             }
         }
         return deviceCache;
