@@ -170,11 +170,10 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @SuppressLint("InflateParams")
     @Override
     public void showReactionDelayDialog(long delay) {
-        Pre.checkNotNull(getContext());
         View container = getLayoutInflater().inflate(R.layout.view_dialog_delay, null);
         EditText input = container.findViewById(R.id.input);
         input.setText(String.valueOf(delay));
-        new AlertDialog.Builder(getContext())
+        new AlertDialog.Builder(Pre.checkNotNull(getContext()))
                 .setTitle(R.string.label_reaction_delay)
                 .setMessage(R.string.description_reaction_delay)
                 .setIcon(R.drawable.ic_timer_white_24dp)
