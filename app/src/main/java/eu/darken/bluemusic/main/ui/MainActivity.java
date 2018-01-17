@@ -49,6 +49,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
     public void showDevices() {
         Fragment introFragment = getSupportFragmentManager().findFragmentById(R.id.frame_content);
         if (introFragment == null) introFragment = ManagedDevicesFragment.newInstance();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, introFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, introFragment).commitNow();
     }
 }
