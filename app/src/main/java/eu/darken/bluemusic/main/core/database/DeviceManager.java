@@ -86,27 +86,27 @@ public class DeviceManager {
                                 final Map<String, ManagedDevice> result = new HashMap<>();
                                 if (!bluetoothSource.isEnabled().blockingFirst()) return result;
 
-                                Realm realm = getRealm();
-                                final RealmResults<DeviceConfig> deviceConfigs = realm.where(DeviceConfig.class).findAll();
+                                try (Realm realm = getRealm()) {
+                                    final RealmResults<DeviceConfig> deviceConfigs = realm.where(DeviceConfig.class).findAll();
 
-                                realm.beginTransaction();
-                                for (DeviceConfig config : deviceConfigs) {
-                                    if (!paired.containsKey(config.address)) continue;
+                                    realm.beginTransaction();
+                                    for (DeviceConfig config : deviceConfigs) {
+                                        if (!paired.containsKey(config.address)) continue;
 
-                                    ManagedDevice managed = new ManagedDevice(paired.get(config.address), realm.copyFromRealm(config));
-                                    managed.setMaxMusicVolume(streamHelper.getMaxVolume(streamHelper.getMusicId()));
-                                    managed.setMaxCallVolume(streamHelper.getMaxVolume(streamHelper.getCallId()));
-                                    managed.setActive(active.containsKey(managed.getAddress()));
+                                        ManagedDevice managed = new ManagedDevice(paired.get(config.address), realm.copyFromRealm(config));
+                                        managed.setMaxMusicVolume(streamHelper.getMaxVolume(streamHelper.getMusicId()));
+                                        managed.setMaxCallVolume(streamHelper.getMaxVolume(streamHelper.getCallId()));
+                                        managed.setActive(active.containsKey(managed.getAddress()));
 
-                                    if (active.containsKey(config.address)) config.lastConnected = System.currentTimeMillis();
+                                        if (active.containsKey(config.address)) config.lastConnected = System.currentTimeMillis();
 
-                                    Timber.v("Loaded: %s", managed);
-                                    result.put(managed.getAddress(), managed);
+                                        Timber.v("Loaded: %s", managed);
+                                        result.put(managed.getAddress(), managed);
+                                    }
+
+                                    realm.commitTransaction();
+                                    return result;
                                 }
-
-                                realm.commitTransaction();
-                                realm.close();
-                                return result;
                             });
                 })
                 .doOnError(throwable -> Timber.e(throwable, null))
@@ -121,15 +121,15 @@ public class DeviceManager {
         return Single.just(toSave)
                 .subscribeOn(Schedulers.computation())
                 .map(devices -> {
-                    Realm realm = getRealm();
-                    realm.beginTransaction();
-                    for (ManagedDevice device : devices) {
-                        Timber.d("Updated device: %s", device);
-                        realm.copyToRealmOrUpdate(device.getDeviceConfig());
+                    try (Realm realm = getRealm()) {
+                        realm.beginTransaction();
+                        for (ManagedDevice device : devices) {
+                            Timber.d("Updated device: %s", device);
+                            realm.copyToRealmOrUpdate(device.getDeviceConfig());
+                        }
+                        realm.commitTransaction();
+                        return devices;
                     }
-                    realm.commitTransaction();
-                    realm.close();
-                    return devices;
                 })
                 .flatMap(managedDevices -> updateDevices());
     }
