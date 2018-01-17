@@ -36,8 +36,14 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
         }
 
         SourceDevice sourceDevice = new SourceDeviceWrapper(bluetoothDevice);
+
         String actionString = intent.getAction();
-        Timber.d("Device: %s | Action: %s", sourceDevice, actionString);
+        try {
+            Timber.d("Device: %s | Action: %s", sourceDevice, actionString);
+        } catch (Exception e) {
+            Timber.e(e);
+            return;
+        }
 
         SourceDevice.Event.Type actionType;
         if ("android.bluetooth.device.action.ACL_CONNECTED".equals(actionString)) {
