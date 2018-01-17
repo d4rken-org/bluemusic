@@ -16,6 +16,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
+import io.reactivex.SingleOnSubscribe;
+import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.BehaviorSubject;
 import timber.log.Timber;
 
@@ -24,7 +27,6 @@ public class IAPHelper implements PurchasesUpdatedListener, BillingClientStateLi
     static final String SKU_UPGRADE = "upgrade.premium";
     private final BehaviorSubject<List<Upgrade>> upgradesPublisher = BehaviorSubject.createDefault(new ArrayList<>());
     private final BillingClient billingClient;
-
 
     public static class Upgrade {
         enum Type {
@@ -69,13 +71,22 @@ public class IAPHelper implements PurchasesUpdatedListener, BillingClientStateLi
     @Override
     public void onPurchasesUpdated(int responseCode, @Nullable List<Purchase> purchases) {
         Timber.d("onPurchasesUpdated(responseCode=%d, purchases=%s)", responseCode, purchases);
-        if (purchases != null) {
-            List<Upgrade> upgrades = new ArrayList<>();
-            for (Purchase p : purchases) {
-                upgrades.add(new Upgrade(p));
-            }
-            upgradesPublisher.onNext(upgrades);
-        }
+        if (purchases != null) notifyOfPurchases(purchases);
+    }
+
+    private void notifyOfPurchases(List<Purchase> purchases) {
+        Timber.d("notifyOfPurchases(%s)", purchases);
+        List<Upgrade> upgrades = new ArrayList<>();
+        for (Purchase p : purchases) upgrades.add(new Upgrade(p));
+        upgradesPublisher.onNext(upgrades);
+    }
+
+    public void check() {
+        Single.create((SingleOnSubscribe<Purchase.PurchasesResult>) e -> e.onSuccess(billingClient.queryPurchases(BillingClient.SkuType.INAPP)))
+                .subscribeOn(Schedulers.io())
+                .filter(r -> r.getResponseCode() == 0 && r.getPurchasesList() != null)
+                .map(Purchase.PurchasesResult::getPurchasesList)
+                .subscribe(this::notifyOfPurchases, Timber::e);
     }
 
     public Observable<Boolean> isProVersion() {

@@ -69,6 +69,7 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
 
     private void updatePro() {
         if (getView() != null) {
+            iapHelper.check();
             upgradeSub = iapHelper.isProVersion()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
