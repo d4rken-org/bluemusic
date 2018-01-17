@@ -44,7 +44,15 @@ class LiveBluetoothSource implements BluetoothSource {
             if (stateObs == null) {
                 stateObs = Observable.interval(1, TimeUnit.SECONDS)
                         .startWith(0L)
-                        .map(count -> adapter != null && adapter.isEnabled())
+                        .map(count -> {
+                            try {
+                                return adapter != null && adapter.isEnabled();
+                            } catch (SecurityException e) {
+                                // Why.... revoked via root?
+                                Timber.e(e);
+                                return false;
+                            }
+                        })
                         .filter(new Predicate<Boolean>() {
                             Boolean lastState = null;
 
