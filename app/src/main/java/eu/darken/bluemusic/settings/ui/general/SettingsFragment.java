@@ -23,7 +23,7 @@ import javax.inject.Inject;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.settings.ui.about.AboutFragment;
-import eu.darken.bluemusic.util.Pre;
+import eu.darken.bluemusic.util.Check;
 import eu.darken.ommvplib.base.OMMVPLib;
 import eu.darken.ommvplib.injection.InjectedPresenter;
 import eu.darken.ommvplib.injection.PresenterInjectionCallback;
@@ -57,7 +57,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
         super.onActivityCreated(savedInstanceState);
         //noinspection ConstantConditions
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        Pre.checkNotNull(actionBar);
+        Check.notNull(actionBar);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(R.string.label_settings);
         actionBar.setSubtitle(null);
@@ -91,7 +91,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
     @Override
     public void updatePremiumState(boolean isPro) {
         CheckBoxPreference visibleAdjustments = (CheckBoxPreference) findPreference(Settings.PREFKEY_VISIBLE_ADJUSTMENTS);
-        visibleAdjustments.setIcon(isPro ? null : ContextCompat.getDrawable(Pre.checkNotNull(getContext()), R.drawable.ic_stars_white_24dp));
+        visibleAdjustments.setIcon(isPro ? null : ContextCompat.getDrawable(Check.notNull(getContext()), R.drawable.ic_stars_white_24dp));
         visibleAdjustments.setSummary(getString(R.string.description_visible_volume_adjustments) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
         visibleAdjustments.setOnPreferenceClickListener(preference -> {
             if (isPro) return false;
@@ -104,7 +104,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
     }
 
     void showRequiresPremiumDialog() {
-        new AlertDialog.Builder(Pre.checkNotNull(getContext()))
+        new AlertDialog.Builder(Check.notNull(getContext()))
                 .setTitle(R.string.label_premium_version)
                 .setMessage(R.string.description_premium_required_this_extra_option)
                 .setIcon(R.drawable.ic_stars_white_24dp)
@@ -130,7 +130,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
                 labels[i] = pairs.get(i).second;
                 if (pairs.get(i).first == currentKeyCode) selected = i;
             }
-            new AlertDialog.Builder(Pre.checkNotNull(getContext()))
+            new AlertDialog.Builder(Check.notNull(getContext()))
                     .setSingleChoiceItems(labels, selected, (dialogInterface, pos) -> {
                         settings.setAutoplayKeycode(pairs.get(pos).first);
                         dialogInterface.dismiss();

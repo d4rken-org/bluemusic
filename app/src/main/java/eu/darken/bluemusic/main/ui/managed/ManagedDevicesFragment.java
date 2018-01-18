@@ -31,7 +31,7 @@ import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.main.ui.MainActivity;
 import eu.darken.bluemusic.main.ui.config.ConfigFragment;
 import eu.darken.bluemusic.settings.ui.SettingsActivity;
-import eu.darken.bluemusic.util.Pre;
+import eu.darken.bluemusic.util.Check;
 import eu.darken.ommvplib.base.OMMVPLib;
 import eu.darken.ommvplib.injection.InjectedPresenter;
 import eu.darken.ommvplib.injection.PresenterInjectionCallback;
@@ -90,9 +90,9 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Pre.checkNotNull(getActivity());
+        Check.notNull(getActivity());
         final ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-        Pre.checkNotNull(actionBar);
+        Check.notNull(actionBar);
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setTitle(R.string.app_name);
         actionBar.setSubtitle(null);

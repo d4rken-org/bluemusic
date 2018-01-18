@@ -22,7 +22,7 @@ import butterknife.Unbinder;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.main.ui.MainActivity;
-import eu.darken.bluemusic.util.Pre;
+import eu.darken.bluemusic.util.Check;
 import eu.darken.bluemusic.util.ui.PreferenceView;
 import eu.darken.bluemusic.util.ui.SwitchPreferenceView;
 import eu.darken.ommvplib.base.OMMVPLib;
@@ -61,7 +61,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
                 .presenterCallback(new PresenterInjectionCallback<ConfigFragment, ConfigPresenter.View, ConfigPresenter, ConfigComponent>(this) {
                     @Override
                     public void onPresenterReady(ConfigPresenter presenter) {
-                        Pre.checkNotNull(getArguments());
+                        Check.notNull(getArguments());
                         final String address = getArguments().getString(ARG_ADDRESS);
                         presenter.setDevice(address);
                         super.onPresenterReady(presenter);
@@ -96,12 +96,12 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Pre.checkNotNull(getActivity());
+        Check.notNull(getActivity());
         actionBar = ((MainActivity) getActivity()).getSupportActionBar();
-        Pre.checkNotNull(actionBar);
+        Check.notNull(actionBar);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        Pre.checkNotNull(getArguments());
+        Check.notNull(getArguments());
         actionBar.setTitle(getArguments().getString(ARG_NAME));
     }
 
@@ -113,7 +113,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Pre.checkNotNull(getActivity());
+        Check.notNull(getActivity());
         switch (item.getItemId()) {
             case android.R.id.home:
                 getActivity().getSupportFragmentManager().popBackStack();
@@ -134,7 +134,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
     @Override
     public void updateDevice(ManagedDevice device) {
-        Pre.checkNotNull(getArguments());
+        Check.notNull(getArguments());
         String alias = device.tryGetAlias();
         actionBar.setTitle(alias);
         String name = device.getName();
@@ -158,7 +158,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
     @Override
     public void showRequiresPro() {
-        new AlertDialog.Builder(Pre.checkNotNull(getContext()))
+        new AlertDialog.Builder(Check.notNull(getContext()))
                 .setTitle(R.string.label_premium_version)
                 .setMessage(R.string.description_premium_required_this_extra_option)
                 .setIcon(R.drawable.ic_stars_white_24dp)
@@ -173,7 +173,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         View container = getLayoutInflater().inflate(R.layout.view_dialog_delay, null);
         EditText input = container.findViewById(R.id.input);
         input.setText(String.valueOf(delay));
-        new AlertDialog.Builder(Pre.checkNotNull(getContext()))
+        new AlertDialog.Builder(Check.notNull(getContext()))
                 .setTitle(R.string.label_reaction_delay)
                 .setMessage(R.string.description_reaction_delay)
                 .setIcon(R.drawable.ic_timer_white_24dp)
@@ -184,7 +184,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
                         presenter.onEditReactionDelay(newDelay);
                     } catch (NumberFormatException e) {
                         Timber.e(e);
-                        Pre.checkNotNull(getView());
+                        Check.notNull(getView());
                         Snackbar.make(getView(), R.string.label_invalid_input, Snackbar.LENGTH_SHORT).show();
                     }
                 })
@@ -196,7 +196,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @SuppressLint("InflateParams")
     @Override
     public void showAdjustmentDelayDialog(long delay) {
-        Pre.checkNotNull(getContext());
+        Check.notNull(getContext());
         View container = getLayoutInflater().inflate(R.layout.view_dialog_delay, null);
         EditText input = container.findViewById(R.id.input);
         input.setText(String.valueOf(delay));
@@ -211,7 +211,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
                         presenter.onEditAdjustmentDelay(newDelay);
                     } catch (NumberFormatException e) {
                         Timber.e(e);
-                        Pre.checkNotNull(getView());
+                        Check.notNull(getView());
                         Snackbar.make(getView(), R.string.label_invalid_input, Snackbar.LENGTH_SHORT).show();
                     }
                 })
@@ -223,7 +223,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @SuppressLint("InflateParams")
     @Override
     public void showRenameDialog(String current) {
-        Pre.checkNotNull(getContext());
+        Check.notNull(getContext());
         View container = getLayoutInflater().inflate(R.layout.view_dialog_rename, null);
         EditText input = container.findViewById(R.id.input);
         input.setText(current);
@@ -238,7 +238,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
     @Override
     public void finishScreen() {
-        Pre.checkNotNull(getActivity());
+        Check.notNull(getActivity());
         getActivity().getSupportFragmentManager().popBackStack();
     }
 }

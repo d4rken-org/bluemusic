@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
-import eu.darken.bluemusic.util.Pre;
+import eu.darken.bluemusic.util.Check;
 import eu.darken.bluemusic.util.ui.ClickableAdapter;
 import eu.darken.ommvplib.base.OMMVPLib;
 import eu.darken.ommvplib.injection.InjectedPresenter;
@@ -80,7 +80,7 @@ public class DiscoverFragment extends Fragment
         super.onActivityCreated(savedInstanceState);
         //noinspection ConstantConditions
         final ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        Pre.checkNotNull(actionBar);
+        Check.notNull(actionBar);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(R.string.label_add_device);
         actionBar.setSubtitle(null);
@@ -101,7 +101,7 @@ public class DiscoverFragment extends Fragment
 
     @Override
     public void showError(Throwable error) {
-        Pre.checkNotNull(getView());
+        Check.notNull(getView());
         Snackbar.make(getView(), error.getMessage(), Snackbar.LENGTH_SHORT).show();
     }
 

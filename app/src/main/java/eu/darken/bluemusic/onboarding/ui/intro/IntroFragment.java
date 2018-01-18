@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import eu.darken.bluemusic.R;
-import eu.darken.bluemusic.util.Pre;
+import eu.darken.bluemusic.util.Check;
 import eu.darken.ommvplib.base.OMMVPLib;
 import eu.darken.ommvplib.injection.InjectedPresenter;
 import eu.darken.ommvplib.injection.PresenterInjectionCallback;
@@ -60,7 +60,7 @@ public class IntroFragment extends Fragment implements IntroPresenter.View {
         super.onActivityCreated(savedInstanceState);
         //noinspection ConstantConditions
         final ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        Pre.checkNotNull(actionBar);
+        Check.notNull(actionBar);
         actionBar.setTitle(R.string.app_name);
     }
 

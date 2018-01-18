@@ -13,7 +13,7 @@ import java.util.Locale;
 
 import eu.darken.bluemusic.BuildConfig;
 import eu.darken.bluemusic.R;
-import eu.darken.bluemusic.util.Pre;
+import eu.darken.bluemusic.util.Check;
 import eu.darken.ommvplib.base.OMMVPLib;
 import eu.darken.ommvplib.injection.InjectedPresenter;
 import eu.darken.ommvplib.injection.PresenterInjectionCallback;
@@ -49,7 +49,7 @@ public class AboutFragment extends PreferenceFragmentCompat implements AboutPres
         super.onActivityCreated(savedInstanceState);
         //noinspection ConstantConditions
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        Pre.checkNotNull(actionBar);
+        Check.notNull(actionBar);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(R.string.label_about);
     }
