@@ -91,7 +91,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
     @Override
     public void updatePremiumState(boolean isPro) {
         CheckBoxPreference visibleAdjustments = (CheckBoxPreference) findPreference(Settings.PREFKEY_VISIBLE_ADJUSTMENTS);
-        visibleAdjustments.setIcon(isPro ? null : ContextCompat.getDrawable(getContext(), R.drawable.ic_stars_white_24dp));
+        visibleAdjustments.setIcon(isPro ? null : ContextCompat.getDrawable(Pre.checkNotNull(getContext()), R.drawable.ic_stars_white_24dp));
         visibleAdjustments.setSummary(getString(R.string.description_visible_volume_adjustments) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
         visibleAdjustments.setOnPreferenceClickListener(preference -> {
             if (isPro) return false;
@@ -104,7 +104,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
     }
 
     void showRequiresPremiumDialog() {
-        new AlertDialog.Builder(getContext())
+        new AlertDialog.Builder(Pre.checkNotNull(getContext()))
                 .setTitle(R.string.label_premium_version)
                 .setMessage(R.string.description_premium_required_this_extra_option)
                 .setIcon(R.drawable.ic_stars_white_24dp)
@@ -130,16 +130,18 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
                 labels[i] = pairs.get(i).second;
                 if (pairs.get(i).first == currentKeyCode) selected = i;
             }
-            new AlertDialog.Builder(getContext())
+            new AlertDialog.Builder(Pre.checkNotNull(getContext()))
                     .setSingleChoiceItems(labels, selected, (dialogInterface, pos) -> {
                         settings.setAutoplayKeycode(pairs.get(pos).first);
                         dialogInterface.dismiss();
                     })
                     .show();
             return true;
-        } else if ("core.bugreporting.enabled".equals(preference.getKey())) {
+        } else if (Settings.PREFKEY_BUGREPORTING.equals(preference.getKey())) {
             preference.setSummary(((CheckBoxPreference) preference).isChecked() ? ":)" : ":(");
             return true;
-        } else return super.onPreferenceTreeClick(preference);
+        } else {
+            return super.onPreferenceTreeClick(preference);
+        }
     }
 }

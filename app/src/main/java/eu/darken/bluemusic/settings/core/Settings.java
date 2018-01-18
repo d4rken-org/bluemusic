@@ -18,6 +18,10 @@ public class Settings {
     private static final String PREFKEY_ONBOARDING_INTRODONE = "core.onboarding.introdone";
 
     private static final String PREFKEY_RESTORE_VOLUMES = "core.volume.restore";
+
+    public static final String PREFKEY_BUGREPORTING = "core.bugreporting.enabled";
+
+    public static final String PREFKEY_CORE_ENABLED = "core.enabled";
     public static final long DEFAULT_REACTION_DELAY = 5000;
     public static final long DEFAULT_ADJUSTMENT_DELAY = 250;
     private final SharedPreferences preferences;
@@ -33,7 +37,7 @@ public class Settings {
     }
 
     public boolean isBugReportingEnabled() {
-        return preferences.getBoolean("core.bugreporting.enabled", true);
+        return preferences.getBoolean(PREFKEY_BUGREPORTING, true);
     }
 
     public boolean isVolumeAdjustedVisibly() {
@@ -45,7 +49,7 @@ public class Settings {
     }
 
     public boolean isEnabled() {
-        return preferences.getBoolean("core.enabled", true);
+        return preferences.getBoolean(PREFKEY_CORE_ENABLED, true);
     }
 
     public int getAutoplayKeycode() {
