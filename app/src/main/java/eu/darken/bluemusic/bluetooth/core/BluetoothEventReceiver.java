@@ -46,9 +46,9 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
         }
 
         SourceDevice.Event.Type actionType;
-        if ("android.bluetooth.device.action.ACL_CONNECTED".equals(actionString)) {
+        if (BluetoothDevice.ACTION_ACL_CONNECTED.equals(actionString)) {
             actionType = SourceDevice.Event.Type.CONNECTED;
-        } else if ("android.bluetooth.device.action.ACL_DISCONNECTED".equals(actionString)) {
+        } else if (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(actionString)) {
             actionType = SourceDevice.Event.Type.DISCONNECTED;
         } else {
             Timber.w("Invalid action: %s", actionString);
