@@ -5,6 +5,6 @@ La sincronizzazione e la configurazione possono essere regolate differentemente 
 Ecco a cosa servono le autorizzazioni:
 • 'Internet' per le segnalazioni di bug.
 • 'Bluetooth' per funzionare con i dispositivi Bluetooth.
-• 'Modify audio settings' per modificare i volumi.
-• 'Boot completed' per ripristinare i volumi dopo un riavvio.
+• 'Modifica impostazioni audio' per modificare i volumi.
+• 'Inizializzazione completata' per ripristinare i volumi dopo un riavvio.
 • 'WAKE_LOCK' per correggere un bug e un errore sui dispositivi Samsung.

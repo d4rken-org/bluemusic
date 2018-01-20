@@ -13,10 +13,13 @@
     <string name="label_bug_reports">דיווח באגים</string>
     <string name="description_bug_reports">דיווח באגים וקריסות אוטומטי.</string>
     <string name="label_app_enabled">אפליקצייה מאופשרת</string>
+    <string name="description_app_enabled">שינוי יכולת האפליקציה להגיב לאירועי ווליום ו-Bluetooth.</string>
     <string name="label_visible_volume_adjustments">התאמות נראות</string>
     <string name="description_visible_volume_adjustments">הצגת חלון ווליום של המערכת כאשר ההתאמות נעשות על ידי אפליקציה זו.</string>
     <string name="label_volume_listener">צפייה בשינויים</string>
     <string name="description_volume_listener">להשאיר פעיל כאשר התקן מחובר ושמירת שינויי ווליום שלא נגרמו על ידי אפליקציה זו.</string>
+    <string name="label_autoplay_keytype">סוג פעולת ניגון אוטומטי</string>
+    <string name="desc_autoplay_keytype">סוג הפעולה שנשלחת כאשר מכשיר עם ניגון אוטומטי מתחבר.</string>
     <string name="label_state_connected">מחובר</string>
     <string name="label_neverseen">לא נראה מעולם</string>
     <string name="action_remove_device">הסרת התקן</string>
@@ -34,6 +37,9 @@
     <string name="label_status_adjusting_volumes">התאמת ווליום</string>
     <string name="label_premium_version">גרסת פרימיום</string>
     <string name="action_upgrade">שדרוג</string>
+    <string name="description_premium_required_additional_devices">ניהול מכשירים נוספים דורש גרסת פרמיום.</string>
+    <string name="description_premium_required_this_extra_option">לאפשרות נוספת זו נדרשת גרסת הפרימיום של האפליקציה.</string>
+    <string name="description_premium_upgrade_explanation">השיגו את גרסת הפרימיום כדי לאפשר תכונות נוספות וכדי לתמוך בפיתוח.</string>
     <string name="label_premium_version_required">נדרשת גרסת פרימיום</string>
     <string name="description_intro_purpose">אפליקציה זו מאפשרת למכשיר האנדרואיד שלכם לזכור רמות ווליום של מכשירי Bluetooth שונים.</string>
     <string name="description_bluetooth_is_disabled">בלוטות\' מנוטרל.</string>
@@ -47,5 +53,6 @@
     <string name="action_start">התחלה</string>
     <string name="label_welcome">ברוך הבא</string>
     <string name="label_translation">תרגום</string>
+    <string name="description_help_translate">עזרו לי להפוך אפליקציה זו לזמינה בשפות אחרות.</string>
     <string name="label_restore_volume">שחזור ווליום</string>
 </resources>

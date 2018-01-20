@@ -1,10 +1,10 @@
-Diese App erlaubt es Android, die Lautstärke verschiedener Bluetooth Geräte zu speichern.
-Sowohl Medien als auch Anruf Lautstärken können pro Gerät konfiguriert werden.
-Die Anpassung kann zeitlich individuell für jedes Bluetooth Gerät angepasst werden.
+Diese App erlaubt es Android, die Lautstärke verschiedener Bluetooth-Geräte zu speichern.
+Sowohl Musik- als auch Gesprächslautstärke können pro Gerät konfiguriert werden.
+Timing und Konfiguration können für jedes Bluetooth-Gerät individuell angepasst werden.
 
 Erklärung der Berechtigungen:
 • 'Internet' für Fehlerberichte.
-• 'Bluetooth' um mit Bluetooth Geräten zu arbeiten.
-• 'Modify audio settings' um Lautstärken anzupassen.
-• 'Boot completed' um die Lautstärke nach einem Neustart wieder korrekt zu setzen.
-• 'WAKE_LOCK' um einen Fehler auf Samsung Geräten zu beheben der ansonsten zum Absturz führen kann.
+• 'Bluetooth', um mit Bluetooth-Geräten zu arbeiten.
+• 'Modify audio settings', um Lautstärke zu ändern.
+• 'Boot completed', um die Lautstärke nach Neustart wiederherzustellen.
+• 'WAKE_LOCK' zum Beheben eines Fehler bei Samsung-Geräten, wo diese Berechtigung notwendig ist, um eine Fehlfunktion zu vermeiden.

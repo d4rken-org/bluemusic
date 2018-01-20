@@ -9,9 +9,9 @@
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Página web</string>
     <string name="label_gplay">Google Play</string>
-    <string name="label_email">Correo</string>
+    <string name="label_email">Correo electrónico</string>
     <string name="label_bug_reports">Informe de errores</string>
-    <string name="description_bug_reports">Informes automáticos de errores y fallos.</string>
+    <string name="description_bug_reports">Informes automáticos de errores y fallas.</string>
     <string name="label_app_enabled">Aplicación habilitada</string>
     <string name="description_app_enabled">Alterna la capacidad de las aplicaciones para reaccionar ante eventos de volumen y Bluetooth.</string>
     <string name="label_visible_volume_adjustments">Ajustes visibles</string>

@@ -10,10 +10,10 @@
     <string name="label_website">Ιστοσελίδα</string>
     <string name="label_gplay">Google Play</string>
     <string name="label_email">Ηλεκτρονικό ταχυδρομείο</string>
-    <string name="label_bug_reports">Αναφορές Σφάλματος</string>
+    <string name="label_bug_reports">Αναφορές σφαλμάτων</string>
     <string name="description_bug_reports">Αυτόματη αναφορά σφαλμάτων και απρόσμενων κλεισιμάτων εφαρμογής.</string>
     <string name="label_app_enabled">Ενεργοποίηση Εφαρμογής</string>
-    <string name="description_app_enabled">Εναλλάσσει την ικανότητα της εφαρμογής να αντιδράσει στις εκδηλώσεις έντασης και bluetooth.</string>
+    <string name="description_app_enabled">Εναλλάσσει την ικανότητα της εφαρμογής να αντιδράσει στις εκδηλώσεις έντασης και Bluetooth.</string>
     <string name="label_visible_volume_adjustments">Ορατές προσαρμογές</string>
     <string name="description_visible_volume_adjustments">Εμφάνιση του παραθύρου ήχου του συστήματος, ενώ αυτή η εφαρμογή κάνει τις προσαρμογές.</string>
     <string name="label_volume_listener">Παρατήρηση αλλαγών</string>
@@ -21,7 +21,7 @@
     <string name="label_autoplay_keytype">Τύπος κλειδιού αυτόματης αναπαραγωγής</string>
     <string name="desc_autoplay_keytype">Ο τύπος κλειδιού που στέλνεται όταν μια συσκευή αυτόματης αναπαραγωγής συνδέεται.</string>
     <string name="label_state_connected">Συνδέθηκε</string>
-    <string name="label_neverseen">Ποτέ δεν είδα</string>
+    <string name="label_neverseen">Ποτέ δεν συνδέθηκε</string>
     <string name="action_remove_device">Αφαίρεση συσκευής</string>
     <string name="label_add_device">Προσθήκη συσκευής</string>
     <string name="label_just_a_moment_please">Μια στιγμή, παρακαλώ.</string>
@@ -35,10 +35,10 @@
     <string name="label_no_connected_devices">Δεν υπάρχουν συνδεδεμένες συσκευές</string>
     <string name="label_status_idle">Σε αδράνεια</string>
     <string name="label_status_adjusting_volumes">Ρύθμιση εντάσεων</string>
-    <string name="label_premium_version">Έκδοση Premium</string>
+    <string name="label_premium_version">Premium έκδοση</string>
     <string name="action_upgrade">Αναβάθμιση</string>
     <string name="description_premium_required_additional_devices">Η διαχείριση πρόσθετων συσκευών απαιτεί την έκδοση Premium.</string>
-    <string name="description_premium_required_this_extra_option">Δυστυχώς αυτή η επιπλέον επιλογή απαιτεί την έκδοση Premium της εφαρμογής.</string>
+    <string name="description_premium_required_this_extra_option">Αυτή η επιπλέον επιλογή απαιτεί την έκδοση Premium της εφαρμογής.</string>
     <string name="description_premium_upgrade_explanation">Αποκτήστε την Premium έκδοση για να ενεργοποιήσετε πρόσθετες λειτουργίες και να υποστηρίξετε την ανάπτυξη της εφαρμογής.</string>
     <string name="label_premium_version_required">Απαιτείται η Premium έκδοση</string>
     <string name="description_intro_purpose">Αυτή η εφαρμογή επιτρέπει στην συσκευή Android σας να θυμάται την ένταση όλων των διαφορετικών συσκευών Bluetooth.</string>

@@ -10,7 +10,7 @@
     <string name="label_website">Веб-сайт</string>
     <string name="label_gplay">Google Play</string>
     <string name="label_email">Электронная почта</string>
-    <string name="label_bug_reports">Отчеты об ошибках</string>
+    <string name="label_bug_reports">Сообщения об ошибках</string>
     <string name="description_bug_reports">Автоматическая отправка отчётов о сбоях и ошибках.</string>
     <string name="label_app_enabled">Приложение запущено</string>
     <string name="description_app_enabled">Включение отслеживания приложением событий, связанных с громкостью и Bluetooth.</string>
@@ -56,7 +56,7 @@
     <string name="label_reaction_delay">Задержка реагирования</string>
     <string name="description_reaction_delay">Задержка в миллисекундах до реагирования данного приложения на устройство.</string>
     <string name="label_adjustment_delay">Задержка регулировки</string>
-    <string name="description_adjustment_delay">Задержка в миллисекундах до каждой регулировки громкости. Значение 0 мс устанавливает мгновенную настройку громкости при подключении устройства.</string>
+    <string name="description_adjustment_delay">Задержка в миллисекундах между каждой регулировкой громкости. Значение 0 мс устанавливает мгновенную настройку громкости при подключении устройства.</string>
     <string name="label_rename_device">Переименовать устройство</string>
     <string name="description_rename_device">Установка названия устройства для использования в системе.</string>
     <string name="label_forget_device">Забыть устройство</string>
@@ -65,7 +65,7 @@
     <string name="description_boot_restore">Восстановление громкости после загрузки/перезагрузки при подключенном устройстве Bluetooth.</string>
     <string name="action_start">Старт</string>
     <string name="label_welcome">Добро пожаловать</string>
-    <string name="description_intro_contact">Не стесняйтесь связаться со мной, если у Вас есть вопросы или, может быть, идеи касательно новой функции.</string>
+    <string name="description_intro_contact">Не стесняйтесь связаться со мной, если у Вас есть вопросы или идеи касательно новой функции.</string>
     <string name="label_translation">Перевод</string>
     <string name="description_help_translate">Помогите мне сделать приложение доступным на других языках.</string>
     <string name="label_restore_volume">Восстановить громкость</string>
