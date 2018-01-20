@@ -145,6 +145,15 @@ public class ManagedDevice {
         return deviceConfig.autoplay;
     }
 
+    @Nullable
+    public String getLaunchPkg() {
+        return deviceConfig.launchPkg;
+    }
+
+    public void setLaunchPkg(@Nullable String pkg) {
+        deviceConfig.launchPkg = pkg;
+    }
+
     public void setAutoPlayEnabled(boolean enabled) {
         deviceConfig.autoplay = enabled;
     }

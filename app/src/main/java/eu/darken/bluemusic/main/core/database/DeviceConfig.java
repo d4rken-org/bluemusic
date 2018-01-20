@@ -16,4 +16,6 @@ public class DeviceConfig extends RealmObject {
     Float callVolume;
 
     boolean autoplay;
+
+    String launchPkg;
 }

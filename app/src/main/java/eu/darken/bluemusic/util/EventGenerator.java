@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.bluetooth.core;
+package eu.darken.bluemusic.util;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.content.Intent;
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.AppComponent;
+import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.service.ServiceHelper;
 import timber.log.Timber;
 

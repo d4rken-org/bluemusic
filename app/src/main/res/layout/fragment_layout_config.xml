@@ -57,6 +57,21 @@
             android:background="@drawable/preference_list_divider_material"/>
 
         <eu.darken.bluemusic.util.ui.PreferenceView
+            android:id="@+id/pref_launch_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:pvDescription="@string/description_launch_app"
+            app:pvIcon="@drawable/ic_android_white_24dp"
+            app:pvTitle="@string/label_launch_app"
+            tools:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/preference_list_divider_material"/>
+
+        <eu.darken.bluemusic.util.ui.PreferenceView
             android:id="@+id/pref_reaction_delay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

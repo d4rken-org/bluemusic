@@ -5,13 +5,13 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import eu.darken.bluemusic.bluetooth.core.EventGenerator;
 import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.main.core.service.ActionModule;
 import eu.darken.bluemusic.main.core.service.BlueMusicServiceComponent;
+import eu.darken.bluemusic.util.EventGenerator;
 import timber.log.Timber;
 
 @BlueMusicServiceComponent.Scope

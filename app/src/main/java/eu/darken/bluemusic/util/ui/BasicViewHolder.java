@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -20,16 +19,16 @@ import butterknife.ButterKnife;
 public class BasicViewHolder<ITEM> extends RecyclerView.ViewHolder {
     private ITEM item;
 
-    public BasicViewHolder(@NonNull View itemView) {
+    public BasicViewHolder(View itemView) {
         super(itemView);
     }
 
-    public BasicViewHolder(@NonNull ViewGroup parent, @LayoutRes int layoutRes) {
+    public BasicViewHolder(ViewGroup parent, @LayoutRes int layoutRes) {
         this(LayoutInflater.from(parent.getContext()).inflate(layoutRes, parent, false));
         ButterKnife.bind(this, itemView);
     }
 
-    public void bind(@NonNull ITEM item) {
+    public void bind(ITEM item) {
         this.item = item;
     }
 

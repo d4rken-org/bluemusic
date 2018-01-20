@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.main.ui.config;
 
 import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -24,6 +27,7 @@ import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.main.ui.MainActivity;
+import eu.darken.bluemusic.util.AppTool;
 import eu.darken.bluemusic.util.Check;
 import eu.darken.bluemusic.util.ui.PreferenceView;
 import eu.darken.bluemusic.util.ui.SwitchPreferenceView;
@@ -41,6 +45,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @BindView(R.id.pref_music_volume) SwitchPreferenceView prefMusicVolume;
     @BindView(R.id.pref_call_volume) SwitchPreferenceView prefCallVolume;
     @BindView(R.id.pref_autoplay_enabled) SwitchPreferenceView prefAutoPlay;
+    @BindView(R.id.pref_launch_app) PreferenceView prefLaunchApp;
     @BindView(R.id.pref_reaction_delay) PreferenceView prefReactionDelay;
     @BindView(R.id.pref_adjustment_delay) PreferenceView prefAdjustmentDelay;
     @BindView(R.id.pref_rename) PreferenceView prefRename;
@@ -87,6 +92,10 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         prefMusicVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleMusicVolume());
         prefCallVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleCallVolume());
         prefAutoPlay.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleAutoPlay()));
+        prefLaunchApp.setOnClickListener(v -> {
+            presenter.onLaunchAppClicked();
+            Snackbar.make(Check.notNull(getView()), R.string.label_just_a_moment_please, Snackbar.LENGTH_SHORT).show();
+        });
         prefReactionDelay.setOnClickListener(v -> presenter.onEditReactionDelayClicked());
         prefAdjustmentDelay.setOnClickListener(v -> presenter.onEditAdjustmentDelayClicked());
         prefRename.setOnClickListener(v -> presenter.onRenameClicked());
@@ -150,6 +159,18 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
         prefAutoPlay.setChecked(device.isAutoPlayEnabled());
         prefAutoPlay.setVisibility(View.VISIBLE);
+
+        prefLaunchApp.setVisibility(View.VISIBLE);
+
+        if (device.getLaunchPkg() != null) {
+            String label = device.getLaunchPkg();
+            try {
+                label = AppTool.getLabel(getContext(), device.getLaunchPkg());
+            } catch (PackageManager.NameNotFoundException e) {
+                Timber.e(e);
+            }
+            prefLaunchApp.setDescription(label);
+        } else prefLaunchApp.setDescription(getString(R.string.description_launch_app));
 
         prefReactionDelay.setVisibility(View.VISIBLE);
         prefAdjustmentDelay.setVisibility(View.VISIBLE);
@@ -235,6 +256,15 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
                 .setPositiveButton(R.string.action_set, (dialogInterface, i) -> presenter.onRenameDevice(input.getText().toString()))
                 .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> presenter.onRenameDevice(null))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> { })
+                .show();
+    }
+
+    @Override
+    public void showAppSelectionDialog(List<AppTool.Item> items) {
+        LaunchAppAdapter adapter = new LaunchAppAdapter(Check.notNull(getContext()), items);
+        new AlertDialog.Builder(getContext())
+                .setAdapter(adapter,
+                        (dialog, pos) -> presenter.onLaunchAppSelected(adapter.getItem(pos)))
                 .show();
     }
 

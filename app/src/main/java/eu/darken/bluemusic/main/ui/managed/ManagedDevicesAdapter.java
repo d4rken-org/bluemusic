@@ -1,6 +1,6 @@
 package eu.darken.bluemusic.main.ui.managed;
 
-import android.support.annotation.NonNull;
+import android.content.pm.PackageManager;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +13,11 @@ import butterknife.BindView;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
+import eu.darken.bluemusic.util.AppTool;
 import eu.darken.bluemusic.util.DeviceHelper;
 import eu.darken.bluemusic.util.ui.BasicAdapter;
 import eu.darken.bluemusic.util.ui.BasicViewHolder;
+import timber.log.Timber;
 
 import static android.graphics.Typeface.BOLD;
 import static android.graphics.Typeface.NORMAL;
@@ -57,13 +59,13 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
         @BindView(R.id.call_counter) TextView voiceCounter;
         private Callback callback;
 
-        ManagedDeviceVH(@NonNull ViewGroup parent, Callback callback) {
+        ManagedDeviceVH(ViewGroup parent, Callback callback) {
             super(parent, R.layout.viewholder_managed_device);
             this.callback = callback;
         }
 
         @Override
-        public void bind(@NonNull ManagedDevice item) {
+        public void bind(ManagedDevice item) {
             super.bind(item);
             icon.setImageResource(DeviceHelper.getIconForDevice(item.getSourceDevice()));
 
@@ -78,8 +80,21 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
             }
             lastSeen.setText(item.isActive() ? getString(R.string.label_state_connected) : timeString);
 
-            if (item.isAutoPlayEnabled()) flags.setText(R.string.label_autoplay);
-            flags.setVisibility(item.isAutoPlayEnabled() ? View.VISIBLE : View.GONE);
+            if (item.isAutoPlayEnabled()) {
+                flags.setText(R.string.label_autoplay);
+            }
+
+            if (item.getLaunchPkg() != null) {
+                if (item.isAutoPlayEnabled()) flags.append(" | ");
+                String appName = item.getLaunchPkg();
+                try {
+                    appName = AppTool.getLabel(getContext(), item.getLaunchPkg());
+                } catch (PackageManager.NameNotFoundException e) {
+                    Timber.e(e);
+                }
+                flags.append(appName);
+            }
+            flags.setVisibility(item.isAutoPlayEnabled() || item.getLaunchPkg() != null ? View.VISIBLE : View.GONE);
 
             config.setOnClickListener(v -> callback.onShowConfigScreen(item));
 

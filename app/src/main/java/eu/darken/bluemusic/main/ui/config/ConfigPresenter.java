@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.annotation.Nullable;
 
 import java.util.Collections;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -13,8 +14,11 @@ import eu.darken.bluemusic.main.core.audio.StreamHelper;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.settings.core.Settings;
+import eu.darken.bluemusic.util.AppTool;
 import eu.darken.ommvplib.base.Presenter;
 import eu.darken.ommvplib.injection.ComponentPresenter;
+import io.reactivex.Single;
+import io.reactivex.SingleOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -24,6 +28,7 @@ import timber.log.Timber;
 public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, ConfigComponent> {
     private final DeviceManager deviceManager;
     private final IAPHelper iapHelper;
+    private final AppTool appTool;
     private final StreamHelper streamHelper;
     private Disposable upgradeSub;
     private Disposable updateSub;
@@ -32,10 +37,11 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
     private ManagedDevice device;
 
     @Inject
-    ConfigPresenter(DeviceManager deviceManager, StreamHelper streamHelper, IAPHelper iapHelper) {
+    ConfigPresenter(DeviceManager deviceManager, StreamHelper streamHelper, IAPHelper iapHelper, AppTool appTool) {
         this.deviceManager = deviceManager;
         this.streamHelper = streamHelper;
         this.iapHelper = iapHelper;
+        this.appTool = appTool;
     }
 
     public void setDevice(String address) {
@@ -152,13 +158,35 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         if (newAlias == null) device.setAlias(device.getName());
         else device.setAlias(newAlias);
         deviceManager.updateDevices()
-                .subscribeOn(Schedulers.computation())
+                .subscribeOn(Schedulers.io())
                 .subscribe();
     }
 
     void onDeleteDevice() {
         deviceManager.removeDevice(device)
-                .subscribeOn(Schedulers.computation())
+                .subscribeOn(Schedulers.io())
+                .subscribe();
+    }
+
+    public void onLaunchAppClicked() {
+        if (isProVersion) {
+            Single.create((SingleOnSubscribe<List<AppTool.Item>>) e -> e.onSuccess(appTool.getApps()))
+                    .map(apps -> {
+                        apps.add(0, AppTool.Item.empty());
+                        return apps;
+                    })
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(apps -> onView(v -> v.showAppSelectionDialog(apps)));
+        } else {
+            onView(View::showRequiresPro);
+        }
+    }
+
+    public void onLaunchAppSelected(AppTool.Item item) {
+        device.setLaunchPkg(item.getPackageName());
+        deviceManager.save(Collections.singleton(device))
+                .subscribeOn(Schedulers.io())
                 .subscribe();
     }
 
@@ -171,6 +199,8 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         void showRequiresPro();
 
         void showReactionDelayDialog(long delay);
+
+        void showAppSelectionDialog(List<AppTool.Item> items);
 
         void showAdjustmentDelayDialog(long delay);
 

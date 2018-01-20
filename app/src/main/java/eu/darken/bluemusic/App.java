@@ -20,6 +20,7 @@ import eu.darken.ommvplib.injection.broadcastreceiver.HasManualBroadcastReceiver
 import eu.darken.ommvplib.injection.service.HasManualServiceInjector;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmObjectSchema;
 import timber.log.Timber;
 
 
@@ -40,8 +41,16 @@ public class App extends Application implements HasManualActivityInjector, HasMa
 
         Realm.init(this);
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
-                .schemaVersion(2)
-                .deleteRealmIfMigrationNeeded()
+                .schemaVersion(3)
+                .migration((realm, oldVersion, newVersion) -> {
+                    {
+                        // 2 -> 3
+                        final RealmObjectSchema deviceConfig = realm.getSchema().get("DeviceConfig");
+                        if (deviceConfig != null && !deviceConfig.hasField("launchPkg")) {
+                            deviceConfig.addField("launchPkg", String.class);
+                        }
+                    }
+                })
                 .build();
         Realm.setDefaultConfiguration(realmConfig);
 

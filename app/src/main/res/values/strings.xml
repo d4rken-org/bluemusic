@@ -67,4 +67,6 @@
     <string name="label_translation">Translation</string>
     <string name="description_help_translate">Help me make this app available in other languages.</string>
     <string name="label_device_speaker">Device speaker</string>
+    <string name="label_launch_app">Launch app</string>
+    <string name="description_launch_app">Launch an app when this device connects.</string>
 </resources>
