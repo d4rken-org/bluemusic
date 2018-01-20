@@ -10,6 +10,9 @@ def gitSha() {
     return p.text.trim()
 }
 
+bugsnag {
+    overwrite true
+}
 android {
     def signingPropFile = new File(System.properties['user.home'], ".signing/bluemusic/signing.properties")
     if (signingPropFile.canRead()) {
