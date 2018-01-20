@@ -1,0 +1,10 @@
+Hierdie program laat Android toe om die volume instellings van verskeie Bluetooth toestelle te onthou.
+Beide musiek en oproep volumes kan gestel word vir elke toestel.
+Die tydsberekening en konfigurasie vir elke Bluetooth-toestel kan individueel aangepas word.
+
+Toestemmings verduidelik:
+• 'Internet' vir probleem verslae.
+• 'Bluetooth' werk met Bluetooth-toestelle.
+• ' Modifiseer oudio instellings' om volume verander.
+• 'Laai/Boot voltooi' om volume te herstel na herlaai/"reboot".
+• 'WAKE_LOCK' om 'n probleem op te los op sekere Samsung toestelle waar hierdie toestemming nodig is om 'n fout te verhoed.

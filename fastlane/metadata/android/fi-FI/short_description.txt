@@ -1,0 +1,1 @@
+Laitekohtainen puheen ja musiikin äänenvoimakkuus konfigurointi Bluetooth laitteille.

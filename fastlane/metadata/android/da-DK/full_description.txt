@@ -1,0 +1,10 @@
+Denne app tillader Android at huske lydstyrken på forskellige Bluetooth-enheder.
+Både musik- og opkaldsvolume kan konfigureres på hver enhed.
+Timingen og konfigurationen for hver Bluetooth-enhed kan ændres individuelt.
+
+Tilladelser forklaret:
+• 'Internet' til fejlrapporteringer.
+• 'Bluetooth' for at arbejde med Bluetooth-enheder.
+• 'Ændre lydindstillinger' for at skifte lydstyrke.
+• 'Opstart fuldført' til at gendanne lydstyrke efter genstart.
+• 'WAKE_LOCK' for at fikse en fejl på Samsung-enheder hvor denne tilladelse er nødvendig for at fikse fejlen.

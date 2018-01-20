@@ -1,0 +1,1 @@
+Individuell röst- och musikvolymkonfiguration för Bluetooth-enheter.
