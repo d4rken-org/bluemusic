@@ -51,6 +51,4 @@
     <string name="description_intro_contact">質問や新たな機能のアイデアがございましたらお気軽にご連絡ください。</string>
     <string name="label_translation">翻訳</string>
     <string name="description_help_translate">このアプリを他の言語で利用できるようにするために力を貸してください。</string>
-    <string name="label_restore_volume">音量の復元</string>
-    <string name="description_restore_volume">Bluetoothデバイスを切断した際に、元の音量を復元します（例: 端末のスピーカー）。</string>
 </resources>

@@ -68,6 +68,4 @@
     <string name="description_intro_contact">질문 또는 새 기능 제안이 있을 경우 연락해주시기 바랍니다.</string>
     <string name="label_translation">번역</string>
     <string name="description_help_translate">이 앱이 다른 언어로도 쓰일 수 있도록 도와주세요.</string>
-    <string name="label_restore_volume">음량 복구</string>
-    <string name="description_restore_volume">블루투스 장치 연결이 해제됐을 경우 이전에 설정되어 있던 음량을 복구합니다. (예: 기기 스피커)</string>
 </resources>

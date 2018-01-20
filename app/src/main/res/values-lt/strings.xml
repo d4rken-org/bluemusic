@@ -68,6 +68,4 @@
     <string name="description_intro_contact">Jei turite klausimų ar pasiūlymų nedvejodami susisiekite su manimi.</string>
     <string name="label_translation">Vertimas</string>
     <string name="description_help_translate">Padėkite man šią programą išversti į kitas kalbas.</string>
-    <string name="label_restore_volume">Atstatyti garsumus</string>
-    <string name="description_restore_volume">Atstatyti ankstesnį garsumą atjungus Bluetooth įrenginį (pvz. garsiakalbį).</string>
 </resources>

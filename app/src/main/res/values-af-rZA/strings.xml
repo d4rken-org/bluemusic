@@ -68,6 +68,4 @@
     <string name="description_intro_contact">Moenie huiwer om my te kontak as jy vrae of selfs \'n idee het vir \'n nuwe kenmerk nie.</string>
     <string name="label_translation">Vertaling</string>
     <string name="description_help_translate">Help my asb. om hierdie program beskikbaar te maak in ander tale.</string>
-    <string name="label_restore_volume">Herstel volumes</string>
-    <string name="description_restore_volume">Laai die vorige volume wanneer \'n Bluetooth-toestel diskonnekteer (bv. toestel luidspreker).</string>
 </resources>

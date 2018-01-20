@@ -68,6 +68,4 @@
     <string name="description_intro_contact">Älä epäröi ottaa yhteyttä jos sinulla on kysymyksia tai vaikka idea uudesta ominaisuudesta.</string>
     <string name="label_translation">Käännös</string>
     <string name="description_help_translate">Auta minua kääntämään tämä sovellus muille kielille.</string>
-    <string name="label_restore_volume">Palauta äänenvoimakkuudet</string>
-    <string name="description_restore_volume">Palauta edellinen äänenvoimakkuus, kun Bluetooth laite katkaisee yhteyden (esim. laitteen kaiutin).</string>
 </resources>

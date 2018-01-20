@@ -68,6 +68,4 @@
     <string name="description_intro_contact">Neváhajte ma kontaktovať, ak máte otázky alebo dokonca nápad na novú funkciu.</string>
     <string name="label_translation">Preklad</string>
     <string name="description_help_translate">Pomôžte mi preložiť túto aplikáciu do iných jazykov.</string>
-    <string name="label_restore_volume">Obnoviť hlasitosti</string>
-    <string name="description_restore_volume">Obnoví predchádzajúcu hlasitosť po odpojení Bluetooth zariadenia (napr. reproduktor zariadenia).</string>
 </resources>

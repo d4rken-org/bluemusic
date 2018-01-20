@@ -68,6 +68,4 @@
     <string name="description_intro_contact">Đừng ngần ngại liên hệ với tôi nếu bạn có thắc mắc hoặc thậm chí là một ý tưởng cho một tính năng mới.</string>
     <string name="label_translation">Dịch thuật</string>
     <string name="description_help_translate">Giúp tôi để ứng dụng này có các ngôn ngữ khác.</string>
-    <string name="label_restore_volume">Khôi phục âm lượng</string>
-    <string name="description_restore_volume">Khôi phục âm lượng trước đó khi một thiết bị Bluetooth ngắt kết nối (ví dụ như thiết bị loa).</string>
 </resources>

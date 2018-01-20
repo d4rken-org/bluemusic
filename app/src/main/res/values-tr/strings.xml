@@ -43,5 +43,4 @@
     <string name="action_start">Başlangıç</string>
     <string name="label_welcome">Hoşgeldiniz</string>
     <string name="label_translation">Çeviri</string>
-    <string name="label_restore_volume">Ses ayarını sıfırla</string>
 </resources>

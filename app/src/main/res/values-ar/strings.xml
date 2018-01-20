@@ -68,6 +68,4 @@
     <string name="description_intro_contact">لا تتردد في الاتصال بي إذا كان لديك أسئلة أو حتى فكرة لميزة جديدة.</string>
     <string name="label_translation">الترجمة</string>
     <string name="description_help_translate">ساعدني في جعل هذا التطبيق متاح في لغات أخرى.</string>
-    <string name="label_restore_volume">إستعادة احجام الصوت</string>
-    <string name="description_restore_volume">استعادة حجم الصوت السابق عند قطع اتصال جهاز بلوتوث (مثل جهاز المتكلم).</string>
 </resources>

@@ -68,6 +68,7 @@
     <string name="description_intro_contact">Zögere nicht mich zu kontaktieren wenn du Fragen hast oder gar eine gute Idee.</string>
     <string name="label_translation">Übersetzung</string>
     <string name="description_help_translate">Hilf mir, diese App in weiteren Sprachen verfügbar zu machen.</string>
-    <string name="label_restore_volume">Lautstärken wiederherstellen</string>
-    <string name="description_restore_volume">Stellt die früheren Lautstärken wieder her nachdem ein Bluetooth Gerät die Verbindung beendet hat (z.B. Handy Lautsprecher).</string>
+    <string name="label_device_speaker">Geräte Lautsprecher</string>
+    <string name="label_launch_app">App starten</string>
+    <string name="description_launch_app">Starte eine App wenn sich dieses Gerät verbindet.</string>
 </resources>

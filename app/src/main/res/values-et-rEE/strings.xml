@@ -68,6 +68,4 @@
     <string name="description_intro_contact">Küsimuste korral ja uute võimaluste soovitamiseks võtke kindlasti minuga ühendust.</string>
     <string name="label_translation">Tõlge</string>
     <string name="description_help_translate">Aita mul seda rakendust kasutada muus keeles.</string>
-    <string name="label_restore_volume">Taasta helid</string>
-    <string name="description_restore_volume">Taasta varem kasutusel olnud heli, kui sinihammast toetav seade (nt seadme kõlar) ühendatakse lahti.</string>
 </resources>

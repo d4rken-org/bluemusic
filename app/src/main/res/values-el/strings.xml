@@ -68,6 +68,4 @@
     <string name="description_intro_contact">Μην διστάσετε να επικοινωνήσετε μαζί μου, αν έχετε απορίες ή ακόμα και μια ιδέα για ένα νέο χαρακτηριστικό γνώρισμα.</string>
     <string name="label_translation">Μετάφραση</string>
     <string name="description_help_translate">Βοηθήστε με να γίνει αυτή η εφαρμογή διαθέσιμη και σε άλλες γλώσσες.</string>
-    <string name="label_restore_volume">Επαναφορά εντάσεων ήχου</string>
-    <string name="description_restore_volume">Επαναφέρετε την προηγούμενη ένταση όταν μια συσκευή Bluetooth αποσυνδέεται (π.χ. ηχείο της συσκευής).</string>
 </resources>

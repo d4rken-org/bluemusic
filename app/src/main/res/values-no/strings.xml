@@ -68,6 +68,4 @@
     <string name="description_intro_contact">Ikke nøl med å kontakte meg hvis du har noen spørsmål eller en idé om en ny funksjon.</string>
     <string name="label_translation">Oversetting</string>
     <string name="description_help_translate">Hjelp meg med å gjøre denne appen tilgjengelig på andre språk.</string>
-    <string name="label_restore_volume">Gjenopprett volumer</string>
-    <string name="description_restore_volume">Gjenoppretter forrige volum når en Bluetooth-enhet kobles fra (F.eks enhetshøyttaler).</string>
 </resources>

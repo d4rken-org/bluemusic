@@ -68,6 +68,4 @@
     <string name="description_intro_contact">Jangan ragu untuk menghubungi saya bila Anda memiliki pertanyaan atau bahkan gagasan fitur baru.</string>
     <string name="label_translation">Alih Bahasa</string>
     <string name="description_help_translate">Bantu saya membuat aplikasi ini tersedia dalam bahasa lain.</string>
-    <string name="label_restore_volume">Kembalikan volume</string>
-    <string name="description_restore_volume">Kembalikan volume sebelumnya saat perangkat Bluetooth terputus (semisal perangkat pelantang).</string>
 </resources>

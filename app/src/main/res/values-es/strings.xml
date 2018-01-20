@@ -68,6 +68,7 @@
     <string name="description_intro_contact">No dudes en ponerse en contacto conmigo si tienes preguntas o incluso una idea para una nueva función.</string>
     <string name="label_translation">Traducción</string>
     <string name="description_help_translate">Ayúdame a hacer que esta aplicación esté disponible en otros idiomas.</string>
-    <string name="label_restore_volume">Restaurar volúmenes</string>
-    <string name="description_restore_volume">Restaura el volumen anterior cuando se desconecta un dispositivo Bluetooth (por ejemplo, el altavoz del dispositivo).</string>
+    <string name="label_device_speaker">Altavoz del dispositivo</string>
+    <string name="label_launch_app">Abrir aplicación</string>
+    <string name="description_launch_app">Iniciar una aplicación cuando este dispositivo se conecte.</string>
 </resources>

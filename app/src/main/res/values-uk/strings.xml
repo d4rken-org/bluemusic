@@ -68,6 +68,4 @@
     <string name="description_intro_contact">Не соромтеся зв\'затись зі мною, якщо маєте питання чи навіть пропозиції нових функцій.</string>
     <string name="label_translation">Переклад</string>
     <string name="description_help_translate">Допоможіть зробити цей додаток доступним на інших мовах.</string>
-    <string name="label_restore_volume">Відновити рівні</string>
-    <string name="description_restore_volume">Відновлює попередні рівні після від\'єднання пристрою Bluetooth (напр. гучномовця).</string>
 </resources>

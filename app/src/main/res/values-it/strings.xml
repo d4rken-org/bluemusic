@@ -68,6 +68,4 @@
     <string name="description_intro_contact">Non esitare a contattarmi se hai una domanda o un\'idea per una nuova funzione.</string>
     <string name="label_translation">Traduzione</string>
     <string name="description_help_translate">Aiutami a rendere quest\'app disponibile in altre lingue.</string>
-    <string name="label_restore_volume">Ripristino volumi</string>
-    <string name="description_restore_volume">Ripristina i volumi precedenti quando un dispositivo Bluetooth viene disconnesso (ad esempio, uno speaker).</string>
 </resources>

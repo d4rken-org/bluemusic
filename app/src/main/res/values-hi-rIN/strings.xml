@@ -68,6 +68,4 @@
     <string name="description_intro_contact">अगर आपके पास कोई नया फीचर है या आपके पास कोई प्रश्न है तो मुझसे संपर्क करने में संकोच न करें।</string>
     <string name="label_translation">अनुवाद</string>
     <string name="description_help_translate">इस एप्लिकेशन को अन्य भाषाओं में उपलब्ध कराने में मेरी सहायता करें।</string>
-    <string name="label_restore_volume">वॉल्यूम पुनर्स्थापित करें</string>
-    <string name="description_restore_volume">जब ब्लूटूथ डिवाइस डिस्कनेक्ट होता है तो पिछले वॉल्यूम को पुनर्स्थापित करें (उदा. डिवाइस स्पीकर)।</string>
 </resources>

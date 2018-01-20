@@ -68,6 +68,7 @@
     <string name="description_intro_contact">No dubteu en contactar-me si teniu preguntes o fins i tot una idea per a una nova funció.</string>
     <string name="label_translation">Traducció</string>
     <string name="description_help_translate">Ajuda\'m a fer que aquesta aplicació estigui disponible en altres idiomes.</string>
-    <string name="label_restore_volume">Restableix els volums</string>
-    <string name="description_restore_volume">Restableix el volum anterior quan un dispositiu Bluetooth es desconnecta (per exemple, l\'altaveu del dispositiu).</string>
+    <string name="label_device_speaker">Altaveu del dispositiu</string>
+    <string name="label_launch_app">Inicia l\'aplicació</string>
+    <string name="description_launch_app">Inicia una aplicació en connectar aquest dispositiu.</string>
 </resources>

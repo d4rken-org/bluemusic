@@ -68,6 +68,4 @@
     <string name="description_intro_contact">Tveka inte att kontakta mig om du har frågor eller till och med en idé för en ny funktion.</string>
     <string name="label_translation">Översättning</string>
     <string name="description_help_translate">Hjälp mig att göra den här appen tillgänglig på andra språk.</string>
-    <string name="label_restore_volume">Återställ volymer</string>
-    <string name="description_restore_volume">Återställ tidigare volym när en Bluetooth-enhet kopplas från (t.ex. enhetshögtalare).</string>
 </resources>
