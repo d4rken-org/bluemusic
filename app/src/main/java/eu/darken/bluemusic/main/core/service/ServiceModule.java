@@ -13,6 +13,7 @@ import dagger.Module;
 import dagger.Provides;
 import eu.darken.bluemusic.main.core.service.modules.AutoplayModule;
 import eu.darken.bluemusic.main.core.service.modules.CallVolumeModule;
+import eu.darken.bluemusic.main.core.service.modules.FakeDeviceConnectModule;
 import eu.darken.bluemusic.main.core.service.modules.MusicVolumeModule;
 
 @Module
@@ -27,8 +28,8 @@ public class ServiceModule {
     }
 
     @Provides
-    List<ActionModule> actionModules(MusicVolumeModule m1, CallVolumeModule m2, AutoplayModule autoplay) {
-        return Arrays.asList(m1, m2, autoplay);
+    List<ActionModule> actionModules(MusicVolumeModule m1, CallVolumeModule m2, AutoplayModule autoplay, FakeDeviceConnectModule rest) {
+        return Arrays.asList(m1, m2, autoplay, rest);
     }
 
 }

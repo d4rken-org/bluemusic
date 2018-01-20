@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import java.lang.reflect.Method;
 import java.util.Locale;
 
+import eu.darken.bluemusic.main.core.audio.AudioStream;
 import timber.log.Timber;
 
 class SourceDeviceWrapper implements SourceDevice {
@@ -58,6 +59,18 @@ class SourceDeviceWrapper implements SourceDevice {
     @Override
     public BluetoothClass getBluetoothClass() {
         return realDevice.getBluetoothClass();
+    }
+
+    @Override
+    public AudioStream.Id getStreamId(AudioStream.Type type) {
+        switch (type) {
+            case MUSIC:
+                return AudioStream.Id.STREAM_MUSIC;
+            case CALL:
+                return AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE;
+            default:
+                throw new IllegalArgumentException("Unknown AudioStreamType: " + type);
+        }
     }
 
     @Override

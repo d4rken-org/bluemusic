@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import eu.darken.bluemusic.R;
+import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.util.DeviceHelper;
 import eu.darken.bluemusic.util.ui.BasicAdapter;
@@ -82,9 +83,9 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
 
             config.setOnClickListener(v -> callback.onShowConfigScreen(item));
 
-            musicContainer.setVisibility(item.getMusicVolume() != null ? View.VISIBLE : View.GONE);
-            if (item.getMusicVolume() != null) {
-                musicSeekbar.setMax(item.getMaxMusicVolume());
+            musicContainer.setVisibility(item.getVolume(AudioStream.Type.MUSIC) != null ? View.VISIBLE : View.GONE);
+            if (item.getVolume(AudioStream.Type.MUSIC) != null) {
+                musicSeekbar.setMax(item.getMaxVolume(AudioStream.Type.MUSIC));
                 musicSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -101,12 +102,12 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                         callback.onMusicVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
                     }
                 });
-                musicSeekbar.setProgress(item.getRealMusicVolume());
+                musicSeekbar.setProgress(item.getRealVolume(AudioStream.Type.MUSIC));
             }
 
-            voiceContainer.setVisibility(item.getCallVolume() != null ? View.VISIBLE : View.GONE);
-            if (item.getCallVolume() != null) {
-                voiceSeekbar.setMax(item.getMaxCallVolume());
+            voiceContainer.setVisibility(item.getVolume(AudioStream.Type.CALL) != null ? View.VISIBLE : View.GONE);
+            if (item.getVolume(AudioStream.Type.CALL) != null) {
+                voiceSeekbar.setMax(item.getMaxVolume(AudioStream.Type.CALL));
                 voiceSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -123,7 +124,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                         callback.onCallVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
                     }
                 });
-                voiceSeekbar.setProgress(item.getRealCallVolume());
+                voiceSeekbar.setProgress(item.getRealVolume(AudioStream.Type.CALL));
             }
         }
     }

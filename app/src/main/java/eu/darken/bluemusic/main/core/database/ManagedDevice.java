@@ -2,10 +2,12 @@ package eu.darken.bluemusic.main.core.database;
 
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.util.Locale;
 
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
+import eu.darken.bluemusic.main.core.audio.AudioStream;
 
 public class ManagedDevice {
 
@@ -41,10 +43,6 @@ public class ManagedDevice {
         return deviceConfig;
     }
 
-    public void setMusicVolume(Float musicVolume) {
-        deviceConfig.musicVolume = musicVolume;
-    }
-
     public long getLastConnected() {
         return deviceConfig.lastConnected;
     }
@@ -61,10 +59,6 @@ public class ManagedDevice {
         return sourceDevice.getAddress();
     }
 
-    public Float getMusicVolume() {
-        return deviceConfig.musicVolume;
-    }
-
     public boolean isActive() {
         return isActive;
     }
@@ -76,39 +70,59 @@ public class ManagedDevice {
     @Override
     public String toString() {
         return String.format(Locale.US, "Device(active=%b, address=%s, name=%s, musicVolume=%.2f, callVolume=%.2f)",
-                isActive(), getAddress(), getName(), getMusicVolume(), getCallVolume());
+                isActive(), getAddress(), getName(), getVolume(AudioStream.Type.MUSIC), getVolume(AudioStream.Type.CALL));
     }
 
-    public int getMaxMusicVolume() {
-        return maxMusicVolume;
+    public void setMaxVolume(AudioStream.Type type, int max) {
+        switch (type) {
+            case MUSIC:
+                maxMusicVolume = max;
+                break;
+            case CALL:
+                maxCallVolume = max;
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown type: " + type);
+        }
     }
 
-    void setMaxMusicVolume(int maxMusicVolume) {
-        this.maxMusicVolume = maxMusicVolume;
+    public void setVolume(AudioStream.Type type, @Nullable Float volume) {
+        switch (type) {
+            case MUSIC:
+                deviceConfig.musicVolume = volume;
+                break;
+            case CALL:
+                deviceConfig.callVolume = volume;
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown type: " + type);
+        }
     }
 
-    public int getMaxCallVolume() {
-        return maxCallVolume;
+    public Float getVolume(AudioStream.Type type) {
+        switch (type) {
+            case MUSIC:
+                return deviceConfig.musicVolume;
+            case CALL:
+                return deviceConfig.callVolume;
+            default:
+                throw new IllegalArgumentException("Unknown type: " + type);
+        }
     }
 
-    void setMaxCallVolume(int maxCallVolume) {
-        this.maxCallVolume = maxCallVolume;
+    public int getMaxVolume(AudioStream.Type type) {
+        switch (type) {
+            case MUSIC:
+                return maxMusicVolume;
+            case CALL:
+                return maxCallVolume;
+            default:
+                throw new IllegalArgumentException("Unknown type: " + type);
+        }
     }
 
-    public void setCallVolume(Float callVolume) {
-        deviceConfig.callVolume = callVolume;
-    }
-
-    public Float getCallVolume() {
-        return deviceConfig.callVolume;
-    }
-
-    public int getRealMusicVolume() {
-        return Math.round(getMaxMusicVolume() * getMusicVolume());
-    }
-
-    public int getRealCallVolume() {
-        return Math.round(getMaxCallVolume() * getCallVolume());
+    public int getRealVolume(AudioStream.Type type) {
+        return Math.round(getMaxVolume(type) * getVolume(type));
     }
 
     public void setActionDelay(Long actionDelay) {
@@ -133,6 +147,10 @@ public class ManagedDevice {
 
     public void setAutoPlayEnabled(boolean enabled) {
         deviceConfig.autoplay = enabled;
+    }
+
+    public AudioStream.Id getStreamId(AudioStream.Type type) {
+        return sourceDevice.getStreamId(type);
     }
 
     public static class Action {

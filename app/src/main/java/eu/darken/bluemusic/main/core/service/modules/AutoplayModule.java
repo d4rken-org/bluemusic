@@ -27,9 +27,8 @@ public class AutoplayModule extends ActionModule {
     @Override
     public void handle(ManagedDevice device, SourceDevice.Event event) {
         if (event.getType() != SourceDevice.Event.Type.CONNECTED) return;
-        if (!device.isAutoPlayEnabled()) {
-            return;
-        }
+        if (!device.isAutoPlayEnabled()) return;
+
         waitAdjustmentDelay(device);
 
         final int autoplayKeycode = settings.getAutoplayKeycode();

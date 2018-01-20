@@ -12,7 +12,8 @@ import javax.inject.Inject;
 import eu.darken.bluemusic.AppComponent;
 import eu.darken.bluemusic.bluetooth.core.BluetoothSource;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
-import eu.darken.bluemusic.main.core.service.StreamHelper;
+import eu.darken.bluemusic.main.core.audio.AudioStream;
+import eu.darken.bluemusic.main.core.audio.StreamHelper;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -92,10 +93,10 @@ public class DeviceManager {
                                     realm.beginTransaction();
                                     for (DeviceConfig config : deviceConfigs) {
                                         if (!paired.containsKey(config.address)) continue;
-
-                                        ManagedDevice managed = new ManagedDevice(paired.get(config.address), realm.copyFromRealm(config));
-                                        managed.setMaxMusicVolume(streamHelper.getMaxVolume(streamHelper.getMusicId()));
-                                        managed.setMaxCallVolume(streamHelper.getMaxVolume(streamHelper.getCallId()));
+                                        final SourceDevice sourceDevice = paired.get(config.address);
+                                        ManagedDevice managed = new ManagedDevice(sourceDevice, realm.copyFromRealm(config));
+                                        managed.setMaxVolume(AudioStream.Type.MUSIC, streamHelper.getMaxVolume(sourceDevice.getStreamId(AudioStream.Type.MUSIC)));
+                                        managed.setMaxVolume(AudioStream.Type.CALL, streamHelper.getMaxVolume(sourceDevice.getStreamId(AudioStream.Type.CALL)));
                                         managed.setActive(active.containsKey(managed.getAddress()));
 
                                         if (active.containsKey(config.address)) config.lastConnected = System.currentTimeMillis();
@@ -154,14 +155,14 @@ public class DeviceManager {
                         }
 
                         config = realm.createObject(DeviceConfig.class, toAdd.getAddress());
-                        config.musicVolume = streamHelper.getVolumePercentage(streamHelper.getMusicId());
+                        config.musicVolume = streamHelper.getVolumePercentage(toAdd.getStreamId(AudioStream.Type.MUSIC));
                         config.callVolume = null;
 
                         if (active.containsKey(config.address)) config.lastConnected = System.currentTimeMillis();
 
                         ManagedDevice newDevice = new ManagedDevice(toAdd, realm.copyFromRealm(config));
-                        newDevice.setMaxMusicVolume(streamHelper.getMaxVolume(streamHelper.getMusicId()));
-                        newDevice.setMaxCallVolume(streamHelper.getMaxVolume(streamHelper.getCallId()));
+                        newDevice.setMaxVolume(AudioStream.Type.MUSIC, streamHelper.getMaxVolume(toAdd.getStreamId(AudioStream.Type.MUSIC)));
+                        newDevice.setMaxVolume(AudioStream.Type.CALL, streamHelper.getMaxVolume(toAdd.getStreamId(AudioStream.Type.CALL)));
                         newDevice.setActive(active.containsKey(newDevice.getAddress()));
                         Timber.v("Loaded: %s", newDevice);
                         realm.commitTransaction();

@@ -8,9 +8,10 @@ import java.util.Collections;
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.IAPHelper;
+import eu.darken.bluemusic.main.core.audio.AudioStream;
+import eu.darken.bluemusic.main.core.audio.StreamHelper;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
-import eu.darken.bluemusic.main.core.service.StreamHelper;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.ommvplib.base.Presenter;
 import eu.darken.ommvplib.injection.ComponentPresenter;
@@ -85,9 +86,9 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
     }
 
     void onToggleMusicVolume() {
-        if (device.getMusicVolume() == null) {
-            device.setMusicVolume(streamHelper.getVolumePercentage(streamHelper.getMusicId()));
-        } else device.setMusicVolume(null);
+        if (device.getVolume(AudioStream.Type.MUSIC) == null) {
+            device.setVolume(AudioStream.Type.MUSIC, streamHelper.getVolumePercentage(device.getStreamId(AudioStream.Type.MUSIC)));
+        } else device.setVolume(AudioStream.Type.MUSIC, null);
 
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
@@ -95,9 +96,9 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
     }
 
     void onToggleCallVolume() {
-        if (device.getCallVolume() == null) {
-            device.setCallVolume(streamHelper.getVolumePercentage(streamHelper.getCallId()));
-        } else device.setCallVolume(null);
+        if (device.getVolume(AudioStream.Type.CALL) == null) {
+            device.setVolume(AudioStream.Type.CALL, streamHelper.getVolumePercentage(device.getStreamId(AudioStream.Type.CALL)));
+        } else device.setVolume(AudioStream.Type.CALL, null);
 
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())

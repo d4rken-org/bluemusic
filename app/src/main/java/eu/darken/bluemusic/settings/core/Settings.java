@@ -17,8 +17,6 @@ public class Settings {
     private static final String PREFKEY_BOOT_RESTORE = "core.onboot.restore";
     private static final String PREFKEY_ONBOARDING_INTRODONE = "core.onboarding.introdone";
 
-    private static final String PREFKEY_RESTORE_VOLUMES = "core.volume.restore";
-
     public static final String PREFKEY_BUGREPORTING = "core.bugreporting.enabled";
 
     public static final String PREFKEY_CORE_ENABLED = "core.enabled";
@@ -80,7 +78,4 @@ public class Settings {
         preferences.edit().putBoolean(PREFKEY_ONBOARDING_INTRODONE, show).apply();
     }
 
-    public boolean isRestoreVolumes() {
-        return preferences.getBoolean(PREFKEY_RESTORE_VOLUMES, false);
-    }
 }

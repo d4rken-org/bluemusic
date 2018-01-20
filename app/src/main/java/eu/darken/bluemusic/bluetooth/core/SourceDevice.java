@@ -7,6 +7,8 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import eu.darken.bluemusic.main.core.audio.AudioStream;
+
 public interface SourceDevice extends Parcelable {
     @Nullable
     BluetoothClass getBluetoothClass();
@@ -14,13 +16,14 @@ public interface SourceDevice extends Parcelable {
     @Nullable
     String getName();
 
-    @NonNull
     String getAddress();
 
     boolean setAlias(String newAlias);
 
     @Nullable
     String getAlias();
+
+    AudioStream.Id getStreamId(AudioStream.Type type);
 
     class Event implements Parcelable {
         public enum Type {

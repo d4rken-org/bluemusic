@@ -11,9 +11,10 @@ import javax.inject.Inject;
 
 import eu.darken.bluemusic.IAPHelper;
 import eu.darken.bluemusic.bluetooth.core.BluetoothSource;
+import eu.darken.bluemusic.main.core.audio.AudioStream;
+import eu.darken.bluemusic.main.core.audio.StreamHelper;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
-import eu.darken.bluemusic.main.core.service.StreamHelper;
 import eu.darken.ommvplib.base.Presenter;
 import eu.darken.ommvplib.injection.ComponentPresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -70,28 +71,29 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
     }
 
     void onUpdateMusicVolume(ManagedDevice device, float percentage) {
-        device.setMusicVolume(percentage);
+        device.setVolume(AudioStream.Type.MUSIC, percentage);
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
-                    streamHelper.changeVolume(streamHelper.getMusicId(), device.getMusicVolume(), true, 0);
+                    streamHelper.changeVolume(device.getStreamId(AudioStream.Type.MUSIC), device.getVolume(AudioStream.Type.MUSIC), true, 0);
                 });
     }
 
     void onUpdateCallVolume(ManagedDevice device, float percentage) {
-        device.setCallVolume(percentage);
+        device.setVolume(AudioStream.Type.CALL, percentage);
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
-                    streamHelper.changeVolume(streamHelper.getCallId(), device.getCallVolume(), true, 0);
+                    streamHelper.changeVolume(device.getStreamId(AudioStream.Type.CALL), device.getVolume(AudioStream.Type.CALL), true, 0);
                 });
     }
 
     void onUpgradeClicked(Activity activity) {
         iapHelper.buyProVersion(activity);
     }
+
     interface View extends Presenter.View {
         void updateUpgradeState(boolean isProVersion);
 

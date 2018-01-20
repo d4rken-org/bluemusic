@@ -11,9 +11,7 @@ import com.bugsnag.android.Bugsnag;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 
@@ -23,7 +21,11 @@ import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiver;
 import eu.darken.bluemusic.bluetooth.core.BluetoothSource;
+import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
+import eu.darken.bluemusic.main.core.audio.AudioStream;
+import eu.darken.bluemusic.main.core.audio.StreamHelper;
+import eu.darken.bluemusic.main.core.audio.VolumeObserver;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.settings.core.Settings;
@@ -56,8 +58,9 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         ((App) getApplication()).serviceInjector().inject(this);
         super.onCreate();
 
-        volumeObserver.addCallback(streamHelper.getMusicId(), this);
-        volumeObserver.addCallback(streamHelper.getCallId(), this);
+        volumeObserver.addCallback(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, this);
+        volumeObserver.addCallback(AudioStream.Id.STREAM_MUSIC, this);
+        volumeObserver.addCallback(AudioStream.Id.STREAM_VOICE_CALL, this);
         getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeObserver);
 
         notificationSub = deviceManager.observe()
@@ -120,9 +123,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         } else if (intent.hasExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT)) {
             serviceHelper.start();
 
-            final Map<Integer, Float> volumeMap = streamHelper.getVolumes();
-
-            SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
+            final SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
 
             bluetoothSource.getConnectedDevices()
                     .subscribeOn(scheduler)
@@ -148,22 +149,8 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     }))
                     .doOnSuccess(action -> {
                         serviceHelper.updateMessage(getString(R.string.label_status_adjusting_volumes));
+
                         final ManagedDevice newDevice = action.getDevice();
-
-                        final Map<String, ManagedDevice> activeDevices = deviceManager.observe()
-                                .map(map -> {
-                                    final Iterator<Map.Entry<String, ManagedDevice>> it = map.entrySet().iterator();
-                                    while (it.hasNext()) if (!it.next().getValue().isActive()) it.remove();
-                                    return map;
-                                })
-                                .blockingFirst();
-
-                        if (settings.isRestoreVolumes()
-                                && event.getType() == SourceDevice.Event.Type.CONNECTED
-                                && activeDevices.size() == 1 && activeDevices.containsKey(newDevice.getAddress())) {
-                            Timber.i("Saving volumes for restoration on disconnect.");
-                            streamSettings.save(volumeMap);
-                        }
 
                         final CountDownLatch latch = new CountDownLatch(actionModules.size());
                         for (ActionModule module : actionModules) {
@@ -172,7 +159,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                                 try {
                                     module.handle(newDevice, event);
                                 } catch (Exception e) {
-                                    Timber.e("Module error: %s", e);
+                                    Timber.e(e, "Module error");
                                     Bugsnag.notify(e);
                                 } finally {
                                     latch.countDown();
@@ -183,30 +170,36 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         try {
                             latch.await();
                         } catch (InterruptedException e) { Timber.e(e); }
-
-                        if (event.getType() == SourceDevice.Event.Type.DISCONNECTED) {
-                            handleDisconnect();
-                            if (settings.isRestoreVolumes()
-                                    && (activeDevices.size() == 0 || activeDevices.size() == 1 && activeDevices.containsKey(newDevice.getAddress()))) {
-                                Timber.d("Restoring volumes because, Bluetooth devices disconnected.");
-                                streamHelper.setVolumes(streamSettings.load(streamHelper.getStreamIds()), settings.isVolumeAdjustedVisibly(), 0);
-                            }
-                        }
                     })
                     .doFinally(() -> {
                         adjusting = false;
                         Timber.d("Event handling finished.");
-                        serviceHelper.updateMessage(getString(R.string.label_status_idle));
-                        if (!settings.isVolumeChangeListenerEnabled()) {
-                            Timber.d("We don't want to listen to anymore volume changes, stopping service.");
-                            serviceHelper.stop();
-                        } else {
-                            serviceHelper.updateMessage(getString(R.string.label_status_listening_for_changes));
-                        }
+                        // Do we need to keep the service running?
+                        deviceManager.observe().firstOrError().subscribeOn(Schedulers.computation())
+                                .subscribe(deviceMap -> {
+                                    boolean hasActiveDevices = false;
+                                    for (ManagedDevice d : deviceMap.values()) {
+                                        if (d.isActive() && !d.getAddress().equals(FakeSpeakerDevice.ADDR)) {
+                                            hasActiveDevices = true;
+                                            break;
+                                        }
+                                    }
+                                    if (hasActiveDevices) {
+                                        if (settings.isVolumeChangeListenerEnabled()) {
+                                            serviceHelper.updateMessage(getString(R.string.label_status_listening_for_changes));
+                                        } else {
+                                            Timber.d("We don't want to listen to anymore volume changes, stopping service.");
+                                            serviceHelper.stop();
+                                        }
+                                    } else {
+                                        Timber.d("No more active devices, stopping service.");
+                                        serviceHelper.stop();
+                                    }
+                                });
                     })
                     .subscribe((action, throwable) -> {
                         if (throwable != null && !(throwable instanceof UnmanagedDeviceException) && !(throwable instanceof PrematureConnectionException)) {
-                            Timber.e("Device error: %s", throwable);
+                            Timber.e(throwable, "Device error");
                             Bugsnag.notify(throwable);
                         }
 
@@ -219,36 +212,17 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         return START_NOT_STICKY;
     }
 
-    private void handleDisconnect() {
-        deviceManager.observe()
-                .firstOrError()
-                .subscribeOn(Schedulers.computation())
-                .subscribe(deviceMap -> {
-                    boolean stop = true;
-                    for (ManagedDevice d : deviceMap.values()) {
-                        if (d.isActive()) {
-                            stop = false;
-                            break;
-                        }
-                    }
-                    if (stop) {
-                        Timber.d("No more active devices, stopping service.");
-                        serviceHelper.stop();
-                    }
-                });
-    }
-
     @Override
-    public void onVolumeChanged(int streamId, int volume) {
+    public void onVolumeChanged(AudioStream.Id id, int volume) {
         if (!settings.isVolumeChangeListenerEnabled()) {
             Timber.v("Volume listener is disabled.");
             return;
         }
-        if (adjusting || streamHelper.wasUs(streamId, volume)) {
+        if (adjusting || streamHelper.wasUs(id, volume)) {
             Timber.v("Volume change was triggered by us, ignoring it.");
             return;
         }
-        float percentage = streamHelper.getVolumePercentage(streamId);
+        float percentage = streamHelper.getVolumePercentage(id);
         deviceManager.updateDevices()
                 .map(deviceMap -> {
                     Collection<ManagedDevice> active = new HashSet<>();
@@ -261,8 +235,13 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                 .toFlowable()
                 .flatMapIterable(managedDevices -> managedDevices)
                 .map(device -> {
-                    if (streamId == streamHelper.getCallId()) device.setCallVolume(percentage);
-                    else device.setMusicVolume(percentage);
+                    if (id == AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE) {
+                        device.setVolume(AudioStream.Type.CALL, percentage);
+                    } else if (id == AudioStream.Id.STREAM_MUSIC) {
+                        device.setVolume(AudioStream.Type.MUSIC, percentage);
+                    } else if (id == AudioStream.Id.STREAM_VOICE_CALL && device.getAddress().equals(FakeSpeakerDevice.ADDR)) {
+                        device.setVolume(AudioStream.Type.CALL, percentage);
+                    }
                     return device;
                 })
                 .toList()

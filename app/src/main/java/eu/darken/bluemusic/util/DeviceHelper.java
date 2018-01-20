@@ -4,11 +4,14 @@ import android.bluetooth.BluetoothClass;
 import android.support.annotation.DrawableRes;
 
 import eu.darken.bluemusic.R;
+import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 
 public class DeviceHelper {
     @DrawableRes
     public static int getIconForDevice(SourceDevice sourceDevice) {
+        if (sourceDevice.getAddress().equals(FakeSpeakerDevice.ADDR)) return R.drawable.ic_android_white_24dp;
+
         int devClass;
         if (sourceDevice.getBluetoothClass() == null) devClass = BluetoothClass.Device.Major.UNCATEGORIZED;
         else devClass = sourceDevice.getBluetoothClass().getMajorDeviceClass();

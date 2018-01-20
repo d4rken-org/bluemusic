@@ -20,6 +20,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import eu.darken.bluemusic.R;
+import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice;
+import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.main.ui.MainActivity;
 import eu.darken.bluemusic.util.Check;
@@ -81,7 +83,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         prefMusicVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleMusicVolume());
         prefCallVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleCallVolume());
         prefAutoPlay.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleAutoPlay()));
@@ -140,10 +142,10 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         String name = device.getName();
         if (!alias.equals(name)) actionBar.setSubtitle(name);
 
-        prefMusicVolume.setChecked(device.getMusicVolume() != null);
+        prefMusicVolume.setChecked(device.getVolume(AudioStream.Type.MUSIC) != null);
         prefMusicVolume.setVisibility(View.VISIBLE);
 
-        prefCallVolume.setChecked(device.getCallVolume() != null);
+        prefCallVolume.setChecked(device.getVolume(AudioStream.Type.CALL) != null);
         prefCallVolume.setVisibility(View.VISIBLE);
 
         prefAutoPlay.setChecked(device.isAutoPlayEnabled());
@@ -152,7 +154,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         prefReactionDelay.setVisibility(View.VISIBLE);
         prefAdjustmentDelay.setVisibility(View.VISIBLE);
 
-        prefRename.setVisibility(View.VISIBLE);
+        prefRename.setVisibility(device.getAddress().equals(FakeSpeakerDevice.ADDR) ? View.GONE : View.VISIBLE);
         prefDelete.setVisibility(View.VISIBLE);
     }
 

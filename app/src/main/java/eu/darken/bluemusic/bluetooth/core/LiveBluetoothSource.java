@@ -31,11 +31,14 @@ class LiveBluetoothSource implements BluetoothSource {
     @Nullable private final BluetoothAdapter adapter;
     private Observable<Boolean> stateObs;
 
+    private final SourceDevice fakeSpeakerDevice;
+
     LiveBluetoothSource(Context context) {
         this.context = context;
         manager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
         adapter = manager.getAdapter();
         if (adapter == null) Timber.w("BluetoothAdapter is null!");
+        fakeSpeakerDevice = new FakeSpeakerDevice(context);
     }
 
     @Override
@@ -87,6 +90,7 @@ class LiveBluetoothSource implements BluetoothSource {
                         final SourceDeviceWrapper deviceWrapper = new SourceDeviceWrapper(realDevice);
                         devices.put(deviceWrapper.getAddress(), deviceWrapper);
                     }
+                    devices.put(fakeSpeakerDevice.getAddress(), fakeSpeakerDevice);
                     Timber.d("Paired devices (%d): %s", devices.size(), devices);
                     return devices;
                 })
@@ -114,6 +118,7 @@ class LiveBluetoothSource implements BluetoothSource {
                     Timber.d("Connected COMBINED devices (%d): %s", combined.size(), combined);
                     Map<String, SourceDevice> devices = new HashMap<>();
                     for (BluetoothDevice d : combined) devices.put(d.getAddress(), new SourceDeviceWrapper(d));
+                    if (devices.isEmpty()) devices.put(fakeSpeakerDevice.getAddress(), fakeSpeakerDevice);
                     return devices;
                 }))
                 .subscribeOn(Schedulers.io());

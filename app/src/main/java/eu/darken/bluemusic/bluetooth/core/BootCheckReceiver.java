@@ -1,7 +1,6 @@
 package eu.darken.bluemusic.bluetooth.core;
 
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
@@ -11,7 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
-import eu.darken.bluemusic.main.core.service.ServiceHelper;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.ommvplib.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
 import io.reactivex.Single;
@@ -19,10 +17,10 @@ import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 public class BootCheckReceiver extends BroadcastReceiver {
-    public static final String EXTRA_DEVICE_EVENT = "eu.darken.bluemusic.core.bluetooth.event";
 
     @Inject Settings settings;
     @Inject BluetoothSource bluetoothSource;
+    @Inject EventGenerator eventGenerator;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -54,12 +52,7 @@ public class BootCheckReceiver extends BroadcastReceiver {
                 .subscribe(devices -> {
                     Timber.i("Connected devices: %s", devices);
                     if (devices.size() > 0) {
-                        SourceDevice.Event event = new SourceDevice.Event(devices.get(0), SourceDevice.Event.Type.CONNECTED);
-
-                        Intent service = ServiceHelper.getIntent(context);
-                        service.putExtra(EXTRA_DEVICE_EVENT, event);
-                        final ComponentName componentName = ServiceHelper.startService(context, service);
-                        if (componentName != null) Timber.v("Service is already running.");
+                        eventGenerator.send(devices.get(0), SourceDevice.Event.Type.CONNECTED);
                     }
                 }, Timber::w);
     }
