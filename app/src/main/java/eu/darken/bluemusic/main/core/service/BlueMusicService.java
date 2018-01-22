@@ -29,7 +29,6 @@ import eu.darken.bluemusic.main.core.audio.VolumeObserver;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.settings.core.Settings;
-import eu.darken.bluemusic.settings.core.StreamSettings;
 import eu.darken.bluemusic.util.ui.RetryWithDelay;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -46,7 +45,6 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Inject Settings settings;
     @Inject ServiceHelper serviceHelper;
     @Inject List<ActionModule> actionModules;
-    @Inject StreamSettings streamSettings;
     final Scheduler scheduler = Schedulers.from(Executors.newSingleThreadExecutor());
     private volatile boolean adjusting = false;
     private Disposable notificationSub;

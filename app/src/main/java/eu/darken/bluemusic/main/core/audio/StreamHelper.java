@@ -40,7 +40,7 @@ public class StreamHelper {
     }
 
     public boolean wasUs(AudioStream.Id id, int volume) {
-        return lastUs.get(id) == volume || adjusting;
+        return lastUs.containsKey(id) && lastUs.get(id) == volume || adjusting;
     }
 
     public float getVolumePercentage(AudioStream.Id streamId) {

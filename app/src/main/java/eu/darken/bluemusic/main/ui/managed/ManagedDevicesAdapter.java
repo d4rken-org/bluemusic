@@ -80,20 +80,23 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
             }
             lastSeen.setText(item.isActive() ? getString(R.string.label_state_connected) : timeString);
 
+            StringBuilder flagsBuilder = new StringBuilder();
+
             if (item.isAutoPlayEnabled()) {
-                flags.setText(R.string.label_autoplay);
+                flagsBuilder.append(getString(R.string.label_autoplay));
             }
 
             if (item.getLaunchPkg() != null) {
-                if (item.isAutoPlayEnabled()) flags.append(" | ");
+                if (flagsBuilder.length() > 0) flagsBuilder.append(" | ");
                 String appName = item.getLaunchPkg();
                 try {
                     appName = AppTool.getLabel(getContext(), item.getLaunchPkg());
                 } catch (PackageManager.NameNotFoundException e) {
                     Timber.e(e);
                 }
-                flags.append(appName);
+                flagsBuilder.append(appName);
             }
+            flags.setText(flagsBuilder.toString());
             flags.setVisibility(item.isAutoPlayEnabled() || item.getLaunchPkg() != null ? View.VISIBLE : View.GONE);
 
             config.setOnClickListener(v -> callback.onShowConfigScreen(item));

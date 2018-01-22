@@ -37,7 +37,7 @@ public class VolumeObserver extends ContentObserver {
 
     @Override
     public boolean deliverSelfNotifications() {
-        return super.deliverSelfNotifications();
+        return false;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class VolumeObserver extends ContentObserver {
             final AudioStream.Id id = entry.getKey();
             Callback callback = callbacks.get(id);
             int newVolume = streamHelper.getCurrentVolume(id);
-            int oldVolume = volumes.get(id);
+            int oldVolume = volumes.containsKey(id) ? volumes.get(id) : -1;
             if (newVolume != oldVolume) {
                 Timber.v("Volume changed (type=%s, old=%d, new=%d)", id, oldVolume, newVolume);
                 volumes.put(id, newVolume);
