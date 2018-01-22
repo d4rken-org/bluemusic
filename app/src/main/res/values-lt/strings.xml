@@ -68,4 +68,7 @@
   <string name="description_intro_contact">Jei turite klausimų ar pasiūlymų nedvejodami susisiekite su manimi.</string>
   <string name="label_translation">Vertimas</string>
   <string name="description_help_translate">Padėkite man šią programą išversti į kitas kalbas.</string>
+  <string name="label_device_speaker">Įrenginio garsiakalbis</string>
+  <string name="label_launch_app">Paleisti programą</string>
+  <string name="description_launch_app">Paleisti programą prisijungus įrenginiui.</string>
 </resources>

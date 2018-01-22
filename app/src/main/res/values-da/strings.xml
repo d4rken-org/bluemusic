@@ -68,4 +68,7 @@
   <string name="description_intro_contact">Tøv ikke med at kontakte mig hvis du har spørgsmål eller en idé til en ny funktion.</string>
   <string name="label_translation">Oversættelse</string>
   <string name="description_help_translate">Hjælp mig med at gøre appen tilgængelig på andre sprog.</string>
+  <string name="label_device_speaker">Enhedens højtaler</string>
+  <string name="label_launch_app">Start app</string>
+  <string name="description_launch_app">Start en app når enheden tilkobles.</string>
 </resources>

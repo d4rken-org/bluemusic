@@ -68,4 +68,7 @@
   <string name="description_intro_contact">Не стесняйтесь связаться со мной, если у Вас есть вопросы или идеи касательно новой функции.</string>
   <string name="label_translation">Перевод</string>
   <string name="description_help_translate">Помогите мне сделать приложение доступным на других языках.</string>
+  <string name="label_device_speaker">Динамик устройства</string>
+  <string name="label_launch_app">Запуск приложения</string>
+  <string name="description_launch_app">Запуск приложения при подключении устройства.</string>
 </resources>

@@ -68,4 +68,7 @@
   <string name="description_intro_contact">Moenie huiwer om my te kontak as jy vrae of selfs \'n idee het vir \'n nuwe kenmerk nie.</string>
   <string name="label_translation">Vertaling</string>
   <string name="description_help_translate">Help my asb. om hierdie program beskikbaar te maak in ander tale.</string>
+  <string name="label_device_speaker">Toestel luidspreker</string>
+  <string name="label_launch_app">Begin program</string>
+  <string name="description_launch_app">Begin \'n program wanneer hierdie toestel koppel.</string>
 </resources>

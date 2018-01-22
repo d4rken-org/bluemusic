@@ -25,7 +25,7 @@
   <string name="action_remove_device">إزالة الجهاز</string>
   <string name="label_add_device">إضافة جهاز</string>
   <string name="label_just_a_moment_please">لحظة فقط، من فضلك.</string>
-  <string name="label_notification_channel_status">الحالة</string>
+  <string name="label_notification_channel_status">حالة</string>
   <string name="action_set">ضبط</string>
   <string name="action_cancel">إلغاء</string>
   <string name="label_invalid_input">الإدخال غير صالح</string>
@@ -34,7 +34,7 @@
   <string name="label_other">إعدادات أخرى</string>
   <string name="label_no_connected_devices">لا توجد أجهزة متصلة</string>
   <string name="label_status_idle">متوقف</string>
-  <string name="label_status_adjusting_volumes">ضبط مستوى الصوت</string>
+  <string name="label_status_adjusting_volumes">ضبط مستويات الصوت</string>
   <string name="label_premium_version">الإصدار المتميز</string>
   <string name="action_upgrade">تحديث</string>
   <string name="description_premium_required_additional_devices">إدارة الأجهزة الإضافية يتطلب الإصدار المتميز.</string>
@@ -68,4 +68,7 @@
   <string name="description_intro_contact">لا تتردد في الاتصال بي إذا كان لديك أسئلة أو حتى فكرة لميزة جديدة.</string>
   <string name="label_translation">الترجمة</string>
   <string name="description_help_translate">ساعدني في جعل هذا التطبيق متاح في لغات أخرى.</string>
+  <string name="label_device_speaker">مكبر الصوت</string>
+  <string name="label_launch_app">تشغيل التطبيق</string>
+  <string name="description_launch_app">تشغيل تطبيق عند توصيل هذا الجهاز.</string>
 </resources>

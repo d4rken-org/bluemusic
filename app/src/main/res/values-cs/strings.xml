@@ -68,4 +68,7 @@
   <string name="description_intro_contact">Pokud máte nějaké dotazy nebo i nápad na novou funkci, neváhejte mě kontaktovat.</string>
   <string name="label_translation">Překlad</string>
   <string name="description_help_translate">Pomozte mi přeložit tuto aplikaci do ostatních jazyků.</string>
+  <string name="label_device_speaker">Reproduktor zařízení</string>
+  <string name="label_launch_app">Spustit aplikaci</string>
+  <string name="description_launch_app">Spustí aplikaci po připojení tohoto zařízení.</string>
 </resources>

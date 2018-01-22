@@ -68,4 +68,7 @@
   <string name="description_intro_contact">Jangan ragu untuk menghubungi saya bila Anda memiliki pertanyaan atau bahkan gagasan fitur baru.</string>
   <string name="label_translation">Alih Bahasa</string>
   <string name="description_help_translate">Bantu saya membuat aplikasi ini tersedia dalam bahasa lain.</string>
+  <string name="label_device_speaker">Pelantang perangkat</string>
+  <string name="label_launch_app">Luncurkan aplikasi</string>
+  <string name="description_launch_app">Luncurkan aplikasi saat perangkat ini terhubung.</string>
 </resources>

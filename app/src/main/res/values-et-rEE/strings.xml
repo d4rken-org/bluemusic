@@ -68,4 +68,7 @@
   <string name="description_intro_contact">Küsimuste korral ja uute võimaluste soovitamiseks võtke kindlasti minuga ühendust.</string>
   <string name="label_translation">Tõlge</string>
   <string name="description_help_translate">Aita mul seda rakendust kasutada muus keeles.</string>
+  <string name="label_device_speaker">Seadme kõlar</string>
+  <string name="label_launch_app">Käivita rakendus</string>
+  <string name="description_launch_app">Käivita rakendus selle seadme ühendamisel.</string>
 </resources>

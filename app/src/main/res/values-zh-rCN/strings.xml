@@ -6,7 +6,7 @@
   <string name="label_settings">设置</string>
   <string name="label_about">关于应用</string>
   <string name="label_gplus">Google+</string>
-  <string name="label_twitter">推特</string>
+  <string name="label_twitter">Twitter</string>
   <string name="label_website">网站</string>
   <string name="label_gplay">Google Play</string>
   <string name="label_email">电子邮件</string>
@@ -53,4 +53,9 @@
 </string>
   <string name="label_call_volume">通话音量</string>
   <string name="description_call_volume">控制此设备连接时通话的音量。</string>
+  <string name="label_autoplay">自动播放</string>
+  <string name="description_autoplay">此设备连接时，模拟蓝牙遥控器上的按下播放</string>
+  <string name="label_reaction_delay">反应延迟</string>
+  <string name="description_reaction_delay">延迟以毫秒为单位, 直到该应用程序响应此设备。</string>
+  <string name="label_adjustment_delay">调整延迟</string>
 </resources>

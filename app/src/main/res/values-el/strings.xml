@@ -68,4 +68,7 @@
   <string name="description_intro_contact">Μην διστάσετε να επικοινωνήσετε μαζί μου, αν έχετε απορίες ή ακόμα και μια ιδέα για ένα νέο χαρακτηριστικό γνώρισμα.</string>
   <string name="label_translation">Μετάφραση</string>
   <string name="description_help_translate">Βοηθήστε με να γίνει αυτή η εφαρμογή διαθέσιμη και σε άλλες γλώσσες.</string>
+  <string name="label_device_speaker">Ηχείο συσκευής</string>
+  <string name="label_launch_app">Εκκίνηση εφαρμογής</string>
+  <string name="description_launch_app">Εκκινήστε μια εφαρμογή όταν συνδέεται αυτή η συσκευή.</string>
 </resources>

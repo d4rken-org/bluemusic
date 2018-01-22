@@ -68,4 +68,7 @@
   <string name="description_intro_contact">Non esitare a contattarmi se hai una domanda o un\'idea per una nuova funzione.</string>
   <string name="label_translation">Traduzione</string>
   <string name="description_help_translate">Aiutami a rendere quest\'app disponibile in altre lingue.</string>
+  <string name="label_device_speaker">Altoparlante del dispositivo</string>
+  <string name="label_launch_app">Avvio app</string>
+  <string name="description_launch_app">Avvia un\'app quando questo dispositivo viene connesso.</string>
 </resources>

@@ -68,4 +68,7 @@
   <string name="description_intro_contact">Nie wahaj się ze mną skontaktować, jeśli masz pytania lub pomysł na nową funkcję.</string>
   <string name="label_translation">Tłumaczenie</string>
   <string name="description_help_translate">Pomóż przetłumaczyć aplikację na inne języki.</string>
+  <string name="label_device_speaker">Głośnik urządzenia</string>
+  <string name="label_launch_app">Uruchom aplikację</string>
+  <string name="description_launch_app">Uruchom aplikację po podłączeniu tego urządzenia.</string>
 </resources>
