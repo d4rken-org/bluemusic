@@ -1,4 +1,4 @@
-Este aplicativo permite que o Android lembre o volume de diferentes dispositivos Bluetooth.
+Este aplicativo possibilita ao Android memorizar o volume de diferentes dispositivos Bluetooth.
 O volume da música e da chamada podem ser configurados para cada dispositivo.
 O tempo e a configuração para cada dispositivo Bluetooth podem ser ajustados individualmente.
 

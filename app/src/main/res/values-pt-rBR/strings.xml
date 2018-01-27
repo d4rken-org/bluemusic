@@ -12,8 +12,8 @@
   <string name="label_email">E-mail</string>
   <string name="label_bug_reports">Relatório de erros</string>
   <string name="description_bug_reports">Relatório automático de erros e falhas.</string>
-  <string name="label_app_enabled">Aplicativo ativado</string>
-  <string name="description_app_enabled">Alterna a capacidade de aplicativos para reagir ao volume e eventos bluetooth.</string>
+  <string name="label_app_enabled">Aplicativo ativo</string>
+  <string name="description_app_enabled">Ativa/desativa a capacidade do aplicativo para reagir as ocorrências de volume e Bluetooth.</string>
   <string name="label_visible_volume_adjustments">Ajustes visíveis</string>
   <string name="description_visible_volume_adjustments">Mostra a janela de volume do sistema enquanto este aplicativo faz ajustes.</string>
   <string name="label_volume_listener">Observe as mudanças</string>
@@ -41,7 +41,7 @@
   <string name="description_premium_required_this_extra_option">Esta opção extra, infelizmente, requer a versão premium deste aplicativo.</string>
   <string name="description_premium_upgrade_explanation">Obtenha a versão premium para habilitar recursos adicionais e apoiar o desenvolvimento.</string>
   <string name="label_premium_version_required">Requer versão Premium</string>
-  <string name="description_intro_purpose">Este aplicativo permite que seu dispositivo Android se lembre do volume de diferentes dispositivos Bluetooth.</string>
+  <string name="description_intro_purpose">Este aplicativo possibilita ao seu dispositivo Android memorizar o volume de diferentes dispositivos Bluetooth.</string>
   <string name="description_intro_premium">Se você gosta deste aplicativo, considere atualizar para a versão premium. Apoia o desenvolvimento e lhe oferece alguns recursos extras.</string>
   <string name="description_intro_tap_the_button">Comece adicionando seu primeiro dispositivo.</string>
   <string name="description_bluetooth_is_disabled">O Bluetooth está desativado.</string>

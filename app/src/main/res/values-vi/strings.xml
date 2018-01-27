@@ -68,4 +68,7 @@
   <string name="description_intro_contact">Đừng ngần ngại liên hệ với tôi nếu bạn có thắc mắc hoặc thậm chí là một ý tưởng cho một tính năng mới.</string>
   <string name="label_translation">Dịch thuật</string>
   <string name="description_help_translate">Giúp tôi để ứng dụng này có các ngôn ngữ khác.</string>
+  <string name="label_device_speaker">Thiết bị loa</string>
+  <string name="label_launch_app">Mở ứng dụng</string>
+  <string name="description_launch_app">Khởi động ứng dụng khi kết nối thiết bị này.</string>
 </resources>

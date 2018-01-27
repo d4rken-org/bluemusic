@@ -68,4 +68,7 @@
   <string name="description_intro_contact">Не соромтеся зв\'затись зі мною, якщо маєте питання чи навіть пропозиції нових функцій.</string>
   <string name="label_translation">Переклад</string>
   <string name="description_help_translate">Допоможіть зробити цей додаток доступним на інших мовах.</string>
+  <string name="label_device_speaker">Динамік пристрою</string>
+  <string name="label_launch_app">Запуск додатка</string>
+  <string name="description_launch_app">Запуск додатка при під\'єднанні пристрою.</string>
 </resources>

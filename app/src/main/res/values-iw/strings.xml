@@ -56,6 +56,9 @@
   <string name="label_boot_restore">שחזור באתחול</string>
   <string name="action_start">התחלה</string>
   <string name="label_welcome">ברוך הבא</string>
+  <string name="description_intro_contact">אל תהססו לפנות אלי אם יש לכם שאלות או אפילו רעיון לתכונה חדשה.</string>
   <string name="label_translation">תרגום</string>
   <string name="description_help_translate">עזרו לי להפוך אפליקציה זו לזמינה בשפות אחרות.</string>
+  <string name="label_launch_app">הפעלת אפליקצייה</string>
+  <string name="description_launch_app">הפעלת אפליקצייה כאשר מכשיר זה מתחבר.</string>
 </resources>
