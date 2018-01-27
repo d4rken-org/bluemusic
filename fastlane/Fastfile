@@ -17,21 +17,30 @@ default_platform :android
 
 platform :android do
   before_all do
-  	ensure_git_status_clean
+  	#ensure_git_status_clean
   end
 
   lane :beta do
   	ensure_git_branch(branch: 'dev')
   	git_pull
-	gradle(task: 'clean assembleRelease')
+    gradle(task: 'clean assembleRelease')
   	supply(track: 'beta')
   end
 
   lane :production do
   	ensure_git_branch(branch: 'master')
   	git_pull
-	gradle(task: 'clean assembleRelease')
+    gradle(task: 'clean assembleRelease')
   	supply(track: 'rollout', rollout: '0.1')
+  end
+
+  lane :listing_only do
+    supply(
+      track: 'production',
+      skip_upload_apk: 'true',
+      skip_upload_images: 'true',
+      skip_upload_screenshots: 'true'
+    )
   end
 
   after_all do |lane|
