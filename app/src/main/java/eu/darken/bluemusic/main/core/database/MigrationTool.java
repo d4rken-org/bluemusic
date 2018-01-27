@@ -14,7 +14,9 @@ public class MigrationTool {
         if (con == null) return;
 
         // Property 'DeviceConfig.musicVolume' has been made optional.
-        if (con.hasField("musicVolume")) con.setRequired("musicVolume", false);
+        if (con.hasField("musicVolume") && con.isRequired("musicVolume")) {
+            con.setRequired("musicVolume", false);
+        }
 
         // Property 'DeviceConfig.autoplay' has been added.
         if (!con.hasField("autoplay")) con.addField("autoplay", boolean.class);
