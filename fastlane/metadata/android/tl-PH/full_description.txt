@@ -1,0 +1,10 @@
+Itong App na ito ay pinahihintulutan ang Android na maalala ang lakas ng tunog ng iba't ibang aparato ng Bluetooth.
+Parehong musika at lakas ng tunog ang pwedeng i-configure sa bawat device.
+Ang tayming at configuration ng bawat Bluetooth device ay pwedeng ma-adjust paisa isa.
+
+Paliwanag sa mga permisyon:
+• 'Internet' para sa mga ulat ng problema.
+• 'Bluetooth' para sa paggamit ng Bluetooth devices.
+•'Modify audio settings' para mabago ang lakas ng tunog.
+• 'Boot completed' para maibalik ang lakas ng tunog pagkatapos patayin at buksan.
+• 'WAKE_LOCK' para ayusin ang naging problema sa Samsung Devices kaya importante ang pahintulot na ito upang maiwasan ang pagkakamali.

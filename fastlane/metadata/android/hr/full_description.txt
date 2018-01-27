@@ -1,0 +1,10 @@
+Ova aplikacija dopušta Androidu da zapamti glasnoću različitih Bluetooth uređaja.
+Glasnoća i glazbe i poziva se može podesiti za pojedinačne uređaje.
+Vrijeme i podešavanje za svaki Bluetooth uređaj se može zasebno podesiti.
+
+Objašnjene dozvole:
+• 'Internet' za prijavljivanje pogrešaka.
+• 'Bluetooth' za rad s Bluetooth uređajima.
+• 'Modify audio settings' za promjenu glasnoće.
+• 'Boot completed' za vraćanje glasnoće nakon ponovnog pokretanja.
+• 'WAKE_LOCK' za popravak pogreške na Samsung uređajima gdje je ova dozvola potrebna za izbjegavanje pogreške.
