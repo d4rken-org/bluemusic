@@ -10,6 +10,7 @@ import com.bugsnag.android.Client;
 
 import javax.inject.Inject;
 
+import eu.darken.bluemusic.main.core.database.MigrationTool;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.util.BugsnagErrorHandler;
 import eu.darken.bluemusic.util.BugsnagTree;
@@ -20,7 +21,6 @@ import eu.darken.ommvplib.injection.broadcastreceiver.HasManualBroadcastReceiver
 import eu.darken.ommvplib.injection.service.HasManualServiceInjector;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import io.realm.RealmObjectSchema;
 import timber.log.Timber;
 
 
@@ -38,26 +38,18 @@ public class App extends Application implements HasManualActivityInjector, HasMa
     public void onCreate() {
         super.onCreate();
         if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
-
-        Realm.init(this);
-        RealmConfiguration realmConfig = new RealmConfiguration.Builder()
-                .schemaVersion(3)
-                .migration((realm, oldVersion, newVersion) -> {
-                    {
-                        // 2 -> 3
-                        final RealmObjectSchema deviceConfig = realm.getSchema().get("DeviceConfig");
-                        if (deviceConfig != null && !deviceConfig.hasField("launchPkg")) {
-                            deviceConfig.addField("launchPkg", String.class);
-                        }
-                    }
-                })
-                .build();
-        Realm.setDefaultConfiguration(realmConfig);
-
         DaggerAppComponent.builder()
                 .androidModule(new AndroidModule(this))
                 .build()
                 .injectMembers(this);
+
+
+        Realm.init(this);
+        RealmConfiguration realmConfig = new RealmConfiguration.Builder()
+                .schemaVersion(3)
+                .migration(new MigrationTool().getMigration())
+                .build();
+        Realm.setDefaultConfiguration(realmConfig);
 
         Timber.plant(bugsnagTree);
         Client bugsnagClient = Bugsnag.init(this);
