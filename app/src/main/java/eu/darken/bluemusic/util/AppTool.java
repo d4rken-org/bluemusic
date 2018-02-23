@@ -6,6 +6,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 
@@ -43,6 +44,10 @@ public class AppTool {
     public static String getLabel(Context context, String pkg) throws PackageManager.NameNotFoundException {
         final ApplicationInfo applicationInfo = context.getPackageManager().getApplicationInfo(pkg, 0);
         return applicationInfo.loadLabel(context.getPackageManager()).toString();
+    }
+
+    public static Drawable getIcon(Context context, String pkg) throws PackageManager.NameNotFoundException {
+        return context.getPackageManager().getApplicationIcon(pkg);
     }
 
     public void launch(String pkg) {
@@ -84,6 +89,7 @@ public class AppTool {
     public static class Item {
         private final String pkgName;
         private String appName;
+        private Drawable appIcon;
 
         protected Item() {
             pkgName = null;
@@ -96,6 +102,12 @@ public class AppTool {
                 this.appName = getLabel(context, pkgName);
             } catch (Exception e) {
                 this.appName = "???";
+                Timber.e(e, "Failed to get app label for %s", pkgName);
+            }
+            try {
+                this.appIcon = getIcon(context, pkgName);
+            } catch (PackageManager.NameNotFoundException e) {
+                Timber.e(e, "Failed to get app icon for %s", pkgName);
             }
         }
 
@@ -109,6 +121,10 @@ public class AppTool {
 
         public String getPackageName() {
             return pkgName;
+        }
+
+        public Drawable getAppIcon() {
+            return appIcon;
         }
     }
 }

@@ -1,10 +1,12 @@
 package eu.darken.bluemusic.main.ui.config;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -38,6 +40,7 @@ public class LaunchAppAdapter extends BaseAdapter {
         return apps.get(i).hashCode();
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
@@ -56,12 +59,14 @@ public class LaunchAppAdapter extends BaseAdapter {
 
 
     static class ViewHolder {
+        @BindView(R.id.icon) ImageView icon;
         @BindView(R.id.name) TextView appName;
         @BindView(R.id.pkg) TextView packageName;
 
         public void bind(AppTool.Item item) {
             appName.setText(item.getAppName());
             packageName.setText(item.getPackageName());
+            icon.setImageDrawable(item.getAppIcon());
         }
     }
 }
