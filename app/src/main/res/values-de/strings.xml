@@ -62,13 +62,13 @@
   <string name="label_forget_device">Gerät vergessen</string>
   <string name="description_forget_device">Entfernt das Gerät aus dieser App und löscht seine Konfiguration. Es wird nicht von Android entkoppelt.</string>
   <string name="label_boot_restore">Wiederherstellen bei Neustart</string>
-  <string name="description_boot_restore">Stellt die Lautstärke nach einem Neustart wieder her, falls ein Bluetooth Gerät verbunden ist.</string>
+    <string name="description_boot_restore">Stellt die Lautstärke nach einem Neustart wieder her, falls ein Bluetooth-Gerät verbunden ist.</string>
   <string name="action_start">Starten</string>
   <string name="label_welcome">Willkommen</string>
-  <string name="description_intro_contact">Zögere nicht mich zu kontaktieren wenn du Fragen hast oder gar eine gute Idee.</string>
+    <string name="description_intro_contact">Zögere nicht, mich zu kontaktieren, wenn Du Fragen oder sogar eine Idee zu einer neuen Funktion hast.</string>
   <string name="label_translation">Übersetzung</string>
   <string name="description_help_translate">Hilf mir, diese App in weiteren Sprachen verfügbar zu machen.</string>
-  <string name="label_device_speaker">Geräte Lautsprecher</string>
+    <string name="label_device_speaker">Gerätelautsprecher</string>
   <string name="label_launch_app">App starten</string>
-  <string name="description_launch_app">Starte eine App wenn sich dieses Gerät verbindet.</string>
+    <string name="description_launch_app">Starte eine App, wenn sich dieses Gerät verbindet.</string>
 </resources>

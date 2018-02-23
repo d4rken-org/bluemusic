@@ -1,1 +1,1 @@
-Pengaturan volume suara musik dan panggilan mandiri untuk Perangkat Bluetooth.
+Pengaturan volume telepon, suara dan musik untuk Perangkat Bluetooth.

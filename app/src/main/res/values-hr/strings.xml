@@ -9,13 +9,13 @@
   <string name="label_twitter">Twitter</string>
   <string name="label_website">Web stranica</string>
   <string name="label_gplay">Google Play</string>
-  <string name="label_email">Email</string>
-  <string name="label_bug_reports">Izvještaji o pogreškama</string>
-  <string name="description_bug_reports">Automatsko izvještavanje pogrešaka i rušenja.</string>
+    <string name="label_email">E-pošta</string>
+    <string name="label_bug_reports">Izvješća o pogreškama</string>
+    <string name="description_bug_reports">Automatsko izvješćivanje o pogreškama i padovima.</string>
   <string name="label_app_enabled">Aplikacija je omogućena</string>
   <string name="description_app_enabled">Uključuje/isključuje sposobnost aplikacije da reagira na glasnoću i Bluetooth događaje.</string>
   <string name="label_visible_volume_adjustments">Vidljive prilagodbe</string>
-  <string name="description_visible_volume_adjustments">Prikažite prozor glasnoće sustava dok ova aplikacija postavlja prilagodbe.</string>
+    <string name="description_visible_volume_adjustments">Prikažite prozor glasnoće sustava dok ova aplikacija izvršava izmjene.</string>
   <string name="label_volume_listener">Promatraj promjene</string>
   <string name="description_volume_listener">Ostaje aktivan dok je uređaj povezan i sprema promjene glasnoće koje nisu uzrokovane ovom aplikacijom.</string>
   <string name="label_autoplay_keytype">Tip ključa automatske reprodukcije</string>
@@ -37,12 +37,12 @@
   <string name="label_status_adjusting_volumes">Podešavanje glasnoća</string>
   <string name="label_premium_version">Premium verzija</string>
   <string name="action_upgrade">Nadogradi</string>
-  <string name="description_premium_required_additional_devices">Upravljanje dodatnih uređaja zahtijeva premium verziju.</string>
+    <string name="description_premium_required_additional_devices">Upravljanje dodatnim uređajima zahtijeva premium verziju.</string>
   <string name="description_premium_required_this_extra_option">Ova dodatna opcija zahtijeva premium verziju ove aplikacije.</string>
   <string name="description_premium_upgrade_explanation">Nabavite premium verziju kako bi omogućili dodatne značajke i podržali razvoj.</string>
   <string name="label_premium_version_required">Potrebna je premium verzija</string>
-  <string name="description_intro_purpose">Ova aplikacija dopušta vašem Android uređaju da zapamti glasnoću različitih Bluetooth uređaja.</string>
-  <string name="description_intro_premium">Ako vam se aplikacija sviđa, razmislite o nadogradnji na premium verziju. Ona podržava razvoj i omogućava vam par dodatnih značajki.</string>
+    <string name="description_intro_purpose">Ova aplikacija dopušta Vašem Android uređaju da zapamti glasnoću različitih Bluetooth uređaja.</string>
+    <string name="description_intro_premium">Ako Vam se aplikacija sviđa, razmislite o nadogradnji na premium verziju. Ona podržava razvoj i omogućava Vam par dodatnih značajki.</string>
   <string name="description_intro_tap_the_button">Započnite dodavanjem svog prvog uređaja.</string>
   <string name="description_bluetooth_is_disabled">Bluetooth je onemogućen.</string>
   <string name="label_status_listening_for_changes">Slušanje promjena glasnoće</string>
@@ -58,7 +58,7 @@
   <string name="label_adjustment_delay">Odgoda prilagodbe</string>
   <string name="description_adjustment_delay">Odgoda u milisekundama između svake prilagodbe glasnoće. Odgoda od 0ms znači trenutno postavljanje glasnoće kada se uređaj poveže.</string>
   <string name="label_rename_device">Preimenuj uređaj</string>
-  <string name="description_rename_device">Postavlja sustavski pseudonim za ovaj uređaj.</string>
+    <string name="description_rename_device">Postavlja pseudonim sustava za ovaj uređaj.</string>
   <string name="label_forget_device">Zaboravi uređaj</string>
   <string name="description_forget_device">Uklanja ovaj uređaj iz ove aplikacije i briše njenu prilagodbu. Ovo neće poništiti uparivanje uređaja.</string>
   <string name="label_boot_restore">Vrati na ponovnom pokretanju</string>
@@ -70,5 +70,5 @@
   <string name="description_help_translate">Pomozite mi prevesti ovu aplikaciju na druge jezike.</string>
   <string name="label_device_speaker">Zvučnik uređaja</string>
   <string name="label_launch_app">Pokreni aplikaciju</string>
-  <string name="description_launch_app">Pokrenite aplikaciju kada se ova uređaj poveže.</string>
+    <string name="description_launch_app">Pokrenite aplikaciju kada se ovaj uređaj poveže.</string>
 </resources>

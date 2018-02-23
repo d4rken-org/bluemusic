@@ -1,1 +1,1 @@
-Πίνακας Έντασης Bluetooth
+Bluetooth Volume Control

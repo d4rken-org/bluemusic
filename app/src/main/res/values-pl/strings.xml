@@ -18,7 +18,7 @@
   <string name="description_visible_volume_adjustments">Wyświetla systemowe okno głośności, podczas zmiany wartości przez aplikację.</string>
   <string name="label_volume_listener">Obserwacja zmian</string>
   <string name="description_volume_listener">Pozostaje aktywna, gdy urządzenie jest podłączone i zapisuje zmiany głośności, które nie zostały wprowadzone przez aplikację.</string>
-  <string name="label_autoplay_keytype">Typ przycisku autoodtwarzania</string>
+    <string name="label_autoplay_keytype">Typ przycisku auto-odtwarzania</string>
   <string name="desc_autoplay_keytype">Funkcja przycisku, która jest uaktywniana, gdy podłączone zostaje urządzenia z automatycznym odtwarzaniem.</string>
   <string name="label_state_connected">Połączony</string>
   <string name="label_neverseen">Nigdy nie podłączone</string>

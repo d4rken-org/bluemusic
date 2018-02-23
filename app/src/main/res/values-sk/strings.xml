@@ -12,11 +12,11 @@
   <string name="label_email">Email</string>
   <string name="label_bug_reports">Nahlásenie chyby</string>
   <string name="description_bug_reports">Automatické nahlásenie chyby a pádu.</string>
-  <string name="label_app_enabled">Aplikácia povolená</string>
+    <string name="label_app_enabled">Povoliť aplikáciu</string>
   <string name="description_app_enabled">Prepne schopnosť aplikácie reagovať na hlasitosť a udalosti Bluetooth.</string>
   <string name="label_visible_volume_adjustments">Viditeľné úpravy</string>
   <string name="description_visible_volume_adjustments">Zobraziť systémový panel hlasitosti počas vykonávania zmien aplikáciou.</string>
-  <string name="label_volume_listener">Sledovať zmeny</string>
+    <string name="label_volume_listener">Sledovanie zmien</string>
   <string name="description_volume_listener">Majte sa na pozore počas pripojenia zariadenia a uložte zmeny hlasitosti, ktoré vykonala aplikácia.</string>
   <string name="label_autoplay_keytype">Typ tlačidla automatického prehrávania</string>
   <string name="desc_autoplay_keytype">Typ tlačidla, ktorý je odoslaný po pripojení zariadenia so zapnutým automatickým prehrávaním.</string>
@@ -41,7 +41,7 @@
   <string name="description_premium_required_this_extra_option">Toto je extra funkcia, ktorá vyžaduje prémiovú verziu.</string>
   <string name="description_premium_upgrade_explanation">Získajte prémiovú verziu a povoľte ďalšie funkcie a podporte vývoj.</string>
   <string name="label_premium_version_required">Vyžaduje sa verzia prémium</string>
-  <string name="description_intro_purpose">Táto aplikácia umožňuje vášmu zariadeniu Android uložiť hlasitosti pre rôzne Bluetooth zariadenia.</string>
+    <string name="description_intro_purpose">Táto aplikácia umožňuje vášmu Android zariadeniu uložiť hlasitosti pre rôzne Bluetooth zariadenia.</string>
   <string name="description_intro_premium">Ak sa vám páči táto aplikácia, zvážte upgrade na prémiovú verziu. Podporíte vývoj a dostanete pár funkcií navyše.</string>
   <string name="description_intro_tap_the_button">Začnite pridaním vášho prvého zariadenia.</string>
   <string name="description_bluetooth_is_disabled">Bluetooth je vypnutý.</string>
@@ -61,7 +61,7 @@
   <string name="description_rename_device">Nastaví systémový alias pre toto zariadenie.</string>
   <string name="label_forget_device">Zabudnúť toto zariadenie</string>
   <string name="description_forget_device">Odstráni toto zariadenie z tejto aplikácie a vymaže jeho konfiguráciu. Nezruší sa však párovanie tohto zariadenia.</string>
-  <string name="label_boot_restore">Obnoviť pri štarte</string>
+    <string name="label_boot_restore">Obnovenie po štarte</string>
   <string name="description_boot_restore">Obnoví hlasitosť pri štarte/reštarte ak je Bluetooth zariadenie pripojené.</string>
   <string name="action_start">Začať</string>
   <string name="label_welcome">Vitajte</string>

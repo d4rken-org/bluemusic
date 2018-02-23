@@ -25,7 +25,7 @@
   <string name="action_remove_device">إزالة الجهاز</string>
   <string name="label_add_device">إضافة جهاز</string>
   <string name="label_just_a_moment_please">لحظة فقط، من فضلك.</string>
-  <string name="label_notification_channel_status">حالة</string>
+    <string name="label_notification_channel_status">الحالة</string>
   <string name="action_set">ضبط</string>
   <string name="action_cancel">إلغاء</string>
   <string name="label_invalid_input">الإدخال غير صالح</string>
