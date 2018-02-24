@@ -37,7 +37,7 @@ android {
     }
 
     compileSdkVersion 27
-    buildToolsVersion "27.0.2"
+    buildToolsVersion "27.0.3"
 
     def versionMajor = 2
     def versionMinor = 13
@@ -160,7 +160,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //Timber
-    implementation 'com.jakewharton.timber:timber:4.5.0'
+    implementation 'com.jakewharton.timber:timber:4.6.0'
 
     // jUnit
     testImplementation 'junit:junit:4.12'
