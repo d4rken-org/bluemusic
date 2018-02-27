@@ -118,9 +118,9 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
         if (Settings.PREFKEY_AUTOPLAY_KEYCODE.equals(preference.getKey())) {
             List<Pair<Integer, String>> pairs = new ArrayList<>();
 
-            pairs.add(Pair.create(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE, "Play-Pause"));
-            pairs.add(Pair.create(KeyEvent.KEYCODE_MEDIA_PLAY, "Play"));
-            pairs.add(Pair.create(KeyEvent.KEYCODE_MEDIA_NEXT, "Next"));
+            pairs.add(Pair.create(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE, getString(R.string.label_keyevent_playpause)));
+            pairs.add(Pair.create(KeyEvent.KEYCODE_MEDIA_PLAY, getString(R.string.label_keyevent_play)));
+            pairs.add(Pair.create(KeyEvent.KEYCODE_MEDIA_NEXT, getString(R.string.label_keyevent_next)));
 
 
             final int currentKeyCode = settings.getAutoplayKeycode();

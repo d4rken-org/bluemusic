@@ -69,4 +69,7 @@
     <string name="label_device_speaker">Device speaker</string>
     <string name="label_launch_app">Launch app</string>
     <string name="description_launch_app">Launch an app when this device connects.</string>
+    <string name="label_keyevent_playpause">Play-Pause</string>
+    <string name="label_keyevent_play">Play</string>
+    <string name="label_keyevent_next">Next</string>
 </resources>
