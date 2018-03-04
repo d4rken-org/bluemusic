@@ -141,8 +141,8 @@ dependencies {
     implementation 'com.bugsnag:bugsnag-android:3.8.0'
 
     // MVP lib
-//    implementation 'eu.darken.ommvplib:library:0.2.0'
-    compile project(path:  ':library')
+    implementation 'eu.darken.mvpbakery:library:0.3.0'
+
     // RX
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
