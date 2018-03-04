@@ -6,8 +6,8 @@ import android.support.annotation.Nullable;
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.IAPHelper;
-import eu.darken.ommvplib.base.Presenter;
-import eu.darken.ommvplib.injection.ComponentPresenter;
+import eu.darken.mvpbakery.base.Presenter;
+import eu.darken.mvpbakery.injection.ComponentPresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.disposables.Disposables;

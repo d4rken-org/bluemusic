@@ -5,8 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import dagger.Subcomponent;
-import eu.darken.ommvplib.injection.PresenterComponent;
-import eu.darken.ommvplib.injection.fragment.support.SupportFragmentComponent;
+import eu.darken.mvpbakery.injection.PresenterComponent;
+import eu.darken.mvpbakery.injection.fragment.support.SupportFragmentComponent;
 
 
 @IntroComponent.Scope

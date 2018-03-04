@@ -10,7 +10,7 @@ import javax.inject.Inject;
 
 import eu.darken.bluemusic.main.core.service.ServiceHelper;
 import eu.darken.bluemusic.settings.core.Settings;
-import eu.darken.ommvplib.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
+import eu.darken.mvpbakery.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
 import timber.log.Timber;
 
 

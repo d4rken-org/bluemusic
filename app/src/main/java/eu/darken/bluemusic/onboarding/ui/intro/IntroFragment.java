@@ -17,9 +17,10 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.util.Check;
-import eu.darken.ommvplib.base.OMMVPLib;
-import eu.darken.ommvplib.injection.InjectedPresenter;
-import eu.darken.ommvplib.injection.PresenterInjectionCallback;
+import eu.darken.mvpbakery.base.MVPBakery;
+import eu.darken.mvpbakery.base.viewmodel.ViewModelRetainer;
+import eu.darken.mvpbakery.injection.InjectedPresenter;
+import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
 
 
 public class IntroFragment extends Fragment implements IntroPresenter.View {
@@ -29,16 +30,6 @@ public class IntroFragment extends Fragment implements IntroPresenter.View {
 
     public static Fragment newInstance() {
         return new IntroFragment();
-    }
-
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        OMMVPLib.<IntroPresenter.View, IntroPresenter>builder()
-                .presenterCallback(new PresenterInjectionCallback<>(this))
-                .presenterSource(new InjectedPresenter<>(this))
-                .attach(this);
     }
 
     @Nullable
@@ -57,6 +48,11 @@ public class IntroFragment extends Fragment implements IntroPresenter.View {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        MVPBakery.<IntroPresenter.View, IntroPresenter>builder()
+                .presenterFactory(new InjectedPresenter<>(this))
+                .presenterRetainer(new ViewModelRetainer<>(this))
+                .addPresenterCallback(new PresenterInjectionCallback<>(this))
+                .attach(this);
         super.onActivityCreated(savedInstanceState);
         //noinspection ConstantConditions
         final ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();

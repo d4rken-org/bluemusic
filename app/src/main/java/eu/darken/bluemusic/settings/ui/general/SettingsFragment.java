@@ -24,9 +24,10 @@ import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.settings.ui.about.AboutFragment;
 import eu.darken.bluemusic.util.Check;
-import eu.darken.ommvplib.base.OMMVPLib;
-import eu.darken.ommvplib.injection.InjectedPresenter;
-import eu.darken.ommvplib.injection.PresenterInjectionCallback;
+import eu.darken.mvpbakery.base.MVPBakery;
+import eu.darken.mvpbakery.base.viewmodel.ViewModelRetainer;
+import eu.darken.mvpbakery.injection.InjectedPresenter;
+import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
 
 
 public class SettingsFragment extends PreferenceFragmentCompat implements SettingsPresenter.View {
@@ -40,10 +41,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        OMMVPLib.<SettingsPresenter.View, SettingsPresenter>builder()
-                .presenterCallback(new PresenterInjectionCallback<>(this))
-                .presenterSource(new InjectedPresenter<>(this))
-                .attach(this);
         setHasOptionsMenu(true);
     }
 
@@ -54,6 +51,11 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        MVPBakery.<SettingsPresenter.View, SettingsPresenter>builder()
+                .presenterFactory(new InjectedPresenter<>(this))
+                .presenterRetainer(new ViewModelRetainer<>(this))
+                .addPresenterCallback(new PresenterInjectionCallback<>(this))
+                .attach(this);
         super.onActivityCreated(savedInstanceState);
         //noinspection ConstantConditions
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();

@@ -5,11 +5,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import dagger.Subcomponent;
-import eu.darken.ommvplib.injection.broadcastreceiver.BroadcastReceiverComponent;
+import eu.darken.mvpbakery.injection.broadcastreceiver.BroadcastReceiverComponent;
 
 @EventReceiverComponent.Scope
-@Subcomponent(modules = {
-})
+@Subcomponent()
 public interface EventReceiverComponent extends BroadcastReceiverComponent<BluetoothEventReceiver> {
 
     @Subcomponent.Builder

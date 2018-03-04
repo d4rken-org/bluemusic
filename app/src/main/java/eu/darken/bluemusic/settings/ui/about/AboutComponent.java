@@ -5,12 +5,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import dagger.Subcomponent;
-import eu.darken.ommvplib.injection.PresenterComponent;
-import eu.darken.ommvplib.injection.fragment.support.SupportFragmentComponent;
+import eu.darken.mvpbakery.injection.PresenterComponent;
+import eu.darken.mvpbakery.injection.fragment.support.SupportFragmentComponent;
 
 
 @AboutComponent.Scope
-@Subcomponent(modules = {})
+@Subcomponent()
 public interface AboutComponent extends PresenterComponent<AboutPresenter.View, AboutPresenter>, SupportFragmentComponent<AboutFragment> {
     @Subcomponent.Builder
     abstract class Builder extends SupportFragmentComponent.Builder<AboutFragment, AboutComponent> {

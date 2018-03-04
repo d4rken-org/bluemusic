@@ -32,9 +32,10 @@ import eu.darken.bluemusic.main.ui.MainActivity;
 import eu.darken.bluemusic.main.ui.config.ConfigFragment;
 import eu.darken.bluemusic.settings.ui.SettingsActivity;
 import eu.darken.bluemusic.util.Check;
-import eu.darken.ommvplib.base.OMMVPLib;
-import eu.darken.ommvplib.injection.InjectedPresenter;
-import eu.darken.ommvplib.injection.PresenterInjectionCallback;
+import eu.darken.mvpbakery.base.MVPBakery;
+import eu.darken.mvpbakery.base.viewmodel.ViewModelRetainer;
+import eu.darken.mvpbakery.injection.InjectedPresenter;
+import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
 
 
 public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPresenter.View, ManagedDevicesAdapter.Callback {
@@ -57,23 +58,19 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        OMMVPLib.<ManagedDevicesPresenter.View, ManagedDevicesPresenter>builder()
-                .presenterCallback(new PresenterInjectionCallback<>(this))
-                .presenterSource(new InjectedPresenter<>(this))
-                .attach(this);
         setHasOptionsMenu(true);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        android.view.View layout = inflater.inflate(R.layout.fragment_layout_managed_devices, container, false);
+        View layout = inflater.inflate(R.layout.fragment_layout_managed_devices, container, false);
         unbinder = ButterKnife.bind(this, layout);
         return layout;
     }
 
     @Override
-    public void onViewCreated(android.view.View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new ManagedDevicesAdapter(this);
         recyclerView.setAdapter(adapter);
@@ -89,6 +86,12 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        MVPBakery.<ManagedDevicesPresenter.View, ManagedDevicesPresenter>builder()
+                .presenterFactory(new InjectedPresenter<>(this))
+                .presenterRetainer(new ViewModelRetainer<>(this))
+                .addPresenterCallback(new PresenterInjectionCallback<>(this))
+                .attach(this);
+
         super.onActivityCreated(savedInstanceState);
         Check.notNull(getActivity());
         final ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();

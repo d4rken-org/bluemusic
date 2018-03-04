@@ -13,8 +13,8 @@ import dagger.android.support.FragmentKey;
 import dagger.multibindings.IntoMap;
 import eu.darken.bluemusic.onboarding.ui.intro.IntroComponent;
 import eu.darken.bluemusic.onboarding.ui.intro.IntroFragment;
-import eu.darken.ommvplib.injection.PresenterComponent;
-import eu.darken.ommvplib.injection.activity.ActivityComponent;
+import eu.darken.mvpbakery.injection.PresenterComponent;
+import eu.darken.mvpbakery.injection.activity.ActivityComponent;
 
 @OnboardingActivityComponent.Scope
 @Subcomponent(modules = {

@@ -25,9 +25,10 @@ import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.util.Check;
 import eu.darken.bluemusic.util.ui.ClickableAdapter;
-import eu.darken.ommvplib.base.OMMVPLib;
-import eu.darken.ommvplib.injection.InjectedPresenter;
-import eu.darken.ommvplib.injection.PresenterInjectionCallback;
+import eu.darken.mvpbakery.base.MVPBakery;
+import eu.darken.mvpbakery.base.viewmodel.ViewModelRetainer;
+import eu.darken.mvpbakery.injection.InjectedPresenter;
+import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
 
 
 public class DiscoverFragment extends Fragment
@@ -43,15 +44,6 @@ public class DiscoverFragment extends Fragment
         return new DiscoverFragment();
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        OMMVPLib.<DiscoverPresenter.View, DiscoverPresenter>builder()
-                .presenterCallback(new PresenterInjectionCallback<>(this))
-                .presenterSource(new InjectedPresenter<>(this))
-                .attach(this);
-    }
-
     @Nullable
     @Override
     public android.view.View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -61,7 +53,7 @@ public class DiscoverFragment extends Fragment
     }
 
     @Override
-    public void onViewCreated(android.view.View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new DiscoverAdapter();
         recyclerView.setAdapter(adapter);
@@ -77,6 +69,11 @@ public class DiscoverFragment extends Fragment
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        MVPBakery.<DiscoverPresenter.View, DiscoverPresenter>builder()
+                .presenterFactory(new InjectedPresenter<>(this))
+                .presenterRetainer(new ViewModelRetainer<>(this))
+                .addPresenterCallback(new PresenterInjectionCallback<>(this))
+                .attach(this);
         super.onActivityCreated(savedInstanceState);
         //noinspection ConstantConditions
         final ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();

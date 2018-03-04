@@ -11,12 +11,13 @@ import butterknife.ButterKnife;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.main.ui.managed.ManagedDevicesFragment;
 import eu.darken.bluemusic.onboarding.ui.OnboardingActivity;
-import eu.darken.ommvplib.base.OMMVPLib;
-import eu.darken.ommvplib.injection.ComponentSource;
-import eu.darken.ommvplib.injection.InjectedPresenter;
-import eu.darken.ommvplib.injection.ManualInjector;
-import eu.darken.ommvplib.injection.PresenterInjectionCallback;
-import eu.darken.ommvplib.injection.fragment.support.HasManualSupportFragmentInjector;
+import eu.darken.mvpbakery.base.MVPBakery;
+import eu.darken.mvpbakery.base.viewmodel.ViewModelRetainer;
+import eu.darken.mvpbakery.injection.ComponentSource;
+import eu.darken.mvpbakery.injection.InjectedPresenter;
+import eu.darken.mvpbakery.injection.ManualInjector;
+import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
+import eu.darken.mvpbakery.injection.fragment.support.HasManualSupportFragmentInjector;
 
 
 public class MainActivity extends AppCompatActivity implements MainActivityPresenter.View, HasManualSupportFragmentInjector {
@@ -27,9 +28,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.BaseAppTheme);
         super.onCreate(savedInstanceState);
-        OMMVPLib.<MainActivityPresenter.View, MainActivityPresenter>builder()
-                .presenterCallback(new PresenterInjectionCallback<>(this))
-                .presenterSource(new InjectedPresenter<>(this))
+        MVPBakery.<MainActivityPresenter.View, MainActivityPresenter>builder()
+                .presenterFactory(new InjectedPresenter<>(this))
+                .presenterRetainer(new ViewModelRetainer<>(this))
+                .addPresenterCallback(new PresenterInjectionCallback<>(this))
                 .attach(this);
         setContentView(R.layout.activity_layout_main);
         ButterKnife.bind(this);

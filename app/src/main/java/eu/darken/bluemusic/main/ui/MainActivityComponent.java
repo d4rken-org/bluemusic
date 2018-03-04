@@ -17,8 +17,8 @@ import eu.darken.bluemusic.main.ui.config.ConfigComponent;
 import eu.darken.bluemusic.main.ui.config.ConfigFragment;
 import eu.darken.bluemusic.main.ui.managed.ManagedDevicesComponent;
 import eu.darken.bluemusic.main.ui.managed.ManagedDevicesFragment;
-import eu.darken.ommvplib.injection.PresenterComponent;
-import eu.darken.ommvplib.injection.activity.ActivityComponent;
+import eu.darken.mvpbakery.injection.PresenterComponent;
+import eu.darken.mvpbakery.injection.activity.ActivityComponent;
 
 @MainActivityComponent.Scope
 @Subcomponent(modules = {

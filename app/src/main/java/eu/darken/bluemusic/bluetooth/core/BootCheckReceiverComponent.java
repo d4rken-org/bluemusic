@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import dagger.Subcomponent;
-import eu.darken.ommvplib.injection.broadcastreceiver.BroadcastReceiverComponent;
+import eu.darken.mvpbakery.injection.broadcastreceiver.BroadcastReceiverComponent;
 
 @BootCheckReceiverComponent.Scope
 @Subcomponent()

@@ -12,7 +12,7 @@ import javax.inject.Inject;
 
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.util.EventGenerator;
-import eu.darken.ommvplib.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
+import eu.darken.mvpbakery.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;

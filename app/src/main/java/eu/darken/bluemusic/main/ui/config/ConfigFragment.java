@@ -31,9 +31,11 @@ import eu.darken.bluemusic.util.AppTool;
 import eu.darken.bluemusic.util.Check;
 import eu.darken.bluemusic.util.ui.PreferenceView;
 import eu.darken.bluemusic.util.ui.SwitchPreferenceView;
-import eu.darken.ommvplib.base.OMMVPLib;
-import eu.darken.ommvplib.injection.InjectedPresenter;
-import eu.darken.ommvplib.injection.PresenterInjectionCallback;
+import eu.darken.mvpbakery.base.MVPBakery;
+import eu.darken.mvpbakery.base.PresenterRetainer;
+import eu.darken.mvpbakery.base.viewmodel.ViewModelRetainer;
+import eu.darken.mvpbakery.injection.InjectedPresenter;
+import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
 import timber.log.Timber;
 
 
@@ -64,18 +66,6 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        OMMVPLib.<ConfigPresenter.View, ConfigPresenter>builder()
-                .presenterCallback(new PresenterInjectionCallback<ConfigFragment, ConfigPresenter.View, ConfigPresenter, ConfigComponent>(this) {
-                    @Override
-                    public void onPresenterReady(ConfigPresenter presenter) {
-                        Check.notNull(getArguments());
-                        final String address = getArguments().getString(ARG_ADDRESS);
-                        presenter.setDevice(address);
-                        super.onPresenterReady(presenter);
-                    }
-                })
-                .presenterSource(new InjectedPresenter<>(this))
-                .attach(this);
         setHasOptionsMenu(true);
     }
 
@@ -105,6 +95,24 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        MVPBakery.<ConfigPresenter.View, ConfigPresenter>builder()
+                .addPresenterCallback(new PresenterRetainer.Callback<ConfigPresenter.View, ConfigPresenter>() {
+                    @Override
+                    public void onPresenterCreated(ConfigPresenter presenter) {
+                        Check.notNull(getArguments());
+                        final String address = getArguments().getString(ARG_ADDRESS);
+                        presenter.setDevice(address);
+                    }
+
+                    @Override
+                    public void onPresenterDestroyed() {
+
+                    }
+                })
+                .addPresenterCallback(new PresenterInjectionCallback<>(this))
+                .presenterRetainer(new ViewModelRetainer<>(this))
+                .presenterFactory(new InjectedPresenter<>(this))
+                .attach(this);
         super.onActivityCreated(savedInstanceState);
 
         Check.notNull(getActivity());

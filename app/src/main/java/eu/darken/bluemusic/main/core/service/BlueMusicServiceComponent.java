@@ -4,7 +4,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import dagger.Subcomponent;
-import eu.darken.ommvplib.injection.service.ServiceComponent;
+import eu.darken.mvpbakery.injection.service.ServiceComponent;
 
 
 @BlueMusicServiceComponent.Scope

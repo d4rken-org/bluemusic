@@ -1,1 +1,4 @@
 include ':app'
+
+include ':library'
+project(':library').projectDir = new File('C:\\Users\\darken\\git\\mvp-bakery\\library')

@@ -5,8 +5,8 @@ import android.support.annotation.Nullable;
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.settings.core.Settings;
-import eu.darken.ommvplib.base.Presenter;
-import eu.darken.ommvplib.injection.ComponentPresenter;
+import eu.darken.mvpbakery.base.Presenter;
+import eu.darken.mvpbakery.injection.ComponentPresenter;
 
 public class MainActivityPresenter extends ComponentPresenter<MainActivityPresenter.View, MainActivityComponent> {
     private final Settings settings;

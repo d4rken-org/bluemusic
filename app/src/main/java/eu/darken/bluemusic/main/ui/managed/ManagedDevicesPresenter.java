@@ -15,8 +15,8 @@ import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.audio.StreamHelper;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
-import eu.darken.ommvplib.base.Presenter;
-import eu.darken.ommvplib.injection.ComponentPresenter;
+import eu.darken.mvpbakery.base.Presenter;
+import eu.darken.mvpbakery.injection.ComponentPresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.disposables.Disposables;
@@ -52,7 +52,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
             upgradeSub = iapHelper.isProVersion()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(isProVersion -> ManagedDevicesPresenter.this.onView(v -> v.updateUpgradeState(isProVersion)));
+                    .subscribe(isProVersion -> onView(v -> v.updateUpgradeState(isProVersion)));
 
             deviceSub = deviceManager.observe()
                     .subscribeOn(Schedulers.computation())
@@ -62,7 +62,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                         return sorted;
                     })
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(view::displayDevices);
+                    .subscribe(devs -> onView(v -> v.displayDevices(devs)));
         } else {
             deviceSub.dispose();
             upgradeSub.dispose();
