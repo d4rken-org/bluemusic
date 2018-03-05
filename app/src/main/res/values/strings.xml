@@ -74,4 +74,6 @@
     <string name="label_keyevent_next">Next</string>
     <string name="label_install_id">Install ID</string>
     <string name="message_copied_to_clipboard">Copied to clipboard</string>
+    <string name="label_thanks">Thanks</string>
+    <string name="label_licenses">Licenses</string>
 </resources>

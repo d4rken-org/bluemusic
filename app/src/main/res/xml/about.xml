@@ -54,7 +54,7 @@
                 android:data="https://plus.google.com/116634499773478773276"/>
         </Preference>
     </PreferenceCategory>
-    <PreferenceCategory android:title="Thanks">
+    <PreferenceCategory android:title="@string/label_thanks">
         <Preference
             android:summary="For the lovely icon."
             android:title="Max Patchs">
@@ -63,7 +63,7 @@
                 android:data="https://twitter.com/250_max"/>
         </Preference>
     </PreferenceCategory>
-    <PreferenceCategory android:title="Licences">
+    <PreferenceCategory android:title="@string/label_licenses">
         <Preference
             android:key="license.dagger"
             android:summary="A fast dependency injector for Android and Java. (APACHE 2.0)"
