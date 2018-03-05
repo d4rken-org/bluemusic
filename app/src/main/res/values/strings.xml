@@ -72,4 +72,6 @@
     <string name="label_keyevent_playpause">Play-Pause</string>
     <string name="label_keyevent_play">Play</string>
     <string name="label_keyevent_next">Next</string>
+    <string name="label_install_id">Install ID</string>
+    <string name="message_copied_to_clipboard">Copied to clipboard</string>
 </resources>

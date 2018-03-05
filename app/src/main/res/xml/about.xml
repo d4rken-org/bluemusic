@@ -21,6 +21,9 @@
             android:action="android.intent.action.VIEW"
             android:data="https://crowdin.com/project/bluemusic"/>
     </Preference>
+    <Preference
+        android:key="about.installid"
+        android:title="@string/label_install_id"/>
     <PreferenceCategory android:title="Contact">
         <Preference
             android:summary="support@darken.eu"
