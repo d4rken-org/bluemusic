@@ -4,7 +4,7 @@ Penjadwalan dan pengaturan untuk setiap perangkat Bluetooth dapat disesuaikan se
 
 Penjelasan perizinan:
 • 'Internet' untuk pelaporan permasalahan.
-• 'Bluetooth' untuk dapat bekerja dengan perangkat - perangkat Bluetooth.
+• 'Bluetooth' untuk dapat bekerja dengan perangkat-perangkat Bluetooth.
 • 'Mengubah pengaturan audio' untuk mengubah volume suara.
 • 'Boot_COMPLETED' untuk mengembalikan volume suara setelah perangkat dinyalakan.
 • 'WAKE_LOCK' untuk memperbaiki permasalahan dalam perangkat Samsung sebab perizinan ini dibutuhkan untuk menghindari kesalahan.

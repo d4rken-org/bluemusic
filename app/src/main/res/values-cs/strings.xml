@@ -71,4 +71,7 @@
   <string name="label_device_speaker">Reproduktor zařízení</string>
   <string name="label_launch_app">Spustit aplikaci</string>
   <string name="description_launch_app">Spustí aplikaci po připojení tohoto zařízení.</string>
+  <string name="label_keyevent_playpause">Přehrát-pozastavit</string>
+  <string name="label_keyevent_play">Přehrát</string>
+  <string name="label_keyevent_next">Další</string>
 </resources>

@@ -71,4 +71,7 @@
   <string name="label_device_speaker">Altaveu del dispositiu</string>
   <string name="label_launch_app">Inicia l\'aplicació</string>
   <string name="description_launch_app">Inicia una aplicació en connectar aquest dispositiu.</string>
+  <string name="label_keyevent_playpause">Reprodueix-Pausa</string>
+  <string name="label_keyevent_play">Reprodueix</string>
+  <string name="label_keyevent_next">Següent</string>
 </resources>

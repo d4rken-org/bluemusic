@@ -71,4 +71,7 @@
   <string name="label_device_speaker">Altoparlante del dispositivo</string>
   <string name="label_launch_app">Avvio app</string>
   <string name="description_launch_app">Avvia un\'app quando questo dispositivo viene connesso.</string>
+  <string name="label_keyevent_playpause">Riproduci-Metti in pausa</string>
+  <string name="label_keyevent_play">Play</string>
+  <string name="label_keyevent_next">Avanti</string>
 </resources>
