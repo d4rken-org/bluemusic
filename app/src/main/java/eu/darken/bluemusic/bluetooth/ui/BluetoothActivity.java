@@ -11,15 +11,15 @@ import butterknife.ButterKnife;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.bluetooth.ui.discover.DiscoverFragment;
 import eu.darken.mvpbakery.base.MVPBakery;
-import eu.darken.mvpbakery.base.viewmodel.ViewModelRetainer;
+import eu.darken.mvpbakery.base.ViewModelRetainer;
 import eu.darken.mvpbakery.injection.ComponentSource;
 import eu.darken.mvpbakery.injection.InjectedPresenter;
 import eu.darken.mvpbakery.injection.ManualInjector;
 import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
-import eu.darken.mvpbakery.injection.fragment.support.HasManualSupportFragmentInjector;
+import eu.darken.mvpbakery.injection.fragment.HasManualFragmentInjector;
 
 
-public class BluetoothActivity extends AppCompatActivity implements BluetoothActivityPresenter.View, HasManualSupportFragmentInjector {
+public class BluetoothActivity extends AppCompatActivity implements BluetoothActivityPresenter.View, HasManualFragmentInjector {
 
     @Inject ComponentSource<Fragment> componentSource;
 

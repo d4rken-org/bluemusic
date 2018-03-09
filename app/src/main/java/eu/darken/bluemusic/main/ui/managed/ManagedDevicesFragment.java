@@ -33,7 +33,7 @@ import eu.darken.bluemusic.main.ui.config.ConfigFragment;
 import eu.darken.bluemusic.settings.ui.SettingsActivity;
 import eu.darken.bluemusic.util.Check;
 import eu.darken.mvpbakery.base.MVPBakery;
-import eu.darken.mvpbakery.base.viewmodel.ViewModelRetainer;
+import eu.darken.mvpbakery.base.ViewModelRetainer;
 import eu.darken.mvpbakery.injection.InjectedPresenter;
 import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
 

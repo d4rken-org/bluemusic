@@ -6,14 +6,14 @@ import java.lang.annotation.RetentionPolicy;
 
 import dagger.Subcomponent;
 import eu.darken.mvpbakery.injection.PresenterComponent;
-import eu.darken.mvpbakery.injection.fragment.support.SupportFragmentComponent;
+import eu.darken.mvpbakery.injection.fragment.FragmentComponent;
 
 
 @ManagedDevicesComponent.Scope
 @Subcomponent()
-public interface ManagedDevicesComponent extends PresenterComponent<ManagedDevicesPresenter.View, ManagedDevicesPresenter>, SupportFragmentComponent<ManagedDevicesFragment> {
+public interface ManagedDevicesComponent extends PresenterComponent<ManagedDevicesPresenter.View, ManagedDevicesPresenter>, FragmentComponent<ManagedDevicesFragment> {
     @Subcomponent.Builder
-    abstract class Builder extends SupportFragmentComponent.Builder<ManagedDevicesFragment, ManagedDevicesComponent> {
+    abstract class Builder extends FragmentComponent.Builder<ManagedDevicesFragment, ManagedDevicesComponent> {
 
     }
 

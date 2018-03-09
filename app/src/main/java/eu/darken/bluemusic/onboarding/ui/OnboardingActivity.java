@@ -10,15 +10,15 @@ import butterknife.ButterKnife;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.onboarding.ui.intro.IntroFragment;
 import eu.darken.mvpbakery.base.MVPBakery;
-import eu.darken.mvpbakery.base.viewmodel.ViewModelRetainer;
+import eu.darken.mvpbakery.base.ViewModelRetainer;
 import eu.darken.mvpbakery.injection.ComponentSource;
 import eu.darken.mvpbakery.injection.InjectedPresenter;
 import eu.darken.mvpbakery.injection.ManualInjector;
 import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
-import eu.darken.mvpbakery.injection.fragment.support.HasManualSupportFragmentInjector;
+import eu.darken.mvpbakery.injection.fragment.HasManualFragmentInjector;
 
 
-public class OnboardingActivity extends AppCompatActivity implements OnboardingActivityPresenter.View, HasManualSupportFragmentInjector {
+public class OnboardingActivity extends AppCompatActivity implements OnboardingActivityPresenter.View, HasManualFragmentInjector {
 
     @Inject ComponentSource<Fragment> componentSource;
 

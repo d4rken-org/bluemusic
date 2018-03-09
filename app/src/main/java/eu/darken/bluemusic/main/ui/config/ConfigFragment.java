@@ -32,8 +32,7 @@ import eu.darken.bluemusic.util.Check;
 import eu.darken.bluemusic.util.ui.PreferenceView;
 import eu.darken.bluemusic.util.ui.SwitchPreferenceView;
 import eu.darken.mvpbakery.base.MVPBakery;
-import eu.darken.mvpbakery.base.PresenterRetainer;
-import eu.darken.mvpbakery.base.viewmodel.ViewModelRetainer;
+import eu.darken.mvpbakery.base.ViewModelRetainer;
 import eu.darken.mvpbakery.injection.InjectedPresenter;
 import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
 import timber.log.Timber;
@@ -96,18 +95,10 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         MVPBakery.<ConfigPresenter.View, ConfigPresenter>builder()
-                .addPresenterCallback(new PresenterRetainer.Callback<ConfigPresenter.View, ConfigPresenter>() {
-                    @Override
-                    public void onPresenterCreated(ConfigPresenter presenter) {
-                        Check.notNull(getArguments());
-                        final String address = getArguments().getString(ARG_ADDRESS);
-                        presenter.setDevice(address);
-                    }
-
-                    @Override
-                    public void onPresenterDestroyed() {
-
-                    }
+                .addPresenterCallback(presenter -> {
+                    Check.notNull(getArguments());
+                    final String address = getArguments().getString(ARG_ADDRESS);
+                    presenter.setDevice(address);
                 })
                 .addPresenterCallback(new PresenterInjectionCallback<>(this))
                 .presenterRetainer(new ViewModelRetainer<>(this))
