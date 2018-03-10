@@ -54,7 +54,7 @@ public class ServiceHelper {
         builder = new NotificationCompat.Builder(service, NOTIFICATION_CHANNEL_ID)
                 .setChannelId(NOTIFICATION_CHANNEL_ID)
                 .setContentIntent(openPi)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.ic_notification_small)
                 .setContentText(resHelper.getString(R.string.label_status_idle))
                 .setContentTitle(resHelper.getString(R.string.app_name))
                 .addAction(new NotificationCompat.Action.Builder(0, service.getString(R.string.action_exit), stopPi).build());
