@@ -90,6 +90,16 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 });
     }
 
+    void onUpdateRingVolume(ManagedDevice device, float percentage) {
+        device.setVolume(AudioStream.Type.RINGTONE, percentage);
+        deviceManager.save(Collections.singleton(device))
+                .subscribeOn(Schedulers.computation())
+                .subscribe(managedDevices -> {
+                    if (!device.isActive()) return;
+                    streamHelper.changeVolume(device.getStreamId(AudioStream.Type.RINGTONE), device.getVolume(AudioStream.Type.RINGTONE), true, 0);
+                });
+    }
+
     void onUpgradeClicked(Activity activity) {
         iapHelper.buyProVersion(activity);
     }

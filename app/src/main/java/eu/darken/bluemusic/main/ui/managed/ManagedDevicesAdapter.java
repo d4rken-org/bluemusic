@@ -40,6 +40,8 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
 
         void onCallVolumeAdjusted(ManagedDevice device, float percentage);
 
+        void onRingVolumeAdjusted(ManagedDevice item, float percentage);
+
         void onShowConfigScreen(ManagedDevice device);
     }
 
@@ -63,6 +65,10 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
         @BindView(R.id.call_container) View voiceContainer;
         @BindView(R.id.call_seekbar) SeekBar voiceSeekbar;
         @BindView(R.id.call_counter) TextView voiceCounter;
+
+        @BindView(R.id.ring_container) View ringContainer;
+        @BindView(R.id.ring_seekbar) SeekBar ringSeekbar;
+        @BindView(R.id.ring_counter) TextView ringCounter;
         private Callback callback;
 
         ManagedDeviceVH(ViewGroup parent, Callback callback) {
@@ -147,6 +153,28 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                     }
                 });
                 voiceSeekbar.setProgress(item.getRealVolume(AudioStream.Type.CALL));
+            }
+
+            ringContainer.setVisibility(item.getVolume(AudioStream.Type.RINGTONE) != null ? View.VISIBLE : View.GONE);
+            if (item.getVolume(AudioStream.Type.RINGTONE) != null) {
+                ringSeekbar.setMax(item.getMaxVolume(AudioStream.Type.RINGTONE));
+                ringSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        ringCounter.setText(String.valueOf(progress));
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        callback.onRingVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
+                    }
+                });
+                ringSeekbar.setProgress(item.getRealVolume(AudioStream.Type.RINGTONE));
             }
         }
     }

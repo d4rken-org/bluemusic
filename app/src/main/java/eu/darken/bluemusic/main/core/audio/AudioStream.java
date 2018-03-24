@@ -7,7 +7,8 @@ public interface AudioStream {
     enum Id {
         STREAM_MUSIC(AudioManager.STREAM_MUSIC),
         STREAM_BLUETOOTH_HANDSFREE(6),
-        STREAM_VOICE_CALL(AudioManager.STREAM_VOICE_CALL);
+        STREAM_VOICE_CALL(AudioManager.STREAM_VOICE_CALL),
+        STREAM_RINGTONE(AudioManager.STREAM_RING);
         private final int streamId;
 
         Id(int streamId) {this.streamId = streamId;}
@@ -18,6 +19,6 @@ public interface AudioStream {
     }
 
     enum Type {
-        MUSIC, CALL
+        MUSIC, CALL, RINGTONE
     }
 }

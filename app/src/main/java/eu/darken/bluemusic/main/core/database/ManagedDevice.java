@@ -16,6 +16,7 @@ public class ManagedDevice {
     private boolean isActive;
     private int maxMusicVolume;
     private int maxCallVolume;
+    private int maxRingVolume;
 
     ManagedDevice(SourceDevice sourceDevice, DeviceConfig deviceConfig) {
         this.sourceDevice = sourceDevice;
@@ -69,8 +70,8 @@ public class ManagedDevice {
 
     @Override
     public String toString() {
-        return String.format(Locale.US, "Device(active=%b, address=%s, name=%s, musicVolume=%.2f, callVolume=%.2f)",
-                isActive(), getAddress(), getName(), getVolume(AudioStream.Type.MUSIC), getVolume(AudioStream.Type.CALL));
+        return String.format(Locale.US, "Device(active=%b, address=%s, name=%s, musicVolume=%.2f, callVolume=%.2f, ringVolume=%.2f)",
+                isActive(), getAddress(), getName(), getVolume(AudioStream.Type.MUSIC), getVolume(AudioStream.Type.CALL), getVolume(AudioStream.Type.RINGTONE));
     }
 
     public void setMaxVolume(AudioStream.Type type, int max) {
@@ -80,6 +81,8 @@ public class ManagedDevice {
                 break;
             case CALL:
                 maxCallVolume = max;
+            case RINGTONE:
+                maxRingVolume = max;
                 break;
             default:
                 throw new IllegalArgumentException("Unknown type: " + type);
@@ -93,6 +96,8 @@ public class ManagedDevice {
                 break;
             case CALL:
                 deviceConfig.callVolume = volume;
+            case RINGTONE:
+                deviceConfig.ringVolume = volume;
                 break;
             default:
                 throw new IllegalArgumentException("Unknown type: " + type);
@@ -105,6 +110,8 @@ public class ManagedDevice {
                 return deviceConfig.musicVolume;
             case CALL:
                 return deviceConfig.callVolume;
+            case RINGTONE:
+                return deviceConfig.ringVolume;
             default:
                 throw new IllegalArgumentException("Unknown type: " + type);
         }
@@ -116,6 +123,8 @@ public class ManagedDevice {
                 return maxMusicVolume;
             case CALL:
                 return maxCallVolume;
+            case RINGTONE:
+                return maxRingVolume;
             default:
                 throw new IllegalArgumentException("Unknown type: " + type);
         }

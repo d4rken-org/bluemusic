@@ -1,10 +1,13 @@
 package eu.darken.bluemusic.main.ui.config;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -14,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -45,6 +49,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     private Unbinder unbinder;
     @BindView(R.id.pref_music_volume) SwitchPreferenceView prefMusicVolume;
     @BindView(R.id.pref_call_volume) SwitchPreferenceView prefCallVolume;
+    @BindView(R.id.pref_ring_volume) SwitchPreferenceView prefRingVolume;
     @BindView(R.id.pref_autoplay_enabled) SwitchPreferenceView prefAutoPlay;
     @BindView(R.id.pref_launch_app) PreferenceView prefLaunchApp;
     @BindView(R.id.pref_reaction_delay) PreferenceView prefReactionDelay;
@@ -80,6 +85,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         prefMusicVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleMusicVolume());
         prefCallVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleCallVolume());
+        prefRingVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleRingVolume());
         prefAutoPlay.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleAutoPlay()));
         prefLaunchApp.setOnClickListener(v -> {
             presenter.onLaunchAppClicked();
@@ -155,6 +161,9 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
         prefCallVolume.setChecked(device.getVolume(AudioStream.Type.CALL) != null);
         prefCallVolume.setVisibility(View.VISIBLE);
+
+        prefRingVolume.setChecked(device.getVolume(AudioStream.Type.RINGTONE) != null);
+        prefRingVolume.setVisibility(View.VISIBLE);
 
         prefAutoPlay.setChecked(device.isAutoPlayEnabled());
         prefAutoPlay.setVisibility(View.VISIBLE);
@@ -265,6 +274,14 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
                 .setAdapter(adapter,
                         (dialog, pos) -> presenter.onLaunchAppSelected(adapter.getItem(pos)))
                 .show();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void showNotificationPermissionView() {
+        Toast.makeText(getContext(), "Additional permission are necessary to change the ringtone volume.", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+        startActivity(intent);
     }
 
     @Override

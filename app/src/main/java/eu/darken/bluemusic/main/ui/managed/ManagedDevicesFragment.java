@@ -175,6 +175,11 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     }
 
     @Override
+    public void onRingVolumeAdjusted(ManagedDevice device, float percentage) {
+        presenter.onUpdateRingVolume(device, percentage);
+    }
+
+    @Override
     public void onShowConfigScreen(ManagedDevice device) {
         //noinspection ConstantConditions
         getActivity().getSupportFragmentManager().beginTransaction()

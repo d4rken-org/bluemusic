@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.main.ui.config;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.support.annotation.Nullable;
 
 import java.util.Collections;
@@ -14,6 +15,7 @@ import eu.darken.bluemusic.main.core.audio.StreamHelper;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.settings.core.Settings;
+import eu.darken.bluemusic.util.ApiHelper;
 import eu.darken.bluemusic.util.AppTool;
 import eu.darken.mvpbakery.base.Presenter;
 import eu.darken.mvpbakery.injection.ComponentPresenter;
@@ -29,6 +31,7 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
     private final DeviceManager deviceManager;
     private final IAPHelper iapHelper;
     private final AppTool appTool;
+    private final NotificationManager notificationManager;
     private final StreamHelper streamHelper;
     private Disposable upgradeSub;
     private Disposable updateSub;
@@ -37,11 +40,17 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
     private ManagedDevice device;
 
     @Inject
-    ConfigPresenter(DeviceManager deviceManager, StreamHelper streamHelper, IAPHelper iapHelper, AppTool appTool) {
+    ConfigPresenter(DeviceManager deviceManager,
+                    StreamHelper streamHelper,
+                    IAPHelper iapHelper,
+                    AppTool appTool,
+                    NotificationManager notificationManager
+    ) {
         this.deviceManager = deviceManager;
         this.streamHelper = streamHelper;
         this.iapHelper = iapHelper;
         this.appTool = appTool;
+        this.notificationManager = notificationManager;
     }
 
     public void setDevice(String address) {
@@ -105,6 +114,21 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         if (device.getVolume(AudioStream.Type.CALL) == null) {
             device.setVolume(AudioStream.Type.CALL, streamHelper.getVolumePercentage(device.getStreamId(AudioStream.Type.CALL)));
         } else device.setVolume(AudioStream.Type.CALL, null);
+
+        deviceManager.save(Collections.singleton(device))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+    }
+
+    void onToggleRingVolume() {
+        if (ApiHelper.hasMarshmallow() && !notificationManager.isNotificationPolicyAccessGranted()) {
+            onView(View::showNotificationPermissionView);
+            return;
+        }
+
+        if (device.getVolume(AudioStream.Type.RINGTONE) == null) {
+            device.setVolume(AudioStream.Type.RINGTONE, streamHelper.getVolumePercentage(device.getStreamId(AudioStream.Type.RINGTONE)));
+        } else device.setVolume(AudioStream.Type.RINGTONE, null);
 
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
@@ -207,5 +231,7 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         void showRenameDialog(String current);
 
         void finishScreen();
+
+        void showNotificationPermissionView();
     }
 }

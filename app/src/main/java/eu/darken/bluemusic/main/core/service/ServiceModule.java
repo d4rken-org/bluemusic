@@ -16,6 +16,7 @@ import eu.darken.bluemusic.main.core.service.modules.AutoplayModule;
 import eu.darken.bluemusic.main.core.service.modules.CallVolumeModule;
 import eu.darken.bluemusic.main.core.service.modules.FakeDeviceConnectModule;
 import eu.darken.bluemusic.main.core.service.modules.MusicVolumeModule;
+import eu.darken.bluemusic.main.core.service.modules.RingVolumeModule;
 
 @Module
 public class ServiceModule {
@@ -32,11 +33,12 @@ public class ServiceModule {
     List<ActionModule> actionModules(
             MusicVolumeModule m1,
             CallVolumeModule m2,
+            RingVolumeModule m3,
             AutoplayModule autoplay,
             FakeDeviceConnectModule rest,
             AppLaunchModule app
     ) {
-        return Arrays.asList(m1, m2, autoplay, app, rest);
+        return Arrays.asList(m1, m2, m3, autoplay, app, rest);
     }
 
 }

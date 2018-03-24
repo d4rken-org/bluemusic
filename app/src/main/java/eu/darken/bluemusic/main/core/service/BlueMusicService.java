@@ -237,6 +237,8 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         device.setVolume(AudioStream.Type.CALL, percentage);
                     } else if (id == AudioStream.Id.STREAM_MUSIC) {
                         device.setVolume(AudioStream.Type.MUSIC, percentage);
+                    } else if (id == AudioStream.Id.STREAM_RINGTONE) {
+                        device.setVolume(AudioStream.Type.RINGTONE, percentage);
                     } else if (id == AudioStream.Id.STREAM_VOICE_CALL && device.getAddress().equals(FakeSpeakerDevice.ADDR)) {
                         device.setVolume(AudioStream.Type.CALL, percentage);
                     }

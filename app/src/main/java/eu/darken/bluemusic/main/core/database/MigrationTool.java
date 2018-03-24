@@ -42,7 +42,16 @@ public class MigrationTool {
         if (!con.hasField("launchPkg")) con.addField("launchPkg", String.class);
     };
 
-    private final List<RealmMigration> subMigrations = Arrays.asList(legacyMigration, twoToThreeMigration);
+    // Schema 3 -> 4
+    private final RealmMigration threeToFourMigration = (realm, oldVersion, newVersion) -> {
+        final RealmObjectSchema con = realm.getSchema().get("DeviceConfig");
+        if (con == null) return;
+
+        // Property 'DeviceConfig.ringVolume' has been added.
+        if (!con.hasField("ringVolume")) con.addField("ringVolume", Float.class);
+    };
+
+    private final List<RealmMigration> subMigrations = Arrays.asList(legacyMigration, twoToThreeMigration, threeToFourMigration);
 
     public RealmMigration getMigration() {
         return (realm, oldVersion, newVersion) -> {
