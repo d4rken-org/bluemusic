@@ -47,7 +47,13 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
         @BindView(R.id.device_icon) ImageView icon;
         @BindView(R.id.name) TextView nameView;
         @BindView(R.id.lastseen) TextView lastSeen;
-        @BindView(R.id.flags) TextView flags;
+
+        @BindView(R.id.autoplay_icon) ImageView autoPlayIcon;
+        @BindView(R.id.autoplay_label) TextView autoPlayLabel;
+        @BindView(R.id.launch_icon) ImageView launchIcon;
+        @BindView(R.id.launch_label) TextView launchLabel;
+        @BindView(R.id.extras_container) ViewGroup extrasContainer;
+
         @BindView(R.id.config_icon) View config;
 
         @BindView(R.id.music_container) View musicContainer;
@@ -80,24 +86,22 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
             }
             lastSeen.setText(item.isActive() ? getString(R.string.label_state_connected) : timeString);
 
-            StringBuilder flagsBuilder = new StringBuilder();
-
-            if (item.isAutoPlayEnabled()) {
-                flagsBuilder.append(getString(R.string.label_autoplay));
-            }
+            autoPlayIcon.setVisibility(item.isAutoPlayEnabled() ? View.VISIBLE : View.GONE);
+            autoPlayLabel.setVisibility(item.isAutoPlayEnabled() ? View.VISIBLE : View.GONE);
 
             if (item.getLaunchPkg() != null) {
-                if (flagsBuilder.length() > 0) flagsBuilder.append(" | ");
-                String appName = item.getLaunchPkg();
                 try {
-                    appName = AppTool.getLabel(getContext(), item.getLaunchPkg());
+                    launchIcon.setImageDrawable(AppTool.getIcon(getContext(), item.getLaunchPkg()));
+                    String appName = AppTool.getLabel(getContext(), item.getLaunchPkg());
+                    launchLabel.setText(appName);
                 } catch (PackageManager.NameNotFoundException e) {
                     Timber.e(e);
                 }
-                flagsBuilder.append(appName);
             }
-            flags.setText(flagsBuilder.toString());
-            flags.setVisibility(item.isAutoPlayEnabled() || item.getLaunchPkg() != null ? View.VISIBLE : View.GONE);
+            launchIcon.setVisibility(item.getLaunchPkg() != null ? View.VISIBLE : View.GONE);
+            launchLabel.setVisibility(item.getLaunchPkg() != null ? View.VISIBLE : View.GONE);
+
+            extrasContainer.setVisibility(item.getLaunchPkg() != null || item.isAutoPlayEnabled() ? View.VISIBLE : View.GONE);
 
             config.setOnClickListener(v -> callback.onShowConfigScreen(item));
 
