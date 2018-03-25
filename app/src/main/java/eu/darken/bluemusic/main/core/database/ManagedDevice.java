@@ -81,6 +81,7 @@ public class ManagedDevice {
                 break;
             case CALL:
                 maxCallVolume = max;
+                break;
             case RINGTONE:
                 maxRingVolume = max;
                 break;
@@ -96,6 +97,7 @@ public class ManagedDevice {
                 break;
             case CALL:
                 deviceConfig.callVolume = volume;
+                break;
             case RINGTONE:
                 deviceConfig.ringVolume = volume;
                 break;
