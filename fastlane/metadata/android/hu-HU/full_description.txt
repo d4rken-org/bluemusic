@@ -1,0 +1,10 @@
+Ez az alkalmazás lehetővé teszi az Android számára, hogy emlékezzen a különböző Bluetooth-eszközök hangerejére.
+Mind a zene, mind a hívás hangereje beállítható minden eszközön.
+Az egyes Bluetooth-eszközök időzítése és konfigurálása egyedileg módosítható.
+
+Megengedett engedélyek:
+• "Internet" a hibajelentésekhez.
+• "Bluetooth" a Bluetooth-eszközök kezeléséhez.
+•"Hangbeállítások módosítása" a hangerő módosításához.
+• A "A rendszerindítás befejeződött" visszaállítja a hangerőt az újraindítás után.
+"WAKE_LOCK" hiba kijavítása a Samsung készülékeken, ahol engedély szükséges a hiba elkerülése érdekében.

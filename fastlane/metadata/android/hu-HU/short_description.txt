@@ -1,0 +1,1 @@
+Egyéni hang- és zenei hangerő-konfiguráció a Bluetooth-eszközök számára.
