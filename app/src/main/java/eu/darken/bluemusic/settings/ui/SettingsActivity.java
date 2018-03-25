@@ -40,7 +40,7 @@ public class SettingsActivity extends AppCompatActivity implements SettingsActiv
     public void showSettings() {
         Fragment introFragment = getSupportFragmentManager().findFragmentById(R.id.frame_content);
         if (introFragment == null) introFragment = SettingsFragment.newInstance();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, introFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, introFragment).commitAllowingStateLoss();
     }
 
     @Override
