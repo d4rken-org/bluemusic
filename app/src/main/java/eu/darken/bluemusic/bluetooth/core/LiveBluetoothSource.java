@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
+import android.os.ParcelUuid;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -13,8 +14,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import eu.darken.bluemusic.settings.core.Settings;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.SingleOnSubscribe;
@@ -27,15 +30,17 @@ import timber.log.Timber;
 class LiveBluetoothSource implements BluetoothSource {
 
     private final BluetoothManager manager;
+    private final Settings settings;
     private final Context context;
     @Nullable private final BluetoothAdapter adapter;
     private Observable<Boolean> stateObs;
 
     private final SourceDevice fakeSpeakerDevice;
 
-    LiveBluetoothSource(Context context) {
+    LiveBluetoothSource(Context context, Settings settings) {
         this.context = context;
         manager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
+        this.settings = settings;
         adapter = manager.getAdapter();
         if (adapter == null) Timber.w("BluetoothAdapter is null!");
         fakeSpeakerDevice = new FakeSpeakerDevice(context);
@@ -87,6 +92,13 @@ class LiveBluetoothSource implements BluetoothSource {
                 .map(bluetoothDevices -> {
                     Map<String, SourceDevice> devices = new HashMap<>();
                     for (BluetoothDevice realDevice : manager.getAdapter().getBondedDevices()) {
+
+                        final ParcelUuid[] uuids = realDevice.getUuids();
+                        if (hasUUID(uuids, 0x1400) && settings.isHealthDeviceExcluded()) {
+                            Timber.w("Health devices are excluded, ignoring: %s", realDevice);
+                            continue;
+                        }
+
                         final SourceDeviceWrapper deviceWrapper = new SourceDeviceWrapper(realDevice);
                         devices.put(deviceWrapper.getAddress(), deviceWrapper);
                     }
@@ -97,16 +109,35 @@ class LiveBluetoothSource implements BluetoothSource {
                 .subscribeOn(Schedulers.io());
     }
 
+    static boolean hasUUID(ParcelUuid[] uuids, int target) {
+        if (uuids == null) return false;
+        for (ParcelUuid uuid : uuids) {
+            if (getServiceIdentifierFromParcelUuid(uuid) == target) return true;
+        }
+        return false;
+    }
+
+    static int getServiceIdentifierFromParcelUuid(ParcelUuid parcelUuid) {
+        UUID uuid = parcelUuid.getUuid();
+        long value = (uuid.getMostSignificantBits() & 0x0000FFFF00000000L) >>> 32;
+        return (int) value;
+    }
+
     @Override
     public Single<Map<String, SourceDevice>> getConnectedDevices() {
         Timber.v("getConnectedDevices()");
 
         final List<SingleSource<List<BluetoothDevice>>> profiles = new ArrayList<>();
-        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET));
+
         profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT));
         profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT_SERVER));
-        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEALTH));
+        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET));
         profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP));
+
+        if (!settings.isHealthDeviceExcluded()) {
+            profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEALTH));
+        }
+
         return Single.defer(() -> Single.merge(profiles)
                 .toList()
                 .map(lists -> {

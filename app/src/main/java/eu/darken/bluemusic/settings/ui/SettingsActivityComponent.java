@@ -13,6 +13,8 @@ import dagger.android.support.FragmentKey;
 import dagger.multibindings.IntoMap;
 import eu.darken.bluemusic.settings.ui.about.AboutComponent;
 import eu.darken.bluemusic.settings.ui.about.AboutFragment;
+import eu.darken.bluemusic.settings.ui.advanced.AdvancedComponent;
+import eu.darken.bluemusic.settings.ui.advanced.AdvancedFragment;
 import eu.darken.bluemusic.settings.ui.general.SettingsComponent;
 import eu.darken.bluemusic.settings.ui.general.SettingsFragment;
 import eu.darken.mvpbakery.injection.PresenterComponent;
@@ -36,6 +38,7 @@ public interface SettingsActivityComponent extends ActivityComponent<SettingsAct
 
     @Module(subcomponents = {
             SettingsComponent.class,
+            AdvancedComponent.class,
             AboutComponent.class
     })
     abstract class FragmentBinderModule {
@@ -44,6 +47,11 @@ public interface SettingsActivityComponent extends ActivityComponent<SettingsAct
         @IntoMap
         @FragmentKey(SettingsFragment.class)
         abstract Factory<? extends Fragment> settings(SettingsComponent.Builder impl);
+
+        @Binds
+        @IntoMap
+        @FragmentKey(AdvancedFragment.class)
+        abstract Factory<? extends Fragment> advanced(AdvancedComponent.Builder impl);
 
         @Binds
         @IntoMap

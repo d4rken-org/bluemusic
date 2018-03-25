@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/label_general">
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="core.enabled"
+            android:key="core.advanced.devicetypes"
             android:summary="@string/description_app_enabled"
             android:title="@string/label_app_enabled"/>
         <CheckBoxPreference
@@ -28,12 +27,14 @@
             android:title="@string/label_autoplay_keytype"/>
     </PreferenceCategory>
     <PreferenceCategory
-        android:title="@string/label_other"
-        app:title="@string/label_other">
+        android:title="@string/label_other">
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="core.bugreporting.enabled"
             android:summary="@string/description_bug_reports"
             android:title="@string/label_bug_reports"/>
+        <Preference
+            android:key="core.advanced"
+            android:title="@string/label_advanced"/>
     </PreferenceCategory>
 </PreferenceScreen>

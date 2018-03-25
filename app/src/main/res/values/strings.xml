@@ -77,8 +77,11 @@
     <string name="label_thanks">Thanks</string>
     <string name="label_licenses">Licenses</string>
     <string name="label_ring_volume">Ring volume</string>
-    <string name="description_ring_volume">Control the volume which affects you call\'s ringtone.</string>
+    <string name="description_ring_volume">Control the volume which affects you ringtone volume.</string>
     <string name="description_ring_volume_additional_permission">Additional permission are necessary to change the ring volume.</string>
     <string name="label_missing_permissions">Missing permissions</string>
     <string name="action_grant">Grant</string>
+    <string name="label_advanced">Advanced</string>
+    <string name="label_exclude_health_devices">Exclude health devices</string>
+    <string name="description_exclude_health_devices">Some Android devices hang when looking up \'Health Device\' Bluetooth profiles (HDP, 0x1400).</string>
 </resources>

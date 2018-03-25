@@ -1,17 +1,16 @@
-package eu.darken.bluemusic.settings.ui.about;
+package eu.darken.bluemusic.settings.ui.advanced;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.MenuItem;
 
+import javax.inject.Inject;
+
 import eu.darken.bluemusic.R;
+import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.util.Check;
 import eu.darken.mvpbakery.base.MVPBakery;
 import eu.darken.mvpbakery.base.ViewModelRetainer;
@@ -19,7 +18,14 @@ import eu.darken.mvpbakery.injection.InjectedPresenter;
 import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
 
 
-public class AboutFragment extends PreferenceFragmentCompat implements AboutPresenter.View {
+public class AdvancedFragment extends PreferenceFragmentCompat implements AdvancedPresenter.View {
+    @Inject Settings settings;
+    @Inject AdvancedPresenter presenter;
+
+    public static Fragment newInstance() {
+        return new AdvancedFragment();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +34,12 @@ public class AboutFragment extends PreferenceFragmentCompat implements AboutPres
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.settings_about);
+        addPreferencesFromResource(R.xml.settings_advanced);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        MVPBakery.<AboutPresenter.View, AboutPresenter>builder()
+        MVPBakery.<AdvancedPresenter.View, AdvancedPresenter>builder()
                 .presenterFactory(new InjectedPresenter<>(this))
                 .presenterRetainer(new ViewModelRetainer<>(this))
                 .addPresenterCallback(new PresenterInjectionCallback<>(this))
@@ -43,7 +49,8 @@ public class AboutFragment extends PreferenceFragmentCompat implements AboutPres
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         Check.notNull(actionBar);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle(R.string.label_about);
+        actionBar.setTitle(R.string.label_advanced);
+        actionBar.setSubtitle(null);
     }
 
     @Override
@@ -56,23 +63,5 @@ public class AboutFragment extends PreferenceFragmentCompat implements AboutPres
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public void showVersion(String version) {
-        findPreference("settings_about.version").setSummary(version);
-    }
-
-    @Override
-    public void showInstallID(String id) {
-        Preference pref = findPreference("settings_about.installid");
-        pref.setSummary(id);
-        pref.setOnPreferenceClickListener(preference -> {
-            ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clip = ClipData.newPlainText("BVM Install ID", id);
-            clipboard.setPrimaryClip(clip);
-            Snackbar.make(getView(), R.string.message_copied_to_clipboard, Snackbar.LENGTH_SHORT).show();
-            return true;
-        });
     }
 }

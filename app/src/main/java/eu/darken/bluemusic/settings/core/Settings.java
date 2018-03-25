@@ -17,6 +17,8 @@ public class Settings {
     private static final String PREFKEY_BOOT_RESTORE = "core.onboot.restore";
     private static final String PREFKEY_ONBOARDING_INTRODONE = "core.onboarding.introdone";
 
+    private static final String PREFKEY_ADVANCED_EXCLUDE_HEALTHDEVICES = "core.advanced.exclude.healthdevices";
+
     public static final String PREFKEY_BUGREPORTING = "core.bugreporting.enabled";
 
     public static final String PREFKEY_CORE_ENABLED = "core.enabled";
@@ -78,4 +80,7 @@ public class Settings {
         preferences.edit().putBoolean(PREFKEY_ONBOARDING_INTRODONE, show).apply();
     }
 
+    public boolean isHealthDeviceExcluded() {
+        return preferences.getBoolean(PREFKEY_ADVANCED_EXCLUDE_HEALTHDEVICES, true);
+    }
 }

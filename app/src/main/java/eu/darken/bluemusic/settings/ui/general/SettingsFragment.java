@@ -23,6 +23,7 @@ import javax.inject.Inject;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.settings.ui.about.AboutFragment;
+import eu.darken.bluemusic.settings.ui.advanced.AdvancedFragment;
 import eu.darken.bluemusic.util.Check;
 import eu.darken.mvpbakery.base.MVPBakery;
 import eu.darken.mvpbakery.base.ViewModelRetainer;
@@ -46,7 +47,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.settings);
+        addPreferencesFromResource(R.xml.settings_general);
     }
 
     @Override
@@ -141,6 +142,12 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
             return true;
         } else if (Settings.PREFKEY_BUGREPORTING.equals(preference.getKey())) {
             preference.setSummary(((CheckBoxPreference) preference).isChecked() ? ":)" : ":(");
+            return true;
+        } else if ("core.advanced".equals(preference.getKey())) {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_content, AdvancedFragment.newInstance())
+                    .addToBackStack(null)
+                    .commit();
             return true;
         } else {
             return super.onPreferenceTreeClick(preference);
