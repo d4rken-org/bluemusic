@@ -58,34 +58,45 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/launch_icon"
-                        android:layout_width="14dp"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="1dp"
-                        android:padding="1dp"
-                        android:src="@drawable/ic_play_circle_outline_white_24dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/launch_label"
-                        app:layout_constraintEnd_toStartOf="@+id/launch_label"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintHorizontal_chainStyle="packed"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/launch_label"
-                        tools:src="@mipmap/ic_launcher_round"/>
-
                     <TextView
                         android:id="@+id/launch_label"
                         style="@style/TextAppearance.AppCompat.Caption"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginStart="2dp"
+                        android:layout_marginEnd="2dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/launch_icon"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Spotify"/>
+
+                    <ImageView
+                        android:id="@+id/launch_icon"
+                        android:layout_width="14dp"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="8dp"
+                        android:padding="1dp"
+                        android:src="@drawable/ic_play_circle_outline_white_24dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/launch_label"
+                        app:layout_constraintEnd_toStartOf="@+id/autoplay_label"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toEndOf="@+id/launch_label"
+                        app:layout_constraintTop_toTopOf="@+id/launch_label"
+                        tools:src="@mipmap/ic_launcher_round"/>
+
+                    <TextView
+                        android:id="@+id/autoplay_label"
+                        style="@style/TextAppearance.AppCompat.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="2dp"
+                        android:text="@string/label_autoplay"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/autoplay_icon"
                         app:layout_constraintHorizontal_chainStyle="packed"
                         app:layout_constraintStart_toEndOf="@+id/launch_icon"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Spotify"/>
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <ImageView
                         android:id="@+id/autoplay_icon"
@@ -95,21 +106,9 @@
                         android:padding="1dp"
                         android:src="@drawable/ic_play_circle_outline_white_24dp"
                         app:layout_constraintBottom_toBottomOf="@+id/autoplay_label"
-                        app:layout_constraintEnd_toStartOf="@+id/autoplay_label"
-                        app:layout_constraintStart_toEndOf="@+id/launch_label"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toEndOf="@+id/autoplay_label"
                         app:layout_constraintTop_toTopOf="@+id/autoplay_label"/>
-
-                    <TextView
-                        android:id="@+id/autoplay_label"
-                        style="@style/TextAppearance.AppCompat.Caption"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:text="@string/label_autoplay"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/autoplay_icon"
-                        app:layout_constraintTop_toTopOf="parent"/>
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>
 
