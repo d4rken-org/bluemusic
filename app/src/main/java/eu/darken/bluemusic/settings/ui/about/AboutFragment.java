@@ -60,12 +60,12 @@ public class AboutFragment extends PreferenceFragmentCompat implements AboutPres
 
     @Override
     public void showVersion(String version) {
-        findPreference("settings_about.version").setSummary(version);
+        findPreference("about.version").setSummary(version);
     }
 
     @Override
     public void showInstallID(String id) {
-        Preference pref = findPreference("settings_about.installid");
+        Preference pref = findPreference("about.installid");
         pref.setSummary(id);
         pref.setOnPreferenceClickListener(preference -> {
             ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
