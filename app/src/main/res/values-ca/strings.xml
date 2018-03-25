@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Reprodueix-Pausa</string>
   <string name="label_keyevent_play">Reprodueix</string>
   <string name="label_keyevent_next">Següent</string>
+  <string name="label_install_id">ID d\'instal·lació</string>
+  <string name="message_copied_to_clipboard">Copiat al porta-retalls</string>
+  <string name="label_thanks">Gràcies</string>
+  <string name="label_licenses">Llicències</string>
 </resources>

@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Esita-peata</string>
   <string name="label_keyevent_play">Esita</string>
   <string name="label_keyevent_next">Järgmine</string>
+    <string name="label_install_id">Paigaldamise ID</string>
+    <string name="message_copied_to_clipboard">Kopeeritud lõikelauale</string>
+    <string name="label_thanks">Tänan</string>
+    <string name="label_licenses">Litsentsid</string>
 </resources>

@@ -71,7 +71,11 @@
   <string name="label_device_speaker">Динамик устройства</string>
   <string name="label_launch_app">Запуск приложения</string>
   <string name="description_launch_app">Запуск приложения при подключении устройства.</string>
-  <string name="label_keyevent_playpause">Воспроизведение-пауза</string>
-  <string name="label_keyevent_play">Воспр</string>
-  <string name="label_keyevent_next">Следующая</string>
+    <string name="label_keyevent_playpause">Воспр.-пауза</string>
+    <string name="label_keyevent_play">Воспр.</string>
+    <string name="label_keyevent_next">След.</string>
+    <string name="label_install_id">Идентификатор установки</string>
+    <string name="message_copied_to_clipboard">Скопировано в буфер</string>
+    <string name="label_thanks">Спасибо</string>
+    <string name="label_licenses">Лицензии</string>
 </resources>

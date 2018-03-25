@@ -71,4 +71,11 @@
   <string name="label_device_speaker">Altofalante do dispositivo</string>
   <string name="label_launch_app">Iniciar a aplicación</string>
   <string name="description_launch_app">Inicia a aplicación ao se conectar este dispositivo.</string>
+    <string name="label_keyevent_playpause">Reproducir-deter</string>
+    <string name="label_keyevent_play">Reproducir</string>
+    <string name="label_keyevent_next">Seguinte</string>
+    <string name="label_install_id">ID de instalación</string>
+    <string name="message_copied_to_clipboard">Copiado ao portapapeis</string>
+    <string name="label_thanks">Grazas</string>
+    <string name="label_licenses">Licenzas</string>
 </resources>

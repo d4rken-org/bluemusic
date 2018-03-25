@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Odtwórz-Wstrzymaj</string>
   <string name="label_keyevent_play">Odtwórz</string>
   <string name="label_keyevent_next">Następny</string>
+    <string name="label_install_id">ID instalacji</string>
+    <string name="message_copied_to_clipboard">Skopiowano do schowka</string>
+    <string name="label_thanks">Dziękuję</string>
+    <string name="label_licenses">Licencje</string>
 </resources>

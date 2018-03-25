@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">播放-暂停</string>
   <string name="label_keyevent_play">播放</string>
   <string name="label_keyevent_next">下一个</string>
+    <string name="label_install_id">安装 ID</string>
+    <string name="message_copied_to_clipboard">已复制到剪切板</string>
+    <string name="label_thanks">致谢</string>
+    <string name="label_licenses">许可证</string>
 </resources>

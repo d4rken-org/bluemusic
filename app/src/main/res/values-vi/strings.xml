@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Phát- Tạm dừng</string>
   <string name="label_keyevent_play">Phát</string>
   <string name="label_keyevent_next">Tiếp</string>
+    <string name="label_install_id">Cài đặt ID</string>
+    <string name="message_copied_to_clipboard">Chép vào bộ nhớ tạm</string>
+    <string name="label_thanks">Cảm ơn</string>
+    <string name="label_licenses">Giấy phép</string>
 </resources>

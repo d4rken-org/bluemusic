@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Reproducir-Pausar</string>
   <string name="label_keyevent_play">Reproducir</string>
   <string name="label_keyevent_next">Siguiente</string>
+    <string name="label_install_id">ID de instalación</string>
+    <string name="message_copied_to_clipboard">Copiado en el portapapeles</string>
+    <string name="label_thanks">Gracias</string>
+    <string name="label_licenses">Licencias</string>
 </resources>

@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Groti-Pauzė</string>
   <string name="label_keyevent_play">Groti</string>
   <string name="label_keyevent_next">Kitas</string>
+    <string name="label_install_id">Įdiegimo ID</string>
+    <string name="message_copied_to_clipboard">Nukopijuota į iškarpinę</string>
+    <string name="label_thanks">Ačiū</string>
+    <string name="label_licenses">Licencijos</string>
 </resources>

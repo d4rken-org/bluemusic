@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Speel-Wag</string>
   <string name="label_keyevent_play">Speel</string>
   <string name="label_keyevent_next">Volgende</string>
+    <string name="label_install_id">Installeer ID</string>
+    <string name="message_copied_to_clipboard">Gekopieer na die Knipbord</string>
+    <string name="label_thanks">Dankie</string>
+    <string name="label_licenses">Lisensies</string>
 </resources>

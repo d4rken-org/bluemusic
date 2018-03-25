@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Přehrát-pozastavit</string>
   <string name="label_keyevent_play">Přehrát</string>
   <string name="label_keyevent_next">Další</string>
+    <string name="label_install_id">ID instalace</string>
+    <string name="message_copied_to_clipboard">Zkopírováno do schránky</string>
+    <string name="label_thanks">Díky</string>
+    <string name="label_licenses">Licence</string>
 </resources>

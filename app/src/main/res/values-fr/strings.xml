@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Lecture-Pause</string>
   <string name="label_keyevent_play">Lecture</string>
   <string name="label_keyevent_next">Suivant</string>
+    <string name="label_install_id">ID d’installation</string>
+    <string name="message_copied_to_clipboard">A été copié dans le presse-papiers</string>
+    <string name="label_thanks">Merci</string>
+    <string name="label_licenses">Licences</string>
 </resources>

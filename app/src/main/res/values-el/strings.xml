@@ -74,4 +74,7 @@
   <string name="label_keyevent_playpause">Αναπαραγωγή-Παύση</string>
   <string name="label_keyevent_play">Αναπαραγωγή</string>
   <string name="label_keyevent_next">Επόμενο</string>
+    <string name="message_copied_to_clipboard">Αντιγράφηκε στο πρόχειρο</string>
+    <string name="label_thanks">Ευχαριστώ</string>
+    <string name="label_licenses">Άδειες Xρήσης</string>
 </resources>

@@ -68,4 +68,14 @@
   <string name="description_intro_contact">Tveka inte att kontakta mig om du har frågor eller till och med en idé för en ny funktion.</string>
   <string name="label_translation">Översättning</string>
   <string name="description_help_translate">Hjälp mig att göra den här appen tillgänglig på andra språk.</string>
+    <string name="label_device_speaker">Enhetshögtalare</string>
+    <string name="label_launch_app">Starta app</string>
+    <string name="description_launch_app">Starta en app när enheten ansluts.</string>
+    <string name="label_keyevent_playpause">Spela/Pausa</string>
+    <string name="label_keyevent_play">Spela</string>
+    <string name="label_keyevent_next">Nästa</string>
+    <string name="label_install_id">Installera ID</string>
+    <string name="message_copied_to_clipboard">Kopierat till urklipp</string>
+    <string name="label_thanks">Tack</string>
+    <string name="label_licenses">Licenser</string>
 </resources>

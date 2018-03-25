@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Spill-Pause</string>
   <string name="label_keyevent_play">Spill</string>
   <string name="label_keyevent_next">Neste</string>
+    <string name="label_install_id">Installerings ID</string>
+    <string name="message_copied_to_clipboard">Kopiert til utklippstavlen</string>
+    <string name="label_thanks">Takk</string>
+    <string name="label_licenses">Lisenser</string>
 </resources>

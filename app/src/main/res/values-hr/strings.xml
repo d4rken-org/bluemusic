@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Reprodukcija-pauza</string>
   <string name="label_keyevent_play">Reprodukcija</string>
   <string name="label_keyevent_next">Sljedeće</string>
+    <string name="label_install_id">ID instalacije</string>
+    <string name="message_copied_to_clipboard">Kopirano u međuspremnik</string>
+    <string name="label_thanks">Hvala</string>
+    <string name="label_licenses">Licence</string>
 </resources>

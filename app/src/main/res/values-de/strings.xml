@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Wiedergabe-Pause</string>
   <string name="label_keyevent_play">Abspielen</string>
   <string name="label_keyevent_next">Nächste</string>
+    <string name="label_install_id">Installationsidentifikator</string>
+    <string name="message_copied_to_clipboard">In die Zwischenablage kopiert</string>
+    <string name="label_thanks">Danke</string>
+    <string name="label_licenses">Lizenzen</string>
 </resources>

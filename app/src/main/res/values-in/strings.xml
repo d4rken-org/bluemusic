@@ -74,4 +74,8 @@
   <string name="label_keyevent_playpause">Putar-Jeda</string>
   <string name="label_keyevent_play">Putar</string>
   <string name="label_keyevent_next">Berikutnya</string>
+    <string name="label_install_id">ID Pemasangan</string>
+    <string name="message_copied_to_clipboard">Salin ke Papan Klip</string>
+    <string name="label_thanks">Terima kasih</string>
+    <string name="label_licenses">Lisensi</string>
 </resources>
