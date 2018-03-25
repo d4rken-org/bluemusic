@@ -129,8 +129,13 @@ class LiveBluetoothSource implements BluetoothSource {
 
         final List<SingleSource<List<BluetoothDevice>>> profiles = new ArrayList<>();
 
-        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT));
-        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT_SERVER));
+        if (!settings.isGATTExcluded()) {
+            profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT));
+        }
+        if (!settings.isGATTServerExcluded()) {
+            profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT_SERVER));
+        }
+
         profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET));
         profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP));
 
@@ -158,11 +163,12 @@ class LiveBluetoothSource implements BluetoothSource {
     private Single<List<BluetoothDevice>> getDevicesForProfile(int desiredProfile) {
         return Single
                 .create((SingleOnSubscribe<List<BluetoothDevice>>) emitter -> {
+                    long queryStart = System.currentTimeMillis();
                     BluetoothProfile.ServiceListener listener = new BluetoothProfile.ServiceListener() {
                         @SuppressWarnings("ConstantConditions")
                         public void onServiceConnected(int profile, BluetoothProfile proxy) {
                             final List<BluetoothDevice> connectedDevices = proxy.getConnectedDevices();
-                            Timber.v("onServiceConnected(profile=%d, connected=%s)", profile, connectedDevices);
+                            Timber.v("%dms to onServiceConnected(profile=%d, connected=%s)", (System.currentTimeMillis() - queryStart), profile, connectedDevices);
                             // Fuck me, listener always calls back on the main thread...
                             emitter.onSuccess(connectedDevices);
                             adapter.closeProfileProxy(profile, proxy);
