@@ -94,10 +94,8 @@ public class DeviceManager {
                                     for (DeviceConfig config : deviceConfigs) {
                                         if (!paired.containsKey(config.address)) continue;
                                         final SourceDevice sourceDevice = paired.get(config.address);
-                                        ManagedDevice managed = new ManagedDevice(sourceDevice, realm.copyFromRealm(config));
-                                        managed.setMaxVolume(AudioStream.Type.MUSIC, streamHelper.getMaxVolume(sourceDevice.getStreamId(AudioStream.Type.MUSIC)));
-                                        managed.setMaxVolume(AudioStream.Type.CALL, streamHelper.getMaxVolume(sourceDevice.getStreamId(AudioStream.Type.CALL)));
-                                        managed.setMaxVolume(AudioStream.Type.RINGTONE, streamHelper.getMaxVolume(sourceDevice.getStreamId(AudioStream.Type.RINGTONE)));
+
+                                        final ManagedDevice managed = buildDevice(sourceDevice, realm.copyFromRealm(config));
                                         managed.setActive(active.containsKey(managed.getAddress()));
 
                                         if (active.containsKey(config.address)) config.lastConnected = System.currentTimeMillis();
@@ -161,11 +159,9 @@ public class DeviceManager {
 
                         if (active.containsKey(config.address)) config.lastConnected = System.currentTimeMillis();
 
-                        ManagedDevice newDevice = new ManagedDevice(toAdd, realm.copyFromRealm(config));
-                        newDevice.setMaxVolume(AudioStream.Type.MUSIC, streamHelper.getMaxVolume(toAdd.getStreamId(AudioStream.Type.MUSIC)));
-                        newDevice.setMaxVolume(AudioStream.Type.CALL, streamHelper.getMaxVolume(toAdd.getStreamId(AudioStream.Type.CALL)));
-                        newDevice.setMaxVolume(AudioStream.Type.RINGTONE, streamHelper.getMaxVolume(toAdd.getStreamId(AudioStream.Type.RINGTONE)));
+                        final ManagedDevice newDevice = buildDevice(toAdd, realm.copyFromRealm(config));
                         newDevice.setActive(active.containsKey(newDevice.getAddress()));
+
                         Timber.v("Loaded: %s", newDevice);
                         realm.commitTransaction();
                         return newDevice;
@@ -190,5 +186,13 @@ public class DeviceManager {
                     }
                 })
                 .doOnComplete(() -> updateDevices().subscribe());
+    }
+
+    ManagedDevice buildDevice(SourceDevice sourceDevice, DeviceConfig config) {
+        ManagedDevice managed = new ManagedDevice(sourceDevice, config);
+        managed.setMaxVolume(AudioStream.Type.MUSIC, streamHelper.getMaxVolume(sourceDevice.getStreamId(AudioStream.Type.MUSIC)));
+        managed.setMaxVolume(AudioStream.Type.CALL, streamHelper.getMaxVolume(sourceDevice.getStreamId(AudioStream.Type.CALL)));
+        managed.setMaxVolume(AudioStream.Type.RINGTONE, streamHelper.getMaxVolume(sourceDevice.getStreamId(AudioStream.Type.RINGTONE)));
+        return managed;
     }
 }
