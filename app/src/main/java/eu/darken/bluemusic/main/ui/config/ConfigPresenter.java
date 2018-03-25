@@ -120,7 +120,11 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
                 .subscribe();
     }
 
-    void onToggleRingVolume() {
+    boolean onToggleRingVolume() {
+        if (!isProVersion) {
+            onView(View::showRequiresPro);
+            return false;
+        }
         if (device.getVolume(AudioStream.Type.RINGTONE) == null) {
             if (ApiHelper.hasMarshmallow() && !notificationManager.isNotificationPolicyAccessGranted()) {
                 // Missing permissions for this, reset value
@@ -134,6 +138,8 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe();
+
+        return device.getVolume(AudioStream.Type.RINGTONE) != null;
     }
 
     boolean onToggleAutoPlay() {

@@ -85,7 +85,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         prefMusicVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleMusicVolume());
         prefCallVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleCallVolume());
-        prefRingVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleRingVolume());
+        prefRingVolume.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleRingVolume()));
         prefAutoPlay.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleAutoPlay()));
         prefLaunchApp.setOnClickListener(v -> {
             presenter.onLaunchAppClicked();
@@ -141,8 +141,13 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
     @Override
     public void updateProState(boolean isPro) {
+        prefRingVolume.setIcon(isPro ? R.drawable.ic_ring_volume_white_24dp : R.drawable.ic_stars_white_24dp);
+        prefRingVolume.setDescription(getString(R.string.description_ring_volume) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
+
         prefAutoPlay.setIcon(isPro ? R.drawable.ic_play_circle_outline_white_24dp : R.drawable.ic_stars_white_24dp);
         prefAutoPlay.setDescription(getString(R.string.description_autoplay) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
+
+        prefLaunchApp.setIcon(isPro ? R.drawable.ic_android_white_24dp : R.drawable.ic_stars_white_24dp);
 
         prefRename.setIcon(isPro ? R.drawable.ic_mode_edit_white_24dp : R.drawable.ic_stars_white_24dp);
         prefRename.setDescription(getString(R.string.description_rename_device) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
