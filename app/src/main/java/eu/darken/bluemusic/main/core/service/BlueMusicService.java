@@ -1,10 +1,16 @@
 package eu.darken.bluemusic.main.core.service;
 
+import android.app.NotificationManager;
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Binder;
+import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 
 import com.bugsnag.android.Bugsnag;
 
@@ -29,6 +35,7 @@ import eu.darken.bluemusic.main.core.audio.VolumeObserver;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.settings.core.Settings;
+import eu.darken.bluemusic.util.ApiHelper;
 import eu.darken.bluemusic.util.ui.RetryWithDelay;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -49,6 +56,15 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     private volatile boolean adjusting = false;
     private Disposable notificationSub;
     private Disposable isActiveSub;
+    private BroadcastReceiver ringerPermission = new BroadcastReceiver() {
+        @SuppressWarnings("ConstantConditions")
+        @RequiresApi(api = Build.VERSION_CODES.M)
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            Timber.d("isNotificationPolicyAccessGranted()=%b", notificationManager.isNotificationPolicyAccessGranted());
+        }
+    };
 
     @Override
     public void onCreate() {
@@ -61,6 +77,10 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         volumeObserver.addCallback(AudioStream.Id.STREAM_VOICE_CALL, this);
         volumeObserver.addCallback(AudioStream.Id.STREAM_RINGTONE, this);
         getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeObserver);
+
+        if (ApiHelper.hasMarshmallow()) {
+            registerReceiver(ringerPermission, new IntentFilter(NotificationManager.ACTION_NOTIFICATION_POLICY_ACCESS_GRANTED_CHANGED));
+        }
 
         notificationSub = deviceManager.observe()
                 .observeOn(AndroidSchedulers.mainThread())
@@ -82,6 +102,9 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Override
     public void onDestroy() {
         Timber.v("onDestroy()");
+        if (ApiHelper.hasMarshmallow()) {
+            unregisterReceiver(ringerPermission);
+        }
         notificationSub.dispose();
         isActiveSub.dispose();
         serviceHelper.stop();

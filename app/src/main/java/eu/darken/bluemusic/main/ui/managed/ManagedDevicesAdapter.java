@@ -1,6 +1,11 @@
 package eu.darken.bluemusic.main.ui.managed;
 
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +18,9 @@ import butterknife.BindView;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
+import eu.darken.bluemusic.util.ApiHelper;
 import eu.darken.bluemusic.util.AppTool;
+import eu.darken.bluemusic.util.Check;
 import eu.darken.bluemusic.util.DeviceHelper;
 import eu.darken.bluemusic.util.ui.BasicAdapter;
 import eu.darken.bluemusic.util.ui.BasicViewHolder;
@@ -69,6 +76,9 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
         @BindView(R.id.ring_container) View ringContainer;
         @BindView(R.id.ring_seekbar) SeekBar ringSeekbar;
         @BindView(R.id.ring_counter) TextView ringCounter;
+
+        @BindView(R.id.ring_permission_label) TextView ringPermissionLabel;
+        @BindView(R.id.ring_permission_action) TextView ringPermissionAction;
         private Callback callback;
 
         ManagedDeviceVH(ViewGroup parent, Callback callback) {
@@ -76,6 +86,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
             this.callback = callback;
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
         public void bind(ManagedDevice item) {
             super.bind(item);
@@ -176,6 +187,20 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                 });
                 ringSeekbar.setProgress(item.getRealVolume(AudioStream.Type.RINGTONE));
             }
+
+            ringPermissionAction.setOnClickListener(v -> {
+                Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                getContext().startActivity(intent);
+            });
+
+            final NotificationManager notifMan = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            Check.notNull(notifMan);
+            boolean needsPermission = ApiHelper.hasMarshmallow() && item.getVolume(AudioStream.Type.RINGTONE) != null && !notifMan.isNotificationPolicyAccessGranted();
+            ringPermissionLabel.setVisibility(needsPermission ? View.VISIBLE : View.GONE);
+            ringPermissionAction.setVisibility(needsPermission ? View.VISIBLE : View.GONE);
+            ringSeekbar.setVisibility(needsPermission ? View.GONE : View.VISIBLE);
+            ringCounter.setVisibility(needsPermission ? View.GONE : View.VISIBLE);
+
         }
     }
 }

@@ -209,13 +209,14 @@
                     tools:text="15"/>
             </RelativeLayout>
 
-            <RelativeLayout
+            <android.support.constraint.ConstraintLayout
                 android:id="@+id/ring_container"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:minHeight="32dp">
+
 
                 <ImageView
                     android:id="@+id/ring_icon"
@@ -225,16 +226,23 @@
                     android:layout_centerVertical="true"
                     android:contentDescription="Call volume"
                     android:src="@drawable/ic_ring_volume_white_24dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ring_seekbar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/ring_seekbar"
                     tools:ignore="HardcodedText"/>
 
                 <SeekBar
                     android:id="@+id/ring_seekbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/ring_icon"
                     android:layout_toStartOf="@+id/ring_counter"
-                    android:progress="0"/>
+                    android:progress="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ring_counter"
+                    app:layout_constraintStart_toEndOf="@+id/ring_icon"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/ring_counter"
@@ -244,8 +252,36 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="15"/>
-            </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/ring_permission_label"
+                    style="@style/TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/label_missing_permissions"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ring_permission_action"
+                    app:layout_constraintStart_toEndOf="@+id/ring_icon"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <Button
+                    android:id="@+id/ring_permission_action"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_grant"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ring_counter"
+                    app:layout_constraintStart_toEndOf="@+id/ring_permission_label"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
         </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

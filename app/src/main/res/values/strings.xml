@@ -79,4 +79,6 @@
     <string name="label_ring_volume">Ring volume</string>
     <string name="description_ring_volume">Control the volume which affects you call\'s ringtone.</string>
     <string name="description_ring_volume_additional_permission">Additional permission are necessary to change the ring volume.</string>
+    <string name="label_missing_permissions">Missing permissions</string>
+    <string name="action_grant">Grant</string>
 </resources>
