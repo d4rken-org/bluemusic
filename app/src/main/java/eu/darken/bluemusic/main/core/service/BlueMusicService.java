@@ -59,6 +59,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         volumeObserver.addCallback(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, this);
         volumeObserver.addCallback(AudioStream.Id.STREAM_MUSIC, this);
         volumeObserver.addCallback(AudioStream.Id.STREAM_VOICE_CALL, this);
+        volumeObserver.addCallback(AudioStream.Id.STREAM_RINGTONE, this);
         getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeObserver);
 
         notificationSub = deviceManager.observe()

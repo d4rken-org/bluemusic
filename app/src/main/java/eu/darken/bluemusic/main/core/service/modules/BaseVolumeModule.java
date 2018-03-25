@@ -27,6 +27,11 @@ abstract class BaseVolumeModule extends ActionModule {
 
         if (percentage == null) return;
 
+        if (!areRequirementsMet()) {
+            Timber.d("Requirements not met!");
+            return;
+        }
+
         if (percentage != -1) {
             waitAdjustmentDelay(device);
 

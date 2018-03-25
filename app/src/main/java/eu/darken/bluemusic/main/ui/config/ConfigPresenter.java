@@ -121,14 +121,15 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
     }
 
     void onToggleRingVolume() {
-        if (ApiHelper.hasMarshmallow() && !notificationManager.isNotificationPolicyAccessGranted()) {
-            onView(View::showNotificationPermissionView);
-            return;
-        }
-
         if (device.getVolume(AudioStream.Type.RINGTONE) == null) {
+            if (ApiHelper.hasMarshmallow() && !notificationManager.isNotificationPolicyAccessGranted()) {
+                // Missing permissions for this, reset value
+                onView(View::showNotificationPermissionView);
+            }
             device.setVolume(AudioStream.Type.RINGTONE, streamHelper.getVolumePercentage(device.getStreamId(AudioStream.Type.RINGTONE)));
-        } else device.setVolume(AudioStream.Type.RINGTONE, null);
+        } else {
+            device.setVolume(AudioStream.Type.RINGTONE, null);
+        }
 
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())

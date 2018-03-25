@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.main.ui.managed;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -15,29 +16,37 @@ import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.audio.StreamHelper;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
+import eu.darken.bluemusic.util.ApiHelper;
 import eu.darken.mvpbakery.base.Presenter;
 import eu.darken.mvpbakery.injection.ComponentPresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.disposables.Disposables;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @ManagedDevicesComponent.Scope
 public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPresenter.View, ManagedDevicesComponent> {
     private final StreamHelper streamHelper;
     private final IAPHelper iapHelper;
     private final BluetoothSource bluetoothSource;
+    private final NotificationManager notificationManager;
     private DeviceManager deviceManager;
     private Disposable deviceSub = Disposables.disposed();
     private Disposable upgradeSub = Disposables.disposed();
     private Disposable bluetoothSub = Disposables.disposed();
 
     @Inject
-    ManagedDevicesPresenter(DeviceManager deviceManager, StreamHelper streamHelper, IAPHelper iapHelper, BluetoothSource bluetoothSource) {
+    ManagedDevicesPresenter(DeviceManager deviceManager,
+                            StreamHelper streamHelper,
+                            IAPHelper iapHelper,
+                            BluetoothSource bluetoothSource,
+                            NotificationManager notificationManager) {
         this.deviceManager = deviceManager;
         this.streamHelper = streamHelper;
         this.iapHelper = iapHelper;
         this.bluetoothSource = bluetoothSource;
+        this.notificationManager = notificationManager;
     }
 
     @Override
@@ -96,7 +105,11 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 .subscribeOn(Schedulers.computation())
                 .subscribe(managedDevices -> {
                     if (!device.isActive()) return;
-                    streamHelper.changeVolume(device.getStreamId(AudioStream.Type.RINGTONE), device.getVolume(AudioStream.Type.RINGTONE), true, 0);
+                    if (ApiHelper.hasMarshmallow() && !notificationManager.isNotificationPolicyAccessGranted()) {
+                        Timber.w("Tried to set ring volume but notification policy permissions were missing.");
+                    } else {
+                        streamHelper.changeVolume(device.getStreamId(AudioStream.Type.RINGTONE), device.getVolume(AudioStream.Type.RINGTONE), true, 0);
+                    }
                 });
     }
 

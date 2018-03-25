@@ -7,6 +7,10 @@ import timber.log.Timber;
 
 public abstract class ActionModule {
 
+    public boolean areRequirementsMet() {
+        return true;
+    }
+
     public abstract void handle(ManagedDevice device, SourceDevice.Event event);
 
     protected void waitAdjustmentDelay(ManagedDevice device) {

@@ -279,7 +279,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void showNotificationPermissionView() {
-        Toast.makeText(getContext(), "Additional permission are necessary to change the ringtone volume.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), R.string.description_ring_volume_additional_permission, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
         startActivity(intent);
     }
