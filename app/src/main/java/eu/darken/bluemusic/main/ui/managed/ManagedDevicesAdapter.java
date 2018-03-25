@@ -142,6 +142,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                     }
                 });
                 musicSeekbar.setProgress(item.getRealVolume(AudioStream.Type.MUSIC));
+                musicCounter.setText(String.valueOf(musicSeekbar.getProgress()));
             }
 
             voiceContainer.setVisibility(item.getVolume(AudioStream.Type.CALL) != null ? View.VISIBLE : View.GONE);
@@ -164,6 +165,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                     }
                 });
                 voiceSeekbar.setProgress(item.getRealVolume(AudioStream.Type.CALL));
+                voiceCounter.setText(String.valueOf(voiceSeekbar.getProgress()));
             }
 
             ringContainer.setVisibility(item.getVolume(AudioStream.Type.RINGTONE) != null ? View.VISIBLE : View.GONE);
@@ -186,6 +188,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                     }
                 });
                 ringSeekbar.setProgress(item.getRealVolume(AudioStream.Type.RINGTONE));
+                ringCounter.setText(String.valueOf(ringSeekbar.getProgress()));
             }
 
             ringPermissionAction.setOnClickListener(v -> {

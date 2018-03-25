@@ -83,7 +83,8 @@
                         app:layout_constraintHorizontal_chainStyle="packed"
                         app:layout_constraintStart_toEndOf="@+id/launch_label"
                         app:layout_constraintTop_toTopOf="@+id/launch_label"
-                        tools:src="@mipmap/ic_launcher_round"/>
+                        tools:src="@mipmap/ic_launcher_round"
+                        tools:ignore="ContentDescription"/>
 
                     <TextView
                         android:id="@+id/autoplay_label"
@@ -108,7 +109,8 @@
                         app:layout_constraintBottom_toBottomOf="@+id/autoplay_label"
                         app:layout_constraintHorizontal_chainStyle="packed"
                         app:layout_constraintStart_toEndOf="@+id/autoplay_label"
-                        app:layout_constraintTop_toTopOf="@+id/autoplay_label"/>
+                        app:layout_constraintTop_toTopOf="@+id/autoplay_label"
+                        tools:ignore="ContentDescription"/>
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>
 
@@ -132,7 +134,7 @@
             android:layout_marginStart="16dp"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <android.support.constraint.ConstraintLayout
                 android:id="@+id/music_container"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
@@ -143,34 +145,38 @@
                     android:id="@+id/music_icon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
                     android:contentDescription="Music volume"
                     android:src="@drawable/ic_music_note_white_24dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/music_seekbar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/music_seekbar"
                     tools:ignore="HardcodedText"/>
 
                 <SeekBar
                     android:id="@+id/music_seekbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/music_icon"
-                    android:layout_toStartOf="@+id/music_counter"
-                    android:progress="0"/>
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:progress="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/music_counter"
+                    app:layout_constraintStart_toEndOf="@+id/music_icon"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/music_counter"
                     style="@style/TextAppearance.AppCompat.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
                     android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/music_seekbar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/music_seekbar"
+                    app:layout_constraintTop_toTopOf="@+id/music_seekbar"
                     tools:text="15"/>
-            </RelativeLayout>
+            </android.support.constraint.ConstraintLayout>
 
 
-            <RelativeLayout
+            <android.support.constraint.ConstraintLayout
                 android:id="@+id/call_container"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
@@ -182,31 +188,37 @@
                     android:id="@+id/call_icon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
                     android:contentDescription="Call volume"
                     android:src="@drawable/ic_phone_white_24dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/call_seekbar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/call_seekbar"
                     tools:ignore="HardcodedText"/>
 
                 <SeekBar
                     android:id="@+id/call_seekbar"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/call_icon"
-                    android:layout_toStartOf="@+id/call_counter"
-                    android:progress="0"/>
+                    android:progress="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/call_counter"
+                    app:layout_constraintStart_toEndOf="@+id/call_icon"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/call_counter"
                     style="@style/TextAppearance.AppCompat.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/call_seekbar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/call_seekbar"
+                    app:layout_constraintTop_toTopOf="@+id/call_seekbar"
                     tools:text="15"/>
-            </RelativeLayout>
+            </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/ring_container"
@@ -216,13 +228,10 @@
                 android:gravity="center_vertical"
                 android:minHeight="32dp">
 
-
                 <ImageView
                     android:id="@+id/ring_icon"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
                     android:contentDescription="Call volume"
                     android:src="@drawable/ic_ring_volume_white_24dp"
                     app:layout_constraintBottom_toBottomOf="@+id/ring_seekbar"
@@ -234,9 +243,6 @@
                     android:id="@+id/ring_seekbar"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/ring_icon"
-                    android:layout_toStartOf="@+id/ring_counter"
                     android:progress="0"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/ring_counter"
@@ -248,11 +254,10 @@
                     style="@style/TextAppearance.AppCompat.Caption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
                     android:gravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ring_seekbar"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="15"/>
 
