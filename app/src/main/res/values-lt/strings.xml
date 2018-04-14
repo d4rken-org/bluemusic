@@ -74,8 +74,20 @@
   <string name="label_keyevent_playpause">Groti-Pauzė</string>
   <string name="label_keyevent_play">Groti</string>
   <string name="label_keyevent_next">Kitas</string>
-    <string name="label_install_id">Įdiegimo ID</string>
-    <string name="message_copied_to_clipboard">Nukopijuota į iškarpinę</string>
-    <string name="label_thanks">Ačiū</string>
-    <string name="label_licenses">Licencijos</string>
+  <string name="label_install_id">Įdiegimo ID</string>
+  <string name="message_copied_to_clipboard">Nukopijuota į iškarpinę</string>
+  <string name="label_thanks">Ačiū</string>
+  <string name="label_licenses">Licencijos</string>
+  <string name="label_ring_volume">Skambėjimo garsumas</string>
+  <string name="description_ring_volume">Valdykite skambėjimo garsumą.</string>
+  <string name="description_ring_volume_additional_permission">Skambučio garsumo valdymui reikalingos papildomos teisės.</string>
+  <string name="label_missing_permissions">Trūksta leidimų</string>
+  <string name="action_grant">Suteikti</string>
+  <string name="label_advanced">Išplėstiniai</string>
+  <string name="label_exclude_health">Išskirti sveikatos profilius</string>
+  <string name="description_exclude_health">Kai kurie Android įrenginiai užstringa prijungus Bluetooth \'Sveikatingumo Įrenginį\' (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Išskirti GATT serverio profilius</string>
+  <string name="label_exclude_gatt">Išskirti GATT profilius</string>
+  <string name="description_exclude_gattserver">Neieškoti \'Generic Attribute\' (GATT) serverių Bluetooth profilių.</string>
+  <string name="description_exclude_gatt">Neieškoti \'Generic Attribute\' (GATT) klientų Bluetooth profilių.</string>
 </resources>

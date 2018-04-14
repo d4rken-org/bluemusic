@@ -74,8 +74,20 @@
   <string name="label_keyevent_playpause">Esita-peata</string>
   <string name="label_keyevent_play">Esita</string>
   <string name="label_keyevent_next">Järgmine</string>
-    <string name="label_install_id">Paigaldamise ID</string>
-    <string name="message_copied_to_clipboard">Kopeeritud lõikelauale</string>
-    <string name="label_thanks">Tänan</string>
-    <string name="label_licenses">Litsentsid</string>
+  <string name="label_install_id">Paigaldamise ID</string>
+  <string name="message_copied_to_clipboard">Kopeeritud lõikelauale</string>
+  <string name="label_thanks">Tänan</string>
+  <string name="label_licenses">Litsentsid</string>
+  <string name="label_ring_volume">Helisemise heli</string>
+  <string name="description_ring_volume">Halda helina heli.</string>
+  <string name="description_ring_volume_additional_permission">Helina heli muutmine nõuab lisalubasid.</string>
+  <string name="label_missing_permissions">Puuduvad load</string>
+  <string name="action_grant">Luba</string>
+  <string name="label_advanced">Lisavalikud</string>
+  <string name="label_exclude_health">Eira tervise profiile</string>
+  <string name="description_exclude_health">Osa Android seadmetest jooksevad kokku „Tervise seadme„ sinihamba profiilide otsimisel (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Eira GATT-serveri profiilid</string>
+  <string name="label_exclude_gatt">Eira GATT-profiilid</string>
+  <string name="description_exclude_gattserver">Ära otsi „Generic Attribute“ (GATT) serveri sinihamba profiile.</string>
+  <string name="description_exclude_gatt">Ära otsi „Generic Attribute“ (GATT) sinihamba profiile.</string>
 </resources>

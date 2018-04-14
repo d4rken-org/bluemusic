@@ -71,11 +71,11 @@
   <string name="label_device_speaker">Динамік пристрою</string>
   <string name="label_launch_app">Запуск додатка</string>
   <string name="description_launch_app">Запуск додатка при під\'єднанні пристрою.</string>
-    <string name="label_keyevent_playpause">Грати-Пауза</string>
-    <string name="label_keyevent_play">Грати</string>
-    <string name="label_keyevent_next">Наступне</string>
-    <string name="label_install_id">ID Установки</string>
-    <string name="message_copied_to_clipboard">Збережено у буфері</string>
-    <string name="label_thanks">Спасибі</string>
-    <string name="label_licenses">Ліцензії</string>
+  <string name="label_keyevent_playpause">Грати-Пауза</string>
+  <string name="label_keyevent_play">Грати</string>
+  <string name="label_keyevent_next">Наступне</string>
+  <string name="label_install_id">ID Установки</string>
+  <string name="message_copied_to_clipboard">Збережено у буфері</string>
+  <string name="label_thanks">Спасибі</string>
+  <string name="label_licenses">Ліцензії</string>
 </resources>

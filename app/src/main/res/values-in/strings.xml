@@ -74,8 +74,20 @@
   <string name="label_keyevent_playpause">Putar-Jeda</string>
   <string name="label_keyevent_play">Putar</string>
   <string name="label_keyevent_next">Berikutnya</string>
-    <string name="label_install_id">ID Pemasangan</string>
-    <string name="message_copied_to_clipboard">Salin ke Papan Klip</string>
-    <string name="label_thanks">Terima kasih</string>
-    <string name="label_licenses">Lisensi</string>
+  <string name="label_install_id">ID Pemasangan</string>
+  <string name="message_copied_to_clipboard">Salin ke Papan Klip</string>
+  <string name="label_thanks">Terima kasih</string>
+  <string name="label_licenses">Lisensi</string>
+  <string name="label_ring_volume">Volume dering</string>
+  <string name="description_ring_volume">Kendalikan volume yang memengaruhi nada dering Anda.</string>
+  <string name="description_ring_volume_additional_permission">Perzinaan tambahan dibutuhkan untuk dapat mengubah volume dering.</string>
+  <string name="label_missing_permissions">Perizinan kurang</string>
+  <string name="action_grant">Diizinkan</string>
+  <string name="label_advanced">Lanjutan</string>
+  <string name="label_exclude_health">Kecualikan profil kesehatan</string>
+  <string name="description_exclude_health">Beberapa perangkat Android membeku saat mencari profil \'Kesehatan Perangkat\' (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Kecualikan profil peladen GATT</string>
+  <string name="label_exclude_gatt">Kecualikan profil GATT</string>
+  <string name="description_exclude_gattserver">Jangan kirim permintaan profil Bluetooth berjenis peladen Generic Attribute (GATT).</string>
+  <string name="description_exclude_gatt">Jangan kirim permintaan profil Bluetooth berjenis klien Generic Attribute (GATT).</string>
 </resources>

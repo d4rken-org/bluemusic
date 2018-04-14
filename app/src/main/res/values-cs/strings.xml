@@ -74,8 +74,20 @@
   <string name="label_keyevent_playpause">Přehrát-pozastavit</string>
   <string name="label_keyevent_play">Přehrát</string>
   <string name="label_keyevent_next">Další</string>
-    <string name="label_install_id">ID instalace</string>
-    <string name="message_copied_to_clipboard">Zkopírováno do schránky</string>
-    <string name="label_thanks">Díky</string>
-    <string name="label_licenses">Licence</string>
+  <string name="label_install_id">ID instalace</string>
+  <string name="message_copied_to_clipboard">Zkopírováno do schránky</string>
+  <string name="label_thanks">Díky</string>
+  <string name="label_licenses">Licence</string>
+  <string name="label_ring_volume">Hlasitost vyzvánění</string>
+  <string name="description_ring_volume">Ovládání hlasitosti, která ovlivňuje vyzváněcí tón.</string>
+  <string name="description_ring_volume_additional_permission">Pro změnu hlasitosti vyzvánění je potřeba další oprávnění.</string>
+  <string name="label_missing_permissions">Chybějící oprávnění</string>
+  <string name="action_grant">Udělit</string>
+  <string name="label_advanced">Pokročilé</string>
+  <string name="label_exclude_health">Vyloučit zdravotní profily</string>
+  <string name="description_exclude_health">Některá zařízení Android zamrznou při vyhledávání profilů Bluetooth \'Zdravotní zařízení\' (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Vyloučit profily serveru GATT</string>
+  <string name="label_exclude_gatt">Vyloučit profily GATT</string>
+  <string name="description_exclude_gattserver">Neptat se na Bluetooth profily typu \'Obecný atribut\' serveru (GATT).</string>
+  <string name="description_exclude_gatt">Neptat se na Bluetooth profily typu \'Obecný atribut\' klienta (GATT).</string>
 </resources>

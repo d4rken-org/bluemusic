@@ -74,8 +74,20 @@
   <string name="label_keyevent_playpause">Reproduzir/Pausar</string>
   <string name="label_keyevent_play">Reproduzir</string>
   <string name="label_keyevent_next">Avançar</string>
-    <string name="label_install_id">Identificador de Instalação</string>
-    <string name="message_copied_to_clipboard">Copiado para área de transferência</string>
-    <string name="label_thanks">Agradecimentos</string>
-    <string name="label_licenses">Licenças</string>
+  <string name="label_install_id">Identificador de Instalação</string>
+  <string name="message_copied_to_clipboard">Copiado para área de transferência</string>
+  <string name="label_thanks">Agradecimentos</string>
+  <string name="label_licenses">Licenças</string>
+  <string name="label_ring_volume">Volume do toque</string>
+  <string name="description_ring_volume">Controle o volume que afeta seu toque.</string>
+  <string name="description_ring_volume_additional_permission">Permissões adicionais são necessárias para alterar o volume do toque.</string>
+  <string name="label_missing_permissions">Permissões inexistentes</string>
+  <string name="action_grant">Conceder</string>
+  <string name="label_advanced">Avançadas</string>
+  <string name="label_exclude_health">Excluir perfis de saúde</string>
+  <string name="description_exclude_health">Alguns dispositivos Android travam ao procurar perfis Bluetooth de \'Dispositivos de Saúde\' (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Excluir perfis de servidor GATT</string>
+  <string name="label_exclude_gatt">Excluir perfis GATT</string>
+  <string name="description_exclude_gattserver">Não consulta perfis Bluetooth de servidores do tipo \'Atributo genérico\' (GATT).</string>
+  <string name="description_exclude_gatt">Não consulta perfis Bluetooth de clientes do tipo \'Atributo genérico\' (GATT).</string>
 </resources>

@@ -74,8 +74,20 @@
   <string name="label_keyevent_playpause">Wiedergabe-Pause</string>
   <string name="label_keyevent_play">Abspielen</string>
   <string name="label_keyevent_next">Nächste</string>
-    <string name="label_install_id">Installationsidentifikator</string>
-    <string name="message_copied_to_clipboard">In die Zwischenablage kopiert</string>
-    <string name="label_thanks">Danke</string>
-    <string name="label_licenses">Lizenzen</string>
+  <string name="label_install_id">Installationsidentifikator</string>
+  <string name="message_copied_to_clipboard">In die Zwischenablage kopiert</string>
+  <string name="label_thanks">Danke</string>
+  <string name="label_licenses">Lizenzen</string>
+  <string name="label_ring_volume">Klingeltonlautstärke</string>
+  <string name="description_ring_volume">Regel die Lautstärke, die Deinen Klingelton betrifft.</string>
+  <string name="description_ring_volume_additional_permission">Zusätzliche Berechtigungen sind erforderlich, um die Lautstärke des Klingeltons ändern.</string>
+  <string name="label_missing_permissions">Fehlende Berechtigungen</string>
+  <string name="action_grant">Gewähren</string>
+  <string name="label_advanced">Erweitert</string>
+  <string name="label_exclude_health">Gesundheitsprofile ausschließen</string>
+  <string name="description_exclude_health">Einige Android-Geräte hängen sich auf, wenn sie das Bluetooth-Profil eines \"Gesundheitsgeräts\" auflösen (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">GATT-Server-Profile ausschließen</string>
+  <string name="label_exclude_gatt">GATT-Profile ausschließen</string>
+  <string name="description_exclude_gattserver">Bluetooth-Profile des Typs \"Generisches Attribut\" (GATT) Server nicht abfragen.</string>
+  <string name="description_exclude_gatt">Bluetooth-Profile des Typs \"Generisches Attribut\" (GATT) Client nicht abfragen.</string>
 </resources>

@@ -74,8 +74,20 @@
   <string name="label_keyevent_playpause">Riproduci-Metti in pausa</string>
   <string name="label_keyevent_play">Play</string>
   <string name="label_keyevent_next">Avanti</string>
-    <string name="label_install_id">Installa ID</string>
-    <string name="message_copied_to_clipboard">Copiato negli appunti</string>
-    <string name="label_thanks">Ringraziamenti</string>
-    <string name="label_licenses">Licenze</string>
+  <string name="label_install_id">Installa ID</string>
+  <string name="message_copied_to_clipboard">Copiato negli appunti</string>
+  <string name="label_thanks">Ringraziamenti</string>
+  <string name="label_licenses">Licenze</string>
+  <string name="label_ring_volume">Volume suoneria</string>
+  <string name="description_ring_volume">Controlla il volume che incide sulla tua suoneria.</string>
+  <string name="description_ring_volume_additional_permission">Sono necessari ulteriori autorizzazioni per modificare il volume della suoneria.</string>
+  <string name="label_missing_permissions">Autorizzazioni mancanti</string>
+  <string name="action_grant">Consenti</string>
+  <string name="label_advanced">Avanzate</string>
+  <string name="label_exclude_health">Escludi i profili sanitari</string>
+  <string name="description_exclude_health">Alcuni dispositivi Android si bloccano quando cercano i profili Bluetooth di dispositivi sanitari (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Escludi i profili server GATT</string>
+  <string name="label_exclude_gatt">Escludi i profili GATT</string>
+  <string name="description_exclude_gattserver">Non ricercare i profili Bluetooth di tipo server di \'Attributo Generico\' (GATT).</string>
+  <string name="description_exclude_gatt">Non ricercare i profili Bluetooth di tipo client di \'Attributo Generico\' (GATT).</string>
 </resources>

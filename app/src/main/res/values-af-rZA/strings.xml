@@ -74,8 +74,20 @@
   <string name="label_keyevent_playpause">Speel-Wag</string>
   <string name="label_keyevent_play">Speel</string>
   <string name="label_keyevent_next">Volgende</string>
-    <string name="label_install_id">Installeer ID</string>
-    <string name="message_copied_to_clipboard">Gekopieer na die Knipbord</string>
-    <string name="label_thanks">Dankie</string>
-    <string name="label_licenses">Lisensies</string>
+  <string name="label_install_id">Installeer ID</string>
+  <string name="message_copied_to_clipboard">Gekopieer na die Knipbord</string>
+  <string name="label_thanks">Dankie</string>
+  <string name="label_licenses">Lisensies</string>
+  <string name="label_ring_volume">Lui volume</string>
+  <string name="description_ring_volume">Beheer die volume wat jou luitoon beïnvloed.</string>
+  <string name="description_ring_volume_additional_permission">Addisionele toestemming is nodig om die luitoon volume te verander.</string>
+  <string name="label_missing_permissions">Vermiste toestemmings</string>
+  <string name="action_grant">Laat toe</string>
+  <string name="label_advanced">Gevorderd</string>
+  <string name="label_exclude_health">Sluit gesondheids profiel uit</string>
+  <string name="description_exclude_health">Sommige Android toestelle hang indien \'Gesondheids Toestel\' Bluetooth profiel opgesoek word (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Sluit GATT bediener profiele uit</string>
+  <string name="label_exclude_gatt">Sluit GATT profiele uit</string>
+  <string name="description_exclude_gattserver">Moet nie Bluetooth \'Generic Attribute\' (GATT) bediener profiele bevraagteken nie.</string>
+  <string name="description_exclude_gatt">Moet nie Bluetooth \'Generic Attribute\' (GATT) bediener profiele bevraagteken nie.</string>
 </resources>

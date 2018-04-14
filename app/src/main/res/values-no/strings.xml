@@ -74,8 +74,20 @@
   <string name="label_keyevent_playpause">Spill-Pause</string>
   <string name="label_keyevent_play">Spill</string>
   <string name="label_keyevent_next">Neste</string>
-    <string name="label_install_id">Installerings ID</string>
-    <string name="message_copied_to_clipboard">Kopiert til utklippstavlen</string>
-    <string name="label_thanks">Takk</string>
-    <string name="label_licenses">Lisenser</string>
+  <string name="label_install_id">Installerings ID</string>
+  <string name="message_copied_to_clipboard">Kopiert til utklippstavlen</string>
+  <string name="label_thanks">Takk</string>
+  <string name="label_licenses">Lisenser</string>
+  <string name="label_ring_volume">Ringevolum</string>
+  <string name="description_ring_volume">Kontroller volumet som påvirker ringetonen din.</string>
+  <string name="description_ring_volume_additional_permission">Tilleggstillatelser er nødvendige for å endre ringevolumet.</string>
+  <string name="label_missing_permissions">Mangler tillatelser</string>
+  <string name="action_grant">Gi</string>
+  <string name="label_advanced">Avansert</string>
+  <string name="label_exclude_health">Ekskluder helseprofiler</string>
+  <string name="description_exclude_health">Noen Android enheter henger seg opp når de ser etter \'Helse Enhet\' Bluetooth profiler (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Utelat GATT server profiler</string>
+  <string name="label_exclude_gatt">Utelat GATT profiler</string>
+  <string name="description_exclude_gattserver">Ikke spør etter Bluetooth-profiler av typen \"Generisk Attributt\" (GATT) server.</string>
+  <string name="description_exclude_gatt">Ikke spør etter Bluetooth-profiler av typen \"Generisk Attributt\" (GATT) klient.</string>
 </resources>

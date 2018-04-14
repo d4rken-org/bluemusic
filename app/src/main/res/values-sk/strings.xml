@@ -74,8 +74,20 @@
   <string name="label_keyevent_playpause">Prehrať/Pozastaviť</string>
   <string name="label_keyevent_play">Prehrať</string>
   <string name="label_keyevent_next">Ďalšia</string>
-    <string name="label_install_id">Inštalačné ID</string>
-    <string name="message_copied_to_clipboard">Skopírované do schránky</string>
-    <string name="label_thanks">Ďakujeme</string>
-    <string name="label_licenses">Licencie</string>
+  <string name="label_install_id">Inštalačné ID</string>
+  <string name="message_copied_to_clipboard">Skopírované do schránky</string>
+  <string name="label_thanks">Ďakujeme</string>
+  <string name="label_licenses">Licencie</string>
+  <string name="label_ring_volume">Hlasitosť zvonenia</string>
+  <string name="description_ring_volume">Ovládanie hlasitosti, ktoré ovplyvňuje zvonenie.</string>
+  <string name="description_ring_volume_additional_permission">Na zmenu hlasitosti zvonenia je potrebné ďalšie povolenie.</string>
+  <string name="label_missing_permissions">Chýbajúce povolenia</string>
+  <string name="action_grant">Povoliť</string>
+  <string name="label_advanced">Pokročilé</string>
+  <string name="label_exclude_health">Vylúčiť health profiles</string>
+  <string name="description_exclude_health">Niektoré Android zariadenia zamrznú pri hľadaní \'Health Device\' Bluetooth profiles (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Vylúčiť GATT server profiles</string>
+  <string name="label_exclude_gatt">Vylúčiť GATT profily</string>
+  <string name="description_exclude_gattserver">Nepýtať sa na profily Bluetooth typu \"Generic Attributes\" (GATT) server.</string>
+  <string name="description_exclude_gatt">Nepýtať sa na profily Bluetooth typu \"Generic Attributes\" (GATT) klient.</string>
 </resources>

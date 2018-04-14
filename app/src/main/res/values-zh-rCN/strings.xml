@@ -74,8 +74,18 @@
   <string name="label_keyevent_playpause">播放-暂停</string>
   <string name="label_keyevent_play">播放</string>
   <string name="label_keyevent_next">下一个</string>
-    <string name="label_install_id">安装 ID</string>
-    <string name="message_copied_to_clipboard">已复制到剪切板</string>
-    <string name="label_thanks">致谢</string>
-    <string name="label_licenses">许可证</string>
+  <string name="label_install_id">安装 ID</string>
+  <string name="message_copied_to_clipboard">已复制到剪切板</string>
+  <string name="label_thanks">致谢</string>
+  <string name="label_licenses">许可证</string>
+  <string name="label_ring_volume">铃声音量</string>
+  <string name="description_ring_volume">控制影响铃声的音量。</string>
+  <string name="description_ring_volume_additional_permission">需要额外的权限才能更改铃声音量。</string>
+  <string name="label_missing_permissions">缺少权限</string>
+  <string name="action_grant">授予</string>
+  <string name="label_advanced">高级</string>
+  <string name="label_exclude_gattserver">排除 GATT 服务器配置文件</string>
+  <string name="label_exclude_gatt">排除 GATT 配置文件</string>
+  <string name="description_exclude_gattserver">不要查询“通用属性”（GATT）服务器类型的蓝牙配置文件。</string>
+  <string name="description_exclude_gatt">不要查询“通用属性”（GATT）客户端类型的蓝牙配置文件。</string>
 </resources>

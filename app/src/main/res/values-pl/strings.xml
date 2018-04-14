@@ -74,8 +74,20 @@
   <string name="label_keyevent_playpause">Odtwórz-Wstrzymaj</string>
   <string name="label_keyevent_play">Odtwórz</string>
   <string name="label_keyevent_next">Następny</string>
-    <string name="label_install_id">ID instalacji</string>
-    <string name="message_copied_to_clipboard">Skopiowano do schowka</string>
-    <string name="label_thanks">Dziękuję</string>
-    <string name="label_licenses">Licencje</string>
+  <string name="label_install_id">ID instalacji</string>
+  <string name="message_copied_to_clipboard">Skopiowano do schowka</string>
+  <string name="label_thanks">Dziękuję</string>
+  <string name="label_licenses">Licencje</string>
+  <string name="label_ring_volume">Głośność dzwonka</string>
+  <string name="description_ring_volume">Steruj głośnością, która ma wpływ na dzwonek.</string>
+  <string name="description_ring_volume_additional_permission">Dodatkowe uprawnienia są wymagane, aby móc sterować głośnością dzwonka.</string>
+  <string name="label_missing_permissions">Brak uprawnień</string>
+  <string name="action_grant">Przyznaj</string>
+  <string name="label_advanced">Zaawansowane</string>
+  <string name="label_exclude_health">Wyklucz profile \'Health Device\'</string>
+  <string name="description_exclude_health">Niektóre urządzenia z Androidem zawieszają się przy wyszukiwaniu profilu Bluetooth \'Health Device\' (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Wyklucz profile serwerowe GATT</string>
+  <string name="label_exclude_gatt">Wyklucz profile GATT</string>
+  <string name="description_exclude_gattserver">Nie pytaj profili Bluetooth z typem serwera \'Generic Attribute\' (GATT).</string>
+  <string name="description_exclude_gatt">Nie pytaj profili Bluetooth z typem klienta \'Generic Attribute\' (GATT).</string>
 </resources>

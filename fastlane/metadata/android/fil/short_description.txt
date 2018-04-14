@@ -1,1 +1,1 @@
-Kanya-kanyang konpigurasyon ng volume musika para sa mga Bluetooth device.
+Individual voice & music volume configuration for Bluetooth devices.

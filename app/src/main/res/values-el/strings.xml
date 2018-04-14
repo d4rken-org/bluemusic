@@ -74,7 +74,20 @@
   <string name="label_keyevent_playpause">Αναπαραγωγή-Παύση</string>
   <string name="label_keyevent_play">Αναπαραγωγή</string>
   <string name="label_keyevent_next">Επόμενο</string>
-    <string name="message_copied_to_clipboard">Αντιγράφηκε στο πρόχειρο</string>
-    <string name="label_thanks">Ευχαριστώ</string>
-    <string name="label_licenses">Άδειες Xρήσης</string>
+  <string name="label_install_id">Εγκατεστημένο ID</string>
+  <string name="message_copied_to_clipboard">Αντιγράφηκε στο πρόχειρο</string>
+  <string name="label_thanks">Ευχαριστώ</string>
+  <string name="label_licenses">Άδειες Xρήσης</string>
+  <string name="label_ring_volume">Ένταση ήχου κλήσης</string>
+  <string name="description_ring_volume">Ελέγξτε την ένταση που επηρεάζει τον ήχο κλήσης σας.</string>
+  <string name="description_ring_volume_additional_permission">Πρόσθετα δικαιώματα είναι αναγκαία για να αλλάξετε την ένταση του ήχου κλήσης.</string>
+  <string name="label_missing_permissions">Ελλειπή δικαιώματα</string>
+  <string name="action_grant">Χορήγηση</string>
+  <string name="label_advanced">Προχωρημένα</string>
+  <string name="label_exclude_health">Παράκαμψη προφίλ υγείας</string>
+  <string name="description_exclude_health">Ορισμένες συσκευές Android κολλάνε όταν ψάχνουν για τα προφίλ Bluetooth «Συσκευή Υγείας» (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Παράκαμψη προφίλ GATT server</string>
+  <string name="label_exclude_gatt">Παράκαμψη προφίλ GATT</string>
+  <string name="description_exclude_gattserver">Μην τρέξετε ερώτημα για προφίλ Bluetooth τύπου \'Generic Attribute\' (GATT) server.</string>
+  <string name="description_exclude_gatt">Μην τρέξετε ερώτημα για προφίλ Bluetooth τύπου \'Generic Attribute\' (GATT) client.</string>
 </resources>

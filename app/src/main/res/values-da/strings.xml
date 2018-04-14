@@ -71,4 +71,20 @@
   <string name="label_device_speaker">Enhedens højtaler</string>
   <string name="label_launch_app">Start app</string>
   <string name="description_launch_app">Start en app når enheden tilkobles.</string>
+  <string name="label_keyevent_playpause">Afspil-Pause</string>
+  <string name="label_keyevent_play">Afspil</string>
+  <string name="label_keyevent_next">Næste</string>
+  <string name="label_install_id">Installations-ID</string>
+  <string name="message_copied_to_clipboard">Kopieret til udklipsholderen</string>
+  <string name="label_thanks">Tak</string>
+  <string name="label_licenses">Licenser</string>
+  <string name="label_ring_volume">Ringelydstyrke</string>
+  <string name="description_ring_volume">Kontroller lydstyrken som påvirker din ringetone.</string>
+  <string name="description_ring_volume_additional_permission">Yderligere tilladelser er nødvendige for at ændre ringelydstyrken.</string>
+  <string name="label_missing_permissions">Manglende tilladelser</string>
+  <string name="label_advanced">Avanceret</string>
+  <string name="label_exclude_gattserver">Udelad GATT server profiler</string>
+  <string name="label_exclude_gatt">Udelad GATT profiler</string>
+  <string name="description_exclude_gattserver">Ikke spørg efter Bluetooth-profiler af typen \"Generisk Attribut\" (GATT) server.</string>
+  <string name="description_exclude_gatt">Ikke spørg efter Bluetooth-profiler af typen \"Generisk Attribut\" (GATT) klient.</string>
 </resources>

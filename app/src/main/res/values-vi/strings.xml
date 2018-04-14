@@ -74,8 +74,20 @@
   <string name="label_keyevent_playpause">Phát- Tạm dừng</string>
   <string name="label_keyevent_play">Phát</string>
   <string name="label_keyevent_next">Tiếp</string>
-    <string name="label_install_id">Cài đặt ID</string>
-    <string name="message_copied_to_clipboard">Chép vào bộ nhớ tạm</string>
-    <string name="label_thanks">Cảm ơn</string>
-    <string name="label_licenses">Giấy phép</string>
+  <string name="label_install_id">Cài đặt ID</string>
+  <string name="message_copied_to_clipboard">Chép vào bộ nhớ tạm</string>
+  <string name="label_thanks">Cảm ơn</string>
+  <string name="label_licenses">Giấy phép</string>
+  <string name="label_ring_volume">Âm lượng chuông</string>
+  <string name="description_ring_volume">Điều khiển âm lượng sẽ ảnh hưởng đến nhạc chuông của bạn.</string>
+  <string name="description_ring_volume_additional_permission">Các quyền bổ sung là cần thiết để thay đổi âm lượng chuông.</string>
+  <string name="label_missing_permissions">Thiếu quyền</string>
+  <string name="action_grant">Chấp thuận</string>
+  <string name="label_advanced">Nâng cao</string>
+  <string name="label_exclude_health">Loại trừ cấu hình sức khoẻ</string>
+  <string name="description_exclude_health">Một số thiết bị Android bị treo khi tìm kiếm cấu hình Bluetooth \'Thiết bị Y tế\' (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Loại trừ các cấu hình server GATT</string>
+  <string name="label_exclude_gatt">Loại trừ các cấu hình GATT</string>
+  <string name="description_exclude_gattserver">Không truy vấn cấu hình Bluetooth của máy chủ \'Thuộc tính Chung\' (GATT).</string>
+  <string name="description_exclude_gatt">Không truy vấn cấu hình Bluetooth của ứng dụng thuộc tính \'Thuộc tính Chung\' (GATT).</string>
 </resources>
