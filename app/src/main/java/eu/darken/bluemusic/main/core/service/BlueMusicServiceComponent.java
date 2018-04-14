@@ -8,7 +8,7 @@ import eu.darken.mvpbakery.injection.service.ServiceComponent;
 
 
 @BlueMusicServiceComponent.Scope
-@Subcomponent(modules = {ServiceModule.class})
+@Subcomponent(modules = {ServiceModule.class, ActionModuleModule.class})
 public interface BlueMusicServiceComponent extends ServiceComponent<BlueMusicService> {
 
     @Subcomponent.Builder

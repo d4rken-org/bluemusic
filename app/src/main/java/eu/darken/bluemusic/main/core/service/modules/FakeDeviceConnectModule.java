@@ -27,6 +27,11 @@ public class FakeDeviceConnectModule extends ActionModule {
     }
 
     @Override
+    public int getPriority() {
+        return 0;
+    }
+
+    @Override
     public void handle(ManagedDevice eventDevice, SourceDevice.Event event) {
         if (event.getType() != SourceDevice.Event.Type.DISCONNECTED) return;
 

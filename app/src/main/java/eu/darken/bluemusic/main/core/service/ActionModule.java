@@ -13,6 +13,15 @@ public abstract class ActionModule {
 
     public abstract void handle(ManagedDevice device, SourceDevice.Event event);
 
+    /**
+     * When should this module run, lower = earlier, higher = later.
+     * Modules with the same priority run in parallel
+     */
+    public int getPriority() {
+        // Default
+        return 10;
+    }
+
     protected void waitAdjustmentDelay(ManagedDevice device) {
         try {
             Long reactionDelay = device.getActionDelay();

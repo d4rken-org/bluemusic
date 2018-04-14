@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.util.SparseArray;
 
 import com.bugsnag.android.Bugsnag;
 
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 
@@ -51,7 +53,8 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Inject VolumeObserver volumeObserver;
     @Inject Settings settings;
     @Inject ServiceHelper serviceHelper;
-    @Inject List<ActionModule> actionModules;
+    @Inject Map<Class<? extends ActionModule>, ActionModule> actionModuleMap;
+
     final Scheduler scheduler = Schedulers.from(Executors.newSingleThreadExecutor());
     private volatile boolean adjusting = false;
     private Disposable notificationSub;
@@ -173,25 +176,40 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         serviceHelper.updateMessage(getString(R.string.label_status_adjusting_volumes));
 
                         final ManagedDevice newDevice = action.getDevice();
-
-                        final CountDownLatch latch = new CountDownLatch(actionModules.size());
-                        for (ActionModule module : actionModules) {
-                            new Thread(() -> {
-                                Timber.d("Running module %s", module);
-                                try {
-                                    module.handle(newDevice, event);
-                                } catch (Exception e) {
-                                    Timber.e(e, "Module error");
-                                    Bugsnag.notify(e);
-                                } finally {
-                                    latch.countDown();
-                                }
-                                Timber.d("Module %s finished", module);
-                            }).start();
+                        SparseArray<List<ActionModule>> priorityArray = new SparseArray<>();
+                        for (Map.Entry<Class<? extends ActionModule>, ActionModule> entry : actionModuleMap.entrySet()) {
+                            final int priority = entry.getValue().getPriority();
+                            List<ActionModule> list = priorityArray.get(priority);
+                            if (list == null) {
+                                list = new ArrayList<>();
+                                priorityArray.put(priority, list);
+                            }
+                            list.add(entry.getValue());
                         }
-                        try {
-                            latch.await();
-                        } catch (InterruptedException e) { Timber.e(e); }
+
+                        for (int i = 0; i < priorityArray.size(); i++) {
+                            final List<ActionModule> currentPriorityModules = priorityArray.get(priorityArray.keyAt(i));
+                            Timber.d("%d modules at priority %d", currentPriorityModules.size(), priorityArray.keyAt(i));
+
+                            final CountDownLatch latch = new CountDownLatch(currentPriorityModules.size());
+                            for (ActionModule module : currentPriorityModules) {
+                                new Thread(() -> {
+                                    Timber.d("Running module %s", module);
+                                    try {
+                                        module.handle(newDevice, event);
+                                    } catch (Exception e) {
+                                        Timber.e(e, "Module error");
+                                        Bugsnag.notify(e);
+                                    } finally {
+                                        latch.countDown();
+                                    }
+                                    Timber.d("Module %s finished", module);
+                                }).start();
+                            }
+                            try {
+                                latch.await();
+                            } catch (InterruptedException e) { Timber.e(e); }
+                        }
                     })
                     .doFinally(() -> {
                         adjusting = false;

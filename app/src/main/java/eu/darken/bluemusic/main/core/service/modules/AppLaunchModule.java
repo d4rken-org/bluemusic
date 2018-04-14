@@ -22,6 +22,11 @@ public class AppLaunchModule extends ActionModule {
     }
 
     @Override
+    public int getPriority() {
+        return 1;
+    }
+
+    @Override
     public void handle(ManagedDevice eventDevice, SourceDevice.Event event) {
         if (event.getType() != SourceDevice.Event.Type.CONNECTED) return;
         if (eventDevice.getLaunchPkg() == null) return;

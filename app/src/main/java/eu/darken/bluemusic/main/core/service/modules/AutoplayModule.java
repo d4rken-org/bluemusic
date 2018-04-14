@@ -25,6 +25,11 @@ public class AutoplayModule extends ActionModule {
     }
 
     @Override
+    public int getPriority() {
+        return 20;
+    }
+
+    @Override
     public void handle(ManagedDevice device, SourceDevice.Event event) {
         if (event.getType() != SourceDevice.Event.Type.CONNECTED) return;
         if (!device.isAutoPlayEnabled()) return;
