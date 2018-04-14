@@ -117,7 +117,7 @@ tasks.withType(Test) {
     systemProperty "robolectric.logging", "stdout"
 }
 ext {
-    supportLibVersion = '27.1.0'
+    supportLibVersion = '27.1.1'
     daggerVersion = '2.13'
 }
 //noinspection GroovyAssignabilityCheck

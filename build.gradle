@@ -4,7 +4,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.1'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'io.realm:realm-gradle-plugin:4.4.0'
         classpath 'com.bugsnag:bugsnag-android-gradle-plugin:3.2.5'
@@ -20,16 +20,6 @@ allprojects {
         maven { url "https://maven.google.com" }
         google()
     }
-}
-ext {
-    minSdkVersion = 16
-    compileSdkVersion = 27
-    buildToolsVersion = '27.0.2'
-    targetSdkVersion = 27
-
-    supportVersion = '27.1.0'
-    daggerVersion = '2.13'
-    butterknifeVersion = '8.8.1'
 }
 
 task clean(type: Delete) {
