@@ -25,7 +25,7 @@ import timber.log.Timber;
 @AppComponent.Scope
 public class IAPHelper implements PurchasesUpdatedListener, BillingClientStateListener {
     static final String SKU_UPGRADE = "upgrade.premium";
-    private final BehaviorSubject<List<Upgrade>> upgradesPublisher = BehaviorSubject.createDefault(new ArrayList<>());
+    private final BehaviorSubject<List<Upgrade>> upgradesPublisher = BehaviorSubject.create();
     private final BillingClient billingClient;
 
     public static class Upgrade {
