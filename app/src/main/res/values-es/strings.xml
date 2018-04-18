@@ -78,4 +78,16 @@
   <string name="message_copied_to_clipboard">Copiado en el portapapeles</string>
   <string name="label_thanks">Gracias</string>
   <string name="label_licenses">Licencias</string>
+  <string name="label_ring_volume">Volumen del tono</string>
+  <string name="description_ring_volume">Controla el volumen que afecta su tono de llamada.</string>
+  <string name="description_ring_volume_additional_permission">Se requeresquin permisos adicionales para cambiar el volumen del timbre.</string>
+  <string name="label_missing_permissions">Faltan permisos</string>
+  <string name="action_grant">Permitir</string>
+  <string name="label_advanced">Avanzado</string>
+  <string name="label_exclude_health">Excluir perfiles de salud</string>
+  <string name="description_exclude_health">Algunos dispositivos Android se cuelgan al buscar perfiles de Bluetooth del \"Dispositivo de salud\" (HDP, 0x1400).</string>
+  <string name="label_exclude_gattserver">Excluir perfiles de servidor GATT</string>
+  <string name="label_exclude_gatt">Excluir perfiles GATT</string>
+  <string name="description_exclude_gattserver">No consulta los perfiles Bluetooth del tipo \"Atributo Genérico\" (GATT) del servidor.</string>
+  <string name="description_exclude_gatt">No consulta los perfiles Bluetooth del tipo \"Atributo Genérico\" (GATT) del cliente.</string>
 </resources>
