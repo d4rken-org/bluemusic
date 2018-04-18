@@ -106,6 +106,7 @@ public class ManagedDevice {
         }
     }
 
+    @Nullable
     public Float getVolume(AudioStream.Type type) {
         switch (type) {
             case MUSIC:
@@ -171,6 +172,17 @@ public class ManagedDevice {
 
     public AudioStream.Id getStreamId(AudioStream.Type type) {
         return sourceDevice.getStreamId(type);
+    }
+
+    public AudioStream.Type getStreamType(AudioStream.Id id) {
+        for (AudioStream.Type type : AudioStream.Type.values()) {
+            try {
+                if (getStreamId(type) == id) {
+                    return type;
+                }
+            } catch (IllegalArgumentException ignore) {}
+        }
+        throw new IllegalArgumentException("Can't get type for " + id);
     }
 
     public static class Action {

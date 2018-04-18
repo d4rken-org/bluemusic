@@ -275,14 +275,9 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                 .toFlowable()
                 .flatMapIterable(managedDevices -> managedDevices)
                 .map(device -> {
-                    if (id == AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE) {
-                        device.setVolume(AudioStream.Type.CALL, percentage);
-                    } else if (id == AudioStream.Id.STREAM_MUSIC) {
-                        device.setVolume(AudioStream.Type.MUSIC, percentage);
-                    } else if (id == AudioStream.Id.STREAM_RINGTONE) {
-                        device.setVolume(AudioStream.Type.RINGTONE, percentage);
-                    } else if (id == AudioStream.Id.STREAM_VOICE_CALL && device.getAddress().equals(FakeSpeakerDevice.ADDR)) {
-                        device.setVolume(AudioStream.Type.CALL, percentage);
+                    AudioStream.Type streamType = device.getStreamType(id);
+                    if (device.getVolume(streamType) != null) {
+                        device.setVolume(streamType, percentage);
                     }
                     return device;
                 })
