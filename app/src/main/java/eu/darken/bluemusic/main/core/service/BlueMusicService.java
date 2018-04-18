@@ -18,6 +18,7 @@ import com.bugsnag.android.Bugsnag;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
@@ -68,6 +69,8 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             Timber.d("isNotificationPolicyAccessGranted()=%b", notificationManager.isNotificationPolicyAccessGranted());
         }
     };
+    private Disposable activeEventSub;
+    private final Map<String, Disposable> onGoingConnections = new LinkedHashMap<>();
 
     @Override
     public void onCreate() {
@@ -141,7 +144,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Timber.v("onStartCommand(intent=%s, flags=%d, startId=%d)", intent, flags, startId);
+        Timber.v("onStartCommand-STARTED(intent=%s, flags=%d, startId=%d)", intent, flags, startId);
         if (intent == null) {
             Timber.w("Intent was null");
             serviceHelper.stop();
@@ -150,12 +153,24 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
             final SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
 
+            if (event.getType() == SourceDevice.Event.Type.DISCONNECTED) {
+                final Disposable disposable = onGoingConnections.remove(event.getAddress());
+                if (disposable != null) {
+                    Timber.d("%s disconnected, canceling on-going event %s", event.getAddress(), disposable);
+                    disposable.dispose();
+                }
+            }
+
+            // Do we need to keep the service running?
             bluetoothSource.getConnectedDevices()
                     .subscribeOn(scheduler)
                     .observeOn(scheduler)
                     .doOnSubscribe(disposable -> {
                         Timber.d("Handling %s", event);
                         adjusting = true;
+                        if (event.getType() == SourceDevice.Event.Type.CONNECTED) {
+                            onGoingConnections.put(event.getAddress(), disposable);
+                        }
                     })
                     .map(connectedDevices -> {
                         if (event.getType() == SourceDevice.Event.Type.CONNECTED && !connectedDevices.containsKey(event.getAddress())) {
@@ -212,6 +227,9 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         }
                     })
                     .doFinally(() -> {
+                        final Disposable remove = onGoingConnections.remove(event.getAddress());
+                        Timber.d("%s finished, removed: %s", event.getAddress(), remove);
+
                         adjusting = false;
                         Timber.d("Event handling finished.");
                         // Do we need to keep the service running?
@@ -249,6 +267,8 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         } else {
             serviceHelper.stop();
         }
+
+        Timber.v("onStartCommand-END(intent=%s, flags=%d, startId=%d)", intent, flags, startId);
         return START_NOT_STICKY;
     }
 
