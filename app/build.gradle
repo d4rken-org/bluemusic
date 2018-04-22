@@ -136,7 +136,7 @@ dependencies {
     implementation "com.android.support:design:${supportLibVersion}"
     implementation "com.android.support:cardview-v7:${supportLibVersion}"
     implementation "com.android.support:preference-v14:${supportLibVersion}"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0-beta6'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 
     // Crashtracking
     implementation 'com.bugsnag:bugsnag-android:4.3.1'
