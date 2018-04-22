@@ -73,7 +73,7 @@ class SourceDeviceWrapper implements SourceDevice {
             case NOTIFICATION:
                 return AudioStream.Id.STREAM_NOTIFICATION;
             default:
-                throw new IllegalArgumentException("Unknown AudioStreamType: " + type);
+                throw new IllegalArgumentException("Unsupported AudioStreamType: " + type);
         }
     }
 

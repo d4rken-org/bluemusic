@@ -292,6 +292,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                 .filter(managedDevices -> !managedDevices.isEmpty())
                 .toFlowable()
                 .flatMapIterable(managedDevices -> managedDevices)
+                .filter(device -> device.getStreamType(id) != null)
                 .map(device -> {
                     AudioStream.Type streamType = device.getStreamType(id);
                     if (device.getVolume(streamType) != null) {

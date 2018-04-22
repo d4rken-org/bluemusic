@@ -10,6 +10,7 @@ import java.util.Map;
 
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
+import timber.log.Timber;
 
 public class ManagedDevice {
 
@@ -158,15 +159,16 @@ public class ManagedDevice {
         return sourceDevice.getStreamId(type);
     }
 
+    /**
+     * @return NULL if no mapping exists for this device
+     */
+    @Nullable
     public AudioStream.Type getStreamType(AudioStream.Id id) {
         for (AudioStream.Type type : AudioStream.Type.values()) {
-            try {
-                if (getStreamId(type) == id) {
-                    return type;
-                }
-            } catch (IllegalArgumentException ignore) {}
+            if (getStreamId(type) == id) return type;
         }
-        throw new IllegalArgumentException("Can't get type for " + id);
+        Timber.d("%s is not mapped by %s.", id, tryGetAlias());
+        return null;
     }
 
     public static class Action {
