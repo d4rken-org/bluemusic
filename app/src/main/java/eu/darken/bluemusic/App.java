@@ -46,7 +46,7 @@ public class App extends Application implements HasManualActivityInjector, HasMa
 
         Realm.init(this);
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
-                .schemaVersion(4)
+                .schemaVersion(5)
                 .migration(new MigrationTool().getMigration())
                 .build();
         Realm.setDefaultConfiguration(realmConfig);

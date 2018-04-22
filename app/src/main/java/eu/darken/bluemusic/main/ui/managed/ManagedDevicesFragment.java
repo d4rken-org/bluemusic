@@ -27,6 +27,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.bluetooth.ui.BluetoothActivity;
+import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.main.ui.MainActivity;
 import eu.darken.bluemusic.main.ui.config.ConfigFragment;
@@ -165,18 +166,21 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     }
 
     @Override
-    public void onMusicVolumeAdjusted(ManagedDevice device, float percentage) {
-        presenter.onUpdateMusicVolume(device, percentage);
-    }
-
-    @Override
-    public void onCallVolumeAdjusted(ManagedDevice device, float percentage) {
-        presenter.onUpdateCallVolume(device, percentage);
-    }
-
-    @Override
-    public void onRingVolumeAdjusted(ManagedDevice device, float percentage) {
-        presenter.onUpdateRingVolume(device, percentage);
+    public void onStreamAdjusted(ManagedDevice device, AudioStream.Type type, float percentage) {
+        switch (type) {
+            case MUSIC:
+                presenter.onUpdateMusicVolume(device, percentage);
+                break;
+            case CALL:
+                presenter.onUpdateCallVolume(device, percentage);
+                break;
+            case RINGTONE:
+                presenter.onUpdateRingVolume(device, percentage);
+                break;
+            case NOTIFICATION:
+                presenter.onUpdateNotificationVolume(device, percentage);
+                break;
+        }
     }
 
     @Override

@@ -50,6 +50,8 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @BindView(R.id.pref_music_volume) SwitchPreferenceView prefMusicVolume;
     @BindView(R.id.pref_call_volume) SwitchPreferenceView prefCallVolume;
     @BindView(R.id.pref_ring_volume) SwitchPreferenceView prefRingVolume;
+    @BindView(R.id.pref_notification_volume) SwitchPreferenceView prefNotificationVolume;
+
     @BindView(R.id.pref_autoplay_enabled) SwitchPreferenceView prefAutoPlay;
     @BindView(R.id.pref_launch_app) PreferenceView prefLaunchApp;
     @BindView(R.id.pref_reaction_delay) PreferenceView prefReactionDelay;
@@ -86,6 +88,8 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         prefMusicVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleMusicVolume());
         prefCallVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleCallVolume());
         prefRingVolume.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleRingVolume()));
+        prefNotificationVolume.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleNotificationVolume()));
+
         prefAutoPlay.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleAutoPlay()));
         prefLaunchApp.setOnClickListener(v -> {
             presenter.onLaunchAppClicked();
@@ -144,6 +148,9 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         prefRingVolume.setIcon(isPro ? R.drawable.ic_ring_volume_white_24dp : R.drawable.ic_stars_white_24dp);
         prefRingVolume.setDescription(getString(R.string.description_ring_volume) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
 
+        prefNotificationVolume.setIcon(isPro ? R.drawable.ic_sms_white_24dp : R.drawable.ic_stars_white_24dp);
+        prefNotificationVolume.setDescription(getString(R.string.description_notification_volume) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
+
         prefAutoPlay.setIcon(isPro ? R.drawable.ic_play_circle_outline_white_24dp : R.drawable.ic_stars_white_24dp);
         prefAutoPlay.setDescription(getString(R.string.description_autoplay) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
 
@@ -169,6 +176,9 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
         prefRingVolume.setChecked(device.getVolume(AudioStream.Type.RINGTONE) != null);
         prefRingVolume.setVisibility(View.VISIBLE);
+
+        prefNotificationVolume.setChecked(device.getVolume(AudioStream.Type.NOTIFICATION) != null);
+        prefNotificationVolume.setVisibility(View.VISIBLE);
 
         prefAutoPlay.setChecked(device.isAutoPlayEnabled());
         prefAutoPlay.setVisibility(View.VISIBLE);

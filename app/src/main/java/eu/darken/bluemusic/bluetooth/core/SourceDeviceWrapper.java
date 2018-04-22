@@ -70,6 +70,8 @@ class SourceDeviceWrapper implements SourceDevice {
                 return AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE;
             case RINGTONE:
                 return AudioStream.Id.STREAM_RINGTONE;
+            case NOTIFICATION:
+                return AudioStream.Id.STREAM_NOTIFICATION;
             default:
                 throw new IllegalArgumentException("Unknown AudioStreamType: " + type);
         }

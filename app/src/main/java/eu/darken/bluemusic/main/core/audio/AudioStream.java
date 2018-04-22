@@ -8,6 +8,7 @@ public interface AudioStream {
         STREAM_MUSIC(AudioManager.STREAM_MUSIC),
         STREAM_BLUETOOTH_HANDSFREE(6),
         STREAM_VOICE_CALL(AudioManager.STREAM_VOICE_CALL),
+        STREAM_NOTIFICATION(AudioManager.STREAM_NOTIFICATION),
         STREAM_RINGTONE(AudioManager.STREAM_RING);
         private final int streamId;
 
@@ -19,6 +20,6 @@ public interface AudioStream {
     }
 
     enum Type {
-        MUSIC, CALL, RINGTONE
+        MUSIC, CALL, RINGTONE, NOTIFICATION
     }
 }

@@ -53,9 +53,7 @@ public class DeviceManager {
         synchronized (this) {
             if (deviceCache == null) {
                 deviceCache = Observable
-                        .create((ObservableOnSubscribe<Map<String, ManagedDevice>>) emitter -> {
-                            DeviceManager.this.emitter = emitter;
-                        })
+                        .create((ObservableOnSubscribe<Map<String, ManagedDevice>>) emitter -> DeviceManager.this.emitter = emitter)
                         .doOnSubscribe(disposable -> {
                             enabledSub = bluetoothSource.isEnabled()
                                     .subscribeOn(Schedulers.io())
@@ -98,7 +96,8 @@ public class DeviceManager {
                                         final ManagedDevice managed = buildDevice(sourceDevice, realm.copyFromRealm(config));
                                         managed.setActive(active.containsKey(managed.getAddress()));
 
-                                        if (active.containsKey(config.address)) config.lastConnected = System.currentTimeMillis();
+                                        if (active.containsKey(config.address))
+                                            config.lastConnected = System.currentTimeMillis();
 
                                         Timber.v("Loaded: %s", managed);
                                         result.put(managed.getAddress(), managed);
@@ -109,7 +108,7 @@ public class DeviceManager {
                                 }
                             });
                 })
-                .doOnError(throwable -> Timber.e(throwable, null))
+                .doOnError(throwable -> Timber.e(throwable))
                 .doOnSuccess(stringManagedDeviceMap -> {
                     synchronized (DeviceManager.this) {
                         if (emitter != null) emitter.onNext(stringManagedDeviceMap);
@@ -167,7 +166,7 @@ public class DeviceManager {
                         return newDevice;
                     }
                 })
-                .doOnError(throwable -> Timber.e(throwable, null))
+                .doOnError(throwable -> Timber.e(throwable))
                 .doOnSuccess(newDevice -> save(Collections.singleton(newDevice)).subscribe());
     }
 
@@ -190,9 +189,9 @@ public class DeviceManager {
 
     ManagedDevice buildDevice(SourceDevice sourceDevice, DeviceConfig config) {
         ManagedDevice managed = new ManagedDevice(sourceDevice, config);
-        managed.setMaxVolume(AudioStream.Type.MUSIC, streamHelper.getMaxVolume(sourceDevice.getStreamId(AudioStream.Type.MUSIC)));
-        managed.setMaxVolume(AudioStream.Type.CALL, streamHelper.getMaxVolume(sourceDevice.getStreamId(AudioStream.Type.CALL)));
-        managed.setMaxVolume(AudioStream.Type.RINGTONE, streamHelper.getMaxVolume(sourceDevice.getStreamId(AudioStream.Type.RINGTONE)));
+        for (AudioStream.Type type : AudioStream.Type.values()) {
+            managed.setMaxVolume(type, streamHelper.getMaxVolume(sourceDevice.getStreamId(type)));
+        }
         return managed;
     }
 }

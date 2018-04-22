@@ -59,12 +59,12 @@ public class StreamHelper {
                 if (currentVolume < target) {
                     for (int volumeStep = currentVolume; volumeStep <= target; volumeStep++) {
                         setVolume(streamId, volumeStep, visible ? AudioManager.FLAG_SHOW_UI : 0);
-                        try { Thread.sleep(delay); } catch (InterruptedException e) { Timber.e(e, null); }
+                        try { Thread.sleep(delay); } catch (InterruptedException e) { Timber.e(e); }
                     }
                 } else {
                     for (int volumeStep = currentVolume; volumeStep >= target; volumeStep--) {
                         setVolume(streamId, volumeStep, visible ? AudioManager.FLAG_SHOW_UI : 0);
-                        try { Thread.sleep(delay); } catch (InterruptedException e) { Timber.e(e, null); }
+                        try { Thread.sleep(delay); } catch (InterruptedException e) { Timber.e(e); }
                     }
                 }
             }

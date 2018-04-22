@@ -55,6 +55,8 @@ public class FakeSpeakerDevice implements SourceDevice, Parcelable {
                 return AudioStream.Id.STREAM_VOICE_CALL;
             case RINGTONE:
                 return AudioStream.Id.STREAM_RINGTONE;
+            case NOTIFICATION:
+                return AudioStream.Id.STREAM_NOTIFICATION;
             default:
                 throw new IllegalArgumentException("Unknown AudioStreamType: " + type);
         }

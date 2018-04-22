@@ -4,7 +4,9 @@ package eu.darken.bluemusic.main.core.database;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
@@ -14,9 +16,7 @@ public class ManagedDevice {
     private final SourceDevice sourceDevice;
     private final DeviceConfig deviceConfig;
     private boolean isActive;
-    private int maxMusicVolume;
-    private int maxCallVolume;
-    private int maxRingVolume;
+    private Map<AudioStream.Type, Integer> maxVolumeMap = new HashMap<>();
 
     ManagedDevice(SourceDevice sourceDevice, DeviceConfig deviceConfig) {
         this.sourceDevice = sourceDevice;
@@ -75,19 +75,11 @@ public class ManagedDevice {
     }
 
     public void setMaxVolume(AudioStream.Type type, int max) {
-        switch (type) {
-            case MUSIC:
-                maxMusicVolume = max;
-                break;
-            case CALL:
-                maxCallVolume = max;
-                break;
-            case RINGTONE:
-                maxRingVolume = max;
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown type: " + type);
-        }
+        maxVolumeMap.put(type, max);
+    }
+
+    public int getMaxVolume(AudioStream.Type type) {
+        return maxVolumeMap.get(type);
     }
 
     public void setVolume(AudioStream.Type type, @Nullable Float volume) {
@@ -100,6 +92,9 @@ public class ManagedDevice {
                 break;
             case RINGTONE:
                 deviceConfig.ringVolume = volume;
+                break;
+            case NOTIFICATION:
+                deviceConfig.notificationVolume = volume;
                 break;
             default:
                 throw new IllegalArgumentException("Unknown type: " + type);
@@ -115,19 +110,8 @@ public class ManagedDevice {
                 return deviceConfig.callVolume;
             case RINGTONE:
                 return deviceConfig.ringVolume;
-            default:
-                throw new IllegalArgumentException("Unknown type: " + type);
-        }
-    }
-
-    public int getMaxVolume(AudioStream.Type type) {
-        switch (type) {
-            case MUSIC:
-                return maxMusicVolume;
-            case CALL:
-                return maxCallVolume;
-            case RINGTONE:
-                return maxRingVolume;
+            case NOTIFICATION:
+                return deviceConfig.notificationVolume;
             default:
                 throw new IllegalArgumentException("Unknown type: " + type);
         }

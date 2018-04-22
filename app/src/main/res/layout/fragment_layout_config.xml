@@ -34,7 +34,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@drawable/preference_list_divider_material"/>
+            android:background="@drawable/list_divider_material"/>
 
         <eu.darken.bluemusic.util.ui.SwitchPreferenceView
             android:id="@+id/pref_call_volume"
@@ -49,13 +49,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@drawable/preference_list_divider_material"/>
+            android:background="@drawable/list_divider_material"/>
 
         <eu.darken.bluemusic.util.ui.SwitchPreferenceView
             android:id="@+id/pref_ring_volume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:pvDescription="@string/description_ring_volume"
             app:pvIcon="@drawable/ic_ring_volume_white_24dp"
             app:pvTitle="@string/label_ring_volume"
@@ -64,7 +64,22 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@drawable/preference_list_divider_material"/>
+            android:background="@drawable/list_divider_material"/>
+
+        <eu.darken.bluemusic.util.ui.SwitchPreferenceView
+            android:id="@+id/pref_notification_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:pvDescription="@string/description_notification_volume"
+            app:pvIcon="@drawable/ic_sms_white_24dp"
+            app:pvTitle="@string/label_notification_volume"
+            tools:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/list_divider_material"/>
 
         <TextView
             style="@style/Preference.Category.Material"
@@ -90,7 +105,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@drawable/preference_list_divider_material"/>
+            android:background="@drawable/list_divider_material"/>
 
         <eu.darken.bluemusic.util.ui.PreferenceView
             android:id="@+id/pref_launch_app"
@@ -105,7 +120,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@drawable/preference_list_divider_material"/>
+            android:background="@drawable/list_divider_material"/>
 
         <eu.darken.bluemusic.util.ui.PreferenceView
             android:id="@+id/pref_reaction_delay"
@@ -120,7 +135,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@drawable/preference_list_divider_material"/>
+            android:background="@drawable/list_divider_material"/>
 
         <eu.darken.bluemusic.util.ui.PreferenceView
             android:id="@+id/pref_adjustment_delay"
@@ -135,7 +150,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@drawable/preference_list_divider_material"/>
+            android:background="@drawable/list_divider_material"/>
 
         <eu.darken.bluemusic.util.ui.PreferenceView
             android:id="@+id/pref_rename"
@@ -150,7 +165,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@drawable/preference_list_divider_material"/>
+            android:background="@drawable/list_divider_material"/>
 
         <eu.darken.bluemusic.util.ui.PreferenceView
             android:id="@+id/pref_delete"

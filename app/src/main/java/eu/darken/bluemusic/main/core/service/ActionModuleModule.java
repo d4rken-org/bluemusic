@@ -8,6 +8,7 @@ import eu.darken.bluemusic.main.core.service.modules.AutoplayModule;
 import eu.darken.bluemusic.main.core.service.modules.CallVolumeModule;
 import eu.darken.bluemusic.main.core.service.modules.FakeDeviceConnectModule;
 import eu.darken.bluemusic.main.core.service.modules.MusicVolumeModule;
+import eu.darken.bluemusic.main.core.service.modules.NotificationVolumeModule;
 import eu.darken.bluemusic.main.core.service.modules.RingVolumeModule;
 
 @Module
@@ -27,6 +28,11 @@ public abstract class ActionModuleModule {
     @IntoMap
     @ActionModuleKey(RingVolumeModule.class)
     abstract ActionModule ringVolume(RingVolumeModule module);
+
+    @Binds
+    @IntoMap
+    @ActionModuleKey(NotificationVolumeModule.class)
+    abstract ActionModule notificationVolume(NotificationVolumeModule module);
 
     @Binds
     @IntoMap

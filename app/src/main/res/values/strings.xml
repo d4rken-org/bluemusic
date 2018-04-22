@@ -89,4 +89,6 @@
     <string name="description_exclude_gattserver">Don\'t query Bluetooth profiles of type \'Generic Attribute\' (GATT) server.</string>
     <string name="description_exclude_gatt">Don\'t query Bluetooth profiles of type \'Generic Attribute\' (GATT) client.</string>
     <string name="label_volumes">Volumes</string>
+    <string name="label_notification_volume">Notification volume</string>
+    <string name="description_notification_volume">Not all devices support a separate notification volume setting.</string>
 </resources>

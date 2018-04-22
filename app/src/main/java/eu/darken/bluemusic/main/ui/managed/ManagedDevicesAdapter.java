@@ -43,11 +43,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
     }
 
     interface Callback {
-        void onMusicVolumeAdjusted(ManagedDevice device, float percentage);
-
-        void onCallVolumeAdjusted(ManagedDevice device, float percentage);
-
-        void onRingVolumeAdjusted(ManagedDevice item, float percentage);
+        void onStreamAdjusted(ManagedDevice device, AudioStream.Type type, float percentage);
 
         void onShowConfigScreen(ManagedDevice device);
     }
@@ -76,9 +72,14 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
         @BindView(R.id.ring_container) View ringContainer;
         @BindView(R.id.ring_seekbar) SeekBar ringSeekbar;
         @BindView(R.id.ring_counter) TextView ringCounter;
-
         @BindView(R.id.ring_permission_label) TextView ringPermissionLabel;
         @BindView(R.id.ring_permission_action) TextView ringPermissionAction;
+
+        @BindView(R.id.notification_container) View notificationContainer;
+        @BindView(R.id.notification_seekbar) SeekBar notificationSeekbar;
+        @BindView(R.id.notification_counter) TextView notificationCounter;
+        @BindView(R.id.notification_permission_label) TextView notificationPermissionLabel;
+        @BindView(R.id.notification_permission_action) TextView notificationPermissionAction;
         private Callback callback;
 
         ManagedDeviceVH(ViewGroup parent, Callback callback) {
@@ -138,7 +139,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
 
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
-                        callback.onMusicVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
+                        callback.onStreamAdjusted(item, AudioStream.Type.MUSIC, (float) seekBar.getProgress() / seekBar.getMax());
                     }
                 });
                 musicSeekbar.setProgress(item.getRealVolume(AudioStream.Type.MUSIC));
@@ -161,7 +162,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
 
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
-                        callback.onCallVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
+                        callback.onStreamAdjusted(item, AudioStream.Type.CALL, (float) seekBar.getProgress() / seekBar.getMax());
                     }
                 });
                 voiceSeekbar.setProgress(item.getRealVolume(AudioStream.Type.CALL));
@@ -184,7 +185,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
 
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
-                        callback.onRingVolumeAdjusted(item, (float) seekBar.getProgress() / seekBar.getMax());
+                        callback.onStreamAdjusted(item, AudioStream.Type.RINGTONE, (float) seekBar.getProgress() / seekBar.getMax());
                     }
                 });
                 ringSeekbar.setProgress(item.getRealVolume(AudioStream.Type.RINGTONE));
@@ -204,6 +205,40 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
             ringSeekbar.setVisibility(needsPermission ? View.GONE : View.VISIBLE);
             ringCounter.setVisibility(needsPermission ? View.GONE : View.VISIBLE);
 
+
+            notificationContainer.setVisibility(item.getVolume(AudioStream.Type.NOTIFICATION) != null ? View.VISIBLE : View.GONE);
+            if (item.getVolume(AudioStream.Type.NOTIFICATION) != null) {
+                notificationSeekbar.setMax(item.getMaxVolume(AudioStream.Type.NOTIFICATION));
+                notificationSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        notificationCounter.setText(String.valueOf(progress));
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        callback.onStreamAdjusted(item, AudioStream.Type.NOTIFICATION,
+                                (float) seekBar.getProgress() / seekBar.getMax());
+                    }
+                });
+                notificationSeekbar.setProgress(item.getRealVolume(AudioStream.Type.NOTIFICATION));
+                notificationCounter.setText(String.valueOf(notificationSeekbar.getProgress()));
+            }
+
+            notificationPermissionAction.setOnClickListener(v -> {
+                Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                getContext().startActivity(intent);
+            });
+
+            notificationPermissionLabel.setVisibility(needsPermission ? View.VISIBLE : View.GONE);
+            notificationPermissionAction.setVisibility(needsPermission ? View.VISIBLE : View.GONE);
+            notificationSeekbar.setVisibility(needsPermission ? View.GONE : View.VISIBLE);
+            notificationCounter.setVisibility(needsPermission ? View.GONE : View.VISIBLE);
         }
     }
 }

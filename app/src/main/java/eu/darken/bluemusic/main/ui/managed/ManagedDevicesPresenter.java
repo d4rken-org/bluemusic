@@ -113,6 +113,20 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 });
     }
 
+    public void onUpdateNotificationVolume(ManagedDevice device, float percentage) {
+        device.setVolume(AudioStream.Type.NOTIFICATION, percentage);
+        deviceManager.save(Collections.singleton(device))
+                .subscribeOn(Schedulers.computation())
+                .subscribe(managedDevices -> {
+                    if (!device.isActive()) return;
+                    if (ApiHelper.hasMarshmallow() && !notificationManager.isNotificationPolicyAccessGranted()) {
+                        Timber.w("Tried to set notification volume but notification policy permissions were missing.");
+                    } else {
+                        streamHelper.changeVolume(device.getStreamId(AudioStream.Type.NOTIFICATION), device.getVolume(AudioStream.Type.NOTIFICATION), true, 0);
+                    }
+                });
+    }
+
     void onUpgradeClicked(Activity activity) {
         iapHelper.buyProVersion(activity);
     }

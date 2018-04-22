@@ -69,7 +69,6 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             Timber.d("isNotificationPolicyAccessGranted()=%b", notificationManager.isNotificationPolicyAccessGranted());
         }
     };
-    private Disposable activeEventSub;
     private final Map<String, Disposable> onGoingConnections = new LinkedHashMap<>();
 
     @Override
@@ -78,10 +77,9 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         ((App) getApplication()).serviceInjector().inject(this);
         super.onCreate();
 
-        volumeObserver.addCallback(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, this);
-        volumeObserver.addCallback(AudioStream.Id.STREAM_MUSIC, this);
-        volumeObserver.addCallback(AudioStream.Id.STREAM_VOICE_CALL, this);
-        volumeObserver.addCallback(AudioStream.Id.STREAM_RINGTONE, this);
+        for (AudioStream.Id id : AudioStream.Id.values()) {
+            volumeObserver.addCallback(id, this);
+        }
         getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeObserver);
 
         if (ApiHelper.hasMarshmallow()) {
