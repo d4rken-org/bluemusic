@@ -20,6 +20,8 @@ import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
 
 
 public class AboutFragment extends PreferenceFragmentCompat implements AboutPresenter.View {
+    private Preference uploadPref;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,13 @@ public class AboutFragment extends PreferenceFragmentCompat implements AboutPres
         Check.notNull(actionBar);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle(R.string.label_about);
+
+        uploadPref = findPreference("about.debug.upload");
+        uploadPref.setVisible(false);
+        uploadPref.setOnPreferenceClickListener(preference -> {
+            Snackbar.make(getView(), "Done :) Now mail me!", Snackbar.LENGTH_SHORT).show();
+            return true;
+        });
     }
 
     @Override
@@ -71,7 +80,8 @@ public class AboutFragment extends PreferenceFragmentCompat implements AboutPres
             ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("BVM Install ID", id);
             clipboard.setPrimaryClip(clip);
-            Snackbar.make(getView(), R.string.message_copied_to_clipboard, Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(getView(), R.string.message_copied_to_clipboard, Snackbar.LENGTH_LONG).show();
+            uploadPref.setVisible(true);
             return true;
         });
     }

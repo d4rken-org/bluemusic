@@ -24,6 +24,10 @@
     <Preference
         android:key="about.installid"
         android:title="@string/label_install_id"/>
+    <Preference
+        android:key="about.debug.upload"
+        android:title="Upload debug log"
+        android:summary="This is only useful if you also contact the developer with your install ID and additional details."/>
     <PreferenceCategory android:title="Contact">
         <Preference
             android:summary="support@darken.eu"
@@ -153,5 +157,4 @@
                 android:data="http://developer.android.com/distribute/tools/promote/brand.html"/>
         </Preference>
     </PreferenceCategory>
-
 </PreferenceScreen>
