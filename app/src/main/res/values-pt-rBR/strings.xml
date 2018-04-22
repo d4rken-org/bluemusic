@@ -88,6 +88,6 @@
   <string name="description_exclude_health">Alguns dispositivos Android travam ao procurar perfis Bluetooth de \'Dispositivos de Saúde\' (HDP, 0x1400).</string>
   <string name="label_exclude_gattserver">Excluir perfis de servidor GATT</string>
   <string name="label_exclude_gatt">Excluir perfis GATT</string>
-  <string name="description_exclude_gattserver">Não consulta perfis Bluetooth de servidores do tipo \'Atributo genérico\' (GATT).</string>
-  <string name="description_exclude_gatt">Não consulta perfis Bluetooth de clientes do tipo \'Atributo genérico\' (GATT).</string>
+  <string name="description_exclude_gattserver">Não consultar perfis Bluetooth de servidores do tipo \'Atributo Genérico\' (GATT).</string>
+  <string name="description_exclude_gatt">Não consultar perfis Bluetooth de clientes do tipo \'Atributo Genérico\' (GATT).</string>
 </resources>
