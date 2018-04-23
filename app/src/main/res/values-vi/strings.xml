@@ -90,4 +90,7 @@
   <string name="label_exclude_gatt">Loại trừ các cấu hình GATT</string>
   <string name="description_exclude_gattserver">Không truy vấn cấu hình Bluetooth của máy chủ \'Thuộc tính Chung\' (GATT).</string>
   <string name="description_exclude_gatt">Không truy vấn cấu hình Bluetooth của ứng dụng thuộc tính \'Thuộc tính Chung\' (GATT).</string>
+    <string name="label_volumes">Âm lượng</string>
+    <string name="label_notification_volume">Âm lượng thông báo</string>
+    <string name="description_notification_volume">Không phải tất cả các thiết bị hỗ trợ thiết lập âm lượng thông báo riêng biệt.</string>
 </resources>

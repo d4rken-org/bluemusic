@@ -90,4 +90,7 @@
   <string name="label_exclude_gatt">Παράκαμψη προφίλ GATT</string>
   <string name="description_exclude_gattserver">Μην τρέξετε ερώτημα για προφίλ Bluetooth τύπου \'Generic Attribute\' (GATT) server.</string>
   <string name="description_exclude_gatt">Μην τρέξετε ερώτημα για προφίλ Bluetooth τύπου \'Generic Attribute\' (GATT) client.</string>
+    <string name="label_volumes">Εντάσεις</string>
+    <string name="label_notification_volume">Ένταση ήχου ειδοποίησης</string>
+    <string name="description_notification_volume">Δεν υποστηρίζουν όλες οι συσκευές μια ξεχωριστή ρύθμιση για τον ήχο ειδοποιήσεων.</string>
 </resources>

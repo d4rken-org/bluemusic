@@ -90,4 +90,7 @@
   <string name="label_exclude_gatt">Kecualikan profil GATT</string>
   <string name="description_exclude_gattserver">Jangan kirim permintaan profil Bluetooth berjenis peladen Generic Attribute (GATT).</string>
   <string name="description_exclude_gatt">Jangan kirim permintaan profil Bluetooth berjenis klien Generic Attribute (GATT).</string>
+    <string name="label_volumes">Volume</string>
+    <string name="label_notification_volume">Volume pemberitahuan</string>
+    <string name="description_notification_volume">Tidak semua perangkat mendukung pengaturan volume pemberitahuan terpisah.</string>
 </resources>

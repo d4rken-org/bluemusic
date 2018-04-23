@@ -90,4 +90,7 @@
   <string name="label_exclude_gatt">Utelat GATT profiler</string>
   <string name="description_exclude_gattserver">Ikke spør etter Bluetooth-profiler av typen \"Generisk Attributt\" (GATT) server.</string>
   <string name="description_exclude_gatt">Ikke spør etter Bluetooth-profiler av typen \"Generisk Attributt\" (GATT) klient.</string>
+    <string name="label_volumes">Volumer</string>
+    <string name="label_notification_volume">Varslingsvolum</string>
+    <string name="description_notification_volume">Ikke alle enheter støtter en seperat varselvolum-innstilling.</string>
 </resources>

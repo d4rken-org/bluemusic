@@ -90,4 +90,7 @@
   <string name="label_exclude_gatt">Sluit GATT profiele uit</string>
   <string name="description_exclude_gattserver">Moet nie Bluetooth \'Generic Attribute\' (GATT) bediener profiele bevraagteken nie.</string>
   <string name="description_exclude_gatt">Moet nie Bluetooth \'Generic Attribute\' (GATT) bediener profiele bevraagteken nie.</string>
+    <string name="label_volumes">Volumes</string>
+    <string name="label_notification_volume">Kennisgewing-volume</string>
+    <string name="description_notification_volume">Nie alle toestelle ondersteun \'n afsonderlike kennisgewing volume instelling nie.</string>
 </resources>
