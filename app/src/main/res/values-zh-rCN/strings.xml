@@ -88,7 +88,7 @@
   <string name="label_exclude_gatt">排除 GATT 配置文件</string>
   <string name="description_exclude_gattserver">不要查询“通用属性”（GATT）服务器类型的蓝牙配置文件。</string>
   <string name="description_exclude_gatt">不要查询“通用属性”（GATT）客户端类型的蓝牙配置文件。</string>
-    <string name="label_volumes">音量</string>
-    <string name="label_notification_volume">通知音量</string>
-    <string name="description_notification_volume">并非所有设备都支持单独的通知音量设置。</string>
+  <string name="label_volumes">音量</string>
+  <string name="label_notification_volume">通知音量</string>
+  <string name="description_notification_volume">并非所有设备都支持单独的通知音量设置。</string>
 </resources>

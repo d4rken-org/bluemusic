@@ -90,4 +90,7 @@
   <string name="label_exclude_gatt">Išskirti GATT profilius</string>
   <string name="description_exclude_gattserver">Neieškoti \'Generic Attribute\' (GATT) serverių Bluetooth profilių.</string>
   <string name="description_exclude_gatt">Neieškoti \'Generic Attribute\' (GATT) klientų Bluetooth profilių.</string>
+  <string name="label_volumes">Garsumai</string>
+  <string name="label_notification_volume">Pranešimo garsas</string>
+  <string name="description_notification_volume">Ne visi įrenginiai palaiko atskirus pranešimų garso nustatymus.</string>
 </resources>

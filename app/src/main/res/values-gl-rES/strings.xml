@@ -90,7 +90,7 @@
   <string name="label_exclude_gatt">Excluír perfís GATT</string>
   <string name="description_exclude_gattserver">Non consulta perfís bluetooth do tipo \"Atributo xenérico\" (GATT).</string>
   <string name="description_exclude_gatt">Non consulta perfís bluetooth de clientes do tipo \"Atributo xenérico\" (GATT).</string>
-    <string name="label_volumes">Volumes</string>
-    <string name="label_notification_volume">Volume das notificacións</string>
-    <string name="description_notification_volume">Non todos os dispositivos admiten unha configuración do volume das notificacións individualizada.</string>
+  <string name="label_volumes">Volumes</string>
+  <string name="label_notification_volume">Volume das notificacións</string>
+  <string name="description_notification_volume">Non todos os dispositivos admiten unha configuración do volume das notificacións individualizada.</string>
 </resources>

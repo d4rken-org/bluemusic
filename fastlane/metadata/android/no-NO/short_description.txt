@@ -1,1 +1,1 @@
-Individuell stemme og musikkvolumkonfigurasjon for bluetooth-enheter.
+Individuell stemme & musikkvolumkonfigurasjon for Bluetooth-enheter.

@@ -90,7 +90,7 @@
   <string name="label_exclude_gatt">Исключить профили GATT</string>
   <string name="description_exclude_gattserver">Не обрабатывать профили Bluetooth сервера \'Generic Attribute\' (GATT).</string>
   <string name="description_exclude_gatt">Не обрабатывать профили Bluetooth клиента \'Generic Attribute\' (GATT).</string>
-    <string name="label_volumes">Громкости</string>
-    <string name="label_notification_volume">Громкость уведомлений</string>
-    <string name="description_notification_volume">Не все устройства поддерживают отдельную настройку громкости уведомлений.</string>
+  <string name="label_volumes">Громкости</string>
+  <string name="label_notification_volume">Громкость уведомлений</string>
+  <string name="description_notification_volume">Не все устройства поддерживают отдельную настройку громкости уведомлений.</string>
 </resources>

@@ -13,7 +13,7 @@
   <string name="label_bug_reports">Feilrapporter</string>
   <string name="description_bug_reports">Automatisk feil og krasjrapportering.</string>
   <string name="label_app_enabled">App aktivert</string>
-  <string name="description_app_enabled">Veksler appens evne til å reagere på volum og bluetooth hendelser.</string>
+  <string name="description_app_enabled">Veksler appens evne til å reagere på volum og Bluetooth hendelser.</string>
   <string name="label_visible_volume_adjustments">Synlige justeringer</string>
   <string name="description_visible_volume_adjustments">Vis systemets volumvindu når denne appen gjør endringer.</string>
   <string name="label_volume_listener">Observer endringer</string>
@@ -28,7 +28,7 @@
   <string name="label_notification_channel_status">Status</string>
   <string name="action_set">Sett</string>
   <string name="action_cancel">Avbryt</string>
-  <string name="label_invalid_input">Ugyldig inngang</string>
+  <string name="label_invalid_input">Ugyldig inndata</string>
   <string name="action_reset">Tilbakestill</string>
   <string name="label_general">Generelt</string>
   <string name="label_other">Andre</string>
@@ -38,7 +38,7 @@
   <string name="label_premium_version">Premiumversjon</string>
   <string name="action_upgrade">Oppgrader</string>
   <string name="description_premium_required_additional_devices">Administrering av flere enheter krever premiumversjonen.</string>
-  <string name="description_premium_required_this_extra_option">Dette ekstra alternativet krever dessverre premiumversjonen av denne appen.</string>
+  <string name="description_premium_required_this_extra_option">Dette ekstra alternativet krever premiumversjonen av denne appen.</string>
   <string name="description_premium_upgrade_explanation">Få premiumversjonen for å aktivere tilleggsfunksjoner og støtte utviklingen.</string>
   <string name="label_premium_version_required">Premiumversjon krevet</string>
   <string name="description_intro_purpose">Denne appen lar din Android-enhet huske volumet av forskjellige Bluetooth enheter.</string>
@@ -88,9 +88,9 @@
   <string name="description_exclude_health">Noen Android enheter henger seg opp når de ser etter \'Helse Enhet\' Bluetooth profiler (HDP, 0x1400).</string>
   <string name="label_exclude_gattserver">Utelat GATT server profiler</string>
   <string name="label_exclude_gatt">Utelat GATT profiler</string>
-  <string name="description_exclude_gattserver">Ikke spør etter Bluetooth-profiler av typen \"Generisk Attributt\" (GATT) server.</string>
-  <string name="description_exclude_gatt">Ikke spør etter Bluetooth-profiler av typen \"Generisk Attributt\" (GATT) klient.</string>
-    <string name="label_volumes">Volumer</string>
-    <string name="label_notification_volume">Varslingsvolum</string>
-    <string name="description_notification_volume">Ikke alle enheter støtter en seperat varselvolum-innstilling.</string>
+  <string name="description_exclude_gattserver">Ikke spør etter Bluetooth-profiler av typen \'Generisk Attributt\' (GATT) server.</string>
+  <string name="description_exclude_gatt">Ikke spør etter Bluetooth-profiler av typen \'Generisk Attributt\' (GATT) klient.</string>
+  <string name="label_volumes">Volumer</string>
+  <string name="label_notification_volume">Varslingsvolum</string>
+  <string name="description_notification_volume">Ikke alle enheter støtter en seperat varselvolum-innstilling.</string>
 </resources>

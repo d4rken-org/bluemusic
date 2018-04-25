@@ -90,7 +90,7 @@
   <string name="label_exclude_gatt">Eira GATT-profiilid</string>
   <string name="description_exclude_gattserver">Ära otsi „Generic Attribute“ (GATT) serveri sinihamba profiile.</string>
   <string name="description_exclude_gatt">Ära otsi „Generic Attribute“ (GATT) sinihamba profiile.</string>
-    <string name="label_volumes">Helid</string>
-    <string name="label_notification_volume">Teavituse helitugevus</string>
-    <string name="description_notification_volume">Kõik seadmed ei pruugi võimaldada eri teatistele erinevaid helitugevusi.</string>
+  <string name="label_volumes">Helid</string>
+  <string name="label_notification_volume">Teavituse helitugevus</string>
+  <string name="description_notification_volume">Kõik seadmed ei pruugi võimaldada eri teatistele erinevaid helitugevusi.</string>
 </resources>

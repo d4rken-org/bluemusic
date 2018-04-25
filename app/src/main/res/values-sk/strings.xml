@@ -90,7 +90,7 @@
   <string name="label_exclude_gatt">Vylúčiť GATT profily</string>
   <string name="description_exclude_gattserver">Nepýtať sa na profily Bluetooth typu \"Generic Attributes\" (GATT) server.</string>
   <string name="description_exclude_gatt">Nepýtať sa na profily Bluetooth typu \"Generic Attributes\" (GATT) klient.</string>
-    <string name="label_volumes">Hlasitosti</string>
-    <string name="label_notification_volume">Hlasitosť upozornení</string>
-    <string name="description_notification_volume">Nie všetky zariadenia podporujú samostatné nastavenie hlasitosti upozornení.</string>
+  <string name="label_volumes">Hlasitosti</string>
+  <string name="label_notification_volume">Hlasitosť upozornení</string>
+  <string name="description_notification_volume">Nie všetky zariadenia podporujú samostatné nastavenie hlasitosti upozornení.</string>
 </resources>

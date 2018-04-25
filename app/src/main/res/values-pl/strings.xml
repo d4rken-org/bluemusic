@@ -90,4 +90,7 @@
   <string name="label_exclude_gatt">Wyklucz profile GATT</string>
   <string name="description_exclude_gattserver">Nie pytaj profili Bluetooth z typem serwera \'Generic Attribute\' (GATT).</string>
   <string name="description_exclude_gatt">Nie pytaj profili Bluetooth z typem klienta \'Generic Attribute\' (GATT).</string>
+  <string name="label_volumes">Głośności</string>
+  <string name="label_notification_volume">Głośność powiadomień</string>
+  <string name="description_notification_volume">Nie wszystkie urządzenia obsługują ustawienie głośności oddzielnego powiadomienia.</string>
 </resources>

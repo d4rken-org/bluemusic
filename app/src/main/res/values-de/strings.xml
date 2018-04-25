@@ -48,9 +48,9 @@
   <string name="label_status_listening_for_changes">Beobachte Lautstärkeänderungen</string>
   <string name="action_exit">Beenden</string>
   <string name="label_music_volume">Musik-Lautstärke</string>
-    <string name="description_music_volume">Steuer die Musik und Spiele betreffende Lautstärke, sobald sich dieses Gerät verbindet.</string>
+  <string name="description_music_volume">Steuer die Musik und Spiele betreffende Lautstärke, sobald sich dieses Gerät verbindet.</string>
   <string name="label_call_volume">Anruflautstärke</string>
-    <string name="description_call_volume">Steuer die Anrufe betreffende Lautstärke, sobald sich dieses Gerät verbindet.</string>
+  <string name="description_call_volume">Steuer die Anrufe betreffende Lautstärke, sobald sich dieses Gerät verbindet.</string>
   <string name="label_autoplay">Autoplay</string>
   <string name="description_autoplay">Die \'Autoplay\' Funktion simuliert einen Knopfdruck auf \'Abspielen\' einer Bluetoothfernsteuerung.</string>
   <string name="label_reaction_delay">Reaktionsverzögerung</string>
@@ -90,7 +90,7 @@
   <string name="label_exclude_gatt">GATT-Profile ausschließen</string>
   <string name="description_exclude_gattserver">Bluetooth-Profile des Typs \"Generisches Attribut\" (GATT) Server nicht abfragen.</string>
   <string name="description_exclude_gatt">Bluetooth-Profile des Typs \"Generisches Attribut\" (GATT) Client nicht abfragen.</string>
-    <string name="label_volumes">Lautstärken</string>
-    <string name="label_notification_volume">Lautstärke für Benachrichtigungen</string>
-    <string name="description_notification_volume">Nicht alle Geräte unterstützen eine separate Einstellung für die Lautstärke von Benachrichtigungen.</string>
+  <string name="label_volumes">Lautstärken</string>
+  <string name="label_notification_volume">Lautstärke für Benachrichtigungen</string>
+  <string name="description_notification_volume">Nicht alle Geräte unterstützen eine separate Einstellung für die Lautstärke von Benachrichtigungen.</string>
 </resources>
