@@ -11,6 +11,10 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.MenuItem;
 
+import com.bugsnag.android.Bugsnag;
+import com.bugsnag.android.Severity;
+
+import eu.darken.bluemusic.ManualReport;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.util.Check;
 import eu.darken.mvpbakery.base.MVPBakery;
@@ -50,6 +54,7 @@ public class AboutFragment extends PreferenceFragmentCompat implements AboutPres
         uploadPref = findPreference("about.debug.upload");
         uploadPref.setVisible(false);
         uploadPref.setOnPreferenceClickListener(preference -> {
+            Bugsnag.notify(new ManualReport(), Severity.INFO);
             Snackbar.make(getView(), "Done :) Now mail me!", Snackbar.LENGTH_SHORT).show();
             return true;
         });

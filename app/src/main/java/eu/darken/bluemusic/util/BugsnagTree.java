@@ -14,7 +14,7 @@ import timber.log.Timber;
 
 @AppComponent.Scope
 public class BugsnagTree extends Timber.DebugTree {
-    private static final int BUFFER_SIZE = 200;
+    private static final int BUFFER_SIZE = 300;
 
     // Adding one to the initial size accounts for the add before remove.
     private final Deque<String> buffer = new ArrayDeque<>(BUFFER_SIZE + 1);
