@@ -53,6 +53,7 @@ android {
     }
     lintOptions {
         abortOnError false
+        ignore 'CheckResult'
     }
     buildTypes {
         debug {
@@ -142,11 +143,11 @@ dependencies {
     implementation 'com.bugsnag:bugsnag-android:4.3.1'
 
     // MVP lib
-    implementation 'eu.darken.mvpbakery:library:0.4.0'
+    implementation 'eu.darken.mvpbakery:library:0.4.1'
 
     // RX
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
 
     //Dagger
     implementation "com.google.dagger:dagger:${daggerVersion}"
@@ -161,7 +162,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //Timber
-    implementation 'com.jakewharton.timber:timber:4.6.1'
+    implementation 'com.jakewharton.timber:timber:4.7.0'
     compileOnly 'org.jetbrains:annotations:15.0'
 
     // jUnit
@@ -172,7 +173,7 @@ dependencies {
     androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.2.0'
 
     //Intrumentation tests (UI tests)
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.1'
 
     // IAP

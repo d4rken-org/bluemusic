@@ -52,6 +52,7 @@ public class StreamHelper {
         final int max = getMaxVolume(streamId);
         final int target = Math.round(max * percent);
         Timber.d("Adjusting volume (streamId=%s, target=%d, current=%d, max=%d, visible=%b, delay=%d).", streamId, target, currentVolume, max, visible, delay);
+
         if (currentVolume != target) {
             if (delay == 0) {
                 setVolume(streamId, target, visible ? AudioManager.FLAG_SHOW_UI : 0);
@@ -59,16 +60,28 @@ public class StreamHelper {
                 if (currentVolume < target) {
                     for (int volumeStep = currentVolume; volumeStep <= target; volumeStep++) {
                         setVolume(streamId, volumeStep, visible ? AudioManager.FLAG_SHOW_UI : 0);
-                        try { Thread.sleep(delay); } catch (InterruptedException e) { Timber.e(e); }
+                        try {
+                            Thread.sleep(delay);
+                        } catch (InterruptedException e) {
+                            Timber.w(e);
+                            return;
+                        }
                     }
                 } else {
                     for (int volumeStep = currentVolume; volumeStep >= target; volumeStep--) {
                         setVolume(streamId, volumeStep, visible ? AudioManager.FLAG_SHOW_UI : 0);
-                        try { Thread.sleep(delay); } catch (InterruptedException e) { Timber.e(e); }
+                        try {
+                            Thread.sleep(delay);
+                        } catch (InterruptedException e) {
+                            Timber.w(e);
+                            return;
+                        }
                     }
                 }
             }
-        } else Timber.d("Target volume of %d already set.", target);
+        } else {
+            Timber.d("Target volume of %d already set.", target);
+        }
     }
 
 }

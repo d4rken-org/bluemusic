@@ -34,8 +34,6 @@ public class AutoplayModule extends ActionModule {
         if (event.getType() != SourceDevice.Event.Type.CONNECTED) return;
         if (!device.isAutoPlayEnabled()) return;
 
-        waitAdjustmentDelay(device);
-
         final int autoplayKeycode = settings.getAutoplayKeycode();
         Timber.d("Autoplay enabled, sending KeyEvent: %d", autoplayKeycode);
 

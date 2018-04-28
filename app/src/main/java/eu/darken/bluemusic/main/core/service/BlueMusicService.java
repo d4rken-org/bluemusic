@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.main.core.service;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationManager;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -17,12 +18,14 @@ import com.bugsnag.android.Bugsnag;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -40,9 +43,14 @@ import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.util.ApiHelper;
 import eu.darken.bluemusic.util.ui.RetryWithDelay;
+import io.reactivex.Completable;
 import io.reactivex.Scheduler;
+import io.reactivex.Single;
+import io.reactivex.SingleSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
@@ -60,6 +68,8 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     private volatile boolean adjusting = false;
     private Disposable notificationSub;
     private Disposable isActiveSub;
+    private final Map<String, CompositeDisposable> onGoingConnections = new LinkedHashMap<>();
+
     private BroadcastReceiver ringerPermission = new BroadcastReceiver() {
         @SuppressWarnings("ConstantConditions")
         @RequiresApi(api = Build.VERSION_CODES.M)
@@ -69,7 +79,6 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             Timber.d("isNotificationPolicyAccessGranted()=%b", notificationManager.isNotificationPolicyAccessGranted());
         }
     };
-    private final Map<String, Disposable> onGoingConnections = new LinkedHashMap<>();
 
     @Override
     public void onCreate() {
@@ -106,13 +115,13 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Override
     public void onDestroy() {
         Timber.v("onDestroy()");
+        getContentResolver().unregisterContentObserver(volumeObserver);
         if (ApiHelper.hasMarshmallow()) {
             unregisterReceiver(ringerPermission);
         }
         notificationSub.dispose();
         isActiveSub.dispose();
         serviceHelper.stop();
-        getContentResolver().unregisterContentObserver(volumeObserver);
         super.onDestroy();
     }
 
@@ -140,6 +149,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         super.onRebind(intent);
     }
 
+    @SuppressLint("ThrowableNotAtBeginning")
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Timber.v("onStartCommand-STARTED(intent=%s, flags=%d, startId=%d)", intent, flags, startId);
@@ -151,25 +161,9 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
             final SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
 
-            if (event.getType() == SourceDevice.Event.Type.DISCONNECTED) {
-                final Disposable disposable = onGoingConnections.remove(event.getAddress());
-                if (disposable != null) {
-                    Timber.d("%s disconnected, canceling on-going event %s", event.getAddress(), disposable);
-                    disposable.dispose();
-                }
-            }
-
-            // Do we need to keep the service running?
             bluetoothSource.getConnectedDevices()
                     .subscribeOn(scheduler)
                     .observeOn(scheduler)
-                    .doOnSubscribe(disposable -> {
-                        Timber.d("Handling %s", event);
-                        adjusting = true;
-                        if (event.getType() == SourceDevice.Event.Type.CONNECTED) {
-                            onGoingConnections.put(event.getAddress(), disposable);
-                        }
-                    })
                     .map(connectedDevices -> {
                         if (event.getType() == SourceDevice.Event.Type.CONNECTED && !connectedDevices.containsKey(event.getAddress())) {
                             Timber.v("Connection not ready yet retrying.");
@@ -185,7 +179,19 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         }
                         return new ManagedDevice.Action(knownDevice, deviceEvent.getType());
                     }))
+                    .flatMap((Function<ManagedDevice.Action, SingleSource<ManagedDevice.Action>>) action -> {
+                        if (action.getType() == SourceDevice.Event.Type.CONNECTED) {
+                            serviceHelper.updateMessage(getString(R.string.label_reaction_delay));
+                            Long reactionDelay = action.getDevice().getActionDelay();
+                            if (reactionDelay == null) reactionDelay = Settings.DEFAULT_REACTION_DELAY;
+                            Timber.d("Delaying reaction to %s by %d ms.", action, reactionDelay);
+                            return Single.timer(reactionDelay, TimeUnit.MILLISECONDS).map(timer -> action);
+                        } else {
+                            return Single.just(action);
+                        }
+                    })
                     .doOnSuccess(action -> {
+                        Timber.d("Acting on %s", action);
                         serviceHelper.updateMessage(getString(R.string.label_status_adjusting_volumes));
 
                         final ManagedDevice newDevice = action.getDevice();
@@ -206,30 +212,55 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
                             final CountDownLatch latch = new CountDownLatch(currentPriorityModules.size());
                             for (ActionModule module : currentPriorityModules) {
-                                new Thread(() -> {
-                                    Timber.d("Running module %s", module);
-                                    try {
-                                        module.handle(newDevice, event);
-                                    } catch (Exception e) {
-                                        Timber.e(e, "Module error");
-                                        Bugsnag.notify(e);
-                                    } finally {
-                                        latch.countDown();
-                                    }
-                                    Timber.d("Module %s finished", module);
-                                }).start();
+                                Completable.fromRunnable(() -> module.handle(newDevice, event))
+                                        .subscribeOn(Schedulers.io())
+                                        .doOnSubscribe(disp -> {
+                                            Timber.d("Running module %s", module);
+                                            final CompositeDisposable comp = onGoingConnections.get(event.getAddress());
+                                            if (comp != null) {
+                                                Timber.v("Existing CompositeDisposable, adding %s to %s", module, comp);
+                                                onGoingConnections.get(event.getAddress()).add(disp);
+                                            }
+                                        })
+                                        .doFinally(() -> {
+                                            latch.countDown();
+                                            Timber.d("Module %s finished", module);
+                                        })
+                                        .subscribe(() -> { }, e -> {
+                                            Timber.e(e, "Module error");
+                                            Bugsnag.notify(e);
+                                        });
                             }
                             try {
                                 latch.await();
-                            } catch (InterruptedException e) { Timber.e(e); }
+                            } catch (InterruptedException e) {
+                                Timber.w("Was waitinf for %d modules at priority %d but was INTERRUPTED", currentPriorityModules.size(), priorityArray.keyAt(i));
+                                break;
+                            }
                         }
                     })
-                    .doFinally(() -> {
-                        final Disposable remove = onGoingConnections.remove(event.getAddress());
-                        Timber.d("%s finished, removed: %s", event.getAddress(), remove);
+                    .doOnSubscribe(disposable -> {
+                        Timber.d("Subscribed %s", event);
+                        adjusting = true;
 
+                        if (event.getType() == SourceDevice.Event.Type.CONNECTED) {
+                            CompositeDisposable compositeDisposable = new CompositeDisposable();
+                            compositeDisposable.add(disposable);
+                            onGoingConnections.put(event.getAddress(), compositeDisposable);
+                        } else if (event.getType() == SourceDevice.Event.Type.DISCONNECTED) {
+                            final CompositeDisposable eventActions = onGoingConnections.remove(event.getAddress());
+                            if (eventActions != null) {
+                                Timber.d("%s disconnected, canceling on-going event (%d actions)", event.getAddress(), eventActions.size());
+                                eventActions.dispose();
+                            }
+                        }
+                    })
+                    .doOnDispose(() -> Timber.d("Disposed %s", event))
+                    .doFinally(() -> {
+                        final CompositeDisposable remove = onGoingConnections.remove(event.getAddress());
+                        Timber.d("%s finished, removed: %s", event.getAddress(), remove);
                         adjusting = false;
-                        Timber.d("Event handling finished.");
+
                         // Do we need to keep the service running?
                         deviceManager.observe().firstOrError().subscribeOn(Schedulers.computation())
                                 .subscribe(deviceMap -> {
@@ -248,19 +279,28 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                                             serviceHelper.stop();
                                         }
                                     } else {
-                                        Timber.d("No more active devices, stopping service.");
+                                        Timber.d("No more active devices, stopping service (%s).", BlueMusicService.this);
                                         serviceHelper.stop();
                                     }
                                 });
                     })
                     .subscribe((action, throwable) -> {
+                        Timber.d("action=%s, throwable=%s", action, throwable);
                         if (throwable != null && !(throwable instanceof UnmanagedDeviceException) && !(throwable instanceof PrematureConnectionException)) {
                             Timber.e(throwable, "Device error");
                             Bugsnag.notify(throwable);
                         }
 
                     });
+
         } else if (ServiceHelper.STOP_ACTION.equals(intent.getAction())) {
+            Timber.d("Stopping service, currently %d on-going events, killing them.", onGoingConnections.size());
+            final HashMap<String, CompositeDisposable> tmp = new HashMap<>(onGoingConnections);
+            onGoingConnections.clear();
+            for (Map.Entry<String, CompositeDisposable> entry : tmp.entrySet()) {
+                entry.getValue().dispose();
+            }
+
             serviceHelper.stop();
         } else {
             serviceHelper.stop();
@@ -280,6 +320,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             Timber.v("Volume change was triggered by us, ignoring it.");
             return;
         }
+
         float percentage = streamHelper.getVolumePercentage(id);
         deviceManager.updateDevices()
                 .map(deviceMap -> {

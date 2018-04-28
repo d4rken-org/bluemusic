@@ -33,8 +33,6 @@ abstract class BaseVolumeModule extends ActionModule {
         }
 
         if (percentage != -1) {
-            waitAdjustmentDelay(device);
-
             Long adjustmentDelay = device.getAdjustmentDelay();
             if (adjustmentDelay == null) adjustmentDelay = Settings.DEFAULT_ADJUSTMENT_DELAY;
 

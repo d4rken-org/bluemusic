@@ -2,6 +2,8 @@ package eu.darken.bluemusic.core.bluetooth;
 
 import java.util.Map;
 
+import eu.darken.bluemusic.bluetooth.core.BluetoothSource;
+import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 
