@@ -219,7 +219,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                                             final CompositeDisposable comp = onGoingConnections.get(event.getAddress());
                                             if (comp != null) {
                                                 Timber.v("Existing CompositeDisposable, adding %s to %s", module, comp);
-                                                onGoingConnections.get(event.getAddress()).add(disp);
+                                                comp.add(disp);
                                             }
                                         })
                                         .doFinally(() -> {
