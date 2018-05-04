@@ -90,4 +90,7 @@
   <string name="label_exclude_gatt">Izuzmi GATT profile</string>
   <string name="description_exclude_gattserver">Nemoj tražiti Bluetooth profile vrste \"Generic Attribute\" (GATT) poslužitelj.</string>
   <string name="description_exclude_gatt">Nemoj tražiti Bluetooth profile vrste \"Generic Attribute\" (GATT) klijent.</string>
+    <string name="label_volumes">Glasnoća</string>
+    <string name="label_notification_volume">Glasnoća obavijesti</string>
+    <string name="description_notification_volume">Ne podržavaju svi uređaji mogućnost zasebnu postavku glasnoće obavijesti.</string>
 </resources>
