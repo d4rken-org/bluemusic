@@ -6,14 +6,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
 
+import javax.inject.Inject;
+
+import eu.darken.bluemusic.AppComponent;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 
-
+@AppComponent.Scope
 public class FakeSpeakerDevice implements SourceDevice, Parcelable {
     public static final String ADDR = "self:speaker:main";
     private final String alias;
 
+    @Inject
     public FakeSpeakerDevice(Context context) {
         alias = context.getString(R.string.label_device_speaker);
     }

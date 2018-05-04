@@ -33,19 +33,17 @@ public class DeviceManager {
 
     private BluetoothSource bluetoothSource;
     private final StreamHelper streamHelper;
+    private final RealmSource realmSource;
     private Observable<Map<String, ManagedDevice>> deviceCache;
     private ObservableEmitter<Map<String, ManagedDevice>> emitter;
     private Disposable enabledSub;
 
 
     @Inject
-    public DeviceManager(BluetoothSource bluetoothSource, StreamHelper streamHelper) {
+    public DeviceManager(BluetoothSource bluetoothSource, StreamHelper streamHelper, RealmSource realmSource) {
         this.bluetoothSource = bluetoothSource;
         this.streamHelper = streamHelper;
-    }
-
-    private Realm getRealm() {
-        return Realm.getDefaultInstance();
+        this.realmSource = realmSource;
     }
 
     @NonNull
@@ -85,7 +83,7 @@ public class DeviceManager {
                                 final Map<String, ManagedDevice> result = new HashMap<>();
                                 if (!bluetoothSource.isEnabled().blockingFirst()) return result;
 
-                                try (Realm realm = getRealm()) {
+                                try (Realm realm = realmSource.getNewRealmInstance()) {
                                     final RealmResults<DeviceConfig> deviceConfigs = realm.where(DeviceConfig.class).findAll();
 
                                     realm.beginTransaction();
@@ -108,7 +106,7 @@ public class DeviceManager {
                                 }
                             });
                 })
-                .doOnError(throwable -> Timber.e(throwable))
+                .doOnError(Timber::e)
                 .doOnSuccess(stringManagedDeviceMap -> {
                     synchronized (DeviceManager.this) {
                         if (emitter != null) emitter.onNext(stringManagedDeviceMap);
@@ -120,7 +118,7 @@ public class DeviceManager {
         return Single.just(toSave)
                 .subscribeOn(Schedulers.computation())
                 .map(devices -> {
-                    try (Realm realm = getRealm()) {
+                    try (Realm realm = realmSource.getNewRealmInstance()) {
                         realm.beginTransaction();
                         for (ManagedDevice device : devices) {
                             Timber.d("Updated device: %s", device);
@@ -143,7 +141,7 @@ public class DeviceManager {
                         throw new IllegalArgumentException();
                     }
 
-                    try (Realm realm = getRealm()) {
+                    try (Realm realm = realmSource.getNewRealmInstance()) {
                         realm.beginTransaction();
 
                         DeviceConfig config = realm.where(DeviceConfig.class).equalTo("address", toAdd.getAddress()).findFirst();
@@ -166,14 +164,14 @@ public class DeviceManager {
                         return newDevice;
                     }
                 })
-                .doOnError(throwable -> Timber.e(throwable))
+                .doOnError(Timber::e)
                 .doOnSuccess(newDevice -> save(Collections.singleton(newDevice)).subscribe());
     }
 
     public Completable removeDevice(ManagedDevice device) {
         return Completable
                 .create(e -> {
-                    try (Realm realm = getRealm()) {
+                    try (Realm realm = realmSource.getNewRealmInstance()) {
                         DeviceConfig config = realm.where(DeviceConfig.class).equalTo("address", device.getAddress()).findFirst();
                         if (config != null) {
                             realm.beginTransaction();

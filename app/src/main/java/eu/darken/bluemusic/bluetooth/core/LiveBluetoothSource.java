@@ -14,10 +14,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import eu.darken.bluemusic.main.core.database.RealmSource;
 import eu.darken.bluemusic.settings.core.Settings;
+import eu.darken.bluemusic.util.Check;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.SingleOnSubscribe;
@@ -31,20 +34,24 @@ class LiveBluetoothSource implements BluetoothSource {
 
     private final BluetoothManager manager;
     private final Settings settings;
+    private final RealmSource realmSource;
     private final Context context;
     @Nullable private final BluetoothAdapter adapter;
     private Observable<Boolean> stateObs;
 
     private final SourceDevice fakeSpeakerDevice;
 
-    LiveBluetoothSource(Context context, Settings settings) {
+    LiveBluetoothSource(Context context, Settings settings, RealmSource realmSource, FakeSpeakerDevice fakeSpeakerDevice) {
         this.context = context;
-        manager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
         this.settings = settings;
+        this.realmSource = realmSource;
+        this.fakeSpeakerDevice = fakeSpeakerDevice;
+        manager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
+        Check.notNull(manager);
         adapter = manager.getAdapter();
         if (adapter == null) Timber.w("BluetoothAdapter is null!");
-        fakeSpeakerDevice = new FakeSpeakerDevice(context);
     }
+
 
     @Override
     public Observable<Boolean> isEnabled() {
@@ -65,7 +72,7 @@ class LiveBluetoothSource implements BluetoothSource {
                             Boolean lastState = null;
 
                             @Override
-                            public boolean test(@NonNull Boolean newState) throws Exception {
+                            public boolean test(@NonNull Boolean newState) {
                                 if (lastState == null || lastState != newState) {
                                     lastState = newState;
                                     return true;
@@ -152,10 +159,30 @@ class LiveBluetoothSource implements BluetoothSource {
                 })
                 .map(combined -> {
                     Timber.d("Connected COMBINED devices (%d): %s", combined.size(), combined);
-                    Map<String, SourceDevice> devices = new HashMap<>();
-                    for (BluetoothDevice d : combined) devices.put(d.getAddress(), new SourceDeviceWrapper(d));
-                    if (devices.isEmpty()) devices.put(fakeSpeakerDevice.getAddress(), fakeSpeakerDevice);
-                    return devices;
+                    Map<String, SourceDevice> connectedDevs = new HashMap<>();
+                    for (BluetoothDevice d : combined) connectedDevs.put(d.getAddress(), new SourceDeviceWrapper(d));
+
+                    final Set<String> managedAddrs = realmSource.getManagedAddresses().blockingGet();
+
+                    boolean noManagedDeviceConnected = true;
+                    for (String addr : connectedDevs.keySet()) {
+                        if (managedAddrs.contains(addr)) {
+                            noManagedDeviceConnected = false;
+                            break;
+                        }
+                    }
+                    if (noManagedDeviceConnected) {
+                        Timber.d("No (real) managed device is connected, connect fake speaker device %s", fakeSpeakerDevice);
+                        connectedDevs.put(fakeSpeakerDevice.getAddress(), fakeSpeakerDevice);
+                    }
+
+                    for (SourceDevice device : connectedDevs.values()) {
+                        if (!managedAddrs.contains(device.getAddress())) {
+                            Timber.d("%s is connected, but not managed by us.", device);
+                        }
+                    }
+
+                    return connectedDevs;
                 }))
                 .subscribeOn(Schedulers.io());
     }
