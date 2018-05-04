@@ -6,10 +6,12 @@ import android.content.Intent;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import eu.darken.bluemusic.main.core.database.RealmSource;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.util.EventGenerator;
 import eu.darken.mvpbakery.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
@@ -22,6 +24,7 @@ public class BootCheckReceiver extends BroadcastReceiver {
     @Inject Settings settings;
     @Inject BluetoothSource bluetoothSource;
     @Inject EventGenerator eventGenerator;
+    @Inject RealmSource realmSource;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -42,7 +45,7 @@ public class BootCheckReceiver extends BroadcastReceiver {
             return;
         }
 
-        Timber.d("We were rebooted, let's see if any Bluetooth device is connected...");
+        Timber.d("We just completed booting, let's see if any Bluetooth device is connected...");
         final PendingResult pendingResult = goAsync();
         bluetoothSource.getConnectedDevices()
                 .subscribeOn(Schedulers.io())
@@ -52,9 +55,21 @@ public class BootCheckReceiver extends BroadcastReceiver {
                 .doFinally(pendingResult::finish)
                 .subscribe(devices -> {
                     Timber.i("Connected devices: %s", devices);
-                    if (devices.size() > 0) {
-                        eventGenerator.send(devices.get(0), SourceDevice.Event.Type.CONNECTED);
+
+                    final Set<String> managedAddrs = realmSource.getManagedAddresses().blockingGet();
+                    boolean hasManagedConnetedDev = false;
+                    for (SourceDevice device : devices) {
+                        if (managedAddrs.contains(device.getAddress())) {
+                            hasManagedConnetedDev = true;
+                        }
                     }
+
+                    if (hasManagedConnetedDev) {
+                        eventGenerator.send(devices.get(0), SourceDevice.Event.Type.CONNECTED);
+                    } else {
+                        Timber.d("After boot no managed device is connected.");
+                    }
+
                 }, Timber::w);
     }
 }

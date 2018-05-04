@@ -6,8 +6,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
+import java.util.Set;
+
 import javax.inject.Inject;
 
+import eu.darken.bluemusic.main.core.database.RealmSource;
 import eu.darken.bluemusic.main.core.service.ServiceHelper;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.mvpbakery.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
@@ -18,6 +21,7 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
     public static final String EXTRA_DEVICE_EVENT = "eu.darken.bluemusic.core.bluetooth.event";
 
     @Inject Settings settings;
+    @Inject RealmSource realmSource;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -56,6 +60,12 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
         }
 
         SourceDevice.Event deviceEvent = new SourceDevice.Event(sourceDevice, actionType);
+
+        final Set<String> managedAddrs = realmSource.getManagedAddresses().blockingGet();
+        if (!managedAddrs.contains(deviceEvent.getAddress())) {
+            Timber.d("Event %s belongs to an un-managed device, not gonna bother our service for this", deviceEvent);
+            return;
+        }
 
         Intent service = ServiceHelper.getIntent(context);
         service.putExtra(EXTRA_DEVICE_EVENT, deviceEvent);
