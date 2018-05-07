@@ -3,7 +3,7 @@
     <PreferenceCategory android:title="@string/label_general">
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="core.advanced.devicetypes"
+            android:key="core.enabled"
             android:summary="@string/description_app_enabled"
             android:title="@string/label_app_enabled"/>
         <CheckBoxPreference
