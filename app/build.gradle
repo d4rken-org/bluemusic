@@ -40,7 +40,7 @@ android {
     buildToolsVersion "27.0.3"
 
     def versionMajor = 2
-    def versionMinor = 24
+    def versionMinor = 25
     def versionTag = ""
 
 
