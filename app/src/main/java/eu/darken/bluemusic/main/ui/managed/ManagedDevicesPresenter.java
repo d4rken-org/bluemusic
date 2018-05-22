@@ -63,7 +63,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(isProVersion -> onView(v -> v.updateUpgradeState(isProVersion)));
 
-            deviceSub = deviceManager.observe()
+            deviceSub = deviceManager.devices()
                     .subscribeOn(Schedulers.computation())
                     .map(managedDevices -> {
                         List<ManagedDevice> sorted = new ArrayList<>(managedDevices.values());

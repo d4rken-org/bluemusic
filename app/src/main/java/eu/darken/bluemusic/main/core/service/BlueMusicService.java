@@ -95,7 +95,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             registerReceiver(ringerPermission, new IntentFilter(NotificationManager.ACTION_NOTIFICATION_POLICY_ACCESS_GRANTED_CHANGED));
         }
 
-        notificationSub = deviceManager.observe()
+        notificationSub = deviceManager.devices()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(stringManagedDeviceMap -> {
                     Collection<ManagedDevice> connected = new ArrayList<>();
@@ -262,7 +262,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         adjusting = false;
 
                         // Do we need to keep the service running?
-                        deviceManager.observe().firstOrError().subscribeOn(Schedulers.computation())
+                        deviceManager.devices().firstOrError().subscribeOn(Schedulers.computation())
                                 .subscribe(deviceMap -> {
                                     boolean hasActiveDevices = false;
                                     for (ManagedDevice d : deviceMap.values()) {

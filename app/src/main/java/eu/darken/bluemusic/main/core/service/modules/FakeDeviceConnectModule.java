@@ -35,7 +35,7 @@ public class FakeDeviceConnectModule extends ActionModule {
     public void handle(ManagedDevice eventDevice, SourceDevice.Event event) {
         if (event.getType() != SourceDevice.Event.Type.DISCONNECTED) return;
 
-        final Map<String, ManagedDevice> managed = deviceManager.observe().blockingFirst();
+        final Map<String, ManagedDevice> managed = deviceManager.devices().blockingFirst();
         ManagedDevice fakeSpeaker = managed.get(FakeSpeakerDevice.ADDR);
         Timber.d("FakeSpeaker: %s", fakeSpeaker);
         if (fakeSpeaker == null) return;

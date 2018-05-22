@@ -66,7 +66,7 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
 
     private void updateDevice() {
         if (getView() != null) {
-            updateSub = deviceManager.observe()
+            updateSub = deviceManager.devices()
                     .subscribeOn(Schedulers.io())
                     .map(deviceMap -> {
                         for (ManagedDevice d : deviceMap.values()) {

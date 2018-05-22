@@ -47,7 +47,7 @@ public class DeviceManager {
     }
 
     @NonNull
-    public Observable<Map<String, ManagedDevice>> observe() {
+    public Observable<Map<String, ManagedDevice>> devices() {
         synchronized (this) {
             if (deviceCache == null) {
                 deviceCache = Observable
