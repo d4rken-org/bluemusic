@@ -159,7 +159,7 @@ public class DeviceManager {
                         final ManagedDevice newDevice = buildDevice(toAdd, realm.copyFromRealm(config));
                         newDevice.setActive(active.containsKey(newDevice.getAddress()));
 
-                        Timber.v("Loaded: %s", newDevice);
+                        Timber.v("Added new device: %s", newDevice);
                         realm.commitTransaction();
                         return newDevice;
                     }
@@ -179,6 +179,7 @@ public class DeviceManager {
                             realm.commitTransaction();
                         }
                     } finally {
+                        Timber.d("Removed %s from managed devices.", device);
                         e.onComplete();
                     }
                 })
