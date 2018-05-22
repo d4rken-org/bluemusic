@@ -56,7 +56,7 @@ public class DiscoverPresenter extends ComponentPresenter<DiscoverPresenter.View
     private void updateList() {
         if (getView() == null) return;
         Single
-                .zip(deviceManager.devices().firstOrError(), bluetoothSource.getPairedDevices(), (known, paired) -> {
+                .zip(deviceManager.devices().firstOrError(), bluetoothSource.pairedDevices().firstOrError(), (known, paired) -> {
                     managedDevices = 0;
                     final List<SourceDevice> devices = new ArrayList<>();
                     for (SourceDevice d : paired.values()) {

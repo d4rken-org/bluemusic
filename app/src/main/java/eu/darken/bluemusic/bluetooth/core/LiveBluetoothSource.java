@@ -5,9 +5,11 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.ParcelUuid;
-import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,23 +25,25 @@ import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.util.Check;
 import io.reactivex.Observable;
 import io.reactivex.Single;
+import io.reactivex.SingleEmitter;
 import io.reactivex.SingleOnSubscribe;
 import io.reactivex.SingleSource;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.BehaviorSubject;
 import timber.log.Timber;
 
 class LiveBluetoothSource implements BluetoothSource {
 
-    private final BluetoothManager manager;
     private final Settings settings;
     private final RealmSource realmSource;
     private final Context context;
-    @Nullable private final BluetoothAdapter adapter;
-    private Observable<Boolean> stateObs;
 
     private final SourceDevice fakeSpeakerDevice;
+    private final BehaviorSubject<Map<String, SourceDevice>> pairedPublisher = BehaviorSubject.create();
+    private final BehaviorSubject<Map<String, SourceDevice>> connectedPublisher = BehaviorSubject.create();
+    private final BehaviorSubject<Boolean> adapterEnabledPublisher = BehaviorSubject.create();
+    private final BluetoothManager manager;
+    private final BluetoothAdapter adapter;
 
     LiveBluetoothSource(Context context, Settings settings, RealmSource realmSource, FakeSpeakerDevice fakeSpeakerDevice) {
         this.context = context;
@@ -50,50 +54,74 @@ class LiveBluetoothSource implements BluetoothSource {
         Check.notNull(manager);
         adapter = manager.getAdapter();
         if (adapter == null) Timber.w("BluetoothAdapter is null!");
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(BluetoothDevice.ACTION_ACL_CONNECTED);
+        filter.addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED);
+        filter.addAction(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
+        filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
+
+        final BroadcastReceiver receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Timber.d("Bluetooth event (intent=%s, extras=%s)", intent, intent.getExtras());
+                String action = intent.getAction();
+                if (action == null) {
+                    Timber.e("Bluetooth event without action, how did we get this?");
+                    return;
+                }
+                switch (action) {
+                    case BluetoothDevice.ACTION_BOND_STATE_CHANGED:
+                        updatePaired();
+                        break;
+                    case BluetoothDevice.ACTION_ACL_CONNECTED:
+                    case BluetoothDevice.ACTION_ACL_DISCONNECTED:
+                        updateConnected();
+                        break;
+                    case BluetoothAdapter.ACTION_STATE_CHANGED:
+                        updateAdapter();
+                        break;
+                }
+            }
+        };
+        context.registerReceiver(receiver, filter);
+
+        updatePaired();
+        updateConnected();
+        updateAdapter();
     }
 
+    private void updatePaired() {
+        loadPairedDevices().subscribeOn(Schedulers.computation()).subscribe((paired, throwable) -> {
+            if (throwable == null) {
+                pairedPublisher.onNext(paired);
+            } else Timber.e(throwable, "Updating paired devices failed.");
+        });
+    }
+
+    private void updateConnected() {
+        loadConnectedDevices().subscribeOn(Schedulers.computation()).subscribe((connected, throwable) -> {
+            if (throwable == null) {
+                connectedPublisher.onNext(connected);
+            } else Timber.e(throwable, "Updating connected devices failed.");
+        });
+    }
+
+    private void updateAdapter() {
+        Single.create((SingleEmitter<BluetoothAdapter> emitter) -> emitter.onSuccess(adapter)).subscribeOn(Schedulers.io())
+                .subscribe((adapter, throwable) -> {
+                    if (throwable == null) {
+                        adapterEnabledPublisher.onNext(adapter.isEnabled());
+                    } else Timber.e(throwable, "Updating adapter state failed.");
+                });
+    }
 
     @Override
     public Observable<Boolean> isEnabled() {
-        synchronized (this) {
-            if (stateObs == null) {
-                stateObs = Observable.interval(1, TimeUnit.SECONDS)
-                        .startWith(0L)
-                        .map(count -> {
-                            try {
-                                return adapter != null && adapter.isEnabled();
-                            } catch (SecurityException e) {
-                                // Why.... revoked via root?
-                                Timber.e(e);
-                                return false;
-                            }
-                        })
-                        .filter(new Predicate<Boolean>() {
-                            Boolean lastState = null;
-
-                            @Override
-                            public boolean test(@NonNull Boolean newState) {
-                                if (lastState == null || lastState != newState) {
-                                    lastState = newState;
-                                    return true;
-                                }
-                                return false;
-                            }
-                        })
-                        .doFinally(() -> {
-                            synchronized (LiveBluetoothSource.this) {
-                                stateObs = null;
-                            }
-                        })
-                        .replay(1)
-                        .refCount();
-            }
-        }
-        return stateObs;
+        return adapterEnabledPublisher;
     }
 
-    @Override
-    public Single<Map<String, SourceDevice>> getPairedDevices() {
+    private Single<Map<String, SourceDevice>> loadPairedDevices() {
         Timber.v("getPairedDevices()");
         return Single.defer(() -> Single.just(manager.getAdapter().getBondedDevices()))
                 .map(bluetoothDevices -> {
@@ -116,7 +144,13 @@ class LiveBluetoothSource implements BluetoothSource {
                 .subscribeOn(Schedulers.io());
     }
 
-    static boolean hasUUID(ParcelUuid[] uuids, int target) {
+    @Override
+    public Observable<Map<String, SourceDevice>> pairedDevices() {
+        Timber.v("getPairedDevices()");
+        return pairedPublisher;
+    }
+
+    private static boolean hasUUID(ParcelUuid[] uuids, int target) {
         if (uuids == null) return false;
         for (ParcelUuid uuid : uuids) {
             if (getServiceIdentifierFromParcelUuid(uuid) == target) return true;
@@ -124,14 +158,13 @@ class LiveBluetoothSource implements BluetoothSource {
         return false;
     }
 
-    static int getServiceIdentifierFromParcelUuid(ParcelUuid parcelUuid) {
+    private static int getServiceIdentifierFromParcelUuid(ParcelUuid parcelUuid) {
         UUID uuid = parcelUuid.getUuid();
         long value = (uuid.getMostSignificantBits() & 0x0000FFFF00000000L) >>> 32;
         return (int) value;
     }
 
-    @Override
-    public Single<Map<String, SourceDevice>> getConnectedDevices() {
+    private Single<Map<String, SourceDevice>> loadConnectedDevices() {
         Timber.v("getConnectedDevices()");
 
         final List<SingleSource<List<BluetoothDevice>>> profiles = new ArrayList<>();
@@ -149,7 +182,11 @@ class LiveBluetoothSource implements BluetoothSource {
         if (!settings.isHealthDeviceExcluded()) {
             profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEALTH));
         }
-
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return Single.defer(() -> Single.merge(profiles)
                 .toList()
                 .map(lists -> {
@@ -185,6 +222,11 @@ class LiveBluetoothSource implements BluetoothSource {
                     return connectedDevs;
                 }))
                 .subscribeOn(Schedulers.io());
+    }
+
+    @Override
+    public Observable<Map<String, SourceDevice>> connectedDevices() {
+        return connectedPublisher;
     }
 
     private Single<List<BluetoothDevice>> getDevicesForProfile(int desiredProfile) {

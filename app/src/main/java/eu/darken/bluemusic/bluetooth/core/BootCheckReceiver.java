@@ -47,10 +47,11 @@ public class BootCheckReceiver extends BroadcastReceiver {
 
         Timber.d("We just completed booting, let's see if any Bluetooth device is connected...");
         final PendingResult pendingResult = goAsync();
-        bluetoothSource.getConnectedDevices()
+        bluetoothSource.connectedDevices()
                 .subscribeOn(Schedulers.io())
                 .map(Map::values)
                 .map(ArrayList::new)
+                .firstOrError()
                 .timeout(8, TimeUnit.SECONDS, Single.just(new ArrayList<>()))
                 .doFinally(pendingResult::finish)
                 .subscribe(devices -> {

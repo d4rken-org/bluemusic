@@ -16,13 +16,11 @@ import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.audio.StreamHelper;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Single;
 import io.reactivex.SingleSource;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.BehaviorSubject;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import timber.log.Timber;
@@ -34,41 +32,31 @@ public class DeviceManager {
     private BluetoothSource bluetoothSource;
     private final StreamHelper streamHelper;
     private final RealmSource realmSource;
-    private Observable<Map<String, ManagedDevice>> deviceCache;
-    private ObservableEmitter<Map<String, ManagedDevice>> emitter;
-    private Disposable enabledSub;
-
+    private final BehaviorSubject<Map<String, ManagedDevice>> deviceRepo = BehaviorSubject.create();
 
     @Inject
     public DeviceManager(BluetoothSource bluetoothSource, StreamHelper streamHelper, RealmSource realmSource) {
         this.bluetoothSource = bluetoothSource;
         this.streamHelper = streamHelper;
         this.realmSource = realmSource;
+
+        bluetoothSource.isEnabled()
+                .subscribeOn(Schedulers.computation())
+                .flatMapSingle(active -> updateDevices())
+                .subscribe();
+        bluetoothSource.pairedDevices()
+                .subscribeOn(Schedulers.computation())
+                .flatMapSingle(paired -> updateDevices())
+                .subscribe();
+        bluetoothSource.connectedDevices()
+                .subscribeOn(Schedulers.computation())
+                .flatMapSingle(active -> updateDevices())
+                .subscribe();
     }
 
     @NonNull
     public Observable<Map<String, ManagedDevice>> devices() {
-        synchronized (this) {
-            if (deviceCache == null) {
-                deviceCache = Observable
-                        .create((ObservableOnSubscribe<Map<String, ManagedDevice>>) emitter -> DeviceManager.this.emitter = emitter)
-                        .doOnSubscribe(disposable -> {
-                            enabledSub = bluetoothSource.isEnabled()
-                                    .subscribeOn(Schedulers.io())
-                                    .flatMapSingle((Function<Boolean, SingleSource<?>>) active -> updateDevices())
-                                    .subscribe();
-                        })
-                        .doFinally(() -> {
-                            enabledSub.dispose();
-                            deviceCache = null;
-                            emitter = null;
-                        })
-                        .replay(1)
-                        .refCount()
-                        .map(HashMap::new);
-            }
-        }
-        return deviceCache;
+        return deviceRepo;
     }
 
     public Single<Map<String, ManagedDevice>> updateDevices() {
@@ -77,8 +65,8 @@ public class DeviceManager {
                 .flatMap((Function<Boolean, SingleSource<Map<String, ManagedDevice>>>) activeBluetooth -> {
                     if (!activeBluetooth) return Single.just(Collections.emptyMap());
                     return Single.zip(
-                            bluetoothSource.getConnectedDevices(),
-                            bluetoothSource.getPairedDevices(),
+                            bluetoothSource.connectedDevices().firstOrError(),
+                            bluetoothSource.pairedDevices().firstOrError(),
                             (active, paired) -> {
                                 final Map<String, ManagedDevice> result = new HashMap<>();
                                 if (!bluetoothSource.isEnabled().blockingFirst()) return result;
@@ -107,11 +95,7 @@ public class DeviceManager {
                             });
                 })
                 .doOnError(Timber::e)
-                .doOnSuccess(stringManagedDeviceMap -> {
-                    synchronized (DeviceManager.this) {
-                        if (emitter != null) emitter.onNext(stringManagedDeviceMap);
-                    }
-                });
+                .doOnSuccess(deviceRepo::onNext);
     }
 
     public Single<Map<String, ManagedDevice>> save(Collection<ManagedDevice> toSave) {
@@ -133,8 +117,8 @@ public class DeviceManager {
 
     public Single<ManagedDevice> addNewDevice(SourceDevice toAdd) {
         return Single.zip(
-                bluetoothSource.getConnectedDevices(),
-                bluetoothSource.getPairedDevices(),
+                bluetoothSource.connectedDevices().firstOrError(),
+                bluetoothSource.pairedDevices().firstOrError(),
                 (active, paired) -> {
                     if (!paired.containsKey(toAdd.getAddress())) {
                         Timber.e("Device isn't paired device: %s", toAdd);

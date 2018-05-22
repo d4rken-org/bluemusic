@@ -161,7 +161,8 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
             final SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
 
-            bluetoothSource.getConnectedDevices()
+            bluetoothSource.connectedDevices()
+                    .firstOrError()
                     .subscribeOn(scheduler)
                     .observeOn(scheduler)
                     .map(connectedDevices -> {
@@ -172,7 +173,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         return event;
                     })
                     .retryWhen(new RetryWithDelay(5, 2000))
-                    .flatMap(deviceEvent -> deviceManager.updateDevices().map(knownDevices -> {
+                    .flatMap(deviceEvent -> deviceManager.devices().firstOrError().map(knownDevices -> {
                         final ManagedDevice knownDevice = knownDevices.get(deviceEvent.getAddress());
                         if (knownDevice == null) {
                             throw new UnmanagedDeviceException(deviceEvent);
@@ -213,7 +214,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                             final CountDownLatch latch = new CountDownLatch(currentPriorityModules.size());
                             for (ActionModule module : currentPriorityModules) {
                                 Completable.fromRunnable(() -> module.handle(newDevice, event))
-                                        .subscribeOn(Schedulers.io())
+                                        .subscribeOn(Schedulers.computation())
                                         .doOnSubscribe(disp -> {
                                             Timber.d("Running module %s", module);
                                             final CompositeDisposable comp = onGoingConnections.get(event.getAddress());
@@ -322,7 +323,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         }
 
         float percentage = streamHelper.getVolumePercentage(id);
-        deviceManager.updateDevices()
+        deviceManager.devices()
                 .map(deviceMap -> {
                     Collection<ManagedDevice> active = new HashSet<>();
                     for (ManagedDevice d : deviceMap.values()) {
@@ -331,7 +332,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     return active;
                 })
                 .filter(managedDevices -> !managedDevices.isEmpty())
-                .toFlowable()
+                .take(1)
                 .flatMapIterable(managedDevices -> managedDevices)
                 .filter(device -> device.getStreamType(id) != null)
                 .map(device -> {
