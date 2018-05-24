@@ -167,12 +167,12 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     .observeOn(scheduler)
                     .map(connectedDevices -> {
                         if (event.getType() == SourceDevice.Event.Type.CONNECTED && !connectedDevices.containsKey(event.getAddress())) {
-                            Timber.v("Connection not ready yet retrying.");
+                            Timber.w("Connection not ready yet retrying.");
                             throw new PrematureConnectionException(event);
                         }
                         return event;
                     })
-                    .retryWhen(new RetryWithDelay(5, 2000))
+                    .retryWhen(new RetryWithDelay(10, 2000))
                     .flatMap(deviceEvent -> deviceManager.devices().firstOrError().map(knownDevices -> {
                         final ManagedDevice knownDevice = knownDevices.get(deviceEvent.getAddress());
                         if (knownDevice == null) {

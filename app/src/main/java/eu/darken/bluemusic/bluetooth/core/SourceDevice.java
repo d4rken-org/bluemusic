@@ -2,12 +2,15 @@ package eu.darken.bluemusic.bluetooth.core;
 
 
 import android.bluetooth.BluetoothClass;
+import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import eu.darken.bluemusic.main.core.audio.AudioStream;
+import timber.log.Timber;
 
 public interface SourceDevice extends Parcelable {
     @Nullable
@@ -85,6 +88,34 @@ public interface SourceDevice extends Parcelable {
             }
         };
 
+        @Nullable
+        public static Event createEvent(Intent intent) {
+            final BluetoothDevice bluetoothDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+            if (bluetoothDevice == null) {
+                Timber.w("Intent didn't contain a bluetooth device!");
+                return null;
+            }
+            SourceDevice sourceDevice = new SourceDeviceWrapper(bluetoothDevice);
+
+            SourceDevice.Event.Type actionType;
+            if (BluetoothDevice.ACTION_ACL_CONNECTED.equals(intent.getAction())) {
+                actionType = SourceDevice.Event.Type.CONNECTED;
+            } else if (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(intent.getAction())) {
+                actionType = SourceDevice.Event.Type.DISCONNECTED;
+            } else {
+                Timber.w("Invalid action: %s", intent.getAction());
+                return null;
+            }
+
+            try {
+                Timber.d("Device: %s | Action: %s", sourceDevice, actionType);
+            } catch (Exception e) {
+                Timber.e(e);
+                return null;
+            }
+
+            return new SourceDevice.Event(sourceDevice, actionType);
+        }
 
     }
 

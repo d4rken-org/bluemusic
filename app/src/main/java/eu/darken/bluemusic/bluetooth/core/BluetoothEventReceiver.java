@@ -1,12 +1,12 @@
 package eu.darken.bluemusic.bluetooth.core;
 
-import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -14,6 +14,9 @@ import eu.darken.bluemusic.main.core.database.RealmSource;
 import eu.darken.bluemusic.main.core.service.ServiceHelper;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.mvpbakery.injection.broadcastreceiver.HasManualBroadcastReceiverInjector;
+import io.reactivex.Single;
+import io.reactivex.SingleOnSubscribe;
+import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 
@@ -33,44 +36,41 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
             return;
         }
 
-        final BluetoothDevice bluetoothDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-        if (bluetoothDevice == null) {
-            Timber.w("Intent didn't contain a bluetooth device!");
+        final SourceDevice.Event deviceEvent = SourceDevice.Event.createEvent(intent);
+        if (deviceEvent == null) {
+            Timber.e("Couldn't create device event for %s", intent);
             return;
         }
 
-        SourceDevice sourceDevice = new SourceDeviceWrapper(bluetoothDevice);
+        final PendingResult goAsync = goAsync();
+        Single
+                .create((SingleOnSubscribe<Boolean>) emitter -> {
+                    final Set<String> managedAddrs = realmSource.getManagedAddresses().blockingGet();
+                    if (managedAddrs.contains(deviceEvent.getAddress())) {
+                        emitter.onSuccess(true);
+                    } else {
+                        Timber.d("Event %s belongs to an un-managed device, not gonna bother our service for this", deviceEvent);
+                        emitter.onSuccess(false);
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .timeout(8, TimeUnit.SECONDS)
+                .doFinally(goAsync::finish)
+                .subscribe((validEvent, throwable) -> {
+                    if (throwable != null) {
+                        Timber.e(throwable);
+                        return;
+                    }
 
-        String actionString = intent.getAction();
-        try {
-            Timber.d("Device: %s | Action: %s", sourceDevice, actionString);
-        } catch (Exception e) {
-            Timber.e(e);
-            return;
-        }
+                    if (!validEvent) {
+                        Timber.w("%s wasn't a valid event.", deviceEvent);
+                        return;
+                    }
 
-        SourceDevice.Event.Type actionType;
-        if (BluetoothDevice.ACTION_ACL_CONNECTED.equals(actionString)) {
-            actionType = SourceDevice.Event.Type.CONNECTED;
-        } else if (BluetoothDevice.ACTION_ACL_DISCONNECTED.equals(actionString)) {
-            actionType = SourceDevice.Event.Type.DISCONNECTED;
-        } else {
-            Timber.w("Invalid action: %s", actionString);
-            return;
-        }
-
-        SourceDevice.Event deviceEvent = new SourceDevice.Event(sourceDevice, actionType);
-
-        final Set<String> managedAddrs = realmSource.getManagedAddresses().blockingGet();
-        if (!managedAddrs.contains(deviceEvent.getAddress())) {
-            Timber.d("Event %s belongs to an un-managed device, not gonna bother our service for this", deviceEvent);
-            return;
-        }
-
-        Intent service = ServiceHelper.getIntent(context);
-        service.putExtra(EXTRA_DEVICE_EVENT, deviceEvent);
-        final ComponentName componentName = ServiceHelper.startService(context, service);
-        if (componentName != null) Timber.v("Service is already running.");
+                    Intent service = ServiceHelper.getIntent(context);
+                    service.putExtra(EXTRA_DEVICE_EVENT, deviceEvent);
+                    final ComponentName componentName = ServiceHelper.startService(context, service);
+                    if (componentName != null) Timber.v("Service is already running.");
+                });
     }
-
 }
