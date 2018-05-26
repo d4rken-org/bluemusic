@@ -213,7 +213,11 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
                             final CountDownLatch latch = new CountDownLatch(currentPriorityModules.size());
                             for (ActionModule module : currentPriorityModules) {
-                                Completable.fromRunnable(() -> module.handle(newDevice, event))
+                                Completable.fromRunnable(() -> {
+                                    Timber.v("Module %s HANDLE-START", module);
+                                    module.handle(newDevice, event);
+                                    Timber.v("Module %s HANDLE-STOP", module);
+                                })
                                         .subscribeOn(Schedulers.io())
                                         .doOnSubscribe(disp -> {
                                             Timber.d("Running module %s", module);
