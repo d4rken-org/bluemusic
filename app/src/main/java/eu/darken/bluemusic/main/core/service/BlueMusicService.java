@@ -214,7 +214,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                             final CountDownLatch latch = new CountDownLatch(currentPriorityModules.size());
                             for (ActionModule module : currentPriorityModules) {
                                 Completable.fromRunnable(() -> module.handle(newDevice, event))
-                                        .subscribeOn(Schedulers.computation())
+                                        .subscribeOn(Schedulers.io())
                                         .doOnSubscribe(disp -> {
                                             Timber.d("Running module %s", module);
                                             final CompositeDisposable comp = onGoingConnections.get(event.getAddress());
@@ -235,7 +235,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                             try {
                                 latch.await();
                             } catch (InterruptedException e) {
-                                Timber.w("Was waitinf for %d modules at priority %d but was INTERRUPTED", currentPriorityModules.size(), priorityArray.keyAt(i));
+                                Timber.w("Was waiting for %d modules at priority %d but was INTERRUPTED", currentPriorityModules.size(), priorityArray.keyAt(i));
                                 break;
                             }
                         }
@@ -274,6 +274,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                                     }
                                     if (hasActiveDevices) {
                                         if (settings.isVolumeChangeListenerEnabled()) {
+                                            Timber.d("Active devices (%s) and we want to listen for volume changes!", deviceMap);
                                             serviceHelper.updateMessage(getString(R.string.label_status_listening_for_changes));
                                         } else {
                                             Timber.d("We don't want to listen to anymore volume changes, stopping service.");
