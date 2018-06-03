@@ -90,4 +90,7 @@
   <string name="label_exclude_gatt">GATT 프로파일 제외</string>
   <string name="description_exclude_gattserver">\'일반 속성(GATT)\' 서버의 블루투스 프로파일을 조회하지 않습니다.</string>
   <string name="description_exclude_gatt">\'일반 속성(GATT)\' 클라이언트의 블루투스 프로파일을 조회하지 않습니다.</string>
+    <string name="label_volumes">볼륨</string>
+    <string name="label_notification_volume">알림 볼륨</string>
+    <string name="description_notification_volume">모든 디바이스가 개별 알림 설정을 지원하지는 않습니다.</string>
 </resources>
