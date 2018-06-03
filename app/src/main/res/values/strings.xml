@@ -91,5 +91,5 @@
     <string name="label_volumes">Volumes</string>
     <string name="label_notification_volume">Notification volume</string>
     <string name="description_notification_volume">Not all devices support a separate notification volume setting.</string>
-    <string name="description_waiting_for_devicex">Waiting for device %s</string>
+    <string name="description_waiting_for_devicex">Waiting for %s to complete connection</string>
 </resources>
