@@ -9,12 +9,16 @@ import io.reactivex.functions.Function;
 
 public class RetryWithDelay implements Function<Flowable<? extends Throwable>, Publisher<?>> {
     private final int maxRetries;
-    private final int delayMillis;
+    private final long delayMillis;
     private int retryCount = 0;
 
-    public RetryWithDelay(final int maxRetries, final int delayMillis) {
+    public RetryWithDelay(final int maxRetries, final long delayMillis) {
         this.maxRetries = maxRetries;
         this.delayMillis = delayMillis;
+    }
+
+    public int getRetryCount() {
+        return retryCount;
     }
 
     @Override

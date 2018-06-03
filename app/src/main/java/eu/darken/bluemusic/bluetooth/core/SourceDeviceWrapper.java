@@ -20,11 +20,19 @@ class SourceDeviceWrapper implements SourceDevice {
     }
 
     @Override
+    public String getLabel() {
+        String label = getAlias();
+        if (label == null) label = getName();
+        if (label == null) label = getAddress();
+        return label;
+    }
+
+    @Override
     public boolean setAlias(String alias) {
         try {
+            //noinspection JavaReflectionMemberAccess
             Method method = realDevice.getClass().getMethod("setAlias", String.class);
             return (boolean) method.invoke(realDevice, alias);
-
         } catch (Exception e) {
             Timber.e(e);
         }
@@ -35,6 +43,7 @@ class SourceDeviceWrapper implements SourceDevice {
     @Override
     public String getAlias() {
         try {
+            //noinspection JavaReflectionMemberAccess
             Method method = realDevice.getClass().getMethod("getAliasName");
             return (String) method.invoke(realDevice);
         } catch (Exception e) {

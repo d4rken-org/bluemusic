@@ -26,6 +26,8 @@ public interface SourceDevice extends Parcelable {
     @Nullable
     String getAlias();
 
+    String getLabel();
+
     AudioStream.Id getStreamId(AudioStream.Type type);
 
     class Event implements Parcelable {

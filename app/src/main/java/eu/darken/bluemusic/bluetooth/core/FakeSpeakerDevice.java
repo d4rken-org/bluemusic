@@ -47,7 +47,15 @@ public class FakeSpeakerDevice implements SourceDevice, Parcelable {
     @Nullable
     @Override
     public String getAlias() {
-        return "Speaker";
+        return alias;
+    }
+
+    @Override
+    public String getLabel() {
+        String label = getAlias();
+        if (label == null) label = getName();
+        if (label == null) label = getAddress();
+        return label;
     }
 
     @Override

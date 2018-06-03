@@ -24,11 +24,11 @@ public class ManagedDevice {
         this.deviceConfig = deviceConfig;
     }
 
-    public String tryGetAlias() {
-        String alias = getAlias();
-        return alias != null ? alias : getName();
+    public String getLabel() {
+        return sourceDevice.getLabel();
     }
 
+    @Nullable
     public String getAlias() {
         return sourceDevice.getAlias();
     }
@@ -167,7 +167,7 @@ public class ManagedDevice {
         for (AudioStream.Type type : AudioStream.Type.values()) {
             if (getStreamId(type) == id) return type;
         }
-        Timber.d("%s is not mapped by %s.", id, tryGetAlias());
+        Timber.d("%s is not mapped by %s.", id, getLabel());
         return null;
     }
 

@@ -63,7 +63,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     public static Fragment instantiate(ManagedDevice device) {
         Bundle bundle = new Bundle();
         bundle.putString(ARG_ADDRESS, device.getAddress());
-        bundle.putString(ARG_NAME, device.tryGetAlias());
+        bundle.putString(ARG_NAME, device.getLabel());
         ConfigFragment fragment = new ConfigFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -163,7 +163,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @Override
     public void updateDevice(ManagedDevice device) {
         Check.notNull(getArguments());
-        String alias = device.tryGetAlias();
+        String alias = device.getLabel();
         actionBar.setTitle(alias);
         String name = device.getName();
         if (!alias.equals(name)) actionBar.setSubtitle(name);

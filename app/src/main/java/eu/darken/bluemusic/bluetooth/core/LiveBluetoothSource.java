@@ -129,7 +129,7 @@ class LiveBluetoothSource implements BluetoothSource {
                         return deviceMap;
                     }
                 })
-                .retryWhen(new RetryWithDelay(40, 500))
+                .retryWhen(new RetryWithDelay(BluetoothSource.RETRY_COUNT, BluetoothSource.RETRY_DELAY))
                 .subscribe((connected, throwable) -> {
                     if (throwable != null) {
                         Timber.e(throwable, "Updating connected devices failed.");

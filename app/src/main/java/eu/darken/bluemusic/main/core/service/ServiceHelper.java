@@ -96,7 +96,7 @@ public class ServiceHelper {
         final Iterator<ManagedDevice> iterator = devices.iterator();
         StringBuilder sb = new StringBuilder();
         while (iterator.hasNext()) {
-            sb.append(iterator.next().tryGetAlias());
+            sb.append(iterator.next().getLabel());
             if (iterator.hasNext()) sb.append(", ");
         }
         if (!devices.isEmpty()) builder.setContentTitle(sb.toString());

@@ -160,19 +160,20 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             serviceHelper.start();
 
             final SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
-
+            final RetryWithDelay retryWithDelay = new RetryWithDelay(BluetoothSource.RETRY_COUNT + 1, BluetoothSource.RETRY_DELAY);
             bluetoothSource.connectedDevices()
                     .firstOrError()
                     .subscribeOn(scheduler)
                     .observeOn(scheduler)
                     .map(connectedDevices -> {
                         if (event.getType() == SourceDevice.Event.Type.CONNECTED && !connectedDevices.containsKey(event.getAddress())) {
-                            Timber.w("Connection not ready yet retrying.");
+                            Timber.w("%s not fully connected, retrying (#%d).", event.getDevice().getLabel(), retryWithDelay.getRetryCount());
+                            serviceHelper.updateMessage(getString(R.string.description_waiting_for_devicex, event.getDevice().getLabel()) + " (#" + retryWithDelay.getRetryCount() + ")");
                             throw new PrematureConnectionException(event);
                         }
                         return event;
                     })
-                    .retryWhen(new RetryWithDelay(10, 2000))
+                    .retryWhen(retryWithDelay)
                     .flatMap(deviceEvent -> deviceManager.devices().firstOrError().map(knownDevices -> {
                         final ManagedDevice knownDevice = knownDevices.get(deviceEvent.getAddress());
                         if (knownDevice == null) {
