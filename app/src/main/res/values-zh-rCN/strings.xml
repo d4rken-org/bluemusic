@@ -91,4 +91,5 @@
   <string name="label_volumes">音量</string>
   <string name="label_notification_volume">通知音量</string>
   <string name="description_notification_volume">并非所有设备都支持单独的通知音量设置。</string>
+    <string name="description_waiting_for_devicex">等待 %s 完成连接</string>
 </resources>

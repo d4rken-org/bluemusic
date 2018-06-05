@@ -93,4 +93,5 @@
   <string name="label_volumes">Volume</string>
   <string name="label_notification_volume">Volume pemberitahuan</string>
   <string name="description_notification_volume">Tidak semua perangkat mendukung pengaturan volume pemberitahuan terpisah.</string>
+    <string name="description_waiting_for_devicex">Menunggu %s untuk menyelesaikan sambungan</string>
 </resources>

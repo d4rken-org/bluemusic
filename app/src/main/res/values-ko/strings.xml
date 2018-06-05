@@ -93,4 +93,5 @@
     <string name="label_volumes">볼륨</string>
     <string name="label_notification_volume">알림 볼륨</string>
     <string name="description_notification_volume">모든 디바이스가 개별 알림 설정을 지원하지는 않습니다.</string>
+    <string name="description_waiting_for_devicex">%s 장치와의 연결이 완료될 때까지 기다리고 있습니다</string>
 </resources>

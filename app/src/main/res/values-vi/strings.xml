@@ -93,4 +93,5 @@
   <string name="label_volumes">Âm lượng</string>
   <string name="label_notification_volume">Âm lượng thông báo</string>
   <string name="description_notification_volume">Không phải tất cả các thiết bị hỗ trợ thiết lập âm lượng thông báo riêng biệt.</string>
+    <string name="description_waiting_for_devicex">Chờ %s để hoàn thành kết nối</string>
 </resources>

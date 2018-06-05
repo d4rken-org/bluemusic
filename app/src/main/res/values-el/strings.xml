@@ -93,4 +93,5 @@
   <string name="label_volumes">Εντάσεις</string>
   <string name="label_notification_volume">Ένταση ήχου ειδοποίησης</string>
   <string name="description_notification_volume">Δεν υποστηρίζουν όλες οι συσκευές μια ξεχωριστή ρύθμιση για τον ήχο ειδοποιήσεων.</string>
+    <string name="description_waiting_for_devicex">Αναμονή για να ολοκληρωθεί η σύνδεση του %s</string>
 </resources>

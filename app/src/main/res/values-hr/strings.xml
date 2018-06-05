@@ -93,4 +93,5 @@
     <string name="label_volumes">Glasnoća</string>
     <string name="label_notification_volume">Glasnoća obavijesti</string>
     <string name="description_notification_volume">Ne podržavaju svi uređaji mogućnost zasebnu postavku glasnoće obavijesti.</string>
+    <string name="description_waiting_for_devicex">Čekanje na %s za dovršetak veze</string>
 </resources>

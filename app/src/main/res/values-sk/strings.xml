@@ -93,4 +93,5 @@
   <string name="label_volumes">Hlasitosti</string>
   <string name="label_notification_volume">Hlasitosť upozornení</string>
   <string name="description_notification_volume">Nie všetky zariadenia podporujú samostatné nastavenie hlasitosti upozornení.</string>
+    <string name="description_waiting_for_devicex">Čaká sa na %s pre dokončenie pripojenia</string>
 </resources>

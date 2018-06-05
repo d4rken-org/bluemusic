@@ -93,4 +93,5 @@
     <string name="label_volumes">Громкость</string>
   <string name="label_notification_volume">Громкость уведомлений</string>
   <string name="description_notification_volume">Не все устройства поддерживают отдельную настройку громкости уведомлений.</string>
+    <string name="description_waiting_for_devicex">Ожидание %s для соединения</string>
 </resources>

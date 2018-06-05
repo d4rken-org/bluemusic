@@ -93,4 +93,5 @@
   <string name="label_volumes">Lautstärken</string>
   <string name="label_notification_volume">Lautstärke für Benachrichtigungen</string>
   <string name="description_notification_volume">Nicht alle Geräte unterstützen eine separate Einstellung für die Lautstärke von Benachrichtigungen.</string>
+    <string name="description_waiting_for_devicex">Auf %s wartend, um die Verbindung fertigzustellen</string>
 </resources>

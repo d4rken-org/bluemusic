@@ -93,4 +93,5 @@
     <string name="label_volumes">Volumes</string>
     <string name="label_notification_volume">Volume das notificações</string>
     <string name="description_notification_volume">Nem todos os dispositivos possuem suporte à definição autónoma de volume.</string>
+    <string name="description_waiting_for_devicex">À espera de %s para completar a conexão</string>
 </resources>

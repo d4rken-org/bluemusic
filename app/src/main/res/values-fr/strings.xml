@@ -93,4 +93,5 @@
   <string name="label_volumes">Volumes</string>
   <string name="label_notification_volume">Volume des notifications</string>
   <string name="description_notification_volume">Tous les appareils ne prennent pas en charge un réglage séparé du volume des notifications.</string>
+    <string name="description_waiting_for_devicex">Attente de connexion effective de %s</string>
 </resources>
