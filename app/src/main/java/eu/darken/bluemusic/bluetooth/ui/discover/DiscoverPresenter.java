@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.IAPHelper;
 import eu.darken.bluemusic.bluetooth.core.BluetoothSource;
+import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.mvpbakery.base.Presenter;
@@ -67,6 +69,14 @@ public class DiscoverPresenter extends ComponentPresenter<DiscoverPresenter.View
                     return devices;
                 })
                 .subscribeOn(Schedulers.io())
+                .map(sourceDevices -> {
+                    Collections.sort(sourceDevices, (o1, o2) -> {
+                        if (o1.getAddress().equals(FakeSpeakerDevice.ADDR)) return -1;
+                        else if (o2.getAddress().equals(FakeSpeakerDevice.ADDR)) return 1;
+                        else return 0;
+                    });
+                    return sourceDevices;
+                })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(sourceDevices -> onView(v -> v.showDevices(sourceDevices)));
     }

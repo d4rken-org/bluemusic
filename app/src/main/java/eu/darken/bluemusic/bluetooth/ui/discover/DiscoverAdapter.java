@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.bluetooth.ui.discover;
 
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -8,6 +7,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import eu.darken.bluemusic.R;
+import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.util.DeviceHelper;
 import eu.darken.bluemusic.util.ui.BasicViewHolder;
@@ -26,17 +26,23 @@ class DiscoverAdapter extends ClickableAdapter<DiscoverAdapter.DeviceVH, SourceD
         @BindView(R.id.caption) TextView caption;
         @BindView(R.id.icon) ImageView icon;
 
-        public DeviceVH(@NonNull ViewGroup parent) {
+        DeviceVH(ViewGroup parent) {
             super(parent, R.layout.viewholder_device);
         }
 
         @Override
-        public void bind(@NonNull SourceDevice item) {
+        public void bind(SourceDevice item) {
             super.bind(item);
             name.setText(DeviceHelper.getAliasAndName(item));
             caption.setText(item.getAddress());
 
             icon.setImageResource(DeviceHelper.getIconForDevice(item));
+
+            if (item.getAddress().equals(FakeSpeakerDevice.ADDR)) {
+                name.setTextColor(getColor(R.color.colorAccent));
+            } else {
+                name.setTextColor(getColor(android.R.color.primary_text_dark));
+            }
         }
     }
 }
