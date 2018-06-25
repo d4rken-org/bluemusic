@@ -13,6 +13,8 @@
   <string name="label_bug_reports">錯誤回報</string>
   <string name="description_bug_reports">自動回報錯誤和崩潰報告。</string>
   <string name="label_app_enabled">應用程式已啟用</string>
+    <string name="description_app_enabled">切換程式對音量和藍牙事件作出反應的能力。</string>
+    <string name="label_visible_volume_adjustments">可視化調整</string>
   <string name="label_state_connected">已連線</string>
   <string name="action_remove_device">移除裝置</string>
   <string name="label_add_device">新增裝置</string>
