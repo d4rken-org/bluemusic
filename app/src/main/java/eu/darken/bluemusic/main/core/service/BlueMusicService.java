@@ -160,27 +160,25 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             serviceHelper.start();
 
             final SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
-            final RetryWithDelay retryWithDelay = new RetryWithDelay(BluetoothSource.RETRY_COUNT + 1, BluetoothSource.RETRY_DELAY);
-            bluetoothSource.connectedDevices()
-                    .firstOrError()
+            final RetryWithDelay retryWithDelay = new RetryWithDelay(300, 1000);
+            bluetoothSource.reloadConnectedDevices()
                     .subscribeOn(scheduler)
                     .observeOn(scheduler)
                     .map(connectedDevices -> {
                         if (event.getType() == SourceDevice.Event.Type.CONNECTED && !connectedDevices.containsKey(event.getAddress())) {
                             Timber.w("%s not fully connected, retrying (#%d).", event.getDevice().getLabel(), retryWithDelay.getRetryCount());
                             serviceHelper.updateMessage(getString(R.string.description_waiting_for_devicex, event.getDevice().getLabel()) + " (#" + retryWithDelay.getRetryCount() + ")");
-                            throw new PrematureConnectionException(event);
+                            throw new MissingDeviceException(event);
                         }
-                        return event;
+                        return connectedDevices;
                     })
                     .retryWhen(retryWithDelay)
-                    .flatMap(deviceEvent -> deviceManager.devices().firstOrError().map(knownDevices -> {
-                        final ManagedDevice knownDevice = knownDevices.get(deviceEvent.getAddress());
-                        if (knownDevice == null) {
-                            throw new UnmanagedDeviceException(deviceEvent);
-                        }
-                        return new ManagedDevice.Action(knownDevice, deviceEvent.getType());
+                    .flatMap(connectedDevices -> deviceManager.devices().firstOrError().map(managedDevices -> {
+                        final ManagedDevice knownDevice = managedDevices.get(event.getAddress());
+                        if (knownDevice == null) throw new UnmanagedDeviceException(event);
+                        return knownDevice;
                     }))
+                    .map(managedDevice -> new ManagedDevice.Action(managedDevice, event.getType()))
                     .flatMap((Function<ManagedDevice.Action, SingleSource<ManagedDevice.Action>>) action -> {
                         if (action.getType() == SourceDevice.Event.Type.CONNECTED) {
                             serviceHelper.updateMessage(getString(R.string.label_reaction_delay));
@@ -293,11 +291,10 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     })
                     .subscribe((action, throwable) -> {
                         Timber.d("action=%s, throwable=%s", action, throwable);
-                        if (throwable != null && !(throwable instanceof UnmanagedDeviceException) && !(throwable instanceof PrematureConnectionException)) {
+                        if (throwable != null && !(throwable instanceof UnmanagedDeviceException) && !(throwable instanceof MissingDeviceException)) {
                             Timber.e(throwable, "Device error");
                             Bugsnag.notify(throwable);
                         }
-
                     });
 
         } else if (ServiceHelper.STOP_ACTION.equals(intent.getAction())) {
