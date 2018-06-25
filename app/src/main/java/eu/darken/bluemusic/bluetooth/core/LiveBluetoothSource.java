@@ -92,6 +92,10 @@ class LiveBluetoothSource implements BluetoothSource {
                     case BluetoothDevice.ACTION_ACL_CONNECTED:
                     case BluetoothDevice.ACTION_ACL_DISCONNECTED:
                         SourceDevice.Event event = SourceDevice.Event.createEvent(intent);
+                        if (event == null) {
+                            Timber.e("Bad event intent: %s", intent);
+                            return;
+                        }
                         reloadConnectedDevices()
                                 .doOnSubscribe(disposable -> Timber.i("Event based reloading until device is completely connected: %s", event))
                                 .subscribeOn(Schedulers.io())
