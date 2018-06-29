@@ -47,7 +47,7 @@ android {
     defaultConfig {
         applicationId "eu.darken.bluemusic"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 27
         versionCode versionMajor * 10000 + versionMinor
         versionName "${versionMajor}.${versionMinor}${versionTag}"
     }
@@ -107,10 +107,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-    packagingOptions {
-        exclude 'lib/arm64-v8a/librealm-jni.so'
-        exclude 'lib/x86_64/librealm-jni.so'
     }
 }
 
