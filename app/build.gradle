@@ -47,7 +47,7 @@ android {
     defaultConfig {
         applicationId "eu.darken.bluemusic"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode versionMajor * 10000 + versionMinor
         versionName "${versionMajor}.${versionMinor}${versionTag}"
     }
@@ -137,7 +137,7 @@ dependencies {
     implementation "com.android.support:design:${supportLibVersion}"
     implementation "com.android.support:cardview-v7:${supportLibVersion}"
     implementation "com.android.support:preference-v14:${supportLibVersion}"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 
     // Crashtracking
     implementation 'com.bugsnag:bugsnag-android:4.3.1'
@@ -174,7 +174,7 @@ dependencies {
 
     //Intrumentation tests (UI tests)
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
 
     // IAP
     implementation 'com.android.billingclient:billing:1.0'
