@@ -111,7 +111,7 @@ class LiveBluetoothSource implements BluetoothSource {
                                         Timber.d("%s disconnected, but is still shown as connected, retrying.", event);
                                         throw new MissingDeviceException(event);
                                     }
-                                    throw new IllegalArgumentException("Unknown event type: " + event.getType());
+                                    return deviceMap;
                                 })
                                 .retryWhen(new RetryWithDelay(60, 1000))
                                 .subscribe((devices, throwable) -> {
