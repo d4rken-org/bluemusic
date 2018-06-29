@@ -30,7 +30,6 @@ import eu.darken.bluemusic.util.Check;
 import eu.darken.bluemusic.util.ui.RetryWithDelay;
 import io.reactivex.Observable;
 import io.reactivex.Single;
-import io.reactivex.SingleEmitter;
 import io.reactivex.SingleOnSubscribe;
 import io.reactivex.SingleSource;
 import io.reactivex.schedulers.Schedulers;
@@ -58,7 +57,11 @@ class LiveBluetoothSource implements BluetoothSource {
         manager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
         Check.notNull(manager);
         adapter = manager.getAdapter();
-        if (adapter == null) Timber.w("BluetoothAdapter is null!");
+        if (adapter == null) {
+            Timber.e("BluetoothAdapter is null!");
+            return;
+        }
+        adapterEnabledPublisher.onNext(adapter.isEnabled());
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(BluetoothDevice.ACTION_ACL_CONNECTED);
@@ -72,7 +75,7 @@ class LiveBluetoothSource implements BluetoothSource {
         Looper looper = handlerThread.getLooper();
         Handler handler = new Handler(looper);
 
-        final BroadcastReceiver receiver = new BroadcastReceiver() {
+        BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 Timber.d("Bluetooth event (intent=%s, extras=%s)", intent, intent.getExtras());
@@ -87,7 +90,8 @@ class LiveBluetoothSource implements BluetoothSource {
                         updatePaired();
                         break;
                     case BluetoothAdapter.ACTION_STATE_CHANGED:
-                        updateAdapter();
+                        adapterEnabledPublisher.onNext(adapter.isEnabled());
+                        updatePaired();
                         break;
                     case BluetoothDevice.ACTION_ACL_CONNECTED:
                     case BluetoothDevice.ACTION_ACL_DISCONNECTED:
@@ -97,7 +101,7 @@ class LiveBluetoothSource implements BluetoothSource {
                             return;
                         }
                         reloadConnectedDevices()
-                                .doOnSubscribe(disposable -> Timber.i("Event based reloading until device is completely connected: %s", event))
+                                .doOnSubscribe(d -> Timber.i("Event based reloading until device is completely connected: %s", event))
                                 .subscribeOn(Schedulers.io())
                                 .map(deviceMap -> {
                                     if (event.getType() == SourceDevice.Event.Type.CONNECTED && !deviceMap.containsKey(event.getAddress())) {
@@ -119,7 +123,6 @@ class LiveBluetoothSource implements BluetoothSource {
         };
         context.registerReceiver(receiver, filter, null, handler);
 
-        updateAdapter();
         updatePaired();
 
         reloadConnectedDevices()
@@ -130,30 +133,13 @@ class LiveBluetoothSource implements BluetoothSource {
                 });
     }
 
-    private void updatePaired() {
-        loadPairedDevices().subscribeOn(Schedulers.io()).subscribe((paired, throwable) -> {
-            if (throwable != null) {
-                Timber.e(throwable, "Updating paired devices failed.");
-                return;
-            }
-            pairedPublisher.onNext(paired);
-        });
-    }
-
-    private void updateAdapter() {
-        Single.create((SingleEmitter<BluetoothAdapter> emitter) -> emitter.onSuccess(adapter)).subscribeOn(Schedulers.io())
-                .subscribe((adapter, throwable) -> {
-                    if (throwable != null) {
-                        Timber.e(throwable, "Updating adapter state failed.");
-                        return;
-                    }
-                    adapterEnabledPublisher.onNext(adapter.isEnabled());
-                });
-    }
-
     @Override
     public Observable<Boolean> isEnabled() {
         return adapterEnabledPublisher;
+    }
+
+    private void updatePaired() {
+        loadPairedDevices().subscribeOn(Schedulers.io()).subscribe(pairedPublisher::onNext, e -> Timber.e(e, "Updating paired devices failed."));
     }
 
     private Single<Map<String, SourceDevice>> loadPairedDevices() {
