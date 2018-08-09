@@ -87,4 +87,5 @@
   <string name="label_exclude_gatt">Udelad GATT profiler</string>
   <string name="description_exclude_gattserver">Ikke spørg efter Bluetooth-profiler af typen \"Generisk Attribut\" (GATT) server.</string>
   <string name="description_exclude_gatt">Ikke spørg efter Bluetooth-profiler af typen \"Generisk Attribut\" (GATT) klient.</string>
+    <string name="label_volumes">Lydstyrker</string>
 </resources>

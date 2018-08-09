@@ -11,7 +11,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "2.61.0"
+fastlane_version "2.101.0"
 
 default_platform :android
 
@@ -35,11 +35,13 @@ platform :android do
   end
 
   lane :listing_only do
+    sh "bash ./remove_unsupported_languages.sh"
     supply(
       track: 'production',
       skip_upload_apk: 'true',
       skip_upload_images: 'true',
-      skip_upload_screenshots: 'true'
+      skip_upload_screenshots: 'true',
+      skip_upload_aab: 'true'
     )
   end
 

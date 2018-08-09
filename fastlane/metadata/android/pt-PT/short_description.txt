@@ -1,0 +1,1 @@
+Controlo de volume de músicas e de voz para dispositivos Bluetooth.

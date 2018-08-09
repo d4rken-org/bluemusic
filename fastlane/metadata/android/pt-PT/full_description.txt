@@ -1,0 +1,10 @@
+Esta aplicação permite aos sistemas Android memorizar o volume para diversos dispositivos Bluethooth.
+Pode configurar o volume das músicas e das chamadas de voz.
+A pausa entre ações e a configuração podem ser ajustadas individualmente.
+
+Explicação das permissões:
+• 'Internet' para enviar relatórios de erro.
+• 'Bluetooth' para operar com dispositivos Bluethooth.
+• 'Modify audio settings' para alterar o volume.
+• 'Boot completed' para restaurar o volume ao reiniciar.
+• 'WAKE_LOCK' para corrigir um problema com dispositivos Samsung de modo a evitar erros de configuração.
