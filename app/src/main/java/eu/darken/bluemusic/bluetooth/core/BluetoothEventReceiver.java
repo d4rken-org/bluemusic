@@ -5,11 +5,16 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
+import com.bugsnag.android.Bugsnag;
+import com.bugsnag.android.Severity;
+
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjection;
+import dagger.android.HasBroadcastReceiverInjector;
 import eu.darken.bluemusic.main.core.database.RealmSource;
 import eu.darken.bluemusic.main.core.service.ServiceHelper;
 import eu.darken.bluemusic.settings.core.Settings;
@@ -29,8 +34,21 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Timber.v("onReceive(%s, %s)", context, intent);
-        ((HasManualBroadcastReceiverInjector) context.getApplicationContext()).broadcastReceiverInjector().inject(this);
 
+        // https://stackoverflow.com/questions/46784685
+        // https://stackoverflow.com/questions/41061272
+        // https://issuetracker.google.com/issues/37137009
+        if (!(context.getApplicationContext() instanceof HasManualBroadcastReceiverInjector)) {
+            Exception ex = new RuntimeException(String.format(
+                    "%s does not implement %s",
+                    context.getApplicationContext().getClass().getCanonicalName(),
+                    HasBroadcastReceiverInjector.class.getCanonicalName()));
+            Bugsnag.notify(ex, Severity.WARNING);
+            return;
+        }
+
+        ((HasManualBroadcastReceiverInjector) context.getApplicationContext()).broadcastReceiverInjector().inject(this);
+        AndroidInjection.inject(this, context);
         if (!settings.isEnabled()) {
             Timber.i("We are disabled.");
             return;
