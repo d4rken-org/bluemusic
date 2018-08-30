@@ -36,7 +36,7 @@ android {
         }
     }
 
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion "27.0.3"
 
     def versionMajor = 2
@@ -47,7 +47,7 @@ android {
     defaultConfig {
         applicationId "eu.darken.bluemusic"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode versionMajor * 10000 + versionMinor
         versionName "${versionMajor}.${versionMinor}${versionTag}"
     }
