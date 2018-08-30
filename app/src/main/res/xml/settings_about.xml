@@ -41,7 +41,7 @@
             android:title="@string/label_website">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="http://www.darken.eu"/>
+                android:data="https://www.darken.eu"/>
         </Preference>
         <Preference
             android:summary="https://twitter.com/d4rken"
@@ -154,7 +154,7 @@
             android:title="Android">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="http://developer.android.com/distribute/tools/promote/brand.html"/>
+                android:data="https://developer.android.com/distribute/tools/promote/brand.html"/>
         </Preference>
     </PreferenceCategory>
 </PreferenceScreen>
