@@ -115,7 +115,7 @@ tasks.withType(Test) {
 }
 ext {
     supportLibVersion = '27.1.1'
-    daggerVersion = '2.13'
+    daggerVersion = '2.16'
 }
 //noinspection GroovyAssignabilityCheck
 configurations.all {
@@ -143,7 +143,7 @@ dependencies {
 
     // RX
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.17'
 
     //Dagger
     implementation "com.google.dagger:dagger:${daggerVersion}"
@@ -158,15 +158,15 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //Timber
-    implementation 'com.jakewharton.timber:timber:4.7.0'
-    compileOnly 'org.jetbrains:annotations:15.0'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    compileOnly 'org.jetbrains:annotations:16.0.1'
 
     // jUnit
     testImplementation 'junit:junit:4.12'
 
     // Mocktio
-    androidTestImplementation 'org.mockito:mockito-core:2.8.9'
-    androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.2.0'
+    androidTestImplementation 'org.mockito:mockito-core:2.20.0'
+    androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.19.0'
 
     //Intrumentation tests (UI tests)
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
