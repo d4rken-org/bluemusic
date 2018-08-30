@@ -300,6 +300,13 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     }
 
     @Override
+    public void showUndoDeletion(Runnable undoAction) {
+        Snackbar.make(requireActivity().findViewById(R.id.frame_content), R.string.label_forget_device, Snackbar.LENGTH_LONG)
+                .setAction(R.string.action_undo, v -> undoAction.run())
+                .show();
+    }
+
+    @Override
     public void finishScreen() {
         Check.notNull(getActivity());
         getActivity().getSupportFragmentManager().popBackStack();

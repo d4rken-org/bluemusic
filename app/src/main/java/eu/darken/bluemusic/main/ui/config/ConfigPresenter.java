@@ -219,6 +219,11 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         deviceManager.removeDevice(device)
                 .subscribeOn(Schedulers.io())
                 .subscribe();
+        onView(v -> v.showUndoDeletion(() -> {
+            deviceManager.addNewDevice(device.getSourceDevice())
+                    .subscribeOn(Schedulers.io())
+                    .subscribe();
+        }));
     }
 
     public void onLaunchAppClicked() {
@@ -262,5 +267,7 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         void finishScreen();
 
         void showNotificationPermissionView();
+
+        void showUndoDeletion(Runnable undoAction);
     }
 }
