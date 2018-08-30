@@ -52,7 +52,7 @@
   <string name="label_call_volume">Glasnoća poziva</string>
   <string name="description_call_volume">Kontrolirajte glasnoću koja utječe na pozive kada se uređaj poveže.</string>
   <string name="label_autoplay">Automatska reprodukcija</string>
-  <string name="description_autoplay">Simulirajte pritisak reprodukcije na Bluetooth daljinskom kada se ovaj uređaj poveže.</string>
+    <string name="description_autoplay">Simulirajte pritisak reprodukcije na Bluetooth daljinskom upravljaču kada se ovaj uređaj poveže.</string>
   <string name="label_reaction_delay">Odgoda reakcije</string>
   <string name="description_reaction_delay">Odgoda u milisekundama dok ova aplikacija reagira na ovaj uređaj.</string>
   <string name="label_adjustment_delay">Odgoda prilagodbe</string>

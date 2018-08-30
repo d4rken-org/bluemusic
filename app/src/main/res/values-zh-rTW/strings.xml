@@ -19,6 +19,7 @@
   <string name="action_remove_device">移除裝置</string>
   <string name="label_add_device">新增裝置</string>
   <string name="label_notification_channel_status">狀態</string>
+    <string name="action_set">設定</string>
   <string name="action_cancel">取消</string>
   <string name="label_invalid_input">無效的輸入</string>
   <string name="action_reset">重置</string>

@@ -4,13 +4,13 @@
   <string name="app_name">蓝牙音量控制</string>
   <string name="description_check_out_my_apps">看看我的其他应用程序吧:-D！</string>
   <string name="label_settings">设置</string>
-  <string name="label_about">关于应用</string>
+    <string name="label_about">关于</string>
   <string name="label_gplus">Google+</string>
   <string name="label_twitter">Twitter</string>
   <string name="label_website">网站</string>
   <string name="label_gplay">Google Play</string>
   <string name="label_email">电子邮件</string>
-  <string name="label_bug_reports">缺陷报告</string>
+    <string name="label_bug_reports">Bug 反馈</string>
   <string name="description_bug_reports">自动发送缺陷和崩溃报告。</string>
   <string name="label_app_enabled">应用程序已启动</string>
   <string name="description_app_enabled">切换应用对音量和蓝牙事件作出反应的能力。</string>
@@ -84,6 +84,8 @@
   <string name="label_missing_permissions">缺少权限</string>
   <string name="action_grant">授予</string>
   <string name="label_advanced">高级</string>
+    <string name="label_exclude_health">排除安全的配置文件</string>
+    <string name="description_exclude_health">一些 Android 设备在查找“Health Device”蓝牙配置文件时挂起 （HDP，0×1400）。</string>
   <string name="label_exclude_gattserver">排除 GATT 服务器配置文件</string>
   <string name="label_exclude_gatt">排除 GATT 配置文件</string>
   <string name="description_exclude_gattserver">不要查询“通用属性”（GATT）服务器类型的蓝牙配置文件。</string>

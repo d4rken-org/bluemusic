@@ -1,10 +1,10 @@
-Bu uygulama Android' in farklı Blueetooth aygıtlarının ses düzeylerini hatırlamasına olanak sağlar.
-Müzik ve çağrı sesleri her aygıt için yapılandırılabilir.
-Zamanlama ve yapılandırma her Bluetooth aygıtı için ayrı ayrı ayarlanabilir.
+Bu uygulama, Android'in farklı Bluetooth cihazlarının sesini hatırlamasını sağlar.
+Her cihaz için hem müzik hem de çağrı sesi yapılandırılabilir.
+Her bir Bluetooth cihazının zamanlaması ve konfigürasyonu ayrı ayrı ayarlanabilir.
 
 İzinler aşağıdaki gibidir:
 • 'İnternet' hata raporları için.
 • 'Bluetooth' Bluetooth cihazlarıyla çalışmak için.
 • 'Ses ayarlarını değiştir' ses düzeyini değiştirmek için.
-• 'Önyükleme tamamlandı' yeniden başlatmadan sonra ses düzeyini geri yüklemek için.
+• 'Önyükleme tamamlandı' yeniden başlatmadan sonra, ses düzeyini geri yüklemek için.
 • 'WAKE_LOCK' Samsung cihazlarında bir hatayı düzeltmek için bu izin gereklidir.
