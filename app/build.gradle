@@ -42,7 +42,7 @@ android {
     buildToolsVersion "27.0.3"
 
     def versionMajor = 2
-    def versionMinor = 31
+    def versionMinor = 32
     def versionTag = ""
 
     Properties bugsnagProps = new Properties()
