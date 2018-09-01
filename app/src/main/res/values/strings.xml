@@ -93,4 +93,6 @@
     <string name="description_notification_volume">Not all devices support a separate notification volume setting.</string>
     <string name="description_waiting_for_devicex">Waiting for %s to complete connection</string>
     <string name="action_undo">Undo</string>
+    <string name="label_speaker_autosave">Autosave volume</string>
+    <string name="description_speaker_autosave">Automatically save the current volume when a Bluetooth device connects. Note: This does not work on all devices.</string>
 </resources>

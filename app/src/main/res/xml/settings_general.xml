@@ -27,6 +27,14 @@
             android:title="@string/label_autoplay_keytype"/>
     </PreferenceCategory>
     <PreferenceCategory
+        android:title="Experimental">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="core.speaker.autosave"
+            android:summary="@string/description_speaker_autosave"
+            android:title="@string/label_speaker_autosave"/>
+    </PreferenceCategory>
+    <PreferenceCategory
         android:title="@string/label_other">
         <CheckBoxPreference
             android:defaultValue="true"

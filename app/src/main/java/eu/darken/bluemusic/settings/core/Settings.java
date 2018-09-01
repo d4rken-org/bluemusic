@@ -11,6 +11,7 @@ public class Settings {
 
     public static final String PREFKEY_VISIBLE_ADJUSTMENTS = "core.volume.visibleadjustments";
     public static final String PREFKEY_AUTOPLAY_KEYCODE = "core.autoplay.keycode";
+    private static final String PREFKEY_SPEAKER_AUTOSAVE = "core.speaker.autosave";
 
     private static final String PREFKEY_INSTALLTIME = "core.metrics.installtime";
     private static final String PREFKEY_LAUNCHCOUNT = "core.metrics.launchcount";
@@ -23,7 +24,7 @@ public class Settings {
 
     public static final String PREFKEY_BUGREPORTING = "core.bugreporting.enabled";
 
-    public static final String PREFKEY_CORE_ENABLED = "core.enabled";
+    private static final String PREFKEY_CORE_ENABLED = "core.enabled";
     public static final long DEFAULT_REACTION_DELAY = 5000;
     public static final long DEFAULT_ADJUSTMENT_DELAY = 250;
     private final SharedPreferences preferences;
@@ -60,6 +61,10 @@ public class Settings {
 
     public void setAutoplayKeycode(int keycode) {
         preferences.edit().putInt(PREFKEY_AUTOPLAY_KEYCODE, keycode).apply();
+    }
+
+    public boolean isSpeakerAutoSaveEnabled() {
+        return preferences.getBoolean(PREFKEY_SPEAKER_AUTOSAVE, false);
     }
 
     public int getLaunchCount() {
