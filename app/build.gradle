@@ -16,7 +16,9 @@ bugsnag {
 }
 
 android {
-    def signingPropFile = new File(System.properties['user.home'], ".signing/bluemusic/signing.properties")
+    def packageName = "eu.darken.bluemusic"
+
+    def signingPropFile = new File(System.properties['user.home'], ".appconfig/${packageName}/signing.properties")
     if (signingPropFile.canRead()) {
         Properties signingProps = new Properties()
         signingProps.load(new FileInputStream(signingPropFile))
@@ -43,13 +45,17 @@ android {
     def versionMinor = 31
     def versionTag = ""
 
+    Properties bugsnagProps = new Properties()
+    def bugsnagPropsFile = new File(System.properties['user.home'], ".appconfig/${packageName}/bugsnag.properties")
+    if (bugsnagPropsFile.canRead()) bugsnagProps.load(new FileInputStream(bugsnagPropsFile))
 
     defaultConfig {
-        applicationId "eu.darken.bluemusic"
+        applicationId "${packageName}"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode versionMajor * 10000 + versionMinor
         versionName "${versionMajor}.${versionMinor}${versionTag}"
+        manifestPlaceholders = [apikey_bugsnag: ""]
     }
     lintOptions {
         abortOnError false
@@ -67,6 +73,7 @@ android {
             useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [apikey_bugsnag: bugsnagProps.getProperty("bugsnag.apikey", "")]
         }
         applicationVariants.all { variant ->
             if (variant.buildType.name != "debug") {
