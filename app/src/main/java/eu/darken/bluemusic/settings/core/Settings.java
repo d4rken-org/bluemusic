@@ -11,7 +11,7 @@ public class Settings {
 
     public static final String PREFKEY_VISIBLE_ADJUSTMENTS = "core.volume.visibleadjustments";
     public static final String PREFKEY_AUTOPLAY_KEYCODE = "core.autoplay.keycode";
-    private static final String PREFKEY_SPEAKER_AUTOSAVE = "core.speaker.autosave";
+    public static final String PREFKEY_SPEAKER_AUTOSAVE = "core.speaker.autosave";
 
     private static final String PREFKEY_INSTALLTIME = "core.metrics.installtime";
     private static final String PREFKEY_LAUNCHCOUNT = "core.metrics.launchcount";

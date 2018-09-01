@@ -104,6 +104,18 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Settin
                 return true;
             }
         });
+
+        CheckBoxPreference autoSave = (CheckBoxPreference) findPreference(Settings.PREFKEY_SPEAKER_AUTOSAVE);
+        autoSave.setIcon(isPro ? null : ContextCompat.getDrawable(Check.notNull(getContext()), R.drawable.ic_stars_white_24dp));
+        autoSave.setSummary(getString(R.string.description_speaker_autosave) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
+        autoSave.setOnPreferenceClickListener(preference -> {
+            if (isPro) return false;
+            else {
+                autoSave.setChecked(!autoSave.isChecked());
+                showRequiresPremiumDialog();
+                return true;
+            }
+        });
     }
 
     void showRequiresPremiumDialog() {
