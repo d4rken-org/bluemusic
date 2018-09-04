@@ -125,8 +125,7 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
                     deviceManager.save(Collections.singleton(fakeSpeaker));
                 })
                 .doFinally(goAsync::finish)
-                .ignoreElement()
-                .subscribe(() -> {
+                .subscribe(manageDevices -> {
                     Intent service = ServiceHelper.getIntent(context);
                     service.putExtra(EXTRA_DEVICE_EVENT, deviceEvent);
                     final ComponentName componentName = ServiceHelper.startService(context, service);
