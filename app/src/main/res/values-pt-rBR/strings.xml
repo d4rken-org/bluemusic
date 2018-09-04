@@ -94,4 +94,7 @@
   <string name="label_notification_volume">Volume de notificação</string>
     <string name="description_notification_volume">Nem todos os dispositivos suportam uma configuração de volume de notificação independente.</string>
     <string name="description_waiting_for_devicex">Aguardando %s para finalizar a conexão</string>
+    <string name="action_undo">Desfazer</string>
+    <string name="label_speaker_autosave">Salvar volume automaticamente</string>
+    <string name="description_speaker_autosave">O registro de \"Alto-falante do dispositivo\", que é responsável pelos volumes padrão, é atualizado quando um dispositivo Bluetooth é conectado. Nota: Isto não funciona em todos os dispositivos.</string>
 </resources>

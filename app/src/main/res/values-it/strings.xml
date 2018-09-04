@@ -94,4 +94,7 @@
   <string name="label_notification_volume">Volume delle notifiche</string>
   <string name="description_notification_volume">Non tutti i dispositivi supportano un\'impostazione separata del volume di notifica.</string>
     <string name="description_waiting_for_devicex">In attesa di %s per completare la connessione</string>
+    <string name="action_undo">Annulla</string>
+    <string name="label_speaker_autosave">Salva automaticamente il volume</string>
+    <string name="description_speaker_autosave">La voce \"Speaker del dispositivo\", responsabile dei volumi di default, si aggiorna in modo automatico alla connessione di una periferica Bluetooth. Nota: questa funzione non è disponibile per tutti i dispositivi.</string>
 </resources>

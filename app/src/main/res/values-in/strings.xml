@@ -94,4 +94,7 @@
   <string name="label_notification_volume">Volume pemberitahuan</string>
   <string name="description_notification_volume">Tidak semua perangkat mendukung pengaturan volume pemberitahuan terpisah.</string>
     <string name="description_waiting_for_devicex">Menunggu %s untuk menyelesaikan sambungan</string>
+    <string name="action_undo">Urungkan</string>
+    <string name="label_speaker_autosave">Otosimpan volume</string>
+    <string name="description_speaker_autosave">Masukan \"Pelantang Perangkat\", yang bertanggung jawab terhadap volume asali, memperbarui sendiri ketika perangkat Bluetooth terhubung. Catatan: Tindakan ini tidak bekerja untuk semua perangkat.</string>
 </resources>

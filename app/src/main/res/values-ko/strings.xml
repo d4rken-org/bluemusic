@@ -60,7 +60,7 @@
   <string name="label_rename_device">디바이스 이름 변경</string>
   <string name="description_rename_device">시스템에서 쓰이는 이 디바이스의 이름을 변경합니다.</string>
   <string name="label_forget_device">디바이스 제거</string>
-  <string name="description_forget_device">이 디바이스 및 해당 디바이스 설정을 앱애서 제거합니다. 장치 페어링을 해제하지 않습니다.</string>
+    <string name="description_forget_device">이 디바이스 및 해당 디바이스 설정을 앱애서 제거합니다. 페어링은 해제하지 않습니다.</string>
   <string name="label_boot_restore">부트 후 복구</string>
   <string name="description_boot_restore">안드로이드가 시작 또는 재시작된 뒤 블루투스 디바이스가 연결되어 있을 경우 음량을 복구합니다.</string>
   <string name="action_start">시작</string>
@@ -94,4 +94,7 @@
     <string name="label_notification_volume">알림 볼륨</string>
     <string name="description_notification_volume">모든 디바이스가 개별 알림 설정을 지원하지는 않습니다.</string>
     <string name="description_waiting_for_devicex">%s 장치와의 연결이 완료될 때까지 기다리고 있습니다</string>
+    <string name="action_undo">실행 취소</string>
+    <string name="label_speaker_autosave">음량 자동 저장</string>
+    <string name="description_speaker_autosave">기본 음량을 담당하는 \"디바이스 스피커\" 항목을 블루투스 장치가 연결될 때 자동으로 업데이트합니다. 이 설정은 모든 기기에서 동작하지는 않습니다.</string>
 </resources>

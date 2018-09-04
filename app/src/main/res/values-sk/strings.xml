@@ -94,4 +94,7 @@
   <string name="label_notification_volume">Hlasitosť upozornení</string>
   <string name="description_notification_volume">Nie všetky zariadenia podporujú samostatné nastavenie hlasitosti upozornení.</string>
     <string name="description_waiting_for_devicex">Čaká sa na %s pre dokončenie pripojenia</string>
+    <string name="action_undo">Späť</string>
+    <string name="label_speaker_autosave">Automaticky uložiť hlasitosť</string>
+    <string name="description_speaker_autosave">Vstup reproduktoru zariadenia, ktorý je zodpovedný za predvolené hlasitosti sa sám aktualizuje po pripojení Bluetooth zariadenia. Poznámka: Toto nefunguje na všetkých zariadeniach.</string>
 </resources>

@@ -94,4 +94,7 @@
   <string name="label_notification_volume">Lautstärke für Benachrichtigungen</string>
   <string name="description_notification_volume">Nicht alle Geräte unterstützen eine separate Einstellung für die Lautstärke von Benachrichtigungen.</string>
     <string name="description_waiting_for_devicex">Auf %s wartend, um die Verbindung fertigzustellen</string>
+    <string name="action_undo">Rückgängig machen</string>
+    <string name="label_speaker_autosave">Lautstärke automatisch speichern</string>
+    <string name="description_speaker_autosave">Der \"Geräte-Lautsprecher\"-Eintrag, der zuständig für die Standardeinstellung der Lautstärke ist, aktualisiert sich selbst, sobald sich ein Bluetooth-Gerät verbindet. Anmerkung: Dies funktioniert nicht bei allen Geräten.</string>
 </resources>
