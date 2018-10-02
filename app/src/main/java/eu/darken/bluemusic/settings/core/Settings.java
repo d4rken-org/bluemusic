@@ -28,7 +28,7 @@ public class Settings {
     public static final String PREFKEY_BUGREPORTING = "core.bugreporting.enabled";
 
     private static final String PREFKEY_CORE_ENABLED = "core.enabled";
-    public static final long DEFAULT_REACTION_DELAY = 5000;
+    public static final long DEFAULT_REACTION_DELAY = 6000;
     public static final long DEFAULT_ADJUSTMENT_DELAY = 250;
     private final SharedPreferences preferences;
 
