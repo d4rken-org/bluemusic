@@ -16,6 +16,9 @@ public class Settings {
     private static final String PREFKEY_INSTALLTIME = "core.metrics.installtime";
     private static final String PREFKEY_LAUNCHCOUNT = "core.metrics.launchcount";
     private static final String PREFKEY_BOOT_RESTORE = "core.onboot.restore";
+
+    private static final String PREFKEY_BATTERYOPTIMIZATIONHINT_DISMISSED = "core.batteryoptimizations.dismissed";
+
     private static final String PREFKEY_ONBOARDING_INTRODONE = "core.onboarding.introdone";
 
     private static final String PREFKEY_ADVANCED_EXCLUDE_HEALTHDEVICES = "core.advanced.exclude.healthdevices";
@@ -97,5 +100,13 @@ public class Settings {
 
     public boolean isGATTServerExcluded() {
         return preferences.getBoolean(PREFKEY_ADVANCED_EXCLUDE_GATTSERVER, false);
+    }
+
+    public boolean isBatterySavingHintDismissed() {
+        return preferences.getBoolean(PREFKEY_BATTERYOPTIMIZATIONHINT_DISMISSED, false);
+    }
+
+    public void setBatterySavingHintDismissed(boolean dismissed) {
+        preferences.edit().putBoolean(PREFKEY_BATTERYOPTIMIZATIONHINT_DISMISSED, dismissed).apply();
     }
 }

@@ -1,7 +1,10 @@
 package eu.darken.bluemusic.main.ui.managed;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.NotificationManager;
+import android.os.Build;
+import android.os.PowerManager;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -10,12 +13,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import eu.darken.bluemusic.BuildConfig;
 import eu.darken.bluemusic.IAPHelper;
 import eu.darken.bluemusic.bluetooth.core.BluetoothSource;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.audio.StreamHelper;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
+import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.util.ApiHelper;
 import eu.darken.mvpbakery.base.Presenter;
 import eu.darken.mvpbakery.injection.ComponentPresenter;
@@ -31,6 +36,8 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
     private final IAPHelper iapHelper;
     private final BluetoothSource bluetoothSource;
     private final NotificationManager notificationManager;
+    private final PowerManager powerManager;
+    private final Settings settings;
     private DeviceManager deviceManager;
     private Disposable deviceSub = Disposables.disposed();
     private Disposable upgradeSub = Disposables.disposed();
@@ -41,12 +48,16 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                             StreamHelper streamHelper,
                             IAPHelper iapHelper,
                             BluetoothSource bluetoothSource,
-                            NotificationManager notificationManager) {
+                            NotificationManager notificationManager,
+                            PowerManager powerManager,
+                            Settings settings) {
         this.deviceManager = deviceManager;
         this.streamHelper = streamHelper;
         this.iapHelper = iapHelper;
         this.bluetoothSource = bluetoothSource;
         this.notificationManager = notificationManager;
+        this.powerManager = powerManager;
+        this.settings = settings;
     }
 
     @Override
@@ -77,6 +88,20 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
             upgradeSub.dispose();
             bluetoothSub.dispose();
         }
+
+        checkBatterySavingIssue();
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void checkBatterySavingIssue() {
+        onView(v -> v.displayBatteryOptimizationHint(ApiHelper.hasOreo()
+                && !powerManager.isIgnoringBatteryOptimizations(BuildConfig.APPLICATION_ID)
+                && !settings.isBatterySavingHintDismissed()));
+    }
+
+    void onBatterySavingDismissed() {
+        settings.setBatterySavingHintDismissed(true);
+        checkBatterySavingIssue();
     }
 
     void onUpdateMusicVolume(ManagedDevice device, float percentage) {
@@ -137,5 +162,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
         void displayDevices(List<ManagedDevice> managedDevices);
 
         void displayBluetoothState(boolean enabled);
+
+        void displayBatteryOptimizationHint(boolean display);
     }
 }

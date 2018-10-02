@@ -95,4 +95,7 @@
     <string name="action_undo">Undo</string>
     <string name="label_speaker_autosave">Autosave volume</string>
     <string name="description_speaker_autosave">The \"Device Speaker\" entry, which is responsible for default volumes, updates itself when a Bluetooth device connects. Note: This does not work on all devices.</string>
+    <string name="action_show">Show</string>
+    <string name="action_dismiss">Dismiss</string>
+    <string name="battery_optimizations_issue_description">Battery optimization are enabled for this app and can prevent it from receiving Bluetooth events. Consider disabling optimizations if you are experiencing issues.</string>
 </resources>

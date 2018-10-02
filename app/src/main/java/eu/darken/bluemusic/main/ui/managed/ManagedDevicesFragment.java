@@ -1,7 +1,9 @@
 package eu.darken.bluemusic.main.ui.managed;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.List;
 
@@ -46,6 +49,10 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     @BindView(R.id.bluetooth_disabled_container) View bluetoothDisabledContainer;
     @BindView(R.id.bluetooth_enabled_container) View bluetoothEnabledContainer;
     @BindView(R.id.fab) FloatingActionButton fab;
+
+    @BindView(R.id.battery_saving_hint_container) View batterySavingHint;
+    @BindView(R.id.battery_saving_hint_dismiss_action) Button batterySavingDismiss;
+    @BindView(R.id.battery_saving_hint_show_action) Button batterySavingShow;
     @Inject ManagedDevicesPresenter presenter;
 
     Unbinder unbinder;
@@ -70,11 +77,20 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
         return layout;
     }
 
+    @SuppressLint("InlinedApi")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new ManagedDevicesAdapter(this);
         recyclerView.setAdapter(adapter);
+
+        batterySavingDismiss.setOnClickListener(v -> presenter.onBatterySavingDismissed());
+        batterySavingShow.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setAction(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+            startActivity(intent);
+        });
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -190,5 +206,10 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
                 .replace(R.id.frame_content, ConfigFragment.instantiate(device))
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void displayBatteryOptimizationHint(boolean display) {
+        batterySavingHint.setVisibility(display ? View.VISIBLE : View.GONE);
     }
 }

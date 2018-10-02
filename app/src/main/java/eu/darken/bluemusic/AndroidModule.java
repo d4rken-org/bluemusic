@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
+import android.os.PowerManager;
 import android.preference.PreferenceManager;
 
 import dagger.Module;
@@ -32,6 +33,12 @@ class AndroidModule {
     @AppComponent.Scope
     AudioManager audioManager(Context context) {
         return (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+    }
+
+    @Provides
+    @AppComponent.Scope
+    PowerManager powerManager(Context context) {
+        return (PowerManager) context.getSystemService(Context.POWER_SERVICE);
     }
 
     @Provides
