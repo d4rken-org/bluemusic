@@ -59,6 +59,7 @@ class LiveBluetoothSource implements BluetoothSource {
         adapter = manager.getAdapter();
         if (adapter == null) {
             Timber.e("BluetoothAdapter is null!");
+            adapterEnabledPublisher.onNext(false);
             return;
         }
         adapterEnabledPublisher.onNext(adapter.isEnabled());
