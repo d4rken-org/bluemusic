@@ -39,7 +39,7 @@ android {
     }
 
     compileSdkVersion 28
-    buildToolsVersion "27.0.3"
+    buildToolsVersion "28.0.3"
 
     def versionMajor = 2
     def versionMinor = 33
@@ -121,7 +121,7 @@ tasks.withType(Test) {
     systemProperty "robolectric.logging", "stdout"
 }
 ext {
-    supportLibVersion = '27.1.1'
+    supportLibVersion = '28.0.0'
     daggerVersion = '2.16'
 }
 //noinspection GroovyAssignabilityCheck
@@ -140,7 +140,7 @@ dependencies {
     implementation "com.android.support:design:${supportLibVersion}"
     implementation "com.android.support:cardview-v7:${supportLibVersion}"
     implementation "com.android.support:preference-v14:${supportLibVersion}"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 
     // Crashtracking
     implementation 'com.bugsnag:bugsnag-android:4.3.1'
