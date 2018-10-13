@@ -97,4 +97,7 @@
     <string name="action_undo">Angre</string>
     <string name="label_speaker_autosave">Autolagringsvolum</string>
     <string name="description_speaker_autosave">\"Enhetshøyttaler\", som er ansvarlig for standardvolumene, oppdaterer seg selv når en Bluetooth-enhet kobles til. Merk: Dette virker ikke på alle enheter.</string>
+    <string name="action_show">Vis</string>
+    <string name="action_dismiss">Avvis</string>
+    <string name="battery_optimizations_issue_description">Batterioptimalisering er aktivert for denne appen og kan forhindre at den mottar Bluetooth-hendelser. Vurder å deaktivere optimaliseringer hvis du opplever problemer.</string>
 </resources>

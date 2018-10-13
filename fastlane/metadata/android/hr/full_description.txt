@@ -7,4 +7,4 @@ Objašnjenje dopuštenja:
 • 'Bluetooth' za rad s Bluetooth uređajima.
 • 'Modify audio settings' za promjenu glasnoće.
 • 'Boot completed' za vraćanje glasnoće nakon ponovnog pokretanja.
-• "WAKE_LOCK" kako biste popravili pogrešku Samsung uređaja kada je to dopuštenje potrebno kako bi se spriječila neispravnost.
+• 'WAKE_LOCK' za popravak pogreške na Samsung uređajima gdje je ova dozvola potrebna za izbjegavanje pogreške.

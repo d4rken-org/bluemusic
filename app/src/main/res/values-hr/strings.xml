@@ -81,17 +81,20 @@
   <string name="label_ring_volume">Glasnoća zvona</string>
   <string name="description_ring_volume">Kontrolirajte glasnoću koja utječe na zvuk zvona.</string>
   <string name="description_ring_volume_additional_permission">Dodatna dopuštenja su potrebne za promjenu glasnoće zvona.</string>
-  <string name="label_missing_permissions">Nedovoljna dopuštenja</string>
-  <string name="action_grant">Dodijeli</string>
+    <string name="label_missing_permissions">Dopuštenja koja nedostaju</string>
+    <string name="action_grant">Dopusti</string>
   <string name="label_advanced">Napredno</string>
   <string name="label_exclude_health">Izuzmi zdravstvene profile</string>
-  <string name="description_exclude_health">Neki Android uređaji se zamrznu prilikom pretraživanja Bluetooth profila \"Health Device\" (HDP, 0x1400).</string>
+    <string name="description_exclude_health">Neki Android uređaji se smrznu prilikom pretraživanja Bluetooth profila \"Health Device\" (HDP, 0x1400).</string>
   <string name="label_exclude_gattserver">Izuzmi profile GATT poslužitelja</string>
   <string name="label_exclude_gatt">Izuzmi GATT profile</string>
   <string name="description_exclude_gattserver">Nemoj tražiti Bluetooth profile vrste \"Generic Attribute\" (GATT) poslužitelj.</string>
   <string name="description_exclude_gatt">Nemoj tražiti Bluetooth profile vrste \"Generic Attribute\" (GATT) klijent.</string>
     <string name="label_volumes">Glasnoća</string>
     <string name="label_notification_volume">Glasnoća obavijesti</string>
-    <string name="description_notification_volume">Ne podržavaju svi uređaji mogućnost zasebnu postavku glasnoće obavijesti.</string>
+    <string name="description_notification_volume">Ne podržavaju svi uređaji zasebnu postavku glasnoće obavijesti.</string>
     <string name="description_waiting_for_devicex">Čekanje na %s za dovršetak veze</string>
+    <string name="action_undo">Poništi</string>
+    <string name="label_speaker_autosave">Automatsko spremanje glasnoće zvuka</string>
+    <string name="description_speaker_autosave">Unos \"Zvučnik uređaja\", koji je zadužen za zadane glasnoće zvuka, samostalno se ažurira tijekom spajanja Bluetooth uređaja. Napomena: ovo ne radi na svim uređajima.</string>
 </resources>

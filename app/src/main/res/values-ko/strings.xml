@@ -97,4 +97,7 @@
     <string name="action_undo">실행 취소</string>
     <string name="label_speaker_autosave">음량 자동 저장</string>
     <string name="description_speaker_autosave">기본 음량을 담당하는 \"디바이스 스피커\" 항목을 블루투스 장치가 연결될 때 자동으로 업데이트합니다. 이 설정은 모든 기기에서 동작하지는 않습니다.</string>
+    <string name="action_show">표시</string>
+    <string name="action_dismiss">취소</string>
+    <string name="battery_optimizations_issue_description">본 앱이 배터리 최적화에 포함되어 있으며, 블루투스 관련 이벤트를 놓쳐 문제가 발생할 수도 있습니다. 문제가 발생했을 경우 배터리 최적화에서 본 앱을 예외로 지정해보세요.</string>
 </resources>

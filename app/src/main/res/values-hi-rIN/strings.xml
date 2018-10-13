@@ -94,4 +94,7 @@
     <string name="label_notification_volume">अधिसूचना वोल्यूम</string>
     <string name="description_notification_volume">सभी डिवाइस एक अलग अधिसूचना ध्वनि सेटिंग का समर्थन नहीं करते हैं।</string>
     <string name="description_waiting_for_devicex">कनेक्शन को पूरा करने के लिए %s की प्रतीक्षा कर रहा है</string>
+    <string name="action_undo">पूर्ववत्</string>
+    <string name="label_speaker_autosave">स्वचलित ध्वनि सहेजन</string>
+    <string name="description_speaker_autosave">\"डिवाइस स्पीकर\" प्रविष्टि, जो डिफ़ॉल्ट वॉल्यूम के लिए ज़िंमेदार है, किसी ब्लूटूथ डिवाइस के कनेक्ट होने पर स्वयं अद्यतन करता है । नोट: यह सभी डिवाइस पर काम नहीं करता है ।</string>
 </resources>

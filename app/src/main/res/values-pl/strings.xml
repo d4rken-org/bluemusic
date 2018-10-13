@@ -94,4 +94,10 @@
   <string name="label_notification_volume">Głośność powiadomień</string>
   <string name="description_notification_volume">Nie wszystkie urządzenia obsługują ustawienie głośności oddzielnego powiadomienia.</string>
     <string name="description_waiting_for_devicex">Oczekiwanie na %s, aż zakończy połączenie</string>
+    <string name="action_undo">Cofnij</string>
+    <string name="label_speaker_autosave">Automatyczny zapis głośności</string>
+    <string name="description_speaker_autosave">Wpis \"Głośnik urządzenia\", który jest odpowiedzialny za domyślne głośności, aktualizuje się samodzielnie, gdy urządzenie Bluetooth podłącza się. Informacja: Nie działa ze wszystkimi urządzeniami.</string>
+    <string name="action_show">Wyświetl</string>
+    <string name="action_dismiss">Odrzuć</string>
+    <string name="battery_optimizations_issue_description">Optymalizacje baterii są włączone dla tej aplikacji i mogą uniemożliwić odbieranie zdarzeń Bluetooth. Rozważ wyłączenie optymalizacji, jeśli występują problemy.</string>
 </resources>

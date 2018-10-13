@@ -71,4 +71,7 @@
   <string name="label_device_speaker">مكبر الصوت</string>
   <string name="label_launch_app">تشغيل التطبيق</string>
   <string name="description_launch_app">تشغيل تطبيق عند توصيل هذا الجهاز.</string>
+    <string name="label_keyevent_playpause">تشغيل-إيقاف</string>
+    <string name="label_keyevent_play">تشغيل</string>
+    <string name="label_keyevent_next">التالي</string>
 </resources>

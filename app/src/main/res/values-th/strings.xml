@@ -94,4 +94,7 @@
     <string name="label_notification_volume">ระดับเสียงแจ้งเตือน</string>
     <string name="description_notification_volume">อุปกรณ์บางตัวไม่สนับสนุนการตั้งค่าระดับเสียงแจ้งเตือนแยกต่างหาก</string>
     <string name="description_waiting_for_devicex">รอ %s เพื่อทำการเชื่อมต่อ</string>
+    <string name="action_undo">เลิกทำ</string>
+    <string name="label_speaker_autosave">บันทึกระดับเสียงอัตโนมัติ</string>
+    <string name="description_speaker_autosave">รายการอุปกรณ์ \"Device Speaker\" ซึ่งมีหน้าที่รับผิดชอบเกี่ยวกับระดับเสียงเริ่มต้นจะอัปเดตเองเมื่ออุปกรณ์เชื่อมต่อกับบลูทูธ หมายเหตุ: ไม่สามารถใช้ได้กับทุกอุปกรณ์</string>
 </resources>

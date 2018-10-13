@@ -97,4 +97,7 @@
     <string name="action_undo">Späť</string>
     <string name="label_speaker_autosave">Automaticky uložiť hlasitosť</string>
     <string name="description_speaker_autosave">Vstup reproduktoru zariadenia, ktorý je zodpovedný za predvolené hlasitosti sa sám aktualizuje po pripojení Bluetooth zariadenia. Poznámka: Toto nefunguje na všetkých zariadeniach.</string>
+    <string name="action_show">Zobraziť</string>
+    <string name="action_dismiss">Zrušiť</string>
+    <string name="battery_optimizations_issue_description">Optimalizácia batérie pre túto aplikáciu je zapnutá a môže zabrániť prijímaniu Bluetooth udalostí. Zvážte zakázanie optimalizácie, ak máte problémy.</string>
 </resources>

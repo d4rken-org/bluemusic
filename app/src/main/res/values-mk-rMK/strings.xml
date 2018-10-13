@@ -90,4 +90,11 @@
   <string name="label_exclude_gatt">Исклучете GATT профили</string>
   <string name="description_exclude_gattserver">Не ги пребарувајте Блутут профилите од типот \'Генерички атрибут\' (GATT) сервер.</string>
   <string name="description_exclude_gatt">Не ги пребарувајте Блутут профилите од типот \'Генерички атрибут\' (GATT) клиент.</string>
+    <string name="label_volumes">Volumes</string>
+    <string name="label_notification_volume">Гласност на известување</string>
+    <string name="description_notification_volume">Не сите уреди го подржуваат одделно подесување на гласност на известување.</string>
+    <string name="description_waiting_for_devicex">Се чека %s да се заврши конекцијата</string>
+    <string name="action_undo">Врати</string>
+    <string name="label_speaker_autosave">Автозачувај глас</string>
+    <string name="description_speaker_autosave">\"Звучник на уредот\", кој е одговорен за стандардниот глас, се ажурира кога Блутут уред ќе се поврзе. Забелешка: Ова не работи на сите уреди.</string>
 </resources>

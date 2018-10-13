@@ -1,1 +1,1 @@
-Postavite glasnoću za glazbu i pozive pojedinačno putem Bluetooth uređaja.
+Pojedinačne postavke glasnoće za pozive i glazbu za Bluetooth uređaje.

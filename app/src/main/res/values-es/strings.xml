@@ -97,4 +97,7 @@
     <string name="action_undo">Deshacer</string>
     <string name="label_speaker_autosave">Guardar automáticamente el volumen</string>
     <string name="description_speaker_autosave">La entrada \"altavoz del dispositivo\", que es responsable de los volúmenes predeterminados, se actualiza cuando se conecta un dispositivo Bluetooth. Nota: Esto no funciona en todos los dispositivos.</string>
+    <string name="action_show">Mostrar</string>
+    <string name="action_dismiss">Ignorar</string>
+    <string name="battery_optimizations_issue_description">Las optimizaciones de la batería están habilitadas para esta aplicación y pueden evitar que reciba eventos Bluetooth. Considere desactivar las optimizaciones si está experimentando problemas.</string>
 </resources>

@@ -10,8 +10,8 @@
   <string name="label_website">Site Web</string>
   <string name="label_gplay">Google Play</string>
   <string name="label_email">Courriel</string>
-  <string name="label_bug_reports">Rapports de bogue</string>
-  <string name="description_bug_reports">Signaler automatiquement les bogues et plantages.</string>
+    <string name="label_bug_reports">Relevés de bogues</string>
+    <string name="description_bug_reports">Signalement automatiquement des bogues et plantages.</string>
   <string name="label_app_enabled">Activation et désactivation de l’appli</string>
   <string name="description_app_enabled">Active ou désactive la capacité de l’appli de réagir aux événements de volume et Bluetooth.</string>
   <string name="label_visible_volume_adjustments">Réglages visibles</string>
@@ -94,4 +94,10 @@
   <string name="label_notification_volume">Volume des notifications</string>
   <string name="description_notification_volume">Tous les appareils ne prennent pas en charge un réglage séparé du volume des notifications.</string>
     <string name="description_waiting_for_devicex">Attente de connexion effective de %s</string>
+    <string name="action_undo">Rétablir</string>
+    <string name="label_speaker_autosave">Enregistrement automatique du volume</string>
+    <string name="description_speaker_autosave">L’entrée « Haut-parleur de l’appareil », qui gère les volumes par défaut, se met à jour quand un appareil Bluetooth se connecte. Note : Cette option ne fonctionne pas sur tous les appareils.</string>
+    <string name="action_show">Afficher</string>
+    <string name="action_dismiss">Ignorer</string>
+    <string name="battery_optimizations_issue_description">Les optimisations de la pile sont activées pour cette appli et peuvent l’empêcher de recevoir les événements Bluetooth. Envisagez de désactiver ces optimisations si vous éprouvez des problèmes.</string>
 </resources>

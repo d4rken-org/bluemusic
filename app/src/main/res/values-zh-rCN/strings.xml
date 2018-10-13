@@ -94,4 +94,9 @@
   <string name="label_notification_volume">通知音量</string>
   <string name="description_notification_volume">并非所有设备都支持单独的通知音量设置。</string>
     <string name="description_waiting_for_devicex">等待 %s 完成连接</string>
+    <string name="action_undo">消除</string>
+    <string name="label_speaker_autosave">自动保存音量</string>
+    <string name="description_speaker_autosave">”设备扬声器”条目负责调控默认音量。当新的蓝牙设备连接时，它将会自动更新。备注：不是所有设备都可行。</string>
+    <string name="action_show">显示</string>
+    <string name="battery_optimizations_issue_description">此应用程序启用了电池优化，可以防止它接收蓝牙事件。如果遇到问题，请考虑禁用优化。</string>
 </resources>

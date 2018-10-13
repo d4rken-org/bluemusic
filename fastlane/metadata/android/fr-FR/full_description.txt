@@ -3,7 +3,7 @@ Le volume de la musique et des appels peuvent tous deux être réglés pour chaq
 Le délai d’exécution et la configuration peuvent être réglés individuellement pour chaque périphérique Bluetooth.
 
 Explication des permissions :
-• « Internet » pour signaler les bogues.
+• « Internet » pour les relevés de bogues.
 • « Bluetooth » pour fonctionner avec les périphériques Bluetooth.
 • « Modifier les paramètres audio » pour régler le volume.
 • « Amorçage terminé » pour restaurer le volume après redémarrage.

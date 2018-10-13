@@ -97,4 +97,7 @@
     <string name="action_undo">Отмена</string>
     <string name="label_speaker_autosave">Автосохранение громкости</string>
     <string name="description_speaker_autosave">Пункт \"Динамик устройства\", отвечающий за уровни громкости по умолчанию, обновляется при подключении устройства Bluetooth. Примечание: это работает не на всех устройствах.</string>
+    <string name="action_show">Показать</string>
+    <string name="action_dismiss">Отклонить</string>
+    <string name="battery_optimizations_issue_description">Для данного приложения включена оптимизация батареи, поэтому оно может пропускать события Bluetooth. Если возникают проблемы, отключите оптимизацию.</string>
 </resources>
