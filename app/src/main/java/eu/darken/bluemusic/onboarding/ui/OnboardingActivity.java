@@ -41,7 +41,7 @@ public class OnboardingActivity extends AppCompatActivity implements OnboardingA
     public void showIntro() {
         Fragment introFragment = getSupportFragmentManager().findFragmentById(R.id.frame_content);
         if (introFragment == null) introFragment = IntroFragment.newInstance();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, introFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, introFragment).commitAllowingStateLoss();
     }
 
     @Override
