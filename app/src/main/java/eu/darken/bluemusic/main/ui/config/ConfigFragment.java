@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.main.ui.config;
 
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -300,7 +301,11 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     public void showNotificationPermissionView() {
         Toast.makeText(getContext(), R.string.description_ring_volume_additional_permission, Toast.LENGTH_LONG).show();
         Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-        startActivity(intent);
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            Timber.e(e);
+        }
     }
 
     @Override
