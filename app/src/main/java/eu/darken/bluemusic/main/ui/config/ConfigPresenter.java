@@ -142,7 +142,7 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         return device.getVolume(AudioStream.Type.RINGTONE) != null;
     }
 
-    public boolean onToggleNotificationVolume() {
+    boolean onToggleNotificationVolume() {
         if (!isProVersion) {
             onView(View::showRequiresPro);
             return false;
@@ -169,7 +169,8 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
             device.setAutoPlayEnabled(!device.isAutoPlayEnabled());
             deviceManager.save(Collections.singleton(device))
                     .subscribeOn(Schedulers.computation())
-                    .subscribe(managedDevices -> { });
+                    .subscribe(managedDevices -> {
+                    });
         } else {
             onView(View::showRequiresPro);
         }
@@ -202,7 +203,7 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
                 .subscribe();
     }
 
-    public void onRenameClicked() {
+    void onRenameClicked() {
         if (isProVersion) onView(v -> v.showRenameDialog(device.getAlias()));
         else onView(View::showRequiresPro);
     }
@@ -226,7 +227,7 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         }));
     }
 
-    public void onLaunchAppClicked() {
+    void onLaunchAppClicked() {
         if (isProVersion) {
             Single.create((SingleOnSubscribe<List<AppTool.Item>>) e -> e.onSuccess(appTool.getApps()))
                     .map(apps -> {
@@ -241,7 +242,11 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         }
     }
 
-    public void onLaunchAppSelected(AppTool.Item item) {
+    void onClearLaunchApp() {
+        onLaunchAppSelected(AppTool.Item.empty());
+    }
+
+    void onLaunchAppSelected(AppTool.Item item) {
         device.setLaunchPkg(item.getPackageName());
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.io())

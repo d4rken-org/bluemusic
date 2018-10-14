@@ -95,6 +95,10 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
             presenter.onLaunchAppClicked();
             Snackbar.make(Check.notNull(getView()), R.string.label_just_a_moment_please, Snackbar.LENGTH_SHORT).show();
         });
+        prefLaunchApp.setOnLongClickListener(v -> {
+            presenter.onClearLaunchApp();
+            return true;
+        });
         prefReactionDelay.setOnClickListener(v -> presenter.onEditReactionDelayClicked());
         prefAdjustmentDelay.setOnClickListener(v -> presenter.onEditAdjustmentDelayClicked());
         prefRename.setOnClickListener(v -> presenter.onRenameClicked());
@@ -188,7 +192,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         if (device.getLaunchPkg() != null) {
             String label = device.getLaunchPkg();
             try {
-                label = AppTool.getLabel(getContext(), device.getLaunchPkg());
+                label = AppTool.getLabel(requireContext(), device.getLaunchPkg());
             } catch (PackageManager.NameNotFoundException e) {
                 Timber.e(e);
             }
