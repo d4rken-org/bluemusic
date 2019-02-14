@@ -96,8 +96,12 @@
     <string name="description_waiting_for_devicex">Oodatakse, millal saabub ühendus seadmega %s</string>
     <string name="action_undo">Tühista</string>
     <string name="label_speaker_autosave">Salvesta heli automaatselt</string>
-    <string name="description_speaker_autosave">Kanne „Seadme kõlar“, mis on seotud tavahelidega, uuendab end sinihammast toetava seadme ühendumisel ise. Märkus: see ei toimi kõigis seadmetes.</string>
+    <string name="description_speaker_autosave">Kanne „Seadme kõlar“, mis on seotud tavahelidega, uuendab end
+        sinihammast toetava seadme ühendumisel ise. Märkus: see ei toimi kõigis seadmetes.
+    </string>
     <string name="action_show">Näita</string>
     <string name="action_dismiss">Loobu</string>
-    <string name="battery_optimizations_issue_description">Sellele rakendusele kehtib aku optimeerimine, mis võib sel rakendusel ennetada sinihamba sündmuste vastuvõtmist. Probleemide ilmnemisel kaalu optimeerimise keelamist.</string>
+    <string name="battery_optimizations_issue_description">Sellele rakendusele kehtib aku optimeerimine, mis võib sel
+        rakendusel ennetada sinihamba sündmuste vastuvõtmist. Probleemide ilmnemisel kaalu optimeerimise keelamist.
+    </string>
 </resources>

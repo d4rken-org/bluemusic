@@ -96,8 +96,14 @@
     <string name="description_waiting_for_devicex">In attesa di %s per completare la connessione</string>
     <string name="action_undo">Annulla</string>
     <string name="label_speaker_autosave">Salva automaticamente il volume</string>
-    <string name="description_speaker_autosave">La voce \"Speaker del dispositivo\", responsabile dei volumi di default, si aggiorna in modo automatico alla connessione di una periferica Bluetooth. Nota: questa funzione non è disponibile per tutti i dispositivi.</string>
+    <string name="description_speaker_autosave">La voce \"Speaker del dispositivo\", responsabile dei volumi di default,
+        si aggiorna in modo automatico alla connessione di una periferica Bluetooth. Nota: questa funzione non è
+        disponibile per tutti i dispositivi.
+    </string>
     <string name="action_show">Mostra</string>
     <string name="action_dismiss">Annulla</string>
-    <string name="battery_optimizations_issue_description">Le ottimizzazioni della batteria sono attivate per quest\'app e questo potrebbe impedire la ricezione degli eventi Bluetooth. Prova a disattivare le ottimizzazioni se riscontri problemi.</string>
+    <string name="battery_optimizations_issue_description">Le ottimizzazioni della batteria sono attivate per quest\'app
+        e questo potrebbe impedire la ricezione degli eventi Bluetooth. Prova a disattivare le ottimizzazioni se
+        riscontri problemi.
+    </string>
 </resources>

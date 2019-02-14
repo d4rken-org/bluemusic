@@ -96,8 +96,12 @@
     <string name="description_waiting_for_devicex">Čekání na %s k dokončení připojení</string>
     <string name="action_undo">Zpět</string>
     <string name="label_speaker_autosave">Automaticky uložit hlasitost</string>
-    <string name="description_speaker_autosave">Vstup \"reproduktor zařízení\", který je zodpovědný za výchozí hlasitosti se sám aktualizuje po připojení zařízení Bluetooth. Poznámka: Toto nefunguje na všech zařízeních.</string>
+    <string name="description_speaker_autosave">Vstup \"reproduktor zařízení\", který je zodpovědný za výchozí
+        hlasitosti se sám aktualizuje po připojení zařízení Bluetooth. Poznámka: Toto nefunguje na všech zařízeních.
+    </string>
     <string name="action_show">Zobrazit</string>
     <string name="action_dismiss">Zrušit</string>
-    <string name="battery_optimizations_issue_description">Optimalizace baterie je pro tuto aplikaci povolena a může zabránit přijímání událostí Bluetooth. Vezměte v úvahu zakázání optimalizace, pokud máte potíže.</string>
+    <string name="battery_optimizations_issue_description">Optimalizace baterie je pro tuto aplikaci povolena a může
+        zabránit přijímání událostí Bluetooth. Vezměte v úvahu zakázání optimalizace, pokud máte potíže.
+    </string>
 </resources>

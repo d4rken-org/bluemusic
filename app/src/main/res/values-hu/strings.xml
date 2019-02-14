@@ -80,12 +80,18 @@
   <string name="label_licenses">Licenszek</string>
     <string name="label_ring_volume">Csengetési hangerő</string>
     <string name="description_ring_volume">A csengőhangot befolyásoló hangerő vezérlése.</string>
-    <string name="description_ring_volume_additional_permission">További engedélyek szükségesek a csengetési hangerő megváltoztatásához.</string>
+    <string name="description_ring_volume_additional_permission">További engedélyek szükségesek a csengetési hangerő
+        megváltoztatásához.
+    </string>
     <string name="label_missing_permissions">Hiányzó engedély</string>
     <string name="action_grant">Hozzárendel</string>
     <string name="label_advanced">Haladó</string>
-    <string name="description_exclude_health">Néhány Android-eszköz lefagy, amikor felkeresi az \"Egészségügyi eszköz\" Bluetooth-profilokat (HDP, 0x1400).</string>
+    <string name="description_exclude_health">Néhány Android-eszköz lefagy, amikor felkeresi az \"Egészségügyi eszköz\"
+        Bluetooth-profilokat (HDP, 0x1400).
+    </string>
     <string name="label_volumes">Hangerő</string>
     <string name="label_notification_volume">Értesítési hangerő</string>
-    <string name="description_notification_volume">Nem minden eszköz támogatja a külön értesítés hangerő-beállításának.</string>
+    <string name="description_notification_volume">Nem minden eszköz támogatja a külön értesítés
+        hangerő-beállításának.
+    </string>
 </resources>

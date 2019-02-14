@@ -96,8 +96,13 @@
     <string name="description_waiting_for_devicex">Menunggu %s untuk menyelesaikan sambungan</string>
     <string name="action_undo">Urungkan</string>
     <string name="label_speaker_autosave">Otosimpan volume</string>
-    <string name="description_speaker_autosave">Masukan \"Pelantang Perangkat\", yang bertanggung jawab terhadap volume asali, memperbarui sendiri ketika perangkat Bluetooth terhubung. Catatan: Tindakan ini tidak bekerja untuk semua perangkat.</string>
+    <string name="description_speaker_autosave">Masukan \"Pelantang Perangkat\", yang bertanggung jawab terhadap volume
+        asali, memperbarui sendiri ketika perangkat Bluetooth terhubung. Catatan: Tindakan ini tidak bekerja untuk semua
+        perangkat.
+    </string>
     <string name="action_show">Tampil</string>
     <string name="action_dismiss">Singkirkan</string>
-    <string name="battery_optimizations_issue_description">Optimasi baterai diaktifkan untuk aplikasi ini dan dapat mencegah menerima peristiwa Bluetooth. Pertimbangkan mematikan optimasi bila Anda mengalami suatu kendala.</string>
+    <string name="battery_optimizations_issue_description">Optimasi baterai diaktifkan untuk aplikasi ini dan dapat
+        mencegah menerima peristiwa Bluetooth. Pertimbangkan mematikan optimasi bila Anda mengalami suatu kendala.
+    </string>
 </resources>

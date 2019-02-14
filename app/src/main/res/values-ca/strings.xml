@@ -19,7 +19,9 @@
   <string name="label_volume_listener">Observa els canvis</string>
   <string name="description_volume_listener">Roman actiu mentre un dispositiu estigui connectat i deseu els canvis de volum que no hagin estat causats per aquesta aplicació.</string>
   <string name="label_autoplay_keytype">Tipus de tecla de reproducció automàtica</string>
-    <string name="desc_autoplay_keytype">El tipus de tecla que s\'envia quan es connecta un dispositiu activat per a reproducció automàtica.</string>
+    <string name="desc_autoplay_keytype">El tipus de tecla que s\'envia quan es connecta un dispositiu activat per a
+        reproducció automàtica.
+    </string>
   <string name="label_state_connected">Connectat</string>
   <string name="label_neverseen">Mai vist</string>
   <string name="action_remove_device">Elimina el dispositiu</string>
@@ -39,7 +41,9 @@
   <string name="action_upgrade">Actualitza</string>
   <string name="description_premium_required_additional_devices">La gestió de dispositius addicionals requereix la versió prèmium.</string>
   <string name="description_premium_required_this_extra_option">Malauradament, aquesta opció addicional requereix la versió prèmium d\'aquesta aplicació.</string>
-    <string name="description_premium_upgrade_explanation">Obteniu la versió prèmium per activar funcions addicionals i donar suport al desenvolupament.</string>
+    <string name="description_premium_upgrade_explanation">Obteniu la versió prèmium per activar funcions addicionals i
+        donar suport al desenvolupament.
+    </string>
   <string name="label_premium_version_required">Cal la versió prèmium</string>
   <string name="description_intro_purpose">Aquesta aplicació permet als dispositius Android recordar el volum de diferents dispositius Bluetooth.</string>
   <string name="description_intro_premium">Si us agrada aquesta aplicació, tingueu en compte l\'actualització a la versió prèmium. Donareu suport al desenvolupament i obtindreu algunes funcions addicionals.</string>
@@ -96,8 +100,13 @@
     <string name="description_waiting_for_devicex">S\'està esperant que %s completi la connexió</string>
     <string name="action_undo">Desfés</string>
     <string name="label_speaker_autosave">Desa automàticament el volum</string>
-    <string name="description_speaker_autosave">L\'entrada «altaveu del dispositiu», que és responsable dels volums per defecte, s\'actualitza quan es connecta un dispositiu Bluetooth. Nota: això no funciona en tots els dispositius.</string>
+    <string name="description_speaker_autosave">L\'entrada «altaveu del dispositiu», que és responsable dels volums per
+        defecte, s\'actualitza quan es connecta un dispositiu Bluetooth. Nota: això no funciona en tots els dispositius.
+    </string>
     <string name="action_show">Mostra</string>
     <string name="action_dismiss">Ignora</string>
-    <string name="battery_optimizations_issue_description">Les optimitzacions de la bateria estan activades per a aquesta aplicació i poden evitar que rebeu esdeveniments Bluetooth. Considereu la possibilitat de desactivar les optimitzacions si teniu problemes.</string>
+    <string name="battery_optimizations_issue_description">Les optimitzacions de la bateria estan activades per a
+        aquesta aplicació i poden evitar que rebeu esdeveniments Bluetooth. Considereu la possibilitat de desactivar les
+        optimitzacions si teniu problemes.
+    </string>
 </resources>

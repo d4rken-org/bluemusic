@@ -17,7 +17,9 @@
     <string name="label_visible_volume_adjustments">ปรับปรุงการมองเห็น</string>
     <string name="description_visible_volume_adjustments">ปรับการแสดงหน้าต่างข้อมูลของระบบในขณะนี้</string>
     <string name="label_volume_listener">สังเกตการเปลี่ยนแปลง</string>
-    <string name="description_volume_listener">ยังคงใช้งานในขณะที่อุปกรณ์เชื่อมต่อ และบันทึกการเปลี่ยนแปลงระดับเสียงที่ไม่ได้เกิดจากการตรวจสอบนี้</string>
+    <string name="description_volume_listener">ยังคงใช้งานในขณะที่อุปกรณ์เชื่อมต่อ
+        และบันทึกการเปลี่ยนแปลงระดับเสียงที่ไม่ได้เกิดจากการตรวจสอบนี้
+    </string>
     <string name="label_autoplay_keytype">ชนิดคีย์\'เล่นอัตโนมัติ\'</string>
     <string name="desc_autoplay_keytype">ชนิดคีย์ที่ส่งเชื่อมต่อเมื่ออุปกรณ์เปิดใช้งาน\'เล่นอัตโนมัติ\'</string>
     <string name="label_state_connected">เชื่อมต่อแล้ว</string>
@@ -37,12 +39,20 @@
     <string name="label_status_adjusting_volumes">ปรับระดับเสียง</string>
     <string name="label_premium_version">รุ่นพรีเมี่ยม</string>
     <string name="action_upgrade">อัปเกรด</string>
-    <string name="description_premium_required_additional_devices">การจัดการอุปกรณ์เพิ่มเติมต้องใช้รุ่นพรีเมี่ยม</string>
-    <string name="description_premium_required_this_extra_option">ตัวเลือกนี้จำเป็นต้องมีรุ่นพรีเมี่ยมของ app นี้</string>
-    <string name="description_premium_upgrade_explanation">รับเวอร์ชันพรีเมียมเพื่อเปิดใช้งานคุณลักษณะเพิ่มเติมและสนับสนุนการพัฒนา</string>
+    <string name="description_premium_required_additional_devices">การจัดการอุปกรณ์เพิ่มเติมต้องใช้รุ่นพรีเมี่ยม
+    </string>
+    <string name="description_premium_required_this_extra_option">ตัวเลือกนี้จำเป็นต้องมีรุ่นพรีเมี่ยมของ app นี้
+    </string>
+    <string name="description_premium_upgrade_explanation">
+        รับเวอร์ชันพรีเมียมเพื่อเปิดใช้งานคุณลักษณะเพิ่มเติมและสนับสนุนการพัฒนา
+    </string>
     <string name="label_premium_version_required">ต้องการรุ่นพรีเมี่ยม</string>
-    <string name="description_intro_purpose">This app allows your Android device to remember the volume of different Bluetooth devices.</string>
-    <string name="description_intro_premium">หากคุณชอบแอปพลิเคชันนี้ให้พิจารณาการอัปเกรดเป็นเวอร์ชันพรีเมียม สนับสนุนการพัฒนาและเพิ่มคุณสมบัติพิเศษให้คุณ</string>
+    <string name="description_intro_purpose">This app allows your Android device to remember the volume of different
+        Bluetooth devices.
+    </string>
+    <string name="description_intro_premium">หากคุณชอบแอปพลิเคชันนี้ให้พิจารณาการอัปเกรดเป็นเวอร์ชันพรีเมียม
+        สนับสนุนการพัฒนาและเพิ่มคุณสมบัติพิเศษให้คุณ
+    </string>
     <string name="description_intro_tap_the_button">เริ่มต้นด้วยการเพิ่มอุปกรณ์ตัวแรกของคุณ</string>
     <string name="description_bluetooth_is_disabled">บลูทูธถูกปิดใช้งาน</string>
     <string name="label_status_listening_for_changes">ฟังเสียงการเปลี่ยนแปลง</string>
@@ -56,16 +66,23 @@
     <string name="label_reaction_delay">ปฏิกิริยาล่าช้า</string>
     <string name="description_reaction_delay">ความล่าช้าในมิลลิวินาทีจนกว่าแอปนี้จะตอบสนองต่ออุปกรณ์นี้</string>
     <string name="label_adjustment_delay">ความล่าช้าในการปรับ</string>
-    <string name="description_adjustment_delay">ความล่าช้าในมิลลิวินาทีระหว่างการปรับระดับเสียงแต่ละครั้ง การหน่วงเวลา 0ms หมายถึงการตั้งค่าระดับเสียงทันทีเมื่อเชื่อมต่ออุปกรณ์นี้</string>
+    <string name="description_adjustment_delay">ความล่าช้าในมิลลิวินาทีระหว่างการปรับระดับเสียงแต่ละครั้ง การหน่วงเวลา
+        0ms หมายถึงการตั้งค่าระดับเสียงทันทีเมื่อเชื่อมต่ออุปกรณ์นี้
+    </string>
     <string name="label_rename_device">เปลี่ยนชื่ออุปกรณ์</string>
     <string name="description_rename_device">ตั้งชื่อแทนทั้งระบบสำหรับอุปกรณ์นี้</string>
     <string name="label_forget_device">ลืมอุปกรณ์</string>
-    <string name="description_forget_device">นำอุปกรณ์ออกจากแอปพลิเคชันนี้และลบการกำหนดค่า การทำเช่นนี้ไม่ทำให้อุปกรณ์ยกเลิกการจับคู่</string>
+    <string name="description_forget_device">นำอุปกรณ์ออกจากแอปพลิเคชันนี้และลบการกำหนดค่า
+        การทำเช่นนี้ไม่ทำให้อุปกรณ์ยกเลิกการจับคู่
+    </string>
     <string name="label_boot_restore">เรียกคืนเมื่อบูต</string>
-    <string name="description_boot_restore">คืนค่าระดับเสียงหลังจากบูต/รีบูตเครื่องถ้าเชื่อมต่ออุปกรณ์บลูทูธแล้ว</string>
+    <string name="description_boot_restore">คืนค่าระดับเสียงหลังจากบูต/รีบูตเครื่องถ้าเชื่อมต่ออุปกรณ์บลูทูธแล้ว
+    </string>
     <string name="action_start">เริ่ม</string>
   <string name="label_welcome">ยินดีต้อนรับ</string>
-    <string name="description_intro_contact">อย่าลังเลที่จะติดต่อฉันหากคุณมีคำถามหรือแม้กระทั่งความคิดสำหรับคุณลักษณะใหม่</string>
+    <string name="description_intro_contact">
+        อย่าลังเลที่จะติดต่อฉันหากคุณมีคำถามหรือแม้กระทั่งความคิดสำหรับคุณลักษณะใหม่
+    </string>
     <string name="label_translation">การแปล:</string>
     <string name="description_help_translate">ช่วยฉันทำแอปนี้ในภาษาอื่น ๆ</string>
     <string name="label_device_speaker">ลำโพงอุปกรณ์</string>
@@ -80,21 +97,32 @@
     <string name="label_licenses">ใบอนุญาต</string>
     <string name="label_ring_volume">ระดับเสียงเรียกเข้า</string>
     <string name="description_ring_volume">ควบคุมระดับเสียงซึ่งมีผลต่อเสียงเรียกเข้า</string>
-    <string name="description_ring_volume_additional_permission">จำเป็นต้องมีสิทธิ์เพิ่มเติมเพื่อเปลี่ยนระดับเสียงกริ่ง</string>
+    <string name="description_ring_volume_additional_permission">
+        จำเป็นต้องมีสิทธิ์เพิ่มเติมเพื่อเปลี่ยนระดับเสียงกริ่ง
+    </string>
     <string name="label_missing_permissions">สิทธิ์ที่ขาดหายไป</string>
     <string name="action_grant">การอนุญาต</string>
     <string name="label_advanced">ขั้นสูง</string>
     <string name="label_exclude_health">ยกเว้นโปรไฟล์สุขภาพ</string>
-    <string name="description_exclude_health">อุปกรณ์แอนดรอยด์บางรุ่นอาจแฮงเมื่อค้นหาโปรไฟล์บลูทูธ \'อุปกรณ์เพื่อสุขภาพ\' (HDP, 0x1400)</string>
+    <string name="description_exclude_health">อุปกรณ์แอนดรอยด์บางรุ่นอาจแฮงเมื่อค้นหาโปรไฟล์บลูทูธ
+        \'อุปกรณ์เพื่อสุขภาพ\' (HDP, 0x1400)
+    </string>
     <string name="label_exclude_gattserver">ยกเว้นโปรไฟล์เซิร์ฟเวอร์ GATT</string>
     <string name="label_exclude_gatt">ยกเว้นโปรไฟล์ GATT</string>
-    <string name="description_exclude_gattserver">อย่าค้นหาโปรไฟล์บลูทูธของเซิร์ฟเวอร์ \'Gitt\' ชนิด (Generic Attribute \'Type\')</string>
-    <string name="description_exclude_gatt">อย่าค้นหาโปรไฟล์ Bluetooth ของไคลเอนต์ \'แอตทริบิวต์ทั่วไป\' ประเภท (GATT)</string>
+    <string name="description_exclude_gattserver">อย่าค้นหาโปรไฟล์บลูทูธของเซิร์ฟเวอร์ \'Gitt\' ชนิด (Generic Attribute
+        \'Type\')
+    </string>
+    <string name="description_exclude_gatt">อย่าค้นหาโปรไฟล์ Bluetooth ของไคลเอนต์ \'แอตทริบิวต์ทั่วไป\' ประเภท (GATT)
+    </string>
     <string name="label_volumes">ระดับเสียง</string>
     <string name="label_notification_volume">ระดับเสียงแจ้งเตือน</string>
-    <string name="description_notification_volume">อุปกรณ์บางตัวไม่สนับสนุนการตั้งค่าระดับเสียงแจ้งเตือนแยกต่างหาก</string>
+    <string name="description_notification_volume">อุปกรณ์บางตัวไม่สนับสนุนการตั้งค่าระดับเสียงแจ้งเตือนแยกต่างหาก
+    </string>
     <string name="description_waiting_for_devicex">รอ %s เพื่อทำการเชื่อมต่อ</string>
     <string name="action_undo">เลิกทำ</string>
     <string name="label_speaker_autosave">บันทึกระดับเสียงอัตโนมัติ</string>
-    <string name="description_speaker_autosave">รายการอุปกรณ์ \"Device Speaker\" ซึ่งมีหน้าที่รับผิดชอบเกี่ยวกับระดับเสียงเริ่มต้นจะอัปเดตเองเมื่ออุปกรณ์เชื่อมต่อกับบลูทูธ หมายเหตุ: ไม่สามารถใช้ได้กับทุกอุปกรณ์</string>
+    <string name="description_speaker_autosave">รายการอุปกรณ์ \"Device Speaker\"
+        ซึ่งมีหน้าที่รับผิดชอบเกี่ยวกับระดับเสียงเริ่มต้นจะอัปเดตเองเมื่ออุปกรณ์เชื่อมต่อกับบลูทูธ หมายเหตุ:
+        ไม่สามารถใช้ได้กับทุกอุปกรณ์
+    </string>
 </resources>
