@@ -1,10 +1,8 @@
 package eu.darken.bluemusic;
 
 import android.app.Activity;
-
 import dagger.Binds;
 import dagger.Module;
-import dagger.android.ActivityKey;
 import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
 import eu.darken.bluemusic.bluetooth.ui.BluetoothActivity;
@@ -15,6 +13,7 @@ import eu.darken.bluemusic.onboarding.ui.OnboardingActivity;
 import eu.darken.bluemusic.onboarding.ui.OnboardingActivityComponent;
 import eu.darken.bluemusic.settings.ui.SettingsActivity;
 import eu.darken.bluemusic.settings.ui.SettingsActivityComponent;
+import eu.darken.mvpbakery.injection.activity.ActivityKey;
 
 @Module(subcomponents = {
         MainActivityComponent.class,

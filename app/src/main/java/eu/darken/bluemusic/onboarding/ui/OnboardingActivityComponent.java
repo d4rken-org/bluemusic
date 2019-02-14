@@ -2,19 +2,18 @@ package eu.darken.bluemusic.onboarding.ui;
 
 
 import android.support.v4.app.Fragment;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-
 import dagger.Binds;
 import dagger.Module;
 import dagger.Subcomponent;
-import dagger.android.support.FragmentKey;
 import dagger.multibindings.IntoMap;
 import eu.darken.bluemusic.onboarding.ui.intro.IntroComponent;
 import eu.darken.bluemusic.onboarding.ui.intro.IntroFragment;
 import eu.darken.mvpbakery.injection.PresenterComponent;
 import eu.darken.mvpbakery.injection.activity.ActivityComponent;
+import eu.darken.mvpbakery.injection.fragment.FragmentKey;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 @OnboardingActivityComponent.Scope
 @Subcomponent(modules = {

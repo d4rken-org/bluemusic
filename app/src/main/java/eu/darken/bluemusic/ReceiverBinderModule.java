@@ -1,16 +1,15 @@
 package eu.darken.bluemusic;
 
 import android.content.BroadcastReceiver;
-
 import dagger.Binds;
 import dagger.Module;
 import dagger.android.AndroidInjector;
-import dagger.android.BroadcastReceiverKey;
 import dagger.multibindings.IntoMap;
 import eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiver;
 import eu.darken.bluemusic.bluetooth.core.BootCheckReceiver;
 import eu.darken.bluemusic.bluetooth.core.BootCheckReceiverComponent;
 import eu.darken.bluemusic.bluetooth.core.EventReceiverComponent;
+import eu.darken.mvpbakery.injection.broadcastreceiver.BroadcastReceiverKey;
 
 @Module(subcomponents = {
         EventReceiverComponent.class,
