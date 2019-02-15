@@ -121,7 +121,6 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         }
         notificationSub.dispose();
         isActiveSub.dispose();
-        serviceHelper.stop();
         super.onDestroy();
     }
 
@@ -153,12 +152,11 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Timber.v("onStartCommand-STARTED(intent=%s, flags=%d, startId=%d)", intent, flags, startId);
+        serviceHelper.start();
         if (intent == null) {
             Timber.w("Intent was null");
             serviceHelper.stop();
         } else if (intent.hasExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT)) {
-            serviceHelper.start();
-
             final SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
             final RetryWithDelay retryWithDelay = new RetryWithDelay(300, 1000);
             bluetoothSource.reloadConnectedDevices()
@@ -267,7 +265,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
                         // Do we need to keep the service running?
                         deviceManager.devices().firstOrError().subscribeOn(Schedulers.computation())
-                                .subscribe(deviceMap -> {
+                                .map(deviceMap -> {
                                     boolean hasActiveDevices = false;
                                     for (ManagedDevice d : deviceMap.values()) {
                                         if (d.isActive() && !d.getAddress().equals(FakeSpeakerDevice.ADDR)) {
@@ -275,9 +273,14 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                                             break;
                                         }
                                     }
+                                    Timber.d("Active devices: %s", deviceMap);
+                                    return hasActiveDevices;
+                                })
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(hasActiveDevices -> {
                                     if (hasActiveDevices) {
                                         if (settings.isVolumeChangeListenerEnabled()) {
-                                            Timber.d("Active devices (%s) and we want to listen for volume changes!", deviceMap);
+                                            Timber.d("We want to listen for volume changes!");
                                             serviceHelper.updateMessage(getString(R.string.label_status_listening_for_changes));
                                         } else {
                                             Timber.d("We don't want to listen to anymore volume changes, stopping service.");

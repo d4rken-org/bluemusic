@@ -32,6 +32,7 @@ public class ServiceHelper {
     private final NotificationCompat.Builder builder;
     private final Service service;
     private boolean started;
+    private long startCall = 0;
 
     @Inject
     ServiceHelper(BlueMusicService service, NotificationManager notificationManager, ResHelper resHelper) {
@@ -58,19 +59,30 @@ public class ServiceHelper {
                 .setContentText(resHelper.getString(R.string.label_status_idle))
                 .setContentTitle(resHelper.getString(R.string.app_name))
                 .addAction(new NotificationCompat.Action.Builder(0, service.getString(R.string.action_exit), stopPi).build());
+
     }
 
-    void start() {
-        Timber.v("start()");
+    synchronized void start() {
+        Timber.d("start(started=%b, time=%d, thread=%s)", started, (startCall > 0 ? System.currentTimeMillis() - startCall : 0), Thread.currentThread());
+        if (started) {
+            Timber.d("Service already launched to foreground.");
+            return;
+        }
         started = true;
         service.startForeground(NOTIFICATION_ID, builder.build());
+        if (startCall == 0) startCall = System.currentTimeMillis();
     }
 
-    void stop() {
-        Timber.v("stop()");
+    synchronized void stop() {
+        Timber.d("stop(started=%b, time=%d, thread=%s)", started, (startCall > 0 ? System.currentTimeMillis() - startCall : 0), Thread.currentThread());
+        if (!started) {
+            // Context.startForegroundService() did not then call Service.startForeground
+            // Even if we are below the ANR limit, keep the contract!
+            start();
+        }
         started = false;
+        startCall = 0;
         service.stopForeground(true);
-        notificationManager.cancel(NOTIFICATION_ID);
         service.stopSelf();
     }
 
@@ -86,7 +98,7 @@ public class ServiceHelper {
         }
     }
 
-    private void updateNotification() {
+    private synchronized void updateNotification() {
         if (!started) return;
         notificationManager.notify(NOTIFICATION_ID, builder.build());
     }
