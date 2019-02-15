@@ -3,6 +3,9 @@ package eu.darken.bluemusic.main.ui.managed;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.NotificationManager;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.PowerManager;
 import android.support.annotation.Nullable;
@@ -38,19 +41,24 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
     private final NotificationManager notificationManager;
     private final PowerManager powerManager;
     private final Settings settings;
+    private PackageManager packageManager;
     private DeviceManager deviceManager;
     private Disposable deviceSub = Disposables.disposed();
     private Disposable upgradeSub = Disposables.disposed();
     private Disposable bluetoothSub = Disposables.disposed();
 
     @Inject
-    ManagedDevicesPresenter(DeviceManager deviceManager,
-                            StreamHelper streamHelper,
-                            IAPHelper iapHelper,
-                            BluetoothSource bluetoothSource,
-                            NotificationManager notificationManager,
-                            PowerManager powerManager,
-                            Settings settings) {
+    ManagedDevicesPresenter(
+            PackageManager packageManager,
+            DeviceManager deviceManager,
+            StreamHelper streamHelper,
+            IAPHelper iapHelper,
+            BluetoothSource bluetoothSource,
+            NotificationManager notificationManager,
+            PowerManager powerManager,
+            Settings settings
+    ) {
+        this.packageManager = packageManager;
         this.deviceManager = deviceManager;
         this.streamHelper = streamHelper;
         this.iapHelper = iapHelper;
@@ -94,9 +102,17 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
 
     @TargetApi(Build.VERSION_CODES.M)
     private void checkBatterySavingIssue() {
-        onView(v -> v.displayBatteryOptimizationHint(ApiHelper.hasOreo()
+        Intent batterySavingIntent = new Intent();
+        batterySavingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        batterySavingIntent.setAction(android.provider.Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+
+        ResolveInfo resolveInfo = packageManager.resolveActivity(batterySavingIntent, 0);
+        final boolean displayHint = ApiHelper.hasOreo()
                 && !powerManager.isIgnoringBatteryOptimizations(BuildConfig.APPLICATION_ID)
-                && !settings.isBatterySavingHintDismissed()));
+                && !settings.isBatterySavingHintDismissed()
+                && resolveInfo != null;
+
+        onView(v -> v.displayBatteryOptimizationHint(displayHint, batterySavingIntent));
     }
 
     void onBatterySavingDismissed() {
@@ -163,6 +179,6 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
 
         void displayBluetoothState(boolean enabled);
 
-        void displayBatteryOptimizationHint(boolean display);
+        void displayBatteryOptimizationHint(boolean display, Intent intent);
     }
 }

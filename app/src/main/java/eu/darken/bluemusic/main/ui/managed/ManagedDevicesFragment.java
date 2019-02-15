@@ -3,7 +3,6 @@ package eu.darken.bluemusic.main.ui.managed;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -83,14 +82,6 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new ManagedDevicesAdapter(this);
         recyclerView.setAdapter(adapter);
-
-        batterySavingDismiss.setOnClickListener(v -> presenter.onBatterySavingDismissed());
-        batterySavingShow.setOnClickListener(v -> {
-            Intent intent = new Intent();
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.setAction(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
-            startActivity(intent);
-        });
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -140,7 +131,8 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
                         .setMessage(R.string.description_premium_upgrade_explanation)
                         .setIcon(R.drawable.ic_stars_white_24dp)
                         .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> presenter.onUpgradeClicked(getActivity()))
-                        .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
+                        .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {
+                        })
                         .show();
                 return true;
             case R.id.settings:
@@ -209,7 +201,9 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     }
 
     @Override
-    public void displayBatteryOptimizationHint(boolean display) {
+    public void displayBatteryOptimizationHint(boolean display, Intent intent) {
+        batterySavingDismiss.setOnClickListener(v -> presenter.onBatterySavingDismissed());
+        batterySavingShow.setOnClickListener(v -> startActivity(intent));
         batterySavingHint.setVisibility(display ? View.VISIBLE : View.GONE);
     }
 }

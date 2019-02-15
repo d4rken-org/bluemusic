@@ -3,6 +3,7 @@ package eu.darken.bluemusic;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
@@ -45,5 +46,11 @@ class AndroidModule {
     @AppComponent.Scope
     NotificationManager notificationManager(Context context) {
         return (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+    }
+
+    @Provides
+    @AppComponent.Scope
+    PackageManager packageManager(Context context) {
+        return context.getPackageManager();
     }
 }
