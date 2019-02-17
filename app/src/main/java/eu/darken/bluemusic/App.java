@@ -37,12 +37,19 @@ public class App extends Application implements HasManualActivityInjector, HasMa
     @Override
     public void onCreate() {
         super.onCreate();
+
         if (BuildConfig.DEBUG) Timber.plant(new Timber.DebugTree());
+
         DaggerAppComponent.builder()
                 .androidModule(new AndroidModule(this))
                 .build()
                 .injectMembers(this);
 
+        Timber.plant(bugsnagTree);
+
+        Client bugsnagClient = Bugsnag.init(this);
+        bugsnagClient.beforeNotify(errorHandler);
+        Timber.d("Bugsnag setup done!");
 
         Realm.init(this);
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
@@ -51,13 +58,13 @@ public class App extends Application implements HasManualActivityInjector, HasMa
                 .build();
         Realm.setDefaultConfiguration(realmConfig);
 
-        Timber.plant(bugsnagTree);
-        Client bugsnagClient = Bugsnag.init(this);
-        bugsnagClient.beforeNotify(errorHandler);
+        final Thread.UncaughtExceptionHandler originalHandler = Thread.getDefaultUncaughtExceptionHandler();
+        Thread.setDefaultUncaughtExceptionHandler((thread, error) -> {
+            Timber.e(error, "$thread threw and uncaught exception");
+            originalHandler.uncaughtException(thread, error);
+        });
 
-        Timber.d("Bugsnag setup done!");
-
-
+        Timber.d("App onCreate() done!");
     }
 
     @Override
