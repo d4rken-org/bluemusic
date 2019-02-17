@@ -107,6 +107,8 @@ public class ServiceHelper {
                                     Timber.d("Executing stopForeground()");
                                     service.stopForeground(true);
                                     service.stopSelf();
+                                    // Sometimes stopForeground doesn't remove the notification, but just makes it removable
+                                    notificationManager.cancel(NOTIFICATION_ID);
                                 });
                     }
                 });
