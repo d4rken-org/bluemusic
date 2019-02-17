@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.main.ui.managed;
 
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -203,7 +205,13 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     @Override
     public void displayBatteryOptimizationHint(boolean display, Intent intent) {
         batterySavingDismiss.setOnClickListener(v -> presenter.onBatterySavingDismissed());
-        batterySavingShow.setOnClickListener(v -> startActivity(intent));
+        batterySavingShow.setOnClickListener(v -> {
+            try {
+                startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(requireContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
         batterySavingHint.setVisibility(display ? View.VISIBLE : View.GONE);
     }
 }
