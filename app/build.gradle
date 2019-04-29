@@ -129,7 +129,7 @@ tasks.withType(Test) {
     systemProperty "robolectric.logging", "stdout"
 }
 ext {
-    daggerVersion = '2.21'
+    daggerVersion = '2.22.1'
 }
 
 dependencies {
