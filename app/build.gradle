@@ -66,17 +66,22 @@ android {
         ignore 'CheckResult'
     }
     buildTypes {
+        def proguardRulesRelease = fileTree(dir: "proguard", include: ["*.pro"]).asList().toArray()
         debug {
             minifyEnabled false
             useProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            proguardFiles proguardRulesRelease
+            proguardFiles 'proguard-rules-debug.pro'
+            //debuggable false
         }
         release {
             minifyEnabled true
             useProguard true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            proguardFiles proguardRulesRelease
+            testProguardFiles getDefaultProguardFile('proguard-android.txt')
+            testProguardFiles proguardRulesRelease
             manifestPlaceholders = [apikey_bugsnag: bugsnagProps.getProperty("bugsnag.apikey", "")]
         }
         applicationVariants.all { variant ->
