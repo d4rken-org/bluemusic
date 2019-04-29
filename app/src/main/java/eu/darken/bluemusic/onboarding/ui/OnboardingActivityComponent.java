@@ -19,7 +19,7 @@ import eu.darken.mvpbakery.injection.fragment.FragmentKey;
 @Subcomponent(modules = {
         OnboardingActivityComponent.FragmentBinderModule.class
 })
-public interface OnboardingActivityComponent extends ActivityComponent<OnboardingActivity>, PresenterComponent<OnboardingActivityPresenter.View, OnboardingActivityPresenter> {
+public interface OnboardingActivityComponent extends ActivityComponent<OnboardingActivity>, PresenterComponent<OnboardingActivityPresenter, OnboardingActivityComponent> {
 
     @Subcomponent.Builder
     abstract class Builder extends ActivityComponent.Builder<OnboardingActivity, OnboardingActivityComponent> {

@@ -19,7 +19,7 @@ import eu.darken.mvpbakery.injection.fragment.FragmentKey;
 @Subcomponent(modules = {
         BluetoothActivityComponent.FragmentBinderModule.class
 })
-public interface BluetoothActivityComponent extends ActivityComponent<BluetoothActivity>, PresenterComponent<BluetoothActivityPresenter.View, BluetoothActivityPresenter> {
+public interface BluetoothActivityComponent extends ActivityComponent<BluetoothActivity>, PresenterComponent<BluetoothActivityPresenter, BluetoothActivityComponent> {
 
     @Subcomponent.Builder
     abstract class Builder extends ActivityComponent.Builder<BluetoothActivity, BluetoothActivityComponent> {

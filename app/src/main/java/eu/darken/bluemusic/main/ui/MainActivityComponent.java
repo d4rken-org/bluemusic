@@ -23,7 +23,7 @@ import eu.darken.mvpbakery.injection.fragment.FragmentKey;
 @Subcomponent(modules = {
         MainActivityComponent.FragmentBinderModule.class
 })
-public interface MainActivityComponent extends ActivityComponent<MainActivity>, PresenterComponent<MainActivityPresenter.View, MainActivityPresenter> {
+public interface MainActivityComponent extends ActivityComponent<MainActivity>, PresenterComponent<MainActivityPresenter, MainActivityComponent> {
 
     @Subcomponent.Builder
     abstract class Builder extends ActivityComponent.Builder<MainActivity, MainActivityComponent> {

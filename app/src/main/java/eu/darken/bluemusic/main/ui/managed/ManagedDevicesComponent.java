@@ -11,7 +11,7 @@ import eu.darken.mvpbakery.injection.fragment.FragmentComponent;
 
 @ManagedDevicesComponent.Scope
 @Subcomponent()
-public interface ManagedDevicesComponent extends PresenterComponent<ManagedDevicesPresenter.View, ManagedDevicesPresenter>, FragmentComponent<ManagedDevicesFragment> {
+public interface ManagedDevicesComponent extends PresenterComponent<ManagedDevicesPresenter, ManagedDevicesComponent>, FragmentComponent<ManagedDevicesFragment> {
     @Subcomponent.Builder
     abstract class Builder extends FragmentComponent.Builder<ManagedDevicesFragment, ManagedDevicesComponent> {
 

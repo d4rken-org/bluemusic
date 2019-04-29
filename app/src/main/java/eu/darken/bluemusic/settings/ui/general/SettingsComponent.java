@@ -11,7 +11,7 @@ import eu.darken.mvpbakery.injection.fragment.FragmentComponent;
 
 @SettingsComponent.Scope
 @Subcomponent()
-public interface SettingsComponent extends PresenterComponent<SettingsPresenter.View, SettingsPresenter>, FragmentComponent<SettingsFragment> {
+public interface SettingsComponent extends PresenterComponent<SettingsPresenter, SettingsComponent>, FragmentComponent<SettingsFragment> {
     @Subcomponent.Builder
     abstract class Builder extends FragmentComponent.Builder<SettingsFragment, SettingsComponent> {
 

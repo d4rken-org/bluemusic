@@ -23,7 +23,7 @@ import eu.darken.mvpbakery.injection.fragment.FragmentKey;
 @Subcomponent(modules = {
         SettingsActivityComponent.FragmentBinderModule.class
 })
-public interface SettingsActivityComponent extends ActivityComponent<SettingsActivity>, PresenterComponent<SettingsActivityPresenter.View, SettingsActivityPresenter> {
+public interface SettingsActivityComponent extends ActivityComponent<SettingsActivity>, PresenterComponent<SettingsActivityPresenter, SettingsActivityComponent> {
 
     @Subcomponent.Builder
     abstract class Builder extends ActivityComponent.Builder<SettingsActivity, SettingsActivityComponent> {

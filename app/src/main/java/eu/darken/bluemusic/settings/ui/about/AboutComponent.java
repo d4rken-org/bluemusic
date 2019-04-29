@@ -11,7 +11,7 @@ import eu.darken.mvpbakery.injection.fragment.FragmentComponent;
 
 @AboutComponent.Scope
 @Subcomponent()
-public interface AboutComponent extends PresenterComponent<AboutPresenter.View, AboutPresenter>, FragmentComponent<AboutFragment> {
+public interface AboutComponent extends PresenterComponent<AboutPresenter, AboutComponent>, FragmentComponent<AboutFragment> {
     @Subcomponent.Builder
     abstract class Builder extends FragmentComponent.Builder<AboutFragment, AboutComponent> {
 
