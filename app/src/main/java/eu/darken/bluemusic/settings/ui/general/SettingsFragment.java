@@ -1,15 +1,6 @@
 package eu.darken.bluemusic.settings.ui.general;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.util.Pair;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.CheckBoxPreference;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +11,15 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.util.Pair;
+import androidx.fragment.app.Fragment;
+import androidx.preference.CheckBoxPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.settings.ui.about.AboutFragment;

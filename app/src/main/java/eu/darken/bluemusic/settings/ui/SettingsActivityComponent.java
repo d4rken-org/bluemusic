@@ -1,7 +1,10 @@
 package eu.darken.bluemusic.settings.ui;
 
 
-import android.support.v4.app.Fragment;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+import androidx.fragment.app.Fragment;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Subcomponent;
@@ -15,9 +18,6 @@ import eu.darken.bluemusic.settings.ui.general.SettingsFragment;
 import eu.darken.mvpbakery.injection.PresenterComponent;
 import eu.darken.mvpbakery.injection.activity.ActivityComponent;
 import eu.darken.mvpbakery.injection.fragment.FragmentKey;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 
 @SettingsActivityComponent.Scope
 @Subcomponent(modules = {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     tools:text="6 hours ago"/>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/extras_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -111,7 +111,7 @@
                         app:layout_constraintStart_toEndOf="@+id/autoplay_label"
                         app:layout_constraintTop_toTopOf="@+id/autoplay_label"
                         tools:ignore="ContentDescription"/>
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
             <ImageView
@@ -134,7 +134,7 @@
             android:layout_marginStart="16dp"
             android:orientation="vertical">
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/music_container"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
@@ -173,10 +173,10 @@
                     app:layout_constraintStart_toEndOf="@+id/music_seekbar"
                     app:layout_constraintTop_toTopOf="@+id/music_seekbar"
                     tools:text="15"/>
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/call_container"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
@@ -218,9 +218,9 @@
                     app:layout_constraintStart_toEndOf="@+id/call_seekbar"
                     app:layout_constraintTop_toTopOf="@+id/call_seekbar"
                     tools:text="15"/>
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/ring_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -287,9 +287,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ring_permission_label"
                     app:layout_constraintTop_toTopOf="parent"/>
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/notification_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -356,7 +356,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/notification_permission_label"
                     app:layout_constraintTop_toTopOf="parent"/>
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </LinearLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>

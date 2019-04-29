@@ -8,7 +8,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -16,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import androidx.core.app.NotificationCompat;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.ResHelper;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;

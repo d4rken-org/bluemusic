@@ -2,7 +2,6 @@ package eu.darken.bluemusic;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.Nullable;
 
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingClientStateListener;
@@ -15,6 +14,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import androidx.annotation.Nullable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.SingleOnSubscribe;

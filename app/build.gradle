@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: 'realm-android'
+apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: 'com.bugsnag.android.gradle'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'realm-android'
 
 def gitSha() {
     def p = 'git rev-parse --short HEAD'.execute([], project.rootDir)
@@ -12,7 +16,6 @@ def gitSha() {
 }
 
 bugsnag {
-    
     overwrite true
 }
 
@@ -122,32 +125,25 @@ tasks.withType(Test) {
     systemProperty "robolectric.logging", "stdout"
 }
 ext {
-    supportLibVersion = '28.0.0'
     daggerVersion = '2.21'
 }
-//noinspection GroovyAssignabilityCheck
-configurations.all {
-    resolutionStrategy.force "com.android.support:recyclerview-v7:${supportLibVersion}"
-    resolutionStrategy.force "com.android.support:support-v4:${supportLibVersion}"
-    resolutionStrategy.force "com.android.support:design:${supportLibVersion}"
-    resolutionStrategy.force "com.android.support:appcompat-v7:${supportLibVersion}"
-}
+
 dependencies {
     // Support libs
-    implementation "com.android.support:support-annotations:${supportLibVersion}"
-    implementation "com.android.support:appcompat-v7:${supportLibVersion}"
-    implementation "com.android.support:recyclerview-v7:${supportLibVersion}"
-    implementation "com.android.support:customtabs:${supportLibVersion}"
-    implementation "com.android.support:design:${supportLibVersion}"
-    implementation "com.android.support:cardview-v7:${supportLibVersion}"
-    implementation "com.android.support:preference-v14:${supportLibVersion}"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation "androidx.annotation:annotation:1.0.2"
+    implementation "androidx.appcompat:appcompat:1.0.2"
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation "androidx.browser:browser:1.0.0"
+    implementation "com.google.android.material:material:1.0.0"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "androidx.legacy:legacy-preference-v14:1.0.0"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     // Crashtracking
     implementation 'com.bugsnag:bugsnag-android:4.10.0'
 
     // MVP lib
-    implementation 'eu.darken.mvpbakery:library:0.5.1'
+    implementation 'eu.darken.mvpbakery:library:0.6.0'
 
     // RX
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
@@ -155,15 +151,15 @@ dependencies {
 
     //Dagger
     implementation "com.google.dagger:dagger:${daggerVersion}"
-    annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
-    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
+    kapt "com.google.dagger:dagger-compiler:${daggerVersion}"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:${daggerVersion}"
     androidTestImplementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation "com.google.dagger:dagger-android:${daggerVersion}"
     implementation "com.google.dagger:dagger-android-support:${daggerVersion}"
 
     //Butterknife
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    kapt 'com.jakewharton:butterknife-compiler:10.1.0'
 
     //Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
@@ -173,12 +169,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // Mocktio
-    androidTestImplementation 'org.mockito:mockito-core:2.20.0'
+    androidTestImplementation 'org.mockito:mockito-core:2.24.5'
     androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.19.0'
 
     //Intrumentation tests (UI tests)
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha04'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0-alpha04'
 
     // IAP
     implementation 'com.android.billingclient:billing:1.0'

@@ -2,7 +2,6 @@ package eu.darken.bluemusic.util.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import eu.darken.bluemusic.R;

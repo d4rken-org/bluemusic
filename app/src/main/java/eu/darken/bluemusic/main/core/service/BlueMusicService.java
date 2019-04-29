@@ -10,8 +10,6 @@ import android.content.IntentFilter;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.SparseArray;
 
 import com.bugsnag.android.Bugsnag;
@@ -29,6 +27,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiver;

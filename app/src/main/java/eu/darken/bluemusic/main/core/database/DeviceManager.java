@@ -1,7 +1,5 @@
 package eu.darken.bluemusic.main.core.database;
 
-import android.support.annotation.NonNull;
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,6 +7,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
 import eu.darken.bluemusic.AppComponent;
 import eu.darken.bluemusic.bluetooth.core.BluetoothSource;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;

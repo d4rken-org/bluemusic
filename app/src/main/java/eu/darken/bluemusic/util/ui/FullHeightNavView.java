@@ -1,8 +1,9 @@
 package eu.darken.bluemusic.util.ui;
 
 import android.content.Context;
-import android.support.design.widget.NavigationView;
 import android.util.AttributeSet;
+
+import com.google.android.material.navigation.NavigationView;
 
 public class FullHeightNavView extends NavigationView {
     public FullHeightNavView(Context context) {

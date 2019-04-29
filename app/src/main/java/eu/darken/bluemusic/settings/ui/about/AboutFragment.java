@@ -4,16 +4,16 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
 import android.view.MenuItem;
 
 import com.bugsnag.android.Bugsnag;
 import com.bugsnag.android.Severity;
+import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 import eu.darken.bluemusic.ManualReport;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.util.Check;

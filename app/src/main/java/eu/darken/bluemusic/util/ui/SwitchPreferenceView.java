@@ -1,8 +1,9 @@
 package eu.darken.bluemusic.util.ui;
 
 import android.content.Context;
-import android.support.v7.widget.SwitchCompat;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.SwitchCompat;
 
 
 public class SwitchPreferenceView extends PreferenceView {

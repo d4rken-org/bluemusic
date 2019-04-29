@@ -3,12 +3,12 @@ package eu.darken.bluemusic.bluetooth.core;
 import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import java.lang.reflect.Method;
 import java.util.Locale;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 import timber.log.Timber;
 

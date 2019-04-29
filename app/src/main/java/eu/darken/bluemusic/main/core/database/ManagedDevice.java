@@ -1,13 +1,12 @@
 package eu.darken.bluemusic.main.core.database;
 
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 import timber.log.Timber;

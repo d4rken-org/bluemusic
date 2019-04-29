@@ -1,9 +1,10 @@
 package eu.darken.bluemusic;
 
 import android.content.Context;
-import android.support.annotation.StringRes;
 
 import javax.inject.Inject;
+
+import androidx.annotation.StringRes;
 
 @AppComponent.Scope
 public class ResHelper {

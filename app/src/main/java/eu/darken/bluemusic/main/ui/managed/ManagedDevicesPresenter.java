@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.PowerManager;
-import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,6 +15,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import androidx.annotation.Nullable;
 import eu.darken.bluemusic.BuildConfig;
 import eu.darken.bluemusic.IAPHelper;
 import eu.darken.bluemusic.bluetooth.core.BluetoothSource;

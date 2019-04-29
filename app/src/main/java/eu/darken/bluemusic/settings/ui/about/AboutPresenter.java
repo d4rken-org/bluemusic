@@ -2,7 +2,6 @@ package eu.darken.bluemusic.settings.ui.about;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.support.annotation.Nullable;
 
 import com.bugsnag.android.Bugsnag;
 import com.bugsnag.android.Client;
@@ -12,6 +11,7 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
+import androidx.annotation.Nullable;
 import eu.darken.bluemusic.BuildConfig;
 import eu.darken.mvpbakery.base.Presenter;
 import eu.darken.mvpbakery.injection.ComponentPresenter;

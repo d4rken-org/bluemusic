@@ -4,10 +4,10 @@ import android.bluetooth.BluetoothClass;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.Nullable;
 
 import javax.inject.Inject;
 
+import androidx.annotation.Nullable;
 import eu.darken.bluemusic.AppComponent;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.main.core.audio.AudioStream;

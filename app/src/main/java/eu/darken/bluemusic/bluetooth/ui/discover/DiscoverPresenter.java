@@ -1,7 +1,6 @@
 package eu.darken.bluemusic.bluetooth.ui.discover;
 
 import android.app.Activity;
-import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,6 +8,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import androidx.annotation.Nullable;
 import eu.darken.bluemusic.IAPHelper;
 import eu.darken.bluemusic.bluetooth.core.BluetoothSource;
 import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice;

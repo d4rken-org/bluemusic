@@ -1,11 +1,12 @@
 package eu.darken.bluemusic.util.ui;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public abstract class BasicAdapter<VIEWHOLDER extends BasicViewHolder<? super DATA>, DATA> extends RecyclerView.Adapter<VIEWHOLDER> {

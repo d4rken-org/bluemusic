@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,6 +18,7 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
+import androidx.annotation.Nullable;
 import eu.darken.bluemusic.AppComponent;
 import timber.log.Timber;
 

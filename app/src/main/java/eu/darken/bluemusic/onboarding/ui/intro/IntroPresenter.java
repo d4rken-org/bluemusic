@@ -1,9 +1,8 @@
 package eu.darken.bluemusic.onboarding.ui.intro;
 
-import android.support.annotation.Nullable;
-
 import javax.inject.Inject;
 
+import androidx.annotation.Nullable;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.mvpbakery.base.Presenter;
 import eu.darken.mvpbakery.injection.ComponentPresenter;

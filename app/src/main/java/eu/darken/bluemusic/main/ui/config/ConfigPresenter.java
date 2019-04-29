@@ -2,13 +2,13 @@ package eu.darken.bluemusic.main.ui.config;
 
 import android.app.Activity;
 import android.app.NotificationManager;
-import android.support.annotation.Nullable;
 
 import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import androidx.annotation.Nullable;
 import eu.darken.bluemusic.IAPHelper;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.audio.StreamHelper;

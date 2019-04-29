@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.util;
 
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.util.ArrayDeque;
@@ -9,6 +8,7 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
 import eu.darken.bluemusic.AppComponent;
 import timber.log.Timber;
 

@@ -1,8 +1,8 @@
 package eu.darken.bluemusic.util;
 
 import android.bluetooth.BluetoothClass;
-import android.support.annotation.DrawableRes;
 
+import androidx.annotation.DrawableRes;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
