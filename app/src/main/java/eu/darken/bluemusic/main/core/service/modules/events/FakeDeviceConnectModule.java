@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.main.core.service.modules;
+package eu.darken.bluemusic.main.core.service.modules.events;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,13 +9,13 @@ import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
-import eu.darken.bluemusic.main.core.service.ActionModule;
 import eu.darken.bluemusic.main.core.service.BlueMusicServiceComponent;
+import eu.darken.bluemusic.main.core.service.modules.EventModule;
 import eu.darken.bluemusic.util.EventGenerator;
 import timber.log.Timber;
 
 @BlueMusicServiceComponent.Scope
-public class FakeDeviceConnectModule extends ActionModule {
+public class FakeDeviceConnectModule extends EventModule {
     private final DeviceManager deviceManager;
     private final EventGenerator eventGenerator;
 

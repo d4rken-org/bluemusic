@@ -60,11 +60,22 @@ public class MigrationTool {
         if (!con.hasField("notificationVolume")) con.addField("notificationVolume", Float.class);
     };
 
+    // Schema 5 -> 6
+    private final RealmMigration fiveToSixMigration = (realm, oldVersion, newVersion) -> {
+        final RealmObjectSchema con = realm.getSchema().get("DeviceConfig");
+        if (con == null) return;
+
+        // Property 'DeviceConfig.notificationVolume' has been added.
+        if (!con.hasField("monitoringDuration")) con.addField("monitoringDuration", Long.class);
+        if (!con.hasField("volumeLock")) con.addField("volumeLock", boolean.class);
+    };
+
     private final List<RealmMigration> subMigrations = Arrays.asList(
             legacyMigration,
             twoToThreeMigration,
             threeToFourMigration,
-            fourToFiveMigration
+            fourToFiveMigration,
+            fiveToSixMigration
     );
 
     public RealmMigration getMigration() {

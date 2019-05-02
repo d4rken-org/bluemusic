@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.main.core.service.modules;
+package eu.darken.bluemusic.main.core.service.modules.events;
 
 import android.media.AudioManager;
 import android.os.SystemClock;
@@ -8,13 +8,13 @@ import javax.inject.Inject;
 
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
-import eu.darken.bluemusic.main.core.service.ActionModule;
 import eu.darken.bluemusic.main.core.service.BlueMusicServiceComponent;
+import eu.darken.bluemusic.main.core.service.modules.EventModule;
 import eu.darken.bluemusic.settings.core.Settings;
 import timber.log.Timber;
 
 @BlueMusicServiceComponent.Scope
-public class AutoplayModule extends ActionModule {
+public class AutoplayModule extends EventModule {
     private final AudioManager audioManager;
     private final Settings settings;
 
@@ -32,7 +32,7 @@ public class AutoplayModule extends ActionModule {
     @Override
     public void handle(ManagedDevice device, SourceDevice.Event event) {
         if (event.getType() != SourceDevice.Event.Type.CONNECTED) return;
-        if (!device.isAutoPlayEnabled()) return;
+        if (!device.getAutoPlay()) return;
 
         final int autoplayKeycode = settings.getAutoplayKeycode();
         Timber.d("Autoplay enabled, sending KeyEvent: %d", autoplayKeycode);

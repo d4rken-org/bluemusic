@@ -17,7 +17,6 @@ import com.bugsnag.android.Bugsnag;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,12 +39,15 @@ import eu.darken.bluemusic.main.core.audio.StreamHelper;
 import eu.darken.bluemusic.main.core.audio.VolumeObserver;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
+import eu.darken.bluemusic.main.core.service.modules.EventModule;
+import eu.darken.bluemusic.main.core.service.modules.VolumeModule;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.util.ApiHelper;
 import eu.darken.bluemusic.util.ui.RetryWithDelay;
 import io.reactivex.Completable;
 import io.reactivex.Scheduler;
 import io.reactivex.Single;
+import io.reactivex.SingleOnSubscribe;
 import io.reactivex.SingleSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -62,16 +64,16 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Inject VolumeObserver volumeObserver;
     @Inject Settings settings;
     @Inject ServiceHelper serviceHelper;
-    @Inject Map<Class<? extends ActionModule>, ActionModule> actionModuleMap;
+    @Inject Map<Class<? extends EventModule>, EventModule> eventModuleMap;
+    @Inject Map<Class<? extends VolumeModule>, VolumeModule> volumeModuleMap;
 
-    final Scheduler scheduler = Schedulers.from(Executors.newSingleThreadExecutor());
-    private volatile boolean adjusting = false;
+    final Scheduler eventScheduler = Schedulers.from(Executors.newSingleThreadExecutor());
+    final Scheduler volumeScheduler = Schedulers.from(Executors.newSingleThreadExecutor());
     private Disposable notificationSub;
     private Disposable isActiveSub;
     private final Map<String, CompositeDisposable> onGoingConnections = new LinkedHashMap<>();
 
     private BroadcastReceiver ringerPermission = new BroadcastReceiver() {
-        @SuppressWarnings("ConstantConditions")
         @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -160,8 +162,8 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
             final SourceDevice.Event event = intent.getParcelableExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT);
             final RetryWithDelay retryWithDelay = new RetryWithDelay(300, 1000);
             bluetoothSource.reloadConnectedDevices()
-                    .subscribeOn(scheduler)
-                    .observeOn(scheduler)
+                    .subscribeOn(eventScheduler)
+                    .observeOn(eventScheduler)
                     .map(connectedDevices -> {
                         if (event.getType() == SourceDevice.Event.Type.CONNECTED && !connectedDevices.containsKey(event.getAddress())) {
                             Timber.w("%s not fully connected, retrying (#%d).", event.getDevice().getLabel(), retryWithDelay.getRetryCount());
@@ -193,10 +195,10 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         serviceHelper.updateMessage(getString(R.string.label_status_adjusting_volumes));
 
                         final ManagedDevice newDevice = action.getDevice();
-                        SparseArray<List<ActionModule>> priorityArray = new SparseArray<>();
-                        for (Map.Entry<Class<? extends ActionModule>, ActionModule> entry : actionModuleMap.entrySet()) {
+                        SparseArray<List<EventModule>> priorityArray = new SparseArray<>();
+                        for (Map.Entry<Class<? extends EventModule>, EventModule> entry : eventModuleMap.entrySet()) {
                             final int priority = entry.getValue().getPriority();
-                            List<ActionModule> list = priorityArray.get(priority);
+                            List<EventModule> list = priorityArray.get(priority);
                             if (list == null) {
                                 list = new ArrayList<>();
                                 priorityArray.put(priority, list);
@@ -205,19 +207,19 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         }
 
                         for (int i = 0; i < priorityArray.size(); i++) {
-                            final List<ActionModule> currentPriorityModules = priorityArray.get(priorityArray.keyAt(i));
-                            Timber.d("%d modules at priority %d", currentPriorityModules.size(), priorityArray.keyAt(i));
+                            final List<EventModule> currentPriorityModules = priorityArray.get(priorityArray.keyAt(i));
+                            Timber.d("%d event modules at priority %d", currentPriorityModules.size(), priorityArray.keyAt(i));
 
                             final CountDownLatch latch = new CountDownLatch(currentPriorityModules.size());
-                            for (ActionModule module : currentPriorityModules) {
+                            for (EventModule module : currentPriorityModules) {
                                 Completable.fromRunnable(() -> {
-                                    Timber.v("Module %s HANDLE-START", module);
+                                    Timber.v("Event module %s HANDLE-START", module);
                                     module.handle(newDevice, event);
-                                    Timber.v("Module %s HANDLE-STOP", module);
+                                    Timber.v("Event module %s HANDLE-STOP", module);
                                 })
                                         .subscribeOn(Schedulers.io())
                                         .doOnSubscribe(disp -> {
-                                            Timber.d("Running module %s", module);
+                                            Timber.d("Running event module %s", module);
                                             final CompositeDisposable comp = onGoingConnections.get(event.getAddress());
                                             if (comp != null) {
                                                 Timber.v("Existing CompositeDisposable, adding %s to %s", module, comp);
@@ -226,24 +228,23 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                                         })
                                         .doFinally(() -> {
                                             latch.countDown();
-                                            Timber.d("Module %s finished", module);
+                                            Timber.d("Event module %s finished", module);
                                         })
                                         .subscribe(() -> { }, e -> {
-                                            Timber.e(e, "Module error");
+                                            Timber.e(e, "Event module error");
                                             Bugsnag.notify(e);
                                         });
                             }
                             try {
                                 latch.await();
                             } catch (InterruptedException e) {
-                                Timber.w("Was waiting for %d modules at priority %d but was INTERRUPTED", currentPriorityModules.size(), priorityArray.keyAt(i));
+                                Timber.w("Was waiting for %d event modules at priority %d but was INTERRUPTED", currentPriorityModules.size(), priorityArray.keyAt(i));
                                 break;
                             }
                         }
                     })
                     .doOnSubscribe(disposable -> {
                         Timber.d("Subscribed %s", event);
-                        adjusting = true;
 
                         if (event.getType() == SourceDevice.Event.Type.CONNECTED) {
                             CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -261,7 +262,6 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                     .doFinally(() -> {
                         final CompositeDisposable remove = onGoingConnections.remove(event.getAddress());
                         Timber.d("%s finished, removed: %s", event.getAddress(), remove);
-                        adjusting = false;
 
                         // Do we need to keep the service running?
                         deviceManager.devices().firstOrError().subscribeOn(Schedulers.computation())
@@ -319,36 +319,55 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
 
     @Override
     public void onVolumeChanged(AudioStream.Id id, int volume) {
-        if (!settings.isVolumeChangeListenerEnabled()) {
-            Timber.v("Volume listener is disabled.");
-            return;
-        }
-        if (adjusting || streamHelper.wasUs(id, volume)) {
-            Timber.v("Volume change was triggered by us, ignoring it.");
-            return;
-        }
+        Single
+                .create((SingleOnSubscribe<SparseArray<List<VolumeModule>>>) emitter -> {
+                    SparseArray<List<VolumeModule>> priorityArray = new SparseArray<>();
+                    for (Map.Entry<Class<? extends VolumeModule>, VolumeModule> entry : volumeModuleMap.entrySet()) {
+                        final int priority = entry.getValue().getPriority();
+                        List<VolumeModule> list = priorityArray.get(priority);
+                        if (list == null) {
+                            list = new ArrayList<>();
+                            priorityArray.put(priority, list);
+                        }
+                        list.add(entry.getValue());
+                    }
+                    emitter.onSuccess(priorityArray);
+                })
+                .subscribeOn(volumeScheduler).observeOn(volumeScheduler)
+                .subscribe(priorityArray -> {
+                    for (int i = 0; i < priorityArray.size(); i++) {
+                        final List<VolumeModule> currentPriorityModules = priorityArray.get(priorityArray.keyAt(i));
+                        Timber.d("%d volume modules at priority %d", currentPriorityModules.size(), priorityArray.keyAt(i));
 
-        float percentage = streamHelper.getVolumePercentage(id);
-        deviceManager.devices()
-                .map(deviceMap -> {
-                    Collection<ManagedDevice> active = new HashSet<>();
-                    for (ManagedDevice d : deviceMap.values()) {
-                        if (d.isActive()) active.add(d);
+                        final CountDownLatch latch = new CountDownLatch(currentPriorityModules.size());
+                        for (VolumeModule module : currentPriorityModules) {
+                            Completable
+                                    .fromRunnable(() -> {
+                                        Timber.v("Volume module %s HANDLE-START", module);
+                                        module.handle(id, volume);
+                                        Timber.v("Volume module %s HANDLE-STOP", module);
+                                    })
+                                    .subscribeOn(Schedulers.io())
+                                    .doFinally(() -> {
+                                        latch.countDown();
+                                        Timber.v("Volume module %s finished", module);
+                                    })
+                                    .subscribe(() -> { }, e -> {
+                                        Timber.e(e, "Volume module error");
+                                        Bugsnag.notify(e);
+                                    });
+                        }
+                        try {
+                            latch.await();
+                        } catch (InterruptedException e) {
+                            Timber.w("Was waiting for %d volume modules at priority %d but was INTERRUPTED", currentPriorityModules.size(), priorityArray.keyAt(i));
+                            break;
+                        }
                     }
-                    return active;
-                })
-                .filter(managedDevices -> !managedDevices.isEmpty())
-                .take(1)
-                .flatMapIterable(managedDevices -> managedDevices)
-                .filter(device -> device.getStreamType(id) != null)
-                .map(device -> {
-                    AudioStream.Type streamType = device.getStreamType(id);
-                    if (device.getVolume(streamType) != null) {
-                        device.setVolume(streamType, percentage);
-                    }
-                    return device;
-                })
-                .toList()
-                .subscribe(actives -> deviceManager.save(actives).subscribeOn(Schedulers.computation()).subscribe());
+
+                }, e -> {
+                    Timber.e(e, "Event module error");
+                    Bugsnag.notify(e);
+                });
     }
 }

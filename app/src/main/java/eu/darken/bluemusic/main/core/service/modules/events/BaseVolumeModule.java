@@ -1,14 +1,14 @@
-package eu.darken.bluemusic.main.core.service.modules;
+package eu.darken.bluemusic.main.core.service.modules.events;
 
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.audio.StreamHelper;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
-import eu.darken.bluemusic.main.core.service.ActionModule;
+import eu.darken.bluemusic.main.core.service.modules.EventModule;
 import eu.darken.bluemusic.settings.core.Settings;
 import timber.log.Timber;
 
-abstract class BaseVolumeModule extends ActionModule {
+abstract class BaseVolumeModule extends EventModule {
     private final Settings settings;
     private final StreamHelper streamHelper;
 

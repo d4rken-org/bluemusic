@@ -98,4 +98,8 @@
     <string name="action_show">Show</string>
     <string name="action_dismiss">Dismiss</string>
     <string name="battery_optimizations_issue_description">Battery optimizations are enabled for this app and can prevent it from receiving Bluetooth events. Consider disabling optimizations if you are experiencing issues.</string>
+    <string name="label_monitoring_duration">Monitoring duration</string>
+    <string name="description_monitoring_duration">A duration in milliseconds during which volume changes will be blocked after a new device has connected and this app has made it\'s adjustment.</string>
+    <string name="label_volume_lock">Volume lock</string>
+    <string name="description_volume_lock">Prevent any volume changes not made through this app when the device is connected.</string>
 </resources>

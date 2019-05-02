@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.main.core.service.modules;
+package eu.darken.bluemusic.main.core.service.modules.events;
 
 import android.app.NotificationManager;
 
@@ -11,19 +11,19 @@ import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.util.ApiHelper;
 
 @BlueMusicServiceComponent.Scope
-public class NotificationVolumeModule extends BaseVolumeModule {
+public class RingVolumeModule extends BaseVolumeModule {
 
     private final NotificationManager notMan;
 
     @Inject
-    public NotificationVolumeModule(Settings settings, StreamHelper streamHelper, NotificationManager notMan) {
+    public RingVolumeModule(Settings settings, StreamHelper streamHelper, NotificationManager notMan) {
         super(settings, streamHelper);
         this.notMan = notMan;
     }
 
     @Override
     AudioStream.Type getType() {
-        return AudioStream.Type.NOTIFICATION;
+        return AudioStream.Type.RINGTONE;
     }
 
     @Override

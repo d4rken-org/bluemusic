@@ -8,6 +8,8 @@ import android.content.BroadcastReceiver;
 import com.bugsnag.android.Bugsnag;
 import com.bugsnag.android.Client;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.main.core.database.MigrationTool;
@@ -53,7 +55,7 @@ public class App extends Application implements HasManualActivityInjector, HasMa
 
         Realm.init(this);
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
-                .schemaVersion(5)
+                .schemaVersion(6)
                 .migration(new MigrationTool().getMigration())
                 .build();
         Realm.setDefaultConfiguration(realmConfig);
@@ -67,16 +69,19 @@ public class App extends Application implements HasManualActivityInjector, HasMa
         Timber.d("App onCreate() done!");
     }
 
+    @NotNull
     @Override
     public ManualInjector<Activity> activityInjector() {
         return activityInjector;
     }
 
+    @NotNull
     @Override
     public ManualInjector<BroadcastReceiver> broadcastReceiverInjector() {
         return receiverInjector;
     }
 
+    @NotNull
     @Override
     public ManualInjector<Service> serviceInjector() {
         return serviceInjector;

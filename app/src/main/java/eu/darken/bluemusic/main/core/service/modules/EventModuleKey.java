@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.main.core.service;
+package eu.darken.bluemusic.main.core.service.modules;
 
 import java.lang.annotation.Target;
 
@@ -10,6 +10,6 @@ import static java.lang.annotation.ElementType.METHOD;
 @Beta
 @MapKey
 @Target(METHOD)
-public @interface ActionModuleKey {
-    Class<? extends ActionModule> value();
+public @interface EventModuleKey {
+    Class<? extends EventModule> value();
 }

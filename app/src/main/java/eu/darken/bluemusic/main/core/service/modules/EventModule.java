@@ -1,9 +1,9 @@
-package eu.darken.bluemusic.main.core.service;
+package eu.darken.bluemusic.main.core.service.modules;
 
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 
-public abstract class ActionModule {
+public abstract class EventModule {
 
     public boolean areRequirementsMet() {
         return true;

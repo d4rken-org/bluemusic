@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.jetbrains.annotations.NotNull;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
@@ -57,6 +59,7 @@ public interface SourceDevice extends Parcelable {
             return type;
         }
 
+        @NotNull
         @Override
         public String toString() {
             return "SourceDevice.Event(type=" + type + ", device=" + device + ")";

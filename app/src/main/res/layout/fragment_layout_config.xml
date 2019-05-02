@@ -153,6 +153,36 @@
             android:background="@drawable/list_divider_material"/>
 
         <eu.darken.bluemusic.util.ui.PreferenceView
+            android:id="@+id/pref_monitoring_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:pvDescription="@string/description_monitoring_duration"
+            app:pvIcon="@drawable/ic_timelapse_white_24dp"
+            app:pvTitle="@string/label_monitoring_duration"
+            tools:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/list_divider_material"/>
+
+        <eu.darken.bluemusic.util.ui.SwitchPreferenceView
+            android:id="@+id/pref_volume_lock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:pvDescription="@string/description_volume_lock"
+            app:pvIcon="@drawable/ic_lock_outline_white_24dp"
+            app:pvTitle="@string/label_volume_lock"
+            tools:visibility="visible"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/list_divider_material"/>
+
+        <eu.darken.bluemusic.util.ui.PreferenceView
             android:id="@+id/pref_rename"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

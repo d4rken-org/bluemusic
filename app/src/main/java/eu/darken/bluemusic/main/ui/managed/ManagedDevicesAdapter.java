@@ -104,8 +104,8 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
             }
             lastSeen.setText(item.isActive() ? getString(R.string.label_state_connected) : timeString);
 
-            autoPlayIcon.setVisibility(item.isAutoPlayEnabled() ? View.VISIBLE : View.GONE);
-            autoPlayLabel.setVisibility(item.isAutoPlayEnabled() ? View.VISIBLE : View.GONE);
+            autoPlayIcon.setVisibility(item.getAutoPlay() ? View.VISIBLE : View.GONE);
+            autoPlayLabel.setVisibility(item.getAutoPlay() ? View.VISIBLE : View.GONE);
 
             if (item.getLaunchPkg() != null) {
                 try {
@@ -119,7 +119,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
             launchIcon.setVisibility(item.getLaunchPkg() != null ? View.VISIBLE : View.GONE);
             launchLabel.setVisibility(item.getLaunchPkg() != null ? View.VISIBLE : View.GONE);
 
-            extrasContainer.setVisibility(item.getLaunchPkg() != null || item.isAutoPlayEnabled() ? View.VISIBLE : View.GONE);
+            extrasContainer.setVisibility(item.getLaunchPkg() != null || item.getAutoPlay() ? View.VISIBLE : View.GONE);
 
             config.setOnClickListener(v -> callback.onShowConfigScreen(item));
 

@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.main.core.service.modules;
+package eu.darken.bluemusic.main.core.service.modules.events;
 
 import javax.inject.Inject;
 

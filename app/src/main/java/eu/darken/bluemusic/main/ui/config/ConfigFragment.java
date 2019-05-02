@@ -56,6 +56,8 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
     @BindView(R.id.pref_autoplay_enabled) SwitchPreferenceView prefAutoPlay;
     @BindView(R.id.pref_launch_app) PreferenceView prefLaunchApp;
+    @BindView(R.id.pref_volume_lock) SwitchPreferenceView prefVolumeLock;
+    @BindView(R.id.pref_monitoring_duration) PreferenceView prefMonitoringDuration;
     @BindView(R.id.pref_reaction_delay) PreferenceView prefReactionDelay;
     @BindView(R.id.pref_adjustment_delay) PreferenceView prefAdjustmentDelay;
     @BindView(R.id.pref_rename) PreferenceView prefRename;
@@ -101,6 +103,8 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
             presenter.onClearLaunchApp();
             return true;
         });
+        prefVolumeLock.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleVolumeLock()));
+        prefMonitoringDuration.setOnClickListener(v -> presenter.onEditMonitoringDurationClicked());
         prefReactionDelay.setOnClickListener(v -> presenter.onEditReactionDelayClicked());
         prefAdjustmentDelay.setOnClickListener(v -> presenter.onEditAdjustmentDelayClicked());
         prefRename.setOnClickListener(v -> presenter.onRenameClicked());
@@ -160,6 +164,9 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         prefAutoPlay.setIcon(isPro ? R.drawable.ic_play_circle_outline_white_24dp : R.drawable.ic_stars_white_24dp);
         prefAutoPlay.setDescription(getString(R.string.description_autoplay) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
 
+        prefVolumeLock.setIcon(isPro ? R.drawable.ic_lock_outline_white_24dp : R.drawable.ic_stars_white_24dp);
+        prefVolumeLock.setDescription(getString(R.string.description_volume_lock) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
+
         prefLaunchApp.setIcon(isPro ? R.drawable.ic_android_white_24dp : R.drawable.ic_stars_white_24dp);
 
         prefRename.setIcon(isPro ? R.drawable.ic_mode_edit_white_24dp : R.drawable.ic_stars_white_24dp);
@@ -186,8 +193,11 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         prefNotificationVolume.setChecked(device.getVolume(AudioStream.Type.NOTIFICATION) != null);
         prefNotificationVolume.setVisibility(View.VISIBLE);
 
-        prefAutoPlay.setChecked(device.isAutoPlayEnabled());
+        prefAutoPlay.setChecked(device.getAutoPlay());
         prefAutoPlay.setVisibility(View.VISIBLE);
+
+        prefVolumeLock.setChecked(device.getVolumeLock());
+        prefVolumeLock.setVisibility(View.VISIBLE);
 
         prefLaunchApp.setVisibility(View.VISIBLE);
 
@@ -203,6 +213,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
         prefReactionDelay.setVisibility(View.VISIBLE);
         prefAdjustmentDelay.setVisibility(View.VISIBLE);
+        prefMonitoringDuration.setVisibility(View.VISIBLE);
 
         prefRename.setVisibility(device.getAddress().equals(FakeSpeakerDevice.ADDR) ? View.GONE : View.VISIBLE);
         prefDelete.setVisibility(View.VISIBLE);
@@ -215,6 +226,32 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
                 .setMessage(R.string.description_premium_required_this_extra_option)
                 .setIcon(R.drawable.ic_stars_white_24dp)
                 .setPositiveButton(R.string.action_upgrade, (dialogInterface, i) -> presenter.onPurchaseUpgrade(getActivity()))
+                .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
+                .show();
+    }
+
+    @SuppressLint("InflateParams")
+    @Override
+    public void showMonitoringDurationDialog(long duration) {
+        View container = getLayoutInflater().inflate(R.layout.view_dialog_delay, null);
+        EditText input = container.findViewById(R.id.input);
+        input.setText(String.valueOf(duration));
+        new AlertDialog.Builder(Check.notNull(getContext()))
+                .setTitle(R.string.label_monitoring_duration)
+                .setMessage(R.string.description_monitoring_duration)
+                .setIcon(R.drawable.ic_timer_white_24dp)
+                .setView(container)
+                .setPositiveButton(R.string.action_set, (dialogInterface, i) -> {
+                    try {
+                        final long newDuration = Long.parseLong(input.getText().toString());
+                        presenter.onEditMonitoringDuration(newDuration);
+                    } catch (NumberFormatException e) {
+                        Timber.e(e);
+                        Check.notNull(getView());
+                        Snackbar.make(getView(), R.string.label_invalid_input, Snackbar.LENGTH_SHORT).show();
+                    }
+                })
+                .setNeutralButton(R.string.action_reset, (dialogInterface, i) -> presenter.onEditReactionDelay(-1))
                 .setNegativeButton(R.string.action_cancel, (dialogInterface, i) -> {})
                 .show();
     }

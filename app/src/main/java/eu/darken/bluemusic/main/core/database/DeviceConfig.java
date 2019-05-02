@@ -11,11 +11,14 @@ public class DeviceConfig extends RealmObject {
 
     Long actionDelay;
     Long adjustmentDelay;
+    Long monitoringDuration;
 
     Float musicVolume;
     Float callVolume;
     Float ringVolume;
     Float notificationVolume;
+
+    boolean volumeLock;
 
     boolean autoplay;
 

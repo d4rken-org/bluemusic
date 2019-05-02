@@ -166,7 +166,7 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
 
     boolean onToggleAutoPlay() {
         if (isProVersion) {
-            device.setAutoPlayEnabled(!device.isAutoPlayEnabled());
+            device.setAutoPlay(!device.getAutoPlay());
             deviceManager.save(Collections.singleton(device))
                     .subscribeOn(Schedulers.computation())
                     .subscribe(managedDevices -> {
@@ -174,7 +174,20 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         } else {
             onView(View::showRequiresPro);
         }
-        return device.isAutoPlayEnabled();
+        return device.getAutoPlay();
+    }
+
+    boolean onToggleVolumeLock() {
+        if (isProVersion) {
+            device.setVolumeLock(!device.getVolumeLock());
+            deviceManager.save(Collections.singleton(device))
+                    .subscribeOn(Schedulers.computation())
+                    .subscribe(managedDevices -> {
+                    });
+        } else {
+            onView(View::showRequiresPro);
+        }
+        return device.getAutoPlay();
     }
 
     void onEditReactionDelayClicked() {
@@ -198,6 +211,19 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
     void onEditAdjustmentDelay(long delay) {
         if (delay < -1) delay = -1;
         device.setAdjustmentDelay(delay == -1 ? null : delay);
+        deviceManager.save(Collections.singleton(device))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+    }
+
+    void onEditMonitoringDurationClicked() {
+        long delay = device.getMonitoringDuration() != null ? device.getMonitoringDuration() : Settings.DEFAULT_MONITORING_DURATION;
+        onView(v -> v.showMonitoringDurationDialog(delay));
+    }
+
+    void onEditMonitoringDuration(long duration) {
+        if (duration < -1) duration = -1;
+        device.setMonitoringDuration(duration == -1 ? null : duration);
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe();
@@ -253,7 +279,6 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
                 .subscribe();
     }
 
-
     public interface View extends Presenter.View {
         void updateProState(boolean isPro);
 
@@ -263,9 +288,11 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
 
         void showReactionDelayDialog(long delay);
 
-        void showAppSelectionDialog(List<AppTool.Item> items);
-
         void showAdjustmentDelayDialog(long delay);
+
+        void showMonitoringDurationDialog(long duration);
+
+        void showAppSelectionDialog(List<AppTool.Item> items);
 
         void showRenameDialog(String current);
 
