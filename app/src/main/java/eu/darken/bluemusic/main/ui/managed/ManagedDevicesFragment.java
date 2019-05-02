@@ -57,7 +57,7 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     @BindView(R.id.battery_saving_hint_show_action) Button batterySavingShow;
     @Inject ManagedDevicesPresenter presenter;
 
-    Unbinder unbinder;
+    private Unbinder unbinder;
     private ManagedDevicesAdapter adapter;
     private boolean isProVersion = false;
 
@@ -138,8 +138,14 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
                         })
                         .show();
                 return true;
+            case R.id.bluetooth_settings:
+                try {
+                    startActivity(new Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS));
+                } catch (Exception e) {
+                    Toast.makeText(requireContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                }
+                return true;
             case R.id.settings:
-                //noinspection ConstantConditions
                 startActivity(new Intent(getContext(), SettingsActivity.class));
                 return true;
             default:
@@ -148,11 +154,11 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     }
 
     @OnClick(R.id.fab)
-    public void onFabClicked(View fab) {
-        //noinspection ConstantConditions
+    void onFabClicked() {
         startActivity(new Intent(getContext(), BluetoothActivity.class));
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void displayBluetoothState(boolean enabled) {
         bluetoothDisabledContainer.setVisibility(enabled ? View.GONE : View.VISIBLE);

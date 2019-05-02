@@ -102,4 +102,5 @@
     <string name="description_monitoring_duration">A duration in milliseconds during which volume changes will be blocked after a new device has connected and this app has made it\'s adjustment.</string>
     <string name="label_volume_lock">Volume lock</string>
     <string name="description_volume_lock">Prevent any volume changes not made through this app when the device is connected.</string>
+    <string name="label_bluetooth_settings">Bluetooth settings</string>
 </resources>
