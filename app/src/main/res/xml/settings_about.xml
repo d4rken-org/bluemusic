@@ -51,11 +51,11 @@
                 android:data="https://twitter.com/d4rken"/>
         </Preference>
         <Preference
-            android:summary="https://plus.google.com/116634499773478773276"
-            android:title="@string/label_gplus">
+            android:summary="https://discord.gg/PZR7M8p"
+            android:title="@string/label_discord">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://plus.google.com/116634499773478773276"/>
+                android:data="https://sdmaid.darken.eu/discord"/>
         </Preference>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/label_thanks">
