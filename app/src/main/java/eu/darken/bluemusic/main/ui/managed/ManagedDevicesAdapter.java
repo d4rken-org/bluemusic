@@ -53,10 +53,12 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
         @BindView(R.id.name) TextView nameView;
         @BindView(R.id.lastseen) TextView lastSeen;
 
-        @BindView(R.id.autoplay_icon) ImageView autoPlayIcon;
-        @BindView(R.id.autoplay_label) TextView autoPlayLabel;
         @BindView(R.id.launch_icon) ImageView launchIcon;
         @BindView(R.id.launch_label) TextView launchLabel;
+        @BindView(R.id.autoplay_icon) ImageView autoPlayIcon;
+        @BindView(R.id.autoplay_label) TextView autoPlayLabel;
+        @BindView(R.id.volumelock_icon) ImageView volumeLockIcon;
+        @BindView(R.id.volumelock_label) TextView volumeLockLabel;
         @BindView(R.id.extras_container) ViewGroup extrasContainer;
 
         @BindView(R.id.config_icon) View config;
@@ -106,6 +108,9 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
 
             autoPlayIcon.setVisibility(item.getAutoPlay() ? View.VISIBLE : View.GONE);
             autoPlayLabel.setVisibility(item.getAutoPlay() ? View.VISIBLE : View.GONE);
+
+            volumeLockIcon.setVisibility(item.getVolumeLock() ? View.VISIBLE : View.GONE);
+            volumeLockLabel.setVisibility(item.getVolumeLock() ? View.VISIBLE : View.GONE);
 
             if (item.getLaunchPkg() != null) {
                 try {
