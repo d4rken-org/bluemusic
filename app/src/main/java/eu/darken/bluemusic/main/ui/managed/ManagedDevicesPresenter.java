@@ -3,6 +3,7 @@ package eu.darken.bluemusic.main.ui.managed;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -41,6 +42,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
     private final NotificationManager notificationManager;
     private final PowerManager powerManager;
     private final Settings settings;
+    private Context context;
     private PackageManager packageManager;
     private DeviceManager deviceManager;
     private Disposable deviceSub = Disposables.disposed();
@@ -49,6 +51,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
 
     @Inject
     ManagedDevicesPresenter(
+            Context context,
             PackageManager packageManager,
             DeviceManager deviceManager,
             StreamHelper streamHelper,
@@ -58,6 +61,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
             PowerManager powerManager,
             Settings settings
     ) {
+        this.context = context;
         this.packageManager = packageManager;
         this.deviceManager = deviceManager;
         this.streamHelper = streamHelper;
@@ -154,7 +158,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 });
     }
 
-    public void onUpdateNotificationVolume(ManagedDevice device, float percentage) {
+    void onUpdateNotificationVolume(ManagedDevice device, float percentage) {
         device.setVolume(AudioStream.Type.NOTIFICATION, percentage);
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
@@ -170,6 +174,16 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
 
     void onUpgradeClicked(Activity activity) {
         iapHelper.buyProVersion(activity);
+    }
+
+    void showBluetoothSettingsScreen() {
+        Intent intent = new Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        try {
+            context.startActivity(intent);
+        } catch (Exception e) {
+            Timber.e(e, "Failed to launch Bluetooth settings screen");
+        }
     }
 
     interface View extends Presenter.View {

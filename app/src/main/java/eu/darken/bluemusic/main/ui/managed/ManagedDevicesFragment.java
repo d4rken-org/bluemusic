@@ -3,6 +3,7 @@ package eu.darken.bluemusic.main.ui.managed;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,6 +24,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -60,6 +63,7 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     private Unbinder unbinder;
     private ManagedDevicesAdapter adapter;
     private boolean isProVersion = false;
+    private boolean bluetoothEnabled = false;
 
     public static Fragment newInstance() {
         return new ManagedDevicesFragment();
@@ -85,6 +89,9 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new ManagedDevicesAdapter(this);
         recyclerView.setAdapter(adapter);
+
+        bluetoothDisabledContainer.setOnClickListener(v -> presenter.showBluetoothSettingsScreen());
+
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -121,6 +128,12 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.upgrade).setVisible(!isProVersion);
+
+        Drawable btIcon = DrawableCompat.wrap(menu.findItem(R.id.bluetooth_settings).getIcon());
+        int btStateColor = bluetoothEnabled ? android.R.color.white : R.color.state_m3;
+        DrawableCompat.setTint(btIcon, ContextCompat.getColor(requireContext(), btStateColor));
+        menu.findItem(R.id.bluetooth_settings).setIcon(btIcon);
+
         super.onPrepareOptionsMenu(menu);
     }
 
@@ -139,11 +152,7 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
                         .show();
                 return true;
             case R.id.bluetooth_settings:
-                try {
-                    startActivity(new Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS));
-                } catch (Exception e) {
-                    Toast.makeText(requireContext(), e.toString(), Toast.LENGTH_SHORT).show();
-                }
+                presenter.showBluetoothSettingsScreen();
                 return true;
             case R.id.settings:
                 startActivity(new Intent(getContext(), SettingsActivity.class));
@@ -161,9 +170,11 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     @SuppressLint("RestrictedApi")
     @Override
     public void displayBluetoothState(boolean enabled) {
+        bluetoothEnabled = enabled;
         bluetoothDisabledContainer.setVisibility(enabled ? View.GONE : View.VISIBLE);
         bluetoothEnabledContainer.setVisibility(enabled ? View.VISIBLE : View.GONE);
         fab.setVisibility(enabled ? View.VISIBLE : View.GONE);
+        requireActivity().invalidateOptionsMenu();
     }
 
     @Override
