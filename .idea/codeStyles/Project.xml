@@ -9,7 +9,6 @@
       <option name="ARRAY_WRAPPING" value="1" />
     </JSON>
     <JavaCodeStyleSettings>
-      <option name="FIELD_NAME_PREFIX" value="m" />
       <option name="DO_NOT_WRAP_AFTER_SINGLE_ANNOTATION" value="true" />
       <option name="CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND" value="99" />
       <option name="NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND" value="99" />
