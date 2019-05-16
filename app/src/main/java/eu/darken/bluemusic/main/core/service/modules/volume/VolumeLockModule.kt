@@ -3,12 +3,10 @@ package eu.darken.bluemusic.main.core.service.modules.volume
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.database.DeviceManager
-import eu.darken.bluemusic.main.core.database.ManagedDevice
 import eu.darken.bluemusic.main.core.service.BlueMusicServiceComponent
 import eu.darken.bluemusic.main.core.service.modules.VolumeModule
 import eu.darken.bluemusic.settings.core.Settings
 import timber.log.Timber
-import java.util.*
 import javax.inject.Inject
 
 @BlueMusicServiceComponent.Scope
@@ -29,18 +27,9 @@ internal class VolumeLockModule @Inject constructor(
         }
 
         deviceManager.devices()
-                .map { deviceMap ->
-                    val active = HashSet<ManagedDevice>()
-                    for (d in deviceMap.values) {
-                        if (d.isActive && d.volumeLock && d.getStreamType(id) != null) {
-                            active.add(d)
-                        }
-                    }
-                    active
-                }
-                .filter { managedDevices -> managedDevices.isNotEmpty() }
                 .take(1)
-                .flatMapIterable { managedDevices -> managedDevices }
+                .flatMapIterable { it.values }
+                .filter { it.isActive && it.volumeLock && it.getStreamType(id) != null }
                 .subscribe { device ->
                     val type = device.getStreamType(id)!!
                     val percentage: Float? = device.getVolume(type)
