@@ -41,22 +41,17 @@ internal class VolumeLockModule @Inject constructor(
                 .filter { managedDevices -> managedDevices.isNotEmpty() }
                 .take(1)
                 .flatMapIterable { managedDevices -> managedDevices }
-                .map { device ->
+                .subscribe { device ->
                     val type = device.getStreamType(id)!!
                     val percentage: Float? = device.getVolume(type)
                     if (percentage == null || percentage == -1f) {
                         Timber.d("Device %s has no specified target volume for %s, skipping volume lock.", device, type)
-                        return@map
+                        return@subscribe
                     }
 
                     if (streamHelper.changeVolume(device.getStreamId(type), percentage, false, 0)) {
                         Timber.d("Engaged volume lock for %s and due to %s", type, device)
                     }
-
-                }
-                .toList()
-                .subscribe { actives ->
-
                 }
     }
 }

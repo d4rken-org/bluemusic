@@ -34,7 +34,11 @@ internal class VolumeUpdateModule @Inject constructor(
                 .map { deviceMap ->
                     val active = HashSet<ManagedDevice>()
                     for (d in deviceMap.values) {
-                        if (d.isActive && !d.volumeLock && d.getStreamType(id) != null) {
+                        if (d.isActive
+                                && !d.volumeLock
+                                && d.getStreamType(id) != null
+                                && d.getVolume(d.getStreamType(id)!!) != null
+                        ) {
                             active.add(d)
                         }
                     }
