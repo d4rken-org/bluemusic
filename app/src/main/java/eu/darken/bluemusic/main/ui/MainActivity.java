@@ -3,6 +3,8 @@ package eu.darken.bluemusic.main.ui;
 import android.content.Intent;
 import android.os.Bundle;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.inject.Inject;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
         ButterKnife.bind(this);
     }
 
+    @NotNull
     @Override
     public ManualInjector<Fragment> supportFragmentInjector() {
         return componentSource;
