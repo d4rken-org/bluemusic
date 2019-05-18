@@ -5,7 +5,7 @@
     <string name="description_check_out_my_apps">Tinjau aplikasi saya yang lain!</string>
     <string name="label_settings">Tetapan</string>
     <string name="label_about">Mengenai</string>
-    <string name="label_gplus">G+</string>
+    <string name="label_discord">Percanggahan</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Laman web</string>
     <string name="label_gplay">Google Play</string>
@@ -13,19 +13,13 @@
     <string name="label_bug_reports">Laporan pepijat</string>
     <string name="description_bug_reports">Pelaporan pepijat dan kecelaruan automatik.</string>
     <string name="label_app_enabled">Apl didayakan</string>
-    <string name="description_app_enabled">Toggel kebolehan apl untuk bereaksi pada volum serta acara Bluetooth.
-    </string>
+    <string name="description_app_enabled">Toggel kebolehan apl untuk bereaksi pada volum serta acara Bluetooth.</string>
     <string name="label_visible_volume_adjustments">Pelarasan yang nyata</string>
-    <string name="description_visible_volume_adjustments">Tampilkan tetingkap volum sistem sementara apl ini melakukan
-        pelarasan.
-    </string>
+    <string name="description_visible_volume_adjustments">Tampilkan tetingkap volum sistem sementara apl ini melakukan pelarasan.</string>
     <string name="label_volume_listener">Perhatikan perubahan</string>
-    <string name="description_volume_listener">Kekal aktif sementara peranti dihubungkan dan simpan perubahan volum yang
-        tiada terkesan dari apl ini.
-    </string>
+    <string name="description_volume_listener">Kekal aktif sementara peranti dihubungkan dan simpan perubahan volum yang tiada terkesan dari apl ini.</string>
     <string name="label_autoplay_keytype">Jenis kekunci automain</string>
-    <string name="desc_autoplay_keytype">Jenis kekunci yang dihantar apabila automain peranti didayakan terhubung.
-    </string>
+    <string name="desc_autoplay_keytype">Jenis kekunci yang dihantar apabila automain peranti didayakan terhubung.</string>
     <string name="label_state_connected">Dihubungkan</string>
     <string name="label_neverseen">Tiada terlihat</string>
     <string name="action_remove_device">Alih peranti</string>
@@ -43,58 +37,35 @@
     <string name="label_status_adjusting_volumes">Melaraskan volum</string>
     <string name="label_premium_version">Versi premium</string>
     <string name="action_upgrade">Naik taraf</string>
-    <string name="description_premium_required_additional_devices">Meguruskan peranti tambahan memerlukan versi
-        premium.
-    </string>
-    <string name="description_premium_required_this_extra_option">Opsyen ekstra ini memerlukan versi premium dari apl
-        ini.
-    </string>
-    <string name="description_premium_upgrade_explanation">Dapatkan versi premium untuk dayakan ciri-ciri tambahan serta
-        menyokong pembangunan.
-    </string>
+    <string name="description_premium_required_additional_devices">Meguruskan peranti tambahan memerlukan versi premium.</string>
+    <string name="description_premium_required_this_extra_option">Opsyen ekstra ini memerlukan versi premium dari apl ini.</string>
+    <string name="description_premium_upgrade_explanation">Dapatkan versi premium untuk dayakan ciri-ciri tambahan serta menyokong pembangunan.</string>
     <string name="label_premium_version_required">Versi premium diperlukan</string>
-    <string name="description_intro_purpose">Apl ini membolehkan peranti Android anda mengingati volum dari peranti
-        Bluetooth yang berbeza.
-    </string>
-    <string name="description_intro_premium">Jika anda sukakan apl ini, pertimbangkan untuk menaik taraf ke versi
-        premium. Ia menyokong pembangunan serta membolehkan anda mendapat beberapa ciri ekstra.
-    </string>
+    <string name="description_intro_purpose">Apl ini membolehkan peranti Android anda mengingati volum dari peranti Bluetooth yang berbeza.</string>
+    <string name="description_intro_premium">Jika anda sukakan apl ini, pertimbangkan untuk menaik taraf ke versi premium. Ia menyokong pembangunan serta membolehkan anda mendapat beberapa ciri ekstra.</string>
     <string name="description_intro_tap_the_button">Mula dengan memasukkan peranti pertama anda.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth dinyahdayakan.</string>
     <string name="label_status_listening_for_changes">Mendengar untuk perubahan volum</string>
     <string name="action_exit">Keluar</string>
     <string name="label_music_volume">Volum muzik</string>
-    <string name="description_music_volume">Mengawal volum yang terkesan dengan muzik dan permainan bila peranti ini
-        bersambung.
-    </string>
+    <string name="description_music_volume">Mengawal volum yang terkesan dengan muzik dan permainan bila peranti ini bersambung.</string>
     <string name="label_call_volume">Volum panggilan</string>
-    <string name="description_call_volume">Mengawal volum yang terkesan dengan panggilan bila peranti ini bersambung.
-    </string>
+    <string name="description_call_volume">Mengawal volum yang terkesan dengan panggilan bila peranti ini bersambung.</string>
     <string name="label_autoplay">Automain</string>
-    <string name="description_autoplay">Menekan main simulasi pada kawalan jauh Bluetooth bila peranti ini bersambung.
-    </string>
+    <string name="description_autoplay">Menekan main simulasi pada kawalan jauh Bluetooth bila peranti ini bersambung.</string>
     <string name="label_reaction_delay">Kelewatan reaksi</string>
-    <string name="description_reaction_delay">Kelewatannya dalam millidetik sehinggalah apl ini bereaksi pada peranti.
-    </string>
+    <string name="description_reaction_delay">Kelewatannya dalam millidetik sehinggalah apl ini bereaksi pada peranti.</string>
     <string name="label_adjustment_delay">Tundaan pelarasan</string>
-    <string name="description_adjustment_delay">Tundaan dalam milisaat di antara setiap pelarasan volum. Oms tertunda
-        bermaksud penetapan volum serta merta bila peranti ini bersambung.
-    </string>
+    <string name="description_adjustment_delay">Tundaan dalam milisaat di antara setiap pelarasan volum. Oms tertunda bermaksud penetapan volum serta merta bila peranti ini bersambung.</string>
     <string name="label_rename_device">Penamaan semula peranti</string>
     <string name="description_rename_device">Set satu alias sistem-menyeluruh untuk peranti ini.</string>
     <string name="label_forget_device">Terlupa peranti</string>
-    <string name="description_forget_device">Alihkan peranti dari apl ini dan hapuskan konfigurasinya. Ini tidak akan
-        memisahkan peranti tersebut.
-    </string>
+    <string name="description_forget_device">Alihkan peranti dari apl ini dan hapuskan konfigurasinya. Ini tidak akan memisahkan peranti tersebut.</string>
     <string name="label_boot_restore">Simpan semula semasa boot</string>
-    <string name="description_boot_restore">Simpan semula volum selepas booting/rebooting jika peranti Bluetooth
-        disambungkan.
-    </string>
+    <string name="description_boot_restore">Simpan semula volum selepas booting/rebooting jika peranti Bluetooth disambungkan.</string>
     <string name="action_start">Mula</string>
     <string name="label_welcome">Selamat datang</string>
-    <string name="description_intro_contact">Jangan teragak-agak untuk hubungi saya jika anda ada soalan mahu pun idea
-        untuk ciri yang baru.
-    </string>
+    <string name="description_intro_contact">Jangan teragak-agak untuk hubungi saya jika anda ada soalan mahu pun idea untuk ciri yang baru.</string>
     <string name="label_translation">Terjemahan</string>
     <string name="description_help_translate">Bantu saya menjadikan apl ini diperolehi dalam lain-lain bahasa.</string>
     <string name="label_device_speaker">Pembesar suara peranti</string>
@@ -109,39 +80,29 @@
     <string name="label_licenses">Lesen-lesen</string>
     <string name="label_ring_volume">Volum deringan</string>
     <string name="description_ring_volume">Kawal volum yang terkesan dengan deringan anda.</string>
-    <string name="description_ring_volume_additional_permission">Kebenaran tambahan adalah perlu bagi mengubah volum
-        deringan.
-    </string>
+    <string name="description_ring_volume_additional_permission">Kebenaran tambahan adalah perlu bagi mengubah volum deringan.</string>
     <string name="label_missing_permissions">Kehilangan kebenaran</string>
     <string name="action_grant">Keizinan</string>
     <string name="label_advanced">Lanjutan</string>
     <string name="label_exclude_health">Tanpa profil kesihatan</string>
-    <string name="description_exclude_health">Sesetengah peranti Android tergantung bila melihat kepada profil Bluetooth
-        (HDP, 0x1400) \'Peranti Sihat\'.
-    </string>
+    <string name="description_exclude_health">Sesetengah peranti Android tergantung bila melihat kepada profil Bluetooth (HDP, 0x1400) \'Peranti Sihat\'.</string>
     <string name="label_exclude_gattserver">Tanpa profil pelayan GATT</string>
     <string name="label_exclude_gatt">Tanpa profil GATT</string>
-    <string name="description_exclude_gattserver">Jangan soal profil Bluetooth dari jenis pelayan \'Generic Attribute\'
-        (GATT).
-    </string>
-    <string name="description_exclude_gatt">Jangan soal profil Bluetooth dari jenis klien \'Generic Attribute\'
-        (GATT).
-    </string>
+    <string name="description_exclude_gattserver">Jangan soal profil Bluetooth dari jenis pelayan \'Generic Attribute\' (GATT).</string>
+    <string name="description_exclude_gatt">Jangan soal profil Bluetooth dari jenis klien \'Generic Attribute\' (GATT).</string>
     <string name="label_volumes">Volum</string>
     <string name="label_notification_volume">Volum notifikasi</string>
-    <string name="description_notification_volume">Tidak semua peranti menyokong tetapan volum notifikasi berasingan.
-    </string>
+    <string name="description_notification_volume">Tidak semua peranti menyokong tetapan volum notifikasi berasingan.</string>
     <string name="description_waiting_for_devicex">Tunggu %s untuk penyelesaian sambungan</string>
     <string name="action_undo">Batal buat</string>
     <string name="label_speaker_autosave">Volum autosimpan</string>
-    <string name="description_speaker_autosave">Kemasukan \"Pembesar Suara Peranti\", yang mana bertanggungjawab pada
-        volum lalai, mengemas kini dengan sendirinya bila peranti Bluetooth bersambung. Nota: Ini tidak berlaku pada
-        semua peranti.
-    </string>
+    <string name="description_speaker_autosave">Kemasukan \"Pembesar Suara Peranti\", yang mana bertanggungjawab pada volum lalai, mengemas kini dengan sendirinya bila peranti Bluetooth bersambung. Nota: Ini tidak berlaku pada semua peranti.</string>
     <string name="action_show">Tunjuk</string>
     <string name="action_dismiss">Bubar</string>
-    <string name="battery_optimizations_issue_description">Pengoptimuman bateri boleh didayakan bagi apl ini dan dapat
-        mencegahnya dari menerima aktiviti Bluetooth. Pertimbang untuk nyahdayakan pengoptimuman jika anda mengalami
-        isu.
-    </string>
+    <string name="battery_optimizations_issue_description">Pengoptimuman bateri boleh didayakan bagi apl ini dan dapat mencegahnya dari menerima aktiviti Bluetooth. Pertimbang untuk nyahdayakan pengoptimuman jika anda mengalami isu.</string>
+    <string name="label_monitoring_duration">Mengawasi durasi</string>
+    <string name="description_monitoring_duration">Satu durasi dalam milisaat, setelah pelarasan dilakukan, semasa mana perubahan volum selanjutnya akan disekat.</string>
+    <string name="label_volume_lock">Kunci volum</string>
+    <string name="description_volume_lock">Sebarang perubahan volum yang tidak dilakukan melalui apl ini akan dikembalikan sementara peranti ini dihubungkan.</string>
+    <string name="label_bluetooth_settings">Tetapan bluetooth</string>
 </resources>

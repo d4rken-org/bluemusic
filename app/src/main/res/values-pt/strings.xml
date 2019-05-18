@@ -5,7 +5,6 @@
     <string name="description_check_out_my_apps">Consulte a minhas outras aplicações!</string>
     <string name="label_settings">Definições</string>
     <string name="label_about">Acerca</string>
-    <string name="label_gplus">G+</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Site</string>
     <string name="label_gplay">Google Play</string>
@@ -13,21 +12,13 @@
     <string name="label_bug_reports">Relatórios de erros</string>
     <string name="description_bug_reports">Reporte automático de erros e problemas.</string>
     <string name="label_app_enabled">Aplicação ativa</string>
-    <string name="description_app_enabled">Alterna a capacidade da aplicação reagir aos eventos de volume e de
-        bluetooth.
-    </string>
+    <string name="description_app_enabled">Alterna a capacidade da aplicação reagir aos eventos de volume e de bluetooth.</string>
     <string name="label_visible_volume_adjustments">Ajustementos visíveis</string>
-    <string name="description_visible_volume_adjustments">Mostra a janela de volume do sistema enquanto a aplicação
-        estiver a fazer as alterações.
-    </string>
+    <string name="description_visible_volume_adjustments">Mostra a janela de volume do sistema enquanto a aplicação estiver a fazer as alterações.</string>
     <string name="label_volume_listener">Observar alterações</string>
-    <string name="description_volume_listener">Manter atividade enquanto um dispositivo é conectado e guardar alterações
-        de volume não criadas por esta aplicação.
-    </string>
+    <string name="description_volume_listener">Manter atividade enquanto um dispositivo é conectado e guardar alterações de volume não criadas por esta aplicação.</string>
     <string name="label_autoplay_keytype">Tipo de toque para reprodução automática</string>
-    <string name="desc_autoplay_keytype">O tipo de toque enviado quando um dispositivo de reprodução automática é
-        conectado.
-    </string>
+    <string name="desc_autoplay_keytype">O tipo de toque enviado quando um dispositivo de reprodução automática é conectado.</string>
     <string name="label_state_connected">Conectado</string>
     <string name="label_neverseen">Nunca</string>
     <string name="action_remove_device">Remover dispositivo</string>
@@ -45,58 +36,35 @@
     <string name="label_status_adjusting_volumes">Ajuste de volume</string>
     <string name="label_premium_version">Versão Premium</string>
     <string name="action_upgrade">Atualizar</string>
-    <string name="description_premium_required_additional_devices">Necessita da versão Premium para gerir mais
-        dispositivos.
-    </string>
-    <string name="description_premium_required_this_extra_option">Necessita da versão Premium para utilizar esta
-        opção.
-    </string>
-    <string name="description_premium_upgrade_explanation">Obtenha a versão Premium para ativar mais funcionalidades e
-        ajudar no desenvolvimento.
-    </string>
+    <string name="description_premium_required_additional_devices">Necessita da versão Premium para gerir mais dispositivos.</string>
+    <string name="description_premium_required_this_extra_option">Necessita da versão Premium para utilizar esta opção.</string>
+    <string name="description_premium_upgrade_explanation">Obtenha a versão Premium para ativar mais funcionalidades e ajudar no desenvolvimento.</string>
     <string name="label_premium_version_required">Necessita da versão Premium</string>
-    <string name="description_intro_purpose">Esta aplicação permite que o seu dispositivo memorize o volume dos
-        diferentes dispositivos Bluetooth.
-    </string>
-    <string name="description_intro_premium">Se gosta desta aplicação, considera a aquisição da versão Premium. Desta
-        forma, ajuda o seu desenvolvimento e obtém mais funcionalidades.
-    </string>
+    <string name="description_intro_purpose">Esta aplicação permite que o seu dispositivo memorize o volume dos diferentes dispositivos Bluetooth.</string>
+    <string name="description_intro_premium">Se gosta desta aplicação, considera a aquisição da versão Premium. Desta forma, ajuda o seu desenvolvimento e obtém mais funcionalidades.</string>
     <string name="description_intro_tap_the_button">Deve começar por adicionar o seu dispositivo.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth está desativado.</string>
     <string name="label_status_listening_for_changes">À espera das alterações de volume</string>
     <string name="action_exit">Sair</string>
     <string name="label_music_volume">Volume das músicas</string>
-    <string name="description_music_volume">Controla o volume das músicas e dos jogos quando este dispositivo é
-        conectado.
-    </string>
+    <string name="description_music_volume">Controla o volume das músicas e dos jogos quando este dispositivo é conectado.</string>
     <string name="label_call_volume">Volume das chamadas</string>
-    <string name="description_call_volume">Controla o volume que afeta as chamadas quando este dispositivo é
-        conectado.
-    </string>
+    <string name="description_call_volume">Controla o volume que afeta as chamadas quando este dispositivo é conectado.</string>
     <string name="label_autoplay">Reprodução automática</string>
     <string name="description_autoplay">Simular toque no Bluetooth remoto quando este dispositivo é conectado.</string>
     <string name="label_reaction_delay">Atraso de reação</string>
-    <string name="description_reaction_delay">O atraso (em milissegundos) até que esta aplicação reaja ao dispositivo.
-    </string>
+    <string name="description_reaction_delay">O atraso (em milissegundos) até que esta aplicação reaja ao dispositivo.</string>
     <string name="label_adjustment_delay">Atraso de ajustes</string>
-    <string name="description_adjustment_delay">O atraso (em milissegundos) entre cada ajuste de volume. Um atraso 0
-        implica a ativação imediata do volume quando este dispositivo é conectado.
-    </string>
+    <string name="description_adjustment_delay">O atraso (em milissegundos) entre cada ajuste de volume. Um atraso 0 implica a ativação imediata do volume quando este dispositivo é conectado.</string>
     <string name="label_rename_device">Renomear dispositivo</string>
     <string name="description_rename_device">Define um nome global para este dispositivo.</string>
     <string name="label_forget_device">Esquecer dispositivo</string>
-    <string name="description_forget_device">Remove o dispositivo da aplicação e elimina a sua configuração. Não remove
-        o emparelhamento.
-    </string>
+    <string name="description_forget_device">Remove o dispositivo da aplicação e elimina a sua configuração. Não remove o emparelhamento.</string>
     <string name="label_boot_restore">Restaurar ao iniciar</string>
-    <string name="description_boot_restore">Restaura o volume depois de iniciar/reiniciar o dispositivo se o dispositivo
-        Bluetooth estiver conectado.
-    </string>
+    <string name="description_boot_restore">Restaura o volume depois de iniciar/reiniciar o dispositivo se o dispositivo Bluetooth estiver conectado.</string>
     <string name="action_start">Iniciar</string>
     <string name="label_welcome">Bem-vindo</string>
-    <string name="description_intro_contact">Não hesite em me contactar se tiver questões ou ideias para o
-        desenvolvimento da funcionalidades.
-    </string>
+    <string name="description_intro_contact">Não hesite em me contactar se tiver questões ou ideias para o desenvolvimento da funcionalidades.</string>
     <string name="label_translation">Tradução</string>
     <string name="description_help_translate">Ajude-me a traduzir esta aplicação para vários idiomas.</string>
     <string name="label_device_speaker">Altifalante do dispositivo</string>
@@ -111,28 +79,18 @@
     <string name="label_licenses">Licenças</string>
     <string name="label_ring_volume">Volume de toques</string>
     <string name="description_ring_volume">Controla o volume que afeta o toque das chamadas.</string>
-    <string name="description_ring_volume_additional_permission">São necessárias permissões extra para alterar o volume
-        do toque.
-    </string>
+    <string name="description_ring_volume_additional_permission">São necessárias permissões extra para alterar o volume do toque.</string>
     <string name="label_missing_permissions">Permissões em falta</string>
     <string name="action_grant">Conceder</string>
     <string name="label_advanced">Avançado</string>
     <string name="label_exclude_health">Excluir perfis de saúde</string>
-    <string name="description_exclude_health">Alguns dispositivos bloqueiam aos procurar pelos perfis \'Health Device\'
-        (HDP, 0x1400).
-    </string>
+    <string name="description_exclude_health">Alguns dispositivos bloqueiam aos procurar pelos perfis \'Health Device\' (HDP, 0x1400).</string>
     <string name="label_exclude_gattserver">Excluir perfis de servidores GATT</string>
     <string name="label_exclude_gatt">Excluir perfis GATT</string>
-    <string name="description_exclude_gattserver">Não analisar perfis Bluetooth dos servidores do tipo \'Generic
-        Attribute\' (GATT).
-    </string>
-    <string name="description_exclude_gatt">Não analisar perfis Bluetooth dos clientes do tipo \'Generic Attribute\'
-        (GATT).
-    </string>
+    <string name="description_exclude_gattserver">Não analisar perfis Bluetooth dos servidores do tipo \'Generic Attribute\' (GATT).</string>
+    <string name="description_exclude_gatt">Não analisar perfis Bluetooth dos clientes do tipo \'Generic Attribute\' (GATT).</string>
     <string name="label_volumes">Volumes</string>
     <string name="label_notification_volume">Volume das notificações</string>
-    <string name="description_notification_volume">Nem todos os dispositivos possuem suporte à definição autónoma de
-        volume.
-    </string>
+    <string name="description_notification_volume">Nem todos os dispositivos possuem suporte à definição autónoma de volume.</string>
     <string name="description_waiting_for_devicex">À espera de %s para completar a conexão</string>
 </resources>

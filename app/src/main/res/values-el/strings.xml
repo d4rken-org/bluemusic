@@ -5,7 +5,6 @@
     <string name="description_check_out_my_apps">Δείτε και τις άλλες εφαρμογές μου!</string>
     <string name="label_settings">Ρυθμίσεις</string>
     <string name="label_about">Σχετικά με</string>
-    <string name="label_gplus">G+</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Ιστοσελίδα</string>
     <string name="label_gplay">Google Play</string>
@@ -13,21 +12,13 @@
     <string name="label_bug_reports">Αναφορές σφαλμάτων</string>
     <string name="description_bug_reports">Αυτόματη αναφορά σφαλμάτων και απρόσμενων κλεισιμάτων εφαρμογής.</string>
     <string name="label_app_enabled">Ενεργοποίηση Εφαρμογής</string>
-    <string name="description_app_enabled">Εναλλάσσει την ικανότητα της εφαρμογής να αντιδράσει στις εκδηλώσεις έντασης
-        και Bluetooth.
-    </string>
+    <string name="description_app_enabled">Εναλλάσσει την ικανότητα της εφαρμογής να αντιδράσει στις εκδηλώσεις έντασης και Bluetooth.</string>
     <string name="label_visible_volume_adjustments">Ορατές προσαρμογές</string>
-    <string name="description_visible_volume_adjustments">Εμφάνιση του παραθύρου ήχου του συστήματος, ενώ αυτή η
-        εφαρμογή κάνει τις προσαρμογές.
-    </string>
+    <string name="description_visible_volume_adjustments">Εμφάνιση του παραθύρου ήχου του συστήματος, ενώ αυτή η εφαρμογή κάνει τις προσαρμογές.</string>
     <string name="label_volume_listener">Παρατήρηση αλλαγών</string>
-    <string name="description_volume_listener">Η εφαρμογή παραμένει ενεργή όσο η συσκευή είναι συνδεδεμένη και
-        αποθηκεύει τις αλλαγές εντάσεων του ήχου που δεν έχουν γίνει από αυτή την εφαρμογή.
-    </string>
+    <string name="description_volume_listener">Η εφαρμογή παραμένει ενεργή όσο η συσκευή είναι συνδεδεμένη και αποθηκεύει τις αλλαγές εντάσεων του ήχου που δεν έχουν γίνει από αυτή την εφαρμογή.</string>
     <string name="label_autoplay_keytype">Τύπος κλειδιού αυτόματης αναπαραγωγής</string>
-    <string name="desc_autoplay_keytype">Ο τύπος κλειδιού που στέλνεται όταν μια συσκευή αυτόματης αναπαραγωγής
-        συνδέεται.
-    </string>
+    <string name="desc_autoplay_keytype">Ο τύπος κλειδιού που στέλνεται όταν μια συσκευή αυτόματης αναπαραγωγής συνδέεται.</string>
     <string name="label_state_connected">Συνδέθηκε</string>
     <string name="label_neverseen">Ποτέ δεν συνδέθηκε</string>
     <string name="action_remove_device">Αφαίρεση συσκευής</string>
@@ -45,64 +36,37 @@
     <string name="label_status_adjusting_volumes">Ρύθμιση εντάσεων</string>
     <string name="label_premium_version">Premium έκδοση</string>
     <string name="action_upgrade">Αναβάθμιση</string>
-    <string name="description_premium_required_additional_devices">Η διαχείριση πρόσθετων συσκευών απαιτεί την έκδοση
-        Premium.
-    </string>
-    <string name="description_premium_required_this_extra_option">Αυτή η επιπλέον επιλογή απαιτεί την έκδοση Premium της
-        εφαρμογής.
-    </string>
-    <string name="description_premium_upgrade_explanation">Αποκτήστε την Premium έκδοση για να ενεργοποιήσετε πρόσθετες
-        λειτουργίες και να υποστηρίξετε την ανάπτυξη της εφαρμογής.
-    </string>
+    <string name="description_premium_required_additional_devices">Η διαχείριση πρόσθετων συσκευών απαιτεί την έκδοση Premium.</string>
+    <string name="description_premium_required_this_extra_option">Αυτή η επιπλέον επιλογή απαιτεί την έκδοση Premium της εφαρμογής.</string>
+    <string name="description_premium_upgrade_explanation">Αποκτήστε την Premium έκδοση για να ενεργοποιήσετε πρόσθετες λειτουργίες και να υποστηρίξετε την ανάπτυξη της εφαρμογής.</string>
     <string name="label_premium_version_required">Απαιτείται η Premium έκδοση</string>
-    <string name="description_intro_purpose">Αυτή η εφαρμογή επιτρέπει στην συσκευή Android σας να θυμάται την ένταση
-        όλων των διαφορετικών συσκευών Bluetooth.
-    </string>
-    <string name="description_intro_premium">Αν σας αρέσει αυτή η εφαρμογή, εξετάστε την αναβάθμιση στην έκδοση premium.
-        Υποστηρίζει την ανάπτυξή της και σας φέρνει μερικά επιπλέον χαρακτηριστικά.
-    </string>
+    <string name="description_intro_purpose">Αυτή η εφαρμογή επιτρέπει στην συσκευή Android σας να θυμάται την ένταση όλων των διαφορετικών συσκευών Bluetooth.</string>
+    <string name="description_intro_premium">Αν σας αρέσει αυτή η εφαρμογή, εξετάστε την αναβάθμιση στην έκδοση premium. Υποστηρίζει την ανάπτυξή της και σας φέρνει μερικά επιπλέον χαρακτηριστικά.</string>
     <string name="description_intro_tap_the_button">Ξεκινήστε προσθέτοντας την πρώτη συσκευή σας.</string>
     <string name="description_bluetooth_is_disabled">Το Bluetooth είναι απενεργοποιημένο.</string>
     <string name="label_status_listening_for_changes">Ακρόαση για μεταβολές του ήχου</string>
     <string name="action_exit">Έξοδος</string>
     <string name="label_music_volume">Ένταση μουσικής</string>
-    <string name="description_music_volume">Ελέγξτε την ένταση η οποία επηρεάζει την μουσική και τα παιχνίδια όταν αυτή
-        η συσκευή συνδέεται.
-    </string>
+    <string name="description_music_volume">Ελέγξτε την ένταση η οποία επηρεάζει την μουσική και τα παιχνίδια όταν αυτή η συσκευή συνδέεται.</string>
     <string name="label_call_volume">Ένταση ήχου κλήσεων</string>
-    <string name="description_call_volume">Ελέγξτε την ένταση η οποία επηρεάζει τις κλήσεις όταν αυτή η συσκευή
-        συνδέεται.
-    </string>
+    <string name="description_call_volume">Ελέγξτε την ένταση η οποία επηρεάζει τις κλήσεις όταν αυτή η συσκευή συνδέεται.</string>
     <string name="label_autoplay">Αυτόματη αναπαραγωγή</string>
-    <string name="description_autoplay">Προσομοιώστε το πάτημα κουμπιού αναπαραγωγής σε ένα απομακρυσμένο bluetooth όταν
-        συνδέεται αυτή η συσκευή.
-    </string>
+    <string name="description_autoplay">Προσομοιώστε το πάτημα κουμπιού αναπαραγωγής σε ένα απομακρυσμένο bluetooth όταν συνδέεται αυτή η συσκευή.</string>
     <string name="label_reaction_delay">Καθυστέρηση αντίδρασης</string>
-    <string name="description_reaction_delay">Η καθυστέρηση σε χιλιοστά του δευτερολέπτου μέχρι αυτή η εφαρμογή να
-        αντιδράσει σε αυτήν τη συσκευή.
-    </string>
+    <string name="description_reaction_delay">Η καθυστέρηση σε χιλιοστά του δευτερολέπτου μέχρι αυτή η εφαρμογή να αντιδράσει σε αυτήν τη συσκευή.</string>
     <string name="label_adjustment_delay">Καθυστέρηση προσαρμογής</string>
-    <string name="description_adjustment_delay">Η καθυστέρηση σε χιλιοστά του δευτερολέπτου μεταξύ κάθε ρύθμισης
-        έντασης. Μια καθυστέρηση 0ms σημαίνει άμεση ρύθμιση της έντασης, όταν αυτή η συσκευή συνδέεται.
-    </string>
+    <string name="description_adjustment_delay">Η καθυστέρηση σε χιλιοστά του δευτερολέπτου μεταξύ κάθε ρύθμισης έντασης. Μια καθυστέρηση 0ms σημαίνει άμεση ρύθμιση της έντασης, όταν αυτή η συσκευή συνδέεται.</string>
     <string name="label_rename_device">Μετονομασία συσκευής</string>
     <string name="description_rename_device">Ορίζει ένα ευρο-συστημικό ψευδώνυμο για αυτήν τη συσκευή.</string>
     <string name="label_forget_device">Διαγραφή συσκευής</string>
-    <string name="description_forget_device">Αφαιρεί την συσκευή από αυτή την εφαρμογή και διαγράφει τις ρυθμίσεις
-        παραμέτρων. Αυτό δεν καταργεί τη ζεύξη της συσκευής.
-    </string>
+    <string name="description_forget_device">Αφαιρεί την συσκευή από αυτή την εφαρμογή και διαγράφει τις ρυθμίσεις παραμέτρων. Αυτό δεν καταργεί τη ζεύξη της συσκευής.</string>
     <string name="label_boot_restore">Επαναφορά κατά την εκκίνηση</string>
-    <string name="description_boot_restore">Αποκατάσταση της έντασης μετά την εκκίνηση/επανεκκίνηση αν είναι συνδεδεμένη
-        μια συσκευή Bluetooth.
-    </string>
+    <string name="description_boot_restore">Αποκατάσταση της έντασης μετά την εκκίνηση/επανεκκίνηση αν είναι συνδεδεμένη μια συσκευή Bluetooth.</string>
     <string name="action_start">Έναρξη</string>
     <string name="label_welcome">Καλώς ήρθατε</string>
-    <string name="description_intro_contact">Μην διστάσετε να επικοινωνήσετε μαζί μου, αν έχετε απορίες ή ακόμα και μια
-        ιδέα για ένα νέο χαρακτηριστικό γνώρισμα.
-    </string>
+    <string name="description_intro_contact">Μην διστάσετε να επικοινωνήσετε μαζί μου, αν έχετε απορίες ή ακόμα και μια ιδέα για ένα νέο χαρακτηριστικό γνώρισμα.</string>
     <string name="label_translation">Μετάφραση</string>
-    <string name="description_help_translate">Βοηθήστε με να γίνει αυτή η εφαρμογή διαθέσιμη και σε άλλες γλώσσες.
-    </string>
+    <string name="description_help_translate">Βοηθήστε με να γίνει αυτή η εφαρμογή διαθέσιμη και σε άλλες γλώσσες.</string>
     <string name="label_device_speaker">Ηχείο συσκευής</string>
     <string name="label_launch_app">Εκκίνηση εφαρμογής</string>
     <string name="description_launch_app">Εκκινήστε μια εφαρμογή όταν συνδέεται αυτή η συσκευή.</string>
@@ -115,37 +79,25 @@
     <string name="label_licenses">Άδειες Xρήσης</string>
     <string name="label_ring_volume">Ένταση ήχου κλήσης</string>
     <string name="description_ring_volume">Ελέγξτε την ένταση που επηρεάζει τον ήχο κλήσης σας.</string>
-    <string name="description_ring_volume_additional_permission">Πρόσθετα δικαιώματα είναι αναγκαία για να αλλάξετε την
-        ένταση του ήχου κλήσης.
-    </string>
+    <string name="description_ring_volume_additional_permission">Πρόσθετα δικαιώματα είναι αναγκαία για να αλλάξετε την ένταση του ήχου κλήσης.</string>
     <string name="label_missing_permissions">Ελλειπή δικαιώματα</string>
     <string name="action_grant">Χορήγηση</string>
     <string name="label_advanced">Προχωρημένα</string>
     <string name="label_exclude_health">Παράκαμψη προφίλ υγείας</string>
-    <string name="description_exclude_health">Ορισμένες συσκευές Android κολλάνε όταν ψάχνουν για τα προφίλ Bluetooth
-        «Συσκευή Υγείας» (HDP, 0x1400).
-    </string>
+    <string name="description_exclude_health">Ορισμένες συσκευές Android κολλάνε όταν ψάχνουν για τα προφίλ Bluetooth «Συσκευή Υγείας» (HDP, 0x1400).</string>
     <string name="label_exclude_gattserver">Παράκαμψη προφίλ GATT server</string>
     <string name="label_exclude_gatt">Παράκαμψη προφίλ GATT</string>
-    <string name="description_exclude_gattserver">Μην τρέξετε ερώτημα για προφίλ Bluetooth τύπου \'Generic Attribute\'
-        (GATT) server.
-    </string>
-    <string name="description_exclude_gatt">Μην τρέξετε ερώτημα για προφίλ Bluetooth τύπου \'Generic Attribute\' (GATT)
-        client.
-    </string>
+    <string name="description_exclude_gattserver">Μην τρέξετε ερώτημα για προφίλ Bluetooth τύπου \'Generic Attribute\' (GATT) server.</string>
+    <string name="description_exclude_gatt">Μην τρέξετε ερώτημα για προφίλ Bluetooth τύπου \'Generic Attribute\' (GATT) client.</string>
     <string name="label_volumes">Εντάσεις</string>
     <string name="label_notification_volume">Ένταση ήχου ειδοποίησης</string>
-    <string name="description_notification_volume">Δεν υποστηρίζουν όλες οι συσκευές μια ξεχωριστή ρύθμιση για τον ήχο
-        ειδοποιήσεων.
-    </string>
+    <string name="description_notification_volume">Δεν υποστηρίζουν όλες οι συσκευές μια ξεχωριστή ρύθμιση για τον ήχο ειδοποιήσεων.</string>
     <string name="description_waiting_for_devicex">Αναμονή του %s για να ολοκληρωθεί η σύνδεση</string>
     <string name="action_undo">Αναίρεση</string>
     <string name="label_speaker_autosave">Αυτόματη αποθήκευση έντασης</string>
     <string name="description_speaker_autosave">Η καταχώρηση \"Ακουστικό Συσκευής\", η οποία είναι υπεύθυνη για προεπιλεγμένες εντάσεις, ενημερώνεται αυτόματα όταν συνδέεται μια συσκευή Bluetooth. Σημείωση: Αυτό δεν λειτουργεί σε όλες τις συσκευές.</string>
     <string name="action_show">Εμφάνιση</string>
     <string name="action_dismiss">Παράβλεψη</string>
-    <string name="battery_optimizations_issue_description">Οι βελτιστοποήσεις μπαταρίας είναι ενεργοποιημένες για αυτήν
-        την εφαρμογή και ενδέχεται να αποτρέψουν την λήψη δεδομένων Bluetooth.
-        Παρακαλώ απενεργοποιήστε τις βελτιστοποιήσεις αυτές, εάν αντιμετωπίζετε προβλήματα.
-    </string>
+    <string name="battery_optimizations_issue_description">"Οι βελτιστοποήσεις μπαταρίας είναι ενεργοποιημένες για αυτήν την εφαρμογή και ενδέχεται να αποτρέψουν την λήψη δεδομένων Bluetooth.
+Παρακαλώ απενεργοποιήστε τις βελτιστοποιήσεις αυτές, εάν αντιμετωπίζετε προβλήματα."</string>
 </resources>

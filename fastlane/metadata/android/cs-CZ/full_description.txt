@@ -3,8 +3,8 @@ Hudbu i hlasitost hovoru lze nakonfigurovat pro každé zařízení.
 Načasování a konfiguraci pro každé zařízení Bluetooth lze individuálně upravit.
 
 Vysvětlení oprávnění:
-• "Internet" pro hlášení chyb.
-• "Bluetooth" pro práci se zařízeními Bluetooth.
-• "Změny nastavení zvuku" pro změnu hlasitosti.
-• "Dokončení spuštění" obnovení hlasitosti po restartování.
-• "WAKE_LOCK" k opravě chyb na zařízeních Samsung, kde je toto oprávnění nezbytné, aby se zabránilo chybám.
+• „Internet“ pro hlášení chyb.
+• „Bluetooth“ pro práci se zařízeními Bluetooth.
+• „Změny nastavení zvuku“ pro změnu hlasitosti.
+• „Dokončení spuštění“ pro obnovení hlasitosti po restartování.
+• „WAKE_LOCK“ pro opravu chyb na zařízeních Samsung, kde je toto oprávnění nezbytné, aby se zabránilo chybám.

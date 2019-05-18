@@ -5,7 +5,6 @@
     <string name="description_check_out_my_apps">मेरे अन्य एप्लिकेशन देखें!</string>
     <string name="label_settings">सेटिंग्स</string>
     <string name="label_about">बारे में</string>
-    <string name="label_gplus">G+</string>
     <string name="label_twitter">ट्विटर</string>
     <string name="label_website">वेबसाइट</string>
     <string name="label_gplay">गूगल प्ले</string>
@@ -42,9 +41,7 @@
     <string name="description_premium_upgrade_explanation">अतिरिक्त सुविधाओं को सक्षम करने और विकास का समर्थन करने के लिए प्रीमियम संस्करण प्राप्त करें।</string>
     <string name="label_premium_version_required">प्रीमियम संस्करण की आवश्यकता है</string>
     <string name="description_intro_purpose">यह ऐप आपके एंड्रॉइड डिवाइस को विभिन्न ब्लूटूथ उपकरणों की मात्रा याद रखने की अनुमति देता है।</string>
-    <string name="description_intro_premium">यदि आप इस एप्लिकेशन को पसंद करते हैं, तो प्रीमियम संस्करण में अपग्रेड करने
-        पर विचार करें। यह विकास का समर्थन करता है और आपको कुछ अतिरिक्त सुविधाएं प्रदान करता है।
-    </string>
+    <string name="description_intro_premium">यदि आप इस एप्लिकेशन को पसंद करते हैं, तो प्रीमियम संस्करण में अपग्रेड करने पर विचार करें। यह विकास का समर्थन करता है और आपको कुछ अतिरिक्त सुविधाएं प्रदान करता है।</string>
     <string name="description_intro_tap_the_button">अपना पहला डिवाइस जोड़कर प्रारंभ करें।</string>
     <string name="description_bluetooth_is_disabled">ब्लूटूथ अक्षम है।</string>
     <string name="label_status_listening_for_changes">वॉल्यूम परिवर्तन के लिए सुन रहा है</string>
@@ -101,8 +98,5 @@
     <string name="description_speaker_autosave">\"डिवाइस स्पीकर\" प्रविष्टि, जो डिफ़ॉल्ट वॉल्यूम के लिए ज़िंमेदार है, किसी ब्लूटूथ डिवाइस के कनेक्ट होने पर स्वयं अद्यतन करता है । नोट: यह सभी डिवाइस पर काम नहीं करता है ।</string>
     <string name="action_show">दिखाएँ</string>
     <string name="action_dismiss">खारिज करें</string>
-    <string name="battery_optimizations_issue_description">बैटरी अनुकूलन इस एप्लिकेशन के लिए सक्षम हैं और ब्लूटूथ घटनाओं
-        प्राप्त करने से इसे रोक सकते हैं । यदि आप समस्याओं का सामना कर रहे हैं, तो ऑप्टिमाइज़ेशन अक्षम करने पर विचार
-        करें ।
-    </string>
+    <string name="battery_optimizations_issue_description">बैटरी अनुकूलन इस एप्लिकेशन के लिए सक्षम हैं और ब्लूटूथ घटनाओं प्राप्त करने से इसे रोक सकते हैं । यदि आप समस्याओं का सामना कर रहे हैं, तो ऑप्टिमाइज़ेशन अक्षम करने पर विचार करें ।</string>
 </resources>

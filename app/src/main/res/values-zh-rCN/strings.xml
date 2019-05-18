@@ -5,7 +5,7 @@
     <string name="description_check_out_my_apps">看看我的其他应用程序吧:-D！</string>
     <string name="label_settings">设置</string>
     <string name="label_about">关于</string>
-    <string name="label_gplus">Google+</string>
+    <string name="label_discord">Discord</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">网站</string>
     <string name="label_gplay">Google Play</string>
@@ -100,4 +100,9 @@
     <string name="action_show">显示</string>
     <string name="action_dismiss">关闭</string>
     <string name="battery_optimizations_issue_description">此应用程序启用了电池优化，可以防止它接收蓝牙事件。如果遇到问题，请考虑禁用优化。</string>
+    <string name="label_monitoring_duration">监控持续</string>
+    <string name="description_monitoring_duration">执行调整后，持续监测多久（毫秒），期间阻止音量变化。</string>
+    <string name="label_volume_lock">音量锁定</string>
+    <string name="description_volume_lock">此设备连接期间，任何此应用外执行的音量变更将被还原。</string>
+    <string name="label_bluetooth_settings">蓝牙设置</string>
 </resources>

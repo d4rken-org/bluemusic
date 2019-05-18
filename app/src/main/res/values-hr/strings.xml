@@ -5,7 +5,6 @@
     <string name="description_check_out_my_apps">Pogledajte moje ostale aplikacije!</string>
     <string name="label_settings">Postavke</string>
     <string name="label_about">O aplikaciji</string>
-    <string name="label_gplus">G+</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Web stranica</string>
     <string name="label_gplay">Google Play</string>
@@ -13,21 +12,13 @@
     <string name="label_bug_reports">Izvješća o pogreškama</string>
     <string name="description_bug_reports">Automatsko izvješćivanje o pogreškama i padovima.</string>
     <string name="label_app_enabled">Aplikacija je omogućena</string>
-    <string name="description_app_enabled">Uključuje/isključuje sposobnost aplikacije da reagira na glasnoću i Bluetooth
-        događaje.
-    </string>
+    <string name="description_app_enabled">Uključuje/isključuje sposobnost aplikacije da reagira na glasnoću i Bluetooth događaje.</string>
     <string name="label_visible_volume_adjustments">Vidljive prilagodbe</string>
-    <string name="description_visible_volume_adjustments">Prikažite prozor glasnoće sustava dok ova aplikacija izvršava
-        izmjene.
-    </string>
+    <string name="description_visible_volume_adjustments">Prikažite prozor glasnoće sustava dok ova aplikacija izvršava izmjene.</string>
     <string name="label_volume_listener">Promatraj promjene</string>
-    <string name="description_volume_listener">Ostaje aktivan dok je uređaj povezan i sprema promjene glasnoće koje nisu
-        uzrokovane ovom aplikacijom.
-    </string>
+    <string name="description_volume_listener">Ostaje aktivan dok je uređaj povezan i sprema promjene glasnoće koje nisu uzrokovane ovom aplikacijom.</string>
     <string name="label_autoplay_keytype">Tip ključa automatske reprodukcije</string>
-    <string name="desc_autoplay_keytype">Ključ koji je poslan kada se poveže uređaj sa omogućenom automatskom
-        reprodukcijom.
-    </string>
+    <string name="desc_autoplay_keytype">Ključ koji je poslan kada se poveže uređaj sa omogućenom automatskom reprodukcijom.</string>
     <string name="label_state_connected">Povezano</string>
     <string name="label_neverseen">Nikad viđen</string>
     <string name="action_remove_device">Ukloni uređaj</string>
@@ -45,29 +36,18 @@
     <string name="label_status_adjusting_volumes">Podešavanje glasnoća</string>
     <string name="label_premium_version">Premium verzija</string>
     <string name="action_upgrade">Nadogradi</string>
-    <string name="description_premium_required_additional_devices">Upravljanje dodatnim uređajima zahtijeva premium
-        verziju.
-    </string>
-    <string name="description_premium_required_this_extra_option">Ova dodatna opcija zahtijeva premium verziju ove
-        aplikacije.
-    </string>
-    <string name="description_premium_upgrade_explanation">Nabavite premium verziju kako bi omogućili dodatne značajke i
-        podržali razvoj.
-    </string>
+    <string name="description_premium_required_additional_devices">Upravljanje dodatnim uređajima zahtijeva premium verziju.</string>
+    <string name="description_premium_required_this_extra_option">Ova dodatna opcija zahtijeva premium verziju ove aplikacije.</string>
+    <string name="description_premium_upgrade_explanation">Nabavite premium verziju kako bi omogućili dodatne značajke i podržali razvoj.</string>
     <string name="label_premium_version_required">Potrebna je premium verzija</string>
-    <string name="description_intro_purpose">Ova aplikacija dopušta Vašem Android uređaju da zapamti glasnoću različitih
-        Bluetooth uređaja.
-    </string>
-    <string name="description_intro_premium">Ako Vam se aplikacija sviđa, razmislite o nadogradnji na premium verziju.
-        Ona podržava razvoj i omogućava Vam par dodatnih značajki.
-    </string>
+    <string name="description_intro_purpose">Ova aplikacija dopušta Vašem Android uređaju da zapamti glasnoću različitih Bluetooth uređaja.</string>
+    <string name="description_intro_premium">Ako Vam se aplikacija sviđa, razmislite o nadogradnji na premium verziju. Ona podržava razvoj i omogućava Vam par dodatnih značajki.</string>
     <string name="description_intro_tap_the_button">Započnite dodavanjem svog prvog uređaja.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth je onemogućen.</string>
     <string name="label_status_listening_for_changes">Slušanje promjena glasnoće</string>
     <string name="action_exit">Izlaz</string>
     <string name="label_music_volume">Glasnoća glazbe</string>
-    <string name="description_music_volume">Kontrolirajte glasnoću koja utječe na glazbu i igre kada se uređaj poveže.
-    </string>
+    <string name="description_music_volume">Kontrolirajte glasnoću koja utječe na glazbu i igre kada se uređaj poveže.</string>
     <string name="label_call_volume">Glasnoća poziva</string>
     <string name="description_call_volume">Kontrolirajte glasnoću koja utječe na pozive kada se uređaj poveže.</string>
     <string name="label_autoplay">Automatska reprodukcija</string>
@@ -75,23 +55,16 @@
     <string name="label_reaction_delay">Odgoda reakcije</string>
     <string name="description_reaction_delay">Odgoda u milisekundama dok ova aplikacija reagira na ovaj uređaj.</string>
     <string name="label_adjustment_delay">Odgoda prilagodbe</string>
-    <string name="description_adjustment_delay">Odgoda u milisekundama između svake prilagodbe glasnoće. Odgoda od 0ms
-        znači trenutno postavljanje glasnoće kada se uređaj poveže.
-    </string>
+    <string name="description_adjustment_delay">Odgoda u milisekundama između svake prilagodbe glasnoće. Odgoda od 0ms znači trenutno postavljanje glasnoće kada se uređaj poveže.</string>
     <string name="label_rename_device">Preimenuj uređaj</string>
     <string name="description_rename_device">Postavlja pseudonim sustava za ovaj uređaj.</string>
     <string name="label_forget_device">Zaboravi uređaj</string>
-    <string name="description_forget_device">Uklanja ovaj uređaj iz ove aplikacije i briše njenu prilagodbu. Ovo neće
-        poništiti uparivanje uređaja.
-    </string>
+    <string name="description_forget_device">Uklanja ovaj uređaj iz ove aplikacije i briše njenu prilagodbu. Ovo neće poništiti uparivanje uređaja.</string>
     <string name="label_boot_restore">Vrati na ponovnom pokretanju</string>
-    <string name="description_boot_restore">Vrati glasnoću nakon ponovnog pokretanja ako je Bluetooth uređaj povezan.
-    </string>
+    <string name="description_boot_restore">Vrati glasnoću nakon ponovnog pokretanja ako je Bluetooth uređaj povezan.</string>
     <string name="action_start">Započni</string>
     <string name="label_welcome">Dobrodošli</string>
-    <string name="description_intro_contact">Nemojte se ustručavati, kontaktirajte me ako imate pitanja ili čak ideja za
-        nove značajke.
-    </string>
+    <string name="description_intro_contact">Nemojte se ustručavati, kontaktirajte me ako imate pitanja ili čak ideja za nove značajke.</string>
     <string name="label_translation">Prijevod</string>
     <string name="description_help_translate">Pomozite mi prevesti ovu aplikaciju na druge jezike.</string>
     <string name="label_device_speaker">Zvučnik uređaja</string>
@@ -106,9 +79,7 @@
     <string name="label_licenses">Licence</string>
     <string name="label_ring_volume">Glasnoća zvona</string>
     <string name="description_ring_volume">Kontrolirajte glasnoću koja utječe na zvuk zvona.</string>
-    <string name="description_ring_volume_additional_permission">Dodatna dopuštenja su potrebne za promjenu glasnoće
-        zvona.
-    </string>
+    <string name="description_ring_volume_additional_permission">Dodatna dopuštenja su potrebne za promjenu glasnoće zvona.</string>
     <string name="label_missing_permissions">Dopuštenja koja nedostaju</string>
     <string name="action_grant">Dopusti</string>
     <string name="label_advanced">Napredno</string>
@@ -116,12 +87,8 @@
     <string name="description_exclude_health">Neki Android uređaji se smrznu prilikom pretraživanja Bluetooth profila \"Health Device\" (HDP, 0x1400).</string>
     <string name="label_exclude_gattserver">Izuzmi profile GATT poslužitelja</string>
     <string name="label_exclude_gatt">Izuzmi GATT profile</string>
-    <string name="description_exclude_gattserver">Nemoj tražiti Bluetooth profile vrste \"Generic Attribute\" (GATT)
-        poslužitelj.
-    </string>
-    <string name="description_exclude_gatt">Nemoj tražiti Bluetooth profile vrste \"Generic Attribute\" (GATT)
-        klijent.
-    </string>
+    <string name="description_exclude_gattserver">Nemoj tražiti Bluetooth profile vrste \"Generic Attribute\" (GATT) poslužitelj.</string>
+    <string name="description_exclude_gatt">Nemoj tražiti Bluetooth profile vrste \"Generic Attribute\" (GATT) klijent.</string>
     <string name="label_volumes">Glasnoća</string>
     <string name="label_notification_volume">Glasnoća obavijesti</string>
     <string name="description_notification_volume">Ne podržavaju svi uređaji zasebnu postavku glasnoće obavijesti.</string>
@@ -131,7 +98,5 @@
     <string name="description_speaker_autosave">Unos \"Zvučnik uređaja\", koji je zadužen za zadane glasnoće zvuka, samostalno se ažurira tijekom spajanja Bluetooth uređaja. Napomena: ovo ne radi na svim uređajima.</string>
     <string name="action_show">Prikaži</string>
     <string name="action_dismiss">Odbaci</string>
-    <string name="battery_optimizations_issue_description">Optimizacija baterije je omogućena za ovu aplikaciju i može
-        ju spriječiti u primanju Bluetooth događaja. Razmislite o onemogućavanju ako imate problema.
-    </string>
+    <string name="battery_optimizations_issue_description">Optimizacija baterije je omogućena za ovu aplikaciju i može ju spriječiti u primanju Bluetooth događaja. Razmislite o onemogućavanju ako imate problema.</string>
 </resources>

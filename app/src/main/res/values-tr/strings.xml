@@ -5,13 +5,13 @@
     <string name="description_check_out_my_apps">Diğer uygulamalarıma göz atın!</string>
     <string name="label_settings">Ayarlar</string>
     <string name="label_about">Hakkında</string>
-    <string name="label_gplus">G+</string>
+    <string name="label_discord">Discord</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">İnternet Sitesi</string>
     <string name="label_gplay">Google Play</string>
-    <string name="label_email">Email</string>
-    <string name="label_bug_reports">Hata raporu</string>
-    <string name="description_bug_reports">Hata raporlarını otomatik gönder.</string>
+    <string name="label_email">E-posta</string>
+    <string name="label_bug_reports">Hata raporları</string>
+    <string name="description_bug_reports">Otomatik hata ve çökme bildirimi.</string>
     <string name="label_app_enabled">Uygulama aktif</string>
     <string name="description_app_enabled">Bluetooth durumlarını ve sesi kontrol etmek için uygulama erişilebilirliğini açın.</string>
     <string name="label_visible_volume_adjustments">Görünür ayarlamalar</string>
@@ -21,7 +21,7 @@
     <string name="label_autoplay_keytype">Otomatik oynatma anahtar türü</string>
     <string name="desc_autoplay_keytype">Otomatik oynatma özelliği etkin olan cihazlar bağlandığında gönderilecek anahtar türü.</string>
     <string name="label_state_connected">Bağlandı</string>
-    <string name="label_neverseen">Hiç görmedim</string>
+    <string name="label_neverseen">Hiç görülmedi</string>
     <string name="action_remove_device">Cihazı kaldır</string>
     <string name="label_add_device">Cihaz ekle</string>
     <string name="label_just_a_moment_please">Bir dakika, lütfen.</string>
@@ -35,28 +35,30 @@
     <string name="label_no_connected_devices">Bağlı cihaz bulunamadı</string>
     <string name="label_status_idle">Boşta</string>
     <string name="label_status_adjusting_volumes">Ses düzeyini ayarla</string>
-    <string name="label_premium_version">Tam versiyon</string>
-    <string name="action_upgrade">Güncelle</string>
-    <string name="description_premium_required_additional_devices">Ek cihazları yönetmek, premium sürümü gerektirir.</string>
-    <string name="description_premium_required_this_extra_option">Bu ilave seçenek uygulamanın tam versiyonunu
-        gerektirir.
-    </string>
-    <string name="description_premium_upgrade_explanation">Ek özellikleri etkinleştirmek ve uygulamanın gelişimini desteklemek için premium sürümü edinin.</string>
-    <string name="label_premium_version_required">Tam versiyon gerekli</string>
+    <string name="label_premium_version">Ücretli Sürüm</string>
+    <string name="action_upgrade">Yükselt</string>
+    <string name="description_premium_required_additional_devices">Ek cihazları yönetmek, ücretli sürümü gerektirir.</string>
+    <string name="description_premium_required_this_extra_option">Bu ilave seçenek uygulamanın ücretli sürümünü gerektirir.</string>
+    <string name="description_premium_upgrade_explanation">Ek özellikleri etkinleştirmek ve uygulamanın gelişimini desteklemek için ücretli sürümü edinin.</string>
+    <string name="label_premium_version_required">Ücretli sürüm gerekli</string>
     <string name="description_intro_purpose">Bu uygulama, Android cihazınızın farklı Bluetooth cihazlarının sesini hatırlamasına izin verir.</string>
-    <string name="description_intro_premium">Bu uygulamayı beğenirseniz premium sürüme geçmeyi deneyin. Bu, uygulamanın geliştirilmesini destekler ve size birkaç ekstra özellik kazandırır.</string>
+    <string name="description_intro_premium">Bu uygulamayı beğenirseniz ücretli sürüme geçmeyi deneyin. Bu, uygulamanın geliştirilmesini destekler ve size birkaç ekstra özellik kazandırır.</string>
     <string name="description_intro_tap_the_button">İlk aygıtınızı ekleyerek başlayın.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth devre dışı.</string>
     <string name="label_status_listening_for_changes">Ses değişimi için dinleniyor</string>
     <string name="action_exit">Çıkış</string>
     <string name="label_music_volume">Müzik ses düzeyi</string>
     <string name="description_music_volume">Bu cihaz bağlandığında müzik ve oyunları etkileyen sesi kontrol edin.</string>
-    <string name="label_call_volume">Çağrı ses düzeyi</string>
+    <string name="label_call_volume">Arama ses düzeyi</string>
     <string name="description_call_volume">Bu cihazlar bağlandığında çağrıları etkileyen sesi kontrol edin.</string>
     <string name="label_autoplay">Otomatik oynat</string>
+    <string name="description_autoplay">Bu cihaz bağlandığında Bluetooth uzaktan kumandadaki basma oynatmasını simüle edin.</string>
     <string name="label_reaction_delay">Reaksiyon gecikmesi</string>
+    <string name="description_reaction_delay">Bu uygulama bu cihaza tepki verene kadarki milisaniye cinsinden gecikme.</string>
     <string name="label_adjustment_delay">Gecikmeyi ayarla</string>
+    <string name="description_adjustment_delay">Her ses ayarı arasındaki milisaniye cinsinden gecikme. 0ms gecikme, bu cihaz bağlandığında ses seviyesini anında ayarlamak anlamına gelir.</string>
     <string name="label_rename_device">Cihazı yeniden isimlendir</string>
+    <string name="description_rename_device">Bu cihaz için sistem genelinde bir takma ad belirler.</string>
     <string name="label_forget_device">Cihazı unut</string>
     <string name="description_forget_device">Cihazı bu uygulamadan kaldırır ve yapılandırmasını siler. Bu, cihazın eşleşmesini bozmaz.</string>
     <string name="label_boot_restore">Cihaz açılırken başlat</string>
@@ -65,8 +67,7 @@
     <string name="label_welcome">Hoşgeldiniz</string>
     <string name="description_intro_contact">Yeni bir özellik için sorularınız veya bir fikriniz varsa benimle iletişime geçmekten çekinmeyin.</string>
     <string name="label_translation">Çeviri</string>
-    <string name="description_help_translate">Bu uygulamayı diğer diller için kullanılabilir yapmama yardım edin.
-    </string>
+    <string name="description_help_translate">Bu uygulamayı diğer diller için kullanılabilir yapmama yardım edin.</string>
     <string name="label_device_speaker">Cihaz hoparlörü</string>
     <string name="label_launch_app">Uygulamayı başlat</string>
     <string name="description_launch_app">Bu cihaz bağlandığında uygulamayı başlat.</string>
@@ -78,11 +79,13 @@
     <string name="label_thanks">Teşekkürler</string>
     <string name="label_licenses">Lisanslar</string>
     <string name="label_ring_volume">Zil sesi düzeyi</string>
+    <string name="description_ring_volume">Zil sesini etkileyen sesi kontrol edin.</string>
     <string name="description_ring_volume_additional_permission">Zil sesini değiştirmek için ek izinler gereklidir.</string>
     <string name="label_missing_permissions">Eksik izinler</string>
     <string name="action_grant">Yetkilendir</string>
     <string name="label_advanced">Gelişmiş</string>
     <string name="label_exclude_health">Sağlık profillerini dışla</string>
+    <string name="description_exclude_health">Bazı Android cihazlar \'Sağlık Cihazı\' Bluetooth profillerine bakarken takılıyor (HDP, 0x1400).</string>
     <string name="label_exclude_gattserver">GATT sunucu profillerini dışla</string>
     <string name="label_exclude_gatt">GATT profillerini dışla</string>
     <string name="description_exclude_gattserver">\'Generic Attribute\' (GATT) sunucusunun Bluetooth profillerini sorgulama.</string>
@@ -91,4 +94,15 @@
     <string name="label_notification_volume">Bildirim sesi düzeyi</string>
     <string name="description_notification_volume">Tüm cihazlar ayrı bir bildirim birimi ayarını desteklemez.</string>
     <string name="description_waiting_for_devicex">Bağlantının tamamlanması için %s bekleniyor</string>
+    <string name="action_undo">Geri al</string>
+    <string name="label_speaker_autosave">Sesi otomatik kaydetme</string>
+    <string name="description_speaker_autosave">Varsayılan seslerden sorumlu olan \"Aygıt Hoparlörü\" girişi, bir Bluetooth aygıtı bağlandığında kendini günceller. Not: Bu, tüm cihazlarda çalışmaz.</string>
+    <string name="action_show">Göster</string>
+    <string name="action_dismiss">Reddet</string>
+    <string name="battery_optimizations_issue_description">Batarya iyileştirmeleri bu uygulama için etkindir ve bu, Bluetooth olaylarını almasını engelleyebilir. Sorun yaşıyorsanız optimizasyonları devre dışı bırakmayı deneyin.</string>
+    <string name="label_monitoring_duration">İzleme süresi</string>
+    <string name="description_monitoring_duration">Ayarlamalar yapıldıktan sonra, başka ses değişikliklerinin engelleneceği milisaniye cinsinden bir süre.</string>
+    <string name="label_volume_lock">Ses kilidi</string>
+    <string name="description_volume_lock">Bu uygulama üzerinden yapılmayan ses değişiklikleri bu cihaz bağlıyken geri döndürülecektir.</string>
+    <string name="label_bluetooth_settings">Bluetooth ayarları</string>
 </resources>

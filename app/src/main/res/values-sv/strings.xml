@@ -5,7 +5,6 @@
     <string name="description_check_out_my_apps">Kolla in mina andra appar!</string>
     <string name="label_settings">Inställningar</string>
     <string name="label_about">Om</string>
-    <string name="label_gplus">G+</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Hemsida</string>
     <string name="label_gplay">Google Play</string>
@@ -15,13 +14,9 @@
     <string name="label_app_enabled">Appen aktiverad</string>
     <string name="description_app_enabled">Växlar appens förmåga att reagera på volym och Bluetooth-händelser.</string>
     <string name="label_visible_volume_adjustments">Synliga justeringar</string>
-    <string name="description_visible_volume_adjustments">Visa systemets volymfönster medan den här appen gör
-        justeringar.
-    </string>
+    <string name="description_visible_volume_adjustments">Visa systemets volymfönster medan den här appen gör justeringar.</string>
     <string name="label_volume_listener">Observera förändringar</string>
-    <string name="description_volume_listener">Fortsätt vara aktiv medan en enhet är ansluten och spara
-        volymförändringar som inte har orsakats av den här appen.
-    </string>
+    <string name="description_volume_listener">Fortsätt vara aktiv medan en enhet är ansluten och spara volymförändringar som inte har orsakats av den här appen.</string>
     <string name="label_autoplay_keytype">Autoplay-nyckeltyp</string>
     <string name="desc_autoplay_keytype">Nyckeltypen som skickas när en autoplay-aktiverad enhet ansluter.</string>
     <string name="label_state_connected">Ansluten</string>
@@ -42,53 +37,34 @@
     <string name="label_premium_version">Premium-version</string>
     <string name="action_upgrade">Uppgradera</string>
     <string name="description_premium_required_additional_devices">För att hantera ytterligare enheter krävs premiumversionen.</string>
-    <string name="description_premium_required_this_extra_option">Det här extra-alternativet kräver premiumversionen av
-        den här appen.
-    </string>
+    <string name="description_premium_required_this_extra_option">Det här extra-alternativet kräver premiumversionen av den här appen.</string>
     <string name="description_premium_upgrade_explanation">Skaffa premiumversionen för att möjliggöra ytterligare funktioner och för att bidra till utvecklingen.</string>
     <string name="label_premium_version_required">Premium-versionen krävs</string>
-    <string name="description_intro_purpose">Med den här appen kan din Android-enhet komma ihåg volymen för olika
-        Bluetooth-enheter.
-    </string>
-    <string name="description_intro_premium">Om du gillar den här appen, överväg att uppgradera till premiumversionen.
-        Denna stöder utvecklingen och ger dig några extrafunktioner.
-    </string>
+    <string name="description_intro_purpose">Med den här appen kan din Android-enhet komma ihåg volymen för olika Bluetooth-enheter.</string>
+    <string name="description_intro_premium">Om du gillar den här appen, överväg att uppgradera till premiumversionen. Denna stöder utvecklingen och ger dig några extrafunktioner.</string>
     <string name="description_intro_tap_the_button">Börja med att lägga till din första enhet.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth är inaktiverat.</string>
     <string name="label_status_listening_for_changes">Lyssnar efter volymförändringar</string>
     <string name="action_exit">Stäng</string>
     <string name="label_music_volume">Musikvolym</string>
-    <string name="description_music_volume">Styr volymen som påverkar musik och spel när den här enheten ansluts.
-    </string>
+    <string name="description_music_volume">Styr volymen som påverkar musik och spel när den här enheten ansluts.</string>
     <string name="label_call_volume">Samtalsvolym</string>
     <string name="description_call_volume">Styr volymen som påverkar samtal när den här enheten ansluts.</string>
     <string name="label_autoplay">Automatisk uppspelning</string>
-    <string name="description_autoplay">Simulera tryckning av play på en Bluetooth-fjärrkontroll när denna enhet
-        ansluts.
-    </string>
+    <string name="description_autoplay">Simulera tryckning av play på en Bluetooth-fjärrkontroll när denna enhet ansluts.</string>
     <string name="label_reaction_delay">Reaktionsfördröjning</string>
-    <string name="description_reaction_delay">Fördröjningen i millisekunder tills den här appen reagerar på den här
-        enheten.
-    </string>
+    <string name="description_reaction_delay">Fördröjningen i millisekunder tills den här appen reagerar på den här enheten.</string>
     <string name="label_adjustment_delay">Justeringsfördröjning</string>
-    <string name="description_adjustment_delay">Fördröjningen i millisekunder mellan varje volymjustering. En
-        fördröjning av 0ms betyder att volymen ändras direkt när den här enheten ansluts.
-    </string>
+    <string name="description_adjustment_delay">Fördröjningen i millisekunder mellan varje volymjustering. En fördröjning av 0ms betyder att volymen ändras direkt när den här enheten ansluts.</string>
     <string name="label_rename_device">Byt namn på enhet</string>
     <string name="description_rename_device">Ställer in ett systemövergripande alias för den här enheten.</string>
     <string name="label_forget_device">Glöm enhet</string>
-    <string name="description_forget_device">Tar bort enheten från den här appen och tar bort dess konfiguration. Det
-        här tar inte bort parkopplingen för enheten.
-    </string>
+    <string name="description_forget_device">Tar bort enheten från den här appen och tar bort dess konfiguration. Det här tar inte bort parkopplingen för enheten.</string>
     <string name="label_boot_restore">Återställ vid omstart av enheten</string>
-    <string name="description_boot_restore">Återställ volymen efter uppstart / omstart om en Bluetooth-enhet är
-        ansluten.
-    </string>
+    <string name="description_boot_restore">Återställ volymen efter uppstart / omstart om en Bluetooth-enhet är ansluten.</string>
     <string name="action_start">Starta</string>
     <string name="label_welcome">Välkommen</string>
-    <string name="description_intro_contact">Tveka inte att kontakta mig om du har frågor eller till och med en idé för
-        en ny funktion.
-    </string>
+    <string name="description_intro_contact">Tveka inte att kontakta mig om du har frågor eller till och med en idé för en ny funktion.</string>
     <string name="label_translation">Översättning</string>
     <string name="description_help_translate">Hjälp mig att göra den här appen tillgänglig på andra språk.</string>
     <string name="label_device_speaker">Enhetshögtalare</string>
