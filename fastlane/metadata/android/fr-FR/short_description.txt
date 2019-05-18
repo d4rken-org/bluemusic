@@ -1,1 +1,1 @@
-Configuration séparée du volume voix et musique pour les périphériques Bluetooth.
+Configuration séparée du volume voix et musique pour les périphériques Bluetooth
