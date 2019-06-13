@@ -1,1 +1,0 @@
-Isa isang konpigurasyon para sa boses at tunog para sa Bluetooth devices.
