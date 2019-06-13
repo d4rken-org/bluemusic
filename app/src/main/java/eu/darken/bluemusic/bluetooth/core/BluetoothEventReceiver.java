@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjection;
 import dagger.android.HasBroadcastReceiverInjector;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.audio.StreamHelper;
@@ -54,7 +53,6 @@ public class BluetoothEventReceiver extends BroadcastReceiver {
         }
         ((HasManualBroadcastReceiverInjector) context.getApplicationContext()).broadcastReceiverInjector().inject(this);
 
-        AndroidInjection.inject(this, context);
         if (!settings.isEnabled()) {
             Timber.i("We are disabled.");
             return;
