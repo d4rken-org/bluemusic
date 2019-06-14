@@ -28,6 +28,7 @@ import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.util.Pair;
 import eu.darken.bluemusic.App;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiver;
@@ -43,6 +44,7 @@ import eu.darken.bluemusic.main.core.service.modules.EventModule;
 import eu.darken.bluemusic.main.core.service.modules.VolumeModule;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.util.ApiHelper;
+import eu.darken.bluemusic.util.WakelockMan;
 import eu.darken.bluemusic.util.ui.RetryWithDelay;
 import io.reactivex.Completable;
 import io.reactivex.Scheduler;
@@ -64,6 +66,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
     @Inject VolumeObserver volumeObserver;
     @Inject Settings settings;
     @Inject ServiceHelper serviceHelper;
+    @Inject WakelockMan wakelockMan;
     @Inject Map<Class<? extends EventModule>, EventModule> eventModuleMap;
     @Inject Map<Class<? extends VolumeModule>, VolumeModule> volumeModuleMap;
 
@@ -123,6 +126,7 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
         }
         notificationSub.dispose();
         isActiveSub.dispose();
+        wakelockMan.tryRelease();
         super.onDestroy();
     }
 
@@ -267,29 +271,42 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         deviceManager.devices().firstOrError().subscribeOn(Schedulers.computation())
                                 .map(deviceMap -> {
                                     Timber.d("Active devices: %s", deviceMap);
-
-                                    boolean keepRunning = false;
+                                    StringBuilder msgBuilder = new StringBuilder();
+                                    boolean listening = false;
+                                    boolean locking = false;
+                                    boolean waking = false;
                                     for (ManagedDevice d : deviceMap.values()) {
-                                        if (d.isActive() && !d.getAddress().equals(FakeSpeakerDevice.ADDR)
-                                                && (settings.isVolumeChangeListenerEnabled() || d.getVolumeLock())) {
-                                            keepRunning = true;
-                                            Timber.d(
-                                                    "Keeping service running (listen: %b, lock: %b) due to: %s",
-                                                    settings.isVolumeChangeListenerEnabled(),
-                                                    d.getVolumeLock(),
-                                                    d
-                                            );
-                                            break;
+                                        if (!d.isActive()) continue;
+                                        if (d.getAddress().equals(FakeSpeakerDevice.ADDR)) continue;
+
+                                        if (!listening && settings.isVolumeChangeListenerEnabled()) {
+                                            listening = true;
+                                            Timber.d("Keep running because we are listening for changes");
+                                            msgBuilder.append(getString(R.string.label_volume_listener));
+                                        }
+                                        if (!locking && d.getVolumeLock()) {
+                                            locking = true;
+                                            Timber.d("Keep running because the device wants volume lock: %s", d);
+                                            if (msgBuilder.length() > 0) msgBuilder.append(",\n");
+                                            msgBuilder.append(getString(R.string.label_volume_lock));
+                                        }
+                                        if (!waking && d.getKeepAwake()) {
+                                            waking = true;
+                                            Timber.d("Keep running because the device wants keep awake: %s", d);
+                                            if (msgBuilder.length() > 0) msgBuilder.append(",\n");
+                                            msgBuilder.append(getString(R.string.label_keep_awake));
                                         }
                                     }
-                                    return keepRunning;
+                                    boolean keepRunning = listening || locking || waking;
+                                    return Pair.create(keepRunning, msgBuilder.toString());
                                 })
                                 .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(keepRunning -> {
-                                    if (keepRunning) {
-                                        serviceHelper.updateMessage(getString(R.string.label_status_listening_for_changes));
+                                .subscribe(dataPair -> {
+                                    if (dataPair.first) {
+                                        serviceHelper.updateMessage(dataPair.second);
                                     } else {
                                         serviceHelper.stop();
+                                        wakelockMan.tryRelease();
                                     }
                                 });
                     })

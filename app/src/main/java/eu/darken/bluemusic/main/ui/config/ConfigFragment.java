@@ -57,6 +57,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @BindView(R.id.pref_autoplay_enabled) SwitchPreferenceView prefAutoPlay;
     @BindView(R.id.pref_launch_app) PreferenceView prefLaunchApp;
     @BindView(R.id.pref_volume_lock) SwitchPreferenceView prefVolumeLock;
+    @BindView(R.id.pref_keep_awake) SwitchPreferenceView prefKeepAwake;
     @BindView(R.id.pref_monitoring_duration) PreferenceView prefMonitoringDuration;
     @BindView(R.id.pref_reaction_delay) PreferenceView prefReactionDelay;
     @BindView(R.id.pref_adjustment_delay) PreferenceView prefAdjustmentDelay;
@@ -104,6 +105,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
             return true;
         });
         prefVolumeLock.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleVolumeLock()));
+        prefKeepAwake.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleKeepAwake()));
         prefMonitoringDuration.setOnClickListener(v -> presenter.onEditMonitoringDurationClicked());
         prefReactionDelay.setOnClickListener(v -> presenter.onEditReactionDelayClicked());
         prefAdjustmentDelay.setOnClickListener(v -> presenter.onEditAdjustmentDelayClicked());
@@ -144,32 +146,29 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Check.notNull(getActivity());
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                getActivity().getSupportFragmentManager().popBackStack();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {
+            getActivity().getSupportFragmentManager().popBackStack();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void updateProState(boolean isPro) {
-        prefRingVolume.setIcon(isPro ? R.drawable.ic_ring_volume_white_24dp : R.drawable.ic_stars_white_24dp);
         prefRingVolume.setDescription(getString(R.string.description_ring_volume) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
 
-        prefNotificationVolume.setIcon(isPro ? R.drawable.ic_sms_white_24dp : R.drawable.ic_stars_white_24dp);
         prefNotificationVolume.setDescription(getString(R.string.description_notification_volume) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
 
-        prefAutoPlay.setIcon(isPro ? R.drawable.ic_play_circle_outline_white_24dp : R.drawable.ic_stars_white_24dp);
         prefAutoPlay.setDescription(getString(R.string.description_autoplay) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
 
-        prefVolumeLock.setIcon(isPro ? R.drawable.ic_lock_outline_white_24dp : R.drawable.ic_stars_white_24dp);
         prefVolumeLock.setDescription(getString(R.string.description_volume_lock) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
 
-        prefLaunchApp.setIcon(isPro ? R.drawable.ic_android_white_24dp : R.drawable.ic_stars_white_24dp);
+        prefKeepAwake.setDescription(getString(R.string.description_keep_awake) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
 
-        prefRename.setIcon(isPro ? R.drawable.ic_mode_edit_white_24dp : R.drawable.ic_stars_white_24dp);
+        if (!isPro) {
+            prefLaunchApp.setDescription("[" + getString(R.string.label_premium_version_required) + "]");
+        }
+
         prefRename.setDescription(getString(R.string.description_rename_device) + (isPro ? "" : ("\n[" + getString(R.string.label_premium_version_required) + "]")));
     }
 
@@ -199,6 +198,9 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         prefVolumeLock.setChecked(device.getVolumeLock());
         prefVolumeLock.setVisibility(View.VISIBLE);
 
+        prefKeepAwake.setChecked(device.getKeepAwake());
+        prefKeepAwake.setVisibility(View.VISIBLE);
+
         prefLaunchApp.setVisibility(View.VISIBLE);
 
         if (device.getLaunchPkg() != null) {
@@ -209,7 +211,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
                 Timber.e(e);
             }
             prefLaunchApp.setDescription(label);
-        } else prefLaunchApp.setDescription(getString(R.string.description_launch_app));
+        }
 
         prefReactionDelay.setVisibility(View.VISIBLE);
         prefAdjustmentDelay.setVisibility(View.VISIBLE);

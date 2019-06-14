@@ -54,11 +54,9 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
         @BindView(R.id.lastseen) TextView lastSeen;
 
         @BindView(R.id.launch_icon) ImageView launchIcon;
-        @BindView(R.id.launch_label) TextView launchLabel;
         @BindView(R.id.autoplay_icon) ImageView autoPlayIcon;
-        @BindView(R.id.autoplay_label) TextView autoPlayLabel;
         @BindView(R.id.volumelock_icon) ImageView volumeLockIcon;
-        @BindView(R.id.volumelock_label) TextView volumeLockLabel;
+        @BindView(R.id.keepawake_icon) ImageView keepAwakeIcon;
         @BindView(R.id.extras_container) ViewGroup extrasContainer;
 
         @BindView(R.id.config_icon) View config;
@@ -107,22 +105,18 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
             lastSeen.setText(item.isActive() ? getString(R.string.label_state_connected) : timeString);
 
             autoPlayIcon.setVisibility(item.getAutoPlay() ? View.VISIBLE : View.GONE);
-            autoPlayLabel.setVisibility(item.getAutoPlay() ? View.VISIBLE : View.GONE);
 
             volumeLockIcon.setVisibility(item.getVolumeLock() ? View.VISIBLE : View.GONE);
-            volumeLockLabel.setVisibility(item.getVolumeLock() ? View.VISIBLE : View.GONE);
+            keepAwakeIcon.setVisibility(item.getKeepAwake() ? View.VISIBLE : View.GONE);
 
             if (item.getLaunchPkg() != null) {
                 try {
                     launchIcon.setImageDrawable(AppTool.getIcon(getContext(), item.getLaunchPkg()));
-                    String appName = AppTool.getLabel(getContext(), item.getLaunchPkg());
-                    launchLabel.setText(appName);
                 } catch (PackageManager.NameNotFoundException e) {
                     Timber.e(e);
                 }
             }
             launchIcon.setVisibility(item.getLaunchPkg() != null ? View.VISIBLE : View.GONE);
-            launchLabel.setVisibility(item.getLaunchPkg() != null ? View.VISIBLE : View.GONE);
 
             extrasContainer.setVisibility(item.getLaunchPkg() != null || item.getAutoPlay() || item.getVolumeLock() ? View.VISIBLE : View.GONE);
 

@@ -8,6 +8,7 @@ import eu.darken.bluemusic.main.core.service.modules.events.AutoplayModule;
 import eu.darken.bluemusic.main.core.service.modules.events.CallMonitorModule;
 import eu.darken.bluemusic.main.core.service.modules.events.CallVolumeModule;
 import eu.darken.bluemusic.main.core.service.modules.events.FakeDeviceConnectModule;
+import eu.darken.bluemusic.main.core.service.modules.events.KeepAwakeModule;
 import eu.darken.bluemusic.main.core.service.modules.events.MusicMonitorModule;
 import eu.darken.bluemusic.main.core.service.modules.events.MusicVolumeModule;
 import eu.darken.bluemusic.main.core.service.modules.events.NotificationMonitorModule;
@@ -42,6 +43,7 @@ public abstract class EventModuleModule {
     @IntoMap
     @EventModuleKey(RingVolumeModule.class)
     abstract EventModule ringVolume(RingVolumeModule module);
+
     @Binds
     @IntoMap
     @EventModuleKey(RingMonitorModule.class)
@@ -71,4 +73,9 @@ public abstract class EventModuleModule {
     @IntoMap
     @EventModuleKey(AppLaunchModule.class)
     abstract EventModule appLaunch(AppLaunchModule module);
+
+    @Binds
+    @IntoMap
+    @EventModuleKey(KeepAwakeModule.class)
+    abstract EventModule keepAwape(KeepAwakeModule module);
 }

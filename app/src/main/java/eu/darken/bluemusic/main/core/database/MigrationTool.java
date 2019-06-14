@@ -8,6 +8,7 @@ import io.realm.RealmObjectSchema;
 
 
 public class MigrationTool {
+    private static final int SCHEMA_VERSION = 7;
     // Schema 1 -> 2
     private final RealmMigration legacyMigration = (realm, oldVersion, newVersion) -> {
         final RealmObjectSchema con = realm.getSchema().get("DeviceConfig");
@@ -70,13 +71,27 @@ public class MigrationTool {
         if (!con.hasField("volumeLock")) con.addField("volumeLock", boolean.class);
     };
 
+    // Schema 6 -> 7
+    private final RealmMigration sixToSevenMigration = (realm, oldVersion, newVersion) -> {
+        final RealmObjectSchema con = realm.getSchema().get("DeviceConfig");
+        if (con == null) return;
+
+        // Property 'DeviceConfig.notificationVolume' has been added.
+        if (!con.hasField("keepAwake")) con.addField("keepAwake", boolean.class);
+    };
+
     private final List<RealmMigration> subMigrations = Arrays.asList(
             legacyMigration,
             twoToThreeMigration,
             threeToFourMigration,
             fourToFiveMigration,
-            fiveToSixMigration
+            fiveToSixMigration,
+            sixToSevenMigration
     );
+
+    public int getSchemaVersion() {
+        return SCHEMA_VERSION;
+    }
 
     public RealmMigration getMigration() {
         return (realm, oldVersion, newVersion) -> {

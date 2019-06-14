@@ -53,10 +53,11 @@ public class App extends Application implements HasManualActivityInjector, HasMa
         bugsnagClient.beforeNotify(errorHandler);
         Timber.d("Bugsnag setup done!");
 
+        MigrationTool migrationTool = new MigrationTool();
         Realm.init(this);
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
-                .schemaVersion(6)
-                .migration(new MigrationTool().getMigration())
+                .schemaVersion(migrationTool.getSchemaVersion())
+                .migration(migrationTool.getMigration())
                 .build();
         Realm.setDefaultConfiguration(realmConfig);
 

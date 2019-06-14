@@ -53,6 +53,12 @@ class ManagedDevice internal constructor(val sourceDevice: SourceDevice, val dev
             deviceConfig.volumeLock = enabled
         }
 
+    var keepAwake: Boolean
+        get() = deviceConfig.keepAwake
+        set(enabled) {
+            deviceConfig.keepAwake = enabled
+        }
+
     var launchPkg: String?
         get() = deviceConfig.launchPkg
         set(pkg) {

@@ -20,6 +20,8 @@ public class DeviceConfig extends RealmObject {
 
     boolean volumeLock;
 
+    boolean keepAwake;
+
     boolean autoplay;
 
     String launchPkg;

@@ -149,14 +149,20 @@ public class ServiceHelper {
             sb.append(iterator.next().getLabel());
             if (iterator.hasNext()) sb.append(", ");
         }
-        if (!devices.isEmpty()) builder.setContentTitle(sb.toString());
-        else builder.setContentTitle(resHelper.getString(R.string.label_no_connected_devices));
+        if (!devices.isEmpty()) {
+            builder.setContentTitle(sb.toString());
+        } else {
+            builder.setContentTitle(resHelper.getString(R.string.label_no_connected_devices));
+            builder.setContentText("");
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(""));
+        }
         updateNotification();
     }
 
     void updateMessage(String message) {
         Timber.d("updateMessage(message=%s)", message);
         builder.setContentText(message);
+        builder.setStyle(new NotificationCompat.BigTextStyle().bigText(message));
         updateNotification();
     }
 }

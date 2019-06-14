@@ -182,12 +182,24 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
             device.setVolumeLock(!device.getVolumeLock());
             deviceManager.save(Collections.singleton(device))
                     .subscribeOn(Schedulers.computation())
-                    .subscribe(managedDevices -> {
-                    });
+                    .subscribe(managedDevices -> { });
         } else {
             onView(View::showRequiresPro);
         }
         return device.getAutoPlay();
+    }
+
+
+    boolean onToggleKeepAwake() {
+        if (isProVersion) {
+            device.setKeepAwake(!device.getKeepAwake());
+            deviceManager.save(Collections.singleton(device))
+                    .subscribeOn(Schedulers.computation())
+                    .subscribe(managedDevices -> { });
+        } else {
+            onView(View::showRequiresPro);
+        }
+        return device.getKeepAwake();
     }
 
     void onEditReactionDelayClicked() {
