@@ -266,28 +266,29 @@ public class BlueMusicService extends Service implements VolumeObserver.Callback
                         // Do we need to keep the service running?
                         deviceManager.devices().firstOrError().subscribeOn(Schedulers.computation())
                                 .map(deviceMap -> {
-                                    boolean hasActiveDevices = false;
+                                    Timber.d("Active devices: %s", deviceMap);
+
+                                    boolean keepRunning = false;
                                     for (ManagedDevice d : deviceMap.values()) {
-                                        if (d.isActive() && !d.getAddress().equals(FakeSpeakerDevice.ADDR)) {
-                                            hasActiveDevices = true;
+                                        if (d.isActive() && !d.getAddress().equals(FakeSpeakerDevice.ADDR)
+                                                && (settings.isVolumeChangeListenerEnabled() || d.getVolumeLock())) {
+                                            keepRunning = true;
+                                            Timber.d(
+                                                    "Keeping service running (listen: %b, lock: %b) due to: %s",
+                                                    settings.isVolumeChangeListenerEnabled(),
+                                                    d.getVolumeLock(),
+                                                    d
+                                            );
                                             break;
                                         }
                                     }
-                                    Timber.d("Active devices: %s", deviceMap);
-                                    return hasActiveDevices;
+                                    return keepRunning;
                                 })
                                 .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(hasActiveDevices -> {
-                                    if (hasActiveDevices) {
-                                        if (settings.isVolumeChangeListenerEnabled()) {
-                                            Timber.d("We want to listen for volume changes!");
-                                            serviceHelper.updateMessage(getString(R.string.label_status_listening_for_changes));
-                                        } else {
-                                            Timber.d("We don't want to listen to anymore volume changes, stopping service.");
-                                            serviceHelper.stop();
-                                        }
+                                .subscribe(keepRunning -> {
+                                    if (keepRunning) {
+                                        serviceHelper.updateMessage(getString(R.string.label_status_listening_for_changes));
                                     } else {
-                                        Timber.d("No more active devices, stopping service (%s).", BlueMusicService.this);
                                         serviceHelper.stop();
                                     }
                                 });
