@@ -118,7 +118,8 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
             }
             launchIcon.setVisibility(item.getLaunchPkg() != null ? View.VISIBLE : View.GONE);
 
-            extrasContainer.setVisibility(item.getLaunchPkg() != null || item.getAutoPlay() || item.getVolumeLock() ? View.VISIBLE : View.GONE);
+            boolean hasExtras = item.getLaunchPkg() != null || item.getAutoPlay() || item.getVolumeLock() || item.getKeepAwake();
+            extrasContainer.setVisibility(hasExtras ? View.VISIBLE : View.GONE);
 
             config.setOnClickListener(v -> callback.onShowConfigScreen(item));
 

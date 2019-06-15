@@ -53,12 +53,12 @@
                     android:layout_height="wrap_content"
                     tools:text="6 hours ago"/>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:id="@+id/extras_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    tools:layout_editor_absoluteY="36dp">
+                    android:layout_marginTop="4dp">
 
                     <ImageView
                         android:id="@+id/launch_icon"
@@ -66,12 +66,6 @@
                         android:layout_height="16dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_play_circle_outline_white_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/autoplay_icon"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintHorizontal_chainStyle="packed"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="ContentDescription"
                         tools:src="@mipmap/ic_launcher_round"/>
 
@@ -81,11 +75,6 @@
                         android:layout_height="16dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_play_circle_outline_white_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/volumelock_icon"
-                        app:layout_constraintHorizontal_chainStyle="packed"
-                        app:layout_constraintStart_toEndOf="@+id/launch_icon"
-                        app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="ContentDescription"/>
 
                     <ImageView
@@ -94,10 +83,6 @@
                         android:layout_height="16dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_lock_outline_white_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/keepawake_icon"
-                        app:layout_constraintStart_toEndOf="@+id/autoplay_icon"
-                        app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="ContentDescription"/>
 
                     <ImageView
@@ -105,13 +90,8 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:src="@drawable/ic_lightbulb_outline_white_24dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_chainStyle="packed"
-                        app:layout_constraintStart_toEndOf="@+id/volumelock_icon"
-                        app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="ContentDescription"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <ImageView
