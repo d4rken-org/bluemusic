@@ -199,7 +199,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         prefVolumeLock.setVisibility(View.VISIBLE);
 
         prefKeepAwake.setChecked(device.getKeepAwake());
-        prefKeepAwake.setVisibility(View.VISIBLE);
+        prefKeepAwake.setVisibility(device.getAddress().equals(FakeSpeakerDevice.ADDR) ? View.GONE : View.VISIBLE);
 
         prefLaunchApp.setVisibility(View.VISIBLE);
 
