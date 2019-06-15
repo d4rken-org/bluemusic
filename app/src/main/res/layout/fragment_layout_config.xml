@@ -122,35 +122,49 @@
             android:layout_height="1dp"
             android:background="@drawable/list_divider_material"/>
 
-        <eu.darken.bluemusic.util.ui.SwitchPreferenceView
-            android:id="@+id/pref_volume_lock"
+        <LinearLayout
+            android:id="@+id/pref_volume_lock_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:pvDescription="@string/description_volume_lock"
-            app:pvIcon="@drawable/ic_lock_outline_white_24dp"
-            app:pvTitle="@string/label_volume_lock"
-            tools:visibility="visible"/>
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@drawable/list_divider_material"/>
+            <eu.darken.bluemusic.util.ui.SwitchPreferenceView
+                android:id="@+id/pref_volume_lock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:pvDescription="@string/description_volume_lock"
+                app:pvIcon="@drawable/ic_lock_outline_white_24dp"
+                app:pvTitle="@string/label_volume_lock"
+                tools:visibility="visible"/>
 
-        <eu.darken.bluemusic.util.ui.SwitchPreferenceView
-            android:id="@+id/pref_keep_awake"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/list_divider_material"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pref_keep_awake_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:pvDescription="@string/description_keep_awake"
-            app:pvIcon="@drawable/ic_lightbulb_outline_white_24dp"
-            app:pvTitle="@string/label_keep_awake"
-            tools:visibility="visible"/>
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@drawable/list_divider_material"/>
+            <eu.darken.bluemusic.util.ui.SwitchPreferenceView
+                android:id="@+id/pref_keep_awake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:pvDescription="@string/description_keep_awake"
+                app:pvIcon="@drawable/ic_lightbulb_outline_white_24dp"
+                app:pvTitle="@string/label_keep_awake"
+                tools:visibility="visible"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/list_divider_material"/>
+        </LinearLayout>
 
         <eu.darken.bluemusic.util.ui.PreferenceView
             android:id="@+id/pref_reaction_delay"

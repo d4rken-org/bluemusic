@@ -57,7 +57,9 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @BindView(R.id.pref_autoplay_enabled) SwitchPreferenceView prefAutoPlay;
     @BindView(R.id.pref_launch_app) PreferenceView prefLaunchApp;
     @BindView(R.id.pref_volume_lock) SwitchPreferenceView prefVolumeLock;
+    @BindView(R.id.pref_volume_lock_box) ViewGroup prefVolumeLockBox;
     @BindView(R.id.pref_keep_awake) SwitchPreferenceView prefKeepAwake;
+    @BindView(R.id.pref_keep_awake_box) ViewGroup prefKeepAwakeBox;
     @BindView(R.id.pref_monitoring_duration) PreferenceView prefMonitoringDuration;
     @BindView(R.id.pref_reaction_delay) PreferenceView prefReactionDelay;
     @BindView(R.id.pref_adjustment_delay) PreferenceView prefAdjustmentDelay;
@@ -196,10 +198,10 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         prefAutoPlay.setVisibility(View.VISIBLE);
 
         prefVolumeLock.setChecked(device.getVolumeLock());
-        prefVolumeLock.setVisibility(View.VISIBLE);
+        prefVolumeLockBox.setVisibility(device.getAddress().equals(FakeSpeakerDevice.ADDR) ? View.GONE : View.VISIBLE);
 
         prefKeepAwake.setChecked(device.getKeepAwake());
-        prefKeepAwake.setVisibility(device.getAddress().equals(FakeSpeakerDevice.ADDR) ? View.GONE : View.VISIBLE);
+        prefKeepAwakeBox.setVisibility(device.getAddress().equals(FakeSpeakerDevice.ADDR) ? View.GONE : View.VISIBLE);
 
         prefLaunchApp.setVisibility(View.VISIBLE);
 
