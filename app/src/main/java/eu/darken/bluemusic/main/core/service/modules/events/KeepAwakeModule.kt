@@ -17,7 +17,7 @@ class KeepAwakeModule @Inject internal constructor(
         private val wakelockMan: WakelockMan, private val deviceManager: DeviceManager
 ) : EventModule() {
 
-    override fun getPriority(): Int = 5
+    override fun getPriority(): Int = 1
 
     override fun handle(device: ManagedDevice, event: SourceDevice.Event) {
         if (!device.keepAwake) return
