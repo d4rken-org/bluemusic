@@ -58,7 +58,6 @@ class BlueMusicService : Service(), VolumeObserver.Callback {
     private val eventScheduler = Schedulers.from(Executors.newSingleThreadExecutor())
     private val volumeScheduler = Schedulers.from(Executors.newSingleThreadExecutor())
     private var notificationSub = Disposables.disposed()
-    private var keepAwakeSub = Disposables.disposed()
     private var isActiveSub = Disposables.disposed()
     private val onGoingConnections = LinkedHashMap<String, CompositeDisposable>()
 
@@ -99,25 +98,6 @@ class BlueMusicService : Service(), VolumeObserver.Callback {
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { isActive -> if (!isActive) serviceHelper.stop() }
-        keepAwakeSub = deviceManager.devices()
-                .subscribeOn(Schedulers.io())
-                .doFinally { wakelockMan.tryRelease() }
-                .map { deviceMap ->
-                    var hasWokeDevice = false
-                    for (device in deviceMap.values) {
-                        if (!device.isActive) continue
-                        if (device.keepAwake) {
-                            hasWokeDevice = true
-                            break
-                        }
-                    }
-                    hasWokeDevice
-                }
-                .subscribe { hasWokeDevice ->
-                    if (!hasWokeDevice) {
-                        wakelockMan.tryRelease()
-                    }
-                }
     }
 
     override fun onDestroy() {
@@ -128,7 +108,7 @@ class BlueMusicService : Service(), VolumeObserver.Callback {
         }
         notificationSub.dispose()
         isActiveSub.dispose()
-        keepAwakeSub.dispose()
+        wakelockMan.tryRelease()
         super.onDestroy()
     }
 
