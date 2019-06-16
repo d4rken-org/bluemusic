@@ -5,6 +5,7 @@
     <string name="description_check_out_my_apps">Pogledajte moje ostale aplikacije!</string>
     <string name="label_settings">Postavke</string>
     <string name="label_about">O aplikaciji</string>
+    <string name="label_discord">Discord</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Web stranica</string>
     <string name="label_gplay">Google Play</string>
@@ -99,4 +100,11 @@
     <string name="action_show">Prikaži</string>
     <string name="action_dismiss">Odbaci</string>
     <string name="battery_optimizations_issue_description">Optimizacija baterije je omogućena za ovu aplikaciju i može ju spriječiti u primanju Bluetooth događaja. Razmislite o onemogućavanju ako imate problema.</string>
+    <string name="label_monitoring_duration">Trajanje praćenja</string>
+    <string name="description_monitoring_duration">Trajanje u milisekundama, nakon što su podešavanja postavljena, tijekom čega će sve promjene u glasnoći biti blokirane.</string>
+    <string name="label_volume_lock">Zaključavanje glasnoće</string>
+    <string name="description_volume_lock">Bilo kakve promjene u glasnoći napravljene kroz aplikaciju će biti vraćene dok je ovaj uređaj povezan.</string>
+    <string name="label_bluetooth_settings">Bluetooth postavke</string>
+    <string name="label_keep_awake">Zadrži budnim</string>
+    <string name="description_keep_awake">Zadržite zaslon uključenim dok je ovaj uređaj povezan.</string>
 </resources>

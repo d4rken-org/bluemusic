@@ -5,6 +5,7 @@
     <string name="description_check_out_my_apps">Sprawdź inne moje aplikacje!</string>
     <string name="label_settings">Ustawienia</string>
     <string name="label_about">O programie</string>
+    <string name="label_discord">Discord</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Strona WWW</string>
     <string name="label_gplay">Google Play</string>
@@ -99,4 +100,11 @@
     <string name="action_show">Wyświetl</string>
     <string name="action_dismiss">Odrzuć</string>
     <string name="battery_optimizations_issue_description">Optymalizacje baterii są włączone dla tej aplikacji i mogą uniemożliwić odbieranie zdarzeń Bluetooth. Rozważ wyłączenie optymalizacji, jeśli występują problemy.</string>
+    <string name="label_monitoring_duration">Monitoring czasu trwania</string>
+    <string name="description_monitoring_duration">Czas trwania w milisekundach, po wykonaniu dostosowania, w czasie którego kolejne zmiany zostaną zablokowane.</string>
+    <string name="label_volume_lock">Blokada głośności</string>
+    <string name="description_volume_lock">Jakiekolwiek zmiany, które nie będą wprowadzane przez aplikację, zostaną cofnięte, gdy urządzenie jest podłączone.</string>
+    <string name="label_bluetooth_settings">Ustawienia Bluetooth</string>
+    <string name="label_keep_awake">Zachowaj wybudzony</string>
+    <string name="description_keep_awake">Zachowuje ekran w stanie wybudzenia, gdy urządzenie jest podłączone.</string>
 </resources>

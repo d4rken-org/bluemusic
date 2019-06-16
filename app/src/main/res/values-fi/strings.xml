@@ -5,6 +5,7 @@
     <string name="description_check_out_my_apps">Tarkasta myös muut sovellukseni!</string>
     <string name="label_settings">Asetukset</string>
     <string name="label_about">Tietoja</string>
+    <string name="label_discord">Discord</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Kotisivu</string>
     <string name="label_gplay">Google Play</string>
@@ -99,4 +100,7 @@
     <string name="action_show">Näytä</string>
     <string name="action_dismiss">Pois</string>
     <string name="battery_optimizations_issue_description">Akun optimointi on käytössä tälle sovellukselle ja saattaa estää sitä vastaanottamasta tietoa Bluetooth tapahtumista. Harkitse optimointien poistamista käytöstä, jos huomaat ongelmia.</string>
+    <string name="label_volume_lock">Äänenvoimakkuuden lukitus</string>
+    <string name="description_volume_lock">Kaikki äänenvoimakkuuden säädöt, mitä ei tehdä tämän sovelluksen kautta kumotaan, kun laite yhdistää.</string>
+    <string name="label_bluetooth_settings">Bluetooth asetukset</string>
 </resources>

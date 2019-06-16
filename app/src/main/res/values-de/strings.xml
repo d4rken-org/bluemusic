@@ -19,7 +19,7 @@
     <string name="label_volume_listener">Änderungen beobachten</string>
     <string name="description_volume_listener">Aktiv bleiben, während ein Gerät verbunden ist und Lautstärke-Änderungen speichern, die nicht von dieser App ausgelöst wurden.</string>
     <string name="label_autoplay_keytype">Typ der Autoplay-Taste</string>
-    <string name="desc_autoplay_keytype">Die Art des Knopfdruckes die simuliert wird.</string>
+    <string name="desc_autoplay_keytype">Der Tastendruck, der simuliert wird sobald ein Gerät mit Autoplay verbunden wird.</string>
     <string name="label_state_connected">Verbunden</string>
     <string name="label_neverseen">Nie gesehen</string>
     <string name="action_remove_device">Gerät entfernen</string>
@@ -74,7 +74,7 @@
     <string name="label_keyevent_playpause">Wiedergabe-Pause</string>
     <string name="label_keyevent_play">Abspielen</string>
     <string name="label_keyevent_next">Nächste</string>
-    <string name="label_install_id">Installationsidentifikator</string>
+    <string name="label_install_id">Installations ID</string>
     <string name="message_copied_to_clipboard">In die Zwischenablage kopiert</string>
     <string name="label_thanks">Danke</string>
     <string name="label_licenses">Lizenzen</string>
@@ -105,4 +105,6 @@
     <string name="label_volume_lock">Lautstärkesperre</string>
     <string name="description_volume_lock">Alle nicht über diese App vorgenommenen Lautstärkeänderungen werden zurückgesetzt, während dieses Gerät verbunden ist.</string>
     <string name="label_bluetooth_settings">Bluetooth-Einstellungen</string>
+    <string name="label_keep_awake">Bildschirm eingeschaltet lassen</string>
+    <string name="description_keep_awake">Solange dieses Gerät verbunden ist, Bildschirm nicht ausschalten.</string>
 </resources>

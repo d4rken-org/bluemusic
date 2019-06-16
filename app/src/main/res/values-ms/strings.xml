@@ -105,4 +105,6 @@
     <string name="label_volume_lock">Kunci volum</string>
     <string name="description_volume_lock">Sebarang perubahan volum yang tidak dilakukan melalui apl ini akan dikembalikan sementara peranti ini dihubungkan.</string>
     <string name="label_bluetooth_settings">Tetapan bluetooth</string>
+    <string name="label_keep_awake">Kekal sedar</string>
+    <string name="description_keep_awake">Kekalkan skrin terus berjaga sementara peranti ini dihubungkan.</string>
 </resources>

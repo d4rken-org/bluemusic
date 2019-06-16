@@ -5,6 +5,7 @@
     <string name="description_check_out_my_apps">Confira meus outros aplicativos!</string>
     <string name="label_settings">Configurações</string>
     <string name="label_about">Sobre</string>
+    <string name="label_discord">Discord</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Site</string>
     <string name="label_gplay">Google Play</string>
@@ -99,4 +100,9 @@
     <string name="action_show">Mostrar</string>
     <string name="action_dismiss">Dispensar</string>
     <string name="battery_optimizations_issue_description">Otimizações de bateria estão habilitadas para este aplicativo e podem impedi-lo de receber eventos de Bluetooth. Considere desativar as otimizações, se você estiver enfrentando problemas.</string>
+    <string name="label_monitoring_duration">Duração do monitoramento</string>
+    <string name="description_monitoring_duration">Uma duração em milissegundos, depois dos ajustes terem sido feitos, durante a qual quaisquer mudanças de volume adicionais serão bloqueadas.</string>
+    <string name="label_volume_lock">Bloqueio de volume</string>
+    <string name="description_volume_lock">Qualquer alteração de volume não feita através deste aplicativo será revertida enquanto este dispositivo estiver conectado.</string>
+    <string name="label_bluetooth_settings">Configurações do Bluetooth</string>
 </resources>

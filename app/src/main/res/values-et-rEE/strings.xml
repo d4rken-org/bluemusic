@@ -105,4 +105,6 @@
     <string name="label_volume_lock">Heli lukustamine</string>
     <string name="description_volume_lock">Kõik selle rakenduse välised heli muudatused tühistatakse, kui seade on ühendatud.</string>
     <string name="label_bluetooth_settings">Sinihamba ​​seaded</string>
+    <string name="label_keep_awake">Hoia ärkvel</string>
+    <string name="description_keep_awake">Hoia ekraani sees, kui seade on ühendatud.</string>
 </resources>

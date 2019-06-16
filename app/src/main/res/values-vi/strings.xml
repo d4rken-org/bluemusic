@@ -5,6 +5,7 @@
     <string name="description_check_out_my_apps">Xem các ứng dụng khác của tôi!</string>
     <string name="label_settings">Cài đặt</string>
     <string name="label_about">Giới thiệu</string>
+    <string name="label_discord">Discord</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Trang Web</string>
     <string name="label_gplay">Google Play</string>
@@ -93,4 +94,15 @@
     <string name="label_notification_volume">Âm lượng thông báo</string>
     <string name="description_notification_volume">Không phải tất cả các thiết bị hỗ trợ thiết lập âm lượng thông báo riêng biệt.</string>
     <string name="description_waiting_for_devicex">Chờ %s để hoàn thành kết nối</string>
+    <string name="action_undo">Hoàn tác</string>
+    <string name="label_speaker_autosave">Lưu mức âm lượng tự động</string>
+    <string name="description_speaker_autosave">Mục \"Loa thiết bị\", chịu trách nhiệm về âm lượng mặc định, sẽ tự cập nhật khi thiết bị Bluetooth kết nối. Lưu ý: Điều này không hoạt động trên tất cả các thiết bị.</string>
+    <string name="action_show">Hiển thị</string>
+    <string name="action_dismiss">Bỏ qua</string>
+    <string name="battery_optimizations_issue_description">Tối ưu hóa pin được bật cho ứng dụng này và có thể ngăn ứng dụng nhận các sự kiện Bluetooth. Vô hiệu hóa nếu bạn đang gặp vấn đề.</string>
+    <string name="label_monitoring_duration">Thời gian giám sát</string>
+    <string name="description_monitoring_duration">Thời lượng tính bằng mili giây, sau khi điều chỉnh đã được thực hiện, trong đó mọi thay đổi âm lượng tiếp theo sẽ bị chặn.</string>
+    <string name="label_volume_lock">Khóa âm lượng</string>
+    <string name="description_volume_lock">Mọi thay đổi âm lượng không được thực hiện thông qua ứng dụng này sẽ được hoàn nguyên trong khi thiết bị này được kết nối.</string>
+    <string name="label_bluetooth_settings">Cài đặt Bluetooth</string>
 </resources>

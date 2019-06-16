@@ -105,4 +105,6 @@
     <string name="label_volume_lock">Uzamknutie hlasitosti</string>
     <string name="description_volume_lock">Všetky zmeny hlasitosti, ktoré neboli vykonané touto aplikáciou sa zrušia po pripojení zariadenia.</string>
     <string name="label_bluetooth_settings">Nastavenia Bluetooth</string>
+    <string name="label_keep_awake">Zakázať režim spánku</string>
+    <string name="description_keep_awake">Ponechá zapnutú obrazovku počas pripojenia.</string>
 </resources>

@@ -5,6 +5,7 @@
     <string name="description_check_out_my_apps">Δείτε και τις άλλες εφαρμογές μου!</string>
     <string name="label_settings">Ρυθμίσεις</string>
     <string name="label_about">Σχετικά με</string>
+    <string name="label_discord">Discord</string>
     <string name="label_twitter">Twitter</string>
     <string name="label_website">Ιστοσελίδα</string>
     <string name="label_gplay">Google Play</string>
@@ -98,6 +99,13 @@
     <string name="description_speaker_autosave">Η καταχώρηση \"Ακουστικό Συσκευής\", η οποία είναι υπεύθυνη για προεπιλεγμένες εντάσεις, ενημερώνεται αυτόματα όταν συνδέεται μια συσκευή Bluetooth. Σημείωση: Αυτό δεν λειτουργεί σε όλες τις συσκευές.</string>
     <string name="action_show">Εμφάνιση</string>
     <string name="action_dismiss">Παράβλεψη</string>
-    <string name="battery_optimizations_issue_description">"Οι βελτιστοποήσεις μπαταρίας είναι ενεργοποιημένες για αυτήν την εφαρμογή και ενδέχεται να αποτρέψουν την λήψη δεδομένων Bluetooth.
-Παρακαλώ απενεργοποιήστε τις βελτιστοποιήσεις αυτές, εάν αντιμετωπίζετε προβλήματα."</string>
+    <string name="battery_optimizations_issue_description">Οι βελτιστοποήσεις μπαταρίας είναι ενεργοποιημένες για αυτήν την εφαρμογή και ενδέχεται να αποτρέψουν την λήψη δεδομένων Bluetooth.
+Παρακαλώ απενεργοποιήστε τις βελτιστοποιήσεις αυτές, εάν αντιμετωπίζετε προβλήματα.</string>
+    <string name="label_monitoring_duration">Διάρκεια παρακολούθησης</string>
+    <string name="description_monitoring_duration">Διάρκεια σε χιλιοστά του δευτερολέπτου, μετά από τις προσαρμογές, κατά τη διάρκεια των οποίων θα μπλοκάρονται τυχόν αλλαγές έντασης.</string>
+    <string name="label_volume_lock">Κλείδωμα έντασης</string>
+    <string name="description_volume_lock">Οποιεσδήποτε αλλαγές έντασης που δεν έχουν γίνει μέσω αυτής της εφαρμογής, θα επανέλθουν όσο αυτή η συσκευή είναι συνδεδεμένη.</string>
+    <string name="label_bluetooth_settings">Ρυθμίσεις Bluetooth</string>
+    <string name="label_keep_awake">Διατήρηση λειτουργίας</string>
+    <string name="description_keep_awake">Κρατήστε την οθόνη ανοιχτή όσο αυτή η συσκευή είναι συνδεδεμένη.</string>
 </resources>

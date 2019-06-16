@@ -105,4 +105,6 @@
     <string name="label_volume_lock">Volumlås</string>
     <string name="description_volume_lock">Eventuelle volumendringer som ikke gjøres gjennom denne appen, blir tilbakestilt mens denne enheten er tilkoblet.</string>
     <string name="label_bluetooth_settings">Bluetooth-innstillinger</string>
+    <string name="label_keep_awake">Hold aktiv</string>
+    <string name="description_keep_awake">Hold skjermen på mens denne enheten er tilkoblet.</string>
 </resources>

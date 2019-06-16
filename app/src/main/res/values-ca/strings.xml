@@ -105,4 +105,6 @@
     <string name="label_volume_lock">Bloqueig de volum</string>
     <string name="description_volume_lock">Qualsevol canvi de volum que no s\'hagi fet a través d\'aquesta aplicació es revertirà mentre aquest dispositiu estigui connectat.</string>
     <string name="label_bluetooth_settings">Configuració del Bluetooth</string>
+    <string name="label_keep_awake">Mantén actiu</string>
+    <string name="description_keep_awake">Manté la pantalla activada mentre aquest dispositiu estigui connectat.</string>
 </resources>

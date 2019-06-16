@@ -5,6 +5,7 @@
     <string name="description_check_out_my_apps">Проверете ги моите други апликации!</string>
     <string name="label_settings">Подесувања</string>
     <string name="label_about">За</string>
+    <string name="label_discord">Раздор</string>
     <string name="label_twitter">Твитер</string>
     <string name="label_website">Веб-страница</string>
     <string name="label_gplay">Google Play</string>
@@ -99,4 +100,9 @@
     <string name="action_show">Прикажи</string>
     <string name="action_dismiss">Отфрли</string>
     <string name="battery_optimizations_issue_description">Оптимизациите на батеријата се овозможени за оваа апликација и може да спречат да примаат Bluetooth настани. Размислете за оневозможување на оптимизации ако имате проблеми.</string>
+    <string name="label_monitoring_duration">Времетраење на мониторингот</string>
+    <string name="description_monitoring_duration">Времетраење во милисекунди, по прилагодувањата, при што сите дополнителни промени во гласот ќе бидат блокирани.</string>
+    <string name="label_volume_lock">Гласот е заклучен</string>
+    <string name="description_volume_lock">Сите промени на гласот што не се направени преку оваа апликација ќе бидат вратени додека е поврзан овој уред.</string>
+    <string name="label_bluetooth_settings">Bluetooth поставки</string>
 </resources>
