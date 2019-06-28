@@ -1,7 +1,7 @@
 Bluetooth Volume Manager can react to Bluetooth devices connecting or disconnecting.
 It allows Android to remember the volume levels of different Bluetooth devices.
 
-Currently available features:
+Available features:
 • Music, call, ringtone and notification volume adjustment.
 • Sending out 'Play' or 'Next' media commands.
 • Opening a specific app.
