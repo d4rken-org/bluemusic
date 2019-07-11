@@ -60,7 +60,7 @@ public class Settings {
     }
 
     public int getAutoplayKeycode() {
-        return preferences.getInt(PREFKEY_AUTOPLAY_KEYCODE, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+        return preferences.getInt(PREFKEY_AUTOPLAY_KEYCODE, KeyEvent.KEYCODE_MEDIA_PLAY);
     }
 
     public void setAutoplayKeycode(int keycode) {

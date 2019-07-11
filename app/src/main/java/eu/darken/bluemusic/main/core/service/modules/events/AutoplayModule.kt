@@ -26,8 +26,11 @@ class AutoplayModule @Inject constructor(
 
         val autoplayKeycode = settings.autoplayKeycode
 
-        var tries = 0
-
+        val maxTries = when (autoplayKeycode) {
+            KeyEvent.KEYCODE_MEDIA_PLAY -> 5
+            else -> 1 // Don't toggle PLAY_PAUSE
+        }
+        var currentTries = 0
         // Some Xiaomi devices always have isMusicActive=true, so we have to send the command at least once
         while (true) {
             Timber.d("Sending up+down KeyEvent: %d", autoplayKeycode)
@@ -35,17 +38,17 @@ class AutoplayModule @Inject constructor(
             audioManager.dispatchMediaKeyEvent(KeyEvent(eventTime, eventTime, KeyEvent.ACTION_DOWN, autoplayKeycode, 0))
             audioManager.dispatchMediaKeyEvent(KeyEvent(eventTime + 50, eventTime + 50, KeyEvent.ACTION_UP, autoplayKeycode, 0))
 
-            tries++
+            currentTries++
             Thread.sleep(500)
 
             if (audioManager.isMusicActive) {
-                Timber.v("Music is playing, job done :).")
+                Timber.v("Music is playing (tries=%d), job done :).", currentTries)
                 break
-            } else if (tries == 4) {
-                Timber.w("After %d tries, still getting isMusicActive=%b, giving up.", tries, audioManager.isMusicActive)
+            } else if (currentTries == maxTries) {
+                Timber.w("After %d tries, still getting isMusicActive=%b, giving up.", currentTries, audioManager.isMusicActive)
                 break
             } else {
-                Timber.v("Music isn't playing, retrying (tries=%d). :|", tries)
+                Timber.v("Music isn't playing, retrying (tries=%d). :|", currentTries)
             }
         }
     }
