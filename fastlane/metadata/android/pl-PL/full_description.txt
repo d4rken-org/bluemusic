@@ -1,10 +1,19 @@
-Aplikacja zezwala Androidowi na zapamiętanie głośności dla różnych urządzeń Bluetooth.
-Głośność muzyki i połączeń może zostać skonfigurowana dla każdego urządzenia.
-Czas i konfiguracja dla każdego urządzenia Bluetooth mogą być dostosowane indywidualnie.
+Menadżer głośności Bluetooth może reagować na podłączanie i rozłączanie urządzeń Bluetooth.
+Zezwala Androidowi na zapamiętanie poziomów głośności dla różnych urządzeń Bluetooth.
+
+Dostępne funkcje:
+• Dostosowanie głośności muzyki, połączeń, dzwonków i powiadomień.
+• Wysyłanie komend multimedialnych 'Odtwórz' lub 'Następny'.
+• Uruchamianie wybranej aplikacji.
+• Utrzymywanie wybudzonego ekranu.
+• Zapobieganie zmianie głośności.
+• Przywracanie poprzednich poziomów głośności po rozłączeniu.
+
+Aplikacji nie może "zwiększyć" głośności lub zmienić poziomu, jeśli nie możesz jej zmienić za pomocą przycisków głośności ręcznie. 
 
 Wyjaśnienia dla wymaganych uprawnień:
 • 'Internet' dla zgłaszania błędów.
 • 'Bluetooth' do pracy z urządzeniami Bluetooth.
 • 'Modyfikacja ustawień dźwięku' do zmiany głośności.
-• 'Zakończenie uruchamiania' w celu przywrócenia głośności po ponownym uruchomieniu.
-• 'WAKE_LOCK', aby naprawić błąd w urządzeniach Samsung, gdzie wymagane jest to uprawnienie, w celu uniknięcia błędu.
+• 'Zakończenie uruchamiania' w celu przywrócenia poziomu głośności po ponownym uruchomieniu.
+• 'WAKE_LOCK' aby naprawić błąd na urządzeniach Samsung, i utrzymywać wybudzony ekran, kiedy to potrzebne.

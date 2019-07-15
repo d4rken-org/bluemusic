@@ -1,10 +1,19 @@
-Diese App erlaubt es Android, die Lautstärke verschiedener Bluetooth-Geräte zu speichern.
-Sowohl Musik- als auch Gesprächslautstärke können pro Gerät konfiguriert werden.
-Timing und Konfiguration können für jedes Bluetooth-Gerät individuell angepasst werden.
+Bluetooth-Lautstärken Manager kann auf Bluetooth-Geräte reagieren, die sich verbinden oder trennen.
+Es erlaubt Android, sich an die Lautstärkeeinstellung verschiedener Bluetooth-Geräte zu erinnern.
+
+Verfügbare Funktionen:
+• Lautstärkeanpassung bei Musik, Anruf, Klingelton und Benachrichtigung.
+• Schicken der Medienbefehle 'Abspielen" oder 'Nächstes'.
+• Öffnen einer bestimmte App.
+• Bildschirm eingeschaltet lassen.
+• Verhindern, dass die Lautstärke verändert wird.
+• Wiederherstellung der vorherigen Lautstärkeeinstellungen nach Trennung.
+
+Diese App kann Deine Lautstärke nicht "verstärken" oder die Lautstärke ändern, falls Du sie nicht manuell über die Lautstärketasten Deines Geräts ändern kannst.
 
 Erklärung der Berechtigungen:
 • 'Internet' für Fehlerberichte.
 • 'Bluetooth', um mit Bluetooth-Geräten zu arbeiten.
 • 'Modify audio settings', um Lautstärke zu ändern.
-• 'Boot completed', um die Lautstärke nach Neustart wiederherzustellen.
-• 'WAKE_LOCK' zum Beheben eines Fehler bei Samsung-Geräten, wo diese Berechtigung notwendig ist, um eine Fehlfunktion zu vermeiden.
+• 'Boot completed', um die Lautstärkeeinstellungen nach Neustarts wiederherzustellen.
+• 'WAKE_LOCK', um einen Fehler bei Samsung-Geräten zu beheben und den Bildschirm bei Bedarf wachzuhalten.

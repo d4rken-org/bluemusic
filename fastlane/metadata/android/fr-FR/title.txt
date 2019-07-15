@@ -1,1 +1,1 @@
-Contrôle de volume Bluetooth
+Gestionnaire de volume Bluetooth

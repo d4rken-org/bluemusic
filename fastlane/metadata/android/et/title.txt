@@ -1,1 +1,1 @@
-Heli kontrollimine sinihamba kaudu
+Bluetooth Helitugevuse Haldaja

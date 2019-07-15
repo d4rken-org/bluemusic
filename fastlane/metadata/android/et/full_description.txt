@@ -1,10 +1,19 @@
-See rakendus võimaldab Androidil meelde jätta erinevaid sinihammast toetavate seadmete heli.
-Seadistada saab kõikide seadmete heli nii muusika kuulamise kui ka helistamise ajal.
-Kõikide sinihammast toetavate seadmete ajastust ja seadistusi saab eraldi reguleerida.
+Bluetooth Volume Manager suudab reageerida Bluetooth seadmete ühendamise ja lahtiühendamise peale.
+See rakendus võimaldab Androidil meelde jätta erinevaid Bluetooth-i toetavate seadmete helitugevust.
+
+Saadaolevad funktsionaalsused:
+• Muusika, kõne, helina ja teavituste helitugevuse muutmine.
+• "Mängi" ja "Järgmine" käskude saatmine.
+• Kindla rakenduse avamine.
+• Ekraani ärkvel hoidmine.
+• Helitugevuse muutmise takistamine.
+• Helitugevuse taastamine pärast lahtiühendust.
+
+See rakendus ei saa helitugevust valjemaks muuta kui seda ei anna teha ka käsitsi seadmest endast.
 
 Lubade taotluse selgitus:
 • „Internet“ vigade saatmise jaoks;
 • „Bluetooth“ sinihammast toetavate seadmete ühildamiseks.
 • „Modify audio settings“ heli muutmiseks;
-• 'Boot completed' heli sisselülitamiseks pärast taaskäivitust;
-• 'WAKE_LOCK' Samsungi seadmete vea parandamiseks, kuna selle loaga saab viga vältida.
+• 'Boot completed' helitugevuse taastamiseks pärast taaskäivitamist.
+• 'WAKE_LOCK' selleks, et parandada viga mis esineb Samsungi telefonide puhul ja vajadusel hoida ekraan ärkvel.

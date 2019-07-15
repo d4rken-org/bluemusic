@@ -1,1 +1,1 @@
-Bluetooth Volume Control
+Správca hlasitosti Bluetooth

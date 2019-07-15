@@ -1,10 +1,19 @@
-Aquesta aplicació permet a Android recordar el volum de diferents dispositius Bluetooth.
-Tant el volum de la música com el de les trucades es pot configurar per cada dispositiu.
-El temps i la configuració de cada dispositiu Bluetooth es poden configurar individualment.
+El gestor de volum Bluetooth pot reaccionar als dispositius Bluetooth que es connecten o desconnecten.
+Permet que l'Android recordi els nivells de volum de diferents dispositius Bluetooth.
+
+Funcions disponibles:
+• Ajustar el volum de música, trucada, to de trucada i notificació.
+• Enviar comandes multimedia, com ara «Play» o «Next».
+• Obrir una aplicació específica.
+• Mantenir la pantalla encesa.
+• Evitar que es canviï el volum.
+• Restaurar els nivells de volum anteriors després de la desconnexió.
+
+Aquesta aplicació no pot «augmentar» ni canviar el volum si no podeu canviar-lo a través dels botons de volum del dispositiu manualment.
 
 Explicació dels permisos:
 • «Internet» per als informes d'errors.
 • «Bluetooth» per funcionar amb dispositius Bluetooth.
 • «Modifica la configuració d'àudio» per canviar el volum.
-• «Inici completat» per restablir el volum després de reiniciar.
-• «WAKE_LOCK» per solucionar un error amb els dispositius Samsung. Aquest permís és necessari per evitar un error.
+• «Inici completat» per restablir els nivells de volum després de reiniciar.
+• «WAKE_LOCK» per solucionar un error als dispositius Samsung i mantenir la pantalla encesa si cal.

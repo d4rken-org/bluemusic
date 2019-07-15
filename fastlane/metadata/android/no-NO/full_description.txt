@@ -1,10 +1,19 @@
-Denne appen tillater Android å huske volumet på forskjellige Bluetooth-enheter.
-Både musikk og ringevolumet kan konfigureres for hver enhet.
-Tidspunktet og konfigurasjonen for hver Bluetooth-enhet kan justeres individuelt.
+Bluetooth Volumbehandler kan reagere på Bluetooth-enheter som kobler til eller kobles fra.
+Det gjør at Android kan huske volumnivåene på forskjellige Bluetooth-enheter.
+
+Tilgjengelige funksjoner:
+• Musikk, samtale, ringetone og varslings-volumjustering.
+• Sende ut 'Spill av' eller 'Neste' media-kommandoer.
+• Åpne en bestemt app.
+• Holde skjermen våken.
+• Forhindre at volumet endres.
+• Gjenopprette tidligere volumnivåer etter frakobling.
+
+Denne appen kan ikke "øke" volumet ditt eller endre volumet hvis du ikke kan endre det manuelt via enhetens volumknapper.
 
 Tillatelser forklart:
 • 'Internett' for feilrapporter.
 • 'Bluetooth' for å jobbe med bluetooth-enheter.
 • 'Endre lydinnstillinger' for å endre volumet.
-• 'Oppstart fullført' for å gjenopprette volumet etter omstarter.
-• 'WAKE_LOCK' for å fikse en feil på Samsung-enheter der denne tillatelsen er nødvendig for å unngå en feil.
+• 'Oppstart fullført' for å gjenopprette volumnivåene etter omstart.
+• 'WAKE_LOCK' for å fikse en feil på Samsung-enheter og for å holde skjermen våken om nødvendig.

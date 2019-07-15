@@ -1,10 +1,19 @@
-Aplikasi ini memungkinkan Android mengingat volume suara untuk perangkat Bluetooth yang berbeda.
-Volume suara musik dan panggilan dapat diatur untuk setiap perangkat.
-Penjadwalan dan pengaturan untuk setiap perangkat Bluetooth dapat disesuaikan secara tersendiri.
+Pengelola Volume Bluetooth dapat bereaksi saat menghubungkan dan penghubungkan perangkat Bluetooth.
+Ini memungkinkan Android mengingat volume suara untuk perangkat Bluetooth yang berbeda.
+
+Fitur yang tersedia:
+• Penyesuaian volume musik, panggilan, nada dering, dan pemberitahuan.
+• Mengirim perintah media 'Putar' atau 'Selanjutnya'.
+• Membuka aplikasi tertentu.
+• Memastikan layar terjaga.
+• Mencegah agar volume tidak berubah.
+• Mengembalikan tingkatan volume setelah terputus.
+
+Aplikasi ini tidak dapat "mendorong" volume Anda atau mengganti volume bila Anda tidak dapat menggantinya menggunakan tombol perangkat secara manual.
 
 Penjelasan perizinan:
 • 'Internet' untuk pelaporan permasalahan.
-• 'Bluetooth' untuk dapat bekerja dengan perangkat-perangkat Bluetooth.
-• 'Mengubah pengaturan audio' untuk mengubah volume suara.
-• 'Boot_COMPLETED' untuk mengembalikan volume suara setelah perangkat dinyalakan.
-• 'WAKE_LOCK' untuk memperbaiki permasalahan dalam perangkat Samsung sebab perizinan ini dibutuhkan untuk menghindari kesalahan.
+• "Akses setelan Bluetooth" untuk dapat bekerja dengan perangkat-perangkat Bluetooth.
+• "Ubah setelan audio" untuk mengubah volume suara.
+• "Dijalan saat dimulai" untuk mengembalikan volume suara setelah perangkat dinyalakan.
+• "Mencegah ponsel menjadi tidak aktif" untuk memperbaiki kesalahan dalam perangkat Samsung dan menjaga agar layar tidak tertidur bila dibutuhkan.

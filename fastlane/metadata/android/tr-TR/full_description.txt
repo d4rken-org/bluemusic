@@ -1,10 +1,19 @@
-Bu uygulama, Android'in farklı Bluetooth cihazlarının sesini hatırlamasını sağlar.
-Her cihaz için hem müzik hem de çağrı sesi yapılandırılabilir.
-Her bir Bluetooth cihazının zamanlaması ve konfigürasyonu ayrı ayrı ayarlanabilir.
+Bluetooth Volume Manager can react to Bluetooth devices connecting or disconnecting.
+Bu uygulama, Android'in farklı Bluetooth cihazlarının ses seviyelerini hatırlamasını sağlar.
+
+Kullanılabilir özellikler:
+• Müzik, arama, zil sesi ve bildirim sesini ayarlama.
+• 'Oynatma' veya 'Sonraki' medya komutlarını gönderme.
+• Belirli bir uygulamayı açma.
+• Ekranı açık tutma.
+• Ses seviyesinin değişmesini engelleme.
+• Bağlantı kesildikten sonra önceki ses seviyesini geri yükleme.
+
+Bu uygulama cihazınızın ses seviyesini ses tuşlarıyla değiştiremiyorsanız ses seviyenizi "yükseltemez" veya ses seviyesini değiştiremez.
 
 İzinler aşağıdaki gibidir:
 • 'İnternet' hata raporları için.
 • 'Bluetooth' Bluetooth cihazlarıyla çalışmak için.
 • 'Ses ayarlarını değiştir' ses düzeyini değiştirmek için.
-• 'Önyükleme tamamlandı' yeniden başlatmadan sonra, ses düzeyini geri yüklemek için.
-• 'WAKE_LOCK' Samsung cihazlarında bir hatayı düzeltmek için bu izin gereklidir.
+• 'Boot completed' to restore volume levels after reboots.
+• 'WAKE_LOCK' to fix a bug on Samsung devices and to keep the screen awake if necessary.
