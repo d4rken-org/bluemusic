@@ -17,3 +17,4 @@ Permissions explained:
 • 'Modify audio settings' to change volume.
 • 'Boot completed' to restore volume levels after reboots.
 • 'WAKE_LOCK' to fix a bug on Samsung devices and to keep the screen awake if necessary.
+• 'SYSTEM_ALERT_WINDOW' to launch apps when a Bluetooth device connects (only on Android 10).
