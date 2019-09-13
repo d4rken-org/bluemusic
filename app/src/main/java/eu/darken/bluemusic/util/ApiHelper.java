@@ -6,6 +6,13 @@ public class ApiHelper {
     public static int SDK_INT = Build.VERSION.SDK_INT;
 
     /**
+     * @return if >=23
+     */
+    public static boolean hasMarshmallow() {
+        return SDK_INT >= Build.VERSION_CODES.M;
+    }
+
+    /**
      * @return if >=26
      */
     public static boolean hasOreo() {
@@ -13,9 +20,9 @@ public class ApiHelper {
     }
 
     /**
-     * @return if >=23
+     * @return if >=29
      */
-    public static boolean hasMarshmallow() {
-        return SDK_INT >= Build.VERSION_CODES.M;
+    public static boolean hasAndroid10() {
+        return "Q".equals(Build.VERSION.RELEASE) || "10".equals(Build.VERSION.RELEASE) || SDK_INT >= 29;
     }
 }

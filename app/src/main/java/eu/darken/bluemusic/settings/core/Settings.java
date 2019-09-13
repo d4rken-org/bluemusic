@@ -17,7 +17,8 @@ public class Settings {
     private static final String PREFKEY_LAUNCHCOUNT = "core.metrics.launchcount";
     private static final String PREFKEY_BOOT_RESTORE = "core.onboot.restore";
 
-    private static final String PREFKEY_BATTERYOPTIMIZATIONHINT_DISMISSED = "core.batteryoptimizations.dismissed";
+//    private static final String PREFKEY_BATTERYOPTIMIZATIONHINT_DISMISSED = "core.batteryoptimizations.dismissed";
+//    private static final String PREFKEY_APPLAUNCHHINT_DISMISSED = "core.api29.applaunch.hint.dismissed";
 
     private static final String PREFKEY_ONBOARDING_INTRODONE = "core.onboarding.introdone";
 
@@ -103,11 +104,18 @@ public class Settings {
         return preferences.getBoolean(PREFKEY_ADVANCED_EXCLUDE_GATTSERVER, false);
     }
 
-    public boolean isBatterySavingHintDismissed() {
-        return preferences.getBoolean(PREFKEY_BATTERYOPTIMIZATIONHINT_DISMISSED, false);
-    }
-
-    public void setBatterySavingHintDismissed(boolean dismissed) {
-        preferences.edit().putBoolean(PREFKEY_BATTERYOPTIMIZATIONHINT_DISMISSED, dismissed).apply();
-    }
+//    public boolean isBatterySavingHintDismissed() {
+//        return preferences.getBoolean(PREFKEY_BATTERYOPTIMIZATIONHINT_DISMISSED, false);
+//    }
+//
+//    public void setBatterySavingHintDismissed(boolean dismissed) {
+//        preferences.edit().putBoolean(PREFKEY_BATTERYOPTIMIZATIONHINT_DISMISSED, dismissed).apply();
+//    }
+//    public boolean isAppLaunchHintDismissed() {
+//        return preferences.getBoolean(PREFKEY_APPLAUNCHHINT_DISMISSED, false);
+//    }
+//
+//    public void setAppLaunchHintDismissed(boolean dismissed) {
+//        preferences.edit().putBoolean(PREFKEY_APPLAUNCHHINT_DISMISSED, dismissed).apply();
+//    }
 }

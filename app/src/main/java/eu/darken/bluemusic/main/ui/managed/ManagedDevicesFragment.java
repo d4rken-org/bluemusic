@@ -26,6 +26,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,6 +43,7 @@ import eu.darken.bluemusic.main.ui.config.ConfigFragment;
 import eu.darken.bluemusic.settings.ui.SettingsActivity;
 import eu.darken.bluemusic.util.Check;
 import eu.darken.mvpbakery.base.MVPBakery;
+import eu.darken.mvpbakery.base.StateForwarder;
 import eu.darken.mvpbakery.base.ViewModelRetainer;
 import eu.darken.mvpbakery.injection.InjectedPresenter;
 import eu.darken.mvpbakery.injection.PresenterInjectionCallback;
@@ -58,12 +60,17 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     @BindView(R.id.battery_saving_hint_container) View batterySavingHint;
     @BindView(R.id.battery_saving_hint_dismiss_action) Button batterySavingDismiss;
     @BindView(R.id.battery_saving_hint_show_action) Button batterySavingShow;
+
+    @BindView(R.id.android10_applaunch_hint_container) View appLaunchHint;
+    @BindView(R.id.android10_applaunch_hint_dismiss_action) Button appLaunchHintDismiss;
+    @BindView(R.id.android10_applaunch_hint_show_action) Button appLaunchHintShow;
     @Inject ManagedDevicesPresenter presenter;
 
     private Unbinder unbinder;
     private ManagedDevicesAdapter adapter;
     private boolean isProVersion = false;
     private boolean bluetoothEnabled = false;
+    private final StateForwarder stateForwarder = new StateForwarder();
 
     public static Fragment newInstance() {
         return new ManagedDevicesFragment();
@@ -73,6 +80,7 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        stateForwarder.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -89,12 +97,18 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new ManagedDevicesAdapter(this);
         recyclerView.setAdapter(adapter);
+        ViewCompat.setNestedScrollingEnabled(recyclerView, false);
 
         bluetoothDisabledContainer.setOnClickListener(v -> presenter.showBluetoothSettingsScreen());
 
         super.onViewCreated(view, savedInstanceState);
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        stateForwarder.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
+    }
 
     @Override
     public void onDestroyView() {
@@ -107,6 +121,7 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
         MVPBakery.<ManagedDevicesPresenter.View, ManagedDevicesPresenter>builder()
                 .presenterFactory(new InjectedPresenter<>(this))
                 .presenterRetainer(new ViewModelRetainer<>(this))
+                .stateForwarder(stateForwarder)
                 .addPresenterCallback(new PresenterInjectionCallback<>(this))
                 .attach(this);
 
@@ -231,5 +246,18 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
             }
         });
         batterySavingHint.setVisibility(display ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public void displayAndroid10AppLaunchHint(boolean display, Intent intent) {
+        appLaunchHintDismiss.setOnClickListener(v -> presenter.onAppLaunchHintDismissed());
+        appLaunchHintShow.setOnClickListener(v -> {
+            try {
+                startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(requireContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        appLaunchHint.setVisibility(display ? View.VISIBLE : View.GONE);
     }
 }
