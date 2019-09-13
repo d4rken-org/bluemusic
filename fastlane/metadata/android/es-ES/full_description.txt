@@ -1,10 +1,19 @@
-Esta aplicación permite a Android recordar el volumen de diferentes dispositivos Bluetooth.
-Tanto el volumen de la música como el de las llamadas se pueden configurar para cada dispositivo.
-El tiempo y la configuración de cada dispositivo Bluetooth se pueden ajustar individualmente.
+El Administrador de Volumen Bluetooth puede reaccionar a dispositivos Bluetooth que se conectan o desconectan.
+Permite a Android recordar los niveles de volumen de diferentes dispositivos Bluetooth.
+
+Características disponibles:
+• Ajustes en volumen de música, llamada, tono de llamada y notificación.
+• Envío de comandos 'Reproducir' o 'Siguiente'.
+• Abrir una aplicación especifica.
+• Mantener la pantalla encendida.
+• Evitar que el volumen se cambie.
+• Restaurar los niveles de volumen anteriores después de una desconexión.
+
+Esta aplicación no puede "aumentar" o cambiar el volumen si no es posible cambiarlo manualmente a través de los botones de volumen de su dispositivo.
 
 Explicación de los permisos:
 • "Internet" para los informes de errores.
 • "Bluetooth" para funcionar con dispositivos Bluetooth.
 • "Modificar configuración de audio" para cambiar el volumen.
 • "Arranque completado" para restaurar el volumen después de reiniciar.
-• "WAKE_LOCK" para arreglar un error en dispositivos Samsung donde este permiso es necesario para evitar un error.
+• 'WAKE_LOCK' para arreglar un error en dispositivos Samsung y para mantener la pantalla despierta si es necesario.

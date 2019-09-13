@@ -67,4 +67,6 @@
     <string name="label_speaker_autosave">自動儲存音量</string>
     <string name="action_show">顯示</string>
     <string name="action_dismiss">忽略</string>
+    <string name="label_volume_lock">音量鎖定</string>
+    <string name="label_keep_awake">保持喚醒</string>
 </resources>
