@@ -134,8 +134,8 @@ ext {
 
 dependencies {
     // Support libs
-    implementation "androidx.annotation:annotation:1.0.2"
-    implementation "androidx.appcompat:appcompat:1.0.2"
+    implementation "androidx.annotation:annotation:1.1.0"
+    implementation "androidx.appcompat:appcompat:1.1.0"
     implementation "androidx.recyclerview:recyclerview:1.0.0"
     implementation "androidx.browser:browser:1.0.0"
     implementation "com.google.android.material:material:1.0.0"
@@ -147,11 +147,11 @@ dependencies {
     implementation 'com.bugsnag:bugsnag-android:4.10.0'
 
     // MVP lib
-    implementation 'eu.darken.mvpbakery:library:0.7.1'
+    implementation 'eu.darken.mvpbakery:library:0.7.3'
 
     // RX
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.6'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
 
     //Dagger
     implementation "com.google.dagger:dagger:${daggerVersion}"
@@ -177,8 +177,8 @@ dependencies {
     androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.19.0'
 
     //Intrumentation tests (UI tests)
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-beta01'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0-beta01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha02'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0-alpha02'
 
     // IAP
     implementation 'com.android.billingclient:billing:1.2.2'
