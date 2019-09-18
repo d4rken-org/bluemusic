@@ -107,4 +107,5 @@
     <string name="label_bluetooth_settings">Bluetoothi ​​sätted</string>
     <string name="label_keep_awake">Hoia ärkvel</string>
     <string name="description_keep_awake">Hoia ekraani sees kui seade on ühendatud.</string>
+    <string name="android10_applaunch_issue_description">Android 10 piirab rakenduste taustal käivitamist. Rakenduste avamiseks sinihambaga seadme ühendamisel anna nõusolek „Näita teiste rakenduste peal“ (SYSTEM_ALERT_WINDOW).</string>
 </resources>

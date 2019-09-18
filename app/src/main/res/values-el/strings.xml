@@ -108,4 +108,5 @@
     <string name="label_bluetooth_settings">Ρυθμίσεις Bluetooth</string>
     <string name="label_keep_awake">Διατήρηση λειτουργίας</string>
     <string name="description_keep_awake">Κρατήστε την οθόνη ανοιχτή όσο αυτή η συσκευή είναι συνδεδεμένη.</string>
+    <string name="android10_applaunch_issue_description">Το Android 10 περιορίζει το πως οι εφαρμογές μπορούν να τρέχουν στο παρασκήνιο. Για να αφήσετε να ανοίγουν οι εφαρμογές όταν μια συσκευή Bluetooth συνδέεται, παραχωρήστε το δικαίωμα \"Εμφάνιση πάνω από τις εφαρμογές\" (SYSTEM_ALERT_WINDOW).</string>
 </resources>

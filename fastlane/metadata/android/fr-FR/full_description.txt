@@ -17,3 +17,4 @@ Explication des permissions :
 • « Modifier les paramètres du son » pour régler le volume.
 • « Amorçage terminé » pour restaurer les niveaux du son après redémarrage.
 • « WAKE_LOCK » pour corriger un bogue sur les appareils Samsung et garder l’écran allumé si nécessaire.
+• « SYSTEM_ALERT_WINDOW » pour lancer des applis quand un appareil Bluetooth se connecte (seulement sur Android 10).

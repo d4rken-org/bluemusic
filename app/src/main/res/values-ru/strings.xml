@@ -107,4 +107,5 @@
     <string name="label_bluetooth_settings">Настройки Bluetooth</string>
     <string name="label_keep_awake">Активный режим</string>
     <string name="description_keep_awake">Оставлять экран включённым при подключенном устройстве.</string>
+    <string name="android10_applaunch_issue_description">Android 10 ограничивает запуск приложений в фоне. Чтобы разрешить открытие приложений при подключении Bluetooth-устройства, предоставьте разрешение \"Отображать поверх других приложений\" (SYSTEM_ALERT_WINDOW).</string>
 </resources>

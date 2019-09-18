@@ -17,3 +17,4 @@ Explicació dels permisos:
 • «Modifica la configuració d'àudio» per canviar el volum.
 • «Inici completat» per restablir els nivells de volum després de reiniciar.
 • «WAKE_LOCK» per solucionar un error als dispositius Samsung i mantenir la pantalla encesa si cal.
+• 'SYSTEM_ALERT_WINDOW' per iniciar aplicacions quan es connecta un dispositiu Bluetooth (només a Android 10).

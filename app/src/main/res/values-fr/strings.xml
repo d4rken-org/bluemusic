@@ -107,4 +107,5 @@
     <string name="label_bluetooth_settings">Paramètres Bluetooth</string>
     <string name="label_keep_awake">Garder éveillé</string>
     <string name="description_keep_awake">Garder l’écran allumé quand cet appareil est connecté.</string>
+    <string name="android10_applaunch_issue_description">Android 10 restreint la façon dont les applis peuvent être lancées en arrière-plan. Pour permettre l’ouverture d’applis quand un appareil Bluetooth se connecte, accordez l’autorisation « Afficher par dessus les autres applis » (SYSTEM_ALERT_WINDOW).</string>
 </resources>

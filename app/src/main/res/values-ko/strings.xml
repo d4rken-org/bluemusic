@@ -102,7 +102,10 @@
     <string name="battery_optimizations_issue_description">본 앱이 배터리 최적화에 포함되어 있으며, 블루투스 관련 이벤트를 놓쳐 문제가 발생할 수도 있습니다. 문제가 발생했을 경우 배터리 최적화에서 본 앱을 예외로 지정해보세요.</string>
     <string name="label_monitoring_duration">관측 기간</string>
     <string name="description_monitoring_duration">시간은 밀리초 단위입니다. 음량이 조절된 이후 음량 변경을 차단하는 시간 간격을 설정합니다.</string>
+    <string name="label_volume_lock">음량 잠금</string>
     <string name="description_volume_lock">이 앱에서 행하지 않은 음량 변경이 저장되지 않으며, 다시 이 디바이스를 연결할 때 변경점이 반영되지 않습니다.</string>
+    <string name="label_bluetooth_settings">블루투스 설정</string>
     <string name="label_keep_awake">켜짐 유지</string>
     <string name="description_keep_awake">이 디바이스를 연결하고 있을 때 화면을 계속 켜진 상태로 유지합니다.</string>
+    <string name="android10_applaunch_issue_description">안드로이드 10은 앱이 백그라운드에서 실행되는 것을 금지하고 있습니다. 블루투스 디바이스가 연결될 때 앱을 열려면 \"앱 위에서 그리기\" (SYSTEM_ALERT_WINDOW) 권한을 허용해주세요.</string>
 </resources>

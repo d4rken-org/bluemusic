@@ -107,4 +107,5 @@
     <string name="label_bluetooth_settings">Nastavenia Bluetooth</string>
     <string name="label_keep_awake">Zakázať režim spánku</string>
     <string name="description_keep_awake">Ponechá zapnutú obrazovku počas pripojenia.</string>
+    <string name="android10_applaunch_issue_description">Android 10 obmedzuje spôsob spúšťania aplikácií na pozadí. Pre povolenie spúšťania aplikácií po pripojení Bluetooth zariadenia, udeľte povolenie \"Vykresliť cez ďalšie aplikácie\" (SYSTEM_ALERT_WINDOW).</string>
 </resources>

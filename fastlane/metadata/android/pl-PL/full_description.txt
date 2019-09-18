@@ -17,3 +17,4 @@ Wyjaśnienia dla wymaganych uprawnień:
 • 'Modyfikacja ustawień dźwięku' do zmiany głośności.
 • 'Zakończenie uruchamiania' w celu przywrócenia poziomu głośności po ponownym uruchomieniu.
 • 'WAKE_LOCK' aby naprawić błąd na urządzeniach Samsung, i utrzymywać wybudzony ekran, kiedy to potrzebne.
+• 'SYSTEM_ALERT_WINDOW', aby uruchamiać aplikacje, gdy podłączane jest urządzenie Bluetooth (tylko dla Android 10).

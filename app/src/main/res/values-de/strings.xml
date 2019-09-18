@@ -107,4 +107,5 @@
     <string name="label_bluetooth_settings">Bluetooth-Einstellungen</string>
     <string name="label_keep_awake">Wach bleiben</string>
     <string name="description_keep_awake">Bildschirm an lassen, während dieses Gerät verbunden ist.</string>
+    <string name="android10_applaunch_issue_description">Android 10 beschränkt, wie Apps im Hintergrund gestartet werden können. Um das Öffnen von Apps zu gestatten, sobald sich ein Bluetooth-Gerät verbindet, gewähre die Berechtigung \"Display over other apps\" (SYSTEM_ALERT_WINDOW).</string>
 </resources>

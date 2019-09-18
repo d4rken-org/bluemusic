@@ -17,3 +17,4 @@ Vysvětlení oprávnění:
 • „Změny nastavení zvuku“ pro změnu hlasitosti.
 • „Dokončení spuštění“ pro obnovení úrovně hlasitosti po restartování.
 • „WAKE_LOCK“ pro odstranění chyby na zařízeních Samsung a zakázání režim spánku, pokud je to nutné.
+• 'SYSTEM_ALERT_WINDOW' to launch apps when a Bluetooth device connects (only on Android 10).

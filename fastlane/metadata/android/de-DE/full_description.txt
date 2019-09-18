@@ -17,3 +17,4 @@ Erklärung der Berechtigungen:
 • 'Modify audio settings', um Lautstärke zu ändern.
 • 'Boot completed', um die Lautstärkeeinstellungen nach Neustarts wiederherzustellen.
 • 'WAKE_LOCK', um einen Fehler bei Samsung-Geräten zu beheben und den Bildschirm bei Bedarf wachzuhalten.
+• 'SYSTEM_ALERT_WINDOW', um Apps zu starten, sobald sich ein Bluetooth-Gerät verbindet (nur bei Android 10).

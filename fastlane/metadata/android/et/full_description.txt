@@ -17,3 +17,4 @@ Lubade taotluse selgitus:
 • „Modify audio settings“ heli muutmiseks;
 • 'Boot completed' helitugevuse taastamiseks pärast taaskäivitamist.
 • 'WAKE_LOCK' selleks, et parandada viga mis esineb Samsungi telefonide puhul ja vajadusel hoida ekraan ärkvel.
+• „SYSTEM_ALERT_WINDOW“, et käivitada rakendusi sinihambaga seadme ühendamisel (vaid Android 10).
