@@ -1,7 +1,6 @@
 package eu.darken.bluemusic.main.ui.managed;
 
 import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -12,9 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -41,6 +41,7 @@ import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.main.ui.MainActivity;
 import eu.darken.bluemusic.main.ui.config.ConfigFragment;
 import eu.darken.bluemusic.settings.ui.SettingsActivity;
+import eu.darken.bluemusic.util.ActivityUtil;
 import eu.darken.bluemusic.util.Check;
 import eu.darken.mvpbakery.base.MVPBakery;
 import eu.darken.mvpbakery.base.StateForwarder;
@@ -135,7 +136,7 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NotNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_main, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -170,7 +171,7 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
                 presenter.showBluetoothSettingsScreen();
                 return true;
             case R.id.settings:
-                startActivity(new Intent(getContext(), SettingsActivity.class));
+                ActivityUtil.tryStartActivity(requireActivity(), new Intent(getContext(), SettingsActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -179,7 +180,7 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
 
     @OnClick(R.id.fab)
     void onFabClicked() {
-        startActivity(new Intent(getContext(), BluetoothActivity.class));
+        ActivityUtil.tryStartActivity(this, new Intent(getContext(), BluetoothActivity.class));
     }
 
     @SuppressLint("RestrictedApi")
@@ -238,26 +239,14 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
     @Override
     public void displayBatteryOptimizationHint(boolean display, Intent intent) {
         batterySavingDismiss.setOnClickListener(v -> presenter.onBatterySavingDismissed());
-        batterySavingShow.setOnClickListener(v -> {
-            try {
-                startActivity(intent);
-            } catch (ActivityNotFoundException e) {
-                Toast.makeText(requireContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        batterySavingShow.setOnClickListener(v -> ActivityUtil.tryStartActivity(this, intent));
         batterySavingHint.setVisibility(display ? View.VISIBLE : View.GONE);
     }
 
     @Override
     public void displayAndroid10AppLaunchHint(boolean display, Intent intent) {
         appLaunchHintDismiss.setOnClickListener(v -> presenter.onAppLaunchHintDismissed());
-        appLaunchHintShow.setOnClickListener(v -> {
-            try {
-                startActivity(intent);
-            } catch (ActivityNotFoundException e) {
-                Toast.makeText(requireContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        appLaunchHintShow.setOnClickListener(v -> ActivityUtil.tryStartActivity(this, intent));
         appLaunchHint.setVisibility(display ? View.VISIBLE : View.GONE);
     }
 }

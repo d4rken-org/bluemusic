@@ -1,14 +1,17 @@
 package eu.darken.bluemusic.settings.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import javax.inject.Inject;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import butterknife.ButterKnife;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.settings.ui.general.SettingsFragment;
+import eu.darken.bluemusic.util.ActivityUtil;
 import eu.darken.mvpbakery.base.MVPBakery;
 import eu.darken.mvpbakery.base.ViewModelRetainer;
 import eu.darken.mvpbakery.injection.ComponentSource;
@@ -46,5 +49,10 @@ public class SettingsActivity extends AppCompatActivity implements SettingsActiv
     @Override
     public ManualInjector<Fragment> supportFragmentInjector() {
         return componentSource;
+    }
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
+        ActivityUtil.tryStartActivity(this, () -> SettingsActivity.super.startActivityForResult(intent, requestCode, options));
     }
 }
