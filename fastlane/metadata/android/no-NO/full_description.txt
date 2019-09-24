@@ -17,3 +17,4 @@ Tillatelser forklart:
 • 'Endre lydinnstillinger' for å endre volumet.
 • 'Oppstart fullført' for å gjenopprette volumnivåene etter omstart.
 • 'WAKE_LOCK' for å fikse en feil på Samsung-enheter og for å holde skjermen våken om nødvendig.
+• 'SYSTEM_ALERT_WINDOW' for å starte apper når en Bluetooth-enhet kobles til (bare på Android 10).
