@@ -39,7 +39,13 @@ class AutoplayModule @Inject constructor(
             audioManager.dispatchMediaKeyEvent(KeyEvent(eventTime + 50, eventTime + 50, KeyEvent.ACTION_UP, autoplayKeycode, 0))
 
             currentTries++
-            Thread.sleep(500)
+
+            try {
+                Thread.sleep(500)
+            } catch (e: InterruptedException) {
+                Timber.w(e)
+                return
+            }
 
             if (audioManager.isMusicActive) {
                 Timber.v("Music is playing (tries=%d), job done :).", currentTries)

@@ -25,13 +25,26 @@ constructor(private val audioManager: AudioManager) {
         Timber.v("setVolume(streamId=%s, volume=%d, flags=%d).", streamId, volume, flags)
         adjusting = true
         lastUs[streamId] = volume
-        Thread.sleep(10)
+
+        try {
+            Thread.sleep(10)
+        } catch (e: InterruptedException) {
+            Timber.w(e)
+            adjusting = false
+            return
+        }
 
         // https://stackoverflow.com/questions/6733163/notificationmanager-notify-fails-with-securityexception
         audioManager.setStreamVolume(streamId.id, volume, flags)
 
-        Thread.sleep(10)
-        adjusting = false
+        try {
+            Thread.sleep(10)
+        } catch (e: InterruptedException) {
+            Timber.w(e)
+            return
+        } finally {
+            adjusting = false
+        }
     }
 
     fun wasUs(id: AudioStream.Id, volume: Int): Boolean {

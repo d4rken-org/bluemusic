@@ -41,7 +41,12 @@ internal abstract class BaseMonitorModule(
             if (streamHelper.changeVolume(device.getStreamId(type), percentage, false, 0)) {
                 Timber.d("Monitor(%s) adjusted volume.", type)
             }
-            Thread.sleep(250)
+            try {
+                Thread.sleep(250)
+            } catch (e: InterruptedException) {
+                Timber.w(e)
+                return
+            }
         }
         Timber.d("Monitor(%s) finished.", type)
     }

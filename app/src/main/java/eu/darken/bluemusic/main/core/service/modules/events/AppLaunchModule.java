@@ -35,7 +35,7 @@ public class AppLaunchModule extends EventModule {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
-            Timber.e(e);
+            Timber.w(e);
         }
     }
 }
