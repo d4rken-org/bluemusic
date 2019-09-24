@@ -81,6 +81,8 @@ class SourceDeviceWrapper implements SourceDevice {
                 return AudioStream.Id.STREAM_RINGTONE;
             case NOTIFICATION:
                 return AudioStream.Id.STREAM_NOTIFICATION;
+            case ALARM:
+                return AudioStream.Id.STREAM_ALARM;
             default:
                 throw new IllegalArgumentException("Unsupported AudioStreamType: " + type);
         }

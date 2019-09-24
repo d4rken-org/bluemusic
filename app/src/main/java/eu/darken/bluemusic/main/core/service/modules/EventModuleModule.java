@@ -3,6 +3,8 @@ package eu.darken.bluemusic.main.core.service.modules;
 import dagger.Binds;
 import dagger.Module;
 import dagger.multibindings.IntoMap;
+import eu.darken.bluemusic.main.core.service.modules.events.AlarmMonitorModule;
+import eu.darken.bluemusic.main.core.service.modules.events.AlarmVolumeModule;
 import eu.darken.bluemusic.main.core.service.modules.events.AppLaunchModule;
 import eu.darken.bluemusic.main.core.service.modules.events.AutoplayModule;
 import eu.darken.bluemusic.main.core.service.modules.events.CallMonitorModule;
@@ -58,6 +60,16 @@ public abstract class EventModuleModule {
     @IntoMap
     @EventModuleKey(NotificationMonitorModule.class)
     abstract EventModule notificationMonitor(NotificationMonitorModule module);
+
+    @Binds
+    @IntoMap
+    @EventModuleKey(AlarmVolumeModule.class)
+    abstract EventModule alarmVolume(AlarmVolumeModule module);
+
+    @Binds
+    @IntoMap
+    @EventModuleKey(AlarmMonitorModule.class)
+    abstract EventModule alarmMonitor(AlarmMonitorModule module);
 
     @Binds
     @IntoMap

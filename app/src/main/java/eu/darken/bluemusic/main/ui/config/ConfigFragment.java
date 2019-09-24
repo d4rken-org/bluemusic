@@ -53,6 +53,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
     @BindView(R.id.pref_call_volume) SwitchPreferenceView prefCallVolume;
     @BindView(R.id.pref_ring_volume) SwitchPreferenceView prefRingVolume;
     @BindView(R.id.pref_notification_volume) SwitchPreferenceView prefNotificationVolume;
+    @BindView(R.id.pref_alarm_volume) SwitchPreferenceView prefAlarmVolume;
 
     @BindView(R.id.pref_autoplay_enabled) SwitchPreferenceView prefAutoPlay;
     @BindView(R.id.pref_launch_app) PreferenceView prefLaunchApp;
@@ -96,6 +97,7 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
         prefCallVolume.setOnCheckedChangedListener((v, checked) -> presenter.onToggleCallVolume());
         prefRingVolume.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleRingVolume()));
         prefNotificationVolume.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleNotificationVolume()));
+        prefAlarmVolume.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleAlarmVolume()));
 
         prefAutoPlay.setOnCheckedChangedListener((v, checked) -> v.setChecked(presenter.onToggleAutoPlay()));
         prefLaunchApp.setOnClickListener(v -> {
@@ -193,6 +195,9 @@ public class ConfigFragment extends Fragment implements ConfigPresenter.View {
 
         prefNotificationVolume.setChecked(device.getVolume(AudioStream.Type.NOTIFICATION) != null);
         prefNotificationVolume.setVisibility(View.VISIBLE);
+
+        prefAlarmVolume.setChecked(device.getVolume(AudioStream.Type.ALARM) != null);
+        prefAlarmVolume.setVisibility(View.VISIBLE);
 
         prefAutoPlay.setChecked(device.getAutoPlay());
         prefAutoPlay.setVisibility(View.VISIBLE);

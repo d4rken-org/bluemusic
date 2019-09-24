@@ -79,6 +79,21 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:background="@drawable/list_divider_material" />
+
+        <eu.darken.bluemusic.util.ui.SwitchPreferenceView
+            android:id="@+id/pref_alarm_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:pvDescription="@string/description_alarm_volume"
+            app:pvIcon="@drawable/ic_alarm_white_24dp"
+            app:pvTitle="@string/label_alarm_volume"
+            tools:visibility="visible" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:background="@drawable/list_divider_material"/>
 
         <TextView

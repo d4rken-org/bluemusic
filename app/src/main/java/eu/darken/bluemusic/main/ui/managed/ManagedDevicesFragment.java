@@ -224,6 +224,9 @@ public class ManagedDevicesFragment extends Fragment implements ManagedDevicesPr
             case NOTIFICATION:
                 presenter.onUpdateNotificationVolume(device, percentage);
                 break;
+            case ALARM:
+                presenter.onUpdateAlarmVolume(device, percentage);
+                break;
         }
     }
 

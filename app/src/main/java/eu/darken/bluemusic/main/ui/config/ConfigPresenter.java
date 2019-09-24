@@ -164,6 +164,24 @@ public class ConfigPresenter extends ComponentPresenter<ConfigPresenter.View, Co
         return device.getVolume(AudioStream.Type.NOTIFICATION) != null;
     }
 
+    boolean onToggleAlarmVolume() {
+        if (!isProVersion) {
+            onView(View::showRequiresPro);
+            return false;
+        }
+        if (device.getVolume(AudioStream.Type.ALARM) == null) {
+            device.setVolume(AudioStream.Type.ALARM, streamHelper.getVolumePercentage(device.getStreamId(AudioStream.Type.ALARM)));
+        } else {
+            device.setVolume(AudioStream.Type.ALARM, null);
+        }
+
+        deviceManager.save(Collections.singleton(device))
+                .subscribeOn(Schedulers.computation())
+                .subscribe();
+
+        return device.getVolume(AudioStream.Type.ALARM) != null;
+    }
+
     boolean onToggleAutoPlay() {
         if (isProVersion) {
             device.setAutoPlay(!device.getAutoPlay());

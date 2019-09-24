@@ -337,6 +337,48 @@
                     app:layout_constraintStart_toEndOf="@+id/notification_permission_label"
                     app:layout_constraintTop_toTopOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/alarm_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:minHeight="32dp">
+
+                <ImageView
+                    android:id="@+id/alarm_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="Music volume"
+                    android:src="@drawable/ic_alarm_white_24dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/alarm_seekbar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/alarm_seekbar"
+                    tools:ignore="HardcodedText" />
+
+                <SeekBar
+                    android:id="@+id/alarm_seekbar"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:progress="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/alarm_counter"
+                    app:layout_constraintStart_toEndOf="@+id/alarm_icon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/alarm_counter"
+                    style="@style/TextAppearance.AppCompat.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/alarm_seekbar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/alarm_seekbar"
+                    app:layout_constraintTop_toTopOf="@+id/alarm_seekbar"
+                    tools:text="15" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

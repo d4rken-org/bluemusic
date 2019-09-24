@@ -76,8 +76,8 @@ class ManagedDevice internal constructor(val sourceDevice: SourceDevice, val dev
     }
 
     override fun toString(): String {
-        return String.format(Locale.US, "Device(active=%b, address=%s, name=%s, musicVolume=%.2f, callVolume=%.2f, ringVolume=%.2f)",
-                isActive, address, name, getVolume(AudioStream.Type.MUSIC), getVolume(AudioStream.Type.CALL), getVolume(AudioStream.Type.RINGTONE))
+        return String.format(Locale.US, "Device(active=%b, address=%s, name=%s, musicVolume=%.2f, callVolume=%.2f, ringVolume=%.2f, alarmVolume=%.2f)",
+                isActive, address, name, getVolume(AudioStream.Type.MUSIC), getVolume(AudioStream.Type.CALL), getVolume(AudioStream.Type.RINGTONE), getVolume(AudioStream.Type.ALARM))
     }
 
     fun setMaxVolume(type: AudioStream.Type, max: Int) {
@@ -93,6 +93,7 @@ class ManagedDevice internal constructor(val sourceDevice: SourceDevice, val dev
         AudioStream.Type.CALL -> deviceConfig.callVolume = volume
         AudioStream.Type.RINGTONE -> deviceConfig.ringVolume = volume
         AudioStream.Type.NOTIFICATION -> deviceConfig.notificationVolume = volume
+        AudioStream.Type.ALARM -> deviceConfig.alarmVolume = volume
     }
 
     fun getVolume(type: AudioStream.Type): Float? = when (type) {
@@ -100,6 +101,7 @@ class ManagedDevice internal constructor(val sourceDevice: SourceDevice, val dev
         AudioStream.Type.CALL -> deviceConfig.callVolume
         AudioStream.Type.RINGTONE -> deviceConfig.ringVolume
         AudioStream.Type.NOTIFICATION -> deviceConfig.notificationVolume
+        AudioStream.Type.ALARM -> deviceConfig.alarmVolume
     }
 
     fun getRealVolume(type: AudioStream.Type): Int = Math.round(getMaxVolume(type) * getVolume(type)!!)

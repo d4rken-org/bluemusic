@@ -106,4 +106,6 @@
     <string name="label_keep_awake">Keep awake</string>
     <string name="description_keep_awake">Keep the screen on while this device is connected.</string>
     <string name="android10_applaunch_issue_description">Android 10 restricts how apps can be launched from the background. To allow opening apps when a Bluetooth device connects, grant the permission "Display over other apps" (SYSTEM_ALERT_WINDOW).</string>
+    <string name="label_alarm_volume">Alarm volume</string>
+    <string name="description_alarm_volume">Some alarm apps use the music volume instead.</string>
 </resources>

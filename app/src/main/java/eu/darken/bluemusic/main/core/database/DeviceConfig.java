@@ -17,6 +17,7 @@ public class DeviceConfig extends RealmObject {
     Float callVolume;
     Float ringVolume;
     Float notificationVolume;
+    Float alarmVolume;
 
     boolean volumeLock;
 

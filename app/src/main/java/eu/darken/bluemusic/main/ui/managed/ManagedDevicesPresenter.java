@@ -209,6 +209,16 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                 });
     }
 
+    void onUpdateAlarmVolume(ManagedDevice device, float percentage) {
+        device.setVolume(AudioStream.Type.ALARM, percentage);
+        deviceManager.save(Collections.singleton(device))
+                .subscribeOn(Schedulers.computation())
+                .subscribe(managedDevices -> {
+                    if (!device.isActive()) return;
+                    streamHelper.changeVolume(device.getStreamId(AudioStream.Type.ALARM), device.getVolume(AudioStream.Type.ALARM), true, 0);
+                });
+    }
+
     void onUpgradeClicked(Activity activity) {
         iapHelper.buyProVersion(activity);
     }

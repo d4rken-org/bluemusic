@@ -80,6 +80,10 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
         @BindView(R.id.notification_counter) TextView notificationCounter;
         @BindView(R.id.notification_permission_label) TextView notificationPermissionLabel;
         @BindView(R.id.notification_permission_action) TextView notificationPermissionAction;
+
+        @BindView(R.id.alarm_container) View alarmContainer;
+        @BindView(R.id.alarm_seekbar) SeekBar alarmSeekbar;
+        @BindView(R.id.alarm_counter) TextView alarmCounter;
         private Callback callback;
 
         ManagedDeviceVH(ViewGroup parent, Callback callback) {
@@ -239,6 +243,30 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
             notificationPermissionAction.setVisibility(needsPermission ? View.VISIBLE : View.GONE);
             notificationSeekbar.setVisibility(needsPermission ? View.GONE : View.VISIBLE);
             notificationCounter.setVisibility(needsPermission ? View.GONE : View.VISIBLE);
+
+            alarmContainer.setVisibility(item.getVolume(AudioStream.Type.ALARM) != null ? View.VISIBLE : View.GONE);
+            if (item.getVolume(AudioStream.Type.ALARM) != null) {
+                alarmSeekbar.setMax(item.getMaxVolume(AudioStream.Type.ALARM));
+                alarmSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        alarmCounter.setText(String.valueOf(progress));
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        callback.onStreamAdjusted(item, AudioStream.Type.ALARM, (float) seekBar.getProgress() / seekBar.getMax());
+                    }
+                });
+                alarmSeekbar.setProgress(item.getRealVolume(AudioStream.Type.ALARM));
+                alarmCounter.setText(String.valueOf(alarmSeekbar.getProgress()));
+            }
+
         }
     }
 }
