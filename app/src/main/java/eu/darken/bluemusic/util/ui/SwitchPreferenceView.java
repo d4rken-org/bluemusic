@@ -8,6 +8,7 @@ import androidx.appcompat.widget.SwitchCompat;
 
 public class SwitchPreferenceView extends PreferenceView {
     private SwitchCompat toggle;
+    private Listener toggleListener;
 
     public SwitchPreferenceView(Context context) {
         super(context);
@@ -26,7 +27,9 @@ public class SwitchPreferenceView extends PreferenceView {
         toggle = new SwitchCompat(getContext());
         toggle.setClickable(false);
         addExtra(toggle);
-        setOnClickListener(view -> performClick());
+        setOnClickListener(view -> {
+            if (toggleListener != null) performClick();
+        });
         super.onFinishInflate();
     }
 
@@ -39,6 +42,7 @@ public class SwitchPreferenceView extends PreferenceView {
     }
 
     public void setOnCheckedChangedListener(Listener listener) {
+        this.toggleListener = listener;
         setOnClickListener(view -> {
             toggle.setChecked(!toggle.isChecked());
             listener.onCheckedChanged(SwitchPreferenceView.this, isChecked());
