@@ -10,5 +10,5 @@ internal class CallMonitorModule @Inject constructor(
         streamHelper: StreamHelper
 ) : BaseMonitorModule(streamHelper) {
     override val type: AudioStream.Type
-        get() = AudioStream.Type.MUSIC
+        get() = AudioStream.Type.CALL
 }
