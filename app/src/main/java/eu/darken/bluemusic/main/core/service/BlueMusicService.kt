@@ -188,11 +188,12 @@ class BlueMusicService : Service(), VolumeObserver.Callback {
 
                             val latch = CountDownLatch(currentPriorityModules.size)
                             for (module in currentPriorityModules) {
-                                Completable.fromRunnable {
-                                    Timber.v("Event module %s HANDLE-START", module)
-                                    module.handle(newDevice, event)
-                                    Timber.v("Event module %s HANDLE-STOP", module)
-                                }
+                                Completable
+                                        .fromRunnable {
+                                            Timber.v("Event module %s HANDLE-START", module)
+                                            module.handle(newDevice, event)
+                                            Timber.v("Event module %s HANDLE-STOP", module)
+                                        }
                                         .subscribeOn(Schedulers.io())
                                         .doOnSubscribe { disp ->
                                             Timber.d("Running event module %s", module)
