@@ -109,4 +109,6 @@
     <string name="label_keep_awake">Διατήρηση λειτουργίας</string>
     <string name="description_keep_awake">Κρατήστε την οθόνη ανοιχτή όσο αυτή η συσκευή είναι συνδεδεμένη.</string>
     <string name="android10_applaunch_issue_description">Το Android 10 περιορίζει το πως οι εφαρμογές μπορούν να τρέχουν στο παρασκήνιο. Για να αφήσετε να ανοίγουν οι εφαρμογές όταν μια συσκευή Bluetooth συνδέεται, παραχωρήστε το δικαίωμα \"Εμφάνιση πάνω από τις εφαρμογές\" (SYSTEM_ALERT_WINDOW).</string>
+    <string name="label_alarm_volume">Ένταση ήχου ξυπνητηριού</string>
+    <string name="description_alarm_volume">Κάποιες εφαρμογές-ξυπνητήρια δεν χρησιμοποιούν την ένταση της μουσικής.</string>
 </resources>

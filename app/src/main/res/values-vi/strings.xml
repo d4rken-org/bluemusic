@@ -109,4 +109,6 @@
     <string name="description_keep_awake">Giữ màn hình bật trong khi thiết bị này được kết nối.</string>
     <string name="android10_applaunch_issue_description">Android 10 hạn chế cách các ứng dụng có thể chạy nền. Để cho phép mở ứng dụng khi thiết bị Bluetooth kết nối, hãy cấp quyền \"Hiển thị trên các ứng dụng khác\" 
 (SYSTEM_ALERT_WINDOW).</string>
+    <string name="label_alarm_volume">Âm lượng báo thức</string>
+    <string name="description_alarm_volume">Một số ứng dụng báo thức sử dụng âm lượng nhạc để thay thế.</string>
 </resources>

@@ -1,1 +1,1 @@
-Điều khiển âm lượng Bluetooth
+Quản lý âm lượng Bluetooth

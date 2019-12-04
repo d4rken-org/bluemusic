@@ -85,8 +85,10 @@
     <string name="action_grant">امنح</string>
     <string name="label_advanced">متقدم</string>
     <string name="label_exclude_health">استبعاد ملفات الصحة</string>
+    <string name="description_exclude_health">بعض أجهزة الأندرويد تجمد عند بحث \'صحة الجهاز\' في هويات البلوتوث (HDP, 0x1400).</string>
     <string name="label_exclude_gattserver">استثناء هويات سيرفر GATT</string>
     <string name="label_exclude_gatt">استثناء هويات GATT</string>
+    <string name="description_exclude_gattserver">لا تختار هويات البلوتوث من نوع \'سمة عامة\' سيرفر (GATT).</string>
     <string name="label_volumes">الأصوات</string>
     <string name="label_notification_volume">صوت التنبيهات</string>
     <string name="description_notification_volume">لا تدعم كل الأجهزة تعيين صوت تنبيه مختلف.</string>
@@ -101,4 +103,6 @@
     <string name="label_bluetooth_settings">إعدادات البلوتوث</string>
     <string name="label_keep_awake">ابق مستيقظ</string>
     <string name="description_keep_awake">ابق الشاشة منشطة بينما هذا الجهاز متصل.</string>
+    <string name="label_alarm_volume">مستوى صوت المنبّه</string>
+    <string name="description_alarm_volume">بعض برامج المنبهات تستعيض بصوت الوسائط.</string>
 </resources>

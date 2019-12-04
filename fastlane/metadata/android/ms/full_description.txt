@@ -17,3 +17,4 @@ Keterangan Kebenaran:
 • 'Ubahsuai tetapan audio' untuk menukar volum.
 • 'Boot selesai' untuk menyimpan semula aras kelantangan selepas reboot.
 • 'WAKE_LOCK' untuk membetulkan pepijat pada peranti Samsung dan untuk skrin kekal berjaga jika perlu.
+• 'TETINGKAP_AMARAN_SISTEM' untuk melancarkan apl bila peranti Bluetooth terhubung (hanya di Android 10).

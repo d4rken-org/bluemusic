@@ -108,4 +108,6 @@
     <string name="label_keep_awake">켜짐 유지</string>
     <string name="description_keep_awake">이 디바이스를 연결하고 있을 때 화면을 계속 켜진 상태로 유지합니다.</string>
     <string name="android10_applaunch_issue_description">안드로이드 10은 앱이 백그라운드에서 실행되는 것을 금지하고 있습니다. 블루투스 디바이스가 연결될 때 앱을 열려면 \"앱 위에서 그리기\" (SYSTEM_ALERT_WINDOW) 권한을 허용해주세요.</string>
+    <string name="label_alarm_volume">알람 음량</string>
+    <string name="description_alarm_volume">일부 알람 앱은 음악 음량을 사용합니다.</string>
 </resources>

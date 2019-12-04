@@ -108,4 +108,6 @@
     <string name="label_keep_awake">Mantén actiu</string>
     <string name="description_keep_awake">Manté la pantalla activada mentre aquest dispositiu estigui connectat.</string>
     <string name="android10_applaunch_issue_description">L\'Android 10 restringeix el mode com es poden obrir les aplicacions en segon pla. Per permetre l\'inici d\'aplicacions quan es connecta un dispositiu Bluetooth, concediu el permís «Mostra a sobre d\'altres aplicacions» (SYSTEM_ALERT_WINDOW).</string>
+    <string name="label_alarm_volume">Volum de l\'alarma</string>
+    <string name="description_alarm_volume">Algunes aplicacions d\'alarma utilitzen el volum de música al seu lloc.</string>
 </resources>

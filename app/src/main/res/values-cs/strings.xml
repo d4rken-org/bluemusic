@@ -107,4 +107,7 @@
     <string name="label_bluetooth_settings">Nastavení Bluetooth</string>
     <string name="label_keep_awake">Zakázat režim spánku</string>
     <string name="description_keep_awake">Ponechá obrazovku zapnutou během připojení.</string>
+    <string name="android10_applaunch_issue_description">Android 10 omezuje způsob spouštění aplikací na pozadí. Pro povolení spouštění aplikací po připojení Bluetooth zařízení udělte oprávnění „Vykreslit přes další aplikace“ (SYSTEM_ALERT_WINDOW).</string>
+    <string name="label_alarm_volume">Hlasitost budíku</string>
+    <string name="description_alarm_volume">Některé aplikace budíku používají místo toho hlasitost hudby.</string>
 </resources>

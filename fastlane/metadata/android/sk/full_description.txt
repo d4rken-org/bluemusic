@@ -17,4 +17,4 @@ Vysvetlenie oprávnení:
 • "Upraviť nastavenie zvuku" pre zmenu hlasitosti.
 • "Ukončený boot" pre obnovenie hlasitosti po reštartovaní.
 • 'WAKE_LOCK' pre odstránenie chyby na Samsung zariadeniach a zakázanie režim spánku, ak je to potrebné.
-• 'SYSTEM_ALERT_WINDOW' pre spustenie aplikácií po pripojení Bluetooth zariadenia (iba Android 10).
+• 'SYSTEM_ALERT_WINDOW' pre spustenie appiek po pripojení Bluetooth zariadenia (iba Android 10).

@@ -108,4 +108,6 @@
     <string name="label_keep_awake">Hold aktiv</string>
     <string name="description_keep_awake">Hold skjermen på mens denne enheten er tilkoblet.</string>
     <string name="android10_applaunch_issue_description">Android 10 begrenser hvordan apper kan åpnes fra bakgrunnen. For å tillate åpning av apper når en Bluetooth-enhet kobles til, gir du tillatelsen \"Ligge over andre apper\" (SYSTEM_ALERT_WINDOW).</string>
+    <string name="label_alarm_volume">Alarmvolum</string>
+    <string name="description_alarm_volume">Noen alarm-apper bruker musikkvolumet i stedet.</string>
 </resources>

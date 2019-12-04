@@ -52,10 +52,10 @@
     <string name="label_call_volume">Volum panggilan</string>
     <string name="description_call_volume">Mengawal volum yang terkesan dengan panggilan bila peranti ini bersambung.</string>
     <string name="label_autoplay">Automain</string>
-    <string name="description_autoplay">Menekan main simulasi pada kawalan jauh Bluetooth bila peranti ini bersambung.</string>
-    <string name="label_reaction_delay">Kelewatan reaksi</string>
-    <string name="description_reaction_delay">Kelewatannya dalam millidetik sehinggalah apl ini bereaksi pada peranti.</string>
-    <string name="label_adjustment_delay">Tundaan pelarasan</string>
+    <string name="description_autoplay">Menekan main disimulasikan pada kawalan jauh Bluetooth bila peranti ini terhubung.</string>
+    <string name="label_reaction_delay">Tunda reaksi</string>
+    <string name="description_reaction_delay">Tundaannya dalam millidetik sehingga apl ini bereaksi pada peranti.</string>
+    <string name="label_adjustment_delay">Pelarasan ditunda</string>
     <string name="description_adjustment_delay">Tundaan dalam milisaat di antara setiap pelarasan volum. Oms tertunda bermaksud penetapan volum serta merta bila peranti ini bersambung.</string>
     <string name="label_rename_device">Penamaan semula peranti</string>
     <string name="description_rename_device">Set satu alias sistem-menyeluruh untuk peranti ini.</string>
@@ -100,7 +100,7 @@
     <string name="action_show">Tunjuk</string>
     <string name="action_dismiss">Bubar</string>
     <string name="battery_optimizations_issue_description">Pengoptimuman bateri boleh didayakan bagi apl ini dan dapat mencegahnya dari menerima aktiviti Bluetooth. Pertimbang untuk nyahdayakan pengoptimuman jika anda mengalami isu.</string>
-    <string name="label_monitoring_duration">Mengawasi durasi</string>
+    <string name="label_monitoring_duration">Tempoh Pengawasan</string>
     <string name="description_monitoring_duration">Satu durasi dalam milisaat, setelah pelarasan dilakukan, semasa mana perubahan volum selanjutnya akan disekat.</string>
     <string name="label_volume_lock">Kunci volum</string>
     <string name="description_volume_lock">Sebarang perubahan volum yang tidak dilakukan melalui apl ini akan dikembalikan sementara peranti ini dihubungkan.</string>
@@ -108,4 +108,6 @@
     <string name="label_keep_awake">Kekal sedar</string>
     <string name="description_keep_awake">Kekalkan skrin terus berjaga sementara peranti ini dihubungkan.</string>
     <string name="android10_applaunch_issue_description">Android 10 mengawal bagaimana apl boleh dilancarkan dari latar belakang. Bagi membolehkan apl dibuka bila peranti Bluetooth bersambung, berikan kebenaran \"Paparan ke atas apl lain\" (SISTEM_WASPADA_TETINGKAP).</string>
+    <string name="label_alarm_volume">Volum penggera</string>
+    <string name="description_alarm_volume">Sebahagian apl penggera sebaliknya menggunakan volum muzik.</string>
 </resources>
