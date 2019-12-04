@@ -41,8 +41,8 @@ android {
         }
     }
 
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
 
     def versionMajor = 2
     def versionMinor = 44
@@ -55,7 +55,7 @@ android {
     defaultConfig {
         applicationId "${packageName}"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode versionMajor * 10000 + versionMinor
         versionName "${versionMajor}.${versionMinor}${versionTag}"
         manifestPlaceholders = [apikey_bugsnag: ""]
@@ -136,7 +136,7 @@ dependencies {
     // Support libs
     implementation "androidx.annotation:annotation:1.1.0"
     implementation "androidx.appcompat:appcompat:1.1.0"
-    implementation "androidx.recyclerview:recyclerview:1.0.0"
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation "androidx.browser:browser:1.0.0"
     implementation "com.google.android.material:material:1.0.0"
     implementation "androidx.cardview:cardview:1.0.0"
@@ -144,13 +144,15 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     // Crashtracking
-    implementation 'com.bugsnag:bugsnag-android:4.10.0'
+    implementation ('com.bugsnag:bugsnag-android:4.21.1') {
+        exclude group: 'com.bugsnag', module: 'bugsnag-plugin-android-ndk'
+    }
 
     // MVP lib
     implementation 'eu.darken.mvpbakery:library:0.7.3'
 
     // RX
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
 
     //Dagger
