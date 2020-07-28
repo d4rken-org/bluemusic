@@ -102,9 +102,8 @@ class ConfigFragment : Fragment(), ConfigPresenter.View {
         MVPBakery.builder<ConfigPresenter.View, ConfigPresenter>()
                 .addPresenterCallback(object : PresenterRetainer.Callback<ConfigPresenter.View, ConfigPresenter> {
                     override fun onPresenterAvailable(presenter: ConfigPresenter) {
-                        Check.notNull(arguments)
-                        val address = arguments!!.getString(ARG_ADDRESS)
-                        presenter.setDevice(address)
+                        val address = requireArguments().getString(ARG_ADDRESS)
+                        presenter.setDevice(address!!)
                     }
                 })
                 .addPresenterCallback(PresenterInjectionCallback(this))
