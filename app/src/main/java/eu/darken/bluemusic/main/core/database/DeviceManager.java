@@ -81,9 +81,9 @@ public class DeviceManager {
                                         final ManagedDevice managed = buildDevice(sourceDevice, realm.copyFromRealm(config));
                                         managed.setActive(active.containsKey(managed.getAddress()));
 
-                                        if (active.containsKey(config.address))
+                                        if (active.containsKey(config.address)) {
                                             config.lastConnected = System.currentTimeMillis();
-
+                                        }
                                         Timber.v("Loaded: %s", managed);
                                         result.put(managed.getAddress(), managed);
                                     }

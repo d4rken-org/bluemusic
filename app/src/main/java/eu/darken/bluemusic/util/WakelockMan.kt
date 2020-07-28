@@ -6,7 +6,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AppComponent.Scope
-class WakelockMan @Inject constructor(private val powerManager: PowerManager) {
+class WakelockMan @Inject constructor(powerManager: PowerManager) {
 
     @Suppress("DEPRECATION")
     private val wakelock = powerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "bvm:keepawake")
