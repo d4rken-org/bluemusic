@@ -10,6 +10,7 @@ import eu.darken.bluemusic.main.core.database.ManagedDevice
 import eu.darken.bluemusic.settings.core.Settings
 import eu.darken.bluemusic.util.ApiHelper
 import eu.darken.bluemusic.util.AppTool
+import eu.darken.bluemusic.util.WakelockMan
 import eu.darken.mvpbakery.base.Presenter
 import eu.darken.mvpbakery.injection.ComponentPresenter
 import io.reactivex.Single
@@ -27,16 +28,19 @@ class ConfigPresenter @Inject internal constructor(
         private val streamHelper: StreamHelper,
         private val iapHelper: IAPHelper,
         private val appTool: AppTool,
-        private val notificationManager: NotificationManager
+        private val notificationManager: NotificationManager,
+        private val wakelockMan: WakelockMan
 ) : ComponentPresenter<ConfigPresenter.View, ConfigComponent>() {
 
     private var upgradeSub: Disposable? = null
     private var updateSub: Disposable? = null
     private var isProVersion = false
-    private var deviceAddress: String? = null
-    private var device: ManagedDevice? = null
+    private lateinit var deviceAddress: String
+    private var _device: ManagedDevice? = null
+    private val device: ManagedDevice
+        get() = _device!!
 
-    fun setDevice(address: String?) {
+    fun setDevice(address: String) {
         deviceAddress = address
     }
 
@@ -60,7 +64,7 @@ class ConfigPresenter @Inject internal constructor(
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(
                             { device: ManagedDevice ->
-                                this@ConfigPresenter.device = device
+                                this@ConfigPresenter._device = device
                                 withView { it.updateDevice(device) }
                             },
                             { withView { it.finishScreen() } }
@@ -86,18 +90,18 @@ class ConfigPresenter @Inject internal constructor(
     }
 
     fun onToggleMusicVolume() {
-        if (device!!.getVolume(AudioStream.Type.MUSIC) == null) {
-            device!!.setVolume(AudioStream.Type.MUSIC, streamHelper.getVolumePercentage(device!!.getStreamId(AudioStream.Type.MUSIC)))
-        } else device!!.setVolume(AudioStream.Type.MUSIC, null)
+        if (device.getVolume(AudioStream.Type.MUSIC) == null) {
+            device.setVolume(AudioStream.Type.MUSIC, streamHelper.getVolumePercentage(device.getStreamId(AudioStream.Type.MUSIC)))
+        } else device.setVolume(AudioStream.Type.MUSIC, null)
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe()
     }
 
     fun onToggleCallVolume() {
-        if (device!!.getVolume(AudioStream.Type.CALL) == null) {
-            device!!.setVolume(AudioStream.Type.CALL, streamHelper.getVolumePercentage(device!!.getStreamId(AudioStream.Type.CALL)))
-        } else device!!.setVolume(AudioStream.Type.CALL, null)
+        if (device.getVolume(AudioStream.Type.CALL) == null) {
+            device.setVolume(AudioStream.Type.CALL, streamHelper.getVolumePercentage(device.getStreamId(AudioStream.Type.CALL)))
+        } else device.setVolume(AudioStream.Type.CALL, null)
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe()
@@ -108,19 +112,19 @@ class ConfigPresenter @Inject internal constructor(
             withView { it.showRequiresPro() }
             return false
         }
-        if (device!!.getVolume(AudioStream.Type.RINGTONE) == null) {
+        if (device.getVolume(AudioStream.Type.RINGTONE) == null) {
             if (ApiHelper.hasMarshmallow() && !notificationManager.isNotificationPolicyAccessGranted) {
                 // Missing permissions for this, reset value
                 withView { it.showNotificationPermissionView() }
             }
-            device!!.setVolume(AudioStream.Type.RINGTONE, streamHelper.getVolumePercentage(device!!.getStreamId(AudioStream.Type.RINGTONE)))
+            device.setVolume(AudioStream.Type.RINGTONE, streamHelper.getVolumePercentage(device.getStreamId(AudioStream.Type.RINGTONE)))
         } else {
-            device!!.setVolume(AudioStream.Type.RINGTONE, null)
+            device.setVolume(AudioStream.Type.RINGTONE, null)
         }
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe()
-        return device!!.getVolume(AudioStream.Type.RINGTONE) != null
+        return device.getVolume(AudioStream.Type.RINGTONE) != null
     }
 
     fun onToggleNotificationVolume(): Boolean {
@@ -128,19 +132,19 @@ class ConfigPresenter @Inject internal constructor(
             withView { it.showRequiresPro() }
             return false
         }
-        if (device!!.getVolume(AudioStream.Type.NOTIFICATION) == null) {
+        if (device.getVolume(AudioStream.Type.NOTIFICATION) == null) {
             if (ApiHelper.hasMarshmallow() && !notificationManager.isNotificationPolicyAccessGranted) {
                 // Missing permissions for this, reset value
                 withView { it.showNotificationPermissionView() }
             }
-            device!!.setVolume(AudioStream.Type.NOTIFICATION, streamHelper.getVolumePercentage(device!!.getStreamId(AudioStream.Type.NOTIFICATION)))
+            device.setVolume(AudioStream.Type.NOTIFICATION, streamHelper.getVolumePercentage(device.getStreamId(AudioStream.Type.NOTIFICATION)))
         } else {
-            device!!.setVolume(AudioStream.Type.NOTIFICATION, null)
+            device.setVolume(AudioStream.Type.NOTIFICATION, null)
         }
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe()
-        return device!!.getVolume(AudioStream.Type.NOTIFICATION) != null
+        return device.getVolume(AudioStream.Type.NOTIFICATION) != null
     }
 
     fun onToggleAlarmVolume(): Boolean {
@@ -148,102 +152,106 @@ class ConfigPresenter @Inject internal constructor(
             withView { it.showRequiresPro() }
             return false
         }
-        if (device!!.getVolume(AudioStream.Type.ALARM) == null) {
-            device!!.setVolume(AudioStream.Type.ALARM, streamHelper.getVolumePercentage(device!!.getStreamId(AudioStream.Type.ALARM)))
+        if (device.getVolume(AudioStream.Type.ALARM) == null) {
+            device.setVolume(AudioStream.Type.ALARM, streamHelper.getVolumePercentage(device.getStreamId(AudioStream.Type.ALARM)))
         } else {
-            device!!.setVolume(AudioStream.Type.ALARM, null)
+            device.setVolume(AudioStream.Type.ALARM, null)
         }
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe()
-        return device!!.getVolume(AudioStream.Type.ALARM) != null
+        return device.getVolume(AudioStream.Type.ALARM) != null
     }
 
     fun onToggleAutoPlay(): Boolean {
         if (isProVersion) {
-            device!!.autoPlay = !device!!.autoPlay
+            device.autoPlay = !device.autoPlay
             deviceManager.save(setOf(device))
                     .subscribeOn(Schedulers.computation())
                     .subscribe()
         } else {
             withView { it.showRequiresPro() }
         }
-        return device!!.autoPlay
+        return device.autoPlay
     }
 
     fun onToggleVolumeLock(): Boolean {
         if (isProVersion) {
-            device!!.volumeLock = !device!!.volumeLock
+            device.volumeLock = !device.volumeLock
             deviceManager.save(setOf(device))
                     .subscribeOn(Schedulers.computation())
                     .subscribe()
         } else {
             withView { it.showRequiresPro() }
         }
-        return device!!.autoPlay
+        return device.autoPlay
     }
 
     fun onToggleKeepAwake(): Boolean {
         if (isProVersion) {
-            device!!.keepAwake = !device!!.keepAwake
+            device.keepAwake = !device.keepAwake
             deviceManager.save(setOf(device))
                     .subscribeOn(Schedulers.computation())
-                    .subscribe()
+                    .subscribe { devices ->
+                        devices.values.firstOrNull { it.address == device.address && it.keepAwake }?.let {
+                            wakelockMan.tryAquire()
+                        }
+                    }
         } else {
             withView { it.showRequiresPro() }
         }
-        return device!!.keepAwake
+        return device.keepAwake
     }
 
     fun onEditReactionDelayClicked() {
-        val delay = if (device!!.actionDelay != null) device!!.actionDelay!! else Settings.DEFAULT_REACTION_DELAY
+        val delay = if (device.actionDelay != null) device.actionDelay!! else Settings.DEFAULT_REACTION_DELAY
         withView { it.showReactionDelayDialog(delay) }
     }
 
     fun onEditReactionDelay(_delay: Long) {
         var delay = _delay
         if (delay < -1) delay = -1
-        device!!.actionDelay = if (delay == -1L) null else delay
+        device.actionDelay = if (delay == -1L) null else delay
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe()
     }
 
     fun onEditAdjustmentDelayClicked() {
-        val delay = if (device!!.adjustmentDelay != null) device!!.adjustmentDelay!! else Settings.DEFAULT_ADJUSTMENT_DELAY
+        val delay = if (device.adjustmentDelay != null) device.adjustmentDelay!! else Settings.DEFAULT_ADJUSTMENT_DELAY
         withView { it.showAdjustmentDelayDialog(delay) }
     }
 
     fun onEditAdjustmentDelay(_delay: Long) {
         var delay = _delay
         if (delay < -1) delay = -1
-        device!!.adjustmentDelay = if (delay == -1L) null else delay
+        device.adjustmentDelay = if (delay == -1L) null else delay
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe()
     }
 
     fun onEditMonitoringDurationClicked() {
-        val delay = if (device!!.monitoringDuration != null) device!!.monitoringDuration!! else Settings.DEFAULT_MONITORING_DURATION
+        val delay = if (device.monitoringDuration != null) device.monitoringDuration!! else Settings.DEFAULT_MONITORING_DURATION
         withView { it.showMonitoringDurationDialog(delay) }
     }
 
     fun onEditMonitoringDuration(_duration: Long) {
         var duration = _duration
         if (duration < -1) duration = -1
-        device!!.monitoringDuration = if (duration == -1L) null else duration
+        device.monitoringDuration = if (duration == -1L) null else duration
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
                 .subscribe()
     }
 
     fun onRenameClicked() {
-        if (isProVersion) withView { it.showRenameDialog(device!!.alias) }
+        if (isProVersion) withView { it.showRenameDialog(device.alias) }
         else withView { it.showRequiresPro() }
     }
 
     fun onRenameDevice(newAlias: String?) {
-        if (newAlias == null) device!!.setAlias(device!!.name!!) else device!!.setAlias(newAlias)
+        if (newAlias == null) device.setAlias(device.name!!) else device.setAlias(newAlias)
         deviceManager.updateDevices()
                 .subscribeOn(Schedulers.io())
                 .subscribe()
@@ -255,7 +263,7 @@ class ConfigPresenter @Inject internal constructor(
                 .subscribe()
         withView {
             it.showUndoDeletion(Runnable {
-                deviceManager.addNewDevice(device!!.sourceDevice)
+                deviceManager.addNewDevice(device.sourceDevice)
                         .subscribeOn(Schedulers.io())
                         .subscribe()
             })
@@ -284,7 +292,7 @@ class ConfigPresenter @Inject internal constructor(
     }
 
     fun onLaunchAppSelected(item: AppTool.Item) {
-        device!!.launchPkg = item.packageName
+        device.launchPkg = item.packageName
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.io())
                 .subscribe()
