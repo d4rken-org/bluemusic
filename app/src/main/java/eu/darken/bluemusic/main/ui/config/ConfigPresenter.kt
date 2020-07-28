@@ -193,8 +193,10 @@ class ConfigPresenter @Inject internal constructor(
             deviceManager.save(setOf(device))
                     .subscribeOn(Schedulers.computation())
                     .subscribe { devices ->
-                        devices.values.firstOrNull { it.address == device.address && it.keepAwake }?.let {
+                        if (devices.values.any { it.isActive && it.keepAwake }) {
                             wakelockMan.tryAquire()
+                        } else if (devices.values.none { it.isActive && it.keepAwake }) {
+                            wakelockMan.tryRelease()
                         }
                     }
         } else {
