@@ -166,16 +166,16 @@ class ConfigFragment : Fragment(), ConfigPresenter.View {
         prefVolumeLockBox.visibility = if (device.address == FakeSpeakerDevice.ADDR) View.GONE else View.VISIBLE
         prefKeepAwake.isChecked = device.keepAwake
         prefKeepAwakeBox.visibility = if (device.address == FakeSpeakerDevice.ADDR) View.GONE else View.VISIBLE
+
         prefLaunchApp.visibility = View.VISIBLE
-        if (device.launchPkg != null) {
-            var label = device.launchPkg
-            try {
-                label = AppTool.getLabel(requireContext(), device.launchPkg)
-            } catch (e: PackageManager.NameNotFoundException) {
-                Timber.e(e)
-            }
-            prefLaunchApp.setDescription(label)
+        val launchLabel = try {
+            device.launchPkg?.let { AppTool.getLabel(requireContext(), it) }
+        } catch (e: PackageManager.NameNotFoundException) {
+            Timber.e(e)
+            null
         }
+        prefLaunchApp.setDescription(launchLabel ?: getString(R.string.description_launch_app))
+
         prefReactionDelay.visibility = View.VISIBLE
         prefAdjustmentDelay.visibility = View.VISIBLE
         prefMonitoringDuration.visibility = View.VISIBLE
@@ -277,7 +277,7 @@ class ConfigFragment : Fragment(), ConfigPresenter.View {
     }
 
     override fun showAppSelectionDialog(items: List<AppTool.Item>) {
-        val adapter = LaunchAppAdapter(requireContext(), items)
+        val adapter = LaunchAppAdapter(items)
         AlertDialog.Builder(requireContext())
                 .setAdapter(adapter) { _: DialogInterface?, pos: Int -> presenter.onLaunchAppSelected(adapter.getItem(pos)) }
                 .show()

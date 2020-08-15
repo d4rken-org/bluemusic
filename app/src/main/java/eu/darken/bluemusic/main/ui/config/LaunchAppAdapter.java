@@ -1,7 +1,6 @@
 package eu.darken.bluemusic.main.ui.config;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +16,9 @@ import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.util.AppTool;
 
 public class LaunchAppAdapter extends BaseAdapter {
-    private final Context context;
     private final List<AppTool.Item> apps;
 
-    public LaunchAppAdapter(Context context, List<AppTool.Item> apps) {
-        this.context = context;
+    public LaunchAppAdapter(List<AppTool.Item> apps) {
         this.apps = apps;
     }
 
