@@ -1,0 +1,1 @@
+Bluetooth cihazları üçün danışıq və musiqi səs səviyyəsinin konfiqurasiyası.
