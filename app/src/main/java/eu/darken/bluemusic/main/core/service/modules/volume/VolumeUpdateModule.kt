@@ -40,7 +40,10 @@ internal class VolumeUpdateModule @Inject constructor(
                 .subscribe { actives ->
                     deviceManager.save(actives)
                             .subscribeOn(Schedulers.computation())
-                            .subscribe()
+                            .subscribe(
+                                    {},
+                                    { e -> Timber.e(e, "Failed to update volume.") }
+                            )
                 }
     }
 }

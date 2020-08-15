@@ -165,58 +165,73 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
         device.setVolume(AudioStream.Type.MUSIC, percentage);
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe(managedDevices -> {
-                    if (!device.isActive()) return;
-                    streamHelper.changeVolume(device.getStreamId(AudioStream.Type.MUSIC), device.getVolume(AudioStream.Type.MUSIC), true, 0);
-                });
+                .subscribe(
+                        managedDevices -> {
+                            if (!device.isActive()) return;
+                            streamHelper.changeVolume(device.getStreamId(AudioStream.Type.MUSIC), device.getVolume(AudioStream.Type.MUSIC), true, 0);
+                        },
+                        e -> Timber.e(e, "Failed to update music volume.")
+                );
     }
 
     void onUpdateCallVolume(ManagedDevice device, float percentage) {
         device.setVolume(AudioStream.Type.CALL, percentage);
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe(managedDevices -> {
-                    if (!device.isActive()) return;
-                    streamHelper.changeVolume(device.getStreamId(AudioStream.Type.CALL), device.getVolume(AudioStream.Type.CALL), true, 0);
-                });
+                .subscribe(
+                        managedDevices -> {
+                            if (!device.isActive()) return;
+                            streamHelper.changeVolume(device.getStreamId(AudioStream.Type.CALL), device.getVolume(AudioStream.Type.CALL), true, 0);
+                        },
+                        e -> Timber.e(e, "Failed to update call volume.")
+                );
     }
 
     void onUpdateRingVolume(ManagedDevice device, float percentage) {
         device.setVolume(AudioStream.Type.RINGTONE, percentage);
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe(managedDevices -> {
-                    if (!device.isActive()) return;
-                    if (ApiHelper.hasMarshmallow() && !notificationManager.isNotificationPolicyAccessGranted()) {
-                        Timber.w("Tried to set ring volume but notification policy permissions were missing.");
-                    } else {
-                        streamHelper.changeVolume(device.getStreamId(AudioStream.Type.RINGTONE), device.getVolume(AudioStream.Type.RINGTONE), true, 0);
-                    }
-                });
+                .subscribe(
+                        managedDevices -> {
+                            if (!device.isActive()) return;
+                            if (ApiHelper.hasMarshmallow() && !notificationManager.isNotificationPolicyAccessGranted()) {
+                                Timber.w("Tried to set ring volume but notification policy permissions were missing.");
+                            } else {
+                                streamHelper.changeVolume(device.getStreamId(AudioStream.Type.RINGTONE), device.getVolume(AudioStream.Type.RINGTONE), true, 0);
+                            }
+                        },
+                        e -> Timber.e(e, "Failed to update ring volume.")
+                );
     }
 
     void onUpdateNotificationVolume(ManagedDevice device, float percentage) {
         device.setVolume(AudioStream.Type.NOTIFICATION, percentage);
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe(managedDevices -> {
-                    if (!device.isActive()) return;
-                    if (ApiHelper.hasMarshmallow() && !notificationManager.isNotificationPolicyAccessGranted()) {
-                        Timber.w("Tried to set notification volume but notification policy permissions were missing.");
-                    } else {
-                        streamHelper.changeVolume(device.getStreamId(AudioStream.Type.NOTIFICATION), device.getVolume(AudioStream.Type.NOTIFICATION), true, 0);
-                    }
-                });
+                .subscribe(
+                        managedDevices -> {
+                            if (!device.isActive()) return;
+                            if (ApiHelper.hasMarshmallow() && !notificationManager.isNotificationPolicyAccessGranted()) {
+                                Timber.w("Tried to set notification volume but notification policy permissions were missing.");
+                            } else {
+                                streamHelper.changeVolume(device.getStreamId(AudioStream.Type.NOTIFICATION), device.getVolume(AudioStream.Type.NOTIFICATION), true, 0);
+                            }
+                        },
+                        e -> Timber.e(e, "Failed to update notification volume.")
+                );
     }
 
     void onUpdateAlarmVolume(ManagedDevice device, float percentage) {
         device.setVolume(AudioStream.Type.ALARM, percentage);
         deviceManager.save(Collections.singleton(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe(managedDevices -> {
-                    if (!device.isActive()) return;
-                    streamHelper.changeVolume(device.getStreamId(AudioStream.Type.ALARM), device.getVolume(AudioStream.Type.ALARM), true, 0);
-                });
+                .subscribe(
+                        managedDevices -> {
+                            if (!device.isActive()) return;
+                            streamHelper.changeVolume(device.getStreamId(AudioStream.Type.ALARM), device.getVolume(AudioStream.Type.ALARM), true, 0);
+                        },
+                        e -> Timber.e(e, "Failed to update alarm volume.")
+                );
     }
 
     void onUpgradeClicked(Activity activity) {

@@ -95,7 +95,10 @@ class ConfigPresenter @Inject internal constructor(
         } else device.setVolume(AudioStream.Type.MUSIC, null)
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe()
+                .subscribe(
+                        {},
+                        { e -> Timber.e(e, "Failed to toggle music volume.") }
+                )
     }
 
     fun onToggleCallVolume() {
@@ -104,7 +107,10 @@ class ConfigPresenter @Inject internal constructor(
         } else device.setVolume(AudioStream.Type.CALL, null)
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe()
+                .subscribe(
+                        {},
+                        { e -> Timber.e(e, "Failed to toggle call volume.") }
+                )
     }
 
     fun onToggleRingVolume(): Boolean {
@@ -123,7 +129,10 @@ class ConfigPresenter @Inject internal constructor(
         }
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe()
+                .subscribe(
+                        {},
+                        { e -> Timber.e(e, "Failed to toggle ring volume.") }
+                )
         return device.getVolume(AudioStream.Type.RINGTONE) != null
     }
 
@@ -143,7 +152,10 @@ class ConfigPresenter @Inject internal constructor(
         }
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe()
+                .subscribe(
+                        {},
+                        { e -> Timber.e(e, "Failed to toggle notification volume.") }
+                )
         return device.getVolume(AudioStream.Type.NOTIFICATION) != null
     }
 
@@ -159,7 +171,10 @@ class ConfigPresenter @Inject internal constructor(
         }
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe()
+                .subscribe(
+                        {},
+                        { e -> Timber.e(e, "Failed to toggle alarm volume.") }
+                )
         return device.getVolume(AudioStream.Type.ALARM) != null
     }
 
@@ -168,7 +183,10 @@ class ConfigPresenter @Inject internal constructor(
             device.autoPlay = !device.autoPlay
             deviceManager.save(setOf(device))
                     .subscribeOn(Schedulers.computation())
-                    .subscribe()
+                    .subscribe(
+                            {},
+                            { e -> Timber.e(e, "Failed to toggle autoplay.") }
+                    )
         } else {
             withView { it.showRequiresPro() }
         }
@@ -180,7 +198,10 @@ class ConfigPresenter @Inject internal constructor(
             device.volumeLock = !device.volumeLock
             deviceManager.save(setOf(device))
                     .subscribeOn(Schedulers.computation())
-                    .subscribe()
+                    .subscribe(
+                            {},
+                            { e -> Timber.e(e, "Failed to toggle volume lock.") }
+                    )
         } else {
             withView { it.showRequiresPro() }
         }
@@ -192,13 +213,16 @@ class ConfigPresenter @Inject internal constructor(
             device.keepAwake = !device.keepAwake
             deviceManager.save(setOf(device))
                     .subscribeOn(Schedulers.computation())
-                    .subscribe { devices ->
-                        if (devices.values.any { it.isActive && it.keepAwake }) {
-                            wakelockMan.tryAquire()
-                        } else if (devices.values.none { it.isActive && it.keepAwake }) {
-                            wakelockMan.tryRelease()
-                        }
-                    }
+                    .subscribe(
+                            { devices ->
+                                if (devices.values.any { it.isActive && it.keepAwake }) {
+                                    wakelockMan.tryAquire()
+                                } else if (devices.values.none { it.isActive && it.keepAwake }) {
+                                    wakelockMan.tryRelease()
+                                }
+                            },
+                            { e -> Timber.e(e, "Failed to toggle keep alive.") }
+                    )
         } else {
             withView { it.showRequiresPro() }
         }
@@ -216,7 +240,10 @@ class ConfigPresenter @Inject internal constructor(
         device.actionDelay = if (delay == -1L) null else delay
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe()
+                .subscribe(
+                        {},
+                        { e -> Timber.e(e, "Failed to edit reaction delay.") }
+                )
     }
 
     fun onEditAdjustmentDelayClicked() {
@@ -230,7 +257,10 @@ class ConfigPresenter @Inject internal constructor(
         device.adjustmentDelay = if (delay == -1L) null else delay
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe()
+                .subscribe(
+                        {},
+                        { e -> Timber.e(e, "Failed to update adjustment delay.") }
+                )
     }
 
     fun onEditMonitoringDurationClicked() {
@@ -244,7 +274,10 @@ class ConfigPresenter @Inject internal constructor(
         device.monitoringDuration = if (duration == -1L) null else duration
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.computation())
-                .subscribe()
+                .subscribe(
+                        {},
+                        { e -> Timber.e(e, "Failed to edit monitoring duration.") }
+                )
     }
 
     fun onRenameClicked() {
@@ -297,7 +330,10 @@ class ConfigPresenter @Inject internal constructor(
         device.launchPkg = item.packageName
         deviceManager.save(setOf(device))
                 .subscribeOn(Schedulers.io())
-                .subscribe()
+                .subscribe(
+                        {},
+                        { e -> Timber.e(e, "Failed to update launch app.") }
+                )
     }
 
     interface View : Presenter.View {
