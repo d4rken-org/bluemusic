@@ -148,7 +148,7 @@ public class DeviceManager {
                     }
                 })
                 .doOnError(Timber::e)
-                .doOnSuccess(newDevice -> save(Collections.singleton(newDevice)).subscribe());
+                .flatMap(newDevice -> save(Collections.singleton(newDevice)).map(res -> newDevice));
     }
 
     public Completable removeDevice(ManagedDevice device) {
