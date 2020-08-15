@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.main.ui.managed;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import butterknife.BindView;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
+import eu.darken.bluemusic.util.ActivityUtil;
 import eu.darken.bluemusic.util.ApiHelper;
 import eu.darken.bluemusic.util.AppTool;
 import eu.darken.bluemusic.util.Check;
@@ -196,10 +198,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                 ringCounter.setText(String.valueOf(ringSeekbar.getProgress()));
             }
 
-            ringPermissionAction.setOnClickListener(v -> {
-                Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                getContext().startActivity(intent);
-            });
+            ringPermissionAction.setOnClickListener(v -> ActivityUtil.tryStartActivity((Activity) getContext(), new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)));
 
             final NotificationManager notifMan = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
             Check.notNull(notifMan);
@@ -234,10 +233,7 @@ class ManagedDevicesAdapter extends BasicAdapter<ManagedDevicesAdapter.ManagedDe
                 notificationCounter.setText(String.valueOf(notificationSeekbar.getProgress()));
             }
 
-            notificationPermissionAction.setOnClickListener(v -> {
-                Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                getContext().startActivity(intent);
-            });
+            notificationPermissionAction.setOnClickListener(v -> ActivityUtil.tryStartActivity((Activity) getContext(), new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)));
 
             notificationPermissionLabel.setVisibility(needsPermission ? View.VISIBLE : View.GONE);
             notificationPermissionAction.setVisibility(needsPermission ? View.VISIBLE : View.GONE);

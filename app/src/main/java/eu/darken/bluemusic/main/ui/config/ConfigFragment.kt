@@ -1,7 +1,6 @@
 package eu.darken.bluemusic.main.ui.config
 
 import android.annotation.SuppressLint
-import android.content.ActivityNotFoundException
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -27,6 +26,7 @@ import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.database.ManagedDevice
 import eu.darken.bluemusic.main.ui.MainActivity
+import eu.darken.bluemusic.util.ActivityUtil
 import eu.darken.bluemusic.util.AppTool
 import eu.darken.bluemusic.util.Check
 import eu.darken.bluemusic.util.ui.PreferenceView
@@ -285,12 +285,7 @@ class ConfigFragment : Fragment(), ConfigPresenter.View {
 
     @RequiresApi(api = Build.VERSION_CODES.M) override fun showNotificationPermissionView() {
         Toast.makeText(context, R.string.description_ring_volume_additional_permission, Toast.LENGTH_LONG).show()
-        val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
-        try {
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            Timber.e(e)
-        }
+        ActivityUtil.tryStartActivity(this, Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
     }
 
     override fun showUndoDeletion(undoAction: Runnable) {
