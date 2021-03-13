@@ -2,6 +2,8 @@ package eu.darken.bluemusic.util;
 
 import android.util.Log;
 
+import com.bugsnag.android.Event;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Locale;
@@ -34,11 +36,11 @@ public class BugsnagTree extends Timber.DebugTree {
         }
     }
 
-    public void update(@NonNull com.bugsnag.android.Error error) {
+    public void update(@NonNull Event event) {
         synchronized (buffer) {
             int i = 1;
-            for (String message : buffer) error.addToTab("Log", String.format(Locale.US, "%03d", i++), message);
-            error.addToTab("Log", String.format(Locale.US, "%03d", i), Log.getStackTraceString(error.getException()));
+            for (String message : buffer) event.addMetadata("Log", String.format(Locale.US, "%03d", i++), message);
+            event.addMetadata("Log", String.format(Locale.US, "%03d", i), Log.getStackTraceString(event.getOriginalError()));
         }
     }
 

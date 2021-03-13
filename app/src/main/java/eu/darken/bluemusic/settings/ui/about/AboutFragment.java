@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.bugsnag.android.Bugsnag;
-import com.bugsnag.android.Severity;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.ActionBar;
@@ -54,7 +53,7 @@ public class AboutFragment extends PreferenceFragmentCompat implements AboutPres
         uploadPref = findPreference("about.debug.upload");
         uploadPref.setVisible(false);
         uploadPref.setOnPreferenceClickListener(preference -> {
-            Bugsnag.notify(new ManualReport(), Severity.INFO);
+            Bugsnag.notify(new ManualReport());
             Snackbar.make(getView(), "Done :) Now mail me!", Snackbar.LENGTH_SHORT).show();
             return true;
         });

@@ -13,7 +13,7 @@ import dagger.Provides;
 
 
 @Module
-class AndroidModule {
+public class AndroidModule {
     private final App app;
 
     AndroidModule(App app) {this.app = app;}

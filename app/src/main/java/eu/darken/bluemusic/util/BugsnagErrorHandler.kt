@@ -1,30 +1,31 @@
-package eu.darken.bluemusic.util;
+package eu.darken.bluemusic.util
 
-
-import com.bugsnag.android.BeforeNotify;
-
-import javax.inject.Inject;
-
-import eu.darken.bluemusic.AppComponent;
-import eu.darken.bluemusic.BuildConfig;
-import eu.darken.bluemusic.settings.core.Settings;
+import android.content.ActivityNotFoundException
+import com.bugsnag.android.Event
+import com.bugsnag.android.OnErrorCallback
+import com.bugsnag.android.Severity
+import eu.darken.bluemusic.AppComponent
+import eu.darken.bluemusic.BuildConfig
+import eu.darken.bluemusic.ManualReport
+import eu.darken.bluemusic.settings.core.Settings
+import javax.inject.Inject
 
 @AppComponent.Scope
-public class BugsnagErrorHandler implements BeforeNotify {
-    private final Settings settings;
-    private final BugsnagTree bugsnagTree;
+class BugsnagErrorHandler @Inject constructor(
+        private val settings: Settings,
+        private val bugsnagTree: BugsnagTree
+) : OnErrorCallback {
 
-    @Inject
-    public BugsnagErrorHandler(Settings settings, BugsnagTree bugsnagTree) {
-        this.settings = settings;
-        this.bugsnagTree = bugsnagTree;
+    override fun onError(event: Event): Boolean {
+        bugsnagTree.update(event)
+
+        event.severity = when (event.originalError) {
+            is ManualReport -> Severity.INFO
+            is ActivityNotFoundException -> Severity.WARNING
+            else -> Severity.ERROR
+        }
+
+        return !BuildConfig.DEBUG && settings.isBugReportingEnabled
     }
 
-    @Override
-    public boolean run(com.bugsnag.android.Error error) {
-        if (!settings.isBugReportingEnabled()) return false;
-        bugsnagTree.update(error);
-
-        return !BuildConfig.DEBUG;
-    }
 }
