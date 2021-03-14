@@ -108,4 +108,6 @@
     <string name="android10_applaunch_issue_description">Android 10 restricts how apps can be launched from the background. To allow opening apps when a Bluetooth device connects, grant the permission "Display over other apps" (SYSTEM_ALERT_WINDOW).</string>
     <string name="label_alarm_volume">Alarm volume</string>
     <string name="description_alarm_volume">Some alarm apps use the music volume instead.</string>
+    <string name="nudge_volume_label">Nudge volume</string>
+    <string name="nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
 </resources>

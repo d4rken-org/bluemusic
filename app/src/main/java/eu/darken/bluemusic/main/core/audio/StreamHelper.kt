@@ -5,6 +5,7 @@ import eu.darken.bluemusic.AppComponent
 import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 
 @AppComponent.Scope
@@ -55,10 +56,41 @@ constructor(private val audioManager: AudioManager) {
         return audioManager.getStreamVolume(streamId.id).toFloat() / audioManager.getStreamMaxVolume(streamId.id)
     }
 
-    fun changeVolume(streamId: AudioStream.Id, percent: Float, visible: Boolean, delay: Long): Boolean {
+    fun lowerByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {
+        val current = getCurrentVolume(streamId)
+        val max = getMaxVolume(streamId)
+        Timber.v("lowerByOne(streamId=%s, visible=%b): current=%d, max=%d", streamId, visible, current, max)
+
+        if (current == 0) {
+            Timber.w("Volume was at 0, can't lower by one more.")
+            return false
+        }
+
+        return changeVolume(streamId, (current - 1f) / max, visible, 0)
+    }
+
+    fun increaseByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {
+        val current = getCurrentVolume(streamId)
+        val max = getMaxVolume(streamId)
+        Timber.v("increaseByOne(streamId=%s, visible=%b): current=%d, max=%d", streamId, visible, current, max)
+
+        if (current == max) {
+            Timber.w("Volume was at mav, can't increase by one more.")
+            return false
+        }
+
+        return changeVolume(streamId, (current + 1f) / max, visible, 0)
+    }
+
+    fun changeVolume(
+            streamId: AudioStream.Id,
+            percent: Float,
+            visible: Boolean,
+            delay: Long
+    ): Boolean {
         val currentVolume = getCurrentVolume(streamId)
         val max = getMaxVolume(streamId)
-        val target = Math.round(max * percent)
+        val target = (max * percent).roundToInt()
 
         Timber.v("changeVolume(streamId=%s, percent=%f, visible=%b, delay=%d)", streamId, percent, visible, delay)
 

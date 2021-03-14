@@ -173,13 +173,26 @@
                 android:layout_height="wrap_content"
                 app:pvDescription="@string/description_keep_awake"
                 app:pvIcon="@drawable/ic_lightbulb_outline_white_24dp"
-                app:pvTitle="@string/label_keep_awake"/>
+                app:pvTitle="@string/label_keep_awake" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@drawable/list_divider_material"/>
+                android:background="@drawable/list_divider_material" />
         </LinearLayout>
+
+        <eu.darken.bluemusic.util.ui.SwitchPreferenceView
+            android:id="@+id/pref_volume_nudge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:pvDescription="@string/nudge_volume_description"
+            app:pvIcon="@drawable/ic_basketball_white_24dp"
+            app:pvTitle="@string/nudge_volume_label" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/list_divider_material" />
 
         <eu.darken.bluemusic.util.ui.PreferenceView
             android:id="@+id/pref_reaction_delay"
@@ -189,7 +202,7 @@
             app:pvDescription="@string/description_reaction_delay"
             app:pvIcon="@drawable/ic_timer_white_24dp"
             app:pvTitle="@string/label_reaction_delay"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <View
             android:layout_width="match_parent"

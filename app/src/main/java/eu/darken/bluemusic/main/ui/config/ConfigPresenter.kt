@@ -229,6 +229,19 @@ class ConfigPresenter @Inject internal constructor(
         return device.keepAwake
     }
 
+
+    fun onToggleNudgeVolume(): Boolean {
+        device.nudgeVolume = !device.nudgeVolume
+        deviceManager.save(setOf(device))
+                .subscribeOn(Schedulers.computation())
+                .subscribeOn(Schedulers.computation())
+                .subscribe(
+                        {},
+                        { e -> Timber.e(e, "Failed to toggle nudge volume.") }
+                )
+        return device.nudgeVolume
+    }
+
     fun onEditReactionDelayClicked() {
         val delay = if (device.actionDelay != null) device.actionDelay!! else Settings.DEFAULT_REACTION_DELAY
         withView { it.showReactionDelayDialog(delay) }

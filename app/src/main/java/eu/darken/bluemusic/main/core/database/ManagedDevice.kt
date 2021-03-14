@@ -59,6 +59,12 @@ class ManagedDevice internal constructor(val sourceDevice: SourceDevice, val dev
             deviceConfig.keepAwake = enabled
         }
 
+    var nudgeVolume: Boolean
+        get() = deviceConfig.nudgeVolume
+        set(enabled) {
+            deviceConfig.nudgeVolume = enabled
+        }
+
     var launchPkg: String?
         get() = deviceConfig.launchPkg
         set(pkg) {

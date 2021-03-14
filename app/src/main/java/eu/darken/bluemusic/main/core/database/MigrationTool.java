@@ -8,7 +8,7 @@ import io.realm.RealmObjectSchema;
 
 
 public class MigrationTool {
-    private static final int SCHEMA_VERSION = 8;
+    private static final int SCHEMA_VERSION = 9;
     // Schema 1 -> 2
     private final RealmMigration legacyMigration = (realm, oldVersion, newVersion) -> {
         final RealmObjectSchema con = realm.getSchema().get("DeviceConfig");
@@ -89,6 +89,15 @@ public class MigrationTool {
         if (!con.hasField("alarmVolume")) con.addField("alarmVolume", Float.class);
     };
 
+    // Schema 8 -> 9
+    private final RealmMigration eightToNineMigration = (realm, oldVersion, newVersion) -> {
+        final RealmObjectSchema con = realm.getSchema().get("DeviceConfig");
+        if (con == null) return;
+
+        // Property 'DeviceConfig.nudgeVolume' has been added.
+        if (!con.hasField("nudgeVolume")) con.addField("nudgeVolume", boolean.class);
+    };
+
     private final List<RealmMigration> subMigrations = Arrays.asList(
             legacyMigration,
             twoToThreeMigration,
@@ -96,7 +105,8 @@ public class MigrationTool {
             fourToFiveMigration,
             fiveToSixMigration,
             sixToSevenMigration,
-            sevenToEightMigration
+            sevenToEightMigration,
+            eightToNineMigration
     );
 
     public int getSchemaVersion() {

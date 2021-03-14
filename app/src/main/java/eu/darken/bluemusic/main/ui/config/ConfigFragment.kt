@@ -55,6 +55,7 @@ class ConfigFragment : Fragment(), ConfigPresenter.View {
     @BindView(R.id.pref_volume_lock_box) lateinit var prefVolumeLockBox: ViewGroup
     @BindView(R.id.pref_keep_awake) lateinit var prefKeepAwake: SwitchPreferenceView
     @BindView(R.id.pref_keep_awake_box) lateinit var prefKeepAwakeBox: ViewGroup
+    @BindView(R.id.pref_volume_nudge) lateinit var prefNudgeVolume: SwitchPreferenceView
     @BindView(R.id.pref_monitoring_duration) lateinit var prefMonitoringDuration: PreferenceView
     @BindView(R.id.pref_reaction_delay) lateinit var prefReactionDelay: PreferenceView
     @BindView(R.id.pref_adjustment_delay) lateinit var prefAdjustmentDelay: PreferenceView
@@ -90,6 +91,7 @@ class ConfigFragment : Fragment(), ConfigPresenter.View {
         }
         prefVolumeLock.setOnCheckedChangedListener { v: SwitchPreferenceView, _: Boolean -> v.isChecked = presenter.onToggleVolumeLock() }
         prefKeepAwake.setOnCheckedChangedListener { v: SwitchPreferenceView, _: Boolean -> v.isChecked = presenter.onToggleKeepAwake() }
+        prefNudgeVolume.setOnCheckedChangedListener { v, _ -> v.isChecked = presenter.onToggleNudgeVolume() }
         prefMonitoringDuration.setOnClickListener { presenter.onEditMonitoringDurationClicked() }
         prefReactionDelay.setOnClickListener { presenter.onEditReactionDelayClicked() }
         prefAdjustmentDelay.setOnClickListener { presenter.onEditAdjustmentDelayClicked() }
@@ -166,6 +168,8 @@ class ConfigFragment : Fragment(), ConfigPresenter.View {
         prefVolumeLockBox.visibility = if (device.address == FakeSpeakerDevice.ADDR) View.GONE else View.VISIBLE
         prefKeepAwake.isChecked = device.keepAwake
         prefKeepAwakeBox.visibility = if (device.address == FakeSpeakerDevice.ADDR) View.GONE else View.VISIBLE
+
+        prefNudgeVolume.isChecked = device.nudgeVolume
 
         prefLaunchApp.visibility = View.VISIBLE
         val launchLabel = try {

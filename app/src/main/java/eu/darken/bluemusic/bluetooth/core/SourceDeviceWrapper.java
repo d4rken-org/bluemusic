@@ -47,7 +47,7 @@ class SourceDeviceWrapper implements SourceDevice {
             Method method = realDevice.getClass().getMethod("getAliasName");
             return (String) method.invoke(realDevice);
         } catch (Exception e) {
-            Timber.e(e);
+            Timber.e("Failed to use getAliasName(): %s", e.getMessage());
         }
         return null;
     }

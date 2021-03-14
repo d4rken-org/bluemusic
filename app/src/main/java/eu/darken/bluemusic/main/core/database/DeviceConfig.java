@@ -23,6 +23,8 @@ public class DeviceConfig extends RealmObject {
 
     boolean keepAwake;
 
+    boolean nudgeVolume;
+
     boolean autoplay;
 
     String launchPkg;

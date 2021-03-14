@@ -1,22 +1,16 @@
-package eu.darken.bluemusic.main.core.service.modules.events;
+package eu.darken.bluemusic.main.core.service.modules.events
 
-import javax.inject.Inject;
-
-import eu.darken.bluemusic.main.core.audio.AudioStream;
-import eu.darken.bluemusic.main.core.audio.StreamHelper;
-import eu.darken.bluemusic.main.core.service.BlueMusicServiceComponent;
-import eu.darken.bluemusic.settings.core.Settings;
+import eu.darken.bluemusic.main.core.audio.AudioStream
+import eu.darken.bluemusic.main.core.audio.StreamHelper
+import eu.darken.bluemusic.main.core.service.BlueMusicServiceComponent
+import eu.darken.bluemusic.settings.core.Settings
+import javax.inject.Inject
 
 @BlueMusicServiceComponent.Scope
-public class CallVolumeModule extends BaseVolumeModule {
+class CallVolumeModule @Inject constructor(
+        settings: Settings,
+        streamHelper: StreamHelper
+) : BaseVolumeModule(settings, streamHelper) {
 
-    @Inject
-    public CallVolumeModule(Settings settings, StreamHelper streamHelper) {
-        super(settings, streamHelper);
-    }
-
-    @Override
-    AudioStream.Type getType() {
-        return AudioStream.Type.CALL;
-    }
+    override val type: AudioStream.Type = AudioStream.Type.CALL
 }

@@ -9,6 +9,6 @@ import javax.inject.Inject
 internal class MusicMonitorModule @Inject constructor(
         streamHelper: StreamHelper
 ) : BaseMonitorModule(streamHelper) {
-    override val type: AudioStream.Type
-        get() = AudioStream.Type.MUSIC
+
+    override val type: AudioStream.Type = AudioStream.Type.MUSIC
 }
