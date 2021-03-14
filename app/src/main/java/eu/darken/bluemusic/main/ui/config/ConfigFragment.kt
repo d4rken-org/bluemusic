@@ -188,7 +188,7 @@ class ConfigFragment : Fragment(), ConfigPresenter.View {
                 .setTitle(R.string.label_premium_version)
                 .setMessage(R.string.description_premium_required_this_extra_option)
                 .setIcon(R.drawable.ic_stars_white_24dp)
-                .setPositiveButton(R.string.action_upgrade) { _: DialogInterface?, _: Int -> presenter.onPurchaseUpgrade(activity) }
+                .setPositiveButton(R.string.action_upgrade) { _: DialogInterface?, _: Int -> presenter.onPurchaseUpgrade(requireActivity()) }
                 .setNegativeButton(R.string.action_cancel) { _: DialogInterface?, _: Int -> }
                 .show()
     }

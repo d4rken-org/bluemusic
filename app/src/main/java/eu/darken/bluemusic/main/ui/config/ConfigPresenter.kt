@@ -85,7 +85,7 @@ class ConfigPresenter @Inject internal constructor(
         } else if (upgradeSub != null) upgradeSub!!.dispose()
     }
 
-    fun onPurchaseUpgrade(activity: Activity?) {
+    fun onPurchaseUpgrade(activity: Activity) {
         iapHelper.buyProVersion(activity)
     }
 
@@ -297,11 +297,11 @@ class ConfigPresenter @Inject internal constructor(
                 .subscribeOn(Schedulers.io())
                 .subscribe()
         withView {
-            it.showUndoDeletion(Runnable {
+            it.showUndoDeletion {
                 deviceManager.addNewDevice(device.sourceDevice)
                         .subscribeOn(Schedulers.io())
                         .subscribe()
-            })
+            }
         }
     }
 

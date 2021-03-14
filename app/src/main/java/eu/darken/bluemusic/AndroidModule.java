@@ -1,5 +1,6 @@
 package eu.darken.bluemusic;
 
+import android.app.Application;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,14 +15,11 @@ import dagger.Provides;
 
 @Module
 public class AndroidModule {
-    private final App app;
-
-    AndroidModule(App app) {this.app = app;}
 
     @Provides
     @AppComponent.Scope
-    Context context() {
-        return app.getApplicationContext();
+    Context context(Application application) {
+        return application.getApplicationContext();
     }
 
     @Provides

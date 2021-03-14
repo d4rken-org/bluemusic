@@ -37,7 +37,7 @@ class App : Application(), HasManualActivityInjector, HasManualBroadcastReceiver
         if (BuildConfig.DEBUG) Timber.plant(DebugTree())
 
         DaggerAppComponent.builder()
-                .androidModule(AndroidModule(this))
+                .application(this)
                 .build()
                 .injectMembers(this)
 

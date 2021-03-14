@@ -1,5 +1,7 @@
 package eu.darken.bluemusic
 
+import android.app.Application
+import dagger.BindsInstance
 import dagger.Component
 import dagger.MembersInjector
 import eu.darken.bluemusic.bluetooth.core.DeviceSourceModule
@@ -16,12 +18,13 @@ interface AppComponent : MembersInjector<App> {
     fun inject(app: App)
 
     @Component.Builder interface Builder {
-        fun androidModule(module: AndroidModule): Builder
+        @BindsInstance
+        fun application(application: Application): Builder
         fun build(): AppComponent
     }
 
     @MustBeDocumented
-    @Scope
+    @javax.inject.Scope
     @Retention(AnnotationRetention.RUNTIME)
     annotation class Scope
 }
