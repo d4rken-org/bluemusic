@@ -205,7 +205,7 @@ class ConfigPresenter @Inject internal constructor(
         } else {
             withView { it.showRequiresPro() }
         }
-        return device.autoPlay
+        return device.volumeLock
     }
 
     fun onToggleKeepAwake(): Boolean {
