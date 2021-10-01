@@ -5,7 +5,7 @@ import android.app.Activity;
 import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
-import eu.darken.bluemusic.IAPHelper;
+import eu.darken.bluemusic.util.iap.IAPRepo;
 import eu.darken.mvpbakery.base.Presenter;
 import eu.darken.mvpbakery.injection.ComponentPresenter;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -16,20 +16,20 @@ import io.reactivex.schedulers.Schedulers;
 @SettingsComponent.Scope
 public class SettingsPresenter extends ComponentPresenter<SettingsPresenter.View, SettingsComponent> {
 
-    private final IAPHelper iapHelper;
+    private final IAPRepo iapRepo;
     private Disposable upgradeSub = Disposables.disposed();
     boolean isProVersion = false;
 
     @Inject
-    SettingsPresenter(IAPHelper iapHelper) {
-        this.iapHelper = iapHelper;
+    SettingsPresenter(IAPRepo iapRepo) {
+        this.iapRepo = iapRepo;
     }
 
     @Override
     public void onBindChange(@Nullable View view) {
         super.onBindChange(view);
         if (getView() != null) {
-            upgradeSub = iapHelper.isProVersion()
+            upgradeSub = iapRepo.isProVersion()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(isPremiumVersion -> {
@@ -42,7 +42,7 @@ public class SettingsPresenter extends ComponentPresenter<SettingsPresenter.View
     }
 
     void onUpgradeClicked(Activity activity) {
-        iapHelper.buyProVersion(activity);
+        iapRepo.buyProVersion(activity);
     }
 
     public interface View extends Presenter.View {

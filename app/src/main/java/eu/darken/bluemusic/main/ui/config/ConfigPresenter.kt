@@ -2,7 +2,6 @@ package eu.darken.bluemusic.main.ui.config
 
 import android.app.Activity
 import android.app.NotificationManager
-import eu.darken.bluemusic.IAPHelper
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.database.DeviceManager
@@ -11,6 +10,7 @@ import eu.darken.bluemusic.settings.core.Settings
 import eu.darken.bluemusic.util.ApiHelper
 import eu.darken.bluemusic.util.AppTool
 import eu.darken.bluemusic.util.WakelockMan
+import eu.darken.bluemusic.util.iap.IAPRepo
 import eu.darken.mvpbakery.base.Presenter
 import eu.darken.mvpbakery.injection.ComponentPresenter
 import io.reactivex.Single
@@ -26,7 +26,7 @@ import javax.inject.Inject
 class ConfigPresenter @Inject internal constructor(
         private val deviceManager: DeviceManager,
         private val streamHelper: StreamHelper,
-        private val iapHelper: IAPHelper,
+        private val iapRepo: IAPRepo,
         private val appTool: AppTool,
         private val notificationManager: NotificationManager,
         private val wakelockMan: WakelockMan
@@ -74,8 +74,8 @@ class ConfigPresenter @Inject internal constructor(
 
     private fun updatePro() {
         if (view != null) {
-            iapHelper.check()
-            upgradeSub = iapHelper.isProVersion
+            iapRepo.recheck()
+            upgradeSub = iapRepo.isProVersion
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { isProVersion: Boolean ->
@@ -86,7 +86,7 @@ class ConfigPresenter @Inject internal constructor(
     }
 
     fun onPurchaseUpgrade(activity: Activity) {
-        iapHelper.buyProVersion(activity)
+        iapRepo.buyProVersion(activity)
     }
 
     fun onToggleMusicVolume() {

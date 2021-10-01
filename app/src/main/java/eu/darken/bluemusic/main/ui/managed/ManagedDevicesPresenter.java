@@ -21,13 +21,13 @@ import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
 import eu.darken.bluemusic.BuildConfig;
-import eu.darken.bluemusic.IAPHelper;
 import eu.darken.bluemusic.bluetooth.core.BluetoothSource;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.audio.StreamHelper;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.util.ApiHelper;
+import eu.darken.bluemusic.util.iap.IAPRepo;
 import eu.darken.mvpbakery.base.Presenter;
 import eu.darken.mvpbakery.base.StateListener;
 import eu.darken.mvpbakery.injection.ComponentPresenter;
@@ -41,13 +41,13 @@ import timber.log.Timber;
 public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPresenter.View, ManagedDevicesComponent>
         implements StateListener {
     private final StreamHelper streamHelper;
-    private final IAPHelper iapHelper;
+    private final IAPRepo iapRepo;
     private final BluetoothSource bluetoothSource;
     private final NotificationManager notificationManager;
     private final PowerManager powerManager;
-    private Context context;
-    private PackageManager packageManager;
-    private DeviceManager deviceManager;
+    private final Context context;
+    private final PackageManager packageManager;
+    private final DeviceManager deviceManager;
     private Disposable deviceSub = Disposables.disposed();
     private Disposable upgradeSub = Disposables.disposed();
     private Disposable bluetoothSub = Disposables.disposed();
@@ -61,7 +61,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
             PackageManager packageManager,
             DeviceManager deviceManager,
             StreamHelper streamHelper,
-            IAPHelper iapHelper,
+            IAPRepo iapRepo,
             BluetoothSource bluetoothSource,
             NotificationManager notificationManager,
             PowerManager powerManager
@@ -70,7 +70,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
         this.packageManager = packageManager;
         this.deviceManager = deviceManager;
         this.streamHelper = streamHelper;
-        this.iapHelper = iapHelper;
+        this.iapRepo = iapRepo;
         this.bluetoothSource = bluetoothSource;
         this.notificationManager = notificationManager;
         this.powerManager = powerManager;
@@ -99,7 +99,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(enabled -> onView(v -> v.displayBluetoothState(enabled)));
 
-            upgradeSub = iapHelper.isProVersion()
+            upgradeSub = iapRepo.isProVersion()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(isProVersion -> onView(v -> v.updateUpgradeState(isProVersion)));
@@ -235,7 +235,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
     }
 
     void onUpgradeClicked(Activity activity) {
-        iapHelper.buyProVersion(activity);
+        iapRepo.buyProVersion(activity);
     }
 
     void showBluetoothSettingsScreen() {

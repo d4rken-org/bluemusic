@@ -9,11 +9,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
-import eu.darken.bluemusic.IAPHelper;
 import eu.darken.bluemusic.bluetooth.core.BluetoothSource;
 import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.database.DeviceManager;
+import eu.darken.bluemusic.util.iap.IAPRepo;
 import eu.darken.mvpbakery.base.Presenter;
 import eu.darken.mvpbakery.injection.ComponentPresenter;
 import io.reactivex.Single;
@@ -26,16 +26,16 @@ import timber.log.Timber;
 public class DiscoverPresenter extends ComponentPresenter<DiscoverPresenter.View, DiscoverComponent> {
     private final DeviceManager deviceManager;
     private final BluetoothSource bluetoothSource;
-    private final IAPHelper iapHelper;
+    private final IAPRepo iapRepo;
     private Disposable upgradeSub;
     private boolean isProVersion = false;
     private int managedDevices = 0;
 
     @Inject
-    DiscoverPresenter(DeviceManager deviceManager, BluetoothSource bluetoothSource, IAPHelper iapHelper) {
+    DiscoverPresenter(DeviceManager deviceManager, BluetoothSource bluetoothSource, IAPRepo iapRepo) {
         this.deviceManager = deviceManager;
         this.bluetoothSource = bluetoothSource;
-        this.iapHelper = iapHelper;
+        this.iapRepo = iapRepo;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class DiscoverPresenter extends ComponentPresenter<DiscoverPresenter.View
 
     private void updateProState() {
         if (getView() != null) {
-            upgradeSub = iapHelper.isProVersion()
+            upgradeSub = iapRepo.isProVersion()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(isProVersion -> DiscoverPresenter.this.isProVersion = isProVersion);
@@ -100,7 +100,7 @@ public class DiscoverPresenter extends ComponentPresenter<DiscoverPresenter.View
     }
 
     void onPurchaseUpgrade(Activity activity) {
-        iapHelper.buyProVersion(activity);
+        iapRepo.buyProVersion(activity);
     }
 
 

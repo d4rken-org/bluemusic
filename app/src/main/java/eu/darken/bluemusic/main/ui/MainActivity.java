@@ -13,6 +13,7 @@ import butterknife.ButterKnife;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.main.ui.managed.ManagedDevicesFragment;
 import eu.darken.bluemusic.onboarding.ui.OnboardingActivity;
+import eu.darken.bluemusic.util.iap.IAPRepo;
 import eu.darken.mvpbakery.base.MVPBakery;
 import eu.darken.mvpbakery.base.ViewModelRetainer;
 import eu.darken.mvpbakery.injection.ComponentSource;
@@ -25,6 +26,7 @@ import eu.darken.mvpbakery.injection.fragment.HasManualFragmentInjector;
 public class MainActivity extends AppCompatActivity implements MainActivityPresenter.View, HasManualFragmentInjector {
 
     @Inject ComponentSource<Fragment> componentSource;
+    @Inject IAPRepo iapRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,5 +57,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityPrese
         Fragment introFragment = getSupportFragmentManager().findFragmentById(R.id.frame_content);
         if (introFragment == null) introFragment = ManagedDevicesFragment.newInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, introFragment).commitAllowingStateLoss();
+    }
+
+    private boolean shouldReCheck = false;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (shouldReCheck) iapRepo.recheck();
+    }
+
+    @Override
+    protected void onStop() {
+        shouldReCheck = true;
+        super.onStop();
     }
 }
