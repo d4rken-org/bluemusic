@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_settings">සැකසුම්</string>
+    <string name="label_about">පිලිබඳව</string>
+    <string name="label_discord">ඩිස්කෝඩ්</string>
+    <string name="label_twitter">ට්විටර්</string>
+    <string name="label_website">වියමන අඩවිය</string>
+    <string name="label_gplay">ගූගල් ප්ලේ</string>
+    <string name="label_email">විද්‍යුත් තැපෑල</string>
+    <string name="label_bug_reports">දෝෂ වාර්තා</string>
+    <string name="label_app_enabled">යෙදුම සබල කර ඇත</string>
+    <string name="label_state_connected">සම්බන්ධිතයි</string>
+    <string name="action_remove_device">උපාංගය ඉවත් කරන්න</string>
+    <string name="label_add_device">උපාංගය එකතු කරන්න</string>
+    <string name="label_notification_channel_status">තත්වය</string>
+    <string name="action_set">සකසන්න</string>
+    <string name="action_cancel">අවලංගු කරන්න</string>
+    <string name="label_invalid_input">වලංගු නොවන ආදානයකි</string>
+    <string name="label_other">වෙනත්</string>
+    <string name="action_exit">පිටවන්න</string>
+    <string name="action_start">අරඹන්න</string>
+    <string name="label_welcome">සාදරයෙන් පිළිගන්නවා</string>
+    <string name="label_translation">පරිවර්තනය</string>
+    <string name="label_device_speaker">උපාංගයේ විකාශකය</string>
+    <string name="label_launch_app">යෙදුම දියත් කරන්න</string>
+    <string name="label_keyevent_next">ඊළඟ</string>
+    <string name="label_thanks">ස්තූතියි</string>
+    <string name="label_licenses">බලපත්‍ර</string>
+    <string name="action_undo">පෙරසේ</string>
+    <string name="action_show">පෙන්වන්න</string>
+    <string name="label_bluetooth_settings">බ්ලූටූත් සැකසුම්</string>
+</resources>
