@@ -32,7 +32,7 @@ data class BillingClientConnection(
                 else -> {
                     BillingClientException(result).let {
                         emitter.tryOnError(it)
-                        purchasePublisher.onError(it)
+                        Timber.w("queryIaps() failed")
                     }
                 }
             }
