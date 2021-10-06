@@ -32,10 +32,10 @@ class BillingClientConnectionProvider @Inject constructor(
                         }
                     }
                 }.build()
-
-
+                var canceled = false
                 clientEmitter.setCancellable {
                     Timber.d("Stopping billing client connection")
+                    canceled = true
                     client.endConnection()
                     purchasePublisher.onComplete()
                 }
@@ -46,12 +46,12 @@ class BillingClientConnectionProvider @Inject constructor(
 
                         when (result.responseCode) {
                             BillingResponseCode.OK -> {
-                                val connection = BillingClientConnection(client, result, purchasePublisher)
-                                connection.queryIaps().subscribeOn(Schedulers.io()).subscribe({
-                                    Timber.d("Initial IAP query successful.")
-                                }, {
-                                    Timber.e(it, "Initial IAP query failed.")
-                                })
+                                val connection = BillingClientConnection(client, result, purchasePublisher).apply {
+                                    queryIaps().subscribeOn(Schedulers.io()).subscribe(
+                                            { Timber.d("Initial IAP query successful.") },
+                                            { Timber.e(it, "Initial IAP query failed.") }
+                                    )
+                                }
                                 clientEmitter.onNext(connection)
                             }
                             else -> clientEmitter.tryOnError(BillingClientException(result))
@@ -59,7 +59,13 @@ class BillingClientConnectionProvider @Inject constructor(
                     }
 
                     override fun onBillingServiceDisconnected() {
-                        clientEmitter.tryOnError(BillingClientException(null))
+                        Timber.v("onBillingServiceDisconnected() [canceled=$canceled]")
+                        // It's unclear whether this canceled check is necessary
+                        if (canceled) {
+                            clientEmitter.onComplete()
+                        } else {
+                            clientEmitter.tryOnError(BillingClientException(null))
+                        }
                     }
                 })
             }
@@ -76,4 +82,5 @@ class BillingClientConnectionProvider @Inject constructor(
                 }
             }
             .replayingShare()
+
 }

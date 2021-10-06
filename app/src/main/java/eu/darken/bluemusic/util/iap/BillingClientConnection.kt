@@ -31,7 +31,7 @@ data class BillingClientConnection(
                 }
                 else -> {
                     BillingClientException(result).let {
-                        emitter.onError(it)
+                        emitter.tryOnError(it)
                         purchasePublisher.onError(it)
                     }
                 }
@@ -47,7 +47,7 @@ data class BillingClientConnection(
             Timber.v("onAcknowledgePurchaseResponse(code=%s, message=%s)", result.responseCode, result.debugMessage)
             when {
                 result.isSuccess -> emitter.onSuccess(result)
-                else -> emitter.onError(BillingClientException(result))
+                else -> emitter.tryOnError(BillingClientException(result))
             }
         }
     }
@@ -82,4 +82,5 @@ data class BillingClientConnection(
         )
         emitter.onSuccess(result)
     }
+
 }
