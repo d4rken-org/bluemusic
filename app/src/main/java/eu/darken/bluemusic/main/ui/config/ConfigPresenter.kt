@@ -15,8 +15,6 @@ import eu.darken.mvpbakery.base.Presenter
 import eu.darken.mvpbakery.injection.ComponentPresenter
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.core.SingleEmitter
-import io.reactivex.rxjava3.core.SingleOnSubscribe
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
@@ -321,13 +319,13 @@ class ConfigPresenter @Inject internal constructor(
     fun onLaunchAppClicked() {
         if (isProVersion) {
             @Suppress("UNCHECKED_CAST")
-            Single.create(SingleOnSubscribe { e: SingleEmitter<List<AppTool.Item?>> -> e.onSuccess(appTool.apps) } as SingleOnSubscribe<List<AppTool.Item>>)
+            Single.create<List<AppTool.Item>> { it.onSuccess(appTool.apps) }
+                    .subscribeOn(Schedulers.io())
                     .map { apps: List<AppTool.Item> ->
                         apps.toMutableList().apply {
                             add(0, AppTool.Item.empty())
                         }
                     }
-                    .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { apps: List<AppTool.Item> -> withView { it.showAppSelectionDialog(apps) } }
         } else {

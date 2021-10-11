@@ -17,20 +17,17 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.Unbinder
 import com.google.android.material.snackbar.Snackbar
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice
+import eu.darken.bluemusic.databinding.FragmentLayoutConfigBinding
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.database.ManagedDevice
 import eu.darken.bluemusic.main.ui.MainActivity
 import eu.darken.bluemusic.util.ActivityUtil
 import eu.darken.bluemusic.util.AppTool
 import eu.darken.bluemusic.util.Check
-import eu.darken.bluemusic.util.ui.PreferenceView
-import eu.darken.bluemusic.util.ui.SwitchPreferenceView
+import eu.darken.bluemusic.util.viewBinding
 import eu.darken.mvpbakery.base.MVPBakery
 import eu.darken.mvpbakery.base.PresenterRetainer
 import eu.darken.mvpbakery.base.ViewModelRetainer
@@ -42,25 +39,7 @@ import javax.inject.Inject
 class ConfigFragment : Fragment(), ConfigPresenter.View {
 
     private lateinit var actionBar: ActionBar
-    private var unbinder: Unbinder? = null
-
-    @BindView(R.id.pref_music_volume) lateinit var prefMusicVolume: SwitchPreferenceView
-    @BindView(R.id.pref_call_volume) lateinit var prefCallVolume: SwitchPreferenceView
-    @BindView(R.id.pref_ring_volume) lateinit var prefRingVolume: SwitchPreferenceView
-    @BindView(R.id.pref_notification_volume) lateinit var prefNotificationVolume: SwitchPreferenceView
-    @BindView(R.id.pref_alarm_volume) lateinit var prefAlarmVolume: SwitchPreferenceView
-    @BindView(R.id.pref_autoplay_enabled) lateinit var prefAutoPlay: SwitchPreferenceView
-    @BindView(R.id.pref_launch_app) lateinit var prefLaunchApp: PreferenceView
-    @BindView(R.id.pref_volume_lock) lateinit var prefVolumeLock: SwitchPreferenceView
-    @BindView(R.id.pref_volume_lock_box) lateinit var prefVolumeLockBox: ViewGroup
-    @BindView(R.id.pref_keep_awake) lateinit var prefKeepAwake: SwitchPreferenceView
-    @BindView(R.id.pref_keep_awake_box) lateinit var prefKeepAwakeBox: ViewGroup
-    @BindView(R.id.pref_volume_nudge) lateinit var prefNudgeVolume: SwitchPreferenceView
-    @BindView(R.id.pref_monitoring_duration) lateinit var prefMonitoringDuration: PreferenceView
-    @BindView(R.id.pref_reaction_delay) lateinit var prefReactionDelay: PreferenceView
-    @BindView(R.id.pref_adjustment_delay) lateinit var prefAdjustmentDelay: PreferenceView
-    @BindView(R.id.pref_rename) lateinit var prefRename: PreferenceView
-    @BindView(R.id.pref_delete) lateinit var prefDelete: PreferenceView
+    val ui: FragmentLayoutConfigBinding by viewBinding()
 
     @Inject lateinit var presenter: ConfigPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,34 +48,32 @@ class ConfigFragment : Fragment(), ConfigPresenter.View {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val layout = inflater.inflate(R.layout.fragment_layout_config, container, false)
-        unbinder = ButterKnife.bind(this, layout)
-        return layout
+        return inflater.inflate(R.layout.fragment_layout_config, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        prefMusicVolume.setOnCheckedChangedListener { _: SwitchPreferenceView?, _: Boolean -> presenter.onToggleMusicVolume() }
-        prefCallVolume.setOnCheckedChangedListener { _: SwitchPreferenceView?, _: Boolean -> presenter.onToggleCallVolume() }
-        prefRingVolume.setOnCheckedChangedListener { v: SwitchPreferenceView, _: Boolean -> v.isChecked = presenter.onToggleRingVolume() }
-        prefNotificationVolume.setOnCheckedChangedListener { v: SwitchPreferenceView, _: Boolean -> v.isChecked = presenter.onToggleNotificationVolume() }
-        prefAlarmVolume.setOnCheckedChangedListener { v: SwitchPreferenceView, _: Boolean -> v.isChecked = presenter.onToggleAlarmVolume() }
-        prefAutoPlay.setOnCheckedChangedListener { v: SwitchPreferenceView, _: Boolean -> v.isChecked = presenter.onToggleAutoPlay() }
-        prefLaunchApp.setOnClickListener {
+        ui.prefMusicVolume.setOnCheckedChangedListener { _, _ -> presenter.onToggleMusicVolume() }
+        ui.prefCallVolume.setOnCheckedChangedListener { _, _ -> presenter.onToggleCallVolume() }
+        ui.prefRingVolume.setOnCheckedChangedListener { v, _ -> v.isChecked = presenter.onToggleRingVolume() }
+        ui.prefNotificationVolume.setOnCheckedChangedListener { v, _ -> v.isChecked = presenter.onToggleNotificationVolume() }
+        ui.prefAlarmVolume.setOnCheckedChangedListener { v, _ -> v.isChecked = presenter.onToggleAlarmVolume() }
+        ui.prefAutoplayEnabled.setOnCheckedChangedListener { v, _lean -> v.isChecked = presenter.onToggleAutoPlay() }
+        ui.prefLaunchApp.setOnClickListener {
             presenter.onLaunchAppClicked()
             Snackbar.make(requireView(), R.string.label_just_a_moment_please, Snackbar.LENGTH_SHORT).show()
         }
-        prefLaunchApp.setOnLongClickListener {
+        ui.prefLaunchApp.setOnLongClickListener {
             presenter.onClearLaunchApp()
             true
         }
-        prefVolumeLock.setOnCheckedChangedListener { v: SwitchPreferenceView, _: Boolean -> v.isChecked = presenter.onToggleVolumeLock() }
-        prefKeepAwake.setOnCheckedChangedListener { v: SwitchPreferenceView, _: Boolean -> v.isChecked = presenter.onToggleKeepAwake() }
-        prefNudgeVolume.setOnCheckedChangedListener { v, _ -> v.isChecked = presenter.onToggleNudgeVolume() }
-        prefMonitoringDuration.setOnClickListener { presenter.onEditMonitoringDurationClicked() }
-        prefReactionDelay.setOnClickListener { presenter.onEditReactionDelayClicked() }
-        prefAdjustmentDelay.setOnClickListener { presenter.onEditAdjustmentDelayClicked() }
-        prefRename.setOnClickListener { presenter.onRenameClicked() }
-        prefDelete.setOnClickListener { presenter.onDeleteDevice() }
+        ui.prefVolumeLock.setOnCheckedChangedListener { v, _ -> v.isChecked = presenter.onToggleVolumeLock() }
+        ui.prefKeepAwake.setOnCheckedChangedListener { v, _ -> v.isChecked = presenter.onToggleKeepAwake() }
+        ui.prefVolumeNudge.setOnCheckedChangedListener { v, _ -> v.isChecked = presenter.onToggleNudgeVolume() }
+        ui.prefMonitoringDuration.setOnClickListener { presenter.onEditMonitoringDurationClicked() }
+        ui.prefReactionDelay.setOnClickListener { presenter.onEditReactionDelayClicked() }
+        ui.prefAdjustmentDelay.setOnClickListener { presenter.onEditAdjustmentDelayClicked() }
+        ui.prefRename.setOnClickListener { presenter.onRenameClicked() }
+        ui.prefDelete.setOnClickListener { presenter.onDeleteDevice() }
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -120,11 +97,6 @@ class ConfigFragment : Fragment(), ConfigPresenter.View {
         actionBar.title = requireArguments().getString(ARG_NAME)
     }
 
-    override fun onDestroyView() {
-        unbinder?.unbind()
-        super.onDestroyView()
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         Check.notNull(activity)
         if (item.itemId == android.R.id.home) {
@@ -135,15 +107,15 @@ class ConfigFragment : Fragment(), ConfigPresenter.View {
     }
 
     override fun updateProState(isPro: Boolean) {
-        prefRingVolume.setDescription(getString(R.string.description_ring_volume) + if (isPro) "" else "\n[${getString(R.string.label_premium_version_required)}]     ")
-        prefNotificationVolume.setDescription(getString(R.string.description_notification_volume) + if (isPro) "" else "\n[${getString(R.string.label_premium_version_required)}]")
-        prefAutoPlay.setDescription(getString(R.string.description_autoplay) + if (isPro) "" else "\n[${getString(R.string.label_premium_version_required)}]     ")
-        prefVolumeLock.setDescription(getString(R.string.description_volume_lock) + if (isPro) "" else "\n[${getString(R.string.label_premium_version_required)}]")
-        prefKeepAwake.setDescription(getString(R.string.description_keep_awake) + if (isPro) "" else "\n[${getString(R.string.label_premium_version_required)}]")
+        ui.prefRingVolume.setDescription(getString(R.string.description_ring_volume) + if (isPro) "" else "\n[${getString(R.string.label_premium_version_required)}]     ")
+        ui.prefNotificationVolume.setDescription(getString(R.string.description_notification_volume) + if (isPro) "" else "\n[${getString(R.string.label_premium_version_required)}]")
+        ui.prefAutoplayEnabled.setDescription(getString(R.string.description_autoplay) + if (isPro) "" else "\n[${getString(R.string.label_premium_version_required)}]     ")
+        ui.prefVolumeLock.setDescription(getString(R.string.description_volume_lock) + if (isPro) "" else "\n[${getString(R.string.label_premium_version_required)}]")
+        ui.prefKeepAwake.setDescription(getString(R.string.description_keep_awake) + if (isPro) "" else "\n[${getString(R.string.label_premium_version_required)}]")
         if (!isPro) {
-            prefLaunchApp.setDescription("[" + getString(R.string.label_premium_version_required) + "]")
+            ui.prefLaunchApp.setDescription("[" + getString(R.string.label_premium_version_required) + "]")
         }
-        prefRename.setDescription(getString(R.string.description_rename_device) + if (isPro) "" else "\n[${getString(R.string.label_premium_version_required)}]")
+        ui.prefRename.setDescription(getString(R.string.description_rename_device) + if (isPro) "" else "\n[${getString(R.string.label_premium_version_required)}]")
     }
 
     override fun updateDevice(device: ManagedDevice) {
@@ -152,39 +124,39 @@ class ConfigFragment : Fragment(), ConfigPresenter.View {
         actionBar.title = alias
         val name = device.name
         if (alias != name) actionBar.subtitle = name
-        prefMusicVolume.isChecked = device.getVolume(AudioStream.Type.MUSIC) != null
-        prefMusicVolume.visibility = View.VISIBLE
-        prefCallVolume.isChecked = device.getVolume(AudioStream.Type.CALL) != null
-        prefCallVolume.visibility = View.VISIBLE
-        prefRingVolume.isChecked = device.getVolume(AudioStream.Type.RINGTONE) != null
-        prefRingVolume.visibility = View.VISIBLE
-        prefNotificationVolume.isChecked = device.getVolume(AudioStream.Type.NOTIFICATION) != null
-        prefNotificationVolume.visibility = View.VISIBLE
-        prefAlarmVolume.isChecked = device.getVolume(AudioStream.Type.ALARM) != null
-        prefAlarmVolume.visibility = View.VISIBLE
-        prefAutoPlay.isChecked = device.autoPlay
-        prefAutoPlay.visibility = View.VISIBLE
-        prefVolumeLock.isChecked = device.volumeLock
-        prefVolumeLockBox.visibility = if (device.address == FakeSpeakerDevice.ADDR) View.GONE else View.VISIBLE
-        prefKeepAwake.isChecked = device.keepAwake
-        prefKeepAwakeBox.visibility = if (device.address == FakeSpeakerDevice.ADDR) View.GONE else View.VISIBLE
+        ui.prefMusicVolume.isChecked = device.getVolume(AudioStream.Type.MUSIC) != null
+        ui.prefMusicVolume.visibility = View.VISIBLE
+        ui.prefCallVolume.isChecked = device.getVolume(AudioStream.Type.CALL) != null
+        ui.prefCallVolume.visibility = View.VISIBLE
+        ui.prefRingVolume.isChecked = device.getVolume(AudioStream.Type.RINGTONE) != null
+        ui.prefRingVolume.visibility = View.VISIBLE
+        ui.prefNotificationVolume.isChecked = device.getVolume(AudioStream.Type.NOTIFICATION) != null
+        ui.prefNotificationVolume.visibility = View.VISIBLE
+        ui.prefAlarmVolume.isChecked = device.getVolume(AudioStream.Type.ALARM) != null
+        ui.prefAlarmVolume.visibility = View.VISIBLE
+        ui.prefAutoplayEnabled.isChecked = device.autoPlay
+        ui.prefAutoplayEnabled.visibility = View.VISIBLE
+        ui.prefVolumeLock.isChecked = device.volumeLock
+        ui.prefVolumeLockBox.visibility = if (device.address == FakeSpeakerDevice.ADDR) View.GONE else View.VISIBLE
+        ui.prefKeepAwake.isChecked = device.keepAwake
+        ui.prefKeepAwakeBox.visibility = if (device.address == FakeSpeakerDevice.ADDR) View.GONE else View.VISIBLE
 
-        prefNudgeVolume.isChecked = device.nudgeVolume
+        ui.prefVolumeNudge.isChecked = device.nudgeVolume
 
-        prefLaunchApp.visibility = View.VISIBLE
+        ui.prefLaunchApp.visibility = View.VISIBLE
         val launchLabel = try {
             device.launchPkg?.let { AppTool.getLabel(requireContext(), it) }
         } catch (e: PackageManager.NameNotFoundException) {
             Timber.e(e)
             null
         }
-        prefLaunchApp.setDescription(launchLabel ?: getString(R.string.description_launch_app))
+        ui.prefLaunchApp.setDescription(launchLabel ?: getString(R.string.description_launch_app))
 
-        prefReactionDelay.visibility = View.VISIBLE
-        prefAdjustmentDelay.visibility = View.VISIBLE
-        prefMonitoringDuration.visibility = View.VISIBLE
-        prefRename.visibility = if (device.address == FakeSpeakerDevice.ADDR) View.GONE else View.VISIBLE
-        prefDelete.visibility = View.VISIBLE
+        ui.prefReactionDelay.visibility = View.VISIBLE
+        ui.prefAdjustmentDelay.visibility = View.VISIBLE
+        ui.prefMonitoringDuration.visibility = View.VISIBLE
+        ui.prefRename.visibility = if (device.address == FakeSpeakerDevice.ADDR) View.GONE else View.VISIBLE
+        ui.prefDelete.visibility = View.VISIBLE
     }
 
     override fun showRequiresPro() {

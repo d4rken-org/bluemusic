@@ -13,7 +13,6 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.ButterKnife;
 
 
 public class BasicViewHolder<ITEM> extends RecyclerView.ViewHolder {
@@ -25,7 +24,6 @@ public class BasicViewHolder<ITEM> extends RecyclerView.ViewHolder {
 
     public BasicViewHolder(ViewGroup parent, @LayoutRes int layoutRes) {
         this(LayoutInflater.from(parent.getContext()).inflate(layoutRes, parent, false));
-        ButterKnife.bind(this, itemView);
     }
 
     public void bind(ITEM item) {
