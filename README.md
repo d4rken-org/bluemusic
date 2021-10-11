@@ -16,7 +16,7 @@ Volumes can be configured through the apps UI or the volume buttons your device.
 * [Download Google Play](https://play.google.com/store/apps/details?id=eu.darken.bluemusic)
 
 ## Community
-Want to chat? Join our [discord server here]().
+Want to chat? Join our [discord server here](https://discord.gg/vHubYPp).
 
 ## Support the project
 If you like the app, consider paying for it ❤️
