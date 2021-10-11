@@ -149,15 +149,15 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
     // jUnit
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
 
     // Mocktio
-    androidTestImplementation 'org.mockito:mockito-core:3.3.3'
+    androidTestImplementation 'org.mockito:mockito-core:3.9.0'
     androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.19.0'
 
     //Intrumentation tests (UI tests)
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0-alpha04'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0-alpha04'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha03'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.0-alpha03'
 
     // IAP
     implementation 'com.android.billingclient:billing:4.0.0'
