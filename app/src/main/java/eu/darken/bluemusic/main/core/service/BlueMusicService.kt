@@ -134,7 +134,7 @@ class BlueMusicService : Service(), VolumeObserver.Callback {
             Timber.w("Intent was null")
             serviceHelper.stop()
         } else if (intent.hasExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT)) {
-            val event = intent.getParcelableExtra<SourceDevice.Event>(BluetoothEventReceiver.EXTRA_DEVICE_EVENT)
+            val event = intent.getParcelableExtra<SourceDevice.Event>(BluetoothEventReceiver.EXTRA_DEVICE_EVENT)!!
             val retryWithDelay = RetryWithDelay(300, 1000)
             bluetoothSource.reloadConnectedDevices()
                     .subscribeOn(eventScheduler)

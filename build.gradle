@@ -1,25 +1,33 @@
 buildscript {
-    ext.kotlin_version = '1.4.31'
+    ext.buildConfig = [
+            'kotlin' : '1.5.31',
+            'compileSdk': 30,
+            'minSdk'    : 16,
+            'targetSdk' : 30,
+            'deps'      : [
+                    'dagger': '2.21',
+            ]
+    ]
     repositories {
-        jcenter()
         google()
+        mavenCentral()
+        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${buildConfig.kotlin}"
         classpath 'io.realm:realm-gradle-plugin:7.0.1'
-        classpath "com.bugsnag:bugsnag-android-gradle-plugin:5.7.4"
+        classpath "com.bugsnag:bugsnag-android-gradle-plugin:7.0.0"
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:3.0.0'
     }
 }
 
 allprojects {
     repositories {
-        jcenter()
-        mavenCentral()
-        maven { url "https://jitpack.io" }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-        maven { url "https://maven.google.com" }
         google()
+        mavenCentral()
+        jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 
