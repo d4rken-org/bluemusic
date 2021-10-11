@@ -44,7 +44,7 @@ android {
     compileSdkVersion buildConfig.compileSdk
 
     def versionMajor = 2
-    def versionMinor = 49
+    def versionMinor = 50
     def versionTag = ""
 
     Properties bugsnagProps = new Properties()
