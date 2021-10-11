@@ -16,7 +16,9 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${buildConfig.kotlin}"
-        classpath 'io.realm:realm-gradle-plugin:7.0.1'
+
+        classpath "io.realm:realm-gradle-plugin:10.8.0"
+
         classpath "com.bugsnag:bugsnag-android-gradle-plugin:7.0.0"
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:3.0.0'
     }
