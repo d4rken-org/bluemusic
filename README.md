@@ -2,6 +2,7 @@
 
 # Bluetooth Volume Manager
 
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=19)
 ![Build](https://github.com/d4rken/bluemusic/actions/workflows/android.yml/badge.svg)
 [![Github All Releases](https://img.shields.io/github/downloads/d4rken/bluemusic/total.svg)]()
 
@@ -18,7 +19,7 @@ Volumes can be configured through the apps UI or the volume buttons your device.
 Want to chat? Join our [discord server here]().
 
 ## Support the project
-If you like the app, consider paying for it 😉
+If you like the app, consider paying for it ❤️
 
 * Sponsor the project (see GitHub sponsor button)
 * Upgrade to the pro version via Google Play
