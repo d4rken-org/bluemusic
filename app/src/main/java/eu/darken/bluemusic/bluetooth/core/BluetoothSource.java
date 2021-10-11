@@ -2,8 +2,8 @@ package eu.darken.bluemusic.bluetooth.core;
 
 import java.util.Map;
 
-import io.reactivex.Observable;
-import io.reactivex.Single;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 
 public interface BluetoothSource {
 

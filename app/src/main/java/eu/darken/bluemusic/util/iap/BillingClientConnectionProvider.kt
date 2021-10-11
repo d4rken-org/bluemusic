@@ -5,11 +5,11 @@ import com.android.billingclient.api.BillingClient.*
 import com.android.billingclient.api.BillingClientStateListener
 import com.android.billingclient.api.BillingResult
 import com.android.billingclient.api.Purchase
-import com.jakewharton.rx.replayingShare
+import com.jakewharton.rx3.replayingShare
 import eu.darken.bluemusic.AppComponent
-import io.reactivex.Observable
-import io.reactivex.schedulers.Schedulers
-import io.reactivex.subjects.BehaviorSubject
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.rxjava3.subjects.BehaviorSubject
 import timber.log.Timber
 import javax.inject.Inject
 

@@ -13,13 +13,13 @@ import eu.darken.bluemusic.bluetooth.core.BluetoothSource;
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
 import eu.darken.bluemusic.main.core.audio.StreamHelper;
-import io.reactivex.Completable;
-import io.reactivex.Observable;
-import io.reactivex.Single;
-import io.reactivex.SingleSource;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subjects.BehaviorSubject;
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.core.SingleSource;
+import io.reactivex.rxjava3.functions.Function;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import timber.log.Timber;
@@ -28,7 +28,7 @@ import timber.log.Timber;
 @AppComponent.Scope
 public class DeviceManager {
 
-    private BluetoothSource bluetoothSource;
+    private final BluetoothSource bluetoothSource;
     private final StreamHelper streamHelper;
     private final RealmSource realmSource;
     private final BehaviorSubject<Map<String, ManagedDevice>> deviceRepo = BehaviorSubject.create();

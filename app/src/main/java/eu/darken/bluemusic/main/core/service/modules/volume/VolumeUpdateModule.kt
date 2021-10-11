@@ -6,7 +6,7 @@ import eu.darken.bluemusic.main.core.database.DeviceManager
 import eu.darken.bluemusic.main.core.service.BlueMusicServiceComponent
 import eu.darken.bluemusic.main.core.service.modules.VolumeModule
 import eu.darken.bluemusic.settings.core.Settings
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
 

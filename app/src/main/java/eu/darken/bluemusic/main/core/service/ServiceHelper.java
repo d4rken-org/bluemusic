@@ -21,14 +21,13 @@ import eu.darken.bluemusic.ResHelper;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.main.ui.MainActivity;
 import eu.darken.bluemusic.util.ValueBox;
-import io.reactivex.Completable;
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.disposables.Disposables;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.ObservableEmitter;
+import io.reactivex.rxjava3.core.ObservableOnSubscribe;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import timber.log.Timber;
 
 @BlueMusicServiceComponent.Scope
@@ -41,7 +40,7 @@ public class ServiceHelper {
     private final ResHelper resHelper;
     private final NotificationCompat.Builder builder;
     private ObservableEmitter<String> emitter;
-    private volatile Disposable serviceStopper = Disposables.disposed();
+    private volatile Disposable serviceStopper = Disposable.disposed();
     private volatile boolean isStarted = false;
     private static final String CMD_START = "start";
     private static final String CMD_STOP = "stop";

@@ -31,10 +31,9 @@ import eu.darken.bluemusic.util.iap.IAPRepo;
 import eu.darken.mvpbakery.base.Presenter;
 import eu.darken.mvpbakery.base.StateListener;
 import eu.darken.mvpbakery.injection.ComponentPresenter;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.disposables.Disposables;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import timber.log.Timber;
 
 @ManagedDevicesComponent.Scope
@@ -48,9 +47,9 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
     private final Context context;
     private final PackageManager packageManager;
     private final DeviceManager deviceManager;
-    private Disposable deviceSub = Disposables.disposed();
-    private Disposable upgradeSub = Disposables.disposed();
-    private Disposable bluetoothSub = Disposables.disposed();
+    private Disposable deviceSub = Disposable.disposed();
+    private Disposable upgradeSub = Disposable.disposed();
+    private Disposable bluetoothSub = Disposable.disposed();
 
     private boolean isBatterySavingHintDismissed = false;
     private boolean isAppLaunchHintDismissed = false;

@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.inject.Inject;
 
 import eu.darken.bluemusic.AppComponent;
-import io.reactivex.Single;
+import io.reactivex.rxjava3.core.Single;
 import io.realm.Realm;
 import io.realm.RealmResults;
 

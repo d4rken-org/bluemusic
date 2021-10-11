@@ -30,12 +30,12 @@ import eu.darken.bluemusic.settings.core.Settings
 import eu.darken.bluemusic.util.ApiHelper
 import eu.darken.bluemusic.util.WakelockMan
 import eu.darken.bluemusic.util.ui.RetryWithDelay
-import io.reactivex.Completable
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposables
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 import java.util.*
 import java.util.concurrent.CountDownLatch
@@ -57,8 +57,8 @@ class BlueMusicService : Service(), VolumeObserver.Callback {
 
     private val eventScheduler = Schedulers.from(Executors.newSingleThreadExecutor())
     private val volumeScheduler = Schedulers.from(Executors.newSingleThreadExecutor())
-    private var notificationSub = Disposables.disposed()
-    private var isActiveSub = Disposables.disposed()
+    private var notificationSub = Disposable.disposed()
+    private var isActiveSub = Disposable.disposed()
     private val onGoingConnections = LinkedHashMap<String, CompositeDisposable>()
 
     private val ringerPermission = object : BroadcastReceiver() {

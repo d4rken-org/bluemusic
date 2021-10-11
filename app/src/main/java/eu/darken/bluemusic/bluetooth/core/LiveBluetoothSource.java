@@ -28,12 +28,12 @@ import eu.darken.bluemusic.main.core.service.MissingDeviceException;
 import eu.darken.bluemusic.settings.core.Settings;
 import eu.darken.bluemusic.util.Check;
 import eu.darken.bluemusic.util.ui.RetryWithDelay;
-import io.reactivex.Observable;
-import io.reactivex.Single;
-import io.reactivex.SingleOnSubscribe;
-import io.reactivex.SingleSource;
-import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subjects.BehaviorSubject;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.core.SingleOnSubscribe;
+import io.reactivex.rxjava3.core.SingleSource;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+import io.reactivex.rxjava3.subjects.BehaviorSubject;
 import timber.log.Timber;
 
 class LiveBluetoothSource implements BluetoothSource {

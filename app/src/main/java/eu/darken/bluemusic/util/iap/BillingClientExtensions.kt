@@ -2,9 +2,9 @@ package eu.darken.bluemusic.util.iap
 
 import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.BillingResult
-import io.reactivex.Flowable
-import io.reactivex.Observable
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicLong
@@ -13,7 +13,7 @@ internal val BillingResult.isSuccess: Boolean
     get() = responseCode == BillingClient.BillingResponseCode.OK
 
 
-fun <T> Observable<T>.retryDelayed(
+fun <T : Any> Observable<T>.retryDelayed(
         maxRetryCount: Long = -1,
         delayFactor: Long = 1000,
         retryCondition: ((error: Throwable) -> Boolean)? = null
@@ -36,7 +36,7 @@ fun <T> Observable<T>.retryDelayed(
     }
 }
 
-fun <T> Single<T>.retryDelayed(
+fun <T : Any> Single<T>.retryDelayed(
         maxRetryCount: Long,
         delayFactor: Long,
         retryCondition: ((error: Throwable) -> Boolean)? = null

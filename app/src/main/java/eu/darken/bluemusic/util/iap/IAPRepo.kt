@@ -4,11 +4,11 @@ import android.app.Activity
 import com.android.billingclient.api.*
 import com.android.billingclient.api.BillingClient.*
 import com.bugsnag.android.Bugsnag
-import com.jakewharton.rx.replayingShare
+import com.jakewharton.rx3.replayingShare
 import eu.darken.bluemusic.AppComponent
-import io.reactivex.Observable
-import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
 

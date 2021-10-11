@@ -2,10 +2,10 @@ package eu.darken.bluemusic.util.iap
 
 import android.app.Activity
 import com.android.billingclient.api.*
-import com.jakewharton.rx.replayingShare
-import io.reactivex.Observable
-import io.reactivex.Single
-import io.reactivex.subjects.BehaviorSubject
+import com.jakewharton.rx3.replayingShare
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.subjects.BehaviorSubject
 import timber.log.Timber
 
 data class BillingClientConnection(
