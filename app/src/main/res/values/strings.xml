@@ -110,4 +110,5 @@
     <string name="description_alarm_volume">Some alarm apps use the music volume instead.</string>
     <string name="nudge_volume_label">Nudge volume</string>
     <string name="nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
+    <string name="label_opensource">Source code</string>
 </resources>
