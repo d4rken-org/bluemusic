@@ -51,7 +51,7 @@ internal class ManagedDevicesAdapter(private val callback: Callback) : BasicAdap
                 getString(R.string.label_neverseen)
             }
             ui.lastseen.text = if (item.isActive) getString(R.string.label_state_connected) else timeString
-            ui.lastseen.visibility = if (item.autoPlay) View.VISIBLE else View.GONE
+            ui.autoplayIcon.visibility = if (item.autoPlay) View.VISIBLE else View.GONE
             ui.volumelockIcon.visibility = if (item.volumeLock) View.VISIBLE else View.GONE
             ui.keepawakeIcon.visibility = if (item.keepAwake) View.VISIBLE else View.GONE
             if (item.launchPkg != null) {
