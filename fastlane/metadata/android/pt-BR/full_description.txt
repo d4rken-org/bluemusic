@@ -1,10 +1,20 @@
+O Bluetooth Volume Manager pode reagir a dispositivos Bluetooth conectando ou desconectando.
 Este aplicativo possibilita ao Android memorizar o volume de diferentes dispositivos Bluetooth.
-O volume da música e da chamada podem ser configurados para cada dispositivo.
-A sincronização e a configuração para cada dispositivo Bluetooth podem ser ajustadas individualmente.
+
+Recursos disponíveis:
+• Ajuste de volume de música, chamada, toque e notificação.
+• Enviando comandos 'Reproduzir' ou 'Próximo'.
+• Abrir um aplicativo específico.
+• Mantém a tela ligada.
+• Impedir que o volume seja alterado.
+• Restaurando os níveis de volume anteriores após a desconexão.
+
+Este app não pode "impulsionar" seu volume ou alterar o seu volume se você não puder alterá-lo manualmente através dos botões de volume do seu dispositivo.
 
 Permissões justificadas:
 • 'Internet' para relatórios de erros.
 • 'Bluetooth' para emparelhar com dispositivos bluetooth.
 • 'Modificar configurações de áudio' para alterar o volume.
 • 'Inicialização concluída' para restaurar o volume após a reinicialização.
-• 'WAKE_LOCK' para solucionar uma falha nos dispositivos Samsung, onde esta permissão é necessária para evitar um erro.
+• 'WAKE_LOCK' para corrigir um erro nos dispositivos Samsung e para manter a tela ligada, se necessário.
+• 'SYSTEM_ALERT_WINDOW' para iniciar apps quando um dispositivo Bluetooth se conectar (apenas no Android 10).

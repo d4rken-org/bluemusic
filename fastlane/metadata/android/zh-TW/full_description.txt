@@ -1,20 +1,20 @@
-Bluetooth Volume Manager can react to Bluetooth devices connecting or disconnecting.
-It allows Android to remember the volume levels of different Bluetooth devices.
+藍牙音量管理員可以對連線或斷開的藍牙裝置作出反應。
+這個應用程式允許 Android 記住不同的藍牙裝置的音量。
 
 可用功能：
-• Music, call, ringtone and notification volume adjustment.
-• Sending out 'Play' or 'Next' media commands.
-• Opening a specific app.
-• Keeping the screen awake.
-• Preventing the volume from being changed.
-• Restoring previous volume levels after disconnect.
+• 音樂、通話、鈴聲和通知音量調整。
+• 送出「播放」或「下一首」媒體指令。
+• 開啟特定的應用程式。
+• 保持螢幕始終亮起。
+• 防止音量被變更。
+• 斷開連線後復原先前的音量等階。
 
-This app can't "boost" your volume or change the volume if you can't change it through your device's volume buttons manually.
+如果你不能透過裝置的音量鍵手動變更音量，這個應用程式就不能「放大」你的音量或變更音量。
 
 權限說明：
-• '網路' 用於回報錯誤。
-• '藍芽' 用於運作藍芽裝置。
-• '變更音訊設定' 用於變換音量。
-• 'Boot completed' to restore volume levels after reboots.
-• 'WAKE_LOCK' to fix a bug on Samsung devices and to keep the screen awake if necessary.
-• 'SYSTEM_ALERT_WINDOW' to launch apps when a Bluetooth device connects (only on Android 10).
+•「擁有完整的網路存取權」用於回報錯誤。
+•「存取藍牙設定」用於運作藍牙裝置。
+•「變更音訊設定」用於變更音量。
+•「啟動時執行」用於重新啟動後復原音量。
+•「防止手機進入待命狀態」用於修復 Samsung 裝置上的錯誤，並在必要條件下保持螢幕始終亮起。
+•「顯示在其他應用程式上層」用於在與藍牙裝置連線時啟動應用應用程式 (僅限 Android 10)。

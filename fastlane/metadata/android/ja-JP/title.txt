@@ -1,1 +1,1 @@
-Bluetooth Volume Manager
+Bluetooth 音量マネージャ
