@@ -8,13 +8,13 @@
     <string name="label_twitter">Twitter</string>
     <string name="label_website">網站</string>
     <string name="label_gplay">Google Play</string>
-    <string name="label_email">電子信箱</string>
+    <string name="label_email">電子郵件</string>
     <string name="label_bug_reports">錯誤回報</string>
-    <string name="description_bug_reports">自動回報錯誤和崩潰報告。</string>
+    <string name="description_bug_reports">自動回報錯誤和當機報告。</string>
     <string name="label_app_enabled">應用程式已啟用</string>
-    <string name="description_app_enabled">切換程式對音量和藍牙事件作出反應的能力。</string>
+    <string name="description_app_enabled">切換應用對音量和藍牙事件作出反應的能力。</string>
     <string name="label_visible_volume_adjustments">可見調整</string>
-    <string name="description_visible_volume_adjustments">在此程式調整時顯示系統音量視窗。</string>
+    <string name="description_visible_volume_adjustments">在此應用調整時顯示系統音量視窗。</string>
     <string name="label_volume_listener">檢查音量變更</string>
     <string name="description_volume_listener">在裝置連線時保持活動狀態，並保存不是由這個應用程式引起的音量變更。</string>
     <string name="label_autoplay_keytype">自動播放鍵型式</string>
@@ -75,7 +75,7 @@
     <string name="label_keyevent_next">下一首</string>
     <string name="label_install_id">安裝 ID</string>
     <string name="message_copied_to_clipboard">已複製到剪貼簿</string>
-    <string name="label_thanks">銘謝</string>
+    <string name="label_thanks">感謝</string>
     <string name="label_licenses">授權條款</string>
     <string name="label_ring_volume">鈴聲音量</string>
     <string name="description_ring_volume">控制鈴聲音量。</string>
@@ -102,11 +102,11 @@
     <string name="label_monitoring_duration">監視歷時</string>
     <string name="description_monitoring_duration">調整後的持續時間，以毫秒為單位，在此期間，任何進一步的音量變更都將被阻擋。</string>
     <string name="label_volume_lock">音量鎖定</string>
-    <string name="description_volume_lock">在該裝置連線時，任何未透過這個應用程式進行的音量變更都將被回復。</string>
+    <string name="description_volume_lock">在該裝置連線時，任何未透過這個應用程式進行的音量變更都將被還原。</string>
     <string name="label_bluetooth_settings">藍牙設定</string>
     <string name="label_keep_awake">保持喚醒</string>
     <string name="description_keep_awake">這個裝置連線時保持螢幕始終亮起。</string>
-    <string name="android10_applaunch_issue_description">Android 10 限制了應用程式從背景啟動的方式。要允許在藍芽裝置連線時開啟應用程式，請授予「顯示在其他應用程式上層」權限 (SYSTEM_ALERT_WINDOW)。</string>
+    <string name="android10_applaunch_issue_description">Android 10 限制了應用程式從背景啟動的方式。要允許在藍牙裝置連線時開啟應用程式，請授予「顯示在其他應用程式上層」權限 (SYSTEM_ALERT_WINDOW)。</string>
     <string name="label_alarm_volume">鬧鐘音量</string>
     <string name="description_alarm_volume">一些鬧鐘應用程式使用音樂音量來代替。</string>
 </resources>
