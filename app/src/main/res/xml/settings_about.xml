@@ -26,7 +26,7 @@
         android:title="@string/label_translation">
         <intent
             android:action="android.intent.action.VIEW"
-            android:data="https://crowdin.com/project/bluemusic" />
+            android:data="https://github.com/d4rken/bluemusic" />
     </Preference>
     <Preference
         android:key="about.installid"
