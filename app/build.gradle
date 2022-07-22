@@ -50,7 +50,7 @@ android {
     Properties bugsnagProps = new Properties()
     def bugsnagPropsFile = new File(System.properties['user.home'], ".appconfig/${packageName}/bugsnag.properties")
     if (bugsnagPropsFile.canRead()) bugsnagProps.load(new FileInputStream(bugsnagPropsFile))
-    String bugSnagApiKey = System.getenv("KEY_PASSWORD") ?: bugsnagProps.getProperty("bugsnag.apikey", "")
+    String bugSnagApiKey = System.getenv("BUGSNAG_API_KEY") ?: bugsnagProps.getProperty("bugsnag.apikey", "")
 
     defaultConfig {
         applicationId "${packageName}"
