@@ -107,7 +107,7 @@ jobs:
           mkdir -p "${TMP_SERVICEKEY_DIR}"
           TMP_SERVICEKEY_FILE_PATH="${TMP_SERVICEKEY_DIR}"/service_account.json
           echo $ENCODED_SERVICE_KEY | base64 -di > "${TMP_SERVICEKEY_FILE_PATH}"
-          echo "SUPPLY_JSON_KEY=$(echo TMP_SERVICEKEY_FILE_PATH)" >> $GITHUB_ENV
+          echo "SUPPLY_JSON_KEY=$(echo $TMP_SERVICEKEY_FILE_PATH)" >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -134,7 +134,7 @@ jobs:
           ruby-version: 2.7.6
           bundler-cache: true
 
-      - name: Assemble beta APK
+      - name: Assemble beta and upload to Google Play
         if: contains(steps.tagger.outputs.tag, '-beta')
         run: bundle exec fastlane beta
         env:
@@ -143,7 +143,7 @@ jobs:
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           BUGSNAG_API_KEY: ${{ secrets.BUGSNAG_API_KEY }}
 
-      - name: Assemble production APK
+      - name: Assemble production and upload to Google Play
         if: "!contains(steps.tagger.outputs.tag, '-beta')"
         run: bundle exec fastlane production
         env:
