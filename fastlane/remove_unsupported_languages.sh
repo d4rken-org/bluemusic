@@ -7,5 +7,6 @@ rm -rv ./metadata/android/sq-AL
 rm -rv ./metadata/android/uz
 rm -rv ./metadata/android/pcm-NG
 rm -rv ./metadata/android/tl-PH
+rm -rv ./metadata/android/si-LK
 find ./metadata/android -empty -type d -delete
 exit 0
