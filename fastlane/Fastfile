@@ -17,11 +17,10 @@ default_platform :android
 
 platform :android do
   before_all do
-  	#ensure_git_status_clean
+  	ensure_git_status_clean
   end
 
   lane :beta do
-  	ensure_git_branch(branch: 'master')
   	git_pull
     gradle(task: 'clean assembleBeta')
     sh "bash ./remove_unsupported_languages.sh"
@@ -36,7 +35,6 @@ platform :android do
   end
 
   lane :production do
-  	ensure_git_branch(branch: 'master')
   	git_pull
     gradle(task: 'clean assembleRelease')
     sh "bash ./remove_unsupported_languages.sh"
