@@ -3,7 +3,7 @@
 # Bluetooth Volume Manager
 
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=19)
-![Build](https://github.com/d4rken/bluemusic/actions/workflows/android.yml/badge.svg)
+[![Code tests & eval](https://github.com/d4rken-org/bluemusic/actions/workflows/code-checks.yml/badge.svg)](https://github.com/d4rken-org/bluemusic/actions/workflows/code-checks.yml)
 [![Github All Releases](https://img.shields.io/github/downloads/d4rken/bluemusic/total.svg)]()
 
 BVM gives your Android device the ability to have individual music and voice volumes for each of your bluetooth devices.
