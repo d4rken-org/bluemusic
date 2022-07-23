@@ -128,6 +128,12 @@ jobs:
           distribution: 'adopt'
           java-version: 11
 
+      - name: Set up ruby env
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.6
+          bundler-cache: true
+
       - name: Assemble beta APK
         if: contains(steps.tagger.outputs.tag, '-beta')
         run: bundle exec fastlane beta
