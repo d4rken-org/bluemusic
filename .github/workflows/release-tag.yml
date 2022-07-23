@@ -105,7 +105,7 @@ jobs:
         run: |
           TMP_SERVICEKEY_DIR="${RUNNER_TEMP}"/gplaykey
           mkdir -p "${TMP_SERVICEKEY_DIR}"
-          TMP_SERVICEKEY_FILE_PATH="${TMP_KEY_DIR}"/service_account.json
+          TMP_SERVICEKEY_FILE_PATH="${TMP_SERVICEKEY_DIR}"/service_account.json
           echo $ENCODED_SERVICE_KEY | base64 -di > "${TMP_SERVICEKEY_FILE_PATH}"
           echo "SUPPLY_JSON_KEY=$(echo TMP_SERVICEKEY_FILE_PATH)" >> $GITHUB_ENV
 
