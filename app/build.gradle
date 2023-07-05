@@ -21,22 +21,22 @@ def gitSha() {
 android {
     def packageName = "eu.darken.bluemusic"
 
+    signingConfigs {
+        release {}
+    }
+    Properties signingProps = new Properties()
     def signingPropFile = new File(System.properties['user.home'], ".appconfig/${packageName}/signing.properties")
-    if (signingPropFile.canRead()) {
-        Properties signingProps = new Properties()
-        signingProps.load(new FileInputStream(signingPropFile))
+    if (signingPropFile.canRead()) signingProps.load(new FileInputStream(signingPropFile))
+
+    String keyStorePath = System.getenv("STORE_PATH") ?: signingProps["release.storePath"]
+    File keyStore = keyStorePath ? new File(keyStorePath) : null
+    if (keyStore?.canRead()) {
         signingConfigs {
             release {
-                storeFile new File(signingProps['release.storePath'])
-                keyAlias signingProps['release.keyAlias']
-                storePassword signingProps['release.storePassword']
-                keyPassword signingProps['release.keyPassword']
-            }
-        }
-
-        buildTypes {
-            release {
-                signingConfig signingConfigs.release
+                storeFile keyStore
+                storePassword System.getenv("STORE_PASSWORD") ?: signingProps['release.storePassword']
+                keyAlias System.getenv("KEY_ALIAS") ?: signingProps['release.keyAlias']
+                keyPassword System.getenv("KEY_PASSWORD") ?: signingProps['release.keyPassword']
             }
         }
     }
@@ -44,12 +44,13 @@ android {
     compileSdkVersion buildConfig.compileSdk
 
     def versionMajor = 2
-    def versionMinor = 52
+    def versionMinor = 54
     def versionTag = ""
 
     Properties bugsnagProps = new Properties()
     def bugsnagPropsFile = new File(System.properties['user.home'], ".appconfig/${packageName}/bugsnag.properties")
     if (bugsnagPropsFile.canRead()) bugsnagProps.load(new FileInputStream(bugsnagPropsFile))
+    String bugSnagApiKey = System.getenv("BUGSNAG_API_KEY") ?: bugsnagProps.getProperty("bugsnag.apikey", "")
 
     defaultConfig {
         applicationId "${packageName}"
@@ -72,13 +73,23 @@ android {
             proguardFiles 'proguard-rules-debug.pro'
             //debuggable false
         }
-        release {
+        beta {
+            signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt')
             proguardFiles proguardRulesRelease
             testProguardFiles getDefaultProguardFile('proguard-android.txt')
             testProguardFiles proguardRulesRelease
-            manifestPlaceholders = [bugsnagApiKey: bugsnagProps.getProperty("bugsnag.apikey", "")]
+            manifestPlaceholders = [bugsnagApiKey: bugSnagApiKey]
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            proguardFiles proguardRulesRelease
+            testProguardFiles getDefaultProguardFile('proguard-android.txt')
+            testProguardFiles proguardRulesRelease
+            manifestPlaceholders = [bugsnagApiKey: bugSnagApiKey]
         }
         applicationVariants.all { variant ->
             if (variant.buildType.name != "debug") {
@@ -125,7 +136,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
     // Crashtracking
-    implementation ('com.bugsnag:bugsnag-android:5.9.2') {
+    implementation('com.bugsnag:bugsnag-android:5.9.2') {
 //        exclude group: "com.bugsnag", module: "bugsnag-plugin-android-anr"
         exclude group: "com.bugsnag", module: "bugsnag-plugin-android-ndk"
     }
