@@ -134,8 +134,8 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
 
         ResolveInfo resolveInfo = packageManager.resolveActivity(batterySavingIntent, 0);
         final boolean displayHint = ApiHelper.hasOreo()
+                && !isBatterySavingHintDismissed
                 && !powerManager.isIgnoringBatteryOptimizations(BuildConfig.APPLICATION_ID)
-                && (!isBatterySavingHintDismissed || ApiHelper.hasAndroid13())
                 && resolveInfo != null;
 
         onView(v -> v.displayBatteryOptimizationHint(displayHint, batterySavingIntent));

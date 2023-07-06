@@ -23,6 +23,7 @@ import eu.darken.bluemusic.main.ui.MainActivity
 import eu.darken.bluemusic.main.ui.config.ConfigFragment.Companion.instantiate
 import eu.darken.bluemusic.settings.ui.SettingsActivity
 import eu.darken.bluemusic.util.ActivityUtil
+import eu.darken.bluemusic.util.ApiHelper
 import eu.darken.bluemusic.util.Check
 import eu.darken.bluemusic.util.viewBinding
 import eu.darken.mvpbakery.base.MVPBakery.Companion.builder
@@ -170,7 +171,10 @@ class ManagedDevicesFragment : Fragment(), ManagedDevicesPresenter.View, Managed
     }
 
     override fun displayBatteryOptimizationHint(display: Boolean, intent: Intent) {
-        ui.batterySavingHintDismissAction.setOnClickListener { v: View? -> presenter.onBatterySavingDismissed() }
+        ui.batterySavingHintDismissAction.apply {
+            visibility = if (ApiHelper.hasAndroid13()) View.GONE else View.VISIBLE
+            setOnClickListener { presenter.onBatterySavingDismissed() }
+        }
         ui.batterySavingHintShowAction.setOnClickListener { v: View? -> ActivityUtil.tryStartActivity(this, intent) }
         ui.batterySavingHintContainer.visibility = if (display) View.VISIBLE else View.GONE
     }
