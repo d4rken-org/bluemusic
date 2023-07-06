@@ -3,11 +3,10 @@ plugins {
     id 'com.bugsnag.android.gradle'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'realm-android'
     id 'kotlin-parcelize'
 }
 
-apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'realm-android'
 
 def gitSha() {
     def p = 'git rev-parse --short HEAD'.execute([], project.rootDir)
@@ -60,10 +59,6 @@ android {
         versionName "${versionMajor}.${versionMinor}${versionTag}"
         manifestPlaceholders = [bugsnagApiKey: "60879455b6b7234ca04b8282247d143c"]
     }
-    lintOptions {
-        abortOnError false
-        ignore 'CheckResult'
-    }
     buildTypes {
         def proguardRulesRelease = fileTree(dir: "proguard", include: ["*.pro"]).asList().toArray()
         debug {
@@ -115,6 +110,11 @@ android {
     }
     buildFeatures {
         viewBinding true
+    }
+    namespace 'eu.darken.bluemusic'
+    lint {
+        abortOnError false
+        ignore 'CheckResult'
     }
 }
 
