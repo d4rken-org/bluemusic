@@ -20,6 +20,7 @@ import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.ResHelper;
 import eu.darken.bluemusic.main.core.database.ManagedDevice;
 import eu.darken.bluemusic.main.ui.MainActivity;
+import eu.darken.bluemusic.util.PendingIntentCompat;
 import eu.darken.bluemusic.util.ValueBox;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Completable;
@@ -56,11 +57,11 @@ public class ServiceHelper {
         }
 
         Intent openIntent = new Intent(service, MainActivity.class);
-        PendingIntent openPi = PendingIntent.getActivity(service, 0, openIntent, 0);
+        PendingIntent openPi = PendingIntent.getActivity(service, 0, openIntent, PendingIntentCompat.getFLAG_IMMUTABLE());
 
         Intent stopIntent = new Intent(service, BlueMusicService.class);
         stopIntent.setAction(STOP_ACTION);
-        PendingIntent stopPi = PendingIntent.getService(service, 0, stopIntent, 0);
+        PendingIntent stopPi = PendingIntent.getService(service, 0, stopIntent, PendingIntentCompat.getFLAG_IMMUTABLE());
 
         builder = new NotificationCompat.Builder(service, NOTIFICATION_CHANNEL_ID)
                 .setChannelId(NOTIFICATION_CHANNEL_ID)
