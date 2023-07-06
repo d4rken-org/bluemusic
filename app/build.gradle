@@ -171,5 +171,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.0-alpha03'
 
     // IAP
-    implementation 'com.android.billingclient:billing:4.0.0'
+    implementation 'com.android.billingclient:billing:6.0.1'
 }
