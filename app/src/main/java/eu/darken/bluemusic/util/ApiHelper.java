@@ -26,6 +26,10 @@ public class ApiHelper {
         return "Q".equals(Build.VERSION.RELEASE) || "10".equals(Build.VERSION.RELEASE) || SDK_INT >= 29;
     }
 
+    public static boolean hasAndroid12() {
+        return SDK_INT >= 31;
+    }
+
     /**
      * @return if >=29
      */

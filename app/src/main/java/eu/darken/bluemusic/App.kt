@@ -1,13 +1,17 @@
 package eu.darken.bluemusic
 
+import android.Manifest
 import android.app.Activity
 import android.app.Application
 import android.app.Service
 import android.content.BroadcastReceiver
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
 import com.bugsnag.android.Bugsnag
 import com.bugsnag.android.Configuration
 import eu.darken.bluemusic.main.core.database.MigrationTool
 import eu.darken.bluemusic.settings.core.Settings
+import eu.darken.bluemusic.util.ApiHelper
 import eu.darken.bluemusic.util.BugsnagErrorHandler
 import eu.darken.bluemusic.util.BugsnagTree
 import eu.darken.mvpbakery.injection.ComponentSource
@@ -61,6 +65,11 @@ class App : Application(), HasManualActivityInjector, HasManualBroadcastReceiver
             Timber.e(error, "$thread threw and uncaught exception")
             originalHandler?.uncaughtException(thread, error)
         }
+
+        if (ApiHelper.hasAndroid12() && ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            settings.isShowOnboarding = true
+        }
+
         Timber.d("App onCreate() done!")
     }
 

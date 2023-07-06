@@ -90,7 +90,7 @@ class ManagedDevicesFragment : Fragment(), ManagedDevicesPresenter.View, Managed
 
     override fun onPrepareOptionsMenu(menu: Menu) {
         menu.findItem(R.id.upgrade).isVisible = !isProVersion
-        val btIcon = DrawableCompat.wrap(menu.findItem(R.id.bluetooth_settings).icon)
+        val btIcon = DrawableCompat.wrap(menu.findItem(R.id.bluetooth_settings).icon!!)
         val btStateColor = if (bluetoothEnabled) android.R.color.white else R.color.state_m3
         DrawableCompat.setTint(btIcon, ContextCompat.getColor(requireContext(), btStateColor))
         menu.findItem(R.id.bluetooth_settings).icon = btIcon

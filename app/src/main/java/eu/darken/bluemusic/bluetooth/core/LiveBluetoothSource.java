@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.bluetooth.core;
 
 
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -9,12 +10,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.ParcelUuid;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -23,9 +26,11 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import androidx.core.app.ActivityCompat;
 import eu.darken.bluemusic.main.core.database.RealmSource;
 import eu.darken.bluemusic.main.core.service.MissingDeviceException;
 import eu.darken.bluemusic.settings.core.Settings;
+import eu.darken.bluemusic.util.ApiHelper;
 import eu.darken.bluemusic.util.Check;
 import eu.darken.bluemusic.util.ui.RetryWithDelay;
 import io.reactivex.rxjava3.core.Observable;
@@ -140,12 +145,14 @@ class LiveBluetoothSource implements BluetoothSource {
     }
 
     private void updatePaired() {
-        loadPairedDevices().subscribeOn(Schedulers.io()).subscribe(pairedPublisher::onNext, e -> Timber.e(e, "Updating paired devices failed."));
-    }
+        Timber.v("updatePaired()");
 
-    private Single<Map<String, SourceDevice>> loadPairedDevices() {
-        Timber.v("loadPairedDevices()");
-        return Single.defer(() -> Single.just(manager.getAdapter().getBondedDevices()))
+        if (ApiHelper.hasAndroid12() && ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            Timber.w("BLUETOOTH_CONNECT permission is missing");
+            return;
+        }
+
+        Single.defer(() -> Single.just(manager.getAdapter().getBondedDevices()))
                 .map(bluetoothDevices -> {
                     Map<String, SourceDevice> devices = new HashMap<>();
                     for (BluetoothDevice realDevice : manager.getAdapter().getBondedDevices()) {
@@ -163,7 +170,8 @@ class LiveBluetoothSource implements BluetoothSource {
                     Timber.d("Paired devices (%d): %s", devices.size(), devices);
                     return devices;
                 })
-                .subscribeOn(Schedulers.io());
+                .subscribeOn(Schedulers.io())
+                .subscribe(pairedPublisher::onNext, e -> Timber.e(e, "Updating paired devices failed."));
     }
 
     @Override
@@ -189,6 +197,12 @@ class LiveBluetoothSource implements BluetoothSource {
     @Override
     public Single<Map<String, SourceDevice>> reloadConnectedDevices() {
         Timber.v("reloadConnectedDevices()");
+
+        if (ApiHelper.hasAndroid12() && ActivityCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+            Timber.w("BLUETOOTH_CONNECT permission is missing");
+            return Single.just(Collections.emptyMap());
+        }
+
         return Single
                 .defer(() -> {
                     final List<SingleSource<List<BluetoothDevice>>> profiles = new ArrayList<>();
