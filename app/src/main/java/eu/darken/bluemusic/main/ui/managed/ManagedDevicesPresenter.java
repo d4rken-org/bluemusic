@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.main.ui.managed;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.NotificationManager;
@@ -20,6 +21,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import eu.darken.bluemusic.BuildConfig;
 import eu.darken.bluemusic.bluetooth.core.BluetoothSource;
 import eu.darken.bluemusic.main.core.audio.AudioStream;
@@ -53,6 +55,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
 
     private boolean isBatterySavingHintDismissed = false;
     private boolean isAppLaunchHintDismissed = false;
+    private boolean isNotificationPermissionDismissed = false;
 
     @Inject
     ManagedDevicesPresenter(
@@ -120,6 +123,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
 
         checkBatterySavingIssue();
         checkApplaunchIssue();
+        checkNotificationPermissions();
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -158,6 +162,25 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
     void onAppLaunchHintDismissed() {
         isAppLaunchHintDismissed = true;
         checkApplaunchIssue();
+    }
+
+
+    @TargetApi(Build.VERSION_CODES.TIRAMISU)
+    private void checkNotificationPermissions() {
+        final boolean displayHint = ApiHelper.hasAndroid13()
+                && !isNotificationPermissionDismissed
+                && ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED;
+
+        onView(v -> v.displayNotificationPermissionHint(displayHint));
+    }
+
+    void onNotificationPermissionsDismissed() {
+        isNotificationPermissionDismissed = true;
+        checkNotificationPermissions();
+    }
+
+    void onNotificationPermissionsGranted() {
+        checkNotificationPermissions();
     }
 
     void onUpdateMusicVolume(ManagedDevice device, float percentage) {
@@ -257,5 +280,7 @@ public class ManagedDevicesPresenter extends ComponentPresenter<ManagedDevicesPr
         void displayBatteryOptimizationHint(boolean display, Intent intent);
 
         void displayAndroid10AppLaunchHint(boolean display, Intent intent);
+
+        void displayNotificationPermissionHint(boolean display);
     }
 }

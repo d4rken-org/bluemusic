@@ -1,10 +1,13 @@
 package eu.darken.bluemusic.main.ui.managed
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
@@ -38,10 +41,15 @@ class ManagedDevicesFragment : Fragment(), ManagedDevicesPresenter.View, Managed
     private var bluetoothEnabled = false
     private val stateForwarder = StateForwarder()
 
+    lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
         stateForwarder.onCreate(savedInstanceState)
+        requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+            if (isGranted) presenter.onNotificationPermissionsGranted()
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -109,14 +117,17 @@ class ManagedDevicesFragment : Fragment(), ManagedDevicesPresenter.View, Managed
                         .show()
                 true
             }
+
             R.id.bluetooth_settings -> {
                 presenter.showBluetoothSettingsScreen()
                 true
             }
+
             R.id.settings -> {
                 ActivityUtil.tryStartActivity(requireActivity(), Intent(context, SettingsActivity::class.java))
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -168,6 +179,12 @@ class ManagedDevicesFragment : Fragment(), ManagedDevicesPresenter.View, Managed
         ui.android10ApplaunchHintDismissAction.setOnClickListener { v: View? -> presenter.onAppLaunchHintDismissed() }
         ui.android10ApplaunchHintShowAction.setOnClickListener { v: View? -> ActivityUtil.tryStartActivity(this, intent) }
         ui.android10ApplaunchHintContainer.visibility = if (display) View.VISIBLE else View.GONE
+    }
+
+    override fun displayNotificationPermissionHint(display: Boolean) {
+        ui.android13NotificationPermissionDismissAction.setOnClickListener { presenter.onNotificationPermissionsDismissed() }
+        ui.android13NotificationPermissionGrantAction.setOnClickListener { requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS) }
+        ui.android13NotificationPermissionContainer.visibility = if (display) View.VISIBLE else View.GONE
     }
 
     companion object {
