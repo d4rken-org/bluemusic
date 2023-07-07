@@ -42,9 +42,16 @@ android {
 
     compileSdkVersion buildConfig.compileSdk
 
-    def versionMajor = 2
-    def versionMinor = 56
-    def versionTag = ""
+    def versionProperties = new Properties()
+    versionProperties.load(new FileInputStream(new File("version.properties")))
+
+    def major = versionProperties.getProperty("project.versioning.major").toInteger()
+    def minor = versionProperties.getProperty("project.versioning.minor").toInteger()
+    def patch = versionProperties.getProperty("project.versioning.patch").toInteger()
+    def build = versionProperties.getProperty("project.versioning.build").toInteger()
+
+    def name = "${major}.${minor}.${patch}-rc${build}"
+    def code = major * 10000000 + minor * 100000 + patch * 1000 + build * 10
 
     Properties bugsnagProps = new Properties()
     def bugsnagPropsFile = new File(System.properties['user.home'], ".appconfig/${packageName}/bugsnag.properties")
@@ -55,8 +62,8 @@ android {
         applicationId "${packageName}"
         minSdkVersion buildConfig.minSdk
         targetSdkVersion buildConfig.targetSdk
-        versionCode versionMajor * 10000 + versionMinor
-        versionName "${versionMajor}.${versionMinor}${versionTag}"
+        versionCode code
+        versionName name
         manifestPlaceholders = [bugsnagApiKey: "60879455b6b7234ca04b8282247d143c"]
     }
     buildTypes {
