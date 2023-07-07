@@ -17,4 +17,4 @@ Permisos explicados:
 • 'Modificar los ajustes del audio' para cambiar el volumen.
 • 'Iniciar al arranque' para restaurar los niveles del volumen después de reiniciar.
 • 'Evitar que el dispositivo entre en suspensión' para corregir un error en dispositivos Samsung y mantener la pantalla encendida si es necesario.
-- 'Abrir una ventana' para lanzar las aplicaciones cuando se conecta un dispositivo Bluetooth (sólo en Android 10).
+• 'Abrir una ventana' para lanzar las aplicaciones cuando se conecta un dispositivo Bluetooth (sólo en Android 10).
