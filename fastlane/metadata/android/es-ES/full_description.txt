@@ -1,19 +1,20 @@
-El Administrador de Volumen Bluetooth puede reaccionar a dispositivos Bluetooth que se conectan o desconectan.
-Permite a Android recordar los niveles de volumen de diferentes dispositivos Bluetooth.
+El administrador del volumen Bluetooth puede reaccionar a la conexión o desconexión de los dispositivos Bluetooth.
+Permite a Android recordar los niveles del volumen de los diferentes dispositivos Bluetooth.
 
-Características disponibles:
-• Ajustes en volumen de música, llamada, tono de llamada y notificación.
-• Envío de comandos 'Reproducir' o 'Siguiente'.
-• Abrir una aplicación especifica.
+Funciones disponibles:
+• Ajuste del volumen de la música, las llamadas, los tonos de llamada y las notificaciones.
+• Envío de los comandos multimedia "Reproducir" o "Siguiente".
+• Abrir una aplicación específica.
 • Mantener la pantalla encendida.
-• Evitar que el volumen se cambie.
-• Restaurar los niveles de volumen anteriores después de una desconexión.
+• Impedir que se cambie el volumen.
+• Restaurar los niveles de volumen anteriores después de la desconexión.
 
-Esta aplicación no puede "aumentar" o cambiar el volumen si no es posible cambiarlo manualmente a través de los botones de volumen de su dispositivo.
+Esta aplicación no puede "aumentar" el volumen o cambiarlo si no puedes hacerlo manualmente a través de los botones del volumen de tu dispositivo.
 
-Explicación de los permisos:
-• "Internet" para los informes de errores.
-• "Bluetooth" para funcionar con dispositivos Bluetooth.
-• "Modificar configuración de audio" para cambiar el volumen.
-• "Arranque completado" para restaurar el volumen después de reiniciar.
-• 'WAKE_LOCK' para arreglar un error en dispositivos Samsung y para mantener la pantalla despierta si es necesario.
+Permisos explicados:
+• 'Internet' para informes de errores.
+• 'Bluetooth' para trabajar con los dispositivos Bluetooth.
+• 'Modificar los ajustes del audio' para cambiar el volumen.
+• 'Iniciar al arranque' para restaurar los niveles del volumen después de reiniciar.
+• 'Evitar que el dispositivo entre en suspensión' para corregir un error en dispositivos Samsung y mantener la pantalla encendida si es necesario.
+- 'Abrir una ventana' para lanzar las aplicaciones cuando se conecta un dispositivo Bluetooth (sólo en Android 10).
