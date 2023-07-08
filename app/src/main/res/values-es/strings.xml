@@ -105,7 +105,7 @@
     <string name="label_bluetooth_settings">Configuración del Bluetooth</string>
     <string name="label_keep_awake">Mantente activo</string>
     <string name="description_keep_awake">Mantener la pantalla encendida mientras este dispositivo está conectado.</string>
-    <string name="android10_applaunch_issue_description">Android 10 restringe cómo se pueden iniciar las aplicaciones desde el fondo. Para permitir la apertura de aplicaciones cuando se conecta un dispositivo Bluetooth, otorgue el permiso "Mostrar sobre otras aplicaciones" (SYSTEM_ALERT_WINDOW).</entry>
+    <string name="android10_applaunch_issue_description">Android 10 restringe cómo se pueden iniciar las aplicaciones desde el fondo. Para permitir la apertura de aplicaciones cuando se conecta un dispositivo Bluetooth, otorgue el permiso "Mostrar sobre otras aplicaciones" (SYSTEM_ALERT_WINDOW).</string>
     <string name="label_alarm_volume">Volumen de la alarma</string>
     <string name="description_alarm_volume">Algunas aplicaciones de alarma usan el volumen de la música en su lugar.</string>
     <string name="nudge_volume_label">Empujar volumen</string>
