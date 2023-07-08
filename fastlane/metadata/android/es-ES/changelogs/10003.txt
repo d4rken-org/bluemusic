@@ -1,0 +1,6 @@
+v1.0.3:
+- Se corrigió el bloqueo cuando el dispositivo de conexión no podía proporcionar una clase de dispositivo Bluetooth.
+v1.0.2:
+- Corregido el fallo al bajar el volumen.
+v1.0.1:
+- Versión de prueba inicial.
