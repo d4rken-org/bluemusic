@@ -1,0 +1,4 @@
+v2.5
+• Carga más rápida al comprobar el estado del adaptador Bluetooth.
+• Reducción del uso de recursos al reaccionar a los procesos del Bluetooth
+• Corregido el error interno al comprobar si Bluetooth está activado
