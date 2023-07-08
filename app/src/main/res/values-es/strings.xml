@@ -97,7 +97,7 @@
     <string name="description_speaker_autosave">La entrada \"Altavoz del dispositivo\", que es responsable de los volúmenes predeterminados, se actualiza cuando se conecta un dispositivo Bluetooth. Nota: Esto no funciona en todos los dispositivos.</string>
     <string name="action_show">Mostrar</string>
     <string name="action_dismiss">Descartar</string>
-    <string name="battery_optimizations_issue_description">Las optimizaciones de batería están habilitadas para esta aplicación y pueden evitar que reciba eventos de Bluetooth. Considere deshabilitar las optimizaciones si tiene problemas.</string>
+    <string name="battery_optimizations_issue_description">Las optimizaciones de batería están habilitadas para esta aplicación y pueden evitar que reciba eventos de Bluetooth. Considera deshabilitar las optimizaciones si tiene problemas.</string>
     <string name="label_monitoring_duration">Duración del monitoreo</string>
     <string name="description_monitoring_duration">Una duración en milisegundos, después de que se hayan realizado los ajustes, durante la cual se bloquearán los cambios de volumen adicionales.</string>
     <string name="label_volume_lock">Bloqueo de volumen</string>
