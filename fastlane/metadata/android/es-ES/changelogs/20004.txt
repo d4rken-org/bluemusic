@@ -1,0 +1,11 @@
+v2.0 - 2.4
+• Detección de dispositivos mejorada
+• Los dispositivos se pueden añadir manualmente desde una lista de dispositivos emparejados
+• Los tiempos pueden ajustarse para cada dispositivo
+• Se puede desactivar la escucha de los botones de volumen
+• Se puede desactivar el ajuste del volumen de la llamada por dispositivo
+• Se ha añadido la actualización Premium para funciones adicionales y soporte en el desarrollo
+• La ventana emergente del volumen se puede ocultar [versión premium]
+• Función de reproducción automática, que simula la pulsación del botón PLAY de un mando bluetooth [versión premium].
+
+¿Preguntas sobre la actualización? ¡Envíame un correo!
