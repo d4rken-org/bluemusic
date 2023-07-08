@@ -1,0 +1,5 @@
+v1.0.2:
+- Corregido el fallo con la disminución del volumen.
+
+v1.0.1:
+- Versión de prueba inicial.
