@@ -1,0 +1,3 @@
+v2.54
+- Mantenimiento
+- Traducciones actualizadas
