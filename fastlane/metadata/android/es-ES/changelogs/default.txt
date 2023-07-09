@@ -1,0 +1,5 @@
+Corrección de errores, mejoras del rendimiento y tal vez nuevas características.
+¯\_(ツ)_/¯
+
+Un registro de cambios detallado está disponible en GitHub:
+https://github.com/d4rken-org/bluemusic/releases/latest
