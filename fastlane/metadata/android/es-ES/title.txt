@@ -1,1 +1,1 @@
-Administrador del volumen Bluetooth
+Gestión del volumen Bluetooth
