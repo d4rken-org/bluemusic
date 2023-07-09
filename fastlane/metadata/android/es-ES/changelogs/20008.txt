@@ -1,0 +1,11 @@
+v2.7-2.8
+• Iconos, diseño y textos mejorados
+• Nueva pantalla en la configuración de los dispositivos
+• Cambio de nombre de los dispositivos
+• Restauración después de reiniciar
+• Restauración del volumen del altavoz tras la desconexión
+• Compatibilidad con Android 8.1
+• Mejor rendimiento al cargar los dispositivos
+• Añadido los enlaces para ayudar a traducir la aplicación
+• Pantalla de bienvenida para los nuevos usuarios
+• Un par de correcciones en los errores y alguna reestructuración del código
