@@ -10,6 +10,9 @@ My underlying privacy principle is the [Golden Rule](https://en.wikipedia.org/wi
 Send a quick mail to support@darken.eu if you have further questions.
 
 ## Automatic crash reports
+
+*This was removed in version v2.57+*
+
 The app uses "Bugsnag" for automatic crash reports:
 
 https://www.bugsnag.com/

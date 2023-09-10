@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'com.bugsnag.android.gradle'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
@@ -53,18 +52,12 @@ android {
     def name = "${major}.${minor}.${patch}-rc${build}"
     def code = major * 10000000 + minor * 100000 + patch * 1000 + build * 10
 
-    Properties bugsnagProps = new Properties()
-    def bugsnagPropsFile = new File(System.properties['user.home'], ".appconfig/${packageName}/bugsnag.properties")
-    if (bugsnagPropsFile.canRead()) bugsnagProps.load(new FileInputStream(bugsnagPropsFile))
-    String bugSnagApiKey = System.getenv("BUGSNAG_API_KEY") ?: bugsnagProps.getProperty("bugsnag.apikey", "")
-
     defaultConfig {
         applicationId "${packageName}"
         minSdkVersion buildConfig.minSdk
         targetSdkVersion buildConfig.targetSdk
         versionCode code
         versionName name
-        manifestPlaceholders = [bugsnagApiKey: "60879455b6b7234ca04b8282247d143c"]
     }
     buildTypes {
         def proguardRulesRelease = fileTree(dir: "proguard", include: ["*.pro"]).asList().toArray()
@@ -82,7 +75,6 @@ android {
             proguardFiles proguardRulesRelease
             testProguardFiles getDefaultProguardFile('proguard-android.txt')
             testProguardFiles proguardRulesRelease
-            manifestPlaceholders = [bugsnagApiKey: bugSnagApiKey]
         }
         release {
             signingConfig signingConfigs.release
@@ -91,7 +83,6 @@ android {
             proguardFiles proguardRulesRelease
             testProguardFiles getDefaultProguardFile('proguard-android.txt')
             testProguardFiles proguardRulesRelease
-            manifestPlaceholders = [bugsnagApiKey: bugSnagApiKey]
         }
         applicationVariants.all { variant ->
             if (variant.buildType.name != "debug") {
@@ -141,12 +132,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common:2.3.1"
     implementation "androidx.lifecycle:lifecycle-common-java8:2.3.1"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-
-    // Crashtracking
-    implementation('com.bugsnag:bugsnag-android:5.9.2') {
-//        exclude group: "com.bugsnag", module: "bugsnag-plugin-android-anr"
-        exclude group: "com.bugsnag", module: "bugsnag-plugin-android-ndk"
-    }
 
     // RX
     implementation "io.reactivex.rxjava3:rxjava:3.1.1"

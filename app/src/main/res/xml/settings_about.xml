@@ -28,13 +28,6 @@
             android:action="android.intent.action.VIEW"
             android:data="https://github.com/d4rken/bluemusic" />
     </Preference>
-    <Preference
-        android:key="about.installid"
-        android:title="@string/label_install_id" />
-    <Preference
-        android:key="about.debug.upload"
-        android:title="Upload debug log"
-        android:summary="This is only useful if you also contact the developer with your install ID and additional details."/>
     <PreferenceCategory android:title="Contact">
         <Preference
             android:summary="support@darken.eu"
@@ -98,14 +91,6 @@
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://github.com/evant/gradle-retrolambda"/>
-        </Preference>
-        <Preference
-            android:key="license.bugsnag"
-            android:summary="Client side library for crash monitoring via bugsnag.com. (MIT)"
-            android:title="Bugsnag">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://github.com/bugsnag/bugsnag-android"/>
         </Preference>
         <Preference
             android:key="license.butterknife"

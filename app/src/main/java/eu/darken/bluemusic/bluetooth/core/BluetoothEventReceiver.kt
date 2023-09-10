@@ -4,8 +4,6 @@ import android.bluetooth.BluetoothDevice
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.bugsnag.android.Bugsnag
-import dagger.android.HasBroadcastReceiverInjector
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.database.DeviceManager
@@ -17,7 +15,7 @@ import eu.darken.mvpbakery.injection.broadcastreceiver.HasManualBroadcastReceive
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
-import java.util.*
+import java.util.Collections
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -47,17 +45,6 @@ class BluetoothEventReceiver : BroadcastReceiver() {
             return
         }
 
-        // https://stackoverflow.com/questions/46784685
-        // https://stackoverflow.com/questions/41061272
-        // https://issuetracker.google.com/issues/37137009
-        if (context.applicationContext !is HasManualBroadcastReceiverInjector) {
-            val ex = RuntimeException(String.format(
-                    "%s does not implement %s",
-                    context.applicationContext.javaClass.canonicalName,
-                    HasBroadcastReceiverInjector::class.java.canonicalName))
-            Bugsnag.notify(ex)
-            return
-        }
         (context.applicationContext as HasManualBroadcastReceiverInjector).broadcastReceiverInjector().inject(this)
 
         if (!settings.isEnabled) {

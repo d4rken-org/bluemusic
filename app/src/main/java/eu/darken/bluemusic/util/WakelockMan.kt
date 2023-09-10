@@ -1,7 +1,6 @@
 package eu.darken.bluemusic.util
 
 import android.os.PowerManager
-import com.bugsnag.android.Bugsnag
 import eu.darken.bluemusic.AppComponent
 import timber.log.Timber
 import javax.inject.Inject
@@ -25,7 +24,6 @@ class WakelockMan @Inject constructor(powerManager: PowerManager) {
                 Timber.d("tryAquire(): Wakelock acquired (isHeld=%b)", wakelock.isHeld)
             } catch (e: Exception) {
                 Timber.e(e, "Failed to acquire wakelock.")
-                Bugsnag.notify(e)
             }
         }
     }
@@ -36,7 +34,6 @@ class WakelockMan @Inject constructor(powerManager: PowerManager) {
                 wakelock.release()
             } catch (e: Exception) {
                 Timber.e(e, "Failed to release wakelock.")
-                Bugsnag.notify(e)
             }
             Timber.d("tryRelease(): Wakelock released (isHeld=%b)", wakelock.isHeld)
         } else {

@@ -36,11 +36,6 @@
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/label_other">
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="core.bugreporting.enabled"
-            android:summary="@string/description_bug_reports"
-            android:title="@string/label_bug_reports"/>
         <Preference
             android:key="core.advanced"
             android:title="@string/label_advanced"/>

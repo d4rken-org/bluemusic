@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import com.bugsnag.android.Bugsnag;
-
 import androidx.fragment.app.Fragment;
 import timber.log.Timber;
 
@@ -25,7 +23,6 @@ public class ActivityUtil {
         try {
             runnable.run();
         } catch (ActivityNotFoundException e) {
-            Bugsnag.notify(e);
             String msg = "No compatible app found.";
             Timber.e(e, msg);
             Toast.makeText(context, msg, Toast.LENGTH_LONG).show();

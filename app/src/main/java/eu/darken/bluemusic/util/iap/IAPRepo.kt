@@ -1,9 +1,8 @@
 package eu.darken.bluemusic.util.iap
 
 import android.app.Activity
-import com.android.billingclient.api.*
-import com.android.billingclient.api.BillingClient.*
-import com.bugsnag.android.Bugsnag
+import com.android.billingclient.api.BillingClient.BillingResponseCode
+import com.android.billingclient.api.BillingResult
 import com.jakewharton.rx3.replayingShare
 import eu.darken.bluemusic.AppComponent
 import io.reactivex.rxjava3.core.Observable
@@ -97,10 +96,6 @@ class IAPRepo @Inject constructor(
             .flatMap { it.startIAPFlow(activity, availableSku.sku) }
             .doOnError { error ->
                 Timber.w(error, "Failed to start IAP flow for $availableSku")
-                val ignoredCodes = listOf(3, 6)
-                if (error !is BillingClientException || error.result?.responseCode?.let { ignoredCodes.contains(it) } != true) {
-                    Bugsnag.notify(error)
-                }
             }
             .retryDelayed(1, 2000)
             .mapExceptionsUserFriendly()
