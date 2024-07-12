@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
 
     <queries>
         <intent>
@@ -63,7 +64,9 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".main.core.service.BlueMusicService"/>
+        <service
+            android:name=".main.core.service.BlueMusicService"
+            android:foregroundServiceType="connectedDevice" />
     </application>
 
 </manifest>

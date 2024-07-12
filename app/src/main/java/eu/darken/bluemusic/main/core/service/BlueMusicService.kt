@@ -36,7 +36,6 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
-import java.util.*
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
@@ -282,7 +281,7 @@ class BlueMusicService : Service(), VolumeObserver.Callback {
                                     }
                                 }
                     }
-                    .subscribe { action, throwable ->
+                    .subscribe { action: ManagedDevice.Action, throwable: Throwable? ->
                         Timber.d("action=%s, throwable=%s", action, throwable)
                         if (throwable != null && throwable !is UnmanagedDeviceException && throwable !is MissingDeviceException) {
                             Timber.e(throwable, "Device error")
