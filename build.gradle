@@ -1,9 +1,9 @@
 buildscript {
     ext.buildConfig = [
-            'kotlin'    : '1.6.21',
-            'compileSdk': 33,
+            'kotlin'    : '1.9.24',
+            'compileSdk': 34,
             'minSdk'    : 21,
-            'targetSdk' : 33,
+            'targetSdk' : 34,
             'deps'      : [
                     'dagger': '2.21',
             ]
@@ -14,7 +14,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.0.2'
+        classpath 'com.android.tools.build:gradle:8.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${buildConfig.kotlin}"
 
         classpath "io.realm:realm-gradle-plugin:10.16.1"
