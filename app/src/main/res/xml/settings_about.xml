@@ -55,7 +55,7 @@
             android:title="@string/label_discord">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://sdmaid.darken.eu/discord"/>
+                android:data="https://discord.gg/PZR7M8p" />
         </Preference>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/label_thanks">
