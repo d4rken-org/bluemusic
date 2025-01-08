@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <Preference
         android:key="about.version"
         android:title="Version">
@@ -19,11 +20,12 @@
         android:title="@string/label_opensource">
         <intent
             android:action="android.intent.action.VIEW"
-            android:data="https://github.com/d4rken/bluemusic" />
+            android:data="https://github.com/d4rken-org/bluemusic" />
     </Preference>
     <Preference
         android:summary="@string/description_help_translate"
-        android:title="@string/label_translation">
+        android:title="@string/label_translation"
+        app:isPreferenceVisible="false">
         <intent
             android:action="android.intent.action.VIEW"
             android:data="https://github.com/d4rken/bluemusic" />
@@ -31,24 +33,25 @@
     <PreferenceCategory android:title="Contact">
         <Preference
             android:summary="support@darken.eu"
-            android:title="@string/label_email">
+            android:title="@string/label_email"
+            app:isPreferenceVisible="false">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="mailto:support@darken.eu"/>
+                android:data="mailto:support@darken.eu" />
         </Preference>
         <Preference
             android:summary="darken.eu"
             android:title="@string/label_website">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://www.darken.eu"/>
+                android:data="https://www.darken.eu" />
         </Preference>
         <Preference
             android:summary="https://twitter.com/d4rken"
             android:title="@string/label_twitter">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://twitter.com/d4rken"/>
+                android:data="https://twitter.com/d4rken" />
         </Preference>
         <Preference
             android:summary="https://discord.gg/PZR7M8p"
@@ -64,7 +67,7 @@
             android:title="Max Patchs">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://twitter.com/250_max"/>
+                android:data="https://twitter.com/250_max" />
         </Preference>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/label_licenses">
@@ -74,7 +77,7 @@
             android:title="Dagger2">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/google/dagger"/>
+                android:data="https://github.com/google/dagger" />
         </Preference>
         <Preference
             android:key="license.realm"
@@ -82,7 +85,7 @@
             android:title="Realm">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/realm/realm-java"/>
+                android:data="https://github.com/realm/realm-java" />
         </Preference>
         <Preference
             android:key="license.gradleretrolambda"
@@ -90,7 +93,7 @@
             android:title="Gradle Retrolambda Plugin">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/evant/gradle-retrolambda"/>
+                android:data="https://github.com/evant/gradle-retrolambda" />
         </Preference>
         <Preference
             android:key="license.butterknife"
@@ -98,7 +101,7 @@
             android:title="Butter Knife">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/JakeWharton/butterknife"/>
+                android:data="https://github.com/JakeWharton/butterknife" />
         </Preference>
         <Preference
             android:key="license.timber"
@@ -106,7 +109,7 @@
             android:title="Timber">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/JakeWharton/timber"/>
+                android:data="https://github.com/JakeWharton/timber" />
         </Preference>
         <Preference
             android:key="license.leakcanary"
@@ -114,7 +117,7 @@
             android:title="LeakCanary">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/square/leakcanary"/>
+                android:data="https://github.com/square/leakcanary" />
         </Preference>
         <Preference
             android:key="license.rxandroid"
@@ -122,7 +125,7 @@
             android:title="RxAndroid">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/ReactiveX/RxAndroid"/>
+                android:data="https://github.com/ReactiveX/RxAndroid" />
         </Preference>
         <Preference
             android:key="license.materialdesignicons"
@@ -130,7 +133,7 @@
             android:title="Material Design Icons">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/Templarian/MaterialDesign"/>
+                android:data="https://github.com/Templarian/MaterialDesign" />
         </Preference>
         <Preference
             android:key="android.android"
@@ -138,7 +141,7 @@
             android:title="Android">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://source.android.com/source/licenses.html"/>
+                android:data="https://source.android.com/source/licenses.html" />
         </Preference>
         <Preference
             android:key="android.logo"
@@ -146,7 +149,7 @@
             android:title="Android">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://developer.android.com/distribute/tools/promote/brand.html"/>
+                android:data="https://developer.android.com/distribute/tools/promote/brand.html" />
         </Preference>
     </PreferenceCategory>
 </PreferenceScreen>
