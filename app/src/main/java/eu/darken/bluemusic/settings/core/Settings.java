@@ -23,8 +23,6 @@ public class Settings {
     private static final String PREFKEY_ONBOARDING_INTRODONE = "core.onboarding.introdone";
 
     private static final String PREFKEY_ADVANCED_EXCLUDE_HEALTHDEVICES = "core.advanced.exclude.healthdevices";
-    private static final String PREFKEY_ADVANCED_EXCLUDE_GATT = "core.advanced.exclude.gatt";
-    private static final String PREFKEY_ADVANCED_EXCLUDE_GATTSERVER = "core.advanced.exclude.gattserver";
 
     public static final String PREFKEY_BUGREPORTING = "core.bugreporting.enabled";
 
@@ -94,14 +92,6 @@ public class Settings {
 
     public boolean isHealthDeviceExcluded() {
         return preferences.getBoolean(PREFKEY_ADVANCED_EXCLUDE_HEALTHDEVICES, true);
-    }
-
-    public boolean isGATTExcluded() {
-        return preferences.getBoolean(PREFKEY_ADVANCED_EXCLUDE_GATT, false);
-    }
-
-    public boolean isGATTServerExcluded() {
-        return preferences.getBoolean(PREFKEY_ADVANCED_EXCLUDE_GATTSERVER, false);
     }
 
 //    public boolean isBatterySavingHintDismissed() {

@@ -207,13 +207,6 @@ class LiveBluetoothSource implements BluetoothSource {
                 .defer(() -> {
                     final List<SingleSource<List<BluetoothDevice>>> profiles = new ArrayList<>();
 
-                    if (!settings.isGATTExcluded()) {
-                        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT));
-                    }
-                    if (!settings.isGATTServerExcluded()) {
-                        profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.GATT_SERVER));
-                    }
-
                     profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.HEADSET));
                     profiles.add(LiveBluetoothSource.this.getDevicesForProfile(BluetoothProfile.A2DP));
 
