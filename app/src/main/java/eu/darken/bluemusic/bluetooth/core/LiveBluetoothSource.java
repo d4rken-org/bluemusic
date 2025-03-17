@@ -283,12 +283,17 @@ class LiveBluetoothSource implements BluetoothSource {
                         }
                     };
 
+                    Timber.v("getDevicesForProfile(profile=%d)...", desiredProfile);
                     final boolean success = adapter != null && adapter.getProfileProxy(context, listener, desiredProfile);
                     Timber.v("getDevicesForProfile(profile=%d, success=%b)", desiredProfile, success);
                     if (!success) emitter.onSuccess(new ArrayList<>());
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
+                .onErrorReturn(throwable -> {
+                    Timber.e(throwable, "getDevicesForProfile failed for %d", desiredProfile);
+                    return Collections.emptyList();
+                })
                 .timeout(8, TimeUnit.SECONDS, Single.just(new ArrayList<>()));
     }
 
