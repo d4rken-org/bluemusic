@@ -1,6 +1,9 @@
 package eu.darken.bluemusic.onboarding.ui.intro
 
 import android.Manifest
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +42,14 @@ class IntroFragment : Fragment(), IntroPresenter.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         ui.finishOnboarding.setOnClickListener { presenter.finishOnboarding(requireContext()) }
+        ui.privacyPolicyAction.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://bluemusic.darken.eu/privacy"))
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                Timber.e(e, "Failed to open privacy policy")
+            }
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 
