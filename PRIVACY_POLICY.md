@@ -1,11 +1,20 @@
-# Privacy policy for the app "Bluetooth Volume Control"
+---
+layout: plain
+permalink: /privacy
+title: "Privacy Policy"
+---
 
-* I do not collect personal information
-* I do not sell, monetize or otherwise misappropriate any collected data.
+# Privacy policy
+
+This is the privacy policy for the Android app "Bluetooth Volume Control" by Matthias Urhahn (darken).
+
+## Preamble
+
+I do not collect, share or sell personal information.
+
+Send a [quick mail](mailto:support@darken.eu) if you have questions.
 
 My underlying privacy principle is the [Golden Rule](https://en.wikipedia.org/wiki/Golden_Rule).
-
-Send a quick mail to support@darken.eu if you have further questions.
 
 ## Automatic crash reports
 
