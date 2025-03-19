@@ -47,13 +47,6 @@
                 android:data="https://www.darken.eu" />
         </Preference>
         <Preference
-            android:summary="https://twitter.com/d4rken"
-            android:title="@string/label_twitter">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://twitter.com/d4rken" />
-        </Preference>
-        <Preference
             android:summary="https://discord.gg/PZR7M8p"
             android:title="@string/label_discord">
             <intent
