@@ -112,4 +112,5 @@
     <string name="nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="label_opensource">Source code</string>
     <string name="android13_notification_permission_description">Grant this app permission to post notifications. This enables displaying a notification when this app is active and volume adjustments are being made.</string>
+    <string name="privacy_policy_label">Privacy policy</string>
 </resources>
