@@ -6,7 +6,7 @@ title: "Privacy Policy"
 
 # Privacy policy
 
-This is the privacy policy for the Android app "Bluetooth Volume Control" by Matthias Urhahn (darken).
+This is the privacy policy for the Android app "Bluetooth Volume Manager" by Matthias Urhahn (darken).
 
 ## Preamble
 
