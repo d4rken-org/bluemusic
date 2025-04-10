@@ -7,22 +7,47 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    name: Build and test
-    runs-on: ubuntu-latest
-
+  lint-vital:
+    name: Lint vitals
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [ Beta,Release ]
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'adopt'
-          cache: gradle
+      - name: Checkout source code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
+      - name: Setup project and build environment
+        uses: ./.github/actions/common-setup
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-      - name: Build with Gradle
+      - name: Check for fatal lint issues
+        run: ./gradlew lintVital${{ matrix.variant }}
+
+  build-modules:
+    name: Build apps
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
+      - name: Setup project and build environment
+        uses: ./.github/actions/common-setup
+
+      - name: Build modules
         run: ./gradlew assembleDebug
-      - name: Run tests
-        run: ./gradlew testDebugUnitTest
+
+  test-modules:
+    name: Unit tests
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [ Debug,Beta,Release ]
+        flavor: [ test ]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
+      - name: Setup project and build environment
+        uses: ./.github/actions/common-setup
+
+      - name: Test modules
+        run: ./gradlew ${{ matrix.flavor }}${{ matrix.variant }}UnitTest
