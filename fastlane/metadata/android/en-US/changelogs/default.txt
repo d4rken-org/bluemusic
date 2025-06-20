@@ -1,3 +1,5 @@
-Bugfixes, performance improvements and maybe new features.
+🐛 Bug fixes, 🚀 performance boosts, maybe even ✨ new features.
 
-FYI: It’s just me here, sometimes replies might take a bit. Sorry for that!
+Changelog: https://bluemusic.darken.eu/changelog
+
+FYI: It’s just me here — thanks for understanding if replies take a bit. ¯\_(ツ)_/¯
