@@ -4,7 +4,7 @@ permalink: /changelog
 title: "Changelog"
 ---
 
-# Changelog for CAPod
+# Changelog for Bluetooth Volume Manager
 
 {% for release in site.github.releases %}
 
