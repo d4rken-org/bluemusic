@@ -104,7 +104,12 @@
     <string name="label_bluetooth_settings">Bluetooth tənzimləmələri</string>
     <string name="label_keep_awake">Oyaq saxla</string>
     <string name="description_keep_awake">Cihazla bağlantı qurularkən ekranı açıq saxla.</string>
-    <string name="android10_applaunch_issue_description">Android 10, tətbiqləri arxaplandan necə başladılacağını məhdudlaşdırır. Bluetooth cihazları ilə bağlantı qurularkən tətbiqlərin açılmasına icazə vermək üçün, \"Digər tətbiqlərin üzərində görüntülə (SYSTEM_ALERT_WINDOW) müraciətinə icazə ver.</string>
+    <string name="android10_applaunch_issue_description">Android 10, tətbiqləri arxaplandan necə başladılacağını məhdudlaşdırır. Bluetooth cihazları ilə bağlantı qurularkən tətbiqlərin açılmasına icazə vermək üçün, "Digər tətbiqlərin üzərində görüntülə (SYSTEM_ALERT_WINDOW) müraciətinə icazə ver.</string>
     <string name="label_alarm_volume">Zəngli saat səs səviyyəsi</string>
-    <string name="description_alarm_volume">Bəzi zəngli saat tətbiqləri bunun əvəzinə musiqi səviyyəsi istifadə edir.</string>
+    <string name="description_alarm_volume">Bəzi alarm proqramları bunun əvəzinə musiqi səviyyəsi istifadə edir.</string>
+    <string name="nudge_volume_label">Səsə incə tənzimləmə</string>
+    <string name="nudge_volume_description">İstənilən səs səviyyəsi artıq təyin olunmuş olsa belə (sistemə görə), səs səviyyəsini bir pillə endirin, sonra bir pillə qaldırın.</string>
+    <string name="label_opensource">Mənbə kodu</string>
+    <string name="android13_notification_permission_description">Bu tətbiqə bildiriş göndərmək üçün icazə verin. Bu, tətbiq aktiv olduqda və səs nizamlamaları edildikdə bildirişin göstərilməsini təmin edir.</string>
+    <string name="privacy_policy_label">Gizlilik siyasəti</string>
 </resources>

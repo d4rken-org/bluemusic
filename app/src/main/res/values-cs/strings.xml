@@ -75,7 +75,7 @@
     <string name="label_keyevent_play">Přehrát</string>
     <string name="label_keyevent_next">Další</string>
     <string name="label_install_id">ID instalace</string>
-    <string name="message_copied_to_clipboard">Zkopírováno do schránky</string>
+    <string name="message_copied_to_clipboard">Zkopírováno do schránky</string>
     <string name="label_thanks">Díky</string>
     <string name="label_licenses">Licence</string>
     <string name="label_ring_volume">Hlasitost vyzvánění</string>
@@ -96,7 +96,7 @@
     <string name="description_waiting_for_devicex">Čekání na %s k dokončení připojení</string>
     <string name="action_undo">Zpět</string>
     <string name="label_speaker_autosave">Automaticky uložit hlasitost</string>
-    <string name="description_speaker_autosave">Vstup \"reproduktor zařízení\", který je zodpovědný za výchozí hlasitosti se sám aktualizuje po připojení zařízení Bluetooth. Poznámka: Toto nefunguje na všech zařízeních.</string>
+    <string name="description_speaker_autosave">Vstup "reproduktor zařízení", který je zodpovědný za výchozí hlasitosti se sám aktualizuje po připojení zařízení Bluetooth. Poznámka: Toto nefunguje na všech zařízeních.</string>
     <string name="action_show">Zobrazit</string>
     <string name="action_dismiss">Zrušit</string>
     <string name="battery_optimizations_issue_description">Optimalizace baterie je pro tuto aplikaci povolena a může zabránit přijímání událostí Bluetooth. Vezměte v úvahu zakázání optimalizace, pokud máte potíže.</string>
@@ -110,4 +110,9 @@
     <string name="android10_applaunch_issue_description">Android 10 omezuje způsob spouštění aplikací na pozadí. Pro povolení spouštění aplikací po připojení Bluetooth zařízení udělte oprávnění „Vykreslit přes další aplikace“ (SYSTEM_ALERT_WINDOW).</string>
     <string name="label_alarm_volume">Hlasitost budíku</string>
     <string name="description_alarm_volume">Některé aplikace budíku používají místo toho hlasitost hudby.</string>
+    <string name="nudge_volume_label">Posun hlasitosti</string>
+    <string name="nudge_volume_description">Snižte a poté zvyšte hlasitost o jeden krok, i když je požadovaná hlasitost již nastavena (podle systému).</string>
+    <string name="label_opensource">Zdrojový kód</string>
+    <string name="android13_notification_permission_description">Udělte této aplikaci oprávnění posílat oznámení. To umožní zobrazovat oznámení, když je aplikace aktivní a provádějí se úpravy hlasitosti.</string>
+    <string name="privacy_policy_label">Zásady ochrany osobních údajů</string>
 </resources>
