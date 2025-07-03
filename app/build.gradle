@@ -106,6 +106,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
     buildFeatures {
         viewBinding true
     }
@@ -122,7 +125,7 @@ android {
     }
 }
 
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
     systemProperty "robolectric.logging", "stdout"
 }
 
@@ -169,5 +172,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.0-alpha03'
 
     // IAP
-    implementation 'com.android.billingclient:billing:7.1.1'
+    implementation 'com.android.billingclient:billing:8.0.0'
 }
