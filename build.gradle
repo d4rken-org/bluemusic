@@ -5,13 +5,12 @@ buildscript {
             'minSdk'    : 21,
             'targetSdk' : 34,
             'deps'      : [
-                    'dagger': '2.21',
+                    'dagger': '2.51.1',
             ]
     ]
     repositories {
         google()
         mavenCentral()
-        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.4.2'

@@ -7,6 +7,10 @@ plugins {
 
 apply plugin: 'realm-android'
 
+kotlin {
+    jvmToolchain(17)
+}
+
 def gitSha() {
     def p = 'git rev-parse --short HEAD'.execute([], project.rootDir)
     p.waitFor()
@@ -14,6 +18,15 @@ def gitSha() {
         return ""
     }
     return p.text.trim()
+}
+
+kapt {
+    correctErrorTypes = true
+    arguments {
+        arg("room.schemaLocation", "$projectDir/schemas")
+        arg("room.incremental", "true")
+        arg("room.expandProjection", "true")
+    }
 }
 
 android {
@@ -106,8 +119,19 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+    kotlinOptions {
+        jvmTarget = "17"
+        freeCompilerArgs += [
+            "-Xjvm-default=all"
+        ]
+    }
     buildFeatures {
         viewBinding true
+        compose true
+        buildConfig true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     namespace 'eu.darken.bluemusic'
     lint {
@@ -138,6 +162,29 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common:2.3.1"
     implementation "androidx.lifecycle:lifecycle-common-java8:2.3.1"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    
+    // Compose
+    implementation platform('androidx.compose:compose-bom:2024.06.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+    implementation 'androidx.activity:activity-compose:1.9.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2'
+    implementation 'androidx.navigation:navigation-compose:2.7.7'
+    implementation 'androidx.compose.runtime:runtime-livedata'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+    
+    // Room
+    def room_version = "2.6.1"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
 
     // RX
     implementation "io.reactivex.rxjava3:rxjava:3.1.1"
@@ -149,10 +196,9 @@ dependencies {
     //Dagger
     implementation "com.google.dagger:dagger:${buildConfig.deps.dagger}"
     kapt "com.google.dagger:dagger-compiler:${buildConfig.deps.dagger}"
-    kaptAndroidTest "com.google.dagger:dagger-compiler:${buildConfig.deps.dagger}"
-    androidTestImplementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation "com.google.dagger:dagger-android:${buildConfig.deps.dagger}"
     implementation "com.google.dagger:dagger-android-support:${buildConfig.deps.dagger}"
+    kapt "com.google.dagger:dagger-android-processor:${buildConfig.deps.dagger}"
 
     //Timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
