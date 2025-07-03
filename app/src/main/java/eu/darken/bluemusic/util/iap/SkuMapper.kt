@@ -4,7 +4,7 @@ import com.android.billingclient.api.Purchase
 
 object SkuMapper {
 
-    fun Purchase.toPurchasedSku(): Collection<PurchasedSku> = skus.map {
+    fun Purchase.toPurchasedSku(): Collection<PurchasedSku> = products.map {
         PurchasedSku(Sku(it), this)
     }
 
