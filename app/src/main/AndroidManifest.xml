@@ -32,7 +32,7 @@
         android:theme="@style/BaseAppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
-            android:name="eu.darken.bluemusic.ui.ComposeMainActivity"
+            android:name="eu.darken.bluemusic.main.ui.MainActivity"
             android:theme="@style/Theme.LauncherToMainActivity"
             android:exported="true">
             <intent-filter>

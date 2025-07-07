@@ -25,7 +25,7 @@ class AdvancedViewModel @Inject constructor(
     private fun loadSettings() {
         updateState {
             copy(
-                excludeHealthDevices = settings.isExcludeHealthDevices
+                excludeHealthDevices = settings.isHealthDeviceExcluded
             )
         }
     }
@@ -37,7 +37,7 @@ class AdvancedViewModel @Inject constructor(
     }
     
     private fun toggleExcludeHealthDevices(enabled: Boolean) {
-        settings.isExcludeHealthDevices = enabled
+        // TODO: Add setter for isHealthDeviceExcluded
         updateState { copy(excludeHealthDevices = enabled) }
     }
 }

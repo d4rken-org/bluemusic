@@ -9,7 +9,7 @@ import android.os.PowerManager
 import android.provider.Settings
 import androidx.core.app.ActivityCompat
 import eu.darken.bluemusic.BuildConfig
-import eu.darken.bluemusic.bluetooth.core.BluetoothSource
+import eu.darken.bluemusic.bluetooth.core.BluetoothSourceFlow
 import eu.darken.bluemusic.common.architecture.BaseViewModel
 import eu.darken.bluemusic.common.coroutines.DispatcherProvider
 import eu.darken.bluemusic.data.device.DeviceRepository
@@ -18,8 +18,9 @@ import eu.darken.bluemusic.data.device.toManagedDevice
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.util.ApiHelper
-import eu.darken.bluemusic.util.iap.IAPRepo
-import kotlinx.coroutines.flow.*
+import eu.darken.bluemusic.util.iap.IAPRepoFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.map
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -56,8 +57,8 @@ class ManagedDevicesViewModel @Inject constructor(
     private val packageManager: PackageManager,
     private val deviceRepository: DeviceRepository,
     private val streamHelper: StreamHelper,
-    private val iapRepo: IAPRepo,
-    private val bluetoothSource: BluetoothSource,
+    private val iapRepo: IAPRepoFlow,
+    private val bluetoothSource: BluetoothSourceFlow,
     private val notificationManager: NotificationManager,
     private val powerManager: PowerManager,
     private val dispatcherProvider: DispatcherProvider
@@ -96,7 +97,7 @@ class ManagedDevicesViewModel @Inject constructor(
     
     private fun observeBluetoothState() {
         launch {
-            bluetoothSource.isEnabled()
+            bluetoothSource.isEnabled
                 .catch { e ->
                     Timber.e(e, "Failed to observe bluetooth state")
                 }
@@ -108,7 +109,7 @@ class ManagedDevicesViewModel @Inject constructor(
     
     private fun observeProVersion() {
         launch {
-            iapRepo.isProVersion()
+            iapRepo.isProVersion
                 .catch { e ->
                     Timber.e(e, "Failed to observe pro version")
                 }
@@ -226,11 +227,11 @@ class ManagedDevicesViewModel @Inject constructor(
                     AudioStream.Type.ALARM -> entity.copy(alarmVolume = percentage)
                 }
                 deviceRepository.updateDevice(updated)
-                
-                if (device.isActive()) {
+
+                if (device.isActive) {
                     streamHelper.changeVolume(
                         device.getStreamId(streamType),
-                        device.getVolume(streamType),
+                        device.getVolume(streamType) ?: 0f,
                         true,
                         0
                     )

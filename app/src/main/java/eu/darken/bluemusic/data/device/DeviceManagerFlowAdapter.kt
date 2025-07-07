@@ -2,8 +2,6 @@ package eu.darken.bluemusic.data.device
 
 import eu.darken.bluemusic.AppComponent
 import eu.darken.bluemusic.common.coroutines.DispatcherProvider
-import eu.darken.bluemusic.main.core.audio.AudioStream
-import eu.darken.bluemusic.main.core.database.ManagedDevice
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
@@ -71,11 +69,11 @@ class DeviceManagerFlowAdapter @Inject constructor(
         device.launchPkg = launchPkg
         
         // Set volume configurations
-        musicVolume?.let { device.setVolume(AudioStream.Id.MUSIC, it) }
-        callVolume?.let { device.setVolume(AudioStream.Id.VOICE_CALL, it) }
-        ringVolume?.let { device.setVolume(AudioStream.Id.RINGTONE, it) }
-        notificationVolume?.let { device.setVolume(AudioStream.Id.NOTIFICATION, it) }
-        alarmVolume?.let { device.setVolume(AudioStream.Id.ALARM, it) }
+        device.musicVolume = musicVolume
+        device.callVolume = callVolume
+        device.ringVolume = ringVolume
+        device.notificationVolume = notificationVolume
+        device.alarmVolume = alarmVolume
         
         return device
     }

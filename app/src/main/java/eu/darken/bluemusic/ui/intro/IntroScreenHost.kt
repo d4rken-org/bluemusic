@@ -4,8 +4,8 @@ import android.Manifest
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import eu.darken.bluemusic.common.dagger.ViewModelFactory
 import javax.inject.Inject
@@ -19,7 +19,7 @@ class IntroScreenHost @Inject constructor(
         onNavigateToMainScreen: () -> Unit
     ) {
         val viewModel: IntroViewModel = viewModel(factory = viewModelFactory)
-        val state by viewModel.state.collectAsStateWithLifecycle()
+        val state by viewModel.state.collectAsState()
         
         val permissionLauncher = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.RequestPermission()

@@ -1,14 +1,16 @@
 package eu.darken.bluemusic.ui.discover
 
 import android.app.Activity
-import eu.darken.bluemusic.bluetooth.core.BluetoothSource
+import eu.darken.bluemusic.bluetooth.core.BluetoothSourceFlow
 import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.architecture.BaseViewModel
 import eu.darken.bluemusic.common.coroutines.DispatcherProvider
 import eu.darken.bluemusic.data.device.DeviceRepository
-import eu.darken.bluemusic.util.iap.IAPRepo
-import kotlinx.coroutines.flow.*
+import eu.darken.bluemusic.util.iap.IAPRepoFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.combine
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -31,8 +33,8 @@ sealed interface DiscoverEvent {
 
 class DiscoverViewModel @Inject constructor(
     private val deviceRepository: DeviceRepository,
-    private val bluetoothSource: BluetoothSource,
-    private val iapRepo: IAPRepo,
+    private val bluetoothSource: BluetoothSourceFlow,
+    private val iapRepo: IAPRepoFlow,
     private val dispatcherProvider: DispatcherProvider
 ) : BaseViewModel<DiscoverState, DiscoverEvent>(DiscoverState()) {
     
@@ -44,7 +46,7 @@ class DiscoverViewModel @Inject constructor(
     private fun observeProVersion() {
         launch {
             iapRepo.recheck()
-            iapRepo.isProVersion()
+            iapRepo.isProVersion
                 .catch { e ->
                     Timber.e(e, "Failed to observe pro version")
                 }
@@ -61,7 +63,7 @@ class DiscoverViewModel @Inject constructor(
             try {
                 combine(
                     deviceRepository.getAllDevices(),
-                    bluetoothSource.pairedDevices()
+                    bluetoothSource.connectedDevices
                 ) { managedDevices, pairedDevices ->
                     val managedAddresses = managedDevices.map { it.address }.toSet()
                     val availableDevices = pairedDevices.values
@@ -113,9 +115,8 @@ class DiscoverViewModel @Inject constructor(
             
             try {
                 Timber.i("Adding new device: $device")
-                deviceRepository.addDevice(
-                    address = device.address,
-                    name = device.name
+                deviceRepository.createDevice(
+                    address = device.address
                 )
                 updateState { copy(shouldClose = true) }
             } catch (e: Exception) {
@@ -132,7 +133,8 @@ class DiscoverViewModel @Inject constructor(
     
     private fun purchaseUpgrade(activity: Activity) {
         launch {
-            iapRepo.buyProVersion(activity)
+            // TODO: Implement purchase flow
+            // iapRepo.startIAPFlow(AvailableSkus.PRO_VERSION, activity)
             dismissDialog()
         }
     }

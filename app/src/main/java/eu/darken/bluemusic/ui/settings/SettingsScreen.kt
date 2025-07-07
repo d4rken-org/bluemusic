@@ -70,7 +70,7 @@ fun SettingsScreen(
                         stringResource(R.string.description_visible_volume_adjustments) + "\n[${stringResource(R.string.label_premium_version_required)}]"
                     },
                     isChecked = state.visibleAdjustments,
-                    leadingIcon = if (!state.isProVersion) Icons.Default.Stars else null,
+                    leadingIcon = if (!state.isProVersion) Icons.Default.Star else null,
                     onCheckedChange = { onEvent(SettingsEvent.OnVisibleAdjustmentsToggled) }
                 )
             }
@@ -84,7 +84,7 @@ fun SettingsScreen(
                         stringResource(R.string.description_speaker_autosave) + "\n[${stringResource(R.string.label_premium_version_required)}]"
                     },
                     isChecked = state.speakerAutosave,
-                    leadingIcon = if (!state.isProVersion) Icons.Default.Stars else null,
+                    leadingIcon = if (!state.isProVersion) Icons.Default.Star else null,
                     onCheckedChange = { onEvent(SettingsEvent.OnSpeakerAutosaveToggled) }
                 )
             }
@@ -153,7 +153,7 @@ fun SettingsScreen(
     if (state.showUpgradeDialog) {
         AlertDialog(
             onDismissRequest = { onEvent(SettingsEvent.OnDismissDialog) },
-            icon = { Icon(Icons.Default.Stars, contentDescription = null) },
+            icon = { Icon(Icons.Default.Star, contentDescription = null) },
             title = { Text(stringResource(R.string.label_premium_version)) },
             text = { Text(stringResource(R.string.description_premium_required_this_extra_option)) },
             confirmButton = {

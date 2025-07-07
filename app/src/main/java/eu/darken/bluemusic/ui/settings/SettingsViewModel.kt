@@ -5,7 +5,7 @@ import android.view.KeyEvent
 import eu.darken.bluemusic.common.architecture.BaseViewModel
 import eu.darken.bluemusic.common.coroutines.DispatcherProvider
 import eu.darken.bluemusic.settings.core.Settings
-import eu.darken.bluemusic.util.iap.IAPRepo
+import eu.darken.bluemusic.util.iap.IAPRepoFlow
 import kotlinx.coroutines.flow.catch
 import timber.log.Timber
 import javax.inject.Inject
@@ -33,7 +33,7 @@ sealed interface SettingsEvent {
 
 class SettingsViewModel @Inject constructor(
     private val settings: Settings,
-    private val iapRepo: IAPRepo,
+    private val iapRepo: IAPRepoFlow,
     private val dispatcherProvider: DispatcherProvider
 ) : BaseViewModel<SettingsState, SettingsEvent>(SettingsState()) {
     
@@ -45,7 +45,7 @@ class SettingsViewModel @Inject constructor(
     private fun observeProVersion() {
         launch {
             iapRepo.recheck()
-            iapRepo.isProVersion()
+            iapRepo.isProVersion
                 .catch { e ->
                     Timber.e(e, "Failed to observe pro version")
                 }
@@ -58,9 +58,9 @@ class SettingsViewModel @Inject constructor(
     private fun loadSettings() {
         updateState {
             copy(
-                bugreportingEnabled = settings.isBugreportingEnabled,
-                visibleAdjustments = settings.isVisibleAdjustments,
-                speakerAutosave = settings.isSpeakerAutoSave,
+                bugreportingEnabled = settings.isBugReportingEnabled,
+                visibleAdjustments = settings.isVolumeAdjustedVisibly,
+                speakerAutosave = settings.isSpeakerAutoSaveEnabled,
                 autoplayKeycode = settings.autoplayKeycode
             )
         }
@@ -85,9 +85,9 @@ class SettingsViewModel @Inject constructor(
             updateState { copy(showUpgradeDialog = true) }
             return
         }
-        
-        val newValue = !settings.isVisibleAdjustments
-        settings.isVisibleAdjustments = newValue
+
+        val newValue = !settings.isVolumeAdjustedVisibly
+        // TODO: settings.setVolumeAdjustedVisibly(newValue)
         updateState { copy(visibleAdjustments = newValue) }
     }
     
@@ -96,14 +96,14 @@ class SettingsViewModel @Inject constructor(
             updateState { copy(showUpgradeDialog = true) }
             return
         }
-        
-        val newValue = !settings.isSpeakerAutoSave
-        settings.isSpeakerAutoSave = newValue
+
+        val newValue = !settings.isSpeakerAutoSaveEnabled
+        // TODO: settings.setSpeakerAutoSaveEnabled(newValue)
         updateState { copy(speakerAutosave = newValue) }
     }
     
     private fun toggleBugreporting(enabled: Boolean) {
-        settings.isBugreportingEnabled = enabled
+        // TODO: settings.setBugReportingEnabled(enabled)
         updateState { copy(bugreportingEnabled = enabled) }
     }
     
@@ -114,7 +114,8 @@ class SettingsViewModel @Inject constructor(
     
     private fun purchaseUpgrade(activity: Activity) {
         launch {
-            iapRepo.buyProVersion(activity)
+            // TODO: Implement purchase flow
+            // iapRepo.startIAPFlow(AvailableSkus.PRO_VERSION, activity)
             dismissDialog()
         }
     }

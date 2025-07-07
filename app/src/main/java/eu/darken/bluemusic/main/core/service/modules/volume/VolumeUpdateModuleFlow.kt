@@ -1,10 +1,10 @@
 package eu.darken.bluemusic.main.core.service.modules.volume
 
+import eu.darken.bluemusic.AppComponent
 import eu.darken.bluemusic.common.coroutines.DispatcherProvider
 import eu.darken.bluemusic.data.device.DeviceManagerFlow
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
-import eu.darken.bluemusic.main.core.service.BlueMusicServiceComponent
 import eu.darken.bluemusic.main.core.service.modules.VolumeModule
 import eu.darken.bluemusic.settings.core.Settings
 import kotlinx.coroutines.CoroutineScope
@@ -14,8 +14,8 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
-@BlueMusicServiceComponent.Scope
-internal class VolumeUpdateModuleFlow @Inject constructor(
+@AppComponent.Scope
+class VolumeUpdateModuleFlow @Inject constructor(
     private val streamHelper: StreamHelper,
     private val settings: Settings,
     private val deviceManager: DeviceManagerFlow,

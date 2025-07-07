@@ -3,15 +3,15 @@ package eu.darken.bluemusic.main.core.service.modules.events
 import android.media.AudioManager
 import android.os.SystemClock
 import android.view.KeyEvent
+import eu.darken.bluemusic.AppComponent
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
-import eu.darken.bluemusic.main.core.database.ManagedDevice
-import eu.darken.bluemusic.main.core.service.BlueMusicServiceComponent
+import eu.darken.bluemusic.data.device.ManagedDevice
 import eu.darken.bluemusic.main.core.service.modules.EventModule
 import eu.darken.bluemusic.settings.core.Settings
 import timber.log.Timber
 import javax.inject.Inject
 
-@BlueMusicServiceComponent.Scope
+@AppComponent.Scope
 class AutoplayModule @Inject constructor(
         private val audioManager: AudioManager,
         private val settings: Settings
@@ -21,7 +21,7 @@ class AutoplayModule @Inject constructor(
 
     override fun handle(device: ManagedDevice, event: SourceDevice.Event) {
         if (event.type != SourceDevice.Event.Type.CONNECTED) return
-        if (!device.autoPlay) return
+        if (!device.autoplay) return
         Timber.d("Autoplay enabled (playing=%b).", audioManager.isMusicActive)
 
         val autoplayKeycode = settings.autoplayKeycode

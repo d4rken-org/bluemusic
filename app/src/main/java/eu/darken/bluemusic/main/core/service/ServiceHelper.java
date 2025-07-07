@@ -16,9 +16,10 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 
 import androidx.core.app.NotificationCompat;
+import eu.darken.bluemusic.AppComponent;
 import eu.darken.bluemusic.R;
 import eu.darken.bluemusic.ResHelper;
-import eu.darken.bluemusic.main.core.database.ManagedDevice;
+import eu.darken.bluemusic.data.device.ManagedDevice;
 import eu.darken.bluemusic.main.ui.MainActivity;
 import eu.darken.bluemusic.util.PendingIntentCompat;
 import eu.darken.bluemusic.util.ValueBox;
@@ -31,15 +32,17 @@ import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import timber.log.Timber;
 
-@BlueMusicServiceComponent.Scope
+@AppComponent.Scope
 public class ServiceHelper {
 
     private final static String NOTIFICATION_CHANNEL_ID = "notification.channel.core";
     private final static int NOTIFICATION_ID = 1;
     static final String STOP_ACTION = "STOP_SERVICE";
+    private final Context context;
     private final NotificationManager notificationManager;
     private final ResHelper resHelper;
     private final NotificationCompat.Builder builder;
+    private BlueMusicServiceFlow service;
     private ObservableEmitter<String> emitter;
     private volatile Disposable serviceStopper = Disposable.disposed();
     private volatile boolean isStarted = false;
@@ -47,7 +50,8 @@ public class ServiceHelper {
     private static final String CMD_STOP = "stop";
 
     @Inject
-    ServiceHelper(BlueMusicService service, NotificationManager notificationManager, ResHelper resHelper) {
+    ServiceHelper(Context context, NotificationManager notificationManager, ResHelper resHelper) {
+        this.context = context;
         this.notificationManager = notificationManager;
         this.resHelper = resHelper;
 
@@ -56,20 +60,20 @@ public class ServiceHelper {
             notificationManager.createNotificationChannel(channel);
         }
 
-        Intent openIntent = new Intent(service, MainActivity.class);
-        PendingIntent openPi = PendingIntent.getActivity(service, 0, openIntent, PendingIntentCompat.getFLAG_IMMUTABLE());
+        Intent openIntent = new Intent(context, MainActivity.class);
+        PendingIntent openPi = PendingIntent.getActivity(context, 0, openIntent, PendingIntentCompat.getFLAG_IMMUTABLE());
 
-        Intent stopIntent = new Intent(service, BlueMusicService.class);
+        Intent stopIntent = new Intent(context, BlueMusicServiceFlow.class);
         stopIntent.setAction(STOP_ACTION);
-        PendingIntent stopPi = PendingIntent.getService(service, 0, stopIntent, PendingIntentCompat.getFLAG_IMMUTABLE());
+        PendingIntent stopPi = PendingIntent.getService(context, 0, stopIntent, PendingIntentCompat.getFLAG_IMMUTABLE());
 
-        builder = new NotificationCompat.Builder(service, NOTIFICATION_CHANNEL_ID)
+        builder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
                 .setChannelId(NOTIFICATION_CHANNEL_ID)
                 .setContentIntent(openPi)
                 .setSmallIcon(R.drawable.ic_notification_small)
                 .setContentText(resHelper.getString(R.string.label_status_idle))
                 .setContentTitle(resHelper.getString(R.string.app_name))
-                .addAction(new NotificationCompat.Action.Builder(0, service.getString(R.string.action_exit), stopPi).build());
+                .addAction(new NotificationCompat.Action.Builder(0, context.getString(R.string.action_exit), stopPi).build());
 
         final ValueBox<String> lastCmd = new ValueBox<>();
         Observable.create((ObservableOnSubscribe<String>) emitter -> ServiceHelper.this.emitter = emitter)
@@ -91,7 +95,7 @@ public class ServiceHelper {
 
                         isStarted = true;
                         Timber.d("Executing startForeground()");
-                        service.startForeground(NOTIFICATION_ID, builder.build());
+                        if (service != null) service.startForeground(NOTIFICATION_ID, builder.build());
                     } else {
                         if (!isStarted) {
                             Timber.w("Calling stopForeground() without startForeground()");
@@ -105,13 +109,19 @@ public class ServiceHelper {
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(() -> {
                                     Timber.d("Executing stopForeground()");
-                                    service.stopForeground(true);
-                                    service.stopSelf();
+                                    if (service != null) {
+                                        service.stopForeground(true);
+                                        service.stopSelf();
+                                    }
                                     // Sometimes stopForeground doesn't remove the notification, but just makes it removable
                                     notificationManager.cancel(NOTIFICATION_ID);
                                 });
                     }
                 });
+    }
+
+    void setService(BlueMusicServiceFlow service) {
+        this.service = service;
     }
 
     void start() {
@@ -123,7 +133,7 @@ public class ServiceHelper {
     }
 
     public static Intent getIntent(Context context) {
-        return new Intent(context, BlueMusicService.class);
+        return new Intent(context, BlueMusicServiceFlow.class);
     }
 
     public static ComponentName startService(Context context, Intent intent) {

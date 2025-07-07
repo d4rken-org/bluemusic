@@ -6,12 +6,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Bluetooth
-import androidx.compose.material.icons.filled.Speaker
-import androidx.compose.material.icons.filled.Stars
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -30,6 +31,17 @@ fun DiscoverScreen(
     onEvent: (DiscoverEvent) -> Unit,
     onNavigateBack: () -> Unit
 ) {
+    val snackbarHostState = remember { SnackbarHostState() }
+
+    LaunchedEffect(state.error) {
+        state.error?.let {
+            snackbarHostState.showSnackbar(
+                message = it,
+                duration = SnackbarDuration.Short
+            )
+        }
+    }
+    
     LaunchedEffect(state.shouldClose) {
         if (state.shouldClose) {
             onNavigateBack()
@@ -51,22 +63,7 @@ fun DiscoverScreen(
             )
         },
         snackbarHost = {
-            SnackbarHost(hostState = SnackbarHostState()) {
-                state.error?.let { error ->
-                    Snackbar(
-                        snackbarData = object : SnackbarData {
-                            override val visuals = SnackbarVisuals(
-                                message = error,
-                                actionLabel = null,
-                                withDismissAction = true,
-                                duration = SnackbarDuration.Short
-                            )
-                            override fun performAction() {}
-                            override fun dismiss() {}
-                        }
-                    )
-                }
-            }
+            SnackbarHost(hostState = snackbarHostState)
         }
     ) { paddingValues ->
         Box(
@@ -89,7 +86,7 @@ fun DiscoverScreen(
                         verticalArrangement = Arrangement.Center
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Bluetooth,
+                            imageVector = Icons.Default.Settings,
                             contentDescription = null,
                             modifier = Modifier.size(64.dp),
                             tint = MaterialTheme.colorScheme.onSurfaceVariant
@@ -123,7 +120,7 @@ fun DiscoverScreen(
     if (state.showUpgradeDialog) {
         AlertDialog(
             onDismissRequest = { onEvent(DiscoverEvent.OnDismissDialog) },
-            icon = { Icon(Icons.Default.Stars, contentDescription = null) },
+            icon = { Icon(Icons.Default.Star, contentDescription = null) },
             title = { Text(stringResource(R.string.label_premium_version)) },
             text = { Text(stringResource(R.string.description_premium_required_additional_devices)) },
             confirmButton = {
@@ -166,9 +163,9 @@ private fun DeviceItem(
         leadingContent = {
             Icon(
                 imageVector = if (device.address == FakeSpeakerDevice.ADDR) {
-                    Icons.Default.Speaker
+                    Icons.Default.Phone
                 } else {
-                    Icons.Default.Bluetooth
+                    Icons.Default.Settings
                 },
                 contentDescription = null
             )
@@ -185,20 +182,28 @@ private fun DiscoverScreenPreview() {
             state = DiscoverState(
                 availableDevices = listOf(
                     object : SourceDevice {
+                        override val bluetoothClass: android.bluetooth.BluetoothClass? = null
                         override val address = FakeSpeakerDevice.ADDR
                         override val name = "Phone Speaker"
                         override val alias: String? = null
                         override val label = "Phone Speaker"
+                        override fun setAlias(newAlias: String?) = false
                         override fun getStreamId(type: eu.darken.bluemusic.main.core.audio.AudioStream.Type) = 
                             eu.darken.bluemusic.main.core.audio.AudioStream.Id.STREAM_MUSIC
+                        override fun describeContents() = 0
+                        override fun writeToParcel(dest: android.os.Parcel, flags: Int) {}
                     },
                     object : SourceDevice {
+                        override val bluetoothClass: android.bluetooth.BluetoothClass? = null
                         override val address = "00:11:22:33:44:55"
                         override val name = "My Bluetooth Headphones"
                         override val alias: String? = null
                         override val label = "My Bluetooth Headphones"
+                        override fun setAlias(newAlias: String?) = false
                         override fun getStreamId(type: eu.darken.bluemusic.main.core.audio.AudioStream.Type) = 
                             eu.darken.bluemusic.main.core.audio.AudioStream.Id.STREAM_MUSIC
+                        override fun describeContents() = 0
+                        override fun writeToParcel(dest: android.os.Parcel, flags: Int) {}
                     }
                 )
             ),

@@ -53,4 +53,11 @@ data class ManagedDevice(
             AudioStream.Type.ALARM -> AudioStream.Id.STREAM_ALARM
         }
     }
+
+    fun getStreamType(id: AudioStream.Id): AudioStream.Type? {
+        for (type in AudioStream.Type.values()) {
+            if (getStreamId(type) == id) return type
+        }
+        return null
+    }
 }

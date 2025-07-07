@@ -4,15 +4,15 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import eu.darken.bluemusic.main.core.service.modules.volume.VolumeLockModule
-import eu.darken.bluemusic.main.core.service.modules.volume.VolumeUpdateModule
+import eu.darken.bluemusic.main.core.service.modules.volume.VolumeUpdateModuleFlow
 
 @Module
 abstract class VolumeModuleModule {
 
     @Binds
     @IntoMap
-    @VolumeModuleKey(VolumeUpdateModule::class)
-    internal abstract fun volumeUpdate(module: VolumeUpdateModule): VolumeModule
+    @VolumeModuleKey(VolumeUpdateModuleFlow::class)
+    internal abstract fun volumeUpdate(module: VolumeUpdateModuleFlow): VolumeModule
 
     @Binds
     @IntoMap

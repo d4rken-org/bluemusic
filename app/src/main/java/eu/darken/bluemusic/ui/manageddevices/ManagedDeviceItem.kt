@@ -4,7 +4,7 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.VolumeUp
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -15,8 +15,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.ui.theme.BlueMusicTheme
+import eu.darken.bluemusic.data.device.ManagedDevice
 import eu.darken.bluemusic.main.core.audio.AudioStream
-import eu.darken.bluemusic.main.core.database.ManagedDevice
 import java.text.DateFormat
 import java.util.*
 
@@ -109,7 +109,7 @@ fun ManagedDeviceItem(
                 // Ring volume
                 VolumeControl(
                     label = stringResource(R.string.audio_stream_ring_label),
-                    volume = device.getVolume(AudioStream.Type.RING),
+                    volume = device.getVolume(AudioStream.Type.RINGTONE),
                     onVolumeChange = { volume ->
                         onEvent(ManagedDevicesEvent.OnUpdateRingVolume(device, volume))
                     }
@@ -190,7 +190,7 @@ private fun VolumeControl(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                imageVector = Icons.Default.VolumeUp,
+                imageVector = Icons.Default.Phone,
                 contentDescription = null,
                 modifier = Modifier.size(20.dp),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant

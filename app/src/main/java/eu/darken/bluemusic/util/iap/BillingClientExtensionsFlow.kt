@@ -2,7 +2,7 @@ package eu.darken.bluemusic.util.iap
 
 import com.android.billingclient.api.BillingClient.BillingResponseCode
 import eu.darken.bluemusic.R
-import eu.darken.bluemusic.util.UserFacingException
+import eu.darken.bluemusic.common.error.UserFacingException
 
 fun Exception.mapExceptionsUserFriendly(): Exception {
     return when (this) {

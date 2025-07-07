@@ -5,9 +5,9 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import eu.darken.bluemusic.common.dagger.ViewModelFactory
 import eu.darken.bluemusic.util.AppTool
@@ -27,7 +27,7 @@ class ConfigScreenHost @Inject constructor(
         val activity = context as? Activity
         
         val viewModel: ConfigViewModel = viewModel(factory = viewModelFactory)
-        val state by viewModel.state.collectAsStateWithLifecycle()
+        val state by viewModel.state.collectAsState()
         
         // Set device address when first composed
         LaunchedEffect(deviceAddress) {

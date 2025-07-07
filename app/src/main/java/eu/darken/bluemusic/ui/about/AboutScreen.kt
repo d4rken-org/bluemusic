@@ -59,7 +59,7 @@ fun AboutScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.ic_launcher_bm_squircle),
+                        painter = painterResource(id = R.mipmap.ic_launcher),
                         contentDescription = null,
                         modifier = Modifier.size(80.dp)
                     )

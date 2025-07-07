@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.data.device
 
-import eu.darken.bluemusic.main.core.database.ManagedDevice
 import kotlinx.coroutines.flow.Flow
 
 interface DeviceManagerFlow {

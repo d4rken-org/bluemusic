@@ -2,6 +2,7 @@ package eu.darken.bluemusic.ui.config
 
 import android.app.Activity
 import android.app.NotificationManager
+import android.content.Context
 import android.content.pm.PackageManager
 import eu.darken.bluemusic.common.architecture.BaseViewModel
 import eu.darken.bluemusic.common.coroutines.DispatcherProvider
@@ -13,8 +14,10 @@ import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.settings.core.Settings
 import eu.darken.bluemusic.util.AppTool
 import eu.darken.bluemusic.util.WakelockMan
-import eu.darken.bluemusic.util.iap.IAPRepo
-import kotlinx.coroutines.flow.*
+import eu.darken.bluemusic.util.iap.IAPRepoFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.map
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -62,9 +65,10 @@ sealed interface ConfigEvent {
 }
 
 class ConfigViewModel @Inject constructor(
+    private val context: Context,
     private val deviceRepository: DeviceRepository,
     private val streamHelper: StreamHelper,
-    private val iapRepo: IAPRepo,
+    private val iapRepo: IAPRepoFlow,
     private val appTool: AppTool,
     private val notificationManager: NotificationManager,
     private val wakelockMan: WakelockMan,
@@ -97,7 +101,7 @@ class ConfigViewModel @Inject constructor(
                             isLoading = false,
                             launchAppLabel = device.launchPkg?.let {
                                 try {
-                                    appTool.getLabel(it)
+                                    AppTool.getLabel(context, it)
                                 } catch (e: PackageManager.NameNotFoundException) {
                                     Timber.e(e)
                                     null
@@ -112,7 +116,7 @@ class ConfigViewModel @Inject constructor(
     private fun observeProVersion() {
         launch {
             iapRepo.recheck()
-            iapRepo.isProVersion()
+            iapRepo.isProVersion
                 .catch { e ->
                     Timber.e(e, "Failed to observe pro version")
                 }
@@ -180,7 +184,7 @@ class ConfigViewModel @Inject constructor(
         }
         
         launch {
-            device.autoPlay = !device.autoPlay
+            device.autoplay = !device.autoplay
             updateDeviceInRepository(device)
         }
     }
@@ -213,9 +217,9 @@ class ConfigViewModel @Inject constructor(
             
             if (device.isActive) {
                 if (device.keepAwake) {
-                    wakelockMan.acquire()
+                    wakelockMan.tryAquire()
                 } else {
-                    wakelockMan.release()
+                    wakelockMan.tryRelease()
                 }
             }
         }
@@ -295,7 +299,8 @@ class ConfigViewModel @Inject constructor(
     
     private fun purchaseUpgrade(activity: Activity) {
         launch {
-            iapRepo.buyProVersion(activity)
+            // TODO: Implement purchase flow
+            // iapRepo.startIAPFlow(AvailableSkus.PRO_VERSION, activity)
             dismissDialogs()
         }
     }
@@ -361,7 +366,7 @@ class ConfigViewModel @Inject constructor(
                 copy(
                     showAppPickerDialog = false,
                     launchAppLabel = try {
-                        appTool.getLabel(packageName)
+                        AppTool.getLabel(context, packageName)
                     } catch (e: PackageManager.NameNotFoundException) {
                         Timber.e(e)
                         null
@@ -379,7 +384,7 @@ class ConfigViewModel @Inject constructor(
                 ringVolume = device.getVolume(AudioStream.Type.RINGTONE),
                 notificationVolume = device.getVolume(AudioStream.Type.NOTIFICATION),
                 alarmVolume = device.getVolume(AudioStream.Type.ALARM),
-                autoplay = device.autoPlay,
+                autoplay = device.autoplay,
                 volumeLock = device.volumeLock,
                 keepAwake = device.keepAwake,
                 nudgeVolume = device.nudgeVolume,

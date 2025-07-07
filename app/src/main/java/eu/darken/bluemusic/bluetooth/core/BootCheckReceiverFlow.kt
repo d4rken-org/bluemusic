@@ -4,8 +4,12 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import eu.darken.bluemusic.App
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class BootCheckReceiverFlow : BroadcastReceiver() {
@@ -67,7 +71,7 @@ class BootCheckReceiverFlow : BroadcastReceiver() {
                 
                 Timber.i("Generating connected events for already connected devices %s", managedConnectedDevices)
                 for (device in managedConnectedDevices) {
-                    eventGenerator.fakeDeviceConnected(context, device)
+                    eventGenerator.send(device, SourceDevice.Event.Type.CONNECTED)
                 }
                 
             } catch (e: Exception) {

@@ -1,9 +1,9 @@
 package eu.darken.bluemusic.main.core.service.modules.events
 
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
+import eu.darken.bluemusic.data.device.ManagedDevice
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
-import eu.darken.bluemusic.main.core.database.ManagedDevice
 import eu.darken.bluemusic.main.core.service.modules.EventModule
 import timber.log.Timber
 

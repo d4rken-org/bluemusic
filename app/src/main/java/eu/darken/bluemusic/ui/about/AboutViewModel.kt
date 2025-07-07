@@ -26,7 +26,7 @@ class AboutViewModel @Inject constructor(
     private fun loadVersion() {
         launch {
             try {
-                val version = withContext(dispatcherProvider.IO) {
+                val version = withContext(dispatcherProvider.io) {
                     val info = context.packageManager.getPackageInfo(BuildConfig.APPLICATION_ID, 0)
                     "Version ${info.versionName} (${info.versionCode})"
                 }

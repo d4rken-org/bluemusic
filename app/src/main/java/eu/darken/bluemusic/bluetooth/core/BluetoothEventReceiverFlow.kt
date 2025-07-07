@@ -4,16 +4,20 @@ import android.bluetooth.BluetoothDevice
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.media.AudioManager
 import eu.darken.bluemusic.App
 import eu.darken.bluemusic.data.device.DeviceManagerFlow
+import eu.darken.bluemusic.data.device.ManagedDevice
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
-import eu.darken.bluemusic.main.core.database.ManagedDevice
 import eu.darken.bluemusic.main.core.service.BlueMusicServiceFlow
 import eu.darken.bluemusic.main.core.service.ServiceHelper
 import eu.darken.bluemusic.settings.core.Settings
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class BluetoothEventReceiverFlow : BroadcastReceiver() {
@@ -92,8 +96,8 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
         if (settings.isSpeakerAutoSaveEnabled && 
             deviceEvent.address != FakeSpeakerDevice.ADDR && 
             deviceEvent.type == SourceDevice.Event.Type.CONNECTED) {
-            
-            handleSpeakerAutoSave(devices, streamHelper, fakeSpeakerDevice, deviceManager)
+
+            handleSpeakerAutoSave(context, devices, streamHelper, fakeSpeakerDevice, deviceManager)
         }
         
         // Specific event handling for disconnect (save current volumes)
@@ -105,11 +109,12 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
         val serviceIntent = Intent(context, BlueMusicServiceFlow::class.java).apply {
             putExtra(EXTRA_DEVICE_EVENT, deviceEvent)
         }
-        
-        ServiceHelper(context).run(serviceIntent)
+
+        ServiceHelper.startService(context, serviceIntent)
     }
     
     private suspend fun handleSpeakerAutoSave(
+        context: Context,
         devices: Map<String, ManagedDevice>,
         streamHelper: StreamHelper,
         fakeSpeakerDevice: FakeSpeakerDevice,
@@ -117,7 +122,11 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
     ) {
         val fakeSpeaker = devices[FakeSpeakerDevice.ADDR] ?: run {
             Timber.i("FakeSpeaker device not yet managed, adding.")
-            val newDevice = ManagedDevice(FakeSpeakerDevice.ADDR, fakeSpeakerDevice.label)
+            val newDevice = ManagedDevice(
+                address = FakeSpeakerDevice.ADDR,
+                name = fakeSpeakerDevice.label,
+                lastConnected = System.currentTimeMillis()
+            )
             deviceManager.updateDevice(newDevice)
             newDevice
         }
@@ -131,10 +140,12 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
         
         // Save current volumes to fake speaker
         Timber.d("Saving current speaker volumes.")
+        val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         for (id in AudioStream.Id.values()) {
-            if (id.ignoreAutoSave()) continue
-            
-            val volumeInt = streamHelper.getVolumeInt(id)
+            // Skip certain stream types for auto-save
+            if (id == AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE || id == AudioStream.Id.STREAM_VOICE_CALL) continue
+
+            val volumeInt = audioManager.getStreamVolume(id.id)
             if (volumeInt == 0) {
                 Timber.v("Speaker volume for %s is at %d, not saving mute.", id, volumeInt)
                 continue
@@ -142,7 +153,16 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
             
             val volumePercent = streamHelper.getVolumePercentage(id)
             Timber.v("Speaker volume for %s is at %d (%d)", id, volumeInt, volumePercent)
-            fakeSpeaker.setVolume(id, volumePercent)
+            // Map Id to Type
+            val type = when (id) {
+                AudioStream.Id.STREAM_MUSIC -> AudioStream.Type.MUSIC
+                AudioStream.Id.STREAM_VOICE_CALL -> AudioStream.Type.CALL
+                AudioStream.Id.STREAM_RINGTONE -> AudioStream.Type.RINGTONE
+                AudioStream.Id.STREAM_NOTIFICATION -> AudioStream.Type.NOTIFICATION
+                AudioStream.Id.STREAM_ALARM -> AudioStream.Type.ALARM
+                else -> continue
+            }
+            fakeSpeaker.setVolume(type, volumePercent)
         }
         
         fakeSpeaker.lastConnected = System.currentTimeMillis()
@@ -158,11 +178,21 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
         
         // Save current volumes
         for (id in AudioStream.Id.values()) {
-            if (managedDevice.getStreamType(id) == null) continue
+            // Map Id to Type
+            val type = when (id) {
+                AudioStream.Id.STREAM_MUSIC -> AudioStream.Type.MUSIC
+                AudioStream.Id.STREAM_VOICE_CALL -> AudioStream.Type.CALL
+                AudioStream.Id.STREAM_RINGTONE -> AudioStream.Type.RINGTONE
+                AudioStream.Id.STREAM_NOTIFICATION -> AudioStream.Type.NOTIFICATION
+                AudioStream.Id.STREAM_ALARM -> AudioStream.Type.ALARM
+                else -> continue
+            }
+
+            if (managedDevice.getVolume(type) == null) continue
             
             val volumePercent = streamHelper.getVolumePercentage(id)
             Timber.v("Current volume for %s is %d", id, volumePercent)
-            managedDevice.setVolume(id, volumePercent)
+            managedDevice.setVolume(type, volumePercent)
         }
         
         managedDevice.lastConnected = System.currentTimeMillis()

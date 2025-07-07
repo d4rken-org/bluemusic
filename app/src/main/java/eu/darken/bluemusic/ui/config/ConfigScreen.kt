@@ -49,7 +49,7 @@ fun ConfigScreen(
                         )
                         if (device != null && device.label != device.name) {
                             Text(
-                                text = device.name,
+                                text = device.name ?: "",
                                 style = MaterialTheme.typography.bodySmall,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
@@ -146,7 +146,7 @@ fun ConfigScreen(
                     SwitchPreference(
                         title = stringResource(R.string.label_autoplay),
                         description = stringResource(R.string.description_autoplay),
-                        isChecked = device.autoPlay,
+                        isChecked = device.autoplay,
                         isPro = state.isProVersion,
                         onCheckedChange = { onEvent(ConfigEvent.OnToggleAutoPlay) }
                     )
@@ -398,10 +398,7 @@ private fun ClickablePreference(
             )
         },
         supportingContent = fullDescription?.let { { Text(it) } },
-        modifier = modifier.clickable(
-            onClick = onClick,
-            onLongClick = onLongClick
-        )
+        modifier = modifier.clickable { onClick() }
     )
 }
 
@@ -418,7 +415,7 @@ private fun TimingDialog(
     
     AlertDialog(
         onDismissRequest = onDismiss,
-        icon = { Icon(Icons.Default.Timer, contentDescription = null) },
+        icon = { Icon(Icons.Default.Refresh, contentDescription = null) },
         title = { Text(title) },
         text = {
             Column {
@@ -527,7 +524,7 @@ private fun PurchaseDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        icon = { Icon(Icons.Default.Stars, contentDescription = null) },
+        icon = { Icon(Icons.Default.Star, contentDescription = null) },
         title = { Text(stringResource(R.string.label_premium_version)) },
         text = { Text(stringResource(R.string.description_premium_required_this_extra_option)) },
         confirmButton = {
@@ -553,7 +550,7 @@ private fun ConfigScreenPreview() {
                     address = "00:11:22:33:44:55",
                     musicVolume = 0.75f,
                     callVolume = 0.5f,
-                    autoPlay = true,
+                    autoplay = true,
                     volumeLock = false,
                     keepAwake = true,
                     nudgeVolume = false

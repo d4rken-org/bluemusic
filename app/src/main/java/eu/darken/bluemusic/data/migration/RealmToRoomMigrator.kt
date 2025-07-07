@@ -54,10 +54,10 @@ class RealmToRoomMigrator @Inject constructor(
                         ringVolume = realmDevice.ringVolume,
                         notificationVolume = realmDevice.notificationVolume,
                         alarmVolume = realmDevice.alarmVolume,
-                        volumeLock = realmDevice.volumeLock,
-                        keepAwake = realmDevice.keepAwake,
-                        nudgeVolume = realmDevice.nudgeVolume,
-                        autoplay = realmDevice.autoplay,
+                        volumeLock = realmDevice.isVolumeLock,
+                        keepAwake = realmDevice.isKeepAwake,
+                        nudgeVolume = realmDevice.isNudgeVolume,
+                        autoplay = realmDevice.isAutoplay,
                         launchPkg = realmDevice.launchPkg
                     )
                     

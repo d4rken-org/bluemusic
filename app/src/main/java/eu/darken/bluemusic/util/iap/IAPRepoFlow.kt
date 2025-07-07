@@ -8,7 +8,20 @@ import eu.darken.bluemusic.common.coroutines.DispatcherProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.retry
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -66,12 +79,12 @@ class IAPRepoFlow @Inject constructor(
                     }
                     needsAck
                 }
-                .retry { attempt, error ->
+                .retry { error ->
                     if (error !is BillingClientException) return@retry false
                     when (error.result?.responseCode) {
                         BillingResponseCode.BILLING_UNAVAILABLE -> false
                         else -> {
-                            delay(attempt * 10 * 1000L)
+                            delay(10 * 1000L)
                             true
                         }
                     }
@@ -117,7 +130,7 @@ class IAPRepoFlow @Inject constructor(
     suspend fun startIAPFlow(availableSku: AvailableSkus, activity: Activity): BillingResult {
         return try {
             val connection = billingClientConnectionProvider.connection.first()
-            connection.startIAPFlow(activity, availableSku.sku)
+            connection.startIAPFlow(activity, availableSku.sku.id)
         } catch (e: Exception) {
             Timber.w(e, "Failed to start IAP flow for $availableSku")
             throw e

@@ -2,9 +2,9 @@ package eu.darken.bluemusic.ui.discover
 
 import android.app.Activity
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import eu.darken.bluemusic.common.dagger.ViewModelFactory
 import javax.inject.Inject
@@ -21,7 +21,7 @@ class DiscoverScreenHost @Inject constructor(
         val activity = context as? Activity
         
         val viewModel: DiscoverViewModel = viewModel(factory = viewModelFactory)
-        val state by viewModel.state.collectAsStateWithLifecycle()
+        val state by viewModel.state.collectAsState()
         
         DiscoverScreen(
             state = state,

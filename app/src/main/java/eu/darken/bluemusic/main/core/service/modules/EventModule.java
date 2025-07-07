@@ -1,7 +1,7 @@
 package eu.darken.bluemusic.main.core.service.modules;
 
 import eu.darken.bluemusic.bluetooth.core.SourceDevice;
-import eu.darken.bluemusic.main.core.database.ManagedDevice;
+import eu.darken.bluemusic.data.device.ManagedDevice;
 
 public abstract class EventModule {
 

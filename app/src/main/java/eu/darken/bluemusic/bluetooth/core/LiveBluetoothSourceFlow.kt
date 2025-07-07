@@ -9,7 +9,10 @@ import android.content.IntentFilter
 import eu.darken.bluemusic.AppComponent
 import eu.darken.bluemusic.common.coroutines.DispatcherProvider
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
@@ -82,16 +85,27 @@ class LiveBluetoothSourceFlow @Inject constructor(
     
     private fun loadConnectedDevices(): Map<String, SourceDevice> {
         val devices = mutableMapOf<String, SourceDevice>()
+
+        // Always add FakeSpeakerDevice
+        devices[FakeSpeakerDevice.ADDR] = FakeSpeakerDevice(context)
         
         if (bluetoothAdapter?.isEnabled != true) {
             return devices
+        }
+
+        // Check for BLUETOOTH_CONNECT permission on Android 12+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            if (context.checkSelfPermission(android.Manifest.permission.BLUETOOTH_CONNECT) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                Timber.w("BLUETOOTH_CONNECT permission not granted")
+                return devices
+            }
         }
         
         try {
             // Get bonded devices that are connected
             bluetoothAdapter.bondedDevices?.forEach { device ->
                 if (isConnected(device)) {
-                    val sourceDevice = LiveSourceDevice(device)
+                    val sourceDevice = SourceDeviceWrapper(device)
                     devices[device.address] = sourceDevice
                     Timber.d("Connected device: ${device.name} - ${device.address}")
                 }

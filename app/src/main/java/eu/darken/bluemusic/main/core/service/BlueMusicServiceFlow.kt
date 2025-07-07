@@ -14,23 +14,35 @@ import android.util.SparseArray
 import androidx.annotation.RequiresApi
 import eu.darken.bluemusic.App
 import eu.darken.bluemusic.R
-import eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiver
+import eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiverFlow
 import eu.darken.bluemusic.bluetooth.core.BluetoothSourceFlow
 import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.coroutines.DispatcherProvider
+import eu.darken.bluemusic.data.device.DeviceAction
 import eu.darken.bluemusic.data.device.DeviceManagerFlow
+import eu.darken.bluemusic.data.device.ManagedDevice
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.audio.VolumeObserver
-import eu.darken.bluemusic.main.core.database.ManagedDevice
 import eu.darken.bluemusic.main.core.service.modules.EventModule
 import eu.darken.bluemusic.main.core.service.modules.VolumeModule
 import eu.darken.bluemusic.settings.core.Settings
 import eu.darken.bluemusic.util.ApiHelper
 import eu.darken.bluemusic.util.WakelockMan
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
@@ -62,8 +74,11 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
 
     override fun onCreate() {
         Timber.v("onCreate()")
-        (application as App).serviceInjector().inject(this)
+        (application as App).appComponent.inject(this)
         super.onCreate()
+
+        // Set service reference to break circular dependency
+        serviceHelper.setService(this)
 
         for (id in AudioStream.Id.values()) {
             volumeObserver.addCallback(id, this)
@@ -127,8 +142,8 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
         if (intent == null) {
             Timber.w("Intent was null")
             serviceHelper.stop()
-        } else if (intent.hasExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT)) {
-            val event = intent.getParcelableExtra<SourceDevice.Event>(BluetoothEventReceiver.EXTRA_DEVICE_EVENT)!!
+        } else if (intent.hasExtra(BluetoothEventReceiverFlow.EXTRA_DEVICE_EVENT)) {
+            val event = intent.getParcelableExtra<SourceDevice.Event>(BluetoothEventReceiverFlow.EXTRA_DEVICE_EVENT)!!
             
             serviceScope.launch(dispatcherProvider.io) {
                 handleDeviceEvent(event)
@@ -179,8 +194,8 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
                 Timber.w("Device ${event.address} is not managed")
                 return
             }
-            
-            val action = ManagedDevice.Action(managedDevice, event.type)
+
+            val action = DeviceAction(managedDevice, event.type)
             
             // Handle connection delay
             if (action.type == SourceDevice.Event.Type.CONNECTED) {

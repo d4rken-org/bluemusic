@@ -50,7 +50,7 @@ class App : Application() {
         }
 
         if (ApiHelper.hasAndroid12() && ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-            settings.showOnboarding = true
+            settings.isShowOnboarding = true
         }
         
         // Perform data migration from Realm to Room

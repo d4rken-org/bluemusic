@@ -62,7 +62,7 @@ class IntroViewModel @Inject constructor(
     
     private fun completeOnboarding() {
         Timber.i("Setup is complete")
-        settings.showOnboarding = false
+        settings.isShowOnboarding = false
         updateState { copy(shouldClose = true) }
     }
 }

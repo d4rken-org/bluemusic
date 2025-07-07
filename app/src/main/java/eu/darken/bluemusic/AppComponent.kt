@@ -5,7 +5,6 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.MembersInjector
 import eu.darken.bluemusic.bluetooth.core.BluetoothSourceFlow
-import eu.darken.bluemusic.bluetooth.core.DeviceSourceModule
 import eu.darken.bluemusic.bluetooth.core.DeviceSourceModuleFlow
 import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice
 import eu.darken.bluemusic.common.coroutines.CoroutineModule
@@ -16,6 +15,10 @@ import eu.darken.bluemusic.data.device.DeviceDataModuleFlow
 import eu.darken.bluemusic.data.device.DeviceManagerFlow
 import eu.darken.bluemusic.data.device.DeviceRepository
 import eu.darken.bluemusic.main.core.audio.StreamHelper
+import eu.darken.bluemusic.main.core.service.BlueMusicServiceFlow
+import eu.darken.bluemusic.main.core.service.ServiceModule
+import eu.darken.bluemusic.main.core.service.modules.EventModuleModule
+import eu.darken.bluemusic.main.core.service.modules.VolumeModuleModule
 import eu.darken.bluemusic.settings.core.Settings
 import eu.darken.bluemusic.ui.ViewModelBinder
 import eu.darken.bluemusic.ui.about.AboutScreenHost
@@ -30,16 +33,20 @@ import eu.darken.bluemusic.util.EventGenerator
 @AppComponent.Scope
 @Component(modules = [
     AndroidModule::class,
-    DeviceSourceModule::class,
     DeviceSourceModuleFlow::class,
     DeviceDataModuleFlow::class,
     ViewModelModule::class,
     ViewModelBinder::class,
     CoroutineModule::class,
-    DatabaseModule::class
+    DatabaseModule::class,
+    ServiceModule::class,
+    EventModuleModule::class,
+    VolumeModuleModule::class
 ])
 interface AppComponent : MembersInjector<App> {
     fun inject(app: App)
+    fun inject(service: BlueMusicServiceFlow)
+    fun inject(mainActivity: eu.darken.bluemusic.main.ui.MainActivity)
     
     fun managedDevicesScreenHost(): ManagedDevicesScreenHost
     fun configScreenHost(): ConfigScreenHost
