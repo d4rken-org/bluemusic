@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import eu.darken.bluemusic.R
-import eu.darken.bluemusic.util.AppTool
+import eu.darken.bluemusic.common.AppTool
 
 class LaunchAppAdapter(private val apps: List<AppTool.Item>) : BaseAdapter() {
     override fun getCount(): Int = apps.size
@@ -38,7 +38,7 @@ class LaunchAppAdapter(private val apps: List<AppTool.Item>) : BaseAdapter() {
 
         fun bind(item: AppTool.Item) {
             appName.text = item.appName
-            packageName.text = item.packageName
+            packageName.text = item.pkgName
             icon.setImageDrawable(item.appIcon)
         }
     }

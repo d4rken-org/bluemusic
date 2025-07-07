@@ -3,44 +3,60 @@ package eu.darken.bluemusic.bluetooth.core
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import eu.darken.bluemusic.App
+import dagger.hilt.android.AndroidEntryPoint
+import eu.darken.bluemusic.common.EventGenerator
+import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
+import eu.darken.bluemusic.common.debug.logging.asLog
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.devices.core.DeviceRepository
+import eu.darken.bluemusic.main.core.Settings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import timber.log.Timber
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class BootCheckReceiverFlow : BroadcastReceiver() {
 
+    companion object {
+        private val TAG = logTag("BootCheckReceiverFlow")
+    }
+
+    @Inject lateinit var settings: Settings
+    @Inject lateinit var bluetoothSource: LiveBluetoothSourceFlow
+    @Inject lateinit var eventGenerator: EventGenerator
+    @Inject lateinit var deviceRepository: DeviceRepository
+    @Inject lateinit var dispatcherProvider: DispatcherProvider
+
     override fun onReceive(context: Context, intent: Intent) {
-        Timber.v("onReceive(%s, %s)", context, intent)
+        log(TAG, VERBOSE) { "onReceive($context, $intent)" }
         if (!Intent.ACTION_BOOT_COMPLETED.equals(intent.action)) {
-            Timber.e("Triggered with unknown intent: %s", intent)
+            log(TAG, ERROR) { "Triggered with unknown intent: $intent" }
             return
         }
 
-        val appComponent = (context.applicationContext as App).appComponent
-        val settings = appComponent.settings()
-        val bluetoothSource = appComponent.bluetoothSourceFlow()
-        val eventGenerator = appComponent.eventGenerator()
-        val deviceRepository = appComponent.deviceRepository()
-        val dispatcherProvider = appComponent.dispatcherProvider()
+        // Dependencies are injected by Hilt
 
         if (!settings.isEnabled) {
-            Timber.i("We are disabled.")
+            log(TAG, INFO) { "We are disabled." }
             return
         }
         if (!settings.isBootRestoreEnabled) {
-            Timber.i("Restoring on boot is disabled.")
+            log(TAG, INFO) { "Restoring on boot is disabled." }
             return
         }
 
-        Timber.d("We just completed booting, let's see if any Bluetooth device is connected...")
+        log(TAG) { "We just completed booting, let's see if any Bluetooth device is connected..." }
         val pendingResult = goAsync()
-        
-        val scope = CoroutineScope(SupervisorJob() + dispatcherProvider.io)
+
+        val scope = CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
         scope.launch {
             try {
                 // Wait a bit for Bluetooth to stabilize after boot
@@ -49,33 +65,33 @@ class BootCheckReceiverFlow : BroadcastReceiver() {
                 val connectedDevices = bluetoothSource.connectedDevices.first()
                 
                 if (connectedDevices.isEmpty()) {
-                    Timber.d("No devices were connected on boot.")
+                    log(TAG) { "No devices were connected on boot." }
                     return@launch
                 }
-                
-                Timber.d("We booted with already connected devices: %s", connectedDevices)
+
+                log(TAG) { "We booted with already connected devices: $connectedDevices" }
                 
                 val managedConnectedDevices = mutableListOf<SourceDevice>()
                 val managedDevices = deviceRepository.getAllDevices().first()
-                
-                for ((address, device) in connectedDevices) {
+
+                connectedDevices.forEach { (address, device) ->
                     if (managedDevices.any { it.address == address }) {
                         managedConnectedDevices.add(device)
                     }
                 }
                 
                 if (managedConnectedDevices.isEmpty()) {
-                    Timber.i("Connected devices are not managed by us.")
+                    log(TAG, INFO) { "Connected devices are not managed by us." }
                     return@launch
                 }
-                
-                Timber.i("Generating connected events for already connected devices %s", managedConnectedDevices)
+
+                log(TAG, INFO) { "Generating connected events for already connected devices $managedConnectedDevices" }
                 for (device in managedConnectedDevices) {
                     eventGenerator.send(device, SourceDevice.Event.Type.CONNECTED)
                 }
                 
             } catch (e: Exception) {
-                Timber.e(e, "Error during boot check")
+                log(TAG, ERROR) { "Error during boot check: ${e.asLog()}" }
             } finally {
                 pendingResult.finish()
                 scope.cancel()

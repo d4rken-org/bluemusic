@@ -1,6 +1,6 @@
-package eu.darken.butler.common.error
+package eu.darken.bluemusic.common.error
 
-import eu.darken.butler.common.flow.SingleEventFlow
+import eu.darken.bluemusic.common.flow.SingleEventFlow
 
 interface ErrorEventSource {
     val errorEvents: SingleEventFlow<Throwable>

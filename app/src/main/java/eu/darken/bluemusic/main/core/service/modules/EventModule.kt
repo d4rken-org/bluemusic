@@ -1,22 +1,19 @@
-package eu.darken.bluemusic.main.core.service.modules;
+package eu.darken.bluemusic.main.core.service.modules
 
-import eu.darken.bluemusic.bluetooth.core.SourceDevice;
-import eu.darken.bluemusic.data.device.ManagedDevice;
+import eu.darken.bluemusic.bluetooth.core.SourceDevice
+import eu.darken.bluemusic.devices.core.ManagedDevice
 
-public abstract class EventModule {
-
-    public boolean areRequirementsMet() {
-        return true;
+interface EventModule {
+    fun areRequirementsMet(): Boolean {
+        return true
     }
 
-    public abstract void handle(ManagedDevice device, SourceDevice.Event event);
+    fun handle(device: ManagedDevice, event: SourceDevice.Event)
 
     /**
      * When should this module run, lower = earlier, higher = later.
      * Modules with the same priority run in parallel
      */
-    public int getPriority() {
-        // Default
-        return 10;
-    }
+    val priority: Int
+        get() = 10
 }

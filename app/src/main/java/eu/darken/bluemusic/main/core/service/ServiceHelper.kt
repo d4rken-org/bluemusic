@@ -1,178 +1,177 @@
-package eu.darken.bluemusic.main.core.service;
+package eu.darken.bluemusic.main.core.service
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.os.Build
+import androidx.core.app.NotificationCompat
+import dagger.hilt.android.qualifiers.ApplicationContext
+import eu.darken.bluemusic.R
+import eu.darken.bluemusic.common.PendingIntentCompat
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.main.ui.MainActivity
+import javax.inject.Inject
+import javax.inject.Singleton
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.TimeUnit;
+@Singleton
+class ServiceHelper @Inject constructor(
+    @ApplicationContext private val context: Context,
+    private val notificationManager: NotificationManager,
+) {
+    private val builder: NotificationCompat.Builder
+    private var service: BlueMusicServiceFlow? = null
 
-import javax.inject.Inject;
+    @Volatile
+    private var isStarted = false
 
-import androidx.core.app.NotificationCompat;
-import eu.darken.bluemusic.AppComponent;
-import eu.darken.bluemusic.R;
-import eu.darken.bluemusic.ResHelper;
-import eu.darken.bluemusic.data.device.ManagedDevice;
-import eu.darken.bluemusic.main.ui.MainActivity;
-import eu.darken.bluemusic.util.PendingIntentCompat;
-import eu.darken.bluemusic.util.ValueBox;
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Completable;
-import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.core.ObservableEmitter;
-import io.reactivex.rxjava3.core.ObservableOnSubscribe;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
-import timber.log.Timber;
-
-@AppComponent.Scope
-public class ServiceHelper {
-
-    private final static String NOTIFICATION_CHANNEL_ID = "notification.channel.core";
-    private final static int NOTIFICATION_ID = 1;
-    static final String STOP_ACTION = "STOP_SERVICE";
-    private final Context context;
-    private final NotificationManager notificationManager;
-    private final ResHelper resHelper;
-    private final NotificationCompat.Builder builder;
-    private BlueMusicServiceFlow service;
-    private ObservableEmitter<String> emitter;
-    private volatile Disposable serviceStopper = Disposable.disposed();
-    private volatile boolean isStarted = false;
-    private static final String CMD_START = "start";
-    private static final String CMD_STOP = "stop";
-
-    @Inject
-    ServiceHelper(Context context, NotificationManager notificationManager, ResHelper resHelper) {
-        this.context = context;
-        this.notificationManager = notificationManager;
-        this.resHelper = resHelper;
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, resHelper.getString(R.string.label_notification_channel_status), NotificationManager.IMPORTANCE_MIN);
-            notificationManager.createNotificationChannel(channel);
-        }
-
-        Intent openIntent = new Intent(context, MainActivity.class);
-        PendingIntent openPi = PendingIntent.getActivity(context, 0, openIntent, PendingIntentCompat.getFLAG_IMMUTABLE());
-
-        Intent stopIntent = new Intent(context, BlueMusicServiceFlow.class);
-        stopIntent.setAction(STOP_ACTION);
-        PendingIntent stopPi = PendingIntent.getService(context, 0, stopIntent, PendingIntentCompat.getFLAG_IMMUTABLE());
-
-        builder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
-                .setChannelId(NOTIFICATION_CHANNEL_ID)
-                .setContentIntent(openPi)
-                .setSmallIcon(R.drawable.ic_notification_small)
-                .setContentText(resHelper.getString(R.string.label_status_idle))
-                .setContentTitle(resHelper.getString(R.string.app_name))
-                .addAction(new NotificationCompat.Action.Builder(0, context.getString(R.string.action_exit), stopPi).build());
-
-        final ValueBox<String> lastCmd = new ValueBox<>();
-        Observable.create((ObservableOnSubscribe<String>) emitter -> ServiceHelper.this.emitter = emitter)
-                .doOnNext(cmd -> Timber.v("Submitted: cmd-%s", cmd))
-                .filter(cmd -> !cmd.equals(lastCmd.getValue()))
-                .doOnNext(lastCmd::setValue)
-                .subscribe(cmd -> {
-                    Timber.d("Processing cmd-%s", cmd);
-                    if (cmd.equals(CMD_START)) {
-                        if (!serviceStopper.isDisposed()) {
-                            Timber.d("Stopping on-going shutdown due to cmd-%s", cmd);
-                            serviceStopper.dispose();
-                        }
-
-                        if (isStarted) {
-                            Timber.d("Ignoring cmd-%s, already started!", cmd);
-                            return;
-                        }
-
-                        isStarted = true;
-                        Timber.d("Executing startForeground()");
-                        if (service != null) service.startForeground(NOTIFICATION_ID, builder.build());
-                    } else {
-                        if (!isStarted) {
-                            Timber.w("Calling stopForeground() without startForeground()");
-                            emitter.onNext(CMD_START);
-                            emitter.onNext(CMD_STOP);
-                            return;
-                        }
-                        serviceStopper = Completable.timer(1500, TimeUnit.MILLISECONDS)
-                                .subscribeOn(Schedulers.io())
-                                .doOnComplete(() -> isStarted = false)
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(() -> {
-                                    Timber.d("Executing stopForeground()");
-                                    if (service != null) {
-                                        service.stopForeground(true);
-                                        service.stopSelf();
-                                    }
-                                    // Sometimes stopForeground doesn't remove the notification, but just makes it removable
-                                    notificationManager.cancel(NOTIFICATION_ID);
-                                });
-                    }
-                });
-    }
-
-    void setService(BlueMusicServiceFlow service) {
-        this.service = service;
-    }
-
-    void start() {
-        emitter.onNext(CMD_START);
-    }
-
-    void stop() {
-        emitter.onNext(CMD_STOP);
-    }
-
-    public static Intent getIntent(Context context) {
-        return new Intent(context, BlueMusicServiceFlow.class);
-    }
-
-    public static ComponentName startService(Context context, Intent intent) {
+    init {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            return context.startForegroundService(intent);
+            val channel = NotificationChannel(
+                NOTIFICATION_CHANNEL_ID,
+                context.getString(R.string.label_notification_channel_status),
+                NotificationManager.IMPORTANCE_MIN
+            )
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        val openIntent = Intent(context, MainActivity::class.java)
+        val openPi = PendingIntent.getActivity(context, 0, openIntent, PendingIntentCompat.FLAG_IMMUTABLE)
+
+        val stopIntent = Intent(context, BlueMusicServiceFlow::class.java).apply {
+            action = STOP_ACTION
+        }
+        val stopPi = PendingIntent.getService(context, 0, stopIntent, PendingIntentCompat.FLAG_IMMUTABLE)
+
+        builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
+            .setChannelId(NOTIFICATION_CHANNEL_ID)
+            .setContentIntent(openPi)
+            .setSmallIcon(R.drawable.ic_notification_small)
+            .setContentText(context.getString(R.string.label_status_idle))
+            .setContentTitle(context.getString(R.string.app_name))
+            .addAction(
+                NotificationCompat.Action.Builder(0, context.getString(R.string.action_exit), stopPi).build()
+            )
+
+//        val lastCmd = ValueBox<String>()
+//        Observable.create { emitter: ObservableEmitter<String> ->
+//            this.emitter = emitter
+//        }
+//            .doOnNext { cmd -> log(TAG, VERBOSE) { "Submitted: cmd-$cmd" } }
+//            .filter { cmd -> cmd != lastCmd.value }
+//            .doOnNext { cmd -> lastCmd.value = cmd }
+//            .subscribe { cmd ->
+//                log(TAG) { "Processing cmd-$cmd" }
+//                when (cmd) {
+//                    CMD_START -> {
+//                        if (!serviceStopper.isDisposed) {
+//                            log(TAG) { "Stopping on-going shutdown due to cmd-$cmd" }
+//                            serviceStopper.dispose()
+//                        }
+//
+//                        if (isStarted) {
+//                            log(TAG) { "Ignoring cmd-$cmd, already started!" }
+//                            return@subscribe
+//                        }
+//
+//                        isStarted = true
+//                        log(TAG) { "Executing startForeground()" }
+//                        service?.startForeground(NOTIFICATION_ID, builder.build())
+//                    }
+//                    else -> {
+//                        if (!isStarted) {
+//                            log(TAG, WARN) { "Calling stopForeground() without startForeground()" }
+//                            emitter?.onNext(CMD_START)
+//                            emitter?.onNext(CMD_STOP)
+//                            return@subscribe
+//                        }
+//                        serviceStopper = Completable.timer(1500, TimeUnit.MILLISECONDS)
+//                            .subscribeOn(Schedulers.io())
+//                            .doOnComplete { isStarted = false }
+//                            .observeOn(AndroidSchedulers.mainThread())
+//                            .subscribe {
+//                                log(TAG) { "Executing stopForeground()" }
+//                                service?.let {
+//                                    it.stopForeground(true)
+//                                    it.stopSelf()
+//                                }
+//                                // Sometimes stopForeground doesn't remove the notification, but just makes it removable
+//                                notificationManager.cancel(NOTIFICATION_ID)
+//                            }
+//                    }
+//                }
+//            }
+    }
+
+    fun setService(service: BlueMusicServiceFlow) {
+        this.service = service
+    }
+
+    fun start() {
+//        emitter?.onNext(CMD_START)
+    }
+
+    fun stop() {
+//        emitter?.onNext(CMD_STOP)
+    }
+
+    private fun updateNotification() {
+        if (!isStarted) return
+        val notification: Notification = builder.build()
+        log(TAG, VERBOSE) { "updatingNotification()" }
+        notificationManager.notify(NOTIFICATION_ID, notification)
+    }
+
+    fun updateActiveDevices(devices: Collection<ManagedDevice>) {
+        log(TAG) { "updateActiveDevices(devices=$devices)" }
+        val sb = StringBuilder()
+        devices.forEachIndexed { index, device ->
+            sb.append(device.label)
+            if (index < devices.size - 1) sb.append(", ")
+        }
+        if (devices.isNotEmpty()) {
+            builder.setContentTitle(sb.toString())
         } else {
-            return context.startService(intent);
+            builder.setContentTitle(context.getString(R.string.label_no_connected_devices))
+            builder.setContentText("")
+            builder.setStyle(NotificationCompat.BigTextStyle().bigText(""))
         }
+        updateNotification()
     }
 
-    private void updateNotification() {
-        if (!isStarted) return;
-        Notification notification = builder.build();
-        Timber.v("updatingNotification()");
-        notificationManager.notify(NOTIFICATION_ID, notification);
+    fun updateMessage(message: String) {
+        log(TAG) { "updateMessage(message=$message)" }
+        builder.setContentText(message)
+        builder.setStyle(NotificationCompat.BigTextStyle().bigText(message))
+        updateNotification()
     }
 
-    void updateActiveDevices(Collection<ManagedDevice> devices) {
-        Timber.d("updateActiveDevices(devices=%s)", devices);
-        final Iterator<ManagedDevice> iterator = devices.iterator();
-        StringBuilder sb = new StringBuilder();
-        while (iterator.hasNext()) {
-            sb.append(iterator.next().getLabel());
-            if (iterator.hasNext()) sb.append(", ");
-        }
-        if (!devices.isEmpty()) {
-            builder.setContentTitle(sb.toString());
-        } else {
-            builder.setContentTitle(resHelper.getString(R.string.label_no_connected_devices));
-            builder.setContentText("");
-            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(""));
-        }
-        updateNotification();
-    }
+    companion object {
+        private val TAG = logTag("ServiceHelper")
+        private const val NOTIFICATION_CHANNEL_ID = "notification.channel.core"
+        private const val NOTIFICATION_ID = 1
+        internal const val STOP_ACTION = "STOP_SERVICE"
+        private const val CMD_START = "start"
+        private const val CMD_STOP = "stop"
 
-    void updateMessage(String message) {
-        Timber.d("updateMessage(message=%s)", message);
-        builder.setContentText(message);
-        builder.setStyle(new NotificationCompat.BigTextStyle().bigText(message));
-        updateNotification();
+        @JvmStatic
+        fun getIntent(context: Context): Intent {
+            return Intent(context, BlueMusicServiceFlow::class.java)
+        }
+
+        @JvmStatic
+        fun startService(context: Context, intent: Intent): ComponentName? {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                context.startForegroundService(intent)
+            } else {
+                context.startService(intent)
+            }
+        }
     }
 }

@@ -1,54 +1,33 @@
-package eu.darken.bluemusic;
+package eu.darken.bluemusic
 
-import android.app.Application;
-import android.app.NotificationManager;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.media.AudioManager;
-import android.os.PowerManager;
-import android.preference.PreferenceManager;
+import android.app.NotificationManager
+import android.content.Context
+import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.media.AudioManager
+import android.os.PowerManager
+import android.preference.PreferenceManager
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 
-import dagger.Module;
-import dagger.Provides;
-
-
+@InstallIn(SingletonComponent::class)
 @Module
-public class AndroidModule {
+class AndroidModule {
 
-    @Provides
-    @AppComponent.Scope
-    Context context(Application application) {
-        return application.getApplicationContext();
-    }
+    @Provides fun preferences(@ApplicationContext context: Context): SharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(context)
 
-    @Provides
-    @AppComponent.Scope
-    SharedPreferences preferences(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context);
-    }
+    @Provides fun audioManager(@ApplicationContext context: Context): AudioManager =
+        context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
-    @Provides
-    @AppComponent.Scope
-    AudioManager audioManager(Context context) {
-        return (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-    }
+    @Provides fun powerManager(@ApplicationContext context: Context): PowerManager =
+        context.getSystemService(Context.POWER_SERVICE) as PowerManager
 
-    @Provides
-    @AppComponent.Scope
-    PowerManager powerManager(Context context) {
-        return (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-    }
+    @Provides fun notificationManager(@ApplicationContext context: Context): NotificationManager =
+        context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-    @Provides
-    @AppComponent.Scope
-    NotificationManager notificationManager(Context context) {
-        return (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-    }
-
-    @Provides
-    @AppComponent.Scope
-    PackageManager packageManager(Context context) {
-        return context.getPackageManager();
-    }
+    @Provides fun packageManager(@ApplicationContext context: Context): PackageManager = context.packageManager
 }

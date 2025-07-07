@@ -1,13 +1,20 @@
 package eu.darken.bluemusic.main.core.service.modules.events
 
 import android.app.NotificationManager
-import eu.darken.bluemusic.AppComponent
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
-import eu.darken.bluemusic.util.ApiHelper
+import eu.darken.bluemusic.common.ApiHelper
+import eu.darken.bluemusic.main.core.service.modules.EventModule
 import javax.inject.Inject
 
-@AppComponent.Scope
+import javax.inject.Singleton
+
+@Singleton
 internal class NotificationMonitorModule @Inject constructor(
         streamHelper: StreamHelper,
         private val notMan: NotificationManager
@@ -18,5 +25,10 @@ internal class NotificationMonitorModule @Inject constructor(
 
     override fun areRequirementsMet(): Boolean {
         return !ApiHelper.hasMarshmallow() || notMan.isNotificationPolicyAccessGranted
+    }
+
+    @Module @InstallIn(SingletonComponent::class)
+    abstract class Mod {
+        @Binds @IntoSet abstract fun bind(entry: NotificationMonitorModule): EventModule
     }
 }

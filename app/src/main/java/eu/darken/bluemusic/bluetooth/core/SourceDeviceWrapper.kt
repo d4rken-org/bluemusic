@@ -1,137 +1,91 @@
-package eu.darken.bluemusic.bluetooth.core;
+package eu.darken.bluemusic.bluetooth.core
 
-import android.bluetooth.BluetoothClass;
-import android.bluetooth.BluetoothDevice;
-import android.os.Parcel;
+import android.bluetooth.BluetoothClass
+import android.bluetooth.BluetoothDevice
+import android.os.Parcel
+import android.os.Parcelable
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.common.debug.logging.asLog
+import eu.darken.bluemusic.main.core.audio.AudioStream
+import java.util.Locale
 
-import java.lang.reflect.Method;
-import java.util.Locale;
+internal class SourceDeviceWrapper(
+    private val realDevice: BluetoothDevice
+) : SourceDevice {
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import eu.darken.bluemusic.main.core.audio.AudioStream;
-import timber.log.Timber;
+    constructor(parcel: Parcel) : this(
+        parcel.readParcelable(BluetoothDevice::class.java.classLoader)!!
+    )
 
-class SourceDeviceWrapper implements SourceDevice {
-    private final BluetoothDevice realDevice;
+    override val label: String
+        get() = alias ?: name ?: address
 
-    SourceDeviceWrapper(BluetoothDevice realDevice) {
-        this.realDevice = realDevice;
-    }
-
-    @Override
-    public String getLabel() {
-        String label = getAlias();
-        if (label == null) label = getName();
-        if (label == null) label = getAddress();
-        return label;
-    }
-
-    @Override
-    public boolean setAlias(String alias) {
-        try {
-            //noinspection JavaReflectionMemberAccess
-            Method method = realDevice.getClass().getMethod("setAlias", String.class);
-            return (boolean) method.invoke(realDevice, alias);
-        } catch (Exception e) {
-            Timber.e(e);
+    override val alias: String?
+        get() = try {
+            val method = realDevice.javaClass.getMethod("getAliasName")
+            method.invoke(realDevice) as String?
+        } catch (e: Exception) {
+            log(TAG, ERROR) { "Failed to use getAliasName(): ${e.message}" }
+            null
         }
-        return false;
-    }
 
-    @Nullable
-    @Override
-    public String getAlias() {
-        try {
-            //noinspection JavaReflectionMemberAccess
-            Method method = realDevice.getClass().getMethod("getAliasName");
-            return (String) method.invoke(realDevice);
-        } catch (Exception e) {
-            Timber.e("Failed to use getAliasName(): %s", e.getMessage());
-        }
-        return null;
-    }
+    override val name: String?
+        get() = realDevice.name
 
-    @Nullable
-    @Override
-    public String getName() {
-        return realDevice.getName();
-    }
+    override val address: String
+        get() = realDevice.address
 
-    @NonNull
-    @Override
-    public String getAddress() {
-        return realDevice.getAddress();
-    }
+    override val bluetoothClass: BluetoothClass?
+        get() = realDevice.bluetoothClass
 
-    @Nullable
-    @Override
-    public BluetoothClass getBluetoothClass() {
-        return realDevice.getBluetoothClass();
-    }
-
-    @Override
-    public AudioStream.Id getStreamId(AudioStream.Type type) {
-        switch (type) {
-            case MUSIC:
-                return AudioStream.Id.STREAM_MUSIC;
-            case CALL:
-                return AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE;
-            case RINGTONE:
-                return AudioStream.Id.STREAM_RINGTONE;
-            case NOTIFICATION:
-                return AudioStream.Id.STREAM_NOTIFICATION;
-            case ALARM:
-                return AudioStream.Id.STREAM_ALARM;
-            default:
-                throw new IllegalArgumentException("Unsupported AudioStreamType: " + type);
+    override fun getStreamId(type: AudioStream.Type): AudioStream.Id {
+        return when (type) {
+            AudioStream.Type.MUSIC -> AudioStream.Id.STREAM_MUSIC
+            AudioStream.Type.CALL -> AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE
+            AudioStream.Type.RINGTONE -> AudioStream.Id.STREAM_RINGTONE
+            AudioStream.Type.NOTIFICATION -> AudioStream.Id.STREAM_NOTIFICATION
+            AudioStream.Type.ALARM -> AudioStream.Id.STREAM_ALARM
+            else -> throw IllegalArgumentException("Unsupported AudioStreamType: $type")
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        SourceDeviceWrapper that = (SourceDeviceWrapper) o;
-
-        return getAddress().equals(that.getAddress());
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || javaClass != other.javaClass) return false
+        val that = other as SourceDeviceWrapper
+        return address == that.address
     }
 
-    @Override
-    public int hashCode() {
-        return getAddress().hashCode();
+    override fun hashCode(): Int {
+        return address.hashCode()
     }
 
-    @Override
-    public String toString() {
-        return String.format(Locale.US, "Device(name=%s, address=%s)", getName(), getAddress());
+    override fun toString(): String {
+        return String.format(Locale.US, "Device(name=%s, address=%s)", name, address)
     }
 
-
-    protected SourceDeviceWrapper(Parcel in) {
-        realDevice = in.readParcelable(BluetoothDevice.class.getClassLoader());
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeParcelable(realDevice, flags)
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(realDevice, flags);
+    override fun describeContents(): Int {
+        return 0
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
+    companion object {
+        private val TAG = logTag("SourceDeviceWrapper")
 
-    public static final Creator<SourceDeviceWrapper> CREATOR = new Creator<SourceDeviceWrapper>() {
-        @Override
-        public SourceDeviceWrapper createFromParcel(Parcel in) {
-            return new SourceDeviceWrapper(in);
+        @JvmField
+        val CREATOR = object : Parcelable.Creator<SourceDeviceWrapper> {
+            override fun createFromParcel(parcel: Parcel): SourceDeviceWrapper {
+                return SourceDeviceWrapper(parcel)
+            }
+
+            override fun newArray(size: Int): Array<SourceDeviceWrapper?> {
+                return arrayOfNulls(size)
+            }
         }
-
-        @Override
-        public SourceDeviceWrapper[] newArray(int size) {
-            return new SourceDeviceWrapper[size];
-        }
-    };
+    }
 }

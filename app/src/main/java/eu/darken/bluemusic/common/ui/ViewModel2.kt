@@ -1,12 +1,12 @@
-package eu.darken.butler.common.ui
+package eu.darken.bluemusic.common.ui
 
 import androidx.lifecycle.viewModelScope
-import eu.darken.butler.common.coroutine.DefaultDispatcherProvider
-import eu.darken.butler.common.coroutine.DispatcherProvider
-import eu.darken.butler.common.debug.logging.Logging.Priority.*
-import eu.darken.butler.common.debug.logging.asLog
-import eu.darken.butler.common.debug.logging.log
-import eu.darken.butler.common.flow.setupCommonEventHandlers
+import eu.darken.bluemusic.common.coroutine.DefaultDispatcherProvider
+import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.common.debug.logging.asLog
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope

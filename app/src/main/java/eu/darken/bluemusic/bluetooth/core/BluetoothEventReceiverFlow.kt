@@ -5,24 +5,39 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
-import eu.darken.bluemusic.App
-import eu.darken.bluemusic.data.device.DeviceManagerFlow
-import eu.darken.bluemusic.data.device.ManagedDevice
+import dagger.hilt.android.AndroidEntryPoint
+import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
+import eu.darken.bluemusic.bluetooth.core.speaker.SpeakerDeviceProvider
+import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.common.debug.logging.asLog
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.devices.core.DeviceManagerFlowAdapter
+import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.main.core.Settings
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.service.BlueMusicServiceFlow
 import eu.darken.bluemusic.main.core.service.ServiceHelper
-import eu.darken.bluemusic.settings.core.Settings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import timber.log.Timber
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class BluetoothEventReceiverFlow : BroadcastReceiver() {
 
+    @Inject lateinit var settings: Settings
+    @Inject lateinit var streamHelper: StreamHelper
+    @Inject lateinit var speakerDeviceProvider: SpeakerDeviceProvider
+    @Inject lateinit var deviceManager: DeviceManagerFlowAdapter
+    @Inject lateinit var dispatcherProvider: DispatcherProvider
+
     companion object {
+        private val TAG = logTag("BluetoothEventReceiverFlow")
         const val EXTRA_DEVICE_EVENT = "eu.darken.bluemusic.core.bluetooth.event"
         val VALID_ACTIONS = listOf(
             BluetoothDevice.ACTION_ACL_CONNECTED,
@@ -31,80 +46,75 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        Timber.v("onReceive(%s, %s)", context, intent)
+        log(TAG, VERBOSE) { "onReceive($context, $intent)" }
 
         if (!VALID_ACTIONS.contains(intent.action ?: "")) {
-            Timber.e("We got called on an invalid intent: %s", intent)
+            log(TAG, ERROR) { "We got called on an invalid intent: $intent" }
             return
         }
 
-        val appComponent = (context.applicationContext as App).appComponent
-        val settings = appComponent.settings()
-        val streamHelper = appComponent.streamHelper()
-        val fakeSpeakerDevice = appComponent.fakeSpeakerDevice()
-        val deviceManager = appComponent.deviceManagerFlow()
-        val dispatcherProvider = appComponent.dispatcherProvider()
 
         if (!settings.isEnabled) {
-            Timber.i("We are disabled.")
+            log(TAG, INFO) { "We are disabled." }
             return
         }
 
         val pendingResult = goAsync()
-        
-        val scope = CoroutineScope(SupervisorJob() + dispatcherProvider.io)
+
+        val scope = CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
         scope.launch {
             try {
-                handleEvent(context, intent, settings, streamHelper, fakeSpeakerDevice, deviceManager)
+                handleEvent(context, intent, settings, streamHelper, speakerDeviceProvider.getSpeaker(), deviceManager)
             } catch (e: Exception) {
-                Timber.e(e, "Error handling bluetooth event")
+                log(TAG, ERROR) { "Error handling bluetooth event: ${e.asLog()}" }
             } finally {
                 pendingResult.finish()
                 scope.cancel()
             }
         }
     }
-    
+
     private suspend fun handleEvent(
-        context: Context, 
+        context: Context,
         intent: Intent,
         settings: Settings,
         streamHelper: StreamHelper,
         fakeSpeakerDevice: FakeSpeakerDevice,
-        deviceManager: DeviceManagerFlow
+        deviceManager: DeviceManagerFlowAdapter
     ) {
         val deviceEvent = SourceDevice.Event.createEvent(intent)
         if (deviceEvent == null) {
-            Timber.e("Couldn't create device event for $intent")
+            log(TAG, ERROR) { "Couldn't create device event for $intent" }
             return
         }
-        
-        Timber.d("New event: %s", deviceEvent)
-        
+
+        log(TAG, DEBUG) { "New event: $deviceEvent" }
+
         val devices = deviceManager.devices().first()
-        Timber.d("Current devices: %s", devices)
-        
+        log(TAG, DEBUG) { "Current devices: $devices" }
+
         val managedDevice = devices[deviceEvent.address]
         if (managedDevice == null) {
-            Timber.d("Event %s belongs to an un-managed device", deviceEvent)
+            log(TAG, DEBUG) { "Event $deviceEvent belongs to an un-managed device" }
             return
         }
-        
-        Timber.d("Event %s concerns device %s", deviceEvent, managedDevice)
-        
+
+        log(TAG, DEBUG) { "Event $deviceEvent concerns device $managedDevice" }
+
         // If we are changing from speaker to bluetooth this routine tries to save the original volume
-        if (settings.isSpeakerAutoSaveEnabled && 
-            deviceEvent.address != FakeSpeakerDevice.ADDR && 
-            deviceEvent.type == SourceDevice.Event.Type.CONNECTED) {
+        if (settings.isSpeakerAutoSaveEnabled &&
+            deviceEvent.address != FakeSpeakerDevice.address &&
+            deviceEvent.type == SourceDevice.Event.Type.CONNECTED
+        ) {
 
             handleSpeakerAutoSave(context, devices, streamHelper, fakeSpeakerDevice, deviceManager)
         }
-        
+
         // Specific event handling for disconnect (save current volumes)
         if (deviceEvent.type == SourceDevice.Event.Type.DISCONNECTED) {
             handleDisconnect(managedDevice, streamHelper, deviceManager)
         }
-        
+
         // Forward the event to the service
         val serviceIntent = Intent(context, BlueMusicServiceFlow::class.java).apply {
             putExtra(EXTRA_DEVICE_EVENT, deviceEvent)
@@ -112,34 +122,34 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
 
         ServiceHelper.startService(context, serviceIntent)
     }
-    
+
     private suspend fun handleSpeakerAutoSave(
         context: Context,
         devices: Map<String, ManagedDevice>,
         streamHelper: StreamHelper,
         fakeSpeakerDevice: FakeSpeakerDevice,
-        deviceManager: DeviceManagerFlow
+        deviceManager: DeviceManagerFlowAdapter
     ) {
-        val fakeSpeaker = devices[FakeSpeakerDevice.ADDR] ?: run {
-            Timber.i("FakeSpeaker device not yet managed, adding.")
+        var updatedDevice = devices[FakeSpeakerDevice.address] ?: run {
+            log(TAG, INFO) { "FakeSpeaker device not yet managed, adding." }
             val newDevice = ManagedDevice(
-                address = FakeSpeakerDevice.ADDR,
+                address = FakeSpeakerDevice.address,
                 name = fakeSpeakerDevice.label,
                 lastConnected = System.currentTimeMillis()
             )
             deviceManager.updateDevice(newDevice)
             newDevice
         }
-        
+
         // Are we actually replacing the fake speaker device and need to save the volume?
         val activeDevices = devices.values.filter { it.isActive }
-        if (activeDevices.size >= 2 && !activeDevices.any { it.address == FakeSpeakerDevice.ADDR }) {
-            Timber.d("We are switching to a non-speaker device from speaker, skipping speaker save.")
+        if (activeDevices.size >= 2 && !activeDevices.any { it.address == FakeSpeakerDevice.address }) {
+            log(TAG, DEBUG) { "We are switching to a non-speaker device from speaker, skipping speaker save." }
             return
         }
-        
+
         // Save current volumes to fake speaker
-        Timber.d("Saving current speaker volumes.")
+        log(TAG, DEBUG) { "Saving current speaker volumes." }
         val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         for (id in AudioStream.Id.values()) {
             // Skip certain stream types for auto-save
@@ -147,12 +157,12 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
 
             val volumeInt = audioManager.getStreamVolume(id.id)
             if (volumeInt == 0) {
-                Timber.v("Speaker volume for %s is at %d, not saving mute.", id, volumeInt)
+                log(TAG, VERBOSE) { "Speaker volume for $id is at $volumeInt, not saving mute." }
                 continue
             }
-            
+
             val volumePercent = streamHelper.getVolumePercentage(id)
-            Timber.v("Speaker volume for %s is at %d (%d)", id, volumeInt, volumePercent)
+            log(TAG, VERBOSE) { "Speaker volume for $id is at $volumeInt ($volumePercent)" }
             // Map Id to Type
             val type = when (id) {
                 AudioStream.Id.STREAM_MUSIC -> AudioStream.Type.MUSIC
@@ -162,20 +172,20 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
                 AudioStream.Id.STREAM_ALARM -> AudioStream.Type.ALARM
                 else -> continue
             }
-            fakeSpeaker.setVolume(type, volumePercent)
+            updatedDevice = updatedDevice.withUpdatedVolume(type, volumePercent)
         }
-        
-        fakeSpeaker.lastConnected = System.currentTimeMillis()
-        deviceManager.updateDevice(fakeSpeaker)
+
+        updatedDevice = updatedDevice.copy(lastConnected = System.currentTimeMillis())
+        deviceManager.updateDevice(updatedDevice)
     }
-    
+
     private suspend fun handleDisconnect(
         managedDevice: ManagedDevice,
         streamHelper: StreamHelper,
-        deviceManager: DeviceManagerFlow
+        deviceManager: DeviceManagerFlowAdapter
     ) {
-        Timber.d("Handling disconnect for %s", managedDevice)
-        
+        log(TAG, DEBUG) { "Handling disconnect for $managedDevice" }
+        var updatedDevice = managedDevice
         // Save current volumes
         for (id in AudioStream.Id.values()) {
             // Map Id to Type
@@ -189,13 +199,13 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
             }
 
             if (managedDevice.getVolume(type) == null) continue
-            
+
             val volumePercent = streamHelper.getVolumePercentage(id)
-            Timber.v("Current volume for %s is %d", id, volumePercent)
-            managedDevice.setVolume(type, volumePercent)
+            log(TAG, VERBOSE) { "Current volume for $id is $volumePercent" }
+            updatedDevice = updatedDevice.withUpdatedVolume(type, volumePercent)
         }
-        
-        managedDevice.lastConnected = System.currentTimeMillis()
-        deviceManager.updateDevice(managedDevice)
+
+        updatedDevice = updatedDevice.copy(lastConnected = System.currentTimeMillis())
+        deviceManager.updateDevice(updatedDevice)
     }
 }

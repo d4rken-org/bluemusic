@@ -1,16 +1,23 @@
 package eu.darken.bluemusic.main.core.audio
 
 import android.media.AudioManager
-import eu.darken.bluemusic.AppComponent
-import timber.log.Timber
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.common.debug.logging.asLog
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.math.roundToInt
 
 
-@AppComponent.Scope
+@Singleton
 class StreamHelper @Inject
 constructor(private val audioManager: AudioManager) {
+
+    companion object {
+        private val TAG = logTag("StreamHelper")
+    }
     @Volatile private var adjusting = false
     private val lastUs = HashMap<AudioStream.Id, Int>()
 
@@ -23,14 +30,14 @@ constructor(private val audioManager: AudioManager) {
     }
 
     @Synchronized private fun setVolume(streamId: AudioStream.Id, volume: Int, flags: Int) {
-        Timber.v("setVolume(streamId=%s, volume=%d, flags=%d).", streamId, volume, flags)
+        log(TAG, VERBOSE) { "setVolume(streamId=$streamId, volume=$volume, flags=$flags)." }
         adjusting = true
         lastUs[streamId] = volume
 
         try {
             Thread.sleep(10)
         } catch (e: InterruptedException) {
-            Timber.w(e)
+            log(TAG, WARN) { e.asLog() }
             adjusting = false
             return
         }
@@ -41,7 +48,7 @@ constructor(private val audioManager: AudioManager) {
         try {
             Thread.sleep(10)
         } catch (e: InterruptedException) {
-            Timber.w(e)
+            log(TAG, WARN) { e.asLog() }
             return
         } finally {
             adjusting = false
@@ -59,10 +66,10 @@ constructor(private val audioManager: AudioManager) {
     fun lowerByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {
         val current = getCurrentVolume(streamId)
         val max = getMaxVolume(streamId)
-        Timber.v("lowerByOne(streamId=%s, visible=%b): current=%d, max=%d", streamId, visible, current, max)
+        log(TAG, VERBOSE) { "lowerByOne(streamId=$streamId, visible=$visible): current=$current, max=$max" }
 
         if (current == 0) {
-            Timber.w("Volume was at 0, can't lower by one more.")
+            log(TAG, WARN) { "Volume was at 0, can't lower by one more." }
             return false
         }
 
@@ -72,10 +79,10 @@ constructor(private val audioManager: AudioManager) {
     fun increaseByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {
         val current = getCurrentVolume(streamId)
         val max = getMaxVolume(streamId)
-        Timber.v("increaseByOne(streamId=%s, visible=%b): current=%d, max=%d", streamId, visible, current, max)
+        log(TAG, VERBOSE) { "increaseByOne(streamId=$streamId, visible=$visible): current=$current, max=$max" }
 
         if (current == max) {
-            Timber.w("Volume was at mav, can't increase by one more.")
+            log(TAG, WARN) { "Volume was at max, can't increase by one more." }
             return false
         }
 
@@ -92,10 +99,13 @@ constructor(private val audioManager: AudioManager) {
         val max = getMaxVolume(streamId)
         val target = (max * percent).roundToInt()
 
-        Timber.v("changeVolume(streamId=%s, percent=%f, visible=%b, delay=%d)", streamId, percent, visible, delay)
+        log(TAG, VERBOSE) { "changeVolume(streamId=$streamId, percent=$percent, visible=$visible, delay=$delay)" }
 
         if (currentVolume != target) {
-            Timber.d("Adjusting volume (streamId=%s, target=%d, current=%d, max=%d, visible=%b, delay=%d).", streamId, target, currentVolume, max, visible, delay)
+            log(
+                TAG,
+                DEBUG
+            ) { "Adjusting volume (streamId=$streamId, target=$target, current=$currentVolume, max=$max, visible=$visible, delay=$delay)." }
             if (delay == 0L) {
                 setVolume(streamId, target, if (visible) AudioManager.FLAG_SHOW_UI else 0)
             } else {
@@ -105,7 +115,7 @@ constructor(private val audioManager: AudioManager) {
                         try {
                             Thread.sleep(delay)
                         } catch (e: InterruptedException) {
-                            Timber.w(e)
+                            log(TAG, WARN) { e.asLog() }
                             return true
                         }
 
@@ -116,7 +126,7 @@ constructor(private val audioManager: AudioManager) {
                         try {
                             Thread.sleep(delay)
                         } catch (e: InterruptedException) {
-                            Timber.w(e)
+                            log(TAG, WARN) { e.asLog() }
                             return true
                         }
 
@@ -125,7 +135,7 @@ constructor(private val audioManager: AudioManager) {
             }
             return true
         } else {
-            Timber.v("Target volume of %d already set.", target)
+            log(TAG, VERBOSE) { "Target volume of $target already set." }
             return false
         }
     }

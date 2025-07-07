@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.common.error
 
-import android.R
 import android.app.Activity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 
@@ -72,12 +72,12 @@ fun ErrorDialog(throwable: Throwable, onDismiss: () -> Unit) {
                     ) {
                         Text(
                             localizedError.fixActionLabel?.get(context)
-                                ?: stringResource(R.string.ok)
+                                ?: stringResource(android.R.string.ok)
                         )
                     }
                 }
                     ?: TextButton(onClick = onDismiss) {
-                        Text(stringResource(R.string.ok))
+                        Text(stringResource(android.R.string.ok))
                     }
             }
         }

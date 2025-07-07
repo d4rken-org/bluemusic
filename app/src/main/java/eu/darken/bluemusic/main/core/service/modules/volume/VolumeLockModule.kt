@@ -1,24 +1,38 @@
 package eu.darken.bluemusic.main.core.service.modules.volume
 
-import eu.darken.bluemusic.AppComponent
-import eu.darken.bluemusic.data.device.DeviceManagerFlow
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.service.modules.VolumeModule
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-import timber.log.Timber
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.devices.core.DeviceManagerFlowAdapter
+import eu.darken.bluemusic.main.core.service.modules.EventModule
+import eu.darken.bluemusic.main.core.service.modules.events.AlarmMonitorModule
 import javax.inject.Inject
 
-@AppComponent.Scope
+import javax.inject.Singleton
+
+@Singleton
 internal class VolumeLockModule @Inject constructor(
         private val streamHelper: StreamHelper,
-        private val deviceManager: DeviceManagerFlow
-) : VolumeModule() {
+        private val deviceManager: DeviceManagerFlowAdapter
+) : VolumeModule {
+
+    companion object {
+        private val TAG = logTag("VolumeLockModule")
+    }
 
     override fun handle(id: AudioStream.Id, volume: Int) {
         if (streamHelper.wasUs(id, volume)) {
-            Timber.v("Volume change was triggered by us, ignoring it.")
+            log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             return
         }
 
@@ -31,14 +45,19 @@ internal class VolumeLockModule @Inject constructor(
                     val type = device.getStreamType(id)!!
                     val percentage: Float? = device.getVolume(type)
                     if (percentage == null || percentage == -1f) {
-                        Timber.d("Device %s has no specified target volume for %s, skipping volume lock.", device, type)
+                        log(TAG) { "Device $device has no specified target volume for $type, skipping volume lock." }
                         return@forEach
                     }
 
                     if (streamHelper.changeVolume(device.getStreamId(type), percentage, false, 0)) {
-                        Timber.d("Engaged volume lock for %s and due to %s", type, device)
+                        log(TAG) { "Engaged volume lock for $type and due to $device" }
                     }
                 }
         }
+    }
+
+    @Module @InstallIn(SingletonComponent::class)
+    abstract class Mod {
+        @Binds @IntoSet abstract fun bind(entry: VolumeLockModule): VolumeModule
     }
 }

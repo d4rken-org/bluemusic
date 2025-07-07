@@ -1,72 +1,84 @@
 package eu.darken.bluemusic
 
-import android.Manifest
 import android.app.Application
-import android.content.pm.PackageManager
-import androidx.core.app.ActivityCompat
-import eu.darken.bluemusic.data.migration.RealmToRoomMigrator
-import eu.darken.bluemusic.main.core.database.MigrationTool
-import eu.darken.bluemusic.settings.core.Settings
-import eu.darken.bluemusic.util.ApiHelper
+import androidx.hilt.work.HiltWorkerFactory
+import dagger.hilt.android.HiltAndroidApp
+import eu.darken.bluemusic.common.coroutine.AppScope
+import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.debug.DebugSettings
+import eu.darken.bluemusic.common.debug.logging.LogCatLogger
+import eu.darken.bluemusic.common.debug.logging.Logging
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
+import eu.darken.bluemusic.common.debug.logging.asLog
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.devices.core.database.legacy.MigrationTool
+import eu.darken.bluemusic.devices.core.database.legacy.RealmToRoomMigrator
+import eu.darken.bluemusic.main.core.CurriculumVitae
+import eu.darken.bluemusic.main.core.GeneralSettings
+import eu.darken.bluemusic.main.core.Settings
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import timber.log.Timber
-import timber.log.Timber.DebugTree
 import javax.inject.Inject
+import kotlin.system.exitProcess
 
+@HiltAndroidApp
 class App : Application() {
 
-    lateinit var appComponent: AppComponent
+    @Inject @AppScope lateinit var appScope: CoroutineScope
+    @Inject lateinit var dispatcherProvider: DispatcherProvider
+    @Inject lateinit var workerFactory: HiltWorkerFactory
+    @Inject lateinit var generalSettings: GeneralSettings
+    @Inject lateinit var debugSettings: DebugSettings
+    @Inject lateinit var curriculumVitae: CurriculumVitae
 
     @Inject lateinit var settings: Settings
     @Inject lateinit var realmToRoomMigrator: RealmToRoomMigrator
-    
-    private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+
 
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG) Timber.plant(DebugTree())
+        if (BuildConfig.DEBUG) Logging.install(LogCatLogger())
 
-        appComponent = DaggerAppComponent.builder()
-                .application(this)
-                .build()
-        appComponent.inject(this)
+        appScope.launch {
+            curriculumVitae.updateAppLaunch()
+        }
 
         val migrationTool = MigrationTool()
         Realm.init(this)
         val realmConfig = RealmConfiguration.Builder()
-                .schemaVersion(migrationTool.schemaVersion.toLong())
-                .migration(migrationTool.migration)
-                .build()
+            .schemaVersion(migrationTool.schemaVersion.toLong())
+            .migration(migrationTool.migration)
+            .build()
         Realm.setDefaultConfiguration(realmConfig)
-        val originalHandler = Thread.getDefaultUncaughtExceptionHandler()
-        Thread.setDefaultUncaughtExceptionHandler { thread: Thread, error: Throwable ->
-            Timber.e(error, "$thread threw and uncaught exception")
-            originalHandler?.uncaughtException(thread, error)
-        }
 
-        if (ApiHelper.hasAndroid12() && ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-            settings.isShowOnboarding = true
-        }
-        
         // Perform data migration from Realm to Room
-        applicationScope.launch {
+        appScope.launch {
             try {
                 val migrationSuccess = realmToRoomMigrator.migrate()
                 if (migrationSuccess) {
-                    Timber.d("Data migration completed successfully")
+                    log(TAG, DEBUG) { "Data migration completed successfully" }
                     // Clean up Realm files after successful migration
                     realmToRoomMigrator.cleanupRealmFiles()
                 }
             } catch (e: Exception) {
-                Timber.e(e, "Data migration failed")
+                log(TAG, ERROR) { "Data migration failed: ${e.asLog()}" }
             }
         }
 
-        Timber.d("App onCreate() done!")
+        val oldHandler = Thread.getDefaultUncaughtExceptionHandler()
+        Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
+            log(TAG, ERROR) { "UNCAUGHT EXCEPTION: ${throwable.asLog()}" }
+            if (oldHandler != null) oldHandler.uncaughtException(thread, throwable) else exitProcess(1)
+            Thread.sleep(100)
+        }
+        log(TAG) { "onCreate() done! ${Exception().asLog()}" }
+    }
+
+    companion object {
+        private val TAG = logTag("App")
     }
 }

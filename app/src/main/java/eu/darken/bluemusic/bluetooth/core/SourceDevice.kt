@@ -7,14 +7,16 @@ import android.os.Parcelable
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.AudioStream.Id
 import kotlinx.parcelize.Parcelize
-import timber.log.Timber
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.common.debug.logging.asLog
 
 interface SourceDevice : Parcelable {
 
     val bluetoothClass: BluetoothClass?
     val name: String?
     val address: String
-    fun setAlias(newAlias: String?): Boolean
     val alias: String?
     val label: String
 
@@ -33,10 +35,12 @@ interface SourceDevice : Parcelable {
             get() = device.address
 
         companion object {
+            private val TAG = logTag("SourceDevice.Event")
+            
             @JvmStatic fun createEvent(intent: Intent): Event? {
                 val bluetoothDevice = intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
                 if (bluetoothDevice == null) {
-                    Timber.w("Intent didn't contain a bluetooth device!")
+                    log(TAG, WARN) { "Intent didn't contain a bluetooth device!" }
                     return null
                 }
                 val sourceDevice: SourceDevice = SourceDeviceWrapper(bluetoothDevice)
@@ -44,14 +48,14 @@ interface SourceDevice : Parcelable {
                     BluetoothDevice.ACTION_ACL_CONNECTED == intent.action -> Type.CONNECTED
                     BluetoothDevice.ACTION_ACL_DISCONNECTED == intent.action -> Type.DISCONNECTED
                     else -> {
-                        Timber.w("Invalid action: %s", intent.action)
+                        log(TAG, WARN) { "Invalid action: ${intent.action}" }
                         return null
                     }
                 }
                 try {
-                    Timber.d("Device: %s | Action: %s", sourceDevice, actionType)
+                    log(TAG) { "Device: $sourceDevice | Action: $actionType" }
                 } catch (e: Exception) {
-                    Timber.e(e)
+                    log(TAG, ERROR) { e.asLog() }
                     return null
                 }
                 return Event(sourceDevice, actionType)

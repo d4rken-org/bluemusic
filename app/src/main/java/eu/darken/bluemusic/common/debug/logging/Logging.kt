@@ -1,9 +1,8 @@
-package eu.darken.butler.common.debug.logging
+package eu.darken.bluemusic.common.debug.logging
 
 import eu.darken.bluemusic.common.debug.Bugs
-import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.butler.common.debug.logging.Logging.Priority.INFO
-import eu.darken.butler.common.debug.logging.Logging.Priority.WARN
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import java.io.PrintWriter
 import java.io.StringWriter
 

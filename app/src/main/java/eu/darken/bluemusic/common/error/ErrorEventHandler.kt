@@ -1,4 +1,4 @@
-package eu.darken.butler.common.error
+package eu.darken.bluemusic.common.error
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -6,7 +6,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import eu.darken.bluemusic.common.error.ErrorDialog
 
 @Composable
 fun ErrorEventHandler(source: ErrorEventSource) {
@@ -19,3 +18,4 @@ fun ErrorEventHandler(source: ErrorEventSource) {
         ErrorDialog(throwable = error, onDismiss = { currentError = null })
     }
 }
+

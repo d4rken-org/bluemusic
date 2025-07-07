@@ -1,10 +1,10 @@
-package eu.darken.butler.common.ui
+package eu.darken.bluemusic.common.ui
 
-import eu.darken.butler.common.coroutine.DispatcherProvider
-import eu.darken.butler.common.debug.logging.asLog
-import eu.darken.butler.common.debug.logging.log
-import eu.darken.butler.common.error.ErrorEventSource
-import eu.darken.butler.common.flow.SingleEventFlow
+import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.debug.logging.asLog
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.error.ErrorEventSource
+import eu.darken.bluemusic.common.flow.SingleEventFlow
 import kotlinx.coroutines.CoroutineExceptionHandler
 
 abstract class ViewModel3(

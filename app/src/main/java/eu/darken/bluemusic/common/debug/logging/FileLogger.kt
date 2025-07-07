@@ -1,8 +1,7 @@
-package eu.darken.butler.common.debug.logging
+package eu.darken.bluemusic.common.debug.logging
 
 import android.util.Log
 import eu.darken.bluemusic.common.debug.Bugs
-import eu.darken.bluemusic.common.debug.logging.logTag
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException

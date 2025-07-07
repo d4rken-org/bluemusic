@@ -1,9 +1,9 @@
-package eu.darken.butler.common.ui
+package eu.darken.bluemusic.common.ui
 
-import eu.darken.butler.common.coroutine.DispatcherProvider
-import eu.darken.butler.common.debug.logging.log
-import eu.darken.butler.common.navigation.NavigationController
-import eu.darken.butler.common.navigation.NavigationDestination
+import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.navigation.NavigationController
+import eu.darken.bluemusic.common.navigation.NavigationDestination
 
 
 abstract class ViewModel4(

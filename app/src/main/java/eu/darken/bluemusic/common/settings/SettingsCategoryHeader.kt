@@ -1,4 +1,4 @@
-package eu.darken.butler.common.settings
+package eu.darken.bluemusic.common.settings
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme

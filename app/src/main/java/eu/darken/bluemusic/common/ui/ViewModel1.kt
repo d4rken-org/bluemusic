@@ -1,8 +1,8 @@
-package eu.darken.butler.common.ui
+package eu.darken.bluemusic.common.ui
 
 import androidx.annotation.CallSuper
 import androidx.lifecycle.ViewModel
-import eu.darken.butler.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.log
 
 abstract class ViewModel1(
     open val tag: String = defaultTag()

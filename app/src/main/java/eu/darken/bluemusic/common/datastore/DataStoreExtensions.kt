@@ -1,4 +1,4 @@
-package eu.darken.butler.common.datastore
+package eu.darken.bluemusic.common.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

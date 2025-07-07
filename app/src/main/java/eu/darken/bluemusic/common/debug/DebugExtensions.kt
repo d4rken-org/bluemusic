@@ -1,6 +1,6 @@
-package eu.darken.butler.common.debug
+package eu.darken.bluemusic.common.debug
 
-import eu.darken.butler.common.error.getStackTraceString
+import eu.darken.bluemusic.common.error.getStackTraceString
 
 
 @Suppress("NOTHING_TO_INLINE")

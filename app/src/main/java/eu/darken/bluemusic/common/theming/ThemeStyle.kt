@@ -1,6 +1,6 @@
 package eu.darken.bluemusic.common.theming
 
-import eu.darken.bluemusic.common.R
+import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.ca.CaString
 import eu.darken.bluemusic.common.ca.toCaString
 import eu.darken.bluemusic.common.settings.EnumPreference

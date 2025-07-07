@@ -1,4 +1,4 @@
-package eu.darken.butler.common.error
+package eu.darken.bluemusic.common.error
 
 import java.io.PrintWriter
 import java.io.StringWriter

@@ -1,4 +1,4 @@
-package eu.darken.butler.common.theming
+package eu.darken.bluemusic.common.theming
 
 import eu.darken.bluemusic.common.theming.ThemeMode
 import eu.darken.bluemusic.common.theming.ThemeStyle

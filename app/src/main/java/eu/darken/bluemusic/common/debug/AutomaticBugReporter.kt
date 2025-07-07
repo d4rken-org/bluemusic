@@ -1,4 +1,4 @@
-package eu.darken.butler.common.debug
+package eu.darken.bluemusic.common.debug
 
 import android.app.Application
 

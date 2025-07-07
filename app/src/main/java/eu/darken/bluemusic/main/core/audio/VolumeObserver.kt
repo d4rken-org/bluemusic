@@ -1,59 +1,59 @@
-package eu.darken.bluemusic.main.core.audio;
+package eu.darken.bluemusic.main.core.audio
 
-import android.database.ContentObserver;
-import android.os.Handler;
+import android.database.ContentObserver
+import android.os.Handler
+import android.os.HandlerThread
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import javax.inject.Inject
+import javax.inject.Named
+import javax.inject.Singleton
 
-import java.util.HashMap;
-import java.util.Map;
+@Singleton
+class VolumeObserver @Inject constructor(
+    private val streamHelper: StreamHelper
+) : ContentObserver(
+    run {
+        val handlerThread = HandlerThread("VolumeObserver")
+        handlerThread.start()
+        val looper = handlerThread.looper
+        Handler(looper)
+    }
+) {
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import timber.log.Timber;
-
-
-public class VolumeObserver extends ContentObserver {
-
-    private final StreamHelper streamHelper;
-
-    public interface Callback {
-        void onVolumeChanged(AudioStream.Id streamId, int volume);
+    interface Callback {
+        fun onVolumeChanged(streamId: AudioStream.Id, volume: Int)
     }
 
-    private final Map<AudioStream.Id, Callback> callbacks = new HashMap<>();
-    private final Map<AudioStream.Id, Integer> volumes = new HashMap<>();
+    private val callbacks = mutableMapOf<AudioStream.Id, Callback>()
+    private val volumes = mutableMapOf<AudioStream.Id, Int>()
 
-    @Inject
-    public VolumeObserver(@Named("VolumeObserver") Handler handler, StreamHelper streamHelper) {
-        super(handler);
-        this.streamHelper = streamHelper;
+    fun addCallback(id: AudioStream.Id, callback: Callback) {
+        callbacks[id] = callback
+        val volume = streamHelper.getCurrentVolume(id)
+        volumes[id] = volume
     }
 
-    public void addCallback(AudioStream.Id id, Callback callback) {
-        callbacks.put(id, callback);
-        final int volume = streamHelper.getCurrentVolume(id);
-        volumes.put(id, volume);
+    override fun deliverSelfNotifications(): Boolean {
+        return false
     }
 
-    @Override
-    public boolean deliverSelfNotifications() {
-        return false;
-    }
-
-    @Override
-    public void onChange(boolean selfChange) {
-        super.onChange(selfChange);
-        Timber.v("Change detected.");
-        for (Map.Entry<AudioStream.Id, Callback> entry : callbacks.entrySet()) {
-            final AudioStream.Id id = entry.getKey();
-            Callback callback = callbacks.get(id);
-            int newVolume = streamHelper.getCurrentVolume(id);
-            int oldVolume = volumes.containsKey(id) ? volumes.get(id) : -1;
+    override fun onChange(selfChange: Boolean) {
+        super.onChange(selfChange)
+        log(TAG, VERBOSE) { "Change detected." }
+        for ((id, callback) in callbacks) {
+            val newVolume = streamHelper.getCurrentVolume(id)
+            val oldVolume = volumes[id] ?: -1
             if (newVolume != oldVolume) {
-                Timber.v("Volume changed (type=%s, old=%d, new=%d)", id, oldVolume, newVolume);
-                volumes.put(id, newVolume);
-                callback.onVolumeChanged(id, newVolume);
+                log(TAG, VERBOSE) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume)" }
+                volumes[id] = newVolume
+                callback.onVolumeChanged(id, newVolume)
             }
         }
+    }
+
+    companion object {
+        private val TAG = logTag("VolumeObserver")
     }
 }

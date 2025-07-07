@@ -12,24 +12,30 @@ import android.os.Build
 import android.os.IBinder
 import android.util.SparseArray
 import androidx.annotation.RequiresApi
-import eu.darken.bluemusic.App
+import dagger.hilt.android.AndroidEntryPoint
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiverFlow
-import eu.darken.bluemusic.bluetooth.core.BluetoothSourceFlow
-import eu.darken.bluemusic.bluetooth.core.FakeSpeakerDevice
+import eu.darken.bluemusic.bluetooth.core.LiveBluetoothSourceFlow
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
-import eu.darken.bluemusic.common.coroutines.DispatcherProvider
-import eu.darken.bluemusic.data.device.DeviceAction
-import eu.darken.bluemusic.data.device.DeviceManagerFlow
-import eu.darken.bluemusic.data.device.ManagedDevice
+import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
+import eu.darken.bluemusic.common.ApiHelper
+import eu.darken.bluemusic.common.WakelockMan
+import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
+import eu.darken.bluemusic.common.debug.logging.asLog
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.devices.core.DeviceAction
+import eu.darken.bluemusic.devices.core.DeviceManagerFlowAdapter
+import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.main.core.Settings
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.audio.VolumeObserver
 import eu.darken.bluemusic.main.core.service.modules.EventModule
 import eu.darken.bluemusic.main.core.service.modules.VolumeModule
-import eu.darken.bluemusic.settings.core.Settings
-import eu.darken.bluemusic.util.ApiHelper
-import eu.darken.bluemusic.util.WakelockMan
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -43,20 +49,25 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
-    @Inject lateinit var deviceManager: DeviceManagerFlow
-    @Inject lateinit var bluetoothSource: BluetoothSourceFlow
+
+    companion object {
+        private val TAG = logTag("BlueMusicServiceFlow")
+    }
+
+    @Inject lateinit var deviceManager: DeviceManagerFlowAdapter
+    @Inject lateinit var bluetoothSource: LiveBluetoothSourceFlow
     @Inject lateinit var streamHelper: StreamHelper
     @Inject lateinit var volumeObserver: VolumeObserver
     @Inject lateinit var settings: Settings
     @Inject lateinit var serviceHelper: ServiceHelper
     @Inject lateinit var wakelockMan: WakelockMan
-    @Inject lateinit var eventModuleMap: Map<Class<out EventModule>, @JvmSuppressWildcards EventModule>
-    @Inject lateinit var volumeModuleMap: Map<Class<out VolumeModule>, @JvmSuppressWildcards VolumeModule>
+    @Inject lateinit var eventModuleMap: Set<@JvmSuppressWildcards EventModule>
+    @Inject lateinit var volumeModuleMap: Set<@JvmSuppressWildcards VolumeModule>
     @Inject lateinit var dispatcherProvider: DispatcherProvider
 
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
@@ -66,15 +77,14 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
         @RequiresApi(api = Build.VERSION_CODES.M)
         override fun onReceive(context: Context, intent: Intent) {
             val notificationManager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-            Timber.d("isNotificationPolicyAccessGranted()=%b", notificationManager.isNotificationPolicyAccessGranted)
+            log(TAG) { "isNotificationPolicyAccessGranted()=${notificationManager.isNotificationPolicyAccessGranted}" }
         }
     }
 
     private val binder = MBinder()
 
     override fun onCreate() {
-        Timber.v("onCreate()")
-        (application as App).appComponent.inject(this)
+        log(TAG, VERBOSE) { "onCreate()" }
         super.onCreate()
 
         // Set service reference to break circular dependency
@@ -92,7 +102,7 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
         // Subscribe to device changes
         serviceScope.launch {
             deviceManager.devices()
-                .flowOn(dispatcherProvider.io)
+                .flowOn(dispatcherProvider.IO)
                 .collect { stringManagedDeviceMap ->
                     val connected = stringManagedDeviceMap.values.filter { it.isActive }
                     serviceHelper.updateActiveDevices(connected.toList())
@@ -102,7 +112,7 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
         // Monitor Bluetooth state
         serviceScope.launch {
             bluetoothSource.isEnabled
-                .flowOn(dispatcherProvider.io)
+                .flowOn(dispatcherProvider.IO)
                 .collect { isActive ->
                     if (!isActive) serviceHelper.stop()
                 }
@@ -110,7 +120,7 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
     }
 
     override fun onDestroy() {
-        Timber.v("onDestroy()")
+        log(TAG, VERBOSE) { "onDestroy()" }
         contentResolver.unregisterContentObserver(volumeObserver)
         if (ApiHelper.hasMarshmallow()) {
             unregisterReceiver(ringerPermission)
@@ -125,31 +135,31 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
     override fun onBind(intent: Intent): IBinder = binder
 
     override fun onUnbind(intent: Intent): Boolean {
-        Timber.v("onUnbind(intent=%s)", intent)
+        log(TAG, VERBOSE) { "onUnbind(intent=$intent)" }
         return true
     }
 
     override fun onRebind(intent: Intent) {
-        Timber.v("onRebind(intent=%s)", intent)
+        log(TAG, VERBOSE) { "onRebind(intent=$intent)" }
         super.onRebind(intent)
     }
 
     @SuppressLint("ThrowableNotAtBeginning")
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        Timber.v("onStartCommand-STARTED(intent=%s, flags=%d, startId=%d)", intent, flags, startId)
+        log(TAG, VERBOSE) { "onStartCommand-STARTED(intent=$intent, flags=$flags, startId=$startId)" }
         serviceHelper.start()
         
         if (intent == null) {
-            Timber.w("Intent was null")
+            log(TAG, WARN) { "Intent was null" }
             serviceHelper.stop()
         } else if (intent.hasExtra(BluetoothEventReceiverFlow.EXTRA_DEVICE_EVENT)) {
             val event = intent.getParcelableExtra<SourceDevice.Event>(BluetoothEventReceiverFlow.EXTRA_DEVICE_EVENT)!!
-            
-            serviceScope.launch(dispatcherProvider.io) {
+
+            serviceScope.launch(dispatcherProvider.IO) {
                 handleDeviceEvent(event)
             }
         } else if (ServiceHelper.STOP_ACTION == intent.action) {
-            Timber.d("Stopping service, currently %d on-going events, killing them.", onGoingConnections.size)
+            log(TAG) { "Stopping service, currently ${onGoingConnections.size} on-going events, killing them." }
             onGoingConnections.values.forEach { it.cancel() }
             onGoingConnections.clear()
             serviceHelper.stop()
@@ -157,7 +167,7 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
             serviceHelper.stop()
         }
 
-        Timber.v("onStartCommand-END(intent=%s, flags=%d, startId=%d)", intent, flags, startId)
+        log(TAG, VERBOSE) { "onStartCommand-END(intent=$intent, flags=$flags, startId=$startId)" }
         return START_NOT_STICKY
     }
 
@@ -173,7 +183,7 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
                 
                 if (event.type == SourceDevice.Event.Type.CONNECTED && !connectedDevices.containsKey(event.address)) {
                     retryCount++
-                    Timber.w("%s not fully connected, retrying (#%d).", event.device.label, retryCount)
+                    log(TAG, WARN) { "${event.device.label} not fully connected, retrying (#$retryCount)." }
                     withContext(Dispatchers.Main) {
                         serviceHelper.updateMessage("${getString(R.string.description_waiting_for_devicex, event.device.label)} (#$retryCount)")
                     }
@@ -184,14 +194,14 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
             }
             
             if (event.type == SourceDevice.Event.Type.CONNECTED && connectedDevices?.containsKey(event.address) != true) {
-                Timber.e("Device ${event.address} failed to connect after $maxRetries retries")
+                log(TAG, ERROR) { "Device ${event.address} failed to connect after $maxRetries retries" }
                 return
             }
             
             // Get managed device
             val managedDevice = deviceManager.getDevice(event.address)
             if (managedDevice == null) {
-                Timber.w("Device ${event.address} is not managed")
+                log(TAG, WARN) { "Device ${event.address} is not managed" }
                 return
             }
 
@@ -203,12 +213,12 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
                     serviceHelper.updateMessage(getString(R.string.label_reaction_delay))
                 }
                 val reactionDelay = action.device.actionDelay ?: Settings.DEFAULT_REACTION_DELAY
-                Timber.d("Delaying reaction to %s by %d ms.", action, reactionDelay)
+                log(TAG) { "Delaying reaction to $action by $reactionDelay ms." }
                 delay(reactionDelay)
             }
             
             // Execute event modules
-            Timber.d("Acting on %s", action)
+            log(TAG) { "Acting on $action" }
             withContext(Dispatchers.Main) {
                 serviceHelper.updateMessage(getString(R.string.label_status_adjusting_volumes))
             }
@@ -226,7 +236,7 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
             checkServiceStatus()
             
         } catch (e: Exception) {
-            Timber.e(e, "Error handling device event: $event")
+            log(TAG, ERROR) { "Error handling device event: $event: ${e.asLog()}" }
         }
     }
     
@@ -234,7 +244,7 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
         val priorityArray = SparseArray<MutableList<EventModule>>()
         
         // Group modules by priority
-        for ((_, module) in eventModuleMap) {
+        for (module in eventModuleMap) {
             val priority = module.priority
             var list = priorityArray.get(priority)
             if (list == null) {
@@ -247,17 +257,17 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
         // Execute modules by priority
         for (i in 0 until priorityArray.size()) {
             val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
-            Timber.d("%d event modules at priority %d", currentPriorityModules.size, priorityArray.keyAt(i))
+            log(TAG) { "${currentPriorityModules.size} event modules at priority ${priorityArray.keyAt(i)}" }
             
             coroutineScope {
                 currentPriorityModules.map { module ->
-                    async(dispatcherProvider.io) {
+                    async(dispatcherProvider.IO) {
                         try {
-                            Timber.v("Event module %s HANDLE-START", module)
+                            log(TAG, VERBOSE) { "Event module $module HANDLE-START" }
                             module.handle(device, event)
-                            Timber.v("Event module %s HANDLE-STOP", module)
+                            log(TAG, VERBOSE) { "Event module $module HANDLE-STOP" }
                         } catch (e: Exception) {
-                            Timber.e(e, "Event module error: $module")
+                            log(TAG, ERROR) { "Event module error: $module: ${e.asLog()}" }
                         }
                     }
                 }.awaitAll()
@@ -267,7 +277,7 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
     
     private suspend fun checkServiceStatus() {
         val devices = deviceManager.devices().first()
-        Timber.d("Active devices: %s", devices)
+        log(TAG) { "Active devices: $devices" }
         
         val msgBuilder = StringBuilder()
         var listening = false
@@ -276,22 +286,22 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
         
         for (d in devices.values) {
             if (!d.isActive) continue
-            if (d.address == FakeSpeakerDevice.ADDR) continue
+            if (d.address == FakeSpeakerDevice.address) continue
             
             if (!listening && settings.isVolumeChangeListenerEnabled) {
                 listening = true
-                Timber.d("Keep running because we are listening for changes")
+                log(TAG) { "Keep running because we are listening for changes" }
                 msgBuilder.append(getString(R.string.label_volume_listener))
             }
             if (!locking && d.volumeLock) {
                 locking = true
-                Timber.d("Keep running because the device wants volume lock: %s", d)
+                log(TAG) { "Keep running because the device wants volume lock: $d" }
                 if (msgBuilder.isNotEmpty()) msgBuilder.append(",\n")
                 msgBuilder.append(getString(R.string.label_volume_lock))
             }
             if (!waking && d.keepAwake) {
                 waking = true
-                Timber.d("Keep running because the device wants keep awake: %s", d)
+                log(TAG) { "Keep running because the device wants keep awake: $d" }
                 if (msgBuilder.isNotEmpty()) msgBuilder.append(",\n")
                 msgBuilder.append(getString(R.string.label_keep_awake))
             }
@@ -310,11 +320,11 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
     }
 
     override fun onVolumeChanged(id: AudioStream.Id, volume: Int) {
-        serviceScope.launch(dispatcherProvider.io) {
+        serviceScope.launch(dispatcherProvider.IO) {
             val priorityArray = SparseArray<MutableList<VolumeModule>>()
             
             // Group modules by priority
-            for ((_, module) in volumeModuleMap) {
+            for (module in volumeModuleMap) {
                 val priority = module.priority
                 var list = priorityArray.get(priority)
                 if (list == null) {
@@ -327,17 +337,17 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
             // Execute modules by priority
             for (i in 0 until priorityArray.size()) {
                 val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
-                Timber.d("%d volume modules at priority %d", currentPriorityModules.size, priorityArray.keyAt(i))
+                log(TAG) { "${currentPriorityModules.size} volume modules at priority ${priorityArray.keyAt(i)}" }
                 
                 coroutineScope {
                     currentPriorityModules.map { module ->
                         async {
                             try {
-                                Timber.v("Volume module %s HANDLE-START", module)
+                                log(TAG, VERBOSE) { "Volume module $module HANDLE-START" }
                                 module.handle(id, volume)
-                                Timber.v("Volume module %s HANDLE-STOP", module)
+                                log(TAG, VERBOSE) { "Volume module $module HANDLE-STOP" }
                             } catch (e: Exception) {
-                                Timber.e(e, "Volume module error: $module")
+                                log(TAG, ERROR) { "Volume module error: $module: ${e.asLog()}" }
                             }
                         }
                     }.awaitAll()

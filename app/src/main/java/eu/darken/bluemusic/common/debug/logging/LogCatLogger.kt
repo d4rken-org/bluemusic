@@ -1,4 +1,4 @@
-package eu.darken.butler.common.debug.logging
+package eu.darken.bluemusic.common.debug.logging
 
 import android.os.Build
 import android.util.Log

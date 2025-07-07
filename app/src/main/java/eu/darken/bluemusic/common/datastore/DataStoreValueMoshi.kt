@@ -1,9 +1,8 @@
-package eu.darken.butler.common.datastore
+package eu.darken.bluemusic.common.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
-import eu.darken.bluemusic.common.datastore.DataStoreValue
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 

@@ -3,11 +3,13 @@ package eu.darken.bluemusic.common.dagger
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
-import eu.darken.bluemusic.ui.ViewModelBinder
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
-@Module(includes = [ViewModelBinder::class])
+@InstallIn(SingletonComponent::class)
+@Module
 abstract class ViewModelModule {
-    
+
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 }

@@ -1,10 +1,10 @@
-package eu.darken.butler.common.ui
+package eu.darken.bluemusic.common.ui
 
 import android.app.Service
 import android.content.Intent
 import android.content.res.Configuration
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.butler.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.log
 
 abstract class Service2 : Service() {
     private val tag: String =

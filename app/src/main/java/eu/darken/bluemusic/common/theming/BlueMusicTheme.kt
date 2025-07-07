@@ -226,8 +226,6 @@ import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryDarkMediumCont
 import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryLight
 import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryLightHighContrast
 import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryLightMediumContrast
-import eu.darken.bluemusic.common.theming.ButlerTypography
-import eu.darken.bluemusic.common.theming.ThemeState
 
 private val lightScheme = lightColorScheme(
     primary = primaryLight,
@@ -458,7 +456,7 @@ private val highContrastDarkColorScheme = darkColorScheme(
 )
 
 @Composable
-fun MyAppTheme(state: ThemeState = ThemeState(), content: @Composable () -> Unit) {
+fun BlueMusicTheme(state: ThemeState = ThemeState(), content: @Composable () -> Unit) {
     val dynamicColors =
         when (state.style) {
             ThemeStyle.DEFAULT -> false
@@ -490,45 +488,45 @@ fun MyAppTheme(state: ThemeState = ThemeState(), content: @Composable () -> Unit
         darkTheme -> darkScheme
         else -> lightScheme
     }
-    MaterialTheme(colorScheme = colors, content = content, typography = ButlerTypography)
+    MaterialTheme(colorScheme = colors, content = content, typography = BlueMusicTypography)
 }
 
 @Preview(showBackground = true, name = "Light Mode")
 @Composable
 fun LightThemePreview() =
-    MyAppTheme(ThemeState(ThemeMode.LIGHT, ThemeStyle.DEFAULT)) { SampleContent() }
+    BlueMusicTheme(ThemeState(ThemeMode.LIGHT, ThemeStyle.DEFAULT)) { SampleContent() }
 
 @Preview(showBackground = true, name = "Dark Mode")
 @Composable
 fun DarkThemePreview() =
-    MyAppTheme(ThemeState(ThemeMode.DARK, ThemeStyle.DEFAULT)) { SampleContent() }
+    BlueMusicTheme(ThemeState(ThemeMode.DARK, ThemeStyle.DEFAULT)) { SampleContent() }
 
 @Preview(showBackground = true, name = "Material You Light Mode")
 @Composable
 fun MaterialYouLightThemePreview() =
-    MyAppTheme(ThemeState(ThemeMode.LIGHT, ThemeStyle.MATERIAL_YOU)) { SampleContent() }
+    BlueMusicTheme(ThemeState(ThemeMode.LIGHT, ThemeStyle.MATERIAL_YOU)) { SampleContent() }
 
 @Preview(showBackground = true, name = "Material You Dark Mode")
 @Composable
 fun MaterialYouDarkThemePreview() =
-    MyAppTheme(ThemeState(ThemeMode.DARK, ThemeStyle.MATERIAL_YOU)) { SampleContent() }
+    BlueMusicTheme(ThemeState(ThemeMode.DARK, ThemeStyle.MATERIAL_YOU)) { SampleContent() }
 
 @Preview(showBackground = true, name = "Medium Contrast Light Mode")
 @Composable
 fun MediumContrastLightThemePreview() =
-    MyAppTheme(ThemeState(ThemeMode.LIGHT, ThemeStyle.MEDIUM_CONTRAST)) { SampleContent() }
+    BlueMusicTheme(ThemeState(ThemeMode.LIGHT, ThemeStyle.MEDIUM_CONTRAST)) { SampleContent() }
 
 @Preview(showBackground = true, name = "Medium Contrast Dark Mode")
 @Composable
 fun MediumContrastDarkThemePreview() =
-    MyAppTheme(ThemeState(ThemeMode.DARK, ThemeStyle.MEDIUM_CONTRAST)) { SampleContent() }
+    BlueMusicTheme(ThemeState(ThemeMode.DARK, ThemeStyle.MEDIUM_CONTRAST)) { SampleContent() }
 
 @Preview(showBackground = true, name = "High Contrast Light Mode")
 @Composable
 fun HighContrastLightThemePreview() =
-    MyAppTheme(ThemeState(ThemeMode.LIGHT, ThemeStyle.HIGH_CONTRAST)) { SampleContent() }
+    BlueMusicTheme(ThemeState(ThemeMode.LIGHT, ThemeStyle.HIGH_CONTRAST)) { SampleContent() }
 
 @Preview(showBackground = true, name = "High Contrast Dark Mode")
 @Composable
 fun HighContrastDarkThemePreview() =
-    MyAppTheme(ThemeState(ThemeMode.DARK, ThemeStyle.HIGH_CONTRAST)) { SampleContent() }
+    BlueMusicTheme(ThemeState(ThemeMode.DARK, ThemeStyle.HIGH_CONTRAST)) { SampleContent() }

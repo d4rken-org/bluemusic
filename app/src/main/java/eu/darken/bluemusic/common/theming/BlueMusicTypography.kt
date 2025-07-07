@@ -1,5 +1,5 @@
-package eu.darken.butler.common.theming
+package eu.darken.bluemusic.common.theming
 
 import androidx.compose.material3.Typography
 
-val ButlerTypography = Typography()
+val BlueMusicTypography = Typography()

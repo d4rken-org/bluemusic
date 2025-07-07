@@ -1,4 +1,4 @@
-package eu.darken.butler.common.settings
+package eu.darken.bluemusic.common.settings
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column

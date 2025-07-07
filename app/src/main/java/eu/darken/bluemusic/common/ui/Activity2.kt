@@ -1,10 +1,10 @@
-package eu.darken.butler.common.ui
+package eu.darken.bluemusic.common.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
+import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.butler.common.debug.logging.Logging.Priority.VERBOSE
-import eu.darken.butler.common.debug.logging.log
 
 abstract class Activity2 : ComponentActivity() {
     internal val tag: String =

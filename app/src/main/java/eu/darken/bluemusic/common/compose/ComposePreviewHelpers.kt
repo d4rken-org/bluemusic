@@ -18,10 +18,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import eu.darken.bluemusic.common.theming.MyAppTheme
+import eu.darken.bluemusic.common.theming.BlueMusicTheme
 import eu.darken.bluemusic.common.theming.ThemeMode
+import eu.darken.bluemusic.common.theming.ThemeState
 import eu.darken.bluemusic.common.theming.ThemeStyle
-import eu.darken.butler.common.theming.ThemeState
 
 @Composable
 fun SampleContent(
@@ -67,7 +67,7 @@ fun PreviewWrapper(
     theme: ThemeState = ThemeState(ThemeMode.SYSTEM, style = ThemeStyle.DEFAULT),
     content: @Composable () -> Unit
 ) {
-    MyAppTheme(
+    BlueMusicTheme(
         state = theme,
     ) {
         Surface(

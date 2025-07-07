@@ -1,4 +1,4 @@
-package eu.darken.butler.common.ui
+package eu.darken.bluemusic.common.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State

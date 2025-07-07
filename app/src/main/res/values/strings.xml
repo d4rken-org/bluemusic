@@ -5,6 +5,34 @@
     <!-- General -->
     <string name="general_error_label">Error</string>
     <string name="general_error_no_compatible_app_found_msg">No compatible app found to handle this request.</string>
+    <string name="general_show_all_action">Show all</string>
+    <string name="general_thank_you_label">Thank you</string>
+    <string name="general_todo_msg">This feature is still being worked on and currently not available.</string>
+    <string name="general_share_action">Share</string>
+    <string name="general_done_action">Done</string>
+    <string name="general_copy_action">Copy</string>
+    <string name="general_wipe_action">Wipe</string>
+    <string name="general_discard_action">Discard</string>
+    <string name="general_reset_action">Reset</string>
+    <string name="general_save_action">Save</string>
+    <string name="general_thanks_action">Thanks</string>
+    <string name="general_gotit_action">Got it</string>
+    <string name="general_fix_action">Fix</string>
+    <string name="general_set_up_action">Set up</string>
+    <string name="general_edit_action">Edit</string>
+    <string name="general_na_label">N/A</string>
+    <string name="general_empty_label">Empty</string>
+    <string name="general_dismiss_action">Dismiss</string>
+    <string name="general_back_action">Back</string>
+    <string name="general_maybe_later_action">Maybe later</string>
+    <string name="general_manage_action">Manage</string>
+    <string name="general_sync_action">Synchronize</string>
+    <string name="general_tap_hint_msg">Tap for more options</string>
+    <string name="general_upgrade_action">Upgrade</string>
+    <string name="general_donate_action">Donate</string>
+    <string name="general_check_action">Check</string>
+    <string name="general_filter_action">Filter</string>
+    <string name="general_show_details_action">Show details</string>
 
 
     <!-- Settings-->
@@ -174,13 +202,25 @@
     <string name="label_volume">Volume</string>
     <string name="label_rename">Rename</string>
     <string name="label_no_devices_found">No devices found</string>
-    <string name="label_intro_welcome">Welcome!</string>
-    <string name="label_intro_what_does_this_app_do">What does this app do?</string>
-    <string name="description_intro_what_does_this_app_do">This app allows you to manage Bluetooth device volumes automatically.</string>
+
+    <string name="onboarding_welcome_title">Welcome</string>
+    <string name="onboarding_welcome_message">Bluetooth Volume Manager (BVM) allows you to manage Bluetooth device volumes automatically..</string>
+    <string name="onboarding_welcome_action">Let\'s go</string>
+    <string name="onboarding_beta_title">Beta version</string>
+    <string name="onboarding_beta_message">This is a beta (testing) build. Proceed with a sense of humor and a backup plan. Please report issues you encounter.</string>
+    <string name="onboarding_beta_action">I fear nothing</string>
+    <string name="onboarding_privacy_title">Privacy &amp; Data</string>
+    <string name="onboarding_privacy_message">Bluetooth Volume Manager has no advertisements and does not sell user data (it\'s even open-source). Your privacy is important to me.</string>
+    <string name="onboarding_privacy_read_action">Read Privacy Policy</string>
+    <string name="onboarding_privacy_action">Accept</string>
+
+
     <string name="label_intro_permissions">Permissions</string>
     <string name="description_intro_permissions">This app needs Bluetooth permissions to detect and manage your devices.</string>
     <string name="msg_intro_privacy_policy_text">By using this app, you agree to our</string>
     <string name="label_privacy_policy">Privacy Policy</string>
     <string name="action_finish_setup">Finish Setup</string>
+
+
     <string name="bluemusic_mascot_description">App Icon</string>
 </resources>
