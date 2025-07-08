@@ -226,7 +226,7 @@ fun ConfigScreen(
                 // Timing Section
                 item {
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
-                    SectionHeader(title = stringResource(R.string.label_settings))
+                    SectionHeader(title = stringResource(R.string.settings_label))
                 }
                 
                 item {

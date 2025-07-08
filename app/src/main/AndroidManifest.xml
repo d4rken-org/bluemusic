@@ -50,6 +50,7 @@
                 <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
             </intent-filter>
         </receiver>
+
         <receiver
             android:name="eu.darken.bluemusic.bluetooth.core.BootCheckReceiverFlow"
             android:enabled="true"

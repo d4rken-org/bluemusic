@@ -4,40 +4,28 @@
     <!-- General -->
     <string name="general_error_label">Error</string>
     <string name="general_error_no_compatible_app_found_msg">No compatible app found to handle this request.</string>
-    <string name="general_show_all_action">Show all</string>
-    <string name="general_thank_you_label">Thank you</string>
-    <string name="general_todo_msg">This feature is still being worked on and currently not available.</string>
+
     <string name="general_share_action">Share</string>
-    <string name="general_done_action">Done</string>
-    <string name="general_copy_action">Copy</string>
-    <string name="general_wipe_action">Wipe</string>
-    <string name="general_discard_action">Discard</string>
-    <string name="general_reset_action">Reset</string>
-    <string name="general_save_action">Save</string>
-    <string name="general_thanks_action">Thanks</string>
-    <string name="general_gotit_action">Got it</string>
-    <string name="general_fix_action">Fix</string>
-    <string name="general_set_up_action">Set up</string>
-    <string name="general_edit_action">Edit</string>
-    <string name="general_na_label">N/A</string>
-    <string name="general_empty_label">Empty</string>
-    <string name="general_dismiss_action">Dismiss</string>
     <string name="general_back_action">Back</string>
-    <string name="general_maybe_later_action">Maybe later</string>
-    <string name="general_manage_action">Manage</string>
-    <string name="general_sync_action">Synchronize</string>
-    <string name="general_tap_hint_msg">Tap for more options</string>
-    <string name="general_upgrade_action">Upgrade</string>
-    <string name="general_donate_action">Donate</string>
-    <string name="general_check_action">Check</string>
-    <string name="general_filter_action">Filter</string>
     <string name="general_show_details_action">Show details</string>
 
+    <!-- Onboarding-->
+    <string name="onboarding_welcome_title">Welcome to BVM</string>
+    <string name="onboarding_welcome_message">Bluetooth Volume Manager allows you to manage Bluetooth device volumes automatically.</string>
+    <string name="onboarding_welcome_action">Let\'s go</string>
+    <string name="onboarding_beta_title">Beta version</string>
+    <string name="onboarding_beta_message">This is a beta (testing) build. Proceed with a sense of humor and a backup plan. Please report issues you encounter.</string>
+    <string name="onboarding_beta_action">I fear nothing</string>
+    <string name="onboarding_privacy_title">Privacy &amp; Data</string>
+    <string name="onboarding_privacy_message">Bluetooth Volume Manager has no advertisements and does not sell user data (it\'s even open-source). Your privacy is important to me.</string>
+    <string name="onboarding_privacy_read_action">Read Privacy Policy</string>
+    <string name="onboarding_privacy_action">Accept</string>
 
     <!-- Settings-->
     <string name="settings_label">Settings</string>
-    <string name="settings_category_tools_label">Tools</string>
     <string name="settings_category_other_label">Other</string>
+
+    <!-- Settings/General-->
     <string name="general_settings_label">General</string>
     <string name="general_settings_desc">General tweaks that affect the whole app.</string>
     <string name="settings_category_ui_label">User interface</string>
@@ -46,9 +34,31 @@
     <string name="ui_theme_style_setting_label">Theme style</string>
     <string name="ui_theme_style_setting_explanation">The color style used when theming the app.</string>
 
+    <string name="ui_theme_mode_dark_label">Dark</string>
+    <string name="ui_theme_mode_light_label">Light</string>
+    <string name="ui_theme_mode_system_label">System</string>
+    <string name="ui_theme_style_default_label">Default</string>
+    <string name="ui_theme_style_medium_contrast_label">Medium Contrast</string>
+    <string name="ui_theme_style_high_contrast_label">High Contrast</string>
+    <string name="ui_theme_style_materialyou_label">Material You</string>
+
     <string name="ui_language_override_label">App language</string>
     <string name="ui_language_override_desc">Select a different language for BVM, independent of your system\'s default language.</string>
 
+    <!-- Settings/Devices-->
+    <string name="devices_settings_label">Devices</string>
+    <string name="devices_settings_desc">Settings that affect all managed devices.</string>
+
+    <string name="label_app_enabled">App enabled</string>
+    <string name="description_app_enabled">Toggles the app’s ability to react to volume and Bluetooth events.</string>
+    <string name="label_visible_volume_adjustments">Visible adjustments</string>
+    <string name="description_visible_volume_adjustments">Show the system\'s volume window while this app makes adjustments.</string>
+    <string name="label_volume_listener">Observe changes</string>
+    <string name="description_volume_listener">Stay active while a device is connected and save volume changes that have not been caused by this app.</string>
+    <string name="label_autoplay_keytype">Autoplay key type</string>
+    <string name="desc_autoplay_keytype">The key type that is sent when an autoplay enabled device connects.</string>
+
+    <!-- Settings/Support-->
     <string name="settings_support_label">Support</string>
     <string name="settings_support_description">Read documentation, report issues, chat with others or record debug logs.</string>
     <string name="settings_support_wiki_label">Documentation</string>
@@ -62,6 +72,7 @@
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">A place to hang out in and ask questions.</string>
 
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Acknowledgements</string>
     <string name="settings_acknowledgements_description">Credits, licenses, and special thanks</string>
     <string name="settings_acks_translation_header">Translation</string>
@@ -83,14 +94,6 @@
 
     <string name="changelog_label">Changelog</string>
 
-    <string name="ui_theme_mode_dark_label">Dark</string>
-    <string name="ui_theme_mode_light_label">Light</string>
-    <string name="ui_theme_mode_system_label">System</string>
-    <string name="ui_theme_style_default_label">Default</string>
-    <string name="ui_theme_style_medium_contrast_label">Medium Contrast</string>
-    <string name="ui_theme_style_high_contrast_label">High Contrast</string>
-    <string name="ui_theme_style_materialyou_label">Material You</string>
-
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug notifications</string>
     <string name="debug_log_consent_title">Debug log</string>
@@ -106,27 +109,10 @@
     <string name="debug_log_screen_discard_action">Discard</string>
     <string name="debug_log_file_label">Recorded log file</string>
 
-    <!-- Devices -->
-    <string name="devices_settings_label">Devices</string>
-    <string name="devices_settings_desc">Settings that affect all managed devices.</string>
 
-    <string name="label_settings">Settings</string>
-    <string name="label_about">About</string>
-    <string name="label_discord">Discord</string>
-    <string name="label_twitter">Twitter</string>
-    <string name="label_website">Website</string>
-    <string name="label_gplay">Google Play</string>
-    <string name="label_email">Email</string>
     <string name="label_bug_reports">Bug reports</string>
     <string name="description_bug_reports">Automatic bug and crash reporting.</string>
-    <string name="label_app_enabled">App enabled</string>
-    <string name="description_app_enabled">Toggles the app’s ability to react to volume and Bluetooth events.</string>
-    <string name="label_visible_volume_adjustments">Visible adjustments</string>
-    <string name="description_visible_volume_adjustments">Show the system\'s volume window while this app makes adjustments.</string>
-    <string name="label_volume_listener">Observe changes</string>
-    <string name="description_volume_listener">Stay active while a device is connected and save volume changes that have not been caused by this app.</string>
-    <string name="label_autoplay_keytype">Autoplay key type</string>
-    <string name="desc_autoplay_keytype">The key type that is sent when an autoplay enabled device connects.</string>
+
     <string name="label_state_connected">Connected</string>
     <string name="label_neverseen">Never seen</string>
     <string name="action_remove_device">Remove device</string>
@@ -154,6 +140,9 @@
     <string name="description_bluetooth_is_disabled">Bluetooth is disabled.</string>
     <string name="title_bluetooth_is_off">Bluetooth is Off</string>
     <string name="action_enable_bluetooth">Enable Bluetooth</string>
+    <string name="title_bluetooth_permission_required">Bluetooth Permission Required</string>
+    <string name="description_bluetooth_permission_required">This app needs Bluetooth permission to manage your device volumes.</string>
+    <string name="action_grant_permission">Grant Permission</string>
     <string name="label_status_listening_for_changes">Listening for volume changes</string>
     <string name="action_exit">Exit</string>
     <string name="label_music_volume">Music volume</string>
@@ -249,35 +238,9 @@
     <string name="error_generic_message">An error occurred. Please try again.</string>
     <string name="error_iap_owned_message">You already own this item</string>
 
-    <!-- Missing Settings Labels -->
-    <string name="label_premium_features">Premium Features</string>
-    <string name="label_autoplay_keycode">Autoplay Keycode</string>
-    <string name="label_developer">Developer</string>
-    <string name="label_bugreporting">Bug Reporting</string>
-    <string name="description_advanced_settings">Advanced settings for power users</string>
-    <string name="label_contact">Contact</string>
     <string name="label_volume">Volume</string>
     <string name="label_rename">Rename</string>
     <string name="label_no_devices_found">No devices found</string>
-
-    <string name="onboarding_welcome_title">Welcome to BVM</string>
-    <string name="onboarding_welcome_message">Bluetooth Volume Manager allows you to manage Bluetooth device volumes automatically.</string>
-    <string name="onboarding_welcome_action">Let\'s go</string>
-    <string name="onboarding_beta_title">Beta version</string>
-    <string name="onboarding_beta_message">This is a beta (testing) build. Proceed with a sense of humor and a backup plan. Please report issues you encounter.</string>
-    <string name="onboarding_beta_action">I fear nothing</string>
-    <string name="onboarding_privacy_title">Privacy &amp; Data</string>
-    <string name="onboarding_privacy_message">Bluetooth Volume Manager has no advertisements and does not sell user data (it\'s even open-source). Your privacy is important to me.</string>
-    <string name="onboarding_privacy_read_action">Read Privacy Policy</string>
-    <string name="onboarding_privacy_action">Accept</string>
-
-
-    <string name="label_intro_permissions">Permissions</string>
-    <string name="description_intro_permissions">This app needs Bluetooth permissions to detect and manage your devices.</string>
-    <string name="msg_intro_privacy_policy_text">By using this app, you agree to our</string>
-    <string name="label_privacy_policy">Privacy Policy</string>
-    <string name="action_finish_setup">Finish Setup</string>
-
 
     <string name="bluemusic_mascot_description">App Icon</string>
 </resources>

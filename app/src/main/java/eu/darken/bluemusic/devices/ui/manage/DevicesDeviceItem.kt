@@ -40,7 +40,7 @@ import java.util.Date
 @Composable
 fun ManagedDeviceItem(
     device: ManagedDevice,
-    onDeviceAction: (DeviceAction) -> Unit,
+    onDeviceAction: (DevicesAction) -> Unit,
     onNavigateToConfig: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -100,7 +100,7 @@ fun ManagedDeviceItem(
                     label = stringResource(R.string.audio_stream_music_label),
                     volume = device.getVolume(AudioStream.Type.MUSIC),
                     onVolumeChange = { volume ->
-                        onDeviceAction(DeviceAction.AdjustVolume(device.address, AudioStream.Type.MUSIC, volume))
+                        onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.MUSIC, volume))
                     }
                 )
                 
@@ -109,7 +109,7 @@ fun ManagedDeviceItem(
                     label = stringResource(R.string.audio_stream_call_label),
                     volume = device.getVolume(AudioStream.Type.CALL),
                     onVolumeChange = { volume ->
-                        onDeviceAction(DeviceAction.AdjustVolume(device.address, AudioStream.Type.CALL, volume))
+                        onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.CALL, volume))
                     }
                 )
                 
@@ -118,7 +118,7 @@ fun ManagedDeviceItem(
                     label = stringResource(R.string.audio_stream_ring_label),
                     volume = device.getVolume(AudioStream.Type.RINGTONE),
                     onVolumeChange = { volume ->
-                        onDeviceAction(DeviceAction.AdjustVolume(device.address, AudioStream.Type.RINGTONE, volume))
+                        onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.RINGTONE, volume))
                     }
                 )
                 
@@ -127,7 +127,7 @@ fun ManagedDeviceItem(
                     label = stringResource(R.string.audio_stream_notification_label),
                     volume = device.getVolume(AudioStream.Type.NOTIFICATION),
                     onVolumeChange = { volume ->
-                        onDeviceAction(DeviceAction.AdjustVolume(device.address, AudioStream.Type.NOTIFICATION, volume))
+                        onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.NOTIFICATION, volume))
                     }
                 )
                 
@@ -136,7 +136,7 @@ fun ManagedDeviceItem(
                     label = stringResource(R.string.audio_stream_alarm_label),
                     volume = device.getVolume(AudioStream.Type.ALARM),
                     onVolumeChange = { volume ->
-                        onDeviceAction(DeviceAction.AdjustVolume(device.address, AudioStream.Type.ALARM, volume))
+                        onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.ALARM, volume))
                     }
                 )
                 

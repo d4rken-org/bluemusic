@@ -12,7 +12,7 @@ import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationEntry
 import javax.inject.Inject
 
-class ManageDevicesNavigation @Inject constructor() : NavigationEntry {
+class DevicesNavigation @Inject constructor() : NavigationEntry {
     override fun EntryProviderBuilder<NavKey>.setup() {
         entry<Nav.Main.ManageDevices> {
             ManagedDevicesScreenHost()
@@ -21,6 +21,6 @@ class ManageDevicesNavigation @Inject constructor() : NavigationEntry {
 
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
-        @Binds @IntoSet abstract fun bind(entry: ManageDevicesNavigation): NavigationEntry
+        @Binds @IntoSet abstract fun bind(entry: DevicesNavigation): NavigationEntry
     }
 }

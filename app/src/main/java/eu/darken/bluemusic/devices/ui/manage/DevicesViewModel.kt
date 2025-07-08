@@ -9,17 +9,24 @@ import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.navigation.NavigationController
+import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DeviceRepository
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.main.core.audio.StreamHelper
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.receiveAsFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class ManagedDevicesViewModel @Inject constructor(
+class DevicesViewModel @Inject constructor(
+    private val permissionHelper: PermissionHelper,
     private val packageManager: PackageManager,
     private val deviceRepository: DeviceRepository,
     private val streamHelper: StreamHelper,
@@ -31,28 +38,53 @@ class ManagedDevicesViewModel @Inject constructor(
     private val navCtrl: NavigationController,
 ) : ViewModel4(dispatcherProvider, logTag("Devices", "Managed", "VM"), navCtrl) {
 
+    private val eventChannel = Channel<DevicesEvent>()
+    val events = eventChannel.receiveAsFlow()
+
+    private val permissionFlow: Flow<Boolean> = flow {
+        while (true) {
+            emit(permissionHelper.hasBluetoothPermission())
+            delay(1000) // Check every second
+        }
+    }
+
     val state = combine(
         upgradeRepo.upgradeInfo,
         bluetoothSource.isEnabled,
+        permissionFlow,
         flowOf(Unit),
-        flowOf(Unit),
-    ) { upgradeInfo, isEnabled, _, _ ->
+    ) { upgradeInfo, isEnabled, hasPermission, _ ->
         State(
             isProVersion = upgradeInfo.isUpgraded,
-            isBluetoothEnabled = isEnabled
+            isBluetoothEnabled = isEnabled,
+            hasBluetoothPermission = hasPermission
         )
     }.asStateFlow()
 
     data class State(
         val isProVersion: Boolean = false,
         val isBluetoothEnabled: Boolean = false,
+        val hasBluetoothPermission: Boolean = true,
         val devices: List<ManagedDevice> = emptyList(),
         val isLoading: Boolean = false,
     )
 
-    fun action(action: DeviceAction) {
+    fun action(action: DevicesAction) {
         log(tag) { "action: $action" }
+        when (action) {
+            DevicesAction.RequestBluetoothPermission -> {
+                launch {
+                    val permission = permissionHelper.getBluetoothPermission()
+                    eventChannel.send(DevicesEvent.RequestPermission(permission))
+                }
+            }
+
+            is DevicesAction.AdjustVolume -> {
+                // Handle volume adjustment
+            }
+        }
     }
+
 
 //    private var isBatterySavingHintDismissed = false
 //    private var isAppLaunchHintDismissed = false

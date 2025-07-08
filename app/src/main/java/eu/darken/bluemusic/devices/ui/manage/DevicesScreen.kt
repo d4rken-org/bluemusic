@@ -1,6 +1,8 @@
 package eu.darken.bluemusic.devices.ui.manage
 
 import android.content.Intent
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,6 +22,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BluetoothDisabled
 import androidx.compose.material.icons.twotone.Add
 import androidx.compose.material.icons.twotone.Devices
+import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -34,6 +37,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,15 +50,33 @@ import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.ColoredTitleText
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
+import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.ui.waitForState
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.ManagedDevice
 
 @Composable
-fun ManagedDevicesScreenHost(vm: ManagedDevicesViewModel = hiltViewModel()) {
+fun ManagedDevicesScreenHost(vm: DevicesViewModel = hiltViewModel()) {
 
     val state by waitForState(vm.state)
+
+    val bluetoothPermissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        log(vm.tag, INFO) { "Bluetooth permission granted: $isGranted" }
+    }
+
+    LaunchedEffect(Unit) {
+        vm.events.collect { event ->
+            when (event) {
+                is DevicesEvent.RequestPermission -> {
+                    bluetoothPermissionLauncher.launch(event.permission)
+                }
+            }
+        }
+    }
 
     state?.let { state ->
         ManagedDevicesScreen(
@@ -63,17 +85,21 @@ fun ManagedDevicesScreenHost(vm: ManagedDevicesViewModel = hiltViewModel()) {
             onDeviceConfig = { vm.navTo(Nav.Main.DeviceConfig(it)) },
             onDeviceAction = { vm.action(it) },
             onNavigateToSettings = { vm.navTo(Nav.Main.SettingsIndex) },
+            onRequestBluetoothPermission = {
+                vm.action(DevicesAction.RequestBluetoothPermission)
+            },
         )
     }
 }
 
 @Composable
 fun ManagedDevicesScreen(
-    state: ManagedDevicesViewModel.State,
+    state: DevicesViewModel.State,
     onAddDevice: () -> Unit,
     onDeviceConfig: (addr: DeviceAddr) -> Unit,
-    onDeviceAction: (DeviceAction) -> Unit,
+    onDeviceAction: (DevicesAction) -> Unit,
     onNavigateToSettings: () -> Unit,
+    onRequestBluetoothPermission: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -83,7 +109,7 @@ fun ManagedDevicesScreen(
             )
         },
         floatingActionButton = {
-            if (state.isBluetoothEnabled) {
+            if (state.hasBluetoothPermission && state.isBluetoothEnabled) {
                 FloatingActionButton(
                     onClick = { onAddDevice() },
                     containerColor = MaterialTheme.colorScheme.primary
@@ -97,6 +123,21 @@ fun ManagedDevicesScreen(
         }
     ) { paddingValues ->
         when {
+            !state.hasBluetoothPermission -> {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues),
+                    contentPadding = PaddingValues(vertical = 8.dp)
+                ) {
+                    item {
+                        BluetoothPermissionCard(
+                            onRequestPermission = onRequestBluetoothPermission
+                        )
+                    }
+                }
+            }
+
             !state.isBluetoothEnabled -> {
                 LazyColumn(
                     modifier = Modifier
@@ -197,7 +238,7 @@ private fun ManagedDevicesTopBar(
             IconButton(onClick = onNavigateToSettings) {
                 Icon(
                     imageVector = Icons.TwoTone.Settings,
-                    contentDescription = stringResource(R.string.label_settings)
+                    contentDescription = stringResource(R.string.settings_label)
                 )
             }
         }
@@ -258,6 +299,56 @@ private fun BluetoothDisabledCard() {
 }
 
 @Composable
+private fun BluetoothPermissionCard(
+    onRequestPermission: () -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.errorContainer
+        )
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Icon(
+                imageVector = Icons.TwoTone.Lock,
+                contentDescription = null,
+                modifier = Modifier.size(48.dp),
+                tint = MaterialTheme.colorScheme.onErrorContainer
+            )
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(
+                text = stringResource(R.string.title_bluetooth_permission_required),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onErrorContainer
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = stringResource(R.string.description_bluetooth_permission_required),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onErrorContainer,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(
+                onClick = onRequestPermission,
+                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.error
+                )
+            ) {
+                Text(stringResource(R.string.action_grant_permission))
+            }
+        }
+    }
+}
+
+@Composable
 private fun BatteryOptimizationHintCard(
     intent: Intent,
     onDismiss: () -> Unit
@@ -301,7 +392,7 @@ private fun BatteryOptimizationHintCard(
                 Button(
                     onClick = { context.startActivity(intent) }
                 ) {
-                    Text(stringResource(R.string.label_settings))
+                    Text(stringResource(R.string.settings_label))
                 }
             }
         }
@@ -352,7 +443,7 @@ private fun Android10AppLaunchHintCard(
                 Button(
                     onClick = { context.startActivity(intent) }
                 ) {
-                    Text(stringResource(R.string.label_settings))
+                    Text(stringResource(R.string.settings_label))
                 }
             }
         }
@@ -444,7 +535,7 @@ private fun ManagedDevicesScreenPreview() {
 
     PreviewWrapper {
         ManagedDevicesScreen(
-            state = ManagedDevicesViewModel.State(
+            state = DevicesViewModel.State(
                 devices = devices,
                 isBluetoothEnabled = true,
                 isProVersion = false,
@@ -453,6 +544,7 @@ private fun ManagedDevicesScreenPreview() {
             onDeviceConfig = {},
             onDeviceAction = {},
             onNavigateToSettings = {},
+            onRequestBluetoothPermission = {},
         )
     }
 }
@@ -462,7 +554,7 @@ private fun ManagedDevicesScreenPreview() {
 private fun ManagedDevicesScreenEmptyPreview() {
     PreviewWrapper {
         ManagedDevicesScreen(
-            state = ManagedDevicesViewModel.State(
+            state = DevicesViewModel.State(
                 devices = emptyList(),
                 isBluetoothEnabled = true,
                 isProVersion = true,
@@ -471,6 +563,7 @@ private fun ManagedDevicesScreenEmptyPreview() {
             onDeviceConfig = {},
             onDeviceAction = {},
             onNavigateToSettings = {},
+            onRequestBluetoothPermission = {},
         )
     }
 }
@@ -480,7 +573,7 @@ private fun ManagedDevicesScreenEmptyPreview() {
 private fun ManagedDevicesScreenPermissionPreview() {
     PreviewWrapper {
         ManagedDevicesScreen(
-            state = ManagedDevicesViewModel.State(
+            state = DevicesViewModel.State(
                 devices = emptyList(),
                 isBluetoothEnabled = false,
                 isProVersion = true,
@@ -489,6 +582,7 @@ private fun ManagedDevicesScreenPermissionPreview() {
             onDeviceConfig = {},
             onDeviceAction = {},
             onNavigateToSettings = {},
+            onRequestBluetoothPermission = {},
         )
     }
 }
