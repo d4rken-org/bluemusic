@@ -1,12 +1,28 @@
 package eu.darken.bluemusic.devices.ui.manage
 
 import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Phone
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.twotone.Phone
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Slider
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -18,17 +34,16 @@ import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import java.text.DateFormat
-import java.util.*
+import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ManagedDeviceItem(
     device: ManagedDevice,
-    onEvent: (ManagedDevicesEvent) -> Unit,
+    onDeviceAction: (DeviceAction) -> Unit,
     onNavigateToConfig: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var showDeleteDialog by remember { mutableStateOf(false) }
     var expanded by remember { mutableStateOf(false) }
     
     Card(
@@ -74,14 +89,6 @@ fun ManagedDeviceItem(
                         )
                     }
                 }
-                
-                IconButton(onClick = { showDeleteDialog = true }) {
-                    Icon(
-                        imageVector = Icons.Default.Delete,
-                        contentDescription = stringResource(R.string.general_delete_action),
-                        tint = MaterialTheme.colorScheme.error
-                    )
-                }
             }
             
             // Volume controls when expanded
@@ -93,7 +100,7 @@ fun ManagedDeviceItem(
                     label = stringResource(R.string.audio_stream_music_label),
                     volume = device.getVolume(AudioStream.Type.MUSIC),
                     onVolumeChange = { volume ->
-                        onEvent(ManagedDevicesEvent.OnUpdateMusicVolume(device, volume))
+                        onDeviceAction(DeviceAction.AdjustVolume(device.address, AudioStream.Type.MUSIC, volume))
                     }
                 )
                 
@@ -102,7 +109,7 @@ fun ManagedDeviceItem(
                     label = stringResource(R.string.audio_stream_call_label),
                     volume = device.getVolume(AudioStream.Type.CALL),
                     onVolumeChange = { volume ->
-                        onEvent(ManagedDevicesEvent.OnUpdateCallVolume(device, volume))
+                        onDeviceAction(DeviceAction.AdjustVolume(device.address, AudioStream.Type.CALL, volume))
                     }
                 )
                 
@@ -111,7 +118,7 @@ fun ManagedDeviceItem(
                     label = stringResource(R.string.audio_stream_ring_label),
                     volume = device.getVolume(AudioStream.Type.RINGTONE),
                     onVolumeChange = { volume ->
-                        onEvent(ManagedDevicesEvent.OnUpdateRingVolume(device, volume))
+                        onDeviceAction(DeviceAction.AdjustVolume(device.address, AudioStream.Type.RINGTONE, volume))
                     }
                 )
                 
@@ -120,7 +127,7 @@ fun ManagedDeviceItem(
                     label = stringResource(R.string.audio_stream_notification_label),
                     volume = device.getVolume(AudioStream.Type.NOTIFICATION),
                     onVolumeChange = { volume ->
-                        onEvent(ManagedDevicesEvent.OnUpdateNotificationVolume(device, volume))
+                        onDeviceAction(DeviceAction.AdjustVolume(device.address, AudioStream.Type.NOTIFICATION, volume))
                     }
                 )
                 
@@ -129,7 +136,7 @@ fun ManagedDeviceItem(
                     label = stringResource(R.string.audio_stream_alarm_label),
                     volume = device.getVolume(AudioStream.Type.ALARM),
                     onVolumeChange = { volume ->
-                        onEvent(ManagedDevicesEvent.OnUpdateAlarmVolume(device, volume))
+                        onDeviceAction(DeviceAction.AdjustVolume(device.address, AudioStream.Type.ALARM, volume))
                     }
                 )
                 
@@ -144,36 +151,6 @@ fun ManagedDeviceItem(
                 }
             }
         }
-    }
-    
-    if (showDeleteDialog) {
-        AlertDialog(
-            onDismissRequest = { showDeleteDialog = false },
-            title = { Text(stringResource(R.string.managed_devices_delete_dialog_title)) },
-            text = { 
-                Text(
-                    stringResource(
-                        R.string.managed_devices_delete_dialog_message,
-                        device.label
-                    )
-                )
-            },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        onEvent(ManagedDevicesEvent.OnDeleteDevice(device))
-                        showDeleteDialog = false
-                    }
-                ) {
-                    Text(stringResource(R.string.general_delete_action))
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showDeleteDialog = false }) {
-                    Text(stringResource(R.string.general_cancel_action))
-                }
-            }
-        )
     }
 }
 
@@ -190,7 +167,7 @@ private fun VolumeControl(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                imageVector = Icons.Default.Phone,
+                imageVector = Icons.TwoTone.Phone,
                 contentDescription = null,
                 modifier = Modifier.size(20.dp),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
@@ -224,6 +201,7 @@ private fun ManagedDeviceItemPreview() {
     PreviewWrapper {
         ManagedDeviceItem(
             device = ManagedDevice(
+                alias = "This is a test device",
                 address = "00:11:22:33:44:55",
                 lastConnected = System.currentTimeMillis(),
                 musicVolume = 0.75f,
@@ -232,8 +210,8 @@ private fun ManagedDeviceItemPreview() {
                 notificationVolume = 0.6f,
                 alarmVolume = 0.9f
             ),
-            onEvent = {},
-            onNavigateToConfig = {}
+            onDeviceAction = {},
+            onNavigateToConfig = {},
         )
     }
 }

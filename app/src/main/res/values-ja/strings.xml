@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth 音量マネージャ</string>
-    <string name="description_check_out_my_apps">私が作った他のアプリをチェック!</string>
     <string name="label_settings">設定</string>
     <string name="label_about">このアプリについて</string>
     <string name="label_discord">Discord</string>

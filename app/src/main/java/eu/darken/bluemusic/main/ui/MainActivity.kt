@@ -72,7 +72,7 @@ class MainActivity : Activity2() {
     private fun Navigation(state: MainViewModel.State) {
         val start = when (state.startScreen) {
             MainViewModel.State.StartScreen.ONBOARDING -> Nav.Main.Onboarding
-            MainViewModel.State.StartScreen.HOME -> Nav.Main.Dashboard
+            MainViewModel.State.StartScreen.HOME -> Nav.Main.ManageDevices
         }
 
         val backStack = rememberNavBackStack<NavigationDestination>(start)

@@ -25,7 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import eu.darken.bluemusic.R
-import eu.darken.bluemusic.common.compose.ButlerIcon
+import eu.darken.bluemusic.common.compose.BlueMusicIcon
 import eu.darken.bluemusic.common.compose.ColoredTitleText
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
@@ -73,7 +73,7 @@ fun UpgradeScreen(
                     .padding(32.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            ButlerIcon(
+            BlueMusicIcon(
                 modifier = Modifier.padding(bottom = 8.dp),
                 size = 96.dp
             )

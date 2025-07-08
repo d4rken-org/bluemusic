@@ -16,443 +16,528 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
 import eu.darken.bluemusic.common.compose.SampleContent
 import eu.darken.bluemusic.common.hasApiLevel
-import eu.darken.bluemusic.common.theming.BlueMusicColors.backgroundDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.backgroundDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.backgroundDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.backgroundLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.backgroundLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.backgroundLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.errorContainerDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.errorContainerDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.errorContainerDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.errorContainerLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.errorContainerLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.errorContainerLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.errorDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.errorDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.errorDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.errorLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.errorLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.errorLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inverseOnSurfaceDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inverseOnSurfaceDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inverseOnSurfaceDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inverseOnSurfaceLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inverseOnSurfaceLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inverseOnSurfaceLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inversePrimaryDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inversePrimaryDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inversePrimaryDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inversePrimaryLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inversePrimaryLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inversePrimaryLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inverseSurfaceDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inverseSurfaceDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inverseSurfaceDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inverseSurfaceLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inverseSurfaceLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.inverseSurfaceLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onBackgroundDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onBackgroundDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onBackgroundDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onBackgroundLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onBackgroundLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onBackgroundLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onErrorContainerDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onErrorContainerDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onErrorContainerDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onErrorContainerLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onErrorContainerLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onErrorContainerLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onErrorDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onErrorDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onErrorDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onErrorLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onErrorLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onErrorLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onPrimaryContainerDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onPrimaryContainerDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onPrimaryContainerDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onPrimaryContainerLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onPrimaryContainerLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onPrimaryContainerLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onPrimaryDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onPrimaryDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onPrimaryDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onPrimaryLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onPrimaryLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onPrimaryLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSecondaryContainerDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSecondaryContainerDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSecondaryContainerDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSecondaryContainerLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSecondaryContainerLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSecondaryContainerLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSecondaryDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSecondaryDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSecondaryDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSecondaryLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSecondaryLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSecondaryLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSurfaceDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSurfaceDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSurfaceDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSurfaceLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSurfaceLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSurfaceLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSurfaceVariantDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSurfaceVariantDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSurfaceVariantDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSurfaceVariantLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSurfaceVariantLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onSurfaceVariantLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onTertiaryContainerDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onTertiaryContainerDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onTertiaryContainerDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onTertiaryContainerLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onTertiaryContainerLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onTertiaryContainerLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onTertiaryDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onTertiaryDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onTertiaryDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onTertiaryLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onTertiaryLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.onTertiaryLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.outlineDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.outlineDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.outlineDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.outlineLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.outlineLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.outlineLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.outlineVariantDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.outlineVariantDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.outlineVariantDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.outlineVariantLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.outlineVariantLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.outlineVariantLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.primaryContainerDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.primaryContainerDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.primaryContainerDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.primaryContainerLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.primaryContainerLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.primaryContainerLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.primaryDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.primaryDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.primaryDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.primaryLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.primaryLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.primaryLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.scrimDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.scrimDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.scrimDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.scrimLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.scrimLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.scrimLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.secondaryContainerDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.secondaryContainerDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.secondaryContainerDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.secondaryContainerLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.secondaryContainerLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.secondaryContainerLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.secondaryDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.secondaryDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.secondaryDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.secondaryLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.secondaryLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.secondaryLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceBrightDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceBrightDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceBrightDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceBrightLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceBrightLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceBrightLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerHighDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerHighDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerHighDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerHighLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerHighLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerHighLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerHighestDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerHighestDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerHighestDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerHighestLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerHighestLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerHighestLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLowDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLowDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLowDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLowLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLowLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLowLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLowestDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLowestDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLowestDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLowestLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLowestLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceContainerLowestLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceDimDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceDimDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceDimDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceDimLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceDimLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceDimLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceVariantDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceVariantDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceVariantDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceVariantLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceVariantLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.surfaceVariantLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryContainerDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryContainerDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryContainerDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryContainerLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryContainerLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryContainerLightMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryDark
-import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryDarkHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryDarkMediumContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryLight
-import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryLightHighContrast
-import eu.darken.bluemusic.common.theming.BlueMusicColors.tertiaryLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.BackgroundDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.BackgroundDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.BackgroundDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.BackgroundLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.BackgroundLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.BackgroundLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ErrorContainerDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ErrorContainerDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ErrorContainerDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ErrorContainerLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ErrorContainerLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ErrorContainerLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ErrorDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ErrorDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ErrorDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ErrorLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ErrorLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ErrorLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InverseOnSurfaceDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InverseOnSurfaceDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InverseOnSurfaceDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InverseOnSurfaceLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InverseOnSurfaceLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InverseOnSurfaceLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InversePrimaryDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InversePrimaryDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InversePrimaryDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InversePrimaryLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InversePrimaryLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InversePrimaryLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InverseSurfaceDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InverseSurfaceDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InverseSurfaceDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InverseSurfaceLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InverseSurfaceLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.InverseSurfaceLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnBackgroundDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnBackgroundDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnBackgroundDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnBackgroundLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnBackgroundLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnBackgroundLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnErrorContainerDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnErrorContainerDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnErrorContainerDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnErrorContainerLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnErrorContainerLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnErrorContainerLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnErrorDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnErrorDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnErrorDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnErrorLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnErrorLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnErrorLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnPrimaryContainerDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnPrimaryContainerDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnPrimaryContainerDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnPrimaryContainerLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnPrimaryContainerLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnPrimaryContainerLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnPrimaryDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnPrimaryDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnPrimaryDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnPrimaryLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnPrimaryLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnPrimaryLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSecondaryContainerDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSecondaryContainerDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSecondaryContainerDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSecondaryContainerLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSecondaryContainerLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSecondaryContainerLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSecondaryDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSecondaryDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSecondaryDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSecondaryLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSecondaryLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSecondaryLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSurfaceDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSurfaceDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSurfaceDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSurfaceLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSurfaceLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSurfaceLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSurfaceVariantDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSurfaceVariantDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSurfaceVariantDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSurfaceVariantLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSurfaceVariantLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnSurfaceVariantLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnTertiaryContainerDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnTertiaryContainerDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnTertiaryContainerDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnTertiaryContainerLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnTertiaryContainerLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnTertiaryContainerLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnTertiaryDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnTertiaryDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnTertiaryDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnTertiaryLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnTertiaryLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OnTertiaryLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OutlineDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OutlineDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OutlineDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OutlineLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OutlineLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OutlineLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OutlineVariantDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OutlineVariantDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OutlineVariantDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OutlineVariantLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OutlineVariantLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.OutlineVariantLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.PrimaryContainerDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.PrimaryContainerDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.PrimaryContainerDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.PrimaryContainerLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.PrimaryContainerLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.PrimaryContainerLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.PrimaryDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.PrimaryDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.PrimaryDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.PrimaryLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.PrimaryLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.PrimaryLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ScrimDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ScrimDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ScrimDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ScrimLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ScrimLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.ScrimLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SecondaryContainerDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SecondaryContainerDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SecondaryContainerDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SecondaryContainerLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SecondaryContainerLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SecondaryContainerLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SecondaryDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SecondaryDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SecondaryDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SecondaryLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SecondaryLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SecondaryLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceBrightDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceBrightDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceBrightDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceBrightLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceBrightLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceBrightLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerHighDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerHighDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerHighDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerHighLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerHighLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerHighLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerHighestDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerHighestDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerHighestDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerHighestLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerHighestLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerHighestLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLowDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLowDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLowDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLowLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLowLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLowLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLowestDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLowestDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLowestDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLowestLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLowestLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceContainerLowestLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceDimDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceDimDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceDimDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceDimLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceDimLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceDimLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceTintDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceTintDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceTintDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceTintLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceTintLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceTintLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceVariantDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceVariantDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceVariantDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceVariantLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceVariantLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.SurfaceVariantLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.TertiaryContainerDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.TertiaryContainerDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.TertiaryContainerDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.TertiaryContainerLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.TertiaryContainerLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.TertiaryContainerLightMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.TertiaryDark
+import eu.darken.bluemusic.common.theming.BlueMusicColors.TertiaryDarkHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.TertiaryDarkMediumContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.TertiaryLight
+import eu.darken.bluemusic.common.theming.BlueMusicColors.TertiaryLightHighContrast
+import eu.darken.bluemusic.common.theming.BlueMusicColors.TertiaryLightMediumContrast
 
-private val lightScheme = lightColorScheme(
-    primary = primaryLight,
-    onPrimary = onPrimaryLight,
-    primaryContainer = primaryContainerLight,
-    onPrimaryContainer = onPrimaryContainerLight,
-    secondary = secondaryLight,
-    onSecondary = onSecondaryLight,
-    secondaryContainer = secondaryContainerLight,
-    onSecondaryContainer = onSecondaryContainerLight,
-    tertiary = tertiaryLight,
-    onTertiary = onTertiaryLight,
-    tertiaryContainer = tertiaryContainerLight,
-    onTertiaryContainer = onTertiaryContainerLight,
-    error = errorLight,
-    onError = onErrorLight,
-    errorContainer = errorContainerLight,
-    onErrorContainer = onErrorContainerLight,
-    background = backgroundLight,
-    onBackground = onBackgroundLight,
-    surface = surfaceLight,
-    onSurface = onSurfaceLight,
-    surfaceVariant = surfaceVariantLight,
-    onSurfaceVariant = onSurfaceVariantLight,
-    outline = outlineLight,
-    outlineVariant = outlineVariantLight,
-    scrim = scrimLight,
-    inverseSurface = inverseSurfaceLight,
-    inverseOnSurface = inverseOnSurfaceLight,
-    inversePrimary = inversePrimaryLight,
-    surfaceDim = surfaceDimLight,
-    surfaceBright = surfaceBrightLight,
-    surfaceContainerLowest = surfaceContainerLowestLight,
-    surfaceContainerLow = surfaceContainerLowLight,
-    surfaceContainer = surfaceContainerLight,
-    surfaceContainerHigh = surfaceContainerHighLight,
-    surfaceContainerHighest = surfaceContainerHighestLight,
+private val lightColorScheme = lightColorScheme(
+    primary = PrimaryLight,
+    onPrimary = OnPrimaryLight,
+    primaryContainer = PrimaryContainerLight,
+    onPrimaryContainer = OnPrimaryContainerLight,
+    inversePrimary = InversePrimaryLight,
+    secondary = SecondaryLight,
+    onSecondary = OnSecondaryLight,
+    secondaryContainer = SecondaryContainerLight,
+    onSecondaryContainer = OnSecondaryContainerLight,
+    tertiary = TertiaryLight,
+    onTertiary = OnTertiaryLight,
+    tertiaryContainer = TertiaryContainerLight,
+    onTertiaryContainer = OnTertiaryContainerLight,
+    background = BackgroundLight,
+    onBackground = OnBackgroundLight,
+    surface = SurfaceLight,
+    onSurface = OnSurfaceLight,
+    surfaceVariant = SurfaceVariantLight,
+    onSurfaceVariant = OnSurfaceVariantLight,
+    surfaceTint = SurfaceTintLight,
+    inverseSurface = InverseSurfaceLight,
+    inverseOnSurface = InverseOnSurfaceLight,
+    error = ErrorLight,
+    onError = OnErrorLight,
+    errorContainer = ErrorContainerLight,
+    onErrorContainer = OnErrorContainerLight,
+    outline = OutlineLight,
+    outlineVariant = OutlineVariantLight,
+    scrim = ScrimLight,
+    surfaceBright = SurfaceBrightLight,
+    surfaceContainer = SurfaceContainerLight,
+    surfaceContainerHigh = SurfaceContainerHighLight,
+    surfaceContainerHighest = SurfaceContainerHighestLight,
+    surfaceContainerLow = SurfaceContainerLowLight,
+    surfaceContainerLowest = SurfaceContainerLowestLight,
+    surfaceDim = SurfaceDimLight,
+//    primaryFixed = PrimaryFixed,
+//    primaryFixedDim = PrimaryFixedDim,
+//    onPrimaryFixed = OnPrimaryFixed,
+//    onPrimaryFixedVariant = OnPrimaryFixedVariant,
+//    secondaryFixed = SecondaryFixed,
+//    secondaryFixedDim = SecondaryFixedDim,
+//    onSecondaryFixed = OnSecondaryFixed,
+//    onSecondaryFixedVariant = OnSecondaryFixedVariant,
+//    tertiaryFixed = TertiaryFixed,
+//    tertiaryFixedDim = TertiaryFixedDim,
+//    onTertiaryFixed = OnTertiaryFixed,
+//    onTertiaryFixedVariant = OnTertiaryFixedVariant,
 )
 
-private val darkScheme = darkColorScheme(
-    primary = primaryDark,
-    onPrimary = onPrimaryDark,
-    primaryContainer = primaryContainerDark,
-    onPrimaryContainer = onPrimaryContainerDark,
-    secondary = secondaryDark,
-    onSecondary = onSecondaryDark,
-    secondaryContainer = secondaryContainerDark,
-    onSecondaryContainer = onSecondaryContainerDark,
-    tertiary = tertiaryDark,
-    onTertiary = onTertiaryDark,
-    tertiaryContainer = tertiaryContainerDark,
-    onTertiaryContainer = onTertiaryContainerDark,
-    error = errorDark,
-    onError = onErrorDark,
-    errorContainer = errorContainerDark,
-    onErrorContainer = onErrorContainerDark,
-    background = backgroundDark,
-    onBackground = onBackgroundDark,
-    surface = surfaceDark,
-    onSurface = onSurfaceDark,
-    surfaceVariant = surfaceVariantDark,
-    onSurfaceVariant = onSurfaceVariantDark,
-    outline = outlineDark,
-    outlineVariant = outlineVariantDark,
-    scrim = scrimDark,
-    inverseSurface = inverseSurfaceDark,
-    inverseOnSurface = inverseOnSurfaceDark,
-    inversePrimary = inversePrimaryDark,
-    surfaceDim = surfaceDimDark,
-    surfaceBright = surfaceBrightDark,
-    surfaceContainerLowest = surfaceContainerLowestDark,
-    surfaceContainerLow = surfaceContainerLowDark,
-    surfaceContainer = surfaceContainerDark,
-    surfaceContainerHigh = surfaceContainerHighDark,
-    surfaceContainerHighest = surfaceContainerHighestDark,
+private val darkColorScheme = darkColorScheme(
+    primary = PrimaryDark,
+    onPrimary = OnPrimaryDark,
+    primaryContainer = PrimaryContainerDark,
+    onPrimaryContainer = OnPrimaryContainerDark,
+    inversePrimary = InversePrimaryDark,
+    secondary = SecondaryDark,
+    onSecondary = OnSecondaryDark,
+    secondaryContainer = SecondaryContainerDark,
+    onSecondaryContainer = OnSecondaryContainerDark,
+    tertiary = TertiaryDark,
+    onTertiary = OnTertiaryDark,
+    tertiaryContainer = TertiaryContainerDark,
+    onTertiaryContainer = OnTertiaryContainerDark,
+    background = BackgroundDark,
+    onBackground = OnBackgroundDark,
+    surface = SurfaceDark,
+    onSurface = OnSurfaceDark,
+    surfaceVariant = SurfaceVariantDark,
+    onSurfaceVariant = OnSurfaceVariantDark,
+    surfaceTint = SurfaceTintDark,
+    inverseSurface = InverseSurfaceDark,
+    inverseOnSurface = InverseOnSurfaceDark,
+    error = ErrorDark,
+    onError = OnErrorDark,
+    errorContainer = ErrorContainerDark,
+    onErrorContainer = OnErrorContainerDark,
+    outline = OutlineDark,
+    outlineVariant = OutlineVariantDark,
+    scrim = ScrimDark,
+    surfaceBright = SurfaceBrightDark,
+    surfaceContainer = SurfaceContainerDark,
+    surfaceContainerHigh = SurfaceContainerHighDark,
+    surfaceContainerHighest = SurfaceContainerHighestDark,
+    surfaceContainerLow = SurfaceContainerLowDark,
+    surfaceContainerLowest = SurfaceContainerLowestDark,
+    surfaceDim = SurfaceDimDark,
+//    primaryFixed = PrimaryFixed,
+//    primaryFixedDim = PrimaryFixedDim,
+//    onPrimaryFixed = OnPrimaryFixed,
+//    onPrimaryFixedVariant = OnPrimaryFixedVariant,
+//    secondaryFixed = SecondaryFixed,
+//    secondaryFixedDim = SecondaryFixedDim,
+//    onSecondaryFixed = OnSecondaryFixed,
+//    onSecondaryFixedVariant = OnSecondaryFixedVariant,
+//    tertiaryFixed = TertiaryFixed,
+//    tertiaryFixedDim = TertiaryFixedDim,
+//    onTertiaryFixed = OnTertiaryFixed,
+//    onTertiaryFixedVariant = OnTertiaryFixedVariant,
 )
 
 private val mediumContrastLightColorScheme = lightColorScheme(
-    primary = primaryLightMediumContrast,
-    onPrimary = onPrimaryLightMediumContrast,
-    primaryContainer = primaryContainerLightMediumContrast,
-    onPrimaryContainer = onPrimaryContainerLightMediumContrast,
-    secondary = secondaryLightMediumContrast,
-    onSecondary = onSecondaryLightMediumContrast,
-    secondaryContainer = secondaryContainerLightMediumContrast,
-    onSecondaryContainer = onSecondaryContainerLightMediumContrast,
-    tertiary = tertiaryLightMediumContrast,
-    onTertiary = onTertiaryLightMediumContrast,
-    tertiaryContainer = tertiaryContainerLightMediumContrast,
-    onTertiaryContainer = onTertiaryContainerLightMediumContrast,
-    error = errorLightMediumContrast,
-    onError = onErrorLightMediumContrast,
-    errorContainer = errorContainerLightMediumContrast,
-    onErrorContainer = onErrorContainerLightMediumContrast,
-    background = backgroundLightMediumContrast,
-    onBackground = onBackgroundLightMediumContrast,
-    surface = surfaceLightMediumContrast,
-    onSurface = onSurfaceLightMediumContrast,
-    surfaceVariant = surfaceVariantLightMediumContrast,
-    onSurfaceVariant = onSurfaceVariantLightMediumContrast,
-    outline = outlineLightMediumContrast,
-    outlineVariant = outlineVariantLightMediumContrast,
-    scrim = scrimLightMediumContrast,
-    inverseSurface = inverseSurfaceLightMediumContrast,
-    inverseOnSurface = inverseOnSurfaceLightMediumContrast,
-    inversePrimary = inversePrimaryLightMediumContrast,
-    surfaceDim = surfaceDimLightMediumContrast,
-    surfaceBright = surfaceBrightLightMediumContrast,
-    surfaceContainerLowest = surfaceContainerLowestLightMediumContrast,
-    surfaceContainerLow = surfaceContainerLowLightMediumContrast,
-    surfaceContainer = surfaceContainerLightMediumContrast,
-    surfaceContainerHigh = surfaceContainerHighLightMediumContrast,
-    surfaceContainerHighest = surfaceContainerHighestLightMediumContrast,
-)
-
-private val highContrastLightColorScheme = lightColorScheme(
-    primary = primaryLightHighContrast,
-    onPrimary = onPrimaryLightHighContrast,
-    primaryContainer = primaryContainerLightHighContrast,
-    onPrimaryContainer = onPrimaryContainerLightHighContrast,
-    secondary = secondaryLightHighContrast,
-    onSecondary = onSecondaryLightHighContrast,
-    secondaryContainer = secondaryContainerLightHighContrast,
-    onSecondaryContainer = onSecondaryContainerLightHighContrast,
-    tertiary = tertiaryLightHighContrast,
-    onTertiary = onTertiaryLightHighContrast,
-    tertiaryContainer = tertiaryContainerLightHighContrast,
-    onTertiaryContainer = onTertiaryContainerLightHighContrast,
-    error = errorLightHighContrast,
-    onError = onErrorLightHighContrast,
-    errorContainer = errorContainerLightHighContrast,
-    onErrorContainer = onErrorContainerLightHighContrast,
-    background = backgroundLightHighContrast,
-    onBackground = onBackgroundLightHighContrast,
-    surface = surfaceLightHighContrast,
-    onSurface = onSurfaceLightHighContrast,
-    surfaceVariant = surfaceVariantLightHighContrast,
-    onSurfaceVariant = onSurfaceVariantLightHighContrast,
-    outline = outlineLightHighContrast,
-    outlineVariant = outlineVariantLightHighContrast,
-    scrim = scrimLightHighContrast,
-    inverseSurface = inverseSurfaceLightHighContrast,
-    inverseOnSurface = inverseOnSurfaceLightHighContrast,
-    inversePrimary = inversePrimaryLightHighContrast,
-    surfaceDim = surfaceDimLightHighContrast,
-    surfaceBright = surfaceBrightLightHighContrast,
-    surfaceContainerLowest = surfaceContainerLowestLightHighContrast,
-    surfaceContainerLow = surfaceContainerLowLightHighContrast,
-    surfaceContainer = surfaceContainerLightHighContrast,
-    surfaceContainerHigh = surfaceContainerHighLightHighContrast,
-    surfaceContainerHighest = surfaceContainerHighestLightHighContrast,
+    primary = PrimaryLightMediumContrast,
+    onPrimary = OnPrimaryLightMediumContrast,
+    primaryContainer = PrimaryContainerLightMediumContrast,
+    onPrimaryContainer = OnPrimaryContainerLightMediumContrast,
+    inversePrimary = InversePrimaryLightMediumContrast,
+    secondary = SecondaryLightMediumContrast,
+    onSecondary = OnSecondaryLightMediumContrast,
+    secondaryContainer = SecondaryContainerLightMediumContrast,
+    onSecondaryContainer = OnSecondaryContainerLightMediumContrast,
+    tertiary = TertiaryLightMediumContrast,
+    onTertiary = OnTertiaryLightMediumContrast,
+    tertiaryContainer = TertiaryContainerLightMediumContrast,
+    onTertiaryContainer = OnTertiaryContainerLightMediumContrast,
+    background = BackgroundLightMediumContrast,
+    onBackground = OnBackgroundLightMediumContrast,
+    surface = SurfaceLightMediumContrast,
+    onSurface = OnSurfaceLightMediumContrast,
+    surfaceVariant = SurfaceVariantLightMediumContrast,
+    onSurfaceVariant = OnSurfaceVariantLightMediumContrast,
+    surfaceTint = SurfaceTintLightMediumContrast,
+    inverseSurface = InverseSurfaceLightMediumContrast,
+    inverseOnSurface = InverseOnSurfaceLightMediumContrast,
+    error = ErrorLightMediumContrast,
+    onError = OnErrorLightMediumContrast,
+    errorContainer = ErrorContainerLightMediumContrast,
+    onErrorContainer = OnErrorContainerLightMediumContrast,
+    outline = OutlineLightMediumContrast,
+    outlineVariant = OutlineVariantLightMediumContrast,
+    scrim = ScrimLightMediumContrast,
+    surfaceBright = SurfaceBrightLightMediumContrast,
+    surfaceContainer = SurfaceContainerLightMediumContrast,
+    surfaceContainerHigh = SurfaceContainerHighLightMediumContrast,
+    surfaceContainerHighest = SurfaceContainerHighestLightMediumContrast,
+    surfaceContainerLow = SurfaceContainerLowLightMediumContrast,
+    surfaceContainerLowest = SurfaceContainerLowestLightMediumContrast,
+    surfaceDim = SurfaceDimLightMediumContrast,
+//    primaryFixed = PrimaryFixedMediumContrast,
+//    primaryFixedDim = PrimaryFixedDimMediumContrast,
+//    onPrimaryFixed = OnPrimaryFixedMediumContrast,
+//    onPrimaryFixedVariant = OnPrimaryFixedVariantMediumContrast,
+//    secondaryFixed = SecondaryFixedMediumContrast,
+//    secondaryFixedDim = SecondaryFixedDimMediumContrast,
+//    onSecondaryFixed = OnSecondaryFixedMediumContrast,
+//    onSecondaryFixedVariant = OnSecondaryFixedVariantMediumContrast,
+//    tertiaryFixed = TertiaryFixedMediumContrast,
+//    tertiaryFixedDim = TertiaryFixedDimMediumContrast,
+//    onTertiaryFixed = OnTertiaryFixedMediumContrast,
+//    onTertiaryFixedVariant = OnTertiaryFixedVariantMediumContrast,
 )
 
 private val mediumContrastDarkColorScheme = darkColorScheme(
-    primary = primaryDarkMediumContrast,
-    onPrimary = onPrimaryDarkMediumContrast,
-    primaryContainer = primaryContainerDarkMediumContrast,
-    onPrimaryContainer = onPrimaryContainerDarkMediumContrast,
-    secondary = secondaryDarkMediumContrast,
-    onSecondary = onSecondaryDarkMediumContrast,
-    secondaryContainer = secondaryContainerDarkMediumContrast,
-    onSecondaryContainer = onSecondaryContainerDarkMediumContrast,
-    tertiary = tertiaryDarkMediumContrast,
-    onTertiary = onTertiaryDarkMediumContrast,
-    tertiaryContainer = tertiaryContainerDarkMediumContrast,
-    onTertiaryContainer = onTertiaryContainerDarkMediumContrast,
-    error = errorDarkMediumContrast,
-    onError = onErrorDarkMediumContrast,
-    errorContainer = errorContainerDarkMediumContrast,
-    onErrorContainer = onErrorContainerDarkMediumContrast,
-    background = backgroundDarkMediumContrast,
-    onBackground = onBackgroundDarkMediumContrast,
-    surface = surfaceDarkMediumContrast,
-    onSurface = onSurfaceDarkMediumContrast,
-    surfaceVariant = surfaceVariantDarkMediumContrast,
-    onSurfaceVariant = onSurfaceVariantDarkMediumContrast,
-    outline = outlineDarkMediumContrast,
-    outlineVariant = outlineVariantDarkMediumContrast,
-    scrim = scrimDarkMediumContrast,
-    inverseSurface = inverseSurfaceDarkMediumContrast,
-    inverseOnSurface = inverseOnSurfaceDarkMediumContrast,
-    inversePrimary = inversePrimaryDarkMediumContrast,
-    surfaceDim = surfaceDimDarkMediumContrast,
-    surfaceBright = surfaceBrightDarkMediumContrast,
-    surfaceContainerLowest = surfaceContainerLowestDarkMediumContrast,
-    surfaceContainerLow = surfaceContainerLowDarkMediumContrast,
-    surfaceContainer = surfaceContainerDarkMediumContrast,
-    surfaceContainerHigh = surfaceContainerHighDarkMediumContrast,
-    surfaceContainerHighest = surfaceContainerHighestDarkMediumContrast,
+    primary = PrimaryDarkMediumContrast,
+    onPrimary = OnPrimaryDarkMediumContrast,
+    primaryContainer = PrimaryContainerDarkMediumContrast,
+    onPrimaryContainer = OnPrimaryContainerDarkMediumContrast,
+    inversePrimary = InversePrimaryDarkMediumContrast,
+    secondary = SecondaryDarkMediumContrast,
+    onSecondary = OnSecondaryDarkMediumContrast,
+    secondaryContainer = SecondaryContainerDarkMediumContrast,
+    onSecondaryContainer = OnSecondaryContainerDarkMediumContrast,
+    tertiary = TertiaryDarkMediumContrast,
+    onTertiary = OnTertiaryDarkMediumContrast,
+    tertiaryContainer = TertiaryContainerDarkMediumContrast,
+    onTertiaryContainer = OnTertiaryContainerDarkMediumContrast,
+    background = BackgroundDarkMediumContrast,
+    onBackground = OnBackgroundDarkMediumContrast,
+    surface = SurfaceDarkMediumContrast,
+    onSurface = OnSurfaceDarkMediumContrast,
+    surfaceVariant = SurfaceVariantDarkMediumContrast,
+    onSurfaceVariant = OnSurfaceVariantDarkMediumContrast,
+    surfaceTint = SurfaceTintDarkMediumContrast,
+    inverseSurface = InverseSurfaceDarkMediumContrast,
+    inverseOnSurface = InverseOnSurfaceDarkMediumContrast,
+    error = ErrorDarkMediumContrast,
+    onError = OnErrorDarkMediumContrast,
+    errorContainer = ErrorContainerDarkMediumContrast,
+    onErrorContainer = OnErrorContainerDarkMediumContrast,
+    outline = OutlineDarkMediumContrast,
+    outlineVariant = OutlineVariantDarkMediumContrast,
+    scrim = ScrimDarkMediumContrast,
+    surfaceBright = SurfaceBrightDarkMediumContrast,
+    surfaceContainer = SurfaceContainerDarkMediumContrast,
+    surfaceContainerHigh = SurfaceContainerHighDarkMediumContrast,
+    surfaceContainerHighest = SurfaceContainerHighestDarkMediumContrast,
+    surfaceContainerLow = SurfaceContainerLowDarkMediumContrast,
+    surfaceContainerLowest = SurfaceContainerLowestDarkMediumContrast,
+    surfaceDim = SurfaceDimDarkMediumContrast,
+//    primaryFixed = PrimaryFixedMediumContrast,
+//    primaryFixedDim = PrimaryFixedDimMediumContrast,
+//    onPrimaryFixed = OnPrimaryFixedMediumContrast,
+//    onPrimaryFixedVariant = OnPrimaryFixedVariantMediumContrast,
+//    secondaryFixed = SecondaryFixedMediumContrast,
+//    secondaryFixedDim = SecondaryFixedDimMediumContrast,
+//    onSecondaryFixed = OnSecondaryFixedMediumContrast,
+//    onSecondaryFixedVariant = OnSecondaryFixedVariantMediumContrast,
+//    tertiaryFixed = TertiaryFixedMediumContrast,
+//    tertiaryFixedDim = TertiaryFixedDimMediumContrast,
+//    onTertiaryFixed = OnTertiaryFixedMediumContrast,
+//    onTertiaryFixedVariant = OnTertiaryFixedVariantMediumContrast,
+)
+
+
+private val highContrastLightColorScheme = lightColorScheme(
+    primary = PrimaryLightHighContrast,
+    onPrimary = OnPrimaryLightHighContrast,
+    primaryContainer = PrimaryContainerLightHighContrast,
+    onPrimaryContainer = OnPrimaryContainerLightHighContrast,
+    inversePrimary = InversePrimaryLightHighContrast,
+    secondary = SecondaryLightHighContrast,
+    onSecondary = OnSecondaryLightHighContrast,
+    secondaryContainer = SecondaryContainerLightHighContrast,
+    onSecondaryContainer = OnSecondaryContainerLightHighContrast,
+    tertiary = TertiaryLightHighContrast,
+    onTertiary = OnTertiaryLightHighContrast,
+    tertiaryContainer = TertiaryContainerLightHighContrast,
+    onTertiaryContainer = OnTertiaryContainerLightHighContrast,
+    background = BackgroundLightHighContrast,
+    onBackground = OnBackgroundLightHighContrast,
+    surface = SurfaceLightHighContrast,
+    onSurface = OnSurfaceLightHighContrast,
+    surfaceVariant = SurfaceVariantLightHighContrast,
+    onSurfaceVariant = OnSurfaceVariantLightHighContrast,
+    surfaceTint = SurfaceTintLightHighContrast,
+    inverseSurface = InverseSurfaceLightHighContrast,
+    inverseOnSurface = InverseOnSurfaceLightHighContrast,
+    error = ErrorLightHighContrast,
+    onError = OnErrorLightHighContrast,
+    errorContainer = ErrorContainerLightHighContrast,
+    onErrorContainer = OnErrorContainerLightHighContrast,
+    outline = OutlineLightHighContrast,
+    outlineVariant = OutlineVariantLightHighContrast,
+    scrim = ScrimLightHighContrast,
+    surfaceBright = SurfaceBrightLightHighContrast,
+    surfaceContainer = SurfaceContainerLightHighContrast,
+    surfaceContainerHigh = SurfaceContainerHighLightHighContrast,
+    surfaceContainerHighest = SurfaceContainerHighestLightHighContrast,
+    surfaceContainerLow = SurfaceContainerLowLightHighContrast,
+    surfaceContainerLowest = SurfaceContainerLowestLightHighContrast,
+    surfaceDim = SurfaceDimLightHighContrast,
+//    primaryFixed = PrimaryFixedHighContrast,
+//    primaryFixedDim = PrimaryFixedDimHighContrast,
+//    onPrimaryFixed = OnPrimaryFixedHighContrast,
+//    onPrimaryFixedVariant = OnPrimaryFixedVariantHighContrast,
+//    secondaryFixed = SecondaryFixedHighContrast,
+//    secondaryFixedDim = SecondaryFixedDimHighContrast,
+//    onSecondaryFixed = OnSecondaryFixedHighContrast,
+//    onSecondaryFixedVariant = OnSecondaryFixedVariantHighContrast,
+//    tertiaryFixed = TertiaryFixedHighContrast,
+//    tertiaryFixedDim = TertiaryFixedDimHighContrast,
+//    onTertiaryFixed = OnTertiaryFixedHighContrast,
+//    onTertiaryFixedVariant = OnTertiaryFixedVariantHighContrast,
 )
 
 private val highContrastDarkColorScheme = darkColorScheme(
-    primary = primaryDarkHighContrast,
-    onPrimary = onPrimaryDarkHighContrast,
-    primaryContainer = primaryContainerDarkHighContrast,
-    onPrimaryContainer = onPrimaryContainerDarkHighContrast,
-    secondary = secondaryDarkHighContrast,
-    onSecondary = onSecondaryDarkHighContrast,
-    secondaryContainer = secondaryContainerDarkHighContrast,
-    onSecondaryContainer = onSecondaryContainerDarkHighContrast,
-    tertiary = tertiaryDarkHighContrast,
-    onTertiary = onTertiaryDarkHighContrast,
-    tertiaryContainer = tertiaryContainerDarkHighContrast,
-    onTertiaryContainer = onTertiaryContainerDarkHighContrast,
-    error = errorDarkHighContrast,
-    onError = onErrorDarkHighContrast,
-    errorContainer = errorContainerDarkHighContrast,
-    onErrorContainer = onErrorContainerDarkHighContrast,
-    background = backgroundDarkHighContrast,
-    onBackground = onBackgroundDarkHighContrast,
-    surface = surfaceDarkHighContrast,
-    onSurface = onSurfaceDarkHighContrast,
-    surfaceVariant = surfaceVariantDarkHighContrast,
-    onSurfaceVariant = onSurfaceVariantDarkHighContrast,
-    outline = outlineDarkHighContrast,
-    outlineVariant = outlineVariantDarkHighContrast,
-    scrim = scrimDarkHighContrast,
-    inverseSurface = inverseSurfaceDarkHighContrast,
-    inverseOnSurface = inverseOnSurfaceDarkHighContrast,
-    inversePrimary = inversePrimaryDarkHighContrast,
-    surfaceDim = surfaceDimDarkHighContrast,
-    surfaceBright = surfaceBrightDarkHighContrast,
-    surfaceContainerLowest = surfaceContainerLowestDarkHighContrast,
-    surfaceContainerLow = surfaceContainerLowDarkHighContrast,
-    surfaceContainer = surfaceContainerDarkHighContrast,
-    surfaceContainerHigh = surfaceContainerHighDarkHighContrast,
-    surfaceContainerHighest = surfaceContainerHighestDarkHighContrast,
+    primary = PrimaryDarkHighContrast,
+    onPrimary = OnPrimaryDarkHighContrast,
+    primaryContainer = PrimaryContainerDarkHighContrast,
+    onPrimaryContainer = OnPrimaryContainerDarkHighContrast,
+    inversePrimary = InversePrimaryDarkHighContrast,
+    secondary = SecondaryDarkHighContrast,
+    onSecondary = OnSecondaryDarkHighContrast,
+    secondaryContainer = SecondaryContainerDarkHighContrast,
+    onSecondaryContainer = OnSecondaryContainerDarkHighContrast,
+    tertiary = TertiaryDarkHighContrast,
+    onTertiary = OnTertiaryDarkHighContrast,
+    tertiaryContainer = TertiaryContainerDarkHighContrast,
+    onTertiaryContainer = OnTertiaryContainerDarkHighContrast,
+    background = BackgroundDarkHighContrast,
+    onBackground = OnBackgroundDarkHighContrast,
+    surface = SurfaceDarkHighContrast,
+    onSurface = OnSurfaceDarkHighContrast,
+    surfaceVariant = SurfaceVariantDarkHighContrast,
+    onSurfaceVariant = OnSurfaceVariantDarkHighContrast,
+    surfaceTint = SurfaceTintDarkHighContrast,
+    inverseSurface = InverseSurfaceDarkHighContrast,
+    inverseOnSurface = InverseOnSurfaceDarkHighContrast,
+    error = ErrorDarkHighContrast,
+    onError = OnErrorDarkHighContrast,
+    errorContainer = ErrorContainerDarkHighContrast,
+    onErrorContainer = OnErrorContainerDarkHighContrast,
+    outline = OutlineDarkHighContrast,
+    outlineVariant = OutlineVariantDarkHighContrast,
+    scrim = ScrimDarkHighContrast,
+    surfaceBright = SurfaceBrightDarkHighContrast,
+    surfaceContainer = SurfaceContainerDarkHighContrast,
+    surfaceContainerHigh = SurfaceContainerHighDarkHighContrast,
+    surfaceContainerHighest = SurfaceContainerHighestDarkHighContrast,
+    surfaceContainerLow = SurfaceContainerLowDarkHighContrast,
+    surfaceContainerLowest = SurfaceContainerLowestDarkHighContrast,
+    surfaceDim = SurfaceDimDarkHighContrast,
+//    primaryFixed = PrimaryFixedHighContrast,
+//    primaryFixedDim = PrimaryFixedDimHighContrast,
+//    onPrimaryFixed = OnPrimaryFixedHighContrast,
+//    onPrimaryFixedVariant = OnPrimaryFixedVariantHighContrast,
+//    secondaryFixed = SecondaryFixedHighContrast,
+//    secondaryFixedDim = SecondaryFixedDimHighContrast,
+//    onSecondaryFixed = OnSecondaryFixedHighContrast,
+//    onSecondaryFixedVariant = OnSecondaryFixedVariantHighContrast,
+//    tertiaryFixed = TertiaryFixedHighContrast,
+//    tertiaryFixedDim = TertiaryFixedDimHighContrast,
+//    onTertiaryFixed = OnTertiaryFixedHighContrast,
+//    onTertiaryFixedVariant = OnTertiaryFixedVariantHighContrast,
 )
 
 @Composable
@@ -485,8 +570,8 @@ fun BlueMusicTheme(state: ThemeState = ThemeState(), content: @Composable () -> 
         state.style == ThemeStyle.MEDIUM_CONTRAST && !darkTheme -> mediumContrastLightColorScheme
         state.style == ThemeStyle.HIGH_CONTRAST && darkTheme -> highContrastDarkColorScheme
         state.style == ThemeStyle.HIGH_CONTRAST && !darkTheme -> highContrastLightColorScheme
-        darkTheme -> darkScheme
-        else -> lightScheme
+        darkTheme -> darkColorScheme
+        else -> lightColorScheme
     }
     MaterialTheme(colorScheme = colors, content = content, typography = BlueMusicTypography)
 }

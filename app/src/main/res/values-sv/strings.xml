@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="description_check_out_my_apps">Kolla in mina andra appar!</string>
     <string name="label_settings">Inställningar</string>
     <string name="label_about">Om</string>
     <string name="label_twitter">Twitter</string>

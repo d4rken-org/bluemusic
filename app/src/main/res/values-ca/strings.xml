@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
-    <string name="description_check_out_my_apps">Feu una ullada a les meves altres aplicacions!</string>
     <string name="label_settings">Configuració</string>
     <string name="label_about">Quant a</string>
     <string name="label_discord">Discord</string>

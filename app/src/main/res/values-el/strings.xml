@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Διαχειριστής Έντασης Bluetooth</string>
-    <string name="description_check_out_my_apps">Δείτε και τις άλλες εφαρμογές μου!</string>
     <string name="label_settings">Ρυθμίσεις</string>
     <string name="label_about">Σχετικά με</string>
     <string name="label_discord">Discord</string>

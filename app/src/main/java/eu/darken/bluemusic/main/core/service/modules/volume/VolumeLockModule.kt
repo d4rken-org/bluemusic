@@ -5,19 +5,16 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.devices.core.DeviceManagerFlowAdapter
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.service.modules.VolumeModule
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-import eu.darken.bluemusic.common.debug.logging.log
-import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
-import eu.darken.bluemusic.devices.core.DeviceManagerFlowAdapter
-import eu.darken.bluemusic.main.core.service.modules.EventModule
-import eu.darken.bluemusic.main.core.service.modules.events.AlarmMonitorModule
 import javax.inject.Inject
-
 import javax.inject.Singleton
 
 @Singleton
@@ -30,7 +27,7 @@ internal class VolumeLockModule @Inject constructor(
         private val TAG = logTag("VolumeLockModule")
     }
 
-    override fun handle(id: AudioStream.Id, volume: Int) {
+    override suspend fun handle(id: AudioStream.Id, volume: Int) {
         if (streamHelper.wasUs(id, volume)) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             return

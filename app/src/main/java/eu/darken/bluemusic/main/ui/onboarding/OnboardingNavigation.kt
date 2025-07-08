@@ -8,12 +8,13 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
+import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationEntry
 import javax.inject.Inject
 
 class OnboardingNavigation @Inject constructor() : NavigationEntry {
     override fun EntryProviderBuilder<NavKey>.setup() {
-        entry<OnboardingNavigation> {
+        entry<Nav.Main.Onboarding> {
             OnboardingScreenHost()
         }
     }

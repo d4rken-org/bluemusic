@@ -1,18 +1,19 @@
 package eu.darken.bluemusic.main.core.service.modules.events
 
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
+import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
-import eu.darken.bluemusic.main.core.Settings
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.service.modules.EventModule
 
 abstract class BaseVolumeModule(
-        private val settings: Settings,
-        private val streamHelper: StreamHelper
+    private val settings: DevicesSettings,
+    private val streamHelper: StreamHelper
 ) : EventModule {
 
     companion object {
@@ -21,7 +22,7 @@ abstract class BaseVolumeModule(
 
     abstract val type: AudioStream.Type
 
-    override fun handle(device: ManagedDevice, event: SourceDevice.Event) {
+    override suspend fun handle(device: ManagedDevice, event: SourceDevice.Event) {
         if (event.type != SourceDevice.Event.Type.CONNECTED) return
 
         val percentage = device.getVolume(type)
@@ -38,9 +39,9 @@ abstract class BaseVolumeModule(
             return
         }
 
-        val adjustmentDelay = device.adjustmentDelay ?: Settings.DEFAULT_ADJUSTMENT_DELAY
+        val adjustmentDelay = device.adjustmentDelay ?: DevicesSettings.DEFAULT_ADJUSTMENT_DELAY
 
-        if (streamHelper.changeVolume(device.getStreamId(type), percentage, settings.isVolumeAdjustedVisibly, adjustmentDelay)) {
+        if (streamHelper.changeVolume(device.getStreamId(type), percentage, settings.visibleAdjustments.value(), adjustmentDelay)) {
             log(TAG) { "Volume($type) adjusted volume." }
         } else if (device.nudgeVolume) {
             log(TAG) { "Volume wasn't changed, but we want to nudge it for this device." }

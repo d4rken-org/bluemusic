@@ -23,12 +23,12 @@ class AppLaunchModule @Inject constructor(
 
     override val priority: Int = 1
 
-    override fun handle(eventDevice: ManagedDevice, event: SourceDevice.Event) {
+    override suspend fun handle(device: ManagedDevice, event: SourceDevice.Event) {
         if (event.type != SourceDevice.Event.Type.CONNECTED) return
-        if (eventDevice.launchPkg == null) return
+        if (device.launchPkg == null) return
 
-        log(TAG) { "Launching app ${eventDevice.launchPkg}" }
-        appTool.launch(eventDevice.launchPkg)
+        log(TAG) { "Launching app ${device.launchPkg}" }
+        appTool.launch(device.launchPkg)
 
         try {
             Thread.sleep(1000)

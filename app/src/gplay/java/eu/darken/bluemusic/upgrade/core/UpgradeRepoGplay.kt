@@ -131,7 +131,7 @@ class UpgradeRepoGplay @Inject constructor(
 
 
     companion object {
-        private const val SITE = "https://play.google.com/store/apps/details?id=eu.darken.butler"
+        private const val SITE = "https://play.google.com/store/apps/details?id=eu.darken.bluemusic"
         val TAG: String = logTag("Upgrade", "Gplay", "Repo")
     }
 }

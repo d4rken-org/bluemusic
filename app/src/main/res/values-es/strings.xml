@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Administrador del volumen Bluetooth</string>
-    <string name="description_check_out_my_apps">¡Mira mis otras aplicaciones!</string>
     <string name="label_settings">Configuración</string>
     <string name="label_about">Acerca de</string>
     <string name="label_discord">Discord</string>

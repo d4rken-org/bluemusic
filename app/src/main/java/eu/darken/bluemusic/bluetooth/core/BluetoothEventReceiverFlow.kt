@@ -9,13 +9,18 @@ import dagger.hilt.android.AndroidEntryPoint
 import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
 import eu.darken.bluemusic.bluetooth.core.speaker.SpeakerDeviceProvider
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.common.datastore.value
+import eu.darken.bluemusic.common.datastore.valueBlocking
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceManagerFlowAdapter
+import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
-import eu.darken.bluemusic.main.core.Settings
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.service.BlueMusicServiceFlow
@@ -30,7 +35,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class BluetoothEventReceiverFlow : BroadcastReceiver() {
 
-    @Inject lateinit var settings: Settings
+    @Inject lateinit var devicesSettings: DevicesSettings
     @Inject lateinit var streamHelper: StreamHelper
     @Inject lateinit var speakerDeviceProvider: SpeakerDeviceProvider
     @Inject lateinit var deviceManager: DeviceManagerFlowAdapter
@@ -54,7 +59,7 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
         }
 
 
-        if (!settings.isEnabled) {
+        if (!devicesSettings.isEnabled.valueBlocking) {
             log(TAG, INFO) { "We are disabled." }
             return
         }
@@ -64,7 +69,7 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
         val scope = CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
         scope.launch {
             try {
-                handleEvent(context, intent, settings, streamHelper, speakerDeviceProvider.getSpeaker(), deviceManager)
+                handleEvent(context, intent, devicesSettings, streamHelper, speakerDeviceProvider.getSpeaker(), deviceManager)
             } catch (e: Exception) {
                 log(TAG, ERROR) { "Error handling bluetooth event: ${e.asLog()}" }
             } finally {
@@ -77,7 +82,7 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
     private suspend fun handleEvent(
         context: Context,
         intent: Intent,
-        settings: Settings,
+        devicesSettings: DevicesSettings,
         streamHelper: StreamHelper,
         fakeSpeakerDevice: FakeSpeakerDevice,
         deviceManager: DeviceManagerFlowAdapter
@@ -102,7 +107,7 @@ class BluetoothEventReceiverFlow : BroadcastReceiver() {
         log(TAG, DEBUG) { "Event $deviceEvent concerns device $managedDevice" }
 
         // If we are changing from speaker to bluetooth this routine tries to save the original volume
-        if (settings.isSpeakerAutoSaveEnabled &&
+        if (devicesSettings.speakerAutoSave.value() &&
             deviceEvent.address != FakeSpeakerDevice.address &&
             deviceEvent.type == SourceDevice.Event.Type.CONNECTED
         ) {

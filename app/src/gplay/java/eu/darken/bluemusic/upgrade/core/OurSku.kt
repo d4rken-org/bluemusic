@@ -5,8 +5,8 @@ import eu.darken.bluemusic.upgrade.core.billing.Sku
 @Suppress("ClassName")
 interface OurSku {
     interface Iap : OurSku {
-        object PRO_UPGRADE : Sku.Iap, Iap {
-            override val id: String = "eu.darken.butler.iap.upgrade.pro"
+        object PRO_UPGRADE_LEGACY : Sku.Iap, Iap {
+            override val id: String = "upgrade.premium"
         }
     }
 
@@ -30,6 +30,6 @@ interface OurSku {
     }
 
     companion object {
-        val PRO_SKUS = setOf(Sub.PRO_UPGRADE, Iap.PRO_UPGRADE)
+        val PRO_SKUS = setOf(Sub.PRO_UPGRADE, Iap.PRO_UPGRADE_LEGACY)
     }
 }

@@ -1,22 +1,19 @@
 package eu.darken.bluemusic.main.ui.onboarding
 
-import android.Manifest
-import android.content.Context
-import android.content.pm.PackageManager
-import androidx.core.content.ContextCompat
 import dagger.hilt.android.lifecycle.HiltViewModel
-import eu.darken.bluemusic.common.architecture.BaseViewModel
-import eu.darken.bluemusic.common.coroutine.DispatcherProvider
-import eu.darken.bluemusic.main.core.Settings
-import eu.darken.bluemusic.common.ApiHelper
+import eu.darken.bluemusic.common.BlueMusicLinks
 import eu.darken.bluemusic.common.BuildConfigWrap
 import eu.darken.bluemusic.common.WebpageTool
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.main.core.GeneralSettings
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
 
 
@@ -27,6 +24,28 @@ class OnboardingViewModel @Inject constructor(
     private val generalSettings: GeneralSettings,
     private val webpageTool: WebpageTool,
 ) : ViewModel4(dispatchers, logTag("Onboarding", "Screen", "VM"), navCtrl) {
+
+    val state = combine(
+        generalSettings.isOnboardingCompleted.flow,
+        flowOf(Unit),
+    ) { isCompleted, _ ->
+        State()
+    }.asStateFlow()
+
+    fun completeOnboarding() = launch {
+        log(tag) { "completeOnboarding()" }
+        generalSettings.isOnboardingCompleted.value(true)
+        navTo(
+            Nav.Main.ManageDevices,
+            popUpTo = Nav.Main.ManageDevices,
+            inclusive = true
+        )
+    }
+
+    fun readPrivacyPolicy() = launch {
+        log(tag) { "readPrivacyPolicy()" }
+        webpageTool.open(BlueMusicLinks.PRIVACY_POLICY)
+    }
 
     data class State(
         val startPage: Page = Page.WELCOME,

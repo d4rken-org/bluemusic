@@ -19,7 +19,7 @@ internal abstract class BaseMonitorModule(
     override val priority: Int
         get() = 20
 
-    override fun handle(device: ManagedDevice, event: SourceDevice.Event) {
+    override suspend fun handle(device: ManagedDevice, event: SourceDevice.Event) {
         if (event.type != SourceDevice.Event.Type.CONNECTED) return
 
         val percentage = device.getVolume(type)

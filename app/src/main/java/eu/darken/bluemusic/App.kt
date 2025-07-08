@@ -17,7 +17,7 @@ import eu.darken.bluemusic.devices.core.database.legacy.MigrationTool
 import eu.darken.bluemusic.devices.core.database.legacy.RealmToRoomMigrator
 import eu.darken.bluemusic.main.core.CurriculumVitae
 import eu.darken.bluemusic.main.core.GeneralSettings
-import eu.darken.bluemusic.main.core.Settings
+import eu.darken.bluemusic.main.core.LegacySettings
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import kotlinx.coroutines.CoroutineScope
@@ -35,7 +35,7 @@ class App : Application() {
     @Inject lateinit var debugSettings: DebugSettings
     @Inject lateinit var curriculumVitae: CurriculumVitae
 
-    @Inject lateinit var settings: Settings
+    @Inject lateinit var legacySettings: LegacySettings
     @Inject lateinit var realmToRoomMigrator: RealmToRoomMigrator
 
 
@@ -54,6 +54,8 @@ class App : Application() {
             .migration(migrationTool.migration)
             .build()
         Realm.setDefaultConfiguration(realmConfig)
+
+        // TODO Migrate LegacySettings
 
         // Perform data migration from Realm to Room
         appScope.launch {

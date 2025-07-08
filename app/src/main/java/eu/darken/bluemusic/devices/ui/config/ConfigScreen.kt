@@ -13,10 +13,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.twotone.Delete
+import androidx.compose.material.icons.twotone.Refresh
+import androidx.compose.material.icons.twotone.Star
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
@@ -48,8 +48,8 @@ import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
-import eu.darken.bluemusic.main.core.Settings
 import eu.darken.bluemusic.main.core.audio.AudioStream
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -90,7 +90,7 @@ fun ConfigScreen(
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(
-                            imageVector = Icons.Default.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = ""
                         )
                     }
@@ -232,7 +232,7 @@ fun ConfigScreen(
                 item {
                     ClickablePreference(
                         title = stringResource(R.string.label_reaction_delay),
-                        description = "${device.actionDelay ?: Settings.DEFAULT_REACTION_DELAY} ms",
+                        description = "${device.actionDelay ?: DevicesSettings.DEFAULT_REACTION_DELAY} ms",
                         onClick = { onEvent(ConfigEvent.OnEditReactionDelayClicked) }
                     )
                 }
@@ -240,7 +240,7 @@ fun ConfigScreen(
                 item {
                     ClickablePreference(
                         title = stringResource(R.string.label_adjustment_delay),
-                        description = "${device.adjustmentDelay ?: Settings.DEFAULT_ADJUSTMENT_DELAY} ms",
+                        description = "${device.adjustmentDelay ?: DevicesSettings.DEFAULT_ADJUSTMENT_DELAY} ms",
                         onClick = { onEvent(ConfigEvent.OnEditAdjustmentDelayClicked) }
                     )
                 }
@@ -248,7 +248,7 @@ fun ConfigScreen(
                 item {
                     ClickablePreference(
                         title = stringResource(R.string.label_monitoring_duration),
-                        description = "${device.monitoringDuration ?: Settings.DEFAULT_MONITORING_DURATION} ms",
+                        description = "${device.monitoringDuration ?: DevicesSettings.DEFAULT_MONITORING_DURATION} ms",
                         onClick = { onEvent(ConfigEvent.OnEditMonitoringDurationClicked) }
                     )
                 }
@@ -445,7 +445,7 @@ private fun TimingDialog(
     
     AlertDialog(
         onDismissRequest = onDismiss,
-        icon = { Icon(Icons.Default.Refresh, contentDescription = null) },
+        icon = { Icon(Icons.TwoTone.Refresh, contentDescription = null) },
         title = { Text(title) },
         text = {
             Column {
@@ -528,7 +528,7 @@ private fun DeleteDeviceDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        icon = { Icon(Icons.Default.Delete, contentDescription = null) },
+        icon = { Icon(Icons.TwoTone.Delete, contentDescription = null) },
         title = { Text(stringResource(R.string.action_remove_device)) },
         text = { Text("Remove $deviceName from managed devices?") },
         confirmButton = {
@@ -554,7 +554,7 @@ private fun PurchaseDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        icon = { Icon(Icons.Default.Star, contentDescription = null) },
+        icon = { Icon(Icons.TwoTone.Star, contentDescription = null) },
         title = { Text(stringResource(R.string.label_premium_version)) },
         text = { Text(stringResource(R.string.description_premium_required_this_extra_option)) },
         confirmButton = {

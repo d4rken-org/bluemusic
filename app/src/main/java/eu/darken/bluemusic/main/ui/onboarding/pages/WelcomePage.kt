@@ -1,4 +1,4 @@
-package eu.darken.butler.main.ui.onboarding.pages
+package eu.darken.bluemusic.main.ui.onboarding.pages
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,10 +19,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import eu.darken.butler.R
-import eu.darken.butler.common.compose.ButlerIcon
-import eu.darken.butler.common.compose.Preview2
-import eu.darken.butler.common.compose.PreviewWrapper
+import eu.darken.bluemusic.R
+import eu.darken.bluemusic.common.compose.BlueMusicIcon
+import eu.darken.bluemusic.common.compose.Preview2
+import eu.darken.bluemusic.common.compose.PreviewWrapper
 
 @Composable
 internal fun WelcomePage(
@@ -41,7 +41,7 @@ internal fun WelcomePage(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            ButlerIcon(
+            BlueMusicIcon(
                 modifier = Modifier.height(172.dp),
                 size = 172.dp
             )

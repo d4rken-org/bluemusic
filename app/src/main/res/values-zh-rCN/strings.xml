@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
-    <string name="description_check_out_my_apps">看看我的其他应用程序吧:-D！</string>
     <string name="label_settings">设置</string>
     <string name="label_about">关于</string>
     <string name="label_discord">Discord</string>

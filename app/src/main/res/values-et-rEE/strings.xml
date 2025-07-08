@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth Helitugevuse Haldaja</string>
-    <string name="description_check_out_my_apps">Vaadake ka minu teisi rakendusi!</string>
     <string name="label_settings">Seaded</string>
     <string name="label_about">Rakendusest</string>
     <string name="label_discord">Discord</string>

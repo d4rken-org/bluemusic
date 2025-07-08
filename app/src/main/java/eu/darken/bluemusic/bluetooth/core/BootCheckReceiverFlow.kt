@@ -6,6 +6,7 @@ import android.content.Intent
 import dagger.hilt.android.AndroidEntryPoint
 import eu.darken.bluemusic.common.EventGenerator
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.datastore.valueBlocking
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
@@ -13,7 +14,7 @@ import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepository
-import eu.darken.bluemusic.main.core.Settings
+import eu.darken.bluemusic.devices.core.DevicesSettings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
@@ -29,8 +30,8 @@ class BootCheckReceiverFlow : BroadcastReceiver() {
         private val TAG = logTag("BootCheckReceiverFlow")
     }
 
-    @Inject lateinit var settings: Settings
-    @Inject lateinit var bluetoothSource: LiveBluetoothSourceFlow
+    @Inject lateinit var devicesSettings: DevicesSettings
+    @Inject lateinit var bluetoothSource: BluetoothRepo
     @Inject lateinit var eventGenerator: EventGenerator
     @Inject lateinit var deviceRepository: DeviceRepository
     @Inject lateinit var dispatcherProvider: DispatcherProvider
@@ -44,11 +45,11 @@ class BootCheckReceiverFlow : BroadcastReceiver() {
 
         // Dependencies are injected by Hilt
 
-        if (!settings.isEnabled) {
+        if (!devicesSettings.isEnabled.valueBlocking) {
             log(TAG, INFO) { "We are disabled." }
             return
         }
-        if (!settings.isBootRestoreEnabled) {
+        if (!devicesSettings.restoreOnBoot.valueBlocking) {
             log(TAG, INFO) { "Restoring on boot is disabled." }
             return
         }

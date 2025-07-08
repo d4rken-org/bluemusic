@@ -5,21 +5,21 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
-import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDevice.Event.Type.CONNECTED
 import eu.darken.bluemusic.bluetooth.core.SourceDevice.Event.Type.DISCONNECTED
-import eu.darken.bluemusic.devices.core.ManagedDevice
-import eu.darken.bluemusic.main.core.service.modules.EventModule
+import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
 import eu.darken.bluemusic.common.WakelockMan
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
 import eu.darken.bluemusic.devices.core.DeviceManagerFlowAdapter
+import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.main.core.service.modules.EventModule
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
-
 import javax.inject.Singleton
 
 @Singleton
@@ -35,7 +35,7 @@ class KeepAwakeModule @Inject internal constructor(
     override val priority: Int
         get() = 1
 
-    override fun handle(device: ManagedDevice, event: SourceDevice.Event) {
+    override suspend fun handle(device: ManagedDevice, event: SourceDevice.Event) {
         if (!device.keepAwake) return
         if (device.address == FakeSpeakerDevice.address) {
             log(TAG, ERROR) { "Keep awake should not be enabled for the fake speaker device: $device" }

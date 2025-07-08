@@ -1,45 +1,7 @@
 <resources>
 
-    <style name="BaseAppTheme" parent="Theme.MaterialComponents.Bridge">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
-    </style>
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
 
-    <style name="Theme.LauncherToMainActivity" parent="BaseAppTheme">
-        <item name="android:windowBackground">@drawable/launch_screen</item>
-    </style>
-    <style name="DefaultToolbarStyle" parent="BaseAppTheme">
-        <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:minHeight">?attr/actionBarSize</item>
-        <item name="android:background">?attr/colorPrimary</item>
-    </style>
-
-    <style name="DefaultListItemContainer">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:background">?attr/selectableItemBackground</item>
-    </style>
-
-    <style name="ThreeLineListItemContainer" parent="DefaultListItemContainer">
-        <item name="android:layout_height">88dp</item>
-        <item name="android:minHeight">88dp</item>
-    </style>
-
-    <style name="TwoLineListItemContainer" parent="DefaultListItemContainer">
-        <item name="android:layout_height">72dp</item>
-        <item name="android:minHeight">72dp</item>
-    </style>
-
-    <style name="OneLineSimpleListItemContainer" parent="DefaultListItemContainer">
-        <item name="android:layout_height">48dp</item>
-        <item name="android:minHeight">48dp</item>
-    </style>
-
-    <style name="OneLineListItemContainer" parent="DefaultListItemContainer">
-        <item name="android:layout_height">56dp</item>
-        <item name="android:minHeight">56dp</item>
     </style>
 
 </resources>

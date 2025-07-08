@@ -14,9 +14,9 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DeviceRepository
+import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.toManagedDevice
-import eu.darken.bluemusic.main.core.Settings
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import kotlinx.coroutines.flow.catch
@@ -258,19 +258,19 @@ class ConfigViewModel @Inject constructor(
         val device = currentState.device ?: return
         updateState {
             copy(
-                showMonitoringDurationDialog = device.monitoringDuration ?: Settings.DEFAULT_MONITORING_DURATION
+                showMonitoringDurationDialog = device.monitoringDuration ?: DevicesSettings.DEFAULT_MONITORING_DURATION
             )
         }
     }
 
     private fun showReactionDelayDialog() {
         val device = currentState.device ?: return
-        updateState { copy(showReactionDelayDialog = device.actionDelay ?: Settings.DEFAULT_REACTION_DELAY) }
+        updateState { copy(showReactionDelayDialog = device.actionDelay ?: DevicesSettings.DEFAULT_REACTION_DELAY) }
     }
 
     private fun showAdjustmentDelayDialog() {
         val device = currentState.device ?: return
-        updateState { copy(showAdjustmentDelayDialog = device.adjustmentDelay ?: Settings.DEFAULT_ADJUSTMENT_DELAY) }
+        updateState { copy(showAdjustmentDelayDialog = device.adjustmentDelay ?: DevicesSettings.DEFAULT_ADJUSTMENT_DELAY) }
     }
 
     private fun showRenameDialog() {

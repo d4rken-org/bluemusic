@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.common.navigation
 
+import eu.darken.bluemusic.devices.core.DeviceAddr
 import kotlinx.serialization.Serializable
 
 sealed interface Nav : NavigationDestination {
@@ -10,8 +11,18 @@ sealed interface Nav : NavigationDestination {
         }
 
         @Serializable
-        data object Dashboard : Main {
-            private fun readResolve(): Any = Dashboard
+        data object ManageDevices : Main {
+            private fun readResolve(): Any = ManageDevices
+        }
+
+        @Serializable
+        data object DiscoverDevices : Main {
+            private fun readResolve(): Any = ManageDevices
+        }
+
+        @Serializable
+        data class DeviceConfig(val addr: DeviceAddr) : Main {
+            private fun readResolve(): Any = ManageDevices
         }
 
         @Serializable
@@ -26,5 +37,25 @@ sealed interface Nav : NavigationDestination {
 
     }
 
-    sealed interface Settings
+    sealed interface Settings : Nav {
+        @Serializable
+        data object General : Settings {
+            private fun readResolve(): Any = General
+        }
+
+        @Serializable
+        data object Devices : Settings {
+            private fun readResolve(): Any = Devices
+        }
+
+        @Serializable
+        data object Support : Settings {
+            private fun readResolve(): Any = General
+        }
+
+        @Serializable
+        data object Acks : Settings {
+            private fun readResolve(): Any = General
+        }
+    }
 }

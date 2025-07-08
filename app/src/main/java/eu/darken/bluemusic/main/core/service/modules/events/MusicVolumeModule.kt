@@ -5,17 +5,17 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
+import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.service.modules.EventModule
-import eu.darken.bluemusic.main.core.Settings
 import javax.inject.Inject
-
 import javax.inject.Singleton
 
 @Singleton
 class MusicVolumeModule @Inject constructor(
-        settings: Settings, streamHelper: StreamHelper
+    settings: DevicesSettings,
+    streamHelper: StreamHelper
 ) : BaseVolumeModule(settings, streamHelper) {
 
     override val type: AudioStream.Type = AudioStream.Type.MUSIC

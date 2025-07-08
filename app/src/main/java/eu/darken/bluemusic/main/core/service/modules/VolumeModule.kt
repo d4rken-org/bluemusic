@@ -12,5 +12,5 @@ interface VolumeModule {
     val priority: Int
         get() = 10  // Default
 
-    fun handle(id: AudioStream.Id, volume: Int)
+    suspend fun handle(id: AudioStream.Id, volume: Int)
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Controle de Volume Bluetooth</string>
-    <string name="description_check_out_my_apps">Confira meus outros aplicativos!</string>
     <string name="label_settings">Configurações</string>
     <string name="label_about">Sobre</string>
     <string name="label_discord">Discord</string>

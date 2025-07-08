@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ब्लूटूथ वॉल्यूम मैनेजर</string>
-    <string name="description_check_out_my_apps">मेरे अन्य एप्लिकेशन देखें!</string>
     <string name="label_settings">सेटिंग्स</string>
     <string name="label_about">बारे में</string>
     <string name="label_discord">डिस्कोर्ड</string>

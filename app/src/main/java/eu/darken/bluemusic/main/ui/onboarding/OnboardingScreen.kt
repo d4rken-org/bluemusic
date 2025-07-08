@@ -17,9 +17,9 @@ import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.error.ErrorEventHandler
 import eu.darken.bluemusic.common.ui.waitForState
 import eu.darken.bluemusic.main.ui.onboarding.OnboardingViewModel.State.Page
-import eu.darken.butler.main.ui.onboarding.pages.BetaPage
+import eu.darken.bluemusic.main.ui.onboarding.pages.BetaPage
 import eu.darken.bluemusic.main.ui.onboarding.pages.PrivacyPage
-import eu.darken.butler.main.ui.onboarding.pages.WelcomePage
+import eu.darken.bluemusic.main.ui.onboarding.pages.WelcomePage
 import kotlinx.coroutines.launch
 
 
@@ -32,8 +32,6 @@ fun OnboardingScreenHost(vm: OnboardingViewModel = hiltViewModel()) {
     state?.let { state ->
         OnboardingScreen(
             state = state,
-            onUpdateCheckChange = { vm.setUpdateCheckEnabled(it) },
-            onMotdCheckChange = { vm.setMotdCheckEnabled(it) },
             onReadPrivacyPolicy = { vm.readPrivacyPolicy() },
             onFinishOnboarding = vm::completeOnboarding,
         )
@@ -44,8 +42,6 @@ fun OnboardingScreenHost(vm: OnboardingViewModel = hiltViewModel()) {
 @Composable
 private fun OnboardingScreen(
     state: OnboardingViewModel.State,
-    onUpdateCheckChange: (Boolean) -> Unit,
-    onMotdCheckChange: (Boolean) -> Unit,
     onReadPrivacyPolicy: () -> Unit,
     onFinishOnboarding: () -> Unit,
 ) {
@@ -106,8 +102,6 @@ private fun IntroScreenPreview() {
     PreviewWrapper {
         OnboardingScreen(
             state = OnboardingViewModel.State(),
-            onUpdateCheckChange = {},
-            onMotdCheckChange = {},
             onReadPrivacyPolicy = {},
             onFinishOnboarding = {},
         )

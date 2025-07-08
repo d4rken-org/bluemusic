@@ -1,6 +1,7 @@
 package eu.darken.bluemusic
 
 import android.app.NotificationManager
+import android.bluetooth.BluetoothManager
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
@@ -22,6 +23,9 @@ class AndroidModule {
 
     @Provides fun audioManager(@ApplicationContext context: Context): AudioManager =
         context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+
+    @Provides fun bluetoothManager(@ApplicationContext context: Context): BluetoothManager =
+        context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
 
     @Provides fun powerManager(@ApplicationContext context: Context): PowerManager =
         context.getSystemService(Context.POWER_SERVICE) as PowerManager

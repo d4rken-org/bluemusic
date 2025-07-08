@@ -15,26 +15,21 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Phone
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.AlertDialog
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.twotone.Phone
+import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,36 +37,38 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.error.ErrorEventHandler
+import eu.darken.bluemusic.common.ui.waitForState
 import eu.darken.bluemusic.main.core.audio.AudioStream
 
-@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DiscoverScreenHost(vm: DiscoverViewModel = hiltViewModel()) {
+    ErrorEventHandler(vm)
+
+    val state by waitForState(vm.state)
+
+    state?.let { state ->
+        DiscoverScreen(
+            state = state,
+            onDeviceSelected = { vm.onDeviceSelected(it) },
+            onNavigateBack = { vm.navUp() }
+        )
+    }
+}
+
 @Composable
 fun DiscoverScreen(
-    state: DiscoverState,
-    onEvent: (DiscoverEvent) -> Unit,
+    state: DiscoverViewModel.State,
+    onDeviceSelected: (SourceDevice) -> Unit,
     onNavigateBack: () -> Unit
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(state.error) {
-        state.error?.let {
-            snackbarHostState.showSnackbar(
-                message = it,
-                duration = SnackbarDuration.Short
-            )
-        }
-    }
-    
-    LaunchedEffect(state.shouldClose) {
-        if (state.shouldClose) {
-            onNavigateBack()
-        }
-    }
-    
     Scaffold(
         topBar = {
             TopAppBar(
@@ -79,7 +76,7 @@ fun DiscoverScreen(
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(
-                            imageVector = Icons.Default.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = ""
                         )
                     }
@@ -101,7 +98,8 @@ fun DiscoverScreen(
                         modifier = Modifier.align(Alignment.Center)
                     )
                 }
-                state.availableDevices.isEmpty() -> {
+
+                state.devices.isEmpty() -> {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
@@ -110,7 +108,7 @@ fun DiscoverScreen(
                         verticalArrangement = Arrangement.Center
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Settings,
+                            imageVector = Icons.TwoTone.Settings,
                             contentDescription = null,
                             modifier = Modifier.size(64.dp),
                             tint = MaterialTheme.colorScheme.onSurfaceVariant
@@ -123,41 +121,22 @@ fun DiscoverScreen(
                         )
                     }
                 }
+
                 else -> {
                     LazyColumn(
                         modifier = Modifier.fillMaxSize(),
                         contentPadding = PaddingValues(vertical = 8.dp)
                     ) {
-                        items(state.availableDevices) { device ->
+                        items(state.devices) { device ->
                             DeviceItem(
                                 device = device,
-                                onClick = { onEvent(DiscoverEvent.OnDeviceSelected(device)) }
+                                onClick = { onDeviceSelected(device) }
                             )
                         }
                     }
                 }
             }
         }
-    }
-    
-    // Dialogs
-    if (state.showUpgradeDialog) {
-        AlertDialog(
-            onDismissRequest = { onEvent(DiscoverEvent.OnDismissDialog) },
-            icon = { Icon(Icons.Default.Star, contentDescription = null) },
-            title = { Text(stringResource(R.string.label_premium_version)) },
-            text = { Text(stringResource(R.string.description_premium_required_additional_devices)) },
-            confirmButton = {
-                TextButton(onClick = { /* Handled by ScreenHost */ }) {
-                    Text(stringResource(R.string.action_upgrade))
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { onEvent(DiscoverEvent.OnDismissDialog) }) {
-                    Text(stringResource(R.string.action_cancel))
-                }
-            }
-        )
     }
 }
 
@@ -187,9 +166,9 @@ private fun DeviceItem(
         leadingContent = {
             Icon(
                 imageVector = if (device.address == FakeSpeakerDevice.address) {
-                    Icons.Default.Phone
+                    Icons.TwoTone.Phone
                 } else {
-                    Icons.Default.Settings
+                    Icons.TwoTone.Settings
                 },
                 contentDescription = null
             )
@@ -203,8 +182,8 @@ private fun DeviceItem(
 private fun DiscoverScreenPreview() {
     PreviewWrapper {
         DiscoverScreen(
-            state = DiscoverState(
-                availableDevices = listOf(
+            state = DiscoverViewModel.State(
+                devices = listOf(
                     object : SourceDevice {
                         override val bluetoothClass: BluetoothClass? = null
                         override val address = FakeSpeakerDevice.address
@@ -213,6 +192,7 @@ private fun DiscoverScreenPreview() {
                         override val label = "Phone Speaker"
                         override fun getStreamId(type: AudioStream.Type) =
                             AudioStream.Id.STREAM_MUSIC
+
                         override fun describeContents() = 0
                         override fun writeToParcel(dest: Parcel, flags: Int) {}
                     },
@@ -224,13 +204,14 @@ private fun DiscoverScreenPreview() {
                         override val label = "My Bluetooth Headphones"
                         override fun getStreamId(type: AudioStream.Type) =
                             AudioStream.Id.STREAM_MUSIC
+
                         override fun describeContents() = 0
                         override fun writeToParcel(dest: Parcel, flags: Int) {}
                     }
                 )
             ),
-            onEvent = {},
-            onNavigateBack = {}
+            onDeviceSelected = {},
+            onNavigateBack = {},
         )
     }
 }

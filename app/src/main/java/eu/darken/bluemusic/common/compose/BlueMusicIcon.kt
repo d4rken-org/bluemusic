@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
 
 @Composable
-fun ButlerIcon(
+fun BlueMusicIcon(
     modifier: Modifier = Modifier,
     size: Dp = 24.dp,
     contentDescription: String? = stringResource(R.string.bluemusic_mascot_description),
@@ -27,6 +27,6 @@ fun ButlerIcon(
 @Composable
 private fun ButlerIconPreview() {
     PreviewWrapper {
-        ButlerIcon(size = 48.dp)
+        BlueMusicIcon(size = 48.dp)
     }
 }

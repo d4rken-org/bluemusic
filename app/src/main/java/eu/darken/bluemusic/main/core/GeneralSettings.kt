@@ -31,15 +31,12 @@ class GeneralSettings @Inject constructor(
     val themeMode = dataStore.createValue("core.ui.theme.mode", ThemeMode.SYSTEM, json)
     val themeStyle = dataStore.createValue("core.ui.theme.style", ThemeStyle.DEFAULT, json)
 
-    val usePreviews = dataStore.createValue("core.ui.previews.enabled", true)
-
     val isOnboardingCompleted = dataStore.createValue("core.onboarding.completed", false)
 
     override val mapper = PreferenceStoreMapper(
         debugSettings.isDebugMode,
         themeMode,
         themeStyle,
-        usePreviews,
     )
 
     companion object {

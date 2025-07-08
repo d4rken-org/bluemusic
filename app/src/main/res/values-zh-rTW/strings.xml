@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">藍牙音量管理員</string>
-    <string name="description_check_out_my_apps">看看我其他的應用程式！</string>
     <string name="label_settings">設定</string>
     <string name="label_about">關於</string>
     <string name="label_discord">Discord</string>

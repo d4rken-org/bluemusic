@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
-import eu.darken.bluemusic.main.core.Settings
+import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.service.modules.EventModule
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Singleton
 class CallVolumeModule @Inject constructor(
-        settings: Settings,
+    private val settings: DevicesSettings,
         streamHelper: StreamHelper
 ) : BaseVolumeModule(settings, streamHelper) {
 

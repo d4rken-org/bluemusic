@@ -2,34 +2,78 @@ package eu.darken.bluemusic.devices.ui.manage
 
 import android.content.Intent
 import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Phone
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Warning
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.filled.BluetoothDisabled
+import androidx.compose.material.icons.twotone.Add
+import androidx.compose.material.icons.twotone.Devices
+import androidx.compose.material.icons.twotone.Settings
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import eu.darken.bluemusic.R
+import eu.darken.bluemusic.common.compose.ColoredTitleText
+import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.navigation.Nav
+import eu.darken.bluemusic.common.ui.waitForState
+import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.ManagedDevice
 
 @Composable
+fun ManagedDevicesScreenHost(vm: ManagedDevicesViewModel = hiltViewModel()) {
+
+    val state by waitForState(vm.state)
+
+    state?.let { state ->
+        ManagedDevicesScreen(
+            state = state,
+            onAddDevice = { vm.navTo(Nav.Main.DiscoverDevices) },
+            onDeviceConfig = { vm.navTo(Nav.Main.DeviceConfig(it)) },
+            onDeviceAction = { vm.action(it) },
+            onNavigateToSettings = { vm.navTo(Nav.Main.SettingsIndex) },
+        )
+    }
+}
+
+@Composable
 fun ManagedDevicesScreen(
-    state: ManagedDevicesState,
-    onEvent: (ManagedDevicesEvent) -> Unit,
-    onNavigateToConfig: (deviceAddress: String) -> Unit,
-    onNavigateToDiscover: () -> Unit,
-    onNavigateToSettings: () -> Unit
+    state: ManagedDevicesViewModel.State,
+    onAddDevice: () -> Unit,
+    onDeviceConfig: (addr: DeviceAddr) -> Unit,
+    onDeviceAction: (DeviceAction) -> Unit,
+    onNavigateToSettings: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -39,80 +83,93 @@ fun ManagedDevicesScreen(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = { 
-                    onEvent(ManagedDevicesEvent.OnAddDeviceClicked)
-                    onNavigateToDiscover()
-                },
-                containerColor = MaterialTheme.colorScheme.primary
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Add,
-                    contentDescription = stringResource(R.string.label_add_device)
-                )
+            if (state.isBluetoothEnabled) {
+                FloatingActionButton(
+                    onClick = { onAddDevice() },
+                    containerColor = MaterialTheme.colorScheme.primary
+                ) {
+                    Icon(
+                        imageVector = Icons.TwoTone.Add,
+                        contentDescription = stringResource(R.string.label_add_device)
+                    )
+                }
             }
         }
     ) { paddingValues ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues),
-            contentPadding = PaddingValues(vertical = 8.dp)
-        ) {
-            // Bluetooth state
-            if (!state.isBluetoothEnabled) {
-                item {
-                    BluetoothDisabledCard()
+        when {
+            !state.isBluetoothEnabled -> {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues),
+                    contentPadding = PaddingValues(vertical = 8.dp)
+                ) {
+                    item {
+                        BluetoothDisabledCard()
+                    }
                 }
             }
-            
-            // Battery optimization hint
-            if (state.showBatteryOptimizationHint && state.batteryOptimizationIntent != null) {
-                item {
-                    BatteryOptimizationHintCard(
-                        intent = state.batteryOptimizationIntent,
-                        onDismiss = { onEvent(ManagedDevicesEvent.OnBatterySavingDismissed) }
-                    )
-                }
-            }
-            
-            // Android 10 app launch hint
-            if (state.showAndroid10AppLaunchHint && state.android10AppLaunchIntent != null) {
-                item {
-                    Android10AppLaunchHintCard(
-                        intent = state.android10AppLaunchIntent,
-                        onDismiss = { onEvent(ManagedDevicesEvent.OnAppLaunchHintDismissed) }
-                    )
-                }
-            }
-            
-            // Notification permission hint
-            if (state.showNotificationPermissionHint) {
-                item {
-                    NotificationPermissionHintCard(
-                        onRequestPermission = {
-                            // Permission request handled by ScreenHost
-                        },
-                        onDismiss = { onEvent(ManagedDevicesEvent.OnNotificationPermissionsDismissed) }
-                    )
-                }
-            }
-            
-            // Device list
-            if (state.devices.isEmpty() && !state.isLoading) {
-                item {
+
+            state.devices.isEmpty() && !state.isLoading -> {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues),
+                    contentAlignment = Alignment.Center
+                ) {
                     EmptyDevicesMessage()
                 }
-            } else {
-                items(
-                    items = state.devices,
-                    key = { it.address }
-                ) { device ->
-                    ManagedDeviceItem(
-                        device = device,
-                        onEvent = onEvent,
-                        onNavigateToConfig = { onNavigateToConfig(device.address) }
-                    )
+            }
+
+            else -> {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues),
+                    contentPadding = PaddingValues(vertical = 8.dp)
+                ) {
+//                    // Battery optimization hint
+//                    if (state.showBatteryOptimizationHint && state.batteryOptimizationIntent != null) {
+//                        item {
+//                            BatteryOptimizationHintCard(
+//                                intent = state.batteryOptimizationIntent,
+//                                onDismiss = { onEvent(ManagedDevicesEvent.OnBatterySavingDismissed) }
+//                            )
+//                        }
+//                    }
+//
+//                    // Android 10 app launch hint
+//                    if (state.showAndroid10AppLaunchHint && state.android10AppLaunchIntent != null) {
+//                        item {
+//                            Android10AppLaunchHintCard(
+//                                intent = state.android10AppLaunchIntent,
+//                                onDismiss = { onEvent(ManagedDevicesEvent.OnAppLaunchHintDismissed) }
+//                            )
+//                        }
+//                    }
+//
+//                    // Notification permission hint
+//                    if (state.showNotificationPermissionHint) {
+//                        item {
+//                            NotificationPermissionHintCard(
+//                                onRequestPermission = {
+//                                    // Permission request handled by ScreenHost
+//                                },
+//                                onDismiss = { onEvent(ManagedDevicesEvent.OnNotificationPermissionsDismissed) }
+//                            )
+//                        }
+//                    }
+
+                    items(
+                        items = state.devices,
+                        key = { it.address }
+                    ) { device ->
+                        ManagedDeviceItem(
+                            device = device,
+                            onDeviceAction = onDeviceAction,
+                            onNavigateToConfig = { onDeviceConfig(device.address) },
+                        )
+                    }
                 }
             }
         }
@@ -126,13 +183,20 @@ private fun ManagedDevicesTopBar(
     onNavigateToSettings: () -> Unit
 ) {
     TopAppBar(
-        title = { 
-            Text(stringResource(R.string.app_name))
+        title = {
+            if (isProVersion) {
+                ColoredTitleText(
+                    fullTitle = stringResource(R.string.app_name_upgraded),
+                    postfix = stringResource(R.string.app_name_upgrade_postfix),
+                )
+            } else {
+                Text(text = stringResource(R.string.app_name))
+            }
         },
         actions = {
             IconButton(onClick = onNavigateToSettings) {
                 Icon(
-                    imageVector = Icons.Default.Settings,
+                    imageVector = Icons.TwoTone.Settings,
                     contentDescription = stringResource(R.string.label_settings)
                 )
             }
@@ -142,6 +206,8 @@ private fun ManagedDevicesTopBar(
 
 @Composable
 private fun BluetoothDisabledCard() {
+    val context = LocalContext.current
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -150,23 +216,43 @@ private fun BluetoothDisabledCard() {
             containerColor = MaterialTheme.colorScheme.errorContainer
         )
     ) {
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
-                imageVector = Icons.Default.Warning,
+                imageVector = Icons.Filled.BluetoothDisabled,
                 contentDescription = null,
+                modifier = Modifier.size(48.dp),
                 tint = MaterialTheme.colorScheme.onErrorContainer
             )
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(
+                text = stringResource(R.string.title_bluetooth_is_off),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onErrorContainer
+            )
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = stringResource(R.string.description_bluetooth_is_disabled),
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onErrorContainer
+                color = MaterialTheme.colorScheme.onErrorContainer,
+                textAlign = TextAlign.Center
             )
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(
+                onClick = {
+                    val intent = Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS)
+                    context.startActivity(intent)
+                },
+                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.error
+                )
+            ) {
+                Text(stringResource(R.string.action_enable_bluetooth))
+            }
         }
     }
 }
@@ -177,7 +263,7 @@ private fun BatteryOptimizationHintCard(
     onDismiss: () -> Unit
 ) {
     val context = LocalContext.current
-    
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -228,7 +314,7 @@ private fun Android10AppLaunchHintCard(
     onDismiss: () -> Unit
 ) {
     val context = LocalContext.current
-    
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -322,57 +408,87 @@ private fun NotificationPermissionHintCard(
 
 @Composable
 private fun EmptyDevicesMessage() {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(32.dp),
-        contentAlignment = Alignment.Center
+    Column(
+        modifier = Modifier.padding(32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Icon(
-                imageVector = Icons.Default.Phone,
-                contentDescription = null,
-                modifier = Modifier.size(64.dp),
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = stringResource(R.string.managed_devices_empty_message),
-                style = MaterialTheme.typography.bodyLarge,
-                textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
+        Icon(
+            imageVector = Icons.TwoTone.Devices,
+            contentDescription = null,
+            modifier = Modifier.size(64.dp),
+            tint = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = stringResource(R.string.managed_devices_empty_message),
+            style = MaterialTheme.typography.bodyLarge,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
     }
 }
 
-@Preview
+@Preview2
 @Composable
 private fun ManagedDevicesScreenPreview() {
+    val devices = listOf(
+        ManagedDevice(
+            address = "00:11:22:33:44:55",
+            lastConnected = System.currentTimeMillis()
+        ),
+        ManagedDevice(
+            address = "AA:BB:CC:DD:EE:FF",
+            lastConnected = System.currentTimeMillis() - 86400000
+        )
+    )
+
     PreviewWrapper {
         ManagedDevicesScreen(
-            state = ManagedDevicesState(
-                devices = listOf(
-                    ManagedDevice(
-                        address = "00:11:22:33:44:55",
-                        lastConnected = System.currentTimeMillis()
-                    ),
-                    ManagedDevice(
-                        address = "AA:BB:CC:DD:EE:FF",
-                        lastConnected = System.currentTimeMillis() - 86400000
-                    )
-                ),
+            state = ManagedDevicesViewModel.State(
+                devices = devices,
                 isBluetoothEnabled = true,
                 isProVersion = false,
-                showBatteryOptimizationHint = true,
-                batteryOptimizationIntent = Intent()
             ),
-            onEvent = {},
-            onNavigateToConfig = {},
-            onNavigateToDiscover = {},
-            onNavigateToSettings = {}
+            onAddDevice = {},
+            onDeviceConfig = {},
+            onDeviceAction = {},
+            onNavigateToSettings = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun ManagedDevicesScreenEmptyPreview() {
+    PreviewWrapper {
+        ManagedDevicesScreen(
+            state = ManagedDevicesViewModel.State(
+                devices = emptyList(),
+                isBluetoothEnabled = true,
+                isProVersion = true,
+            ),
+            onAddDevice = {},
+            onDeviceConfig = {},
+            onDeviceAction = {},
+            onNavigateToSettings = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun ManagedDevicesScreenPermissionPreview() {
+    PreviewWrapper {
+        ManagedDevicesScreen(
+            state = ManagedDevicesViewModel.State(
+                devices = emptyList(),
+                isBluetoothEnabled = false,
+                isProVersion = true,
+            ),
+            onAddDevice = {},
+            onDeviceConfig = {},
+            onDeviceAction = {},
+            onNavigateToSettings = {},
         )
     }
 }

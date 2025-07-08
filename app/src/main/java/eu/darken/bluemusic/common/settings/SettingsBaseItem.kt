@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -84,7 +84,7 @@ private fun SettingsBaseItemPreview() {
                 title = "Base Item",
                 subtitle = "This is a base settings item",
                 onClick = {},
-                icon = Icons.Default.Settings,
+                icon = Icons.TwoTone.Settings,
                 trailingContent = {
                     Text(
                         text = "Trailing",

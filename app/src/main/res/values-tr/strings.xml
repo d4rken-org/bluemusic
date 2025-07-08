@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth Ses Kontrolü</string>
-    <string name="description_check_out_my_apps">Diğer uygulamalarıma göz atın!</string>
     <string name="label_settings">Ayarlar</string>
     <string name="label_about">Hakkında</string>
     <string name="label_discord">Discord</string>

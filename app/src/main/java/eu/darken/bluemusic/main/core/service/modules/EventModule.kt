@@ -4,11 +4,11 @@ import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.devices.core.ManagedDevice
 
 interface EventModule {
-    fun areRequirementsMet(): Boolean {
+    suspend fun areRequirementsMet(): Boolean {
         return true
     }
 
-    fun handle(device: ManagedDevice, event: SourceDevice.Event)
+    suspend fun handle(device: ManagedDevice, event: SourceDevice.Event)
 
     /**
      * When should this module run, lower = earlier, higher = later.

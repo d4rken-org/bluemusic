@@ -1,4 +1,4 @@
-package eu.darken.butler.main.ui.onboarding.pages
+package eu.darken.bluemusic.main.ui.onboarding.pages
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,8 +24,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
-import eu.darken.butler.common.compose.Preview2
-import eu.darken.butler.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.compose.Preview2
+import eu.darken.bluemusic.common.compose.PreviewWrapper
 
 @Composable
 internal fun BetaPage(

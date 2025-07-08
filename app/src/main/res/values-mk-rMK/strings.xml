@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth управувач со јачина на звук</string>
-    <string name="description_check_out_my_apps">Проверете ги моите други апликации!</string>
     <string name="label_settings">Подесувања</string>
     <string name="label_about">За</string>
     <string name="label_discord">Раздор</string>
