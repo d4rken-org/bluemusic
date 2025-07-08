@@ -19,3 +19,6 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/README.md
 *.apk
+
+.kotlin/sessions
+.kotlin/errors
