@@ -33,7 +33,7 @@
     <string name="label_status_idle">Luier</string>
     <string name="label_status_adjusting_volumes">Pas Volumes aan</string>
     <string name="label_premium_version">Premium weergawe</string>
-    <string name="action_upgrade">Gradeer Op</string>
+    <string name="general_upgrade_action">Gradeer Op</string>
     <string name="description_premium_required_additional_devices">Om bykomende toestelle te beheer vereis die premium weergawe.</string>
     <string name="description_premium_required_this_extra_option">Hierdie ekstra opsie vereis die premium weergawe van hierdie program.</string>
     <string name="description_premium_upgrade_explanation">Kry die premium weergawe om bykomende kenmerke te aktiveer en ontwikkeling te ondersteun.</string>

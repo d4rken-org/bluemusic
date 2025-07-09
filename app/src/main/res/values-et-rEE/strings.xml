@@ -34,7 +34,7 @@
     <string name="label_status_idle">Ootel</string>
     <string name="label_status_adjusting_volumes">Helide reguleerimine</string>
     <string name="label_premium_version">Tasuline versioon</string>
-    <string name="action_upgrade">Täienda</string>
+    <string name="general_upgrade_action">Täienda</string>
     <string name="description_premium_required_additional_devices">Lisaseadmete haldamine vajab tasulist versiooni.</string>
     <string name="description_premium_required_this_extra_option">Kahjuks nõuab see lisavalik rakenduse tasulist versiooni.</string>
     <string name="description_premium_upgrade_explanation">Lisavõimaluste lubamiseks ja arendamise toetamiseks hankige tasuline versioon.</string>

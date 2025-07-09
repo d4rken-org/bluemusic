@@ -35,7 +35,7 @@
     <string name="label_status_idle">Neaktivní</string>
     <string name="label_status_adjusting_volumes">Nastavení hlasitosti</string>
     <string name="label_premium_version">Verze Premium</string>
-    <string name="action_upgrade">Upgradovat</string>
+    <string name="general_upgrade_action">Upgradovat</string>
     <string name="description_premium_required_additional_devices">Správa dalších zařízení vyžaduje verzi Premium.</string>
     <string name="description_premium_required_this_extra_option">Tato extra možnost vyžaduje verzi Premium této aplikace.</string>
     <string name="description_premium_upgrade_explanation">Získejte verzi Premium umožňující další funkce a podporu vývoje.</string>

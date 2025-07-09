@@ -35,7 +35,7 @@
     <string name="label_status_idle">Inactief</string>
     <string name="label_status_adjusting_volumes">Aanpassen volumes</string>
     <string name="label_premium_version">Premium versie</string>
-    <string name="action_upgrade">Upgraden</string>
+    <string name="general_upgrade_action">Upgraden</string>
     <string name="description_premium_required_additional_devices">Voor het beheren van extra apparaten, is de premium versie vereist.</string>
     <string name="description_premium_required_this_extra_option">Deze extra optie vereist helaas de premium-versie van deze app.</string>
     <string name="description_premium_upgrade_explanation">Koop de premium versie om de ontwikkeling te steunen en verkrijg extra functies.</string>

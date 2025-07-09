@@ -34,7 +34,7 @@
     <string name="label_status_idle">Boşta</string>
     <string name="label_status_adjusting_volumes">Ses düzeyini ayarla</string>
     <string name="label_premium_version">Ücretli Sürüm</string>
-    <string name="action_upgrade">Yükselt</string>
+    <string name="general_upgrade_action">Yükselt</string>
     <string name="description_premium_required_additional_devices">Ek cihazları yönetmek, ücretli sürümü gerektirir.</string>
     <string name="description_premium_required_this_extra_option">Bu ilave seçenek uygulamanın ücretli sürümünü gerektirir.</string>
     <string name="description_premium_upgrade_explanation">Ek özellikleri etkinleştirmek ve geliştirmeyi desteklemek için premium sürümü edinin.</string>

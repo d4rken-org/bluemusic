@@ -35,7 +35,7 @@
     <string name="label_status_idle">유휴</string>
     <string name="label_status_adjusting_volumes">음량 조절 중</string>
     <string name="label_premium_version">프리미엄 버전</string>
-    <string name="action_upgrade">업그레이드</string>
+    <string name="general_upgrade_action">업그레이드</string>
     <string name="description_premium_required_additional_devices">다른 디바이스들을 관리하려면 프리미엄 버전이 필요합니다.</string>
     <string name="description_premium_required_this_extra_option">이 부가 기능을 이용하려면 프리미엄 버전이 필요합니다.</string>
     <string name="description_premium_upgrade_explanation">프리미엄 버전을 구매하여 부가 기능들을 활성화하고 앱 개발도 지원할 수 있습니다.</string>

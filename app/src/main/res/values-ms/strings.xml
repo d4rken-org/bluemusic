@@ -35,7 +35,7 @@
     <string name="label_status_idle">Melahu</string>
     <string name="label_status_adjusting_volumes">Melaraskan volum</string>
     <string name="label_premium_version">Versi premium</string>
-    <string name="action_upgrade">Naik taraf</string>
+    <string name="general_upgrade_action">Naik taraf</string>
     <string name="description_premium_required_additional_devices">Meguruskan peranti tambahan memerlukan versi premium.</string>
     <string name="description_premium_required_this_extra_option">Opsyen ekstra ini memerlukan versi premium dari apl ini.</string>
     <string name="description_premium_upgrade_explanation">Dapatkan versi premium untuk dayakan ciri-ciri tambahan serta menyokong pembangunan.</string>

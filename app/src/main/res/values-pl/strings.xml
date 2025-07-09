@@ -35,7 +35,7 @@
     <string name="label_status_idle">Bezczynny</string>
     <string name="label_status_adjusting_volumes">Dostosowanie głośności</string>
     <string name="label_premium_version">Wersja Premium</string>
-    <string name="action_upgrade">Ulepszenie</string>
+    <string name="general_upgrade_action">Ulepszenie</string>
     <string name="description_premium_required_additional_devices">Zarządzanie dodatkowymi urządzeniami wymaga wersji Premium.</string>
     <string name="description_premium_required_this_extra_option">Funkcja wymaga posiadania wersji Premium aplikacji.</string>
     <string name="description_premium_upgrade_explanation">Wykup wersję Premium, aby uaktywnić dodatkowe funkcje i wesprzeć twórcę.</string>

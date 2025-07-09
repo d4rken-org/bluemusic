@@ -35,7 +35,7 @@
     <string name="label_status_idle">Leerlauf</string>
     <string name="label_status_adjusting_volumes">Lautstärken werden angepasst</string>
     <string name="label_premium_version">Premium-Version</string>
-    <string name="action_upgrade">Upgrade</string>
+    <string name="general_upgrade_action">Upgrade</string>
     <string name="description_premium_required_additional_devices">Das Verwalten zusätzlicher Geräte erfordert die Premium-Version.</string>
     <string name="description_premium_required_this_extra_option">Diese Extraoption erfordert die Premium-Version dieser App.</string>
     <string name="description_premium_upgrade_explanation">Hol Dir die Premium-Version, um zusätzliche Funktionen freizuschalten und die Entwicklung zu unterstützen.</string>

@@ -34,7 +34,7 @@
     <string name="label_status_idle">Σε αδράνεια</string>
     <string name="label_status_adjusting_volumes">Ρύθμιση εντάσεων</string>
     <string name="label_premium_version">Premium έκδοση</string>
-    <string name="action_upgrade">Αναβάθμιση</string>
+    <string name="general_upgrade_action">Αναβάθμιση</string>
     <string name="description_premium_required_additional_devices">Η διαχείριση πρόσθετων συσκευών απαιτεί την έκδοση Premium.</string>
     <string name="description_premium_required_this_extra_option">Αυτή η επιπλέον επιλογή απαιτεί την έκδοση Premium της εφαρμογής.</string>
     <string name="description_premium_upgrade_explanation">Αποκτήστε την Premium έκδοση για να ενεργοποιήσετε πρόσθετες λειτουργίες και να υποστηρίξετε την ανάπτυξη της εφαρμογής.</string>

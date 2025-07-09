@@ -35,7 +35,7 @@
     <string name="label_status_idle">متوقف</string>
     <string name="label_status_adjusting_volumes">ضبط مستويات الصوت</string>
     <string name="label_premium_version">الإصدار المتميز</string>
-    <string name="action_upgrade">تحديث</string>
+    <string name="general_upgrade_action">تحديث</string>
     <string name="description_premium_required_additional_devices">إدارة الأجهزة الإضافية يتطلب الإصدار المتميز.</string>
     <string name="description_premium_required_this_extra_option">للأسف، يتطلب هذا الخيار الإضافي الإصدار المتميز من هذا التطبيق.</string>
     <string name="description_premium_upgrade_explanation">الحصول على الإصدار المتميز لتفعيل الميزات الإضافية ودعم التطور.</string>

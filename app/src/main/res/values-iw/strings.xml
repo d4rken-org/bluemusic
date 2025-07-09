@@ -34,7 +34,7 @@
     <string name="label_status_idle">לא פעיל</string>
     <string name="label_status_adjusting_volumes">התאמת ווליום</string>
     <string name="label_premium_version">גרסת פרימיום</string>
-    <string name="action_upgrade">שדרוג</string>
+    <string name="general_upgrade_action">שדרוג</string>
     <string name="description_premium_required_additional_devices">ניהול מכשירים נוספים דורש גרסת פרמיום.</string>
     <string name="description_premium_required_this_extra_option">לאפשרות נוספת זו נדרשת גרסת הפרימיום של האפליקציה.</string>
     <string name="description_premium_upgrade_explanation">השיגו את גרסת הפרימיום כדי לאפשר תכונות נוספות וכדי לתמוך בפיתוח.</string>

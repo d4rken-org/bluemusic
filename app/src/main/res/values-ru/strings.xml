@@ -34,7 +34,7 @@
     <string name="label_status_idle">Ожидание</string>
     <string name="label_status_adjusting_volumes">Настройка громкости</string>
     <string name="label_premium_version">Премиум-версия</string>
-    <string name="action_upgrade">Обновление</string>
+    <string name="general_upgrade_action">Обновление</string>
     <string name="description_premium_required_additional_devices">Для управления дополнительными устройствами необходима премиум-версия.</string>
     <string name="description_premium_required_this_extra_option">К сожалению, для этой дополнительной опции требуется премиум-версия данного приложения.</string>
     <string name="description_premium_upgrade_explanation">Приобретите премиум-версию для включения дополнительных возможностей и поддержки разработки.</string>

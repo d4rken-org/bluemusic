@@ -35,7 +35,7 @@
     <string name="label_status_idle">Nečinný</string>
     <string name="label_status_adjusting_volumes">Úprava hlasitosti</string>
     <string name="label_premium_version">Prémiová verzia</string>
-    <string name="action_upgrade">Upgrade</string>
+    <string name="general_upgrade_action">Upgrade</string>
     <string name="description_premium_required_additional_devices">Správa ďalších zariadení vyžaduje prémiovú verziu.</string>
     <string name="description_premium_required_this_extra_option">Toto je extra funkcia, ktorá vyžaduje prémiovú verziu.</string>
     <string name="description_premium_upgrade_explanation">Získajte prémiovú verziu a povoľte ďalšie funkcie a podporte vývoj.</string>

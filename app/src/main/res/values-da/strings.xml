@@ -34,7 +34,7 @@
     <string name="label_status_idle">Inaktiv</string>
     <string name="label_status_adjusting_volumes">Justerer lydstyrker</string>
     <string name="label_premium_version">Premium-version</string>
-    <string name="action_upgrade">Opgrader</string>
+    <string name="general_upgrade_action">Opgrader</string>
     <string name="description_premium_required_additional_devices">Administrering af flere enheder kræver premium-versionen.</string>
     <string name="description_premium_required_this_extra_option">Dette ekstra alternativ kræver premium-versionen af denne app.</string>
     <string name="description_premium_upgrade_explanation">Få premium-versionen for at aktivere ekstra funktioner og støtte udviklingen.</string>

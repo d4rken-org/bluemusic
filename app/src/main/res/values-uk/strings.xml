@@ -33,7 +33,7 @@
     <string name="label_status_idle">Бездіяльність</string>
     <string name="label_status_adjusting_volumes">Налаштування гучності</string>
     <string name="label_premium_version">Преміум-версія</string>
-    <string name="action_upgrade">Підвищити статус</string>
+    <string name="general_upgrade_action">Підвищити статус</string>
     <string name="description_premium_required_additional_devices">Керування додатковими пристроями можливе у преміум-версії.</string>
     <string name="description_premium_required_this_extra_option">Така додаткова функція вимагає преміум-версії цієї програми.</string>
     <string name="description_premium_upgrade_explanation">Щоб активувати додаткові функції та підтримати розробку, перейдіть на преміум-версію.</string>

@@ -33,7 +33,7 @@
     <string name="label_status_idle">Istambay</string>
     <string name="label_status_adjusting_volumes">Inaadjust ang lakas ng tunog</string>
     <string name="label_premium_version">Premium na bersyon</string>
-    <string name="action_upgrade">Upgrade</string>
+    <string name="general_upgrade_action">Upgrade</string>
     <string name="description_premium_required_additional_devices">Pagmamanipula ng mga karagdagang devices na nangangailangan ng premium na bersyon.</string>
     <string name="description_premium_required_this_extra_option">Itong karagdagang opsyon ay nangangailangan ng premium na bersyon ng app na ito.</string>
     <string name="description_premium_upgrade_explanation">Kunin ang premium na bersyon para mapagana ang karagdagang mga tampok at suporta sa pagunlad.</string>

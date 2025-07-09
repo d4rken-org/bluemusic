@@ -34,7 +34,7 @@
     <string name="label_status_idle">空闲</string>
     <string name="label_status_adjusting_volumes">调整音量</string>
     <string name="label_premium_version">高级版本</string>
-    <string name="action_upgrade">升级</string>
+    <string name="general_upgrade_action">升级</string>
     <string name="description_premium_required_additional_devices">管理其他设备需要高级版本。</string>
     <string name="description_premium_required_this_extra_option">此额外选项需要此应用的高级版本。</string>
     <string name="description_premium_upgrade_explanation">获取高级版本以启用更多功能并支持开发。</string>

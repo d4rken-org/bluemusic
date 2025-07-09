@@ -35,7 +35,7 @@
     <string name="label_status_idle">Inactif</string>
     <string name="label_status_adjusting_volumes">Réglages des volumes</string>
     <string name="label_premium_version">Version Pro</string>
-    <string name="action_upgrade">Surclasser</string>
+    <string name="general_upgrade_action">Surclasser</string>
     <string name="description_premium_required_additional_devices">Seule la version Pro permet de gérer des périphériques supplémentaires.</string>
     <string name="description_premium_required_this_extra_option">La version Pro de cette appli est exigée pour accéder à cette option supplémentaire.</string>
     <string name="description_premium_upgrade_explanation">Procurez-vous la version Pro pour activer des fonctions supplémentaires et soutenir le développement.</string>

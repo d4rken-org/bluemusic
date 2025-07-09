@@ -35,7 +35,7 @@
     <string name="label_status_idle">Ei aktiivisia toimintoja</string>
     <string name="label_status_adjusting_volumes">Säädetään äänenvoimakkuuksia</string>
     <string name="label_premium_version">Premium versio</string>
-    <string name="action_upgrade">Päivitä</string>
+    <string name="general_upgrade_action">Päivitä</string>
     <string name="description_premium_required_additional_devices">Useamman laitteen hallinta vaatii premium version.</string>
     <string name="description_premium_required_this_extra_option">Tämä lisäominaisuus vaatii premium version sovelluksesta.</string>
     <string name="description_premium_upgrade_explanation">Hanki premium versio aktivoidaksesi lisäominaisuuksia ja tukeaksesi kehitystä.</string>

@@ -35,7 +35,7 @@
     <string name="label_status_idle">Inaktiv</string>
     <string name="label_status_adjusting_volumes">Justerer volumer</string>
     <string name="label_premium_version">Premiumversjon</string>
-    <string name="action_upgrade">Oppgrader</string>
+    <string name="general_upgrade_action">Oppgrader</string>
     <string name="description_premium_required_additional_devices">Administrering av flere enheter krever premiumversjonen.</string>
     <string name="description_premium_required_this_extra_option">Dette ekstra alternativet krever premiumversjonen av denne appen.</string>
     <string name="description_premium_upgrade_explanation">Få premiumversjonen for å aktivere tilleggsfunksjoner og støtte utviklingen.</string>

@@ -15,7 +15,7 @@ import javax.inject.Inject
 class DevicesNavigation @Inject constructor() : NavigationEntry {
     override fun EntryProviderBuilder<NavKey>.setup() {
         entry<Nav.Main.ManageDevices> {
-            ManagedDevicesScreenHost()
+            DevicesScreenHost()
         }
     }
 

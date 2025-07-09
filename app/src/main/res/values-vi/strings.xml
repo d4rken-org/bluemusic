@@ -35,7 +35,7 @@
     <string name="label_status_idle">Không hoạt động</string>
     <string name="label_status_adjusting_volumes">Điều chỉnh âm lượng</string>
     <string name="label_premium_version">Bản trả phí</string>
-    <string name="action_upgrade">Nâng cấp</string>
+    <string name="general_upgrade_action">Nâng cấp</string>
     <string name="description_premium_required_additional_devices">Quản lý bổ xung các thiết bị yêu cầu phiên bản cao cấp.</string>
     <string name="description_premium_required_this_extra_option">Tùy chọn bổ xung này yêu cầu phiên bản cao cấp của ứng dụng này.</string>
     <string name="description_premium_upgrade_explanation">Nhận phiên bản trả phí để kích hoạt các tính năng bổ sung và hỗ trợ phát triển.</string>

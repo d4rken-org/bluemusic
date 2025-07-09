@@ -34,7 +34,7 @@
     <string name="label_status_idle">स्थिर/निष्क्रिय</string>
     <string name="label_status_adjusting_volumes">वॉल्यूम समायोजन</string>
     <string name="label_premium_version">प्रीमियम संस्करण</string>
-    <string name="action_upgrade">अपग्रेड</string>
+    <string name="general_upgrade_action">अपग्रेड</string>
     <string name="description_premium_required_additional_devices">अतिरिक्त डिवाइस के प्रबंधन के लिए प्रीमियम संस्करण की आवश्यकता होती है।</string>
     <string name="description_premium_required_this_extra_option">यह अतिरिक्त विकल्प के लिए इस एप्प के प्रीमियम संस्करण की आवश्यकता है।</string>
     <string name="description_premium_upgrade_explanation">अतिरिक्त सुविधाओं को सक्षम करने और विकास का समर्थन करने के लिए प्रीमियम संस्करण प्राप्त करें।</string>

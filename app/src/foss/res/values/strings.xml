@@ -9,7 +9,7 @@
     <string name="upgrade_prompt_body">Unlock additional features and become a patron to support continued development!</string>
     <string name="upgrade_prompt_upgrade_action">Upgrade</string>
 
-    <string name="upgrade_screen_title">Upgrade BVM</string>
+    <string name="upgrade_screen_title">Upgrade BVM FOSS</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager has no ads and doesn\'t sell user data. Continued development is only made possible by you.</string>
     <string name="upgrade_screen_how_title">How to help</string>
     <string name="upgrade_screen_how_body">Become a patron and sponsor development! Tap the button below to activate all extra features and open my GitHub Sponsors profile.</string>

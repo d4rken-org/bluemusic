@@ -33,7 +33,7 @@
     <string name="label_status_idle">Üresjárat</string>
     <string name="label_status_adjusting_volumes">Hangerő beálítása</string>
     <string name="label_premium_version">Prémium verzió</string>
-    <string name="action_upgrade">Frissítés</string>
+    <string name="general_upgrade_action">Frissítés</string>
     <string name="description_premium_required_additional_devices">További eszközök kezelése megköveteli a prémium változat.</string>
     <string name="description_premium_required_this_extra_option">Ez az extra lehetőség az alkalmazás prémium verzióját igényli.</string>
     <string name="description_premium_upgrade_explanation">Szerezd meg a prémium verziót a további funkciók és a fejlesztés támogatásához.</string>

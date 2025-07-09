@@ -34,7 +34,7 @@
     <string name="label_status_idle">Inattivo</string>
     <string name="label_status_adjusting_volumes">Regolazione volumi</string>
     <string name="label_premium_version">Versione premium</string>
-    <string name="action_upgrade">Acquista</string>
+    <string name="general_upgrade_action">Acquista</string>
     <string name="description_premium_required_additional_devices">La gestione di più dispositivi richiede la versione premium.</string>
     <string name="description_premium_required_this_extra_option">Questa opzione extra, sfortunatamente, richiede la versione premium di quest\'app.</string>
     <string name="description_premium_upgrade_explanation">Ottieni la versione premium per abilitare funzioni aggiuntive e supportare lo sviluppo.</string>

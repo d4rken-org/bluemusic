@@ -34,7 +34,7 @@
     <string name="label_status_idle">Во мирување</string>
     <string name="label_status_adjusting_volumes">Прилагодување на тон</string>
     <string name="label_premium_version">Премиум верзија</string>
-    <string name="action_upgrade">Надградба</string>
+    <string name="general_upgrade_action">Надградба</string>
     <string name="description_premium_required_additional_devices">За управувањето со дополнителни уреди треба премиум верзија.</string>
     <string name="description_premium_required_this_extra_option">Оваа дополнителна опција бара премиум верзија на оваа апликација.</string>
     <string name="description_premium_upgrade_explanation">Добијте премиум верзија за да овозможите дополнителни функции и поддршка за развој.</string>

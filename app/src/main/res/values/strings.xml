@@ -129,7 +129,7 @@
     <string name="label_status_idle">Idle</string>
     <string name="label_status_adjusting_volumes">Adjusting volumes</string>
     <string name="label_premium_version">Premium version</string>
-    <string name="action_upgrade">Upgrade</string>
+    <string name="general_upgrade_action">Upgrade</string>
     <string name="description_premium_required_additional_devices">Managing additional devices requires the premium version.</string>
     <string name="description_premium_required_this_extra_option">This extra option requires the premium version of this app.</string>
     <string name="description_premium_upgrade_explanation">Get the premium version to enable additional features and support development.</string>

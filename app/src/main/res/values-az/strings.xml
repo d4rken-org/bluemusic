@@ -34,7 +34,7 @@
     <string name="label_status_idle">Boşda</string>
     <string name="label_status_adjusting_volumes">Səs səviyyəsini nizamla</string>
     <string name="label_premium_version">Premium versiya</string>
-    <string name="action_upgrade">Yüksəlt</string>
+    <string name="general_upgrade_action">Yüksəlt</string>
     <string name="description_premium_required_additional_devices">Əlavə cihazları idarə etmək üçün premium versiya lazımdır.</string>
     <string name="description_premium_required_this_extra_option">Bu ekstra seçim, tətbiqin premium versiyasını tələb edir.</string>
     <string name="description_premium_upgrade_explanation">Əlavə özəllikləri fəallaşdırmaq və tətbiqin inkişafını dəstəkləmək üçün premium versiyanı alın.</string>

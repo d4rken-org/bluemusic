@@ -33,7 +33,7 @@
     <string name="label_status_idle">Walang ginagawa</string>
     <string name="label_status_adjusting_volumes">Pagbabago sa mga volume</string>
     <string name="label_premium_version">Bersyong premium</string>
-    <string name="action_upgrade">I-upgrade</string>
+    <string name="general_upgrade_action">I-upgrade</string>
     <string name="description_premium_required_additional_devices">Ang pamamahala sa mga karagdagang device ay nagmumungkahi ng bersyong premium.</string>
     <string name="description_premium_required_this_extra_option">Ang dagdag na pagpipiliang ito ay nangangailangan ng bersyong premium ng app na ito.</string>
     <string name="description_premium_upgrade_explanation">Kunin ang premium na bersyon upang mapagana ang mga karagdagang mga katangian at suportahan ang paglilinang.</string>

@@ -34,7 +34,7 @@
     <string name="label_status_idle">待機中</string>
     <string name="label_status_adjusting_volumes">音量調整中</string>
     <string name="label_premium_version">プレミアム版</string>
-    <string name="action_upgrade">アップグレード</string>
+    <string name="general_upgrade_action">アップグレード</string>
     <string name="description_premium_required_additional_devices">追加のデバイスを管理するには、プレミアム版が必要です。</string>
     <string name="description_premium_required_this_extra_option">残念ながら、この特別なオプションにはこのアプリのプレミアム版が必要です。</string>
     <string name="description_premium_upgrade_explanation">追加機能を有効にして開発をサポートするために、プレミアム版を入手します。</string>

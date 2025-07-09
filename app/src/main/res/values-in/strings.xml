@@ -35,7 +35,7 @@
     <string name="label_status_idle">Menganggur</string>
     <string name="label_status_adjusting_volumes">Menyesuaikan volume</string>
     <string name="label_premium_version">Versi premium</string>
-    <string name="action_upgrade">Tingkatkan</string>
+    <string name="general_upgrade_action">Tingkatkan</string>
     <string name="description_premium_required_additional_devices">Mengelola perangkat tambahan membutuhkan versi premium.</string>
     <string name="description_premium_required_this_extra_option">Pengaturan tambahan ini membutuhkan versi premium dari aplikasi ini.</string>
     <string name="description_premium_upgrade_explanation">Dapatkan versi premium untuk mengaktifkan fitur tambahan dan mendukung pengembangan.</string>

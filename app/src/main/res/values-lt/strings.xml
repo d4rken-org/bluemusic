@@ -33,7 +33,7 @@
     <string name="label_status_idle">Laukiama</string>
     <string name="label_status_adjusting_volumes">Garsumo valdymas</string>
     <string name="label_premium_version">Premium versija</string>
-    <string name="action_upgrade">Atnaujinti</string>
+    <string name="general_upgrade_action">Atnaujinti</string>
     <string name="description_premium_required_additional_devices">Papildomų įrenginių valdymui įsigykite Premium versiją.</string>
     <string name="description_premium_required_this_extra_option">Papildomam funkcionalumui reikalinga Premium programos versija.</string>
     <string name="description_premium_upgrade_explanation">Gauti Premium versiją ir įjungti papildomas galimybes. Taip padėsite programai tobulėti.</string>

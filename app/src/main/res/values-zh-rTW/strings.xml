@@ -34,7 +34,7 @@
     <string name="label_status_idle">閒置</string>
     <string name="label_status_adjusting_volumes">調整音量</string>
     <string name="label_premium_version">付費版本</string>
-    <string name="action_upgrade">升級</string>
+    <string name="general_upgrade_action">升級</string>
     <string name="description_premium_required_additional_devices">管理額外裝置需要付費版本。</string>
     <string name="description_premium_required_this_extra_option">該額外選項需要付費版應用程式。</string>
     <string name="description_premium_upgrade_explanation">取得付費版本以啟用更多功能並且支援開發人員。</string>

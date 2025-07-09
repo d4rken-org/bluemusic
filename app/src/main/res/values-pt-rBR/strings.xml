@@ -34,7 +34,7 @@
     <string name="label_status_idle">Inativo</string>
     <string name="label_status_adjusting_volumes">Ajustando volumes</string>
     <string name="label_premium_version">Versão Premium</string>
-    <string name="action_upgrade">Atualizar</string>
+    <string name="general_upgrade_action">Atualizar</string>
     <string name="description_premium_required_additional_devices">O gerenciamento de dispositivos adicionais requer a versão premium.</string>
     <string name="description_premium_required_this_extra_option">Esta opção extra requer a versão premium deste aplicativo.</string>
     <string name="description_premium_upgrade_explanation">Obtenha a versão premium para habilitar recursos adicionais e apoiar o desenvolvimento.</string>

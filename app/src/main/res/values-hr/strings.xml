@@ -35,7 +35,7 @@
     <string name="label_status_idle">Mirovanje</string>
     <string name="label_status_adjusting_volumes">Podešavanje glasnoća</string>
     <string name="label_premium_version">Premium verzija</string>
-    <string name="action_upgrade">Nadogradi</string>
+    <string name="general_upgrade_action">Nadogradi</string>
     <string name="description_premium_required_additional_devices">Upravljanje dodatnim uređajima zahtijeva premium verziju.</string>
     <string name="description_premium_required_this_extra_option">Ova dodatna opcija zahtijeva premium verziju ove aplikacije.</string>
     <string name="description_premium_upgrade_explanation">Nabavite premium verziju kako bi omogućili dodatne značajke i podržali razvoj.</string>

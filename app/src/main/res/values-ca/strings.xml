@@ -34,7 +34,7 @@
     <string name="label_status_idle">Inactiu</string>
     <string name="label_status_adjusting_volumes">Configura els volums</string>
     <string name="label_premium_version">Versió prèmium</string>
-    <string name="action_upgrade">Actualitza</string>
+    <string name="general_upgrade_action">Actualitza</string>
     <string name="description_premium_required_additional_devices">La gestió de dispositius addicionals requereix la versió prèmium.</string>
     <string name="description_premium_required_this_extra_option">Malauradament, aquesta opció addicional requereix la versió prèmium d\'aquesta aplicació.</string>
     <string name="description_premium_upgrade_explanation">Obteniu la versió prèmium per activar funcions addicionals i donar suport al desenvolupament.</string>

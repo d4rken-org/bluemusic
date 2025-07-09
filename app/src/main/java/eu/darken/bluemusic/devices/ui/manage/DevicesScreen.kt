@@ -24,6 +24,7 @@ import androidx.compose.material.icons.twotone.Add
 import androidx.compose.material.icons.twotone.Devices
 import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.Settings
+import androidx.compose.material.icons.twotone.Stars
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -58,7 +59,7 @@ import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.ManagedDevice
 
 @Composable
-fun ManagedDevicesScreenHost(vm: DevicesViewModel = hiltViewModel()) {
+fun DevicesScreenHost(vm: DevicesViewModel = hiltViewModel()) {
 
     val state by waitForState(vm.state)
 
@@ -79,12 +80,13 @@ fun ManagedDevicesScreenHost(vm: DevicesViewModel = hiltViewModel()) {
     }
 
     state?.let { state ->
-        ManagedDevicesScreen(
+        DevicesScreen(
             state = state,
             onAddDevice = { vm.navTo(Nav.Main.DiscoverDevices) },
             onDeviceConfig = { vm.navTo(Nav.Main.DeviceConfig(it)) },
             onDeviceAction = { vm.action(it) },
             onNavigateToSettings = { vm.navTo(Nav.Main.SettingsIndex) },
+            onNavigateToUpgrade = { vm.navTo(Nav.Main.Upgrade) },
             onRequestBluetoothPermission = {
                 vm.action(DevicesAction.RequestBluetoothPermission)
             },
@@ -93,19 +95,21 @@ fun ManagedDevicesScreenHost(vm: DevicesViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun ManagedDevicesScreen(
+fun DevicesScreen(
     state: DevicesViewModel.State,
     onAddDevice: () -> Unit,
     onDeviceConfig: (addr: DeviceAddr) -> Unit,
     onDeviceAction: (DevicesAction) -> Unit,
     onNavigateToSettings: () -> Unit,
+    onNavigateToUpgrade: () -> Unit,
     onRequestBluetoothPermission: () -> Unit,
 ) {
     Scaffold(
         topBar = {
             ManagedDevicesTopBar(
                 isProVersion = state.isProVersion,
-                onNavigateToSettings = onNavigateToSettings
+                onNavigateToSettings = onNavigateToSettings,
+                onNavigateToUpgrade = onNavigateToUpgrade
             )
         },
         floatingActionButton = {
@@ -221,7 +225,8 @@ fun ManagedDevicesScreen(
 @Composable
 private fun ManagedDevicesTopBar(
     isProVersion: Boolean,
-    onNavigateToSettings: () -> Unit
+    onNavigateToSettings: () -> Unit,
+    onNavigateToUpgrade: () -> Unit
 ) {
     TopAppBar(
         title = {
@@ -235,6 +240,14 @@ private fun ManagedDevicesTopBar(
             }
         },
         actions = {
+            if (!isProVersion) {
+                IconButton(onClick = onNavigateToUpgrade) {
+                    Icon(
+                        imageVector = Icons.TwoTone.Stars,
+                        contentDescription = stringResource(R.string.general_upgrade_action)
+                    )
+                }
+            }
             IconButton(onClick = onNavigateToSettings) {
                 Icon(
                     imageVector = Icons.TwoTone.Settings,
@@ -521,7 +534,7 @@ private fun EmptyDevicesMessage() {
 
 @Preview2
 @Composable
-private fun ManagedDevicesScreenPreview() {
+private fun DevicesScreenPreview() {
     val devices = listOf(
         ManagedDevice(
             address = "00:11:22:33:44:55",
@@ -534,7 +547,7 @@ private fun ManagedDevicesScreenPreview() {
     )
 
     PreviewWrapper {
-        ManagedDevicesScreen(
+        DevicesScreen(
             state = DevicesViewModel.State(
                 devices = devices,
                 isBluetoothEnabled = true,
@@ -544,6 +557,7 @@ private fun ManagedDevicesScreenPreview() {
             onDeviceConfig = {},
             onDeviceAction = {},
             onNavigateToSettings = {},
+            onNavigateToUpgrade = {},
             onRequestBluetoothPermission = {},
         )
     }
@@ -551,9 +565,9 @@ private fun ManagedDevicesScreenPreview() {
 
 @Preview2
 @Composable
-private fun ManagedDevicesScreenEmptyPreview() {
+private fun DevicesScreenEmptyPreview() {
     PreviewWrapper {
-        ManagedDevicesScreen(
+        DevicesScreen(
             state = DevicesViewModel.State(
                 devices = emptyList(),
                 isBluetoothEnabled = true,
@@ -563,6 +577,7 @@ private fun ManagedDevicesScreenEmptyPreview() {
             onDeviceConfig = {},
             onDeviceAction = {},
             onNavigateToSettings = {},
+            onNavigateToUpgrade = {},
             onRequestBluetoothPermission = {},
         )
     }
@@ -572,7 +587,7 @@ private fun ManagedDevicesScreenEmptyPreview() {
 @Composable
 private fun ManagedDevicesScreenPermissionPreview() {
     PreviewWrapper {
-        ManagedDevicesScreen(
+        DevicesScreen(
             state = DevicesViewModel.State(
                 devices = emptyList(),
                 isBluetoothEnabled = false,
@@ -582,6 +597,7 @@ private fun ManagedDevicesScreenPermissionPreview() {
             onDeviceConfig = {},
             onDeviceAction = {},
             onNavigateToSettings = {},
+            onNavigateToUpgrade = {},
             onRequestBluetoothPermission = {},
         )
     }

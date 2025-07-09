@@ -33,7 +33,7 @@
     <string name="label_status_idle">Изчакване</string>
     <string name="label_status_adjusting_volumes">Коригира звука</string>
     <string name="label_premium_version">Премиум версия</string>
-    <string name="action_upgrade">Ъпгрейд</string>
+    <string name="general_upgrade_action">Ъпгрейд</string>
     <string name="description_premium_required_additional_devices">Управление на допълнителни устройства изисква премиум версия.</string>
     <string name="description_premium_required_this_extra_option">Тази допълнителна опция изисква премиум версията на приложението.</string>
     <string name="description_premium_upgrade_explanation">Вземете премиум версията, за да разрешите допълнителните функции и подкрепите развитието.</string>

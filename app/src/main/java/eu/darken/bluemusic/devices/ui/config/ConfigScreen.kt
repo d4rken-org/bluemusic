@@ -559,7 +559,7 @@ private fun PurchaseDialog(
         text = { Text(stringResource(R.string.description_premium_required_this_extra_option)) },
         confirmButton = {
             TextButton(onClick = onPurchase) {
-                Text(stringResource(R.string.action_upgrade))
+                Text(stringResource(R.string.general_upgrade_action))
             }
         },
         dismissButton = {

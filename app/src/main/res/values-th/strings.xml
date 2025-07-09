@@ -34,7 +34,7 @@
     <string name="label_status_idle">ว่าง</string>
     <string name="label_status_adjusting_volumes">ปรับระดับเสียง</string>
     <string name="label_premium_version">รุ่นพรีเมี่ยม</string>
-    <string name="action_upgrade">อัปเกรด</string>
+    <string name="general_upgrade_action">อัปเกรด</string>
     <string name="description_premium_required_additional_devices">การจัดการอุปกรณ์เพิ่มเติมต้องใช้รุ่นพรีเมี่ยม</string>
     <string name="description_premium_required_this_extra_option">ตัวเลือกนี้จำเป็นต้องมีรุ่นพรีเมี่ยมของ app นี้</string>
     <string name="description_premium_upgrade_explanation">รับเวอร์ชันพรีเมียมเพื่อเปิดใช้งานคุณลักษณะเพิ่มเติมและสนับสนุนการพัฒนา</string>
