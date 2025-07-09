@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -162,6 +165,24 @@ android {
     packaging {
         resources {
             excludes.add("attach_hotspot_windows.dll")
+        }
+    }
+
+    tasks.withType(KotlinCompile::class.java) {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
+            freeCompilerArgs.addAll(
+                "-opt-in=kotlin.RequiresOptIn",
+                "-opt-in=kotlin.ExperimentalStdlibApi",
+                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                "-opt-in=kotlinx.coroutines.FlowPreview",
+                "-opt-in=kotlin.time.ExperimentalTime",
+                "-opt-in=kotlin.RequiresOptIn",
+                "-Xjvm-default=all",
+                "-Xcontext-parameters",
+                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+                "-XXLanguage:+PropertyParamAnnotationDefaultTargetMode",
+            )
         }
     }
 }

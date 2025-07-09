@@ -12,4 +12,12 @@ sealed interface DevicesAction {
     ) : DevicesAction
 
     data object RequestBluetoothPermission : DevicesAction
+
+    data object RequestNotificationPermission : DevicesAction
+
+    data object DismissBatteryOptimizationHint : DevicesAction
+
+    data object DismissAndroid10AppLaunchHint : DevicesAction
+
+    data object DismissNotificationPermissionHint : DevicesAction
 }

@@ -6,7 +6,6 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.devices.core.database.DeviceDatabase
-import eu.darken.bluemusic.devices.core.database.legacy.RealmToRoomMigrator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
@@ -14,28 +13,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DeviceRepository @Inject constructor(
+class DeviceRepo @Inject constructor(
     private val deviceDatabase: DeviceDatabase,
     private val dispatcherProvider: DispatcherProvider,
-    private val migrator: RealmToRoomMigrator
 ) {
 
-    companion object {
-        private val TAG = logTag("DeviceRepository")
-    }
-
-    suspend fun ensureMigration() {
-        withContext(dispatcherProvider.IO) {
-            if (migrator.migrate()) {
-                migrator.cleanupRealmFiles()
-            }
-        }
-    }
-
-    fun getAllDevices(): Flow<List<DeviceConfigEntity>> {
-        return deviceDatabase.devices.getAllDevices()
-            .flowOn(dispatcherProvider.IO)
-    }
+    val devices = deviceDatabase.devices.getAllDevices().flowOn(dispatcherProvider.IO)
 
     fun observeDevice(address: String): Flow<DeviceConfigEntity?> {
         return deviceDatabase.devices.observeDevice(address)
@@ -109,5 +92,9 @@ class DeviceRepository @Inject constructor(
         return withContext(dispatcherProvider.IO) {
             deviceDatabase.devices.getDevice(address) != null
         }
+    }
+
+    companion object {
+        private val TAG = logTag("DeviceRepository")
     }
 }

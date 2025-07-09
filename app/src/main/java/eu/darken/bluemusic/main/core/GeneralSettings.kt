@@ -33,6 +33,10 @@ class GeneralSettings @Inject constructor(
 
     val isOnboardingCompleted = dataStore.createValue("core.onboarding.completed", false)
 
+    val isBatteryOptimizationHintDismissed = dataStore.createValue("hints.battery.optimization.dismissed", false)
+    val isAndroid10AppLaunchHintDismissed = dataStore.createValue("hints.android10.applaunch.dismissed", false)
+    val isNotificationPermissionHintDismissed = dataStore.createValue("hints.notification.permission.dismissed", false)
+
     override val mapper = PreferenceStoreMapper(
         debugSettings.isDebugMode,
         themeMode,

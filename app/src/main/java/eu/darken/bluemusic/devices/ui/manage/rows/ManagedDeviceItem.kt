@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.devices.ui.manage
+package eu.darken.bluemusic.devices.ui.manage.rows
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Column
@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.ui.manage.DevicesAction
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import java.text.DateFormat
 import java.util.Date
@@ -45,7 +46,7 @@ fun ManagedDeviceItem(
     modifier: Modifier = Modifier
 ) {
     var expanded by remember { mutableStateOf(false) }
-    
+
     Card(
         modifier = modifier
             .fillMaxWidth()
@@ -90,11 +91,11 @@ fun ManagedDeviceItem(
                     }
                 }
             }
-            
+
             // Volume controls when expanded
             if (expanded) {
                 Spacer(modifier = Modifier.height(16.dp))
-                
+
                 // Music volume
                 VolumeControl(
                     label = stringResource(R.string.audio_stream_music_label),
@@ -103,7 +104,7 @@ fun ManagedDeviceItem(
                         onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.MUSIC, volume))
                     }
                 )
-                
+
                 // Call volume
                 VolumeControl(
                     label = stringResource(R.string.audio_stream_call_label),
@@ -112,7 +113,7 @@ fun ManagedDeviceItem(
                         onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.CALL, volume))
                     }
                 )
-                
+
                 // Ring volume
                 VolumeControl(
                     label = stringResource(R.string.audio_stream_ring_label),
@@ -121,7 +122,7 @@ fun ManagedDeviceItem(
                         onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.RINGTONE, volume))
                     }
                 )
-                
+
                 // Notification volume
                 VolumeControl(
                     label = stringResource(R.string.audio_stream_notification_label),
@@ -130,7 +131,7 @@ fun ManagedDeviceItem(
                         onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.NOTIFICATION, volume))
                     }
                 )
-                
+
                 // Alarm volume
                 VolumeControl(
                     label = stringResource(R.string.audio_stream_alarm_label),
@@ -139,9 +140,9 @@ fun ManagedDeviceItem(
                         onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.ALARM, volume))
                     }
                 )
-                
+
                 Spacer(modifier = Modifier.height(16.dp))
-                
+
                 // Configure button
                 Button(
                     onClick = onNavigateToConfig,

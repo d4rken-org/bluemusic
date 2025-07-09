@@ -2,22 +2,17 @@ package eu.darken.bluemusic.bluetooth.core
 
 import android.bluetooth.BluetoothClass
 import android.bluetooth.BluetoothDevice
-import android.os.Parcel
-import android.os.Parcelable
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
-import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.main.core.audio.AudioStream
+import kotlinx.parcelize.Parcelize
 import java.util.Locale
 
-internal class SourceDeviceWrapper(
+@Parcelize
+data class SourceDeviceWrapper(
     private val realDevice: BluetoothDevice
 ) : SourceDevice {
-
-    constructor(parcel: Parcel) : this(
-        parcel.readParcelable(BluetoothDevice::class.java.classLoader)!!
-    )
 
     override val label: String
         get() = alias ?: name ?: address
@@ -66,26 +61,7 @@ internal class SourceDeviceWrapper(
         return String.format(Locale.US, "Device(name=%s, address=%s)", name, address)
     }
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeParcelable(realDevice, flags)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
     companion object {
         private val TAG = logTag("SourceDeviceWrapper")
-
-        @JvmField
-        val CREATOR = object : Parcelable.Creator<SourceDeviceWrapper> {
-            override fun createFromParcel(parcel: Parcel): SourceDeviceWrapper {
-                return SourceDeviceWrapper(parcel)
-            }
-
-            override fun newArray(size: Int): Array<SourceDeviceWrapper?> {
-                return arrayOfNulls(size)
-            }
-        }
     }
 }

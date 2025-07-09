@@ -1,8 +1,8 @@
 package eu.darken.bluemusic.devices.ui.manage
 
-import android.app.NotificationManager
-import android.content.pm.PackageManager
-import android.os.PowerManager
+import android.content.Intent
+import android.os.Build
+import android.provider.Settings
 import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
@@ -12,28 +12,27 @@ import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
-import eu.darken.bluemusic.devices.core.DeviceRepository
+import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.main.core.GeneralSettings
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.receiveAsFlow
 import javax.inject.Inject
 
 @HiltViewModel
 class DevicesViewModel @Inject constructor(
     private val permissionHelper: PermissionHelper,
-    private val packageManager: PackageManager,
-    private val deviceRepository: DeviceRepository,
+    private val deviceRepo: DeviceRepo,
     private val streamHelper: StreamHelper,
     private val upgradeRepo: UpgradeRepo,
     private val bluetoothSource: BluetoothRepo,
-    private val notificationManager: NotificationManager,
-    private val powerManager: PowerManager,
+    private val generalSettings: GeneralSettings,
     private val dispatcherProvider: DispatcherProvider,
     private val navCtrl: NavigationController,
 ) : ViewModel4(dispatcherProvider, logTag("Devices", "Managed", "VM"), navCtrl) {
@@ -48,16 +47,112 @@ class DevicesViewModel @Inject constructor(
         }
     }
 
-    val state = combine(
+    private val notificationPermissionFlow: Flow<Boolean> = flow {
+        while (true) {
+            emit(permissionHelper.hasNotificationPermission())
+            delay(1000)
+        }
+    }
+
+    private val batteryOptimizationHintFlow = combine(
+        flow {
+            while (true) {
+                emit(permissionHelper.needsBatteryOptimization())
+                delay(1000)
+            }
+        },
+        generalSettings.isBatteryOptimizationHintDismissed.flow
+    ) { needsOptimization, isDismissed ->
+        val shouldShow = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
+                needsOptimization && !isDismissed
+        if (shouldShow) {
+            val intent = Intent().apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                action = Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS
+            }
+            shouldShow to intent
+        } else {
+            false to null
+        }
+    }
+
+    private val overlayPermissionHintFlow = combine(
+        flow {
+            while (true) {
+                emit(permissionHelper.needsOverlayPermission())
+                delay(1000)
+            }
+        },
+        generalSettings.isAndroid10AppLaunchHintDismissed.flow
+    ) { needsPermission, isDismissed ->
+        val shouldShow = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q &&
+                needsPermission && !isDismissed
+        log(tag) { "Overlay permission check: needsPermission=$needsPermission, isDismissed=$isDismissed, shouldShow=$shouldShow" }
+        if (shouldShow) {
+            val intent = Intent().apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                action = Settings.ACTION_MANAGE_OVERLAY_PERMISSION
+            }
+            shouldShow to intent
+        } else {
+            false to null
+        }
+    }
+
+    private val notificationPermissionHintFlow = combine(
+        notificationPermissionFlow,
+        generalSettings.isNotificationPermissionHintDismissed.flow
+    ) { hasPermission, isDismissed ->
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                !hasPermission && !isDismissed
+    }
+
+
+    private val devicesFlow = deviceRepo.devices
+        .map { entities ->
+            entities.map { entity ->
+                ManagedDevice(
+                    address = entity.address,
+                    name = entity.name,
+                    alias = entity.alias,
+                    lastConnected = entity.lastConnected,
+                    actionDelay = entity.actionDelay,
+                    adjustmentDelay = entity.adjustmentDelay,
+                    monitoringDuration = entity.monitoringDuration,
+                    musicVolume = entity.musicVolume,
+                    callVolume = entity.callVolume,
+                    ringVolume = entity.ringVolume,
+                    notificationVolume = entity.notificationVolume,
+                    alarmVolume = entity.alarmVolume,
+                    volumeLock = entity.volumeLock,
+                    keepAwake = entity.keepAwake,
+                    nudgeVolume = entity.nudgeVolume,
+                    autoplay = entity.autoplay,
+                    launchPkg = entity.launchPkg,
+                    isActive = false
+                )
+            }
+        }
+
+    val state = eu.darken.bluemusic.common.flow.combine(
         upgradeRepo.upgradeInfo,
         bluetoothSource.isEnabled,
         permissionFlow,
-        flowOf(Unit),
-    ) { upgradeInfo, isEnabled, hasPermission, _ ->
+        devicesFlow,
+        batteryOptimizationHintFlow,
+        overlayPermissionHintFlow,
+        notificationPermissionHintFlow,
+    ) { upgradeInfo, isEnabled, hasBluetoothPermission, devices, batteryHint, overlayHint, notificationHint ->
         State(
             isProVersion = upgradeInfo.isUpgraded,
             isBluetoothEnabled = isEnabled,
-            hasBluetoothPermission = hasPermission
+            hasBluetoothPermission = hasBluetoothPermission,
+            devices = devices,
+            showBatteryOptimizationHint = batteryHint.first,
+            batteryOptimizationIntent = batteryHint.second,
+            showAndroid10AppLaunchHint = overlayHint.first,
+            android10AppLaunchIntent = overlayHint.second,
+            showNotificationPermissionHint = notificationHint,
         )
     }.asStateFlow()
 
@@ -67,6 +162,11 @@ class DevicesViewModel @Inject constructor(
         val hasBluetoothPermission: Boolean = true,
         val devices: List<ManagedDevice> = emptyList(),
         val isLoading: Boolean = false,
+        val showBatteryOptimizationHint: Boolean = false,
+        val batteryOptimizationIntent: Intent? = null,
+        val showAndroid10AppLaunchHint: Boolean = false,
+        val android10AppLaunchIntent: Intent? = null,
+        val showNotificationPermissionHint: Boolean = false,
     )
 
     fun action(action: DevicesAction) {
@@ -79,192 +179,36 @@ class DevicesViewModel @Inject constructor(
                 }
             }
 
+            DevicesAction.RequestNotificationPermission -> {
+                launch {
+                    val permission = permissionHelper.getNotificationPermission()
+                    if (permission != null) {
+                        eventChannel.send(DevicesEvent.RequestPermission(permission))
+                    }
+                }
+            }
+
+            DevicesAction.DismissBatteryOptimizationHint -> {
+                launch {
+                    generalSettings.isBatteryOptimizationHintDismissed.update { true }
+                }
+            }
+
+            DevicesAction.DismissAndroid10AppLaunchHint -> {
+                launch {
+                    generalSettings.isAndroid10AppLaunchHintDismissed.update { true }
+                }
+            }
+
+            DevicesAction.DismissNotificationPermissionHint -> {
+                launch {
+                    generalSettings.isNotificationPermissionHintDismissed.update { true }
+                }
+            }
+
             is DevicesAction.AdjustVolume -> {
                 // Handle volume adjustment
             }
         }
     }
-
-
-//    private var isBatterySavingHintDismissed = false
-//    private var isAppLaunchHintDismissed = false
-//    private var isNotificationPermissionDismissed = false
-//
-//    init {
-//        observeDevices()
-//        observeBluetoothState()
-//        observeProVersion()
-//        checkBatterySavingIssue()
-//        checkAppLaunchIssue()
-//        checkNotificationPermissions()
-//    }
-//
-//    private fun observeDevices() {
-//        launch {
-//            deviceRepository.getAllDevices()
-//                .map { entities ->
-//                    entities
-//                        .map { it.toManagedDevice() }
-//                        .sortedByDescending { it.lastConnected }
-//                }
-//                .catch { e ->
-//                    log(TAG, ERROR) { "Failed to observe devices: ${e.asLog()}" }
-//                    updateState { copy(error = e.message) }
-//                }
-//                .collect { devices ->
-//                    updateState { copy(devices = devices, isLoading = false) }
-//                }
-//        }
-//    }
-//
-//    private fun observeBluetoothState() {
-//        launch {
-//            bluetoothSource.isEnabled
-//                .catch { e ->
-//                    log(TAG, ERROR) { "Failed to observe bluetooth state: ${e.asLog()}" }
-//                }
-//                .collect { enabled ->
-//                    updateState { copy(isBluetoothEnabled = enabled) }
-//                }
-//        }
-//    }
-//
-//    private fun observeProVersion() {
-////        launch {
-////            iapRepo.isProVersion
-////                .catch { e ->
-////                    log(TAG, ERROR) { "Failed to observe pro version: ${e.asLog()}" }
-////                }
-////                .collect { isProVersion ->
-////                    updateState { copy(isProVersion = isProVersion) }
-////                }
-////        }
-//    }
-//
-//    private fun checkBatterySavingIssue() {
-//        if (!ApiHelper.hasOreo()) return
-////
-////        val batterySavingIntent = Intent().apply {
-////            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-////            Intent.setAction = Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS
-////        }
-////
-////        val resolveInfo = packageManager.resolveActivity(batterySavingIntent, 0)
-////        val displayHint = !isBatterySavingHintDismissed &&
-////                !powerManager.isIgnoringBatteryOptimizations(BuildConfig.APPLICATION_ID) &&
-////                resolveInfo != null
-////
-////        updateState {
-////            copy(
-////                showBatteryOptimizationHint = displayHint,
-////                batteryOptimizationIntent = if (displayHint) batterySavingIntent else null
-////            )
-////        }
-//    }
-//
-//    private fun checkAppLaunchIssue() {
-//        if (!ApiHelper.hasAndroid10()) return
-////
-////        val overlayIntent = Intent().apply {
-////            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-////            Intent.setAction = Settings.ACTION_MANAGE_OVERLAY_PERMISSION
-////        }
-////
-////        val displayHint = !isAppLaunchHintDismissed &&
-////                !Settings.canDrawOverlays(context)
-////
-////        updateState {
-////            copy(
-////                showAndroid10AppLaunchHint = displayHint,
-////                android10AppLaunchIntent = if (displayHint) overlayIntent else null
-////            )
-////        }
-//    }
-//
-//    private fun checkNotificationPermissions() {
-//        if (!ApiHelper.hasAndroid13()) return
-//
-//        val displayHint = !isNotificationPermissionDismissed &&
-//                ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
-//
-//        updateState {
-//            copy(showNotificationPermissionHint = displayHint)
-//        }
-//    }
-//
-//    override fun onEvent(event: ManagedDevicesEvent) {
-//        when (event) {
-//            is ManagedDevicesEvent.OnBatterySavingDismissed -> {
-//                isBatterySavingHintDismissed = true
-//                checkBatterySavingIssue()
-//            }
-//            is ManagedDevicesEvent.OnAppLaunchHintDismissed -> {
-//                isAppLaunchHintDismissed = true
-//                checkAppLaunchIssue()
-//            }
-//            is ManagedDevicesEvent.OnNotificationPermissionsDismissed -> {
-//                isNotificationPermissionDismissed = true
-//                checkNotificationPermissions()
-//            }
-//            is ManagedDevicesEvent.OnNotificationPermissionsGranted -> {
-//                checkNotificationPermissions()
-//            }
-//            is ManagedDevicesEvent.OnUpdateMusicVolume -> {
-//                updateDeviceVolume(event.device, AudioStream.Type.MUSIC, event.percentage)
-//            }
-//            is ManagedDevicesEvent.OnUpdateCallVolume -> {
-//                updateDeviceVolume(event.device, AudioStream.Type.CALL, event.percentage)
-//            }
-//            is ManagedDevicesEvent.OnUpdateRingVolume -> {
-//                updateDeviceVolume(event.device, AudioStream.Type.RINGTONE, event.percentage)
-//            }
-//            is ManagedDevicesEvent.OnUpdateNotificationVolume -> {
-//                updateDeviceVolume(event.device, AudioStream.Type.NOTIFICATION, event.percentage)
-//            }
-//            is ManagedDevicesEvent.OnUpdateAlarmVolume -> {
-//                updateDeviceVolume(event.device, AudioStream.Type.ALARM, event.percentage)
-//            }
-//            is ManagedDevicesEvent.OnDeleteDevice -> {
-//                deleteDevice(event.device)
-//            }
-//            is ManagedDevicesEvent.OnAddDeviceClicked -> {
-//                // Navigation handled by ScreenHost
-//            }
-//            is ManagedDevicesEvent.OnDeviceClicked -> {
-//                // Navigation handled by ScreenHost
-//            }
-//        }
-//    }
-//
-//    private fun updateDeviceVolume(_device: ManagedDevice, streamType: AudioStream.Type, percentage: Float) {
-//        launch {
-//            val device = _device.withUpdatedVolume(streamType, percentage)
-//            val entity = deviceRepository.getDevice(device.address)
-//            if (entity != null) {
-//                val updated = when (streamType) {
-//                    AudioStream.Type.MUSIC -> entity.copy(musicVolume = percentage)
-//                    AudioStream.Type.CALL -> entity.copy(callVolume = percentage)
-//                    AudioStream.Type.RINGTONE -> entity.copy(ringVolume = percentage)
-//                    AudioStream.Type.NOTIFICATION -> entity.copy(notificationVolume = percentage)
-//                    AudioStream.Type.ALARM -> entity.copy(alarmVolume = percentage)
-//                }
-//                deviceRepository.updateDevice(updated)
-//
-//                if (device.isActive) {
-//                    streamHelper.changeVolume(
-//                        device.getStreamId(streamType),
-//                        device.getVolume(streamType) ?: 0f,
-//                        true,
-//                        0
-//                    )
-//                }
-//            }
-//        }
-//    }
-//
-//    private fun deleteDevice(device: ManagedDevice) {
-//        launch {
-//            deviceRepository.deleteDevice(device.address)
-//        }
-//    }
 }

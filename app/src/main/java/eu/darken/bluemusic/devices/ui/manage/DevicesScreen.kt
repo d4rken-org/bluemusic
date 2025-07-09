@@ -3,25 +3,19 @@ package eu.darken.bluemusic.devices.ui.manage
 import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BluetoothDisabled
 import androidx.compose.material.icons.twotone.Add
-import androidx.compose.material.icons.twotone.Devices
 import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material.icons.twotone.Stars
@@ -35,7 +29,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -57,23 +50,28 @@ import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.ui.waitForState
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.ui.manage.rows.Android10AppLaunchHintCard
+import eu.darken.bluemusic.devices.ui.manage.rows.BatteryOptimizationHintCard
+import eu.darken.bluemusic.devices.ui.manage.rows.EmptyDevicesCard
+import eu.darken.bluemusic.devices.ui.manage.rows.ManagedDeviceItem
+import eu.darken.bluemusic.devices.ui.manage.rows.NotificationPermissionHintCard
 
 @Composable
 fun DevicesScreenHost(vm: DevicesViewModel = hiltViewModel()) {
 
     val state by waitForState(vm.state)
 
-    val bluetoothPermissionLauncher = rememberLauncherForActivityResult(
+    val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission()
     ) { isGranted ->
-        log(vm.tag, INFO) { "Bluetooth permission granted: $isGranted" }
+        log(vm.tag, INFO) { "Permission granted: $isGranted" }
     }
 
     LaunchedEffect(Unit) {
         vm.events.collect { event ->
             when (event) {
                 is DevicesEvent.RequestPermission -> {
-                    bluetoothPermissionLauncher.launch(event.permission)
+                    permissionLauncher.launch(event.permission)
                 }
             }
         }
@@ -113,7 +111,7 @@ fun DevicesScreen(
             )
         },
         floatingActionButton = {
-            if (state.hasBluetoothPermission && state.isBluetoothEnabled) {
+            if (state.hasBluetoothPermission && state.isBluetoothEnabled && state.devices.isNotEmpty()) {
                 FloatingActionButton(
                     onClick = { onAddDevice() },
                     containerColor = MaterialTheme.colorScheme.primary
@@ -126,85 +124,69 @@ fun DevicesScreen(
             }
         }
     ) { paddingValues ->
-        when {
-            !state.hasBluetoothPermission -> {
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues),
-                    contentPadding = PaddingValues(vertical = 8.dp)
-                ) {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues),
+            contentPadding = PaddingValues(vertical = 8.dp)
+        ) {
+            // Critical permission/state cards - these block normal functionality
+            if (!state.hasBluetoothPermission) {
+                item {
+                    BluetoothPermissionCard(
+                        onRequestPermission = onRequestBluetoothPermission
+                    )
+                }
+            }
+
+            if (state.hasBluetoothPermission && !state.isBluetoothEnabled) {
+                item {
+                    BluetoothDisabledCard()
+                }
+            }
+
+            // Optional hint cards - shown when Bluetooth is working
+            if (state.hasBluetoothPermission && state.isBluetoothEnabled) {
+                // Battery optimization hint
+                if (state.showBatteryOptimizationHint && state.batteryOptimizationIntent != null) {
                     item {
-                        BluetoothPermissionCard(
-                            onRequestPermission = onRequestBluetoothPermission
+                        BatteryOptimizationHintCard(
+                            intent = state.batteryOptimizationIntent,
+                            onDismiss = { onDeviceAction(DevicesAction.DismissBatteryOptimizationHint) }
+                        )
+                    }
+                }
+
+                // Android 10 app launch hint
+                if (state.showAndroid10AppLaunchHint && state.android10AppLaunchIntent != null) {
+                    item {
+                        Android10AppLaunchHintCard(
+                            intent = state.android10AppLaunchIntent,
+                            onDismiss = { onDeviceAction(DevicesAction.DismissAndroid10AppLaunchHint) }
+                        )
+                    }
+                }
+
+                // Notification permission hint
+                if (state.showNotificationPermissionHint) {
+                    item {
+                        NotificationPermissionHintCard(
+                            onRequestPermission = { onDeviceAction(DevicesAction.RequestNotificationPermission) },
+                            onDismiss = { onDeviceAction(DevicesAction.DismissNotificationPermissionHint) }
                         )
                     }
                 }
             }
 
-            !state.isBluetoothEnabled -> {
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues),
-                    contentPadding = PaddingValues(vertical = 8.dp)
-                ) {
+            // Device list or empty message
+            if (state.hasBluetoothPermission && state.isBluetoothEnabled) {
+                if (state.devices.isEmpty() && !state.isLoading) {
                     item {
-                        BluetoothDisabledCard()
+                        EmptyDevicesCard(
+                            onAddDevice = onAddDevice
+                        )
                     }
-                }
-            }
-
-            state.devices.isEmpty() && !state.isLoading -> {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues),
-                    contentAlignment = Alignment.Center
-                ) {
-                    EmptyDevicesMessage()
-                }
-            }
-
-            else -> {
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues),
-                    contentPadding = PaddingValues(vertical = 8.dp)
-                ) {
-//                    // Battery optimization hint
-//                    if (state.showBatteryOptimizationHint && state.batteryOptimizationIntent != null) {
-//                        item {
-//                            BatteryOptimizationHintCard(
-//                                intent = state.batteryOptimizationIntent,
-//                                onDismiss = { onEvent(ManagedDevicesEvent.OnBatterySavingDismissed) }
-//                            )
-//                        }
-//                    }
-//
-//                    // Android 10 app launch hint
-//                    if (state.showAndroid10AppLaunchHint && state.android10AppLaunchIntent != null) {
-//                        item {
-//                            Android10AppLaunchHintCard(
-//                                intent = state.android10AppLaunchIntent,
-//                                onDismiss = { onEvent(ManagedDevicesEvent.OnAppLaunchHintDismissed) }
-//                            )
-//                        }
-//                    }
-//
-//                    // Notification permission hint
-//                    if (state.showNotificationPermissionHint) {
-//                        item {
-//                            NotificationPermissionHintCard(
-//                                onRequestPermission = {
-//                                    // Permission request handled by ScreenHost
-//                                },
-//                                onDismiss = { onEvent(ManagedDevicesEvent.OnNotificationPermissionsDismissed) }
-//                            )
-//                        }
-//                    }
-
+                } else {
                     items(
                         items = state.devices,
                         key = { it.address }
@@ -361,176 +343,7 @@ private fun BluetoothPermissionCard(
     }
 }
 
-@Composable
-private fun BatteryOptimizationHintCard(
-    intent: Intent,
-    onDismiss: () -> Unit
-) {
-    val context = LocalContext.current
 
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .animateContentSize(),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.secondaryContainer
-        )
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        ) {
-            Text(
-                text = stringResource(R.string.battery_optimization_hint_title),
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onSecondaryContainer
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = stringResource(R.string.battery_optimization_hint_message),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSecondaryContainer
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End
-            ) {
-                TextButton(onClick = onDismiss) {
-                    Text(stringResource(R.string.action_dismiss))
-                }
-                Spacer(modifier = Modifier.width(8.dp))
-                Button(
-                    onClick = { context.startActivity(intent) }
-                ) {
-                    Text(stringResource(R.string.settings_label))
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun Android10AppLaunchHintCard(
-    intent: Intent,
-    onDismiss: () -> Unit
-) {
-    val context = LocalContext.current
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .animateContentSize(),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.secondaryContainer
-        )
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        ) {
-            Text(
-                text = stringResource(R.string.android10_applaunch_hint_title),
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onSecondaryContainer
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = stringResource(R.string.android10_applaunch_hint_message),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSecondaryContainer
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End
-            ) {
-                TextButton(onClick = onDismiss) {
-                    Text(stringResource(R.string.action_dismiss))
-                }
-                Spacer(modifier = Modifier.width(8.dp))
-                Button(
-                    onClick = { context.startActivity(intent) }
-                ) {
-                    Text(stringResource(R.string.settings_label))
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun NotificationPermissionHintCard(
-    onRequestPermission: () -> Unit,
-    onDismiss: () -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .animateContentSize(),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.secondaryContainer
-        )
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        ) {
-            Text(
-                text = stringResource(R.string.notification_permission_hint_title),
-                style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.onSecondaryContainer
-            )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = stringResource(R.string.notification_permission_hint_message),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSecondaryContainer
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End
-            ) {
-                TextButton(onClick = onDismiss) {
-                    Text(stringResource(R.string.action_dismiss))
-                }
-                Spacer(modifier = Modifier.width(8.dp))
-                Button(onClick = onRequestPermission) {
-                    Text(stringResource(R.string.action_set))
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun EmptyDevicesMessage() {
-    Column(
-        modifier = Modifier.padding(32.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Icon(
-            imageVector = Icons.TwoTone.Devices,
-            contentDescription = null,
-            modifier = Modifier.size(64.dp),
-            tint = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = stringResource(R.string.managed_devices_empty_message),
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
-    }
-}
 
 @Preview2
 @Composable

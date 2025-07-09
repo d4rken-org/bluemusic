@@ -4,8 +4,11 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.PowerManager
+import android.provider.Settings
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
+import eu.darken.bluemusic.BuildConfig
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -14,69 +17,55 @@ class PermissionHelper @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
 
-    /**
-     * Check if the app has Bluetooth permission based on the Android API level
-     */
-    fun hasBluetoothPermission(): Boolean {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            hasPermission(Manifest.permission.BLUETOOTH_CONNECT)
-        } else {
-            hasPermission(Manifest.permission.BLUETOOTH)
-        }
+    private val powerManager by lazy { context.getSystemService(Context.POWER_SERVICE) as PowerManager }
+
+    fun hasBluetoothPermission(): Boolean = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        hasPermission(Manifest.permission.BLUETOOTH_CONNECT)
+    } else {
+        hasPermission(Manifest.permission.BLUETOOTH)
     }
 
-    /**
-     * Get the appropriate Bluetooth permission string based on the Android API level
-     */
-    fun getBluetoothPermission(): String {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            Manifest.permission.BLUETOOTH_CONNECT
-        } else {
-            Manifest.permission.BLUETOOTH
-        }
+    fun getBluetoothPermission(): String = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        Manifest.permission.BLUETOOTH_CONNECT
+    } else {
+        Manifest.permission.BLUETOOTH
     }
 
-    /**
-     * Check if the app has notification permission (Android 13+)
-     */
-    fun hasNotificationPermission(): Boolean {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            hasPermission(Manifest.permission.POST_NOTIFICATIONS)
-        } else {
-            // Prior to Android 13, notification permission is granted by default
-            true
-        }
+    fun hasNotificationPermission(): Boolean = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        hasPermission(Manifest.permission.POST_NOTIFICATIONS)
+    } else {
+        // Prior to Android 13, notification permission is granted by default
+        true
     }
 
-    /**
-     * Get the notification permission string (Android 13+)
-     */
-    fun getNotificationPermission(): String? {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            Manifest.permission.POST_NOTIFICATIONS
-        } else {
-            null
-        }
+    fun getNotificationPermission(): String? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        Manifest.permission.POST_NOTIFICATIONS
+    } else {
+        null
     }
 
-    /**
-     * Check if a specific permission is granted
-     */
-    fun hasPermission(permission: String): Boolean {
-        return ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED
+    fun hasPermission(permission: String): Boolean =
+        ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED
+
+    fun hasPermissions(vararg permissions: String): Boolean = permissions.all { hasPermission(it) }
+
+    fun getMissingPermissions(vararg permissions: String): List<String> = permissions.filter { !hasPermission(it) }
+
+    fun isIgnoringBatteryOptimizations(): Boolean = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        powerManager.isIgnoringBatteryOptimizations(BuildConfig.APPLICATION_ID)
+    } else {
+        // Battery optimization doesn't exist before Android 6.0
+        true
     }
 
-    /**
-     * Check if multiple permissions are granted
-     */
-    fun hasPermissions(vararg permissions: String): Boolean {
-        return permissions.all { hasPermission(it) }
+    fun needsBatteryOptimization(): Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !isIgnoringBatteryOptimizations()
+
+    fun canDrawOverlays(): Boolean = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        Settings.canDrawOverlays(context)
+    } else {
+        // Overlay permission doesn't exist before Android 6.0
+        true
     }
 
-    /**
-     * Get a list of permissions that are not granted from the provided list
-     */
-    fun getMissingPermissions(vararg permissions: String): List<String> {
-        return permissions.filter { !hasPermission(it) }
-    }
+    fun needsOverlayPermission(): Boolean = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && !canDrawOverlays()
 }

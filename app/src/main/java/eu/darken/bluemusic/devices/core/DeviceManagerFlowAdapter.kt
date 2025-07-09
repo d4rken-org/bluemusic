@@ -11,12 +11,12 @@ import javax.inject.Singleton
 
 @Singleton
 class DeviceManagerFlowAdapter @Inject constructor(
-    private val deviceRepository: DeviceRepository,
+    private val deviceRepo: DeviceRepo,
     private val dispatcherProvider: DispatcherProvider
 ) {
 
     fun devices(): Flow<Map<String, ManagedDevice>> {
-        return deviceRepository.getAllDevices()
+        return deviceRepo.devices
             .map { entities ->
                 entities.associate { entity ->
                     entity.address to entity.toManagedDevice()
@@ -27,13 +27,13 @@ class DeviceManagerFlowAdapter @Inject constructor(
 
     suspend fun getDevice(address: String): ManagedDevice? {
         return withContext(dispatcherProvider.IO) {
-            deviceRepository.getDevice(address)?.toManagedDevice()
+            deviceRepo.getDevice(address)?.toManagedDevice()
         }
     }
 
     suspend fun updateDevice(device: ManagedDevice) {
         withContext(dispatcherProvider.IO) {
-            val entity = deviceRepository.getDevice(device.address) ?: return@withContext
+            val entity = deviceRepo.getDevice(device.address) ?: return@withContext
             val updated = entity.copy(
                 lastConnected = device.lastConnected,
                 actionDelay = device.actionDelay,
@@ -52,7 +52,7 @@ class DeviceManagerFlowAdapter @Inject constructor(
                 alias = device.alias,
                 name = device.name
             )
-            deviceRepository.updateDevice(updated)
+            deviceRepo.updateDevice(updated)
         }
     }
 

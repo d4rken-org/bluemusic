@@ -13,7 +13,7 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.devices.core.DeviceRepository
+import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -33,7 +33,7 @@ class BootCheckReceiverFlow : BroadcastReceiver() {
     @Inject lateinit var devicesSettings: DevicesSettings
     @Inject lateinit var bluetoothSource: BluetoothRepo
     @Inject lateinit var eventGenerator: EventGenerator
-    @Inject lateinit var deviceRepository: DeviceRepository
+    @Inject lateinit var deviceRepo: DeviceRepo
     @Inject lateinit var dispatcherProvider: DispatcherProvider
 
     override fun onReceive(context: Context, intent: Intent) {
@@ -73,7 +73,7 @@ class BootCheckReceiverFlow : BroadcastReceiver() {
                 log(TAG) { "We booted with already connected devices: $connectedDevices" }
                 
                 val managedConnectedDevices = mutableListOf<SourceDevice>()
-                val managedDevices = deviceRepository.getAllDevices().first()
+                val managedDevices = deviceRepo.devices.first()
 
                 connectedDevices.forEach { (address, device) ->
                     if (managedDevices.any { it.address == address }) {

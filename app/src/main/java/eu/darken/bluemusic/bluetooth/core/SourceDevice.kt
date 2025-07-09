@@ -4,13 +4,14 @@ import android.bluetooth.BluetoothClass
 import android.bluetooth.BluetoothDevice
 import android.content.Intent
 import android.os.Parcelable
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
+import eu.darken.bluemusic.common.debug.logging.asLog
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.AudioStream.Id
 import kotlinx.parcelize.Parcelize
-import eu.darken.bluemusic.common.debug.logging.log
-import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
-import eu.darken.bluemusic.common.debug.logging.asLog
 
 interface SourceDevice : Parcelable {
 
@@ -36,7 +37,7 @@ interface SourceDevice : Parcelable {
 
         companion object {
             private val TAG = logTag("SourceDevice.Event")
-            
+
             @JvmStatic fun createEvent(intent: Intent): Event? {
                 val bluetoothDevice = intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
                 if (bluetoothDevice == null) {

@@ -14,7 +14,7 @@ class DeviceDatabase @Inject constructor(
     private val database by lazy {
         Room.databaseBuilder(
             context,
-            DevicesRoomDb::class.java, "feeder-stats"
+            DevicesRoomDb::class.java, "managed_devices"
         ).build()
     }
 

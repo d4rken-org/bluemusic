@@ -134,6 +134,8 @@
     <string name="description_premium_required_this_extra_option">This extra option requires the premium version of this app.</string>
     <string name="description_premium_upgrade_explanation">Get the premium version to enable additional features and support development.</string>
     <string name="label_premium_version_required">Premium version required</string>
+    <string name="upgrade_feature_requires_pro">This feature requires the premium version</string>
+    <string name="upgrade_prompt_upgrade_action">Upgrade</string>
     <string name="description_intro_purpose">This app allows your Android device to remember the volume of different Bluetooth devices.</string>
     <string name="description_intro_premium">If you like this app, consider upgrading to the premium version. It supports development and gets you a few extra features.</string>
     <string name="description_intro_tap_the_button">Start by adding your first device.</string>
@@ -197,6 +199,7 @@
     <string name="description_speaker_autosave">The \"Device Speaker\" entry, which is responsible for default volumes, updates itself when a Bluetooth device connects. Note: This does not work on all devices.</string>
     <string name="action_show">Show</string>
     <string name="action_dismiss">Dismiss</string>
+    <string name="action_fix">Fix</string>
     <string name="battery_optimizations_issue_description">Battery optimizations are enabled for this app and can prevent it from receiving Bluetooth events. Consider disabling optimizations if you are experiencing issues.</string>
     <string name="label_monitoring_duration">Monitoring duration</string>
     <string name="description_monitoring_duration">A duration in milliseconds, after adjustments have been made, during which any further volume changes will be blocked.</string>
@@ -241,6 +244,7 @@
     <string name="label_volume">Volume</string>
     <string name="label_rename">Rename</string>
     <string name="label_no_devices_found">No devices found</string>
+    <string name="label_no_devices_title">No Devices</string>
 
     <string name="bluemusic_mascot_description">App Icon</string>
 </resources>

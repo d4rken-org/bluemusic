@@ -13,7 +13,7 @@ import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
-import eu.darken.bluemusic.devices.core.DeviceRepository
+import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.toManagedDevice
@@ -69,7 +69,7 @@ sealed interface ConfigEvent {
 
 class ConfigViewModel @Inject constructor(
     private val context: Context,
-    private val deviceRepository: DeviceRepository,
+    private val deviceRepo: DeviceRepo,
     private val streamHelper: StreamHelper,
     private val upgradeRepo: UpgradeRepo,
     private val appTool: AppTool,
@@ -94,7 +94,7 @@ class ConfigViewModel @Inject constructor(
         val address = deviceAddress ?: return
 
         launch {
-            deviceRepository.observeDevice(address)
+            deviceRepo.observeDevice(address)
                 .filterNotNull()
                 .map { it.toManagedDevice() }
                 .catch { e ->
@@ -350,7 +350,7 @@ class ConfigViewModel @Inject constructor(
         if (confirmed) {
             val device = currentState.device ?: return
             launch {
-                deviceRepository.deleteDevice(device.address)
+                deviceRepo.deleteDevice(device.address)
                 updateState { copy(shouldFinish = true) }
             }
         }
@@ -377,7 +377,7 @@ class ConfigViewModel @Inject constructor(
     }
 
     private suspend fun updateDeviceInRepository(device: ManagedDevice) {
-        deviceRepository.updateDevice(device.address) { currentEntity ->
+        deviceRepo.updateDevice(device.address) { currentEntity ->
             currentEntity.copy(
                 musicVolume = device.getVolume(AudioStream.Type.MUSIC),
                 callVolume = device.getVolume(AudioStream.Type.CALL),
