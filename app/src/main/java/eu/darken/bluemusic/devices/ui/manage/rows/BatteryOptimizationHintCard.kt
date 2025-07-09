@@ -87,7 +87,7 @@ fun BatteryOptimizationHintCard(
                         containerColor = MaterialTheme.colorScheme.primary
                     )
                 ) {
-                    Text(stringResource(R.string.action_grant_permission))
+                    Text(stringResource(R.string.battery_optimization_fix_action))
                 }
             }
         }

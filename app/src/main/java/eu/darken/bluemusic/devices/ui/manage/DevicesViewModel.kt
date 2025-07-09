@@ -1,8 +1,6 @@
 package eu.darken.bluemusic.devices.ui.manage
 
 import android.content.Intent
-import android.os.Build
-import android.provider.Settings
 import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
@@ -54,60 +52,6 @@ class DevicesViewModel @Inject constructor(
         }
     }
 
-    private val batteryOptimizationHintFlow = combine(
-        flow {
-            while (true) {
-                emit(permissionHelper.needsBatteryOptimization())
-                delay(1000)
-            }
-        },
-        generalSettings.isBatteryOptimizationHintDismissed.flow
-    ) { needsOptimization, isDismissed ->
-        val shouldShow = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
-                needsOptimization && !isDismissed
-        if (shouldShow) {
-            val intent = Intent().apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                action = Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS
-            }
-            shouldShow to intent
-        } else {
-            false to null
-        }
-    }
-
-    private val overlayPermissionHintFlow = combine(
-        flow {
-            while (true) {
-                emit(permissionHelper.needsOverlayPermission())
-                delay(1000)
-            }
-        },
-        generalSettings.isAndroid10AppLaunchHintDismissed.flow
-    ) { needsPermission, isDismissed ->
-        val shouldShow = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q &&
-                needsPermission && !isDismissed
-        log(tag) { "Overlay permission check: needsPermission=$needsPermission, isDismissed=$isDismissed, shouldShow=$shouldShow" }
-        if (shouldShow) {
-            val intent = Intent().apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                action = Settings.ACTION_MANAGE_OVERLAY_PERMISSION
-            }
-            shouldShow to intent
-        } else {
-            false to null
-        }
-    }
-
-    private val notificationPermissionHintFlow = combine(
-        notificationPermissionFlow,
-        generalSettings.isNotificationPermissionHintDismissed.flow
-    ) { hasPermission, isDismissed ->
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
-                !hasPermission && !isDismissed
-    }
-
-
     private val devicesFlow = deviceRepo.devices
         .map { entities ->
             entities.map { entity ->
@@ -134,6 +78,46 @@ class DevicesViewModel @Inject constructor(
             }
         }
 
+    private val batteryOptimizationHintFlow = combine(
+        flow {
+            while (true) {
+                emit(System.currentTimeMillis())
+                delay(1000)
+            }
+        },
+        generalSettings.isBatteryOptimizationHintDismissed.flow
+    ) { _, isDismissed ->
+        permissionHelper.getBatteryOptimizationHint(isDismissed)
+    }
+
+    private val overlayPermissionHintFlow = combine(
+        flow {
+            while (true) {
+                emit(System.currentTimeMillis())
+                delay(1000)
+            }
+        },
+        generalSettings.isAndroid10AppLaunchHintDismissed.flow,
+        devicesFlow
+    ) { _, isDismissed, devices ->
+        val hasDevicesWithLaunchPkg = devices.any { it.launchPkg != null }
+        val hint = permissionHelper.getOverlayPermissionHint(isDismissed, hasDevicesWithLaunchPkg)
+        log(tag) { "Overlay permission check: hasDevicesWithLaunchPkg=$hasDevicesWithLaunchPkg, isDismissed=$isDismissed, shouldShow=${hint.shouldShow}" }
+        hint
+    }
+
+    private val notificationPermissionHintFlow = combine(
+        flow {
+            while (true) {
+                emit(System.currentTimeMillis())
+                delay(1000)
+            }
+        },
+        generalSettings.isNotificationPermissionHintDismissed.flow
+    ) { _, isDismissed ->
+        permissionHelper.getNotificationPermissionHint(isDismissed)
+    }
+
     val state = eu.darken.bluemusic.common.flow.combine(
         upgradeRepo.upgradeInfo,
         bluetoothSource.isEnabled,
@@ -148,11 +132,11 @@ class DevicesViewModel @Inject constructor(
             isBluetoothEnabled = isEnabled,
             hasBluetoothPermission = hasBluetoothPermission,
             devices = devices,
-            showBatteryOptimizationHint = batteryHint.first,
-            batteryOptimizationIntent = batteryHint.second,
-            showAndroid10AppLaunchHint = overlayHint.first,
-            android10AppLaunchIntent = overlayHint.second,
-            showNotificationPermissionHint = notificationHint,
+            showBatteryOptimizationHint = batteryHint.shouldShow,
+            batteryOptimizationIntent = batteryHint.intent,
+            showAndroid10AppLaunchHint = overlayHint.shouldShow,
+            android10AppLaunchIntent = overlayHint.intent,
+            showNotificationPermissionHint = notificationHint.shouldShow,
         )
     }.asStateFlow()
 

@@ -230,6 +230,7 @@
     <string name="audio_stream_alarm_label">Alarm</string>
     <string name="battery_optimization_hint_title">Battery optimization</string>
     <string name="battery_optimization_hint_message">Battery optimizations are enabled and may prevent proper operation. Consider disabling them.</string>
+    <string name="battery_optimization_fix_action">Disable optimizations</string>
     <string name="android10_applaunch_hint_title">App launch permission</string>
     <string name="android10_applaunch_hint_message">Android 10 requires special permission to launch apps from background. Grant "Display over other apps" permission.</string>
     <string name="notification_permission_hint_title">Notification permission</string>
