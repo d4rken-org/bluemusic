@@ -87,6 +87,15 @@ fun AcknowledgementsScreen(
                 )
             }
 
+            item {
+                SettingsBaseItem(
+                    title = "Max Patchs",
+                    subtitle = "For the lovely icon",
+                    onClick = { onOpenUrl("https://twitter.com/250_max") }
+                )
+                SettingsDivider()
+            }
+
             item { SettingsCategoryHeader(stringResource(R.string.settings_licenses_label)) }
 
             item {
@@ -118,29 +127,9 @@ fun AcknowledgementsScreen(
 
             item {
                 SettingsBaseItem(
-                    title = "libRootJava",
-                    subtitle = "Run Java (and Kotlin) code as root! (APACHE 2.0)",
-                    onClick = { onOpenUrl("https://github.com/Chainfire/librootjava") }
-                )
-                SettingsDivider()
-            }
-
-            item {
-                SettingsBaseItem(
-                    title = "librootkotlinx",
-                    subtitle =
-                        "Run rooted Kotlin JVM code made easy with coroutines. (APACHE 2.0)",
-                    onClick = { onOpenUrl("https://github.com/Mygod/librootkotlinx") }
-                )
-                SettingsDivider()
-            }
-
-            item {
-                SettingsBaseItem(
-                    title = "Shizuku",
-                    subtitle =
-                        "Using system APIs directly with adb/root privileges from normal apps through a Java process started with app_process. (APACHE 2.0)",
-                    onClick = { onOpenUrl("https://github.com/RikkaApps/Shizuku") }
+                    title = "Realm",
+                    subtitle = "Realm is a mobile database: a replacement for SQLite &amp; ORMs. (APACHE 2.0)",
+                    onClick = { onOpenUrl("https://github.com/realm/realm-java") }
                 )
                 SettingsDivider()
             }
