@@ -134,7 +134,7 @@ fun DiscoverScreen(
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
-                            text = stringResource(R.string.label_no_devices_found),
+                            text = stringResource(R.string.discover_no_unmnaged_devices_msg),
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )

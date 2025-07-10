@@ -64,7 +64,8 @@ fun ManagedDeviceItem(
 
     // Update expanded state when device active state changes
     LaunchedEffect(device.isActive) {
-        expanded = device.isActive || expanded
+        expanded = device.isActive
+        // Collapse when device becomes inactive
     }
 
     Card(

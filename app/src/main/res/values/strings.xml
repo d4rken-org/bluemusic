@@ -21,6 +21,9 @@
     <string name="onboarding_privacy_read_action">Read Privacy Policy</string>
     <string name="onboarding_privacy_action">Accept</string>
 
+    <!-- Discover -->
+    <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
+
     <!-- Settings-->
     <string name="settings_label">Settings</string>
     <string name="settings_category_other_label">Other</string>
@@ -246,7 +249,6 @@
 
     <string name="label_volume">Volume</string>
     <string name="label_rename">Rename</string>
-    <string name="label_no_devices_found">No devices found</string>
     <string name="label_no_devices_title">No Devices</string>
 
     <string name="bluemusic_mascot_description">App Icon</string>

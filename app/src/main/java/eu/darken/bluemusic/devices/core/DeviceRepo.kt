@@ -43,7 +43,7 @@ class DeviceRepo @Inject constructor(
                 isActive = pairedMap?.get(it.address)?.isActive == true,
                 config = it,
             )
-        }
+        }.sortedByDescending { it.isActive }
     }.replayingShare(appScope + dispatcherProvider.IO)
 
     suspend fun createDevice(address: DeviceAddr) {

@@ -20,6 +20,7 @@ import javax.inject.Singleton
 @Module
 class AndroidModule {
 
+    @Suppress("DEPRECATION")
     @Provides
     @Singleton
     fun preferences(@ApplicationContext context: Context): SharedPreferences =
