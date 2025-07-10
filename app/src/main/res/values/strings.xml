@@ -219,6 +219,7 @@
     <string name="managed_devices_empty_message">No Bluetooth devices configured.\nTap the + button to add your first device.</string>
     <string name="managed_devices_last_connected_label">Last connected: %s</string>
     <string name="managed_devices_currently_connected_label">Currently connected</string>
+    <string name="managed_devices_no_volumes_configured">No volumes configured for this device. Tap Configure to set up volume preferences.</string>
     <string name="managed_devices_delete_dialog_title">Remove device</string>
     <string name="managed_devices_delete_dialog_message">Remove %s from managed devices?</string>
     <string name="general_delete_action">Delete</string>

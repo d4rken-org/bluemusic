@@ -12,6 +12,7 @@ import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
@@ -27,7 +28,7 @@ class DiscoverViewModel @Inject constructor(
     val events = SingleEventFlow<DiscoverEvent>()
 
     val state = combine(
-        bluetoothSource.pairedDevices,
+        bluetoothSource.pairedDevices.filterNotNull(),
         deviceRepo.devices,
         upgradeRepo.upgradeInfo,
     ) { paired, managed, upgradeInfo ->

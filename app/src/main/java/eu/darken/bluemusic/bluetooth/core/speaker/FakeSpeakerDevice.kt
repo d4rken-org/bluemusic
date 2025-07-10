@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.bluetooth.core.speaker
 
-import android.bluetooth.BluetoothClass
 import android.os.Build
 import android.os.Parcelable
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
@@ -9,11 +8,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class FakeSpeakerDevice(
-    override val alias: String
+    override val alias: String,
+    override val isActive: Boolean,
 ) : SourceDevice, Parcelable {
-
-    override val bluetoothClass: BluetoothClass?
-        get() = null
 
     override val name: String
         get() = Build.MODEL
@@ -25,8 +22,12 @@ class FakeSpeakerDevice(
             if (label == null) label = address
             return label
         }
+
     override val address: String
         get() = ADDRESS
+
+    override val deviceType: SourceDevice.Type
+        get() = SourceDevice.Type.PHONE_SPEAKER
 
     override fun getStreamId(type: AudioStream.Type): AudioStream.Id = when (type) {
         AudioStream.Type.MUSIC -> AudioStream.Id.STREAM_MUSIC

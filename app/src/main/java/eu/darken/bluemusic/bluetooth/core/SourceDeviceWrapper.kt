@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.bluetooth.core
 
-import android.bluetooth.BluetoothClass
 import android.bluetooth.BluetoothDevice
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.log
@@ -11,7 +10,8 @@ import java.util.Locale
 
 @Parcelize
 data class SourceDeviceWrapper(
-    private val realDevice: BluetoothDevice
+    private val realDevice: BluetoothDevice,
+    override val isActive: Boolean,
 ) : SourceDevice {
 
     override val label: String
@@ -32,8 +32,8 @@ data class SourceDeviceWrapper(
     override val address: String
         get() = realDevice.address
 
-    override val bluetoothClass: BluetoothClass?
-        get() = realDevice.bluetoothClass
+    override val deviceType: SourceDevice.Type
+        get() = realDevice.bluetoothClass.toType()
 
     override fun getStreamId(type: AudioStream.Type): AudioStream.Id {
         return when (type) {
@@ -62,6 +62,6 @@ data class SourceDeviceWrapper(
     }
 
     companion object {
-        private val TAG = logTag("SourceDeviceWrapper")
+        private val TAG = logTag("Bluetooth", "SourceDevice")
     }
 }

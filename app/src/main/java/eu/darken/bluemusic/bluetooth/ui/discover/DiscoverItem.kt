@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
-import eu.darken.bluemusic.bluetooth.ui.DeviceIconMapper
+import eu.darken.bluemusic.bluetooth.core.toIcon
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 
@@ -36,7 +36,7 @@ fun DeviceItem(
         },
         leadingContent = {
             Icon(
-                imageVector = DeviceIconMapper.getIconForDevice(device),
+                imageVector = device.deviceType.toIcon(),
                 contentDescription = null
             )
         },

@@ -2,7 +2,9 @@ package eu.darken.bluemusic
 
 import android.app.Application
 import androidx.hilt.work.HiltWorkerFactory
+import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
+import eu.darken.bluemusic.common.BuildConfigWrap
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.DebugSettings
@@ -18,6 +20,7 @@ import eu.darken.bluemusic.devices.core.database.legacy.RealmToRoomMigrator
 import eu.darken.bluemusic.main.core.CurriculumVitae
 import eu.darken.bluemusic.main.core.GeneralSettings
 import eu.darken.bluemusic.main.core.LegacySettings
+import eu.darken.bluemusic.monitor.core.worker.MonitorControl
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import kotlinx.coroutines.CoroutineScope
@@ -26,7 +29,7 @@ import javax.inject.Inject
 import kotlin.system.exitProcess
 
 @HiltAndroidApp
-class App : Application() {
+class App : Application(), Configuration.Provider {
 
     @Inject @AppScope lateinit var appScope: CoroutineScope
     @Inject lateinit var dispatcherProvider: DispatcherProvider
@@ -34,6 +37,7 @@ class App : Application() {
     @Inject lateinit var generalSettings: GeneralSettings
     @Inject lateinit var debugSettings: DebugSettings
     @Inject lateinit var curriculumVitae: CurriculumVitae
+    @Inject lateinit var monitorControl: MonitorControl
 
     @Inject lateinit var legacySettings: LegacySettings
     @Inject lateinit var realmToRoomMigrator: RealmToRoomMigrator
@@ -77,8 +81,27 @@ class App : Application() {
             if (oldHandler != null) oldHandler.uncaughtException(thread, throwable) else exitProcess(1)
             Thread.sleep(100)
         }
+
+        appScope.launch {
+            monitorControl.startMonitor(forceStart = true)
+        }
+
         log(TAG) { "onCreate() done! ${Exception().asLog()}" }
     }
+
+    override val workManagerConfiguration: Configuration
+        get() = Configuration.Builder()
+            .setMinimumLoggingLevel(
+                when {
+                    BuildConfigWrap.DEBUG -> android.util.Log.VERBOSE
+                    BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.DEV -> android.util.Log.DEBUG
+                    BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.BETA -> android.util.Log.INFO
+                    BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.RELEASE -> android.util.Log.WARN
+                    else -> android.util.Log.VERBOSE
+                }
+            )
+            .setWorkerFactory(workerFactory)
+            .build()
 
     companion object {
         private val TAG = logTag("App")

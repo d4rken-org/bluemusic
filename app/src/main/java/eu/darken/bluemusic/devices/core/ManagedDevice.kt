@@ -6,17 +6,17 @@ import eu.darken.bluemusic.main.core.audio.AudioStream
 import java.time.Instant
 
 data class ManagedDevice(
-    val device: SourceDevice,
+    val device: SourceDevice?,
     val config: DeviceConfigEntity,
     val isActive: Boolean,
 ) {
 
     val address: DeviceAddr
-        get() = device.address
+        get() = config.address
     val label: String
-        get() = config.alias ?: device.label
+        get() = config.alias ?: device?.label ?: address
     val name: String?
-        get() = device.name
+        get() = device?.name
     val lastConnected: Instant
         get() = Instant.ofEpochMilli(config.lastConnected)
 
@@ -34,6 +34,8 @@ data class ManagedDevice(
         get() = config.keepAwake
     val volumeLock: Boolean
         get() = config.volumeLock
+    val volumeObserving: Boolean
+        get() = config.volumeObserving
     val autoplay: Boolean
         get() = config.autoplay
 

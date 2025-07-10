@@ -6,15 +6,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
-
-//fun ManagedDevice.withUpdatedVolume(type: AudioStream.Type, volume: Float?): DeviceConfigEntity = when (type) {
-//    AudioStream.Type.MUSIC -> config.copy(musicVolume = volume)
-//    AudioStream.Type.CALL -> config.copy(callVolume = volume)
-//    AudioStream.Type.RINGTONE -> config.copy(ringVolume = volume)
-//    AudioStream.Type.NOTIFICATION -> config.copy(notificationVolume = volume)
-//    AudioStream.Type.ALARM -> config.copy(alarmVolume = volume)
-//}
-
 fun DeviceRepo.observeDevice(address: String): Flow<ManagedDevice?> = devices.map { devs -> devs.firstOrNull { it.address == address } }
 
 suspend fun DeviceRepo.getDevice(address: String): ManagedDevice? = observeDevice(address).first()

@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.bluetooth.core
 
-import android.bluetooth.BluetoothClass
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.main.core.audio.AudioStream
@@ -11,6 +10,7 @@ import java.util.UUID
 @Parcelize
 data class MockDevice(
     override val label: String = "MockDevice ${UUID.randomUUID().toString().take(4)}",
+    override val isActive: Boolean = false,
 ) : SourceDevice {
     @IgnoredOnParcel
     override val address: String = UUID.randomUUID()
@@ -20,15 +20,15 @@ data class MockDevice(
         .take(16)
         .chunked(2)
         .joinToString(":")
-    override val bluetoothClass: BluetoothClass?
-        get() = null
+    override val deviceType: SourceDevice.Type
+        get() = SourceDevice.Type.HEADPHONES
     override val name: String?
         get() = null
     override val alias: String?
         get() = null
 
     override fun getStreamId(type: AudioStream.Type): AudioStream.Id {
-        TODO("Not yet implemented")
+        throw NotImplementedError()
     }
 
     fun toManagedDevice(

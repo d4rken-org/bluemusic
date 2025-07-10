@@ -2,6 +2,7 @@ package eu.darken.bluemusic.devices.ui.manage.rows
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,7 +13,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.twotone.Alarm
+import androidx.compose.material.icons.twotone.Devices
+import androidx.compose.material.icons.twotone.MusicNote
+import androidx.compose.material.icons.twotone.Notifications
 import androidx.compose.material.icons.twotone.Phone
+import androidx.compose.material.icons.twotone.PhoneInTalk
+import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -29,12 +36,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
-import eu.darken.bluemusic.bluetooth.ui.DeviceIconMapper
+import eu.darken.bluemusic.bluetooth.core.toIcon
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.devices.core.ManagedDevice
@@ -78,7 +86,7 @@ fun ManagedDeviceItem(
             ) {
                 // Device type icon
                 Icon(
-                    imageVector = DeviceIconMapper.getIconForDevice(device.device),
+                    imageVector = device.device?.deviceType?.toIcon() ?: Icons.TwoTone.Devices,
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
                     tint = MaterialTheme.colorScheme.primary
@@ -144,12 +152,20 @@ fun ManagedDeviceItem(
                 val hasAnyVolumes = AudioStream.Type.entries.any { device.getVolume(it) != null }
 
                 if (!hasAnyVolumes) {
-                    // TODO show a message that no volumes configured for this device.
+                    Text(
+                        text = stringResource(R.string.managed_devices_no_volumes_configured),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp)
+                    )
                 }
 
                 AudioStream.Type.entries.map { streamType ->
                     device.getVolume(streamType)?.let { currentVolume ->
                         VolumeControl(
+                            streamType = streamType,
                             label = when (streamType) {
                                 AudioStream.Type.MUSIC -> stringResource(R.string.audio_stream_music_label)
                                 AudioStream.Type.CALL -> stringResource(R.string.audio_stream_call_label)
@@ -168,11 +184,21 @@ fun ManagedDeviceItem(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // Configure button
-                Button(
-                    onClick = onNavigateToConfig,
-                    modifier = Modifier.fillMaxWidth()
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End
                 ) {
-                    Text(stringResource(R.string.general_configure_action))
+                    Button(
+                        onClick = onNavigateToConfig
+                    ) {
+                        Icon(
+                            imageVector = Icons.TwoTone.Settings,
+                            contentDescription = null,
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(stringResource(R.string.general_configure_action))
+                    }
                 }
             }
         }
@@ -181,6 +207,7 @@ fun ManagedDeviceItem(
 
 @Composable
 private fun VolumeControl(
+    streamType: AudioStream.Type,
     label: String,
     volume: Float?,
     onVolumeChange: (Float) -> Unit,
@@ -192,7 +219,7 @@ private fun VolumeControl(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                imageVector = Icons.TwoTone.Phone,
+                imageVector = streamType.getIcon(),
                 contentDescription = null,
                 modifier = Modifier.size(20.dp),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
@@ -218,6 +245,15 @@ private fun VolumeControl(
             )
         }
     }
+}
+
+// Extension function to get the appropriate TwoTone icon for each audio stream type
+private fun AudioStream.Type.getIcon(): ImageVector = when (this) {
+    AudioStream.Type.MUSIC -> Icons.TwoTone.MusicNote
+    AudioStream.Type.CALL -> Icons.TwoTone.PhoneInTalk
+    AudioStream.Type.RINGTONE -> Icons.TwoTone.Phone
+    AudioStream.Type.NOTIFICATION -> Icons.TwoTone.Notifications
+    AudioStream.Type.ALARM -> Icons.TwoTone.Alarm
 }
 
 @Preview2

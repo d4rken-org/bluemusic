@@ -4,13 +4,16 @@ import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
+import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.replayingShare
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.devices.core.database.DeviceDatabase
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.retry
 import kotlinx.coroutines.plus
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -24,18 +27,20 @@ class DeviceRepo @Inject constructor(
     private val dispatcherProvider: DispatcherProvider,
 ) {
 
+    // TODO what if bluetooth is suddenly disabled?
     val devices = combine(
-        bluetoothRepo.pairedDevices,
-        bluetoothRepo.connectedDevices,
+        bluetoothRepo.pairedDevices.retry {
+            log(TAG, WARN) { "Error loading paired devices: ${it.asLog()}" }
+            delay(1000)
+            true
+        },
         deviceDatabase.devices.getAllDevices()
-    ) { paired, connected, managed ->
-        val pairedMap = paired.associateBy { it.address }
-        val connectedMap = connected.associateBy { it.address }
-        managed.mapNotNull {
-            val source = pairedMap[it.address] ?: return@mapNotNull null
+    ) { paired, managed ->
+        val pairedMap = paired?.associateBy { it.address }
+        managed.map {
             ManagedDevice(
-                device = source,
-                isActive = connectedMap.containsKey(it.address),
+                device = pairedMap?.get(it.address),
+                isActive = pairedMap?.get(it.address)?.isActive == true,
                 config = it,
             )
         }

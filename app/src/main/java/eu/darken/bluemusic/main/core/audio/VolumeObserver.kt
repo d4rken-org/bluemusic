@@ -1,57 +1,76 @@
 package eu.darken.bluemusic.main.core.audio
 
+import android.content.ContentResolver
+import android.content.Context
 import android.database.ContentObserver
 import android.os.Handler
 import android.os.HandlerThread
+import dagger.hilt.android.qualifiers.ApplicationContext
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.channels.trySendBlocking
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Singleton
 class VolumeObserver @Inject constructor(
-    private val streamHelper: StreamHelper
-) : ContentObserver(
-    run {
+    @ApplicationContext private val context: Context,
+    private val streamHelper: StreamHelper,
+) {
+
+    private val contentResolver: ContentResolver = context.contentResolver
+    private val handler by lazy {
         val handlerThread = HandlerThread("VolumeObserver")
         handlerThread.start()
         val looper = handlerThread.looper
         Handler(looper)
     }
-) {
 
-    interface Callback {
-        fun onVolumeChanged(streamId: AudioStream.Id, volume: Int)
-    }
+    private val volumesCache = mutableMapOf<AudioStream.Id, Int>()
 
-    private val callbacks = mutableMapOf<AudioStream.Id, Callback>()
-    private val volumes = mutableMapOf<AudioStream.Id, Int>()
+    val volumes: Flow<ChangeEvent> = callbackFlow {
+        AudioStream.Id.entries.forEach { id ->
+            val volume = streamHelper.getCurrentVolume(id)
+            volumesCache[id] = volume
+        }
 
-    fun addCallback(id: AudioStream.Id, callback: Callback) {
-        callbacks[id] = callback
-        val volume = streamHelper.getCurrentVolume(id)
-        volumes[id] = volume
-    }
+        val observer = object : ContentObserver(handler) {
+            override fun deliverSelfNotifications(): Boolean {
+                return false
+            }
 
-    override fun deliverSelfNotifications(): Boolean {
-        return false
-    }
-
-    override fun onChange(selfChange: Boolean) {
-        super.onChange(selfChange)
-        log(TAG, VERBOSE) { "Change detected." }
-        for ((id, callback) in callbacks) {
-            val newVolume = streamHelper.getCurrentVolume(id)
-            val oldVolume = volumes[id] ?: -1
-            if (newVolume != oldVolume) {
-                log(TAG, VERBOSE) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume)" }
-                volumes[id] = newVolume
-                callback.onVolumeChanged(id, newVolume)
+            override fun onChange(selfChange: Boolean) {
+                super.onChange(selfChange)
+                log(TAG, VERBOSE) { "Change detected." }
+                AudioStream.Id.entries.forEach { id ->
+                    val newVolume = streamHelper.getCurrentVolume(id)
+                    val oldVolume = volumesCache[id] ?: -1
+                    if (newVolume != oldVolume) {
+                        log(TAG, VERBOSE) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume)" }
+                        volumesCache[id] = newVolume
+                        trySendBlocking(ChangeEvent(id, newVolume))
+                    }
+                }
             }
         }
+
+        contentResolver.registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, observer)
+        log(TAG) { "Now listening for volume change events" }
+
+        awaitClose {
+            log(TAG) { "Stopping listening for volume change events" }
+            contentResolver.unregisterContentObserver(observer)
+        }
     }
+
+    data class ChangeEvent(
+        val streamId: AudioStream.Id,
+        val volume: Int
+    )
 
     companion object {
         private val TAG = logTag("VolumeObserver")

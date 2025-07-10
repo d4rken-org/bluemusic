@@ -11,7 +11,10 @@ class SpeakerDeviceProvider @Inject constructor(
     @ApplicationContext private val context: Context,
 ) {
 
-    suspend fun getSpeaker() = FakeSpeakerDevice(
-        alias = context.getString(R.string.label_device_speaker)
+    suspend fun getSpeaker(
+        isActive: Boolean,
+    ) = FakeSpeakerDevice(
+        alias = context.getString(R.string.label_device_speaker),
+        isActive = isActive,
     )
 }

@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
 	"version": 1,
-	"identityHash": "90e70154487ceca90a1ab34a871b6f18",
+	"identityHash": "f8482fcaed3ec9a97d71b11f617b1fcb",
 	"entities": [
 	  {
 		"tableName": "device_configs",
-		"createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`address` TEXT NOT NULL, `last_connected` INTEGER NOT NULL, `action_delay` INTEGER, `adjustment_delay` INTEGER, `monitoring_duration` INTEGER, `music_volume` REAL, `call_volume` REAL, `ring_volume` REAL, `notification_volume` REAL, `alarm_volume` REAL, `volume_lock` INTEGER NOT NULL, `keep_awake` INTEGER NOT NULL, `nudge_volume` INTEGER NOT NULL, `autoplay` INTEGER NOT NULL, `launch_pkg` TEXT, `alias` TEXT, `name` TEXT, PRIMARY KEY(`address`))",
+		"createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`address` TEXT NOT NULL, `last_connected` INTEGER NOT NULL, `action_delay` INTEGER, `adjustment_delay` INTEGER, `monitoring_duration` INTEGER, `music_volume` REAL, `call_volume` REAL, `ring_volume` REAL, `notification_volume` REAL, `alarm_volume` REAL, `volume_lock` INTEGER NOT NULL, `volume_observing` INTEGER NOT NULL, `keep_awake` INTEGER NOT NULL, `nudge_volume` INTEGER NOT NULL, `autoplay` INTEGER NOT NULL, `launch_pkg` TEXT, `alias` TEXT, `name` TEXT, PRIMARY KEY(`address`))",
 		"fields": [
 		  {
 			"fieldPath": "address",
@@ -67,6 +67,12 @@
 			"notNull": true
 		  },
 		  {
+			"fieldPath": "volumeObserving",
+			"columnName": "volume_observing",
+			"affinity": "INTEGER",
+			"notNull": true
+		  },
+		  {
 			"fieldPath": "keepAwake",
 			"columnName": "keep_awake",
 			"affinity": "INTEGER",
@@ -110,7 +116,7 @@
 	],
 	"setupQueries": [
 	  "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-	  "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '90e70154487ceca90a1ab34a871b6f18')"
+	  "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f8482fcaed3ec9a97d71b11f617b1fcb')"
 	]
   }
 }

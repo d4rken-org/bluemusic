@@ -39,6 +39,9 @@ data class DeviceConfigEntity(
     
     @ColumnInfo(name = "volume_lock")
     val volumeLock: Boolean = false,
+
+    @ColumnInfo(name = "volume_observing")
+    val volumeObserving: Boolean = false,
     
     @ColumnInfo(name = "keep_awake")
     val keepAwake: Boolean = false,

@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.bluetooth.core
 
-import android.bluetooth.BluetoothClass
 import android.bluetooth.BluetoothDevice
 import android.content.Intent
 import android.os.Parcelable
@@ -16,18 +15,19 @@ import kotlinx.parcelize.Parcelize
 
 interface SourceDevice : Parcelable {
 
-    val bluetoothClass: BluetoothClass?
     val name: String?
     val address: DeviceAddr
     val alias: String?
     val label: String
+    val isActive: Boolean
+    val deviceType: Type
 
     fun getStreamId(type: AudioStream.Type): Id
 
     @Parcelize
     data class Event(
-            val device: SourceDevice,
-            val type: Type
+        val device: SourceDevice,
+        val type: Type
     ) : Parcelable {
         enum class Type {
             CONNECTED, DISCONNECTED
@@ -45,7 +45,8 @@ interface SourceDevice : Parcelable {
                     log(TAG, WARN) { "Intent didn't contain a bluetooth device!" }
                     return null
                 }
-                val sourceDevice: SourceDevice = SourceDeviceWrapper(bluetoothDevice)
+                val sourceDevice: SourceDevice =
+                    SourceDeviceWrapper(bluetoothDevice, isActive = BluetoothDevice.ACTION_ACL_CONNECTED == intent.action)
                 val actionType: Type = when {
                     BluetoothDevice.ACTION_ACL_CONNECTED == intent.action -> Type.CONNECTED
                     BluetoothDevice.ACTION_ACL_DISCONNECTED == intent.action -> Type.DISCONNECTED
@@ -63,5 +64,18 @@ interface SourceDevice : Parcelable {
                 return Event(sourceDevice, actionType)
             }
         }
+    }
+
+    enum class Type {
+        UNKNOWN,
+        PHONE_SPEAKER,
+        HEADPHONES,
+        HEADSET,
+        CAR_AUDIO,
+        PORTABLE_SPEAKER,
+        COMPUTER,
+        SMARTPHONE,
+        WATCH,
+        ;
     }
 }
