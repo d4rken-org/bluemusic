@@ -35,7 +35,14 @@ data class MockDevice(
         isActive: Boolean = false,
     ) = ManagedDevice(
         device = this,
-        config = DeviceConfigEntity(address = address),
+        config = DeviceConfigEntity(
+            address = address,
+            musicVolume = 0.7f,
+            callVolume = 0.6f,
+            ringVolume = 0.5f,
+            notificationVolume = 0.4f,
+            alarmVolume = 0.3f,
+        ),
         isActive = isActive,
     )
 }

@@ -31,11 +31,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.bluetooth.ui.DeviceIconMapper
+import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.ui.manage.DevicesAction
@@ -84,7 +84,7 @@ fun ManagedDeviceItem(
                     tint = MaterialTheme.colorScheme.primary
                 )
                 Spacer(modifier = Modifier.width(12.dp))
-                
+
                 Column(
                     modifier = Modifier.weight(1f)
                 ) {
@@ -108,7 +108,7 @@ fun ManagedDeviceItem(
                             )
                         }
 
-                        device.lastConnected != Instant.ofEpochMilli(0) -> {
+                        device.lastConnected != Instant.EPOCH -> {
                             Text(
                                 text = stringResource(
                                     R.string.managed_devices_last_connected_label,
@@ -141,50 +141,29 @@ fun ManagedDeviceItem(
             if (expanded) {
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Music volume
-                VolumeControl(
-                    label = stringResource(R.string.audio_stream_music_label),
-                    volume = device.getVolume(AudioStream.Type.MUSIC),
-                    onVolumeChange = { volume ->
-                        onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.MUSIC, volume))
-                    }
-                )
+                val hasAnyVolumes = AudioStream.Type.entries.any { device.getVolume(it) != null }
 
-                // Call volume
-                VolumeControl(
-                    label = stringResource(R.string.audio_stream_call_label),
-                    volume = device.getVolume(AudioStream.Type.CALL),
-                    onVolumeChange = { volume ->
-                        onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.CALL, volume))
-                    }
-                )
+                if (!hasAnyVolumes) {
+                    // TODO show a message that no volumes configured for this device.
+                }
 
-                // Ring volume
-                VolumeControl(
-                    label = stringResource(R.string.audio_stream_ring_label),
-                    volume = device.getVolume(AudioStream.Type.RINGTONE),
-                    onVolumeChange = { volume ->
-                        onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.RINGTONE, volume))
+                AudioStream.Type.entries.map { streamType ->
+                    device.getVolume(streamType)?.let { currentVolume ->
+                        VolumeControl(
+                            label = when (streamType) {
+                                AudioStream.Type.MUSIC -> stringResource(R.string.audio_stream_music_label)
+                                AudioStream.Type.CALL -> stringResource(R.string.audio_stream_call_label)
+                                AudioStream.Type.RINGTONE -> stringResource(R.string.audio_stream_ring_label)
+                                AudioStream.Type.NOTIFICATION -> stringResource(R.string.audio_stream_notification_label)
+                                AudioStream.Type.ALARM -> stringResource(R.string.audio_stream_alarm_label)
+                            },
+                            volume = currentVolume,
+                            onVolumeChange = { newVolume ->
+                                onDeviceAction(DevicesAction.AdjustVolume(device.address, streamType, newVolume))
+                            }
+                        )
                     }
-                )
-
-                // Notification volume
-                VolumeControl(
-                    label = stringResource(R.string.audio_stream_notification_label),
-                    volume = device.getVolume(AudioStream.Type.NOTIFICATION),
-                    onVolumeChange = { volume ->
-                        onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.NOTIFICATION, volume))
-                    }
-                )
-
-                // Alarm volume
-                VolumeControl(
-                    label = stringResource(R.string.audio_stream_alarm_label),
-                    volume = device.getVolume(AudioStream.Type.ALARM),
-                    onVolumeChange = { volume ->
-                        onDeviceAction(DevicesAction.AdjustVolume(device.address, AudioStream.Type.ALARM, volume))
-                    }
-                )
+                }
 
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -241,7 +220,19 @@ private fun VolumeControl(
     }
 }
 
-@Preview
+@Preview2
+@Composable
+private fun ManagedDeviceItemExpandedPreview() {
+    PreviewWrapper {
+        ManagedDeviceItem(
+            device = MockDevice().toManagedDevice(isActive = true),
+            onDeviceAction = {},
+            onNavigateToConfig = {},
+        )
+    }
+}
+
+@Preview2
 @Composable
 private fun ManagedDeviceItemPreview() {
     PreviewWrapper {
