@@ -14,35 +14,30 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.devices.core.DeviceManagerFlowAdapter
+import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.main.core.service.modules.EventModule
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class KeepAwakeModule @Inject internal constructor(
     private val wakelockMan: WakelockMan,
-    private val deviceManager: DeviceManagerFlowAdapter
+    private val deviceRepo: DeviceRepo,
 ) : EventModule {
-
-    companion object {
-        private val TAG = logTag("KeepAwakeModule")
-    }
 
     override val priority: Int
         get() = 1
 
     override suspend fun handle(device: ManagedDevice, event: SourceDevice.Event) {
         if (!device.keepAwake) return
-        if (device.address == FakeSpeakerDevice.address) {
+        if (device.address == FakeSpeakerDevice.ADDRESS) {
             log(TAG, ERROR) { "Keep awake should not be enabled for the fake speaker device: $device" }
             return
         }
 
-        val deviceMap = runBlocking { deviceManager.devices().first() }
+        val deviceMap = deviceRepo.currentDevices().associateBy { it.address }
         val otherWokeDevice = deviceMap.values.find { d -> d.keepAwake && d.address != event.address }
 
         when (event.type) {
@@ -67,5 +62,9 @@ class KeepAwakeModule @Inject internal constructor(
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
         @Binds @IntoSet abstract fun bind(entry: KeepAwakeModule): EventModule
+    }
+
+    companion object {
+        private val TAG = logTag("KeepAwakeModule")
     }
 }

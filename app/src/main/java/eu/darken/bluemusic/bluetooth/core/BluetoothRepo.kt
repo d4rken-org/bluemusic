@@ -10,8 +10,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import androidx.annotation.RequiresPermission
+import androidx.core.content.ContextCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
-import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
 import eu.darken.bluemusic.bluetooth.core.speaker.SpeakerDeviceProvider
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
@@ -30,7 +30,6 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -55,7 +54,7 @@ class BluetoothRepo @Inject constructor(
 
     @SuppressLint("MissingPermission")
     @RequiresPermission(anyOf = [Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH])
-    val pairedDevices: Flow<Collection<SourceDevice>> = callbackFlow {
+    val pairedDevices: Flow<Set<SourceDevice>> = callbackFlow {
         val bonded = bluetoothManager.adapter.bondedDevices
             .filterNot { device ->
                 val isHealthDevice = device.hasUUID(0x1400)
@@ -64,6 +63,7 @@ class BluetoothRepo @Inject constructor(
                 isHealthDevice
             }
             .map { device -> SourceDeviceWrapper(device) }
+            .toSet()
         send(bonded)
         awaitClose()
     }
@@ -94,7 +94,7 @@ class BluetoothRepo @Inject constructor(
         }
 
         val filter = IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED)
-        context.registerReceiver(receiver, filter)
+        ContextCompat.registerReceiver(context, receiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED)
 
         // Emit initial state
         trySend(bluetoothAdapter?.isEnabled ?: false)
@@ -104,7 +104,7 @@ class BluetoothRepo @Inject constructor(
         }
     }.flowOn(dispatcherProvider.IO)
 
-    val connectedDevices: Flow<Map<String, SourceDevice>> = callbackFlow {
+    val connectedDevices: Flow<Set<SourceDevice>> = callbackFlow {
         val receiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
                 when (intent.action) {
@@ -121,48 +121,29 @@ class BluetoothRepo @Inject constructor(
             addAction(BluetoothDevice.ACTION_ACL_CONNECTED)
             addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED)
         }
-        context.registerReceiver(receiver, filter)
+        ContextCompat.registerReceiver(context, receiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED)
 
-        // Emit initial state
         trySend(Unit)
 
         awaitClose {
             context.unregisterReceiver(receiver)
         }
-    }.map {
-        loadConnectedDevices()
-    }.flowOn(dispatcherProvider.IO)
-
-    suspend fun reloadConnectedDevices(): Map<String, SourceDevice> {
-        return withContext(dispatcherProvider.IO) {
-            loadConnectedDevices()
-        }
     }
+        .map { loadConnectedDevices() }
+        .flowOn(dispatcherProvider.IO)
 
-    private suspend fun loadConnectedDevices(): Map<String, SourceDevice> {
-        val devices = mutableMapOf<String, SourceDevice>()
+    @RequiresPermission(anyOf = [Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH])
+    private suspend fun loadConnectedDevices(): Set<SourceDevice> {
+        val devices = mutableSetOf<SourceDevice>()
 
-        // Always add FakeSpeakerDevice
-        devices[FakeSpeakerDevice.address] = speakerDeviceProvider.getSpeaker()
+        devices.add(speakerDeviceProvider.getSpeaker())
 
-        if (bluetoothAdapter?.isEnabled != true) {
-            return devices
-        }
-
-        // Check for BLUETOOTH_CONNECT permission on Android 12+
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
-            if (context.checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
-                log(TAG, WARN) { "BLUETOOTH_CONNECT permission not granted" }
-                return devices
-            }
-        }
+        if (bluetoothAdapter?.isEnabled != true) return devices
 
         try {
-            // Get bonded devices that are connected
             bluetoothAdapter.bondedDevices?.forEach { device ->
-                if (isConnected(device)) {
-                    val sourceDevice = SourceDeviceWrapper(device)
-                    devices[device.address] = sourceDevice
+                if (device.isConnected()) {
+                    devices.add(SourceDeviceWrapper(device))
                     log(TAG) { "Connected device: ${device.name} - ${device.address}" }
                 }
             }
@@ -173,17 +154,15 @@ class BluetoothRepo @Inject constructor(
         return devices
     }
 
-    private fun isConnected(device: BluetoothDevice): Boolean {
-        return try {
-            val method = device.javaClass.getMethod("isConnected")
-            method.invoke(device) as Boolean
-        } catch (e: Exception) {
-            log(TAG, WARN) { "Could not determine connection state for ${device.address}: ${e.asLog()}" }
-            false
-        }
+    private fun BluetoothDevice.isConnected(): Boolean = try {
+        val method = this.javaClass.getMethod("isConnected")
+        method.invoke(this) as Boolean
+    } catch (e: Exception) {
+        log(TAG, WARN) { "Could not determine connection state for ${this.address}: ${e.asLog()}" }
+        false
     }
 
     companion object {
-        private val TAG = logTag("LiveBluetoothSourceFlow")
+        private val TAG = logTag("Bluetooth", "Repo")
     }
 }

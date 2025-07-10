@@ -41,7 +41,7 @@
         </activity>
 
         <receiver
-            android:name="eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiverFlow"
+            android:name="eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiver"
             android:enabled="true"
             android:label="@string/app_name"
             android:exported="true">
@@ -52,7 +52,7 @@
         </receiver>
 
         <receiver
-            android:name="eu.darken.bluemusic.bluetooth.core.BootCheckReceiverFlow"
+            android:name="eu.darken.bluemusic.bluetooth.core.BootCheckReceiver"
             android:enabled="true"
             android:label="@string/app_name"
             android:exported="true">
@@ -62,7 +62,7 @@
         </receiver>
 
         <service
-            android:name=".main.core.service.BlueMusicServiceFlow"
+            android:name=".main.core.service.BlueMusicService"
             android:foregroundServiceType="connectedDevice" />
     </application>
 

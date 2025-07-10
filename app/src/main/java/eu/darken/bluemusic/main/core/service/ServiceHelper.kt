@@ -12,9 +12,9 @@ import androidx.core.app.NotificationCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.PendingIntentCompat
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.main.ui.MainActivity
 import javax.inject.Inject
@@ -26,7 +26,7 @@ class ServiceHelper @Inject constructor(
     private val notificationManager: NotificationManager,
 ) {
     private val builder: NotificationCompat.Builder
-    private var service: BlueMusicServiceFlow? = null
+    private var service: BlueMusicService? = null
 
     @Volatile
     private var isStarted = false
@@ -44,7 +44,7 @@ class ServiceHelper @Inject constructor(
         val openIntent = Intent(context, MainActivity::class.java)
         val openPi = PendingIntent.getActivity(context, 0, openIntent, PendingIntentCompat.FLAG_IMMUTABLE)
 
-        val stopIntent = Intent(context, BlueMusicServiceFlow::class.java).apply {
+        val stopIntent = Intent(context, BlueMusicService::class.java).apply {
             action = STOP_ACTION
         }
         val stopPi = PendingIntent.getService(context, 0, stopIntent, PendingIntentCompat.FLAG_IMMUTABLE)
@@ -109,7 +109,7 @@ class ServiceHelper @Inject constructor(
 //            }
     }
 
-    fun setService(service: BlueMusicServiceFlow) {
+    fun setService(service: BlueMusicService) {
         this.service = service
     }
 
@@ -162,7 +162,7 @@ class ServiceHelper @Inject constructor(
 
         @JvmStatic
         fun getIntent(context: Context): Intent {
-            return Intent(context, BlueMusicServiceFlow::class.java)
+            return Intent(context, BlueMusicService::class.java)
         }
 
         @JvmStatic

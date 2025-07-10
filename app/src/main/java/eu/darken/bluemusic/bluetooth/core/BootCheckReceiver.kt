@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class BootCheckReceiverFlow : BroadcastReceiver() {
+class BootCheckReceiver : BroadcastReceiver() {
 
     companion object {
         private val TAG = logTag("BootCheckReceiverFlow")
@@ -75,8 +75,8 @@ class BootCheckReceiverFlow : BroadcastReceiver() {
                 val managedConnectedDevices = mutableListOf<SourceDevice>()
                 val managedDevices = deviceRepo.devices.first()
 
-                connectedDevices.forEach { (address, device) ->
-                    if (managedDevices.any { it.address == address }) {
+                connectedDevices.forEach { device ->
+                    if (managedDevices.any { it.address == device.address }) {
                         managedConnectedDevices.add(device)
                     }
                 }

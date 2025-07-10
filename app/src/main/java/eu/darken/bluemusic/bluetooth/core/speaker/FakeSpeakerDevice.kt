@@ -8,7 +8,7 @@ import eu.darken.bluemusic.main.core.audio.AudioStream
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class FakeSpeakerDevice constructor(
+class FakeSpeakerDevice(
     override val alias: String
 ) : SourceDevice, Parcelable {
 
@@ -26,7 +26,7 @@ class FakeSpeakerDevice constructor(
             return label
         }
     override val address: String
-        get() = address
+        get() = ADDRESS
 
     override fun getStreamId(type: AudioStream.Type): AudioStream.Id = when (type) {
         AudioStream.Type.MUSIC -> AudioStream.Id.STREAM_MUSIC
@@ -42,6 +42,6 @@ class FakeSpeakerDevice constructor(
     }
 
     companion object {
-        const val address = "self:speaker:main"
+        const val ADDRESS = "self:speaker:main"
     }
 }

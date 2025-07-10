@@ -1,37 +1,47 @@
 package eu.darken.bluemusic.devices.core
 
+import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
+import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.flow.replayingShare
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.devices.core.database.DeviceDatabase
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.plus
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class DeviceRepo @Inject constructor(
+    @AppScope private val appScope: CoroutineScope,
     private val deviceDatabase: DeviceDatabase,
+    private val bluetoothRepo: BluetoothRepo,
     private val dispatcherProvider: DispatcherProvider,
 ) {
 
-    val devices = deviceDatabase.devices.getAllDevices().flowOn(dispatcherProvider.IO)
-
-    fun observeDevice(address: String): Flow<DeviceConfigEntity?> {
-        return deviceDatabase.devices.observeDevice(address)
-            .flowOn(dispatcherProvider.IO)
-    }
-
-    suspend fun getDevice(address: String): DeviceConfigEntity? {
-        return withContext(dispatcherProvider.IO) {
-            deviceDatabase.devices.getDevice(address)
+    val devices = combine(
+        bluetoothRepo.pairedDevices,
+        bluetoothRepo.connectedDevices,
+        deviceDatabase.devices.getAllDevices()
+    ) { paired, connected, managed ->
+        val pairedMap = paired.associateBy { it.address }
+        val connectedMap = connected.associateBy { it.address }
+        managed.mapNotNull {
+            val source = pairedMap[it.address] ?: return@mapNotNull null
+            ManagedDevice(
+                device = source,
+                isActive = connectedMap.containsKey(it.address),
+                config = it,
+            )
         }
-    }
+    }.replayingShare(appScope + dispatcherProvider.IO)
 
-    suspend fun createDevice(address: String): DeviceConfigEntity {
+    suspend fun createDevice(address: DeviceAddr) {
         return withContext(dispatcherProvider.IO) {
             val device = DeviceConfigEntity(
                 address = address,
@@ -43,14 +53,7 @@ class DeviceRepo @Inject constructor(
         }
     }
 
-    suspend fun updateDevice(device: DeviceConfigEntity) {
-        withContext(dispatcherProvider.IO) {
-            deviceDatabase.devices.updateDevice(device)
-            log(TAG) { "Updated device config: ${device.address}" }
-        }
-    }
-
-    suspend fun setAlias(address: String, alias: String?) {
+    suspend fun setAlias(address: DeviceAddr, alias: String?) {
         log(TAG) { "Setting alias for $address to $alias" }
 //        return try {
 //            val method = realDevice.javaClass.getMethod("setAlias", String::class.java)
@@ -61,7 +64,7 @@ class DeviceRepo @Inject constructor(
 //        }
     }
 
-    suspend fun updateDevice(address: String, update: (DeviceConfigEntity) -> DeviceConfigEntity) {
+    suspend fun updateDevice(address: DeviceAddr, update: (DeviceConfigEntity) -> DeviceConfigEntity) {
         withContext(dispatcherProvider.IO) {
             val device = deviceDatabase.devices.getDevice(address)
             if (device != null) {
@@ -74,21 +77,21 @@ class DeviceRepo @Inject constructor(
         }
     }
 
-    suspend fun deleteDevice(address: String) {
+    suspend fun deleteDevice(address: DeviceAddr) {
         withContext(dispatcherProvider.IO) {
             deviceDatabase.devices.deleteByAddress(address)
             log(TAG) { "Deleted device config: $address" }
         }
     }
 
-    suspend fun updateLastConnected(address: String) {
+    suspend fun updateLastConnected(address: DeviceAddr) {
         withContext(dispatcherProvider.IO) {
             deviceDatabase.devices.updateLastConnected(address, System.currentTimeMillis())
             log(TAG) { "Updated last connected for: $address" }
         }
     }
 
-    suspend fun isDeviceManaged(address: String): Boolean {
+    suspend fun isDeviceManaged(address: DeviceAddr): Boolean {
         return withContext(dispatcherProvider.IO) {
             deviceDatabase.devices.getDevice(address) != null
         }

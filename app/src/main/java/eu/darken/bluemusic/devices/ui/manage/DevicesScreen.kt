@@ -41,6 +41,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import eu.darken.bluemusic.R
+import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.common.compose.ColoredTitleText
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
@@ -49,7 +50,6 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.ui.waitForState
 import eu.darken.bluemusic.devices.core.DeviceAddr
-import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.ui.manage.rows.Android10AppLaunchHintCard
 import eu.darken.bluemusic.devices.ui.manage.rows.BatteryOptimizationHintCard
 import eu.darken.bluemusic.devices.ui.manage.rows.EmptyDevicesCard
@@ -145,46 +145,37 @@ fun DevicesScreen(
                 }
             }
 
-            // Optional hint cards - shown when Bluetooth is working
-            if (state.hasBluetoothPermission && state.isBluetoothEnabled) {
-                // Battery optimization hint
-                if (state.showBatteryOptimizationHint && state.batteryOptimizationIntent != null) {
-                    item {
-                        BatteryOptimizationHintCard(
-                            intent = state.batteryOptimizationIntent,
-                            onDismiss = { onDeviceAction(DevicesAction.DismissBatteryOptimizationHint) }
-                        )
-                    }
-                }
-
-                // Android 10 app launch hint
-                if (state.showAndroid10AppLaunchHint && state.android10AppLaunchIntent != null) {
-                    item {
-                        Android10AppLaunchHintCard(
-                            intent = state.android10AppLaunchIntent,
-                            onDismiss = { onDeviceAction(DevicesAction.DismissAndroid10AppLaunchHint) }
-                        )
-                    }
-                }
-
-                // Notification permission hint
-                if (state.showNotificationPermissionHint) {
-                    item {
-                        NotificationPermissionHintCard(
-                            onRequestPermission = { onDeviceAction(DevicesAction.RequestNotificationPermission) },
-                            onDismiss = { onDeviceAction(DevicesAction.DismissNotificationPermissionHint) }
-                        )
-                    }
+            if (state.showBatteryOptimizationHint && state.batteryOptimizationIntent != null) {
+                item {
+                    BatteryOptimizationHintCard(
+                        intent = state.batteryOptimizationIntent,
+                        onDismiss = { onDeviceAction(DevicesAction.DismissBatteryOptimizationHint) }
+                    )
                 }
             }
 
-            // Device list or empty message
+            if (state.showAndroid10AppLaunchHint && state.android10AppLaunchIntent != null) {
+                item {
+                    Android10AppLaunchHintCard(
+                        intent = state.android10AppLaunchIntent,
+                        onDismiss = { onDeviceAction(DevicesAction.DismissAndroid10AppLaunchHint) }
+                    )
+                }
+            }
+
+            if (state.showNotificationPermissionHint) {
+                item {
+                    NotificationPermissionHintCard(
+                        onRequestPermission = { onDeviceAction(DevicesAction.RequestNotificationPermission) },
+                        onDismiss = { onDeviceAction(DevicesAction.DismissNotificationPermissionHint) }
+                    )
+                }
+            }
+
             if (state.hasBluetoothPermission && state.isBluetoothEnabled) {
                 if (state.devices.isEmpty() && !state.isLoading) {
                     item {
-                        EmptyDevicesCard(
-                            onAddDevice = onAddDevice
-                        )
+                        EmptyDevicesCard(onAddDevice = onAddDevice)
                     }
                 } else {
                     items(
@@ -344,19 +335,12 @@ private fun BluetoothPermissionCard(
 }
 
 
-
 @Preview2
 @Composable
 private fun DevicesScreenPreview() {
     val devices = listOf(
-        ManagedDevice(
-            address = "00:11:22:33:44:55",
-            lastConnected = System.currentTimeMillis()
-        ),
-        ManagedDevice(
-            address = "AA:BB:CC:DD:EE:FF",
-            lastConnected = System.currentTimeMillis() - 86400000
-        )
+        MockDevice().toManagedDevice(isActive = true),
+        MockDevice().toManagedDevice(),
     )
 
     PreviewWrapper {

@@ -28,7 +28,7 @@ class AppLaunchModule @Inject constructor(
         if (device.launchPkg == null) return
 
         log(TAG) { "Launching app ${device.launchPkg}" }
-        appTool.launch(device.launchPkg)
+        appTool.launch(device.launchPkg!!)
 
         try {
             Thread.sleep(1000)

@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.devices.ui.manage.rows
 
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.twotone.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -19,22 +21,27 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
+import eu.darken.bluemusic.bluetooth.core.MockDevice
+import eu.darken.bluemusic.bluetooth.ui.DeviceIconMapper
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.ui.manage.DevicesAction
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import java.text.DateFormat
+import java.time.Instant
 import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -45,7 +52,12 @@ fun ManagedDeviceItem(
     onNavigateToConfig: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var expanded by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(device.isActive) }
+
+    // Update expanded state when device active state changes
+    LaunchedEffect(device.isActive) {
+        expanded = device.isActive || expanded
+    }
 
     Card(
         modifier = modifier
@@ -64,6 +76,15 @@ fun ManagedDeviceItem(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                // Device type icon
+                Icon(
+                    imageVector = DeviceIconMapper.getIconForDevice(device.device),
+                    contentDescription = null,
+                    modifier = Modifier.size(24.dp),
+                    tint = MaterialTheme.colorScheme.primary
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                
                 Column(
                     modifier = Modifier.weight(1f)
                 ) {
@@ -78,18 +99,42 @@ fun ManagedDeviceItem(
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-                    if (device.lastConnected > 0) {
-                        Text(
-                            text = stringResource(
-                                R.string.managed_devices_last_connected_label,
-                                DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT)
-                                    .format(Date(device.lastConnected))
-                            ),
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
+                    when {
+                        device.isActive -> {
+                            Text(
+                                text = stringResource(R.string.managed_devices_currently_connected_label),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.primary
+                            )
+                        }
+
+                        device.lastConnected != Instant.ofEpochMilli(0) -> {
+                            Text(
+                                text = stringResource(
+                                    R.string.managed_devices_last_connected_label,
+                                    DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT)
+                                        .format(Date(device.lastConnected.toEpochMilli()))
+                                ),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
                     }
                 }
+
+                // Expand/collapse indicator
+                val rotationAngle by animateFloatAsState(
+                    targetValue = if (expanded) 180f else 0f,
+                    label = "expand_icon_rotation"
+                )
+                Icon(
+                    imageVector = Icons.Filled.ExpandMore,
+                    contentDescription = if (expanded) "Collapse" else "Expand",
+                    modifier = Modifier
+                        .size(24.dp)
+                        .rotate(rotationAngle),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             }
 
             // Volume controls when expanded
@@ -201,16 +246,7 @@ private fun VolumeControl(
 private fun ManagedDeviceItemPreview() {
     PreviewWrapper {
         ManagedDeviceItem(
-            device = ManagedDevice(
-                alias = "This is a test device",
-                address = "00:11:22:33:44:55",
-                lastConnected = System.currentTimeMillis(),
-                musicVolume = 0.75f,
-                callVolume = 0.5f,
-                ringVolume = 0.8f,
-                notificationVolume = 0.6f,
-                alarmVolume = 0.9f
-            ),
+            device = MockDevice().toManagedDevice(),
             onDeviceAction = {},
             onNavigateToConfig = {},
         )

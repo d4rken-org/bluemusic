@@ -6,8 +6,6 @@ import androidx.compose.runtime.produceState
 import kotlinx.coroutines.flow.Flow
 
 @Composable
-fun <T> waitForState(flow: Flow<T>): State<T?> {
-    return produceState(initialValue = null) {
-        flow.collect { value = it }
-    }
+fun <T> waitForState(flow: Flow<T>): State<T?> = produceState(initialValue = null) {
+    flow.collect { value = it }
 }

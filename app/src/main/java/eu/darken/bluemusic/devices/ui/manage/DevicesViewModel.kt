@@ -19,7 +19,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.receiveAsFlow
 import javax.inject.Inject
 
@@ -53,30 +52,6 @@ class DevicesViewModel @Inject constructor(
     }
 
     private val devicesFlow = deviceRepo.devices
-        .map { entities ->
-            entities.map { entity ->
-                ManagedDevice(
-                    address = entity.address,
-                    name = entity.name,
-                    alias = entity.alias,
-                    lastConnected = entity.lastConnected,
-                    actionDelay = entity.actionDelay,
-                    adjustmentDelay = entity.adjustmentDelay,
-                    monitoringDuration = entity.monitoringDuration,
-                    musicVolume = entity.musicVolume,
-                    callVolume = entity.callVolume,
-                    ringVolume = entity.ringVolume,
-                    notificationVolume = entity.notificationVolume,
-                    alarmVolume = entity.alarmVolume,
-                    volumeLock = entity.volumeLock,
-                    keepAwake = entity.keepAwake,
-                    nudgeVolume = entity.nudgeVolume,
-                    autoplay = entity.autoplay,
-                    launchPkg = entity.launchPkg,
-                    isActive = false
-                )
-            }
-        }
 
     private val batteryOptimizationHintFlow = combine(
         flow {
@@ -102,7 +77,6 @@ class DevicesViewModel @Inject constructor(
     ) { _, isDismissed, devices ->
         val hasDevicesWithLaunchPkg = devices.any { it.launchPkg != null }
         val hint = permissionHelper.getOverlayPermissionHint(isDismissed, hasDevicesWithLaunchPkg)
-        log(tag) { "Overlay permission check: hasDevicesWithLaunchPkg=$hasDevicesWithLaunchPkg, isDismissed=$isDismissed, shouldShow=${hint.shouldShow}" }
         hint
     }
 

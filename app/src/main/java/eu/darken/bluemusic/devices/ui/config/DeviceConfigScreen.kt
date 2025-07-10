@@ -20,7 +20,6 @@ import androidx.compose.material.icons.twotone.Star
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
@@ -45,28 +44,54 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import eu.darken.bluemusic.R
+import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.ui.waitForState
+import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.DevicesSettings
-import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.main.core.audio.AudioStream
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
-fun ConfigScreen(
-    state: ConfigState,
-    onEvent: (ConfigEvent) -> Unit,
+fun DeviceConfigScreenHost(
+    addr: DeviceAddr,
+    vm: DeviceConfigViewModel = hiltViewModel(
+        key = addr,
+        creationCallback = { factory: DeviceConfigViewModel.Factory -> factory.create(addr = addr) }
+    ),
+) {
+
+    val state by waitForState(vm.state)
+
+    state?.let { state ->
+        DeviceConfigScreen(
+            state = state,
+            onEvent = { event ->
+
+            },
+            onNavigateBack = { vm.navUp() }
+        )
+    }
+}
+
+
+@Composable
+fun DeviceConfigScreen(
+    state: DeviceConfigViewModel.State,
+    onEvent: (ConfigAction) -> Unit,
     onNavigateBack: () -> Unit
 ) {
     val device = state.device
-    
+
     LaunchedEffect(state.shouldFinish) {
         if (state.shouldFinish) {
             onNavigateBack()
         }
     }
-    
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -118,227 +143,227 @@ fun ConfigScreen(
                 item {
                     SectionHeader(title = stringResource(R.string.label_volume))
                 }
-                
+
                 item {
                     VolumePreference(
                         title = stringResource(R.string.label_music_volume),
                         description = stringResource(R.string.description_music_volume),
                         isChecked = device.getVolume(AudioStream.Type.MUSIC) != null,
-                        onCheckedChange = { onEvent(ConfigEvent.OnToggleMusicVolume) }
+                        onCheckedChange = { onEvent(ConfigAction.OnToggleMusicVolume) }
                     )
                 }
-                
+
                 item {
                     VolumePreference(
                         title = stringResource(R.string.label_call_volume),
                         description = stringResource(R.string.description_call_volume),
                         isChecked = device.getVolume(AudioStream.Type.CALL) != null,
-                        onCheckedChange = { onEvent(ConfigEvent.OnToggleCallVolume) }
+                        onCheckedChange = { onEvent(ConfigAction.OnToggleCallVolume) }
                     )
                 }
-                
+
                 item {
                     VolumePreference(
                         title = stringResource(R.string.label_ring_volume),
                         description = stringResource(R.string.description_ring_volume),
                         isChecked = device.getVolume(AudioStream.Type.RINGTONE) != null,
                         isPro = state.isProVersion,
-                        onCheckedChange = { onEvent(ConfigEvent.OnToggleRingVolume) }
+                        onCheckedChange = { onEvent(ConfigAction.OnToggleRingVolume) }
                     )
                 }
-                
+
                 item {
                     VolumePreference(
                         title = stringResource(R.string.label_notification_volume),
                         description = stringResource(R.string.description_notification_volume),
                         isChecked = device.getVolume(AudioStream.Type.NOTIFICATION) != null,
                         isPro = state.isProVersion,
-                        onCheckedChange = { onEvent(ConfigEvent.OnToggleNotificationVolume) }
+                        onCheckedChange = { onEvent(ConfigAction.OnToggleNotificationVolume) }
                     )
                 }
-                
+
                 item {
                     VolumePreference(
                         title = stringResource(R.string.label_alarm_volume),
                         description = stringResource(R.string.description_alarm_volume),
                         isChecked = device.getVolume(AudioStream.Type.ALARM) != null,
-                        onCheckedChange = { onEvent(ConfigEvent.OnToggleAlarmVolume) }
+                        onCheckedChange = { onEvent(ConfigAction.OnToggleAlarmVolume) }
                     )
                 }
-                
+
                 // Features Section
                 item {
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
                     SectionHeader(title = stringResource(R.string.label_other))
                 }
-                
+
                 item {
                     SwitchPreference(
                         title = stringResource(R.string.label_autoplay),
                         description = stringResource(R.string.description_autoplay),
                         isChecked = device.autoplay,
                         isPro = state.isProVersion,
-                        onCheckedChange = { onEvent(ConfigEvent.OnToggleAutoPlay) }
+                        onCheckedChange = { onEvent(ConfigAction.OnToggleAutoPlay) }
                     )
                 }
 
-                if (device.address != FakeSpeakerDevice.address) {
+                if (device.address != FakeSpeakerDevice.ADDRESS) {
                     item {
                         SwitchPreference(
                             title = stringResource(R.string.label_volume_lock),
                             description = stringResource(R.string.description_volume_lock),
                             isChecked = device.volumeLock,
                             isPro = state.isProVersion,
-                            onCheckedChange = { onEvent(ConfigEvent.OnToggleVolumeLock) }
+                            onCheckedChange = { onEvent(ConfigAction.OnToggleVolumeLock) }
                         )
                     }
-                    
+
                     item {
                         SwitchPreference(
                             title = stringResource(R.string.label_keep_awake),
                             description = stringResource(R.string.description_keep_awake),
                             isChecked = device.keepAwake,
                             isPro = state.isProVersion,
-                            onCheckedChange = { onEvent(ConfigEvent.OnToggleKeepAwake) }
+                            onCheckedChange = { onEvent(ConfigAction.OnToggleKeepAwake) }
                         )
                     }
                 }
-                
+
                 item {
                     SwitchPreference(
                         title = stringResource(R.string.nudge_volume_label),
                         description = stringResource(R.string.nudge_volume_description),
                         isChecked = device.nudgeVolume,
-                        onCheckedChange = { onEvent(ConfigEvent.OnToggleNudgeVolume) }
+                        onCheckedChange = { onEvent(ConfigAction.OnToggleNudgeVolume) }
                     )
                 }
-                
+
                 item {
                     ClickablePreference(
                         title = stringResource(R.string.label_launch_app),
                         description = state.launchAppLabel ?: stringResource(R.string.description_launch_app),
                         isPro = state.isProVersion,
-                        onClick = { onEvent(ConfigEvent.OnLaunchAppClicked) },
-                        onLongClick = { onEvent(ConfigEvent.OnClearLaunchApp) }
+                        onClick = { onEvent(ConfigAction.OnLaunchAppClicked) },
+                        onLongClick = { onEvent(ConfigAction.OnClearLaunchApp) }
                     )
                 }
-                
+
                 // Timing Section
                 item {
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
                     SectionHeader(title = stringResource(R.string.settings_label))
                 }
-                
+
                 item {
                     ClickablePreference(
                         title = stringResource(R.string.label_reaction_delay),
                         description = "${device.actionDelay ?: DevicesSettings.DEFAULT_REACTION_DELAY} ms",
-                        onClick = { onEvent(ConfigEvent.OnEditReactionDelayClicked) }
+                        onClick = { onEvent(ConfigAction.OnEditReactionDelayClicked) }
                     )
                 }
-                
+
                 item {
                     ClickablePreference(
                         title = stringResource(R.string.label_adjustment_delay),
                         description = "${device.adjustmentDelay ?: DevicesSettings.DEFAULT_ADJUSTMENT_DELAY} ms",
-                        onClick = { onEvent(ConfigEvent.OnEditAdjustmentDelayClicked) }
+                        onClick = { onEvent(ConfigAction.OnEditAdjustmentDelayClicked) }
                     )
                 }
-                
+
                 item {
                     ClickablePreference(
                         title = stringResource(R.string.label_monitoring_duration),
                         description = "${device.monitoringDuration ?: DevicesSettings.DEFAULT_MONITORING_DURATION} ms",
-                        onClick = { onEvent(ConfigEvent.OnEditMonitoringDurationClicked) }
+                        onClick = { onEvent(ConfigAction.OnEditMonitoringDurationClicked) }
                     )
                 }
-                
+
                 // Device Management Section
                 item {
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
                     SectionHeader(title = stringResource(R.string.label_general))
                 }
 
-                if (device.address != FakeSpeakerDevice.address) {
+                if (device.address != FakeSpeakerDevice.ADDRESS) {
                     item {
                         ClickablePreference(
                             title = stringResource(R.string.label_rename),
                             description = stringResource(R.string.description_rename_device),
                             isPro = state.isProVersion,
-                            onClick = { onEvent(ConfigEvent.OnRenameClicked) }
+                            onClick = { onEvent(ConfigAction.OnRenameClicked) }
                         )
                     }
                 }
-                
+
                 item {
                     ClickablePreference(
                         title = stringResource(R.string.action_remove_device),
                         description = null,
                         textColor = MaterialTheme.colorScheme.error,
-                        onClick = { onEvent(ConfigEvent.OnDeleteDevice) }
+                        onClick = { onEvent(ConfigAction.OnDeleteDevice) }
                     )
                 }
             }
         }
     }
-    
+
     // Dialogs
     if (state.showPurchaseDialog) {
         PurchaseDialog(
-            onDismiss = { onEvent(ConfigEvent.OnDismissDialog) },
+            onDismiss = { onEvent(ConfigAction.OnDismissDialog) },
             onPurchase = { /* Handled by ScreenHost */ }
         )
     }
-    
+
     state.showMonitoringDurationDialog?.let { duration ->
         TimingDialog(
             title = stringResource(R.string.label_monitoring_duration),
             message = stringResource(R.string.description_monitoring_duration),
             currentValue = duration,
-            onConfirm = { onEvent(ConfigEvent.OnEditMonitoringDuration(it)) },
-            onReset = { onEvent(ConfigEvent.OnEditMonitoringDuration(-1)) },
-            onDismiss = { onEvent(ConfigEvent.OnDismissDialog) }
+            onConfirm = { onEvent(ConfigAction.OnEditMonitoringDuration(it)) },
+            onReset = { onEvent(ConfigAction.OnEditMonitoringDuration(-1)) },
+            onDismiss = { onEvent(ConfigAction.OnDismissDialog) }
         )
     }
-    
+
     state.showReactionDelayDialog?.let { delay ->
         TimingDialog(
             title = stringResource(R.string.label_reaction_delay),
             message = stringResource(R.string.description_reaction_delay),
             currentValue = delay,
-            onConfirm = { onEvent(ConfigEvent.OnEditReactionDelay(it)) },
-            onReset = { onEvent(ConfigEvent.OnEditReactionDelay(-1)) },
-            onDismiss = { onEvent(ConfigEvent.OnDismissDialog) }
+            onConfirm = { onEvent(ConfigAction.OnEditReactionDelay(it)) },
+            onReset = { onEvent(ConfigAction.OnEditReactionDelay(-1)) },
+            onDismiss = { onEvent(ConfigAction.OnDismissDialog) }
         )
     }
-    
+
     state.showAdjustmentDelayDialog?.let { delay ->
         TimingDialog(
             title = stringResource(R.string.label_adjustment_delay),
             message = stringResource(R.string.description_adjustment_delay),
             currentValue = delay,
-            onConfirm = { onEvent(ConfigEvent.OnEditAdjustmentDelay(it)) },
-            onReset = { onEvent(ConfigEvent.OnEditAdjustmentDelay(-1)) },
-            onDismiss = { onEvent(ConfigEvent.OnDismissDialog) }
+            onConfirm = { onEvent(ConfigAction.OnEditAdjustmentDelay(it)) },
+            onReset = { onEvent(ConfigAction.OnEditAdjustmentDelay(-1)) },
+            onDismiss = { onEvent(ConfigAction.OnDismissDialog) }
         )
     }
-    
+
     state.showRenameDialog?.let { currentName ->
         RenameDialog(
             currentName = currentName,
-            onConfirm = { onEvent(ConfigEvent.OnRename(it)) },
-            onDismiss = { onEvent(ConfigEvent.OnDismissDialog) }
+            onConfirm = { onEvent(ConfigAction.OnRename(it)) },
+            onDismiss = { onEvent(ConfigAction.OnDismissDialog) }
         )
     }
-    
+
     if (state.showDeleteDialog) {
         DeleteDeviceDialog(
             deviceName = device?.label ?: "",
-            onConfirm = { onEvent(ConfigEvent.OnConfirmDelete(true)) },
-            onDismiss = { onEvent(ConfigEvent.OnDismissDialog) }
+            onConfirm = { onEvent(ConfigAction.OnConfirmDelete(true)) },
+            onDismiss = { onEvent(ConfigAction.OnDismissDialog) }
         )
     }
-    
+
     if (state.showAppPickerDialog) {
         // App picker will be handled by ScreenHost
         // This is just a placeholder
@@ -372,7 +397,7 @@ private fun VolumePreference(
     } else {
         "$description\n[${stringResource(R.string.label_premium_version_required)}]"
     }
-    
+
     SwitchPreference(
         title = title,
         description = fullDescription,
@@ -419,7 +444,7 @@ private fun ClickablePreference(
     } else {
         description
     }
-    
+
     ListItem(
         headlineContent = {
             Text(
@@ -442,7 +467,7 @@ private fun TimingDialog(
     onDismiss: () -> Unit
 ) {
     var value by remember { mutableStateOf(currentValue.toString()) }
-    
+
     AlertDialog(
         onDismissRequest = onDismiss,
         icon = { Icon(Icons.TwoTone.Refresh, contentDescription = null) },
@@ -489,7 +514,7 @@ private fun RenameDialog(
     onDismiss: () -> Unit
 ) {
     var name by remember { mutableStateOf(currentName) }
-    
+
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(stringResource(R.string.label_rename)) },
@@ -574,17 +599,9 @@ private fun PurchaseDialog(
 @Composable
 private fun ConfigScreenPreview() {
     PreviewWrapper {
-        ConfigScreen(
-            state = ConfigState(
-                device = ManagedDevice(
-                    address = "00:11:22:33:44:55",
-                    musicVolume = 0.75f,
-                    callVolume = 0.5f,
-                    autoplay = true,
-                    volumeLock = false,
-                    keepAwake = true,
-                    nudgeVolume = false
-                ),
+        DeviceConfigScreen(
+            state = DeviceConfigViewModel.State(
+                device = MockDevice().toManagedDevice(),
                 isProVersion = true,
                 isLoading = false
             ),

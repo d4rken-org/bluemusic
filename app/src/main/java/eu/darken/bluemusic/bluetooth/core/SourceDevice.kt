@@ -9,6 +9,7 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.AudioStream.Id
 import kotlinx.parcelize.Parcelize
@@ -17,7 +18,7 @@ interface SourceDevice : Parcelable {
 
     val bluetoothClass: BluetoothClass?
     val name: String?
-    val address: String
+    val address: DeviceAddr
     val alias: String?
     val label: String
 

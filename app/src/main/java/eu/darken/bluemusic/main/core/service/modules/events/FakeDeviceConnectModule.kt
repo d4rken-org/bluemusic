@@ -7,13 +7,14 @@ import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
+import eu.darken.bluemusic.bluetooth.core.speaker.SpeakerDeviceProvider
 import eu.darken.bluemusic.common.EventGenerator
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.devices.core.DeviceManagerFlowAdapter
+import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.main.core.service.modules.EventModule
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -21,12 +22,9 @@ import javax.inject.Singleton
 @Singleton
 class FakeDeviceConnectModule @Inject constructor(
     private val eventGenerator: EventGenerator,
-    private val deviceManager: DeviceManagerFlowAdapter
+    private val deviceRepo: DeviceRepo,
+    private val speakerDeviceProvider: SpeakerDeviceProvider,
 ) : EventModule {
-
-    companion object {
-        private val TAG = logTag("FakeDeviceConnectModule")
-    }
 
     override val priority: Int
         get() = 0
@@ -34,34 +32,27 @@ class FakeDeviceConnectModule @Inject constructor(
     override suspend fun handle(device: ManagedDevice, event: SourceDevice.Event) {
         if (event.type != SourceDevice.Event.Type.DISCONNECTED) return
 
-        val managed = runBlocking { deviceManager.devices().first() }
-        val fakeSpeaker = managed[FakeSpeakerDevice.address]
+        val managed = runBlocking { deviceRepo.currentDevices() }
+        val fakeSpeaker = managed.singleOrNull { it.address == FakeSpeakerDevice.ADDRESS }
         log(TAG) { "FakeSpeaker: $fakeSpeaker" }
         if (fakeSpeaker == null) return
 
-        val active = managed.filter { it.value.isActive }
+        val active = managed.filter { it.isActive }
         log(TAG) { "Active devices: $active" }
-        if (active.size > 1 || active.size == 1 && !active.containsKey(fakeSpeaker.address)) return
+        if (active.size > 1 || active.size == 1 && !active.any { it.address == fakeSpeaker.address }) return
 
         log(TAG) { "Sending fake device connect event." }
         // Create a fake source device for the event
-        val fakeSourceDevice = object : SourceDevice {
-            override val bluetoothClass = null
-            override val address = fakeSpeaker.address
-            override val name = fakeSpeaker.name
-            override val alias = fakeSpeaker.alias
-            override val label = fakeSpeaker.label
-            override fun getStreamId(type: eu.darken.bluemusic.main.core.audio.AudioStream.Type) =
-                fakeSpeaker.getStreamId(type)
-
-            override fun describeContents() = 0
-            override fun writeToParcel(dest: android.os.Parcel, flags: Int) {}
-        }
+        val fakeSourceDevice = speakerDeviceProvider.getSpeaker()
         eventGenerator.send(fakeSourceDevice, SourceDevice.Event.Type.CONNECTED)
     }
 
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
         @Binds @IntoSet abstract fun bind(entry: FakeDeviceConnectModule): EventModule
+    }
+
+    companion object {
+        private val TAG = logTag("FakeDeviceConnectModule")
     }
 }

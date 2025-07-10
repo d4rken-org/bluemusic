@@ -1,6 +1,8 @@
 package eu.darken.bluemusic.bluetooth.core
 
 import android.bluetooth.BluetoothClass
+import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
@@ -28,4 +30,12 @@ data class MockDevice(
     override fun getStreamId(type: AudioStream.Type): AudioStream.Id {
         TODO("Not yet implemented")
     }
+
+    fun toManagedDevice(
+        isActive: Boolean = false,
+    ) = ManagedDevice(
+        device = this,
+        config = DeviceConfigEntity(address = address),
+        isActive = isActive,
+    )
 }

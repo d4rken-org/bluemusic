@@ -12,9 +12,10 @@ import android.os.Build
 import android.os.IBinder
 import android.util.SparseArray
 import androidx.annotation.RequiresApi
+import androidx.core.util.size
 import dagger.hilt.android.AndroidEntryPoint
 import eu.darken.bluemusic.R
-import eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiverFlow
+import eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiver
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
@@ -29,9 +30,12 @@ import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceAction
-import eu.darken.bluemusic.devices.core.DeviceManagerFlowAdapter
+import eu.darken.bluemusic.devices.core.DeviceAddr
+import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.currentDevices
+import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.main.core.audio.AudioStream
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.audio.VolumeObserver
@@ -54,13 +58,9 @@ import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
+class BlueMusicService : Service(), VolumeObserver.Callback {
 
-    companion object {
-        private val TAG = logTag("BlueMusicServiceFlow")
-    }
-
-    @Inject lateinit var deviceManager: DeviceManagerFlowAdapter
+    @Inject lateinit var deviceRepo: DeviceRepo
     @Inject lateinit var bluetoothSource: BluetoothRepo
     @Inject lateinit var streamHelper: StreamHelper
     @Inject lateinit var volumeObserver: VolumeObserver
@@ -102,10 +102,9 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
 
         // Subscribe to device changes
         serviceScope.launch {
-            deviceManager.devices()
-                .flowOn(dispatcherProvider.IO)
+            deviceRepo.devices
                 .collect { stringManagedDeviceMap ->
-                    val connected = stringManagedDeviceMap.values.filter { it.isActive }
+                    val connected = stringManagedDeviceMap.filter { it.isActive }
                     serviceHelper.updateActiveDevices(connected.toList())
                 }
         }
@@ -153,8 +152,8 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
         if (intent == null) {
             log(TAG, WARN) { "Intent was null" }
             serviceHelper.stop()
-        } else if (intent.hasExtra(BluetoothEventReceiverFlow.EXTRA_DEVICE_EVENT)) {
-            val event = intent.getParcelableExtra<SourceDevice.Event>(BluetoothEventReceiverFlow.EXTRA_DEVICE_EVENT)!!
+        } else if (intent.hasExtra(BluetoothEventReceiver.EXTRA_DEVICE_EVENT)) {
+            val event = intent.getParcelableExtra<SourceDevice.Event>(BluetoothEventReceiver.EXTRA_DEVICE_EVENT)!!
 
             serviceScope.launch(dispatcherProvider.IO) {
                 handleDeviceEvent(event)
@@ -177,10 +176,10 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
             // Retry logic for connection verification
             var retryCount = 0
             val maxRetries = 10
-            var connectedDevices: Map<String, SourceDevice>? = null
+            var connectedDevices: Map<DeviceAddr, SourceDevice>? = null
 
             while (retryCount < maxRetries) {
-                connectedDevices = bluetoothSource.reloadConnectedDevices()
+                connectedDevices = bluetoothSource.connectedDevices.first().associateBy { it.address }
 
                 if (event.type == SourceDevice.Event.Type.CONNECTED && !connectedDevices.containsKey(event.address)) {
                     retryCount++
@@ -207,7 +206,7 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
             }
 
             // Get managed device
-            val managedDevice = deviceManager.getDevice(event.address)
+            val managedDevice = deviceRepo.getDevice(event.address)
             if (managedDevice == null) {
                 log(TAG, WARN) { "Device ${event.address} is not managed" }
                 return
@@ -284,17 +283,17 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
     }
 
     private suspend fun checkServiceStatus() {
-        val devices = deviceManager.devices().first()
-        log(TAG) { "Active devices: $devices" }
+        val devices = deviceRepo.currentDevices()
+        log(TAG) { "Current devices: $devices" }
 
         val msgBuilder = StringBuilder()
         var listening = false
         var locking = false
         var waking = false
 
-        for (d in devices.values) {
+        for (d in devices) {
             if (!d.isActive) continue
-            if (d.address == FakeSpeakerDevice.address) continue
+            if (d.address == FakeSpeakerDevice.ADDRESS) continue
 
             if (!listening && devicesSettings.volumeListening.value()) {
                 listening = true
@@ -343,7 +342,7 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
             }
 
             // Execute modules by priority
-            for (i in 0 until priorityArray.size()) {
+            for (i in 0 until priorityArray.size) {
                 val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
                 log(TAG) { "${currentPriorityModules.size} volume modules at priority ${priorityArray.keyAt(i)}" }
 
@@ -362,5 +361,9 @@ class BlueMusicServiceFlow : Service(), VolumeObserver.Callback {
                 }
             }
         }
+    }
+
+    companion object {
+        private val TAG = logTag("Devices", "Service")
     }
 }
