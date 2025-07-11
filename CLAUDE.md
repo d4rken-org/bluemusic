@@ -67,3 +67,4 @@ features.
 - Prefer immutable data classes for state
 - Use Hilt for dependency injection in new code
 - Prefer exposing fewer fields and functions and enabling specific functionality via extension functions
+- All user facing strings should be extract to `values/strings.xml` and translated for all other languages too.

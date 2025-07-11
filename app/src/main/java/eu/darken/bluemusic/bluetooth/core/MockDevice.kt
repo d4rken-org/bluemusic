@@ -42,6 +42,11 @@ data class MockDevice(
             ringVolume = 0.5f,
             notificationVolume = 0.4f,
             alarmVolume = 0.3f,
+            volumeLock = true,
+            volumeObserving = false,
+            autoplay = true,
+            nudgeVolume = true,
+            keepAwake = true,
         ),
         isActive = isActive,
     )

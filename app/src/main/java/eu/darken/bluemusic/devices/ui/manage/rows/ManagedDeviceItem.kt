@@ -2,8 +2,11 @@ package eu.darken.bluemusic.devices.ui.manage.rows
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,10 +16,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.Launch
-import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.twotone.Alarm
 import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.Devices
+import androidx.compose.material.icons.twotone.ExpandMore
 import androidx.compose.material.icons.twotone.GraphicEq
 import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.MusicNote
@@ -25,6 +28,7 @@ import androidx.compose.material.icons.twotone.Phone
 import androidx.compose.material.icons.twotone.PhoneInTalk
 import androidx.compose.material.icons.twotone.PlayArrow
 import androidx.compose.material.icons.twotone.Settings
+import androidx.compose.material.icons.twotone.Visibility
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -146,7 +150,7 @@ fun ManagedDeviceItem(
                     label = "expand_icon_rotation"
                 )
                 Icon(
-                    imageVector = Icons.Filled.ExpandMore,
+                    imageVector = Icons.TwoTone.ExpandMore,
                     contentDescription = if (expanded) "Collapse" else "Expand",
                     modifier = Modifier
                         .size(24.dp)
@@ -275,6 +279,7 @@ private fun AudioStream.Type.getIcon(): ImageVector = when (this) {
     AudioStream.Type.ALARM -> Icons.TwoTone.Alarm
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun OptionIndicators(
     device: ManagedDevice,
@@ -284,22 +289,48 @@ private fun OptionIndicators(
         if (device.volumeLock) add(Icons.TwoTone.Lock to stringResource(R.string.devices_device_config_volume_lock_label))
         if (device.keepAwake) add(Icons.TwoTone.BatteryFull to stringResource(R.string.devices_device_config_keep_awake_label))
         if (device.nudgeVolume) add(Icons.TwoTone.GraphicEq to stringResource(R.string.devices_device_config_nudge_volume_label))
+        if (device.volumeObserving) add(Icons.TwoTone.Visibility to stringResource(R.string.devices_device_config_volume_observe_label))
         if (device.launchPkg != null) add(Icons.AutoMirrored.TwoTone.Launch to stringResource(R.string.devices_device_config_launch_app_label))
         if (device.autoplay) add(Icons.TwoTone.PlayArrow to "Autoplay")
     }
 
     if (indicators.isNotEmpty()) {
-        Row(
-            modifier = modifier,
-            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        FlowRow(
+            modifier = modifier.padding(top = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            indicators.forEach { (icon, description) ->
-                Icon(
-                    imageVector = icon,
-                    contentDescription = description,
-                    modifier = Modifier.size(16.dp),
-                    tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)
-                )
+            indicators.forEach { (icon, _) ->
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .background(
+                            color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.8f),
+                            shape = MaterialTheme.shapes.small
+                        )
+                        .padding(horizontal = 6.dp, vertical = 2.dp)
+                ) {
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = null,
+                        modifier = Modifier.size(14.dp),
+                        tint = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                    Spacer(modifier = Modifier.width(3.dp))
+                    Text(
+                        text = when (icon) {
+                            Icons.TwoTone.Lock -> "Lock"
+                            Icons.TwoTone.BatteryFull -> "Awake"
+                            Icons.TwoTone.GraphicEq -> "Nudge"
+                            Icons.TwoTone.Visibility -> "Observe"
+                            Icons.AutoMirrored.TwoTone.Launch -> "Launch"
+                            Icons.TwoTone.PlayArrow -> "Auto"
+                            else -> ""
+                        },
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                }
             }
         }
     }

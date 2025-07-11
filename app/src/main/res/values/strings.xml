@@ -25,6 +25,7 @@
     <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
 
     <!-- Devices -->
+    <string name="devices_device_config_label">Device configuration</string>
     <string name="devices_device_config_section_general_label">General</string>
     <string name="devices_device_config_remove_device_label">Remove device</string>
     <string name="devices_device_config_remove_device_desc">Removes the device from this app and deletes its configuration. This does not unpair the device.</string>

@@ -293,16 +293,65 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 }
             }
 
-            is ConfigAction.OnEditAdjustmentDelay -> TODO()
-            is ConfigAction.OnEditAdjustmentDelayClicked -> TODO()
-            is ConfigAction.OnEditMonitoringDuration -> TODO()
-            is ConfigAction.OnEditMonitoringDurationClicked -> TODO()
-            is ConfigAction.OnEditReactionDelay -> TODO()
-            is ConfigAction.OnEditReactionDelayClicked -> TODO()
-            is ConfigAction.OnLaunchAppClicked -> TODO()
+            is ConfigAction.OnEditAdjustmentDelay -> {
+                deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                    oldConfig.copy(adjustmentDelay = if (action.delay > 0) action.delay else null)
+                }
+            }
+
+            is ConfigAction.OnEditAdjustmentDelayClicked -> {
+                val device = state.first().device
+                val currentDelay = device.adjustmentDelay ?: eu.darken.bluemusic.devices.core.DevicesSettings.DEFAULT_ADJUSTMENT_DELAY
+                events.emit(ConfigEvent.ShowAdjustmentDelayDialog(currentDelay))
+            }
+
+            is ConfigAction.OnEditMonitoringDuration -> {
+                deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                    oldConfig.copy(monitoringDuration = if (action.duration > 0) action.duration else null)
+                }
+            }
+
+            is ConfigAction.OnEditMonitoringDurationClicked -> {
+                val device = state.first().device
+                val currentDuration =
+                    device.monitoringDuration ?: eu.darken.bluemusic.devices.core.DevicesSettings.DEFAULT_MONITORING_DURATION
+                events.emit(ConfigEvent.ShowMonitoringDurationDialog(currentDuration))
+            }
+
+            is ConfigAction.OnEditReactionDelay -> {
+                deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                    oldConfig.copy(actionDelay = if (action.delay > 0) action.delay else null)
+                }
+            }
+
+            is ConfigAction.OnEditReactionDelayClicked -> {
+                val device = state.first().device
+                val currentDelay = device.actionDelay ?: eu.darken.bluemusic.devices.core.DevicesSettings.DEFAULT_REACTION_DELAY
+                events.emit(ConfigEvent.ShowReactionDelayDialog(currentDelay))
+            }
+
+            is ConfigAction.OnLaunchAppClicked -> {
+                if (!state.first().isProVersion) {
+                    events.emit(ConfigEvent.ShowPurchaseSnackbar)
+                } else {
+                    events.emit(ConfigEvent.ShowAppPickerDialog)
+                }
+            }
             is ConfigAction.OnPurchaseUpgrade -> TODO()
-            is ConfigAction.OnRename -> TODO()
-            is ConfigAction.OnRenameClicked -> TODO()
+            is ConfigAction.OnRename -> {
+                deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                    oldConfig.copy(alias = action.newName)
+                }
+            }
+
+            is ConfigAction.OnRenameClicked -> {
+                if (!state.first().isProVersion) {
+                    events.emit(ConfigEvent.ShowPurchaseSnackbar)
+                } else {
+                    val device = state.first().device
+                    events.emit(ConfigEvent.ShowRenameDialog(device.label))
+                }
+            }
             is ConfigAction.OnToggleAutoPlay -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
                 oldConfig.copy(autoplay = !oldConfig.autoplay)
             }
