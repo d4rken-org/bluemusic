@@ -9,7 +9,6 @@ import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDevice.Event.Type.CONNECTED
 import eu.darken.bluemusic.bluetooth.core.SourceDevice.Event.Type.DISCONNECTED
 import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
-import eu.darken.bluemusic.common.WakelockMan
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
@@ -23,7 +22,6 @@ import javax.inject.Singleton
 
 @Singleton
 class KeepAwakeModule @Inject internal constructor(
-    private val wakelockMan: WakelockMan,
     private val deviceRepo: DeviceRepo,
 ) : EventModule {
 
@@ -43,12 +41,14 @@ class KeepAwakeModule @Inject internal constructor(
         when (event.type) {
             CONNECTED -> {
                 log(TAG) { "Acquiring wakelock for $device" }
-                wakelockMan.tryAquire()
+                // TODO
+//                wakelockMan.tryAquire()
             }
+
             DISCONNECTED -> {
                 if (otherWokeDevice == null) {
                     log(TAG) { "Releasing wakelock for $device" }
-                    wakelockMan.tryRelease()
+//                    wakelockMan.tryRelease()
                 } else {
                     log(
                         TAG,

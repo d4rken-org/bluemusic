@@ -24,6 +24,65 @@
     <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
 
+    <!-- Devices -->
+    <string name="devices_device_config_section_general_label">General</string>
+    <string name="devices_device_config_remove_device_label">Remove device</string>
+    <string name="devices_device_config_remove_device_desc">Removes the device from this app and deletes its configuration. This does not unpair the device.</string>
+    <string name="devices_device_config_remove_device_action">Remove</string>
+    <string name="devices_device_config_rename_device_label">Rename device</string>
+    <string name="devices_device_config_rename_device_desc">Rename this device within this app, and if possible, within the system.</string>
+    <string name="devices_device_config_rename_device_action">Rename</string>
+
+    <string name="devices_device_config_section_timing_label">Timing</string>
+    <string name="devices_device_config_monitoring_duration_label">Monitoring duration</string>
+    <string name="devices_device_config_monitoring_duration_desc">A duration in milliseconds, after adjustments have been made, during which any further volume changes will be blocked.</string>
+    <string name="devices_device_config_adjustment_delay_label">Adjustment delay</string>
+    <string name="devices_device_config_adjustment_delay_desc">The delay in milliseconds between each volume adjustment. A delay 0ms means instantly setting the volume when this device connects.</string>
+    <string name="devices_device_config_reaction_delay_label">Reaction delay</string>
+    <string name="devices_device_config_reaction_delay_desc">The delay in milliseconds until this app reacts to this device.</string>
+
+    <string name="devices_device_config_section_reaction_label">Reaction</string>
+    <string name="devices_device_config_launch_app_label">Launch app</string>
+    <string name="devices_device_config_launch_app_desc">Launch an app when this device connects.</string>
+    <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
+    <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
+    <string name="devices_device_config_keep_awake_label">Keep awake</string>
+    <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
+    <string name="devices_device_config_volume_observe_label">Observe changes</string>
+    <string name="devices_device_config_volume_observe_desc">Stay active while this device is connected and save volume changes that have not been caused by this app.</string>
+    <string name="devices_device_config_volume_lock_label">Volume lock</string>
+    <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
+    <string name="devices_device_config_autoplay_label">Autoplay</string>
+    <string name="devices_device_config_autoplay_desc">Simulate pressing play on a Bluetooth remote when this device connects.</string>
+
+    <string name="devices_device_config_section_volumes_label">Volumes</string>
+    <string name="devices_device_config_section_volume_label">Volume</string>
+    <string name="devices_device_config_alarm_volume_label">Alarm volume</string>
+    <string name="devices_device_config_alarm_volume_desc">Some alarm apps use the music volume instead.</string>
+    <string name="devices_device_config_notification_volume_label">Notification volume</string>
+    <string name="devices_device_config_notification_volume_desc">Not all devices support a separate notification volume setting.</string>
+    <string name="devices_device_config_music_volume_label">Music volume</string>
+    <string name="devices_device_config_music_volume_desc">Control the volume which affects music and games when this device connects.</string>
+    <string name="devices_device_config_call_volume_label">Call volume</string>
+    <string name="devices_device_config_call_volume_desc">Control the volume that affects calls when this devices connects.</string>
+    <string name="devices_device_config_ring_volume_label">Ring volume</string>
+    <string name="devices_device_config_ring_volume_desc">Control the volume which affects your ringtone.</string>
+
+    <string name="devices_stream_music_label">Music</string>
+    <string name="devices_audio_stream_call_label">Call</string>
+    <string name="devices_audio_stream_ring_label">Ring</string>
+    <string name="devices_audio_stream_notification_label">Notification</string>
+    <string name="devices_audio_stream_alarm_label">Alarm</string>
+
+    <string name="label_speaker_autosave">Autosave volume</string>
+    <string name="description_speaker_autosave">The \"Device Speaker\" entry, which is responsible for default volumes, updates itself when a Bluetooth device connects. Note: This does not work on all devices.</string>
+
+    <string name="devices_neverseen_label">Never seen</string>
+    <string name="devices_state_connected_label">Connected</string>
+    <string name="devices_last_connected_label">Last connected: %s</string>
+    <string name="devices_currently_connected_label">Currently connected</string>
+    <string name="devices_no_volumes_configured">No volumes configured for this device. Tap Configure to set up volume preferences.</string>
+
     <!-- Settings-->
     <string name="settings_label">Settings</string>
     <string name="settings_category_other_label">Other</string>
@@ -60,6 +119,8 @@
     <string name="description_volume_listener">Stay active while a device is connected and save volume changes that have not been caused by this app.</string>
     <string name="label_autoplay_keytype">Autoplay key type</string>
     <string name="desc_autoplay_keytype">The key type that is sent when an autoplay enabled device connects.</string>
+    <string name="label_boot_restore">Restore on boot</string>
+    <string name="description_boot_restore">Restore volume after booting/rebooting if a Bluetooth device is connected.</string>
 
     <!-- Settings/Support-->
     <string name="settings_support_label">Support</string>
@@ -116,9 +177,7 @@
     <string name="label_bug_reports">Bug reports</string>
     <string name="description_bug_reports">Automatic bug and crash reporting.</string>
 
-    <string name="label_state_connected">Connected</string>
-    <string name="label_neverseen">Never seen</string>
-    <string name="action_remove_device">Remove device</string>
+
     <string name="label_add_device">Add device</string>
     <string name="label_just_a_moment_please">Just a moment, please.</string>
     <string name="label_notification_channel_status">Status</string>
@@ -126,8 +185,6 @@
     <string name="action_cancel">Cancel</string>
     <string name="label_invalid_input">Invalid input</string>
     <string name="action_reset">Reset</string>
-    <string name="label_general">General</string>
-    <string name="label_other">Other</string>
     <string name="label_no_connected_devices">No devices connected</string>
     <string name="label_status_idle">Idle</string>
     <string name="label_status_adjusting_volumes">Adjusting volumes</string>
@@ -150,30 +207,15 @@
     <string name="action_grant_permission">Grant Permission</string>
     <string name="label_status_listening_for_changes">Listening for volume changes</string>
     <string name="action_exit">Exit</string>
-    <string name="label_music_volume">Music volume</string>
-    <string name="description_music_volume">Control the volume which affects music and games when this device connects.</string>
-    <string name="label_call_volume">Call volume</string>
-    <string name="description_call_volume">Control the volume that affects calls when this devices connects.</string>
-    <string name="label_autoplay">Autoplay</string>
-    <string name="description_autoplay">Simulate pressing play on a Bluetooth remote when this device connects.</string>
-    <string name="label_reaction_delay">Reaction delay</string>
-    <string name="description_reaction_delay">The delay in milliseconds until this app reacts to this device.</string>
-    <string name="label_adjustment_delay">Adjustment delay</string>
-    <string name="description_adjustment_delay">The delay in milliseconds between each volume adjustment. A delay 0ms means instantly setting the volume when this device connects.</string>
-    <string name="label_rename_device">Rename device</string>
-    <string name="description_rename_device">Sets a system-wide alias for this device.</string>
-    <string name="label_forget_device">Forget device</string>
-    <string name="description_forget_device">Removes the device from this app and deletes its configuration. This does not unpair the device.</string>
-    <string name="label_boot_restore">Restore on boot</string>
-    <string name="description_boot_restore">Restore volume after booting/rebooting if a Bluetooth device is connected.</string>
+
+
     <string name="action_start">Start</string>
     <string name="label_welcome">Welcome</string>
     <string name="description_intro_contact">Don\'t hesitate to contact me if you have questions or even an idea for a new feature.</string>
     <string name="label_translation">Translation</string>
     <string name="description_help_translate">Help me make this app available in other languages.</string>
     <string name="label_device_speaker">Device speaker</string>
-    <string name="label_launch_app">Launch app</string>
-    <string name="description_launch_app">Launch an app when this device connects.</string>
+
     <string name="label_keyevent_playpause">Play-Pause</string>
     <string name="label_keyevent_play">Play</string>
     <string name="label_keyevent_next">Next</string>
@@ -181,8 +223,7 @@
     <string name="message_copied_to_clipboard">Copied to clipboard</string>
     <string name="label_thanks">Thanks</string>
     <string name="label_licenses">Licenses</string>
-    <string name="label_ring_volume">Ring volume</string>
-    <string name="description_ring_volume">Control the volume which affects your ringtone.</string>
+
     <string name="description_ring_volume_additional_permission">Additional permissions are necessary to change the ring volume.</string>
     <string name="label_missing_permissions">Missing permissions</string>
     <string name="action_grant">Grant</string>
@@ -193,46 +234,23 @@
     <string name="label_exclude_gatt">Exclude GATT profiles</string>
     <string name="description_exclude_gattserver">Don\'t query Bluetooth profiles of type \'Generic Attribute\' (GATT) server.</string>
     <string name="description_exclude_gatt">Don\'t query Bluetooth profiles of type \'Generic Attribute\' (GATT) client.</string>
-    <string name="label_volumes">Volumes</string>
-    <string name="label_notification_volume">Notification volume</string>
-    <string name="description_notification_volume">Not all devices support a separate notification volume setting.</string>
+
     <string name="description_waiting_for_devicex">Waiting for %s to complete connection</string>
     <string name="action_undo">Undo</string>
-    <string name="label_speaker_autosave">Autosave volume</string>
-    <string name="description_speaker_autosave">The \"Device Speaker\" entry, which is responsible for default volumes, updates itself when a Bluetooth device connects. Note: This does not work on all devices.</string>
     <string name="action_show">Show</string>
     <string name="action_dismiss">Dismiss</string>
     <string name="action_fix">Fix</string>
     <string name="battery_optimizations_issue_description">Battery optimizations are enabled for this app and can prevent it from receiving Bluetooth events. Consider disabling optimizations if you are experiencing issues.</string>
-    <string name="label_monitoring_duration">Monitoring duration</string>
-    <string name="description_monitoring_duration">A duration in milliseconds, after adjustments have been made, during which any further volume changes will be blocked.</string>
-    <string name="label_volume_lock">Volume lock</string>
-    <string name="description_volume_lock">Any volume changes not made through this app will be reverted while this device is connected.</string>
     <string name="label_bluetooth_settings">Bluetooth settings</string>
-    <string name="label_keep_awake">Keep awake</string>
-    <string name="description_keep_awake">Keep the screen on while this device is connected.</string>
     <string name="android10_applaunch_issue_description">Android 10 restricts how apps can be launched from the background. To allow opening apps when a Bluetooth device connects, grant the permission "Display over other apps" (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_alarm_volume">Alarm volume</string>
-    <string name="description_alarm_volume">Some alarm apps use the music volume instead.</string>
-    <string name="nudge_volume_label">Nudge volume</string>
-    <string name="nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="label_opensource">Source code</string>
     <string name="android13_notification_permission_description">Grant this app permission to post notifications. This enables displaying a notification when this app is active and volume adjustments are being made.</string>
     <string name="privacy_policy_label">Privacy policy</string>
     <string name="managed_devices_empty_message">No Bluetooth devices configured.\nTap the + button to add your first device.</string>
-    <string name="managed_devices_last_connected_label">Last connected: %s</string>
-    <string name="managed_devices_currently_connected_label">Currently connected</string>
-    <string name="managed_devices_no_volumes_configured">No volumes configured for this device. Tap Configure to set up volume preferences.</string>
-    <string name="managed_devices_delete_dialog_title">Remove device</string>
-    <string name="managed_devices_delete_dialog_message">Remove %s from managed devices?</string>
     <string name="general_delete_action">Delete</string>
     <string name="general_cancel_action">Cancel</string>
     <string name="general_configure_action">Configure</string>
-    <string name="audio_stream_music_label">Music</string>
-    <string name="audio_stream_call_label">Call</string>
-    <string name="audio_stream_ring_label">Ring</string>
-    <string name="audio_stream_notification_label">Notification</string>
-    <string name="audio_stream_alarm_label">Alarm</string>
+
     <string name="battery_optimization_hint_title">Battery optimization</string>
     <string name="battery_optimization_hint_message">Battery optimizations are enabled and may prevent proper operation. Consider disabling them.</string>
     <string name="battery_optimization_fix_action">Disable optimizations</string>
@@ -247,8 +265,6 @@
     <string name="error_generic_message">An error occurred. Please try again.</string>
     <string name="error_iap_owned_message">You already own this item</string>
 
-    <string name="label_volume">Volume</string>
-    <string name="label_rename">Rename</string>
     <string name="label_no_devices_title">No Devices</string>
 
     <string name="bluemusic_mascot_description">App Icon</string>

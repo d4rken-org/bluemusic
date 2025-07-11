@@ -1,15 +1,16 @@
 package eu.darken.bluemusic.devices.ui.config
 
 import android.app.Activity
+import eu.darken.bluemusic.main.core.audio.AudioStream
 
 sealed interface ConfigAction {
-    data object OnToggleMusicVolume : ConfigAction
-    data object OnToggleCallVolume : ConfigAction
-    data object OnToggleRingVolume : ConfigAction
-    data object OnToggleNotificationVolume : ConfigAction
-    data object OnToggleAlarmVolume : ConfigAction
+    data class OnToggleVolume(
+        val type: AudioStream.Type,
+    ) : ConfigAction
+
     data object OnToggleAutoPlay : ConfigAction
     data object OnToggleVolumeLock : ConfigAction
+    data object OnToggleVolumeObserving : ConfigAction
     data object OnToggleKeepAwake : ConfigAction
     data object OnToggleNudgeVolume : ConfigAction
     data object OnLaunchAppClicked : ConfigAction
@@ -18,8 +19,7 @@ sealed interface ConfigAction {
     data object OnEditReactionDelayClicked : ConfigAction
     data object OnEditAdjustmentDelayClicked : ConfigAction
     data object OnRenameClicked : ConfigAction
-    data object OnDeleteDevice : ConfigAction
-    data object OnDismissDialog : ConfigAction
+    data class DeleteDevice(val confirmed: Boolean = false) : ConfigAction
     data class OnPurchaseUpgrade(val activity: Activity) : ConfigAction
     data class OnEditMonitoringDuration(val duration: Long) : ConfigAction
     data class OnEditReactionDelay(val delay: Long) : ConfigAction

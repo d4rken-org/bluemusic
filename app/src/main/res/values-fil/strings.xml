@@ -17,8 +17,8 @@
     <string name="description_volume_listener">Manatiling aktibo habang konektado ang isang device at i-seyb ang mga pagbabago sa volume na hindi kagagawan ng app na ito.</string>
     <string name="label_autoplay_keytype">Autoplay na uri ng key</string>
     <string name="desc_autoplay_keytype">Ang uri ng key na ipinapadala kung may naka-autoplay na device na kumokonek.</string>
-    <string name="label_state_connected">Nakakonekta</string>
-    <string name="label_neverseen">Hindi nakikita</string>
+    <string name="devices_state_connected_label">Nakakonekta</string>
+    <string name="devices_neverseen_label">Hindi nakikita</string>
     <string name="action_remove_device">Tanggalin ang device</string>
     <string name="label_add_device">Magdagdag ng device</string>
     <string name="label_just_a_moment_please">Sandali lang, pakiusap.</string>
@@ -27,8 +27,8 @@
     <string name="action_cancel">Kanselahin</string>
     <string name="label_invalid_input">Maling input</string>
     <string name="action_reset">I-reset</string>
-    <string name="label_general">Pangkalahatan</string>
-    <string name="label_other">Iba pa</string>
+    <string name="devices_device_config_section_general_label">Pangkalahatan</string>
+    <string name="devices_device_config_section_reaction_label">Iba pa</string>
     <string name="label_no_connected_devices">Walang konektadong device</string>
     <string name="label_status_idle">Walang ginagawa</string>
     <string name="label_status_adjusting_volumes">Pagbabago sa mga volume</string>
@@ -44,16 +44,16 @@
     <string name="description_bluetooth_is_disabled">Hindi pinagana ang bluetooth.</string>
     <string name="label_status_listening_for_changes">Nakikinig sa mga pagbabago sa volume</string>
     <string name="action_exit">Umalis</string>
-    <string name="label_music_volume">Volume na pangmusika</string>
-    <string name="description_music_volume">Kontrolin ang volume na nakakaapekto sa musika at mga laro habang kumokonekta ang device na ito.</string>
-    <string name="label_call_volume">Volume na pangtawag</string>
-    <string name="description_call_volume">Kontrolin ang volume na nakakaapekto sa tawag habang kumokonekta ang device na ito.</string>
-    <string name="label_autoplay">Autoplay</string>
-    <string name="description_autoplay">Subukang pindutin ang play sa remote ng Bluetooth habang nakakonekta ang device na ito.</string>
-    <string name="label_reaction_delay">Pagkaantala sa reaksyon</string>
-    <string name="description_reaction_delay">Ang pagkaantala na sinusukat sa millisecond hanggang nakareact na ang app na ito sa device.</string>
-    <string name="label_adjustment_delay">Pagkaantala sa pagbabago</string>
-    <string name="description_adjustment_delay">Ang pagkaantala na sinusukat sa millisecond sa pagitan ng bawat pagbabago ng volume. Ang delay na 0ms ay nangangahulugang agad na natatakda ang volume kapag kumokonekta ang device na ito.</string>
+    <string name="devices_device_config_music_volume_label">Volume na pangmusika</string>
+    <string name="devices_device_config_music_volume_desc">Kontrolin ang volume na nakakaapekto sa musika at mga laro habang kumokonekta ang device na ito.</string>
+    <string name="devices_device_config_call_volume_label">Volume na pangtawag</string>
+    <string name="devices_device_config_call_volume_desc">Kontrolin ang volume na nakakaapekto sa tawag habang kumokonekta ang device na ito.</string>
+    <string name="devices_device_config_autoplay_label">Autoplay</string>
+    <string name="devices_device_config_autoplay_desc">Subukang pindutin ang play sa remote ng Bluetooth habang nakakonekta ang device na ito.</string>
+    <string name="devices_device_config_reaction_delay_label">Pagkaantala sa reaksyon</string>
+    <string name="devices_device_config_reaction_delay_desc">Ang pagkaantala na sinusukat sa millisecond hanggang nakareact na ang app na ito sa device.</string>
+    <string name="devices_device_config_adjustment_delay_label">Pagkaantala sa pagbabago</string>
+    <string name="devices_device_config_adjustment_delay_desc">Ang pagkaantala na sinusukat sa millisecond sa pagitan ng bawat pagbabago ng volume. Ang delay na 0ms ay nangangahulugang agad na natatakda ang volume kapag kumokonekta ang device na ito.</string>
     <string name="label_rename_device">Baguhin ang pangalan ng device</string>
     <string name="description_rename_device">Nagtatakda ng malawakang alyas para sa device na ito.</string>
     <string name="label_forget_device">Kalimutan ang device</string>
@@ -66,6 +66,6 @@
     <string name="label_translation">Pagsasalin</string>
     <string name="description_help_translate">Tulungan akong isalin ang app na ito sa ibang mga wika.</string>
     <string name="label_device_speaker">Speaker ng Device</string>
-    <string name="label_launch_app">Ilunsad ang app</string>
-    <string name="description_launch_app">Ilunsad ang app kung kumonekta ang device na ito.</string>
+    <string name="devices_device_config_launch_app_label">Ilunsad ang app</string>
+    <string name="devices_device_config_launch_app_desc">Ilunsad ang app kung kumonekta ang device na ito.</string>
 </resources>

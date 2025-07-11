@@ -186,6 +186,7 @@ fun DevicesScreen(
                             device = device,
                             onDeviceAction = onDeviceAction,
                             onNavigateToConfig = { onDeviceConfig(device.address) },
+                            isOnlyDevice = state.devices.size == 1
                         )
                     }
                 }

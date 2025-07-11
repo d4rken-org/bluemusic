@@ -116,7 +116,7 @@ fun SettingsIndexScreen(
                     icon = Icons.TwoTone.Devices,
                     title = stringResource(R.string.devices_settings_label),
                     subtitle = stringResource(R.string.devices_settings_desc),
-                    onClick = { onNavigateTo(Nav.Settings.General) },
+                    onClick = { onNavigateTo(Nav.Settings.Devices) },
                 )
                 SettingsDivider()
             }

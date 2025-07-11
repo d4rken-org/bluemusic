@@ -84,13 +84,13 @@ class MonitorNotifications @Inject constructor(
                     locking = true
                     log(TAG) { "Keep running because the device wants volume lock: $dev" }
                     if (msgBuilder.isNotEmpty()) msgBuilder.append(",\n")
-                    msgBuilder.append(context.getString(R.string.label_volume_lock))
+                    msgBuilder.append(context.getString(R.string.devices_device_config_volume_lock_label))
                 }
                 if (!waking && dev.keepAwake) {
                     waking = true
                     log(TAG) { "Keep running because the device wants keep awake: $dev" }
                     if (msgBuilder.isNotEmpty()) msgBuilder.append(",\n")
-                    msgBuilder.append(context.getString(R.string.label_keep_awake))
+                    msgBuilder.append(context.getString(R.string.devices_device_config_keep_awake_label))
                 }
             }
             builder.setContentText(msgBuilder.toString())

@@ -7,7 +7,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Adjust
-import androidx.compose.material.icons.filled.Monitor
 import androidx.compose.material.icons.filled.PlayCircleOutline
 import androidx.compose.material.icons.filled.Start
 import androidx.compose.material.icons.twotone.Approval
@@ -48,7 +47,6 @@ fun DevicesSettingsScreenHost(vm: DevicesSettingsViewModel = hiltViewModel()) {
             onUpgradeButler = { vm.upgradeButler() },
             onToggleEnabled = { vm.onToggleEnabled(it) },
             onToggleVisibleVolumeAdjustments = { vm.onToggleVisibleVolumeAdjustments(it) },
-            onToggleVolumeListening = { vm.onToggleVolumeListening(it) },
             onToggleRestoreOnBoot = { vm.onToggleRestoreOnBoot(it) },
         )
     }
@@ -61,7 +59,6 @@ fun DevicesSettingsScreen(
     onUpgradeButler: () -> Unit,
     onToggleEnabled: (Boolean) -> Unit,
     onToggleVisibleVolumeAdjustments: (Boolean) -> Unit,
-    onToggleVolumeListening: (Boolean) -> Unit,
     onToggleRestoreOnBoot: (Boolean) -> Unit,
 ) {
 
@@ -107,16 +104,6 @@ fun DevicesSettingsScreen(
                     subtitle = stringResource(R.string.description_visible_volume_adjustments),
                     checked = state.visibleAdjustments,
                     onCheckedChange = { onToggleVisibleVolumeAdjustments(it) }
-                )
-                SettingsDivider()
-            }
-            item {
-                SettingsSwitchItem(
-                    icon = Icons.Default.Monitor,
-                    title = stringResource(R.string.label_volume_listener),
-                    subtitle = stringResource(R.string.description_volume_listener),
-                    checked = state.monitorVolume,
-                    onCheckedChange = { onToggleVolumeListening(it) }
                 )
                 SettingsDivider()
             }

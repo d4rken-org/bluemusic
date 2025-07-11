@@ -18,7 +18,6 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
-import eu.darken.bluemusic.common.WakelockMan
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
@@ -70,7 +69,6 @@ class MonitorWorker @AssistedInject constructor(
     private val bluetoothRepo: BluetoothRepo,
     private val streamHelper: StreamHelper,
     private val devicesSettings: DevicesSettings,
-    private val wakelockMan: WakelockMan,
     private val eventModuleMap: Set<@JvmSuppressWildcards EventModule>,
     private val volumeModuleMap: Set<@JvmSuppressWildcards VolumeModule>,
     private val volumeObserver: VolumeObserver,

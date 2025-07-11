@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.media.AudioManager
-import android.os.PowerManager
 import android.preference.PreferenceManager
 import androidx.work.WorkManager
 import dagger.Module
@@ -35,11 +34,6 @@ class AndroidModule {
     @Singleton
     fun bluetoothManager(@ApplicationContext context: Context): BluetoothManager =
         context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-
-    @Provides
-    @Singleton
-    fun powerManager(@ApplicationContext context: Context): PowerManager =
-        context.getSystemService(Context.POWER_SERVICE) as PowerManager
 
     @Provides
     @Singleton

@@ -12,13 +12,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.twotone.Launch
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.twotone.Alarm
+import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.Devices
+import androidx.compose.material.icons.twotone.GraphicEq
+import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.MusicNote
 import androidx.compose.material.icons.twotone.Notifications
 import androidx.compose.material.icons.twotone.Phone
 import androidx.compose.material.icons.twotone.PhoneInTalk
+import androidx.compose.material.icons.twotone.PlayArrow
 import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -58,14 +63,15 @@ fun ManagedDeviceItem(
     device: ManagedDevice,
     onDeviceAction: (DevicesAction) -> Unit,
     onNavigateToConfig: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isOnlyDevice: Boolean = false
 ) {
-    var expanded by remember { mutableStateOf(device.isActive) }
+    var expanded by remember { mutableStateOf(device.isActive || isOnlyDevice) }
 
     // Update expanded state when device active state changes
-    LaunchedEffect(device.isActive) {
-        expanded = device.isActive
-        // Collapse when device becomes inactive
+    LaunchedEffect(device.isActive, isOnlyDevice) {
+        expanded = device.isActive || isOnlyDevice
+        // Collapse when device becomes inactive (unless it's the only device)
     }
 
     Card(
@@ -111,7 +117,7 @@ fun ManagedDeviceItem(
                     when {
                         device.isActive -> {
                             Text(
-                                text = stringResource(R.string.managed_devices_currently_connected_label),
+                                text = stringResource(R.string.devices_currently_connected_label),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.primary
                             )
@@ -120,7 +126,7 @@ fun ManagedDeviceItem(
                         device.lastConnected != Instant.EPOCH -> {
                             Text(
                                 text = stringResource(
-                                    R.string.managed_devices_last_connected_label,
+                                    R.string.devices_last_connected_label,
                                     DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT)
                                         .format(Date(device.lastConnected.toEpochMilli()))
                                 ),
@@ -129,6 +135,9 @@ fun ManagedDeviceItem(
                             )
                         }
                     }
+
+                    // Option indicators
+                    OptionIndicators(device = device)
                 }
 
                 // Expand/collapse indicator
@@ -154,7 +163,7 @@ fun ManagedDeviceItem(
 
                 if (!hasAnyVolumes) {
                     Text(
-                        text = stringResource(R.string.managed_devices_no_volumes_configured),
+                        text = stringResource(R.string.devices_no_volumes_configured),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier
@@ -168,11 +177,11 @@ fun ManagedDeviceItem(
                         VolumeControl(
                             streamType = streamType,
                             label = when (streamType) {
-                                AudioStream.Type.MUSIC -> stringResource(R.string.audio_stream_music_label)
-                                AudioStream.Type.CALL -> stringResource(R.string.audio_stream_call_label)
-                                AudioStream.Type.RINGTONE -> stringResource(R.string.audio_stream_ring_label)
-                                AudioStream.Type.NOTIFICATION -> stringResource(R.string.audio_stream_notification_label)
-                                AudioStream.Type.ALARM -> stringResource(R.string.audio_stream_alarm_label)
+                                AudioStream.Type.MUSIC -> stringResource(R.string.devices_stream_music_label)
+                                AudioStream.Type.CALL -> stringResource(R.string.devices_audio_stream_call_label)
+                                AudioStream.Type.RINGTONE -> stringResource(R.string.devices_audio_stream_ring_label)
+                                AudioStream.Type.NOTIFICATION -> stringResource(R.string.devices_audio_stream_notification_label)
+                                AudioStream.Type.ALARM -> stringResource(R.string.devices_audio_stream_alarm_label)
                             },
                             volume = currentVolume,
                             onVolumeChange = { newVolume ->
@@ -214,6 +223,9 @@ private fun VolumeControl(
     onVolumeChange: (Float) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    // Track the slider value locally while dragging
+    var sliderValue by remember(volume) { mutableStateOf(volume ?: 0.5f) }
+    
     Column(modifier = modifier) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -233,13 +245,19 @@ private fun VolumeControl(
                 modifier = Modifier.width(80.dp)
             )
             Slider(
-                value = volume ?: 0.5f,
-                onValueChange = onVolumeChange,
+                value = sliderValue,
+                onValueChange = { newValue ->
+                    sliderValue = newValue
+                },
+                onValueChangeFinished = {
+                    // Only update when the user releases the slider
+                    onVolumeChange(sliderValue)
+                },
                 modifier = Modifier.weight(1f),
                 enabled = volume != null
             )
             Text(
-                text = if (volume != null) "${(volume * 100).toInt()}%" else "-",
+                text = if (volume != null) "${(sliderValue * 100).toInt()}%" else "-",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.width(40.dp)
@@ -255,6 +273,36 @@ private fun AudioStream.Type.getIcon(): ImageVector = when (this) {
     AudioStream.Type.RINGTONE -> Icons.TwoTone.Phone
     AudioStream.Type.NOTIFICATION -> Icons.TwoTone.Notifications
     AudioStream.Type.ALARM -> Icons.TwoTone.Alarm
+}
+
+@Composable
+private fun OptionIndicators(
+    device: ManagedDevice,
+    modifier: Modifier = Modifier
+) {
+    val indicators = buildList {
+        if (device.volumeLock) add(Icons.TwoTone.Lock to stringResource(R.string.devices_device_config_volume_lock_label))
+        if (device.keepAwake) add(Icons.TwoTone.BatteryFull to stringResource(R.string.devices_device_config_keep_awake_label))
+        if (device.nudgeVolume) add(Icons.TwoTone.GraphicEq to stringResource(R.string.devices_device_config_nudge_volume_label))
+        if (device.launchPkg != null) add(Icons.AutoMirrored.TwoTone.Launch to stringResource(R.string.devices_device_config_launch_app_label))
+        if (device.autoplay) add(Icons.TwoTone.PlayArrow to "Autoplay")
+    }
+
+    if (indicators.isNotEmpty()) {
+        Row(
+            modifier = modifier,
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            indicators.forEach { (icon, description) ->
+                Icon(
+                    imageVector = icon,
+                    contentDescription = description,
+                    modifier = Modifier.size(16.dp),
+                    tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f)
+                )
+            }
+        }
+    }
 }
 
 @Preview2

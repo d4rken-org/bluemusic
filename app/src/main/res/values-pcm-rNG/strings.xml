@@ -17,8 +17,8 @@
     <string name="description_volume_listener">Stay active while de device dey connected and save volume changes wey not fit caused by dis app.</string>
     <string name="label_autoplay_keytype">Autoplay key type</string>
     <string name="desc_autoplay_keytype">De key type wey dey sent wen an autoplay enabled device connects.</string>
-    <string name="label_state_connected">Connected</string>
-    <string name="label_neverseen">Never seen</string>
+    <string name="devices_state_connected_label">Connected</string>
+    <string name="devices_neverseen_label">Never seen</string>
     <string name="action_remove_device">Remove device</string>
     <string name="label_add_device">Add device</string>
     <string name="label_just_a_moment_please">Just a moment, please.</string>
@@ -27,8 +27,8 @@
     <string name="action_cancel">Cancel</string>
     <string name="label_invalid_input">Invalid input</string>
     <string name="action_reset">Reset</string>
-    <string name="label_general">General</string>
-    <string name="label_other">Oda</string>
+    <string name="devices_device_config_section_general_label">General</string>
+    <string name="devices_device_config_section_reaction_label">Oda</string>
     <string name="label_no_connected_devices">No devices connected</string>
     <string name="label_status_idle">Idle</string>
     <string name="label_status_adjusting_volumes">Adjusting volumes</string>
@@ -44,5 +44,5 @@
     <string name="description_bluetooth_is_disabled">Bluetooth dey disabled.</string>
     <string name="label_status_listening_for_changes">Listening for volume changes</string>
     <string name="action_exit">Exit</string>
-    <string name="label_music_volume">Music volume</string>
+    <string name="devices_device_config_music_volume_label">Music volume</string>
 </resources>
