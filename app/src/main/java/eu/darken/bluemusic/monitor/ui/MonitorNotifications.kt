@@ -12,7 +12,6 @@ import androidx.core.app.NotificationCompat
 import androidx.work.ForegroundInfo
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.R
-import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
 import eu.darken.bluemusic.common.PendingIntentCompat
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -57,6 +56,7 @@ class MonitorNotifications @Inject constructor(
     private fun getBuilder(
         devices: Collection<ManagedDevice>,
     ): NotificationCompat.Builder = builder.apply {
+        log(TAG) { "getBuilder($devices)" }
 
         if (devices.isNotEmpty()) {
             val sb = StringBuilder()
@@ -66,35 +66,33 @@ class MonitorNotifications @Inject constructor(
             }
             builder.setContentTitle(sb.toString())
 
-            val msgBuilder = StringBuilder()
+            val extraFlags = mutableListOf<String>()
             var listening = false
             var locking = false
             var waking = false
 
             for (dev in devices) {
                 if (!dev.isActive) continue
-                if (dev.address == FakeSpeakerDevice.ADDRESS) continue
 
                 if (!listening && dev.volumeObserving) {
                     listening = true
                     log(TAG) { "Keep running because we are observing changes" }
-                    msgBuilder.append(context.getString(R.string.label_volume_listener))
+                    extraFlags.add(context.getString(R.string.label_volume_listener))
                 }
                 if (!locking && dev.volumeLock) {
                     locking = true
                     log(TAG) { "Keep running because the device wants volume lock: $dev" }
-                    if (msgBuilder.isNotEmpty()) msgBuilder.append(",\n")
-                    msgBuilder.append(context.getString(R.string.devices_device_config_volume_lock_label))
+                    extraFlags.add(context.getString(R.string.devices_device_config_volume_lock_label))
                 }
                 if (!waking && dev.keepAwake) {
                     waking = true
                     log(TAG) { "Keep running because the device wants keep awake: $dev" }
-                    if (msgBuilder.isNotEmpty()) msgBuilder.append(",\n")
-                    msgBuilder.append(context.getString(R.string.devices_device_config_keep_awake_label))
+                    extraFlags.add(context.getString(R.string.devices_device_config_keep_awake_label))
                 }
             }
-            builder.setContentText(msgBuilder.toString())
-            builder.setStyle(NotificationCompat.BigTextStyle().bigText(msgBuilder.toString()))
+            val msg = extraFlags.joinToString(", ")
+            builder.setContentText(msg)
+            builder.setStyle(NotificationCompat.BigTextStyle().bigText(msg))
         } else {
             builder.setContentTitle(context.getString(R.string.label_no_connected_devices))
             builder.setContentText("")
@@ -117,9 +115,8 @@ class MonitorNotifications @Inject constructor(
     }
 
     suspend fun getForegroundInfo(devices: Collection<ManagedDevice>): ForegroundInfo = builderLock.withLock {
-        getBuilder(devices).apply {
-            setChannelId(NOTIFICATION_CHANNEL_ID)
-        }.toForegroundInfo()
+        log(TAG) { "getForegroundInfo(devices=$devices)" }
+        getBuilder(devices).toForegroundInfo()
     }
 
     @SuppressLint("InlinedApi")

@@ -32,6 +32,7 @@ import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.main.core.GeneralSettings
 import eu.darken.bluemusic.main.core.audio.StreamHelper
 import eu.darken.bluemusic.main.core.audio.VolumeObserver
@@ -120,7 +121,7 @@ class MonitorWorker @AssistedInject constructor(
             return
         }
 
-        setForeground(notifications.getForegroundInfo(emptyList()))
+        setForeground(notifications.getForegroundInfo(deviceRepo.currentDevices().filter { it.isActive }))
 
         if (hasApiLevel(23)) {
             // TODO why do we do this?
@@ -141,12 +142,14 @@ class MonitorWorker @AssistedInject constructor(
             .distinctUntilChanged()
             .throttleLatest(1000)
             .flatMapLatest { devices ->
+                val activeDevices = devices.filter { it.isActive }
+                log(TAG) { "monitorJob: Currently active devices: $activeDevices" }
                 notificationManager.notify(
                     MonitorNotifications.NOTIFICATION_ID,
-                    notifications.getDevicesNotification(devices),
+                    notifications.getDevicesNotification(activeDevices),
                 )
                 when {
-                    devices.any { it.isActive } -> emptyFlow()
+                    activeDevices.isNotEmpty() -> emptyFlow()
                     else -> flow<Unit> {
                         log(TAG) { "No devices connected, canceling soon" }
                         delay(15 * 1000)

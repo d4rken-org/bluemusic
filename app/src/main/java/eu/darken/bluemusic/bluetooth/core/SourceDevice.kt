@@ -1,8 +1,10 @@
 package eu.darken.bluemusic.bluetooth.core
 
+import android.Manifest
 import android.bluetooth.BluetoothDevice
 import android.content.Intent
 import android.os.Parcelable
+import androidx.annotation.RequiresPermission
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
@@ -39,14 +41,17 @@ interface SourceDevice : Parcelable {
         companion object {
             private val TAG = logTag("SourceDevice.Event")
 
-            @JvmStatic fun createEvent(intent: Intent): Event? {
+            @RequiresPermission(anyOf = [Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH])
+            fun createEvent(intent: Intent): Event? {
                 val bluetoothDevice = intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
                 if (bluetoothDevice == null) {
                     log(TAG, WARN) { "Intent didn't contain a bluetooth device!" }
                     return null
                 }
-                val sourceDevice: SourceDevice =
-                    SourceDeviceWrapper(bluetoothDevice, isActive = BluetoothDevice.ACTION_ACL_CONNECTED == intent.action)
+                val sourceDevice: SourceDevice = SourceDeviceWrapper.from(
+                    realDevice = bluetoothDevice,
+                    isActive = BluetoothDevice.ACTION_ACL_CONNECTED == intent.action
+                )
                 val actionType: Type = when {
                     BluetoothDevice.ACTION_ACL_CONNECTED == intent.action -> Type.CONNECTED
                     BluetoothDevice.ACTION_ACL_DISCONNECTED == intent.action -> Type.DISCONNECTED
