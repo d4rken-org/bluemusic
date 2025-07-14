@@ -139,9 +139,6 @@ fun ManagedDeviceItem(
                             )
                         }
                     }
-
-                    // Option indicators
-                    OptionIndicators(device = device)
                 }
 
                 // Expand/collapse indicator
@@ -162,6 +159,14 @@ fun ManagedDeviceItem(
             // Volume controls when expanded
             if (expanded) {
                 Spacer(modifier = Modifier.height(16.dp))
+
+                // Option indicators
+                OptionIndicators(
+                    device = device,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 12.dp)
+                )
 
                 val hasAnyVolumes = AudioStream.Type.entries.any { device.getVolume(it) != null }
 
