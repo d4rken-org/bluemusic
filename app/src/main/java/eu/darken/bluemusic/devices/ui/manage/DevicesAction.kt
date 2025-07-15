@@ -1,7 +1,7 @@
 package eu.darken.bluemusic.devices.ui.manage
 
 import eu.darken.bluemusic.devices.core.DeviceAddr
-import eu.darken.bluemusic.main.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
 
 sealed interface DevicesAction {
 

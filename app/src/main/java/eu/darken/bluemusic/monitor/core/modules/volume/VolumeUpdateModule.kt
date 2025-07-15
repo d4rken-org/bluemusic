@@ -16,8 +16,8 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.updateVolume
-import eu.darken.bluemusic.main.core.audio.AudioStream
-import eu.darken.bluemusic.main.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob

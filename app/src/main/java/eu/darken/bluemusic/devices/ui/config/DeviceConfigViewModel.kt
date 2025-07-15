@@ -19,7 +19,7 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.observeDevice
 import eu.darken.bluemusic.devices.core.updateVolume
-import eu.darken.bluemusic.main.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first

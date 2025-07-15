@@ -13,7 +13,7 @@ import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.main.core.GeneralSettings
-import eu.darken.bluemusic.main.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow

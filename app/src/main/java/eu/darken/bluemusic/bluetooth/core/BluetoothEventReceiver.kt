@@ -5,15 +5,14 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import dagger.hilt.android.AndroidEntryPoint
-import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
 import eu.darken.bluemusic.bluetooth.core.speaker.SpeakerDeviceProvider
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
-import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.datastore.valueBlocking
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -22,8 +21,8 @@ import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.updateVolume
-import eu.darken.bluemusic.main.core.audio.AudioStream
-import eu.darken.bluemusic.main.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
@@ -69,40 +68,53 @@ class BluetoothEventReceiver : BroadcastReceiver() {
         }
     }
 
-    private suspend fun handleEvent(
-        intent: Intent
-    ) {
-        val deviceEvent = SourceDevice.Event.createEvent(intent)
-        if (deviceEvent == null) {
-            log(TAG, ERROR) { "Couldn't create device event for $intent" }
+    private suspend fun handleEvent(intent: Intent) {
+        val bluetoothDevice = intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
+        if (bluetoothDevice == null) {
+            log(TAG, WARN) { "Intent didn't contain a bluetooth device!" }
             return
         }
+        when (intent.action) {
+            BluetoothDevice.ACTION_ACL_CONNECTED -> {
+                log(TAG, INFO) { "Device has connected: $bluetoothDevice" }
 
-        log(TAG, DEBUG) { "New event: $deviceEvent" }
+            }
+
+            BluetoothDevice.ACTION_ACL_DISCONNECTED -> {
+                log(TAG, INFO) { "Device has disconnected: $bluetoothDevice" }
+
+            }
+
+            else -> {
+                log(TAG, WARN) { "Invalid action: ${intent.action}" }
+                null
+            }
+        }
+
 
         val devices = deviceRepo.currentDevices()
         log(TAG, DEBUG) { "Current devices: $devices" }
 
-        val managedDevice = devices.singleOrNull { device -> device.address == deviceEvent.address }
+        val managedDevice = devices.singleOrNull { device -> device.address == bluetoothDevice.address }
         if (managedDevice == null) {
-            log(TAG, DEBUG) { "Event $deviceEvent belongs to an un-managed device" }
+            log(TAG, DEBUG) { "Eventbelongs to an un-managed device" }
             return
         }
 
-        log(TAG, DEBUG) { "Event $deviceEvent concerns device $managedDevice" }
+        log(TAG, DEBUG) { "Event concerns device $managedDevice" }
 
         // If we are changing from speaker to bluetooth this routine tries to save the original volume
-        if (devicesSettings.speakerAutoSave.value() &&
-            deviceEvent.address != FakeSpeakerDevice.ADDRESS &&
-            deviceEvent.type == SourceDevice.Event.Type.CONNECTED
-        ) {
-            handleSpeakerAutoSave(devices)
-        }
+//        if (devicesSettings.speakerAutoSave.value() &&
+//            deviceEvent.address != FakeSpeakerDevice.ADDRESS &&
+//            deviceEvent.type == SourceDevice.Event.Type.CONNECTED
+//        ) {
+//            handleSpeakerAutoSave(devices)
+//        }
 
         // Specific event handling for disconnect (save current volumes)
-        if (deviceEvent.type == SourceDevice.Event.Type.DISCONNECTED) {
-            handleDisconnect(managedDevice, streamHelper, deviceRepo)
-        }
+//        if (deviceEvent.type == SourceDevice.Event.Type.DISCONNECTED) {
+//            handleDisconnect(managedDevice, streamHelper, deviceRepo)
+//        }
 
         // Forward the event to the service
 //        val serviceIntent = Intent(context, BlueMusicService::class.java).apply {

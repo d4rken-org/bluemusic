@@ -1,10 +1,11 @@
-package eu.darken.bluemusic.main.core.audio
+package eu.darken.bluemusic.monitor.core.audio
 
 import android.content.ContentResolver
 import android.content.Context
 import android.database.ContentObserver
 import android.os.Handler
 import android.os.HandlerThread
+import android.provider.Settings
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
@@ -39,26 +40,24 @@ class VolumeObserver @Inject constructor(
         }
 
         val observer = object : ContentObserver(handler) {
-            override fun deliverSelfNotifications(): Boolean {
-                return false
-            }
+            // TODO
+            override fun deliverSelfNotifications(): Boolean = true
 
             override fun onChange(selfChange: Boolean) {
-                super.onChange(selfChange)
-                log(TAG, VERBOSE) { "Change detected." }
+                log(TAG, VERBOSE) { "Change detected (self=$selfChange)" }
                 AudioStream.Id.entries.forEach { id ->
                     val newVolume = streamHelper.getCurrentVolume(id)
                     val oldVolume = volumesCache[id] ?: -1
                     if (newVolume != oldVolume) {
                         log(TAG, VERBOSE) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume)" }
                         volumesCache[id] = newVolume
-                        trySendBlocking(ChangeEvent(id, newVolume))
+                        trySendBlocking(ChangeEvent(id, newVolume, selfChange))
                     }
                 }
             }
         }
 
-        contentResolver.registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, observer)
+        contentResolver.registerContentObserver(Settings.System.CONTENT_URI, true, observer)
         log(TAG) { "Now listening for volume change events" }
 
         awaitClose {
@@ -69,10 +68,11 @@ class VolumeObserver @Inject constructor(
 
     data class ChangeEvent(
         val streamId: AudioStream.Id,
-        val volume: Int
+        val volume: Int,
+        val self: Boolean,
     )
 
     companion object {
-        private val TAG = logTag("VolumeObserver")
+        private val TAG = logTag("Monitor", "VolumeObserver")
     }
 }

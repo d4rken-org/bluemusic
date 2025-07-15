@@ -6,7 +6,6 @@ import android.content.Intent
 import dagger.hilt.android.AndroidEntryPoint
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
-import eu.darken.bluemusic.common.EventGenerator
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.datastore.valueBlocking
 import eu.darken.bluemusic.common.debug.logging.Logging
@@ -28,7 +27,6 @@ class BootCheckReceiver : BroadcastReceiver() {
 
     @Inject lateinit var devicesSettings: DevicesSettings
     @Inject lateinit var bluetoothSource: BluetoothRepo
-    @Inject lateinit var eventGenerator: EventGenerator
     @Inject lateinit var deviceRepo: DeviceRepo
     @Inject lateinit var dispatcherProvider: DispatcherProvider
 
@@ -87,10 +85,11 @@ class BootCheckReceiver : BroadcastReceiver() {
                     return@launch
                 }
 
+                // TODO
                 log(TAG, Logging.Priority.INFO) { "Generating connected events for already connected devices $managedConnectedDevices" }
-                for (device in managedConnectedDevices) {
-                    eventGenerator.send(device, SourceDevice.Event.Type.CONNECTED)
-                }
+//                for (device in managedConnectedDevices) {
+//                    eventGenerator.send(device, SourceDevice.Event.Type.CONNECTED)
+//                }
 
             } catch (e: Exception) {
                 log(TAG, Logging.Priority.ERROR) { "Error during boot check: ${e.asLog()}" }

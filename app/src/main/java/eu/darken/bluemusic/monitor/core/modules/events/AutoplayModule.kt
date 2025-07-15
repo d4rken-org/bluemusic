@@ -8,7 +8,6 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
-import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
@@ -16,7 +15,7 @@ import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DevicesSettings
-import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.EventModule
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -30,8 +29,10 @@ class AutoplayModule @Inject constructor(
     override val priority: Int
         get() = 20
 
-    override suspend fun handle(device: ManagedDevice, event: SourceDevice.Event) {
-        if (event.type != SourceDevice.Event.Type.CONNECTED) return
+    override suspend fun handle(event: DeviceEvent) {
+        if (event is DeviceEvent.Connected) return
+        val device = event.device
+
         if (!device.autoplay) return
         log(TAG) { "Autoplay enabled (playing=${audioManager.isMusicActive})." }
 

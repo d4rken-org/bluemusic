@@ -1,6 +1,6 @@
 package eu.darken.bluemusic.monitor.core.modules
 
-import eu.darken.bluemusic.main.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
 
 interface VolumeModule {
 

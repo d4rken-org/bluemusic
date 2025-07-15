@@ -10,8 +10,8 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
-import eu.darken.bluemusic.main.core.audio.AudioStream
-import eu.darken.bluemusic.main.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import javax.inject.Inject
 import javax.inject.Singleton

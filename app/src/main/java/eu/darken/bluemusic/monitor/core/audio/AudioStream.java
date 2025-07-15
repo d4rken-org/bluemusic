@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.main.core.audio;
+package eu.darken.bluemusic.monitor.core.audio;
 
 import android.media.AudioManager;
 

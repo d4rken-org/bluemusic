@@ -7,7 +7,7 @@ import androidx.compose.material.icons.twotone.Notifications
 import androidx.compose.material.icons.twotone.Phone
 import androidx.compose.material.icons.twotone.PhoneInTalk
 import androidx.compose.ui.graphics.vector.ImageVector
-import eu.darken.bluemusic.main.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
 
 
 val AudioStream.Type.icon: ImageVector

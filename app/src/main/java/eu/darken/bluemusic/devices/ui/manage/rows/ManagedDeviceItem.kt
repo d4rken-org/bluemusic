@@ -56,7 +56,7 @@ import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.ui.manage.DevicesAction
-import eu.darken.bluemusic.main.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import java.text.DateFormat
 import java.time.Instant
 import java.util.Date

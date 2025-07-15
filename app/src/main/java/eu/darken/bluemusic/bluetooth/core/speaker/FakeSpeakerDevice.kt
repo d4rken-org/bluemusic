@@ -3,7 +3,7 @@ package eu.darken.bluemusic.bluetooth.core.speaker
 import android.os.Build
 import android.os.Parcelable
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
-import eu.darken.bluemusic.main.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

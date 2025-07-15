@@ -1,19 +1,19 @@
-package eu.darken.bluemusic.main.core.audio
+package eu.darken.bluemusic.monitor.core.audio
 
 import android.media.AudioManager
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.math.roundToInt
 
 
 @Singleton
-class StreamHelper @Inject
-constructor(private val audioManager: AudioManager) {
+class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
 
     companion object {
         private val TAG = logTag("StreamHelper")

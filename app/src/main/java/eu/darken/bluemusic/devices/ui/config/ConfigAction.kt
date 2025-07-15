@@ -1,7 +1,7 @@
 package eu.darken.bluemusic.devices.ui.config
 
 import android.app.Activity
-import eu.darken.bluemusic.main.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
 
 sealed interface ConfigAction {
     data class OnToggleVolume(

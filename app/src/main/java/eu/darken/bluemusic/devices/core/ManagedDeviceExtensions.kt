@@ -1,7 +1,7 @@
 package eu.darken.bluemusic.devices.core
 
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
-import eu.darken.bluemusic.main.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map

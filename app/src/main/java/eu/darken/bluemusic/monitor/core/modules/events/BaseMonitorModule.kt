@@ -1,17 +1,16 @@
 package eu.darken.bluemusic.monitor.core.modules.events
 
-import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.devices.core.ManagedDevice
-import eu.darken.bluemusic.main.core.audio.AudioStream
-import eu.darken.bluemusic.main.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.EventModule
 
 internal abstract class BaseMonitorModule(
-        private val streamHelper: StreamHelper
+    private val streamHelper: StreamHelper
 ) : EventModule {
 
     abstract val type: AudioStream.Type
@@ -19,9 +18,9 @@ internal abstract class BaseMonitorModule(
     override val priority: Int
         get() = 20
 
-    override suspend fun handle(device: ManagedDevice, event: SourceDevice.Event) {
-        if (event.type != SourceDevice.Event.Type.CONNECTED) return
-
+    override suspend fun handle(event: DeviceEvent) {
+        if (event !is DeviceEvent.Connected) return
+        val device = event.device
         val percentage = device.getVolume(type)
         log(TAG) { "Desired $type volume is $percentage" }
         if (percentage == null) return

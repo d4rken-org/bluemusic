@@ -2,13 +2,13 @@ package eu.darken.bluemusic.devices.core
 
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
-import eu.darken.bluemusic.main.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import java.time.Instant
 
 data class ManagedDevice(
+    val isActive: Boolean,
     val device: SourceDevice?,
     val config: DeviceConfigEntity,
-    val isActive: Boolean,
 ) {
 
     val address: DeviceAddr
