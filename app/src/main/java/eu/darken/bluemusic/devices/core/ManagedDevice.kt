@@ -3,6 +3,7 @@ package eu.darken.bluemusic.devices.core
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import java.time.Duration
 import java.time.Instant
 
 data class ManagedDevice(
@@ -20,12 +21,12 @@ data class ManagedDevice(
     val lastConnected: Instant
         get() = Instant.ofEpochMilli(config.lastConnected)
 
-    val monitoringDuration: Long?
-        get() = config.monitoringDuration
-    val adjustmentDelay: Long?
-        get() = config.adjustmentDelay
-    val actionDelay: Long?
-        get() = config.actionDelay
+    val monitoringDuration: Duration
+        get() = config.monitoringDuration?.let { Duration.ofMillis(it) } ?: defaultMonitoringDuration
+    val adjustmentDelay: Duration
+        get() = config.adjustmentDelay?.let { Duration.ofMillis(it) } ?: defaultAdjustmentDelay
+    val actionDelay: Duration
+        get() = config.actionDelay?.let { Duration.ofMillis(it) } ?: defaultActionDelay
     val launchPkg: String?
         get() = config.launchPkg
     val nudgeVolume: Boolean
@@ -54,5 +55,13 @@ data class ManagedDevice(
             if (getStreamId(type) == id) return type
         }
         return null
+    }
+
+    private val defaultActionDelay: Duration = Duration.ofMillis(4000)
+    private val defaultMonitoringDuration: Duration = Duration.ofMillis(4000)
+    private val defaultAdjustmentDelay: Duration = Duration.ofMillis(250)
+
+    override fun toString(): String {
+        return "ManagedDevice(isActive=$isActive, address=$address, last=$lastConnected, config=$config)"
     }
 }

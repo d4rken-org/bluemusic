@@ -2,6 +2,7 @@ package eu.darken.bluemusic.devices.ui.config
 
 import android.app.Activity
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import java.time.Duration
 
 sealed interface ConfigAction {
     data class OnToggleVolume(
@@ -21,9 +22,9 @@ sealed interface ConfigAction {
     data object OnRenameClicked : ConfigAction
     data class DeleteDevice(val confirmed: Boolean = false) : ConfigAction
     data class OnPurchaseUpgrade(val activity: Activity) : ConfigAction
-    data class OnEditMonitoringDuration(val duration: Long) : ConfigAction
-    data class OnEditReactionDelay(val delay: Long) : ConfigAction
-    data class OnEditAdjustmentDelay(val delay: Long) : ConfigAction
+    data class OnEditMonitoringDuration(val duration: Duration?) : ConfigAction
+    data class OnEditReactionDelay(val delay: Duration?) : ConfigAction
+    data class OnEditAdjustmentDelay(val delay: Duration?) : ConfigAction
     data class OnRename(val newName: String) : ConfigAction
     data class OnConfirmDelete(val confirmed: Boolean) : ConfigAction
     data class OnAppSelected(val packageName: String) : ConfigAction

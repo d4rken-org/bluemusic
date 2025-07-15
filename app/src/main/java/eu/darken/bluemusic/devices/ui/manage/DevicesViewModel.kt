@@ -176,7 +176,6 @@ class DevicesViewModel @Inject constructor(
                         streamId = device.getStreamId(action.type),
                         percent = action.volume,
                         visible = true,
-                        delay = 0
                     )
                 }
             }

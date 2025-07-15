@@ -295,38 +295,37 @@ class DeviceConfigViewModel @AssistedInject constructor(
 
             is ConfigAction.OnEditAdjustmentDelay -> {
                 deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                    oldConfig.copy(adjustmentDelay = if (action.delay > 0) action.delay else null)
+                    oldConfig.copy(adjustmentDelay = action.delay?.toMillis())
                 }
             }
 
             is ConfigAction.OnEditAdjustmentDelayClicked -> {
                 val device = state.first().device
-                val currentDelay = device.adjustmentDelay ?: eu.darken.bluemusic.devices.core.DevicesSettings.DEFAULT_ADJUSTMENT_DELAY
+                val currentDelay = device.adjustmentDelay
                 events.emit(ConfigEvent.ShowAdjustmentDelayDialog(currentDelay))
             }
 
             is ConfigAction.OnEditMonitoringDuration -> {
                 deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                    oldConfig.copy(monitoringDuration = if (action.duration > 0) action.duration else null)
+                    oldConfig.copy(monitoringDuration = action.duration?.toMillis())
                 }
             }
 
             is ConfigAction.OnEditMonitoringDurationClicked -> {
                 val device = state.first().device
-                val currentDuration =
-                    device.monitoringDuration ?: eu.darken.bluemusic.devices.core.DevicesSettings.DEFAULT_MONITORING_DURATION
+                val currentDuration = device.monitoringDuration
                 events.emit(ConfigEvent.ShowMonitoringDurationDialog(currentDuration))
             }
 
             is ConfigAction.OnEditReactionDelay -> {
                 deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                    oldConfig.copy(actionDelay = if (action.delay > 0) action.delay else null)
+                    oldConfig.copy(actionDelay = action.delay?.toMillis())
                 }
             }
 
             is ConfigAction.OnEditReactionDelayClicked -> {
                 val device = state.first().device
-                val currentDelay = device.actionDelay ?: eu.darken.bluemusic.devices.core.DevicesSettings.DEFAULT_REACTION_DELAY
+                val currentDelay = device.actionDelay
                 events.emit(ConfigEvent.ShowReactionDelayDialog(currentDelay))
             }
 
@@ -337,6 +336,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
                     events.emit(ConfigEvent.ShowAppPickerDialog)
                 }
             }
+
             is ConfigAction.OnPurchaseUpgrade -> TODO()
             is ConfigAction.OnRename -> {
                 deviceRepo.updateDevice(deviceAddress) { oldConfig ->
@@ -352,6 +352,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
                     events.emit(ConfigEvent.ShowRenameDialog(device.label))
                 }
             }
+
             is ConfigAction.OnToggleAutoPlay -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
                 oldConfig.copy(autoplay = !oldConfig.autoplay)
             }
@@ -365,11 +366,17 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnToggleVolumeLock -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                oldConfig.copy(volumeLock = !oldConfig.volumeLock)
+                oldConfig.copy(
+                    volumeLock = !oldConfig.volumeLock,
+                    volumeObserving = if (oldConfig.volumeObserving && !oldConfig.volumeLock) false else oldConfig.volumeObserving,
+                )
             }
 
             is ConfigAction.OnToggleVolumeObserving -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                oldConfig.copy(volumeObserving = !oldConfig.volumeObserving)
+                oldConfig.copy(
+                    volumeObserving = !oldConfig.volumeObserving,
+                    volumeLock = if (oldConfig.volumeLock && !oldConfig.volumeObserving) false else oldConfig.volumeLock,
+                )
             }
 
             is ConfigAction.OnToggleVolume -> {

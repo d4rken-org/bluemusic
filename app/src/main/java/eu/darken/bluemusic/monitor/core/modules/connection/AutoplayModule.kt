@@ -11,12 +11,12 @@ import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
-import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.EventModule
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -52,12 +52,7 @@ class AutoplayModule @Inject constructor(
 
             currentTries++
 
-            try {
-                Thread.sleep(500)
-            } catch (e: InterruptedException) {
-                log(TAG, WARN) { e.asLog() }
-                return
-            }
+            delay(500)
 
             if (audioManager.isMusicActive) {
                 log(TAG, VERBOSE) { "Music is playing (tries=$currentTries), job done :)." }

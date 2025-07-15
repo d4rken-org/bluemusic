@@ -38,7 +38,7 @@ internal class VolumeLockModule @Inject constructor(
                     return@forEach
                 }
 
-                if (streamHelper.changeVolume(device.getStreamId(type), percentage, false, 0)) {
+                if (streamHelper.changeVolume(device.getStreamId(type), percentage)) {
                     log(TAG) { "Engaged volume lock for $type and due to $device" }
                 }
             }

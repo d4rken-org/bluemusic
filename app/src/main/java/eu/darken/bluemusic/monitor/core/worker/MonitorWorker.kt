@@ -31,7 +31,6 @@ import eu.darken.bluemusic.common.flow.withPrevious
 import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.devices.core.DeviceRepo
-import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
@@ -57,6 +56,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.time.delay
 
 
 @HiltWorker
@@ -241,6 +241,12 @@ class MonitorWorker @AssistedInject constructor(
             }
         }
 
+        connectedDevices.forEach { dev ->
+            deviceRepo.updateDevice(dev.address) {
+                it.copy(lastConnected = System.currentTimeMillis())
+            }
+        }
+
         log(TAG) { "Connected devices:\n${connectedDevices.joinToString("\n")}" }
         log(TAG) { "Disconnected devices:\n${disconnectedDevices.joinToString("\n")}" }
 
@@ -251,7 +257,7 @@ class MonitorWorker @AssistedInject constructor(
         // Apply reaction delay only if there are connected devices
         if (connectedDevices.isNotEmpty()) {
             val connectedDevice = connectedDevices.first()
-            val reactionDelay = connectedDevice.actionDelay ?: DevicesSettings.DEFAULT_REACTION_DELAY
+            val reactionDelay = connectedDevice.actionDelay
             log(TAG) { "Delaying reaction by $reactionDelay ms." }
             delay(reactionDelay)
         }

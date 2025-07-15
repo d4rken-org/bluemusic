@@ -59,6 +59,7 @@ class DeviceRepo @Inject constructor(
         }
     }
 
+    // TODO
     suspend fun setAlias(address: DeviceAddr, alias: String?) {
         log(TAG) { "Setting alias for $address to $alias" }
 //        return try {
@@ -87,19 +88,6 @@ class DeviceRepo @Inject constructor(
         withContext(dispatcherProvider.IO) {
             deviceDatabase.devices.deleteByAddress(address)
             log(TAG) { "Deleted device config: $address" }
-        }
-    }
-
-    suspend fun updateLastConnected(address: DeviceAddr) {
-        withContext(dispatcherProvider.IO) {
-            deviceDatabase.devices.updateLastConnected(address, System.currentTimeMillis())
-            log(TAG) { "Updated last connected for: $address" }
-        }
-    }
-
-    suspend fun isDeviceManaged(address: DeviceAddr): Boolean {
-        return withContext(dispatcherProvider.IO) {
-            deviceDatabase.devices.getDevice(address) != null
         }
     }
 

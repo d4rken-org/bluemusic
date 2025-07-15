@@ -46,10 +46,6 @@ class DevicesSettings @Inject constructor(
     )
 
     companion object {
-        // TODO move this to a device specific class?
-        const val DEFAULT_REACTION_DELAY: Long = 4000
-        const val DEFAULT_MONITORING_DURATION: Long = 4000
-        const val DEFAULT_ADJUSTMENT_DELAY: Long = 250
         internal val TAG = logTag("Devices", "Settings")
     }
 }
