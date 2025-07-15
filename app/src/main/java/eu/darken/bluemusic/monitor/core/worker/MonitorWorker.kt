@@ -9,6 +9,7 @@ import android.content.IntentFilter
 import android.os.Build
 import android.util.SparseArray
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.core.util.size
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
@@ -125,8 +126,20 @@ class MonitorWorker @AssistedInject constructor(
 
         if (hasApiLevel(23)) {
             // TODO why do we do this?
-            context.registerReceiver(ringerPermission, IntentFilter(NotificationManager.ACTION_NOTIFICATION_POLICY_ACCESS_GRANTED_CHANGED))
+            ContextCompat.registerReceiver(
+                context,
+                ringerPermission,
+                IntentFilter(NotificationManager.ACTION_NOTIFICATION_POLICY_ACCESS_GRANTED_CHANGED),
+                ContextCompat.RECEIVER_NOT_EXPORTED
+            )
         }
+
+        ContextCompat.registerReceiver(
+            context,
+            stopMonitorReceiver,
+            IntentFilter(MonitorNotifications.ACTION_STOP_MONITOR),
+            ContextCompat.RECEIVER_NOT_EXPORTED
+        )
 
         volumeObserver.volumes
             .setupCommonEventHandlers(TAG) { "Volume monitor" }
@@ -167,6 +180,18 @@ class MonitorWorker @AssistedInject constructor(
         log(TAG, VERBOSE) { "Monitor job is active" }
         monitorJob.join()
         log(TAG, VERBOSE) { "Monitor job quit" }
+
+        try {
+            context.unregisterReceiver(ringerPermission)
+        } catch (e: Exception) {
+            log(TAG, WARN) { "Failed to unregister ringerPermission receiver: ${e.asLog()}" }
+        }
+
+        try {
+            context.unregisterReceiver(stopMonitorReceiver)
+        } catch (e: Exception) {
+            log(TAG, WARN) { "Failed to unregister stopMonitor receiver: ${e.asLog()}" }
+        }
     }
 
     private val ringerPermission = object : BroadcastReceiver() {
@@ -174,6 +199,13 @@ class MonitorWorker @AssistedInject constructor(
         override fun onReceive(context: Context, intent: Intent) {
             val notificationManager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             log(TAG) { "isNotificationPolicyAccessGranted()=${notificationManager.isNotificationPolicyAccessGranted}" }
+        }
+    }
+
+    private val stopMonitorReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            log(TAG) { "Stop monitor action received" }
+            workerScope.cancel("Stop action received from notification")
         }
     }
 

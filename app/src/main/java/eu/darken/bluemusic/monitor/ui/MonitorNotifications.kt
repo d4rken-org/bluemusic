@@ -99,14 +99,10 @@ class MonitorNotifications @Inject constructor(
             builder.setStyle(NotificationCompat.BigTextStyle().bigText(""))
         }
 
-// TODO
-//            val stopIntent = Intent(context, BlueMusicService::class.java).apply {
-//                action = BlueMusicService.STOP_ACTION
-//            }
-//            val stopPi = PendingIntent.getService(context, 0, stopIntent, PendingIntentCompat.FLAG_IMMUTABLE)
-//            addAction(
-//                NotificationCompat.Action.Builder(0, context.getString(R.string.action_exit), stopPi).build()
-//            )
+        clearActions()
+        val stopIntent = Intent(ACTION_STOP_MONITOR).apply { setPackage(context.packageName) }
+        val stopPi = PendingIntent.getBroadcast(context, 0, stopIntent, PendingIntentCompat.FLAG_IMMUTABLE)
+        addAction(NotificationCompat.Action.Builder(0, context.getString(R.string.action_exit), stopPi).build())
     }
 
     suspend fun getDevicesNotification(devices: Collection<ManagedDevice>) = builderLock.withLock {
@@ -137,5 +133,6 @@ class MonitorNotifications @Inject constructor(
         val TAG = logTag("Monitor", "Notifications")
         private const val NOTIFICATION_CHANNEL_ID = "notification.channel.core"
         internal const val NOTIFICATION_ID = 1
+        const val ACTION_STOP_MONITOR = "eu.darken.bluemusic.monitor.STOP"
     }
 }
