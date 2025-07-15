@@ -7,6 +7,9 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.math.roundToInt
@@ -15,10 +18,8 @@ import kotlin.math.roundToInt
 @Singleton
 class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
 
-    companion object {
-        private val TAG = logTag("StreamHelper")
-    }
     @Volatile private var adjusting = false
+    private val lock = Mutex()
     private val lastUs = HashMap<AudioStream.Id, Int>()
 
     fun getCurrentVolume(id: AudioStream.Id): Int {
@@ -29,13 +30,13 @@ class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
         return audioManager.getStreamMaxVolume(streamId.id)
     }
 
-    @Synchronized private fun setVolume(streamId: AudioStream.Id, volume: Int, flags: Int) {
+    suspend fun setVolume(streamId: AudioStream.Id, volume: Int, flags: Int) = lock.withLock {
         log(TAG, VERBOSE) { "setVolume(streamId=$streamId, volume=$volume, flags=$flags)." }
         adjusting = true
         lastUs[streamId] = volume
 
         try {
-            Thread.sleep(10)
+            delay(10)
         } catch (e: InterruptedException) {
             log(TAG, WARN) { e.asLog() }
             adjusting = false
@@ -46,7 +47,7 @@ class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
         audioManager.setStreamVolume(streamId.id, volume, flags)
 
         try {
-            Thread.sleep(10)
+            delay(10)
         } catch (e: InterruptedException) {
             log(TAG, WARN) { e.asLog() }
             return
@@ -63,7 +64,7 @@ class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
         return audioManager.getStreamVolume(streamId.id).toFloat() / audioManager.getStreamMaxVolume(streamId.id)
     }
 
-    fun lowerByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {
+    suspend fun lowerByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {
         val current = getCurrentVolume(streamId)
         val max = getMaxVolume(streamId)
         log(TAG, VERBOSE) { "lowerByOne(streamId=$streamId, visible=$visible): current=$current, max=$max" }
@@ -76,7 +77,7 @@ class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
         return changeVolume(streamId, (current - 1f) / max, visible, 0)
     }
 
-    fun increaseByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {
+    suspend fun increaseByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {
         val current = getCurrentVolume(streamId)
         val max = getMaxVolume(streamId)
         log(TAG, VERBOSE) { "increaseByOne(streamId=$streamId, visible=$visible): current=$current, max=$max" }
@@ -89,11 +90,11 @@ class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
         return changeVolume(streamId, (current + 1f) / max, visible, 0)
     }
 
-    fun changeVolume(
-            streamId: AudioStream.Id,
-            percent: Float,
-            visible: Boolean,
-            delay: Long
+    suspend fun changeVolume(
+        streamId: AudioStream.Id,
+        percent: Float,
+        visible: Boolean,
+        delay: Long
     ): Boolean {
         val currentVolume = getCurrentVolume(streamId)
         val max = getMaxVolume(streamId)
@@ -140,4 +141,7 @@ class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
         }
     }
 
+    companion object {
+        private val TAG = logTag("StreamHelper")
+    }
 }

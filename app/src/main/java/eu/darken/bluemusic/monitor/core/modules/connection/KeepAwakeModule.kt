@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.monitor.core.modules.events
+package eu.darken.bluemusic.monitor.core.modules.connection
 
 import dagger.Binds
 import dagger.Module
@@ -63,6 +63,6 @@ class KeepAwakeModule @Inject internal constructor(
     }
 
     companion object {
-        private val TAG = logTag("KeepAwakeModule")
+        private val TAG = logTag("Monitor", "KeepAwake", "Module")
     }
 }

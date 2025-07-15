@@ -1,10 +1,12 @@
-package eu.darken.bluemusic.monitor.core.modules.events
+package eu.darken.bluemusic.monitor.core.modules.connection
 
+import android.app.NotificationManager
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
+import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.StreamHelper
@@ -13,15 +15,18 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CallVolumeModule @Inject constructor(
-    private val settings: DevicesSettings,
-        streamHelper: StreamHelper
+class NotificationVolumeModule @Inject constructor(
+    settings: DevicesSettings,
+    streamHelper: StreamHelper,
+    private val notMan: NotificationManager
 ) : BaseVolumeModule(settings, streamHelper) {
 
-    override val type: AudioStream.Type = AudioStream.Type.CALL
+    override val type: AudioStream.Type = AudioStream.Type.NOTIFICATION
+
+    override suspend fun areRequirementsMet(): Boolean = !hasApiLevel(23) || notMan.isNotificationPolicyAccessGranted
 
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
-        @Binds @IntoSet abstract fun bind(entry: CallVolumeModule): EventModule
+        @Binds @IntoSet abstract fun bind(entry: NotificationVolumeModule): EventModule
     }
 }

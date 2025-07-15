@@ -7,16 +7,16 @@ import java.time.Instant
 
 data class ManagedDevice(
     val isActive: Boolean,
-    val device: SourceDevice?,
+    val device: SourceDevice,
     val config: DeviceConfigEntity,
 ) {
 
     val address: DeviceAddr
         get() = config.address
     val label: String
-        get() = config.alias ?: device?.label ?: address
+        get() = config.alias ?: device.label
     val name: String?
-        get() = device?.name
+        get() = device.name
     val lastConnected: Instant
         get() = Instant.ofEpochMilli(config.lastConnected)
 
@@ -47,16 +47,7 @@ data class ManagedDevice(
         AudioStream.Type.ALARM -> config.alarmVolume
     }
 
-    fun getStreamId(type: AudioStream.Type): AudioStream.Id {
-        // This is a simplified version, in reality this would come from device capabilities
-        return when (type) {
-            AudioStream.Type.MUSIC -> AudioStream.Id.STREAM_MUSIC
-            AudioStream.Type.CALL -> AudioStream.Id.STREAM_VOICE_CALL
-            AudioStream.Type.RINGTONE -> AudioStream.Id.STREAM_RINGTONE
-            AudioStream.Type.NOTIFICATION -> AudioStream.Id.STREAM_NOTIFICATION
-            AudioStream.Type.ALARM -> AudioStream.Id.STREAM_ALARM
-        }
-    }
+    fun getStreamId(type: AudioStream.Type): AudioStream.Id = device.getStreamId(type)
 
     fun getStreamType(id: AudioStream.Id): AudioStream.Type? {
         for (type in AudioStream.Type.entries) {

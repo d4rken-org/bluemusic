@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.monitor.core.modules.events
+package eu.darken.bluemusic.monitor.core.modules.connection
 
 import android.app.NotificationManager
 import dagger.Binds

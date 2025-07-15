@@ -34,9 +34,7 @@ class DevicesSettings @Inject constructor(
 
     val isEnabled = dataStore.createValue("devices.enabled", true)
     val visibleAdjustments = dataStore.createValue("devices.volume.adjustments.visible", true)
-    val volumeListening = dataStore.createValue("devices.volume.monitoring.enabled", true)
     val restoreOnBoot = dataStore.createValue("devices.volume.restore.boot.enabled", true)
-    val speakerAutoSave = dataStore.createValue("devices.speaker.autosave.enabled", true)
 
     // TODO per device?
     val autoplayKeycode = dataStore.createValue("devices.speaker.autosave.enabled", KeyEvent.KEYCODE_MEDIA_PLAY)

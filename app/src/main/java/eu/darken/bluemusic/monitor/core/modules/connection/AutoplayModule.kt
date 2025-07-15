@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.monitor.core.modules.events
+package eu.darken.bluemusic.monitor.core.modules.connection
 
 import android.media.AudioManager
 import android.os.SystemClock
@@ -80,6 +80,6 @@ class AutoplayModule @Inject constructor(
     }
 
     companion object {
-        private val TAG = logTag("AutoplayModule")
+        private val TAG = logTag("Monitor", "Autoplay", "Module")
     }
 }

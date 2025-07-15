@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.monitor.core.modules.events
+package eu.darken.bluemusic.monitor.core.modules.connection
 
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
@@ -56,7 +56,7 @@ internal abstract class BaseMonitorModule(
     }
 
     companion object {
-        private val TAG = logTag("BaseMonitorModule")
+        private val TAG = logTag("Monitor", "BaseEventModule")
     }
 
 }

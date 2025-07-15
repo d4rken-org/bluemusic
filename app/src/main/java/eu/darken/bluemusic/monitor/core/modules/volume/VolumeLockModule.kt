@@ -51,6 +51,6 @@ internal class VolumeLockModule @Inject constructor(
     }
 
     companion object {
-        private val TAG = logTag("VolumeLockModule")
+        private val TAG = logTag("Monitor", "Volume", "Lock", "Module")
     }
 }

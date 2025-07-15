@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.bluetooth.core
 
+import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
@@ -11,15 +12,15 @@ import java.util.UUID
 data class MockDevice(
     override val label: String = "MockDevice ${UUID.randomUUID().toString().take(4)}",
     override val isActive: Boolean = false,
-) : SourceDevice {
-    @IgnoredOnParcel
-    override val address: String = UUID.randomUUID()
+    override val address: DeviceAddr = UUID.randomUUID()
         .toString()
         .uppercase()
         .replace("-", "")
         .take(16)
         .chunked(2)
         .joinToString(":")
+) : SourceDevice {
+    @IgnoredOnParcel
     override val deviceType: SourceDevice.Type
         get() = SourceDevice.Type.HEADPHONES
     override val name: String?

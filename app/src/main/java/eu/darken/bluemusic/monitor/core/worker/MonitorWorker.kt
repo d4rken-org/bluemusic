@@ -34,8 +34,6 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
-import eu.darken.bluemusic.main.core.GeneralSettings
-import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.EventModule
@@ -52,6 +50,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
@@ -67,11 +66,8 @@ class MonitorWorker @AssistedInject constructor(
     private val dispatcherProvider: DispatcherProvider,
     private val notifications: MonitorNotifications,
     private val notificationManager: NotificationManager,
-    private val generalSettings: GeneralSettings,
     private val deviceRepo: DeviceRepo,
     private val bluetoothRepo: BluetoothRepo,
-    private val streamHelper: StreamHelper,
-    private val devicesSettings: DevicesSettings,
     private val eventModuleMap: Set<@JvmSuppressWildcards EventModule>,
     private val volumeModuleMap: Set<@JvmSuppressWildcards VolumeModule>,
     private val volumeObserver: VolumeObserver,
@@ -151,7 +147,9 @@ class MonitorWorker @AssistedInject constructor(
 
         deviceRepo.devices
             .setupCommonEventHandlers(TAG) { "Connection monitor" }
-            .distinctUntilChanged()
+            .distinctUntilChangedBy { devices ->
+                devices.map { device -> device.address to device.isActive }.toSet()
+            }
             .withPrevious()
             .onEach { (before, current) ->
                 handleConnectionChange(before ?: emptyList(), current)
@@ -222,23 +220,41 @@ class MonitorWorker @AssistedInject constructor(
         before: List<ManagedDevice>,
         current: List<ManagedDevice>,
     ) {
-        val connectedDevices = current - before
+        // Create maps for easier lookup
+        val beforeMap = before.associateBy { it.address }
+        val currentMap = current.associateBy { it.address }
+
+        // Find devices that changed their active state
+        val connectedDevices = mutableListOf<ManagedDevice>()
+        val disconnectedDevices = mutableListOf<ManagedDevice>()
+
+        // Only process devices where isActive state actually changed
+        currentMap.forEach { (address, currentDevice) ->
+            val beforeDevice = beforeMap[address]
+            if (beforeDevice != null && beforeDevice.isActive != currentDevice.isActive) {
+                // Device exists in both lists and active state changed
+                if (currentDevice.isActive) {
+                    connectedDevices.add(currentDevice)
+                } else {
+                    disconnectedDevices.add(currentDevice)
+                }
+            }
+        }
+
         log(TAG) { "Connected devices:\n${connectedDevices.joinToString("\n")}" }
-        val disconnectedDevices = before - current
         log(TAG) { "Disconnected devices:\n${disconnectedDevices.joinToString("\n")}" }
 
         val events = mutableListOf<DeviceEvent>()
-        connectedDevices.forEach {
-            events.add(DeviceEvent.Connected(it))
+        disconnectedDevices.forEach { events.add(DeviceEvent.Disconnected(it)) }
+        connectedDevices.forEach { events.add(DeviceEvent.Connected(it)) }
+
+        // Apply reaction delay only if there are connected devices
+        if (connectedDevices.isNotEmpty()) {
+            val connectedDevice = connectedDevices.first()
+            val reactionDelay = connectedDevice.actionDelay ?: DevicesSettings.DEFAULT_REACTION_DELAY
+            log(TAG) { "Delaying reaction by $reactionDelay ms." }
+            delay(reactionDelay)
         }
-        disconnectedDevices.forEach {
-            events.add(DeviceEvent.Disconnected(it))
-        }
-        // TODO show message about reaction delay?
-        val connectedDevice = connectedDevices.first()
-        val reactionDelay = connectedDevice.actionDelay ?: DevicesSettings.DEFAULT_REACTION_DELAY
-        log(TAG) { "Delaying reaction by $reactionDelay ms." }
-        delay(reactionDelay)
 
         val priorityArray = SparseArray<MutableList<EventModule>>()
 
@@ -252,22 +268,27 @@ class MonitorWorker @AssistedInject constructor(
             list.add(module)
         }
 
-        for (i in 0 until priorityArray.size) {
-            val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
-            log(TAG) { "${currentPriorityModules.size} event modules at priority ${priorityArray.keyAt(i)}" }
+        // Process all events
+        for (event in events) {
+            log(TAG) { "Processing event: $event" }
 
-            coroutineScope {
-                currentPriorityModules.map { module ->
-                    async(dispatcherProvider.IO) {
-                        try {
-                            log(TAG, VERBOSE) { "Event module $module HANDLE-START" }
-                            module.handle(events.first())
-                            log(TAG, VERBOSE) { "Event module $module HANDLE-STOP" }
-                        } catch (e: Exception) {
-                            log(TAG, ERROR) { "Event module error: $module: ${e.asLog()}" }
+            for (i in 0 until priorityArray.size) {
+                val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
+                log(TAG) { "${currentPriorityModules.size} event modules at priority ${priorityArray.keyAt(i)}" }
+
+                coroutineScope {
+                    currentPriorityModules.map { module ->
+                        async(dispatcherProvider.IO) {
+                            try {
+                                log(TAG, VERBOSE) { "Event module $module HANDLE-START for $event" }
+                                module.handle(event)
+                                log(TAG, VERBOSE) { "Event module $module HANDLE-STOP for $event" }
+                            } catch (e: Exception) {
+                                log(TAG, ERROR) { "Event module error: $module for $event: ${e.asLog()}" }
+                            }
                         }
-                    }
-                }.awaitAll()
+                    }.awaitAll()
+                }
             }
         }
     }

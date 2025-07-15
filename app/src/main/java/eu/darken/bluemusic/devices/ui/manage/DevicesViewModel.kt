@@ -12,6 +12,8 @@ import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.getDevice
+import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.main.core.GeneralSettings
 import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import kotlinx.coroutines.channels.Channel
@@ -127,7 +129,7 @@ class DevicesViewModel @Inject constructor(
         val showNotificationPermissionHint: Boolean = false,
     )
 
-    fun action(action: DevicesAction) {
+    fun action(action: DevicesAction) = launch {
         log(tag) { "action: $action" }
         when (action) {
             DevicesAction.RequestBluetoothPermission -> {
@@ -165,7 +167,18 @@ class DevicesViewModel @Inject constructor(
             }
 
             is DevicesAction.AdjustVolume -> {
-                // Handle volume adjustment
+                deviceRepo.updateDevice(action.addr) { oldConfig ->
+                    oldConfig.updateVolume(action.type, action.volume)
+                }
+                val device = deviceRepo.getDevice(action.addr)
+                if (device?.isActive == true) {
+                    streamHelper.changeVolume(
+                        streamId = device.getStreamId(action.type),
+                        percent = action.volume,
+                        visible = true,
+                        delay = 0
+                    )
+                }
             }
         }
     }

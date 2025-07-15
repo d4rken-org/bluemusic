@@ -14,6 +14,7 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
+import eu.darken.bluemusic.monitor.core.worker.MonitorControl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
@@ -29,15 +30,14 @@ class BootCheckReceiver : BroadcastReceiver() {
     @Inject lateinit var bluetoothSource: BluetoothRepo
     @Inject lateinit var deviceRepo: DeviceRepo
     @Inject lateinit var dispatcherProvider: DispatcherProvider
+    @Inject lateinit var monitorControl: MonitorControl
 
     override fun onReceive(context: Context, intent: Intent) {
         log(TAG, Logging.Priority.VERBOSE) { "onReceive($context, $intent)" }
-        if (!Intent.ACTION_BOOT_COMPLETED.equals(intent.action)) {
+        if (Intent.ACTION_BOOT_COMPLETED != intent.action) {
             log(TAG, Logging.Priority.ERROR) { "Triggered with unknown intent: $intent" }
             return
         }
-
-        // Dependencies are injected by Hilt
 
         if (!devicesSettings.isEnabled.valueBlocking) {
             log(TAG, Logging.Priority.INFO) { "We are disabled." }
@@ -85,12 +85,7 @@ class BootCheckReceiver : BroadcastReceiver() {
                     return@launch
                 }
 
-                // TODO
-                log(TAG, Logging.Priority.INFO) { "Generating connected events for already connected devices $managedConnectedDevices" }
-//                for (device in managedConnectedDevices) {
-//                    eventGenerator.send(device, SourceDevice.Event.Type.CONNECTED)
-//                }
-
+                monitorControl.startMonitor()
             } catch (e: Exception) {
                 log(TAG, Logging.Priority.ERROR) { "Error during boot check: ${e.asLog()}" }
             } finally {

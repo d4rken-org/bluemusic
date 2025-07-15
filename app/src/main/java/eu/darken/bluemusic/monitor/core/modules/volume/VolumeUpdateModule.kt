@@ -6,7 +6,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
-import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.asLog
@@ -33,29 +32,28 @@ class VolumeUpdateModule @Inject constructor(
     dispatcherProvider: DispatcherProvider
 ) : VolumeModule {
 
-    companion object {
-        private val TAG = logTag("VolumeUpdateModuleFlow")
-    }
-
     private val scope = CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
 
     override suspend fun handle(id: AudioStream.Id, volume: Int) {
-        if (!settings.volumeListening.value()) {
-            log(TAG, VERBOSE) { "Volume listener is disabled." }
+        val activeDevices = deviceRepo.currentDevices().filter { it.isActive }
+        log(TAG) { "Active devices (${activeDevices.size}): $activeDevices" }
+        if (!activeDevices.none { it.volumeObserving }) {
+            log(TAG, VERBOSE) { "No active device has volume listening enabled." }
             return
         }
+
         if (streamHelper.wasUs(id, volume)) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             return
         }
 
+        activeDevices.any { it.lastConnected }
+
         val percentage = streamHelper.getVolumePercentage(id)
 
         scope.launch {
             try {
-                val devices = deviceRepo.currentDevices()
-
-                devices
+                activeDevices
                     .filter { device ->
                         device.isActive &&
                                 !device.volumeLock &&
@@ -78,4 +76,9 @@ class VolumeUpdateModule @Inject constructor(
     abstract class Mod {
         @Binds @IntoSet abstract fun bind(entry: VolumeUpdateModule): VolumeModule
     }
+
+    companion object {
+        private val TAG = logTag("Monitor", "Volume", "Update", "Module")
+    }
+
 }

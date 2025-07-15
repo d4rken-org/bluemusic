@@ -49,7 +49,7 @@ class VolumeObserver @Inject constructor(
                     val newVolume = streamHelper.getCurrentVolume(id)
                     val oldVolume = volumesCache[id] ?: -1
                     if (newVolume != oldVolume) {
-                        log(TAG, VERBOSE) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume)" }
+                        log(TAG) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume)" }
                         volumesCache[id] = newVolume
                         trySendBlocking(ChangeEvent(id, newVolume, selfChange))
                     }

@@ -37,10 +37,11 @@ class DeviceRepo @Inject constructor(
         deviceDatabase.devices.getAllDevices()
     ) { paired, managed ->
         val pairedMap = paired?.associateBy { it.address }
-        managed.map {
+        managed.mapNotNull {
+            val paired = pairedMap?.get(it.address) ?: return@mapNotNull null
             ManagedDevice(
-                device = pairedMap?.get(it.address),
-                isActive = pairedMap?.get(it.address)?.isActive == true,
+                device = paired,
+                isActive = paired.isActive,
                 config = it,
             )
         }.sortedByDescending { it.isActive }

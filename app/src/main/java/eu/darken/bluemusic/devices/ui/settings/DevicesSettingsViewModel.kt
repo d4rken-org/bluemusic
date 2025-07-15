@@ -4,12 +4,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.common.flow.combine
 import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
+import kotlinx.coroutines.flow.combine
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,14 +26,12 @@ constructor(
         upgradeRepo.upgradeInfo,
         devicesSettings.isEnabled.flow,
         devicesSettings.visibleAdjustments.flow,
-        devicesSettings.volumeListening.flow,
         devicesSettings.restoreOnBoot.flow,
-    ) { upgradeInfo, isEnabled, visibleAdjustments, monitorVolume, restoreOnBoot ->
+    ) { upgradeInfo, isEnabled, visibleAdjustments, restoreOnBoot ->
         State(
             isUpgraded = upgradeInfo.isUpgraded,
             isEnabled = isEnabled,
             visibleAdjustments = visibleAdjustments,
-            monitorVolume = monitorVolume,
             restoreOnBoot = restoreOnBoot,
         )
     }.asStateFlow()
@@ -63,7 +61,6 @@ constructor(
         val isUpgraded: Boolean,
         val isEnabled: Boolean,
         val visibleAdjustments: Boolean,
-        val monitorVolume: Boolean, // TODO make this part of device specific settings
         val restoreOnBoot: Boolean,
     )
 }

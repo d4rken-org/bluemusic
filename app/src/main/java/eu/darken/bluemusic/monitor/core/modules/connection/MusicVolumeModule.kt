@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.monitor.core.modules.events
+package eu.darken.bluemusic.monitor.core.modules.connection
 
 import dagger.Binds
 import dagger.Module
@@ -13,15 +13,15 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AlarmVolumeModule @Inject constructor(
-    devicesSettings: DevicesSettings,
-        streamHelper: StreamHelper
-) : BaseVolumeModule(devicesSettings, streamHelper) {
+class MusicVolumeModule @Inject constructor(
+    settings: DevicesSettings,
+    streamHelper: StreamHelper
+) : BaseVolumeModule(settings, streamHelper) {
 
-    override val type: AudioStream.Type = AudioStream.Type.ALARM
+    override val type: AudioStream.Type = AudioStream.Type.MUSIC
 
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
-        @Binds @IntoSet abstract fun bind(entry: AlarmVolumeModule): EventModule
+        @Binds @IntoSet abstract fun bind(entry: MusicVolumeModule): EventModule
     }
 }

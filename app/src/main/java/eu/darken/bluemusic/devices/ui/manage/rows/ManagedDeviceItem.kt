@@ -234,7 +234,7 @@ private fun VolumeControl(
 ) {
     // Track the slider value locally while dragging
     var sliderValue by remember(volume) { mutableStateOf(volume ?: 0.5f) }
-    
+
     Column(modifier = modifier) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -269,7 +269,9 @@ private fun VolumeControl(
                 text = if (volume != null) "${(sliderValue * 100).toInt()}%" else "-",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.width(40.dp)
+                modifier = Modifier
+                    .width(40.dp)
+                    .padding(start = 8.dp)
             )
         }
     }
