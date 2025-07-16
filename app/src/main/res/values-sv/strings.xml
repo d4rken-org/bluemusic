@@ -18,7 +18,7 @@
     <string name="desc_autoplay_keytype">Nyckeltypen som skickas när en autoplay-aktiverad enhet ansluter.</string>
     <string name="devices_state_connected_label">Ansluten</string>
     <string name="devices_neverseen_label">Aldrig sedd</string>
-    <string name="action_remove_device">Ta bort enhet</string>
+    <string name="action_remove_device">Glöm enhet</string>
     <string name="label_add_device">Lägg till enhet</string>
     <string name="label_just_a_moment_please">Ett ögonblick tack.</string>
     <string name="label_notification_channel_status">Status</string>

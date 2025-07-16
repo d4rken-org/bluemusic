@@ -1,19 +1,16 @@
 package eu.darken.bluemusic.devices.core
 
+import android.annotation.SuppressLint
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
-import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.replayingShare
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.devices.core.database.DeviceDatabase
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.retry
 import kotlinx.coroutines.plus
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -29,14 +26,10 @@ class DeviceRepo @Inject constructor(
 
     // TODO what if bluetooth is suddenly disabled?
     val devices = combine(
-        bluetoothRepo.pairedDevices.retry {
-            log(TAG, WARN) { "Error loading paired devices: ${it.asLog()}" }
-            delay(1000)
-            true
-        },
+        bluetoothRepo.state,
         deviceDatabase.devices.getAllDevices()
-    ) { paired, managed ->
-        val pairedMap = paired?.associateBy { it.address }
+    ) { btState, managed ->
+        val pairedMap = btState.devices?.associateBy { it.address }
         managed.mapNotNull {
             val paired = pairedMap?.get(it.address) ?: return@mapNotNull null
             ManagedDevice(
@@ -47,40 +40,34 @@ class DeviceRepo @Inject constructor(
         }.sortedByDescending { it.isActive }
     }.replayingShare(appScope + dispatcherProvider.IO)
 
-    suspend fun createDevice(address: DeviceAddr) {
-        return withContext(dispatcherProvider.IO) {
-            val device = DeviceConfigEntity(
-                address = address,
-                lastConnected = System.currentTimeMillis()
-            )
-            deviceDatabase.devices.insertDevice(device)
-            log(TAG) { "Created new device config: $address" }
-            device
-        }
-    }
+    @SuppressLint("MissingPermission")
+    suspend fun renameDevice(address: DeviceAddr, newName: String?) {
+        log(TAG) { "renameDevice: Setting alias for $address to $newName" }
 
-    // TODO
-    suspend fun setAlias(address: DeviceAddr, alias: String?) {
-        log(TAG) { "Setting alias for $address to $alias" }
-//        return try {
-//            val method = realDevice.javaClass.getMethod("setAlias", String::class.java)
-//            method.invoke(realDevice, newAlias) as Boolean
-//        } catch (e: Exception) {
-//            log(SourceDeviceWrapper.Companion.TAG, ERROR) { "Failed to set alias: ${e.asLog()}" }
-//            false
-//        }
+        var systemAliasSuccess = false
+        if (newName != null) {
+            systemAliasSuccess = bluetoothRepo.renameDevice(address, newName)
+        }
+        log(TAG) { "renameDevice: systemAliasSuccess=$systemAliasSuccess" }
+
+        updateDevice(address) { oldConfig ->
+            oldConfig.copy(customName = if (systemAliasSuccess) null else newName)
+        }
     }
 
     suspend fun updateDevice(address: DeviceAddr, update: (DeviceConfigEntity) -> DeviceConfigEntity) {
         withContext(dispatcherProvider.IO) {
-            val device = deviceDatabase.devices.getDevice(address)
-            if (device != null) {
-                val updated = update(device)
-                deviceDatabase.devices.updateDevice(updated)
-                log(TAG) { "Updated device config: $address" }
-            } else {
-                log(TAG, WARN) { "Device not found for update: $address" }
+            var before = deviceDatabase.devices.getDevice(address)
+
+            if (before == null) {
+                log(TAG) { "Device not found for update: $address. Creating new." }
+                before = DeviceConfigEntity(address = address)
             }
+
+            val updated = update(before)
+            deviceDatabase.devices.updateDevice(updated)
+
+            log(TAG) { "Updated device config: $address" }
         }
     }
 
@@ -92,6 +79,6 @@ class DeviceRepo @Inject constructor(
     }
 
     companion object {
-        private val TAG = logTag("DeviceRepository")
+        private val TAG = logTag("Devices", "Repo")
     }
 }

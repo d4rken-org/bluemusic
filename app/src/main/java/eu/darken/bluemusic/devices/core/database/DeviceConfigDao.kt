@@ -5,7 +5,6 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -19,11 +18,8 @@ interface DeviceConfigDao {
     
     @Query("SELECT * FROM device_configs WHERE address = :address")
     fun observeDevice(address: String): Flow<DeviceConfigEntity?>
-    
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertDevice(device: DeviceConfigEntity)
-    
-    @Update
     suspend fun updateDevice(device: DeviceConfigEntity)
     
     @Delete

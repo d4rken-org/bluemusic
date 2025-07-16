@@ -9,7 +9,10 @@ data class DeviceConfigEntity(
     @PrimaryKey
     @ColumnInfo(name = "address")
     val address: String,
-    
+
+    @ColumnInfo(name = "custom_name")
+    val customName: String? = null,
+
     @ColumnInfo(name = "last_connected")
     val lastConnected: Long = 0L,
     
@@ -54,10 +57,4 @@ data class DeviceConfigEntity(
     
     @ColumnInfo(name = "launch_pkg")
     val launchPkg: String? = null,
-    
-    @ColumnInfo(name = "alias")
-    val alias: String? = null,
-    
-    @ColumnInfo(name = "name")
-    val name: String? = null
 )

@@ -10,16 +10,14 @@ import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.DebugSettings
 import eu.darken.bluemusic.common.debug.logging.LogCatLogger
 import eu.darken.bluemusic.common.debug.logging.Logging
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.database.legacy.MigrationTool
-import eu.darken.bluemusic.devices.core.database.legacy.RealmToRoomMigrator
+import eu.darken.bluemusic.legacy.LegacyMigration
 import eu.darken.bluemusic.main.core.CurriculumVitae
 import eu.darken.bluemusic.main.core.GeneralSettings
-import eu.darken.bluemusic.main.core.LegacySettings
 import eu.darken.bluemusic.monitor.core.worker.MonitorControl
 import io.realm.Realm
 import io.realm.RealmConfiguration
@@ -39,8 +37,7 @@ class App : Application(), Configuration.Provider {
     @Inject lateinit var curriculumVitae: CurriculumVitae
     @Inject lateinit var monitorControl: MonitorControl
 
-    @Inject lateinit var legacySettings: LegacySettings
-    @Inject lateinit var realmToRoomMigrator: RealmToRoomMigrator
+    @Inject lateinit var legacyMigration: LegacyMigration
 
 
     override fun onCreate() {
@@ -59,21 +56,8 @@ class App : Application(), Configuration.Provider {
             .build()
         Realm.setDefaultConfiguration(realmConfig)
 
-        // TODO Migrate LegacySettings
+        legacyMigration.migration()
 
-        // Perform data migration from Realm to Room
-        appScope.launch {
-            try {
-                val migrationSuccess = realmToRoomMigrator.migrate()
-                if (migrationSuccess) {
-                    log(TAG, DEBUG) { "Data migration completed successfully" }
-                    // Clean up Realm files after successful migration
-                    realmToRoomMigrator.cleanupRealmFiles()
-                }
-            } catch (e: Exception) {
-                log(TAG, ERROR) { "Data migration failed: ${e.asLog()}" }
-            }
-        }
 
         val oldHandler = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->

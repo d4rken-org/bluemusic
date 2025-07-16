@@ -21,7 +21,7 @@
     <string name="desc_autoplay_keytype">Het sleuteltype dat wordt verzonden wanneer een autoplay ingeschakeld apparaat verbinding maakt.</string>
     <string name="devices_state_connected_label">Verbonden</string>
     <string name="devices_neverseen_label">Nooit gezien</string>
-    <string name="action_remove_device">Verwijder apparaat</string>
+    <string name="action_remove_device">Vergeet apparaat</string>
     <string name="label_add_device">Apparaat toevoegen</string>
     <string name="label_just_a_moment_please">Een ogenblik, alstublieft.</string>
     <string name="label_notification_channel_status">Status</string>

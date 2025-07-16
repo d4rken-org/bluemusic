@@ -20,7 +20,7 @@
     <string name="desc_autoplay_keytype">ชนิดคีย์ที่ส่งเชื่อมต่อเมื่ออุปกรณ์เปิดใช้งาน\'เล่นอัตโนมัติ\'</string>
     <string name="devices_state_connected_label">เชื่อมต่อแล้ว</string>
     <string name="devices_neverseen_label">ไม่เคยเห็น</string>
-    <string name="action_remove_device">เอาอุปกรณ์ออก</string>
+    <string name="action_remove_device">ลืมอุปกรณ์</string>
     <string name="label_add_device">เพิ่มอุปกรณ์</string>
     <string name="label_just_a_moment_please">โปรดรอสักครู่</string>
     <string name="label_notification_channel_status">สถานะ</string>

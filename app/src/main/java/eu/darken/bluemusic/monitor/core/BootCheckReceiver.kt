@@ -6,6 +6,7 @@ import android.content.Intent
 import dagger.hilt.android.AndroidEntryPoint
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
+import eu.darken.bluemusic.bluetooth.core.currentState
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.datastore.valueBlocking
 import eu.darken.bluemusic.common.debug.logging.Logging
@@ -57,13 +58,14 @@ class BootCheckReceiver : BroadcastReceiver() {
                 // Wait a bit for Bluetooth to stabilize after boot
                 delay(3000)
 
-                val connectedDevices = bluetoothSource.pairedDevices.first()
+                val state = bluetoothSource.currentState()
 
-                if (connectedDevices == null) {
-                    log(TAG) { "Devices were not available on boot." }
+                if (!state.isReady) {
+                    log(TAG) { "Bluetooth is not in a ready state: $state" }
                     return@launch
                 }
 
+                val connectedDevices = state.devices!!
                 if (connectedDevices.isEmpty()) {
                     log(TAG) { "No devices were connected on boot." }
                     return@launch

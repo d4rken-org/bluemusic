@@ -19,7 +19,7 @@
     <string name="desc_autoplay_keytype">O tipo de toque enviado quando um dispositivo de reprodução automática é conectado.</string>
     <string name="devices_state_connected_label">Conectado</string>
     <string name="devices_neverseen_label">Nunca</string>
-    <string name="action_remove_device">Remover dispositivo</string>
+    <string name="action_remove_device">Esquecer dispositivo</string>
     <string name="label_add_device">Adicionar dispositivo</string>
     <string name="label_just_a_moment_please">Aguarde um pouco.</string>
     <string name="label_notification_channel_status">Estado</string>

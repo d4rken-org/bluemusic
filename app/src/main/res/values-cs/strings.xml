@@ -21,7 +21,7 @@
     <string name="desc_autoplay_keytype">Typ tlačítka, který se odesílá při připojení zařízení s povoleným automatickým přehráváním.</string>
     <string name="devices_state_connected_label">Připojeno</string>
     <string name="devices_neverseen_label">Nikdy neviděno</string>
-    <string name="action_remove_device">Odebrat zařízení</string>
+    <string name="action_remove_device">Zapomenout zařízení</string>
     <string name="label_add_device">Přidat zařízení</string>
     <string name="label_just_a_moment_please">Chviličku prosím.</string>
     <string name="label_notification_channel_status">Stav</string>

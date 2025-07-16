@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.devices.ui.config
 
-import android.app.Activity
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import java.time.Duration
 
@@ -21,7 +20,6 @@ sealed interface ConfigAction {
     data object OnEditAdjustmentDelayClicked : ConfigAction
     data object OnRenameClicked : ConfigAction
     data class DeleteDevice(val confirmed: Boolean = false) : ConfigAction
-    data class OnPurchaseUpgrade(val activity: Activity) : ConfigAction
     data class OnEditMonitoringDuration(val duration: Duration?) : ConfigAction
     data class OnEditReactionDelay(val delay: Duration?) : ConfigAction
     data class OnEditAdjustmentDelay(val delay: Duration?) : ConfigAction

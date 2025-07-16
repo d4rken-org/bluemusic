@@ -21,7 +21,7 @@
     <string name="desc_autoplay_keytype">Loại nút được gửi khi kết nối thiết bị tự động phát.</string>
     <string name="devices_state_connected_label">Đã kết nối</string>
     <string name="devices_neverseen_label">Không nhìn thấy</string>
-    <string name="action_remove_device">Xóa bỏ Thiết bị</string>
+    <string name="action_remove_device">Quên Thiết bị</string>
     <string name="label_add_device">Thêm thiết bị</string>
     <string name="label_just_a_moment_please">Xin chờ một chút.</string>
     <string name="label_notification_channel_status">Trạng thái</string>

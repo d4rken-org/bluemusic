@@ -89,8 +89,5 @@ class LegacySettings @Inject constructor(
         const val PREFKEY_ADVANCED_EXCLUDE_HEALTHDEVICES: String = "core.advanced.exclude.healthdevices"
         const val PREFKEY_BUGREPORTING: String = "core.bugreporting.enabled"
         const val PREFKEY_CORE_ENABLED: String = "core.enabled"
-        const val DEFAULT_REACTION_DELAY: Long = 4000
-        const val DEFAULT_MONITORING_DURATION: Long = 4000
-        const val DEFAULT_ADJUSTMENT_DELAY: Long = 250
     }
 }

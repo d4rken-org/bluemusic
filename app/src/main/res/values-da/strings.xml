@@ -20,7 +20,7 @@
     <string name="desc_autoplay_keytype">Knappetypen som er sendt når en autoplay-aktiveret enhed tilsluttes.</string>
     <string name="devices_state_connected_label">Forbundet</string>
     <string name="devices_neverseen_label">Aldrig set</string>
-    <string name="action_remove_device">Fjern enhed</string>
+    <string name="action_remove_device">Glem enhed</string>
     <string name="label_add_device">Tilføj enhed</string>
     <string name="label_just_a_moment_please">Et øjeblik.</string>
     <string name="label_notification_channel_status">Status</string>

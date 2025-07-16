@@ -19,7 +19,7 @@
     <string name="desc_autoplay_keytype">El tipo de la clave que se envía cuando se conecta un dispositivo habilitado para la reproducción automática.</string>
     <string name="devices_state_connected_label">Conectado</string>
     <string name="devices_neverseen_label">Nunca se ha visto</string>
-    <string name="action_remove_device">Eliminar el dispositivo</string>
+    <string name="action_remove_device">Olvidar el dispositivo</string>
     <string name="label_add_device">Agregar un dispositivo</string>
     <string name="label_just_a_moment_please">Un momento, por favor.</string>
     <string name="label_notification_channel_status">Estado</string>
@@ -111,4 +111,9 @@
     <string name="devices_device_config_nudge_volume_description">Baja y luego sube el volumen en un incremento, incluso si el volumen deseado ya está configurado (según el sistema).</string>
     <string name="label_opensource">Código fuente</string>
     <string name="android13_notification_permission_description">Otorga el permiso a esta aplicación para publicar notificaciones. Esto permite mostrar una notificación cuando esta aplicación está activa y se están realizando los ajustes del volumen.</string>
+
+    <string name="onboarding_rewrite_title">¡Aplicación Reescrita!</string>
+    <string name="onboarding_rewrite_message">He reconstruido completamente Bluetooth Volume Manager desde cero debido a los cambios de Android y los requisitos de Google para garantizar que la aplicación siga funcionando de manera confiable.</string>
+    <string name="onboarding_rewrite_features">Es posible que algunas configuraciones de dispositivos se hayan restablecido durante esta actualización. Por favor, revisa tus configuraciones de dispositivos.</string>
+    <string name="onboarding_rewrite_action">Continuar</string>
 </resources>

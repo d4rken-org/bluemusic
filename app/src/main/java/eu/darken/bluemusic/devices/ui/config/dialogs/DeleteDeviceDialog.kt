@@ -23,7 +23,7 @@ fun DeleteDeviceDialog(
         onDismissRequest = onDismiss,
         icon = { Icon(Icons.TwoTone.Delete, contentDescription = null) },
         title = { Text(stringResource(R.string.devices_device_config_remove_device_label)) },
-        text = { Text("Remove $deviceName from managed devices?") },
+        text = { Text(stringResource(R.string.devices_device_config_remove_device_confirmation, deviceName)) },
         confirmButton = {
             TextButton(onClick = {
                 onConfirm()

@@ -20,13 +20,10 @@ data class MockDevice(
         .chunked(2)
         .joinToString(":")
 ) : SourceDevice {
+
     @IgnoredOnParcel
     override val deviceType: SourceDevice.Type
         get() = SourceDevice.Type.HEADPHONES
-    override val name: String?
-        get() = null
-    override val alias: String?
-        get() = null
 
     override fun getStreamId(type: AudioStream.Type): AudioStream.Id {
         throw NotImplementedError()

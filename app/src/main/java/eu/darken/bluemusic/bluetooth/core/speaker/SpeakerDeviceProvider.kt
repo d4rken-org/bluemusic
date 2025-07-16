@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.bluetooth.core.speaker
 
 import android.content.Context
+import android.os.Build
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.R
 import javax.inject.Inject
@@ -14,7 +15,7 @@ class SpeakerDeviceProvider @Inject constructor(
     suspend fun getSpeaker(
         isActive: Boolean,
     ) = FakeSpeakerDevice(
-        alias = context.getString(R.string.label_device_speaker),
+        label = "${context.getString(R.string.label_device_speaker)} (${Build.MODEL}) ",
         isActive = isActive,
     )
 }

@@ -20,7 +20,7 @@
     <string name="desc_autoplay_keytype">Ο τύπος κλειδιού που στέλνεται όταν μια συσκευή αυτόματης αναπαραγωγής συνδέεται.</string>
     <string name="devices_state_connected_label">Συνδέθηκε</string>
     <string name="devices_neverseen_label">Ποτέ δεν συνδέθηκε</string>
-    <string name="action_remove_device">Αφαίρεση συσκευής</string>
+    <string name="action_remove_device">Ξέχασε συσκευή</string>
     <string name="label_add_device">Προσθήκη συσκευής</string>
     <string name="label_just_a_moment_please">Μια στιγμή, παρακαλώ.</string>
     <string name="label_notification_channel_status">Κατάσταση</string>

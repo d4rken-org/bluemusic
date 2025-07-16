@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
-import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
+import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
@@ -28,7 +28,7 @@ class KeepAwakeModule @Inject internal constructor(
     override suspend fun handle(event: DeviceEvent) {
         val device = event.device
         if (!device.keepAwake) return
-        if (device.address == FakeSpeakerDevice.ADDRESS) {
+        if (device.type == SourceDevice.Type.PHONE_SPEAKER) {
             log(TAG, ERROR) { "Keep awake should not be enabled for the fake speaker device: $device" }
             return
         }

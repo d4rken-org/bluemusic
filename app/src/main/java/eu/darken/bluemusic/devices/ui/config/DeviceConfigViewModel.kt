@@ -330,27 +330,16 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnLaunchAppClicked -> {
-                if (!state.first().isProVersion) {
-                    events.emit(ConfigEvent.ShowPurchaseSnackbar)
-                } else {
-                    events.emit(ConfigEvent.ShowAppPickerDialog)
-                }
+                events.emit(ConfigEvent.ShowAppPickerDialog)
             }
 
-            is ConfigAction.OnPurchaseUpgrade -> TODO()
             is ConfigAction.OnRename -> {
-                deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                    oldConfig.copy(alias = action.newName)
-                }
+                deviceRepo.renameDevice(deviceAddress, action.newName)
             }
 
             is ConfigAction.OnRenameClicked -> {
-                if (!state.first().isProVersion) {
-                    events.emit(ConfigEvent.ShowPurchaseSnackbar)
-                } else {
-                    val device = state.first().device
-                    events.emit(ConfigEvent.ShowRenameDialog(device.label))
-                }
+                val device = state.first().device
+                events.emit(ConfigEvent.ShowRenameDialog(device.label))
             }
 
             is ConfigAction.OnToggleAutoPlay -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->

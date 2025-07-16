@@ -21,7 +21,7 @@
     <string name="desc_autoplay_keytype">Näppäin painallus mikä lähetetään, kun laite minkä automaattinentoisto on päällä yhdistää.</string>
     <string name="devices_state_connected_label">Yhdistetty</string>
     <string name="devices_neverseen_label">Ei nähty</string>
-    <string name="action_remove_device">Poista laite</string>
+    <string name="action_remove_device">Unohda laite</string>
     <string name="label_add_device">Lisää laite</string>
     <string name="label_just_a_moment_please">Pieni hetki, odotathan.</string>
     <string name="label_notification_channel_status">Tila</string>

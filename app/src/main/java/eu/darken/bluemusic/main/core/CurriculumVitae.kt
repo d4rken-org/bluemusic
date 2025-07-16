@@ -130,6 +130,11 @@ class CurriculumVitae @Inject constructor(
         _openedCount.value(newOpenedcount)
     }
 
+    suspend fun setLegacy(installedAt: Instant, launchCount: Int) {
+        _openedCount.value(launchCount)
+        _installedFirst.value(installedAt)
+    }
+
     companion object {
         internal val TAG = logTag("Debug", "CurriculumVitae")
     }

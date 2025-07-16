@@ -21,7 +21,7 @@
     <string name="desc_autoplay_keytype">Knapptypen som er sendt når en autospillaktivert enhet kobles til.</string>
     <string name="devices_state_connected_label">Tilkoblet</string>
     <string name="devices_neverseen_label">Aldri sett</string>
-    <string name="action_remove_device">Fjern enhet</string>
+    <string name="action_remove_device">Glem enhet</string>
     <string name="label_add_device">Legg til enhet</string>
     <string name="label_just_a_moment_please">Bare et øyeblikk.</string>
     <string name="label_notification_channel_status">Status</string>

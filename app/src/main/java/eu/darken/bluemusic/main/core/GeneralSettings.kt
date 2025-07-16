@@ -37,6 +37,9 @@ class GeneralSettings @Inject constructor(
     val isAndroid10AppLaunchHintDismissed = dataStore.createValue("hints.android10.applaunch.dismissed", false)
     val isNotificationPermissionHintDismissed = dataStore.createValue("hints.notification.permission.dismissed", false)
 
+    val legacyDatabaseMigrationDone = dataStore.createValue("legancy.migration.database.done", false)
+    val legacySettingsMigrationDone = dataStore.createValue("legancy.migration.settings.done", false)
+
     override val mapper = PreferenceStoreMapper(
         debugSettings.isDebugMode,
         themeMode,

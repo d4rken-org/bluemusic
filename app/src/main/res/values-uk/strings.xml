@@ -19,7 +19,7 @@
     <string name="desc_autoplay_keytype">Тип команди, яка надходить на під\'єднаний пристрій з увімкненим Автовідтворенням.</string>
     <string name="devices_state_connected_label">Під\'єднано</string>
     <string name="devices_neverseen_label">Незнайомий пристрій</string>
-    <string name="action_remove_device">Видалити пристрій</string>
+    <string name="action_remove_device">Забути пристрій</string>
     <string name="label_add_device">Додати пристрій</string>
     <string name="label_just_a_moment_please">Хвилинку...</string>
     <string name="label_notification_channel_status">Стан</string>

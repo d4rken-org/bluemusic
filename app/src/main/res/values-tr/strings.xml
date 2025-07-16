@@ -20,7 +20,7 @@
     <string name="desc_autoplay_keytype">Otomatik oynatma özellikli bir cihaz bağlandığında gönderilen anahtar türü.</string>
     <string name="devices_state_connected_label">Bağlandı</string>
     <string name="devices_neverseen_label">Hiç görülmedi</string>
-    <string name="action_remove_device">Cihazı kaldır</string>
+    <string name="action_remove_device">Cihazı unut</string>
     <string name="label_add_device">Cihaz ekle</string>
     <string name="label_just_a_moment_please">Bir dakika, lütfen.</string>
     <string name="label_notification_channel_status">Durum</string>

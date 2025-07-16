@@ -20,7 +20,7 @@
     <string name="desc_autoplay_keytype">סוג הפעולה שנשלחת כאשר מכשיר עם ניגון אוטומטי מתחבר.</string>
     <string name="devices_state_connected_label">מחובר</string>
     <string name="devices_neverseen_label">לא נראה מעולם</string>
-    <string name="action_remove_device">הסרת התקן</string>
+    <string name="action_remove_device">שכח התקן</string>
     <string name="label_add_device">הוספת התקן</string>
     <string name="label_just_a_moment_please">אנא המתינו.</string>
     <string name="label_notification_channel_status">מצב</string>

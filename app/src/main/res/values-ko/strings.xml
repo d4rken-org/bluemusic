@@ -21,7 +21,7 @@
     <string name="desc_autoplay_keytype">자동 재생이 가능한 디바이스가 연결되었을 때 전송되는 키 유형입니다.</string>
     <string name="devices_state_connected_label">연결됨</string>
     <string name="devices_neverseen_label">마지막 연결 없음</string>
-    <string name="action_remove_device">디바이스 제거</string>
+    <string name="action_remove_device">디바이스 잊기</string>
     <string name="label_add_device">디바이스 추가</string>
     <string name="label_just_a_moment_please">잠시만 기다려주세요.</string>
     <string name="label_notification_channel_status">상태</string>

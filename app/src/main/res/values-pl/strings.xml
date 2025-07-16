@@ -21,7 +21,7 @@
     <string name="desc_autoplay_keytype">Funkcja przycisku, która jest uaktywniana, gdy podłączone zostaje urządzenia z automatycznym odtwarzaniem.</string>
     <string name="devices_state_connected_label">Połączony</string>
     <string name="devices_neverseen_label">Nigdy nie podłączone</string>
-    <string name="action_remove_device">Usuń urządzenie</string>
+    <string name="action_remove_device">Zapomnij urządzenie</string>
     <string name="label_add_device">Dodaj urządzenie</string>
     <string name="label_just_a_moment_please">Chwileczkę.</string>
     <string name="label_notification_channel_status">Status</string>

@@ -21,7 +21,7 @@
     <string name="desc_autoplay_keytype">Jenis kunci yang dikirim ketika perangkat putar otomatis terhubung.</string>
     <string name="devices_state_connected_label">Terhubung</string>
     <string name="devices_neverseen_label">Tak pernah terlihat</string>
-    <string name="action_remove_device">Hapus perangkat</string>
+    <string name="action_remove_device">Lupakan perangkat</string>
     <string name="label_add_device">Tambah perangkat</string>
     <string name="label_just_a_moment_please">Mohon tunggu.</string>
     <string name="label_notification_channel_status">Status</string>

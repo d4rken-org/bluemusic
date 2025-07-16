@@ -20,6 +20,10 @@
     <string name="onboarding_privacy_message">Bluetooth Volume Manager has no advertisements and does not sell user data (it\'s even open-source). Your privacy is important to me.</string>
     <string name="onboarding_privacy_read_action">Read Privacy Policy</string>
     <string name="onboarding_privacy_action">Accept</string>
+    <string name="onboarding_rewrite_title">App Rewrite!</string>
+    <string name="onboarding_rewrite_message">I\'ve completely rebuilt Bluetooth Volume Manager from the ground up due to Android changes and Google requirements to ensure the app continues working reliably.</string>
+    <string name="onboarding_rewrite_features">Some device settings may have been reset during this update. Please check your device configurations.</string>
+    <string name="onboarding_rewrite_action">Continue</string>
 
     <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
@@ -27,9 +31,10 @@
     <!-- Devices -->
     <string name="devices_device_config_label">Device configuration</string>
     <string name="devices_device_config_section_general_label">General</string>
-    <string name="devices_device_config_remove_device_label">Remove device</string>
-    <string name="devices_device_config_remove_device_desc">Removes the device from this app and deletes its configuration. This does not unpair the device.</string>
-    <string name="devices_device_config_remove_device_action">Remove</string>
+    <string name="devices_device_config_remove_device_label">Forget device</string>
+    <string name="devices_device_config_remove_device_desc">Forgets the device from this app and deletes its configuration. This does not unpair the device.</string>
+    <string name="devices_device_config_remove_device_action">Forget</string>
+    <string name="devices_device_config_remove_device_confirmation">Forget %s from managed devices?</string>
     <string name="devices_device_config_rename_device_label">Rename device</string>
     <string name="devices_device_config_rename_device_desc">Rename this device within this app, and if possible, within the system.</string>
     <string name="devices_device_config_rename_device_action">Rename</string>

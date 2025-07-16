@@ -3,7 +3,6 @@ package eu.darken.bluemusic.devices.ui.config
 import java.time.Duration
 
 sealed interface ConfigEvent {
-    data object ShowPurchaseSnackbar : ConfigEvent
     data object ShowDeleteDialog : ConfigEvent
     data object ShowAppPickerDialog : ConfigEvent
     data class ShowRenameDialog(val currentName: String) : ConfigEvent

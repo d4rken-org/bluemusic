@@ -20,7 +20,7 @@
     <string name="desc_autoplay_keytype">自動再生対応デバイスが接続されたときに送信されるキーの種類です。</string>
     <string name="devices_state_connected_label">接続済み</string>
     <string name="devices_neverseen_label">接続履歴なし</string>
-    <string name="action_remove_device">デバイスを削除</string>
+    <string name="action_remove_device">デバイスを忘れる</string>
     <string name="label_add_device">デバイスを追加</string>
     <string name="label_just_a_moment_please">少々お待ちください。</string>
     <string name="label_notification_channel_status">状態</string>
@@ -108,4 +108,9 @@
     <string name="android10_applaunch_issue_description">Android 10では、バックグラウンドからのアプリ起動が制限されています。 Bluetoothデバイスが接続されたときにアプリを開くことを許可するには、\"他のアプリ上に表示\" (SYSTEM_ALERT_WINDOW) 権限を許可します。</string>
     <string name="devices_device_config_alarm_volume_label">アラームの音量</string>
     <string name="devices_device_config_alarm_volume_desc">アラームアプリによっては、音楽の音量を使用するものもあります。</string>
+
+    <string name="onboarding_rewrite_title">アプリの書き直し！</string>
+    <string name="onboarding_rewrite_message">Androidの変更とGoogleの要件により、アプリが確実に動作し続けるように、Bluetooth Volume Managerを一から完全に再構築しました。</string>
+    <string name="onboarding_rewrite_features">このアップデート中に一部のデバイス設定がリセットされた可能性があります。デバイスの設定を確認してください。</string>
+    <string name="onboarding_rewrite_action">続ける</string>
 </resources>

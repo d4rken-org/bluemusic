@@ -18,6 +18,7 @@ import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
+import eu.darken.bluemusic.bluetooth.core.currentState
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
@@ -29,7 +30,6 @@ import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import eu.darken.bluemusic.common.flow.throttleLatest
 import eu.darken.bluemusic.common.flow.withPrevious
 import eu.darken.bluemusic.common.hasApiLevel
-import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
@@ -51,7 +51,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.emptyFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
@@ -71,7 +70,6 @@ class MonitorWorker @AssistedInject constructor(
     private val eventModuleMap: Set<@JvmSuppressWildcards EventModule>,
     private val volumeModuleMap: Set<@JvmSuppressWildcards VolumeModule>,
     private val volumeObserver: VolumeObserver,
-    private val permissionHelper: PermissionHelper,
 ) : CoroutineWorker(context, params) {
 
     private val workerScope = CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
@@ -109,13 +107,9 @@ class MonitorWorker @AssistedInject constructor(
     }
 
     private suspend fun doDoWork() {
-        if (!permissionHelper.hasBluetoothPermission()) {
-            log(TAG, WARN) { "Aborting, missing Bluetooth permission" }
-            return
-        }
-
-        if (!bluetoothRepo.isEnabled.first()) {
-            log(TAG, WARN) { "Aborting, Bluetooth is disabled." }
+        val bluetoothState = bluetoothRepo.currentState()
+        if (!bluetoothState.isReady) {
+            log(TAG, WARN) { "Aborting, Bluetooth state is not ready: $bluetoothState" }
             return
         }
 

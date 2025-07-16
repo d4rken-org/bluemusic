@@ -16,8 +16,8 @@ import java.util.Locale
 @Parcelize
 data class SourceDeviceWrapper(
     override val address: DeviceAddr,
-    override val alias: String?,
-    override val name: String?,
+    val alias: String?,
+    val name: String?,
     override val deviceType: SourceDevice.Type,
     override val isActive: Boolean,
 ) : SourceDevice {

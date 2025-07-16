@@ -21,7 +21,7 @@
     <string name="desc_autoplay_keytype">Le type d’action qui est envoyée quand un périphérique dont la lecture est automatique se connecte.</string>
     <string name="devices_state_connected_label">Connecté</string>
     <string name="devices_neverseen_label">Jamais rencontré</string>
-    <string name="action_remove_device">Supprimer le périphérique</string>
+    <string name="action_remove_device">Oublier le périphérique</string>
     <string name="label_add_device">Ajouter un périphérique</string>
     <string name="label_just_a_moment_please">Un instant, s’il vous plaît.</string>
     <string name="label_notification_channel_status">État</string>
@@ -107,6 +107,11 @@
     <string name="devices_device_config_keep_awake_label">Garder éveillé</string>
     <string name="devices_device_config_keep_awake_desc">Garder l’écran allumé quand cet appareil est connecté.</string>
     <string name="android10_applaunch_issue_description">Android 10 restreint la façon dont les applis peuvent être lancées en arrière-plan. Pour permettre l’ouverture d’applis quand un appareil Bluetooth se connecte, accordez l’autorisation « Afficher par dessus les autres applis » (SYSTEM_ALERT_WINDOW).</string>
-    <string name="devices_device_config_alarm_volume_label">Volume d’alarme</string>
-    <string name="devices_device_config_alarm_volume_desc">Certaines applis d’alarme utilisent plutôt le volume de la musique.</string>
+    <string name="devices_device_config_alarm_volume_label">Volume d\'alarme</string>
+    <string name="devices_device_config_alarm_volume_desc">Certaines applis d\'alarme utilisent plutôt le volume de la musique.</string>
+
+    <string name="onboarding_rewrite_title">Application Réécrite !</string>
+    <string name="onboarding_rewrite_message">J\'ai entièrement reconstruit Bluetooth Volume Manager depuis zéro en raison des changements d\'Android et des exigences de Google pour garantir que l\'application continue de fonctionner de manière fiable.</string>
+    <string name="onboarding_rewrite_features">Certains paramètres d\'appareils ont peut-être été réinitialisés lors de cette mise à jour. Veuillez vérifier vos configurations d\'appareils.</string>
+    <string name="onboarding_rewrite_action">Continuer</string>
 </resources>

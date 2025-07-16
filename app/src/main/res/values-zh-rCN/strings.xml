@@ -20,7 +20,7 @@
     <string name="desc_autoplay_keytype">当启用自动播放功能的设备连接时发送的密钥类型。</string>
     <string name="devices_state_connected_label">设备已连接</string>
     <string name="devices_neverseen_label">设备未曾连接</string>
-    <string name="action_remove_device">删除设备</string>
+    <string name="action_remove_device">忘记设备</string>
     <string name="label_add_device">添加设备</string>
     <string name="label_just_a_moment_please">请稍等一下。</string>
     <string name="label_notification_channel_status">状态</string>
@@ -108,4 +108,9 @@
     <string name="android10_applaunch_issue_description">Android 10 限制如何从后台启动应用。要允许在蓝牙设备连接时打开应用，请授予\"在其他应用上显示\"的权限（SYSTEM_ALERT_WINDOW）。</string>
     <string name="devices_device_config_alarm_volume_label">闹钟音量</string>
     <string name="devices_device_config_alarm_volume_desc">一些闹钟应用使用媒体音量。</string>
+
+    <string name="onboarding_rewrite_title">应用重写！</string>
+    <string name="onboarding_rewrite_message">由于Android的变化和Google的要求，我从头开始完全重建了蓝牙音量管理器，以确保应用程序继续可靠地工作。</string>
+    <string name="onboarding_rewrite_features">在此更新过程中，某些设备设置可能已被重置。请检查您的设备配置。</string>
+    <string name="onboarding_rewrite_action">继续</string>
 </resources>

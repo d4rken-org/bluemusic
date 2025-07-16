@@ -20,7 +20,7 @@
     <string name="desc_autoplay_keytype">Il tipo di comportamento da avere quando un dispositivo autoplay compatibile viene connesso.</string>
     <string name="devices_state_connected_label">Connesso</string>
     <string name="devices_neverseen_label">Mai visto</string>
-    <string name="action_remove_device">Rimuovi dispositivo</string>
+    <string name="action_remove_device">Dimentica dispositivo</string>
     <string name="label_add_device">Aggiungi un dispositivo</string>
     <string name="label_just_a_moment_please">Solo un momento, per favore.</string>
     <string name="label_notification_channel_status">Stato</string>
@@ -105,4 +105,9 @@
     <string name="label_bluetooth_settings">Impostazioni Bluetooth</string>
     <string name="devices_device_config_keep_awake_label">Mantieni attivo</string>
     <string name="devices_device_config_keep_awake_desc">Mantieni lo schermo acceso mentre questo dispositivo è connesso.</string>
+
+    <string name="onboarding_rewrite_title">App Riscritta!</string>
+    <string name="onboarding_rewrite_message">Ho completamente ricostruito Bluetooth Volume Manager da zero a causa dei cambiamenti di Android e dei requisiti di Google per garantire che l\'app continui a funzionare in modo affidabile.</string>
+    <string name="onboarding_rewrite_features">Alcune impostazioni dei dispositivi potrebbero essere state reimpostate durante questo aggiornamento. Si prega di controllare le configurazioni dei dispositivi.</string>
+    <string name="onboarding_rewrite_action">Continua</string>
 </resources>

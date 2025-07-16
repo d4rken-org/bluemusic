@@ -14,10 +14,10 @@ data class ManagedDevice(
 
     val address: DeviceAddr
         get() = config.address
+    val type: SourceDevice.Type
+        get() = device.deviceType
     val label: String
-        get() = config.alias ?: device.label
-    val name: String?
-        get() = device.name
+        get() = config.customName ?: device.label
     val lastConnected: Instant
         get() = Instant.ofEpochMilli(config.lastConnected)
 

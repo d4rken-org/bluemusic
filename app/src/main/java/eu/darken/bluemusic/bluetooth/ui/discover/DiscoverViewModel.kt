@@ -11,8 +11,9 @@ import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DeviceRepo
+import eu.darken.bluemusic.devices.core.NewDeviceCreator
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
@@ -23,17 +24,18 @@ class DiscoverViewModel @Inject constructor(
     private val upgradeRepo: UpgradeRepo,
     private val dispatcherProvider: DispatcherProvider,
     private val navCtrl: NavigationController,
+    private val deviceCreator: NewDeviceCreator,
 ) : ViewModel4(dispatcherProvider, logTag("Bluetooth", "Discover", "VM"), navCtrl) {
 
     val events = SingleEventFlow<DiscoverEvent>()
 
     val state = combine(
-        bluetoothSource.pairedDevices.filterNotNull(),
+        bluetoothSource.state.filter { it.isReady },
         deviceRepo.devices,
         upgradeRepo.upgradeInfo,
-    ) { paired, managed, upgradeInfo ->
+    ) { bluetoothState, managed, upgradeInfo ->
         State(
-            devices = paired.filterNot { p -> managed.any { p.address == it.address } },
+            devices = bluetoothState.devices!!.filterNot { p -> managed.any { p.address == it.address } },
             managedDeviceCount = managed.size,
             isProVersion = upgradeInfo.isUpgraded,
         )
@@ -57,7 +59,7 @@ class DiscoverViewModel @Inject constructor(
             if (!currentState.isProVersion && currentState.managedDeviceCount >= 2) {
                 events.emit(DiscoverEvent.RequiresUpgrade)
             } else {
-                deviceRepo.createDevice(device.address)
+                deviceCreator.createNewdevice(device.address)
                 navCtrl.up()
             }
         }

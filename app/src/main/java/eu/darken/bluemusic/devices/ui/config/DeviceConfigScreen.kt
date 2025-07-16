@@ -58,7 +58,6 @@ import eu.darken.bluemusic.devices.ui.config.dialogs.RenameDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.TimingDialog
 import eu.darken.bluemusic.devices.ui.icon
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
-import kotlinx.coroutines.launch
 import java.time.Duration
 
 
@@ -72,7 +71,7 @@ fun DeviceConfigScreenHost(
 ) {
     val state by waitForState(vm.state)
     val snackbarHostState = remember { SnackbarHostState() }
-    val coroutineScope = rememberCoroutineScope()
+    rememberCoroutineScope()
 
     var showDeleteDialog by remember { mutableStateOf(false) }
     var showRenameDialog by remember { mutableStateOf<String?>(null) }
@@ -85,12 +84,6 @@ fun DeviceConfigScreenHost(
         vm.events.collect { event ->
             when (event) {
                 is ConfigEvent.ShowDeleteDialog -> showDeleteDialog = true
-                is ConfigEvent.ShowPurchaseSnackbar -> {
-                    coroutineScope.launch {
-                        snackbarHostState.showSnackbar("Premium feature - upgrade required")
-                    }
-                }
-
                 is ConfigEvent.ShowAppPickerDialog -> showAppPickerDialog = true
                 is ConfigEvent.ShowRenameDialog -> showRenameDialog = event.currentName
                 is ConfigEvent.ShowMonitoringDurationDialog -> showMonitoringDurationDialog = event.currentValue

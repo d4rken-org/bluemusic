@@ -21,6 +21,7 @@ import eu.darken.bluemusic.common.ui.waitForState
 import eu.darken.bluemusic.main.ui.onboarding.OnboardingViewModel.State.Page
 import eu.darken.bluemusic.main.ui.onboarding.pages.BetaPage
 import eu.darken.bluemusic.main.ui.onboarding.pages.PrivacyPage
+import eu.darken.bluemusic.main.ui.onboarding.pages.RewritePage
 import eu.darken.bluemusic.main.ui.onboarding.pages.WelcomePage
 import kotlinx.coroutines.launch
 
@@ -50,8 +51,8 @@ private fun OnboardingScreen(
 
     val pagerState =
         rememberPagerState(
-            initialPage = state.startPage.ordinal,
-            pageCount = { Page.entries.size }
+            initialPage = state.pages.indexOf(state.startPage).coerceAtLeast(0),
+            pageCount = { state.pages.size }
         )
     val scope = rememberCoroutineScope()
 
@@ -71,9 +72,18 @@ private fun OnboardingScreen(
             modifier = Modifier.weight(1f),
             userScrollEnabled = false
         ) { page ->
-            when (Page.entries[page]) {
+            when (state.pages.getOrNull(page)) {
                 Page.WELCOME ->
                     WelcomePage(
+                        onContinue = {
+                            scope.launch {
+                                pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                            }
+                        }
+                    )
+
+                Page.REWRITE ->
+                    RewritePage(
                         onContinue = {
                             scope.launch {
                                 pagerState.animateScrollToPage(pagerState.currentPage + 1)
@@ -95,6 +105,8 @@ private fun OnboardingScreen(
                         onReadPrivacyPolicy = onReadPrivacyPolicy,
                         onAccept = { onFinishOnboarding() }
                     )
+
+                null -> {} // Safety fallback
             }
         }
     }

@@ -39,13 +39,6 @@ class DevicesViewModel @Inject constructor(
     private val eventChannel = Channel<DevicesEvent>()
     val events = eventChannel.receiveAsFlow()
 
-    private val permissionFlow: Flow<Boolean> = flow {
-        while (true) {
-            emit(permissionHelper.hasBluetoothPermission())
-            delay(1000) // Check every second
-        }
-    }
-
     private val notificationPermissionFlow: Flow<Boolean> = flow {
         while (true) {
             emit(permissionHelper.hasNotificationPermission())
@@ -96,17 +89,16 @@ class DevicesViewModel @Inject constructor(
 
     val state = eu.darken.bluemusic.common.flow.combine(
         upgradeRepo.upgradeInfo,
-        bluetoothSource.isEnabled,
-        permissionFlow,
+        bluetoothSource.state,
         devicesFlow,
         batteryOptimizationHintFlow,
         overlayPermissionHintFlow,
         notificationPermissionHintFlow,
-    ) { upgradeInfo, isEnabled, hasBluetoothPermission, devices, batteryHint, overlayHint, notificationHint ->
+    ) { upgradeInfo, bluetoothState, devices, batteryHint, overlayHint, notificationHint ->
         State(
             isProVersion = upgradeInfo.isUpgraded,
-            isBluetoothEnabled = isEnabled,
-            hasBluetoothPermission = hasBluetoothPermission,
+            isBluetoothEnabled = bluetoothState.isEnabled,
+            hasBluetoothPermission = bluetoothState.hasPermission,
             devices = devices,
             showBatteryOptimizationHint = batteryHint.shouldShow,
             batteryOptimizationIntent = batteryHint.intent,

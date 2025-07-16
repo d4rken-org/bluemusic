@@ -19,7 +19,7 @@
     <string name="desc_autoplay_keytype">A gomb típusának küldése amikor egy automatikus lejátszás engedélyezett eszköz csatlakozik.</string>
     <string name="devices_state_connected_label">Csatlakozva</string>
     <string name="devices_neverseen_label">Soha nem látott</string>
-    <string name="action_remove_device">Eszköz eltávolítása</string>
+    <string name="action_remove_device">Eszköz elfelejtése</string>
     <string name="label_add_device">Eszköz hozzáadása</string>
     <string name="label_just_a_moment_please">Egy pillanat.</string>
     <string name="label_notification_channel_status">Állapot</string>

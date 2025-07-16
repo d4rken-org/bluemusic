@@ -109,4 +109,9 @@
     <string name="android10_applaunch_issue_description">Android 10 beschränkt, wie Apps im Hintergrund gestartet werden können. Um das Öffnen von Apps zu gestatten, sobald sich ein Bluetooth-Gerät verbindet, gewähre die Berechtigung \"Display over other apps\" (SYSTEM_ALERT_WINDOW).</string>
     <string name="devices_device_config_alarm_volume_label">Alarmlautstärke</string>
     <string name="devices_device_config_alarm_volume_desc">Einige Alarm-Apps verwenden stattdessen die Musiklautstärke.</string>
+
+    <string name="onboarding_rewrite_title">App-Neugestaltung!</string>
+    <string name="onboarding_rewrite_message">Ich habe den Bluetooth-Lautstärken Manager aufgrund von Android-Änderungen und Google-Anforderungen von Grund auf neu entwickelt, um sicherzustellen, dass die App weiterhin zuverlässig funktioniert.</string>
+    <string name="onboarding_rewrite_features">Einige Geräteeinstellungen wurden möglicherweise während dieses Updates zurückgesetzt. Bitte überprüfen Sie Ihre Gerätekonfigurationen.</string>
+    <string name="onboarding_rewrite_action">Weiter</string>
 </resources>
