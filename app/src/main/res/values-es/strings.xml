@@ -48,6 +48,10 @@
     <string name="devices_device_config_volume_observe_desc">Mantente activo mientras este dispositivo está conectado y guarda los cambios de volumen que no han sido causados por esta aplicación.</string>
     <string name="devices_device_config_volume_lock_label">Bloqueo de volumen</string>
     <string name="devices_device_config_volume_lock_desc">Cualquier cambio de volumen no realizado a través de esta aplicación se revertirá mientras este dispositivo esté conectado.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Limitador de velocidad de volumen</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Limita la frecuencia de cambios de volumen para prevenir ajustes rápidos o excesivos de volumen.</string>
+    <string name="devices_device_config_volume_rate_limit_duration_label">Duración del límite de velocidad</string>
+    <string name="devices_device_config_volume_rate_limit_duration_desc">Tiempo mínimo entre cambios de volumen: %d ms</string>
     <string name="devices_device_config_autoplay_label">Reproducción automática</string>
     <string name="devices_device_config_autoplay_desc">Simula presionar reproducir en un control remoto del Bluetooth cuando este dispositivo se conecta.</string>
     <string name="devices_device_config_section_volumes_label">Volúmenes</string>

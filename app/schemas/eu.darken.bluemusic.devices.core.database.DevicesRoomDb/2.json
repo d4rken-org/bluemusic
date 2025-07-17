@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
   "database": {
-	"version": 1,
-	"identityHash": "7fdff5b7507ca34efee83d9a860ac782",
+	"version": 2,
+	"identityHash": "2d36563ca1de8008efda4c03a7edec65",
 	"entities": [
 	  {
 		"tableName": "device_configs",
-		"createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`address` TEXT NOT NULL, `custom_name` TEXT, `last_connected` INTEGER NOT NULL, `action_delay` INTEGER, `adjustment_delay` INTEGER, `monitoring_duration` INTEGER, `music_volume` REAL, `call_volume` REAL, `ring_volume` REAL, `notification_volume` REAL, `alarm_volume` REAL, `volume_lock` INTEGER NOT NULL, `volume_observing` INTEGER NOT NULL, `volume_rate_limiter` INTEGER NOT NULL, `keep_awake` INTEGER NOT NULL, `nudge_volume` INTEGER NOT NULL, `autoplay` INTEGER NOT NULL, `launch_pkg` TEXT, PRIMARY KEY(`address`))",
+		"createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`address` TEXT NOT NULL, `custom_name` TEXT, `last_connected` INTEGER NOT NULL, `action_delay` INTEGER, `adjustment_delay` INTEGER, `monitoring_duration` INTEGER, `music_volume` REAL, `call_volume` REAL, `ring_volume` REAL, `notification_volume` REAL, `alarm_volume` REAL, `volume_lock` INTEGER NOT NULL, `volume_observing` INTEGER NOT NULL, `volume_rate_limiter` INTEGER NOT NULL, `volume_rate_limit_ms` INTEGER, `keep_awake` INTEGER NOT NULL, `nudge_volume` INTEGER NOT NULL, `autoplay` INTEGER NOT NULL, `launch_pkg` TEXT, PRIMARY KEY(`address`))",
 		"fields": [
 		  {
 			"fieldPath": "address",
@@ -84,6 +84,11 @@
 			"notNull": true
 		  },
 		  {
+			"fieldPath": "volumeRateLimitMs",
+			"columnName": "volume_rate_limit_ms",
+			"affinity": "INTEGER"
+		  },
+		  {
 			"fieldPath": "keepAwake",
 			"columnName": "keep_awake",
 			"affinity": "INTEGER",
@@ -117,7 +122,7 @@
 	],
 	"setupQueries": [
 	  "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-	  "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7fdff5b7507ca34efee83d9a860ac782')"
+	  "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2d36563ca1de8008efda4c03a7edec65')"
 	]
   }
 }

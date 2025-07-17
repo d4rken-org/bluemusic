@@ -15,6 +15,8 @@ import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.GraphicEq
 import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.PlayArrow
+import androidx.compose.material.icons.twotone.Schedule
+import androidx.compose.material.icons.twotone.Speed
 import androidx.compose.material.icons.twotone.Timer
 import androidx.compose.material.icons.twotone.Tune
 import androidx.compose.material.icons.twotone.Update
@@ -78,6 +80,7 @@ fun DeviceConfigScreenHost(
     var showMonitoringDurationDialog by remember { mutableStateOf<Duration?>(null) }
     var showReactionDelayDialog by remember { mutableStateOf<Duration?>(null) }
     var showAdjustmentDelayDialog by remember { mutableStateOf<Duration?>(null) }
+    var showVolumeRateLimitDialog by remember { mutableStateOf<Duration?>(null) }
     var showAppPickerDialog by remember { mutableStateOf(false) }
 
     LaunchedEffect(vm.events) {
@@ -89,6 +92,7 @@ fun DeviceConfigScreenHost(
                 is ConfigEvent.ShowMonitoringDurationDialog -> showMonitoringDurationDialog = event.currentValue
                 is ConfigEvent.ShowReactionDelayDialog -> showReactionDelayDialog = event.currentValue
                 is ConfigEvent.ShowAdjustmentDelayDialog -> showAdjustmentDelayDialog = event.currentValue
+                is ConfigEvent.ShowVolumeRateLimitDialog -> showVolumeRateLimitDialog = event.currentValue
                 is ConfigEvent.NavigateBack -> vm.navUp()
             }
         }
@@ -138,6 +142,19 @@ fun DeviceConfigScreenHost(
                 onReset = { vm.handleAction(ConfigAction.OnEditAdjustmentDelay(null)) },
                 onDismiss = {
                     showAdjustmentDelayDialog = null
+                }
+            )
+        }
+
+        showVolumeRateLimitDialog?.let { delay ->
+            TimingDialog(
+                title = stringResource(R.string.devices_device_config_volume_rate_limit_duration_label),
+                message = stringResource(R.string.devices_device_config_volume_rate_limit_duration_desc, delay.toMillis()),
+                currentValue = delay,
+                onConfirm = { vm.handleAction(ConfigAction.OnEditVolumeRateLimit(it)) },
+                onReset = { vm.handleAction(ConfigAction.OnEditVolumeRateLimit(null)) },
+                onDismiss = {
+                    showVolumeRateLimitDialog = null
                 }
             )
         }
@@ -321,6 +338,26 @@ fun DeviceConfigScreen(
                             icon = Icons.TwoTone.Visibility,
                             onCheckedChange = { onAction(ConfigAction.OnToggleVolumeObserving) }
                         )
+
+                        SwitchPreference(
+                            title = stringResource(R.string.devices_device_config_volume_rate_limiter_label),
+                            description = stringResource(R.string.devices_device_config_volume_rate_limiter_desc),
+                            isChecked = device.volumeRateLimiter,
+                            icon = Icons.TwoTone.Speed,
+                            onCheckedChange = { onAction(ConfigAction.OnToggleVolumeRateLimiter) }
+                        )
+
+                        if (device.volumeRateLimiter) {
+                            ClickablePreference(
+                                title = stringResource(R.string.devices_device_config_volume_rate_limit_duration_label),
+                                description = stringResource(
+                                    R.string.devices_device_config_volume_rate_limit_duration_desc,
+                                    device.volumeRateLimitMs
+                                ),
+                                icon = Icons.TwoTone.Schedule,
+                                onClick = { onAction(ConfigAction.OnEditVolumeRateLimitClicked) }
+                            )
+                        }
 
                         SwitchPreference(
                             title = stringResource(R.string.devices_device_config_keep_awake_label),

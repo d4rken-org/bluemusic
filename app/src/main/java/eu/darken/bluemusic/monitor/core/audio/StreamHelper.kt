@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.monitor.core.audio
 
+import android.R.attr.level
 import android.media.AudioManager
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
@@ -88,31 +89,51 @@ class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
         visible: Boolean = false,
         delay: Duration = Duration.ZERO,
     ): Boolean {
-        val currentVolume = getCurrentVolume(streamId)
+        log(TAG, VERBOSE) { "changeVolume(streamId=$streamId, percent=$percent, visible=$visible, delay=$delay)" }
         val max = getMaxVolume(streamId)
         val target = (max * percent).roundToInt()
+        return changeVolume(
+            streamId = streamId,
+            targetLevel = target,
+            visible = visible,
+            delay = delay
+        )
+    }
 
-        log(TAG, VERBOSE) { "changeVolume(streamId=$streamId, percent=$percent, visible=$visible, delay=$delay)" }
+    suspend fun changeVolume(
+        streamId: AudioStream.Id,
+        targetLevel: Int,
+        visible: Boolean = false,
+        delay: Duration = Duration.ZERO,
+    ): Boolean {
+        log(TAG, VERBOSE) { "changeVolume(streamId=$streamId, level=$level, visible=$visible, delay=$delay)" }
 
-        if (currentVolume == target) {
-            log(TAG, VERBOSE) { "Target volume of $target already set." }
+        val max = getMaxVolume(streamId)
+        if (targetLevel > max) {
+            log(TAG, WARN) { "Target volume of $targetLevel exceeds max of $max." }
+            return false
+        }
+
+        val currentLevel = getCurrentVolume(streamId)
+        if (currentLevel == targetLevel) {
+            log(TAG, VERBOSE) { "Target volume of $targetLevel already set." }
             return false
         }
 
         log(TAG, DEBUG) {
-            "Adjusting volume (streamId=$streamId, target=$target, current=$currentVolume, max=$max, visible=$visible, delay=$delay)."
+            "Adjusting volume (streamId=$streamId, targetLevel=$targetLevel, current=$currentLevel, max=$max, visible=$visible, delay=$delay)."
         }
         if (delay == Duration.ZERO) {
-            setVolume(streamId, target, if (visible) AudioManager.FLAG_SHOW_UI else 0)
+            setVolume(streamId, targetLevel, if (visible) AudioManager.FLAG_SHOW_UI else 0)
         } else {
-            if (currentVolume < target) {
-                for (volumeStep in currentVolume..target) {
+            if (currentLevel < targetLevel) {
+                for (volumeStep in currentLevel..targetLevel) {
                     setVolume(streamId, volumeStep, if (visible) AudioManager.FLAG_SHOW_UI else 0)
 
                     delay(delay)
                 }
             } else {
-                for (volumeStep in currentVolume downTo target) {
+                for (volumeStep in currentLevel downTo targetLevel) {
                     setVolume(streamId, volumeStep, if (visible) AudioManager.FLAG_SHOW_UI else 0)
 
                     delay(delay)
@@ -121,6 +142,8 @@ class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
         }
         return true
     }
+
+    enum class Options
 
     companion object {
         private val TAG = logTag("StreamHelper")

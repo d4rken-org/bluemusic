@@ -48,6 +48,10 @@
     <string name="devices_device_config_volume_observe_desc">Stay active while this device is connected and save volume changes that have not been caused by this app.</string>
     <string name="devices_device_config_volume_lock_label">音量固定</string>
     <string name="devices_device_config_volume_lock_desc">このデバイスが接続されている間は、このアプリ以外による音量の変更はすべて元に戻されます。</string>
+    <string name="devices_device_config_volume_rate_limiter_label">音量レート制限</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">音量変更の頻度を制限して、急激または過度な音量調整を防ぎます。</string>
+    <string name="devices_device_config_volume_rate_limit_duration_label">レート制限期間</string>
+    <string name="devices_device_config_volume_rate_limit_duration_desc">音量変更間の最小時間: %d ms</string>
     <string name="devices_device_config_autoplay_label">自動再生</string>
     <string name="devices_device_config_autoplay_desc">このデバイスが接続されたときに、Bluetoothリモコンでの再生をシミュレートします。</string>
     <string name="devices_device_config_section_volumes_label">音量</string>

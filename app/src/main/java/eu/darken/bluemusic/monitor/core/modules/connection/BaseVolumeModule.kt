@@ -84,14 +84,8 @@ abstract class BaseVolumeModule(
 
         val targetTime = Instant.now() + monitorDuration
         while (Instant.now() < targetTime) {
-            val currentPercentage = streamHelper.getVolumePercentage(streamId)
-            if (currentPercentage != targetPercentage) {
-                log(tag) { "Volume needs adjustment: currentPercentage=$currentPercentage, targetPercentage=$targetPercentage " }
-                if (streamHelper.changeVolume(streamId, targetPercentage)) {
-                    log(tag) { "Monitor($type) adjusted volume." }
-                }
-            } else {
-                log(tag) { "Target volume already set, continuing monitoring." }
+            if (streamHelper.changeVolume(streamId, targetPercentage)) {
+                log(tag) { "Monitor($type) adjusted volume." }
             }
 
             delay(250)

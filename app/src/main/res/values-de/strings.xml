@@ -48,6 +48,10 @@
     <string name="devices_device_config_volume_observe_desc">Aktiv bleiben, während dieses Gerät verbunden ist und Lautstärkeänderungen speichern, die nicht von dieser App verursacht wurden.</string>
     <string name="devices_device_config_volume_lock_label">Lautstärkesperre</string>
     <string name="devices_device_config_volume_lock_desc">Alle nicht über diese App vorgenommenen Lautstärkeänderungen werden zurückgesetzt, während dieses Gerät verbunden ist.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Lautstärke-Begrenzer</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Begrenzt die Häufigkeit von Lautstärkeänderungen, um schnelle oder übermäßige Lautstärke-Anpassungen zu verhindern.</string>
+    <string name="devices_device_config_volume_rate_limit_duration_label">Begrenzungsdauer</string>
+    <string name="devices_device_config_volume_rate_limit_duration_desc">Mindestzeit zwischen Lautstärkeänderungen: %d ms</string>
     <string name="devices_device_config_autoplay_label">Autoplay</string>
     <string name="devices_device_config_autoplay_desc">Die \'Autoplay\' Funktion simuliert einen Knopfdruck auf \'Abspielen\' einer Bluetoothfernsteuerung.</string>
     <string name="devices_device_config_section_volumes_label">Lautstärken</string>

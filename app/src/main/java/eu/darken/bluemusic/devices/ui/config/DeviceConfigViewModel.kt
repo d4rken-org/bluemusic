@@ -23,6 +23,7 @@ import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
+import java.time.Duration
 
 
 @HiltViewModel(assistedFactory = DeviceConfigViewModel.Factory::class)
@@ -329,6 +330,18 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 events.emit(ConfigEvent.ShowReactionDelayDialog(currentDelay))
             }
 
+            is ConfigAction.OnEditVolumeRateLimit -> {
+                deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                    oldConfig.copy(volumeRateLimitMs = action.duration?.toMillis())
+                }
+            }
+
+            is ConfigAction.OnEditVolumeRateLimitClicked -> {
+                val device = state.first().device
+                val currentLimit = Duration.ofMillis(device.volumeRateLimitMs)
+                events.emit(ConfigEvent.ShowVolumeRateLimitDialog(currentLimit))
+            }
+
             is ConfigAction.OnLaunchAppClicked -> {
                 events.emit(ConfigEvent.ShowAppPickerDialog)
             }
@@ -358,6 +371,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 oldConfig.copy(
                     volumeLock = !oldConfig.volumeLock,
                     volumeObserving = if (oldConfig.volumeObserving && !oldConfig.volumeLock) false else oldConfig.volumeObserving,
+                    volumeRateLimiter = if (oldConfig.volumeRateLimiter && !oldConfig.volumeLock) false else oldConfig.volumeRateLimiter,
                 )
             }
 
@@ -365,6 +379,13 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 oldConfig.copy(
                     volumeObserving = !oldConfig.volumeObserving,
                     volumeLock = if (oldConfig.volumeLock && !oldConfig.volumeObserving) false else oldConfig.volumeLock,
+                )
+            }
+
+            is ConfigAction.OnToggleVolumeRateLimiter -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                oldConfig.copy(
+                    volumeRateLimiter = !oldConfig.volumeRateLimiter,
+                    volumeLock = if (oldConfig.volumeLock && !oldConfig.volumeRateLimiter) false else oldConfig.volumeLock,
                 )
             }
 
