@@ -28,6 +28,7 @@ import androidx.compose.material.icons.twotone.Phone
 import androidx.compose.material.icons.twotone.PhoneInTalk
 import androidx.compose.material.icons.twotone.PlayArrow
 import androidx.compose.material.icons.twotone.Settings
+import androidx.compose.material.icons.twotone.Speed
 import androidx.compose.material.icons.twotone.Visibility
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -297,6 +298,7 @@ private fun OptionIndicators(
         if (device.keepAwake) add(Icons.TwoTone.BatteryFull to stringResource(R.string.devices_device_config_keep_awake_label))
         if (device.nudgeVolume) add(Icons.TwoTone.GraphicEq to stringResource(R.string.devices_device_config_nudge_volume_label))
         if (device.volumeObserving) add(Icons.TwoTone.Visibility to stringResource(R.string.devices_device_config_volume_observe_label))
+        if (device.volumeRateLimiter) add(Icons.TwoTone.Speed to stringResource(R.string.devices_device_config_volume_rate_limiter_label))
         if (device.launchPkg != null) add(Icons.AutoMirrored.TwoTone.Launch to stringResource(R.string.devices_device_config_launch_app_label))
         if (device.autoplay) add(Icons.TwoTone.PlayArrow to "Autoplay")
     }
@@ -330,6 +332,7 @@ private fun OptionIndicators(
                             Icons.TwoTone.BatteryFull -> "Awake"
                             Icons.TwoTone.GraphicEq -> "Nudge"
                             Icons.TwoTone.Visibility -> "Observe"
+                            Icons.TwoTone.Speed -> "Limit"
                             Icons.AutoMirrored.TwoTone.Launch -> "Launch"
                             Icons.TwoTone.PlayArrow -> "Auto"
                             else -> ""

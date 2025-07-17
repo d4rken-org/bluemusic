@@ -58,7 +58,7 @@ internal class VolumeRateLimiterModule @Inject constructor(
                             // Not enough time has passed - revert to last allowed volume
                             log(TAG) { "Volume changed too quickly for $type (${timeSinceLastChange}ms < ${rateLimitMs}ms), reverting from $volume to ${state.lastAllowedVolume}" }
 
-                            if (streamHelper.changeVolume(streamId = id, targetLevel = state.lastAllowedVolume)) {
+                            if (streamHelper.changeVolume(streamId = id, targetLevel = state.lastAllowedVolume, visible = true)) {
                                 log(TAG) { "Reverted volume for $type to ${state.lastAllowedVolume} due to rate limiting" }
                             }
                             return@forEach
@@ -75,7 +75,7 @@ internal class VolumeRateLimiterModule @Inject constructor(
                         if (clampedVolume != volume) {
                             log(TAG) { "Volume change limited for $type: requested=$volume, last=${state.lastAllowedVolume}, limited to=$clampedVolume" }
 
-                            if (streamHelper.changeVolume(streamId = id, targetLevel = clampedVolume)) {
+                            if (streamHelper.changeVolume(streamId = id, targetLevel = clampedVolume, visible = true)) {
                                 log(TAG) { "Applied rate-limited volume for $type to $clampedVolume" }
                                 // Update state with the limited volume
                                 volumeStates[id] = VolumeState(clampedVolume, currentTime)
