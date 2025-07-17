@@ -1,6 +1,6 @@
 package eu.darken.bluemusic.monitor.core.modules
 
-import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 
 interface VolumeModule {
 
@@ -12,5 +12,5 @@ interface VolumeModule {
     val priority: Int
         get() = 10  // Default
 
-    suspend fun handle(id: AudioStream.Id, volume: Int)
+    suspend fun handle(event: VolumeEvent)
 }

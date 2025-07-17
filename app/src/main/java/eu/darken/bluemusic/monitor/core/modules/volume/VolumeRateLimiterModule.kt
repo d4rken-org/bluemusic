@@ -12,6 +12,7 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -35,7 +36,11 @@ internal class VolumeRateLimiterModule @Inject constructor(
     private val volumeStates = mutableMapOf<AudioStream.Id, VolumeState>()
     private val mutex = Mutex()
 
-    override suspend fun handle(id: AudioStream.Id, volume: Int) {
+    override suspend fun handle(event: VolumeEvent) {
+        val id = event.streamId
+        val volume = event.newVolume
+        val oldVolume = event.oldVolume
+        
         // Check if this change was triggered by us
         if (streamHelper.wasUs(id, volume)) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
@@ -47,10 +52,10 @@ internal class VolumeRateLimiterModule @Inject constructor(
         deviceRepo.currentDevices()
             .filter { device -> device.isActive && device.volumeRateLimiter && device.getStreamType(id) != null }
             .forEach { device ->
-                val type = device.getStreamType(id)!!
 
                 mutex.withLock {
                     val state = volumeStates[id]
+                    val type = device.getStreamType(id)!!
 
                     if (state != null) {
                         val timeSinceLastChange = currentTime - state.lastChangeTimestamp
@@ -81,6 +86,26 @@ internal class VolumeRateLimiterModule @Inject constructor(
                             if (streamHelper.changeVolume(streamId = id, targetLevel = clampedVolume, visible = true)) {
                                 log(TAG) { "Applied rate-limited volume for $type to $clampedVolume" }
                                 // Update state with the limited volume
+                                volumeStates[id] = VolumeState(clampedVolume, currentTime)
+                            }
+                            return@forEach
+                        }
+                    }
+
+                    // For initial state, use oldVolume from the event
+                    if (state == null && oldVolume != -1) {
+                        val volumeDiff = volume - oldVolume
+                        val clampedVolume = when {
+                            volumeDiff > 1 -> oldVolume + 1
+                            volumeDiff < -1 -> oldVolume - 1
+                            else -> volume
+                        }
+
+                        if (clampedVolume != volume) {
+                            log(TAG) { "Initial volume change limited for $type: requested=$volume, previous=$oldVolume, limited to=$clampedVolume" }
+
+                            if (streamHelper.changeVolume(streamId = id, targetLevel = clampedVolume, visible = true)) {
+                                log(TAG) { "Applied initial rate-limited volume for $type to $clampedVolume" }
                                 volumeStates[id] = VolumeState(clampedVolume, currentTime)
                             }
                             return@forEach

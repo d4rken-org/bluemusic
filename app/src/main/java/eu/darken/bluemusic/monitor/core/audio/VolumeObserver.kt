@@ -33,14 +33,14 @@ class VolumeObserver @Inject constructor(
 
     private val volumesCache = mutableMapOf<AudioStream.Id, Int>()
 
-    val volumes: Flow<ChangeEvent> = callbackFlow {
+    val volumes: Flow<VolumeEvent> = callbackFlow {
         AudioStream.Id.entries.forEach { id ->
             val volume = streamHelper.getCurrentVolume(id)
             volumesCache[id] = volume
         }
 
         val observer = object : ContentObserver(handler) {
-            // TODO
+
             override fun deliverSelfNotifications(): Boolean = true
 
             override fun onChange(selfChange: Boolean) {
@@ -51,7 +51,13 @@ class VolumeObserver @Inject constructor(
                     if (newVolume != oldVolume) {
                         log(TAG) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume)" }
                         volumesCache[id] = newVolume
-                        trySendBlocking(ChangeEvent(id, newVolume, selfChange))
+                        val change = VolumeEvent(
+                            streamId = id,
+                            oldVolume = oldVolume,
+                            newVolume = newVolume,
+                            self = selfChange
+                        )
+                        trySendBlocking(change)
                     }
                 }
             }
@@ -65,12 +71,6 @@ class VolumeObserver @Inject constructor(
             contentResolver.unregisterContentObserver(observer)
         }
     }
-
-    data class ChangeEvent(
-        val streamId: AudioStream.Id,
-        val volume: Int,
-        val self: Boolean,
-    )
 
     companion object {
         private val TAG = logTag("Monitor", "VolumeObserver")

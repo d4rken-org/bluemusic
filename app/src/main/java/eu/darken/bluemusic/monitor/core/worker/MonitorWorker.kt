@@ -33,6 +33,7 @@ import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
+import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.EventModule
@@ -293,7 +294,7 @@ class MonitorWorker @AssistedInject constructor(
         }
     }
 
-    private suspend fun handleVolumeChange(event: VolumeObserver.ChangeEvent) {
+    private suspend fun handleVolumeChange(event: VolumeEvent) {
         val priorityArray = SparseArray<MutableList<VolumeModule>>()
 
         for (module in volumeModuleMap) {
@@ -315,7 +316,7 @@ class MonitorWorker @AssistedInject constructor(
                     async {
                         try {
                             log(TAG, VERBOSE) { "Volume module $module HANDLE-START" }
-                            module.handle(event.streamId, event.volume)
+                            module.handle(event)
                             log(TAG, VERBOSE) { "Volume module $module HANDLE-STOP" }
                         } catch (e: Exception) {
                             log(TAG, ERROR) { "Volume module error: $module: ${e.asLog()}" }

@@ -12,8 +12,8 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.updateVolume
-import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import java.time.Duration
 import java.time.Instant
@@ -26,7 +26,10 @@ class VolumeUpdateModule @Inject constructor(
     private val deviceRepo: DeviceRepo,
 ) : VolumeModule {
 
-    override suspend fun handle(id: AudioStream.Id, volume: Int) {
+    override suspend fun handle(event: VolumeEvent) {
+        val id = event.streamId
+        val volume = event.newVolume
+        
         if (streamHelper.wasUs(id, volume)) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             return
