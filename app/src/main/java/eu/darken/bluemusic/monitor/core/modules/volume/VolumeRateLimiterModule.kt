@@ -9,6 +9,7 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
+import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.StreamHelper
@@ -38,89 +39,71 @@ internal class VolumeRateLimiterModule @Inject constructor(
 
     override suspend fun handle(event: VolumeEvent) {
         val id = event.streamId
-        val volume = event.newVolume
+        val newVolume = event.newVolume
         val oldVolume = event.oldVolume
-        
-        // Check if this change was triggered by us
-        if (streamHelper.wasUs(id, volume)) {
+
+        // Ignore changes triggered by us
+        if (streamHelper.wasUs(id, newVolume)) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             return
         }
 
         val currentTime = System.currentTimeMillis()
+        val eligibleDevices = deviceRepo.currentDevices()
+            .filter { it.isActive && it.volumeRateLimiter && it.getStreamType(id) != null }
 
-        deviceRepo.currentDevices()
-            .filter { device -> device.isActive && device.volumeRateLimiter && device.getStreamType(id) != null }
-            .forEach { device ->
-
-                mutex.withLock {
-                    val state = volumeStates[id]
-                    val type = device.getStreamType(id)!!
-
-                    if (state != null) {
-                        val timeSinceLastChange = currentTime - state.lastChangeTimestamp
-                        val rateLimitMs = device.volumeRateLimitMs
-
-                        // Check if enough time has passed for any change
-                        if (timeSinceLastChange < rateLimitMs) {
-                            // Not enough time has passed - revert to last allowed volume
-                            log(TAG) { "Volume changed too quickly for $type (${timeSinceLastChange}ms < ${rateLimitMs}ms), reverting from $volume to ${state.lastAllowedVolume}" }
-
-                            if (streamHelper.changeVolume(streamId = id, targetLevel = state.lastAllowedVolume)) {
-                                log(TAG) { "Reverted volume for $type to ${state.lastAllowedVolume} due to rate limiting" }
-                            }
-
-                            // Update timestamp to reset the timer on each rejected attempt
-                            volumeStates[id] = VolumeState(state.lastAllowedVolume, currentTime)
-                            return@forEach
-                        }
-
-                        // Enough time has passed - limit change to 1 step
-                        val volumeDiff = volume - state.lastAllowedVolume
-                        val clampedVolume = when {
-                            volumeDiff > 1 -> state.lastAllowedVolume + 1
-                            volumeDiff < -1 -> state.lastAllowedVolume - 1
-                            else -> volume
-                        }
-
-                        if (clampedVolume != volume) {
-                            log(TAG) { "Volume change limited for $type: requested=$volume, last=${state.lastAllowedVolume}, limited to=$clampedVolume" }
-
-                            if (streamHelper.changeVolume(streamId = id, targetLevel = clampedVolume)) {
-                                log(TAG) { "Applied rate-limited volume for $type to $clampedVolume" }
-                                // Update state with the limited volume
-                                volumeStates[id] = VolumeState(clampedVolume, currentTime)
-                            }
-                            return@forEach
-                        }
-                    }
-
-                    // For initial state, use oldVolume from the event
-                    if (state == null && oldVolume != -1) {
-                        val volumeDiff = volume - oldVolume
-                        val clampedVolume = when {
-                            volumeDiff > 1 -> oldVolume + 1
-                            volumeDiff < -1 -> oldVolume - 1
-                            else -> volume
-                        }
-
-                        if (clampedVolume != volume) {
-                            log(TAG) { "Initial volume change limited for $type: requested=$volume, previous=$oldVolume, limited to=$clampedVolume" }
-
-                            if (streamHelper.changeVolume(streamId = id, targetLevel = clampedVolume)) {
-                                log(TAG) { "Applied initial rate-limited volume for $type to $clampedVolume" }
-                                volumeStates[id] = VolumeState(clampedVolume, currentTime)
-                            }
-                            return@forEach
-                        }
-                    }
-
-                    // Volume change is within allowed range - accept it
-                    volumeStates[id] = VolumeState(volume, currentTime)
-                    log(TAG, VERBOSE) { "Allowed volume change for $type to $volume at $currentTime" }
-                }
+        mutex.withLock {
+            eligibleDevices.forEach { device ->
+                processVolumeChange(device, id, oldVolume, newVolume, currentTime)
             }
+        }
+    }
 
+    private suspend fun processVolumeChange(
+        device: ManagedDevice,
+        streamId: AudioStream.Id,
+        oldVolume: Int,
+        newVolume: Int,
+        currentTime: Long
+    ) {
+        val streamType = device.getStreamType(streamId) ?: return
+
+        val currentState = volumeStates[streamId]
+        val rateLimitMs = device.volumeRateLimitMs
+
+        // Determine the reference volume (last allowed or old volume for initial state)
+        val referenceVolume = currentState?.lastAllowedVolume ?: oldVolume.takeIf { it != -1 } ?: newVolume
+
+        // Check rate limiting
+        if (currentState != null && (currentTime - currentState.lastChangeTimestamp) < rateLimitMs) {
+            log(TAG) { "Volume changed too quickly for $streamType, reverting from $newVolume to $referenceVolume" }
+            if (streamHelper.changeVolume(streamId = streamId, targetLevel = referenceVolume)) {
+                log(TAG) { "Reverted volume for $streamType to $referenceVolume due to rate limiting" }
+            }
+            // Update timestamp to reset the timer
+            volumeStates[streamId] = VolumeState(referenceVolume, currentTime)
+            return
+        }
+
+        // Apply volume step limiting
+        val volumeDiff = newVolume - referenceVolume
+        val clampedVolume = when {
+            volumeDiff > 1 -> referenceVolume + 1
+            volumeDiff < -1 -> referenceVolume - 1
+            else -> newVolume
+        }
+
+        if (clampedVolume != newVolume) {
+            log(TAG) { "Volume change limited for $streamType: requested=$newVolume, reference=$referenceVolume, limited to=$clampedVolume" }
+            if (streamHelper.changeVolume(streamId = streamId, targetLevel = clampedVolume)) {
+                log(TAG) { "Applied rate-limited volume for $streamType to $clampedVolume" }
+                volumeStates[streamId] = VolumeState(clampedVolume, currentTime)
+            }
+        } else {
+            // Volume change is within allowed range - accept it
+            volumeStates[streamId] = VolumeState(newVolume, currentTime)
+            log(TAG, VERBOSE) { "Allowed volume change for $streamType to $newVolume" }
+        }
     }
 
     @Module @InstallIn(SingletonComponent::class)
