@@ -17,8 +17,8 @@ internal fun BluetoothDevice.isConnected(): Boolean = try {
 }
 
 @RequiresPermission(anyOf = [Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH])
-internal fun BluetoothDevice.hasUUID(target: Int): Boolean = uuids.any {
+internal fun BluetoothDevice.hasUUID(target: Int): Boolean = uuids?.any {
     val uuid = it.uuid
     val value = (uuid.mostSignificantBits and 0x0000FFFF00000000L) ushr 32
     value.toInt() == target
-}
+} ?: false

@@ -139,7 +139,7 @@ class BluetoothRepo @Inject constructor(
             devices.toSet() as Set<SourceDevice>?
         }
         .retryWhen { err, attempt ->
-            log(TAG, WARN) { "Can't load paired devices: $err" }
+            log(TAG, WARN) { "Can't load paired devices: ${err.asLog()}" }
             emit(null)
             delay(3000)
             true

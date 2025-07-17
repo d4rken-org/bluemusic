@@ -40,6 +40,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="eu.darken.bluemusic.common.debug.recorder.ui.RecorderActivity"
+            android:exported="false" />
+
         <receiver
             android:name="eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiver"
             android:enabled="true"
@@ -77,6 +81,16 @@
                 android:value="androidx.startup"
                 tools:node="remove" />
 
+        </provider>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
 
