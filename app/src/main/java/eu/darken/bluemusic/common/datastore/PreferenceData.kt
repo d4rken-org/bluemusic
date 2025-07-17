@@ -2,12 +2,9 @@ package eu.darken.bluemusic.common.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.preference.PreferenceDataStore
 
-interface PreferenceScreenData {
+interface PreferenceData {
 
     val dataStore: DataStore<Preferences>
-
-    val mapper: PreferenceDataStore
 
 }

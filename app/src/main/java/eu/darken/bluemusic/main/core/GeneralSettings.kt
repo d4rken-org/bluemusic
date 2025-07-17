@@ -5,10 +5,8 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
-import eu.darken.bluemusic.common.datastore.PreferenceScreenData
-import eu.darken.bluemusic.common.datastore.PreferenceStoreMapper
+import eu.darken.bluemusic.common.datastore.PreferenceData
 import eu.darken.bluemusic.common.datastore.createValue
-import eu.darken.bluemusic.common.debug.DebugSettings
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.theming.ThemeMode
 import eu.darken.bluemusic.common.theming.ThemeStyle
@@ -19,9 +17,8 @@ import javax.inject.Singleton
 @Singleton
 class GeneralSettings @Inject constructor(
     @param:ApplicationContext private val context: Context,
-    debugSettings: DebugSettings,
     json: Json,
-) : PreferenceScreenData {
+) : PreferenceData {
 
     private val Context.dataStore by preferencesDataStore(name = "settings_core")
 
@@ -39,12 +36,6 @@ class GeneralSettings @Inject constructor(
 
     val legacyDatabaseMigrationDone = dataStore.createValue("legancy.migration.database.done", false)
     val legacySettingsMigrationDone = dataStore.createValue("legancy.migration.settings.done", false)
-
-    override val mapper = PreferenceStoreMapper(
-        debugSettings.isDebugMode,
-        themeMode,
-        themeStyle,
-    )
 
     companion object {
         internal val TAG = logTag("Core", "Settings")

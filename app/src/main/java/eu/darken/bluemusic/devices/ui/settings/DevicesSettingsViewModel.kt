@@ -2,6 +2,7 @@ package eu.darken.bluemusic.devices.ui.settings
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.navigation.Nav
@@ -41,20 +42,19 @@ constructor(
         navTo(Nav.Main.Upgrade)
     }
 
-    fun onToggleEnabled(enabled: Boolean) {
+    fun onToggleEnabled(enabled: Boolean) = launch {
         log(tag) { "onToggleEnabled($enabled)" }
+        devicesSettings.isEnabled.value(enabled)
     }
 
-    fun onToggleVisibleVolumeAdjustments(enabled: Boolean) {
+    fun onToggleVisibleVolumeAdjustments(enabled: Boolean) = launch {
         log(tag) { "onToggleVisibleVolumeAdjustments($enabled)" }
+        devicesSettings.visibleAdjustments.value(enabled)
     }
 
-    fun onToggleVolumeListening(enabled: Boolean) {
-        log(tag) { "onToggleVolumeListening($enabled)" }
-    }
-
-    fun onToggleRestoreOnBoot(enabled: Boolean) {
+    fun onToggleRestoreOnBoot(enabled: Boolean) = launch {
         log(tag) { "onToggleRestoreOnBoot($enabled)" }
+        devicesSettings.restoreOnBoot.value(enabled)
     }
 
     data class State(
