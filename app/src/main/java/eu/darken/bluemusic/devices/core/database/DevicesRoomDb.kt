@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.devices.core.database
 
-import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
@@ -9,10 +8,9 @@ import androidx.room.TypeConverters
     entities = [
         DeviceConfigEntity::class,
     ],
-    version = 4,
+    version = 1,
     autoMigrations = [
-        AutoMigration(1, 2),
-        AutoMigration(2, 3)
+
     ],
     exportSchema = true,
 )
