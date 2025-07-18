@@ -45,6 +45,7 @@ data class MockDevice(
             autoplay = true,
             nudgeVolume = true,
             keepAwake = true,
+            launchPkgs = listOf("eu.darken.bluemusic"),
         ),
         isActive = isActive,
     )

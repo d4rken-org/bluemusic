@@ -231,4 +231,10 @@
     <string name="error_iap_owned_message">Ya posees este artículo</string>
     <string name="label_no_devices_title">Sin dispositivos</string>
     <string name="bluemusic_mascot_description">Icono de la aplicación</string>
+    <string name="label_select_app">Seleccionar aplicación</string>
+    <string name="label_search_apps">Buscar aplicaciones...</string>
+    <string name="label_currently_selected">Actualmente seleccionada</string>
+    <string name="label_navigate_back">Volver</string>
+    <string name="label_reset">Restablecer</string>
+    <string name="label_clear">Limpiar</string>
 </resources>

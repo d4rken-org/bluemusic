@@ -60,7 +60,7 @@ data class DeviceConfigEntity(
     
     @ColumnInfo(name = "autoplay")
     val autoplay: Boolean = false,
-    
-    @ColumnInfo(name = "launch_pkg")
-    val launchPkg: String? = null,
+
+    @ColumnInfo(name = "launch_pkgs", defaultValue = "[]")
+    val launchPkgs: List<String> = emptyList(),
 )

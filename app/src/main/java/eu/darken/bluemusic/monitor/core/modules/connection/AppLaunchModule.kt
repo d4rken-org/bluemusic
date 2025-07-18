@@ -24,12 +24,20 @@ class AppLaunchModule @Inject constructor(
     override suspend fun handle(event: DeviceEvent) {
         if (event !is DeviceEvent.Connected) return
         val device = event.device
-        if (device.launchPkg == null) return
+        val appsToLaunch = device.launchPkgs
+        if (appsToLaunch.isEmpty()) return
 
-        log(TAG) { "Launching app ${device.launchPkg}" }
-        appTool.launch(device.launchPkg!!)
+        log(TAG) { "Launching ${appsToLaunch.size} apps: $appsToLaunch" }
 
-        delay(1000)
+        appsToLaunch.forEach { pkg ->
+            try {
+                log(TAG) { "Launching app: $pkg" }
+                appTool.launch(pkg)
+                delay(500) // Small delay between launches
+            } catch (e: Exception) {
+                log(TAG) { "Failed to launch app $pkg: ${e.message}" }
+            }
+        }
     }
 
     @Module @InstallIn(SingletonComponent::class)

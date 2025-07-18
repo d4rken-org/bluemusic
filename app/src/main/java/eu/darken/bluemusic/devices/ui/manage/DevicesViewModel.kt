@@ -70,7 +70,7 @@ class DevicesViewModel @Inject constructor(
         generalSettings.isAndroid10AppLaunchHintDismissed.flow,
         devicesFlow
     ) { _, isDismissed, devices ->
-        val hasDevicesWithLaunchPkg = devices.any { it.launchPkg != null }
+        val hasDevicesWithLaunchPkg = devices.any { it.launchPkgs.isNotEmpty() }
         val hint = permissionHelper.getOverlayPermissionHint(isDismissed, hasDevicesWithLaunchPkg)
         hint
     }

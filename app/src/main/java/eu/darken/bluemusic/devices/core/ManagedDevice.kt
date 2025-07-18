@@ -27,8 +27,8 @@ data class ManagedDevice(
         get() = config.adjustmentDelay?.let { Duration.ofMillis(it) } ?: defaultAdjustmentDelay
     val actionDelay: Duration
         get() = config.actionDelay?.let { Duration.ofMillis(it) } ?: defaultActionDelay
-    val launchPkg: String?
-        get() = config.launchPkg
+    val launchPkgs: List<String>
+        get() = config.launchPkgs
     val nudgeVolume: Boolean
         get() = config.nudgeVolume
     val keepAwake: Boolean

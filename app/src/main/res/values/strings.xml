@@ -48,8 +48,9 @@
     <string name="devices_device_config_reaction_delay_desc">The delay in milliseconds until this app reacts to this device.</string>
 
     <string name="devices_device_config_section_reaction_label">Reaction</string>
-    <string name="devices_device_config_launch_app_label">Launch app</string>
-    <string name="devices_device_config_launch_app_desc">Launch an app when this device connects.</string>
+    <string name="devices_device_config_launch_app_label">Launch apps</string>
+    <string name="devices_device_config_launch_app_desc">Launch apps when this device connects.</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d apps selected</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
@@ -283,4 +284,14 @@
     <string name="label_no_devices_title">No Devices</string>
 
     <string name="bluemusic_mascot_description">App Icon</string>
+
+    <!-- App Selection -->
+    <string name="devices_app_selection_title">Select Apps</string>
+    <string name="devices_app_selection_search_hint">Search apps...</string>
+    <string name="devices_app_selection_currently_selected">Currently selected</string>
+    <string name="devices_app_selection_selected_count">%d apps selected</string>
+    <string name="general_navigate_back_action">Navigate back</string>
+    <string name="general_reset_action">Reset</string>
+    <string name="general_clear_action">Clear</string>
+    <string name="general_save_action">Save</string>
 </resources>

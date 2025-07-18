@@ -26,6 +26,11 @@ sealed interface Nav : NavigationDestination {
         }
 
         @Serializable
+        data class AppSelection(val addr: DeviceAddr) : Main {
+            private fun readResolve(): Any = ManageDevices
+        }
+
+        @Serializable
         data object SettingsIndex : Main {
             private fun readResolve(): Any = SettingsIndex
         }

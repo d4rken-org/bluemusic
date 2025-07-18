@@ -81,13 +81,11 @@ fun DeviceConfigScreenHost(
     var showReactionDelayDialog by remember { mutableStateOf<Duration?>(null) }
     var showAdjustmentDelayDialog by remember { mutableStateOf<Duration?>(null) }
     var showVolumeRateLimitDialog by remember { mutableStateOf<Duration?>(null) }
-    var showAppPickerDialog by remember { mutableStateOf(false) }
 
     LaunchedEffect(vm.events) {
         vm.events.collect { event ->
             when (event) {
                 is ConfigEvent.ShowDeleteDialog -> showDeleteDialog = true
-                is ConfigEvent.ShowAppPickerDialog -> showAppPickerDialog = true
                 is ConfigEvent.ShowRenameDialog -> showRenameDialog = event.currentName
                 is ConfigEvent.ShowMonitoringDurationDialog -> showMonitoringDurationDialog = event.currentValue
                 is ConfigEvent.ShowReactionDelayDialog -> showReactionDelayDialog = event.currentValue
@@ -178,8 +176,6 @@ fun DeviceConfigScreenHost(
                 }
             )
         }
-
-        // TODO: App picker implementation for showAppPickerDialog
     }
 }
 
@@ -377,7 +373,14 @@ fun DeviceConfigScreen(
 
                         ClickablePreference(
                             title = stringResource(R.string.devices_device_config_launch_app_label),
-                            description = state.launchAppLabel ?: stringResource(R.string.devices_device_config_launch_app_desc),
+                            description = when {
+                                state.launchAppLabels.isEmpty() -> stringResource(R.string.devices_device_config_launch_app_desc)
+                                state.launchAppLabels.size == 1 -> state.launchAppLabels.first()
+                                else -> stringResource(
+                                    R.string.devices_device_config_launch_app_multiple_desc,
+                                    state.launchAppLabels.size
+                                )
+                            },
                             icon = Icons.AutoMirrored.TwoTone.Launch,
                             onClick = { onAction(ConfigAction.OnLaunchAppClicked) },
                         )

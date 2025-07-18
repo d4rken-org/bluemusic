@@ -59,7 +59,7 @@ class RealmToRoomMigrator @Inject constructor(
                         keepAwake = realmDevice.keepAwake,
                         nudgeVolume = realmDevice.nudgeVolume,
                         autoplay = realmDevice.autoplay,
-                        launchPkg = realmDevice.launchPkg
+                        launchPkgs = realmDevice.launchPkg?.let { listOf(it) } ?: emptyList()
                     )
 
                     deviceDatabase.devices.updateDevice(roomDevice)

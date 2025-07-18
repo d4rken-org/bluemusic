@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.devices.ui.manage.rows
+package eu.darken.bluemusic.devices.ui.manage.rows.device
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
@@ -98,7 +98,7 @@ fun ManagedDeviceItem(
             ) {
                 // Device type icon
                 Icon(
-                    imageVector = device.device?.deviceType?.toIcon() ?: Icons.TwoTone.Devices,
+                    imageVector = device.device.deviceType?.toIcon() ?: Icons.TwoTone.Devices,
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
                     tint = MaterialTheme.colorScheme.primary
@@ -299,16 +299,41 @@ private fun OptionIndicators(
         if (device.nudgeVolume) add(Icons.TwoTone.GraphicEq to stringResource(R.string.devices_device_config_nudge_volume_label))
         if (device.volumeObserving) add(Icons.TwoTone.Visibility to stringResource(R.string.devices_device_config_volume_observe_label))
         if (device.volumeRateLimiter) add(Icons.TwoTone.Speed to stringResource(R.string.devices_device_config_volume_rate_limiter_label))
-        if (device.launchPkg != null) add(Icons.AutoMirrored.TwoTone.Launch to stringResource(R.string.devices_device_config_launch_app_label))
         if (device.autoplay) add(Icons.TwoTone.PlayArrow to "Autoplay")
     }
 
-    if (indicators.isNotEmpty()) {
+    val hasLaunchApps = device.launchPkgs.isNotEmpty()
+
+    if (indicators.isNotEmpty() || hasLaunchApps) {
         FlowRow(
             modifier = modifier.padding(top = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(6.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
+            // Show app icons first
+            if (hasLaunchApps) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .background(
+                            color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.8f),
+                            shape = MaterialTheme.shapes.small
+                        )
+                        .padding(horizontal = 6.dp, vertical = 2.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.TwoTone.Launch,
+                        contentDescription = null,
+                        modifier = Modifier.size(14.dp),
+                        tint = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                    Spacer(modifier = Modifier.width(3.dp))
+                    AppIconsRow(
+                        packageNames = device.launchPkgs,
+                        maxIcons = 3
+                    )
+                }
+            }
             indicators.forEach { (icon, _) ->
                 Row(
                     verticalAlignment = Alignment.CenterVertically,

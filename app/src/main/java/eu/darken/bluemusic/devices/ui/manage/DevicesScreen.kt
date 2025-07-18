@@ -53,8 +53,8 @@ import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.ui.manage.rows.Android10AppLaunchHintCard
 import eu.darken.bluemusic.devices.ui.manage.rows.BatteryOptimizationHintCard
 import eu.darken.bluemusic.devices.ui.manage.rows.EmptyDevicesCard
-import eu.darken.bluemusic.devices.ui.manage.rows.ManagedDeviceItem
 import eu.darken.bluemusic.devices.ui.manage.rows.NotificationPermissionHintCard
+import eu.darken.bluemusic.devices.ui.manage.rows.device.ManagedDeviceItem
 
 @Composable
 fun DevicesScreenHost(vm: DevicesViewModel = hiltViewModel()) {

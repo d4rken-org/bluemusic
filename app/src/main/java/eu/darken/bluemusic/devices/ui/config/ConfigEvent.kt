@@ -4,7 +4,6 @@ import java.time.Duration
 
 sealed interface ConfigEvent {
     data object ShowDeleteDialog : ConfigEvent
-    data object ShowAppPickerDialog : ConfigEvent
     data class ShowRenameDialog(val currentName: String) : ConfigEvent
     data class ShowMonitoringDurationDialog(val currentValue: Duration) : ConfigEvent
     data class ShowReactionDelayDialog(val currentValue: Duration) : ConfigEvent

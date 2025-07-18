@@ -3,6 +3,7 @@ package eu.darken.bluemusic.devices.core.database
 import android.content.Context
 import androidx.room.Room
 import dagger.hilt.android.qualifiers.ApplicationContext
+import eu.darken.bluemusic.devices.core.database.migrations.Migration3to4
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -15,7 +16,9 @@ class DeviceDatabase @Inject constructor(
         Room.databaseBuilder(
             context,
             DevicesRoomDb::class.java, "managed_devices"
-        ).build()
+        )
+            .addMigrations(Migration3to4)
+            .build()
     }
 
     val devices: DeviceConfigDao

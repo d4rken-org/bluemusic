@@ -2,15 +2,18 @@ package eu.darken.bluemusic.devices.ui.config
 
 import android.app.Activity
 import android.app.NotificationManager
+import android.content.Context
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.common.AppTool
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.SingleEventFlow
+import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
@@ -29,6 +32,7 @@ import java.time.Duration
 @HiltViewModel(assistedFactory = DeviceConfigViewModel.Factory::class)
 class DeviceConfigViewModel @AssistedInject constructor(
     @Assisted private val deviceAddress: DeviceAddr,
+    @ApplicationContext private val context: Context,
     private val deviceRepo: DeviceRepo,
     private val streamHelper: StreamHelper,
     private val upgradeRepo: UpgradeRepo,
@@ -43,7 +47,8 @@ class DeviceConfigViewModel @AssistedInject constructor(
         val isProVersion: Boolean = false,
         val isLoading: Boolean = true,
         val error: String? = null,
-        val launchAppLabel: String? = null
+        val launchAppLabel: String? = null,
+        val launchAppLabels: List<String> = emptyList()
     )
 
     val events = SingleEventFlow<ConfigEvent>()
@@ -52,9 +57,28 @@ class DeviceConfigViewModel @AssistedInject constructor(
         upgradeRepo.upgradeInfo,
         deviceRepo.observeDevice(deviceAddress).filterNotNull(),
     ) { upgradeInfo, device ->
+        // For backward compatibility, show first app if any
+        val launchAppLabel = device.launchPkgs.firstOrNull()?.let { pkg ->
+            try {
+                AppTool.getLabel(context, pkg)
+            } catch (e: Exception) {
+                log(tag) { "Failed to get app label for $pkg: ${e.message}" }
+                null
+            }
+        }
+        val launchAppLabels = device.launchPkgs.mapNotNull { pkg ->
+            try {
+                AppTool.getLabel(context, pkg)
+            } catch (e: Exception) {
+                log(tag) { "Failed to get app label for $pkg: ${e.message}" }
+                null
+            }
+        }
         State(
             device = device,
             isProVersion = upgradeInfo.isUpgraded,
+            launchAppLabel = launchAppLabel,
+            launchAppLabels = launchAppLabels
         )
     }.asStateFlow()
 
@@ -343,7 +367,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnLaunchAppClicked -> {
-                events.emit(ConfigEvent.ShowAppPickerDialog)
+                navTo(Nav.Main.AppSelection(deviceAddress))
             }
 
             is ConfigAction.OnRename -> {
