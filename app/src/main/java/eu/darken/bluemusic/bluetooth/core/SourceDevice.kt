@@ -9,7 +9,7 @@ interface SourceDevice : Parcelable {
 
     val address: DeviceAddr
     val label: String
-    val isActive: Boolean
+    val isConnected: Boolean
     val deviceType: Type
 
     fun getStreamId(type: AudioStream.Type): Id

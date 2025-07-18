@@ -128,13 +128,13 @@ class BluetoothRepo @Inject constructor(
                     isHealthDevice
                 }
                 .forEach { device ->
-                    val wrapper = SourceDeviceWrapper.from(realDevice = device, isActive = device.isConnected())
+                    val wrapper = SourceDeviceWrapper.from(realDevice = device, isConnected = device.isConnected())
                     devices.add(wrapper)
-                    log(TAG) { "Paired evice: ${wrapper.name} - ${wrapper.address} - isActive=${wrapper.isActive}" }
+                    log(TAG) { "Paired evice: ${wrapper.name} - ${wrapper.address} - isConnected=${wrapper.isConnected}" }
 
                 }
 
-            devices.add(speakerDeviceProvider.getSpeaker(isActive = devices.none { it.isActive }))
+            devices.add(speakerDeviceProvider.getSpeaker(isConnected = true))
 
             devices.toSet() as Set<SourceDevice>?
         }

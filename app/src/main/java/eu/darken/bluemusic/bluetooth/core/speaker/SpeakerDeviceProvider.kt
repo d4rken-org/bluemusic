@@ -13,9 +13,9 @@ class SpeakerDeviceProvider @Inject constructor(
 ) {
 
     suspend fun getSpeaker(
-        isActive: Boolean,
+        isConnected: Boolean,
     ) = FakeSpeakerDevice(
         label = "${context.getString(R.string.label_device_speaker)} (${Build.MODEL}) ",
-        isActive = isActive, // TODO this is correct if there are constant devices connected like a pixel watch
+        isConnected = isConnected, // TODO this is correct if there are constant devices connected like a pixel watch
     )
 }

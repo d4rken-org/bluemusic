@@ -11,7 +11,6 @@ import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import kotlinx.parcelize.Parcelize
-import java.util.Locale
 
 @Parcelize
 data class SourceDeviceWrapper(
@@ -19,7 +18,7 @@ data class SourceDeviceWrapper(
     val alias: String?,
     val name: String?,
     override val deviceType: SourceDevice.Type,
-    override val isActive: Boolean,
+    override val isConnected: Boolean,
 ) : SourceDevice {
 
     override val label: String
@@ -40,19 +39,15 @@ data class SourceDeviceWrapper(
         return address == that.address
     }
 
-    override fun hashCode(): Int {
-        return address.hashCode()
-    }
+    override fun hashCode(): Int = address.hashCode()
 
-    override fun toString(): String {
-        return String.format(Locale.US, "Device(name=%s, address=%s)", name, address)
-    }
+    override fun toString(): String = "Device(name=$name, address=$address, isConnected=$isConnected)"
 
     companion object {
         private val TAG = logTag("Bluetooth", "SourceDevice")
 
         @RequiresPermission(anyOf = [Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH])
-        fun from(realDevice: BluetoothDevice, isActive: Boolean) = SourceDeviceWrapper(
+        fun from(realDevice: BluetoothDevice, isConnected: Boolean) = SourceDeviceWrapper(
             address = realDevice.address,
             alias = run {
                 if (hasApiLevel(30)) {
@@ -70,7 +65,7 @@ data class SourceDeviceWrapper(
             },
             name = realDevice.name,
             deviceType = realDevice.bluetoothClass.toType(),
-            isActive = isActive
+            isConnected = isConnected
         )
     }
 }

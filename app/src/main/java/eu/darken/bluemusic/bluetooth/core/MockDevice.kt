@@ -11,7 +11,7 @@ import java.util.UUID
 @Parcelize
 data class MockDevice(
     override val label: String = "MockDevice ${UUID.randomUUID().toString().take(4)}",
-    override val isActive: Boolean = false,
+    override val isConnected: Boolean = false,
     override val address: DeviceAddr = UUID.randomUUID()
         .toString()
         .uppercase()

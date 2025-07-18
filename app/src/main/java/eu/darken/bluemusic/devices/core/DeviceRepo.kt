@@ -2,6 +2,7 @@ package eu.darken.bluemusic.devices.core
 
 import android.annotation.SuppressLint
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
+import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
@@ -24,18 +25,28 @@ class DeviceRepo @Inject constructor(
     private val dispatcherProvider: DispatcherProvider,
 ) {
 
-    // TODO what if bluetooth is suddenly disabled?
     val devices = combine(
         bluetoothRepo.state,
         deviceDatabase.devices.getAllDevices()
     ) { btState, managed ->
         val pairedMap = btState.devices?.associateBy { it.address }
-        managed.mapNotNull {
-            val paired = pairedMap?.get(it.address) ?: return@mapNotNull null
+        val mappings = managed
+            .mapNotNull { config ->
+                val paired = pairedMap?.get(config.address) ?: return@mapNotNull null
+                config to paired
+            }
+
+        mappings.map { (config, paired) ->
             ManagedDevice(
                 device = paired,
-                isActive = paired.isActive,
-                config = it,
+                isActive = when (paired.deviceType) {
+                    SourceDevice.Type.PHONE_SPEAKER -> mappings
+                        .filter { it.second.address != config.address }
+                        .none { it.second.isConnected }
+
+                    else -> paired.isConnected
+                },
+                config = config,
             )
         }.sortedByDescending { it.isActive }
     }.replayingShare(appScope + dispatcherProvider.IO)
@@ -43,9 +54,10 @@ class DeviceRepo @Inject constructor(
     @SuppressLint("MissingPermission")
     suspend fun renameDevice(address: DeviceAddr, newName: String?) {
         log(TAG) { "renameDevice: Setting alias for $address to $newName" }
+        val targetDevice = getDevice(address) ?: return
 
         var systemAliasSuccess = false
-        if (newName != null) {
+        if (newName != null && targetDevice.type != SourceDevice.Type.PHONE_SPEAKER) {
             systemAliasSuccess = bluetoothRepo.renameDevice(address, newName)
         }
         log(TAG) { "renameDevice: systemAliasSuccess=$systemAliasSuccess" }

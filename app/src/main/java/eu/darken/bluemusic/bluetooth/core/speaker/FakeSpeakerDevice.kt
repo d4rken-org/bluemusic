@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class FakeSpeakerDevice(
     override val label: String,
-    override val isActive: Boolean,
+    override val isConnected: Boolean,
 ) : SourceDevice, Parcelable {
 
     override val address: String
@@ -26,7 +26,7 @@ class FakeSpeakerDevice(
     }
 
     override fun toString(): String {
-        return "FakeSpeakerDevice(isActive=$isActive)"
+        return "FakeSpeakerDevice(isConnected=$isConnected)"
     }
 
     companion object {
