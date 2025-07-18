@@ -27,9 +27,7 @@ class DevicesSettings @Inject constructor(
     val isEnabled = dataStore.createValue("devices.enabled", true)
     val visibleAdjustments = dataStore.createValue("devices.volume.adjustments.visible", true)
     val restoreOnBoot = dataStore.createValue("devices.volume.restore.boot.enabled", true)
-
-    // TODO per device?
-    val autoplayKeycode = dataStore.createValue("devices.speaker.autosave.enabled", KeyEvent.KEYCODE_MEDIA_PLAY)
+    val autoplayKeycodes = dataStore.createValue("devices.autoplay.keycodes", listOf(KeyEvent.KEYCODE_MEDIA_PLAY), json)
 
     companion object {
         internal val TAG = logTag("Devices", "Settings")

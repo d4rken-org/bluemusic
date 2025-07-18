@@ -35,7 +35,21 @@ class DiscoverViewModel @Inject constructor(
         upgradeRepo.upgradeInfo,
     ) { bluetoothState, managed, upgradeInfo ->
         State(
-            devices = bluetoothState.devices!!.filterNot { p -> managed.any { p.address == it.address } },
+            devices = bluetoothState.devices!!
+                .filterNot { p -> managed.any { p.address == it.address } }
+                .sortedWith(
+                    compareBy(
+                        { device ->
+                            when (device.deviceType) {
+                                SourceDevice.Type.PHONE_SPEAKER -> 0
+                                SourceDevice.Type.HEADPHONES -> 1
+                                SourceDevice.Type.HEADSET -> 2
+                                else -> 3
+                            }
+                        },
+                        { it.label }
+                    )
+                ),
             managedDeviceCount = managed.size,
             isProVersion = upgradeInfo.isUpgraded,
         )

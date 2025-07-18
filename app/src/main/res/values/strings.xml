@@ -64,6 +64,11 @@
     <string name="devices_device_config_volume_rate_limit_duration_desc">Minimum time between volume changes: %d ms</string>
     <string name="devices_device_config_autoplay_label">Autoplay</string>
     <string name="devices_device_config_autoplay_desc">Simulate pressing play on a Bluetooth remote when this device connects.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Autoplay Key Types</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Available key types</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Selected keys (in order)</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Key types</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Configure which keys to send and in what order</string>
 
     <string name="devices_device_config_section_volumes_label">Volumes</string>
     <string name="devices_device_config_section_volume_label">Volume</string>
