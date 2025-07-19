@@ -158,13 +158,27 @@ class MonitorWorker @AssistedInject constructor(
             .throttleLatest(1000)
             .flatMapLatest { devices ->
                 val activeDevices = devices.filter { it.isActive }
+
                 log(TAG) { "monitorJob: Currently active devices: $activeDevices" }
                 notificationManager.notify(
                     MonitorNotifications.NOTIFICATION_ID,
                     notifications.getDevicesNotification(activeDevices),
                 )
+
+                val stayActive = activeDevices.any { it.volumeLock || it.volumeObserving || it.volumeRateLimiter }
                 when {
-                    activeDevices.isNotEmpty() -> emptyFlow()
+                    activeDevices.isNotEmpty() && stayActive -> {
+                        log(TAG) { "Staying connected for active devices." }
+                        emptyFlow()
+                    }
+
+                    activeDevices.isNotEmpty() -> flow {
+                        log(TAG) { "There are active devices but we don't need to stay active for them." }
+                        delay(60 * 1000)
+                        log(TAG) { "Canceling worker now, nothing changed." }
+                        workerScope.coroutineContext.cancelChildren()
+                    }
+
                     else -> flow<Unit> {
                         log(TAG) { "No devices connected, canceling soon" }
                         delay(15 * 1000)
@@ -174,9 +188,7 @@ class MonitorWorker @AssistedInject constructor(
                     }
                 }
             }
-            .catch {
-                log(TAG, WARN) { "Monitor flow failed:\n${it.asLog()}" }
-            }
+            .catch { log(TAG, WARN) { "Monitor flow failed:\n${it.asLog()}" } }
             .launchIn(workerScope)
 
         log(TAG, VERBOSE) { "Monitor job is active" }

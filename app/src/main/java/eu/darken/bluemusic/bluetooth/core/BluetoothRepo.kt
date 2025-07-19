@@ -190,7 +190,7 @@ class BluetoothRepo @Inject constructor(
         val realDevice = bluetoothAdapter.getRemoteDevice(address) ?: return false
         return if (hasApiLevel(31)) {
             @Suppress("NewApi")
-            (realDevice.alias = newName)
+            realDevice.alias = newName
             true
         } else {
             try {
