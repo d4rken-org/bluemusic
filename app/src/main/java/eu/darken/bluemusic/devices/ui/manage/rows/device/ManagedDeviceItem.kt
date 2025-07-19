@@ -2,10 +2,8 @@ package eu.darken.bluemusic.devices.ui.manage.rows.device
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,26 +12,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.twotone.Launch
-import androidx.compose.material.icons.twotone.Alarm
-import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.Devices
 import androidx.compose.material.icons.twotone.ExpandMore
-import androidx.compose.material.icons.twotone.GraphicEq
-import androidx.compose.material.icons.twotone.Lock
-import androidx.compose.material.icons.twotone.MusicNote
-import androidx.compose.material.icons.twotone.Notifications
-import androidx.compose.material.icons.twotone.Phone
-import androidx.compose.material.icons.twotone.PhoneInTalk
-import androidx.compose.material.icons.twotone.PlayArrow
 import androidx.compose.material.icons.twotone.Settings
-import androidx.compose.material.icons.twotone.Speed
-import androidx.compose.material.icons.twotone.Visibility
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -44,7 +29,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -182,7 +166,7 @@ fun ManagedDeviceItem(
                     )
                 }
 
-                AudioStream.Type.entries.map { streamType ->
+                AudioStream.Type.entries.forEach { streamType ->
                     device.getVolume(streamType)?.let { currentVolume ->
                         VolumeControl(
                             streamType = streamType,
@@ -225,151 +209,6 @@ fun ManagedDeviceItem(
     }
 }
 
-@Composable
-private fun VolumeControl(
-    streamType: AudioStream.Type,
-    label: String,
-    volume: Float?,
-    onVolumeChange: (Float) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    // Track the slider value locally while dragging
-    var sliderValue by remember(volume) { mutableStateOf(volume ?: 0.5f) }
-
-    Column(modifier = modifier) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                imageVector = streamType.getIcon(),
-                contentDescription = null,
-                modifier = Modifier.size(20.dp),
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                text = label,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.width(80.dp)
-            )
-            Slider(
-                value = sliderValue,
-                onValueChange = { newValue ->
-                    sliderValue = newValue
-                },
-                onValueChangeFinished = {
-                    // Only update when the user releases the slider
-                    onVolumeChange(sliderValue)
-                },
-                modifier = Modifier.weight(1f),
-                enabled = volume != null
-            )
-            Text(
-                text = if (volume != null) "${(sliderValue * 100).toInt()}%" else "-",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier
-                    .width(40.dp)
-                    .padding(start = 8.dp)
-            )
-        }
-    }
-}
-
-// Extension function to get the appropriate TwoTone icon for each audio stream type
-private fun AudioStream.Type.getIcon(): ImageVector = when (this) {
-    AudioStream.Type.MUSIC -> Icons.TwoTone.MusicNote
-    AudioStream.Type.CALL -> Icons.TwoTone.PhoneInTalk
-    AudioStream.Type.RINGTONE -> Icons.TwoTone.Phone
-    AudioStream.Type.NOTIFICATION -> Icons.TwoTone.Notifications
-    AudioStream.Type.ALARM -> Icons.TwoTone.Alarm
-}
-
-@Composable
-private fun OptionIndicators(
-    device: ManagedDevice,
-    launchApps: List<AppInfo> = emptyList(),
-    modifier: Modifier = Modifier
-) {
-    val indicators = buildList {
-        if (device.volumeLock) add(Icons.TwoTone.Lock to stringResource(R.string.devices_device_config_volume_lock_label))
-        if (device.keepAwake) add(Icons.TwoTone.BatteryFull to stringResource(R.string.devices_device_config_keep_awake_label))
-        if (device.nudgeVolume) add(Icons.TwoTone.GraphicEq to stringResource(R.string.devices_device_config_nudge_volume_label))
-        if (device.volumeObserving) add(Icons.TwoTone.Visibility to stringResource(R.string.devices_device_config_volume_observe_label))
-        if (device.volumeRateLimiter) add(Icons.TwoTone.Speed to stringResource(R.string.devices_device_config_volume_rate_limiter_label))
-        if (device.autoplay) add(Icons.TwoTone.PlayArrow to "Autoplay")
-    }
-
-    val hasLaunchApps = launchApps.isNotEmpty()
-
-    if (indicators.isNotEmpty() || hasLaunchApps) {
-        FlowRow(
-            modifier = modifier.padding(top = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(6.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            // Show app icons first
-            if (hasLaunchApps) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .background(
-                            color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.8f),
-                            shape = MaterialTheme.shapes.small
-                        )
-                        .padding(horizontal = 6.dp, vertical = 2.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.TwoTone.Launch,
-                        contentDescription = null,
-                        modifier = Modifier.size(14.dp),
-                        tint = MaterialTheme.colorScheme.onPrimaryContainer
-                    )
-                    Spacer(modifier = Modifier.width(3.dp))
-                    AppIconsRow(
-                        appInfos = launchApps,
-                        maxIcons = 3
-                    )
-                }
-            }
-            indicators.forEach { (icon, _) ->
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .background(
-                            color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.8f),
-                            shape = MaterialTheme.shapes.small
-                        )
-                        .padding(horizontal = 6.dp, vertical = 2.dp)
-                ) {
-                    Icon(
-                        imageVector = icon,
-                        contentDescription = null,
-                        modifier = Modifier.size(20.dp),
-                        tint = MaterialTheme.colorScheme.onPrimaryContainer
-                    )
-                    Spacer(modifier = Modifier.width(3.dp))
-                    Text(
-                        text = when (icon) {
-                            Icons.TwoTone.Lock -> "Lock"
-                            Icons.TwoTone.BatteryFull -> "Awake"
-                            Icons.TwoTone.GraphicEq -> "Nudge"
-                            Icons.TwoTone.Visibility -> "Observe"
-                            Icons.TwoTone.Speed -> "Limit"
-                            Icons.AutoMirrored.TwoTone.Launch -> "Launch"
-                            Icons.TwoTone.PlayArrow -> "Auto"
-                            else -> ""
-                        },
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer
-                    )
-                }
-            }
-        }
-    }
-}
 
 @Preview2
 @Composable

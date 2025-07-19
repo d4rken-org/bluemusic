@@ -48,14 +48,14 @@ fun AppIconsRow(
                     bitmap = bitmap,
                     contentDescription = appInfo.label,
                     modifier = Modifier
-                        .size(20.dp)
+                        .size(16.dp)
                         .clip(RoundedCornerShape(4.dp))
                 )
             } else {
                 // Show placeholder icon for apps without icons
                 Box(
                     modifier = Modifier
-                        .size(20.dp)
+                        .size(16.dp)
                         .clip(RoundedCornerShape(4.dp))
                         .background(MaterialTheme.colorScheme.primaryContainer),
                     contentAlignment = Alignment.Center
@@ -74,15 +74,15 @@ fun AppIconsRow(
         if (remainingCount > 0) {
             Box(
                 modifier = Modifier
-                    .size(20.dp)
+                    .size(16.dp)
                     .clip(RoundedCornerShape(4.dp))
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                    .background(MaterialTheme.colorScheme.secondaryContainer),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = "+$remainingCount",
                     style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = MaterialTheme.colorScheme.onSecondaryContainer
                 )
             }
         }

@@ -42,8 +42,9 @@ both GitHub (FOSS) and Google Play Store, with different build flavors for each 
 
 ### Navigation
 
-The app uses Navigation3 (alpha) for Compose screens. Main entry point is `MainNavGraph` with destinations for devices, settings, and other
-features.
+* The app uses Navigation3 (alpha) for Compose screens.
+* The main directions are inside the `Nav` file.
+* Each screen should have it's own navigation entry providing class (extending `NavigationEntry`).
 
 ## Development Notes
 
@@ -68,6 +69,7 @@ features.
 - Prefer immutable data classes for state
 - When writing user facing texts, prefer informal and casual language.
 - Use Hilt for dependency injection in new code
+- Don't add comments to code
 - Prefer exposing fewer fields and functions and enabling specific functionality via extension functions
 - All user facing strings should be extract to `values/strings.xml` and translated for all other languages too.
 - `@OptIn(ExperimentalMaterial3Api::class)` is not required
