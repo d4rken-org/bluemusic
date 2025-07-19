@@ -24,13 +24,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.AssistChip
-import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -57,7 +57,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.graphics.drawable.toBitmap
 import androidx.hilt.navigation.compose.hiltViewModel
 import eu.darken.bluemusic.R
-import eu.darken.bluemusic.common.AppTool
+import eu.darken.bluemusic.common.apps.AppInfo
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.ui.waitForState
@@ -184,7 +184,7 @@ fun AppSelectionScreen(
             // Show selected apps
             if (state.selectedPackages.isNotEmpty()) {
                 val selectedApps = state.apps.filter { app ->
-                    app.pkgName in state.selectedPackages
+                    app.packageName in state.selectedPackages
                 }
                 
                 Card(
@@ -211,13 +211,13 @@ fun AppSelectionScreen(
                             Spacer(modifier = Modifier.height(4.dp))
                             FlowRow(
                                 modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                horizontalArrangement = Arrangement.spacedBy(4.dp),
                                 verticalArrangement = Arrangement.spacedBy(4.dp)
                             ) {
                                 selectedApps.forEach { app ->
                                     SelectedAppChip(
                                         app = app,
-                                        onRemove = { onAppToggled(app.pkgName) }
+                                        onRemove = { onAppToggled(app.packageName) }
                                     )
                                 }
                             }
@@ -242,12 +242,12 @@ fun AppSelectionScreen(
                 ) {
                     items(
                         items = state.filteredApps,
-                        key = { it.pkgName }
+                        key = { it.packageName }
                     ) { app ->
                         AppListItem(
                             app = app,
-                            isSelected = state.selectedPackages.contains(app.pkgName),
-                            onAppSelected = { onAppToggled(app.pkgName) }
+                            isSelected = state.selectedPackages.contains(app.packageName),
+                            onAppSelected = { onAppToggled(app.packageName) }
                         )
                     }
                 }
@@ -258,7 +258,7 @@ fun AppSelectionScreen(
 
 @Composable
 private fun AppListItem(
-    app: AppTool.Item,
+    app: AppInfo,
     isSelected: Boolean,
     onAppSelected: () -> Unit,
 ) {
@@ -285,13 +285,13 @@ private fun AppListItem(
             Spacer(modifier = Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = app.appName,
+                    text = app.label,
                     style = MaterialTheme.typography.bodyMedium,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = app.pkgName,
+                    text = app.packageName,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 1,
@@ -307,8 +307,8 @@ private fun AppListItem(
 }
 
 @Composable
-private fun AppIcon(app: AppTool.Item, size: Int = 48) {
-    app.appIcon?.let { drawable ->
+private fun AppIcon(app: AppInfo, size: Int = 48) {
+    app.icon?.let { drawable ->
         val bitmap = remember(drawable) {
             drawable.toBitmap(
                 width = drawable.intrinsicWidth.coerceAtLeast(1),
@@ -317,7 +317,7 @@ private fun AppIcon(app: AppTool.Item, size: Int = 48) {
         }
         Image(
             bitmap = bitmap,
-            contentDescription = app.appName,
+            contentDescription = app.label,
             modifier = Modifier
                 .size(size.dp)
                 .clip(RoundedCornerShape(8.dp))
@@ -331,7 +331,7 @@ private fun AppIcon(app: AppTool.Item, size: Int = 48) {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = app.appName.firstOrNull()?.toString() ?: "?",
+            text = app.label.firstOrNull()?.toString() ?: "?",
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -340,11 +340,13 @@ private fun AppIcon(app: AppTool.Item, size: Int = 48) {
 
 @Composable
 private fun SelectedAppChip(
-    app: AppTool.Item,
+    app: AppInfo,
     onRemove: () -> Unit,
 ) {
-    AssistChip(
+    FilterChip(
+        selected = true,
         onClick = onRemove,
+        modifier = Modifier.height(28.dp),
         label = {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -352,12 +354,11 @@ private fun SelectedAppChip(
             ) {
                 AppIcon(app = app, size = 20)
                 Text(
-                    text = app.appName,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    text = app.label,
+                    style = MaterialTheme.typography.labelMedium,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.widthIn(max = 120.dp)
+                    modifier = Modifier.widthIn(max = 100.dp)
                 )
             }
         },
@@ -365,14 +366,13 @@ private fun SelectedAppChip(
             Icon(
                 imageVector = Icons.Default.Clear,
                 contentDescription = stringResource(R.string.general_clear_action),
-                tint = MaterialTheme.colorScheme.onPrimaryContainer,
                 modifier = Modifier.size(16.dp)
             )
         },
-        colors = AssistChipDefaults.assistChipColors(
-            containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
-            labelColor = MaterialTheme.colorScheme.primary,
-            trailingIconContentColor = MaterialTheme.colorScheme.primary
+        colors = FilterChipDefaults.filterChipColors(
+            selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+            selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer,
+            selectedTrailingIconColor = MaterialTheme.colorScheme.onPrimaryContainer
         )
     )
 }
@@ -382,55 +382,55 @@ private fun SelectedAppChip(
 private fun AppSelectionScreenPreview() {
     PreviewWrapper {
         val mockApps = listOf(
-            AppTool.Item(
-                pkgName = "com.spotify.music",
-                appName = "Spotify",
-                appIcon = null
+            AppInfo(
+                packageName = "com.spotify.music",
+                label = "Spotify",
+                icon = null
             ),
-            AppTool.Item(
-                pkgName = "com.google.android.apps.youtube.music",
-                appName = "YouTube Music",
-                appIcon = null
+            AppInfo(
+                packageName = "com.google.android.apps.youtube.music",
+                label = "YouTube Music",
+                icon = null
             ),
-            AppTool.Item(
-                pkgName = "com.bambuna.podcastaddict",
-                appName = "Podcast Addict",
-                appIcon = null
+            AppInfo(
+                packageName = "com.bambuna.podcastaddict",
+                label = "Podcast Addict",
+                icon = null
             ),
-            AppTool.Item(
-                pkgName = "com.audible.application",
-                appName = "Audible",
-                appIcon = null
+            AppInfo(
+                packageName = "com.audible.application",
+                label = "Audible",
+                icon = null
             ),
-            AppTool.Item(
-                pkgName = "com.soundcloud.android",
-                appName = "SoundCloud",
-                appIcon = null
+            AppInfo(
+                packageName = "com.soundcloud.android",
+                label = "SoundCloud",
+                icon = null
             ),
-            AppTool.Item(
-                pkgName = "com.apple.android.music",
-                appName = "Apple Music",
-                appIcon = null
+            AppInfo(
+                packageName = "com.apple.android.music",
+                label = "Apple Music",
+                icon = null
             ),
-            AppTool.Item(
-                pkgName = "deezer.android.app",
-                appName = "Deezer",
-                appIcon = null
+            AppInfo(
+                packageName = "deezer.android.app",
+                label = "Deezer",
+                icon = null
             ),
-            AppTool.Item(
-                pkgName = "com.amazon.mp3",
-                appName = "Amazon Music",
-                appIcon = null
+            AppInfo(
+                packageName = "com.amazon.mp3",
+                label = "Amazon Music",
+                icon = null
             ),
-            AppTool.Item(
-                pkgName = "com.aspiro.tidal",
-                appName = "Tidal",
-                appIcon = null
+            AppInfo(
+                packageName = "com.aspiro.tidal",
+                label = "Tidal",
+                icon = null
             ),
-            AppTool.Item(
-                pkgName = "com.pandora.android",
-                appName = "Pandora",
-                appIcon = null
+            AppInfo(
+                packageName = "com.pandora.android",
+                label = "Pandora",
+                icon = null
             )
         )
 

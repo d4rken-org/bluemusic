@@ -8,7 +8,7 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import eu.darken.bluemusic.common.AppTool
+import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -36,7 +36,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
     private val deviceRepo: DeviceRepo,
     private val streamHelper: StreamHelper,
     private val upgradeRepo: UpgradeRepo,
-    private val appTool: AppTool,
+    private val appRepo: AppRepo,
     private val notificationManager: NotificationManager,
     private val dispatcherProvider: DispatcherProvider,
     private val navCtrl: NavigationController,
@@ -56,24 +56,19 @@ class DeviceConfigViewModel @AssistedInject constructor(
     val state = combine(
         upgradeRepo.upgradeInfo,
         deviceRepo.observeDevice(deviceAddress).filterNotNull(),
-    ) { upgradeInfo, device ->
+        appRepo.apps
+    ) { upgradeInfo, device, appInfos ->
+        val appInfoMap = appInfos.associateBy { it.packageName }
+        
         // For backward compatibility, show first app if any
         val launchAppLabel = device.launchPkgs.firstOrNull()?.let { pkg ->
-            try {
-                AppTool.getLabel(context, pkg)
-            } catch (e: Exception) {
-                log(tag) { "Failed to get app label for $pkg: ${e.message}" }
-                null
-            }
+            appInfoMap[pkg]?.label
         }
+        
         val launchAppLabels = device.launchPkgs.mapNotNull { pkg ->
-            try {
-                AppTool.getLabel(context, pkg)
-            } catch (e: Exception) {
-                log(tag) { "Failed to get app label for $pkg: ${e.message}" }
-                null
-            }
+            appInfoMap[pkg]?.label
         }
+        
         State(
             device = device,
             isProVersion = upgradeInfo.isUpgraded,

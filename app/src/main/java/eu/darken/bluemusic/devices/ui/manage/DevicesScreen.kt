@@ -110,7 +110,7 @@ fun DevicesScreen(
             )
         },
         floatingActionButton = {
-            if (state.hasBluetoothPermission && state.isBluetoothEnabled && state.devices.isNotEmpty()) {
+            if (state.hasBluetoothPermission && state.isBluetoothEnabled && state.devicesWithApps.isNotEmpty()) {
                 FloatingActionButton(
                     onClick = { onAddDevice() },
                     containerColor = MaterialTheme.colorScheme.primary
@@ -172,20 +172,21 @@ fun DevicesScreen(
             }
 
             if (state.hasBluetoothPermission && state.isBluetoothEnabled) {
-                if (state.devices.isEmpty() && !state.isLoading) {
+                if (state.devicesWithApps.isEmpty() && !state.isLoading) {
                     item {
                         EmptyDevicesCard(onAddDevice = onAddDevice)
                     }
                 } else {
                     items(
-                        items = state.devices,
-                        key = { it.address }
-                    ) { device ->
+                        items = state.devicesWithApps,
+                        key = { it.device.address }
+                    ) { deviceWithApps ->
                         ManagedDeviceItem(
-                            device = device,
+                            device = deviceWithApps.device,
+                            launchApps = deviceWithApps.launchApps,
                             onDeviceAction = onDeviceAction,
-                            onNavigateToConfig = { onDeviceConfig(device.address) },
-                            isOnlyDevice = state.devices.size == 1
+                            onNavigateToConfig = { onDeviceConfig(deviceWithApps.device.address) },
+                            isOnlyDevice = state.devicesWithApps.size == 1
                         )
                     }
                 }
@@ -345,7 +346,7 @@ private fun DevicesScreenPreview() {
     PreviewWrapper {
         DevicesScreen(
             state = DevicesViewModel.State(
-                devices = devices,
+                devicesWithApps = devices.map { DevicesViewModel.DeviceWithApps(it, emptyList()) },
                 isBluetoothEnabled = true,
                 isProVersion = false,
             ),
@@ -365,7 +366,7 @@ private fun DevicesScreenEmptyPreview() {
     PreviewWrapper {
         DevicesScreen(
             state = DevicesViewModel.State(
-                devices = emptyList(),
+                devicesWithApps = emptyList(),
                 isBluetoothEnabled = true,
                 isProVersion = true,
             ),
@@ -385,7 +386,7 @@ private fun ManagedDevicesScreenPermissionPreview() {
     PreviewWrapper {
         DevicesScreen(
             state = DevicesViewModel.State(
-                devices = emptyList(),
+                devicesWithApps = emptyList(),
                 isBluetoothEnabled = false,
                 isProVersion = true,
             ),

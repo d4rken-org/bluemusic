@@ -5,7 +5,6 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -52,6 +51,7 @@ import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.bluetooth.core.toIcon
+import eu.darken.bluemusic.common.apps.AppInfo
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.devices.core.ManagedDevice
@@ -64,6 +64,7 @@ import java.util.Date
 @Composable
 fun ManagedDeviceItem(
     device: ManagedDevice,
+    launchApps: List<AppInfo> = emptyList(),
     onDeviceAction: (DevicesAction) -> Unit,
     onNavigateToConfig: () -> Unit,
     modifier: Modifier = Modifier,
@@ -162,6 +163,7 @@ fun ManagedDeviceItem(
                 // Option indicators
                 OptionIndicators(
                     device = device,
+                    launchApps = launchApps,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 12.dp)
@@ -285,10 +287,10 @@ private fun AudioStream.Type.getIcon(): ImageVector = when (this) {
     AudioStream.Type.ALARM -> Icons.TwoTone.Alarm
 }
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun OptionIndicators(
     device: ManagedDevice,
+    launchApps: List<AppInfo> = emptyList(),
     modifier: Modifier = Modifier
 ) {
     val indicators = buildList {
@@ -300,7 +302,7 @@ private fun OptionIndicators(
         if (device.autoplay) add(Icons.TwoTone.PlayArrow to "Autoplay")
     }
 
-    val hasLaunchApps = device.launchPkgs.isNotEmpty()
+    val hasLaunchApps = launchApps.isNotEmpty()
 
     if (indicators.isNotEmpty() || hasLaunchApps) {
         FlowRow(
@@ -327,7 +329,7 @@ private fun OptionIndicators(
                     )
                     Spacer(modifier = Modifier.width(3.dp))
                     AppIconsRow(
-                        packageNames = device.launchPkgs,
+                        appInfos = launchApps,
                         maxIcons = 3
                     )
                 }
@@ -345,7 +347,7 @@ private fun OptionIndicators(
                     Icon(
                         imageVector = icon,
                         contentDescription = null,
-                        modifier = Modifier.size(14.dp),
+                        modifier = Modifier.size(20.dp),
                         tint = MaterialTheme.colorScheme.onPrimaryContainer
                     )
                     Spacer(modifier = Modifier.width(3.dp))

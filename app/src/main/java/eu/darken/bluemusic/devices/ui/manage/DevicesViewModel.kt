@@ -3,6 +3,8 @@ package eu.darken.bluemusic.devices.ui.manage
 import android.content.Intent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
+import eu.darken.bluemusic.common.apps.AppInfo
+import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -34,6 +36,7 @@ class DevicesViewModel @Inject constructor(
     private val generalSettings: GeneralSettings,
     private val dispatcherProvider: DispatcherProvider,
     private val navCtrl: NavigationController,
+    private val appRepo: AppRepo,
 ) : ViewModel4(dispatcherProvider, logTag("Devices", "Managed", "VM"), navCtrl) {
 
     private val eventChannel = Channel<DevicesEvent>()
@@ -87,19 +90,34 @@ class DevicesViewModel @Inject constructor(
         permissionHelper.getNotificationPermissionHint(isDismissed)
     }
 
+    private val devicesWithAppsFlow = combine(
+        devicesFlow,
+        appRepo.apps
+    ) { devices, appInfos ->
+        val appInfoMap = appInfos.associateBy { it.packageName }
+        devices.map { device ->
+            DeviceWithApps(
+                device = device,
+                launchApps = device.launchPkgs.mapNotNull { pkgName ->
+                    appInfoMap[pkgName]
+                }
+            )
+        }
+    }
+
     val state = eu.darken.bluemusic.common.flow.combine(
         upgradeRepo.upgradeInfo,
         bluetoothSource.state,
-        devicesFlow,
+        devicesWithAppsFlow,
         batteryOptimizationHintFlow,
         overlayPermissionHintFlow,
         notificationPermissionHintFlow,
-    ) { upgradeInfo, bluetoothState, devices, batteryHint, overlayHint, notificationHint ->
+    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint ->
         State(
             isProVersion = upgradeInfo.isUpgraded,
             isBluetoothEnabled = bluetoothState.isEnabled,
             hasBluetoothPermission = bluetoothState.hasPermission,
-            devices = devices,
+            devicesWithApps = devicesWithApps,
             showBatteryOptimizationHint = batteryHint.shouldShow,
             batteryOptimizationIntent = batteryHint.intent,
             showAndroid10AppLaunchHint = overlayHint.shouldShow,
@@ -108,18 +126,26 @@ class DevicesViewModel @Inject constructor(
         )
     }.asStateFlow()
 
+    data class DeviceWithApps(
+        val device: ManagedDevice,
+        val launchApps: List<AppInfo>
+    )
+
     data class State(
         val isProVersion: Boolean = false,
         val isBluetoothEnabled: Boolean = false,
         val hasBluetoothPermission: Boolean = true,
-        val devices: List<ManagedDevice> = emptyList(),
+        val devicesWithApps: List<DeviceWithApps> = emptyList(),
         val isLoading: Boolean = false,
         val showBatteryOptimizationHint: Boolean = false,
         val batteryOptimizationIntent: Intent? = null,
         val showAndroid10AppLaunchHint: Boolean = false,
         val android10AppLaunchIntent: Intent? = null,
         val showNotificationPermissionHint: Boolean = false,
-    )
+    ) {
+        // Convenience property for backwards compatibility
+        val devices: List<ManagedDevice> get() = devicesWithApps.map { it.device }
+    }
 
     fun action(action: DevicesAction) = launch {
         log(tag) { "action: $action" }

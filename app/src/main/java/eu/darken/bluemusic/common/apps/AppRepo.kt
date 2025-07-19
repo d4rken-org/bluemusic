@@ -1,44 +1,70 @@
-package eu.darken.bluemusic.common
+package eu.darken.bluemusic.common.apps
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import dagger.hilt.android.qualifiers.ApplicationContext
+import eu.darken.bluemusic.common.coroutine.AppScope
+import eu.darken.bluemusic.common.debug.logging.Logging
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AppTool @Inject constructor(
-    @ApplicationContext private val context: Context
+class AppRepo @Inject constructor(
+    @ApplicationContext private val context: Context,
+    @AppScope private val appScope: CoroutineScope,
 ) {
-    fun getApps(): List<Item> {
-        val installedPackages = context.packageManager.getInstalledPackages(0)
-        return installedPackages.mapNotNull { pkg ->
+
+    private val _apps = MutableStateFlow<Set<AppInfo>>(emptySet())
+    val apps: Flow<Set<AppInfo>> = _apps.asStateFlow()
+
+    init {
+        appScope.launch {
+            loadApps()
+        }
+    }
+
+    private suspend fun loadApps() {
+        log(TAG) { "Loading apps with MAIN/LAUNCHER intent..." }
+
+        val mainIntent = Intent(Intent.ACTION_MAIN, null).apply {
+            addCategory(Intent.CATEGORY_LAUNCHER)
+        }
+
+        val resolvedActivities = context.packageManager.queryIntentActivities(mainIntent, 0)
+        val appInfos = resolvedActivities.mapNotNull { resolveInfo ->
             try {
-                val appName = getLabel(context, pkg.packageName)
-                val appIcon = try {
-                    getIcon(context, pkg.packageName)
-                } catch (e: PackageManager.NameNotFoundException) {
-                    log(TAG, ERROR) { "Failed to get app icon for ${pkg.packageName}: ${e.asLog()}" }
+                val packageName = resolveInfo.activityInfo.packageName
+                val label = resolveInfo.loadLabel(context.packageManager).toString()
+                val icon = try {
+                    resolveInfo.loadIcon(context.packageManager)
+                } catch (e: Exception) {
+                    log(TAG, ERROR) { "Failed to load icon for $packageName: ${e.asLog()}" }
                     null
                 }
-                Item(
-                    pkgName = pkg.packageName,
-                    appName = appName,
-                    appIcon = appIcon
+
+                AppInfo(
+                    packageName = packageName,
+                    label = label,
+                    icon = icon
                 )
             } catch (e: Exception) {
-                log(TAG, ERROR) { "Failed to get app info for ${pkg.packageName}: ${e.asLog()}" }
+                log(TAG, ERROR) { "Failed to load app info: ${e.asLog()}" }
                 null
             }
-        }.sortedBy { it.appName }
+        }.sortedBy { it.label.lowercase() }.toSet()
+
+        log(TAG) { "Loaded ${appInfos.size} apps" }
+        _apps.value = appInfos
     }
 
     fun launch(pkg: String) {
@@ -55,7 +81,7 @@ class AppTool @Inject constructor(
         }
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
-        log(TAG, INFO) { "Launching: $intent" }
+        log(TAG, Logging.Priority.INFO) { "Launching: $intent" }
         context.startActivity(intent)
     }
 
@@ -77,26 +103,7 @@ class AppTool @Inject constructor(
         return launchers
     }
 
-    data class Item(
-        val pkgName: String,
-        val appName: String,
-        val appIcon: Drawable? = null
-    )
-
     companion object {
         private val TAG = logTag("AppTool")
-
-        @JvmStatic
-        @Throws(PackageManager.NameNotFoundException::class)
-        fun getLabel(context: Context, pkg: String): String {
-            val applicationInfo = context.packageManager.getApplicationInfo(pkg, 0)
-            return applicationInfo.loadLabel(context.packageManager).toString()
-        }
-
-        @JvmStatic
-        @Throws(PackageManager.NameNotFoundException::class)
-        fun getIcon(context: Context, pkg: String): Drawable {
-            return context.packageManager.getApplicationIcon(pkg)
-        }
     }
 }

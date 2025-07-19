@@ -6,7 +6,8 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import eu.darken.bluemusic.common.AppTool
+import eu.darken.bluemusic.common.apps.AppInfo
+import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -26,22 +27,22 @@ class AppSelectionViewModel @AssistedInject constructor(
     @Assisted private val deviceAddress: DeviceAddr,
     @ApplicationContext private val context: Context,
     private val deviceRepo: DeviceRepo,
-    private val appTool: AppTool,
+    private val appRepo: AppRepo,
     private val dispatcherProvider: DispatcherProvider,
     private val navCtrl: NavigationController,
 ) : ViewModel4(dispatcherProvider, logTag("Devices", "AppSelection", "VM"), navCtrl) {
 
     data class State(
         val deviceName: String = "",
-        val apps: List<AppTool.Item> = emptyList(),
-        val filteredApps: List<AppTool.Item> = emptyList(),
+        val apps: List<AppInfo> = emptyList(),
+        val filteredApps: List<AppInfo> = emptyList(),
         val selectedPackages: Set<String> = emptySet(),
         val searchQuery: String = "",
         val isLoading: Boolean = true,
     )
 
     private val searchQueryFlow = MutableStateFlow("")
-    private val allAppsFlow = MutableStateFlow<List<AppTool.Item>>(emptyList())
+    private val allAppsFlow = MutableStateFlow<List<AppInfo>>(emptyList())
     private val selectedPackagesFlow = MutableStateFlow<Set<String>>(emptySet())
 
     val state = combine(
@@ -54,8 +55,8 @@ class AppSelectionViewModel @AssistedInject constructor(
             apps
         } else {
             apps.filter {
-                it.appName.contains(searchQuery, ignoreCase = true) ||
-                        it.pkgName?.contains(searchQuery, ignoreCase = true) == true
+                it.label.contains(searchQuery, ignoreCase = true) ||
+                        it.packageName.contains(searchQuery, ignoreCase = true)
             }
         }
 
@@ -75,17 +76,11 @@ class AppSelectionViewModel @AssistedInject constructor(
 
     private suspend fun loadApps() = launch {
         log(tag) { "Loading apps..." }
-        val apps = appTool.getApps()
-            .filter { hasLaunchIntent(it.pkgName) }
-            .sortedBy { it.appName.lowercase() }
-        allAppsFlow.value = apps
-        log(tag) { "Loaded ${apps.size} launchable apps" }
-    }
-
-    private fun hasLaunchIntent(packageName: String): Boolean = try {
-        context.packageManager.getLaunchIntentForPackage(packageName) != null
-    } catch (e: Exception) {
-        false
+        appRepo.apps.first().let { appInfos ->
+            val apps = appInfos.toList().sortedBy { it.label.lowercase() }
+            allAppsFlow.value = apps
+            log(tag) { "Loaded ${apps.size} launchable apps" }
+        }
     }
 
     fun onSearchQueryChanged(query: String) = launch {

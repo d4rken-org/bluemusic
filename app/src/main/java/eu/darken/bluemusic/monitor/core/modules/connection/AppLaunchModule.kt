@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
-import eu.darken.bluemusic.common.AppTool
+import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
@@ -16,7 +16,7 @@ import javax.inject.Singleton
 
 @Singleton
 class AppLaunchModule @Inject constructor(
-    private val appTool: AppTool
+    private val appRepo: AppRepo
 ) : EventModule {
 
     override val priority: Int = 1
@@ -32,7 +32,7 @@ class AppLaunchModule @Inject constructor(
         appsToLaunch.forEach { pkg ->
             try {
                 log(TAG) { "Launching app: $pkg" }
-                appTool.launch(pkg)
+                appRepo.launch(pkg)
                 delay(500) // Small delay between launches
             } catch (e: Exception) {
                 log(TAG) { "Failed to launch app $pkg: ${e.message}" }
