@@ -14,7 +14,6 @@ import androidx.compose.material.icons.twotone.Info
 import androidx.compose.material.icons.twotone.PrivacyTip
 import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material.icons.twotone.Stars
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -55,7 +54,6 @@ fun SettingsIndexScreenHost(vm: SettingsViewModel = hiltViewModel()) {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsIndexScreen(
     state: SettingsViewModel.State,

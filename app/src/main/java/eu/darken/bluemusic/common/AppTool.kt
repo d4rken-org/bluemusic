@@ -2,7 +2,6 @@ package eu.darken.bluemusic.common
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -20,13 +19,26 @@ class AppTool @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
     fun getApps(): List<Item> {
-        val items = mutableListOf<Item>()
         val installedPackages = context.packageManager.getInstalledPackages(0)
-        for (pkg in installedPackages) {
-            items.add(Item(context, pkg))
-        }
-        items.sortBy { it.appName }
-        return items
+        return installedPackages.mapNotNull { pkg ->
+            try {
+                val appName = getLabel(context, pkg.packageName)
+                val appIcon = try {
+                    getIcon(context, pkg.packageName)
+                } catch (e: PackageManager.NameNotFoundException) {
+                    log(TAG, ERROR) { "Failed to get app icon for ${pkg.packageName}: ${e.asLog()}" }
+                    null
+                }
+                Item(
+                    pkgName = pkg.packageName,
+                    appName = appName,
+                    appIcon = appIcon
+                )
+            } catch (e: Exception) {
+                log(TAG, ERROR) { "Failed to get app info for ${pkg.packageName}: ${e.asLog()}" }
+                null
+            }
+        }.sortedBy { it.appName }
     }
 
     fun launch(pkg: String) {
@@ -65,38 +77,11 @@ class AppTool @Inject constructor(
         return launchers
     }
 
-    class Item {
-        val pkgName: String?
-        var appName: String
-            private set
-        var appIcon: Drawable? = null
-            private set
-
-        protected constructor() {
-            pkgName = null
-            appName = "-"
-        }
-
-        constructor(context: Context, packageInfo: PackageInfo) {
-            this.pkgName = packageInfo.packageName
-            this.appName = try {
-                getLabel(context, pkgName)
-            } catch (e: Exception) {
-                log(TAG, ERROR) { "Failed to get app label for $pkgName: ${e.asLog()}" }
-                "???"
-            }
-            try {
-                this.appIcon = getIcon(context, pkgName)
-            } catch (e: PackageManager.NameNotFoundException) {
-                log(TAG, ERROR) { "Failed to get app icon for $pkgName: ${e.asLog()}" }
-            }
-        }
-
-        companion object {
-            @JvmStatic
-            fun empty(): Item = Item()
-        }
-    }
+    data class Item(
+        val pkgName: String,
+        val appName: String,
+        val appIcon: Drawable? = null
+    )
 
     companion object {
         private val TAG = logTag("AppTool")

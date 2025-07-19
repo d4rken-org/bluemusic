@@ -87,41 +87,4 @@ class OnboardingViewModel @Inject constructor(
             ;
         }
     }
-
-//    override fun onEvent(event: IntroEvent) {
-//        when (event) {
-//            is IntroEvent.OnFinishOnboarding -> finishOnboarding()
-//            is IntroEvent.OnPermissionGranted -> onPermissionGranted()
-//            is IntroEvent.OnPermissionDenied -> onPermissionDenied()
-//            is IntroEvent.OnPrivacyPolicyClicked -> {} // Handled in UI
-//        }
-//    }
-//
-//    private fun finishOnboarding() {
-//        if (ApiHelper.hasAndroid12() &&
-//            ContextCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT)
-//            != PackageManager.PERMISSION_GRANTED) {
-//            log(TAG, WARN) { "BLUETOOTH_CONNECT permission is missing" }
-//            updateState { copy(needsBluetoothPermission = true) }
-//            return
-//        }
-//
-//        completeOnboarding()
-//    }
-//
-//    private fun onPermissionGranted() {
-//        updateState { copy(needsBluetoothPermission = false) }
-//        completeOnboarding()
-//    }
-//
-//    private fun onPermissionDenied() {
-//        log(TAG, WARN) { "Permission was not granted" }
-//        updateState { copy(needsBluetoothPermission = false) }
-//    }
-//
-//    private fun completeOnboarding() {
-//        log(TAG, INFO) { "Setup is complete" }
-//        settings.isShowOnboarding = false
-//        updateState { copy(shouldClose = true) }
-//    }
 }

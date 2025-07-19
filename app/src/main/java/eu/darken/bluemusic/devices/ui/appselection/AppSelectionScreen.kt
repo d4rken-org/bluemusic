@@ -2,30 +2,35 @@ package eu.darken.bluemusic.devices.ui.appselection
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.AssistChip
+import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -35,11 +40,15 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -49,6 +58,8 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.hilt.navigation.compose.hiltViewModel
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.AppTool
+import eu.darken.bluemusic.common.compose.Preview2
+import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.ui.waitForState
 import eu.darken.bluemusic.devices.core.DeviceAddr
 
@@ -67,37 +78,32 @@ fun AppSelectionScreenHost(
             state = state,
             onSearchQueryChanged = vm::onSearchQueryChanged,
             onAppToggled = vm::onAppToggled,
-            onSaveSelection = vm::onSaveSelection,
             onClearSelection = vm::onClearSelection,
             onNavigateBack = { vm.navUp() }
         )
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun AppSelectionScreen(
     state: AppSelectionViewModel.State,
     onSearchQueryChanged: (String) -> Unit,
     onAppToggled: (String) -> Unit,
-    onSaveSelection: () -> Unit,
     onClearSelection: () -> Unit,
     onNavigateBack: () -> Unit,
 ) {
+    val searchFocusRequester = remember { FocusRequester() }
+    val (localSearchQuery, setLocalSearchQuery) = remember { mutableStateOf(state.searchQuery) }
+
+    // Sync local state with external state
+    LaunchedEffect(state.searchQuery) {
+        if (localSearchQuery != state.searchQuery) {
+            setLocalSearchQuery(state.searchQuery)
+        }
+    }
+    
     Scaffold(
-        floatingActionButton = {
-            if (state.selectedPackages.isNotEmpty()) {
-                FloatingActionButton(
-                    onClick = onSaveSelection,
-                    containerColor = MaterialTheme.colorScheme.primary
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Check,
-                        contentDescription = stringResource(R.string.general_save_action)
-                    )
-                }
-            }
-        },
         topBar = {
             TopAppBar(
                 title = {
@@ -127,7 +133,7 @@ fun AppSelectionScreen(
                             onClick = onClearSelection,
                             modifier = Modifier.padding(end = 8.dp)
                         ) {
-                            Text(stringResource(R.string.general_reset_action))
+                            Text(stringResource(R.string.general_clear_action))
                         }
                     }
                 }
@@ -141,11 +147,15 @@ fun AppSelectionScreen(
         ) {
             // Search bar
             OutlinedTextField(
-                value = state.searchQuery,
-                onValueChange = onSearchQueryChanged,
+                value = localSearchQuery,
+                onValueChange = { newQuery ->
+                    setLocalSearchQuery(newQuery)
+                    onSearchQueryChanged(newQuery)
+                },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                    .focusRequester(searchFocusRequester),
                 placeholder = { Text(stringResource(R.string.devices_app_selection_search_hint)) },
                 leadingIcon = {
                     Icon(
@@ -155,8 +165,11 @@ fun AppSelectionScreen(
                     )
                 },
                 trailingIcon = {
-                    if (state.searchQuery.isNotEmpty()) {
-                        IconButton(onClick = { onSearchQueryChanged("") }) {
+                    if (localSearchQuery.isNotEmpty()) {
+                        IconButton(onClick = {
+                            setLocalSearchQuery("")
+                            onSearchQueryChanged("")
+                        }) {
                             Icon(
                                 imageVector = Icons.Default.Clear,
                                 contentDescription = stringResource(R.string.general_clear_action)
@@ -168,33 +181,46 @@ fun AppSelectionScreen(
                 shape = RoundedCornerShape(12.dp)
             )
 
-            // Show selected count
+            // Show selected apps
             if (state.selectedPackages.isNotEmpty()) {
+                val selectedApps = state.apps.filter { app ->
+                    app.pkgName in state.selectedPackages
+                }
+                
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                        .padding(horizontal = 16.dp, vertical = 4.dp),
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.primaryContainer
                     )
                 ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                    Column(
+                        modifier = Modifier.padding(12.dp)
                     ) {
                         Text(
                             text = stringResource(
                                 R.string.devices_app_selection_selected_count,
                                 state.selectedPackages.size
                             ),
-                            style = MaterialTheme.typography.bodyLarge,
-                            fontWeight = FontWeight.Medium,
-                            modifier = Modifier.weight(1f)
+                            style = MaterialTheme.typography.bodySmall,
+                            fontWeight = FontWeight.Medium
                         )
-                        TextButton(onClick = onClearSelection) {
-                            Text(stringResource(R.string.general_clear_action))
+
+                        if (selectedApps.isNotEmpty()) {
+                            Spacer(modifier = Modifier.height(4.dp))
+                            FlowRow(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                verticalArrangement = Arrangement.spacedBy(4.dp)
+                            ) {
+                                selectedApps.forEach { app ->
+                                    SelectedAppChip(
+                                        app = app,
+                                        onRemove = { onAppToggled(app.pkgName) }
+                                    )
+                                }
+                            }
                         }
                     }
                 }
@@ -216,12 +242,12 @@ fun AppSelectionScreen(
                 ) {
                     items(
                         items = state.filteredApps,
-                        key = { it.pkgName ?: "" }
+                        key = { it.pkgName }
                     ) { app ->
                         AppListItem(
                             app = app,
                             isSelected = state.selectedPackages.contains(app.pkgName),
-                            onAppSelected = { app.pkgName?.let { onAppToggled(it) } }
+                            onAppSelected = { onAppToggled(app.pkgName) }
                         )
                     }
                 }
@@ -230,7 +256,6 @@ fun AppSelectionScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun AppListItem(
     app: AppTool.Item,
@@ -241,7 +266,7 @@ private fun AppListItem(
         onClick = onAppSelected,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 4.dp),
+            .padding(horizontal = 16.dp, vertical = 2.dp),
         colors = if (isSelected) {
             CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surfaceVariant
@@ -253,39 +278,36 @@ private fun AppListItem(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(horizontal = 12.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Checkbox(
-                checked = isSelected,
-                onCheckedChange = { onAppSelected() },
-                modifier = Modifier.padding(end = 8.dp)
-            )
-            AppIcon(app = app)
-            Spacer(modifier = Modifier.width(16.dp))
+            AppIcon(app = app, size = 36)
+            Spacer(modifier = Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = app.appName,
-                    style = MaterialTheme.typography.bodyLarge,
+                    style = MaterialTheme.typography.bodyMedium,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                app.pkgName?.let { pkg ->
-                    Text(
-                        text = pkg,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
+                Text(
+                    text = app.pkgName,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
             }
+            Checkbox(
+                checked = isSelected,
+                onCheckedChange = { onAppSelected() }
+            )
         }
     }
 }
 
 @Composable
-private fun AppIcon(app: AppTool.Item) {
+private fun AppIcon(app: AppTool.Item, size: Int = 48) {
     app.appIcon?.let { drawable ->
         val bitmap = remember(drawable) {
             drawable.toBitmap(
@@ -297,13 +319,13 @@ private fun AppIcon(app: AppTool.Item) {
             bitmap = bitmap,
             contentDescription = app.appName,
             modifier = Modifier
-                .size(48.dp)
+                .size(size.dp)
                 .clip(RoundedCornerShape(8.dp))
                 .background(MaterialTheme.colorScheme.surfaceVariant)
         )
     } ?: Box(
         modifier = Modifier
-            .size(48.dp)
+            .size(size.dp)
             .clip(RoundedCornerShape(8.dp))
             .background(MaterialTheme.colorScheme.surfaceVariant),
         contentAlignment = Alignment.Center
@@ -312,6 +334,123 @@ private fun AppIcon(app: AppTool.Item) {
             text = app.appName.firstOrNull()?.toString() ?: "?",
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+}
+
+@Composable
+private fun SelectedAppChip(
+    app: AppTool.Item,
+    onRemove: () -> Unit,
+) {
+    AssistChip(
+        onClick = onRemove,
+        label = {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                AppIcon(app = app, size = 20)
+                Text(
+                    text = app.appName,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.widthIn(max = 120.dp)
+                )
+            }
+        },
+        trailingIcon = {
+            Icon(
+                imageVector = Icons.Default.Clear,
+                contentDescription = stringResource(R.string.general_clear_action),
+                tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                modifier = Modifier.size(16.dp)
+            )
+        },
+        colors = AssistChipDefaults.assistChipColors(
+            containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
+            labelColor = MaterialTheme.colorScheme.primary,
+            trailingIconContentColor = MaterialTheme.colorScheme.primary
+        )
+    )
+}
+
+@Preview2
+@Composable
+private fun AppSelectionScreenPreview() {
+    PreviewWrapper {
+        val mockApps = listOf(
+            AppTool.Item(
+                pkgName = "com.spotify.music",
+                appName = "Spotify",
+                appIcon = null
+            ),
+            AppTool.Item(
+                pkgName = "com.google.android.apps.youtube.music",
+                appName = "YouTube Music",
+                appIcon = null
+            ),
+            AppTool.Item(
+                pkgName = "com.bambuna.podcastaddict",
+                appName = "Podcast Addict",
+                appIcon = null
+            ),
+            AppTool.Item(
+                pkgName = "com.audible.application",
+                appName = "Audible",
+                appIcon = null
+            ),
+            AppTool.Item(
+                pkgName = "com.soundcloud.android",
+                appName = "SoundCloud",
+                appIcon = null
+            ),
+            AppTool.Item(
+                pkgName = "com.apple.android.music",
+                appName = "Apple Music",
+                appIcon = null
+            ),
+            AppTool.Item(
+                pkgName = "deezer.android.app",
+                appName = "Deezer",
+                appIcon = null
+            ),
+            AppTool.Item(
+                pkgName = "com.amazon.mp3",
+                appName = "Amazon Music",
+                appIcon = null
+            ),
+            AppTool.Item(
+                pkgName = "com.aspiro.tidal",
+                appName = "Tidal",
+                appIcon = null
+            ),
+            AppTool.Item(
+                pkgName = "com.pandora.android",
+                appName = "Pandora",
+                appIcon = null
+            )
+        )
+
+        AppSelectionScreen(
+            state = AppSelectionViewModel.State(
+                deviceName = "Sony WH-1000XM4",
+                apps = mockApps,
+                filteredApps = mockApps,
+                selectedPackages = setOf(
+                    "com.spotify.music",
+                    "com.google.android.apps.youtube.music",
+                    "com.bambuna.podcastaddict"
+                ),
+                searchQuery = "",
+                isLoading = false
+            ),
+            onSearchQueryChanged = {},
+            onAppToggled = {},
+            onClearSelection = {},
+            onNavigateBack = {}
         )
     }
 }

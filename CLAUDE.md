@@ -51,13 +51,14 @@ features.
 2. **Database Migration**: Active migration from Realm to Room - be careful when modifying database code
 3. **UI Migration**: Ongoing migration to Compose - prefer Compose for new UI components
 4. **Permissions**: App requires Bluetooth permissions and notification permissions (Android 13+)
-5. **Background Services**: Uses services for Bluetooth monitoring - handle lifecycle carefully
+5. **Background Workers**: Uses a foreground CoroutineWorker for Bluetooth monitoring - handle lifecycle carefully
 
 ## Testing Approach
 
 - Unit tests use JUnit, Mockk, and Kotest
 - Hilt testing support is configured
 - Test coverage is limited - add tests when modifying existing code
+- Omit `androidTest`, we are not doing UI testing.
 
 ## Code Style
 
@@ -65,6 +66,9 @@ features.
 - Use coroutines and Flow for async operations
 - Follow existing patterns in the codebase
 - Prefer immutable data classes for state
+- When writing user facing texts, prefer informal and casual language.
 - Use Hilt for dependency injection in new code
 - Prefer exposing fewer fields and functions and enabling specific functionality via extension functions
 - All user facing strings should be extract to `values/strings.xml` and translated for all other languages too.
+- `@OptIn(ExperimentalMaterial3Api::class)` is not required
+- Create previews for all UI components using the `@Preview2` annotation and `PreviewWrapper`

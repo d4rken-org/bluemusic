@@ -76,19 +76,16 @@ class AppSelectionViewModel @AssistedInject constructor(
     private suspend fun loadApps() = launch {
         log(tag) { "Loading apps..." }
         val apps = appTool.getApps()
-            .filter { it.pkgName != null }
-            .filter { hasLaunchIntent(it.pkgName!!) }
+            .filter { hasLaunchIntent(it.pkgName) }
             .sortedBy { it.appName.lowercase() }
         allAppsFlow.value = apps
         log(tag) { "Loaded ${apps.size} launchable apps" }
     }
 
-    private fun hasLaunchIntent(packageName: String): Boolean {
-        return try {
-            context.packageManager.getLaunchIntentForPackage(packageName) != null
-        } catch (e: Exception) {
-            false
-        }
+    private fun hasLaunchIntent(packageName: String): Boolean = try {
+        context.packageManager.getLaunchIntentForPackage(packageName) != null
+    } catch (e: Exception) {
+        false
     }
 
     fun onSearchQueryChanged(query: String) = launch {
@@ -99,24 +96,30 @@ class AppSelectionViewModel @AssistedInject constructor(
     fun onAppToggled(packageName: String) = launch {
         log(tag) { "App toggled: $packageName" }
         val currentSelection = selectedPackagesFlow.value
-        selectedPackagesFlow.value = if (packageName in currentSelection) {
+        val newSelection = if (packageName in currentSelection) {
             currentSelection - packageName
         } else {
             currentSelection + packageName
         }
+        selectedPackagesFlow.value = newSelection
+
+        // Automatically save the selection to the device repository
+        log(tag) { "Saving selection: $newSelection" }
+        deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+            oldConfig.copy(launchPkgs = newSelection.toList())
+        }
     }
 
-    fun onSaveSelection() = launch {
-        log(tag) { "Saving selection: ${selectedPackagesFlow.value}" }
-        deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-            oldConfig.copy(launchPkgs = selectedPackagesFlow.value.toList())
-        }
-        navUp()
-    }
 
     fun onClearSelection() = launch {
         log(tag) { "Clearing app selection" }
         selectedPackagesFlow.value = emptySet()
+
+        // Automatically save the cleared selection to the device repository
+        log(tag) { "Saving cleared selection" }
+        deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+            oldConfig.copy(launchPkgs = emptyList())
+        }
     }
 
     @AssistedFactory
