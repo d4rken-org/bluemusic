@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.devices.ui.manage
+package eu.darken.bluemusic.devices.ui.dashboard
 
 import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -49,14 +49,14 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.ui.waitForState
 import eu.darken.bluemusic.devices.core.DeviceAddr
-import eu.darken.bluemusic.devices.ui.manage.rows.Android10AppLaunchHintCard
-import eu.darken.bluemusic.devices.ui.manage.rows.BatteryOptimizationHintCard
-import eu.darken.bluemusic.devices.ui.manage.rows.EmptyDevicesCard
-import eu.darken.bluemusic.devices.ui.manage.rows.NotificationPermissionHintCard
-import eu.darken.bluemusic.devices.ui.manage.rows.device.ManagedDeviceItem
+import eu.darken.bluemusic.devices.ui.dashboard.rows.Android10AppLaunchHintCard
+import eu.darken.bluemusic.devices.ui.dashboard.rows.BatteryOptimizationHintCard
+import eu.darken.bluemusic.devices.ui.dashboard.rows.EmptyDevicesCard
+import eu.darken.bluemusic.devices.ui.dashboard.rows.NotificationPermissionHintCard
+import eu.darken.bluemusic.devices.ui.dashboard.rows.device.ManagedDeviceItem
 
 @Composable
-fun DevicesScreenHost(vm: DevicesViewModel = hiltViewModel()) {
+fun DevicesScreenHost(vm: DashboardViewModel = hiltViewModel()) {
 
     val state by waitForState(vm.state)
 
@@ -69,7 +69,7 @@ fun DevicesScreenHost(vm: DevicesViewModel = hiltViewModel()) {
     LaunchedEffect(Unit) {
         vm.events.collect { event ->
             when (event) {
-                is DevicesEvent.RequestPermission -> {
+                is DashboardEvent.RequestPermission -> {
                     permissionLauncher.launch(event.permission)
                 }
             }
@@ -85,7 +85,7 @@ fun DevicesScreenHost(vm: DevicesViewModel = hiltViewModel()) {
             onNavigateToSettings = { vm.navTo(Nav.Main.SettingsIndex) },
             onNavigateToUpgrade = { vm.navTo(Nav.Main.Upgrade) },
             onRequestBluetoothPermission = {
-                vm.action(DevicesAction.RequestBluetoothPermission)
+                vm.action(DashboardAction.RequestBluetoothPermission)
             },
         )
     }
@@ -93,10 +93,10 @@ fun DevicesScreenHost(vm: DevicesViewModel = hiltViewModel()) {
 
 @Composable
 fun DevicesScreen(
-    state: DevicesViewModel.State,
+    state: DashboardViewModel.State,
     onAddDevice: () -> Unit,
     onDeviceConfig: (addr: DeviceAddr) -> Unit,
-    onDeviceAction: (DevicesAction) -> Unit,
+    onDeviceAction: (DashboardAction) -> Unit,
     onNavigateToSettings: () -> Unit,
     onNavigateToUpgrade: () -> Unit,
     onRequestBluetoothPermission: () -> Unit,
@@ -148,7 +148,7 @@ fun DevicesScreen(
                 item {
                     BatteryOptimizationHintCard(
                         intent = state.batteryOptimizationIntent,
-                        onDismiss = { onDeviceAction(DevicesAction.DismissBatteryOptimizationHint) }
+                        onDismiss = { onDeviceAction(DashboardAction.DismissBatteryOptimizationHint) }
                     )
                 }
             }
@@ -157,7 +157,7 @@ fun DevicesScreen(
                 item {
                     Android10AppLaunchHintCard(
                         intent = state.android10AppLaunchIntent,
-                        onDismiss = { onDeviceAction(DevicesAction.DismissAndroid10AppLaunchHint) }
+                        onDismiss = { onDeviceAction(DashboardAction.DismissAndroid10AppLaunchHint) }
                     )
                 }
             }
@@ -165,8 +165,8 @@ fun DevicesScreen(
             if (state.showNotificationPermissionHint) {
                 item {
                     NotificationPermissionHintCard(
-                        onRequestPermission = { onDeviceAction(DevicesAction.RequestNotificationPermission) },
-                        onDismiss = { onDeviceAction(DevicesAction.DismissNotificationPermissionHint) }
+                        onRequestPermission = { onDeviceAction(DashboardAction.RequestNotificationPermission) },
+                        onDismiss = { onDeviceAction(DashboardAction.DismissNotificationPermissionHint) }
                     )
                 }
             }
@@ -345,8 +345,8 @@ private fun DevicesScreenPreview() {
 
     PreviewWrapper {
         DevicesScreen(
-            state = DevicesViewModel.State(
-                devicesWithApps = devices.map { DevicesViewModel.DeviceWithApps(it, emptyList()) },
+            state = DashboardViewModel.State(
+                devicesWithApps = devices.map { DashboardViewModel.DeviceWithApps(it, emptyList()) },
                 isBluetoothEnabled = true,
                 isProVersion = false,
             ),
@@ -365,7 +365,7 @@ private fun DevicesScreenPreview() {
 private fun DevicesScreenEmptyPreview() {
     PreviewWrapper {
         DevicesScreen(
-            state = DevicesViewModel.State(
+            state = DashboardViewModel.State(
                 devicesWithApps = emptyList(),
                 isBluetoothEnabled = true,
                 isProVersion = true,
@@ -385,7 +385,7 @@ private fun DevicesScreenEmptyPreview() {
 private fun ManagedDevicesScreenPermissionPreview() {
     PreviewWrapper {
         DevicesScreen(
-            state = DevicesViewModel.State(
+            state = DashboardViewModel.State(
                 devicesWithApps = emptyList(),
                 isBluetoothEnabled = false,
                 isProVersion = true,

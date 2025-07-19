@@ -53,7 +53,8 @@ class BluetoothRepo @Inject constructor(
     private val permissionHelper: PermissionHelper,
 ) {
 
-    private val bluetoothAdapter: BluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+    private val bluetoothAdapter: BluetoothAdapter by lazy { BluetoothAdapter.getDefaultAdapter() }
+    private val isBluetoothSupported: Boolean = BluetoothAdapter.getDefaultAdapter() != null
 
     private val isEnabled: Flow<Boolean> = callbackFlow {
         val receiver = object : BroadcastReceiver() {
@@ -70,7 +71,7 @@ class BluetoothRepo @Inject constructor(
         val filter = IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED)
         ContextCompat.registerReceiver(context, receiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED)
 
-        trySend(bluetoothAdapter?.isEnabled ?: false)
+        trySend(isBluetoothSupported && bluetoothAdapter.isEnabled)
 
         awaitClose {
             context.unregisterReceiver(receiver)
@@ -81,6 +82,11 @@ class BluetoothRepo @Inject constructor(
     @SuppressLint("MissingPermission")
     @RequiresPermission(anyOf = [Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH])
     private val pairedDevices: Flow<Set<SourceDevice>?> = callbackFlow {
+        if (!isBluetoothSupported) {
+            log(TAG, WARN) { "Bluetooth hardware is not available" }
+            throw IllegalStateException("Bluetooth hardware is not available")
+        }
+
         if (!bluetoothAdapter.isEnabled) {
             log(TAG, WARN) { "Bluetooth is not enabled" }
             throw IllegalStateException("Bluetooth is not enabled")
@@ -184,7 +190,7 @@ class BluetoothRepo @Inject constructor(
         val realDevice = bluetoothAdapter.getRemoteDevice(address) ?: return false
         return if (hasApiLevel(31)) {
             @Suppress("NewApi")
-            realDevice.setAlias(newName)
+            (realDevice.alias = newName)
             true
         } else {
             try {

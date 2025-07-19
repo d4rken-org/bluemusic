@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.devices.ui.manage.rows.device
+package eu.darken.bluemusic.devices.ui.dashboard.rows.device
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

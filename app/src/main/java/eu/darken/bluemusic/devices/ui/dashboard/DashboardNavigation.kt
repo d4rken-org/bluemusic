@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.devices.ui.manage
+package eu.darken.bluemusic.devices.ui.dashboard
 
 import androidx.navigation3.runtime.EntryProviderBuilder
 import androidx.navigation3.runtime.NavKey
@@ -12,7 +12,7 @@ import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationEntry
 import javax.inject.Inject
 
-class DevicesNavigation @Inject constructor() : NavigationEntry {
+class DashboardNavigation @Inject constructor() : NavigationEntry {
     override fun EntryProviderBuilder<NavKey>.setup() {
         entry<Nav.Main.ManageDevices> {
             DevicesScreenHost()
@@ -21,6 +21,6 @@ class DevicesNavigation @Inject constructor() : NavigationEntry {
 
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
-        @Binds @IntoSet abstract fun bind(entry: DevicesNavigation): NavigationEntry
+        @Binds @IntoSet abstract fun bind(entry: DashboardNavigation): NavigationEntry
     }
 }

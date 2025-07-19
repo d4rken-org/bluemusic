@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.devices.ui.manage.rows.device
+package eu.darken.bluemusic.devices.ui.dashboard.rows.device
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
@@ -39,7 +39,7 @@ import eu.darken.bluemusic.common.apps.AppInfo
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.devices.core.ManagedDevice
-import eu.darken.bluemusic.devices.ui.manage.DevicesAction
+import eu.darken.bluemusic.devices.ui.dashboard.DashboardAction
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import java.text.DateFormat
 import java.time.Instant
@@ -49,7 +49,7 @@ import java.util.Date
 fun ManagedDeviceItem(
     device: ManagedDevice,
     launchApps: List<AppInfo> = emptyList(),
-    onDeviceAction: (DevicesAction) -> Unit,
+    onDeviceAction: (DashboardAction) -> Unit,
     onNavigateToConfig: () -> Unit,
     modifier: Modifier = Modifier,
     isOnlyDevice: Boolean = false
@@ -179,7 +179,7 @@ fun ManagedDeviceItem(
                             },
                             volume = currentVolume,
                             onVolumeChange = { newVolume ->
-                                onDeviceAction(DevicesAction.AdjustVolume(device.address, streamType, newVolume))
+                                onDeviceAction(DashboardAction.AdjustVolume(device.address, streamType, newVolume))
                             }
                         )
                     }

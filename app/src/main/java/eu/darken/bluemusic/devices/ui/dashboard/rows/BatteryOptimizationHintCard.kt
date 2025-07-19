@@ -1,5 +1,6 @@
-package eu.darken.bluemusic.devices.ui.manage.rows
+package eu.darken.bluemusic.devices.ui.dashboard.rows
 
+import android.content.Intent
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,7 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.twotone.Notifications
+import androidx.compose.material.icons.twotone.BatteryAlert
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -22,6 +23,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
@@ -29,10 +31,12 @@ import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 
 @Composable
-fun NotificationPermissionHintCard(
-    onRequestPermission: () -> Unit,
+fun BatteryOptimizationHintCard(
+    intent: Intent,
     onDismiss: () -> Unit
 ) {
+    val context = LocalContext.current
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -51,21 +55,21 @@ fun NotificationPermissionHintCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
-                    imageVector = Icons.TwoTone.Notifications,
+                    imageVector = Icons.TwoTone.BatteryAlert,
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
                     tint = MaterialTheme.colorScheme.onSecondaryContainer
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                    text = stringResource(R.string.notification_permission_hint_title),
+                    text = stringResource(R.string.battery_optimization_hint_title),
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSecondaryContainer
                 )
             }
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = stringResource(R.string.notification_permission_hint_message),
+                text = stringResource(R.string.battery_optimization_hint_message),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSecondaryContainer
             )
@@ -78,12 +82,12 @@ fun NotificationPermissionHintCard(
                     Text(stringResource(R.string.action_dismiss))
                 }
                 Button(
-                    onClick = onRequestPermission,
+                    onClick = { context.startActivity(intent) },
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.primary
                     )
                 ) {
-                    Text(stringResource(R.string.action_grant_permission))
+                    Text(stringResource(R.string.battery_optimization_fix_action))
                 }
             }
         }
@@ -92,10 +96,10 @@ fun NotificationPermissionHintCard(
 
 @Preview2
 @Composable
-fun NotificationPermissionHintCardPreview() {
+fun BatteryOptimizationHintCardPreview() {
     PreviewWrapper {
-        NotificationPermissionHintCard(
-            onRequestPermission = {},
+        BatteryOptimizationHintCard(
+            intent = Intent(),
             onDismiss = {}
         )
     }

@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.devices.ui.manage
+package eu.darken.bluemusic.devices.ui.dashboard
 
 import android.content.Intent
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,7 +27,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class DevicesViewModel @Inject constructor(
+class DashboardViewModel @Inject constructor(
     private val permissionHelper: PermissionHelper,
     private val deviceRepo: DeviceRepo,
     private val streamHelper: StreamHelper,
@@ -39,7 +39,7 @@ class DevicesViewModel @Inject constructor(
     private val appRepo: AppRepo,
 ) : ViewModel4(dispatcherProvider, logTag("Devices", "Managed", "VM"), navCtrl) {
 
-    private val eventChannel = Channel<DevicesEvent>()
+    private val eventChannel = Channel<DashboardEvent>()
     val events = eventChannel.receiveAsFlow()
 
     private val notificationPermissionFlow: Flow<Boolean> = flow {
@@ -147,44 +147,44 @@ class DevicesViewModel @Inject constructor(
         val devices: List<ManagedDevice> get() = devicesWithApps.map { it.device }
     }
 
-    fun action(action: DevicesAction) = launch {
+    fun action(action: DashboardAction) = launch {
         log(tag) { "action: $action" }
         when (action) {
-            DevicesAction.RequestBluetoothPermission -> {
+            DashboardAction.RequestBluetoothPermission -> {
                 launch {
                     val permission = permissionHelper.getBluetoothPermission()
-                    eventChannel.send(DevicesEvent.RequestPermission(permission))
+                    eventChannel.send(DashboardEvent.RequestPermission(permission))
                 }
             }
 
-            DevicesAction.RequestNotificationPermission -> {
+            DashboardAction.RequestNotificationPermission -> {
                 launch {
                     val permission = permissionHelper.getNotificationPermission()
                     if (permission != null) {
-                        eventChannel.send(DevicesEvent.RequestPermission(permission))
+                        eventChannel.send(DashboardEvent.RequestPermission(permission))
                     }
                 }
             }
 
-            DevicesAction.DismissBatteryOptimizationHint -> {
+            DashboardAction.DismissBatteryOptimizationHint -> {
                 launch {
                     generalSettings.isBatteryOptimizationHintDismissed.update { true }
                 }
             }
 
-            DevicesAction.DismissAndroid10AppLaunchHint -> {
+            DashboardAction.DismissAndroid10AppLaunchHint -> {
                 launch {
                     generalSettings.isAndroid10AppLaunchHintDismissed.update { true }
                 }
             }
 
-            DevicesAction.DismissNotificationPermissionHint -> {
+            DashboardAction.DismissNotificationPermissionHint -> {
                 launch {
                     generalSettings.isNotificationPermissionHintDismissed.update { true }
                 }
             }
 
-            is DevicesAction.AdjustVolume -> {
+            is DashboardAction.AdjustVolume -> {
                 deviceRepo.updateDevice(action.addr) { oldConfig ->
                     oldConfig.updateVolume(action.type, action.volume)
                 }
