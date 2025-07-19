@@ -16,9 +16,9 @@
     <string name="onboarding_privacy_message">Bluetooth Volume Manager n\'a pas de publicités et ne vend pas les données des utilisateurs (c\'est même open-source). Votre vie privée est importante pour moi.</string>
     <string name="onboarding_privacy_read_action">Lire la politique de confidentialité</string>
     <string name="onboarding_privacy_action">Accepter</string>
-    <string name="onboarding_rewrite_title">Application Réécrite !</string>
-    <string name="onboarding_rewrite_message">J\'ai entièrement reconstruit Bluetooth Volume Manager depuis zéro en raison des changements d\'Android et des exigences de Google pour garantir que l\'application continue de fonctionner de manière fiable.</string>
-    <string name="onboarding_rewrite_features">Certains paramètres d\'appareils ont peut-être été réinitialisés lors de cette mise à jour. Veuillez vérifier vos configurations d\'appareils.</string>
+    <string name="onboarding_rewrite_title">Application modernisée</string>
+    <string name="onboarding_rewrite_message">J\'ai dû réécrire l\'application pour suivre les changements d\'Android et les exigences de Google. J\'ai modernisé l\'application là où c\'était possible pour garantir qu\'elle continue de fonctionner de manière fiable.</string>
+    <string name="onboarding_rewrite_features">Certaines fonctionnalités ont changé pendant la mise à jour. Veuillez vérifier les paramètres de vos appareils pour vous assurer que tout est configuré correctement.</string>
     <string name="onboarding_rewrite_action">Continuer</string>
     <string name="discover_no_unmnaged_devices_msg">Aucun périphérique non géré trouvé</string>
     <string name="devices_device_config_label">Configuration du périphérique</string>

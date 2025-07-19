@@ -32,6 +32,12 @@ both GitHub (FOSS) and Google Play Store, with different build flavors for each 
 - Repository pattern with Room (migrating from Realm) and DataStore
 - UI that can be navigated to are "Screen"s and each screen has a corresponding ViewModel
     - "Sub-screens" are called "Pages"
+- The app uses Navigation3 (alpha) for Compose screens (`androidx.navigation3:navigation3-*`).
+- The main directions are inside the `Nav` file.
+- Each screen should have it's own navigation entry providing class (extending `NavigationEntry`).
+- New classes should be injected if possible (using Dagger/Hilt)
+- Classes should have a companion object with an appropriate `val TAG = logTag("toplevel","sublevel")` entry.
+- Use the Logging framework where appropriate to make future debugging easier (`Logging.kt`).
 
 ### Key Packages
 
@@ -40,19 +46,9 @@ both GitHub (FOSS) and Google Play Store, with different build flavors for each 
 - `eu.darken.bluemusic.main`: Main app navigation and settings
 - `eu.darken.bluemusic.common`: Shared utilities and base classes
 
-### Navigation
-
-* The app uses Navigation3 (alpha) for Compose screens.
-* The main directions are inside the `Nav` file.
-* Each screen should have it's own navigation entry providing class (extending `NavigationEntry`).
-
 ## Development Notes
 
 1. **Build Flavors**: Two flavors - `foss` (GitHub) and `gplay` (Google Play with billing)
-2. **Database Migration**: Active migration from Realm to Room - be careful when modifying database code
-3. **UI Migration**: Ongoing migration to Compose - prefer Compose for new UI components
-4. **Permissions**: App requires Bluetooth permissions and notification permissions (Android 13+)
-5. **Background Workers**: Uses a foreground CoroutineWorker for Bluetooth monitoring - handle lifecycle carefully
 
 ## Testing Approach
 

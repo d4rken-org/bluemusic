@@ -20,9 +20,9 @@
     <string name="onboarding_privacy_message">Bluetooth Volume Manager has no advertisements and does not sell user data (it\'s even open-source). Your privacy is important to me.</string>
     <string name="onboarding_privacy_read_action">Read Privacy Policy</string>
     <string name="onboarding_privacy_action">Accept</string>
-    <string name="onboarding_rewrite_title">App Rewrite!</string>
-    <string name="onboarding_rewrite_message">I\'ve completely rebuilt Bluetooth Volume Manager from the ground up due to Android changes and Google requirements to ensure the app continues working reliably.</string>
-    <string name="onboarding_rewrite_features">Some device settings may have been reset during this update. Please check your device configurations.</string>
+    <string name="onboarding_rewrite_title">App Modernized</string>
+    <string name="onboarding_rewrite_message">I had to rewrite the app to keep up with Android changes and Google requirements. I\'ve modernized the app where possible to ensure it continues working reliably.</string>
+    <string name="onboarding_rewrite_features">Some features have changed during the update. Please check your device settings to ensure everything is configured correctly.</string>
     <string name="onboarding_rewrite_action">Continue</string>
 
     <!-- Discover -->
