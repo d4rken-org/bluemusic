@@ -2,18 +2,20 @@ Bluetooth Volume Manager kan reageren op Bluetooth apparaten die verbinding make
 Het stelt Android in staat om de volume niveaus van verschillende Bluetooth apparaten te onthouden.
 
 Beschikbare functies:
-• Muziek, gesprek, beltoon en berichtvolume aanpassen.
-• Versturen van 'Speel' of 'Volgende' media opdrachten.
-• Een specifieke app openen.
-• Scherm wakker houden.
-• Voorkomen dat het volume wordt gewijzigd.
-• Herstellen van eerdere volume niveaus na verbinding verbreken.
+
+* Muziek, gesprek, beltoon en berichtvolume aanpassen.
+* Versturen van 'Speel' of 'Volgende' media opdrachten.
+* Een specifieke app openen.
+* Scherm wakker houden.
+* Voorkomen dat het volume wordt gewijzigd.
+* Herstellen van eerdere volume niveaus na verbinding verbreken.
 
 Deze app kan uw volume niet "verhogen" of het volume wijzigen als u het niet handmatig kunt wijzigen via de volumeknoppen van uw apparaat.
 
 Machtigingen beschreven:
-• 'Internet' voor bug-rapporten.
-• 'Bluetooth' om te werken met Bluetooth-apparaten.
-• 'Audio-instellingen wijzigen' om volume te wijzigen.
-• 'Boot voltooid' om volume niveaus te herstellen na herstart.
-• 'WAKE_LOCK' om een bug op Samsung-apparaten te omzeilen en om het scherm indien nodig wakker te houden.
+
+* 'Internet' voor bug-rapporten.
+* 'Bluetooth' om te werken met Bluetooth-apparaten.
+* 'Audio-instellingen wijzigen' om volume te wijzigen.
+* 'Boot voltooid' om volume niveaus te herstellen na herstart.
+* 'WAKE_LOCK' om een bug op Samsung-apparaten te omzeilen en om het scherm indien nodig wakker te houden.

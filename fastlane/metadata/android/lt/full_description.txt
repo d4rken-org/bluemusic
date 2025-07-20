@@ -3,8 +3,9 @@ Balso ir muzikos garsumas gali būti valdomi kiekvienam įrenginiui atskirai.
 Kiekvienam įrenginiui atskirai gali būti valdoma delsa.
 
 Leidimų paaiškinimai:
-• 'Internetas' klaidų siuntimui.
-• 'Bluetooth' bluetooth įrenginių valdymui.
-• 'Keisti garsumo nustatymus' garsumo valdymui.
-• 'Įkrova baigta' garsumo atstatymui po įrenginio pakartotino įjungimo.
-• 'WAKE_LOCK' Samsung įrenginių klaidos ištaisymui, kai šis leidimas padeda išvengti klaidų susijungiant.
+
+* 'Internetas' klaidų siuntimui.
+* 'Bluetooth' bluetooth įrenginių valdymui.
+* 'Keisti garsumo nustatymus' garsumo valdymui.
+* 'Įkrova baigta' garsumo atstatymui po įrenginio pakartotino įjungimo.
+* 'WAKE_LOCK' Samsung įrenginių klaidos ištaisymui, kai šis leidimas padeda išvengti klaidų susijungiant.

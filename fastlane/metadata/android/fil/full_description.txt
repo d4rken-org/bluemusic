@@ -3,8 +3,9 @@ Ang pangmusika at pangtawag na volume ay pwedeng baguhin sa bawat device.
 Pwedeng paisa-isang baguhin ang tiyempo at konpigurasyon para sa bawat Bluetooth device.
 
 Paliwanag sa mga permiso:
-• 'Internet' para sa mga report tungkol sa bug.
-• 'Bluetooth' ay gagana sa mga Bluetooth device.
-• 'Baguhin ang mga audio setting' para mabago ang volume.
-• 'Natapos na ang boot' para maibalik ang volume pagkatapos ng mga reboot.
-• 'WAKE_LOCK' upang maayos ang bug sa mga Samsung na device na nangangailangan ng pahintulot na ito upang makaiwas sa problema.
+
+* 'Internet' para sa mga report tungkol sa bug.
+* 'Bluetooth' ay gagana sa mga Bluetooth device.
+* 'Baguhin ang mga audio setting' para mabago ang volume.
+* 'Natapos na ang boot' para maibalik ang volume pagkatapos ng mga reboot.
+* 'WAKE_LOCK' upang maayos ang bug sa mga Samsung na device na nangangailangan ng pahintulot na ito upang makaiwas sa problema.
