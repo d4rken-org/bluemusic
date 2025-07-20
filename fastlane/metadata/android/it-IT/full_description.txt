@@ -3,8 +3,9 @@ Entrambi i volumi, sia della musica che delle chiamate, possono essere configura
 La sincronizzazione e la configurazione possono essere regolate differentemente per ogni dispositivo Bluetooth.
 
 Ecco a cosa servono le autorizzazioni:
-• 'Internet' per le segnalazioni di bug.
-• 'Bluetooth' per funzionare con i dispositivi Bluetooth.
-• 'Modifica impostazioni audio' per modificare i volumi.
-• 'Inizializzazione completata' per ripristinare i volumi dopo un riavvio.
-• 'WAKE_LOCK' per correggere un bug e un errore sui dispositivi Samsung.
+
+* 'Internet' per le segnalazioni di bug.
+* 'Bluetooth' per funzionare con i dispositivi Bluetooth.
+* 'Modifica impostazioni audio' per modificare i volumi.
+* 'Inizializzazione completata' per ripristinare i volumi dopo un riavvio.
+* 'WAKE_LOCK' per correggere un bug e un errore sui dispositivi Samsung.

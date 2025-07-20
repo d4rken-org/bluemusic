@@ -2,19 +2,21 @@ Trình quản lý âm lượng Bluetooth có thể phản ứng với các thi�
 Nó cho phép Android ghi nhớ mức âm lượng của các thiết bị Bluetooth khác nhau.
 
 Các tính năng có sẵn:
-• Âm nhạc, cuộc gọi, nhạc chuông và điều chỉnh âm lượng thông báo.
-• Gửi các lệnh 'Phát' hoặc 'Tiếp' của media.
-• Mở một ứng dụng cụ thể.
-• Giữ cho màn hình luôn sáng.
-• Ngăn chặn thay đổi âm lượng.
-• Khôi phục mức âm lượng trước khi ngắt kết nối.
+
+* Âm nhạc, cuộc gọi, nhạc chuông và điều chỉnh âm lượng thông báo.
+* Gửi các lệnh 'Phát' hoặc 'Tiếp' của media.
+* Mở một ứng dụng cụ thể.
+* Giữ cho màn hình luôn sáng.
+* Ngăn chặn thay đổi âm lượng.
+* Khôi phục mức âm lượng trước khi ngắt kết nối.
 
 Ứng dụng này không thể "tăng" hoặc thay đổi âm lượng nếu bạn không thể thay đổi âm lượng thông qua các nút âm lượng của thiết bị theo cách thủ công.
 
 Giải thích các quyền:
-• 'Internet' cho báo cáo lỗi.
-• 'Bluetooth' để làm việc với thiết bị bluetooth.
-• 'Sửa đổi cài đặt âm thanh' để thay đổi âm lượng.
-• 'Boot completed' để khôi phục mức âm lượng sau khi khởi động lại.
-• 'WAKE_LOCK' để sửa lỗi trên các thiết bị Samsung và để giữ cho màn hình luôn hoạt động nếu cần.
-• 'SYSTEM_ALERT_WINDOW' để khởi chạy ứng dụng khi thiết bị Bluetooth kết nối (chỉ trên Android 10).
+
+* 'Internet' cho báo cáo lỗi.
+* 'Bluetooth' để làm việc với thiết bị bluetooth.
+* 'Sửa đổi cài đặt âm thanh' để thay đổi âm lượng.
+* 'Boot completed' để khôi phục mức âm lượng sau khi khởi động lại.
+* 'WAKE_LOCK' để sửa lỗi trên các thiết bị Samsung và để giữ cho màn hình luôn hoạt động nếu cần.
+* 'SYSTEM_ALERT_WINDOW' để khởi chạy ứng dụng khi thiết bị Bluetooth kết nối (chỉ trên Android 10).

@@ -3,8 +3,9 @@ Tanto o volume da música como das chamadas pódese configurar para cada disposi
 O tempo e a configuración de cada dispositivo bluetooth pódese axustar de xeito individual.
 
 Explicación dos permisos:
-• 'Internet' para os informes de erros.
-• O bluetooth para funcionar con outros dispositivos.
-• "Modificar os axustes de audio" para poder cambiar o volume.
-• 'Inicio completado' para restaurar o volume logo de reiniciar.
-• 'WAKE_LOCK' para solucionar un erro nos dispositivos Samsung en que este permiso é necesario para evitar un erro.
+
+* 'Internet' para os informes de erros.
+* O bluetooth para funcionar con outros dispositivos.
+* "Modificar os axustes de audio" para poder cambiar o volume.
+* 'Inicio completado' para restaurar o volume logo de reiniciar.
+* 'WAKE_LOCK' para solucionar un erro nos dispositivos Samsung en que este permiso é necesario para evitar un erro.

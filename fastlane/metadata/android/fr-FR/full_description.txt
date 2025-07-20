@@ -2,19 +2,21 @@ Le gestionnaire de volume Bluetooth peut réagir aux périphériques Bluetooth q
 Il permet à Android de mémoriser les niveaux du son de différents périphériques Bluetooth.
 
 Fonctions proposées :
-• Régler le volume de la musique, des appels, des sonneries et des notifications.
-• Envoyer les commandes « Lecture » ou » Suivant » aux médias.
-• Ouvrir une appli précise.
-• Garder l’écran allumé.
-• Empêcher le changement du volume.
-• Restaurer les niveaux précédents du son après déconnexion.
+
+* Régler le volume de la musique, des appels, des sonneries et des notifications.
+* Envoyer les commandes « Lecture » ou » Suivant » aux médias.
+* Ouvrir une appli précise.
+* Garder l’écran allumé.
+* Empêcher le changement du volume.
+* Restaurer les niveaux précédents du son après déconnexion.
 
 Cette appli peut « augmenter » votre volume ou changer le volume si vous ne pouvez pas le changer manuellement grâce aux boutons de volume de votre appareil.
 
 Explication des permissions :
-• « Internet » pour les relevés de bogues.
-• « Bluetooth » pour fonctionner avec les périphériques Bluetooth.
-• « Modifier les paramètres du son » pour régler le volume.
-• « Amorçage terminé » pour restaurer les niveaux du son après redémarrage.
-• « WAKE_LOCK » pour corriger un bogue sur les appareils Samsung et garder l’écran allumé si nécessaire.
-• « SYSTEM_ALERT_WINDOW » pour lancer des applis quand un appareil Bluetooth se connecte (seulement sur Android 10).
+
+* « Internet » pour les relevés de bogues.
+* « Bluetooth » pour fonctionner avec les périphériques Bluetooth.
+* « Modifier les paramètres du son » pour régler le volume.
+* « Amorçage terminé » pour restaurer les niveaux du son après redémarrage.
+* « WAKE_LOCK » pour corriger un bogue sur les appareils Samsung et garder l’écran allumé si nécessaire.
+* « SYSTEM_ALERT_WINDOW » pour lancer des applis quand un appareil Bluetooth se connecte (seulement sur Android 10).

@@ -2,19 +2,21 @@ Bluetooth Volume Manager může reagovat na zařízení Bluetooth připojením n
 Umožňuje zařízení Android zapamatovat si úrovně hlasitosti různých zařízení Bluetooth.
 
 Dostupné funkce:
-• Nastavení hlasitosti pro hudbu, volání, vyzvánění a oznámení.
-• Odesílání mediálních příkazů „Přehrát“ nebo „Další“.
-• Otevření konkrétní aplikace.
-• Zakázání režimu spánku.
-• Zabránění změně hlasitosti.
-• Obnovení předchozí úrovně hlasitosti po odpojení.
+
+* Nastavení hlasitosti pro hudbu, volání, vyzvánění a oznámení.
+* Odesílání mediálních příkazů „Přehrát“ nebo „Další“.
+* Otevření konkrétní aplikace.
+* Zakázání režimu spánku.
+* Zabránění změně hlasitosti.
+* Obnovení předchozí úrovně hlasitosti po odpojení.
 
 Tato aplikace nemůže „zesílit“ hlasitost nebo změnit hlasitost, pokud ji nemůžete změnit pomocí tlačítek hlasitosti zařízení.
 
 Vysvětlení oprávnění:
-• „Internet“ pro hlášení chyb.
-• „Bluetooth“ pro práci se zařízeními Bluetooth.
-• „Změny nastavení zvuku“ pro změnu hlasitosti.
-• „Dokončení spuštění“ pro obnovení úrovně hlasitosti po restartování.
-• „WAKE_LOCK“ pro odstranění chyby na zařízeních Samsung a zakázání režim spánku, pokud je to nutné.
-• „SYSTEM_ALERT_WINDOW“ pro spuštění aplikací po připojení Bluetooth zařízení (pouze Android 10).
+
+* „Internet“ pro hlášení chyb.
+* „Bluetooth“ pro práci se zařízeními Bluetooth.
+* „Změny nastavení zvuku“ pro změnu hlasitosti.
+* „Dokončení spuštění“ pro obnovení úrovně hlasitosti po restartování.
+* „WAKE_LOCK“ pro odstranění chyby na zařízeních Samsung a zakázání režim spánku, pokud je to nutné.
+* „SYSTEM_ALERT_WINDOW“ pro spuštění aplikací po připojení Bluetooth zařízení (pouze Android 10).
