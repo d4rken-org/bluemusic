@@ -229,22 +229,37 @@ class MonitorWorker @AssistedInject constructor(
     ) {
         // Create maps for easier lookup
         val beforeMap = before.associateBy { it.address }
+        log(TAG) { "handleConnection: Before map: $beforeMap" }
         val currentMap = current.associateBy { it.address }
+        log(TAG) { "handleConnection: Current map: $currentMap" }
 
         // Find devices that changed their active state
         val connectedDevices = mutableListOf<ManagedDevice>()
         val disconnectedDevices = mutableListOf<ManagedDevice>()
 
-        // Only process devices where isActive state actually changed
+        // Process devices where isActive state changed or new devices
         currentMap.forEach { (address, currentDevice) ->
             val beforeDevice = beforeMap[address]
-            if (beforeDevice != null && beforeDevice.isActive != currentDevice.isActive) {
-                // Device exists in both lists and active state changed
-                if (currentDevice.isActive) {
+            when {
+                // New device that's active (monitor just started)
+                beforeDevice == null && currentDevice.isActive -> {
                     connectedDevices.add(currentDevice)
-                } else {
-                    disconnectedDevices.add(currentDevice)
                 }
+                // Device exists in both lists and active state changed
+                beforeDevice != null && beforeDevice.isActive != currentDevice.isActive -> {
+                    if (currentDevice.isActive) {
+                        connectedDevices.add(currentDevice)
+                    } else {
+                        disconnectedDevices.add(currentDevice)
+                    }
+                }
+            }
+        }
+
+        // Check for devices that disappeared completely (were in before but not in current)
+        beforeMap.forEach { (address, beforeDevice) ->
+            if (!currentMap.containsKey(address) && beforeDevice.isActive) {
+                disconnectedDevices.add(beforeDevice)
             }
         }
 
@@ -254,8 +269,8 @@ class MonitorWorker @AssistedInject constructor(
             }
         }
 
-        log(TAG) { "Connected devices:\n${connectedDevices.joinToString("\n")}" }
-        log(TAG) { "Disconnected devices:\n${disconnectedDevices.joinToString("\n")}" }
+        log(TAG) { "handleConnection: Connected devices:\n${connectedDevices.joinToString("\n")}" }
+        log(TAG) { "handleConnection: Disconnected devices:\n${disconnectedDevices.joinToString("\n")}" }
 
         val events = mutableListOf<DeviceEvent>()
         disconnectedDevices.forEach { events.add(DeviceEvent.Disconnected(it)) }
@@ -265,7 +280,7 @@ class MonitorWorker @AssistedInject constructor(
         if (connectedDevices.isNotEmpty()) {
             val connectedDevice = connectedDevices.first()
             val reactionDelay = connectedDevice.actionDelay
-            log(TAG) { "Delaying reaction by $reactionDelay ms." }
+            log(TAG) { "handleConnection: Delaying reaction by $reactionDelay ms." }
             delay(reactionDelay)
         }
 
@@ -283,21 +298,29 @@ class MonitorWorker @AssistedInject constructor(
 
         // Process all events
         for (event in events) {
-            log(TAG) { "Processing event: $event" }
+            log(TAG) { "handleConnection: Processing event: $event" }
 
             for (i in 0 until priorityArray.size) {
                 val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
-                log(TAG) { "${currentPriorityModules.size} event modules at priority ${priorityArray.keyAt(i)}" }
+                log(TAG) {
+                    "handleConnection: ${currentPriorityModules.size} event modules at priority ${priorityArray.keyAt(i)}"
+                }
 
                 coroutineScope {
                     currentPriorityModules.map { module ->
                         async(dispatcherProvider.IO) {
                             try {
-                                log(TAG, VERBOSE) { "Event module $module HANDLE-START for $event" }
+                                log(TAG, VERBOSE) {
+                                    "handleConnection: Event module $module HANDLE-START for $event"
+                                }
                                 module.handle(event)
-                                log(TAG, VERBOSE) { "Event module $module HANDLE-STOP for $event" }
+                                log(TAG, VERBOSE) {
+                                    "handleConnection: Event module $module HANDLE-STOP for $event"
+                                }
                             } catch (e: Exception) {
-                                log(TAG, ERROR) { "Event module error: $module for $event: ${e.asLog()}" }
+                                log(TAG, ERROR) {
+                                    "handleConnection: Event module error: $module for $event: ${e.asLog()}"
+                                }
                             }
                         }
                     }.awaitAll()
@@ -321,17 +344,19 @@ class MonitorWorker @AssistedInject constructor(
 
         for (i in 0 until priorityArray.size) {
             val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
-            log(TAG) { "${currentPriorityModules.size} volume modules at priority ${priorityArray.keyAt(i)}" }
+            log(TAG) {
+                "handleVolune: ${currentPriorityModules.size} volume modules at priority ${priorityArray.keyAt(i)}"
+            }
 
             coroutineScope {
                 currentPriorityModules.map { module ->
                     async {
                         try {
-                            log(TAG, VERBOSE) { "Volume module $module HANDLE-START" }
+                            log(TAG, VERBOSE) { "handleVolune: Volume module $module HANDLE-START" }
                             module.handle(event)
-                            log(TAG, VERBOSE) { "Volume module $module HANDLE-STOP" }
+                            log(TAG, VERBOSE) { "handleVolune: Volume module $module HANDLE-STOP" }
                         } catch (e: Exception) {
-                            log(TAG, ERROR) { "Volume module error: $module: ${e.asLog()}" }
+                            log(TAG, ERROR) { "handleVolune: Volume module error: $module: ${e.asLog()}" }
                         }
                     }
                 }.awaitAll()
