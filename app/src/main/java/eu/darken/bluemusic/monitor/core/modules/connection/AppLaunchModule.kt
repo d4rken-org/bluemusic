@@ -19,7 +19,7 @@ class AppLaunchModule @Inject constructor(
     private val appRepo: AppRepo
 ) : EventModule {
 
-    override val priority: Int = 1
+    override val priority: Int = 5
 
     override suspend fun handle(event: DeviceEvent) {
         if (event !is DeviceEvent.Connected) return

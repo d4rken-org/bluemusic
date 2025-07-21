@@ -22,8 +22,7 @@ class KeepAwakeModule @Inject internal constructor(
     private val deviceRepo: DeviceRepo,
 ) : EventModule {
 
-    override val priority: Int
-        get() = 1
+    override val priority: Int = 3
 
     override suspend fun handle(event: DeviceEvent) {
         val device = event.device

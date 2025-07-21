@@ -65,8 +65,9 @@ both GitHub (FOSS) and Google Play Store, with different build flavors for each 
 - Prefer immutable data classes for state
 - When writing user facing texts, prefer informal and casual language.
 - Use Hilt for dependency injection in new code
-- Don't add comments to code
+- Do NOT add comments on obvious code
 - Prefer exposing fewer fields and functions and enabling specific functionality via extension functions
 - All user facing strings should be extract to `values/strings.xml` and translated for all other languages too.
 - `@OptIn(ExperimentalMaterial3Api::class)` is not required
 - Create previews for all UI components using the `@Preview2` annotation and `PreviewWrapper`
+- Prefer early returns to reduce code nesting

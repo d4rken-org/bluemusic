@@ -26,8 +26,7 @@ class AutoplayModule @Inject constructor(
     private val devicesSettings: DevicesSettings,
 ) : EventModule {
 
-    override val priority: Int
-        get() = 20
+    override val priority: Int = 20
 
     override suspend fun handle(event: DeviceEvent) {
         if (event !is DeviceEvent.Connected) return
