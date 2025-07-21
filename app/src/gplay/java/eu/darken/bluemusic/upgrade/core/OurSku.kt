@@ -8,6 +8,10 @@ interface OurSku {
         object PRO_UPGRADE_LEGACY : Sku.Iap, Iap {
             override val id: String = "upgrade.premium"
         }
+
+        object PRO_UPGRADE : Sku.Iap, Iap {
+            override val id: String = "upgrade.premium.rewrite.v3"
+        }
     }
 
     interface Sub : Sku.Subscription {
@@ -30,6 +34,6 @@ interface OurSku {
     }
 
     companion object {
-        val PRO_SKUS = setOf(Sub.PRO_UPGRADE, Iap.PRO_UPGRADE_LEGACY)
+        val PRO_SKUS = setOf(Sub.PRO_UPGRADE, Iap.PRO_UPGRADE, Iap.PRO_UPGRADE_LEGACY)
     }
 }

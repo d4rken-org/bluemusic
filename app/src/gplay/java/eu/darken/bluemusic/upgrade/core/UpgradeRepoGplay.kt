@@ -4,29 +4,33 @@ import android.app.Activity
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.datastore.value
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
-import eu.darken.bluemusic.upgrade.UpgradeRepo
+import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.upgrade.core.billing.BillingData
 import eu.darken.bluemusic.upgrade.core.billing.BillingManager
 import eu.darken.bluemusic.upgrade.core.billing.PurchasedSku
 import eu.darken.bluemusic.upgrade.core.billing.Sku
 import eu.darken.bluemusic.upgrade.core.billing.SkuDetails
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.retryWhen
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
 import java.time.Instant
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.math.pow
 
 @Singleton
 class UpgradeRepoGplay @Inject constructor(
@@ -65,31 +69,39 @@ class UpgradeRepoGplay @Inject constructor(
             }
         }
         .distinctUntilChanged()
-        .catch {
+        .retryWhen { error, attempt ->
             // Ignore Google Play errors if the last pro state was recent
             val now = System.currentTimeMillis()
             val lastProStateAt = billingCache.lastProStateAt.value()
-            log(TAG) { "Catch: now=$now, lastProStateAt=$lastProStateAt, error=$it" }
+            log(TAG) { "Catch: now=$now, lastProStateAt=$lastProStateAt, attempt=$attempt, error=$error" }
             if ((now - lastProStateAt) < 7 * 24 * 60 * 1000L) { // 7 days
                 log(TAG, VERBOSE) { "We are not pro, but were recently, and just and an error, what is GPlay doing???" }
                 emit(Info(gracePeriod = true, billingData = null))
             } else {
-                throw it
+                emit(Info(error = error, billingData = null))
             }
+            delay(30_000L * 2.0.pow(attempt.toDouble()).toLong())
+            true
         }
         .setupCommonEventHandlers(TAG) { "upgradeInfo2" }
         .shareIn(scope, SharingStarted.WhileSubscribed(3000L, 0L), replay = 1)
 
-    fun launchBillingFlow(activity: Activity, sku: Sku, offer: Sku.Subscription.Offer?) {
+    suspend fun launchBillingFlow(activity: Activity, sku: Sku, offer: Sku.Subscription.Offer?) {
         log(TAG) { "launchBillingFlow($activity,$sku)" }
+        val resultChannel = Channel<Result<Unit>>()
+        
         scope.launch {
             try {
                 billingManager.startIapFlow(activity, sku, offer)
+                resultChannel.send(Result.success(Unit))
             } catch (e: Exception) {
                 log(TAG) { "startIapFlow failed:${e.asLog()}" }
-                throw e
+                resultChannel.send(Result.failure(e))
             }
         }
+
+        val result = resultChannel.receive()
+        result.getOrThrow()
     }
 
     suspend fun querySkus(vararg skus: Sku): Collection<SkuDetails> = billingManager.querySkus(*skus)
@@ -102,6 +114,7 @@ class UpgradeRepoGplay @Inject constructor(
     data class Info(
         private val gracePeriod: Boolean = false,
         private val billingData: BillingData?,
+        override val error: Throwable? = null,
     ) : UpgradeRepo.Info {
 
         override val type: UpgradeRepo.Type = UpgradeRepo.Type.GPLAY

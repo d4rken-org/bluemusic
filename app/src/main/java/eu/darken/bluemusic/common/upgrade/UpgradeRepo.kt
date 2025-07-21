@@ -16,6 +16,8 @@ interface UpgradeRepo {
         val isUpgraded: Boolean
 
         val upgradedAt: Instant?
+
+        val error: Throwable?
     }
 
     enum class Type {

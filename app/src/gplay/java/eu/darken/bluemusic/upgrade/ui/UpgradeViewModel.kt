@@ -3,8 +3,9 @@ package eu.darken.bluemusic.upgrade.ui
 import android.app.Activity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
-import eu.darken.bluemusic.common.debug.logging.Logging
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.SingleEventFlow
@@ -13,6 +14,7 @@ import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.upgrade.core.OurSku
 import eu.darken.bluemusic.upgrade.core.UpgradeRepoGplay
 import eu.darken.bluemusic.upgrade.core.billing.GplayServiceUnavailableException
+import eu.darken.bluemusic.upgrade.core.billing.Sku
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
@@ -43,7 +45,7 @@ class UpgradeViewModel @Inject constructor(
         flow {
             val data = withTimeoutOrNull(5000) {
                 try {
-                    upgradeRepo.querySkus(OurSku.Iap.PRO_UPGRADE)
+                    upgradeRepo.querySkus(*OurSku.PRO_SKUS.filterIsInstance<Sku.Iap>().toTypedArray())
                 } catch (e: Exception) {
                     errorEvents.emit(e)
                     null
@@ -54,7 +56,7 @@ class UpgradeViewModel @Inject constructor(
         flow {
             val data = withTimeoutOrNull(5000) {
                 try {
-                    upgradeRepo.querySkus(OurSku.Sub.PRO_UPGRADE)
+                    upgradeRepo.querySkus(*OurSku.PRO_SKUS.filterIsInstance<Sku.Subscription>().toTypedArray())
                 } catch (e: Exception) {
                     errorEvents.emit(e)
                     null
@@ -121,17 +123,17 @@ class UpgradeViewModel @Inject constructor(
         )
     }
 
-    fun onGoIap(activity: Activity) {
+    fun onGoIap(activity: Activity) = launch {
         log(tag) { "onGoIap($activity)" }
         upgradeRepo.launchBillingFlow(activity, OurSku.Iap.PRO_UPGRADE, null)
     }
 
-    fun onGoSubscription(activity: Activity) {
+    fun onGoSubscription(activity: Activity) = launch {
         log(tag) { "onGoSubscription($activity)" }
         upgradeRepo.launchBillingFlow(activity, OurSku.Sub.PRO_UPGRADE, OurSku.Sub.PRO_UPGRADE.BASE_OFFER)
     }
 
-    fun onGoSubscriptionTrial(activity: Activity) {
+    fun onGoSubscriptionTrial(activity: Activity) = launch {
         log(tag) { "onGoSubscriptionTrial($activity)" }
         upgradeRepo.launchBillingFlow(activity, OurSku.Sub.PRO_UPGRADE, OurSku.Sub.PRO_UPGRADE.TRIAL_OFFER)
     }

@@ -46,7 +46,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import eu.darken.bluemusic.R
-import eu.darken.bluemusic.common.compose.ButlerIcon
+import eu.darken.bluemusic.common.compose.BlueMusicIcon
 import eu.darken.bluemusic.common.compose.ColoredTitleText
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
@@ -131,7 +131,7 @@ fun UpgradeScreen(
                         Row(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            ButlerIcon(
+                            BlueMusicIcon(
                                 modifier = Modifier.graphicsLayer(alpha = toolbarAlpha),
                                 size = 32.dp
                             )
@@ -165,7 +165,7 @@ fun UpgradeScreen(
                 .padding(top = 8.dp, bottom = 32.dp)
                 .animateContentSize(animationSpec = tween(300))
         ) {
-            ButlerIcon(
+            BlueMusicIcon(
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .graphicsLayer(alpha = contentAlpha),
@@ -379,7 +379,7 @@ fun RestoreFailedDialog(
         onDismissRequest = onDismiss,
         title = {
             Text(
-                text = stringResource(eu.darken.butler.common.R.string.general_error_label),
+                text = stringResource(R.string.general_error_label),
                 style = MaterialTheme.typography.headlineSmall
             )
         },

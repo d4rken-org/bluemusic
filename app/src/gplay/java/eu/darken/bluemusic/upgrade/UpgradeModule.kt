@@ -4,6 +4,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.upgrade.core.UpgradeRepoGplay
 import javax.inject.Singleton
 

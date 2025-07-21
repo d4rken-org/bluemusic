@@ -1,10 +1,11 @@
 package eu.darken.bluemusic.upgrade.core.billing
 
 import android.app.Activity
-import com.android.billingclient.api.BillingClient.*
+import com.android.billingclient.api.BillingClient.BillingResponseCode
 import eu.darken.bluemusic.common.coroutine.AppScope
-import eu.darken.bluemusic.common.debug.Bugs
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -33,7 +34,7 @@ import javax.inject.Singleton
 
 @Singleton
 class BillingManager @Inject constructor(
-    @param:AppScope private val scope: CoroutineScope,
+    @AppScope private val scope: CoroutineScope,
     connectionProvider: BillingConnectionProvider,
 ) {
 
@@ -131,17 +132,6 @@ class BillingManager @Inject constructor(
             }
         } catch (e: Exception) {
             log(TAG, WARN) { "Failed to start IAP flow:\n${e.asLog()}" }
-            val ignoredCodes = listOf(3, 6)
-            when {
-                e !is BillingException -> {
-                    Bugs.report(RuntimeException("State exception for $sku, U", e))
-                }
-
-                e is BillingClientException && !e.result.responseCode.let { ignoredCodes.contains(it) } -> {
-                    Bugs.report(RuntimeException("Client exception for $sku", e))
-                }
-            }
-
             throw e.tryMapUserFriendly()
         }
     }
