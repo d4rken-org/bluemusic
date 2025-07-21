@@ -5,13 +5,12 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
-import eu.darken.bluemusic.bluetooth.core.SourceDevice
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
+import eu.darken.bluemusic.monitor.core.WakeLockManager
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.EventModule
 import javax.inject.Inject
@@ -20,6 +19,7 @@ import javax.inject.Singleton
 @Singleton
 class KeepAwakeModule @Inject internal constructor(
     private val deviceRepo: DeviceRepo,
+    private val wakeLockManager: WakeLockManager,
 ) : EventModule {
 
     override val priority: Int = 3
@@ -27,30 +27,23 @@ class KeepAwakeModule @Inject internal constructor(
     override suspend fun handle(event: DeviceEvent) {
         val device = event.device
         if (!device.keepAwake) return
-        if (device.type == SourceDevice.Type.PHONE_SPEAKER) {
-            log(TAG, ERROR) { "Keep awake should not be enabled for the fake speaker device: $device" }
-            return
-        }
 
         val deviceMap = deviceRepo.currentDevices().associateBy { it.address }
-        val otherWokeDevice = deviceMap.values.find { d -> d.keepAwake && d.address != event.address }
+        val hasAnyKeepAwakeDevice = deviceMap.values.any { d -> d.keepAwake && d.isActive }
 
         when (event) {
             is DeviceEvent.Connected -> {
-                log(TAG) { "Acquiring wakelock for $device" }
-                // TODO
-//                wakelockMan.tryAquire()
+                log(TAG) { "Device connected with keep awake: $device" }
+                wakeLockManager.setWakeLock(true)
             }
 
-            is DeviceEvent.Connected -> {
-                if (otherWokeDevice == null) {
-                    log(TAG) { "Releasing wakelock for $device" }
-//                    wakelockMan.tryRelease()
+            is DeviceEvent.Disconnected -> {
+                log(TAG) { "Device disconnected with keep awake: $device" }
+                if (!hasAnyKeepAwakeDevice) {
+                    log(TAG) { "No more devices need keep awake, releasing wakelock" }
+                    wakeLockManager.setWakeLock(false)
                 } else {
-                    log(
-                        TAG,
-                        INFO
-                    ) { "Not releasing wakelock, another device also wants 'keep awake': $otherWokeDevice" }
+                    log(TAG, INFO) { "Other devices still need keep awake, maintaining wakelock" }
                 }
             }
         }

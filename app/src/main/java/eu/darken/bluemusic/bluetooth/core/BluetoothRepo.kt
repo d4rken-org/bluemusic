@@ -140,7 +140,7 @@ class BluetoothRepo @Inject constructor(
 
                 }
 
-            devices.add(speakerDeviceProvider.getSpeaker(isConnected = true))
+            devices.add(speakerDeviceProvider.getSpeaker())
 
             devices.toSet() as Set<SourceDevice>?
         }

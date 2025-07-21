@@ -43,7 +43,7 @@
     <string name="devices_device_config_nudge_volume_label">Empujar volumen</string>
     <string name="devices_device_config_nudge_volume_description">Baja y luego sube el volumen en un incremento, incluso si el volumen deseado ya está configurado (según el sistema).</string>
     <string name="devices_device_config_keep_awake_label">Mantente activo</string>
-    <string name="devices_device_config_keep_awake_desc">Mantener la pantalla encendida mientras este dispositivo está conectado.</string>
+    <string name="devices_device_config_keep_awake_desc">Intentar mantener el dispositivo activo mientras está conectado. El comportamiento puede variar según la versión de Android.</string>
     <string name="devices_device_config_volume_observe_label">Observar cambios</string>
     <string name="devices_device_config_volume_observe_desc">Mantente activo mientras este dispositivo está conectado y guarda los cambios de volumen que no han sido causados por esta aplicación.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Guardar volumen al desconectar</string>

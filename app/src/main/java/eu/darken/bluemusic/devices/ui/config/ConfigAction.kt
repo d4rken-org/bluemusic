@@ -16,7 +16,6 @@ sealed interface ConfigAction {
     data object OnToggleKeepAwake : ConfigAction
     data object OnToggleNudgeVolume : ConfigAction
     data object OnLaunchAppClicked : ConfigAction
-    data object OnClearLaunchApp : ConfigAction
     data object OnEditMonitoringDurationClicked : ConfigAction
     data object OnEditReactionDelayClicked : ConfigAction
     data object OnEditAdjustmentDelayClicked : ConfigAction
@@ -29,5 +28,4 @@ sealed interface ConfigAction {
     data class OnEditVolumeRateLimit(val duration: Duration?) : ConfigAction
     data class OnRename(val newName: String?) : ConfigAction
     data class OnConfirmDelete(val confirmed: Boolean) : ConfigAction
-    data class OnAppSelected(val packageName: String) : ConfigAction
 }

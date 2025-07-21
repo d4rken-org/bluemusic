@@ -3,12 +3,9 @@ package eu.darken.bluemusic.monitor.core.worker
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.content.IntentFilter
-import android.os.Build
 import android.util.SparseArray
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.util.size
 import androidx.hilt.work.HiltWorker
@@ -29,7 +26,6 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import eu.darken.bluemusic.common.flow.throttleLatest
 import eu.darken.bluemusic.common.flow.withPrevious
-import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
@@ -116,16 +112,6 @@ class MonitorWorker @AssistedInject constructor(
 
         setForeground(notifications.getForegroundInfo(deviceRepo.currentDevices().filter { it.isActive }))
 
-        if (hasApiLevel(23)) {
-            // TODO why do we do this?
-            ContextCompat.registerReceiver(
-                context,
-                ringerPermission,
-                IntentFilter(NotificationManager.ACTION_NOTIFICATION_POLICY_ACCESS_GRANTED_CHANGED),
-                ContextCompat.RECEIVER_NOT_EXPORTED
-            )
-        }
-
         ContextCompat.registerReceiver(
             context,
             stopMonitorReceiver,
@@ -196,23 +182,9 @@ class MonitorWorker @AssistedInject constructor(
         log(TAG, VERBOSE) { "Monitor job quit" }
 
         try {
-            context.unregisterReceiver(ringerPermission)
-        } catch (e: Exception) {
-            log(TAG, WARN) { "Failed to unregister ringerPermission receiver: ${e.asLog()}" }
-        }
-
-        try {
             context.unregisterReceiver(stopMonitorReceiver)
         } catch (e: Exception) {
             log(TAG, WARN) { "Failed to unregister stopMonitor receiver: ${e.asLog()}" }
-        }
-    }
-
-    private val ringerPermission = object : BroadcastReceiver() {
-        @RequiresApi(api = Build.VERSION_CODES.M)
-        override fun onReceive(context: Context, intent: Intent) {
-            val notificationManager = context.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-            log(TAG) { "isNotificationPolicyAccessGranted()=${notificationManager.isNotificationPolicyAccessGranted}" }
         }
     }
 

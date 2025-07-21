@@ -13,6 +13,5 @@ suspend fun <T> Job.cancelAfterRun(action: suspend () -> T): T = try {
 suspend fun <T : Closeable, R> T.use(block: suspend T.() -> R): R = try {
     block(this)
 } finally {
-    // TODO ?
     close()
 }

@@ -296,8 +296,6 @@ class DeviceConfigViewModel @AssistedInject constructor(
     fun handleAction(action: ConfigAction) = launch {
         log(tag) { "handleAction: $action" }
         when (action) {
-            is ConfigAction.OnAppSelected -> TODO()
-            is ConfigAction.OnClearLaunchApp -> TODO()
             is ConfigAction.DeleteDevice -> {
                 if (!action.confirmed) {
                     // Show delete confirmation dialog

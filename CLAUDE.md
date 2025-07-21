@@ -38,6 +38,7 @@ both GitHub (FOSS) and Google Play Store, with different build flavors for each 
 - New classes should be injected if possible (using Dagger/Hilt)
 - Classes should have a companion object with an appropriate `val TAG = logTag("toplevel","sublevel")` entry.
 - Use the Logging framework where appropriate to make future debugging easier (`Logging.kt`).
+- There are two different build flavors - `foss` (GitHub) and `gplay` (Google Play with billing)
 
 ### Key Packages
 
@@ -46,16 +47,17 @@ both GitHub (FOSS) and Google Play Store, with different build flavors for each 
 - `eu.darken.bluemusic.main`: Main app navigation and settings
 - `eu.darken.bluemusic.common`: Shared utilities and base classes
 
-## Development Notes
-
-1. **Build Flavors**: Two flavors - `foss` (GitHub) and `gplay` (Google Play with billing)
-
 ## Testing Approach
 
 - Unit tests use JUnit, Mockk, and Kotest
 - Hilt testing support is configured
 - Test coverage is limited - add tests when modifying existing code
 - Omit `androidTest`, we are not doing UI testing.
+
+## Agent instructions
+
+- When localizing texts, create a TODO for each locale you need to provide translations for.
+- Use sub-agents, one agent per TODO (if possible).
 
 ## Code Style
 

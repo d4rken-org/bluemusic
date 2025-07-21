@@ -54,7 +54,7 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
-    <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
+    <string name="devices_device_config_keep_awake_desc">Try to keep the device awake while connected. Behavior may vary depending on Android version.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
     <string name="devices_device_config_volume_observe_desc">Stay active while this device is connected and save volume changes that have not been caused by this app.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Save volume on disconnect</string>

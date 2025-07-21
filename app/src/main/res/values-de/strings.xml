@@ -43,7 +43,7 @@
     <string name="devices_device_config_nudge_volume_label">Lautstärke anstoßen</string>
     <string name="devices_device_config_nudge_volume_description">Senken und dann erhöhen Sie die Lautstärke um eine Stufe, auch wenn die gewünschte Lautstärke (laut System) bereits eingestellt ist.</string>
     <string name="devices_device_config_keep_awake_label">Wach bleiben</string>
-    <string name="devices_device_config_keep_awake_desc">Bildschirm an lassen, während dieses Gerät verbunden ist.</string>
+    <string name="devices_device_config_keep_awake_desc">Versuchen, das Gerät wach zu halten, während es verbunden ist. Das Verhalten kann je nach Android-Version variieren.</string>
     <string name="devices_device_config_volume_observe_label">Änderungen beobachten</string>
     <string name="devices_device_config_volume_observe_desc">Aktiv bleiben, während dieses Gerät verbunden ist und Lautstärkeänderungen speichern, die nicht von dieser App verursacht wurden.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Lautstärke beim Trennen speichern</string>
