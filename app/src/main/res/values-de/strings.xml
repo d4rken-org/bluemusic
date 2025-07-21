@@ -46,6 +46,8 @@
     <string name="devices_device_config_keep_awake_desc">Bildschirm an lassen, während dieses Gerät verbunden ist.</string>
     <string name="devices_device_config_volume_observe_label">Änderungen beobachten</string>
     <string name="devices_device_config_volume_observe_desc">Aktiv bleiben, während dieses Gerät verbunden ist und Lautstärkeänderungen speichern, die nicht von dieser App verursacht wurden.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Lautstärke beim Trennen speichern</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Aktuelle Lautstärkepegel erfassen und speichern, wenn dieses Gerät getrennt wird.</string>
     <string name="devices_device_config_volume_lock_label">Lautstärkesperre</string>
     <string name="devices_device_config_volume_lock_desc">Alle nicht über diese App vorgenommenen Lautstärkeänderungen werden zurückgesetzt, während dieses Gerät verbunden ist.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Lautstärke-Begrenzer</string>

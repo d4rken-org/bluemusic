@@ -15,6 +15,7 @@ import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.GraphicEq
 import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.PlayArrow
+import androidx.compose.material.icons.twotone.PowerOff
 import androidx.compose.material.icons.twotone.Speed
 import androidx.compose.material.icons.twotone.Visibility
 import androidx.compose.material3.Icon
@@ -44,6 +45,7 @@ fun OptionIndicators(
         if (device.keepAwake) add(Icons.TwoTone.BatteryFull to stringResource(R.string.devices_device_config_keep_awake_label))
         if (device.nudgeVolume) add(Icons.TwoTone.GraphicEq to stringResource(R.string.devices_device_config_nudge_volume_label))
         if (device.volumeObserving) add(Icons.TwoTone.Visibility to stringResource(R.string.devices_device_config_volume_observe_label))
+        if (device.volumeSaveOnDisconnect) add(Icons.TwoTone.PowerOff to stringResource(R.string.devices_device_config_volume_save_on_disconnect_label))
         if (device.volumeRateLimiter) add(Icons.TwoTone.Speed to stringResource(R.string.devices_device_config_volume_rate_limiter_label))
         if (device.autoplay) add(Icons.TwoTone.PlayArrow to "Autoplay")
     }
@@ -103,6 +105,7 @@ fun OptionIndicators(
                             Icons.TwoTone.BatteryFull -> "Awake"
                             Icons.TwoTone.GraphicEq -> "Nudge"
                             Icons.TwoTone.Visibility -> "Observe"
+                            Icons.TwoTone.PowerOff -> "Disconnect"
                             Icons.TwoTone.Speed -> "Limit"
                             Icons.AutoMirrored.TwoTone.Launch -> "Launch"
                             Icons.TwoTone.PlayArrow -> "Auto"

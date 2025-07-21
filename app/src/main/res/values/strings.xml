@@ -57,6 +57,8 @@
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
     <string name="devices_device_config_volume_observe_desc">Stay active while this device is connected and save volume changes that have not been caused by this app.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Save volume on disconnect</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Capture and save the current volume levels when this device disconnects.</string>
     <string name="devices_device_config_volume_lock_label">Volume lock</string>
     <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volume rate limiter</string>

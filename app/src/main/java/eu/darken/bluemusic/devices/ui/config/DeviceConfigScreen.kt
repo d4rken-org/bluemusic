@@ -15,6 +15,7 @@ import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.GraphicEq
 import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.PlayArrow
+import androidx.compose.material.icons.twotone.PowerOff
 import androidx.compose.material.icons.twotone.Schedule
 import androidx.compose.material.icons.twotone.Speed
 import androidx.compose.material.icons.twotone.Timer
@@ -331,6 +332,14 @@ fun DeviceConfigScreen(
                             isChecked = device.volumeObserving,
                             icon = Icons.TwoTone.Visibility,
                             onCheckedChange = { onAction(ConfigAction.OnToggleVolumeObserving) }
+                        )
+
+                        SwitchPreference(
+                            title = stringResource(R.string.devices_device_config_volume_save_on_disconnect_label),
+                            description = stringResource(R.string.devices_device_config_volume_save_on_disconnect_desc),
+                            isChecked = device.volumeSaveOnDisconnect,
+                            icon = Icons.TwoTone.PowerOff,
+                            onCheckedChange = { onAction(ConfigAction.OnToggleVolumeSaveOnDisconnect) }
                         )
 
                         SwitchPreference(

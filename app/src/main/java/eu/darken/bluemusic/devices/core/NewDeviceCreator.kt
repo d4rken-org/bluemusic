@@ -37,7 +37,7 @@ class NewDeviceCreator @Inject constructor(
 
         if (device.deviceType == SourceDevice.Type.PHONE_SPEAKER) {
             config = config.copy(
-                volumeObserving = true,
+                volumeSaveOnDisconnect = true,
             )
         }
         deviceRepo.updateDevice(address) {

@@ -41,6 +41,8 @@ data class ManagedDevice(
         get() = config.volumeRateLimiter
     val volumeRateLimitMs: Long
         get() = config.volumeRateLimitMs ?: 1000L // Default to 1 second
+    val volumeSaveOnDisconnect: Boolean
+        get() = config.volumeSaveOnDisconnect
     val autoplay: Boolean
         get() = config.autoplay
 

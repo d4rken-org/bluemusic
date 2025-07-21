@@ -11,6 +11,7 @@ sealed interface ConfigAction {
     data object OnToggleAutoPlay : ConfigAction
     data object OnToggleVolumeLock : ConfigAction
     data object OnToggleVolumeObserving : ConfigAction
+    data object OnToggleVolumeSaveOnDisconnect : ConfigAction
     data object OnToggleVolumeRateLimiter : ConfigAction
     data object OnToggleKeepAwake : ConfigAction
     data object OnToggleNudgeVolume : ConfigAction

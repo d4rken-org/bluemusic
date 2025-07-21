@@ -46,6 +46,8 @@
     <string name="devices_device_config_keep_awake_desc">Garder l\'écran allumé quand cet appareil est connecté.</string>
     <string name="devices_device_config_volume_observe_label">Observer les changements</string>
     <string name="devices_device_config_volume_observe_desc">Rester actif pendant que ce périphérique est connecté et enregistrer les changements de volume qui n\'ont pas été causés par cette application.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Sauvegarder le volume à la déconnexion</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Capturer et sauvegarder les niveaux de volume actuels lorsque ce périphérique se déconnecte.</string>
     <string name="devices_device_config_volume_lock_label">Verrouillage du volume</string>
     <string name="devices_device_config_volume_lock_desc">Tout changement de volume qui ne sera pas effectué grâce à cette appli sera annulé tant que cet appareil est connecté.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limiteur de débit de volume</string>

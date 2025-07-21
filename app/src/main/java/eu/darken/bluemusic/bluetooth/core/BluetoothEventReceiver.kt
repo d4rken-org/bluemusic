@@ -20,6 +20,7 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.modules.volume.VolumeDisconnectModule
 import eu.darken.bluemusic.monitor.core.worker.MonitorControl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
@@ -36,6 +37,7 @@ class BluetoothEventReceiver : BroadcastReceiver() {
     @Inject lateinit var deviceRepo: DeviceRepo
     @Inject lateinit var dispatcherProvider: DispatcherProvider
     @Inject lateinit var monitorControl: MonitorControl
+    @Inject lateinit var volumeDisconnectModule: VolumeDisconnectModule
 
     private lateinit var context: Context
     private val validActions = listOf(
@@ -77,35 +79,43 @@ class BluetoothEventReceiver : BroadcastReceiver() {
             log(TAG, WARN) { "Intent didn't contain a bluetooth device!" }
             return
         }
-        when (intent.action) {
-            BluetoothDevice.ACTION_ACL_CONNECTED -> {
-                log(TAG, INFO) { "Device has connected: $bluetoothDevice" }
-
-            }
-
-            BluetoothDevice.ACTION_ACL_DISCONNECTED -> {
-                log(TAG, INFO) { "Device has disconnected: $bluetoothDevice" }
-
-            }
-
-            else -> {
-                log(TAG, WARN) { "Invalid action: ${intent.action}" }
-                null
-            }
-        }
-
 
         val devices = deviceRepo.currentDevices()
         log(TAG, DEBUG) { "Current devices: $devices" }
 
         val managedDevice = devices.singleOrNull { device -> device.address == bluetoothDevice.address }
         if (managedDevice == null) {
-            log(TAG, DEBUG) { "Eventbelongs to an un-managed device" }
+            log(TAG, DEBUG) { "Event belongs to an un-managed device" }
             return
         }
 
         log(TAG, DEBUG) { "Event concerns device $managedDevice" }
-        monitorControl.startMonitor()
+
+        when (intent.action) {
+            BluetoothDevice.ACTION_ACL_CONNECTED -> {
+                log(TAG, INFO) { "Device has connected: $bluetoothDevice" }
+                monitorControl.startMonitor()
+            }
+
+            BluetoothDevice.ACTION_ACL_DISCONNECTED -> {
+                log(TAG, INFO) { "Device has disconnected: $bluetoothDevice" }
+
+                // Save volumes before the device fully disconnects
+                if (managedDevice.volumeSaveOnDisconnect) {
+                    try {
+                        volumeDisconnectModule.saveVolumesOnDisconnect(managedDevice)
+                    } catch (e: Exception) {
+                        log(TAG, ERROR) { "Error saving volumes on disconnect: ${e.asLog()}" }
+                    }
+                }
+
+                monitorControl.startMonitor()
+            }
+
+            else -> {
+                log(TAG, WARN) { "Invalid action: ${intent.action}" }
+            }
+        }
     }
 
     companion object {

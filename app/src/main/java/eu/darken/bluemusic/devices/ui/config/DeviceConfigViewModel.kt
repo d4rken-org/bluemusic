@@ -401,6 +401,10 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 )
             }
 
+            is ConfigAction.OnToggleVolumeSaveOnDisconnect -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                oldConfig.copy(volumeSaveOnDisconnect = !oldConfig.volumeSaveOnDisconnect)
+            }
+
             is ConfigAction.OnToggleVolumeRateLimiter -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
                 oldConfig.copy(
                     volumeRateLimiter = !oldConfig.volumeRateLimiter,

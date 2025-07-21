@@ -154,7 +154,7 @@ class BluetoothRepo @Inject constructor(
     private val hasPermission = flow {
         while (coroutineContext.isActive) {
             emit(permissionHelper.hasBluetoothPermission())
-            delay(3000)
+            delay(1000)
         }
     }.distinctUntilChanged()
 

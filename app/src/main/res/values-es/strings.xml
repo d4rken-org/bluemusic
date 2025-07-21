@@ -46,6 +46,8 @@
     <string name="devices_device_config_keep_awake_desc">Mantener la pantalla encendida mientras este dispositivo está conectado.</string>
     <string name="devices_device_config_volume_observe_label">Observar cambios</string>
     <string name="devices_device_config_volume_observe_desc">Mantente activo mientras este dispositivo está conectado y guarda los cambios de volumen que no han sido causados por esta aplicación.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Guardar volumen al desconectar</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Captura y guarda los niveles de volumen actuales cuando este dispositivo se desconecta.</string>
     <string name="devices_device_config_volume_lock_label">Bloqueo de volumen</string>
     <string name="devices_device_config_volume_lock_desc">Cualquier cambio de volumen no realizado a través de esta aplicación se revertirá mientras este dispositivo esté conectado.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitador de velocidad de volumen</string>
