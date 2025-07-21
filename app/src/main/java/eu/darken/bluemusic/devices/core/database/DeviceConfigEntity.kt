@@ -66,4 +66,7 @@ data class DeviceConfigEntity(
 
     @ColumnInfo(name = "launch_pkgs", defaultValue = "[]")
     val launchPkgs: List<String> = emptyList(),
+
+    @ColumnInfo(name = "show_home_screen", defaultValue = "false")
+    val showHomeScreen: Boolean = false,
 )

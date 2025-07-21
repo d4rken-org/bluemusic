@@ -45,6 +45,8 @@ data class ManagedDevice(
         get() = config.volumeSaveOnDisconnect
     val autoplay: Boolean
         get() = config.autoplay
+    val showHomeScreen: Boolean
+        get() = config.showHomeScreen
 
     fun getVolume(type: AudioStream.Type): Float? = when (type) {
         AudioStream.Type.MUSIC -> config.musicVolume

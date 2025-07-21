@@ -51,6 +51,8 @@
     <string name="devices_device_config_launch_app_label">Launch apps</string>
     <string name="devices_device_config_launch_app_desc">Launch apps when this device connects.</string>
     <string name="devices_device_config_launch_app_multiple_desc">%d apps selected</string>
+    <string name="devices_device_config_show_home_screen_label">Show home screen</string>
+    <string name="devices_device_config_show_home_screen_desc">After all events are processed for this device, try to show the home screen. This may not work on all Android versions.</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
@@ -273,7 +275,7 @@
     <string name="battery_optimization_hint_message">Battery optimizations are enabled and may prevent proper operation. Consider disabling them.</string>
     <string name="battery_optimization_fix_action">Disable optimizations</string>
     <string name="android10_applaunch_hint_title">App launch permission</string>
-    <string name="android10_applaunch_hint_message">Android 10 requires special permission to launch apps from background. Grant "Display over other apps" permission.</string>
+    <string name="android10_applaunch_hint_message">Android 10 requires special permission to launch apps or show the home screen from background. Grant "Display over other apps" permission.</string>
     <string name="notification_permission_hint_title">Notification permission</string>
     <string name="notification_permission_hint_message">Grant notification permission to see status updates when adjusting volumes.</string>
 

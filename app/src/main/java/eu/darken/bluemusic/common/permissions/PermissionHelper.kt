@@ -89,9 +89,9 @@ class PermissionHelper @Inject constructor(
         }
     }
 
-    fun getOverlayPermissionHint(isDismissed: Boolean, hasDevicesWithLaunchPkg: Boolean): PermissionHint {
+    fun getOverlayPermissionHint(isDismissed: Boolean, hasDevicesNeedingOverlay: Boolean): PermissionHint {
         val shouldShow = hasApiLevel(Build.VERSION_CODES.Q) &&
-                hasDevicesWithLaunchPkg &&
+                hasDevicesNeedingOverlay &&
                 needsOverlayPermission() &&
                 !isDismissed
         return if (shouldShow) {

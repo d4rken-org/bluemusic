@@ -40,6 +40,8 @@
     <string name="devices_device_config_section_reaction_label">Reaktion</string>
     <string name="devices_device_config_launch_app_label">App starten</string>
     <string name="devices_device_config_launch_app_desc">Starte eine App, wenn sich dieses Gerät verbindet.</string>
+    <string name="devices_device_config_show_home_screen_label">Startbildschirm anzeigen</string>
+    <string name="devices_device_config_show_home_screen_desc">Nachdem alle Ereignisse für dieses Gerät verarbeitet wurden, versuche den Startbildschirm anzuzeigen. Das funktioniert möglicherweise nicht auf allen Android-Versionen.</string>
     <string name="devices_device_config_nudge_volume_label">Lautstärke anstoßen</string>
     <string name="devices_device_config_nudge_volume_description">Senken und dann erhöhen Sie die Lautstärke um eine Stufe, auch wenn die gewünschte Lautstärke (laut System) bereits eingestellt ist.</string>
     <string name="devices_device_config_keep_awake_label">Wach bleiben</string>
@@ -224,7 +226,7 @@
     <string name="battery_optimization_hint_message">Batterieoptimierungen sind aktiviert und können den ordnungsgemäßen Betrieb verhindern. Erwägen Sie, sie zu deaktivieren.</string>
     <string name="battery_optimization_fix_action">Optimierungen deaktivieren</string>
     <string name="android10_applaunch_hint_title">App-Startberechtigung</string>
-    <string name="android10_applaunch_hint_message">Android 10 erfordert eine spezielle Berechtigung, um Apps aus dem Hintergrund zu starten. Erteilen Sie die Berechtigung \&quot;Über anderen Apps anzeigen\&quot;.</string>
+    <string name="android10_applaunch_hint_message">Android 10 erfordert eine spezielle Berechtigung, um Apps zu starten oder den Startbildschirm aus dem Hintergrund anzuzeigen. Erteilen Sie die Berechtigung \&quot;Über anderen Apps anzeigen\&quot;.</string>
     <string name="notification_permission_hint_title">Benachrichtigungsberechtigung</string>
     <string name="notification_permission_hint_message">Erteilen Sie die Benachrichtigungsberechtigung, um Statusaktualisierungen beim Anpassen der Lautstärke zu sehen.</string>
     <string name="error_iap_cancelled_message">Kauf abgebrochen</string>

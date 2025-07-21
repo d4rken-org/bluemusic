@@ -5,8 +5,8 @@ import android.content.Intent
 import android.net.Uri
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.common.coroutine.AppScope
-import eu.darken.bluemusic.common.debug.logging.Logging
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -81,8 +81,17 @@ class AppRepo @Inject constructor(
         }
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
-        log(TAG, Logging.Priority.INFO) { "Launching: $intent" }
+        log(TAG, INFO) { "Launching: $intent" }
         context.startActivity(intent)
+    }
+
+    fun goToHomeScreen() {
+        val homeIntent = Intent(Intent.ACTION_MAIN).apply {
+            addCategory(Intent.CATEGORY_HOME)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        log(TAG, INFO) { "Going to home screen" }
+        context.startActivity(homeIntent)
     }
 
     private fun tryGetLauncherIntent(pkg: String): Intent? {

@@ -384,6 +384,10 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 oldConfig.copy(nudgeVolume = !oldConfig.nudgeVolume)
             }
 
+            is ConfigAction.OnToggleShowHomeScreen -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                oldConfig.copy(showHomeScreen = !oldConfig.showHomeScreen)
+            }
+
             is ConfigAction.OnToggleVolumeLock -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
                 oldConfig.copy(
                     volumeLock = !oldConfig.volumeLock,

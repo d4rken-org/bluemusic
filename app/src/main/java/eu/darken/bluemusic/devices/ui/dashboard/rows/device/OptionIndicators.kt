@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.Launch
 import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.GraphicEq
+import androidx.compose.material.icons.twotone.Home
 import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.PlayArrow
 import androidx.compose.material.icons.twotone.PowerOff
@@ -48,6 +49,7 @@ fun OptionIndicators(
         if (device.volumeSaveOnDisconnect) add(Icons.TwoTone.PowerOff to stringResource(R.string.devices_device_config_volume_save_on_disconnect_label))
         if (device.volumeRateLimiter) add(Icons.TwoTone.Speed to stringResource(R.string.devices_device_config_volume_rate_limiter_label))
         if (device.autoplay) add(Icons.TwoTone.PlayArrow to "Autoplay")
+        if (device.showHomeScreen) add(Icons.TwoTone.Home to stringResource(R.string.devices_device_config_show_home_screen_label))
     }
 
     val hasLaunchApps = launchApps.isNotEmpty()
@@ -109,6 +111,7 @@ fun OptionIndicators(
                             Icons.TwoTone.Speed -> "Limit"
                             Icons.AutoMirrored.TwoTone.Launch -> "Launch"
                             Icons.TwoTone.PlayArrow -> "Auto"
+                            Icons.TwoTone.Home -> "Home"
                             else -> ""
                         },
                         style = MaterialTheme.typography.labelSmall,

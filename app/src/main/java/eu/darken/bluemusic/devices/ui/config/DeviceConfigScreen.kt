@@ -13,6 +13,7 @@ import androidx.compose.material.icons.automirrored.twotone.ArrowBack
 import androidx.compose.material.icons.automirrored.twotone.Launch
 import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.GraphicEq
+import androidx.compose.material.icons.twotone.Home
 import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.PlayArrow
 import androidx.compose.material.icons.twotone.PowerOff
@@ -390,6 +391,14 @@ fun DeviceConfigScreen(
                             },
                             icon = Icons.AutoMirrored.TwoTone.Launch,
                             onClick = { onAction(ConfigAction.OnLaunchAppClicked) },
+                        )
+
+                        SwitchPreference(
+                            title = stringResource(R.string.devices_device_config_show_home_screen_label),
+                            description = stringResource(R.string.devices_device_config_show_home_screen_desc),
+                            isChecked = device.showHomeScreen,
+                            icon = Icons.TwoTone.Home,
+                            onCheckedChange = { onAction(ConfigAction.OnToggleShowHomeScreen) }
                         )
 
                         Spacer(modifier = Modifier.height(8.dp))
