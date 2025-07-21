@@ -8,18 +8,24 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.retryWhen
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
 import java.time.Instant
 import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.math.pow
 
 @Singleton
 class UpgradeRepoFoss @Inject constructor(
-    @param:AppScope private val appScope: CoroutineScope,
+    @param:AppScope private val scope: CoroutineScope,
     private val fossCache: FossCache,
     private val webpageTool: WebpageTool,
 ) : UpgradeRepo {
@@ -43,8 +49,15 @@ class UpgradeRepoFoss @Inject constructor(
         }
     }
         .setupCommonEventHandlers(TAG) { "upgradeInfo" }
+        .distinctUntilChanged()
+        .retryWhen { error, attempt ->
+            emit(Info(error = error))
+            delay(30_000L * 2.0.pow(attempt.toDouble()).toLong())
+            true
+        }
+        .shareIn(scope, SharingStarted.WhileSubscribed(3000L, 0L), replay = 1)
 
-    fun launchGithubSponsorsUpgrade() = appScope.launch {
+    fun launchGithubSponsorsUpgrade() = scope.launch {
         log(TAG) { "launchGithubSponsorsUpgrade()" }
         fossCache.upgrade.valueBlocking = FossUpgrade(
             upgradedAt = Instant.now(),
@@ -62,6 +75,7 @@ class UpgradeRepoFoss @Inject constructor(
         override val isUpgraded: Boolean = false,
         override val upgradedAt: Instant? = null,
         val fossUpgradeType: FossUpgrade.Type? = null,
+        override val error: Throwable? = null,
     ) : UpgradeRepo.Info {
         override val type: UpgradeRepo.Type = UpgradeRepo.Type.FOSS
     }
