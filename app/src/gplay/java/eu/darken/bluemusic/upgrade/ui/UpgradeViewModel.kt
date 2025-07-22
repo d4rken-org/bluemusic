@@ -72,7 +72,7 @@ class UpgradeViewModel @Inject constructor(
             )
         }
 
-        val iapOffer = iap?.firstOrNull()?.details?.oneTimePurchaseOfferDetails
+        val iapOffer = iap?.singleOrNull { it.sku.id == OurSku.Iap.PRO_UPGRADE.id }?.details?.oneTimePurchaseOfferDetails
         val iapState = State.Iap(
             available = iapOffer != null && current.upgrades.none { it.sku == OurSku.Iap.PRO_UPGRADE },
             formattedPrice = iapOffer?.formattedPrice,

@@ -29,8 +29,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -50,6 +52,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.ui.waitForState
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.ui.config.components.ClickablePreference
@@ -83,6 +86,9 @@ fun DeviceConfigScreenHost(
     var showAdjustmentDelayDialog by remember { mutableStateOf<Duration?>(null) }
     var showVolumeRateLimitDialog by remember { mutableStateOf<Duration?>(null) }
 
+    val upgradeMessage = stringResource(R.string.upgrade_feature_requires_pro)
+    val upgradeAction = stringResource(R.string.upgrade_prompt_upgrade_action)
+
     LaunchedEffect(vm.events) {
         vm.events.collect { event ->
             when (event) {
@@ -93,6 +99,16 @@ fun DeviceConfigScreenHost(
                 is ConfigEvent.ShowAdjustmentDelayDialog -> showAdjustmentDelayDialog = event.currentValue
                 is ConfigEvent.ShowVolumeRateLimitDialog -> showVolumeRateLimitDialog = event.currentValue
                 is ConfigEvent.NavigateBack -> vm.navUp()
+                is ConfigEvent.RequiresPro -> {
+                    val result = snackbarHostState.showSnackbar(
+                        message = upgradeMessage,
+                        actionLabel = upgradeAction,
+                        duration = SnackbarDuration.Short
+                    )
+                    if (result == SnackbarResult.ActionPerformed) {
+                        vm.navTo(Nav.Main.Upgrade)
+                    }
+                }
             }
         }
     }
@@ -316,7 +332,9 @@ fun DeviceConfigScreen(
                             description = stringResource(R.string.devices_device_config_autoplay_desc),
                             isChecked = device.autoplay,
                             icon = Icons.TwoTone.PlayArrow,
-                            onCheckedChange = { onAction(ConfigAction.OnToggleAutoPlay) }
+                            onCheckedChange = { onAction(ConfigAction.OnToggleAutoPlay) },
+                            requiresPro = true,
+                            isProVersion = state.isProVersion
                         )
 
                         SwitchPreference(
@@ -324,7 +342,9 @@ fun DeviceConfigScreen(
                             description = stringResource(R.string.devices_device_config_volume_lock_desc),
                             isChecked = device.volumeLock,
                             icon = Icons.TwoTone.Lock,
-                            onCheckedChange = { onAction(ConfigAction.OnToggleVolumeLock) }
+                            onCheckedChange = { onAction(ConfigAction.OnToggleVolumeLock) },
+                            requiresPro = true,
+                            isProVersion = state.isProVersion
                         )
 
                         SwitchPreference(
@@ -348,7 +368,9 @@ fun DeviceConfigScreen(
                             description = stringResource(R.string.devices_device_config_volume_rate_limiter_desc),
                             isChecked = device.volumeRateLimiter,
                             icon = Icons.TwoTone.Speed,
-                            onCheckedChange = { onAction(ConfigAction.OnToggleVolumeRateLimiter) }
+                            onCheckedChange = { onAction(ConfigAction.OnToggleVolumeRateLimiter) },
+                            requiresPro = true,
+                            isProVersion = state.isProVersion
                         )
 
                         if (device.volumeRateLimiter) {
@@ -391,6 +413,8 @@ fun DeviceConfigScreen(
                             },
                             icon = Icons.AutoMirrored.TwoTone.Launch,
                             onClick = { onAction(ConfigAction.OnLaunchAppClicked) },
+                            requiresPro = true,
+                            isProVersion = state.isProVersion
                         )
 
                         SwitchPreference(
@@ -398,7 +422,9 @@ fun DeviceConfigScreen(
                             description = stringResource(R.string.devices_device_config_show_home_screen_desc),
                             isChecked = device.showHomeScreen,
                             icon = Icons.TwoTone.Home,
-                            onCheckedChange = { onAction(ConfigAction.OnToggleShowHomeScreen) }
+                            onCheckedChange = { onAction(ConfigAction.OnToggleShowHomeScreen) },
+                            requiresPro = true,
+                            isProVersion = state.isProVersion
                         )
 
                         Spacer(modifier = Modifier.height(8.dp))

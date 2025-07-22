@@ -10,4 +10,5 @@ sealed interface ConfigEvent {
     data class ShowAdjustmentDelayDialog(val currentValue: Duration) : ConfigEvent
     data class ShowVolumeRateLimitDialog(val currentValue: Duration) : ConfigEvent
     data object NavigateBack : ConfigEvent
+    data object RequiresPro : ConfigEvent
 }

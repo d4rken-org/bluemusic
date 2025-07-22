@@ -17,6 +17,7 @@ import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
+import eu.darken.bluemusic.common.upgrade.isPro
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
@@ -360,7 +361,11 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnLaunchAppClicked -> {
-                navTo(Nav.Main.AppSelection(deviceAddress))
+                if (!upgradeRepo.isPro()) {
+                    events.emit(ConfigEvent.RequiresPro)
+                } else {
+                    navTo(Nav.Main.AppSelection(deviceAddress))
+                }
             }
 
             is ConfigAction.OnRename -> {
@@ -372,8 +377,14 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 events.emit(ConfigEvent.ShowRenameDialog(device.label))
             }
 
-            is ConfigAction.OnToggleAutoPlay -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                oldConfig.copy(autoplay = !oldConfig.autoplay)
+            is ConfigAction.OnToggleAutoPlay -> {
+                if (!upgradeRepo.isPro()) {
+                    events.emit(ConfigEvent.RequiresPro)
+                } else {
+                    deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                        oldConfig.copy(autoplay = !oldConfig.autoplay)
+                    }
+                }
             }
 
             is ConfigAction.OnToggleKeepAwake -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
@@ -384,16 +395,28 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 oldConfig.copy(nudgeVolume = !oldConfig.nudgeVolume)
             }
 
-            is ConfigAction.OnToggleShowHomeScreen -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                oldConfig.copy(showHomeScreen = !oldConfig.showHomeScreen)
+            is ConfigAction.OnToggleShowHomeScreen -> {
+                if (!upgradeRepo.isPro()) {
+                    events.emit(ConfigEvent.RequiresPro)
+                } else {
+                    deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                        oldConfig.copy(showHomeScreen = !oldConfig.showHomeScreen)
+                    }
+                }
             }
 
-            is ConfigAction.OnToggleVolumeLock -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                oldConfig.copy(
-                    volumeLock = !oldConfig.volumeLock,
-                    volumeObserving = if (oldConfig.volumeObserving && !oldConfig.volumeLock) false else oldConfig.volumeObserving,
-                    volumeRateLimiter = if (oldConfig.volumeRateLimiter && !oldConfig.volumeLock) false else oldConfig.volumeRateLimiter,
-                )
+            is ConfigAction.OnToggleVolumeLock -> {
+                if (!upgradeRepo.isPro()) {
+                    events.emit(ConfigEvent.RequiresPro)
+                } else {
+                    deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                        oldConfig.copy(
+                            volumeLock = !oldConfig.volumeLock,
+                            volumeObserving = if (oldConfig.volumeObserving && !oldConfig.volumeLock) false else oldConfig.volumeObserving,
+                            volumeRateLimiter = if (oldConfig.volumeRateLimiter && !oldConfig.volumeLock) false else oldConfig.volumeRateLimiter,
+                        )
+                    }
+                }
             }
 
             is ConfigAction.OnToggleVolumeObserving -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
@@ -407,11 +430,17 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 oldConfig.copy(volumeSaveOnDisconnect = !oldConfig.volumeSaveOnDisconnect)
             }
 
-            is ConfigAction.OnToggleVolumeRateLimiter -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                oldConfig.copy(
-                    volumeRateLimiter = !oldConfig.volumeRateLimiter,
-                    volumeLock = if (oldConfig.volumeLock && !oldConfig.volumeRateLimiter) false else oldConfig.volumeLock,
-                )
+            is ConfigAction.OnToggleVolumeRateLimiter -> {
+                if (!upgradeRepo.isPro()) {
+                    events.emit(ConfigEvent.RequiresPro)
+                } else {
+                    deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                        oldConfig.copy(
+                            volumeRateLimiter = !oldConfig.volumeRateLimiter,
+                            volumeLock = if (oldConfig.volumeLock && !oldConfig.volumeRateLimiter) false else oldConfig.volumeLock,
+                        )
+                    }
+                }
             }
 
             is ConfigAction.OnToggleVolume -> {

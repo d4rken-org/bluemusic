@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.GraphicEq
 import androidx.compose.material.icons.twotone.Lock
+import androidx.compose.material.icons.twotone.Stars
 import androidx.compose.material.icons.twotone.Timer
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -29,7 +30,9 @@ fun SwitchPreference(
     isChecked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     icon: ImageVector? = null,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    requiresPro: Boolean = false,
+    isProVersion: Boolean = true
 ) {
     Row(
         modifier = modifier
@@ -63,12 +66,21 @@ fun SwitchPreference(
             )
         }
 
-        // Switch
-        Switch(
-            checked = isChecked,
-            onCheckedChange = null, // Disable direct switch interaction
-            modifier = Modifier.padding(start = 16.dp)
-        )
+        // Switch or Upgrade icon
+        if (requiresPro && !isProVersion) {
+            Icon(
+                imageVector = Icons.TwoTone.Stars,
+                contentDescription = "Pro feature",
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.padding(start = 16.dp)
+            )
+        } else {
+            Switch(
+                checked = isChecked,
+                onCheckedChange = null, // Disable direct switch interaction
+                modifier = Modifier.padding(start = 16.dp)
+            )
+        }
     }
 }
 
@@ -79,7 +91,9 @@ fun ClickablePreference(
     icon: ImageVector,
     onClick: () -> Unit,
     textColor: Color? = null,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    requiresPro: Boolean = false,
+    isProVersion: Boolean = true
 ) {
     Row(
         modifier = modifier
@@ -112,6 +126,16 @@ fun ClickablePreference(
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
+        }
+
+        // Upgrade icon for pro features
+        if (requiresPro && !isProVersion) {
+            Icon(
+                imageVector = Icons.TwoTone.Stars,
+                contentDescription = "Pro feature",
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.padding(start = 16.dp)
+            )
         }
     }
 }
