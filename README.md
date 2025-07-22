@@ -1,4 +1,4 @@
-<img src="https://github.com/d4rken/bluemusic/raw/master/art/Banner%201.png" width="400">
+<img src="https://github.com/d4rken/bluemusic/raw/master/fastlane/metadata/android/en-US/images/featureGraphic.png" width="400">
 
 # Bluetooth Volume Manager
 
