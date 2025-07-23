@@ -25,10 +25,9 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import eu.darken.bluemusic.common.flow.throttleLatest
-import eu.darken.bluemusic.common.flow.withPrevious
 import eu.darken.bluemusic.devices.core.DeviceRepo
-import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
+import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
@@ -46,7 +45,6 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
@@ -67,6 +65,7 @@ class MonitorWorker @AssistedInject constructor(
     private val connectionModuleMap: Set<@JvmSuppressWildcards ConnectionModule>,
     private val volumeModuleMap: Set<@JvmSuppressWildcards VolumeModule>,
     private val volumeObserver: VolumeObserver,
+    private val bluetoothEventQueue: BluetoothEventQueue,
 ) : CoroutineWorker(context, params) {
 
     private val workerScope = CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
@@ -126,16 +125,10 @@ class MonitorWorker @AssistedInject constructor(
             .catch { log(TAG, WARN) { "Volume monitor flow failed:\n${it.asLog()}" } }
             .launchIn(workerScope)
 
-        deviceRepo.devices
-            .setupCommonEventHandlers(TAG) { "Connection monitor" }
-            .distinctUntilChangedBy { devices ->
-                devices.map { device -> device.address to device.isActive }.toSet()
-            }
-            .withPrevious()
-            .onEach { (before, current) ->
-                handleConnectionChange(before ?: emptyList(), current)
-            }
-            .catch { log(TAG, WARN) { "Connection monitor flow failed:\n${it.asLog()}" } }
+        bluetoothEventQueue.events
+            .setupCommonEventHandlers(TAG) { "Event monitor" }
+            .onEach { event -> handleBluetoothEvent(event) }
+            .catch { log(TAG, WARN) { "Event monitor flow failed:\n${it.asLog()}" } }
             .launchIn(workerScope)
 
         val monitorJob = deviceRepo.devices
@@ -153,7 +146,7 @@ class MonitorWorker @AssistedInject constructor(
 
                 val stayActive = activeDevices.any { it.volumeLock || it.volumeObserving || it.volumeRateLimiter }
                 val maxMonitoringDuration = activeDevices.maxOf { it.monitoringDuration }
-                log(TAG) { "Maximum monitoring duration: $maxMonitoringDuration (stayActive=$stayActive" }
+                log(TAG) { "Maximum monitoring duration: $maxMonitoringDuration (stayActive=$stayActive)" }
 
                 when {
                     activeDevices.isNotEmpty() && stayActive -> {
@@ -199,56 +192,26 @@ class MonitorWorker @AssistedInject constructor(
         }
     }
 
-    private suspend fun handleConnectionChange(
-        before: List<ManagedDevice>,
-        current: List<ManagedDevice>,
+    private suspend fun handleBluetoothEvent(
+        bluetoothEvent: BluetoothEventQueue.Event,
     ) {
-        // Create maps for easier lookup
-        val beforeMap = before.associateBy { it.address }
-        log(TAG) { "handleConnection: Before map: $beforeMap" }
-        val currentMap = current.associateBy { it.address }
-        log(TAG) { "handleConnection: Current map: $currentMap" }
+        log(TAG) { "handleBluetoothEvent: Handling $bluetoothEvent" }
+        val managedDevice = deviceRepo.getDevice(bluetoothEvent.sourceDevice.address)
 
-        val connectedDevices = mutableListOf<ManagedDevice>()
-        val disconnectedDevices = mutableListOf<ManagedDevice>()
-
-        currentMap.forEach { (address, currentDevice) ->
-            val beforeDevice = beforeMap[address]
-            when {
-                // New device that's active (monitor just started)
-                beforeDevice == null && currentDevice.isActive -> {
-                    connectedDevices.add(currentDevice)
-                }
-                // Device exists in both lists and active state changed
-                beforeDevice != null && beforeDevice.isActive != currentDevice.isActive -> {
-                    if (currentDevice.isActive) {
-                        connectedDevices.add(currentDevice)
-                    } else {
-                        disconnectedDevices.add(currentDevice)
-                    }
-                }
-            }
+        if (managedDevice == null) {
+            log(TAG, WARN) { "Can't find managed device for $bluetoothEvent" }
+            return
         }
 
-        beforeMap.forEach { (address, beforeDevice) ->
-            if (!currentMap.containsKey(address) && beforeDevice.isActive) {
-                disconnectedDevices.add(beforeDevice)
-            }
+        val deviceEvent = when (bluetoothEvent.type) {
+            BluetoothEventQueue.Event.Type.CONNECTED -> DeviceEvent.Connected(managedDevice)
+            BluetoothEventQueue.Event.Type.DISCONNECTED -> DeviceEvent.Disconnected(managedDevice)
         }
-
-        log(TAG) { "handleConnection: Connected devices:\n${connectedDevices.joinToString("\n")}" }
-        log(TAG) { "handleConnection: Disconnected devices:\n${disconnectedDevices.joinToString("\n")}" }
 
         // TODO make this a module?
-        disconnectedDevices.forEach { dev ->
-            deviceRepo.updateDevice(dev.address) {
-                it.copy(lastConnected = System.currentTimeMillis())
-            }
+        deviceRepo.updateDevice(managedDevice.address) {
+            it.copy(lastConnected = System.currentTimeMillis())
         }
-
-        val events = mutableListOf<DeviceEvent>()
-        disconnectedDevices.forEach { events.add(DeviceEvent.Disconnected(it)) }
-        connectedDevices.forEach { events.add(DeviceEvent.Connected(it)) }
 
         val priorityArray = SparseArray<MutableList<ConnectionModule>>()
 
@@ -262,34 +225,32 @@ class MonitorWorker @AssistedInject constructor(
             list.add(module)
         }
 
-        for (event in events) {
-            log(TAG) { "handleConnection: Processing event: $event" }
+        log(TAG) { "handleBluetoothEvent: Processing event $deviceEvent" }
 
-            for (i in 0 until priorityArray.size) {
-                val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
-                log(TAG) {
-                    "handleConnection: ${currentPriorityModules.size} event modules at priority ${priorityArray.keyAt(i)}"
-                }
+        for (i in 0 until priorityArray.size) {
+            val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
+            log(TAG) {
+                "handleBluetoothEvent: ${currentPriorityModules.size} event modules at priority ${priorityArray.keyAt(i)}"
+            }
 
-                coroutineScope {
-                    currentPriorityModules.map { module ->
-                        async(dispatcherProvider.IO) {
-                            try {
-                                log(TAG, VERBOSE) {
-                                    "handleConnection: Event module ${module.tag} HANDLE-START for $event"
-                                }
-                                module.handle(event)
-                                log(TAG, VERBOSE) {
-                                    "handleConnection: Event module ${module.tag} HANDLE-STOP for $event"
-                                }
-                            } catch (e: Exception) {
-                                log(TAG, ERROR) {
-                                    "handleConnection: Event module error: ${module.tag} for $event: ${e.asLog()}"
-                                }
+            coroutineScope {
+                currentPriorityModules.map { module ->
+                    async(dispatcherProvider.IO) {
+                        try {
+                            log(TAG, VERBOSE) {
+                                "handleBluetoothEvent: ${module.tag} HANDLE-START for $deviceEvent"
+                            }
+                            module.handle(deviceEvent)
+                            log(TAG, VERBOSE) {
+                                "handleConnection: ${module.tag} HANDLE-STOP for $deviceEvent"
+                            }
+                        } catch (e: Exception) {
+                            log(TAG, ERROR) {
+                                "handleBluetoothEvent: Error: ${module.tag} for $deviceEvent: ${e.asLog()}"
                             }
                         }
-                    }.awaitAll()
-                }
+                    }
+                }.awaitAll()
             }
         }
     }

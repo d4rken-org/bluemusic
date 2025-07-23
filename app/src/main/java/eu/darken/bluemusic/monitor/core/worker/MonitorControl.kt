@@ -43,6 +43,11 @@ class MonitorControl @Inject constructor(
         log(TAG) { "Monitor start request send." }
     }
 
+    suspend fun waitTillLaunched() {
+        log(TAG) { "waitTillLaunched()" }
+        TODO("Not yet implemented")
+    }
+
     companion object {
         private val TAG = logTag("Monitor", "Control")
     }

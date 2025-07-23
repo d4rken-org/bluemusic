@@ -30,6 +30,6 @@ class FakeSpeakerDevice(
     }
 
     companion object {
-        private const val ADDRESS = "self:speaker:main"
+        internal const val ADDRESS = "self:speaker:main"
     }
 }
