@@ -65,8 +65,8 @@ data class ManagedDevice(
         return null
     }
 
-    private val defaultActionDelay: Duration = Duration.ofMillis(4000)
-    private val defaultMonitoringDuration: Duration = Duration.ofMillis(4000)
+    private val defaultActionDelay: Duration = Duration.ofSeconds(4)
+    private val defaultMonitoringDuration: Duration = Duration.ofSeconds(4)
     private val defaultAdjustmentDelay: Duration = Duration.ofMillis(250)
 
     override fun toString(): String {

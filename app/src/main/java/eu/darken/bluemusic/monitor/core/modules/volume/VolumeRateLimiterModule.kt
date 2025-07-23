@@ -26,6 +26,9 @@ internal class VolumeRateLimiterModule @Inject constructor(
     private val deviceRepo: DeviceRepo,
 ) : VolumeModule {
 
+    override val tag: String
+        get() = TAG
+
     // Run before VolumeUpdateModule (priority 10) so it does not save the sudden change we revert
     override val priority: Int = 5
 

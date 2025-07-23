@@ -13,8 +13,8 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.EventModule
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -22,7 +22,10 @@ import javax.inject.Singleton
 class VolumeDisconnectModule @Inject constructor(
     private val streamHelper: StreamHelper,
     private val deviceRepo: DeviceRepo,
-) : EventModule {
+) : ConnectionModule {
+
+    override val tag: String
+        get() = TAG
 
     override val priority: Int = 1 // Run early to capture volumes before other modules
 
@@ -42,7 +45,7 @@ class VolumeDisconnectModule @Inject constructor(
             AudioStream.Type.entries.forEach { streamType ->
                 val currentVolume = device.getVolume(streamType)
                 if (currentVolume == null || currentVolume == -1f) return@forEach
-                
+
                 val streamId = device.getStreamId(streamType)
                 val actualVolume = streamHelper.getVolumePercentage(streamId)
                 put(streamType, actualVolume)
@@ -61,12 +64,12 @@ class VolumeDisconnectModule @Inject constructor(
             }
         }
 
-        log(TAG, INFO) { "Saved ${volumeUpdates.size} volume settings on disconnect for ${device.label}" }
+        log(TAG, INFO) { "Saved ${volumeUpdates.size} volume settings on disconnect for ${device.label}: $volumeUpdates" }
     }
 
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
-        @Binds @IntoSet abstract fun bind(entry: VolumeDisconnectModule): EventModule
+        @Binds @IntoSet abstract fun bind(entry: VolumeDisconnectModule): ConnectionModule
     }
 
     companion object {

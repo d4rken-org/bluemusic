@@ -45,7 +45,7 @@
             android:exported="false" />
 
         <receiver
-            android:name="eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiver"
+            android:name="eu.darken.bluemusic.monitor.core.receiver.MonitorEventReceiver"
             android:enabled="true"
             android:label="@string/app_name"
             android:exported="true">

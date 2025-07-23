@@ -10,7 +10,7 @@ import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.StreamHelper
-import eu.darken.bluemusic.monitor.core.modules.EventModule
+import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -27,6 +27,6 @@ class RingVolumeModule @Inject constructor(
 
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
-        @Binds @IntoSet abstract fun bind(entry: RingVolumeModule): EventModule
+        @Binds @IntoSet abstract fun bind(entry: RingVolumeModule): ConnectionModule
     }
 }

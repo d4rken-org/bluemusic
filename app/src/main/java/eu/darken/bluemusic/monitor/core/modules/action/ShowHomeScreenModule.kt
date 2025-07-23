@@ -8,15 +8,19 @@ import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.EventModule
+import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class ShowHomeScreenModule @Inject internal constructor(
     private val appRepo: AppRepo,
-) : EventModule {
+) : ConnectionModule {
+
+    override val tag: String
+        get() = TAG
 
     override val priority: Int = 100
 
@@ -26,13 +30,15 @@ class ShowHomeScreenModule @Inject internal constructor(
         val device = event.device
         if (!device.showHomeScreen) return
 
+        delayForReactionDelay(event)
+
         log(TAG) { "Showing home screen for device: ${device.label}" }
         appRepo.goToHomeScreen()
     }
 
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
-        @Binds @IntoSet abstract fun bind(entry: ShowHomeScreenModule): EventModule
+        @Binds @IntoSet abstract fun bind(entry: ShowHomeScreenModule): ConnectionModule
     }
 
     companion object {

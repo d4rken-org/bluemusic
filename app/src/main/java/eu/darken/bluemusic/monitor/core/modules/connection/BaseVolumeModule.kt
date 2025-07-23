@@ -9,19 +9,20 @@ import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.EventModule
+import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import kotlinx.coroutines.delay
 import java.time.Instant
 
 abstract class BaseVolumeModule(
     private val settings: DevicesSettings,
     private val streamHelper: StreamHelper
-) : EventModule {
+) : ConnectionModule {
 
     abstract val type: AudioStream.Type
 
-    private val tag: String
+    override val tag: String
         get() = logTag("Monitor", "$type", "Volume", "Module")
 
     override suspend fun handle(event: DeviceEvent) {
@@ -40,6 +41,8 @@ abstract class BaseVolumeModule(
             log(tag) { "Device $device has no specified target volume yet, skipping adjustments." }
             return
         }
+
+        delayForReactionDelay(event)
 
         setInitial(device, percentage)
 

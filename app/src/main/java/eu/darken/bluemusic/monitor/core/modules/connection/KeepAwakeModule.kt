@@ -11,8 +11,9 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.monitor.core.WakeLockManager
+import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.EventModule
+import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -20,13 +21,18 @@ import javax.inject.Singleton
 class KeepAwakeModule @Inject internal constructor(
     private val deviceRepo: DeviceRepo,
     private val wakeLockManager: WakeLockManager,
-) : EventModule {
+) : ConnectionModule {
+
+    override val tag: String
+        get() = TAG
 
     override val priority: Int = 3
 
     override suspend fun handle(event: DeviceEvent) {
         val device = event.device
         if (!device.keepAwake) return
+
+        delayForReactionDelay(event)
 
         val deviceMap = deviceRepo.currentDevices().associateBy { it.address }
         val hasAnyKeepAwakeDevice = deviceMap.values.any { d -> d.keepAwake && d.isActive }
@@ -51,7 +57,7 @@ class KeepAwakeModule @Inject internal constructor(
 
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
-        @Binds @IntoSet abstract fun bind(entry: KeepAwakeModule): EventModule
+        @Binds @IntoSet abstract fun bind(entry: KeepAwakeModule): ConnectionModule
     }
 
     companion object {

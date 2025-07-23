@@ -14,8 +14,9 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DevicesSettings
+import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.EventModule
+import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import kotlinx.coroutines.delay
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -24,7 +25,10 @@ import javax.inject.Singleton
 class AutoplayModule @Inject constructor(
     private val audioManager: AudioManager,
     private val devicesSettings: DevicesSettings,
-) : EventModule {
+) : ConnectionModule {
+
+    override val tag: String
+        get() = TAG
 
     override val priority: Int = 20
 
@@ -40,6 +44,8 @@ class AutoplayModule @Inject constructor(
             log(TAG, WARN) { "Autoplay enabled but no keycodes configured" }
             return
         }
+
+        delayForReactionDelay(event)
 
         // Send all keycodes in sequence
         for (keycode in autoplayKeycodes) {
@@ -80,7 +86,7 @@ class AutoplayModule @Inject constructor(
 
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
-        @Binds @IntoSet abstract fun bind(entry: AutoplayModule): EventModule
+        @Binds @IntoSet abstract fun bind(entry: AutoplayModule): ConnectionModule
     }
 
     companion object {

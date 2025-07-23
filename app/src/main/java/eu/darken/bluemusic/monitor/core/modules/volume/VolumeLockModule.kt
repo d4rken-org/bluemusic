@@ -22,6 +22,9 @@ internal class VolumeLockModule @Inject constructor(
     private val deviceRepo: DeviceRepo,
 ) : VolumeModule {
 
+    override val tag: String
+        get() = TAG
+
     override suspend fun handle(event: VolumeEvent) {
         val id = event.streamId
         val volume = event.newVolume

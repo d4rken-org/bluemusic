@@ -31,8 +31,8 @@ import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
+import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.EventModule
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import eu.darken.bluemusic.monitor.ui.MonitorNotifications
 import kotlinx.coroutines.CancellationException
@@ -52,7 +52,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.time.delay
+import java.time.Duration
 
 
 @HiltWorker
@@ -64,7 +64,7 @@ class MonitorWorker @AssistedInject constructor(
     private val notificationManager: NotificationManager,
     private val deviceRepo: DeviceRepo,
     private val bluetoothRepo: BluetoothRepo,
-    private val eventModuleMap: Set<@JvmSuppressWildcards EventModule>,
+    private val connectionModuleMap: Set<@JvmSuppressWildcards ConnectionModule>,
     private val volumeModuleMap: Set<@JvmSuppressWildcards VolumeModule>,
     private val volumeObserver: VolumeObserver,
 ) : CoroutineWorker(context, params) {
@@ -152,6 +152,9 @@ class MonitorWorker @AssistedInject constructor(
                 )
 
                 val stayActive = activeDevices.any { it.volumeLock || it.volumeObserving || it.volumeRateLimiter }
+                val maxMonitoringDuration = activeDevices.maxOf { it.monitoringDuration }
+                log(TAG) { "Maximum monitoring duration: $maxMonitoringDuration (stayActive=$stayActive" }
+
                 when {
                     activeDevices.isNotEmpty() && stayActive -> {
                         log(TAG) { "Staying connected for active devices." }
@@ -160,7 +163,8 @@ class MonitorWorker @AssistedInject constructor(
 
                     activeDevices.isNotEmpty() -> flow {
                         log(TAG) { "There are active devices but we don't need to stay active for them." }
-                        delay(60 * 1000)
+                        val toDelay = Duration.ofSeconds(15) + maxMonitoringDuration
+                        delay(toDelay.toMillis())
                         log(TAG) { "Canceling worker now, nothing changed." }
                         workerScope.coroutineContext.cancelChildren()
                     }
@@ -205,11 +209,9 @@ class MonitorWorker @AssistedInject constructor(
         val currentMap = current.associateBy { it.address }
         log(TAG) { "handleConnection: Current map: $currentMap" }
 
-        // Find devices that changed their active state
         val connectedDevices = mutableListOf<ManagedDevice>()
         val disconnectedDevices = mutableListOf<ManagedDevice>()
 
-        // Process devices where isActive state changed or new devices
         currentMap.forEach { (address, currentDevice) ->
             val beforeDevice = beforeMap[address]
             when {
@@ -228,37 +230,29 @@ class MonitorWorker @AssistedInject constructor(
             }
         }
 
-        // Check for devices that disappeared completely (were in before but not in current)
         beforeMap.forEach { (address, beforeDevice) ->
             if (!currentMap.containsKey(address) && beforeDevice.isActive) {
                 disconnectedDevices.add(beforeDevice)
             }
         }
 
-        connectedDevices.forEach { dev ->
+        log(TAG) { "handleConnection: Connected devices:\n${connectedDevices.joinToString("\n")}" }
+        log(TAG) { "handleConnection: Disconnected devices:\n${disconnectedDevices.joinToString("\n")}" }
+
+        // TODO make this a module?
+        disconnectedDevices.forEach { dev ->
             deviceRepo.updateDevice(dev.address) {
                 it.copy(lastConnected = System.currentTimeMillis())
             }
         }
 
-        log(TAG) { "handleConnection: Connected devices:\n${connectedDevices.joinToString("\n")}" }
-        log(TAG) { "handleConnection: Disconnected devices:\n${disconnectedDevices.joinToString("\n")}" }
-
         val events = mutableListOf<DeviceEvent>()
         disconnectedDevices.forEach { events.add(DeviceEvent.Disconnected(it)) }
         connectedDevices.forEach { events.add(DeviceEvent.Connected(it)) }
 
-        // Apply reaction delay only if there are connected devices
-        if (connectedDevices.isNotEmpty()) {
-            val connectedDevice = connectedDevices.first()
-            val reactionDelay = connectedDevice.actionDelay
-            log(TAG) { "handleConnection: Delaying reaction by $reactionDelay ms." }
-            delay(reactionDelay)
-        }
+        val priorityArray = SparseArray<MutableList<ConnectionModule>>()
 
-        val priorityArray = SparseArray<MutableList<EventModule>>()
-
-        for (module in eventModuleMap) {
+        for (module in connectionModuleMap) {
             val priority = module.priority
             var list = priorityArray.get(priority)
             if (list == null) {
@@ -268,7 +262,6 @@ class MonitorWorker @AssistedInject constructor(
             list.add(module)
         }
 
-        // Process all events
         for (event in events) {
             log(TAG) { "handleConnection: Processing event: $event" }
 
@@ -283,15 +276,15 @@ class MonitorWorker @AssistedInject constructor(
                         async(dispatcherProvider.IO) {
                             try {
                                 log(TAG, VERBOSE) {
-                                    "handleConnection: Event module $module HANDLE-START for $event"
+                                    "handleConnection: Event module ${module.tag} HANDLE-START for $event"
                                 }
                                 module.handle(event)
                                 log(TAG, VERBOSE) {
-                                    "handleConnection: Event module $module HANDLE-STOP for $event"
+                                    "handleConnection: Event module ${module.tag} HANDLE-STOP for $event"
                                 }
                             } catch (e: Exception) {
                                 log(TAG, ERROR) {
-                                    "handleConnection: Event module error: $module for $event: ${e.asLog()}"
+                                    "handleConnection: Event module error: ${module.tag} for $event: ${e.asLog()}"
                                 }
                             }
                         }
@@ -324,11 +317,11 @@ class MonitorWorker @AssistedInject constructor(
                 currentPriorityModules.map { module ->
                     async {
                         try {
-                            log(TAG, VERBOSE) { "handleVolune: Volume module $module HANDLE-START" }
+                            log(TAG, VERBOSE) { "handleVolune: Volume module ${module.tag} HANDLE-START" }
                             module.handle(event)
-                            log(TAG, VERBOSE) { "handleVolune: Volume module $module HANDLE-STOP" }
+                            log(TAG, VERBOSE) { "handleVolune: Volume module ${module.tag} HANDLE-STOP" }
                         } catch (e: Exception) {
-                            log(TAG, ERROR) { "handleVolune: Volume module error: $module: ${e.asLog()}" }
+                            log(TAG, ERROR) { "handleVolune: Volume module error: ${module.tag}: ${e.asLog()}" }
                         }
                     }
                 }.awaitAll()
