@@ -10,7 +10,6 @@ import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.DebugSettings
 import eu.darken.bluemusic.common.debug.logging.LogCatLogger
 import eu.darken.bluemusic.common.debug.logging.Logging
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
@@ -19,15 +18,11 @@ import eu.darken.bluemusic.devices.core.database.legacy.MigrationTool
 import eu.darken.bluemusic.legacy.LegacyMigration
 import eu.darken.bluemusic.main.core.CurriculumVitae
 import eu.darken.bluemusic.main.core.GeneralSettings
-import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import eu.darken.bluemusic.monitor.core.worker.MonitorControl
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.system.exitProcess
@@ -73,18 +68,18 @@ class App : Application(), Configuration.Provider {
             Thread.sleep(100)
         }
 
-        appScope.launch {
-            while (currentCoroutineContext().isActive) {
-                val volumes = mutableListOf<Pair<AudioStream.Id, Float>>()
-                AudioStream.Id.entries.forEach { id ->
-
-                    val curVol = streamHelper.getVolumePercentage(id)
-                    volumes.add(id to curVol)
-                }
-                log(TAG, DEBUG) { "Volumes: ${volumes.joinToString(", ")}" }
-                delay(100)
-            }
-        }
+//        appScope.launch {
+//            while (currentCoroutineContext().isActive) {
+//                val volumes = mutableListOf<Pair<AudioStream.Id, Float>>()
+//                AudioStream.Id.entries.forEach { id ->
+//
+//                    val curVol = streamHelper.getVolumePercentage(id)
+//                    volumes.add(id to curVol)
+//                }
+//                log(TAG, DEBUG) { "Volumes: ${volumes.joinToString(", ")}" }
+//                delay(100)
+//            }
+//        }
 
         appScope.launch {
             monitorControl.startMonitor(forceStart = true)
