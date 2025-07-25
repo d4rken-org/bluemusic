@@ -64,12 +64,13 @@ class MonitorNotifications @Inject constructor(
                 sb.append(device.label)
                 if (index < devices.size - 1) sb.append(", ")
             }
-            builder.setContentTitle(sb.toString())
+            setContentTitle(sb.toString())
 
             val extraFlags = mutableListOf<String>()
             var listening = false
             var locking = false
             var waking = false
+            var limiting = false
 
             for (dev in devices) {
                 if (!dev.isActive) continue
@@ -89,14 +90,19 @@ class MonitorNotifications @Inject constructor(
                     log(TAG) { "Keep running because the device wants keep awake: $dev" }
                     extraFlags.add(context.getString(R.string.devices_device_config_keep_awake_label))
                 }
+                if (!limiting && dev.volumeRateLimiter) {
+                    limiting = true
+                    log(TAG) { "Keep running because the device to be rate limited: $dev" }
+                    extraFlags.add(context.getString(R.string.devices_device_config_volume_rate_limiter_label))
+                }
             }
             val msg = extraFlags.joinToString(", ")
-            builder.setContentText(msg)
-            builder.setStyle(NotificationCompat.BigTextStyle().bigText(msg))
+            setContentText(msg)
+            setStyle(NotificationCompat.BigTextStyle().bigText(msg))
         } else {
-            builder.setContentTitle(context.getString(R.string.label_no_connected_devices))
-            builder.setContentText("")
-            builder.setStyle(NotificationCompat.BigTextStyle().bigText(""))
+            setContentTitle(context.getString(R.string.label_no_connected_devices))
+            setContentText("")
+            setStyle(NotificationCompat.BigTextStyle().bigText(""))
         }
 
         clearActions()
