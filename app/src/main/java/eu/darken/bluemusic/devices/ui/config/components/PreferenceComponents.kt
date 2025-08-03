@@ -28,8 +28,8 @@ fun SwitchPreference(
     title: String,
     description: String,
     isChecked: Boolean,
-    onCheckedChange: (Boolean) -> Unit,
     icon: ImageVector? = null,
+    onCheckedChange: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
     requiresPro: Boolean = false,
     isProVersion: Boolean = true
@@ -91,8 +91,8 @@ fun ClickablePreference(
     description: String? = null,
     icon: ImageVector,
     onClick: () -> Unit,
-    textColor: Color? = null,
     modifier: Modifier = Modifier,
+    textColor: Color? = null,
     requiresPro: Boolean = false,
     isProVersion: Boolean = true
 ) {

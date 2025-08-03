@@ -23,7 +23,7 @@ class SettingsViewModel @Inject constructor(
     dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
     private val webpageTool: WebpageTool,
-    private val upgradeRepo: UpgradeRepo,
+    upgradeRepo: UpgradeRepo,
 ) : ViewModel4(dispatcherProvider, logTag("Settings", "ViewModel"), navCtrl) {
 
     val events = SingleEventFlow<SettingsEvent>()
