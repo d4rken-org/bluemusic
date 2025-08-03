@@ -3,32 +3,58 @@
 # Bluetooth Volume Manager
 
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=19)
-[![Code tests & eval](https://github.com/d4rken-org/bluemusic/actions/workflows/code-checks.yml/badge.svg)](https://github.com/d4rken-org/bluemusic/actions/workflows/code-checks.yml)
-[![Github All Releases](https://img.shields.io/github/downloads/d4rken/bluemusic/total.svg)]()
+[![Code tests & eval](https://img.shields.io/github/actions/workflow/status/d4rken-org/bluemusic/code-checks.yml?logo=githubactions&label=Code%20tests
+)](https://github.com/d4rken-org/bluemusic/actions)
+[![Github Downloads](https://img.shields.io/github/downloads/d4rken-org/bluemusic/total.svg?label=GitHub%20Downloads&logo=github)](https://github.com/d4rken-org/bluemusic/main/README.md#download)
+[![Google Play Downloads](https://img.shields.io/endpoint?color=green&logo=google-play&logoColor=green&url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Deu.darken.bluemusic%26l%3DGoogle%2520Play%26m%3D%24totalinstalls)](https://github.com/d4rken-org/bluemusic/main/README.md#download)
+[![⭐](https://img.shields.io/endpoint?url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Deu.darken.bluemusic%26gl%3DUS%26hl%3Den%26l%3D%25E2%25AD%2590%26m%3D%24rating)](https://github.com/d4rken-org/bluemusic/main/README.md#download)
 
-BVM gives your Android device the ability to have individual music and voice volumes for each of your bluetooth devices.
-It remembers the volume settings for each device and restores them if necessary.
-Volumes can be configured through the apps UI or the volume buttons your device.
+**Bluetooth Volume Manager** (aka **BVM** or **BlueMusic**) gives your Android device smart volume control for each Bluetooth device:
 
-## Downloads
+- Remembers and restores all volume types (media, call, ring, alarm, etc.) per device  
+- Volumes adjustable via app UI or volume buttons  
+- Lock volumes to prevent changes  
+- Rate limit volume changes to avoid sudden jumps  
+- Trigger actions on connect: launch apps, send key events, and more
 
-* [Download GitHub](https://github.com/d4rken/bluemusic/releases/latest)
-* [Download Google Play](https://play.google.com/store/apps/details?id=eu.darken.bluemusic)
 
-## Community
-Want to chat? Join our [discord server here](https://discord.gg/vHubYPp).
+## Download
+
+| Source                                                                                 | Status                                                                                                                                                                                                                          |
+|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Google Play (Release)](https://play.google.com/store/apps/details?id=eu.darken.bluemusic) | ![](https://img.shields.io/endpoint?color=green&logo=google-play&logoColor=green&url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Deu.darken.bluemusic%26gl%3DUS%26hl%3Den%26l%3DGoogle%2520Play%2520(Release)%26m%3D%24version) |
+| [Google Play (Open Testing)](https://play.google.com/apps/testing/eu.darken.bluemusic)     | ![](https://img.shields.io/badge/Open%20Test%20Track%20-%20Google%20Play?logo=googleplay&logoColor=googleplay&label=Google%20Play)                                                                                              |
+| [Github (Release)](https://github.com/d4rken-org/bluemusic/releases)                   | ![](https://img.shields.io/github/v/release/d4rken-org/bluemusic?display_name=release&logo=github&label=GitHub%20(Release)) ![](https://img.shields.io/github/downloads/d4rken-org/bluemusic/latest/total?label=%20)            |
+| [Github (Pre-Release)](https://github.com/d4rken-org/bluemusic/releases)               | ![](https://img.shields.io/github/v/release/d4rken-org/bluemusic?include_prereleases&display_name=release&logo=github&label=GitHub%20(Pre-Release)) ![](https://img.shields.io/github/downloads-pre/d4rken-org/bluemusic/latest/total?label=%20) |
+| [F-Droid (Main Repo)](https://f-droid.org/en/packages/eu.darken.bluemusic/)                | ![](https://img.shields.io/f-droid/v/eu.darken.bluemusic?logo=f-droid&label=f-droid%20(latest))                                                                                                                                     |
+| [F-Droid (IzzyOnDroid)](https://apt.izzysoft.de/packages/eu.darken.bluemusic/)             | ![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/eu.darken.bluemusic&label=IzzyOnDroid%20(latest))                                                                                              |
 
 ## Support the project
-If you like the app, consider paying for it ❤️
 
-* Sponsor the project (see GitHub sponsor button)
-* Upgrade to the pro version via Google Play
+BVM has no ads and doesn't sell your data.
 
-## Motivation
+Development is financed by individual user contributions, i.e. you buying the upgrade on Google Play or becoming a
+sponsor ❤️.
 
-Motivated by trying to listen to Spotify through a car radio.
-Android 7.X+ keeps resetting the bluetooth volume to 50% everytime a device (e.g. headset, speaker, car stereo) connects and the volume was above 50%.
-Official ticket can be found here: https://code.google.com/p/android/issues/detail?id=212402
+* Upgrade to **BVM Pro** on [Google Play](https://play.google.com/store/apps/details?id=eu.darken.bluemusic)
+* [Become a sponsor](https://github.com/sponsors/d4rken) on GitHub
+
+## Get help
+
+* [Github Discussions](https://github.com/d4rken-org/bluemusic/discussions)
+* [Discord](https://discord.gg/vHubYPp)
+* [Frequently Asked Question](https://github.com/d4rken-org/bluemusic/wiki/FAQ)
 
 ## Screenshots
-<img src="https://github.com/d4rken/bluemusic/raw/master/art/screenshot1.png" width="200"><img src="https://github.com/d4rken/bluemusic/raw/master/art/screenshot2.png" width="200"><img src="https://github.com/d4rken/bluemusic/raw/master/art/screenshot3.png" width="200">
+<img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/5.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/6.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/7.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/8.png" width="100">
+
+## License
+
+BVM's code is available under a GPL v3 license, this excludes:
+
+* BVM icons, logos, mascots, marketing materials and assets.
+* BVM animations and videos.
+* BVM documentation.
+* Google Play screenshots.
+* Google Play texts & descriptions.
+* Translations.
