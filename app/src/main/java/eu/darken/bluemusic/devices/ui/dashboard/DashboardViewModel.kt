@@ -6,6 +6,7 @@ import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.common.apps.AppInfo
 import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.navigation.NavigationController
@@ -13,6 +14,7 @@ import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DeviceRepo
+import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.devices.core.updateVolume
@@ -34,6 +36,7 @@ class DashboardViewModel @Inject constructor(
     private val upgradeRepo: UpgradeRepo,
     private val bluetoothSource: BluetoothRepo,
     private val generalSettings: GeneralSettings,
+    private val devicesSettings: DevicesSettings,
     private val dispatcherProvider: DispatcherProvider,
     private val navCtrl: NavigationController,
     private val appRepo: AppRepo,
@@ -193,7 +196,7 @@ class DashboardViewModel @Inject constructor(
                     streamHelper.changeVolume(
                         streamId = device.getStreamId(action.type),
                         percent = action.volume,
-                        visible = true,
+                        visible = devicesSettings.visibleAdjustments.value(),
                     )
                 }
             }

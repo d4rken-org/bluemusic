@@ -2,7 +2,7 @@ package eu.darken.bluemusic.common.apps
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
+import androidx.core.net.toUri
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
@@ -75,7 +75,7 @@ class AppRepo @Inject constructor(
         }
         if (intent == null) {
             intent = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("market://details?id=$pkg")
+                data = "market://details?id=$pkg".toUri()
             }
             log(TAG) { "No default launch intent, default to opening Google Play" }
         }

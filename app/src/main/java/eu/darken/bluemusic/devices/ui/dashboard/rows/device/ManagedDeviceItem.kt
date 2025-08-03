@@ -191,7 +191,7 @@ fun ManagedDeviceItem(
 
                 AudioStream.Type.entries.forEach { streamType ->
                     device.getVolume(streamType)?.let { currentVolume ->
-                        VolumeControl(
+                        VolumeControlWithModes(
                             streamType = streamType,
                             label = when (streamType) {
                                 AudioStream.Type.MUSIC -> stringResource(R.string.devices_stream_music_label)

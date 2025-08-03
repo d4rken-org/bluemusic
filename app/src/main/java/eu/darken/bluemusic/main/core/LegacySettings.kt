@@ -2,6 +2,7 @@ package eu.darken.bluemusic.main.core
 
 import android.content.Context
 import android.view.KeyEvent
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -18,10 +19,10 @@ class LegacySettings @Inject constructor(
 
     init {
         if (!preferences.contains(PREFKEY_INSTALLTIME)) {
-            preferences.edit().putLong(PREFKEY_INSTALLTIME, System.currentTimeMillis()).apply()
+            preferences.edit { putLong(PREFKEY_INSTALLTIME, System.currentTimeMillis()) }
         }
         var currentLaunchCount = preferences.getInt(PREFKEY_LAUNCHCOUNT, 0)
-        preferences.edit().putInt(PREFKEY_LAUNCHCOUNT, ++currentLaunchCount).apply()
+        preferences.edit { putInt(PREFKEY_LAUNCHCOUNT, ++currentLaunchCount) }
     }
 
     fun isBugReportingEnabled(): Boolean {
@@ -45,7 +46,7 @@ class LegacySettings @Inject constructor(
     }
 
     fun setAutoplayKeycode(keycode: Int) {
-        preferences!!.edit().putInt(PREFKEY_AUTOPLAY_KEYCODE, keycode).apply()
+        preferences!!.edit { putInt(PREFKEY_AUTOPLAY_KEYCODE, keycode) }
     }
 
     fun isSpeakerAutoSaveEnabled(): Boolean {
@@ -69,7 +70,7 @@ class LegacySettings @Inject constructor(
     }
 
     fun setShowOnboarding(show: Boolean) {
-        preferences!!.edit().putBoolean(PREFKEY_ONBOARDING_INTRODONE, show).apply()
+        preferences!!.edit { putBoolean(PREFKEY_ONBOARDING_INTRODONE, show) }
     }
 
     fun isHealthDeviceExcluded(): Boolean {

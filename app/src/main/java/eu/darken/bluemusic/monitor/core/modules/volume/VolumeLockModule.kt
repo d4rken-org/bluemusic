@@ -39,7 +39,7 @@ internal class VolumeLockModule @Inject constructor(
             .forEach { device ->
                 val type = device.getStreamType(id)!!
                 val percentage: Float? = device.getVolume(type)
-                if (percentage == null || percentage == -1f) {
+                if (percentage == null) {
                     log(TAG) { "Device $device has no specified target volume for $type, skipping volume lock." }
                     return@forEach
                 }

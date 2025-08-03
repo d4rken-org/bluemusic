@@ -44,7 +44,7 @@ class VolumeDisconnectModule @Inject constructor(
         val volumeUpdates = buildMap {
             AudioStream.Type.entries.forEach { streamType ->
                 val currentVolume = device.getVolume(streamType)
-                if (currentVolume == null || currentVolume == -1f) return@forEach
+                if (currentVolume == null) return@forEach
 
                 val streamId = device.getStreamId(streamType)
                 val actualVolume = streamHelper.getVolumePercentage(streamId)

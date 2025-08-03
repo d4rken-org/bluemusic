@@ -32,7 +32,7 @@ class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
         return audioManager.getStreamMaxVolume(streamId.id)
     }
 
-    suspend fun setVolume(streamId: AudioStream.Id, volume: Int, flags: Int) = lock.withLock {
+    private suspend fun setVolume(streamId: AudioStream.Id, volume: Int, flags: Int) = lock.withLock {
         log(TAG, VERBOSE) { "setVolume(streamId=$streamId, volume=$volume, flags=$flags)." }
         try {
             adjusting = true
