@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.devices.ui.config
 
+import android.annotation.SuppressLint
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -168,6 +169,20 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 }
             }
 
+            is ConfigAction.OnEditAutoplayKeycodesClicked -> {
+                if (!upgradeRepo.isPro()) {
+                    events.emit(ConfigEvent.RequiresPro)
+                } else {
+                    events.emit(ConfigEvent.ShowAutoplayKeycodesDialog)
+                }
+            }
+
+            is ConfigAction.OnEditAutoplayKeycodes -> {
+                deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                    oldConfig.copy(autoplayKeycodes = action.keycodes)
+                }
+            }
+
             is ConfigAction.OnToggleKeepAwake -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
                 oldConfig.copy(keepAwake = !oldConfig.keepAwake)
             }
@@ -232,6 +247,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
                     when (action.type) {
                         AudioStream.Type.RINGTONE -> {
                             if (!permissionHelper.hasNotificationPolicyAccess()) {
+                                @SuppressLint("NewApi")
                                 val intent = permissionHelper.getNotificationPolicyAccessIntent()
                                 events.emit(ConfigEvent.RequiresNotificationPolicyAccessForRingtone(intent))
                                 return@launch
@@ -240,6 +256,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
 
                         AudioStream.Type.NOTIFICATION -> {
                             if (!permissionHelper.hasNotificationPolicyAccess()) {
+                                @SuppressLint("NewApi")
                                 val intent = permissionHelper.getNotificationPolicyAccessIntent()
                                 events.emit(ConfigEvent.RequiresNotificationPolicyAccessForNotification(intent))
                                 return@launch

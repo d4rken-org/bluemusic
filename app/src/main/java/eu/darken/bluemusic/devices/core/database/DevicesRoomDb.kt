@@ -8,14 +8,15 @@ import androidx.room.TypeConverters
     entities = [
         DeviceConfigEntity::class,
     ],
-    version = 3,
+    version = 4,
     autoMigrations = [
         androidx.room.AutoMigration(from = 1, to = 2),
-        androidx.room.AutoMigration(from = 2, to = 3)
+        androidx.room.AutoMigration(from = 2, to = 3),
+        androidx.room.AutoMigration(from = 3, to = 4)
     ],
     exportSchema = true,
 )
-@TypeConverters(StringListTypeConverter::class)
+@TypeConverters(StringListTypeConverter::class, IntListTypeConverter::class)
 abstract class DevicesRoomDb : RoomDatabase() {
     abstract fun devices(): DeviceConfigDao
 }

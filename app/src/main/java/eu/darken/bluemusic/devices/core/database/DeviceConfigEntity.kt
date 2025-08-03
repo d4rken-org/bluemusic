@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.devices.core.database
 
+import android.view.KeyEvent
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -69,4 +70,7 @@ data class DeviceConfigEntity(
 
     @ColumnInfo(name = "show_home_screen", defaultValue = "false")
     val showHomeScreen: Boolean = false,
+
+    @ColumnInfo(name = "autoplay_keycodes", defaultValue = "[126]") // 126 = KEYCODE_MEDIA_PLAY
+    val autoplayKeycodes: List<Int> = listOf(KeyEvent.KEYCODE_MEDIA_PLAY),
 )

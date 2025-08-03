@@ -9,6 +9,8 @@ sealed interface ConfigAction {
     ) : ConfigAction
 
     data object OnToggleAutoPlay : ConfigAction
+    data object OnEditAutoplayKeycodesClicked : ConfigAction
+    data class OnEditAutoplayKeycodes(val keycodes: List<Int>) : ConfigAction
     data object OnToggleVolumeLock : ConfigAction
     data object OnToggleVolumeObserving : ConfigAction
     data object OnToggleVolumeSaveOnDisconnect : ConfigAction

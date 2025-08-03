@@ -74,6 +74,7 @@
     <string name="devices_device_config_autoplay_keycodes_order">Selected keys (in order)</string>
     <string name="devices_device_config_autoplay_keycodes_label">Key types</string>
     <string name="devices_device_config_autoplay_keycodes_desc">Configure which keys to send and in what order</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">No keys configured</string>
 
     <string name="devices_device_config_section_volumes_label">Volumes</string>
     <string name="devices_device_config_section_volume_label">Volume</string>

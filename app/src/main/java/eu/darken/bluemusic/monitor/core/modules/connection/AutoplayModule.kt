@@ -8,12 +8,10 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
-import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
@@ -24,7 +22,6 @@ import javax.inject.Singleton
 @Singleton
 class AutoplayModule @Inject constructor(
     private val audioManager: AudioManager,
-    private val devicesSettings: DevicesSettings,
 ) : ConnectionModule {
 
     override val tag: String
@@ -39,9 +36,9 @@ class AutoplayModule @Inject constructor(
         if (!device.autoplay) return
         log(TAG) { "Autoplay enabled (playing=${audioManager.isMusicActive})." }
 
-        val autoplayKeycodes = devicesSettings.autoplayKeycodes.value()
+        val autoplayKeycodes = device.autoplayKeycodes
         if (autoplayKeycodes.isEmpty()) {
-            log(TAG, WARN) { "Autoplay enabled but no keycodes configured" }
+            log(TAG, WARN) { "Autoplay enabled but no keycodes configured for device ${device.label}" }
             return
         }
 
@@ -67,7 +64,7 @@ class AutoplayModule @Inject constructor(
                 delay(500)
 
                 if (audioManager.isMusicActive) {
-                    log(TAG, VERBOSE) { "Music is playing (tries=$currentTries), job done :)." }
+                    log(TAG, VERBOSE) { "Music is playing (tries=$currentTries), continuing to next keycode." }
                     break
                 } else if (currentTries == maxTries) {
                     log(TAG, WARN) {
@@ -78,9 +75,6 @@ class AutoplayModule @Inject constructor(
                     log(TAG, VERBOSE) { "Music isn't playing, retrying (tries=$currentTries). :|" }
                 }
             }
-
-            // If music is already playing, stop sending more keycodes
-            if (audioManager.isMusicActive) break
         }
     }
 

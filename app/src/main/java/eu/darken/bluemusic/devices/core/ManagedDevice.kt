@@ -45,6 +45,8 @@ data class ManagedDevice(
         get() = config.volumeSaveOnDisconnect
     val autoplay: Boolean
         get() = config.autoplay
+    val autoplayKeycodes: List<Int>
+        get() = config.autoplayKeycodes
     val showHomeScreen: Boolean
         get() = config.showHomeScreen
 

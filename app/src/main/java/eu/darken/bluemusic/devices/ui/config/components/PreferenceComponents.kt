@@ -57,7 +57,8 @@ fun SwitchPreference(
         ) {
             Text(
                 text = title,
-                style = MaterialTheme.typography.bodyLarge
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurface
             )
             Text(
                 text = description,

@@ -63,6 +63,7 @@ import eu.darken.bluemusic.devices.ui.config.dialogs.DeleteDeviceDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.RenameDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.TimingDialog
 import eu.darken.bluemusic.devices.ui.icon
+import eu.darken.bluemusic.devices.ui.settings.dialogs.AutoplayKeycodesDialog
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import java.time.Duration
 
@@ -85,6 +86,7 @@ fun DeviceConfigScreenHost(
     var showReactionDelayDialog by remember { mutableStateOf<Duration?>(null) }
     var showAdjustmentDelayDialog by remember { mutableStateOf<Duration?>(null) }
     var showVolumeRateLimitDialog by remember { mutableStateOf<Duration?>(null) }
+    var showAutoplayKeycodesDialog by remember { mutableStateOf(false) }
 
     val upgradeMessage = stringResource(R.string.upgrade_feature_requires_pro)
     val upgradeAction = stringResource(R.string.upgrade_prompt_upgrade_action)
@@ -103,6 +105,7 @@ fun DeviceConfigScreenHost(
                 is ConfigEvent.ShowReactionDelayDialog -> showReactionDelayDialog = event.currentValue
                 is ConfigEvent.ShowAdjustmentDelayDialog -> showAdjustmentDelayDialog = event.currentValue
                 is ConfigEvent.ShowVolumeRateLimitDialog -> showVolumeRateLimitDialog = event.currentValue
+                is ConfigEvent.ShowAutoplayKeycodesDialog -> showAutoplayKeycodesDialog = true
                 is ConfigEvent.NavigateBack -> vm.navUp()
                 is ConfigEvent.RequiresPro -> {
                     val result = snackbarHostState.showSnackbar(
@@ -216,6 +219,18 @@ fun DeviceConfigScreenHost(
                 onConfirm = { vm.handleAction(ConfigAction.OnConfirmDelete(true)) },
                 onDismiss = {
                     showDeleteDialog = false
+                }
+            )
+        }
+
+        if (showAutoplayKeycodesDialog) {
+            AutoplayKeycodesDialog(
+                currentKeycodes = state.device.autoplayKeycodes,
+                onConfirm = { keycodes ->
+                    vm.handleAction(ConfigAction.OnEditAutoplayKeycodes(keycodes))
+                },
+                onDismiss = {
+                    showAutoplayKeycodesDialog = false
                 }
             )
         }
@@ -362,6 +377,33 @@ fun DeviceConfigScreen(
                             requiresPro = true,
                             isProVersion = state.isProVersion
                         )
+
+                        if (device.autoplay) {
+                            ClickablePreference(
+                                title = stringResource(R.string.devices_device_config_autoplay_keycodes_label),
+                                description = if (device.autoplayKeycodes.isEmpty()) {
+                                    stringResource(R.string.devices_device_config_autoplay_keycodes_none_set)
+                                } else {
+                                    val keycodeNames = device.autoplayKeycodes.mapNotNull { keycode ->
+                                        when (keycode) {
+                                            android.view.KeyEvent.KEYCODE_MEDIA_PLAY -> "Play"
+                                            android.view.KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE -> "Play/Pause"
+                                            android.view.KeyEvent.KEYCODE_MEDIA_NEXT -> "Next"
+                                            android.view.KeyEvent.KEYCODE_MEDIA_PREVIOUS -> "Previous"
+                                            android.view.KeyEvent.KEYCODE_MEDIA_STOP -> "Stop"
+                                            android.view.KeyEvent.KEYCODE_MEDIA_REWIND -> "Rewind"
+                                            android.view.KeyEvent.KEYCODE_MEDIA_FAST_FORWARD -> "Fast Forward"
+                                            else -> null
+                                        }
+                                    }
+                                    keycodeNames.joinToString(", ")
+                                },
+                                icon = Icons.TwoTone.Tune,
+                                onClick = { onAction(ConfigAction.OnEditAutoplayKeycodesClicked) },
+                                requiresPro = true,
+                                isProVersion = state.isProVersion
+                            )
+                        }
 
                         SwitchPreference(
                             title = stringResource(R.string.devices_device_config_volume_lock_label),
