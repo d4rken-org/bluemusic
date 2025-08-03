@@ -339,7 +339,7 @@ private fun BluetoothPermissionCard(
 @Composable
 private fun DevicesScreenPreview() {
     val devices = listOf(
-        MockDevice().toManagedDevice(isActive = true),
+        MockDevice().toManagedDevice(isConnected = true),
         MockDevice().toManagedDevice(),
     )
 

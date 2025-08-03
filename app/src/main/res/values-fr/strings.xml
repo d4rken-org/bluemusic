@@ -79,6 +79,9 @@
     <string name="devices_state_connected_label">Connecté</string>
     <string name="devices_last_connected_label">Dernière connexion : %s</string>
     <string name="devices_currently_connected_label">Actuellement connecté</string>
+    <string name="devices_device_disabled_label">Périphérique désactivé</string>
+    <string name="devices_device_config_enabled_label">Activé</string>
+    <string name="devices_device_config_enabled_desc">Réagir à ce périphérique quand il se connecte</string>
     <string name="devices_no_volumes_configured">Aucun volume configuré pour ce périphérique. Appuyez sur Configurer pour définir les préférences de volume.</string>
     <string name="settings_label">Paramètres</string>
     <string name="settings_category_other_label">Autre</string>

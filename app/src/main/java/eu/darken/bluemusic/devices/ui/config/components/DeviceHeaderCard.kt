@@ -22,6 +22,7 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -43,6 +44,7 @@ fun DeviceHeaderCard(
     device: ManagedDevice,
     onRenameClick: () -> Unit,
     onDeleteClick: () -> Unit,
+    onToggleEnabled: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -64,7 +66,7 @@ fun DeviceHeaderCard(
             ) {
                 // Device icon
                 Icon(
-                    imageVector = device.device?.deviceType?.toIcon() ?: Icons.TwoTone.Devices,
+                    imageVector = device.device.deviceType?.toIcon() ?: Icons.TwoTone.Devices,
                     contentDescription = null,
                     modifier = Modifier.size(32.dp),
                     tint = MaterialTheme.colorScheme.primary
@@ -74,21 +76,42 @@ fun DeviceHeaderCard(
 
                 // Device info
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        text = device.label,
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                    Text(
-                        text = device.address,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                text = device.label,
+                                style = MaterialTheme.typography.titleMedium,
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
+                            Text(
+                                text = device.address,
+                                style = MaterialTheme.typography.labelSmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+
+                        // Enable/disable switch
+                        Switch(
+                            checked = device.isEnabled,
+                            onCheckedChange = { onToggleEnabled() }
+                        )
+                    }
 
                     // Connection status
                     Spacer(modifier = Modifier.height(4.dp))
                     when {
-                        device.isActive -> {
+                        !device.isEnabled -> {
+                            Text(
+                                text = stringResource(R.string.devices_device_disabled_label),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+
+                        device.isConnected -> {
                             Row(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
@@ -103,7 +126,7 @@ fun DeviceHeaderCard(
                                 Spacer(modifier = Modifier.width(6.dp))
                                 Text(
                                     text = stringResource(R.string.devices_currently_connected_label),
-                                    style = MaterialTheme.typography.labelMedium,
+                                    style = MaterialTheme.typography.bodyMedium,
                                     color = MaterialTheme.colorScheme.primary
                                 )
                             }
@@ -116,7 +139,7 @@ fun DeviceHeaderCard(
                                     DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT)
                                         .format(Date(device.lastConnected.toEpochMilli()))
                                 ),
-                                style = MaterialTheme.typography.labelMedium,
+                                style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
@@ -176,6 +199,7 @@ private fun DeviceHeaderCardPreview() {
             device = MockDevice().toManagedDevice(),
             onRenameClick = {},
             onDeleteClick = {},
+            onToggleEnabled = {},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
@@ -188,9 +212,10 @@ private fun DeviceHeaderCardPreview() {
 private fun DeviceHeaderCardConnectedPreview() {
     PreviewWrapper {
         DeviceHeaderCard(
-            device = MockDevice().toManagedDevice().copy(isActive = true),
+            device = MockDevice().toManagedDevice().copy(isConnected = true),
             onRenameClick = {},
             onDeleteClick = {},
+            onToggleEnabled = {},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)

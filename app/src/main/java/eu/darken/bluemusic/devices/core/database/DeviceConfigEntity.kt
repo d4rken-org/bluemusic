@@ -73,4 +73,7 @@ data class DeviceConfigEntity(
 
     @ColumnInfo(name = "autoplay_keycodes", defaultValue = "[126]") // 126 = KEYCODE_MEDIA_PLAY
     val autoplayKeycodes: List<Int> = listOf(KeyEvent.KEYCODE_MEDIA_PLAY),
+
+    @ColumnInfo(name = "is_enabled", defaultValue = "true")
+    val isEnabled: Boolean = true,
 )

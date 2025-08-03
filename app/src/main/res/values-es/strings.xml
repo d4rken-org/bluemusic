@@ -79,6 +79,9 @@
     <string name="devices_state_connected_label">Conectado</string>
     <string name="devices_last_connected_label">Última conexión: %s</string>
     <string name="devices_currently_connected_label">Actualmente conectado</string>
+    <string name="devices_device_disabled_label">Dispositivo deshabilitado</string>
+    <string name="devices_device_config_enabled_label">Habilitado</string>
+    <string name="devices_device_config_enabled_desc">Reaccionar a este dispositivo cuando se conecte</string>
     <string name="devices_no_volumes_configured">No hay volúmenes configurados para este dispositivo. Toca Configurar para establecer las preferencias de volumen.</string>
     <string name="settings_label">Configuración</string>
     <string name="settings_category_other_label">Otro</string>

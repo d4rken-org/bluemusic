@@ -31,4 +31,5 @@ sealed interface ConfigAction {
     data class OnEditVolumeRateLimit(val duration: Duration?) : ConfigAction
     data class OnRename(val newName: String?) : ConfigAction
     data class OnConfirmDelete(val confirmed: Boolean) : ConfigAction
+    data object OnToggleEnabled : ConfigAction
 }

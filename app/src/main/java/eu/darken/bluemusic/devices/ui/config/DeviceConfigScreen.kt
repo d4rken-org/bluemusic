@@ -289,6 +289,7 @@ fun DeviceConfigScreen(
                     device = device,
                     onRenameClick = { onAction(ConfigAction.OnRenameClicked) },
                     onDeleteClick = { onAction(ConfigAction.DeleteDevice()) },
+                    onToggleEnabled = { onAction(ConfigAction.OnToggleEnabled) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 8.dp)

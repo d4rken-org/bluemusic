@@ -38,6 +38,8 @@
     <string name="devices_device_config_rename_device_label">Rename device</string>
     <string name="devices_device_config_rename_device_desc">Rename this device within this app, and if possible, within the system.</string>
     <string name="devices_device_config_rename_device_action">Rename</string>
+    <string name="devices_device_config_enabled_label">Enabled</string>
+    <string name="devices_device_config_enabled_desc">React to this device when connected</string>
 
     <string name="devices_device_config_section_timing_label">Timing</string>
     <string name="devices_device_config_monitoring_duration_label">Monitoring duration</string>
@@ -105,6 +107,7 @@
     <string name="devices_state_connected_label">Connected</string>
     <string name="devices_last_connected_label">Last connected: %s</string>
     <string name="devices_currently_connected_label">Currently connected</string>
+    <string name="devices_device_disabled_label">Device disabled</string>
     <string name="devices_no_volumes_configured">No volumes configured for this device. Tap Configure to set up volume preferences.</string>
 
     <!-- Settings-->

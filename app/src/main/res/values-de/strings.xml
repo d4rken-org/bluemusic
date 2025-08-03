@@ -81,6 +81,9 @@
     <string name="devices_state_connected_label">Verbunden</string>
     <string name="devices_last_connected_label">Zuletzt verbunden: %s</string>
     <string name="devices_currently_connected_label">Aktuell verbunden</string>
+    <string name="devices_device_disabled_label">Gerät deaktiviert</string>
+    <string name="devices_device_config_enabled_label">Aktiviert</string>
+    <string name="devices_device_config_enabled_desc">Auf dieses Gerät reagieren, wenn es verbunden ist</string>
     <string name="devices_no_volumes_configured">Keine Lautstärken für dieses Gerät konfiguriert. Tippen Sie auf Konfigurieren, um Lautstärkeeinstellungen einzurichten.</string>
     <string name="settings_label">Einstellungen</string>
     <string name="settings_category_other_label">Sonstiges</string>

@@ -39,7 +39,7 @@ class DeviceRepo @Inject constructor(
         mappings.map { (config, paired) ->
             ManagedDevice(
                 device = paired,
-                isActive = when (paired.deviceType) {
+                isConnected = when (paired.deviceType) {
                     SourceDevice.Type.PHONE_SPEAKER -> mappings
                         .filter { it.second.address != config.address }
                         .none { it.second.isConnected }

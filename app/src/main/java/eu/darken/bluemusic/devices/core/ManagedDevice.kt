@@ -7,10 +7,14 @@ import java.time.Duration
 import java.time.Instant
 
 data class ManagedDevice(
-    val isActive: Boolean,
+    val isConnected: Boolean,
     val device: SourceDevice,
     val config: DeviceConfigEntity,
 ) {
+    val isActive: Boolean
+        get() = isConnected && config.isEnabled
+    val isEnabled: Boolean
+        get() = config.isEnabled
 
     val address: DeviceAddr
         get() = config.address
@@ -72,6 +76,6 @@ data class ManagedDevice(
     private val defaultAdjustmentDelay: Duration = Duration.ofMillis(250)
 
     override fun toString(): String {
-        return "ManagedDevice(isActive=$isActive, address=$address, last=$lastConnected, config=$config)"
+        return "ManagedDevice(isActive=$isActive, isConnected=$isConnected, isEnabled=$isEnabled, address=$address, last=$lastConnected, config=$config)"
     }
 }

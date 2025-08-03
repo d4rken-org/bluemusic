@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.twotone.Block
 import androidx.compose.material.icons.twotone.Devices
 import androidx.compose.material.icons.twotone.ExpandMore
 import androidx.compose.material.icons.twotone.Settings
@@ -47,11 +48,11 @@ import java.util.Date
 
 @Composable
 fun ManagedDeviceItem(
+    modifier: Modifier = Modifier,
     device: ManagedDevice,
     launchApps: List<AppInfo> = emptyList(),
     onDeviceAction: (DashboardAction) -> Unit,
     onNavigateToConfig: () -> Unit,
-    modifier: Modifier = Modifier,
     isOnlyDevice: Boolean = false
 ) {
     var expanded by remember { mutableStateOf(device.isActive || isOnlyDevice) }
@@ -81,7 +82,7 @@ fun ManagedDeviceItem(
             ) {
                 // Device type icon
                 Icon(
-                    imageVector = device.device.deviceType?.toIcon() ?: Icons.TwoTone.Devices,
+                    imageVector = device.device.deviceType.toIcon() ?: Icons.TwoTone.Devices,
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
                     tint = MaterialTheme.colorScheme.primary
@@ -91,22 +92,44 @@ fun ManagedDeviceItem(
                 Column(
                     modifier = Modifier.weight(1f)
                 ) {
-                    Text(
-                        text = device.label,
-                        style = MaterialTheme.typography.titleMedium,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = device.label,
+                            style = MaterialTheme.typography.titleMedium,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            modifier = Modifier.weight(1f, fill = false)
+                        )
+                        if (!device.isEnabled) {
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Icon(
+                                imageVector = Icons.TwoTone.Block,
+                                contentDescription = stringResource(R.string.devices_device_disabled_label),
+                                modifier = Modifier.size(16.dp),
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
                     Text(
                         text = device.address,
-                        style = MaterialTheme.typography.bodySmall,
+                        style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     when {
+                        !device.isEnabled -> {
+                            Text(
+                                text = stringResource(R.string.devices_device_disabled_label),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        
                         device.isActive -> {
                             Text(
                                 text = stringResource(R.string.devices_currently_connected_label),
-                                style = MaterialTheme.typography.bodySmall,
+                                style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.primary
                             )
                         }
@@ -118,7 +141,7 @@ fun ManagedDeviceItem(
                                     DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT)
                                         .format(Date(device.lastConnected.toEpochMilli()))
                                 ),
-                                style = MaterialTheme.typography.bodySmall,
+                                style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
@@ -215,7 +238,7 @@ fun ManagedDeviceItem(
 private fun ManagedDeviceItemExpandedPreview() {
     PreviewWrapper {
         ManagedDeviceItem(
-            device = MockDevice().toManagedDevice(isActive = true),
+            device = MockDevice().toManagedDevice(isConnected = true),
             onDeviceAction = {},
             onNavigateToConfig = {},
         )
@@ -228,6 +251,18 @@ private fun ManagedDeviceItemPreview() {
     PreviewWrapper {
         ManagedDeviceItem(
             device = MockDevice().toManagedDevice(),
+            onDeviceAction = {},
+            onNavigateToConfig = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun ManagedDeviceItemDisabledPreview() {
+    PreviewWrapper {
+        ManagedDeviceItem(
+            device = MockDevice().toManagedDevice(isEnabled = false),
             onDeviceAction = {},
             onNavigateToConfig = {},
         )

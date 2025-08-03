@@ -30,7 +30,8 @@ data class MockDevice(
     }
 
     fun toManagedDevice(
-        isActive: Boolean = false,
+        isConnected: Boolean = false,
+        isEnabled: Boolean = true,
     ) = ManagedDevice(
         device = this,
         config = DeviceConfigEntity(
@@ -46,7 +47,8 @@ data class MockDevice(
             nudgeVolume = true,
             keepAwake = true,
             launchPkgs = listOf("eu.darken.bluemusic"),
+            isEnabled = isEnabled,
         ),
-        isActive = isActive,
+        isConnected = isConnected,
     )
 }

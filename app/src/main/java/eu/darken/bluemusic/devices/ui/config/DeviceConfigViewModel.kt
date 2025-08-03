@@ -279,6 +279,12 @@ class DeviceConfigViewModel @AssistedInject constructor(
                     oldConfig.updateVolume(action.type, newVolume)
                 }
             }
+
+            is ConfigAction.OnToggleEnabled -> {
+                deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                    oldConfig.copy(isEnabled = !oldConfig.isEnabled)
+                }
+            }
         }
     }
 
