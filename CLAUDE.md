@@ -22,6 +22,8 @@ both GitHub (FOSS) and Google Play Store, with different build flavors for each 
 # Code quality
 ./gradlew lint                   # Run lint checks
 ./gradlew lintFix               # Run lint with auto-fix
+./gradlew ktlintCheck           # Run ktlint checks (if configured)
+./gradlew ktlintFormat          # Run ktlint format (if configured)
 ```
 
 ## Architecture
@@ -33,12 +35,20 @@ both GitHub (FOSS) and Google Play Store, with different build flavors for each 
 - UI that can be navigated to are "Screen"s and each screen has a corresponding ViewModel
     - "Sub-screens" are called "Pages"
 - The app uses Navigation3 (alpha) for Compose screens (`androidx.navigation3:navigation3-*`).
-- The main directions are inside the `Nav` file.
+- The main directions are inside the `Nav` file (`common/navigation/Nav.kt`).
 - Each screen should have it's own navigation entry providing class (extending `NavigationEntry`).
 - New classes should be injected if possible (using Dagger/Hilt)
 - Classes should have a companion object with an appropriate `val TAG = logTag("toplevel","sublevel")` entry.
 - Use the Logging framework where appropriate to make future debugging easier (`Logging.kt`).
 - There are two different build flavors - `foss` (GitHub) and `gplay` (Google Play with billing)
+
+### ViewModel Pattern
+
+- Extend `BaseViewModel<State, Event>` (or `ViewModel1` through `ViewModel4` variants)
+- Use `@HiltViewModel` annotation
+- State management via `StateFlow`
+- Events via `Channel<Event>`
+- Example: `class MyViewModel @Inject constructor(...) : BaseViewModel<MyState, MyEvent>()`
 
 ### Key Packages
 
@@ -46,6 +56,8 @@ both GitHub (FOSS) and Google Play Store, with different build flavors for each 
 - `eu.darken.bluemusic.devices`: Device management and UI
 - `eu.darken.bluemusic.main`: Main app navigation and settings
 - `eu.darken.bluemusic.common`: Shared utilities and base classes
+- `eu.darken.bluemusic.monitor`: Background monitoring and audio management
+- `eu.darken.bluemusic.upgrade`: Premium features (flavor-specific)
 
 ## Testing Approach
 
@@ -73,3 +85,38 @@ both GitHub (FOSS) and Google Play Store, with different build flavors for each 
 - `@OptIn(ExperimentalMaterial3Api::class)` is not required
 - Create previews for all UI components using the `@Preview2` annotation and `PreviewWrapper`
 - Prefer early returns to reduce code nesting
+- Use `@Stable` and `@Immutable` annotations where appropriate for Compose performance
+- Prefer `StateFlow` over `LiveData` for new code
+- Use `collectAsStateWithLifecycle()` when collecting flows in Compose
+
+## Quick Reference
+
+### Key Files and Locations
+
+- **Main Activity**: `app/src/main/java/eu/darken/bluemusic/main/ui/MainActivity.kt`
+- **Application Class**: `app/src/main/java/eu/darken/bluemusic/App.kt`
+- **Navigation Routes**: `app/src/main/java/eu/darken/bluemusic/common/navigation/Nav.kt`
+- **String Resources**:
+  - Common: `app/src/main/res/values*/strings.xml` (44+ locales)
+  - FOSS flavor: `app/src/foss/res/values*/strings.xml`
+  - Google Play flavor: `app/src/gplay/res/values*/strings.xml`
+- **Database (Room)**: `app/src/main/java/eu/darken/bluemusic/devices/core/database/DevicesRoomDb.kt`
+
+### Common Base Classes
+
+- **ViewModels**: Extend `BaseViewModel<State, Event>` from `common/architecture/`
+- **Services**: Extend `Service2` for lifecycle-aware services
+- **Activities**: Extend `Activity2` for common functionality
+- **Compose Previews**: Use `@Preview2` with `PreviewWrapper`
+
+### Error Handling
+
+- Use `ErrorEventHandler` for UI error display
+- Throw `UserFacingException` for user-visible errors
+- All exceptions should have localizable messages
+
+### Permissions
+
+- Bluetooth permissions are handled in `PermissionHelper`
+- Check permissions before Bluetooth operations
+- Handle permission denial gracefully
