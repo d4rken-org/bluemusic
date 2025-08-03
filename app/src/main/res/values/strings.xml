@@ -294,7 +294,7 @@
 
     <!-- App Selection -->
     <string name="devices_app_selection_title">Select Apps</string>
-    <string name="devices_app_selection_search_hint">Search apps...</string>
+    <string name="devices_app_selection_search_hint">Search apps…</string>
     <string name="devices_app_selection_currently_selected">Currently selected</string>
     <string name="devices_app_selection_selected_count">%d apps selected</string>
     <string name="general_navigate_back_action">Navigate back</string>
