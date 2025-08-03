@@ -18,6 +18,7 @@ import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.bluetooth.core.currentState
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
@@ -127,7 +128,11 @@ class MonitorWorker @AssistedInject constructor(
 
         bluetoothEventQueue.events
             .setupCommonEventHandlers(TAG) { "Event monitor" }
-            .onEach { event -> handleBluetoothEvent(event) }
+            .onEach { event ->
+                log(TAG, INFO) { "START Handling bluetooth event: $event" }
+                handleEvent(event)
+                log(TAG, INFO) { "STOP Handling bluetooth event: $event" }
+            }
             .catch { log(TAG, WARN) { "Event monitor flow failed:\n${it.asLog()}" } }
             .launchIn(workerScope)
 
@@ -192,14 +197,12 @@ class MonitorWorker @AssistedInject constructor(
         }
     }
 
-    private suspend fun handleBluetoothEvent(
-        bluetoothEvent: BluetoothEventQueue.Event,
-    ) {
-        log(TAG) { "handleBluetoothEvent: Handling $bluetoothEvent" }
+    private suspend fun handleEvent(bluetoothEvent: BluetoothEventQueue.Event) {
+        log(TAG) { "handleEvent: Handling $bluetoothEvent" }
         val managedDevice = deviceRepo.getDevice(bluetoothEvent.sourceDevice.address)
 
         if (managedDevice == null) {
-            log(TAG, WARN) { "Can't find managed device for $bluetoothEvent" }
+            log(TAG, WARN) { "handleEvent: Can't find managed device for $bluetoothEvent" }
             return
         }
 
@@ -225,12 +228,12 @@ class MonitorWorker @AssistedInject constructor(
             list.add(module)
         }
 
-        log(TAG) { "handleBluetoothEvent: Processing event $deviceEvent" }
+        log(TAG) { "handleEvent: Processing event $deviceEvent" }
 
         for (i in 0 until priorityArray.size) {
             val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
-            log(TAG) {
-                "handleBluetoothEvent: ${currentPriorityModules.size} event modules at priority ${priorityArray.keyAt(i)}"
+            log(TAG, VERBOSE) {
+                "handleEvent: ${currentPriorityModules.size} modules at priority ${priorityArray.keyAt(i)}"
             }
 
             coroutineScope {
@@ -238,15 +241,15 @@ class MonitorWorker @AssistedInject constructor(
                     async(dispatcherProvider.IO) {
                         try {
                             log(TAG, VERBOSE) {
-                                "handleBluetoothEvent: ${module.tag} HANDLE-START for $deviceEvent"
+                                "handleEvent: ${module.tag} HANDLE-START for $deviceEvent"
                             }
                             module.handle(deviceEvent)
                             log(TAG, VERBOSE) {
-                                "handleConnection: ${module.tag} HANDLE-STOP for $deviceEvent"
+                                "handleEvent: ${module.tag} HANDLE-STOP for $deviceEvent"
                             }
                         } catch (e: Exception) {
                             log(TAG, ERROR) {
-                                "handleBluetoothEvent: Error: ${module.tag} for $deviceEvent: ${e.asLog()}"
+                                "handleEvent: Error: ${module.tag} for $deviceEvent: ${e.asLog()}"
                             }
                         }
                     }
@@ -271,18 +274,18 @@ class MonitorWorker @AssistedInject constructor(
         for (i in 0 until priorityArray.size) {
             val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
             log(TAG) {
-                "handleVolune: ${currentPriorityModules.size} volume modules at priority ${priorityArray.keyAt(i)}"
+                "handleVolume: ${currentPriorityModules.size} modules at priority ${priorityArray.keyAt(i)}"
             }
 
             coroutineScope {
                 currentPriorityModules.map { module ->
                     async {
                         try {
-                            log(TAG, VERBOSE) { "handleVolune: Volume module ${module.tag} HANDLE-START" }
+                            log(TAG, VERBOSE) { "handleVolume: ${module.tag} HANDLE-START" }
                             module.handle(event)
-                            log(TAG, VERBOSE) { "handleVolune: Volume module ${module.tag} HANDLE-STOP" }
+                            log(TAG, VERBOSE) { "handleVolume: ${module.tag} HANDLE-STOP" }
                         } catch (e: Exception) {
-                            log(TAG, ERROR) { "handleVolune: Volume module error: ${module.tag}: ${e.asLog()}" }
+                            log(TAG, ERROR) { "handleVolume: error: ${module.tag}: ${e.asLog()}" }
                         }
                     }
                 }.awaitAll()

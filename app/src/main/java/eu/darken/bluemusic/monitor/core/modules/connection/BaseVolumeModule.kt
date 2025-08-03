@@ -25,6 +25,8 @@ abstract class BaseVolumeModule(
     override val tag: String
         get() = logTag("Monitor", "$type", "Volume", "Module")
 
+    open suspend fun areRequirementsMet(): Boolean = true
+
     override suspend fun handle(event: DeviceEvent) {
         if (event !is DeviceEvent.Connected) return
         val device = event.device

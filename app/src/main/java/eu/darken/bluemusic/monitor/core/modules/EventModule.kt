@@ -1,7 +1,6 @@
 package eu.darken.bluemusic.monitor.core.modules
 
 interface EventModule {
-    suspend fun areRequirementsMet(): Boolean = true
 
     /**
      * When should this module run, lower = earlier, higher = later.
