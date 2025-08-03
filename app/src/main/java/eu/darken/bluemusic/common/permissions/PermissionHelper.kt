@@ -111,4 +111,15 @@ class PermissionHelper @Inject constructor(
                 !isDismissed
         return PermissionHint(shouldShow = shouldShow)
     }
+
+    fun hasNotificationPolicyAccess(): Boolean = if (hasApiLevel(Build.VERSION_CODES.M)) {
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+        notificationManager.isNotificationPolicyAccessGranted
+    } else {
+        // Prior to Android 6.0, notification policy access doesn't exist
+        true
+    }
+
+    fun getNotificationPolicyAccessIntent(): Intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
 }

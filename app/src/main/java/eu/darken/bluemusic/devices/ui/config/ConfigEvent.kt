@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.devices.ui.config
 
+import android.content.Intent
 import java.time.Duration
 
 sealed interface ConfigEvent {
@@ -11,4 +12,6 @@ sealed interface ConfigEvent {
     data class ShowVolumeRateLimitDialog(val currentValue: Duration) : ConfigEvent
     data object NavigateBack : ConfigEvent
     data object RequiresPro : ConfigEvent
+    data class RequiresNotificationPolicyAccessForRingtone(val intent: Intent) : ConfigEvent
+    data class RequiresNotificationPolicyAccessForNotification(val intent: Intent) : ConfigEvent
 }

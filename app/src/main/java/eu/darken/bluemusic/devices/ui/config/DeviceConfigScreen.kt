@@ -41,10 +41,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -77,7 +77,7 @@ fun DeviceConfigScreenHost(
 ) {
     val state by waitForState(vm.state)
     val snackbarHostState = remember { SnackbarHostState() }
-    rememberCoroutineScope()
+    val context = LocalContext.current
 
     var showDeleteDialog by remember { mutableStateOf(false) }
     var showRenameDialog by remember { mutableStateOf<String?>(null) }
@@ -88,6 +88,11 @@ fun DeviceConfigScreenHost(
 
     val upgradeMessage = stringResource(R.string.upgrade_feature_requires_pro)
     val upgradeAction = stringResource(R.string.upgrade_prompt_upgrade_action)
+    val notificationPolicyRingtoneMessage =
+        stringResource(R.string.devices_device_config_notification_policy_required_ringtone)
+    val notificationPolicyNotificationMessage =
+        stringResource(R.string.devices_device_config_notification_policy_required_notification)
+    val notificationPolicyAction = stringResource(R.string.devices_device_config_notification_policy_action)
 
     LaunchedEffect(vm.events) {
         vm.events.collect { event ->
@@ -107,6 +112,27 @@ fun DeviceConfigScreenHost(
                     )
                     if (result == SnackbarResult.ActionPerformed) {
                         vm.navTo(Nav.Main.Upgrade)
+                    }
+                }
+                is ConfigEvent.RequiresNotificationPolicyAccessForRingtone -> {
+                    val result = snackbarHostState.showSnackbar(
+                        message = notificationPolicyRingtoneMessage,
+                        actionLabel = notificationPolicyAction,
+                        duration = SnackbarDuration.Long
+                    )
+                    if (result == SnackbarResult.ActionPerformed) {
+                        context.startActivity(event.intent)
+                    }
+                }
+
+                is ConfigEvent.RequiresNotificationPolicyAccessForNotification -> {
+                    val result = snackbarHostState.showSnackbar(
+                        message = notificationPolicyNotificationMessage,
+                        actionLabel = notificationPolicyAction,
+                        duration = SnackbarDuration.Long
+                    )
+                    if (result == SnackbarResult.ActionPerformed) {
+                        context.startActivity(event.intent)
                     }
                 }
             }
