@@ -18,10 +18,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -42,14 +46,31 @@ import eu.darken.bluemusic.common.ui.waitForState
 fun SettingsIndexScreenHost(vm: SettingsViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
 
+    val snackbarHostState = remember { SnackbarHostState() }
+    val copiedMessage = stringResource(R.string.message_copied_to_clipboard)
+
+    LaunchedEffect(vm.events) {
+        vm.events.collect { event ->
+            when (event) {
+                is SettingsEvent.VersionCopied -> {
+                    snackbarHostState.showSnackbar(
+                        message = copiedMessage
+                    )
+                }
+            }
+        }
+    }
+
     val state by waitForState(vm.state)
 
     state?.let { state ->
         SettingsIndexScreen(
             state = state,
+            snackbarHostState = snackbarHostState,
             onNavigateUp = { vm.navUp() },
             onNavigateTo = { vm.navTo(it) },
             onOpenUrl = { vm.openUrl(it) },
+            onCopyVersion = { vm.copyVersionToClipboard() },
         )
     }
 }
@@ -57,11 +78,14 @@ fun SettingsIndexScreenHost(vm: SettingsViewModel = hiltViewModel()) {
 @Composable
 fun SettingsIndexScreen(
     state: SettingsViewModel.State,
+    snackbarHostState: SnackbarHostState,
     onNavigateUp: () -> Unit,
     onNavigateTo: (NavigationDestination) -> Unit,
     onOpenUrl: (String) -> Unit,
+    onCopyVersion: () -> Unit,
 ) {
     Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
                 title = {
@@ -149,6 +173,7 @@ fun SettingsIndexScreen(
                     title = stringResource(R.string.changelog_label),
                     subtitle = state.versionText,
                     onClick = { onOpenUrl(BlueMusicLinks.CHANGELOG) },
+                    onLongClick = onCopyVersion,
                 )
                 SettingsDivider()
             }
@@ -183,9 +208,11 @@ private fun SettingsIndexScreenPreview() {
             state = SettingsViewModel.State(
                 isUpgraded = true // TODO: Preview with upgrade status
             ),
+            snackbarHostState = remember { SnackbarHostState() },
             onNavigateUp = {},
             onNavigateTo = {},
             onOpenUrl = {},
+            onCopyVersion = {},
         )
     }
 }

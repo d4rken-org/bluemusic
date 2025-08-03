@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.common.settings
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,12 +28,22 @@ fun SettingsBaseItem(
     modifier: Modifier = Modifier,
     icon: ImageVector? = null,
     subtitle: String? = null,
+    onLongClick: (() -> Unit)? = null,
     trailingContent: @Composable (() -> Unit)? = null,
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { onClick() }
+            .then(
+                if (onLongClick != null) {
+                    Modifier.combinedClickable(
+                        onClick = onClick,
+                        onLongClick = onLongClick
+                    )
+                } else {
+                    Modifier.clickable { onClick() }
+                }
+            )
             .padding(horizontal = 16.dp, vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
