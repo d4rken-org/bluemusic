@@ -77,6 +77,9 @@
     <string name="devices_state_connected_label">Подключено</string>
     <string name="devices_last_connected_label">Last connected: %s</string>
     <string name="devices_currently_connected_label">Currently connected</string>
+    <string name="devices_device_disabled_label">Устройство отключено</string>
+    <string name="devices_device_config_enabled_label">Включено</string>
+    <string name="devices_device_config_enabled_desc">Реагировать на это устройство при подключении</string>
     <string name="devices_no_volumes_configured">No volumes configured for this device. Tap Configure to set up volume preferences.</string>
     <string name="settings_label">Settings</string>
     <string name="settings_category_other_label">Other</string>

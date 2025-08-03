@@ -83,13 +83,13 @@
     <string name="devices_device_config_alarm_volume_label">Alarm volume</string>
     <string name="devices_device_config_alarm_volume_desc">Some alarm apps use the music volume instead.</string>
     <string name="devices_device_config_notification_volume_label">Notification volume</string>
-    <string name="devices_device_config_notification_volume_desc">Not all devices support a separate notification volume setting.</string>
+    <string name="devices_device_config_notification_volume_desc">Not all devices support a separate notification volume setting. Can also set silent or vibrate mode.</string>
     <string name="devices_device_config_music_volume_label">Music volume</string>
     <string name="devices_device_config_music_volume_desc">Control the volume which affects music and games when this device connects.</string>
     <string name="devices_device_config_call_volume_label">Call volume</string>
     <string name="devices_device_config_call_volume_desc">Control the volume that affects calls when this devices connects.</string>
     <string name="devices_device_config_ring_volume_label">Ring volume</string>
-    <string name="devices_device_config_ring_volume_desc">Control the volume which affects your ringtone.</string>
+    <string name="devices_device_config_ring_volume_desc">Control the volume which affects your ringtone. Can also set silent or vibrate mode.</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Ring volume control requires notification policy access</string>
     <string name="devices_device_config_notification_policy_required_notification">Notification volume control requires notification policy access</string>
     <string name="devices_device_config_notification_policy_action">Grant access</string>
