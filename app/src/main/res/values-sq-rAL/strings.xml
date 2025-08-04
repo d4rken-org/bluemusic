@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Show the system\'s volume window while this app makes adjustments.</string>
     <string name="label_volume_listener">Observe changes</string>
     <string name="description_volume_listener">Stay active while a device is connected and save volume changes that have not been caused by this app.</string>
-    <string name="label_autoplay_keytype">Autoplay key type</string>
-    <string name="desc_autoplay_keytype">The key type that is sent when an autoplay enabled device connects.</string>
     <string name="label_boot_restore">Restore on boot</string>
     <string name="description_boot_restore">Restore volume after booting/rebooting if a Bluetooth device is connected.</string>
     <string name="settings_support_label">Support</string>

@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Hiển thị cửa sổ âm lượng của hệ thống trong khi ứng dụng này thực hiện các điều chỉnh.</string>
     <string name="label_volume_listener">Theo dõi các thay đổi</string>
     <string name="description_volume_listener">Luôn hoạt động trong khi thiết bị được kết nối và lưu các thay đổi âm lượng không do ứng dụng này.</string>
-    <string name="label_autoplay_keytype">Kiểu nút tự động phát</string>
-    <string name="desc_autoplay_keytype">Loại nút được gửi khi kết nối thiết bị tự động phát.</string>
     <string name="label_boot_restore">Khôi phục khi khởi động</string>
     <string name="description_boot_restore">Khôi phục âm lượng sau khi khởi động/khởi động lại nếu một thiết bị Bluetooth được kết nối.</string>
     <string name="settings_support_label">Support</string>

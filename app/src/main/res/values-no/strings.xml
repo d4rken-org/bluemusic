@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Vis systemets volumvindu når denne appen gjør endringer.</string>
     <string name="label_volume_listener">Observer endringer</string>
     <string name="description_volume_listener">Forbli aktiv mens en enhet er koblet til og lagre volumendringer som ikke har blitt forårsaket av denne appen.</string>
-    <string name="label_autoplay_keytype">Autospill knapptype</string>
-    <string name="desc_autoplay_keytype">Knapptypen som er sendt når en autospillaktivert enhet kobles til.</string>
     <string name="label_boot_restore">Gjenopprett på oppstart</string>
     <string name="description_boot_restore">Gjenopprett volum etter oppstart/omstart hvis en Bluetooth-enhet er tilkoblet.</string>
     <string name="settings_support_label">Support</string>

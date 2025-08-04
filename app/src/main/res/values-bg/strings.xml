@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Показва системния прозорец за звука, докато приложението прави корекции.</string>
     <string name="label_volume_listener">Следи промените</string>
     <string name="description_volume_listener">Записва промените на звука, които не са причинени от приложението докато устройството е свързано.</string>
-    <string name="label_autoplay_keytype">Autoplay опции</string>
-    <string name="desc_autoplay_keytype">Командата, която се изпраща при свързване към устройство.</string>
     <string name="label_boot_restore">Възстанови при стартиране</string>
     <string name="description_boot_restore">Възстановява силата на звука след старт/рестарт ако Bluetooth устройство е свързано.</string>
     <string name="settings_support_label">Support</string>

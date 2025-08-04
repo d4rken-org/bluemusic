@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Visa systemets volymfönster medan den här appen gör justeringar.</string>
     <string name="label_volume_listener">Observera förändringar</string>
     <string name="description_volume_listener">Fortsätt vara aktiv medan en enhet är ansluten och spara volymförändringar som inte har orsakats av den här appen.</string>
-    <string name="label_autoplay_keytype">Autoplay-nyckeltyp</string>
-    <string name="desc_autoplay_keytype">Nyckeltypen som skickas när en autoplay-aktiverad enhet ansluter.</string>
     <string name="label_boot_restore">Återställ vid omstart av enheten</string>
     <string name="description_boot_restore">Återställ volymen efter uppstart / omstart om en Bluetooth-enhet är ansluten.</string>
     <string name="settings_support_label">Support</string>

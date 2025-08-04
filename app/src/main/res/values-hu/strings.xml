@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">A rendszer hangerő ablakának megjelenítése, miközben ez az alkalmazás elvégzi a módosításokat.</string>
     <string name="label_volume_listener">Változások megfigyelése</string>
     <string name="description_volume_listener">Maradjon aktív amíg az eszköz csatlakoztatva van, és mentse a hangerő módosításait, amelyeket nem az alkalmazás szabályoz.</string>
-    <string name="label_autoplay_keytype">Automatikus lejátszás gomb típusa</string>
-    <string name="desc_autoplay_keytype">A gomb típusának küldése amikor egy automatikus lejátszás engedélyezett eszköz csatlakozik.</string>
     <string name="label_boot_restore">Rendszer indulásakor elindul</string>
     <string name="description_boot_restore">A hangerő vissza állítása újra indulás után ha egy Bluetooth eszköz csatlakozik.</string>
     <string name="settings_support_label">Support</string>

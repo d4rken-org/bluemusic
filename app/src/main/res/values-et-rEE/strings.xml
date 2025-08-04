@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Kuva süsteemi heli aken hetkel, mil rakendus teeb muudatusi.</string>
     <string name="label_volume_listener">Jälgi muudatusi</string>
     <string name="description_volume_listener">Olge tähelepanelik, kui seadet ühendatakse ja salvestatakse heli muudatusi, mis ei pärine praegusest rakendusest.</string>
-    <string name="label_autoplay_keytype">Automaatse esituse klahvi tüüp</string>
-    <string name="desc_autoplay_keytype">Klahvi tüüp, mida saadetakse automaatset esitust kasutava seadme ühendumisel.</string>
     <string name="label_boot_restore">Taasta käivitumisel</string>
     <string name="description_boot_restore">Taasta heli pärast käivitumist/taaskäivitumist, kui sinihammast toetavad seadet ühendatakse.</string>
     <string name="settings_support_label">Support</string>

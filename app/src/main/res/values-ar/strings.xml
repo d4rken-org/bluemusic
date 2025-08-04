@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">إظهار نافذة حجم الصوت للنظام بينما يقوم التطبيق بإجراء تعديلات.</string>
     <string name="label_volume_listener">ملاحظة التغييرات</string>
     <string name="description_volume_listener">تبقى فعالة عند إتصال جهاز وتحفظ التغييرات في حجم الصوت التي لم يكن سببها هذا التطبيق.</string>
-    <string name="label_autoplay_keytype">نوع مفتاح التشغيل التلقائي</string>
-    <string name="desc_autoplay_keytype">نوع المفتاح الذي يتم إرساله عند توصيل جهاز تم تمكين التشغيل التلقائي له.</string>
     <string name="label_boot_restore">الإستعادة عند تشغيل الجهاز</string>
     <string name="description_boot_restore">استعادة حجم الصوت بعد التشغيل/إعادة التشغيل إذا كان جهاز بلوتوث متصلا.</string>
     <string name="settings_support_label">Support</string>

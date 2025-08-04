@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Prikažite prozor glasnoće sustava dok ova aplikacija izvršava izmjene.</string>
     <string name="label_volume_listener">Promatraj promjene</string>
     <string name="description_volume_listener">Ostaje aktivan dok je uređaj povezan i sprema promjene glasnoće koje nisu uzrokovane ovom aplikacijom.</string>
-    <string name="label_autoplay_keytype">Tip ključa automatske reprodukcije</string>
-    <string name="desc_autoplay_keytype">Ključ koji je poslan kada se poveže uređaj sa omogućenom automatskom reprodukcijom.</string>
     <string name="label_boot_restore">Vrati na ponovnom pokretanju</string>
     <string name="description_boot_restore">Vrati glasnoću nakon ponovnog pokretanja ako je Bluetooth uređaj povezan.</string>
     <string name="settings_support_label">Support</string>

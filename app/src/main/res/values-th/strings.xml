@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">ปรับการแสดงหน้าต่างข้อมูลของระบบในขณะนี้</string>
     <string name="label_volume_listener">สังเกตการเปลี่ยนแปลง</string>
     <string name="description_volume_listener">ยังคงใช้งานในขณะที่อุปกรณ์เชื่อมต่อ และบันทึกการเปลี่ยนแปลงระดับเสียงที่ไม่ได้เกิดจากการตรวจสอบนี้</string>
-    <string name="label_autoplay_keytype">ชนิดคีย์\'เล่นอัตโนมัติ\'</string>
-    <string name="desc_autoplay_keytype">ชนิดคีย์ที่ส่งเชื่อมต่อเมื่ออุปกรณ์เปิดใช้งาน\'เล่นอัตโนมัติ\'</string>
     <string name="label_boot_restore">เรียกคืนเมื่อบูต</string>
     <string name="description_boot_restore">คืนค่าระดับเสียงหลังจากบูต/รีบูตเครื่องถ้าเชื่อมต่ออุปกรณ์บลูทูธแล้ว</string>
     <string name="settings_support_label">Support</string>

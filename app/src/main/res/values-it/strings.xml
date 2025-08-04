@@ -109,8 +109,6 @@
     <string name="description_visible_volume_adjustments">Mostra la finestra di sistema dei volumi mentre quest\'app apporta delle regolazioni.</string>
     <string name="label_volume_listener">Rilevamento modifiche</string>
     <string name="description_volume_listener">Resta attivo mentre un dispositivo è connesso e salva le modifiche ai volumi non applicate da quest\'app.</string>
-    <string name="label_autoplay_keytype">Autoplay</string>
-    <string name="desc_autoplay_keytype">Il tipo di comportamento da avere quando un dispositivo autoplay compatibile viene connesso.</string>
     <string name="label_boot_restore">Ripristino all\'avvio</string>
     <string name="description_boot_restore">Ripristina i volumi dopo un avvio o un riavvio se un dispositivo Bluetooth è connesso.</string>
     <string name="settings_support_label">Support</string>

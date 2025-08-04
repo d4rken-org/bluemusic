@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Zobrazí systémové okno hlasitosti, zatímco aplikace provádí změny.</string>
     <string name="label_volume_listener">Sledování změn</string>
     <string name="description_volume_listener">Zůstaňte na pozoru, když je zařízení připojeno a uložte změny hlasitosti, které nepocházejí z této aplikace.</string>
-    <string name="label_autoplay_keytype">Typ tlačítka automatického přehrávání</string>
-    <string name="desc_autoplay_keytype">Typ tlačítka, který se odesílá při připojení zařízení s povoleným automatickým přehráváním.</string>
     <string name="label_boot_restore">Obnovit při spuštění</string>
     <string name="description_boot_restore">Obnoví hlasitosti po spuštění/restartování, když je zařízení připojeno.</string>
     <string name="settings_support_label">Support</string>

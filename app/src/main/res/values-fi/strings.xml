@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Näytä järjestelmän äänenvoimakkuus säätimet, kun tämä ohjelma tekee muutoksia.</string>
     <string name="label_volume_listener">Tarkkaile muutoksia</string>
     <string name="description_volume_listener">Pysy aktiivisena kun laite on yhteydessä ja tallenna äänenvoimakkuus muutokset, mitkä ei ole tämän sovelluksen tekemiä.</string>
-    <string name="label_autoplay_keytype">Automaattisentoiston näppäin painallus</string>
-    <string name="desc_autoplay_keytype">Näppäin painallus mikä lähetetään, kun laite minkä automaattinentoisto on päällä yhdistää.</string>
     <string name="label_boot_restore">Palauta uudelleenkäynnistyksen yhteydessä</string>
     <string name="description_boot_restore">Palauta äänenvoimakkuus käynnistyksen yhteydessä jos Bluetooth laite on yhdistettynä.</string>
     <string name="settings_support_label">Support</string>

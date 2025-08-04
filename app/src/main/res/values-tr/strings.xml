@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Bu uygulama ayarlamalar yaparken sistemin ses düzeyi penceresini göster.</string>
     <string name="label_volume_listener">Değişiklikleri gözlemle</string>
     <string name="description_volume_listener">Bir cihaz bağlıyken aktif kalın ve bu uygulamanın neden olmadığı ses seviyesi değişikliklerini kaydedin.</string>
-    <string name="label_autoplay_keytype">Otomatik oynatma anahtar türü</string>
-    <string name="desc_autoplay_keytype">Otomatik oynatma özellikli bir cihaz bağlandığında gönderilen anahtar türü.</string>
     <string name="label_boot_restore">Cihaz açılırken başlat</string>
     <string name="description_boot_restore">Bluetooth cihazı bağlıysa, önyükleme / yeniden başlatma sonrasında sesi geri yükleyin.</string>
     <string name="settings_support_label">Support</string>

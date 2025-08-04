@@ -109,8 +109,6 @@
     <string name="description_visible_volume_adjustments">此应用调整音量时，显示系统的音量调节窗口。</string>
     <string name="label_volume_listener">检查音量变化</string>
     <string name="description_volume_listener">设备连接时保持活动状态，并保存非此应用引起的音量更改。</string>
-    <string name="label_autoplay_keytype">自动播放设置</string>
-    <string name="desc_autoplay_keytype">当启用自动播放功能的设备连接时发送的密钥类型。</string>
     <string name="label_boot_restore">开机恢复配置</string>
     <string name="description_boot_restore">在开机/重启后，如果连接到蓝牙设备，则恢复其音量。</string>
     <string name="settings_support_label">Support</string>

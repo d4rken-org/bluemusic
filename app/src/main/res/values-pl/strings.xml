@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Wyświetla systemowe okno głośności, podczas zmiany wartości przez aplikację.</string>
     <string name="label_volume_listener">Obserwacja zmian</string>
     <string name="description_volume_listener">Pozostaje aktywna, gdy urządzenie jest podłączone i rejestruje zmiany głośności, które nie zostały wprowadzone przez aplikację.</string>
-    <string name="label_autoplay_keytype">Typ przycisku auto-odtwarzania</string>
-    <string name="desc_autoplay_keytype">Funkcja przycisku, która jest uaktywniana, gdy podłączone zostaje urządzenia z automatycznym odtwarzaniem.</string>
     <string name="label_boot_restore">Przywróć przy uruchomieniu</string>
     <string name="description_boot_restore">Przywraca głośność po ponownym uruchomieniu, jeśli urządzenie Bluetooth zostanie podłączone.</string>
     <string name="settings_support_label">Support</string>
