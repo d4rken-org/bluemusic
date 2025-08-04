@@ -73,6 +73,9 @@
     <string name="devices_state_connected_label">Povezano</string>
     <string name="devices_last_connected_label">Last connected: %s</string>
     <string name="devices_currently_connected_label">Currently connected</string>
+    <string name="devices_device_disabled_label">Uređaj onemogućen</string>
+    <string name="devices_device_config_enabled_label">Omogućeno</string>
+    <string name="devices_device_config_enabled_desc">Reagiraj na ovaj uređaj kada se poveže</string>
     <string name="devices_no_volumes_configured">No volumes configured for this device. Tap Configure to set up volume preferences.</string>
     <string name="settings_label">Settings</string>
     <string name="settings_category_other_label">Other</string>
