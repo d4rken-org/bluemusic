@@ -381,43 +381,6 @@ fun DeviceConfigScreen(
                         )
 
                         SwitchPreference(
-                            title = stringResource(R.string.devices_device_config_autoplay_label),
-                            description = stringResource(R.string.devices_device_config_autoplay_desc),
-                            isChecked = device.autoplay,
-                            icon = Icons.TwoTone.PlayArrow,
-                            onCheckedChange = { onAction(ConfigAction.OnToggleAutoPlay) },
-                            requiresPro = true,
-                            isProVersion = state.isProVersion
-                        )
-
-                        if (device.autoplay) {
-                            ClickablePreference(
-                                title = stringResource(R.string.devices_device_config_autoplay_keycodes_label),
-                                description = if (device.autoplayKeycodes.isEmpty()) {
-                                    stringResource(R.string.devices_device_config_autoplay_keycodes_none_set)
-                                } else {
-                                    val keycodeNames = device.autoplayKeycodes.mapNotNull { keycode ->
-                                        when (keycode) {
-                                            android.view.KeyEvent.KEYCODE_MEDIA_PLAY -> "Play"
-                                            android.view.KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE -> "Play/Pause"
-                                            android.view.KeyEvent.KEYCODE_MEDIA_NEXT -> "Next"
-                                            android.view.KeyEvent.KEYCODE_MEDIA_PREVIOUS -> "Previous"
-                                            android.view.KeyEvent.KEYCODE_MEDIA_STOP -> "Stop"
-                                            android.view.KeyEvent.KEYCODE_MEDIA_REWIND -> "Rewind"
-                                            android.view.KeyEvent.KEYCODE_MEDIA_FAST_FORWARD -> "Fast Forward"
-                                            else -> null
-                                        }
-                                    }
-                                    keycodeNames.joinToString(", ")
-                                },
-                                icon = Icons.TwoTone.Tune,
-                                onClick = { onAction(ConfigAction.OnEditAutoplayKeycodesClicked) },
-                                requiresPro = true,
-                                isProVersion = state.isProVersion
-                            )
-                        }
-
-                        SwitchPreference(
                             title = stringResource(R.string.devices_device_config_volume_lock_label),
                             description = stringResource(R.string.devices_device_config_volume_lock_desc),
                             isChecked = device.volumeLock,
@@ -488,6 +451,43 @@ fun DeviceConfigScreen(
                             icon = Icons.TwoTone.Visibility,
                             onCheckedChange = { onAction(ConfigAction.OnToggleVisibleAdjustments) }
                         )
+
+                        SwitchPreference(
+                            title = stringResource(R.string.devices_device_config_autoplay_label),
+                            description = stringResource(R.string.devices_device_config_autoplay_desc),
+                            isChecked = device.autoplay,
+                            icon = Icons.TwoTone.PlayArrow,
+                            onCheckedChange = { onAction(ConfigAction.OnToggleAutoPlay) },
+                            requiresPro = true,
+                            isProVersion = state.isProVersion
+                        )
+
+                        if (device.autoplay) {
+                            ClickablePreference(
+                                title = stringResource(R.string.devices_device_config_autoplay_keycodes_label),
+                                description = if (device.autoplayKeycodes.isEmpty()) {
+                                    stringResource(R.string.devices_device_config_autoplay_keycodes_none_set)
+                                } else {
+                                    val keycodeNames = device.autoplayKeycodes.mapNotNull { keycode ->
+                                        when (keycode) {
+                                            android.view.KeyEvent.KEYCODE_MEDIA_PLAY -> "Play"
+                                            android.view.KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE -> "Play/Pause"
+                                            android.view.KeyEvent.KEYCODE_MEDIA_NEXT -> "Next"
+                                            android.view.KeyEvent.KEYCODE_MEDIA_PREVIOUS -> "Previous"
+                                            android.view.KeyEvent.KEYCODE_MEDIA_STOP -> "Stop"
+                                            android.view.KeyEvent.KEYCODE_MEDIA_REWIND -> "Rewind"
+                                            android.view.KeyEvent.KEYCODE_MEDIA_FAST_FORWARD -> "Fast Forward"
+                                            else -> null
+                                        }
+                                    }
+                                    keycodeNames.joinToString(", ")
+                                },
+                                icon = Icons.TwoTone.Tune,
+                                onClick = { onAction(ConfigAction.OnEditAutoplayKeycodesClicked) },
+                                requiresPro = true,
+                                isProVersion = state.isProVersion
+                            )
+                        }
 
                         ClickablePreference(
                             title = stringResource(R.string.devices_device_config_launch_app_label),
