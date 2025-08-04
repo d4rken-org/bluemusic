@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">在此應用調整時顯示系統音量視窗。</string>
     <string name="label_volume_listener">檢查音量變更</string>
     <string name="description_volume_listener">在裝置連線時保持活動狀態，並保存不是由這個應用程式引起的音量變更。</string>
-    <string name="label_autoplay_keytype">自動播放鍵型式</string>
-    <string name="desc_autoplay_keytype">啟用自動播放功能的裝置連線時傳送的按鍵類型。</string>
     <string name="label_boot_restore">開機後復原</string>
     <string name="description_boot_restore">在開機/重新開機後，如果連上藍牙裝置就復原音量。</string>
     <string name="settings_support_label">Support</string>

@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Wys die stelsel se volume venster terwyl hierdie aanpassings gemaak word.</string>
     <string name="label_volume_listener">Neem verandering waar</string>
     <string name="description_volume_listener">Bly aktief terwyl \'n toestel verbind is, en berg volume veranderinge wat nie deur die program gedoen is nie.</string>
-    <string name="label_autoplay_keytype">Outo-speel sleutel tipe</string>
-    <string name="desc_autoplay_keytype">Die sleutel tipe wat gestuur word indien \'n outo-speel toestel inskakel.</string>
     <string name="label_boot_restore">Herstel met \&quot;boot\&quot;</string>
     <string name="description_boot_restore">Herstel volume na \&quot;booting/rebooting\&quot; as \'n Bluetooth-toestel gekoppel is.</string>
     <string name="settings_support_label">Support</string>

@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Menampilkan jendela volume sistem saat aplikasi membuat penyesuaian.</string>
     <string name="label_volume_listener">Mengamati perubahan</string>
     <string name="description_volume_listener">Tetap aktif saat perangkat terhubung dan menyimpan perubahan volume yang tidak disebabkan oleh aplikasi.</string>
-    <string name="label_autoplay_keytype">Jenis kunci main otomatis</string>
-    <string name="desc_autoplay_keytype">Jenis kunci yang dikirim ketika perangkat putar otomatis terhubung.</string>
     <string name="label_boot_restore">Kembalikan saat dinyalakan</string>
     <string name="description_boot_restore">Kembalikan volume saat dinyalakan bila terdapat perangkat Bluetooth terhubung.</string>
     <string name="settings_support_label">Support</string>

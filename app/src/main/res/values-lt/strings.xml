@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Rodo sistemos garsumo panelės langą programai keičiant garsumą.</string>
     <string name="label_volume_listener">Stebėti pokyčius</string>
     <string name="description_volume_listener">Laikyti aktyviu kai įrenginys prijungtas ir valdomas garsumas.</string>
-    <string name="label_autoplay_keytype">Automatinio paleidimo komanda</string>
-    <string name="desc_autoplay_keytype">Komanda, kuri automatiškai siunčiama prisijungiančiam įrenginiui.</string>
     <string name="label_boot_restore">Atstatyti įjungiant</string>
     <string name="description_boot_restore">Atstato garsumą po įjungimo/perkrovimo jei Bluetooth įrenginys prijungtas.</string>
     <string name="settings_support_label">Support</string>

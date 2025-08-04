@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">הצגת חלון ווליום של המערכת כאשר ההתאמות נעשות על ידי אפליקציה זו.</string>
     <string name="label_volume_listener">צפייה בשינויים</string>
     <string name="description_volume_listener">להשאיר פעיל כאשר התקן מחובר ושמירת שינויי ווליום שלא נגרמו על ידי אפליקציה זו.</string>
-    <string name="label_autoplay_keytype">סוג פעולת ניגון אוטומטי</string>
-    <string name="desc_autoplay_keytype">סוג הפעולה שנשלחת כאשר מכשיר עם ניגון אוטומטי מתחבר.</string>
     <string name="label_boot_restore">שחזור באתחול</string>
     <string name="description_boot_restore">Restore volume after booting/rebooting if a Bluetooth device is connected.</string>
     <string name="settings_support_label">Support</string>

@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Ipakita ang volume window ng sistema habang gumagawa ng pagbabo ang app na ito.</string>
     <string name="label_volume_listener">Obserbahan ang mga pagbabago</string>
     <string name="description_volume_listener">Manatiling aktibo habang konektado ang isang device at i-seyb ang mga pagbabago sa volume na hindi kagagawan ng app na ito.</string>
-    <string name="label_autoplay_keytype">Autoplay na uri ng key</string>
-    <string name="desc_autoplay_keytype">Ang uri ng key na ipinapadala kung may naka-autoplay na device na kumokonek.</string>
     <string name="label_boot_restore">Ibalik pagkatapos magboot</string>
     <string name="description_boot_restore">Ibalik ang volume pagkatagpos magboot/magreboot kung ang isang Bluetooth device ay nakakonekta.</string>
     <string name="settings_support_label">Support</string>

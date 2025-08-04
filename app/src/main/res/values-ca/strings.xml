@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Mostra la finestra de volum del sistema mentre aquesta aplicació realitza configuracions.</string>
     <string name="label_volume_listener">Observa els canvis</string>
     <string name="description_volume_listener">Roman actiu mentre un dispositiu estigui connectat i desa els canvis de volum que no hagin estat causats per aquesta aplicació.</string>
-    <string name="label_autoplay_keytype">Tipus de tecla de reproducció automàtica</string>
-    <string name="desc_autoplay_keytype">El tipus de tecla que s\'envia quan es connecta un dispositiu activat per a reproducció automàtica.</string>
     <string name="label_boot_restore">Restableix a l\'inici</string>
     <string name="description_boot_restore">Restableix el volum després d\'iniciar/reiniciar si un dispositiu Bluetooth està connectat.</string>
     <string name="settings_support_label">Support</string>

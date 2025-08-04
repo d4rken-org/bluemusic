@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Pagpapakita sa sistema ng volume window habang ang app na ito at nagaadjust.</string>
     <string name="label_volume_listener">Tingnan ang pagbabago</string>
     <string name="description_volume_listener">Manatiling active habang ang device ay konektado at isave ang pagbabago sa lakas ng tunog na hindi ginawa ng app na ito.</string>
-    <string name="label_autoplay_keytype">Autoplay key type</string>
-    <string name="desc_autoplay_keytype">Ang key type na naipadala kapag kumonekta ang naka-autoplay na devive.</string>
     <string name="label_boot_restore">Restore on boot</string>
     <string name="description_boot_restore">Restore volume after booting/rebooting if a Bluetooth device is connected.</string>
     <string name="settings_support_label">Support</string>

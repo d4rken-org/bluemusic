@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">इस ऐप्प को समायोजन करने के दौरान सिस्टम की वॉल्यूम विंडो दिखाएं।</string>
     <string name="label_volume_listener">परिवर्तनों को देखें</string>
     <string name="description_volume_listener">डिवाइस जुड़े होने दौरान सक्रिय रहें और ध्वनि परिवर्तन सहेजे, जो इस ऐप के कारण नहीं हुए हैं।</string>
-    <string name="label_autoplay_keytype">ऑटोप्ले कुंजी प्रकार</string>
-    <string name="desc_autoplay_keytype">यह कुंजी प्रकार तब भेजी जाती है जब कोई एक ऑटोप्ले सक्षम डिवाइस जुड़ता है</string>
     <string name="label_boot_restore">बूट पर पुनर्स्थापित करें</string>
     <string name="description_boot_restore">यदि कोई ब्लूटूथ डिवाइस कनेक्टेड है, तो बूटिंग/रीबूट करने के बाद वॉल्यूम पुनर्स्थापित करें ।</string>
     <string name="settings_support_label">Support</string>

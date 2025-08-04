@@ -111,8 +111,6 @@
     <string name="description_visible_volume_adjustments">Muestra la ventana de volumen del sistema mientras esta aplicación realiza los ajustes.</string>
     <string name="label_volume_listener">Observar los cambios</string>
     <string name="description_volume_listener">Mantente activo mientras tu dispositivo está conectado y guarda los cambios de volumen no realizadas por la aplicación.</string>
-    <string name="label_autoplay_keytype">Tipo de la clave de la reproducción automática</string>
-    <string name="desc_autoplay_keytype">El tipo de la clave que se envía cuando se conecta un dispositivo habilitado para la reproducción automática.</string>
     <string name="label_boot_restore">Restaurar al arrancar</string>
     <string name="description_boot_restore">Restaurar el volumen después de iniciar/reiniciar, si un dispositivo Bluetooth está conectado.</string>
     <string name="settings_support_label">Soporte</string>

@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Bu tətbiq, nizamlamalar edərkən sistemin səs pəncərəsini göstər.</string>
     <string name="label_volume_listener">Dəyişiklikləri müşahidə et</string>
     <string name="description_volume_listener">Bir cihazla bağlantı qurduqda aktiv qal və bu tətbiqdən qaynaqlanmayan səs dəyişikliklərini saxla.</string>
-    <string name="label_autoplay_keytype">Avtomatik oynatma açar növü</string>
-    <string name="desc_autoplay_keytype">Avtomatik oynatma özəlliyi fəal cihaz ilə bağlantı qurduqda göndəriləcək açar növü.</string>
     <string name="label_boot_restore">Başlanğıcda geri qaytar</string>
     <string name="description_boot_restore">Bluetooth cihazı ilə bağlantı qurulsa, açılışdan/yenidən başlatmadan sonra səs səviyyəsini geri qaytarın.</string>
     <string name="settings_support_label">Support</string>

@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Zobraziť systémový panel hlasitosti počas vykonávania zmien aplikáciou.</string>
     <string name="label_volume_listener">Sledovanie zmien</string>
     <string name="description_volume_listener">Majte sa na pozore počas pripojenia zariadenia a uložte zmeny hlasitosti, ktoré vykonala aplikácia.</string>
-    <string name="label_autoplay_keytype">Typ tlačidla automatického prehrávania</string>
-    <string name="desc_autoplay_keytype">Typ tlačidla, ktorý je odoslaný po pripojení zariadenia so zapnutým automatickým prehrávaním.</string>
     <string name="label_boot_restore">Obnovenie po štarte</string>
     <string name="description_boot_restore">Obnoví hlasitosť pri štarte/reštarte ak je Bluetooth zariadenie pripojené.</string>
     <string name="settings_support_label">Support</string>

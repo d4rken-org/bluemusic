@@ -109,8 +109,6 @@
     <string name="description_visible_volume_adjustments">Отображение окна системной громкости при выполнении приложением настроек.</string>
     <string name="label_volume_listener">Отслеживание изменений</string>
     <string name="description_volume_listener">Поддержание активного режима при наличии подключенного устройства и сохранение изменений громкости, выполненных вне данного приложения.</string>
-    <string name="label_autoplay_keytype">Кнопка автовоспроизведения</string>
-    <string name="desc_autoplay_keytype">Кнопка, симуляция которой запускает автовоспроизведение на подключаемом устройстве.</string>
     <string name="label_boot_restore">Восстановить при загрузке</string>
     <string name="description_boot_restore">Восстановление громкости после загрузки/перезагрузки при подключенном устройстве Bluetooth.</string>
     <string name="settings_support_label">Support</string>

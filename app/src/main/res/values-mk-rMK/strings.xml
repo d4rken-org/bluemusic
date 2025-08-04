@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Прикажи го системскиот прозорец за јачина на звукот додека оваа апликација прави прилагодувања.</string>
     <string name="label_volume_listener">Надгледува на промени</string>
     <string name="description_volume_listener">Останува активна додека е поврзан уредот и зачувај ги промените на звукот кои не се предизвикани од оваа апликација.</string>
-    <string name="label_autoplay_keytype">Тип на клуч од автоматско прикажување</string>
-    <string name="desc_autoplay_keytype">Тип на клуч што е испратен кога е поврзан уред со овозможен автостарт.</string>
     <string name="label_boot_restore">Врати на подигање</string>
     <string name="description_boot_restore">Враќање волумен по подигнување/рестартирање ако е поврзан уред со Блутут.</string>
     <string name="settings_support_label">Support</string>

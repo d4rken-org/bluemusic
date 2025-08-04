@@ -28,14 +28,12 @@ constructor(
         devicesSettings.isEnabled.flow,
         devicesSettings.visibleAdjustments.flow,
         devicesSettings.restoreOnBoot.flow,
-        devicesSettings.autoplayKeycodes.flow,
-    ) { upgradeInfo, isEnabled, visibleAdjustments, restoreOnBoot, autoplayKeycodes ->
+    ) { upgradeInfo, isEnabled, visibleAdjustments, restoreOnBoot ->
         State(
             isUpgraded = upgradeInfo.isUpgraded,
             isEnabled = isEnabled,
             visibleAdjustments = visibleAdjustments,
             restoreOnBoot = restoreOnBoot,
-            autoplayKeycodes = autoplayKeycodes,
         )
     }.asStateFlow()
 
@@ -59,21 +57,11 @@ constructor(
         devicesSettings.restoreOnBoot.value(enabled)
     }
 
-    fun onAutoplayKeycodesClicked() {
-        log(tag) { "onAutoplayKeycodesClicked()" }
-        // The dialog is shown directly in the UI, this is just for logging
-    }
-
-    fun onAutoplayKeycodesChanged(keycodes: List<Int>) = launch {
-        log(tag) { "onAutoplayKeycodesChanged($keycodes)" }
-        devicesSettings.autoplayKeycodes.update { keycodes }
-    }
 
     data class State(
         val isUpgraded: Boolean,
         val isEnabled: Boolean,
         val visibleAdjustments: Boolean,
         val restoreOnBoot: Boolean,
-        val autoplayKeycodes: List<Int>,
     )
 }

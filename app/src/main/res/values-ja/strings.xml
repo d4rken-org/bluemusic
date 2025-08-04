@@ -109,8 +109,6 @@
     <string name="description_visible_volume_adjustments">このアプリが音量を調節する際に、システムの音量ウィンドウを表示します。</string>
     <string name="label_volume_listener">変更の監視</string>
     <string name="description_volume_listener">デバイスが接続されている間はアプリを常駐させて、このアプリ以外による音量の変更を保存します。</string>
-    <string name="label_autoplay_keytype">自動再生のキー種類</string>
-    <string name="desc_autoplay_keytype">自動再生対応デバイスが接続されたときに送信されるキーの種類です。</string>
     <string name="label_boot_restore">起動時に復元</string>
     <string name="description_boot_restore">Bluetoothデバイスが接続されている場合、起動/再起動後に音量を復元します。</string>
     <string name="settings_support_label">Support</string>

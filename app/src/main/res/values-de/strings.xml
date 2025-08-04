@@ -113,8 +113,6 @@
     <string name="description_visible_volume_adjustments">Zeigt das Lautstärken-Fenster des System an, während diese App Änderungen vornimmt.</string>
     <string name="label_volume_listener">Änderungen beobachten</string>
     <string name="description_volume_listener">Aktiv bleiben, während ein Gerät verbunden ist und Lautstärke-Änderungen speichern, die nicht von dieser App ausgelöst wurden.</string>
-    <string name="label_autoplay_keytype">Typ der Autoplay-Taste</string>
-    <string name="desc_autoplay_keytype">Der Tastendruck, der simuliert wird sobald ein Gerät mit Autoplay verbunden wird.</string>
     <string name="label_boot_restore">Wiederherstellen bei Neustart</string>
     <string name="description_boot_restore">Stellt die Lautstärke nach einem Neustart wieder her, falls ein Bluetooth-Gerät verbunden ist.</string>
     <string name="settings_support_label">Support</string>

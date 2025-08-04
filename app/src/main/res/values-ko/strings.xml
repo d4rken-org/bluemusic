@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">이 앱이 설정을 변경할 때 시스템 음량 창을 표시합니다.</string>
     <string name="label_volume_listener">변경 관측</string>
     <string name="description_volume_listener">이 앱이 행하지 않은 음량 변경 사항을 저장합니다. 디바이스가 연결되어 있을 때 이 앱이 계속 켜져 있게 됩니다.</string>
-    <string name="label_autoplay_keytype">자동 재생 키 유형</string>
-    <string name="desc_autoplay_keytype">자동 재생이 가능한 디바이스가 연결되었을 때 전송되는 키 유형입니다.</string>
     <string name="label_boot_restore">부트 후 복구</string>
     <string name="description_boot_restore">안드로이드가 시작 또는 재시작된 뒤 블루투스 디바이스가 연결되어 있을 경우 음량을 복구합니다.</string>
     <string name="settings_support_label">Support</string>

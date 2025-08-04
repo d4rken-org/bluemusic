@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Εμφάνιση του παραθύρου ήχου του συστήματος, ενώ αυτή η εφαρμογή κάνει τις προσαρμογές.</string>
     <string name="label_volume_listener">Παρατήρηση αλλαγών</string>
     <string name="description_volume_listener">Η εφαρμογή παραμένει ενεργή όσο η συσκευή είναι συνδεδεμένη και αποθηκεύει τις αλλαγές εντάσεων του ήχου που δεν έχουν γίνει από αυτή την εφαρμογή.</string>
-    <string name="label_autoplay_keytype">Τύπος κλειδιού αυτόματης αναπαραγωγής</string>
-    <string name="desc_autoplay_keytype">Ο τύπος κλειδιού που στέλνεται όταν μια συσκευή αυτόματης αναπαραγωγής συνδέεται.</string>
     <string name="label_boot_restore">Επαναφορά κατά την εκκίνηση</string>
     <string name="description_boot_restore">Αποκατάσταση της έντασης μετά την εκκίνηση/επανεκκίνηση αν είναι συνδεδεμένη μια συσκευή Bluetooth.</string>
     <string name="settings_support_label">Support</string>

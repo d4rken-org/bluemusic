@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Tampilkan tetingkap volum sistem sementara apl ini melakukan pelarasan.</string>
     <string name="label_volume_listener">Perhatikan perubahan</string>
     <string name="description_volume_listener">Kekal aktif sementara peranti dihubungkan dan simpan perubahan volum yang tiada terkesan dari apl ini.</string>
-    <string name="label_autoplay_keytype">Jenis kekunci automain</string>
-    <string name="desc_autoplay_keytype">Jenis kekunci yang dihantar apabila automain peranti didayakan terhubung.</string>
     <string name="label_boot_restore">Simpan semula semasa boot</string>
     <string name="description_boot_restore">Simpan semula volum selepas booting/rebooting jika peranti Bluetooth disambungkan.</string>
     <string name="settings_support_label">Support</string>

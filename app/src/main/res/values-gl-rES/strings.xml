@@ -105,8 +105,6 @@
     <string name="description_visible_volume_adjustments">Mostra o volume do sistema mentres esta aplicación realiza axustes.</string>
     <string name="label_volume_listener">Observar os cambios</string>
     <string name="description_volume_listener">Mantense activo mentres un dispositivo está conectado e garda os cambios de volume non causados por esta aplicación.</string>
-    <string name="label_autoplay_keytype">Tipo de tecla de reprodución automática</string>
-    <string name="desc_autoplay_keytype">O tipo de tecla que se envía cando se conecta un dispositivo habilitado para a reprodución automática.</string>
     <string name="label_boot_restore">Restaurar ao inicio</string>
     <string name="description_boot_restore">Restaura o volume logo de iniciar ou reiniciar en caso de que estea conectado un dispositivo bluetooth.</string>
     <string name="settings_support_label">Support</string>
