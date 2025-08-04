@@ -39,8 +39,8 @@ constructor(
         )
     }.asStateFlow()
 
-    fun upgradeButler() = launch {
-        log(tag) { "upgradeButler()" }
+    fun upgrade() = launch {
+        log(tag) { "upgrade()" }
         navTo(Nav.Main.Upgrade)
     }
 

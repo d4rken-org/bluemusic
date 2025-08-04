@@ -47,7 +47,7 @@ fun DevicesSettingsScreenHost(vm: DevicesSettingsViewModel = hiltViewModel()) {
         DevicesSettingsScreen(
             state = state,
             onNavigateUp = { vm.navUp() },
-            onUpgradeButler = { vm.upgradeButler() },
+            onUpgrade = { vm.upgrade() },
             onToggleEnabled = { vm.onToggleEnabled(it) },
             onToggleVisibleVolumeAdjustments = { vm.onToggleVisibleVolumeAdjustments(it) },
             onToggleRestoreOnBoot = { vm.onToggleRestoreOnBoot(it) },
@@ -61,7 +61,7 @@ fun DevicesSettingsScreenHost(vm: DevicesSettingsViewModel = hiltViewModel()) {
 fun DevicesSettingsScreen(
     state: DevicesSettingsViewModel.State,
     onNavigateUp: () -> Unit,
-    onUpgradeButler: () -> Unit,
+    onUpgrade: () -> Unit,
     onToggleEnabled: (Boolean) -> Unit,
     onToggleVisibleVolumeAdjustments: (Boolean) -> Unit,
     onToggleRestoreOnBoot: (Boolean) -> Unit,
@@ -180,7 +180,7 @@ private fun GeneralSettingsScreenPreview() {
             onLanguageSwitcher = {},
             onThemeModeSelected = {},
             onThemeStyleSelected = {},
-            onUpgradeButler = {},
+            onUpgrade = {},
         )
     }
 }

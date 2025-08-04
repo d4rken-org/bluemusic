@@ -25,7 +25,7 @@ fun BlueMusicIcon(
 
 @Preview2
 @Composable
-private fun ButlerIconPreview() {
+private fun BlueMusicIconPreview() {
     PreviewWrapper {
         BlueMusicIcon(size = 48.dp)
     }

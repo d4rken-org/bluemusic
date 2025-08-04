@@ -52,7 +52,7 @@ fun GeneralSettingsScreenHost(vm: GeneralSettingsViewModel = hiltViewModel()) {
             onLanguageSwitcher = { vm.showLanguagePicker() },
             onThemeModeSelected = { vm.updateThemeMode(it) },
             onThemeStyleSelected = { vm.updateThemeStyle(it) },
-            onUpgradeButler = { vm.upgradeButler() },
+            onUpgrade = { vm.upgrade() },
         )
     }
 }
@@ -64,7 +64,7 @@ fun GeneralSettingsScreen(
     onLanguageSwitcher: (() -> Unit)?,
     onThemeModeSelected: (ThemeMode) -> Unit,
     onThemeStyleSelected: (ThemeStyle) -> Unit,
-    onUpgradeButler: () -> Unit,
+    onUpgrade: () -> Unit,
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -115,7 +115,7 @@ fun GeneralSettingsScreen(
                                     actionLabel = context.getString(R.string.upgrade_prompt_upgrade_action)
                                 )
                                 if (result == SnackbarResult.ActionPerformed) {
-                                    onUpgradeButler()
+                                    onUpgrade()
                                 }
                             }
                         }
@@ -140,7 +140,7 @@ fun GeneralSettingsScreen(
                                     actionLabel = context.getString(R.string.upgrade_prompt_upgrade_action)
                                 )
                                 if (result == SnackbarResult.ActionPerformed) {
-                                    onUpgradeButler()
+                                    onUpgrade()
                                 }
                             }
                         }
@@ -200,7 +200,7 @@ private fun GeneralSettingsScreenPreview() {
             onLanguageSwitcher = {},
             onThemeModeSelected = {},
             onThemeStyleSelected = {},
-            onUpgradeButler = {},
+            onUpgrade = {},
         )
     }
 }

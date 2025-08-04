@@ -1,4 +1,4 @@
-package eu.darken.butler.common.locale
+package eu.darken.bluemusic.common.locale
 
 import android.os.Build
 import android.os.LocaleList

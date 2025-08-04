@@ -560,22 +560,22 @@ private fun ActionButtons(
 private fun RecorderScreenPreview() {
     PreviewWrapper {
         val mockState = RecorderViewModel.State(
-            logDir = File("/storage/emulated/0/Android/data/eu.darken.butler/cache/debug/logs/session_123"),
+            logDir = File("/storage/emulated/0/Android/data/eu.darken.bluemusic/cache/debug/logs/session_123"),
             logEntries = listOf(
                 RecorderViewModel.LogFileItem(
-                    path = File("/storage/emulated/0/Android/data/eu.darken.butler/cache/debug/logs/session_123/app.log"),
+                    path = File("/storage/emulated/0/Android/data/eu.darken.bluemusic/cache/debug/logs/session_123/app.log"),
                     size = 1024 * 1024
                 ),
                 RecorderViewModel.LogFileItem(
-                    path = File("/storage/emulated/0/Android/data/eu.darken.butler/cache/debug/logs/session_123/system.log"),
+                    path = File("/storage/emulated/0/Android/data/eu.darken.bluemusic/cache/debug/logs/session_123/system.log"),
                     size = 512 * 1024
                 ),
                 RecorderViewModel.LogFileItem(
-                    path = File("/storage/emulated/0/Android/data/eu.darken.butler/cache/debug/logs/session_123/crash.log"),
+                    path = File("/storage/emulated/0/Android/data/eu.darken.bluemusic/cache/debug/logs/session_123/crash.log"),
                     size = 256 * 1024
                 )
             ),
-            compressedFile = File("/storage/emulated/0/Android/data/eu.darken.butler/cache/debug/logs/session_123.zip"),
+            compressedFile = File("/storage/emulated/0/Android/data/eu.darken.bluemusic/cache/debug/logs/session_123.zip"),
             compressedSize = 1024 * 768
         )
 
