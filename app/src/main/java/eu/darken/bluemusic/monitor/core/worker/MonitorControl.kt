@@ -26,7 +26,7 @@ class MonitorControl @Inject constructor(
     @AppScope private val appScope: CoroutineScope,
     private val workerManager: WorkManager,
     private val dispatcherProvider: DispatcherProvider,
-    private val deviceRepo: DeviceRepo,
+    deviceRepo: DeviceRepo,
 ) {
 
     init {

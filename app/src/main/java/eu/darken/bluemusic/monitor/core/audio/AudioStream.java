@@ -4,6 +4,10 @@ import android.media.AudioManager;
 
 
 public interface AudioStream {
+    // Special volume values for sound modes
+    float SOUND_MODE_SILENT = -2f;
+    float SOUND_MODE_VIBRATE = -3f;
+    
     enum Id {
         STREAM_MUSIC(AudioManager.STREAM_MUSIC),
         STREAM_BLUETOOTH_HANDSFREE(6),

@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.monitor.core.audio
 
-import android.R.attr.level
 import android.media.AudioManager
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
@@ -106,7 +105,7 @@ class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
         visible: Boolean = false,
         delay: Duration = Duration.ZERO,
     ): Boolean {
-        log(TAG, VERBOSE) { "changeVolume(streamId=$streamId, level=$level, visible=$visible, delay=$delay)" }
+        log(TAG, VERBOSE) { "changeVolume(streamId=$streamId, level=$targetLevel, visible=$visible, delay=$delay)" }
 
         val max = getMaxVolume(streamId)
         if (targetLevel > max) {

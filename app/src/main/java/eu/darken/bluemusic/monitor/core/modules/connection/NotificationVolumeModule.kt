@@ -21,7 +21,7 @@ class NotificationVolumeModule @Inject constructor(
     streamHelper: StreamHelper,
     ringerModeHelper: RingerModeHelper,
     private val notMan: NotificationManager
-) : BaseVolumeModule(settings, streamHelper, ringerModeHelper) {
+) : BaseVolumeWithModesModule(settings, streamHelper, ringerModeHelper) {
 
     override val type: AudioStream.Type = AudioStream.Type.NOTIFICATION
 

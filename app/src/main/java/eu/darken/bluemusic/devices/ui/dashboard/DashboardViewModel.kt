@@ -22,7 +22,6 @@ import eu.darken.bluemusic.main.core.GeneralSettings
 import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -44,13 +43,6 @@ class DashboardViewModel @Inject constructor(
 
     private val eventChannel = Channel<DashboardEvent>()
     val events = eventChannel.receiveAsFlow()
-
-    private val notificationPermissionFlow: Flow<Boolean> = flow {
-        while (true) {
-            emit(permissionHelper.hasNotificationPermission())
-            delay(1000)
-        }
-    }
 
     private val devicesFlow = deviceRepo.devices
 

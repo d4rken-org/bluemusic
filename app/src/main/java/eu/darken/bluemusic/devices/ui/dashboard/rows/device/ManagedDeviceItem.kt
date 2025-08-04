@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.Block
-import androidx.compose.material.icons.twotone.Devices
 import androidx.compose.material.icons.twotone.ExpandMore
 import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material3.Button
@@ -82,7 +81,7 @@ fun ManagedDeviceItem(
             ) {
                 // Device type icon
                 Icon(
-                    imageVector = device.device.deviceType.toIcon() ?: Icons.TwoTone.Devices,
+                    imageVector = device.device.deviceType.toIcon(),
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
                     tint = MaterialTheme.colorScheme.primary

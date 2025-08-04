@@ -7,10 +7,7 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
-import eu.darken.bluemusic.devices.ui.dashboard.rows.device.SOUND_MODE_SILENT
-import eu.darken.bluemusic.devices.ui.dashboard.rows.device.SOUND_MODE_VIBRATE
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
-import eu.darken.bluemusic.monitor.core.audio.RingerModeHelper
 import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
@@ -20,8 +17,7 @@ import java.time.Instant
 
 abstract class BaseVolumeModule(
     private val settings: DevicesSettings,
-    private val streamHelper: StreamHelper,
-    private val ringerModeHelper: RingerModeHelper
+    private val streamHelper: StreamHelper
 ) : ConnectionModule {
 
     abstract val type: AudioStream.Type
@@ -51,36 +47,8 @@ abstract class BaseVolumeModule(
         monitor(device, percentage)
     }
 
-    private suspend fun setInitial(device: ManagedDevice, percentage: Float) {
+    protected open suspend fun setInitial(device: ManagedDevice, percentage: Float) {
         log(tag, INFO) { "Setting initial volume ($percentage) for $device" }
-
-        // Handle special sound modes for ringtone and notification streams
-        if (type == AudioStream.Type.RINGTONE || type == AudioStream.Type.NOTIFICATION) {
-            when (percentage) {
-                SOUND_MODE_SILENT -> {
-                    log(tag, INFO) { "Setting ringer mode to SILENT for $device" }
-                    if (ringerModeHelper.setSilentMode()) {
-                        log(tag) { "Successfully set ringer mode to SILENT" }
-                    }
-                    return
-                }
-
-                SOUND_MODE_VIBRATE -> {
-                    log(tag, INFO) { "Setting ringer mode to VIBRATE for $device" }
-                    if (ringerModeHelper.setVibrateMode()) {
-                        log(tag) { "Successfully set ringer mode to VIBRATE" }
-                    }
-                    return
-                }
-
-                else -> {
-                    // For normal volume levels, ensure we're in normal ringer mode
-                    if (percentage > 0) {
-                        ringerModeHelper.setNormalMode()
-                    }
-                }
-            }
-        }
 
         val changed = streamHelper.changeVolume(
             streamId = device.getStreamId(type),
@@ -107,7 +75,7 @@ abstract class BaseVolumeModule(
         }
     }
 
-    private suspend fun monitor(device: ManagedDevice, targetPercentage: Float) {
+    protected open suspend fun monitor(device: ManagedDevice, targetPercentage: Float) {
         log(tag, INFO) { "Monitoring volume (target=$targetPercentage) for $device" }
 
         val monitorDuration = device.monitoringDuration

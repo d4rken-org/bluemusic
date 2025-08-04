@@ -32,10 +32,9 @@ import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.AudioStream.SOUND_MODE_SILENT
+import eu.darken.bluemusic.monitor.core.audio.AudioStream.SOUND_MODE_VIBRATE
 import kotlin.math.roundToInt
-
-const val SOUND_MODE_SILENT = -2f
-const val SOUND_MODE_VIBRATE = -3f
 
 @Composable
 fun VolumeControlWithModes(
