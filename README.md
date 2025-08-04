@@ -1,4 +1,4 @@
-<img src="https://github.com/d4rken/bluemusic/raw/master/fastlane/metadata/android/en-US/images/featureGraphic.png" width="400">
+<img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/featureGraphic.png" width="400" alt="banner">
 
 # Bluetooth Volume Manager
 
@@ -20,14 +20,14 @@
 
 ## Download
 
-| Source                                                                                 | Status                                                                                                                                                                                                                          |
-|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Google Play (Release)](https://play.google.com/store/apps/details?id=eu.darken.bluemusic) | ![](https://img.shields.io/endpoint?color=green&logo=google-play&logoColor=green&url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Deu.darken.bluemusic%26gl%3DUS%26hl%3Den%26l%3DGoogle%2520Play%2520(Release)%26m%3D%24version) |
-| [Google Play (Open Testing)](https://play.google.com/apps/testing/eu.darken.bluemusic)     | ![](https://img.shields.io/badge/Open%20Test%20Track%20-%20Google%20Play?logo=googleplay&logoColor=googleplay&label=Google%20Play)                                                                                              |
-| [Github (Release)](https://github.com/d4rken-org/bluemusic/releases)                   | ![](https://img.shields.io/github/v/release/d4rken-org/bluemusic?display_name=release&logo=github&label=GitHub%20(Release)) ![](https://img.shields.io/github/downloads/d4rken-org/bluemusic/latest/total?label=%20)            |
-| [Github (Pre-Release)](https://github.com/d4rken-org/bluemusic/releases)               | ![](https://img.shields.io/github/v/release/d4rken-org/bluemusic?include_prereleases&display_name=release&logo=github&label=GitHub%20(Pre-Release)) ![](https://img.shields.io/github/downloads-pre/d4rken-org/bluemusic/latest/total?label=%20) |
-| [F-Droid (Main Repo)](https://f-droid.org/en/packages/eu.darken.bluemusic/)                | ![](https://img.shields.io/f-droid/v/eu.darken.bluemusic?logo=f-droid&label=f-droid%20(latest))                                                                                                                                     |
-| [F-Droid (IzzyOnDroid)](https://apt.izzysoft.de/packages/eu.darken.bluemusic/)             | ![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/eu.darken.bluemusic&label=IzzyOnDroid%20(latest))                                                                                              |
+| Source                                                                                     | Status                                                                                                                                                                                                                                           |
+|--------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Google Play (Release)](https://play.google.com/store/apps/details?id=eu.darken.bluemusic) | ![](https://img.shields.io/endpoint?color=green&logo=google-play&logoColor=green&url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Deu.darken.bluemusic%26gl%3DUS%26hl%3Den%26l%3DGoogle%2520Play%2520(Release)%26m%3D%24version)              |
+| [Google Play (Open Testing)](https://play.google.com/apps/testing/eu.darken.bluemusic)     | ![](https://img.shields.io/badge/Open%20Test%20Track%20-%20Google%20Play?logo=googleplay&logoColor=googleplay&label=Google%20Play)                                                                                                               |
+| [Github (Release)](https://github.com/d4rken-org/bluemusic/releases)                       | ![](https://img.shields.io/github/v/release/d4rken-org/bluemusic?display_name=release&logo=github&label=GitHub%20(Release)) ![](https://img.shields.io/github/downloads/d4rken-org/bluemusic/latest/total?label=%20)                             |
+| [Github (Pre-Release)](https://github.com/d4rken-org/bluemusic/releases)                   | ![](https://img.shields.io/github/v/release/d4rken-org/bluemusic?include_prereleases&display_name=release&logo=github&label=GitHub%20(Pre-Release)) ![](https://img.shields.io/github/downloads-pre/d4rken-org/bluemusic/latest/total?label=%20) |
+| [F-Droid (Main Repo)](https://f-droid.org/en/packages/eu.darken.bluemusic/)                | ![](https://img.shields.io/f-droid/v/eu.darken.bluemusic?logo=f-droid&label=f-droid%20(latest))                                                                                                                                                  |
+| [F-Droid (IzzyOnDroid)](https://apt.izzysoft.de/packages/eu.darken.bluemusic/)             | ![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/eu.darken.bluemusic&label=IzzyOnDroid%20(latest))                                                                                                           |
 
 ## Support the project
 
