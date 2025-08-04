@@ -20,7 +20,9 @@
     <string name="onboarding_rewrite_message">由于Android的变化和Google的要求，我从头开始完全重建了蓝牙音量管理器，以确保应用程序继续可靠地工作。</string>
     <string name="onboarding_rewrite_features">在此更新过程中，某些设备设置可能已被重置。请检查您的设备配置。</string>
     <string name="onboarding_rewrite_action">继续</string>
-    <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
+    <string name="discover_no_unmnaged_devices_msg">没有找到未管理的设备</string>
+    <string name="discover_all_devices_managed_msg">你所有配对的设备都已管理！需要新的吗？</string>
+    <string name="discover_pair_new_device_action">配对新设备</string>
     <string name="devices_device_config_label">Device configuration</string>
     <string name="devices_device_config_section_general_label">常规</string>
     <string name="devices_device_config_remove_device_label">Forget device</string>

@@ -21,6 +21,8 @@
     <string name="onboarding_rewrite_features">Algumas configurações de dispositivos podem ter sido redefinidas durante esta atualização. Por favor, verifique suas configurações de dispositivos.</string>
     <string name="onboarding_rewrite_action">Continuar</string>
     <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
+    <string name="discover_all_devices_managed_msg">Todos os seus dispositivos pareados já estão gerenciados! Precisa de um novo?</string>
+    <string name="discover_pair_new_device_action">Parear novo dispositivo</string>
     <string name="devices_device_config_label">Device configuration</string>
     <string name="devices_device_config_section_general_label">Geral</string>
     <string name="devices_device_config_remove_device_label">Forget device</string>

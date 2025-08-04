@@ -21,6 +21,8 @@
     <string name="onboarding_rewrite_features">Algunas funciones han cambiado durante la actualización. Por favor, revisa la configuración de tus dispositivos para asegurarte de que todo esté configurado correctamente.</string>
     <string name="onboarding_rewrite_action">Continuar</string>
     <string name="discover_no_unmnaged_devices_msg">No se encontraron dispositivos no administrados</string>
+    <string name="discover_all_devices_managed_msg">¡Todos tus dispositivos emparejados están administrados! ¿Necesitas uno nuevo?</string>
+    <string name="discover_pair_new_device_action">Emparejar nuevo dispositivo</string>
     <string name="devices_device_config_label">Configuración del dispositivo</string>
     <string name="devices_device_config_section_general_label">General</string>
     <string name="devices_device_config_remove_device_label">Olvidar dispositivo</string>

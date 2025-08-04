@@ -21,6 +21,8 @@
     <string name="onboarding_rewrite_features">Certaines fonctionnalités ont changé pendant la mise à jour. Veuillez vérifier les paramètres de vos appareils pour vous assurer que tout est configuré correctement.</string>
     <string name="onboarding_rewrite_action">Continuer</string>
     <string name="discover_no_unmnaged_devices_msg">Aucun périphérique non géré trouvé</string>
+    <string name="discover_all_devices_managed_msg">Tous vos appareils appairés sont gérés ! Besoin d\'un nouveau ?</string>
+    <string name="discover_pair_new_device_action">Appairer un nouvel appareil</string>
     <string name="devices_device_config_label">Configuration du périphérique</string>
     <string name="devices_device_config_section_general_label">Général</string>
     <string name="devices_device_config_remove_device_label">Oublier le périphérique</string>

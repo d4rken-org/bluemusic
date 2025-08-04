@@ -21,6 +21,8 @@
     <string name="onboarding_rewrite_features">Some device settings may have been reset during this update. Please check your device configurations.</string>
     <string name="onboarding_rewrite_action">Continue</string>
     <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
+    <string name="discover_all_devices_managed_msg">All your paired devices are managed! Need a new one?</string>
+    <string name="discover_pair_new_device_action">Pair new device</string>
     <string name="devices_device_config_label">Device configuration</string>
     <string name="devices_device_config_section_general_label">Xeral</string>
     <string name="devices_device_config_remove_device_label">Forget device</string>

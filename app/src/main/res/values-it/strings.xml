@@ -21,6 +21,8 @@
     <string name="onboarding_rewrite_features">Alcune impostazioni dei dispositivi potrebbero essere state reimpostate durante questo aggiornamento. Si prega di controllare le configurazioni dei dispositivi.</string>
     <string name="onboarding_rewrite_action">Continua</string>
     <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
+    <string name="discover_all_devices_managed_msg">Tutti i tuoi dispositivi accoppiati sono gestiti! Te ne serve uno nuovo?</string>
+    <string name="discover_pair_new_device_action">Accoppia nuovo dispositivo</string>
     <string name="devices_device_config_label">Device configuration</string>
     <string name="devices_device_config_section_general_label">Generale</string>
     <string name="devices_device_config_remove_device_label">Forget device</string>

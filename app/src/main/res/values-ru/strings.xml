@@ -21,6 +21,8 @@
     <string name="onboarding_rewrite_features">Некоторые настройки устройств могли быть сброшены во время этого обновления. Пожалуйста, проверьте конфигурации ваших устройств.</string>
     <string name="onboarding_rewrite_action">Продолжить</string>
     <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
+    <string name="discover_all_devices_managed_msg">Все твои подключенные устройства уже управляются! Нужно новое?</string>
+    <string name="discover_pair_new_device_action">Подключить новое устройство</string>
     <string name="devices_device_config_label">Device configuration</string>
     <string name="devices_device_config_section_general_label">Общее</string>
     <string name="devices_device_config_remove_device_label">Forget device</string>

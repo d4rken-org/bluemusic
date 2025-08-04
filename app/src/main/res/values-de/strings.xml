@@ -21,6 +21,8 @@
     <string name="onboarding_rewrite_features">Einige Funktionen haben sich während des Updates geändert. Bitte überprüfe deine Geräteeinstellungen, um sicherzustellen, dass alles korrekt konfiguriert ist.</string>
     <string name="onboarding_rewrite_action">Weiter</string>
     <string name="discover_no_unmnaged_devices_msg">Keine nicht verwalteten Geräte gefunden</string>
+    <string name="discover_all_devices_managed_msg">Alle deine gekoppelten Geräte werden verwaltet! Brauchst du ein neues?</string>
+    <string name="discover_pair_new_device_action">Neues Gerät koppeln</string>
     <string name="devices_device_config_label">Gerätekonfiguration</string>
     <string name="devices_device_config_section_general_label">Allgemein</string>
     <string name="devices_device_config_remove_device_label">Gerät vergessen</string>

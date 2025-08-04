@@ -21,6 +21,8 @@
     <string name="onboarding_rewrite_features">このアップデート中に一部のデバイス設定がリセットされた可能性があります。デバイスの設定を確認してください。</string>
     <string name="onboarding_rewrite_action">続ける</string>
     <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
+    <string name="discover_all_devices_managed_msg">ペアリングされたデバイスはすべて管理されています！新しいのが必要ですか？</string>
+    <string name="discover_pair_new_device_action">新しいデバイスをペアリング</string>
     <string name="devices_device_config_label">Device configuration</string>
     <string name="devices_device_config_section_general_label">一般</string>
     <string name="devices_device_config_remove_device_label">Forget device</string>
