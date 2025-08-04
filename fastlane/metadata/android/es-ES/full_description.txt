@@ -2,19 +2,21 @@ El administrador del volumen Bluetooth puede reaccionar a la conexión o descone
 Permite a Android recordar los niveles del volumen de los diferentes dispositivos Bluetooth.
 
 Funciones disponibles:
-• Ajuste del volumen de la música, las llamadas, los tonos de llamada y las notificaciones.
-• Envío de los comandos multimedia "Reproducir" o "Siguiente".
-• Abrir una aplicación específica.
-• Mantener la pantalla encendida.
-• Impedir que se cambie el volumen.
-• Restaurar los niveles de volumen anteriores después de la desconexión.
+
+* Ajuste del volumen de la música, las llamadas, los tonos de llamada y las notificaciones.
+* Envío de los comandos multimedia "Reproducir" o "Siguiente".
+* Abrir una aplicación específica.
+* Mantener la pantalla encendida.
+* Impedir que se cambie el volumen.
+* Restaurar los niveles de volumen anteriores después de la desconexión.
 
 Esta aplicación no puede "aumentar" el volumen o cambiarlo si no puedes hacerlo manualmente a través de los botones del volumen de tu dispositivo.
 
 Permisos explicados:
-• 'Internet' para informes de errores.
-• 'Bluetooth' para trabajar con los dispositivos Bluetooth.
-• 'Modificar los ajustes del audio' para cambiar el volumen.
-• 'Iniciar al arranque' para restaurar los niveles del volumen después de reiniciar.
-• 'Evitar que el dispositivo entre en suspensión' para corregir un error en dispositivos Samsung y mantener la pantalla encendida si es necesario.
-• 'Abrir una ventana' para lanzar las aplicaciones cuando se conecta un dispositivo Bluetooth (sólo en Android 10).
+
+* 'Internet' para informes de errores.
+* 'Bluetooth' para trabajar con los dispositivos Bluetooth.
+* 'Modificar los ajustes del audio' para cambiar el volumen.
+* 'Iniciar al arranque' para restaurar los niveles del volumen después de reiniciar.
+* 'Evitar que el dispositivo entre en suspensión' para corregir un error en dispositivos Samsung y mantener la pantalla encendida si es necesario.
+* 'Abrir una ventana' para lanzar las aplicaciones cuando se conecta un dispositivo Bluetooth (sólo en Android 10).

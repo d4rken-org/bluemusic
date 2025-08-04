@@ -2,19 +2,21 @@ Bluetooth Volume Manager može reagirati na Bluetooth uređaje koji se povezuju 
 Omogućuje Androidu da pamti razinu glasnoće različitih Bluetooth uređaja.
 
 Dostupne značajke:
-• Podešavanje glazbe, poziva, melodija zvona i glasnoće obavijesti.
-• Slanje medijskih naredbi "Reproduciraj" ili "Dalje".
-• Otvaranje određene aplikacije.
-• Održavanje zaslona budnim.
-• Sprječavanje promjene glasnoće.
-• Vraćanje prethodnih razina glasnoće nakon isključivanja.
+
+* Podešavanje glazbe, poziva, melodija zvona i glasnoće obavijesti.
+* Slanje medijskih naredbi "Reproduciraj" ili "Dalje".
+* Otvaranje određene aplikacije.
+* Održavanje zaslona budnim.
+* Sprječavanje promjene glasnoće.
+* Vraćanje prethodnih razina glasnoće nakon isključivanja.
 
 Ova aplikacija ne može "pojačati" glasnoću niti promijeniti glasnoću ako je ne možete ručno promijeniti pomoću gumba za glasnoću na uređaju.
 
 Objašnjenje dopuštenja:
-• 'Internet' za prijavljivanje pogrešaka.
-• 'Bluetooth' za rad s Bluetooth uređajima.
-• 'Modify audio settings' za promjenu glasnoće.
-• 'Boot completed' za vraćanje glasnoće nakon ponovnog pokretanja.
-• 'WAKE_LOCK' kako biste riješili pogrešku na Samsung uređajima i po potrebi držali zaslon budnim.
-• 'SYSTEM_ALERT_WINDOW' za pokretanje aplikacija kada se poveže Bluetooth uređaj (samo na Androidu 10).
+
+* 'Internet' za prijavljivanje pogrešaka.
+* 'Bluetooth' za rad s Bluetooth uređajima.
+* 'Modify audio settings' za promjenu glasnoće.
+* 'Boot completed' za vraćanje glasnoće nakon ponovnog pokretanja.
+* 'WAKE_LOCK' kako biste riješili pogrešku na Samsung uređajima i po potrebi držali zaslon budnim.
+* 'SYSTEM_ALERT_WINDOW' za pokretanje aplikacija kada se poveže Bluetooth uređaj (samo na Androidu 10).

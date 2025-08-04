@@ -2,19 +2,21 @@ Menadżer głośności Bluetooth może reagować na podłączanie i rozłączani
 Zezwala Androidowi na zapamiętanie poziomów głośności dla różnych urządzeń Bluetooth.
 
 Dostępne funkcje:
-• Dostosowanie głośności muzyki, połączeń, dzwonków i powiadomień.
-• Wysyłanie komend multimedialnych 'Odtwórz' lub 'Następny'.
-• Uruchamianie wybranej aplikacji.
-• Utrzymywanie wybudzonego ekranu.
-• Zapobieganie zmianie głośności.
-• Przywracanie poprzednich poziomów głośności po rozłączeniu.
+
+* Dostosowanie głośności muzyki, połączeń, dzwonków i powiadomień.
+* Wysyłanie komend multimedialnych 'Odtwórz' lub 'Następny'.
+* Uruchamianie wybranej aplikacji.
+* Utrzymywanie wybudzonego ekranu.
+* Zapobieganie zmianie głośności.
+* Przywracanie poprzednich poziomów głośności po rozłączeniu.
 
 Aplikacji nie może "zwiększyć" głośności lub zmienić poziomu, jeśli nie możesz jej zmienić za pomocą przycisków głośności ręcznie. 
 
 Wyjaśnienia dla wymaganych uprawnień:
-• 'Internet' dla zgłaszania błędów.
-• 'Bluetooth' do pracy z urządzeniami Bluetooth.
-• 'Modyfikacja ustawień dźwięku' do zmiany głośności.
-• 'Zakończenie uruchamiania' w celu przywrócenia poziomu głośności po ponownym uruchomieniu.
-• 'WAKE_LOCK' aby naprawić błąd na urządzeniach Samsung, i utrzymywać wybudzony ekran, kiedy to potrzebne.
-• 'SYSTEM_ALERT_WINDOW', aby uruchamiać aplikacje, gdy podłączane jest urządzenie Bluetooth (tylko dla Android 10).
+
+* 'Internet' dla zgłaszania błędów.
+* 'Bluetooth' do pracy z urządzeniami Bluetooth.
+* 'Modyfikacja ustawień dźwięku' do zmiany głośności.
+* 'Zakończenie uruchamiania' w celu przywrócenia poziomu głośności po ponownym uruchomieniu.
+* 'WAKE_LOCK' aby naprawić błąd na urządzeniach Samsung, i utrzymywać wybudzony ekran, kiedy to potrzebne.
+* 'SYSTEM_ALERT_WINDOW', aby uruchamiać aplikacje, gdy podłączane jest urządzenie Bluetooth (tylko dla Android 10).

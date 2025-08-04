@@ -3,8 +3,9 @@ Både musik- och samtalsvolymen kan konfigureras för varje enhet.
 Timingen och konfigurationen för varje Bluetooth-enhet kan anpassas individuellt.
 
 Behörigheterna förklarade:
-• "Internet" för felrapporter.
-• "Bluetooth" för att jobba med Bluetooth-enheter.
-• "Ändra ljudinställningar" för att ändra volymen.
-• "Boot completed" för att återställa volymen efter omstart av enheten.
-• "WAKE_LOCK" för att fixa en bugg på Samsung-enheter där denna behörighet är nödvändig för att undvika ett fel.
+
+* "Internet" för felrapporter.
+* "Bluetooth" för att jobba med Bluetooth-enheter.
+* "Ändra ljudinställningar" för att ändra volymen.
+* "Boot completed" för att återställa volymen efter omstart av enheten.
+* "WAKE_LOCK" för att fixa en bugg på Samsung-enheter där denna behörighet är nödvändig för att undvika ett fel.

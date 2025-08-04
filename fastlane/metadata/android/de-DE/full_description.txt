@@ -2,19 +2,21 @@ Bluetooth-Lautstärken Manager kann auf Bluetooth-Geräte reagieren, die sich ve
 Es erlaubt Android, sich an die Lautstärkeeinstellung verschiedener Bluetooth-Geräte zu erinnern.
 
 Verfügbare Funktionen:
-• Lautstärkeanpassung bei Musik, Anruf, Klingelton und Benachrichtigung.
-• Schicken der Medienbefehle 'Abspielen" oder 'Nächstes'.
-• Öffnen einer bestimmte App.
-• Bildschirm eingeschaltet lassen.
-• Verhindern, dass die Lautstärke verändert wird.
-• Wiederherstellung der vorherigen Lautstärkeeinstellungen nach Trennung.
+
+* Lautstärkeanpassung bei Musik, Anruf, Klingelton und Benachrichtigung.
+* Schicken der Medienbefehle 'Abspielen" oder 'Nächstes'.
+* Öffnen einer bestimmte App.
+* Bildschirm eingeschaltet lassen.
+* Verhindern, dass die Lautstärke verändert wird.
+* Wiederherstellung der vorherigen Lautstärkeeinstellungen nach Trennung.
 
 Diese App kann Deine Lautstärke nicht "verstärken" oder die Lautstärke ändern, falls Du sie nicht manuell über die Lautstärketasten Deines Geräts ändern kannst.
 
 Erklärung der Berechtigungen:
-• 'Internet' für Fehlerberichte.
-• 'Bluetooth', um mit Bluetooth-Geräten zu arbeiten.
-• 'Modify audio settings', um Lautstärke zu ändern.
-• 'Boot completed', um die Lautstärkeeinstellungen nach Neustarts wiederherzustellen.
-• 'WAKE_LOCK', um einen Fehler bei Samsung-Geräten zu beheben und den Bildschirm bei Bedarf wachzuhalten.
-• 'SYSTEM_ALERT_WINDOW', um Apps zu starten, sobald sich ein Bluetooth-Gerät verbindet (nur bei Android 10).
+
+* 'Internet' für Fehlerberichte.
+* 'Bluetooth', um mit Bluetooth-Geräten zu arbeiten.
+* 'Modify audio settings', um Lautstärke zu ändern.
+* 'Boot completed', um die Lautstärkeeinstellungen nach Neustarts wiederherzustellen.
+* 'WAKE_LOCK', um einen Fehler bei Samsung-Geräten zu beheben und den Bildschirm bei Bedarf wachzuhalten.
+* 'SYSTEM_ALERT_WINDOW', um Apps zu starten, sobald sich ein Bluetooth-Gerät verbindet (nur bei Android 10).

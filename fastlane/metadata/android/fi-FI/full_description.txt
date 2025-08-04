@@ -3,8 +3,9 @@ Musiikin ja puhelun äänenvoimakkuus voidaan määrittää jokaiselle laitteell
 Ajoitukset ja määritykset voidaan tehdä jokaiselle Bluetooth laitteelle erikseen.
 
 Käyttöluvat selitettynä:
-• 'internet' virheilmoituksille.
-• 'Bluetooth' Bluetooth laitteiden kanssa toimimiseen.
-• 'Modify audio settings' äänenvoimakkuuden muuttamiseen.
-• 'Boot completed' jotta määritykset voidaan asettaa käynnistyksen yhteydessä.
-• 'WAKE_LOCK' korjaa bugin Samsungin laitteiden kanssa, missä tämä lupa on pakollinen virheen välttämiseksi.
+
+* 'internet' virheilmoituksille.
+* 'Bluetooth' Bluetooth laitteiden kanssa toimimiseen.
+* 'Modify audio settings' äänenvoimakkuuden muuttamiseen.
+* 'Boot completed' jotta määritykset voidaan asettaa käynnistyksen yhteydessä.
+* 'WAKE_LOCK' korjaa bugin Samsungin laitteiden kanssa, missä tämä lupa on pakollinen virheen välttämiseksi.

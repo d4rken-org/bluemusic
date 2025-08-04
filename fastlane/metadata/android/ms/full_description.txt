@@ -2,19 +2,21 @@ Pengurus Volum Bluetooth boleh bereaksi ke peranti Bluetooth yang terhubung atau
 Ia membolehkan Android mengingati tahap kelantangan dari peranti Bluetooth yang berbeza.
 
 Ciri-ciri yang tersedia:
-• Pelarasan kelantangan muzik, panggilan, nada dering serta pemberitahuan.
-• Menghantar keluar arahan-arahan media 'Main' atau 'Seterusnya'.
-• Membuka apl yang khusus.
-• Kekalkan skrin terus sedar.
-• Menghalang perubahan pada kelantangan.
-• Menyimpan semula aras kelantangan sebelumnya selepas sambungan diputuskan.
+
+* Pelarasan kelantangan muzik, panggilan, nada dering serta pemberitahuan.
+* Menghantar keluar arahan-arahan media 'Main' atau 'Seterusnya'.
+* Membuka apl yang khusus.
+* Kekalkan skrin terus sedar.
+* Menghalang perubahan pada kelantangan.
+* Menyimpan semula aras kelantangan sebelumnya selepas sambungan diputuskan.
 
 Apl ini tidak berupaya 'merangsang' kelantangan anda atau mengubah kelantangan jika anda tidak dapat mengubahnya secara manual melalui butang kelantangan peranti anda.
 
 Keterangan Kebenaran:
-• 'Internet' untuk laporan pepijat.
-• 'Bluetooth' yang berfungsi dengan peranti Bluetooth.
-• 'Ubahsuai tetapan audio' untuk menukar volum.
-• 'Boot selesai' untuk menyimpan semula aras kelantangan selepas reboot.
-• 'WAKE_LOCK' untuk membetulkan pepijat pada peranti Samsung dan untuk skrin kekal berjaga jika perlu.
-• 'TETINGKAP_AMARAN_SISTEM' untuk melancarkan apl bila peranti Bluetooth terhubung (hanya di Android 10).
+
+* 'Internet' untuk laporan pepijat.
+* 'Bluetooth' yang berfungsi dengan peranti Bluetooth.
+* 'Ubahsuai tetapan audio' untuk menukar volum.
+* 'Boot selesai' untuk menyimpan semula aras kelantangan selepas reboot.
+* 'WAKE_LOCK' untuk membetulkan pepijat pada peranti Samsung dan untuk skrin kekal berjaga jika perlu.
+* 'TETINGKAP_AMARAN_SISTEM' untuk melancarkan apl bila peranti Bluetooth terhubung (hanya di Android 10).
