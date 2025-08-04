@@ -1,8 +1,6 @@
 package eu.darken.bluemusic.devices.ui.config.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -21,7 +19,6 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -43,7 +40,6 @@ fun DeviceHeaderCard(
     device: ManagedDevice,
     onRenameClick: () -> Unit,
     onDeleteClick: () -> Unit,
-    onToggleEnabled: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -75,54 +71,24 @@ fun DeviceHeaderCard(
 
                 // Device info
                 Column(modifier = Modifier.weight(1f)) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = device.label,
-                                style = MaterialTheme.typography.titleMedium,
-                                color = MaterialTheme.colorScheme.onSurface
-                            )
-                            Text(
-                                text = device.address,
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
-
-                        // Enable/disable switch
-                        Switch(
-                            checked = device.isEnabled,
-                            onCheckedChange = { onToggleEnabled() }
+                    Column(modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            text = device.label,
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                        Text(
+                            text = device.address,
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
 
-                    // Connection status
-                    Spacer(modifier = Modifier.height(4.dp))
                     when {
-                        !device.isEnabled -> {
-                            Text(
-                                text = stringResource(R.string.devices_device_disabled_label),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                        }
-
                         device.isConnected -> {
                             Row(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(8.dp)
-                                        .background(
-                                            color = MaterialTheme.colorScheme.primary,
-                                            shape = androidx.compose.foundation.shape.CircleShape
-                                        )
-                                )
-                                Spacer(modifier = Modifier.width(6.dp))
                                 Text(
                                     text = stringResource(R.string.devices_currently_connected_label),
                                     style = MaterialTheme.typography.bodyMedium,
@@ -198,7 +164,6 @@ private fun DeviceHeaderCardPreview() {
             device = MockDevice().toManagedDevice(),
             onRenameClick = {},
             onDeleteClick = {},
-            onToggleEnabled = {},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
@@ -214,7 +179,6 @@ private fun DeviceHeaderCardConnectedPreview() {
             device = MockDevice().toManagedDevice().copy(isConnected = true),
             onRenameClick = {},
             onDeleteClick = {},
-            onToggleEnabled = {},
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
