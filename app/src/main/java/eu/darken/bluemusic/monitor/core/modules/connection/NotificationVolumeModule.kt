@@ -9,7 +9,6 @@ import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
-import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import javax.inject.Inject
@@ -19,9 +18,8 @@ import javax.inject.Singleton
 class NotificationVolumeModule @Inject constructor(
     settings: DevicesSettings,
     volumeTool: VolumeTool,
-    ringerTool: RingerTool,
     private val notMan: NotificationManager
-) : BaseVolumeWithModesModule(settings, volumeTool, ringerTool) {
+) : BaseVolumeModule(settings, volumeTool) {
 
     override val type: AudioStream.Type = AudioStream.Type.NOTIFICATION
 

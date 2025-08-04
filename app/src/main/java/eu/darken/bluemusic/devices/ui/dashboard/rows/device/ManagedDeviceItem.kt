@@ -202,8 +202,8 @@ fun ManagedDeviceItem(
 
                         val volumeMode = fromFloat(currentVolume)
 
-                        // Use VolumeControlWithModes only for streams that support sound modes
-                        if (streamType == AudioStream.Type.RINGTONE || streamType == AudioStream.Type.NOTIFICATION) {
+                        // Use VolumeControlWithModes only for ringtone which supports sound modes
+                        if (streamType == AudioStream.Type.RINGTONE) {
                             VolumeControlWithModes(
                                 streamType = streamType,
                                 label = label,

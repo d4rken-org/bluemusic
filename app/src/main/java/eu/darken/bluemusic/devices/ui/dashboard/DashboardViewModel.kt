@@ -202,13 +202,13 @@ class DashboardViewModel @Inject constructor(
                     }
 
                     is VolumeMode.Silent -> {
-                        if (action.type == AudioStream.Type.RINGTONE || action.type == AudioStream.Type.NOTIFICATION) {
+                        if (action.type == AudioStream.Type.RINGTONE) {
                             ringerTool.setRingerMode(RingerMode.SILENT)
                         }
                     }
 
                     is VolumeMode.Vibrate -> {
-                        if (action.type == AudioStream.Type.RINGTONE || action.type == AudioStream.Type.NOTIFICATION) {
+                        if (action.type == AudioStream.Type.RINGTONE) {
                             ringerTool.setRingerMode(RingerMode.VIBRATE)
                         }
                     }
