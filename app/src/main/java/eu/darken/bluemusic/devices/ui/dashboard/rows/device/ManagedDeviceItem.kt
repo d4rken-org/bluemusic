@@ -113,11 +113,6 @@ fun ManagedDeviceItem(
                             )
                         }
                     }
-                    Text(
-                        text = device.address,
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
                     when {
                         !device.isEnabled -> {
                             Text(

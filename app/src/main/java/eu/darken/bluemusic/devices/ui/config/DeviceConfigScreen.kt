@@ -57,6 +57,7 @@ import eu.darken.bluemusic.common.ui.waitForState
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.ui.config.components.ClickablePreference
 import eu.darken.bluemusic.devices.ui.config.components.DeviceHeaderCard
+import eu.darken.bluemusic.devices.ui.config.components.DeviceStatusCard
 import eu.darken.bluemusic.devices.ui.config.components.SectionHeader
 import eu.darken.bluemusic.devices.ui.config.components.SwitchPreference
 import eu.darken.bluemusic.devices.ui.config.dialogs.DeleteDeviceDialog
@@ -289,6 +290,16 @@ fun DeviceConfigScreen(
                     device = device,
                     onRenameClick = { onAction(ConfigAction.OnRenameClicked) },
                     onDeleteClick = { onAction(ConfigAction.DeleteDevice()) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                )
+            }
+
+            // Device Status Card
+            item {
+                DeviceStatusCard(
+                    device = device,
                     onToggleEnabled = { onAction(ConfigAction.OnToggleEnabled) },
                     modifier = Modifier
                         .fillMaxWidth()

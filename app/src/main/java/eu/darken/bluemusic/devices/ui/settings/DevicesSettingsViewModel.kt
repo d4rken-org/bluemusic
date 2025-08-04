@@ -20,7 +20,7 @@ constructor(
     dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
     private val devicesSettings: DevicesSettings,
-    private val upgradeRepo: UpgradeRepo,
+    upgradeRepo: UpgradeRepo,
 ) : ViewModel4(dispatcherProvider, logTag("Settings", "Devices", "ViewModel"), navCtrl) {
 
     val state = combine(
