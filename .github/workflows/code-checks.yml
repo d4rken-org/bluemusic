@@ -12,7 +12,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        flavor: [ Foss,Gplay ]
         variant: [ Beta,Release ]
+        module: [ app ]
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout source code
@@ -21,10 +23,16 @@ jobs:
         uses: ./.github/actions/common-setup
 
       - name: Check for fatal lint issues
-        run: ./gradlew lintVital${{ matrix.variant }}
+        run: ./gradlew lintVital${{ matrix.flavor }}${{ matrix.variant }}
 
   build-modules:
     name: Build apps
+    strategy:
+      fail-fast: false
+      matrix:
+        flavor: [ Foss,Gplay ]
+        variant: [ Debug ]
+        module: [ app ]
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout source code
@@ -33,7 +41,7 @@ jobs:
         uses: ./.github/actions/common-setup
 
       - name: Build modules
-        run: ./gradlew assembleDebug
+        run: ./gradlew ${{ matrix.module }}:assemble${{ matrix.flavor }}${{ matrix.variant }}
 
   test-modules:
     name: Unit tests
@@ -41,7 +49,7 @@ jobs:
       fail-fast: false
       matrix:
         variant: [ Debug,Beta,Release ]
-        flavor: [ test ]
+        flavor: [ test,testFoss,testGplay ]
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout source code
