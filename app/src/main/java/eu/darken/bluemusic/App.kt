@@ -1,67 +1,108 @@
 package eu.darken.bluemusic
 
-import android.Manifest
-import android.app.Activity
 import android.app.Application
-import android.app.Service
-import android.content.BroadcastReceiver
-import android.content.pm.PackageManager
-import androidx.core.app.ActivityCompat
-import eu.darken.bluemusic.main.core.database.MigrationTool
-import eu.darken.bluemusic.settings.core.Settings
-import eu.darken.bluemusic.util.ApiHelper
-import eu.darken.mvpbakery.injection.ComponentSource
-import eu.darken.mvpbakery.injection.ManualInjector
-import eu.darken.mvpbakery.injection.activity.HasManualActivityInjector
-import eu.darken.mvpbakery.injection.broadcastreceiver.HasManualBroadcastReceiverInjector
-import eu.darken.mvpbakery.injection.service.HasManualServiceInjector
+import androidx.hilt.work.HiltWorkerFactory
+import androidx.work.Configuration
+import dagger.hilt.android.HiltAndroidApp
+import eu.darken.bluemusic.common.BuildConfigWrap
+import eu.darken.bluemusic.common.coroutine.AppScope
+import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.debug.DebugSettings
+import eu.darken.bluemusic.common.debug.logging.LogCatLogger
+import eu.darken.bluemusic.common.debug.logging.Logging
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
+import eu.darken.bluemusic.common.debug.logging.asLog
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.devices.core.database.legacy.MigrationTool
+import eu.darken.bluemusic.legacy.LegacyMigration
+import eu.darken.bluemusic.main.core.CurriculumVitae
+import eu.darken.bluemusic.main.core.GeneralSettings
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
+import eu.darken.bluemusic.monitor.core.worker.MonitorControl
 import io.realm.Realm
 import io.realm.RealmConfiguration
-import timber.log.Timber
-import timber.log.Timber.DebugTree
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.system.exitProcess
 
-class App : Application(), HasManualActivityInjector, HasManualBroadcastReceiverInjector, HasManualServiceInjector {
+@HiltAndroidApp
+class App : Application(), Configuration.Provider {
 
-    @Inject lateinit var appComponent: AppComponent
-    @Inject lateinit var activityInjector: ComponentSource<Activity>
-    @Inject lateinit var receiverInjector: ComponentSource<BroadcastReceiver>
-    @Inject lateinit var serviceInjector: ComponentSource<Service>
+    @Inject @AppScope lateinit var appScope: CoroutineScope
+    @Inject lateinit var dispatcherProvider: DispatcherProvider
+    @Inject lateinit var workerFactory: HiltWorkerFactory
+    @Inject lateinit var generalSettings: GeneralSettings
+    @Inject lateinit var debugSettings: DebugSettings
+    @Inject lateinit var curriculumVitae: CurriculumVitae
+    @Inject lateinit var monitorControl: MonitorControl
+    @Inject lateinit var volumeTool: VolumeTool
 
-    @Inject lateinit var settings: Settings
+    @Inject lateinit var legacyMigration: LegacyMigration
+
 
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG) Timber.plant(DebugTree())
+        if (BuildConfig.DEBUG) Logging.install(LogCatLogger())
 
-        DaggerAppComponent.builder()
-                .application(this)
-                .build()
-                .injectMembers(this)
+        appScope.launch {
+            curriculumVitae.updateAppLaunch()
+        }
 
         val migrationTool = MigrationTool()
         Realm.init(this)
         val realmConfig = RealmConfiguration.Builder()
-                .schemaVersion(migrationTool.schemaVersion.toLong())
-                .migration(migrationTool.migration)
-                .build()
+            .schemaVersion(migrationTool.schemaVersion.toLong())
+            .migration(migrationTool.migration)
+            .build()
         Realm.setDefaultConfiguration(realmConfig)
-        val originalHandler = Thread.getDefaultUncaughtExceptionHandler()
-        Thread.setDefaultUncaughtExceptionHandler { thread: Thread, error: Throwable ->
-            Timber.e(error, "$thread threw and uncaught exception")
-            originalHandler?.uncaughtException(thread, error)
+
+        legacyMigration.migration()
+
+
+        val oldHandler = Thread.getDefaultUncaughtExceptionHandler()
+        Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
+            log(TAG, ERROR) { "UNCAUGHT EXCEPTION: ${throwable.asLog()}" }
+            if (oldHandler != null) oldHandler.uncaughtException(thread, throwable) else exitProcess(1)
+            Thread.sleep(100)
         }
 
-        if (ApiHelper.hasAndroid12() && ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-            settings.isShowOnboarding = true
+//        appScope.launch {
+//            while (currentCoroutineContext().isActive) {
+//                val volumes = mutableListOf<Pair<AudioStream.Id, Float>>()
+//                AudioStream.Id.entries.forEach { id ->
+//
+//                    val curVol = streamHelper.getVolumePercentage(id)
+//                    volumes.add(id to curVol)
+//                }
+//                log(TAG, DEBUG) { "Volumes: ${volumes.joinToString(", ")}" }
+//                delay(100)
+//            }
+//        }
+
+        appScope.launch {
+            monitorControl.startMonitor(forceStart = true)
         }
 
-        Timber.d("App onCreate() done!")
+        log(TAG) { "onCreate() done! ${Exception().asLog()}" }
     }
 
-    override fun activityInjector(): ManualInjector<Activity> = activityInjector
+    override val workManagerConfiguration: Configuration
+        get() = Configuration.Builder()
+            .setMinimumLoggingLevel(
+                when {
+                    BuildConfigWrap.DEBUG -> android.util.Log.VERBOSE
+                    BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.DEV -> android.util.Log.DEBUG
+                    BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.BETA -> android.util.Log.INFO
+                    BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.RELEASE -> android.util.Log.WARN
+                    else -> android.util.Log.VERBOSE
+                }
+            )
+            .setWorkerFactory(workerFactory)
+            .build()
 
-    override fun broadcastReceiverInjector(): ManualInjector<BroadcastReceiver> = receiverInjector
-
-    override fun serviceInjector(): ManualInjector<Service> = serviceInjector
+    companion object {
+        private val TAG = logTag("App")
+    }
 }

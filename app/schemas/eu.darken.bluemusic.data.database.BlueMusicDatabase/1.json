@@ -1,0 +1,130 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "90e70154487ceca90a1ab34a871b6f18",
+    "entities": [
+      {
+        "tableName": "device_configs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`address` TEXT NOT NULL, `last_connected` INTEGER NOT NULL, `action_delay` INTEGER, `adjustment_delay` INTEGER, `monitoring_duration` INTEGER, `music_volume` REAL, `call_volume` REAL, `ring_volume` REAL, `notification_volume` REAL, `alarm_volume` REAL, `volume_lock` INTEGER NOT NULL, `keep_awake` INTEGER NOT NULL, `nudge_volume` INTEGER NOT NULL, `autoplay` INTEGER NOT NULL, `launch_pkg` TEXT, `alias` TEXT, `name` TEXT, PRIMARY KEY(`address`))",
+        "fields": [
+          {
+            "fieldPath": "address",
+            "columnName": "address",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastConnected",
+            "columnName": "last_connected",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "actionDelay",
+            "columnName": "action_delay",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "adjustmentDelay",
+            "columnName": "adjustment_delay",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "monitoringDuration",
+            "columnName": "monitoring_duration",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "musicVolume",
+            "columnName": "music_volume",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "callVolume",
+            "columnName": "call_volume",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "ringVolume",
+            "columnName": "ring_volume",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "notificationVolume",
+            "columnName": "notification_volume",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "alarmVolume",
+            "columnName": "alarm_volume",
+            "affinity": "REAL",
+            "notNull": false
+          },
+          {
+            "fieldPath": "volumeLock",
+            "columnName": "volume_lock",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "keepAwake",
+            "columnName": "keep_awake",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nudgeVolume",
+            "columnName": "nudge_volume",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "autoplay",
+            "columnName": "autoplay",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "launchPkg",
+            "columnName": "launch_pkg",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "alias",
+            "columnName": "alias",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "address"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '90e70154487ceca90a1ab34a871b6f18')"
+    ]
+  }
+}

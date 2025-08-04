@@ -1,0 +1,54 @@
+package eu.darken.bluemusic.bluetooth.core
+
+import eu.darken.bluemusic.devices.core.DeviceAddr
+import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import kotlinx.parcelize.IgnoredOnParcel
+import kotlinx.parcelize.Parcelize
+import java.util.UUID
+
+@Parcelize
+data class MockDevice(
+    override val label: String = "MockDevice ${UUID.randomUUID().toString().take(4)}",
+    override val isConnected: Boolean = false,
+    override val address: DeviceAddr = UUID.randomUUID()
+        .toString()
+        .uppercase()
+        .replace("-", "")
+        .take(16)
+        .chunked(2)
+        .joinToString(":")
+) : SourceDevice {
+
+    @IgnoredOnParcel
+    override val deviceType: SourceDevice.Type
+        get() = SourceDevice.Type.HEADPHONES
+
+    override fun getStreamId(type: AudioStream.Type): AudioStream.Id {
+        throw NotImplementedError()
+    }
+
+    fun toManagedDevice(
+        isConnected: Boolean = false,
+        isEnabled: Boolean = true,
+    ) = ManagedDevice(
+        device = this,
+        config = DeviceConfigEntity(
+            address = address,
+            musicVolume = 0.7f,
+            callVolume = 0.6f,
+            ringVolume = 0.5f,
+            notificationVolume = 0.4f,
+            alarmVolume = 0.3f,
+            volumeLock = true,
+            volumeObserving = false,
+            autoplay = true,
+            nudgeVolume = true,
+            keepAwake = true,
+            launchPkgs = listOf("eu.darken.bluemusic"),
+            isEnabled = isEnabled,
+        ),
+        isConnected = isConnected,
+    )
+}

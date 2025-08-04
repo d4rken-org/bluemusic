@@ -29,23 +29,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/BaseAppTheme"
+        android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
             android:name="eu.darken.bluemusic.main.ui.MainActivity"
-            android:theme="@style/Theme.LauncherToMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".settings.ui.SettingsActivity"/>
-        <activity android:name=".bluetooth.ui.BluetoothActivity"/>
-        <activity android:name=".onboarding.ui.OnboardingActivity"/>
+
+        <activity
+            android:name="eu.darken.bluemusic.common.debug.recorder.ui.RecorderActivity"
+            android:exported="false" />
 
         <receiver
-            android:name="eu.darken.bluemusic.bluetooth.core.BluetoothEventReceiver"
+            android:name="eu.darken.bluemusic.monitor.core.receiver.MonitorEventReceiver"
             android:enabled="true"
             android:label="@string/app_name"
             android:exported="true">
@@ -54,8 +54,9 @@
                 <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
             </intent-filter>
         </receiver>
+
         <receiver
-            android:name="eu.darken.bluemusic.bluetooth.core.BootCheckReceiver"
+            android:name="eu.darken.bluemusic.monitor.core.BootCheckReceiver"
             android:enabled="true"
             android:label="@string/app_name"
             android:exported="true">
@@ -65,8 +66,32 @@
         </receiver>
 
         <service
-            android:name=".main.core.service.BlueMusicService"
-            android:foregroundServiceType="connectedDevice" />
+            android:name="androidx.work.impl.foreground.SystemForegroundService"
+            android:foregroundServiceType="connectedDevice"
+            tools:node="merge" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+
+        </provider>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

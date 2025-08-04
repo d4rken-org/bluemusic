@@ -1,57 +1,114 @@
 package eu.darken.bluemusic.main.ui
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import eu.darken.bluemusic.R
-import eu.darken.bluemusic.main.ui.managed.ManagedDevicesFragment.Companion.newInstance
-import eu.darken.bluemusic.onboarding.ui.OnboardingActivity
-import eu.darken.bluemusic.util.iap.IAPRepo
-import eu.darken.mvpbakery.base.MVPBakery.Companion.builder
-import eu.darken.mvpbakery.base.ViewModelRetainer
-import eu.darken.mvpbakery.injection.ComponentSource
-import eu.darken.mvpbakery.injection.InjectedPresenter
-import eu.darken.mvpbakery.injection.ManualInjector
-import eu.darken.mvpbakery.injection.PresenterInjectionCallback
-import eu.darken.mvpbakery.injection.fragment.HasManualFragmentInjector
+import android.view.WindowManager
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
+import androidx.compose.ui.Modifier
+import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.navigation3.ui.NavDisplay
+import dagger.hilt.android.AndroidEntryPoint
+import eu.darken.bluemusic.common.BuildConfigWrap
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.error.ErrorEventHandler
+import eu.darken.bluemusic.common.navigation.Nav
+import eu.darken.bluemusic.common.navigation.NavigationController
+import eu.darken.bluemusic.common.navigation.NavigationDestination
+import eu.darken.bluemusic.common.navigation.NavigationEntry
+import eu.darken.bluemusic.common.theming.BlueMusicTheme
+import eu.darken.bluemusic.common.theming.ThemeState
+import eu.darken.bluemusic.common.ui.Activity2
+import eu.darken.bluemusic.main.core.CurriculumVitae
+import eu.darken.bluemusic.main.core.GeneralSettings
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), MainActivityPresenter.View, HasManualFragmentInjector {
-    @Inject lateinit var componentSource: ComponentSource<Fragment>
-    @Inject lateinit var iapRepo: IAPRepo
+@AndroidEntryPoint
+class MainActivity : Activity2() {
+
+    private val vm: MainViewModel by viewModels()
+
+    @Inject lateinit var curriculumVitae: CurriculumVitae
+    @Inject lateinit var navCtrl: NavigationController
+    @Inject lateinit var navigationEntries: Set<@JvmSuppressWildcards NavigationEntry>
+    @Inject lateinit var generalSettings: GeneralSettings
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.BaseAppTheme)
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        builder<MainActivityPresenter.View, MainActivityPresenter>()
-                .presenterFactory(InjectedPresenter(this))
-                .presenterRetainer(ViewModelRetainer(this))
-                .addPresenterCallback(PresenterInjectionCallback(this))
-                .attach(this)
-        setContentView(R.layout.activity_layout_main)
+
+        if (BuildConfigWrap.DEBUG) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
+
+        curriculumVitae.updateAppOpened()
+
+        setContent {
+            val themeState by produceState<ThemeState?>(initialValue = null) {
+                vm.themeState.collect { value = it }
+            }
+            val vmState by produceState<MainViewModel.State?>(initialValue = null) {
+                vm.state.collect { value = it }
+            }
+            themeState?.let { themeState ->
+                log(TAG) { "Theme state: $themeState" }
+                BlueMusicTheme(state = themeState) {
+                    ErrorEventHandler(vm)
+                    vmState?.let { mainState ->
+                        log(TAG) { "Main state: $mainState" }
+                        Navigation(mainState)
+                    }
+                }
+            }
+        }
     }
 
-    override fun supportFragmentInjector(): ManualInjector<Fragment> = componentSource
+    @Composable
+    private fun Navigation(state: MainViewModel.State) {
+        val start = when (state.startScreen) {
+            MainViewModel.State.StartScreen.ONBOARDING -> Nav.Main.Onboarding
+            MainViewModel.State.StartScreen.HOME -> Nav.Main.ManageDevices
+        }
 
-    override fun showOnboarding() {
-        startActivity(Intent(this, OnboardingActivity::class.java))
+        val backStack = rememberNavBackStack<NavigationDestination>(start)
+
+        LaunchedEffect(Unit) { navCtrl.setup(backStack) }
+
+        NavDisplay(
+            backStack = backStack,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background),
+            onBack = {
+                // Only handle programmatic navigation
+                navCtrl.up()
+            },
+            entryProvider = entryProvider {
+                navigationEntries.forEach { entry ->
+                    entry.apply {
+                        log(TAG) { "Set up navigation entry: $this" }
+                        setup()
+                    }
+                }
+            }
+        )
     }
 
-    override fun showDevices() {
-        var introFragment = supportFragmentManager.findFragmentById(R.id.frame_content)
-        if (introFragment == null) introFragment = newInstance()
-        supportFragmentManager.beginTransaction().replace(R.id.frame_content, introFragment).commitAllowingStateLoss()
+    override fun onResume() {
+        super.onResume()
+        vm.checkUpgrades()
     }
 
-    private var shouldReCheck = false
-    override fun onStart() {
-        super.onStart()
-        if (shouldReCheck) iapRepo.recheck()
-    }
-
-    override fun onStop() {
-        shouldReCheck = true
-        super.onStop()
+    companion object {
+        private val TAG = logTag("Main", "Activity")
     }
 }
