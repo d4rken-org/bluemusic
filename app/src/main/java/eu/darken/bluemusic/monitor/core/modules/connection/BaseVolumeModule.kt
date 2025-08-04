@@ -1,11 +1,9 @@
 package eu.darken.bluemusic.monitor.core.modules.connection
 
-import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
@@ -18,7 +16,6 @@ import kotlinx.coroutines.delay
 import java.time.Instant
 
 abstract class BaseVolumeModule(
-    private val settings: DevicesSettings,
     private val volumeTool: VolumeTool
 ) : ConnectionModule {
 
@@ -64,7 +61,7 @@ abstract class BaseVolumeModule(
         val changed = volumeTool.changeVolume(
             streamId = device.getStreamId(type),
             percent = percentage,
-            visible = settings.visibleAdjustments.value(),
+            visible = device.visibleAdjustments,
             delay = device.adjustmentDelay
         )
         if (changed) {

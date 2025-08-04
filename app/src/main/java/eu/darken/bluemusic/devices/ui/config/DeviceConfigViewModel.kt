@@ -191,6 +191,10 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 oldConfig.copy(nudgeVolume = !oldConfig.nudgeVolume)
             }
 
+            is ConfigAction.OnToggleVisibleAdjustments -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                oldConfig.copy(visibleAdjustments = if (oldConfig.visibleAdjustments == null) false else !oldConfig.visibleAdjustments)
+            }
+
             is ConfigAction.OnToggleShowHomeScreen -> {
                 if (!upgradeRepo.isPro()) {
                     events.emit(ConfigEvent.RequiresPro)

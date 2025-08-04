@@ -76,4 +76,7 @@ data class DeviceConfigEntity(
 
     @ColumnInfo(name = "is_enabled", defaultValue = "true")
     val isEnabled: Boolean = true,
+
+    @ColumnInfo(name = "visible_adjustments", defaultValue = "true")
+    val visibleAdjustments: Boolean? = true,
 )

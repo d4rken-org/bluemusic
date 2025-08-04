@@ -17,6 +17,7 @@ sealed interface ConfigAction {
     data object OnToggleVolumeRateLimiter : ConfigAction
     data object OnToggleKeepAwake : ConfigAction
     data object OnToggleNudgeVolume : ConfigAction
+    data object OnToggleVisibleAdjustments : ConfigAction
     data object OnToggleShowHomeScreen : ConfigAction
     data object OnLaunchAppClicked : ConfigAction
     data object OnEditMonitoringDurationClicked : ConfigAction

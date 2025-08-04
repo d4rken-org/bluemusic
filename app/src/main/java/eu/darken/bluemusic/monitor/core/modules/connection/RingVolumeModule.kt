@@ -7,7 +7,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.common.hasApiLevel
-import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
@@ -17,11 +16,10 @@ import javax.inject.Singleton
 
 @Singleton
 class RingVolumeModule @Inject constructor(
-    settings: DevicesSettings,
     volumeTool: VolumeTool,
     ringerTool: RingerTool,
     private val notMan: NotificationManager
-) : BaseVolumeWithModesModule(settings, volumeTool, ringerTool) {
+) : BaseVolumeWithModesModule(volumeTool, ringerTool) {
 
     override val type: AudioStream.Type = AudioStream.Type.RINGTONE
 

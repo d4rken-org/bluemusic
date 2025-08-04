@@ -53,6 +53,8 @@ data class ManagedDevice(
         get() = config.autoplayKeycodes
     val showHomeScreen: Boolean
         get() = config.showHomeScreen
+    val visibleAdjustments: Boolean
+        get() = config.visibleAdjustments ?: true
     val requiresMonitor: Boolean
         get() = volumeLock || volumeObserving || volumeRateLimiter
 

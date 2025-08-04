@@ -22,7 +22,6 @@ class DevicesSettings @Inject constructor(
         get() = context.dataStore
 
     val isEnabled = dataStore.createValue("devices.enabled", true)
-    val visibleAdjustments = dataStore.createValue("devices.volume.adjustments.visible", true)
     val restoreOnBoot = dataStore.createValue("devices.volume.restore.boot.enabled", true)
 
     companion object {

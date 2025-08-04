@@ -470,6 +470,14 @@ fun DeviceConfigScreen(
                             onCheckedChange = { onAction(ConfigAction.OnToggleNudgeVolume) }
                         )
 
+                        SwitchPreference(
+                            title = stringResource(R.string.devices_device_config_visible_adjustments_label),
+                            description = stringResource(R.string.devices_device_config_visible_adjustments_desc),
+                            isChecked = device.visibleAdjustments,
+                            icon = Icons.TwoTone.Visibility,
+                            onCheckedChange = { onAction(ConfigAction.OnToggleVisibleAdjustments) }
+                        )
+
                         ClickablePreference(
                             title = stringResource(R.string.devices_device_config_launch_app_label),
                             description = when {
