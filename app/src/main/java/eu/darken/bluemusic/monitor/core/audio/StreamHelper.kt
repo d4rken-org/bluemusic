@@ -143,9 +143,7 @@ class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
         return true
     }
 
-    enum class Options
-
     companion object {
-        private val TAG = logTag("StreamHelper")
+        private val TAG = logTag("Audio", "StreamHelper")
     }
 }

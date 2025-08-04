@@ -18,7 +18,7 @@ class RingerModeHelper @Inject constructor(
         return audioManager.ringerMode
     }
 
-    fun setRingerMode(mode: Int): Boolean {
+    private fun setRingerMode(mode: Int): Boolean {
         log(TAG, VERBOSE) { "setRingerMode(mode=$mode)" }
 
         val currentMode = getCurrentRingerMode()
@@ -49,14 +49,7 @@ class RingerModeHelper @Inject constructor(
         return setRingerMode(AudioManager.RINGER_MODE_NORMAL)
     }
 
-    fun getRingerModeString(mode: Int): String = when (mode) {
-        AudioManager.RINGER_MODE_SILENT -> "Silent"
-        AudioManager.RINGER_MODE_VIBRATE -> "Vibrate"
-        AudioManager.RINGER_MODE_NORMAL -> "Normal"
-        else -> "Unknown"
-    }
-
     companion object {
-        private val TAG = logTag("RingerModeHelper")
+        private val TAG = logTag("Audio", "RingerModeHelper")
     }
 }

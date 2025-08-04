@@ -21,7 +21,7 @@ import java.time.Instant
 abstract class BaseVolumeModule(
     private val settings: DevicesSettings,
     private val streamHelper: StreamHelper,
-    private val ringerModeHelper: RingerModeHelper? = null
+    private val ringerModeHelper: RingerModeHelper
 ) : ConnectionModule {
 
     abstract val type: AudioStream.Type
@@ -55,7 +55,7 @@ abstract class BaseVolumeModule(
         log(tag, INFO) { "Setting initial volume ($percentage) for $device" }
 
         // Handle special sound modes for ringtone and notification streams
-        if ((type == AudioStream.Type.RINGTONE || type == AudioStream.Type.NOTIFICATION) && ringerModeHelper != null) {
+        if (type == AudioStream.Type.RINGTONE || type == AudioStream.Type.NOTIFICATION) {
             when (percentage) {
                 SOUND_MODE_SILENT -> {
                     log(tag, INFO) { "Setting ringer mode to SILENT for $device" }
