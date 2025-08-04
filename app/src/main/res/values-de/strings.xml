@@ -240,10 +240,4 @@
     <string name="error_iap_owned_message">Sie besitzen diesen Artikel bereits</string>
     <string name="label_no_devices_title">Keine Geräte</string>
     <string name="bluemusic_mascot_description">App-Symbol</string>
-    <string name="label_select_app">App auswählen</string>
-    <string name="label_search_apps">Apps durchsuchen...</string>
-    <string name="label_currently_selected">Aktuell ausgewählt</string>
-    <string name="label_navigate_back">Zurück</string>
-    <string name="label_reset">Zurücksetzen</string>
-    <string name="label_clear">Löschen</string>
 </resources>
