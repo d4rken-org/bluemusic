@@ -149,7 +149,7 @@ class MonitorWorker @AssistedInject constructor(
                     notifications.getDevicesNotification(activeDevices),
                 )
 
-                val stayActive = activeDevices.any { it.volumeLock || it.volumeObserving || it.volumeRateLimiter }
+                val stayActive = activeDevices.any { it.requiresMonitor }
                 val maxMonitoringDuration = activeDevices.maxOf { it.monitoringDuration }
                 log(TAG) { "Maximum monitoring duration: $maxMonitoringDuration (stayActive=$stayActive)" }
 

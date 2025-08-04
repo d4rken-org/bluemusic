@@ -53,6 +53,8 @@ data class ManagedDevice(
         get() = config.autoplayKeycodes
     val showHomeScreen: Boolean
         get() = config.showHomeScreen
+    val requiresMonitor: Boolean
+        get() = volumeLock || volumeObserving || volumeRateLimiter
 
     fun getVolume(type: AudioStream.Type): Float? = when (type) {
         AudioStream.Type.MUSIC -> config.musicVolume

@@ -5,19 +5,47 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import eu.darken.bluemusic.common.BuildConfigWrap
+import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
+import eu.darken.bluemusic.devices.core.DeviceRepo
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class MonitorControl @Inject constructor(
+    @AppScope private val appScope: CoroutineScope,
     private val workerManager: WorkManager,
     private val dispatcherProvider: DispatcherProvider,
+    private val deviceRepo: DeviceRepo,
 ) {
+
+    init {
+        deviceRepo.devices
+            .map { devices ->
+                devices.any { device ->
+                    device.isConnected && device.requiresMonitor
+                }
+            }
+            .distinctUntilChanged()
+            .setupCommonEventHandlers(TAG) { "Device monitor" }
+            .onEach { requiresMonitor ->
+                if (requiresMonitor) {
+                    log(TAG) { "Connected device requires monitor, starting monitor service" }
+                    startMonitor()
+                }
+            }
+            .launchIn(appScope)
+    }
 
     suspend fun startMonitor(
         forceStart: Boolean = false,
@@ -41,11 +69,6 @@ class MonitorControl @Inject constructor(
 
         operation.result.get()
         log(TAG) { "Monitor start request send." }
-    }
-
-    suspend fun waitTillLaunched() {
-        log(TAG) { "waitTillLaunched()" }
-        TODO("Not yet implemented")
     }
 
     companion object {
