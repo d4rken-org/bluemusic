@@ -191,20 +191,34 @@ fun ManagedDeviceItem(
 
                 AudioStream.Type.entries.forEach { streamType ->
                     device.getVolume(streamType)?.let { currentVolume ->
-                        VolumeControlWithModes(
-                            streamType = streamType,
-                            label = when (streamType) {
-                                AudioStream.Type.MUSIC -> stringResource(R.string.devices_stream_music_label)
-                                AudioStream.Type.CALL -> stringResource(R.string.devices_audio_stream_call_label)
-                                AudioStream.Type.RINGTONE -> stringResource(R.string.devices_audio_stream_ring_label)
-                                AudioStream.Type.NOTIFICATION -> stringResource(R.string.devices_audio_stream_notification_label)
-                                AudioStream.Type.ALARM -> stringResource(R.string.devices_audio_stream_alarm_label)
-                            },
-                            volume = currentVolume,
-                            onVolumeChange = { newVolume ->
-                                onDeviceAction(DashboardAction.AdjustVolume(device.address, streamType, newVolume))
-                            }
-                        )
+                        val label = when (streamType) {
+                            AudioStream.Type.MUSIC -> stringResource(R.string.devices_stream_music_label)
+                            AudioStream.Type.CALL -> stringResource(R.string.devices_audio_stream_call_label)
+                            AudioStream.Type.RINGTONE -> stringResource(R.string.devices_audio_stream_ring_label)
+                            AudioStream.Type.NOTIFICATION -> stringResource(R.string.devices_audio_stream_notification_label)
+                            AudioStream.Type.ALARM -> stringResource(R.string.devices_audio_stream_alarm_label)
+                        }
+
+                        // Use VolumeControlWithModes only for streams that support sound modes
+                        if (streamType == AudioStream.Type.RINGTONE || streamType == AudioStream.Type.NOTIFICATION) {
+                            VolumeControlWithModes(
+                                streamType = streamType,
+                                label = label,
+                                volume = currentVolume,
+                                onVolumeChange = { newVolume ->
+                                    onDeviceAction(DashboardAction.AdjustVolume(device.address, streamType, newVolume))
+                                }
+                            )
+                        } else {
+                            VolumeControl(
+                                streamType = streamType,
+                                label = label,
+                                volume = currentVolume,
+                                onVolumeChange = { newVolume ->
+                                    onDeviceAction(DashboardAction.AdjustVolume(device.address, streamType, newVolume))
+                                }
+                            )
+                        }
                     }
                 }
 

@@ -21,7 +21,7 @@ import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -45,15 +45,14 @@ fun VolumeControlWithModes(
     onVolumeChange: (Float) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val supportsSpecialModes = streamType == AudioStream.Type.RINGTONE || streamType == AudioStream.Type.NOTIFICATION
     val haptics = LocalHapticFeedback.current
 
     // Track the slider value locally while dragging
     var sliderValue by remember(volume) {
-        mutableStateOf(
+        mutableFloatStateOf(
             when {
                 volume == null -> 0.5f
-                volume < 0 && supportsSpecialModes -> volume
+                volume < 0 -> volume
                 else -> volume.coerceIn(0f, 1f)
             }
         )
@@ -78,7 +77,7 @@ fun VolumeControlWithModes(
                 modifier = Modifier.width(80.dp)
             )
 
-            if (supportsSpecialModes && volume != null) {
+            if (volume != null) {
                 // Show mode icons for quick selection
                 Row(modifier = Modifier.padding(horizontal = 8.dp)) {
                     Icon(
@@ -138,7 +137,7 @@ fun VolumeControlWithModes(
                     .height(48.dp), // Fixed height to maintain consistency
                 contentAlignment = Alignment.Center
             ) {
-                if (supportsSpecialModes && sliderValue < 0) {
+                if (sliderValue < 0) {
                     // Show mode text instead of slider for special modes
                     Text(
                         text = when (sliderValue) {
@@ -152,15 +151,15 @@ fun VolumeControlWithModes(
                 } else {
                     // Regular slider for volume
                     Slider(
-                        value = if (supportsSpecialModes && sliderValue < 0) 0f else sliderValue,
+                        value = if (sliderValue < 0) 0f else sliderValue,
                         onValueChange = { newValue ->
-                            if (!supportsSpecialModes || newValue > 0.01f) {
+                            if (newValue > 0.01f) {
                                 sliderValue = newValue
                             }
                         },
                         onValueChangeFinished = {
                             // Only update when the user releases the slider
-                            if (!supportsSpecialModes || sliderValue > 0.01f) {
+                            if (sliderValue > 0.01f) {
                                 haptics.performHapticFeedback(HapticFeedbackType.LongPress)
                                 onVolumeChange(sliderValue)
                             }
@@ -177,8 +176,8 @@ fun VolumeControlWithModes(
             Text(
                 text = when {
                     volume == null -> "-"
-                    supportsSpecialModes && volume == SOUND_MODE_SILENT -> "~"
-                    supportsSpecialModes && volume == SOUND_MODE_VIBRATE -> "~"
+                    volume == SOUND_MODE_SILENT -> "~"
+                    volume == SOUND_MODE_VIBRATE -> "~"
                     volume < 0 -> "-"
                     else -> "${(volume * 100).roundToInt()}%"
                 },

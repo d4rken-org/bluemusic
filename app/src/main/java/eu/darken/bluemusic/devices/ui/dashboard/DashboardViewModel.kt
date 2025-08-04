@@ -33,13 +33,13 @@ class DashboardViewModel @Inject constructor(
     private val permissionHelper: PermissionHelper,
     private val deviceRepo: DeviceRepo,
     private val streamHelper: StreamHelper,
-    private val upgradeRepo: UpgradeRepo,
-    private val bluetoothSource: BluetoothRepo,
+    upgradeRepo: UpgradeRepo,
+    bluetoothSource: BluetoothRepo,
     private val generalSettings: GeneralSettings,
     private val devicesSettings: DevicesSettings,
-    private val dispatcherProvider: DispatcherProvider,
-    private val navCtrl: NavigationController,
-    private val appRepo: AppRepo,
+    dispatcherProvider: DispatcherProvider,
+    navCtrl: NavigationController,
+    appRepo: AppRepo,
 ) : ViewModel4(dispatcherProvider, logTag("Devices", "Managed", "VM"), navCtrl) {
 
     private val eventChannel = Channel<DashboardEvent>()

@@ -66,7 +66,7 @@ fun DeviceHeaderCard(
             ) {
                 // Device icon
                 Icon(
-                    imageVector = device.device.deviceType?.toIcon() ?: Icons.TwoTone.Devices,
+                    imageVector = device.device.deviceType.toIcon() ?: Icons.TwoTone.Devices,
                     contentDescription = null,
                     modifier = Modifier.size(32.dp),
                     tint = MaterialTheme.colorScheme.primary
