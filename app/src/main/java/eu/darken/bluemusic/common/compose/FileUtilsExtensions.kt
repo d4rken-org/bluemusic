@@ -6,6 +6,7 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.time.temporal.ChronoUnit
+import java.util.Locale
 import kotlin.math.ln
 import kotlin.math.pow
 
@@ -17,6 +18,7 @@ fun formatFileSize(bytes: Long): String {
     val digitGroups = (ln(bytes.toDouble()) / ln(1024.0)).toInt()
 
     return String.format(
+        Locale.ROOT,
         "%.1f %s",
         bytes / 1024.0.pow(digitGroups.toDouble()),
         units[digitGroups]

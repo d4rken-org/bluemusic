@@ -168,6 +168,7 @@ class RecorderModule @Inject constructor(
         log(TAG, INFO) { "Install ID: $installID" }
 
         val locales = Resources.getSystem().configuration?.run {
+            @Suppress("NewApi")
             if (hasApiLevel(24)) locales else locale
         }
         log(TAG, INFO) { "App locales: $locales" }

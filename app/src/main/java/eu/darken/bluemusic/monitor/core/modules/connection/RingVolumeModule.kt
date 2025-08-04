@@ -25,6 +25,7 @@ class RingVolumeModule @Inject constructor(
 
     override val type: AudioStream.Type = AudioStream.Type.RINGTONE
 
+    @Suppress("NewApi")
     override suspend fun areRequirementsMet(): Boolean = !hasApiLevel(23) || notMan.isNotificationPolicyAccessGranted
 
     @Module @InstallIn(SingletonComponent::class)
