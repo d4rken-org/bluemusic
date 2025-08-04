@@ -44,6 +44,8 @@
     <string name="devices_device_config_launch_app_desc">Abre um aplicativo ao conectar este dispositivo.</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
+    <string name="devices_device_config_visible_adjustments_label">Ajustes visíveis</string>
+    <string name="devices_device_config_visible_adjustments_desc">Mostrar a janela de volume do sistema enquanto este aplicativo faz ajustes para este dispositivo.</string>
     <string name="devices_device_config_keep_awake_label">Manter ativo</string>
     <string name="devices_device_config_keep_awake_desc">Mantenha a tela ligada enquanto este dispositivo estiver conectado.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>

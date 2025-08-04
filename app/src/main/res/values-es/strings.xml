@@ -44,6 +44,8 @@
     <string name="devices_device_config_launch_app_desc">Inicia una aplicación cuando este dispositivo se conecta.</string>
     <string name="devices_device_config_nudge_volume_label">Empujar volumen</string>
     <string name="devices_device_config_nudge_volume_description">Baja y luego sube el volumen en un incremento, incluso si el volumen deseado ya está configurado (según el sistema).</string>
+    <string name="devices_device_config_visible_adjustments_label">Ajustes visibles</string>
+    <string name="devices_device_config_visible_adjustments_desc">Muestra la ventana de volumen del sistema mientras esta aplicación realiza ajustes para este dispositivo.</string>
     <string name="devices_device_config_keep_awake_label">Mantente activo</string>
     <string name="devices_device_config_keep_awake_desc">Intentar mantener el dispositivo activo mientras está conectado. El comportamiento puede variar según la versión de Android.</string>
     <string name="devices_device_config_volume_observe_label">Observar cambios</string>

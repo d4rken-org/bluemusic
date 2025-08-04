@@ -46,6 +46,8 @@
     <string name="devices_device_config_show_home_screen_desc">Nachdem alle Ereignisse für dieses Gerät verarbeitet wurden, versuche den Startbildschirm anzuzeigen. Das funktioniert möglicherweise nicht auf allen Android-Versionen.</string>
     <string name="devices_device_config_nudge_volume_label">Lautstärke anstoßen</string>
     <string name="devices_device_config_nudge_volume_description">Senken und dann erhöhen Sie die Lautstärke um eine Stufe, auch wenn die gewünschte Lautstärke (laut System) bereits eingestellt ist.</string>
+    <string name="devices_device_config_visible_adjustments_label">Sichtbare Anpassungen</string>
+    <string name="devices_device_config_visible_adjustments_desc">Zeigt das Lautstärkefenster des Systems an, während diese App Anpassungen für dieses Gerät vornimmt.</string>
     <string name="devices_device_config_keep_awake_label">Wach bleiben</string>
     <string name="devices_device_config_keep_awake_desc">Versuchen, das Gerät wach zu halten, während es verbunden ist. Das Verhalten kann je nach Android-Version variieren.</string>
     <string name="devices_device_config_volume_observe_label">Änderungen beobachten</string>

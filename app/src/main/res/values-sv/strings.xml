@@ -42,8 +42,10 @@
     <string name="devices_device_config_section_reaction_label">Övrigt</string>
     <string name="devices_device_config_launch_app_label">Starta app</string>
     <string name="devices_device_config_launch_app_desc">Starta en app när enheten ansluts.</string>
-    <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
-    <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
+    <string name="devices_device_config_nudge_volume_label">Volymknuff</string>
+    <string name="devices_device_config_nudge_volume_description">Sänk och höj sedan volymen med ett steg, även om önskad volym (enligt systemet) redan är inställd.</string>
+    <string name="devices_device_config_visible_adjustments_label">Synliga justeringar</string>
+    <string name="devices_device_config_visible_adjustments_desc">Visa systemets volymfönster medan den här appen gör justeringar för den här enheten.</string>
     <string name="devices_device_config_keep_awake_label">Håll vaken</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
