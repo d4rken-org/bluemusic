@@ -44,6 +44,8 @@
     <string name="devices_device_config_launch_app_desc">このデバイスが接続されたときにアプリを起動します。</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
+    <string name="devices_device_config_visible_adjustments_label">表示される調整</string>
+    <string name="devices_device_config_visible_adjustments_desc">このアプリがこのデバイスの調整を行っている間、システムの音量ウィンドウを表示します。</string>
     <string name="devices_device_config_keep_awake_label">スリープモードにしない</string>
     <string name="devices_device_config_keep_awake_desc">このデバイスが接続されている間は、画面をオンのままにします。</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>

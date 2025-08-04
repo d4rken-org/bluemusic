@@ -44,6 +44,8 @@
     <string name="devices_device_config_launch_app_desc">Lancer l\'appli quand ce périphérique se connecte.</string>
     <string name="devices_device_config_nudge_volume_label">Ajustement du volume</string>
     <string name="devices_device_config_nudge_volume_description">Baisser puis augmenter le volume d\'un cran, même si le volume souhaité est déjà défini (selon le système).</string>
+    <string name="devices_device_config_visible_adjustments_label">Ajustements visibles</string>
+    <string name="devices_device_config_visible_adjustments_desc">Afficher la fenêtre de volume du système pendant que cette application effectue des ajustements pour ce périphérique.</string>
     <string name="devices_device_config_keep_awake_label">Garder éveillé</string>
     <string name="devices_device_config_keep_awake_desc">Essayer de garder l\'appareil éveillé pendant qu\'il est connecté. Le comportement peut varier selon la version d\'Android.</string>
     <string name="devices_device_config_volume_observe_label">Observer les changements</string>

@@ -42,8 +42,10 @@
     <string name="devices_device_config_section_reaction_label">Overig</string>
     <string name="devices_device_config_launch_app_label">Start app</string>
     <string name="devices_device_config_launch_app_desc">Start een app wanneer dit apparaat verbinding maakt.</string>
-    <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
-    <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
+    <string name="devices_device_config_nudge_volume_label">Volume duwtje</string>
+    <string name="devices_device_config_nudge_volume_description">Verlaag en verhoog het volume met één stap, zelfs als het gewenste volume (volgens het systeem) al is ingesteld.</string>
+    <string name="devices_device_config_visible_adjustments_label">Zichtbare aanpassingen</string>
+    <string name="devices_device_config_visible_adjustments_desc">Toon het volumevenster van het systeem terwijl deze app aanpassingen maakt voor dit apparaat.</string>
     <string name="devices_device_config_keep_awake_label">Ingeschakeld houden</string>
     <string name="devices_device_config_keep_awake_desc">Houd het scherm aan terwijl dit apparaat is aangesloten.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>

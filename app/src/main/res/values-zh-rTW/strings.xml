@@ -44,6 +44,8 @@
     <string name="devices_device_config_launch_app_desc">這個裝置連線時啟動應用程式。</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
+    <string name="devices_device_config_visible_adjustments_label">可見的調整</string>
+    <string name="devices_device_config_visible_adjustments_desc">當此應用程式為此裝置進行調整時，顯示系統的音量視窗。</string>
     <string name="devices_device_config_keep_awake_label">保持喚醒</string>
     <string name="devices_device_config_keep_awake_desc">這個裝置連線時保持螢幕始終亮起。</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>

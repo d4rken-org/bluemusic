@@ -44,6 +44,8 @@
     <string name="devices_device_config_launch_app_desc">Запуск приложения при подключении устройства.</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
+    <string name="devices_device_config_visible_adjustments_label">Видимые настройки</string>
+    <string name="devices_device_config_visible_adjustments_desc">Показывать системное окно громкости, когда приложение регулирует громкость для этого устройства.</string>
     <string name="devices_device_config_keep_awake_label">Активный режим</string>
     <string name="devices_device_config_keep_awake_desc">Оставлять экран включённым при подключенном устройстве.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
