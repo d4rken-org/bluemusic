@@ -10,15 +10,15 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
-import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 internal class VolumeLockModule @Inject constructor(
-    private val streamHelper: StreamHelper,
+    private val volumeTool: VolumeTool,
     private val deviceRepo: DeviceRepo,
 ) : VolumeModule {
 
@@ -28,8 +28,8 @@ internal class VolumeLockModule @Inject constructor(
     override suspend fun handle(event: VolumeEvent) {
         val id = event.streamId
         val volume = event.newVolume
-        
-        if (streamHelper.wasUs(id, volume)) {
+
+        if (volumeTool.wasUs(id, volume)) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             return
         }
@@ -44,7 +44,7 @@ internal class VolumeLockModule @Inject constructor(
                     return@forEach
                 }
 
-                if (streamHelper.changeVolume(device.getStreamId(type), percentage)) {
+                if (volumeTool.changeVolume(device.getStreamId(type), percentage)) {
                     log(TAG) { "Engaged volume lock for $type and due to $device" }
                 }
             }

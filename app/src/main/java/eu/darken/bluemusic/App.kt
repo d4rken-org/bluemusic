@@ -18,7 +18,7 @@ import eu.darken.bluemusic.devices.core.database.legacy.MigrationTool
 import eu.darken.bluemusic.legacy.LegacyMigration
 import eu.darken.bluemusic.main.core.CurriculumVitae
 import eu.darken.bluemusic.main.core.GeneralSettings
-import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.worker.MonitorControl
 import io.realm.Realm
 import io.realm.RealmConfiguration
@@ -37,7 +37,7 @@ class App : Application(), Configuration.Provider {
     @Inject lateinit var debugSettings: DebugSettings
     @Inject lateinit var curriculumVitae: CurriculumVitae
     @Inject lateinit var monitorControl: MonitorControl
-    @Inject lateinit var streamHelper: StreamHelper
+    @Inject lateinit var volumeTool: VolumeTool
 
     @Inject lateinit var legacyMigration: LegacyMigration
 

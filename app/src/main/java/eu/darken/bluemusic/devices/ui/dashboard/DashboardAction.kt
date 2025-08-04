@@ -2,13 +2,14 @@ package eu.darken.bluemusic.devices.ui.dashboard
 
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 
 sealed interface DashboardAction {
 
     data class AdjustVolume(
         val addr: DeviceAddr,
         val type: AudioStream.Type,
-        val volume: Float
+        val volumeMode: VolumeMode
     ) : DashboardAction
 
     data object RequestBluetoothPermission : DashboardAction

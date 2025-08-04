@@ -7,7 +7,7 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
-import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
@@ -16,7 +16,7 @@ import javax.inject.Singleton
 @Singleton
 class NewDeviceCreator @Inject constructor(
     private val deviceRepo: DeviceRepo,
-    private val streamHelper: StreamHelper,
+    private val volumeTool: VolumeTool,
     private val bluetoothRepo: BluetoothRepo,
 ) {
 
@@ -32,7 +32,7 @@ class NewDeviceCreator @Inject constructor(
         var config = DeviceConfigEntity(
             address = address,
             lastConnected = System.currentTimeMillis(),
-            musicVolume = streamHelper.getVolumePercentage(AudioStream.Id.STREAM_MUSIC),
+            musicVolume = volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC),
         )
 
         if (device.deviceType == SourceDevice.Type.PHONE_SPEAKER) {

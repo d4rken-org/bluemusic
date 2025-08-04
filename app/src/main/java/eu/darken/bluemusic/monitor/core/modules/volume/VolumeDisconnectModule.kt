@@ -12,7 +12,7 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
-import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import javax.inject.Inject
@@ -20,7 +20,7 @@ import javax.inject.Singleton
 
 @Singleton
 class VolumeDisconnectModule @Inject constructor(
-    private val streamHelper: StreamHelper,
+    private val volumeTool: VolumeTool,
     private val deviceRepo: DeviceRepo,
 ) : ConnectionModule {
 
@@ -47,7 +47,7 @@ class VolumeDisconnectModule @Inject constructor(
                 if (currentVolume == null) return@forEach
 
                 val streamId = device.getStreamId(streamType)
-                val actualVolume = streamHelper.getVolumePercentage(streamId)
+                val actualVolume = volumeTool.getVolumePercentage(streamId)
                 put(streamType, actualVolume)
                 log(TAG, VERBOSE) { "Capturing $streamType volume: $actualVolume for ${device.label}" }
             }

@@ -20,7 +20,7 @@ import javax.inject.Singleton
 @Singleton
 class VolumeObserver @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val streamHelper: StreamHelper,
+    private val volumeTool: VolumeTool,
 ) {
 
     private val contentResolver: ContentResolver = context.contentResolver
@@ -35,7 +35,7 @@ class VolumeObserver @Inject constructor(
 
     val volumes: Flow<VolumeEvent> = callbackFlow {
         AudioStream.Id.entries.forEach { id ->
-            val volume = streamHelper.getCurrentVolume(id)
+            val volume = volumeTool.getCurrentVolume(id)
             volumesCache[id] = volume
         }
 
@@ -46,7 +46,7 @@ class VolumeObserver @Inject constructor(
             override fun onChange(selfChange: Boolean) {
                 log(TAG, VERBOSE) { "Change detected (self=$selfChange)" }
                 AudioStream.Id.entries.forEach { id ->
-                    val newVolume = streamHelper.getCurrentVolume(id)
+                    val newVolume = volumeTool.getCurrentVolume(id)
                     val oldVolume = volumesCache[id] ?: -1
                     if (newVolume != oldVolume) {
                         log(TAG) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume)" }

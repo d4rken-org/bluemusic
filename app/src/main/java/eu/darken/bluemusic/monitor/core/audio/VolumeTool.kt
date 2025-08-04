@@ -17,7 +17,7 @@ import kotlin.math.roundToInt
 
 
 @Singleton
-class StreamHelper @Inject constructor(private val audioManager: AudioManager) {
+class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
 
     @Volatile private var adjusting = false
     private val lock = Mutex()

@@ -34,25 +34,28 @@ import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.AudioStream.SOUND_MODE_SILENT
 import eu.darken.bluemusic.monitor.core.audio.AudioStream.SOUND_MODE_VIBRATE
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode.Companion.fromFloat
 import kotlin.math.roundToInt
 
 @Composable
 fun VolumeControlWithModes(
     streamType: AudioStream.Type,
     label: String,
-    volume: Float?,
-    onVolumeChange: (Float) -> Unit,
+    volumeMode: VolumeMode?,
+    onVolumeChange: (VolumeMode) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val haptics = LocalHapticFeedback.current
 
     // Track the slider value locally while dragging
-    var sliderValue by remember(volume) {
+    var sliderValue by remember(volumeMode) {
         mutableFloatStateOf(
-            when {
-                volume == null -> 0.5f
-                volume < 0 -> volume
-                else -> volume.coerceIn(0f, 1f)
+            when (volumeMode) {
+                null -> 0.5f
+                is VolumeMode.Silent -> SOUND_MODE_SILENT
+                is VolumeMode.Vibrate -> SOUND_MODE_VIBRATE
+                is VolumeMode.Normal -> volumeMode.percentage
             }
         )
     }
@@ -76,9 +79,14 @@ fun VolumeControlWithModes(
                 modifier = Modifier.width(80.dp)
             )
 
-            if (volume != null) {
-                // Show mode icons for quick selection
-                Row(modifier = Modifier.padding(horizontal = 8.dp)) {
+            // Mode icons container with fixed width
+            Box(
+                modifier = Modifier.width(88.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                if (volumeMode != null) {
+                    // Show mode icons for quick selection
+                    Row {
                     Icon(
                         imageVector = Icons.AutoMirrored.TwoTone.VolumeOff,
                         contentDescription = "Silent",
@@ -87,7 +95,7 @@ fun VolumeControlWithModes(
                             .clickable {
                                 haptics.performHapticFeedback(HapticFeedbackType.LongPress)
                                 sliderValue = SOUND_MODE_SILENT
-                                onVolumeChange(SOUND_MODE_SILENT)
+                                onVolumeChange(VolumeMode.Silent)
                             }
                             .padding(4.dp),
                         tint = if (sliderValue == SOUND_MODE_SILENT)
@@ -103,7 +111,7 @@ fun VolumeControlWithModes(
                             .clickable {
                                 haptics.performHapticFeedback(HapticFeedbackType.LongPress)
                                 sliderValue = SOUND_MODE_VIBRATE
-                                onVolumeChange(SOUND_MODE_VIBRATE)
+                                onVolumeChange(VolumeMode.Vibrate)
                             }
                             .padding(4.dp),
                         tint = if (sliderValue == SOUND_MODE_VIBRATE)
@@ -119,7 +127,7 @@ fun VolumeControlWithModes(
                             .clickable {
                                 haptics.performHapticFeedback(HapticFeedbackType.LongPress)
                                 sliderValue = if (sliderValue < 0) 0.5f else sliderValue
-                                onVolumeChange(sliderValue)
+                                onVolumeChange(VolumeMode.Normal(sliderValue))
                             }
                             .padding(4.dp),
                         tint = if (sliderValue >= 0)
@@ -127,6 +135,7 @@ fun VolumeControlWithModes(
                         else
                             MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
                     )
+                    }
                 }
             }
 
@@ -138,10 +147,11 @@ fun VolumeControlWithModes(
             ) {
                 if (sliderValue < 0) {
                     // Show mode text instead of slider for special modes
+                    val currentMode = fromFloat(sliderValue)
                     Text(
-                        text = when (sliderValue) {
-                            SOUND_MODE_SILENT -> "Silent"
-                            SOUND_MODE_VIBRATE -> "Vibrate"
+                        text = when (currentMode) {
+                            is VolumeMode.Silent -> "Silent"
+                            is VolumeMode.Vibrate -> "Vibrate"
                             else -> ""
                         },
                         style = MaterialTheme.typography.bodyMedium,
@@ -160,10 +170,10 @@ fun VolumeControlWithModes(
                             // Only update when the user releases the slider
                             if (sliderValue > 0.01f) {
                                 haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                                onVolumeChange(sliderValue)
+                                onVolumeChange(VolumeMode.Normal(sliderValue))
                             }
                         },
-                        enabled = volume != null,
+                        enabled = volumeMode != null,
                         colors = SliderDefaults.colors(
                             thumbColor = MaterialTheme.colorScheme.primary,
                             activeTrackColor = MaterialTheme.colorScheme.primary
@@ -173,17 +183,16 @@ fun VolumeControlWithModes(
             }
 
             Text(
-                text = when {
-                    volume == null -> "-"
-                    volume == SOUND_MODE_SILENT -> "~"
-                    volume == SOUND_MODE_VIBRATE -> "~"
-                    volume < 0 -> "-"
-                    else -> "${(volume * 100).roundToInt()}%"
+                text = when (volumeMode) {
+                    null -> "-"
+                    is VolumeMode.Silent -> "~"
+                    is VolumeMode.Vibrate -> "~"
+                    is VolumeMode.Normal -> "${(volumeMode.percentage * 100).roundToInt()}%"
                 },
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier
-                    .width(50.dp)
+                    .width(40.dp)
                     .padding(start = 8.dp)
             )
         }
@@ -206,7 +215,7 @@ private fun VolumeControlWithModesPreview() {
             VolumeControlWithModes(
                 streamType = AudioStream.Type.MUSIC,
                 label = "Music",
-                volume = 0.75f,
+                volumeMode = VolumeMode.Normal(0.75f),
                 onVolumeChange = {},
                 modifier = Modifier.padding(vertical = 4.dp)
             )
@@ -214,7 +223,7 @@ private fun VolumeControlWithModesPreview() {
             VolumeControlWithModes(
                 streamType = AudioStream.Type.RINGTONE,
                 label = "Ringtone",
-                volume = 0.5f,
+                volumeMode = VolumeMode.Normal(0.5f),
                 onVolumeChange = {},
                 modifier = Modifier.padding(vertical = 4.dp)
             )
@@ -222,7 +231,7 @@ private fun VolumeControlWithModesPreview() {
             VolumeControlWithModes(
                 streamType = AudioStream.Type.RINGTONE,
                 label = "Ring (Silent)",
-                volume = SOUND_MODE_SILENT,
+                volumeMode = VolumeMode.Silent,
                 onVolumeChange = {},
                 modifier = Modifier.padding(vertical = 4.dp)
             )
@@ -230,7 +239,7 @@ private fun VolumeControlWithModesPreview() {
             VolumeControlWithModes(
                 streamType = AudioStream.Type.NOTIFICATION,
                 label = "Notif (Vibrate)",
-                volume = SOUND_MODE_VIBRATE,
+                volumeMode = VolumeMode.Vibrate,
                 onVolumeChange = {},
                 modifier = Modifier.padding(vertical = 4.dp)
             )
@@ -238,7 +247,7 @@ private fun VolumeControlWithModesPreview() {
             VolumeControlWithModes(
                 streamType = AudioStream.Type.ALARM,
                 label = "Alarm",
-                volume = null, // Disabled state
+                volumeMode = null, // Disabled state
                 onVolumeChange = {},
                 modifier = Modifier.padding(vertical = 4.dp)
             )

@@ -12,8 +12,8 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
-import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -22,7 +22,7 @@ import javax.inject.Singleton
 
 @Singleton
 internal class VolumeRateLimiterModule @Inject constructor(
-    private val streamHelper: StreamHelper,
+    private val volumeTool: VolumeTool,
     private val deviceRepo: DeviceRepo,
 ) : VolumeModule {
 
@@ -46,7 +46,7 @@ internal class VolumeRateLimiterModule @Inject constructor(
         val oldVolume = event.oldVolume
 
         // Ignore changes triggered by us
-        if (streamHelper.wasUs(id, newVolume)) {
+        if (volumeTool.wasUs(id, newVolume)) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             return
         }
@@ -80,7 +80,7 @@ internal class VolumeRateLimiterModule @Inject constructor(
         // Check rate limiting
         if (currentState != null && (currentTime - currentState.lastChangeTimestamp) < rateLimitMs) {
             log(TAG) { "Volume changed too quickly for $streamType, reverting from $newVolume to $referenceVolume" }
-            if (streamHelper.changeVolume(streamId = streamId, targetLevel = referenceVolume)) {
+            if (volumeTool.changeVolume(streamId = streamId, targetLevel = referenceVolume)) {
                 log(TAG) { "Reverted volume for $streamType to $referenceVolume due to rate limiting" }
             }
             // Update timestamp to reset the timer
@@ -98,7 +98,7 @@ internal class VolumeRateLimiterModule @Inject constructor(
 
         if (clampedVolume != newVolume) {
             log(TAG) { "Volume change limited for $streamType: requested=$newVolume, reference=$referenceVolume, limited to=$clampedVolume" }
-            if (streamHelper.changeVolume(streamId = streamId, targetLevel = clampedVolume)) {
+            if (volumeTool.changeVolume(streamId = streamId, targetLevel = clampedVolume)) {
                 log(TAG) { "Applied rate-limited volume for $streamType to $clampedVolume" }
                 volumeStates[streamId] = VolumeState(clampedVolume, currentTime)
             }

@@ -23,7 +23,7 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.getDevice
-import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.worker.BluetoothEventQueue
 import eu.darken.bluemusic.monitor.core.worker.MonitorControl
 import kotlinx.coroutines.CoroutineScope
@@ -35,7 +35,7 @@ import javax.inject.Inject
 class MonitorEventReceiver : BroadcastReceiver() {
 
     @Inject lateinit var devicesSettings: DevicesSettings
-    @Inject lateinit var streamHelper: StreamHelper
+    @Inject lateinit var volumeTool: VolumeTool
     @Inject lateinit var speakerDeviceProvider: SpeakerDeviceProvider
     @Inject lateinit var deviceRepo: DeviceRepo
     @Inject lateinit var dispatcherProvider: DispatcherProvider

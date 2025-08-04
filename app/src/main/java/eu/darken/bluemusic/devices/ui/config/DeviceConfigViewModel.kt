@@ -22,7 +22,7 @@ import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.observeDevice
 import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
-import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
@@ -33,7 +33,7 @@ import java.time.Duration
 class DeviceConfigViewModel @AssistedInject constructor(
     @Assisted private val deviceAddress: DeviceAddr,
     private val deviceRepo: DeviceRepo,
-    private val streamHelper: StreamHelper,
+    private val volumeTool: VolumeTool,
     private val upgradeRepo: UpgradeRepo,
     appRepo: AppRepo,
     dispatcherProvider: DispatcherProvider,
@@ -270,7 +270,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 }
 
                 val newVolume = if (device.getVolume(action.type) == null) {
-                    streamHelper.getVolumePercentage(device.getStreamId(action.type))
+                    volumeTool.getVolumePercentage(device.getStreamId(action.type))
                 } else {
                     null
                 }

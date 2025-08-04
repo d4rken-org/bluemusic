@@ -12,8 +12,8 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.updateVolume
-import eu.darken.bluemusic.monitor.core.audio.StreamHelper
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import java.time.Duration
 import java.time.Instant
@@ -22,7 +22,7 @@ import javax.inject.Singleton
 
 @Singleton
 class VolumeUpdateModule @Inject constructor(
-    private val streamHelper: StreamHelper,
+    private val volumeTool: VolumeTool,
     private val deviceRepo: DeviceRepo,
 ) : VolumeModule {
 
@@ -32,8 +32,8 @@ class VolumeUpdateModule @Inject constructor(
     override suspend fun handle(event: VolumeEvent) {
         val id = event.streamId
         val volume = event.newVolume
-        
-        if (streamHelper.wasUs(id, volume)) {
+
+        if (volumeTool.wasUs(id, volume)) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             return
         }
@@ -41,7 +41,7 @@ class VolumeUpdateModule @Inject constructor(
         val activeDevices = deviceRepo.currentDevices().filter { it.isActive }
         log(TAG) { "Active devices (${activeDevices.size}): $activeDevices" }
 
-        val percentage = streamHelper.getVolumePercentage(id)
+        val percentage = volumeTool.getVolumePercentage(id)
 
         val now = Instant.now()
         activeDevices

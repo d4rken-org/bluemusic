@@ -19,7 +19,11 @@ import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.main.core.GeneralSettings
-import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.RingerMode
+import eu.darken.bluemusic.monitor.core.audio.RingerTool
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine
@@ -31,7 +35,8 @@ import javax.inject.Inject
 class DashboardViewModel @Inject constructor(
     private val permissionHelper: PermissionHelper,
     private val deviceRepo: DeviceRepo,
-    private val streamHelper: StreamHelper,
+    private val volumeTool: VolumeTool,
+    private val ringerTool: RingerTool,
     upgradeRepo: UpgradeRepo,
     bluetoothSource: BluetoothRepo,
     private val generalSettings: GeneralSettings,
@@ -145,14 +150,14 @@ class DashboardViewModel @Inject constructor(
     fun action(action: DashboardAction) = launch {
         log(tag) { "action: $action" }
         when (action) {
-            DashboardAction.RequestBluetoothPermission -> {
+            is DashboardAction.RequestBluetoothPermission -> {
                 launch {
                     val permission = permissionHelper.getBluetoothPermission()
                     eventChannel.send(DashboardEvent.RequestPermission(permission))
                 }
             }
 
-            DashboardAction.RequestNotificationPermission -> {
+            is DashboardAction.RequestNotificationPermission -> {
                 launch {
                     val permission = permissionHelper.getNotificationPermission()
                     if (permission != null) {
@@ -161,19 +166,19 @@ class DashboardViewModel @Inject constructor(
                 }
             }
 
-            DashboardAction.DismissBatteryOptimizationHint -> {
+            is DashboardAction.DismissBatteryOptimizationHint -> {
                 launch {
                     generalSettings.isBatteryOptimizationHintDismissed.update { true }
                 }
             }
 
-            DashboardAction.DismissAndroid10AppLaunchHint -> {
+            is DashboardAction.DismissAndroid10AppLaunchHint -> {
                 launch {
                     generalSettings.isAndroid10AppLaunchHintDismissed.update { true }
                 }
             }
 
-            DashboardAction.DismissNotificationPermissionHint -> {
+            is DashboardAction.DismissNotificationPermissionHint -> {
                 launch {
                     generalSettings.isNotificationPermissionHintDismissed.update { true }
                 }
@@ -181,15 +186,32 @@ class DashboardViewModel @Inject constructor(
 
             is DashboardAction.AdjustVolume -> {
                 deviceRepo.updateDevice(action.addr) { oldConfig ->
-                    oldConfig.updateVolume(action.type, action.volume)
+                    oldConfig.updateVolume(action.type, action.volumeMode)
                 }
+
                 val device = deviceRepo.getDevice(action.addr)
-                if (device?.isActive == true) {
-                    streamHelper.changeVolume(
-                        streamId = device.getStreamId(action.type),
-                        percent = action.volume,
-                        visible = devicesSettings.visibleAdjustments.value(),
-                    )
+                if (device?.isActive != true) return@launch
+
+                when (action.volumeMode) {
+                    is VolumeMode.Normal -> {
+                        volumeTool.changeVolume(
+                            streamId = device.getStreamId(action.type),
+                            percent = action.volumeMode.percentage,
+                            visible = devicesSettings.visibleAdjustments.value(),
+                        )
+                    }
+
+                    is VolumeMode.Silent -> {
+                        if (action.type == AudioStream.Type.RINGTONE || action.type == AudioStream.Type.NOTIFICATION) {
+                            ringerTool.setRingerMode(RingerMode.SILENT)
+                        }
+                    }
+
+                    is VolumeMode.Vibrate -> {
+                        if (action.type == AudioStream.Type.RINGTONE || action.type == AudioStream.Type.NOTIFICATION) {
+                            ringerTool.setRingerMode(RingerMode.VIBRATE)
+                        }
+                    }
                 }
             }
         }

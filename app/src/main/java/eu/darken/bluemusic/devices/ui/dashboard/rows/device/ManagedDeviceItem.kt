@@ -41,6 +41,8 @@ import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.ui.dashboard.DashboardAction
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode.Companion.fromFloat
 import java.text.DateFormat
 import java.time.Instant
 import java.util.Date
@@ -198,14 +200,16 @@ fun ManagedDeviceItem(
                             AudioStream.Type.ALARM -> stringResource(R.string.devices_audio_stream_alarm_label)
                         }
 
+                        val volumeMode = fromFloat(currentVolume)
+
                         // Use VolumeControlWithModes only for streams that support sound modes
                         if (streamType == AudioStream.Type.RINGTONE || streamType == AudioStream.Type.NOTIFICATION) {
                             VolumeControlWithModes(
                                 streamType = streamType,
                                 label = label,
-                                volume = currentVolume,
-                                onVolumeChange = { newVolume ->
-                                    onDeviceAction(DashboardAction.AdjustVolume(device.address, streamType, newVolume))
+                                volumeMode = volumeMode,
+                                onVolumeChange = { newMode ->
+                                    onDeviceAction(DashboardAction.AdjustVolume(device.address, streamType, newMode))
                                 }
                             )
                         } else {
@@ -214,7 +218,13 @@ fun ManagedDeviceItem(
                                 label = label,
                                 volume = currentVolume,
                                 onVolumeChange = { newVolume ->
-                                    onDeviceAction(DashboardAction.AdjustVolume(device.address, streamType, newVolume))
+                                    onDeviceAction(
+                                        DashboardAction.AdjustVolume(
+                                            device.address,
+                                            streamType,
+                                            VolumeMode.Normal(newVolume)
+                                        )
+                                    )
                                 }
                             )
                         }

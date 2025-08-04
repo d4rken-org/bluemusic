@@ -4,57 +4,55 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
-import eu.darken.bluemusic.monitor.core.audio.AudioStream.SOUND_MODE_SILENT
-import eu.darken.bluemusic.monitor.core.audio.AudioStream.SOUND_MODE_VIBRATE
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
-import eu.darken.bluemusic.monitor.core.audio.RingerModeHelper
-import eu.darken.bluemusic.monitor.core.audio.StreamHelper
+import eu.darken.bluemusic.monitor.core.audio.RingerTool
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import kotlinx.coroutines.delay
 import java.time.Instant
 
 abstract class BaseVolumeWithModesModule(
     settings: DevicesSettings,
-    streamHelper: StreamHelper,
-    private val ringerModeHelper: RingerModeHelper
-) : BaseVolumeModule(settings, streamHelper) {
+    volumeTool: VolumeTool,
+    private val ringerTool: RingerTool
+) : BaseVolumeModule(settings, volumeTool) {
 
-    override suspend fun setInitial(device: ManagedDevice, percentage: Float) {
-        log(tag, INFO) { "Setting initial volume/mode ($percentage) for $device" }
+    override suspend fun setInitial(device: ManagedDevice, volumeMode: VolumeMode) {
+        log(tag, INFO) { "Setting initial volume/mode ($volumeMode) for $device" }
 
-        // Handle special sound modes
-        when (percentage) {
-            SOUND_MODE_SILENT -> {
+        when (volumeMode) {
+            is VolumeMode.Silent -> {
                 log(tag, INFO) { "Setting ringer mode to SILENT for $device" }
-                if (ringerModeHelper.setSilentMode()) {
+                if (ringerTool.setRingerMode(RingerMode.SILENT)) {
                     log(tag) { "Successfully set ringer mode to SILENT" }
                 }
                 return
             }
 
-            SOUND_MODE_VIBRATE -> {
+            is VolumeMode.Vibrate -> {
                 log(tag, INFO) { "Setting ringer mode to VIBRATE for $device" }
-                if (ringerModeHelper.setVibrateMode()) {
+                if (ringerTool.setRingerMode(RingerMode.VIBRATE)) {
                     log(tag) { "Successfully set ringer mode to VIBRATE" }
                 }
                 return
             }
 
-            else -> {
+            is VolumeMode.Normal -> {
                 // For normal volume levels, ensure we're in normal ringer mode
-                if (percentage > 0) {
-                    ringerModeHelper.setNormalMode()
+                if (volumeMode.percentage > 0) {
+                    ringerTool.setRingerMode(RingerMode.NORMAL)
                 }
                 // Call parent implementation for normal volume handling
-                super.setInitial(device, percentage)
+                super.setInitial(device, volumeMode)
             }
         }
     }
 
-    override suspend fun monitor(device: ManagedDevice, targetPercentage: Float) {
-        when (targetPercentage) {
-            SOUND_MODE_SILENT -> monitorRingerMode(device, RingerMode.SILENT)
-            SOUND_MODE_VIBRATE -> monitorRingerMode(device, RingerMode.VIBRATE)
-            else -> super.monitor(device, targetPercentage)
+    override suspend fun monitor(device: ManagedDevice, volumeMode: VolumeMode) {
+        when (volumeMode) {
+            is VolumeMode.Silent -> monitorRingerMode(device, RingerMode.SILENT)
+            is VolumeMode.Vibrate -> monitorRingerMode(device, RingerMode.VIBRATE)
+            is VolumeMode.Normal -> super.monitor(device, volumeMode)
         }
     }
 
@@ -66,10 +64,10 @@ abstract class BaseVolumeWithModesModule(
 
         val targetTime = Instant.now() + monitorDuration
         while (Instant.now() < targetTime) {
-            val currentMode = ringerModeHelper.getCurrentRingerMode()
+            val currentMode = ringerTool.getCurrentRingerMode()
             if (currentMode != targetMode) {
                 log(tag) { "Ringer mode changed from $currentMode to $targetMode, restoring..." }
-                ringerModeHelper.setRingerMode(targetMode)
+                ringerTool.setRingerMode(targetMode)
             }
             delay(250)
         }
