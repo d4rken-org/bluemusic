@@ -46,7 +46,7 @@ class DeviceRepo @Inject constructor(
 
                     else -> paired.isConnected
                 },
-                config = config,
+                config = config
             )
         }.sortedByDescending { it.isActive }
     }.replayingShare(appScope + dispatcherProvider.IO)

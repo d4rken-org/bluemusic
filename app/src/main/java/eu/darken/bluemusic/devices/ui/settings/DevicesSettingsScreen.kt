@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Adjust
 import androidx.compose.material.icons.filled.Start
 import androidx.compose.material.icons.twotone.Approval
 import androidx.compose.material3.Icon
@@ -44,7 +43,6 @@ fun DevicesSettingsScreenHost(vm: DevicesSettingsViewModel = hiltViewModel()) {
             onNavigateUp = { vm.navUp() },
             onUpgrade = { vm.upgrade() },
             onToggleEnabled = { vm.onToggleEnabled(it) },
-            onToggleVisibleVolumeAdjustments = { vm.onToggleVisibleVolumeAdjustments(it) },
             onToggleRestoreOnBoot = { vm.onToggleRestoreOnBoot(it) },
         )
     }
@@ -56,7 +54,6 @@ fun DevicesSettingsScreen(
     onNavigateUp: () -> Unit,
     onUpgrade: () -> Unit,
     onToggleEnabled: (Boolean) -> Unit,
-    onToggleVisibleVolumeAdjustments: (Boolean) -> Unit,
     onToggleRestoreOnBoot: (Boolean) -> Unit,
 ) {
 
@@ -92,16 +89,6 @@ fun DevicesSettingsScreen(
                     subtitle = stringResource(R.string.description_app_enabled),
                     checked = state.isEnabled,
                     onCheckedChange = { onToggleEnabled(it) }
-                )
-                SettingsDivider()
-            }
-            item {
-                SettingsSwitchItem(
-                    icon = Icons.Default.Adjust,
-                    title = stringResource(R.string.label_visible_volume_adjustments),
-                    subtitle = stringResource(R.string.description_visible_volume_adjustments),
-                    checked = state.visibleAdjustments,
-                    onCheckedChange = { onToggleVisibleVolumeAdjustments(it) }
                 )
                 SettingsDivider()
             }

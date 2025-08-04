@@ -26,13 +26,11 @@ constructor(
     val state = combine(
         upgradeRepo.upgradeInfo,
         devicesSettings.isEnabled.flow,
-        devicesSettings.visibleAdjustments.flow,
         devicesSettings.restoreOnBoot.flow,
-    ) { upgradeInfo, isEnabled, visibleAdjustments, restoreOnBoot ->
+    ) { upgradeInfo, isEnabled, restoreOnBoot ->
         State(
             isUpgraded = upgradeInfo.isUpgraded,
             isEnabled = isEnabled,
-            visibleAdjustments = visibleAdjustments,
             restoreOnBoot = restoreOnBoot,
         )
     }.asStateFlow()
@@ -47,11 +45,6 @@ constructor(
         devicesSettings.isEnabled.value(enabled)
     }
 
-    fun onToggleVisibleVolumeAdjustments(enabled: Boolean) = launch {
-        log(tag) { "onToggleVisibleVolumeAdjustments($enabled)" }
-        devicesSettings.visibleAdjustments.value(enabled)
-    }
-
     fun onToggleRestoreOnBoot(enabled: Boolean) = launch {
         log(tag) { "onToggleRestoreOnBoot($enabled)" }
         devicesSettings.restoreOnBoot.value(enabled)
@@ -61,7 +54,6 @@ constructor(
     data class State(
         val isUpgraded: Boolean,
         val isEnabled: Boolean,
-        val visibleAdjustments: Boolean,
         val restoreOnBoot: Boolean,
     )
 }

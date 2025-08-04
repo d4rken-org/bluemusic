@@ -2,7 +2,6 @@ package eu.darken.bluemusic.monitor.core.modules.connection
 
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
-import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
@@ -12,10 +11,9 @@ import kotlinx.coroutines.delay
 import java.time.Instant
 
 abstract class BaseVolumeWithModesModule(
-    settings: DevicesSettings,
     volumeTool: VolumeTool,
     private val ringerTool: RingerTool
-) : BaseVolumeModule(settings, volumeTool) {
+) : BaseVolumeModule(volumeTool) {
 
     override suspend fun setInitial(device: ManagedDevice, volumeMode: VolumeMode) {
         log(tag, INFO) { "Setting initial volume/mode ($volumeMode) for $device" }
