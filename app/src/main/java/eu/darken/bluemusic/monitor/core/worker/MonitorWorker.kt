@@ -29,7 +29,14 @@ import eu.darken.bluemusic.common.flow.throttleLatest
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.getDevice
+import eu.darken.bluemusic.devices.core.updateVolume
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.RingerMode
+import eu.darken.bluemusic.monitor.core.audio.RingerModeEvent
+import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
+import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
@@ -66,6 +73,8 @@ class MonitorWorker @AssistedInject constructor(
     private val connectionModuleMap: Set<@JvmSuppressWildcards ConnectionModule>,
     private val volumeModuleMap: Set<@JvmSuppressWildcards VolumeModule>,
     private val volumeObserver: VolumeObserver,
+    private val ringerModeObserver: RingerModeObserver,
+    private val ringerTool: RingerTool,
     private val bluetoothEventQueue: BluetoothEventQueue,
 ) : CoroutineWorker(context, params) {
 
@@ -118,6 +127,13 @@ class MonitorWorker @AssistedInject constructor(
             IntentFilter(MonitorNotifications.ACTION_STOP_MONITOR),
             ContextCompat.RECEIVER_NOT_EXPORTED
         )
+
+        ringerModeObserver.ringerMode
+            .setupCommonEventHandlers(TAG) { "RingerMode monitor" }
+            .distinctUntilChanged()
+            .onEach { handleRingerMode(it) }
+            .catch { log(TAG, WARN) { "RingerMode monitor flow failed:\n${it.asLog()}" } }
+            .launchIn(workerScope)
 
         volumeObserver.volumes
             .setupCommonEventHandlers(TAG) { "Volume monitor" }
@@ -290,6 +306,39 @@ class MonitorWorker @AssistedInject constructor(
                     }
                 }.awaitAll()
             }
+        }
+    }
+
+    private suspend fun handleRingerMode(event: RingerModeEvent) {
+        log(TAG, VERBOSE) { "handleRingerMode: $event" }
+        val activeDevice = deviceRepo.currentDevices().firstOrNull { it.isActive }
+        if (activeDevice == null) {
+            log(TAG, INFO) { "handleRingerMode: No active device, skipping." }
+            return
+        }
+        if (activeDevice.getVolume(AudioStream.Type.RINGTONE) == null) {
+            log(TAG, INFO) { "handleRingerMode: No ringtone volume configured, skipping." }
+            return
+        }
+
+        // Convert RingerMode to VolumeMode
+        val volumeMode = when (event.newMode) {
+            RingerMode.SILENT -> VolumeMode.Silent
+            RingerMode.VIBRATE -> VolumeMode.Vibrate
+            RingerMode.NORMAL -> {
+                // When switching to normal, keep the existing volume percentage if available
+                val currentVolume = activeDevice.getVolume(AudioStream.Type.RINGTONE)
+                if (currentVolume != null && currentVolume >= 0f) {
+                    VolumeMode.Normal(currentVolume)
+                } else {
+                    // Default to 50% if no previous normal volume
+                    VolumeMode.Normal(0.5f)
+                }
+            }
+        }
+
+        deviceRepo.updateDevice(activeDevice.address) {
+            it.updateVolume(AudioStream.Type.RINGTONE, volumeMode)
         }
     }
 
