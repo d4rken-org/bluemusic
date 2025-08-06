@@ -236,4 +236,25 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+
+    <!-- Do Not Disturb mode -->
+    <string name="devices_device_config_dnd_on_connect_label">おやすみモード</string>
+    <string name="dnd_mode_dialog_title">おやすみモードを選択</string>
+    <string name="dnd_mode_dont_change">変更しない</string>
+    <string name="dnd_mode_off">オフ</string>
+    <string name="dnd_mode_priority_only">重要な通知のみ</string>
+    <string name="dnd_mode_alarms_only">アラームのみ</string>
+    <string name="dnd_mode_total_silence">完全無音</string>
+
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">ロック</string>
+    <string name="devices_indicator_awake">スリープ無効</string>
+    <string name="devices_indicator_nudge">微調整</string>
+    <string name="devices_indicator_observe">監視</string>
+    <string name="devices_indicator_disconnect">切断</string>
+    <string name="devices_indicator_limit">制限</string>
+    <string name="devices_indicator_launch">起動</string>
+    <string name="devices_indicator_auto">自動</string>
+    <string name="devices_indicator_home">ホーム</string>
+    <string name="devices_indicator_dnd">おやすみ</string>
 </resources>

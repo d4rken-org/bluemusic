@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.devices.ui.config
 
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.DndMode
 import java.time.Duration
 
 sealed interface ConfigAction {
@@ -33,4 +34,6 @@ sealed interface ConfigAction {
     data class OnRename(val newName: String?) : ConfigAction
     data class OnConfirmDelete(val confirmed: Boolean) : ConfigAction
     data object OnToggleEnabled : ConfigAction
+    data object OnEditDndModeClicked : ConfigAction
+    data class OnEditDndMode(val mode: DndMode?) : ConfigAction
 }

@@ -13,7 +13,7 @@ import androidx.room.TypeConverters
     ],
     exportSchema = true,
 )
-@TypeConverters(StringListTypeConverter::class, IntListTypeConverter::class)
+@TypeConverters(StringListTypeConverter::class, IntListTypeConverter::class, DndModeTypeConverter::class)
 abstract class DevicesRoomDb : RoomDatabase() {
     abstract fun devices(): DeviceConfigDao
 }

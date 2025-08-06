@@ -232,4 +232,25 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+
+    <!-- Do Not Disturb mode -->
+    <string name="devices_device_config_dnd_on_connect_label">Niet Storen modus</string>
+    <string name="dnd_mode_dialog_title">Selecteer Niet Storen modus</string>
+    <string name="dnd_mode_dont_change">Niet wijzigen</string>
+    <string name="dnd_mode_off">Uit</string>
+    <string name="dnd_mode_priority_only">Alleen prioriteit</string>
+    <string name="dnd_mode_alarms_only">Alleen alarmen</string>
+    <string name="dnd_mode_total_silence">Totale stilte</string>
+
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">Vergr</string>
+    <string name="devices_indicator_awake">Wakker</string>
+    <string name="devices_indicator_nudge">Duwtje</string>
+    <string name="devices_indicator_observe">Observ</string>
+    <string name="devices_indicator_disconnect">Ontkop</string>
+    <string name="devices_indicator_limit">Lim</string>
+    <string name="devices_indicator_launch">Start</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Home</string>
+    <string name="devices_indicator_dnd">NS</string>
 </resources>

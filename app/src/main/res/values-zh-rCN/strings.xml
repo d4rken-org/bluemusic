@@ -236,4 +236,25 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+
+    <!-- Do Not Disturb mode -->
+    <string name="devices_device_config_dnd_on_connect_label">勿扰模式</string>
+    <string name="dnd_mode_dialog_title">选择勿扰模式</string>
+    <string name="dnd_mode_dont_change">不更改</string>
+    <string name="dnd_mode_off">关闭</string>
+    <string name="dnd_mode_priority_only">仅重要事项</string>
+    <string name="dnd_mode_alarms_only">仅闹钟</string>
+    <string name="dnd_mode_total_silence">完全静音</string>
+
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">锁定</string>
+    <string name="devices_indicator_awake">唤醒</string>
+    <string name="devices_indicator_nudge">轻推</string>
+    <string name="devices_indicator_observe">监听</string>
+    <string name="devices_indicator_disconnect">断开</string>
+    <string name="devices_indicator_limit">限制</string>
+    <string name="devices_indicator_launch">启动</string>
+    <string name="devices_indicator_auto">自动</string>
+    <string name="devices_indicator_home">主页</string>
+    <string name="devices_indicator_dnd">勿扰</string>
 </resources>

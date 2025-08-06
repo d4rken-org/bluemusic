@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
@@ -36,10 +37,12 @@ class VolumeUpdateModule @Inject constructor(
         if (volumeTool.wasUs(id, volume)) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             return
+        } else {
+            log(TAG, DEBUG) { "Volume change $event" }
         }
 
         val activeDevices = deviceRepo.currentDevices().filter { it.isActive }
-        log(TAG) { "Active devices (${activeDevices.size}): $activeDevices" }
+        log(TAG, VERBOSE) { "Active devices (${activeDevices.size}): $activeDevices" }
 
         val percentage = volumeTool.getVolumePercentage(id)
 

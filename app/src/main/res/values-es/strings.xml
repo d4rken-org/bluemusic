@@ -238,4 +238,25 @@
     <string name="error_iap_owned_message">Ya posees este artículo</string>
     <string name="label_no_devices_title">Sin dispositivos</string>
     <string name="bluemusic_mascot_description">Icono de la aplicación</string>
+
+    <!-- Do Not Disturb mode -->
+    <string name="devices_device_config_dnd_on_connect_label">Modo No molestar</string>
+    <string name="dnd_mode_dialog_title">Seleccionar modo No molestar</string>
+    <string name="dnd_mode_dont_change">No cambiar</string>
+    <string name="dnd_mode_off">Apagado</string>
+    <string name="dnd_mode_priority_only">Solo prioridad</string>
+    <string name="dnd_mode_alarms_only">Solo alarmas</string>
+    <string name="dnd_mode_total_silence">Silencio total</string>
+
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">Bloqueo</string>
+    <string name="devices_indicator_awake">Activo</string>
+    <string name="devices_indicator_nudge">Empuje</string>
+    <string name="devices_indicator_observe">Observar</string>
+    <string name="devices_indicator_disconnect">Desconectar</string>
+    <string name="devices_indicator_limit">Límite</string>
+    <string name="devices_indicator_launch">Iniciar</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Inicio</string>
+    <string name="devices_indicator_dnd">No molestar</string>
 </resources>

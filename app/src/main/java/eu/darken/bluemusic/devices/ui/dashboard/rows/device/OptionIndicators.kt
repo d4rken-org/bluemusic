@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.Launch
 import androidx.compose.material.icons.twotone.BatteryFull
+import androidx.compose.material.icons.twotone.DoNotDisturb
 import androidx.compose.material.icons.twotone.GraphicEq
 import androidx.compose.material.icons.twotone.Home
 import androidx.compose.material.icons.twotone.Lock
@@ -48,8 +49,9 @@ fun OptionIndicators(
         if (device.volumeObserving) add(Icons.TwoTone.Visibility to stringResource(R.string.devices_device_config_volume_observe_label))
         if (device.volumeSaveOnDisconnect) add(Icons.TwoTone.PowerOff to stringResource(R.string.devices_device_config_volume_save_on_disconnect_label))
         if (device.volumeRateLimiter) add(Icons.TwoTone.Speed to stringResource(R.string.devices_device_config_volume_rate_limiter_label))
-        if (device.autoplay) add(Icons.TwoTone.PlayArrow to "Autoplay")
+        if (device.autoplay) add(Icons.TwoTone.PlayArrow to stringResource(R.string.devices_device_config_autoplay_label))
         if (device.showHomeScreen) add(Icons.TwoTone.Home to stringResource(R.string.devices_device_config_show_home_screen_label))
+        if (device.dndMode != null) add(Icons.TwoTone.DoNotDisturb to stringResource(R.string.devices_device_config_dnd_on_connect_label))
     }
 
     val hasLaunchApps = launchApps.isNotEmpty()
@@ -103,15 +105,16 @@ fun OptionIndicators(
                     Spacer(modifier = Modifier.width(3.dp))
                     Text(
                         text = when (icon) {
-                            Icons.TwoTone.Lock -> "Lock"
-                            Icons.TwoTone.BatteryFull -> "Awake"
-                            Icons.TwoTone.GraphicEq -> "Nudge"
-                            Icons.TwoTone.Visibility -> "Observe"
-                            Icons.TwoTone.PowerOff -> "Disconnect"
-                            Icons.TwoTone.Speed -> "Limit"
-                            Icons.AutoMirrored.TwoTone.Launch -> "Launch"
-                            Icons.TwoTone.PlayArrow -> "Auto"
-                            Icons.TwoTone.Home -> "Home"
+                            Icons.TwoTone.Lock -> stringResource(R.string.devices_indicator_lock)
+                            Icons.TwoTone.BatteryFull -> stringResource(R.string.devices_indicator_awake)
+                            Icons.TwoTone.GraphicEq -> stringResource(R.string.devices_indicator_nudge)
+                            Icons.TwoTone.Visibility -> stringResource(R.string.devices_indicator_observe)
+                            Icons.TwoTone.PowerOff -> stringResource(R.string.devices_indicator_disconnect)
+                            Icons.TwoTone.Speed -> stringResource(R.string.devices_indicator_limit)
+                            Icons.AutoMirrored.TwoTone.Launch -> stringResource(R.string.devices_indicator_launch)
+                            Icons.TwoTone.PlayArrow -> stringResource(R.string.devices_indicator_auto)
+                            Icons.TwoTone.Home -> stringResource(R.string.devices_indicator_home)
+                            Icons.TwoTone.DoNotDisturb -> stringResource(R.string.devices_indicator_dnd)
                             else -> ""
                         },
                         style = MaterialTheme.typography.labelSmall,

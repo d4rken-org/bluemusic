@@ -96,7 +96,15 @@
     <string name="devices_device_config_ring_volume_desc">Control the volume which affects your ringtone. Can also set silent or vibrate mode.</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Ring volume control requires notification policy access</string>
     <string name="devices_device_config_notification_policy_required_notification">Notification volume control requires notification policy access</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Do Not Disturb control requires notification policy access</string>
     <string name="devices_device_config_notification_policy_action">Grant access</string>
+    <string name="devices_device_config_dnd_on_connect_label">Do Not Disturb mode</string>
+    <string name="dnd_mode_dialog_title">Select DND mode</string>
+    <string name="dnd_mode_dont_change">Don\'t change</string>
+    <string name="dnd_mode_off">Off</string>
+    <string name="dnd_mode_priority_only">Priority only</string>
+    <string name="dnd_mode_alarms_only">Alarms only</string>
+    <string name="dnd_mode_total_silence">Total silence</string>
 
     <string name="devices_stream_music_label">Music</string>
     <string name="devices_audio_stream_call_label">Call</string>
@@ -307,4 +315,16 @@
     <string name="general_reset_action">Reset</string>
     <string name="general_clear_action">Clear</string>
     <string name="general_save_action">Save</string>
+
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">Lock</string>
+    <string name="devices_indicator_awake">Awake</string>
+    <string name="devices_indicator_nudge">Nudge</string>
+    <string name="devices_indicator_observe">Observe</string>
+    <string name="devices_indicator_disconnect">Disconnect</string>
+    <string name="devices_indicator_limit">Limit</string>
+    <string name="devices_indicator_launch">Launch</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Home</string>
+    <string name="devices_indicator_dnd">DND</string>
 </resources>
