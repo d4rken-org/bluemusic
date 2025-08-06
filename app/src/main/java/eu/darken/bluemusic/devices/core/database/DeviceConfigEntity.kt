@@ -4,6 +4,7 @@ import android.view.KeyEvent
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import eu.darken.bluemusic.monitor.core.audio.DndMode
 
 @Entity(tableName = "device_configs")
 data class DeviceConfigEntity(
@@ -79,4 +80,7 @@ data class DeviceConfigEntity(
 
     @ColumnInfo(name = "visible_adjustments", defaultValue = "true")
     val visibleAdjustments: Boolean? = true,
+
+    @ColumnInfo(name = "dnd_mode")
+    val dndMode: DndMode? = null,
 )

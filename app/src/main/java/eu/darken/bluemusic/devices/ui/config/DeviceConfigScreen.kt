@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.devices.ui.config
 
+import android.os.Build
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.ArrowBack
 import androidx.compose.material.icons.automirrored.twotone.Launch
 import androidx.compose.material.icons.twotone.BatteryFull
+import androidx.compose.material.icons.twotone.DoNotDisturb
 import androidx.compose.material.icons.twotone.GraphicEq
 import androidx.compose.material.icons.twotone.Home
 import androidx.compose.material.icons.twotone.Lock
@@ -52,6 +54,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.ui.waitForState
 import eu.darken.bluemusic.devices.core.DeviceAddr
@@ -61,11 +64,13 @@ import eu.darken.bluemusic.devices.ui.config.components.DeviceStatusCard
 import eu.darken.bluemusic.devices.ui.config.components.SectionHeader
 import eu.darken.bluemusic.devices.ui.config.components.SwitchPreference
 import eu.darken.bluemusic.devices.ui.config.dialogs.DeleteDeviceDialog
+import eu.darken.bluemusic.devices.ui.config.dialogs.DndModeDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.RenameDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.TimingDialog
 import eu.darken.bluemusic.devices.ui.icon
 import eu.darken.bluemusic.devices.ui.settings.dialogs.AutoplayKeycodesDialog
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.DndMode
 import java.time.Duration
 
 
@@ -88,14 +93,15 @@ fun DeviceConfigScreenHost(
     var showAdjustmentDelayDialog by remember { mutableStateOf<Duration?>(null) }
     var showVolumeRateLimitDialog by remember { mutableStateOf<Duration?>(null) }
     var showAutoplayKeycodesDialog by remember { mutableStateOf(false) }
+    var showDndModeDialog by remember { mutableStateOf(false) }
+    var dndModeValue by remember { mutableStateOf<DndMode?>(null) }
 
     val upgradeMessage = stringResource(R.string.upgrade_feature_requires_pro)
     val upgradeAction = stringResource(R.string.upgrade_prompt_upgrade_action)
-    val notificationPolicyRingtoneMessage =
-        stringResource(R.string.devices_device_config_notification_policy_required_ringtone)
-    val notificationPolicyNotificationMessage =
-        stringResource(R.string.devices_device_config_notification_policy_required_notification)
     val notificationPolicyAction = stringResource(R.string.devices_device_config_notification_policy_action)
+    val notificationPolicyRingtoneMessage = stringResource(R.string.devices_device_config_notification_policy_required_ringtone)
+    val notificationPolicyNotificationMessage = stringResource(R.string.devices_device_config_notification_policy_required_notification)
+    val notificationPolicyDndMessage = stringResource(R.string.devices_device_config_notification_policy_required_dnd)
 
     LaunchedEffect(vm.events) {
         vm.events.collect { event ->
@@ -107,6 +113,10 @@ fun DeviceConfigScreenHost(
                 is ConfigEvent.ShowAdjustmentDelayDialog -> showAdjustmentDelayDialog = event.currentValue
                 is ConfigEvent.ShowVolumeRateLimitDialog -> showVolumeRateLimitDialog = event.currentValue
                 is ConfigEvent.ShowAutoplayKeycodesDialog -> showAutoplayKeycodesDialog = true
+                is ConfigEvent.ShowDndModeDialog -> {
+                    dndModeValue = event.currentMode
+                    showDndModeDialog = true
+                }
                 is ConfigEvent.NavigateBack -> vm.navUp()
                 is ConfigEvent.RequiresPro -> {
                     val result = snackbarHostState.showSnackbar(
@@ -118,20 +128,19 @@ fun DeviceConfigScreenHost(
                         vm.navTo(Nav.Main.Upgrade)
                     }
                 }
-                is ConfigEvent.RequiresNotificationPolicyAccessForRingtone -> {
-                    val result = snackbarHostState.showSnackbar(
-                        message = notificationPolicyRingtoneMessage,
-                        actionLabel = notificationPolicyAction,
-                        duration = SnackbarDuration.Long
-                    )
-                    if (result == SnackbarResult.ActionPerformed) {
-                        context.startActivity(event.intent)
-                    }
-                }
+                is ConfigEvent.RequiresNotificationPolicyAccess -> {
+                    val message = when (event.feature) {
+                        ConfigEvent.RequiresNotificationPolicyAccess.Feature.RINGTONE ->
+                            notificationPolicyRingtoneMessage
 
-                is ConfigEvent.RequiresNotificationPolicyAccessForNotification -> {
+                        ConfigEvent.RequiresNotificationPolicyAccess.Feature.NOTIFICATION ->
+                            notificationPolicyNotificationMessage
+
+                        ConfigEvent.RequiresNotificationPolicyAccess.Feature.DND ->
+                            notificationPolicyDndMessage
+                    }
                     val result = snackbarHostState.showSnackbar(
-                        message = notificationPolicyNotificationMessage,
+                        message = message,
                         actionLabel = notificationPolicyAction,
                         duration = SnackbarDuration.Long
                     )
@@ -235,6 +244,30 @@ fun DeviceConfigScreenHost(
                 }
             )
         }
+
+        if (showDndModeDialog) {
+            DndModeDialog(
+                currentMode = dndModeValue,
+                onConfirm = { mode ->
+                    vm.handleAction(ConfigAction.OnEditDndMode(mode))
+                    showDndModeDialog = false
+                },
+                onDismiss = {
+                    showDndModeDialog = false
+                }
+            )
+        }
+    }
+}
+
+@Composable
+private fun getDndModeDescription(mode: DndMode?): String {
+    return when (mode) {
+        null -> stringResource(R.string.dnd_mode_dont_change)
+        DndMode.OFF -> stringResource(R.string.dnd_mode_off)
+        DndMode.PRIORITY_ONLY -> stringResource(R.string.dnd_mode_priority_only)
+        DndMode.ALARMS_ONLY -> stringResource(R.string.dnd_mode_alarms_only)
+        DndMode.TOTAL_SILENCE -> stringResource(R.string.dnd_mode_total_silence)
     }
 }
 
@@ -515,6 +548,15 @@ fun DeviceConfigScreen(
                             isProVersion = state.isProVersion
                         )
 
+                        if (hasApiLevel(Build.VERSION_CODES.M)) {
+                            ClickablePreference(
+                                title = stringResource(R.string.devices_device_config_dnd_on_connect_label),
+                                description = getDndModeDescription(device.dndMode),
+                                icon = Icons.TwoTone.DoNotDisturb,
+                                onClick = { onAction(ConfigAction.OnEditDndModeClicked) }
+                            )
+                        }
+
                         Spacer(modifier = Modifier.height(8.dp))
                     }
                 }
@@ -559,6 +601,7 @@ fun DeviceConfigScreen(
                     }
                 }
             }
+
 
         }
     }

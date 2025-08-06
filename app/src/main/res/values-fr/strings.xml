@@ -238,4 +238,25 @@
     <string name="error_iap_owned_message">Vous possédez déjà cet article</string>
     <string name="label_no_devices_title">Aucun périphérique</string>
     <string name="bluemusic_mascot_description">Icône de l\'application</string>
+
+    <!-- Do Not Disturb mode -->
+    <string name="devices_device_config_dnd_on_connect_label">Mode Ne pas déranger</string>
+    <string name="dnd_mode_dialog_title">Sélectionner le mode NPD</string>
+    <string name="dnd_mode_dont_change">Ne pas modifier</string>
+    <string name="dnd_mode_off">Désactivé</string>
+    <string name="dnd_mode_priority_only">Priorité uniquement</string>
+    <string name="dnd_mode_alarms_only">Alarmes uniquement</string>
+    <string name="dnd_mode_total_silence">Silence total</string>
+
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">Verrouillé</string>
+    <string name="devices_indicator_awake">Éveillé</string>
+    <string name="devices_indicator_nudge">Ajustement</string>
+    <string name="devices_indicator_observe">Observer</string>
+    <string name="devices_indicator_disconnect">Déconnecter</string>
+    <string name="devices_indicator_limit">Limiter</string>
+    <string name="devices_indicator_launch">Lancer</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Accueil</string>
+    <string name="devices_indicator_dnd">NPD</string>
 </resources>

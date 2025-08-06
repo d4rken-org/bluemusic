@@ -240,4 +240,25 @@
     <string name="error_iap_owned_message">Sie besitzen diesen Artikel bereits</string>
     <string name="label_no_devices_title">Keine Geräte</string>
     <string name="bluemusic_mascot_description">App-Symbol</string>
+
+    <!-- Do Not Disturb mode -->
+    <string name="devices_device_config_dnd_on_connect_label">Bitte-nicht-stören-Modus</string>
+    <string name="dnd_mode_dialog_title">BNS-Modus auswählen</string>
+    <string name="dnd_mode_dont_change">Nicht ändern</string>
+    <string name="dnd_mode_off">Aus</string>
+    <string name="dnd_mode_priority_only">Nur Priorität</string>
+    <string name="dnd_mode_alarms_only">Nur Alarme</string>
+    <string name="dnd_mode_total_silence">Völlige Stille</string>
+
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">Sperren</string>
+    <string name="devices_indicator_awake">Wach</string>
+    <string name="devices_indicator_nudge">Anstoß</string>
+    <string name="devices_indicator_observe">Beobachten</string>
+    <string name="devices_indicator_disconnect">Trennen</string>
+    <string name="devices_indicator_limit">Begrenzen</string>
+    <string name="devices_indicator_launch">Starten</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Start</string>
+    <string name="devices_indicator_dnd">BNS</string>
 </resources>

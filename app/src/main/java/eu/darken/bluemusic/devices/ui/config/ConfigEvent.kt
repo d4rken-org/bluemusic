@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.devices.ui.config
 
 import android.content.Intent
+import eu.darken.bluemusic.monitor.core.audio.DndMode
 import java.time.Duration
 
 sealed interface ConfigEvent {
@@ -11,8 +12,17 @@ sealed interface ConfigEvent {
     data class ShowAdjustmentDelayDialog(val currentValue: Duration) : ConfigEvent
     data class ShowVolumeRateLimitDialog(val currentValue: Duration) : ConfigEvent
     data object ShowAutoplayKeycodesDialog : ConfigEvent
+    data class ShowDndModeDialog(val currentMode: DndMode?) : ConfigEvent
     data object NavigateBack : ConfigEvent
     data object RequiresPro : ConfigEvent
-    data class RequiresNotificationPolicyAccessForRingtone(val intent: Intent) : ConfigEvent
-    data class RequiresNotificationPolicyAccessForNotification(val intent: Intent) : ConfigEvent
+    data class RequiresNotificationPolicyAccess(
+        val intent: Intent,
+        val feature: Feature
+    ) : ConfigEvent {
+        enum class Feature {
+            RINGTONE,
+            NOTIFICATION,
+            DND
+        }
+    }
 }

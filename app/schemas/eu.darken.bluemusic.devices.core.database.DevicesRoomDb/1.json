@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "6e3144c29e4e5d48ef7adc6cfebecee0",
+    "identityHash": "0b53dd69cd042764c9323504e93c5091",
     "entities": [
       {
         "tableName": "device_configs",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`address` TEXT NOT NULL, `custom_name` TEXT, `last_connected` INTEGER NOT NULL, `action_delay` INTEGER, `adjustment_delay` INTEGER, `monitoring_duration` INTEGER, `music_volume` REAL, `call_volume` REAL, `ring_volume` REAL, `notification_volume` REAL, `alarm_volume` REAL, `volume_lock` INTEGER NOT NULL, `volume_observing` INTEGER NOT NULL, `volume_rate_limiter` INTEGER NOT NULL, `volume_rate_limit_ms` INTEGER, `volume_save_on_disconnect` INTEGER NOT NULL DEFAULT false, `keep_awake` INTEGER NOT NULL, `nudge_volume` INTEGER NOT NULL, `autoplay` INTEGER NOT NULL, `launch_pkgs` TEXT NOT NULL DEFAULT '[]', `show_home_screen` INTEGER NOT NULL DEFAULT false, `autoplay_keycodes` TEXT NOT NULL DEFAULT '[126]', `is_enabled` INTEGER NOT NULL DEFAULT true, `visible_adjustments` INTEGER DEFAULT true, PRIMARY KEY(`address`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`address` TEXT NOT NULL, `custom_name` TEXT, `last_connected` INTEGER NOT NULL, `action_delay` INTEGER, `adjustment_delay` INTEGER, `monitoring_duration` INTEGER, `music_volume` REAL, `call_volume` REAL, `ring_volume` REAL, `notification_volume` REAL, `alarm_volume` REAL, `volume_lock` INTEGER NOT NULL, `volume_observing` INTEGER NOT NULL, `volume_rate_limiter` INTEGER NOT NULL, `volume_rate_limit_ms` INTEGER, `volume_save_on_disconnect` INTEGER NOT NULL DEFAULT false, `keep_awake` INTEGER NOT NULL, `nudge_volume` INTEGER NOT NULL, `autoplay` INTEGER NOT NULL, `launch_pkgs` TEXT NOT NULL DEFAULT '[]', `show_home_screen` INTEGER NOT NULL DEFAULT false, `autoplay_keycodes` TEXT NOT NULL DEFAULT '[126]', `is_enabled` INTEGER NOT NULL DEFAULT true, `visible_adjustments` INTEGER DEFAULT true, `dnd_mode` TEXT, PRIMARY KEY(`address`))",
         "fields": [
           {
             "fieldPath": "address",
@@ -146,6 +146,11 @@
             "columnName": "visible_adjustments",
             "affinity": "INTEGER",
             "defaultValue": "true"
+          },
+          {
+            "fieldPath": "dndMode",
+            "columnName": "dnd_mode",
+            "affinity": "TEXT"
           }
         ],
         "primaryKey": {
@@ -158,7 +163,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6e3144c29e4e5d48ef7adc6cfebecee0')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0b53dd69cd042764c9323504e93c5091')"
     ]
   }
 }

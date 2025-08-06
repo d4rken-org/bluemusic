@@ -253,7 +253,12 @@ class DeviceConfigViewModel @AssistedInject constructor(
                             if (!permissionHelper.hasNotificationPolicyAccess()) {
                                 @SuppressLint("NewApi")
                                 val intent = permissionHelper.getNotificationPolicyAccessIntent()
-                                events.emit(ConfigEvent.RequiresNotificationPolicyAccessForRingtone(intent))
+                                events.emit(
+                                    ConfigEvent.RequiresNotificationPolicyAccess(
+                                        intent,
+                                        ConfigEvent.RequiresNotificationPolicyAccess.Feature.RINGTONE
+                                    )
+                                )
                                 return@launch
                             }
                         }
@@ -262,7 +267,12 @@ class DeviceConfigViewModel @AssistedInject constructor(
                             if (!permissionHelper.hasNotificationPolicyAccess()) {
                                 @SuppressLint("NewApi")
                                 val intent = permissionHelper.getNotificationPolicyAccessIntent()
-                                events.emit(ConfigEvent.RequiresNotificationPolicyAccessForNotification(intent))
+                                events.emit(
+                                    ConfigEvent.RequiresNotificationPolicyAccess(
+                                        intent,
+                                        ConfigEvent.RequiresNotificationPolicyAccess.Feature.NOTIFICATION
+                                    )
+                                )
                                 return@launch
                             }
                         }
@@ -287,6 +297,28 @@ class DeviceConfigViewModel @AssistedInject constructor(
             is ConfigAction.OnToggleEnabled -> {
                 deviceRepo.updateDevice(deviceAddress) { oldConfig ->
                     oldConfig.copy(isEnabled = !oldConfig.isEnabled)
+                }
+            }
+
+            is ConfigAction.OnEditDndModeClicked -> {
+                val device = state.first().device
+                if (device.dndMode == null && !permissionHelper.hasNotificationPolicyAccess()) {
+                    @SuppressLint("NewApi")
+                    val intent = permissionHelper.getNotificationPolicyAccessIntent()
+                    events.emit(
+                        ConfigEvent.RequiresNotificationPolicyAccess(
+                            intent,
+                            ConfigEvent.RequiresNotificationPolicyAccess.Feature.DND
+                        )
+                    )
+                } else {
+                    events.emit(ConfigEvent.ShowDndModeDialog(device.dndMode))
+                }
+            }
+
+            is ConfigAction.OnEditDndMode -> {
+                deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                    oldConfig.copy(dndMode = action.mode)
                 }
             }
         }

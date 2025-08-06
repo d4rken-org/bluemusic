@@ -232,4 +232,25 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+
+    <!-- Do Not Disturb mode -->
+    <string name="devices_device_config_dnd_on_connect_label">Rahatsız Etme modu</string>
+    <string name="dnd_mode_dialog_title">DND modu seç</string>
+    <string name="dnd_mode_dont_change">Değiştirme</string>
+    <string name="dnd_mode_off">Kapalı</string>
+    <string name="dnd_mode_priority_only">Sadece öncelikli</string>
+    <string name="dnd_mode_alarms_only">Sadece alarmlar</string>
+    <string name="dnd_mode_total_silence">Tam sessizlik</string>
+
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">Kilit</string>
+    <string name="devices_indicator_awake">Uyanık</string>
+    <string name="devices_indicator_nudge">Dürt</string>
+    <string name="devices_indicator_observe">Gözlemle</string>
+    <string name="devices_indicator_disconnect">Bağlantıyı kes</string>
+    <string name="devices_indicator_limit">Sınır</string>
+    <string name="devices_indicator_launch">Başlat</string>
+    <string name="devices_indicator_auto">Otomatik</string>
+    <string name="devices_indicator_home">Ana sayfa</string>
+    <string name="devices_indicator_dnd">DND</string>
 </resources>

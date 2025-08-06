@@ -236,4 +236,25 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+
+    <!-- Do Not Disturb mode -->
+    <string name="devices_device_config_dnd_on_connect_label">Modalità Non Disturbare</string>
+    <string name="dnd_mode_dialog_title">Seleziona modalità DND</string>
+    <string name="dnd_mode_dont_change">Non cambiare</string>
+    <string name="dnd_mode_off">Disattivato</string>
+    <string name="dnd_mode_priority_only">Solo priorità</string>
+    <string name="dnd_mode_alarms_only">Solo sveglie</string>
+    <string name="dnd_mode_total_silence">Silenzio totale</string>
+
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">Blocco</string>
+    <string name="devices_indicator_awake">Attivo</string>
+    <string name="devices_indicator_nudge">Spinta</string>
+    <string name="devices_indicator_observe">Osserva</string>
+    <string name="devices_indicator_disconnect">Scollega</string>
+    <string name="devices_indicator_limit">Limite</string>
+    <string name="devices_indicator_launch">Avvia</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Home</string>
+    <string name="devices_indicator_dnd">DND</string>
 </resources>

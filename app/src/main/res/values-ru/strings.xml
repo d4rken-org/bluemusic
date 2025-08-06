@@ -236,4 +236,25 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+
+    <!-- Do Not Disturb mode -->
+    <string name="devices_device_config_dnd_on_connect_label">Режим "Не беспокоить"</string>
+    <string name="dnd_mode_dialog_title">Выберите режим "Не беспокоить"</string>
+    <string name="dnd_mode_dont_change">Не изменять</string>
+    <string name="dnd_mode_off">Выключено</string>
+    <string name="dnd_mode_priority_only">Только важное</string>
+    <string name="dnd_mode_alarms_only">Только будильники</string>
+    <string name="dnd_mode_total_silence">Полная тишина</string>
+
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">Блок</string>
+    <string name="devices_indicator_awake">Акт</string>
+    <string name="devices_indicator_nudge">Подтолкнуть</string>
+    <string name="devices_indicator_observe">Набл</string>
+    <string name="devices_indicator_disconnect">Откл</string>
+    <string name="devices_indicator_limit">Огр</string>
+    <string name="devices_indicator_launch">Зап</string>
+    <string name="devices_indicator_auto">Авто</string>
+    <string name="devices_indicator_home">Дом</string>
+    <string name="devices_indicator_dnd">НБ</string>
 </resources>
