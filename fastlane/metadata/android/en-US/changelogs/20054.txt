@@ -1,3 +1,0 @@
-v2.54
-• Maintenance
-• Updated translations
