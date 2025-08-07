@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Videblaj ĝustigoj</string>
-    <string name="devices_device_config_visible_adjustments_desc">Montri la voluman fenestron de la sistemo dum ĉi tiu apo faras ĝustigojn por ĉi tiu aparato.</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -232,4 +231,23 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+    <string name="devices_app_selection_currently_selected">Nunelektita</string>
+    <string name="devices_app_selection_search_hint">Serĉi aplikojn…</string>
+    <string name="devices_app_selection_selected_count">%d aplikoj elektitaj</string>
+    <string name="devices_app_selection_title">Elektu Aplikojn</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Disponeblaj klavaj tipoj</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Agordu kiujn klavojn sendi kaj en kiu ordo</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Klavaj tipoj</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Neniuj klavoj agordita</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Elektitaj klavoj (en ordo)</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Aŭtomataj Ludaj Klavaj Tipoj</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d aplikoj elektitaj</string>
+    <string name="devices_device_config_notification_policy_action">Doni aliron</string>
+    <string name="devices_device_config_notification_policy_required_notification">Sciiga voluma kontrolo bezonas sciigan politikan aliron</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Sona voluma kontrolo bezonas sciigan politikan aliron</string>
+    <string name="devices_device_config_visible_adjustments_desc">Baskuli kiuj ĝustigoj montriĝas en la aparata karto</string>
+    <string name="general_clear_action">Malplenigi</string>
+    <string name="general_navigate_back_action">Navigi reen</string>
+    <string name="general_reset_action">Remetigi</string>
+    <string name="general_save_action">Konservi</string>
 </resources>

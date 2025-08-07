@@ -1,0 +1,22 @@
+**Upravljalnik glasnosti Bluetooth** si zapomni ravni glasnosti za vsako od vaših Bluetooth naprav in se odzove, ko se povežejo ali odklopijo.
+
+**Funkcije:**
+* Nastavite glasnost glasbe, klicev, zvonjenja in obvestil za posamezno napravo  
+* Samodejno pošljite ukaze za medije, kot sta Predvajaj ali Naslednja  
+* Zaženite aplikacije ob povezavi  
+* Ohranite zaslon priž­gan  
+* Zaklenite ravni glasnosti  
+* Obnovite glasnost po odklopi  
+
+Brez oglasov, brez sledenja. Odprtokodna.  
+Nekateri dodatki zahtevajo plačano nadgradnjo za podporo razvoju.
+
+**Opomba:** Ta aplikacija ne more povečati glasnosti ali preseči sistemskih omejitev glasnosti.
+
+**Dovoljenja:**
+* **Internet** – za izbirna poročila o napakah  
+* **Bluetooth** – za zaznavanje povezav naprav  
+* **Zvočne nastavitve** – za spreminjanje glasnosti  
+* **Zagon** – za obnovitev nastavitev po ponovnem zagonu  
+* **Zaklepanje budnosti** – za ohranjanje prižganega zaslona ali odpravljanje napak Samsung  
+* **Sistemsko opozorilno okno** – za samodejni zagon aplikacij (samo Android 10)

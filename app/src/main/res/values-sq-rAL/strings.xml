@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Rregullimet e dukshme</string>
-    <string name="devices_device_config_visible_adjustments_desc">Shfaq dritaren e volumit të sistemit ndërsa ky aplikacion bën rregullime për këtë pajisje.</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -232,4 +231,23 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+    <string name="devices_app_selection_currently_selected">Aktualisht të zgjedhura</string>
+    <string name="devices_app_selection_search_hint">Kërko aplikacione…</string>
+    <string name="devices_app_selection_selected_count">%d aplikacione të zgjedhura</string>
+    <string name="devices_app_selection_title">Zgjidh aplikacionet</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Tipet e çelësave të disponueshëm</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Konfiguro cilët çelësa të dërgosh dhe në ç\'renditje</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Tipet e çelësave</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Nuk ka çelësa të konfiguruar</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Çelësat e zgjedhur (sipas renditjes)</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Tipet e çelësave të luajtjes automatike</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d aplikacione të zgjedhura</string>
+    <string name="devices_device_config_notification_policy_action">Jep qasje</string>
+    <string name="devices_device_config_notification_policy_required_notification">Kontrolli i volumit të njoftimeve kërkon qasje në politikën e njoftimeve</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Kontrolli i volumit të ziles kërkon qasje në politikën e njoftimeve</string>
+    <string name="devices_device_config_visible_adjustments_desc">Ndryshto cilat rregullime tregohen në kartën e pajisjes</string>
+    <string name="general_clear_action">Pastro</string>
+    <string name="general_navigate_back_action">Navigo mbrapa</string>
+    <string name="general_reset_action">Rivendos</string>
+    <string name="general_save_action">Ruaj</string>
 </resources>

@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Видливи прилагодувања</string>
-    <string name="devices_device_config_visible_adjustments_desc">Прикажи го системскиот прозорец за јачина на звук додека апликацијата ја прилагодува јачината на звукот за овој уред.</string>
     <string name="devices_device_config_keep_awake_label">Остани буден</string>
     <string name="devices_device_config_keep_awake_desc">Чувајте го екранот уклучен додека е поврзан овој уред.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -232,4 +231,23 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+    <string name="devices_app_selection_currently_selected">Моментално избрани</string>
+    <string name="devices_app_selection_search_hint">Барај апликации…</string>
+    <string name="devices_app_selection_selected_count">%d апликации избрани</string>
+    <string name="devices_app_selection_title">Избери апликации</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Достапни типови на копчиња</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Конфигурирај кои копчиња да се пратат и во кој редослед</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Типови на копчиња</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Нема конфигурирани копчиња</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Избрани копчиња (по редослед)</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Типови на копчиња за автоматско пуштање</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d апликации избрани</string>
+    <string name="devices_device_config_notification_policy_action">Дај пристап</string>
+    <string name="devices_device_config_notification_policy_required_notification">Контролата на јачината на известувањата бара пристап до политиката на известувања</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Контролата на јачината на ѕвонење бара пристап до политиката на известувања</string>
+    <string name="devices_device_config_visible_adjustments_desc">Префрли кои прилагодувања се прикажуваат на картичката на уредот</string>
+    <string name="general_clear_action">Исчисти</string>
+    <string name="general_navigate_back_action">Навигирај назад</string>
+    <string name="general_reset_action">Ресетирај</string>
+    <string name="general_save_action">Зачувај</string>
 </resources>

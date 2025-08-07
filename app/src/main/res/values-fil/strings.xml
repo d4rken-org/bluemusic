@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Nakikitang mga pagsasaayos</string>
-    <string name="devices_device_config_visible_adjustments_desc">Ipakita ang window ng volume ng sistema habang gumagawa ng mga pagsasaayos ang app na ito para sa device na ito.</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -232,4 +231,23 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+    <string name="devices_app_selection_currently_selected">Kasalukuyang napili</string>
+    <string name="devices_app_selection_search_hint">Maghanap ng mga app…</string>
+    <string name="devices_app_selection_selected_count">%d mga app na napili</string>
+    <string name="devices_app_selection_title">Piliin ang mga App</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Mga available na uri ng key</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">I-configure kung aling mga keys ang ipapadala at sa anong order</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Mga uri ng key</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Walang keys na na-configure</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Mga napiling key (sa order)</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Mga Uri ng Autoplay Key</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d mga app na napili</string>
+    <string name="devices_device_config_notification_policy_action">Bigyan ng access</string>
+    <string name="devices_device_config_notification_policy_required_notification">Ang notification volume control ay nangangailangan ng notification policy access</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Ang ring volume control ay nangangailangan ng notification policy access</string>
+    <string name="devices_device_config_visible_adjustments_desc">I-toggle kung aling mga pagsasaayos ang ipapakita sa device card</string>
+    <string name="general_clear_action">I-clear</string>
+    <string name="general_navigate_back_action">Bumalik</string>
+    <string name="general_reset_action">I-reset</string>
+    <string name="general_save_action">I-save</string>
 </resources>

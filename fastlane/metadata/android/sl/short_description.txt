@@ -1,0 +1,1 @@
+Posamezne nastavitve glasnosti govora in glasbe za Bluetooth naprave.

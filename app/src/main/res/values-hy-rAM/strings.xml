@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Տեսանելի կարգավորումներ</string>
-    <string name="devices_device_config_visible_adjustments_desc">Ցուցադրել համակարգի ձայնի պատուհանը, երբ այս հավելվածը կարգավորումներ է կատարում այս սարքի համար:</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -232,4 +231,23 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+    <string name="devices_app_selection_currently_selected">Ներկայումս ընտրված</string>
+    <string name="devices_app_selection_search_hint">Որոնել հավելվածներ…</string>
+    <string name="devices_app_selection_selected_count">%d հավելված ընտրված է</string>
+    <string name="devices_app_selection_title">Ընտրել հավելվածները</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Հասանելի բանալի տեսակները</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Կարգավորել, թե որ բանալիները ուղարկել և որ հերթականությամբ</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Բանալի տեսակները</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Բանալիներ կարգավորված չեն</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Ընտրված բանալիները (հերթականությամբ)</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Ավտոմատ նվագարկման բանալի տեսակները</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d հավելված ընտրված է</string>
+    <string name="devices_device_config_notification_policy_action">Տրամադրել մուտք</string>
+    <string name="devices_device_config_notification_policy_required_notification">Ծանուցումների ձայնի ղեկավարությունը պահանջում է ծանուցումների քաղաքականության մուտք</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Զանգի ձայնի ղեկավարությունը պահանջում է ծանուցումների քաղաքականության մուտք</string>
+    <string name="devices_device_config_visible_adjustments_desc">Անջատել/միացնել, թե որ կարգավորումները ցուցադրվեն սարքի քարտում</string>
+    <string name="general_clear_action">Մաքրել</string>
+    <string name="general_navigate_back_action">Նավարկել հետ</string>
+    <string name="general_reset_action">Վերակայել</string>
+    <string name="general_save_action">Պահել</string>
 </resources>

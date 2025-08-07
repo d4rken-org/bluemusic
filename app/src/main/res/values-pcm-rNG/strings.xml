@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Adjustments wey dey show</string>
-    <string name="devices_device_config_visible_adjustments_desc">Show di system volume window wen dis app dey make adjustments for dis device.</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -232,4 +231,23 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+    <string name="devices_app_selection_currently_selected">Na dis one don select</string>
+    <string name="devices_app_selection_search_hint">Search apps…</string>
+    <string name="devices_app_selection_selected_count">%d apps don select</string>
+    <string name="devices_app_selection_title">Select Apps</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Key types wey dey available</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Set which keys to send and in wetin order</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Key types</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">No keys dem set</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Keys wey don select (for order)</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Autoplay Key Types</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d apps don select</string>
+    <string name="devices_device_config_notification_policy_action">Grant access</string>
+    <string name="devices_device_config_notification_policy_required_notification">Notification volume control need notification policy access</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Ring volume control need notification policy access</string>
+    <string name="devices_device_config_visible_adjustments_desc">Toggle which adjustments to show on de device card</string>
+    <string name="general_clear_action">Clear</string>
+    <string name="general_navigate_back_action">Go back</string>
+    <string name="general_reset_action">Reset</string>
+    <string name="general_save_action">Save</string>
 </resources>

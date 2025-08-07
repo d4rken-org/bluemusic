@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Axustes visibles</string>
-    <string name="devices_device_config_visible_adjustments_desc">Amosar a ventá de volume do sistema mentres esta aplicación fai axustes para este dispositivo.</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -232,4 +231,23 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+    <string name="devices_app_selection_currently_selected">Seleccionado actualmente</string>
+    <string name="devices_app_selection_search_hint">Buscar aplicacións…</string>
+    <string name="devices_app_selection_selected_count">%d aplicacións seleccionadas</string>
+    <string name="devices_app_selection_title">Seleccionar Aplicacións</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Tipos de teclas dispoñibles</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Configura que teclas enviar e en que orde</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Tipos de teclas</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Non hai teclas configuradas</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Teclas seleccionadas (en orde)</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Tipos de Teclas de Reproducción Automática</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d aplicacións seleccionadas</string>
+    <string name="devices_device_config_notification_policy_action">Conceder acceso</string>
+    <string name="devices_device_config_notification_policy_required_notification">O control do volume das notificacións require acceso á política de notificacións</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">O control do volume do ton require acceso á política de notificacións</string>
+    <string name="devices_device_config_visible_adjustments_desc">Alterna que axustes se mostran na tarxeta do dispositivo</string>
+    <string name="general_clear_action">Limpar</string>
+    <string name="general_navigate_back_action">Navegar atrás</string>
+    <string name="general_reset_action">Restablecer</string>
+    <string name="general_save_action">Gardar</string>
 </resources>

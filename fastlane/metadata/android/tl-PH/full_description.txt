@@ -1,0 +1,22 @@
+**Ang Bluetooth Volume Manager** ay naaalala ang mga antas ng tunog para sa bawat isa sa inyong mga Bluetooth device at tumutugon kapag kumukonekta o nawawala ang koneksyon.
+
+**Mga Feature:**
+* Magtakda ng lakas ng tunog ng musika, tawag, ringtone, at notification para sa bawat device  
+* Awtomatikong magpadala ng mga media command gaya ng Play o Next  
+* Maglunsad ng mga app kapag kumukonekta  
+* Panatilihing nakabuka ang screen  
+* I-lock ang mga antas ng lakas ng tunog  
+* Ibalik ang lakas ng tunog pagkatapos mag-disconnect  
+
+Walang ads, walang tracking. Open-source.  
+Ang ilang karagdagan ay nangangailangan ng bayad na upgrade upang suportahan ang development.
+
+**Tandaan:** Hindi kayang palakasan ng app na ito ang tunog o lampasan ang mga limitasyon ng sistema sa lakas ng tunog.
+
+**Mga Pahintulot:**
+* **Internet** – para sa opsyonal na mga ulat ng bug  
+* **Bluetooth** – upang makita ang mga koneksyon ng device  
+* **Audio settings** – upang baguhin ang lakas ng tunog  
+* **Boot** – upang maibalik ang mga setting pagkatapos mag-reboot  
+* **Wake lock** – upang panatilihing nakabuka ang screen o ayusin ang mga bug ng Samsung  
+* **System alert window** – upang awtomatikong maglunsad ng mga app (Android 10 lamang)

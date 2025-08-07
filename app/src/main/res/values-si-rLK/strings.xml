@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">දෘශ්‍ය සකසීම්</string>
-    <string name="devices_device_config_visible_adjustments_desc">මෙම යෙදුම මෙම උපාංගය සඳහා සකසීම් සිදු කරන විට පද්ධතියේ ශබ්ද මට්ටම් කවුළුව පෙන්වන්න.</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -232,4 +231,23 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+    <string name="devices_app_selection_currently_selected">සැවැතා කාලය නිර්දෙශ කර නව</string>
+    <string name="devices_app_selection_search_hint">කාර්යල්කාරි සොයන්න…</string>
+    <string name="devices_app_selection_selected_count">%d කාර්යල්කාරි නිර්දෙශ කය</string>
+    <string name="devices_app_selection_title">කාර්යල්කාරි නිර්දෙශ කරන්න</string>
+    <string name="devices_device_config_autoplay_keycodes_available">ළශිනා කි හිද ප්රකාර</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">කාසී කියනි බඦක ගුවන කාරනට සඅ සම ක්රමය බැදි</string>
+    <string name="devices_device_config_autoplay_keycodes_label">කි හිද ප්රකාර</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">කි හිද සඅ හැතිශුි නේත</string>
+    <string name="devices_device_config_autoplay_keycodes_order">නිර්දෙශ කු කියනි (ක්රමයට අනුභ)</string>
+    <string name="devices_device_config_autoplay_keycodes_title">මන්විකද මනදා මටක කි හිද ප්රකාර</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d කාර්යල්කාරි නිර්දෙශ කර</string>
+    <string name="devices_device_config_notification_policy_action">ආගම ඉල්ලා දීම</string>
+    <string name="devices_device_config_notification_policy_required_notification">ඉශාරා ශබ්ද මට්ටම නියන්ත්රණයට ඉශාරා විසුම ආගම අවශ්යයි</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">වීණා ශබ්ද මට්ටම නියන්ත්රණයට ඉශාරා විසුම ආගම අවශ්යයි</string>
+    <string name="devices_device_config_visible_adjustments_desc">හැඩි සකසීම් මුනටිර බීම්පර සාඩේඝ පිහිදූවිනි විසුමි ආනන්න</string>
+    <string name="general_clear_action">සුදු කරන්න</string>
+    <string name="general_navigate_back_action">භවපස් ගමන්</string>
+    <string name="general_reset_action">ගෘමින් සකසන්න</string>
+    <string name="general_save_action">සේක්ෂය කරන්න</string>
 </resources>
