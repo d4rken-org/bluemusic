@@ -48,7 +48,6 @@
     <string name="devices_device_config_notification_policy_required_notification">Kontrola głośności powiadomień wymaga dostępu do zasad powiadomień</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Kontrola głośności dzwonka wymaga dostępu do zasad powiadomień</string>
     <string name="devices_device_config_visible_adjustments_category">Widoczne dostosowania</string>
-    <string name="devices_device_config_visible_adjustments_desc">Przełącz które dostosowania są wyświetlane na karcie urządzenia</string>
     <string name="devices_device_config_section_timing_label">Timing</string>
     <string name="devices_device_config_monitoring_duration_label">Monitoring czasu trwania</string>
     <string name="devices_device_config_monitoring_duration_desc">Czas trwania w milisekundach, po wykonaniu dostosowania, w czasie którego kolejne zmiany zostaną zablokowane.</string>

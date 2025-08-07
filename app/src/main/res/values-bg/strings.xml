@@ -56,7 +56,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_category">Видими корекции</string>
-    <string name="devices_device_config_visible_adjustments_desc">Превключи кои корекции се показват на картата на устройството</string>
     <string name="devices_device_config_visible_adjustments_label">Видими настройки</string>
     <string name="devices_device_config_visible_adjustments_desc">Показвай системния прозорец за звука, докато приложението регулира звука за това устройство.</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>

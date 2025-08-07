@@ -82,8 +82,8 @@
     <string name="devices_device_config_ring_volume_label">Volume suoneria</string>
     <string name="devices_device_config_ring_volume_desc">Controlla il volume che incide sulla tua suoneria.</string>
     <string name="devices_device_config_notification_policy_action">Concedi accesso</string>
-    <string name="devices_device_config_notification_policy_required_notification">Il controllo del volume delle notifiche richiede l'accesso alle politiche di notifica</string>
-    <string name="devices_device_config_notification_policy_required_ringtone">Il controllo del volume della suoneria richiede l'accesso alle politiche di notifica</string>
+    <string name="devices_device_config_notification_policy_required_notification">Il controllo del volume delle notifiche richiede l\'accesso alle politiche di notifica</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Il controllo del volume della suoneria richiede l\'accesso alle politiche di notifica</string>
     <string name="devices_stream_music_label">Music</string>
     <string name="devices_audio_stream_call_label">Call</string>
     <string name="devices_audio_stream_ring_label">Ring</string>

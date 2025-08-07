@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Nähtavad kohandused</string>
-    <string name="devices_device_config_visible_adjustments_desc">Kuva süsteemi helitugevuse aken, kui see rakendus teeb selle seadme jaoks kohandusi.</string>
     <string name="devices_device_config_keep_awake_label">Hoia ärkvel</string>
     <string name="devices_device_config_keep_awake_desc">Hoia ekraani sees kui seade on ühendatud.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>

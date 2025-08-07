@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Ajustos visibles</string>
-    <string name="devices_device_config_visible_adjustments_desc">Mostra la finestra de volum del sistema mentre aquesta aplicació fa ajustos per a aquest dispositiu.</string>
     <string name="devices_device_config_keep_awake_label">Mantén actiu</string>
     <string name="devices_device_config_keep_awake_desc">Manté la pantalla activada mentre aquest dispositiu estigui connectat.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -253,7 +252,7 @@
     <string name="general_reset_action">Reinicia</string>
     <string name="general_save_action">Desa</string>
     <string name="monitor_visible_adjustments_autoplay_label">Reproducció automàtica</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Inicia l'aplicació</string>
+    <string name="monitor_visible_adjustments_launch_app_label">Inicia l\'aplicació</string>
     <string name="monitor_visible_adjustments_music_volume_label">Volum de música</string>
     <string name="monitor_visible_adjustments_notification_volume_label">Volum de notificació</string>
     <string name="monitor_visible_adjustments_ring_volume_label">Volum del to</string>

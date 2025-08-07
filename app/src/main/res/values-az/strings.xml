@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Görünən tənzimləmələr</string>
-    <string name="devices_device_config_visible_adjustments_desc">Bu tətbiq bu cihaz üçün tənzimləmələr edərkən sistemin səs pəncərəsini göstər.</string>
     <string name="devices_device_config_keep_awake_label">Oyaq saxla</string>
     <string name="devices_device_config_keep_awake_desc">Cihazla bağlantı qurularkən ekranı açıq saxla.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>

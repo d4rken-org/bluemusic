@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">දෘශ්‍ය සකසීම්</string>
-    <string name="devices_device_config_visible_adjustments_desc">මෙම යෙදුම මෙම උපාංගය සඳහා සකසීම් සිදු කරන විට පද්ධතියේ ශබ්ද මට්ටම් කවුළුව පෙන්වන්න.</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>

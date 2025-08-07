@@ -53,7 +53,6 @@
     <string name="devices_device_config_notification_policy_required_notification">การควบคุมระดับเสียงแจ้งเตือนต้องการการเข้าถึงนโยบายการแจ้งเตือน</string>
     <string name="devices_device_config_notification_policy_required_ringtone">การควบคุมระดับเสียงเรียกเข้าต้องการการเข้าถึงนโยบายการแจ้งเตือน</string>
     <string name="devices_device_config_visible_adjustments_category">การปรับที่มองเห็นได้</string>
-    <string name="devices_device_config_visible_adjustments_desc">สลับการแสดงการปรับที่จะแสดงบนการ์ดอุปกรณ์</string>
     <string name="devices_device_config_visible_adjustments_label">การปรับที่มองเห็นได้</string>
     <string name="devices_device_config_visible_adjustments_desc">แสดงหน้าต่างระดับเสียงของระบบในขณะที่แอปนี้ทำการปรับสำหรับอุปกรณ์นี้</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>

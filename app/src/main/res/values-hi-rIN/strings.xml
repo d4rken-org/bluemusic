@@ -45,7 +45,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">दृश्य समायोजन</string>
-    <string name="devices_device_config_visible_adjustments_desc">जब यह ऐप इस डिवाइस के लिए समायोजन करता है तो सिस्टम की वॉल्यूम विंडो दिखाएं।</string>
     <string name="devices_device_config_keep_awake_label">स्क्रीन चालू रखें</string>
     <string name="devices_device_config_keep_awake_desc">इस उपकरण के कनेक्ट होने के दौरान स्क्रीन को चालू रखें</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
