@@ -1,13 +1,15 @@
 package eu.darken.bluemusic.upgrade.core.billing.client
 
 import android.content.Context
-import com.android.billingclient.api.BillingClient
-import com.android.billingclient.api.BillingClient.*
+import com.android.billingclient.api.BillingClient.BillingResponseCode
+import com.android.billingclient.api.BillingClient.newBuilder
 import com.android.billingclient.api.BillingClientStateListener
 import com.android.billingclient.api.BillingResult
+import com.android.billingclient.api.PendingPurchasesParams
 import com.android.billingclient.api.Purchase
 import dagger.hilt.android.qualifiers.ApplicationContext
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -33,7 +35,7 @@ class BillingConnectionProvider @Inject constructor(
         val purchaseEvents = MutableStateFlow<Pair<BillingResult, Collection<Purchase>?>?>(null)
 
         val client = newBuilder(context).apply {
-            enablePendingPurchases()
+            enablePendingPurchases(PendingPurchasesParams.newBuilder().build())
             setListener { result, purchases ->
                 if (result.isSuccess) {
                     log(TAG) {
