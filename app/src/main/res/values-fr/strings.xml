@@ -47,7 +47,6 @@
     <string name="devices_device_config_nudge_volume_label">Ajustement du volume</string>
     <string name="devices_device_config_nudge_volume_description">Baisser puis augmenter le volume d\'un cran, même si le volume souhaité est déjà défini (selon le système).</string>
     <string name="devices_device_config_visible_adjustments_label">Ajustements visibles</string>
-    <string name="devices_device_config_visible_adjustments_category">Ajustements visibles</string>
     <string name="devices_device_config_visible_adjustments_desc">Basculer quels ajustements sont affichés sur la carte du périphérique</string>
     <string name="devices_device_config_keep_awake_label">Garder éveillé</string>
     <string name="devices_device_config_keep_awake_desc">Essayer de garder l\'appareil éveillé pendant qu\'il est connecté. Le comportement peut varier selon la version d\'Android.</string>

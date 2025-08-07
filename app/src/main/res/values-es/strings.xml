@@ -48,7 +48,6 @@
     <string name="devices_device_config_notification_policy_required_notification">El control del volumen de notificación requiere acceso a la política de notificación</string>
     <string name="devices_device_config_notification_policy_required_ringtone">El control del volumen del timbre requiere acceso a la política de notificación</string>
     <string name="devices_device_config_nudge_volume_description">Baja y luego sube el volumen en un incremento, incluso si el volumen deseado ya está configurado (según el sistema).</string>
-    <string name="devices_device_config_visible_adjustments_category">Ajustes visibles</string>
     <string name="devices_device_config_visible_adjustments_desc">Muestra la ventana de volumen del sistema mientras esta aplicación realiza ajustes para este dispositivo.</string>
     <string name="devices_device_config_visible_adjustments_label">Ajustes visibles</string>
     <string name="devices_device_config_keep_awake_label">Mantente activo</string>

@@ -53,7 +53,6 @@
     <string name="devices_device_config_notification_policy_required_ringtone">Керування гучністю дзвінка потребує доступу до політики сповіщень</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
-    <string name="devices_device_config_visible_adjustments_category">Видимі налаштування</string>
     <string name="devices_device_config_visible_adjustments_desc">Перемкніть які налаштування показуються на картці пристрою</string>
     <string name="devices_device_config_visible_adjustments_label">Видимі налаштування</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
@@ -251,10 +250,4 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Автовідтворення</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Запуск додатка</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Гучність музики</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Гучність сповіщень</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Гучність дзвінка</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Гучність голосу</string>
 </resources>

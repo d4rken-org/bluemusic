@@ -245,16 +245,9 @@
     <string name="devices_device_config_notification_policy_action">Дај пристап</string>
     <string name="devices_device_config_notification_policy_required_notification">Контролата на јачината на известувањата бара пристап до политиката на известувања</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Контролата на јачината на ѕвонење бара пристап до политиката на известувања</string>
-    <string name="devices_device_config_visible_adjustments_category">Видливи прилагодувања</string>
     <string name="devices_device_config_visible_adjustments_desc">Префрли кои прилагодувања се прикажуваат на картичката на уредот</string>
     <string name="general_clear_action">Исчисти</string>
     <string name="general_navigate_back_action">Навигирај назад</string>
     <string name="general_reset_action">Ресетирај</string>
     <string name="general_save_action">Зачувај</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Автоматско пуштање</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Стартувај апликација</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Јачина на музика</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Јачина на известувања</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Јачина на ѕвонење</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Јачина на глас</string>
 </resources>

@@ -54,7 +54,6 @@
     <string name="devices_device_config_nudge_volume_label">Lydstyrke-puf</string>
     <string name="devices_device_config_nudge_volume_description">Sænk og hæv derefter lydstyrken med et trin, selv hvis den ønskede lydstyrke (ifølge systemet) allerede er indstillet.</string>
     <string name="devices_device_config_visible_adjustments_label">Synlige justeringer</string>
-    <string name="devices_device_config_visible_adjustments_category">Synlige justeringer</string>
     <string name="devices_device_config_visible_adjustments_desc">Skift hvilke justeringer der vises på enhedskortet</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Hold skærmen tændt mens denne enhed er tilsluttet.</string>
@@ -251,10 +250,4 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Autoplay</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Start app</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Musik lydstyrke</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Notifikationslydstyrke</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Ringelydstyrke</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Stemmelydstyrke</string>
 </resources>

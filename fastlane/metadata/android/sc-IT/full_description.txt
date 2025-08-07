@@ -1,22 +1,22 @@
-**Gestiore de Volumen Bluetooth** memoriat sos livellus de volumen pro cata dispositivu Bluetooth e reagit candu si connettint o si disconnettint.
+**Gestione Volùmine Bluetooth** arrecordat sos liveddos de volùmine pro cada unu de sos dispositivos Bluetooth tuos e reagit cando si connèttent o si disconnèttent.
 
 **Funtzionalitades:**
-* Cunfigurat volumen mùsica, telefonadas, sonadore e notìficas pro cata dispositivu
-* Mandada automatica de comandus multimediales comente Riprodùghere o Imbeniente
-* Abertura de aplicatziones a sa connessione
-* Mantenet su ischermu allughèrtu
-* Blocca sos livellus de volumen
-* Ripristinat su volumen a pustis de sa disconnessione
+* Cunfigurat volùmine mùsica, telefonadas, sonadore e notìficas pro cada dispositivu
+* Mandàt automàticu de comandos multimediales che Reprodue o Imbeniente
+* Aberit aplicatziones a sa connessione
+* Mantenet s'ischermu allughèrtu
+* Blocat sos liveddos de volùmine
+* Torrat a pònnere su volùmine a pustis de sa disconnessione
 
-Peruna publicitade, peruna trakinada. Open-source.
-Calchi prus rechidet unu aggiornamentu pagadu pro sustenere su isvilupu.
+Nissuna publicitade, nissuna trakinàda. Open-source.
+Carchi funtzionalidade in prus rechedet unu agiornamentu pagadu pro sustenere s'isvilupu.
 
-**Nota:** Custa aplicatzione non podet ammentare su volumen o superare sos lìmites de volumen de su sistema.
+**Nota:** Custa aplicatzione non podet ammentare su volùmine o superare sos lìmites de volùmine de su sistema.
 
 **Permissos:**
-* **Internet** – pro reportus de errores optzionales
+* **Internet** – pro reportos de errores optzionales
 * **Bluetooth** – pro rilevare sas connessiones de dispositivos
-* **Cunfiguratzione àudio** – pro cambiare su volumen
-* **Aviada** – pro ripristinare sas cunfiguratziones a pustis de su riavìu
-* **Wake lock** – pro mantenere su ischermu allughèrtu o currigere errores Samsung
-* **Bentana de alerta de sistema** – pro abertura automatica de aplicatziones (Android 10 solu)
+* **Cunfiguratziones àudio** – pro mudare su volùmine
+* **Aviada** – pro torrare a pònnere sas cunfiguratziones a pustis de su riaviàmentu
+* **Wake lock** – pro mantenere s'ischermu allughèrtu o currigere errores Samsung
+* **Bentana de alerta de sistema** – pro abertura automàtica de aplicatziones (Android 10 ebbia)

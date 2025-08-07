@@ -52,7 +52,6 @@
     <string name="devices_device_config_notification_policy_action">Erişim ver</string>
     <string name="devices_device_config_notification_policy_required_notification">Bildirim ses kontrolü için bildirim politikası erişimi gerekli</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Zil ses kontrolü için bildirim politikası erişimi gerekli</string>
-    <string name="devices_device_config_visible_adjustments_category">Görünür ayarlamalar</string>
     <string name="devices_device_config_visible_adjustments_label">Görünür ayarlamalar</string>
     <string name="devices_device_config_visible_adjustments_desc">Cihaz kartında hangi ayarlamaların gösterileceğini seç</string>
     <string name="devices_device_config_keep_awake_label">Uyanık tut</string>
@@ -231,12 +230,6 @@
     <string name="android13_notification_permission_description">Grant this app permission to post notifications. This enables displaying a notification when this app is active and volume adjustments are being made.</string>
     <string name="privacy_policy_label">Privacy policy</string>
     <string name="managed_devices_empty_message">No Bluetooth devices configured.\nTap the + button to add your first device.</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Otomatik oynatma</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Uygulamayı başlat</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Müzik sesi</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Bildirim sesi</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Zil sesi</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Ses sesi</string>
     <string name="general_delete_action">Delete</string>
     <string name="general_navigate_back_action">Geri git</string>
     <string name="general_reset_action">Sıfırla</string>

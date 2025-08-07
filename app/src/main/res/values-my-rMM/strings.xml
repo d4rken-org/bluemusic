@@ -245,16 +245,9 @@
     <string name="devices_device_config_notification_policy_action">အေံုင်းအစား ပှေးပါ</string>
     <string name="devices_device_config_notification_policy_required_notification">ထည်ပြေး အာဝားအမဪမ်း ကအုပကြွေးရန် ထည်ပြေး ေဓစာင္း အေံုင်းအစား ထို့အပေါး</string>
     <string name="devices_device_config_notification_policy_required_ringtone">မေးှှေး အာဝားအမဪမ်း ကအုပကြွေးရန် ထည်ပြေး ေဓစာင္း အေံုင်းအစား ထို့အပေါး</string>
-    <string name="devices_device_config_visible_adjustments_category">မှေ့ရှီ အငုပြီးခြင်မြား</string>
     <string name="devices_device_config_visible_adjustments_desc">ဒဍိုင်း ကိ့ျည် ကာဒ် မှာ အငုပြီးခြင်မြားကော ပြအပါးမည့</string>
     <string name="general_clear_action">သူးပါ</string>
     <string name="general_navigate_back_action">ေကြာင်း အခြက်သွားပါ</string>
     <string name="general_reset_action">အပဓင်း ဖခ္ပြတ်ပါ</string>
     <string name="general_save_action">ဂရှုံးတ်မှားပါ</string>
-    <string name="monitor_visible_adjustments_autoplay_label">အာဏိအဖြင့ပ်</string>
-    <string name="monitor_visible_adjustments_launch_app_label">အါပ် ခော်ကြောင်ပါ</string>
-    <string name="monitor_visible_adjustments_music_volume_label">ကည်သည် အာဝား</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">ထည်ပြေး အာဝား</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">မေးှှေး အာဝား</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">အသောင်း အာဝား</string>
 </resources>

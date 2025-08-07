@@ -52,7 +52,6 @@
     <string name="devices_device_config_notification_policy_required_notification">Управление громкостью уведомлений требует доступа к политике уведомлений</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Управление громкостью звонка требует доступа к политике уведомлений</string>
     <string name="devices_device_config_visible_adjustments_label">Видимые настройки</string>
-    <string name="devices_device_config_visible_adjustments_category">Видимые настройки</string>
     <string name="devices_device_config_visible_adjustments_desc">Переключение отображаемых настроек на карточке устройства</string>
     <string name="devices_device_config_keep_awake_label">Активный режим</string>
     <string name="devices_device_config_keep_awake_desc">Оставлять экран включённым при подключенном устройстве.</string>
@@ -128,8 +127,6 @@
     <string name="label_visible_volume_adjustments">Видимость настроек</string>
     <string name="description_visible_volume_adjustments">Отображение окна системной громкости при выполнении приложением настроек.</string>
     <string name="label_volume_listener">Отслеживание изменений</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Автовоспроизведение</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Запуск приложения</string>
     <string name="description_volume_listener">Поддержание активного режима при наличии подключенного устройства и сохранение изменений громкости, выполненных вне данного приложения.</string>
     <string name="label_boot_restore">Восстановить при загрузке</string>
     <string name="description_boot_restore">Восстановление громкости после загрузки/перезагрузки при подключенном устройстве Bluetooth.</string>

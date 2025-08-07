@@ -245,16 +245,9 @@
     <string name="devices_device_config_notification_policy_action">Piešķirt piekļuvi</string>
     <string name="devices_device_config_notification_policy_required_notification">Paziņojumu skaļuma kontrolei nepieciešama pieišķirt paziņojumu politikas piekļuve</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Zvana skaļuma kontrolei nepieciešama pieišķirt paziņojumu politikas piekļuve</string>
-    <string name="devices_device_config_visible_adjustments_category">Redzamie pielāgojumi</string>
     <string name="devices_device_config_visible_adjustments_desc">Pārslēgt, kādi pielāgojumi tiek rādīti ierīces kartē</string>
     <string name="general_clear_action">Notīrīt</string>
     <string name="general_navigate_back_action">Navigēt atpakaļ</string>
     <string name="general_reset_action">Atiestatīt</string>
     <string name="general_save_action">Saglabāt</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Automatīskā atskaņošana</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Palaiž lietotni</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Mūzikas skaļums</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Paziņojumu skaļums</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Zvana skaļums</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Balss skaļums</string>
 </resources>

@@ -53,7 +53,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Vidljive prilagodbe</string>
-    <string name="devices_device_config_visible_adjustments_category">Vidljive prilagodbe</string>
     <string name="devices_device_config_visible_adjustments_desc">Uključi/isključi koje se prilagodbe prikazuju na kartici uređaja</string>
     <string name="devices_device_config_keep_awake_label">Zadrži budnim</string>
     <string name="devices_device_config_keep_awake_desc">Zadržite zaslon uključenim dok je ovaj uređaj povezan.</string>
@@ -124,12 +123,6 @@
     <string name="label_visible_volume_adjustments">Vidljive prilagodbe</string>
     <string name="description_visible_volume_adjustments">Prikažite prozor glasnoće sustava dok ova aplikacija izvršava izmjene.</string>
     <string name="label_volume_listener">Promatraj promjene</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Automatska reprodukcija</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Pokretanje aplikacije</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Glasnoća glazbe</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Glasnoća obavijesti</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Glasnoća zvona</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Glasnoća glasa</string>
     <string name="description_volume_listener">Ostaje aktivan dok je uređaj povezan i sprema promjene glasnoće koje nisu uzrokovane ovom aplikacijom.</string>
     <string name="label_boot_restore">Vrati na ponovnom pokretanju</string>
     <string name="description_boot_restore">Vrati glasnoću nakon ponovnog pokretanja ako je Bluetooth uređaj povezan.</string>

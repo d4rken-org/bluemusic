@@ -245,16 +245,9 @@
     <string name="devices_device_config_notification_policy_action">Berikan akses</string>
     <string name="devices_device_config_notification_policy_required_notification">Kontrol volume notifikasi memerlukan akses kebijakan notifikasi</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Kontrol volume dering memerlukan akses kebijakan notifikasi</string>
-    <string name="devices_device_config_visible_adjustments_category">Pengaturan terlihat</string>
     <string name="devices_device_config_visible_adjustments_desc">Pilih pengaturan mana yang ditampilkan pada kartu perangkat</string>
     <string name="general_clear_action">Hapus</string>
     <string name="general_navigate_back_action">Navigasi kembali</string>
     <string name="general_reset_action">Reset</string>
     <string name="general_save_action">Simpan</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Autoplay</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Luncurkan aplikasi</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Volume musik</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Volume notifikasi</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Volume dering</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Volume suara</string>
 </resources>

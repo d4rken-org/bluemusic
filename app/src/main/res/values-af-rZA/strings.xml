@@ -245,16 +245,9 @@
     <string name="devices_device_config_notification_policy_action">Verleen toegang</string>
     <string name="devices_device_config_notification_policy_required_notification">Kennisgewing volume beheer vereis kennisgewing beleid toegang</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Ring volume beheer vereis kennisgewing beleid toegang</string>
-    <string name="devices_device_config_visible_adjustments_category">Sigbare aanpassings</string>
     <string name="devices_device_config_visible_adjustments_desc">Wissel watter aanpassings op die toestel kaartjie gewys word</string>
     <string name="general_clear_action">Maak skoon</string>
     <string name="general_navigate_back_action">Navigeer terug</string>
     <string name="general_reset_action">Herstel</string>
     <string name="general_save_action">Bewaar</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Outo speel</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Begin program</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Musiek volume</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Kennisgewing volume</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Ring volume</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Stem volume</string>
 </resources>

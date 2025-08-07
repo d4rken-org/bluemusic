@@ -245,16 +245,9 @@
     <string name="devices_device_config_notification_policy_action">Jep qasje</string>
     <string name="devices_device_config_notification_policy_required_notification">Kontrolli i volumit të njoftimeve kërkon qasje në politikën e njoftimeve</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Kontrolli i volumit të ziles kërkon qasje në politikën e njoftimeve</string>
-    <string name="devices_device_config_visible_adjustments_category">Rregullimet e dukshme</string>
     <string name="devices_device_config_visible_adjustments_desc">Ndryshto cilat rregullime tregohen në kartën e pajisjes</string>
     <string name="general_clear_action">Pastro</string>
     <string name="general_navigate_back_action">Navigo mbrapa</string>
     <string name="general_reset_action">Rivendos</string>
     <string name="general_save_action">Ruaj</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Luajtje automatike</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Hap aplikacionin</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Volumi i muzikës</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Volumi i njoftimeve</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Volumi i ziles</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Volumi i zërit</string>
 </resources>

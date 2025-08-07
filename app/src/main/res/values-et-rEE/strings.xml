@@ -245,16 +245,9 @@
     <string name="devices_device_config_notification_policy_action">Anna juurdepääs</string>
     <string name="devices_device_config_notification_policy_required_notification">Teavituste heli juhtimiseks on vaja teavituste poliitika juurdepääsu</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Helina heli juhtimiseks on vaja teavituste poliitika juurdepääsu</string>
-    <string name="devices_device_config_visible_adjustments_category">Nähtavad kohandused</string>
     <string name="devices_device_config_visible_adjustments_desc">Lülita, millised kohandused seadme kaardil näidatakse</string>
     <string name="general_clear_action">Tühjenda</string>
     <string name="general_navigate_back_action">Navigeeri tagasi</string>
     <string name="general_reset_action">Lähtesta</string>
     <string name="general_save_action">Salvesta</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Automaatesitus</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Käivita rakendus</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Muusika heli</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Teavituste heli</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Helina heli</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Hääle heli</string>
 </resources>

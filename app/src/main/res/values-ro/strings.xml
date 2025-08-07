@@ -49,7 +49,6 @@
     <string name="devices_device_config_notification_policy_required_notification">Controlul volumului pentru notificări necesită acces la politica de notificări</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Controlul volumului de apel necesită acces la politica de notificări</string>
     <string name="devices_device_config_visible_adjustments_label">Ajustări vizibile</string>
-    <string name="devices_device_config_visible_adjustments_category">Ajustări vizibile</string>
     <string name="devices_device_config_visible_adjustments_desc">Comută care ajustări sunt afișate pe cardul dispozitivului</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
@@ -251,10 +250,4 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Redare automată</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Lansează aplicație</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Volum muzică</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Volum notificări</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Volum apel</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Volum voce</string>
 </resources>

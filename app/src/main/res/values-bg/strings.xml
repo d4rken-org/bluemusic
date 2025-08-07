@@ -55,7 +55,6 @@
     <string name="devices_device_config_notification_policy_required_ringtone">Контролът на силата на звънене изисква достъп до политиките за известия</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
-    <string name="devices_device_config_visible_adjustments_category">Видими корекции</string>
     <string name="devices_device_config_visible_adjustments_label">Видими настройки</string>
     <string name="devices_device_config_visible_adjustments_desc">Показвай системния прозорец за звука, докато приложението регулира звука за това устройство.</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
@@ -198,12 +197,6 @@
     <string name="description_bluetooth_permission_required">This app needs Bluetooth permission to manage your device volumes.</string>
     <string name="action_grant_permission">Grant Permission</string>
     <string name="label_status_listening_for_changes">Следене за промени в силата на звука</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Автозапуск</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Стартирай приложение</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Сила на музика</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Сила на известия</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Сила на звънене</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Сила на глас</string>
     <string name="action_exit">Изход</string>
     <string name="action_start">Старт</string>
     <string name="label_welcome">Добре дошли</string>

@@ -55,7 +55,6 @@
     <string name="devices_device_config_notification_policy_action">Hozzáférés engedélyezése</string>
     <string name="devices_device_config_notification_policy_required_notification">Az értesítési hangerő szabályozása értesítési házirend hozzáférést igényel</string>
     <string name="devices_device_config_notification_policy_required_ringtone">A csengetési hangerő szabályozása értesítési házirend hozzáférést igényel</string>
-    <string name="devices_device_config_visible_adjustments_category">Látható beállítások</string>
     <string name="devices_device_config_visible_adjustments_desc">Kapcsold be vagy ki, hogy mely beállítások jelenjenek meg az eszköz kártyán</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
@@ -209,12 +208,6 @@
     <string name="label_keyevent_next">Következő</string>
     <string name="label_install_id">ID telepítés</string>
     <string name="message_copied_to_clipboard">Vágólapra másolva</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Automatikus lejátszás</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Alkalmazás indítása</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Zene hangereje</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Értesítési hangerő</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Csengetési hangerő</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Hívás hangereje</string>
     <string name="label_thanks">Köszönöm</string>
     <string name="label_licenses">Licenszek</string>
     <string name="description_ring_volume_additional_permission">További engedélyek szükségesek a csengetési hangerő megváltoztatásához.</string>

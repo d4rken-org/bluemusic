@@ -50,7 +50,6 @@
     <string name="devices_device_config_nudge_volume_label">Volumdytt</string>
     <string name="devices_device_config_nudge_volume_description">Senk og hev deretter volumet med ett trinn, selv om ønsket volum (ifølge systemet) allerede er innstilt.</string>
     <string name="devices_device_config_visible_adjustments_label">Synlige justeringer</string>
-    <string name="devices_device_config_visible_adjustments_category">Synlige justeringer</string>
     <string name="devices_device_config_visible_adjustments_desc">Slå på/av hvilke justeringer som vises på enhetskortet</string>
     <string name="devices_device_config_keep_awake_label">Hold aktiv</string>
     <string name="devices_device_config_keep_awake_desc">Hold skjermen på mens denne enheten er tilkoblet.</string>
@@ -207,12 +206,6 @@
     <string name="label_keyevent_next">Neste</string>
     <string name="label_install_id">Installerings ID</string>
     <string name="message_copied_to_clipboard">Kopiert til utklippstavlen</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Autospill</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Start app</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Musikkvolum</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Varslingsvolum</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Ringevolum</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Talevolum</string>
     <string name="label_thanks">Takk</string>
     <string name="label_licenses">Lisenser</string>
     <string name="description_ring_volume_additional_permission">Tilleggstillatelser er nødvendige for å endre ringevolumet.</string>

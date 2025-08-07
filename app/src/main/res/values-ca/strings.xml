@@ -245,16 +245,9 @@
     <string name="devices_device_config_notification_policy_action">Concedeix accés</string>
     <string name="devices_device_config_notification_policy_required_notification">El control del volum de notificació requereix accés a la política de notificació</string>
     <string name="devices_device_config_notification_policy_required_ringtone">El control del volum del to requereix accés a la política de notificació</string>
-    <string name="devices_device_config_visible_adjustments_category">Ajustaments visibles</string>
     <string name="devices_device_config_visible_adjustments_desc">Alterna quins ajustaments es mostren a la targeta del dispositiu</string>
     <string name="general_clear_action">Neteja</string>
     <string name="general_navigate_back_action">Navega enrere</string>
     <string name="general_reset_action">Reinicia</string>
     <string name="general_save_action">Desa</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Reproducció automàtica</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Inicia l\'aplicació</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Volum de música</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Volum de notificació</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Volum del to</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Volum de veu</string>
 </resources>

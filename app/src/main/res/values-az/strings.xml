@@ -245,16 +245,9 @@
     <string name="devices_device_config_notification_policy_action">Giriş icazəsi ver</string>
     <string name="devices_device_config_notification_policy_required_notification">Bildiriş səsinin idarə edilməsi bildiriş siyasəti girişini tələb edir</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Zəng səsi idarəsi bildiriş siyasəti girişini tələb edir</string>
-    <string name="devices_device_config_visible_adjustments_category">Görünən tənzimləmələr</string>
     <string name="devices_device_config_visible_adjustments_desc">Cihaz kartında hansı tənzimləmələrin göstərilməsini açıb-bağlayın</string>
     <string name="general_clear_action">Təmizlə</string>
     <string name="general_navigate_back_action">Geriyə naviqasiya et</string>
     <string name="general_reset_action">Sıfırla</string>
     <string name="general_save_action">Saxla</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Avtomatik oynatma</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Tətbiqi başlat</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Musiqi səsi</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Bildiriş səsi</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Zəng səsi</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Səs səviyyəsi</string>
 </resources>

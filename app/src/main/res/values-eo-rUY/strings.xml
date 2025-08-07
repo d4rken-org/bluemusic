@@ -245,16 +245,9 @@
     <string name="devices_device_config_notification_policy_action">Doni aliron</string>
     <string name="devices_device_config_notification_policy_required_notification">Sciiga voluma kontrolo bezonas sciigan politikan aliron</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Sona voluma kontrolo bezonas sciigan politikan aliron</string>
-    <string name="devices_device_config_visible_adjustments_category">Videbla ĝustigoj</string>
     <string name="devices_device_config_visible_adjustments_desc">Baskuli kiuj ĝustigoj montriĝas en la aparata karto</string>
     <string name="general_clear_action">Malplenigi</string>
     <string name="general_navigate_back_action">Navigi reen</string>
     <string name="general_reset_action">Remetigi</string>
     <string name="general_save_action">Konservi</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Aŭtomata ludo</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Lanĉi aplikon</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Muzika volumo</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Sciiga volumo</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Sona volumo</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Voĉa volumo</string>
 </resources>

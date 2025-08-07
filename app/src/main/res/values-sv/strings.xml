@@ -54,7 +54,6 @@
     <string name="devices_device_config_notification_policy_required_notification">Aviseringsvolymkontroll kräver åtkomst till aviseringspolicy</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Ringsignalvolymkontroll kräver åtkomst till aviseringspolicy</string>
     <string name="devices_device_config_visible_adjustments_label">Synliga justeringar</string>
-    <string name="devices_device_config_visible_adjustments_category">Synliga justeringar</string>
     <string name="devices_device_config_visible_adjustments_desc">Växla vilka justeringar som visas på enhetskortet</string>
     <string name="devices_device_config_keep_awake_label">Håll vaken</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
@@ -196,12 +195,6 @@
     <string name="description_bluetooth_permission_required">This app needs Bluetooth permission to manage your device volumes.</string>
     <string name="action_grant_permission">Grant Permission</string>
     <string name="label_status_listening_for_changes">Lyssnar efter volymförändringar</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Automatisk uppspelning</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Starta app</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Musikvolym</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Aviseringsvolym</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Ringsignalvolym</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Röstvolym</string>
     <string name="action_exit">Stäng</string>
     <string name="action_start">Starta</string>
     <string name="label_welcome">Välkommen</string>

@@ -49,7 +49,6 @@
     <string name="devices_device_config_nudge_volume_label">Volume duwtje</string>
     <string name="devices_device_config_nudge_volume_description">Verlaag en verhoog het volume met één stap, zelfs als het gewenste volume (volgens het systeem) al is ingesteld.</string>
     <string name="devices_device_config_visible_adjustments_label">Zichtbare aanpassingen</string>
-    <string name="devices_device_config_visible_adjustments_category">Zichtbare aanpassingen</string>
     <string name="devices_device_config_visible_adjustments_desc">Schakel in welke aanpassingen worden getoond op de apparaatkaart</string>
     <string name="devices_device_config_keep_awake_label">Ingeschakeld houden</string>
     <string name="devices_device_config_keep_awake_desc">Houd het scherm aan terwijl dit apparaat is aangesloten.</string>
@@ -210,12 +209,6 @@
     <string name="label_keyevent_next">Volgende</string>
     <string name="label_install_id">Installatie ID</string>
     <string name="message_copied_to_clipboard">Gekopieerd naar klipbord</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Automatisch afspelen</string>
-    <string name="monitor_visible_adjustments_launch_app_label">App starten</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Muziekvolume</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Meldingsvolume</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Beltoonvolume</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Spraakvolume</string>
     <string name="label_thanks">Bedankt</string>
     <string name="label_licenses">Licenties</string>
     <string name="description_ring_volume_additional_permission">Aanvullende machtigingen zijn nodig om het beltvolume te wijzigen.</string>

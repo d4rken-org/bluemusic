@@ -52,7 +52,6 @@
     <string name="devices_device_config_notification_policy_action">Conceder acesso</string>
     <string name="devices_device_config_notification_policy_required_notification">O controlo do volume de notificações requer acesso à política de notificações</string>
     <string name="devices_device_config_notification_policy_required_ringtone">O controlo do volume de toque requer acesso à política de notificações</string>
-    <string name="devices_device_config_visible_adjustments_category">Ajustes visíveis</string>
     <string name="devices_device_config_visible_adjustments_desc">Alterna que ajustes são mostrados no cartão do dispositivo</string>
     <string name="devices_device_config_visible_adjustments_label">Ajustes visíveis</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
@@ -195,12 +194,6 @@
     <string name="description_bluetooth_permission_required">This app needs Bluetooth permission to manage your device volumes.</string>
     <string name="action_grant_permission">Grant Permission</string>
     <string name="label_status_listening_for_changes">À espera das alterações de volume</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Reprodução automática</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Iniciar aplicação</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Volume de música</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Volume de notificações</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Volume de toque</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Volume de voz</string>
     <string name="action_exit">Sair</string>
     <string name="action_start">Iniciar</string>
     <string name="label_welcome">Bem-vindo</string>

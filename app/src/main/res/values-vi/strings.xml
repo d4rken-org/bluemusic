@@ -49,7 +49,6 @@
     <string name="devices_device_config_notification_policy_required_ringtone">Điều khiển âm lượng chuông cần quyền truy cập chính sách thông báo</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Điều chỉnh hiển thị</string>
-    <string name="devices_device_config_visible_adjustments_category">Điều chỉnh hiển thị</string>
     <string name="devices_device_config_visible_adjustments_desc">Chuyển đổi điều chỉnh nào được hiển thị trên thẻ thiết bị</string>
     <string name="devices_device_config_keep_awake_label">Giữ màn hình sáng</string>
     <string name="devices_device_config_keep_awake_desc">Giữ màn hình bật trong khi thiết bị này được kết nối.</string>
@@ -251,11 +250,5 @@
     <string name="error_generic_message">An error occurred. Please try again.</string>
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Tự động phát</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Khởi động ứng dụng</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Âm lượng nhạc</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Âm lượng thông báo</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Âm lượng chuông</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Âm lượng thoại</string>
     <string name="bluemusic_mascot_description">App Icon</string>
 </resources>

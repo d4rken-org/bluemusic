@@ -49,7 +49,6 @@
     <string name="devices_device_config_notification_policy_required_ringtone">Soittoäänen äänenvoimakkuuden hallinta vaatii ilmoituskäytäntöjen käyttöoikeuden</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Näkyvät säädöt</string>
-    <string name="devices_device_config_visible_adjustments_category">Näkyvät säädöt</string>
     <string name="devices_device_config_visible_adjustments_desc">Valitse mitkä säädöt näytetään laitteen kortilla</string>
     <string name="devices_device_config_keep_awake_label">Pysy hereillä</string>
     <string name="devices_device_config_keep_awake_desc">Pidä näyttö hereillä, kun tämä laite on yhdistetty.</string>
@@ -231,12 +230,6 @@
     <string name="android13_notification_permission_description">Grant this app permission to post notifications. This enables displaying a notification when this app is active and volume adjustments are being made.</string>
     <string name="privacy_policy_label">Privacy policy</string>
     <string name="managed_devices_empty_message">No Bluetooth devices configured.\nTap the + button to add your first device.</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Automaattinen toisto</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Käynnistä sovellus</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Musiikin äänenvoimakkuus</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Ilmoitusten äänenvoimakkuus</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Soittoäänen äänenvoimakkuus</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Puhelun äänenvoimakkuus</string>
     <string name="general_delete_action">Delete</string>
     <string name="general_navigate_back_action">Siirry takaisin</string>
     <string name="general_reset_action">Nollaa</string>

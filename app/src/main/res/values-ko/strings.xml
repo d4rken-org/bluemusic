@@ -54,7 +54,6 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">보이는 조정</string>
-    <string name="devices_device_config_visible_adjustments_category">표시되는 조정</string>
     <string name="devices_device_config_visible_adjustments_desc">기기 카드에 표시할 조정을 선택하세요</string>
     <string name="devices_device_config_keep_awake_label">켜짐 유지</string>
     <string name="devices_device_config_keep_awake_desc">이 디바이스를 연결하고 있을 때 화면을 계속 켜진 상태로 유지합니다.</string>
@@ -199,12 +198,6 @@
     <string name="description_bluetooth_permission_required">This app needs Bluetooth permission to manage your device volumes.</string>
     <string name="action_grant_permission">Grant Permission</string>
     <string name="label_status_listening_for_changes">음량 변경 감지 중</string>
-    <string name="monitor_visible_adjustments_autoplay_label">자동 재생</string>
-    <string name="monitor_visible_adjustments_launch_app_label">앱 실행</string>
-    <string name="monitor_visible_adjustments_music_volume_label">음악 음량</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">알림 음량</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">벨소리 음량</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">통화 음량</string>
     <string name="action_exit">나가기</string>
     <string name="action_start">시작</string>
     <string name="label_welcome">환영합니다</string>

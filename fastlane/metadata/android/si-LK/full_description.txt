@@ -1,22 +1,22 @@
-Bluetooth Volume Manager can react to Bluetooth devices connecting or disconnecting.
-It allows Android to remember the volume levels of different Bluetooth devices.
+**Bluetooth Volume Manager** ඔබගේ සෑම Bluetooth උපකරණයක් සඳහාම වොලියම් මට්ටම් මතක තබා ගන්නා අතර ඒවා සම්බන්ධ වන විට හෝ විසන්ධි වන විට ප්‍රතිචාර දක්වයි.
 
-Available features:
+**විශේෂාංග:**
+* එක් එක් උපකරණ සඳහා සංගීත, ඇමතුම්, නාද සහ දැනුම්දීම් වොලියම් සකසන්න  
+* Play හෝ Next වැනි මාධ්‍ය විධාන ස්වයංක්‍රීයව යවන්න  
+* සම්බන්ධ වන විට ඇප්ස් ක්‍රියාත්මක කරන්න  
+* තිරය අවදියෙන් තබන්න  
+* වොලියම් මට්ටම් අගුලු දමන්න  
+* විසන්ධි වූ පසු වොලියම් ප්‍රතිස්ථාපනය කරන්න  
 
-* Music, call, ringtone and notification volume adjustment.
-* Sending out 'Play' or 'Next' media commands.
-* Opening a specific app.
-* Keeping the screen awake.
-* Preventing the volume from being changed.
-* Restoring previous volume levels after disconnect.
+දැන්වීම් නැත, ලුහුබැඳීම් නැත. විවෘත මූලාශ්‍ර.  
+සමහර අමතර විශේෂාංග සඳහා සංවර්ධනයට සහාය වීම සඳහා ගෙවිය යුතු උත්ශ්‍රේණිගත කිරීමක් අවශ්‍ය වේ.
 
-This app can't "boost" your volume or change the volume if you can't change it through your device's volume buttons manually.
+**සටහන:** මෙම ඇප්ලිකේෂනයට වොලියම් වැඩි කිරීමට හෝ පද්ධති වොලියම් සීමාවන් අභිබවා යාමට නොහැකිය.
 
-Permissions explained:
-
-* 'Internet' for bug reports.
-* 'Bluetooth' to work with Bluetooth devices.
-* 'Modify audio settings' to change volume.
-* 'Boot completed' to restore volume levels after reboots.
-* 'WAKE_LOCK' to fix a bug on Samsung devices and to keep the screen awake if necessary.
-* 'SYSTEM_ALERT_WINDOW' to launch apps when a Bluetooth device connects (only on Android 10).
+**අවසර:**
+* **අන්තර්ජාලය** – විකල්ප දෝෂ වාර්තා සඳහා  
+* **Bluetooth** – උපකරණ සම්බන්ධතා හඳුනා ගැනීමට  
+* **ශ්‍රව්‍ය සැකසුම්** – වොලියම් වෙනස් කිරීමට  
+* **ආරම්භය** – නැවත ආරම්භ කිරීමෙන් පසු සැකසුම් ප්‍රතිස්ථාපනය කිරීමට  
+* **අවදි කිරීමේ අගුල** – තිරය අවදියෙන් තබා ගැනීමට හෝ Samsung දෝෂ සවි කිරීමට  
+* **පද්ධති අනතුරු ඇඟවීමේ කවුළුව** – ඇප්ස් ස්වයංක්‍රීයව ක්‍රියාත්මක කිරීමට (Android 10 පමණි)

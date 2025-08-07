@@ -48,7 +48,6 @@
     <string name="devices_device_config_notification_policy_action">Conceder acesso</string>
     <string name="devices_device_config_notification_policy_required_notification">O controle de volume de notificação requer acesso à política de notificação</string>
     <string name="devices_device_config_notification_policy_required_ringtone">O controle de volume do toque requer acesso à política de notificação</string>
-    <string name="devices_device_config_visible_adjustments_category">Ajustes visíveis</string>
     <string name="devices_device_config_visible_adjustments_desc">Alternar quais ajustes são mostrados no cartão do dispositivo</string>
     <string name="devices_device_config_keep_awake_label">Manter ativo</string>
     <string name="devices_device_config_keep_awake_desc">Mantenha a tela ligada enquanto este dispositivo estiver conectado.</string>
@@ -254,6 +253,4 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Reprodução automática</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Iniciar aplicativo</string>
 </resources>

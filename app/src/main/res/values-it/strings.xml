@@ -49,7 +49,6 @@
     <string name="devices_device_config_launch_app_multiple_desc">%d app selezionate</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
-    <string name="devices_device_config_visible_adjustments_category">Regolazioni visibili</string>
     <string name="devices_device_config_visible_adjustments_desc">Attiva o disattiva quali regolazioni vengono mostrate nella scheda del dispositivo</string>
     <string name="devices_device_config_keep_awake_label">Mantieni attivo</string>
     <string name="devices_device_config_keep_awake_desc">Mantieni lo schermo acceso mentre questo dispositivo è connesso.</string>
@@ -273,8 +272,6 @@
     <string name="devices_indicator_limit">Limite</string>
     <string name="devices_indicator_launch">Avvia</string>
     <string name="devices_indicator_auto">Auto</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Autoplay</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Avvia app</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>
 </resources>

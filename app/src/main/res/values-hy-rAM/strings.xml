@@ -245,16 +245,9 @@
     <string name="devices_device_config_notification_policy_action">Տրամադրել մուտք</string>
     <string name="devices_device_config_notification_policy_required_notification">Ծանուցումների ձայնի ղեկավարությունը պահանջում է ծանուցումների քաղաքականության մուտք</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Զանգի ձայնի ղեկավարությունը պահանջում է ծանուցումների քաղաքականության մուտք</string>
-    <string name="devices_device_config_visible_adjustments_category">Տեսանելի կարգավորումներ</string>
     <string name="devices_device_config_visible_adjustments_desc">Անջատել/միացնել, թե որ կարգավորումները ցուցադրվեն սարքի քարտում</string>
     <string name="general_clear_action">Մաքրել</string>
     <string name="general_navigate_back_action">Նավարկել հետ</string>
     <string name="general_reset_action">Վերակայել</string>
     <string name="general_save_action">Պահել</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Ավտոմատ նվագարկում</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Գործարկել հավելվածը</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Երաժշտության ձայնը</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Ծանուցումների ձայնը</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Զանգի ձայնը</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Ձայնի ուժգնությունը</string>
 </resources>

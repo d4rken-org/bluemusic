@@ -60,7 +60,6 @@
     <string name="devices_device_config_launch_app_desc">הפעלת אפליקצייה כאשר מכשיר זה מתחבר.</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
-    <string name="devices_device_config_visible_adjustments_category">התאמות גלויות</string>
     <string name="devices_device_config_visible_adjustments_desc">הצג אילו התאמות מוצגות על כרטיס המכשיר</string>
     <string name="devices_device_config_visible_adjustments_label">התאמות גלויות</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
@@ -124,12 +123,6 @@
     <string name="description_visible_volume_adjustments">הצגת חלון ווליום של המערכת כאשר ההתאמות נעשות על ידי אפליקציה זו.</string>
     <string name="label_volume_listener">צפייה בשינויים</string>
     <string name="description_volume_listener">להשאיר פעיל כאשר התקן מחובר ושמירת שינויי ווליום שלא נגרמו על ידי אפליקציה זו.</string>
-    <string name="monitor_visible_adjustments_autoplay_label">ניגון אוטומטי</string>
-    <string name="monitor_visible_adjustments_launch_app_label">הפעל אפליקציה</string>
-    <string name="monitor_visible_adjustments_music_volume_label">עוצמת מוזיקה</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">עוצמת התראות</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">עוצמת צלצול</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">עוצמת קול</string>
     <string name="label_boot_restore">שחזור באתחול</string>
     <string name="description_boot_restore">Restore volume after booting/rebooting if a Bluetooth device is connected.</string>
     <string name="settings_support_label">Support</string>

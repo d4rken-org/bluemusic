@@ -52,7 +52,6 @@
     <string name="devices_device_config_notification_policy_action">授予访问权限</string>
     <string name="devices_device_config_notification_policy_required_notification">通知音量控制需要通知策略访问权限</string>
     <string name="devices_device_config_notification_policy_required_ringtone">铃声音量控制需要通知策略访问权限</string>
-    <string name="devices_device_config_visible_adjustments_category">可见调整</string>
     <string name="devices_device_config_visible_adjustments_label">可见的调整</string>
     <string name="devices_device_config_visible_adjustments_desc">当此应用为此设备进行调整时，显示系统的音量窗口。</string>
     <string name="devices_device_config_keep_awake_label">保持唤醒</string>
@@ -276,6 +275,4 @@
     <string name="devices_indicator_auto">自动</string>
     <string name="devices_indicator_home">主页</string>
     <string name="devices_indicator_dnd">勿扰</string>
-    <string name="monitor_visible_adjustments_autoplay_label">自动播放</string>
-    <string name="monitor_visible_adjustments_launch_app_label">启动应用</string>
 </resources>

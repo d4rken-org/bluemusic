@@ -52,7 +52,6 @@
     <string name="devices_device_config_notification_policy_action">อนุญาตการเข้าถึง</string>
     <string name="devices_device_config_notification_policy_required_notification">การควบคุมระดับเสียงแจ้งเตือนต้องการการเข้าถึงนโยบายการแจ้งเตือน</string>
     <string name="devices_device_config_notification_policy_required_ringtone">การควบคุมระดับเสียงเรียกเข้าต้องการการเข้าถึงนโยบายการแจ้งเตือน</string>
-    <string name="devices_device_config_visible_adjustments_category">การปรับที่มองเห็นได้</string>
     <string name="devices_device_config_visible_adjustments_label">การปรับที่มองเห็นได้</string>
     <string name="devices_device_config_visible_adjustments_desc">แสดงหน้าต่างระดับเสียงของระบบในขณะที่แอปนี้ทำการปรับสำหรับอุปกรณ์นี้</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
@@ -195,12 +194,6 @@
     <string name="description_bluetooth_permission_required">This app needs Bluetooth permission to manage your device volumes.</string>
     <string name="action_grant_permission">Grant Permission</string>
     <string name="label_status_listening_for_changes">ฟังเสียงการเปลี่ยนแปลง</string>
-    <string name="monitor_visible_adjustments_autoplay_label">เล่นอัตโนมัติ</string>
-    <string name="monitor_visible_adjustments_launch_app_label">เปิดแอป</string>
-    <string name="monitor_visible_adjustments_music_volume_label">ระดับเสียงเพลง</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">ระดับเสียงแจ้งเตือน</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">ระดับเสียงเรียกเข้า</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">ระดับเสียงการโทร</string>
     <string name="action_exit">ปิด</string>
     <string name="action_start">เริ่ม</string>
     <string name="label_welcome">ยินดีต้อนรับ</string>

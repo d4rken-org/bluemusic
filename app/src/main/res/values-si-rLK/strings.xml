@@ -245,16 +245,9 @@
     <string name="devices_device_config_notification_policy_action">ආගම ඉල්ලා දීම</string>
     <string name="devices_device_config_notification_policy_required_notification">ඉශාරා ශබ්ද මට්ටම නියන්ත්රණයට ඉශාරා විසුම ආගම අවශ්යයි</string>
     <string name="devices_device_config_notification_policy_required_ringtone">වීණා ශබ්ද මට්ටම නියන්ත්රණයට ඉශාරා විසුම ආගම අවශ්යයි</string>
-    <string name="devices_device_config_visible_adjustments_category">දිසි විසුම සකසීම්</string>
     <string name="devices_device_config_visible_adjustments_desc">හැඩි සකසීම් මුනටිර බීම්පර සාඩේඝ පිහිදූවිනි විසුමි ආනන්න</string>
     <string name="general_clear_action">සුදු කරන්න</string>
     <string name="general_navigate_back_action">භවපස් ගමන්</string>
     <string name="general_reset_action">ගෘමින් සකසන්න</string>
     <string name="general_save_action">සේක්ෂය කරන්න</string>
-    <string name="monitor_visible_adjustments_autoplay_label">සම්පිටා මලන්</string>
-    <string name="monitor_visible_adjustments_launch_app_label">යෙදුම ශිප්ඤාරනි</string>
-    <string name="monitor_visible_adjustments_music_volume_label">සැලා්තා මට්ටම</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">ඉශාරා මට්ටම</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">වීණා මට්ටම</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">ස්වර මට්ටම</string>
 </resources>

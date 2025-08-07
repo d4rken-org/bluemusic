@@ -61,7 +61,6 @@
     <string name="devices_device_config_launch_app_desc">Spustí aplikaci po připojení tohoto zařízení.</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
-    <string name="devices_device_config_visible_adjustments_category">Viditelné úpravy</string>
     <string name="devices_device_config_visible_adjustments_label">Viditelné úpravy</string>
     <string name="devices_device_config_visible_adjustments_desc">Zobrazit systémové okno hlasitosti, když aplikace upravuje hlasitost pro toto zařízení.</string>
     <string name="devices_device_config_keep_awake_label">Zakázat režim spánku</string>
@@ -198,12 +197,6 @@
     <string name="description_bluetooth_permission_required">This app needs Bluetooth permission to manage your device volumes.</string>
     <string name="action_grant_permission">Grant Permission</string>
     <string name="label_status_listening_for_changes">Naslouchání změn hlasitosti</string>
-    <string name="monitor_visible_adjustments_autoplay_label">Automatické přehrávání</string>
-    <string name="monitor_visible_adjustments_launch_app_label">Spustit aplikaci</string>
-    <string name="monitor_visible_adjustments_music_volume_label">Hlasitost hudby</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">Hlasitost oznámení</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">Hlasitost vyzvánění</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">Hlasitost hovoru</string>
     <string name="action_exit">Ukončit</string>
     <string name="action_start">Start</string>
     <string name="label_welcome">Vítejte</string>

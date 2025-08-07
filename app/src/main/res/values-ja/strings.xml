@@ -57,7 +57,6 @@
     <string name="devices_device_config_notification_policy_required_notification">通知音量の制御には通知ポリシーアクセスが必要です</string>
     <string name="devices_device_config_notification_policy_required_ringtone">着信音量の制御には通知ポリシーアクセスが必要です</string>
     <string name="devices_device_config_visible_adjustments_label">表示される調整</string>
-    <string name="devices_device_config_visible_adjustments_category">表示される調整</string>
     <string name="devices_device_config_visible_adjustments_desc">デバイスカードに表示される調整項目を切り替えます</string>
     <string name="devices_device_config_keep_awake_label">スリープモードにしない</string>
     <string name="devices_device_config_keep_awake_desc">このデバイスが接続されている間は、画面をオンのままにします。</string>
@@ -276,6 +275,4 @@
     <string name="devices_indicator_auto">自動</string>
     <string name="devices_indicator_home">ホーム</string>
     <string name="devices_indicator_dnd">おやすみ</string>
-    <string name="monitor_visible_adjustments_autoplay_label">自動再生</string>
-    <string name="monitor_visible_adjustments_launch_app_label">アプリ起動</string>
 </resources>

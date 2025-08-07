@@ -52,7 +52,6 @@
     <string name="devices_device_config_notification_policy_action">منح الوصول</string>
     <string name="devices_device_config_notification_policy_required_notification">التحكم في مستوى صوت الإشعارات يتطلب الوصول إلى سياسة الإشعارات</string>
     <string name="devices_device_config_notification_policy_required_ringtone">التحكم في مستوى صوت الرنين يتطلب الوصول إلى سياسة الإشعارات</string>
-    <string name="devices_device_config_visible_adjustments_category">التعديلات المرئية</string>
     <string name="devices_device_config_visible_adjustments_label">التعديلات المرئية</string>
     <string name="devices_device_config_visible_adjustments_desc">تبديل التطبيقات التي يتم عرضها على بطاقة الجهاز</string>
     <string name="devices_device_config_keep_awake_label">ابق مستيقظ</string>
@@ -251,10 +250,4 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
-    <string name="monitor_visible_adjustments_autoplay_label">التشغيل التلقائي</string>
-    <string name="monitor_visible_adjustments_launch_app_label">تشغيل التطبيق</string>
-    <string name="monitor_visible_adjustments_music_volume_label">مستوى صوت الموسيقى</string>
-    <string name="monitor_visible_adjustments_notification_volume_label">مستوى صوت الإشعارات</string>
-    <string name="monitor_visible_adjustments_ring_volume_label">مستوى صوت الرنين</string>
-    <string name="monitor_visible_adjustments_voice_volume_label">مستوى صوت المكالمات</string>
 </resources>
