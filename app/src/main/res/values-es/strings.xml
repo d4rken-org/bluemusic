@@ -43,6 +43,8 @@
     <string name="devices_device_config_launch_app_label">Iniciar la aplicación</string>
     <string name="devices_device_config_launch_app_desc">Inicia una aplicación cuando este dispositivo se conecta.</string>
     <string name="devices_device_config_launch_app_multiple_desc">%d aplicaciones seleccionadas</string>
+    <string name="devices_device_config_show_home_screen_label">Mostrar pantalla de inicio</string>
+    <string name="devices_device_config_show_home_screen_desc">Después de que se procesen todos los eventos para este dispositivo, intenta mostrar la pantalla de inicio. Esto puede no funcionar en todas las versiones de Android.</string>
     <string name="devices_device_config_nudge_volume_label">Empujar volumen</string>
     <string name="devices_device_config_notification_policy_action">Conceder acceso</string>
     <string name="devices_device_config_notification_policy_required_notification">El control del volumen de notificación requiere acceso a la política de notificación</string>
@@ -79,13 +81,13 @@
     <string name="devices_device_config_alarm_volume_label">Volumen de la alarma</string>
     <string name="devices_device_config_alarm_volume_desc">Algunas aplicaciones de alarma usan el volumen de la música en su lugar.</string>
     <string name="devices_device_config_notification_volume_label">Volumen de notificación</string>
-    <string name="devices_device_config_notification_volume_desc">No todos los dispositivos admiten una configuración de volumen de notificación independiente.</string>
+    <string name="devices_device_config_notification_volume_desc">No todos los dispositivos admiten una configuración de volumen de notificación independiente. También puede configurar el modo silencioso o vibración.</string>
     <string name="devices_device_config_music_volume_label">Volumen de la música</string>
     <string name="devices_device_config_music_volume_desc">Controla el volumen de la música y los juegos cuando se conecta este dispositivo.</string>
     <string name="devices_device_config_call_volume_label">Volumen de las llamadas</string>
     <string name="devices_device_config_call_volume_desc">Controla el volumen de las llamadas cuando este dispositivo se conecta.</string>
     <string name="devices_device_config_ring_volume_label">Volumen del timbre</string>
-    <string name="devices_device_config_ring_volume_desc">Controla el volumen que afecta a tu tono de llamada.</string>
+    <string name="devices_device_config_ring_volume_desc">Controla el volumen que afecta a tu tono de llamada. También puede configurar el modo silencioso o vibración.</string>
     <string name="devices_stream_music_label">Música</string>
     <string name="devices_audio_stream_call_label">Llamada</string>
     <string name="devices_audio_stream_ring_label">Timbre</string>
@@ -258,6 +260,7 @@
     <string name="bluemusic_mascot_description">Icono de la aplicación</string>
 
     <!-- Do Not Disturb mode -->
+    <string name="devices_device_config_notification_policy_required_dnd">El control de No molestar requiere acceso a la política de notificación</string>
     <string name="devices_device_config_dnd_on_connect_label">Modo No molestar</string>
     <string name="dnd_mode_dialog_title">Seleccionar modo No molestar</string>
     <string name="dnd_mode_dont_change">No cambiar</string>

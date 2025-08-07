@@ -39,6 +39,7 @@
     <string name="devices_device_config_notification_policy_action">Zugriff gewähren</string>
     <string name="devices_device_config_notification_policy_required_notification">Benachrichtigungslautstärke-Kontrolle benötigt Zugriff auf die Benachrichtigungsrichtlinie</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Klingeltonlautstärke-Kontrolle benötigt Zugriff auf die Benachrichtigungsrichtlinie</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Bitte-nicht-stören-Kontrolle benötigt Zugriff auf die Benachrichtigungsrichtlinie</string>
     <string name="devices_device_config_adjustment_delay_label">Anpassungsverzögerung</string>
     <string name="devices_device_config_adjustment_delay_desc">Die Verzögerung der Anpassungsschritte in Millisekunden. Eine Verzögerung von 0 heißt, dass die gewünschte Lautstärke sofort beim verbinden gesetzt wird.</string>
     <string name="devices_device_config_reaction_delay_label">Reaktionsverzögerung</string>
@@ -65,7 +66,7 @@
     <string name="devices_device_config_volume_rate_limiter_desc">Begrenzt die Häufigkeit von Lautstärkeänderungen, um schnelle oder übermäßige Lautstärke-Anpassungen zu verhindern.</string>
     <string name="devices_device_config_volume_rate_limit_duration_label">Begrenzungsdauer</string>
     <string name="devices_device_config_volume_rate_limit_duration_desc">Mindestzeit zwischen Lautstärkeänderungen: %d ms</string>
-    <string name="devices_device_config_autoplay_label">Autoplay</string>
+    <string name="devices_device_config_autoplay_label">Automatische Wiedergabe</string>
     <string name="devices_app_selection_currently_selected">Aktuell ausgewählt</string>
     <string name="devices_app_selection_search_hint">Apps suchen…</string>
     <string name="devices_app_selection_selected_count">%d Apps ausgewählt</string>
@@ -76,7 +77,7 @@
     <string name="devices_device_config_autoplay_keycodes_label">Tastentypen</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Keine Tasten konfiguriert</string>
     <string name="devices_device_config_autoplay_keycodes_order">Ausgewählte Tasten (in Reihenfolge)</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Autoplay-Tastentypen</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Automatische Wiedergabe-Tastentypen</string>
     <string name="devices_device_config_section_volumes_label">Lautstärken</string>
     <string name="devices_device_config_section_volume_label">Lautstärke</string>
     <string name="devices_device_config_alarm_volume_label">Alarmlautstärke</string>
