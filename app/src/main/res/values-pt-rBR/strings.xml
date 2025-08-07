@@ -42,10 +42,14 @@
     <string name="devices_device_config_section_reaction_label">Outros</string>
     <string name="devices_device_config_launch_app_label">Iniciar o aplicativo</string>
     <string name="devices_device_config_launch_app_desc">Abre um aplicativo ao conectar este dispositivo.</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d aplicativos selecionados</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
-    <string name="devices_device_config_visible_adjustments_label">Ajustes visíveis</string>
-    <string name="devices_device_config_visible_adjustments_desc">Mostrar a janela de volume do sistema enquanto este aplicativo faz ajustes para este dispositivo.</string>
+    <string name="devices_device_config_notification_policy_action">Conceder acesso</string>
+    <string name="devices_device_config_notification_policy_required_notification">O controle de volume de notificação requer acesso à política de notificação</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">O controle de volume do toque requer acesso à política de notificação</string>
+    <string name="devices_device_config_visible_adjustments_category">Ajustes visíveis</string>
+    <string name="devices_device_config_visible_adjustments_desc">Alternar quais ajustes são mostrados no cartão do dispositivo</string>
     <string name="devices_device_config_keep_awake_label">Manter ativo</string>
     <string name="devices_device_config_keep_awake_desc">Mantenha a tela ligada enquanto este dispositivo estiver conectado.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -58,6 +62,12 @@
     <string name="devices_device_config_volume_rate_limit_duration_desc">Tempo mínimo entre mudanças de volume: %d ms</string>
     <string name="devices_device_config_autoplay_label">Reprodução automática</string>
     <string name="devices_device_config_autoplay_desc">Simula uma reprodução imediata em um controle remoto bluetooth ao conectar este dispositivo.</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Tipos de teclas disponíveis</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Configure quais teclas enviar e em que ordem</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Tipos de tecla</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Nenhuma tecla configurada</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Teclas selecionadas (em ordem)</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Tipos de Tecla de Reprodução Automática</string>
     <string name="devices_device_config_section_volumes_label">Volumes</string>
     <string name="devices_device_config_section_volume_label">Volume</string>
     <string name="devices_device_config_alarm_volume_label">Volume do alarme</string>
@@ -142,6 +152,10 @@
     <string name="settings_privacy_policy_desc">Handling data responsibly.</string>
     <string name="changelog_label">Changelog</string>
     <string name="debug_notification_channel_label">Debug notifications</string>
+    <string name="devices_app_selection_currently_selected">Atualmente selecionados</string>
+    <string name="devices_app_selection_search_hint">Buscar aplicativos…</string>
+    <string name="devices_app_selection_selected_count">%d aplicativos selecionados</string>
+    <string name="devices_app_selection_title">Selecionar Aplicativos</string>
     <string name="debug_log_consent_title">Debug log</string>
     <string name="debug_log_consent_explanation">This feature records everything the app is doing into a shareable file. The generated file contains sensitive information (e.g. file names and installed apps). Only share it with trusted parties (e.g. a developer troubleshooting an issue).</string>
     <string name="debug_log_recording_progress">Recording debug log</string>
@@ -221,7 +235,11 @@
     <string name="privacy_policy_label">Privacy policy</string>
     <string name="managed_devices_empty_message">No Bluetooth devices configured.\nTap the + button to add your first device.</string>
     <string name="general_delete_action">Delete</string>
+    <string name="general_navigate_back_action">Voltar</string>
+    <string name="general_reset_action">Redefinir</string>
+    <string name="general_save_action">Salvar</string>
     <string name="general_cancel_action">Cancelar</string>
+    <string name="general_clear_action">Limpar</string>
     <string name="general_configure_action">Configure</string>
     <string name="battery_optimization_hint_title">Battery optimization</string>
     <string name="battery_optimization_hint_message">Battery optimizations are enabled and may prevent proper operation. Consider disabling them.</string>
@@ -236,4 +254,6 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+    <string name="monitor_visible_adjustments_autoplay_label">Reprodução automática</string>
+    <string name="monitor_visible_adjustments_launch_app_label">Iniciar aplicativo</string>
 </resources>

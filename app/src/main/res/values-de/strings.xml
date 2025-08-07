@@ -3,6 +3,7 @@
     <string name="app_name">Bluetooth-Lautstärken Manager</string>
     <string name="general_error_label">Fehler</string>
     <string name="general_error_no_compatible_app_found_msg">Keine kompatible App gefunden, um diese Anfrage zu bearbeiten.</string>
+    <string name="general_navigate_back_action">Zurück navigieren</string>
     <string name="general_share_action">Teilen</string>
     <string name="general_back_action">Zurück</string>
     <string name="general_show_details_action">Details anzeigen</string>
@@ -35,6 +36,9 @@
     <string name="devices_device_config_section_timing_label">Timing</string>
     <string name="devices_device_config_monitoring_duration_label">Überwachungsdauer</string>
     <string name="devices_device_config_monitoring_duration_desc">Zeit in Millisekunden nach durchgeführten Korrekturen, während der weitere Lautstärkeänderungen blockiert werden.</string>
+    <string name="devices_device_config_notification_policy_action">Zugriff gewähren</string>
+    <string name="devices_device_config_notification_policy_required_notification">Benachrichtigungslautstärke-Kontrolle benötigt Zugriff auf die Benachrichtigungsrichtlinie</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Klingeltonlautstärke-Kontrolle benötigt Zugriff auf die Benachrichtigungsrichtlinie</string>
     <string name="devices_device_config_adjustment_delay_label">Anpassungsverzögerung</string>
     <string name="devices_device_config_adjustment_delay_desc">Die Verzögerung der Anpassungsschritte in Millisekunden. Eine Verzögerung von 0 heißt, dass die gewünschte Lautstärke sofort beim verbinden gesetzt wird.</string>
     <string name="devices_device_config_reaction_delay_label">Reaktionsverzögerung</string>
@@ -42,6 +46,7 @@
     <string name="devices_device_config_section_reaction_label">Reaktion</string>
     <string name="devices_device_config_launch_app_label">App starten</string>
     <string name="devices_device_config_launch_app_desc">Starte eine App, wenn sich dieses Gerät verbindet.</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d Apps ausgewählt</string>
     <string name="devices_device_config_show_home_screen_label">Startbildschirm anzeigen</string>
     <string name="devices_device_config_show_home_screen_desc">Nachdem alle Ereignisse für dieses Gerät verarbeitet wurden, versuche den Startbildschirm anzuzeigen. Das funktioniert möglicherweise nicht auf allen Android-Versionen.</string>
     <string name="devices_device_config_nudge_volume_label">Lautstärke anstoßen</string>
@@ -61,7 +66,17 @@
     <string name="devices_device_config_volume_rate_limit_duration_label">Begrenzungsdauer</string>
     <string name="devices_device_config_volume_rate_limit_duration_desc">Mindestzeit zwischen Lautstärkeänderungen: %d ms</string>
     <string name="devices_device_config_autoplay_label">Autoplay</string>
+    <string name="devices_app_selection_currently_selected">Aktuell ausgewählt</string>
+    <string name="devices_app_selection_search_hint">Apps suchen…</string>
+    <string name="devices_app_selection_selected_count">%d Apps ausgewählt</string>
+    <string name="devices_app_selection_title">Apps auswählen</string>
     <string name="devices_device_config_autoplay_desc">Die \'Autoplay\' Funktion simuliert einen Knopfdruck auf \'Abspielen\' einer Bluetoothfernsteuerung.</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Verfügbare Tastentypen</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Konfiguriere, welche Tasten gesendet werden sollen und in welcher Reihenfolge</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Tastentypen</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Keine Tasten konfiguriert</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Ausgewählte Tasten (in Reihenfolge)</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Autoplay-Tastentypen</string>
     <string name="devices_device_config_section_volumes_label">Lautstärken</string>
     <string name="devices_device_config_section_volume_label">Lautstärke</string>
     <string name="devices_device_config_alarm_volume_label">Alarmlautstärke</string>
@@ -225,7 +240,10 @@
     <string name="privacy_policy_label">Datenschutzerklärung</string>
     <string name="managed_devices_empty_message">Keine Bluetooth-Geräte konfiguriert.\nTippen Sie auf die Schaltfläche +, um Ihr erstes Gerät hinzuzufügen.</string>
     <string name="general_delete_action">Löschen</string>
+    <string name="general_reset_action">Zurücksetzen</string>
+    <string name="general_save_action">Speichern</string>
     <string name="general_cancel_action">Abbrechen</string>
+    <string name="general_clear_action">Löschen</string>
     <string name="general_configure_action">Konfigurieren</string>
     <string name="battery_optimization_hint_title">Batterieoptimierung</string>
     <string name="battery_optimization_hint_message">Batterieoptimierungen sind aktiviert und können den ordnungsgemäßen Betrieb verhindern. Erwägen Sie, sie zu deaktivieren.</string>

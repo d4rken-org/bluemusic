@@ -1,0 +1,22 @@
+**Bluetooth skaļuma pārvaldnieks** atceras skaļuma līmeņus katrai jūsu Bluetooth ierīcei un reaģē, kad tās pieslēdzas vai atvienojas.
+
+**Funkcijas:**
+* Iestatiet mūzikas, zvanu, zvana signāla un paziņojumu skaļumu katrai ierīcei
+* Automātiski sūtiet mediju komandas, piemēram, Atskaņot vai Nākamais
+* Palaidiet lietotnes pie pieslēgšanās
+* Uzturiet ekrānu aktīvu
+* Bloķējiet skaļuma līmeņus
+* Atjaunojiet skaļumu pēc atvienošanās
+
+Nav reklāmu, nav izsekošanas. Atvērtā koda.
+Daži papildinājumi prasa maksas jaunināšanu, lai atbalstītu izstrādi.
+
+**Piezīme:** Šī lietotne nevar pastiprinai skaļumu vai ignorēt sistēmas skaļuma ierobežojumus.
+
+**Atļaujas:**
+* **Internets** – neobligātiem kļūdu ziņojumiem
+* **Bluetooth** – lai noteiktu ierīču savienojumus
+* **Audio iestatījumi** – lai mainītu skaļumu
+* **Sāknēšana** – lai atjaunotu iestatījumus pēc restartēšanas
+* **Aktivitātes bloķēšana** – lai uzturētu ekrānu aktīvu vai labotu Samsung kļūdas
+* **Sistēmas brīdinājumu logs** – lai automātiski palaistu lietotnes (tikai Android 10)

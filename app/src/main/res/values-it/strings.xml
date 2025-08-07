@@ -23,6 +23,10 @@
     <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
     <string name="discover_all_devices_managed_msg">Tutti i tuoi dispositivi accoppiati sono gestiti! Te ne serve uno nuovo?</string>
     <string name="discover_pair_new_device_action">Accoppia nuovo dispositivo</string>
+    <string name="devices_app_selection_currently_selected">Attualmente selezionate</string>
+    <string name="devices_app_selection_search_hint">Cerca app…</string>
+    <string name="devices_app_selection_selected_count">%d app selezionate</string>
+    <string name="devices_app_selection_title">Seleziona App</string>
     <string name="devices_device_config_label">Device configuration</string>
     <string name="devices_device_config_section_general_label">Generale</string>
     <string name="devices_device_config_remove_device_label">Forget device</string>
@@ -42,10 +46,11 @@
     <string name="devices_device_config_section_reaction_label">Altro</string>
     <string name="devices_device_config_launch_app_label">Avvio app</string>
     <string name="devices_device_config_launch_app_desc">Avvia un\'app quando questo dispositivo viene connesso.</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d app selezionate</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
-    <string name="devices_device_config_visible_adjustments_label">Regolazioni visibili</string>
-    <string name="devices_device_config_visible_adjustments_desc">Mostra la finestra del volume del sistema mentre questa app effettua regolazioni per questo dispositivo.</string>
+    <string name="devices_device_config_visible_adjustments_category">Regolazioni visibili</string>
+    <string name="devices_device_config_visible_adjustments_desc">Attiva o disattiva quali regolazioni vengono mostrate nella scheda del dispositivo</string>
     <string name="devices_device_config_keep_awake_label">Mantieni attivo</string>
     <string name="devices_device_config_keep_awake_desc">Mantieni lo schermo acceso mentre questo dispositivo è connesso.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -58,6 +63,12 @@
     <string name="devices_device_config_volume_rate_limit_duration_desc">Tempo minimo tra i cambiamenti di volume: %d ms</string>
     <string name="devices_device_config_autoplay_label">Autoplay</string>
     <string name="devices_device_config_autoplay_desc">Simula la pressione del tasto play quando un dispositivo Bluetooth viene connesso.</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Tipi di tasto disponibili</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Configura quali tasti inviare e in che ordine</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Tipi di tasto</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Nessun tasto configurato</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Tasti selezionati (in ordine)</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Tipi di Tasto per Autoplay</string>
     <string name="devices_device_config_section_volumes_label">Volumi</string>
     <string name="devices_device_config_section_volume_label">Volume</string>
     <string name="devices_device_config_alarm_volume_label">Alarm volume</string>
@@ -70,6 +81,9 @@
     <string name="devices_device_config_call_volume_desc">Controlla il volume delle chiamate quando questo dispositivo è connesso.</string>
     <string name="devices_device_config_ring_volume_label">Volume suoneria</string>
     <string name="devices_device_config_ring_volume_desc">Controlla il volume che incide sulla tua suoneria.</string>
+    <string name="devices_device_config_notification_policy_action">Concedi accesso</string>
+    <string name="devices_device_config_notification_policy_required_notification">Il controllo del volume delle notifiche richiede l'accesso alle politiche di notifica</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Il controllo del volume della suoneria richiede l'accesso alle politiche di notifica</string>
     <string name="devices_stream_music_label">Music</string>
     <string name="devices_audio_stream_call_label">Call</string>
     <string name="devices_audio_stream_ring_label">Ring</string>
@@ -221,7 +235,11 @@
     <string name="privacy_policy_label">Privacy policy</string>
     <string name="managed_devices_empty_message">No Bluetooth devices configured.\nTap the + button to add your first device.</string>
     <string name="general_delete_action">Delete</string>
+    <string name="general_navigate_back_action">Torna indietro</string>
+    <string name="general_reset_action">Ripristina</string>
+    <string name="general_save_action">Salva</string>
     <string name="general_cancel_action">Annulla</string>
+    <string name="general_clear_action">Cancella</string>
     <string name="general_configure_action">Configure</string>
     <string name="battery_optimization_hint_title">Battery optimization</string>
     <string name="battery_optimization_hint_message">Battery optimizations are enabled and may prevent proper operation. Consider disabling them.</string>
@@ -255,6 +273,8 @@
     <string name="devices_indicator_limit">Limite</string>
     <string name="devices_indicator_launch">Avvia</string>
     <string name="devices_indicator_auto">Auto</string>
+    <string name="monitor_visible_adjustments_autoplay_label">Autoplay</string>
+    <string name="monitor_visible_adjustments_launch_app_label">Avvia app</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>
 </resources>

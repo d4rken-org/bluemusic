@@ -1,0 +1,22 @@
+**Gestiore de Volumen Bluetooth** memoriat sos livellus de volumen pro cata dispositivu Bluetooth e reagit candu si connettint o si disconnettint.
+
+**Funtzionalitades:**
+* Cunfigurat volumen mùsica, telefonadas, sonadore e notìficas pro cata dispositivu
+* Mandada automatica de comandus multimediales comente Riprodùghere o Imbeniente
+* Abertura de aplicatziones a sa connessione
+* Mantenet su ischermu allughèrtu
+* Blocca sos livellus de volumen
+* Ripristinat su volumen a pustis de sa disconnessione
+
+Peruna publicitade, peruna trakinada. Open-source.
+Calchi prus rechidet unu aggiornamentu pagadu pro sustenere su isvilupu.
+
+**Nota:** Custa aplicatzione non podet ammentare su volumen o superare sos lìmites de volumen de su sistema.
+
+**Permissos:**
+* **Internet** – pro reportus de errores optzionales
+* **Bluetooth** – pro rilevare sas connessiones de dispositivos
+* **Cunfiguratzione àudio** – pro cambiare su volumen
+* **Aviada** – pro ripristinare sas cunfiguratziones a pustis de su riavìu
+* **Wake lock** – pro mantenere su ischermu allughèrtu o currigere errores Samsung
+* **Bentana de alerta de sistema** – pro abertura automatica de aplicatziones (Android 10 solu)

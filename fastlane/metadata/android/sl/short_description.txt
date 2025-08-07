@@ -1,0 +1,1 @@
+Individualna konfiguracija glasnosti glasu in glasbe za Bluetooth naprave.

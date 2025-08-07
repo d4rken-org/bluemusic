@@ -6,6 +6,10 @@
     <string name="general_share_action">Share</string>
     <string name="general_back_action">Back</string>
     <string name="general_show_details_action">Show details</string>
+    <string name="general_clear_action">クリア</string>
+    <string name="general_navigate_back_action">戻る</string>
+    <string name="general_reset_action">リセット</string>
+    <string name="general_save_action">保存</string>
     <string name="onboarding_welcome_title">Welcome to BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager allows you to manage Bluetooth device volumes automatically.</string>
     <string name="onboarding_welcome_action">Let\'s go</string>
@@ -37,15 +41,24 @@
     <string name="devices_device_config_monitoring_duration_desc">いったん調整が完了した後、それ以上の音量変更がブロックされる時間をミリ秒単位で指定します。</string>
     <string name="devices_device_config_adjustment_delay_label">調節の遅延</string>
     <string name="devices_device_config_adjustment_delay_desc">各音量調整の間のミリ秒単位の遅延です。遅延0msは、このデバイスが接続されたときに即座に音量を設定することを意味します。</string>
+    <string name="devices_app_selection_currently_selected">現在選択中</string>
+    <string name="devices_app_selection_search_hint">アプリを検索...</string>
+    <string name="devices_app_selection_selected_count">%d個のアプリが選択されています</string>
+    <string name="devices_app_selection_title">アプリを選択</string>
     <string name="devices_device_config_reaction_delay_label">反応の遅延</string>
     <string name="devices_device_config_reaction_delay_desc">このアプリが端末に反応するまでのミリ秒単位の遅延。</string>
     <string name="devices_device_config_section_reaction_label">その他</string>
     <string name="devices_device_config_launch_app_label">アプリを起動</string>
     <string name="devices_device_config_launch_app_desc">このデバイスが接続されたときにアプリを起動します。</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d個のアプリが選択されています</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
+    <string name="devices_device_config_notification_policy_action">アクセスを許可</string>
+    <string name="devices_device_config_notification_policy_required_notification">通知音量の制御には通知ポリシーアクセスが必要です</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">着信音量の制御には通知ポリシーアクセスが必要です</string>
     <string name="devices_device_config_visible_adjustments_label">表示される調整</string>
-    <string name="devices_device_config_visible_adjustments_desc">このアプリがこのデバイスの調整を行っている間、システムの音量ウィンドウを表示します。</string>
+    <string name="devices_device_config_visible_adjustments_category">表示される調整</string>
+    <string name="devices_device_config_visible_adjustments_desc">デバイスカードに表示される調整項目を切り替えます</string>
     <string name="devices_device_config_keep_awake_label">スリープモードにしない</string>
     <string name="devices_device_config_keep_awake_desc">このデバイスが接続されている間は、画面をオンのままにします。</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -58,6 +71,12 @@
     <string name="devices_device_config_volume_rate_limit_duration_desc">音量変更間の最小時間: %d ms</string>
     <string name="devices_device_config_autoplay_label">自動再生</string>
     <string name="devices_device_config_autoplay_desc">このデバイスが接続されたときに、Bluetoothリモコンでの再生をシミュレートします。</string>
+    <string name="devices_device_config_autoplay_keycodes_available">利用可能なキータイプ</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">送信するキーの種類と順序を設定します</string>
+    <string name="devices_device_config_autoplay_keycodes_label">キータイプ</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">キーが設定されていません</string>
+    <string name="devices_device_config_autoplay_keycodes_order">選択されたキー（順序通り）</string>
+    <string name="devices_device_config_autoplay_keycodes_title">自動再生キータイプ</string>
     <string name="devices_device_config_section_volumes_label">音量</string>
     <string name="devices_device_config_section_volume_label">Volume</string>
     <string name="devices_device_config_alarm_volume_label">アラームの音量</string>
@@ -257,4 +276,6 @@
     <string name="devices_indicator_auto">自動</string>
     <string name="devices_indicator_home">ホーム</string>
     <string name="devices_indicator_dnd">おやすみ</string>
+    <string name="monitor_visible_adjustments_autoplay_label">自動再生</string>
+    <string name="monitor_visible_adjustments_launch_app_label">アプリ起動</string>
 </resources>

@@ -42,10 +42,15 @@
     <string name="devices_device_config_section_reaction_label">Reaction</string>
     <string name="devices_device_config_launch_app_label">Launch app</string>
     <string name="devices_device_config_launch_app_desc">Launch an app when this device connects.</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d aplicații selectate</string>
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
+    <string name="devices_device_config_notification_policy_action">Acordă acces</string>
+    <string name="devices_device_config_notification_policy_required_notification">Controlul volumului pentru notificări necesită acces la politica de notificări</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Controlul volumului de apel necesită acces la politica de notificări</string>
     <string name="devices_device_config_visible_adjustments_label">Ajustări vizibile</string>
-    <string name="devices_device_config_visible_adjustments_desc">Afișează fereastra de volum a sistemului în timp ce această aplicație face ajustări pentru acest dispozitiv.</string>
+    <string name="devices_device_config_visible_adjustments_category">Ajustări vizibile</string>
+    <string name="devices_device_config_visible_adjustments_desc">Comută care ajustări sunt afișate pe cardul dispozitivului</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -54,6 +59,16 @@
     <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
     <string name="devices_device_config_autoplay_label">Autoplay</string>
     <string name="devices_device_config_autoplay_desc">Simulate pressing play on a Bluetooth remote when this device connects.</string>
+    <string name="devices_app_selection_currently_selected">Selectate în prezent</string>
+    <string name="devices_app_selection_search_hint">Caută aplicații…</string>
+    <string name="devices_app_selection_selected_count">%d aplicații selectate</string>
+    <string name="devices_app_selection_title">Selectează aplicații</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Tipuri de taste disponibile</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Configurează care taste să trimită și în ce ordine</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Tipuri de taste</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Nicio tastă configurată</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Tastele selectate (în ordine)</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Tipuri de taste pentru redare automată</string>
     <string name="devices_device_config_section_volumes_label">Volumes</string>
     <string name="devices_device_config_section_volume_label">Volume</string>
     <string name="devices_device_config_alarm_volume_label">Alarm volume</string>
@@ -217,7 +232,11 @@
     <string name="privacy_policy_label">Privacy policy</string>
     <string name="managed_devices_empty_message">No Bluetooth devices configured.\nTap the + button to add your first device.</string>
     <string name="general_delete_action">Delete</string>
+    <string name="general_navigate_back_action">Navighează înapoi</string>
+    <string name="general_reset_action">Resetează</string>
+    <string name="general_save_action">Salvează</string>
     <string name="general_cancel_action">Cancel</string>
+    <string name="general_clear_action">Șterge</string>
     <string name="general_configure_action">Configure</string>
     <string name="battery_optimization_hint_title">Battery optimization</string>
     <string name="battery_optimization_hint_message">Battery optimizations are enabled and may prevent proper operation. Consider disabling them.</string>
@@ -232,4 +251,10 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+    <string name="monitor_visible_adjustments_autoplay_label">Redare automată</string>
+    <string name="monitor_visible_adjustments_launch_app_label">Lansează aplicație</string>
+    <string name="monitor_visible_adjustments_music_volume_label">Volum muzică</string>
+    <string name="monitor_visible_adjustments_notification_volume_label">Volum notificări</string>
+    <string name="monitor_visible_adjustments_ring_volume_label">Volum apel</string>
+    <string name="monitor_visible_adjustments_voice_volume_label">Volum voce</string>
 </resources>
