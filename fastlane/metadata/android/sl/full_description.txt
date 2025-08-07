@@ -1,22 +1,22 @@
-**Upravljalec glasnosti Bluetooth** si zapomni ravni glasnosti za vsako od vaših Bluetooth naprav in se odzove, ko se povežejo ali odklopijo.
+**Upravljalnik glasnosti Bluetooth** si zapomni ravni glasnosti za vsako od vaših Bluetooth naprav in se odzove, ko se povežejo ali odklopijo.
 
 **Funkcije:**
-* Nastavite glasnost glasbe, klicev, zvonjenja in obvestil za posamezno napravo
-* Samodejno pošljite ukaze za medije, kot sta Predvajaj ali Naslednji
-* Zaženite aplikacije ob povezavi
-* Ohranite zaslon buden
-* Zaklenite ravni glasnosti
-* Obnovite glasnost po odklopi
+* Nastavite glasnost glasbe, klicev, zvonjenja in obvestil za posamezno napravo  
+* Samodejno pošljite ukaze za medije, kot sta Predvajaj ali Naslednja  
+* Zaženite aplikacije ob povezavi  
+* Ohranite zaslon priž­gan  
+* Zaklenite ravni glasnosti  
+* Obnovite glasnost po odklopi  
 
-Brez oglasov, brez sledenja. Odprta koda.
-Nekatere dodatne funkcije zahtevajo plačljivo nadgradnjo za podporo razvoju.
+Brez oglasov, brez sledenja. Odprtokodna.  
+Nekateri dodatki zahtevajo plačano nadgradnjo za podporo razvoju.
 
-**Opomba:** Ta aplikacija ne more povečati glasnosti ali prepisati sistemskih omejitev glasnosti.
+**Opomba:** Ta aplikacija ne more povečati glasnosti ali preseči sistemskih omejitev glasnosti.
 
 **Dovoljenja:**
-* **Internet** – za neobvezna poročila o napakah
-* **Bluetooth** – za zaznavanje povezav naprav
-* **Nastavitve zvoka** – za spreminjanje glasnosti
-* **Zagon** – za obnovitev nastavitev po ponovnem zagonu
-* **Wake lock** – za ohranjanje budnega zaslona ali odpravljanje napak Samsung
-* **Sistemsko opozorilo** – za samodejni zagon aplikacij (samo Android 10)
+* **Internet** – za izbirna poročila o napakah  
+* **Bluetooth** – za zaznavanje povezav naprav  
+* **Zvočne nastavitve** – za spreminjanje glasnosti  
+* **Zagon** – za obnovitev nastavitev po ponovnem zagonu  
+* **Zaklepanje budnosti** – za ohranjanje prižganega zaslona ali odpravljanje napak Samsung  
+* **Sistemsko opozorilno okno** – za samodejni zagon aplikacij (samo Android 10)
