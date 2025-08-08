@@ -159,7 +159,7 @@ android {
 
     androidResources {
         @Suppress("UnstableApiUsage")
-        generateLocaleConfig = false // TODO: Fix resources.properties file
+        generateLocaleConfig = true
     }
 
     packaging {
