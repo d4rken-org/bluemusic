@@ -33,7 +33,7 @@ class AppRepo @Inject constructor(
         }
     }
 
-    private suspend fun loadApps() {
+    private fun loadApps() {
         log(TAG) { "Loading apps with MAIN/LAUNCHER intent..." }
 
         val mainIntent = Intent(Intent.ACTION_MAIN, null).apply {
@@ -41,27 +41,31 @@ class AppRepo @Inject constructor(
         }
 
         val resolvedActivities = context.packageManager.queryIntentActivities(mainIntent, 0)
-        val appInfos = resolvedActivities.mapNotNull { resolveInfo ->
-            try {
-                val packageName = resolveInfo.activityInfo.packageName
-                val label = resolveInfo.loadLabel(context.packageManager).toString()
-                val icon = try {
-                    resolveInfo.loadIcon(context.packageManager)
+        val appInfos = resolvedActivities
+            .mapNotNull { resolveInfo ->
+                try {
+                    val packageName = resolveInfo.activityInfo.packageName
+                    val label = resolveInfo.loadLabel(context.packageManager).toString()
+                    val icon = try {
+                        resolveInfo.loadIcon(context.packageManager)
+                    } catch (e: Exception) {
+                        log(TAG, ERROR) { "Failed to load icon for $packageName: ${e.asLog()}" }
+                        null
+                    }
+
+                    AppInfo(
+                        packageName = packageName,
+                        label = label,
+                        icon = icon
+                    )
                 } catch (e: Exception) {
-                    log(TAG, ERROR) { "Failed to load icon for $packageName: ${e.asLog()}" }
+                    log(TAG, ERROR) { "Failed to load app info: ${e.asLog()}" }
                     null
                 }
-
-                AppInfo(
-                    packageName = packageName,
-                    label = label,
-                    icon = icon
-                )
-            } catch (e: Exception) {
-                log(TAG, ERROR) { "Failed to load app info: ${e.asLog()}" }
-                null
             }
-        }.sortedBy { it.label.lowercase() }.toSet()
+            .distinctBy { it.packageName }
+            .sortedBy { it.label.lowercase() }
+            .toSet()
 
         log(TAG) { "Loaded ${appInfos.size} apps" }
         _apps.value = appInfos
