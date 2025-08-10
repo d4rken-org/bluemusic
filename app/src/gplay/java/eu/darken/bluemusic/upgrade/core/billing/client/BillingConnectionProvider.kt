@@ -35,7 +35,11 @@ class BillingConnectionProvider @Inject constructor(
         val purchaseEvents = MutableStateFlow<Pair<BillingResult, Collection<Purchase>?>?>(null)
 
         val client = newBuilder(context).apply {
-            enablePendingPurchases(PendingPurchasesParams.newBuilder().build())
+            enablePendingPurchases(
+                PendingPurchasesParams.newBuilder().apply {
+                    enableOneTimeProducts()
+                }.build()
+            )
             setListener { result, purchases ->
                 if (result.isSuccess) {
                     log(TAG) {
