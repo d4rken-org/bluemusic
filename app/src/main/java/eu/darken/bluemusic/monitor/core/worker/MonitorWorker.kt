@@ -34,7 +34,6 @@ import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerModeEvent
 import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
-import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
@@ -74,7 +73,6 @@ class MonitorWorker @AssistedInject constructor(
     private val volumeModuleMap: Set<@JvmSuppressWildcards VolumeModule>,
     private val volumeObserver: VolumeObserver,
     private val ringerModeObserver: RingerModeObserver,
-    private val ringerTool: RingerTool,
     private val bluetoothEventQueue: BluetoothEventQueue,
 ) : CoroutineWorker(context, params) {
 
@@ -166,8 +164,6 @@ class MonitorWorker @AssistedInject constructor(
                 )
 
                 val stayActive = activeDevices.any { it.requiresMonitor }
-                val maxMonitoringDuration = activeDevices.maxOf { it.monitoringDuration }
-                log(TAG) { "Maximum monitoring duration: $maxMonitoringDuration (stayActive=$stayActive)" }
 
                 when {
                     activeDevices.isNotEmpty() && stayActive -> {
@@ -177,6 +173,8 @@ class MonitorWorker @AssistedInject constructor(
 
                     activeDevices.isNotEmpty() -> flow {
                         log(TAG) { "There are active devices but we don't need to stay active for them." }
+                        val maxMonitoringDuration = activeDevices.maxOf { it.monitoringDuration }
+                        log(TAG) { "Maximum monitoring duration: $maxMonitoringDuration" }
                         val toDelay = Duration.ofSeconds(15) + maxMonitoringDuration
                         delay(toDelay.toMillis())
                         log(TAG) { "Canceling worker now, nothing changed." }
