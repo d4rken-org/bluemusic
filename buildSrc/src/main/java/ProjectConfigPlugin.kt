@@ -6,7 +6,7 @@ import java.util.Properties
 
 open class ProjectConfig {
     val packageName = "eu.darken.bluemusic"
-    val minSdk = 21
+    val minSdk = 23
 
     val compileSdk = 36
     val compileSdkPreview: String? = null

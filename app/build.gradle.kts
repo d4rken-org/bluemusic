@@ -296,7 +296,7 @@ dependencies {
     implementation("androidx.navigation3:navigation3-runtime:1.0.0-alpha08")
     implementation("androidx.navigation3:navigation3-ui:1.0.0-alpha08")
 
-    implementation("androidx.compose.material3.adaptive:adaptive-navigation3:1.0.0-SNAPSHOT")
+    implementation("androidx.compose.material3.adaptive:adaptive-navigation3:1.0.0-alpha01")
     implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:1.0.0-alpha04")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0")
 
