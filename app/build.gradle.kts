@@ -285,15 +285,15 @@ dependencies {
     implementation("androidx.compose.material3.adaptive:adaptive")
 
     implementation("androidx.activity:activity-compose:1.10.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.3")
 
-    implementation("androidx.hilt:hilt-navigation-compose:1.3.0-alpha02")
+    implementation("androidx.hilt:hilt-navigation-compose:1.3.0-rc01")
 
     implementation("com.google.accompanist:accompanist-drawablepainter:0.37.3")
 
 
-    implementation("androidx.navigation3:navigation3-runtime:1.0.0-alpha06")
-    implementation("androidx.navigation3:navigation3-ui:1.0.0-alpha06")
+    implementation("androidx.navigation3:navigation3-runtime:1.0.0-alpha08")
+    implementation("androidx.navigation3:navigation3-ui:1.0.0-alpha08")
 
     implementation("androidx.compose.material3.adaptive:adaptive-navigation3:1.0.0-SNAPSHOT")
     implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:1.0.0-alpha04")
