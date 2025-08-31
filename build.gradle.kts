@@ -14,7 +14,6 @@ buildscript {
         classpath("com.android.tools.build:gradle:8.12.0")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Kotlin.core}")
         classpath("com.google.dagger:hilt-android-gradle-plugin:${Versions.Dagger.core}")
-        classpath("io.realm:realm-gradle-plugin:10.19.0")
     }
 }
 

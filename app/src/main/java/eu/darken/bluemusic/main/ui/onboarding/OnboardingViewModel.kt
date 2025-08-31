@@ -12,7 +12,6 @@ import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.main.core.GeneralSettings
-import eu.darken.bluemusic.main.core.LegacySettings
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
@@ -23,7 +22,6 @@ class OnboardingViewModel @Inject constructor(
     dispatchers: DispatcherProvider,
     navCtrl: NavigationController,
     private val generalSettings: GeneralSettings,
-    private val legacySettings: LegacySettings,
     private val webpageTool: WebpageTool,
 ) : ViewModel4(dispatchers, logTag("Onboarding", "Screen", "VM"), navCtrl) {
 
@@ -31,19 +29,8 @@ class OnboardingViewModel @Inject constructor(
         generalSettings.isOnboardingCompleted.flow,
         flowOf(Unit),
     ) { isCompleted, _ ->
-        val isExistingUser = try {
-            legacySettings.getInstallTime() < System.currentTimeMillis() - 1000
-        } catch (e: Exception) {
-            false
-        }
-
         val pages = mutableListOf<State.Page>()
         pages.add(State.Page.WELCOME)
-
-        // Show rewrite page only for existing users
-        if (isExistingUser) {
-            pages.add(State.Page.REWRITE)
-        }
 
         if (BuildConfigWrap.BUILD_TYPE != BuildConfigWrap.BuildType.RELEASE) {
             pages.add(State.Page.BETA)
