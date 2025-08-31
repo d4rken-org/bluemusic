@@ -12,7 +12,6 @@ plugins {
     id("kotlin-kapt")
 }
 apply(plugin = "dagger.hilt.android.plugin")
-apply(plugin = "realm-android")
 
 val commitHashProvider = providers.of(CommitHashValueSource::class) {}
 

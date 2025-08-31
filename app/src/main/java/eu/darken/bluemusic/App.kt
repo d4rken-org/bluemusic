@@ -14,14 +14,10 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.devices.core.database.legacy.MigrationTool
-import eu.darken.bluemusic.legacy.LegacyMigration
 import eu.darken.bluemusic.main.core.CurriculumVitae
 import eu.darken.bluemusic.main.core.GeneralSettings
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.worker.MonitorControl
-import io.realm.Realm
-import io.realm.RealmConfiguration
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -39,7 +35,6 @@ class App : Application(), Configuration.Provider {
     @Inject lateinit var monitorControl: MonitorControl
     @Inject lateinit var volumeTool: VolumeTool
 
-    @Inject lateinit var legacyMigration: LegacyMigration
 
 
     override fun onCreate() {
@@ -50,15 +45,6 @@ class App : Application(), Configuration.Provider {
             curriculumVitae.updateAppLaunch()
         }
 
-        val migrationTool = MigrationTool()
-        Realm.init(this)
-        val realmConfig = RealmConfiguration.Builder()
-            .schemaVersion(migrationTool.schemaVersion.toLong())
-            .migration(migrationTool.migration)
-            .build()
-        Realm.setDefaultConfiguration(realmConfig)
-
-        legacyMigration.migration()
 
 
         val oldHandler = Thread.getDefaultUncaughtExceptionHandler()

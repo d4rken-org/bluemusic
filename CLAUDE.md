@@ -31,7 +31,6 @@ both GitHub (FOSS) and Google Play Store, with different build flavors for each 
 - Package by feature, not by layer
 - Each feature package (if it has UI components and logic components), should have a `core` and a `ui` package.
 - Use Dagger/Hilt for dependency injection
-- Repository pattern with Room (migrating from Realm) and DataStore
 - UI that can be navigated to are "Screen"s and each screen has a corresponding ViewModel
     - "Sub-screens" are called "Pages"
 - The app uses Navigation3 (alpha) for Compose screens (`androidx.navigation3:navigation3-*`).
