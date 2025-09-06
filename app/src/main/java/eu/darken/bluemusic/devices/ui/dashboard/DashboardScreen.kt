@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BluetoothDisabled
 import androidx.compose.material.icons.twotone.Add
+import androidx.compose.material.icons.twotone.Bluetooth
 import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material.icons.twotone.Stars
@@ -201,6 +202,8 @@ private fun ManagedDevicesTopBar(
     onNavigateToSettings: () -> Unit,
     onNavigateToUpgrade: () -> Unit
 ) {
+    val context = LocalContext.current
+    
     TopAppBar(
         title = {
             if (isProVersion) {
@@ -213,6 +216,15 @@ private fun ManagedDevicesTopBar(
             }
         },
         actions = {
+            IconButton(onClick = {
+                val intent = Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS)
+                context.startActivity(intent)
+            }) {
+                Icon(
+                    imageVector = Icons.TwoTone.Bluetooth,
+                    contentDescription = stringResource(R.string.label_bluetooth_settings)
+                )
+            }
             if (!isProVersion) {
                 IconButton(onClick = onNavigateToUpgrade) {
                     Icon(
