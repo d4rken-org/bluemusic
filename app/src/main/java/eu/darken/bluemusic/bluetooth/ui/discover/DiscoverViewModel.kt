@@ -35,7 +35,7 @@ class DiscoverViewModel @Inject constructor(
         upgradeRepo.upgradeInfo,
     ) { bluetoothState, managed, upgradeInfo ->
         State(
-            devices = bluetoothState.devices!!
+            devices = bluetoothState.devices
                 .filterNot { p -> managed.any { p.address == it.address } }
                 .sortedWith(
                     compareBy(

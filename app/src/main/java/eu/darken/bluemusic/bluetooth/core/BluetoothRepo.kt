@@ -27,12 +27,15 @@ import eu.darken.bluemusic.devices.core.DeviceAddr
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.trySendBlocking
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.retry
 import kotlinx.coroutines.flow.retryWhen
@@ -81,7 +84,7 @@ class BluetoothRepo @Inject constructor(
 
     @SuppressLint("MissingPermission")
     @RequiresPermission(anyOf = [Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH])
-    private val pairedDevices: Flow<Set<SourceDevice>?> = callbackFlow {
+    private fun bluetoothDeviceEvents(): Flow<Unit> = callbackFlow {
         if (!isBluetoothSupported) {
             log(TAG, WARN) { "Bluetooth hardware is not available" }
             throw IllegalStateException("Bluetooth hardware is not available")
@@ -124,35 +127,41 @@ class BluetoothRepo @Inject constructor(
             context.unregisterReceiver(receiver)
         }
     }
-        .map {
-            val devices = mutableSetOf<SourceDevice>()
 
-            bluetoothAdapter.bondedDevices
-                .filterNot { device ->
-                    val isHealthDevice = device.hasUUID(0x1400)
-                    if (isHealthDevice) log(TAG) { "Health devices are excluded: ${device.name} - ${device.address}" }
-                    isHealthDevice
-                }
-                .forEach { device ->
-                    val wrapper = SourceDeviceWrapper.from(realDevice = device, isConnected = device.isConnected())
-                    devices.add(wrapper)
-                    log(TAG) { "Paired evice: ${wrapper.name} - ${wrapper.address} - isConnected=${wrapper.isConnected}" }
+    @SuppressLint("MissingPermission")
+    @RequiresPermission(anyOf = [Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH])
+    private val pairedDevices: Flow<Set<SourceDevice>> = isEnabled
+        .flatMapLatest { enabled ->
+            if (!enabled) {
+                log(TAG, WARN) { "Bluetooth is disabled, emitting empty device set" }
+                return@flatMapLatest flowOf(emptySet())
+            }
 
-                }
-
-            devices.add(speakerDeviceProvider.getSpeaker())
-
-            devices.toSet() as Set<SourceDevice>?
+            bluetoothDeviceEvents().map {
+                bluetoothAdapter.bondedDevices
+                    .filterNot { device ->
+                        val isHealthDevice = device.hasUUID(0x1400)
+                        if (isHealthDevice) log(TAG) { "Health devices are excluded: ${device.name} - ${device.address}" }
+                        isHealthDevice
+                    }
+                    .map { device ->
+                        val wrapper = SourceDeviceWrapper.from(realDevice = device, isConnected = device.isConnected())
+                        log(TAG) { "Paired device: ${wrapper.name} - ${wrapper.address} - isConnected=${wrapper.isConnected}" }
+                        wrapper as SourceDevice
+                    }
+                    .toSet()
+            }
         }
         .retryWhen { err, attempt ->
             log(TAG, WARN) { "Can't load paired devices: ${err.asLog()}" }
-            emit(null)
+            emit(emptySet<SourceDevice>())
             delay(3000)
             true
         }
+        .map { btDevices -> btDevices + speakerDeviceProvider.getSpeaker() }
 
     private val hasPermission = flow {
-        while (coroutineContext.isActive) {
+        while (currentCoroutineContext().isActive) {
             emit(permissionHelper.hasBluetoothPermission())
             delay(1000)
         }
@@ -161,10 +170,10 @@ class BluetoothRepo @Inject constructor(
     data class State(
         val isEnabled: Boolean,
         val hasPermission: Boolean,
-        val devices: Set<SourceDevice>?,
+        val devices: Set<SourceDevice>,
         val error: Throwable? = null,
     ) {
-        val isReady = isEnabled && hasPermission && devices != null && error == null
+        val isReady = isEnabled && hasPermission && error == null
     }
 
     val state = combine(
@@ -175,7 +184,7 @@ class BluetoothRepo @Inject constructor(
         State(
             isEnabled = enabled,
             hasPermission = permission,
-            devices = devices ?: emptySet(),
+            devices = devices,
         )
     }
         .retry {

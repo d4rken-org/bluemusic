@@ -26,7 +26,7 @@ class NewDeviceCreator @Inject constructor(
         val device = bluetoothRepo.state
             .filter { it.isReady }
             .first()
-            .devices!!
+            .devices
             .find { it.address == address } ?: throw IllegalStateException("Device not found: $address")
 
         var config = DeviceConfigEntity(

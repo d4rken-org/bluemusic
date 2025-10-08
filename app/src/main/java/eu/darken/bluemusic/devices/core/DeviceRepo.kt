@@ -29,10 +29,10 @@ class DeviceRepo @Inject constructor(
         bluetoothRepo.state,
         deviceDatabase.devices.getAllDevices()
     ) { btState, managed ->
-        val pairedMap = btState.devices?.associateBy { it.address }
+        val pairedMap = btState.devices.associateBy { it.address }
         val mappings = managed
             .mapNotNull { config ->
-                val paired = pairedMap?.get(config.address) ?: return@mapNotNull null
+                val paired = pairedMap[config.address] ?: return@mapNotNull null
                 config to paired
             }
 
