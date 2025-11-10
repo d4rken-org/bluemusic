@@ -51,6 +51,12 @@
     <string name="devices_device_config_volume_observe_desc">Stay active while this device is connected and save volume changes that have not been caused by this app.</string>
     <string name="devices_device_config_volume_lock_label">Bloqueig de volum</string>
     <string name="devices_device_config_volume_lock_desc">Qualsevol canvi de volum que no s\'hagi fet a través d\'aquesta aplicació es revertirà mentre aquest dispositiu estigui connectat.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Limitador de taxa de volum</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Limita la freqüència dels canvis de volum per evitar ajustaments ràpids o excessius.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Retard d\'augment de volum</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Temps mínim entre augments de volum: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Retard de disminució de volum</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Temps mínim entre disminucions de volum: %d ms</string>
     <string name="devices_device_config_autoplay_label">Reproducció automàtica</string>
     <string name="devices_device_config_autoplay_desc">Simula prémer el botó reproducció en un control remot Bluetooth quan aquest dispositiu es connecta.</string>
     <string name="devices_device_config_section_volumes_label">Volums</string>

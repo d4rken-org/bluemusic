@@ -33,6 +33,12 @@
     <string name="devices_device_config_rename_device_desc">Μετονομάστε αυτή τη συσκευή μέσα σε αυτή την εφαρμογή, και αν είναι δυνατόν, στο σύστημα.</string>
     <string name="devices_device_config_rename_device_action">Μετονομασία</string>
     <string name="devices_device_config_section_timing_label">Χρονισμός</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Περιοριστής ρυθμού έντασης</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Περιορίστε τη συχνότητα των αλλαγών έντασης για να αποτρέψετε γρήγορες ή υπερβολικές προσαρμογές έντασης.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Καθυστέρηση αύξησης έντασης</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Ελάχιστος χρόνος μεταξύ αυξήσεων έντασης: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Καθυστέρηση μείωσης έντασης</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Ελάχιστος χρόνος μεταξύ μειώσεων έντασης: %d ms</string>
     <string name="devices_device_config_monitoring_duration_label">Διάρκεια παρακολούθησης</string>
     <string name="devices_device_config_monitoring_duration_desc">Διάρκεια σε χιλιοστά του δευτερολέπτου, μετά από τις προσαρμογές, κατά τη διάρκεια των οποίων θα μπλοκάρονται τυχόν αλλαγές έντασης.</string>
     <string name="devices_device_config_adjustment_delay_label">Καθυστέρηση προσαρμογής</string>

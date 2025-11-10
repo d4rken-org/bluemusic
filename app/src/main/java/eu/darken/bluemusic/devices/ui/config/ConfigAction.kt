@@ -24,13 +24,15 @@ sealed interface ConfigAction {
     data object OnEditMonitoringDurationClicked : ConfigAction
     data object OnEditReactionDelayClicked : ConfigAction
     data object OnEditAdjustmentDelayClicked : ConfigAction
-    data object OnEditVolumeRateLimitClicked : ConfigAction
+    data object OnEditVolumeRateLimitIncreaseClicked : ConfigAction
+    data object OnEditVolumeRateLimitDecreaseClicked : ConfigAction
     data object OnRenameClicked : ConfigAction
     data class DeleteDevice(val confirmed: Boolean = false) : ConfigAction
     data class OnEditMonitoringDuration(val duration: Duration?) : ConfigAction
     data class OnEditReactionDelay(val delay: Duration?) : ConfigAction
     data class OnEditAdjustmentDelay(val delay: Duration?) : ConfigAction
-    data class OnEditVolumeRateLimit(val duration: Duration?) : ConfigAction
+    data class OnEditVolumeRateLimitIncrease(val duration: Duration?) : ConfigAction
+    data class OnEditVolumeRateLimitDecrease(val duration: Duration?) : ConfigAction
     data class OnRename(val newName: String?) : ConfigAction
     data class OnConfirmDelete(val confirmed: Boolean) : ConfigAction
     data object OnToggleEnabled : ConfigAction

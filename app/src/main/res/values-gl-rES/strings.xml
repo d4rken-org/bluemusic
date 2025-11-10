@@ -51,6 +51,12 @@
     <string name="devices_device_config_volume_observe_desc">Stay active while this device is connected and save volume changes that have not been caused by this app.</string>
     <string name="devices_device_config_volume_lock_label">Volume lock</string>
     <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Limitador de taxa de volumen</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Limita a frecuencia de cambios de volume para evitar axustes rápidos ou excesivos.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Atraso de aumento de volumen</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Tempo mínimo entre aumentos de volumen: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Atraso de disminución de volumen</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Tempo mínimo entre disminucións de volumen: %d ms</string>
     <string name="devices_device_config_autoplay_label">Reprodución automática</string>
     <string name="devices_device_config_autoplay_desc">Simula que se toca o botón de reprodución vía bluetooth cando este dispositivo está conectado.</string>
     <string name="devices_device_config_section_volumes_label">Volumes</string>

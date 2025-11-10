@@ -69,6 +69,12 @@
     <string name="devices_device_config_volume_observe_desc">Zůstat aktivní, zatímco je toto zařízení připojené, a uložit změny hlasitosti, které nezpůsobila tato aplikace.</string>
     <string name="devices_device_config_volume_lock_label">Uzamknutí hlasitosti</string>
     <string name="devices_device_config_volume_lock_desc">Všechny změny hlasitosti, které nebyly provedeny pomocí této aplikace, budou při připojení tohoto zařízení zrušeny.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Omezovač frekvence hlasitosti</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Omezuje frekvenci změn hlasitosti, aby se zabránilo rychlým nebo nadměrným úpravám.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Zpoždění zvýšení hlasitosti</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimální čas mezi zvýšením hlasitosti: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Zpoždění snížení hlasitosti</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimální čas mezi snížením hlasitosti: %d ms</string>
     <string name="devices_device_config_autoplay_label">Automatické přehrávání</string>
     <string name="devices_device_config_autoplay_desc">Simuluje stisknutí přehrávání na ovládání Bluetooth při připojení tohoto zařízení.</string>
     <string name="devices_device_config_section_volumes_label">Hlasitosti</string>

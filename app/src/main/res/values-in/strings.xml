@@ -51,6 +51,12 @@
     <string name="devices_device_config_volume_observe_desc">Tetap aktif saat perangkat ini terhubung dan simpan perubahan volume yang tidak disebabkan oleh aplikasi ini.</string>
     <string name="devices_device_config_volume_lock_label">Kunci volume</string>
     <string name="devices_device_config_volume_lock_desc">Perubahan volume yang tidak buat melalui aplikasi ini akan dikembalikan ketika perangkat ini tersambung.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Pembatas laju volume</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Batasi frekuensi perubahan volume untuk mencegah penyesuaian volume yang cepat atau berlebihan.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Penundaan peningkatan volume</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Waktu minimum antar peningkatan volume: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Penundaan penurunan volume</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Waktu minimum antar penurunan volume: %d ms</string>
     <string name="devices_device_config_autoplay_label">Putar Otomatis</string>
     <string name="devices_device_config_autoplay_desc">Simulasikan penekanan tombol mulai dalam kendali jauh Bluetooth saat perangkat ini terhubung.</string>
     <string name="devices_device_config_section_volumes_label">Volume</string>

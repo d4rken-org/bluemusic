@@ -56,6 +56,12 @@
     <string name="devices_device_config_notification_policy_required_ringtone">Nadzor glasnosti zvonjenja zahteva dostop do pravilnika obvestil</string>
     <string name="devices_device_config_visible_adjustments_label">Vidne prilagoditve</string>
     <string name="devices_device_config_visible_adjustments_desc">Vklopi/izklopi katere prilagoditve so prikazane na kartici naprave</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Omejevalnik frekvence glasnosti</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Omejuje frekvenco sprememb glasnosti, da se izognete hitrim ali prevelikim prilagodtvam.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Zakasnjenje povečanja glasnosti</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Najmanjši čas med povečanji glasnosti: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Zakasnjenje zmanjšanja glasnosti</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Najmanjši čas med zmanjšanji glasnosti: %d ms</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>

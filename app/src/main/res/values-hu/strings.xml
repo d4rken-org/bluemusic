@@ -249,4 +249,10 @@
     <string name="error_iap_owned_message">Már birtoklod ezt a tételt</string>
     <string name="label_no_devices_title">Nincsenek eszközök</string>
     <string name="bluemusic_mascot_description">Alkalmazás ikon</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Hangerő rátálimitáló</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Korlátozzad a hangerőváltozások gyakoriságát, hogy elkerüld a gyors vagy túlzott hangerő-beállításokat.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Hangerő emelés késleltetése</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimális idő a hangerő-emelések között: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Hangerő csökkentés késleltetése</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimális idő a hangerő-csökkentések között: %d ms</string>
 </resources>

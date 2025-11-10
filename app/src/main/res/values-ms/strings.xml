@@ -51,6 +51,12 @@
     <string name="devices_device_config_volume_observe_desc">Kekal aktif semasa peranti ini disambungkan dan simpan perubahan volum yang bukan disebabkan oleh apl ini.</string>
     <string name="devices_device_config_volume_lock_label">Kunci volum</string>
     <string name="devices_device_config_volume_lock_desc">Sebarang perubahan volum yang tidak dilakukan melalui apl ini akan dikembalikan sementara peranti ini dihubungkan.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Pembatas kadar volum</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Hadkan kekerapan perubahan volum untuk menghalang pelarasan volum yang cepat atau berlebihan.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Kelewatan kenaikan volum</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Masa minimum di antara kenaikan volum: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Kelewatan penurunan volum</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Masa minimum di antara penurunan volum: %d ms</string>
     <string name="devices_device_config_autoplay_label">Automain</string>
     <string name="devices_device_config_autoplay_desc">Menekan main disimulasikan pada kawalan jauh Bluetooth bila peranti ini terhubung.</string>
     <string name="devices_device_config_section_volumes_label">Volum</string>

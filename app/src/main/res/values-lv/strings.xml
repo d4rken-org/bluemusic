@@ -250,4 +250,10 @@
     <string name="general_navigate_back_action">Navigēt atpakaļ</string>
     <string name="general_reset_action">Atiestatīt</string>
     <string name="general_save_action">Saglabāt</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Skaļuma maiņas ātruma ierobežojums</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Ierobežo skaļuma maiņas biežumu, lai no rītas no straujos vai pārmērīgiem skaļuma pielāgojumiem.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Skaļuma paaugstināšanas aizkave</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimālais laiks starp skaļuma paaugstināšanu: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Skaļuma samazināšanas aizkave</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimālais laiks starp skaļuma samazināšanu: %d ms</string>
 </resources>

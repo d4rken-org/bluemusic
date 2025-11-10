@@ -57,6 +57,12 @@
     <string name="devices_device_config_visible_adjustments_desc">기기 카드에 표시할 조정을 선택하세요</string>
     <string name="devices_device_config_keep_awake_label">켜짐 유지</string>
     <string name="devices_device_config_keep_awake_desc">이 디바이스를 연결하고 있을 때 화면을 계속 켜진 상태로 유지합니다.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">음량 속도 제한</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">음량 변경 빈도를 제한하여 빠르거나 과도한 음량 조정을 방지합니다.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">음량 증가 지연</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">음량 증가 간의 최소 시간: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">음량 감소 지연</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">음량 감소 간의 최소 시간: %d ms</string>
     <string name="devices_device_config_volume_observe_label">변경 감시</string>
     <string name="devices_device_config_volume_observe_desc">이 디바이스가 연결되어 있는 동안 활성 상태를 유지하고 이 앱에서 생성되지 않은 음량 변경사항을 저장합니다.</string>
     <string name="devices_device_config_volume_lock_label">음량 잠금</string>

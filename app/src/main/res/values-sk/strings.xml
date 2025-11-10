@@ -60,6 +60,12 @@
     <string name="devices_device_config_volume_observe_desc">Stay active while this device is connected and save volume changes that have not been caused by this app.</string>
     <string name="devices_device_config_volume_lock_label">Uzamknutie hlasitosti</string>
     <string name="devices_device_config_volume_lock_desc">Všetky zmeny hlasitosti, ktoré neboli vykonané touto aplikáciou sa zrušia po pripojení zariadenia.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Regulátor frekvencie hlasitosti</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Obmedzuje frekvenciu zmien hlasitosti, aby sa zabránilo rýchlym alebo nadmerným úpravám.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Oneskorenie zvýšenia hlasitosti</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimálny čas medzi zvýšením hlasitosti: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Oneskorenie zníženia hlasitosti</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimálny čas medzi znížením hlasitosti: %d ms</string>
     <string name="devices_device_config_autoplay_label">Automatické prehrávanie</string>
     <string name="devices_device_config_autoplay_desc">Simuluje stlačenie prehrávania na vzdialenom Bluetooth pri pripojení tohto zariadenia.</string>
     <string name="devices_device_config_autoplay_keycodes_available">Dostupné typy klávesov</string>

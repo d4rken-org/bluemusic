@@ -72,10 +72,17 @@ internal class VolumeRateLimiterModule @Inject constructor(
         val streamType = device.getStreamType(streamId) ?: return
 
         val currentState = volumeStates[streamId]
-        val rateLimitMs = device.volumeRateLimitMs
 
         // Determine the reference volume (last allowed or old volume for initial state)
         val referenceVolume = currentState?.lastAllowedVolume ?: oldVolume.takeIf { it != -1 } ?: newVolume
+
+        // Determine direction and select appropriate rate limit
+        val volumeDiff = newVolume - referenceVolume
+        val rateLimitMs = if (volumeDiff > 0) {
+            device.volumeRateLimitIncreaseMs
+        } else {
+            device.volumeRateLimitDecreaseMs
+        }
 
         // Check rate limiting
         if (currentState != null && (currentTime - currentState.lastChangeTimestamp) < rateLimitMs) {
@@ -89,7 +96,6 @@ internal class VolumeRateLimiterModule @Inject constructor(
         }
 
         // Apply volume step limiting
-        val volumeDiff = newVolume - referenceVolume
         val clampedVolume = when {
             volumeDiff > 1 -> referenceVolume + 1
             volumeDiff < -1 -> referenceVolume - 1

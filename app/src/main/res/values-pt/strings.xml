@@ -60,6 +60,12 @@
     <string name="devices_device_config_volume_observe_desc">Mantém-se ativo enquanto este dispositivo está conectado e guarda alterações de volume que não tenham sido causadas por esta aplicação.</string>
     <string name="devices_device_config_volume_lock_label">Bloqueio de volume</string>
     <string name="devices_device_config_volume_lock_desc">Quaisquer alterações de volume não feitas através desta aplicação serão revertidas enquanto este dispositivo estiver conectado.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Limitador de taxa de volume</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Limita a frequência de mudanças de volume para evitar ajustes rápidos ou excessivos.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Atraso de aumento de volume</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Tempo mínimo entre aumentos de volume: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Atraso de diminuição de volume</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Tempo mínimo entre diminuições de volume: %d ms</string>
     <string name="devices_device_config_autoplay_label">Reprodução automática</string>
     <string name="devices_device_config_autoplay_desc">Simular toque no Bluetooth remoto quando este dispositivo é conectado.</string>
     <string name="devices_device_config_autoplay_keycodes_available">Tipos de teclas disponíveis</string>

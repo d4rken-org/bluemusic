@@ -68,6 +68,12 @@
     <string name="devices_device_config_volume_observe_desc">הישאר פעיל כאשר המכשיר מחובר ושמור שינויי עוצמה שלא נגרמו על ידי האפליקציה.</string>
     <string name="devices_device_config_volume_lock_label">נעילת ווליום</string>
     <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">מנקה קצב עוצמה</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">הגבלת תכיפות שינויי עוצמה כדי למנוע התאמות עוצמה מהירות או מוגזמות.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">השהיית הגדלת עוצמה</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">הזמן המינימלי בין הגדלות עוצמה: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">השהיית הקטנת עוצמה</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">הזמן המינימלי בין הקטנות עוצמה: %d ms</string>
     <string name="devices_device_config_autoplay_label">ניגון אוטומטי</string>
     <string name="devices_device_config_autoplay_desc">הדמיית לחיצה על ניגון בשלט בלוטות\' כאשר מכשיר זה מתחבר.</string>
     <string name="devices_device_config_section_volumes_label">עוצמות</string>

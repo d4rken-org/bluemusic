@@ -51,6 +51,12 @@
     <string name="devices_device_config_volume_observe_desc">Stay active while this device is connected and save volume changes that have not been caused by this app.</string>
     <string name="devices_device_config_volume_lock_label">Volume lock</string>
     <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Pembatas laju volume</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Batasi frekuensi perubahan volume kanggo nyegah penyesuaian volume sané cepet utawa berlebihan.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Penundaan peningkatan volume</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Waktu minimum antara peningkatan volume: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Penundaan penurunan volume</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Waktu minimum antara penurunan volume: %d ms</string>
     <string name="devices_device_config_autoplay_label">Autoplay</string>
     <string name="devices_device_config_autoplay_desc">Simulate pressing play on a Bluetooth remote when this device connects.</string>
     <string name="devices_device_config_section_volumes_label">Volumes</string>

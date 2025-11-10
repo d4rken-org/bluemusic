@@ -16,6 +16,7 @@ class DeviceDatabase @Inject constructor(
             context,
             DevicesRoomDb::class.java, "managed_devices"
         )
+            .addMigrations(MIGRATION_1_2)
             .build()
     }
 

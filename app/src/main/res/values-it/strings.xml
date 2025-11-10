@@ -63,8 +63,10 @@
     <string name="devices_device_config_volume_lock_desc">Qualsiasi cambiamento di volume non fatto tramite questa applicazione sarà resettato mentre il dispositivo è connesso.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitatore di velocità volume</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limita la frequenza dei cambiamenti di volume per prevenire regolazioni rapide o eccessive.</string>
-    <string name="devices_device_config_volume_rate_limit_duration_label">Durata limite di velocità</string>
-    <string name="devices_device_config_volume_rate_limit_duration_desc">Tempo minimo tra i cambiamenti di volume: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ritardo aumento volume</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Tempo minimo tra gli aumenti di volume: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Ritardo diminuzione volume</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Tempo minimo tra le diminuzioni di volume: %d ms</string>
     <string name="devices_device_config_autoplay_label">Autoplay</string>
     <string name="devices_device_config_autoplay_desc">Simula la pressione del tasto play quando un dispositivo Bluetooth viene connesso.</string>
     <string name="devices_device_config_autoplay_keycodes_available">Tipi di tasto disponibili</string>

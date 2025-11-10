@@ -56,6 +56,12 @@
     <string name="devices_device_config_volume_observe_desc">Rămâi activ cât timp acest dispozitiv este conectat și salvează schimbările de volum care nu au fost cauzate de această aplicație.</string>
     <string name="devices_device_config_volume_lock_label">Blocare volum</string>
     <string name="devices_device_config_volume_lock_desc">Orice schimbări de volum care nu sunt făcute prin această aplicație vor fi revenite cât timp acest dispozitiv este conectat.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Limitator de rată volum</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Limitează frecvența schimbărilor de volum pentru a preveni ajustările rapide sau excesive.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Întârziere creștere volum</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Timp minim între creșterile de volum: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Întârziere scădere volum</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Timp minim între scăderile de volum: %d ms</string>
     <string name="devices_device_config_autoplay_label">Redare automată</string>
     <string name="devices_device_config_autoplay_desc">Simulează apăsarea butonului play pe o telecomandă Bluetooth când se conectează acest dispozitiv.</string>
     <string name="devices_app_selection_currently_selected">Selectate în prezent</string>

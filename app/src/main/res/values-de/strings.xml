@@ -64,8 +64,10 @@
     <string name="devices_device_config_volume_lock_desc">Alle nicht über diese App vorgenommenen Lautstärkeänderungen werden zurückgesetzt, während dieses Gerät verbunden ist.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Lautstärke-Begrenzer</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Begrenzt die Häufigkeit von Lautstärkeänderungen, um schnelle oder übermäßige Lautstärke-Anpassungen zu verhindern.</string>
-    <string name="devices_device_config_volume_rate_limit_duration_label">Begrenzungsdauer</string>
-    <string name="devices_device_config_volume_rate_limit_duration_desc">Mindestzeit zwischen Lautstärkeänderungen: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Erhöhungsverzögerung</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Mindestzeit zwischen Lautstärkeerhöhungen: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Senkungsverzögerung</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Mindestzeit zwischen Lautstärkesenkungen: %d ms</string>
     <string name="devices_device_config_autoplay_label">Automatische Wiedergabe</string>
     <string name="devices_app_selection_currently_selected">Aktuell ausgewählt</string>
     <string name="devices_app_selection_search_hint">Apps suchen…</string>

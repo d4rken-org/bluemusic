@@ -61,6 +61,12 @@
     <string name="devices_device_config_volume_observe_desc">Залишатися активним, поки пристрій під\'єднаний, і зберігати зміни гучності, які не були викликані цим додатком.</string>
     <string name="devices_device_config_volume_lock_label">Блокування гучності</string>
     <string name="devices_device_config_volume_lock_desc">Будь-які зміни гучності, зроблені не через цей додаток, будуть скасовані, поки пристрій під\'єднаний.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Обмежувач частоти гучності</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Обмежує частоту змін гучності, щоб запобігти швидким або надмірним регулюванням.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Затримка збільшення гучності</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Мінімальний час між збільшеннями гучності: %d мс</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Затримка зменшення гучності</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Мінімальний час між зменшеннями гучності: %d мс</string>
     <string name="devices_device_config_autoplay_keycodes_available">Доступні типи клавіш</string>
     <string name="devices_device_config_autoplay_keycodes_desc">Налаштуйте які клавіші надсилати та в якому порядку</string>
     <string name="devices_device_config_autoplay_keycodes_label">Типи клавіш</string>

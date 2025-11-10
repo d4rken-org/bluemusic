@@ -262,4 +262,10 @@
     <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Koti</string>
     <string name="devices_indicator_dnd">ÄH</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Äänenvoimakkuuden nopeus rajaus</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Rajoita äänenvoimakkuus muutokset estääksesi nopeat tai liian suuret säädöt.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Äänenvoimakkuuden nosto viive</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Pienin aika äänenvoimakkuuden nousujen välillä: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Äänenvoimakkuuden lasku viive</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Pienin aika äänenvoimakkuuden laskujen välillä: %d ms</string>
 </resources>

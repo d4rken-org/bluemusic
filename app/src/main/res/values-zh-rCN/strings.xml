@@ -67,8 +67,10 @@
     <string name="devices_device_config_volume_lock_desc">此设备连接时，非此应用进行的音量更改将被还原。</string>
     <string name="devices_device_config_volume_rate_limiter_label">音量频率限制器</string>
     <string name="devices_device_config_volume_rate_limiter_desc">限制音量变更的频率，以防止快速或过度的音量调整。</string>
-    <string name="devices_device_config_volume_rate_limit_duration_label">频率限制持续时间</string>
-    <string name="devices_device_config_volume_rate_limit_duration_desc">音量变更之间的最短时间：%d 毫秒</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">音量增加延迟</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">音量增加之间的最短时间：%d 毫秒</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">音量降低延迟</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">音量降低之间的最短时间：%d 毫秒</string>
     <string name="devices_device_config_autoplay_label">自动播放</string>
     <string name="devices_device_config_autoplay_desc">当此设备连接时，将模拟在蓝牙遥控器上按下播放键。</string>
     <string name="devices_device_config_autoplay_keycodes_available">可用的按键类型</string>
