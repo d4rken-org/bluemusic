@@ -60,6 +60,12 @@
     <string name="devices_device_config_volume_observe_desc">ยังคงทำงานอยู่ขณะที่อุปกรณ์นี้เชื่อมต่อและบันทึกการเปลี่ยนแปลงระดับเสียงที่ไม่ได้เกิดจากแอปนี้</string>
     <string name="devices_device_config_volume_lock_label">ล็อกระดับเสียง</string>
     <string name="devices_device_config_volume_lock_desc">การเปลี่ยนแปลงระดับเสียงที่ไม่ได้ทำผ่านแอปนี้จะถูกย้อนกลับขณะที่อุปกรณ์นี้เชื่อมต่ออยู่</string>
+    <string name="devices_device_config_volume_rate_limiter_label">ตัวจำกัดอัตราเสียง</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">จำกัดความถี่ของการเปลี่ยนแปลงระดับเสียงเพื่อป้องกันการปรับระดับเสียงอย่างรวดเร็วหรือมากเกินไป</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">ความล่าช้าการเพิ่มระดับเสียง</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">เวลาขั้นต่ำระหว่างการเพิ่มระดับเสียง: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">ความล่าช้าในการลดระดับเสียง</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">เวลาขั้นต่ำระหว่างการลดระดับเสียง: %d ms</string>
     <string name="devices_device_config_autoplay_label">เล่นอัตโนมัติ</string>
     <string name="devices_device_config_autoplay_desc">จำลองการเล่นแบบกดบนรีโมตบลูทูธเมื่อเชื่อมต่ออุปกรณ์นี้</string>
     <string name="devices_device_config_autoplay_keycodes_available">ประเภทปุ่มที่มีอยู่</string>

@@ -44,10 +44,16 @@
     <string name="devices_device_config_launch_app_desc">Khởi động ứng dụng khi kết nối thiết bị này.</string>
     <string name="devices_device_config_launch_app_multiple_desc">Đã chọn %d ứng dụng</string>
     <string name="devices_device_config_nudge_volume_label">Khuyến khích âm lượng</string>
+    <string name="devices_device_config_nudge_volume_description">Giảm rồi tăng âm lượng lên một bậc, ngay cả khi âm lượng mong muốn đã được đặt (theo hệ thống).</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Giới hạn tốc độ âm lượng</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Giới hạn tần suất thay đổi âm lượng để ngăn chặn điều chỉnh âm lượng nhanh chóng hoặc quá mức.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Độ trễ tăng âm lượng</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Thời gian tối thiểu giữa các lần tăng âm lượng: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Độ trễ giảm âm lượng</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Thời gian tối thiểu giữa các lần giảm âm lượng: %d ms</string>
     <string name="devices_device_config_notification_policy_action">Cấp quyền truy cập</string>
     <string name="devices_device_config_notification_policy_required_notification">Điều khiển âm lượng thông báo cần quyền truy cập chính sách thông báo</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Điều khiển âm lượng chuông cần quyền truy cập chính sách thông báo</string>
-    <string name="devices_device_config_nudge_volume_description">Giảm rồi tăng âm lượng lên một bậc, ngay cả khi âm lượng mong muốn đã được đặt (theo hệ thống).</string>
     <string name="devices_device_config_visible_adjustments_label">Điều chỉnh hiển thị</string>
     <string name="devices_device_config_visible_adjustments_desc">Chuyển đổi điều chỉnh nào được hiển thị trên thẻ thiết bị</string>
     <string name="devices_device_config_keep_awake_label">Giữ màn hình sáng</string>

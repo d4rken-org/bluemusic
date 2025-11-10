@@ -54,6 +54,12 @@
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Vidljive prilagodbe</string>
     <string name="devices_device_config_visible_adjustments_desc">Uključi/isključi koje se prilagodbe prikazuju na kartici uređaja</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Ograničnik frekvencije glasnoće</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Ograničava frekvenciju promjena glasnoće kako bi se izbjegla brza ili pretjerana podešavanja.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Kašnjenje povećanja glasnoće</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimalno vrijeme između povećanja glasnoće: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Kašnjenje smanjenja glasnoće</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimalno vrijeme između smanjenja glasnoće: %d ms</string>
     <string name="devices_device_config_keep_awake_label">Zadrži budnim</string>
     <string name="devices_device_config_keep_awake_desc">Zadržite zaslon uključenim dok je ovaj uređaj povezan.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>

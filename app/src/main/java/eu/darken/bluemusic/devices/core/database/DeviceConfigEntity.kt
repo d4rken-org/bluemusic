@@ -51,8 +51,11 @@ data class DeviceConfigEntity(
     @ColumnInfo(name = "volume_rate_limiter")
     val volumeRateLimiter: Boolean = false,
 
-    @ColumnInfo(name = "volume_rate_limit_ms")
-    val volumeRateLimitMs: Long? = null,
+    @ColumnInfo(name = "volume_rate_limit_increase_ms")
+    val volumeRateLimitIncreaseMs: Long? = null,
+
+    @ColumnInfo(name = "volume_rate_limit_decrease_ms")
+    val volumeRateLimitDecreaseMs: Long? = null,
 
     @ColumnInfo(name = "volume_save_on_disconnect", defaultValue = "false")
     val volumeSaveOnDisconnect: Boolean = false,

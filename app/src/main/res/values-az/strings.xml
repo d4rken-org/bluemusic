@@ -33,6 +33,12 @@
     <string name="devices_device_config_rename_device_desc">Rename this device within this app, and if possible, within the system.</string>
     <string name="devices_device_config_rename_device_action">Rename</string>
     <string name="devices_device_config_section_timing_label">Timing</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Səs tezliyinin məhdudlaşdırıcısı</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Sürətli və ya artıq səs tənzimləmələrini qarşılamaq üçün səs dəyişikliklərinin tezliyini məhdudlaşdır.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Səs artırma gecikməsi</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Səs artımları arasında minimum vaxt: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Səs azalma gecikməsi</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Səs azalmaları arasında minimum vaxt: %d ms</string>
     <string name="devices_device_config_monitoring_duration_label">İzləmə müddəti</string>
     <string name="devices_device_config_monitoring_duration_desc">Nizamlamalar edildikdən sonra millisaniyə növündə müddət, bu vaxt digər səs səviyyəsi dəyişiklikləri əngəllənər.</string>
     <string name="devices_device_config_adjustment_delay_label">Nizamlama gecikməsi</string>

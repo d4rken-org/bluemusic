@@ -59,6 +59,12 @@
     <string name="devices_device_config_volume_lock_desc">Eventuelle volumendringer som ikke gjøres gjennom denne appen, blir tilbakestilt mens denne enheten er tilkoblet.</string>
     <string name="devices_device_config_autoplay_label">Autospill</string>
     <string name="devices_device_config_autoplay_desc">Simuler å trykke spill på en bluetooth ekstern når denne enheten kobles til.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Volumbegrenser</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Begrens hyppigheten av volumendringer for å forhindre raske eller overdrevne volumjusteringer.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volumøkningsforsinkelse</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimumstid mellom volumøkninger: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Volumreduksjonsforsinkelse</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimumstid mellom volumreduksjoner: %d ms</string>
     <string name="devices_device_config_autoplay_keycodes_available">Tilgjengelige nøkkeltyper</string>
     <string name="devices_device_config_autoplay_keycodes_desc">Konfigurer hvilke nøkler som skal sendes og i hvilken rekkefølge</string>
     <string name="devices_device_config_autoplay_keycodes_label">Nøkkeltyper</string>

@@ -66,8 +66,10 @@
     <string name="devices_device_config_volume_lock_desc">Любые изменения громкости, не сделанные через это приложение, будут возвращены, к умолчаниям, пока это устройство подключено.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ограничитель частоты громкости</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ограничивает частоту изменений громкости для предотвращения быстрых или чрезмерных настроек.</string>
-    <string name="devices_device_config_volume_rate_limit_duration_label">Длительность ограничения частоты</string>
-    <string name="devices_device_config_volume_rate_limit_duration_desc">Минимальное время между изменениями громкости: %d мс</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Задержка увеличения громкости</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Минимальное время между увеличениями громкости: %d мс</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Задержка уменьшения громкости</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Минимальное время между уменьшениями громкости: %d мс</string>
     <string name="devices_device_config_autoplay_label">Автовоспроизведение</string>
     <string name="devices_device_config_autoplay_desc">Симуляция нажатия кнопки воспроизведения на пульте ДУ Bluetooth при подключении устройства.</string>
     <string name="devices_device_config_autoplay_keycodes_available">Доступные типы клавиш</string>

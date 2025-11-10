@@ -250,4 +250,10 @@
     <string name="general_navigate_back_action">Naviguoti atgal</string>
     <string name="general_reset_action">Atstatyti</string>
     <string name="general_save_action">Išsaugoti</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Garsumo keitimo limitavimas</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Riboti garsumo keitimo dažnumą, kad išvengtumėte greitų ar per didelių garsumo reguliavimų.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Garsumo kėlimo delsa</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimalus laikas tarp garsumo kėlimų: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Garsumo sumažinimo delsa</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimalus laikas tarp garsumo sumažinimų: %d ms</string>
 </resources>

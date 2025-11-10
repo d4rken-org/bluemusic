@@ -91,7 +91,8 @@ fun DeviceConfigScreenHost(
     var showMonitoringDurationDialog by remember { mutableStateOf<Duration?>(null) }
     var showReactionDelayDialog by remember { mutableStateOf<Duration?>(null) }
     var showAdjustmentDelayDialog by remember { mutableStateOf<Duration?>(null) }
-    var showVolumeRateLimitDialog by remember { mutableStateOf<Duration?>(null) }
+    var showVolumeRateLimitIncreaseDialog by remember { mutableStateOf<Duration?>(null) }
+    var showVolumeRateLimitDecreaseDialog by remember { mutableStateOf<Duration?>(null) }
     var showAutoplayKeycodesDialog by remember { mutableStateOf(false) }
     var showDndModeDialog by remember { mutableStateOf(false) }
     var dndModeValue by remember { mutableStateOf<DndMode?>(null) }
@@ -111,7 +112,8 @@ fun DeviceConfigScreenHost(
                 is ConfigEvent.ShowMonitoringDurationDialog -> showMonitoringDurationDialog = event.currentValue
                 is ConfigEvent.ShowReactionDelayDialog -> showReactionDelayDialog = event.currentValue
                 is ConfigEvent.ShowAdjustmentDelayDialog -> showAdjustmentDelayDialog = event.currentValue
-                is ConfigEvent.ShowVolumeRateLimitDialog -> showVolumeRateLimitDialog = event.currentValue
+                is ConfigEvent.ShowVolumeRateLimitIncreaseDialog -> showVolumeRateLimitIncreaseDialog = event.currentValue
+                is ConfigEvent.ShowVolumeRateLimitDecreaseDialog -> showVolumeRateLimitDecreaseDialog = event.currentValue
                 is ConfigEvent.ShowAutoplayKeycodesDialog -> showAutoplayKeycodesDialog = true
                 is ConfigEvent.ShowDndModeDialog -> {
                     dndModeValue = event.currentMode
@@ -200,15 +202,28 @@ fun DeviceConfigScreenHost(
             )
         }
 
-        showVolumeRateLimitDialog?.let { delay ->
+        showVolumeRateLimitIncreaseDialog?.let { delay ->
             TimingDialog(
-                title = stringResource(R.string.devices_device_config_volume_rate_limit_duration_label),
-                message = stringResource(R.string.devices_device_config_volume_rate_limit_duration_desc, delay.toMillis()),
+                title = stringResource(R.string.devices_device_config_volume_rate_limit_increase_duration_label),
+                message = stringResource(R.string.devices_device_config_volume_rate_limit_increase_duration_desc, delay.toMillis()),
                 currentValue = delay,
-                onConfirm = { vm.handleAction(ConfigAction.OnEditVolumeRateLimit(it)) },
-                onReset = { vm.handleAction(ConfigAction.OnEditVolumeRateLimit(null)) },
+                onConfirm = { vm.handleAction(ConfigAction.OnEditVolumeRateLimitIncrease(it)) },
+                onReset = { vm.handleAction(ConfigAction.OnEditVolumeRateLimitIncrease(null)) },
                 onDismiss = {
-                    showVolumeRateLimitDialog = null
+                    showVolumeRateLimitIncreaseDialog = null
+                }
+            )
+        }
+
+        showVolumeRateLimitDecreaseDialog?.let { delay ->
+            TimingDialog(
+                title = stringResource(R.string.devices_device_config_volume_rate_limit_decrease_duration_label),
+                message = stringResource(R.string.devices_device_config_volume_rate_limit_decrease_duration_desc, delay.toMillis()),
+                currentValue = delay,
+                onConfirm = { vm.handleAction(ConfigAction.OnEditVolumeRateLimitDecrease(it)) },
+                onReset = { vm.handleAction(ConfigAction.OnEditVolumeRateLimitDecrease(null)) },
+                onDismiss = {
+                    showVolumeRateLimitDecreaseDialog = null
                 }
             )
         }
@@ -451,13 +466,23 @@ fun DeviceConfigScreen(
 
                         if (device.volumeRateLimiter) {
                             ClickablePreference(
-                                title = stringResource(R.string.devices_device_config_volume_rate_limit_duration_label),
+                                title = stringResource(R.string.devices_device_config_volume_rate_limit_increase_duration_label),
                                 description = stringResource(
-                                    R.string.devices_device_config_volume_rate_limit_duration_desc,
-                                    device.volumeRateLimitMs
+                                    R.string.devices_device_config_volume_rate_limit_increase_duration_desc,
+                                    device.volumeRateLimitIncreaseMs
                                 ),
                                 icon = Icons.TwoTone.Schedule,
-                                onClick = { onAction(ConfigAction.OnEditVolumeRateLimitClicked) }
+                                onClick = { onAction(ConfigAction.OnEditVolumeRateLimitIncreaseClicked) }
+                            )
+
+                            ClickablePreference(
+                                title = stringResource(R.string.devices_device_config_volume_rate_limit_decrease_duration_label),
+                                description = stringResource(
+                                    R.string.devices_device_config_volume_rate_limit_decrease_duration_desc,
+                                    device.volumeRateLimitDecreaseMs
+                                ),
+                                icon = Icons.TwoTone.Schedule,
+                                onClick = { onAction(ConfigAction.OnEditVolumeRateLimitDecreaseClicked) }
                             )
                         }
 

@@ -64,6 +64,12 @@
     <string name="devices_device_config_volume_observe_desc">在此裝置連接時保持活躍，並儲存非由這個應用程式引起的音量變更。</string>
     <string name="devices_device_config_volume_lock_label">音量鎖定</string>
     <string name="devices_device_config_volume_lock_desc">在該裝置連線時，任何未透過這個應用程式進行的音量變更都將被還原。</string>
+    <string name="devices_device_config_volume_rate_limiter_label">音量速率限制器</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">限制音量變更的頻率，以防止快速或過度的音量調整。</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">音量增加延遲</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">音量增加之間的最短時間：%d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">音量降低延遲</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">音量降低之間的最短時間：%d ms</string>
     <string name="devices_device_config_autoplay_label">自動播放</string>
     <string name="devices_device_config_autoplay_desc">在這個裝置連線時模擬按下藍牙遙控器的播放鍵。</string>
     <string name="devices_device_config_autoplay_keycodes_available">可用按鍵類型</string>

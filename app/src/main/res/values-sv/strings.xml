@@ -258,8 +258,10 @@
     <string name="devices_device_config_volume_save_on_disconnect_desc">Fånga och spara aktuella volymnivåer när denna enhet kopplas från.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volymhastighetsbegränsare</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Begränsa frekvensen av volymförändringar för att förhindra snabba eller överdrivna volymjusteringar.</string>
-    <string name="devices_device_config_volume_rate_limit_duration_label">Hastighetsbegränsning varaktighet</string>
-    <string name="devices_device_config_volume_rate_limit_duration_desc">Minimitid mellan volymförändringar: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volymökningsfördröjning</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimitid mellan volymökningar: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Volymminskningsfördröjning</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimitid mellan volymminskningar: %d ms</string>
     <string name="devices_device_config_dnd_on_connect_label">Stör ej-läge</string>
     <string name="dnd_mode_dialog_title">Välj Stör ej-läge</string>
     <string name="dnd_mode_dont_change">Förändra inte</string>

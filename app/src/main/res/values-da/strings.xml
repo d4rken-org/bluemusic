@@ -63,6 +63,12 @@
     <string name="devices_device_config_volume_lock_desc">Alle lydstyrkeændringer ikke lavet gennem denne app vil blive tilbageført mens denne enhed er tilsluttet.</string>
     <string name="devices_device_config_autoplay_label">Autoplay</string>
     <string name="devices_device_config_autoplay_desc">Simuler at trykke på afspil på en Bluetooth fjernbetjening, når denne enhed tilsluttes.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Lydstyrke-begrenzer</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Begræns hyppigheden af lydstyrkeændringer for at forhindre hurtige eller overdrevne lydstyrkeindstillinger.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Lydstyrkeforøgelsesforsinkelse</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimumstid mellem lydstyrkeforøgelser: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Lydstyrkenedgangs forsinkelse</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimumstid mellem lydstyrkenedgange: %d ms</string>
     <string name="devices_device_config_autoplay_keycodes_available">Tilgængelige tast typer</string>
     <string name="devices_device_config_autoplay_keycodes_desc">Konfigurer hvilke taster der skal sendes og i hvilken rækkefølge</string>
     <string name="devices_device_config_autoplay_keycodes_label">Tast typer</string>

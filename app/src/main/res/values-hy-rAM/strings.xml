@@ -33,6 +33,12 @@
     <string name="devices_device_config_rename_device_desc">Rename this device within this app, and if possible, within the system.</string>
     <string name="devices_device_config_rename_device_action">Rename</string>
     <string name="devices_device_config_section_timing_label">Timing</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Ձայնի տեմպի սահմանափակիչ</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Սահմանափակել ձայնի փոփոխությունների հաճախականությունը՝ արագ կամ չափազանց ձայնի կարգավորումներ կանխելու համար:</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ձայնի բարձրացման հետաձգում</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Նվազագույն ժամանակ ձայնի բարձրացումների միջև. %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Ձայնի նվազման հետաձգում</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Նվազագույն ժամանակ ձայնի նվազումների միջև. %d ms</string>
     <string name="devices_device_config_monitoring_duration_label">Monitoring duration</string>
     <string name="devices_device_config_monitoring_duration_desc">A duration in milliseconds, after adjustments have been made, during which any further volume changes will be blocked.</string>
     <string name="devices_device_config_adjustment_delay_label">Adjustment delay</string>

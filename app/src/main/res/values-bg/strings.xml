@@ -57,6 +57,12 @@
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Видими настройки</string>
     <string name="devices_device_config_visible_adjustments_desc">Показвай системния прозорец за звука, докато приложението регулира звука за това устройство.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Ограничител на честотата на силата на звука</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Ограничава честотата на промените в силата на звука, за да се предотврати бързо или прекомерно регулиране.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Забавяне на увеличението на силата на звука</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Минимално време между увеличенията на силата на звука: %d мс</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Забавяне на намаляването на силата на звука</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Минимално време между намаленията на силата на звука: %d мс</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
     <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>

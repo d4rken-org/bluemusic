@@ -45,6 +45,13 @@
     <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
     <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
     <string name="devices_device_config_visible_adjustments_label">Видливи прилагодувања</string>
+    <string name="devices_device_config_visible_adjustments_desc">Префрли кои прилагодувања се прикажуваат на картичката на уредот</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Ограничувач на фреквенција на јачина на звук</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Ограничува фреквенција на промени во јачина на звук за да се спречи брзо или прекомерно подесување.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Заостану при зголемување на јачина на звук</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Минимално време помеѓу зголемувањата на јачина на звук: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Заостану при намалување на јачина на звук</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Минимално време помеѓу намалувањата на јачина на звук: %d ms</string>
     <string name="devices_device_config_keep_awake_label">Остани буден</string>
     <string name="devices_device_config_keep_awake_desc">Чувајте го екранот уклучен додека е поврзан овој уред.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
@@ -245,7 +252,6 @@
     <string name="devices_device_config_notification_policy_action">Дај пристап</string>
     <string name="devices_device_config_notification_policy_required_notification">Контролата на јачината на известувањата бара пристап до политиката на известувања</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Контролата на јачината на ѕвонење бара пристап до политиката на известувања</string>
-    <string name="devices_device_config_visible_adjustments_desc">Префрли кои прилагодувања се прикажуваат на картичката на уредот</string>
     <string name="general_clear_action">Исчисти</string>
     <string name="general_navigate_back_action">Навигирај назад</string>
     <string name="general_reset_action">Ресетирај</string>

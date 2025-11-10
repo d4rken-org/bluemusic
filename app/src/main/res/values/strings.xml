@@ -71,8 +71,10 @@
     <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volume rate limiter</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limit the frequency of volume changes to prevent rapid or excessive volume adjustments.</string>
-    <string name="devices_device_config_volume_rate_limit_duration_label">Rate limit duration</string>
-    <string name="devices_device_config_volume_rate_limit_duration_desc">Minimum time between volume changes: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volume increase delay</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimum time between volume increases: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Volume decrease delay</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimum time between volume decreases: %d ms</string>
     <string name="devices_device_config_autoplay_label">Autoplay</string>
     <string name="devices_device_config_autoplay_desc">Simulate pressing play on a Bluetooth remote when this device connects.</string>
     <string name="devices_device_config_autoplay_keycodes_title">Autoplay Key Types</string>

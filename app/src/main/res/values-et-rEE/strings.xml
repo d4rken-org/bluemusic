@@ -250,4 +250,10 @@
     <string name="general_navigate_back_action">Navigeeri tagasi</string>
     <string name="general_reset_action">Lähtesta</string>
     <string name="general_save_action">Salvesta</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Helitugevuse määra piirang</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Piirita helitugevuse muutuste sagedust, et vältida kiiret või liigset muutmist.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Helitugevuse tõstmise viivitus</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimaalne aeg helitugevuse tõstmiste vahel: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Helitugevuse alandamise viivitus</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimaalne aeg helitugevuse alandamiste vahel: %d ms</string>
 </resources>

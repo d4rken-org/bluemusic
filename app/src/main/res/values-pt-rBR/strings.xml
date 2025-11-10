@@ -70,8 +70,10 @@
     <string name="devices_device_config_volume_lock_desc">Qualquer alteração de volume não feita através deste aplicativo será revertida enquanto este dispositivo estiver conectado.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitador de taxa de volume</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limita a frequência de mudanças de volume para prevenir ajustes rápidos ou excessivos.</string>
-    <string name="devices_device_config_volume_rate_limit_duration_label">Duração do limite de taxa</string>
-    <string name="devices_device_config_volume_rate_limit_duration_desc">Tempo mínimo entre mudanças de volume: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Atraso de aumento de volume</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Tempo mínimo entre aumentos de volume: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Atraso de diminuição de volume</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Tempo mínimo entre diminuições de volume: %d ms</string>
     <string name="devices_device_config_autoplay_label">Reprodução automática</string>
     <string name="devices_device_config_autoplay_desc">Simula uma reprodução imediata em um controle remoto bluetooth ao conectar este dispositivo.</string>
     <string name="devices_device_config_autoplay_keycodes_available">Tipos de teclas disponíveis</string>

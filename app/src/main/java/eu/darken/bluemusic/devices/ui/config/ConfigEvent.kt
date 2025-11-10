@@ -10,7 +10,8 @@ sealed interface ConfigEvent {
     data class ShowMonitoringDurationDialog(val currentValue: Duration) : ConfigEvent
     data class ShowReactionDelayDialog(val currentValue: Duration) : ConfigEvent
     data class ShowAdjustmentDelayDialog(val currentValue: Duration) : ConfigEvent
-    data class ShowVolumeRateLimitDialog(val currentValue: Duration) : ConfigEvent
+    data class ShowVolumeRateLimitIncreaseDialog(val currentValue: Duration) : ConfigEvent
+    data class ShowVolumeRateLimitDecreaseDialog(val currentValue: Duration) : ConfigEvent
     data object ShowAutoplayKeycodesDialog : ConfigEvent
     data class ShowDndModeDialog(val currentMode: DndMode?) : ConfigEvent
     data object NavigateBack : ConfigEvent

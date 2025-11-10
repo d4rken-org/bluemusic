@@ -43,6 +43,10 @@
     <string name="devices_device_config_adjustment_delay_desc">Her ses ayarı arasındaki milisaniye cinsinden gecikme. 0ms gecikme, bu cihaz bağlandığında ses seviyesini anında ayarlamak anlamına gelir.</string>
     <string name="devices_device_config_reaction_delay_label">Reaksiyon gecikmesi</string>
     <string name="devices_device_config_reaction_delay_desc">Bu uygulama bu cihaza tepki verene kadarki milisaniye cinsinden gecikme.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ses artırma gecikmesi</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Ses artırma işlemleri arasında geçen minimum süre: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Ses azaltma gecikmesi</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Ses azaltma işlemleri arasında geçen minimum süre: %d ms</string>
     <string name="devices_device_config_section_reaction_label">Diğer</string>
     <string name="devices_device_config_launch_app_label">Uygulamayı başlat</string>
     <string name="devices_device_config_launch_app_desc">Bu cihaz bağlandığında uygulamayı başlat.</string>

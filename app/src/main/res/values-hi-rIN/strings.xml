@@ -51,6 +51,12 @@
     <string name="devices_device_config_volume_observe_desc">जब यह डिवाइस जुड़ा हो तो सक्रिय रहें और उन वॉल्यूम परिवर्तनों को सेव करें जो इस ऐप के कारण नहीं हुए हैं।</string>
     <string name="devices_device_config_volume_lock_label">वॉल्यूम लॉक</string>
     <string name="devices_device_config_volume_lock_desc">इस उपकरण के माध्यम से नहीं किए गए किसी भी मात्रा परिवर्तन को वापस कर दिया जाएगा, जबकि यह उपकरण जुड़ा हुआ है।</string>
+    <string name="devices_device_config_volume_rate_limiter_label">वॉल्यूम दर सीमक</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">वॉल्यूम परिवर्तनों की आवृत्ति को सीमित करें ताकि तेज़ या अत्यधिक वॉल्यूम समायोजन को रोका जा सके।</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">वॉल्यूम बढ़ाने में देरी</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">वॉल्यूम बढ़ाने के बीच न्यूनतम समय: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">वॉल्यूम घटाने में देरी</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">वॉल्यूम घटाने के बीच न्यूनतम समय: %d ms</string>
     <string name="devices_device_config_autoplay_label">स्वचालित</string>
     <string name="devices_device_config_autoplay_desc">जब यह डिवाइस कनेक्ट होता है तो ब्लूटूथ रिमोट पर प्ले बटन दबाकर उसका का अनुकरण करें।</string>
     <string name="devices_device_config_section_volumes_label">ध्वनि</string>

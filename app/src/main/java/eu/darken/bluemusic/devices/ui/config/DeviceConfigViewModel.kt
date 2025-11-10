@@ -130,16 +130,28 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 events.emit(ConfigEvent.ShowReactionDelayDialog(currentDelay))
             }
 
-            is ConfigAction.OnEditVolumeRateLimit -> {
+            is ConfigAction.OnEditVolumeRateLimitIncrease -> {
                 deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                    oldConfig.copy(volumeRateLimitMs = action.duration?.toMillis())
+                    oldConfig.copy(volumeRateLimitIncreaseMs = action.duration?.toMillis())
                 }
             }
 
-            is ConfigAction.OnEditVolumeRateLimitClicked -> {
+            is ConfigAction.OnEditVolumeRateLimitDecrease -> {
+                deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                    oldConfig.copy(volumeRateLimitDecreaseMs = action.duration?.toMillis())
+                }
+            }
+
+            is ConfigAction.OnEditVolumeRateLimitIncreaseClicked -> {
                 val device = state.first().device
-                val currentLimit = Duration.ofMillis(device.volumeRateLimitMs)
-                events.emit(ConfigEvent.ShowVolumeRateLimitDialog(currentLimit))
+                val currentLimit = Duration.ofMillis(device.volumeRateLimitIncreaseMs)
+                events.emit(ConfigEvent.ShowVolumeRateLimitIncreaseDialog(currentLimit))
+            }
+
+            is ConfigAction.OnEditVolumeRateLimitDecreaseClicked -> {
+                val device = state.first().device
+                val currentLimit = Duration.ofMillis(device.volumeRateLimitDecreaseMs)
+                events.emit(ConfigEvent.ShowVolumeRateLimitDecreaseDialog(currentLimit))
             }
 
             is ConfigAction.OnLaunchAppClicked -> {

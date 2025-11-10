@@ -67,6 +67,12 @@
     <string name="devices_device_config_volume_observe_desc">Pozostań aktywny, gdy to urządzenie jest połączone i zapisuj zmiany głośności, które nie zostały spowodowane przez tę aplikację.</string>
     <string name="devices_device_config_volume_lock_label">Blokada głośności</string>
     <string name="devices_device_config_volume_lock_desc">Jakiekolwiek zmiany, które nie będą wprowadzane przez aplikację, zostaną cofnięte, gdy urządzenie jest podłączone.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Ogranicznik częstotliwości głośności</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Ogranicza częstotliwość zmian głośności, aby zapobiec szybkim lub nadmiernym regulacjom.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Opóźnienie zwiększenia głośności</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimalny czas między zwiększeniami głośności: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Opóźnienie zmniejszenia głośności</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimalny czas między zmniejszeniami głośności: %d ms</string>
     <string name="devices_device_config_autoplay_label">Automatyczne odtwarzanie</string>
     <string name="devices_device_config_autoplay_desc">Symuluje naciśnięcie przycisku odtwarzania na zdalnym urządzeniu Bluetooth, gdy urządzenie zostanie podłączone.</string>
     <string name="devices_device_config_section_volumes_label">Głośności</string>

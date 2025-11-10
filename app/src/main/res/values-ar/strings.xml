@@ -60,6 +60,12 @@
     <string name="devices_device_config_volume_observe_desc">ابق نشطاً بينما هذا الجهاز متصل واحفظ تغييرات الصوت التي لم يسببها هذا التطبيق.</string>
     <string name="devices_device_config_volume_lock_label">قفل الصوت</string>
     <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">منظم معدل الصوت</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">تحديد تكرار تغييرات الصوت لمنع التعديلات السريعة أو المفرطة على الصوت.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">تأخير زيادة الصوت</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">الحد الأدنى للوقت بين زيادات الصوت: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">تأخير تقليل الصوت</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">الحد الأدنى للوقت بين تقليلات الصوت: %d ms</string>
     <string name="devices_device_config_autoplay_label">التشغيل التلقائي</string>
     <string name="devices_device_config_autoplay_desc">اظهار النقر على التشغيل على لوحة التحكم عن بعد للبلوتوث عند توصيل هذا الجهاز.</string>
     <string name="devices_device_config_autoplay_keycodes_available">أنواع المفاتيح المتاحة</string>

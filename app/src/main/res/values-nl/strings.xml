@@ -58,6 +58,12 @@
     <string name="devices_device_config_volume_lock_desc">Alle volumewijzigingen die niet via deze app worden gemaakt, worden ongedaan gemaakt terwijl dit apparaat is aangesloten.</string>
     <string name="devices_device_config_autoplay_label">Automatisch afspelen</string>
     <string name="devices_device_config_autoplay_desc">Simuleer op afspelen drukken op een bluetooth afstandsbediening wanneer dit apparaat verbinding maakt.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Volume snelheidsbegrenzer</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Beperk de frequentie van volumewijzigingen om snelle of buitensporige volumeaanpassingen te voorkomen.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volume verhogingsvertraging</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimale tijd tussen volumeverhogingen: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Volume verlagingsvertraging</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimale tijd tussen volumeverlagingen: %d ms</string>
     <string name="devices_device_config_autoplay_keycodes_available">Beschikbare toetstypen</string>
     <string name="devices_device_config_autoplay_keycodes_desc">Configureer welke toetsen te versturen en in welke volgorde</string>
     <string name="devices_device_config_autoplay_keycodes_label">Toetstypen</string>

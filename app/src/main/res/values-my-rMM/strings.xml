@@ -51,6 +51,12 @@
     <string name="devices_device_config_volume_observe_desc">Stay active while this device is connected and save volume changes that have not been caused by this app.</string>
     <string name="devices_device_config_volume_lock_label">Volume lock</string>
     <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">အသံအတိုးအကျယ်နှုန်းကန့်သတ်ကိရိယာ</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">အသံအတိုးအကျယ်ပြောင်းလဲမှုများ၏ကြိမ်ဆင်းသက်မှုကိုကန့်သတ်ပြီးမြန်လျှင်သို့မဟုတ်အလွန်အကျွံအသံထိန်းချုပ်မှုများကိုကာကွယ်ပါ။</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">အသံအတိုးအကျယ်တိုးစည်းမျဉ်း</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">အသံအတိုးအကျယ်တိုးခြင်းများအကြားအနည်းငယ်ဆုံးအချိန်- %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">အသံအတိုးအကျယ်လျှော့ချမျဉ်း</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">အသံအတိုးအကျယ်လျှော့ချခြင်းများအကြားအနည်းငယ်ဆုံးအချိန်- %d ms</string>
     <string name="devices_device_config_autoplay_label">Autoplay</string>
     <string name="devices_device_config_autoplay_desc">Simulate pressing play on a Bluetooth remote when this device connects.</string>
     <string name="devices_device_config_section_volumes_label">Volumes</string>
