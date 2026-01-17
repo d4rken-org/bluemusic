@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.main.ui.settings.support
 
 import androidx.compose.foundation.layout.Arrangement
+import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -93,7 +94,8 @@ fun SupportScreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues),
+                .padding(paddingValues)
+                .horizontalCutoutPadding(),
             verticalArrangement = Arrangement.Top
         ) {
             item {

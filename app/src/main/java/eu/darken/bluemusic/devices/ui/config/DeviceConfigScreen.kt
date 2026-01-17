@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -329,7 +330,8 @@ fun DeviceConfigScreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues),
+                .padding(paddingValues)
+                .horizontalCutoutPadding(),
             contentPadding = PaddingValues(vertical = 8.dp)
         ) {
             // Device Header Card

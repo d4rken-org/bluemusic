@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -144,6 +145,7 @@ fun AppSelectionScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
+                .horizontalCutoutPadding()
         ) {
             // Search bar
             OutlinedTextField(
