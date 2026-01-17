@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -114,6 +115,7 @@ fun DiscoverScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
+                .horizontalCutoutPadding()
         ) {
             when {
                 state.isLoading -> {
