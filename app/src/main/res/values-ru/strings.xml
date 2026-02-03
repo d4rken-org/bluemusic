@@ -247,6 +247,7 @@
     <string name="general_delete_action">Удалить</string>
     <string name="general_navigate_back_action">Вернуться назад</string>
     <string name="general_cancel_action">Отмена</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">Настроить</string>
     <string name="battery_optimization_hint_title">Оптимизация батареи</string>
     <string name="battery_optimization_hint_message">Оптимизация батареи включена и может мешать нормальной работе. Рассмотри возможность отключения.</string>
@@ -282,4 +283,13 @@
     <string name="devices_indicator_auto">Авто</string>
     <string name="devices_indicator_home">Дом</string>
     <string name="devices_indicator_dnd">НБ</string>
+
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Оповещение о подключении</string>
+    <string name="connection_alert_dialog_title">Оповещение о подключении</string>
+    <string name="connection_alert_type_none">Нет</string>
+    <string name="connection_alert_type_sound">Только звук</string>
+    <string name="connection_alert_type_vibration">Только вибрация</string>
+    <string name="connection_alert_type_both">Звук и вибрация</string>
+    <string name="devices_indicator_alert">Оповещение</string>
 </resources>

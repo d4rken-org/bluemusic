@@ -242,6 +242,7 @@
     <string name="general_delete_action">Delete</string>
     <string name="general_navigate_back_action">Vrati se natrag</string>
     <string name="general_cancel_action">Cancel</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">Configure</string>
     <string name="battery_optimization_hint_title">Battery optimization</string>
     <string name="battery_optimization_hint_message">Battery optimizations are enabled and may prevent proper operation. Consider disabling them.</string>
@@ -256,4 +257,12 @@
     <string name="error_iap_owned_message">You already own this item</string>
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Upozorenje pri povezivanju</string>
+    <string name="connection_alert_dialog_title">Upozorenje pri povezivanju</string>
+    <string name="connection_alert_type_none">Ništa</string>
+    <string name="connection_alert_type_sound">Samo zvuk</string>
+    <string name="connection_alert_type_vibration">Samo vibracija</string>
+    <string name="connection_alert_type_both">Zvuk i vibracija</string>
+    <string name="devices_indicator_alert">Upozorenje</string>
 </resources>

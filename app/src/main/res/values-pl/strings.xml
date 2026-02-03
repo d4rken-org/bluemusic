@@ -242,6 +242,7 @@
     <string name="general_reset_action">Resetuj</string>
     <string name="general_save_action">Zapisz</string>
     <string name="general_cancel_action">Anuluj</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">Konfiguruj</string>
     <string name="battery_optimization_hint_title">Optymalizacja baterii</string>
     <string name="battery_optimization_hint_message">Optymalizacje baterii są włączone i mogą przeszkódzić w prawidłowym działaniu. Rozważ ich wyłączenie.</string>
@@ -277,4 +278,13 @@
     <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Dom</string>
     <string name="devices_indicator_dnd">DND</string>
+
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Alert polaczenia</string>
+    <string name="connection_alert_dialog_title">Alert polaczenia</string>
+    <string name="connection_alert_type_none">Brak</string>
+    <string name="connection_alert_type_sound">Tylko dzwiek</string>
+    <string name="connection_alert_type_vibration">Tylko wibracja</string>
+    <string name="connection_alert_type_both">Dzwiek i wibracja</string>
+    <string name="devices_indicator_alert">Alert</string>
 </resources>

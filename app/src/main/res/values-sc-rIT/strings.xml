@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Avisu de connessione</string>
+    <string name="connection_alert_dialog_title">Avisu de connessione</string>
+    <string name="connection_alert_type_none">Nisciunu</string>
+    <string name="connection_alert_type_sound">Solu sonu</string>
+    <string name="connection_alert_type_vibration">Solu vibrazione</string>
+    <string name="connection_alert_type_both">Sonu e vibrazione</string>
+    <string name="devices_indicator_alert">Avisu</string>
+</resources>

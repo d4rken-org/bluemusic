@@ -108,6 +108,13 @@
     <string name="dnd_mode_alarms_only">Alarms only</string>
     <string name="dnd_mode_total_silence">Total silence</string>
 
+    <string name="devices_device_config_connection_alert_label">Connection alert</string>
+    <string name="connection_alert_dialog_title">Connection alert</string>
+    <string name="connection_alert_type_none">None</string>
+    <string name="connection_alert_type_sound">Sound only</string>
+    <string name="connection_alert_type_vibration">Vibration only</string>
+    <string name="connection_alert_type_both">Sound and vibration</string>
+
     <string name="devices_stream_music_label">Music</string>
     <string name="devices_audio_stream_call_label">Call</string>
     <string name="devices_audio_stream_ring_label">Ring</string>
@@ -288,6 +295,7 @@
     <string name="managed_devices_empty_message">No Bluetooth devices configured.\nTap the + button to add your first device.</string>
     <string name="general_delete_action">Delete</string>
     <string name="general_cancel_action">Cancel</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">Configure</string>
 
     <string name="battery_optimization_hint_title">Battery optimization</string>
@@ -329,4 +337,5 @@
     <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>
+    <string name="devices_indicator_alert">Alert</string>
 </resources>

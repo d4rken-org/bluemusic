@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.devices.ui.config
 
 import android.content.Intent
+import eu.darken.bluemusic.monitor.core.alert.AlertType
 import eu.darken.bluemusic.monitor.core.audio.DndMode
 import java.time.Duration
 
@@ -14,6 +15,7 @@ sealed interface ConfigEvent {
     data class ShowVolumeRateLimitDecreaseDialog(val currentValue: Duration) : ConfigEvent
     data object ShowAutoplayKeycodesDialog : ConfigEvent
     data class ShowDndModeDialog(val currentMode: DndMode?) : ConfigEvent
+    data class ShowConnectionAlertDialog(val currentType: AlertType, val currentSoundUri: String?) : ConfigEvent
     data object NavigateBack : ConfigEvent
     data object RequiresPro : ConfigEvent
     data class RequiresNotificationPolicyAccess(

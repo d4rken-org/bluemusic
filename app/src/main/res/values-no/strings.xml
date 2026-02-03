@@ -241,6 +241,7 @@
     <string name="general_reset_action">Tilbakestill</string>
     <string name="general_save_action">Lagre</string>
     <string name="general_cancel_action">Avbryt</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Tøm</string>
     <string name="general_configure_action">Konfigurer</string>
     <string name="battery_optimization_hint_title">Batterioptimalisering</string>
@@ -256,4 +257,12 @@
     <string name="error_iap_owned_message">Du eier allerede denne varen</string>
     <string name="label_no_devices_title">Ingen enheter</string>
     <string name="bluemusic_mascot_description">App-ikon</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Tilkoblingsvarsel</string>
+    <string name="connection_alert_dialog_title">Tilkoblingsvarsel</string>
+    <string name="connection_alert_type_none">Ingen</string>
+    <string name="connection_alert_type_sound">Kun lyd</string>
+    <string name="connection_alert_type_vibration">Kun vibrasjon</string>
+    <string name="connection_alert_type_both">Lyd og vibrasjon</string>
+    <string name="devices_indicator_alert">Varsel</string>
 </resources>

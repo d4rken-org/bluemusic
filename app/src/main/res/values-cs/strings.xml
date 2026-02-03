@@ -242,6 +242,7 @@
     <string name="general_delete_action">Smazat</string>
     <string name="general_navigate_back_action">Navigovat zpět</string>
     <string name="general_cancel_action">Zrušit</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">Konfigurovat</string>
     <string name="battery_optimization_hint_title">Optimalizace baterie</string>
     <string name="battery_optimization_hint_message">Optimalizace baterie je zapnutá a může bránit správnému fungování. Zvaž její vypnutí.</string>
@@ -256,4 +257,13 @@
     <string name="error_iap_owned_message">Tuto položku již vlastníš</string>
     <string name="label_no_devices_title">Žádná zařízení</string>
     <string name="bluemusic_mascot_description">Ikona aplikace</string>
+
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Upozorneni na pripojeni</string>
+    <string name="connection_alert_dialog_title">Upozorneni na pripojeni</string>
+    <string name="connection_alert_type_none">Zadne</string>
+    <string name="connection_alert_type_sound">Pouze zvuk</string>
+    <string name="connection_alert_type_vibration">Pouze vibrace</string>
+    <string name="connection_alert_type_both">Zvuk a vibrace</string>
+    <string name="devices_indicator_alert">Upozorneni</string>
 </resources>

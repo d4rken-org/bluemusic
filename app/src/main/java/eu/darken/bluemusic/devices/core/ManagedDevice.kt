@@ -2,6 +2,7 @@ package eu.darken.bluemusic.devices.core
 
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
+import eu.darken.bluemusic.monitor.core.alert.AlertType
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.DndMode
 import java.time.Duration
@@ -60,6 +61,10 @@ data class ManagedDevice(
         get() = config.visibleAdjustments ?: true
     val dndMode: DndMode?
         get() = config.dndMode
+    val connectionAlertType: AlertType
+        get() = config.connectionAlertType
+    val connectionAlertSoundUri: String?
+        get() = config.connectionAlertSoundUri
     val requiresMonitor: Boolean
         get() = volumeLock || volumeObserving || volumeRateLimiter
 

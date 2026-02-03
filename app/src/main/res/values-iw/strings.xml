@@ -240,6 +240,7 @@
     <string name="managed_devices_empty_message">לא הוגדרו מכשירי בלוטוס.\nלחץ על כפתור + כדי להוסיף את המכשיר הראשון.</string>
     <string name="general_delete_action">מחק</string>
     <string name="general_cancel_action">בטל</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">הגדר</string>
     <string name="general_reset_action">איפוס</string>
     <string name="general_save_action">שמור</string>
@@ -256,4 +257,12 @@
     <string name="error_iap_owned_message">אתם כבר בעלים של פריט זה</string>
     <string name="label_no_devices_title">אין מכשירים</string>
     <string name="bluemusic_mascot_description">איקון אפליקציה</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">התראת חיבור</string>
+    <string name="connection_alert_dialog_title">התראת חיבור</string>
+    <string name="connection_alert_type_none">ללא</string>
+    <string name="connection_alert_type_sound">צליל בלבד</string>
+    <string name="connection_alert_type_vibration">רטט בלבד</string>
+    <string name="connection_alert_type_both">צליל ורטט</string>
+    <string name="devices_indicator_alert">התראה</string>
 </resources>

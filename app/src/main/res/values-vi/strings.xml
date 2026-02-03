@@ -242,6 +242,7 @@
     <string name="general_reset_action">Đặt lại</string>
     <string name="general_save_action">Lưu</string>
     <string name="general_cancel_action">Hủy</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Xóa</string>
     <string name="general_configure_action">Cấu hình</string>
     <string name="battery_optimization_hint_title">Tối ưu hóa pin</string>
@@ -257,4 +258,12 @@
     <string name="error_iap_owned_message">Bạn đã sở hữu mục này</string>
     <string name="label_no_devices_title">Không có thiết bị</string>
     <string name="bluemusic_mascot_description">Biểu tượng ứng dụng</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Cảnh báo kết nối</string>
+    <string name="connection_alert_dialog_title">Cảnh báo kết nối</string>
+    <string name="connection_alert_type_none">Không có</string>
+    <string name="connection_alert_type_sound">Chỉ âm thanh</string>
+    <string name="connection_alert_type_vibration">Chỉ rung</string>
+    <string name="connection_alert_type_both">Âm thanh và rung</string>
+    <string name="devices_indicator_alert">Cảnh báo</string>
 </resources>

@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.devices.ui.config
 
+import eu.darken.bluemusic.monitor.core.alert.AlertType
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.DndMode
 import java.time.Duration
@@ -38,4 +39,7 @@ sealed interface ConfigAction {
     data object OnToggleEnabled : ConfigAction
     data object OnEditDndModeClicked : ConfigAction
     data class OnEditDndMode(val mode: DndMode?) : ConfigAction
+    data object OnEditConnectionAlertClicked : ConfigAction
+    data class OnEditConnectionAlertType(val type: AlertType) : ConfigAction
+    data class OnEditConnectionAlertSoundUri(val uri: String?) : ConfigAction
 }

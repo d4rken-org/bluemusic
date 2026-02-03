@@ -333,6 +333,32 @@ class DeviceConfigViewModel @AssistedInject constructor(
                     oldConfig.copy(dndMode = action.mode)
                 }
             }
+
+            is ConfigAction.OnEditConnectionAlertClicked -> {
+                if (!upgradeRepo.isPro()) {
+                    events.emit(ConfigEvent.RequiresPro)
+                } else {
+                    val device = state.first().device
+                    events.emit(
+                        ConfigEvent.ShowConnectionAlertDialog(
+                            device.connectionAlertType,
+                            device.connectionAlertSoundUri
+                        )
+                    )
+                }
+            }
+
+            is ConfigAction.OnEditConnectionAlertType -> {
+                deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                    oldConfig.copy(connectionAlertType = action.type)
+                }
+            }
+
+            is ConfigAction.OnEditConnectionAlertSoundUri -> {
+                deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                    oldConfig.copy(connectionAlertSoundUri = action.uri)
+                }
+            }
         }
     }
 

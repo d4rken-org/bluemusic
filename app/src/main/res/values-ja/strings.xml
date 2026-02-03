@@ -242,6 +242,7 @@
     <string name="managed_devices_empty_message">Bluetoothデバイスが設定されていません。\n+ボタンをタップして最初のデバイスを追加してください。</string>
     <string name="general_delete_action">削除</string>
     <string name="general_cancel_action">キャンセル</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">設定</string>
     <string name="battery_optimization_hint_title">バッテリー最適化</string>
     <string name="battery_optimization_hint_message">バッテリー最適化が有効になっており、正常な動作を妨げる可能性があります。無効にすることを検討してください。</string>
@@ -277,4 +278,12 @@
     <string name="devices_indicator_auto">自動</string>
     <string name="devices_indicator_home">ホーム</string>
     <string name="devices_indicator_dnd">おやすみ</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">接続アラート</string>
+    <string name="connection_alert_dialog_title">接続アラート</string>
+    <string name="connection_alert_type_none">なし</string>
+    <string name="connection_alert_type_sound">サウンドのみ</string>
+    <string name="connection_alert_type_vibration">バイブのみ</string>
+    <string name="connection_alert_type_both">サウンドとバイブ</string>
+    <string name="devices_indicator_alert">アラート</string>
 </resources>

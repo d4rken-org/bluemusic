@@ -239,6 +239,7 @@
     <string name="general_reset_action">Sıfırla</string>
     <string name="general_save_action">Kaydet</string>
     <string name="general_cancel_action">Cancel</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Temizle</string>
     <string name="general_configure_action">Configure</string>
     <string name="battery_optimization_hint_title">Pil optimizasyonu</string>
@@ -275,4 +276,12 @@
     <string name="devices_indicator_auto">Otomatik</string>
     <string name="devices_indicator_home">Ana sayfa</string>
     <string name="devices_indicator_dnd">DND</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Bağlantı uyarısı</string>
+    <string name="connection_alert_dialog_title">Bağlantı uyarısı</string>
+    <string name="connection_alert_type_none">Yok</string>
+    <string name="connection_alert_type_sound">Sadece ses</string>
+    <string name="connection_alert_type_vibration">Sadece titreşim</string>
+    <string name="connection_alert_type_both">Ses ve titreşim</string>
+    <string name="devices_indicator_alert">Uyarı</string>
 </resources>

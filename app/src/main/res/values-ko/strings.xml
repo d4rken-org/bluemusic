@@ -242,6 +242,7 @@
     <string name="managed_devices_empty_message">설정된 블루투스 디바이스가 없습니다.\n+ 버튼을 눌러 첫 번째 디바이스를 추가하세요.</string>
     <string name="general_delete_action">삭제</string>
     <string name="general_cancel_action">취소</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">구성</string>
     <string name="battery_optimization_hint_title">배터리 최적화</string>
     <string name="battery_optimization_hint_message">배터리 최적화가 켜져 있어 정상 동작을 방해할 수 있습니다. 끄기를 고려해보세요.</string>
@@ -256,4 +257,12 @@
     <string name="error_iap_owned_message">이미 이 항목을 소유하고 있습니다</string>
     <string name="label_no_devices_title">디바이스 없음</string>
     <string name="bluemusic_mascot_description">앱 아이콘</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">연결 알림</string>
+    <string name="connection_alert_dialog_title">연결 알림</string>
+    <string name="connection_alert_type_none">없음</string>
+    <string name="connection_alert_type_sound">소리만</string>
+    <string name="connection_alert_type_vibration">진동만</string>
+    <string name="connection_alert_type_both">소리와 진동</string>
+    <string name="devices_indicator_alert">알림</string>
 </resources>

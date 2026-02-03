@@ -235,6 +235,7 @@
     <string name="general_reset_action">Nollaa</string>
     <string name="general_save_action">Tallenna</string>
     <string name="general_cancel_action">Peruuta</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Tyhjennä</string>
     <string name="general_configure_action">Määritä</string>
     <string name="battery_optimization_hint_title">Akun optimointi</string>
@@ -268,4 +269,12 @@
     <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Pienin aika äänenvoimakkuuden nousujen välillä: %d ms</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Äänenvoimakkuuden lasku viive</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Pienin aika äänenvoimakkuuden laskujen välillä: %d ms</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Yhteyshälytys</string>
+    <string name="connection_alert_dialog_title">Yhteyshälytys</string>
+    <string name="connection_alert_type_none">Ei mitään</string>
+    <string name="connection_alert_type_sound">Vain ääni</string>
+    <string name="connection_alert_type_vibration">Vain värinä</string>
+    <string name="connection_alert_type_both">Ääni ja värinä</string>
+    <string name="devices_indicator_alert">Hälytys</string>
 </resources>

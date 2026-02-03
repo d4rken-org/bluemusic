@@ -4,6 +4,7 @@ import android.view.KeyEvent
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import eu.darken.bluemusic.monitor.core.alert.AlertType
 import eu.darken.bluemusic.monitor.core.audio.DndMode
 
 @Entity(tableName = "device_configs")
@@ -86,4 +87,10 @@ data class DeviceConfigEntity(
 
     @ColumnInfo(name = "dnd_mode")
     val dndMode: DndMode? = null,
+
+    @ColumnInfo(name = "connection_alert_type", defaultValue = "none")
+    val connectionAlertType: AlertType = AlertType.NONE,
+
+    @ColumnInfo(name = "connection_alert_sound_uri")
+    val connectionAlertSoundUri: String? = null,
 )

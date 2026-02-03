@@ -242,6 +242,7 @@
     <string name="managed_devices_empty_message">Ingen Bluetooth-enheder konfigureret.\nTryk på + knappen for at tilføje din første enhed.</string>
     <string name="general_delete_action">Slet</string>
     <string name="general_cancel_action">Annuller</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">Konfigurer</string>
     <string name="battery_optimization_hint_title">Batteri-optimering</string>
     <string name="battery_optimization_hint_message">Batteri-optimering er aktiveret og kan forhindre korrekt drift. Overvej at deaktivere dem.</string>
@@ -256,4 +257,12 @@
     <string name="error_iap_owned_message">Du ejer allerede denne vare</string>
     <string name="label_no_devices_title">Ingen enheder</string>
     <string name="bluemusic_mascot_description">App-ikon</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Forbindelsesadvarsel</string>
+    <string name="connection_alert_dialog_title">Forbindelsesadvarsel</string>
+    <string name="connection_alert_type_none">Ingen</string>
+    <string name="connection_alert_type_sound">Kun lyd</string>
+    <string name="connection_alert_type_vibration">Kun vibration</string>
+    <string name="connection_alert_type_both">Lyd og vibration</string>
+    <string name="devices_indicator_alert">Advarsel</string>
 </resources>

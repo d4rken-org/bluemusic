@@ -18,6 +18,7 @@ import androidx.compose.material.icons.twotone.DoNotDisturb
 import androidx.compose.material.icons.twotone.GraphicEq
 import androidx.compose.material.icons.twotone.Home
 import androidx.compose.material.icons.twotone.Lock
+import androidx.compose.material.icons.twotone.Notifications
 import androidx.compose.material.icons.twotone.PlayArrow
 import androidx.compose.material.icons.twotone.PowerOff
 import androidx.compose.material.icons.twotone.Schedule
@@ -64,12 +65,14 @@ import eu.darken.bluemusic.devices.ui.config.components.DeviceHeaderCard
 import eu.darken.bluemusic.devices.ui.config.components.DeviceStatusCard
 import eu.darken.bluemusic.devices.ui.config.components.SectionHeader
 import eu.darken.bluemusic.devices.ui.config.components.SwitchPreference
+import eu.darken.bluemusic.devices.ui.config.dialogs.ConnectionAlertDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.DeleteDeviceDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.DndModeDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.RenameDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.TimingDialog
 import eu.darken.bluemusic.devices.ui.icon
 import eu.darken.bluemusic.devices.ui.settings.dialogs.AutoplayKeycodesDialog
+import eu.darken.bluemusic.monitor.core.alert.AlertType
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.DndMode
 import java.time.Duration
@@ -97,6 +100,8 @@ fun DeviceConfigScreenHost(
     var showAutoplayKeycodesDialog by remember { mutableStateOf(false) }
     var showDndModeDialog by remember { mutableStateOf(false) }
     var dndModeValue by remember { mutableStateOf<DndMode?>(null) }
+    var showConnectionAlertDialog by remember { mutableStateOf(false) }
+    var connectionAlertTypeValue by remember { mutableStateOf(AlertType.NONE) }
 
     val upgradeMessage = stringResource(R.string.upgrade_feature_requires_pro)
     val upgradeAction = stringResource(R.string.upgrade_prompt_upgrade_action)
@@ -119,6 +124,10 @@ fun DeviceConfigScreenHost(
                 is ConfigEvent.ShowDndModeDialog -> {
                     dndModeValue = event.currentMode
                     showDndModeDialog = true
+                }
+                is ConfigEvent.ShowConnectionAlertDialog -> {
+                    connectionAlertTypeValue = event.currentType
+                    showConnectionAlertDialog = true
                 }
                 is ConfigEvent.NavigateBack -> vm.navUp()
                 is ConfigEvent.RequiresPro -> {
@@ -273,6 +282,19 @@ fun DeviceConfigScreenHost(
                 }
             )
         }
+
+        if (showConnectionAlertDialog) {
+            ConnectionAlertDialog(
+                currentType = connectionAlertTypeValue,
+                onConfirm = { type ->
+                    vm.handleAction(ConfigAction.OnEditConnectionAlertType(type))
+                    showConnectionAlertDialog = false
+                },
+                onDismiss = {
+                    showConnectionAlertDialog = false
+                }
+            )
+        }
     }
 }
 
@@ -284,6 +306,16 @@ private fun getDndModeDescription(mode: DndMode?): String {
         DndMode.PRIORITY_ONLY -> stringResource(R.string.dnd_mode_priority_only)
         DndMode.ALARMS_ONLY -> stringResource(R.string.dnd_mode_alarms_only)
         DndMode.TOTAL_SILENCE -> stringResource(R.string.dnd_mode_total_silence)
+    }
+}
+
+@Composable
+private fun getConnectionAlertDescription(type: AlertType): String {
+    return when (type) {
+        AlertType.NONE -> stringResource(R.string.connection_alert_type_none)
+        AlertType.SOUND -> stringResource(R.string.connection_alert_type_sound)
+        AlertType.VIBRATION -> stringResource(R.string.connection_alert_type_vibration)
+        AlertType.BOTH -> stringResource(R.string.connection_alert_type_both)
     }
 }
 
@@ -583,6 +615,15 @@ fun DeviceConfigScreen(
                                 onClick = { onAction(ConfigAction.OnEditDndModeClicked) }
                             )
                         }
+
+                        ClickablePreference(
+                            title = stringResource(R.string.devices_device_config_connection_alert_label),
+                            description = getConnectionAlertDescription(device.connectionAlertType),
+                            icon = Icons.TwoTone.Notifications,
+                            onClick = { onAction(ConfigAction.OnEditConnectionAlertClicked) },
+                            requiresPro = true,
+                            isProVersion = state.isProVersion
+                        )
 
                         Spacer(modifier = Modifier.height(8.dp))
                     }

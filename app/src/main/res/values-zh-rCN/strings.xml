@@ -243,6 +243,7 @@
     <string name="managed_devices_empty_message">没有配置蓝牙设备。\n点击 + 按钮添加您的第一个设备。</string>
     <string name="general_delete_action">删除</string>
     <string name="general_cancel_action">取消</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">清除</string>
     <string name="general_configure_action">配置</string>
     <string name="general_navigate_back_action">返回</string>
@@ -282,4 +283,12 @@
     <string name="devices_indicator_auto">自动</string>
     <string name="devices_indicator_home">主页</string>
     <string name="devices_indicator_dnd">勿扰</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">连接提醒</string>
+    <string name="connection_alert_dialog_title">连接提醒</string>
+    <string name="connection_alert_type_none">无</string>
+    <string name="connection_alert_type_sound">仅声音</string>
+    <string name="connection_alert_type_vibration">仅振动</string>
+    <string name="connection_alert_type_both">声音和振动</string>
+    <string name="devices_indicator_alert">提醒</string>
 </resources>
