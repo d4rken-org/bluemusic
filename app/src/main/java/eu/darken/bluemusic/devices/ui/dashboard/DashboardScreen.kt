@@ -3,6 +3,9 @@ package eu.darken.bluemusic.devices.ui.dashboard
 import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -16,6 +19,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BluetoothDisabled
 import androidx.compose.material.icons.twotone.Add
@@ -35,7 +39,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -107,6 +113,13 @@ fun DevicesScreen(
     onNavigateToUpgrade: () -> Unit,
     onRequestBluetoothPermission: () -> Unit,
 ) {
+    val listState = rememberLazyListState()
+    val isScrolledDown by remember {
+        derivedStateOf {
+            listState.firstVisibleItemIndex > 0 || listState.firstVisibleItemScrollOffset > 0
+        }
+    }
+
     Scaffold(
         topBar = {
             ManagedDevicesTopBar(
@@ -117,7 +130,11 @@ fun DevicesScreen(
         },
         contentWindowInsets = WindowInsets.statusBars,
         floatingActionButton = {
-            if (state.hasBluetoothPermission && state.isBluetoothEnabled && state.devicesWithApps.isNotEmpty()) {
+            AnimatedVisibility(
+                visible = !isScrolledDown && state.hasBluetoothPermission && state.isBluetoothEnabled && state.devicesWithApps.isNotEmpty(),
+                enter = slideInVertically(initialOffsetY = { it * 2 }),
+                exit = slideOutVertically(targetOffsetY = { it * 2 })
+            ) {
                 FloatingActionButton(
                     onClick = { onAddDevice() },
                     containerColor = MaterialTheme.colorScheme.primary,
@@ -133,6 +150,7 @@ fun DevicesScreen(
     ) { paddingValues ->
         val navBarPadding = navigationBarBottomPadding()
         LazyColumn(
+            state = listState,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
