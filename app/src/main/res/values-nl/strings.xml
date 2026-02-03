@@ -241,6 +241,7 @@
     <string name="managed_devices_empty_message">Geen Bluetooth-apparaten geconfigureerd.\nTik op de + knop om je eerste apparaat toe te voegen.</string>
     <string name="general_delete_action">Verwijderen</string>
     <string name="general_cancel_action">Annuleren</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Wissen</string>
     <string name="general_configure_action">Configureren</string>
     <string name="battery_optimization_hint_title">Batterijoptimalisatie</string>
@@ -277,4 +278,13 @@
     <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">NS</string>
+
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Verbindingsmelding</string>
+    <string name="connection_alert_dialog_title">Verbindingsmelding</string>
+    <string name="connection_alert_type_none">Geen</string>
+    <string name="connection_alert_type_sound">Alleen geluid</string>
+    <string name="connection_alert_type_vibration">Alleen trillen</string>
+    <string name="connection_alert_type_both">Geluid en trillen</string>
+    <string name="devices_indicator_alert">Melding</string>
 </resources>

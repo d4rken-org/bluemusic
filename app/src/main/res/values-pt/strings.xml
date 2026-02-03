@@ -238,6 +238,7 @@
     <string name="managed_devices_empty_message">Nenhum dispositivo Bluetooth configurado.\nToca no botão + para adicionar o teu primeiro dispositivo.</string>
     <string name="general_delete_action">Eliminar</string>
     <string name="general_cancel_action">Cancelar</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Limpar</string>
     <string name="general_configure_action">Configurar</string>
     <string name="general_navigate_back_action">Navegar para trás</string>
@@ -277,4 +278,13 @@
     <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Início</string>
     <string name="devices_indicator_dnd">DND</string>
+
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Alerta de ligacao</string>
+    <string name="connection_alert_dialog_title">Alerta de ligacao</string>
+    <string name="connection_alert_type_none">Nenhum</string>
+    <string name="connection_alert_type_sound">Apenas som</string>
+    <string name="connection_alert_type_vibration">Apenas vibracao</string>
+    <string name="connection_alert_type_both">Som e vibracao</string>
+    <string name="devices_indicator_alert">Alerta</string>
 </resources>

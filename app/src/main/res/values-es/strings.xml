@@ -241,6 +241,7 @@
     <string name="privacy_policy_label">Política de privacidad</string>
     <string name="managed_devices_empty_message">No hay dispositivos Bluetooth configurados.\nToca el botón + para agregar tu primer dispositivo.</string>
     <string name="general_cancel_action">Cancelar</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Limpiar</string>
     <string name="general_delete_action">Eliminar</string>
     <string name="general_navigate_back_action">Navegar hacia atrás</string>
@@ -282,4 +283,13 @@
     <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Inicio</string>
     <string name="devices_indicator_dnd">No molestar</string>
+
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Alerta de conexion</string>
+    <string name="connection_alert_dialog_title">Alerta de conexion</string>
+    <string name="connection_alert_type_none">Ninguna</string>
+    <string name="connection_alert_type_sound">Solo sonido</string>
+    <string name="connection_alert_type_vibration">Solo vibracion</string>
+    <string name="connection_alert_type_both">Sonido y vibracion</string>
+    <string name="devices_indicator_alert">Alerta</string>
 </resources>

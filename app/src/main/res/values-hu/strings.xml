@@ -234,6 +234,7 @@
     <string name="managed_devices_empty_message">Nincsenek Bluetooth eszközök konfigurálva.\nKoppints a + gombra az első eszköz hozzáadásához.</string>
     <string name="general_delete_action">Törlés</string>
     <string name="general_cancel_action">Mégse</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Törlés</string>
     <string name="general_configure_action">Konfigurálás</string>
     <string name="battery_optimization_hint_title">Akkumulátor optimalizálás</string>
@@ -255,4 +256,13 @@
     <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Minimális idő a hangerő-emelések között: %d ms</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Hangerő csökkentés késleltetése</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimális idő a hangerő-csökkentések között: %d ms</string>
+
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Csatlakozasi ertesites</string>
+    <string name="connection_alert_dialog_title">Csatlakozasi ertesites</string>
+    <string name="connection_alert_type_none">Nincs</string>
+    <string name="connection_alert_type_sound">Csak hang</string>
+    <string name="connection_alert_type_vibration">Csak rezges</string>
+    <string name="connection_alert_type_both">Hang es rezges</string>
+    <string name="devices_indicator_alert">Ertesites</string>
 </resources>

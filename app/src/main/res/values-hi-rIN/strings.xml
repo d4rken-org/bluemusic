@@ -223,6 +223,7 @@
     <string name="managed_devices_empty_message">कोई ब्लूटूथ डिवाइस कॉन्फिगर नहीं किया गया।\nअपना पहला डिवाइस जोड़ने के लिए + बटन पर टैप करें।</string>
     <string name="general_delete_action">डिलीट</string>
     <string name="general_cancel_action">रद्द</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">कॉन्फिगर</string>
     <string name="battery_optimization_hint_title">बैटरी ओप्टिमाइजेशन</string>
     <string name="battery_optimization_hint_message">बैटरी ओप्टिमाइजेशन सक्षम हैं और सही ऑपरेशन को रोक सकते हैं। इन्हें अक्षम करने पर विचार करें।</string>
@@ -256,4 +257,12 @@
     <string name="general_navigate_back_action">वापस नेविगेट करें</string>
     <string name="general_reset_action">रीसेट करें</string>
     <string name="general_save_action">सेव करें</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">कनेक्शन अलर्ट</string>
+    <string name="connection_alert_dialog_title">कनेक्शन अलर्ट</string>
+    <string name="connection_alert_type_none">कुछ नहीं</string>
+    <string name="connection_alert_type_sound">केवल ध्वनि</string>
+    <string name="connection_alert_type_vibration">केवल कंपन</string>
+    <string name="connection_alert_type_both">ध्वनि और कंपन</string>
+    <string name="devices_indicator_alert">अलर्ट</string>
 </resources>

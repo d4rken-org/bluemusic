@@ -253,6 +253,7 @@
     <string name="general_reset_action">Redefinir</string>
     <string name="general_save_action">Salvar</string>
     <string name="general_cancel_action">Cancelar</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Limpar</string>
     <string name="general_configure_action">Configurar</string>
     <string name="battery_optimization_hint_title">Otimização de bateria</string>
@@ -268,4 +269,13 @@
     <string name="error_iap_owned_message">Você já possui este item</string>
     <string name="label_no_devices_title">Nenhum Dispositivo</string>
     <string name="bluemusic_mascot_description">Ícone do App</string>
+
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Alerta de conexao</string>
+    <string name="connection_alert_dialog_title">Alerta de conexao</string>
+    <string name="connection_alert_type_none">Nenhum</string>
+    <string name="connection_alert_type_sound">Apenas som</string>
+    <string name="connection_alert_type_vibration">Apenas vibracao</string>
+    <string name="connection_alert_type_both">Som e vibracao</string>
+    <string name="devices_indicator_alert">Alerta</string>
 </resources>

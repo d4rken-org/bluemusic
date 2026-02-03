@@ -240,6 +240,7 @@
     <string name="general_navigate_back_action">นำทางย้อนกลับ</string>
     <string name="general_reset_action">รีเซ็ต</string>
     <string name="general_cancel_action">Cancel</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">ล้าง</string>
     <string name="general_configure_action">Configure</string>
     <string name="general_save_action">บันทึก</string>
@@ -256,4 +257,12 @@
     <string name="error_iap_owned_message">คุณมีสินค้านี้อยู่แล้ว</string>
     <string name="label_no_devices_title">ไม่มีอุปกรณ์</string>
     <string name="bluemusic_mascot_description">ไอคอนแอป</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">การแจ้งเตือนการเชื่อมต่อ</string>
+    <string name="connection_alert_dialog_title">การแจ้งเตือนการเชื่อมต่อ</string>
+    <string name="connection_alert_type_none">ไม่มี</string>
+    <string name="connection_alert_type_sound">เสียงเท่านั้น</string>
+    <string name="connection_alert_type_vibration">สั่นเท่านั้น</string>
+    <string name="connection_alert_type_both">เสียงและสั่น</string>
+    <string name="devices_indicator_alert">แจ้งเตือน</string>
 </resources>

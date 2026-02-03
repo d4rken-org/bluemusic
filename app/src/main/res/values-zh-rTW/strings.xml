@@ -242,6 +242,7 @@
     <string name="managed_devices_empty_message">沒有設定藍牙裝置。\n點擊 + 按鈕來新增您的第一個裝置。</string>
     <string name="general_delete_action">刪除</string>
     <string name="general_cancel_action">取消</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">設定</string>
     <string name="battery_optimization_hint_title">電池最佳化</string>
     <string name="battery_optimization_hint_message">電池最佳化已啟用，可能會影響正常運作。請考慮停用它們。</string>
@@ -256,4 +257,12 @@
     <string name="error_iap_owned_message">您已經擁有此項目</string>
     <string name="label_no_devices_title">沒有裝置</string>
     <string name="bluemusic_mascot_description">應用程式圖示</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">連線提醒</string>
+    <string name="connection_alert_dialog_title">連線提醒</string>
+    <string name="connection_alert_type_none">無</string>
+    <string name="connection_alert_type_sound">僅聲音</string>
+    <string name="connection_alert_type_vibration">僅震動</string>
+    <string name="connection_alert_type_both">聲音和震動</string>
+    <string name="devices_indicator_alert">提醒</string>
 </resources>

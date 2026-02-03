@@ -19,6 +19,7 @@ import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.PlayArrow
 import androidx.compose.material.icons.twotone.PowerOff
 import androidx.compose.material.icons.twotone.Speed
+import androidx.compose.material.icons.twotone.NotificationsActive
 import androidx.compose.material.icons.twotone.Visibility
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -34,6 +35,7 @@ import eu.darken.bluemusic.common.apps.AppInfo
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.monitor.core.alert.AlertType
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -52,6 +54,7 @@ fun OptionIndicators(
         if (device.autoplay) add(Icons.TwoTone.PlayArrow to stringResource(R.string.devices_device_config_autoplay_label))
         if (device.showHomeScreen) add(Icons.TwoTone.Home to stringResource(R.string.devices_device_config_show_home_screen_label))
         if (device.dndMode != null) add(Icons.TwoTone.DoNotDisturb to stringResource(R.string.devices_device_config_dnd_on_connect_label))
+        if (device.connectionAlertType != AlertType.NONE) add(Icons.TwoTone.NotificationsActive to stringResource(R.string.devices_device_config_connection_alert_label))
     }
 
     val hasLaunchApps = launchApps.isNotEmpty()
@@ -115,6 +118,7 @@ fun OptionIndicators(
                             Icons.TwoTone.PlayArrow -> stringResource(R.string.devices_indicator_auto)
                             Icons.TwoTone.Home -> stringResource(R.string.devices_indicator_home)
                             Icons.TwoTone.DoNotDisturb -> stringResource(R.string.devices_indicator_dnd)
+                            Icons.TwoTone.NotificationsActive -> stringResource(R.string.devices_indicator_alert)
                             else -> ""
                         },
                         style = MaterialTheme.typography.labelSmall,

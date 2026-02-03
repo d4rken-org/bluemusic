@@ -239,6 +239,7 @@
     <string name="managed_devices_empty_message">Немає налаштованих Bluetooth-пристроїв.\nНатисні кнопку +, щоб додати перший пристрій.</string>
     <string name="general_delete_action">Видалити</string>
     <string name="general_cancel_action">Скасувати</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_navigate_back_action">Повернутися назад</string>
     <string name="general_reset_action">Скинути</string>
     <string name="general_save_action">Зберегти</string>
@@ -256,4 +257,13 @@
     <string name="error_iap_owned_message">Цей товар уже в тебе є</string>
     <string name="label_no_devices_title">Немає пристроїв</string>
     <string name="bluemusic_mascot_description">Іконка додатку</string>
+
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Сповіщення про підключення</string>
+    <string name="connection_alert_dialog_title">Сповіщення про підключення</string>
+    <string name="connection_alert_type_none">Немає</string>
+    <string name="connection_alert_type_sound">Лише звук</string>
+    <string name="connection_alert_type_vibration">Лише вібрація</string>
+    <string name="connection_alert_type_both">Звук і вібрація</string>
+    <string name="devices_indicator_alert">Сповіщення</string>
 </resources>

@@ -246,6 +246,7 @@
     <string name="general_reset_action">Ripristina</string>
     <string name="general_save_action">Salva</string>
     <string name="general_cancel_action">Annulla</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Cancella</string>
     <string name="general_configure_action">Configura</string>
     <string name="battery_optimization_hint_title">Ottimizzazione batteria</string>
@@ -282,4 +283,13 @@
     <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>
+
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Avviso di connessione</string>
+    <string name="connection_alert_dialog_title">Avviso di connessione</string>
+    <string name="connection_alert_type_none">Nessuno</string>
+    <string name="connection_alert_type_sound">Solo suono</string>
+    <string name="connection_alert_type_vibration">Solo vibrazione</string>
+    <string name="connection_alert_type_both">Suono e vibrazione</string>
+    <string name="devices_indicator_alert">Avviso</string>
 </resources>

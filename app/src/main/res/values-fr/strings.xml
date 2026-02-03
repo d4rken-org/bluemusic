@@ -246,6 +246,7 @@
     <string name="managed_devices_empty_message">Aucun périphérique Bluetooth configuré.\nAppuyez sur le bouton + pour ajouter votre premier périphérique.</string>
     <string name="general_delete_action">Supprimer</string>
     <string name="general_cancel_action">Annuler</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Effacer</string>
     <string name="general_configure_action">Configurer</string>
     <string name="battery_optimization_hint_title">Optimisation de la batterie</string>
@@ -282,4 +283,13 @@
     <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Accueil</string>
     <string name="devices_indicator_dnd">NPD</string>
+
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Alerte de connexion</string>
+    <string name="connection_alert_dialog_title">Alerte de connexion</string>
+    <string name="connection_alert_type_none">Aucune</string>
+    <string name="connection_alert_type_sound">Son uniquement</string>
+    <string name="connection_alert_type_vibration">Vibration uniquement</string>
+    <string name="connection_alert_type_both">Son et vibration</string>
+    <string name="devices_indicator_alert">Alerte</string>
 </resources>

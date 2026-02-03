@@ -242,6 +242,7 @@
     <string name="general_reset_action">Επαναφορά</string>
     <string name="general_save_action">Αποθήκευση</string>
     <string name="general_cancel_action">Ακύρωση</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Εκκαθάριση</string>
     <string name="general_configure_action">Διαμόρφωση</string>
     <string name="battery_optimization_hint_title">Βελτιστοποίηση μπαταρίας</string>
@@ -257,4 +258,12 @@
     <string name="error_iap_owned_message">Προμηθευτείτε ήδη αυτό το αντικείμενο</string>
     <string name="label_no_devices_title">Καμία Συσκευή</string>
     <string name="bluemusic_mascot_description">Εικονίδιο Εφαρμογής</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Ειδοποίηση σύνδεσης</string>
+    <string name="connection_alert_dialog_title">Ειδοποίηση σύνδεσης</string>
+    <string name="connection_alert_type_none">Καμία</string>
+    <string name="connection_alert_type_sound">Μόνο ήχος</string>
+    <string name="connection_alert_type_vibration">Μόνο δόνηση</string>
+    <string name="connection_alert_type_both">Ήχος και δόνηση</string>
+    <string name="devices_indicator_alert">Ειδοποίηση</string>
 </resources>

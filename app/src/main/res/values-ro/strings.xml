@@ -241,6 +241,7 @@
     <string name="general_reset_action">Resetează</string>
     <string name="general_save_action">Salvează</string>
     <string name="general_cancel_action">Cancel</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_clear_action">Șterge</string>
     <string name="general_configure_action">Configurează</string>
     <string name="battery_optimization_hint_title">Optimizarea bateriei</string>
@@ -256,4 +257,12 @@
     <string name="error_iap_owned_message">Deții deja acest element</string>
     <string name="label_no_devices_title">Niciun Dispozitiv</string>
     <string name="bluemusic_mascot_description">Icona Aplicației</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Alertă de conexiune</string>
+    <string name="connection_alert_dialog_title">Alertă de conexiune</string>
+    <string name="connection_alert_type_none">Nimic</string>
+    <string name="connection_alert_type_sound">Doar sunet</string>
+    <string name="connection_alert_type_vibration">Doar vibrație</string>
+    <string name="connection_alert_type_both">Sunet și vibrație</string>
+    <string name="devices_indicator_alert">Alertă</string>
 </resources>

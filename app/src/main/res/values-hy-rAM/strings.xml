@@ -223,6 +223,7 @@
     <string name="managed_devices_empty_message">No Bluetooth devices configured.\nTap the + button to add your first device.</string>
     <string name="general_delete_action">Delete</string>
     <string name="general_cancel_action">Cancel</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">Configure</string>
     <string name="battery_optimization_hint_title">Battery optimization</string>
     <string name="battery_optimization_hint_message">Battery optimizations are enabled and may prevent proper operation. Consider disabling them.</string>
@@ -256,4 +257,12 @@
     <string name="general_navigate_back_action">Նավարկել հետ</string>
     <string name="general_reset_action">Վերակայել</string>
     <string name="general_save_action">Պահել</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Կdelays delays</string>
+    <string name="connection_alert_dialog_title">Delays delays</string>
+    <string name="connection_alert_type_none">Delays</string>
+    <string name="connection_alert_type_sound">Delays delays</string>
+    <string name="connection_alert_type_vibration">Delays delays</string>
+    <string name="connection_alert_type_both">Delays delays</string>
+    <string name="devices_indicator_alert">Delays</string>
 </resources>

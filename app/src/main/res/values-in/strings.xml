@@ -223,6 +223,7 @@
     <string name="managed_devices_empty_message">Tidak ada perangkat Bluetooth yang dikonfigurasi.\nKetuk tombol + untuk menambahkan perangkat pertamamu.</string>
     <string name="general_delete_action">Hapus</string>
     <string name="general_cancel_action">Batal</string>
+    <string name="general_ok_action">OK</string>
     <string name="general_configure_action">Konfigurasi</string>
     <string name="battery_optimization_hint_title">Optimasi baterai</string>
     <string name="battery_optimization_hint_message">Optimasi baterai diaktifkan dan dapat mencegah operasi yang tepat. Pertimbangkan untuk menonaktifkannya.</string>
@@ -256,4 +257,12 @@
     <string name="general_navigate_back_action">Navigasi kembali</string>
     <string name="general_reset_action">Reset</string>
     <string name="general_save_action">Simpan</string>
+    <!-- Connection alert -->
+    <string name="devices_device_config_connection_alert_label">Peringatan koneksi</string>
+    <string name="connection_alert_dialog_title">Peringatan koneksi</string>
+    <string name="connection_alert_type_none">Tidak ada</string>
+    <string name="connection_alert_type_sound">Suara saja</string>
+    <string name="connection_alert_type_vibration">Getar saja</string>
+    <string name="connection_alert_type_both">Suara dan getar</string>
+    <string name="devices_indicator_alert">Peringatan</string>
 </resources>
