@@ -4,11 +4,12 @@ import android.os.Build
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.ArrowBack
@@ -56,6 +57,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
+import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.ui.waitForState
@@ -125,10 +128,12 @@ fun DeviceConfigScreenHost(
                     dndModeValue = event.currentMode
                     showDndModeDialog = true
                 }
+
                 is ConfigEvent.ShowConnectionAlertDialog -> {
                     connectionAlertTypeValue = event.currentType
                     showConnectionAlertDialog = true
                 }
+
                 is ConfigEvent.NavigateBack -> vm.navUp()
                 is ConfigEvent.RequiresPro -> {
                     val result = snackbarHostState.showSnackbar(
@@ -140,6 +145,7 @@ fun DeviceConfigScreenHost(
                         vm.navTo(Nav.Main.Upgrade)
                     }
                 }
+
                 is ConfigEvent.RequiresNotificationPolicyAccess -> {
                     val message = when (event.feature) {
                         ConfigEvent.RequiresNotificationPolicyAccess.Feature.RINGTONE ->
@@ -357,14 +363,16 @@ fun DeviceConfigScreen(
                 scrollBehavior = scrollBehavior
             )
         },
+        contentWindowInsets = WindowInsets.statusBars,
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
     ) { paddingValues ->
+        val navBarPadding = navigationBarBottomPadding()
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
                 .horizontalCutoutPadding(),
-            contentPadding = PaddingValues(vertical = 8.dp)
+            contentPadding = PaddingValues(top = 8.dp, bottom = 8.dp + navBarPadding)
         ) {
             // Device Header Card
             item {

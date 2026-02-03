@@ -6,11 +6,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -44,6 +45,8 @@ import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
+import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.error.ErrorEventHandler
 import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.ui.waitForState
@@ -109,7 +112,8 @@ fun DiscoverScreen(
         },
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
-        }
+        },
+        contentWindowInsets = WindowInsets.statusBars
     ) { paddingValues ->
         Box(
             modifier = Modifier
@@ -159,9 +163,10 @@ fun DiscoverScreen(
                 }
 
                 else -> {
+                    val navBarPadding = navigationBarBottomPadding()
                     LazyColumn(
                         modifier = Modifier.fillMaxSize(),
-                        contentPadding = PaddingValues(vertical = 8.dp)
+                        contentPadding = PaddingValues(top = 8.dp, bottom = 8.dp + navBarPadding)
                     ) {
                         items(state.devices) { device ->
                             DeviceItem(

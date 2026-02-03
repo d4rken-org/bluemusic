@@ -13,12 +13,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
@@ -64,6 +66,7 @@ import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import java.io.File
 
 @Composable
@@ -109,6 +112,7 @@ private fun RecorderScreen(
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
+        contentWindowInsets = WindowInsets.statusBars,
         bottomBar = {
             AnimatedVisibility(
                 visible = !isScrollingDown.value,
@@ -132,12 +136,13 @@ private fun RecorderScreen(
             }
         }
     ) { paddingValues ->
+        val navBarPadding = navigationBarBottomPadding()
         LazyColumn(
             state = listState,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues),
-            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 16.dp)
+            contentPadding = PaddingValues(start = 16.dp, top = 16.dp, end = 16.dp, bottom = 16.dp + navBarPadding)
         ) {
             item {
                 HeroSection()
