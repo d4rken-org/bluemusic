@@ -6,12 +6,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -46,6 +48,8 @@ import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.common.compose.ColoredTitleText
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
+import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.navigation.Nav
@@ -111,11 +115,13 @@ fun DevicesScreen(
                 onNavigateToUpgrade = onNavigateToUpgrade
             )
         },
+        contentWindowInsets = WindowInsets.statusBars,
         floatingActionButton = {
             if (state.hasBluetoothPermission && state.isBluetoothEnabled && state.devicesWithApps.isNotEmpty()) {
                 FloatingActionButton(
                     onClick = { onAddDevice() },
-                    containerColor = MaterialTheme.colorScheme.primary
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.navigationBarsPadding()
                 ) {
                     Icon(
                         imageVector = Icons.TwoTone.Add,
@@ -125,12 +131,13 @@ fun DevicesScreen(
             }
         }
     ) { paddingValues ->
+        val navBarPadding = navigationBarBottomPadding()
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
                 .horizontalCutoutPadding(),
-            contentPadding = PaddingValues(vertical = 8.dp)
+            contentPadding = PaddingValues(top = 8.dp, bottom = 8.dp + navBarPadding)
         ) {
             // Critical permission/state cards - these block normal functionality
             if (!state.hasBluetoothPermission) {
@@ -205,7 +212,7 @@ private fun ManagedDevicesTopBar(
     onNavigateToUpgrade: () -> Unit
 ) {
     val context = LocalContext.current
-    
+
     TopAppBar(
         title = {
             if (isProVersion) {

@@ -7,15 +7,16 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
-import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
@@ -61,6 +62,8 @@ import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.apps.AppInfo
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
+import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.ui.waitForState
 import eu.darken.bluemusic.devices.core.DeviceAddr
 
@@ -103,7 +106,7 @@ fun AppSelectionScreen(
             setLocalSearchQuery(state.searchQuery)
         }
     }
-    
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -139,7 +142,8 @@ fun AppSelectionScreen(
                     }
                 }
             )
-        }
+        },
+        contentWindowInsets = WindowInsets.statusBars
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -188,7 +192,7 @@ fun AppSelectionScreen(
                 val selectedApps = state.apps.filter { app ->
                     app.packageName in state.selectedPackages
                 }
-                
+
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -238,9 +242,10 @@ fun AppSelectionScreen(
                 }
             } else {
                 // App list
+                val navBarPadding = navigationBarBottomPadding()
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
-                    contentPadding = PaddingValues(vertical = 8.dp)
+                    contentPadding = PaddingValues(top = 8.dp, bottom = 8.dp + navBarPadding)
                 ) {
                     items(
                         items = state.filteredApps,

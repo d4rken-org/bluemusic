@@ -1,9 +1,11 @@
 package eu.darken.bluemusic.main.ui.settings.acknowledgements
 
 import androidx.compose.foundation.layout.Arrangement
-import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -22,6 +24,8 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
+import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.error.ErrorEventHandler
 import eu.darken.bluemusic.common.settings.SettingsBaseItem
 import eu.darken.bluemusic.common.settings.SettingsCategoryHeader
@@ -47,13 +51,16 @@ fun AcknowledgementsScreen(
                     }
                 }
             )
-        }
+        },
+        contentWindowInsets = WindowInsets.statusBars
     ) { paddingValues ->
+        val navBarPadding = navigationBarBottomPadding()
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
                 .horizontalCutoutPadding(),
+            contentPadding = PaddingValues(bottom = navBarPadding),
             verticalArrangement = Arrangement.Top
         ) {
             item {
