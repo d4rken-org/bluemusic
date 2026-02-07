@@ -23,4 +23,3 @@ exclude:
   - Gemfile.lock
   - crowdin*
   - app
-  - CLAUDE.md
