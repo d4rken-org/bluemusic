@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.common.navigation
 
+import androidx.compose.runtime.snapshots.Snapshot
 import androidx.navigation3.runtime.NavBackStack
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -37,24 +38,28 @@ class NavigationController @Inject constructor() {
     ) {
         log(TAG) { "goTo($destination, popUpTo=$popUpTo, inclusive=$inclusive)" }
 
-        if (popUpTo != null) {
-            while (backStack.isNotEmpty() && backStack.last() != popUpTo) {
-                val removed = backStack.removeLastOrNull()
-                log(TAG) { "Popping $removed while looking for $popUpTo" }
+        Snapshot.withMutableSnapshot {
+            if (popUpTo != null) {
+                while (backStack.size > 1 && backStack.last() != popUpTo) {
+                    val removed = backStack.removeLastOrNull()
+                    log(TAG) { "Popping $removed while looking for $popUpTo" }
+                }
+
+                if (inclusive && backStack.isNotEmpty() && backStack.last() == popUpTo) {
+                    val removed = backStack.removeLastOrNull()
+                    log(TAG) { "Popping $removed (inclusive)" }
+                }
             }
 
-            if (inclusive && backStack.isNotEmpty() && backStack.last() == popUpTo) {
-                val removed = backStack.removeLastOrNull()
-                log(TAG) { "Popping $removed (inclusive)" }
-            }
+            backStack.add(destination)
         }
-
-        backStack.add(destination)
     }
 
     fun replace(destination: NavigationDestination) {
-        backStack.removeLastOrNull()
-        backStack.add(destination)
+        Snapshot.withMutableSnapshot {
+            backStack.removeLastOrNull()
+            backStack.add(destination)
+        }
     }
 
     companion object {
