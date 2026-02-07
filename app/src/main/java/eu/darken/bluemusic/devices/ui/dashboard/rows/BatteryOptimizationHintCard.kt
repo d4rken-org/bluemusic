@@ -1,6 +1,8 @@
 package eu.darken.bluemusic.devices.ui.dashboard.rows
 
 import android.content.Intent
+import android.provider.Settings
+import android.widget.Toast
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -29,6 +31,8 @@ import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 
 @Composable
 fun BatteryOptimizationHintCard(
@@ -82,7 +86,24 @@ fun BatteryOptimizationHintCard(
                     Text(stringResource(R.string.action_dismiss))
                 }
                 Button(
-                    onClick = { context.startActivity(intent) },
+                    onClick = {
+                        try {
+                            context.startActivity(intent)
+                        } catch (e: Exception) {
+                            log(TAG) { "Failed to open battery optimization settings: $e" }
+                            try {
+                                val fallback = Intent(Settings.ACTION_SETTINGS)
+                                context.startActivity(fallback)
+                            } catch (e2: Exception) {
+                                log(TAG) { "Failed to open general settings: $e2" }
+                                Toast.makeText(
+                                    context,
+                                    R.string.general_error_no_compatible_app_found_msg,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                    },
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.primary
                     )
@@ -93,6 +114,8 @@ fun BatteryOptimizationHintCard(
         }
     }
 }
+
+private val TAG = logTag("BatteryOptimization", "HintCard")
 
 @Preview2
 @Composable
