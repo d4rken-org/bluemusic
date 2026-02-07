@@ -50,7 +50,7 @@ class OnboardingViewModel @Inject constructor(
         generalSettings.isOnboardingCompleted.value(true)
         navTo(
             Nav.Main.ManageDevices,
-            popUpTo = Nav.Main.ManageDevices,
+            popUpTo = Nav.Main.Onboarding,
             inclusive = true
         )
     }
