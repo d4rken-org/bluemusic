@@ -1,6 +1,8 @@
 package eu.darken.bluemusic.bluetooth.ui.discover
 
 import android.content.Intent
+import android.provider.Settings
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -47,6 +49,8 @@ import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.error.ErrorEventHandler
 import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.ui.waitForState
@@ -153,8 +157,23 @@ fun DiscoverScreen(
                         Spacer(modifier = Modifier.height(24.dp))
                         Button(
                             onClick = {
-                                val intent = Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS)
-                                context.startActivity(intent)
+                                try {
+                                    val intent = Intent(Settings.ACTION_BLUETOOTH_SETTINGS)
+                                    context.startActivity(intent)
+                                } catch (e: Exception) {
+                                    log(TAG) { "Failed to open Bluetooth settings: $e" }
+                                    try {
+                                        val fallback = Intent(Settings.ACTION_SETTINGS)
+                                        context.startActivity(fallback)
+                                    } catch (e2: Exception) {
+                                        log(TAG) { "Failed to open general settings: $e2" }
+                                        Toast.makeText(
+                                            context,
+                                            R.string.general_error_no_compatible_app_found_msg,
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                }
                             }
                         ) {
                             Text(stringResource(R.string.discover_pair_new_device_action))
@@ -180,6 +199,8 @@ fun DiscoverScreen(
         }
     }
 }
+
+private val TAG = logTag("Discover", "Screen")
 
 @Preview
 @Composable
