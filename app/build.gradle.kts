@@ -292,11 +292,11 @@ dependencies {
     implementation("com.google.accompanist:accompanist-drawablepainter:0.37.3")
 
 
-    implementation("androidx.navigation3:navigation3-runtime:1.0.0-alpha08")
-    implementation("androidx.navigation3:navigation3-ui:1.0.0-alpha08")
+    implementation("androidx.navigation3:navigation3-runtime:1.0.0")
+    implementation("androidx.navigation3:navigation3-ui:1.0.0")
 
-    implementation("androidx.compose.material3.adaptive:adaptive-navigation3:1.0.0-alpha01")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:1.0.0-alpha04")
+    implementation("androidx.compose.material3.adaptive:adaptive-navigation3:1.3.0-alpha06")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-navigation3:2.10.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0")
 
 

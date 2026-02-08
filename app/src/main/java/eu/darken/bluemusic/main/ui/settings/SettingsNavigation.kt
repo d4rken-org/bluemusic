@@ -1,8 +1,7 @@
 package eu.darken.bluemusic.main.ui.settings
 
-import androidx.navigation3.runtime.EntryProviderBuilder
+import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
-import androidx.navigation3.runtime.entry
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,7 +15,7 @@ import eu.darken.bluemusic.main.ui.settings.support.SupportScreenHost
 import javax.inject.Inject
 
 class SettingsNavigation @Inject constructor() : NavigationEntry {
-    override fun EntryProviderBuilder<NavKey>.setup() {
+    override fun EntryProviderScope<NavKey>.setup() {
         entry<Nav.Main.SettingsIndex> {
             SettingsIndexScreenHost()
         }
