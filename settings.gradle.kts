@@ -16,8 +16,6 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://androidx.dev/snapshots/builds/13508953/artifacts/repository")
         }
-        @Suppress("JcenterRepositoryObsolete")
-        jcenter() // Still needed for some legacy dependencies
         maven {
             url = uri("https://jitpack.io")
         }
