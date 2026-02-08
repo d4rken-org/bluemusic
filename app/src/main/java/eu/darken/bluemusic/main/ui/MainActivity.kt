@@ -79,7 +79,7 @@ class MainActivity : Activity2() {
             MainViewModel.State.StartScreen.HOME -> Nav.Main.ManageDevices
         }
 
-        val backStack = rememberNavBackStack<NavigationDestination>(start)
+        val backStack = rememberNavBackStack(start)
 
         LaunchedEffect(Unit) { navCtrl.setup(backStack) }
 
