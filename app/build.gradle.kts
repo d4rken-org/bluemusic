@@ -281,12 +281,10 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.10.1")
     implementation("androidx.fragment:fragment-ktx:1.8.8")
 
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.9.2")
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.9.2")
-    implementation("androidx.lifecycle:lifecycle-process:2.9.2")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.10.0")
+    implementation("androidx.lifecycle:lifecycle-process:2.10.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.10.0")
 
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     implementation("com.google.android.material:material:1.13.0-rc01")
@@ -302,7 +300,7 @@ dependencies {
     implementation("androidx.compose.material3.adaptive:adaptive")
 
     implementation("androidx.activity:activity-compose:1.10.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
 
     implementation("androidx.hilt:hilt-navigation-compose:1.3.0-rc01")
 
