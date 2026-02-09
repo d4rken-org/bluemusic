@@ -1,15 +1,14 @@
 package eu.darken.bluemusic.monitor.ui
 
 import android.annotation.SuppressLint
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ServiceInfo
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import androidx.work.ForegroundInfo
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.PendingIntentCompat
@@ -111,28 +110,14 @@ class MonitorNotifications @Inject constructor(
         addAction(NotificationCompat.Action.Builder(0, context.getString(R.string.action_exit), stopPi).build())
     }
 
-    suspend fun getDevicesNotification(devices: Collection<ManagedDevice>) = builderLock.withLock {
+    fun getInitialNotification(): Notification {
+        log(TAG) { "getInitialNotification()" }
+        return getBuilder(emptyList()).build()
+    }
+
+    suspend fun getDevicesNotification(devices: Collection<ManagedDevice>): Notification = builderLock.withLock {
         log(TAG) { "getDevicesNotification(devices=$devices)" }
         return@withLock getBuilder(devices).build()
-    }
-
-    suspend fun getForegroundInfo(devices: Collection<ManagedDevice>): ForegroundInfo = builderLock.withLock {
-        log(TAG) { "getForegroundInfo(devices=$devices)" }
-        getBuilder(devices).toForegroundInfo()
-    }
-
-    @SuppressLint("InlinedApi")
-    private fun NotificationCompat.Builder.toForegroundInfo(): ForegroundInfo = if (hasApiLevel(29)) {
-        ForegroundInfo(
-            NOTIFICATION_ID,
-            this.build(),
-            ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE
-        )
-    } else {
-        ForegroundInfo(
-            NOTIFICATION_ID,
-            this.build()
-        )
     }
 
     companion object {

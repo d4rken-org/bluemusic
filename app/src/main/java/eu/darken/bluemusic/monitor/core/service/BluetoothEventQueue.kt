@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.monitor.core.worker
+package eu.darken.bluemusic.monitor.core.service
 
 import android.os.Parcelable
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
