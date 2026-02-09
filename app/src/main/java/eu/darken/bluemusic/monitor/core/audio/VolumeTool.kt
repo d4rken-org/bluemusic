@@ -49,7 +49,7 @@ class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
     }
 
     fun wasUs(id: AudioStream.Id, volume: Int): Boolean {
-        return lastUs.containsKey(id) && lastUs[id] == volume || adjusting
+        return (lastUs.containsKey(id) && lastUs[id] == volume) || adjusting
     }
 
     fun getVolumePercentage(streamId: AudioStream.Id): Float {

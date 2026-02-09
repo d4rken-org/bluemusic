@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.media.AudioManager
+import androidx.core.content.ContextCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
@@ -50,7 +51,7 @@ class RingerModeObserver @Inject constructor(
         }
 
         val filter = IntentFilter(AudioManager.RINGER_MODE_CHANGED_ACTION)
-        context.registerReceiver(receiver, filter)
+        ContextCompat.registerReceiver(context, receiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED)
         log(TAG) { "Now listening for ringer mode change events" }
 
         awaitClose {
