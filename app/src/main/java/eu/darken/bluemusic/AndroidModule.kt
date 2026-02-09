@@ -7,7 +7,6 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.media.AudioManager
 import android.preference.PreferenceManager
-import androidx.work.WorkManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -43,8 +42,4 @@ class AndroidModule {
     @Provides
     @Singleton
     fun packageManager(@ApplicationContext context: Context): PackageManager = context.packageManager
-
-    @Provides
-    @Singleton
-    fun workerManager(@ApplicationContext context: Context): WorkManager = WorkManager.getInstance(context)
 }

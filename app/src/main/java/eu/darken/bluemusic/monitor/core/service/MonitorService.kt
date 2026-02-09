@@ -1,19 +1,17 @@
-package eu.darken.bluemusic.monitor.core.worker
+package eu.darken.bluemusic.monitor.core.service
 
+import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.ServiceInfo
+import android.os.IBinder
 import android.util.SparseArray
 import androidx.core.content.ContextCompat
 import androidx.core.util.size
-import androidx.hilt.work.HiltWorker
-import androidx.work.CoroutineWorker
-import androidx.work.ForegroundInfo
-import androidx.work.WorkerParameters
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedInject
+import dagger.hilt.android.AndroidEntryPoint
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.bluetooth.core.currentState
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
@@ -26,6 +24,8 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import eu.darken.bluemusic.common.flow.throttleLatest
+import eu.darken.bluemusic.common.hasApiLevel
+import eu.darken.bluemusic.common.ui.Service2
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.getDevice
@@ -43,6 +43,7 @@ import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import eu.darken.bluemusic.monitor.ui.MonitorNotifications
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -57,73 +58,117 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import java.time.Duration
+import javax.inject.Inject
 
+@AndroidEntryPoint
+class MonitorService : Service2() {
 
-@HiltWorker
-class MonitorWorker @AssistedInject constructor(
-    @Assisted private val context: Context,
-    @Assisted private val params: WorkerParameters,
-    private val dispatcherProvider: DispatcherProvider,
-    private val notifications: MonitorNotifications,
-    private val notificationManager: NotificationManager,
-    private val deviceRepo: DeviceRepo,
-    private val bluetoothRepo: BluetoothRepo,
-    private val connectionModuleMap: Set<@JvmSuppressWildcards ConnectionModule>,
-    private val volumeModuleMap: Set<@JvmSuppressWildcards VolumeModule>,
-    private val volumeObserver: VolumeObserver,
-    private val ringerModeObserver: RingerModeObserver,
-    private val bluetoothEventQueue: BluetoothEventQueue,
-) : CoroutineWorker(context, params) {
+    @Inject lateinit var dispatcherProvider: DispatcherProvider
+    @Inject lateinit var notifications: MonitorNotifications
+    @Inject lateinit var notificationManager: NotificationManager
+    @Inject lateinit var deviceRepo: DeviceRepo
+    @Inject lateinit var bluetoothRepo: BluetoothRepo
+    @Inject lateinit var connectionModuleMap: Set<@JvmSuppressWildcards ConnectionModule>
+    @Inject lateinit var volumeModuleMap: Set<@JvmSuppressWildcards VolumeModule>
+    @Inject lateinit var volumeObserver: VolumeObserver
+    @Inject lateinit var ringerModeObserver: RingerModeObserver
+    @Inject lateinit var bluetoothEventQueue: BluetoothEventQueue
 
-    private val workerScope = CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
-
-    private var finishedWithError = false
-
-    init {
-        log(TAG, VERBOSE) { "init(): workerId=$id" }
+    private val serviceScope by lazy {
+        CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
     }
 
-    override suspend fun getForegroundInfo(): ForegroundInfo {
-        return notifications.getForegroundInfo(emptyList())
-    }
+    private var monitoringJob: Job? = null
+    @Volatile private var monitorGeneration = 0
 
-    override suspend fun doWork(): Result = try {
-        val start = System.currentTimeMillis()
-        log(TAG, VERBOSE) { "Executing $inputData now (runAttemptCount=$runAttemptCount)" }
+    override fun onBind(intent: Intent?): IBinder? = null
 
-        doDoWork()
+    @SuppressLint("InlinedApi")
+    override fun onCreate() {
+        super.onCreate()
+        log(TAG, VERBOSE) { "onCreate()" }
 
-        val duration = System.currentTimeMillis() - start
-
-        log(TAG, VERBOSE) { "Execution finished after ${duration}ms, $inputData" }
-
-        Result.success(inputData)
-    } catch (e: Throwable) {
-        if (e !is CancellationException) {
-            finishedWithError = true
-            Result.failure(inputData)
-        } else {
-            Result.success()
+        val notification = notifications.getInitialNotification()
+        try {
+            if (hasApiLevel(29)) {
+                startForeground(
+                    MonitorNotifications.NOTIFICATION_ID,
+                    notification,
+                    ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE
+                )
+            } else {
+                startForeground(MonitorNotifications.NOTIFICATION_ID, notification)
+            }
+        } catch (e: Exception) {
+            log(TAG, ERROR) { "Failed to start foreground: ${e.asLog()}" }
+            stopSelf()
+            return
         }
-    } finally {
-        this.workerScope.cancel("Worker finished (withError?=$finishedWithError).")
+
+        ContextCompat.registerReceiver(
+            this,
+            stopMonitorReceiver,
+            IntentFilter(MonitorNotifications.ACTION_STOP_MONITOR),
+            ContextCompat.RECEIVER_NOT_EXPORTED
+        )
     }
 
-    private suspend fun doDoWork() {
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        log(TAG, VERBOSE) { "onStartCommand(intent=$intent, flags=$flags, startId=$startId)" }
+
+        val forceStart = intent?.getBooleanExtra(EXTRA_FORCE_START, false) ?: false
+
+        if (monitoringJob?.isActive == true && !forceStart) {
+            log(TAG) { "Already monitoring and forceStart=false, keeping current session." }
+            return START_STICKY
+        }
+
+        val generation = ++monitorGeneration
+        serviceScope.coroutineContext.cancelChildren()
+
+        monitoringJob = serviceScope.launch {
+            try {
+                startMonitoring()
+            } catch (e: CancellationException) {
+                log(TAG) { "Monitor cancelled." }
+            } catch (e: Exception) {
+                log(TAG, ERROR) { "Monitor failed: ${e.asLog()}" }
+            } finally {
+                if (monitorGeneration == generation) {
+                    log(TAG) { "Monitor finished, stopping service." }
+                    stopSelf()
+                } else {
+                    log(TAG) { "Monitor replaced, not stopping service." }
+                }
+            }
+        }
+
+        return START_STICKY
+    }
+
+    override fun onDestroy() {
+        log(TAG, VERBOSE) { "onDestroy()" }
+        try {
+            unregisterReceiver(stopMonitorReceiver)
+        } catch (e: Exception) {
+            log(TAG, WARN) { "Failed to unregister stopMonitor receiver: ${e.asLog()}" }
+        }
+        serviceScope.cancel("Service destroyed")
+        super.onDestroy()
+    }
+
+    private suspend fun startMonitoring() {
         val bluetoothState = bluetoothRepo.currentState()
         if (!bluetoothState.isReady) {
             log(TAG, WARN) { "Aborting, Bluetooth state is not ready: $bluetoothState" }
             return
         }
 
-        setForeground(notifications.getForegroundInfo(deviceRepo.currentDevices().filter { it.isActive }))
-
-        ContextCompat.registerReceiver(
-            context,
-            stopMonitorReceiver,
-            IntentFilter(MonitorNotifications.ACTION_STOP_MONITOR),
-            ContextCompat.RECEIVER_NOT_EXPORTED
+        notificationManager.notify(
+            MonitorNotifications.NOTIFICATION_ID,
+            notifications.getDevicesNotification(deviceRepo.currentDevices().filter { it.isActive }),
         )
 
         ringerModeObserver.ringerMode
@@ -131,14 +176,14 @@ class MonitorWorker @AssistedInject constructor(
             .distinctUntilChanged()
             .onEach { handleRingerMode(it) }
             .catch { log(TAG, WARN) { "RingerMode monitor flow failed:\n${it.asLog()}" } }
-            .launchIn(workerScope)
+            .launchIn(serviceScope)
 
         volumeObserver.volumes
             .setupCommonEventHandlers(TAG) { "Volume monitor" }
             .distinctUntilChanged()
             .onEach { handleVolumeChange(it) }
             .catch { log(TAG, WARN) { "Volume monitor flow failed:\n${it.asLog()}" } }
-            .launchIn(workerScope)
+            .launchIn(serviceScope)
 
         bluetoothEventQueue.events
             .setupCommonEventHandlers(TAG) { "Event monitor" }
@@ -148,12 +193,12 @@ class MonitorWorker @AssistedInject constructor(
                 log(TAG, INFO) { "STOP Handling bluetooth event: $event" }
             }
             .catch { log(TAG, WARN) { "Event monitor flow failed:\n${it.asLog()}" } }
-            .launchIn(workerScope)
+            .launchIn(serviceScope)
 
         val monitorJob = deviceRepo.devices
             .setupCommonEventHandlers(TAG) { "Devices monitor" }
             .distinctUntilChanged()
-            .throttleLatest(1000)
+            .throttleLatest(3000)
             .flatMapLatest { devices ->
                 val activeDevices = devices.filter { it.isActive }
 
@@ -177,37 +222,30 @@ class MonitorWorker @AssistedInject constructor(
                         log(TAG) { "Maximum monitoring duration: $maxMonitoringDuration" }
                         val toDelay = Duration.ofSeconds(15) + maxMonitoringDuration
                         delay(toDelay.toMillis())
-                        log(TAG) { "Canceling worker now, nothing changed." }
-                        workerScope.coroutineContext.cancelChildren()
+                        log(TAG) { "Stopping service now, nothing changed." }
+                        serviceScope.coroutineContext.cancelChildren()
                     }
 
                     else -> flow<Unit> {
-                        log(TAG) { "No devices connected, canceling soon" }
+                        log(TAG) { "No devices connected, stopping soon" }
                         delay(15 * 1000)
-                        log(TAG) { "Canceling worker now, still no devices connected." }
-
-                        workerScope.coroutineContext.cancelChildren()
+                        log(TAG) { "Stopping service now, still no devices connected." }
+                        serviceScope.coroutineContext.cancelChildren()
                     }
                 }
             }
             .catch { log(TAG, WARN) { "Monitor flow failed:\n${it.asLog()}" } }
-            .launchIn(workerScope)
+            .launchIn(serviceScope)
 
         log(TAG, VERBOSE) { "Monitor job is active" }
         monitorJob.join()
         log(TAG, VERBOSE) { "Monitor job quit" }
-
-        try {
-            context.unregisterReceiver(stopMonitorReceiver)
-        } catch (e: Exception) {
-            log(TAG, WARN) { "Failed to unregister stopMonitor receiver: ${e.asLog()}" }
-        }
     }
 
     private val stopMonitorReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             log(TAG) { "Stop monitor action received" }
-            workerScope.cancel("Stop action received from notification")
+            stopSelf()
         }
     }
 
@@ -319,17 +357,14 @@ class MonitorWorker @AssistedInject constructor(
             return
         }
 
-        // Convert RingerMode to VolumeMode
         val volumeMode = when (event.newMode) {
             RingerMode.SILENT -> VolumeMode.Silent
             RingerMode.VIBRATE -> VolumeMode.Vibrate
             RingerMode.NORMAL -> {
-                // When switching to normal, keep the existing volume percentage if available
                 val currentVolume = activeDevice.getVolume(AudioStream.Type.RINGTONE)
                 if (currentVolume != null && currentVolume >= 0f) {
                     VolumeMode.Normal(currentVolume)
                 } else {
-                    // Default to 50% if no previous normal volume
                     VolumeMode.Normal(0.5f)
                 }
             }
@@ -341,6 +376,13 @@ class MonitorWorker @AssistedInject constructor(
     }
 
     companion object {
-        val TAG = logTag("Monitor", "Worker")
+        val TAG = logTag("Monitor", "Service")
+        private const val EXTRA_FORCE_START = "extra.force_start"
+
+        fun intent(context: Context, forceStart: Boolean = false): Intent {
+            return Intent(context, MonitorService::class.java).apply {
+                putExtra(EXTRA_FORCE_START, forceStart)
+            }
+        }
     }
 }
