@@ -10,6 +10,7 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import eu.darken.bluemusic.common.startServiceCompat
 import eu.darken.bluemusic.devices.core.DeviceRepo
+import eu.darken.bluemusic.monitor.ui.MonitorNotifications
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
@@ -23,6 +24,8 @@ class MonitorControl @Inject constructor(
     @AppScope private val appScope: CoroutineScope,
     @ApplicationContext private val context: Context,
     deviceRepo: DeviceRepo,
+    @Suppress("unused") // Eagerly inits the singleton so notification channel + PendingIntent IPC
+    monitorNotifications: MonitorNotifications, // run before any startForegroundService() call
 ) {
 
     init {

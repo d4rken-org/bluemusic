@@ -7,7 +7,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.bluetooth.core.currentState
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
-import eu.darken.bluemusic.common.datastore.valueBlocking
+import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
@@ -41,21 +41,22 @@ class BootCheckReceiver : BroadcastReceiver() {
             return
         }
 
-        if (!devicesSettings.isEnabled.valueBlocking) {
-            log(TAG, INFO) { "We are disabled." }
-            return
-        }
-        if (!devicesSettings.restoreOnBoot.valueBlocking) {
-            log(TAG, INFO) { "Restoring on boot is disabled." }
-            return
-        }
-
-        log(TAG) { "We just completed booting, let's see if any Bluetooth device is connected..." }
         val pendingResult = goAsync()
 
         val scope = CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
         scope.launch {
             try {
+                if (!devicesSettings.isEnabled.value()) {
+                    log(TAG, INFO) { "We are disabled." }
+                    return@launch
+                }
+                if (!devicesSettings.restoreOnBoot.value()) {
+                    log(TAG, INFO) { "Restoring on boot is disabled." }
+                    return@launch
+                }
+
+                log(TAG) { "We just completed booting, let's see if any Bluetooth device is connected..." }
+
                 // Wait a bit for Bluetooth to stabilize after boot
                 delay(3000)
 

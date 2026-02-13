@@ -17,11 +17,14 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.main.ui.MainActivity
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import javax.inject.Inject
+import javax.inject.Singleton
 
 
+@Singleton
 class MonitorNotifications @Inject constructor(
     @ApplicationContext private val context: Context,
     private val notificationManager: NotificationManager,
@@ -110,9 +113,9 @@ class MonitorNotifications @Inject constructor(
         addAction(NotificationCompat.Action.Builder(0, context.getString(R.string.action_exit), stopPi).build())
     }
 
-    fun getInitialNotification(): Notification {
+    fun getInitialNotification(): Notification = runBlocking {
         log(TAG) { "getInitialNotification()" }
-        return getBuilder(emptyList()).build()
+        builderLock.withLock { getBuilder(emptyList()).build() }
     }
 
     suspend fun getDevicesNotification(devices: Collection<ManagedDevice>): Notification = builderLock.withLock {
