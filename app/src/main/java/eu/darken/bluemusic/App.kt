@@ -31,8 +31,6 @@ class App : Application() {
     @Inject lateinit var monitorControl: MonitorControl
     @Inject lateinit var volumeTool: VolumeTool
 
-
-
     override fun onCreate() {
         super.onCreate()
         if (BuildConfig.DEBUG) Logging.install(LogCatLogger())
@@ -41,29 +39,12 @@ class App : Application() {
             curriculumVitae.updateAppLaunch()
         }
 
-
-
         val oldHandler = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
             log(TAG, ERROR) { "UNCAUGHT EXCEPTION: ${throwable.asLog()}" }
             if (oldHandler != null) oldHandler.uncaughtException(thread, throwable) else exitProcess(1)
             Thread.sleep(100)
         }
-
-//        appScope.launch {
-//            while (currentCoroutineContext().isActive) {
-//                val volumes = mutableListOf<Pair<AudioStream.Id, Float>>()
-//                AudioStream.Id.entries.forEach { id ->
-//
-//                    val curVol = streamHelper.getVolumePercentage(id)
-//                    volumes.add(id to curVol)
-//                }
-//                log(TAG, DEBUG) { "Volumes: ${volumes.joinToString(", ")}" }
-//                delay(100)
-//            }
-//        }
-
-        monitorControl.startMonitor(forceStart = true)
 
         log(TAG) { "onCreate() done! ${Exception().asLog()}" }
     }

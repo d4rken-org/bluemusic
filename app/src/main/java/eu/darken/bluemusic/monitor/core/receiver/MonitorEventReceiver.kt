@@ -10,7 +10,7 @@ import eu.darken.bluemusic.bluetooth.core.SourceDeviceWrapper
 import eu.darken.bluemusic.bluetooth.core.speaker.SpeakerDeviceProvider
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
-import eu.darken.bluemusic.common.datastore.valueBlocking
+import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
@@ -58,15 +58,14 @@ class MonitorEventReceiver : BroadcastReceiver() {
             return
         }
 
-        if (!devicesSettings.isEnabled.valueBlocking) {
-            log(TAG, INFO) { "We are disabled." }
-            return
-        }
-
         val pendingResult = goAsync()
 
         appScope.launch {
             try {
+                if (!devicesSettings.isEnabled.value()) {
+                    log(TAG, INFO) { "We are disabled." }
+                    return@launch
+                }
                 handleEvent(intent)
             } catch (e: Exception) {
                 log(TAG, ERROR) { "Error handling bluetooth event: ${e.asLog()}" }

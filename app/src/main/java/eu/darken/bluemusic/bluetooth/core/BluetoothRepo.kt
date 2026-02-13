@@ -57,7 +57,7 @@ class BluetoothRepo @Inject constructor(
 ) {
 
     private val bluetoothAdapter: BluetoothAdapter by lazy { BluetoothAdapter.getDefaultAdapter() }
-    private val isBluetoothSupported: Boolean = BluetoothAdapter.getDefaultAdapter() != null
+    private val isBluetoothSupported: Boolean by lazy { BluetoothAdapter.getDefaultAdapter() != null }
 
     private val isEnabled: Flow<Boolean> = callbackFlow {
         val receiver = object : BroadcastReceiver() {
