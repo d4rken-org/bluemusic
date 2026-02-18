@@ -258,6 +258,28 @@
     <string name="label_no_devices_title">No Devices</string>
     <string name="bluemusic_mascot_description">App Icon</string>
 
+    <string name="devices_device_config_show_home_screen_label">Zobraziť domovskú obrazovku</string>
+    <string name="devices_device_config_show_home_screen_desc">Po spracovaní všetkých udalostí pre toto zariadenie sa pokúsi zobraziť domovskú obrazovku. Nemusí fungovať na všetkých verziách Androidu.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Uložiť hlasitosť pri odpojení</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Zachyť a ulož aktuálne úrovne hlasitosti pri odpojení tohto zariadenia.</string>
+    <string name="devices_device_config_dnd_on_connect_label">Režim Nerušiť</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Ovládanie režimu Nerušiť vyžaduje prístup k politike upozornení</string>
+    <string name="dnd_mode_dialog_title">Vyber režim NR</string>
+    <string name="dnd_mode_dont_change">Nemeniť</string>
+    <string name="dnd_mode_off">Vypnuté</string>
+    <string name="dnd_mode_priority_only">Iba priority</string>
+    <string name="dnd_mode_alarms_only">Iba budíky</string>
+    <string name="dnd_mode_total_silence">Úplné ticho</string>
+    <string name="devices_indicator_lock">Zámok</string>
+    <string name="devices_indicator_awake">Bude</string>
+    <string name="devices_indicator_nudge">Postrč</string>
+    <string name="devices_indicator_observe">Sleduj</string>
+    <string name="devices_indicator_disconnect">Odpoj</string>
+    <string name="devices_indicator_limit">Obmedzenie</string>
+    <string name="devices_indicator_launch">Spusti</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Domov</string>
+    <string name="devices_indicator_dnd">NR</string>
     <!-- Connection alert -->
     <string name="devices_device_config_connection_alert_label">Upozornenie na pripojenie</string>
     <string name="connection_alert_dialog_title">Upozornenie na pripojenie</string>

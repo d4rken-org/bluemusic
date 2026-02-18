@@ -52,7 +52,7 @@
     <string name="devices_device_config_monitoring_duration_label">משך ניטור</string>
     <string name="devices_device_config_monitoring_duration_desc">משך במילישניות, לאחר ביצוע התאמות, במהלכו כל שינוי עוצמה נוסף ייחסם.</string>
     <string name="devices_device_config_adjustment_delay_label">השהיית התאמות</string>
-    <string name="devices_device_config_adjustment_delay_desc">The delay in milliseconds between each volume adjustment. A delay 0ms means instantly setting the volume when this device connects.</string>
+    <string name="devices_device_config_adjustment_delay_desc">ההשהייה במילישניות בין כל התאמת עוצמה. השהייה של 0ms משמעה הגדרת עוצמה מיידית כאשר מכשיר זה מתחבר.</string>
     <string name="devices_device_config_reaction_delay_label">השהיית תגובה</string>
     <string name="devices_device_config_reaction_delay_desc">ההשהייה במילישניות עד אשר אפליקציה זו מגיבה למכשיר זה.</string>
     <string name="devices_device_config_section_reaction_label">אחר</string>
@@ -67,7 +67,7 @@
     <string name="devices_device_config_volume_observe_label">צפה בשינויים</string>
     <string name="devices_device_config_volume_observe_desc">הישאר פעיל כאשר המכשיר מחובר ושמור שינויי עוצמה שלא נגרמו על ידי האפליקציה.</string>
     <string name="devices_device_config_volume_lock_label">נעילת ווליום</string>
-    <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
+    <string name="devices_device_config_volume_lock_desc">כל שינויי עוצמה שלא בוצעו דרך אפליקציה זו יוחזרו כאשר המכשיר מחובר.</string>
     <string name="devices_device_config_volume_rate_limiter_label">מנקה קצב עוצמה</string>
     <string name="devices_device_config_volume_rate_limiter_desc">הגבלת תכיפות שינויי עוצמה כדי למנוע התאמות עוצמה מהירות או מוגזמות.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">השהיית הגדלת עוצמה</string>
@@ -208,7 +208,7 @@
     <string name="description_intro_contact">אל תהססו לפנות אלי אם יש לכם שאלות או אפילו רעיון לתכונה חדשה.</string>
     <string name="label_translation">תרגום</string>
     <string name="description_help_translate">עזרו לי להפוך אפליקציה זו לזמינה בשפות אחרות.</string>
-    <string name="label_device_speaker">Device speaker</string>
+    <string name="label_device_speaker">רמקול מכשיר</string>
     <string name="label_keyevent_playpause">ניגון-עצירה</string>
     <string name="label_keyevent_play">ניגון</string>
     <string name="label_keyevent_next">הבא</string>
@@ -257,6 +257,28 @@
     <string name="error_iap_owned_message">אתם כבר בעלים של פריט זה</string>
     <string name="label_no_devices_title">אין מכשירים</string>
     <string name="bluemusic_mascot_description">איקון אפליקציה</string>
+    <string name="devices_device_config_show_home_screen_label">הצג מסך בית</string>
+    <string name="devices_device_config_show_home_screen_desc">לאחר עיבוד כל האירועים עבור מכשיר זה, ינסה להציג את מסך הבית. ייתכן שלא יעבוד בכל גרסאות האנדרואיד.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">שמור עוצמה בניתוק</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">צלם ושמור את רמות העוצמה הנוכחיות כאשר מכשיר זה מתנתק.</string>
+    <string name="devices_device_config_notification_policy_required_dnd">שליטה במצב Nerušit דורשת גישה למדיניות התראות</string>
+    <string name="devices_device_config_dnd_on_connect_label">מצב אל תפריע</string>
+    <string name="dnd_mode_dialog_title">בחר מצב DND</string>
+    <string name="dnd_mode_dont_change">אל תשנה</string>
+    <string name="dnd_mode_off">כבוי</string>
+    <string name="dnd_mode_priority_only">עדיפות בלבד</string>
+    <string name="dnd_mode_alarms_only">התראות בלבד</string>
+    <string name="dnd_mode_total_silence">שקט מוחלט</string>
+    <string name="devices_indicator_lock">נעילה</string>
+    <string name="devices_indicator_awake">ער</string>
+    <string name="devices_indicator_nudge">דחיפה</string>
+    <string name="devices_indicator_observe">צפייה</string>
+    <string name="devices_indicator_disconnect">ניתוק</string>
+    <string name="devices_indicator_limit">הגבלה</string>
+    <string name="devices_indicator_launch">הפעלה</string>
+    <string name="devices_indicator_auto">אוטו</string>
+    <string name="devices_indicator_home">בית</string>
+    <string name="devices_indicator_dnd">DND</string>
     <!-- Connection alert -->
     <string name="devices_device_config_connection_alert_label">התראת חיבור</string>
     <string name="connection_alert_dialog_title">התראת חיבור</string>

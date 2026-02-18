@@ -286,4 +286,11 @@
     <string name="connection_alert_type_vibration">バイブのみ</string>
     <string name="connection_alert_type_both">サウンドとバイブ</string>
     <string name="devices_indicator_alert">アラート</string>
+
+    <!-- Missing strings -->
+    <string name="devices_device_config_show_home_screen_label">ホーム画面を表示</string>
+    <string name="devices_device_config_show_home_screen_desc">このデバイスのすべてのイベントが処理された後、ホーム画面を表示しようとします。すべてのAndroidバージョンで動作するとは限りません。</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">切断時に音量を保存</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">このデバイスが切断されたときに、現在の音量レベルを取得して保存します。</string>
+    <string name="devices_device_config_notification_policy_required_dnd">おやすみモードの制御には通知ポリシーアクセスが必要です</string>
 </resources>

@@ -258,12 +258,34 @@
     <string name="label_no_devices_title">Žádná zařízení</string>
     <string name="bluemusic_mascot_description">Ikona aplikace</string>
 
+    <string name="devices_device_config_show_home_screen_label">Zobrazit domovskou obrazovku</string>
+    <string name="devices_device_config_show_home_screen_desc">Po zpracování všech událostí tohoto zařízení se pokus zobrazit domovskou obrazovku. Nemusí fungovat na všech verzích Androidu.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Uložit hlasitost při odpojení</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Zachytí a uloží aktuální úrovně hlasitosti při odpojení tohoto zařízení.</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Ovládání Nerušit vyžaduje přístup k zásadám oznámení</string>
+    <string name="devices_device_config_dnd_on_connect_label">Režim Nerušit</string>
+    <string name="dnd_mode_dialog_title">Vybrat režim DND</string>
+    <string name="dnd_mode_dont_change">Neměnit</string>
+    <string name="dnd_mode_off">Vypnuto</string>
+    <string name="dnd_mode_priority_only">Pouze prioritní</string>
+    <string name="dnd_mode_alarms_only">Pouze budíky</string>
+    <string name="dnd_mode_total_silence">Naprosté ticho</string>
+    <string name="devices_indicator_lock">Zámek</string>
+    <string name="devices_indicator_awake">Aktivní</string>
+    <string name="devices_indicator_nudge">Postrk</string>
+    <string name="devices_indicator_observe">Sledovat</string>
+    <string name="devices_indicator_disconnect">Odpojit</string>
+    <string name="devices_indicator_limit">Limit</string>
+    <string name="devices_indicator_launch">Spustit</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Domů</string>
+    <string name="devices_indicator_dnd">DND</string>
     <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">Upozorneni na pripojeni</string>
-    <string name="connection_alert_dialog_title">Upozorneni na pripojeni</string>
-    <string name="connection_alert_type_none">Zadne</string>
+    <string name="devices_device_config_connection_alert_label">Upozornění na připojení</string>
+    <string name="connection_alert_dialog_title">Upozornění na připojení</string>
+    <string name="connection_alert_type_none">Žádné</string>
     <string name="connection_alert_type_sound">Pouze zvuk</string>
     <string name="connection_alert_type_vibration">Pouze vibrace</string>
     <string name="connection_alert_type_both">Zvuk a vibrace</string>
-    <string name="devices_indicator_alert">Upozorneni</string>
+    <string name="devices_indicator_alert">Upozornění</string>
 </resources>

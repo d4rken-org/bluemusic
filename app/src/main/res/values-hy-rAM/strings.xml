@@ -258,11 +258,35 @@
     <string name="general_reset_action">Վերակայել</string>
     <string name="general_save_action">Պահել</string>
     <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">Կdelays delays</string>
-    <string name="connection_alert_dialog_title">Delays delays</string>
-    <string name="connection_alert_type_none">Delays</string>
-    <string name="connection_alert_type_sound">Delays delays</string>
-    <string name="connection_alert_type_vibration">Delays delays</string>
-    <string name="connection_alert_type_both">Delays delays</string>
-    <string name="devices_indicator_alert">Delays</string>
+    <string name="devices_device_config_connection_alert_label">Կապի ազդանշան</string>
+    <string name="connection_alert_dialog_title">Կապի ազդանշան</string>
+    <string name="connection_alert_type_none">Ոչ մեկը</string>
+    <string name="connection_alert_type_sound">Միայն ձայն</string>
+    <string name="connection_alert_type_vibration">Միայն թրթռում</string>
+    <string name="connection_alert_type_both">Ձայն և թրթռում</string>
+    <string name="devices_indicator_alert">Ազդանշան</string>
+
+    <!-- Missing strings -->
+    <string name="devices_device_config_show_home_screen_label">Ցուցադրել գլխավոր էկրան</string>
+    <string name="devices_device_config_show_home_screen_desc">Բոլոր իրադարձությունները այս սարքի համար մշակվելուց հետո, փորձել ցուցադրել գլխավոր էկրանը: Սա կարող է չաշխատել Android-ի բոլոր տարբերակներում:</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Պահպանել ձայնը անջատման ժամանակ</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Ֆիքսել և պահպանել ընթացիկ ձայնի մակարդակները, երբ այս սարքն անջատվում է:</string>
+    <string name="devices_device_config_dnd_on_connect_label">Չանհանգստացնել ռեժիմ</string>
+    <string name="dnd_mode_dialog_title">Ընտրել ՉԱ ռեժիմ</string>
+    <string name="dnd_mode_dont_change">Չփոխել</string>
+    <string name="dnd_mode_off">Անջատ</string>
+    <string name="dnd_mode_priority_only">Միայն առաջնահերթություն</string>
+    <string name="dnd_mode_alarms_only">Միայն ազդանշաններ</string>
+    <string name="dnd_mode_total_silence">Լիակատար լռություն</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Չանհանգստացնել կառավարումը պահանջում է ծանուցումների քաղաքականության մուտք</string>
+    <string name="devices_indicator_lock">Կողպեք</string>
+    <string name="devices_indicator_awake">Արթուն</string>
+    <string name="devices_indicator_nudge">Հրում</string>
+    <string name="devices_indicator_observe">Դիտել</string>
+    <string name="devices_indicator_disconnect">Անջատել</string>
+    <string name="devices_indicator_limit">Սահմաn</string>
+    <string name="devices_indicator_launch">Գործարկել</string>
+    <string name="devices_indicator_auto">Ավտո</string>
+    <string name="devices_indicator_home">Գլխ.</string>
+    <string name="devices_indicator_dnd">ՉԱ</string>
 </resources>

@@ -265,4 +265,28 @@
     <string name="connection_alert_type_vibration">Само вибрација</string>
     <string name="connection_alert_type_both">Звук и вибрација</string>
     <string name="devices_indicator_alert">Известување</string>
+
+    <!-- Missing strings -->
+    <string name="devices_device_config_show_home_screen_label">Прикажи почетен екран</string>
+    <string name="devices_device_config_show_home_screen_desc">По обработката на сите настани за овој уред, обиди се да го прикажеш почетниот екран. Ова може да не работи на сите верзии на Android.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Зачувај јачина на звук при исклучување</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Сними ги и зачувај ги тековните нивоа на јачина на звук кога уредот се исклучува.</string>
+    <string name="devices_device_config_dnd_on_connect_label">Режим Не вознемирувај</string>
+    <string name="dnd_mode_dialog_title">Избери режим НВ</string>
+    <string name="dnd_mode_dont_change">Не менувај</string>
+    <string name="dnd_mode_off">Исклучен</string>
+    <string name="dnd_mode_priority_only">Само приоритет</string>
+    <string name="dnd_mode_alarms_only">Само аларми</string>
+    <string name="dnd_mode_total_silence">Целосна тишина</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Контролата Не вознемирувај бара пристап до политиката на известувања</string>
+    <string name="devices_indicator_lock">Заклучи</string>
+    <string name="devices_indicator_awake">Буден</string>
+    <string name="devices_indicator_nudge">Потисни</string>
+    <string name="devices_indicator_observe">Набљудувај</string>
+    <string name="devices_indicator_disconnect">Исклучи</string>
+    <string name="devices_indicator_limit">Лимит</string>
+    <string name="devices_indicator_launch">Стартај</string>
+    <string name="devices_indicator_auto">Авто</string>
+    <string name="devices_indicator_home">Почеток</string>
+    <string name="devices_indicator_dnd">НВ</string>
 </resources>

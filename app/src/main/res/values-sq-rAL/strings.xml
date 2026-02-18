@@ -263,4 +263,28 @@
     <string name="connection_alert_type_vibration">Vetëm dridhje</string>
     <string name="connection_alert_type_both">Tingull dhe dridhje</string>
     <string name="devices_indicator_alert">Sinjalizim</string>
+
+    <!-- Missing strings -->
+    <string name="devices_device_config_show_home_screen_label">Shfaq ekranin kryesor</string>
+    <string name="devices_device_config_show_home_screen_desc">Pasi të gjitha ngjarjet janë procesuar për këtë pajisje, provo të shfaqësh ekranin kryesor. Kjo mund të mos funksionojë në të gjitha versionet e Android.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Ruaj volumin me shkëputje</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Kap dhe ruaj nivelet aktuale të volumit kur kjo pajisje shkëputet.</string>
+    <string name="devices_device_config_dnd_on_connect_label">Modaliteti Mos shqetëso</string>
+    <string name="dnd_mode_dialog_title">Zgjidh modalitetin MShq</string>
+    <string name="dnd_mode_dont_change">Mos ndrysho</string>
+    <string name="dnd_mode_off">Joaktiv</string>
+    <string name="dnd_mode_priority_only">Vetëm prioriteti</string>
+    <string name="dnd_mode_alarms_only">Vetëm alarmet</string>
+    <string name="dnd_mode_total_silence">Heshtje totale</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Kontrolli Mos shqetëso kërkon qasje në politikën e njoftimeve</string>
+    <string name="devices_indicator_lock">Kyçje</string>
+    <string name="devices_indicator_awake">Zgjuar</string>
+    <string name="devices_indicator_nudge">Shtyj</string>
+    <string name="devices_indicator_observe">Vëzhgo</string>
+    <string name="devices_indicator_disconnect">Shkëput</string>
+    <string name="devices_indicator_limit">Limit</string>
+    <string name="devices_indicator_launch">Hap</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Home</string>
+    <string name="devices_indicator_dnd">MShq</string>
 </resources>

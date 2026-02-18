@@ -278,4 +278,14 @@
     <string name="connection_alert_type_vibration">Apenas vibracao</string>
     <string name="connection_alert_type_both">Som e vibracao</string>
     <string name="devices_indicator_alert">Alerta</string>
+    <string name="devices_indicator_lock">Bloquear</string>
+    <string name="devices_indicator_awake">Ativo</string>
+    <string name="devices_indicator_nudge">Cutucar</string>
+    <string name="devices_indicator_observe">Observar</string>
+    <string name="devices_indicator_disconnect">Desconectar</string>
+    <string name="devices_indicator_limit">Limite</string>
+    <string name="devices_indicator_launch">Abrir</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Início</string>
+    <string name="devices_indicator_dnd">NP</string>
 </resources>

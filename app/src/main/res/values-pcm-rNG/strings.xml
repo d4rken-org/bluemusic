@@ -263,4 +263,28 @@
     <string name="connection_alert_type_vibration">Vibration only</string>
     <string name="connection_alert_type_both">Sound and vibration</string>
     <string name="devices_indicator_alert">Alert</string>
+
+    <!-- Missing strings -->
+    <string name="devices_device_config_show_home_screen_label">Show home screen</string>
+    <string name="devices_device_config_show_home_screen_desc">After all events don process for dis device, try to show de home screen. E fit work for all Android versions.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Save volume wen e disconnect</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Capture and save de current volume levels wen dis device disconnect.</string>
+    <string name="devices_device_config_dnd_on_connect_label">Do Not Disturb mode</string>
+    <string name="dnd_mode_dialog_title">Select DND mode</string>
+    <string name="dnd_mode_dont_change">No change am</string>
+    <string name="dnd_mode_off">Off</string>
+    <string name="dnd_mode_priority_only">Priority only</string>
+    <string name="dnd_mode_alarms_only">Alarms only</string>
+    <string name="dnd_mode_total_silence">Total silence</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Do Not Disturb control need notification policy access</string>
+    <string name="devices_indicator_lock">Lock</string>
+    <string name="devices_indicator_awake">Awake</string>
+    <string name="devices_indicator_nudge">Nudge</string>
+    <string name="devices_indicator_observe">Observe</string>
+    <string name="devices_indicator_disconnect">Disconnect</string>
+    <string name="devices_indicator_limit">Limit</string>
+    <string name="devices_indicator_launch">Launch</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Home</string>
+    <string name="devices_indicator_dnd">DND</string>
 </resources>

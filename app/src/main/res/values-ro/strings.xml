@@ -265,4 +265,26 @@
     <string name="connection_alert_type_vibration">Doar vibrație</string>
     <string name="connection_alert_type_both">Sunet și vibrație</string>
     <string name="devices_indicator_alert">Alertă</string>
+    <string name="devices_indicator_lock">Blocare</string>
+    <string name="devices_indicator_awake">Activ</string>
+    <string name="devices_indicator_nudge">Împingere</string>
+    <string name="devices_indicator_observe">Observare</string>
+    <string name="devices_indicator_disconnect">Deconectare</string>
+    <string name="devices_indicator_limit">Limită</string>
+    <string name="devices_indicator_launch">Lansare</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Acasă</string>
+    <string name="devices_indicator_dnd">DNT</string>
+    <string name="devices_device_config_dnd_on_connect_label">Mod Nu Deranja</string>
+    <string name="dnd_mode_dialog_title">Selectează modul Nu Deranja</string>
+    <string name="dnd_mode_dont_change">Nu schimba</string>
+    <string name="dnd_mode_off">Oprit</string>
+    <string name="dnd_mode_priority_only">Numai prioritate</string>
+    <string name="dnd_mode_alarms_only">Numai alarme</string>
+    <string name="dnd_mode_total_silence">Liniște totală</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Controlul Nu Deranja necesită acces la politica de notificări</string>
+    <string name="devices_device_config_show_home_screen_label">Afișează ecranul principal</string>
+    <string name="devices_device_config_show_home_screen_desc">După procesarea tuturor evenimentelor pentru acest dispozitiv, încearcă să afișeze ecranul principal. Poate să nu funcționeze pe toate versiunile Android.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Salvează volumul la deconectare</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Capturează și salvează nivelurile curente de volum când se deconectează acest dispozitiv.</string>
 </resources>
