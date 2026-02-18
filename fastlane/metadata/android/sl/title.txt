@@ -1,1 +1,1 @@
-Upravljalnik glasnosti Bluetooth
+Upravljalnik glasnosti BT
