@@ -263,4 +263,28 @@
     <string name="connection_alert_type_vibration">Nur vibrado</string>
     <string name="connection_alert_type_both">Sono kaj vibrado</string>
     <string name="devices_indicator_alert">Averto</string>
+
+    <!-- Missing strings -->
+    <string name="devices_device_config_show_home_screen_label">Montri hejman ekranon</string>
+    <string name="devices_device_config_show_home_screen_desc">Post kiam ĉiuj eventoj estas pritraktitaj por ĉi tiu aparato, provu montri la hejman ekranon. Ĉi tio eble ne funkcias sur ĉiuj Android-versioj.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Konservi volumon ĉe malkonekto</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Kapturi kaj konservi la aktualajn volumnivelojn kiam ĉi tiu aparato malkonektiĝas.</string>
+    <string name="devices_device_config_dnd_on_connect_label">Reĝimo Ne ĝenu</string>
+    <string name="dnd_mode_dialog_title">Elekti reĝimon Ne ĝenu</string>
+    <string name="dnd_mode_dont_change">Ne ŝanĝi</string>
+    <string name="dnd_mode_off">Malŝaltita</string>
+    <string name="dnd_mode_priority_only">Nur prioritato</string>
+    <string name="dnd_mode_alarms_only">Nur alarmoj</string>
+    <string name="dnd_mode_total_silence">Tuta silento</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Ne ĝenu-kontrolo bezonas sciigan politikan aliron</string>
+    <string name="devices_indicator_lock">Seruro</string>
+    <string name="devices_indicator_awake">Veka</string>
+    <string name="devices_indicator_nudge">Puŝeto</string>
+    <string name="devices_indicator_observe">Observi</string>
+    <string name="devices_indicator_disconnect">Malkonekti</string>
+    <string name="devices_indicator_limit">Limito</string>
+    <string name="devices_indicator_launch">Lanĉi</string>
+    <string name="devices_indicator_auto">Aŭto</string>
+    <string name="devices_indicator_home">Hejmo</string>
+    <string name="devices_indicator_dnd">NĜ</string>
 </resources>

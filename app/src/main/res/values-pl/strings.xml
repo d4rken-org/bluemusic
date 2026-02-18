@@ -97,7 +97,7 @@
     <string name="devices_neverseen_label">Nigdy nie podłączone</string>
     <string name="devices_state_connected_label">Połączony</string>
     <string name="devices_last_connected_label">Ostatnio połączony: %s</string>
-    <string name="devices_currently_connected_label">Currently connected</string>
+    <string name="devices_currently_connected_label">Aktualnie połączony</string>
     <string name="devices_device_disabled_label">Urządzenie wyłączone</string>
     <string name="devices_device_config_enabled_label">Włączone</string>
     <string name="devices_device_config_enabled_desc">Reaguj na to urządzenie po podłączeniu</string>
@@ -287,4 +287,11 @@
     <string name="connection_alert_type_vibration">Tylko wibracja</string>
     <string name="connection_alert_type_both">Dzwiek i wibracja</string>
     <string name="devices_indicator_alert">Alert</string>
+
+    <!-- Missing strings -->
+    <string name="devices_device_config_show_home_screen_label">Pokaż ekran główny</string>
+    <string name="devices_device_config_show_home_screen_desc">Po przetworzeniu wszystkich zdarzeń dla tego urządzenia, spróbuj pokazać ekran główny. Może nie działać na wszystkich wersjach Androida.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Zapisz głośność przy rozłączeniu</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Przechwyć i zapisz aktualne poziomy głośności, gdy to urządzenie się rozłączy.</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Sterowanie trybem Nie przeszkadzać wymaga dostępu do zasad powiadomień</string>
 </resources>

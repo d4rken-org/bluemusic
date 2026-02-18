@@ -8,4 +8,319 @@
     <string name="connection_alert_type_vibration">Solu vibrazione</string>
     <string name="connection_alert_type_both">Sonu e vibrazione</string>
     <string name="devices_indicator_alert">Avisu</string>
+
+    <!-- General -->
+    <string name="app_name">Bluetooth Volume Manager</string>
+    <string name="general_error_label">Errore</string>
+    <string name="general_error_no_compatible_app_found_msg">Nessuna app compatibile trovata per gestire questa richiesta.</string>
+    <string name="general_share_action">Condividi</string>
+    <string name="general_back_action">Indietru</string>
+    <string name="general_show_details_action">Amostra detàllios</string>
+    <string name="general_navigate_back_action">Torra a nàrrere</string>
+    <string name="general_reset_action">Resètta</string>
+    <string name="general_clear_action">Imbòida</string>
+    <string name="general_save_action">Sàlva</string>
+    <string name="general_delete_action">Càncella</string>
+    <string name="general_cancel_action">Annùlla</string>
+    <string name="general_ok_action">OK</string>
+    <string name="general_configure_action">Configura</string>
+    <string name="general_upgrade_action">Aggiornamentu</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome_title">Bènnidu in BVM</string>
+    <string name="onboarding_welcome_message">Bluetooth Volume Manager ti permìttit de gestire automàticament su volume de sos dispositivos Bluetooth.</string>
+    <string name="onboarding_welcome_action">Andamus</string>
+    <string name="onboarding_beta_title">Versione beta</string>
+    <string name="onboarding_beta_message">Custu est unu build beta (de prova). Procedi cun umoriìsmu e unu pianu de riserva. Reporta sos problemas chi incontras.</string>
+    <string name="onboarding_beta_action">Non tìmo nudda</string>
+    <string name="onboarding_privacy_title">Privatesa &amp; Datos</string>
+    <string name="onboarding_privacy_message">Bluetooth Volume Manager non tenet pubblicidade e non vèndet datos de sos utentes (est fintzas open-source). Sa tua privatesa est importante pro me.</string>
+    <string name="onboarding_privacy_read_action">Lège sa Política de Privatesa</string>
+    <string name="onboarding_privacy_action">Accètta</string>
+    <string name="onboarding_rewrite_title">App modernizàda</string>
+    <string name="onboarding_rewrite_message">Appo dèvidu riscrìere s\'app pro stare a pàssu cun sos cambios de Android e sos rechisitos de Google. Appo modernizàdu s\'app addú est pòssibile pro assicurare chi còntinuat a funtzionare in manera affidàbbile.</string>
+    <string name="onboarding_rewrite_features">Calicuna funtzionalidade est cambiàda durante s\'aggiornamentu. Controlla sos configuraziònis de su dispositivu tuo pro assicurare chi totu siat configuràdu bene.</string>
+    <string name="onboarding_rewrite_action">Còntinuat</string>
+
+    <!-- Discover -->
+    <string name="discover_no_unmnaged_devices_msg">Nessun dispositivu non gestidu trovàdu</string>
+    <string name="discover_all_devices_managed_msg">Totu sos dispositivos accoppiàdos tuos sunt gestidos! Bi cheres unu nou?</string>
+    <string name="discover_pair_new_device_action">Accòppia nou dispositivu</string>
+
+    <!-- Devices -->
+    <string name="devices_device_config_label">Configuratzione de su dispositivu</string>
+    <string name="devices_device_config_section_general_label">Generali</string>
+    <string name="devices_device_config_remove_device_label">Ismentica su dispositivu</string>
+    <string name="devices_device_config_remove_device_desc">Iscancella su dispositivu dae s\'app e nde càncella sa configuratzione. Custu non disconnèttit su dispositivu.</string>
+    <string name="devices_device_config_remove_device_action">Ismentica</string>
+    <string name="devices_device_config_remove_device_confirmation">Ismentica %s dae sos dispositivos gestidos?</string>
+    <string name="devices_device_config_rename_device_label">Rinòmina su dispositivu</string>
+    <string name="devices_device_config_rename_device_desc">Rinòmina custu dispositivu dèntro s\'app, e, si est pòssibile, dèntro su sistema.</string>
+    <string name="devices_device_config_rename_device_action">Rinòmina</string>
+    <string name="devices_device_config_enabled_label">Abilitàdu</string>
+    <string name="devices_device_config_enabled_desc">Reagessi a custu dispositivu cando si connèttet</string>
+
+    <string name="devices_device_config_section_timing_label">Temporizatzione</string>
+    <string name="devices_device_config_monitoring_duration_label">Durada de su monitoràgiu</string>
+    <string name="devices_device_config_monitoring_duration_desc">Una durada in millisecundos, dòpo chi sunt fatos sos aggiustamentos, durante sa cale calsiasi àteru cambiu de volume serà bloccàdu.</string>
+    <string name="devices_device_config_adjustment_delay_label">Ritàrdu de aggiustamentu</string>
+    <string name="devices_device_config_adjustment_delay_desc">Su ritàrdu in millisecundos intre cada aggiustamentu de volume. Un ritàrdu de 0ms vùltat a pònnere su volume a subitu cando su dispositivu si connèttet.</string>
+    <string name="devices_device_config_reaction_delay_label">Ritàrdu de reatzzione</string>
+    <string name="devices_device_config_reaction_delay_desc">Su ritàrdu in millisecundos finas a cando s\'app reagessi a custu dispositivu.</string>
+
+    <string name="devices_device_config_section_reaction_label">Reatzzione</string>
+    <string name="devices_device_config_launch_app_label">Làntziat apps</string>
+    <string name="devices_device_config_launch_app_desc">Làntzia apps cando su dispositivu si connèttet.</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d apps seletziòndas</string>
+    <string name="devices_device_config_show_home_screen_label">Amostra sa pantalla printzipale</string>
+    <string name="devices_device_config_show_home_screen_desc">Dòpo chi todos sos eventos sunt processados pro custu dispositivu, prova a amostare sa pantalla printzipale. Custu podet non funtzionare in tùdas sas versiones de Android.</string>
+    <string name="devices_device_config_nudge_volume_label">Impùlsa su volume</string>
+    <string name="devices_device_config_nudge_volume_description">Abbàssa e poi àltzat su volume de unu incremendu, fintzas si su volume desideràdu est già impostàdu (segundu su sistema).</string>
+    <string name="devices_device_config_visible_adjustments_label">Aggiustamentos visìbbiles</string>
+    <string name="devices_device_config_visible_adjustments_desc">Amostra sa finestra de volume de su sistema mentre s\'app fàchet aggiustamentos pro custu dispositivu.</string>
+    <string name="devices_device_config_keep_awake_label">Teni in veglia</string>
+    <string name="devices_device_config_keep_awake_desc">Prova a tènnere su dispositivu in veglia mentre est connètidu. Su cumportamentu podet variare a segunda de sa versione de Android.</string>
+    <string name="devices_device_config_volume_observe_label">Osserva sos cambios</string>
+    <string name="devices_device_config_volume_observe_desc">Remàni ativu mentre custu dispositivu est connètidu e sàlva sos cambios de volume chi non sunt istados causàdos dae s\'app.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Sàlva su volume a disconnessione</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Càptura e sàlva sos livèllos de volume attuales cando su dispositivu si disconnèttet.</string>
+    <string name="devices_device_config_volume_lock_label">Bloccu de volume</string>
+    <string name="devices_device_config_volume_lock_desc">Calsiasi cambiu de volume non fatu tramite s\'app serrà reversìdu mentre custu dispositivu est connètidu.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Limitatore de frequèntzia de volume</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Limita sa frequèntzia de sos cambios de volume pro prevènnere aggiustamentos ràpidos o ecèssivos.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ritàrdu de augmentu de volume</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Tempu mìnimu intre sos augmentos de volume: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Ritàrdu de diminutzione de volume</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Tempu mìnimu intre sas diminutziones de volume: %d ms</string>
+    <string name="devices_device_config_autoplay_label">Autoreproductzione</string>
+    <string name="devices_device_config_autoplay_desc">Simula s\'apprèssidu de su butone play in unu control remotu Bluetooth cando su dispositivu si connèttet.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Tipos de tàstos de autoreproductzione</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Tipos de tàstos disponìbbiles</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Tàstos seletziòndos (in òrdine)</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Tipos de tàstos</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Configura cales tàstos mandare e in cale òrdine</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Nessun tàstu configuràdu</string>
+
+    <string name="devices_device_config_section_volumes_label">Volumes</string>
+    <string name="devices_device_config_section_volume_label">Volume</string>
+    <string name="devices_device_config_alarm_volume_label">Volume de s\'alarma</string>
+    <string name="devices_device_config_alarm_volume_desc">Calicuna app de alarma ùsat su volume de sa mùsica in su pòstu.</string>
+    <string name="devices_device_config_notification_volume_label">Volume de notìfica</string>
+    <string name="devices_device_config_notification_volume_desc">Non tùdos sos dispositivos cumpòrtant una configuratzione de volume de notìfica separàda. Podet pùre impostare su modalidade silèntziosa o vibratzione.</string>
+    <string name="devices_device_config_music_volume_label">Volume de sa mùsica</string>
+    <string name="devices_device_config_music_volume_desc">Controlla su volume chi inflùit subra mùsica e giogos cando su dispositivu si connèttet.</string>
+    <string name="devices_device_config_call_volume_label">Volume de sas llamadas</string>
+    <string name="devices_device_config_call_volume_desc">Controlla su volume chi inflùit subra sas llamadas cando su dispositivu si connèttet.</string>
+    <string name="devices_device_config_ring_volume_label">Volume de suoneria</string>
+    <string name="devices_device_config_ring_volume_desc">Controlla su volume chi inflùit subra sa tua suoneria. Podet pùre impostare su modalidade silèntziosa o vibratzione.</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Su controllu de su volume de suoneria richièdet s\'acèssu a sa política de notìfigas</string>
+    <string name="devices_device_config_notification_policy_required_notification">Su controllu de su volume de notìfigas richièdet s\'acèssu a sa política de notìfigas</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Su controllu de Su No Distùrbare richièdet s\'acèssu a sa política de notìfigas</string>
+    <string name="devices_device_config_notification_policy_action">Contzèddi s\'acèssu</string>
+    <string name="devices_device_config_dnd_on_connect_label">Modalidade Su No Distùrbare</string>
+    <string name="dnd_mode_dialog_title">Selètziona modalidade SND</string>
+    <string name="dnd_mode_dont_change">Non cambiare</string>
+    <string name="dnd_mode_off">Istègliu</string>
+    <string name="dnd_mode_priority_only">Solu prioritade</string>
+    <string name="dnd_mode_alarms_only">Solu alarmas</string>
+    <string name="dnd_mode_total_silence">Silèntziu totale</string>
+
+    <string name="devices_stream_music_label">Mùsica</string>
+    <string name="devices_audio_stream_call_label">Llamada</string>
+    <string name="devices_audio_stream_ring_label">Suoneria</string>
+    <string name="devices_audio_stream_notification_label">Notìfica</string>
+    <string name="devices_audio_stream_alarm_label">Alarma</string>
+
+    <string name="label_speaker_autosave">Autosàlvataggiu de volume</string>
+    <string name="description_speaker_autosave">S\'entràda \&quot;Altoparlante de su dispositivu\&quot;, chi est responsàbbile de sos volumes predefinìdos, s\'aggiornant a se stèssu cando unu dispositivu Bluetooth si connèttet. Nota: Custu non funtzionat in tùdos sos dispositivos.</string>
+
+    <string name="devices_neverseen_label">Mai vìstu</string>
+    <string name="devices_state_connected_label">Connètidu</string>
+    <string name="devices_last_connected_label">Ùltimu connètidu: %s</string>
+    <string name="devices_currently_connected_label">Attualmènte connètidu</string>
+    <string name="devices_device_disabled_label">Dispositivu disabilitàdu</string>
+    <string name="devices_no_volumes_configured">Nessun volume configuràdu pro custu dispositivu. Toca Configura pro impostare sas preferèntzias de volume.</string>
+
+    <!-- Settings -->
+    <string name="settings_label">Impostatziones</string>
+    <string name="settings_category_other_label">Àteru</string>
+
+    <!-- Settings/General -->
+    <string name="general_settings_label">Generali</string>
+    <string name="general_settings_desc">Aggiustamentos generales chi inflùint subra s\'app ìntrea.</string>
+    <string name="settings_category_ui_label">Interfàccia utente</string>
+    <string name="ui_theme_mode_setting_label">Modalidade de su tema</string>
+    <string name="ui_theme_mode_setting_explanation">Sa modalidade ùsada pro su tema de s\'app (p.e. nòtte o die).</string>
+    <string name="ui_theme_style_setting_label">Stile de su tema</string>
+    <string name="ui_theme_style_setting_explanation">Su stile de colore ùsadu pro su tema de s\'app.</string>
+    <string name="ui_theme_mode_dark_label">Iscuru</string>
+    <string name="ui_theme_mode_light_label">Chiaru</string>
+    <string name="ui_theme_mode_system_label">Sistema</string>
+    <string name="ui_theme_style_default_label">Predefinìdu</string>
+    <string name="ui_theme_style_medium_contrast_label">Cuntràstu mèdiu</string>
+    <string name="ui_theme_style_high_contrast_label">Cuntràstu àltu</string>
+    <string name="ui_theme_style_materialyou_label">Material You</string>
+    <string name="ui_language_override_label">Lìngua de s\'app</string>
+    <string name="ui_language_override_desc">Selètziona una lìngua diferente pro BVM, indipendènte dae sa lìngua predefinìda de su sistema tuo.</string>
+
+    <!-- Settings/Devices -->
+    <string name="devices_settings_label">Dispositivos</string>
+    <string name="devices_settings_desc">Impostatziones chi inflùint subra tùdos sos dispositivos gestidos.</string>
+    <string name="label_app_enabled">App abilitàda</string>
+    <string name="description_app_enabled">Comùtat sa capatzidade de s\'app de reagèssere a sos eventos de volume e Bluetooth.</string>
+    <string name="label_visible_volume_adjustments">Aggiustamentos visìbbiles</string>
+    <string name="description_visible_volume_adjustments">Amostra sa finestra de volume de su sistema mentre s\'app fàchet aggiustamentos.</string>
+    <string name="label_volume_listener">Osserva sos cambios</string>
+    <string name="description_volume_listener">Remàni ativu mentre unu dispositivu est connètidu e sàlva sos cambios de volume chi non sunt istados causàdos dae s\'app.</string>
+    <string name="label_boot_restore">Ripristina a s\'avvio</string>
+    <string name="description_boot_restore">Ripristina su volume dòpo s\'avvio/riavvio se unu dispositivu Bluetooth est connètidu.</string>
+
+    <!-- Settings/Support -->
+    <string name="settings_support_label">Suporte</string>
+    <string name="settings_support_description">Lège sa documentatzione, segnala problemas, chàttia cun àteros o registra logs de debug.</string>
+    <string name="settings_support_wiki_label">Documentatzione</string>
+    <string name="settings_support_wiki_description">Impàra a ùsare BVM in manera eficàtze</string>
+    <string name="settings_support_issue_tracker_description">Un tracker de problemas pùbblicu pro segnalatziones de bug e richièstas de funtzionalidades.</string>
+    <string name="settings_support_issue_tracker_label">Tracker de problemas</string>
+    <string name="settings_support_debuglog_label">Log de debug</string>
+    <string name="settings_support_debuglog_desc">Registra tùtu chello chi s\'app est fachèndende in unu file de testu chi podes cumunicare.</string>
+    <string name="settings_support_debuglog_recording_desc">Attualmènte registrende informatzione de debug. Toca pro pàrare sa registratzione.</string>
+    <string name="settings_support_debuglog_path">Percorsu de log: %1$s</string>
+    <string name="settings_support_discord_label">Discord</string>
+    <string name="settings_support_discord_description">Un postu addú istare e fàghere dòmandas.</string>
+
+    <!-- Settings/Acknowledgements -->
+    <string name="settings_acknowledgements_label">Ringraziamentos</string>
+    <string name="settings_acknowledgements_description">Creditos, litzèntzias e ringraziamentos spetziales</string>
+    <string name="settings_acks_translation_header">Tradutzione</string>
+    <string name="settings_acks_translators_title">Tradutores</string>
+    <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
+    <string name="settings_acks_translate_title">Tradùi BVM</string>
+    <string name="settings_acks_translate_desc">Agiùda a tradùere BVM in sa lìngua tua</string>
+    <string name="settings_acks_thanks_header">Gràtzias</string>
+    <string name="settings_acks_crowdin_title">crowdin.com</string>
+    <string name="settings_acks_crowdin_desc">Pro su suporte a sa tradutzione de sos progèttos open-source</string>
+    <string name="settings_licenses_label">Litzèntzias</string>
+    <string name="settings_sponsor_development_title">Spònsora su sviluppu</string>
+    <string name="settings_sponsor_development_summary">Deventa unu sponsor e rènde pòssibile su sviluppu còntinuu.</string>
+    <string name="settings_privacy_policy_label">Política de privatesa</string>
+    <string name="settings_privacy_policy_desc">Gestire sos datos in manera responsàbbile.</string>
+    <string name="changelog_label">Registro de cambios</string>
+
+    <!-- Debug Log -->
+    <string name="debug_notification_channel_label">Notìfigas de debug</string>
+    <string name="debug_log_consent_title">Log de debug</string>
+    <string name="debug_log_consent_explanation">Cussa funtzionalidade registrat tùtu chello chi s\'app est fachèndende in unu file cumunicàbbile. Su file generàdu cuntenet informatzione sensìbbile (p.e. nòmines de file e apps instalàdas). Cumunicalu solu a persones de fidùcia (p.e. unu sviluppatore chi est solutzionende unu problema).</string>
+    <string name="debug_log_recording_progress">Registrende log de debug</string>
+    <string name="debug_log_record_action">Registra</string>
+    <string name="debug_log_stop_action">Para sa registratzione</string>
+    <string name="debug_log_screen_title">Registradore de Log de Debug</string>
+    <string name="debug_log_screen_sensitive_information_message">Su file generàdu cuntenet informatzione sensìbbile (p.e. nòmines de file e apps instalàdas). Cumunicalu solu a persones de fidùcia.</string>
+    <string name="debug_log_screen_session_path_label">Percorsu de sessione de debug</string>
+    <string name="debug_log_screen_log_files_label">Files de Log</string>
+    <string name="debug_log_screen_log_files_ready">Files de log prontos (ZIP: %1$s)</string>
+    <string name="debug_log_screen_discard_action">Iscarta</string>
+    <string name="debug_log_file_label">File de log registràdu</string>
+
+    <string name="label_bug_reports">Segnalatziones de bug</string>
+    <string name="description_bug_reports">Segnalazione automàtica de bug e crash.</string>
+
+    <string name="label_add_device">Aggiunghe dispositivu</string>
+    <string name="label_just_a_moment_please">Unu momentu, prite.</string>
+    <string name="label_notification_channel_status">Istadu</string>
+    <string name="action_set">Imposta</string>
+    <string name="action_cancel">Annùlla</string>
+    <string name="label_invalid_input">Input non vàlidu</string>
+    <string name="action_reset">Resètta</string>
+    <string name="label_no_connected_devices">Nessun dispositivu connètidu</string>
+    <string name="label_status_idle">In attesa</string>
+    <string name="label_status_adjusting_volumes">Aggiustende sos volumes</string>
+    <string name="label_premium_version">Versione premium</string>
+    <string name="description_premium_required_additional_devices">Sa gestione de dispositivos aditzionales richièdet sa versione premium.</string>
+    <string name="description_premium_required_this_extra_option">Cussa optzzione aditzionale richièdet sa versione premium de s\'app.</string>
+    <string name="description_premium_upgrade_explanation">Procùrati sa versione premium pro abilitare funtzionalidades aditzionales e suportare su sviluppu.</string>
+    <string name="label_premium_version_required">Versione premium richièsta</string>
+    <string name="upgrade_feature_requires_pro">Cussa funtzionalidade richièdet sa versione premium</string>
+    <string name="upgrade_prompt_upgrade_action">Aggiornamentu</string>
+    <string name="description_intro_purpose">S\'app permìttit a su dispositivu Android tuo de recordare su volume de sos diversos dispositivos Bluetooth.</string>
+    <string name="description_intro_premium">Si ti pìachet s\'app, cunsìdera de aggiornare a sa versione premium. Suportat su sviluppu e ti dat calicunas funtzionalidades aditzionales.</string>
+    <string name="description_intro_tap_the_button">Cumintzat aggiungèndende su primu dispositivu tuo.</string>
+    <string name="description_bluetooth_is_disabled">Su Bluetooth est disabilitàdu.</string>
+    <string name="title_bluetooth_is_off">Su Bluetooth est isgèliu</string>
+    <string name="action_enable_bluetooth">Abìlita su Bluetooth</string>
+    <string name="title_bluetooth_permission_required">Permissu Bluetooth richièstu</string>
+    <string name="description_bluetooth_permission_required">S\'app richièdet su permissu Bluetooth pro gestire sos volumes de su dispositivu tuo.</string>
+    <string name="action_grant_permission">Contzèddi su permissu</string>
+    <string name="label_status_listening_for_changes">Ascultende sos cambios de volume</string>
+    <string name="action_exit">Nche bessit</string>
+    <string name="action_start">Cumintzat</string>
+    <string name="label_welcome">Bènnidu</string>
+    <string name="description_intro_contact">Non istas in duda de contàttaremi si as dòmandas o fintzas un\'idea pro una nova funtzionalidade.</string>
+    <string name="label_translation">Tradutzione</string>
+    <string name="description_help_translate">Agiùdami a rèndere s\'app disponìbbile in àteras lìnguas.</string>
+    <string name="label_device_speaker">Altoparlante de su dispositivu</string>
+    <string name="label_keyevent_playpause">Play-Pausa</string>
+    <string name="label_keyevent_play">Play</string>
+    <string name="label_keyevent_next">Sighènte</string>
+    <string name="label_install_id">ID de installatzione</string>
+    <string name="message_copied_to_clipboard">Copiàdu in su clipboard</string>
+    <string name="label_thanks">Gràtzias</string>
+    <string name="label_licenses">Litzèntzias</string>
+    <string name="description_ring_volume_additional_permission">Sunt netzessàrios permissos aditzionales pro cambiare su volume de suoneria.</string>
+    <string name="label_missing_permissions">Permissos mancantes</string>
+    <string name="action_grant">Contzèddi</string>
+    <string name="label_advanced">Avanzàdu</string>
+    <string name="label_exclude_health">Esclùi sos perfiles de salute</string>
+    <string name="description_exclude_health">Calicunu dispositivu Android si blocat cando cerca sos perfiles Bluetooth \'Dispositivu de Salute\' (HDP, 0x1400).</string>
+    <string name="label_exclude_gattserver">Esclùi sos perfiles de su server GATT</string>
+    <string name="label_exclude_gatt">Esclùi sos perfiles GATT</string>
+    <string name="description_exclude_gattserver">Non consultare sos perfiles Bluetooth de tipu \'Attributo Genericu\' (GATT) server.</string>
+    <string name="description_exclude_gatt">Non consultare sos perfiles Bluetooth de tipu \'Attributo Genericu\' (GATT) client.</string>
+    <string name="description_waiting_for_devicex">Attèndende %s pro cumpletare sa connessione</string>
+    <string name="action_undo">Annùlla</string>
+    <string name="action_show">Amostra</string>
+    <string name="action_dismiss">Iscarta</string>
+    <string name="action_fix">Corrègi</string>
+    <string name="battery_optimizations_issue_description">Sas ottimizatziones de bateria sunt abilitàdas pro s\'app e podent prevènnere chi retzibat eventos Bluetooth. Cunsìdera de disabilitare sas ottimizatziones si às problemas.</string>
+    <string name="label_bluetooth_settings">Impostatziones Bluetooth</string>
+    <string name="android10_applaunch_issue_description">Android 10 restringhe cumme sas apps podent essere lantzàdas dae su background. Pro permìttere de abèrrere apps cando unu dispositivu Bluetooth si connèttet, contzèddi su permissu &quot;Amostra subra àteras apps&quot; (SYSTEM_ALERT_WINDOW).</string>
+    <string name="label_opensource">Còdighe sorgente</string>
+    <string name="android13_notification_permission_description">Contzèddi a s\'app su permissu de publicare notìfigas. Custu permìttit de amostare una notìfica cando s\'app est ativa e sunt fachèndende aggiustamentos de volume.</string>
+    <string name="privacy_policy_label">Política de privatesa</string>
+    <string name="managed_devices_empty_message">Nessun dispositivu Bluetooth configuràdu.\nToca su butone + pro aggiunghere su primu dispositivu tuo.</string>
+
+    <string name="battery_optimization_hint_title">Ottimizatzione de bateria</string>
+    <string name="battery_optimization_hint_message">Sas ottimizatziones de bateria sunt abilitàdas e podent prevènnere su funtzionamentu currètu. Cunsìdera de disabilitarelas.</string>
+    <string name="battery_optimization_fix_action">Disabilita sas ottimizatziones</string>
+    <string name="android10_applaunch_hint_title">Permissu de làntziu de s\'app</string>
+    <string name="android10_applaunch_hint_message">Android 10 richièdet unu permissu spetziale pro lantzare apps o amostare sa schermata printzipale dae su background. Contzèddi su permissu &quot;Amostra subra àteras apps&quot;.</string>
+    <string name="notification_permission_hint_title">Permissu de notìfigas</string>
+    <string name="notification_permission_hint_message">Contzèddi su permissu de notìfigas pro vìdere aggiornamentos de istadu cando si aggiùstant sos volumes.</string>
+
+    <!-- IAP Error Messages -->
+    <string name="error_iap_cancelled_message">Acchìstu annullàdu</string>
+    <string name="error_iap_unavailable_message">Sos acchìstos in-app non sunt disponìbbiles</string>
+    <string name="error_generic_message">Si est verificàdu unu errore. Prova de nou.</string>
+    <string name="error_iap_owned_message">Possèdis già custu elementu</string>
+
+    <string name="label_no_devices_title">Nessun dispositivu</string>
+    <string name="bluemusic_mascot_description">Icona de s\'app</string>
+
+    <!-- App Selection -->
+    <string name="devices_app_selection_title">Selètziona Apps</string>
+    <string name="devices_app_selection_search_hint">Cerca apps…</string>
+    <string name="devices_app_selection_currently_selected">Attualmènte seletziòndas</string>
+    <string name="devices_app_selection_selected_count">%d apps seletziòndas</string>
+
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">Bloccu</string>
+    <string name="devices_indicator_awake">In veglia</string>
+    <string name="devices_indicator_nudge">Impùlsa</string>
+    <string name="devices_indicator_observe">Osserva</string>
+    <string name="devices_indicator_disconnect">Disconnètti</string>
+    <string name="devices_indicator_limit">Limita</string>
+    <string name="devices_indicator_launch">Làntzia</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Home</string>
+    <string name="devices_indicator_dnd">SND</string>
 </resources>

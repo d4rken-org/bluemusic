@@ -265,4 +265,28 @@
     <string name="connection_alert_type_vibration">Csak rezges</string>
     <string name="connection_alert_type_both">Hang es rezges</string>
     <string name="devices_indicator_alert">Ertesites</string>
+
+    <!-- Missing strings -->
+    <string name="devices_device_config_show_home_screen_label">Főképernyő megjelenítése</string>
+    <string name="devices_device_config_show_home_screen_desc">Az összes esemény feldolgozása után megpróbálja megjeleníteni a főképernyőt. Ez nem feltétlenül működik minden Android verzión.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Hangerő mentése lecsatlakozáskor</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Rögzíti és menti az aktuális hangerőszinteket, amikor az eszköz lecsatlakozik.</string>
+    <string name="devices_device_config_dnd_on_connect_label">Ne zavarj mód</string>
+    <string name="dnd_mode_dialog_title">Ne zavarj mód kiválasztása</string>
+    <string name="dnd_mode_dont_change">Ne változtass</string>
+    <string name="dnd_mode_off">Ki</string>
+    <string name="dnd_mode_priority_only">Csak prioritás</string>
+    <string name="dnd_mode_alarms_only">Csak ébresztők</string>
+    <string name="dnd_mode_total_silence">Teljes csend</string>
+    <string name="devices_device_config_notification_policy_required_dnd">A Ne zavarj vezérlés értesítési házirend hozzáférést igényel</string>
+    <string name="devices_indicator_lock">Zárolás</string>
+    <string name="devices_indicator_awake">Ébren</string>
+    <string name="devices_indicator_nudge">Megbökés</string>
+    <string name="devices_indicator_observe">Megfigyelés</string>
+    <string name="devices_indicator_disconnect">Lecsatlakozás</string>
+    <string name="devices_indicator_limit">Korlát</string>
+    <string name="devices_indicator_launch">Indítás</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Home</string>
+    <string name="devices_indicator_dnd">NZ</string>
 </resources>

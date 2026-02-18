@@ -40,7 +40,7 @@
     <string name="devices_device_config_rename_device_label">디바이스 이름 변경</string>
     <string name="devices_device_config_rename_device_desc">이 앱 내에서, 그리고 가능하다면 시스템에서도 이 디바이스의 이름을 변경합니다.</string>
     <string name="devices_device_config_rename_device_action">이름 변경</string>
-    <string name="devices_device_config_section_timing_label">Timing</string>
+    <string name="devices_device_config_section_timing_label">타이밍</string>
     <string name="devices_device_config_monitoring_duration_label">관측 기간</string>
     <string name="devices_device_config_monitoring_duration_desc">시간은 밀리초 단위입니다. 음량이 조절된 이후 음량 변경을 차단하는 시간 간격을 설정합니다.</string>
     <string name="devices_device_config_adjustment_delay_label">조절 지연</string>
@@ -76,7 +76,7 @@
     <string name="devices_device_config_autoplay_keycodes_order">선택된 키 (순서대로)</string>
     <string name="devices_device_config_autoplay_keycodes_title">자동 재생 키 유형</string>
     <string name="devices_device_config_section_volumes_label">볼륨</string>
-    <string name="devices_device_config_section_volume_label">Volume</string>
+    <string name="devices_device_config_section_volume_label">음량</string>
     <string name="devices_device_config_alarm_volume_label">알람 음량</string>
     <string name="devices_device_config_alarm_volume_desc">일부 알람 앱은 음악 음량을 사용합니다.</string>
     <string name="devices_device_config_notification_volume_label">알림 볼륨</string>
@@ -257,6 +257,28 @@
     <string name="error_iap_owned_message">이미 이 항목을 소유하고 있습니다</string>
     <string name="label_no_devices_title">디바이스 없음</string>
     <string name="bluemusic_mascot_description">앱 아이콘</string>
+    <string name="devices_device_config_show_home_screen_label">홈 화면 표시</string>
+    <string name="devices_device_config_show_home_screen_desc">이 기기의 모든 이벤트가 처리된 후 홈 화면을 표시하려 시도합니다. 모든 Android 버전에서 작동하지 않을 수 있습니다.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">연결 해제 시 음량 저장</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">이 기기가 연결 해제될 때 현재 음량 수준을 캡처하여 저장합니다.</string>
+    <string name="devices_device_config_notification_policy_required_dnd">방해 금지 제어에는 알림 정책 액세스 권한이 필요합니다</string>
+    <string name="devices_device_config_dnd_on_connect_label">방해 금지 모드</string>
+    <string name="dnd_mode_dialog_title">DND 모드 선택</string>
+    <string name="dnd_mode_dont_change">변경 안 함</string>
+    <string name="dnd_mode_off">끄기</string>
+    <string name="dnd_mode_priority_only">우선순위만</string>
+    <string name="dnd_mode_alarms_only">알람만</string>
+    <string name="dnd_mode_total_silence">완전 무음</string>
+    <string name="devices_indicator_lock">잠금</string>
+    <string name="devices_indicator_awake">깨어있음</string>
+    <string name="devices_indicator_nudge">너징</string>
+    <string name="devices_indicator_observe">관찰</string>
+    <string name="devices_indicator_disconnect">연결 해제</string>
+    <string name="devices_indicator_limit">제한</string>
+    <string name="devices_indicator_launch">실행</string>
+    <string name="devices_indicator_auto">자동</string>
+    <string name="devices_indicator_home">홈</string>
+    <string name="devices_indicator_dnd">DND</string>
     <!-- Connection alert -->
     <string name="devices_device_config_connection_alert_label">연결 알림</string>
     <string name="connection_alert_dialog_title">연결 알림</string>

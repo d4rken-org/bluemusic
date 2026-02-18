@@ -75,7 +75,7 @@
     <string name="devices_app_selection_title">Chọn ứng dụng</string>
     <string name="devices_device_config_autoplay_desc">Mô phỏng cách nhấn phát trên một remote bluetooth khi kết nối thiết bị này.</string>
     <string name="devices_device_config_section_volumes_label">Âm lượng</string>
-    <string name="devices_device_config_section_volume_label">Volume</string>
+    <string name="devices_device_config_section_volume_label">Âm lượng</string>
     <string name="devices_device_config_alarm_volume_label">Âm lượng báo thức</string>
     <string name="devices_device_config_alarm_volume_desc">Một số ứng dụng báo thức sử dụng âm lượng nhạc để thay thế.</string>
     <string name="devices_device_config_notification_volume_label">Âm lượng thông báo</string>
@@ -266,4 +266,26 @@
     <string name="connection_alert_type_vibration">Chỉ rung</string>
     <string name="connection_alert_type_both">Âm thanh và rung</string>
     <string name="devices_indicator_alert">Cảnh báo</string>
+    <string name="devices_indicator_lock">Khóa</string>
+    <string name="devices_indicator_awake">Thức</string>
+    <string name="devices_indicator_nudge">Khích</string>
+    <string name="devices_indicator_observe">Quan sát</string>
+    <string name="devices_indicator_disconnect">Ngắt kết nối</string>
+    <string name="devices_indicator_limit">Giới hạn</string>
+    <string name="devices_indicator_launch">Mở</string>
+    <string name="devices_indicator_auto">Tự động</string>
+    <string name="devices_indicator_home">Màn hình chính</string>
+    <string name="devices_indicator_dnd">KTR</string>
+    <string name="devices_device_config_dnd_on_connect_label">Chế độ Không làm phiền</string>
+    <string name="dnd_mode_dialog_title">Chọn chế độ Không làm phiền</string>
+    <string name="dnd_mode_dont_change">Không thay đổi</string>
+    <string name="dnd_mode_off">Tắt</string>
+    <string name="dnd_mode_priority_only">Chỉ ưu tiên</string>
+    <string name="dnd_mode_alarms_only">Chỉ báo thức</string>
+    <string name="dnd_mode_total_silence">Im lặng hoàn toàn</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Điều khiển Không làm phiền cần quyền truy cập chính sách thông báo</string>
+    <string name="devices_device_config_show_home_screen_label">Hiển thị màn hình chính</string>
+    <string name="devices_device_config_show_home_screen_desc">Sau khi xử lý tất cả sự kiện cho thiết bị này, thử hiển thị màn hình chính. Có thể không hoạt động trên tất cả phiên bản Android.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Lưu âm lượng khi ngắt kết nối</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Chụp và lưu mức âm lượng hiện tại khi thiết bị này ngắt kết nối.</string>
 </resources>

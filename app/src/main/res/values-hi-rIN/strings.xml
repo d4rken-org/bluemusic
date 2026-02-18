@@ -265,4 +265,26 @@
     <string name="connection_alert_type_vibration">केवल कंपन</string>
     <string name="connection_alert_type_both">ध्वनि और कंपन</string>
     <string name="devices_indicator_alert">अलर्ट</string>
+    <string name="devices_indicator_lock">लॉक</string>
+    <string name="devices_indicator_awake">जागृत</string>
+    <string name="devices_indicator_nudge">धक्का</string>
+    <string name="devices_indicator_observe">निरीक्षण</string>
+    <string name="devices_indicator_disconnect">डिस्कनेक्ट</string>
+    <string name="devices_indicator_limit">सीमा</string>
+    <string name="devices_indicator_launch">लॉन्च</string>
+    <string name="devices_indicator_auto">ऑटो</string>
+    <string name="devices_indicator_home">होम</string>
+    <string name="devices_indicator_dnd">परेशान न करें</string>
+    <string name="devices_device_config_dnd_on_connect_label">परेशान न करें मोड</string>
+    <string name="dnd_mode_dialog_title">परेशान न करें मोड चुनें</string>
+    <string name="dnd_mode_dont_change">न बदलें</string>
+    <string name="dnd_mode_off">बंद</string>
+    <string name="dnd_mode_priority_only">केवल प्राथमिकता</string>
+    <string name="dnd_mode_alarms_only">केवल अलार्म</string>
+    <string name="dnd_mode_total_silence">पूर्ण मौन</string>
+    <string name="devices_device_config_notification_policy_required_dnd">परेशान न करें नियंत्रण के लिए नोटिफिकेशन पॉलिसी एक्सेस की आवश्यकता</string>
+    <string name="devices_device_config_show_home_screen_label">होम स्क्रीन दिखाएं</string>
+    <string name="devices_device_config_show_home_screen_desc">इस डिवाइस के सभी इवेंट प्रोसेस होने के बाद, होम स्क्रीन दिखाने की कोशिश करें। यह सभी Android वर्जन पर काम नहीं कर सकता।</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">डिस्कनेक्ट पर वॉल्यूम सेव करें</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">इस डिवाइस के डिस्कनेक्ट होने पर वर्तमान वॉल्यूम स्तर कैप्चर करें और सेव करें।</string>
 </resources>

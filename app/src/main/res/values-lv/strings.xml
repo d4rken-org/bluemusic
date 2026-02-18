@@ -265,4 +265,28 @@
     <string name="connection_alert_type_vibration">Tikai vibrācija</string>
     <string name="connection_alert_type_both">Skaņa un vibrācija</string>
     <string name="devices_indicator_alert">Brīdinājums</string>
+
+    <!-- Missing strings -->
+    <string name="devices_device_config_show_home_screen_label">Rādīt sākumekrānu</string>
+    <string name="devices_device_config_show_home_screen_desc">Pēc visu notikumu apstrādes šai ierīcei, mēģināt parādīt sākumekrānu. Tas var nedarboties visās Android versijās.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Saglabāt skaļumu atvienojot</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Uztvert un saglabāt pašreizējos skaļuma līmeņus, kad šī ierīce atvienojas.</string>
+    <string name="devices_device_config_dnd_on_connect_label">Netraucēt režīms</string>
+    <string name="dnd_mode_dialog_title">Izvēlēties NT režīmu</string>
+    <string name="dnd_mode_dont_change">Nemainīt</string>
+    <string name="dnd_mode_off">Izslēgts</string>
+    <string name="dnd_mode_priority_only">Tikai prioritāte</string>
+    <string name="dnd_mode_alarms_only">Tikai modinātāji</string>
+    <string name="dnd_mode_total_silence">Pilnīgs klusums</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Netraucēt kontrolei nepieciešama paziņojumu politikas piekļuve</string>
+    <string name="devices_indicator_lock">Slēdzene</string>
+    <string name="devices_indicator_awake">Nomodā</string>
+    <string name="devices_indicator_nudge">Grūdiens</string>
+    <string name="devices_indicator_observe">Vērot</string>
+    <string name="devices_indicator_disconnect">Atvienot</string>
+    <string name="devices_indicator_limit">Limits</string>
+    <string name="devices_indicator_launch">Palaist</string>
+    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_home">Sākums</string>
+    <string name="devices_indicator_dnd">NT</string>
 </resources>

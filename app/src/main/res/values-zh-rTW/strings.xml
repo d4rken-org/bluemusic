@@ -265,4 +265,28 @@
     <string name="connection_alert_type_vibration">僅震動</string>
     <string name="connection_alert_type_both">聲音和震動</string>
     <string name="devices_indicator_alert">提醒</string>
+
+    <!-- Missing strings -->
+    <string name="devices_device_config_show_home_screen_label">顯示主畫面</string>
+    <string name="devices_device_config_show_home_screen_desc">在所有事件為此裝置處理完畢後，嘗試顯示主畫面。這在某些 Android 版本上可能無效。</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">斷線時儲存音量</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">當此裝置斷線時，捕捉並儲存目前的音量設定。</string>
+    <string name="devices_device_config_dnd_on_connect_label">勿擾模式</string>
+    <string name="dnd_mode_dialog_title">選擇勿擾模式</string>
+    <string name="dnd_mode_dont_change">不更改</string>
+    <string name="dnd_mode_off">關閉</string>
+    <string name="dnd_mode_priority_only">僅優先</string>
+    <string name="dnd_mode_alarms_only">僅鬧鐘</string>
+    <string name="dnd_mode_total_silence">完全靜音</string>
+    <string name="devices_device_config_notification_policy_required_dnd">勿擾模式控制需要通知政策存取權限</string>
+    <string name="devices_indicator_lock">鎖定</string>
+    <string name="devices_indicator_awake">喚醒</string>
+    <string name="devices_indicator_nudge">輕推</string>
+    <string name="devices_indicator_observe">觀察</string>
+    <string name="devices_indicator_disconnect">斷線</string>
+    <string name="devices_indicator_limit">限制</string>
+    <string name="devices_indicator_launch">啟動</string>
+    <string name="devices_indicator_auto">自動</string>
+    <string name="devices_indicator_home">主頁</string>
+    <string name="devices_indicator_dnd">勿擾</string>
 </resources>
