@@ -2,7 +2,8 @@
 
 # Bluetooth Volume Manager
 
-[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=19)
+[![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/d4rken-org/bluemusic?include_prereleases)](https://github.com/d4rken-org/capod/releases/latest)
+[![RB Status](https://shields.rbtlog.dev/simple/eu.darken.bluemusic)](https://shields.rbtlog.dev/eu.darken.bluemusic)
 [![Code tests & eval](https://img.shields.io/github/actions/workflow/status/d4rken-org/bluemusic/code-checks.yml?logo=githubactions&label=Code%20tests
 )](https://github.com/d4rken-org/bluemusic/actions)
 [![Github Downloads](https://img.shields.io/github/downloads/d4rken-org/bluemusic/total.svg?label=GitHub%20Downloads&logo=github)](https://github.com/d4rken-org/bluemusic/main/README.md#download)
