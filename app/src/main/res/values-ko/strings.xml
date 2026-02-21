@@ -278,7 +278,7 @@
     <string name="devices_indicator_launch">실행</string>
     <string name="devices_indicator_auto">자동</string>
     <string name="devices_indicator_home">홈</string>
-    <string name="devices_indicator_dnd">DND</string>
+    <string name="devices_indicator_dnd">방해금지</string>
     <!-- Connection alert -->
     <string name="devices_device_config_connection_alert_label">연결 알림</string>
     <string name="connection_alert_dialog_title">연결 알림</string>

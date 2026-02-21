@@ -60,7 +60,7 @@
     <string name="devices_device_config_autoplay_label">Automain</string>
     <string name="devices_device_config_autoplay_desc">Menekan main disimulasikan pada kawalan jauh Bluetooth bila peranti ini terhubung.</string>
     <string name="devices_device_config_section_volumes_label">Volum</string>
-    <string name="devices_device_config_section_volume_label">Volume</string>
+    <string name="devices_device_config_section_volume_label">Volum</string>
     <string name="devices_device_config_alarm_volume_label">Volum penggera</string>
     <string name="devices_device_config_alarm_volume_desc">Sebahagian apl penggera sebaliknya menggunakan volum muzik.</string>
     <string name="devices_device_config_notification_volume_label">Volum notifikasi</string>
@@ -136,7 +136,7 @@
     <string name="settings_acks_thanks_header">Terima kasih</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Kerana menyokong terjemahan projek sumber terbuka</string>
-    <string name="settings_licenses_label">Licenses</string>
+    <string name="settings_licenses_label">Lesen</string>
     <string name="settings_sponsor_development_title">Sponsor pembangunan</string>
     <string name="settings_sponsor_development_summary">Jadi penyokong dan menjadikan pembangunan berterusan mungkin.</string>
     <string name="settings_privacy_policy_label">Dasar privasi</string>
@@ -159,7 +159,7 @@
     <string name="description_bug_reports">Pelaporan pepijat dan kecelaruan automatik.</string>
     <string name="label_add_device">Tambah peranti</string>
     <string name="label_just_a_moment_please">Sila tunggu sebentar.</string>
-    <string name="label_notification_channel_status">Status</string>
+    <string name="label_notification_channel_status">Status Semasa</string>
     <string name="action_set">Tetapkan</string>
     <string name="action_cancel">Batal</string>
     <string name="label_invalid_input">Input tidak sah</string>
@@ -217,7 +217,7 @@
     <string name="battery_optimizations_issue_description">Pengoptimuman bateri boleh didayakan bagi apl ini dan dapat mencegahnya dari menerima aktiviti Bluetooth. Pertimbang untuk nyahdayakan pengoptimuman jika anda mengalami isu.</string>
     <string name="label_bluetooth_settings">Tetapan bluetooth</string>
     <string name="android10_applaunch_issue_description">Android 10 mengawal bagaimana apl boleh dilancarkan dari latar belakang. Bagi membolehkan apl dibuka bila peranti Bluetooth bersambung, berikan kebenaran \&quot;Paparan ke atas apl lain\&quot; (SISTEM_WASPADA_TETINGKAP).</string>
-    <string name="label_opensource">Source code</string>
+    <string name="label_opensource">Kod sumber</string>
     <string name="android13_notification_permission_description">Beri apl ini kebenaran untuk hantar pemberitahuan. Ini membolehkan memaparkan pemberitahuan apabila apl ini aktif dan pelarasan volum sedang dibuat.</string>
     <string name="privacy_policy_label">Dasar privasi</string>
     <string name="managed_devices_empty_message">Tiada peranti Bluetooth dikonfigurasi.\nKetik butang + untuk tambah peranti pertama anda.</string>
@@ -276,7 +276,7 @@
     <string name="devices_indicator_disconnect">Putus</string>
     <string name="devices_indicator_limit">Had</string>
     <string name="devices_indicator_launch">Lancar</string>
-    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_auto">Automatik</string>
     <string name="devices_indicator_home">Utama</string>
     <string name="devices_indicator_dnd">JG</string>
     <!-- Connection alert -->

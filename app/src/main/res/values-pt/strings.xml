@@ -36,7 +36,7 @@
     <string name="devices_device_config_rename_device_label">Renomear dispositivo</string>
     <string name="devices_device_config_rename_device_desc">Renomeia este dispositivo dentro desta aplicação e, se possível, dentro do sistema.</string>
     <string name="devices_device_config_rename_device_action">Renomear</string>
-    <string name="devices_device_config_section_timing_label">Timing</string>
+    <string name="devices_device_config_section_timing_label">Temporização</string>
     <string name="devices_device_config_monitoring_duration_label">Duração da monitorização</string>
     <string name="devices_device_config_monitoring_duration_desc">Uma duração em milissegundos, após os ajustes terem sido feitos, durante a qual quaisquer alterações de volume adicionais serão bloqueadas.</string>
     <string name="devices_device_config_adjustment_delay_label">Atraso de ajustes</string>
@@ -47,17 +47,22 @@
     <string name="devices_device_config_launch_app_label">Iniciar aplicação</string>
     <string name="devices_device_config_launch_app_desc">Inicia uma aplicação quando este dispositivo é conectado.</string>
     <string name="devices_device_config_launch_app_multiple_desc">%d aplicações selecionadas</string>
+    <string name="devices_device_config_show_home_screen_label">Mostrar ecrã principal</string>
+    <string name="devices_device_config_show_home_screen_desc">Após todos os eventos serem processados para este dispositivo, tenta mostrar o ecrã principal. Isto pode não funcionar em todas as versões do Android.</string>
     <string name="devices_device_config_nudge_volume_label">Empurrar volume</string>
     <string name="devices_device_config_nudge_volume_description">Baixa e depois sobe o volume num incremento, mesmo que o volume desejado já esteja definido (segundo o sistema).</string>
     <string name="devices_device_config_notification_policy_action">Conceder acesso</string>
     <string name="devices_device_config_notification_policy_required_notification">O controlo do volume de notificações requer acesso à política de notificações</string>
     <string name="devices_device_config_notification_policy_required_ringtone">O controlo do volume de toque requer acesso à política de notificações</string>
+    <string name="devices_device_config_notification_policy_required_dnd">O controlo do Não Incomodar requer acesso à política de notificações</string>
     <string name="devices_device_config_visible_adjustments_desc">Alterna que ajustes são mostrados no cartão do dispositivo</string>
     <string name="devices_device_config_visible_adjustments_label">Ajustes visíveis</string>
     <string name="devices_device_config_keep_awake_label">Manter acordado</string>
     <string name="devices_device_config_keep_awake_desc">Mantém o ecrã ligado enquanto este dispositivo está conectado.</string>
     <string name="devices_device_config_volume_observe_label">Observar alterações</string>
     <string name="devices_device_config_volume_observe_desc">Mantém-se ativo enquanto este dispositivo está conectado e guarda alterações de volume que não tenham sido causadas por esta aplicação.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Guardar volume ao desligar</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Captura e guarda os níveis de volume atuais quando este dispositivo se desliga.</string>
     <string name="devices_device_config_volume_lock_label">Bloqueio de volume</string>
     <string name="devices_device_config_volume_lock_desc">Quaisquer alterações de volume não feitas através desta aplicação serão revertidas enquanto este dispositivo estiver conectado.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitador de taxa de volume</string>
@@ -74,8 +79,8 @@
     <string name="devices_device_config_autoplay_keycodes_none_set">Nenhuma tecla configurada</string>
     <string name="devices_device_config_autoplay_keycodes_order">Teclas selecionadas (por ordem)</string>
     <string name="devices_device_config_autoplay_keycodes_title">Tipos de Teclas de Reprodução Automática</string>
-    <string name="devices_device_config_section_volumes_label">Volumes</string>
-    <string name="devices_device_config_section_volume_label">Volume</string>
+    <string name="devices_device_config_section_volumes_label">Volumes de som</string>
+    <string name="devices_device_config_section_volume_label">Volume de som</string>
     <string name="devices_device_config_alarm_volume_label">Volume de alarmes</string>
     <string name="devices_device_config_alarm_volume_desc">Algumas aplicações de alarme usam o volume da música em vez deste.</string>
     <string name="devices_device_config_notification_volume_label">Volume das notificações</string>
@@ -275,9 +280,9 @@
     <string name="devices_indicator_disconnect">Desconectar</string>
     <string name="devices_indicator_limit">Limite</string>
     <string name="devices_indicator_launch">Iniciar</string>
-    <string name="devices_indicator_auto">Auto</string>
+    <string name="devices_indicator_auto">Automático</string>
     <string name="devices_indicator_home">Início</string>
-    <string name="devices_indicator_dnd">DND</string>
+    <string name="devices_indicator_dnd">NI</string>
 
     <!-- Connection alert -->
     <string name="devices_device_config_connection_alert_label">Alerta de ligacao</string>

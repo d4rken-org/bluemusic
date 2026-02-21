@@ -188,8 +188,8 @@
     <string name="description_premium_required_this_extra_option">Dette ekstra alternativet krever premiumversjonen av denne appen.</string>
     <string name="description_premium_upgrade_explanation">Få premiumversjonen for å aktivere tilleggsfunksjoner og støtte utviklingen.</string>
     <string name="label_premium_version_required">Premiumversjon krevet</string>
-    <string name="upgrade_feature_requires_pro">This feature requires the premium version</string>
-    <string name="upgrade_prompt_upgrade_action">Upgrade</string>
+    <string name="upgrade_feature_requires_pro">Denne funksjonen krever premiumversjonen</string>
+    <string name="upgrade_prompt_upgrade_action">Oppgrader</string>
     <string name="description_intro_purpose">Denne appen lar din Android-enhet huske volumet av forskjellige Bluetooth enheter.</string>
     <string name="description_intro_premium">Hvis du liker denne appen, vurder å oppgradere til premiumversjonen. Det støtter utviklingen og gir deg noen ekstra funksjoner.</string>
     <string name="description_intro_tap_the_button">Start ved å legge til din første enhet.</string>

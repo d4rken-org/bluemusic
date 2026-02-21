@@ -49,7 +49,7 @@
     <string name="devices_device_config_launch_app_multiple_desc">%d app selezionate</string>
     <string name="devices_device_config_show_home_screen_label">Mostra schermata home</string>
     <string name="devices_device_config_show_home_screen_desc">Dopo che tutti gli eventi per questo dispositivo sono elaborati, prova a mostrare la schermata home. Potrebbe non funzionare su tutte le versioni di Android.</string>
-    <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
+    <string name="devices_device_config_nudge_volume_label">Regola volume</string>
     <string name="devices_device_config_nudge_volume_description">Abbassa e poi alza il volume di un incremento, anche se il volume desiderato è già impostato (secondo il sistema).</string>
     <string name="devices_device_config_visible_adjustments_label">Regolazioni visibili</string>
     <string name="devices_device_config_visible_adjustments_desc">Mostra la finestra del volume del sistema mentre questa app effettua regolazioni per questo dispositivo.</string>
@@ -156,10 +156,10 @@
     <string name="settings_acks_thanks_header">Ringraziamenti</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Per supportare la traduzione di progetti open-source</string>
-    <string name="settings_licenses_label">Licenses</string>
+    <string name="settings_licenses_label">Licenze</string>
     <string name="settings_sponsor_development_title">Sponsorizza lo sviluppo</string>
     <string name="settings_sponsor_development_summary">Diventa un mecenate e rendi possibile lo sviluppo continuo.</string>
-    <string name="settings_privacy_policy_label">Privacy policy</string>
+    <string name="settings_privacy_policy_label">Informativa sulla privacy</string>
     <string name="settings_privacy_policy_desc">Gestire i dati responsabilmente.</string>
     <string name="changelog_label">Registro modifiche</string>
     <string name="debug_notification_channel_label">Notifiche debug</string>
@@ -213,7 +213,7 @@
     <string name="description_help_translate">Aiutami a rendere quest\'app disponibile in altre lingue.</string>
     <string name="label_device_speaker">Altoparlante del dispositivo</string>
     <string name="label_keyevent_playpause">Riproduci-Metti in pausa</string>
-    <string name="label_keyevent_play">Play</string>
+    <string name="label_keyevent_play">Riproduci</string>
     <string name="label_keyevent_next">Avanti</string>
     <string name="label_install_id">Installa ID</string>
     <string name="message_copied_to_clipboard">Copiato negli appunti</string>
@@ -236,10 +236,10 @@
     <string name="action_fix">Correggi</string>
     <string name="battery_optimizations_issue_description">Le ottimizzazioni della batteria sono attivate per quest\'app e questo potrebbe impedire la ricezione degli eventi Bluetooth. Prova a disattivare le ottimizzazioni se riscontri problemi.</string>
     <string name="label_bluetooth_settings">Impostazioni Bluetooth</string>
-    <string name="android10_applaunch_issue_description">Android 10 restricts how apps can be launched from the background. To allow opening apps when a Bluetooth device connects, grant the permission &quot;Display over other apps&quot; (SYSTEM_ALERT_WINDOW).</string>
+    <string name="android10_applaunch_issue_description">Android 10 limita il modo in cui le app possono essere avviate in background. Per consentire l\'apertura di app quando un dispositivo Bluetooth si connette, concedi il permesso &quot;Visualizza sopra altre app&quot; (SYSTEM_ALERT_WINDOW).</string>
     <string name="label_opensource">Codice sorgente</string>
     <string name="android13_notification_permission_description">Concedi a questa app il permesso di pubblicare notifiche. Questo abilita la visualizzazione di una notifica quando l\'app è attiva e vengono fatte regolazioni del volume.</string>
-    <string name="privacy_policy_label">Privacy policy</string>
+    <string name="privacy_policy_label">Informativa sulla privacy</string>
     <string name="managed_devices_empty_message">Nessun dispositivo Bluetooth configurato.\nTocca il pulsante + per aggiungere il tuo primo dispositivo.</string>
     <string name="general_delete_action">Elimina</string>
     <string name="general_navigate_back_action">Torna indietro</string>

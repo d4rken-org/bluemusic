@@ -72,7 +72,7 @@
     <string name="devices_device_config_autoplay_keycodes_title">Autoplay toetstypen</string>
     <string name="devices_device_config_section_volumes_label">Volumes</string>
     <string name="devices_device_config_section_volume_label">Volume</string>
-    <string name="devices_device_config_alarm_volume_label">Alarm volume</string>
+    <string name="devices_device_config_alarm_volume_label">Alarmvolume</string>
     <string name="devices_device_config_alarm_volume_desc">Sommige alarm-apps gebruiken in plaats daarvan het muziekvolume.</string>
     <string name="devices_device_config_notification_volume_label">Meldingsvolume</string>
     <string name="devices_device_config_notification_volume_desc">Niet alle apparaten ondersteunen een aparte volume instelling.</string>
@@ -181,7 +181,7 @@
     <string name="action_set">Stel in</string>
     <string name="action_cancel">Annuleren</string>
     <string name="label_invalid_input">Ongeldige invoer</string>
-    <string name="action_reset">Reset</string>
+    <string name="action_reset">Opnieuw instellen</string>
     <string name="label_no_connected_devices">Geen apparaten verbonden</string>
     <string name="label_status_idle">Inactief</string>
     <string name="label_status_adjusting_volumes">Aanpassen volumes</string>
@@ -204,7 +204,7 @@
     <string name="action_grant_permission">Toestemming Verlenen</string>
     <string name="label_status_listening_for_changes">Luisteren voor veranderingen in volume</string>
     <string name="action_exit">Verlaten</string>
-    <string name="action_start">Start</string>
+    <string name="action_start">Starten</string>
     <string name="label_welcome">Welkom</string>
     <string name="description_intro_contact">Aarzel niet om me te contacteren als u vragen of zelfs een idee voor een nieuwe functie hebt.</string>
     <string name="label_translation">Vertaling</string>
@@ -276,7 +276,7 @@
     <string name="devices_indicator_limit">Lim</string>
     <string name="devices_indicator_launch">Start</string>
     <string name="devices_indicator_auto">Auto</string>
-    <string name="devices_indicator_home">Home</string>
+    <string name="devices_indicator_home">Thuis</string>
     <string name="devices_indicator_dnd">NS</string>
 
     <!-- Connection alert -->

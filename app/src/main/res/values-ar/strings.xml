@@ -34,7 +34,7 @@
     <string name="devices_device_config_rename_device_action">إعادة تسمية</string>
     <string name="devices_device_config_section_timing_label">التوقيت</string>
     <string name="devices_device_config_monitoring_duration_label">مدة المراقبة</string>
-    <string name="devices_device_config_monitoring_duration_desc">A duration in milliseconds, after adjustments have been made, during which any further volume changes will be blocked.</string>
+    <string name="devices_device_config_monitoring_duration_desc">مدة بالملي ثانية، بعد إجراء التعديلات، يتم خلالها حظر أي تغييرات إضافية في مستوى الصوت.</string>
     <string name="devices_device_config_adjustment_delay_label">تأخير الاعدادات</string>
     <string name="devices_device_config_adjustment_delay_desc">التأخير بالملي ثانية بين كل ضبط لحجم الصوت. تأخير 0ms يعني الإعداد الفوري للصوت عندما يتصل هذا الجهاز.</string>
     <string name="devices_app_selection_currently_selected">المحدد حالياً</string>
@@ -59,7 +59,7 @@
     <string name="devices_device_config_volume_observe_label">مراقبة التغييرات</string>
     <string name="devices_device_config_volume_observe_desc">ابق نشطاً بينما هذا الجهاز متصل واحفظ تغييرات الصوت التي لم يسببها هذا التطبيق.</string>
     <string name="devices_device_config_volume_lock_label">قفل الصوت</string>
-    <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
+    <string name="devices_device_config_volume_lock_desc">سيتم التراجع عن أي تغييرات في مستوى الصوت لم تُجرَ عبر هذا التطبيق أثناء اتصال هذا الجهاز.</string>
     <string name="devices_device_config_volume_rate_limiter_label">منظم معدل الصوت</string>
     <string name="devices_device_config_volume_rate_limiter_desc">تحديد تكرار تغييرات الصوت لمنع التعديلات السريعة أو المفرطة على الصوت.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">تأخير زيادة الصوت</string>
@@ -75,7 +75,7 @@
     <string name="devices_device_config_autoplay_keycodes_order">المفاتيح المحددة (بالترتيب)</string>
     <string name="devices_device_config_autoplay_keycodes_title">أنواع مفاتيح التشغيل التلقائي</string>
     <string name="devices_device_config_section_volumes_label">الأصوات</string>
-    <string name="devices_device_config_section_volume_label">Volume</string>
+    <string name="devices_device_config_section_volume_label">الصوت</string>
     <string name="devices_device_config_alarm_volume_label">مستوى صوت المنبّه</string>
     <string name="devices_device_config_alarm_volume_desc">بعض برامج المنبهات تستعيض بصوت الوسائط.</string>
     <string name="devices_device_config_notification_volume_label">صوت التنبيهات</string>
@@ -223,7 +223,7 @@
     <string name="action_undo">تراجع</string>
     <string name="action_show">إظهار</string>
     <string name="action_dismiss">تجاهل</string>
-    <string name="action_fix">Fix</string>
+    <string name="action_fix">إصلاح</string>
     <string name="battery_optimizations_issue_description">تحسينات استهلاك البطارية مفعلة لهذا التطبيق بإمكانها أن تمنع وصول أحداث البلوتوث. بإمكانك النظر في إلغاء هذه التحسينات اذا كنت تواجه مشاكل.</string>
     <string name="label_bluetooth_settings">إعدادات البلوتوث</string>
     <string name="general_navigate_back_action">العودة</string>

@@ -190,8 +190,8 @@
     <string name="description_premium_required_this_extra_option">לאפשרות נוספת זו נדרשת גרסת הפרימיום של האפליקציה.</string>
     <string name="description_premium_upgrade_explanation">השיגו את גרסת הפרימיום כדי לאפשר תכונות נוספות וכדי לתמוך בפיתוח.</string>
     <string name="label_premium_version_required">נדרשת גרסת פרימיום</string>
-    <string name="upgrade_feature_requires_pro">This feature requires the premium version</string>
-    <string name="upgrade_prompt_upgrade_action">Upgrade</string>
+    <string name="upgrade_feature_requires_pro">תכונה זו דורשת את גרסת הפרימיום</string>
+    <string name="upgrade_prompt_upgrade_action">שדרג</string>
     <string name="description_intro_purpose">אפליקציה זו מאפשרת למכשיר האנדרואיד שלכם לזכור רמות ווליום של מכשירי Bluetooth שונים.</string>
     <string name="description_intro_premium">אם אתם אוהבים את האפליקציה הזו, שקלו לשדרג לגרסת הפרימיום. היא תומכת בפיתוח ומאפשרת מספר תכונות נוספות.</string>
     <string name="description_intro_tap_the_button">התחילו על ידי הוספת המכשיר הראשון שלכם.</string>

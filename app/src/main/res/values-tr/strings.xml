@@ -36,7 +36,7 @@
     <string name="devices_device_config_rename_device_label">Cihazı yeniden adlandır</string>
     <string name="devices_device_config_rename_device_desc">Bu cihazı bu uygulama içinde ve mümkünse sistem içinde yeniden adlandır.</string>
     <string name="devices_device_config_rename_device_action">Yeniden Adlandır</string>
-    <string name="devices_device_config_section_timing_label">Timing</string>
+    <string name="devices_device_config_section_timing_label">Zamanlama</string>
     <string name="devices_device_config_monitoring_duration_label">İzleme süresi</string>
     <string name="devices_device_config_monitoring_duration_desc">Ayarlamalar yapıldıktan sonra, başka ses değişikliklerinin engelleneceği milisaniye cinsinden bir süre.</string>
     <string name="devices_device_config_adjustment_delay_label">Gecikmeyi ayarla</string>
@@ -51,19 +51,26 @@
     <string name="devices_device_config_launch_app_label">Uygulamayı başlat</string>
     <string name="devices_device_config_launch_app_desc">Bu cihaz bağlandığında uygulamayı başlat.</string>
     <string name="devices_device_config_launch_app_multiple_desc">%d uygulama seçildi</string>
+    <string name="devices_device_config_show_home_screen_label">Ana ekranı göster</string>
+    <string name="devices_device_config_show_home_screen_desc">Bu cihaz için tüm olaylar işlendikten sonra, ana ekranı göstermeye çalışır. Bu, tüm Android sürümlerinde çalışmayabilir.</string>
     <string name="devices_device_config_nudge_volume_label">Ses dürtme</string>
     <string name="devices_device_config_nudge_volume_description">İstenen ses seviyesi zaten ayarlı olsa bile (sisteme göre), ses seviyesini bir birim düşürüp sonra yükselt.</string>
     <string name="devices_device_config_notification_policy_action">Erişim ver</string>
     <string name="devices_device_config_notification_policy_required_notification">Bildirim ses kontrolü için bildirim politikası erişimi gerekli</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Zil ses kontrolü için bildirim politikası erişimi gerekli</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Rahatsız Etme kontrolü için bildirim politikası erişimi gerekli</string>
     <string name="devices_device_config_visible_adjustments_label">Görünür ayarlamalar</string>
     <string name="devices_device_config_visible_adjustments_desc">Cihaz kartında hangi ayarlamaların gösterileceğini seç</string>
     <string name="devices_device_config_keep_awake_label">Uyanık tut</string>
     <string name="devices_device_config_keep_awake_desc">Bu cihaz bağlıyken ekranı açık tutun.</string>
     <string name="devices_device_config_volume_observe_label">Değişiklikleri gözlemle</string>
     <string name="devices_device_config_volume_observe_desc">Bu cihaz bağlıyken aktif kal ve bu uygulamanın neden olmadığı ses değişikliklerini kaydet.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Bağlantı kesildiğinde sesi kaydet</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Bu cihaz bağlantısı kesildiğinde mevcut ses seviyelerini yakala ve kaydet.</string>
     <string name="devices_device_config_volume_lock_label">Ses kilidi</string>
     <string name="devices_device_config_volume_lock_desc">Bu uygulama üzerinden yapılmayan ses değişiklikleri bu cihaz bağlıyken geri döndürülecektir.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Ses hızı sınırlayıcı</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Hızlı veya aşırı ses ayarlamalarını önlemek için ses değişikliklerinin sıklığını sınırla.</string>
     <string name="devices_device_config_autoplay_label">Otomatik oynat</string>
     <string name="devices_device_config_autoplay_desc">Bu cihaz bağlandığında Bluetooth uzaktan kumandadaki basma oynatmasını simüle edin.</string>
     <string name="devices_device_config_autoplay_keycodes_available">Kullanılabilir tuş türleri</string>
@@ -88,7 +95,7 @@
     <string name="devices_audio_stream_call_label">Arama</string>
     <string name="devices_audio_stream_ring_label">Zil</string>
     <string name="devices_audio_stream_notification_label">Bildirim</string>
-    <string name="devices_audio_stream_alarm_label">Alarm</string>
+    <string name="devices_audio_stream_alarm_label">Alarm Sesi</string>
     <string name="label_speaker_autosave">Sesi otomatik kaydetme</string>
     <string name="description_speaker_autosave">Varsayılan seslerden sorumlu olan \&quot;Aygıt Hoparlörü\&quot; girişi, bir Bluetooth aygıtı bağlandığında kendini günceller. Not: Bu, tüm cihazlarda çalışmaz.</string>
     <string name="devices_neverseen_label">Hiç görülmedi</string>
@@ -275,7 +282,7 @@
     <string name="devices_indicator_launch">Başlat</string>
     <string name="devices_indicator_auto">Otomatik</string>
     <string name="devices_indicator_home">Ana sayfa</string>
-    <string name="devices_indicator_dnd">DND</string>
+    <string name="devices_indicator_dnd">RE</string>
     <!-- Connection alert -->
     <string name="devices_device_config_connection_alert_label">Bağlantı uyarısı</string>
     <string name="connection_alert_dialog_title">Bağlantı uyarısı</string>
