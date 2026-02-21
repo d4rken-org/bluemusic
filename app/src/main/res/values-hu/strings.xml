@@ -52,6 +52,7 @@
     <string name="devices_device_config_launch_app_multiple_desc">%d alkalmazás kiválasztva</string>
     <string name="devices_device_config_nudge_volume_label">Hangerő megbökése</string>
     <string name="devices_device_config_nudge_volume_description">Csökkenti majd növeli a hangerőt egy lépéssel, még akkor is, ha a kívánt hangerő már be van állítva (a rendszer szerint).</string>
+    <string name="devices_device_config_visible_adjustments_label">Látható beállítások</string>
     <string name="devices_device_config_notification_policy_action">Hozzáférés engedélyezése</string>
     <string name="devices_device_config_notification_policy_required_notification">Az értesítési hangerő szabályozása értesítési házirend hozzáférést igényel</string>
     <string name="devices_device_config_notification_policy_required_ringtone">A csengetési hangerő szabályozása értesítési házirend hozzáférést igényel</string>
@@ -71,7 +72,7 @@
     <string name="devices_device_config_autoplay_keycodes_order">Kiválasztott billentyűk (sorrendben)</string>
     <string name="devices_device_config_autoplay_keycodes_title">Automatikus lejátszás billentyűtípusok</string>
     <string name="devices_device_config_section_volumes_label">Hangerő</string>
-    <string name="devices_device_config_section_volume_label">Volume</string>
+    <string name="devices_device_config_section_volume_label">Hangerő</string>
     <string name="devices_device_config_alarm_volume_label">Ébresztő hangereje</string>
     <string name="devices_device_config_alarm_volume_desc">Néhány ébresztő alkalmazás a zene hangerőt használja helyette.</string>
     <string name="devices_device_config_notification_volume_label">Értesítési hangerő</string>
@@ -286,7 +287,7 @@
     <string name="devices_indicator_disconnect">Lecsatlakozás</string>
     <string name="devices_indicator_limit">Korlát</string>
     <string name="devices_indicator_launch">Indítás</string>
-    <string name="devices_indicator_auto">Auto</string>
-    <string name="devices_indicator_home">Home</string>
+    <string name="devices_indicator_auto">Automatikus</string>
+    <string name="devices_indicator_home">Főképernyő</string>
     <string name="devices_indicator_dnd">NZ</string>
 </resources>

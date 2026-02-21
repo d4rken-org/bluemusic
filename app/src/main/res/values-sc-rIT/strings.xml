@@ -101,8 +101,8 @@
     <string name="devices_device_config_autoplay_keycodes_desc">Configura cales tàstos mandare e in cale òrdine</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Nessun tàstu configuràdu</string>
 
-    <string name="devices_device_config_section_volumes_label">Volumes</string>
-    <string name="devices_device_config_section_volume_label">Volume</string>
+    <string name="devices_device_config_section_volumes_label">Volumes de sonu</string>
+    <string name="devices_device_config_section_volume_label">Volume de sonu</string>
     <string name="devices_device_config_alarm_volume_label">Volume de s\'alarma</string>
     <string name="devices_device_config_alarm_volume_desc">Calicuna app de alarma ùsat su volume de sa mùsica in su pòstu.</string>
     <string name="devices_device_config_notification_volume_label">Volume de notìfica</string>
@@ -260,7 +260,7 @@
     <string name="description_help_translate">Agiùdami a rèndere s\'app disponìbbile in àteras lìnguas.</string>
     <string name="label_device_speaker">Altoparlante de su dispositivu</string>
     <string name="label_keyevent_playpause">Play-Pausa</string>
-    <string name="label_keyevent_play">Play</string>
+    <string name="label_keyevent_play">Reprodutzet</string>
     <string name="label_keyevent_next">Sighènte</string>
     <string name="label_install_id">ID de installatzione</string>
     <string name="message_copied_to_clipboard">Copiàdu in su clipboard</string>
@@ -320,7 +320,7 @@
     <string name="devices_indicator_disconnect">Disconnètti</string>
     <string name="devices_indicator_limit">Limita</string>
     <string name="devices_indicator_launch">Làntzia</string>
-    <string name="devices_indicator_auto">Auto</string>
-    <string name="devices_indicator_home">Home</string>
+    <string name="devices_indicator_auto">Automàticu</string>
+    <string name="devices_indicator_home">Pantalla printzipale</string>
     <string name="devices_indicator_dnd">SND</string>
 </resources>

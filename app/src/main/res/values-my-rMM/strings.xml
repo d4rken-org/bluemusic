@@ -1,183 +1,106 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
-    <string name="general_error_label">Error</string>
-    <string name="general_error_no_compatible_app_found_msg">No compatible app found to handle this request.</string>
-    <string name="general_share_action">Share</string>
-    <string name="general_back_action">Back</string>
-    <string name="general_show_details_action">Show details</string>
-    <string name="onboarding_welcome_title">Welcome to BVM</string>
-    <string name="onboarding_welcome_message">Bluetooth Volume Manager allows you to manage Bluetooth device volumes automatically.</string>
-    <string name="onboarding_welcome_action">Let\'s go</string>
-    <string name="onboarding_beta_title">Beta version</string>
-    <string name="onboarding_beta_message">This is a beta (testing) build. Proceed with a sense of humor and a backup plan. Please report issues you encounter.</string>
-    <string name="onboarding_beta_action">I fear nothing</string>
-    <string name="onboarding_privacy_title">Privacy &amp; Data</string>
-    <string name="onboarding_privacy_message">Bluetooth Volume Manager has no advertisements and does not sell user data (it\'s even open-source). Your privacy is important to me.</string>
-    <string name="onboarding_privacy_read_action">Read Privacy Policy</string>
-    <string name="onboarding_privacy_action">Accept</string>
-    <string name="onboarding_rewrite_title">App Rewrite!</string>
-    <string name="onboarding_rewrite_message">I\'ve completely rebuilt Bluetooth Volume Manager from the ground up due to Android changes and Google requirements to ensure the app continues working reliably.</string>
-    <string name="onboarding_rewrite_features">Some device settings may have been reset during this update. Please check your device configurations.</string>
-    <string name="onboarding_rewrite_action">Continue</string>
-    <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
-    <string name="discover_all_devices_managed_msg">All your paired devices are managed! Need a new one?</string>
-    <string name="discover_pair_new_device_action">Pair new device</string>
-    <string name="devices_device_config_label">Device configuration</string>
-    <string name="devices_device_config_section_general_label">General</string>
-    <string name="devices_device_config_remove_device_label">Forget device</string>
-    <string name="devices_device_config_remove_device_desc">Forgets the device from this app and deletes its configuration. This does not unpair the device.</string>
-    <string name="devices_device_config_remove_device_action">Forget</string>
-    <string name="devices_device_config_remove_device_confirmation">Forget %s from managed devices?</string>
-    <string name="devices_device_config_rename_device_label">Rename device</string>
-    <string name="devices_device_config_rename_device_desc">Rename this device within this app, and if possible, within the system.</string>
-    <string name="devices_device_config_rename_device_action">Rename</string>
-    <string name="devices_device_config_section_timing_label">Timing</string>
-    <string name="devices_device_config_monitoring_duration_label">Monitoring duration</string>
-    <string name="devices_device_config_monitoring_duration_desc">A duration in milliseconds, after adjustments have been made, during which any further volume changes will be blocked.</string>
-    <string name="devices_device_config_adjustment_delay_label">Adjustment delay</string>
-    <string name="devices_device_config_adjustment_delay_desc">The delay in milliseconds between each volume adjustment. A delay 0ms means instantly setting the volume when this device connects.</string>
-    <string name="devices_device_config_reaction_delay_label">Reaction delay</string>
-    <string name="devices_device_config_reaction_delay_desc">The delay in milliseconds until this app reacts to this device.</string>
-    <string name="devices_device_config_section_reaction_label">Reaction</string>
-    <string name="devices_device_config_launch_app_label">Launch app</string>
-    <string name="devices_device_config_launch_app_desc">Launch an app when this device connects.</string>
-    <string name="devices_device_config_nudge_volume_label">Nudge volume</string>
-    <string name="devices_device_config_nudge_volume_description">Lower then raise the volume by one increment, even if the desired volume is already set (according to the system).</string>
+
+    <!-- General -->
+    <string name="general_error_label">အမှား</string>
+    <string name="general_error_no_compatible_app_found_msg">ဤတောင်းဆိုမှုကို ကိုင်တွယ်နိုင်သော သင့်တော်သည့် အပ် မတွေ့ပါ။</string>
+
+    <string name="general_share_action">မျှဝေ</string>
+    <string name="general_back_action">နောက်သို့</string>
+    <string name="general_show_details_action">အသေးစိတ် ကြည့်မည်</string>
+
+    <!-- Onboarding-->
+    <string name="onboarding_welcome_title">BVM မှ ကြိုဆိုပါသည်</string>
+    <string name="onboarding_welcome_message">Bluetooth Volume Manager သည် သင့် Bluetooth ကိရိယာ အသံများကို အလိုအလျောက် စီမံခန့်ခွဲနိုင်ပါသည်။</string>
+    <string name="onboarding_welcome_action">ကြိုးစားကြမည်</string>
+    <string name="onboarding_beta_title">Beta မျိုးကွဲ</string>
+    <string name="onboarding_beta_message">ဒါဟာ beta (စမ်းသပ်) build တစ်ခုပါ။ ဟာသစိတ်ဓာတ်နဲ့ အရန်အစီအစဉ်တစ်ခု ရှိပြီး ဆက်သွားပါ။ ကြုံသောပြဿနာများကို ကျေးဇူးပြု၍ အကြောင်းကြားပါ။</string>
+    <string name="onboarding_beta_action">ငါ ဘာမှ မကြောက်ဘူး</string>
+    <string name="onboarding_privacy_title">ကိုယ်ရေးအချက်အလက် &amp; ဒေတာ</string>
+    <string name="onboarding_privacy_message">Bluetooth Volume Manager တွင် ကြော်ငြာများ မပါဘဲ အသုံးပြုသူ ဒေတာကို မရောင်းချပါ (open-source ပင်ဖြစ်သည်)။ သင့်ကိုယ်ရေးအချက်အလက်ကို တန်ဖိုးထားပါသည်။</string>
+    <string name="onboarding_privacy_read_action">ကိုယ်ရေးအချက်အလက် မူဝါဒ ဖတ်မည်</string>
+    <string name="onboarding_privacy_action">လက်ခံသည်</string>
+    <string name="onboarding_rewrite_title">App ကို ခေတ်မီစေပြီ</string>
+    <string name="onboarding_rewrite_message">Android ပြောင်းလဲမှုများနှင့် Google လိုအပ်ချက်များနှင့် အညီ app ကို ဆက်လက် ထိရောက်စွာ အလုပ်လုပ်နိုင်ရန် ပြန်ရေးရမိသည်။ ဖြစ်နိုင်သမျှ ခေတ်မီအောင် ပြင်ဆင်ထားပါသည်။</string>
+    <string name="onboarding_rewrite_features">အပ်ဒိတ်တစ်လျှောက် အချို့ လုပ်ဆောင်ချက်များ ပြောင်းလဲသွားနိုင်သည်။ အရာအားလုံး မှန်ကန်စွာ သတ်မှတ်ထားကြောင်း ကိရိယာ ဆက်တင်များကို စစ်ဆေးပါ။</string>
+    <string name="onboarding_rewrite_action">ဆက်သွားမည်</string>
+
+    <!-- Discover -->
+    <string name="discover_no_unmnaged_devices_msg">စီမံမထားသော ကိရိယာ မတွေ့ပါ</string>
+    <string name="discover_all_devices_managed_msg">ချိတ်ဆက်ထားသည့် ကိရိယာ အားလုံး စီမံပြီးပါပြီ! အသစ်တစ်ခု လိုပါသလား?</string>
+    <string name="discover_pair_new_device_action">ကိရိယာ အသစ် တွဲချိတ်မည်</string>
+
+    <!-- Devices -->
+    <string name="devices_device_config_label">ကိရိယာ ဖွဲ့စည်းမှု</string>
+    <string name="devices_device_config_section_general_label">အထွေထွေ</string>
+    <string name="devices_device_config_remove_device_label">ကိရိယာ မေ့မည်</string>
+    <string name="devices_device_config_remove_device_desc">ဤအပ်မှ ကိရိယာကို မေ့ပြီး ၎င်း၏ ဖွဲ့စည်းမှုကို ဖျက်မည်။ ကိရိယာကို တွဲချိတ်မှု ဖြတ်မည် မဟုတ်ပါ။</string>
+    <string name="devices_device_config_remove_device_action">မေ့မည်</string>
+    <string name="devices_device_config_remove_device_confirmation">%s ကို စီမံထားသော ကိရိယာများမှ မေ့မည်လား?</string>
+    <string name="devices_device_config_rename_device_label">ကိရိယာ အမည်ပြောင်းမည်</string>
+    <string name="devices_device_config_rename_device_desc">ဤအပ်အတွင်း ကိရိယာ အမည် ပြောင်းပြီး ဖြစ်နိုင်လျှင် စနစ်အတွင်းပါ ပြောင်းမည်။</string>
+    <string name="devices_device_config_rename_device_action">အမည်ပြောင်းမည်</string>
+    <string name="devices_device_config_enabled_label">ဖွင့်ထားသည်</string>
+    <string name="devices_device_config_enabled_desc">ဤကိရိယာ ချိတ်ဆက်သောအခါ တုံ့ပြန်မည်</string>
+
+    <string name="devices_device_config_section_timing_label">အချိန်ကိုက်မှု</string>
+    <string name="devices_device_config_monitoring_duration_label">စောင့်ကြည့်ချိန်</string>
+    <string name="devices_device_config_monitoring_duration_desc">ချိန်ညှိမှုများ ပြုလုပ်ပြီးနောက် နောက်ထပ် အသံပြောင်းလဲမှုများကို ပိတ်ဆို့ထားမည့် မီလီဆင့် အချိန်ကာလ။</string>
+    <string name="devices_device_config_adjustment_delay_label">ချိန်ညှိမှု နှောင့်နှေးချိန်</string>
+    <string name="devices_device_config_adjustment_delay_desc">အသံ ချိန်ညှိမှု တစ်ခုနှင့် တစ်ခု အကြား မီလီဆင့် နှောင့်နှေးချိန်။ 0ms ဆိုလျှင် ဤကိရိယာ ချိတ်ဆက်သောအခါ ချက်ချင်း အသံ သတ်မှတ်မည်။</string>
+    <string name="devices_device_config_reaction_delay_label">တုံ့ပြန်မှု နှောင့်နှေးချိန်</string>
+    <string name="devices_device_config_reaction_delay_desc">ဤကိရိယာကို ဤအပ်က တုံ့ပြန်သည်အထိ မီလီဆင့် နှောင့်နှေးချိန်။</string>
+
+    <string name="devices_device_config_section_reaction_label">တုံ့ပြန်မှု</string>
+    <string name="devices_device_config_launch_app_label">အပ်များ ဖွင့်မည်</string>
+    <string name="devices_device_config_launch_app_desc">ဤကိရိယာ ချိတ်ဆက်သောအခါ အပ်များ ဖွင့်မည်။</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d အပ် ရွေးချယ်ထားသည်</string>
+    <string name="devices_device_config_show_home_screen_label">ပင်မဖန်သားပြင် ပြသမည်</string>
+    <string name="devices_device_config_show_home_screen_desc">ဤကိရိယာအတွက် ဖြစ်ရပ်များ အားလုံးကို လုပ်ဆောင်ပြီးနောက် ပင်မဖန်သားပြင် ပြသရန် ကြိုးစားမည်။ Android မျိုးဆက် အားလုံးတွင် အလုပ်မဖြစ်နိုင်ပါ။</string>
+    <string name="devices_device_config_nudge_volume_label">အသံ တွန်းဆောင်</string>
+    <string name="devices_device_config_nudge_volume_description">စနစ်အရ လိုချင်သော အသံ ချိန်ညှိပြီးဖြစ်သည်ဟု ဆိုသော်လည်း တစ်ဆင့် လျှော့ပြီး ပြန်တိုးမည်။</string>
     <string name="devices_device_config_visible_adjustments_label">မြင်သာသော ချိန်ညှိမှုများ</string>
-    <string name="devices_device_config_keep_awake_label">Keep awake</string>
-    <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
-    <string name="devices_device_config_volume_observe_label">Observe changes</string>
-    <string name="devices_device_config_volume_observe_desc">Stay active while this device is connected and save volume changes that have not been caused by this app.</string>
-    <string name="devices_device_config_volume_lock_label">Volume lock</string>
-    <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
+    <string name="devices_device_config_visible_adjustments_desc">ဤကိရိယာအတွက် ဤအပ် ချိန်ညှိမှုများ ပြုလုပ်နေစဉ် စနစ်၏ အသံ ဝင်းဒိုး ပြသမည်။</string>
+    <string name="devices_device_config_keep_awake_label">နိုးနေစေမည်</string>
+    <string name="devices_device_config_keep_awake_desc">ချိတ်ဆက်နေစဉ် ကိရိယာကို နိုးနေစေရန် ကြိုးစားမည်။ Android မျိုးကွဲပေါ် မူတည်ပြီး ကွဲပြားနိုင်သည်။</string>
+    <string name="devices_device_config_volume_observe_label">ပြောင်းလဲမှုများ စောင့်ကြည့်မည်</string>
+    <string name="devices_device_config_volume_observe_desc">ဤကိရိယာ ချိတ်ဆက်နေစဉ် အသက်ဝင်နေ၍ ဤအပ် မဖြစ်ပေါ် စေသော အသံ ပြောင်းလဲမှုများ သိမ်းဆည်းမည်။</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">ဖြတ်တောက်သောအခါ အသံ သိမ်းဆည်းမည်</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">ဤကိရိယာ ဖြတ်တောက်သောအခါ လက်ရှိ အသံအဆင့်များကို ဖမ်းယူ၍ သိမ်းဆည်းမည်။</string>
+    <string name="devices_device_config_volume_lock_label">အသံ သော့ခတ်</string>
+    <string name="devices_device_config_volume_lock_desc">ဤကိရိယာ ချိတ်ဆက်နေစဉ် ဤအပ်မှတစ်ဆင့် မဟုတ်သော အသံပြောင်းလဲမှုများ ပြန်ထူးထားမည်။</string>
     <string name="devices_device_config_volume_rate_limiter_label">အသံအတိုးအကျယ်နှုန်းကန့်သတ်ကိရိယာ</string>
     <string name="devices_device_config_volume_rate_limiter_desc">အသံအတိုးအကျယ်ပြောင်းလဲမှုများ၏ကြိမ်ဆင်းသက်မှုကိုကန့်သတ်ပြီးမြန်လျှင်သို့မဟုတ်အလွန်အကျွံအသံထိန်းချုပ်မှုများကိုကာကွယ်ပါ။</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">အသံအတိုးအကျယ်တိုးစည်းမျဉ်း</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_desc">အသံအတိုးအကျယ်တိုးခြင်းများအကြားအနည်းငယ်ဆုံးအချိန်- %d ms</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">အသံအတိုးအကျယ်လျှော့ချမျဉ်း</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">အသံအတိုးအကျယ်လျှော့ချခြင်းများအကြားအနည်းငယ်ဆုံးအချိန်- %d ms</string>
-    <string name="devices_device_config_autoplay_label">Autoplay</string>
-    <string name="devices_device_config_autoplay_desc">Simulate pressing play on a Bluetooth remote when this device connects.</string>
-    <string name="devices_device_config_section_volumes_label">Volumes</string>
-    <string name="devices_device_config_section_volume_label">Volume</string>
-    <string name="devices_device_config_alarm_volume_label">Alarm volume</string>
-    <string name="devices_device_config_alarm_volume_desc">Some alarm apps use the music volume instead.</string>
-    <string name="devices_device_config_notification_volume_label">Notification volume</string>
-    <string name="devices_device_config_notification_volume_desc">Not all devices support a separate notification volume setting.</string>
-    <string name="devices_device_config_music_volume_label">Music volume</string>
-    <string name="devices_device_config_music_volume_desc">Control the volume which affects music and games when this device connects.</string>
-    <string name="devices_device_config_call_volume_label">Call volume</string>
-    <string name="devices_device_config_call_volume_desc">Control the volume that affects calls when this devices connects.</string>
-    <string name="devices_device_config_ring_volume_label">Ring volume</string>
-    <string name="devices_device_config_ring_volume_desc">Control the volume which affects your ringtone.</string>
-    <string name="devices_stream_music_label">Music</string>
-    <string name="devices_audio_stream_call_label">Call</string>
-    <string name="devices_audio_stream_ring_label">Ring</string>
-    <string name="devices_audio_stream_notification_label">Notification</string>
-    <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="label_speaker_autosave">Autosave volume</string>
-    <string name="description_speaker_autosave">The \&quot;Device Speaker\&quot; entry, which is responsible for default volumes, updates itself when a Bluetooth device connects. Note: This does not work on all devices.</string>
-    <string name="devices_neverseen_label">Never seen</string>
-    <string name="devices_state_connected_label">Connected</string>
-    <string name="devices_last_connected_label">နောက်ဆုံး ချိတ်ဆက်: %s</string>
-    <string name="devices_device_disabled_label">ကိရိယာ ပိတ်ထားသည်</string>
-    <string name="devices_device_config_enabled_label">ဖွင့်ထားသည်</string>
-    <string name="devices_device_config_enabled_desc">ဤကိရိယာ ချိတ်ဆက်သောအခါ တုံ့ပြန်မည်</string>
-    <string name="settings_support_discord_label">Discord</string>
-    <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_crowdin_title">crowdin.com</string>
-    <string name="label_bug_reports">Bug reports</string>
-    <string name="description_bug_reports">Automatic bug and crash reporting.</string>
-    <string name="label_add_device">Add device</string>
-    <string name="label_just_a_moment_please">Just a moment, please.</string>
-    <string name="label_notification_channel_status">Status</string>
-    <string name="action_set">Set</string>
-    <string name="action_cancel">Cancel</string>
-    <string name="label_invalid_input">Invalid input</string>
-    <string name="action_reset">Reset</string>
-    <string name="label_no_connected_devices">No devices connected</string>
-    <string name="label_status_idle">Idle</string>
-    <string name="label_status_adjusting_volumes">Adjusting volumes</string>
-    <string name="label_premium_version">Premium version</string>
-    <string name="general_upgrade_action">Upgrade</string>
-    <string name="description_premium_required_additional_devices">Managing additional devices requires the premium version.</string>
-    <string name="description_premium_required_this_extra_option">This extra option requires the premium version of this app.</string>
-    <string name="description_premium_upgrade_explanation">Get the premium version to enable additional features and support development.</string>
-    <string name="label_premium_version_required">Premium version required</string>
-    <string name="description_intro_purpose">This app allows your Android device to remember the volume of different Bluetooth devices.</string>
-    <string name="description_intro_premium">If you like this app, consider upgrading to the premium version. It supports development and gets you a few extra features.</string>
-    <string name="description_intro_tap_the_button">Start by adding your first device.</string>
-    <string name="description_bluetooth_is_disabled">Bluetooth is disabled.</string>
-    <string name="label_status_listening_for_changes">Listening for volume changes</string>
-    <string name="action_exit">Exit</string>
-    <string name="action_start">Start</string>
-    <string name="label_welcome">Welcome</string>
-    <string name="description_intro_contact">Don\'t hesitate to contact me if you have questions or even an idea for a new feature.</string>
-    <string name="label_translation">Translation</string>
-    <string name="description_help_translate">Help me make this app available in other languages.</string>
-    <string name="label_device_speaker">Device speaker</string>
-    <string name="label_keyevent_playpause">Play-Pause</string>
-    <string name="label_keyevent_play">Play</string>
-    <string name="label_keyevent_next">Next</string>
-    <string name="label_install_id">Install ID</string>
-    <string name="message_copied_to_clipboard">Copied to clipboard</string>
-    <string name="label_thanks">Thanks</string>
-    <string name="label_licenses">Licenses</string>
-    <string name="description_ring_volume_additional_permission">Additional permissions are necessary to change the ring volume.</string>
-    <string name="label_missing_permissions">Missing permissions</string>
-    <string name="action_grant">Grant</string>
-    <string name="label_advanced">Advanced</string>
-    <string name="label_exclude_health">Exclude health profiles</string>
-    <string name="description_exclude_health">Some Android devices hang when looking up \'Health Device\' Bluetooth profiles (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Exclude GATT server profiles</string>
-    <string name="label_exclude_gatt">Exclude GATT profiles</string>
-    <string name="description_exclude_gattserver">Don\'t query Bluetooth profiles of type \'Generic Attribute\' (GATT) server.</string>
-    <string name="description_exclude_gatt">Don\'t query Bluetooth profiles of type \'Generic Attribute\' (GATT) client.</string>
-    <string name="description_waiting_for_devicex">Waiting for %s to complete connection</string>
-    <string name="action_undo">Undo</string>
-    <string name="action_show">Show</string>
-    <string name="action_dismiss">Dismiss</string>
-    <string name="action_fix">Fix</string>
-    <string name="battery_optimizations_issue_description">Battery optimizations are enabled for this app and can prevent it from receiving Bluetooth events. Consider disabling optimizations if you are experiencing issues.</string>
-    <string name="label_opensource">Source code</string>
-    <string name="devices_app_selection_currently_selected">ကြောင်တစ် ရွေးပြီးနယ္</string>
-    <string name="devices_app_selection_search_hint">အါပ်ပြီးခြင်း ရှေ့ာမှာက်…</string>
-    <string name="devices_app_selection_selected_count">%d အါပ်ပြီး ရွေးပြီးမှာ</string>
-    <string name="devices_app_selection_title">အါပ်ပြီးမြား ရွေးပြီးပါ</string>
+    <string name="devices_device_config_autoplay_label">အလိုအလျောက် ဖွင့်မည်</string>
+    <string name="devices_device_config_autoplay_desc">ဤကိရိယာ ချိတ်ဆက်သောအခါ Bluetooth remote မှ play ခလုတ် နှိပ်သကဲ့သို့ simulate ပြုမည်။</string>
+    <string name="devices_device_config_autoplay_keycodes_title">အလိုအလျောက်ဖွင့် Key သည်ခြင်မြား</string>
     <string name="devices_device_config_autoplay_keycodes_available">တေ့ားရှီမှား key သည်ခြင်မြား</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">ဘီးမြန် key မြားကော ကွန္ပြမှား နှင္တ် ဘီမြတင်တယ္ ဖခ္ပြတ်ပါ</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Key သည်ခြင်မြား</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Key မြား ဖခ္ပြတ်မည်းာီ</string>
     <string name="devices_device_config_autoplay_keycodes_order">ရွေးပြီးမှား key မြား (ဏိုင္တာဖြပ် ပံတယ္)</string>
-    <string name="devices_device_config_autoplay_keycodes_title">အာဏိအဖြင့ပ် key သည်ခြင်မြား</string>
-    <string name="devices_device_config_launch_app_multiple_desc">%d အါပ်ပြီး ရွေးပြီးမှာ</string>
-    <string name="devices_device_config_notification_policy_action">အေံုင်းအစား ပှေးပါ</string>
-    <string name="devices_device_config_notification_policy_required_notification">ထည်ပြေး အာဝားအမဪမ်း ကအုပကြွေးရန် ထည်ပြေး ေဓစာင္း အေံုင်းအစား ထို့အပေါး</string>
-    <string name="devices_device_config_notification_policy_required_ringtone">မေးှှေး အာဝားအမဪမ်း ကအုပကြွေးရန် ထည်ပြေး ေဓစာင္း အေံုင်းအစား ထို့အပေါး</string>
-    <string name="devices_device_config_visible_adjustments_desc">ဒဍိုင်း ကိ့ျည် ကာဒ် မှာ အငုပြီးခြင်မြားကော ပြအပါးမည့</string>
-    <string name="general_clear_action">သူးပါ</string>
-    <string name="general_navigate_back_action">ေကြာင်း အခြက်သွားပါ</string>
-    <string name="general_reset_action">အပဓင်း ဖခ္ပြတ်ပါ</string>
-    <string name="general_save_action">ဂရှုံးတ်မှားပါ</string>
-    <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">ချိတ်ဆက်မှု သတိပေးချက်</string>
-    <string name="connection_alert_dialog_title">ချိတ်ဆက်မှု သတိပေးချက်</string>
-    <string name="connection_alert_type_none">မရှိပါ</string>
-    <string name="connection_alert_type_sound">အသံသာ</string>
-    <string name="connection_alert_type_vibration">တုန်ခါမှုသာ</string>
-    <string name="connection_alert_type_both">အသံနှင့် တုန်ခါမှု</string>
-    <string name="devices_indicator_alert">သတိပေးချက်</string>
-    <string name="devices_indicator_lock">သော့ခတ်</string>
-    <string name="devices_indicator_awake">နိုးနေ</string>
-    <string name="devices_indicator_nudge">တွန်းဆောင်</string>
-    <string name="devices_indicator_observe">စောင့်ကြည့်</string>
-    <string name="devices_indicator_disconnect">ဖြတ်တောက်</string>
-    <string name="devices_indicator_limit">ကန့်သတ်</string>
-    <string name="devices_indicator_launch">စတင်</string>
-    <string name="devices_indicator_auto">အော်တို</string>
-    <string name="devices_indicator_home">ပင်မ</string>
-    <string name="devices_indicator_dnd">မနှောင့်ယှက်နှင့်</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Key သည်ခြင်မြား</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">ဘီးမြန် key မြားကော ကွန္ပြမှား နှင္တ် ဘီမြတင်တယ္ ဖခ္ပြတ်ပါ</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Key မြား ဖခ္ပြတ်မည်းာီ</string>
+
+    <string name="devices_device_config_section_volumes_label">အသံများ</string>
+    <string name="devices_device_config_section_volume_label">အသံ</string>
+    <string name="devices_device_config_alarm_volume_label">နှိုးစက် အသံ</string>
+    <string name="devices_device_config_alarm_volume_desc">အချို့ နှိုးစက် အပ်များသည် အစား music အသံ သုံးသည်။</string>
+    <string name="devices_device_config_notification_volume_label">အကြောင်းကြားချက် အသံ</string>
+    <string name="devices_device_config_notification_volume_desc">ကိရိယာ အားလုံး သီးခြား အကြောင်းကြားချက် အသံ ဆက်တင်ကို ထောက်ပံ့မည် မဟုတ်ပါ။ တိတ်ဆိတ်ခြင်း သို့မဟုတ် တုန်ခါမှု မုဒ်ပါ သတ်မှတ်နိုင်သည်။</string>
+    <string name="devices_device_config_music_volume_label">Music အသံ</string>
+    <string name="devices_device_config_music_volume_desc">ဤကိရိယာ ချိတ်ဆက်သောအခါ သီချင်းနှင့် ဂိမ်းများကို သက်ရောက်သော အသံကို ထိန်းချုပ်မည်။</string>
+    <string name="devices_device_config_call_volume_label">ဖုန်းခေါ်ဆိုမှု အသံ</string>
+    <string name="devices_device_config_call_volume_desc">ဤကိရိယာ ချိတ်ဆက်သောအခါ ဖုန်းခေါ်ဆိုမှုများကို သက်ရောက်သော အသံကို ထိန်းချုပ်မည်။</string>
+    <string name="devices_device_config_ring_volume_label">မြည်သံ အသံ</string>
+    <string name="devices_device_config_ring_volume_desc">သင့် ဖုန်းမြည်သံကို သက်ရောက်သော အသံကို ထိန်းချုပ်မည်။ တိတ်ဆိတ်ခြင်း သို့မဟုတ် တုန်ခါမှု မုဒ်ပါ သတ်မှတ်နိုင်သည်။</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">မြည်သံ ထိန်းချုပ်မှုအတွက် အကြောင်းကြားချက် မူဝါဒ ဝင်ရောက်ခွင့် လိုအပ်သည်</string>
+    <string name="devices_device_config_notification_policy_required_notification">အကြောင်းကြားချက် အသံ ထိန်းချုပ်မှုအတွက် အကြောင်းကြားချက် မူဝါဒ ဝင်ရောက်ခွင့် လိုအပ်သည်</string>
+    <string name="devices_device_config_notification_policy_required_dnd">မနှောင့်ယှက်နှင့် ထိန်းချုပ်မှုအတွက် အကြောင်းကြားချက် မူဝါဒ ဝင်ရောက်ခွင့် လိုအပ်သည်</string>
+    <string name="devices_device_config_notification_policy_action">ဝင်ရောက်ခွင့် ပေးမည်</string>
     <string name="devices_device_config_dnd_on_connect_label">မနှောင့်ယှက်နှင့် မုဒ်</string>
     <string name="dnd_mode_dialog_title">မနှောင့်ယှက်နှင့် မုဒ် ရွေးချယ်ပါ</string>
     <string name="dnd_mode_dont_change">မပြောင်းလဲပါ</string>
@@ -185,15 +108,35 @@
     <string name="dnd_mode_priority_only">ဦးစားပေးသာ</string>
     <string name="dnd_mode_alarms_only">သတိပေးချက်သာ</string>
     <string name="dnd_mode_total_silence">လုံးဝတိတ်ဆိတ်</string>
-    <string name="devices_device_config_notification_policy_required_dnd">မနှောင့်ယှက်နှင့် ထိန်းချုပ်မှုအတွက် အကြောင်းကြားချက် မူဝါဒ ဝင်ရောက်ခွင့် လိုအပ်သည်</string>
-    <string name="devices_device_config_show_home_screen_label">ပင်မဖန်သားပြင် ပြသမည်</string>
-    <string name="devices_device_config_show_home_screen_desc">ဤကိရိယာအတွက် ဖြစ်ရပ်များ အားလုံးကို လုပ်ဆောင်ပြီးနောက် ပင်မဖန်သားပြင် ပြသရန် ကြိုးစားမည်။ Android မျိုးဆက် အားလုံးတွင် အလုပ်မဖြစ်နိုင်ပါ။</string>
-    <string name="devices_device_config_volume_save_on_disconnect_label">ဖြတ်တောက်သောအခါ အသံ သိမ်းဆည်းမည်</string>
-    <string name="devices_device_config_volume_save_on_disconnect_desc">ဤကိရိယာ ဖြတ်တောက်သောအခါ လက်ရှိ အသံအဆင့်များကို ဖမ်းယူ၍ သိမ်းဆည်းမည်။</string>
+
+    <string name="devices_device_config_connection_alert_label">ချိတ်ဆက်မှု သတိပေးချက်</string>
+    <string name="connection_alert_dialog_title">ချိတ်ဆက်မှု သတိပေးချက်</string>
+    <string name="connection_alert_type_none">မရှိပါ</string>
+    <string name="connection_alert_type_sound">အသံသာ</string>
+    <string name="connection_alert_type_vibration">တုန်ခါမှုသာ</string>
+    <string name="connection_alert_type_both">အသံနှင့် တုန်ခါမှု</string>
+
+    <string name="devices_stream_music_label">မျူးဇစ်</string>
+    <string name="devices_audio_stream_call_label">ဖုန်းခေါ်ဆိုမှု</string>
+    <string name="devices_audio_stream_ring_label">မြည်သံ</string>
+    <string name="devices_audio_stream_notification_label">အကြောင်းကြားချက်</string>
+    <string name="devices_audio_stream_alarm_label">နှိုးစက်</string>
+
+    <string name="label_speaker_autosave">အသံ အလိုအလျောက် သိမ်းဆည်း</string>
+    <string name="description_speaker_autosave">မူရင်း အသံများ တာဝန်ရှိသော &quot;Device Speaker&quot; ဝင်ခွင့်သည် Bluetooth ကိရိယာ ချိတ်ဆက်သောအခါ မိမိ အပ်ဒိတ်လုပ်သည်။ မှတ်ချက်: ကိရိယာ အားလုံးတွင် အလုပ်မဖြစ်နိုင်ပါ။</string>
+
+    <string name="devices_neverseen_label">မတွေ့ဖူးသေး</string>
+    <string name="devices_state_connected_label">ချိတ်ဆက်ထားသည်</string>
+    <string name="devices_last_connected_label">နောက်ဆုံး ချိတ်ဆက်: %s</string>
     <string name="devices_currently_connected_label">လောလောဆယ် ချိတ်ဆက်နေသည်</string>
+    <string name="devices_device_disabled_label">ကိရိယာ ပိတ်ထားသည်</string>
     <string name="devices_no_volumes_configured">ဤကိရိယာအတွက် အသံ မသတ်မှတ်ရသေး။ အသံ ဦးစားပေးမှုများ သတ်မှတ်ရန် ပြင်ဆင်ရန် နှိပ်ပါ။</string>
+
+    <!-- Settings-->
     <string name="settings_label">ဆက်တင်များ</string>
     <string name="settings_category_other_label">အခြား</string>
+
+    <!-- Settings/General-->
     <string name="general_settings_label">အထွေထွေ</string>
     <string name="general_settings_desc">အပ်တစ်ခုလုံးကို အကျိုးသက်ရောက်သော အထွေထွေ ချိန်ညှိမှုများ</string>
     <string name="settings_category_ui_label">အသုံးပြုသူ အင်တာဖေ့စ်</string>
@@ -201,6 +144,7 @@
     <string name="ui_theme_mode_setting_explanation">အပ်ကို အပြင်အဆင် ဖန်တီးရာတွင် သုံးသည့် မုဒ် (ဥပမာ - ညဉ့် သို့မဟုတ် နေ့)။</string>
     <string name="ui_theme_style_setting_label">အပြင်အဆင် ပုံစံ</string>
     <string name="ui_theme_style_setting_explanation">အပ်ကို အပြင်အဆင် ဖန်တီးရာတွင် သုံးသည့် အရောင် ပုံစံ။</string>
+
     <string name="ui_theme_mode_dark_label">မှောင်</string>
     <string name="ui_theme_mode_light_label">တောက်</string>
     <string name="ui_theme_mode_system_label">စနစ်</string>
@@ -208,10 +152,14 @@
     <string name="ui_theme_style_medium_contrast_label">အလယ်အလတ် ကွဲပြားမှု</string>
     <string name="ui_theme_style_high_contrast_label">မြင့်မားသော ကွဲပြားမှု</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
+
     <string name="ui_language_override_label">အပ် ဘာသာစကား</string>
     <string name="ui_language_override_desc">သင့်စနစ်၏ မူရင်းဘာသာစကားနှင့် မသက်ဆိုင်ဘဲ BVM အတွက် ဘာသာစကား တစ်ခု ရွေးချယ်ပါ။</string>
+
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">ကိရိယာများ</string>
     <string name="devices_settings_desc">စီမံခန့်ခွဲထားသော ကိရိယာ အားလုံးကို အကျိုးသက်ရောက်သော ဆက်တင်များ</string>
+
     <string name="label_app_enabled">အပ် ဖွင့်ထားသည်</string>
     <string name="description_app_enabled">အသံနှင့် Bluetooth ဖြစ်ရပ်များကို တုံ့ပြန်ရန် အပ်၏ စွမ်းရည်ကို ပြောင်းလဲသည်</string>
     <string name="label_visible_volume_adjustments">မြင်သာသော ချိန်ညှိမှုများ</string>
@@ -220,6 +168,8 @@
     <string name="description_volume_listener">ကိရိယာ ချိတ်ဆက်နေစဉ် အသက်ဝင်နေ၍ ဤအပ် မဖြစ်ပေါ် စေသော အသံ ပြောင်းလဲမှုများ သိမ်းဆည်းမည်။</string>
     <string name="label_boot_restore">ဖွင့်လှစ်သောအခါ ပြန်လည်ရယူမည်</string>
     <string name="description_boot_restore">Bluetooth ကိရိယာ ချိတ်ဆက်ထားလျှင် ဖွင့်/ပြန်ဖွင့်ပြီးနောက် အသံ ပြန်လည်ရယူမည်။</string>
+
+    <!-- Settings/Support-->
     <string name="settings_support_label">ပံ့ပိုးကူညီမှု</string>
     <string name="settings_support_description">မှတ်တမ်းများ ဖတ်ပါ၊ ပြဿနာများ အကြောင်းကြားပါ၊ အခြားသူများနှင့် စကားပြောပါ သို့မဟုတ် ပြဿနာဖြေရှင်းရေး မှတ်တမ်းများ ရိုက်ကူးပါ။</string>
     <string name="settings_support_wiki_label">မှတ်တမ်းများ</string>
@@ -230,21 +180,32 @@
     <string name="settings_support_debuglog_desc">အပ် လုပ်ဆောင်မှု အားလုံးကို မျှဝေနိုင်သော စာသားဖိုင်တစ်ခုတွင် ရိုက်ကူးမည်။</string>
     <string name="settings_support_debuglog_recording_desc">Debug သတင်းအချက်အလက် ရိုက်ကူးနေသည်။ ရပ်တန့်ရန် နှိပ်ပါ။</string>
     <string name="settings_support_debuglog_path">မှတ်တမ်း လမ်းကြောင်း: %1$s</string>
+    <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">တွေ့ဆုံ၍ မေးခွန်းများ မေးနိုင်သော နေရာ</string>
+
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">ကျေးဇူးတင်ခြင်း</string>
     <string name="settings_acknowledgements_description">ဂုဏ်ပြုချက်များ၊ လိုင်စင်များနှင့် ကျေးဇူးတင်ချက် အထူး</string>
     <string name="settings_acks_translation_header">ဘာသာပြန်ခြင်း</string>
     <string name="settings_acks_translators_title">ဘာသာပြန်သူများ</string>
+    <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
     <string name="settings_acks_translate_title">BVM ဘာသာပြန်မည်</string>
     <string name="settings_acks_translate_desc">BVM ကို သင်၏ ဘာသာစကားသို့ ဘာသာပြန်ရန် ကူညီပါ</string>
+
     <string name="settings_acks_thanks_header">ကျေးဇူးတင်သည်</string>
+    <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">အဖွင့်ရင်းမြစ် ပရောဂျက်များ ဘာသာပြန်ခြင်းကို ပံ့ပိုးသောအတွက်</string>
     <string name="settings_licenses_label">လိုင်စင်များ</string>
+
     <string name="settings_sponsor_development_title">ဖွံ့ဖြိုးမှုကို ပံ့ပိုးမည်</string>
     <string name="settings_sponsor_development_summary">အားပေးသူ ဖြစ်ပြီး ဆက်လက် ဖွံ့ဖြိုးမှုကို ဖြစ်နိုင်အောင် ပြုလုပ်ပါ။</string>
+
     <string name="settings_privacy_policy_label">ကိုယ်ရေးအချက်အလက် မူဝါဒ</string>
     <string name="settings_privacy_policy_desc">ဒေတာကို တာဝန်ယူမှုဖြင့် ကိုင်တွယ်ခြင်း</string>
+
     <string name="changelog_label">ပြောင်းလဲမှု မှတ်တမ်း</string>
+
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug အကြောင်းကြားချက်များ</string>
     <string name="debug_log_consent_title">Debug မှတ်တမ်း</string>
     <string name="debug_log_consent_explanation">ဤအင်္ဂါရပ်သည် အပ် လုပ်ဆောင်မှု အားလုံးကို မျှဝေနိုင်သော ဖိုင်တစ်ခုတွင် ရိုက်ကူးသည်။ ထုတ်လုပ်ထားသော ဖိုင်တွင် အထိခိုက်မခံသော သတင်းအချက်အလက် (ဥပမာ - ဖိုင်အမည်များနှင့် တပ်ဆင်ထားသော အပ်များ) ပါဝင်သည်။ ယုံကြည်စိတ်ချရသော ပါတီများနှင့် (ဥပမာ - ပြဿနာ ဖြေရှင်းနေသော developer) သာ မျှဝေပါ။</string>
@@ -258,17 +219,78 @@
     <string name="debug_log_screen_log_files_ready">မှတ်တမ်းဖိုင်များ အသင့်ဖြစ်ပြီ (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">ဖျက်ပစ်မည်</string>
     <string name="debug_log_file_label">ရိုက်ကူးထားသော မှတ်တမ်းဖိုင်</string>
+
+
+    <string name="label_bug_reports">ချို့ယွင်းချက် အစီရင်ခံမှုများ</string>
+    <string name="description_bug_reports">အလိုအလျောက် ချို့ယွင်းချက်နှင့် ပျက်ကျမှု အစီရင်ခံခြင်း</string>
+
+
+    <string name="label_add_device">ကိရိယာ ထည့်မည်</string>
+    <string name="label_just_a_moment_please">ခဏစောင့်ပါ</string>
+    <string name="label_notification_channel_status">အခြေအနေ</string>
+    <string name="action_set">သတ်မှတ်မည်</string>
+    <string name="action_cancel">ပယ်ဖျက်</string>
+    <string name="label_invalid_input">မမှန်ကန်သော ထည့်သွင်းမှု</string>
+    <string name="action_reset">ပြန်လည်သတ်မှတ်မည်</string>
+    <string name="label_no_connected_devices">ချိတ်ဆက်ထားသော ကိရိယာ မရှိ</string>
+    <string name="label_status_idle">အနားယူနေသည်</string>
+    <string name="label_status_adjusting_volumes">အသံ ချိန်ညှိနေသည်</string>
+    <string name="label_premium_version">Premium မျိုးကွဲ</string>
+    <string name="general_upgrade_action">အဆင့်မြှင့်တင်မည်</string>
+    <string name="description_premium_required_additional_devices">ထပ်တိုးသော ကိရိယာများ စီမံရန် premium မျိုးကွဲ လိုအပ်သည်။</string>
+    <string name="description_premium_required_this_extra_option">ဤ ထပ်ဆောင်း ရွေးချယ်မှုသည် ဤအပ်၏ premium မျိုးကွဲ လိုအပ်သည်။</string>
+    <string name="description_premium_upgrade_explanation">ထပ်ဆောင်း လုပ်ဆောင်ချက်များ ဖွင့်ရန်နှင့် ဖွံ့ဖြိုးမှုကို ပံ့ပိုးရန် premium မျိုးကွဲ ရယူပါ။</string>
+    <string name="label_premium_version_required">Premium မျိုးကွဲ လိုအပ်သည်</string>
     <string name="upgrade_feature_requires_pro">ဤ လုပ်ဆောင်ချက်အတွက် premium မျိုးကွဲ လိုအပ်သည်</string>
     <string name="upgrade_prompt_upgrade_action">အဆင့်မြှင့်တင်မည်</string>
+    <string name="description_intro_purpose">ဤအပ်သည် သင့် Android ကိရိယာကို မတူညီသော Bluetooth ကိရိယာများ၏ အသံကို မှတ်မိစေသည်။</string>
+    <string name="description_intro_premium">ဤအပ်ကို ကြိုက်လျှင် premium မျိုးကွဲသို့ အဆင့်မြှင့်တင်ရန် စဉ်းစားပါ။ ဖွံ့ဖြိုးမှုကို ပံ့ပိုးပြီး ထပ်ဆောင်း လုပ်ဆောင်ချက်ကိုလည်း ရနိုင်သည်။</string>
+    <string name="description_intro_tap_the_button">ပထမဆုံး ကိရိယာ ထည့်ခြင်းဖြင့် စတင်ပါ။</string>
+    <string name="description_bluetooth_is_disabled">Bluetooth ပိတ်ထားသည်။</string>
     <string name="title_bluetooth_is_off">Bluetooth ပိတ်ထားသည်</string>
     <string name="action_enable_bluetooth">Bluetooth ဖွင့်မည်</string>
     <string name="title_bluetooth_permission_required">Bluetooth ခွင့်ပြုချက် လိုအပ်သည်</string>
     <string name="description_bluetooth_permission_required">ဤအပ်သည် သင့်ကိရိယာ အသံများ စီမံခန့်ခွဲရန် Bluetooth ခွင့်ပြုချက် လိုအပ်သည်။</string>
     <string name="action_grant_permission">ခွင့်ပြုချက် ပေးမည်</string>
-    <string name="label_no_devices_title">ကိရိယာ မရှိ</string>
-    <string name="bluemusic_mascot_description">အပ် အိုင်ကွန်</string>
+    <string name="label_status_listening_for_changes">အသံ ပြောင်းလဲမှုများ နားထောင်နေသည်</string>
+    <string name="action_exit">ထွက်မည်</string>
+
+
+    <string name="action_start">စတင်မည်</string>
+    <string name="label_welcome">ကြိုဆိုပါသည်</string>
+    <string name="description_intro_contact">မေးခွန်းများ သို့မဟုတ် အင်္ဂါရပ် အသစ် အကြံဉာဏ်ရှိလျှင် ဆက်သွယ်ရန် မတွန့်ဆုတ်ပါနှင့်။</string>
+    <string name="label_translation">ဘာသာပြန်ခြင်း</string>
+    <string name="description_help_translate">ဤအပ်ကို အခြားဘာသာစကားများတွင် ရနိုင်အောင် ကူညီပါ။</string>
+    <string name="label_device_speaker">ကိရိယာ စပီကာ</string>
+
+    <string name="label_keyevent_playpause">ဖွင့်/ရပ်</string>
+    <string name="label_keyevent_play">ဖွင့်</string>
+    <string name="label_keyevent_next">နောက်တစ်ပုဒ်</string>
+    <string name="label_install_id">Install ID</string>
+    <string name="message_copied_to_clipboard">Clipboard သို့ ကူးယူပြီး</string>
+    <string name="label_thanks">ကျေးဇူးတင်သည်</string>
+    <string name="label_licenses">လိုင်စင်များ</string>
+
+    <string name="description_ring_volume_additional_permission">မြည်သံ ပြောင်းရန် ထပ်ဆောင်း ခွင့်ပြုချက်များ လိုအပ်သည်။</string>
+    <string name="label_missing_permissions">ခွင့်ပြုချက် မပြည့်စုံ</string>
+    <string name="action_grant">ပေးမည်</string>
+    <string name="label_advanced">အဆင့်မြင့်</string>
+    <string name="label_exclude_health">ကျန်းမာရေး ပရိုဖိုင်များ ဖယ်ထားမည်</string>
+    <string name="description_exclude_health">အချို့ Android ကိရိယာများသည် \'Health Device\' Bluetooth ပရိုဖိုင်များ (HDP, 0x1400) ကို ရှာဖွေသောအခါ တိမ်ကောနေသည်။</string>
+    <string name="label_exclude_gattserver">GATT server ပရိုဖိုင်များ ဖယ်ထားမည်</string>
+    <string name="label_exclude_gatt">GATT ပရိုဖိုင်များ ဖယ်ထားမည်</string>
+    <string name="description_exclude_gattserver">\'Generic Attribute\' (GATT) server အမျိုးအစား Bluetooth ပရိုဖိုင်များ မမေးမြန်းပါ။</string>
+    <string name="description_exclude_gatt">\'Generic Attribute\' (GATT) client အမျိုးအစား Bluetooth ပရိုဖိုင်များ မမေးမြန်းပါ။</string>
+
+    <string name="description_waiting_for_devicex">%s ချိတ်ဆက်မှု ပြည့်စုံရန် စောင့်နေသည်</string>
+    <string name="action_undo">နောက်ပြန်ဆွဲမည်</string>
+    <string name="action_show">ပြသမည်</string>
+    <string name="action_dismiss">ပိတ်မည်</string>
+    <string name="action_fix">ပြင်မည်</string>
+    <string name="battery_optimizations_issue_description">ဤအပ်အတွက် ဘက်ထရီ ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း ဖွင့်ထားပြီး Bluetooth ဖြစ်ရပ်များ လက်ခံရယူမှုကို တားဆီးနိုင်သည်။ ပြဿနာများ ကြုံနေလျှင် ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်းကို ပိတ်ရန် စဉ်းစားပါ။</string>
     <string name="label_bluetooth_settings">Bluetooth ဆက်တင်များ</string>
     <string name="android10_applaunch_issue_description">Android 10 သည် အပ်များကို နောက်ခံမှ မည်ကဲ့သို့ ဖွင့်နိုင်သည်ကို ကန့်သတ်သည်။ Bluetooth ကိရိယာ ချိတ်ဆက်သောအခါ အပ်များ ဖွင့်ရန် ခွင့်ပြုရန် &quot;အခြားအပ်များ အပေါ် ပြသမည်&quot; (SYSTEM_ALERT_WINDOW) ခွင့်ပြုချက် ပေးပါ။</string>
+    <string name="label_opensource">ဆော့ဝဲကုဒ်</string>
     <string name="android13_notification_permission_description">ဤအပ်သည် အကြောင်းကြားချက်များ ပြသရန် ခွင့်ပြုချက် ပေးပါ။ ဤအပ် အသက်ဝင်နေ၍ အသံ ချိန်ညှိမှုများ ပြုလုပ်နေစဉ် အကြောင်းကြားချက် ပြသနိုင်ပါသည်။</string>
     <string name="privacy_policy_label">ကိုယ်ရေးအချက်အလက် မူဝါဒ</string>
     <string name="managed_devices_empty_message">Bluetooth ကိရိယာ မသတ်မှတ်ရသေး။\nပထမဆုံး ကိရိယာ ထည့်ရန် + ခလုတ် နှိပ်ပါ။</string>
@@ -276,6 +298,7 @@
     <string name="general_cancel_action">ပယ်ဖျက်</string>
     <string name="general_ok_action">OK</string>
     <string name="general_configure_action">ပြင်ဆင်မည်</string>
+
     <string name="battery_optimization_hint_title">ဘက်ထရီ ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း</string>
     <string name="battery_optimization_hint_message">ဘက်ထရီ ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း ဖွင့်ထားပြီး မှန်ကန်သော လုပ်ဆောင်မှုကို တားဆီးနိုင်သည်။ ပိတ်ရန် စဉ်းစားပါ။</string>
     <string name="battery_optimization_fix_action">ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း ပိတ်မည်</string>
@@ -283,8 +306,37 @@
     <string name="android10_applaunch_hint_message">Android 10 သည် နောက်ခံမှ အပ်များ ဖွင့်ရန် အထူး ခွင့်ပြုချက် လိုအပ်သည်။ &quot;အခြားအပ်များ အပေါ် ပြသမည်&quot; ခွင့်ပြုချက် ပေးပါ။</string>
     <string name="notification_permission_hint_title">အကြောင်းကြားချက် ခွင့်ပြုချက်</string>
     <string name="notification_permission_hint_message">အသံ ချိန်ညှိမှု ပြုလုပ်စဉ် အခြေအနေ မွမ်းမံချက်များ ကြည့်ရှုရန် အကြောင်းကြားချက် ခွင့်ပြုချက် ပေးပါ။</string>
+
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">ဝယ်ယူမှု ပယ်ဖျက်ခဲ့သည်</string>
     <string name="error_iap_unavailable_message">အပ် အတွင်း ဝယ်ယူမှုများ မရနိုင်</string>
     <string name="error_generic_message">အမှားတစ်ခု ဖြစ်ပေါ်ခဲ့သည်။ ထပ်မံ ကြိုးစားပါ။</string>
     <string name="error_iap_owned_message">သင်သည် ဤပစ္စည်းကို ပိုင်ဆိုင်ပြီးဖြစ်သည်</string>
+
+    <string name="label_no_devices_title">ကိရိယာ မရှိ</string>
+
+    <string name="bluemusic_mascot_description">အပ် အိုင်ကွန်</string>
+
+    <!-- App Selection -->
+    <string name="devices_app_selection_title">အပ်များ ရွေးချယ်ပါ</string>
+    <string name="devices_app_selection_search_hint">အပ်များ ရှာဖွေ…</string>
+    <string name="devices_app_selection_currently_selected">လက်ရှိ ရွေးချယ်ထားသည်</string>
+    <string name="devices_app_selection_selected_count">%d အပ် ရွေးချယ်ထားသည်</string>
+    <string name="general_navigate_back_action">နောက်သို့ သွားမည်</string>
+    <string name="general_reset_action">ပြန်လည်သတ်မှတ်မည်</string>
+    <string name="general_clear_action">ရှင်းလင်းမည်</string>
+    <string name="general_save_action">သိမ်းဆည်းမည်</string>
+
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">သော့ခတ်</string>
+    <string name="devices_indicator_awake">နိုးနေ</string>
+    <string name="devices_indicator_nudge">တွန်းဆောင်</string>
+    <string name="devices_indicator_observe">စောင့်ကြည့်</string>
+    <string name="devices_indicator_disconnect">ဖြတ်တောက်</string>
+    <string name="devices_indicator_limit">ကန့်သတ်</string>
+    <string name="devices_indicator_launch">စတင်</string>
+    <string name="devices_indicator_auto">အော်တို</string>
+    <string name="devices_indicator_home">ပင်မ</string>
+    <string name="devices_indicator_dnd">မနှောင့်ယှက်နှင့်</string>
+    <string name="devices_indicator_alert">သတိပေးချက်</string>
 </resources>

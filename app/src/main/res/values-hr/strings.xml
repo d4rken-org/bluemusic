@@ -231,7 +231,7 @@
     <string name="action_undo">Poništi</string>
     <string name="action_show">Prikaži</string>
     <string name="action_dismiss">Odbaci</string>
-    <string name="action_fix">Fix</string>
+    <string name="action_fix">Popravi</string>
     <string name="battery_optimizations_issue_description">Optimizacija baterije je omogućena za ovu aplikaciju i može ju spriječiti u primanju Bluetooth događaja. Razmislite o onemogućavanju ako imate problema.</string>
     <string name="label_bluetooth_settings">Bluetooth postavke</string>
     <string name="android10_applaunch_issue_description">Android 10 ograničava način pokretanja aplikacija iz pozadine. Da biste omogućili otvaranje aplikacija kada se Bluetooth uređaj poveže, dozvolite dopuštenje \&quot;Prikazivanje preko drugih aplikacija\&quot; (SYSTEM_ALERT_WINDOW).</string>

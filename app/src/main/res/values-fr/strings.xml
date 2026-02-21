@@ -141,7 +141,7 @@
     <string name="settings_support_wiki_description">Apprenez à utiliser BVM efficacement</string>
     <string name="settings_support_issue_tracker_description">Un système de suivi public pour les rapports de bogues et les demandes de fonctionnalités.</string>
     <string name="settings_support_issue_tracker_label">Suivi des problèmes</string>
-    <string name="settings_support_debuglog_label">Debug log</string>
+    <string name="settings_support_debuglog_label">Journal de débogage</string>
     <string name="settings_support_debuglog_desc">Enregistrez tout ce que fait l\'application dans un fichier texte que vous pouvez partager.</string>
     <string name="settings_support_debuglog_recording_desc">Enregistrement en cours des informations de débogage. Appuyez pour arrêter l\'enregistrement.</string>
     <string name="settings_support_debuglog_path">Chemin du journal : %1$s</string>
@@ -164,7 +164,7 @@
     <string name="settings_privacy_policy_desc">Gérer les données de manière responsable.</string>
     <string name="changelog_label">Historique des modifications</string>
     <string name="debug_notification_channel_label">Notifications de débogage</string>
-    <string name="debug_log_consent_title">Debug log</string>
+    <string name="debug_log_consent_title">Journal de débogage</string>
     <string name="debug_log_consent_explanation">Cette fonctionnalité enregistre tout ce que fait l\'application dans un fichier partageable. Le fichier généré contient des informations sensibles (par exemple, noms de fichiers et applications installées). Ne le partagez qu\'avec des parties de confiance (par exemple, un développeur résolvant un problème).</string>
     <string name="debug_log_recording_progress">Enregistrement du journal de débogage</string>
     <string name="debug_log_record_action">Enregistrer</string>

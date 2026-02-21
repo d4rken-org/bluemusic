@@ -75,9 +75,9 @@
     <string name="devices_device_config_autoplay_keycodes_order">ปุ่มที่เลือก (ตามลำดับ)</string>
     <string name="devices_device_config_autoplay_keycodes_title">ประเภทปุ่มเล่นอัตโนมัติ</string>
     <string name="devices_device_config_section_volumes_label">ระดับเสียง</string>
-    <string name="devices_device_config_section_volume_label">Volume</string>
-    <string name="devices_device_config_alarm_volume_label">Alarm volume</string>
-    <string name="devices_device_config_alarm_volume_desc">Some alarm apps use the music volume instead.</string>
+    <string name="devices_device_config_section_volume_label">ระดับเสียง</string>
+    <string name="devices_device_config_alarm_volume_label">ระดับเสียงนาฬิกาปลุก</string>
+    <string name="devices_device_config_alarm_volume_desc">แอปนาฬิกาปลุกบางตัวใช้ระดับเสียงเพลงแทน</string>
     <string name="devices_device_config_notification_volume_label">ระดับเสียงแจ้งเตือน</string>
     <string name="devices_device_config_notification_volume_desc">อุปกรณ์บางตัวไม่สนับสนุนการตั้งค่าระดับเสียงแจ้งเตือนแยกต่างหาก</string>
     <string name="devices_device_config_music_volume_label">ระดับเสียงเพลง</string>

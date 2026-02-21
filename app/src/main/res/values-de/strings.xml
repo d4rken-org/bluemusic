@@ -189,13 +189,13 @@
     <string name="label_status_idle">Leerlauf</string>
     <string name="label_status_adjusting_volumes">Lautstärken werden angepasst</string>
     <string name="label_premium_version">Premium-Version</string>
-    <string name="general_upgrade_action">Upgrade</string>
+    <string name="general_upgrade_action">Upgraden</string>
     <string name="description_premium_required_additional_devices">Das Verwalten zusätzlicher Geräte erfordert die Premium-Version.</string>
     <string name="description_premium_required_this_extra_option">Diese Extraoption erfordert die Premium-Version dieser App.</string>
     <string name="description_premium_upgrade_explanation">Hol Dir die Premium-Version, um zusätzliche Funktionen freizuschalten und die Entwicklung zu unterstützen.</string>
     <string name="label_premium_version_required">Premium-Version erforderlich</string>
     <string name="upgrade_feature_requires_pro">Diese Funktion erfordert die Premium-Version</string>
-    <string name="upgrade_prompt_upgrade_action">Upgrade</string>
+    <string name="upgrade_prompt_upgrade_action">Upgraden</string>
     <string name="description_intro_purpose">Diese App erlaubt es Deinem Android-Gerät, die Lautstärke verschiedener Bluetooth-Geräte zu speichern.</string>
     <string name="description_intro_premium">Falls Dir diese App gefällt, erwäge eine Aufwertung zur Premium-Version. Dies unterstützt die Entwicklung und verschafft Dir einige Zusatzfunktionen.</string>
     <string name="description_intro_tap_the_button">Beginne durch Hinzufügen Deines ersten Geräts.</string>
