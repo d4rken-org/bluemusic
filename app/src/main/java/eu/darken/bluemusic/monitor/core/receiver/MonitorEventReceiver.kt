@@ -66,6 +66,19 @@ class MonitorEventReceiver : BroadcastReceiver() {
                     log(TAG, INFO) { "We are disabled." }
                     return@launch
                 }
+
+                val bluetoothDevice = intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
+                if (bluetoothDevice == null) {
+                    log(TAG, WARN) { "Intent didn't contain a bluetooth device!" }
+                    return@launch
+                }
+
+                if (!deviceRepo.isManaged(bluetoothDevice.address)) {
+                    log(TAG, DEBUG) { "Event belongs to an un-managed device" }
+                    return@launch
+                }
+
+                monitorControl.startMonitor()
                 handleEvent(intent)
             } catch (e: Exception) {
                 log(TAG, ERROR) { "Error handling bluetooth event: ${e.asLog()}" }
@@ -102,8 +115,6 @@ class MonitorEventReceiver : BroadcastReceiver() {
             return
         }
         log(TAG, DEBUG) { "Event concerns device $managedDevice" }
-
-        monitorControl.startMonitor()
 
         val actualEvent = BluetoothEventQueue.Event(
             type = eventType,

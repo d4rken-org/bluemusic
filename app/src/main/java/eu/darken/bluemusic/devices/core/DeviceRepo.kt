@@ -83,6 +83,9 @@ class DeviceRepo @Inject constructor(
         }
     }
 
+    suspend fun isManaged(address: DeviceAddr): Boolean =
+        deviceDatabase.devices.getDevice(address) != null
+
     suspend fun deleteDevice(address: DeviceAddr) {
         withContext(dispatcherProvider.IO) {
             deviceDatabase.devices.deleteByAddress(address)
