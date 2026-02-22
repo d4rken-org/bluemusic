@@ -43,11 +43,13 @@
     <string name="devices_device_config_adjustment_delay_desc">Her ses ayarı arasındaki milisaniye cinsinden gecikme. 0ms gecikme, bu cihaz bağlandığında ses seviyesini anında ayarlamak anlamına gelir.</string>
     <string name="devices_device_config_reaction_delay_label">Reaksiyon gecikmesi</string>
     <string name="devices_device_config_reaction_delay_desc">Bu uygulama bu cihaza tepki verene kadarki milisaniye cinsinden gecikme.</string>
+    <string name="devices_device_config_enabled_label">Etkin</string>
+    <string name="devices_device_config_enabled_desc">Bağlandığında bu cihaza tepki ver</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ses artırma gecikmesi</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Ses artırma işlemleri arasında geçen minimum süre: %d ms</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Ses azaltma gecikmesi</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Ses azaltma işlemleri arasında geçen minimum süre: %d ms</string>
-    <string name="devices_device_config_section_reaction_label">Diğer</string>
+    <string name="devices_device_config_section_reaction_label">Reaksiyon</string>
     <string name="devices_device_config_launch_app_label">Uygulamayı başlat</string>
     <string name="devices_device_config_launch_app_desc">Bu cihaz bağlandığında uygulamayı başlat.</string>
     <string name="devices_device_config_launch_app_multiple_desc">%d uygulama seçildi</string>
@@ -60,7 +62,7 @@
     <string name="devices_device_config_notification_policy_required_ringtone">Zil ses kontrolü için bildirim politikası erişimi gerekli</string>
     <string name="devices_device_config_notification_policy_required_dnd">Rahatsız Etme kontrolü için bildirim politikası erişimi gerekli</string>
     <string name="devices_device_config_visible_adjustments_label">Görünür ayarlamalar</string>
-    <string name="devices_device_config_visible_adjustments_desc">Cihaz kartında hangi ayarlamaların gösterileceğini seç</string>
+    <string name="devices_device_config_visible_adjustments_desc">Bu uygulama ayarlamalar yaparken sistemin ses penceresi gösteriliyor.</string>
     <string name="devices_device_config_keep_awake_label">Uyanık tut</string>
     <string name="devices_device_config_keep_awake_desc">Bu cihaz bağlıyken ekranı açık tutun.</string>
     <string name="devices_device_config_volume_observe_label">Değişiklikleri gözlemle</string>
@@ -84,7 +86,7 @@
     <string name="devices_device_config_alarm_volume_label">Alarm ses yüksekliği</string>
     <string name="devices_device_config_alarm_volume_desc">Bazı alarm uygulamaları bunun yerine müzik sesini kullanır.</string>
     <string name="devices_device_config_notification_volume_label">Bildirim sesi düzeyi</string>
-    <string name="devices_device_config_notification_volume_desc">Tüm cihazlar ayrı bir bildirim birimi ayarını desteklemez.</string>
+    <string name="devices_device_config_notification_volume_desc">Tüm cihazlar ayrı bir bildirim birimi ayarını desteklemez. Ayrıca sessiz veya titreşim modunu ayarlayabilirsiniz.</string>
     <string name="devices_device_config_music_volume_label">Müzik ses düzeyi</string>
     <string name="devices_device_config_music_volume_desc">Bu cihaz bağlandığında müzik ve oyunları etkileyen sesi kontrol edin.</string>
     <string name="devices_device_config_call_volume_label">Arama ses düzeyi</string>
@@ -103,8 +105,6 @@
     <string name="devices_last_connected_label">Son bağlantı: %s</string>
     <string name="devices_currently_connected_label">Şu anda bağlı</string>
     <string name="devices_device_disabled_label">Cihaz devre dışı</string>
-    <string name="devices_device_config_enabled_label">Etkin</string>
-    <string name="devices_device_config_enabled_desc">Bağlandığında bu cihaza tepki ver</string>
     <string name="devices_no_volumes_configured">Bu cihaz için ses ayarı yapılandırılmamış. Ses tercihlerini ayarlamak için Yapılandır\'a dokun.</string>
     <string name="settings_label">Ayarlar</string>
     <string name="settings_category_other_label">Diğer</string>

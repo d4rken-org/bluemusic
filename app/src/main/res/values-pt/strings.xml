@@ -55,7 +55,9 @@
     <string name="devices_device_config_notification_policy_required_notification">O controlo do volume de notificações requer acesso à política de notificações</string>
     <string name="devices_device_config_notification_policy_required_ringtone">O controlo do volume de toque requer acesso à política de notificações</string>
     <string name="devices_device_config_notification_policy_required_dnd">O controlo do Não Incomodar requer acesso à política de notificações</string>
-    <string name="devices_device_config_visible_adjustments_desc">Alterna que ajustes são mostrados no cartão do dispositivo</string>
+    <string name="devices_device_config_enabled_label">Ativado</string>
+    <string name="devices_device_config_enabled_desc">Reagir a este dispositivo quando conectado</string>
+    <string name="devices_device_config_visible_adjustments_desc">Mostra a janela de volume do sistema enquanto a aplicação estiver a fazer os ajustes para este dispositivo.</string>
     <string name="devices_device_config_visible_adjustments_label">Ajustes visíveis</string>
     <string name="devices_device_config_keep_awake_label">Manter acordado</string>
     <string name="devices_device_config_keep_awake_desc">Mantém o ecrã ligado enquanto este dispositivo está conectado.</string>
@@ -103,8 +105,6 @@
     <string name="devices_last_connected_label">Última conexão: %s</string>
     <string name="devices_currently_connected_label">Atualmente conectado</string>
     <string name="devices_device_disabled_label">Dispositivo desativado</string>
-    <string name="devices_device_config_enabled_label">Ativado</string>
-    <string name="devices_device_config_enabled_desc">Reagir a este dispositivo quando conectado</string>
     <string name="devices_no_volumes_configured">Nenhum volume configurado para este dispositivo. Toca em Configurar para definir preferências de volume.</string>
     <string name="settings_label">Definições</string>
     <string name="settings_category_other_label">Outros</string>
@@ -285,11 +285,11 @@
     <string name="devices_indicator_dnd">NI</string>
 
     <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">Alerta de ligacao</string>
-    <string name="connection_alert_dialog_title">Alerta de ligacao</string>
+    <string name="devices_device_config_connection_alert_label">Alerta de ligação</string>
+    <string name="connection_alert_dialog_title">Alerta de ligação</string>
     <string name="connection_alert_type_none">Nenhum</string>
     <string name="connection_alert_type_sound">Apenas som</string>
-    <string name="connection_alert_type_vibration">Apenas vibracao</string>
-    <string name="connection_alert_type_both">Som e vibracao</string>
+    <string name="connection_alert_type_vibration">Apenas vibração</string>
+    <string name="connection_alert_type_both">Som e vibração</string>
     <string name="devices_indicator_alert">Alerta</string>
 </resources>

@@ -108,7 +108,7 @@
     <string name="devices_audio_stream_notification_label">Ilmoitus</string>
     <string name="devices_audio_stream_alarm_label">Hälytys</string>
     <string name="label_speaker_autosave">Tallenna äänenvoimakkuus automaattisesti</string>
-    <string name="description_speaker_autosave">\&quot;Laitteen kaiutin\&quot; merkintä, mikä on vastuussa oletus äänenvoimakkuuksista, päivittää itsensä, kun Bluetooth laite yhdistää. Huomio: tämä ei toimi kaikilla laitteilla.</string>
+    <string name="description_speaker_autosave">"Laitteen kaiutin" merkintä, mikä on vastuussa oletus äänenvoimakkuuksista, päivittää itsensä, kun Bluetooth laite yhdistää. Huomio: tämä ei toimi kaikilla laitteilla.</string>
     <string name="devices_neverseen_label">Ei nähty</string>
     <string name="devices_state_connected_label">Yhdistetty</string>
     <string name="devices_last_connected_label">Viimeksi yhdistetty: %s</string>
@@ -233,11 +233,11 @@
     <string name="action_grant">Myönnä</string>
     <string name="label_advanced">Lisäasetukset</string>
     <string name="label_exclude_health">Jätä pois terveys profiilit</string>
-    <string name="description_exclude_health">Jotkut Android laitteet menevät jumiin tarkastellessaan \'Terveys laitteden\' Bluetooth profiileita (HDP, 0x1400).</string>
+    <string name="description_exclude_health">Jotkut Android laitteet menevät jumiin tarkastellessaan \'Terveys laitteiden\' Bluetooth profiileita (HDP, 0x1400).</string>
     <string name="label_exclude_gattserver">Jätä pois GATT palvelin profiilit</string>
     <string name="label_exclude_gatt">Jätä pois GATT profiileja</string>
-    <string name="description_exclude_gattserver">Älä hae \'Generic Attribute\'(GATT) tyyppisiä palvelin Bluetooth profiileja.</string>
-    <string name="description_exclude_gatt">Älä hae \'Generic Attribute\'(GATT) tyyppisiä asiakas Bluetooth profiileja.</string>
+    <string name="description_exclude_gattserver">Älä hae \'Generic Attribute\' (GATT) tyyppisiä palvelin Bluetooth profiileja.</string>
+    <string name="description_exclude_gatt">Älä hae \'Generic Attribute\' (GATT) tyyppisiä asiakas Bluetooth profiileja.</string>
     <string name="description_waiting_for_devicex">Odotetaan %s yhteyden valmistumista</string>
     <string name="action_undo">Kumoa</string>
     <string name="action_show">Näytä</string>
@@ -245,7 +245,7 @@
     <string name="action_fix">Korjaa</string>
     <string name="battery_optimizations_issue_description">Akun optimointi on käytössä tälle sovellukselle ja saattaa estää sitä vastaanottamasta tietoa Bluetooth tapahtumista. Harkitse optimointien poistamista käytöstä, jos huomaat ongelmia.</string>
     <string name="label_bluetooth_settings">Bluetooth asetukset</string>
-    <string name="android10_applaunch_issue_description">Android 10 rajoittaa kuinka sovelluksia voidaan käynnistää taustalta. Jotta sovellukset voidaan avata kun Bluetooth-laite yhdistää, myönnä käyttöoikeus \&quot;Näytä muiden sovellusten päällä\&quot; (SYSTEM_ALERT_WINDOW).</string>
+    <string name="android10_applaunch_issue_description">Android 10 rajoittaa kuinka sovelluksia voidaan käynnistää taustalta. Jotta sovellukset voidaan avata kun Bluetooth-laite yhdistää, myönnä käyttöoikeus "Näytä muiden sovellusten päällä" (SYSTEM_ALERT_WINDOW).</string>
     <string name="label_opensource">Lähdekoodi</string>
     <string name="android13_notification_permission_description">Myönnä tälle sovellukselle käyttöoikeus lähettää ilmoituksia. Tämä mahdollistaa ilmoituksen näyttämisen kun sovellus on aktiivinen ja äänenvoimakkuussäätöjä tehdään.</string>
     <string name="privacy_policy_label">Tietosuojakäytäntö</string>
@@ -258,7 +258,7 @@
     <string name="battery_optimization_hint_message">Akun optimointi on käytössä ja saattaa estää oikean toiminnan. Harkitse niiden poistamista käytöstä.</string>
     <string name="battery_optimization_fix_action">Poista optimointi käytöstä</string>
     <string name="android10_applaunch_hint_title">Sovelluksen käynnistyskäyttöoikeus</string>
-    <string name="android10_applaunch_hint_message">Android 10 vaatii erityiskäyttöoikeuden käynnistää sovelluksia tai näyttää kotinäyttöä taustalta. Myönnä &quot;Näytä muiden sovellusten päällä&quot; käyttöoikeus.</string>
+    <string name="android10_applaunch_hint_message">Android 10 vaatii erityiskäyttöoikeuden käynnistää sovelluksia tai näyttää kotinäyttöä taustalta. Myönnä "Näytä muiden sovellusten päällä" käyttöoikeus.</string>
     <string name="notification_permission_hint_title">Ilmoituskäyttöoikeus</string>
     <string name="notification_permission_hint_message">Myönnä ilmoituskäyttöoikeus nähdäksesi tilatuspäivitykset äänenvoimakkuuksia säädettäessä.</string>
     <string name="error_iap_cancelled_message">Osto peruutettu</string>
