@@ -56,7 +56,7 @@ fun Project.setupKotlinOptions() {
                 "-opt-in=kotlinx.coroutines.FlowPreview",
                 "-opt-in=kotlin.time.ExperimentalTime",
                 "-opt-in=kotlin.RequiresOptIn",
-                "-Xjvm-default=all",
+                "-jvm-default=enable",
                 "-Xcontext-parameters",
                 "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
             )
