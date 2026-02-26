@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.ArrowBack
 import androidx.compose.material.icons.automirrored.twotone.Launch
@@ -331,7 +333,8 @@ fun DeviceConfigScreen(
     state: DeviceConfigViewModel.State,
     onAction: (ConfigAction) -> Unit,
     onNavigateBack: () -> Unit,
-    snackbarHostState: SnackbarHostState
+    snackbarHostState: SnackbarHostState,
+    listState: LazyListState = rememberLazyListState(),
 ) {
     val device = state.device
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
@@ -374,6 +377,7 @@ fun DeviceConfigScreen(
     ) { paddingValues ->
         val navBarPadding = navigationBarBottomPadding()
         LazyColumn(
+            state = listState,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)

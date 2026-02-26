@@ -10,6 +10,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("dagger.hilt.android.plugin")
+    id("com.android.compose.screenshot") version "0.0.1-alpha13"
 }
 
 val commitHashProvider = providers.of(CommitHashValueSource::class) {}
@@ -107,6 +108,8 @@ configure<ApplicationExtension> {
         compose = true
         viewBinding = true
     }
+
+    experimentalProperties["android.experimental.enableScreenshotTest"] = true
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
@@ -328,4 +331,8 @@ dependencies {
     "gplayImplementation"("com.android.billingclient:billing-ktx:8.0.0")
 
     implementation("io.github.z4kn4fein:semver:3.0.0")
+
+    "screenshotTestImplementation"(platform("androidx.compose:compose-bom:2026.02.00"))
+    "screenshotTestImplementation"("com.android.tools.screenshot:screenshot-validation-api:0.0.1-alpha13")
+    "screenshotTestImplementation"("androidx.compose.ui:ui-tooling")
 }
