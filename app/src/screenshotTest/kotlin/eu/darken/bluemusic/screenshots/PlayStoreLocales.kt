@@ -1,0 +1,128 @@
+package eu.darken.bluemusic.screenshots
+
+import android.content.res.Configuration
+import androidx.compose.ui.tooling.preview.Preview
+
+// @formatter:off
+
+/**
+ * Multi-preview annotation for all Play Store locales (light mode).
+ * [name] = fastlane directory name, [locale] = Android resource qualifier.
+ */
+@Retention(AnnotationRetention.BINARY)
+@Target(AnnotationTarget.ANNOTATION_CLASS, AnnotationTarget.FUNCTION)
+@Preview(name = "en-US", locale = "en", device = DS)
+@Preview(name = "af", locale = "af", device = DS)
+@Preview(name = "ar", locale = "ar", device = DS)
+@Preview(name = "az-AZ", locale = "az", device = DS)
+@Preview(name = "bg", locale = "bg", device = DS)
+@Preview(name = "ca", locale = "ca", device = DS)
+@Preview(name = "cs-CZ", locale = "cs", device = DS)
+@Preview(name = "da-DK", locale = "da", device = DS)
+@Preview(name = "de-DE", locale = "de", device = DS)
+@Preview(name = "el-GR", locale = "el", device = DS)
+@Preview(name = "es-ES", locale = "es", device = DS)
+@Preview(name = "et", locale = "et", device = DS)
+@Preview(name = "fi-FI", locale = "fi", device = DS)
+@Preview(name = "fil", locale = "fil", device = DS)
+@Preview(name = "fr-FR", locale = "fr", device = DS)
+@Preview(name = "gl-ES", locale = "gl-rES", device = DS)
+@Preview(name = "hi-IN", locale = "hi-rIN", device = DS)
+@Preview(name = "hr", locale = "hr", device = DS)
+@Preview(name = "hu-HU", locale = "hu", device = DS)
+@Preview(name = "id", locale = "in", device = DS)
+@Preview(name = "it-IT", locale = "it", device = DS)
+@Preview(name = "iw-IL", locale = "iw", device = DS)
+@Preview(name = "ja-JP", locale = "ja", device = DS)
+@Preview(name = "ko-KR", locale = "ko", device = DS)
+@Preview(name = "lt", locale = "lt", device = DS)
+@Preview(name = "mk-MK", locale = "mk-rMK", device = DS)
+@Preview(name = "ms", locale = "ms", device = DS)
+@Preview(name = "my-MM", locale = "my-rMM", device = DS)
+@Preview(name = "nl-NL", locale = "nl", device = DS)
+@Preview(name = "no-NO", locale = "no", device = DS)
+@Preview(name = "pcm-NG", locale = "pcm-rNG", device = DS)
+@Preview(name = "pl-PL", locale = "pl", device = DS)
+@Preview(name = "pt-PT", locale = "pt", device = DS)
+@Preview(name = "pt-BR", locale = "pt-rBR", device = DS)
+@Preview(name = "ro", locale = "ro", device = DS)
+@Preview(name = "ru-RU", locale = "ru", device = DS)
+@Preview(name = "sc-IT", locale = "sc-rIT", device = DS)
+@Preview(name = "si-LK", locale = "si-rLK", device = DS)
+@Preview(name = "sk", locale = "sk", device = DS)
+@Preview(name = "sv-SE", locale = "sv", device = DS)
+@Preview(name = "th", locale = "th", device = DS)
+@Preview(name = "tr-TR", locale = "tr", device = DS)
+@Preview(name = "uk", locale = "uk", device = DS)
+@Preview(name = "vi", locale = "vi", device = DS)
+@Preview(name = "zh-CN", locale = "zh-rCN", device = DS)
+@Preview(name = "zh-TW", locale = "zh-rTW", device = DS)
+annotation class PlayStoreLocales
+
+/**
+ * Multi-preview annotation for all Play Store locales (dark mode).
+ */
+@Retention(AnnotationRetention.BINARY)
+@Target(AnnotationTarget.ANNOTATION_CLASS, AnnotationTarget.FUNCTION)
+@Preview(name = "en-US", locale = "en", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "af", locale = "af", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "ar", locale = "ar", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "az-AZ", locale = "az", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "bg", locale = "bg", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "ca", locale = "ca", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "cs-CZ", locale = "cs", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "da-DK", locale = "da", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "de-DE", locale = "de", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "el-GR", locale = "el", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "es-ES", locale = "es", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "et", locale = "et", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "fi-FI", locale = "fi", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "fil", locale = "fil", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "fr-FR", locale = "fr", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "gl-ES", locale = "gl-rES", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "hi-IN", locale = "hi-rIN", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "hr", locale = "hr", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "hu-HU", locale = "hu", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "id", locale = "in", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "it-IT", locale = "it", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "iw-IL", locale = "iw", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "ja-JP", locale = "ja", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "ko-KR", locale = "ko", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "lt", locale = "lt", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "mk-MK", locale = "mk-rMK", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "ms", locale = "ms", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "my-MM", locale = "my-rMM", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "nl-NL", locale = "nl", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "no-NO", locale = "no", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "pcm-NG", locale = "pcm-rNG", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "pl-PL", locale = "pl", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "pt-PT", locale = "pt", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "pt-BR", locale = "pt-rBR", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "ro", locale = "ro", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "ru-RU", locale = "ru", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "sc-IT", locale = "sc-rIT", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "si-LK", locale = "si-rLK", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "sk", locale = "sk", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "sv-SE", locale = "sv", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "th", locale = "th", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "tr-TR", locale = "tr", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "uk", locale = "uk", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "vi", locale = "vi", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "zh-CN", locale = "zh-rCN", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(name = "zh-TW", locale = "zh-rTW", device = DS, uiMode = Configuration.UI_MODE_NIGHT_YES)
+annotation class PlayStoreLocalesDark
+
+/**
+ * Smoke-test subset: 6 locales for fast iteration.
+ */
+@Retention(AnnotationRetention.BINARY)
+@Target(AnnotationTarget.ANNOTATION_CLASS, AnnotationTarget.FUNCTION)
+@Preview(name = "en-US", locale = "en", device = DS)
+@Preview(name = "de-DE", locale = "de", device = DS)
+@Preview(name = "ja-JP", locale = "ja", device = DS)
+@Preview(name = "ar", locale = "ar", device = DS)
+@Preview(name = "zh-CN", locale = "zh-rCN", device = DS)
+@Preview(name = "pt-BR", locale = "pt-rBR", device = DS)
+annotation class PlayStoreLocalesSmoke
+
+// @formatter:on

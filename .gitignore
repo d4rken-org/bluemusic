@@ -16,6 +16,9 @@ fastlane/Preview.html
 # snapshot generated screenshots
 fastlane/screenshots
 
+# Compose Preview Screenshot reference images
+app/src/screenshotTest*/reference/
+
 # scan temporary files
 fastlane/test_output
 fastlane/README.md
