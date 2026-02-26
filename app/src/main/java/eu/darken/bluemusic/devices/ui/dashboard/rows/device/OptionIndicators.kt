@@ -42,7 +42,7 @@ import eu.darken.bluemusic.monitor.core.alert.AlertType
 fun OptionIndicators(
     device: ManagedDevice,
     launchApps: List<AppInfo> = emptyList(),
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     val indicators = buildList {
         if (device.volumeLock) add(Icons.TwoTone.Lock to stringResource(R.string.devices_device_config_volume_lock_label))

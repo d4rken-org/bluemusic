@@ -14,10 +14,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.Block
 import androidx.compose.material.icons.twotone.ExpandMore
+import androidx.compose.material.icons.twotone.Edit
+import androidx.compose.material.icons.twotone.EditOff
 import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -54,7 +57,8 @@ fun ManagedDeviceItem(
     launchApps: List<AppInfo> = emptyList(),
     onDeviceAction: (DashboardAction) -> Unit,
     onNavigateToConfig: () -> Unit,
-    isOnlyDevice: Boolean = false
+    isOnlyDevice: Boolean = false,
+    isLocked: Boolean = false,
 ) {
     var expanded by remember { mutableStateOf(device.isActive || isOnlyDevice) }
 
@@ -205,7 +209,8 @@ fun ManagedDeviceItem(
                                 volumeMode = volumeMode,
                                 onVolumeChange = { newMode ->
                                     onDeviceAction(DashboardAction.AdjustVolume(device.address, streamType, newMode))
-                                }
+                                },
+                                isLocked = isLocked,
                             )
                         } else {
                             VolumeControl(
@@ -220,7 +225,8 @@ fun ManagedDeviceItem(
                                             VolumeMode.Normal(newVolume)
                                         )
                                     )
-                                }
+                                },
+                                isLocked = isLocked,
                             )
                         }
                     }
@@ -228,11 +234,27 @@ fun ManagedDeviceItem(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Configure button
+                // Footer: Pin + Configure buttons
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
+                    IconButton(
+                        onClick = {
+                            onDeviceAction(DashboardAction.ToggleAdjustmentLock(device.address))
+                        }
+                    ) {
+                        Icon(
+                            imageVector = if (isLocked) Icons.TwoTone.EditOff else Icons.TwoTone.Edit,
+                            contentDescription = stringResource(
+                                if (isLocked) R.string.devices_unlock_sliders_action
+                                else R.string.devices_lock_sliders_action
+                            ),
+                            tint = if (isLocked) MaterialTheme.colorScheme.primary
+                            else MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
                     Button(
                         onClick = onNavigateToConfig
                     ) {
@@ -283,6 +305,19 @@ private fun ManagedDeviceItemDisabledPreview() {
             device = MockDevice().toManagedDevice(isEnabled = false),
             onDeviceAction = {},
             onNavigateToConfig = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun ManagedDeviceItemLockedPreview() {
+    PreviewWrapper {
+        ManagedDeviceItem(
+            device = MockDevice().toManagedDevice(isConnected = true),
+            onDeviceAction = {},
+            onNavigateToConfig = {},
+            isLocked = true,
         )
     }
 }

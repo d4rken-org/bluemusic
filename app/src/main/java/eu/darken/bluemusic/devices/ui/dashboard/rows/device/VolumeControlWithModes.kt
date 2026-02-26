@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.devices.ui.dashboard.rows.device
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.VolumeOff
 import androidx.compose.material.icons.twotone.PhoneAndroid
@@ -22,11 +24,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.common.compose.Preview2
@@ -44,11 +49,11 @@ fun VolumeControlWithModes(
     label: String,
     volumeMode: VolumeMode?,
     onVolumeChange: (VolumeMode) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isLocked: Boolean = false,
 ) {
     val haptics = LocalHapticFeedback.current
 
-    // Track the slider value locally while dragging
     var sliderValue by remember(volumeMode) {
         mutableFloatStateOf(
             when (volumeMode) {
@@ -60,7 +65,9 @@ fun VolumeControlWithModes(
         )
     }
 
-    Column(modifier = modifier) {
+    var showVolumeInput by remember { mutableStateOf(false) }
+
+    Column(modifier = modifier.alpha(if (isLocked) 0.5f else 1f)) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -79,24 +86,28 @@ fun VolumeControlWithModes(
                 modifier = Modifier.width(80.dp)
             )
 
-            // Mode icons container with fixed width
             Box(
                 modifier = Modifier.width(88.dp),
                 contentAlignment = Alignment.Center
             ) {
                 if (volumeMode != null) {
-                    // Show mode icons for quick selection
                     Row {
                     Icon(
                         imageVector = Icons.AutoMirrored.TwoTone.VolumeOff,
                         contentDescription = "Silent",
                         modifier = Modifier
                             .size(24.dp)
-                            .clickable {
-                                haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                                sliderValue = SOUND_MODE_SILENT
-                                onVolumeChange(VolumeMode.Silent)
-                            }
+                            .then(
+                                if (!isLocked) {
+                                    Modifier.clickable {
+                                        haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                        sliderValue = SOUND_MODE_SILENT
+                                        onVolumeChange(VolumeMode.Silent)
+                                    }
+                                } else {
+                                    Modifier
+                                }
+                            )
                             .padding(4.dp),
                         tint = if (sliderValue == SOUND_MODE_SILENT)
                             MaterialTheme.colorScheme.primary
@@ -108,11 +119,17 @@ fun VolumeControlWithModes(
                         contentDescription = "Vibrate",
                         modifier = Modifier
                             .size(24.dp)
-                            .clickable {
-                                haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                                sliderValue = SOUND_MODE_VIBRATE
-                                onVolumeChange(VolumeMode.Vibrate)
-                            }
+                            .then(
+                                if (!isLocked) {
+                                    Modifier.clickable {
+                                        haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                        sliderValue = SOUND_MODE_VIBRATE
+                                        onVolumeChange(VolumeMode.Vibrate)
+                                    }
+                                } else {
+                                    Modifier
+                                }
+                            )
                             .padding(4.dp),
                         tint = if (sliderValue == SOUND_MODE_VIBRATE)
                             MaterialTheme.colorScheme.primary
@@ -124,11 +141,17 @@ fun VolumeControlWithModes(
                         contentDescription = "Normal",
                         modifier = Modifier
                             .size(24.dp)
-                            .clickable {
-                                haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                                sliderValue = if (sliderValue < 0) 0.5f else sliderValue
-                                onVolumeChange(VolumeMode.Normal(sliderValue))
-                            }
+                            .then(
+                                if (!isLocked) {
+                                    Modifier.clickable {
+                                        haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                        sliderValue = if (sliderValue < 0) 0.5f else sliderValue
+                                        onVolumeChange(VolumeMode.Normal(sliderValue))
+                                    }
+                                } else {
+                                    Modifier
+                                }
+                            )
                             .padding(4.dp),
                         tint = if (sliderValue >= 0)
                             MaterialTheme.colorScheme.primary
@@ -142,11 +165,10 @@ fun VolumeControlWithModes(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .height(48.dp), // Fixed height to maintain consistency
+                    .height(48.dp),
                 contentAlignment = Alignment.Center
             ) {
                 if (sliderValue < 0) {
-                    // Show mode text instead of slider for special modes
                     val currentMode = fromFloat(sliderValue)
                     Text(
                         text = when (currentMode) {
@@ -158,7 +180,6 @@ fun VolumeControlWithModes(
                         color = MaterialTheme.colorScheme.primary
                     )
                 } else {
-                    // Regular slider for volume
                     Slider(
                         value = if (sliderValue < 0) 0f else sliderValue,
                         onValueChange = { newValue ->
@@ -167,13 +188,12 @@ fun VolumeControlWithModes(
                             }
                         },
                         onValueChangeFinished = {
-                            // Only update when the user releases the slider
                             if (sliderValue > 0.01f) {
                                 haptics.performHapticFeedback(HapticFeedbackType.LongPress)
                                 onVolumeChange(VolumeMode.Normal(sliderValue))
                             }
                         },
-                        enabled = volumeMode != null,
+                        enabled = volumeMode != null && !isLocked,
                         colors = SliderDefaults.colors(
                             thumbColor = MaterialTheme.colorScheme.primary,
                             activeTrackColor = MaterialTheme.colorScheme.primary
@@ -182,20 +202,53 @@ fun VolumeControlWithModes(
                 }
             }
 
+            val isNormal = volumeMode is VolumeMode.Normal
+            val canTap = isNormal && !isLocked
             Text(
-                text = when (volumeMode) {
-                    null -> "-"
-                    is VolumeMode.Silent -> "~"
-                    is VolumeMode.Vibrate -> "~"
-                    is VolumeMode.Normal -> "${(volumeMode.percentage * 100).roundToInt()}%"
+                text = when {
+                    volumeMode == null -> "-"
+                    volumeMode is VolumeMode.Silent -> "~"
+                    volumeMode is VolumeMode.Vibrate -> "~"
+                    sliderValue >= 0 -> "${(sliderValue * 100).roundToInt()}%"
+                    else -> "-"
                 },
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = if (canTap) {
+                    MaterialTheme.colorScheme.onPrimaryContainer
+                } else {
+                    MaterialTheme.colorScheme.onSurfaceVariant
+                },
+                textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .width(40.dp)
-                    .padding(start = 8.dp)
+                    .widthIn(min = 40.dp)
+                    .then(
+                        if (canTap) {
+                            Modifier
+                                .background(
+                                    color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.8f),
+                                    shape = MaterialTheme.shapes.small
+                                )
+                                .clickable { showVolumeInput = true }
+                        } else {
+                            Modifier
+                        }
+                    )
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
             )
         }
+    }
+
+    if (showVolumeInput && volumeMode is VolumeMode.Normal) {
+        VolumeInputDialog(
+            streamLabel = label,
+            currentPercentage = (volumeMode.percentage * 100).roundToInt(),
+            minValue = 1,
+            onConfirm = { newVolume ->
+                sliderValue = newVolume
+                onVolumeChange(VolumeMode.Normal(newVolume))
+            },
+            onDismiss = { showVolumeInput = false },
+        )
     }
 }
 
@@ -247,8 +300,23 @@ private fun VolumeControlWithModesPreview() {
             VolumeControlWithModes(
                 streamType = AudioStream.Type.ALARM,
                 label = "Alarm",
-                volumeMode = null, // Disabled state
+                volumeMode = null,
                 onVolumeChange = {},
+                modifier = Modifier.padding(vertical = 4.dp)
+            )
+
+            Text(
+                text = "Locked State",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
+            )
+
+            VolumeControlWithModes(
+                streamType = AudioStream.Type.RINGTONE,
+                label = "Ringtone",
+                volumeMode = VolumeMode.Normal(0.5f),
+                onVolumeChange = {},
+                isLocked = true,
                 modifier = Modifier.padding(vertical = 4.dp)
             )
         }

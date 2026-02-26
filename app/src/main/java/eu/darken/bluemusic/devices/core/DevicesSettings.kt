@@ -8,12 +8,14 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.common.datastore.PreferenceData
 import eu.darken.bluemusic.common.datastore.createValue
 import eu.darken.bluemusic.common.debug.logging.logTag
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class DevicesSettings @Inject constructor(
     @param:ApplicationContext private val context: Context,
+    json: Json,
 ) : PreferenceData {
 
     private val Context.dataStore by preferencesDataStore(name = "settings_devices")
@@ -23,6 +25,7 @@ class DevicesSettings @Inject constructor(
 
     val isEnabled = dataStore.createValue("devices.enabled", true)
     val restoreOnBoot = dataStore.createValue("devices.volume.restore.boot.enabled", true)
+    val lockedDevices = dataStore.createValue("devices.adjustment.locked", emptySet<String>(), json)
 
     companion object {
         internal val TAG = logTag("Devices", "Settings")
