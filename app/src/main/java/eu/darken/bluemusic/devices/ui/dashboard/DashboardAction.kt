@@ -21,4 +21,6 @@ sealed interface DashboardAction {
     data object DismissAndroid10AppLaunchHint : DashboardAction
 
     data object DismissNotificationPermissionHint : DashboardAction
+
+    data class ToggleAdjustmentLock(val addr: DeviceAddr) : DashboardAction
 }

@@ -12,7 +12,9 @@ import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
+import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.DeviceRepo
+import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.devices.core.updateVolume
@@ -25,6 +27,7 @@ import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.receiveAsFlow
 import javax.inject.Inject
@@ -38,6 +41,7 @@ class DashboardViewModel @Inject constructor(
     upgradeRepo: UpgradeRepo,
     bluetoothSource: BluetoothRepo,
     private val generalSettings: GeneralSettings,
+    private val devicesSettings: DevicesSettings,
     dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
     appRepo: AppRepo,
@@ -109,12 +113,14 @@ class DashboardViewModel @Inject constructor(
         batteryOptimizationHintFlow,
         overlayPermissionHintFlow,
         notificationPermissionHintFlow,
-    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint ->
+        devicesSettings.lockedDevices.flow,
+    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint, lockedDevices ->
         State(
             isProVersion = upgradeInfo.isUpgraded,
             isBluetoothEnabled = bluetoothState.isEnabled,
             hasBluetoothPermission = bluetoothState.hasPermission,
             devicesWithApps = devicesWithApps,
+            lockedDevices = lockedDevices,
             showBatteryOptimizationHint = batteryHint.shouldShow,
             batteryOptimizationIntent = batteryHint.intent,
             showAndroid10AppLaunchHint = overlayHint.shouldShow,
@@ -133,6 +139,7 @@ class DashboardViewModel @Inject constructor(
         val isBluetoothEnabled: Boolean = false,
         val hasBluetoothPermission: Boolean = true,
         val devicesWithApps: List<DeviceWithApps> = emptyList(),
+        val lockedDevices: Set<DeviceAddr> = emptySet(),
         val isLoading: Boolean = false,
         val showBatteryOptimizationHint: Boolean = false,
         val batteryOptimizationIntent: Intent? = null,
@@ -181,7 +188,16 @@ class DashboardViewModel @Inject constructor(
                 }
             }
 
+            is DashboardAction.ToggleAdjustmentLock -> {
+                devicesSettings.lockedDevices.update { locked ->
+                    if (action.addr in locked) locked - action.addr else locked + action.addr
+                }
+            }
+
             is DashboardAction.AdjustVolume -> {
+                val locked = devicesSettings.lockedDevices.flow.first()
+                if (action.addr in locked) return@launch
+
                 deviceRepo.updateDevice(action.addr) { oldConfig ->
                     oldConfig.updateVolume(action.type, action.volumeMode)
                 }

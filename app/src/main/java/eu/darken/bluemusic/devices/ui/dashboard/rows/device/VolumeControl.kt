@@ -1,5 +1,7 @@
 package eu.darken.bluemusic.devices.ui.dashboard.rows.device
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -7,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.Alarm
 import androidx.compose.material.icons.twotone.MusicNote
@@ -24,11 +27,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import kotlin.math.roundToInt
 
 @Composable
 fun VolumeControl(
@@ -36,12 +42,13 @@ fun VolumeControl(
     label: String,
     volume: Float?,
     onVolumeChange: (Float) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isLocked: Boolean = false,
 ) {
-    // Track the slider value locally while dragging
     var sliderValue by remember(volume) { mutableStateOf(volume ?: 0.5f) }
+    var showVolumeInput by remember { mutableStateOf(false) }
 
-    Column(modifier = modifier) {
+    Column(modifier = modifier.alpha(if (isLocked) 0.5f else 1f)) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
@@ -59,31 +66,63 @@ fun VolumeControl(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.width(80.dp)
             )
+            Spacer(modifier = Modifier.width(8.dp))
             Slider(
                 value = sliderValue,
                 onValueChange = { newValue ->
                     sliderValue = newValue
                 },
                 onValueChangeFinished = {
-                    // Only update when the user releases the slider
                     onVolumeChange(sliderValue)
                 },
                 modifier = Modifier.weight(1f),
-                enabled = volume != null
+                enabled = volume != null && !isLocked
             )
+            val canTap = volume != null && !isLocked
+
+            Spacer(modifier = Modifier.width(8.dp))
+
             Text(
-                text = if (volume != null) "${(sliderValue * 100).toInt()}%" else "-",
+                text = if (volume != null) "${(sliderValue * 100).roundToInt()}%" else "-",
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = if (canTap) {
+                    MaterialTheme.colorScheme.onPrimaryContainer
+                } else {
+                    MaterialTheme.colorScheme.onSurfaceVariant
+                },
+                textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .width(40.dp)
-                    .padding(start = 8.dp)
+                    .widthIn(min = 40.dp)
+                    .then(
+                        if (canTap) {
+                            Modifier
+                                .background(
+                                    color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.8f),
+                                    shape = MaterialTheme.shapes.small
+                                )
+                                .clickable { showVolumeInput = true }
+                        } else {
+                            Modifier
+                        }
+                    )
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
             )
         }
     }
+
+    if (showVolumeInput && volume != null) {
+        VolumeInputDialog(
+            streamLabel = label,
+            currentPercentage = (volume * 100).roundToInt(),
+            onConfirm = { newVolume ->
+                sliderValue = newVolume
+                onVolumeChange(newVolume)
+            },
+            onDismiss = { showVolumeInput = false },
+        )
+    }
 }
 
-// Extension function to get the appropriate TwoTone icon for each audio stream type
 fun AudioStream.Type.getIcon(): ImageVector = when (this) {
     AudioStream.Type.MUSIC -> Icons.TwoTone.MusicNote
     AudioStream.Type.CALL -> Icons.TwoTone.PhoneInTalk
@@ -140,8 +179,23 @@ private fun VolumeControlPreview() {
             VolumeControl(
                 streamType = AudioStream.Type.ALARM,
                 label = "Alarm",
-                volume = null, // Disabled state
+                volume = null,
                 onVolumeChange = {},
+                modifier = Modifier.padding(vertical = 4.dp)
+            )
+
+            Text(
+                text = "Locked State",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
+            )
+
+            VolumeControl(
+                streamType = AudioStream.Type.MUSIC,
+                label = "Music",
+                volume = 0.75f,
+                onVolumeChange = {},
+                isLocked = true,
                 modifier = Modifier.padding(vertical = 4.dp)
             )
         }
