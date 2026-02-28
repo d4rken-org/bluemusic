@@ -17,5 +17,12 @@
       "WebFetch(domain:developer.android.com)"
     ],
     "deny": []
+  },
+  "enabledPlugins": {
+    "android-translation@claude-code-cafe": true,
+    "debugbadger@claude-code-cafe": true,
+    "jvm-tools@claude-code-cafe": true,
+    "frontend-design@claude-plugins-official": true,
+    "kotlin-lsp@claude-plugins-official": true
   }
 }
