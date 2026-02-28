@@ -26,3 +26,5 @@ fastlane/README.md
 
 .kotlin/sessions
 .kotlin/errors
+
+.worktrees
