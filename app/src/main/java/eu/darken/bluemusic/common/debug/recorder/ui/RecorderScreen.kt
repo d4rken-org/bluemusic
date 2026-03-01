@@ -72,7 +72,7 @@ import java.io.File
 @Composable
 fun RecorderScreenHost(
     viewModel: RecorderViewModel,
-    onCancelClick: () -> Unit
+    onFinish: () -> Unit,
 ) {
     val state by viewModel.state.collectAsState(null)
     val context = LocalContext.current
@@ -83,10 +83,17 @@ fun RecorderScreenHost(
         }
     }
 
+    LaunchedEffect(viewModel.finishEvent) {
+        viewModel.finishEvent.collect {
+            onFinish()
+        }
+    }
+
     state?.let { currentState ->
         RecorderScreen(
             state = currentState,
-            onCancelClick = onCancelClick,
+            onDiscardClick = { viewModel.discard() },
+            onKeepClick = { viewModel.keep() },
             onShareClick = { viewModel.share() },
             onPrivacyPolicyClick = { viewModel.goPrivacyPolicy() }
         )
@@ -96,9 +103,10 @@ fun RecorderScreenHost(
 @Composable
 private fun RecorderScreen(
     state: RecorderViewModel.State,
-    onCancelClick: () -> Unit,
+    onDiscardClick: () -> Unit,
+    onKeepClick: () -> Unit,
     onShareClick: () -> Unit,
-    onPrivacyPolicyClick: () -> Unit
+    onPrivacyPolicyClick: () -> Unit,
 ) {
     val context = LocalContext.current
     val listState = rememberLazyListState()
@@ -127,10 +135,11 @@ private fun RecorderScreen(
                     shadowElevation = 8.dp
                 ) {
                     ActionButtons(
-                        loading = state.loading,
-                        onCancelClick = onCancelClick,
+                        state = state,
+                        onDiscardClick = onDiscardClick,
+                        onKeepClick = onKeepClick,
                         onShareClick = onShareClick,
-                        modifier = Modifier.padding(16.dp)
+                        modifier = Modifier.padding(16.dp),
                     )
                 }
             }
@@ -506,17 +515,21 @@ private fun LogFileItem(logFile: RecorderViewModel.LogFileItem) {
 
 @Composable
 private fun ActionButtons(
-    loading: Boolean,
-    onCancelClick: () -> Unit,
+    state: RecorderViewModel.State,
+    onDiscardClick: () -> Unit,
+    onKeepClick: () -> Unit,
     onShareClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
+    val buttonsEnabled = state.operationState != RecorderViewModel.OperationState.DELETING
+
     Row(
         modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         OutlinedButton(
-            onClick = onCancelClick,
+            onClick = onDiscardClick,
+            enabled = buttonsEnabled,
             modifier = Modifier.weight(1f),
             colors = ButtonDefaults.outlinedButtonColors(
                 contentColor = MaterialTheme.colorScheme.onSurface
@@ -530,17 +543,30 @@ private fun ActionButtons(
             )
         }
 
-        Box(modifier = Modifier.weight(2f)) {
+        FilledTonalButton(
+            onClick = onKeepClick,
+            enabled = buttonsEnabled,
+            modifier = Modifier.weight(1f),
+        ) {
+            Text(
+                text = stringResource(R.string.debug_log_screen_keep_action),
+                style = MaterialTheme.typography.labelLarge.copy(
+                    fontWeight = FontWeight.Medium
+                )
+            )
+        }
+
+        Box(modifier = Modifier.weight(1f)) {
             FilledTonalButton(
                 onClick = onShareClick,
-                enabled = !loading,
+                enabled = !state.loading && buttonsEnabled,
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.filledTonalButtonColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     contentColor = MaterialTheme.colorScheme.onPrimary
                 )
             ) {
-                if (!loading) {
+                if (!state.loading) {
                     Text(
                         text = stringResource(R.string.general_share_action),
                         style = MaterialTheme.typography.labelLarge.copy(
@@ -550,7 +576,7 @@ private fun ActionButtons(
                 }
             }
 
-            if (loading) {
+            if (state.loading) {
                 CircularProgressIndicator(
                     modifier = Modifier
                         .size(20.dp)
@@ -589,9 +615,10 @@ private fun RecorderScreenPreview() {
 
         RecorderScreen(
             state = mockState,
-            onCancelClick = {},
+            onDiscardClick = {},
+            onKeepClick = {},
             onShareClick = {},
-            onPrivacyPolicyClick = {}
+            onPrivacyPolicyClick = {},
         )
     }
 }

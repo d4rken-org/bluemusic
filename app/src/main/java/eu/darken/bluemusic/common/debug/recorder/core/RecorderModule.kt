@@ -23,7 +23,6 @@ import eu.darken.bluemusic.common.debug.recorder.ui.RecorderActivity
 import eu.darken.bluemusic.common.flow.DynamicStateFlow
 import eu.darken.bluemusic.common.getPackageInfo
 import eu.darken.bluemusic.common.hasApiLevel
-import eu.darken.bluemusic.common.startServiceCompat
 import eu.darken.bluemusic.main.core.CurriculumVitae
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -89,8 +88,6 @@ class RecorderModule @Inject constructor(
 
                         logInfos()
 
-                        context.startServiceCompat(Intent(context, RecorderService::class.java))
-
                         copy(
                             recorder = newRecorder,
                             currentLogDir = logDir,
@@ -111,6 +108,7 @@ class RecorderModule @Inject constructor(
 
                         copy(
                             recorder = null,
+                            currentLogDir = null,
                             lastLogDir = currentLogDir,
                         )
                     } else {

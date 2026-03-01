@@ -62,5 +62,10 @@ sealed interface Nav : NavigationDestination {
         data object Acks : Settings {
             private fun readResolve(): Any = General
         }
+
+        @Serializable
+        data object ContactSupport : Settings {
+            private fun readResolve(): Any = ContactSupport
+        }
     }
 }
