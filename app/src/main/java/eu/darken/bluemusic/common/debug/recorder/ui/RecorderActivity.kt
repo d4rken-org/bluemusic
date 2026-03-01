@@ -47,10 +47,7 @@ class RecorderActivity : Activity2() {
                         ErrorEventHandler(vm)
                         RecorderScreenHost(
                             viewModel = vm,
-                            onCancelClick = {
-                                vm.discard()
-                                finish()
-                            }
+                            onFinish = { finish() },
                         )
                     }
                 }

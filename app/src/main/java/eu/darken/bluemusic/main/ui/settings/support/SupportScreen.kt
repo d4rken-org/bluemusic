@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.main.ui.settings.support
 
+import android.text.format.Formatter
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
@@ -11,13 +12,17 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.BugReport
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Description
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -29,6 +34,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -39,6 +45,7 @@ import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import eu.darken.bluemusic.common.compose.icons.Discord
 import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
+import eu.darken.bluemusic.common.debug.recorder.core.DebugLogStore
 import eu.darken.bluemusic.common.debug.recorder.ui.RecorderConsentDialog
 import eu.darken.bluemusic.common.error.ErrorEventHandler
 import eu.darken.bluemusic.common.settings.SettingsCategoryHeader
@@ -57,6 +64,7 @@ fun SupportScreenHost(vm: SupportScreenViewModel = hiltViewModel()) {
     }
 
     val state by vm.state.collectAsStateWithLifecycle(null)
+    val snackbarHostState = remember { SnackbarHostState() }
     var showShortRecordingDialog by remember { mutableStateOf(false) }
 
     LaunchedEffect(vm.events) {
@@ -69,10 +77,17 @@ fun SupportScreenHost(vm: SupportScreenViewModel = hiltViewModel()) {
         }
     }
 
+    LaunchedEffect(vm.snackbarEvent) {
+        vm.snackbarEvent.collect { message ->
+            snackbarHostState.showSnackbar(message)
+        }
+    }
+
     state?.let { vmState ->
         SupportScreen(
             state = vmState,
             showShortRecordingDialog = showShortRecordingDialog,
+            snackbarHostState = snackbarHostState,
             onNavigateUp = { vm.navUp() },
             onStartDebugLog = { vm.startDebugLog() },
             onStopDebugLog = { vm.stopDebugLog() },
@@ -85,6 +100,8 @@ fun SupportScreenHost(vm: SupportScreenViewModel = hiltViewModel()) {
                 showShortRecordingDialog = false
             },
             onDeleteAllDebugLogs = { vm.deleteAllDebugLogs() },
+            onContactDeveloper = { vm.contactDeveloper() },
+            onDeleteStoredLogs = { vm.deleteStoredLogs() },
         )
     }
 }
@@ -93,6 +110,7 @@ fun SupportScreenHost(vm: SupportScreenViewModel = hiltViewModel()) {
 fun SupportScreen(
     state: SupportScreenViewModel.State,
     showShortRecordingDialog: Boolean = false,
+    snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     onNavigateUp: () -> Unit,
     onStartDebugLog: () -> Unit,
     onStopDebugLog: () -> Unit,
@@ -100,9 +118,12 @@ fun SupportScreen(
     onConfirmStopDebugLog: () -> Unit = {},
     onDismissShortRecordingDialog: () -> Unit = {},
     onDeleteAllDebugLogs: () -> Unit = {},
+    onContactDeveloper: () -> Unit = {},
+    onDeleteStoredLogs: () -> Unit = {},
 ) {
     var showConsentDialog by remember { mutableStateOf(false) }
     var showDeleteConfirmDialog by remember { mutableStateOf(false) }
+    var showDeleteStoredDialog by remember { mutableStateOf(false) }
 
     if (showConsentDialog) {
         RecorderConsentDialog(
@@ -156,6 +177,28 @@ fun SupportScreen(
         )
     }
 
+    if (showDeleteStoredDialog) {
+        val sessionCount = state.storedStats?.sessionCount ?: 0
+        AlertDialog(
+            onDismissRequest = { showDeleteStoredDialog = false },
+            title = { Text(stringResource(R.string.settings_support_stored_logs_delete_title)) },
+            text = { Text(stringResource(R.string.settings_support_stored_logs_delete_msg, sessionCount)) },
+            dismissButton = {
+                TextButton(onClick = { showDeleteStoredDialog = false }) {
+                    Text(stringResource(R.string.general_cancel_action))
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    showDeleteStoredDialog = false
+                    onDeleteStoredLogs()
+                }) {
+                    Text(stringResource(R.string.general_delete_action))
+                }
+            },
+        )
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -171,6 +214,7 @@ fun SupportScreen(
                 }
             )
         },
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         contentWindowInsets = WindowInsets.statusBars
     ) { paddingValues ->
         val navBarPadding = navigationBarBottomPadding()
@@ -212,6 +256,16 @@ fun SupportScreen(
                 SettingsDivider()
             }
 
+            item {
+                SettingsPreferenceItem(
+                    icon = Icons.Filled.Email,
+                    title = stringResource(R.string.settings_support_contact_label),
+                    subtitle = stringResource(R.string.settings_support_contact_desc),
+                    onClick = onContactDeveloper,
+                )
+                SettingsDivider()
+            }
+
             item { SettingsCategoryHeader(stringResource(R.string.settings_category_other_label)) }
 
             item {
@@ -232,6 +286,7 @@ fun SupportScreen(
                         }
                     }
                 )
+                SettingsDivider()
             }
 
             if (state.folderSessionCount > 0) {
@@ -248,7 +303,32 @@ fun SupportScreen(
                         enabled = !state.isRecording,
                         onClick = { showDeleteConfirmDialog = true },
                     )
+                    SettingsDivider()
                 }
+            }
+
+            item {
+                val context = LocalContext.current
+                val storedStats = state.storedStats
+                val subtitle = when {
+                    storedStats == null -> ""
+                    storedStats.sessionCount == 0 -> stringResource(R.string.settings_support_stored_logs_empty)
+                    else -> stringResource(
+                        R.string.settings_support_stored_logs_desc,
+                        storedStats.sessionCount,
+                        Formatter.formatShortFileSize(context, storedStats.totalSize),
+                    )
+                }
+                SettingsPreferenceItem(
+                    icon = Icons.Filled.Delete,
+                    title = stringResource(R.string.settings_support_stored_logs_label),
+                    subtitle = subtitle,
+                    onClick = {
+                        if (!state.isRecording && (storedStats?.sessionCount ?: 0) > 0) {
+                            showDeleteStoredDialog = true
+                        }
+                    }
+                )
             }
         }
     }
@@ -264,11 +344,14 @@ private fun SupportScreenPreview() {
                 logPath = File("/tmp/debug.log"),
                 folderSessionCount = 3,
                 folderTotalSize = "4.2 MB",
+                storedStats = DebugLogStore.Stats(sessionCount = 3, totalSize = 1024 * 1024 * 5L),
             ),
             onNavigateUp = {},
             onStartDebugLog = {},
             onStopDebugLog = {},
             onOpenUrl = {},
+            onContactDeveloper = {},
+            onDeleteStoredLogs = {},
         )
     }
 }
@@ -283,11 +366,14 @@ private fun SupportScreenNotRecordingPreview() {
                 logPath = null,
                 folderSessionCount = 1,
                 folderTotalSize = "512 KB",
+                storedStats = DebugLogStore.Stats(sessionCount = 0, totalSize = 0),
             ),
             onNavigateUp = {},
             onStartDebugLog = {},
             onStopDebugLog = {},
             onOpenUrl = {},
+            onContactDeveloper = {},
+            onDeleteStoredLogs = {},
         )
     }
 }
@@ -325,6 +411,8 @@ private fun SupportScreenEmptyFolderPreview() {
             onStartDebugLog = {},
             onStopDebugLog = {},
             onOpenUrl = {},
+            onContactDeveloper = {},
+            onDeleteStoredLogs = {},
         )
     }
 }

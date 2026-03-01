@@ -19,7 +19,10 @@ import eu.darken.bluemusic.common.flow.DynamicStateFlow
 import eu.darken.bluemusic.common.flow.SingleEventFlow
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 import java.io.File
 import javax.inject.Inject
 
@@ -38,6 +41,9 @@ class RecorderViewModel @Inject constructor(
     val state: Flow<State>
 
     val shareEvent = SingleEventFlow<Intent>()
+    val finishEvent = SingleEventFlow<Unit>()
+
+    private var compressionJob: Job? = null
 
     init {
         val path = savedStateHandle.get<String>(RecorderActivity.RECORD_PATH)
@@ -52,7 +58,7 @@ class RecorderViewModel @Inject constructor(
         }
         state = stater.flow
 
-        launch {
+        compressionJob = vmScope.launch {
             log(TAG) { "Getting log files in dir: $recordedPath" }
             val logFiles = recordedPath.listFiles() ?: emptyArray()
             log(TAG) { "Found ${logFiles.size} logfiles: $logFiles" }
@@ -72,7 +78,9 @@ class RecorderViewModel @Inject constructor(
             )
             val zippedSize = zipFile.length()
             log(TAG) { "Zip file created ${zippedSize}B at $zipFile" }
-            stater.updateBlocking { copy(compressedFile = zipFile, compressedSize = zippedSize) }
+            stater.updateBlocking {
+                copy(compressedFile = zipFile, compressedSize = zippedSize, operationState = OperationState.READY)
+            }
         }
     }
 
@@ -104,14 +112,38 @@ class RecorderViewModel @Inject constructor(
         shareEvent.emit(chooserIntent)
     }
 
+    fun keep() {
+        log(TAG) { "Keeping debug log files at $recordedPath" }
+        finishEvent.tryEmit(Unit)
+    }
+
     fun discard() = launch {
-        log(TAG) { "Discarding session: $recordedPath" }
-        recordedPath.deleteRecursively()
-        stater.value().compressedFile?.delete()
+        log(TAG) { "Discarding debug log files at $recordedPath" }
+        stater.updateBlocking { copy(operationState = OperationState.DELETING) }
+
+        compressionJob?.cancelAndJoin()
+
+        val zipFile = File(recordedPath.parentFile, "${recordedPath.name}.zip")
+        if (zipFile.exists()) {
+            log(TAG) { "Deleting zip file: $zipFile" }
+            zipFile.delete()
+        }
+        if (recordedPath.exists()) {
+            log(TAG) { "Deleting log directory: $recordedPath" }
+            recordedPath.deleteRecursively()
+        }
+
+        finishEvent.emit(Unit)
     }
 
     fun goPrivacyPolicy() {
         webpageTool.open(BlueMusicLinks.PRIVACY_POLICY)
+    }
+
+    enum class OperationState {
+        COMPRESSING,
+        READY,
+        DELETING,
     }
 
     data class State(
@@ -120,6 +152,7 @@ class RecorderViewModel @Inject constructor(
         val compressedFile: File? = null,
         val compressedSize: Long? = null,
         val sessionDuration: String? = null,
+        val operationState: OperationState = OperationState.COMPRESSING,
     ) {
         val loading: Boolean
             get() = compressedSize == null
