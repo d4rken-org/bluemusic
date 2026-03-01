@@ -217,7 +217,37 @@
     <string name="debug_log_screen_log_files_label">Log Files</string>
     <string name="debug_log_screen_log_files_ready">Log files ready (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Discard</string>
+    <string name="debug_log_screen_keep_action">Keep</string>
     <string name="debug_log_file_label">Recorded log file</string>
+
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">Contact developer</string>
+    <string name="settings_support_contact_desc">Fill out a form to send the developer an email.</string>
+    <string name="contact_screen_title">Contact developer</string>
+    <string name="contact_category_bug_label">Bug report</string>
+    <string name="contact_category_feature_label">Feature request</string>
+    <string name="contact_category_question_label">Question</string>
+    <string name="contact_description_label">Description</string>
+    <string name="contact_description_bug_hint">Describe what happened and how to reproduce the issue. Please be specific (minimum 20 words).</string>
+    <string name="contact_description_feature_hint">Describe the feature you would like to see. Please be specific (minimum 20 words).</string>
+    <string name="contact_description_question_hint">Describe your question in detail. Please be specific (minimum 20 words).</string>
+    <string name="contact_debug_log_label">Debug log</string>
+    <string name="contact_debug_log_none">No debug logs found. Record one first.</string>
+    <string name="contact_debug_log_select_hint">Attach an existing debug log, or record a new one.</string>
+    <string name="contact_send_action">Open email app</string>
+    <string name="contact_word_count">%1$d / %2$d words</string>
+    <string name="contact_welcome_msg">I read every message myself and do my best to reply. Since I handle development, bug fixes, and support on my own, it can take a little time. Thanks for your patience.</string>
+    <string name="contact_footer_msg">Your message will be sent via email. Device and setup information is attached automatically.</string>
+    <string name="contact_no_email_app_msg">No email app found on this device.</string>
+    <string name="contact_attachment_missing_msg">Debug log file no longer exists</string>
+
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">Stored debug logs</string>
+    <string name="settings_support_stored_logs_desc">%1$d sessions (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">No stored debug logs</string>
+    <string name="settings_support_stored_logs_delete_title">Delete stored logs?</string>
+    <string name="settings_support_stored_logs_delete_msg">This will delete all %1$d stored debug log sessions.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Stored debug logs deleted</string>
 
 
     <string name="label_bug_reports">Bug reports</string>

@@ -12,6 +12,7 @@ import eu.darken.bluemusic.common.navigation.NavigationEntry
 import eu.darken.bluemusic.main.ui.settings.acknowledgements.AcknowledgementsScreenHost
 import eu.darken.bluemusic.main.ui.settings.general.GeneralSettingsScreenHost
 import eu.darken.bluemusic.main.ui.settings.support.SupportScreenHost
+import eu.darken.bluemusic.main.ui.settings.support.contact.ContactSupportScreenHost
 import javax.inject.Inject
 
 class SettingsNavigation @Inject constructor() : NavigationEntry {
@@ -28,7 +29,9 @@ class SettingsNavigation @Inject constructor() : NavigationEntry {
         entry<Nav.Settings.Acks> {
             AcknowledgementsScreenHost()
         }
-
+        entry<Nav.Settings.ContactSupport> {
+            ContactSupportScreenHost()
+        }
     }
 
     @Suppress("unused")
