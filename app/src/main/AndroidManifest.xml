@@ -22,7 +22,6 @@
         </intent>
     </queries>
 
-
     <application
         android:name="eu.darken.bluemusic.App"
         android:allowBackup="true"
