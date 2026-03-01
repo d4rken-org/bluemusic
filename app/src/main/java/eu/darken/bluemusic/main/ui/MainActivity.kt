@@ -26,10 +26,8 @@ import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.navigation.NavigationDestination
 import eu.darken.bluemusic.common.navigation.NavigationEntry
 import eu.darken.bluemusic.common.theming.BlueMusicTheme
-import eu.darken.bluemusic.common.theming.ThemeState
 import eu.darken.bluemusic.common.ui.Activity2
 import eu.darken.bluemusic.main.core.CurriculumVitae
-import eu.darken.bluemusic.main.core.GeneralSettings
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -40,7 +38,7 @@ class MainActivity : Activity2() {
     @Inject lateinit var curriculumVitae: CurriculumVitae
     @Inject lateinit var navCtrl: NavigationController
     @Inject lateinit var navigationEntries: Set<@JvmSuppressWildcards NavigationEntry>
-    @Inject lateinit var generalSettings: GeneralSettings
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -55,14 +53,12 @@ class MainActivity : Activity2() {
         setContent {
             val themeState by vm.themeState.collectAsStateWithLifecycle()
             val vmState by vm.state.collectAsStateWithLifecycle()
-            themeState?.let { themeState ->
-                log(TAG) { "Theme state: $themeState" }
-                BlueMusicTheme(state = themeState) {
-                    ErrorEventHandler(vm)
-                    vmState?.let { mainState ->
-                        log(TAG) { "Main state: $mainState" }
-                        Navigation(mainState)
-                    }
+            log(TAG) { "Theme state: $themeState" }
+            BlueMusicTheme(state = themeState) {
+                ErrorEventHandler(vm)
+                vmState?.let { mainState ->
+                    log(TAG) { "Main state: $mainState" }
+                    Navigation(mainState)
                 }
             }
         }
