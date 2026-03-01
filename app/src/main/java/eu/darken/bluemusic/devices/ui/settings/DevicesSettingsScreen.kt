@@ -34,8 +34,6 @@ import eu.darken.bluemusic.common.error.ErrorEventHandler
 import eu.darken.bluemusic.common.settings.SettingsDivider
 import eu.darken.bluemusic.common.settings.SettingsSwitchItem
 import eu.darken.bluemusic.common.ui.waitForState
-import eu.darken.bluemusic.main.ui.settings.general.GeneralSettingsScreen
-import eu.darken.bluemusic.main.ui.settings.general.GeneralSettingsViewModel
 
 @Composable
 fun DevicesSettingsScreenHost(vm: DevicesSettingsViewModel = hiltViewModel()) {
@@ -124,15 +122,18 @@ fun DevicesSettingsScreen(
 
 @Preview2
 @Composable
-private fun GeneralSettingsScreenPreview() {
+private fun DevicesSettingsScreenPreview() {
     PreviewWrapper {
-        GeneralSettingsScreen(
-            state = GeneralSettingsViewModel.State(filePreviews = true),
+        DevicesSettingsScreen(
+            state = DevicesSettingsViewModel.State(
+                isUpgraded = true,
+                isEnabled = true,
+                restoreOnBoot = false,
+            ),
             onNavigateUp = {},
-            onLanguageSwitcher = {},
-            onThemeModeSelected = {},
-            onThemeStyleSelected = {},
             onUpgrade = {},
+            onToggleEnabled = {},
+            onToggleRestoreOnBoot = {},
         )
     }
 }
