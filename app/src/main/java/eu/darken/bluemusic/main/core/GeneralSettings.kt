@@ -9,6 +9,7 @@ import eu.darken.bluemusic.common.BuildConfigWrap
 import eu.darken.bluemusic.common.datastore.PreferenceData
 import eu.darken.bluemusic.common.datastore.createValue
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.theming.ThemeColor
 import eu.darken.bluemusic.common.theming.ThemeMode
 import eu.darken.bluemusic.common.theming.ThemeStyle
 import kotlinx.serialization.json.Json
@@ -32,6 +33,10 @@ class GeneralSettings @Inject constructor(
     )
     val themeStyle = dataStore.createValue(
         "core.ui.theme.style", ThemeStyle.DEFAULT, json,
+        onErrorFallbackToDefault = BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.RELEASE,
+    )
+    val themeColor = dataStore.createValue(
+        "core.ui.theme.color", ThemeColor.BLUE, json,
         onErrorFallbackToDefault = BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.RELEASE,
     )
 

@@ -11,6 +11,7 @@ import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.locale.LocaleManager
 import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationController
+import eu.darken.bluemusic.common.theming.ThemeColor
 import eu.darken.bluemusic.common.theming.ThemeMode
 import eu.darken.bluemusic.common.theming.ThemeState
 import eu.darken.bluemusic.common.theming.ThemeStyle
@@ -47,7 +48,7 @@ constructor(
 
     @SuppressLint("NewApi")
     fun showLanguagePicker() = launch {
-        log(tag) { "showLanguagPicker()" }
+        log(tag) { "showLanguagePicker()" }
         if (hasApiLevel(33)) {
             localeManager.showLanguagePicker()
         } else {
@@ -63,6 +64,11 @@ constructor(
     fun updateThemeStyle(style: ThemeStyle) = launch {
         log(tag) { "updateThemeStyle($style)" }
         generalSettings.themeStyle.value(style)
+    }
+
+    fun updateThemeColor(color: ThemeColor) = launch {
+        log(tag) { "updateThemeColor($color)" }
+        generalSettings.themeColor.value(color)
     }
 
     fun upgrade() = launch {

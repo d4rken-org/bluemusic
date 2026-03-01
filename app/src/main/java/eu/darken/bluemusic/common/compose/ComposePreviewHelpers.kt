@@ -64,7 +64,7 @@ fun SampleContentPreview() {
 
 @Composable
 fun PreviewWrapper(
-    theme: ThemeState = ThemeState(ThemeMode.SYSTEM, style = ThemeStyle.DEFAULT),
+    theme: ThemeState = ThemeState(mode = ThemeMode.SYSTEM, style = ThemeStyle.DEFAULT),
     content: @Composable () -> Unit
 ) {
     BlueMusicTheme(
