@@ -11,6 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.produceState
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.entryProvider
@@ -26,10 +27,8 @@ import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.navigation.NavigationDestination
 import eu.darken.bluemusic.common.navigation.NavigationEntry
 import eu.darken.bluemusic.common.theming.BlueMusicTheme
-import eu.darken.bluemusic.common.theming.ThemeState
 import eu.darken.bluemusic.common.ui.Activity2
 import eu.darken.bluemusic.main.core.CurriculumVitae
-import eu.darken.bluemusic.main.core.GeneralSettings
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -40,7 +39,7 @@ class MainActivity : Activity2() {
     @Inject lateinit var curriculumVitae: CurriculumVitae
     @Inject lateinit var navCtrl: NavigationController
     @Inject lateinit var navigationEntries: Set<@JvmSuppressWildcards NavigationEntry>
-    @Inject lateinit var generalSettings: GeneralSettings
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -53,20 +52,16 @@ class MainActivity : Activity2() {
         curriculumVitae.updateAppOpened()
 
         setContent {
-            val themeState by produceState<ThemeState?>(initialValue = null) {
-                vm.themeState.collect { value = it }
-            }
+            val themeState by vm.themeState.collectAsState()
             val vmState by produceState<MainViewModel.State?>(initialValue = null) {
                 vm.state.collect { value = it }
             }
-            themeState?.let { themeState ->
-                log(TAG) { "Theme state: $themeState" }
-                BlueMusicTheme(state = themeState) {
-                    ErrorEventHandler(vm)
-                    vmState?.let { mainState ->
-                        log(TAG) { "Main state: $mainState" }
-                        Navigation(mainState)
-                    }
+            log(TAG) { "Theme state: $themeState" }
+            BlueMusicTheme(state = themeState) {
+                ErrorEventHandler(vm)
+                vmState?.let { mainState ->
+                    log(TAG) { "Main state: $mainState" }
+                    Navigation(mainState)
                 }
             }
         }

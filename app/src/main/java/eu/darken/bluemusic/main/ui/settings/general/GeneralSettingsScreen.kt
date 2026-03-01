@@ -17,14 +17,12 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -40,10 +38,10 @@ import eu.darken.bluemusic.common.settings.EnumSelectorDialog
 import eu.darken.bluemusic.common.settings.SettingsCategoryHeader
 import eu.darken.bluemusic.common.settings.SettingsDivider
 import eu.darken.bluemusic.common.settings.SettingsPreferenceItem
+import eu.darken.bluemusic.common.theming.ThemeColor
 import eu.darken.bluemusic.common.theming.ThemeMode
 import eu.darken.bluemusic.common.theming.ThemeStyle
 import eu.darken.bluemusic.common.ui.waitForState
-import kotlinx.coroutines.launch
 
 @Composable
 fun GeneralSettingsScreenHost(vm: GeneralSettingsViewModel = hiltViewModel()) {
@@ -58,6 +56,7 @@ fun GeneralSettingsScreenHost(vm: GeneralSettingsViewModel = hiltViewModel()) {
             onLanguageSwitcher = { vm.showLanguagePicker() },
             onThemeModeSelected = { vm.updateThemeMode(it) },
             onThemeStyleSelected = { vm.updateThemeStyle(it) },
+            onThemeColorSelected = { vm.updateThemeColor(it) },
             onUpgrade = { vm.upgrade() },
         )
     }
@@ -70,13 +69,14 @@ fun GeneralSettingsScreen(
     onLanguageSwitcher: (() -> Unit)?,
     onThemeModeSelected: (ThemeMode) -> Unit,
     onThemeStyleSelected: (ThemeStyle) -> Unit,
+    onThemeColorSelected: (ThemeColor) -> Unit,
     onUpgrade: () -> Unit,
 ) {
     val context = LocalContext.current
-    val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
     var showThemeModeDialog by remember { mutableStateOf(false) }
     var showThemeStyleDialog by remember { mutableStateOf(false) }
+    var showThemeColorDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         snackbarHost = {
@@ -102,6 +102,8 @@ fun GeneralSettingsScreen(
         contentWindowInsets = WindowInsets.statusBars
     ) { paddingValues ->
         val navBarPadding = navigationBarBottomPadding()
+        val proRequired = stringResource(R.string.upgrade_feature_requires_pro)
+        val isMaterialYou = state.themeState.style == ThemeStyle.MATERIAL_YOU
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -118,23 +120,10 @@ fun GeneralSettingsScreen(
                 SettingsPreferenceItem(
                     icon = Icons.TwoTone.Palette,
                     title = stringResource(R.string.ui_theme_mode_setting_label),
-                    subtitle = stringResource(R.string.ui_theme_mode_setting_explanation),
-                    value = state.themeState.mode.label.get(context),
-                    onClick = {
-                        if (state.isUpgraded) {
-                            showThemeModeDialog = true
-                        } else {
-                            scope.launch {
-                                val result = snackbarHostState.showSnackbar(
-                                    message = context.getString(R.string.upgrade_feature_requires_pro),
-                                    actionLabel = context.getString(R.string.upgrade_prompt_upgrade_action)
-                                )
-                                if (result == SnackbarResult.ActionPerformed) {
-                                    onUpgrade()
-                                }
-                            }
-                        }
-                    }
+                    subtitle = if (state.isUpgraded) stringResource(R.string.ui_theme_mode_setting_explanation) else proRequired,
+                    value = if (state.isUpgraded) state.themeState.mode.label.get(context) else null,
+                    enabled = state.isUpgraded,
+                    onClick = if (state.isUpgraded) {{ showThemeModeDialog = true }} else onUpgrade,
                 )
                 SettingsDivider()
             }
@@ -143,23 +132,27 @@ fun GeneralSettingsScreen(
                 SettingsPreferenceItem(
                     icon = Icons.TwoTone.Palette,
                     title = stringResource(R.string.ui_theme_style_setting_label),
-                    subtitle = stringResource(R.string.ui_theme_style_setting_explanation),
-                    value = state.themeState.style.label.get(context),
-                    onClick = {
-                        if (state.isUpgraded) {
-                            showThemeStyleDialog = true
-                        } else {
-                            scope.launch {
-                                val result = snackbarHostState.showSnackbar(
-                                    message = context.getString(R.string.upgrade_feature_requires_pro),
-                                    actionLabel = context.getString(R.string.upgrade_prompt_upgrade_action)
-                                )
-                                if (result == SnackbarResult.ActionPerformed) {
-                                    onUpgrade()
-                                }
-                            }
-                        }
-                    }
+                    subtitle = if (state.isUpgraded) stringResource(R.string.ui_theme_style_setting_explanation) else proRequired,
+                    value = if (state.isUpgraded) state.themeState.style.label.get(context) else null,
+                    enabled = state.isUpgraded,
+                    onClick = if (state.isUpgraded) {{ showThemeStyleDialog = true }} else onUpgrade,
+                )
+                SettingsDivider()
+            }
+
+            item {
+                val colorPickerEnabled = state.isUpgraded && !isMaterialYou
+                SettingsPreferenceItem(
+                    icon = Icons.TwoTone.Palette,
+                    title = stringResource(R.string.ui_theme_color_setting_label),
+                    subtitle = when {
+                        !state.isUpgraded -> proRequired
+                        isMaterialYou -> stringResource(R.string.ui_theme_color_material_you_note)
+                        else -> stringResource(R.string.ui_theme_color_setting_explanation)
+                    },
+                    value = if (colorPickerEnabled) state.themeState.color.label.get(context) else null,
+                    enabled = colorPickerEnabled,
+                    onClick = if (!state.isUpgraded) onUpgrade else {{ showThemeColorDialog = true }},
                 )
                 SettingsDivider()
             }
@@ -203,6 +196,19 @@ fun GeneralSettingsScreen(
             onDismiss = { showThemeStyleDialog = false }
         )
     }
+
+    if (showThemeColorDialog) {
+        EnumSelectorDialog(
+            title = stringResource(R.string.ui_theme_color_setting_label),
+            options = ThemeColor.entries,
+            selectedOption = state.themeState.color,
+            onOptionSelected = { color ->
+                onThemeColorSelected(color)
+                showThemeColorDialog = false
+            },
+            onDismiss = { showThemeColorDialog = false }
+        )
+    }
 }
 
 @Preview2
@@ -210,11 +216,12 @@ fun GeneralSettingsScreen(
 private fun GeneralSettingsScreenPreview() {
     PreviewWrapper {
         GeneralSettingsScreen(
-            state = GeneralSettingsViewModel.State(filePreviews = true),
+            state = GeneralSettingsViewModel.State(isUpgraded = true),
             onNavigateUp = {},
             onLanguageSwitcher = {},
             onThemeModeSelected = {},
             onThemeStyleSelected = {},
+            onThemeColorSelected = {},
             onUpgrade = {},
         )
     }

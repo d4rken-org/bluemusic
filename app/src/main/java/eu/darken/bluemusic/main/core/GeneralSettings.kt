@@ -8,6 +8,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.common.datastore.PreferenceData
 import eu.darken.bluemusic.common.datastore.createValue
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.theming.ThemeColor
 import eu.darken.bluemusic.common.theming.ThemeMode
 import eu.darken.bluemusic.common.theming.ThemeStyle
 import kotlinx.serialization.json.Json
@@ -27,6 +28,7 @@ class GeneralSettings @Inject constructor(
 
     val themeMode = dataStore.createValue("core.ui.theme.mode", ThemeMode.SYSTEM, json)
     val themeStyle = dataStore.createValue("core.ui.theme.style", ThemeStyle.DEFAULT, json)
+    val themeColor = dataStore.createValue("core.ui.theme.color", ThemeColor.BLUE, json)
 
     val isOnboardingCompleted = dataStore.createValue("core.onboarding.completed", false)
 
