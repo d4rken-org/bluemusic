@@ -59,7 +59,7 @@ import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.navigation.Nav
-import eu.darken.bluemusic.common.ui.waitForState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.ui.dashboard.rows.Android10AppLaunchHintCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.BatteryOptimizationHintCard
@@ -70,7 +70,7 @@ import eu.darken.bluemusic.devices.ui.dashboard.rows.device.ManagedDeviceItem
 @Composable
 fun DevicesScreenHost(vm: DashboardViewModel = hiltViewModel()) {
 
-    val state by waitForState(vm.state)
+    val state by vm.state.collectAsStateWithLifecycle()
 
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission()

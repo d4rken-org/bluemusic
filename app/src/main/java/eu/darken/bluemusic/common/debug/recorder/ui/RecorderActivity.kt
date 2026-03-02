@@ -9,7 +9,7 @@ import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +37,7 @@ class RecorderActivity : Activity2() {
         }
 
         setContent {
-            val themeState by generalSettings.themeState.collectAsState(null)
+            val themeState by generalSettings.themeState.collectAsStateWithLifecycle(initialValue = null)
             themeState?.let { theme ->
                 BlueMusicTheme(state = theme) {
                     Surface(

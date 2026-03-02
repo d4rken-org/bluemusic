@@ -11,7 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.produceState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
@@ -53,12 +53,8 @@ class MainActivity : Activity2() {
         curriculumVitae.updateAppOpened()
 
         setContent {
-            val themeState by produceState<ThemeState?>(initialValue = null) {
-                vm.themeState.collect { value = it }
-            }
-            val vmState by produceState<MainViewModel.State?>(initialValue = null) {
-                vm.state.collect { value = it }
-            }
+            val themeState by vm.themeState.collectAsStateWithLifecycle()
+            val vmState by vm.state.collectAsStateWithLifecycle()
             themeState?.let { themeState ->
                 log(TAG) { "Theme state: $themeState" }
                 BlueMusicTheme(state = themeState) {

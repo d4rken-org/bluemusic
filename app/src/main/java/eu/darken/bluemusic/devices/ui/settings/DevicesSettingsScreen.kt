@@ -33,7 +33,7 @@ import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.error.ErrorEventHandler
 import eu.darken.bluemusic.common.settings.SettingsDivider
 import eu.darken.bluemusic.common.settings.SettingsSwitchItem
-import eu.darken.bluemusic.common.ui.waitForState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.main.ui.settings.general.GeneralSettingsScreen
 import eu.darken.bluemusic.main.ui.settings.general.GeneralSettingsViewModel
 
@@ -41,7 +41,7 @@ import eu.darken.bluemusic.main.ui.settings.general.GeneralSettingsViewModel
 fun DevicesSettingsScreenHost(vm: DevicesSettingsViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
 
-    val state by waitForState(vm.state)
+    val state by vm.state.collectAsStateWithLifecycle()
 
     state?.let { state ->
         DevicesSettingsScreen(

@@ -52,7 +52,7 @@ import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.error.ErrorEventHandler
-import eu.darken.bluemusic.common.ui.waitForState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 
 @Composable
@@ -62,7 +62,7 @@ fun UpgradeScreenHost(vm: UpgradeViewModel = hiltViewModel()) {
 
     ErrorEventHandler(vm)
 
-    val state by waitForState(vm.state)
+    val state by vm.state.collectAsStateWithLifecycle()
     log(vm.tag) { "Screen state: $state" }
     log(vm.tag) { "showRestoreFailedDialog: $showRestoreFailedDialog" }
 

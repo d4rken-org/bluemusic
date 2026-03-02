@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.error.ErrorEventHandler
-import eu.darken.bluemusic.common.ui.waitForState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.main.ui.onboarding.OnboardingViewModel.State.Page
 import eu.darken.bluemusic.main.ui.onboarding.pages.BetaPage
 import eu.darken.bluemusic.main.ui.onboarding.pages.PrivacyPage
@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 fun OnboardingScreenHost(vm: OnboardingViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
 
-    val state by waitForState(vm.state)
+    val state by vm.state.collectAsStateWithLifecycle()
 
     state?.let { state ->
         OnboardingScreen(
