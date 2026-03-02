@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
+import eu.darken.bluemusic.common.BuildConfigWrap
 import eu.darken.bluemusic.common.datastore.PreferenceData
 import eu.darken.bluemusic.common.datastore.createValue
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -25,7 +26,10 @@ class DevicesSettings @Inject constructor(
 
     val isEnabled = dataStore.createValue("devices.enabled", true)
     val restoreOnBoot = dataStore.createValue("devices.volume.restore.boot.enabled", true)
-    val lockedDevices = dataStore.createValue("devices.adjustment.locked", emptySet<String>(), json)
+    val lockedDevices = dataStore.createValue(
+        "devices.adjustment.locked", emptySet<String>(), json,
+        onErrorFallbackToDefault = BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.RELEASE,
+    )
 
     companion object {
         internal val TAG = logTag("Devices", "Settings")
