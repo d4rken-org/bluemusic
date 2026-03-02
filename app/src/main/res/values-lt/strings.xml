@@ -287,4 +287,17 @@
     <string name="devices_audio_stream_ring_label">Skambėjimas</string>
     <string name="devices_audio_stream_notification_label">Pranešimas</string>
     <string name="devices_audio_stream_alarm_label">Signalas</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Garsumas (0–100)</string>
+    <string name="devices_volume_input_error">Įveskite reikšmę nuo %1$d iki %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Užrakinti</string>
+    <string name="devices_unlock_sliders_action">Atrakinti</string>
+
+    <!-- Short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">Įrašymas dar vyksta</string>
+    <string name="settings_support_debuglog_short_recording_msg">Derinimo žurnalas yra įrašymas, o ne momentinė nuotrauka. Norėdami užfiksuoti naudingą informaciją, atkurkite problemą, kol įrašymas vyksta, tada sustabdykite jį.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Sustabdyti vis tiek</string>
 </resources>

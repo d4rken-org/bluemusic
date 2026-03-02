@@ -339,4 +339,17 @@
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alert</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Volume (0–100)</string>
+    <string name="devices_volume_input_error">Enter value between %1$d and %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Lock</string>
+    <string name="devices_unlock_sliders_action">Unlock</string>
+
+    <!-- Debug log short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">Recording still dey run</string>
+    <string name="settings_support_debuglog_short_recording_msg">Debug log na recording, e no be snapshot. To catch useful information, reproduce the issue while recording dey run, then stop am.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Stop anyway</string>
 </resources>

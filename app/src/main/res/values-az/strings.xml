@@ -286,4 +286,11 @@
     <string name="devices_device_config_autoplay_keycodes_desc">Hansı açarları göndərəcəyinizi və hansı ardıcıllıqla konfiqurasiya edin</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Heç bir açar konfiqurasiya edilməyib</string>
     <string name="devices_device_config_launch_app_multiple_desc">%d tətbiq seçilib</string>
+    <string name="settings_support_debuglog_short_recording_title">Yazma hələ davam edir</string>
+    <string name="settings_support_debuglog_short_recording_msg">Sazlama jurnalı ani görüntü deyil, yazıdır. Faydalı məlumat əldə etmək üçün yazma işləyərkən problemi yenidən yaradın, sonra dayandırın.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Yenə də dayandır</string>
+    <string name="devices_volume_input_hint">Səs (0–100)</string>
+    <string name="devices_volume_input_error">%1$d ilə %2$d arasında bir dəyər daxil edin</string>
+    <string name="devices_lock_sliders_action">Kilit</string>
+    <string name="devices_unlock_sliders_action">Kilidi aç</string>
 </resources>

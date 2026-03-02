@@ -339,4 +339,17 @@
     <string name="devices_indicator_home">Shtëpi</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alarm</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Vëllimi (0–100)</string>
+    <string name="devices_volume_input_error">Vendos një vlerë midis %1$d dhe %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Blloko</string>
+    <string name="devices_unlock_sliders_action">Zhblloko</string>
+
+    <!-- Debug log short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">Regjistrimi është ende në vazhdim</string>
+    <string name="settings_support_debuglog_short_recording_msg">Regjistri i gabimit është një regjistrim, jo një pamje e ngurrosur. Për të kapur informacione të dobishme, riproduzo problemin ndërsa regjistrimi po funksionon, pastaj ndale atë.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Ndaloje gjithsesi</string>
 </resources>

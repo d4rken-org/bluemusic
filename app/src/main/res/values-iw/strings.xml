@@ -287,4 +287,17 @@
     <string name="connection_alert_type_vibration">רטט בלבד</string>
     <string name="connection_alert_type_both">צליל ורטט</string>
     <string name="devices_indicator_alert">התראה</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">עוצמה (0–100)</string>
+    <string name="devices_volume_input_error">הזן ערך בין %1$d ל-%2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">נעל</string>
+    <string name="devices_unlock_sliders_action">שחרר נעילה</string>
+
+    <!-- Short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">ההקלטה עדיין פועלת</string>
+    <string name="settings_support_debuglog_short_recording_msg">לוג הדיבאג הוא הקלטה, לא תמונת מצב. כדי ללכוד מידע שימושי, שחזר את הבעיה בזמן שההקלטה פועלת, ואז עצור אותה.</string>
+    <string name="settings_support_debuglog_short_recording_stop">עצור בכל זאת</string>
 </resources>

@@ -287,4 +287,17 @@
     <string name="connection_alert_type_vibration">진동만</string>
     <string name="connection_alert_type_both">소리와 진동</string>
     <string name="devices_indicator_alert">알림</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">볼륨 (0–100)</string>
+    <string name="devices_volume_input_error">%1$d에서 %2$d 사이의 값을 입력하세요</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">잠금</string>
+    <string name="devices_unlock_sliders_action">잠금 해제</string>
+
+    <!-- Short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">녹음이 아직 실행 중입니다</string>
+    <string name="settings_support_debuglog_short_recording_msg">디버그 로그는 스냅샷이 아니라 녹음입니다. 유용한 정보를 캡처하려면 녹음 중에 문제를 재현한 다음 중지하세요.</string>
+    <string name="settings_support_debuglog_short_recording_stop">그래도 중지</string>
 </resources>

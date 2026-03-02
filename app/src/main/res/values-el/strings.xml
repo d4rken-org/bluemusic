@@ -288,4 +288,11 @@
     <string name="connection_alert_type_vibration">Μόνο δόνηση</string>
     <string name="connection_alert_type_both">Ήχος και δόνηση</string>
     <string name="devices_indicator_alert">Ειδοποίηση</string>
+    <string name="settings_support_debuglog_short_recording_title">Η εγγραφή εξακολουθεί να τρέχει</string>
+    <string name="settings_support_debuglog_short_recording_msg">Το αρχείο debug είναι μια εγγραφή, όχι ένα στιγμιότυπο. Για να καταγράψεις χρήσιμες πληροφορίες, αναπαράγαγε το πρόβλημα ενώ η εγγραφή τρέχει και μετά σταμάτησέ την.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Σταμάτα ούτως ή άλλως</string>
+    <string name="devices_volume_input_hint">Ένταση (0–100)</string>
+    <string name="devices_volume_input_error">Εισάγετε τιμή μεταξύ %1$d και %2$d</string>
+    <string name="devices_lock_sliders_action">Κλείδωμα</string>
+    <string name="devices_unlock_sliders_action">Ξεκλείδωμα</string>
 </resources>

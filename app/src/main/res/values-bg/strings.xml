@@ -287,4 +287,11 @@
     <string name="connection_alert_type_vibration">Само вибрация</string>
     <string name="connection_alert_type_both">Звук и вибрация</string>
     <string name="devices_indicator_alert">Известие</string>
+    <string name="settings_support_debuglog_short_recording_title">Записът все още е активен</string>
+    <string name="settings_support_debuglog_short_recording_msg">Дебъг логът е запис, не моментна снимка. За да уловиш полезна информация, възпроизведи проблема докато записът върви, след това го спри.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Спри въпреки това</string>
+    <string name="devices_volume_input_hint">Сила на звука (0–100)</string>
+    <string name="devices_volume_input_error">Въведи стойност между %1$d и %2$d</string>
+    <string name="devices_lock_sliders_action">Заключи</string>
+    <string name="devices_unlock_sliders_action">Отключи</string>
 </resources>

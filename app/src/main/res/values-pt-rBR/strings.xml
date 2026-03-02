@@ -288,4 +288,17 @@
     <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Início</string>
     <string name="devices_indicator_dnd">NP</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Volume (0–100)</string>
+    <string name="devices_volume_input_error">Insira um valor entre %1$d e %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Bloquear</string>
+    <string name="devices_unlock_sliders_action">Desbloquear</string>
+
+    <!-- Debug log short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">A gravação ainda está em execução</string>
+    <string name="settings_support_debuglog_short_recording_msg">O log de debug é uma gravação, não um instantâneo. Para capturar informações úteis, reproduza o problema enquanto a gravação estiver em execução e depois pare-a.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Parar mesmo assim</string>
 </resources>

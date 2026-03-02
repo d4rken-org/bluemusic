@@ -294,4 +294,17 @@
     <string name="devices_device_config_volume_save_on_disconnect_label">Volume opslaan bij verbreking</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Leg de huidige volumeniveaus vast en sla ze op wanneer dit apparaat de verbinding verbreekt.</string>
     <string name="devices_device_config_notification_policy_required_dnd">Niet Storen-beheer vereist toegang tot meldingsbeleid</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Volume (0–100)</string>
+    <string name="devices_volume_input_error">Voer een waarde in tussen %1$d en %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Vergrendelen</string>
+    <string name="devices_unlock_sliders_action">Ontgrendelen</string>
+
+    <!-- Short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">Opname is nog bezig</string>
+    <string name="settings_support_debuglog_short_recording_msg">Het debug-log is een opname, geen momentopname. Om nuttige informatie vast te leggen, reproduceer het probleem terwijl de opname loopt en stop hem dan.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Toch stoppen</string>
 </resources>

@@ -291,4 +291,11 @@
     <string name="connection_alert_type_vibration">仅振动</string>
     <string name="connection_alert_type_both">声音和振动</string>
     <string name="devices_indicator_alert">提醒</string>
+    <string name="settings_support_debuglog_short_recording_title">录制仍在进行</string>
+    <string name="settings_support_debuglog_short_recording_msg">调试日志是一段录制，而非快照。要捕获有用信息，请在录制运行时重现问题，然后停止录制。</string>
+    <string name="settings_support_debuglog_short_recording_stop">仍然停止</string>
+    <string name="devices_volume_input_hint">音量（0–100）</string>
+    <string name="devices_volume_input_error">请输入 %1$d 到 %2$d 之间的值</string>
+    <string name="devices_lock_sliders_action">锁定</string>
+    <string name="devices_unlock_sliders_action">解锁</string>
 </resources>

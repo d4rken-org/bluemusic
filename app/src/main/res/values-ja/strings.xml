@@ -293,4 +293,17 @@
     <string name="devices_device_config_volume_save_on_disconnect_label">切断時に音量を保存</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">このデバイスが切断されたときに、現在の音量レベルを取得して保存します。</string>
     <string name="devices_device_config_notification_policy_required_dnd">おやすみモードの制御には通知ポリシーアクセスが必要です</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">音量 (0～100)</string>
+    <string name="devices_volume_input_error">%1$d から %2$d の間の値を入力してください</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">ロック</string>
+    <string name="devices_unlock_sliders_action">ロック解除</string>
+
+    <!-- Short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">録音はまだ実行中です</string>
+    <string name="settings_support_debuglog_short_recording_msg">デバッグログは録音であり、スナップショットではありません。有用な情報を収集するには、録音中に問題を再現してから停止してください。</string>
+    <string name="settings_support_debuglog_short_recording_stop">それでも停止する</string>
 </resources>

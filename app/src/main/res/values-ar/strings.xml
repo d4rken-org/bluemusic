@@ -287,4 +287,11 @@
     <string name="title_bluetooth_permission_required">مطلوب إذن البلوتوث</string>
     <string name="description_bluetooth_permission_required">يحتاج هذا التطبيق إذن البلوتوث لإدارة مستويات صوت جهازك.</string>
     <string name="action_grant_permission">منح الإذن</string>
+    <string name="settings_support_debuglog_short_recording_title">التسجيل لا يزال جاريًا</string>
+    <string name="settings_support_debuglog_short_recording_msg">سجل التشخيص هو تسجيل وليس لقطة. لالتقاط معلومات مفيدة، أعد إنتاج المشكلة أثناء تشغيل التسجيل، ثم أوقفه.</string>
+    <string name="settings_support_debuglog_short_recording_stop">أوقف على أي حال</string>
+    <string name="devices_volume_input_hint">مستوى الصوت (0–100)</string>
+    <string name="devices_volume_input_error">أدخل قيمة بين %1$d و %2$d</string>
+    <string name="devices_lock_sliders_action">قفل</string>
+    <string name="devices_unlock_sliders_action">فتح القفل</string>
 </resources>

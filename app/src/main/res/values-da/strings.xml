@@ -287,4 +287,11 @@
     <string name="connection_alert_type_vibration">Kun vibration</string>
     <string name="connection_alert_type_both">Lyd og vibration</string>
     <string name="devices_indicator_alert">Advarsel</string>
+    <string name="settings_support_debuglog_short_recording_title">Optagelsen kører stadig</string>
+    <string name="settings_support_debuglog_short_recording_msg">Debug-loggen er en optagelse, ikke et øjebliksbillede. For at fange nyttig information, reproducér problemet mens optagelsen kører, og stop den derefter.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Stop alligevel</string>
+    <string name="devices_volume_input_hint">Lydstyrke (0–100)</string>
+    <string name="devices_volume_input_error">Angiv en værdi mellem %1$d og %2$d</string>
+    <string name="devices_lock_sliders_action">Lås</string>
+    <string name="devices_unlock_sliders_action">Lås op</string>
 </resources>

@@ -339,4 +339,17 @@
     <string name="devices_indicator_home">ပင်မ</string>
     <string name="devices_indicator_dnd">မနှောင့်ယှက်နှင့်</string>
     <string name="devices_indicator_alert">သတိပေးချက်</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">အသံ (0–100)</string>
+    <string name="devices_volume_input_error">%1$d နှင့် %2$d အကြား တန်ဖိုး ထည့်ပါ</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">သော့ခတ်</string>
+    <string name="devices_unlock_sliders_action">သော့ဖွင့်</string>
+
+    <!-- Short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">ရိုက်ကူးမှု ဆက်လက် ဖြစ်နေသည်</string>
+    <string name="settings_support_debuglog_short_recording_msg">Debug မှတ်တမ်းသည် ရိုက်ကူးမှုတစ်ခုဖြစ်ပြီး snapshot မဟုတ်ပါ။ အသုံးဝင်သော သတင်းအချက်အလက် ဖမ်းယူရန် ရိုက်ကူးနေစဉ် ပြဿနာကို ပြန်လုပ်ကြည့်ပြီး ရပ်တန့်ပါ။</string>
+    <string name="settings_support_debuglog_short_recording_stop">ဘာပဲဖြစ်ဖြစ် ရပ်တန့်မည်</string>
 </resources>

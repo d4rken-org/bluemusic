@@ -287,4 +287,17 @@
     <string name="devices_device_config_show_home_screen_desc">După procesarea tuturor evenimentelor pentru acest dispozitiv, încearcă să afișeze ecranul principal. Poate să nu funcționeze pe toate versiunile Android.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Salvează volumul la deconectare</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Capturează și salvează nivelurile curente de volum când se deconectează acest dispozitiv.</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Volum (0–100)</string>
+    <string name="devices_volume_input_error">Introdu o valoare între %1$d și %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Blochează</string>
+    <string name="devices_unlock_sliders_action">Deblochează</string>
+
+    <!-- Debug log short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">Înregistrarea este încă în curs</string>
+    <string name="settings_support_debuglog_short_recording_msg">Jurnalul de depanare este o înregistrare, nu un instantaneu. Pentru a capta informații utile, reproduci problema în timp ce înregistrarea rulează, apoi oprește-o.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Oprește oricum</string>
 </resources>

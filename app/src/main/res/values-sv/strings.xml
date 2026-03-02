@@ -237,7 +237,7 @@
     <string name="battery_optimization_hint_message">Batterioptimering är aktiverad och kan hindra korrekt drift. Överväg att inaktivera dem.</string>
     <string name="battery_optimization_fix_action">Inaktivera optimering</string>
     <string name="android10_applaunch_hint_title">Appstartsbehörighet</string>
-    <string name="android10_applaunch_hint_message">Android 10 requires special permission to launch apps from background. Grant &quot;Display over other apps&quot; permission.</string>
+    <string name="android10_applaunch_hint_message">Android 10 kräver specialbehörighet för att starta appar eller visa hemskärmen från bakgrunden. Bevilja behörigheten &quot;Visa över andra appar&quot;.</string>
     <string name="notification_permission_hint_title">Aviseringsbehörighet</string>
     <string name="notification_permission_hint_message">Bevilja aviseringsbehörighet för att se statusuppdateringar när volymer justeras.</string>
     <string name="error_iap_cancelled_message">Köp avbrutet</string>
@@ -291,4 +291,11 @@
     <string name="connection_alert_type_vibration">Endast vibration</string>
     <string name="connection_alert_type_both">Ljud och vibration</string>
     <string name="devices_indicator_alert">Varning</string>
+    <string name="settings_support_debuglog_short_recording_title">Inspelning pågår fortfarande</string>
+    <string name="settings_support_debuglog_short_recording_msg">Felsökningsloggen är en inspelning, inte en ögonblicksbild. För att fånga användbar information, återskapa problemet medan inspelningen pågår och stoppa sedan.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Stoppa ändå</string>
+    <string name="devices_volume_input_hint">Volym (0–100)</string>
+    <string name="devices_volume_input_error">Ange ett värde mellan %1$d och %2$d</string>
+    <string name="devices_lock_sliders_action">Lås</string>
+    <string name="devices_unlock_sliders_action">Lås upp</string>
 </resources>

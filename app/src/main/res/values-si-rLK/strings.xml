@@ -16,9 +16,9 @@
     <string name="onboarding_privacy_message">Bluetooth Volume Manager හි දැන්වීම් නැති අතර පරිශීලක දත්ත අලෙවි නොකරයි (open-source ද වෙයි). ඔබේ රහස්‍යතාව මට වැදගත්.</string>
     <string name="onboarding_privacy_read_action">රහස්‍යතා ප්‍රතිපත්තිය කියවන්න</string>
     <string name="onboarding_privacy_action">පිළිගනිමි</string>
-    <string name="onboarding_rewrite_title">App Rewrite!</string>
-    <string name="onboarding_rewrite_message">I\'ve completely rebuilt Bluetooth Volume Manager from the ground up due to Android changes and Google requirements to ensure the app continues working reliably.</string>
-    <string name="onboarding_rewrite_features">Some device settings may have been reset during this update. Please check your device configurations.</string>
+    <string name="onboarding_rewrite_title">යෙදුම නවීකරණය විය!</string>
+    <string name="onboarding_rewrite_message">Android වෙනස්කම් සහ Google අවශ්‍යතා සමඟ සම්බන්ධ වීමට Bluetooth Volume Manager සම්පූර්ණයෙන් නැවත ලිව්වා. යෙදුම විශ්වාසනීය ලෙස ක්‍රියා කරන බව සහතික කිරීමට හැකි තැන්හිදී නවීකරණය කළා.</string>
+    <string name="onboarding_rewrite_features">යාවත්කාලීන කිරීමේදී සමහර උපාංග සැකසීම් යළි සකසෙන්නට ඇත. සෑම දෙයක්ම නිවැරදිව සකසා ඇති බව සහතික කිරීමට ඔබේ උපාංගය සැකසීම් පරීක්ෂා කරන්න.</string>
     <string name="onboarding_rewrite_action">ඉදිරියට</string>
     <string name="discover_no_unmnaged_devices_msg">කළමනා නොකළ උපාංග හමු නොවිණි</string>
     <string name="discover_all_devices_managed_msg">ඔබේ සියලු සම්බන්ධ කළ උපාංගයන් කළමනා කෙරෙයි! අලුත් එකක් ඕනෑද?</string>
@@ -286,4 +286,17 @@
     <string name="devices_indicator_home">මුල්</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">අනතුරු ඇඟවීම</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">හඩ (0–100)</string>
+    <string name="devices_volume_input_error">%1$d සහ %2$d අතර අගයක් ඇතුළු කරන්න</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">අගුලන්න</string>
+    <string name="devices_unlock_sliders_action">අගුල ඇරීම</string>
+
+    <!-- Debug log short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">රේකෝඩ් කිරීම තවමත් ක්‍රියාත්මකයි</string>
+    <string name="settings_support_debuglog_short_recording_msg">debug ලොගය snapshot එකක් නොව recording එකක්. ප්‍රයෝජනවත් තොරතුරු ලබාගැනීමට, recording ක්‍රියාත්මක ඇති විට ගැටළුව නැවත නිර්මාණය කර, ඉන් පසු නැවැත්වන්න.</string>
+    <string name="settings_support_debuglog_short_recording_stop">කෙසේ හෝ නැවැත්වන්න</string>
 </resources>

@@ -287,4 +287,17 @@
     <string name="connection_alert_type_vibration">Getaran sahaja</string>
     <string name="connection_alert_type_both">Bunyi dan getaran</string>
     <string name="devices_indicator_alert">Amaran</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Volum (0–100)</string>
+    <string name="devices_volume_input_error">Masukkan nilai antara %1$d dan %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Kunci</string>
+    <string name="devices_unlock_sliders_action">Buka kunci</string>
+
+    <!-- Short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">Rakaman masih berjalan</string>
+    <string name="settings_support_debuglog_short_recording_msg">Log nyahpepijat adalah rakaman, bukan gambar sekilas. Untuk menangkap maklumat berguna, reproduksi isu semasa rakaman sedang berjalan, kemudian hentikannya.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Henti juga</string>
 </resources>

@@ -291,4 +291,11 @@
     <string name="notification_permission_hint_message">อนุญาตสิทธิ์การแจ้งเตือนเพื่อดูการอัปเดตสถานะเมื่อปรับระดับเสียง</string>
     <string name="upgrade_feature_requires_pro">คุณสมบัตินี้ต้องใช้เวอร์ชันพรีเมี่ยม</string>
     <string name="upgrade_prompt_upgrade_action">อัปเกรด</string>
+    <string name="settings_support_debuglog_short_recording_title">การบันทึกยังคงทำงานอยู่</string>
+    <string name="settings_support_debuglog_short_recording_msg">บันทึกดีบักเป็นการบันทึก ไม่ใช่สแนปชอต หากต้องการจับภาพข้อมูลที่เป็นประโยชน์ ให้จำลองปัญหาขณะที่การบันทึกกำลังทำงาน แล้วหยุด</string>
+    <string name="settings_support_debuglog_short_recording_stop">หยุดต่อไป</string>
+    <string name="devices_volume_input_hint">ระดับเสียง (0–100)</string>
+    <string name="devices_volume_input_error">ป้อนค่าระหว่าง %1$d และ %2$d</string>
+    <string name="devices_lock_sliders_action">ล็อก</string>
+    <string name="devices_unlock_sliders_action">ปลดล็อก</string>
 </resources>
