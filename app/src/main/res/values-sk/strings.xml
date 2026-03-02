@@ -19,9 +19,9 @@
     <string name="onboarding_privacy_message">Bluetooth Volume Manager neobsahuje reklamy a nepredáva údaje používateľov (je dokonca open-source). Tvoje súkromie je pre mňa dôležité.</string>
     <string name="onboarding_privacy_read_action">Prečítať zásady ochrany osobných údajov</string>
     <string name="onboarding_privacy_action">Prijať</string>
-    <string name="onboarding_rewrite_title">App Rewrite!</string>
-    <string name="onboarding_rewrite_message">I\'ve completely rebuilt Bluetooth Volume Manager from the ground up due to Android changes and Google requirements to ensure the app continues working reliably.</string>
-    <string name="onboarding_rewrite_features">Some device settings may have been reset during this update. Please check your device configurations.</string>
+    <string name="onboarding_rewrite_title">Aplikácia prepísaná!</string>
+    <string name="onboarding_rewrite_message">Bluetooth Volume Manager som úplne prepísal od základu kvôli zmenám v Androide a požiadavkám Google, aby aplikácia naďalej spoľahlivo fungovala.</string>
+    <string name="onboarding_rewrite_features">Niektoré nastavenia zariadení mohli byť počas tejto aktualizácie resetované. Skontroluj konfigurácie svojich zariadení.</string>
     <string name="onboarding_rewrite_action">Pokračovať</string>
     <string name="discover_no_unmnaged_devices_msg">Nenašli sa žiadne nespravované zariadenia</string>
     <string name="devices_app_selection_currently_selected">Aktuálne vybrané</string>
@@ -260,7 +260,7 @@
     <string name="battery_optimization_hint_message">Optimalizácie batérie sú zapnuté a môžu zabrániť správnemu fungovaniu. Zvážte ich vypnutie.</string>
     <string name="battery_optimization_fix_action">Vypnúť optimalizácie</string>
     <string name="android10_applaunch_hint_title">Povolenie na spustenie aplikácie</string>
-    <string name="android10_applaunch_hint_message">Android 10 requires special permission to launch apps from background. Grant &quot;Display over other apps&quot; permission.</string>
+    <string name="android10_applaunch_hint_message">Android 10 vyžaduje špeciálne povolenie na spúšťanie aplikácií na pozadí. Udeľ povolenie &quot;Zobraziť cez iné aplikácie&quot;.</string>
     <string name="notification_permission_hint_title">Povolenie notifikácií</string>
     <string name="notification_permission_hint_message">Udeľ povolenie notifikácií, aby si videl stavové aktualizácie počas úpravy hlasitosti.</string>
     <string name="error_iap_cancelled_message">Nákup zrušený</string>
@@ -288,4 +288,17 @@
     <string name="connection_alert_type_vibration">Iba vibracie</string>
     <string name="connection_alert_type_both">Zvuk a vibracie</string>
     <string name="devices_indicator_alert">Upozornenie</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Hlasitosť (0–100)</string>
+    <string name="devices_volume_input_error">Zadaj hodnotu medzi %1$d a %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Uzamknúť</string>
+    <string name="devices_unlock_sliders_action">Odomknúť</string>
+
+    <!-- Debug log short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">Nahrávanie stále beží</string>
+    <string name="settings_support_debuglog_short_recording_msg">Ladiaci log je nahrávanie, nie snímka. Ak chceš zachytiť užitočné informácie, reprodukuj problém počas nahrávania a potom ho zastav.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Zastaviť napriek tomu</string>
 </resources>

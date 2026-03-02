@@ -339,4 +339,11 @@
     <string name="devices_indicator_home">Hejmo</string>
     <string name="devices_indicator_dnd">Ne Ĝenu</string>
     <string name="devices_indicator_alert">Averto</string>
+    <string name="settings_support_debuglog_short_recording_title">Registrado ankoraŭ funkcias</string>
+    <string name="settings_support_debuglog_short_recording_msg">La debaŭga protokolo estas registrado, ne momentfoto. Por kapti utilan informon, reproduktu la problemon dum la registrado funkcias, poste haltigu ĝin.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Halti tamen</string>
+    <string name="devices_volume_input_hint">Volumo (0–100)</string>
+    <string name="devices_volume_input_error">Enigu valoron inter %1$d kaj %2$d</string>
+    <string name="devices_lock_sliders_action">Ŝlosi</string>
+    <string name="devices_unlock_sliders_action">Malŝlosi</string>
 </resources>

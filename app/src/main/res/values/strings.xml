@@ -179,6 +179,9 @@
     <string name="settings_support_debuglog_desc">Record everything the app is doing into a text file that you can share.</string>
     <string name="settings_support_debuglog_recording_desc">Currently recording debug information. Tap to stop recording.</string>
     <string name="settings_support_debuglog_path">Log path: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">Recording is still running</string>
+    <string name="settings_support_debuglog_short_recording_msg">The debug log is a recording, not a snapshot. To capture useful information, reproduce the issue while the recording is running, then stop it.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Stop anyway</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">A place to hang out in and ask questions.</string>
 

@@ -289,4 +289,11 @@
     <string name="devices_indicator_auto">自動</string>
     <string name="devices_indicator_home">主頁</string>
     <string name="devices_indicator_dnd">勿擾</string>
+    <string name="settings_support_debuglog_short_recording_title">錄製仍在進行中</string>
+    <string name="settings_support_debuglog_short_recording_msg">除錯日誌是一段錄製，而非快照。要擷取有用資訊，請在錄製進行中重現問題，然後停止錄製。</string>
+    <string name="settings_support_debuglog_short_recording_stop">仍然停止</string>
+    <string name="devices_volume_input_hint">音量（0–100）</string>
+    <string name="devices_volume_input_error">請輸入 %1$d 到 %2$d 之間的值</string>
+    <string name="devices_lock_sliders_action">鎖定</string>
+    <string name="devices_unlock_sliders_action">解鎖</string>
 </resources>

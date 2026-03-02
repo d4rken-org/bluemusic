@@ -292,4 +292,11 @@
     <string name="connection_alert_type_vibration">Nur Vibration</string>
     <string name="connection_alert_type_both">Ton und Vibration</string>
     <string name="devices_indicator_alert">Alarm</string>
+    <string name="settings_support_debuglog_short_recording_title">Aufzeichnung läuft noch</string>
+    <string name="settings_support_debuglog_short_recording_msg">Das Debug-Protokoll ist eine Aufzeichnung, kein Schnappschuss. Um nützliche Informationen zu erfassen, reproduziere das Problem während die Aufzeichnung läuft, und stoppe sie dann.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Trotzdem stoppen</string>
+    <string name="devices_volume_input_hint">Lautstärke (0–100)</string>
+    <string name="devices_volume_input_error">Gib einen Wert zwischen %1$d und %2$d ein</string>
+    <string name="devices_lock_sliders_action">Sperren</string>
+    <string name="devices_unlock_sliders_action">Entsperren</string>
 </resources>

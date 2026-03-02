@@ -16,9 +16,9 @@
     <string name="onboarding_privacy_message">Bluetooth Volume Manager non ten anuncios e non vende datos de usuario (é mesmo de código aberto). A túa privacidade é importante para min.</string>
     <string name="onboarding_privacy_read_action">Ler a política de privacidade</string>
     <string name="onboarding_privacy_action">Aceptar</string>
-    <string name="onboarding_rewrite_title">App Rewrite!</string>
-    <string name="onboarding_rewrite_message">I\'ve completely rebuilt Bluetooth Volume Manager from the ground up due to Android changes and Google requirements to ensure the app continues working reliably.</string>
-    <string name="onboarding_rewrite_features">Some device settings may have been reset during this update. Please check your device configurations.</string>
+    <string name="onboarding_rewrite_title">Aplicación modernizada</string>
+    <string name="onboarding_rewrite_message">Tiven que reescribir a aplicación para adaptarme aos cambios de Android e aos requisitos de Google. Modernizei a aplicación onde foi posible para garantir que continúe funcionando de forma fiable.</string>
+    <string name="onboarding_rewrite_features">Algunhas funcionalidades cambiaron durante a actualización. Por favor, revisa a configuración dos teus dispositivos para asegurarte de que todo está configurado correctamente.</string>
     <string name="onboarding_rewrite_action">Continuar</string>
     <string name="discover_no_unmnaged_devices_msg">Non se atoparon dispositivos non xestionados</string>
     <string name="discover_all_devices_managed_msg">Todos os teus dispositivos emparellados están xestionados! Necesitas un novo?</string>
@@ -46,7 +46,7 @@
     <string name="devices_device_config_nudge_volume_description">Baixa e despois sobe o volume un incremento, mesmo se o volume desexado xa está establecido (segundo o sistema).</string>
     <string name="devices_device_config_visible_adjustments_label">Axustes visibles</string>
     <string name="devices_device_config_keep_awake_label">Manter esperto</string>
-    <string name="devices_device_config_keep_awake_desc">Keep the screen on while this device is connected.</string>
+    <string name="devices_device_config_keep_awake_desc">Intenta manter o dispositivo esperto mentres está conectado. O comportamento pode variar segundo a versión de Android.</string>
     <string name="devices_device_config_volume_observe_label">Observar cambios</string>
     <string name="devices_device_config_volume_observe_desc">Mantense activo mentres este dispositivo está conectado e garda os cambios de volume que non fosen causados por esta aplicación.</string>
     <string name="devices_device_config_volume_lock_label">Bloqueo de volume</string>
@@ -230,6 +230,9 @@
     <string name="settings_support_debuglog_desc">Grava todo o que fai a aplicación nun ficheiro de texto que podes compartir.</string>
     <string name="settings_support_debuglog_recording_desc">Gravando información de depuración actualmente. Toca para deter a gravación.</string>
     <string name="settings_support_debuglog_path">Ruta do rexistro: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">A gravación segue en marcha</string>
+    <string name="settings_support_debuglog_short_recording_msg">O rexistro de depuración é unha gravación, non unha instantánea. Para capturar información útil, reproduce o problema mentres a gravación está en marcha e logo detéñaa.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Deter de todos modos</string>
     <string name="settings_support_discord_description">Un lugar para pasar o tempo e facer preguntas.</string>
     <string name="settings_acknowledgements_label">Recoñecementos</string>
     <string name="settings_acknowledgements_description">Créditos, licenzas e agradecementos especiais</string>
@@ -287,4 +290,12 @@
     <string name="error_iap_unavailable_message">As compras dentro da aplicación non están dispoñibles</string>
     <string name="error_generic_message">Produciuse un erro. Téntao de novo.</string>
     <string name="error_iap_owned_message">Xa tes este artigo</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Volume (0–100)</string>
+    <string name="devices_volume_input_error">Introduce un valor entre %1$d e %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Bloquear</string>
+    <string name="devices_unlock_sliders_action">Desbloquear</string>
 </resources>

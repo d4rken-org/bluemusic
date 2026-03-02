@@ -292,4 +292,17 @@
     <string name="connection_alert_type_vibration">Apenas vibração</string>
     <string name="connection_alert_type_both">Som e vibração</string>
     <string name="devices_indicator_alert">Alerta</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Volume (0–100)</string>
+    <string name="devices_volume_input_error">Introduz um valor entre %1$d e %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Bloquear</string>
+    <string name="devices_unlock_sliders_action">Desbloquear</string>
+
+    <!-- Debug log short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">A gravação ainda está a correr</string>
+    <string name="settings_support_debuglog_short_recording_msg">O registo de depuração é uma gravação, não uma fotografia. Para capturar informações úteis, reproduz o problema enquanto a gravação está a correr e depois pára-a.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Parar mesmo assim</string>
 </resources>

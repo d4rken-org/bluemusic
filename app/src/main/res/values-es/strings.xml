@@ -143,6 +143,9 @@
     <string name="settings_support_debuglog_desc">Graba todo lo que la aplicación está haciendo en un archivo de texto que puedes compartir.</string>
     <string name="settings_support_debuglog_recording_desc">Actualmente grabando información de depuración. Toca para detener la grabación.</string>
     <string name="settings_support_debuglog_path">Ruta del registro: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">La grabación sigue en curso</string>
+    <string name="settings_support_debuglog_short_recording_msg">El registro de depuración es una grabación, no una instantánea. Para capturar información útil, reproduce el problema mientras la grabación está en curso y luego detenla.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Detener de todos modos</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Un lugar para pasar el rato y hacer preguntas.</string>
     <string name="settings_acknowledgements_label">Agradecimientos</string>
@@ -292,4 +295,12 @@
     <string name="connection_alert_type_vibration">Solo vibracion</string>
     <string name="connection_alert_type_both">Sonido y vibracion</string>
     <string name="devices_indicator_alert">Alerta</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Volumen (0–100)</string>
+    <string name="devices_volume_input_error">Introduce un valor entre %1$d y %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Bloquear</string>
+    <string name="devices_unlock_sliders_action">Desbloquear</string>
 </resources>

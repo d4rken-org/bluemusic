@@ -288,4 +288,11 @@
     <string name="devices_device_config_show_home_screen_desc">Sau khi xử lý tất cả sự kiện cho thiết bị này, thử hiển thị màn hình chính. Có thể không hoạt động trên tất cả phiên bản Android.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Lưu âm lượng khi ngắt kết nối</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Chụp và lưu mức âm lượng hiện tại khi thiết bị này ngắt kết nối.</string>
+    <string name="settings_support_debuglog_short_recording_title">Bản ghi vẫn đang chạy</string>
+    <string name="settings_support_debuglog_short_recording_msg">Nhật ký gỡ lỗi là một bản ghi, không phải ảnh chụp nhanh. Để thu thập thông tin hữu ích, hãy tái hiện vấn đề trong khi bản ghi đang chạy, sau đó dừng lại.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Dừng dù sao</string>
+    <string name="devices_volume_input_hint">Âm lượng (0–100)</string>
+    <string name="devices_volume_input_error">Nhập giá trị từ %1$d đến %2$d</string>
+    <string name="devices_lock_sliders_action">Khóa</string>
+    <string name="devices_unlock_sliders_action">Mở khóa</string>
 </resources>

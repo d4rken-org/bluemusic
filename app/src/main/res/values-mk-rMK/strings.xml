@@ -16,9 +16,9 @@
     <string name="onboarding_privacy_message">Bluetooth Volume Manager нема реклами и не ги продава корисничките податоци (дури е и отворен код). Твојата приватност е важна за мене.</string>
     <string name="onboarding_privacy_read_action">Прочитај ја политиката за приватност</string>
     <string name="onboarding_privacy_action">Прифати</string>
-    <string name="onboarding_rewrite_title">App Rewrite!</string>
-    <string name="onboarding_rewrite_message">I\'ve completely rebuilt Bluetooth Volume Manager from the ground up due to Android changes and Google requirements to ensure the app continues working reliably.</string>
-    <string name="onboarding_rewrite_features">Some device settings may have been reset during this update. Please check your device configurations.</string>
+    <string name="onboarding_rewrite_title">Апликацијата е модернизирана</string>
+    <string name="onboarding_rewrite_message">Го преправив апликацијата за да продолжи да работи со Android промените и Google барањата. Ја модернизирав каде беше можно за да осигурам дека продолжува да работи доверливо.</string>
+    <string name="onboarding_rewrite_features">Некои функции се промениле за време на ажурирањето. Провери ги поставките на уредот за да се осигураш дека сè е правилно конфигурирано.</string>
     <string name="onboarding_rewrite_action">Продолжи</string>
     <string name="discover_no_unmnaged_devices_msg">Нема пронајдено неуправувани уреди</string>
     <string name="discover_all_devices_managed_msg">Сите твои спарени уреди се управувани! Треба нов?</string>
@@ -286,4 +286,18 @@
     <string name="devices_indicator_home">Почеток</string>
     <string name="devices_indicator_dnd">НВ</string>
     <string name="devices_indicator_alert">Известување</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Јачина на звук (0–100)</string>
+    <string name="devices_volume_input_error">Внеси вредност помеѓу %1$d и %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Заклучи</string>
+    <string name="devices_unlock_sliders_action">Отклучи</string>
+
+    <!-- Short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">Снимањето сè уште е во тек</string>
+    <string name="settings_support_debuglog_short_recording_msg">Дебаг логот е снимање, а не моментална снимка. За да снимиш корисни информации, репродуцирај го проблемот додека снимањето е во тек, па потоа запри.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Запри сепак</string>
+
 </resources>

@@ -153,6 +153,9 @@
     <string name="settings_support_debuglog_desc">Tallenna kaikki mitä sovellus tekee tekstitiedostoon, jonka voit jakaa.</string>
     <string name="settings_support_debuglog_recording_desc">Tallentaa parhaillaan debug-tietoja. Napauta lopettaaksesi tallennuksen.</string>
     <string name="settings_support_debuglog_path">Lokitiedoston polku: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">Tallennus on vielä käynnissä</string>
+    <string name="settings_support_debuglog_short_recording_msg">Debug-loki on tallennus, ei tilannekuva. Hyödyllisten tietojen tallentamiseksi toista ongelma tallennuksen aikana ja pysäytä se sitten.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Pysäytä silti</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Paikka viettää aikaa ja kysellä kysymyksiä.</string>
     <string name="settings_acknowledgements_label">Kiitokset</string>
@@ -286,4 +289,12 @@
     <string name="devices_indicator_home">Koti</string>
     <string name="devices_indicator_dnd">ÄH</string>
     <string name="devices_indicator_alert">Hälytys</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Äänenvoimakkuus (0–100)</string>
+    <string name="devices_volume_input_error">Anna arvo väliltä %1$d ja %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Lukitse</string>
+    <string name="devices_unlock_sliders_action">Avaa lukitus</string>
 </resources>

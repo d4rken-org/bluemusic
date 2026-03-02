@@ -13,12 +13,15 @@ import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -46,13 +49,30 @@ fun SupportScreenHost(vm: SupportScreenViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
 
     val state by waitForState(vm.state)
+    var showShortRecordingDialog by remember { mutableStateOf(false) }
+
+    LaunchedEffect(vm.shortRecordingWarningEvent) {
+        vm.shortRecordingWarningEvent.collect { showShortRecordingDialog = true }
+    }
+
+    // Auto-dismiss if recording stops externally
+    state?.let { if (!it.isRecording) showShortRecordingDialog = false }
 
     state?.let { vmState ->
         SupportScreen(
             state = vmState,
+            showShortRecordingDialog = showShortRecordingDialog,
             onNavigateUp = { vm.navUp() },
             onDebugLog = { vm.debugLog() },
             onOpenUrl = { url -> vm.openUrl(url) },
+            onForceStopDebugLog = {
+                showShortRecordingDialog = false
+                vm.forceStopDebugLog()
+            },
+            onCancelStopWarning = {
+                showShortRecordingDialog = false
+                vm.cancelStopWarning()
+            },
         )
     }
 }
@@ -60,9 +80,12 @@ fun SupportScreenHost(vm: SupportScreenViewModel = hiltViewModel()) {
 @Composable
 fun SupportScreen(
     state: SupportScreenViewModel.State,
+    showShortRecordingDialog: Boolean = false,
     onNavigateUp: () -> Unit,
     onDebugLog: () -> Unit,
     onOpenUrl: (String) -> Unit,
+    onForceStopDebugLog: () -> Unit = {},
+    onCancelStopWarning: () -> Unit = {},
 ) {
     var showConsentDialog by remember { mutableStateOf(false) }
 
@@ -76,6 +99,24 @@ fun SupportScreen(
             onOpenPrivacyPolicy = {
                 onOpenUrl(BlueMusicLinks.PRIVACY_POLICY)
             }
+        )
+    }
+
+    if (showShortRecordingDialog) {
+        AlertDialog(
+            onDismissRequest = onCancelStopWarning,
+            title = { Text(stringResource(R.string.settings_support_debuglog_short_recording_title)) },
+            text = { Text(stringResource(R.string.settings_support_debuglog_short_recording_msg)) },
+            confirmButton = {
+                TextButton(onClick = onCancelStopWarning) {
+                    Text(stringResource(R.string.general_cancel_action))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = onForceStopDebugLog) {
+                    Text(stringResource(R.string.settings_support_debuglog_short_recording_stop))
+                }
+            },
         )
     }
 
@@ -187,6 +228,23 @@ private fun SupportScreenNotRecordingPreview() {
                 isRecording = false,
                 logPath = null
             ),
+            onNavigateUp = {},
+            onDebugLog = {},
+            onOpenUrl = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun SupportScreenShortRecordingDialogPreview() {
+    PreviewWrapper {
+        SupportScreen(
+            state = SupportScreenViewModel.State(
+                isRecording = true,
+                logPath = File("/tmp/debug.log")
+            ),
+            showShortRecordingDialog = true,
             onNavigateUp = {},
             onDebugLog = {},
             onOpenUrl = {},

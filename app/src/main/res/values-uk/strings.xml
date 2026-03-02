@@ -288,4 +288,11 @@
     <string name="description_bluetooth_permission_required">Цей додаток потребує дозволу Bluetooth для керування гучністю твоїх пристроїв.</string>
     <string name="action_grant_permission">Надати дозвіл</string>
     <string name="action_start">Почати</string>
+    <string name="settings_support_debuglog_short_recording_title">Запис ще триває</string>
+    <string name="settings_support_debuglog_short_recording_msg">Лог налагодження — це запис, а не знімок. Щоб захопити корисну інформацію, відтвори проблему під час запису, а потім зупини його.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Зупинити все одно</string>
+    <string name="devices_volume_input_hint">Гучність (0–100)</string>
+    <string name="devices_volume_input_error">Введи значення між %1$d і %2$d</string>
+    <string name="devices_lock_sliders_action">Заблокувати</string>
+    <string name="devices_unlock_sliders_action">Розблокувати</string>
 </resources>

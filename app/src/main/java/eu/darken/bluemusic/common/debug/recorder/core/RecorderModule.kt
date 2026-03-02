@@ -75,6 +75,7 @@ class RecorderModule @Inject constructor(
 
                 internalState.updateBlocking {
                     if (!isRecording && shouldRecord) {
+                        val isNewRecording = debugSettings.recorderPath.value() == null
                         val logDir = debugSettings.recorderPath.value()?.let {
                             log(TAG) { "Continuing existing log: $it" }
                             File(it)
@@ -94,6 +95,7 @@ class RecorderModule @Inject constructor(
                         copy(
                             recorder = newRecorder,
                             currentLogDir = logDir,
+                            recordingStartedAt = if (isNewRecording) Instant.now() else null,
                         )
                     } else if (!shouldRecord && isRecording) {
                         log(TAG) { "Stopping log recorder for: $currentLogDir" }
@@ -112,6 +114,7 @@ class RecorderModule @Inject constructor(
                         copy(
                             recorder = null,
                             lastLogDir = currentLogDir,
+                            recordingStartedAt = null,
                         )
                     } else {
                         this
@@ -181,6 +184,7 @@ class RecorderModule @Inject constructor(
         internal val recorder: Recorder? = null,
         val currentLogDir: File? = null,
         val lastLogDir: File? = null,
+        val recordingStartedAt: Instant? = null,
     ) {
         val isRecording: Boolean
             get() = recorder != null

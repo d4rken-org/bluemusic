@@ -323,4 +323,17 @@
     <string name="devices_indicator_auto">Automàticu</string>
     <string name="devices_indicator_home">Pantalla printzipale</string>
     <string name="devices_indicator_dnd">SND</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Volume (0–100)</string>
+    <string name="devices_volume_input_error">Inseri unu valore intre %1$d e %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Blocca</string>
+    <string name="devices_unlock_sliders_action">Sblocca</string>
+
+    <!-- Debug log short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">Sa registratzione est ancora in cursu</string>
+    <string name="settings_support_debuglog_short_recording_msg">Su log de debug est una registratzione, non unu instantàneu. Pro càpturare informatzione ùtile, reproduzi su problema mentre sa registratzione est in cursu, poi pàrala.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Para a su matessi modu</string>
 </resources>

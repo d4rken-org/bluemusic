@@ -136,6 +136,9 @@
     <string name="settings_support_debuglog_desc">Rögzítsd mindent, amit az alkalmazás csinál egy szöveges fájlba, amit meg tudsz osztani.</string>
     <string name="settings_support_debuglog_recording_desc">Jelenleg hibakeresési információkat rögzít. Koppints a rögzítés leállításához.</string>
     <string name="settings_support_debuglog_path">Napló útvonala: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">A felvétel még fut</string>
+    <string name="settings_support_debuglog_short_recording_msg">A hibakeresési napló egy felvétel, nem egy pillanatkép. A hasznos információk rögzítéséhez reprodukáld a problémát a felvétel futása közben, majd állítsd le.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Leállítás mindenképpen</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Egy hely, ahol lógni és kérdéseket feltenni lehet.</string>
     <string name="settings_acknowledgements_label">Köszönetnyilvánítás</string>
@@ -290,4 +293,12 @@
     <string name="devices_indicator_auto">Automatikus</string>
     <string name="devices_indicator_home">Főképernyő</string>
     <string name="devices_indicator_dnd">NZ</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Hangerő (0–100)</string>
+    <string name="devices_volume_input_error">Adj meg egy értéket %1$d és %2$d között</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Zárolás</string>
+    <string name="devices_unlock_sliders_action">Feloldás</string>
 </resources>

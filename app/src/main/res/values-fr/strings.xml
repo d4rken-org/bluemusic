@@ -145,6 +145,9 @@
     <string name="settings_support_debuglog_desc">Enregistrez tout ce que fait l\'application dans un fichier texte que vous pouvez partager.</string>
     <string name="settings_support_debuglog_recording_desc">Enregistrement en cours des informations de débogage. Appuyez pour arrêter l\'enregistrement.</string>
     <string name="settings_support_debuglog_path">Chemin du journal : %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">L\'enregistrement est toujours en cours</string>
+    <string name="settings_support_debuglog_short_recording_msg">Le journal de débogage est un enregistrement, pas une capture instantanée. Pour capturer des informations utiles, reproduisez le problème pendant que l\'enregistrement est en cours, puis arrêtez-le.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Arrêter quand même</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Un endroit pour se retrouver et poser des questions.</string>
     <string name="settings_acknowledgements_label">Remerciements</string>
@@ -292,4 +295,12 @@
     <string name="connection_alert_type_vibration">Vibration uniquement</string>
     <string name="connection_alert_type_both">Son et vibration</string>
     <string name="devices_indicator_alert">Alerte</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Volume (0–100)</string>
+    <string name="devices_volume_input_error">Saisissez une valeur entre %1$d et %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Verrouiller</string>
+    <string name="devices_unlock_sliders_action">Déverrouiller</string>
 </resources>

@@ -291,4 +291,11 @@
     <string name="connection_alert_type_vibration">Sadece titreşim</string>
     <string name="connection_alert_type_both">Ses ve titreşim</string>
     <string name="devices_indicator_alert">Uyarı</string>
+    <string name="settings_support_debuglog_short_recording_title">Kayıt hâlâ devam ediyor</string>
+    <string name="settings_support_debuglog_short_recording_msg">Hata ayıklama kaydı bir anlık görüntü değil, kayıt dosyasıdır. Faydalı bilgi yakalamak için, kayıt çalışırken sorunu yeniden oluştur, ardından durdur.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Yine de durdur</string>
+    <string name="devices_volume_input_hint">Ses düzeyi (0–100)</string>
+    <string name="devices_volume_input_error">%1$d ile %2$d arasında bir değer girin</string>
+    <string name="devices_lock_sliders_action">Kilitle</string>
+    <string name="devices_unlock_sliders_action">Kilidi aç</string>
 </resources>

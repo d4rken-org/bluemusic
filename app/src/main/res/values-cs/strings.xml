@@ -288,4 +288,11 @@
     <string name="connection_alert_type_vibration">Pouze vibrace</string>
     <string name="connection_alert_type_both">Zvuk a vibrace</string>
     <string name="devices_indicator_alert">Upozornění</string>
+    <string name="settings_support_debuglog_short_recording_title">Nahrávání stále běží</string>
+    <string name="settings_support_debuglog_short_recording_msg">Ladící log je nahrávka, ne snímek. Aby ses zachytil užitečné informace, reprodukuj problém zatímco nahrávání běží, a pak ho zastav.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Zastavit přesto</string>
+    <string name="devices_volume_input_hint">Hlasitost (0–100)</string>
+    <string name="devices_volume_input_error">Zadej hodnotu mezi %1$d a %2$d</string>
+    <string name="devices_lock_sliders_action">Zamknout</string>
+    <string name="devices_unlock_sliders_action">Odemknout</string>
 </resources>

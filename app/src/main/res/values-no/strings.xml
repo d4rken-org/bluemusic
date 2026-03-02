@@ -287,4 +287,17 @@
     <string name="connection_alert_type_vibration">Kun vibrasjon</string>
     <string name="connection_alert_type_both">Lyd og vibrasjon</string>
     <string name="devices_indicator_alert">Varsel</string>
+
+    <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Volum (0–100)</string>
+    <string name="devices_volume_input_error">Skriv inn en verdi mellom %1$d og %2$d</string>
+
+    <!-- Lock/unlock sliders -->
+    <string name="devices_lock_sliders_action">Lås</string>
+    <string name="devices_unlock_sliders_action">Lås opp</string>
+
+    <!-- Short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">Opptaket kjører fortsatt</string>
+    <string name="settings_support_debuglog_short_recording_msg">Feilsøkingsloggen er et opptak, ikke et øyeblikksbilde. For å fange nyttig informasjon, gjenskap problemet mens opptaket kjører, og stopp det deretter.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Stopp uansett</string>
 </resources>

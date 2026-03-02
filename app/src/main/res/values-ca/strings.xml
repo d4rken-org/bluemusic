@@ -287,4 +287,11 @@
     <string name="devices_audio_stream_ring_label">To</string>
     <string name="devices_audio_stream_notification_label">Notificació</string>
     <string name="devices_audio_stream_alarm_label">Alarma</string>
+    <string name="settings_support_debuglog_short_recording_title">L\'enregistrament encara s\'està executant</string>
+    <string name="settings_support_debuglog_short_recording_msg">El registre de depuració és un enregistrament, no una instantània. Per capturar informació útil, reprodueix el problema mentre l\'enregistrament s\'executa, i després atura\'l.</string>
+    <string name="settings_support_debuglog_short_recording_stop">Atura igualment</string>
+    <string name="devices_volume_input_hint">Volum (0–100)</string>
+    <string name="devices_volume_input_error">Introdueix un valor entre %1$d i %2$d</string>
+    <string name="devices_lock_sliders_action">Bloqueja</string>
+    <string name="devices_unlock_sliders_action">Desbloqueja</string>
 </resources>
