@@ -39,9 +39,18 @@ class CurriculumVitae @Inject constructor(
 
     private val usPkgInfo: PackageInfo by lazy { context.getPackageInfo() }
 
-    private val _updateHistory = dataStore.createValue("stats.update.history", emptyList<String>(), json)
-    private val _installedFirst = dataStore.createValue<Instant?>("stats.install.first", null, json)
-    private val _launchedLast = dataStore.createValue<Instant?>("stats.launched.last", null, json)
+    private val _updateHistory = dataStore.createValue(
+        "stats.update.history", emptyList<String>(), json,
+        onErrorFallbackToDefault = BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.RELEASE,
+    )
+    private val _installedFirst = dataStore.createValue<Instant?>(
+        "stats.install.first", null, json,
+        onErrorFallbackToDefault = BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.RELEASE,
+    )
+    private val _launchedLast = dataStore.createValue<Instant?>(
+        "stats.launched.last", null, json,
+        onErrorFallbackToDefault = BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.RELEASE,
+    )
     private val _launchedCount = dataStore.createValue("stats.launched.count", 0)
     private val _launchedCountBeta = dataStore.createValue("stats.launched.beta.count", 0)
 
@@ -109,7 +118,10 @@ class CurriculumVitae @Inject constructor(
         }
     }
 
-    private val _openedLast = dataStore.createValue<Instant?>("stats.opened.last", null, json)
+    private val _openedLast = dataStore.createValue<Instant?>(
+        "stats.opened.last", null, json,
+        onErrorFallbackToDefault = BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.RELEASE,
+    )
     private val _openedCount = dataStore.createValue("stats.opened.count", 0)
 
     fun updateAppOpened() = appScope.launch {

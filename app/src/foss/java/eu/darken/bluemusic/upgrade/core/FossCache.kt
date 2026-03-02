@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
+import eu.darken.bluemusic.common.BuildConfigWrap
 import eu.darken.bluemusic.common.datastore.createValue
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
@@ -25,6 +26,7 @@ class FossCache @Inject constructor(
         key = "foss.upgrade",
         json = json,
         defaultValue = null,
+        onErrorFallbackToDefault = BuildConfigWrap.BUILD_TYPE == BuildConfigWrap.BuildType.RELEASE,
     )
 
 }
