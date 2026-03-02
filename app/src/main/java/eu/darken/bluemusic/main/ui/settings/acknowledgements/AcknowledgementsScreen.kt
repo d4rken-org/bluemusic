@@ -30,7 +30,7 @@ import eu.darken.bluemusic.common.error.ErrorEventHandler
 import eu.darken.bluemusic.common.settings.SettingsBaseItem
 import eu.darken.bluemusic.common.settings.SettingsCategoryHeader
 import eu.darken.bluemusic.common.settings.SettingsDivider
-import eu.darken.bluemusic.common.ui.waitForState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 fun AcknowledgementsScreen(
@@ -174,7 +174,7 @@ fun AcknowledgementsScreen(
 fun AcknowledgementsScreenHost(vm: AcknowledgementsScreenViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
 
-    val state by waitForState(vm.state)
+    val state by vm.state.collectAsStateWithLifecycle()
 
     state?.let { state ->
         AcknowledgementsScreen(

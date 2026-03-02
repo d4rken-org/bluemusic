@@ -64,7 +64,7 @@ import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.navigation.Nav
-import eu.darken.bluemusic.common.ui.waitForState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.ui.config.components.ClickablePreference
 import eu.darken.bluemusic.devices.ui.config.components.DeviceHeaderCard
@@ -92,7 +92,7 @@ fun DeviceConfigScreenHost(
         creationCallback = { factory: DeviceConfigViewModel.Factory -> factory.create(deviceAddress = addr) }
     ),
 ) {
-    val state by waitForState(vm.state)
+    val state by vm.state.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
     val context = LocalContext.current
 

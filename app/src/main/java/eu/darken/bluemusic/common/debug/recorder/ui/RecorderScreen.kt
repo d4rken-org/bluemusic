@@ -48,7 +48,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -74,7 +74,7 @@ fun RecorderScreenHost(
     viewModel: RecorderViewModel,
     onCancelClick: () -> Unit
 ) {
-    val state by viewModel.state.collectAsState(null)
+    val state by viewModel.state.collectAsStateWithLifecycle(initialValue = null)
     val context = LocalContext.current
 
     LaunchedEffect(viewModel.shareEvent) {

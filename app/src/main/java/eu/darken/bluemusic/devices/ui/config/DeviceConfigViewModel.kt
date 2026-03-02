@@ -76,6 +76,8 @@ class DeviceConfigViewModel @AssistedInject constructor(
         )
     }.asStateFlow()
 
+    private suspend fun currentState(): State = state.filterNotNull().first()
+
     fun handleAction(action: ConfigAction) = launch {
         log(tag) { "handleAction: $action" }
         when (action) {
@@ -101,7 +103,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnEditAdjustmentDelayClicked -> {
-                val device = state.first().device
+                val device = currentState().device
                 val currentDelay = device.adjustmentDelay
                 events.emit(ConfigEvent.ShowAdjustmentDelayDialog(currentDelay))
             }
@@ -113,7 +115,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnEditMonitoringDurationClicked -> {
-                val device = state.first().device
+                val device = currentState().device
                 val currentDuration = device.monitoringDuration
                 events.emit(ConfigEvent.ShowMonitoringDurationDialog(currentDuration))
             }
@@ -125,7 +127,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnEditReactionDelayClicked -> {
-                val device = state.first().device
+                val device = currentState().device
                 val currentDelay = device.actionDelay
                 events.emit(ConfigEvent.ShowReactionDelayDialog(currentDelay))
             }
@@ -143,13 +145,13 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnEditVolumeRateLimitIncreaseClicked -> {
-                val device = state.first().device
+                val device = currentState().device
                 val currentLimit = Duration.ofMillis(device.volumeRateLimitIncreaseMs)
                 events.emit(ConfigEvent.ShowVolumeRateLimitIncreaseDialog(currentLimit))
             }
 
             is ConfigAction.OnEditVolumeRateLimitDecreaseClicked -> {
-                val device = state.first().device
+                val device = currentState().device
                 val currentLimit = Duration.ofMillis(device.volumeRateLimitDecreaseMs)
                 events.emit(ConfigEvent.ShowVolumeRateLimitDecreaseDialog(currentLimit))
             }
@@ -167,7 +169,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnRenameClicked -> {
-                val device = state.first().device
+                val device = currentState().device
                 events.emit(ConfigEvent.ShowRenameDialog(device.label))
             }
 
@@ -256,7 +258,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnToggleVolume -> {
-                val device = state.first().device
+                val device = currentState().device
 
                 // Check if trying to enable a volume type that requires notification policy access
                 if (device.getVolume(action.type) == null) {
@@ -313,7 +315,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnEditDndModeClicked -> {
-                val device = state.first().device
+                val device = currentState().device
                 if (device.dndMode == null && !permissionHelper.hasNotificationPolicyAccess()) {
                     @SuppressLint("NewApi")
                     val intent = permissionHelper.getNotificationPolicyAccessIntent()
@@ -338,7 +340,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 if (!upgradeRepo.isPro()) {
                     events.emit(ConfigEvent.RequiresPro)
                 } else {
-                    val device = state.first().device
+                    val device = currentState().device
                     events.emit(
                         ConfigEvent.ShowConnectionAlertDialog(
                             device.connectionAlertType,

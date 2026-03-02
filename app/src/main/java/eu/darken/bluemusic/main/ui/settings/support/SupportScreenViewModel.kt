@@ -26,7 +26,7 @@ class SupportScreenViewModel @Inject constructor(
             isRecording = recState.isRecording,
             logPath = recState.currentLogDir,
         )
-    }
+    }.asStateFlow()
 
     fun debugLog() = launch {
         val currentState = recorderModule.state.map { it.isRecording }.first()

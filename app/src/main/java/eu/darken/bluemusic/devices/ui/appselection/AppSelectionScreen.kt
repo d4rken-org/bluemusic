@@ -64,7 +64,7 @@ import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
-import eu.darken.bluemusic.common.ui.waitForState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.devices.core.DeviceAddr
 
 @Composable
@@ -75,7 +75,7 @@ fun AppSelectionScreenHost(
         creationCallback = { factory: AppSelectionViewModel.Factory -> factory.create(deviceAddress = addr) }
     ),
 ) {
-    val state by waitForState(vm.state)
+    val state by vm.state.collectAsStateWithLifecycle()
 
     state?.let { state ->
         AppSelectionScreen(

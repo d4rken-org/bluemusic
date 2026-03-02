@@ -42,14 +42,14 @@ import eu.darken.bluemusic.common.settings.SettingsDivider
 import eu.darken.bluemusic.common.settings.SettingsPreferenceItem
 import eu.darken.bluemusic.common.theming.ThemeMode
 import eu.darken.bluemusic.common.theming.ThemeStyle
-import eu.darken.bluemusic.common.ui.waitForState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.launch
 
 @Composable
 fun GeneralSettingsScreenHost(vm: GeneralSettingsViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
 
-    val state by waitForState(vm.state)
+    val state by vm.state.collectAsStateWithLifecycle()
 
     state?.let { vmState ->
         GeneralSettingsScreen(

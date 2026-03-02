@@ -54,13 +54,13 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.error.ErrorEventHandler
 import eu.darken.bluemusic.common.navigation.Nav
-import eu.darken.bluemusic.common.ui.waitForState
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 fun DiscoverScreenHost(vm: DiscoverViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
 
-    val state by waitForState(vm.state)
+    val state by vm.state.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
 
     val upgradeMessage = stringResource(R.string.upgrade_feature_requires_pro)
