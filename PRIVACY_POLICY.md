@@ -16,6 +16,14 @@ Send a [quick mail](mailto:support@darken.eu) if you have questions.
 
 My underlying privacy principle is the [Golden Rule](https://en.wikipedia.org/wiki/Golden_Rule).
 
+## Debug log
+
+The app has a debug log feature that can be manually triggered by the user through an option in the app's settings.
+
+It creates a log file that contains verbose output of what the app is doing. The generated file may contain sensitive information, e.g. Bluetooth device names and device details.
+
+As this log file may contain sensitive information, it should only be shared with trusted parties.
+
 ## Automatic crash reports
 
 *This was removed in version v2.57+*
