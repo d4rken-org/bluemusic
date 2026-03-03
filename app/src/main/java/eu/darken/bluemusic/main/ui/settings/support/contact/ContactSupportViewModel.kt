@@ -10,6 +10,7 @@ import eu.darken.bluemusic.common.BlueMusicId
 import eu.darken.bluemusic.common.BlueMusicLinks
 import eu.darken.bluemusic.common.BuildConfigWrap
 import eu.darken.bluemusic.common.EmailTool
+import eu.darken.bluemusic.common.WebpageTool
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -35,6 +36,7 @@ class ContactSupportViewModel @Inject constructor(
     private val blueMusicId: BlueMusicId,
     private val upgradeRepo: UpgradeRepo,
     private val emailTool: EmailTool,
+    private val webpageTool: WebpageTool,
 ) : ViewModel4(dispatcherProvider, logTag("Contact", "Support", "VM"), navCtrl) {
 
     private val stater = DynamicStateFlow(tag, vmScope) {
@@ -48,11 +50,22 @@ class ContactSupportViewModel @Inject constructor(
     init {
         launch { loadSessions() }
         launch {
+            var wasRecording = false
             recorderModule.state
                 .distinctUntilChangedBy { it.isRecording }
-                .collect {
-                    log(tag) { "Recording state changed, refreshing sessions" }
-                    loadSessions()
+                .collect { recState ->
+                    log(tag) { "Recording state changed: isRecording=${recState.isRecording}" }
+                    val justStopped = wasRecording && !recState.isRecording
+                    wasRecording = recState.isRecording
+
+                    val sessions = debugLogStore.getSessions()
+                    stater.updateBlocking {
+                        copy(
+                            isRecording = recState.isRecording,
+                            logSessions = sessions,
+                            selectedLogSession = if (justStopped) sessions.firstOrNull() else selectedLogSession,
+                        )
+                    }
                 }
         }
     }
@@ -60,6 +73,20 @@ class ContactSupportViewModel @Inject constructor(
     private suspend fun loadSessions() {
         val sessions = debugLogStore.getSessions()
         stater.updateBlocking { copy(logSessions = sessions) }
+    }
+
+    fun startRecording() = launch {
+        log(tag) { "Starting debug log recording" }
+        recorderModule.startRecorder()
+    }
+
+    fun stopRecording() = launch {
+        log(tag) { "Stopping debug log recording" }
+        recorderModule.stopRecorder()
+    }
+
+    fun openUrl(url: String) {
+        webpageTool.open(url)
     }
 
     fun selectCategory(category: ContactCategory) = launch {
@@ -160,6 +187,7 @@ class ContactSupportViewModel @Inject constructor(
         val description: String = "",
         val logSessions: List<DebugLogStore.LogSession> = emptyList(),
         val selectedLogSession: DebugLogStore.LogSession? = null,
+        val isRecording: Boolean = false,
         val isSending: Boolean = false,
     ) {
         val descriptionWordCount: Int
