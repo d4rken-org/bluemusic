@@ -12,18 +12,24 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.Description
+import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import eu.darken.bluemusic.R
@@ -45,14 +51,40 @@ import java.io.File
 fun SupportScreenHost(vm: SupportScreenViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
 
-    val state by vm.state.collectAsStateWithLifecycle()
+    LifecycleResumeEffect(vm) {
+        vm.onResume()
+        onPauseOrDispose { }
+    }
+
+    val state by vm.state.collectAsStateWithLifecycle(null)
+    var showShortRecordingDialog by remember { mutableStateOf(false) }
+
+    LaunchedEffect(vm.events) {
+        vm.events.collect { event ->
+            when (event) {
+                is SupportScreenViewModel.SupportEvent.ShowShortRecordingWarning -> {
+                    showShortRecordingDialog = true
+                }
+            }
+        }
+    }
 
     state?.let { vmState ->
         SupportScreen(
             state = vmState,
+            showShortRecordingDialog = showShortRecordingDialog,
             onNavigateUp = { vm.navUp() },
-            onDebugLog = { vm.debugLog() },
+            onStartDebugLog = { vm.startDebugLog() },
+            onStopDebugLog = { vm.stopDebugLog() },
             onOpenUrl = { url -> vm.openUrl(url) },
+            onConfirmStopDebugLog = {
+                showShortRecordingDialog = false
+                vm.confirmStopDebugLog()
+            },
+            onDismissShortRecordingDialog = {
+                showShortRecordingDialog = false
+            },
+            onDeleteAllDebugLogs = { vm.deleteAllDebugLogs() },
         )
     }
 }
@@ -60,22 +92,67 @@ fun SupportScreenHost(vm: SupportScreenViewModel = hiltViewModel()) {
 @Composable
 fun SupportScreen(
     state: SupportScreenViewModel.State,
+    showShortRecordingDialog: Boolean = false,
     onNavigateUp: () -> Unit,
-    onDebugLog: () -> Unit,
+    onStartDebugLog: () -> Unit,
+    onStopDebugLog: () -> Unit,
     onOpenUrl: (String) -> Unit,
+    onConfirmStopDebugLog: () -> Unit = {},
+    onDismissShortRecordingDialog: () -> Unit = {},
+    onDeleteAllDebugLogs: () -> Unit = {},
 ) {
     var showConsentDialog by remember { mutableStateOf(false) }
+    var showDeleteConfirmDialog by remember { mutableStateOf(false) }
 
     if (showConsentDialog) {
         RecorderConsentDialog(
             onDismissRequest = { showConsentDialog = false },
             onConfirm = {
                 showConsentDialog = false
-                onDebugLog()
+                onStartDebugLog()
             },
             onOpenPrivacyPolicy = {
                 onOpenUrl(BlueMusicLinks.PRIVACY_POLICY)
             }
+        )
+    }
+
+    if (showShortRecordingDialog) {
+        AlertDialog(
+            onDismissRequest = onDismissShortRecordingDialog,
+            title = { Text(stringResource(R.string.settings_support_debuglog_short_recording_title)) },
+            text = { Text(stringResource(R.string.settings_support_debuglog_short_recording_msg)) },
+            dismissButton = {
+                TextButton(onClick = onConfirmStopDebugLog) {
+                    Text(stringResource(R.string.settings_support_debuglog_short_recording_stop))
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = onDismissShortRecordingDialog) {
+                    Text(stringResource(R.string.settings_support_debuglog_short_recording_continue))
+                }
+            },
+        )
+    }
+
+    if (showDeleteConfirmDialog) {
+        AlertDialog(
+            onDismissRequest = { showDeleteConfirmDialog = false },
+            title = { Text(stringResource(R.string.settings_support_debuglog_folder_delete_title)) },
+            text = { Text(stringResource(R.string.settings_support_debuglog_folder_delete_msg)) },
+            dismissButton = {
+                TextButton(onClick = { showDeleteConfirmDialog = false }) {
+                    Text(stringResource(R.string.general_cancel_action))
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    showDeleteConfirmDialog = false
+                    onDeleteAllDebugLogs()
+                }) {
+                    Text(stringResource(R.string.general_delete_action))
+                }
+            },
         )
     }
 
@@ -149,14 +226,29 @@ fun SupportScreen(
                     },
                     onClick = {
                         if (state.isRecording) {
-                            // If already recording, stop immediately
-                            onDebugLog()
+                            onStopDebugLog()
                         } else {
-                            // If not recording, show consent dialog first
                             showConsentDialog = true
                         }
                     }
                 )
+            }
+
+            if (state.folderSessionCount > 0) {
+                item {
+                    SettingsPreferenceItem(
+                        icon = Icons.Filled.Folder,
+                        title = stringResource(R.string.settings_support_debuglog_folder_label),
+                        subtitle = pluralStringResource(
+                            R.plurals.settings_support_debuglog_folder_desc,
+                            state.folderSessionCount,
+                            state.folderSessionCount,
+                            state.folderTotalSize ?: "",
+                        ),
+                        enabled = !state.isRecording,
+                        onClick = { showDeleteConfirmDialog = true },
+                    )
+                }
             }
         }
     }
@@ -169,10 +261,13 @@ private fun SupportScreenPreview() {
         SupportScreen(
             state = SupportScreenViewModel.State(
                 isRecording = true,
-                logPath = File("/tmp/debug.log")
+                logPath = File("/tmp/debug.log"),
+                folderSessionCount = 3,
+                folderTotalSize = "4.2 MB",
             ),
             onNavigateUp = {},
-            onDebugLog = {},
+            onStartDebugLog = {},
+            onStopDebugLog = {},
             onOpenUrl = {},
         )
     }
@@ -185,10 +280,50 @@ private fun SupportScreenNotRecordingPreview() {
         SupportScreen(
             state = SupportScreenViewModel.State(
                 isRecording = false,
-                logPath = null
+                logPath = null,
+                folderSessionCount = 1,
+                folderTotalSize = "512 KB",
             ),
             onNavigateUp = {},
-            onDebugLog = {},
+            onStartDebugLog = {},
+            onStopDebugLog = {},
+            onOpenUrl = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun SupportScreenShortRecordingDialogPreview() {
+    PreviewWrapper {
+        SupportScreen(
+            state = SupportScreenViewModel.State(
+                isRecording = true,
+                logPath = File("/tmp/debug.log"),
+            ),
+            showShortRecordingDialog = true,
+            onNavigateUp = {},
+            onStartDebugLog = {},
+            onStopDebugLog = {},
+            onOpenUrl = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun SupportScreenEmptyFolderPreview() {
+    PreviewWrapper {
+        SupportScreen(
+            state = SupportScreenViewModel.State(
+                isRecording = false,
+                logPath = null,
+                folderSessionCount = 0,
+                folderTotalSize = null,
+            ),
+            onNavigateUp = {},
+            onStartDebugLog = {},
+            onStopDebugLog = {},
             onOpenUrl = {},
         )
     }

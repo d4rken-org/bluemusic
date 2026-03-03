@@ -18,6 +18,7 @@ fun SettingsPreferenceItem(
     title: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     subtitle: String? = null,
     value: String? = null,
 ) {
@@ -26,6 +27,7 @@ fun SettingsPreferenceItem(
         title = title,
         onClick = onClick,
         modifier = modifier,
+        enabled = enabled,
         subtitle = subtitle,
         trailingContent = if (value != null) {
             {

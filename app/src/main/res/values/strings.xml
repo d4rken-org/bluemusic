@@ -179,6 +179,18 @@
     <string name="settings_support_debuglog_desc">Record everything the app is doing into a text file that you can share.</string>
     <string name="settings_support_debuglog_recording_desc">Currently recording debug information. Tap to stop recording.</string>
     <string name="settings_support_debuglog_path">Log path: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">Very short recording</string>
+    <string name="settings_support_debuglog_short_recording_msg">That was a very short recording. Debug logs are recordings, not snapshots — reproduce the issue while recording is active for the log to be useful.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Continue recording</string>
+    <string name="settings_support_debuglog_short_recording_stop">Stop anyway</string>
+    <string name="settings_support_debuglog_folder_label">Debug log folder</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d session using %2$s</item>
+        <item quantity="other">%1$d sessions using %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">No debug logs stored</string>
+    <string name="settings_support_debuglog_folder_delete_title">Delete all debug logs?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">This will permanently delete all stored debug log sessions.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">A place to hang out in and ask questions.</string>
 

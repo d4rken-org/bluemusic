@@ -35,6 +35,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.plus
 import java.io.File
+import java.time.Duration
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -99,12 +100,20 @@ class RecorderModule @Inject constructor(
                         log(TAG) { "Stopping log recorder for: $currentLogDir" }
                         recorder!!.stop()
 
+                        val sessionDuration = getRecordingStartTime()?.let { startTime ->
+                            Duration.between(startTime, Instant.now())
+                        }
+
                         debugSettings.recorderPath.value(null)
                         if (triggerFile.exists() && !triggerFile.delete()) {
                             log(TAG, ERROR) { "Failed to delete trigger file" }
                         }
 
-                        val intent = RecorderActivity.getLaunchIntent(context, currentLogDir!!.path).apply {
+                        val intent = RecorderActivity.getLaunchIntent(
+                            context,
+                            currentLogDir!!.path,
+                            sessionDuration?.seconds,
+                        ).apply {
                             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         }
                         context.startActivity(intent)
@@ -153,6 +162,40 @@ class RecorderModule @Inject constructor(
         return currentPath
     }
 
+    private fun getRecordingStartTime(): Instant? {
+        val lastModified = triggerFile.lastModified()
+        return if (lastModified > 0) Instant.ofEpochMilli(lastModified) else null
+    }
+
+    suspend fun requestStopRecorder(): StopResult {
+        val currentState = internalState.value()
+        if (!currentState.isRecording) return StopResult.NotRecording
+
+        val startTime = getRecordingStartTime()
+        if (startTime != null) {
+            val elapsed = Duration.between(startTime, Instant.now()).seconds
+            if (elapsed < MIN_RECORDING_SECONDS) {
+                log(TAG) { "Recording too short: ${elapsed}s < ${MIN_RECORDING_SECONDS}s" }
+                return StopResult.TooShort(elapsed)
+            }
+        }
+
+        stopRecorder()
+        return StopResult.Stopped(currentState.currentLogDir!!)
+    }
+
+    fun getLogsDir(): File = File(context.externalCacheDir, "debug/logs")
+
+    fun getLogEntries(): List<File> {
+        return getLogsDir().listFiles()?.filter { it.isDirectory }?.toList() ?: emptyList()
+    }
+
+    sealed class StopResult {
+        data class TooShort(val durationSeconds: Long) : StopResult()
+        data class Stopped(val logDir: File) : StopResult()
+        data object NotRecording : StopResult()
+    }
+
     private suspend fun logInfos() {
         val pkgInfo = context.getPackageInfo()
         log(TAG, INFO) { "APILEVEL: ${BuildWrap.VERSION.SDK_INT}" }
@@ -189,5 +232,6 @@ class RecorderModule @Inject constructor(
     companion object {
         internal val TAG = logTag("Debug", "Log", "Recorder", "Module")
         private const val FORCE_FILE = "force_debug_run"
+        private const val MIN_RECORDING_SECONDS = 5L
     }
 }

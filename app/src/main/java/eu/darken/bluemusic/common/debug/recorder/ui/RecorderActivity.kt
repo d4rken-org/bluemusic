@@ -47,7 +47,10 @@ class RecorderActivity : Activity2() {
                         ErrorEventHandler(vm)
                         RecorderScreenHost(
                             viewModel = vm,
-                            onCancelClick = { finish() }
+                            onCancelClick = {
+                                vm.discard()
+                                finish()
+                            }
                         )
                     }
                 }
@@ -58,10 +61,12 @@ class RecorderActivity : Activity2() {
     companion object {
         internal val TAG = logTag("Debug", "Log", "RecorderActivity")
         const val RECORD_PATH = "logPath"
+        const val RECORD_DURATION = "recordDuration"
 
-        fun getLaunchIntent(context: Context, path: String): Intent {
+        fun getLaunchIntent(context: Context, path: String, durationSeconds: Long? = null): Intent {
             val intent = Intent(context, RecorderActivity::class.java)
             intent.putExtra(RECORD_PATH, path)
+            if (durationSeconds != null) intent.putExtra(RECORD_DURATION, durationSeconds)
             return intent
         }
     }

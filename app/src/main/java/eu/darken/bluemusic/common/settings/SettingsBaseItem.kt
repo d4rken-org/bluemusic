@@ -26,22 +26,29 @@ fun SettingsBaseItem(
     title: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    enabled: Boolean = true,
     icon: ImageVector? = null,
     subtitle: String? = null,
     onLongClick: (() -> Unit)? = null,
     trailingContent: @Composable (() -> Unit)? = null,
 ) {
+    val contentAlpha = if (enabled) 1f else 0.38f
+
     Row(
         modifier = modifier
             .fillMaxWidth()
             .then(
-                if (onLongClick != null) {
-                    Modifier.combinedClickable(
-                        onClick = onClick,
-                        onLongClick = onLongClick
-                    )
+                if (enabled) {
+                    if (onLongClick != null) {
+                        Modifier.combinedClickable(
+                            onClick = onClick,
+                            onLongClick = onLongClick
+                        )
+                    } else {
+                        Modifier.clickable { onClick() }
+                    }
                 } else {
-                    Modifier.clickable { onClick() }
+                    Modifier
                 }
             )
             .padding(horizontal = 16.dp, vertical = 16.dp),
@@ -52,7 +59,7 @@ fun SettingsBaseItem(
                 imageVector = icon,
                 contentDescription = null,
                 modifier = Modifier.size(24.dp),
-                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f * contentAlpha)
             )
         }
 
@@ -65,13 +72,13 @@ fun SettingsBaseItem(
                 text = title,
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Normal,
-                color = MaterialTheme.colorScheme.onSurface
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = contentAlpha)
             )
             if (subtitle != null) {
                 Text(
                     text = subtitle,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f * contentAlpha),
                     modifier = Modifier.padding(top = 2.dp)
                 )
             }
