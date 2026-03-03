@@ -44,8 +44,11 @@ class RecorderViewModel @Inject constructor(
             ?: throw IllegalStateException("No path provided")
         recordedPath = File(path)
 
+        val durationSeconds = savedStateHandle.get<Long>(RecorderActivity.RECORD_DURATION)
+        val formattedDuration = durationSeconds?.let { formatDuration(it) }
+
         stater = DynamicStateFlow(TAG, vmScope) {
-            State(logDir = recordedPath)
+            State(logDir = recordedPath, sessionDuration = formattedDuration)
         }
         state = stater.flow
 
@@ -101,6 +104,12 @@ class RecorderViewModel @Inject constructor(
         shareEvent.emit(chooserIntent)
     }
 
+    fun discard() = launch {
+        log(TAG) { "Discarding session: $recordedPath" }
+        recordedPath.deleteRecursively()
+        stater.value().compressedFile?.delete()
+    }
+
     fun goPrivacyPolicy() {
         webpageTool.open(BlueMusicLinks.PRIVACY_POLICY)
     }
@@ -109,7 +118,8 @@ class RecorderViewModel @Inject constructor(
         val logDir: File,
         val logEntries: List<LogFileItem> = emptyList(),
         val compressedFile: File? = null,
-        val compressedSize: Long? = null
+        val compressedSize: Long? = null,
+        val sessionDuration: String? = null,
     ) {
         val loading: Boolean
             get() = compressedSize == null
@@ -130,5 +140,11 @@ class RecorderViewModel @Inject constructor(
 
     companion object {
         internal val TAG = logTag("Debug", "Recorder", "ViewModel")
+
+        private fun formatDuration(seconds: Long): String {
+            val minutes = seconds / 60
+            val remainingSeconds = seconds % 60
+            return if (minutes > 0) "${minutes}m ${remainingSeconds}s" else "${remainingSeconds}s"
+        }
     }
 }

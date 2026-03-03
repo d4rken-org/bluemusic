@@ -176,7 +176,8 @@ private fun RecorderScreen(
                 ) {
                     LogFilesHeader(
                         logEntries = state.logEntries,
-                        formattedSize = state.getFormattedCompressedSize(context) ?: ""
+                        formattedSize = state.getFormattedCompressedSize(context) ?: "",
+                        sessionDuration = state.sessionDuration,
                     )
                 }
             }
@@ -376,7 +377,8 @@ private fun SessionInfoCard(logDir: File) {
 @Composable
 private fun LogFilesHeader(
     logEntries: List<RecorderViewModel.LogFileItem>,
-    formattedSize: String
+    formattedSize: String,
+    sessionDuration: String? = null,
 ) {
     ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
@@ -407,11 +409,15 @@ private fun LogFilesHeader(
                     color = MaterialTheme.colorScheme.onSurface
                 )
 
+                val subtitle = buildString {
+                    append(stringResource(R.string.debug_log_screen_log_files_ready, formattedSize))
+                    if (sessionDuration != null) {
+                        append(" \u00B7 ")
+                        append(sessionDuration)
+                    }
+                }
                 Text(
-                    text = stringResource(
-                        R.string.debug_log_screen_log_files_ready,
-                        formattedSize
-                    ),
+                    text = subtitle,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -584,7 +590,8 @@ private fun RecorderScreenPreview() {
                 )
             ),
             compressedFile = File("/storage/emulated/0/Android/data/eu.darken.bluemusic/cache/debug/logs/session_123.zip"),
-            compressedSize = 1024 * 768
+            compressedSize = 1024 * 768,
+            sessionDuration = "2m 15s",
         )
 
         RecorderScreen(
