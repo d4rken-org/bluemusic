@@ -15,7 +15,6 @@ import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
@@ -35,7 +34,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import eu.darken.bluemusic.R
@@ -99,7 +97,6 @@ fun SupportScreenHost(vm: SupportScreenViewModel = hiltViewModel()) {
             onDismissShortRecordingDialog = {
                 showShortRecordingDialog = false
             },
-            onDeleteAllDebugLogs = { vm.deleteAllDebugLogs() },
             onContactDeveloper = { vm.contactDeveloper() },
             onDeleteStoredLogs = { vm.deleteStoredLogs() },
         )
@@ -117,12 +114,10 @@ fun SupportScreen(
     onOpenUrl: (String) -> Unit,
     onConfirmStopDebugLog: () -> Unit = {},
     onDismissShortRecordingDialog: () -> Unit = {},
-    onDeleteAllDebugLogs: () -> Unit = {},
     onContactDeveloper: () -> Unit = {},
     onDeleteStoredLogs: () -> Unit = {},
 ) {
     var showConsentDialog by remember { mutableStateOf(false) }
-    var showDeleteConfirmDialog by remember { mutableStateOf(false) }
     var showDeleteStoredDialog by remember { mutableStateOf(false) }
 
     if (showConsentDialog) {
@@ -151,27 +146,6 @@ fun SupportScreen(
             confirmButton = {
                 TextButton(onClick = onDismissShortRecordingDialog) {
                     Text(stringResource(R.string.settings_support_debuglog_short_recording_continue))
-                }
-            },
-        )
-    }
-
-    if (showDeleteConfirmDialog) {
-        AlertDialog(
-            onDismissRequest = { showDeleteConfirmDialog = false },
-            title = { Text(stringResource(R.string.settings_support_debuglog_folder_delete_title)) },
-            text = { Text(stringResource(R.string.settings_support_debuglog_folder_delete_msg)) },
-            dismissButton = {
-                TextButton(onClick = { showDeleteConfirmDialog = false }) {
-                    Text(stringResource(R.string.general_cancel_action))
-                }
-            },
-            confirmButton = {
-                TextButton(onClick = {
-                    showDeleteConfirmDialog = false
-                    onDeleteAllDebugLogs()
-                }) {
-                    Text(stringResource(R.string.general_delete_action))
                 }
             },
         )
@@ -289,24 +263,6 @@ fun SupportScreen(
                 SettingsDivider()
             }
 
-            if (state.folderSessionCount > 0) {
-                item {
-                    SettingsPreferenceItem(
-                        icon = Icons.Filled.Folder,
-                        title = stringResource(R.string.settings_support_debuglog_folder_label),
-                        subtitle = pluralStringResource(
-                            R.plurals.settings_support_debuglog_folder_desc,
-                            state.folderSessionCount,
-                            state.folderSessionCount,
-                            state.folderTotalSize ?: "",
-                        ),
-                        enabled = !state.isRecording,
-                        onClick = { showDeleteConfirmDialog = true },
-                    )
-                    SettingsDivider()
-                }
-            }
-
             item {
                 val context = LocalContext.current
                 val storedStats = state.storedStats
@@ -342,8 +298,6 @@ private fun SupportScreenPreview() {
             state = SupportScreenViewModel.State(
                 isRecording = true,
                 logPath = File("/tmp/debug.log"),
-                folderSessionCount = 3,
-                folderTotalSize = "4.2 MB",
                 storedStats = DebugLogStore.Stats(sessionCount = 3, totalSize = 1024 * 1024 * 5L),
             ),
             onNavigateUp = {},
@@ -364,8 +318,6 @@ private fun SupportScreenNotRecordingPreview() {
             state = SupportScreenViewModel.State(
                 isRecording = false,
                 logPath = null,
-                folderSessionCount = 1,
-                folderTotalSize = "512 KB",
                 storedStats = DebugLogStore.Stats(sessionCount = 0, totalSize = 0),
             ),
             onNavigateUp = {},
@@ -396,23 +348,3 @@ private fun SupportScreenShortRecordingDialogPreview() {
     }
 }
 
-@Preview2
-@Composable
-private fun SupportScreenEmptyFolderPreview() {
-    PreviewWrapper {
-        SupportScreen(
-            state = SupportScreenViewModel.State(
-                isRecording = false,
-                logPath = null,
-                folderSessionCount = 0,
-                folderTotalSize = null,
-            ),
-            onNavigateUp = {},
-            onStartDebugLog = {},
-            onStopDebugLog = {},
-            onOpenUrl = {},
-            onContactDeveloper = {},
-            onDeleteStoredLogs = {},
-        )
-    }
-}

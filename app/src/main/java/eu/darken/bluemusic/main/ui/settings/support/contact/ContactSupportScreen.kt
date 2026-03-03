@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -22,11 +21,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -52,11 +52,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import eu.darken.bluemusic.R
+import eu.darken.bluemusic.common.BlueMusicLinks
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.debug.recorder.core.DebugLogStore
+import eu.darken.bluemusic.common.debug.recorder.ui.RecorderConsentDialog
 import eu.darken.bluemusic.common.error.ErrorEventHandler
 import java.io.File
 import java.text.SimpleDateFormat
@@ -97,6 +99,9 @@ fun ContactSupportScreenHost(vm: ContactSupportViewModel = hiltViewModel()) {
             onCategorySelected = { vm.selectCategory(it) },
             onDescriptionChanged = { vm.updateDescription(it) },
             onLogSessionSelected = { vm.selectLogSession(it) },
+            onStartRecording = { vm.startRecording() },
+            onStopRecording = { vm.stopRecording() },
+            onOpenUrl = { vm.openUrl(it) },
             onSend = { vm.send() },
         )
     }
@@ -111,6 +116,9 @@ private fun ContactSupportScreen(
     onCategorySelected: (ContactCategory) -> Unit,
     onDescriptionChanged: (String) -> Unit,
     onLogSessionSelected: (DebugLogStore.LogSession?) -> Unit,
+    onStartRecording: () -> Unit = {},
+    onStopRecording: () -> Unit = {},
+    onOpenUrl: (String) -> Unit = {},
     onSend: () -> Unit,
 ) {
     Scaffold(
@@ -127,32 +135,22 @@ private fun ContactSupportScreen(
                 },
             )
         },
-        floatingActionButton = {
-            ExtendedFloatingActionButton(
-                onClick = { if (state.canSend) onSend() },
-                modifier = Modifier.navigationBarsPadding(),
-                icon = {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.Send,
-                        contentDescription = null,
-                    )
-                },
-                text = { Text(stringResource(R.string.contact_send_action)) },
-                containerColor = if (state.canSend) {
-                    MaterialTheme.colorScheme.primary
-                } else {
-                    MaterialTheme.colorScheme.surfaceVariant
-                },
-                contentColor = if (state.canSend) {
-                    MaterialTheme.colorScheme.onPrimary
-                } else {
-                    MaterialTheme.colorScheme.onSurfaceVariant
-                },
-            )
-        },
         snackbarHost = { SnackbarHost(snackbarHostState) },
         contentWindowInsets = WindowInsets.statusBars,
     ) { paddingValues ->
+        var showConsentDialog by remember { mutableStateOf(false) }
+
+        if (showConsentDialog) {
+            RecorderConsentDialog(
+                onDismissRequest = { showConsentDialog = false },
+                onConfirm = {
+                    showConsentDialog = false
+                    onStartRecording()
+                },
+                onOpenPrivacyPolicy = { onOpenUrl(BlueMusicLinks.PRIVACY_POLICY) },
+            )
+        }
+
         val navBarPadding = navigationBarBottomPadding()
         LazyColumn(
             modifier = Modifier
@@ -163,7 +161,7 @@ private fun ContactSupportScreen(
                 start = 16.dp,
                 end = 16.dp,
                 top = 8.dp,
-                bottom = 80.dp + navBarPadding,
+                bottom = 16.dp + navBarPadding,
             ),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
@@ -208,7 +206,10 @@ private fun ContactSupportScreen(
                     LogSessionPicker(
                         sessions = state.logSessions,
                         selectedSession = state.selectedLogSession,
+                        isRecording = state.isRecording,
                         onSessionSelected = onLogSessionSelected,
+                        onStartRecording = { showConsentDialog = true },
+                        onStopRecording = onStopRecording,
                     )
                 }
             }
@@ -245,6 +246,22 @@ private fun ContactSupportScreen(
                     modifier = Modifier.fillMaxWidth(),
                 )
             }
+
+            item {
+                Button(
+                    onClick = onSend,
+                    enabled = state.canSend,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.Send,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp),
+                    )
+                    Spacer(modifier = Modifier.size(8.dp))
+                    Text(stringResource(R.string.contact_send_action))
+                }
+            }
         }
     }
 }
@@ -258,13 +275,13 @@ private fun WordCountIndicator(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.End,
     ) {
-        val color = when {
-            wordCount == 0 -> MaterialTheme.colorScheme.onSurfaceVariant
-            wordCount < minimum -> MaterialTheme.colorScheme.error
-            else -> MaterialTheme.colorScheme.primary
+        val color = if (wordCount < minimum) {
+            MaterialTheme.colorScheme.error
+        } else {
+            MaterialTheme.colorScheme.onSurfaceVariant
         }
         Text(
-            text = stringResource(R.string.contact_word_count, wordCount, minimum),
+            text = stringResource(R.string.contact_word_count, minimum, wordCount),
             style = MaterialTheme.typography.bodySmall,
             color = color,
         )
@@ -275,7 +292,10 @@ private fun WordCountIndicator(
 private fun LogSessionPicker(
     sessions: List<DebugLogStore.LogSession>,
     selectedSession: DebugLogStore.LogSession?,
+    isRecording: Boolean,
     onSessionSelected: (DebugLogStore.LogSession?) -> Unit,
+    onStartRecording: () -> Unit,
+    onStopRecording: () -> Unit,
 ) {
     var expanded by remember { mutableStateOf(false) }
     val context = LocalContext.current
@@ -289,16 +309,10 @@ private fun LogSessionPicker(
         )
         Spacer(modifier = Modifier.height(8.dp))
 
-        if (sessions.isEmpty()) {
-            Text(
-                text = stringResource(R.string.contact_debug_log_none),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        } else {
+        if (sessions.isNotEmpty()) {
             ExposedDropdownMenuBox(
                 expanded = expanded,
-                onExpandedChange = { expanded = it },
+                onExpandedChange = { if (!isRecording) expanded = it },
             ) {
                 OutlinedTextField(
                     value = selectedSession?.let {
@@ -308,6 +322,7 @@ private fun LogSessionPicker(
                     } ?: stringResource(R.string.contact_debug_log_select_hint),
                     onValueChange = {},
                     readOnly = true,
+                    enabled = !isRecording,
                     modifier = Modifier
                         .fillMaxWidth()
                         .menuAnchor(MenuAnchorType.PrimaryNotEditable),
@@ -338,6 +353,30 @@ private fun LogSessionPicker(
                         )
                     }
                 }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+
+        if (isRecording) {
+            Button(
+                onClick = onStopRecording,
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.error,
+                ),
+            ) {
+                Text(stringResource(R.string.debug_log_stop_action))
+            }
+        } else {
+            Button(
+                onClick = onStartRecording,
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                ),
+            ) {
+                Text(stringResource(R.string.debug_log_record_action))
             }
         }
     }
