@@ -18,18 +18,17 @@ fun SettingsPreferenceItem(
     title: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    enabled: Boolean = true,
     subtitle: String? = null,
     value: String? = null,
+    trailingContent: @Composable (() -> Unit)? = null,
 ) {
     SettingsBaseItem(
         icon = icon,
         title = title,
         onClick = onClick,
         modifier = modifier,
-        enabled = enabled,
         subtitle = subtitle,
-        trailingContent = if (value != null) {
+        trailingContent = trailingContent ?: if (value != null) {
             {
                 Text(
                     text = value,

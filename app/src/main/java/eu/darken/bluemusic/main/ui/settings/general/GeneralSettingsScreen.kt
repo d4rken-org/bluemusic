@@ -5,15 +5,18 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.twotone.Palette
+import androidx.compose.material.icons.twotone.Stars
 import androidx.compose.material.icons.twotone.Translate
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -25,6 +28,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -102,8 +106,15 @@ fun GeneralSettingsScreen(
         contentWindowInsets = WindowInsets.statusBars
     ) { paddingValues ->
         val navBarPadding = navigationBarBottomPadding()
-        val proRequired = stringResource(R.string.upgrade_feature_requires_pro)
         val isMaterialYou = state.themeState.style == ThemeStyle.MATERIAL_YOU
+        val proStarIcon: @Composable (() -> Unit) = {
+            Icon(
+                imageVector = Icons.TwoTone.Stars,
+                contentDescription = stringResource(R.string.general_upgrade_action),
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.padding(start = 16.dp).size(24.dp),
+            )
+        }
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -120,9 +131,9 @@ fun GeneralSettingsScreen(
                 SettingsPreferenceItem(
                     icon = Icons.TwoTone.Palette,
                     title = stringResource(R.string.ui_theme_mode_setting_label),
-                    subtitle = if (state.isUpgraded) stringResource(R.string.ui_theme_mode_setting_explanation) else proRequired,
+                    subtitle = stringResource(R.string.ui_theme_mode_setting_explanation),
                     value = if (state.isUpgraded) state.themeState.mode.label.get(context) else null,
-                    enabled = state.isUpgraded,
+                    trailingContent = if (!state.isUpgraded) proStarIcon else null,
                     onClick = if (state.isUpgraded) {{ showThemeModeDialog = true }} else onUpgrade,
                 )
                 SettingsDivider()
@@ -132,26 +143,25 @@ fun GeneralSettingsScreen(
                 SettingsPreferenceItem(
                     icon = Icons.TwoTone.Palette,
                     title = stringResource(R.string.ui_theme_style_setting_label),
-                    subtitle = if (state.isUpgraded) stringResource(R.string.ui_theme_style_setting_explanation) else proRequired,
+                    subtitle = stringResource(R.string.ui_theme_style_setting_explanation),
                     value = if (state.isUpgraded) state.themeState.style.label.get(context) else null,
-                    enabled = state.isUpgraded,
+                    trailingContent = if (!state.isUpgraded) proStarIcon else null,
                     onClick = if (state.isUpgraded) {{ showThemeStyleDialog = true }} else onUpgrade,
                 )
                 SettingsDivider()
             }
 
             item {
-                val colorPickerEnabled = state.isUpgraded && !isMaterialYou
                 SettingsPreferenceItem(
                     icon = Icons.TwoTone.Palette,
                     title = stringResource(R.string.ui_theme_color_setting_label),
-                    subtitle = when {
-                        !state.isUpgraded -> proRequired
-                        isMaterialYou -> stringResource(R.string.ui_theme_color_material_you_note)
-                        else -> stringResource(R.string.ui_theme_color_setting_explanation)
+                    subtitle = if (isMaterialYou) {
+                        stringResource(R.string.ui_theme_color_material_you_note)
+                    } else {
+                        stringResource(R.string.ui_theme_color_setting_explanation)
                     },
-                    value = if (colorPickerEnabled) state.themeState.color.label.get(context) else null,
-                    enabled = colorPickerEnabled,
+                    value = if (state.isUpgraded && !isMaterialYou) state.themeState.color.label.get(context) else null,
+                    trailingContent = if (!state.isUpgraded) proStarIcon else null,
                     onClick = if (!state.isUpgraded) onUpgrade else {{ showThemeColorDialog = true }},
                 )
                 SettingsDivider()
