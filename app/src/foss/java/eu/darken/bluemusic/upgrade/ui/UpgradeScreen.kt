@@ -1,9 +1,12 @@
 package eu.darken.bluemusic.upgrade.ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -16,14 +19,20 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.BlueMusicIcon
 import eu.darken.bluemusic.common.compose.ColoredTitleText
@@ -34,18 +43,44 @@ import eu.darken.bluemusic.common.error.ErrorEventHandler
 @Composable
 fun UpgradeScreenHost(vm: UpgradeViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
+
+    val snackbarHostState = remember { SnackbarHostState() }
+    val tooFastMessage = stringResource(R.string.upgrade_screen_sponsor_too_fast)
+
+    LifecycleEventEffect(Lifecycle.Event.ON_PAUSE) { vm.onPaused() }
+    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { vm.onResumed() }
+
+    LaunchedEffect(vm.events) {
+        vm.events.collect { event ->
+            when (event) {
+                is UpgradeEvent.SpendMoreTime -> {
+                    snackbarHostState.showSnackbar(message = tooFastMessage)
+                }
+            }
+        }
+    }
+
     UpgradeScreen(
         onNavigateBack = { vm.navUp() },
-        onSponsorClick = { vm.openSponsor() }
+        onSponsorClick = { vm.openSponsor() },
+        snackbarHostState = snackbarHostState,
     )
 }
 
 @Composable
 fun UpgradeScreen(
     onNavigateBack: () -> Unit,
-    onSponsorClick: () -> Unit
+    onSponsorClick: () -> Unit,
+    snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
 ) {
     Scaffold(
+        snackbarHost = {
+            SnackbarHost(
+                hostState = snackbarHostState,
+                modifier = Modifier.navigationBarsPadding()
+            )
+        },
+        contentWindowInsets = WindowInsets.statusBars,
         topBar = {
             CenterAlignedTopAppBar(
                 title = {
