@@ -19,8 +19,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 
 @Composable
@@ -71,7 +73,7 @@ fun SwitchPreference(
         if (requiresPro && !isProVersion) {
             Icon(
                 imageVector = Icons.TwoTone.Stars,
-                contentDescription = "Pro feature",
+                contentDescription = stringResource(R.string.label_pro_feature),
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.padding(start = 16.dp)
             )
@@ -133,7 +135,7 @@ fun ClickablePreference(
         if (requiresPro && !isProVersion) {
             Icon(
                 imageVector = Icons.TwoTone.Stars,
-                contentDescription = "Pro feature",
+                contentDescription = stringResource(R.string.label_pro_feature),
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.padding(start = 16.dp)
             )

@@ -38,6 +38,11 @@ class NavigationController @Inject constructor() {
     ) {
         log(TAG) { "goTo($destination, popUpTo=$popUpTo, inclusive=$inclusive)" }
 
+        if (backStack.lastOrNull() == destination) {
+            log(TAG) { "goTo() skipped, already at $destination" }
+            return
+        }
+
         Snapshot.withMutableSnapshot {
             if (popUpTo != null) {
                 while (backStack.size > 1 && backStack.last() != popUpTo) {

@@ -240,7 +240,7 @@ private fun ManagedDevicesTopBar(
                     postfix = stringResource(R.string.app_name_upgrade_postfix),
                 )
             } else {
-                Text(text = stringResource(R.string.app_name))
+                Text(text = stringResource(R.string.app_name_short))
             }
         },
         actions = {
