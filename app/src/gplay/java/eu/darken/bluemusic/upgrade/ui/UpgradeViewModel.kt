@@ -86,11 +86,11 @@ class UpgradeViewModel @Inject constructor(
             formattedPrice = subOffer?.let { it.pricingPhases.pricingPhaseList.firstOrNull()?.formattedPrice },
         )
 
-        val trialOffer = sub?.firstOrNull()?.details?.subscriptionOfferDetails?.none { offer ->
+        val trialOffer = sub?.firstOrNull()?.details?.subscriptionOfferDetails?.any { offer ->
             OurSku.Sub.PRO_UPGRADE.TRIAL_OFFER.matches(offer)
         }
         val trialState = State.Trial(
-            available = trialOffer != null,
+            available = trialOffer == true,
             formattedPrice = subState.formattedPrice,
         )
 
