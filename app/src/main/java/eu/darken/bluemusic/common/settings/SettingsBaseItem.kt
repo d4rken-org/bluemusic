@@ -15,7 +15,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -27,30 +26,22 @@ fun SettingsBaseItem(
     title: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    enabled: Boolean = true,
     icon: ImageVector? = null,
     subtitle: String? = null,
     onLongClick: (() -> Unit)? = null,
     trailingContent: @Composable (() -> Unit)? = null,
 ) {
-    val contentAlpha = if (enabled) 1f else 0.38f
-
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .alpha(if (enabled) 1f else 0.38f)
             .then(
-                if (enabled) {
-                    if (onLongClick != null) {
-                        Modifier.combinedClickable(
-                            onClick = onClick,
-                            onLongClick = onLongClick
-                        )
-                    } else {
-                        Modifier.clickable { onClick() }
-                    }
+                if (onLongClick != null) {
+                    Modifier.combinedClickable(
+                        onClick = onClick,
+                        onLongClick = onLongClick
+                    )
                 } else {
-                    Modifier
+                    Modifier.clickable { onClick() }
                 }
             )
             .padding(horizontal = 16.dp, vertical = 16.dp),
@@ -61,7 +52,7 @@ fun SettingsBaseItem(
                 imageVector = icon,
                 contentDescription = null,
                 modifier = Modifier.size(24.dp),
-                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f * contentAlpha)
+                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
             )
         }
 
@@ -74,13 +65,13 @@ fun SettingsBaseItem(
                 text = title,
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Normal,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = contentAlpha)
+                color = MaterialTheme.colorScheme.onSurface
             )
             if (subtitle != null) {
                 Text(
                     text = subtitle,
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f * contentAlpha),
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
                     modifier = Modifier.padding(top = 2.dp)
                 )
             }
