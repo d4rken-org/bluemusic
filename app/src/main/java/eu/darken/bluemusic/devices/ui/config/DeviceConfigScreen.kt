@@ -109,8 +109,6 @@ fun DeviceConfigScreenHost(
     var showConnectionAlertDialog by remember { mutableStateOf(false) }
     var connectionAlertTypeValue by remember { mutableStateOf(AlertType.NONE) }
 
-    val upgradeMessage = stringResource(R.string.upgrade_feature_requires_pro)
-    val upgradeAction = stringResource(R.string.upgrade_prompt_upgrade_action)
     val notificationPolicyAction = stringResource(R.string.devices_device_config_notification_policy_action)
     val notificationPolicyRingtoneMessage = stringResource(R.string.devices_device_config_notification_policy_required_ringtone)
     val notificationPolicyNotificationMessage = stringResource(R.string.devices_device_config_notification_policy_required_notification)
@@ -138,16 +136,7 @@ fun DeviceConfigScreenHost(
                 }
 
                 is ConfigEvent.NavigateBack -> vm.navUp()
-                is ConfigEvent.RequiresPro -> {
-                    val result = snackbarHostState.showSnackbar(
-                        message = upgradeMessage,
-                        actionLabel = upgradeAction,
-                        duration = SnackbarDuration.Short
-                    )
-                    if (result == SnackbarResult.ActionPerformed) {
-                        vm.navTo(Nav.Main.Upgrade)
-                    }
-                }
+                is ConfigEvent.RequiresPro -> vm.navTo(Nav.Main.Upgrade)
 
                 is ConfigEvent.RequiresNotificationPolicyAccess -> {
                     val message = when (event.feature) {

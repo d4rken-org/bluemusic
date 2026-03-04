@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
+    <string name="app_name_short">BVM</string>
 
     <!-- General -->
     <string name="general_error_label">Error</string>
@@ -339,6 +340,11 @@
     <string name="android13_notification_permission_description">Grant this app permission to post notifications. This enables displaying a notification when this app is active and volume adjustments are being made.</string>
     <string name="privacy_policy_label">Privacy policy</string>
     <string name="managed_devices_empty_message">No Bluetooth devices configured.\nTap the + button to add your first device.</string>
+    <string name="label_pro_feature">Premium feature</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Free version: %1$d of %2$d device</item>
+        <item quantity="other">Free version: %1$d of %2$d devices</item>
+    </plurals>
     <string name="general_delete_action">Delete</string>
     <string name="general_cancel_action">Cancel</string>
     <string name="general_ok_action">OK</string>

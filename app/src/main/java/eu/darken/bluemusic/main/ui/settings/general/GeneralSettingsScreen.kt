@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -18,8 +17,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -77,18 +74,11 @@ fun GeneralSettingsScreen(
     onUpgrade: () -> Unit,
 ) {
     val context = LocalContext.current
-    val snackbarHostState = remember { SnackbarHostState() }
     var showThemeModeDialog by remember { mutableStateOf(false) }
     var showThemeStyleDialog by remember { mutableStateOf(false) }
     var showThemeColorDialog by remember { mutableStateOf(false) }
 
     Scaffold(
-        snackbarHost = {
-            SnackbarHost(
-                hostState = snackbarHostState,
-                modifier = Modifier.navigationBarsPadding()
-            )
-        },
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.general_settings_label)) },

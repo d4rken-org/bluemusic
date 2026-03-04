@@ -110,7 +110,7 @@ fun SettingsIndexScreen(
                             )
                         } else {
                             Text(
-                                text = stringResource(R.string.app_name),
+                                text = stringResource(R.string.app_name_short),
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
                             )

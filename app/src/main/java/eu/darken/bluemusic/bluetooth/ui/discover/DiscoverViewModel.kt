@@ -53,6 +53,7 @@ class DiscoverViewModel @Inject constructor(
                 ),
             managedDeviceCount = managed.size,
             isProVersion = upgradeInfo.isUpgraded,
+            freeDeviceLimit = FREE_DEVICE_LIMIT,
         )
     }.asStateFlow()
 
@@ -61,6 +62,7 @@ class DiscoverViewModel @Inject constructor(
         val isLoading: Boolean = false,
         val isProVersion: Boolean = false,
         val managedDeviceCount: Int = 0,
+        val freeDeviceLimit: Int = FREE_DEVICE_LIMIT,
         val error: String? = null,
         val showUpgradeDialog: Boolean = false,
         val shouldClose: Boolean = false
@@ -71,13 +73,17 @@ class DiscoverViewModel @Inject constructor(
         launch {
             val currentState = state.filterNotNull().first()
 
-            if (!currentState.isProVersion && currentState.managedDeviceCount >= 2) {
+            if (!currentState.isProVersion && currentState.managedDeviceCount >= FREE_DEVICE_LIMIT) {
                 events.emit(DiscoverEvent.RequiresUpgrade)
             } else {
                 deviceCreator.createNewdevice(device.address)
                 navCtrl.up()
             }
         }
+    }
+
+    companion object {
+        private const val FREE_DEVICE_LIMIT = 2
     }
 
 }
