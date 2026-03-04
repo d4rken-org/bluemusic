@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.retryWhen
 import kotlinx.coroutines.flow.shareIn
-import kotlinx.coroutines.launch
+
 import java.time.Instant
 import java.util.UUID
 import javax.inject.Inject
@@ -57,13 +57,17 @@ class UpgradeRepoFoss @Inject constructor(
         }
         .shareIn(scope, SharingStarted.WhileSubscribed(3000L, 0L), replay = 1)
 
-    fun launchGithubSponsorsUpgrade() = scope.launch {
-        log(TAG) { "launchGithubSponsorsUpgrade()" }
+    fun openGithubSponsorsPage() {
+        log(TAG) { "openGithubSponsorsPage()" }
+        webpageTool.open(mainWebsite)
+    }
+
+    suspend fun confirmGithubSponsorsUpgrade() {
+        log(TAG) { "confirmGithubSponsorsUpgrade()" }
         fossCache.upgrade.valueBlocking = FossUpgrade(
             upgradedAt = Instant.now(),
             upgradeType = FossUpgrade.Type.GITHUB_SPONSORS
         )
-        webpageTool.open(mainWebsite)
     }
 
     override suspend fun refresh() {
