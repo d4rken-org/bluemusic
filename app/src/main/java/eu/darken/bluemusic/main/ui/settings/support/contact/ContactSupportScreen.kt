@@ -57,7 +57,7 @@ import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
-import eu.darken.bluemusic.common.debug.recorder.core.DebugLogStore
+import eu.darken.bluemusic.common.debug.recorder.core.DebugSessionManager.DebugSession
 import eu.darken.bluemusic.common.debug.recorder.ui.RecorderConsentDialog
 import eu.darken.bluemusic.common.error.ErrorEventHandler
 import java.io.File
@@ -115,7 +115,7 @@ private fun ContactSupportScreen(
     onNavigateUp: () -> Unit,
     onCategorySelected: (ContactCategory) -> Unit,
     onDescriptionChanged: (String) -> Unit,
-    onLogSessionSelected: (DebugLogStore.LogSession?) -> Unit,
+    onLogSessionSelected: (DebugSession.Ready?) -> Unit,
     onStartRecording: () -> Unit = {},
     onStopRecording: () -> Unit = {},
     onOpenUrl: (String) -> Unit = {},
@@ -290,10 +290,10 @@ private fun WordCountIndicator(
 
 @Composable
 private fun LogSessionPicker(
-    sessions: List<DebugLogStore.LogSession>,
-    selectedSession: DebugLogStore.LogSession?,
+    sessions: List<DebugSession.Ready>,
+    selectedSession: DebugSession.Ready?,
     isRecording: Boolean,
-    onSessionSelected: (DebugLogStore.LogSession?) -> Unit,
+    onSessionSelected: (DebugSession.Ready?) -> Unit,
     onStartRecording: () -> Unit,
     onStopRecording: () -> Unit,
 ) {
@@ -317,7 +317,7 @@ private fun LogSessionPicker(
                 OutlinedTextField(
                     value = selectedSession?.let {
                         val date = dateFormat.format(Date(it.timestamp))
-                        val size = Formatter.formatShortFileSize(context, it.totalSize)
+                        val size = Formatter.formatShortFileSize(context, it.zipSize)
                         "$date ($size)"
                     } ?: stringResource(R.string.contact_debug_log_select_hint),
                     onValueChange = {},
@@ -334,7 +334,7 @@ private fun LogSessionPicker(
                 ) {
                     sessions.forEach { session ->
                         val date = dateFormat.format(Date(session.timestamp))
-                        val size = Formatter.formatShortFileSize(context, session.totalSize)
+                        val size = Formatter.formatShortFileSize(context, session.zipSize)
                         DropdownMenuItem(
                             text = {
                                 Column {
@@ -391,12 +391,13 @@ private fun ContactSupportScreenPreview() {
                 category = ContactCategory.BUG,
                 description = "The app crashes when I connect my headphones and try to adjust the volume",
                 logSessions = listOf(
-                    DebugLogStore.LogSession(
+                    DebugSession.Ready(
+                        id = "session1",
                         dir = File("/tmp/session1"),
                         zipFile = File("/tmp/session1.zip"),
                         timestamp = System.currentTimeMillis(),
                         fileCount = 3,
-                        totalSize = 1024 * 512,
+                        zipSize = 1024 * 512L,
                     )
                 ),
             ),

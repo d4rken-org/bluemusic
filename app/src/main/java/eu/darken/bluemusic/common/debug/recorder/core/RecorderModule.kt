@@ -1,7 +1,6 @@
 package eu.darken.bluemusic.common.debug.recorder.core
 
 import android.content.Context
-import android.content.Intent
 import android.content.res.Resources
 import android.os.Build
 import android.os.Environment
@@ -19,7 +18,6 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.common.debug.recorder.ui.RecorderActivity
 import eu.darken.bluemusic.common.flow.DynamicStateFlow
 import eu.darken.bluemusic.common.getPackageInfo
 import eu.darken.bluemusic.common.hasApiLevel
@@ -106,19 +104,11 @@ class RecorderModule @Inject constructor(
                             log(TAG, ERROR) { "Failed to delete trigger file" }
                         }
 
-                        val intent = RecorderActivity.getLaunchIntent(
-                            context,
-                            currentLogDir!!.path,
-                            sessionDuration?.seconds,
-                        ).apply {
-                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        }
-                        context.startActivity(intent)
-
                         copy(
                             recorder = null,
                             currentLogDir = null,
                             lastLogDir = currentLogDir,
+                            lastSessionDuration = sessionDuration,
                         )
                     } else {
                         this
@@ -182,12 +172,6 @@ class RecorderModule @Inject constructor(
         return StopResult.Stopped(currentState.currentLogDir!!)
     }
 
-    fun getLogsDir(): File = File(context.externalCacheDir, "debug/logs")
-
-    fun getLogEntries(): List<File> {
-        return getLogsDir().listFiles()?.filter { it.isDirectory }?.toList() ?: emptyList()
-    }
-
     sealed class StopResult {
         data class TooShort(val durationSeconds: Long) : StopResult()
         data class Stopped(val logDir: File) : StopResult()
@@ -222,6 +206,7 @@ class RecorderModule @Inject constructor(
         internal val recorder: Recorder? = null,
         val currentLogDir: File? = null,
         val lastLogDir: File? = null,
+        val lastSessionDuration: Duration? = null,
     ) {
         val isRecording: Boolean
             get() = recorder != null

@@ -236,6 +236,7 @@
     <string name="debug_log_screen_log_files_ready">Log files ready (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Discard</string>
     <string name="debug_log_screen_keep_action">Keep</string>
+    <string name="debug_log_compressing_label">Compressing…</string>
     <string name="debug_log_file_label">Recorded log file</string>
 
     <!-- Support/Contact -->
