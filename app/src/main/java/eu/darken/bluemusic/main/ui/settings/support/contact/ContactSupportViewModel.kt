@@ -14,15 +14,14 @@ import eu.darken.bluemusic.common.WebpageTool
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.common.debug.recorder.core.DebugLogStore
-import eu.darken.bluemusic.common.debug.recorder.core.RecorderModule
+import eu.darken.bluemusic.common.debug.recorder.core.DebugSessionManager
+import eu.darken.bluemusic.common.debug.recorder.core.DebugSessionManager.DebugSession
 import eu.darken.bluemusic.common.flow.DynamicStateFlow
 import eu.darken.bluemusic.common.flow.SingleEventFlow
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
@@ -31,8 +30,7 @@ class ContactSupportViewModel @Inject constructor(
     navCtrl: NavigationController,
     dispatcherProvider: DispatcherProvider,
     @param:ApplicationContext private val context: Context,
-    private val debugLogStore: DebugLogStore,
-    private val recorderModule: RecorderModule,
+    private val debugSessionManager: DebugSessionManager,
     private val blueMusicId: BlueMusicId,
     private val upgradeRepo: UpgradeRepo,
     private val emailTool: EmailTool,
@@ -48,41 +46,35 @@ class ContactSupportViewModel @Inject constructor(
     val snackbarEvent = SingleEventFlow<String>()
 
     init {
-        launch { loadSessions() }
         launch {
             var wasRecording = false
-            recorderModule.state
-                .distinctUntilChangedBy { it.isRecording }
-                .collect { recState ->
-                    log(tag) { "Recording state changed: isRecording=${recState.isRecording}" }
-                    val justStopped = wasRecording && !recState.isRecording
-                    wasRecording = recState.isRecording
+            debugSessionManager.sessions.collect { allSessions ->
+                val isNowRecording = allSessions.any { it is DebugSession.Recording }
+                val justStopped = wasRecording && !isNowRecording
+                wasRecording = isNowRecording
 
-                    val sessions = debugLogStore.getSessions()
-                    stater.updateBlocking {
-                        copy(
-                            isRecording = recState.isRecording,
-                            logSessions = sessions,
-                            selectedLogSession = if (justStopped) sessions.firstOrNull() else selectedLogSession,
-                        )
-                    }
+                val readySessions = allSessions.filterIsInstance<DebugSession.Ready>()
+                log(tag) { "Sessions updated: recording=$isNowRecording, ready=${readySessions.size}" }
+
+                stater.updateBlocking {
+                    copy(
+                        isRecording = isNowRecording,
+                        logSessions = readySessions,
+                        selectedLogSession = if (justStopped) readySessions.firstOrNull() else selectedLogSession,
+                    )
                 }
+            }
         }
-    }
-
-    private suspend fun loadSessions() {
-        val sessions = debugLogStore.getSessions()
-        stater.updateBlocking { copy(logSessions = sessions) }
     }
 
     fun startRecording() = launch {
         log(tag) { "Starting debug log recording" }
-        recorderModule.startRecorder()
+        debugSessionManager.startRecording()
     }
 
     fun stopRecording() = launch {
         log(tag) { "Stopping debug log recording" }
-        recorderModule.stopRecorder()
+        debugSessionManager.stopRecording()
     }
 
     fun openUrl(url: String) {
@@ -104,7 +96,7 @@ class ContactSupportViewModel @Inject constructor(
         }
     }
 
-    fun selectLogSession(session: DebugLogStore.LogSession?) = launch {
+    fun selectLogSession(session: DebugSession.Ready?) = launch {
         stater.updateBlocking { copy(selectedLogSession = session) }
     }
 
@@ -152,7 +144,7 @@ class ContactSupportViewModel @Inject constructor(
 
             val selectedSession = currentState.selectedLogSession
             val attachmentUri = if (selectedSession != null) {
-                val attachFile = selectedSession.zipFile ?: selectedSession.dir
+                val attachFile = selectedSession.zipFile
                 if (attachFile.exists() && attachFile.canRead()) {
                     FileProvider.getUriForFile(
                         context,
@@ -185,8 +177,8 @@ class ContactSupportViewModel @Inject constructor(
     data class State(
         val category: ContactCategory? = ContactCategory.QUESTION,
         val description: String = "",
-        val logSessions: List<DebugLogStore.LogSession> = emptyList(),
-        val selectedLogSession: DebugLogStore.LogSession? = null,
+        val logSessions: List<DebugSession.Ready> = emptyList(),
+        val selectedLogSession: DebugSession.Ready? = null,
         val isRecording: Boolean = false,
         val isSending: Boolean = false,
     ) {

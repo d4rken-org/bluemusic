@@ -11,18 +11,18 @@ import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.BlueMusicLinks
 import eu.darken.bluemusic.common.BuildConfigWrap
 import eu.darken.bluemusic.common.WebpageTool
-import eu.darken.bluemusic.common.compression.Zipper
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.debug.recorder.core.DebugSessionManager
+import eu.darken.bluemusic.common.debug.recorder.core.DebugSessionManager.DebugSession
 import eu.darken.bluemusic.common.flow.DynamicStateFlow
 import eu.darken.bluemusic.common.flow.SingleEventFlow
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import java.io.File
 import javax.inject.Inject
 
@@ -33,6 +33,7 @@ class RecorderViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     @param:ApplicationContext private val context: Context,
     private val webpageTool: WebpageTool,
+    private val debugSessionManager: DebugSessionManager,
 ) : ViewModel4(dispatchers, logTag("Debug", "Recorder", "Screen", "VM"), navCtrl) {
 
     private val recordedPath: File
@@ -42,8 +43,6 @@ class RecorderViewModel @Inject constructor(
 
     val shareEvent = SingleEventFlow<Intent>()
     val finishEvent = SingleEventFlow<Unit>()
-
-    private var compressionJob: Job? = null
 
     init {
         val path = savedStateHandle.get<String>(RecorderActivity.RECORD_PATH)
@@ -58,34 +57,56 @@ class RecorderViewModel @Inject constructor(
         }
         state = stater.flow
 
-        compressionJob = vmScope.launch {
-            log(TAG) { "Getting log files in dir: $recordedPath" }
-            val logFiles = recordedPath.listFiles() ?: emptyArray()
-            log(TAG) { "Found ${logFiles.size} logfiles: $logFiles" }
-            var entries = logFiles.map { LogFileItem(path = it) }
-            stater.updateBlocking { copy(logEntries = entries) }
+        launch {
+            debugSessionManager.sessions
+                .map { sessions -> sessions.find { it.dir == recordedPath } }
+                .collect { session ->
+                    when (session) {
+                        is DebugSession.Compressing -> {
+                            val logFiles = debugSessionManager.getSessionFiles(session)
+                            val entries = logFiles.map { LogFileItem(path = it, size = it.length()) }
+                                .sortedByDescending { it.size }
+                            stater.updateBlocking {
+                                copy(logEntries = entries, operationState = OperationState.COMPRESSING)
+                            }
+                        }
 
-            log(TAG) { "Determining log file size..." }
-            entries = entries.map { entry -> entry.copy(size = entry.path.length()) }.sortedByDescending { it.size }
-            stater.updateBlocking { copy(logEntries = entries) }
+                        is DebugSession.Ready -> {
+                            val logFiles = debugSessionManager.getSessionFiles(session)
+                            val entries = logFiles.map { LogFileItem(path = it, size = it.length()) }
+                                .sortedByDescending { it.size }
+                            stater.updateBlocking {
+                                copy(
+                                    logEntries = entries,
+                                    compressedFile = session.zipFile,
+                                    compressedSize = session.zipSize,
+                                    operationState = OperationState.READY,
+                                )
+                            }
+                        }
 
-            log(TAG) { "Compressing log files..." }
-            val zipFile = File(recordedPath.parentFile, "${recordedPath.name}.zip")
-            log(TAG) { "Writing zip file to $zipFile" }
-            Zipper().zip(
-                entries.map { it.path.path },
-                zipFile.path
-            )
-            val zippedSize = zipFile.length()
-            log(TAG) { "Zip file created ${zippedSize}B at $zipFile" }
-            stater.updateBlocking {
-                copy(compressedFile = zipFile, compressedSize = zippedSize, operationState = OperationState.READY)
-            }
+                        is DebugSession.Failed -> {
+                            log(TAG) { "Session failed: ${session.error}" }
+                        }
+
+                        is DebugSession.Recording -> {
+                            // Should not normally happen from this screen
+                        }
+
+                        null -> {
+                            // Session may have been deleted
+                        }
+                    }
+                }
         }
     }
 
     fun share() = launch {
-        val file = stater.value().compressedFile ?: throw IllegalStateException("compressedFile is null")
+        val file = stater.value().compressedFile ?: return@launch
+        if (!file.exists() || !file.canRead()) {
+            log(TAG) { "Share file missing or unreadable: $file" }
+            return@launch
+        }
 
         val intent = Intent(Intent.ACTION_SEND).apply {
             val uri = FileProvider.getUriForFile(
@@ -117,20 +138,16 @@ class RecorderViewModel @Inject constructor(
         finishEvent.tryEmit(Unit)
     }
 
-    fun discard() = launch {
-        log(TAG) { "Discarding debug log files at $recordedPath" }
+    fun delete() = launch {
+        log(TAG) { "Deleting debug log files at $recordedPath" }
         stater.updateBlocking { copy(operationState = OperationState.DELETING) }
 
-        compressionJob?.cancelAndJoin()
+        val session = debugSessionManager.sessions
+            .map { sessions -> sessions.find { it.dir == recordedPath } }
+            .first()
 
-        val zipFile = File(recordedPath.parentFile, "${recordedPath.name}.zip")
-        if (zipFile.exists()) {
-            log(TAG) { "Deleting zip file: $zipFile" }
-            zipFile.delete()
-        }
-        if (recordedPath.exists()) {
-            log(TAG) { "Deleting log directory: $recordedPath" }
-            recordedPath.deleteRecursively()
+        if (session != null) {
+            debugSessionManager.deleteSession(session)
         }
 
         finishEvent.emit(Unit)

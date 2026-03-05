@@ -92,7 +92,7 @@ fun RecorderScreenHost(
     state?.let { currentState ->
         RecorderScreen(
             state = currentState,
-            onDiscardClick = { viewModel.discard() },
+            onDeleteClick = { viewModel.delete() },
             onKeepClick = { viewModel.keep() },
             onShareClick = { viewModel.share() },
             onPrivacyPolicyClick = { viewModel.goPrivacyPolicy() }
@@ -103,7 +103,7 @@ fun RecorderScreenHost(
 @Composable
 private fun RecorderScreen(
     state: RecorderViewModel.State,
-    onDiscardClick: () -> Unit,
+    onDeleteClick: () -> Unit,
     onKeepClick: () -> Unit,
     onShareClick: () -> Unit,
     onPrivacyPolicyClick: () -> Unit,
@@ -136,7 +136,7 @@ private fun RecorderScreen(
                 ) {
                     ActionButtons(
                         state = state,
-                        onDiscardClick = onDiscardClick,
+                        onDeleteClick = onDeleteClick,
                         onKeepClick = onKeepClick,
                         onShareClick = onShareClick,
                         modifier = Modifier.padding(16.dp),
@@ -522,7 +522,7 @@ private fun LogFileItem(logFile: RecorderViewModel.LogFileItem) {
 @Composable
 private fun ActionButtons(
     state: RecorderViewModel.State,
-    onDiscardClick: () -> Unit,
+    onDeleteClick: () -> Unit,
     onKeepClick: () -> Unit,
     onShareClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -534,7 +534,7 @@ private fun ActionButtons(
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         OutlinedButton(
-            onClick = onDiscardClick,
+            onClick = onDeleteClick,
             enabled = buttonsEnabled,
             modifier = Modifier.weight(1f),
             colors = ButtonDefaults.outlinedButtonColors(
@@ -542,7 +542,7 @@ private fun ActionButtons(
             )
         ) {
             Text(
-                text = stringResource(R.string.debug_log_screen_discard_action),
+                text = stringResource(R.string.general_delete_action),
                 style = MaterialTheme.typography.labelLarge.copy(
                     fontWeight = FontWeight.Medium
                 )
@@ -622,7 +622,7 @@ private fun RecorderScreenPreview() {
 
         RecorderScreen(
             state = mockState,
-            onDiscardClick = {},
+            onDeleteClick = {},
             onKeepClick = {},
             onShareClick = {},
             onPrivacyPolicyClick = {},
