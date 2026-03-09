@@ -297,4 +297,83 @@
 
     <!-- Debug log short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">Oprește oricum</string>
+
+    <string name="settings_support_debuglog_short_recording_title">Înregistrare foarte scurtă</string>
+    <string name="settings_support_debuglog_short_recording_msg">A fost o înregistrare foarte scurtă. Jurnalele de depanare sunt înregistrări, nu instantanee — reproduce problema în timp ce înregistrarea este activă pentru ca jurnalul să fie util.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Continuă înregistrarea</string>
+    <string name="settings_support_debuglog_folder_label">Folder jurnal de depanare</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sesiune folosind %2$s</item>
+        <item quantity="few">%1$d sesiuni folosind %2$s</item>
+        <item quantity="other">%1$d de sesiuni folosind %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Nu există jurnale de depanare stocate</string>
+    <string name="settings_support_debuglog_folder_delete_title">Ștergi toate jurnalele de depanare?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Aceasta va șterge permanent toate sesiunile de jurnale de depanare stocate.</string>
+    <string name="debug_log_screen_subtitle">Revizuiește și distribuie jurnalul de depanare înregistrat</string>
+    <string name="debug_log_screen_sensitive_title">Informații sensibile</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d fișier gata (%2$s)</item>
+        <item quantity="few">%1$d fișiere gata (%2$s)</item>
+        <item quantity="other">%1$d de fișiere gata (%2$s)</item>
+    </plurals>
+    <string name="debug_log_screen_keep_action">Păstrează</string>
+    <string name="debug_log_compressing_label">Se comprimă…</string>
+    <string name="support_debuglog_sent_title">Jurnal trimis?</string>
+    <string name="support_debuglog_sent_message">Dacă ai trimis jurnalul de depanare, acesta poate fi șters de pe dispozitiv. Vrei să îl elimini?</string>
+    <string name="support_debuglog_session_delete_title">Ștergi jurnalul de depanare?</string>
+    <string name="support_debuglog_session_delete_message">Această sesiune de jurnal de depanare va fi ștearsă permanent.</string>
+    <string name="support_debuglog_session_recording">Se înregistrează…</string>
+    <string name="support_debuglog_session_compressing">Se comprimă…</string>
+    <string name="support_debuglog_failed_empty_log">Jurnal gol</string>
+    <string name="support_debuglog_failed_missing_log">Jurnal lipsă</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP corupt</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP eșuat</string>
+    <string name="support_debuglog_clear_title">Ștergi toate jurnalele de depanare?</string>
+    <string name="support_debuglog_clear_message">Aceasta va șterge permanent toate sesiunile de jurnale de depanare stocate.</string>
+    <string name="settings_support_contact_label">Contactează dezvoltatorul</string>
+    <string name="settings_support_contact_desc">Completează un formular pentru a trimite un e-mail dezvoltatorului.</string>
+    <string name="contact_screen_title">Contactează dezvoltatorul</string>
+    <string name="contact_category_bug_label">Raport de eroare</string>
+    <string name="contact_category_feature_label">Cerere de funcționalitate</string>
+    <string name="contact_category_question_label">Întrebare</string>
+    <string name="contact_description_label">Descriere</string>
+    <string name="contact_description_bug_hint">Descrie ce s-a întâmplat și cum să reproduci problema.</string>
+    <string name="contact_description_feature_hint">Descrie funcționalitatea pe care ai vrea să o vezi.</string>
+    <string name="contact_description_question_hint">Descrie întrebarea ta în detaliu.</string>
+    <string name="contact_category_section_label">Categorie</string>
+    <string name="contact_debug_log_label">Jurnal de depanare</string>
+    <string name="contact_debug_log_select_hint">Selectează un jurnal de depanare pentru a atașa</string>
+    <string name="contact_debug_log_picker_hint">Atașează un jurnal de depanare pentru a ajuta la diagnosticarea problemei mai rapid.</string>
+    <string name="contact_debug_log_picker_empty">Nu există jurnale de depanare disponibile. Înregistrează unul mai întâi.</string>
+    <string name="contact_expected_behavior_label">Comportament așteptat</string>
+    <string name="contact_expected_behavior_hint">Descrie ce te așteptai să se întâmple în schimb.</string>
+    <string name="support_contact_debuglog_zip_error">Eroare la pregătirea jurnalului de depanare pentru atașare</string>
+    <string name="contact_send_action">Deschide aplicația de e-mail</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d cuvânt</item>
+        <item quantity="few">%1$d / %2$d cuvinte</item>
+        <item quantity="other">%1$d / %2$d de cuvinte</item>
+    </plurals>
+    <string name="contact_welcome_msg">Citesc fiecare mesaj personal și fac tot posibilul să răspund, dar deoarece lucrez singur la asta, poate dura puțin. Mulțumesc pentru răbdare.</string>
+    <string name="contact_footer_msg">Mesajul tău va fi trimis prin e-mail. Informațiile despre dispozitiv și configurație sunt atașate automat.</string>
+    <string name="contact_no_email_app_msg">Nu s-a găsit nicio aplicație de e-mail pe acest dispozitiv.</string>
+    <string name="contact_attachment_missing_msg">Fișierul jurnal de depanare nu mai există</string>
+    <string name="settings_support_stored_logs_label">Jurnale de depanare stocate</string>
+    <string name="settings_support_stored_logs_desc">%1$d sesiuni (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Nu există jurnale de depanare stocate</string>
+    <string name="settings_support_stored_logs_delete_title">Ștergi jurnalele stocate?</string>
+    <string name="settings_support_stored_logs_delete_msg">Aceasta va șterge toate cele %1$d sesiuni de jurnale de depanare stocate.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Jurnalele de depanare stocate au fost șterse</string>
+    <string name="label_pro_feature">Funcționalitate premium</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Versiune gratuită: %1$d din %2$d dispozitiv</item>
+        <item quantity="few">Versiune gratuită: %1$d din %2$d dispozitive</item>
+        <item quantity="other">Versiune gratuită: %1$d din %2$d de dispozitive</item>
+    </plurals>
+    <string name="ui_theme_color_setting_label">Culoarea temei</string>
+    <string name="ui_theme_color_setting_explanation">Paleta de culori folosită la tematizarea aplicației.</string>
+    <string name="ui_theme_color_material_you_note">Culoarea este setată de imaginea de fundal când folosești Material You.</string>
+    <string name="ui_theme_color_blue_label">Albastru</string>
+    <string name="ui_theme_color_sunset_label">Apus de soare</string>
 </resources>

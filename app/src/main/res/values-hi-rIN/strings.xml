@@ -295,4 +295,75 @@
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">लॉक करें</string>
     <string name="devices_unlock_sliders_action">अनलॉक करें</string>
+
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">बहुत छोटी रिकॉर्डिंग</string>
+    <string name="settings_support_debuglog_short_recording_msg">यह एक बहुत छोटी रिकॉर्डिंग थी। डिबग लॉग रिकॉर्डिंग हैं, स्नैपशॉट नहीं — रिकॉर्डिंग सक्रिय रहते हुए समस्या को दोहराएं ताकि लॉग उपयोगी हो।</string>
+    <string name="settings_support_debuglog_short_recording_continue">रिकॉर्डिंग जारी रखें</string>
+    <string name="settings_support_debuglog_folder_label">डिबग लॉग फोल्डर</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d सत्र, %2$s उपयोग कर रहा है</item>
+        <item quantity="other">%1$d सत्र, %2$s उपयोग कर रहे हैं</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">कोई डिबग लॉग संग्रहीत नहीं</string>
+    <string name="settings_support_debuglog_folder_delete_title">सभी डिबग लॉग हटाएं?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">यह सभी संग्रहीत डिबग लॉग सत्रों को स्थायी रूप से हटा देगा।</string>
+    <string name="support_debuglog_sent_title">लॉग भेजा गया?</string>
+    <string name="support_debuglog_sent_message">यदि आपने डिबग लॉग भेज दिया है, तो इसे डिवाइस से हटाया जा सकता है। क्या आप इसे हटाना चाहते हैं?</string>
+    <string name="support_debuglog_session_delete_title">डिबग लॉग हटाएं?</string>
+    <string name="support_debuglog_session_delete_message">यह डिबग लॉग सत्र स्थायी रूप से हटा दिया जाएगा।</string>
+    <string name="support_debuglog_session_recording">रिकॉर्ड हो रहा है…</string>
+    <string name="support_debuglog_session_compressing">संपीड़ित हो रहा है…</string>
+    <string name="support_debuglog_failed_empty_log">खाली लॉग</string>
+    <string name="support_debuglog_failed_missing_log">लापता लॉग</string>
+    <string name="support_debuglog_failed_corrupt_zip">दूषित ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP विफल</string>
+    <string name="support_debuglog_clear_title">सभी डिबग लॉग हटाएं?</string>
+    <string name="support_debuglog_clear_message">यह सभी संग्रहीत डिबग लॉग सत्रों को स्थायी रूप से हटा देगा।</string>
+    <string name="settings_support_contact_label">डेवलपर से संपर्क करें</string>
+    <string name="settings_support_contact_desc">डेवलपर को ईमेल भेजने के लिए फ़ॉर्म भरें।</string>
+    <string name="contact_screen_title">डेवलपर से संपर्क करें</string>
+    <string name="contact_category_bug_label">बग रिपोर्ट</string>
+    <string name="contact_category_feature_label">फीचर अनुरोध</string>
+    <string name="contact_category_question_label">सवाल</string>
+    <string name="contact_description_label">विवरण</string>
+    <string name="contact_description_bug_hint">बताएं क्या हुआ और समस्या को कैसे दोहराएं।</string>
+    <string name="contact_description_feature_hint">वह फीचर बताएं जो आप देखना चाहते हैं।</string>
+    <string name="contact_description_question_hint">अपना सवाल विस्तार से बताएं।</string>
+    <string name="contact_category_section_label">श्रेणी</string>
+    <string name="contact_debug_log_label">डिबग लॉग</string>
+    <string name="contact_debug_log_select_hint">संलग्न करने के लिए डिबग लॉग चुनें</string>
+    <string name="contact_debug_log_picker_hint">समस्या को तेज़ी से निदान करने में मदद के लिए डिबग लॉग संलग्न करें।</string>
+    <string name="contact_debug_log_picker_empty">कोई डिबग लॉग उपलब्ध नहीं। पहले एक रिकॉर्ड करें।</string>
+    <string name="contact_expected_behavior_label">अपेक्षित व्यवहार</string>
+    <string name="contact_expected_behavior_hint">बताएं कि आप इसके बजाय क्या होने की उम्मीद कर रहे थे।</string>
+    <string name="support_contact_debuglog_zip_error">डिबग लॉग को अटैचमेंट के लिए तैयार करने में विफल</string>
+    <string name="contact_send_action">ईमेल ऐप खोलें</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d शब्द</item>
+        <item quantity="other">%1$d / %2$d शब्द</item>
+    </plurals>
+    <string name="contact_welcome_msg">मैं हर संदेश खुद पढ़ता हूं और जवाब देने की पूरी कोशिश करता हूं, लेकिन चूंकि मैं अकेले काम करता हूं, इसमें थोड़ा समय लग सकता है। आपकी धैर्यता के लिए धन्यवाद।</string>
+    <string name="contact_footer_msg">आपका संदेश ईमेल के ज़रिए भेजा जाएगा। डिवाइस और सेटअप की जानकारी स्वचालित रूप से संलग्न होती है।</string>
+    <string name="contact_no_email_app_msg">इस डिवाइस पर कोई ईमेल ऐप नहीं मिला।</string>
+    <string name="contact_attachment_missing_msg">डिबग लॉग फ़ाइल अब मौजूद नहीं है</string>
+    <string name="settings_support_stored_logs_label">संग्रहीत डिबग लॉग</string>
+    <string name="settings_support_stored_logs_desc">%1$d सत्र (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">कोई संग्रहीत डिबग लॉग नहीं</string>
+    <string name="settings_support_stored_logs_delete_title">संग्रहीत लॉग हटाएं?</string>
+    <string name="settings_support_stored_logs_delete_msg">यह सभी %1$d संग्रहीत डिबग लॉग सत्रों को हटा देगा।</string>
+    <string name="settings_support_stored_logs_deleted_msg">संग्रहीत डिबग लॉग हटाए गए</string>
+    <string name="debug_log_screen_subtitle">अपने रिकॉर्ड किए गए डिबग लॉग की समीक्षा करें और साझा करें</string>
+    <string name="debug_log_screen_sensitive_title">संवेदनशील जानकारी</string>
+    <string name="debug_log_screen_keep_action">रखें</string>
+    <string name="debug_log_compressing_label">संपीड़ित हो रहा है…</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d फ़ाइल तैयार (%2$s)</item>
+        <item quantity="other">%1$d फ़ाइलें तैयार (%2$s)</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">मुफ्त संस्करण: %2$d में से %1$d डिवाइस</item>
+        <item quantity="other">मुफ्त संस्करण: %2$d में से %1$d डिवाइस</item>
+    </plurals>
+    <string name="label_pro_feature">प्रीमियम फीचर</string>
 </resources>

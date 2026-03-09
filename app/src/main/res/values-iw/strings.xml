@@ -297,4 +297,79 @@
 
     <!-- Short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">עצור בכל זאת</string>
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">הקלטה קצרה מאוד</string>
+    <string name="settings_support_debuglog_short_recording_msg">זו הייתה הקלטה קצרה מאוד. לוגי ניפוי באגים הם הקלטות, לא תמונות מצב — שחזר את הבעיה בזמן שההקלטה פעילה כדי שהלוג יהיה שימושי.</string>
+    <string name="settings_support_debuglog_short_recording_continue">המשך הקלטה</string>
+    <string name="settings_support_debuglog_folder_label">תיקיית לוג ניפוי באגים</string>
+    <string name="settings_support_debuglog_folder_empty_desc">אין לוגי ניפוי באגים שמורים</string>
+    <string name="settings_support_debuglog_folder_delete_title">למחוק את כל לוגי ניפוי הבאגים?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">כל סשני לוג ניפוי הבאגים השמורים יימחקו לצמיתות.</string>
+    <string name="debug_log_screen_subtitle">סקור ושתף את לוג ניפוי הבאגים שהוקלט</string>
+    <string name="debug_log_screen_sensitive_title">מידע רגיש</string>
+    <string name="debug_log_screen_keep_action">שמור</string>
+    <string name="debug_log_compressing_label">דחיסה…</string>
+    <string name="support_debuglog_sent_title">הלוג נשלח?</string>
+    <string name="support_debuglog_sent_message">אם שלחת את לוג ניפוי הבאגים, ניתן למחוק אותו מהמכשיר. האם ברצונך להסיר אותו?</string>
+    <string name="support_debuglog_session_delete_title">למחוק את לוג ניפוי הבאגים?</string>
+    <string name="support_debuglog_session_delete_message">סשן לוג ניפוי הבאגים הזה יימחק לצמיתות.</string>
+    <string name="support_debuglog_session_recording">מקליט…</string>
+    <string name="support_debuglog_session_compressing">דוחס…</string>
+    <string name="support_debuglog_failed_empty_log">לוג ריק</string>
+    <string name="support_debuglog_failed_missing_log">לוג חסר</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP פגום</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP נכשל</string>
+    <string name="support_debuglog_clear_title">למחוק את כל לוגי ניפוי הבאגים?</string>
+    <string name="support_debuglog_clear_message">כל סשני לוג ניפוי הבאגים השמורים יימחקו לצמיתות.</string>
+    <string name="settings_support_contact_label">צור קשר עם המפתח</string>
+    <string name="settings_support_contact_desc">מלא טופס לשליחת אימייל למפתח.</string>
+    <string name="contact_screen_title">צור קשר עם המפתח</string>
+    <string name="contact_category_bug_label">דיווח על באג</string>
+    <string name="contact_category_feature_label">בקשת תכונה</string>
+    <string name="contact_category_question_label">שאלה</string>
+    <string name="contact_description_label">תיאור</string>
+    <string name="contact_description_bug_hint">תאר מה קרה וכיצד לשחזר את הבעיה.</string>
+    <string name="contact_description_feature_hint">תאר את התכונה שתרצה לראות.</string>
+    <string name="contact_description_question_hint">תאר את שאלתך בפירוט.</string>
+    <string name="contact_category_section_label">קטגוריה</string>
+    <string name="contact_debug_log_label">לוג ניפוי באגים</string>
+    <string name="contact_debug_log_select_hint">בחר לוג ניפוי באגים לצירוף</string>
+    <string name="contact_debug_log_picker_hint">צרף לוג ניפוי באגים לאבחון מהיר יותר של הבעיה.</string>
+    <string name="contact_debug_log_picker_empty">אין לוגי ניפוי באגים זמינים. הקלט אחד תחילה.</string>
+    <string name="contact_expected_behavior_label">התנהגות צפויה</string>
+    <string name="contact_expected_behavior_hint">תאר מה ציפית שיקרה במקום.</string>
+    <string name="support_contact_debuglog_zip_error">הכנת לוג ניפוי הבאגים לצירוף נכשלה</string>
+    <string name="contact_send_action">פתח אפליקציית אימייל</string>
+    <string name="contact_welcome_msg">אני קורא כל הודעה בעצמי ועושה כמיטב יכולתי להשיב, אך מכיוון שאני עובד לבד, זה עשוי לקחת קצת זמן. תודה על הסבלנות.</string>
+    <string name="contact_footer_msg">ההודעה שלך תישלח באימייל. מידע על המכשיר וההגדרות מצורף אוטומטית.</string>
+    <string name="contact_no_email_app_msg">לא נמצאה אפליקציית אימייל במכשיר זה.</string>
+    <string name="contact_attachment_missing_msg">קובץ לוג ניפוי הבאגים אינו קיים עוד</string>
+    <string name="settings_support_stored_logs_label">לוגי ניפוי באגים שמורים</string>
+    <string name="settings_support_stored_logs_desc">%1$d סשנים (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">אין לוגי ניפוי באגים שמורים</string>
+    <string name="settings_support_stored_logs_delete_title">למחוק לוגים שמורים?</string>
+    <string name="settings_support_stored_logs_delete_msg">כל %1$d סשני לוג ניפוי הבאגים השמורים יימחקו.</string>
+    <string name="settings_support_stored_logs_deleted_msg">לוגי ניפוי הבאגים השמורים נמחקו</string>
+    <string name="label_pro_feature">תכונה פרימיום</string>
+    <string name="ui_theme_color_setting_label">צבע ערכת נושא</string>
+    <string name="ui_theme_color_setting_explanation">לוח הצבעים בו נעשה שימוש בערכת הנושא של האפליקציה.</string>
+    <string name="ui_theme_color_material_you_note">הצבע נקבע על פי הטפט שלך בעת שימוש ב-Material You.</string>
+    <string name="ui_theme_color_blue_label">כחול</string>
+    <string name="ui_theme_color_sunset_label">שקיעה</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d סשן בשימוש %2$s</item>
+        <item quantity="other">%1$d סשנים בשימוש %2$s</item>
+    </plurals>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d קובץ מוכן (%2$s)</item>
+        <item quantity="other">%1$d קבצים מוכנים (%2$s)</item>
+    </plurals>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d מילה</item>
+        <item quantity="other">%1$d / %2$d מילים</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">גרסה חינמית: %1$d מתוך %2$d מכשיר</item>
+        <item quantity="other">גרסה חינמית: %1$d מתוך %2$d מכשירים</item>
+    </plurals>
 </resources>

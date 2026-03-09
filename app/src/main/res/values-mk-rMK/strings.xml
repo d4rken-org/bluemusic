@@ -296,5 +296,79 @@
 
     <!-- Short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">Запри сепак</string>
-
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Многу кратко снимање</string>
+    <string name="settings_support_debuglog_short_recording_msg">Тоа беше многу кратко снимање. Дебаг логовите се снимки, не снимки на состојбата — репродуцирај го проблемот додека снимањето е активно за логот да биде корисен.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Продолжи со снимање</string>
+    <string name="settings_support_debuglog_folder_label">Папка за дебаг логови</string>
+    <string name="settings_support_debuglog_folder_empty_desc">Нема зачувани дебаг логови</string>
+    <string name="settings_support_debuglog_folder_delete_title">Да се избришат сите дебаг логови?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Ова трајно ќе ги избрише сите зачувани сесии на дебаг лог.</string>
+    <string name="debug_log_screen_subtitle">Прегледај и сподели го снимениот дебаг лог</string>
+    <string name="debug_log_screen_sensitive_title">Чувствителни информации</string>
+    <string name="debug_log_screen_keep_action">Задржи</string>
+    <string name="debug_log_compressing_label">Компресирање…</string>
+    <string name="support_debuglog_sent_title">Логот е испратен?</string>
+    <string name="support_debuglog_sent_message">Ако го испратил дебаг логот, може да се избрише од уредот. Сакаш ли да го отстраниш?</string>
+    <string name="support_debuglog_session_delete_title">Да се избрише дебаг логот?</string>
+    <string name="support_debuglog_session_delete_message">Оваа сесија на дебаг лог ќе биде трајно избришана.</string>
+    <string name="support_debuglog_session_recording">Снима…</string>
+    <string name="support_debuglog_session_compressing">Компресира…</string>
+    <string name="support_debuglog_failed_empty_log">Празен лог</string>
+    <string name="support_debuglog_failed_missing_log">Недостасува лог</string>
+    <string name="support_debuglog_failed_corrupt_zip">Оштетен ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP не успеа</string>
+    <string name="support_debuglog_clear_title">Да се избришат сите дебаг логови?</string>
+    <string name="support_debuglog_clear_message">Ова трајно ќе ги избрише сите зачувани сесии на дебаг лог.</string>
+    <string name="settings_support_contact_label">Контактирај го програмерот</string>
+    <string name="settings_support_contact_desc">Пополни формулар за да испратиш е-пошта до програмерот.</string>
+    <string name="contact_screen_title">Контактирај го програмерот</string>
+    <string name="contact_category_bug_label">Пријавување грешка</string>
+    <string name="contact_category_feature_label">Барање функција</string>
+    <string name="contact_category_question_label">Прашање</string>
+    <string name="contact_description_label">Опис</string>
+    <string name="contact_description_bug_hint">Опиши што се случило и како да се репродуцира проблемот.</string>
+    <string name="contact_description_feature_hint">Опиши ја функцијата што сакаш да ја видиш.</string>
+    <string name="contact_description_question_hint">Опиши го своето прашање детално.</string>
+    <string name="contact_category_section_label">Категорија</string>
+    <string name="contact_debug_log_label">Дебаг лог</string>
+    <string name="contact_debug_log_select_hint">Избери дебаг лог за прикачување</string>
+    <string name="contact_debug_log_picker_hint">Прикачи дебаг лог за побрза дијагноза на проблемот.</string>
+    <string name="contact_debug_log_picker_empty">Нема достапни дебаг логови. Прво сними еден.</string>
+    <string name="contact_expected_behavior_label">Очекувано однесување</string>
+    <string name="contact_expected_behavior_hint">Опиши што очекувал да се случи наместо тоа.</string>
+    <string name="support_contact_debuglog_zip_error">Неуспешна подготовка на дебаг логот за прилог</string>
+    <string name="contact_send_action">Отвори апликација за е-пошта</string>
+    <string name="contact_welcome_msg">Јас лично ги читам сите пораки и се трудам да одговорам, но бидејќи работам сам, тоа може да потрае малку. Благодарам на трпеливоста.</string>
+    <string name="contact_footer_msg">Твојата порака ќе биде испратена преку е-пошта. Информациите за уредот и поставките се прикачуваат автоматски.</string>
+    <string name="contact_no_email_app_msg">На овој уред нема апликација за е-пошта.</string>
+    <string name="contact_attachment_missing_msg">Датотеката со дебаг лог повеќе не постои</string>
+    <string name="settings_support_stored_logs_label">Зачувани дебаг логови</string>
+    <string name="settings_support_stored_logs_desc">%1$d сесии (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Нема зачувани дебаг логови</string>
+    <string name="settings_support_stored_logs_delete_title">Да се избришат зачуваните логови?</string>
+    <string name="settings_support_stored_logs_delete_msg">Ќе се избришат сите %1$d зачувани сесии на дебаг лог.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Зачуваните дебаг логови се избришани</string>
+    <string name="label_pro_feature">Премиум функција</string>
+    <string name="ui_theme_color_setting_label">Боја на темата</string>
+    <string name="ui_theme_color_setting_explanation">Палетата на бои користена при темирање на апликацијата.</string>
+    <string name="ui_theme_color_material_you_note">Бојата ја поставува твојата тапета кога користиш Material You.</string>
+    <string name="ui_theme_color_blue_label">Сина</string>
+    <string name="ui_theme_color_sunset_label">Зајдисонце</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d сесија користи %2$s</item>
+        <item quantity="other">%1$d сесии користат %2$s</item>
+    </plurals>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d датотека подготвена (%2$s)</item>
+        <item quantity="other">%1$d датотеки подготвени (%2$s)</item>
+    </plurals>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d збор</item>
+        <item quantity="other">%1$d / %2$d зборови</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Бесплатна верзија: %1$d од %2$d уред</item>
+        <item quantity="other">Бесплатна верзија: %1$d од %2$d уреди</item>
+    </plurals>
 </resources>

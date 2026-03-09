@@ -298,4 +298,75 @@
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Zárolás</string>
     <string name="devices_unlock_sliders_action">Feloldás</string>
+
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Nagyon rövid felvétel</string>
+    <string name="settings_support_debuglog_short_recording_msg">Ez egy nagyon rövid felvétel volt. A hibakeresési naplók felvételek, nem pillanatképek — reprodukáld a problémát felvétel közben, hogy a napló hasznos legyen.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Felvétel folytatása</string>
+    <string name="settings_support_debuglog_folder_label">Hibakeresési napló mappa</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d munkamenet, %2$s használatával</item>
+        <item quantity="other">%1$d munkamenet, %2$s használatával</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Nincsenek tárolt hibakeresési naplók</string>
+    <string name="settings_support_debuglog_folder_delete_title">Törli az összes hibakeresési naplót?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Ez véglegesen törli az összes tárolt hibakeresési napló munkamenetet.</string>
+    <string name="support_debuglog_sent_title">Napló elküldve?</string>
+    <string name="support_debuglog_sent_message">Ha elküldted a hibakeresési naplót, az törölhető az eszközről. El szeretnéd távolítani?</string>
+    <string name="support_debuglog_session_delete_title">Hibakeresési napló törlése?</string>
+    <string name="support_debuglog_session_delete_message">Ez a hibakeresési napló munkamenet véglegesen törlésre kerül.</string>
+    <string name="support_debuglog_session_recording">Felvétel…</string>
+    <string name="support_debuglog_session_compressing">Tömörítés…</string>
+    <string name="support_debuglog_failed_empty_log">Üres napló</string>
+    <string name="support_debuglog_failed_missing_log">Hiányzó napló</string>
+    <string name="support_debuglog_failed_corrupt_zip">Sérült ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP hiba</string>
+    <string name="support_debuglog_clear_title">Törli az összes hibakeresési naplót?</string>
+    <string name="support_debuglog_clear_message">Ez véglegesen törli az összes tárolt hibakeresési napló munkamenetet.</string>
+    <string name="settings_support_contact_label">Fejlesztő elérése</string>
+    <string name="settings_support_contact_desc">Töltsd ki az űrlapot, hogy e-mailt küldj a fejlesztőnek.</string>
+    <string name="contact_screen_title">Fejlesztő elérése</string>
+    <string name="contact_category_bug_label">Hibajelentés</string>
+    <string name="contact_category_feature_label">Funkciókérés</string>
+    <string name="contact_category_question_label">Kérdés</string>
+    <string name="contact_description_label">Leírás</string>
+    <string name="contact_description_bug_hint">Írd le, mi történt és hogyan lehet reprodukálni a problémát.</string>
+    <string name="contact_description_feature_hint">Írd le a funkciót, amelyet szeretnél látni.</string>
+    <string name="contact_description_question_hint">Írd le részletesen a kérdésedet.</string>
+    <string name="contact_category_section_label">Kategória</string>
+    <string name="contact_debug_log_label">Hibakeresési napló</string>
+    <string name="contact_debug_log_select_hint">Válassz hibakeresési naplót a csatoláshoz</string>
+    <string name="contact_debug_log_picker_hint">Csatolj hibakeresési naplót, hogy gyorsabban lehessen diagnosztizálni a problémát.</string>
+    <string name="contact_debug_log_picker_empty">Nincs elérhető hibakeresési napló. Először rögzíts egyet.</string>
+    <string name="contact_expected_behavior_label">Várt viselkedés</string>
+    <string name="contact_expected_behavior_hint">Írd le, mit vártál, hogy ehelyett történjen.</string>
+    <string name="support_contact_debuglog_zip_error">Nem sikerült előkészíteni a hibakeresési naplót csatoláshoz</string>
+    <string name="contact_send_action">E-mail alkalmazás megnyitása</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d szó</item>
+        <item quantity="other">%1$d / %2$d szó</item>
+    </plurals>
+    <string name="contact_welcome_msg">Minden üzenetet személyesen olvasok el és mindent megteszek, hogy válaszoljak, de mivel egyedül dolgozom, ez eltarthat egy kicsit. Köszönöm a türelmedet.</string>
+    <string name="contact_footer_msg">Az üzeneted e-mailben kerül elküldésre. Az eszköz és beállítási adatok automatikusan csatolva lesznek.</string>
+    <string name="contact_no_email_app_msg">Ezen az eszközön nem található e-mail alkalmazás.</string>
+    <string name="contact_attachment_missing_msg">A hibakeresési napló fájl már nem létezik</string>
+    <string name="settings_support_stored_logs_label">Tárolt hibakeresési naplók</string>
+    <string name="settings_support_stored_logs_desc">%1$d munkamenet (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Nincsenek tárolt hibakeresési naplók</string>
+    <string name="settings_support_stored_logs_delete_title">Törli a tárolt naplókat?</string>
+    <string name="settings_support_stored_logs_delete_msg">Ez törli az összes %1$d tárolt hibakeresési napló munkamenetet.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Tárolt hibakeresési naplók törölve</string>
+    <string name="debug_log_screen_subtitle">Tekintsd át és oszd meg a rögzített hibakeresési naplót</string>
+    <string name="debug_log_screen_sensitive_title">Érzékeny információk</string>
+    <string name="debug_log_screen_keep_action">Megtartás</string>
+    <string name="debug_log_compressing_label">Tömörítés…</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d fájl kész (%2$s)</item>
+        <item quantity="other">%1$d fájl kész (%2$s)</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Ingyenes verzió: %1$d / %2$d eszköz</item>
+        <item quantity="other">Ingyenes verzió: %1$d / %2$d eszköz</item>
+    </plurals>
+    <string name="label_pro_feature">Prémium funkció</string>
 </resources>

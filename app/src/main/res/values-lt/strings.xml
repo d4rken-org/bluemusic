@@ -297,4 +297,87 @@
 
     <!-- Short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">Sustabdyti vis tiek</string>
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Labai trumpas įrašas</string>
+    <string name="settings_support_debuglog_short_recording_msg">Tai buvo labai trumpas įrašas. Derinimo žurnalai yra įrašai, o ne momentinės nuotraukos — atkurkite problemą įrašymo metu, kad žurnalas būtų naudingas.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Tęsti įrašymą</string>
+    <string name="settings_support_debuglog_folder_label">Derinimo žurnalų aplankas</string>
+    <string name="settings_support_debuglog_folder_empty_desc">Nėra išsaugotų derinimo žurnalų</string>
+    <string name="settings_support_debuglog_folder_delete_title">Ištrinti visus derinimo žurnalus?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Tai visam laikui ištrins visas išsaugotas derinimo žurnalų sesijas.</string>
+    <string name="debug_log_screen_subtitle">Peržiūrėkite ir pasidalykite įrašytu derinimo žurnalu</string>
+    <string name="debug_log_screen_sensitive_title">Jautri informacija</string>
+    <string name="debug_log_screen_keep_action">Palikti</string>
+    <string name="debug_log_compressing_label">Glaudinamas…</string>
+    <string name="support_debuglog_sent_title">Žurnalas išsiųstas?</string>
+    <string name="support_debuglog_sent_message">Jei išsiuntėte derinimo žurnalą, jį galima ištrinti iš įrenginio. Ar norite jį pašalinti?</string>
+    <string name="support_debuglog_session_delete_title">Ištrinti derinimo žurnalą?</string>
+    <string name="support_debuglog_session_delete_message">Ši derinimo žurnalo sesija bus visam laikui ištrinta.</string>
+    <string name="support_debuglog_session_recording">Įrašoma…</string>
+    <string name="support_debuglog_session_compressing">Glaudinama…</string>
+    <string name="support_debuglog_failed_empty_log">Tuščias žurnalas</string>
+    <string name="support_debuglog_failed_missing_log">Trūkstamas žurnalas</string>
+    <string name="support_debuglog_failed_corrupt_zip">Sugadintas ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP nepavyko</string>
+    <string name="support_debuglog_clear_title">Ištrinti visus derinimo žurnalus?</string>
+    <string name="support_debuglog_clear_message">Tai visam laikui ištrins visas išsaugotas derinimo žurnalų sesijas.</string>
+    <string name="settings_support_contact_label">Susisiekti su kūrėju</string>
+    <string name="settings_support_contact_desc">Užpildykite formą, kad nusiųstumėte kūrėjui el. laišką.</string>
+    <string name="contact_screen_title">Susisiekti su kūrėju</string>
+    <string name="contact_category_bug_label">Klaidos pranešimas</string>
+    <string name="contact_category_feature_label">Funkcijos užklausa</string>
+    <string name="contact_category_question_label">Klausimas</string>
+    <string name="contact_description_label">Aprašymas</string>
+    <string name="contact_description_bug_hint">Aprašykite, kas atsitiko ir kaip atkurti problemą.</string>
+    <string name="contact_description_feature_hint">Aprašykite funkciją, kurią norėtumėte matyti.</string>
+    <string name="contact_description_question_hint">Aprašykite savo klausimą išsamiai.</string>
+    <string name="contact_category_section_label">Kategorija</string>
+    <string name="contact_debug_log_label">Derinimo žurnalas</string>
+    <string name="contact_debug_log_select_hint">Pasirinkite derinimo žurnalą pridėti</string>
+    <string name="contact_debug_log_picker_hint">Pridėkite derinimo žurnalą, kad padėtumėte greičiau diagnozuoti problemą.</string>
+    <string name="contact_debug_log_picker_empty">Derinimo žurnalų nėra. Pirmiausia įrašykite vieną.</string>
+    <string name="contact_expected_behavior_label">Laukiamas elgesys</string>
+    <string name="contact_expected_behavior_hint">Aprašykite, ko tikėjotės, kad vietoje to įvyks.</string>
+    <string name="support_contact_debuglog_zip_error">Nepavyko paruošti derinimo žurnalo priedui</string>
+    <string name="contact_send_action">Atidaryti el. pašto programą</string>
+    <string name="contact_welcome_msg">Aš skaitau kiekvieną žinutę pats ir darau viską, kad atsakyčiau, tačiau kadangi dirbu vienas, tai gali šiek tiek užtrukti. Ačiū už kantrybę.</string>
+    <string name="contact_footer_msg">Jūsų žinutė bus išsiųsta el. paštu. Įrenginio ir sąrankos informacija pridedama automatiškai.</string>
+    <string name="contact_no_email_app_msg">Šiame įrenginyje nerasta el. pašto programa.</string>
+    <string name="contact_attachment_missing_msg">Derinimo žurnalo failas nebeegzistuoja</string>
+    <string name="settings_support_stored_logs_label">Išsaugoti derinimo žurnalai</string>
+    <string name="settings_support_stored_logs_desc">%1$d sesijos (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Nėra išsaugotų derinimo žurnalų</string>
+    <string name="settings_support_stored_logs_delete_title">Ištrinti išsaugotus žurnalus?</string>
+    <string name="settings_support_stored_logs_delete_msg">Bus ištrintos visos %1$d išsaugotos derinimo žurnalų sesijos.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Išsaugoti derinimo žurnalai ištrinti</string>
+    <string name="label_pro_feature">Premijinė funkcija</string>
+    <string name="ui_theme_color_setting_label">Temos spalva</string>
+    <string name="ui_theme_color_setting_explanation">Spalvų paletė, naudojama temoje programos.</string>
+    <string name="ui_theme_color_material_you_note">Spalva nustatoma jūsų ekrano fono, kai naudojate Material You.</string>
+    <string name="ui_theme_color_blue_label">Mėlyna</string>
+    <string name="ui_theme_color_sunset_label">Saulėlydis</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sesija naudoja %2$s</item>
+        <item quantity="few">%1$d sesijos naudoja %2$s</item>
+        <item quantity="many">%1$d sesijos naudoja %2$s</item>
+        <item quantity="other">%1$d sesijų naudoja %2$s</item>
+    </plurals>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d failas paruoštas (%2$s)</item>
+        <item quantity="few">%1$d failai paruošti (%2$s)</item>
+        <item quantity="many">%1$d failo paruošta (%2$s)</item>
+        <item quantity="other">%1$d failų paruošta (%2$s)</item>
+    </plurals>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d žodis</item>
+        <item quantity="few">%1$d / %2$d žodžiai</item>
+        <item quantity="many">%1$d / %2$d žodžio</item>
+        <item quantity="other">%1$d / %2$d žodžių</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Nemokama versija: %1$d iš %2$d įrenginio</item>
+        <item quantity="few">Nemokama versija: %1$d iš %2$d įrenginių</item>
+        <item quantity="many">Nemokama versija: %1$d iš %2$d įrenginio</item>
+        <item quantity="other">Nemokama versija: %1$d iš %2$d įrenginių</item>
+    </plurals>
 </resources>

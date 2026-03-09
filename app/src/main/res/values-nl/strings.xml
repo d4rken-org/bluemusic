@@ -304,4 +304,79 @@
 
     <!-- Short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">Toch stoppen</string>
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Zeer korte opname</string>
+    <string name="settings_support_debuglog_short_recording_msg">Dat was een zeer korte opname. Debug-logs zijn opnames, geen momentopnames — reproduceer het probleem tijdens de opname zodat de log nuttig is.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Doorgaan met opnemen</string>
+    <string name="settings_support_debuglog_folder_label">Debug-logmap</string>
+    <string name="settings_support_debuglog_folder_empty_desc">Geen debug-logs opgeslagen</string>
+    <string name="settings_support_debuglog_folder_delete_title">Alle debug-logs verwijderen?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Alle opgeslagen debug-logsessies worden permanent verwijderd.</string>
+    <string name="debug_log_screen_subtitle">Bekijk en deel je opgenomen debug-log</string>
+    <string name="debug_log_screen_sensitive_title">Gevoelige informatie</string>
+    <string name="debug_log_screen_keep_action">Bewaren</string>
+    <string name="debug_log_compressing_label">Bezig met comprimeren…</string>
+    <string name="support_debuglog_sent_title">Log verstuurd?</string>
+    <string name="support_debuglog_sent_message">Als je de debug-log hebt verstuurd, kan die van het apparaat worden verwijderd. Wil je hem verwijderen?</string>
+    <string name="support_debuglog_session_delete_title">Debug-log verwijderen?</string>
+    <string name="support_debuglog_session_delete_message">Deze debug-logsessie wordt permanent verwijderd.</string>
+    <string name="support_debuglog_session_recording">Opnemen…</string>
+    <string name="support_debuglog_session_compressing">Comprimeren…</string>
+    <string name="support_debuglog_failed_empty_log">Lege log</string>
+    <string name="support_debuglog_failed_missing_log">Log ontbreekt</string>
+    <string name="support_debuglog_failed_corrupt_zip">Beschadigde ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP mislukt</string>
+    <string name="support_debuglog_clear_title">Alle debug-logs verwijderen?</string>
+    <string name="support_debuglog_clear_message">Alle opgeslagen debug-logsessies worden permanent verwijderd.</string>
+    <string name="settings_support_contact_label">Ontwikkelaar contacteren</string>
+    <string name="settings_support_contact_desc">Vul een formulier in om de ontwikkelaar een e-mail te sturen.</string>
+    <string name="contact_screen_title">Ontwikkelaar contacteren</string>
+    <string name="contact_category_bug_label">Bugrapport</string>
+    <string name="contact_category_feature_label">Functieverzoek</string>
+    <string name="contact_category_question_label">Vraag</string>
+    <string name="contact_description_label">Beschrijving</string>
+    <string name="contact_description_bug_hint">Beschrijf wat er is gebeurd en hoe het probleem te reproduceren.</string>
+    <string name="contact_description_feature_hint">Beschrijf de functie die je wilt zien.</string>
+    <string name="contact_description_question_hint">Beschrijf je vraag in detail.</string>
+    <string name="contact_category_section_label">Categorie</string>
+    <string name="contact_debug_log_label">Debug-log</string>
+    <string name="contact_debug_log_select_hint">Selecteer een debug-log om te bijvoegen</string>
+    <string name="contact_debug_log_picker_hint">Voeg een debug-log toe om het probleem sneller te diagnosticeren.</string>
+    <string name="contact_debug_log_picker_empty">Geen debug-logs beschikbaar. Neem er eerst een op.</string>
+    <string name="contact_expected_behavior_label">Verwacht gedrag</string>
+    <string name="contact_expected_behavior_hint">Beschrijf wat je had verwacht dat er in plaats daarvan zou gebeuren.</string>
+    <string name="support_contact_debuglog_zip_error">Kan debug-log niet voorbereiden voor bijlage</string>
+    <string name="contact_send_action">E-mailapplicatie openen</string>
+    <string name="contact_welcome_msg">Ik lees elk bericht zelf en doe mijn best om te antwoorden, maar omdat ik er alleen aan werk, kan het even duren. Bedankt voor je geduld.</string>
+    <string name="contact_footer_msg">Je bericht wordt per e-mail verstuurd. Apparaat- en instellingsinformatie wordt automatisch bijgevoegd.</string>
+    <string name="contact_no_email_app_msg">Geen e-mailapplicatie gevonden op dit apparaat.</string>
+    <string name="contact_attachment_missing_msg">Debug-logbestand bestaat niet meer</string>
+    <string name="settings_support_stored_logs_label">Opgeslagen debug-logs</string>
+    <string name="settings_support_stored_logs_desc">%1$d sessies (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Geen opgeslagen debug-logs</string>
+    <string name="settings_support_stored_logs_delete_title">Opgeslagen logs verwijderen?</string>
+    <string name="settings_support_stored_logs_delete_msg">Alle %1$d opgeslagen debug-logsessies worden verwijderd.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Opgeslagen debug-logs verwijderd</string>
+    <string name="label_pro_feature">Premiumfunctie</string>
+    <string name="ui_theme_color_setting_label">Themakleur</string>
+    <string name="ui_theme_color_setting_explanation">Het kleurenpalet dat wordt gebruikt bij het thematiseren van de app.</string>
+    <string name="ui_theme_color_material_you_note">De kleur wordt ingesteld door je achtergrond bij gebruik van Material You.</string>
+    <string name="ui_theme_color_blue_label">Blauw</string>
+    <string name="ui_theme_color_sunset_label">Zonsondergang</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sessie gebruikt %2$s</item>
+        <item quantity="other">%1$d sessies gebruiken %2$s</item>
+    </plurals>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d bestand gereed (%2$s)</item>
+        <item quantity="other">%1$d bestanden gereed (%2$s)</item>
+    </plurals>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d woord</item>
+        <item quantity="other">%1$d / %2$d woorden</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Gratis versie: %1$d van %2$d apparaat</item>
+        <item quantity="other">Gratis versie: %1$d van %2$d apparaten</item>
+    </plurals>
 </resources>

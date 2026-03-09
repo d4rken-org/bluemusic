@@ -297,5 +297,103 @@
     <string name="devices_unlock_sliders_action">Odomknúť</string>
 
     <!-- Debug log short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">Veľmi krátky záznam</string>
+    <string name="settings_support_debuglog_short_recording_msg">Bol to veľmi krátky záznam. Ladiace logy sú záznamy, nie snímky — reprodukuj problém počas aktívneho záznamu, aby bol log užitočný.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Pokračovať v zázname</string>
     <string name="settings_support_debuglog_short_recording_stop">Zastaviť napriek tomu</string>
+
+    <!-- Debug log folder -->
+    <string name="settings_support_debuglog_folder_label">Priečinok ladiaceho logu</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d relácia používa %2$s</item>
+        <item quantity="few">%1$d relácie používajú %2$s</item>
+        <item quantity="many">%1$d relácie používajú %2$s</item>
+        <item quantity="other">%1$d relácií používa %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Žiadne ladiace logy nie sú uložené</string>
+    <string name="settings_support_debuglog_folder_delete_title">Odstrániť všetky ladiace logy?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Toto natrvalo odstráni všetky uložené relácie ladiaceho logu.</string>
+
+    <!-- Debug log screen -->
+    <string name="debug_log_screen_subtitle">Skontroluj a zdieľaj zaznamenaný ladiaci log</string>
+    <string name="debug_log_screen_sensitive_title">Citlivé informácie</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d súbor pripravený (%2$s)</item>
+        <item quantity="few">%1$d súbory pripravené (%2$s)</item>
+        <item quantity="many">%1$d súborov pripravených (%2$s)</item>
+        <item quantity="other">%1$d súborov pripravených (%2$s)</item>
+    </plurals>
+    <string name="debug_log_screen_keep_action">Ponechať</string>
+    <string name="debug_log_compressing_label">Komprimuje sa…</string>
+
+    <!-- Debug log sessions -->
+    <string name="support_debuglog_sent_title">Log odoslaný?</string>
+    <string name="support_debuglog_sent_message">Ak si odoslal ladiaci log, môže byť odstránený zo zariadenia. Chceš ho odstrániť?</string>
+    <string name="support_debuglog_session_delete_title">Odstrániť ladiaci log?</string>
+    <string name="support_debuglog_session_delete_message">Táto relácia ladiaceho logu bude natrvalo odstránená.</string>
+    <string name="support_debuglog_session_recording">Zaznamenáva sa…</string>
+    <string name="support_debuglog_session_compressing">Komprimuje sa…</string>
+    <string name="support_debuglog_failed_empty_log">Prázdny log</string>
+    <string name="support_debuglog_failed_missing_log">Chýbajúci log</string>
+    <string name="support_debuglog_failed_corrupt_zip">Poškodený ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP zlyhal</string>
+    <string name="support_debuglog_clear_title">Odstrániť všetky ladiace logy?</string>
+    <string name="support_debuglog_clear_message">Toto natrvalo odstráni všetky uložené relácie ladiaceho logu.</string>
+
+    <!-- Contact developer -->
+    <string name="settings_support_contact_label">Kontaktovať vývojára</string>
+    <string name="settings_support_contact_desc">Vyplň formulár a pošli vývojárovi email.</string>
+    <string name="contact_screen_title">Kontaktovať vývojára</string>
+    <string name="contact_category_bug_label">Nahlásenie chyby</string>
+    <string name="contact_category_feature_label">Požiadavka na funkciu</string>
+    <string name="contact_category_question_label">Otázka</string>
+    <string name="contact_description_label">Popis</string>
+    <string name="contact_description_bug_hint">Opíš, čo sa stalo a ako problém reprodukovať.</string>
+    <string name="contact_description_feature_hint">Opíš funkciu, ktorú by si chcel vidieť.</string>
+    <string name="contact_description_question_hint">Opíš svoju otázku podrobne.</string>
+    <string name="contact_category_section_label">Kategória</string>
+    <string name="contact_debug_log_label">Ladiaci log</string>
+    <string name="contact_debug_log_select_hint">Vyber ladiaci log na pripojenie</string>
+    <string name="contact_debug_log_picker_hint">Pripoj ladiaci log na rýchlejšie diagnostikovanie problému.</string>
+    <string name="contact_debug_log_picker_empty">Žiadne ladiace logy nie sú k dispozícii. Najprv nejaký zaznamenaj.</string>
+    <string name="contact_expected_behavior_label">Očakávané správanie</string>
+    <string name="contact_expected_behavior_hint">Opíš, čo si namiesto toho očakával.</string>
+    <string name="support_contact_debuglog_zip_error">Nepodarilo sa pripraviť ladiaci log na pripojenie</string>
+    <string name="contact_send_action">Otvoriť emailovú aplikáciu</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d slovo</item>
+        <item quantity="few">%1$d / %2$d slová</item>
+        <item quantity="many">%1$d / %2$d slova</item>
+        <item quantity="other">%1$d / %2$d slov</item>
+    </plurals>
+    <string name="contact_welcome_msg">Každú správu čítam osobne a snažím sa odpovedať čo najlepšie, ale keďže na tom pracujem sám, môže to chvíľku trvať. Ďakujem za trpezlivosť.</string>
+    <string name="contact_footer_msg">Tvoja správa bude odoslaná emailom. Informácie o zariadení a nastaveniach sú priložené automaticky.</string>
+    <string name="contact_no_email_app_msg">Na tomto zariadení nebola nájdená žiadna emailová aplikácia.</string>
+    <string name="contact_attachment_missing_msg">Súbor ladiaceho logu už neexistuje</string>
+
+    <!-- Stored logs -->
+    <string name="settings_support_stored_logs_label">Uložené ladiace logy</string>
+    <string name="settings_support_stored_logs_desc">%1$d relácií (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Žiadne uložené ladiace logy</string>
+    <string name="settings_support_stored_logs_delete_title">Odstrániť uložené logy?</string>
+    <string name="settings_support_stored_logs_delete_msg">Toto odstráni všetkých %1$d uložených relácií ladiaceho logu.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Uložené ladiace logy boli odstránené</string>
+
+    <!-- Premium feature label -->
+    <string name="label_pro_feature">Prémiová funkcia</string>
+
+    <!-- Device limit banner -->
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Bezplatná verzia: %1$d z %2$d zariadenia</item>
+        <item quantity="few">Bezplatná verzia: %1$d z %2$d zariadení</item>
+        <item quantity="many">Bezplatná verzia: %1$d z %2$d zariadení</item>
+        <item quantity="other">Bezplatná verzia: %1$d z %2$d zariadení</item>
+    </plurals>
+
+    <!-- Theme color -->
+    <string name="ui_theme_color_setting_label">Farba témy</string>
+    <string name="ui_theme_color_setting_explanation">Farebná paleta použitá pri zobrazení témy aplikácie.</string>
+    <string name="ui_theme_color_material_you_note">Farba je nastavená podľa tapety pri použití Material You.</string>
+    <string name="ui_theme_color_blue_label">Modrá</string>
+    <string name="ui_theme_color_sunset_label">Západ slnka</string>
 </resources>

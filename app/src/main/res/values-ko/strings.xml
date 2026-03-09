@@ -297,4 +297,75 @@
 
     <!-- Short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">그래도 중지</string>
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">매우 짧은 녹음</string>
+    <string name="settings_support_debuglog_short_recording_msg">녹음이 매우 짧았습니다. 디버그 로그는 스냅샷이 아닌 녹음입니다 — 로그가 유용하려면 녹음 중에 문제를 재현하세요.</string>
+    <string name="settings_support_debuglog_short_recording_continue">계속 녹음</string>
+    <string name="settings_support_debuglog_folder_label">디버그 로그 폴더</string>
+    <string name="settings_support_debuglog_folder_empty_desc">저장된 디버그 로그 없음</string>
+    <string name="settings_support_debuglog_folder_delete_title">모든 디버그 로그를 삭제할까요?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">저장된 모든 디버그 로그 세션이 영구적으로 삭제됩니다.</string>
+    <string name="debug_log_screen_subtitle">녹음된 디버그 로그 검토 및 공유</string>
+    <string name="debug_log_screen_sensitive_title">민감한 정보</string>
+    <string name="debug_log_screen_keep_action">보관</string>
+    <string name="debug_log_compressing_label">압축 중…</string>
+    <string name="support_debuglog_sent_title">로그를 전송했나요?</string>
+    <string name="support_debuglog_sent_message">디버그 로그를 전송했다면 기기에서 삭제할 수 있습니다. 제거하시겠습니까?</string>
+    <string name="support_debuglog_session_delete_title">디버그 로그를 삭제할까요?</string>
+    <string name="support_debuglog_session_delete_message">이 디버그 로그 세션이 영구적으로 삭제됩니다.</string>
+    <string name="support_debuglog_session_recording">녹음 중…</string>
+    <string name="support_debuglog_session_compressing">압축 중…</string>
+    <string name="support_debuglog_failed_empty_log">빈 로그</string>
+    <string name="support_debuglog_failed_missing_log">로그 없음</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP 파일 손상</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP 실패</string>
+    <string name="support_debuglog_clear_title">모든 디버그 로그를 삭제할까요?</string>
+    <string name="support_debuglog_clear_message">저장된 모든 디버그 로그 세션이 영구적으로 삭제됩니다.</string>
+    <string name="settings_support_contact_label">개발자에게 연락</string>
+    <string name="settings_support_contact_desc">개발자에게 이메일을 보내는 양식을 작성하세요.</string>
+    <string name="contact_screen_title">개발자에게 연락</string>
+    <string name="contact_category_bug_label">버그 신고</string>
+    <string name="contact_category_feature_label">기능 요청</string>
+    <string name="contact_category_question_label">질문</string>
+    <string name="contact_description_label">설명</string>
+    <string name="contact_description_bug_hint">무슨 일이 있었는지 그리고 문제를 재현하는 방법을 설명하세요.</string>
+    <string name="contact_description_feature_hint">원하는 기능을 설명하세요.</string>
+    <string name="contact_description_question_hint">질문을 자세히 설명하세요.</string>
+    <string name="contact_category_section_label">카테고리</string>
+    <string name="contact_debug_log_label">디버그 로그</string>
+    <string name="contact_debug_log_select_hint">첨부할 디버그 로그 선택</string>
+    <string name="contact_debug_log_picker_hint">디버그 로그를 첨부하면 문제를 더 빠르게 진단할 수 있습니다.</string>
+    <string name="contact_debug_log_picker_empty">디버그 로그가 없습니다. 먼저 녹음하세요.</string>
+    <string name="contact_expected_behavior_label">예상 동작</string>
+    <string name="contact_expected_behavior_hint">대신 어떤 일이 일어나기를 기대했는지 설명하세요.</string>
+    <string name="support_contact_debuglog_zip_error">첨부용 디버그 로그 준비 실패</string>
+    <string name="contact_send_action">이메일 앱 열기</string>
+    <string name="contact_welcome_msg">모든 메시지를 직접 읽고 최선을 다해 답변드리지만, 혼자 작업하기 때문에 시간이 좀 걸릴 수 있습니다. 기다려 주셔서 감사합니다.</string>
+    <string name="contact_footer_msg">메시지는 이메일로 전송됩니다. 기기와 설정 정보가 자동으로 첨부됩니다.</string>
+    <string name="contact_no_email_app_msg">이 기기에서 이메일 앱을 찾을 수 없습니다.</string>
+    <string name="contact_attachment_missing_msg">디버그 로그 파일이 더 이상 존재하지 않습니다</string>
+    <string name="settings_support_stored_logs_label">저장된 디버그 로그</string>
+    <string name="settings_support_stored_logs_desc">%1$d 세션 (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">저장된 디버그 로그 없음</string>
+    <string name="settings_support_stored_logs_delete_title">저장된 로그를 삭제할까요?</string>
+    <string name="settings_support_stored_logs_delete_msg">저장된 디버그 로그 세션 %1$d개를 모두 삭제합니다.</string>
+    <string name="settings_support_stored_logs_deleted_msg">저장된 디버그 로그가 삭제되었습니다</string>
+    <string name="label_pro_feature">프리미엄 기능</string>
+    <string name="ui_theme_color_setting_label">테마 색상</string>
+    <string name="ui_theme_color_setting_explanation">앱 테마에 사용되는 색상 팔레트입니다.</string>
+    <string name="ui_theme_color_material_you_note">Material You 사용 시 색상은 배경화면에 의해 설정됩니다.</string>
+    <string name="ui_theme_color_blue_label">파란색</string>
+    <string name="ui_theme_color_sunset_label">노을</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="other">%1$d 세션, %2$s 사용 중</item>
+    </plurals>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="other">%1$d개 파일 준비 완료 (%2$s)</item>
+    </plurals>
+    <plurals name="contact_word_count">
+        <item quantity="other">%1$d / %2$d 단어</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="other">무료 버전: %1$d / %2$d 기기</item>
+    </plurals>
 </resources>

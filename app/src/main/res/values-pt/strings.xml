@@ -302,4 +302,79 @@
 
     <!-- Debug log short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">Parar mesmo assim</string>
+
+    <string name="settings_support_debuglog_short_recording_title">Gravação muito curta</string>
+    <string name="settings_support_debuglog_short_recording_msg">Foi uma gravação muito curta. Os logs de depuração são gravações, não instantâneos — reproduz o problema enquanto a gravação está ativa para que o log seja útil.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Continuar a gravar</string>
+    <string name="settings_support_debuglog_folder_label">Pasta de logs de depuração</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sessão a usar %2$s</item>
+        <item quantity="other">%1$d sessões a usar %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Nenhum log de depuração guardado</string>
+    <string name="settings_support_debuglog_folder_delete_title">Eliminar todos os logs de depuração?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Isto irá eliminar permanentemente todas as sessões de logs de depuração guardadas.</string>
+    <string name="debug_log_screen_subtitle">Revê e partilha o teu log de depuração gravado</string>
+    <string name="debug_log_screen_sensitive_title">Informação sensível</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d ficheiro pronto (%2$s)</item>
+        <item quantity="other">%1$d ficheiros prontos (%2$s)</item>
+    </plurals>
+    <string name="debug_log_screen_keep_action">Guardar</string>
+    <string name="debug_log_compressing_label">A comprimir…</string>
+    <string name="support_debuglog_sent_title">Log enviado?</string>
+    <string name="support_debuglog_sent_message">Se enviaste o log de depuração, pode ser eliminado do dispositivo. Queres removê-lo?</string>
+    <string name="support_debuglog_session_delete_title">Eliminar log de depuração?</string>
+    <string name="support_debuglog_session_delete_message">Esta sessão de log de depuração será eliminada permanentemente.</string>
+    <string name="support_debuglog_session_recording">A gravar…</string>
+    <string name="support_debuglog_session_compressing">A comprimir…</string>
+    <string name="support_debuglog_failed_empty_log">Log vazio</string>
+    <string name="support_debuglog_failed_missing_log">Log em falta</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP corrompido</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP falhou</string>
+    <string name="support_debuglog_clear_title">Eliminar todos os logs de depuração?</string>
+    <string name="support_debuglog_clear_message">Isto irá eliminar permanentemente todas as sessões de logs de depuração guardadas.</string>
+    <string name="settings_support_contact_label">Contactar o programador</string>
+    <string name="settings_support_contact_desc">Preenche um formulário para enviar um e-mail ao programador.</string>
+    <string name="contact_screen_title">Contactar o programador</string>
+    <string name="contact_category_bug_label">Relatório de erro</string>
+    <string name="contact_category_feature_label">Pedido de funcionalidade</string>
+    <string name="contact_category_question_label">Pergunta</string>
+    <string name="contact_description_label">Descrição</string>
+    <string name="contact_description_bug_hint">Descreve o que aconteceu e como reproduzir o problema.</string>
+    <string name="contact_description_feature_hint">Descreve a funcionalidade que gostarias de ver.</string>
+    <string name="contact_description_question_hint">Descreve a tua pergunta em detalhe.</string>
+    <string name="contact_category_section_label">Categoria</string>
+    <string name="contact_debug_log_label">Log de depuração</string>
+    <string name="contact_debug_log_select_hint">Seleciona um log de depuração para anexar</string>
+    <string name="contact_debug_log_picker_hint">Anexa um log de depuração para ajudar a diagnosticar o problema mais rapidamente.</string>
+    <string name="contact_debug_log_picker_empty">Nenhum log de depuração disponível. Grava um primeiro.</string>
+    <string name="contact_expected_behavior_label">Comportamento esperado</string>
+    <string name="contact_expected_behavior_hint">Descreve o que esperavas que acontecesse em vez disso.</string>
+    <string name="support_contact_debuglog_zip_error">Falha ao preparar o log de depuração para anexo</string>
+    <string name="contact_send_action">Abrir aplicação de e-mail</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d palavra</item>
+        <item quantity="other">%1$d / %2$d palavras</item>
+    </plurals>
+    <string name="contact_welcome_msg">Leio cada mensagem pessoalmente e faço o meu melhor para responder, mas como trabalho nisto sozinho, pode demorar um pouco. Obrigado pela tua paciência.</string>
+    <string name="contact_footer_msg">A tua mensagem será enviada por e-mail. As informações do dispositivo e configuração são anexadas automaticamente.</string>
+    <string name="contact_no_email_app_msg">Não foi encontrada nenhuma aplicação de e-mail neste dispositivo.</string>
+    <string name="contact_attachment_missing_msg">O ficheiro de log de depuração já não existe</string>
+    <string name="settings_support_stored_logs_label">Logs de depuração guardados</string>
+    <string name="settings_support_stored_logs_desc">%1$d sessões (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Nenhum log de depuração guardado</string>
+    <string name="settings_support_stored_logs_delete_title">Eliminar logs guardados?</string>
+    <string name="settings_support_stored_logs_delete_msg">Isto irá eliminar todas as %1$d sessões de logs de depuração guardadas.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Logs de depuração guardados eliminados</string>
+    <string name="label_pro_feature">Funcionalidade premium</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Versão gratuita: %1$d de %2$d dispositivo</item>
+        <item quantity="other">Versão gratuita: %1$d de %2$d dispositivos</item>
+    </plurals>
+    <string name="ui_theme_color_setting_label">Cor do tema</string>
+    <string name="ui_theme_color_setting_explanation">A paleta de cores usada ao tematizar a aplicação.</string>
+    <string name="ui_theme_color_material_you_note">A cor é definida pelo teu papel de parede ao usar Material You.</string>
+    <string name="ui_theme_color_blue_label">Azul</string>
+    <string name="ui_theme_color_sunset_label">Pôr do sol</string>
 </resources>

@@ -300,4 +300,75 @@
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Verrouiller</string>
     <string name="devices_unlock_sliders_action">Déverrouiller</string>
+
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Enregistrement très court</string>
+    <string name="settings_support_debuglog_short_recording_msg">C\'était un enregistrement très court. Les journaux de débogage sont des enregistrements, pas des instantanés — reproduisez le problème pendant l\'enregistrement pour que le journal soit utile.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Continuer l\'enregistrement</string>
+    <string name="settings_support_debuglog_folder_label">Dossier des journaux de débogage</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d session utilisant %2$s</item>
+        <item quantity="other">%1$d sessions utilisant %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Aucun journal de débogage enregistré</string>
+    <string name="settings_support_debuglog_folder_delete_title">Supprimer tous les journaux de débogage ?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Ceci supprimera définitivement toutes les sessions de journaux de débogage enregistrées.</string>
+    <string name="support_debuglog_sent_title">Journal envoyé ?</string>
+    <string name="support_debuglog_sent_message">Si vous avez envoyé le journal de débogage, il peut être supprimé de l\'appareil. Voulez-vous le supprimer ?</string>
+    <string name="support_debuglog_session_delete_title">Supprimer le journal de débogage ?</string>
+    <string name="support_debuglog_session_delete_message">Cette session de journal de débogage sera définitivement supprimée.</string>
+    <string name="support_debuglog_session_recording">Enregistrement…</string>
+    <string name="support_debuglog_session_compressing">Compression…</string>
+    <string name="support_debuglog_failed_empty_log">Journal vide</string>
+    <string name="support_debuglog_failed_missing_log">Journal manquant</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP corrompu</string>
+    <string name="support_debuglog_failed_zip_failed">Échec du ZIP</string>
+    <string name="support_debuglog_clear_title">Supprimer tous les journaux de débogage ?</string>
+    <string name="support_debuglog_clear_message">Ceci supprimera définitivement toutes les sessions de journaux de débogage enregistrées.</string>
+    <string name="settings_support_contact_label">Contacter le développeur</string>
+    <string name="settings_support_contact_desc">Remplissez un formulaire pour envoyer un e-mail au développeur.</string>
+    <string name="contact_screen_title">Contacter le développeur</string>
+    <string name="contact_category_bug_label">Rapport de bogue</string>
+    <string name="contact_category_feature_label">Demande de fonctionnalité</string>
+    <string name="contact_category_question_label">Question</string>
+    <string name="contact_description_label">Description</string>
+    <string name="contact_description_bug_hint">Décrivez ce qui s\'est passé et comment reproduire le problème.</string>
+    <string name="contact_description_feature_hint">Décrivez la fonctionnalité que vous aimeriez voir.</string>
+    <string name="contact_description_question_hint">Décrivez votre question en détail.</string>
+    <string name="contact_category_section_label">Catégorie</string>
+    <string name="contact_debug_log_label">Journal de débogage</string>
+    <string name="contact_debug_log_select_hint">Sélectionner un journal de débogage à joindre</string>
+    <string name="contact_debug_log_picker_hint">Joignez un journal de débogage pour aider à diagnostiquer le problème plus rapidement.</string>
+    <string name="contact_debug_log_picker_empty">Aucun journal de débogage disponible. Enregistrez-en un d\'abord.</string>
+    <string name="contact_expected_behavior_label">Comportement attendu</string>
+    <string name="contact_expected_behavior_hint">Décrivez ce que vous vous attendiez à voir à la place.</string>
+    <string name="support_contact_debuglog_zip_error">Échec de la préparation du journal de débogage pour la pièce jointe</string>
+    <string name="contact_send_action">Ouvrir l\'application e-mail</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d mot</item>
+        <item quantity="other">%1$d / %2$d mots</item>
+    </plurals>
+    <string name="contact_welcome_msg">Je lis chaque message moi-même et fais de mon mieux pour répondre, mais comme je travaille seul, cela peut prendre un peu de temps. Merci de votre patience.</string>
+    <string name="contact_footer_msg">Votre message sera envoyé par e-mail. Les informations sur l\'appareil et la configuration sont jointes automatiquement.</string>
+    <string name="contact_no_email_app_msg">Aucune application e-mail trouvée sur cet appareil.</string>
+    <string name="contact_attachment_missing_msg">Le fichier journal de débogage n\'existe plus</string>
+    <string name="settings_support_stored_logs_label">Journaux de débogage enregistrés</string>
+    <string name="settings_support_stored_logs_desc">%1$d sessions (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Aucun journal de débogage enregistré</string>
+    <string name="settings_support_stored_logs_delete_title">Supprimer les journaux enregistrés ?</string>
+    <string name="settings_support_stored_logs_delete_msg">Ceci supprimera les %1$d sessions de journaux de débogage enregistrées.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Journaux de débogage enregistrés supprimés</string>
+    <string name="debug_log_screen_subtitle">Vérifiez et partagez votre journal de débogage enregistré</string>
+    <string name="debug_log_screen_sensitive_title">Informations sensibles</string>
+    <string name="debug_log_screen_keep_action">Conserver</string>
+    <string name="debug_log_compressing_label">Compression…</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d fichier prêt (%2$s)</item>
+        <item quantity="other">%1$d fichiers prêts (%2$s)</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Version gratuite : %1$d sur %2$d appareil</item>
+        <item quantity="other">Version gratuite : %1$d sur %2$d appareils</item>
+    </plurals>
+    <string name="label_pro_feature">Fonctionnalité premium</string>
 </resources>

@@ -295,4 +295,71 @@
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Kunci</string>
     <string name="devices_unlock_sliders_action">Buka kunci</string>
+
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Rekaman sangat singkat</string>
+    <string name="settings_support_debuglog_short_recording_msg">Itu adalah rekaman yang sangat singkat. Log debug adalah rekaman, bukan snapshot — reproduksi masalah saat perekaman aktif agar log berguna.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Lanjutkan rekaman</string>
+    <string name="settings_support_debuglog_folder_label">Folder log debug</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="other">%1$d sesi menggunakan %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Tidak ada log debug yang tersimpan</string>
+    <string name="settings_support_debuglog_folder_delete_title">Hapus semua log debug?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Ini akan menghapus semua sesi log debug yang tersimpan secara permanen.</string>
+    <string name="support_debuglog_sent_title">Log sudah dikirim?</string>
+    <string name="support_debuglog_sent_message">Jika kamu sudah mengirim log debug, log tersebut bisa dihapus dari perangkat. Apakah kamu ingin menghapusnya?</string>
+    <string name="support_debuglog_session_delete_title">Hapus log debug?</string>
+    <string name="support_debuglog_session_delete_message">Sesi log debug ini akan dihapus secara permanen.</string>
+    <string name="support_debuglog_session_recording">Merekam…</string>
+    <string name="support_debuglog_session_compressing">Mengompres…</string>
+    <string name="support_debuglog_failed_empty_log">Log kosong</string>
+    <string name="support_debuglog_failed_missing_log">Log tidak ditemukan</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP rusak</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP gagal</string>
+    <string name="support_debuglog_clear_title">Hapus semua log debug?</string>
+    <string name="support_debuglog_clear_message">Ini akan menghapus semua sesi log debug yang tersimpan secara permanen.</string>
+    <string name="settings_support_contact_label">Hubungi developer</string>
+    <string name="settings_support_contact_desc">Isi formulir untuk mengirim email kepada developer.</string>
+    <string name="contact_screen_title">Hubungi developer</string>
+    <string name="contact_category_bug_label">Laporan bug</string>
+    <string name="contact_category_feature_label">Permintaan fitur</string>
+    <string name="contact_category_question_label">Pertanyaan</string>
+    <string name="contact_description_label">Deskripsi</string>
+    <string name="contact_description_bug_hint">Jelaskan apa yang terjadi dan cara mereproduksi masalah.</string>
+    <string name="contact_description_feature_hint">Jelaskan fitur yang ingin kamu lihat.</string>
+    <string name="contact_description_question_hint">Jelaskan pertanyaanmu secara detail.</string>
+    <string name="contact_category_section_label">Kategori</string>
+    <string name="contact_debug_log_label">Log debug</string>
+    <string name="contact_debug_log_select_hint">Pilih log debug untuk dilampirkan</string>
+    <string name="contact_debug_log_picker_hint">Lampirkan log debug untuk membantu mendiagnosis masalah lebih cepat.</string>
+    <string name="contact_debug_log_picker_empty">Tidak ada log debug tersedia. Rekam satu terlebih dahulu.</string>
+    <string name="contact_expected_behavior_label">Perilaku yang diharapkan</string>
+    <string name="contact_expected_behavior_hint">Jelaskan apa yang kamu harapkan terjadi sebagai gantinya.</string>
+    <string name="support_contact_debuglog_zip_error">Gagal menyiapkan log debug untuk lampiran</string>
+    <string name="contact_send_action">Buka aplikasi email</string>
+    <plurals name="contact_word_count">
+        <item quantity="other">%1$d / %2$d kata</item>
+    </plurals>
+    <string name="contact_welcome_msg">Saya membaca setiap pesan sendiri dan berusaha sebaik mungkin untuk membalas, tapi karena saya bekerja sendiri, mungkin butuh sedikit waktu. Terima kasih atas kesabaranmu.</string>
+    <string name="contact_footer_msg">Pesanmu akan dikirim melalui email. Informasi perangkat dan pengaturan dilampirkan secara otomatis.</string>
+    <string name="contact_no_email_app_msg">Tidak ada aplikasi email yang ditemukan di perangkat ini.</string>
+    <string name="contact_attachment_missing_msg">File log debug sudah tidak ada</string>
+    <string name="settings_support_stored_logs_label">Log debug tersimpan</string>
+    <string name="settings_support_stored_logs_desc">%1$d sesi (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Tidak ada log debug tersimpan</string>
+    <string name="settings_support_stored_logs_delete_title">Hapus log tersimpan?</string>
+    <string name="settings_support_stored_logs_delete_msg">Ini akan menghapus semua %1$d sesi log debug yang tersimpan.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Log debug tersimpan dihapus</string>
+    <string name="debug_log_screen_subtitle">Tinjau dan bagikan log debug yang direkam</string>
+    <string name="debug_log_screen_sensitive_title">Informasi sensitif</string>
+    <string name="debug_log_screen_keep_action">Simpan</string>
+    <string name="debug_log_compressing_label">Mengompres…</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="other">%1$d file siap (%2$s)</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="other">Versi gratis: %1$d dari %2$d perangkat</item>
+    </plurals>
+    <string name="label_pro_feature">Fitur premium</string>
 </resources>

@@ -349,4 +349,79 @@
 
     <!-- Debug log short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">Stop anyway</string>
+
+    <string name="settings_support_debuglog_short_recording_title">E short well well</string>
+    <string name="settings_support_debuglog_short_recording_msg">That recording short well well. Debug logs na recordings, no be snapshots — reproduce the issue while recording dey active make the log useful.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Continue recording</string>
+    <string name="settings_support_debuglog_folder_label">Debug log folder</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d session dey use %2$s</item>
+        <item quantity="other">%1$d sessions dey use %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">No debug logs stored</string>
+    <string name="settings_support_debuglog_folder_delete_title">Delete all debug logs?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">E go permanently delete all stored debug log sessions.</string>
+    <string name="debug_log_screen_subtitle">Review and share your recorded debug log</string>
+    <string name="debug_log_screen_sensitive_title">Sensitive information</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d file ready (%2$s)</item>
+        <item quantity="other">%1$d files ready (%2$s)</item>
+    </plurals>
+    <string name="debug_log_screen_keep_action">Keep</string>
+    <string name="debug_log_compressing_label">Compressing…</string>
+    <string name="support_debuglog_sent_title">Log don send?</string>
+    <string name="support_debuglog_sent_message">If you don send the debug log, e fit delete from the device. You want remove am?</string>
+    <string name="support_debuglog_session_delete_title">Delete debug log?</string>
+    <string name="support_debuglog_session_delete_message">This debug log session go permanently delete.</string>
+    <string name="support_debuglog_session_recording">Recording…</string>
+    <string name="support_debuglog_session_compressing">Compressing…</string>
+    <string name="support_debuglog_failed_empty_log">Empty log</string>
+    <string name="support_debuglog_failed_missing_log">Missing log</string>
+    <string name="support_debuglog_failed_corrupt_zip">Corrupt ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP fail</string>
+    <string name="support_debuglog_clear_title">Delete all debug logs?</string>
+    <string name="support_debuglog_clear_message">E go permanently delete all stored debug log sessions.</string>
+    <string name="settings_support_contact_label">Contact developer</string>
+    <string name="settings_support_contact_desc">Fill form to send the developer email.</string>
+    <string name="contact_screen_title">Contact developer</string>
+    <string name="contact_category_bug_label">Bug report</string>
+    <string name="contact_category_feature_label">Feature request</string>
+    <string name="contact_category_question_label">Question</string>
+    <string name="contact_description_label">Description</string>
+    <string name="contact_description_bug_hint">Talk wetin happen and how to reproduce the issue.</string>
+    <string name="contact_description_feature_hint">Talk about the feature wey you want see.</string>
+    <string name="contact_description_question_hint">Talk your question well well.</string>
+    <string name="contact_category_section_label">Category</string>
+    <string name="contact_debug_log_label">Debug log</string>
+    <string name="contact_debug_log_select_hint">Select debug log to attach</string>
+    <string name="contact_debug_log_picker_hint">Attach debug log to help diagnose the issue faster.</string>
+    <string name="contact_debug_log_picker_empty">No debug logs available. Record one first.</string>
+    <string name="contact_expected_behavior_label">Expected behavior</string>
+    <string name="contact_expected_behavior_hint">Talk wetin you expect to happen instead.</string>
+    <string name="support_contact_debuglog_zip_error">Fail to prepare debug log for attachment</string>
+    <string name="contact_send_action">Open email app</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d word</item>
+        <item quantity="other">%1$d / %2$d words</item>
+    </plurals>
+    <string name="contact_welcome_msg">I read every message myself and I try my best to reply, but since I dey work alone on this, e fit take small time. Thanks for your patience.</string>
+    <string name="contact_footer_msg">Your message go send through email. Device and setup information go attach automatic.</string>
+    <string name="contact_no_email_app_msg">No email app dey this device.</string>
+    <string name="contact_attachment_missing_msg">Debug log file no dey again</string>
+    <string name="settings_support_stored_logs_label">Stored debug logs</string>
+    <string name="settings_support_stored_logs_desc">%1$d sessions (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">No stored debug logs</string>
+    <string name="settings_support_stored_logs_delete_title">Delete stored logs?</string>
+    <string name="settings_support_stored_logs_delete_msg">E go delete all %1$d stored debug log sessions.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Stored debug logs don delete</string>
+    <string name="label_pro_feature">Premium feature</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Free version: %1$d of %2$d device</item>
+        <item quantity="other">Free version: %1$d of %2$d devices</item>
+    </plurals>
+    <string name="ui_theme_color_setting_label">Theme color</string>
+    <string name="ui_theme_color_setting_explanation">The color palette wey use when theming the app.</string>
+    <string name="ui_theme_color_material_you_note">Color dey set by your wallpaper when you use Material You.</string>
+    <string name="ui_theme_color_blue_label">Blue</string>
+    <string name="ui_theme_color_sunset_label">Sunset</string>
 </resources>

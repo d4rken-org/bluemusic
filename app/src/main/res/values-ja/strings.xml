@@ -303,4 +303,75 @@
 
     <!-- Short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">それでも停止する</string>
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">非常に短い録音</string>
+    <string name="settings_support_debuglog_short_recording_msg">非常に短い録音でした。デバッグログは録音であり、スナップショットではありません — ログを有用にするには、録音中に問題を再現してください。</string>
+    <string name="settings_support_debuglog_short_recording_continue">録音を続ける</string>
+    <string name="settings_support_debuglog_folder_label">デバッグログフォルダ</string>
+    <string name="settings_support_debuglog_folder_empty_desc">保存されたデバッグログなし</string>
+    <string name="settings_support_debuglog_folder_delete_title">すべてのデバッグログを削除しますか？</string>
+    <string name="settings_support_debuglog_folder_delete_msg">保存されたデバッグログセッションをすべて完全に削除します。</string>
+    <string name="debug_log_screen_subtitle">録音したデバッグログを確認して共有</string>
+    <string name="debug_log_screen_sensitive_title">機密情報</string>
+    <string name="debug_log_screen_keep_action">保持</string>
+    <string name="debug_log_compressing_label">圧縮中…</string>
+    <string name="support_debuglog_sent_title">ログは送信しましたか？</string>
+    <string name="support_debuglog_sent_message">デバッグログを送信済みの場合、デバイスから削除できます。削除しますか？</string>
+    <string name="support_debuglog_session_delete_title">デバッグログを削除しますか？</string>
+    <string name="support_debuglog_session_delete_message">このデバッグログセッションを完全に削除します。</string>
+    <string name="support_debuglog_session_recording">録音中…</string>
+    <string name="support_debuglog_session_compressing">圧縮中…</string>
+    <string name="support_debuglog_failed_empty_log">空のログ</string>
+    <string name="support_debuglog_failed_missing_log">ログが見つかりません</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIPファイルが壊れています</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP作成に失敗</string>
+    <string name="support_debuglog_clear_title">すべてのデバッグログを削除しますか？</string>
+    <string name="support_debuglog_clear_message">保存されたデバッグログセッションをすべて完全に削除します。</string>
+    <string name="settings_support_contact_label">開発者に連絡</string>
+    <string name="settings_support_contact_desc">フォームに記入して開発者にメールを送信します。</string>
+    <string name="contact_screen_title">開発者に連絡</string>
+    <string name="contact_category_bug_label">バグ報告</string>
+    <string name="contact_category_feature_label">機能リクエスト</string>
+    <string name="contact_category_question_label">質問</string>
+    <string name="contact_description_label">説明</string>
+    <string name="contact_description_bug_hint">何が起きたか、問題の再現方法を説明してください。</string>
+    <string name="contact_description_feature_hint">追加してほしい機能を説明してください。</string>
+    <string name="contact_description_question_hint">質問を詳しく説明してください。</string>
+    <string name="contact_category_section_label">カテゴリ</string>
+    <string name="contact_debug_log_label">デバッグログ</string>
+    <string name="contact_debug_log_select_hint">添付するデバッグログを選択</string>
+    <string name="contact_debug_log_picker_hint">デバッグログを添付すると問題の診断が早くなります。</string>
+    <string name="contact_debug_log_picker_empty">デバッグログがありません。先に録音してください。</string>
+    <string name="contact_expected_behavior_label">期待される動作</string>
+    <string name="contact_expected_behavior_hint">代わりに期待していた動作を説明してください。</string>
+    <string name="support_contact_debuglog_zip_error">デバッグログの添付ファイル準備に失敗しました</string>
+    <string name="contact_send_action">メールアプリを開く</string>
+    <string name="contact_welcome_msg">すべてのメッセージを自分で読み、できる限り返信しますが、一人で作業しているため少し時間がかかる場合があります。ご辛抱ください。</string>
+    <string name="contact_footer_msg">メッセージはメールで送信されます。デバイスと設定情報は自動的に添付されます。</string>
+    <string name="contact_no_email_app_msg">このデバイスにメールアプリが見つかりません。</string>
+    <string name="contact_attachment_missing_msg">デバッグログファイルが見つかりません</string>
+    <string name="settings_support_stored_logs_label">保存されたデバッグログ</string>
+    <string name="settings_support_stored_logs_desc">%1$d セッション (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">保存されたデバッグログなし</string>
+    <string name="settings_support_stored_logs_delete_title">保存されたログを削除しますか？</string>
+    <string name="settings_support_stored_logs_delete_msg">保存されたデバッグログセッション %1$d 件をすべて削除します。</string>
+    <string name="settings_support_stored_logs_deleted_msg">保存されたデバッグログを削除しました</string>
+    <string name="label_pro_feature">プレミアム機能</string>
+    <string name="ui_theme_color_setting_label">テーマカラー</string>
+    <string name="ui_theme_color_setting_explanation">アプリのテーマで使用されるカラーパレット。</string>
+    <string name="ui_theme_color_material_you_note">Material You使用時はカラーが壁紙で設定されます。</string>
+    <string name="ui_theme_color_blue_label">ブルー</string>
+    <string name="ui_theme_color_sunset_label">サンセット</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="other">%1$d セッション、%2$s 使用</item>
+    </plurals>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="other">%1$d 個のファイルが準備完了 (%2$s)</item>
+    </plurals>
+    <plurals name="contact_word_count">
+        <item quantity="other">%1$d / %2$d ワード</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="other">無料版: %1$d / %2$d デバイス</item>
+    </plurals>
 </resources>

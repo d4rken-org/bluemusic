@@ -294,4 +294,75 @@
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Lukitse</string>
     <string name="devices_unlock_sliders_action">Avaa lukitus</string>
+
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Hyvin lyhyt tallennus</string>
+    <string name="settings_support_debuglog_short_recording_msg">Tuo oli hyvin lyhyt tallennus. Debug-logit ovat tallenteita, eivät tilannekuvia — toista ongelma tallennuksen aikana, jotta lokista on hyötyä.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Jatka tallennusta</string>
+    <string name="settings_support_debuglog_folder_label">Debug-lokikansio</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d istunto, käyttää %2$s</item>
+        <item quantity="other">%1$d istuntoa, käyttää %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Ei tallennettuja debug-lokeja</string>
+    <string name="settings_support_debuglog_folder_delete_title">Poista kaikki debug-logit?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Tämä poistaa pysyvästi kaikki tallennetut debug-lokin istunnot.</string>
+    <string name="support_debuglog_sent_title">Loki lähetetty?</string>
+    <string name="support_debuglog_sent_message">Jos olet lähettänyt debug-lokin, se voidaan poistaa laitteelta. Haluatko poistaa sen?</string>
+    <string name="support_debuglog_session_delete_title">Poista debug-loki?</string>
+    <string name="support_debuglog_session_delete_message">Tämä debug-lokin istunto poistetaan pysyvästi.</string>
+    <string name="support_debuglog_session_recording">Tallennetaan…</string>
+    <string name="support_debuglog_session_compressing">Pakataan…</string>
+    <string name="support_debuglog_failed_empty_log">Tyhjä loki</string>
+    <string name="support_debuglog_failed_missing_log">Puuttuva loki</string>
+    <string name="support_debuglog_failed_corrupt_zip">Vioittunut ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP epäonnistui</string>
+    <string name="support_debuglog_clear_title">Poista kaikki debug-logit?</string>
+    <string name="support_debuglog_clear_message">Tämä poistaa pysyvästi kaikki tallennetut debug-lokin istunnot.</string>
+    <string name="settings_support_contact_label">Ota yhteyttä kehittäjään</string>
+    <string name="settings_support_contact_desc">Täytä lomake lähettääksesi kehittäjälle sähköpostin.</string>
+    <string name="contact_screen_title">Ota yhteyttä kehittäjään</string>
+    <string name="contact_category_bug_label">Vikaraportti</string>
+    <string name="contact_category_feature_label">Ominaisuuspyyntö</string>
+    <string name="contact_category_question_label">Kysymys</string>
+    <string name="contact_description_label">Kuvaus</string>
+    <string name="contact_description_bug_hint">Kuvaile mitä tapahtui ja miten ongelma toistetaan.</string>
+    <string name="contact_description_feature_hint">Kuvaile ominaisuus, jonka haluaisit nähdä.</string>
+    <string name="contact_description_question_hint">Kuvaile kysymyksesi yksityiskohtaisesti.</string>
+    <string name="contact_category_section_label">Kategoria</string>
+    <string name="contact_debug_log_label">Debug-loki</string>
+    <string name="contact_debug_log_select_hint">Valitse liitettävä debug-loki</string>
+    <string name="contact_debug_log_picker_hint">Liitä debug-loki auttaaksesi diagnosoimaan ongelman nopeammin.</string>
+    <string name="contact_debug_log_picker_empty">Debug-lokeja ei ole saatavilla. Tallenna ensin yksi.</string>
+    <string name="contact_expected_behavior_label">Odotettu toiminta</string>
+    <string name="contact_expected_behavior_hint">Kuvaile mitä odotit tapahtuvan sen sijaan.</string>
+    <string name="support_contact_debuglog_zip_error">Debug-lokin valmistelu liitteeksi epäonnistui</string>
+    <string name="contact_send_action">Avaa sähköpostisovellus</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d sana</item>
+        <item quantity="other">%1$d / %2$d sanaa</item>
+    </plurals>
+    <string name="contact_welcome_msg">Luen jokaisen viestin itse ja teen parhaani vastatakseni, mutta koska työskentelen yksin, se voi kestää hetken. Kiitos kärsivällisyydestäsi.</string>
+    <string name="contact_footer_msg">Viestisi lähetetään sähköpostitse. Laite- ja asetustiedot liitetään automaattisesti.</string>
+    <string name="contact_no_email_app_msg">Tällä laitteella ei löydy sähköpostisovellusta.</string>
+    <string name="contact_attachment_missing_msg">Debug-lokitiedostoa ei enää ole</string>
+    <string name="settings_support_stored_logs_label">Tallennetut debug-logit</string>
+    <string name="settings_support_stored_logs_desc">%1$d istuntoa (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Ei tallennettuja debug-lokeja</string>
+    <string name="settings_support_stored_logs_delete_title">Poista tallennetut logit?</string>
+    <string name="settings_support_stored_logs_delete_msg">Tämä poistaa kaikki %1$d tallennettu debug-lokin istuntoa.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Tallennetut debug-logit poistettu</string>
+    <string name="debug_log_screen_subtitle">Tarkista ja jaa tallennettu debug-loki</string>
+    <string name="debug_log_screen_sensitive_title">Arkaluonteinen tieto</string>
+    <string name="debug_log_screen_keep_action">Säilytä</string>
+    <string name="debug_log_compressing_label">Pakataan…</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d tiedosto valmis (%2$s)</item>
+        <item quantity="other">%1$d tiedostoa valmis (%2$s)</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Ilmainen versio: %1$d/%2$d laite</item>
+        <item quantity="other">Ilmainen versio: %1$d/%2$d laitetta</item>
+    </plurals>
+    <string name="label_pro_feature">Premium-ominaisuus</string>
 </resources>
