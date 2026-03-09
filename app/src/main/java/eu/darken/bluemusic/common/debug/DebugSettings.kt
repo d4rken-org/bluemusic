@@ -23,6 +23,4 @@ class DebugSettings @Inject constructor(
     val isTraceMode = dataStore.createValue("debug.trace.enabled", false)
     val isDryRunMode = dataStore.createValue("debug.dryrun.enabled", false)
 
-    val recorderPath = dataStore.createValue<String?>("recorder.log.path", null)
-
 }

@@ -3,10 +3,9 @@ package eu.darken.bluemusic.main.ui.settings.support.contact
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.core.content.FileProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import eu.darken.bluemusic.common.BlueMusicId
+import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.BlueMusicLinks
 import eu.darken.bluemusic.common.BuildConfigWrap
 import eu.darken.bluemusic.common.EmailTool
@@ -14,16 +13,16 @@ import eu.darken.bluemusic.common.WebpageTool
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.common.debug.recorder.core.DebugLogStore
+import eu.darken.bluemusic.common.debug.recorder.core.DebugSession
+import eu.darken.bluemusic.common.debug.recorder.core.DebugSessionManager
 import eu.darken.bluemusic.common.debug.recorder.core.RecorderModule
 import eu.darken.bluemusic.common.flow.DynamicStateFlow
 import eu.darken.bluemusic.common.flow.SingleEventFlow
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
-import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.distinctUntilChangedBy
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.launchIn
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,58 +30,76 @@ class ContactSupportViewModel @Inject constructor(
     navCtrl: NavigationController,
     dispatcherProvider: DispatcherProvider,
     @param:ApplicationContext private val context: Context,
-    private val debugLogStore: DebugLogStore,
-    private val recorderModule: RecorderModule,
-    private val blueMusicId: BlueMusicId,
-    private val upgradeRepo: UpgradeRepo,
+    private val sessionManager: DebugSessionManager,
     private val emailTool: EmailTool,
     private val webpageTool: WebpageTool,
 ) : ViewModel4(dispatcherProvider, logTag("Contact", "Support", "VM"), navCtrl) {
 
-    private val stater = DynamicStateFlow(tag, vmScope) {
-        State()
+    data class State(
+        val category: ContactCategory = ContactCategory.QUESTION,
+        val description: String = "",
+        val expectedBehavior: String = "",
+        val isSending: Boolean = false,
+        val isRecording: Boolean = false,
+        val recordingStartedAt: Long = 0L,
+        val sessions: List<DebugSession.Ready> = emptyList(),
+        val selectedSessionId: String? = null,
+    ) {
+        val isBug: Boolean get() = category == ContactCategory.BUG
+
+        val descriptionWordCount: Int
+            get() = description.trim().split("\\s+".toRegex()).filter { it.isNotBlank() }.size
+
+        val expectedWordCount: Int
+            get() = expectedBehavior.trim().split("\\s+".toRegex()).filter { it.isNotBlank() }.size
+
+        val canSend: Boolean
+            get() = descriptionWordCount >= 20
+                    && (!isBug || expectedWordCount >= 10)
+                    && !isSending
+                    && !isRecording
     }
+
+    sealed interface Event {
+        data class OpenEmail(val intent: Intent) : Event
+        data class ShowSnackbar(val message: String) : Event
+        data object ShowConsentDialog : Event
+        data object ShowShortRecordingWarning : Event
+    }
+
+    val events = SingleEventFlow<Event>()
+
+    private val stater = DynamicStateFlow(tag, vmScope) { State() }
     val state: Flow<State> = stater.flow
 
-    val sendEvent = SingleEventFlow<Intent>()
-    val snackbarEvent = SingleEventFlow<String>()
+    @Volatile private var autoSelectSessionId: String? = null
 
     init {
-        launch { loadSessions() }
-        launch {
-            var wasRecording = false
-            recorderModule.state
-                .distinctUntilChangedBy { it.isRecording }
-                .collect { recState ->
-                    log(tag) { "Recording state changed: isRecording=${recState.isRecording}" }
-                    val justStopped = wasRecording && !recState.isRecording
-                    wasRecording = recState.isRecording
-
-                    val sessions = debugLogStore.getSessions()
-                    stater.updateBlocking {
-                        copy(
-                            isRecording = recState.isRecording,
-                            logSessions = sessions,
-                            selectedLogSession = if (justStopped) sessions.firstOrNull() else selectedLogSession,
-                        )
+        combine(
+            sessionManager.recorderState,
+            sessionManager.sessions,
+        ) { recorderState, allSessions ->
+            val completed = allSessions.filterIsInstance<DebugSession.Ready>().take(MAX_PICKER_SESSIONS)
+            stater.updateBlocking {
+                val pendingAutoSelect = autoSelectSessionId
+                val newSelectedId = when {
+                    pendingAutoSelect != null && completed.any { it.id == pendingAutoSelect } -> {
+                        autoSelectSessionId = null
+                        pendingAutoSelect
                     }
+                    selectedSessionId != null && completed.none { it.id == selectedSessionId } -> {
+                        if (allSessions.any { it.id == selectedSessionId }) selectedSessionId else null
+                    }
+                    else -> selectedSessionId
                 }
-        }
-    }
-
-    private suspend fun loadSessions() {
-        val sessions = debugLogStore.getSessions()
-        stater.updateBlocking { copy(logSessions = sessions) }
-    }
-
-    fun startRecording() = launch {
-        log(tag) { "Starting debug log recording" }
-        recorderModule.startRecorder()
-    }
-
-    fun stopRecording() = launch {
-        log(tag) { "Stopping debug log recording" }
-        recorderModule.stopRecorder()
+                copy(
+                    isRecording = recorderState.isRecording,
+                    recordingStartedAt = recorderState.recordingStartedAt,
+                    sessions = completed,
+                    selectedSessionId = newSelectedId,
+                )
+            }
+        }.launchIn(vmScope)
     }
 
     fun openUrl(url: String) {
@@ -90,12 +107,7 @@ class ContactSupportViewModel @Inject constructor(
     }
 
     fun selectCategory(category: ContactCategory) = launch {
-        stater.updateBlocking {
-            copy(
-                category = category,
-                selectedLogSession = if (category != ContactCategory.BUG) null else selectedLogSession,
-            )
-        }
+        stater.updateBlocking { copy(category = category) }
     }
 
     fun updateDescription(text: String) = launch {
@@ -104,8 +116,58 @@ class ContactSupportViewModel @Inject constructor(
         }
     }
 
-    fun selectLogSession(session: DebugLogStore.LogSession?) = launch {
-        stater.updateBlocking { copy(selectedLogSession = session) }
+    fun updateExpectedBehavior(text: String) = launch {
+        if (text.length <= 5000) {
+            stater.updateBlocking { copy(expectedBehavior = text) }
+        }
+    }
+
+    fun selectLogSession(id: String) = launch {
+        stater.updateBlocking { copy(selectedSessionId = id) }
+    }
+
+    fun deleteLogSession(id: String) = launch {
+        log(tag) { "deleteLogSession($id)" }
+        sessionManager.deleteSession(id)
+    }
+
+    fun refreshLogSessions() = launch {
+        sessionManager.refresh()
+    }
+
+    fun startRecording() {
+        events.tryEmit(Event.ShowConsentDialog)
+    }
+
+    fun doStartRecording() = launch {
+        log(tag) { "doStartRecording()" }
+        sessionManager.startRecording()
+    }
+
+    fun stopRecording() = launch {
+        when (val result = sessionManager.requestStopRecording()) {
+            is RecorderModule.StopResult.TooShort -> events.tryEmit(Event.ShowShortRecordingWarning)
+            is RecorderModule.StopResult.Stopped -> {
+                log(tag) { "stopRecording() -> ${result.sessionId}" }
+                autoSelectSessionId = result.sessionId
+            }
+            is RecorderModule.StopResult.NotRecording -> {}
+        }
+    }
+
+    fun forceStopRecording() = launch {
+        log(tag) { "forceStopRecording()" }
+        val result = sessionManager.forceStopRecording()
+        if (result != null) autoSelectSessionId = result.sessionId
+    }
+
+    fun confirmSent() = launch {
+        val selectedId = stater.value().selectedSessionId
+        if (selectedId != null) {
+            log(tag) { "confirmSent() deleting session $selectedId" }
+            sessionManager.deleteSession(selectedId)
+        }
+        navUp()
     }
 
     fun send() = launch {
@@ -115,7 +177,19 @@ class ContactSupportViewModel @Inject constructor(
         stater.updateBlocking { copy(isSending = true) }
 
         try {
-            val category = currentState.category!!
+            val attachmentUri = currentState.selectedSessionId?.let { sessionId ->
+                try {
+                    sessionManager.getZipUri(sessionId)
+                } catch (e: Exception) {
+                    log(tag) { "Failed to prepare attachment: $e" }
+                    events.tryEmit(
+                        Event.ShowSnackbar(context.getString(R.string.support_contact_debuglog_zip_error))
+                    )
+                    return@launch
+                }
+            }
+
+            val category = currentState.category
             val description = currentState.description.trim()
 
             val subjectPreview = description
@@ -127,83 +201,36 @@ class ContactSupportViewModel @Inject constructor(
 
             val subject = "[BVM][${category.subjectTag}] $subjectPreview".take(72)
 
-            val installId = try {
-                blueMusicId.id
-            } catch (e: IllegalStateException) {
-                "unavailable"
-            }
-
-            val upgradeInfo = try {
-                upgradeRepo.upgradeInfo.first()
-            } catch (e: Exception) {
-                null
-            }
-
-            val bodyBuilder = StringBuilder()
-            bodyBuilder.appendLine(description)
-
-            bodyBuilder.appendLine()
-            bodyBuilder.appendLine("--- Device info ---")
-            bodyBuilder.appendLine("App: ${BuildConfigWrap.VERSION_DESCRIPTION}")
-            bodyBuilder.appendLine("Android: ${Build.VERSION.RELEASE} (SDK ${Build.VERSION.SDK_INT})")
-            bodyBuilder.appendLine("Device: ${Build.MANUFACTURER} ${Build.MODEL}")
-            bodyBuilder.appendLine("Upgraded: ${upgradeInfo?.isUpgraded ?: "unknown"}")
-            bodyBuilder.appendLine("Install ID: $installId")
-
-            val selectedSession = currentState.selectedLogSession
-            val attachmentUri = if (selectedSession != null) {
-                val attachFile = selectedSession.zipFile ?: selectedSession.dir
-                if (attachFile.exists() && attachFile.canRead()) {
-                    FileProvider.getUriForFile(
-                        context,
-                        BuildConfigWrap.APPLICATION_ID + ".provider",
-                        attachFile,
-                    )
-                } else {
-                    log(tag) { "Attachment file missing: $attachFile" }
-                    snackbarEvent.emit(context.getString(eu.darken.bluemusic.R.string.contact_attachment_missing_msg))
-                    return@launch
+            val body = buildString {
+                appendLine(description)
+                if (currentState.isBug && currentState.expectedBehavior.isNotBlank()) {
+                    appendLine()
+                    appendLine("--- Expected behavior ---")
+                    appendLine(currentState.expectedBehavior.trim())
                 }
-            } else {
-                null
+                appendLine()
+                appendLine("--- Device info ---")
+                appendLine("App: ${BuildConfigWrap.VERSION_DESCRIPTION}")
+                appendLine("Android: ${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT})")
+                appendLine("Device: ${Build.MANUFACTURER} ${Build.MODEL}")
             }
 
             val email = EmailTool.Email(
                 recipients = listOf(BlueMusicLinks.SUPPORT_EMAIL),
                 subject = subject,
-                body = bodyBuilder.toString(),
+                body = body,
                 attachment = attachmentUri,
             )
 
             val intent = emailTool.build(email, offerChooser = true)
-            sendEvent.emit(intent)
+            events.tryEmit(Event.OpenEmail(intent))
         } finally {
             stater.updateBlocking { copy(isSending = false) }
         }
     }
 
-    data class State(
-        val category: ContactCategory? = ContactCategory.QUESTION,
-        val description: String = "",
-        val logSessions: List<DebugLogStore.LogSession> = emptyList(),
-        val selectedLogSession: DebugLogStore.LogSession? = null,
-        val isRecording: Boolean = false,
-        val isSending: Boolean = false,
-    ) {
-        val descriptionWordCount: Int
-            get() = description.trim().split("\\s+".toRegex()).filter { it.isNotBlank() }.size
-
-        val descriptionCharCount: Int
-            get() = description.trim().length
-
-        val descriptionValid: Boolean
-            get() = descriptionWordCount >= 20 || descriptionCharCount >= 60
-
-        val canSend: Boolean
-            get() = category != null && descriptionValid && !isSending
-    }
-
     companion object {
         private val TAG = logTag("Contact", "Support", "VM")
+        private const val MAX_PICKER_SESSIONS = 3
     }
 }
