@@ -304,4 +304,87 @@
 
     <!-- Debug log short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">Zatrzymaj mimo to</string>
+
+    <string name="settings_support_debuglog_short_recording_title">Bardzo krótkie nagranie</string>
+    <string name="settings_support_debuglog_short_recording_msg">To było bardzo krótkie nagranie. Logi debugowania to nagrania, nie migawki — odtwórz problem podczas aktywnego nagrywania, żeby log był przydatny.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Kontynuuj nagrywanie</string>
+    <string name="settings_support_debuglog_folder_label">Folder logów debugowania</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sesja używa %2$s</item>
+        <item quantity="few">%1$d sesje używają %2$s</item>
+        <item quantity="many">%1$d sesji używa %2$s</item>
+        <item quantity="other">%1$d sesji używa %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Brak przechowywanych logów debugowania</string>
+    <string name="settings_support_debuglog_folder_delete_title">Usunąć wszystkie logi debugowania?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Spowoduje to trwałe usunięcie wszystkich zapisanych sesji logów debugowania.</string>
+    <string name="debug_log_screen_subtitle">Przeglądaj i udostępnij nagrany log debugowania</string>
+    <string name="debug_log_screen_sensitive_title">Informacje wrażliwe</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d plik gotowy (%2$s)</item>
+        <item quantity="few">%1$d pliki gotowe (%2$s)</item>
+        <item quantity="many">%1$d plików gotowych (%2$s)</item>
+        <item quantity="other">%1$d plików gotowych (%2$s)</item>
+    </plurals>
+    <string name="debug_log_screen_keep_action">Zachowaj</string>
+    <string name="debug_log_compressing_label">Kompresowanie…</string>
+    <string name="support_debuglog_sent_title">Log wysłany?</string>
+    <string name="support_debuglog_sent_message">Jeśli wysłałeś log debugowania, można go usunąć z urządzenia. Chcesz go usunąć?</string>
+    <string name="support_debuglog_session_delete_title">Usunąć log debugowania?</string>
+    <string name="support_debuglog_session_delete_message">Ta sesja logu debugowania zostanie trwale usunięta.</string>
+    <string name="support_debuglog_session_recording">Nagrywanie…</string>
+    <string name="support_debuglog_session_compressing">Kompresowanie…</string>
+    <string name="support_debuglog_failed_empty_log">Pusty log</string>
+    <string name="support_debuglog_failed_missing_log">Brakujący log</string>
+    <string name="support_debuglog_failed_corrupt_zip">Uszkodzony ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP nie powiódł się</string>
+    <string name="support_debuglog_clear_title">Usunąć wszystkie logi debugowania?</string>
+    <string name="support_debuglog_clear_message">Spowoduje to trwałe usunięcie wszystkich zapisanych sesji logów debugowania.</string>
+    <string name="settings_support_contact_label">Kontakt z deweloperem</string>
+    <string name="settings_support_contact_desc">Wypełnij formularz, aby wysłać deweloperowi e-mail.</string>
+    <string name="contact_screen_title">Kontakt z deweloperem</string>
+    <string name="contact_category_bug_label">Zgłoszenie błędu</string>
+    <string name="contact_category_feature_label">Prośba o funkcję</string>
+    <string name="contact_category_question_label">Pytanie</string>
+    <string name="contact_description_label">Opis</string>
+    <string name="contact_description_bug_hint">Opisz co się stało i jak odtworzyć problem.</string>
+    <string name="contact_description_feature_hint">Opisz funkcję, którą chciałbyś zobaczyć.</string>
+    <string name="contact_description_question_hint">Opisz szczegółowo swoje pytanie.</string>
+    <string name="contact_category_section_label">Kategoria</string>
+    <string name="contact_debug_log_label">Log debugowania</string>
+    <string name="contact_debug_log_select_hint">Wybierz log debugowania do załączenia</string>
+    <string name="contact_debug_log_picker_hint">Załącz log debugowania, aby szybciej zdiagnozować problem.</string>
+    <string name="contact_debug_log_picker_empty">Brak dostępnych logów debugowania. Najpierw nagraj jeden.</string>
+    <string name="contact_expected_behavior_label">Oczekiwane zachowanie</string>
+    <string name="contact_expected_behavior_hint">Opisz, co zamiast tego spodziewałeś się zobaczyć.</string>
+    <string name="support_contact_debuglog_zip_error">Nie udało się przygotować logu debugowania do załączenia</string>
+    <string name="contact_send_action">Otwórz aplikację e-mail</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d słowo</item>
+        <item quantity="few">%1$d / %2$d słowa</item>
+        <item quantity="many">%1$d / %2$d słów</item>
+        <item quantity="other">%1$d / %2$d słów</item>
+    </plurals>
+    <string name="contact_welcome_msg">Sam czytam każdą wiadomość i staram się odpowiadać, ale ponieważ pracuję nad tym sam, może to trochę potrwać. Dzięki za cierpliwość.</string>
+    <string name="contact_footer_msg">Twoja wiadomość zostanie wysłana e-mailem. Informacje o urządzeniu i konfiguracji zostaną dołączone automatycznie.</string>
+    <string name="contact_no_email_app_msg">Nie znaleziono aplikacji e-mail na tym urządzeniu.</string>
+    <string name="contact_attachment_missing_msg">Plik logu debugowania już nie istnieje</string>
+    <string name="settings_support_stored_logs_label">Zapisane logi debugowania</string>
+    <string name="settings_support_stored_logs_desc">%1$d sesji (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Brak zapisanych logów debugowania</string>
+    <string name="settings_support_stored_logs_delete_title">Usunąć zapisane logi?</string>
+    <string name="settings_support_stored_logs_delete_msg">Spowoduje to usunięcie wszystkich %1$d zapisanych sesji logów debugowania.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Zapisane logi debugowania usunięte</string>
+    <string name="label_pro_feature">Funkcja premium</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Wersja darmowa: %1$d z %2$d urządzenia</item>
+        <item quantity="few">Wersja darmowa: %1$d z %2$d urządzeń</item>
+        <item quantity="many">Wersja darmowa: %1$d z %2$d urządzeń</item>
+        <item quantity="other">Wersja darmowa: %1$d z %2$d urządzeń</item>
+    </plurals>
+    <string name="ui_theme_color_setting_label">Kolor motywu</string>
+    <string name="ui_theme_color_setting_explanation">Paleta kolorów używana przy tematyzacji aplikacji.</string>
+    <string name="ui_theme_color_material_you_note">Kolor jest ustawiany przez tapetę przy użyciu Material You.</string>
+    <string name="ui_theme_color_blue_label">Niebieski</string>
+    <string name="ui_theme_color_sunset_label">Zachód słońca</string>
 </resources>

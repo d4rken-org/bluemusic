@@ -344,4 +344,75 @@
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Lukusta</string>
     <string name="devices_unlock_sliders_action">Ava lukk</string>
+
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Väga lühike salvestus</string>
+    <string name="settings_support_debuglog_short_recording_msg">See oli väga lühike salvestus. Silumislogid on salvestused, mitte hetktõmmised — reprodutseeri probleem salvestamise ajal, et logi oleks kasulik.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Jätka salvestamist</string>
+    <string name="settings_support_debuglog_folder_label">Silumislogi kaust</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d seanss, kasutab %2$s</item>
+        <item quantity="other">%1$d seanssi, kasutab %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Silumisloge pole salvestatud</string>
+    <string name="settings_support_debuglog_folder_delete_title">Kustuta kõik silumislogid?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">See kustutab jäädavalt kõik salvestatud silumislogi seansid.</string>
+    <string name="support_debuglog_sent_title">Logi saadetud?</string>
+    <string name="support_debuglog_sent_message">Kui oled silumislogi saatnud, saab selle seadmest kustutada. Kas soovid selle eemaldada?</string>
+    <string name="support_debuglog_session_delete_title">Kustuta silumislogi?</string>
+    <string name="support_debuglog_session_delete_message">See silumislogi seanss kustutatakse jäädavalt.</string>
+    <string name="support_debuglog_session_recording">Salvestamine…</string>
+    <string name="support_debuglog_session_compressing">Tihendamine…</string>
+    <string name="support_debuglog_failed_empty_log">Tühi logi</string>
+    <string name="support_debuglog_failed_missing_log">Puuduv logi</string>
+    <string name="support_debuglog_failed_corrupt_zip">Rikutud ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP ebaõnnestus</string>
+    <string name="support_debuglog_clear_title">Kustuta kõik silumislogid?</string>
+    <string name="support_debuglog_clear_message">See kustutab jäädavalt kõik salvestatud silumislogi seansid.</string>
+    <string name="settings_support_contact_label">Võta arendajaga ühendust</string>
+    <string name="settings_support_contact_desc">Täida vorm, et saata arendajale e-kiri.</string>
+    <string name="contact_screen_title">Võta arendajaga ühendust</string>
+    <string name="contact_category_bug_label">Veateade</string>
+    <string name="contact_category_feature_label">Funktsiooni taotlus</string>
+    <string name="contact_category_question_label">Küsimus</string>
+    <string name="contact_description_label">Kirjeldus</string>
+    <string name="contact_description_bug_hint">Kirjelda, mis juhtus ja kuidas probleemi reprodutseerida.</string>
+    <string name="contact_description_feature_hint">Kirjelda funktsiooni, mida soovid näha.</string>
+    <string name="contact_description_question_hint">Kirjelda oma küsimust üksikasjalikult.</string>
+    <string name="contact_category_section_label">Kategooria</string>
+    <string name="contact_debug_log_label">Silumislogi</string>
+    <string name="contact_debug_log_select_hint">Vali manustamiseks silumislogi</string>
+    <string name="contact_debug_log_picker_hint">Lisa silumislogi, et aidata probleemi kiiremini diagnoosida.</string>
+    <string name="contact_debug_log_picker_empty">Silumisloge pole saadaval. Salvesta esmalt üks.</string>
+    <string name="contact_expected_behavior_label">Oodatav käitumine</string>
+    <string name="contact_expected_behavior_hint">Kirjelda, mida ootasid juhtuvat.</string>
+    <string name="support_contact_debuglog_zip_error">Silumislogi manustamiseks ettevalmistamine ebaõnnestus</string>
+    <string name="contact_send_action">Ava meilirakendus</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d sõna</item>
+        <item quantity="other">%1$d / %2$d sõna</item>
+    </plurals>
+    <string name="contact_welcome_msg">Loen iga sõnumi ise läbi ja teen kõik, et vastata, kuid kuna töötan üksi, võib see veidi aega võtta. Tänan kannatlikkuse eest.</string>
+    <string name="contact_footer_msg">Sinu sõnum saadetakse e-kirjaga. Seadme ja seadistuse teave lisatakse automaatselt.</string>
+    <string name="contact_no_email_app_msg">Sellel seadmel ei leitud meilirakendust.</string>
+    <string name="contact_attachment_missing_msg">Silumislogi fail pole enam olemas</string>
+    <string name="settings_support_stored_logs_label">Salvestatud silumislogid</string>
+    <string name="settings_support_stored_logs_desc">%1$d seanssi (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Salvestatud silumisloge pole</string>
+    <string name="settings_support_stored_logs_delete_title">Kustuta salvestatud logid?</string>
+    <string name="settings_support_stored_logs_delete_msg">See kustutab kõik %1$d salvestatud silumislogi seanssi.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Salvestatud silumislogid kustutatud</string>
+    <string name="debug_log_screen_subtitle">Vaata üle ja jaga salvestatud silumislogi</string>
+    <string name="debug_log_screen_sensitive_title">Tundlik teave</string>
+    <string name="debug_log_screen_keep_action">Hoia alles</string>
+    <string name="debug_log_compressing_label">Tihendamine…</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d fail valmis (%2$s)</item>
+        <item quantity="other">%1$d faili valmis (%2$s)</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Tasuta versioon: %1$d/%2$d seade</item>
+        <item quantity="other">Tasuta versioon: %1$d/%2$d seadet</item>
+    </plurals>
+    <string name="label_pro_feature">Tasuline funktsioon</string>
 </resources>

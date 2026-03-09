@@ -295,4 +295,75 @@
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Bloquear</string>
     <string name="devices_unlock_sliders_action">Desbloquear</string>
+
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Gravación moi curta</string>
+    <string name="settings_support_debuglog_short_recording_msg">Esa foi unha gravación moi curta. Os rexistros de depuración son gravacións, non instantáneas — reproduce o problema mentres a gravación está activa para que o rexistro sexa útil.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Continuar gravando</string>
+    <string name="settings_support_debuglog_folder_label">Cartafol de rexistros de depuración</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sesión usando %2$s</item>
+        <item quantity="other">%1$d sesións usando %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Non hai rexistros de depuración almacenados</string>
+    <string name="settings_support_debuglog_folder_delete_title">Eliminar todos os rexistros de depuración?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Isto eliminará permanentemente todas as sesións de rexistro de depuración almacenadas.</string>
+    <string name="support_debuglog_sent_title">Rexistro enviado?</string>
+    <string name="support_debuglog_sent_message">Se enviaches o rexistro de depuración, pode eliminarse do dispositivo. Queres eliminalo?</string>
+    <string name="support_debuglog_session_delete_title">Eliminar rexistro de depuración?</string>
+    <string name="support_debuglog_session_delete_message">Esta sesión de rexistro de depuración eliminarase permanentemente.</string>
+    <string name="support_debuglog_session_recording">Gravando…</string>
+    <string name="support_debuglog_session_compressing">Comprimindo…</string>
+    <string name="support_debuglog_failed_empty_log">Rexistro baleiro</string>
+    <string name="support_debuglog_failed_missing_log">Rexistro faltante</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP corrupto</string>
+    <string name="support_debuglog_failed_zip_failed">Erro no ZIP</string>
+    <string name="support_debuglog_clear_title">Eliminar todos os rexistros de depuración?</string>
+    <string name="support_debuglog_clear_message">Isto eliminará permanentemente todas as sesións de rexistro de depuración almacenadas.</string>
+    <string name="settings_support_contact_label">Contactar co desenvolvedor</string>
+    <string name="settings_support_contact_desc">Enche un formulario para enviarlle un correo electrónico ao desenvolvedor.</string>
+    <string name="contact_screen_title">Contactar co desenvolvedor</string>
+    <string name="contact_category_bug_label">Informe de erro</string>
+    <string name="contact_category_feature_label">Solicitude de función</string>
+    <string name="contact_category_question_label">Pregunta</string>
+    <string name="contact_description_label">Descrición</string>
+    <string name="contact_description_bug_hint">Describe o que pasou e como reproducir o problema.</string>
+    <string name="contact_description_feature_hint">Describe a función que che gustaría ver.</string>
+    <string name="contact_description_question_hint">Describe a túa pregunta en detalle.</string>
+    <string name="contact_category_section_label">Categoría</string>
+    <string name="contact_debug_log_label">Rexistro de depuración</string>
+    <string name="contact_debug_log_select_hint">Selecciona un rexistro de depuración para adxuntar</string>
+    <string name="contact_debug_log_picker_hint">Adxunta un rexistro de depuración para axudar a diagnosticar o problema máis rápido.</string>
+    <string name="contact_debug_log_picker_empty">Non hai rexistros de depuración dispoñibles. Grava un primeiro.</string>
+    <string name="contact_expected_behavior_label">Comportamento esperado</string>
+    <string name="contact_expected_behavior_hint">Describe o que esperabas que ocorrese no seu lugar.</string>
+    <string name="support_contact_debuglog_zip_error">Non se puido preparar o rexistro de depuración para adxuntar</string>
+    <string name="contact_send_action">Abrir aplicación de correo</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d palabra</item>
+        <item quantity="other">%1$d / %2$d palabras</item>
+    </plurals>
+    <string name="contact_welcome_msg">Leo cada mensaxe eu mesmo e fago todo o posible por responder, pero como traballo só, pode levar un pouco de tempo. Grazas pola túa paciencia.</string>
+    <string name="contact_footer_msg">A túa mensaxe enviarase por correo electrónico. A información do dispositivo e da configuración adxúntase automaticamente.</string>
+    <string name="contact_no_email_app_msg">Non se atopou ningunha aplicación de correo neste dispositivo.</string>
+    <string name="contact_attachment_missing_msg">O ficheiro de rexistro de depuración xa non existe</string>
+    <string name="settings_support_stored_logs_label">Rexistros de depuración almacenados</string>
+    <string name="settings_support_stored_logs_desc">%1$d sesións (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Non hai rexistros de depuración almacenados</string>
+    <string name="settings_support_stored_logs_delete_title">Eliminar rexistros almacenados?</string>
+    <string name="settings_support_stored_logs_delete_msg">Isto eliminará todas as %1$d sesións de rexistro de depuración almacenadas.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Rexistros de depuración almacenados eliminados</string>
+    <string name="debug_log_screen_subtitle">Revisa e comparte o teu rexistro de depuración gravado</string>
+    <string name="debug_log_screen_sensitive_title">Información sensible</string>
+    <string name="debug_log_screen_keep_action">Conservar</string>
+    <string name="debug_log_compressing_label">Comprimindo…</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d ficheiro listo (%2$s)</item>
+        <item quantity="other">%1$d ficheiros listos (%2$s)</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Versión gratuíta: %1$d de %2$d dispositivo</item>
+        <item quantity="other">Versión gratuíta: %1$d de %2$d dispositivos</item>
+    </plurals>
+    <string name="label_pro_feature">Función premium</string>
 </resources>

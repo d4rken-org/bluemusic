@@ -297,4 +297,79 @@
 
     <!-- Short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">Stopp uansett</string>
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Veldig kort opptak</string>
+    <string name="settings_support_debuglog_short_recording_msg">Det var et veldig kort opptak. Feilsøkingslogger er opptak, ikke øyeblikksbilder — reproduser problemet mens opptaket er aktivt for at loggen skal være nyttig.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Fortsett opptak</string>
+    <string name="settings_support_debuglog_folder_label">Feilsøkingslogg-mappe</string>
+    <string name="settings_support_debuglog_folder_empty_desc">Ingen feilsøkingslogger lagret</string>
+    <string name="settings_support_debuglog_folder_delete_title">Slette alle feilsøkingslogger?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Dette vil slette alle lagrede feilsøkingslogg-økter permanent.</string>
+    <string name="debug_log_screen_subtitle">Gjennomgå og del den innspilte feilsøkingsloggen</string>
+    <string name="debug_log_screen_sensitive_title">Sensitiv informasjon</string>
+    <string name="debug_log_screen_keep_action">Behold</string>
+    <string name="debug_log_compressing_label">Komprimerer…</string>
+    <string name="support_debuglog_sent_title">Logg sendt?</string>
+    <string name="support_debuglog_sent_message">Hvis du har sendt feilsøkingsloggen, kan den slettes fra enheten. Vil du fjerne den?</string>
+    <string name="support_debuglog_session_delete_title">Slette feilsøkingslogg?</string>
+    <string name="support_debuglog_session_delete_message">Denne feilsøkingslogg-økten vil bli slettet permanent.</string>
+    <string name="support_debuglog_session_recording">Tar opp…</string>
+    <string name="support_debuglog_session_compressing">Komprimerer…</string>
+    <string name="support_debuglog_failed_empty_log">Tom logg</string>
+    <string name="support_debuglog_failed_missing_log">Logg mangler</string>
+    <string name="support_debuglog_failed_corrupt_zip">Korrupt ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP mislyktes</string>
+    <string name="support_debuglog_clear_title">Slette alle feilsøkingslogger?</string>
+    <string name="support_debuglog_clear_message">Dette vil slette alle lagrede feilsøkingslogg-økter permanent.</string>
+    <string name="settings_support_contact_label">Kontakt utvikler</string>
+    <string name="settings_support_contact_desc">Fyll ut et skjema for å sende utvikleren en e-post.</string>
+    <string name="contact_screen_title">Kontakt utvikler</string>
+    <string name="contact_category_bug_label">Feilrapport</string>
+    <string name="contact_category_feature_label">Funksjonsforespørsel</string>
+    <string name="contact_category_question_label">Spørsmål</string>
+    <string name="contact_description_label">Beskrivelse</string>
+    <string name="contact_description_bug_hint">Beskriv hva som skjedde og hvordan du kan reprodusere problemet.</string>
+    <string name="contact_description_feature_hint">Beskriv funksjonen du ønsker å se.</string>
+    <string name="contact_description_question_hint">Beskriv spørsmålet ditt i detalj.</string>
+    <string name="contact_category_section_label">Kategori</string>
+    <string name="contact_debug_log_label">Feilsøkingslogg</string>
+    <string name="contact_debug_log_select_hint">Velg en feilsøkingslogg å legge ved</string>
+    <string name="contact_debug_log_picker_hint">Legg ved en feilsøkingslogg for å hjelpe med å diagnostisere problemet raskere.</string>
+    <string name="contact_debug_log_picker_empty">Ingen feilsøkingslogger tilgjengelig. Ta opp en først.</string>
+    <string name="contact_expected_behavior_label">Forventet oppførsel</string>
+    <string name="contact_expected_behavior_hint">Beskriv hva du forventet skulle skje i stedet.</string>
+    <string name="support_contact_debuglog_zip_error">Kunne ikke forberede feilsøkingslogg for vedlegg</string>
+    <string name="contact_send_action">Åpne e-postapp</string>
+    <string name="contact_welcome_msg">Jeg leser alle meldinger selv og gjør mitt beste for å svare, men siden jeg jobber alene, kan det ta litt tid. Takk for tålmodigheten.</string>
+    <string name="contact_footer_msg">Meldingen din vil bli sendt via e-post. Enhets- og oppsettsinformasjon vedlegges automatisk.</string>
+    <string name="contact_no_email_app_msg">Ingen e-postapp funnet på denne enheten.</string>
+    <string name="contact_attachment_missing_msg">Feilsøkingslogg-filen eksisterer ikke lenger</string>
+    <string name="settings_support_stored_logs_label">Lagrede feilsøkingslogger</string>
+    <string name="settings_support_stored_logs_desc">%1$d økter (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Ingen lagrede feilsøkingslogger</string>
+    <string name="settings_support_stored_logs_delete_title">Slette lagrede logger?</string>
+    <string name="settings_support_stored_logs_delete_msg">Alle %1$d lagrede feilsøkingslogg-økter vil bli slettet.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Lagrede feilsøkingslogger slettet</string>
+    <string name="label_pro_feature">Premiumfunksjon</string>
+    <string name="ui_theme_color_setting_label">Temafarger</string>
+    <string name="ui_theme_color_setting_explanation">Fargepaletten som brukes ved tematisering av appen.</string>
+    <string name="ui_theme_color_material_you_note">Fargen settes av bakgrunnsbildet ditt når du bruker Material You.</string>
+    <string name="ui_theme_color_blue_label">Blå</string>
+    <string name="ui_theme_color_sunset_label">Solnedgang</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d økt bruker %2$s</item>
+        <item quantity="other">%1$d økter bruker %2$s</item>
+    </plurals>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d fil klar (%2$s)</item>
+        <item quantity="other">%1$d filer klare (%2$s)</item>
+    </plurals>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d ord</item>
+        <item quantity="other">%1$d / %2$d ord</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Gratis versjon: %1$d av %2$d enhet</item>
+        <item quantity="other">Gratis versjon: %1$d av %2$d enheter</item>
+    </plurals>
 </resources>

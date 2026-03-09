@@ -297,4 +297,75 @@
 
     <!-- Short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">Henti juga</string>
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Rakaman sangat pendek</string>
+    <string name="settings_support_debuglog_short_recording_msg">Itu rakaman yang sangat pendek. Log nyahpepijat adalah rakaman, bukan syot kilat — reproduksi masalah semasa rakaman aktif supaya log berguna.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Teruskan rakaman</string>
+    <string name="settings_support_debuglog_folder_label">Folder log nyahpepijat</string>
+    <string name="settings_support_debuglog_folder_empty_desc">Tiada log nyahpepijat tersimpan</string>
+    <string name="settings_support_debuglog_folder_delete_title">Padam semua log nyahpepijat?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Ini akan memadamkan semua sesi log nyahpepijat yang tersimpan secara kekal.</string>
+    <string name="debug_log_screen_subtitle">Semak dan kongsi log nyahpepijat yang dirakam</string>
+    <string name="debug_log_screen_sensitive_title">Maklumat sensitif</string>
+    <string name="debug_log_screen_keep_action">Simpan</string>
+    <string name="debug_log_compressing_label">Memampatkan…</string>
+    <string name="support_debuglog_sent_title">Log dihantar?</string>
+    <string name="support_debuglog_sent_message">Jika anda telah menghantar log nyahpepijat, ia boleh dipadamkan dari peranti. Adakah anda ingin mengeluarkannya?</string>
+    <string name="support_debuglog_session_delete_title">Padam log nyahpepijat?</string>
+    <string name="support_debuglog_session_delete_message">Sesi log nyahpepijat ini akan dipadamkan secara kekal.</string>
+    <string name="support_debuglog_session_recording">Merakam…</string>
+    <string name="support_debuglog_session_compressing">Memampatkan…</string>
+    <string name="support_debuglog_failed_empty_log">Log kosong</string>
+    <string name="support_debuglog_failed_missing_log">Log hilang</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP rosak</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP gagal</string>
+    <string name="support_debuglog_clear_title">Padam semua log nyahpepijat?</string>
+    <string name="support_debuglog_clear_message">Ini akan memadamkan semua sesi log nyahpepijat yang tersimpan secara kekal.</string>
+    <string name="settings_support_contact_label">Hubungi pembangun</string>
+    <string name="settings_support_contact_desc">Isi borang untuk menghantar e-mel kepada pembangun.</string>
+    <string name="contact_screen_title">Hubungi pembangun</string>
+    <string name="contact_category_bug_label">Laporan pepijat</string>
+    <string name="contact_category_feature_label">Permintaan ciri</string>
+    <string name="contact_category_question_label">Soalan</string>
+    <string name="contact_description_label">Penerangan</string>
+    <string name="contact_description_bug_hint">Terangkan apa yang berlaku dan cara menghasilkan semula masalah tersebut.</string>
+    <string name="contact_description_feature_hint">Terangkan ciri yang anda ingin lihat.</string>
+    <string name="contact_description_question_hint">Terangkan soalan anda dengan terperinci.</string>
+    <string name="contact_category_section_label">Kategori</string>
+    <string name="contact_debug_log_label">Log nyahpepijat</string>
+    <string name="contact_debug_log_select_hint">Pilih log nyahpepijat untuk dilampirkan</string>
+    <string name="contact_debug_log_picker_hint">Lampirkan log nyahpepijat untuk membantu mendiagnosis masalah lebih cepat.</string>
+    <string name="contact_debug_log_picker_empty">Tiada log nyahpepijat tersedia. Rakam satu dahulu.</string>
+    <string name="contact_expected_behavior_label">Tingkah laku yang dijangka</string>
+    <string name="contact_expected_behavior_hint">Terangkan apa yang anda jangkakan berlaku sebaliknya.</string>
+    <string name="support_contact_debuglog_zip_error">Gagal menyediakan log nyahpepijat untuk lampiran</string>
+    <string name="contact_send_action">Buka apl e-mel</string>
+    <string name="contact_welcome_msg">Saya membaca setiap mesej sendiri dan berusaha membalas, tetapi memandangkan saya bekerja seorang diri, mungkin mengambil sedikit masa. Terima kasih atas kesabaran anda.</string>
+    <string name="contact_footer_msg">Mesej anda akan dihantar melalui e-mel. Maklumat peranti dan persediaan dilampirkan secara automatik.</string>
+    <string name="contact_no_email_app_msg">Tiada apl e-mel ditemui pada peranti ini.</string>
+    <string name="contact_attachment_missing_msg">Fail log nyahpepijat tidak lagi wujud</string>
+    <string name="settings_support_stored_logs_label">Log nyahpepijat tersimpan</string>
+    <string name="settings_support_stored_logs_desc">%1$d sesi (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Tiada log nyahpepijat tersimpan</string>
+    <string name="settings_support_stored_logs_delete_title">Padam log tersimpan?</string>
+    <string name="settings_support_stored_logs_delete_msg">Ini akan memadamkan semua %1$d sesi log nyahpepijat yang tersimpan.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Log nyahpepijat tersimpan dipadamkan</string>
+    <string name="label_pro_feature">Ciri premium</string>
+    <string name="ui_theme_color_setting_label">Warna tema</string>
+    <string name="ui_theme_color_setting_explanation">Palet warna yang digunakan semasa tema apl.</string>
+    <string name="ui_theme_color_material_you_note">Warna ditetapkan oleh kertas dinding anda apabila menggunakan Material You.</string>
+    <string name="ui_theme_color_blue_label">Biru</string>
+    <string name="ui_theme_color_sunset_label">Senja</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="other">%1$d sesi menggunakan %2$s</item>
+    </plurals>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="other">%1$d fail sedia (%2$s)</item>
+    </plurals>
+    <plurals name="contact_word_count">
+        <item quantity="other">%1$d / %2$d patah perkataan</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="other">Versi percuma: %1$d daripada %2$d peranti</item>
+    </plurals>
 </resources>

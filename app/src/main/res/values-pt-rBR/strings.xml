@@ -298,4 +298,79 @@
 
     <!-- Debug log short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">Parar mesmo assim</string>
+
+    <string name="settings_support_debuglog_short_recording_title">Gravação muito curta</string>
+    <string name="settings_support_debuglog_short_recording_msg">Foi uma gravação muito curta. Os logs de debug são gravações, não instantâneos — reproduza o problema enquanto a gravação está ativa para que o log seja útil.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Continuar gravando</string>
+    <string name="settings_support_debuglog_folder_label">Pasta de logs de debug</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sessão usando %2$s</item>
+        <item quantity="other">%1$d sessões usando %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Nenhum log de debug armazenado</string>
+    <string name="settings_support_debuglog_folder_delete_title">Excluir todos os logs de debug?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Isso excluirá permanentemente todas as sessões de logs de debug armazenadas.</string>
+    <string name="debug_log_screen_subtitle">Revise e compartilhe seu log de debug gravado</string>
+    <string name="debug_log_screen_sensitive_title">Informação sensível</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d arquivo pronto (%2$s)</item>
+        <item quantity="other">%1$d arquivos prontos (%2$s)</item>
+    </plurals>
+    <string name="debug_log_screen_keep_action">Manter</string>
+    <string name="debug_log_compressing_label">Comprimindo…</string>
+    <string name="support_debuglog_sent_title">Log enviado?</string>
+    <string name="support_debuglog_sent_message">Se você enviou o log de debug, ele pode ser excluído do dispositivo. Deseja removê-lo?</string>
+    <string name="support_debuglog_session_delete_title">Excluir log de debug?</string>
+    <string name="support_debuglog_session_delete_message">Esta sessão de log de debug será excluída permanentemente.</string>
+    <string name="support_debuglog_session_recording">Gravando…</string>
+    <string name="support_debuglog_session_compressing">Comprimindo…</string>
+    <string name="support_debuglog_failed_empty_log">Log vazio</string>
+    <string name="support_debuglog_failed_missing_log">Log ausente</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP corrompido</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP falhou</string>
+    <string name="support_debuglog_clear_title">Excluir todos os logs de debug?</string>
+    <string name="support_debuglog_clear_message">Isso excluirá permanentemente todas as sessões de logs de debug armazenadas.</string>
+    <string name="settings_support_contact_label">Contatar desenvolvedor</string>
+    <string name="settings_support_contact_desc">Preencha um formulário para enviar um e-mail ao desenvolvedor.</string>
+    <string name="contact_screen_title">Contatar desenvolvedor</string>
+    <string name="contact_category_bug_label">Relatório de bug</string>
+    <string name="contact_category_feature_label">Solicitação de recurso</string>
+    <string name="contact_category_question_label">Pergunta</string>
+    <string name="contact_description_label">Descrição</string>
+    <string name="contact_description_bug_hint">Descreva o que aconteceu e como reproduzir o problema.</string>
+    <string name="contact_description_feature_hint">Descreva o recurso que você gostaria de ver.</string>
+    <string name="contact_description_question_hint">Descreva sua pergunta em detalhes.</string>
+    <string name="contact_category_section_label">Categoria</string>
+    <string name="contact_debug_log_label">Log de debug</string>
+    <string name="contact_debug_log_select_hint">Selecione um log de debug para anexar</string>
+    <string name="contact_debug_log_picker_hint">Anexe um log de debug para ajudar a diagnosticar o problema mais rapidamente.</string>
+    <string name="contact_debug_log_picker_empty">Nenhum log de debug disponível. Grave um primeiro.</string>
+    <string name="contact_expected_behavior_label">Comportamento esperado</string>
+    <string name="contact_expected_behavior_hint">Descreva o que você esperava que acontecesse.</string>
+    <string name="support_contact_debuglog_zip_error">Falha ao preparar log de debug para anexo</string>
+    <string name="contact_send_action">Abrir app de e-mail</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d palavra</item>
+        <item quantity="other">%1$d / %2$d palavras</item>
+    </plurals>
+    <string name="contact_welcome_msg">Leio cada mensagem pessoalmente e faço o meu melhor para responder, mas como trabalho nisso sozinho, pode demorar um pouco. Obrigado pela sua paciência.</string>
+    <string name="contact_footer_msg">Sua mensagem será enviada por e-mail. Informações do dispositivo e configuração são anexadas automaticamente.</string>
+    <string name="contact_no_email_app_msg">Nenhum app de e-mail encontrado neste dispositivo.</string>
+    <string name="contact_attachment_missing_msg">O arquivo de log de debug não existe mais</string>
+    <string name="settings_support_stored_logs_label">Logs de debug armazenados</string>
+    <string name="settings_support_stored_logs_desc">%1$d sessões (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Nenhum log de debug armazenado</string>
+    <string name="settings_support_stored_logs_delete_title">Excluir logs armazenados?</string>
+    <string name="settings_support_stored_logs_delete_msg">Isso excluirá todas as %1$d sessões de logs de debug armazenadas.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Logs de debug armazenados excluídos</string>
+    <string name="label_pro_feature">Recurso premium</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Versão gratuita: %1$d de %2$d dispositivo</item>
+        <item quantity="other">Versão gratuita: %1$d de %2$d dispositivos</item>
+    </plurals>
+    <string name="ui_theme_color_setting_label">Cor do tema</string>
+    <string name="ui_theme_color_setting_explanation">A paleta de cores usada ao tematizar o app.</string>
+    <string name="ui_theme_color_material_you_note">A cor é definida pelo seu papel de parede ao usar Material You.</string>
+    <string name="ui_theme_color_blue_label">Azul</string>
+    <string name="ui_theme_color_sunset_label">Pôr do sol</string>
 </resources>

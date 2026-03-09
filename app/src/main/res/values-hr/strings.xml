@@ -295,4 +295,79 @@
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Zaključaj</string>
     <string name="devices_unlock_sliders_action">Otključaj</string>
+
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Vrlo kratko snimanje</string>
+    <string name="settings_support_debuglog_short_recording_msg">To je bilo vrlo kratko snimanje. Debug logovi su snimke, ne snimke stanja — reproducirajte problem dok je snimanje aktivno da bi log bio koristan.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Nastavi snimanje</string>
+    <string name="settings_support_debuglog_folder_label">Mapa debug logova</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sesija koristi %2$s</item>
+        <item quantity="few">%1$d sesije koriste %2$s</item>
+        <item quantity="other">%1$d sesija koristi %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Nema pohranjenih debug logova</string>
+    <string name="settings_support_debuglog_folder_delete_title">Obrisati sve debug logove?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Ovo će trajno obrisati sve pohranjene debug log sesije.</string>
+    <string name="support_debuglog_sent_title">Log poslan?</string>
+    <string name="support_debuglog_sent_message">Ako ste poslali debug log, može se obrisati s uređaja. Želite li ga ukloniti?</string>
+    <string name="support_debuglog_session_delete_title">Obrisati debug log?</string>
+    <string name="support_debuglog_session_delete_message">Ova debug log sesija bit će trajno obrisana.</string>
+    <string name="support_debuglog_session_recording">Snimanje…</string>
+    <string name="support_debuglog_session_compressing">Komprimiranje…</string>
+    <string name="support_debuglog_failed_empty_log">Prazan log</string>
+    <string name="support_debuglog_failed_missing_log">Nedostajući log</string>
+    <string name="support_debuglog_failed_corrupt_zip">Oštećeni ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP neuspješan</string>
+    <string name="support_debuglog_clear_title">Obrisati sve debug logove?</string>
+    <string name="support_debuglog_clear_message">Ovo će trajno obrisati sve pohranjene debug log sesije.</string>
+    <string name="settings_support_contact_label">Kontaktiraj programera</string>
+    <string name="settings_support_contact_desc">Ispunite obrazac za slanje e-maila programeru.</string>
+    <string name="contact_screen_title">Kontaktiraj programera</string>
+    <string name="contact_category_bug_label">Prijava greške</string>
+    <string name="contact_category_feature_label">Zahtjev za značajku</string>
+    <string name="contact_category_question_label">Pitanje</string>
+    <string name="contact_description_label">Opis</string>
+    <string name="contact_description_bug_hint">Opišite što se dogodilo i kako reproducirati problem.</string>
+    <string name="contact_description_feature_hint">Opišite značajku koju biste željeli vidjeti.</string>
+    <string name="contact_description_question_hint">Opišite svoje pitanje detaljno.</string>
+    <string name="contact_category_section_label">Kategorija</string>
+    <string name="contact_debug_log_label">Debug log</string>
+    <string name="contact_debug_log_select_hint">Odaberi debug log za prilaganje</string>
+    <string name="contact_debug_log_picker_hint">Priložite debug log za brže dijagnosticiranje problema.</string>
+    <string name="contact_debug_log_picker_empty">Nema dostupnih debug logova. Najprije snimite jedan.</string>
+    <string name="contact_expected_behavior_label">Očekivano ponašanje</string>
+    <string name="contact_expected_behavior_hint">Opišite što ste umjesto toga očekivali da se dogodi.</string>
+    <string name="support_contact_debuglog_zip_error">Nije uspjelo pripremanje debug loga za prilaganje</string>
+    <string name="contact_send_action">Otvori aplikaciju za e-mail</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d riječ</item>
+        <item quantity="few">%1$d / %2$d riječi</item>
+        <item quantity="other">%1$d / %2$d riječi</item>
+    </plurals>
+    <string name="contact_welcome_msg">Svaku poruku čitam osobno i dajem sve od sebe da odgovorim, ali budući da radim sam, to može potrajati. Hvala na strpljenju.</string>
+    <string name="contact_footer_msg">Vaša poruka bit će poslana e-mailom. Informacije o uređaju i postavkama priložene su automatski.</string>
+    <string name="contact_no_email_app_msg">Na ovom uređaju nije pronađena aplikacija za e-mail.</string>
+    <string name="contact_attachment_missing_msg">Debug log datoteka više ne postoji</string>
+    <string name="settings_support_stored_logs_label">Pohranjeni debug logovi</string>
+    <string name="settings_support_stored_logs_desc">%1$d sesija (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Nema pohranjenih debug logova</string>
+    <string name="settings_support_stored_logs_delete_title">Obrisati pohranjene logove?</string>
+    <string name="settings_support_stored_logs_delete_msg">Ovo će obrisati svih %1$d pohranjenih debug log sesija.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Pohranjeni debug logovi obrisani</string>
+    <string name="debug_log_screen_subtitle">Pregledajte i podijelite snimljeni debug log</string>
+    <string name="debug_log_screen_sensitive_title">Osjetljive informacije</string>
+    <string name="debug_log_screen_keep_action">Zadrži</string>
+    <string name="debug_log_compressing_label">Komprimiranje…</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d datoteka spremna (%2$s)</item>
+        <item quantity="few">%1$d datoteke spremne (%2$s)</item>
+        <item quantity="other">%1$d datoteka spremno (%2$s)</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Besplatna verzija: %1$d od %2$d uređaja</item>
+        <item quantity="few">Besplatna verzija: %1$d od %2$d uređaja</item>
+        <item quantity="other">Besplatna verzija: %1$d od %2$d uređaja</item>
+    </plurals>
+    <string name="label_pro_feature">Premium značajka</string>
 </resources>

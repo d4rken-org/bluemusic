@@ -333,4 +333,79 @@
 
     <!-- Debug log short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">Para a su matessi modu</string>
+
+    <string name="settings_support_debuglog_short_recording_title">Registratzione tropu curta</string>
+    <string name="settings_support_debuglog_short_recording_msg">Sa registratzione est istada tropu curta. Sos logs de debug sunt registratziones, non instantàneas — reproduzi su problema mentres sa registratzione est ativa pro chi su log siat ùtile.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Còntinuat sa registratzione</string>
+    <string name="settings_support_debuglog_folder_label">Cartella de sos logs de debug</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sessione chi ùsat %2$s</item>
+        <item quantity="other">%1$d sessiones chi ùsant %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Nessun log de debug immagatzinàdu</string>
+    <string name="settings_support_debuglog_folder_delete_title">Càncella tùdos sos logs de debug?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Custu càncellat permanèntement tùdas sas sessiones de logs de debug immagatzinàdas.</string>
+    <string name="debug_log_screen_subtitle">Rivisa e cumùnica su log de debug registràdu</string>
+    <string name="debug_log_screen_sensitive_title">Informatzione sensìbbile</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d file prontu (%2$s)</item>
+        <item quantity="other">%1$d files prontos (%2$s)</item>
+    </plurals>
+    <string name="debug_log_screen_keep_action">Mantèni</string>
+    <string name="debug_log_compressing_label">Comprimende…</string>
+    <string name="support_debuglog_sent_title">Log mandàdu?</string>
+    <string name="support_debuglog_sent_message">Si as mandàdu su log de debug, podet essere cancelàdu dae su dispositivu. Boles nche lu retirare?</string>
+    <string name="support_debuglog_session_delete_title">Càncella su log de debug?</string>
+    <string name="support_debuglog_session_delete_message">Cussa sessione de log de debug serrà cancelàda permanèntement.</string>
+    <string name="support_debuglog_session_recording">Registrende…</string>
+    <string name="support_debuglog_session_compressing">Comprimende…</string>
+    <string name="support_debuglog_failed_empty_log">Log bòidu</string>
+    <string name="support_debuglog_failed_missing_log">Log mancante</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP corrùtu</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP fallìdu</string>
+    <string name="support_debuglog_clear_title">Càncella tùdos sos logs de debug?</string>
+    <string name="support_debuglog_clear_message">Custu càncellat permanèntement tùdas sas sessiones de logs de debug immagatzinàdas.</string>
+    <string name="settings_support_contact_label">Contàtta su sviluppatore</string>
+    <string name="settings_support_contact_desc">Ìmbia unu formulàriu pro mandare una email a su sviluppatore.</string>
+    <string name="contact_screen_title">Contàtta su sviluppatore</string>
+    <string name="contact_category_bug_label">Segnalazione de bug</string>
+    <string name="contact_category_feature_label">Richièsta de funtzionalidade</string>
+    <string name="contact_category_question_label">Dòmanda</string>
+    <string name="contact_description_label">Descrizione</string>
+    <string name="contact_description_bug_hint">Descrivi chello chi est acontèssidu e comente reproduire su problema.</string>
+    <string name="contact_description_feature_hint">Descrivi sa funtzionalidade chi boles vìdere.</string>
+    <string name="contact_description_question_hint">Descrivi sa dòmanda tua in detàlliu.</string>
+    <string name="contact_category_section_label">Categoria</string>
+    <string name="contact_debug_log_label">Log de debug</string>
+    <string name="contact_debug_log_select_hint">Selètziona unu log de debug pro allegare</string>
+    <string name="contact_debug_log_picker_hint">Allega unu log de debug pro aiuare a diagnosticare su problema pius in fràtta.</string>
+    <string name="contact_debug_log_picker_empty">Nessun log de debug disponìbbile. Registra unu primu.</string>
+    <string name="contact_expected_behavior_label">Cumportamentu attèsu</string>
+    <string name="contact_expected_behavior_hint">Descrivi chello chi ti attepàvas chi acontessiat in su pòstu.</string>
+    <string name="support_contact_debuglog_zip_error">Errore in sa preparatzione de su log de debug pro allegare</string>
+    <string name="contact_send_action">Abèrri s\'app de email</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d paràula</item>
+        <item quantity="other">%1$d / %2$d paràulas</item>
+    </plurals>
+    <string name="contact_welcome_msg">Lègio ogni messàgiu personalmènte e fàzo su mèglius pro rispòndere, ma poiché traballio a custu a su solu, podet impiegare unu pagu de tempus. Gràtzias pro sa patièntzia tua.</string>
+    <string name="contact_footer_msg">Su messàgiu tuo serrà mandàdu via email. Informatzione de su dispositivu e de sa configuratzione est allegàda automàticament.</string>
+    <string name="contact_no_email_app_msg">Nessuna app de email agatàda in custu dispositivu.</string>
+    <string name="contact_attachment_missing_msg">Su file de log de debug non esistit prus</string>
+    <string name="settings_support_stored_logs_label">Logs de debug immagatzinàdos</string>
+    <string name="settings_support_stored_logs_desc">%1$d sessiones (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Nessun log de debug immagatzinàdu</string>
+    <string name="settings_support_stored_logs_delete_title">Càncella sos logs immagatzinàdos?</string>
+    <string name="settings_support_stored_logs_delete_msg">Custu càncellat tùdas sas %1$d sessiones de logs de debug immagatzinàdas.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Logs de debug immagatzinàdos cancelàdos</string>
+    <string name="label_pro_feature">Funtzionalidade premium</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Versione gratuita: %1$d de %2$d dispositivu</item>
+        <item quantity="other">Versione gratuita: %1$d de %2$d dispositivos</item>
+    </plurals>
+    <string name="ui_theme_color_setting_label">Colore de su tema</string>
+    <string name="ui_theme_color_setting_explanation">Sa paleta de colores ùsada pro su tema de s\'app.</string>
+    <string name="ui_theme_color_material_you_note">Su colore est impostàdu dae su sfondo cando s\'ùsat Material You.</string>
+    <string name="ui_theme_color_blue_label">Azurru</string>
+    <string name="ui_theme_color_sunset_label">Tramuntu</string>
 </resources>

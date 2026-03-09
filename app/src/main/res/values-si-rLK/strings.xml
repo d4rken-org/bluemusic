@@ -296,4 +296,79 @@
 
     <!-- Debug log short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">කෙසේ හෝ නැවැත්වන්න</string>
+
+    <string name="settings_support_debuglog_short_recording_title">ඉතා කෙටි රේකෝඩ්</string>
+    <string name="settings_support_debuglog_short_recording_msg">එය ඉතා කෙටි රේකෝඩ්ගලු. Debug ලොග් රේකෝඩ් ය, snapshot නොවේ — ලොගය ප්‍රයෝජනවත් වීමට රේකෝඩ් ක්‍රියාත්මකව ඇති අතරතුර ගැටලුව ප්‍රතිනිෂ්පාදනය කරන්න.</string>
+    <string name="settings_support_debuglog_short_recording_continue">රේකෝඩ් ඉදිරියට</string>
+    <string name="settings_support_debuglog_folder_label">Debug ලොග් ෆෝල්ඩරය</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d සැසිය %2$s භාවිතා කිරීම</item>
+        <item quantity="other">%1$d සැසි %2$s භාවිතා කිරීම</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Debug ලොග් ගබඩා නැත</string>
+    <string name="settings_support_debuglog_folder_delete_title">සියලු debug ලොග් මකන්නද?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">මෙය ගබඩා කළ සියලු debug ලොග් සැසි ස්ථිරවම මකනු ඇත.</string>
+    <string name="debug_log_screen_subtitle">ඔබේ රේකෝඩ් කළ debug ලොගය සමාලෝචනය කර බෙදාගන්න</string>
+    <string name="debug_log_screen_sensitive_title">සංවේදී තොරතුරු</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d ගොනුව සූදානම් (%2$s)</item>
+        <item quantity="other">%1$d ගොනු සූදානම් (%2$s)</item>
+    </plurals>
+    <string name="debug_log_screen_keep_action">තබා ගන්න</string>
+    <string name="debug_log_compressing_label">සම්පීඩනය කිරීම…</string>
+    <string name="support_debuglog_sent_title">ලොගය යැව්වාද?</string>
+    <string name="support_debuglog_sent_message">debug ලොගය යැව්වා නම්, එය උපාංගයෙන් මකා දැමිය හැකිය. ඉවත් කිරීමට කැමතිද?</string>
+    <string name="support_debuglog_session_delete_title">Debug ලොගය මකන්නද?</string>
+    <string name="support_debuglog_session_delete_message">මෙම debug ලොග් සැසිය ස්ථිරවම මකනු ඇත.</string>
+    <string name="support_debuglog_session_recording">රේකෝඩ් කිරීම…</string>
+    <string name="support_debuglog_session_compressing">සම්පීඩනය…</string>
+    <string name="support_debuglog_failed_empty_log">හිස් ලොගය</string>
+    <string name="support_debuglog_failed_missing_log">නොමැති ලොගය</string>
+    <string name="support_debuglog_failed_corrupt_zip">දූෂිත ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP අසාර්ථකයි</string>
+    <string name="support_debuglog_clear_title">සියලු debug ලොග් මකන්නද?</string>
+    <string name="support_debuglog_clear_message">මෙය ගබඩා කළ සියලු debug ලොග් සැසි ස්ථිරවම මකනු ඇත.</string>
+    <string name="settings_support_contact_label">සංවර්ධකයා ඇමතීම</string>
+    <string name="settings_support_contact_desc">සංවර්ධකයාට ඊමේල් යැවීමට ෆෝමයක් පුරවන්න.</string>
+    <string name="contact_screen_title">සංවර්ධකයා ඇමතීම</string>
+    <string name="contact_category_bug_label">දෝෂ වාර්තාව</string>
+    <string name="contact_category_feature_label">ලක්ෂණ ඉල්ලීම</string>
+    <string name="contact_category_question_label">ප්‍රශ්නය</string>
+    <string name="contact_description_label">විස්තරය</string>
+    <string name="contact_description_bug_hint">සිදු වූ දෙය සහ ගැටලුව නැවත ඇති කරන ආකාරය විස්තර කරන්න.</string>
+    <string name="contact_description_feature_hint">ඔබ දැකීමට කැමති ලක්ෂණය විස්තර කරන්න.</string>
+    <string name="contact_description_question_hint">ඔබේ ප්‍රශ්නය සවිස්තරාත්මකව විස්තර කරන්න.</string>
+    <string name="contact_category_section_label">කාණ්ඩය</string>
+    <string name="contact_debug_log_label">Debug ලොගය</string>
+    <string name="contact_debug_log_select_hint">අමුණා ගැනීමට debug ලොගයක් තෝරන්න</string>
+    <string name="contact_debug_log_picker_hint">ගැටලුව වේගයෙන් හඳුනා ගැනීමට debug ලොගයක් අමුණන්න.</string>
+    <string name="contact_debug_log_picker_empty">Debug ලොග් නොමැත. මුලින් එකක් රේකෝඩ් කරන්න.</string>
+    <string name="contact_expected_behavior_label">අපේක්ෂිත හැසිරීම</string>
+    <string name="contact_expected_behavior_hint">ඒ වෙනුවට ඔබ සිදු වනු ඇතැයි අපේක්ෂා කළ දෙය විස්තර කරන්න.</string>
+    <string name="support_contact_debuglog_zip_error">අමුණීම සඳහා debug ලොගය සූදානම් කිරීමට අසාර්ථක විය</string>
+    <string name="contact_send_action">ඊමේල් යෙදුම විවෘත කරන්න</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d වචනය</item>
+        <item quantity="other">%1$d / %2$d වචන</item>
+    </plurals>
+    <string name="contact_welcome_msg">මම සෑම පණිවිඩයක්ම ව්‍යක්තිකව කියවා ප්‍රතිචාර දීමට හැකි පමණ උත්සාහ කරමි, නමුත් මෙය තනිව කරන නිසා, ටිකක් කාලය ගත විය හැකිය. ඔබේ ඉවසීමට ස්තූතියි.</string>
+    <string name="contact_footer_msg">ඔබේ පණිවිඩය ඊමේල් හරහා යවනු ඇත. උපාංගය සහ සැකසුම් තොරතුරු ස්වයංක්‍රීයව අමුණයි.</string>
+    <string name="contact_no_email_app_msg">මෙම උපාංගයේ ඊමේල් යෙදුමක් හමු නොවිණි.</string>
+    <string name="contact_attachment_missing_msg">Debug ලොග් ගොනුව තවදුරටත් නොමැත</string>
+    <string name="settings_support_stored_logs_label">ගබඩා කළ debug ලොග්</string>
+    <string name="settings_support_stored_logs_desc">%1$d සැසි (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">ගබඩා කළ debug ලොග් නැත</string>
+    <string name="settings_support_stored_logs_delete_title">ගබඩා කළ ලොග් මකන්නද?</string>
+    <string name="settings_support_stored_logs_delete_msg">මෙය ගබඩා කළ %1$d debug ලොග් සැසි සියල්ල මකනු ඇත.</string>
+    <string name="settings_support_stored_logs_deleted_msg">ගබඩා කළ debug ලොග් මකා දමන ලදී</string>
+    <string name="label_pro_feature">Premium ලක්ෂණය</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">නොමිලේ අනුවාදය: %1$d / %2$d උපාංගය</item>
+        <item quantity="other">නොමිලේ අනුවාදය: %1$d / %2$d උපාංග</item>
+    </plurals>
+    <string name="ui_theme_color_setting_label">තේමා වර්ණය</string>
+    <string name="ui_theme_color_setting_explanation">යෙදුම් තේමා කිරීමේදී භාවිතා කරන වර්ණ පාලිත්තය.</string>
+    <string name="ui_theme_color_material_you_note">Material You භාවිතා කරන ඕනෑම දිනෙ ඔබේ wallpaper හි වර්ණය ද සකසයි.</string>
+    <string name="ui_theme_color_blue_label">නිල්</string>
+    <string name="ui_theme_color_sunset_label">හිරු බැසීම</string>
 </resources>

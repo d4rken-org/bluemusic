@@ -348,4 +348,75 @@
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">I-lock</string>
     <string name="devices_unlock_sliders_action">I-unlock</string>
+
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Napakaikling recording</string>
+    <string name="settings_support_debuglog_short_recording_msg">Napakaikling recording iyon. Ang mga debug log ay mga recording, hindi snapshots — i-reproduce ang isyu habang aktibo ang recording para maging kapaki-pakinabang ang log.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Ituloy ang pag-record</string>
+    <string name="settings_support_debuglog_folder_label">Folder ng debug log</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sesyon na gumagamit ng %2$s</item>
+        <item quantity="other">%1$d mga sesyon na gumagamit ng %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Walang nakaimbak na debug log</string>
+    <string name="settings_support_debuglog_folder_delete_title">Burahin ang lahat ng debug log?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Permanenteng mabubura ang lahat ng nakaimbak na debug log session.</string>
+    <string name="support_debuglog_sent_title">Naipadala na ang log?</string>
+    <string name="support_debuglog_sent_message">Kung naipadala mo na ang debug log, maaari itong burahin mula sa device. Gusto mo bang alisin ito?</string>
+    <string name="support_debuglog_session_delete_title">Burahin ang debug log?</string>
+    <string name="support_debuglog_session_delete_message">Ang debug log session na ito ay permanenteng mabubura.</string>
+    <string name="support_debuglog_session_recording">Nag-rerecord…</string>
+    <string name="support_debuglog_session_compressing">Kinokompres…</string>
+    <string name="support_debuglog_failed_empty_log">Walang laman na log</string>
+    <string name="support_debuglog_failed_missing_log">Nawawalang log</string>
+    <string name="support_debuglog_failed_corrupt_zip">Sirang ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">Nabigo ang ZIP</string>
+    <string name="support_debuglog_clear_title">Burahin ang lahat ng debug log?</string>
+    <string name="support_debuglog_clear_message">Permanenteng mabubura ang lahat ng nakaimbak na debug log session.</string>
+    <string name="settings_support_contact_label">Makipag-ugnayan sa developer</string>
+    <string name="settings_support_contact_desc">Punan ang isang form para magpadala ng email sa developer.</string>
+    <string name="contact_screen_title">Makipag-ugnayan sa developer</string>
+    <string name="contact_category_bug_label">Ulat sa bug</string>
+    <string name="contact_category_feature_label">Kahilingan para sa feature</string>
+    <string name="contact_category_question_label">Tanong</string>
+    <string name="contact_description_label">Paglalarawan</string>
+    <string name="contact_description_bug_hint">Ilarawan kung ano ang nangyari at kung paano i-reproduce ang isyu.</string>
+    <string name="contact_description_feature_hint">Ilarawan ang feature na gusto mong makita.</string>
+    <string name="contact_description_question_hint">Ilarawan ang iyong tanong nang detalyado.</string>
+    <string name="contact_category_section_label">Kategorya</string>
+    <string name="contact_debug_log_label">Debug log</string>
+    <string name="contact_debug_log_select_hint">Pumili ng debug log para i-attach</string>
+    <string name="contact_debug_log_picker_hint">Mag-attach ng debug log para makatulong na mas mabilis na ma-diagnose ang isyu.</string>
+    <string name="contact_debug_log_picker_empty">Walang available na debug log. Mag-record muna ng isa.</string>
+    <string name="contact_expected_behavior_label">Inaasahang gawi</string>
+    <string name="contact_expected_behavior_hint">Ilarawan kung ano ang inaasahan mong mangyayari sa halip.</string>
+    <string name="support_contact_debuglog_zip_error">Nabigo sa paghahanda ng debug log para sa attachment</string>
+    <string name="contact_send_action">Buksan ang email app</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d salita</item>
+        <item quantity="other">%1$d / %2$d mga salita</item>
+    </plurals>
+    <string name="contact_welcome_msg">Binabasa ko ang bawat mensahe nang personal at ginagawa ko ang lahat para sumagot, ngunit dahil nagtatrabaho ako nang mag-isa, maaaring tumagal ng kaunti. Salamat sa iyong pasensya.</string>
+    <string name="contact_footer_msg">Ang iyong mensahe ay ipapadala sa pamamagitan ng email. Ang impormasyon ng device at setup ay awtomatikong naka-attach.</string>
+    <string name="contact_no_email_app_msg">Walang nahanap na email app sa device na ito.</string>
+    <string name="contact_attachment_missing_msg">Hindi na umiiral ang debug log file</string>
+    <string name="settings_support_stored_logs_label">Nakaimbak na mga debug log</string>
+    <string name="settings_support_stored_logs_desc">%1$d mga sesyon (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Walang nakaimbak na debug log</string>
+    <string name="settings_support_stored_logs_delete_title">Burahin ang nakaimbak na mga log?</string>
+    <string name="settings_support_stored_logs_delete_msg">Mabubura nito ang lahat ng %1$d nakaimbak na debug log session.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Nabura ang nakaimbak na mga debug log</string>
+    <string name="debug_log_screen_subtitle">Suriin at ibahagi ang iyong narecord na debug log</string>
+    <string name="debug_log_screen_sensitive_title">Sensitibong impormasyon</string>
+    <string name="debug_log_screen_keep_action">Panatilihin</string>
+    <string name="debug_log_compressing_label">Kinokompres…</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d file na handa (%2$s)</item>
+        <item quantity="other">%1$d mga file na handa (%2$s)</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Libreng bersyon: %1$d sa %2$d device</item>
+        <item quantity="other">Libreng bersyon: %1$d sa %2$d mga device</item>
+    </plurals>
+    <string name="label_pro_feature">Premium na feature</string>
 </resources>

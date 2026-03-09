@@ -302,4 +302,87 @@
 
     <!-- Debug log short recording warning -->
     <string name="settings_support_debuglog_short_recording_stop">Остановить всё равно</string>
+
+    <string name="settings_support_debuglog_short_recording_title">Очень короткая запись</string>
+    <string name="settings_support_debuglog_short_recording_msg">Запись оказалась очень короткой. Логи отладки — это записи, а не снимки — воспроизведи проблему во время активной записи, чтобы лог был полезен.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Продолжить запись</string>
+    <string name="settings_support_debuglog_folder_label">Папка логов отладки</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d сессия использует %2$s</item>
+        <item quantity="few">%1$d сессии используют %2$s</item>
+        <item quantity="many">%1$d сессий используют %2$s</item>
+        <item quantity="other">%1$d сессий используют %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Логи отладки не сохранены</string>
+    <string name="settings_support_debuglog_folder_delete_title">Удалить все логи отладки?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Это навсегда удалит все сохранённые сессии логов отладки.</string>
+    <string name="debug_log_screen_subtitle">Просмотри и поделись записанным логом отладки</string>
+    <string name="debug_log_screen_sensitive_title">Конфиденциальная информация</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d файл готов (%2$s)</item>
+        <item quantity="few">%1$d файла готово (%2$s)</item>
+        <item quantity="many">%1$d файлов готово (%2$s)</item>
+        <item quantity="other">%1$d файлов готово (%2$s)</item>
+    </plurals>
+    <string name="debug_log_screen_keep_action">Сохранить</string>
+    <string name="debug_log_compressing_label">Сжатие…</string>
+    <string name="support_debuglog_sent_title">Лог отправлен?</string>
+    <string name="support_debuglog_sent_message">Если ты отправил лог отладки, его можно удалить с устройства. Хочешь удалить его?</string>
+    <string name="support_debuglog_session_delete_title">Удалить лог отладки?</string>
+    <string name="support_debuglog_session_delete_message">Эта сессия лога отладки будет навсегда удалена.</string>
+    <string name="support_debuglog_session_recording">Запись…</string>
+    <string name="support_debuglog_session_compressing">Сжатие…</string>
+    <string name="support_debuglog_failed_empty_log">Пустой лог</string>
+    <string name="support_debuglog_failed_missing_log">Лог отсутствует</string>
+    <string name="support_debuglog_failed_corrupt_zip">Повреждённый ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">Ошибка ZIP</string>
+    <string name="support_debuglog_clear_title">Удалить все логи отладки?</string>
+    <string name="support_debuglog_clear_message">Это навсегда удалит все сохранённые сессии логов отладки.</string>
+    <string name="settings_support_contact_label">Связаться с разработчиком</string>
+    <string name="settings_support_contact_desc">Заполни форму, чтобы отправить разработчику письмо.</string>
+    <string name="contact_screen_title">Связаться с разработчиком</string>
+    <string name="contact_category_bug_label">Сообщение об ошибке</string>
+    <string name="contact_category_feature_label">Запрос функции</string>
+    <string name="contact_category_question_label">Вопрос</string>
+    <string name="contact_description_label">Описание</string>
+    <string name="contact_description_bug_hint">Опиши, что произошло и как воспроизвести проблему.</string>
+    <string name="contact_description_feature_hint">Опиши функцию, которую хочешь увидеть.</string>
+    <string name="contact_description_question_hint">Опиши свой вопрос подробно.</string>
+    <string name="contact_category_section_label">Категория</string>
+    <string name="contact_debug_log_label">Лог отладки</string>
+    <string name="contact_debug_log_select_hint">Выбери лог отладки для прикрепления</string>
+    <string name="contact_debug_log_picker_hint">Прикрепи лог отладки, чтобы помочь диагностировать проблему быстрее.</string>
+    <string name="contact_debug_log_picker_empty">Логи отладки недоступны. Сначала запиши один.</string>
+    <string name="contact_expected_behavior_label">Ожидаемое поведение</string>
+    <string name="contact_expected_behavior_hint">Опиши, что, по твоему мнению, должно было произойти.</string>
+    <string name="support_contact_debuglog_zip_error">Не удалось подготовить лог отладки для прикрепления</string>
+    <string name="contact_send_action">Открыть почтовое приложение</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d слово</item>
+        <item quantity="few">%1$d / %2$d слова</item>
+        <item quantity="many">%1$d / %2$d слов</item>
+        <item quantity="other">%1$d / %2$d слов</item>
+    </plurals>
+    <string name="contact_welcome_msg">Я лично читаю каждое сообщение и стараюсь ответить, но поскольку работаю над этим один, это может занять немного времени. Спасибо за терпение.</string>
+    <string name="contact_footer_msg">Твоё сообщение будет отправлено по электронной почте. Информация об устройстве и настройках прикрепляется автоматически.</string>
+    <string name="contact_no_email_app_msg">На этом устройстве не найдено почтовое приложение.</string>
+    <string name="contact_attachment_missing_msg">Файл лога отладки больше не существует</string>
+    <string name="settings_support_stored_logs_label">Сохранённые логи отладки</string>
+    <string name="settings_support_stored_logs_desc">%1$d сессий (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Нет сохранённых логов отладки</string>
+    <string name="settings_support_stored_logs_delete_title">Удалить сохранённые логи?</string>
+    <string name="settings_support_stored_logs_delete_msg">Это удалит все %1$d сохранённых сессий логов отладки.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Сохранённые логи отладки удалены</string>
+    <string name="label_pro_feature">Премиум-функция</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Бесплатная версия: %1$d из %2$d устройства</item>
+        <item quantity="few">Бесплатная версия: %1$d из %2$d устройств</item>
+        <item quantity="many">Бесплатная версия: %1$d из %2$d устройств</item>
+        <item quantity="other">Бесплатная версия: %1$d из %2$d устройств</item>
+    </plurals>
+    <string name="ui_theme_color_setting_label">Цвет темы</string>
+    <string name="ui_theme_color_setting_explanation">Цветовая палитра, используемая для оформления приложения.</string>
+    <string name="ui_theme_color_material_you_note">Цвет задаётся обоями при использовании Material You.</string>
+    <string name="ui_theme_color_blue_label">Синий</string>
+    <string name="ui_theme_color_sunset_label">Закат</string>
 </resources>

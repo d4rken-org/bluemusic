@@ -144,7 +144,15 @@
     <string name="settings_support_debuglog_desc">Registra tutto quello che fa l\'app in un file di testo che puoi condividere.</string>
     <string name="settings_support_debuglog_recording_desc">Attualmente registrando informazioni di debug. Tocca per interrompere la registrazione.</string>
     <string name="settings_support_debuglog_path">Percorso log: %1$s</string>
+    <string name="app_name_short">BVM</string>
+    <string name="settings_support_debuglog_short_recording_title">Registrazione molto breve</string>
+    <string name="settings_support_debuglog_short_recording_msg">È stata una registrazione molto breve. I log di debug sono registrazioni, non istantanee — riproduci il problema mentre la registrazione è attiva affinché il log sia utile.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Continua a registrare</string>
     <string name="settings_support_debuglog_short_recording_stop">Ferma comunque</string>
+    <string name="settings_support_debuglog_folder_label">Cartella log di debug</string>
+    <string name="settings_support_debuglog_folder_empty_desc">Nessun log di debug salvato</string>
+    <string name="settings_support_debuglog_folder_delete_title">Eliminare tutti i log di debug?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Tutte le sessioni di log di debug salvate verranno eliminate definitivamente.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Un posto dove stare insieme e fare domande.</string>
     <string name="settings_acknowledgements_label">Ringraziamenti</string>
@@ -170,11 +178,56 @@
     <string name="debug_log_record_action">Registra</string>
     <string name="debug_log_stop_action">Interrompi registrazione</string>
     <string name="debug_log_screen_title">Registratore Log Debug</string>
+    <string name="debug_log_screen_subtitle">Rivedi e condividi il log di debug registrato</string>
+    <string name="debug_log_screen_sensitive_title">Informazioni sensibili</string>
     <string name="debug_log_screen_sensitive_information_message">Il file generato contiene informazioni sensibili (es. nomi file e app installate). Condividilo solo con parti fidate.</string>
     <string name="debug_log_screen_session_path_label">Percorso sessione debug</string>
     <string name="debug_log_screen_log_files_label">File Log</string>
     <string name="debug_log_screen_discard_action">Scarta</string>
+    <string name="debug_log_screen_keep_action">Conserva</string>
+    <string name="debug_log_compressing_label">Compressione in corso…</string>
     <string name="debug_log_file_label">File log registrato</string>
+    <string name="support_debuglog_sent_title">Log inviato?</string>
+    <string name="support_debuglog_sent_message">Se hai inviato il log di debug, può essere eliminato dal dispositivo. Vuoi rimuoverlo?</string>
+    <string name="support_debuglog_session_delete_title">Eliminare il log di debug?</string>
+    <string name="support_debuglog_session_delete_message">Questa sessione di log di debug verrà eliminata definitivamente.</string>
+    <string name="support_debuglog_session_recording">Registrazione in corso…</string>
+    <string name="support_debuglog_session_compressing">Compressione in corso…</string>
+    <string name="support_debuglog_failed_empty_log">Log vuoto</string>
+    <string name="support_debuglog_failed_missing_log">Log mancante</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP corrotto</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP fallito</string>
+    <string name="support_debuglog_clear_title">Eliminare tutti i log di debug?</string>
+    <string name="support_debuglog_clear_message">Tutte le sessioni di log di debug salvate verranno eliminate definitivamente.</string>
+    <string name="settings_support_contact_label">Contatta lo sviluppatore</string>
+    <string name="settings_support_contact_desc">Compila un modulo per inviare un\'email allo sviluppatore.</string>
+    <string name="contact_screen_title">Contatta lo sviluppatore</string>
+    <string name="contact_category_bug_label">Segnalazione bug</string>
+    <string name="contact_category_feature_label">Richiesta funzionalità</string>
+    <string name="contact_category_question_label">Domanda</string>
+    <string name="contact_description_label">Descrizione</string>
+    <string name="contact_description_bug_hint">Descrivi cosa è successo e come riprodurre il problema.</string>
+    <string name="contact_description_feature_hint">Descrivi la funzionalità che vorresti vedere.</string>
+    <string name="contact_description_question_hint">Descrivi la tua domanda nel dettaglio.</string>
+    <string name="contact_category_section_label">Categoria</string>
+    <string name="contact_debug_log_label">Log di debug</string>
+    <string name="contact_debug_log_select_hint">Seleziona un log di debug da allegare</string>
+    <string name="contact_debug_log_picker_hint">Allega un log di debug per aiutare a diagnosticare il problema più velocemente.</string>
+    <string name="contact_debug_log_picker_empty">Nessun log di debug disponibile. Registrane uno prima.</string>
+    <string name="contact_expected_behavior_label">Comportamento atteso</string>
+    <string name="contact_expected_behavior_hint">Descrivi cosa ti aspettavi che accadesse invece.</string>
+    <string name="support_contact_debuglog_zip_error">Preparazione del log di debug per l\'allegato non riuscita</string>
+    <string name="contact_send_action">Apri app email</string>
+    <string name="contact_welcome_msg">Leggo ogni messaggio personalmente e cerco di rispondere nel miglior modo possibile, ma dato che lavoro da solo, potrebbe volerci un po\'. Grazie per la pazienza.</string>
+    <string name="contact_footer_msg">Il tuo messaggio sarà inviato tramite email. Le informazioni sul dispositivo e sulla configurazione vengono allegate automaticamente.</string>
+    <string name="contact_no_email_app_msg">Nessuna app email trovata su questo dispositivo.</string>
+    <string name="contact_attachment_missing_msg">Il file di log di debug non esiste più</string>
+    <string name="settings_support_stored_logs_label">Log di debug salvati</string>
+    <string name="settings_support_stored_logs_desc">%1$d sessioni (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Nessun log di debug salvato</string>
+    <string name="settings_support_stored_logs_delete_title">Eliminare i log salvati?</string>
+    <string name="settings_support_stored_logs_delete_msg">Verranno eliminate tutte le %1$d sessioni di log di debug salvate.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Log di debug salvati eliminati</string>
     <string name="label_bug_reports">Segnalazione bug</string>
     <string name="description_bug_reports">Riporta automaticamente bug e crash.</string>
     <string name="label_add_device">Aggiungi un dispositivo</string>
@@ -241,6 +294,7 @@
     <string name="android13_notification_permission_description">Concedi a questa app il permesso di pubblicare notifiche. Questo abilita la visualizzazione di una notifica quando l\'app è attiva e vengono fatte regolazioni del volume.</string>
     <string name="privacy_policy_label">Informativa sulla privacy</string>
     <string name="managed_devices_empty_message">Nessun dispositivo Bluetooth configurato.\nTocca il pulsante + per aggiungere il tuo primo dispositivo.</string>
+    <string name="label_pro_feature">Funzionalità premium</string>
     <string name="general_delete_action">Elimina</string>
     <string name="general_navigate_back_action">Torna indietro</string>
     <string name="general_reset_action">Ripristina</string>
@@ -300,4 +354,27 @@
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Blocca</string>
     <string name="devices_unlock_sliders_action">Sblocca</string>
+
+    <string name="ui_theme_color_setting_label">Colore tema</string>
+    <string name="ui_theme_color_setting_explanation">La palette di colori utilizzata per il tema dell&#8217;app.</string>
+    <string name="ui_theme_color_material_you_note">Il colore è impostato dallo sfondo quando si usa Material You.</string>
+    <string name="ui_theme_color_blue_label">Blu</string>
+    <string name="ui_theme_color_sunset_label">Tramonto</string>
+
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sessione che usa %2$s</item>
+        <item quantity="other">%1$d sessioni che usano %2$s</item>
+    </plurals>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d file pronto (%2$s)</item>
+        <item quantity="other">%1$d file pronti (%2$s)</item>
+    </plurals>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d parola</item>
+        <item quantity="other">%1$d / %2$d parole</item>
+    </plurals>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Versione gratuita: %1$d di %2$d dispositivo</item>
+        <item quantity="other">Versione gratuita: %1$d di %2$d dispositivi</item>
+    </plurals>
 </resources>

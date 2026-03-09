@@ -348,5 +348,95 @@
     <string name="devices_unlock_sliders_action">Zhblloko</string>
 
     <!-- Debug log short recording warning -->
+    <string name="settings_support_debuglog_short_recording_title">Regjistrim shumë i shkurtër</string>
+    <string name="settings_support_debuglog_short_recording_msg">Ishte një regjistrim shumë i shkurtër. Regjistrat e debugging janë regjistrime, jo fotografi — riprodhoni problemin ndërkohë që regjistrimi është aktiv që regjistri të jetë i dobishëm.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Vazhdo regjistrimin</string>
     <string name="settings_support_debuglog_short_recording_stop">Ndaloje gjithsesi</string>
+
+    <!-- Debug log folder -->
+    <string name="settings_support_debuglog_folder_label">Dosja e regjistrit të debugging</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d seancë duke përdorur %2$s</item>
+        <item quantity="other">%1$d seanca duke përdorur %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Nuk ka regjistër debugging të ruajtur</string>
+    <string name="settings_support_debuglog_folder_delete_title">Fshi të gjithë regjistrat e debugging?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Kjo do të fshijë përgjithmonë të gjitha seancat e ruajtura të regjistrit të debugging.</string>
+
+    <!-- Debug log screen -->
+    <string name="debug_log_screen_subtitle">Shqyrto dhe ndaj regjistrin e debugging të regjistruar</string>
+    <string name="debug_log_screen_sensitive_title">Informacione të ndjeshme</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d skedar gati (%2$s)</item>
+        <item quantity="other">%1$d skedarë gati (%2$s)</item>
+    </plurals>
+    <string name="debug_log_screen_keep_action">Mbaj</string>
+    <string name="debug_log_compressing_label">Duke kompresuar…</string>
+
+    <!-- Debug log sessions -->
+    <string name="support_debuglog_sent_title">Regjistri u dërgua?</string>
+    <string name="support_debuglog_sent_message">Nëse e ke dërguar regjistrin e debugging, mund të fshihet nga pajisja. Dëshiron ta heqësh?</string>
+    <string name="support_debuglog_session_delete_title">Fshi regjistrin e debugging?</string>
+    <string name="support_debuglog_session_delete_message">Kjo seancë e regjistrit të debugging do të fshihet përgjithmonë.</string>
+    <string name="support_debuglog_session_recording">Duke regjistruar…</string>
+    <string name="support_debuglog_session_compressing">Duke kompresuar…</string>
+    <string name="support_debuglog_failed_empty_log">Regjistër bosh</string>
+    <string name="support_debuglog_failed_missing_log">Regjistër i munguar</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP i dëmtuar</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP dështoi</string>
+    <string name="support_debuglog_clear_title">Fshi të gjithë regjistrat e debugging?</string>
+    <string name="support_debuglog_clear_message">Kjo do të fshijë përgjithmonë të gjitha seancat e ruajtura të regjistrit të debugging.</string>
+
+    <!-- Contact developer -->
+    <string name="settings_support_contact_label">Kontakto zhvilluesin</string>
+    <string name="settings_support_contact_desc">Plotëso një formular për t\'i dërguar zhvilluesit një email.</string>
+    <string name="contact_screen_title">Kontakto zhvilluesin</string>
+    <string name="contact_category_bug_label">Raport gabimi</string>
+    <string name="contact_category_feature_label">Kërkesë për veçori</string>
+    <string name="contact_category_question_label">Pyetje</string>
+    <string name="contact_description_label">Përshkrimi</string>
+    <string name="contact_description_bug_hint">Përshkruaj çfarë ndodhi dhe si ta riprodhosh problemin.</string>
+    <string name="contact_description_feature_hint">Përshkruaj veçorinë që do të doje të shihje.</string>
+    <string name="contact_description_question_hint">Përshkruaj pyetjen tënde në detaje.</string>
+    <string name="contact_category_section_label">Kategoria</string>
+    <string name="contact_debug_log_label">Regjistri i debugging</string>
+    <string name="contact_debug_log_select_hint">Zgjidh një regjistër debugging për të bashkangjitur</string>
+    <string name="contact_debug_log_picker_hint">Bashkangji një regjistër debugging për të ndihmuar diagnostikimin e problemit më shpejt.</string>
+    <string name="contact_debug_log_picker_empty">Nuk ka regjistër debugging të disponueshëm. Regjistro njërin fillimisht.</string>
+    <string name="contact_expected_behavior_label">Sjellja e pritshme</string>
+    <string name="contact_expected_behavior_hint">Përshkruaj çfarë prisje të ndodhte.</string>
+    <string name="support_contact_debuglog_zip_error">Dështoi përgatitja e regjistrit të debugging për bashkëngjitur</string>
+    <string name="contact_send_action">Hap aplikacionin e emailit</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d fjalë</item>
+        <item quantity="other">%1$d / %2$d fjalë</item>
+    </plurals>
+    <string name="contact_welcome_msg">Lexoj çdo mesazh vetë dhe bëj çmos të përgjigjem, por meqë punoj vetëm, mund të duhet pak kohë. Faleminderit për durim.</string>
+    <string name="contact_footer_msg">Mesazhi yt do të dërgohet me email. Informacioni i pajisjes dhe i konfigurimit bashkëngjitet automatikisht.</string>
+    <string name="contact_no_email_app_msg">Nuk u gjet asnjë aplikacion emaili në këtë pajisje.</string>
+    <string name="contact_attachment_missing_msg">Skedari i regjistrit të debugging nuk ekziston më</string>
+
+    <!-- Stored logs -->
+    <string name="settings_support_stored_logs_label">Regjistrat e ruajtur të debugging</string>
+    <string name="settings_support_stored_logs_desc">%1$d seanca (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Nuk ka regjistër të ruajtur debugging</string>
+    <string name="settings_support_stored_logs_delete_title">Fshi regjistrat e ruajtur?</string>
+    <string name="settings_support_stored_logs_delete_msg">Kjo do të fshijë të gjitha %1$d seancat e ruajtura të regjistrit të debugging.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Regjistrat e ruajtur të debugging u fshinë</string>
+
+    <!-- Premium feature label -->
+    <string name="label_pro_feature">Veçori premium</string>
+
+    <!-- Device limit banner -->
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Versioni falas: %1$d nga %2$d pajisje</item>
+        <item quantity="other">Versioni falas: %1$d nga %2$d pajisje</item>
+    </plurals>
+
+    <!-- Theme color -->
+    <string name="ui_theme_color_setting_label">Ngjyra e temës</string>
+    <string name="ui_theme_color_setting_explanation">Paleta e ngjyrave e përdorur kur tematizohet aplikacioni.</string>
+    <string name="ui_theme_color_material_you_note">Ngjyra vendoset nga sfondi juaj kur përdorni Material You.</string>
+    <string name="ui_theme_color_blue_label">Blu</string>
+    <string name="ui_theme_color_sunset_label">Perëndim dielli</string>
 </resources>
