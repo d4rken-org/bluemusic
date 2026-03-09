@@ -167,7 +167,6 @@
     <string name="debug_log_screen_sensitive_information_message">الملف المُنشأ يحتوي على معلومات حسّاسة (مثل أسماء الملفات والتطبيقات المثبتة). شاركه فقط مع أطراف موثوقة.</string>
     <string name="debug_log_screen_session_path_label">مسار جلسة التشخيص</string>
     <string name="debug_log_screen_log_files_label">ملفات السجل</string>
-    <string name="debug_log_screen_log_files_ready">ملفات السجل جاهزة (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">تجاهل</string>
     <string name="debug_log_file_label">ملف سجل مُسجّل</string>
     <string name="label_bug_reports">تقرير الأخطاء</string>

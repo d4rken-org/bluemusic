@@ -165,7 +165,6 @@
     <string name="debug_log_screen_sensitive_information_message">A létrehozott fájl érzékeny információkat tartalmaz (pl. fájlnevek és telepített alkalmazások). Csak megbízható felekkel oszd meg.</string>
     <string name="debug_log_screen_session_path_label">Hibakeresési munkamenet útvonala</string>
     <string name="debug_log_screen_log_files_label">Naplófájlok</string>
-    <string name="debug_log_screen_log_files_ready">Naplófájlok készen (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Eldobás</string>
     <string name="debug_log_file_label">Rögzített naplófájl</string>
     <string name="label_bug_reports">Hibajelentés</string>

@@ -167,7 +167,6 @@
     <string name="debug_log_screen_sensitive_information_message">Fișierul generat conține informații sensibile (de ex. nume de fișiere și aplicații instalate). Distribuie-l doar cu părți de încredere.</string>
     <string name="debug_log_screen_session_path_label">Calea sesiunii de depanare</string>
     <string name="debug_log_screen_log_files_label">Fișiere jurnal</string>
-    <string name="debug_log_screen_log_files_ready">Fișiere jurnal gata (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Anulează</string>
     <string name="debug_log_file_label">Fișier jurnal înregistrat</string>
     <string name="label_bug_reports">Rapoarte de erori</string>

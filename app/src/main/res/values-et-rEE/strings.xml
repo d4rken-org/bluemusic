@@ -217,7 +217,6 @@
     <string name="debug_log_screen_sensitive_information_message">Loodud fail sisaldab tundlikku teavet (nt failinimed ja installitud rakendused). Jaga seda ainult usaldusväärsetele isikutele.</string>
     <string name="debug_log_screen_session_path_label">Silumisseansi asukoht</string>
     <string name="debug_log_screen_log_files_label">Logifailid</string>
-    <string name="debug_log_screen_log_files_ready">Logifailid valmis (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Hülga</string>
     <string name="debug_log_file_label">Salvestatud logifail</string>
 

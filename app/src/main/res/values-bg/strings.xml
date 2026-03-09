@@ -170,7 +170,6 @@
     <string name="debug_log_screen_sensitive_information_message">Генерираният файл съдържа чувствителна информация (напр. имена на файлове и инсталирани приложения). Споделяй го само с доверени лица.</string>
     <string name="debug_log_screen_session_path_label">Път на дебъг сесията</string>
     <string name="debug_log_screen_log_files_label">Лог файлове</string>
-    <string name="debug_log_screen_log_files_ready">Лог файловете са готови (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Изхвърли</string>
     <string name="debug_log_file_label">Записан лог файл</string>
     <string name="label_bug_reports">Доклади за грешки</string>

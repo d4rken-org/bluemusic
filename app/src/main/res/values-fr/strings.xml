@@ -174,7 +174,6 @@
     <string name="debug_log_screen_sensitive_information_message">Le fichier généré contient des informations sensibles (par exemple, noms de fichiers et applications installées). Ne le partagez qu\'avec des parties de confiance.</string>
     <string name="debug_log_screen_session_path_label">Chemin de la session de débogage</string>
     <string name="debug_log_screen_log_files_label">Fichiers journaux</string>
-    <string name="debug_log_screen_log_files_ready">Fichiers journaux prêts (ZIP : %1$s)</string>
     <string name="debug_log_screen_discard_action">Supprimer</string>
     <string name="debug_log_file_label">Fichier journal enregistré</string>
     <string name="label_bug_reports">Relevés de bogues</string>

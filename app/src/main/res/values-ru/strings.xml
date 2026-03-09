@@ -175,7 +175,6 @@
     <string name="debug_log_screen_sensitive_information_message">Созданный файл содержит конфиденциальную информацию (например, имена файлов и установленные приложения). Делись им только с доверенными лицами.</string>
     <string name="debug_log_screen_session_path_label">Путь к сессии отладки</string>
     <string name="debug_log_screen_log_files_label">Файлы логов</string>
-    <string name="debug_log_screen_log_files_ready">Файлы логов готовы (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Отменить</string>
     <string name="debug_log_file_label">Записанный лог-файл</string>
     <string name="label_bug_reports">Сообщения об ошибках</string>

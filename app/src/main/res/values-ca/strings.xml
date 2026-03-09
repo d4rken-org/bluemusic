@@ -147,7 +147,6 @@
     <string name="debug_log_screen_sensitive_information_message">El fitxer generat conté informació sensible (p. ex. noms de fitxers i aplicacions instal·lades). Comparteix-lo només amb persones de confiança.</string>
     <string name="debug_log_screen_session_path_label">Ruta de la sessió de depuració</string>
     <string name="debug_log_screen_log_files_label">Fitxers de registre</string>
-    <string name="debug_log_screen_log_files_ready">Fitxers de registre a punt (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Descarta</string>
     <string name="debug_log_file_label">Fitxer de registre enregistrat</string>
     <string name="label_bug_reports">Informes d\'errors</string>

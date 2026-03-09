@@ -153,7 +153,6 @@
     <string name="debug_log_screen_sensitive_information_message">File yang dihasilkan berisi informasi sensitif (misalnya nama file dan aplikasi yang terinstal). Hanya bagikan dengan pihak terpercaya.</string>
     <string name="debug_log_screen_session_path_label">Jalur sesi debug</string>
     <string name="debug_log_screen_log_files_label">File Log</string>
-    <string name="debug_log_screen_log_files_ready">File log siap (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Buang</string>
     <string name="debug_log_file_label">File log yang direkam</string>
     <string name="label_bug_reports">Pelaporan Masalah</string>

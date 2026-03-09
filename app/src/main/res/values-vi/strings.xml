@@ -167,7 +167,6 @@
     <string name="debug_log_screen_sensitive_information_message">Tập tin được tạo chứa thông tin nhạy cảm (ví dụ tên tập tin và ứng dụng đã cài). Chỉ chia sẻ với các bên đáng tin cậy.</string>
     <string name="debug_log_screen_session_path_label">Đường dẫn phiên gỡ lỗi</string>
     <string name="debug_log_screen_log_files_label">Tập tin nhật ký</string>
-    <string name="debug_log_screen_log_files_ready">Tập tin nhật ký sẵn sàng (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Loại bỏ</string>
     <string name="debug_log_file_label">Tập tin nhật ký đã ghi</string>
     <string name="label_bug_reports">Báo lỗi</string>

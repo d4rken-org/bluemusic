@@ -172,7 +172,6 @@
     <string name="debug_log_screen_sensitive_information_message">生成的文件包含敏感信息（例如文件名和安装的应用）。仅与信任的方分享。</string>
     <string name="debug_log_screen_session_path_label">调试会话路径</string>
     <string name="debug_log_screen_log_files_label">日志文件</string>
-    <string name="debug_log_screen_log_files_ready">日志文件已准备好（ZIP: %1$s）</string>
     <string name="debug_log_screen_discard_action">丢弃</string>
     <string name="debug_log_file_label">已记录的日志文件</string>
     <string name="label_bug_reports">错误报告</string>

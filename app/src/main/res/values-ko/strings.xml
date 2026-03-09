@@ -171,7 +171,6 @@
     <string name="debug_log_screen_sensitive_information_message">생성된 파일에는 민감한 정보(예: 파일 이름 및 설치된 앱)가 포함되어 있습니다. 신뢰할 수 있는 당사자에게만 공유하세요.</string>
     <string name="debug_log_screen_session_path_label">디버그 세션 경로</string>
     <string name="debug_log_screen_log_files_label">로그 파일</string>
-    <string name="debug_log_screen_log_files_ready">로그 파일 준비 완료 (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">폐기</string>
     <string name="debug_log_file_label">기록된 로그 파일</string>
     <string name="label_bug_reports">오류 보고</string>

@@ -181,7 +181,6 @@
     <string name="debug_log_screen_sensitive_information_message">ජනනය කරන ලද ගොනුවේ සංවේදී තොරතුරු (ගොනු නාම සහ ස්ථාපිත යෙදුම් ආදිය) ඇත. විශ්වාසනීය පාර්ශ්ව සමඟ පමණක් බෙදා ගන්න.</string>
     <string name="debug_log_screen_session_path_label">Debug සැසි මාර්ගය</string>
     <string name="debug_log_screen_log_files_label">ලොග් ගොනු</string>
-    <string name="debug_log_screen_log_files_ready">ලොග් ගොනු සූදානම් (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">ඉවත් කිරීම</string>
     <string name="debug_log_file_label">රේකෝඩ් කළ ලොග් ගොනුව</string>
     <string name="label_bug_reports">දෝෂ වාර්තා</string>

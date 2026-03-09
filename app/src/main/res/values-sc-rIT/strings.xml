@@ -218,7 +218,6 @@
     <string name="debug_log_screen_sensitive_information_message">Su file generàdu cuntenet informatzione sensìbbile (p.e. nòmines de file e apps instalàdas). Cumunicalu solu a persones de fidùcia.</string>
     <string name="debug_log_screen_session_path_label">Percorsu de sessione de debug</string>
     <string name="debug_log_screen_log_files_label">Files de Log</string>
-    <string name="debug_log_screen_log_files_ready">Files de log prontos (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Iscarta</string>
     <string name="debug_log_file_label">File de log registràdu</string>
 

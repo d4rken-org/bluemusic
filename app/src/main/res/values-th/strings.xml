@@ -167,7 +167,6 @@
     <string name="debug_log_screen_sensitive_information_message">ไฟล์ที่สร้างขึ้นมีข้อมูลอ่อนไหว (เช่น ชื่อไฟล์และแอปที่ติดตั้ง) แชร์เฉพาะกับบุคคลที่ไว้ใจได้เท่านั้น</string>
     <string name="debug_log_screen_session_path_label">ตำแหน่งเซชั่นดีบัก</string>
     <string name="debug_log_screen_log_files_label">ไฟล์ล็อก</string>
-    <string name="debug_log_screen_log_files_ready">ไฟล์ล็อกพร้อมแล้ว (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">ยกเลิก</string>
     <string name="debug_log_file_label">ไฟล์ล็อกที่บันทึกไว้</string>
     <string name="label_bug_reports">แจ้งข้อผิดพลาด</string>

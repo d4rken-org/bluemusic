@@ -250,7 +250,6 @@
     <string name="debug_log_screen_sensitive_information_message">Sugeneruotas failas turi jautrią informaciją (pvz., failų pavadinimus ir įdiegtas programas). Dalinkitės tik su patikimais asmenimis.</string>
     <string name="debug_log_screen_session_path_label">Derinimo sesijos kelias</string>
     <string name="debug_log_screen_log_files_label">Žurnalo failai</string>
-    <string name="debug_log_screen_log_files_ready">Žurnalo failai paruošti (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Atmesti</string>
     <string name="debug_log_file_label">Įrašytas žurnalo failas</string>
     <string name="upgrade_feature_requires_pro">Šiai funkcijai reikalinga premium versija</string>

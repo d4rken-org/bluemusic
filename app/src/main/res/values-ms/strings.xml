@@ -152,7 +152,6 @@
     <string name="debug_log_screen_sensitive_information_message">Fail yang dijana mengandungi maklumat sensitif (contohnya nama fail dan apl yang dipasang). Hanya kongsi dengan pihak yang dipercayai.</string>
     <string name="debug_log_screen_session_path_label">Laluan sesi nyahpepijat</string>
     <string name="debug_log_screen_log_files_label">Fail Log</string>
-    <string name="debug_log_screen_log_files_ready">Fail log sedia (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Buang</string>
     <string name="debug_log_file_label">Fail log yang dirakam</string>
     <string name="label_bug_reports">Laporan pepijat</string>

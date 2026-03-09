@@ -171,7 +171,6 @@
     <string name="debug_log_screen_sensitive_information_message">Den genererede fil indeholder følsomme oplysninger (f.eks. filnavne og installerede apps). Del den kun med betroede parter.</string>
     <string name="debug_log_screen_session_path_label">Debug-sessionssti</string>
     <string name="debug_log_screen_log_files_label">Log-filer</string>
-    <string name="debug_log_screen_log_files_ready">Log-filer klar (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Slet</string>
     <string name="debug_log_file_label">Optaget log-fil</string>
     <string name="label_bug_reports">Fejlrapporter</string>

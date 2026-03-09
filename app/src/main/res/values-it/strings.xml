@@ -173,7 +173,6 @@
     <string name="debug_log_screen_sensitive_information_message">Il file generato contiene informazioni sensibili (es. nomi file e app installate). Condividilo solo con parti fidate.</string>
     <string name="debug_log_screen_session_path_label">Percorso sessione debug</string>
     <string name="debug_log_screen_log_files_label">File Log</string>
-    <string name="debug_log_screen_log_files_ready">File log pronti (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Scarta</string>
     <string name="debug_log_file_label">File log registrato</string>
     <string name="label_bug_reports">Segnalazione bug</string>

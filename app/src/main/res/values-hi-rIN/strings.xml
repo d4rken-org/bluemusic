@@ -153,7 +153,6 @@
     <string name="debug_log_screen_sensitive_information_message">जेनरेट की गई फाइल में संवेदनशील जानकारी (जैसे फाइल नाम और इंस्टॉल किए गए आप) शामिल हैं। इसे केवल भरोसेमंद पार्टियों के साथ साझा करें।</string>
     <string name="debug_log_screen_session_path_label">डिबग सेशन पाथ</string>
     <string name="debug_log_screen_log_files_label">लॉग फाइलें</string>
-    <string name="debug_log_screen_log_files_ready">लॉग फाइलें तैयार (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">रद्द करें</string>
     <string name="debug_log_file_label">रिकॉर्ड की गई लॉग फाइल</string>
     <string name="label_bug_reports">त्रुटि विवरण</string>

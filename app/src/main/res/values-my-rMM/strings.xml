@@ -216,7 +216,6 @@
     <string name="debug_log_screen_sensitive_information_message">ထုတ်လုပ်ထားသော ဖိုင်တွင် အထိခိုက်မခံသော သတင်းအချက်အလက် ပါဝင်သည်။ ယုံကြည်စိတ်ချရသော ပါတီများနှင့် သာ မျှဝေပါ။</string>
     <string name="debug_log_screen_session_path_label">Debug session လမ်းကြောင်း</string>
     <string name="debug_log_screen_log_files_label">မှတ်တမ်းဖိုင်များ</string>
-    <string name="debug_log_screen_log_files_ready">မှတ်တမ်းဖိုင်များ အသင့်ဖြစ်ပြီ (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">ဖျက်ပစ်မည်</string>
     <string name="debug_log_file_label">ရိုက်ကူးထားသော မှတ်တမ်းဖိုင်</string>
 

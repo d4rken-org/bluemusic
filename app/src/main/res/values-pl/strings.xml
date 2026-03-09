@@ -168,7 +168,6 @@
     <string name="debug_log_screen_sensitive_information_message">Wygenerowany plik zawiera wrażliwe informacje (np. nazwy plików i zainstalowane aplikacje). Udostępniaj go tylko zaufanym stronom.</string>
     <string name="debug_log_screen_session_path_label">Ścieżka sesji debugowania</string>
     <string name="debug_log_screen_log_files_label">Pliki logu</string>
-    <string name="debug_log_screen_log_files_ready">Pliki logu gotowe (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Odrzuć</string>
     <string name="debug_log_file_label">Nagrany plik logu</string>
     <string name="label_bug_reports">Zgłaszanie błędów</string>

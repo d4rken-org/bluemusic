@@ -167,7 +167,6 @@
     <string name="debug_log_screen_sensitive_information_message">Створений файл містить чутливу інформацію (наприклад, назви файлів і встановлені додатки). Ділися ним лише з надійними особами.</string>
     <string name="debug_log_screen_session_path_label">Шлях сесії налагодження</string>
     <string name="debug_log_screen_log_files_label">Лог-файли</string>
-    <string name="debug_log_screen_log_files_ready">Лог-файли готові (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Відмінити</string>
     <string name="debug_log_file_label">Записаний лог-файл</string>
     <string name="label_bug_reports">Звіти про збої</string>

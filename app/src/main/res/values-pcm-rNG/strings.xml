@@ -216,7 +216,6 @@
     <string name="debug_log_screen_sensitive_information_message">The file wey generate contain sensitive information (e.g. file names and installed apps). Only share am with trusted people.</string>
     <string name="debug_log_screen_session_path_label">Debug session path</string>
     <string name="debug_log_screen_log_files_label">Log Files</string>
-    <string name="debug_log_screen_log_files_ready">Log files ready (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Discard</string>
     <string name="debug_log_file_label">Recorded log file</string>
 

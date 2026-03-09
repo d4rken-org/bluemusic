@@ -183,7 +183,6 @@
     <string name="debug_log_screen_sensitive_information_message">Die gegenereerde lêer bevat sensitiewe inligting (bv. lêername en geïnstalleerde programme). Deel dit slegs met vertroude partye.</string>
     <string name="debug_log_screen_session_path_label">Ontfoutingsessie-pad</string>
     <string name="debug_log_screen_log_files_label">Log-lêers</string>
-    <string name="debug_log_screen_log_files_ready">Log-lêers gereed (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Gooi weg</string>
     <string name="debug_log_file_label">Opgenome log-lêer</string>
     <string name="label_bug_reports">Fout verslag</string>

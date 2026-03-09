@@ -171,7 +171,6 @@
     <string name="debug_log_screen_sensitive_information_message">Generirana datoteka sadrži osjetljive informacije (npr. nazive datoteka i instalirane aplikacije). Dijelite je samo s pouzdanim stranama.</string>
     <string name="debug_log_screen_session_path_label">Put do debug sesije</string>
     <string name="debug_log_screen_log_files_label">Log datoteke</string>
-    <string name="debug_log_screen_log_files_ready">Log datoteke su spremne (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Odbaci</string>
     <string name="debug_log_file_label">Snimljena log datoteka</string>
     <string name="label_bug_reports">Izvješća o pogreškama</string>

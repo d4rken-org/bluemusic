@@ -216,7 +216,6 @@
     <string name="debug_log_screen_sensitive_information_message">Skedari i gjeneruar përmban informacione të ndjeshme (p.sh. emra skedarësh dhe aplikacione të instaluara). Ndaj vetëm me palë të besuara.</string>
     <string name="debug_log_screen_session_path_label">Rruga e seancës debugging</string>
     <string name="debug_log_screen_log_files_label">Skedarët e regjistrit</string>
-    <string name="debug_log_screen_log_files_ready">Skedarët e regjistrit gati (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Hedh</string>
     <string name="debug_log_file_label">Skedari i regjistrit të regjistruar</string>
 

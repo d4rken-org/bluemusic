@@ -169,7 +169,6 @@
     <string name="debug_log_screen_sensitive_information_message">הקובץ הנוצר מכיל מידע רגיש (למשל שמות קבצים ואפליקציות מותקנות). שתף אותו רק עם גורמים מועמדים.</string>
     <string name="debug_log_screen_session_path_label">נתיב סשן ניפוי באגים</string>
     <string name="debug_log_screen_log_files_label">קבצי לוג</string>
-    <string name="debug_log_screen_log_files_ready">קבצי לוג מוכנים (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">ותר</string>
     <string name="debug_log_file_label">קובץ לוג מוקלט</string>
     <string name="label_bug_reports">דיווח באגים</string>

@@ -172,7 +172,6 @@
     <string name="debug_log_screen_sensitive_information_message">Oluşturulan dosya hassas bilgiler içeriyor (dosya adları ve yüklü uygulamalar gibi). Sadece güvenilir kişilerle paylaş.</string>
     <string name="debug_log_screen_session_path_label">Hata ayıklama oturum yolu</string>
     <string name="debug_log_screen_log_files_label">Kayıt Dosyaları</string>
-    <string name="debug_log_screen_log_files_ready">Kayıt dosyaları hazır (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Vazgeç</string>
     <string name="debug_log_file_label">Kaydedilen kayıt dosyası</string>
     <string name="label_bug_reports">Hata raporları</string>
