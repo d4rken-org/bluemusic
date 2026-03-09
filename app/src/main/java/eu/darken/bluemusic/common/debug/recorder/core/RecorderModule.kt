@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.plus
+import androidx.annotation.VisibleForTesting
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -61,17 +62,7 @@ class RecorderModule @Inject constructor(
             .launchIn(appScope)
     }
 
-    private fun findExistingSessionDir(): File? {
-        for (parent in getLogDirectories()) {
-            if (!parent.exists()) continue
-            val dirs = parent.listFiles { f -> f.isDirectory && f.name.startsWith("bluemusic_") }
-                ?: continue
-            val mostRecent = dirs.maxByOrNull { it.lastModified() } ?: continue
-            val coreLog = File(mostRecent, "core.log")
-            if (coreLog.exists()) return mostRecent
-        }
-        return null
-    }
+    private fun findExistingSessionDir(): File? = findExistingSessionDir(getLogDirectories())
 
     private suspend fun reconcileState(state: State) {
         if (!state.isRecording && state.shouldRecord) {
@@ -208,5 +199,18 @@ class RecorderModule @Inject constructor(
         internal val TAG = logTag("Debug", "Log", "Recorder", "Module")
         private const val FORCE_FILE = "bluemusic_force_debug_run"
         private const val MIN_RECORDING_MS = 5_000L
+
+        @VisibleForTesting
+        internal fun findExistingSessionDir(logDirectories: List<File>): File? {
+            for (parent in logDirectories) {
+                if (!parent.exists()) continue
+                val dirs = parent.listFiles { f -> f.isDirectory && f.name.startsWith("bluemusic_") }
+                    ?: continue
+                val mostRecent = dirs.maxByOrNull { it.lastModified() } ?: continue
+                val coreLog = File(mostRecent, "core.log")
+                if (coreLog.exists()) return mostRecent
+            }
+            return null
+        }
     }
 }
