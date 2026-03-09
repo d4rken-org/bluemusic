@@ -66,7 +66,7 @@ class UpgradeViewModel @Inject constructor(
     companion object {
         private const val KEY_OPENED_AT = "sponsor_opened_at"
         private const val KEY_HAS_PAUSED = "has_paused_since_open"
-        private const val MIN_SPONSOR_DURATION_MS = 10_000L
+        private const val MIN_SPONSOR_DURATION_MS = 5_000L
         private val TAG = logTag("Upgrade", "Screen", "VM")
     }
 }
