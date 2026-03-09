@@ -61,16 +61,38 @@ class RecorderModule @Inject constructor(
             .launchIn(appScope)
     }
 
+    private fun findExistingSessionDir(): File? {
+        for (parent in getLogDirectories()) {
+            if (!parent.exists()) continue
+            val dirs = parent.listFiles { f -> f.isDirectory && f.name.startsWith("bluemusic_") }
+                ?: continue
+            val mostRecent = dirs.maxByOrNull { it.lastModified() } ?: continue
+            val coreLog = File(mostRecent, "core.log")
+            if (coreLog.exists()) return mostRecent
+        }
+        return null
+    }
+
     private suspend fun reconcileState(state: State) {
         if (!state.isRecording && state.shouldRecord) {
-            val sessionDir = createSessionDir()
+            val existingDir = findExistingSessionDir()
+            val sessionDir = existingDir ?: createSessionDir()
             val logFile = File(sessionDir, "core.log")
             val newRecorder = Recorder()
             newRecorder.start(logFile)
             triggerFile.createNewFile()
 
+            if (existingDir != null) {
+                log(TAG, INFO) { "Resuming recording in existing session: ${existingDir.name}" }
+            }
             log(TAG, INFO) { "Build.Fingerprint: ${Build.FINGERPRINT}" }
             log(TAG, INFO) { "BuildConfig.Versions: ${BuildConfigWrap.VERSION_DESCRIPTION}" }
+
+            val startedAt = if (existingDir != null) {
+                existingDir.lastModified()
+            } else {
+                System.currentTimeMillis()
+            }
 
             this@RecorderModule.currentLogDir = sessionDir
 
@@ -78,7 +100,7 @@ class RecorderModule @Inject constructor(
                 copy(
                     recorder = newRecorder,
                     currentLogDir = sessionDir,
-                    recordingStartedAt = System.currentTimeMillis(),
+                    recordingStartedAt = startedAt,
                 )
             }
         } else if (!state.shouldRecord && state.isRecording) {
