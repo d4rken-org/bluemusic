@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
-    <!-- External cache directory for sharing debug logs -->
-    <external-cache-path
-        name="debug_logs"
-        path="debug/" />
-    <!-- Root external cache directory as fallback -->
-    <external-cache-path
-        name="external_cache"
-        path="." />
+    <cache-path name="debug_logs" path="debug/logs" />
+    <external-files-path name="debug_logs_external" path="debug/logs" />
 </paths>

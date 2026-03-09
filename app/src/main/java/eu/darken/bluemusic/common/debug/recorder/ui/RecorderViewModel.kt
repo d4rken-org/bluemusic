@@ -2,182 +2,179 @@ package eu.darken.bluemusic.common.debug.recorder.ui
 
 import android.content.Context
 import android.content.Intent
-import android.text.format.Formatter
-import androidx.core.content.FileProvider
 import androidx.lifecycle.SavedStateHandle
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.BlueMusicLinks
-import eu.darken.bluemusic.common.BuildConfigWrap
 import eu.darken.bluemusic.common.WebpageTool
-import eu.darken.bluemusic.common.compression.Zipper
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.debug.recorder.core.DebugSession
+import eu.darken.bluemusic.common.debug.recorder.core.DebugSessionManager
 import eu.darken.bluemusic.common.flow.DynamicStateFlow
 import eu.darken.bluemusic.common.flow.SingleEventFlow
-import eu.darken.bluemusic.common.navigation.NavigationController
-import eu.darken.bluemusic.common.ui.ViewModel4
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancelAndJoin
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
+import eu.darken.bluemusic.common.ui.ViewModel3
+import kotlinx.coroutines.flow.drop
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.plus
 import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
 class RecorderViewModel @Inject constructor(
-    navCtrl: NavigationController,
-    dispatchers: DispatcherProvider,
-    savedStateHandle: SavedStateHandle,
-    @param:ApplicationContext private val context: Context,
+    handle: SavedStateHandle,
+    dispatcherProvider: DispatcherProvider,
+    @ApplicationContext private val context: Context,
+    private val sessionManager: DebugSessionManager,
     private val webpageTool: WebpageTool,
-) : ViewModel4(dispatchers, logTag("Debug", "Recorder", "Screen", "VM"), navCtrl) {
+) : ViewModel3(dispatcherProvider) {
 
-    private val recordedPath: File
+    data class LogEntry(
+        val file: File,
+        val size: Long,
+    )
 
-    private val stater: DynamicStateFlow<State>
-    val state: Flow<State>
+    data class State(
+        val logDir: File? = null,
+        val logEntries: List<LogEntry> = emptyList(),
+        val totalSize: Long = 0L,
+        val compressedSize: Long = -1L,
+        val recordingDurationSecs: Long = 0L,
+        val isWorking: Boolean = true,
+    )
 
-    val shareEvent = SingleEventFlow<Intent>()
-    val finishEvent = SingleEventFlow<Unit>()
+    sealed interface Event {
+        data class ShareIntent(val intent: Intent) : Event
+        data object Finish : Event
+    }
 
-    private var compressionJob: Job? = null
+    private val sessionId: String? = handle.get<String>(RecorderActivity.RECORD_SESSION_ID)
+    private val legacyPath: String? = handle.get<String>(RecorderActivity.RECORD_PATH)
+
+    private suspend fun resolveSession(): DebugSession? {
+        if (sessionId != null) {
+            val session = sessionManager.sessions.first().firstOrNull { it.id == sessionId }
+            if (session != null) return session
+            sessionManager.refresh()
+            return sessionManager.sessions.drop(1).first().firstOrNull { it.id == sessionId }
+        }
+        if (legacyPath != null) {
+            val file = File(legacyPath)
+            val derivedId = DebugSessionManager.deriveSessionId(file)
+            sessionManager.refresh()
+            return sessionManager.sessions.drop(1).first().firstOrNull { it.id == derivedId }
+        }
+        return null
+    }
+
+    private val stater = DynamicStateFlow(TAG, vmScope + dispatcherProvider.IO) {
+        val session = resolveSession()
+        val logDir = when (session) {
+            is DebugSession.Ready -> session.logDir
+            is DebugSession.Compressing -> session.path
+            is DebugSession.Failed -> session.path?.takeIf { it.isDirectory }
+            is DebugSession.Recording -> session.path
+            null -> legacyPath?.let { File(it) }
+        }
+
+        val isCompressing = session is DebugSession.Compressing
+
+        if (logDir == null || !logDir.exists()) {
+            return@DynamicStateFlow State(logDir = null, isWorking = isCompressing)
+        }
+
+        val files = logDir.listFiles()?.toList() ?: emptyList()
+        val entries = files.map { LogEntry(it, it.length()) }
+        val totalSize = entries.sumOf { it.size }
+
+        val compressedSize = when (session) {
+            is DebugSession.Compressing -> -1L
+            is DebugSession.Ready -> session.compressedSize.takeIf { it > 0 } ?: -1L
+            else -> -1L
+        }
+
+        val dirCreated = logDir.lastModified()
+        val latestFileModified = files.maxOfOrNull { it.lastModified() } ?: dirCreated
+        val durationSecs = ((latestFileModified - dirCreated) / 1000).coerceAtLeast(0)
+
+        State(
+            logDir = logDir,
+            logEntries = entries,
+            totalSize = totalSize,
+            compressedSize = compressedSize,
+            recordingDurationSecs = durationSecs,
+            isWorking = isCompressing,
+        )
+    }
+    val state = stater.flow
+
+    val events = SingleEventFlow<Event>()
 
     init {
-        val path = savedStateHandle.get<String>(RecorderActivity.RECORD_PATH)
-            ?: throw IllegalStateException("No path provided")
-        recordedPath = File(path)
-
-        val durationSeconds = savedStateHandle.get<Long>(RecorderActivity.RECORD_DURATION)
-        val formattedDuration = durationSeconds?.let { formatDuration(it) }
-
-        stater = DynamicStateFlow(TAG, vmScope) {
-            State(logDir = recordedPath, sessionDuration = formattedDuration)
-        }
-        state = stater.flow
-
-        compressionJob = vmScope.launch {
-            log(TAG) { "Getting log files in dir: $recordedPath" }
-            val logFiles = recordedPath.listFiles() ?: emptyArray()
-            log(TAG) { "Found ${logFiles.size} logfiles: $logFiles" }
-            var entries = logFiles.map { LogFileItem(path = it) }
-            stater.updateBlocking { copy(logEntries = entries) }
-
-            log(TAG) { "Determining log file size..." }
-            entries = entries.map { entry -> entry.copy(size = entry.path.length()) }.sortedByDescending { it.size }
-            stater.updateBlocking { copy(logEntries = entries) }
-
-            log(TAG) { "Compressing log files..." }
-            val zipFile = File(recordedPath.parentFile, "${recordedPath.name}.zip")
-            log(TAG) { "Writing zip file to $zipFile" }
-            Zipper().zip(
-                entries.map { it.path.path },
-                zipFile.path
-            )
-            val zippedSize = zipFile.length()
-            log(TAG) { "Zip file created ${zippedSize}B at $zipFile" }
-            stater.updateBlocking {
-                copy(compressedFile = zipFile, compressedSize = zippedSize, operationState = OperationState.READY)
+        sessionManager.sessions
+            .onEach { allSessions ->
+                val sid = sessionId ?: return@onEach
+                val session = allSessions.firstOrNull { it.id == sid } ?: return@onEach
+                if (session is DebugSession.Ready) {
+                    stater.updateBlocking {
+                        if (!isWorking) return@updateBlocking this
+                        copy(
+                            compressedSize = session.compressedSize.takeIf { it > 0 } ?: -1L,
+                            isWorking = false,
+                        )
+                    }
+                }
             }
-        }
+            .launchIn(vmScope)
     }
 
     fun share() = launch {
-        val file = stater.value().compressedFile ?: throw IllegalStateException("compressedFile is null")
+        val sid = sessionId ?: return@launch
 
-        val intent = Intent(Intent.ACTION_SEND).apply {
-            val uri = FileProvider.getUriForFile(
-                context,
-                BuildConfigWrap.APPLICATION_ID + ".provider",
-                file
-            )
+        stater.updateBlocking { copy(isWorking = true) }
 
-            putExtra(Intent.EXTRA_STREAM, uri)
-            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-            type = "application/zip"
+        try {
+            val uri = sessionManager.getZipUri(sid)
+            val sessionName = sid.removePrefix("ext:").removePrefix("cache:")
 
-            addCategory(Intent.CATEGORY_DEFAULT)
-            putExtra(
-                Intent.EXTRA_SUBJECT,
-                "${BuildConfigWrap.APPLICATION_ID} DebugLog - ${BuildConfigWrap.VERSION_DESCRIPTION})"
-            )
-            putExtra(Intent.EXTRA_TEXT, "Your text here.")
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            val intent = Intent(Intent.ACTION_SEND).apply {
+                putExtra(Intent.EXTRA_STREAM, uri)
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                type = "application/zip"
+                addCategory(Intent.CATEGORY_DEFAULT)
+                putExtra(Intent.EXTRA_SUBJECT, "BlueMusic DebugLog - $sessionName")
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+
+            val chooserIntent = Intent.createChooser(intent, context.getString(R.string.debug_log_file_label))
+            events.tryEmit(Event.ShareIntent(chooserIntent))
+        } catch (e: Exception) {
+            log(TAG) { "share() failed: $e" }
+            errorEvents.tryEmit(e)
+        } finally {
+            stater.updateBlocking { copy(isWorking = false) }
         }
-
-        val chooserIntent = Intent.createChooser(intent, context.getString(R.string.debug_log_file_label))
-        shareEvent.emit(chooserIntent)
     }
 
     fun keep() {
-        log(TAG) { "Keeping debug log files at $recordedPath" }
-        finishEvent.tryEmit(Unit)
+        events.tryEmit(Event.Finish)
     }
 
     fun discard() = launch {
-        log(TAG) { "Discarding debug log files at $recordedPath" }
-        stater.updateBlocking { copy(operationState = OperationState.DELETING) }
-
-        compressionJob?.cancelAndJoin()
-
-        val zipFile = File(recordedPath.parentFile, "${recordedPath.name}.zip")
-        if (zipFile.exists()) {
-            log(TAG) { "Deleting zip file: $zipFile" }
-            zipFile.delete()
-        }
-        if (recordedPath.exists()) {
-            log(TAG) { "Deleting log directory: $recordedPath" }
-            recordedPath.deleteRecursively()
-        }
-
-        finishEvent.emit(Unit)
+        val sid = sessionId ?: return@launch
+        sessionManager.deleteSession(sid)
+        events.tryEmit(Event.Finish)
     }
 
     fun goPrivacyPolicy() {
         webpageTool.open(BlueMusicLinks.PRIVACY_POLICY)
     }
 
-    enum class OperationState {
-        COMPRESSING,
-        READY,
-        DELETING,
-    }
-
-    data class State(
-        val logDir: File,
-        val logEntries: List<LogFileItem> = emptyList(),
-        val compressedFile: File? = null,
-        val compressedSize: Long? = null,
-        val sessionDuration: String? = null,
-        val operationState: OperationState = OperationState.COMPRESSING,
-    ) {
-        val loading: Boolean
-            get() = compressedSize == null
-
-        fun getFormattedCompressedSize(context: Context): String? {
-            return compressedSize?.let { Formatter.formatShortFileSize(context, it) }
-        }
-    }
-
-    data class LogFileItem(
-        val path: File,
-        val size: Long? = null,
-    ) {
-        fun getFormattedSize(context: Context): String? {
-            return size?.let { Formatter.formatShortFileSize(context, it) }
-        }
-    }
-
     companion object {
-        internal val TAG = logTag("Debug", "Recorder", "ViewModel")
-
-        private fun formatDuration(seconds: Long): String {
-            val minutes = seconds / 60
-            val remainingSeconds = seconds % 60
-            return if (minutes > 0) "${minutes}m ${remainingSeconds}s" else "${remainingSeconds}s"
-        }
+        private val TAG = logTag("Debug", "Recorder", "VM")
     }
 }

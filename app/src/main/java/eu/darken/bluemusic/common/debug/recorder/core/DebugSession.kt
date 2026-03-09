@@ -1,0 +1,49 @@
+package eu.darken.bluemusic.common.debug.recorder.core
+
+import java.io.File
+import java.time.Instant
+
+sealed interface DebugSession {
+    val id: String
+    val displayName: String
+    val createdAt: Instant
+    val diskSize: Long
+
+    data class Recording(
+        override val id: String,
+        override val displayName: String,
+        override val createdAt: Instant,
+        override val diskSize: Long,
+        val path: File,
+        val startedAt: Long,
+    ) : DebugSession
+
+    data class Compressing(
+        override val id: String,
+        override val displayName: String,
+        override val createdAt: Instant,
+        override val diskSize: Long,
+        val path: File?,
+    ) : DebugSession
+
+    data class Ready(
+        override val id: String,
+        override val displayName: String,
+        override val createdAt: Instant,
+        override val diskSize: Long,
+        val logDir: File?,
+        val zipFile: File?,
+        val compressedSize: Long,
+    ) : DebugSession
+
+    data class Failed(
+        override val id: String,
+        override val displayName: String,
+        override val createdAt: Instant,
+        override val diskSize: Long,
+        val path: File?,
+        val reason: Reason,
+    ) : DebugSession {
+        enum class Reason { EMPTY_LOG, MISSING_LOG, CORRUPT_ZIP, ZIP_FAILED }
+    }
+}

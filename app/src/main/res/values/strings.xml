@@ -230,13 +230,34 @@
     <string name="debug_log_record_action">Record</string>
     <string name="debug_log_stop_action">Stop recording</string>
     <string name="debug_log_screen_title">Debug Log Recorder</string>
+    <string name="debug_log_screen_subtitle">Review and share your recorded debug log</string>
+    <string name="debug_log_screen_sensitive_title">Sensitive information</string>
     <string name="debug_log_screen_sensitive_information_message">The generated file contains sensitive information (e.g. file names and installed apps). Only share it with trusted parties.</string>
     <string name="debug_log_screen_session_path_label">Debug session path</string>
     <string name="debug_log_screen_log_files_label">Log Files</string>
-    <string name="debug_log_screen_log_files_ready">Log files ready (ZIP: %1$s)</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d file ready (%2$s)</item>
+        <item quantity="other">%1$d files ready (%2$s)</item>
+    </plurals>
+
     <string name="debug_log_screen_discard_action">Discard</string>
     <string name="debug_log_screen_keep_action">Keep</string>
+    <string name="debug_log_compressing_label">Compressing…</string>
     <string name="debug_log_file_label">Recorded log file</string>
+
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">Log sent?</string>
+    <string name="support_debuglog_sent_message">If you\'ve sent the debug log, it can be deleted from the device. Would you like to remove it?</string>
+    <string name="support_debuglog_session_delete_title">Delete debug log?</string>
+    <string name="support_debuglog_session_delete_message">This debug log session will be permanently deleted.</string>
+    <string name="support_debuglog_session_recording">Recording…</string>
+    <string name="support_debuglog_session_compressing">Compressing…</string>
+    <string name="support_debuglog_failed_empty_log">Empty log</string>
+    <string name="support_debuglog_failed_missing_log">Missing log</string>
+    <string name="support_debuglog_failed_corrupt_zip">Corrupt ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP failed</string>
+    <string name="support_debuglog_clear_title">Delete all debug logs?</string>
+    <string name="support_debuglog_clear_message">This will permanently delete all stored debug log sessions.</string>
 
     <!-- Support/Contact -->
     <string name="settings_support_contact_label">Contact developer</string>
@@ -249,10 +270,19 @@
     <string name="contact_description_bug_hint">Describe what happened and how to reproduce the issue.</string>
     <string name="contact_description_feature_hint">Describe the feature you would like to see.</string>
     <string name="contact_description_question_hint">Describe your question in detail.</string>
+    <string name="contact_category_section_label">Category</string>
     <string name="contact_debug_log_label">Debug log</string>
     <string name="contact_debug_log_select_hint">Select a debug log to attach</string>
+    <string name="contact_debug_log_picker_hint">Attach a debug log to help diagnose the issue faster.</string>
+    <string name="contact_debug_log_picker_empty">No debug logs available. Record one first.</string>
+    <string name="contact_expected_behavior_label">Expected behavior</string>
+    <string name="contact_expected_behavior_hint">Describe what you expected to happen instead.</string>
+    <string name="support_contact_debuglog_zip_error">Failed to prepare debug log for attachment</string>
     <string name="contact_send_action">Open email app</string>
-    <string name="contact_word_count">At least %1$d words (%2$d)</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d word</item>
+        <item quantity="other">%1$d / %2$d words</item>
+    </plurals>
     <string name="contact_welcome_msg">I read every message myself and do my best to reply, but since I work on this alone, it can take a little time. Thanks for your patience.</string>
     <string name="contact_footer_msg">Your message will be sent via email. Device and setup information is attached automatically.</string>
     <string name="contact_no_email_app_msg">No email app found on this device.</string>

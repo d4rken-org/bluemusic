@@ -1,14 +1,10 @@
 package eu.darken.bluemusic.common.debug.recorder.ui
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -22,47 +18,41 @@ import eu.darken.bluemusic.common.compose.PreviewWrapper
 
 @Composable
 fun RecorderConsentDialog(
-    onDismissRequest: () -> Unit,
-    onConfirm: () -> Unit,
-    onOpenPrivacyPolicy: () -> Unit
+    onStartRecord: () -> Unit,
+    onOpenPrivacyPolicy: () -> Unit,
+    onDismiss: () -> Unit,
 ) {
     AlertDialog(
-        onDismissRequest = onDismissRequest,
-        title = {
-            Text(
-                text = stringResource(R.string.debug_log_consent_title),
-                style = MaterialTheme.typography.headlineSmall
-            )
-        },
+        onDismissRequest = onDismiss,
+        title = { Text(text = stringResource(R.string.debug_log_consent_title)) },
         text = {
-            Column {
-                Text(
-                    text = stringResource(R.string.debug_log_consent_explanation),
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                Spacer(modifier = Modifier.height(16.dp))
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Text(text = stringResource(R.string.debug_log_consent_explanation))
+                Spacer(modifier = Modifier.height(8.dp))
                 TextButton(
-                    onClick = onOpenPrivacyPolicy,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                    onClick = {
+                        onOpenPrivacyPolicy()
+                        onDismiss()
+                    },
+                    modifier = Modifier.align(Alignment.End),
                 ) {
-                    Text(stringResource(R.string.settings_privacy_policy_label))
+                    Text(text = stringResource(R.string.settings_privacy_policy_label))
                 }
             }
         },
         confirmButton = {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End
-            ) {
-                TextButton(onClick = onDismissRequest) {
-                    Text(stringResource(R.string.general_cancel_action))
-                }
-                Spacer(modifier = Modifier.width(8.dp))
-                TextButton(onClick = onConfirm) {
-                    Text(stringResource(R.string.debug_log_record_action))
-                }
+            TextButton(onClick = {
+                onDismiss()
+                onStartRecord()
+            }) {
+                Text(text = stringResource(R.string.debug_log_record_action))
             }
-        }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(text = stringResource(R.string.general_cancel_action))
+            }
+        },
     )
 }
 
@@ -71,9 +61,9 @@ fun RecorderConsentDialog(
 private fun RecorderConsentDialogPreview() {
     PreviewWrapper {
         RecorderConsentDialog(
-            onDismissRequest = {},
-            onConfirm = {},
-            onOpenPrivacyPolicy = {}
+            onStartRecord = {},
+            onOpenPrivacyPolicy = {},
+            onDismiss = {},
         )
     }
 }

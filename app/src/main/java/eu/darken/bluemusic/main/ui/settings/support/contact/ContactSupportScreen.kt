@@ -1,12 +1,12 @@
 package eu.darken.bluemusic.main.ui.settings.support.contact
 
 import android.content.ActivityNotFoundException
+import android.text.format.DateUtils
 import android.text.format.Formatter
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -16,81 +16,195 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.Send
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material.icons.twotone.BugReport
+import androidx.compose.material.icons.twotone.Cancel
+import androidx.compose.material.icons.twotone.Delete
+import androidx.compose.material.icons.twotone.Description
+import androidx.compose.material.icons.twotone.Email
+import androidx.compose.material.icons.twotone.Info
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MenuAnchorType
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.LifecycleResumeEffect
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.BlueMusicLinks
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
-import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
-import eu.darken.bluemusic.common.debug.recorder.core.DebugLogStore
 import eu.darken.bluemusic.common.debug.recorder.ui.RecorderConsentDialog
 import eu.darken.bluemusic.common.error.ErrorEventHandler
-import java.io.File
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+
+private sealed interface ContactDialog {
+    data object SentConfirm : ContactDialog
+    data object Consent : ContactDialog
+    data object ShortRecordingWarning : ContactDialog
+    data class DeleteSession(val sessionId: String) : ContactDialog
+}
 
 @Composable
 fun ContactSupportScreenHost(vm: ContactSupportViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
 
-    val state by vm.state.collectAsStateWithLifecycle(null)
     val context = LocalContext.current
     val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(vm.sendEvent) {
-        vm.sendEvent.collect { intent ->
-            try {
-                context.startActivity(intent)
-            } catch (_: ActivityNotFoundException) {
-                snackbarHostState.showSnackbar(
-                    context.getString(R.string.contact_no_email_app_msg)
-                )
+    var hasSentEmail by remember { mutableStateOf(false) }
+    var dialog by remember { mutableStateOf<ContactDialog?>(null) }
+
+    LifecycleResumeEffect(hasSentEmail) {
+        vm.refreshLogSessions()
+        if (hasSentEmail) {
+            dialog = ContactDialog.SentConfirm
+            hasSentEmail = false
+        }
+        onPauseOrDispose {}
+    }
+
+    LaunchedEffect(Unit) {
+        vm.events.collect { event ->
+            when (event) {
+                is ContactSupportViewModel.Event.OpenEmail -> {
+                    try {
+                        hasSentEmail = true
+                        context.startActivity(event.intent)
+                    } catch (_: ActivityNotFoundException) {
+                        hasSentEmail = false
+                        snackbarHostState.showSnackbar(
+                            context.getString(R.string.contact_no_email_app_msg)
+                        )
+                    }
+                }
+
+                is ContactSupportViewModel.Event.ShowSnackbar -> {
+                    snackbarHostState.showSnackbar(event.message)
+                }
+
+                ContactSupportViewModel.Event.ShowConsentDialog -> {
+                    dialog = ContactDialog.Consent
+                }
+
+                ContactSupportViewModel.Event.ShowShortRecordingWarning -> {
+                    dialog = ContactDialog.ShortRecordingWarning
+                }
             }
         }
     }
 
-    LaunchedEffect(vm.snackbarEvent) {
-        vm.snackbarEvent.collect { message ->
-            snackbarHostState.showSnackbar(message)
+    when (val d = dialog) {
+        is ContactDialog.SentConfirm -> {
+            AlertDialog(
+                onDismissRequest = { dialog = null },
+                title = { Text(stringResource(R.string.support_debuglog_sent_title)) },
+                text = { Text(stringResource(R.string.support_debuglog_sent_message)) },
+                confirmButton = {
+                    TextButton(onClick = {
+                        dialog = null
+                        vm.confirmSent()
+                    }) {
+                        Text(stringResource(R.string.general_ok_action))
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { dialog = null }) {
+                        Text(stringResource(R.string.general_cancel_action))
+                    }
+                },
+            )
         }
+
+        is ContactDialog.Consent -> {
+            RecorderConsentDialog(
+                onStartRecord = {
+                    vm.doStartRecording()
+                },
+                onOpenPrivacyPolicy = { vm.openUrl(BlueMusicLinks.PRIVACY_POLICY) },
+                onDismiss = { dialog = null },
+            )
+        }
+
+        is ContactDialog.ShortRecordingWarning -> {
+            AlertDialog(
+                onDismissRequest = { dialog = null },
+                title = { Text(stringResource(R.string.settings_support_debuglog_short_recording_title)) },
+                text = { Text(stringResource(R.string.settings_support_debuglog_short_recording_msg)) },
+                confirmButton = {
+                    TextButton(onClick = { dialog = null }) {
+                        Text(stringResource(R.string.settings_support_debuglog_short_recording_continue))
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = {
+                        dialog = null
+                        vm.forceStopRecording()
+                    }) {
+                        Text(stringResource(R.string.settings_support_debuglog_short_recording_stop))
+                    }
+                },
+            )
+        }
+
+        is ContactDialog.DeleteSession -> {
+            AlertDialog(
+                onDismissRequest = { dialog = null },
+                title = { Text(stringResource(R.string.support_debuglog_session_delete_title)) },
+                text = { Text(stringResource(R.string.support_debuglog_session_delete_message)) },
+                confirmButton = {
+                    TextButton(onClick = {
+                        dialog = null
+                        vm.deleteLogSession(d.sessionId)
+                    }) {
+                        Text(stringResource(R.string.general_delete_action))
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { dialog = null }) {
+                        Text(stringResource(R.string.general_cancel_action))
+                    }
+                },
+            )
+        }
+
+        null -> {}
     }
 
+    val state by vm.state.collectAsStateWithLifecycle(null)
     state?.let { currentState ->
         ContactSupportScreen(
             state = currentState,
@@ -98,10 +212,11 @@ fun ContactSupportScreenHost(vm: ContactSupportViewModel = hiltViewModel()) {
             onNavigateUp = { vm.navUp() },
             onCategorySelected = { vm.selectCategory(it) },
             onDescriptionChanged = { vm.updateDescription(it) },
-            onLogSessionSelected = { vm.selectLogSession(it) },
+            onExpectedChanged = { vm.updateExpectedBehavior(it) },
+            onSelectSession = { vm.selectLogSession(it) },
+            onDeleteSession = { id -> dialog = ContactDialog.DeleteSession(id) },
             onStartRecording = { vm.startRecording() },
             onStopRecording = { vm.stopRecording() },
-            onOpenUrl = { vm.openUrl(it) },
             onSend = { vm.send() },
         )
     }
@@ -115,12 +230,15 @@ private fun ContactSupportScreen(
     onNavigateUp: () -> Unit,
     onCategorySelected: (ContactCategory) -> Unit,
     onDescriptionChanged: (String) -> Unit,
-    onLogSessionSelected: (DebugLogStore.LogSession?) -> Unit,
-    onStartRecording: () -> Unit = {},
-    onStopRecording: () -> Unit = {},
-    onOpenUrl: (String) -> Unit = {},
+    onExpectedChanged: (String) -> Unit,
+    onSelectSession: (String) -> Unit,
+    onDeleteSession: (String) -> Unit,
+    onStartRecording: () -> Unit,
+    onStopRecording: () -> Unit,
     onSend: () -> Unit,
 ) {
+    val context = LocalContext.current
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -138,131 +256,264 @@ private fun ContactSupportScreen(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         contentWindowInsets = WindowInsets.statusBars,
     ) { paddingValues ->
-        var showConsentDialog by remember { mutableStateOf(false) }
-
-        if (showConsentDialog) {
-            RecorderConsentDialog(
-                onDismissRequest = { showConsentDialog = false },
-                onConfirm = {
-                    showConsentDialog = false
-                    onStartRecording()
-                },
-                onOpenPrivacyPolicy = { onOpenUrl(BlueMusicLinks.PRIVACY_POLICY) },
-            )
-        }
-
-        val navBarPadding = navigationBarBottomPadding()
-        LazyColumn(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .horizontalCutoutPadding(),
-            contentPadding = PaddingValues(
-                start = 16.dp,
-                end = 16.dp,
-                top = 8.dp,
-                bottom = 16.dp + navBarPadding,
-            ),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
+                .horizontalCutoutPadding()
+                .verticalScroll(rememberScrollState())
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            item {
-                FlowRow(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    ContactCategory.entries.forEach { category ->
-                        FilterChip(
-                            selected = state.category == category,
-                            onClick = { onCategorySelected(category) },
-                            label = { Text(stringResource(category.labelRes)) },
-                        )
+            // Category
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    SectionHeader(
+                        icon = {
+                            Icon(
+                                Icons.TwoTone.Description,
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp),
+                            )
+                        },
+                        title = stringResource(R.string.contact_category_section_label),
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        ContactCategory.entries.forEach { category ->
+                            FilterChip(
+                                selected = state.category == category,
+                                onClick = { onCategorySelected(category) },
+                                label = { Text(stringResource(category.labelRes)) },
+                            )
+                        }
                     }
                 }
             }
 
-            item {
-                Column {
+            // Debug log (bug only)
+            if (state.isBug) {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
+                ) {
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        SectionHeader(
+                            icon = {
+                                Icon(
+                                    Icons.TwoTone.BugReport,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp),
+                                )
+                            },
+                            title = stringResource(R.string.contact_debug_log_label),
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = stringResource(R.string.contact_debug_log_picker_hint),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        if (state.sessions.isEmpty() && !state.isRecording) {
+                            Text(
+                                text = stringResource(R.string.contact_debug_log_picker_empty),
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontStyle = FontStyle.Italic,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                modifier = Modifier.padding(vertical = 8.dp),
+                            )
+                        } else {
+                            state.sessions.forEach { session ->
+                                val isSelected = state.selectedSessionId == session.id
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 4.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                ) {
+                                    RadioButton(
+                                        selected = isSelected,
+                                        onClick = { onSelectSession(session.id) },
+                                    )
+                                    Column(
+                                        modifier = Modifier
+                                            .weight(1f)
+                                            .padding(start = 4.dp),
+                                    ) {
+                                        Text(
+                                            text = session.displayName,
+                                            style = MaterialTheme.typography.bodyMedium,
+                                        )
+                                        val sizeText = Formatter.formatShortFileSize(context, session.diskSize)
+                                        val agoText = DateUtils.getRelativeTimeSpanString(
+                                            session.createdAt.toEpochMilli(),
+                                            System.currentTimeMillis(),
+                                            DateUtils.SECOND_IN_MILLIS,
+                                            DateUtils.FORMAT_ABBREV_RELATIVE,
+                                        )
+                                        Text(
+                                            text = "$sizeText \u00B7 $agoText",
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        )
+                                    }
+                                    IconButton(onClick = { onDeleteSession(session.id) }) {
+                                        Icon(
+                                            Icons.TwoTone.Delete,
+                                            contentDescription = null,
+                                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        )
+                                    }
+                                }
+                            }
+                        }
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.End,
+                        ) {
+                            if (state.isRecording) {
+                                FilledTonalButton(onClick = onStopRecording) {
+                                    Icon(Icons.TwoTone.Cancel, null, Modifier.size(18.dp))
+                                    Spacer(Modifier.width(4.dp))
+                                    Text(stringResource(R.string.debug_log_stop_action))
+                                }
+                            } else {
+                                FilledTonalButton(onClick = onStartRecording) {
+                                    Icon(Icons.TwoTone.BugReport, null, Modifier.size(18.dp))
+                                    Spacer(Modifier.width(4.dp))
+                                    Text(stringResource(R.string.debug_log_record_action))
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Description
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
                     OutlinedTextField(
                         value = state.description,
                         onValueChange = onDescriptionChanged,
                         label = { Text(stringResource(R.string.contact_description_label)) },
-                        placeholder = {
-                            val hintRes = state.category?.hintRes
-                            if (hintRes != null) Text(stringResource(hintRes))
-                        },
                         modifier = Modifier.fillMaxWidth(),
                         minLines = 4,
-                        maxLines = 10,
+                        keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     WordCountIndicator(
                         wordCount = state.descriptionWordCount,
                         minimum = 20,
                     )
-                }
-            }
-
-            if (state.category == ContactCategory.BUG) {
-                item {
-                    LogSessionPicker(
-                        sessions = state.logSessions,
-                        selectedSession = state.selectedLogSession,
-                        isRecording = state.isRecording,
-                        onSessionSelected = onLogSessionSelected,
-                        onStartRecording = { showConsentDialog = true },
-                        onStopRecording = onStopRecording,
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = stringResource(state.category.hintRes),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
             }
 
-            item {
-                ElevatedCard(
+            // Expected behavior (bug only)
+            if (state.isBug) {
+                Card(
                     modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow),
                 ) {
-                    Row(
-                        modifier = Modifier.padding(16.dp),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Info,
-                            contentDescription = null,
-                            modifier = Modifier.size(24.dp),
-                            tint = MaterialTheme.colorScheme.primary,
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        OutlinedTextField(
+                            value = state.expectedBehavior,
+                            onValueChange = onExpectedChanged,
+                            label = { Text(stringResource(R.string.contact_expected_behavior_label)) },
+                            modifier = Modifier.fillMaxWidth(),
+                            minLines = 3,
+                            keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
                         )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        WordCountIndicator(
+                            wordCount = state.expectedWordCount,
+                            minimum = 10,
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = stringResource(R.string.contact_welcome_msg),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurface,
+                            text = stringResource(R.string.contact_expected_behavior_hint),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
                     }
                 }
             }
 
-            item {
-                Text(
-                    text = stringResource(R.string.contact_footer_msg),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-            }
-
-            item {
-                Button(
-                    onClick = onSend,
-                    enabled = state.canSend,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
+            // Personal note
+            OutlinedCard(modifier = Modifier.fillMaxWidth()) {
+                Row(modifier = Modifier.padding(16.dp)) {
                     Icon(
-                        imageVector = Icons.AutoMirrored.Filled.Send,
+                        Icons.TwoTone.Info,
                         contentDescription = null,
-                        modifier = Modifier.size(18.dp),
+                        modifier = Modifier.size(32.dp),
+                        tint = MaterialTheme.colorScheme.primary,
                     )
-                    Spacer(modifier = Modifier.size(8.dp))
-                    Text(stringResource(R.string.contact_send_action))
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Text(
+                        text = stringResource(R.string.contact_welcome_msg),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
                 }
             }
+
+            // Send button
+            androidx.compose.material3.Button(
+                onClick = onSend,
+                modifier = Modifier.fillMaxWidth(),
+                enabled = state.canSend,
+            ) {
+                if (state.isSending) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(18.dp),
+                        strokeWidth = 2.dp,
+                    )
+                } else {
+                    Icon(Icons.TwoTone.Email, null, Modifier.size(18.dp))
+                }
+                Spacer(Modifier.width(8.dp))
+                Text(stringResource(R.string.contact_send_action))
+            }
+
+            // Footer
+            Text(
+                text = stringResource(R.string.contact_footer_msg),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.fillMaxWidth(),
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
         }
+    }
+}
+
+@Composable
+private fun SectionHeader(
+    icon: @Composable () -> Unit,
+    title: String,
+) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        icon()
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(
+            text = title,
+            style = MaterialTheme.typography.titleSmall,
+        )
     }
 }
 
@@ -271,114 +522,20 @@ private fun WordCountIndicator(
     wordCount: Int,
     minimum: Int,
 ) {
+    val color = when {
+        wordCount == 0 -> MaterialTheme.colorScheme.onSurfaceVariant
+        wordCount < minimum -> MaterialTheme.colorScheme.error
+        else -> MaterialTheme.colorScheme.primary
+    }
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.End,
     ) {
-        val color = if (wordCount < minimum) {
-            MaterialTheme.colorScheme.error
-        } else {
-            MaterialTheme.colorScheme.onSurfaceVariant
-        }
         Text(
-            text = stringResource(R.string.contact_word_count, minimum, wordCount),
+            text = pluralStringResource(R.plurals.contact_word_count, wordCount, wordCount, minimum),
             style = MaterialTheme.typography.bodySmall,
             color = color,
         )
-    }
-}
-
-@Composable
-private fun LogSessionPicker(
-    sessions: List<DebugLogStore.LogSession>,
-    selectedSession: DebugLogStore.LogSession?,
-    isRecording: Boolean,
-    onSessionSelected: (DebugLogStore.LogSession?) -> Unit,
-    onStartRecording: () -> Unit,
-    onStopRecording: () -> Unit,
-) {
-    var expanded by remember { mutableStateOf(false) }
-    val context = LocalContext.current
-    val dateFormat = remember { SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()) }
-
-    Column {
-        Text(
-            text = stringResource(R.string.contact_debug_log_label),
-            style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.onSurface,
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-
-        if (sessions.isNotEmpty()) {
-            ExposedDropdownMenuBox(
-                expanded = expanded,
-                onExpandedChange = { if (!isRecording) expanded = it },
-            ) {
-                OutlinedTextField(
-                    value = selectedSession?.let {
-                        val date = dateFormat.format(Date(it.timestamp))
-                        val size = Formatter.formatShortFileSize(context, it.totalSize)
-                        "$date ($size)"
-                    } ?: stringResource(R.string.contact_debug_log_select_hint),
-                    onValueChange = {},
-                    readOnly = true,
-                    enabled = !isRecording,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .menuAnchor(MenuAnchorType.PrimaryNotEditable),
-                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                )
-                ExposedDropdownMenu(
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false },
-                ) {
-                    sessions.forEach { session ->
-                        val date = dateFormat.format(Date(session.timestamp))
-                        val size = Formatter.formatShortFileSize(context, session.totalSize)
-                        DropdownMenuItem(
-                            text = {
-                                Column {
-                                    Text(date)
-                                    Text(
-                                        text = "${session.fileCount} files ($size)",
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    )
-                                }
-                            },
-                            onClick = {
-                                onSessionSelected(session)
-                                expanded = false
-                            },
-                        )
-                    }
-                }
-            }
-            Spacer(modifier = Modifier.height(8.dp))
-        }
-
-        if (isRecording) {
-            Button(
-                onClick = onStopRecording,
-                modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.error,
-                ),
-            ) {
-                Text(stringResource(R.string.debug_log_stop_action))
-            }
-        } else {
-            Button(
-                onClick = onStartRecording,
-                modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                ),
-            ) {
-                Text(stringResource(R.string.debug_log_record_action))
-            }
-        }
     }
 }
 
@@ -390,20 +547,15 @@ private fun ContactSupportScreenPreview() {
             state = ContactSupportViewModel.State(
                 category = ContactCategory.BUG,
                 description = "The app crashes when I connect my headphones and try to adjust the volume",
-                logSessions = listOf(
-                    DebugLogStore.LogSession(
-                        dir = File("/tmp/session1"),
-                        zipFile = File("/tmp/session1.zip"),
-                        timestamp = System.currentTimeMillis(),
-                        fileCount = 3,
-                        totalSize = 1024 * 512,
-                    )
-                ),
             ),
             onNavigateUp = {},
             onCategorySelected = {},
             onDescriptionChanged = {},
-            onLogSessionSelected = {},
+            onExpectedChanged = {},
+            onSelectSession = {},
+            onDeleteSession = {},
+            onStartRecording = {},
+            onStopRecording = {},
             onSend = {},
         )
     }
@@ -418,7 +570,11 @@ private fun ContactSupportScreenEmptyPreview() {
             onNavigateUp = {},
             onCategorySelected = {},
             onDescriptionChanged = {},
-            onLogSessionSelected = {},
+            onExpectedChanged = {},
+            onSelectSession = {},
+            onDeleteSession = {},
+            onStartRecording = {},
+            onStopRecording = {},
             onSend = {},
         )
     }
