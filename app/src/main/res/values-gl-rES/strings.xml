@@ -256,7 +256,6 @@
     <string name="debug_log_screen_sensitive_information_message">O ficheiro xerado contén información sensible (p. ex. nomes de ficheiros e aplicacións instaladas). Compárteo só con partes de confianza.</string>
     <string name="debug_log_screen_session_path_label">Ruta da sesión de depuración</string>
     <string name="debug_log_screen_log_files_label">Ficheiros de rexistro</string>
-    <string name="debug_log_screen_log_files_ready">Ficheiros de rexistro listos (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Descartar</string>
     <string name="debug_log_file_label">Ficheiro de rexistro gravado</string>
     <string name="upgrade_feature_requires_pro">Esta funcionalidade require a versión Premium</string>

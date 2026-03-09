@@ -172,7 +172,6 @@
     <string name="debug_log_screen_sensitive_information_message">El archivo generado contiene información sensible (p. ej., nombres de archivos y aplicaciones instaladas). Solo compártelo con partes de confianza.</string>
     <string name="debug_log_screen_session_path_label">Ruta de sesión de depuración</string>
     <string name="debug_log_screen_log_files_label">Archivos de registro</string>
-    <string name="debug_log_screen_log_files_ready">Archivos de registro listos (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Descartar</string>
     <string name="debug_log_file_label">Archivo de registro grabado</string>
     <string name="label_bug_reports">Informes de errores</string>

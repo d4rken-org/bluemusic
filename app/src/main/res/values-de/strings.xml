@@ -173,7 +173,6 @@
     <string name="debug_log_screen_sensitive_information_message">Die generierte Datei enthält sensible Informationen (z.B. Dateinamen und installierte Apps). Teilen Sie sie nur mit vertrauenswürdigen Parteien.</string>
     <string name="debug_log_screen_session_path_label">Debug-Sitzungspfad</string>
     <string name="debug_log_screen_log_files_label">Protokolldateien</string>
-    <string name="debug_log_screen_log_files_ready">Protokolldateien bereit (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Verwerfen</string>
     <string name="debug_log_file_label">Aufgezeichnete Protokolldatei</string>
     <string name="label_bug_reports">Fehlerberichte</string>

@@ -182,7 +182,6 @@
     <string name="debug_log_screen_sensitive_information_message">Luotu tiedosto sisältää arkaluonteisia tietoja (esim. tiedostonimet ja asennetut sovellukset). Jaa se vain luotettavien tahojen kanssa.</string>
     <string name="debug_log_screen_session_path_label">Debug-istunnon polku</string>
     <string name="debug_log_screen_log_files_label">Lokitiedostot</string>
-    <string name="debug_log_screen_log_files_ready">Lokitiedostot valmiit (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Hylkää</string>
     <string name="debug_log_file_label">Tallennettu lokitiedosto</string>
     <string name="label_bug_reports">Virheraportti</string>

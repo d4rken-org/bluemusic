@@ -162,7 +162,6 @@
     <string name="debug_log_screen_sensitive_information_message">Den genererade filen innehåller känslig information (t.ex. filnamn och installerade appar). Dela den bara med betrodda parter.</string>
     <string name="debug_log_screen_session_path_label">Debug-sessionsökväg</string>
     <string name="debug_log_screen_log_files_label">Loggfiler</string>
-    <string name="debug_log_screen_log_files_ready">Loggfiler klara (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Kasta</string>
     <string name="debug_log_file_label">Inspelade loggfil</string>
     <string name="label_bug_reports">Felrapporter</string>

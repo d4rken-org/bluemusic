@@ -171,7 +171,6 @@
     <string name="debug_log_screen_sensitive_information_message">產生的檔案包含敏感資訊（例如檔案名稱和已安裝的應用程式）。請只與可信任的對象分享。</string>
     <string name="debug_log_screen_session_path_label">除錯工作階段路徑</string>
     <string name="debug_log_screen_log_files_label">日誌檔案</string>
-    <string name="debug_log_screen_log_files_ready">日誌檔案已準備好（ZIP: %1$s）</string>
     <string name="debug_log_screen_discard_action">破棄</string>
     <string name="debug_log_file_label">已記錄的日誌檔案</string>
     <string name="label_bug_reports">錯誤回報</string>

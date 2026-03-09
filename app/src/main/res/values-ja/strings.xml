@@ -171,7 +171,6 @@
     <string name="debug_log_screen_sensitive_information_message">生成されるファイルには機密情報（例：ファイル名やインストール済みアプリ）が含まれています。信頼できる相手とのみ共有してください。</string>
     <string name="debug_log_screen_session_path_label">デバッグセッションパス</string>
     <string name="debug_log_screen_log_files_label">ログファイル</string>
-    <string name="debug_log_screen_log_files_ready">ログファイルの準備完了 (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">破棄</string>
     <string name="debug_log_file_label">記録されたログファイル</string>
     <string name="label_bug_reports">バグ報告</string>

@@ -181,7 +181,6 @@
     <string name="debug_log_screen_sensitive_information_message">Генерираната датотека содржи чувствителни информации (на пр. имиња на датотеки и инсталирани апликации). Сподели ја само со доверливи страни.</string>
     <string name="debug_log_screen_session_path_label">Патека на дебаг сесијата</string>
     <string name="debug_log_screen_log_files_label">Лог датотеки</string>
-    <string name="debug_log_screen_log_files_ready">Лог датотеките се подготвени (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Отфрли</string>
     <string name="debug_log_file_label">Снимена лог датотека</string>
     <string name="label_bug_reports">Пријави грешка</string>

@@ -216,7 +216,6 @@
     <string name="debug_log_screen_sensitive_information_message">La generita dosiero enhavas sentegan informon (ekz. dosier-nomojn kaj instalitajn aplikaĵojn). Nur kunhavigi ĝin kun fideblaj partoj.</string>
     <string name="debug_log_screen_session_path_label">Debaŭga seanco-vojo</string>
     <string name="debug_log_screen_log_files_label">Protokol-Dosieroj</string>
-    <string name="debug_log_screen_log_files_ready">Protokol-dosieroj pretaj (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Forĵeti</string>
     <string name="debug_log_file_label">Registrita protokolo-dosiero</string>
 

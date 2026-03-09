@@ -218,7 +218,6 @@
     <string name="debug_log_screen_sensitive_information_message">Ang nabuong file ay naglalaman ng sensitibong impormasyon (hal. mga pangalan ng file at mga naka-install na app). Ibahagi lamang ito sa mga pinagkakatiwalaang tao.</string>
     <string name="debug_log_screen_session_path_label">Path ng debug session</string>
     <string name="debug_log_screen_log_files_label">Mga Log File</string>
-    <string name="debug_log_screen_log_files_ready">Handa na ang mga log file (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Itapon</string>
     <string name="debug_log_file_label">Naka-record na log file</string>
 

@@ -170,7 +170,6 @@
     <string name="debug_log_screen_sensitive_information_message">Yaradılan fayl həssas məlumatlar ehtiva edir (məs. fayl adları və quraşdırılmış tətbiqlər). Yalnız etibarlı tərəflərlə paylaşın.</string>
     <string name="debug_log_screen_session_path_label">Sazlama sessiyası yolu</string>
     <string name="debug_log_screen_log_files_label">Jurnal Faylları</string>
-    <string name="debug_log_screen_log_files_ready">Jurnal faylları hazırdır (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Sil</string>
     <string name="debug_log_file_label">Yazılmış jurnal faylı</string>
     <string name="label_bug_reports">Xəta hesabatı</string>

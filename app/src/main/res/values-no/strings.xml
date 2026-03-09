@@ -167,7 +167,6 @@
     <string name="debug_log_screen_sensitive_information_message">Den genererte filen inneholder sensitiv informasjon (f.eks. filnavn og installerte apper). Del den bare med pålitelige parter.</string>
     <string name="debug_log_screen_session_path_label">Feilsøkingsøktsti</string>
     <string name="debug_log_screen_log_files_label">Loggfiler</string>
-    <string name="debug_log_screen_log_files_ready">Loggfiler klare (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Forkast</string>
     <string name="debug_log_file_label">Innspilt loggfil</string>
     <string name="label_bug_reports">Feilrapporter</string>

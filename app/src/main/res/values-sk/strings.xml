@@ -182,7 +182,6 @@
     <string name="debug_log_screen_sensitive_information_message">Vygenerovaný súbor obsahuje citlivé informácie (napr. názvy súborov a nainštalované aplikácie). Zdieľaj ho len s dôveryhodnými stranami.</string>
     <string name="debug_log_screen_session_path_label">Cesta k ladiciacej relácii</string>
     <string name="debug_log_screen_log_files_label">Súbory logov</string>
-    <string name="debug_log_screen_log_files_ready">Súbory logov sú pripravené (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Zahodiť</string>
     <string name="debug_log_file_label">Zaznamenaný súbor logu</string>
     <string name="label_bug_reports">Nahlásenie chyby</string>

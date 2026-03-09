@@ -167,7 +167,6 @@
     <string name="debug_log_screen_sensitive_information_message">Το αρχείο που δημιουργείται περιέχει ευαίσθητες πληροφορίες (π.χ. ονόματα αρχείων και εγκατεστημένες εφαρμογές). Μοιραστείτε το μόνο με έμπιστα άτομα.</string>
     <string name="debug_log_screen_session_path_label">Διαδρομή συνεδρίας debug</string>
     <string name="debug_log_screen_log_files_label">Αρχεία Καταγραφής</string>
-    <string name="debug_log_screen_log_files_ready">Αρχεία καταγραφής έτοιμα (ZIP: %1$s)</string>
     <string name="debug_log_screen_discard_action">Απόρριψη</string>
     <string name="debug_log_file_label">Καταγεγραμμένο αρχείο καταγραφής</string>
     <string name="label_bug_reports">Αναφορές σφαλμάτων</string>
