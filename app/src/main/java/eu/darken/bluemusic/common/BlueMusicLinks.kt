@@ -5,5 +5,6 @@ object BlueMusicLinks {
     const val ISSUES = "https://github.com/d4rken-org/bluemusic/issues"
     const val WIKI = "https://github.com/d4rken-org/bluemusic/wiki"
     const val PRIVACY_POLICY = "https://bluemusic.darken.eu/privacy"
+    const val CROWDIN = "https://crowdin.com/project/bluemusic"
     const val SUPPORT_EMAIL = "support@darken.eu"
 }

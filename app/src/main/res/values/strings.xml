@@ -214,6 +214,9 @@
     <string name="settings_acks_crowdin_desc">For supporting translation of open-source projects</string>
     <string name="settings_licenses_label">Licenses</string>
 
+    <string name="settings_translation_label">Translation</string>
+    <string name="settings_translation_desc">Help translate the app into your favorite language</string>
+
     <string name="settings_sponsor_development_title">Sponsor development</string>
     <string name="settings_sponsor_development_summary">Become a patron and make continued development possible.</string>
 

@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import eu.darken.bluemusic.R
+import eu.darken.bluemusic.common.BlueMusicLinks
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
@@ -69,20 +70,10 @@ fun AcknowledgementsScreen(
 
             item {
                 SettingsBaseItem(
-                    icon = Icons.TwoTone.Translate,
-                    title = stringResource(R.string.settings_acks_translate_title),
-                    subtitle = stringResource(R.string.settings_acks_translate_desc),
-                    onClick = { onOpenUrl("http://crowdin.com/project/bluemusic") }
-                )
-                SettingsDivider()
-            }
-
-            item {
-                SettingsBaseItem(
                     icon = Icons.TwoTone.Favorite,
                     title = stringResource(R.string.settings_acks_translators_title),
                     subtitle = stringResource(R.string.settings_acks_translators_people),
-                    onClick = { onOpenUrl("http://crowdin.com/project/bluemusic") }
+                    onClick = { onOpenUrl(BlueMusicLinks.CROWDIN) }
                 )
             }
 
@@ -92,7 +83,7 @@ fun AcknowledgementsScreen(
                 SettingsBaseItem(
                     title = stringResource(R.string.settings_acks_crowdin_title),
                     subtitle = stringResource(R.string.settings_acks_crowdin_desc),
-                    onClick = { onOpenUrl("http://crowdin.com/project/bluemusic") }
+                    onClick = { onOpenUrl(BlueMusicLinks.CROWDIN) }
                 )
             }
 

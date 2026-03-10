@@ -18,6 +18,7 @@ import androidx.compose.material.icons.twotone.Info
 import androidx.compose.material.icons.twotone.PrivacyTip
 import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material.icons.twotone.Stars
+import androidx.compose.material.icons.twotone.Translate
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -209,6 +210,16 @@ fun SettingsIndexScreen(
                     title = stringResource(R.string.settings_privacy_policy_label),
                     subtitle = stringResource(R.string.settings_privacy_policy_desc),
                     onClick = { onOpenUrl(BlueMusicLinks.PRIVACY_POLICY) },
+                )
+                SettingsDivider()
+            }
+
+            item {
+                SettingsBaseItem(
+                    icon = Icons.TwoTone.Translate,
+                    title = stringResource(R.string.settings_translation_label),
+                    subtitle = stringResource(R.string.settings_translation_desc),
+                    onClick = { onOpenUrl(BlueMusicLinks.CROWDIN) },
                 )
             }
         }
