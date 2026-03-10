@@ -6,6 +6,7 @@
 [![RB Status](https://shields.rbtlog.dev/simple/eu.darken.bluemusic)](https://shields.rbtlog.dev/eu.darken.bluemusic)
 [![Code tests & eval](https://img.shields.io/github/actions/workflow/status/d4rken-org/bluemusic/code-checks.yml?logo=githubactions&label=Code%20tests
 )](https://github.com/d4rken-org/bluemusic/actions)
+[![Crowdin](https://badges.crowdin.net/bluemusic/localized.svg)](https://crowdin.com/project/bluemusic)
 [![Github Downloads](https://img.shields.io/github/downloads/d4rken-org/bluemusic/total.svg?label=GitHub%20Downloads&logo=github)](https://github.com/d4rken-org/bluemusic/main/README.md#download)
 [![Google Play Downloads](https://img.shields.io/endpoint?color=green&logo=google-play&logoColor=green&url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Deu.darken.bluemusic%26l%3DGoogle%2520Play%26m%3D%24totalinstalls)](https://github.com/d4rken-org/bluemusic/main/README.md#download)
 [![⭐](https://img.shields.io/endpoint?url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Deu.darken.bluemusic%26gl%3DUS%26hl%3Den%26l%3D%25E2%25AD%2590%26m%3D%24rating)](https://github.com/d4rken-org/bluemusic/main/README.md#download)
@@ -39,6 +40,7 @@ sponsor ❤️.
 
 * Upgrade to **BVM Pro** on [Google Play](https://play.google.com/store/apps/details?id=eu.darken.bluemusic)
 * [Become a sponsor](https://github.com/sponsors/d4rken) on GitHub
+* Help translate BVM [on Crowdin](https://crowdin.com/project/bluemusic)
 
 ## Get help
 
@@ -49,6 +51,10 @@ sponsor ❤️.
 ## Screenshots
 
 <img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/01_dashboard_light.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/02_dashboard_dark.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/03_device_config_header.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/04_device_config_reaction.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/05_device_config_timing.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/06_app_launcher.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/07_autoplay.png" width="100"><img src="https://github.com/d4rken-org/bluemusic/raw/main/fastlane/metadata/android/en-US/images/phoneScreenshots/08_settings.png" width="100">
+
+## Thanks
+
+* Thanks to [crowdin.com](https://crowdin.com/) for supporting open-source projects
 
 ## License
 
