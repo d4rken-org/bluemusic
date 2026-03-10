@@ -10,8 +10,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import java.io.File
 import java.time.Instant
+import testhelpers.BaseTest
 
-class DebugSessionManagerSessionLogicTest {
+class DebugSessionManagerSessionLogicTest : BaseTest() {
 
     @TempDir
     lateinit var tempDir: File

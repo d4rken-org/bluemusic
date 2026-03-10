@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import java.io.File
+import testhelpers.BaseTest
 
-class RecorderModuleTest {
+class RecorderModuleTest : BaseTest() {
 
     @Nested
     inner class DefaultState {

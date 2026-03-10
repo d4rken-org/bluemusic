@@ -10,8 +10,9 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import java.io.File
 import java.util.zip.ZipFile
+import testhelpers.BaseTest
 
-class DebugLogZipperTest {
+class DebugLogZipperTest : BaseTest() {
 
     @TempDir
     lateinit var tempDir: File
