@@ -22,8 +22,9 @@ import org.junit.jupiter.api.io.TempDir
 import java.io.File
 import java.time.Instant
 import java.time.format.DateTimeParseException
+import testhelpers.BaseTest
 
-class DataStoreValueSerializationTest {
+class DataStoreValueSerializationTest : BaseTest() {
 
     private fun createDataStore(scope: TestScope, tempDir: File): DataStore<Preferences> {
         val testFile = File(

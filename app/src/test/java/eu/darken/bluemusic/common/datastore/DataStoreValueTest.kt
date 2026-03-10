@@ -19,8 +19,9 @@ import kotlinx.coroutines.withContext
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import java.io.File
+import testhelpers.BaseTest
 
-class DataStoreValueTest {
+class DataStoreValueTest : BaseTest() {
 
     private fun createDataStore(scope: TestScope, tempDir: File): DataStore<Preferences> {
         val testFile = File(

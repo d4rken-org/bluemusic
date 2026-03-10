@@ -13,8 +13,9 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import java.io.File
+import testhelpers.BaseTest
 
-class PreferenceStoreMapperTest {
+class PreferenceStoreMapperTest : BaseTest() {
 
     // Use a real dispatcher scope — PreferenceStoreMapper uses runBlocking internally
     // which deadlocks with TestScope's test dispatcher.
