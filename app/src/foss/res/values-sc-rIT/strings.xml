@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM FOSS</string>
+    <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_feature_requires_pro">Riquerit BVM FOSS</string>
+    <string name="upgrade_prompt_title">Addobba a BVM FOSS</string>
+    <string name="upgrade_prompt_body">Aberri funtzionalidades addizionales e diventa patronu pro sustènnere su isvilupu continuadu!</string>
+    <string name="upgrade_prompt_upgrade_action">Agiornare</string>
+    <string name="upgrade_screen_title">Addobba a BVM FOSS</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager no tenet pubblicidade e no vendet datos de s\'usuàriu. S\'isvilupu continuadu est possìbile solamente gràtzias a tene.</string>
+    <string name="upgrade_screen_how_title">Comente agiudare</string>
+    <string name="upgrade_screen_how_body">Diventa patronu e sponsoriza s\'isvilupu! Tocca su butone in bassu pro ativare totu sas funtzionalidades addizionales e abèrrere su profilu meu de GitHub Sponsors.</string>
+    <string name="upgrade_screen_why_title">Custu fait màgia 🪄</string>
+    <string name="upgrade_screen_why_body">• Unu programadore motivadu 🧙
+• Dispositivus illimitados ➡️➡️
+• Atziones extras ⚙️
+e àteru…</string>
+    <string name="upgrade_screen_sponsor_action">Sponsoriza s\'isvilupu</string>
+    <string name="upgrade_screen_sponsor_action_hint">S\'alternativa sunt sa pubblicidade, s\'anàlisi e Google Play 🙁</string>
+    <string name="upgrade_screen_thanks_toast">Gràtzias pro sustènnere s\'isvilupu de còdighe abertu ❤️</string>
+    <string name="upgrade_screen_sponsor_too_fast">Giai torradu? Su sustegnu tuo mantenat BVM in vida!</string>
+</resources>

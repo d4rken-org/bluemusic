@@ -1,12 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Gestionnaire de volume Bluetooth</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
     <string name="general_error_label">Erreur</string>
     <string name="general_error_no_compatible_app_found_msg">Aucune application compatible trouvée pour traiter cette demande.</string>
-    <string name="general_navigate_back_action">Retour</string>
     <string name="general_share_action">Partager</string>
     <string name="general_back_action">Retour</string>
     <string name="general_show_details_action">Afficher les détails</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Bienvenue dans BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager vous permet de gérer automatiquement les volumes des périphériques Bluetooth.</string>
     <string name="onboarding_welcome_action">C\'est parti</string>
@@ -21,9 +23,11 @@
     <string name="onboarding_rewrite_message">J\'ai dû réécrire l\'application pour suivre les changements d\'Android et les exigences de Google. J\'ai modernisé l\'application là où c\'était possible pour garantir qu\'elle continue de fonctionner de manière fiable.</string>
     <string name="onboarding_rewrite_features">Certaines fonctionnalités ont changé pendant la mise à jour. Veuillez vérifier les paramètres de vos appareils pour vous assurer que tout est configuré correctement.</string>
     <string name="onboarding_rewrite_action">Continuer</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">Aucun périphérique non géré trouvé</string>
     <string name="discover_all_devices_managed_msg">Tous vos appareils appairés sont gérés ! Besoin d\'un nouveau ?</string>
     <string name="discover_pair_new_device_action">Appairer un nouvel appareil</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">Configuration du périphérique</string>
     <string name="devices_device_config_section_general_label">Général</string>
     <string name="devices_device_config_remove_device_label">Oublier le périphérique</string>
@@ -33,6 +37,8 @@
     <string name="devices_device_config_rename_device_label">Renommer le périphérique</string>
     <string name="devices_device_config_rename_device_desc">Renommer ce périphérique dans cette application, et si possible, dans le système.</string>
     <string name="devices_device_config_rename_device_action">Renommer</string>
+    <string name="devices_device_config_enabled_label">Activé</string>
+    <string name="devices_device_config_enabled_desc">Réagir à ce périphérique quand il se connecte</string>
     <string name="devices_device_config_section_timing_label">Temporisation</string>
     <string name="devices_device_config_monitoring_duration_label">Durée de suivi</string>
     <string name="devices_device_config_monitoring_duration_desc">La durée en millisecondes après réglage, pendant laquelle tout autre changement de volume sera bloqué.</string>
@@ -66,37 +72,46 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Temps minimum entre les diminutions de volume : %d ms</string>
     <string name="devices_device_config_autoplay_label">Lecture automatique</string>
     <string name="devices_device_config_autoplay_desc">Simuler l\'appui sur Lecture d\'une télécommande Bluetooth quand ce périphérique se connecte.</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Types de touches disponibles</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Configure quelles touches envoyer et dans quel ordre</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Types de touches</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Aucune touche configurée</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Touches sélectionnées (dans l\'ordre)</string>
     <string name="devices_device_config_autoplay_keycodes_title">Types de touches de lecture automatique</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Types de touches disponibles</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Touches sélectionnées (dans l\'ordre)</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Types de touches</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Configure quelles touches envoyer et dans quel ordre</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Aucune touche configurée</string>
     <string name="devices_device_config_section_volumes_label">Volumes</string>
     <string name="devices_device_config_section_volume_label">Volume</string>
     <string name="devices_device_config_alarm_volume_label">Volume d\'alarme</string>
     <string name="devices_device_config_alarm_volume_desc">Certaines applis d\'alarme utilisent plutôt le volume de la musique.</string>
     <string name="devices_device_config_notification_volume_label">Volume des notifications</string>
     <string name="devices_device_config_notification_volume_desc">Tous les appareils ne prennent pas en charge un réglage séparé du volume des notifications. Peut aussi définir le mode silencieux ou vibration.</string>
-    <string name="devices_device_config_notification_policy_action">Accorder l\'accès</string>
-    <string name="devices_device_config_notification_policy_required_notification">Le contrôle du volume des notifications nécessite l\'accès à la politique de notifications</string>
-    <string name="devices_device_config_notification_policy_required_ringtone">Le contrôle du volume de la sonnerie nécessite l\'accès à la politique de notifications</string>
-    <string name="devices_device_config_notification_policy_required_dnd">Le contrôle du mode Ne pas déranger nécessite l\'accès à la politique de notifications</string>
     <string name="devices_device_config_music_volume_label">Volume de la musique</string>
     <string name="devices_device_config_music_volume_desc">Contrôler le volume de la musique et des jeux quand ce périphérique se connecte.</string>
     <string name="devices_device_config_call_volume_label">Volume des appels</string>
     <string name="devices_device_config_call_volume_desc">Contrôler le volume des appels quand ce périphérique se connecte.</string>
     <string name="devices_device_config_ring_volume_label">Volume de la sonnerie</string>
     <string name="devices_device_config_ring_volume_desc">Contrôler le volume qui affecte votre sonnerie. Peut aussi définir le mode silencieux ou vibration.</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Le contrôle du volume de la sonnerie nécessite l\'accès à la politique de notifications</string>
+    <string name="devices_device_config_notification_policy_required_notification">Le contrôle du volume des notifications nécessite l\'accès à la politique de notifications</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Le contrôle du mode Ne pas déranger nécessite l\'accès à la politique de notifications</string>
+    <string name="devices_device_config_notification_policy_action">Accorder l\'accès</string>
+    <string name="devices_device_config_dnd_on_connect_label">Mode Ne pas déranger</string>
+    <string name="dnd_mode_dialog_title">Sélectionner le mode NPD</string>
+    <string name="dnd_mode_dont_change">Ne pas modifier</string>
+    <string name="dnd_mode_off">Désactivé</string>
+    <string name="dnd_mode_priority_only">Priorité uniquement</string>
+    <string name="dnd_mode_alarms_only">Alarmes uniquement</string>
+    <string name="dnd_mode_total_silence">Silence total</string>
+    <string name="devices_device_config_connection_alert_label">Alerte de connexion</string>
+    <string name="connection_alert_dialog_title">Alerte de connexion</string>
+    <string name="connection_alert_type_none">Aucune</string>
+    <string name="connection_alert_type_sound">Son uniquement</string>
+    <string name="connection_alert_type_vibration">Vibration uniquement</string>
+    <string name="connection_alert_type_both">Son et vibration</string>
     <string name="devices_stream_music_label">Musique</string>
     <string name="devices_audio_stream_call_label">Appel</string>
     <string name="devices_audio_stream_ring_label">Sonnerie</string>
     <string name="devices_audio_stream_notification_label">Notification</string>
     <string name="devices_audio_stream_alarm_label">Alarme</string>
-    <string name="devices_app_selection_currently_selected">Actuellement sélectionné</string>
-    <string name="devices_app_selection_search_hint">Rechercher des applis…</string>
-    <string name="devices_app_selection_selected_count">%d applis sélectionnées</string>
-    <string name="devices_app_selection_title">Sélectionner les applis</string>
     <string name="label_speaker_autosave">Enregistrement automatique du volume</string>
     <string name="description_speaker_autosave">L\'entrée « Haut-parleur de l\'appareil », qui gère les volumes par défaut, se met à jour quand un périphérique Bluetooth se connecte. Note : Cette option ne fonctionne pas sur tous les appareils.</string>
     <string name="devices_neverseen_label">Jamais rencontré</string>
@@ -104,18 +119,18 @@
     <string name="devices_last_connected_label">Dernière connexion : %s</string>
     <string name="devices_currently_connected_label">Actuellement connecté</string>
     <string name="devices_device_disabled_label">Périphérique désactivé</string>
-    <string name="devices_device_config_enabled_label">Activé</string>
-    <string name="devices_device_config_enabled_desc">Réagir à ce périphérique quand il se connecte</string>
     <string name="devices_no_volumes_configured">Aucun volume configuré pour ce périphérique. Appuyez sur Configurer pour définir les préférences de volume.</string>
+    <!-- Settings-->
     <string name="settings_label">Paramètres</string>
-    <string name="settings_category_other_label">Autre</string>
+    <string name="settings_category_other_label">Autres</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">Général</string>
-    <string name="general_settings_desc">Réglages généraux qui affectent toute l\'application.</string>
+    <string name="general_settings_desc">Peaufinages généraux qui affectent l’ensemble de l’appli.</string>
     <string name="settings_category_ui_label">Interface utilisateur</string>
     <string name="ui_theme_mode_setting_label">Mode du thème</string>
     <string name="ui_theme_mode_setting_explanation">Le mode utilisé lors de la thématisation de l\'application (par exemple nuit ou jour).</string>
     <string name="ui_theme_style_setting_label">Style du thème</string>
-    <string name="ui_theme_style_setting_explanation">Le style de couleur utilisé lors de la thématisation de l\'application.</string>
+    <string name="ui_theme_style_setting_explanation">Le style chromatique utilisé par le thème de l’appli.</string>
     <string name="ui_theme_mode_dark_label">Sombre</string>
     <string name="ui_theme_mode_light_label">Clair</string>
     <string name="ui_theme_mode_system_label">Système</string>
@@ -123,8 +138,14 @@
     <string name="ui_theme_style_medium_contrast_label">Contraste moyen</string>
     <string name="ui_theme_style_high_contrast_label">Contraste élevé</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
-    <string name="ui_language_override_label">Langue de l\'application</string>
+    <string name="ui_theme_color_setting_label">Couleur du thème</string>
+    <string name="ui_theme_color_setting_explanation">La palette de couleurs utilisée pour le thème de l\'appli.</string>
+    <string name="ui_theme_color_material_you_note">La couleur est définie par votre fond d\'écran avec Material You.</string>
+    <string name="ui_theme_color_blue_label">Bleu</string>
+    <string name="ui_theme_color_sunset_label">Coucher de soleil</string>
+    <string name="ui_language_override_label">Langue de l’appli</string>
     <string name="ui_language_override_desc">Sélectionnez une langue différente pour BVM, indépendamment de la langue par défaut de votre système.</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">Périphériques</string>
     <string name="devices_settings_desc">Paramètres qui affectent tous les périphériques gérés.</string>
     <string name="label_app_enabled">Activation et désactivation de l\'appli</string>
@@ -135,7 +156,8 @@
     <string name="description_volume_listener">Rester active tant qu\'un périphérique est connecté et enregistrer les changements de volume qui ne proviennent pas de cette appli.</string>
     <string name="label_boot_restore">Restaurer au démarrage</string>
     <string name="description_boot_restore">Restaurer le volume après démarrage ou redémarrage si un périphérique Bluetooth est connecté.</string>
-    <string name="settings_support_label">Support</string>
+    <!-- Settings/Support-->
+    <string name="settings_support_label">Assistance</string>
     <string name="settings_support_description">Lire la documentation, signaler des problèmes, discuter avec d\'autres ou enregistrer des journaux de débogage.</string>
     <string name="settings_support_wiki_label">Documentation</string>
     <string name="settings_support_wiki_description">Apprenez à utiliser BVM efficacement</string>
@@ -145,25 +167,40 @@
     <string name="settings_support_debuglog_desc">Enregistrez tout ce que fait l\'application dans un fichier texte que vous pouvez partager.</string>
     <string name="settings_support_debuglog_recording_desc">Enregistrement en cours des informations de débogage. Appuyez pour arrêter l\'enregistrement.</string>
     <string name="settings_support_debuglog_path">Chemin du journal : %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">Enregistrement très court</string>
+    <string name="settings_support_debuglog_short_recording_msg">C\'était un enregistrement très court. Les journaux de débogage sont des enregistrements, pas des instantanés — reproduisez le problème pendant l\'enregistrement pour que le journal soit utile.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Continuer l\'enregistrement</string>
     <string name="settings_support_debuglog_short_recording_stop">Arrêter quand même</string>
+    <string name="settings_support_debuglog_folder_label">Dossier des journaux de débogage</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d session utilisant %2$s</item>
+        <item quantity="other">%1$d sessions utilisant %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Aucun journal de débogage enregistré</string>
+    <string name="settings_support_debuglog_folder_delete_title">Supprimer tous les journaux de débogage ?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Ceci supprimera définitivement toutes les sessions de journaux de débogage enregistrées.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Un endroit pour se retrouver et poser des questions.</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Remerciements</string>
     <string name="settings_acknowledgements_description">Crédits, licences et remerciements spéciaux</string>
     <string name="settings_acks_translation_header">Traduction</string>
     <string name="settings_acks_translators_title">Traducteurs</string>
-    <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
+    <string name="settings_acks_translators_people">yahoe.001 – Coordinateur de la traduction en français;V.Oberson;Choukajohn;Mickael81</string>
     <string name="settings_acks_translate_title">Traduire BVM</string>
     <string name="settings_acks_translate_desc">Aidez à traduire BVM dans votre langue</string>
     <string name="settings_acks_thanks_header">Merci</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Pour le soutien à la traduction de projets open-source</string>
     <string name="settings_licenses_label">Licences</string>
+    <string name="settings_translation_label">Traduction</string>
+    <string name="settings_translation_desc">Aidez à traduire l\'appli dans votre langue préférée</string>
     <string name="settings_sponsor_development_title">Soutenir le développement</string>
     <string name="settings_sponsor_development_summary">Devenez mécène et rendez possible le développement continu.</string>
     <string name="settings_privacy_policy_label">Politique de confidentialité</string>
     <string name="settings_privacy_policy_desc">Gérer les données de manière responsable.</string>
     <string name="changelog_label">Historique des modifications</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">Notifications de débogage</string>
     <string name="debug_log_consent_title">Journal de débogage</string>
     <string name="debug_log_consent_explanation">Cette fonctionnalité enregistre tout ce que fait l\'application dans un fichier partageable. Le fichier généré contient des informations sensibles (par exemple, noms de fichiers et applications installées). Ne le partagez qu\'avec des parties de confiance (par exemple, un développeur résolvant un problème).</string>
@@ -171,11 +208,67 @@
     <string name="debug_log_record_action">Enregistrer</string>
     <string name="debug_log_stop_action">Arrêter l\'enregistrement</string>
     <string name="debug_log_screen_title">Enregistreur de journal de débogage</string>
+    <string name="debug_log_screen_subtitle">Vérifiez et partagez votre journal de débogage enregistré</string>
+    <string name="debug_log_screen_sensitive_title">Informations sensibles</string>
     <string name="debug_log_screen_sensitive_information_message">Le fichier généré contient des informations sensibles (par exemple, noms de fichiers et applications installées). Ne le partagez qu\'avec des parties de confiance.</string>
     <string name="debug_log_screen_session_path_label">Chemin de la session de débogage</string>
     <string name="debug_log_screen_log_files_label">Fichiers journaux</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d fichier prêt (%2$s)</item>
+        <item quantity="other">%1$d fichiers prêts (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">Supprimer</string>
+    <string name="debug_log_screen_keep_action">Conserver</string>
+    <string name="debug_log_compressing_label">Compression…</string>
     <string name="debug_log_file_label">Fichier journal enregistré</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">Journal envoyé ?</string>
+    <string name="support_debuglog_sent_message">Si vous avez envoyé le journal de débogage, il peut être supprimé de l\'appareil. Voulez-vous le supprimer ?</string>
+    <string name="support_debuglog_session_delete_title">Supprimer le journal de débogage ?</string>
+    <string name="support_debuglog_session_delete_message">Cette session de journal de débogage sera définitivement supprimée.</string>
+    <string name="support_debuglog_session_recording">Enregistrement…</string>
+    <string name="support_debuglog_session_compressing">Compression…</string>
+    <string name="support_debuglog_failed_empty_log">Journal vide</string>
+    <string name="support_debuglog_failed_missing_log">Journal manquant</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP corrompu</string>
+    <string name="support_debuglog_failed_zip_failed">Échec du ZIP</string>
+    <string name="support_debuglog_clear_title">Supprimer tous les journaux de débogage ?</string>
+    <string name="support_debuglog_clear_message">Ceci supprimera définitivement toutes les sessions de journaux de débogage enregistrées.</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">Contacter le développeur</string>
+    <string name="settings_support_contact_desc">Remplissez un formulaire pour envoyer un e-mail au développeur.</string>
+    <string name="contact_screen_title">Contacter le développeur</string>
+    <string name="contact_category_bug_label">Rapport de bogue</string>
+    <string name="contact_category_feature_label">Demande de fonctionnalité</string>
+    <string name="contact_category_question_label">Question</string>
+    <string name="contact_description_label">Description</string>
+    <string name="contact_description_bug_hint">Décrivez ce qui s\'est passé et comment reproduire le problème.</string>
+    <string name="contact_description_feature_hint">Décrivez la fonctionnalité que vous aimeriez voir.</string>
+    <string name="contact_description_question_hint">Décrivez votre question en détail.</string>
+    <string name="contact_category_section_label">Catégorie</string>
+    <string name="contact_debug_log_label">Journal de débogage</string>
+    <string name="contact_debug_log_select_hint">Sélectionner un journal de débogage à joindre</string>
+    <string name="contact_debug_log_picker_hint">Joignez un journal de débogage pour aider à diagnostiquer le problème plus rapidement.</string>
+    <string name="contact_debug_log_picker_empty">Aucun journal de débogage disponible. Enregistrez-en un d\'abord.</string>
+    <string name="contact_expected_behavior_label">Comportement attendu</string>
+    <string name="contact_expected_behavior_hint">Décrivez ce que vous vous attendiez à voir à la place.</string>
+    <string name="support_contact_debuglog_zip_error">Échec de la préparation du journal de débogage pour la pièce jointe</string>
+    <string name="contact_send_action">Ouvrir l\'application e-mail</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d mot</item>
+        <item quantity="other">%1$d / %2$d mots</item>
+    </plurals>
+    <string name="contact_welcome_msg">Je lis chaque message moi-même et fais de mon mieux pour répondre, mais comme je travaille seul, cela peut prendre un peu de temps. Merci de votre patience.</string>
+    <string name="contact_footer_msg">Votre message sera envoyé par e-mail. Les informations sur l\'appareil et la configuration sont jointes automatiquement.</string>
+    <string name="contact_no_email_app_msg">Aucune application e-mail trouvée sur cet appareil.</string>
+    <string name="contact_attachment_missing_msg">Le fichier journal de débogage n\'existe plus</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">Journaux de débogage enregistrés</string>
+    <string name="settings_support_stored_logs_desc">%1$d sessions (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Aucun journal de débogage enregistré</string>
+    <string name="settings_support_stored_logs_delete_title">Supprimer les journaux enregistrés ?</string>
+    <string name="settings_support_stored_logs_delete_msg">Ceci supprimera les %1$d sessions de journaux de débogage enregistrées.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Journaux de débogage enregistrés supprimés</string>
     <string name="label_bug_reports">Relevés de bogues</string>
     <string name="description_bug_reports">Signalement automatiquement des bogues et plantages.</string>
     <string name="label_add_device">Ajouter un périphérique</string>
@@ -184,8 +277,6 @@
     <string name="action_set">Définir</string>
     <string name="action_cancel">Annuler</string>
     <string name="label_invalid_input">Entrée invalide</string>
-    <string name="general_reset_action">Réinitialiser</string>
-    <string name="general_save_action">Sauvegarder</string>
     <string name="action_reset">Réinitialiser</string>
     <string name="label_no_connected_devices">Aucun périphérique n\'est connecté</string>
     <string name="label_status_idle">Inactif</string>
@@ -244,10 +335,14 @@
     <string name="android13_notification_permission_description">Accordez à cette application la permission de publier des notifications. Cela permet d\'afficher une notification lorsque cette application est active et que des ajustements de volume sont effectués.</string>
     <string name="privacy_policy_label">Politique de confidentialité</string>
     <string name="managed_devices_empty_message">Aucun périphérique Bluetooth configuré.\nAppuyez sur le bouton + pour ajouter votre premier périphérique.</string>
+    <string name="label_pro_feature">Fonctionnalité premium</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Version gratuite : %1$d sur %2$d appareil</item>
+        <item quantity="other">Version gratuite : %1$d sur %2$d appareils</item>
+    </plurals>
     <string name="general_delete_action">Supprimer</string>
     <string name="general_cancel_action">Annuler</string>
     <string name="general_ok_action">OK</string>
-    <string name="general_clear_action">Effacer</string>
     <string name="general_configure_action">Configurer</string>
     <string name="battery_optimization_hint_title">Optimisation de la batterie</string>
     <string name="battery_optimization_hint_message">Les optimisations de batterie sont activées et peuvent empêcher le bon fonctionnement. Envisagez de les désactiver.</string>
@@ -256,22 +351,22 @@
     <string name="android10_applaunch_hint_message">Android 10 nécessite une permission spéciale pour lancer des applications en arrière-plan. Accordez la permission &quot;Afficher par-dessus les autres applications&quot;.</string>
     <string name="notification_permission_hint_title">Permission de notification</string>
     <string name="notification_permission_hint_message">Accordez la permission de notification pour voir les mises à jour de statut lors des ajustements de volume.</string>
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Achat annulé</string>
     <string name="error_iap_unavailable_message">Les achats intégrés ne sont pas disponibles</string>
     <string name="error_generic_message">Une erreur s\'est produite. Veuillez réessayer.</string>
     <string name="error_iap_owned_message">Vous possédez déjà cet article</string>
     <string name="label_no_devices_title">Aucun périphérique</string>
     <string name="bluemusic_mascot_description">Icône de l\'application</string>
-
-    <!-- Do Not Disturb mode -->
-    <string name="devices_device_config_dnd_on_connect_label">Mode Ne pas déranger</string>
-    <string name="dnd_mode_dialog_title">Sélectionner le mode NPD</string>
-    <string name="dnd_mode_dont_change">Ne pas modifier</string>
-    <string name="dnd_mode_off">Désactivé</string>
-    <string name="dnd_mode_priority_only">Priorité uniquement</string>
-    <string name="dnd_mode_alarms_only">Alarmes uniquement</string>
-    <string name="dnd_mode_total_silence">Silence total</string>
-
+    <!-- App Selection -->
+    <string name="devices_app_selection_title">Sélectionner les applis</string>
+    <string name="devices_app_selection_search_hint">Rechercher des applis…</string>
+    <string name="devices_app_selection_currently_selected">Actuellement sélectionné</string>
+    <string name="devices_app_selection_selected_count">%d applis sélectionnées</string>
+    <string name="general_navigate_back_action">Retour</string>
+    <string name="general_reset_action">Réinitialiser</string>
+    <string name="general_clear_action">Effacer</string>
+    <string name="general_save_action">Sauvegarder</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Verrouillé</string>
     <string name="devices_indicator_awake">Éveillé</string>
@@ -283,92 +378,11 @@
     <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Accueil</string>
     <string name="devices_indicator_dnd">NPD</string>
-
-    <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">Alerte de connexion</string>
-    <string name="connection_alert_dialog_title">Alerte de connexion</string>
-    <string name="connection_alert_type_none">Aucune</string>
-    <string name="connection_alert_type_sound">Son uniquement</string>
-    <string name="connection_alert_type_vibration">Vibration uniquement</string>
-    <string name="connection_alert_type_both">Son et vibration</string>
     <string name="devices_indicator_alert">Alerte</string>
-
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Saisissez une valeur entre %1$d et %2$d</string>
-
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Verrouiller</string>
     <string name="devices_unlock_sliders_action">Déverrouiller</string>
-
-    <string name="app_name_short">BVM</string>
-    <string name="settings_support_debuglog_short_recording_title">Enregistrement très court</string>
-    <string name="settings_support_debuglog_short_recording_msg">C\'était un enregistrement très court. Les journaux de débogage sont des enregistrements, pas des instantanés — reproduisez le problème pendant l\'enregistrement pour que le journal soit utile.</string>
-    <string name="settings_support_debuglog_short_recording_continue">Continuer l\'enregistrement</string>
-    <string name="settings_support_debuglog_folder_label">Dossier des journaux de débogage</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d session utilisant %2$s</item>
-        <item quantity="other">%1$d sessions utilisant %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Aucun journal de débogage enregistré</string>
-    <string name="settings_support_debuglog_folder_delete_title">Supprimer tous les journaux de débogage ?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Ceci supprimera définitivement toutes les sessions de journaux de débogage enregistrées.</string>
-    <string name="support_debuglog_sent_title">Journal envoyé ?</string>
-    <string name="support_debuglog_sent_message">Si vous avez envoyé le journal de débogage, il peut être supprimé de l\'appareil. Voulez-vous le supprimer ?</string>
-    <string name="support_debuglog_session_delete_title">Supprimer le journal de débogage ?</string>
-    <string name="support_debuglog_session_delete_message">Cette session de journal de débogage sera définitivement supprimée.</string>
-    <string name="support_debuglog_session_recording">Enregistrement…</string>
-    <string name="support_debuglog_session_compressing">Compression…</string>
-    <string name="support_debuglog_failed_empty_log">Journal vide</string>
-    <string name="support_debuglog_failed_missing_log">Journal manquant</string>
-    <string name="support_debuglog_failed_corrupt_zip">ZIP corrompu</string>
-    <string name="support_debuglog_failed_zip_failed">Échec du ZIP</string>
-    <string name="support_debuglog_clear_title">Supprimer tous les journaux de débogage ?</string>
-    <string name="support_debuglog_clear_message">Ceci supprimera définitivement toutes les sessions de journaux de débogage enregistrées.</string>
-    <string name="settings_support_contact_label">Contacter le développeur</string>
-    <string name="settings_support_contact_desc">Remplissez un formulaire pour envoyer un e-mail au développeur.</string>
-    <string name="contact_screen_title">Contacter le développeur</string>
-    <string name="contact_category_bug_label">Rapport de bogue</string>
-    <string name="contact_category_feature_label">Demande de fonctionnalité</string>
-    <string name="contact_category_question_label">Question</string>
-    <string name="contact_description_label">Description</string>
-    <string name="contact_description_bug_hint">Décrivez ce qui s\'est passé et comment reproduire le problème.</string>
-    <string name="contact_description_feature_hint">Décrivez la fonctionnalité que vous aimeriez voir.</string>
-    <string name="contact_description_question_hint">Décrivez votre question en détail.</string>
-    <string name="contact_category_section_label">Catégorie</string>
-    <string name="contact_debug_log_label">Journal de débogage</string>
-    <string name="contact_debug_log_select_hint">Sélectionner un journal de débogage à joindre</string>
-    <string name="contact_debug_log_picker_hint">Joignez un journal de débogage pour aider à diagnostiquer le problème plus rapidement.</string>
-    <string name="contact_debug_log_picker_empty">Aucun journal de débogage disponible. Enregistrez-en un d\'abord.</string>
-    <string name="contact_expected_behavior_label">Comportement attendu</string>
-    <string name="contact_expected_behavior_hint">Décrivez ce que vous vous attendiez à voir à la place.</string>
-    <string name="support_contact_debuglog_zip_error">Échec de la préparation du journal de débogage pour la pièce jointe</string>
-    <string name="contact_send_action">Ouvrir l\'application e-mail</string>
-    <plurals name="contact_word_count">
-        <item quantity="one">%1$d / %2$d mot</item>
-        <item quantity="other">%1$d / %2$d mots</item>
-    </plurals>
-    <string name="contact_welcome_msg">Je lis chaque message moi-même et fais de mon mieux pour répondre, mais comme je travaille seul, cela peut prendre un peu de temps. Merci de votre patience.</string>
-    <string name="contact_footer_msg">Votre message sera envoyé par e-mail. Les informations sur l\'appareil et la configuration sont jointes automatiquement.</string>
-    <string name="contact_no_email_app_msg">Aucune application e-mail trouvée sur cet appareil.</string>
-    <string name="contact_attachment_missing_msg">Le fichier journal de débogage n\'existe plus</string>
-    <string name="settings_support_stored_logs_label">Journaux de débogage enregistrés</string>
-    <string name="settings_support_stored_logs_desc">%1$d sessions (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">Aucun journal de débogage enregistré</string>
-    <string name="settings_support_stored_logs_delete_title">Supprimer les journaux enregistrés ?</string>
-    <string name="settings_support_stored_logs_delete_msg">Ceci supprimera les %1$d sessions de journaux de débogage enregistrées.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Journaux de débogage enregistrés supprimés</string>
-    <string name="debug_log_screen_subtitle">Vérifiez et partagez votre journal de débogage enregistré</string>
-    <string name="debug_log_screen_sensitive_title">Informations sensibles</string>
-    <string name="debug_log_screen_keep_action">Conserver</string>
-    <string name="debug_log_compressing_label">Compression…</string>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="one">%1$d fichier prêt (%2$s)</item>
-        <item quantity="other">%1$d fichiers prêts (%2$s)</item>
-    </plurals>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">Version gratuite : %1$d sur %2$d appareil</item>
-        <item quantity="other">Version gratuite : %1$d sur %2$d appareils</item>
-    </plurals>
-    <string name="label_pro_feature">Fonctionnalité premium</string>
 </resources>

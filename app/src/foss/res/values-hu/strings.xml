@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM FOSS</string>
+    <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_feature_requires_pro">BVM FOSS szükséges</string>
+    <string name="upgrade_prompt_title">Frissítés BVM FOSS-ra</string>
+    <string name="upgrade_prompt_body">Fedezze fel a további funkciókat, és legyen patron támogató, hogy támogassa a folyamatos fejlesztést!</string>
+    <string name="upgrade_prompt_upgrade_action">Frissítés</string>
+    <string name="upgrade_screen_title">Frissítés BVM FOSS-ra</string>
+    <string name="upgrade_screen_preamble">A Bluetooth Volume Manager nem tartalmaz hirdetéseket, és nem értékesít felhasználói adatokat. A folyamatos fejlesztést csak te teszed lehetővé.</string>
+    <string name="upgrade_screen_how_title">Hogyan lehet segíteni</string>
+    <string name="upgrade_screen_how_body">Legyen patron támogató és szponzorálja a fejlesztést! Kattintson az alábbi gombra az összes extra funkció aktiválásához és a GitHub Sponsors profilom megnyitásához.</string>
+    <string name="upgrade_screen_why_title">Ez varázsol 🪄</string>
+    <string name="upgrade_screen_why_body">• Egy motivált fejlesztő 🧙
+• Korlátlan eszközök ➡️➡️
+• Extra műveletek ⚙️
+és még sok más…</string>
+    <string name="upgrade_screen_sponsor_action">Szponzori fejlesztés</string>
+    <string name="upgrade_screen_sponsor_action_hint">Az alternatívák a hirdetések, az elemzések és a Google Play 🙁</string>
+    <string name="upgrade_screen_thanks_toast">Köszönjük, hogy támogatod a nyílt forráskódú fejlesztést ❤️</string>
+    <string name="upgrade_screen_sponsor_too_fast">Már vissza is tértél? A támogatásod életben tartja a BVM-et!</string>
+</resources>

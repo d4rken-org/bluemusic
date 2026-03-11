@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">BVM Pro தேவைப்படுகிறது</string>
+    <string name="upgrade_prompt_title">BVM Proக்கு மேம்படுத்து</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro சிறந்த தர்வ்ூதல்கள், மேலும் அனுபவம், மேலும் அமைப்்புகள் மற்றும் சக்தியான பயனர்களுக்கான விருப்பங்களை வாயில் வளர்கிறது.</string>
+    <string name="upgrade_prompt_upgrade_action">மேம்படுத்து</string>
+    <string name="upgrade_screen_title">BVM Proக்கு மேம்படுத்து</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager விளம்பரங்கள் இல்லாதது மற்றும் பயனர் தரவுகளை விற்கவிற்கை இல்லை. என் பணியின் நிதியம் உங்களால் வழங்கப்படுகிறது.</string>
+    <string name="upgrade_screen_why_title">நன்மைகள்</string>
+    <string name="upgrade_screen_why_body">• ஒரு உறுதியான உருவாக்கி
+• இம்மியான சாதனங்கள்
+• கூடுதல் செயல்கள்
+மற்றும் பலவற்றுடன்...</string>
+    <string name="upgrade_screen_how_title">விருப்பங்கள்</string>
+    <string name="upgrade_screen_how_body">நீங்கள் ஒரு முறை வாங்குதல் மற்றும் மலிவான வருடாந்திர சந்தா இடையே தேர்வு செய்யலாம்.\nசந்தா இலவச 14-நாள் சோதனையுடன் தொடங்குகிறது, அதன் பிறகு வருடத்திற்கு ஒருமுறை கட்டணம் வசூலிக்கப்படும். சோதனை மற்றும் சந்தா எப்போது வேண்டுமானாலும் ரத்து செய்யப்படலாம்.\nஅதே அம்சங்கள், வெவ்வேறு விலை மாதிரிகள் மட்டும்.</string>
+    <string name="upgrade_screen_subscription_trial_action">இலவச 14-நாள் சோதனையைத் தொடங்கு</string>
+    <string name="upgrade_screen_subscription_action">சந்தா</string>
+    <string name="upgrade_screen_subscription_action_hint">சந்தா வருடத்திற்கு %s செலவாகும்.</string>
+    <string name="upgrade_screen_iap_action">ஒரு முறை வாங்குதல்</string>
+    <string name="upgrade_screen_iap_action_hint">ஒரு முறை வாங்குதல் %s செலவாகும்.</string>
+    <string name="upgrade_screen_thanks_toast">நீங்கள் சிறந்தவர்! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">வாங்குதலை மீட்டமை</string>
+    <string name="upgrade_screen_restore_purchase_message">உங்கள் மேம்படுத்தல் அதே Google கணக்கில் உள்ள அனைத்து சாதனங்களிலும் செல்லுபடியாகும்.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">அங்கீகரிக்கப்படாத மேம்படுத்தல்களுக்கான சிக்கல் தீர்க்கும் குறிப்புகள்:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play Store ஒத்திசைவு நேரம் எடுக்கலாம். மறுதொடக்கம் செய்ய, Google Play தற்காலிக சேமிப்பை அழிக்க அல்லது காத்திருக்க முயற்சிக்கவும்.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">பல கணக்குகள் Google Playஐ குழப்பலாம். மற்ற கணக்குகளிலிருந்து வெளியேறவும் அல்லது Google Play வலைத்தளம் வழியாக நிறுவவும், இது குறிப்பிட்ட கணக்குடன் தொடர்புகளை கட்டாயப்படுத்துகிறது.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play கிடைக்கவில்லை</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Playஆல் இணையமுடியவில்லை. Google Play நிறுவப்பட்டு புதுப்பிக்கப்பட்டதா? உங்கள் Google கணக்கு உள்நுழைகிறீர்களா? Google Play பயன்பாட்டுகள் தீளிப்பை அழித்து சாதனத்தை மறுதொடக்கம் செய்து முயற்சிக்கவும்.</string>
+    <string name="upgrades_no_purchases_found_check_account">கொள்முதல்கள் எதுவும் இல்லை. நீங்கள் சரியான கணக்கைப் பயன்படுத்துகிறீர்களா?</string>
+</resources>

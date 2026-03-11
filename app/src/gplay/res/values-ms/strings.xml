@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">Memerlukan BVM Pro</string>
+    <string name="upgrade_prompt_title">Naik taraf ke BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro menawarkan hasil yang lebih baik, lebih banyak ciri dan pilihan untuk pengguna berkuasa.</string>
+    <string name="upgrade_prompt_upgrade_action">Naik taraf</string>
+    <string name="upgrade_screen_title">Naik taraf ke BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager tiada iklan dan tidak menjual data pengguna. Kerja saya dibiayai oleh anda ❤️.</string>
+    <string name="upgrade_screen_why_title">Kelebihan</string>
+    <string name="upgrade_screen_why_body">• Pembangun yang bermotivasi 🧙
+• Peranti tanpa had ➡️➡️
+• Tindakan tambahan ⚙️
+dan banyak lagi…</string>
+    <string name="upgrade_screen_how_title">Pilihan</string>
+    <string name="upgrade_screen_how_body">Anda boleh memilih antara pembelian sekali dan langganan tahunan yang lebih murah.\nLangganan bermula dengan percubaan 14 hari percuma, selepas itu anda akan dicaj sekali setahun. Percubaan dan langganan boleh dibatalkan pada bila-bila masa.\nCiri yang sama, cuma model harga yang berbeza.</string>
+    <string name="upgrade_screen_subscription_trial_action">Mulakan percubaan 14 hari percuma</string>
+    <string name="upgrade_screen_subscription_action">Langgan</string>
+    <string name="upgrade_screen_subscription_action_hint">Kos langganan %s setahun.</string>
+    <string name="upgrade_screen_iap_action">Belian sekali</string>
+    <string name="upgrade_screen_iap_action_hint">Kos pembelian sekali ialah %s.</string>
+    <string name="upgrade_screen_thanks_toast">Anda lah yang terbaik! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Pulihkan pembelian</string>
+    <string name="upgrade_screen_restore_purchase_message">Naik taraf anda sah merentasi peranti pada akaun Google yang sama.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Petua penyelesaian masalah untuk naik taraf yang tidak diiktiraf:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Penyegerakan Play Store mungkin mengambil masa. Cuba but semula, kosongkan cache Google Play atau tunggu sahaja.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Pelbagai akaun boleh mengelirukan Google Play. Log keluar dari akaun lain atau pasang melalui laman web Google Play, yang memaksa perkaitan dengan akaun tertentu.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play tidak tersedia</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager tidak dapat menyambung ke Google Play. Adakah Google Play dipasang dan dikemaskini? Adakah Akaun Google anda log masuk? Cuba kosongkan cache aplikasi Google Play dan but semula peranti anda.</string>
+    <string name="upgrades_no_purchases_found_check_account">Tiada pembelian ditemui. Adakah anda menggunakan akaun yang betul?</string>
+</resources>

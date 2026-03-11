@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM FOSS</string>
+    <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_feature_requires_pro">Basegna BVM FOSS</string>
+    <string name="upgrade_prompt_title">Actualisar a BVM FOSS</string>
+    <string name="upgrade_prompt_body">Deblocha funcziuns supplementaras e daventescha in patronu per sustegnair il svilup ulterior!</string>
+    <string name="upgrade_prompt_upgrade_action">Actualisar</string>
+    <string name="upgrade_screen_title">Actualisar a BVM FOSS</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager n\'ha naginas reclamas e na vend betg datas d\'utilisaders. Il svilup ulterior è mo pussaivel grazia a tai.</string>
+    <string name="upgrade_screen_how_title">Tge che ti pos far</string>
+    <string name="upgrade_screen_how_body">Daventescha in patronu e sustegna il svilup! Tocca il buttun sut per activar tut las funcziuns extras e vrar mai il profil GitHub Sponsors.</string>
+    <string name="upgrade_screen_why_title">Quest activescha 🪄</string>
+    <string name="upgrade_screen_why_body">• In sviluppader motivat 🧙
+• Apparats senza limita ➡️➡️
+• Acziuns extras ⚙️
+e dapli…</string>
+    <string name="upgrade_screen_sponsor_action">Sustegnair il svilup</string>
+    <string name="upgrade_screen_sponsor_action_hint">L\'alternativa è reclamas, analytics e Google Play 🙁</string>
+    <string name="upgrade_screen_thanks_toast">Grazia per sustegnair il svilup open-source ❤️</string>
+    <string name="upgrade_screen_sponsor_too_fast">Turnà? Tia sustegnaziun mantegna BVM viv!</string>
+</resources>

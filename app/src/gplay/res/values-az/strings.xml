@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">BVM Pro tələb olunur</string>
+    <string name="upgrade_prompt_title">BVM Pro-ya yüksəldin</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro daha yaxşı nəticələr, daha çox xüsusiyyətlər və güc istifadəçiləri üçün seçimlər təklif edir.</string>
+    <string name="upgrade_prompt_upgrade_action">Yüksəlt</string>
+    <string name="upgrade_screen_title">BVM Pro-ya yüksəldin</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager-də reklam yoxdur və istifadəçi məlumatlarını satmır. Mənim işim sizin tərəfindən maliyyələşdirilir ❤️.</string>
+    <string name="upgrade_screen_why_title">Üstünlüklər</string>
+    <string name="upgrade_screen_why_body">• Həvəsli bir tərtibatçı 🧙
+• Limitsiz cihazlar ➡️➡️
+• Əlave əməliyyatlar ⚙️
+və daha çox…</string>
+    <string name="upgrade_screen_how_title">Seçimlər</string>
+    <string name="upgrade_screen_how_body">Siz birdəfəlik alış və daha ucuz illik abunə arasında seçim edə bilərsiniz.\nAbunə pulsuz 14 günlük sınaq ilə başlayır, bundan sonra ildə bir dəfə ödəniş edəcəksiniz. Sınaq və abunə istənilən vaxt ləğv edilə bilər.\nEyni xüsusiyyətlər, sadəcə fərqli qiymət modelləri.</string>
+    <string name="upgrade_screen_subscription_trial_action">Pulsuz 14 günlük sınağa başlayın</string>
+    <string name="upgrade_screen_subscription_action">Abunə olun</string>
+    <string name="upgrade_screen_subscription_action_hint">Abunə ildə %s başa gəlir.</string>
+    <string name="upgrade_screen_iap_action">Birdəfəlik alış</string>
+    <string name="upgrade_screen_iap_action_hint">Birdəfəlik alış %s başa gəlir.</string>
+    <string name="upgrade_screen_thanks_toast">Siz ən yaxşısınız! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Alışı bərpa et</string>
+    <string name="upgrade_screen_restore_purchase_message">Yeniləməniz eyni Google hesabında cihazlar arasında keçərlidir.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Tanınmayan yeniləmələr üçün problemlərin həlli məsləhətləri:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinxronlaşdırması vaxt ala bilər. Yenidən başlatmağı, Google Play keşini təmizləməyi və ya sadəcə gözləməyi sınayın.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Çoxlu hesablar Google Play-i çaşdıra bilər. Digər hesablardan çıxın və ya Google Play veb saytı vasitəsilə quraşdırın ki, bu da müəyyən hesabla əlaqələri məcbur edir.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play əlçatan deyil</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play-ə qoşula bilmir. Google Play quraşdırılıb və yenilənib? Google Hesabınıza daxil olubsunuz? Google Play tətbiqinin keşini təmizləməyə və cihazınızı yenidən başlatmağa çalışın.</string>
+    <string name="upgrades_no_purchases_found_check_account">Heç bir alış tapılmadı. Düzgün hesabdan istifadə edirsiniz?</string>
+</resources>

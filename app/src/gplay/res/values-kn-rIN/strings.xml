@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">BVM Pro ಅಗತ್ಯ</string>
+    <string name="upgrade_prompt_title">BVM Pro ಗೆ ದರ್ಜೆಯೇರಿ</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ಉತ್ತಮ ಫಲಿತಾಂಶಗಳನ್ನು, ಹೆಚ್ಚಿನ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಮತ್ತು ಪವರ್ ಬಳಕೆದಾರರಿಗೆ ಆಯ್ಕೆಗಳನ್ನು ನೀಡುತ್ತದೆ.</string>
+    <string name="upgrade_prompt_upgrade_action">ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ</string>
+    <string name="upgrade_screen_title">BVM Pro ಗೆ ದರ್ಜೆಯೇರಿ</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager ಜಾಹೀರಾತುಗಳಿಲ್ಲ ಮತ್ತು ಬಳಕೆದಾರರ ಡೇಟಾ ಮಾರಾಟುವುದಿಲ್ಲ. ನನ್ನ ಕೆಲಸ ನಿಮ್ಮಿಂದ ಹಗಲಾಗುತ್ತದೆ ❤️.</string>
+    <string name="upgrade_screen_why_title">ಪ್ರಯೋಜನಗಳು</string>
+    <string name="upgrade_screen_why_body">• ಪ್ರೇರಿತ ಅಭಿವರ್ಧಕ 🧙
+• ಸಿಮಿತವಿಲ್ಲದ ಸಾಧನಗಳು ➡️➡️
+• ಹೆಚ್ಚಿನ ಕಾರ್ಯಗಳು ⚙️
+ಮತ್ತು ಇನ್ನಂತಃ…</string>
+    <string name="upgrade_screen_how_title">ಆಯ್ಕೆಗಳು</string>
+    <string name="upgrade_screen_how_body">ನೀವು ಒಂದು ಬಾರಿನ ಖರೀದು ಮತ್ತು ವಾರ್ಷಿಕ ಚಂದಾಸಮ್ಮತಿ ನಡುವೆ ಆಯ್ಕೆಮಾಡಬಹುದು.</string>
+    <string name="upgrade_screen_subscription_trial_action">ಉಚಿತ 14-ದಿನಗಳ ಪರೀಕ್ಷೆ ಪ್ರಾರಂಭಿಸಿ</string>
+    <string name="upgrade_screen_subscription_action">ಚಂದಾಸಮ್ಮತಿ ಪಡೆಯಿ</string>
+    <string name="upgrade_screen_subscription_action_hint">ಚಂದಾಸಮ್ಮತಿಗೆ ಪ್ರತಿ ವರ್ಷ %s ಖರ್ಚಾಗುತ್ತದೆ.</string>
+    <string name="upgrade_screen_iap_action">ಒಂದು ಬಾರಿನ ಖರೀದು</string>
+    <string name="upgrade_screen_iap_action_hint">ಒಂದು ಬಾರಿನ ಖರೀದು %s ಖರ್ಚಾಗುತ್ತದೆ.</string>
+    <string name="upgrade_screen_thanks_toast">ನೀವು ಅತ್ಯುತ್ತಮರು! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">ಖರೀದು ಮರುಸ್ಥಾಪಿಸಿ</string>
+    <string name="upgrade_screen_restore_purchase_message">ನಿಮ್ಮ ದರ್ಜೆಯೇರಿಕೆ ಅದೇ Google ಖಾತೆಯಲ್ಲಿನ ಸಾಧನಗಳಲ್ಲಿ ಮಾನ್ಯವಾಗಿರುತ್ತದೆ.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">ಗುರುತಿಸಾಲ್ಪಡದ ದರ್ಜೆಯೇರಿಕೆಗಳಿಗೆ ತೊಂದರೆ ನಿವಾರಣೆ ಸೂಚನೆಗಳು:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play Store ಸಿಂಕ್ರೈನಿಕರಣಕ್ಕೆ ಸಮಯ ಕೆಲವುತ್ತದೆ. ಮರುಬುಟ್ ಮಾಡಿ, Google Play ಕ್ಯಾಚೆ ತೆರವುಮಾಡಿ ಅಥವಾ ಕಾಯಿರಿ.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">ಬಹುಖಾತೆಗಳು Google Play ಅನ್ನು ಗೊಂದಲಗೊಳಿಸಬಹುದು. ಇತರ ಖಾತೆಗಳಿಂದ ಲಾಗ್ ಆಉಟ್ ಮಾಡಿ ಅಥವಾ Google Play ವೆಬ್ ತಾಣದ ಮೂಲಕ ಇನ್ಸ್ಟಾಲ್ ಮಾಡಿ.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play ಲಭ್ಯವಿಲ್ಲ</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play ಗೆ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ. Google Play ಇನ್ಸ್ಟಾಲ್ ಆಗಿ ನವೀಕರಿಸಲಾಗಿದೆಯೇ? ನಿಮ್ಮ Google ಖಾತೆ ಲಾಗಿನ್ ಆಗಿದೆಯೇ? Google Play ಅಪ್ ಕ್ಯಾಚೆ ತೆರವುಮಾಡಿ ಮರುಬುಟ್ ಮಾಡಿ.</string>
+    <string name="upgrades_no_purchases_found_check_account">ಯಾವುದೇ ಖರೀದಿಗಳು ಕಂಡುಬಂದಿಲ್ಲ. ನೀವು ಸರಿಯಾದ ಖಾತೆಯನ್ನು ಬಳಸುತ್ತಿದ್ದೀರಾ?</string>
+</resources>

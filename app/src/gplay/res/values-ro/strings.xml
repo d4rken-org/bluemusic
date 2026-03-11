@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">Necesită BVM Pro</string>
+    <string name="upgrade_prompt_title">Actualizează la BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro oferă rezultate mai bune, mai multe funcții şi opțiuni pentru utilizatorii avanсați.</string>
+    <string name="upgrade_prompt_upgrade_action">Actualizează</string>
+    <string name="upgrade_screen_title">Actualizează la BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager nu are reclame şi nu vinde datele utilizatorilor. Munca mea este finanțată de tine ❤️.</string>
+    <string name="upgrade_screen_why_title">Avantaje</string>
+    <string name="upgrade_screen_why_body">• Un developer motivat 🧙
+• Dispozitive nelimitate ➡️➡️
+• Acțiuni extra ⚙️
+şi mai mult…</string>
+    <string name="upgrade_screen_how_title">Opțiuni</string>
+    <string name="upgrade_screen_how_body">Poți alege între o achiziție unică și un abonament anual mai ieftin.\nAbonamentul începe cu o probă gratuită de 14 zile, după care vei fi taxat o dată pe an. Încercarea şi abonamentul pot fi anulate în orice moment.\nAceleaşi caracteristici, doar modele de preţuri diferite.</string>
+    <string name="upgrade_screen_subscription_trial_action">Începeți trial-ul gratuit 14 zile</string>
+    <string name="upgrade_screen_subscription_action">Abonează-te</string>
+    <string name="upgrade_screen_subscription_action_hint">Abonamentul costă %s pe an.</string>
+    <string name="upgrade_screen_iap_action">Achiziție unică</string>
+    <string name="upgrade_screen_iap_action_hint">Achiziția unică costă %s.</string>
+    <string name="upgrade_screen_thanks_toast">Ești cel mai bun! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Restabiliți achiziția</string>
+    <string name="upgrade_screen_restore_purchase_message">Actualizarea dvs. este valabilă pe toate dispozitivele dvs. pe același cont Google.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Sfaturi depanare pentru upgrade-uri nerecunoscute:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Sincronizarea Magazinului Play poate dura timp. Încercați repornirea, ștergeți memoria cache Google Play sau doar așteptați.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Conturile multiple pot deruta Google Play. Deconectați-vă din alte conturi sau instalați prin site-ul Google Play, care forțează asociațiile cu un anumit cont.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play nu este disponibil</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager nu se poate conecta la Google Play. Este Google Play instalat şi actualizat? Eşti conectat cu contul Google? Încearcă să ștergă cache-ul aplicației Google Play şi reporneşte dispozitivul.</string>
+    <string name="upgrades_no_purchases_found_check_account">Nu s-a găsit nicio achiziție. Ești sigur că folosești contul corect?</string>
+</resources>

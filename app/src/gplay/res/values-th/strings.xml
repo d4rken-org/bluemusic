@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">โปร</string>
+    <string name="upgrade_feature_requires_pro">ต้องใช้ BVM Pro</string>
+    <string name="upgrade_prompt_title">อัปเกรดเป็น BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ให้ผลลัพธ์ที่ดีกว่า ฟีเจอร์เพิ่มเติม และตัวเลือกสำหรับผู้ใช้ขั้นสูง</string>
+    <string name="upgrade_prompt_upgrade_action">อัปเกรด</string>
+    <string name="upgrade_screen_title">อัปเกรดเป็น BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager ไม่มีโฆษณาและไม่ขายข้อมูลผู้ใช้ งานของฉันได้รับการสนับสนุนทางการเงินจากคุณ ❤️</string>
+    <string name="upgrade_screen_why_title">ข้อดี</string>
+    <string name="upgrade_screen_why_body">• นักพัฒนาที่มีแรงจูงใจ 🧙\n• อุปกรณ์ไม่จำกัด ➡️➡️\n• อาการเพิ่มเติม ⚙️\nและอีกมากมา…</string>
+    <string name="upgrade_screen_how_title">ตัวเลือก</string>
+    <string name="upgrade_screen_how_body">คุณสามารถเลือกระหว่างการซื้อครั้งเดียวและการสมัครสมาชิกรายปีที่ถูกกว่า\nการสมัครสมาชิกเริ่มต้นด้วยการทดลองใช้ฟรี 14 วัน หลังจากนั้นคุณจะถูกเรียกเก็บเงินปีละครั้ง การทดลองและการสมัครสมาชิกสามารถยกเลิกได้ตลอดเวลา\nฟีเจอร์เดียวกัน เพียงแต่โมเดลราคาที่แตกต่างกัน</string>
+    <string name="upgrade_screen_subscription_trial_action">เริ่มทดลองใช้ฟรี 14 วัน</string>
+    <string name="upgrade_screen_subscription_action">สมัครสมาชิก</string>
+    <string name="upgrade_screen_subscription_action_hint">การสมัครสมาชิกค่าใช้จ่าย %s ต่อปี</string>
+    <string name="upgrade_screen_iap_action">ซื้อครั้งเดียว</string>
+    <string name="upgrade_screen_iap_action_hint">การซื้อครั้งเดียวค่าใช้จ่าย %s</string>
+    <string name="upgrade_screen_thanks_toast">คุณเป็นคนที่ดีที่สุด! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">กู้คืนการซื้อ</string>
+    <string name="upgrade_screen_restore_purchase_message">การอัปเกรดของคุณใช้ได้กับอุปกรณ์ต่างๆ ในบัญชี Google เดียวกัน</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">เคล็ดลับการแก้ไขปัญหาสำหรับการอัปเกรดที่ไม่ได้รับการยอมรับ:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">การซิงค์ Play Store อาจใช้เวลา ลองรีบูต ล้างแคช Google Play หรือรอสักครู่</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">บัญชีหลายบัญชีอาจทำให้ Google Play สับสน ออกจากบัญชีอื่นหรือติดตั้งผ่านเว็บไซต์ Google Play ซึ่งบังคับให้เชื่อมโยงกับบัญชีเฉพาะ</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play ไม่พร้อมใช้งาน</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ไม่สามารถเชื่อมต่อกับ Google Play ได้ Google Play ได้รับการติดตั้งและอัปเดตแล้วหรือไม่? บัญชี Google ของคุณเข้าสู่ระบบแล้วหรือไม่? ลองล้างแคชของแอป Google Play และรีบูตอุปกรณ์ของคุณ</string>
+    <string name="upgrades_no_purchases_found_check_account">ไม่พบการซื้อ คุณใช้บัญชีที่ถูกต้องหรือไม่?</string>
+</resources>

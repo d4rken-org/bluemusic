@@ -1,14 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
     <string name="general_error_label">Ошибка</string>
     <string name="general_error_no_compatible_app_found_msg">Не найдено совместимое приложение для обработки этого запроса.</string>
-    <string name="general_reset_action">Сбросить</string>
-    <string name="general_save_action">Сохранить</string>
     <string name="general_share_action">Поделиться</string>
     <string name="general_back_action">Назад</string>
-    <string name="general_clear_action">Очистить</string>
     <string name="general_show_details_action">Показать детали</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Добро пожаловать в BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager позволяет автоматически управлять громкостью Bluetooth устройств.</string>
     <string name="onboarding_welcome_action">Поехали</string>
@@ -23,9 +23,11 @@
     <string name="onboarding_rewrite_message">Я полностью перестроил Bluetooth Volume Manager с нуля из-за изменений Android и требований Google, чтобы обеспечить надежную работу приложения.</string>
     <string name="onboarding_rewrite_features">Некоторые настройки устройств могли быть сброшены во время этого обновления. Пожалуйста, проверьте конфигурации ваших устройств.</string>
     <string name="onboarding_rewrite_action">Продолжить</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">Нет неуправляемых устройств</string>
     <string name="discover_all_devices_managed_msg">Все твои подключенные устройства уже управляются! Нужно новое?</string>
     <string name="discover_pair_new_device_action">Подключить новое устройство</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">Настройки устройства</string>
     <string name="devices_device_config_section_general_label">Общее</string>
     <string name="devices_device_config_remove_device_label">Удалить устройство</string>
@@ -35,6 +37,8 @@
     <string name="devices_device_config_rename_device_label">Переименовать устройство</string>
     <string name="devices_device_config_rename_device_desc">Переименовать устройство в этом приложении и, если возможно, в системе.</string>
     <string name="devices_device_config_rename_device_action">Переименовать</string>
+    <string name="devices_device_config_enabled_label">Включено</string>
+    <string name="devices_device_config_enabled_desc">Реагировать на это устройство при подключении</string>
     <string name="devices_device_config_section_timing_label">Тайминги</string>
     <string name="devices_device_config_monitoring_duration_label">Длительность мониторинга</string>
     <string name="devices_device_config_monitoring_duration_desc">Продолжительность в миллисекундах после внесения изменений, во время которой будут блокироваться любые дальнейшие изменения громкости.</string>
@@ -50,10 +54,6 @@
     <string name="devices_device_config_show_home_screen_desc">После обработки всех событий для этого устройства попытаться показать главный экран. Может не работать на всех версиях Android.</string>
     <string name="devices_device_config_nudge_volume_label">Подтолкнуть громкость</string>
     <string name="devices_device_config_nudge_volume_description">Сначала уменьшить, а затем увеличить громкость на один шаг, даже если нужная громкость уже установлена (по мнению системы).</string>
-    <string name="devices_device_config_notification_policy_action">Предоставить доступ</string>
-    <string name="devices_device_config_notification_policy_required_notification">Управление громкостью уведомлений требует доступа к политике уведомлений</string>
-    <string name="devices_device_config_notification_policy_required_ringtone">Управление громкостью звонка требует доступа к политике уведомлений</string>
-    <string name="devices_device_config_notification_policy_required_dnd">Управление режимом «Не беспокоить» требует доступа к политике уведомлений</string>
     <string name="devices_device_config_visible_adjustments_label">Видимые настройки</string>
     <string name="devices_device_config_visible_adjustments_desc">Переключение отображаемых настроек на карточке устройства</string>
     <string name="devices_device_config_keep_awake_label">Активный режим</string>
@@ -72,12 +72,12 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Минимальное время между уменьшениями громкости: %d мс</string>
     <string name="devices_device_config_autoplay_label">Автовоспроизведение</string>
     <string name="devices_device_config_autoplay_desc">Симуляция нажатия кнопки воспроизведения на пульте ДУ Bluetooth при подключении устройства.</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Доступные типы клавиш</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Настройка клавиш для отправки и их порядка</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Типы клавиш</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Клавиши не настроены</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Выбранные клавиши (по порядку)</string>
     <string name="devices_device_config_autoplay_keycodes_title">Типы клавиш автовоспроизведения</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Доступные типы клавиш</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Выбранные клавиши (по порядку)</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Типы клавиш</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Настройка клавиш для отправки и их порядка</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Клавиши не настроены</string>
     <string name="devices_device_config_section_volumes_label">Громкость</string>
     <string name="devices_device_config_section_volume_label">Громкость</string>
     <string name="devices_device_config_alarm_volume_label">Громкость будильника</string>
@@ -90,14 +90,27 @@
     <string name="devices_device_config_call_volume_desc">Управление громкостью вызовов при подключении устройства.</string>
     <string name="devices_device_config_ring_volume_label">Громкость звонка</string>
     <string name="devices_device_config_ring_volume_desc">Управление громкостью мелодии звонка.</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Управление громкостью звонка требует доступа к политике уведомлений</string>
+    <string name="devices_device_config_notification_policy_required_notification">Управление громкостью уведомлений требует доступа к политике уведомлений</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Управление режимом «Не беспокоить» требует доступа к политике уведомлений</string>
+    <string name="devices_device_config_notification_policy_action">Предоставить доступ</string>
+    <string name="devices_device_config_dnd_on_connect_label">Режим \"Не беспокоить\"</string>
+    <string name="dnd_mode_dialog_title">Выберите режим \"Не беспокоить\"</string>
+    <string name="dnd_mode_dont_change">Не изменять</string>
+    <string name="dnd_mode_off">Выключено</string>
+    <string name="dnd_mode_priority_only">Только важное</string>
+    <string name="dnd_mode_alarms_only">Только будильники</string>
+    <string name="dnd_mode_total_silence">Полная тишина</string>
+    <string name="devices_device_config_connection_alert_label">Оповещение о подключении</string>
+    <string name="connection_alert_dialog_title">Оповещение о подключении</string>
+    <string name="connection_alert_type_none">Нет</string>
+    <string name="connection_alert_type_sound">Только звук</string>
+    <string name="connection_alert_type_vibration">Только вибрация</string>
+    <string name="connection_alert_type_both">Звук и вибрация</string>
     <string name="devices_stream_music_label">Музыка</string>
     <string name="devices_audio_stream_call_label">Звонки</string>
     <string name="devices_audio_stream_ring_label">Звонок</string>
     <string name="devices_audio_stream_notification_label">Уведомления</string>
-    <string name="devices_app_selection_currently_selected">Выбрано сейчас</string>
-    <string name="devices_app_selection_search_hint">Поиск приложений…</string>
-    <string name="devices_app_selection_selected_count">Выбрано приложений: %d</string>
-    <string name="devices_app_selection_title">Выбрать приложения</string>
     <string name="devices_audio_stream_alarm_label">Будильник</string>
     <string name="label_speaker_autosave">Автосохранение громкости</string>
     <string name="description_speaker_autosave">Пункт \&quot;Динамик устройства\&quot;, отвечающий за уровни громкости по умолчанию, обновляется при подключении устройства Bluetooth. Примечание: это работает не на всех устройствах.</string>
@@ -106,11 +119,11 @@
     <string name="devices_last_connected_label">Последнее подключение: %s</string>
     <string name="devices_currently_connected_label">Сейчас подключено</string>
     <string name="devices_device_disabled_label">Устройство отключено</string>
-    <string name="devices_device_config_enabled_label">Включено</string>
-    <string name="devices_device_config_enabled_desc">Реагировать на это устройство при подключении</string>
-    <string name="devices_no_volumes_configured">Не настроена громкость для этого устройства. Нажми "Настроить", чтобы установить предпочтения громкости.</string>
+    <string name="devices_no_volumes_configured">Не настроена громкость для этого устройства. Нажми \"Настроить\", чтобы установить предпочтения громкости.</string>
+    <!-- Settings-->
     <string name="settings_label">Настройки</string>
     <string name="settings_category_other_label">Другое</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">Общие</string>
     <string name="general_settings_desc">Общие настройки, влияющие на всё приложение.</string>
     <string name="settings_category_ui_label">Пользовательский интерфейс</string>
@@ -125,8 +138,14 @@
     <string name="ui_theme_style_medium_contrast_label">Средняя контрастность</string>
     <string name="ui_theme_style_high_contrast_label">Высокая контрастность</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
+    <string name="ui_theme_color_setting_label">Цвет темы</string>
+    <string name="ui_theme_color_setting_explanation">Цветовая палитра, используемая для оформления приложения.</string>
+    <string name="ui_theme_color_material_you_note">Цвет задаётся обоями при использовании Material You.</string>
+    <string name="ui_theme_color_blue_label">Синий</string>
+    <string name="ui_theme_color_sunset_label">Закат</string>
     <string name="ui_language_override_label">Язык приложения</string>
     <string name="ui_language_override_desc">Выбери другой язык для BVM, независимо от языка системы.</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">Устройства</string>
     <string name="devices_settings_desc">Настройки, которые влияют на все управляемые устройства.</string>
     <string name="label_app_enabled">Приложение запущено</string>
@@ -137,6 +156,7 @@
     <string name="description_volume_listener">Поддержание активного режима при наличии подключенного устройства и сохранение изменений громкости, выполненных вне данного приложения.</string>
     <string name="label_boot_restore">Восстановить при загрузке</string>
     <string name="description_boot_restore">Восстановление громкости после загрузки/перезагрузки при подключенном устройстве Bluetooth.</string>
+    <!-- Settings/Support-->
     <string name="settings_support_label">Поддержка</string>
     <string name="settings_support_description">Читай документацию, сообщай о проблемах, общайся с другими или записывай логи отладки.</string>
     <string name="settings_support_wiki_label">Документация</string>
@@ -147,24 +167,42 @@
     <string name="settings_support_debuglog_desc">Записывай всё, что делает приложение, в текстовый файл, которым можно поделиться.</string>
     <string name="settings_support_debuglog_recording_desc">Сейчас записываем информацию для отладки. Нажми, чтобы остановить запись.</string>
     <string name="settings_support_debuglog_path">Путь к логу: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">Очень короткая запись</string>
+    <string name="settings_support_debuglog_short_recording_msg">Запись оказалась очень короткой. Логи отладки — это записи, а не снимки — воспроизведи проблему во время активной записи, чтобы лог был полезен.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Продолжить запись</string>
+    <string name="settings_support_debuglog_short_recording_stop">Остановить всё равно</string>
+    <string name="settings_support_debuglog_folder_label">Папка логов отладки</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d сессия использует %2$s</item>
+        <item quantity="few">%1$d сессии используют %2$s</item>
+        <item quantity="many">%1$d сессий используют %2$s</item>
+        <item quantity="other">%1$d сессий используют %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Логи отладки не сохранены</string>
+    <string name="settings_support_debuglog_folder_delete_title">Удалить все логи отладки?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Это навсегда удалит все сохранённые сессии логов отладки.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Место, где можно общаться и задавать вопросы.</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Благодарности</string>
     <string name="settings_acknowledgements_description">Авторы, лицензии и особая благодарность</string>
     <string name="settings_acks_translation_header">Перевод</string>
     <string name="settings_acks_translators_title">Переводчики</string>
-    <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
+    <string name="settings_acks_translators_people">Gaich;antoon334;notmerennor;grapie</string>
     <string name="settings_acks_translate_title">Перевести BVM</string>
     <string name="settings_acks_translate_desc">Помоги перевести BVM на твой язык</string>
     <string name="settings_acks_thanks_header">Благодарность</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">За поддержку переводов проектов с открытым исходным кодом</string>
     <string name="settings_licenses_label">Лицензии</string>
+    <string name="settings_translation_label">Перевод</string>
+    <string name="settings_translation_desc">Помогите перевести приложение на ваш любимый язык</string>
     <string name="settings_sponsor_development_title">Поддержать разработку</string>
     <string name="settings_sponsor_development_summary">Стань покровителем и сделай продолжение разработки возможным.</string>
     <string name="settings_privacy_policy_label">Политика конфиденциальности</string>
     <string name="settings_privacy_policy_desc">Ответственное обращение с данными.</string>
     <string name="changelog_label">Список изменений</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">Уведомления отладки</string>
     <string name="debug_log_consent_title">Лог отладки</string>
     <string name="debug_log_consent_explanation">Эта функция записывает всё, что делает приложение, в файл, которым можно поделиться. Созданный файл содержит конфиденциальную информацию (например, имена файлов и установленные приложения). Делись им только с доверенными лицами (например, разработчиком, решающим проблему).</string>
@@ -172,11 +210,71 @@
     <string name="debug_log_record_action">Записать</string>
     <string name="debug_log_stop_action">Остановить запись</string>
     <string name="debug_log_screen_title">Запись лога отладки</string>
+    <string name="debug_log_screen_subtitle">Просмотри и поделись записанным логом отладки</string>
+    <string name="debug_log_screen_sensitive_title">Конфиденциальная информация</string>
     <string name="debug_log_screen_sensitive_information_message">Созданный файл содержит конфиденциальную информацию (например, имена файлов и установленные приложения). Делись им только с доверенными лицами.</string>
     <string name="debug_log_screen_session_path_label">Путь к сессии отладки</string>
     <string name="debug_log_screen_log_files_label">Файлы логов</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d файл готов (%2$s)</item>
+        <item quantity="few">%1$d файла готово (%2$s)</item>
+        <item quantity="many">%1$d файлов готово (%2$s)</item>
+        <item quantity="other">%1$d файлов готово (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">Отменить</string>
+    <string name="debug_log_screen_keep_action">Сохранить</string>
+    <string name="debug_log_compressing_label">Сжатие…</string>
     <string name="debug_log_file_label">Записанный лог-файл</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">Лог отправлен?</string>
+    <string name="support_debuglog_sent_message">Если ты отправил лог отладки, его можно удалить с устройства. Хочешь удалить его?</string>
+    <string name="support_debuglog_session_delete_title">Удалить лог отладки?</string>
+    <string name="support_debuglog_session_delete_message">Эта сессия лога отладки будет навсегда удалена.</string>
+    <string name="support_debuglog_session_recording">Запись…</string>
+    <string name="support_debuglog_session_compressing">Сжатие…</string>
+    <string name="support_debuglog_failed_empty_log">Пустой лог</string>
+    <string name="support_debuglog_failed_missing_log">Лог отсутствует</string>
+    <string name="support_debuglog_failed_corrupt_zip">Повреждённый ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">Ошибка ZIP</string>
+    <string name="support_debuglog_clear_title">Удалить все логи отладки?</string>
+    <string name="support_debuglog_clear_message">Это навсегда удалит все сохранённые сессии логов отладки.</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">Связаться с разработчиком</string>
+    <string name="settings_support_contact_desc">Заполни форму, чтобы отправить разработчику письмо.</string>
+    <string name="contact_screen_title">Связаться с разработчиком</string>
+    <string name="contact_category_bug_label">Сообщение об ошибке</string>
+    <string name="contact_category_feature_label">Запрос функции</string>
+    <string name="contact_category_question_label">Вопрос</string>
+    <string name="contact_description_label">Описание</string>
+    <string name="contact_description_bug_hint">Опиши, что произошло и как воспроизвести проблему.</string>
+    <string name="contact_description_feature_hint">Опиши функцию, которую хочешь увидеть.</string>
+    <string name="contact_description_question_hint">Опиши свой вопрос подробно.</string>
+    <string name="contact_category_section_label">Категория</string>
+    <string name="contact_debug_log_label">Лог отладки</string>
+    <string name="contact_debug_log_select_hint">Выбери лог отладки для прикрепления</string>
+    <string name="contact_debug_log_picker_hint">Прикрепи лог отладки, чтобы помочь диагностировать проблему быстрее.</string>
+    <string name="contact_debug_log_picker_empty">Логи отладки недоступны. Сначала запиши один.</string>
+    <string name="contact_expected_behavior_label">Ожидаемое поведение</string>
+    <string name="contact_expected_behavior_hint">Опиши, что, по твоему мнению, должно было произойти.</string>
+    <string name="support_contact_debuglog_zip_error">Не удалось подготовить лог отладки для прикрепления</string>
+    <string name="contact_send_action">Открыть почтовое приложение</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d слово</item>
+        <item quantity="few">%1$d / %2$d слова</item>
+        <item quantity="many">%1$d / %2$d слов</item>
+        <item quantity="other">%1$d / %2$d слов</item>
+    </plurals>
+    <string name="contact_welcome_msg">Я лично читаю каждое сообщение и стараюсь ответить, но поскольку работаю над этим один, это может занять немного времени. Спасибо за терпение.</string>
+    <string name="contact_footer_msg">Твоё сообщение будет отправлено по электронной почте. Информация об устройстве и настройках прикрепляется автоматически.</string>
+    <string name="contact_no_email_app_msg">На этом устройстве не найдено почтовое приложение.</string>
+    <string name="contact_attachment_missing_msg">Файл лога отладки больше не существует</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">Сохранённые логи отладки</string>
+    <string name="settings_support_stored_logs_desc">%1$d сессий (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Нет сохранённых логов отладки</string>
+    <string name="settings_support_stored_logs_delete_title">Удалить сохранённые логи?</string>
+    <string name="settings_support_stored_logs_delete_msg">Это удалит все %1$d сохранённых сессий логов отладки.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Сохранённые логи отладки удалены</string>
     <string name="label_bug_reports">Сообщения об ошибках</string>
     <string name="description_bug_reports">Автоматическая отправка отчётов о сбоях и ошибках.</string>
     <string name="label_add_device">Добавить устройство</string>
@@ -243,8 +341,14 @@
     <string name="android13_notification_permission_description">Предоставь этому приложению разрешение на отправку уведомлений. Это позволит отображать уведомление, когда приложение активно и выполняются настройки громкости.</string>
     <string name="privacy_policy_label">Политика конфиденциальности</string>
     <string name="managed_devices_empty_message">Нет настроенных Bluetooth-устройств.\nНажми кнопку +, чтобы добавить первое устройство.</string>
+    <string name="label_pro_feature">Премиум-функция</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Бесплатная версия: %1$d из %2$d устройства</item>
+        <item quantity="few">Бесплатная версия: %1$d из %2$d устройств</item>
+        <item quantity="many">Бесплатная версия: %1$d из %2$d устройств</item>
+        <item quantity="other">Бесплатная версия: %1$d из %2$d устройств</item>
+    </plurals>
     <string name="general_delete_action">Удалить</string>
-    <string name="general_navigate_back_action">Вернуться назад</string>
     <string name="general_cancel_action">Отмена</string>
     <string name="general_ok_action">OK</string>
     <string name="general_configure_action">Настроить</string>
@@ -255,22 +359,22 @@
     <string name="android10_applaunch_hint_message">Android 10 требует специальное разрешение для запуска приложений из фона. Предоставь разрешение &quot;Отображать поверх других приложений&quot;.</string>
     <string name="notification_permission_hint_title">Разрешение на уведомления</string>
     <string name="notification_permission_hint_message">Предоставь разрешение на уведомления, чтобы видеть обновления статуса при настройке громкости.</string>
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Покупка отменена</string>
     <string name="error_iap_unavailable_message">Покупки в приложении недоступны</string>
     <string name="error_generic_message">Произошла ошибка. Попробуй ещё раз.</string>
     <string name="error_iap_owned_message">У тебя уже есть этот элемент</string>
     <string name="label_no_devices_title">Нет устройств</string>
     <string name="bluemusic_mascot_description">Иконка приложения</string>
-
-    <!-- Do Not Disturb mode -->
-    <string name="devices_device_config_dnd_on_connect_label">Режим "Не беспокоить"</string>
-    <string name="dnd_mode_dialog_title">Выберите режим "Не беспокоить"</string>
-    <string name="dnd_mode_dont_change">Не изменять</string>
-    <string name="dnd_mode_off">Выключено</string>
-    <string name="dnd_mode_priority_only">Только важное</string>
-    <string name="dnd_mode_alarms_only">Только будильники</string>
-    <string name="dnd_mode_total_silence">Полная тишина</string>
-
+    <!-- App Selection -->
+    <string name="devices_app_selection_title">Выбрать приложения</string>
+    <string name="devices_app_selection_search_hint">Поиск приложений…</string>
+    <string name="devices_app_selection_currently_selected">Выбрано сейчас</string>
+    <string name="devices_app_selection_selected_count">Выбрано приложений: %d</string>
+    <string name="general_navigate_back_action">Вернуться назад</string>
+    <string name="general_reset_action">Сбросить</string>
+    <string name="general_clear_action">Очистить</string>
+    <string name="general_save_action">Сохранить</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Блок</string>
     <string name="devices_indicator_awake">Акт</string>
@@ -282,107 +386,11 @@
     <string name="devices_indicator_auto">Авто</string>
     <string name="devices_indicator_home">Дом</string>
     <string name="devices_indicator_dnd">НБ</string>
-
-    <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">Оповещение о подключении</string>
-    <string name="connection_alert_dialog_title">Оповещение о подключении</string>
-    <string name="connection_alert_type_none">Нет</string>
-    <string name="connection_alert_type_sound">Только звук</string>
-    <string name="connection_alert_type_vibration">Только вибрация</string>
-    <string name="connection_alert_type_both">Звук и вибрация</string>
     <string name="devices_indicator_alert">Оповещение</string>
-
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Громкость (0–100)</string>
     <string name="devices_volume_input_error">Введи значение от %1$d до %2$d</string>
-
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Заблокировать</string>
     <string name="devices_unlock_sliders_action">Разблокировать</string>
-
-    <!-- Debug log short recording warning -->
-    <string name="settings_support_debuglog_short_recording_stop">Остановить всё равно</string>
-
-    <string name="settings_support_debuglog_short_recording_title">Очень короткая запись</string>
-    <string name="settings_support_debuglog_short_recording_msg">Запись оказалась очень короткой. Логи отладки — это записи, а не снимки — воспроизведи проблему во время активной записи, чтобы лог был полезен.</string>
-    <string name="settings_support_debuglog_short_recording_continue">Продолжить запись</string>
-    <string name="settings_support_debuglog_folder_label">Папка логов отладки</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d сессия использует %2$s</item>
-        <item quantity="few">%1$d сессии используют %2$s</item>
-        <item quantity="many">%1$d сессий используют %2$s</item>
-        <item quantity="other">%1$d сессий используют %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Логи отладки не сохранены</string>
-    <string name="settings_support_debuglog_folder_delete_title">Удалить все логи отладки?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Это навсегда удалит все сохранённые сессии логов отладки.</string>
-    <string name="debug_log_screen_subtitle">Просмотри и поделись записанным логом отладки</string>
-    <string name="debug_log_screen_sensitive_title">Конфиденциальная информация</string>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="one">%1$d файл готов (%2$s)</item>
-        <item quantity="few">%1$d файла готово (%2$s)</item>
-        <item quantity="many">%1$d файлов готово (%2$s)</item>
-        <item quantity="other">%1$d файлов готово (%2$s)</item>
-    </plurals>
-    <string name="debug_log_screen_keep_action">Сохранить</string>
-    <string name="debug_log_compressing_label">Сжатие…</string>
-    <string name="support_debuglog_sent_title">Лог отправлен?</string>
-    <string name="support_debuglog_sent_message">Если ты отправил лог отладки, его можно удалить с устройства. Хочешь удалить его?</string>
-    <string name="support_debuglog_session_delete_title">Удалить лог отладки?</string>
-    <string name="support_debuglog_session_delete_message">Эта сессия лога отладки будет навсегда удалена.</string>
-    <string name="support_debuglog_session_recording">Запись…</string>
-    <string name="support_debuglog_session_compressing">Сжатие…</string>
-    <string name="support_debuglog_failed_empty_log">Пустой лог</string>
-    <string name="support_debuglog_failed_missing_log">Лог отсутствует</string>
-    <string name="support_debuglog_failed_corrupt_zip">Повреждённый ZIP</string>
-    <string name="support_debuglog_failed_zip_failed">Ошибка ZIP</string>
-    <string name="support_debuglog_clear_title">Удалить все логи отладки?</string>
-    <string name="support_debuglog_clear_message">Это навсегда удалит все сохранённые сессии логов отладки.</string>
-    <string name="settings_support_contact_label">Связаться с разработчиком</string>
-    <string name="settings_support_contact_desc">Заполни форму, чтобы отправить разработчику письмо.</string>
-    <string name="contact_screen_title">Связаться с разработчиком</string>
-    <string name="contact_category_bug_label">Сообщение об ошибке</string>
-    <string name="contact_category_feature_label">Запрос функции</string>
-    <string name="contact_category_question_label">Вопрос</string>
-    <string name="contact_description_label">Описание</string>
-    <string name="contact_description_bug_hint">Опиши, что произошло и как воспроизвести проблему.</string>
-    <string name="contact_description_feature_hint">Опиши функцию, которую хочешь увидеть.</string>
-    <string name="contact_description_question_hint">Опиши свой вопрос подробно.</string>
-    <string name="contact_category_section_label">Категория</string>
-    <string name="contact_debug_log_label">Лог отладки</string>
-    <string name="contact_debug_log_select_hint">Выбери лог отладки для прикрепления</string>
-    <string name="contact_debug_log_picker_hint">Прикрепи лог отладки, чтобы помочь диагностировать проблему быстрее.</string>
-    <string name="contact_debug_log_picker_empty">Логи отладки недоступны. Сначала запиши один.</string>
-    <string name="contact_expected_behavior_label">Ожидаемое поведение</string>
-    <string name="contact_expected_behavior_hint">Опиши, что, по твоему мнению, должно было произойти.</string>
-    <string name="support_contact_debuglog_zip_error">Не удалось подготовить лог отладки для прикрепления</string>
-    <string name="contact_send_action">Открыть почтовое приложение</string>
-    <plurals name="contact_word_count">
-        <item quantity="one">%1$d / %2$d слово</item>
-        <item quantity="few">%1$d / %2$d слова</item>
-        <item quantity="many">%1$d / %2$d слов</item>
-        <item quantity="other">%1$d / %2$d слов</item>
-    </plurals>
-    <string name="contact_welcome_msg">Я лично читаю каждое сообщение и стараюсь ответить, но поскольку работаю над этим один, это может занять немного времени. Спасибо за терпение.</string>
-    <string name="contact_footer_msg">Твоё сообщение будет отправлено по электронной почте. Информация об устройстве и настройках прикрепляется автоматически.</string>
-    <string name="contact_no_email_app_msg">На этом устройстве не найдено почтовое приложение.</string>
-    <string name="contact_attachment_missing_msg">Файл лога отладки больше не существует</string>
-    <string name="settings_support_stored_logs_label">Сохранённые логи отладки</string>
-    <string name="settings_support_stored_logs_desc">%1$d сессий (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">Нет сохранённых логов отладки</string>
-    <string name="settings_support_stored_logs_delete_title">Удалить сохранённые логи?</string>
-    <string name="settings_support_stored_logs_delete_msg">Это удалит все %1$d сохранённых сессий логов отладки.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Сохранённые логи отладки удалены</string>
-    <string name="label_pro_feature">Премиум-функция</string>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">Бесплатная версия: %1$d из %2$d устройства</item>
-        <item quantity="few">Бесплатная версия: %1$d из %2$d устройств</item>
-        <item quantity="many">Бесплатная версия: %1$d из %2$d устройств</item>
-        <item quantity="other">Бесплатная версия: %1$d из %2$d устройств</item>
-    </plurals>
-    <string name="ui_theme_color_setting_label">Цвет темы</string>
-    <string name="ui_theme_color_setting_explanation">Цветовая палитра, используемая для оформления приложения.</string>
-    <string name="ui_theme_color_material_you_note">Цвет задаётся обоями при использовании Material You.</string>
-    <string name="ui_theme_color_blue_label">Синий</string>
-    <string name="ui_theme_color_sunset_label">Закат</string>
 </resources>

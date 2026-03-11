@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
     <string name="general_error_label">Xəta</string>
     <string name="general_error_no_compatible_app_found_msg">Bu sorğunu emal edəcək uyğun tətbiq tapılmadı.</string>
     <string name="general_share_action">Paylaş</string>
     <string name="general_back_action">Geri</string>
     <string name="general_show_details_action">Təfərrüatları göstər</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVM-ə xoş gəldiniz</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager Bluetooth cihaz səslərini avtomatik idarə etməyə imkan verir.</string>
     <string name="onboarding_welcome_action">Başlayaq</string>
@@ -20,9 +23,11 @@
     <string name="onboarding_rewrite_message">Android dəyişiklikləri və Google tələblərinə uyğun olaraq tətbiqi yenidən yazmaq məcburiyyətində qaldım. Tətbiqin etibarlı işləməsini təmin etmək üçün mümkün olduğu qədər modernləşdirdim.</string>
     <string name="onboarding_rewrite_features">Bu yeniləmə zamanı bəzi funksiyalar dəyişdi. Hər şeyin düzgün konfiqurasiya edildiyindən əmin olmaq üçün cihaz parametrlərinizi yoxlayın.</string>
     <string name="onboarding_rewrite_action">Davam et</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">İdarəsiz cihaz tapılmadı</string>
     <string name="discover_all_devices_managed_msg">Bütün cütləşdirilmiş cihazlarınız idarə olunur! Yenisini əlavə etmək istəyirsiniz?</string>
     <string name="discover_pair_new_device_action">Yeni cihaz cütləşdir</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">Cihaz konfiqurasiyası</string>
     <string name="devices_device_config_section_general_label">Ümumi</string>
     <string name="devices_device_config_remove_device_label">Cihazı unut</string>
@@ -32,13 +37,9 @@
     <string name="devices_device_config_rename_device_label">Cihazı yenidən adlandır</string>
     <string name="devices_device_config_rename_device_desc">Bu cihazı tətbiq daxilində, mümkünsə sistem səviyyəsində yenidən adlandır.</string>
     <string name="devices_device_config_rename_device_action">Yenidən adlandır</string>
+    <string name="devices_device_config_enabled_label">Fəal</string>
+    <string name="devices_device_config_enabled_desc">Bağlantı qurulduqda bu cihaza cavab ver</string>
     <string name="devices_device_config_section_timing_label">Zamanlama</string>
-    <string name="devices_device_config_volume_rate_limiter_label">Səs tezliyinin məhdudlaşdırıcısı</string>
-    <string name="devices_device_config_volume_rate_limiter_desc">Sürətli və ya artıq səs tənzimləmələrini qarşılamaq üçün səs dəyişikliklərinin tezliyini məhdudlaşdır.</string>
-    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Səs artırma gecikməsi</string>
-    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Səs artımları arasında minimum vaxt: %d ms</string>
-    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Səs azalma gecikməsi</string>
-    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Səs azalmaları arasında minimum vaxt: %d ms</string>
     <string name="devices_device_config_monitoring_duration_label">İzləmə müddəti</string>
     <string name="devices_device_config_monitoring_duration_desc">Nizamlamalar edildikdən sonra millisaniyə növündə müddət, bu vaxt digər səs səviyyəsi dəyişiklikləri əngəllənər.</string>
     <string name="devices_device_config_adjustment_delay_label">Nizamlama gecikməsi</string>
@@ -48,6 +49,9 @@
     <string name="devices_device_config_section_reaction_label">Digər</string>
     <string name="devices_device_config_launch_app_label">Tətbiqi başlat</string>
     <string name="devices_device_config_launch_app_desc">Bu cihazla bağlantı qurulanda tətbiqi başlat.</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d tətbiq seçilib</string>
+    <string name="devices_device_config_show_home_screen_label">Əsas ekranı göstər</string>
+    <string name="devices_device_config_show_home_screen_desc">Bu cihaz üçün bütün hadisələr emal edildikdən sonra əsas ekranı göstərməyə çalışın. Bu, bütün Android versiyalarında işləməyə bilər.</string>
     <string name="devices_device_config_nudge_volume_label">Səsi sürüşdür</string>
     <string name="devices_device_config_nudge_volume_description">Sistemə görə istənilən səs artıq qurulmuş olsa belə, səsi bir addım azaldıb sonra qaldır.</string>
     <string name="devices_device_config_visible_adjustments_label">Görünən tənzimləmələr</string>
@@ -56,10 +60,24 @@
     <string name="devices_device_config_keep_awake_desc">Cihazla bağlantı qurularkən ekranı açıq saxla.</string>
     <string name="devices_device_config_volume_observe_label">Dəyişiklikləri müşahidə et</string>
     <string name="devices_device_config_volume_observe_desc">Bu cihaz bağlı ikən aktiv qal və bu tətbiqdən qaynaqlanmayan səs dəyişikliklərini saxla.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Bağlantı kəsildikdə səsi saxla</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Bu cihazın bağlantısı kəsildikdə mövcud səs səviyyələrini tutub saxlayın.</string>
     <string name="devices_device_config_volume_lock_label">Səs kilidi</string>
     <string name="devices_device_config_volume_lock_desc">Bu tətbiq üzərindən edilməyən istənilən səs dəyişiklikləri bu cihazla bağlantı qurularkən geri qaytarılacaqdır.</string>
+    <string name="devices_device_config_volume_rate_limiter_label">Səs tezliyinin məhdudlaşdırıcısı</string>
+    <string name="devices_device_config_volume_rate_limiter_desc">Sürətli və ya artıq səs tənzimləmələrini qarşılamaq üçün səs dəyişikliklərinin tezliyini məhdudlaşdır.</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_label">Səs artırma gecikməsi</string>
+    <string name="devices_device_config_volume_rate_limit_increase_duration_desc">Səs artımları arasında minimum vaxt: %d ms</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Səs azalma gecikməsi</string>
+    <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Səs azalmaları arasında minimum vaxt: %d ms</string>
     <string name="devices_device_config_autoplay_label">Avtomatik oynatma</string>
     <string name="devices_device_config_autoplay_desc">Bu cihazla bağlantı qurulanda Bluetooth uzaqdan idarəetmədə oynat düyməsinə basmağı simulyasiya et.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Avtomatik oynatma açar növləri</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Mövcud açar növləri</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Seçilmiş açarlar (ardıcıllıqla)</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Açar növləri</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Hansı açarları göndərəcəyinizi və hansı ardıcıllıqla konfiqurasiya edin</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Heç bir açar konfiqurasiya edilməyib</string>
     <string name="devices_device_config_section_volumes_label">Səs səviyyələri</string>
     <string name="devices_device_config_section_volume_label">Səs</string>
     <string name="devices_device_config_alarm_volume_label">Zəngli saat səs səviyyəsi</string>
@@ -101,11 +119,11 @@
     <string name="devices_last_connected_label">Son qoşulma: %s</string>
     <string name="devices_currently_connected_label">Hazırda qoşulub</string>
     <string name="devices_device_disabled_label">Cihaz deaktivdir</string>
-    <string name="devices_device_config_enabled_label">Fəal</string>
-    <string name="devices_device_config_enabled_desc">Bağlantı qurulduqda bu cihaza cavab ver</string>
     <string name="devices_no_volumes_configured">Bu cihaz üçün heç bir səs səviyyəsi konfiqurasiya edilməyib. Səs seçimlərini tənzimləmək üçün Konfiqurasiya et düyməsinə toxun.</string>
+    <!-- Settings-->
     <string name="settings_label">Parametrlər</string>
     <string name="settings_category_other_label">Digər</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">Ümumi</string>
     <string name="general_settings_desc">Bütün tətbiqə təsir edən ümumi tənzimləmələr.</string>
     <string name="settings_category_ui_label">İstifadəçi interfeysi</string>
@@ -120,8 +138,14 @@
     <string name="ui_theme_style_medium_contrast_label">Orta Kontrast</string>
     <string name="ui_theme_style_high_contrast_label">Yüksək Kontrast</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
+    <string name="ui_theme_color_setting_label">Tema rəngi</string>
+    <string name="ui_theme_color_setting_explanation">Tətbiqin teması üçün istifadə olunan rəng palitrasıdır.</string>
+    <string name="ui_theme_color_material_you_note">Material You istifadə edərkən rəng divar kağızınızla müəyyən edilir.</string>
+    <string name="ui_theme_color_blue_label">Mavi</string>
+    <string name="ui_theme_color_sunset_label">Gün batımı</string>
     <string name="ui_language_override_label">Tətbiq dili</string>
     <string name="ui_language_override_desc">Sistemin standart dilindən asılı olmayaraq BVM üçün fərqli bir dil seçin.</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">Cihazlar</string>
     <string name="devices_settings_desc">Bütün idarə olunan cihazlara təsir edən parametrlər.</string>
     <string name="label_app_enabled">Tətbiq fəaldır</string>
@@ -132,6 +156,7 @@
     <string name="description_volume_listener">Bir cihazla bağlantı qurduqda aktiv qal və bu tətbiqdən qaynaqlanmayan səs dəyişikliklərini saxla.</string>
     <string name="label_boot_restore">Başlanğıcda geri qaytar</string>
     <string name="description_boot_restore">Bluetooth cihazı ilə bağlantı qurulsa, açılışdan/yenidən başlatmadan sonra səs səviyyəsini geri qaytarın.</string>
+    <!-- Settings/Support-->
     <string name="settings_support_label">Dəstək</string>
     <string name="settings_support_description">Sənədləri oxuyun, problemləri bildirin, başqalarıyla söhbət edin və ya sazlama jurnalı yazın.</string>
     <string name="settings_support_wiki_label">Sənədlər</string>
@@ -142,24 +167,40 @@
     <string name="settings_support_debuglog_desc">Tətbiqin etdiklərinin hamısını paylaşa biləcəyiniz bir mətn faylına yazın.</string>
     <string name="settings_support_debuglog_recording_desc">Hazırda sazlama məlumatları yazılır. Yazmağı dayandırmaq üçün toxunun.</string>
     <string name="settings_support_debuglog_path">Jurnal yolu: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">Çox qısa qeyd</string>
+    <string name="settings_support_debuglog_short_recording_msg">Bu çox qısa bir qeyd idi. Sazlama jurnalları anlıq görüntü deyil, qeydlərdir — faydalı olması üçün qeyd aktiv olarkən problemi yenidən yaradın.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Qeydə davam et</string>
+    <string name="settings_support_debuglog_short_recording_stop">Yenə də dayandır</string>
+    <string name="settings_support_debuglog_folder_label">Sazlama jurnalı qovluğu</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sessiya %2$s istifadə edir</item>
+        <item quantity="other">%1$d sessiya %2$s istifadə edir</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Sazlama jurnalı saxlanılmayıb</string>
+    <string name="settings_support_debuglog_folder_delete_title">Bütün sazlama jurnallarını silin?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Bu, saxlanılan bütün sazlama jurnalı sessiyalarını həmişəlik silər.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Söhbət etmək və sual vermək üçün bir yer.</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Təşəkkürlər</string>
     <string name="settings_acknowledgements_description">Kredit, lisenziya və xüsusi təşəkkürlər</string>
     <string name="settings_acks_translation_header">Tərcümə</string>
     <string name="settings_acks_translators_title">Tərcüməçilər</string>
-    <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
+    <string name="settings_acks_translators_people">Şəxs1;Şəxs2(isteğe_bağlı@email.com)</string>
     <string name="settings_acks_translate_title">BVM-i tərcümə et</string>
     <string name="settings_acks_translate_desc">BVM-i öz dilinizə tərcümə etməyə kömək edin</string>
     <string name="settings_acks_thanks_header">Təşəkkürlər</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Açıq mənbəli layihələrin tərcüməsini dəstəklədiyinə görə</string>
     <string name="settings_licenses_label">Lisenziyalar</string>
+    <string name="settings_translation_label">Tərcümə</string>
+    <string name="settings_translation_desc">Tətbiqi sevdiyiniz dilə tərcümə etməyə kömək edin</string>
     <string name="settings_sponsor_development_title">İnkişafı sponsorlaşdır</string>
     <string name="settings_sponsor_development_summary">Patron ol və davamlı inkişafı mümkün et.</string>
     <string name="settings_privacy_policy_label">Məxfilik siyasəti</string>
     <string name="settings_privacy_policy_desc">Məlumatları məsuliyyətlə idarə etmək.</string>
     <string name="changelog_label">Dəyişiklik jurnalı</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">Sazlama bildirişləri</string>
     <string name="debug_log_consent_title">Sazlama jurnalı</string>
     <string name="debug_log_consent_explanation">Bu funksiya tətbiqin etdiklərinin hamısını paylaşıla bilən bir fayla yazır. Yaradılan fayl həssas məlumatlar ehtiva edir (məs. fayl adları və quraşdırılmış tətbiqlər). Yalnız etibarlı tərəflərlə paylaşın (məs. problemi həll edən bir proqramçı).</string>
@@ -167,11 +208,67 @@
     <string name="debug_log_record_action">Yaz</string>
     <string name="debug_log_stop_action">Yazmağı dayandır</string>
     <string name="debug_log_screen_title">Sazlama Jurnalı Yazıcısı</string>
+    <string name="debug_log_screen_subtitle">Qeyd edilmiş sazlama jurnalınızı nəzərdən keçirin və paylaşın</string>
+    <string name="debug_log_screen_sensitive_title">Həssas məlumat</string>
     <string name="debug_log_screen_sensitive_information_message">Yaradılan fayl həssas məlumatlar ehtiva edir (məs. fayl adları və quraşdırılmış tətbiqlər). Yalnız etibarlı tərəflərlə paylaşın.</string>
     <string name="debug_log_screen_session_path_label">Sazlama sessiyası yolu</string>
     <string name="debug_log_screen_log_files_label">Jurnal Faylları</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d fayl hazırdır (%2$s)</item>
+        <item quantity="other">%1$d fayl hazırdır (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">Sil</string>
+    <string name="debug_log_screen_keep_action">Saxla</string>
+    <string name="debug_log_compressing_label">Sıxılır…</string>
     <string name="debug_log_file_label">Yazılmış jurnal faylı</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">Jurnal göndərildi?</string>
+    <string name="support_debuglog_sent_message">Sazlama jurnalını göndərdinizsə, cihazdan silinə bilər. Silmək istərdinizmi?</string>
+    <string name="support_debuglog_session_delete_title">Sazlama jurnalını silin?</string>
+    <string name="support_debuglog_session_delete_message">Bu sazlama jurnalı sessiyası həmişəlik silinəcəkdir.</string>
+    <string name="support_debuglog_session_recording">Qeyd edilir…</string>
+    <string name="support_debuglog_session_compressing">Sıxılır…</string>
+    <string name="support_debuglog_failed_empty_log">Boş jurnal</string>
+    <string name="support_debuglog_failed_missing_log">Jurnal yoxdur</string>
+    <string name="support_debuglog_failed_corrupt_zip">Zədəli ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP uğursuz oldu</string>
+    <string name="support_debuglog_clear_title">Bütün sazlama jurnallarını silin?</string>
+    <string name="support_debuglog_clear_message">Bu, saxlanılan bütün sazlama jurnalı sessiyalarını həmişəlik silər.</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">Proqramçıya müraciət</string>
+    <string name="settings_support_contact_desc">Proqramçıya e-poçt göndərmək üçün formu doldurun.</string>
+    <string name="contact_screen_title">Proqramçıya müraciət</string>
+    <string name="contact_category_bug_label">Xəta bildirişi</string>
+    <string name="contact_category_feature_label">Xüsusiyyət tələbi</string>
+    <string name="contact_category_question_label">Sual</string>
+    <string name="contact_description_label">Təsvir</string>
+    <string name="contact_description_bug_hint">Nə baş verdiyini və problemi necə yenidən yaratmağı təsvir edin.</string>
+    <string name="contact_description_feature_hint">Görmək istədiyiniz xüsusiyyəti təsvir edin.</string>
+    <string name="contact_description_question_hint">Sualınızı ətraflı şəkildə təsvir edin.</string>
+    <string name="contact_category_section_label">Kateqoriya</string>
+    <string name="contact_debug_log_label">Sazlama jurnalı</string>
+    <string name="contact_debug_log_select_hint">Əlavə etmək üçün sazlama jurnalı seçin</string>
+    <string name="contact_debug_log_picker_hint">Problemi daha sürətli diaqnoz etmək üçün sazlama jurnalı əlavə edin.</string>
+    <string name="contact_debug_log_picker_empty">Sazlama jurnalı yoxdur. Əvvəlcə birini qeyd edin.</string>
+    <string name="contact_expected_behavior_label">Gözlənilən davranış</string>
+    <string name="contact_expected_behavior_hint">Bunun əvəzinə nə olmasını gözlədiyinizi təsvir edin.</string>
+    <string name="support_contact_debuglog_zip_error">Sazlama jurnalını əlavə üçün hazırlamaq alınmadı</string>
+    <string name="contact_send_action">E-poçt tətbiqini aç</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d söz</item>
+        <item quantity="other">%1$d / %2$d söz</item>
+    </plurals>
+    <string name="contact_welcome_msg">Hər mesajı özüm oxuyuram və cavab verməyə çalışıram, lakin bunu tək işlədiyimə görə biraz vaxt lazım ola bilər. Səbriniz üçün təşəkkür edirik.</string>
+    <string name="contact_footer_msg">Mesajınız e-poçt vasitəsilə göndəriləcəkdir. Cihaz və quraşdırma məlumatları avtomatik olaraq əlavə edilir.</string>
+    <string name="contact_no_email_app_msg">Bu cihazda e-poçt tətbiqi tapılmadı.</string>
+    <string name="contact_attachment_missing_msg">Sazlama jurnalı faylı artıq mövcud deyil</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">Saxlanılan sazlama jurnalları</string>
+    <string name="settings_support_stored_logs_desc">%1$d sessiya (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Saxlanılan sazlama jurnalı yoxdur</string>
+    <string name="settings_support_stored_logs_delete_title">Saxlanılan jurnalları silin?</string>
+    <string name="settings_support_stored_logs_delete_msg">Bu, saxlanılan bütün %1$d sazlama jurnalı sessiyasını silər.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Saxlanılan sazlama jurnalları silindi</string>
     <string name="label_bug_reports">Xəta hesabatı</string>
     <string name="description_bug_reports">Avtomatik xəta və çökmə hesabatı göndərmə.</string>
     <string name="label_add_device">Cihaz əlavə et</string>
@@ -212,7 +309,7 @@
     <string name="label_keyevent_playpause">Oynat-Fasilə ver</string>
     <string name="label_keyevent_play">Oynat</string>
     <string name="label_keyevent_next">Növbəti</string>
-    <string name="label_install_id">Install ID</string>
+    <string name="label_install_id">Quraşdırma Kimliyi</string>
     <string name="message_copied_to_clipboard">Lövhəyə kopyalandı</string>
     <string name="label_thanks">Təşəkkürlər</string>
     <string name="label_licenses">Lisenziyalar</string>
@@ -238,6 +335,11 @@
     <string name="android13_notification_permission_description">Bu tətbiqə bildiriş göndərmək üçün icazə ver. Bu, tətbiq aktiv olduqda və səs tənzimləmələri aparılarkən bildiriş göstərilməsinə imkan verir.</string>
     <string name="privacy_policy_label">Məxfilik siyasəti</string>
     <string name="managed_devices_empty_message">Heç bir Bluetooth cihazı konfiqurasiya edilməyib.\nİlk cihazınızı əlavə etmək üçün + düyməsinə toxunun.</string>
+    <string name="label_pro_feature">Premium xüsusiyyət</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Pulsuz versiya: %2$d cihazdan %1$d</item>
+        <item quantity="other">Pulsuz versiya: %2$d cihazdan %1$d</item>
+    </plurals>
     <string name="general_delete_action">Sil</string>
     <string name="general_cancel_action">Ləğv et</string>
     <string name="general_ok_action">OK</string>
@@ -249,12 +351,14 @@
     <string name="android10_applaunch_hint_message">Android 10, tətbiqləri arxaplandan başlatmaq üçün xüsusi icazə tələb edir. \"Digər tətbiqlərin üzərində görüntülə\" icazəsini ver.</string>
     <string name="notification_permission_hint_title">Bildiriş icazəsi</string>
     <string name="notification_permission_hint_message">Səs tənzimləmələri zamanı vəziyyət yeniləmələrini görmək üçün bildiriş icazəsi ver.</string>
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Satınalma ləğv edildi</string>
     <string name="error_iap_unavailable_message">Tətbiq daxili alışlar mövcud deyil</string>
     <string name="error_generic_message">Xəta baş verdi. Yenidən cəhd edin.</string>
     <string name="error_iap_owned_message">Bu element artıq sizin mülkiyyətinizdədir</string>
     <string name="label_no_devices_title">Cihaz Yoxdur</string>
     <string name="bluemusic_mascot_description">Tətbiq ikonu</string>
+    <!-- App Selection -->
     <string name="devices_app_selection_title">Tətbiqləri seçin</string>
     <string name="devices_app_selection_search_hint">Tətbiqləri axtarın…</string>
     <string name="devices_app_selection_currently_selected">Hazırda seçilmiş</string>
@@ -263,6 +367,7 @@
     <string name="general_reset_action">Sıfırla</string>
     <string name="general_clear_action">Təmizlə</string>
     <string name="general_save_action">Saxla</string>
+    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Kilit</string>
     <string name="devices_indicator_awake">Oyaq</string>
     <string name="devices_indicator_nudge">Sürüşdür</string>
@@ -274,94 +379,10 @@
     <string name="devices_indicator_home">Əsas ekran</string>
     <string name="devices_indicator_dnd">NE</string>
     <string name="devices_indicator_alert">Xəbərdarlıq</string>
-    <string name="devices_device_config_show_home_screen_label">Əsas ekranı göstər</string>
-    <string name="devices_device_config_show_home_screen_desc">Bu cihaz üçün bütün hadisələr emal edildikdən sonra əsas ekranı göstərməyə çalışın. Bu, bütün Android versiyalarında işləməyə bilər.</string>
-    <string name="devices_device_config_volume_save_on_disconnect_label">Bağlantı kəsildikdə səsi saxla</string>
-    <string name="devices_device_config_volume_save_on_disconnect_desc">Bu cihazın bağlantısı kəsildikdə mövcud səs səviyyələrini tutub saxlayın.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Avtomatik oynatma açar növləri</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Mövcud açar növləri</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Seçilmiş açarlar (ardıcıllıqla)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Açar növləri</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Hansı açarları göndərəcəyinizi və hansı ardıcıllıqla konfiqurasiya edin</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Heç bir açar konfiqurasiya edilməyib</string>
-    <string name="devices_device_config_launch_app_multiple_desc">%d tətbiq seçilib</string>
-    <string name="settings_support_debuglog_short_recording_stop">Yenə də dayandır</string>
+    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Səs (0–100)</string>
     <string name="devices_volume_input_error">%1$d ilə %2$d arasında bir dəyər daxil edin</string>
+    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Kilit</string>
     <string name="devices_unlock_sliders_action">Kilidi aç</string>
-    <string name="ui_theme_color_setting_label">Tema rəngi</string>
-    <string name="ui_theme_color_setting_explanation">Tətbiqin teması üçün istifadə olunan rəng palitrasıdır.</string>
-    <string name="ui_theme_color_material_you_note">Material You istifadə edərkən rəng divar kağızınızla müəyyən edilir.</string>
-    <string name="ui_theme_color_blue_label">Mavi</string>
-    <string name="ui_theme_color_sunset_label">Gün batımı</string>
-    <string name="settings_support_debuglog_short_recording_title">Çox qısa qeyd</string>
-    <string name="settings_support_debuglog_short_recording_msg">Bu çox qısa bir qeyd idi. Sazlama jurnalları anlıq görüntü deyil, qeydlərdir — faydalı olması üçün qeyd aktiv olarkən problemi yenidən yaradın.</string>
-    <string name="settings_support_debuglog_short_recording_continue">Qeydə davam et</string>
-    <string name="settings_support_debuglog_folder_label">Sazlama jurnalı qovluğu</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d sessiya %2$s istifadə edir</item>
-        <item quantity="other">%1$d sessiya %2$s istifadə edir</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Sazlama jurnalı saxlanılmayıb</string>
-    <string name="settings_support_debuglog_folder_delete_title">Bütün sazlama jurnallarını silin?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Bu, saxlanılan bütün sazlama jurnalı sessiyalarını həmişəlik silər.</string>
-    <string name="debug_log_screen_subtitle">Qeyd edilmiş sazlama jurnalınızı nəzərdən keçirin və paylaşın</string>
-    <string name="debug_log_screen_sensitive_title">Həssas məlumat</string>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="one">%1$d fayl hazırdır (%2$s)</item>
-        <item quantity="other">%1$d fayl hazırdır (%2$s)</item>
-    </plurals>
-    <string name="debug_log_screen_keep_action">Saxla</string>
-    <string name="debug_log_compressing_label">Sıxılır…</string>
-    <string name="support_debuglog_sent_title">Jurnal göndərildi?</string>
-    <string name="support_debuglog_sent_message">Sazlama jurnalını göndərdinizsə, cihazdan silinə bilər. Silmək istərdinizmi?</string>
-    <string name="support_debuglog_session_delete_title">Sazlama jurnalını silin?</string>
-    <string name="support_debuglog_session_delete_message">Bu sazlama jurnalı sessiyası həmişəlik silinəcəkdir.</string>
-    <string name="support_debuglog_session_recording">Qeyd edilir…</string>
-    <string name="support_debuglog_session_compressing">Sıxılır…</string>
-    <string name="support_debuglog_failed_empty_log">Boş jurnal</string>
-    <string name="support_debuglog_failed_missing_log">Jurnal yoxdur</string>
-    <string name="support_debuglog_failed_corrupt_zip">Zədəli ZIP</string>
-    <string name="support_debuglog_failed_zip_failed">ZIP uğursuz oldu</string>
-    <string name="support_debuglog_clear_title">Bütün sazlama jurnallarını silin?</string>
-    <string name="support_debuglog_clear_message">Bu, saxlanılan bütün sazlama jurnalı sessiyalarını həmişəlik silər.</string>
-    <string name="settings_support_contact_label">Proqramçıya müraciət</string>
-    <string name="settings_support_contact_desc">Proqramçıya e-poçt göndərmək üçün formu doldurun.</string>
-    <string name="contact_screen_title">Proqramçıya müraciət</string>
-    <string name="contact_category_bug_label">Xəta bildirişi</string>
-    <string name="contact_category_feature_label">Xüsusiyyət tələbi</string>
-    <string name="contact_category_question_label">Sual</string>
-    <string name="contact_description_label">Təsvir</string>
-    <string name="contact_description_bug_hint">Nə baş verdiyini və problemi necə yenidən yaratmağı təsvir edin.</string>
-    <string name="contact_description_feature_hint">Görmək istədiyiniz xüsusiyyəti təsvir edin.</string>
-    <string name="contact_description_question_hint">Sualınızı ətraflı şəkildə təsvir edin.</string>
-    <string name="contact_category_section_label">Kateqoriya</string>
-    <string name="contact_debug_log_label">Sazlama jurnalı</string>
-    <string name="contact_debug_log_select_hint">Əlavə etmək üçün sazlama jurnalı seçin</string>
-    <string name="contact_debug_log_picker_hint">Problemi daha sürətli diaqnoz etmək üçün sazlama jurnalı əlavə edin.</string>
-    <string name="contact_debug_log_picker_empty">Sazlama jurnalı yoxdur. Əvvəlcə birini qeyd edin.</string>
-    <string name="contact_expected_behavior_label">Gözlənilən davranış</string>
-    <string name="contact_expected_behavior_hint">Bunun əvəzinə nə olmasını gözlədiyinizi təsvir edin.</string>
-    <string name="support_contact_debuglog_zip_error">Sazlama jurnalını əlavə üçün hazırlamaq alınmadı</string>
-    <string name="contact_send_action">E-poçt tətbiqini aç</string>
-    <plurals name="contact_word_count">
-        <item quantity="one">%1$d / %2$d söz</item>
-        <item quantity="other">%1$d / %2$d söz</item>
-    </plurals>
-    <string name="contact_welcome_msg">Hər mesajı özüm oxuyuram və cavab verməyə çalışıram, lakin bunu tək işlədiyimə görə biraz vaxt lazım ola bilər. Səbriniz üçün təşəkkür edirik.</string>
-    <string name="contact_footer_msg">Mesajınız e-poçt vasitəsilə göndəriləcəkdir. Cihaz və quraşdırma məlumatları avtomatik olaraq əlavə edilir.</string>
-    <string name="contact_no_email_app_msg">Bu cihazda e-poçt tətbiqi tapılmadı.</string>
-    <string name="contact_attachment_missing_msg">Sazlama jurnalı faylı artıq mövcud deyil</string>
-    <string name="settings_support_stored_logs_label">Saxlanılan sazlama jurnalları</string>
-    <string name="settings_support_stored_logs_desc">%1$d sessiya (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">Saxlanılan sazlama jurnalı yoxdur</string>
-    <string name="settings_support_stored_logs_delete_title">Saxlanılan jurnalları silin?</string>
-    <string name="settings_support_stored_logs_delete_msg">Bu, saxlanılan bütün %1$d sazlama jurnalı sessiyasını silər.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Saxlanılan sazlama jurnalları silindi</string>
-    <string name="label_pro_feature">Premium xüsusiyyət</string>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">Pulsuz versiya: %2$d cihazdan %1$d</item>
-        <item quantity="other">Pulsuz versiya: %2$d cihazdan %1$d</item>
-    </plurals>
 </resources>

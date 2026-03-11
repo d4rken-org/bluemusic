@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">BVM Pro szükséges</string>
+    <string name="upgrade_prompt_title">Frissítés BVM Pro-ra</string>
+    <string name="upgrade_prompt_body">A Bluetooth Volume Manager Pro jobb eredményeket, több funkciót és lehetőséget kínál a haladó felhasználóknak.</string>
+    <string name="upgrade_prompt_upgrade_action">Frissítés</string>
+    <string name="upgrade_screen_title">Frissítés BVM Pro-ra</string>
+    <string name="upgrade_screen_preamble">A Bluetooth Volume Manager nem tartalmaz hirdetéseket, és nem értékesít felhasználói adatokat. A munkámat te finanszírozód ❤️.</string>
+    <string name="upgrade_screen_why_title">Előnyök</string>
+    <string name="upgrade_screen_why_body">• Egy motivált fejlesztő 🧙
+• Korlátlan eszközök ➡️➡️
+• Extra műveletek ⚙️
+és még sok más…</string>
+    <string name="upgrade_screen_how_title">Lehetőségek</string>
+    <string name="upgrade_screen_how_body">Választhat az egyszeri vásárlás és az olcsóbb éves előfizetés között.\nAz előfizetés egy 14 napos ingyenes próbaverzióval kezdődik, amely után évente egyszer kerül felszámításra. A próbaidőszak és az előfizetés bármikor lemondható.\nAzonos funkciók, csak különböző árképzési modellek.</string>
+    <string name="upgrade_screen_subscription_trial_action">Ingyenes 14 napos próbaidőszak indítása</string>
+    <string name="upgrade_screen_subscription_action">Iratkozz fel</string>
+    <string name="upgrade_screen_subscription_action_hint">Az előfizetés évi %s.</string>
+    <string name="upgrade_screen_iap_action">Egyszeri vásárlás</string>
+    <string name="upgrade_screen_iap_action_hint">Az egyszeri vásárlás ára %s.</string>
+    <string name="upgrade_screen_thanks_toast">Te vagy a legjobb! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Vásárlás visszaállítása</string>
+    <string name="upgrade_screen_restore_purchase_message">A frissítés az ugyanazon Google-fiókhoz tartozó összes eszközre érvényes.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Hibaelhárítási tippek a fel nem ismert frissítésekhez:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">A Play Áruház szinkronizálása időbe telhet. Próbáld meg az újraindítást, a Google Play gyorsítótárának törlését vagy egyszerűen várj.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">A több fiók összezavarhatja a Google Play-t. Jelentkezz ki más fiókokból, vagy telepítsd a Google Play weboldalán keresztül, amely kikényszeríti a meghatározott fiókkal való társítást.</string>
+    <string name="upgrades_gplay_unavailable_error_title">A Google Play nem elérhető</string>
+    <string name="upgrades_gplay_unavailable_error_description">A Bluetooth Volume Manager nem tud csatlakozni a Google Playhez. Telepítve és naprакész a Google Play? Be vagy jelentkezve a Google-fiókodba? Próbáld meg törölni a Google Play alkalmazás gyorsítótárát és indítsd újra az eszközt.</string>
+    <string name="upgrades_no_purchases_found_check_account">Nem található vásárlás. A megfelelő fiókot használja?</string>
+</resources>

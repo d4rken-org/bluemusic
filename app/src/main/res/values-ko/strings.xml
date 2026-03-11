@@ -1,15 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">블루투스 음량 매니저</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
     <string name="general_error_label">오류</string>
     <string name="general_error_no_compatible_app_found_msg">이 요청을 처리할 수 있는 호환 가능한 앱을 찾을 수 없습니다.</string>
-    <string name="general_navigate_back_action">뒤로 이동</string>
-    <string name="general_reset_action">재설정</string>
-    <string name="general_save_action">저장</string>
     <string name="general_share_action">공유</string>
     <string name="general_back_action">뒤로</string>
-    <string name="general_clear_action">지우기</string>
     <string name="general_show_details_action">자세히 보기</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVM에 오신 것을 환영합니다</string>
     <string name="onboarding_welcome_message">블루투스 음량 매니저는 블루투스 디바이스 음량을 자동으로 관리할 수 있게 해줍니다.</string>
     <string name="onboarding_welcome_action">시작하기</string>
@@ -24,13 +23,11 @@
     <string name="onboarding_rewrite_message">안드로이드 변경사항과 구글 요구사항 때문에 앱이 계속 안정적으로 작동할 수 있도록 블루투스 음량 매니저를 처음부터 완전히 다시 만들었습니다.</string>
     <string name="onboarding_rewrite_features">이번 업데이트로 인해 일부 디바이스 설정이 재설정되었을 수 있습니다. 디바이스 구성을 확인해 주세요.</string>
     <string name="onboarding_rewrite_action">계속</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">관리되지 않는 디바이스를 찾을 수 없습니다</string>
     <string name="discover_all_devices_managed_msg">모든 페어링된 기기가 이미 관리되고 있어요! 새로운 기기가 필요하신가요?</string>
     <string name="discover_pair_new_device_action">새 기기 페어링</string>
-    <string name="devices_app_selection_currently_selected">현재 선택됨</string>
-    <string name="devices_app_selection_search_hint">앱 검색…</string>
-    <string name="devices_app_selection_selected_count">%d개 앱 선택됨</string>
-    <string name="devices_app_selection_title">앱 선택</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">디바이스 설정</string>
     <string name="devices_device_config_section_general_label">일반</string>
     <string name="devices_device_config_remove_device_label">디바이스 제거</string>
@@ -40,6 +37,8 @@
     <string name="devices_device_config_rename_device_label">디바이스 이름 변경</string>
     <string name="devices_device_config_rename_device_desc">이 앱 내에서, 그리고 가능하다면 시스템에서도 이 디바이스의 이름을 변경합니다.</string>
     <string name="devices_device_config_rename_device_action">이름 변경</string>
+    <string name="devices_device_config_enabled_label">활성화됨</string>
+    <string name="devices_device_config_enabled_desc">연결 시 이 기기에 반응</string>
     <string name="devices_device_config_section_timing_label">타이밍</string>
     <string name="devices_device_config_monitoring_duration_label">관측 기간</string>
     <string name="devices_device_config_monitoring_duration_desc">시간은 밀리초 단위입니다. 음량이 조절된 이후 음량 변경을 차단하는 시간 간격을 설정합니다.</string>
@@ -51,38 +50,39 @@
     <string name="devices_device_config_launch_app_label">앱 실행</string>
     <string name="devices_device_config_launch_app_desc">이 디바이스가 연결되었을 때 앱을 실행합니다.</string>
     <string name="devices_device_config_launch_app_multiple_desc">%d개 앱 선택됨</string>
+    <string name="devices_device_config_show_home_screen_label">홈 화면 표시</string>
+    <string name="devices_device_config_show_home_screen_desc">이 기기의 모든 이벤트가 처리된 후 홈 화면을 표시하려 시도합니다. 모든 Android 버전에서 작동하지 않을 수 있습니다.</string>
     <string name="devices_device_config_nudge_volume_label">음량 너징</string>
     <string name="devices_device_config_nudge_volume_description">시스템에 따르면 이미 원하는 음량으로 설정되어 있더라도 음량을 한 단계 낮췄다가 다시 올립니다.</string>
     <string name="devices_device_config_visible_adjustments_label">보이는 조정</string>
     <string name="devices_device_config_visible_adjustments_desc">기기 카드에 표시할 조정을 선택하세요</string>
     <string name="devices_device_config_keep_awake_label">켜짐 유지</string>
     <string name="devices_device_config_keep_awake_desc">이 디바이스를 연결하고 있을 때 화면을 계속 켜진 상태로 유지합니다.</string>
+    <string name="devices_device_config_volume_observe_label">변경 감시</string>
+    <string name="devices_device_config_volume_observe_desc">이 디바이스가 연결되어 있는 동안 활성 상태를 유지하고 이 앱에서 생성되지 않은 음량 변경사항을 저장합니다.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">연결 해제 시 음량 저장</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">이 기기가 연결 해제될 때 현재 음량 수준을 캡처하여 저장합니다.</string>
+    <string name="devices_device_config_volume_lock_label">음량 잠금</string>
+    <string name="devices_device_config_volume_lock_desc">이 앱에서 행하지 않은 음량 변경이 저장되지 않으며, 다시 이 디바이스를 연결할 때 변경점이 반영되지 않습니다.</string>
     <string name="devices_device_config_volume_rate_limiter_label">음량 속도 제한</string>
     <string name="devices_device_config_volume_rate_limiter_desc">음량 변경 빈도를 제한하여 빠르거나 과도한 음량 조정을 방지합니다.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">음량 증가 지연</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_desc">음량 증가 간의 최소 시간: %d ms</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">음량 감소 지연</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">음량 감소 간의 최소 시간: %d ms</string>
-    <string name="devices_device_config_volume_observe_label">변경 감시</string>
-    <string name="devices_device_config_volume_observe_desc">이 디바이스가 연결되어 있는 동안 활성 상태를 유지하고 이 앱에서 생성되지 않은 음량 변경사항을 저장합니다.</string>
-    <string name="devices_device_config_volume_lock_label">음량 잠금</string>
-    <string name="devices_device_config_volume_lock_desc">이 앱에서 행하지 않은 음량 변경이 저장되지 않으며, 다시 이 디바이스를 연결할 때 변경점이 반영되지 않습니다.</string>
     <string name="devices_device_config_autoplay_label">자동 재생</string>
     <string name="devices_device_config_autoplay_desc">이 디바이스가 연결되었을 때 \'재생\' 버튼을 누르는 블루투스 조작을 시뮬레이션합니다.</string>
-    <string name="devices_device_config_autoplay_keycodes_available">사용 가능한 키 유형</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">전송할 키와 순서를 구성하세요</string>
-    <string name="devices_device_config_autoplay_keycodes_label">키 유형</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">구성된 키가 없습니다</string>
-    <string name="devices_device_config_autoplay_keycodes_order">선택된 키 (순서대로)</string>
     <string name="devices_device_config_autoplay_keycodes_title">자동 재생 키 유형</string>
+    <string name="devices_device_config_autoplay_keycodes_available">사용 가능한 키 유형</string>
+    <string name="devices_device_config_autoplay_keycodes_order">선택된 키 (순서대로)</string>
+    <string name="devices_device_config_autoplay_keycodes_label">키 유형</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">전송할 키와 순서를 구성하세요</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">구성된 키가 없습니다</string>
     <string name="devices_device_config_section_volumes_label">볼륨</string>
     <string name="devices_device_config_section_volume_label">음량</string>
     <string name="devices_device_config_alarm_volume_label">알람 음량</string>
     <string name="devices_device_config_alarm_volume_desc">일부 알람 앱은 음악 음량을 사용합니다.</string>
     <string name="devices_device_config_notification_volume_label">알림 볼륨</string>
-    <string name="devices_device_config_notification_policy_action">액세스 허용</string>
-    <string name="devices_device_config_notification_policy_required_notification">알림 음량 제어에는 알림 정책 액세스 권한이 필요합니다</string>
-    <string name="devices_device_config_notification_policy_required_ringtone">벨소리 음량 제어에는 알림 정책 액세스 권한이 필요합니다</string>
     <string name="devices_device_config_notification_volume_desc">모든 디바이스가 개별 알림 설정을 지원하지는 않습니다.</string>
     <string name="devices_device_config_music_volume_label">음악 음량</string>
     <string name="devices_device_config_music_volume_desc">이 디바이스가 연결되었을 때의 음악과 게임 음량을 조절합니다.</string>
@@ -90,6 +90,23 @@
     <string name="devices_device_config_call_volume_desc">이 디바이스가 연결되었을 때의 통화 음량을 조절합니다.</string>
     <string name="devices_device_config_ring_volume_label">벨소리 음량</string>
     <string name="devices_device_config_ring_volume_desc"> 벨소리의 음량을 조절합니다.</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">벨소리 음량 제어에는 알림 정책 액세스 권한이 필요합니다</string>
+    <string name="devices_device_config_notification_policy_required_notification">알림 음량 제어에는 알림 정책 액세스 권한이 필요합니다</string>
+    <string name="devices_device_config_notification_policy_required_dnd">방해 금지 제어에는 알림 정책 액세스 권한이 필요합니다</string>
+    <string name="devices_device_config_notification_policy_action">액세스 허용</string>
+    <string name="devices_device_config_dnd_on_connect_label">방해 금지 모드</string>
+    <string name="dnd_mode_dialog_title">DND 모드 선택</string>
+    <string name="dnd_mode_dont_change">변경 안 함</string>
+    <string name="dnd_mode_off">끄기</string>
+    <string name="dnd_mode_priority_only">우선순위만</string>
+    <string name="dnd_mode_alarms_only">알람만</string>
+    <string name="dnd_mode_total_silence">완전 무음</string>
+    <string name="devices_device_config_connection_alert_label">연결 알림</string>
+    <string name="connection_alert_dialog_title">연결 알림</string>
+    <string name="connection_alert_type_none">없음</string>
+    <string name="connection_alert_type_sound">소리만</string>
+    <string name="connection_alert_type_vibration">진동만</string>
+    <string name="connection_alert_type_both">소리와 진동</string>
     <string name="devices_stream_music_label">음악</string>
     <string name="devices_audio_stream_call_label">통화</string>
     <string name="devices_audio_stream_ring_label">벨소리</string>
@@ -102,16 +119,16 @@
     <string name="devices_last_connected_label">마지막 연결: %s</string>
     <string name="devices_currently_connected_label">현재 연결됨</string>
     <string name="devices_device_disabled_label">기기 비활성화됨</string>
-    <string name="devices_device_config_enabled_label">활성화됨</string>
-    <string name="devices_device_config_enabled_desc">연결 시 이 기기에 반응</string>
     <string name="devices_no_volumes_configured">이 디바이스에 설정된 음량이 없습니다. 음량 설정을 위해 구성을 누르세요.</string>
+    <!-- Settings-->
     <string name="settings_label">설정</string>
     <string name="settings_category_other_label">기타</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">일반</string>
     <string name="general_settings_desc">전체 앱에 영향을 주는 일반 설정입니다.</string>
     <string name="settings_category_ui_label">사용자 인터페이스</string>
     <string name="ui_theme_mode_setting_label">테마 모드</string>
-    <string name="ui_theme_mode_setting_explanation">앱 테마에 사용되는 모드(예: 낤 또는 높)입니다.</string>
+    <string name="ui_theme_mode_setting_explanation">앱 테마에 사용되는 모드(예: 밤 또는 낮)입니다.</string>
     <string name="ui_theme_style_setting_label">테마 스타일</string>
     <string name="ui_theme_style_setting_explanation">앱 테마에 사용되는 색상 스타일입니다.</string>
     <string name="ui_theme_mode_dark_label">다크</string>
@@ -121,8 +138,14 @@
     <string name="ui_theme_style_medium_contrast_label">중간 대비</string>
     <string name="ui_theme_style_high_contrast_label">높은 대비</string>
     <string name="ui_theme_style_materialyou_label">매테리얼 유</string>
+    <string name="ui_theme_color_setting_label">테마 색상</string>
+    <string name="ui_theme_color_setting_explanation">앱 테마에 사용되는 색상 팔레트입니다.</string>
+    <string name="ui_theme_color_material_you_note">Material You 사용 시 색상은 배경화면에 의해 설정됩니다.</string>
+    <string name="ui_theme_color_blue_label">파란색</string>
+    <string name="ui_theme_color_sunset_label">노을</string>
     <string name="ui_language_override_label">앱 언어</string>
     <string name="ui_language_override_desc">시스템 기본 언어와 관계없이 BVM에 대한 다른 언어를 선택합니다.</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">디바이스</string>
     <string name="devices_settings_desc">모든 관리 디바이스에 영향을 주는 설정입니다.</string>
     <string name="label_app_enabled">앱 켜짐</string>
@@ -133,6 +156,7 @@
     <string name="description_volume_listener">이 앱이 행하지 않은 음량 변경 사항을 저장합니다. 디바이스가 연결되어 있을 때 이 앱이 계속 켜져 있게 됩니다.</string>
     <string name="label_boot_restore">부트 후 복구</string>
     <string name="description_boot_restore">안드로이드가 시작 또는 재시작된 뒤 블루투스 디바이스가 연결되어 있을 경우 음량을 복구합니다.</string>
+    <!-- Settings/Support-->
     <string name="settings_support_label">지원</string>
     <string name="settings_support_description">문서 읽기, 문제 신고, 다른 사람들과 대화 또는 디버그 로그 기록을 할 수 있습니다.</string>
     <string name="settings_support_wiki_label">문서</string>
@@ -143,24 +167,39 @@
     <string name="settings_support_debuglog_desc">앱이 하고 있는 모든 작업을 공유할 수 있는 텍스트 파일로 기록합니다.</string>
     <string name="settings_support_debuglog_recording_desc">현재 디버그 정보를 기록 중입니다. 기록을 중지하려면 탭하세요.</string>
     <string name="settings_support_debuglog_path">로그 경로: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">매우 짧은 녹음</string>
+    <string name="settings_support_debuglog_short_recording_msg">녹음이 매우 짧았습니다. 디버그 로그는 스냅샷이 아닌 녹음입니다 — 로그가 유용하려면 녹음 중에 문제를 재현하세요.</string>
+    <string name="settings_support_debuglog_short_recording_continue">계속 녹음</string>
+    <string name="settings_support_debuglog_short_recording_stop">그래도 중지</string>
+    <string name="settings_support_debuglog_folder_label">디버그 로그 폴더</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="other">%1$d 세션, %2$s 사용 중</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">저장된 디버그 로그 없음</string>
+    <string name="settings_support_debuglog_folder_delete_title">모든 디버그 로그를 삭제할까요?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">저장된 모든 디버그 로그 세션이 영구적으로 삭제됩니다.</string>
     <string name="settings_support_discord_label">디스코드</string>
     <string name="settings_support_discord_description">어울리고 질문을 할 수 있는 공간입니다.</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">인정</string>
     <string name="settings_acknowledgements_description">크레디트, 라이센스 및 특별한 감사</string>
     <string name="settings_acks_translation_header">번역</string>
     <string name="settings_acks_translators_title">번역자</string>
-    <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
+    <string name="settings_acks_translators_people">Annyeong1(yoon0421@hotmail.com)</string>
     <string name="settings_acks_translate_title">BVM 번역</string>
     <string name="settings_acks_translate_desc">BVM을 여러분의 언어로 번역하는데 도움을 주세요</string>
     <string name="settings_acks_thanks_header">감사</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">오픈소스 프로젝트의 번역을 지원해주어서</string>
     <string name="settings_licenses_label">라이센스</string>
+    <string name="settings_translation_label">번역</string>
+    <string name="settings_translation_desc">이 앱을 원하는 언어로 번역하는 데 도움을 주세요</string>
     <string name="settings_sponsor_development_title">개발 후원</string>
     <string name="settings_sponsor_development_summary">후원자가 되어 지속적인 개발을 가능하게 해주세요.</string>
     <string name="settings_privacy_policy_label">개인정보처리방침</string>
     <string name="settings_privacy_policy_desc">데이터를 책임감 있게 처리합니다.</string>
     <string name="changelog_label">변경 내역</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">디버그 알림</string>
     <string name="debug_log_consent_title">디버그 로그</string>
     <string name="debug_log_consent_explanation">이 기능은 앱이 하고 있는 모든 작업을 공유 가능한 파일로 기록합니다. 생성된 파일에는 민감한 정보(예: 파일 이름 및 설치된 앱)가 포함되어 있습니다. 신뢰할 수 있는 당사자(예: 문제를 해결하는 개발자)에게만 공유하세요.</string>
@@ -168,11 +207,65 @@
     <string name="debug_log_record_action">기록</string>
     <string name="debug_log_stop_action">기록 중지</string>
     <string name="debug_log_screen_title">디버그 로그 레코더</string>
+    <string name="debug_log_screen_subtitle">녹음된 디버그 로그 검토 및 공유</string>
+    <string name="debug_log_screen_sensitive_title">민감한 정보</string>
     <string name="debug_log_screen_sensitive_information_message">생성된 파일에는 민감한 정보(예: 파일 이름 및 설치된 앱)가 포함되어 있습니다. 신뢰할 수 있는 당사자에게만 공유하세요.</string>
     <string name="debug_log_screen_session_path_label">디버그 세션 경로</string>
     <string name="debug_log_screen_log_files_label">로그 파일</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="other">%1$d개 파일 준비 완료 (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">폐기</string>
+    <string name="debug_log_screen_keep_action">보관</string>
+    <string name="debug_log_compressing_label">압축 중…</string>
     <string name="debug_log_file_label">기록된 로그 파일</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">로그를 전송했나요?</string>
+    <string name="support_debuglog_sent_message">디버그 로그를 전송했다면 기기에서 삭제할 수 있습니다. 제거하시겠습니까?</string>
+    <string name="support_debuglog_session_delete_title">디버그 로그를 삭제할까요?</string>
+    <string name="support_debuglog_session_delete_message">이 디버그 로그 세션이 영구적으로 삭제됩니다.</string>
+    <string name="support_debuglog_session_recording">녹음 중…</string>
+    <string name="support_debuglog_session_compressing">압축 중…</string>
+    <string name="support_debuglog_failed_empty_log">빈 로그</string>
+    <string name="support_debuglog_failed_missing_log">로그 없음</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP 파일 손상</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP 실패</string>
+    <string name="support_debuglog_clear_title">모든 디버그 로그를 삭제할까요?</string>
+    <string name="support_debuglog_clear_message">저장된 모든 디버그 로그 세션이 영구적으로 삭제됩니다.</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">개발자에게 연락</string>
+    <string name="settings_support_contact_desc">개발자에게 이메일을 보내는 양식을 작성하세요.</string>
+    <string name="contact_screen_title">개발자에게 연락</string>
+    <string name="contact_category_bug_label">버그 신고</string>
+    <string name="contact_category_feature_label">기능 요청</string>
+    <string name="contact_category_question_label">질문</string>
+    <string name="contact_description_label">설명</string>
+    <string name="contact_description_bug_hint">무슨 일이 있었는지 그리고 문제를 재현하는 방법을 설명하세요.</string>
+    <string name="contact_description_feature_hint">원하는 기능을 설명하세요.</string>
+    <string name="contact_description_question_hint">질문을 자세히 설명하세요.</string>
+    <string name="contact_category_section_label">카테고리</string>
+    <string name="contact_debug_log_label">디버그 로그</string>
+    <string name="contact_debug_log_select_hint">첨부할 디버그 로그 선택</string>
+    <string name="contact_debug_log_picker_hint">디버그 로그를 첨부하면 문제를 더 빠르게 진단할 수 있습니다.</string>
+    <string name="contact_debug_log_picker_empty">디버그 로그가 없습니다. 먼저 녹음하세요.</string>
+    <string name="contact_expected_behavior_label">예상 동작</string>
+    <string name="contact_expected_behavior_hint">대신 어떤 일이 일어나기를 기대했는지 설명하세요.</string>
+    <string name="support_contact_debuglog_zip_error">첨부용 디버그 로그 준비 실패</string>
+    <string name="contact_send_action">이메일 앱 열기</string>
+    <plurals name="contact_word_count">
+        <item quantity="other">%1$d / %2$d 단어</item>
+    </plurals>
+    <string name="contact_welcome_msg">모든 메시지를 직접 읽고 최선을 다해 답변드리지만, 혼자 작업하기 때문에 시간이 좀 걸릴 수 있습니다. 기다려 주셔서 감사합니다.</string>
+    <string name="contact_footer_msg">메시지는 이메일로 전송됩니다. 기기와 설정 정보가 자동으로 첨부됩니다.</string>
+    <string name="contact_no_email_app_msg">이 기기에서 이메일 앱을 찾을 수 없습니다.</string>
+    <string name="contact_attachment_missing_msg">디버그 로그 파일이 더 이상 존재하지 않습니다</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">저장된 디버그 로그</string>
+    <string name="settings_support_stored_logs_desc">%1$d 세션 (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">저장된 디버그 로그 없음</string>
+    <string name="settings_support_stored_logs_delete_title">저장된 로그를 삭제할까요?</string>
+    <string name="settings_support_stored_logs_delete_msg">저장된 디버그 로그 세션 %1$d개를 모두 삭제합니다.</string>
+    <string name="settings_support_stored_logs_deleted_msg">저장된 디버그 로그가 삭제되었습니다</string>
     <string name="label_bug_reports">오류 보고</string>
     <string name="description_bug_reports">오류 및 충돌 보고서를 자동으로 전송합니다.</string>
     <string name="label_add_device">디바이스 추가</string>
@@ -239,9 +332,13 @@
     <string name="android13_notification_permission_description">이 앱에 알림 게시 권한을 허용하세요. 이렇게 하면 앱이 활성화되고 음량이 조정될 때 알림을 표시할 수 있습니다.</string>
     <string name="privacy_policy_label">개인정보처리방침</string>
     <string name="managed_devices_empty_message">설정된 블루투스 디바이스가 없습니다.\n+ 버튼을 눌러 첫 번째 디바이스를 추가하세요.</string>
+    <string name="label_pro_feature">프리미엄 기능</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="other">무료 버전: %1$d / %2$d 기기</item>
+    </plurals>
     <string name="general_delete_action">삭제</string>
     <string name="general_cancel_action">취소</string>
-    <string name="general_ok_action">OK</string>
+    <string name="general_ok_action">확인</string>
     <string name="general_configure_action">구성</string>
     <string name="battery_optimization_hint_title">배터리 최적화</string>
     <string name="battery_optimization_hint_message">배터리 최적화가 켜져 있어 정상 동작을 방해할 수 있습니다. 끄기를 고려해보세요.</string>
@@ -250,24 +347,23 @@
     <string name="android10_applaunch_hint_message">안드로이드 10은 백그라운드에서 앱을 실행하려면 특별 권한이 필요합니다. &quot;다른 앱 위에 표시&quot; 권한을 허용하세요.</string>
     <string name="notification_permission_hint_title">알림 권한</string>
     <string name="notification_permission_hint_message">음량 조절 시 상태 업데이트를 보려면 알림 권한을 허용하세요.</string>
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">구매 취소됨</string>
     <string name="error_iap_unavailable_message">인앱 구매를 이용할 수 없습니다</string>
     <string name="error_generic_message">오류가 발생했습니다. 다시 시도해 주세요.</string>
     <string name="error_iap_owned_message">이미 이 항목을 소유하고 있습니다</string>
     <string name="label_no_devices_title">디바이스 없음</string>
     <string name="bluemusic_mascot_description">앱 아이콘</string>
-    <string name="devices_device_config_show_home_screen_label">홈 화면 표시</string>
-    <string name="devices_device_config_show_home_screen_desc">이 기기의 모든 이벤트가 처리된 후 홈 화면을 표시하려 시도합니다. 모든 Android 버전에서 작동하지 않을 수 있습니다.</string>
-    <string name="devices_device_config_volume_save_on_disconnect_label">연결 해제 시 음량 저장</string>
-    <string name="devices_device_config_volume_save_on_disconnect_desc">이 기기가 연결 해제될 때 현재 음량 수준을 캡처하여 저장합니다.</string>
-    <string name="devices_device_config_notification_policy_required_dnd">방해 금지 제어에는 알림 정책 액세스 권한이 필요합니다</string>
-    <string name="devices_device_config_dnd_on_connect_label">방해 금지 모드</string>
-    <string name="dnd_mode_dialog_title">DND 모드 선택</string>
-    <string name="dnd_mode_dont_change">변경 안 함</string>
-    <string name="dnd_mode_off">끄기</string>
-    <string name="dnd_mode_priority_only">우선순위만</string>
-    <string name="dnd_mode_alarms_only">알람만</string>
-    <string name="dnd_mode_total_silence">완전 무음</string>
+    <!-- App Selection -->
+    <string name="devices_app_selection_title">앱 선택</string>
+    <string name="devices_app_selection_search_hint">앱 검색…</string>
+    <string name="devices_app_selection_currently_selected">현재 선택됨</string>
+    <string name="devices_app_selection_selected_count">%d개 앱 선택됨</string>
+    <string name="general_navigate_back_action">뒤로 이동</string>
+    <string name="general_reset_action">재설정</string>
+    <string name="general_clear_action">지우기</string>
+    <string name="general_save_action">저장</string>
+    <!-- Device option indicators -->
     <string name="devices_indicator_lock">잠금</string>
     <string name="devices_indicator_awake">깨어있음</string>
     <string name="devices_indicator_nudge">너징</string>
@@ -278,94 +374,11 @@
     <string name="devices_indicator_auto">자동</string>
     <string name="devices_indicator_home">홈</string>
     <string name="devices_indicator_dnd">방해금지</string>
-    <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">연결 알림</string>
-    <string name="connection_alert_dialog_title">연결 알림</string>
-    <string name="connection_alert_type_none">없음</string>
-    <string name="connection_alert_type_sound">소리만</string>
-    <string name="connection_alert_type_vibration">진동만</string>
-    <string name="connection_alert_type_both">소리와 진동</string>
     <string name="devices_indicator_alert">알림</string>
-
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">볼륨 (0–100)</string>
     <string name="devices_volume_input_error">%1$d에서 %2$d 사이의 값을 입력하세요</string>
-
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">잠금</string>
     <string name="devices_unlock_sliders_action">잠금 해제</string>
-
-    <!-- Short recording warning -->
-    <string name="settings_support_debuglog_short_recording_stop">그래도 중지</string>
-    <string name="app_name_short">BVM</string>
-    <string name="settings_support_debuglog_short_recording_title">매우 짧은 녹음</string>
-    <string name="settings_support_debuglog_short_recording_msg">녹음이 매우 짧았습니다. 디버그 로그는 스냅샷이 아닌 녹음입니다 — 로그가 유용하려면 녹음 중에 문제를 재현하세요.</string>
-    <string name="settings_support_debuglog_short_recording_continue">계속 녹음</string>
-    <string name="settings_support_debuglog_folder_label">디버그 로그 폴더</string>
-    <string name="settings_support_debuglog_folder_empty_desc">저장된 디버그 로그 없음</string>
-    <string name="settings_support_debuglog_folder_delete_title">모든 디버그 로그를 삭제할까요?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">저장된 모든 디버그 로그 세션이 영구적으로 삭제됩니다.</string>
-    <string name="debug_log_screen_subtitle">녹음된 디버그 로그 검토 및 공유</string>
-    <string name="debug_log_screen_sensitive_title">민감한 정보</string>
-    <string name="debug_log_screen_keep_action">보관</string>
-    <string name="debug_log_compressing_label">압축 중…</string>
-    <string name="support_debuglog_sent_title">로그를 전송했나요?</string>
-    <string name="support_debuglog_sent_message">디버그 로그를 전송했다면 기기에서 삭제할 수 있습니다. 제거하시겠습니까?</string>
-    <string name="support_debuglog_session_delete_title">디버그 로그를 삭제할까요?</string>
-    <string name="support_debuglog_session_delete_message">이 디버그 로그 세션이 영구적으로 삭제됩니다.</string>
-    <string name="support_debuglog_session_recording">녹음 중…</string>
-    <string name="support_debuglog_session_compressing">압축 중…</string>
-    <string name="support_debuglog_failed_empty_log">빈 로그</string>
-    <string name="support_debuglog_failed_missing_log">로그 없음</string>
-    <string name="support_debuglog_failed_corrupt_zip">ZIP 파일 손상</string>
-    <string name="support_debuglog_failed_zip_failed">ZIP 실패</string>
-    <string name="support_debuglog_clear_title">모든 디버그 로그를 삭제할까요?</string>
-    <string name="support_debuglog_clear_message">저장된 모든 디버그 로그 세션이 영구적으로 삭제됩니다.</string>
-    <string name="settings_support_contact_label">개발자에게 연락</string>
-    <string name="settings_support_contact_desc">개발자에게 이메일을 보내는 양식을 작성하세요.</string>
-    <string name="contact_screen_title">개발자에게 연락</string>
-    <string name="contact_category_bug_label">버그 신고</string>
-    <string name="contact_category_feature_label">기능 요청</string>
-    <string name="contact_category_question_label">질문</string>
-    <string name="contact_description_label">설명</string>
-    <string name="contact_description_bug_hint">무슨 일이 있었는지 그리고 문제를 재현하는 방법을 설명하세요.</string>
-    <string name="contact_description_feature_hint">원하는 기능을 설명하세요.</string>
-    <string name="contact_description_question_hint">질문을 자세히 설명하세요.</string>
-    <string name="contact_category_section_label">카테고리</string>
-    <string name="contact_debug_log_label">디버그 로그</string>
-    <string name="contact_debug_log_select_hint">첨부할 디버그 로그 선택</string>
-    <string name="contact_debug_log_picker_hint">디버그 로그를 첨부하면 문제를 더 빠르게 진단할 수 있습니다.</string>
-    <string name="contact_debug_log_picker_empty">디버그 로그가 없습니다. 먼저 녹음하세요.</string>
-    <string name="contact_expected_behavior_label">예상 동작</string>
-    <string name="contact_expected_behavior_hint">대신 어떤 일이 일어나기를 기대했는지 설명하세요.</string>
-    <string name="support_contact_debuglog_zip_error">첨부용 디버그 로그 준비 실패</string>
-    <string name="contact_send_action">이메일 앱 열기</string>
-    <string name="contact_welcome_msg">모든 메시지를 직접 읽고 최선을 다해 답변드리지만, 혼자 작업하기 때문에 시간이 좀 걸릴 수 있습니다. 기다려 주셔서 감사합니다.</string>
-    <string name="contact_footer_msg">메시지는 이메일로 전송됩니다. 기기와 설정 정보가 자동으로 첨부됩니다.</string>
-    <string name="contact_no_email_app_msg">이 기기에서 이메일 앱을 찾을 수 없습니다.</string>
-    <string name="contact_attachment_missing_msg">디버그 로그 파일이 더 이상 존재하지 않습니다</string>
-    <string name="settings_support_stored_logs_label">저장된 디버그 로그</string>
-    <string name="settings_support_stored_logs_desc">%1$d 세션 (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">저장된 디버그 로그 없음</string>
-    <string name="settings_support_stored_logs_delete_title">저장된 로그를 삭제할까요?</string>
-    <string name="settings_support_stored_logs_delete_msg">저장된 디버그 로그 세션 %1$d개를 모두 삭제합니다.</string>
-    <string name="settings_support_stored_logs_deleted_msg">저장된 디버그 로그가 삭제되었습니다</string>
-    <string name="label_pro_feature">프리미엄 기능</string>
-    <string name="ui_theme_color_setting_label">테마 색상</string>
-    <string name="ui_theme_color_setting_explanation">앱 테마에 사용되는 색상 팔레트입니다.</string>
-    <string name="ui_theme_color_material_you_note">Material You 사용 시 색상은 배경화면에 의해 설정됩니다.</string>
-    <string name="ui_theme_color_blue_label">파란색</string>
-    <string name="ui_theme_color_sunset_label">노을</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="other">%1$d 세션, %2$s 사용 중</item>
-    </plurals>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="other">%1$d개 파일 준비 완료 (%2$s)</item>
-    </plurals>
-    <plurals name="contact_word_count">
-        <item quantity="other">%1$d / %2$d 단어</item>
-    </plurals>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="other">무료 버전: %1$d / %2$d 기기</item>
-    </plurals>
 </resources>

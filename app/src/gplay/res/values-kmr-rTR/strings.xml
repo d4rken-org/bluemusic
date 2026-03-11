@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">BVM Pro hewce dike</string>
+    <string name="upgrade_prompt_title">Biçe BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ji bo bikarhênerên pêşkeftî encamên baştir, taybetmendî û vebijarkên zêdetir pêşkêş dike.</string>
+    <string name="upgrade_prompt_upgrade_action">Nûjen bike</string>
+    <string name="upgrade_screen_title">Biçe BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager reklamê nake û daneya bikarhêner nafroşe. Xebata min ji aliyê we ve tê fînanskirinê ❤️.</string>
+    <string name="upgrade_screen_why_title">Avantaj</string>
+    <string name="upgrade_screen_why_body">• Geşedêrekî dilxwaz 🧙
+• Cêhazên bê-sînor ➡️➡️
+• Kiryarên zêde ⚙️
+û zêdetir…</string>
+    <string name="upgrade_screen_how_title">Vebijark</string>
+    <string name="upgrade_screen_how_body">Hûn dikarin di navbera kirîna yekcar û aboneyeke salarê ya erzantir de hilbijêrîn.
+Aboneyê bi ceribandîneke 14 rojî ya belaş dest pê dike, piştî wê salê carekê tê deynkirinê. Ceribandîn û aboneyê her dem tên îpta lkirinê.
+Heman taybetmendî, tenê modelên bihayê cuda.</string>
+    <string name="upgrade_screen_subscription_trial_action">Ceribandîna 14-rojî ya belaş dest pê bike</string>
+    <string name="upgrade_screen_subscription_action">Abone bibe</string>
+    <string name="upgrade_screen_subscription_action_hint">Aboneyê salê %s lêdixe.</string>
+    <string name="upgrade_screen_iap_action">Kirîna yekcar</string>
+    <string name="upgrade_screen_iap_action_hint">Kirîna yekcar %s lêdixe.</string>
+    <string name="upgrade_screen_thanks_toast">Hûn herî baş in! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Kirîna vegerîne</string>
+    <string name="upgrade_screen_restore_purchase_message">Nuvekirinê we li ser hemû cîhazên bi heman hesabê Google derbasdar e.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Rêgezên çareserkirinê ji bo nuvekirinên nenas:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Hevdengkirina Play Store dibe ku wext bigire. Vegere, cache ya Google Play pak bike an tenê bisekine.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Hesabên gelek dikarin Google Play tevlihev bikin. Ji hesabên din derkeve an bi malpera Google Play saz bike.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play nayê dîtin</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager nikare bi Google Play re girêbide. Ma Google Play saz û nûkirî ye? Cache ya Google Play pak bike û cîhazê xwe ji nû ve bixebite.</string>
+    <string name="upgrades_no_purchases_found_check_account">Kirîn nehatin dîtin. Hûn hesabê rast bikar tînin?</string>
+</resources>

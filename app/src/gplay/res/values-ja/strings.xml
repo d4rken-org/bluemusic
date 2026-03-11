@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">BVM Pro が必要です</string>
+    <string name="upgrade_prompt_title">BVM Pro にアップグレード</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Proは、パワーユーザーにより良い結果、より多くの機能とオプションを提供します。</string>
+    <string name="upgrade_prompt_upgrade_action">アップグレード</string>
+    <string name="upgrade_screen_title">BVM Pro にアップグレード</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Managerは広告がなく、ユーザーデータを販売しません。私の作業はあなたによって支えられています ❤️。</string>
+    <string name="upgrade_screen_why_title">メリット</string>
+    <string name="upgrade_screen_why_body">• やる気のある開発者 🧙
+• 無制限のデバイス ➡️➡️
+• 追加アクション ⚙️
+その他…</string>
+    <string name="upgrade_screen_how_title">オプション</string>
+    <string name="upgrade_screen_how_body">定期購入は14日間の無料トライアルから開始します。\n無料トライアルの終了後から1年に1回の課金がされます。\n無料トライアルと定期購入はいつでもキャンセル可能です。</string>
+    <string name="upgrade_screen_subscription_trial_action">14日間の無料トライアルを開始</string>
+    <string name="upgrade_screen_subscription_action">登録</string>
+    <string name="upgrade_screen_subscription_action_hint">定期購入は、年/%sのお支払いです。</string>
+    <string name="upgrade_screen_iap_action">1 回限りの購入</string>
+    <string name="upgrade_screen_iap_action_hint">1回限りの購入は、%sのお支払いです。</string>
+    <string name="upgrade_screen_thanks_toast">あなたは最高です！ ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">購入を復元</string>
+    <string name="upgrade_screen_restore_purchase_message">アップグレードは同じGoogleアカウントであれば全ての端末で適用されます。</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">トラブルが起きた際のヒント</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Playストアの同期には時間がかかる場合があります。 そのまましばらくお待ちください。改善されない場合は、再起動するか、Playストアのキャッシュを削除してみてください。</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">複数のGoogleアカウントでログインしてあると、Playストアで不具合が発生する場合があります。 他のアカウントからログアウトするか、Web版Playストアからインストールすることで、正常にGoogleアカウントとの連携がされます。</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Playは利用できません</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager は Google Play に接続できません。Google Play はインストールされており、最新の状態ですか？Google アカウントにログインしていますか？Google Play アプリのキャッシュをクリアしてデバイスを再起動してみてください。</string>
+    <string name="upgrades_no_purchases_found_check_account">購入が確認できませんでした。正しいアカウントを使用していますでしょうか？</string>
+</resources>

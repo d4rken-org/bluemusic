@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">Inahitaji BVM Pro</string>
+    <string name="upgrade_prompt_title">Boresha hadi BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro inatoa matokeo bora zaidi, vipengele vingi zaidi na chaguzi kwa watumiaji wa hali ya juu.</string>
+    <string name="upgrade_prompt_upgrade_action">Boresha</string>
+    <string name="upgrade_screen_title">Boresha hadi BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager haina matangazo na haiuzi data ya mtumiaji. Kazi yangu inafadhiliwa na wewe ❤️.</string>
+    <string name="upgrade_screen_why_title">Faida</string>
+    <string name="upgrade_screen_why_body">• Msanidi aliyehamasika 🧙\n• Vifaa visivyo na kikomo ➡️➡️\n• Vitendo vya ziada ⚙️\nna zaidi…</string>
+    <string name="upgrade_screen_how_title">Chaguo</string>
+    <string name="upgrade_screen_how_body">Unaweza kuchagua kati ya ununuzi wa mara moja na usajili wa kila mwaka ulio rahisi zaidi.\nUsajili unaanza na majaribio ya bure ya siku 14, baada ya hapo utalipishwa mara moja kwa mwaka. Majaribio na usajili vinaweza kufutwa wakati wowote.\nVipengele sawa, tu mifano tofauti ya bei.</string>
+    <string name="upgrade_screen_subscription_trial_action">Anza majaribio ya bure ya siku 14</string>
+    <string name="upgrade_screen_subscription_action">Jisajili</string>
+    <string name="upgrade_screen_subscription_action_hint">Usajili ungharimu %s kwa mwaka.</string>
+    <string name="upgrade_screen_iap_action">Ununuzi wa mara moja</string>
+    <string name="upgrade_screen_iap_action_hint">Ununuzi wa mara moja ungharimu %s.</string>
+    <string name="upgrade_screen_thanks_toast">Wewe ni bora zaidi! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Rejesha ununuzi</string>
+    <string name="upgrade_screen_restore_purchase_message">Uboreshaji wako ni halali kwenye vifaa vya akaunti ile ile ya Google.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Vidokezo vya kutatua matatizo kwa uboreshaji usiotambuliwa:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Ulandanishi wa Play Store unaweza kuchukua muda. Jaribu kuanzisha upya, kusafisha akiba ya Google Play au tu subiri.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Akaunti nyingi zinaweza kuchanganya Google Play. Toka kwenye akaunti zingine au sakinisha kupitia tovuti ya Google Play, ambayo inalazimisha uhusiano na akaunti maalum.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play haipo</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager haiwezi kuunganika na Google Play. Je, Google Play imewekwa na iko ya kisasa? Je, akaunti yako ya Google imeingia? Jaribu kufuta kashe ya programu ya Google Play na kuanzisha upya kifaa chako.</string>
+    <string name="upgrades_no_purchases_found_check_account">Hakuna ununuzi uliopatikana. Je, unatumia akaunti sahihi?</string>
+</resources>

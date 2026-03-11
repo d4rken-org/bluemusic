@@ -1,13 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">מנהל עוצמת בלוטוס</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
     <string name="general_error_label">שגיאה</string>
     <string name="general_error_no_compatible_app_found_msg">לא נמצאה אפליקציה תואמת לטיפול בבקשה זו.</string>
-    <string name="general_navigate_back_action">נווט אחורה</string>
     <string name="general_share_action">שיתוף</string>
     <string name="general_back_action">חזרה</string>
-    <string name="general_clear_action">נקה</string>
     <string name="general_show_details_action">הצג פרטים</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">ברוך הבא ל-BVM</string>
     <string name="onboarding_welcome_message">מנהל עוצמת בלוטוס מאפשר לך לנהל את עוצמת הקול של מכשירי בלוטוס באופן אוטומטי.</string>
     <string name="onboarding_welcome_action">בואו נתחיל</string>
@@ -22,24 +23,12 @@
     <string name="onboarding_rewrite_message">בניתי מחדש לחלוטין את מנהל עוצמת בלוטוס מהיסוד בעקבות שינויים באנדרואיד ודרישות גוגל כדי לוודא שהאפליקציה ממשיכה לעבוד באופן אמין.</string>
     <string name="onboarding_rewrite_features">חלק מהגדרות המכשיר עשויות להיאנץ במהלך העדכון. אנא בדקו את תצורות המכשירים שלכם.</string>
     <string name="onboarding_rewrite_action">המשך</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">לא נמצאו מכשירים לא מנוהלים</string>
     <string name="discover_all_devices_managed_msg">כל המכשירים המצומדים שלכם מנוהלים! צריכים חדש?</string>
     <string name="discover_pair_new_device_action">צמד מכשיר חדש</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">תצורת מכשיר</string>
-    <string name="devices_app_selection_currently_selected">נבחר כעת</string>
-    <string name="devices_app_selection_search_hint">חפש אפליקציות…</string>
-    <string name="devices_app_selection_selected_count">%d אפליקציות נבחרו</string>
-    <string name="devices_app_selection_title">בחר אפליקציות</string>
-    <string name="devices_device_config_autoplay_keycodes_available">סוגי מקשים זמינים</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">הגדר אילו מקשים לשלוח ובאיזה סדר</string>
-    <string name="devices_device_config_autoplay_keycodes_label">סוגי מקשים</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">לא הוגדרו מקשים</string>
-    <string name="devices_device_config_autoplay_keycodes_order">מקשים נבחרים (לפי סדר)</string>
-    <string name="devices_device_config_autoplay_keycodes_title">סוגי מקשי ניגון אוטומטי</string>
-    <string name="devices_device_config_launch_app_multiple_desc">%d אפליקציות נבחרו</string>
-    <string name="devices_device_config_notification_policy_action">הענק גישה</string>
-    <string name="devices_device_config_notification_policy_required_notification">שליטה בעוצמת התראות דורשת גישה למדיניות התראות</string>
-    <string name="devices_device_config_notification_policy_required_ringtone">שליטה בעוצמת צלצול דורשת גישה למדיניות התראות</string>
     <string name="devices_device_config_section_general_label">כללי</string>
     <string name="devices_device_config_remove_device_label">שכח מכשיר</string>
     <string name="devices_device_config_remove_device_desc">משכיח את המכשיר מהאפליקציה ומוחק את התצורה שלו. זה לא מנתק את הצימוד למכשיר.</string>
@@ -48,6 +37,8 @@
     <string name="devices_device_config_rename_device_label">שנה שם מכשיר</string>
     <string name="devices_device_config_rename_device_desc">שנה את שם המכשיר באפליקציה זו, ואם אפשר, במערכת.</string>
     <string name="devices_device_config_rename_device_action">שנה שם</string>
+    <string name="devices_device_config_enabled_label">מופעל</string>
+    <string name="devices_device_config_enabled_desc">הגב למכשיר זה כאשר הוא מחובר</string>
     <string name="devices_device_config_section_timing_label">תזמון</string>
     <string name="devices_device_config_monitoring_duration_label">משך ניטור</string>
     <string name="devices_device_config_monitoring_duration_desc">משך במילישניות, לאחר ביצוע התאמות, במהלכו כל שינוי עוצמה נוסף ייחסם.</string>
@@ -58,14 +49,19 @@
     <string name="devices_device_config_section_reaction_label">אחר</string>
     <string name="devices_device_config_launch_app_label">הפעלת אפליקצייה</string>
     <string name="devices_device_config_launch_app_desc">הפעלת אפליקצייה כאשר מכשיר זה מתחבר.</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d אפליקציות נבחרו</string>
+    <string name="devices_device_config_show_home_screen_label">הצג מסך בית</string>
+    <string name="devices_device_config_show_home_screen_desc">לאחר עיבוד כל האירועים עבור מכשיר זה, ינסה להציג את מסך הבית. ייתכן שלא יעבוד בכל גרסאות האנדרואיד.</string>
     <string name="devices_device_config_nudge_volume_label">דחיפת עוצמה</string>
     <string name="devices_device_config_nudge_volume_description">הורד ואז העלה את העוצמה בצעד אחד, אפילו אם העוצמה הרצויה כבר נקבעה (לפי המערכת).</string>
-    <string name="devices_device_config_visible_adjustments_desc">הצג אילו התאמות מוצגות על כרטיס המכשיר</string>
     <string name="devices_device_config_visible_adjustments_label">התאמות גלויות</string>
+    <string name="devices_device_config_visible_adjustments_desc">הצג אילו התאמות מוצגות על כרטיס המכשיר</string>
     <string name="devices_device_config_keep_awake_label">שמור ער</string>
     <string name="devices_device_config_keep_awake_desc">שמור על המסך דלוק כאשר המכשיר מחובר.</string>
     <string name="devices_device_config_volume_observe_label">צפה בשינויים</string>
     <string name="devices_device_config_volume_observe_desc">הישאר פעיל כאשר המכשיר מחובר ושמור שינויי עוצמה שלא נגרמו על ידי האפליקציה.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">שמור עוצמה בניתוק</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">צלם ושמור את רמות העוצמה הנוכחיות כאשר מכשיר זה מתנתק.</string>
     <string name="devices_device_config_volume_lock_label">נעילת ווליום</string>
     <string name="devices_device_config_volume_lock_desc">כל שינויי עוצמה שלא בוצעו דרך אפליקציה זו יוחזרו כאשר המכשיר מחובר.</string>
     <string name="devices_device_config_volume_rate_limiter_label">מנקה קצב עוצמה</string>
@@ -76,6 +72,12 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">הזמן המינימלי בין הקטנות עוצמה: %d ms</string>
     <string name="devices_device_config_autoplay_label">ניגון אוטומטי</string>
     <string name="devices_device_config_autoplay_desc">הדמיית לחיצה על ניגון בשלט בלוטות\' כאשר מכשיר זה מתחבר.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">סוגי מקשי ניגון אוטומטי</string>
+    <string name="devices_device_config_autoplay_keycodes_available">סוגי מקשים זמינים</string>
+    <string name="devices_device_config_autoplay_keycodes_order">מקשים נבחרים (לפי סדר)</string>
+    <string name="devices_device_config_autoplay_keycodes_label">סוגי מקשים</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">הגדר אילו מקשים לשלוח ובאיזה סדר</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">לא הוגדרו מקשים</string>
     <string name="devices_device_config_section_volumes_label">עוצמות</string>
     <string name="devices_device_config_section_volume_label">עוצמה</string>
     <string name="devices_device_config_alarm_volume_label">עוצמת התראה</string>
@@ -88,6 +90,23 @@
     <string name="devices_device_config_call_volume_desc">שליטה בווליום שמשפיע על שיחות כאשר מכשירים אלו מתחברים.</string>
     <string name="devices_device_config_ring_volume_label">עוצמת צלצול</string>
     <string name="devices_device_config_ring_volume_desc">שליטה בעוצמה המשפיעה על צלצול ההתקשרות.</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">שליטה בעוצמת צלצול דורשת גישה למדיניות התראות</string>
+    <string name="devices_device_config_notification_policy_required_notification">שליטה בעוצמת התראות דורשת גישה למדיניות התראות</string>
+    <string name="devices_device_config_notification_policy_required_dnd">שליטה במצב אל תפריע דורשת גישה למדיניות התראות</string>
+    <string name="devices_device_config_notification_policy_action">הענק גישה</string>
+    <string name="devices_device_config_dnd_on_connect_label">מצב אל תפריע</string>
+    <string name="dnd_mode_dialog_title">בחר מצב DND</string>
+    <string name="dnd_mode_dont_change">אל תשנה</string>
+    <string name="dnd_mode_off">כבוי</string>
+    <string name="dnd_mode_priority_only">עדיפות בלבד</string>
+    <string name="dnd_mode_alarms_only">התראות בלבד</string>
+    <string name="dnd_mode_total_silence">שקט מוחלט</string>
+    <string name="devices_device_config_connection_alert_label">התראת חיבור</string>
+    <string name="connection_alert_dialog_title">התראת חיבור</string>
+    <string name="connection_alert_type_none">ללא</string>
+    <string name="connection_alert_type_sound">צליל בלבד</string>
+    <string name="connection_alert_type_vibration">רטט בלבד</string>
+    <string name="connection_alert_type_both">צליל ורטט</string>
     <string name="devices_stream_music_label">מוזיקה</string>
     <string name="devices_audio_stream_call_label">שיחה</string>
     <string name="devices_audio_stream_ring_label">צלצול</string>
@@ -100,11 +119,11 @@
     <string name="devices_last_connected_label">חיבור אחרון: %s</string>
     <string name="devices_currently_connected_label">מחובר כעת</string>
     <string name="devices_device_disabled_label">המכשיר מנוטרל</string>
-    <string name="devices_device_config_enabled_label">מופעל</string>
-    <string name="devices_device_config_enabled_desc">הגב למכשיר זה כאשר הוא מחובר</string>
     <string name="devices_no_volumes_configured">לא הוגדרו עוצמות עבור המכשיר. לחץ על תצורה כדי להגדיר העדפות עוצמה.</string>
+    <!-- Settings-->
     <string name="settings_label">הגדרות</string>
     <string name="settings_category_other_label">אחר</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">כללי</string>
     <string name="general_settings_desc">הגדרות כלליות המשפיעות על כל האפליקציה.</string>
     <string name="settings_category_ui_label">ממשק משתמש</string>
@@ -119,8 +138,14 @@
     <string name="ui_theme_style_medium_contrast_label">ניגודיות בינונית</string>
     <string name="ui_theme_style_high_contrast_label">ניגודיות גבוהה</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
+    <string name="ui_theme_color_setting_label">צבע ערכת נושא</string>
+    <string name="ui_theme_color_setting_explanation">לוח הצבעים בו נעשה שימוש בערכת הנושא של האפליקציה.</string>
+    <string name="ui_theme_color_material_you_note">הצבע נקבע על פי הטפט שלך בעת שימוש ב-Material You.</string>
+    <string name="ui_theme_color_blue_label">כחול</string>
+    <string name="ui_theme_color_sunset_label">שקיעה</string>
     <string name="ui_language_override_label">שפת אפליקציה</string>
     <string name="ui_language_override_desc">בחר שפה אחרת עבור BVM, ללא תלות בשפת ברירת המחדל של המערכת.</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">מכשירים</string>
     <string name="devices_settings_desc">הגדרות המשפיעות על כל המכשירים המנוהלים.</string>
     <string name="label_app_enabled">אפליקצייה מאופשרת</string>
@@ -131,6 +156,7 @@
     <string name="description_volume_listener">להשאיר פעיל כאשר התקן מחובר ושמירת שינויי ווליום שלא נגרמו על ידי אפליקציה זו.</string>
     <string name="label_boot_restore">שחזור באתחול</string>
     <string name="description_boot_restore">שחזר עוצמת קול לאחר אתחול/אתחול מחדש אם מכשיר בלוטוס מחובר.</string>
+    <!-- Settings/Support-->
     <string name="settings_support_label">תמיכה</string>
     <string name="settings_support_description">קרא תיעוד, דווח על בעיות, שוחח עם אחרים או הקלט לוגי ניפוי באגים.</string>
     <string name="settings_support_wiki_label">תיעוד</string>
@@ -141,8 +167,23 @@
     <string name="settings_support_debuglog_desc">הקלט כל מה שהאפליקציה עושה לקובץ טקסט שאפשר לשתף.</string>
     <string name="settings_support_debuglog_recording_desc">מקליט כרגע מידע ניפוי באגים. לחץ כדי להפסיק הקלטה.</string>
     <string name="settings_support_debuglog_path">נתיב לוג: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">הקלטה קצרה מאוד</string>
+    <string name="settings_support_debuglog_short_recording_msg">זו הייתה הקלטה קצרה מאוד. לוגי ניפוי באגים הם הקלטות, לא תמונות מצב — שחזר את הבעיה בזמן שההקלטה פעילה כדי שהלוג יהיה שימושי.</string>
+    <string name="settings_support_debuglog_short_recording_continue">המשך הקלטה</string>
+    <string name="settings_support_debuglog_short_recording_stop">עצור בכל זאת</string>
+    <string name="settings_support_debuglog_folder_label">תיקיית לוג ניפוי באגים</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d סשן בשימוש %2$s</item>
+        <item quantity="two">%1$d סשנים בשימוש %2$s</item>
+        <item quantity="many">%1$d סשנים בשימוש %2$s</item>
+        <item quantity="other">%1$d סשנים בשימוש %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">אין לוגי ניפוי באגים שמורים</string>
+    <string name="settings_support_debuglog_folder_delete_title">למחוק את כל לוגי ניפוי הבאגים?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">כל סשני לוג ניפוי הבאגים השמורים יימחקו לצמיתות.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">מקום לבלות ולשאול שאלות.</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">הודאות</string>
     <string name="settings_acknowledgements_description">קרדיטים, רישיונות ותודות מיוחדות</string>
     <string name="settings_acks_translation_header">תרגום</string>
@@ -154,11 +195,14 @@
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">על תמיכה בתרגום פרויקטים קוד פתוח</string>
     <string name="settings_licenses_label">רישיונות</string>
+    <string name="settings_translation_label">תרגום</string>
+    <string name="settings_translation_desc">עזור לתרגם את האפליקציה לשפה המועדפת עליך</string>
     <string name="settings_sponsor_development_title">חסות פיתוח</string>
     <string name="settings_sponsor_development_summary">היה פטרון ואפשר המשכת פיתוח.</string>
     <string name="settings_privacy_policy_label">מדיניות פרטיות</string>
     <string name="settings_privacy_policy_desc">טיפול במידע באחריות.</string>
     <string name="changelog_label">לוג שינויים</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">התראות ניפוי באגים</string>
     <string name="debug_log_consent_title">לוג ניפוי באגים</string>
     <string name="debug_log_consent_explanation">תכונה זו מקליטה כל מה שהאפליקציה עושה לקובץ שניתן לשתף. הקובץ הנוצר מכיל מידע רגיש (למשל שמות קבצים ואפליקציות מותקנות). שתפו אותו רק עם גורמים מועמדים (למשל מפתח הפותר בעיה).</string>
@@ -166,11 +210,71 @@
     <string name="debug_log_record_action">הקלט</string>
     <string name="debug_log_stop_action">הפסק הקלטה</string>
     <string name="debug_log_screen_title">מקליט לוג ניפוי באגים</string>
+    <string name="debug_log_screen_subtitle">סקור ושתף את לוג ניפוי הבאגים שהוקלט</string>
+    <string name="debug_log_screen_sensitive_title">מידע רגיש</string>
     <string name="debug_log_screen_sensitive_information_message">הקובץ הנוצר מכיל מידע רגיש (למשל שמות קבצים ואפליקציות מותקנות). שתף אותו רק עם גורמים מועמדים.</string>
     <string name="debug_log_screen_session_path_label">נתיב סשן ניפוי באגים</string>
     <string name="debug_log_screen_log_files_label">קבצי לוג</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d קובץ מוכן (%2$s)</item>
+        <item quantity="two">%1$d קבצים מוכנים (%2$s)</item>
+        <item quantity="many">%1$d קבצים מוכנים (%2$s)</item>
+        <item quantity="other">%1$d קבצים מוכנים (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">ותר</string>
+    <string name="debug_log_screen_keep_action">שמור</string>
+    <string name="debug_log_compressing_label">דחיסה…</string>
     <string name="debug_log_file_label">קובץ לוג מוקלט</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">הלוג נשלח?</string>
+    <string name="support_debuglog_sent_message">אם שלחת את לוג ניפוי הבאגים, ניתן למחוק אותו מהמכשיר. האם ברצונך להסיר אותו?</string>
+    <string name="support_debuglog_session_delete_title">למחוק את לוג ניפוי הבאגים?</string>
+    <string name="support_debuglog_session_delete_message">סשן לוג ניפוי הבאגים הזה יימחק לצמיתות.</string>
+    <string name="support_debuglog_session_recording">מקליט…</string>
+    <string name="support_debuglog_session_compressing">דוחס…</string>
+    <string name="support_debuglog_failed_empty_log">לוג ריק</string>
+    <string name="support_debuglog_failed_missing_log">לוג חסר</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP פגום</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP נכשל</string>
+    <string name="support_debuglog_clear_title">למחוק את כל לוגי ניפוי הבאגים?</string>
+    <string name="support_debuglog_clear_message">כל סשני לוג ניפוי הבאגים השמורים יימחקו לצמיתות.</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">צור קשר עם המפתח</string>
+    <string name="settings_support_contact_desc">מלא טופס לשליחת אימייל למפתח.</string>
+    <string name="contact_screen_title">צור קשר עם המפתח</string>
+    <string name="contact_category_bug_label">דיווח על באג</string>
+    <string name="contact_category_feature_label">בקשת תכונה</string>
+    <string name="contact_category_question_label">שאלה</string>
+    <string name="contact_description_label">תיאור</string>
+    <string name="contact_description_bug_hint">תאר מה קרה וכיצד לשחזר את הבעיה.</string>
+    <string name="contact_description_feature_hint">תאר את התכונה שתרצה לראות.</string>
+    <string name="contact_description_question_hint">תאר את שאלתך בפירוט.</string>
+    <string name="contact_category_section_label">קטגוריה</string>
+    <string name="contact_debug_log_label">לוג ניפוי באגים</string>
+    <string name="contact_debug_log_select_hint">בחר לוג ניפוי באגים לצירוף</string>
+    <string name="contact_debug_log_picker_hint">צרף לוג ניפוי באגים לאבחון מהיר יותר של הבעיה.</string>
+    <string name="contact_debug_log_picker_empty">אין לוגי ניפוי באגים זמינים. הקלט אחד תחילה.</string>
+    <string name="contact_expected_behavior_label">התנהגות צפויה</string>
+    <string name="contact_expected_behavior_hint">תאר מה ציפית שיקרה במקום.</string>
+    <string name="support_contact_debuglog_zip_error">הכנת לוג ניפוי הבאגים לצירוף נכשלה</string>
+    <string name="contact_send_action">פתח אפליקציית אימייל</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d מילה</item>
+        <item quantity="two">%1$d / %2$d מילים</item>
+        <item quantity="many">%1$d / %2$d מילים</item>
+        <item quantity="other">%1$d / %2$d מילים</item>
+    </plurals>
+    <string name="contact_welcome_msg">אני קורא כל הודעה בעצמי ועושה כמיטב יכולתי להשיב, אך מכיוון שאני עובד לבד, זה עשוי לקחת קצת זמן. תודה על הסבלנות.</string>
+    <string name="contact_footer_msg">ההודעה שלך תישלח באימייל. מידע על המכשיר וההגדרות מצורף אוטומטית.</string>
+    <string name="contact_no_email_app_msg">לא נמצאה אפליקציית אימייל במכשיר זה.</string>
+    <string name="contact_attachment_missing_msg">קובץ לוג ניפוי הבאגים אינו קיים עוד</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">לוגי ניפוי באגים שמורים</string>
+    <string name="settings_support_stored_logs_desc">%1$d סשנים (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">אין לוגי ניפוי באגים שמורים</string>
+    <string name="settings_support_stored_logs_delete_title">למחוק לוגים שמורים?</string>
+    <string name="settings_support_stored_logs_delete_msg">כל %1$d סשני לוג ניפוי הבאגים השמורים יימחקו.</string>
+    <string name="settings_support_stored_logs_deleted_msg">לוגי ניפוי הבאגים השמורים נמחקו</string>
     <string name="label_bug_reports">דיווח באגים</string>
     <string name="description_bug_reports">דיווח באגים וקריסות אוטומטי.</string>
     <string name="label_add_device">הוספת התקן</string>
@@ -237,12 +341,17 @@
     <string name="android13_notification_permission_description">העניקו לאפליקציה הרשאה לפרסם התראות. זה מאפשר הצגת התראה כאשר האפליקציה פעילה ומבצעות התאמות עוצמה.</string>
     <string name="privacy_policy_label">מדיניות פרטיות</string>
     <string name="managed_devices_empty_message">לא הוגדרו מכשירי בלוטוס.\nלחץ על כפתור + כדי להוסיף את המכשיר הראשון.</string>
+    <string name="label_pro_feature">תכונה פרימיום</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">גרסה חינמית: %1$d מתוך %2$d מכשיר</item>
+        <item quantity="two">גרסה חינמית: %1$d מתוך %2$d מכשירים</item>
+        <item quantity="many">גרסה חינמית: %1$d מתוך %2$d מכשירים</item>
+        <item quantity="other">גרסה חינמית: %1$d מתוך %2$d מכשירים</item>
+    </plurals>
     <string name="general_delete_action">מחק</string>
     <string name="general_cancel_action">בטל</string>
-    <string name="general_ok_action">OK</string>
+    <string name="general_ok_action">אישור</string>
     <string name="general_configure_action">הגדר</string>
-    <string name="general_reset_action">איפוס</string>
-    <string name="general_save_action">שמור</string>
     <string name="battery_optimization_hint_title">אימוץ סוללה</string>
     <string name="battery_optimization_hint_message">אימוצי סוללה מופעלים ועלולים למנוע פעילות תקינה. שקלו להשביתם.</string>
     <string name="battery_optimization_fix_action">השבת אימוצים</string>
@@ -250,24 +359,23 @@
     <string name="android10_applaunch_hint_message">אנדרואיד 10 דורש הרשאה מיוחדת להפעלת אפליקציות מהרקע. העניקו הרשאת &quot;הצג מעל אפליקציות אחרות&quot;.</string>
     <string name="notification_permission_hint_title">הרשאת התראות</string>
     <string name="notification_permission_hint_message">העניקו הרשאת התראות כדי לראות עדכוני מצב כאשר מתאימים עוצמות.</string>
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">רכישה בוטלה</string>
     <string name="error_iap_unavailable_message">רכישות בתוך האפליקציה לא זמינות</string>
     <string name="error_generic_message">אירעה שגיאה. אנא נסו שוב.</string>
     <string name="error_iap_owned_message">אתם כבר בעלים של פריט זה</string>
     <string name="label_no_devices_title">אין מכשירים</string>
     <string name="bluemusic_mascot_description">איקון אפליקציה</string>
-    <string name="devices_device_config_show_home_screen_label">הצג מסך בית</string>
-    <string name="devices_device_config_show_home_screen_desc">לאחר עיבוד כל האירועים עבור מכשיר זה, ינסה להציג את מסך הבית. ייתכן שלא יעבוד בכל גרסאות האנדרואיד.</string>
-    <string name="devices_device_config_volume_save_on_disconnect_label">שמור עוצמה בניתוק</string>
-    <string name="devices_device_config_volume_save_on_disconnect_desc">צלם ושמור את רמות העוצמה הנוכחיות כאשר מכשיר זה מתנתק.</string>
-    <string name="devices_device_config_notification_policy_required_dnd">שליטה במצב Nerušit דורשת גישה למדיניות התראות</string>
-    <string name="devices_device_config_dnd_on_connect_label">מצב אל תפריע</string>
-    <string name="dnd_mode_dialog_title">בחר מצב DND</string>
-    <string name="dnd_mode_dont_change">אל תשנה</string>
-    <string name="dnd_mode_off">כבוי</string>
-    <string name="dnd_mode_priority_only">עדיפות בלבד</string>
-    <string name="dnd_mode_alarms_only">התראות בלבד</string>
-    <string name="dnd_mode_total_silence">שקט מוחלט</string>
+    <!-- App Selection -->
+    <string name="devices_app_selection_title">בחר אפליקציות</string>
+    <string name="devices_app_selection_search_hint">חפש אפליקציות…</string>
+    <string name="devices_app_selection_currently_selected">נבחר כעת</string>
+    <string name="devices_app_selection_selected_count">%d אפליקציות נבחרו</string>
+    <string name="general_navigate_back_action">נווט אחורה</string>
+    <string name="general_reset_action">איפוס</string>
+    <string name="general_clear_action">נקה</string>
+    <string name="general_save_action">שמור</string>
+    <!-- Device option indicators -->
     <string name="devices_indicator_lock">נעילה</string>
     <string name="devices_indicator_awake">ער</string>
     <string name="devices_indicator_nudge">דחיפה</string>
@@ -277,99 +385,12 @@
     <string name="devices_indicator_launch">הפעלה</string>
     <string name="devices_indicator_auto">אוטו</string>
     <string name="devices_indicator_home">בית</string>
-    <string name="devices_indicator_dnd">DND</string>
-    <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">התראת חיבור</string>
-    <string name="connection_alert_dialog_title">התראת חיבור</string>
-    <string name="connection_alert_type_none">ללא</string>
-    <string name="connection_alert_type_sound">צליל בלבד</string>
-    <string name="connection_alert_type_vibration">רטט בלבד</string>
-    <string name="connection_alert_type_both">צליל ורטט</string>
+    <string name="devices_indicator_dnd">נא לא להפריע</string>
     <string name="devices_indicator_alert">התראה</string>
-
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">עוצמה (0–100)</string>
     <string name="devices_volume_input_error">הזן ערך בין %1$d ל-%2$d</string>
-
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">נעל</string>
     <string name="devices_unlock_sliders_action">שחרר נעילה</string>
-
-    <!-- Short recording warning -->
-    <string name="settings_support_debuglog_short_recording_stop">עצור בכל זאת</string>
-    <string name="app_name_short">BVM</string>
-    <string name="settings_support_debuglog_short_recording_title">הקלטה קצרה מאוד</string>
-    <string name="settings_support_debuglog_short_recording_msg">זו הייתה הקלטה קצרה מאוד. לוגי ניפוי באגים הם הקלטות, לא תמונות מצב — שחזר את הבעיה בזמן שההקלטה פעילה כדי שהלוג יהיה שימושי.</string>
-    <string name="settings_support_debuglog_short_recording_continue">המשך הקלטה</string>
-    <string name="settings_support_debuglog_folder_label">תיקיית לוג ניפוי באגים</string>
-    <string name="settings_support_debuglog_folder_empty_desc">אין לוגי ניפוי באגים שמורים</string>
-    <string name="settings_support_debuglog_folder_delete_title">למחוק את כל לוגי ניפוי הבאגים?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">כל סשני לוג ניפוי הבאגים השמורים יימחקו לצמיתות.</string>
-    <string name="debug_log_screen_subtitle">סקור ושתף את לוג ניפוי הבאגים שהוקלט</string>
-    <string name="debug_log_screen_sensitive_title">מידע רגיש</string>
-    <string name="debug_log_screen_keep_action">שמור</string>
-    <string name="debug_log_compressing_label">דחיסה…</string>
-    <string name="support_debuglog_sent_title">הלוג נשלח?</string>
-    <string name="support_debuglog_sent_message">אם שלחת את לוג ניפוי הבאגים, ניתן למחוק אותו מהמכשיר. האם ברצונך להסיר אותו?</string>
-    <string name="support_debuglog_session_delete_title">למחוק את לוג ניפוי הבאגים?</string>
-    <string name="support_debuglog_session_delete_message">סשן לוג ניפוי הבאגים הזה יימחק לצמיתות.</string>
-    <string name="support_debuglog_session_recording">מקליט…</string>
-    <string name="support_debuglog_session_compressing">דוחס…</string>
-    <string name="support_debuglog_failed_empty_log">לוג ריק</string>
-    <string name="support_debuglog_failed_missing_log">לוג חסר</string>
-    <string name="support_debuglog_failed_corrupt_zip">ZIP פגום</string>
-    <string name="support_debuglog_failed_zip_failed">ZIP נכשל</string>
-    <string name="support_debuglog_clear_title">למחוק את כל לוגי ניפוי הבאגים?</string>
-    <string name="support_debuglog_clear_message">כל סשני לוג ניפוי הבאגים השמורים יימחקו לצמיתות.</string>
-    <string name="settings_support_contact_label">צור קשר עם המפתח</string>
-    <string name="settings_support_contact_desc">מלא טופס לשליחת אימייל למפתח.</string>
-    <string name="contact_screen_title">צור קשר עם המפתח</string>
-    <string name="contact_category_bug_label">דיווח על באג</string>
-    <string name="contact_category_feature_label">בקשת תכונה</string>
-    <string name="contact_category_question_label">שאלה</string>
-    <string name="contact_description_label">תיאור</string>
-    <string name="contact_description_bug_hint">תאר מה קרה וכיצד לשחזר את הבעיה.</string>
-    <string name="contact_description_feature_hint">תאר את התכונה שתרצה לראות.</string>
-    <string name="contact_description_question_hint">תאר את שאלתך בפירוט.</string>
-    <string name="contact_category_section_label">קטגוריה</string>
-    <string name="contact_debug_log_label">לוג ניפוי באגים</string>
-    <string name="contact_debug_log_select_hint">בחר לוג ניפוי באגים לצירוף</string>
-    <string name="contact_debug_log_picker_hint">צרף לוג ניפוי באגים לאבחון מהיר יותר של הבעיה.</string>
-    <string name="contact_debug_log_picker_empty">אין לוגי ניפוי באגים זמינים. הקלט אחד תחילה.</string>
-    <string name="contact_expected_behavior_label">התנהגות צפויה</string>
-    <string name="contact_expected_behavior_hint">תאר מה ציפית שיקרה במקום.</string>
-    <string name="support_contact_debuglog_zip_error">הכנת לוג ניפוי הבאגים לצירוף נכשלה</string>
-    <string name="contact_send_action">פתח אפליקציית אימייל</string>
-    <string name="contact_welcome_msg">אני קורא כל הודעה בעצמי ועושה כמיטב יכולתי להשיב, אך מכיוון שאני עובד לבד, זה עשוי לקחת קצת זמן. תודה על הסבלנות.</string>
-    <string name="contact_footer_msg">ההודעה שלך תישלח באימייל. מידע על המכשיר וההגדרות מצורף אוטומטית.</string>
-    <string name="contact_no_email_app_msg">לא נמצאה אפליקציית אימייל במכשיר זה.</string>
-    <string name="contact_attachment_missing_msg">קובץ לוג ניפוי הבאגים אינו קיים עוד</string>
-    <string name="settings_support_stored_logs_label">לוגי ניפוי באגים שמורים</string>
-    <string name="settings_support_stored_logs_desc">%1$d סשנים (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">אין לוגי ניפוי באגים שמורים</string>
-    <string name="settings_support_stored_logs_delete_title">למחוק לוגים שמורים?</string>
-    <string name="settings_support_stored_logs_delete_msg">כל %1$d סשני לוג ניפוי הבאגים השמורים יימחקו.</string>
-    <string name="settings_support_stored_logs_deleted_msg">לוגי ניפוי הבאגים השמורים נמחקו</string>
-    <string name="label_pro_feature">תכונה פרימיום</string>
-    <string name="ui_theme_color_setting_label">צבע ערכת נושא</string>
-    <string name="ui_theme_color_setting_explanation">לוח הצבעים בו נעשה שימוש בערכת הנושא של האפליקציה.</string>
-    <string name="ui_theme_color_material_you_note">הצבע נקבע על פי הטפט שלך בעת שימוש ב-Material You.</string>
-    <string name="ui_theme_color_blue_label">כחול</string>
-    <string name="ui_theme_color_sunset_label">שקיעה</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d סשן בשימוש %2$s</item>
-        <item quantity="other">%1$d סשנים בשימוש %2$s</item>
-    </plurals>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="one">%1$d קובץ מוכן (%2$s)</item>
-        <item quantity="other">%1$d קבצים מוכנים (%2$s)</item>
-    </plurals>
-    <plurals name="contact_word_count">
-        <item quantity="one">%1$d / %2$d מילה</item>
-        <item quantity="other">%1$d / %2$d מילים</item>
-    </plurals>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">גרסה חינמית: %1$d מתוך %2$d מכשיר</item>
-        <item quantity="other">גרסה חינמית: %1$d מתוך %2$d מכשירים</item>
-    </plurals>
 </resources>

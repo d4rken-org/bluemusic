@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM FOSS</string>
+    <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_feature_requires_pro">需要 BVM FOSS</string>
+    <string name="upgrade_prompt_title">升级至 BVM FOSS</string>
+    <string name="upgrade_prompt_body">解锁附加功能，成为支持持续开发的赞助人！</string>
+    <string name="upgrade_prompt_upgrade_action">升级</string>
+    <string name="upgrade_screen_title">升级至 BVM FOSS</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager 没有广告，也不出售用户数据。持续开发只因有您的支持。</string>
+    <string name="upgrade_screen_how_title">如何帮助我们</string>
+    <string name="upgrade_screen_how_body">成为赞助者并支持我们的开发！点击下面的按钮激活所有额外功能并打开我的 GitHub 赞助者资料。</string>
+    <string name="upgrade_screen_why_title">这如魔法一般🪄</string>
+    <string name="upgrade_screen_why_body">• 一位充满动力的开发者 🧙
+• 无限设备 ➡️➡️
+• 额外操作 ⚙️
+以及更多…</string>
+    <string name="upgrade_screen_sponsor_action">赞助开发</string>
+    <string name="upgrade_screen_sponsor_action_hint">取而代之的是广告、分析和 Google Play 🙁</string>
+    <string name="upgrade_screen_thanks_toast">感谢您支持开源开发 ❤️</string>
+    <string name="upgrade_screen_sponsor_too_fast">这么快就回来了？您的支持让 BVM 持续运行！</string>
+</resources>

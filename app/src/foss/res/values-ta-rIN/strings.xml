@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM FOSS</string>
+    <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_feature_requires_pro">BVM FOSS தேவைப்படுகிறது</string>
+    <string name="upgrade_prompt_title">BVM FOSSக்கு மேம்படுத்து</string>
+    <string name="upgrade_prompt_body">கூடுதல் அம்சங்களைத் திறக்கவும் மற்றும் தொடர்ச்சியான மேம்பாட்டை ஆதரிக்க புரவலராக மாறவும்!</string>
+    <string name="upgrade_prompt_upgrade_action">மேம்படுத்து</string>
+    <string name="upgrade_screen_title">BVM FOSSக்கு மேம்படுத்து</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager விளம்பரங்கள் இல்லாதது மற்றும் பயனர் தரவுகளை விற்கவிற்கை இல்லை. தொடர்ந்த மேம்பாடு உங்களால் மட்டுமே சாத்தியமாகிறது.</string>
+    <string name="upgrade_screen_how_title">எப்படி உதவுவது</string>
+    <string name="upgrade_screen_how_body">புரவலராக மாறி மேம்பாட்டை ஸ்பான்சர் செய்யுங்கள்! அனைத்து கூடுதல் அம்சங்களையும் செயல்படுத்த மற்றும் எனது GitHub Sponsors சுயவிவரத்தைத் திறக்க கீழே உள்ள பொத்தானைத் தட்டவும்.</string>
+    <string name="upgrade_screen_why_title">இது மந்திரம் செய்கிறது 🪄</string>
+    <string name="upgrade_screen_why_body">• ஒரு உறுதியான உருவாக்கி
+• இம்மியான சாதனங்கள்
+• கூடுதல் செயல்கள்
+மற்றும் பலவற்றுடன்...</string>
+    <string name="upgrade_screen_sponsor_action">மேம்பாட்டை ஸ்பான்சர் செய்யுங்கள்</string>
+    <string name="upgrade_screen_sponsor_action_hint">மாற்று விளம்பரங்கள், பகுப்பாய்வுகள் மற்றும் Google Play 🙁</string>
+    <string name="upgrade_screen_thanks_toast">திறந்த மூல மேம்பாட்டை ஆதரித்ததற்கு நன்றி ❤️</string>
+    <string name="upgrade_screen_sponsor_too_fast">ஏற்கனவே திரும்பிவிட்டீர்களா? உங்கள் மொத்தம் BVMஐ உயிரோடு வைக்கிறது!</string>
+</resources>

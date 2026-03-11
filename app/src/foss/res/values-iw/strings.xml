@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM FOSS</string>
+    <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_feature_requires_pro">דורש BVM FOSS</string>
+    <string name="upgrade_prompt_title">שדרג ל-BVM FOSS</string>
+    <string name="upgrade_prompt_body">בטל נעילה של תכונות נוספות והפוך לפטרון לתמיכה בהמשך הפיתוח!</string>
+    <string name="upgrade_prompt_upgrade_action">שדרוג</string>
+    <string name="upgrade_screen_title">שדרג ל-BVM FOSS</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager ללא מודעות ואינה מוכרת נתוני משתמשים. המשך הפיתוח מתאפשר רק על ידך.</string>
+    <string name="upgrade_screen_how_title">איך לעזור</string>
+    <string name="upgrade_screen_how_body">הפוך לפטרון ונותן חסות לפיתוח! הקש על הכפתור למטה כדי להפעיל את כל התכונות הנוספות ולפתוח את פרופיל הספונסרים בגיטהאב שלי.</string>
+    <string name="upgrade_screen_why_title">This conjures 🪄</string>
+    <string name="upgrade_screen_why_body">• מפתח מוטיבציה גבוהה 🧙
+• מכשירים ללא הגבלה ➡️➡️
+• פעולות נוספות ⚙️
+ועוד…</string>
+    <string name="upgrade_screen_sponsor_action">תמוך בפיתוח</string>
+    <string name="upgrade_screen_sponsor_action_hint">האלטרנטיבה הן מודעות, אנליטיקס ו-Google Play 🙁</string>
+    <string name="upgrade_screen_thanks_toast">תודה שתמכת בפיתוח קוד פתוח ❤️</string>
+    <string name="upgrade_screen_sponsor_too_fast">חזרת כבר? התמיכה שלך שומרת על BVM בחיים!</string>
+</resources>

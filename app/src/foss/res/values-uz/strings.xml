@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM FOSS</string>
+    <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_feature_requires_pro">BVM FOSS talab qilinadi</string>
+    <string name="upgrade_prompt_title">BVM FOSS ga o\'tish</string>
+    <string name="upgrade_prompt_body">Qo\'shimcha xususiyatlarni oching va doimiy rivojlanishni qo\'llab-quvvatlash uchun homiy bo\'ling!</string>
+    <string name="upgrade_prompt_upgrade_action">Yangilash</string>
+    <string name="upgrade_screen_title">BVM FOSS ga o\'tish</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager reklamasiz va foydalanuvchi ma\'lumotlarini sotmaydi. Rivojlanishning davom etishi faqat siz tufayli mumkin.</string>
+    <string name="upgrade_screen_how_title">Qanday yordam berish</string>
+    <string name="upgrade_screen_how_body">Homiy bo\'ling va rivojlanishni sponsorlik qiling! Barcha qo\'shimcha xususiyatlarni faollashtirish va GitHub Sponsors profilimni ochish uchun quyidagi tugmani bosing.</string>
+    <string name="upgrade_screen_why_title">Bu sehr qiladi 🪄</string>
+    <string name="upgrade_screen_why_body">• Motivatsiyali dasturchi 🧙
+• Cheksiz qurilmalar ➡️➡️
+• Qo\'shimcha amallar ⚙️
+va boshqalar…</string>
+    <string name="upgrade_screen_sponsor_action">Rivojlanishni sponsorlik qilish</string>
+    <string name="upgrade_screen_sponsor_action_hint">Muqobil reklama, tahlil va Google Play 🙁</string>
+    <string name="upgrade_screen_thanks_toast">Ochiq manba rivojlanishini qo\'llab-quvvatlaganingiz uchun rahmat ❤️</string>
+    <string name="upgrade_screen_sponsor_too_fast">Allaqachon ketayapsizmi? Sizning qo\'llab-quvvatlashingiz BVM ni tirik saqlaydi!</string>
+</resources>

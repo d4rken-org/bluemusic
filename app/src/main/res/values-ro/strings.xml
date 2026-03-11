@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
     <string name="general_error_label">Eroare</string>
     <string name="general_error_no_compatible_app_found_msg">Nicio aplicație compatibilă găsită pentru această cerere.</string>
     <string name="general_share_action">Distribuie</string>
     <string name="general_back_action">Înapoi</string>
     <string name="general_show_details_action">Afișează detalii</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Bun venit în BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager îți permite să gestionezi volumul dispozitivelor Bluetooth automat.</string>
     <string name="onboarding_welcome_action">Să mergem</string>
@@ -20,9 +23,11 @@
     <string name="onboarding_rewrite_message">Am reconstruit complet Bluetooth Volume Manager de la zero din cauza schimbărilor Android și a cerințelor Google pentru a mă asigura că aplicația continuă să funcționeze în mod fiabil.</string>
     <string name="onboarding_rewrite_features">Unele setări ale dispozitivului s-ar putea să fi fost resetate în timpul acestei actualizări. Te rog să verifici configurațiile dispozitivelor tale.</string>
     <string name="onboarding_rewrite_action">Continuă</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">Nu s-au găsit dispozitive negestionate</string>
     <string name="discover_all_devices_managed_msg">Toate dispozitivele tale asociate sunt gestionate! Ai nevoie de unul nou?</string>
     <string name="discover_pair_new_device_action">Asociază dispozitiv nou</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">Configurația dispozitivului</string>
     <string name="devices_device_config_section_general_label">General</string>
     <string name="devices_device_config_remove_device_label">Uită dispozitivul</string>
@@ -32,6 +37,8 @@
     <string name="devices_device_config_rename_device_label">Redenumește dispozitivul</string>
     <string name="devices_device_config_rename_device_desc">Redenumește acest dispozitiv în această aplicație, și dacă este posibil, în sistem.</string>
     <string name="devices_device_config_rename_device_action">Redenumește</string>
+    <string name="devices_device_config_enabled_label">Activat</string>
+    <string name="devices_device_config_enabled_desc">Reacționează la acest dispozitiv când este conectat</string>
     <string name="devices_device_config_section_timing_label">Temporizare</string>
     <string name="devices_device_config_monitoring_duration_label">Durata de monitorizare</string>
     <string name="devices_device_config_monitoring_duration_desc">O durată în milisecunde, după ce au fost făcute ajustările, timp în care orice alte schimbări de volum vor fi blocate.</string>
@@ -43,17 +50,18 @@
     <string name="devices_device_config_launch_app_label">Lansează aplicația</string>
     <string name="devices_device_config_launch_app_desc">Lansează o aplicație când se conectează acest dispozitiv.</string>
     <string name="devices_device_config_launch_app_multiple_desc">%d aplicații selectate</string>
+    <string name="devices_device_config_show_home_screen_label">Afișează ecranul principal</string>
+    <string name="devices_device_config_show_home_screen_desc">După procesarea tuturor evenimentelor pentru acest dispozitiv, încearcă să afișeze ecranul principal. Poate să nu funcționeze pe toate versiunile Android.</string>
     <string name="devices_device_config_nudge_volume_label">Împinge volumul</string>
     <string name="devices_device_config_nudge_volume_description">Scade apoi crește volumul cu un increment, chiar dacă volumul dorit este deja setat (conform sistemului).</string>
-    <string name="devices_device_config_notification_policy_action">Acordă acces</string>
-    <string name="devices_device_config_notification_policy_required_notification">Controlul volumului pentru notificări necesită acces la politica de notificări</string>
-    <string name="devices_device_config_notification_policy_required_ringtone">Controlul volumului de apel necesită acces la politica de notificări</string>
     <string name="devices_device_config_visible_adjustments_label">Ajustări vizibile</string>
     <string name="devices_device_config_visible_adjustments_desc">Comută care ajustări sunt afișate pe cardul dispozitivului</string>
     <string name="devices_device_config_keep_awake_label">Menține activ</string>
     <string name="devices_device_config_keep_awake_desc">Menține ecranul pornit cât timp acest dispozitiv este conectat.</string>
     <string name="devices_device_config_volume_observe_label">Observă schimbările</string>
     <string name="devices_device_config_volume_observe_desc">Rămâi activ cât timp acest dispozitiv este conectat și salvează schimbările de volum care nu au fost cauzate de această aplicație.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Salvează volumul la deconectare</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Capturează și salvează nivelurile curente de volum când se deconectează acest dispozitiv.</string>
     <string name="devices_device_config_volume_lock_label">Blocare volum</string>
     <string name="devices_device_config_volume_lock_desc">Orice schimbări de volum care nu sunt făcute prin această aplicație vor fi revenite cât timp acest dispozitiv este conectat.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitator de rată volum</string>
@@ -64,16 +72,12 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Timp minim între scăderile de volum: %d ms</string>
     <string name="devices_device_config_autoplay_label">Redare automată</string>
     <string name="devices_device_config_autoplay_desc">Simulează apăsarea butonului play pe o telecomandă Bluetooth când se conectează acest dispozitiv.</string>
-    <string name="devices_app_selection_currently_selected">Selectate în prezent</string>
-    <string name="devices_app_selection_search_hint">Caută aplicații…</string>
-    <string name="devices_app_selection_selected_count">%d aplicații selectate</string>
-    <string name="devices_app_selection_title">Selectează aplicații</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Tipuri de taste disponibile</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Configurează care taste să trimită și în ce ordine</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Tipuri de taste</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Nicio tastă configurată</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Tastele selectate (în ordine)</string>
     <string name="devices_device_config_autoplay_keycodes_title">Tipuri de taste pentru redare automată</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Tipuri de taste disponibile</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Tastele selectate (în ordine)</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Tipuri de taste</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Configurează care taste să trimită și în ce ordine</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Nicio tastă configurată</string>
     <string name="devices_device_config_section_volumes_label">Volume</string>
     <string name="devices_device_config_section_volume_label">Volum</string>
     <string name="devices_device_config_alarm_volume_label">Volum alarmă</string>
@@ -86,6 +90,23 @@
     <string name="devices_device_config_call_volume_desc">Controlează volumul care afectează apelurile când se conectează acest dispozitiv.</string>
     <string name="devices_device_config_ring_volume_label">Volum sonerie</string>
     <string name="devices_device_config_ring_volume_desc">Controlează volumul care afectează soneria ta.</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Controlul volumului de apel necesită acces la politica de notificări</string>
+    <string name="devices_device_config_notification_policy_required_notification">Controlul volumului pentru notificări necesită acces la politica de notificări</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Controlul Nu Deranja necesită acces la politica de notificări</string>
+    <string name="devices_device_config_notification_policy_action">Acordă acces</string>
+    <string name="devices_device_config_dnd_on_connect_label">Mod Nu Deranja</string>
+    <string name="dnd_mode_dialog_title">Selectează modul Nu Deranja</string>
+    <string name="dnd_mode_dont_change">Nu schimba</string>
+    <string name="dnd_mode_off">Oprit</string>
+    <string name="dnd_mode_priority_only">Numai prioritate</string>
+    <string name="dnd_mode_alarms_only">Numai alarme</string>
+    <string name="dnd_mode_total_silence">Liniște totală</string>
+    <string name="devices_device_config_connection_alert_label">Alertă de conexiune</string>
+    <string name="connection_alert_dialog_title">Alertă de conexiune</string>
+    <string name="connection_alert_type_none">Nimic</string>
+    <string name="connection_alert_type_sound">Doar sunet</string>
+    <string name="connection_alert_type_vibration">Doar vibrație</string>
+    <string name="connection_alert_type_both">Sunet și vibrație</string>
     <string name="devices_stream_music_label">Muzică</string>
     <string name="devices_audio_stream_call_label">Apel</string>
     <string name="devices_audio_stream_ring_label">Sonerie</string>
@@ -98,11 +119,11 @@
     <string name="devices_last_connected_label">Ultima conectare: %s</string>
     <string name="devices_currently_connected_label">Conectat în prezent</string>
     <string name="devices_device_disabled_label">Dispozitiv dezactivat</string>
-    <string name="devices_device_config_enabled_label">Activat</string>
-    <string name="devices_device_config_enabled_desc">Reacționează la acest dispozitiv când este conectat</string>
     <string name="devices_no_volumes_configured">Niciun volum configurat pentru acest dispozitiv. Atinge Configurează pentru a seta preferințele de volum.</string>
+    <!-- Settings-->
     <string name="settings_label">Setări</string>
     <string name="settings_category_other_label">Altele</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">General</string>
     <string name="general_settings_desc">Ajustări generale care afectează întreaga aplicație.</string>
     <string name="settings_category_ui_label">Interfață utilizator</string>
@@ -117,8 +138,14 @@
     <string name="ui_theme_style_medium_contrast_label">Contrast Mediu</string>
     <string name="ui_theme_style_high_contrast_label">Contrast Ridicat</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
+    <string name="ui_theme_color_setting_label">Culoarea temei</string>
+    <string name="ui_theme_color_setting_explanation">Paleta de culori folosită la tematizarea aplicației.</string>
+    <string name="ui_theme_color_material_you_note">Culoarea este setată de imaginea de fundal când folosești Material You.</string>
+    <string name="ui_theme_color_blue_label">Albastru</string>
+    <string name="ui_theme_color_sunset_label">Apus de soare</string>
     <string name="ui_language_override_label">Limba aplicației</string>
     <string name="ui_language_override_desc">Selectează o limbă diferită pentru BVM, independent de limba implicită a sistemului tău.</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">Dispozitive</string>
     <string name="devices_settings_desc">Setări care afectează toate dispozitivele gestionate.</string>
     <string name="label_app_enabled">Aplicație activată</string>
@@ -129,6 +156,7 @@
     <string name="description_volume_listener">Rămâi activ cât timp un dispozitiv este conectat și salvează schimbările de volum care nu au fost cauzate de această aplicație.</string>
     <string name="label_boot_restore">Restaurează la pornire</string>
     <string name="description_boot_restore">Restaurează volumul după pornire/repornire dacă un dispozitiv Bluetooth este conectat.</string>
+    <!-- Settings/Support-->
     <string name="settings_support_label">Suport</string>
     <string name="settings_support_description">Citește documentația, raportează probleme, vorbește cu alții sau înregistrează jurnale de depanare.</string>
     <string name="settings_support_wiki_label">Documentație</string>
@@ -139,24 +167,41 @@
     <string name="settings_support_debuglog_desc">Înregistrează tot ce face aplicația într-un fișier text pe care îl poți distribui.</string>
     <string name="settings_support_debuglog_recording_desc">Înregistrarea informațiilor de depanare în curs. Atinge pentru a opri înregistrarea.</string>
     <string name="settings_support_debuglog_path">Calea jurnalului: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">Înregistrare foarte scurtă</string>
+    <string name="settings_support_debuglog_short_recording_msg">A fost o înregistrare foarte scurtă. Jurnalele de depanare sunt înregistrări, nu instantanee — reproduce problema în timp ce înregistrarea este activă pentru ca jurnalul să fie util.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Continuă înregistrarea</string>
+    <string name="settings_support_debuglog_short_recording_stop">Oprește oricum</string>
+    <string name="settings_support_debuglog_folder_label">Folder jurnal de depanare</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sesiune folosind %2$s</item>
+        <item quantity="few">%1$d sesiuni folosind %2$s</item>
+        <item quantity="other">%1$d de sesiuni folosind %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Nu există jurnale de depanare stocate</string>
+    <string name="settings_support_debuglog_folder_delete_title">Ștergi toate jurnalele de depanare?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Aceasta va șterge permanent toate sesiunile de jurnale de depanare stocate.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Un loc unde să petreci timp și să pui întrebări.</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Mulțumiri</string>
     <string name="settings_acknowledgements_description">Credite, licențe și mulțumiri speciale</string>
     <string name="settings_acks_translation_header">Traducere</string>
     <string name="settings_acks_translators_title">Traducători</string>
-    <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
+    <string name="settings_acks_translators_people">Alex (alexcsy on Crowdin);Alexandru51 (Alexandru 9035 on Crowdin)</string>
     <string name="settings_acks_translate_title">Traduce BVM</string>
     <string name="settings_acks_translate_desc">Ajută la traducerea BVM în limba ta</string>
     <string name="settings_acks_thanks_header">Mulțumiri</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Pentru sprijinirea traducării proiectelor open-source</string>
     <string name="settings_licenses_label">Licențe</string>
+    <string name="settings_translation_label">Traducere</string>
+    <string name="settings_translation_desc">Ajută la traducerea aplicației în limba ta preferată</string>
     <string name="settings_sponsor_development_title">Sponsorizează dezvoltarea</string>
     <string name="settings_sponsor_development_summary">Devino patron și face dezvoltarea continuată posibilă.</string>
     <string name="settings_privacy_policy_label">Politica de confidențialitate</string>
     <string name="settings_privacy_policy_desc">Gestionarea datelor în mod responsabil.</string>
     <string name="changelog_label">Jurnalul de modificari</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">Notificări de depanare</string>
     <string name="debug_log_consent_title">Jurnal de depanare</string>
     <string name="debug_log_consent_explanation">Această funcționalitate înregistrează tot ce face aplicația într-un fișier ce poate fi distribuit. Fișierul generat conține informații sensibile (de ex. nume de fișiere și aplicații instalate). Distribuie-l doar cu părți de încredere (de ex. un dezvoltator care rezolvă o problemă).</string>
@@ -164,11 +209,69 @@
     <string name="debug_log_record_action">Înregistrează</string>
     <string name="debug_log_stop_action">Oprește înregistrarea</string>
     <string name="debug_log_screen_title">Recorder Jurnal de Depanare</string>
+    <string name="debug_log_screen_subtitle">Revizuiește și distribuie jurnalul de depanare înregistrat</string>
+    <string name="debug_log_screen_sensitive_title">Informații sensibile</string>
     <string name="debug_log_screen_sensitive_information_message">Fișierul generat conține informații sensibile (de ex. nume de fișiere și aplicații instalate). Distribuie-l doar cu părți de încredere.</string>
     <string name="debug_log_screen_session_path_label">Calea sesiunii de depanare</string>
     <string name="debug_log_screen_log_files_label">Fișiere jurnal</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d fișier gata (%2$s)</item>
+        <item quantity="few">%1$d fișiere gata (%2$s)</item>
+        <item quantity="other">%1$d de fișiere gata (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">Anulează</string>
+    <string name="debug_log_screen_keep_action">Păstrează</string>
+    <string name="debug_log_compressing_label">Se comprimă…</string>
     <string name="debug_log_file_label">Fișier jurnal înregistrat</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">Jurnal trimis?</string>
+    <string name="support_debuglog_sent_message">Dacă ai trimis jurnalul de depanare, acesta poate fi șters de pe dispozitiv. Vrei să îl elimini?</string>
+    <string name="support_debuglog_session_delete_title">Ștergi jurnalul de depanare?</string>
+    <string name="support_debuglog_session_delete_message">Această sesiune de jurnal de depanare va fi ștearsă permanent.</string>
+    <string name="support_debuglog_session_recording">Se înregistrează…</string>
+    <string name="support_debuglog_session_compressing">Se comprimă…</string>
+    <string name="support_debuglog_failed_empty_log">Jurnal gol</string>
+    <string name="support_debuglog_failed_missing_log">Jurnal lipsă</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP corupt</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP eșuat</string>
+    <string name="support_debuglog_clear_title">Ștergi toate jurnalele de depanare?</string>
+    <string name="support_debuglog_clear_message">Aceasta va șterge permanent toate sesiunile de jurnale de depanare stocate.</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">Contactează dezvoltatorul</string>
+    <string name="settings_support_contact_desc">Completează un formular pentru a trimite un e-mail dezvoltatorului.</string>
+    <string name="contact_screen_title">Contactează dezvoltatorul</string>
+    <string name="contact_category_bug_label">Raport de eroare</string>
+    <string name="contact_category_feature_label">Cerere de funcționalitate</string>
+    <string name="contact_category_question_label">Întrebare</string>
+    <string name="contact_description_label">Descriere</string>
+    <string name="contact_description_bug_hint">Descrie ce s-a întâmplat și cum să reproduci problema.</string>
+    <string name="contact_description_feature_hint">Descrie funcționalitatea pe care ai vrea să o vezi.</string>
+    <string name="contact_description_question_hint">Descrie întrebarea ta în detaliu.</string>
+    <string name="contact_category_section_label">Categorie</string>
+    <string name="contact_debug_log_label">Jurnal de depanare</string>
+    <string name="contact_debug_log_select_hint">Selectează un jurnal de depanare pentru a atașa</string>
+    <string name="contact_debug_log_picker_hint">Atașează un jurnal de depanare pentru a ajuta la diagnosticarea problemei mai rapid.</string>
+    <string name="contact_debug_log_picker_empty">Nu există jurnale de depanare disponibile. Înregistrează unul mai întâi.</string>
+    <string name="contact_expected_behavior_label">Comportament așteptat</string>
+    <string name="contact_expected_behavior_hint">Descrie ce te așteptai să se întâmple în schimb.</string>
+    <string name="support_contact_debuglog_zip_error">Eroare la pregătirea jurnalului de depanare pentru atașare</string>
+    <string name="contact_send_action">Deschide aplicația de e-mail</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d cuvânt</item>
+        <item quantity="few">%1$d / %2$d cuvinte</item>
+        <item quantity="other">%1$d / %2$d de cuvinte</item>
+    </plurals>
+    <string name="contact_welcome_msg">Citesc fiecare mesaj personal și fac tot posibilul să răspund, dar deoarece lucrez singur la asta, poate dura puțin. Mulțumesc pentru răbdare.</string>
+    <string name="contact_footer_msg">Mesajul tău va fi trimis prin e-mail. Informațiile despre dispozitiv și configurație sunt atașate automat.</string>
+    <string name="contact_no_email_app_msg">Nu s-a găsit nicio aplicație de e-mail pe acest dispozitiv.</string>
+    <string name="contact_attachment_missing_msg">Fișierul jurnal de depanare nu mai există</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">Jurnale de depanare stocate</string>
+    <string name="settings_support_stored_logs_desc">%1$d sesiuni (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Nu există jurnale de depanare stocate</string>
+    <string name="settings_support_stored_logs_delete_title">Ștergi jurnalele stocate?</string>
+    <string name="settings_support_stored_logs_delete_msg">Aceasta va șterge toate cele %1$d sesiuni de jurnale de depanare stocate.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Jurnalele de depanare stocate au fost șterse</string>
     <string name="label_bug_reports">Rapoarte de erori</string>
     <string name="description_bug_reports">Raportarea automată de erori și blocaje.</string>
     <string name="label_add_device">Adaugă dispozitiv</string>
@@ -200,7 +303,7 @@
     <string name="action_grant_permission">Acordă Permisiunea</string>
     <string name="label_status_listening_for_changes">Ascult schimbări de volum</string>
     <string name="action_exit">Ieșire</string>
-    <string name="action_start">Start</string>
+    <string name="action_start">Pornire</string>
     <string name="label_welcome">Bun venit</string>
     <string name="description_intro_contact">Nu ezita să mă contactezi dacă ai întrebări sau chiar o idee pentru o funcționalitate nouă.</string>
     <string name="label_translation">Traducere</string>
@@ -235,13 +338,15 @@
     <string name="android13_notification_permission_description">Acordă acestei aplicații permisiunea de a posta notificări. Aceasta permite afișarea unei notificări când aplicația este activă și se fac ajustări de volum.</string>
     <string name="privacy_policy_label">Politica de confidențialitate</string>
     <string name="managed_devices_empty_message">Niciun dispozitiv Bluetooth configurat.\nAtinge butonul + pentru a adăuga primul tău dispozitiv.</string>
+    <string name="label_pro_feature">Funcționalitate premium</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Versiune gratuită: %1$d din %2$d dispozitiv</item>
+        <item quantity="few">Versiune gratuită: %1$d din %2$d dispozitive</item>
+        <item quantity="other">Versiune gratuită: %1$d din %2$d de dispozitive</item>
+    </plurals>
     <string name="general_delete_action">Șterge</string>
-    <string name="general_navigate_back_action">Navighează înapoi</string>
-    <string name="general_reset_action">Resetează</string>
-    <string name="general_save_action">Salvează</string>
     <string name="general_cancel_action">Anulează</string>
     <string name="general_ok_action">OK</string>
-    <string name="general_clear_action">Șterge</string>
     <string name="general_configure_action">Configurează</string>
     <string name="battery_optimization_hint_title">Optimizarea bateriei</string>
     <string name="battery_optimization_hint_message">Optimizările de baterie sunt activate și pot preveni funcționarea corectă. Ia în considerare dezactivarea lor.</string>
@@ -250,20 +355,23 @@
     <string name="android10_applaunch_hint_message">Android 10 necesită permisiune specială pentru a lansa aplicații din fundal. Acordă permisiunea &quot;Afișare peste alte aplicații&quot;.</string>
     <string name="notification_permission_hint_title">Permisiune notificări</string>
     <string name="notification_permission_hint_message">Acordă permisiunea pentru notificări pentru a vedea actualizări de stare când se ajustează volumele.</string>
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Achiziţie anulată</string>
     <string name="error_iap_unavailable_message">Achiziţiile din aplicație nu sunt disponibile</string>
     <string name="error_generic_message">A apărut o eroare. Te rog să încerci din nou.</string>
     <string name="error_iap_owned_message">Deții deja acest element</string>
     <string name="label_no_devices_title">Niciun Dispozitiv</string>
     <string name="bluemusic_mascot_description">Icona Aplicației</string>
-    <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">Alertă de conexiune</string>
-    <string name="connection_alert_dialog_title">Alertă de conexiune</string>
-    <string name="connection_alert_type_none">Nimic</string>
-    <string name="connection_alert_type_sound">Doar sunet</string>
-    <string name="connection_alert_type_vibration">Doar vibrație</string>
-    <string name="connection_alert_type_both">Sunet și vibrație</string>
-    <string name="devices_indicator_alert">Alertă</string>
+    <!-- App Selection -->
+    <string name="devices_app_selection_title">Selectează aplicații</string>
+    <string name="devices_app_selection_search_hint">Caută aplicații…</string>
+    <string name="devices_app_selection_currently_selected">Selectate în prezent</string>
+    <string name="devices_app_selection_selected_count">%d aplicații selectate</string>
+    <string name="general_navigate_back_action">Navighează înapoi</string>
+    <string name="general_reset_action">Resetează</string>
+    <string name="general_clear_action">Șterge</string>
+    <string name="general_save_action">Salvează</string>
+    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Blocare</string>
     <string name="devices_indicator_awake">Activ</string>
     <string name="devices_indicator_nudge">Împingere</string>
@@ -274,106 +382,11 @@
     <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Acasă</string>
     <string name="devices_indicator_dnd">DNT</string>
-    <string name="devices_device_config_dnd_on_connect_label">Mod Nu Deranja</string>
-    <string name="dnd_mode_dialog_title">Selectează modul Nu Deranja</string>
-    <string name="dnd_mode_dont_change">Nu schimba</string>
-    <string name="dnd_mode_off">Oprit</string>
-    <string name="dnd_mode_priority_only">Numai prioritate</string>
-    <string name="dnd_mode_alarms_only">Numai alarme</string>
-    <string name="dnd_mode_total_silence">Liniște totală</string>
-    <string name="devices_device_config_notification_policy_required_dnd">Controlul Nu Deranja necesită acces la politica de notificări</string>
-    <string name="devices_device_config_show_home_screen_label">Afișează ecranul principal</string>
-    <string name="devices_device_config_show_home_screen_desc">După procesarea tuturor evenimentelor pentru acest dispozitiv, încearcă să afișeze ecranul principal. Poate să nu funcționeze pe toate versiunile Android.</string>
-    <string name="devices_device_config_volume_save_on_disconnect_label">Salvează volumul la deconectare</string>
-    <string name="devices_device_config_volume_save_on_disconnect_desc">Capturează și salvează nivelurile curente de volum când se deconectează acest dispozitiv.</string>
-
+    <string name="devices_indicator_alert">Alertă</string>
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volum (0–100)</string>
     <string name="devices_volume_input_error">Introdu o valoare între %1$d și %2$d</string>
-
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Blochează</string>
     <string name="devices_unlock_sliders_action">Deblochează</string>
-
-    <!-- Debug log short recording warning -->
-    <string name="settings_support_debuglog_short_recording_stop">Oprește oricum</string>
-
-    <string name="settings_support_debuglog_short_recording_title">Înregistrare foarte scurtă</string>
-    <string name="settings_support_debuglog_short_recording_msg">A fost o înregistrare foarte scurtă. Jurnalele de depanare sunt înregistrări, nu instantanee — reproduce problema în timp ce înregistrarea este activă pentru ca jurnalul să fie util.</string>
-    <string name="settings_support_debuglog_short_recording_continue">Continuă înregistrarea</string>
-    <string name="settings_support_debuglog_folder_label">Folder jurnal de depanare</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d sesiune folosind %2$s</item>
-        <item quantity="few">%1$d sesiuni folosind %2$s</item>
-        <item quantity="other">%1$d de sesiuni folosind %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Nu există jurnale de depanare stocate</string>
-    <string name="settings_support_debuglog_folder_delete_title">Ștergi toate jurnalele de depanare?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Aceasta va șterge permanent toate sesiunile de jurnale de depanare stocate.</string>
-    <string name="debug_log_screen_subtitle">Revizuiește și distribuie jurnalul de depanare înregistrat</string>
-    <string name="debug_log_screen_sensitive_title">Informații sensibile</string>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="one">%1$d fișier gata (%2$s)</item>
-        <item quantity="few">%1$d fișiere gata (%2$s)</item>
-        <item quantity="other">%1$d de fișiere gata (%2$s)</item>
-    </plurals>
-    <string name="debug_log_screen_keep_action">Păstrează</string>
-    <string name="debug_log_compressing_label">Se comprimă…</string>
-    <string name="support_debuglog_sent_title">Jurnal trimis?</string>
-    <string name="support_debuglog_sent_message">Dacă ai trimis jurnalul de depanare, acesta poate fi șters de pe dispozitiv. Vrei să îl elimini?</string>
-    <string name="support_debuglog_session_delete_title">Ștergi jurnalul de depanare?</string>
-    <string name="support_debuglog_session_delete_message">Această sesiune de jurnal de depanare va fi ștearsă permanent.</string>
-    <string name="support_debuglog_session_recording">Se înregistrează…</string>
-    <string name="support_debuglog_session_compressing">Se comprimă…</string>
-    <string name="support_debuglog_failed_empty_log">Jurnal gol</string>
-    <string name="support_debuglog_failed_missing_log">Jurnal lipsă</string>
-    <string name="support_debuglog_failed_corrupt_zip">ZIP corupt</string>
-    <string name="support_debuglog_failed_zip_failed">ZIP eșuat</string>
-    <string name="support_debuglog_clear_title">Ștergi toate jurnalele de depanare?</string>
-    <string name="support_debuglog_clear_message">Aceasta va șterge permanent toate sesiunile de jurnale de depanare stocate.</string>
-    <string name="settings_support_contact_label">Contactează dezvoltatorul</string>
-    <string name="settings_support_contact_desc">Completează un formular pentru a trimite un e-mail dezvoltatorului.</string>
-    <string name="contact_screen_title">Contactează dezvoltatorul</string>
-    <string name="contact_category_bug_label">Raport de eroare</string>
-    <string name="contact_category_feature_label">Cerere de funcționalitate</string>
-    <string name="contact_category_question_label">Întrebare</string>
-    <string name="contact_description_label">Descriere</string>
-    <string name="contact_description_bug_hint">Descrie ce s-a întâmplat și cum să reproduci problema.</string>
-    <string name="contact_description_feature_hint">Descrie funcționalitatea pe care ai vrea să o vezi.</string>
-    <string name="contact_description_question_hint">Descrie întrebarea ta în detaliu.</string>
-    <string name="contact_category_section_label">Categorie</string>
-    <string name="contact_debug_log_label">Jurnal de depanare</string>
-    <string name="contact_debug_log_select_hint">Selectează un jurnal de depanare pentru a atașa</string>
-    <string name="contact_debug_log_picker_hint">Atașează un jurnal de depanare pentru a ajuta la diagnosticarea problemei mai rapid.</string>
-    <string name="contact_debug_log_picker_empty">Nu există jurnale de depanare disponibile. Înregistrează unul mai întâi.</string>
-    <string name="contact_expected_behavior_label">Comportament așteptat</string>
-    <string name="contact_expected_behavior_hint">Descrie ce te așteptai să se întâmple în schimb.</string>
-    <string name="support_contact_debuglog_zip_error">Eroare la pregătirea jurnalului de depanare pentru atașare</string>
-    <string name="contact_send_action">Deschide aplicația de e-mail</string>
-    <plurals name="contact_word_count">
-        <item quantity="one">%1$d / %2$d cuvânt</item>
-        <item quantity="few">%1$d / %2$d cuvinte</item>
-        <item quantity="other">%1$d / %2$d de cuvinte</item>
-    </plurals>
-    <string name="contact_welcome_msg">Citesc fiecare mesaj personal și fac tot posibilul să răspund, dar deoarece lucrez singur la asta, poate dura puțin. Mulțumesc pentru răbdare.</string>
-    <string name="contact_footer_msg">Mesajul tău va fi trimis prin e-mail. Informațiile despre dispozitiv și configurație sunt atașate automat.</string>
-    <string name="contact_no_email_app_msg">Nu s-a găsit nicio aplicație de e-mail pe acest dispozitiv.</string>
-    <string name="contact_attachment_missing_msg">Fișierul jurnal de depanare nu mai există</string>
-    <string name="settings_support_stored_logs_label">Jurnale de depanare stocate</string>
-    <string name="settings_support_stored_logs_desc">%1$d sesiuni (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">Nu există jurnale de depanare stocate</string>
-    <string name="settings_support_stored_logs_delete_title">Ștergi jurnalele stocate?</string>
-    <string name="settings_support_stored_logs_delete_msg">Aceasta va șterge toate cele %1$d sesiuni de jurnale de depanare stocate.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Jurnalele de depanare stocate au fost șterse</string>
-    <string name="label_pro_feature">Funcționalitate premium</string>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">Versiune gratuită: %1$d din %2$d dispozitiv</item>
-        <item quantity="few">Versiune gratuită: %1$d din %2$d dispozitive</item>
-        <item quantity="other">Versiune gratuită: %1$d din %2$d de dispozitive</item>
-    </plurals>
-    <string name="ui_theme_color_setting_label">Culoarea temei</string>
-    <string name="ui_theme_color_setting_explanation">Paleta de culori folosită la tematizarea aplicației.</string>
-    <string name="ui_theme_color_material_you_note">Culoarea este setată de imaginea de fundal când folosești Material You.</string>
-    <string name="ui_theme_color_blue_label">Albastru</string>
-    <string name="ui_theme_color_sunset_label">Apus de soare</string>
 </resources>

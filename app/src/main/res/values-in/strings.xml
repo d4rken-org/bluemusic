@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pengelola Volume Bluetooth</string>
-    <string name="general_error_label">Error</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
+    <string name="general_error_label">Eror</string>
     <string name="general_error_no_compatible_app_found_msg">Tidak ada aplikasi yang cocok untuk menangani permintaan ini.</string>
     <string name="general_share_action">Bagikan</string>
     <string name="general_back_action">Kembali</string>
     <string name="general_show_details_action">Tampilkan detail</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Selamat datang di BVM</string>
     <string name="onboarding_welcome_message">Pengelola Volume Bluetooth memungkinkan kamu mengelola volume perangkat Bluetooth secara otomatis.</string>
     <string name="onboarding_welcome_action">Ayo mulai</string>
@@ -20,9 +23,11 @@
     <string name="onboarding_rewrite_message">Saya telah membangun ulang Pengelola Volume Bluetooth dari awal karena perubahan Android dan persyaratan Google untuk memastikan aplikasi terus bekerja dengan baik.</string>
     <string name="onboarding_rewrite_features">Beberapa pengaturan perangkat mungkin telah direset selama pembaruan ini. Tolong periksa konfigurasi perangkatmu.</string>
     <string name="onboarding_rewrite_action">Lanjutkan</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">Tidak ada perangkat yang belum dikelola</string>
     <string name="discover_all_devices_managed_msg">Semua perangkat yang dipasangkan sudah dikelola! Butuh yang baru?</string>
     <string name="discover_pair_new_device_action">Pasangkan perangkat baru</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">Konfigurasi perangkat</string>
     <string name="devices_device_config_section_general_label">Umum</string>
     <string name="devices_device_config_remove_device_label">Lupakan perangkat</string>
@@ -32,6 +37,8 @@
     <string name="devices_device_config_rename_device_label">Ubah nama perangkat</string>
     <string name="devices_device_config_rename_device_desc">Ubah nama perangkat ini di dalam aplikasi, dan jika memungkinkan, di dalam sistem.</string>
     <string name="devices_device_config_rename_device_action">Ubah nama</string>
+    <string name="devices_device_config_enabled_label">Diaktifkan</string>
+    <string name="devices_device_config_enabled_desc">Bereaksi terhadap perangkat ini saat terhubung</string>
     <string name="devices_device_config_section_timing_label">Waktu</string>
     <string name="devices_device_config_monitoring_duration_label">Durasi pengawasan</string>
     <string name="devices_device_config_monitoring_duration_desc">Durasi dalam milidetik, setelah penyesuaian telah dibuat, perubahan volume lebih lanjut akan dicegah.</string>
@@ -42,13 +49,19 @@
     <string name="devices_device_config_section_reaction_label">Lainnya</string>
     <string name="devices_device_config_launch_app_label">Luncurkan aplikasi</string>
     <string name="devices_device_config_launch_app_desc">Luncurkan aplikasi saat perangkat ini terhubung.</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d aplikasi dipilih</string>
+    <string name="devices_device_config_show_home_screen_label">Tampilkan layar beranda</string>
+    <string name="devices_device_config_show_home_screen_desc">Setelah semua event diproses untuk perangkat ini, coba tampilkan layar beranda. Ini mungkin tidak bekerja di semua versi Android.</string>
     <string name="devices_device_config_nudge_volume_label">Sentil volume</string>
     <string name="devices_device_config_nudge_volume_description">Turunkan kemudian naikkan volume sebesar satu langkah, meskipun volume yang diinginkan sudah teratur (menurut sistem).</string>
     <string name="devices_device_config_visible_adjustments_label">Penyesuaian terlihat</string>
+    <string name="devices_device_config_visible_adjustments_desc">Pilih pengaturan mana yang ditampilkan pada kartu perangkat</string>
     <string name="devices_device_config_keep_awake_label">Tetap terjaga</string>
     <string name="devices_device_config_keep_awake_desc">Jaga layar agak tetap aktif ketika perangkat ini tersambung.</string>
     <string name="devices_device_config_volume_observe_label">Pantau perubahan</string>
     <string name="devices_device_config_volume_observe_desc">Tetap aktif saat perangkat ini terhubung dan simpan perubahan volume yang tidak disebabkan oleh aplikasi ini.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Simpan volume saat putus</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Tangkap dan simpan level volume saat ini ketika perangkat ini memutus sambungan.</string>
     <string name="devices_device_config_volume_lock_label">Kunci volume</string>
     <string name="devices_device_config_volume_lock_desc">Perubahan volume yang tidak buat melalui aplikasi ini akan dikembalikan ketika perangkat ini tersambung.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Pembatas laju volume</string>
@@ -59,6 +72,12 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Waktu minimum antar penurunan volume: %d ms</string>
     <string name="devices_device_config_autoplay_label">Putar Otomatis</string>
     <string name="devices_device_config_autoplay_desc">Simulasikan penekanan tombol mulai dalam kendali jauh Bluetooth saat perangkat ini terhubung.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Jenis Tombol Autoplay</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Jenis tombol tersedia</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Tombol terpilih (berurutan)</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Jenis tombol</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Atur tombol mana yang dikirim dan dalam urutan apa</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Tidak ada tombol dikonfigurasi</string>
     <string name="devices_device_config_section_volumes_label">Volume</string>
     <string name="devices_device_config_section_volume_label">Volume</string>
     <string name="devices_device_config_alarm_volume_label">Volume alarm</string>
@@ -71,6 +90,23 @@
     <string name="devices_device_config_call_volume_desc">Kendalikan volume yang memengaruhi panggilan saat perangkat ini terhubung.</string>
     <string name="devices_device_config_ring_volume_label">Volume dering</string>
     <string name="devices_device_config_ring_volume_desc">Kendalikan volume yang memengaruhi nada dering Anda.</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Kontrol volume dering memerlukan akses kebijakan notifikasi</string>
+    <string name="devices_device_config_notification_policy_required_notification">Kontrol volume notifikasi memerlukan akses kebijakan notifikasi</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Kontrol Jangan Ganggu memerlukan akses kebijakan notifikasi</string>
+    <string name="devices_device_config_notification_policy_action">Berikan akses</string>
+    <string name="devices_device_config_dnd_on_connect_label">Mode Jangan Ganggu</string>
+    <string name="dnd_mode_dialog_title">Pilih mode DND</string>
+    <string name="dnd_mode_dont_change">Jangan ubah</string>
+    <string name="dnd_mode_off">Nonaktif</string>
+    <string name="dnd_mode_priority_only">Prioritas saja</string>
+    <string name="dnd_mode_alarms_only">Alarm saja</string>
+    <string name="dnd_mode_total_silence">Sunyi total</string>
+    <string name="devices_device_config_connection_alert_label">Peringatan koneksi</string>
+    <string name="connection_alert_dialog_title">Peringatan koneksi</string>
+    <string name="connection_alert_type_none">Tidak ada</string>
+    <string name="connection_alert_type_sound">Suara saja</string>
+    <string name="connection_alert_type_vibration">Getar saja</string>
+    <string name="connection_alert_type_both">Suara dan getar</string>
     <string name="devices_stream_music_label">Musik</string>
     <string name="devices_audio_stream_call_label">Panggilan</string>
     <string name="devices_audio_stream_ring_label">Dering</string>
@@ -83,11 +119,11 @@
     <string name="devices_last_connected_label">Terakhir terhubung: %s</string>
     <string name="devices_currently_connected_label">Sedang terhubung</string>
     <string name="devices_device_disabled_label">Perangkat dinonaktifkan</string>
-    <string name="devices_device_config_enabled_label">Diaktifkan</string>
-    <string name="devices_device_config_enabled_desc">Bereaksi terhadap perangkat ini saat terhubung</string>
     <string name="devices_no_volumes_configured">Belum ada volume yang dikonfigurasi untuk perangkat ini. Ketuk Konfigurasi untuk mengatur preferensi volume.</string>
+    <!-- Settings-->
     <string name="settings_label">Pengaturan</string>
     <string name="settings_category_other_label">Lainnya</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">Umum</string>
     <string name="general_settings_desc">Pengaturan umum yang mempengaruhi seluruh aplikasi.</string>
     <string name="settings_category_ui_label">Antarmuka pengguna</string>
@@ -102,8 +138,14 @@
     <string name="ui_theme_style_medium_contrast_label">Kontras Sedang</string>
     <string name="ui_theme_style_high_contrast_label">Kontras Tinggi</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
+    <string name="ui_theme_color_setting_label">Warna tema</string>
+    <string name="ui_theme_color_setting_explanation">Palet warna yang digunakan saat mengganti tema aplikasi.</string>
+    <string name="ui_theme_color_material_you_note">Warna ditentukan oleh wallpaper-mu saat menggunakan Material You.</string>
+    <string name="ui_theme_color_blue_label">Biru</string>
+    <string name="ui_theme_color_sunset_label">Senja</string>
     <string name="ui_language_override_label">Bahasa aplikasi</string>
     <string name="ui_language_override_desc">Pilih bahasa yang berbeda untuk BVM, terpisah dari bahasa default sistem kamu.</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">Perangkat</string>
     <string name="devices_settings_desc">Pengaturan yang mempengaruhi semua perangkat yang dikelola.</string>
     <string name="label_app_enabled">Aplikasi diaktifkan</string>
@@ -114,6 +156,7 @@
     <string name="description_volume_listener">Tetap aktif saat perangkat terhubung dan menyimpan perubahan volume yang tidak disebabkan oleh aplikasi.</string>
     <string name="label_boot_restore">Kembalikan saat dinyalakan</string>
     <string name="description_boot_restore">Kembalikan volume saat dinyalakan bila terdapat perangkat Bluetooth terhubung.</string>
+    <!-- Settings/Support-->
     <string name="settings_support_label">Dukungan</string>
     <string name="settings_support_description">Baca dokumentasi, laporkan masalah, ngobrol dengan orang lain atau rekam log debug.</string>
     <string name="settings_support_wiki_label">Dokumentasi</string>
@@ -124,9 +167,20 @@
     <string name="settings_support_debuglog_desc">Rekam semua yang dilakukan aplikasi ke dalam file teks yang bisa kamu bagikan.</string>
     <string name="settings_support_debuglog_recording_desc">Sedang merekam informasi debug. Ketuk untuk berhenti merekam.</string>
     <string name="settings_support_debuglog_path">Jalur log: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">Rekaman sangat singkat</string>
+    <string name="settings_support_debuglog_short_recording_msg">Itu adalah rekaman yang sangat singkat. Log debug adalah rekaman, bukan snapshot — reproduksi masalah saat perekaman aktif agar log berguna.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Lanjutkan rekaman</string>
     <string name="settings_support_debuglog_short_recording_stop">Hentikan tetap saja</string>
+    <string name="settings_support_debuglog_folder_label">Folder log debug</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="other">%1$d sesi menggunakan %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Tidak ada log debug yang tersimpan</string>
+    <string name="settings_support_debuglog_folder_delete_title">Hapus semua log debug?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Ini akan menghapus semua sesi log debug yang tersimpan secara permanen.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Tempat untuk nongkrong dan bertanya.</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Penghargaan</string>
     <string name="settings_acknowledgements_description">Kredit, lisensi, dan ucapan terima kasih khusus</string>
     <string name="settings_acks_translation_header">Terjemahan</string>
@@ -138,11 +192,14 @@
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Karena mendukung terjemahan proyek open-source</string>
     <string name="settings_licenses_label">Lisensi</string>
+    <string name="settings_translation_label">Alih Bahasa</string>
+    <string name="settings_translation_desc">Bantu terjemahkan aplikasi ini ke bahasa favorit Anda</string>
     <string name="settings_sponsor_development_title">Sponsor pengembangan</string>
     <string name="settings_sponsor_development_summary">Jadilah patron dan buat pengembangan berkelanjutan menjadi mungkin.</string>
     <string name="settings_privacy_policy_label">Kebijakan privasi</string>
     <string name="settings_privacy_policy_desc">Menangani data dengan bertanggung jawab.</string>
     <string name="changelog_label">Log perubahan</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">Notifikasi debug</string>
     <string name="debug_log_consent_title">Log debug</string>
     <string name="debug_log_consent_explanation">Fitur ini merekam semua yang dilakukan aplikasi ke dalam file yang bisa dibagikan. File yang dihasilkan berisi informasi sensitif (misalnya nama file dan aplikasi yang terinstal). Hanya bagikan dengan pihak terpercaya (misalnya developer yang menyelesaikan masalah).</string>
@@ -150,11 +207,65 @@
     <string name="debug_log_record_action">Rekam</string>
     <string name="debug_log_stop_action">Berhenti merekam</string>
     <string name="debug_log_screen_title">Perekam Log Debug</string>
+    <string name="debug_log_screen_subtitle">Tinjau dan bagikan log debug yang direkam</string>
+    <string name="debug_log_screen_sensitive_title">Informasi sensitif</string>
     <string name="debug_log_screen_sensitive_information_message">File yang dihasilkan berisi informasi sensitif (misalnya nama file dan aplikasi yang terinstal). Hanya bagikan dengan pihak terpercaya.</string>
     <string name="debug_log_screen_session_path_label">Jalur sesi debug</string>
     <string name="debug_log_screen_log_files_label">File Log</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="other">%1$d file siap (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">Buang</string>
+    <string name="debug_log_screen_keep_action">Simpan</string>
+    <string name="debug_log_compressing_label">Mengompres…</string>
     <string name="debug_log_file_label">File log yang direkam</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">Log sudah dikirim?</string>
+    <string name="support_debuglog_sent_message">Jika kamu sudah mengirim log debug, log tersebut bisa dihapus dari perangkat. Apakah kamu ingin menghapusnya?</string>
+    <string name="support_debuglog_session_delete_title">Hapus log debug?</string>
+    <string name="support_debuglog_session_delete_message">Sesi log debug ini akan dihapus secara permanen.</string>
+    <string name="support_debuglog_session_recording">Merekam…</string>
+    <string name="support_debuglog_session_compressing">Mengompres…</string>
+    <string name="support_debuglog_failed_empty_log">Log kosong</string>
+    <string name="support_debuglog_failed_missing_log">Log tidak ditemukan</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP rusak</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP gagal</string>
+    <string name="support_debuglog_clear_title">Hapus semua log debug?</string>
+    <string name="support_debuglog_clear_message">Ini akan menghapus semua sesi log debug yang tersimpan secara permanen.</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">Hubungi developer</string>
+    <string name="settings_support_contact_desc">Isi formulir untuk mengirim email kepada developer.</string>
+    <string name="contact_screen_title">Hubungi developer</string>
+    <string name="contact_category_bug_label">Laporan bug</string>
+    <string name="contact_category_feature_label">Permintaan fitur</string>
+    <string name="contact_category_question_label">Pertanyaan</string>
+    <string name="contact_description_label">Deskripsi</string>
+    <string name="contact_description_bug_hint">Jelaskan apa yang terjadi dan cara mereproduksi masalah.</string>
+    <string name="contact_description_feature_hint">Jelaskan fitur yang ingin kamu lihat.</string>
+    <string name="contact_description_question_hint">Jelaskan pertanyaanmu secara detail.</string>
+    <string name="contact_category_section_label">Kategori</string>
+    <string name="contact_debug_log_label">Log debug</string>
+    <string name="contact_debug_log_select_hint">Pilih log debug untuk dilampirkan</string>
+    <string name="contact_debug_log_picker_hint">Lampirkan log debug untuk membantu mendiagnosis masalah lebih cepat.</string>
+    <string name="contact_debug_log_picker_empty">Tidak ada log debug tersedia. Rekam satu terlebih dahulu.</string>
+    <string name="contact_expected_behavior_label">Perilaku yang diharapkan</string>
+    <string name="contact_expected_behavior_hint">Jelaskan apa yang kamu harapkan terjadi sebagai gantinya.</string>
+    <string name="support_contact_debuglog_zip_error">Gagal menyiapkan log debug untuk lampiran</string>
+    <string name="contact_send_action">Buka aplikasi email</string>
+    <plurals name="contact_word_count">
+        <item quantity="other">%1$d / %2$d kata</item>
+    </plurals>
+    <string name="contact_welcome_msg">Saya membaca setiap pesan sendiri dan berusaha sebaik mungkin untuk membalas, tapi karena saya bekerja sendiri, mungkin butuh sedikit waktu. Terima kasih atas kesabaranmu.</string>
+    <string name="contact_footer_msg">Pesanmu akan dikirim melalui email. Informasi perangkat dan pengaturan dilampirkan secara otomatis.</string>
+    <string name="contact_no_email_app_msg">Tidak ada aplikasi email yang ditemukan di perangkat ini.</string>
+    <string name="contact_attachment_missing_msg">File log debug sudah tidak ada</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">Log debug tersimpan</string>
+    <string name="settings_support_stored_logs_desc">%1$d sesi (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Tidak ada log debug tersimpan</string>
+    <string name="settings_support_stored_logs_delete_title">Hapus log tersimpan?</string>
+    <string name="settings_support_stored_logs_delete_msg">Ini akan menghapus semua %1$d sesi log debug yang tersimpan.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Log debug tersimpan dihapus</string>
     <string name="label_bug_reports">Pelaporan Masalah</string>
     <string name="description_bug_reports">Kirim permasalahan dan kerusakan secara otomatis.</string>
     <string name="label_add_device">Tambah perangkat</string>
@@ -221,6 +332,10 @@
     <string name="android13_notification_permission_description">Berikan izin aplikasi ini untuk mengirim notifikasi. Ini memungkinkan menampilkan notifikasi saat aplikasi ini aktif dan penyesuaian volume sedang dilakukan.</string>
     <string name="privacy_policy_label">Kebijakan privasi</string>
     <string name="managed_devices_empty_message">Tidak ada perangkat Bluetooth yang dikonfigurasi.\nKetuk tombol + untuk menambahkan perangkat pertamamu.</string>
+    <string name="label_pro_feature">Fitur premium</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="other">Versi gratis: %1$d dari %2$d perangkat</item>
+    </plurals>
     <string name="general_delete_action">Hapus</string>
     <string name="general_cancel_action">Batal</string>
     <string name="general_ok_action">OK</string>
@@ -232,43 +347,23 @@
     <string name="android10_applaunch_hint_message">Android 10 memerlukan izin khusus untuk meluncurkan aplikasi dari latar belakang. Berikan izin &quot;Tampilkan di atas aplikasi lain&quot;.</string>
     <string name="notification_permission_hint_title">Izin notifikasi</string>
     <string name="notification_permission_hint_message">Berikan izin notifikasi untuk melihat update status saat menyesuaikan volume.</string>
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Pembelian dibatalkan</string>
     <string name="error_iap_unavailable_message">Pembelian dalam aplikasi tidak tersedia</string>
     <string name="error_generic_message">Terjadi kesalahan. Silakan coba lagi.</string>
     <string name="error_iap_owned_message">Kamu sudah memiliki item ini</string>
     <string name="label_no_devices_title">Tidak Ada Perangkat</string>
     <string name="bluemusic_mascot_description">Ikon Aplikasi</string>
-    <string name="devices_app_selection_currently_selected">Sedang dipilih</string>
-    <string name="devices_app_selection_search_hint">Cari aplikasi…</string>
-    <string name="devices_app_selection_selected_count">%d aplikasi dipilih</string>
+    <!-- App Selection -->
     <string name="devices_app_selection_title">Pilih Aplikasi</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Jenis tombol tersedia</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Atur tombol mana yang dikirim dan dalam urutan apa</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Jenis tombol</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Tidak ada tombol dikonfigurasi</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Tombol terpilih (berurutan)</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Jenis Tombol Autoplay</string>
-    <string name="devices_device_config_launch_app_multiple_desc">%d aplikasi dipilih</string>
-    <string name="devices_device_config_notification_policy_action">Berikan akses</string>
-    <string name="devices_device_config_notification_policy_required_notification">Kontrol volume notifikasi memerlukan akses kebijakan notifikasi</string>
-    <string name="devices_device_config_notification_policy_required_ringtone">Kontrol volume dering memerlukan akses kebijakan notifikasi</string>
-    <string name="devices_device_config_visible_adjustments_desc">Pilih pengaturan mana yang ditampilkan pada kartu perangkat</string>
-    <string name="general_clear_action">Hapus</string>
+    <string name="devices_app_selection_search_hint">Cari aplikasi…</string>
+    <string name="devices_app_selection_currently_selected">Sedang dipilih</string>
+    <string name="devices_app_selection_selected_count">%d aplikasi dipilih</string>
     <string name="general_navigate_back_action">Navigasi kembali</string>
-    <string name="general_reset_action">Reset</string>
+    <string name="general_reset_action">Mengatur ulang</string>
+    <string name="general_clear_action">Hapus</string>
     <string name="general_save_action">Simpan</string>
-    <string name="devices_device_config_show_home_screen_label">Tampilkan layar beranda</string>
-    <string name="devices_device_config_show_home_screen_desc">Setelah semua event diproses untuk perangkat ini, coba tampilkan layar beranda. Ini mungkin tidak bekerja di semua versi Android.</string>
-    <string name="devices_device_config_volume_save_on_disconnect_label">Simpan volume saat putus</string>
-    <string name="devices_device_config_volume_save_on_disconnect_desc">Tangkap dan simpan level volume saat ini ketika perangkat ini memutus sambungan.</string>
-    <string name="devices_device_config_notification_policy_required_dnd">Kontrol Jangan Ganggu memerlukan akses kebijakan notifikasi</string>
-    <string name="devices_device_config_dnd_on_connect_label">Mode Jangan Ganggu</string>
-    <string name="dnd_mode_dialog_title">Pilih mode DND</string>
-    <string name="dnd_mode_dont_change">Jangan ubah</string>
-    <string name="dnd_mode_off">Nonaktif</string>
-    <string name="dnd_mode_priority_only">Prioritas saja</string>
-    <string name="dnd_mode_alarms_only">Alarm saja</string>
-    <string name="dnd_mode_total_silence">Sunyi total</string>
+    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Kunci</string>
     <string name="devices_indicator_awake">Terjaga</string>
     <string name="devices_indicator_nudge">Sentil</string>
@@ -279,87 +374,11 @@
     <string name="devices_indicator_auto">Otomatis</string>
     <string name="devices_indicator_home">Beranda</string>
     <string name="devices_indicator_dnd">DND</string>
-    <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">Peringatan koneksi</string>
-    <string name="connection_alert_dialog_title">Peringatan koneksi</string>
-    <string name="connection_alert_type_none">Tidak ada</string>
-    <string name="connection_alert_type_sound">Suara saja</string>
-    <string name="connection_alert_type_vibration">Getar saja</string>
-    <string name="connection_alert_type_both">Suara dan getar</string>
     <string name="devices_indicator_alert">Peringatan</string>
-
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Masukkan nilai antara %1$d dan %2$d</string>
-
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Kunci</string>
     <string name="devices_unlock_sliders_action">Buka kunci</string>
-
-    <string name="app_name_short">BVM</string>
-    <string name="settings_support_debuglog_short_recording_title">Rekaman sangat singkat</string>
-    <string name="settings_support_debuglog_short_recording_msg">Itu adalah rekaman yang sangat singkat. Log debug adalah rekaman, bukan snapshot — reproduksi masalah saat perekaman aktif agar log berguna.</string>
-    <string name="settings_support_debuglog_short_recording_continue">Lanjutkan rekaman</string>
-    <string name="settings_support_debuglog_folder_label">Folder log debug</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="other">%1$d sesi menggunakan %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Tidak ada log debug yang tersimpan</string>
-    <string name="settings_support_debuglog_folder_delete_title">Hapus semua log debug?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Ini akan menghapus semua sesi log debug yang tersimpan secara permanen.</string>
-    <string name="support_debuglog_sent_title">Log sudah dikirim?</string>
-    <string name="support_debuglog_sent_message">Jika kamu sudah mengirim log debug, log tersebut bisa dihapus dari perangkat. Apakah kamu ingin menghapusnya?</string>
-    <string name="support_debuglog_session_delete_title">Hapus log debug?</string>
-    <string name="support_debuglog_session_delete_message">Sesi log debug ini akan dihapus secara permanen.</string>
-    <string name="support_debuglog_session_recording">Merekam…</string>
-    <string name="support_debuglog_session_compressing">Mengompres…</string>
-    <string name="support_debuglog_failed_empty_log">Log kosong</string>
-    <string name="support_debuglog_failed_missing_log">Log tidak ditemukan</string>
-    <string name="support_debuglog_failed_corrupt_zip">ZIP rusak</string>
-    <string name="support_debuglog_failed_zip_failed">ZIP gagal</string>
-    <string name="support_debuglog_clear_title">Hapus semua log debug?</string>
-    <string name="support_debuglog_clear_message">Ini akan menghapus semua sesi log debug yang tersimpan secara permanen.</string>
-    <string name="settings_support_contact_label">Hubungi developer</string>
-    <string name="settings_support_contact_desc">Isi formulir untuk mengirim email kepada developer.</string>
-    <string name="contact_screen_title">Hubungi developer</string>
-    <string name="contact_category_bug_label">Laporan bug</string>
-    <string name="contact_category_feature_label">Permintaan fitur</string>
-    <string name="contact_category_question_label">Pertanyaan</string>
-    <string name="contact_description_label">Deskripsi</string>
-    <string name="contact_description_bug_hint">Jelaskan apa yang terjadi dan cara mereproduksi masalah.</string>
-    <string name="contact_description_feature_hint">Jelaskan fitur yang ingin kamu lihat.</string>
-    <string name="contact_description_question_hint">Jelaskan pertanyaanmu secara detail.</string>
-    <string name="contact_category_section_label">Kategori</string>
-    <string name="contact_debug_log_label">Log debug</string>
-    <string name="contact_debug_log_select_hint">Pilih log debug untuk dilampirkan</string>
-    <string name="contact_debug_log_picker_hint">Lampirkan log debug untuk membantu mendiagnosis masalah lebih cepat.</string>
-    <string name="contact_debug_log_picker_empty">Tidak ada log debug tersedia. Rekam satu terlebih dahulu.</string>
-    <string name="contact_expected_behavior_label">Perilaku yang diharapkan</string>
-    <string name="contact_expected_behavior_hint">Jelaskan apa yang kamu harapkan terjadi sebagai gantinya.</string>
-    <string name="support_contact_debuglog_zip_error">Gagal menyiapkan log debug untuk lampiran</string>
-    <string name="contact_send_action">Buka aplikasi email</string>
-    <plurals name="contact_word_count">
-        <item quantity="other">%1$d / %2$d kata</item>
-    </plurals>
-    <string name="contact_welcome_msg">Saya membaca setiap pesan sendiri dan berusaha sebaik mungkin untuk membalas, tapi karena saya bekerja sendiri, mungkin butuh sedikit waktu. Terima kasih atas kesabaranmu.</string>
-    <string name="contact_footer_msg">Pesanmu akan dikirim melalui email. Informasi perangkat dan pengaturan dilampirkan secara otomatis.</string>
-    <string name="contact_no_email_app_msg">Tidak ada aplikasi email yang ditemukan di perangkat ini.</string>
-    <string name="contact_attachment_missing_msg">File log debug sudah tidak ada</string>
-    <string name="settings_support_stored_logs_label">Log debug tersimpan</string>
-    <string name="settings_support_stored_logs_desc">%1$d sesi (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">Tidak ada log debug tersimpan</string>
-    <string name="settings_support_stored_logs_delete_title">Hapus log tersimpan?</string>
-    <string name="settings_support_stored_logs_delete_msg">Ini akan menghapus semua %1$d sesi log debug yang tersimpan.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Log debug tersimpan dihapus</string>
-    <string name="debug_log_screen_subtitle">Tinjau dan bagikan log debug yang direkam</string>
-    <string name="debug_log_screen_sensitive_title">Informasi sensitif</string>
-    <string name="debug_log_screen_keep_action">Simpan</string>
-    <string name="debug_log_compressing_label">Mengompres…</string>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="other">%1$d file siap (%2$s)</item>
-    </plurals>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="other">Versi gratis: %1$d dari %2$d perangkat</item>
-    </plurals>
-    <string name="label_pro_feature">Fitur premium</string>
 </resources>

@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
     <string name="general_error_label">ข้อผิดพลาด</string>
     <string name="general_error_no_compatible_app_found_msg">ไม่พบแอปที่เข้ากันได้สำหรับจัดการคำขอนี้</string>
     <string name="general_share_action">แชร์</string>
     <string name="general_back_action">กลับ</string>
     <string name="general_show_details_action">แสดงรายละเอียด</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">ยินดีต้อนรับสู่ BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager ช่วยให้คุณจัดการระดับเสียงของอุปกรณ์บลูทูธได้โดยอัตโนมัติ</string>
     <string name="onboarding_welcome_action">ไปเลย</string>
@@ -20,13 +23,11 @@
     <string name="onboarding_rewrite_message">ผมได้สร้าง Bluetooth Volume Manager ขึ้นใหม่ทั้งหมดเพราะการเปลี่ยนแปลงของ Android และข้อกำหนดของ Google เพื่อให้แอปทำงานได้อย่างน่าเชื่อถือต่อไป</string>
     <string name="onboarding_rewrite_features">การตั้งค่าอุปกรณ์บางตัวอาจถูกรีเซ็ตระหว่างการอัปเดต โปรดตรวจสอบการกำหนดค่าอุปกรณ์ของคุณ</string>
     <string name="onboarding_rewrite_action">ดำเนินการต่อ</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">ไม่พบอุปกรณ์ที่ยังไม่ได้จัดการ</string>
     <string name="discover_all_devices_managed_msg">อุปกรณ์ที่จับคู่ทั้งหมดถูกจัดการแล้ว! ต้องการอันใหม่มั้ย?</string>
     <string name="discover_pair_new_device_action">จับคู่อุปกรณ์ใหม่</string>
-    <string name="devices_app_selection_currently_selected">เลือกอยู่ในปัจจุบัน</string>
-    <string name="devices_app_selection_search_hint">ค้นหาแอป…</string>
-    <string name="devices_app_selection_selected_count">เลือกแอป %d แอป</string>
-    <string name="devices_app_selection_title">เลือกแอป</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">การตั้งค่าอุปกรณ์</string>
     <string name="devices_device_config_section_general_label">ทั่วไป</string>
     <string name="devices_device_config_remove_device_label">ลืมอุปกรณ์</string>
@@ -36,6 +37,8 @@
     <string name="devices_device_config_rename_device_label">เปลี่ยนชื่ออุปกรณ์</string>
     <string name="devices_device_config_rename_device_desc">เปลี่ยนชื่ออุปกรณ์นี้ในแอปนี้ และหากทำได้ก็ในระบบด้วย</string>
     <string name="devices_device_config_rename_device_action">เปลี่ยนชื่อ</string>
+    <string name="devices_device_config_enabled_label">เปิดใช้งาน</string>
+    <string name="devices_device_config_enabled_desc">ตอบสนองต่ออุปกรณ์นี้เมื่อเชื่อมต่อ</string>
     <string name="devices_device_config_section_timing_label">จังหวะเวลา</string>
     <string name="devices_device_config_monitoring_duration_label">ระยะเวลาการตรวจสอบ</string>
     <string name="devices_device_config_monitoring_duration_desc">ระยะเวลาในมิลลิวินาทีหลังจากที่การปรับเสร็จแล้ว ซึ่งการเปลี่ยนแปลงระดับเสียงต่อไปจะถูกบล็อก</string>
@@ -47,17 +50,18 @@
     <string name="devices_device_config_launch_app_label">เปิดแอป</string>
     <string name="devices_device_config_launch_app_desc">เปิดแอปเมื่อเชื่อมต่ออุปกรณ์นี้</string>
     <string name="devices_device_config_launch_app_multiple_desc">เลือก %d แอป</string>
+    <string name="devices_device_config_show_home_screen_label">แสดงหน้าจอหลัก</string>
+    <string name="devices_device_config_show_home_screen_desc">หลังจากประมวลผลกิจกรรมทั้งหมดสำหรับอุปกรณ์นี้แล้ว ลองแสดงหน้าจอหลัก อาจใช้ไม่ได้กับ Android บางเวอร์ชัน</string>
     <string name="devices_device_config_nudge_volume_label">กระตุ้นระดับเสียง</string>
     <string name="devices_device_config_nudge_volume_description">ลดแล้วเพิ่มระดับเสียงหนึ่งขั้น แม้ว่าระดับเสียงที่ต้องการจะถูกตั้งไว้แล้ว (ตามที่ระบบบอก)</string>
-    <string name="devices_device_config_notification_policy_action">อนุญาตการเข้าถึง</string>
-    <string name="devices_device_config_notification_policy_required_notification">การควบคุมระดับเสียงแจ้งเตือนต้องการการเข้าถึงนโยบายการแจ้งเตือน</string>
-    <string name="devices_device_config_notification_policy_required_ringtone">การควบคุมระดับเสียงเรียกเข้าต้องการการเข้าถึงนโยบายการแจ้งเตือน</string>
     <string name="devices_device_config_visible_adjustments_label">การปรับที่มองเห็นได้</string>
     <string name="devices_device_config_visible_adjustments_desc">แสดงหน้าต่างระดับเสียงของระบบในขณะที่แอปนี้ทำการปรับสำหรับอุปกรณ์นี้</string>
     <string name="devices_device_config_keep_awake_label">เปิดหน้าจอไว้</string>
     <string name="devices_device_config_keep_awake_desc">เปิดหน้าจอไว้ขณะที่อุปกรณ์นี้เชื่อมต่ออยู่</string>
     <string name="devices_device_config_volume_observe_label">สังเกตการเปลี่ยนแปลง</string>
     <string name="devices_device_config_volume_observe_desc">ยังคงทำงานอยู่ขณะที่อุปกรณ์นี้เชื่อมต่อและบันทึกการเปลี่ยนแปลงระดับเสียงที่ไม่ได้เกิดจากแอปนี้</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">บันทึกระดับเสียงเมื่อตัดการเชื่อมต่อ</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">บันทึกและจัดเก็บระดับเสียงปัจจุบันเมื่ออุปกรณ์นี้ตัดการเชื่อมต่อ</string>
     <string name="devices_device_config_volume_lock_label">ล็อกระดับเสียง</string>
     <string name="devices_device_config_volume_lock_desc">การเปลี่ยนแปลงระดับเสียงที่ไม่ได้ทำผ่านแอปนี้จะถูกย้อนกลับขณะที่อุปกรณ์นี้เชื่อมต่ออยู่</string>
     <string name="devices_device_config_volume_rate_limiter_label">ตัวจำกัดอัตราเสียง</string>
@@ -68,12 +72,12 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">เวลาขั้นต่ำระหว่างการลดระดับเสียง: %d ms</string>
     <string name="devices_device_config_autoplay_label">เล่นอัตโนมัติ</string>
     <string name="devices_device_config_autoplay_desc">จำลองการเล่นแบบกดบนรีโมตบลูทูธเมื่อเชื่อมต่ออุปกรณ์นี้</string>
-    <string name="devices_device_config_autoplay_keycodes_available">ประเภทปุ่มที่มีอยู่</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">กำหนดค่าปุ่มที่จะส่งและเรียงลำดับ</string>
-    <string name="devices_device_config_autoplay_keycodes_label">ประเภทปุ่ม</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">ไม่มีปุ่มที่กำหนดค่า</string>
-    <string name="devices_device_config_autoplay_keycodes_order">ปุ่มที่เลือก (ตามลำดับ)</string>
     <string name="devices_device_config_autoplay_keycodes_title">ประเภทปุ่มเล่นอัตโนมัติ</string>
+    <string name="devices_device_config_autoplay_keycodes_available">ประเภทปุ่มที่มีอยู่</string>
+    <string name="devices_device_config_autoplay_keycodes_order">ปุ่มที่เลือก (ตามลำดับ)</string>
+    <string name="devices_device_config_autoplay_keycodes_label">ประเภทปุ่ม</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">กำหนดค่าปุ่มที่จะส่งและเรียงลำดับ</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">ไม่มีปุ่มที่กำหนดค่า</string>
     <string name="devices_device_config_section_volumes_label">ระดับเสียง</string>
     <string name="devices_device_config_section_volume_label">ระดับเสียง</string>
     <string name="devices_device_config_alarm_volume_label">ระดับเสียงนาฬิกาปลุก</string>
@@ -86,6 +90,23 @@
     <string name="devices_device_config_call_volume_desc">ควบคุมระดับเสียงที่มีผลต่อการโทรเมื่อเชื่อมต่ออุปกรณ์นี้</string>
     <string name="devices_device_config_ring_volume_label">ระดับเสียงเรียกเข้า</string>
     <string name="devices_device_config_ring_volume_desc">ควบคุมระดับเสียงซึ่งมีผลต่อเสียงเรียกเข้า</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">การควบคุมระดับเสียงเรียกเข้าต้องการการเข้าถึงนโยบายการแจ้งเตือน</string>
+    <string name="devices_device_config_notification_policy_required_notification">การควบคุมระดับเสียงแจ้งเตือนต้องการการเข้าถึงนโยบายการแจ้งเตือน</string>
+    <string name="devices_device_config_notification_policy_required_dnd">การควบคุมห้ามรบกวนต้องการการเข้าถึงนโยบายการแจ้งเตือน</string>
+    <string name="devices_device_config_notification_policy_action">อนุญาตการเข้าถึง</string>
+    <string name="devices_device_config_dnd_on_connect_label">โหมดห้ามรบกวน</string>
+    <string name="dnd_mode_dialog_title">เลือกโหมดห้ามรบกวน</string>
+    <string name="dnd_mode_dont_change">ไม่เปลี่ยน</string>
+    <string name="dnd_mode_off">ปิด</string>
+    <string name="dnd_mode_priority_only">เฉพาะสิ่งสำคัญ</string>
+    <string name="dnd_mode_alarms_only">เฉพาะการแจ้งเตือน</string>
+    <string name="dnd_mode_total_silence">เงียบสนิท</string>
+    <string name="devices_device_config_connection_alert_label">การแจ้งเตือนการเชื่อมต่อ</string>
+    <string name="connection_alert_dialog_title">การแจ้งเตือนการเชื่อมต่อ</string>
+    <string name="connection_alert_type_none">ไม่มี</string>
+    <string name="connection_alert_type_sound">เสียงเท่านั้น</string>
+    <string name="connection_alert_type_vibration">สั่นเท่านั้น</string>
+    <string name="connection_alert_type_both">เสียงและสั่น</string>
     <string name="devices_stream_music_label">เพลง</string>
     <string name="devices_audio_stream_call_label">โทร</string>
     <string name="devices_audio_stream_ring_label">เสียงเรียกเข้า</string>
@@ -98,11 +119,11 @@
     <string name="devices_last_connected_label">เชื่อมต่อครั้งล่าสุด: %s</string>
     <string name="devices_currently_connected_label">เชื่อมต่ออยู่ในขณะนี้</string>
     <string name="devices_device_disabled_label">อุปกรณ์ถูกปิดใช้งาน</string>
-    <string name="devices_device_config_enabled_label">เปิดใช้งาน</string>
-    <string name="devices_device_config_enabled_desc">ตอบสนองต่ออุปกรณ์นี้เมื่อเชื่อมต่อ</string>
     <string name="devices_no_volumes_configured">ยังไม่ได้ตั้งค่าระดับเสียงสำหรับอุปกรณ์นี้ แตะที่ กำหนดค่า เพื่อตั้งค่าระดับเสียง</string>
+    <!-- Settings-->
     <string name="settings_label">การตั้งค่า</string>
     <string name="settings_category_other_label">อื่นๆ</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">ทั่วไป</string>
     <string name="general_settings_desc">การตั้งค่าทั่วไปที่มีผลต่อทั้งแอป</string>
     <string name="settings_category_ui_label">ส่วนติดต่อผู้ใช้</string>
@@ -116,9 +137,15 @@
     <string name="ui_theme_style_default_label">ค่าเริ่มต้น</string>
     <string name="ui_theme_style_medium_contrast_label">คอนทราสต์ปานกลาง</string>
     <string name="ui_theme_style_high_contrast_label">คอนทราสต์สูง</string>
-    <string name="ui_theme_style_materialyou_label">Material You</string>
+    <string name="ui_theme_style_materialyou_label">วัสดุ ของคุณ</string>
+    <string name="ui_theme_color_setting_label">สีธีม</string>
+    <string name="ui_theme_color_setting_explanation">ชุดสีที่ใช้สำหรับธีมของแอป</string>
+    <string name="ui_theme_color_material_you_note">สีถูกกำหนดโดยวอลเปเปอร์ของคุณเมื่อใช้ Material You</string>
+    <string name="ui_theme_color_blue_label">น้ำเงิน</string>
+    <string name="ui_theme_color_sunset_label">พระอาทิตย์ตก</string>
     <string name="ui_language_override_label">ภาษาแอป</string>
     <string name="ui_language_override_desc">เลือกภาษาที่ต่างกันสำหรับ BVM โดยไม่ขึ้นกับภาษาเริ่มต้นของระบบ</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">อุปกรณ์</string>
     <string name="devices_settings_desc">การตั้งค่าที่มีผลต่ออุปกรณ์ที่จัดการทั้งหมด</string>
     <string name="label_app_enabled">แอปที่เปิดใช้งาน</string>
@@ -129,6 +156,7 @@
     <string name="description_volume_listener">ยังคงใช้งานในขณะที่อุปกรณ์เชื่อมต่อ และบันทึกการเปลี่ยนแปลงระดับเสียงที่ไม่ได้เกิดจากการตรวจสอบนี้</string>
     <string name="label_boot_restore">เรียกคืนเมื่อบูต</string>
     <string name="description_boot_restore">คืนค่าระดับเสียงหลังจากบูต/รีบูตเครื่องถ้าเชื่อมต่ออุปกรณ์บลูทูธแล้ว</string>
+    <!-- Settings/Support-->
     <string name="settings_support_label">ช่วยเหลือ</string>
     <string name="settings_support_description">อ่านเอกสาร แจ้งปัญหา คุยกับคนอื่น หรือบันทึกล็อกดีบัก</string>
     <string name="settings_support_wiki_label">เอกสาร</string>
@@ -139,8 +167,20 @@
     <string name="settings_support_debuglog_desc">บันทึกทุกอย่างที่แอปทำลงในไฟล์ข้อความที่คุณสามารถแชร์ได้</string>
     <string name="settings_support_debuglog_recording_desc">กำลังบันทึกข้อมูลดีบักอยู่ แตะเพื่อหยุดบันทึก</string>
     <string name="settings_support_debuglog_path">ตำแหน่งล็อก: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">การบันทึกสั้นมาก</string>
+    <string name="settings_support_debuglog_short_recording_msg">นั่นเป็นการบันทึกที่สั้นมาก ล็อกดีบักเป็นการบันทึก ไม่ใช่ภาพนิ่ง — สร้างปัญหาขึ้นใหม่ขณะที่การบันทึกกำลังทำงานอยู่เพื่อให้ล็อกมีประโยชน์</string>
+    <string name="settings_support_debuglog_short_recording_continue">บันทึกต่อ</string>
+    <string name="settings_support_debuglog_short_recording_stop">หยุดต่อไป</string>
+    <string name="settings_support_debuglog_folder_label">โฟลเดอร์ล็อกดีบัก</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="other">%1$d เซสชั่นใช้ %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">ไม่มีล็อกดีบักที่เก็บไว้</string>
+    <string name="settings_support_debuglog_folder_delete_title">ลบล็อกดีบักทั้งหมด?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">การดำเนินการนี้จะลบเซสชั่นล็อกดีบักที่เก็บไว้ทั้งหมดอย่างถาวร</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">ที่สำหรับมาฮังเอาและถามคำถาม</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">กิตติกรรม</string>
     <string name="settings_acknowledgements_description">เครดิต ใบอนุญาต และขอขอบคุณพิเศษ</string>
     <string name="settings_acks_translation_header">การแปล</string>
@@ -152,11 +192,14 @@
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">สำหรับการสนับสนุนการแปลโครงการ open-source</string>
     <string name="settings_licenses_label">ใบอนุญาต</string>
+    <string name="settings_translation_label">การแปล:</string>
+    <string name="settings_translation_desc">ช่วยแปลแอปเป็นภาษาที่คุณชื่นชอบ</string>
     <string name="settings_sponsor_development_title">สนับสนุนการพัฒนา</string>
     <string name="settings_sponsor_development_summary">เป็นผู้สนับสนุนและทำให้การพัฒนาต่อเนื่องเป็นไปได้</string>
     <string name="settings_privacy_policy_label">นโยบายความเป็นส่วนตัว</string>
     <string name="settings_privacy_policy_desc">การจัดการข้อมูลอย่างมีความรับผิดชอบ</string>
     <string name="changelog_label">บันทึกการเปลี่ยนแปลง</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">การแจ้งเตือนดีบัก</string>
     <string name="debug_log_consent_title">ล็อกดีบัก</string>
     <string name="debug_log_consent_explanation">คุณสมบัตินี้บันทึกทุกอย่างที่แอปทำลงในไฟล์ที่สามารถแชร์ได้ ไฟล์ที่สร้างขึ้นมีข้อมูลอ่อนไหว (เช่น ชื่อไฟล์และแอปที่ติดตั้ง) แชร์เฉพาะกับบุคคลที่ไว้ใจได้เท่านั้น (เช่น นักพัฒนาที่กำลังแก้ไขปัญหา)</string>
@@ -164,11 +207,65 @@
     <string name="debug_log_record_action">บันทึก</string>
     <string name="debug_log_stop_action">หยุดบันทึก</string>
     <string name="debug_log_screen_title">เครื่องบันทึกล็อกดีบัก</string>
+    <string name="debug_log_screen_subtitle">ตรวจสอบและแชร์ล็อกดีบักที่บันทึกไว้</string>
+    <string name="debug_log_screen_sensitive_title">ข้อมูลที่ละเอียดอ่อน</string>
     <string name="debug_log_screen_sensitive_information_message">ไฟล์ที่สร้างขึ้นมีข้อมูลอ่อนไหว (เช่น ชื่อไฟล์และแอปที่ติดตั้ง) แชร์เฉพาะกับบุคคลที่ไว้ใจได้เท่านั้น</string>
     <string name="debug_log_screen_session_path_label">ตำแหน่งเซชั่นดีบัก</string>
     <string name="debug_log_screen_log_files_label">ไฟล์ล็อก</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="other">%1$d ไฟล์พร้อม (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">ยกเลิก</string>
+    <string name="debug_log_screen_keep_action">เก็บไว้</string>
+    <string name="debug_log_compressing_label">กำลังบีบอัด…</string>
     <string name="debug_log_file_label">ไฟล์ล็อกที่บันทึกไว้</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">ส่งล็อกแล้ว?</string>
+    <string name="support_debuglog_sent_message">หากคุณส่งล็อกดีบักแล้ว สามารถลบออกจากอุปกรณ์ได้ คุณต้องการลบออกหรือไม่?</string>
+    <string name="support_debuglog_session_delete_title">ลบล็อกดีบัก?</string>
+    <string name="support_debuglog_session_delete_message">เซสชั่นล็อกดีบักนี้จะถูกลบอย่างถาวร</string>
+    <string name="support_debuglog_session_recording">กำลังบันทึก…</string>
+    <string name="support_debuglog_session_compressing">กำลังบีบอัด…</string>
+    <string name="support_debuglog_failed_empty_log">ล็อกว่าง</string>
+    <string name="support_debuglog_failed_missing_log">ไม่พบล็อก</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP เสียหาย</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP ล้มเหลว</string>
+    <string name="support_debuglog_clear_title">ลบล็อกดีบักทั้งหมด?</string>
+    <string name="support_debuglog_clear_message">การดำเนินการนี้จะลบเซสชั่นล็อกดีบักที่เก็บไว้ทั้งหมดอย่างถาวร</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">ติดต่อนักพัฒนา</string>
+    <string name="settings_support_contact_desc">กรอกแบบฟอร์มเพื่อส่งอีเมลถึงนักพัฒนา</string>
+    <string name="contact_screen_title">ติดต่อนักพัฒนา</string>
+    <string name="contact_category_bug_label">รายงานข้อบกพร่อง</string>
+    <string name="contact_category_feature_label">ขอฟีเจอร์</string>
+    <string name="contact_category_question_label">คำถาม</string>
+    <string name="contact_description_label">คำอธิบาย</string>
+    <string name="contact_description_bug_hint">อธิบายสิ่งที่เกิดขึ้นและวิธีสร้างปัญหาซ้ำ</string>
+    <string name="contact_description_feature_hint">อธิบายฟีเจอร์ที่คุณต้องการเห็น</string>
+    <string name="contact_description_question_hint">อธิบายคำถามของคุณอย่างละเอียด</string>
+    <string name="contact_category_section_label">หมวดหมู่</string>
+    <string name="contact_debug_log_label">ล็อกดีบัก</string>
+    <string name="contact_debug_log_select_hint">เลือกล็อกดีบักเพื่อแนบ</string>
+    <string name="contact_debug_log_picker_hint">แนบล็อกดีบักเพื่อช่วยวินิจฉัยปัญหาได้เร็วขึ้น</string>
+    <string name="contact_debug_log_picker_empty">ไม่มีล็อกดีบักที่ใช้ได้ บันทึกก่อน</string>
+    <string name="contact_expected_behavior_label">พฤติกรรมที่คาดหวัง</string>
+    <string name="contact_expected_behavior_hint">อธิบายสิ่งที่คุณคาดหวังว่าจะเกิดขึ้นแทน</string>
+    <string name="support_contact_debuglog_zip_error">ไม่สามารถเตรียมล็อกดีบักเพื่อแนบได้</string>
+    <string name="contact_send_action">เปิดแอปอีเมล</string>
+    <plurals name="contact_word_count">
+        <item quantity="other">%1$d / %2$d คำ</item>
+    </plurals>
+    <string name="contact_welcome_msg">ผมอ่านทุกข้อความด้วยตัวเองและพยายามตอบกลับอย่างเต็มที่ แต่เนื่องจากทำงานคนเดียว อาจต้องใช้เวลาสักนิด ขอบคุณสำหรับความอดทน</string>
+    <string name="contact_footer_msg">ข้อความของคุณจะถูกส่งทางอีเมล ข้อมูลอุปกรณ์และการตั้งค่าจะถูกแนบโดยอัตโนมัติ</string>
+    <string name="contact_no_email_app_msg">ไม่พบแอปอีเมลในอุปกรณ์นี้</string>
+    <string name="contact_attachment_missing_msg">ไฟล์ล็อกดีบักไม่มีอยู่อีกต่อไป</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">ล็อกดีบักที่เก็บไว้</string>
+    <string name="settings_support_stored_logs_desc">%1$d เซสชั่น (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">ไม่มีล็อกดีบักที่เก็บไว้</string>
+    <string name="settings_support_stored_logs_delete_title">ลบล็อกที่เก็บไว้?</string>
+    <string name="settings_support_stored_logs_delete_msg">การดำเนินการนี้จะลบเซสชั่นล็อกดีบักที่เก็บไว้ทั้งหมด %1$d เซสชั่น</string>
+    <string name="settings_support_stored_logs_deleted_msg">ล็อกดีบักที่เก็บไว้ถูกลบแล้ว</string>
     <string name="label_bug_reports">แจ้งข้อผิดพลาด</string>
     <string name="description_bug_reports">ข้อผิดพลาดอัตโนมัติและรายงานความล้มเหลว</string>
     <string name="label_add_device">เพิ่มอุปกรณ์</string>
@@ -187,6 +284,8 @@
     <string name="description_premium_required_this_extra_option">ตัวเลือกนี้จำเป็นต้องมีรุ่นพรีเมี่ยมของ app นี้</string>
     <string name="description_premium_upgrade_explanation">รับเวอร์ชันพรีเมียมเพื่อเปิดใช้งานคุณลักษณะเพิ่มเติมและสนับสนุนการพัฒนา</string>
     <string name="label_premium_version_required">ต้องการรุ่นพรีเมี่ยม</string>
+    <string name="upgrade_feature_requires_pro">คุณสมบัตินี้ต้องใช้เวอร์ชันพรีเมี่ยม</string>
+    <string name="upgrade_prompt_upgrade_action">อัปเกรด</string>
     <string name="description_intro_purpose">แอปนี้ช่วยให้อุปกรณ์ Android ของคุณจดจำระดับเสียงของอุปกรณ์บลูทูธแต่ละตัว</string>
     <string name="description_intro_premium">หากคุณชอบแอปพลิเคชันนี้ให้พิจารณาการอัปเกรดเป็นเวอร์ชันพรีเมียม สนับสนุนการพัฒนาและเพิ่มคุณสมบัติพิเศษให้คุณ</string>
     <string name="description_intro_tap_the_button">เริ่มต้นด้วยการเพิ่มอุปกรณ์ตัวแรกของคุณ</string>
@@ -224,50 +323,6 @@
     <string name="description_waiting_for_devicex">รอ %s เพื่อทำการเชื่อมต่อ</string>
     <string name="action_undo">เลิกทำ</string>
     <string name="action_show">แสดง</string>
-    <string name="general_navigate_back_action">นำทางย้อนกลับ</string>
-    <string name="general_reset_action">รีเซ็ต</string>
-    <string name="general_clear_action">ล้าง</string>
-    <string name="general_save_action">บันทึก</string>
-    <string name="error_iap_cancelled_message">ยกเลิกการซื้อ</string>
-    <string name="error_iap_unavailable_message">ไม่สามารถซื้อในแอปได้</string>
-    <string name="error_generic_message">เกิดข้อผิดพลาด โปรดลองใหม่</string>
-    <string name="error_iap_owned_message">คุณมีสินค้านี้อยู่แล้ว</string>
-    <string name="label_no_devices_title">ไม่มีอุปกรณ์</string>
-    <string name="bluemusic_mascot_description">ไอคอนแอป</string>
-    <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">การแจ้งเตือนการเชื่อมต่อ</string>
-    <string name="connection_alert_dialog_title">การแจ้งเตือนการเชื่อมต่อ</string>
-    <string name="connection_alert_type_none">ไม่มี</string>
-    <string name="connection_alert_type_sound">เสียงเท่านั้น</string>
-    <string name="connection_alert_type_vibration">สั่นเท่านั้น</string>
-    <string name="connection_alert_type_both">เสียงและสั่น</string>
-    <string name="devices_indicator_alert">แจ้งเตือน</string>
-
-    <!-- Missing strings -->
-    <string name="devices_device_config_show_home_screen_label">แสดงหน้าจอหลัก</string>
-    <string name="devices_device_config_show_home_screen_desc">หลังจากประมวลผลกิจกรรมทั้งหมดสำหรับอุปกรณ์นี้แล้ว ลองแสดงหน้าจอหลัก อาจใช้ไม่ได้กับ Android บางเวอร์ชัน</string>
-    <string name="devices_device_config_volume_save_on_disconnect_label">บันทึกระดับเสียงเมื่อตัดการเชื่อมต่อ</string>
-    <string name="devices_device_config_volume_save_on_disconnect_desc">บันทึกและจัดเก็บระดับเสียงปัจจุบันเมื่ออุปกรณ์นี้ตัดการเชื่อมต่อ</string>
-    <string name="devices_device_config_dnd_on_connect_label">โหมดห้ามรบกวน</string>
-    <string name="dnd_mode_dialog_title">เลือกโหมดห้ามรบกวน</string>
-    <string name="dnd_mode_dont_change">ไม่เปลี่ยน</string>
-    <string name="dnd_mode_off">ปิด</string>
-    <string name="dnd_mode_priority_only">เฉพาะสิ่งสำคัญ</string>
-    <string name="dnd_mode_alarms_only">เฉพาะการแจ้งเตือน</string>
-    <string name="dnd_mode_total_silence">เงียบสนิท</string>
-    <string name="devices_device_config_notification_policy_required_dnd">การควบคุมห้ามรบกวนต้องการการเข้าถึงนโยบายการแจ้งเตือน</string>
-    <string name="devices_indicator_lock">ล็อก</string>
-    <string name="devices_indicator_awake">ตื่น</string>
-    <string name="devices_indicator_nudge">กระตุ้น</string>
-    <string name="devices_indicator_observe">สังเกต</string>
-    <string name="devices_indicator_disconnect">ตัดการเชื่อมต่อ</string>
-    <string name="devices_indicator_limit">จำกัด</string>
-    <string name="devices_indicator_launch">เปิด</string>
-    <string name="devices_indicator_auto">อัตโนมัติ</string>
-    <string name="devices_indicator_home">หน้าหลัก</string>
-    <string name="devices_indicator_dnd">ห้ามรบกวน</string>
-
-    <!-- Additional missing strings for th -->
     <string name="action_dismiss">ปิด</string>
     <string name="action_fix">แก้ไข</string>
     <string name="battery_optimizations_issue_description">การเพิ่มประสิทธิภาพแบตเตอรี่เปิดใช้งานสำหรับแอปนี้และอาจป้องกันไม่ให้รับกิจกรรม Bluetooth หากพบปัญหาให้พิจารณาปิดการเพิ่มประสิทธิภาพ</string>
@@ -277,6 +332,10 @@
     <string name="android13_notification_permission_description">อนุญาตให้แอปนี้โพสต์การแจ้งเตือน ซึ่งจะช่วยให้แสดงการแจ้งเตือนเมื่อแอปทำงานอยู่และกำลังปรับระดับเสียง</string>
     <string name="privacy_policy_label">นโยบายความเป็นส่วนตัว</string>
     <string name="managed_devices_empty_message">ไม่ได้ตั้งค่าอุปกรณ์บลูทูธ\nแตะปุ่ม + เพื่อเพิ่มอุปกรณ์แรกของคุณ</string>
+    <string name="label_pro_feature">ฟีเจอร์พรีเมี่ยม</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="other">เวอร์ชันฟรี: %1$d จาก %2$d อุปกรณ์</item>
+    </plurals>
     <string name="general_delete_action">ลบ</string>
     <string name="general_cancel_action">ยกเลิก</string>
     <string name="general_ok_action">ตกลง</string>
@@ -288,81 +347,38 @@
     <string name="android10_applaunch_hint_message">Android 10 ต้องการสิทธิ์พิเศษในการเปิดแอปจากพื้นหลัง อนุญาตสิทธิ์ &quot;แสดงเหนือแอปอื่น&quot;</string>
     <string name="notification_permission_hint_title">สิทธิ์การแจ้งเตือน</string>
     <string name="notification_permission_hint_message">อนุญาตสิทธิ์การแจ้งเตือนเพื่อดูการอัปเดตสถานะเมื่อปรับระดับเสียง</string>
-    <string name="upgrade_feature_requires_pro">คุณสมบัตินี้ต้องใช้เวอร์ชันพรีเมี่ยม</string>
-    <string name="upgrade_prompt_upgrade_action">อัปเกรด</string>
-    <string name="settings_support_debuglog_short_recording_stop">หยุดต่อไป</string>
+    <!-- IAP Error Messages -->
+    <string name="error_iap_cancelled_message">ยกเลิกการซื้อ</string>
+    <string name="error_iap_unavailable_message">ไม่สามารถซื้อในแอปได้</string>
+    <string name="error_generic_message">เกิดข้อผิดพลาด โปรดลองใหม่</string>
+    <string name="error_iap_owned_message">คุณมีสินค้านี้อยู่แล้ว</string>
+    <string name="label_no_devices_title">ไม่มีอุปกรณ์</string>
+    <string name="bluemusic_mascot_description">ไอคอนแอป</string>
+    <!-- App Selection -->
+    <string name="devices_app_selection_title">เลือกแอป</string>
+    <string name="devices_app_selection_search_hint">ค้นหาแอป…</string>
+    <string name="devices_app_selection_currently_selected">เลือกอยู่ในปัจจุบัน</string>
+    <string name="devices_app_selection_selected_count">เลือกแอป %d แอป</string>
+    <string name="general_navigate_back_action">นำทางย้อนกลับ</string>
+    <string name="general_reset_action">รีเซ็ต</string>
+    <string name="general_clear_action">ล้าง</string>
+    <string name="general_save_action">บันทึก</string>
+    <!-- Device option indicators -->
+    <string name="devices_indicator_lock">ล็อก</string>
+    <string name="devices_indicator_awake">ตื่น</string>
+    <string name="devices_indicator_nudge">กระตุ้น</string>
+    <string name="devices_indicator_observe">สังเกต</string>
+    <string name="devices_indicator_disconnect">ตัดการเชื่อมต่อ</string>
+    <string name="devices_indicator_limit">จำกัด</string>
+    <string name="devices_indicator_launch">เปิด</string>
+    <string name="devices_indicator_auto">อัตโนมัติ</string>
+    <string name="devices_indicator_home">หน้าหลัก</string>
+    <string name="devices_indicator_dnd">ห้ามรบกวน</string>
+    <string name="devices_indicator_alert">แจ้งเตือน</string>
+    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">ระดับเสียง (0–100)</string>
     <string name="devices_volume_input_error">ป้อนค่าระหว่าง %1$d และ %2$d</string>
+    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ล็อก</string>
     <string name="devices_unlock_sliders_action">ปลดล็อก</string>
-    <string name="ui_theme_color_setting_label">สีธีม</string>
-    <string name="ui_theme_color_setting_explanation">ชุดสีที่ใช้สำหรับธีมของแอป</string>
-    <string name="ui_theme_color_material_you_note">สีถูกกำหนดโดยวอลเปเปอร์ของคุณเมื่อใช้ Material You</string>
-    <string name="ui_theme_color_blue_label">น้ำเงิน</string>
-    <string name="ui_theme_color_sunset_label">พระอาทิตย์ตก</string>
-    <string name="settings_support_debuglog_short_recording_title">การบันทึกสั้นมาก</string>
-    <string name="settings_support_debuglog_short_recording_msg">นั่นเป็นการบันทึกที่สั้นมาก ล็อกดีบักเป็นการบันทึก ไม่ใช่ภาพนิ่ง — สร้างปัญหาขึ้นใหม่ขณะที่การบันทึกกำลังทำงานอยู่เพื่อให้ล็อกมีประโยชน์</string>
-    <string name="settings_support_debuglog_short_recording_continue">บันทึกต่อ</string>
-    <string name="settings_support_debuglog_folder_label">โฟลเดอร์ล็อกดีบัก</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="other">%1$d เซสชั่นใช้ %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">ไม่มีล็อกดีบักที่เก็บไว้</string>
-    <string name="settings_support_debuglog_folder_delete_title">ลบล็อกดีบักทั้งหมด?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">การดำเนินการนี้จะลบเซสชั่นล็อกดีบักที่เก็บไว้ทั้งหมดอย่างถาวร</string>
-    <string name="debug_log_screen_subtitle">ตรวจสอบและแชร์ล็อกดีบักที่บันทึกไว้</string>
-    <string name="debug_log_screen_sensitive_title">ข้อมูลที่ละเอียดอ่อน</string>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="other">%1$d ไฟล์พร้อม (%2$s)</item>
-    </plurals>
-    <string name="debug_log_screen_keep_action">เก็บไว้</string>
-    <string name="debug_log_compressing_label">กำลังบีบอัด…</string>
-    <string name="support_debuglog_sent_title">ส่งล็อกแล้ว?</string>
-    <string name="support_debuglog_sent_message">หากคุณส่งล็อกดีบักแล้ว สามารถลบออกจากอุปกรณ์ได้ คุณต้องการลบออกหรือไม่?</string>
-    <string name="support_debuglog_session_delete_title">ลบล็อกดีบัก?</string>
-    <string name="support_debuglog_session_delete_message">เซสชั่นล็อกดีบักนี้จะถูกลบอย่างถาวร</string>
-    <string name="support_debuglog_session_recording">กำลังบันทึก…</string>
-    <string name="support_debuglog_session_compressing">กำลังบีบอัด…</string>
-    <string name="support_debuglog_failed_empty_log">ล็อกว่าง</string>
-    <string name="support_debuglog_failed_missing_log">ไม่พบล็อก</string>
-    <string name="support_debuglog_failed_corrupt_zip">ZIP เสียหาย</string>
-    <string name="support_debuglog_failed_zip_failed">ZIP ล้มเหลว</string>
-    <string name="support_debuglog_clear_title">ลบล็อกดีบักทั้งหมด?</string>
-    <string name="support_debuglog_clear_message">การดำเนินการนี้จะลบเซสชั่นล็อกดีบักที่เก็บไว้ทั้งหมดอย่างถาวร</string>
-    <string name="settings_support_contact_label">ติดต่อนักพัฒนา</string>
-    <string name="settings_support_contact_desc">กรอกแบบฟอร์มเพื่อส่งอีเมลถึงนักพัฒนา</string>
-    <string name="contact_screen_title">ติดต่อนักพัฒนา</string>
-    <string name="contact_category_bug_label">รายงานข้อบกพร่อง</string>
-    <string name="contact_category_feature_label">ขอฟีเจอร์</string>
-    <string name="contact_category_question_label">คำถาม</string>
-    <string name="contact_description_label">คำอธิบาย</string>
-    <string name="contact_description_bug_hint">อธิบายสิ่งที่เกิดขึ้นและวิธีสร้างปัญหาซ้ำ</string>
-    <string name="contact_description_feature_hint">อธิบายฟีเจอร์ที่คุณต้องการเห็น</string>
-    <string name="contact_description_question_hint">อธิบายคำถามของคุณอย่างละเอียด</string>
-    <string name="contact_category_section_label">หมวดหมู่</string>
-    <string name="contact_debug_log_label">ล็อกดีบัก</string>
-    <string name="contact_debug_log_select_hint">เลือกล็อกดีบักเพื่อแนบ</string>
-    <string name="contact_debug_log_picker_hint">แนบล็อกดีบักเพื่อช่วยวินิจฉัยปัญหาได้เร็วขึ้น</string>
-    <string name="contact_debug_log_picker_empty">ไม่มีล็อกดีบักที่ใช้ได้ บันทึกก่อน</string>
-    <string name="contact_expected_behavior_label">พฤติกรรมที่คาดหวัง</string>
-    <string name="contact_expected_behavior_hint">อธิบายสิ่งที่คุณคาดหวังว่าจะเกิดขึ้นแทน</string>
-    <string name="support_contact_debuglog_zip_error">ไม่สามารถเตรียมล็อกดีบักเพื่อแนบได้</string>
-    <string name="contact_send_action">เปิดแอปอีเมล</string>
-    <plurals name="contact_word_count">
-        <item quantity="other">%1$d / %2$d คำ</item>
-    </plurals>
-    <string name="contact_welcome_msg">ผมอ่านทุกข้อความด้วยตัวเองและพยายามตอบกลับอย่างเต็มที่ แต่เนื่องจากทำงานคนเดียว อาจต้องใช้เวลาสักนิด ขอบคุณสำหรับความอดทน</string>
-    <string name="contact_footer_msg">ข้อความของคุณจะถูกส่งทางอีเมล ข้อมูลอุปกรณ์และการตั้งค่าจะถูกแนบโดยอัตโนมัติ</string>
-    <string name="contact_no_email_app_msg">ไม่พบแอปอีเมลในอุปกรณ์นี้</string>
-    <string name="contact_attachment_missing_msg">ไฟล์ล็อกดีบักไม่มีอยู่อีกต่อไป</string>
-    <string name="settings_support_stored_logs_label">ล็อกดีบักที่เก็บไว้</string>
-    <string name="settings_support_stored_logs_desc">%1$d เซสชั่น (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">ไม่มีล็อกดีบักที่เก็บไว้</string>
-    <string name="settings_support_stored_logs_delete_title">ลบล็อกที่เก็บไว้?</string>
-    <string name="settings_support_stored_logs_delete_msg">การดำเนินการนี้จะลบเซสชั่นล็อกดีบักที่เก็บไว้ทั้งหมด %1$d เซสชั่น</string>
-    <string name="settings_support_stored_logs_deleted_msg">ล็อกดีบักที่เก็บไว้ถูกลบแล้ว</string>
-    <string name="label_pro_feature">ฟีเจอร์พรีเมี่ยม</string>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="other">เวอร์ชันฟรี: %1$d จาก %2$d อุปกรณ์</item>
-    </plurals>
 </resources>

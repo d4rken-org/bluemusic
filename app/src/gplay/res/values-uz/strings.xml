@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">BVM Pro talab qilinadi</string>
+    <string name="upgrade_prompt_title">BVM Pro ga o\'tish</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro quvvatli foydalanuvchilar uchun yaxshiroq natijalar, ko\'proq funksiyalar va opsiyalar taklif qiladi.</string>
+    <string name="upgrade_prompt_upgrade_action">Yangilash</string>
+    <string name="upgrade_screen_title">BVM Pro ga o\'tish</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager reklamasiz va foydalanuvchi ma\'lumotlarini sotmaydi. Mening ishim siz tomonidan moliyalashtiriladi ❤️.</string>
+    <string name="upgrade_screen_why_title">Afzalliklar</string>
+    <string name="upgrade_screen_why_body">• Motivatsiyali dasturchi 🧙
+• Cheksiz qurilmalar ➡️➡️
+• Qo\'shimcha amallar ⚙️
+va boshqalar…</string>
+    <string name="upgrade_screen_how_title">Variantlar</string>
+    <string name="upgrade_screen_how_body">Siz bir martalik xarid va arzonroq yillik obuna o\'rtasida tanlov qilishingiz mumkin.\nObuna bepul 14 kunlik sinov davri bilan boshlanadi, shundan so\'ng sizdan yiliga bir marta to\'lov olinadi. Sinov va obunani istalgan vaqtda bekor qilish mumkin.\nXuddi shu xususiyatlar, faqat turli narx modellari.</string>
+    <string name="upgrade_screen_subscription_trial_action">Bepul 14 kunlik sinovni boshlang</string>
+    <string name="upgrade_screen_subscription_action">Obuna bo\'ling</string>
+    <string name="upgrade_screen_subscription_action_hint">Obuna yiliga %s turadi.</string>
+    <string name="upgrade_screen_iap_action">Bir martalik xarid</string>
+    <string name="upgrade_screen_iap_action_hint">Bir martalik xarid %s turadi.</string>
+    <string name="upgrade_screen_thanks_toast">Siz eng zo\'rsiz! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Xaridni tiklash</string>
+    <string name="upgrade_screen_restore_purchase_message">Sizning yanglanishingiz bir xil Google hisobidagi qurilmalarda amal qiladi.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Tan olinmagan yangilanishlar uchun muammolarni hal qilish maslahatlari:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinxronlashtiruvi vaqt olishi mumkin. Qayta ishga tushirish, Google Play keshini tozalash yoki shunchaki kutishni sinab ko\'ring.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Ko\'p hisoblar Google Play-ni chalkashtirib yuborishi mumkin. Boshqa hisoblardan chiqing yoki Google Play veb-sayti orqali o\'rnating, bu esa ma\'lum bir hisob bilan bog\'lanishni majburiy qiladi.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play mavjud emas</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play ga ulana olmadi. Google Play o\'rnatilgan va yangilangan? Google hisobingizda kirgansizmi? Google Play ilovasi keshini tozalab, qurilmangizni qayta yoqishga urinib ko\'ring.</string>
+    <string name="upgrades_no_purchases_found_check_account">Hech qanday xarid topilmadi. To\'g\'ri hisobdan foydalanyapsizmi?</string>
+</resources>

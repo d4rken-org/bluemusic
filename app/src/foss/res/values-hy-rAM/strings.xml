@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM FOSS</string>
+    <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_feature_requires_pro">Պահանջվում է BVM FOSS</string>
+    <string name="upgrade_prompt_title">Անցնել BVM FOSS-ին</string>
+    <string name="upgrade_prompt_body">Բացեք լրացուցիչ գործառույթներ և դարձեք հովանավոր՝ շարունակական զարգացումը աջակցելու համար:</string>
+    <string name="upgrade_prompt_upgrade_action">Թարմացնել</string>
+    <string name="upgrade_screen_title">Անցնել դևպի BVM FOSS</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager-ում գովազդներ չկան և ուժղատության տվյալներ չի վարարկում։ Միայն դզեր կողմից ե հնարավոր շարունակ զարգացումն։</string>
+    <string name="upgrade_screen_how_title">Ինչպես օգնել</string>
+    <string name="upgrade_screen_how_body">Դարձեք հովանավոր և հովանավորեք զարգացումը: Սեղմեք ստորև գտնվող կոճակը՝ բոլոր լրացուցիչ գործառույթները ակտիվացնելու և իմ GitHub Sponsors պրոֆիլը բացելու համար:</string>
+    <string name="upgrade_screen_why_title">Սա կախարդում է 🪄</string>
+    <string name="upgrade_screen_why_body">• Մոտիվացված մշակուշ 🧙
+• Անսահման սարքեր ➡️➡️
+• Դոդական գործություններ ⚙️
+և այլն ավելին։։։</string>
+    <string name="upgrade_screen_sponsor_action">Հովանավորել զարգացումը</string>
+    <string name="upgrade_screen_sponsor_action_hint">Այլընտրանքը գովազդներն են, վերլուծությունը և Google Play-ը 🙁</string>
+    <string name="upgrade_screen_thanks_toast">Շնորհակալություն բաց կոդով զարգացումը աջակցելու համար ❤️</string>
+    <string name="upgrade_screen_sponsor_too_fast">Արդեն հետ եք՞ Դզեր աժակցությունը կենդանի ե BVM ապրելում։</string>
+</resources>

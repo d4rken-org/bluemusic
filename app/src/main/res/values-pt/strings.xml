@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
     <string name="general_error_label">Erro</string>
     <string name="general_error_no_compatible_app_found_msg">Não foi encontrada nenhuma aplicação compatível para lidar com este pedido.</string>
     <string name="general_share_action">Partilhar</string>
     <string name="general_back_action">Voltar</string>
     <string name="general_show_details_action">Mostrar detalhes</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Bem-vindo ao BVM</string>
     <string name="onboarding_welcome_message">O Bluetooth Volume Manager permite-te gerir os volumes dos dispositivos Bluetooth automaticamente.</string>
     <string name="onboarding_welcome_action">Vamos começar</string>
@@ -20,13 +23,11 @@
     <string name="onboarding_rewrite_message">Reconstruí completamente o Bluetooth Volume Manager desde o início devido a mudanças no Android e requisitos da Google para garantir que a app continue a funcionar de forma confiável.</string>
     <string name="onboarding_rewrite_features">Algumas configurações dos dispositivos podem ter sido reposts durante esta atualização. Por favor, verifica as configurações dos teus dispositivos.</string>
     <string name="onboarding_rewrite_action">Continuar</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">Nenhum dispositivo não gerido encontrado</string>
     <string name="discover_all_devices_managed_msg">Todos os seus dispositivos emparelhados estão geridos! Precisa de um novo?</string>
     <string name="discover_pair_new_device_action">Emparelhar novo dispositivo</string>
-    <string name="devices_app_selection_currently_selected">Atualmente selecionado</string>
-    <string name="devices_app_selection_search_hint">Pesquisar aplicações…</string>
-    <string name="devices_app_selection_selected_count">%d aplicações selecionadas</string>
-    <string name="devices_app_selection_title">Selecionar Aplicações</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">Configuração do dispositivo</string>
     <string name="devices_device_config_section_general_label">Geral</string>
     <string name="devices_device_config_remove_device_label">Esquecer dispositivo</string>
@@ -36,6 +37,8 @@
     <string name="devices_device_config_rename_device_label">Renomear dispositivo</string>
     <string name="devices_device_config_rename_device_desc">Renomeia este dispositivo dentro desta aplicação e, se possível, dentro do sistema.</string>
     <string name="devices_device_config_rename_device_action">Renomear</string>
+    <string name="devices_device_config_enabled_label">Ativado</string>
+    <string name="devices_device_config_enabled_desc">Reagir a este dispositivo quando conectado</string>
     <string name="devices_device_config_section_timing_label">Temporização</string>
     <string name="devices_device_config_monitoring_duration_label">Duração da monitorização</string>
     <string name="devices_device_config_monitoring_duration_desc">Uma duração em milissegundos, após os ajustes terem sido feitos, durante a qual quaisquer alterações de volume adicionais serão bloqueadas.</string>
@@ -51,14 +54,8 @@
     <string name="devices_device_config_show_home_screen_desc">Após todos os eventos serem processados para este dispositivo, tenta mostrar o ecrã principal. Isto pode não funcionar em todas as versões do Android.</string>
     <string name="devices_device_config_nudge_volume_label">Empurrar volume</string>
     <string name="devices_device_config_nudge_volume_description">Baixa e depois sobe o volume num incremento, mesmo que o volume desejado já esteja definido (segundo o sistema).</string>
-    <string name="devices_device_config_notification_policy_action">Conceder acesso</string>
-    <string name="devices_device_config_notification_policy_required_notification">O controlo do volume de notificações requer acesso à política de notificações</string>
-    <string name="devices_device_config_notification_policy_required_ringtone">O controlo do volume de toque requer acesso à política de notificações</string>
-    <string name="devices_device_config_notification_policy_required_dnd">O controlo do Não Incomodar requer acesso à política de notificações</string>
-    <string name="devices_device_config_enabled_label">Ativado</string>
-    <string name="devices_device_config_enabled_desc">Reagir a este dispositivo quando conectado</string>
-    <string name="devices_device_config_visible_adjustments_desc">Mostra a janela de volume do sistema enquanto a aplicação estiver a fazer os ajustes para este dispositivo.</string>
     <string name="devices_device_config_visible_adjustments_label">Ajustes visíveis</string>
+    <string name="devices_device_config_visible_adjustments_desc">Mostra a janela de volume do sistema enquanto a aplicação estiver a fazer os ajustes para este dispositivo.</string>
     <string name="devices_device_config_keep_awake_label">Manter acordado</string>
     <string name="devices_device_config_keep_awake_desc">Mantém o ecrã ligado enquanto este dispositivo está conectado.</string>
     <string name="devices_device_config_volume_observe_label">Observar alterações</string>
@@ -75,12 +72,12 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Tempo mínimo entre diminuições de volume: %d ms</string>
     <string name="devices_device_config_autoplay_label">Reprodução automática</string>
     <string name="devices_device_config_autoplay_desc">Simular toque no Bluetooth remoto quando este dispositivo é conectado.</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Tipos de teclas disponíveis</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Configura que teclas enviar e em que ordem</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Tipos de teclas</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Nenhuma tecla configurada</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Teclas selecionadas (por ordem)</string>
     <string name="devices_device_config_autoplay_keycodes_title">Tipos de Teclas de Reprodução Automática</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Tipos de teclas disponíveis</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Teclas selecionadas (por ordem)</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Tipos de teclas</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Configura que teclas enviar e em que ordem</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Nenhuma tecla configurada</string>
     <string name="devices_device_config_section_volumes_label">Volumes de som</string>
     <string name="devices_device_config_section_volume_label">Volume de som</string>
     <string name="devices_device_config_alarm_volume_label">Volume de alarmes</string>
@@ -93,6 +90,23 @@
     <string name="devices_device_config_call_volume_desc">Controla o volume que afeta as chamadas quando este dispositivo é conectado.</string>
     <string name="devices_device_config_ring_volume_label">Volume de toques</string>
     <string name="devices_device_config_ring_volume_desc">Controla o volume que afeta o toque das chamadas.</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">O controlo do volume de toque requer acesso à política de notificações</string>
+    <string name="devices_device_config_notification_policy_required_notification">O controlo do volume de notificações requer acesso à política de notificações</string>
+    <string name="devices_device_config_notification_policy_required_dnd">O controlo do Não Incomodar requer acesso à política de notificações</string>
+    <string name="devices_device_config_notification_policy_action">Conceder acesso</string>
+    <string name="devices_device_config_dnd_on_connect_label">Modo Não Incomodar</string>
+    <string name="dnd_mode_dialog_title">Selecionar modo DND</string>
+    <string name="dnd_mode_dont_change">Não alterar</string>
+    <string name="dnd_mode_off">Desligado</string>
+    <string name="dnd_mode_priority_only">Apenas prioridade</string>
+    <string name="dnd_mode_alarms_only">Apenas alarmes</string>
+    <string name="dnd_mode_total_silence">Silêncio total</string>
+    <string name="devices_device_config_connection_alert_label">Alerta de ligação</string>
+    <string name="connection_alert_dialog_title">Alerta de ligação</string>
+    <string name="connection_alert_type_none">Nenhum</string>
+    <string name="connection_alert_type_sound">Apenas som</string>
+    <string name="connection_alert_type_vibration">Apenas vibração</string>
+    <string name="connection_alert_type_both">Som e vibração</string>
     <string name="devices_stream_music_label">Música</string>
     <string name="devices_audio_stream_call_label">Chamada</string>
     <string name="devices_audio_stream_ring_label">Toque</string>
@@ -106,8 +120,10 @@
     <string name="devices_currently_connected_label">Atualmente conectado</string>
     <string name="devices_device_disabled_label">Dispositivo desativado</string>
     <string name="devices_no_volumes_configured">Nenhum volume configurado para este dispositivo. Toca em Configurar para definir preferências de volume.</string>
+    <!-- Settings-->
     <string name="settings_label">Definições</string>
     <string name="settings_category_other_label">Outros</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">Geral</string>
     <string name="general_settings_desc">Ajustes gerais que afetam toda a aplicação.</string>
     <string name="settings_category_ui_label">Interface do utilizador</string>
@@ -121,9 +137,15 @@
     <string name="ui_theme_style_default_label">Predefinido</string>
     <string name="ui_theme_style_medium_contrast_label">Contraste Médio</string>
     <string name="ui_theme_style_high_contrast_label">Alto Contraste</string>
-    <string name="ui_theme_style_materialyou_label">Material You</string>
+    <string name="ui_theme_style_materialyou_label">Material seu</string>
+    <string name="ui_theme_color_setting_label">Cor do tema</string>
+    <string name="ui_theme_color_setting_explanation">A paleta de cores usada ao tematizar a aplicação.</string>
+    <string name="ui_theme_color_material_you_note">A cor é definida pelo teu papel de parede ao usar Material You.</string>
+    <string name="ui_theme_color_blue_label">Azul</string>
+    <string name="ui_theme_color_sunset_label">Pôr do sol</string>
     <string name="ui_language_override_label">Idioma da aplicação</string>
     <string name="ui_language_override_desc">Selecione um idioma diferente para o BVM, independente do idioma padrão do seu sistema.</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">Dispositivos</string>
     <string name="devices_settings_desc">Definições que afetam todos os dispositivos geridos.</string>
     <string name="label_app_enabled">Aplicação ativa</string>
@@ -134,6 +156,7 @@
     <string name="description_volume_listener">Manter atividade enquanto um dispositivo é conectado e guardar alterações de volume não criadas por esta aplicação.</string>
     <string name="label_boot_restore">Restaurar ao iniciar</string>
     <string name="description_boot_restore">Restaura o volume depois de iniciar/reiniciar o dispositivo se o dispositivo Bluetooth estiver conectado.</string>
+    <!-- Settings/Support-->
     <string name="settings_support_label">Suporte</string>
     <string name="settings_support_description">Lê a documentação, reporta problemas, conversa com outros ou grava registos de depuração.</string>
     <string name="settings_support_wiki_label">Documentação</string>
@@ -144,8 +167,21 @@
     <string name="settings_support_debuglog_desc">Grava tudo o que a aplicação está a fazer num ficheiro de texto que podes partilhar.</string>
     <string name="settings_support_debuglog_recording_desc">A gravar informações de depuração. Toca para parar a gravação.</string>
     <string name="settings_support_debuglog_path">Caminho do registo: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">Gravação muito curta</string>
+    <string name="settings_support_debuglog_short_recording_msg">Foi uma gravação muito curta. Os logs de depuração são gravações, não instantâneos — reproduz o problema enquanto a gravação está ativa para que o log seja útil.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Continuar a gravar</string>
+    <string name="settings_support_debuglog_short_recording_stop">Parar mesmo assim</string>
+    <string name="settings_support_debuglog_folder_label">Pasta de logs de depuração</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sessão a usar %2$s</item>
+        <item quantity="other">%1$d sessões a usar %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Nenhum log de depuração guardado</string>
+    <string name="settings_support_debuglog_folder_delete_title">Eliminar todos os logs de depuração?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Isto irá eliminar permanentemente todas as sessões de logs de depuração guardadas.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Um sítio para conversar e fazer perguntas.</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Agradecimentos</string>
     <string name="settings_acknowledgements_description">Créditos, licenças e agradecimentos especiais</string>
     <string name="settings_acks_translation_header">Tradução</string>
@@ -157,11 +193,14 @@
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Por apoiar a tradução de projetos de código aberto</string>
     <string name="settings_licenses_label">Licenças</string>
+    <string name="settings_translation_label">Tradução</string>
+    <string name="settings_translation_desc">Ajuda a traduzir a app para o teu idioma favorito</string>
     <string name="settings_sponsor_development_title">Patrocinar desenvolvimento</string>
     <string name="settings_sponsor_development_summary">Torna-te um patrono e torna possível o desenvolvimento contínuo.</string>
     <string name="settings_privacy_policy_label">Política de privacidade</string>
     <string name="settings_privacy_policy_desc">Tratamento responsável de dados.</string>
     <string name="changelog_label">Registo de alterações</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">Notificações de depuração</string>
     <string name="debug_log_consent_title">Registo de depuração</string>
     <string name="debug_log_consent_explanation">Esta funcionalidade grava tudo o que a aplicação está a fazer num ficheiro partilhável. O ficheiro gerado contém informações sensíveis (ex: nomes de ficheiros e aplicações instaladas). Partilha apenas com partes de confiança (ex: um programador a resolver um problema).</string>
@@ -169,11 +208,67 @@
     <string name="debug_log_record_action">Gravar</string>
     <string name="debug_log_stop_action">Parar gravação</string>
     <string name="debug_log_screen_title">Gravador de Registo de Depuração</string>
+    <string name="debug_log_screen_subtitle">Revê e partilha o teu log de depuração gravado</string>
+    <string name="debug_log_screen_sensitive_title">Informação sensível</string>
     <string name="debug_log_screen_sensitive_information_message">O ficheiro gerado contém informações sensíveis (ex: nomes de ficheiros e aplicações instaladas). Partilha apenas com partes de confiança.</string>
     <string name="debug_log_screen_session_path_label">Caminho da sessão de depuração</string>
     <string name="debug_log_screen_log_files_label">Ficheiros de Registo</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d ficheiro pronto (%2$s)</item>
+        <item quantity="other">%1$d ficheiros prontos (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">Descartar</string>
+    <string name="debug_log_screen_keep_action">Guardar</string>
+    <string name="debug_log_compressing_label">A comprimir…</string>
     <string name="debug_log_file_label">Ficheiro de registo gravado</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">Log enviado?</string>
+    <string name="support_debuglog_sent_message">Se enviaste o log de depuração, pode ser eliminado do dispositivo. Queres removê-lo?</string>
+    <string name="support_debuglog_session_delete_title">Eliminar log de depuração?</string>
+    <string name="support_debuglog_session_delete_message">Esta sessão de log de depuração será eliminada permanentemente.</string>
+    <string name="support_debuglog_session_recording">A gravar…</string>
+    <string name="support_debuglog_session_compressing">A comprimir…</string>
+    <string name="support_debuglog_failed_empty_log">Log vazio</string>
+    <string name="support_debuglog_failed_missing_log">Log em falta</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP corrompido</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP falhou</string>
+    <string name="support_debuglog_clear_title">Eliminar todos os logs de depuração?</string>
+    <string name="support_debuglog_clear_message">Isto irá eliminar permanentemente todas as sessões de logs de depuração guardadas.</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">Contactar o programador</string>
+    <string name="settings_support_contact_desc">Preenche um formulário para enviar um e-mail ao programador.</string>
+    <string name="contact_screen_title">Contactar o programador</string>
+    <string name="contact_category_bug_label">Relatório de erro</string>
+    <string name="contact_category_feature_label">Pedido de funcionalidade</string>
+    <string name="contact_category_question_label">Pergunta</string>
+    <string name="contact_description_label">Descrição</string>
+    <string name="contact_description_bug_hint">Descreve o que aconteceu e como reproduzir o problema.</string>
+    <string name="contact_description_feature_hint">Descreve a funcionalidade que gostarias de ver.</string>
+    <string name="contact_description_question_hint">Descreve a tua pergunta em detalhe.</string>
+    <string name="contact_category_section_label">Categoria</string>
+    <string name="contact_debug_log_label">Log de depuração</string>
+    <string name="contact_debug_log_select_hint">Seleciona um log de depuração para anexar</string>
+    <string name="contact_debug_log_picker_hint">Anexa um log de depuração para ajudar a diagnosticar o problema mais rapidamente.</string>
+    <string name="contact_debug_log_picker_empty">Nenhum log de depuração disponível. Grava um primeiro.</string>
+    <string name="contact_expected_behavior_label">Comportamento esperado</string>
+    <string name="contact_expected_behavior_hint">Descreve o que esperavas que acontecesse em vez disso.</string>
+    <string name="support_contact_debuglog_zip_error">Falha ao preparar o log de depuração para anexo</string>
+    <string name="contact_send_action">Abrir aplicação de e-mail</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d palavra</item>
+        <item quantity="other">%1$d / %2$d palavras</item>
+    </plurals>
+    <string name="contact_welcome_msg">Leio cada mensagem pessoalmente e faço o meu melhor para responder, mas como trabalho nisto sozinho, pode demorar um pouco. Obrigado pela tua paciência.</string>
+    <string name="contact_footer_msg">A tua mensagem será enviada por e-mail. As informações do dispositivo e configuração são anexadas automaticamente.</string>
+    <string name="contact_no_email_app_msg">Não foi encontrada nenhuma aplicação de e-mail neste dispositivo.</string>
+    <string name="contact_attachment_missing_msg">O ficheiro de log de depuração já não existe</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">Logs de depuração guardados</string>
+    <string name="settings_support_stored_logs_desc">%1$d sessões (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Nenhum log de depuração guardado</string>
+    <string name="settings_support_stored_logs_delete_title">Eliminar logs guardados?</string>
+    <string name="settings_support_stored_logs_delete_msg">Isto irá eliminar todas as %1$d sessões de logs de depuração guardadas.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Logs de depuração guardados eliminados</string>
     <string name="label_bug_reports">Relatórios de erros</string>
     <string name="description_bug_reports">Reporte automático de erros e problemas.</string>
     <string name="label_add_device">Adicionar dispositivo</string>
@@ -240,14 +335,15 @@
     <string name="android13_notification_permission_description">Concede a esta aplicação permissão para publicar notificações. Isto permite mostrar uma notificação quando esta aplicação está ativa e estão a ser feitos ajustes de volume.</string>
     <string name="privacy_policy_label">Política de privacidade</string>
     <string name="managed_devices_empty_message">Nenhum dispositivo Bluetooth configurado.\nToca no botão + para adicionar o teu primeiro dispositivo.</string>
+    <string name="label_pro_feature">Funcionalidade premium</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Versão gratuita: %1$d de %2$d dispositivo</item>
+        <item quantity="other">Versão gratuita: %1$d de %2$d dispositivos</item>
+    </plurals>
     <string name="general_delete_action">Eliminar</string>
     <string name="general_cancel_action">Cancelar</string>
     <string name="general_ok_action">OK</string>
-    <string name="general_clear_action">Limpar</string>
     <string name="general_configure_action">Configurar</string>
-    <string name="general_navigate_back_action">Navegar para trás</string>
-    <string name="general_reset_action">Repor</string>
-    <string name="general_save_action">Guardar</string>
     <string name="battery_optimization_hint_title">Otimização da bateria</string>
     <string name="battery_optimization_hint_message">As otimizações da bateria estão ativas e podem impedir o funcionamento adequado. Considera desativá-las.</string>
     <string name="battery_optimization_fix_action">Desativar otimizações</string>
@@ -255,22 +351,22 @@
     <string name="android10_applaunch_hint_message">O Android 10 requer permissão especial para lançar aplicações em segundo plano. Concede a permissão &quot;Mostrar sobre outras aplicações&quot;.</string>
     <string name="notification_permission_hint_title">Permissão de notificação</string>
     <string name="notification_permission_hint_message">Concede permissão de notificação para veres atualizações de estado ao ajustar volumes.</string>
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Compra cancelada</string>
     <string name="error_iap_unavailable_message">Compras na aplicação não estão disponíveis</string>
     <string name="error_generic_message">Ocorreu um erro. Por favor, tenta novamente.</string>
     <string name="error_iap_owned_message">Já possuis este item</string>
     <string name="label_no_devices_title">Nenhum Dispositivo</string>
     <string name="bluemusic_mascot_description">Ícone da Aplicação</string>
-
-    <!-- Do Not Disturb mode -->
-    <string name="devices_device_config_dnd_on_connect_label">Modo Não Incomodar</string>
-    <string name="dnd_mode_dialog_title">Selecionar modo DND</string>
-    <string name="dnd_mode_dont_change">Não alterar</string>
-    <string name="dnd_mode_off">Desligado</string>
-    <string name="dnd_mode_priority_only">Apenas prioridade</string>
-    <string name="dnd_mode_alarms_only">Apenas alarmes</string>
-    <string name="dnd_mode_total_silence">Silêncio total</string>
-
+    <!-- App Selection -->
+    <string name="devices_app_selection_title">Selecionar Aplicações</string>
+    <string name="devices_app_selection_search_hint">Pesquisar aplicações…</string>
+    <string name="devices_app_selection_currently_selected">Atualmente selecionado</string>
+    <string name="devices_app_selection_selected_count">%d aplicações selecionadas</string>
+    <string name="general_navigate_back_action">Navegar para trás</string>
+    <string name="general_reset_action">Repor</string>
+    <string name="general_clear_action">Limpar</string>
+    <string name="general_save_action">Guardar</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Bloqueio</string>
     <string name="devices_indicator_awake">Acordar</string>
@@ -282,99 +378,11 @@
     <string name="devices_indicator_auto">Automático</string>
     <string name="devices_indicator_home">Início</string>
     <string name="devices_indicator_dnd">NI</string>
-
-    <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">Alerta de ligação</string>
-    <string name="connection_alert_dialog_title">Alerta de ligação</string>
-    <string name="connection_alert_type_none">Nenhum</string>
-    <string name="connection_alert_type_sound">Apenas som</string>
-    <string name="connection_alert_type_vibration">Apenas vibração</string>
-    <string name="connection_alert_type_both">Som e vibração</string>
     <string name="devices_indicator_alert">Alerta</string>
-
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Introduz um valor entre %1$d e %2$d</string>
-
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Bloquear</string>
     <string name="devices_unlock_sliders_action">Desbloquear</string>
-
-    <!-- Debug log short recording warning -->
-    <string name="settings_support_debuglog_short_recording_stop">Parar mesmo assim</string>
-
-    <string name="settings_support_debuglog_short_recording_title">Gravação muito curta</string>
-    <string name="settings_support_debuglog_short_recording_msg">Foi uma gravação muito curta. Os logs de depuração são gravações, não instantâneos — reproduz o problema enquanto a gravação está ativa para que o log seja útil.</string>
-    <string name="settings_support_debuglog_short_recording_continue">Continuar a gravar</string>
-    <string name="settings_support_debuglog_folder_label">Pasta de logs de depuração</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d sessão a usar %2$s</item>
-        <item quantity="other">%1$d sessões a usar %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Nenhum log de depuração guardado</string>
-    <string name="settings_support_debuglog_folder_delete_title">Eliminar todos os logs de depuração?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Isto irá eliminar permanentemente todas as sessões de logs de depuração guardadas.</string>
-    <string name="debug_log_screen_subtitle">Revê e partilha o teu log de depuração gravado</string>
-    <string name="debug_log_screen_sensitive_title">Informação sensível</string>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="one">%1$d ficheiro pronto (%2$s)</item>
-        <item quantity="other">%1$d ficheiros prontos (%2$s)</item>
-    </plurals>
-    <string name="debug_log_screen_keep_action">Guardar</string>
-    <string name="debug_log_compressing_label">A comprimir…</string>
-    <string name="support_debuglog_sent_title">Log enviado?</string>
-    <string name="support_debuglog_sent_message">Se enviaste o log de depuração, pode ser eliminado do dispositivo. Queres removê-lo?</string>
-    <string name="support_debuglog_session_delete_title">Eliminar log de depuração?</string>
-    <string name="support_debuglog_session_delete_message">Esta sessão de log de depuração será eliminada permanentemente.</string>
-    <string name="support_debuglog_session_recording">A gravar…</string>
-    <string name="support_debuglog_session_compressing">A comprimir…</string>
-    <string name="support_debuglog_failed_empty_log">Log vazio</string>
-    <string name="support_debuglog_failed_missing_log">Log em falta</string>
-    <string name="support_debuglog_failed_corrupt_zip">ZIP corrompido</string>
-    <string name="support_debuglog_failed_zip_failed">ZIP falhou</string>
-    <string name="support_debuglog_clear_title">Eliminar todos os logs de depuração?</string>
-    <string name="support_debuglog_clear_message">Isto irá eliminar permanentemente todas as sessões de logs de depuração guardadas.</string>
-    <string name="settings_support_contact_label">Contactar o programador</string>
-    <string name="settings_support_contact_desc">Preenche um formulário para enviar um e-mail ao programador.</string>
-    <string name="contact_screen_title">Contactar o programador</string>
-    <string name="contact_category_bug_label">Relatório de erro</string>
-    <string name="contact_category_feature_label">Pedido de funcionalidade</string>
-    <string name="contact_category_question_label">Pergunta</string>
-    <string name="contact_description_label">Descrição</string>
-    <string name="contact_description_bug_hint">Descreve o que aconteceu e como reproduzir o problema.</string>
-    <string name="contact_description_feature_hint">Descreve a funcionalidade que gostarias de ver.</string>
-    <string name="contact_description_question_hint">Descreve a tua pergunta em detalhe.</string>
-    <string name="contact_category_section_label">Categoria</string>
-    <string name="contact_debug_log_label">Log de depuração</string>
-    <string name="contact_debug_log_select_hint">Seleciona um log de depuração para anexar</string>
-    <string name="contact_debug_log_picker_hint">Anexa um log de depuração para ajudar a diagnosticar o problema mais rapidamente.</string>
-    <string name="contact_debug_log_picker_empty">Nenhum log de depuração disponível. Grava um primeiro.</string>
-    <string name="contact_expected_behavior_label">Comportamento esperado</string>
-    <string name="contact_expected_behavior_hint">Descreve o que esperavas que acontecesse em vez disso.</string>
-    <string name="support_contact_debuglog_zip_error">Falha ao preparar o log de depuração para anexo</string>
-    <string name="contact_send_action">Abrir aplicação de e-mail</string>
-    <plurals name="contact_word_count">
-        <item quantity="one">%1$d / %2$d palavra</item>
-        <item quantity="other">%1$d / %2$d palavras</item>
-    </plurals>
-    <string name="contact_welcome_msg">Leio cada mensagem pessoalmente e faço o meu melhor para responder, mas como trabalho nisto sozinho, pode demorar um pouco. Obrigado pela tua paciência.</string>
-    <string name="contact_footer_msg">A tua mensagem será enviada por e-mail. As informações do dispositivo e configuração são anexadas automaticamente.</string>
-    <string name="contact_no_email_app_msg">Não foi encontrada nenhuma aplicação de e-mail neste dispositivo.</string>
-    <string name="contact_attachment_missing_msg">O ficheiro de log de depuração já não existe</string>
-    <string name="settings_support_stored_logs_label">Logs de depuração guardados</string>
-    <string name="settings_support_stored_logs_desc">%1$d sessões (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">Nenhum log de depuração guardado</string>
-    <string name="settings_support_stored_logs_delete_title">Eliminar logs guardados?</string>
-    <string name="settings_support_stored_logs_delete_msg">Isto irá eliminar todas as %1$d sessões de logs de depuração guardadas.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Logs de depuração guardados eliminados</string>
-    <string name="label_pro_feature">Funcionalidade premium</string>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">Versão gratuita: %1$d de %2$d dispositivo</item>
-        <item quantity="other">Versão gratuita: %1$d de %2$d dispositivos</item>
-    </plurals>
-    <string name="ui_theme_color_setting_label">Cor do tema</string>
-    <string name="ui_theme_color_setting_explanation">A paleta de cores usada ao tematizar a aplicação.</string>
-    <string name="ui_theme_color_material_you_note">A cor é definida pelo teu papel de parede ao usar Material You.</string>
-    <string name="ui_theme_color_blue_label">Azul</string>
-    <string name="ui_theme_color_sunset_label">Pôr do sol</string>
 </resources>

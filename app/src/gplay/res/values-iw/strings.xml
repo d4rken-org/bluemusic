@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">פרו</string>
+    <string name="upgrade_feature_requires_pro">דורש BVM Pro</string>
+    <string name="upgrade_prompt_title">שדרג ל-BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro מציע תוצאות טובות יותר, יותר תכונות ואפשרויות למשתמשים מתקדמים.</string>
+    <string name="upgrade_prompt_upgrade_action">שדרוג</string>
+    <string name="upgrade_screen_title">שדרג ל-BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager ללא מודעות ואינה מוכרת נתוני משתמשים. העבודה שלי ממומנת על ידך ❤️.</string>
+    <string name="upgrade_screen_why_title">יתרונות</string>
+    <string name="upgrade_screen_why_body">• מפתח מוטיבציה גבוהה 🧙
+• מכשירים ללא הגבלה ➡️➡️
+• פעולות נוספות ⚙️
+ועוד…</string>
+    <string name="upgrade_screen_how_title">הגדרות</string>
+    <string name="upgrade_screen_how_body">אתה יכול לבחור בין רכישה חד פעמית לבין מנוי שנתי זול יותר.\nהמינוי מתחיל בניסיון חינם של 14 יום, ולאחר מכן תחויב פעם בשנה. גרסת ניסיון ומנוי ניתנים לביטול בכל עת.\nאותן תכונות, רק דגמי תמחור שונים.</string>
+    <string name="upgrade_screen_subscription_trial_action">התחילו 14 ימי ניסיון</string>
+    <string name="upgrade_screen_subscription_action">הירשם כמנוי</string>
+    <string name="upgrade_screen_subscription_action_hint">המנוי עולה %s לשנה.</string>
+    <string name="upgrade_screen_iap_action">רכישה חד-פעמית</string>
+    <string name="upgrade_screen_iap_action_hint">רכישה חד-פעמית עולה %s.</string>
+    <string name="upgrade_screen_thanks_toast">אתה הכי טוב! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">שחזור רכישה</string>
+    <string name="upgrade_screen_restore_purchase_message">השדרוג שלך תקף בכל המכשירים המחוברים לחשבון Google זה.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">עצות לפתרון בעיות עבור שדרוגים לא מזוהים:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">הסנכרון של גוגל פליי עשוי לקחת זמן. נסה לאתחל מחדש, לנקות את המטמון של גוגל פליי או פשוט המתן.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">חשבונות מרובים יכולים לבלבל את Google Play. התנתק מחשבונות אחרים או התקן דרך אתר Google Play, מה שמאלץ שיוכים עם חשבון ספציפי.</string>
+    <string name="upgrades_gplay_unavailable_error_title">החנות של גוגל לא זמינה כרגע</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager לא מצליחה להתחבר ל-Google Play. האם Google Play מותקן ומעודכן? האם חשבון Google שלך מחובר? נסה לנקות את המטמון של אפליקציית Google Play ולהפעיל מחדש את המכשיר.</string>
+    <string name="upgrades_no_purchases_found_check_account">לא נמצאו רכישות. האם אתה משתמש בחשבון הנכון?</string>
+</resources>

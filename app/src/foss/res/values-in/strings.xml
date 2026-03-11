@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM FOSS</string>
+    <string name="app_name_upgrade_postfix">Perangkat Lunak Gratis dan Sumber Terbuka</string>
+    <string name="upgrade_feature_requires_pro">Membutuhkan BVM FOSS</string>
+    <string name="upgrade_prompt_title">Upgrade ke BVM FOSS</string>
+    <string name="upgrade_prompt_body">Buka fitur-fitur tambahan dan jadilah penyokong yang mendukung pengembangan yang berkelanjutan!</string>
+    <string name="upgrade_prompt_upgrade_action">Tingkatkan</string>
+    <string name="upgrade_screen_title">Upgrade ke BVM FOSS</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager tidak menampilkan iklan dan tidak menjual data pengguna. Pengembangan yang berkelanjutan hanya bisa dilakukan berkat Anda.</string>
+    <string name="upgrade_screen_how_title">Cara membantu</string>
+    <string name="upgrade_screen_how_body">Jadilah pelindung dan sponsor pengembangan! Ketuk tombol di bawah untuk mengaktifkan semua fitur tambahan dan membuka profil GitHub Sponsors saya.</string>
+    <string name="upgrade_screen_why_title">Ini akan membuka 🪄</string>
+    <string name="upgrade_screen_why_body">• Developer yang bersemangat 🧙\n• Perangkat tak terbatas ➡️➡️\n• Aksi tambahan ⚙️\ndan lainnya…</string>
+    <string name="upgrade_screen_sponsor_action">Pengembangan sponsor</string>
+    <string name="upgrade_screen_sponsor_action_hint">Alternatifnya adalah iklan, analitik, dan Google Play 🙁</string>
+    <string name="upgrade_screen_thanks_toast">Terima kasih karena telah mendukung pengembangan sumber terbuka ❤️</string>
+    <string name="upgrade_screen_sponsor_too_fast">Sudah balik? Dukunganmu membuat BVM tetap hidup!</string>
+</resources>
