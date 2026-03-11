@@ -1,22 +1,22 @@
-El gestor de volum Bluetooth pot reaccionar als dispositius Bluetooth que es connecten o desconnecten.
-Permet que l'Android recordi els nivells de volum de diferents dispositius Bluetooth.
+**Bluetooth Volume Manager** recorda els nivells de volum per a cadascun dels vostres dispositius Bluetooth i reacciona quan es connecten o desconnecten.
 
-Funcions disponibles:
+**Característiques:**
+* Configura el volum de música, trucades, to de trucada i notificacions per dispositiu  
+* Envia automàticament ordres multimèdia com Reproduir o Següent  
+* Obre aplicacions en connectar-se  
+* Manté la pantalla activa  
+* Bloqueja els nivells de volum  
+* Restaura el volum en desconnectar-se  
 
-* Ajustar el volum de música, trucada, to de trucada i notificació.
-* Enviar comandes multimedia, com ara «Play» o «Next».
-* Obrir una aplicació específica.
-* Mantenir la pantalla encesa.
-* Evitar que es canviï el volum.
-* Restaurar els nivells de volum anteriors després de la desconnexió.
+Sense anuncis, sense seguiment. Codi obert.  
+Alguns extres requereixen una actualització de pagament per donar suport al desenvolupament.
 
-Aquesta aplicació no pot «augmentar» ni canviar el volum si no podeu canviar-lo a través dels botons de volum del dispositiu manualment.
+**Nota:** Aquesta aplicació no pot augmentar el volum ni superar els límits de volum del sistema.
 
-Explicació dels permisos:
-
-* «Internet» per als informes d'errors.
-* «Bluetooth» per funcionar amb dispositius Bluetooth.
-* «Modifica la configuració d'àudio» per canviar el volum.
-* «Inici completat» per restablir els nivells de volum després de reiniciar.
-* «WAKE_LOCK» per solucionar un error als dispositius Samsung i mantenir la pantalla encesa si cal.
-* 'SYSTEM_ALERT_WINDOW' per iniciar aplicacions quan es connecta un dispositiu Bluetooth (només a Android 10).
+**Permisos:**
+* **Internet** – per a informes d’errors opcionals  
+* **Bluetooth** – per detectar connexions de dispositius  
+* **Configuració d’àudio** – per canviar el volum  
+* **Inici** – per restaurar la configuració després de reiniciar  
+* **Bloqueig de despertar** – per mantenir la pantalla activa o solucionar errors de Samsung  
+* **Finestra d’alerta del sistema** – per obrir aplicacions automàticament (només Android 10)

@@ -1,1 +1,1 @@
-Manager Volum Bluetooth
+Bluetooth Volume Manager

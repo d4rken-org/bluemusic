@@ -1,0 +1,1 @@
+Configuración de volumen individual de voz y música para dispositivos Bluetooth.

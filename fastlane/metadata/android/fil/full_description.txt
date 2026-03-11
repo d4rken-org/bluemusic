@@ -1,11 +1,22 @@
-Ang app na ito ay nabibigay-daan upang maalala ng Android ang volume ng iba't ibang mga Bluetooth device.
-Ang pangmusika at pangtawag na volume ay pwedeng baguhin sa bawat device.
-Pwedeng paisa-isang baguhin ang tiyempo at konpigurasyon para sa bawat Bluetooth device.
+**Ang Bluetooth Volume Manager** ay naaalala ang mga antas ng volume para sa bawat isa sa iyong mga Bluetooth device at nagre-react kapag sila ay kumokonekta o nagdiskonekta.
 
-Paliwanag sa mga permiso:
+**Mga Feature:**
+* Itakda ang musika, tawag, ringtone, at notification volumes bawat device  
+* Awtomatikong magpadala ng mga media command tulad ng Play o Next  
+* Mag-launch ng mga app sa pagkonekta  
+* Panatilihing gising ang screen  
+* I-lock ang mga antas ng volume  
+* I-restore ang volume pagkatapos ng disconnect  
 
-* 'Internet' para sa mga report tungkol sa bug.
-* 'Bluetooth' ay gagana sa mga Bluetooth device.
-* 'Baguhin ang mga audio setting' para mabago ang volume.
-* 'Natapos na ang boot' para maibalik ang volume pagkatapos ng mga reboot.
-* 'WAKE_LOCK' upang maayos ang bug sa mga Samsung na device na nangangailangan ng pahintulot na ito upang makaiwas sa problema.
+Walang ads, walang tracking. Open-source.  
+Ang ilang mga extras ay nangangailangan ng bayad na upgrade para suportahan ang development.
+
+**Tandaan:** Hindi kayang palakasin ng app na ito ang volume o lampasan ang mga limitasyon ng system volume.
+
+**Mga Pahintulot:**
+* **Internet** – para sa mga opsyonal na bug report  
+* **Bluetooth** – para ma-detect ang mga koneksyon ng device  
+* **Mga setting ng audio** – para baguhin ang volume  
+* **Boot** – para i-restore ang mga setting pagkatapos ng reboot  
+* **Wake lock** – para panatilihing gising ang screen o ayusin ang mga bug ng Samsung  
+* **System alert window** – para awtomatikong mag-launch ng mga app (Android 10 lamang)

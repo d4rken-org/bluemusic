@@ -1,0 +1,22 @@
+**Bluetooth Volume Manager** har bir Bluetooth qurilmangiz uchun ovoz darajasini eslab qoladi va ular ulanganida yoki uzilganida munosabat bildiradi.
+
+**Funksiyalar:**
+* Har qurilma uchun musiqa, qo'ng'iroq, jiringlash va bildirishnoma ovozlarini o'rnatish  
+* O'ynash yoki Keyingisi kabi media buyruqlarini avtomatik yuborish  
+* Ulanganda ilovalarni ishga tushirish  
+* Ekranni uyg'oq saqlash  
+* Ovoz darajalarini qulflash  
+* Uzilgandan keyin ovozni tiklash  
+
+Reklama yo'q, kuzatuv yo'q. Ochiq kodli.  
+Ba'zi qo'shimcha funksiyalar rivojlanishni qo'llab-quvvatlash uchun pullik yangilashni talab qiladi.
+
+**Eslatma:** Bu ilova ovozni kuchaytirolmaydi yoki tizim ovoz chegaralarini o'zgartirolmaydi.
+
+**Ruxsatlar:**
+* **Internet** – ixtiyoriy xato hisobotlari uchun  
+* **Bluetooth** – qurilma ulanishlarini aniqlash uchun  
+* **Audio sozlamalari** – ovozni o'zgartirish uchun  
+* **Yuklash** – qayta yuklashdan keyin sozlamalarni tiklash uchun  
+* **Uyg'oq qulflar** – ekranni uyg'oq saqlash yoki Samsung xatolarini tuzatish uchun  
+* **Tizim ogohlantirish oynasi** – ilovalarni avtomatik ishga tushirish uchun (faqat Android 10)

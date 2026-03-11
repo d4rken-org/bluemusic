@@ -1,0 +1,22 @@
+**Bluetooth Volume Manager** man hljóðstyrksstig fyrir hvert Bluetooth tæki þitt og bregst við þgar þau tengjast eða aftengja.
+
+**Eiginleikar:**
+* Stilltu tónlist, símtöl, hringitón og tilkynningahljóðstyrka í hverju tæki  
+* Senda sjálfkrafa miðlunarskipanir eins og Spila eða Næsta  
+* Ræsa forrit við tengingu  
+* Halda skjánum vakandi  
+* Læsa hljóðstyrksstigum  
+* Endurheimta hljóðstyrk eftir aftengingu  
+
+Engar auglýsingar, engin rakning. Opinn hugbúnaður.  
+Sum aukaatriði krefjast greidds uppfærslu til að styðja þróun.
+
+**Athugas.:** Þetta forrit getur ekki aukið hljóðstyrk eða hnekkt takmarkana á hljóðstyrk kerfisins.
+
+**Leyfi:**
+* **Internet** – fyrir valfrælsar villutilkynningar  
+* **Bluetooth** – til að greina tengingar tækja  
+* **Hljóðstillingar** – til að breyta hljóðstyrk  
+* **Ræsing** – til að endurheimta stillingar eftir endurræsingu  
+* **Vakandi lás** – til að halda skjánum vakandi eða laga Samsung villur  
+* **Kerfisgluggi** – til að ræsa forrit sjálfkrafa (einungis Android 10)

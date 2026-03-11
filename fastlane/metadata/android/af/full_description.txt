@@ -1,11 +1,22 @@
-Hierdie program laat Android toe om die volume instellings van verskeie Bluetooth toestelle te onthou.
-Beide musiek en oproep volumes kan gestel word vir elke toestel.
-Die tydsberekening en konfigurasie vir elke Bluetooth-toestel kan individueel aangepas word.
+**Bluetooth Volume Manager** onthou volumevlakke vir elk van jou Bluetooth-toestelle en reageer wanneer hulle koppel of ontkoppel.
 
-Toestemmings verduidelik:
+**Funksies:**
+* Stel musiek-, oproepe-, luitoon- en kennisgewingvolumes per toestel in  
+* Stuur media-opdragte soos Speel of Volgende outomaties  
+* Lanseer toepassings by koppeling  
+* Hou skerm wakker  
+* Sluit volumevlakke  
+* Herstel volume na ontkoppeling  
 
-* 'Internet' vir probleem verslae.
-* 'Bluetooth' werk met Bluetooth-toestelle.
-* ' Modifiseer oudio instellings' om volume verander.
-* 'Laai/Boot voltooi' om volume te herstel na herlaai/"reboot".
-* 'WAKE_LOCK' om 'n probleem op te los op sekere Samsung toestelle waar hierdie toestemming nodig is om 'n fout te verhoed.
+Geen advertensies, geen opsporing. Oopbron.  
+Sommige ekstra's vereis 'n betaalde opgradeer om ontwikkeling te ondersteun.
+
+**Let wel:** Hierdie toepassing kan nie volume verhoog of stelselvolumegrense oorskry nie.
+
+**Toestemmings:**
+* **Internet** – vir opsionele foutverslae  
+* **Bluetooth** – om toestelverbindings op te spoor  
+* **Klankinstellings** – om volume te verander  
+* **Opstart** – om instellings na herlaai te herstel  
+* **Waakslot** – om skerm wakker te hou of Samsung-foute reg te stel  
+* **Stelselwaarskuwingsvenster** – om toepassings outomaties te lanseer (slegs Android 10)

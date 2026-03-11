@@ -1,22 +1,22 @@
-**Upravljalnik glasnosti Bluetooth** si zapomni ravni glasnosti za vsako od vaših Bluetooth naprav in se odzove, ko se povežejo ali odklopijo.
+**Bluetooth Volume Manager** si zapomni ravni glasnosti za vsako vašo napravo Bluetooth in reagira, ko se povežejo ali odklčijo.
 
 **Funkcije:**
-* Nastavite glasnost glasbe, klicev, zvonjenja in obvestil za posamezno napravo  
-* Samodejno pošljite ukaze za medije, kot sta Predvajaj ali Naslednja  
-* Zaženite aplikacije ob povezavi  
-* Ohranite zaslon priž­gan  
+* Nastavite glasnost glasbe, klicev, zvonjenja in obvestil za vsako napravo  
+* Samodejno pošljite medijske ukaze, kot sta Predvajaj ali Naprej  
+* Zagon aplikacij ob priklopu  
+* Ohranite zaslon aktiven  
 * Zaklenite ravni glasnosti  
-* Obnovite glasnost po odklopi  
+* Obnovite glasnost po odklopu  
 
 Brez oglasov, brez sledenja. Odprtokodna.  
-Nekateri dodatki zahtevajo plačano nadgradnjo za podporo razvoju.
+Nekateri dodatki zahtevajo plačljivo nadgradnjo za podporo razvoju.
 
-**Opomba:** Ta aplikacija ne more povečati glasnosti ali preseči sistemskih omejitev glasnosti.
+**Opomba:** Ta aplikacija ne more povečati glasnosti prek sistemskih omejitev.
 
 **Dovoljenja:**
-* **Internet** – za izbirna poročila o napakah  
-* **Bluetooth** – za zaznavanje povezav naprav  
-* **Zvočne nastavitve** – za spreminjanje glasnosti  
+* **Internet** – za neobvezna poročila o napakah  
+* **Bluetooth** – za zaznavanje povezav z napravami  
+* **Nastavitve zvoka** – za spremembo glasnosti  
 * **Zagon** – za obnovitev nastavitev po ponovnem zagonu  
-* **Zaklepanje budnosti** – za ohranjanje prižganega zaslona ali odpravljanje napak Samsung  
-* **Sistemsko opozorilno okno** – za samodejni zagon aplikacij (samo Android 10)
+* **Wake lock** – da zaslon ostane aktiven ali odpravi napake Samsung  
+* **Sistemsko opozorilo** – za samodejni zagon aplikacij (samo Android 10)

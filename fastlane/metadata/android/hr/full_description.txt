@@ -1,22 +1,22 @@
-Bluetooth Volume Manager može reagirati na Bluetooth uređaje koji se povezuju ili isključuju.
-Omogućuje Androidu da pamti razinu glasnoće različitih Bluetooth uređaja.
+**Bluetooth Volume Manager** pamti razine glasnoće za svaki od vaših Bluetooth uređaja i reagira kada se spoje ili odspoje.
 
-Dostupne značajke:
+**Značajke:**
+* Postavljanje glasnoće glazbe, poziva, melodije zvona i obavijesti po uređaju  
+* Automatsko slanje medijskih naredbi poput Reprodukcija ili Sljedeća  
+* Pokretanje aplikacija pri spajanju  
+* Zadržavanje zaslona aktivnim  
+* Zaključavanje razina glasnoće  
+* Vraćanje glasnoće nakon odspajanja  
 
-* Podešavanje glazbe, poziva, melodija zvona i glasnoće obavijesti.
-* Slanje medijskih naredbi "Reproduciraj" ili "Dalje".
-* Otvaranje određene aplikacije.
-* Održavanje zaslona budnim.
-* Sprječavanje promjene glasnoće.
-* Vraćanje prethodnih razina glasnoće nakon isključivanja.
+Bez oglasa, bez praćenja. Otvoreni kod.  
+Neki dodaci zahtijevaju plaćenu nadogradnju za podršku razvoju.
 
-Ova aplikacija ne može "pojačati" glasnoću niti promijeniti glasnoću ako je ne možete ručno promijeniti pomoću gumba za glasnoću na uređaju.
+**Napomena:** Ova aplikacija ne može pojačati glasnoću niti nadjačati ograničenja sistemske glasnoće.
 
-Objašnjenje dopuštenja:
-
-* 'Internet' za prijavljivanje pogrešaka.
-* 'Bluetooth' za rad s Bluetooth uređajima.
-* 'Modify audio settings' za promjenu glasnoće.
-* 'Boot completed' za vraćanje glasnoće nakon ponovnog pokretanja.
-* 'WAKE_LOCK' kako biste riješili pogrešku na Samsung uređajima i po potrebi držali zaslon budnim.
-* 'SYSTEM_ALERT_WINDOW' za pokretanje aplikacija kada se poveže Bluetooth uređaj (samo na Androidu 10).
+**Dozvole:**
+* **Internet** – za opcionalna izvješća o greškama  
+* **Bluetooth** – za otkrivanje veza uređaja  
+* **Postavke zvuka** – za promjenu glasnoće  
+* **Pokretanje** – za vraćanje postavki nakon ponovnog pokretanja  
+* **Zaključavanje buđenja** – za zadržavanje zaslona aktivnim ili ispravljanje Samsung grešaka  
+* **Prozor sistemskog upozorenja** – za automatsko pokretanje aplikacija (samo Android 10)

@@ -1,22 +1,22 @@
-Bluetooth Volume Manager môže reagovať na Bluetooth zariadenia pripojením alebo odpojením.
-Umožňuje Androidu zapamätať si úrovne hlasitosti pre rôzne Bluetooth zariadenia.
+**Bluetooth Volume Manager** si pamätá úrovne hlasitosti pre každé z vašich Bluetooth zariadení a reaguje pri ich pripojení alebo odpojení.
 
-Dostupné funkcie:
+**Funkcie:**
+* Nastavenie hlasitosti hudby, hovorov, zvonenia a upozornení pre každé zariadenie  
+* Automatické odosielanie mediálnych príkazov ako Prehráť alebo Ďalší  
+* Spustenie aplikácií pri pripojení  
+* Udržanie obrazovky zapnutej  
+* Uzamknutie úrovní hlasitosti  
+* Obnovenie hlasitosti po odpojení  
 
-* Prispôsobenie hlasitosti pre hudbu, hovory a zvonenie.
-* Posielanie mediálnych príkazov "Prehrať" alebo "Ďalšia".
-* Otvorenie konkrétnej aplikácie.
-* Zakázanie režimu spánku.
-* Zabránenie zmene hlasitosti.
-* Obnovenie prechádzajúcej úrovne hlasitosti po odpojení.
+Žiadne reklamy, žiadne sledovanie. Open-source.  
+Niektoré doplňky vyžadujú platený upgrade na podporu vývoja.
 
-Táto aplikácia nemôže zvýšiť hlasitosť ani zmeniť hlasitosť, ak ju nemôžete zmeniť pomocou tlačidiel hlasitosti zariadenia.
+**Poznámka:** Táto aplikácia nemôže zvýšiť hlasitosť ani presiahnuť systémové limity hlasitosti.
 
-Vysvetlenie oprávnení:
-
-* "Internet" pre hlásenie chýb.
-* "Bluetooth" na prácu so zariadeniami Bluetooth.
-* "Upraviť nastavenie zvuku" pre zmenu hlasitosti.
-* "Ukončený boot" pre obnovenie hlasitosti po reštartovaní.
-* 'WAKE_LOCK' pre odstránenie chyby na Samsung zariadeniach a zakázanie režim spánku, ak je to potrebné.
-* 'SYSTEM_ALERT_WINDOW' pre spustenie appiek po pripojení Bluetooth zariadenia (iba Android 10).
+**Oprávnenia:**
+* **Internet** – pre voliťteľné hlásenia chýb  
+* **Bluetooth** – na detekciu pripojení zariadení  
+* **Nastavenia zvuku** – na zmenu hlasitosti  
+* **Spustenie po reštarte** – na obnovenie nastavení po reštarte  
+* **Zámok prebudenia** – na udržanie obrazovky zapnutej alebo opravu chýb Samsungu  
+* **Systémové upozorňovacie okno** – na automatické spúšťanie aplikácií (iba Android 10)

@@ -1,22 +1,22 @@
-Pengurus Volum Bluetooth boleh bereaksi ke peranti Bluetooth yang terhubung atau tanpa hubungan.
-Ia membolehkan Android mengingati tahap kelantangan dari peranti Bluetooth yang berbeza.
+**Bluetooth Volume Manager** mengingati tahap kelantangan untuk setiap peranti Bluetooth anda dan bertindak balas apabila ia disambungkan atau diputuskan.
 
-Ciri-ciri yang tersedia:
+**Ciri-ciri:**
+* Tetapkan kelantangan muzik, panggilan, nada dering, dan pemberitahuan bagi setiap peranti  
+* Hantar arahan media secara automatik seperti Main atau Seterusnya  
+* Lancarkan apl semasa sambungan  
+* Pastikan skrin terjaga  
+* Kunci tahap kelantangan  
+* Pulihkan kelantangan selepas pemutusan sambungan  
 
-* Pelarasan kelantangan muzik, panggilan, nada dering serta pemberitahuan.
-* Menghantar keluar arahan-arahan media 'Main' atau 'Seterusnya'.
-* Membuka apl yang khusus.
-* Kekalkan skrin terus sedar.
-* Menghalang perubahan pada kelantangan.
-* Menyimpan semula aras kelantangan sebelumnya selepas sambungan diputuskan.
+Tiada iklan, tiada penjejakan. Sumber terbuka.  
+Sesetengah tambahan memerlukan naik taraf berbayar untuk menyokong pembangunan.
 
-Apl ini tidak berupaya 'merangsang' kelantangan anda atau mengubah kelantangan jika anda tidak dapat mengubahnya secara manual melalui butang kelantangan peranti anda.
+**Nota:** Apl ini tidak boleh menambah kelantangan atau mengatasi had kelantangan sistem.
 
-Keterangan Kebenaran:
-
-* 'Internet' untuk laporan pepijat.
-* 'Bluetooth' yang berfungsi dengan peranti Bluetooth.
-* 'Ubahsuai tetapan audio' untuk menukar volum.
-* 'Boot selesai' untuk menyimpan semula aras kelantangan selepas reboot.
-* 'WAKE_LOCK' untuk membetulkan pepijat pada peranti Samsung dan untuk skrin kekal berjaga jika perlu.
-* 'TETINGKAP_AMARAN_SISTEM' untuk melancarkan apl bila peranti Bluetooth terhubung (hanya di Android 10).
+**Kebenaran:**
+* **Internet** – untuk laporan pepijat pilihan  
+* **Bluetooth** – untuk mengesan sambungan peranti  
+* **Tetapan audio** – untuk menukar kelantangan  
+* **But** – untuk memulihkan tetapan selepas but semula  
+* **Kunci jaga** – untuk mengekalkan skrin terjaga atau membaiki pepijat Samsung  
+* **Tetingkap amaran sistem** – untuk melancarkan apl secara automatik (Android 10 sahaja)

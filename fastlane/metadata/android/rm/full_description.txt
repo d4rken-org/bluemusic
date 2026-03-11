@@ -1,0 +1,22 @@
+**Bluetooth Volume Manager** s'remembra da las nivlas da volum per mintgin da tias apparats Bluetooth e reagischa sch'els sa connectan u sa disconnectan.
+
+**Funcziuns:**
+* Fixar ils volums da musica, cloms, sonneria e notificaziuns per apparat  
+* Trametter automaticamain comondas media sco Play u Next  
+* Avrir applicaziuns sin connectar  
+* Mantegnair l'ecran svegl  
+* Bluccar las nivlas da volum  
+* Restabilir il volum suenter la disconnexiun  
+
+Nagins reclams, nagina surveglianza. Open-source.  
+Alchinas funcziuns extras dovran ina actualisaziun pajada per sustegnair il svilup.
+
+**Remartga:** Quest'applicaziun na po betg augmentar il volum u superar ils limits da volum dal sistem.
+
+**Permissiuns:**
+* **Internet** – per rapports d'errurs opziunals  
+* **Bluetooth** – per detectar connexiuns d'apparats  
+* **Parameters d'audio** – per midar il volum  
+* **Start** – per restabilir ils parameters suenter il restart  
+* **Wake lock** – per mantegnair l'ecran svegl u per schliar bugs da Samsung  
+* **Fanestra da sistem** – per avrir applicaziuns automaticamain (mo Android 10)

@@ -1,0 +1,22 @@
+**Bluetooth Volume Manager** astên deng tê bîr tîne û dema cîhaz girêdide reaksiyonê nîshan dide.
+
+**Taybetmendî:**
+* Dengê muzîkê, telefonê, zengê û agahdariyê ji bo her cîhazek saz bike  
+* Bixweber emrên medyayê bişîne  
+* Serîlêdanan dema girêdanê bixebite  
+* Ekranê hishyar bihêle  
+* Astên dengê kilît bike  
+* Deng piştî veqetinê vegerîne  
+
+Bê reklam, bê shepandin. Chavkaniya vekirî.  
+Hîn taybetmendîên zêde nuvekirinek betalkirin hewce dike.
+
+**Not:** Ev serlêdan nikare deng bilind bike an sinorên dengê sêstemê derbas bike.
+
+**Destur:**
+* **Interneta** – ji bo raportan  
+* **Bluetooth** – da ku girêdan kifş bike  
+* **Dengvan** – da ku deng biguhêrîne  
+* **Boot** – da ku mîheng piştî nuvekirinê vegerîne  
+* **Wake lock** - da ku ekran hishyar bimane  
+* **System alert window** - ji bo Android 10

@@ -1,22 +1,22 @@
-Bluetooth Volumbehandler kan reagere på Bluetooth-enheter som kobler til eller kobles fra.
-Det gjør at Android kan huske volumnivåene på forskjellige Bluetooth-enheter.
+**Bluetooth Volume Manager** husker volumnivåer for hver av Bluetooth-enhetene dine og reagerer når de kobler til eller fra.
 
-Tilgjengelige funksjoner:
+**Funksjoner:**
+* Sett musikk-, samtale-, ringetone- og varslingsvolum per enhet  
+* Send mediekommandoer automatisk som Spill av eller Neste  
+* Start apper ved tilkobling  
+* Hold skjermen aktiv  
+* Lås volumnivåer  
+* Gjenopprett volum etter frakobling  
 
-* Musikk, samtale, ringetone og varslings-volumjustering.
-* Sende ut 'Spill av' eller 'Neste' media-kommandoer.
-* Åpne en bestemt app.
-* Holde skjermen våken.
-* Forhindre at volumet endres.
-* Gjenopprette tidligere volumnivåer etter frakobling.
+Ingen annonser, ingen sporing. Åpen kildekode.  
+Noen tilleggsfunksjoner krever en betalt oppgradering for å støtte utviklingen.
 
-Denne appen kan ikke "øke" volumet ditt eller endre volumet hvis du ikke kan endre det manuelt via enhetens volumknapper.
+**Merk:** Denne appen kan ikke øke volumet eller overstyre systemets volumgrenser.
 
-Tillatelser forklart:
-
-* 'Internett' for feilrapporter.
-* 'Bluetooth' for å jobbe med bluetooth-enheter.
-* 'Endre lydinnstillinger' for å endre volumet.
-* 'Oppstart fullført' for å gjenopprette volumnivåene etter omstart.
-* 'WAKE_LOCK' for å fikse en feil på Samsung-enheter og for å holde skjermen våken om nødvendig.
-* 'SYSTEM_ALERT_WINDOW' for å starte apper når en Bluetooth-enhet kobles til (bare på Android 10).
+**Tillatelser:**
+* **Internett** – for valgfrie feilrapporter  
+* **Bluetooth** – for å oppdage enhetstilkoblinger  
+* **Lydinnstillinger** – for å endre volum  
+* **Oppstart** – for å gjenopprette innstillinger etter omstart  
+* **Vekkelås** – for å holde skjermen aktiv eller fikse Samsung-feil  
+* **Systemvarslingsvindu** – for å starte apper automatisk (kun Android 10)
