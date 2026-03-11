@@ -1,1 +1,1 @@
-Individual voice & music volume configuration for Bluetooth devices.
+Indibidwal na voice at music volume para sa bawat Bluetooth device.

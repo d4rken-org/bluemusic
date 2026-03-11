@@ -1,11 +1,22 @@
-Esta aplicação permite aos sistemas Android memorizar o volume para diversos dispositivos Bluethooth.
-Pode configurar o volume das músicas e das chamadas de voz.
-A pausa entre ações e a configuração podem ser ajustadas individualmente.
+O **Bluetooth Volume Manager** memoriza os níveis de volume para cada um dos seus dispositivos Bluetooth e reage quando estes se ligam ou desligam.
 
-Explicação das permissões:
+**Funcionalidades:**
+Pode configurar o volume das músicas e das chamadas de voz.  
+* Envio automático de comandos de media como Reproduzir ou Seguinte  
+* Abrir apps ao ligar  
+* Manter ecrã ativo  
+* Bloquear níveis de volume  
+* 'Boot completed' para restaurar o volume ao reiniciar.  
 
-* 'Internet' para enviar relatórios de erro.
-* 'Bluetooth' para operar com dispositivos Bluethooth.
-* 'Modify audio settings' para alterar o volume.
-* 'Boot completed' para restaurar o volume ao reiniciar.
-* 'WAKE_LOCK' para corrigir um problema com dispositivos Samsung de modo a evitar erros de configuração.
+Sem anúncios, sem rastreio. Código aberto.  
+Alguns extras requerem uma atualização paga para apoiar o desenvolvimento.
+
+**Nota:** Esta app não consegue aumentar o volume acima dos limites do sistema.
+
+**Permissões:**
+* 'Internet' para enviar relatórios de erro.  
+* 'Bluetooth' para operar com dispositivos Bluethooth.  
+* 'Modify audio settings' para alterar o volume.  
+* 'WAKE_LOCK' para corrigir um problema com dispositivos Samsung de modo a evitar erros de configuração.  
+* **Wake lock** – para manter o ecrã ativo ou corrigir erros Samsung  
+* **Janela de alerta do sistema** – para abrir apps automaticamente (apenas Android 10)

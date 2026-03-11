@@ -1,11 +1,22 @@
-Tämä sovellus mahdollistaa Android laitteesi muistaa erillisten Bluetooth laitteiden äänenvoimakkuuden.
-Musiikin ja puhelun äänenvoimakkuus voidaan määrittää jokaiselle laitteelle.
-Ajoitukset ja määritykset voidaan tehdä jokaiselle Bluetooth laitteelle erikseen.
+**Bluetooth Volume Manager** muistaa äänenvoimakkuustasot jokaiselle Bluetooth-laitteellesi ja reagoi, kun ne yhdistetään tai katkaistaan.
 
-Käyttöluvat selitettynä:
+**Ominaisuudet:**
+* Aseta musiikki-, puhelu-, soittomelodi- ja ilmoitusäänenvoimakkuudet laitteittain  
+* Lähetä automaattisesti mediakomentoihin, kuten Toista tai Seuraava  
+* Käynnistä sovelluksia yhdistettäessä  
+* Pidä näyttö päällä  
+* Lukitse äänenvoimakkuustasot  
+* Palauta äänenvoimakkuus katkaisuän jälkeen  
 
-* 'internet' virheilmoituksille.
-* 'Bluetooth' Bluetooth laitteiden kanssa toimimiseen.
-* 'Modify audio settings' äänenvoimakkuuden muuttamiseen.
-* 'Boot completed' jotta määritykset voidaan asettaa käynnistyksen yhteydessä.
-* 'WAKE_LOCK' korjaa bugin Samsungin laitteiden kanssa, missä tämä lupa on pakollinen virheen välttämiseksi.
+Ei mainoksia, ei seurantaa. Avoimen lähdekoodin.  
+Jotkin lisäominaisuudet vaativat maksullisen päivityksen kehityksen tukemiseksi.
+
+**Huom:** Tämä sovellus ei voi tehostaa äänenvoimakkuutta tai ohittaa järjestelmän äänenvoimakkuusrajoja.
+
+**Käyttöoikeudet:**
+* **Internet** – valinnaisia virheraportteja varten  
+* **Bluetooth** – laitteiden yhteyksien havaitsemiseen  
+* **Ääniasetukset** – äänenvoimakkuuden muuttamiseen  
+* **Käynnistys** – asetusten palauttamiseen uudelleenkäynnistyksen jälkeen  
+* **Herätyslukon esto** – näytön pitämiseen päällä tai Samsungin virheiden korjaamiseen  
+* **Järjestelmähälytysikkuna** – sovellusten automaattiseen käynnistykseen (vain Android 10)

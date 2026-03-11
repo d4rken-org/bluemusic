@@ -1,11 +1,22 @@
-Ši programa leidžia Android prisiminti įvairių Bluetooth įrenginių garsumo nustatymus.
-Balso ir muzikos garsumas gali būti valdomi kiekvienam įrenginiui atskirai.
-Kiekvienam įrenginiui atskirai gali būti valdoma delsa.
+**Bluetooth Volume Manager** įsimena garsumo lygius kiekvienam jūsų Bluetooth įrenginiui ir reaguoja, kai jie prisijungia arba atjungiami.
 
-Leidimų paaiškinimai:
+**Funkcijos:**
+* Nustatykite muzikos, skambučių, melodijų ir pranešimų garsuumą kiekvienam įrenginiui  
+* Automatiškai siųsti medijos komandas, pvz., Groti arba Kitas  
+* Paleisti programas prisijungus  
+* Neleisti ekranui užgesti  
+* Užrakinti garsumo lygius  
+* Atkurti garsumas po atjungimo  
 
-* 'Internetas' klaidų siuntimui.
-* 'Bluetooth' bluetooth įrenginių valdymui.
-* 'Keisti garsumo nustatymus' garsumo valdymui.
-* 'Įkrova baigta' garsumo atstatymui po įrenginio pakartotino įjungimo.
-* 'WAKE_LOCK' Samsung įrenginių klaidos ištaisymui, kai šis leidimas padeda išvengti klaidų susijungiant.
+Jokių reklamų, jokio sekimo. Atvirasis kodas.  
+Kai kurios papildomos funkcijos reikalauja mokamo atnaujinimo, siekiant palaikyti plėtrą.
+
+**Pastaba:** Ši programa negali padidinti garsumo virš sistemos nustatytų ribų.
+
+**Leidimai:**
+* **Internetas** – neprivalomosioms klaidų ataskaitoms  
+* **Bluetooth** – įrenginio ryšių aptikimui  
+* **Garso nustatymai** – garsumui keisti  
+* **Paleidimas** – nustatymams atkurti po paleidimo iš naujo  
+* **Budėjimo užraktas** – ekranui neleisti užgesti arba taisyti Samsung klaidas  
+* **Sistemos Įspėjimo langas** – automatiniam programų paleidimui (tik Android 10)

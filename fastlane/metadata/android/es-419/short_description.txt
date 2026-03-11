@@ -1,0 +1,1 @@
+Configuración de voz y música por dispositivo Bluetooth.

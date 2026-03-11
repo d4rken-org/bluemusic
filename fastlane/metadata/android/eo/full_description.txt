@@ -1,0 +1,22 @@
+**Bluetooth Volume Manager** memoras volumenniveloĵn por ĉiu de viaj Bluetooth-aparatoj kaj reagas kiam ili konektiĝas aŭ malkonektiĝas.
+
+**Funkcioj:**
+* Agordi muzikan, vok-, sonorila kaj sciig-volumenoĵn por ĉiu aparato  
+* Aŭtom-sendi media-komandojn kiel Ludi aŭ Sekva  
+* Lanki aplikaĵojn por konektado  
+* Konservi ekranon veka  
+* Fermi volumenniveloĵn  
+* Restarigi volumon post malkonektado  
+
+Neniaj reklamoj, neniu spuriĉo. Malfermita kodo.  
+Kelkaj aldonaĵoj postulas pagitan plibonigon por subteni disvolvadon.
+
+**Noto:** Či tiu aplikaĵo ne povas plibonigi volumon aŭ superaĝi sistemaj volumenlimoj.
+
+**Permesoj:**
+* **Interreto** – por laŭvolaj cimraportoj  
+* **Bluetooth** – por detekti aparatan konektadon  
+* **Aŭdaj agordoj** – por ŝanĝi volumon  
+* **Ekfunkcio** – por restarigi agordojn post re-ekfunkcio  
+* **Vekŝloso** – por konservi ekranon veka aŭ ripari Samsung-cimojn  
+* **Sistemalerta fenestro** – por aŭtomate lanki aplikaĵojn (nur Android 10)

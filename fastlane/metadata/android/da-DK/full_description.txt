@@ -1,11 +1,22 @@
-Denne app tillader Android at huske lydstyrken på forskellige Bluetooth-enheder.
-Både musik- og opkaldsvolume kan konfigureres på hver enhed.
-Timingen og konfigurationen for hver Bluetooth-enhed kan ændres individuelt.
+**Bluetooth Volume Manager** husker lydstyrkeniveauer for hver af dine Bluetooth-enheder og reagerer, når de tilsluttes eller frakobles.
 
-Tilladelser forklaret:
+**Funktioner:**
+* Indstil musik-, opkalds-, ringetone- og notifikationslydstyrke per enhed  
+* Send automatisk mediekommandoer som Afspil eller Næste  
+* Start apps ved tilslutning  
+* Hold skærmen tændt  
+* Lås lydstyrkeniveauer  
+* Gendan lydstyrke efter frakobling  
 
-* 'Internet' til fejlrapporteringer.
-* 'Bluetooth' for at arbejde med Bluetooth-enheder.
-* 'Ændre lydindstillinger' for at skifte lydstyrke.
-* 'Opstart fuldført' til at gendanne lydstyrke efter genstart.
-* 'WAKE_LOCK' for at fikse en fejl på Samsung-enheder hvor denne tilladelse er nødvendig for at fikse fejlen.
+Ingen reklamer, ingen sporing. Open source.  
+Nogle ekstra funktioner kræver en betalt opgradering for at støtte udviklingen.
+
+**Bemærk:** Denne app kan ikke forstærke lydstyrken eller tilsidesætte systemets lydstyrkegraenser.
+
+**Tilladelser:**
+* **Internet** – til valgfri fejlrapporter  
+* **Bluetooth** – til at registrere enhedsforbindelser  
+* **Lydindstillinger** – til at ændre lydstyrken  
+* **Start** – til at gendanne indstillinger efter genstart  
+* **Wakelock** – til at holde skærmen tændt eller rette Samsung-fejl  
+* **Systemadvarselsvindue** – til automatisk start af apps (kun Android 10)

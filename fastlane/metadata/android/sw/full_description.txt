@@ -1,0 +1,22 @@
+**Bluetooth Volume Manager** inakumbuka viwango vya sauti kwa kila moja ya vifaa vyako vya Bluetooth na inajibu vinapounganishwa au kutenganishwa.
+
+**Vipengele:**
+* Weka sauti za muziki, simu, mlio na arifa kwa kila kifaa  
+* Tuma kiotomatiki amri za midia kama Cheza au Inayofuata  
+* Zindua programu unapounganisha  
+* Weka skrini iwe macho  
+* Funga viwango vya sauti  
+* Rejesha sauti baada ya kutenganisha  
+
+Hakuna matangazo, hakuna ufuatiliaji. Chanzo huria.  
+Baadhi ya ziada zinahitaji uboreshaji wa malipo kusaidia maendeleo.
+
+**Kumbuka:** Programu hii haiwezi kuongeza sauti au kubatilisha mipaka ya sauti ya mfumo.
+
+**Ruhusa:**
+* **Intaneti** – kwa ripoti za hitilafu za hiari  
+* **Bluetooth** – kutambua muunganisho wa vifaa  
+* **Mipangilio ya sauti** – kubadilisha sauti  
+* **Kuwasha** – kurejesha mipangilio baada ya kuwashwa upya  
+* **Kufunga macho** – kuweka skrini macho au kurekebisha hitilafu za Samsung  
+* **Dirisha la arifa ya mfumo** – kuzindua programu kiotomatiki (Android 10 tu)

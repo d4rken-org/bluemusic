@@ -1,22 +1,22 @@
-**Bluetooth Volume Manager** dey remember volume level for each of your Bluetooth devices and e go react when dem connect or disconnect.
+**Bluetooth Volume Manager** dey remember volume levels for each of your Bluetooth devices and dey react when dem connect or disconnect.
 
-**Wetin e fit do:**
-* Set music, call, ringtone, and notification volume for each device  
-* Automatically send media commands like Play or Next  
-* Launch apps when device connect  
+**Features:**
+* Set music, call, ringtone, and notification volumes per device  
+* Auto-send media commands like Play or Next  
+* Launch apps when you connect  
 * Keep screen awake  
 * Lock volume levels  
-* Put back volume after device disconnect  
+* Restore volume afta disconnect  
 
-No ads, no tracking. Na open-source app.  
-Some extra features need you pay small money to support the development.
+No ads, no tracking. Open-source.  
+Some extras need paid upgrade to support development.
 
-**Note:** This app no fit boost volume pass wetin the system allow.
+**Note:** Dis app no fit boost volume or override system volume limits.
 
-**Permissions wey e need:**
-* **Internet** – for optional bug reports  
-* **Bluetooth** – to know when device connect  
-* **Audio settings** – to change volume  
-* **Boot** – to put back settings after phone restart  
-* **Wake lock** – to keep screen awake or fix Samsung wahala  
-* **System alert window** – to start apps automatically (Android 10 only)
+**Permissions:**
+* **Internet** - for optional bug reports  
+* **Bluetooth** - to detect device connections  
+* **Audio settings** - to change volume  
+* **Boot** - to restore settings afta reboot  
+* **Wake lock** - to keep screen awake or fix Samsung bugs  
+* **System alert window** - to auto-launch apps (Android 10 only)

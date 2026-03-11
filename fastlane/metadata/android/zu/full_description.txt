@@ -1,0 +1,22 @@
+**I-Bluetooth Volume Manager** ikhumbula amazinga amavolumu kwisigaba ngasinye sezidivayisi zakho ze-Bluetooth futhi iphendule uma zixhuma noma zinqamula.
+
+**Izici:**
+* Setha amavolumu omuziki, ocingo, ukhalo lwefoni, nezaziso ngokwedivayisi  
+* Thumela ngokuzenzakalelayo imiyalo yemidiya njengo-Play noma okulandelayo  
+* Vula izinhlelo uma uxhuma  
+* Gcina isikrini siphapheme  
+* Vala amazinga amavolumu  
+* Buyisela ivolumu ngemuva kokuqumuka  
+
+Azikho izikhangiso, akunagcwanekezo. Imithi eveliwe.  
+Ezinye izinto ezengeziwe zidinga ukuthenga okukhokhelwa ukusekela ukuthuthukiswa.
+
+**Qaphela:** Lolu hlelo alukwazi ukwandisa ivolumu noma ukubhukuza imingcele yamavolumu yesistem.
+
+**Izimvume:**
+* **I-Intanethi** – yamibiko yezibhagi engakhethekile  
+* **I-Bluetooth** – ukuthola uxhumano lwezidivayisi  
+* **Izilungiselelo ze-audio** – ukushintsha ivolumu  
+* **Ukuqala** – ukubuyisela izilungiselelo ngemuva kokuqalwa kabusha  
+* **Wake lock** – ukugcina isikrini siphapheme noma ukulungisa amabanga e-Samsung  
+* **Ifasitela lesaziso lesistem** – ukuqalisa ngokuzenzakalelayo izinhlelo (i-Android 10 kuphela)

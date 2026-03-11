@@ -1,21 +1,22 @@
 Bluetooth Volume Manager kan reageren op Bluetooth apparaten die verbinding maken of verbreken.
-Het stelt Android in staat om de volume niveaus van verschillende Bluetooth apparaten te onthouden.
 
-Beschikbare functies:
+**Functies:**
+* Muziek, gesprek, beltoon en berichtvolume aanpassen.  
+* Automatisch mediaopdrachten verzenden zoals Afspelen of Volgende  
+* Apps starten bij verbinding  
+* Scherm wakker houden.  
+* Volumeniveaus vergrendelen  
+* Herstellen van eerdere volume niveaus na verbinding verbreken.  
 
-* Muziek, gesprek, beltoon en berichtvolume aanpassen.
-* Versturen van 'Speel' of 'Volgende' media opdrachten.
-* Een specifieke app openen.
-* Scherm wakker houden.
-* Voorkomen dat het volume wordt gewijzigd.
-* Herstellen van eerdere volume niveaus na verbinding verbreken.
+Geen advertenties, geen tracking. Open-source.  
+Sommige extra's vereisen een betaalde upgrade om de ontwikkeling te ondersteunen.
 
-Deze app kan uw volume niet "verhogen" of het volume wijzigen als u het niet handmatig kunt wijzigen via de volumeknoppen van uw apparaat.
+* Voorkomen dat het volume wordt gewijzigd. Deze app kan uw volume niet "verhogen" of het volume wijzigen als u het niet handmatig kunt wijzigen via de volumeknoppen van uw apparaat.
 
-Machtigingen beschreven:
-
-* 'Internet' voor bug-rapporten.
-* 'Bluetooth' om te werken met Bluetooth-apparaten.
-* 'Audio-instellingen wijzigen' om volume te wijzigen.
-* 'Boot voltooid' om volume niveaus te herstellen na herstart.
-* 'WAKE_LOCK' om een bug op Samsung-apparaten te omzeilen en om het scherm indien nodig wakker te houden.
+**Rechten:**
+* 'Internet' voor bug-rapporten.  
+* 'Bluetooth' om te werken met Bluetooth-apparaten.  
+* 'Audio-instellingen wijzigen' om volume te wijzigen.  
+* 'Boot voltooid' om volume niveaus te herstellen na herstart.  
+* 'WAKE_LOCK' om een bug op Samsung-apparaten te omzeilen en om het scherm indien nodig wakker te houden.  
+* **Systeemwaarschuwingsvenster** – voor het automatisch starten van apps (alleen Android 10)

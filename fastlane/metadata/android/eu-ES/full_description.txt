@@ -1,0 +1,22 @@
+**Bluetooth Volume Manager**-ek zure Bluetooth gailu bakoitzaren bolumen mailak gogoratzen ditu eta konektatu edo deskonektatzen direnean erantzuten du.
+
+**Ezaugarriak:**
+* Ezarri musika, dei, tonu eta jakinarazpen bolumenak gailu bakoitzeko  
+* Bidali automatikoki multimedia komandoak Erreproduzitu edo Hurrengoa bezalakoak  
+* Abiarazi aplikazioak konektatzean  
+* Mantendu pantaila esnai  
+* Blokeatu bolumen mailak  
+* Berrezarri bolumena deskonektatu ondoren  
+
+Ez iragarkirik, ez jarraipenik. Kode irekikoa.  
+Gehigarri batzuek ordainpeko berritze bat behar dute garapena laguntzeko.
+
+**Oharra:** Aplikazio honek ezin du bolumena igo edo sistemaren bolumen mugak gainidatzi.
+
+**Baimenak:**
+* **Internet** – hautazko errore txostenetarako  
+* **Bluetooth** – gailu konexioak hautemateko  
+* **Audio ezarpenak** – bolumena aldatzeko  
+* **Abiarazpena** – berrabiarazi ondoren ezarpenak berrezartzeko  
+* **Esnai blokeoa** – pantaila esnai mantentzeko edo Samsung erroreak konpontzeko  
+* **Sistema alerta leihoa** – aplikazioak automatikoki abiarazteko (Android 10 soilik)

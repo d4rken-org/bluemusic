@@ -1,0 +1,22 @@
+**Bluetooth Volume Manager** mban mend nivelet e volumit për çdo pajisje Bluetooth tuaja dhe reagon kur ato lidhen ose shkëputen.
+
+**Veçritë:**
+* Caktoni volumin e muzikës, thirrjeve, ziles dhe njoftimeve për çdo pajisje  
+* Dërgoni automatikisht komandat e medias si Luaj ose Tjetra  
+* Hapni aplikacionet kur lidheni  
+* Mbajeni ekranin të ndezur  
+* Kyçni nivelet e volumit  
+* Rindërtoni volumin pas shkëputjes  
+
+Pa reklama, pa gjurmim. Me burim të hapur.  
+Disa shtesa kërkojnë një përmirësim me pagesë për të mbështetur zhvillimin.
+
+**Shënim:** Ky aplikacion nuk mund të rrisë volumin mbi kufjtë e sistemit.
+
+**Lejet:**
+* **Internet** – për raporte opsionale të defekteve  
+* **Bluetooth** – për të zbuluar lidhjet e pajisjes  
+* **Cilësimet audio** – për të ndryshuar volumin  
+* **Boot** – për të rivendosur cilësimet pas rindezjes  
+* **Wake lock** – për të mbajtur ekranin ndezur ose për të rregulluar defektet e Samsung  
+* **Dritare alarmi sistemi** – për të hapur automatikisht aplikacionet (vetëm Android 10)

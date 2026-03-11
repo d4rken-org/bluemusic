@@ -1,11 +1,22 @@
-Med den här appen kan Android komma ihåg volymen för olika Bluetooth-enheter.
-Både musik- och samtalsvolymen kan konfigureras för varje enhet.
-Timingen och konfigurationen för varje Bluetooth-enhet kan anpassas individuellt.
+**Bluetooth Volume Manager** kommer ihåg volymnivåer för var och en av dina Bluetooth-enheter och reagerar när de ansluter eller kopplar från.
 
-Behörigheterna förklarade:
+**Funktioner:**
+* Ställ in musik-, samtals-, ringsignal- och aviseringsvolymer per enhet  
+* Skicka mediekommandon automatiskt som Spela eller Nästa  
+* Starta appar vid anslutning  
+* Håll skärmen på  
+* Lås volymnivåer  
+* Återställ volym efter frånkoppling  
 
-* "Internet" för felrapporter.
-* "Bluetooth" för att jobba med Bluetooth-enheter.
-* "Ändra ljudinställningar" för att ändra volymen.
-* "Boot completed" för att återställa volymen efter omstart av enheten.
-* "WAKE_LOCK" för att fixa en bugg på Samsung-enheter där denna behörighet är nödvändig för att undvika ett fel.
+Inga annonser, ingen spårning. Öppen källkod.  
+Vissa extra funktioner kräver en betald uppgradering för att stödja utvecklingen.
+
+**OBS:** Den här appen kan inte höja volymen över systemets volymbegränsningar.
+
+**Behörigheter:**
+* **Internet** – för valfria felrapporter  
+* **Bluetooth** – för att identifiera enhetsanslutningar  
+* **Ljudinställningar** – för att ändra volymen  
+* **Start** – för att återställa inställningar efter omstart  
+* **Wakelås** – för att hålla skärmen på eller åtgärda Samsung-buggar  
+* **Systemvarningsfönster** – för att automatiskt starta appar (endast Android 10)

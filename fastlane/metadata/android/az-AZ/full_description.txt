@@ -1,22 +1,22 @@
-Bluetooth Volume Manager, Bluetooth cihazları ilə bağlantı qurulanda və kəsiləndə reaksiya verə bilər.
-Bu Android-ə, fərqli Bluetooth cihazlarının səs səviyyələrini xatırlamağa icazə verər.
+**Bluetooth Volume Manager** hər Bluetooth cihazınız üçün səs səviyyələrini yadda saxlayır və qoşulma və ya ayrılma zamanı reaksiya verir.
 
-Əlçatan özəlliklər:
+**Xüsusiyyətlər:**
+* Hər cihaz üçün musiqi, zəng, zil səsi və bildiris səs səviyyələrini təyin edin  
+* Play və ya Növbəti kimi media əmrlərini avtomatik göndərin  
+* Qoşulma zamanı tətbiqliś salın  
+* Ekranı açıq saxlayın  
+* Səs səviyyələrini kilidəyə alın  
+* Ayrıldıqdan sonra səsi bərpa edin  
 
-* Musiqi, zəng zəng səsi və bildiriş səsini nizamlama.
-* 'Oynat' və ya 'Növbəti' media əmrlərini göndərmə.
-* Müəyyən bir tətbiqi açma.
-* Ekranı oyaq saxlama.
-* Səs səviyyəsinin dəyişdirilməsinin qarşısını alma.
-* Bağlantı kəsiləndən sonra əvvəlki səs səviyyəsini geri qaytarma.
+Reklam yoxdur, izləmə yoxdur. Açıq mənbəli.  
+Bəzi əlavə funksiyalar inkışafı dəstəkləmək üçün pullu yüksəltmə tələb edir.
 
-Bu tətbiq, cihazınızın səs səviyyəsini səs düymələri ilə dəyişdirə bilmirsinizsə, səs səviyyəsini "artırmaz" və ya dəyişdirməz.
+**Qəyd:** Bu tətbiq səsi artıra və ya sistem səs həddlərini dəyişdərə bilməz.
 
-İcazələr barədə açıqlama:
-
-* Xəta hesabatları üçün 'İnternet'.
-* Bluetooth cihazları ilə işləmək üçün 'Bluetooth'.
-* Səs səviyyəsini dəyişdirmək üçün 'Səs tənzimləmələrini dəyişdir'.
-* Yenidən başladıldıqdan sonra səs səviyyəsini geri qaytarmaq üçün 'Başlama tamamlandı'.
-* Ehtiyac yaransa, Samsung cihazlarda xətanı düzəltmək və ekranı oyaq saxlamaq üçün 'WAKE_LOCK'.
-* Bluetooth cihazla bağlantı qurulanda (yalnız Android 10-da) tətbiqləri başlatmaq üçün SYSTEM_ALERT_WINDOW'.
+**İcazələr:**
+* **İnternet** – isteğə bağlı xəta hesabatları üçün  
+* **Bluetooth** – cihaz qoşulmalarını aşkarlamaq üçün  
+* **Audio parametrləri** – səsi dəyişmək üçün  
+* **Yükləmə** – yenidən başlatmadan sonra parametrləri bərpa etmək üçün  
+* **Oyanıq saxlama** – ekranı açıq saxlamaq və ya Samsung səhvlərini düzeltmək üçün  
+* **Sistem xəbərdarlıq pəncərəsi** – tətbiqliş avtomatik başlatmaq üçün (yalnız Android 10)

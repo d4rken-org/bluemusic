@@ -1,7 +1,7 @@
-**Manager Volum Bluetooth** reține nivelurile de volum pentru fiecare dintre dispozitivele tale Bluetooth și reacționează când acestea se conectează sau se deconectează.
+**Bluetooth Volume Manager** reține nivelurile de volum pentru fiecare dintre dispozitivele tale Bluetooth şi reacționează când acestea se conectează sau deconectează.
 
 **Funcții:**
-* Setează volumul pentru muzică, apeluri, tonuri de apel și notificări per dispozitiv  
+* Setează volumul pentru muzică, apeluri, ton de apel şi notificări per dispozitiv  
 * Trimite automat comenzi media precum Play sau Next  
 * Lansează aplicații la conectare  
 * Menține ecranul activ  
@@ -9,14 +9,14 @@
 * Restaurează volumul după deconectare  
 
 Fără reclame, fără urmărire. Open-source.  
-Unele funcții suplimentare necesită o actualizare plătită pentru a susține dezvoltarea.
+Unele funcții extra necesită o actualizare plătită pentru a sprijini dezvoltarea.
 
-**Notă:** Această aplicație nu poate amplifica volumul sau suprascrie limitele de volum ale sistemului.
+**Notă:** Această aplicație nu poate amplifica volumul sau depăşi limitele de volum ale sistemului.
 
 **Permisiuni:**
 * **Internet** – pentru rapoarte opționale de erori  
-* **Bluetooth** – pentru a detecta conexiunile dispozitivelor  
-* **Setări audio** – pentru a schimba volumul  
-* **Boot** – pentru a restaura setările după repornire  
-* **Wake lock** – pentru a menține ecranul activ sau a remedia bug-uri Samsung  
-* **Fereastră alertă sistem** – pentru a lansa automat aplicații (doar Android 10)
+* **Bluetooth** – pentru a detecta conectările dispozitivelor  
+* **Setări audio** – pentru a modifica volumul  
+* **Pornire** – pentru a restaura setările după repornire  
+* **Wake lock** – pentru a menține ecranul activ sau a remedia bug-urile Samsung  
+* **Fereastră de alertă sistem** – pentru a lansa automat aplicații (doar Android 10)

@@ -1,22 +1,22 @@
-Bluetooth Volume Manager může reagovat na zařízení Bluetooth připojením nebo odpojením.
-Umožňuje zařízení Android zapamatovat si úrovně hlasitosti různých zařízení Bluetooth.
+**Bluetooth Volume Manager** si pamatuje úrovně hlasitosti pro každé z vašich Bluetooth zařízení a reaguje při jejich připojení nebo odpojení.
 
-Dostupné funkce:
+**Funkce:**
+* Nastavení hlasitosti hudby, hovorů, vyzvánění a oznámení pro každé zařízení  
+* Automatické odesílání příkazů médií, jako je Přehrát nebo Další  
+* Spouštět aplikace při připojení  
+* Udržovat obrazovku zapnutou  
+* Zamknout úrovně hlasitosti  
+* Obnovit hlasitost po odpojení  
 
-* Nastavení hlasitosti pro hudbu, volání, vyzvánění a oznámení.
-* Odesílání mediálních příkazů „Přehrát“ nebo „Další“.
-* Otevření konkrétní aplikace.
-* Zakázání režimu spánku.
-* Zabránění změně hlasitosti.
-* Obnovení předchozí úrovně hlasitosti po odpojení.
+Žádné reklamy, žádné sledování. Otevřený zdrojový kód.  
+Některé doplňky vyžadují placený upgrade pro podporu vývoje.
 
-Tato aplikace nemůže „zesílit“ hlasitost nebo změnit hlasitost, pokud ji nemůžete změnit pomocí tlačítek hlasitosti zařízení.
+**Poznámka:** Tato aplikace nemůže zvýšit hlasitost nad systémové limity.
 
-Vysvětlení oprávnění:
-
-* „Internet“ pro hlášení chyb.
-* „Bluetooth“ pro práci se zařízeními Bluetooth.
-* „Změny nastavení zvuku“ pro změnu hlasitosti.
-* „Dokončení spuštění“ pro obnovení úrovně hlasitosti po restartování.
-* „WAKE_LOCK“ pro odstranění chyby na zařízeních Samsung a zakázání režim spánku, pokud je to nutné.
-* „SYSTEM_ALERT_WINDOW“ pro spuštění aplikací po připojení Bluetooth zařízení (pouze Android 10).
+**Oprávnění:**
+* **Internet** – pro volitelné zprávy o chybách  
+* **Bluetooth** – pro detekci připojení zařízení  
+* **Nastavení zvuku** – pro změnu hlasitosti  
+* **Spuštění** – pro obnovení nastavení po restartu  
+* **Zámek probouzení** – pro udržení obrazovky zapnuté nebo opravu chyb Samsungu  
+* **Okno systémového upozornění** – pro automatické spouštění aplikací (pouze Android 10)
