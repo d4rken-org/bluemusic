@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BSP Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">Nepieciešams BSP Pro</string>
+    <string name="upgrade_prompt_title">Jaunināt uz BSP Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth skaļuma pārvaldnieks Pro piedāvā labākus rezultātus, vairāk funkciju un opciju sapļrotājiem lietotājiem.</string>
+    <string name="upgrade_prompt_upgrade_action">Jaunināt</string>
+    <string name="upgrade_screen_title">Jaunināt uz BSP Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth skaļuma pārvaldniekam nav reklāmu un tas nepardod lietotāju datus. Manu darbu finansiē jūs.</string>
+    <string name="upgrade_screen_why_title">Priekšrocības</string>
+    <string name="upgrade_screen_why_body">* Motivēts izstrādātājs\n* Neierobežotas ierīces\n* Papildu darbības\nun vairāk...</string>
+    <string name="upgrade_screen_how_title">Opcijas</string>
+    <string name="upgrade_screen_how_body">Varat izvēlēties starp vienreizēju pirkumu un lētāku gada abonementu.\nAbonements sākas ar bezmaksas 14 dienu izmēģinājuma periodu, pēc kura jums tiks iekasēta maksa reizi gadā. Izmēģinājumu un abonementu var atcelt jebkurā laikā.\nTas pašas funkcijas, tikai dažādi cenu modeļi.</string>
+    <string name="upgrade_screen_subscription_trial_action">Sāciet bezmaksas 14 dienu izmēģinājumu</string>
+    <string name="upgrade_screen_subscription_action">Abonēt</string>
+    <string name="upgrade_screen_subscription_action_hint">Abonements maksā %s gadā.</string>
+    <string name="upgrade_screen_iap_action">Vienreizējs pirkums</string>
+    <string name="upgrade_screen_iap_action_hint">Vienreizējais pirkums maksā %s.</string>
+    <string name="upgrade_screen_thanks_toast">Jūs esat labākais! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Atjaunot pirkumu</string>
+    <string name="upgrade_screen_restore_purchase_message">Jūsu uzlabojums ir derīgs ierīcēs ar to pašu Google kontu.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Problēmu risināšanas padomi neatpazītiem uzlabojumiem:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinhronizācija var aizņemt laiku. Mēģiniet restartēt, notīrīt Google Play kešatmiņu vai vienkārši uzgaidīt.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Vairāki konti var sajaukt Google Play. Izejiet no citiem kontiem vai instalējiet caur Google Play tīmekļa vietni, kas piespiedu kārtā izveido asociācijas ar konkrētu kontu.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play nav pieejams</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth skaļuma pārvaldnieks nevar izveidot savienojumu ar Google Play. Vai Google Play ir instalēts un atjaunināts? Vai Google konts ir piezēmošanās? Mēģiniet notīrīt Google Play lietotnes kešatmiņu un pārstārtout ierīci.</string>
+    <string name="upgrades_no_purchases_found_check_account">Pirkumi nav atrasti. Vai izmantojat pareizo kontu?</string>
+</resources>

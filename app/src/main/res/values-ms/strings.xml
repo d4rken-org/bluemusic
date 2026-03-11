@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pengurus Volum Bluetooth</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
     <string name="general_error_label">Ralat</string>
     <string name="general_error_no_compatible_app_found_msg">Tiada apl yang serasi dijumpai untuk mengendalikan permintaan ini.</string>
     <string name="general_share_action">Kongsi</string>
     <string name="general_back_action">Kembali</string>
     <string name="general_show_details_action">Tunjuk butiran</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Selamat datang ke BVM</string>
     <string name="onboarding_welcome_message">Pengurus Volum Bluetooth membolehkan anda mengurus volum peranti Bluetooth secara automatik.</string>
     <string name="onboarding_welcome_action">Jom pergi</string>
@@ -20,9 +23,11 @@
     <string name="onboarding_rewrite_message">Saya telah membina semula Pengurus Volum Bluetooth dari awal kerana perubahan Android dan keperluan Google untuk memastikan apl terus berfungsi dengan baik.</string>
     <string name="onboarding_rewrite_features">Sesetengah tetapan peranti mungkin telah diset semula semasa kemas kini ini. Sila periksa konfigurasi peranti anda.</string>
     <string name="onboarding_rewrite_action">Teruskan</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">Tiada peranti tidak terurus dijumpai</string>
     <string name="discover_all_devices_managed_msg">Semua peranti berpasangan anda diurus! Perlukan yang baru?</string>
     <string name="discover_pair_new_device_action">Pasangkan peranti baru</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">Konfigurasi peranti</string>
     <string name="devices_device_config_section_general_label">Umum</string>
     <string name="devices_device_config_remove_device_label">Lupakan peranti</string>
@@ -32,6 +37,8 @@
     <string name="devices_device_config_rename_device_label">Namakan semula peranti</string>
     <string name="devices_device_config_rename_device_desc">Namakan semula peranti ini dalam apl ini, dan jika boleh, dalam sistem.</string>
     <string name="devices_device_config_rename_device_action">Namakan semula</string>
+    <string name="devices_device_config_enabled_label">Didayakan</string>
+    <string name="devices_device_config_enabled_desc">Bertindak balas kepada peranti ini apabila bersambung</string>
     <string name="devices_device_config_section_timing_label">Masa</string>
     <string name="devices_device_config_monitoring_duration_label">Tempoh Pengawasan</string>
     <string name="devices_device_config_monitoring_duration_desc">Satu durasi dalam milisaat, setelah pelarasan dilakukan, semasa mana perubahan volum selanjutnya akan disekat.</string>
@@ -42,13 +49,19 @@
     <string name="devices_device_config_section_reaction_label">Reaksi</string>
     <string name="devices_device_config_launch_app_label">Pelancaran apl</string>
     <string name="devices_device_config_launch_app_desc">Lancarkan apl bila peranti ini terhubung.</string>
+    <string name="devices_device_config_launch_app_multiple_desc">%d apl dipilih</string>
+    <string name="devices_device_config_show_home_screen_label">Tunjuk skrin utama</string>
+    <string name="devices_device_config_show_home_screen_desc">Selepas semua peristiwa diproses untuk peranti ini, cuba tunjuk skrin utama. Ini mungkin tidak berfungsi pada semua versi Android.</string>
     <string name="devices_device_config_nudge_volume_label">Sentilan volum</string>
     <string name="devices_device_config_nudge_volume_description">Turunkan kemudian naikkan volum sebanyak satu kenaikan, walaupun volum yang dikehendaki sudah ditetapkan (menurut sistem).</string>
     <string name="devices_device_config_visible_adjustments_label">Pelarasan kelihatan</string>
+    <string name="devices_device_config_visible_adjustments_desc">Tukar pelarasan mana yang ditunjukkan pada kad peranti</string>
     <string name="devices_device_config_keep_awake_label">Kekal sedar</string>
     <string name="devices_device_config_keep_awake_desc">Kekalkan skrin terus berjaga sementara peranti ini dihubungkan.</string>
     <string name="devices_device_config_volume_observe_label">Perhatikan perubahan</string>
     <string name="devices_device_config_volume_observe_desc">Kekal aktif semasa peranti ini disambungkan dan simpan perubahan volum yang bukan disebabkan oleh apl ini.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">Simpan volum semasa putus sambungan</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">Tangkap dan simpan tahap volum semasa apabila peranti ini diputuskan sambungan.</string>
     <string name="devices_device_config_volume_lock_label">Kunci volum</string>
     <string name="devices_device_config_volume_lock_desc">Sebarang perubahan volum yang tidak dilakukan melalui apl ini akan dikembalikan sementara peranti ini dihubungkan.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Pembatas kadar volum</string>
@@ -59,6 +72,12 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Masa minimum di antara penurunan volum: %d ms</string>
     <string name="devices_device_config_autoplay_label">Automain</string>
     <string name="devices_device_config_autoplay_desc">Menekan main disimulasikan pada kawalan jauh Bluetooth bila peranti ini terhubung.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Jenis Kekunci Automain</string>
+    <string name="devices_device_config_autoplay_keycodes_available">Jenis kekunci yang tersedia</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Kekunci yang dipilih (mengikut urutan)</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Jenis kekunci</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Konfigurasikan kekunci mana yang hendak dihantar dan dalam urutan apa</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Tiada kekunci dikonfigurasi</string>
     <string name="devices_device_config_section_volumes_label">Volum</string>
     <string name="devices_device_config_section_volume_label">Volum</string>
     <string name="devices_device_config_alarm_volume_label">Volum penggera</string>
@@ -71,6 +90,23 @@
     <string name="devices_device_config_call_volume_desc">Mengawal volum yang terkesan dengan panggilan bila peranti ini bersambung.</string>
     <string name="devices_device_config_ring_volume_label">Volum deringan</string>
     <string name="devices_device_config_ring_volume_desc">Kawal volum yang terkesan dengan deringan anda.</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">Kawalan volum deringan memerlukan akses dasar pemberitahuan</string>
+    <string name="devices_device_config_notification_policy_required_notification">Kawalan volum pemberitahuan memerlukan akses dasar pemberitahuan</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Kawalan Jangan Ganggu memerlukan akses dasar pemberitahuan</string>
+    <string name="devices_device_config_notification_policy_action">Beri akses</string>
+    <string name="devices_device_config_dnd_on_connect_label">Mod Jangan Ganggu</string>
+    <string name="dnd_mode_dialog_title">Pilih mod JG</string>
+    <string name="dnd_mode_dont_change">Jangan ubah</string>
+    <string name="dnd_mode_off">Mati</string>
+    <string name="dnd_mode_priority_only">Keutamaan sahaja</string>
+    <string name="dnd_mode_alarms_only">Penggera sahaja</string>
+    <string name="dnd_mode_total_silence">Senyap sepenuhnya</string>
+    <string name="devices_device_config_connection_alert_label">Amaran sambungan</string>
+    <string name="connection_alert_dialog_title">Amaran sambungan</string>
+    <string name="connection_alert_type_none">Tiada</string>
+    <string name="connection_alert_type_sound">Bunyi sahaja</string>
+    <string name="connection_alert_type_vibration">Getaran sahaja</string>
+    <string name="connection_alert_type_both">Bunyi dan getaran</string>
     <string name="devices_stream_music_label">Muzik</string>
     <string name="devices_audio_stream_call_label">Panggilan</string>
     <string name="devices_audio_stream_ring_label">Deringan</string>
@@ -83,11 +119,11 @@
     <string name="devices_last_connected_label">Terakhir disambung: %s</string>
     <string name="devices_currently_connected_label">Sedang disambung</string>
     <string name="devices_device_disabled_label">Peranti dimatikan</string>
-    <string name="devices_device_config_enabled_label">Didayakan</string>
-    <string name="devices_device_config_enabled_desc">Bertindak balas kepada peranti ini apabila bersambung</string>
     <string name="devices_no_volumes_configured">Tiada volum dikonfigurasi untuk peranti ini. Ketik Konfigurasikan untuk menetapkan keutamaan volum.</string>
+    <!-- Settings-->
     <string name="settings_label">Tetapan</string>
     <string name="settings_category_other_label">Lain-lain</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">Umum</string>
     <string name="general_settings_desc">Tweak umum yang mempengaruhi keseluruhan apl.</string>
     <string name="settings_category_ui_label">Antara muka pengguna</string>
@@ -102,8 +138,14 @@
     <string name="ui_theme_style_medium_contrast_label">Kontras Sederhana</string>
     <string name="ui_theme_style_high_contrast_label">Kontras Tinggi</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
+    <string name="ui_theme_color_setting_label">Warna tema</string>
+    <string name="ui_theme_color_setting_explanation">Palet warna yang digunakan semasa tema apl.</string>
+    <string name="ui_theme_color_material_you_note">Warna ditetapkan oleh kertas dinding anda apabila menggunakan Material You.</string>
+    <string name="ui_theme_color_blue_label">Biru</string>
+    <string name="ui_theme_color_sunset_label">Senja</string>
     <string name="ui_language_override_label">Bahasa apl</string>
     <string name="ui_language_override_desc">Pilih bahasa yang berbeza untuk BVM, bebas daripada bahasa lalai sistem anda.</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">Peranti</string>
     <string name="devices_settings_desc">Tetapan yang mempengaruhi semua peranti terurus.</string>
     <string name="label_app_enabled">Apl didayakan</string>
@@ -114,6 +156,7 @@
     <string name="description_volume_listener">Kekal aktif sementara peranti dihubungkan dan simpan perubahan volum yang tiada terkesan dari apl ini.</string>
     <string name="label_boot_restore">Simpan semula semasa boot</string>
     <string name="description_boot_restore">Simpan semula volum selepas booting/rebooting jika peranti Bluetooth disambungkan.</string>
+    <!-- Settings/Support-->
     <string name="settings_support_label">Sokongan</string>
     <string name="settings_support_description">Baca dokumentasi, laporkan masalah, berbual dengan orang lain atau rakam log nyahpepijat.</string>
     <string name="settings_support_wiki_label">Dokumentasi</string>
@@ -124,8 +167,20 @@
     <string name="settings_support_debuglog_desc">Rakam semua yang apl lakukan ke dalam fail teks yang boleh anda kongsikan.</string>
     <string name="settings_support_debuglog_recording_desc">Sedang merakam maklumat nyahpepijat. Ketik untuk hentikan rakaman.</string>
     <string name="settings_support_debuglog_path">Laluan log: %1$s</string>
-    <string name="settings_support_discord_label">Discord</string>
+    <string name="settings_support_debuglog_short_recording_title">Rakaman sangat pendek</string>
+    <string name="settings_support_debuglog_short_recording_msg">Itu rakaman yang sangat pendek. Log nyahpepijat adalah rakaman, bukan syot kilat — reproduksi masalah semasa rakaman aktif supaya log berguna.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Teruskan rakaman</string>
+    <string name="settings_support_debuglog_short_recording_stop">Henti juga</string>
+    <string name="settings_support_debuglog_folder_label">Folder log nyahpepijat</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="other">%1$d sesi menggunakan %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Tiada log nyahpepijat tersimpan</string>
+    <string name="settings_support_debuglog_folder_delete_title">Padam semua log nyahpepijat?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Ini akan memadamkan semua sesi log nyahpepijat yang tersimpan secara kekal.</string>
+    <string name="settings_support_discord_label">Percanggahan</string>
     <string name="settings_support_discord_description">Tempat untuk bergaul dan bertanya soalan.</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Penghargaan</string>
     <string name="settings_acknowledgements_description">Kredit, lesen dan terima kasih khas</string>
     <string name="settings_acks_translation_header">Terjemahan</string>
@@ -137,11 +192,14 @@
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Kerana menyokong terjemahan projek sumber terbuka</string>
     <string name="settings_licenses_label">Lesen</string>
+    <string name="settings_translation_label">Terjemahan</string>
+    <string name="settings_translation_desc">Bantu terjemahkan apl ke dalam bahasa kegemaran anda</string>
     <string name="settings_sponsor_development_title">Sponsor pembangunan</string>
     <string name="settings_sponsor_development_summary">Jadi penyokong dan menjadikan pembangunan berterusan mungkin.</string>
     <string name="settings_privacy_policy_label">Dasar privasi</string>
     <string name="settings_privacy_policy_desc">Mengendalikan data secara bertanggungjawab.</string>
     <string name="changelog_label">Log perubahan</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">Pemberitahuan nyahpepijat</string>
     <string name="debug_log_consent_title">Log nyahpepijat</string>
     <string name="debug_log_consent_explanation">Ciri ini merakam semua yang apl lakukan ke dalam fail yang boleh dikongsi. Fail yang dijana mengandungi maklumat sensitif (contohnya nama fail dan apl yang dipasang). Hanya kongsi dengan pihak yang dipercayai (contohnya pembangun yang menyelesaikan masalah).</string>
@@ -149,11 +207,65 @@
     <string name="debug_log_record_action">Rakam</string>
     <string name="debug_log_stop_action">Henti rakaman</string>
     <string name="debug_log_screen_title">Perakam Log Nyahpepijat</string>
+    <string name="debug_log_screen_subtitle">Semak dan kongsi log nyahpepijat yang dirakam</string>
+    <string name="debug_log_screen_sensitive_title">Maklumat sensitif</string>
     <string name="debug_log_screen_sensitive_information_message">Fail yang dijana mengandungi maklumat sensitif (contohnya nama fail dan apl yang dipasang). Hanya kongsi dengan pihak yang dipercayai.</string>
     <string name="debug_log_screen_session_path_label">Laluan sesi nyahpepijat</string>
     <string name="debug_log_screen_log_files_label">Fail Log</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="other">%1$d fail sedia (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">Buang</string>
+    <string name="debug_log_screen_keep_action">Simpan</string>
+    <string name="debug_log_compressing_label">Memampatkan…</string>
     <string name="debug_log_file_label">Fail log yang dirakam</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">Log dihantar?</string>
+    <string name="support_debuglog_sent_message">Jika anda telah menghantar log nyahpepijat, ia boleh dipadamkan dari peranti. Adakah anda ingin mengeluarkannya?</string>
+    <string name="support_debuglog_session_delete_title">Padam log nyahpepijat?</string>
+    <string name="support_debuglog_session_delete_message">Sesi log nyahpepijat ini akan dipadamkan secara kekal.</string>
+    <string name="support_debuglog_session_recording">Merakam…</string>
+    <string name="support_debuglog_session_compressing">Memampatkan…</string>
+    <string name="support_debuglog_failed_empty_log">Log kosong</string>
+    <string name="support_debuglog_failed_missing_log">Log hilang</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP rosak</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP gagal</string>
+    <string name="support_debuglog_clear_title">Padam semua log nyahpepijat?</string>
+    <string name="support_debuglog_clear_message">Ini akan memadamkan semua sesi log nyahpepijat yang tersimpan secara kekal.</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">Hubungi pembangun</string>
+    <string name="settings_support_contact_desc">Isi borang untuk menghantar e-mel kepada pembangun.</string>
+    <string name="contact_screen_title">Hubungi pembangun</string>
+    <string name="contact_category_bug_label">Laporan pepijat</string>
+    <string name="contact_category_feature_label">Permintaan ciri</string>
+    <string name="contact_category_question_label">Soalan</string>
+    <string name="contact_description_label">Penerangan</string>
+    <string name="contact_description_bug_hint">Terangkan apa yang berlaku dan cara menghasilkan semula masalah tersebut.</string>
+    <string name="contact_description_feature_hint">Terangkan ciri yang anda ingin lihat.</string>
+    <string name="contact_description_question_hint">Terangkan soalan anda dengan terperinci.</string>
+    <string name="contact_category_section_label">Kategori</string>
+    <string name="contact_debug_log_label">Log nyahpepijat</string>
+    <string name="contact_debug_log_select_hint">Pilih log nyahpepijat untuk dilampirkan</string>
+    <string name="contact_debug_log_picker_hint">Lampirkan log nyahpepijat untuk membantu mendiagnosis masalah lebih cepat.</string>
+    <string name="contact_debug_log_picker_empty">Tiada log nyahpepijat tersedia. Rakam satu dahulu.</string>
+    <string name="contact_expected_behavior_label">Tingkah laku yang dijangka</string>
+    <string name="contact_expected_behavior_hint">Terangkan apa yang anda jangkakan berlaku sebaliknya.</string>
+    <string name="support_contact_debuglog_zip_error">Gagal menyediakan log nyahpepijat untuk lampiran</string>
+    <string name="contact_send_action">Buka apl e-mel</string>
+    <plurals name="contact_word_count">
+        <item quantity="other">%1$d / %2$d patah perkataan</item>
+    </plurals>
+    <string name="contact_welcome_msg">Saya membaca setiap mesej sendiri dan berusaha membalas, tetapi memandangkan saya bekerja seorang diri, mungkin mengambil sedikit masa. Terima kasih atas kesabaran anda.</string>
+    <string name="contact_footer_msg">Mesej anda akan dihantar melalui e-mel. Maklumat peranti dan persediaan dilampirkan secara automatik.</string>
+    <string name="contact_no_email_app_msg">Tiada apl e-mel ditemui pada peranti ini.</string>
+    <string name="contact_attachment_missing_msg">Fail log nyahpepijat tidak lagi wujud</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">Log nyahpepijat tersimpan</string>
+    <string name="settings_support_stored_logs_desc">%1$d sesi (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Tiada log nyahpepijat tersimpan</string>
+    <string name="settings_support_stored_logs_delete_title">Padam log tersimpan?</string>
+    <string name="settings_support_stored_logs_delete_msg">Ini akan memadamkan semua %1$d sesi log nyahpepijat yang tersimpan.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Log nyahpepijat tersimpan dipadamkan</string>
     <string name="label_bug_reports">Laporan pepijat</string>
     <string name="description_bug_reports">Pelaporan pepijat dan kecelaruan automatik.</string>
     <string name="label_add_device">Tambah peranti</string>
@@ -220,6 +332,10 @@
     <string name="android13_notification_permission_description">Beri apl ini kebenaran untuk hantar pemberitahuan. Ini membolehkan memaparkan pemberitahuan apabila apl ini aktif dan pelarasan volum sedang dibuat.</string>
     <string name="privacy_policy_label">Dasar privasi</string>
     <string name="managed_devices_empty_message">Tiada peranti Bluetooth dikonfigurasi.\nKetik butang + untuk tambah peranti pertama anda.</string>
+    <string name="label_pro_feature">Ciri premium</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="other">Versi percuma: %1$d daripada %2$d peranti</item>
+    </plurals>
     <string name="general_delete_action">Padam</string>
     <string name="general_cancel_action">Batal</string>
     <string name="general_ok_action">OK</string>
@@ -231,43 +347,23 @@
     <string name="android10_applaunch_hint_message">Android 10 memerlukan kebenaran khas untuk melancarkan apl dari latar belakang. Beri kebenaran &quot;Paparan ke atas apl lain&quot;.</string>
     <string name="notification_permission_hint_title">Kebenaran pemberitahuan</string>
     <string name="notification_permission_hint_message">Beri kebenaran pemberitahuan untuk lihat kemas kini status semasa melaraskan volum.</string>
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Pembelian dibatalkan</string>
     <string name="error_iap_unavailable_message">Pembelian dalam apl tidak tersedia</string>
     <string name="error_generic_message">Ralat berlaku. Sila cuba lagi.</string>
     <string name="error_iap_owned_message">Anda sudah memiliki item ini</string>
     <string name="label_no_devices_title">Tiada Peranti</string>
     <string name="bluemusic_mascot_description">Ikon Apl</string>
-    <string name="devices_app_selection_currently_selected">Sedang dipilih</string>
-    <string name="devices_app_selection_search_hint">Cari apl…</string>
-    <string name="devices_app_selection_selected_count">%d apl dipilih</string>
+    <!-- App Selection -->
     <string name="devices_app_selection_title">Pilih Apl</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Jenis kekunci yang tersedia</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Konfigurasikan kekunci mana yang hendak dihantar dan dalam urutan apa</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Jenis kekunci</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Tiada kekunci dikonfigurasi</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Kekunci yang dipilih (mengikut urutan)</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Jenis Kekunci Automain</string>
-    <string name="devices_device_config_launch_app_multiple_desc">%d apl dipilih</string>
-    <string name="devices_device_config_notification_policy_action">Beri akses</string>
-    <string name="devices_device_config_notification_policy_required_notification">Kawalan volum pemberitahuan memerlukan akses dasar pemberitahuan</string>
-    <string name="devices_device_config_notification_policy_required_ringtone">Kawalan volum deringan memerlukan akses dasar pemberitahuan</string>
-    <string name="devices_device_config_visible_adjustments_desc">Tukar pelarasan mana yang ditunjukkan pada kad peranti</string>
-    <string name="general_clear_action">Kosongkan</string>
+    <string name="devices_app_selection_search_hint">Cari apl…</string>
+    <string name="devices_app_selection_currently_selected">Sedang dipilih</string>
+    <string name="devices_app_selection_selected_count">%d apl dipilih</string>
     <string name="general_navigate_back_action">Navigasi kembali</string>
     <string name="general_reset_action">Set semula</string>
+    <string name="general_clear_action">Kosongkan</string>
     <string name="general_save_action">Simpan</string>
-    <string name="devices_device_config_show_home_screen_label">Tunjuk skrin utama</string>
-    <string name="devices_device_config_show_home_screen_desc">Selepas semua peristiwa diproses untuk peranti ini, cuba tunjuk skrin utama. Ini mungkin tidak berfungsi pada semua versi Android.</string>
-    <string name="devices_device_config_volume_save_on_disconnect_label">Simpan volum semasa putus sambungan</string>
-    <string name="devices_device_config_volume_save_on_disconnect_desc">Tangkap dan simpan tahap volum semasa apabila peranti ini diputuskan sambungan.</string>
-    <string name="devices_device_config_dnd_on_connect_label">Mod Jangan Ganggu</string>
-    <string name="devices_device_config_notification_policy_required_dnd">Kawalan Jangan Ganggu memerlukan akses dasar pemberitahuan</string>
-    <string name="dnd_mode_dialog_title">Pilih mod JG</string>
-    <string name="dnd_mode_dont_change">Jangan ubah</string>
-    <string name="dnd_mode_off">Mati</string>
-    <string name="dnd_mode_priority_only">Keutamaan sahaja</string>
-    <string name="dnd_mode_alarms_only">Penggera sahaja</string>
-    <string name="dnd_mode_total_silence">Senyap sepenuhnya</string>
+    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Kunci</string>
     <string name="devices_indicator_awake">Berjaga</string>
     <string name="devices_indicator_nudge">Sentil</string>
@@ -278,94 +374,11 @@
     <string name="devices_indicator_auto">Automatik</string>
     <string name="devices_indicator_home">Utama</string>
     <string name="devices_indicator_dnd">JG</string>
-    <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">Amaran sambungan</string>
-    <string name="connection_alert_dialog_title">Amaran sambungan</string>
-    <string name="connection_alert_type_none">Tiada</string>
-    <string name="connection_alert_type_sound">Bunyi sahaja</string>
-    <string name="connection_alert_type_vibration">Getaran sahaja</string>
-    <string name="connection_alert_type_both">Bunyi dan getaran</string>
     <string name="devices_indicator_alert">Amaran</string>
-
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volum (0–100)</string>
     <string name="devices_volume_input_error">Masukkan nilai antara %1$d dan %2$d</string>
-
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Kunci</string>
     <string name="devices_unlock_sliders_action">Buka kunci</string>
-
-    <!-- Short recording warning -->
-    <string name="settings_support_debuglog_short_recording_stop">Henti juga</string>
-    <string name="app_name_short">BVM</string>
-    <string name="settings_support_debuglog_short_recording_title">Rakaman sangat pendek</string>
-    <string name="settings_support_debuglog_short_recording_msg">Itu rakaman yang sangat pendek. Log nyahpepijat adalah rakaman, bukan syot kilat — reproduksi masalah semasa rakaman aktif supaya log berguna.</string>
-    <string name="settings_support_debuglog_short_recording_continue">Teruskan rakaman</string>
-    <string name="settings_support_debuglog_folder_label">Folder log nyahpepijat</string>
-    <string name="settings_support_debuglog_folder_empty_desc">Tiada log nyahpepijat tersimpan</string>
-    <string name="settings_support_debuglog_folder_delete_title">Padam semua log nyahpepijat?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Ini akan memadamkan semua sesi log nyahpepijat yang tersimpan secara kekal.</string>
-    <string name="debug_log_screen_subtitle">Semak dan kongsi log nyahpepijat yang dirakam</string>
-    <string name="debug_log_screen_sensitive_title">Maklumat sensitif</string>
-    <string name="debug_log_screen_keep_action">Simpan</string>
-    <string name="debug_log_compressing_label">Memampatkan…</string>
-    <string name="support_debuglog_sent_title">Log dihantar?</string>
-    <string name="support_debuglog_sent_message">Jika anda telah menghantar log nyahpepijat, ia boleh dipadamkan dari peranti. Adakah anda ingin mengeluarkannya?</string>
-    <string name="support_debuglog_session_delete_title">Padam log nyahpepijat?</string>
-    <string name="support_debuglog_session_delete_message">Sesi log nyahpepijat ini akan dipadamkan secara kekal.</string>
-    <string name="support_debuglog_session_recording">Merakam…</string>
-    <string name="support_debuglog_session_compressing">Memampatkan…</string>
-    <string name="support_debuglog_failed_empty_log">Log kosong</string>
-    <string name="support_debuglog_failed_missing_log">Log hilang</string>
-    <string name="support_debuglog_failed_corrupt_zip">ZIP rosak</string>
-    <string name="support_debuglog_failed_zip_failed">ZIP gagal</string>
-    <string name="support_debuglog_clear_title">Padam semua log nyahpepijat?</string>
-    <string name="support_debuglog_clear_message">Ini akan memadamkan semua sesi log nyahpepijat yang tersimpan secara kekal.</string>
-    <string name="settings_support_contact_label">Hubungi pembangun</string>
-    <string name="settings_support_contact_desc">Isi borang untuk menghantar e-mel kepada pembangun.</string>
-    <string name="contact_screen_title">Hubungi pembangun</string>
-    <string name="contact_category_bug_label">Laporan pepijat</string>
-    <string name="contact_category_feature_label">Permintaan ciri</string>
-    <string name="contact_category_question_label">Soalan</string>
-    <string name="contact_description_label">Penerangan</string>
-    <string name="contact_description_bug_hint">Terangkan apa yang berlaku dan cara menghasilkan semula masalah tersebut.</string>
-    <string name="contact_description_feature_hint">Terangkan ciri yang anda ingin lihat.</string>
-    <string name="contact_description_question_hint">Terangkan soalan anda dengan terperinci.</string>
-    <string name="contact_category_section_label">Kategori</string>
-    <string name="contact_debug_log_label">Log nyahpepijat</string>
-    <string name="contact_debug_log_select_hint">Pilih log nyahpepijat untuk dilampirkan</string>
-    <string name="contact_debug_log_picker_hint">Lampirkan log nyahpepijat untuk membantu mendiagnosis masalah lebih cepat.</string>
-    <string name="contact_debug_log_picker_empty">Tiada log nyahpepijat tersedia. Rakam satu dahulu.</string>
-    <string name="contact_expected_behavior_label">Tingkah laku yang dijangka</string>
-    <string name="contact_expected_behavior_hint">Terangkan apa yang anda jangkakan berlaku sebaliknya.</string>
-    <string name="support_contact_debuglog_zip_error">Gagal menyediakan log nyahpepijat untuk lampiran</string>
-    <string name="contact_send_action">Buka apl e-mel</string>
-    <string name="contact_welcome_msg">Saya membaca setiap mesej sendiri dan berusaha membalas, tetapi memandangkan saya bekerja seorang diri, mungkin mengambil sedikit masa. Terima kasih atas kesabaran anda.</string>
-    <string name="contact_footer_msg">Mesej anda akan dihantar melalui e-mel. Maklumat peranti dan persediaan dilampirkan secara automatik.</string>
-    <string name="contact_no_email_app_msg">Tiada apl e-mel ditemui pada peranti ini.</string>
-    <string name="contact_attachment_missing_msg">Fail log nyahpepijat tidak lagi wujud</string>
-    <string name="settings_support_stored_logs_label">Log nyahpepijat tersimpan</string>
-    <string name="settings_support_stored_logs_desc">%1$d sesi (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">Tiada log nyahpepijat tersimpan</string>
-    <string name="settings_support_stored_logs_delete_title">Padam log tersimpan?</string>
-    <string name="settings_support_stored_logs_delete_msg">Ini akan memadamkan semua %1$d sesi log nyahpepijat yang tersimpan.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Log nyahpepijat tersimpan dipadamkan</string>
-    <string name="label_pro_feature">Ciri premium</string>
-    <string name="ui_theme_color_setting_label">Warna tema</string>
-    <string name="ui_theme_color_setting_explanation">Palet warna yang digunakan semasa tema apl.</string>
-    <string name="ui_theme_color_material_you_note">Warna ditetapkan oleh kertas dinding anda apabila menggunakan Material You.</string>
-    <string name="ui_theme_color_blue_label">Biru</string>
-    <string name="ui_theme_color_sunset_label">Senja</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="other">%1$d sesi menggunakan %2$s</item>
-    </plurals>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="other">%1$d fail sedia (%2$s)</item>
-    </plurals>
-    <plurals name="contact_word_count">
-        <item quantity="other">%1$d / %2$d patah perkataan</item>
-    </plurals>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="other">Versi percuma: %1$d daripada %2$d peranti</item>
-    </plurals>
 </resources>

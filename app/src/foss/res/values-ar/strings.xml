@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM FOSS</string>
+    <string name="app_name_upgrade_postfix">البرمجيات الحرة (FOSS)</string>
+    <string name="upgrade_feature_requires_pro">يتطلب BVM FOSS</string>
+    <string name="upgrade_prompt_title">الترقية إلى BVM FOSS</string>
+    <string name="upgrade_prompt_body">افتح ميزات إضافية وكن راعياً لدعم التطوير المستمر!</string>
+    <string name="upgrade_prompt_upgrade_action">تحديث</string>
+    <string name="upgrade_screen_title">الترقية إلى BVM FOSS</string>
+    <string name="upgrade_screen_preamble">لا يعرض Bluetooth Volume Manager أية إعلانات ولا يبيع بيانات المستخدم. التطوير المستمر ممكن فقط بدعمكم.</string>
+    <string name="upgrade_screen_how_title">كيف أساعدك</string>
+    <string name="upgrade_screen_how_body">كن داعما وراعيا للتطوير! انقر على الزر أدناه لتفعيل جميع الميزات الإضافية وفتح ملفي الخاص برعاة GitHub.</string>
+    <string name="upgrade_screen_why_title">هذا يستحضر 🪄</string>
+    <string name="upgrade_screen_why_body">• مطوّر متحمس 🧙
+• أجهزة غير محدودة ➡️➡️
+• إجراءات إضافية ⚙️
+والمزيد…</string>
+    <string name="upgrade_screen_sponsor_action">ادعم التطوير</string>
+    <string name="upgrade_screen_sponsor_action_hint">البديل هو الإعلانات والتحليلات و Google Play 🙁</string>
+    <string name="upgrade_screen_thanks_toast">شكراً على دعمك لتطوير المصادر المفتوحة ❤️</string>
+    <string name="upgrade_screen_sponsor_too_fast">عدت بالفعل؟ دعمك يبقي BVM حياً!</string>
+</resources>

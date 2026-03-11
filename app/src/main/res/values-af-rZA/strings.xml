@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
     <string name="general_error_label">Fout</string>
     <string name="general_error_no_compatible_app_found_msg">Geen geskikte program gevind om hierdie versoek te hanteer nie.</string>
     <string name="general_share_action">Deel</string>
     <string name="general_back_action">Terug</string>
     <string name="general_show_details_action">Wys besonderhede</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">Welkom by BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager laat jou toe om Bluetooth-toestelvolumes outomaties te bestuur.</string>
     <string name="onboarding_welcome_action">Kom ons gaan</string>
@@ -20,9 +23,11 @@
     <string name="onboarding_rewrite_message">Ek moes die app herskryf om tred te hou met Android-veranderinge en Google-vereistes. Ek het die app waar moontlik gemoderniseer om te verseker dit werk steeds betroubaar.</string>
     <string name="onboarding_rewrite_features">Sommige funksies het tydens die opdatering verander. Kontroleer asseblief jou toestelinstelling om te verseker alles korrek opgestel is.</string>
     <string name="onboarding_rewrite_action">Voortgaan</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">Geen onbestuurde toestelle gevind nie</string>
     <string name="discover_all_devices_managed_msg">Al jou gekoppelde toestelle word bestuur! Het jy \'n nuwe een nodig?</string>
     <string name="discover_pair_new_device_action">Koppel nuwe toestel</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">Toestel-konfigurasie</string>
     <string name="devices_device_config_section_general_label">Algemeen</string>
     <string name="devices_device_config_remove_device_label">Vergeet toestel</string>
@@ -96,7 +101,6 @@
     <string name="dnd_mode_priority_only">Slegs prioriteit</string>
     <string name="dnd_mode_alarms_only">Slegs wekkers</string>
     <string name="dnd_mode_total_silence">Totale stilte</string>
-    <!-- Connection alert -->
     <string name="devices_device_config_connection_alert_label">Verbindingswaarskuwing</string>
     <string name="connection_alert_dialog_title">Verbindingswaarskuwing</string>
     <string name="connection_alert_type_none">Geen</string>
@@ -116,8 +120,10 @@
     <string name="devices_currently_connected_label">Tans gekoppel</string>
     <string name="devices_device_disabled_label">Toestel gedeaktiveer</string>
     <string name="devices_no_volumes_configured">Geen volumes opgestel vir hierdie toestel nie. Tik Stel op om volumevoorkeure in te stel.</string>
+    <!-- Settings-->
     <string name="settings_label">Instellings</string>
     <string name="settings_category_other_label">Ander</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">Algemeen</string>
     <string name="general_settings_desc">Algemene aanpassings wat die hele program beïnvloed.</string>
     <string name="settings_category_ui_label">Gebruikerskoppelvlak</string>
@@ -132,8 +138,14 @@
     <string name="ui_theme_style_medium_contrast_label">Medium Kontras</string>
     <string name="ui_theme_style_high_contrast_label">Hoë Kontras</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
+    <string name="ui_theme_color_setting_label">Tema kleur</string>
+    <string name="ui_theme_color_setting_explanation">Die kleurpalet wat gebruik word wanneer die program getematiseer word.</string>
+    <string name="ui_theme_color_material_you_note">Kleur word deur jou muurpapier gestel wanneer Material You gebruik word.</string>
+    <string name="ui_theme_color_blue_label">Blou</string>
+    <string name="ui_theme_color_sunset_label">Sonsondergang</string>
     <string name="ui_language_override_label">Programtaal</string>
     <string name="ui_language_override_desc">Kies \'n ander taal vir BVM, onafhanklik van jou stelsel se verstektaal.</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">Toestelle</string>
     <string name="devices_settings_desc">Instellings wat alle bestuurde toestelle beïnvloed.</string>
     <string name="label_app_enabled">Program geaktiveer</string>
@@ -142,8 +154,9 @@
     <string name="description_visible_volume_adjustments">Wys die stelsel se volume venster terwyl hierdie aanpassings gemaak word.</string>
     <string name="label_volume_listener">Neem verandering waar</string>
     <string name="description_volume_listener">Bly aktief terwyl \'n toestel verbind is, en berg volume veranderinge wat nie deur die program gedoen is nie.</string>
-    <string name="label_boot_restore">Herstel met \&quot;boot\&quot;</string>
-    <string name="description_boot_restore">Herstel volume na \&quot;booting/rebooting\&quot; as \'n Bluetooth-toestel gekoppel is.</string>
+    <string name="label_boot_restore">Herstel met &quot;boot&quot;</string>
+    <string name="description_boot_restore">Herstel volume na &quot;booting/rebooting&quot; as \'n Bluetooth-toestel gekoppel is.</string>
+    <!-- Settings/Support-->
     <string name="settings_support_label">Ondersteuning</string>
     <string name="settings_support_description">Lees dokumentasie, rapporteer probleme, gesels met ander of neem ontfoutingslêers op.</string>
     <string name="settings_support_wiki_label">Dokumentasie</string>
@@ -154,9 +167,21 @@
     <string name="settings_support_debuglog_desc">Neem alles wat die program doen op in \'n teks-lêer wat jy kan deel.</string>
     <string name="settings_support_debuglog_recording_desc">Tans word ontfoutingsinligting opgeneem. Tik om opname te stop.</string>
     <string name="settings_support_debuglog_path">Log-pad: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">Baie kort opname</string>
+    <string name="settings_support_debuglog_short_recording_msg">Dit was \'n baie kort opname. Ontfoutingslêers is opnames, nie kiekie nie — reproduseer die probleem terwyl opname aktief is sodat die lêer nuttig is.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Gaan voort met opname</string>
     <string name="settings_support_debuglog_short_recording_stop">Stop tog</string>
+    <string name="settings_support_debuglog_folder_label">Ontfoutingslog-lêergids</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d sessie gebruik %2$s</item>
+        <item quantity="other">%1$d sessies gebruik %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Geen ontfoutingslêers gestoor nie</string>
+    <string name="settings_support_debuglog_folder_delete_title">Alle ontfoutingslêers verwyder?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Dit sal alle gestoorde ontfoutingslogsessies permanent verwyder.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">\'n Plek om in rond te hang en vrae te stel.</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Erkennings</string>
     <string name="settings_acknowledgements_description">Krediete, lisensies en spesiale dank</string>
     <string name="settings_acks_translation_header">Vertaling</string>
@@ -168,11 +193,14 @@
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Vir die ondersteuning van die vertaling van oopbron-projekte</string>
     <string name="settings_licenses_label">Lisensies</string>
+    <string name="settings_translation_label">Vertaling</string>
+    <string name="settings_translation_desc">Help om die toepassing in jou gunstelingtaal te vertaal</string>
     <string name="settings_sponsor_development_title">Borg ontwikkeling</string>
     <string name="settings_sponsor_development_summary">Word \'n beskermheer en maak voortgesette ontwikkeling moontlik.</string>
     <string name="settings_privacy_policy_label">Privaatheidsbeleid</string>
     <string name="settings_privacy_policy_desc">Data verantwoordelik hanteer.</string>
     <string name="changelog_label">Wysigingslys</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">Ontfoutingskennisgewings</string>
     <string name="debug_log_consent_title">Ontfoutingslog</string>
     <string name="debug_log_consent_explanation">Hierdie funksie neem alles wat die program doen op in \'n deelbare lêer. Die gegenereerde lêer bevat sensitiewe inligting (bv. lêername en geïnstalleerde programme). Deel dit slegs met vertroude partye (bv. \'n ontwikkelaar wat \'n probleem oplos).</string>
@@ -180,11 +208,67 @@
     <string name="debug_log_record_action">Neem op</string>
     <string name="debug_log_stop_action">Stop opname</string>
     <string name="debug_log_screen_title">Ontfoutingslog-opnemer</string>
+    <string name="debug_log_screen_subtitle">Hersien en deel jou opgenome ontfoutingslog</string>
+    <string name="debug_log_screen_sensitive_title">Sensitiewe inligting</string>
     <string name="debug_log_screen_sensitive_information_message">Die gegenereerde lêer bevat sensitiewe inligting (bv. lêername en geïnstalleerde programme). Deel dit slegs met vertroude partye.</string>
     <string name="debug_log_screen_session_path_label">Ontfoutingsessie-pad</string>
     <string name="debug_log_screen_log_files_label">Log-lêers</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d lêer gereed (%2$s)</item>
+        <item quantity="other">%1$d lêers gereed (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">Gooi weg</string>
+    <string name="debug_log_screen_keep_action">Bewaar</string>
+    <string name="debug_log_compressing_label">Komprimeer…</string>
     <string name="debug_log_file_label">Opgenome log-lêer</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">Log gestuur?</string>
+    <string name="support_debuglog_sent_message">As jy die ontfoutingslog gestuur het, kan dit van die toestel verwyder word. Wil jy dit verwyder?</string>
+    <string name="support_debuglog_session_delete_title">Ontfoutingslog verwyder?</string>
+    <string name="support_debuglog_session_delete_message">Hierdie ontfoutingslogsessie sal permanent verwyder word.</string>
+    <string name="support_debuglog_session_recording">Neem op…</string>
+    <string name="support_debuglog_session_compressing">Komprimeer…</string>
+    <string name="support_debuglog_failed_empty_log">Leë log</string>
+    <string name="support_debuglog_failed_missing_log">Ontbrekende log</string>
+    <string name="support_debuglog_failed_corrupt_zip">Korrupte ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP misluk</string>
+    <string name="support_debuglog_clear_title">Alle ontfoutingslêers verwyder?</string>
+    <string name="support_debuglog_clear_message">Dit sal alle gestoorde ontfoutingslogsessies permanent verwyder.</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">Kontak ontwikkelaar</string>
+    <string name="settings_support_contact_desc">Vul \'n vorm in om die ontwikkelaar \'n e-pos te stuur.</string>
+    <string name="contact_screen_title">Kontak ontwikkelaar</string>
+    <string name="contact_category_bug_label">Foutverslag</string>
+    <string name="contact_category_feature_label">Kenmerversoek</string>
+    <string name="contact_category_question_label">Vraag</string>
+    <string name="contact_description_label">Beskrywing</string>
+    <string name="contact_description_bug_hint">Beskryf wat gebeur het en hoe om die probleem te reproduseer.</string>
+    <string name="contact_description_feature_hint">Beskryf die kenmerk wat jy graag wil sien.</string>
+    <string name="contact_description_question_hint">Beskryf jou vraag in detail.</string>
+    <string name="contact_category_section_label">Kategorie</string>
+    <string name="contact_debug_log_label">Ontfoutingslog</string>
+    <string name="contact_debug_log_select_hint">Kies \'n ontfoutingslog om aan te heg</string>
+    <string name="contact_debug_log_picker_hint">Heg \'n ontfoutingslog aan om die probleem vinniger te diagnoseer.</string>
+    <string name="contact_debug_log_picker_empty">Geen ontfoutingslêers beskikbaar nie. Neem eers een op.</string>
+    <string name="contact_expected_behavior_label">Verwagte gedrag</string>
+    <string name="contact_expected_behavior_hint">Beskryf wat jy verwag het om eerder te gebeur.</string>
+    <string name="support_contact_debuglog_zip_error">Kon nie ontfoutingslog vir aanhegting voorberei nie</string>
+    <string name="contact_send_action">Maak e-postoep oop</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d woord</item>
+        <item quantity="other">%1$d / %2$d woorde</item>
+    </plurals>
+    <string name="contact_welcome_msg">Ek lees elke boodskap self en doen my bes om te antwoord, maar aangesien ek alleen hieraan werk, kan dit \'n bietjie tyd neem. Dankie vir jou geduld.</string>
+    <string name="contact_footer_msg">Jou boodskap sal per e-pos gestuur word. Toestel- en opstelinligting word outomaties aangeheg.</string>
+    <string name="contact_no_email_app_msg">Geen e-postoepasssing op hierdie toestel gevind nie.</string>
+    <string name="contact_attachment_missing_msg">Ontfoutingsloglêer bestaan nie meer nie</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">Gestoorde ontfoutingslêers</string>
+    <string name="settings_support_stored_logs_desc">%1$d sessies (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Geen gestoorde ontfoutingslêers nie</string>
+    <string name="settings_support_stored_logs_delete_title">Gestoorde lêers verwyder?</string>
+    <string name="settings_support_stored_logs_delete_msg">Dit sal alle %1$d gestoorde ontfoutingslogsessies verwyder.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Gestoorde ontfoutingslêers verwyder</string>
     <string name="label_bug_reports">Fout verslag</string>
     <string name="description_bug_reports">Outomatiese fout en probleem rapportering.</string>
     <string name="label_add_device">Voeg toestel by</string>
@@ -251,6 +335,11 @@
     <string name="android13_notification_permission_description">Verleen hierdie program toestemming om kennisgewings te plaas. Dit stel in staat om \'n kennisgewing te wys wanneer hierdie program aktief is en volumeaanpassings gemaak word.</string>
     <string name="privacy_policy_label">Privaatheidsbeleid</string>
     <string name="managed_devices_empty_message">Geen Bluetooth-toestelle opgestel nie.\nTik die +-knoppie om jou eerste toestel by te voeg.</string>
+    <string name="label_pro_feature">Premium kenmerk</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Gratis weergawe: %1$d van %2$d toestel</item>
+        <item quantity="other">Gratis weergawe: %1$d van %2$d toestelle</item>
+    </plurals>
     <string name="general_delete_action">Verwyder</string>
     <string name="general_cancel_action">Kanselleer</string>
     <string name="general_ok_action">OK</string>
@@ -262,12 +351,14 @@
     <string name="android10_applaunch_hint_message">Android 10 vereis spesiale toestemming om programme of die tuisskerm vanaf die agtergrond te wys. Verleen &quot;Vertoon oor ander programme&quot;-toestemming.</string>
     <string name="notification_permission_hint_title">Kennisgewing-toestemming</string>
     <string name="notification_permission_hint_message">Verleen kennisgewing-toestemming om statusopdaterings te sien terwyl volumes aangepas word.</string>
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Aankoop gekanselleer</string>
     <string name="error_iap_unavailable_message">In-program-aankope is nie beskikbaar nie</string>
     <string name="error_generic_message">\'n Fout het voorgekom. Probeer asseblief weer.</string>
     <string name="error_iap_owned_message">Jy besit hierdie item reeds</string>
     <string name="label_no_devices_title">Geen toestelle</string>
     <string name="bluemusic_mascot_description">Program-ikoon</string>
+    <!-- App Selection -->
     <string name="devices_app_selection_title">Kies Programme</string>
     <string name="devices_app_selection_search_hint">Soek programme…</string>
     <string name="devices_app_selection_currently_selected">Tans gekies</string>
@@ -276,6 +367,7 @@
     <string name="general_reset_action">Herstel</string>
     <string name="general_clear_action">Maak skoon</string>
     <string name="general_save_action">Bewaar</string>
+    <!-- Device option indicators -->
     <string name="devices_indicator_lock">Sluit</string>
     <string name="devices_indicator_awake">Wakker</string>
     <string name="devices_indicator_nudge">Stoot</string>
@@ -287,82 +379,10 @@
     <string name="devices_indicator_home">Tuis</string>
     <string name="devices_indicator_dnd">MS</string>
     <string name="devices_indicator_alert">Waarskuwing</string>
+    <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Voer \'n waarde tussen %1$d en %2$d in</string>
+    <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Sluit</string>
     <string name="devices_unlock_sliders_action">Ontsluit</string>
-    <string name="ui_theme_color_setting_label">Tema kleur</string>
-    <string name="ui_theme_color_setting_explanation">Die kleurpalet wat gebruik word wanneer die program getematiseer word.</string>
-    <string name="ui_theme_color_material_you_note">Kleur word deur jou muurpapier gestel wanneer Material You gebruik word.</string>
-    <string name="ui_theme_color_blue_label">Blou</string>
-    <string name="ui_theme_color_sunset_label">Sonsondergang</string>
-    <string name="settings_support_debuglog_short_recording_title">Baie kort opname</string>
-    <string name="settings_support_debuglog_short_recording_msg">Dit was \'n baie kort opname. Ontfoutingslêers is opnames, nie kiekie nie — reproduseer die probleem terwyl opname aktief is sodat die lêer nuttig is.</string>
-    <string name="settings_support_debuglog_short_recording_continue">Gaan voort met opname</string>
-    <string name="settings_support_debuglog_folder_label">Ontfoutingslog-lêergids</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d sessie gebruik %2$s</item>
-        <item quantity="other">%1$d sessies gebruik %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Geen ontfoutingslêers gestoor nie</string>
-    <string name="settings_support_debuglog_folder_delete_title">Alle ontfoutingslêers verwyder?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Dit sal alle gestoorde ontfoutingslogsessies permanent verwyder.</string>
-    <string name="debug_log_screen_subtitle">Hersien en deel jou opgenome ontfoutingslog</string>
-    <string name="debug_log_screen_sensitive_title">Sensitiewe inligting</string>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="one">%1$d lêer gereed (%2$s)</item>
-        <item quantity="other">%1$d lêers gereed (%2$s)</item>
-    </plurals>
-    <string name="debug_log_screen_keep_action">Bewaar</string>
-    <string name="debug_log_compressing_label">Komprimeer…</string>
-    <string name="support_debuglog_sent_title">Log gestuur?</string>
-    <string name="support_debuglog_sent_message">As jy die ontfoutingslog gestuur het, kan dit van die toestel verwyder word. Wil jy dit verwyder?</string>
-    <string name="support_debuglog_session_delete_title">Ontfoutingslog verwyder?</string>
-    <string name="support_debuglog_session_delete_message">Hierdie ontfoutingslogsessie sal permanent verwyder word.</string>
-    <string name="support_debuglog_session_recording">Neem op…</string>
-    <string name="support_debuglog_session_compressing">Komprimeer…</string>
-    <string name="support_debuglog_failed_empty_log">Leë log</string>
-    <string name="support_debuglog_failed_missing_log">Ontbrekende log</string>
-    <string name="support_debuglog_failed_corrupt_zip">Korrupte ZIP</string>
-    <string name="support_debuglog_failed_zip_failed">ZIP misluk</string>
-    <string name="support_debuglog_clear_title">Alle ontfoutingslêers verwyder?</string>
-    <string name="support_debuglog_clear_message">Dit sal alle gestoorde ontfoutingslogsessies permanent verwyder.</string>
-    <string name="settings_support_contact_label">Kontak ontwikkelaar</string>
-    <string name="settings_support_contact_desc">Vul \'n vorm in om die ontwikkelaar \'n e-pos te stuur.</string>
-    <string name="contact_screen_title">Kontak ontwikkelaar</string>
-    <string name="contact_category_bug_label">Foutverslag</string>
-    <string name="contact_category_feature_label">Kenmerversoek</string>
-    <string name="contact_category_question_label">Vraag</string>
-    <string name="contact_description_label">Beskrywing</string>
-    <string name="contact_description_bug_hint">Beskryf wat gebeur het en hoe om die probleem te reproduseer.</string>
-    <string name="contact_description_feature_hint">Beskryf die kenmerk wat jy graag wil sien.</string>
-    <string name="contact_description_question_hint">Beskryf jou vraag in detail.</string>
-    <string name="contact_category_section_label">Kategorie</string>
-    <string name="contact_debug_log_label">Ontfoutingslog</string>
-    <string name="contact_debug_log_select_hint">Kies \'n ontfoutingslog om aan te heg</string>
-    <string name="contact_debug_log_picker_hint">Heg \'n ontfoutingslog aan om die probleem vinniger te diagnoseer.</string>
-    <string name="contact_debug_log_picker_empty">Geen ontfoutingslêers beskikbaar nie. Neem eers een op.</string>
-    <string name="contact_expected_behavior_label">Verwagte gedrag</string>
-    <string name="contact_expected_behavior_hint">Beskryf wat jy verwag het om eerder te gebeur.</string>
-    <string name="support_contact_debuglog_zip_error">Kon nie ontfoutingslog vir aanhegting voorberei nie</string>
-    <string name="contact_send_action">Maak e-postoep oop</string>
-    <plurals name="contact_word_count">
-        <item quantity="one">%1$d / %2$d woord</item>
-        <item quantity="other">%1$d / %2$d woorde</item>
-    </plurals>
-    <string name="contact_welcome_msg">Ek lees elke boodskap self en doen my bes om te antwoord, maar aangesien ek alleen hieraan werk, kan dit \'n bietjie tyd neem. Dankie vir jou geduld.</string>
-    <string name="contact_footer_msg">Jou boodskap sal per e-pos gestuur word. Toestel- en opstelinligting word outomaties aangeheg.</string>
-    <string name="contact_no_email_app_msg">Geen e-postoepasssing op hierdie toestel gevind nie.</string>
-    <string name="contact_attachment_missing_msg">Ontfoutingsloglêer bestaan nie meer nie</string>
-    <string name="settings_support_stored_logs_label">Gestoorde ontfoutingslêers</string>
-    <string name="settings_support_stored_logs_desc">%1$d sessies (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">Geen gestoorde ontfoutingslêers nie</string>
-    <string name="settings_support_stored_logs_delete_title">Gestoorde lêers verwyder?</string>
-    <string name="settings_support_stored_logs_delete_msg">Dit sal alle %1$d gestoorde ontfoutingslogsessies verwyder.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Gestoorde ontfoutingslêers verwyder</string>
-    <string name="label_pro_feature">Premium kenmerk</string>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">Gratis weergawe: %1$d van %2$d toestel</item>
-        <item quantity="other">Gratis weergawe: %1$d van %2$d toestelle</item>
-    </plurals>
 </resources>

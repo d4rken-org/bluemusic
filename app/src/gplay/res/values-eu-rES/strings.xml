@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">BVM Pro beharrezkoa da</string>
+    <string name="upgrade_prompt_title">Berritu BVM Pro-ra</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro-k emaitza hobeak, ezaugarri gehiago eta aukera gehiago eskaintzen ditu erabiltzaile aurreratuei.</string>
+    <string name="upgrade_prompt_upgrade_action">Eguneratu</string>
+    <string name="upgrade_screen_title">Berritu BVM Pro-ra</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager-ek ez du iragarkirik eta ez du erabiltzailearen daturik saltzen. Nire lana zuk finantzatzen duzu ❤️.</string>
+    <string name="upgrade_screen_why_title">Abantailak</string>
+    <string name="upgrade_screen_why_body">• Garatzaile motibatu bat 🧙\n• Mugagabeko gailuak ➡️➡️\n• Ekintza gehigarriak ⚙️\neta gehiago…</string>
+    <string name="upgrade_screen_how_title">Ezarpenak</string>
+    <string name="upgrade_screen_how_body">Aukera dezakezu erosketa bakarra eta urteko harpidetza merkeagoa.\nHarpidetza 14 eguneko doako epaiketa batekin hasten da. Ondoren, urtean behin kobratuko duzu. Epaiketa eta harpidetza edozein unetan ezeztatu daitezke.\nEzaugarri berdinak, prezio eredu desberdinak.</string>
+    <string name="upgrade_screen_subscription_trial_action">14 eguneko proba doan hasi</string>
+    <string name="upgrade_screen_subscription_action">Harpidetu</string>
+    <string name="upgrade_screen_subscription_action_hint">Harpidetza urtero %s-ko prezioa du.</string>
+    <string name="upgrade_screen_iap_action">Erosketa bakarra</string>
+    <string name="upgrade_screen_iap_action_hint">Erosketa bakarraren prezioa %s-koa da.</string>
+    <string name="upgrade_screen_thanks_toast">Hoberena zara! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Berreskuratu erosketa</string>
+    <string name="upgrade_screen_restore_purchase_message">Zure igoera baliozkoa da Googleko kontu berean dauden gailuen bidez.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Aitortu gabeko eguneratze-arazoak konpontzeko aholkuak:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play Storeren sinkronizazioak denbora behar izan dezake. Saiatu berrabiarazten, Google Play katxea ezabatzen edo, besterik gabe, itxaron.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Kontu anitzek Google Play nahas dezakete. Beste kontu batzuetatik atera edo Google Play webgunearen bidez instalatu, eta horrek elkarteak kontu zehatz batekin behartzen ditu.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play ez dago erabilgarri</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager-ek ezin du Google Play-ra konektatu. Google Play instalatuta eta eguneratuta al dago? Zure Google kontua saioa hasi al du? Saiatu Google Play aplikazioaren cachea garbitzen eta gailua berrabiarazten.</string>
+    <string name="upgrades_no_purchases_found_check_account">Ez dira erosketarik aurkitu. Kontu zuzena erabiltzen ari zara?</string>
+</resources>

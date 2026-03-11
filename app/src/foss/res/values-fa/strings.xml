@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM FOSS</string>
+    <string name="app_name_upgrade_postfix">منبع‌آزاد</string>
+    <string name="upgrade_feature_requires_pro">نیاز به BVM FOSS دارد</string>
+    <string name="upgrade_prompt_title">ارتقاء به BVM FOSS</string>
+    <string name="upgrade_prompt_body">قفل ویژگی های اضافی را باز کنید و برای حمایت از توسعه مداوم، حامی شوید!</string>
+    <string name="upgrade_prompt_upgrade_action">ارتقاء</string>
+    <string name="upgrade_screen_title">ارتقاء به BVM FOSS</string>
+    <string name="upgrade_screen_preamble">مدیر صدای بلوتوث تبلیغات ندارد و داده‌های کاربر را نمی‌فروشد. توسعه مداوم تنها با کمک شما ممکن می‌شود.</string>
+    <string name="upgrade_screen_how_title">چگونه کمک کنیم</string>
+    <string name="upgrade_screen_how_body">به حامی تبدیل شوید و توسعه را حمایت کنید! برای فعال کردن همه ویژگی‌های اضافی و باز کردن نمایه GitHub Sponsors من، روی دکمه زیر ضربه بزنید.</string>
+    <string name="upgrade_screen_why_title">آری، با این جادو ✨</string>
+    <string name="upgrade_screen_why_body">• یک دولوپر انگیزه‌مند 🧙\n• دستگاه‌های نامحدود ➡️➡️\n• اقدامات اضافی ⚙️\nو بیشتر…</string>
+    <string name="upgrade_screen_sponsor_action">حامی توسعه دهنده</string>
+    <string name="upgrade_screen_sponsor_action_hint">جایگزین تبلیغات، تجزیه و تحلیل و Google Play 🙁 هستند</string>
+    <string name="upgrade_screen_thanks_toast">از شما برای حمایت از توسعه منبع باز سپاسگزاریم ❤️</string>
+    <string name="upgrade_screen_sponsor_too_fast">زود بازگشتی؟ حمایت شما BVM را زنده نگه می‌دارد!</string>
+</resources>

@@ -1,15 +1,13 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
-
+    <string name="app_name_short">BVM</string>
     <!-- General -->
     <string name="general_error_label">Gabim</string>
     <string name="general_error_no_compatible_app_found_msg">Nuk u gjet aplikacion i përputhshëm për të trajtuar këtë kërkesë.</string>
-
     <string name="general_share_action">Ndaj</string>
     <string name="general_back_action">Mbrapa</string>
     <string name="general_show_details_action">Shfaq detajet</string>
-
     <!-- Onboarding-->
     <string name="onboarding_welcome_title">Mirëse në BVM</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager të lejon të menaxhosh vëllimin e zërit të pajisjeve Bluetooth në mënyrë automatike.</string>
@@ -25,12 +23,10 @@
     <string name="onboarding_rewrite_message">Duhej të e rishkruaj aplikacionin për të qëndruar në hap me ndryshimet e Android dhe kërkesat e Google. Kam modernizuar aplikacionin ku ishte e mundur për të siguruar që të vazhdon të funksionojë në mënyrë të besueshme.</string>
     <string name="onboarding_rewrite_features">Disa veçori kanë ndryshuar gjatë përditësimit. Ju lutemi kontrolloni cilësimet e pajisjes tuaj për të siguruar që gjithçka është konfiguruar saktë.</string>
     <string name="onboarding_rewrite_action">Vazhdo</string>
-
     <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">Nuk u gjetën pajisje të pamenaxhuara</string>
     <string name="discover_all_devices_managed_msg">Të gjitha pajisjet e tua të çiftuara janë të menaxhuara! Ke nevojë për një të re?</string>
     <string name="discover_pair_new_device_action">Çiftua pajisje të re</string>
-
     <!-- Devices -->
     <string name="devices_device_config_label">Konfigurimi i pajisjes</string>
     <string name="devices_device_config_section_general_label">Përgjithshta</string>
@@ -43,7 +39,6 @@
     <string name="devices_device_config_rename_device_action">Riemëro</string>
     <string name="devices_device_config_enabled_label">Aktivizuar</string>
     <string name="devices_device_config_enabled_desc">Reago ndaj kësaj pajisjeje kur lidhet</string>
-
     <string name="devices_device_config_section_timing_label">Kohëzgjatja</string>
     <string name="devices_device_config_monitoring_duration_label">Kohëzgjatja e monitorimit</string>
     <string name="devices_device_config_monitoring_duration_desc">Një kohëzgjatje në millisekonda, pas përshtatjeve të bëra, gjatë të cilit çdo ndryshim i mëtejshëm i volumit do të bllokohej.</string>
@@ -51,7 +46,6 @@
     <string name="devices_device_config_adjustment_delay_desc">Vonesa në millisekonda midis secilës përshtatjeje të volumit. Një vonese 0ms do të thotë të vendos voluminë në mënyrë të atëhershme kur kjo pajisje lidhet.</string>
     <string name="devices_device_config_reaction_delay_label">Vonese reaksioni</string>
     <string name="devices_device_config_reaction_delay_desc">Vonesa në millisekonda derisa ky aplikacion të reagojë ndaj kësaj pajisjeje.</string>
-
     <string name="devices_device_config_section_reaction_label">Reaksioni</string>
     <string name="devices_device_config_launch_app_label">Lança aplikacionet</string>
     <string name="devices_device_config_launch_app_desc">Lança aplikacione kur kjo pajisje lidhet.</string>
@@ -84,7 +78,6 @@
     <string name="devices_device_config_autoplay_keycodes_label">Llojet e çelësave</string>
     <string name="devices_device_config_autoplay_keycodes_desc">Konfiguro cilat çelësa të dërgosh dhe në çfarë rendi</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Nuk ka çelësa të konfiguruar</string>
-
     <string name="devices_device_config_section_volumes_label">Volumet</string>
     <string name="devices_device_config_section_volume_label">Vëllimi</string>
     <string name="devices_device_config_alarm_volume_label">Vëllimi i alarmit</string>
@@ -99,43 +92,37 @@
     <string name="devices_device_config_ring_volume_desc">Kontrollo volumin i cili prek zilen tuaj. Mund të vendosë edhe modalitetin e heshtur ose vibrimit.</string>
     <string name="devices_device_config_notification_policy_required_ringtone">Kontrolli i volumit të ziles kërkon qasje në politikën e njoftimit</string>
     <string name="devices_device_config_notification_policy_required_notification">Kontrolli i volumit të njoftimit kërkon qasje në politikën e njoftimit</string>
-    <string name="devices_device_config_notification_policy_required_dnd">Kontrolli i modalitetit "Mos Shqetëso" kërkon qasje në politikën e njoftimit</string>
+    <string name="devices_device_config_notification_policy_required_dnd">Kontrolli i modalitetit \"Mos Shqetëso\" kërkon qasje në politikën e njoftimit</string>
     <string name="devices_device_config_notification_policy_action">Jep qasje</string>
-    <string name="devices_device_config_dnd_on_connect_label">Modaliteti "Mos Shqetëso"</string>
+    <string name="devices_device_config_dnd_on_connect_label">Modaliteti \"Mos Shqetëso\"</string>
     <string name="dnd_mode_dialog_title">Zgjidh modalitetin DND</string>
     <string name="dnd_mode_dont_change">Mos ndrysho</string>
     <string name="dnd_mode_off">Mbyllur</string>
     <string name="dnd_mode_priority_only">Vetëm prioritet</string>
     <string name="dnd_mode_alarms_only">Vetëm alarme</string>
     <string name="dnd_mode_total_silence">Heshtje e plotë</string>
-
     <string name="devices_device_config_connection_alert_label">Sinjali i lidhjes</string>
     <string name="connection_alert_dialog_title">Sinjali i lidhjes</string>
     <string name="connection_alert_type_none">Asnjë</string>
     <string name="connection_alert_type_sound">Vetëm zëri</string>
     <string name="connection_alert_type_vibration">Vetëm vibrim</string>
     <string name="connection_alert_type_both">Zëri dhe vibrim</string>
-
     <string name="devices_stream_music_label">Muzika</string>
     <string name="devices_audio_stream_call_label">Thirrje</string>
     <string name="devices_audio_stream_ring_label">Zile</string>
     <string name="devices_audio_stream_notification_label">Njoftim</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-
     <string name="label_speaker_autosave">Ruajtje automatike e volumit</string>
-    <string name="description_speaker_autosave">Hyrja "Altoparlanti i pajisjes", e cila është përgjegjëse për volumet e paracaktuara, përditësohet vetvetiu kur lidhet një pajisje Bluetooth. Shënim: Kjo nuk funksionon në të gjitha pajisjet.</string>
-
+    <string name="description_speaker_autosave">Hyrja \"Altoparlanti i pajisjes\", e cila është përgjegjëse për volumet e paracaktuara, përditësohet vetvetiu kur lidhet një pajisje Bluetooth. Shënim: Kjo nuk funksionon në të gjitha pajisjet.</string>
     <string name="devices_neverseen_label">Kurrë i parë</string>
     <string name="devices_state_connected_label">I lidhur</string>
     <string name="devices_last_connected_label">I lidhur për herë të fundit: %s</string>
     <string name="devices_currently_connected_label">Aktualisht i lidhur</string>
     <string name="devices_device_disabled_label">Pajisja e çaktivizuar</string>
     <string name="devices_no_volumes_configured">Nuk ka volume të konfiguruar për këtë pajisje. Prekni Konfiguro për të vendosur përferencat e volumit.</string>
-
     <!-- Settings-->
     <string name="settings_label">Cilësimet</string>
     <string name="settings_category_other_label">Tjera</string>
-
     <!-- Settings/General-->
     <string name="general_settings_label">Përgjithshta</string>
     <string name="general_settings_desc">Përshtatjet e përgjithshme që ndikojnë në të gjithë aplikacionin.</string>
@@ -144,22 +131,23 @@
     <string name="ui_theme_mode_setting_explanation">Modaliteti i përdorur kur tematizohet aplikacioni (p.sh. natë ose ditë).</string>
     <string name="ui_theme_style_setting_label">Stili i temës</string>
     <string name="ui_theme_style_setting_explanation">Stili i ngjyrave i përdorur kur tematizohet aplikacioni.</string>
-
     <string name="ui_theme_mode_dark_label">Errët</string>
     <string name="ui_theme_mode_light_label">I ndritshëm</string>
     <string name="ui_theme_mode_system_label">Sistemi</string>
     <string name="ui_theme_style_default_label">Paracaktuar</string>
     <string name="ui_theme_style_medium_contrast_label">Kontrast i Mesëm</string>
     <string name="ui_theme_style_high_contrast_label">Kontrast i Lartë</string>
-    <string name="ui_theme_style_materialyou_label">Material You</string>
-
+    <string name="ui_theme_style_materialyou_label">Materia dhe Ju</string>
+    <string name="ui_theme_color_setting_label">Ngjyra e temës</string>
+    <string name="ui_theme_color_setting_explanation">Paleta e ngjyrave e përdorur kur tematizohet aplikacioni.</string>
+    <string name="ui_theme_color_material_you_note">Ngjyra vendoset nga sfondi juaj kur përdorni Material You.</string>
+    <string name="ui_theme_color_blue_label">Blu</string>
+    <string name="ui_theme_color_sunset_label">Perëndim dielli</string>
     <string name="ui_language_override_label">Gjuha e aplikacionit</string>
     <string name="ui_language_override_desc">Zgjidh një gjuhë tjetër për BVM, pavarësisht nga gjuha e paracaktuar e sistemit tuaj.</string>
-
     <!-- Settings/Devices-->
     <string name="devices_settings_label">Pajisjet</string>
     <string name="devices_settings_desc">Cilësimet që ndikojnë në të gjitha pajisjet e menaxhuara.</string>
-
     <string name="label_app_enabled">Aplikacioni i aktivizuar</string>
     <string name="description_app_enabled">Aktivizohej aftësinë e aplikacionit për t\'iu përgjigjur ngjarjeve të volumit dhe Bluetooth.</string>
     <string name="label_visible_volume_adjustments">Përshtatje të dukshme</string>
@@ -168,7 +156,6 @@
     <string name="description_volume_listener">Qëndro aktiv ndërsa pajisja lidhet dhe ruaj ndryshimet e volumit që nuk janë shkaktuar nga ky aplikacion.</string>
     <string name="label_boot_restore">Restauro në nisje</string>
     <string name="description_boot_restore">Restauro volumin pas nisjes/rishisjes nëse pajisja Bluetooth lidhet.</string>
-
     <!-- Settings/Support-->
     <string name="settings_support_label">Mbështetja</string>
     <string name="settings_support_description">Lexo dokumentacionin, raporto problemet, fol me të tjerë ose regjistro regjistrat e gabimit.</string>
@@ -180,31 +167,39 @@
     <string name="settings_support_debuglog_desc">Regjistro gjithçka që bën aplikacioni në një skedar teksti që mund të ndarë.</string>
     <string name="settings_support_debuglog_recording_desc">Aktualisht po regjistrohen informacione të debugging. Prekni për të ndaluar regjistrimin.</string>
     <string name="settings_support_debuglog_path">Rruga regjistri: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">Regjistrim shumë i shkurtër</string>
+    <string name="settings_support_debuglog_short_recording_msg">Ishte një regjistrim shumë i shkurtër. Regjistrat e debugging janë regjistrime, jo fotografi — riprodhoni problemin ndërkohë që regjistrimi është aktiv që regjistri të jetë i dobishëm.</string>
+    <string name="settings_support_debuglog_short_recording_continue">Vazhdo regjistrimin</string>
+    <string name="settings_support_debuglog_short_recording_stop">Ndaloje gjithsesi</string>
+    <string name="settings_support_debuglog_folder_label">Dosja e regjistrit të debugging</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d seancë duke përdorur %2$s</item>
+        <item quantity="other">%1$d seanca duke përdorur %2$s</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Nuk ka regjistër debugging të ruajtur</string>
+    <string name="settings_support_debuglog_folder_delete_title">Fshi të gjithë regjistrat e debugging?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">Kjo do të fshijë përgjithmonë të gjitha seancat e ruajtura të regjistrit të debugging.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Një vend për të qëndruar dhe për të bërë pyetje.</string>
-
     <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Mirënjohjet</string>
     <string name="settings_acknowledgements_description">Kredite, licenca dhe falenderim i veçantë</string>
     <string name="settings_acks_translation_header">Përkthim</string>
     <string name="settings_acks_translators_title">Përkthyesit</string>
-    <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
+    <string name="settings_acks_translators_people">Luan; Scarface (LuanGX@gmail.com)</string>
     <string name="settings_acks_translate_title">Përkthej BVM</string>
     <string name="settings_acks_translate_desc">Ndihmo të përkthej BVM në gjuhën tuaj</string>
-
     <string name="settings_acks_thanks_header">Falenderim</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Për mbështetjen e përkthimit të projekteve me kod të hapur</string>
     <string name="settings_licenses_label">Licencat</string>
-
+    <string name="settings_translation_label">Përkthimi</string>
+    <string name="settings_translation_desc">Ndihmoni në përkthimin e aplikacionit në gjuhën tuaj të preferuar</string>
     <string name="settings_sponsor_development_title">Shpenzo zhvillimin</string>
     <string name="settings_sponsor_development_summary">Bëhu patron dhe mundëso zhvillimin e vazhdueshëm.</string>
-
     <string name="settings_privacy_policy_label">Politika e privatësisë</string>
     <string name="settings_privacy_policy_desc">Trajtim përgjegjës i të dhënave.</string>
-
     <string name="changelog_label">Ndryshimet regjistri</string>
-
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Njoftimet e debugging</string>
     <string name="debug_log_consent_title">Regjistri i gabimit</string>
@@ -213,17 +208,69 @@
     <string name="debug_log_record_action">Regjistro</string>
     <string name="debug_log_stop_action">Ndaloni regjistrimin</string>
     <string name="debug_log_screen_title">Rejistues i Regjistrit të Debugging</string>
+    <string name="debug_log_screen_subtitle">Shqyrto dhe ndaj regjistrin e debugging të regjistruar</string>
+    <string name="debug_log_screen_sensitive_title">Informacione të ndjeshme</string>
     <string name="debug_log_screen_sensitive_information_message">Skedari i gjeneruar përmban informacione të ndjeshme (p.sh. emra skedarësh dhe aplikacione të instaluara). Ndaj vetëm me palë të besuara.</string>
     <string name="debug_log_screen_session_path_label">Rruga e seancës debugging</string>
     <string name="debug_log_screen_log_files_label">Skedarët e regjistrit</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d skedar gati (%2$s)</item>
+        <item quantity="other">%1$d skedarë gati (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">Hedh</string>
+    <string name="debug_log_screen_keep_action">Mbaj</string>
+    <string name="debug_log_compressing_label">Duke kompresuar…</string>
     <string name="debug_log_file_label">Skedari i regjistrit të regjistruar</string>
-
-
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">Regjistri u dërgua?</string>
+    <string name="support_debuglog_sent_message">Nëse e ke dërguar regjistrin e debugging, mund të fshihet nga pajisja. Dëshiron ta heqësh?</string>
+    <string name="support_debuglog_session_delete_title">Fshi regjistrin e debugging?</string>
+    <string name="support_debuglog_session_delete_message">Kjo seancë e regjistrit të debugging do të fshihet përgjithmonë.</string>
+    <string name="support_debuglog_session_recording">Duke regjistruar…</string>
+    <string name="support_debuglog_session_compressing">Duke kompresuar…</string>
+    <string name="support_debuglog_failed_empty_log">Regjistër bosh</string>
+    <string name="support_debuglog_failed_missing_log">Regjistër i munguar</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIP i dëmtuar</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP dështoi</string>
+    <string name="support_debuglog_clear_title">Fshi të gjithë regjistrat e debugging?</string>
+    <string name="support_debuglog_clear_message">Kjo do të fshijë përgjithmonë të gjitha seancat e ruajtura të regjistrit të debugging.</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">Kontakto zhvilluesin</string>
+    <string name="settings_support_contact_desc">Plotëso një formular për t\'i dërguar zhvilluesit një email.</string>
+    <string name="contact_screen_title">Kontakto zhvilluesin</string>
+    <string name="contact_category_bug_label">Raport gabimi</string>
+    <string name="contact_category_feature_label">Kërkesë për veçori</string>
+    <string name="contact_category_question_label">Pyetje</string>
+    <string name="contact_description_label">Përshkrimi</string>
+    <string name="contact_description_bug_hint">Përshkruaj çfarë ndodhi dhe si ta riprodhosh problemin.</string>
+    <string name="contact_description_feature_hint">Përshkruaj veçorinë që do të doje të shihje.</string>
+    <string name="contact_description_question_hint">Përshkruaj pyetjen tënde në detaje.</string>
+    <string name="contact_category_section_label">Kategoria</string>
+    <string name="contact_debug_log_label">Regjistri i debugging</string>
+    <string name="contact_debug_log_select_hint">Zgjidh një regjistër debugging për të bashkangjitur</string>
+    <string name="contact_debug_log_picker_hint">Bashkangji një regjistër debugging për të ndihmuar diagnostikimin e problemit më shpejt.</string>
+    <string name="contact_debug_log_picker_empty">Nuk ka regjistër debugging të disponueshëm. Regjistro njërin fillimisht.</string>
+    <string name="contact_expected_behavior_label">Sjellja e pritshme</string>
+    <string name="contact_expected_behavior_hint">Përshkruaj çfarë prisje të ndodhte.</string>
+    <string name="support_contact_debuglog_zip_error">Dështoi përgatitja e regjistrit të debugging për bashkëngjitur</string>
+    <string name="contact_send_action">Hap aplikacionin e emailit</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d fjalë</item>
+        <item quantity="other">%1$d / %2$d fjalë</item>
+    </plurals>
+    <string name="contact_welcome_msg">Lexoj çdo mesazh vetë dhe bëj çmos të përgjigjem, por meqë punoj vetëm, mund të duhet pak kohë. Faleminderit për durim.</string>
+    <string name="contact_footer_msg">Mesazhi yt do të dërgohet me email. Informacioni i pajisjes dhe i konfigurimit bashkëngjitet automatikisht.</string>
+    <string name="contact_no_email_app_msg">Nuk u gjet asnjë aplikacion emaili në këtë pajisje.</string>
+    <string name="contact_attachment_missing_msg">Skedari i regjistrit të debugging nuk ekziston më</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">Regjistrat e ruajtur të debugging</string>
+    <string name="settings_support_stored_logs_desc">%1$d seanca (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">Nuk ka regjistër të ruajtur debugging</string>
+    <string name="settings_support_stored_logs_delete_title">Fshi regjistrat e ruajtur?</string>
+    <string name="settings_support_stored_logs_delete_msg">Kjo do të fshijë të gjitha %1$d seancat e ruajtura të regjistrit të debugging.</string>
+    <string name="settings_support_stored_logs_deleted_msg">Regjistrat e ruajtur të debugging u fshinë</string>
     <string name="label_bug_reports">Raportet e gabimeve</string>
     <string name="description_bug_reports">Raportim automatik i gabimeve dhe kërcimit.</string>
-
-
     <string name="label_add_device">Shto pajisje</string>
     <string name="label_just_a_moment_please">Shëndete, një moment.</string>
     <string name="label_notification_channel_status">Statusi</string>
@@ -253,15 +300,12 @@
     <string name="action_grant_permission">Jep Lejë</string>
     <string name="label_status_listening_for_changes">Dëgjim ndryshimesh vëllimi</string>
     <string name="action_exit">Dalje</string>
-
-
     <string name="action_start">Fillimi</string>
     <string name="label_welcome">Mirëse</string>
     <string name="description_intro_contact">Mos ngurro të më kontaktosh nëse ke pyetje ose edhe një ide për një veçori të re.</string>
     <string name="label_translation">Përkthim</string>
     <string name="description_help_translate">Më ndihmo të bëj këtë aplikacion të disponueshëm në gjuhë të tjera.</string>
     <string name="label_device_speaker">Altoparlanti i pajisjes</string>
-
     <string name="label_keyevent_playpause">Luaj-Pauzo</string>
     <string name="label_keyevent_play">Luaj</string>
     <string name="label_keyevent_next">Tjetri</string>
@@ -269,7 +313,6 @@
     <string name="message_copied_to_clipboard">Kopjuar në clipboard</string>
     <string name="label_thanks">Falenderim</string>
     <string name="label_licenses">Licencat</string>
-
     <string name="description_ring_volume_additional_permission">Lejet shtesë janë të nevojshme për ndryshimin e volumit të ziles.</string>
     <string name="label_missing_permissions">Lejet që mungojnë</string>
     <string name="action_grant">Jep</string>
@@ -280,7 +323,6 @@
     <string name="label_exclude_gatt">Përjashtimi i profileve GATT</string>
     <string name="description_exclude_gattserver">Mos kërkuaj profilet e Bluetooth të llojit \'Atributi Përgjithshëm\' (GATT) server.</string>
     <string name="description_exclude_gatt">Mos kërkuaj profilet e Bluetooth të llojit \'Atributi Përgjithshëm\' (GATT) klient.</string>
-
     <string name="description_waiting_for_devicex">Duke pritur %s për të përfunduar lidhjen</string>
     <string name="action_undo">Zhbëj</string>
     <string name="action_show">Shfaq</string>
@@ -288,34 +330,34 @@
     <string name="action_fix">Zgjidh</string>
     <string name="battery_optimizations_issue_description">Optimizatat e baterisë janë të aktivizuara për këtë aplikacion dhe mund ta parandalojnë atë të marrë ngjarje Bluetooth. Konsideroni çaktivizimin e optimizimeve nëse po përjetoni probleme.</string>
     <string name="label_bluetooth_settings">Cilësimet e Bluetooth</string>
-    <string name="android10_applaunch_issue_description">Android 10 kufizon se si aplikacionet mund të lancohen nga foni. Për të lejuar hapjen e aplikacioneve kur lidhet pajisje Bluetooth, jepni lejën "Shfaq mbi aplikacionet e tjera" (SYSTEM_ALERT_WINDOW).</string>
+    <string name="android10_applaunch_issue_description">Android 10 kufizon se si aplikacionet mund të lancohen nga foni. Për të lejuar hapjen e aplikacioneve kur lidhet pajisje Bluetooth, jepni lejën \"Shfaq mbi aplikacionet e tjera\" (SYSTEM_ALERT_WINDOW).</string>
     <string name="label_opensource">Kodi burim</string>
     <string name="android13_notification_permission_description">Jepeni këtij aplikacioni lejen për të postuar njoftimet. Kjo lejon shfaqjen e një njoftimi kur ky aplikacion është aktiv dhe bëhen përshtatje të volumit.</string>
     <string name="privacy_policy_label">Politika e privatësisë</string>
     <string name="managed_devices_empty_message">Nuk ka paisje Bluetooth të konfiguruar.\nPrekni butonin + për të shtuar pajisjen tuaj të parë.</string>
+    <string name="label_pro_feature">Veçori premium</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Versioni falas: %1$d nga %2$d pajisje</item>
+        <item quantity="other">Versioni falas: %1$d nga %2$d pajisje</item>
+    </plurals>
     <string name="general_delete_action">Fshi</string>
     <string name="general_cancel_action">Anulo</string>
     <string name="general_ok_action">OK</string>
     <string name="general_configure_action">Konfiguro</string>
-
     <string name="battery_optimization_hint_title">Optimizimi i baterisë</string>
     <string name="battery_optimization_hint_message">Optimizatat e baterisë janë të aktivizuara dhe mund të parandalojnë funksionimin e duhur. Konsideroni çaktivizimin e tyre.</string>
     <string name="battery_optimization_fix_action">Çaktivizo optimizatat</string>
     <string name="android10_applaunch_hint_title">Leja për lanimin e aplikacionit</string>
-    <string name="android10_applaunch_hint_message">Android 10 kërkon lejen e veçantë për të lanuar aplikacionet ose për të shfaqur ekranin fillestar nga sfoni. Jepni lejën "Shfaq mbi aplikacionet e tjera".</string>
+    <string name="android10_applaunch_hint_message">Android 10 kërkon lejen e veçantë për të lanuar aplikacionet ose për të shfaqur ekranin fillestar nga sfoni. Jepni lejën \"Shfaq mbi aplikacionet e tjera\".</string>
     <string name="notification_permission_hint_title">Leja për njoftimet</string>
     <string name="notification_permission_hint_message">Jepeni lejën e njoftimit për të parë përditësimet e statusit kur përshtatni volumet.</string>
-
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Blerjeja u anulua</string>
     <string name="error_iap_unavailable_message">Blerjet brenda aplikacionit nuk janë të disponueshme</string>
     <string name="error_generic_message">Ndodhi një gabim. Ju lutemi provoni përsëri.</string>
     <string name="error_iap_owned_message">Ju tashmë zotërojnë këtë artikull</string>
-
     <string name="label_no_devices_title">Nuk ka Paisjesh</string>
-
     <string name="bluemusic_mascot_description">Ikona e aplikacionit</string>
-
     <!-- App Selection -->
     <string name="devices_app_selection_title">Zgjidh Aplikacionet</string>
     <string name="devices_app_selection_search_hint">Kërkoni aplikacionet…</string>
@@ -325,118 +367,22 @@
     <string name="general_reset_action">Zgjojë</string>
     <string name="general_clear_action">Pastro</string>
     <string name="general_save_action">Ruaj</string>
-
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Bllokimi</string>
     <string name="devices_indicator_awake">Zgjuar</string>
     <string name="devices_indicator_nudge">Lëvizje</string>
     <string name="devices_indicator_observe">Mbikëqyre</string>
     <string name="devices_indicator_disconnect">Shkëputje</string>
-    <string name="devices_indicator_limit">Limit</string>
+    <string name="devices_indicator_limit">Kufiri</string>
     <string name="devices_indicator_launch">Lance</string>
     <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Shtëpi</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alarm</string>
-
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Vëllimi (0–100)</string>
     <string name="devices_volume_input_error">Vendos një vlerë midis %1$d dhe %2$d</string>
-
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Blloko</string>
     <string name="devices_unlock_sliders_action">Zhblloko</string>
-
-    <!-- Debug log short recording warning -->
-    <string name="settings_support_debuglog_short_recording_title">Regjistrim shumë i shkurtër</string>
-    <string name="settings_support_debuglog_short_recording_msg">Ishte një regjistrim shumë i shkurtër. Regjistrat e debugging janë regjistrime, jo fotografi — riprodhoni problemin ndërkohë që regjistrimi është aktiv që regjistri të jetë i dobishëm.</string>
-    <string name="settings_support_debuglog_short_recording_continue">Vazhdo regjistrimin</string>
-    <string name="settings_support_debuglog_short_recording_stop">Ndaloje gjithsesi</string>
-
-    <!-- Debug log folder -->
-    <string name="settings_support_debuglog_folder_label">Dosja e regjistrit të debugging</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d seancë duke përdorur %2$s</item>
-        <item quantity="other">%1$d seanca duke përdorur %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Nuk ka regjistër debugging të ruajtur</string>
-    <string name="settings_support_debuglog_folder_delete_title">Fshi të gjithë regjistrat e debugging?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Kjo do të fshijë përgjithmonë të gjitha seancat e ruajtura të regjistrit të debugging.</string>
-
-    <!-- Debug log screen -->
-    <string name="debug_log_screen_subtitle">Shqyrto dhe ndaj regjistrin e debugging të regjistruar</string>
-    <string name="debug_log_screen_sensitive_title">Informacione të ndjeshme</string>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="one">%1$d skedar gati (%2$s)</item>
-        <item quantity="other">%1$d skedarë gati (%2$s)</item>
-    </plurals>
-    <string name="debug_log_screen_keep_action">Mbaj</string>
-    <string name="debug_log_compressing_label">Duke kompresuar…</string>
-
-    <!-- Debug log sessions -->
-    <string name="support_debuglog_sent_title">Regjistri u dërgua?</string>
-    <string name="support_debuglog_sent_message">Nëse e ke dërguar regjistrin e debugging, mund të fshihet nga pajisja. Dëshiron ta heqësh?</string>
-    <string name="support_debuglog_session_delete_title">Fshi regjistrin e debugging?</string>
-    <string name="support_debuglog_session_delete_message">Kjo seancë e regjistrit të debugging do të fshihet përgjithmonë.</string>
-    <string name="support_debuglog_session_recording">Duke regjistruar…</string>
-    <string name="support_debuglog_session_compressing">Duke kompresuar…</string>
-    <string name="support_debuglog_failed_empty_log">Regjistër bosh</string>
-    <string name="support_debuglog_failed_missing_log">Regjistër i munguar</string>
-    <string name="support_debuglog_failed_corrupt_zip">ZIP i dëmtuar</string>
-    <string name="support_debuglog_failed_zip_failed">ZIP dështoi</string>
-    <string name="support_debuglog_clear_title">Fshi të gjithë regjistrat e debugging?</string>
-    <string name="support_debuglog_clear_message">Kjo do të fshijë përgjithmonë të gjitha seancat e ruajtura të regjistrit të debugging.</string>
-
-    <!-- Contact developer -->
-    <string name="settings_support_contact_label">Kontakto zhvilluesin</string>
-    <string name="settings_support_contact_desc">Plotëso një formular për t\'i dërguar zhvilluesit një email.</string>
-    <string name="contact_screen_title">Kontakto zhvilluesin</string>
-    <string name="contact_category_bug_label">Raport gabimi</string>
-    <string name="contact_category_feature_label">Kërkesë për veçori</string>
-    <string name="contact_category_question_label">Pyetje</string>
-    <string name="contact_description_label">Përshkrimi</string>
-    <string name="contact_description_bug_hint">Përshkruaj çfarë ndodhi dhe si ta riprodhosh problemin.</string>
-    <string name="contact_description_feature_hint">Përshkruaj veçorinë që do të doje të shihje.</string>
-    <string name="contact_description_question_hint">Përshkruaj pyetjen tënde në detaje.</string>
-    <string name="contact_category_section_label">Kategoria</string>
-    <string name="contact_debug_log_label">Regjistri i debugging</string>
-    <string name="contact_debug_log_select_hint">Zgjidh një regjistër debugging për të bashkangjitur</string>
-    <string name="contact_debug_log_picker_hint">Bashkangji një regjistër debugging për të ndihmuar diagnostikimin e problemit më shpejt.</string>
-    <string name="contact_debug_log_picker_empty">Nuk ka regjistër debugging të disponueshëm. Regjistro njërin fillimisht.</string>
-    <string name="contact_expected_behavior_label">Sjellja e pritshme</string>
-    <string name="contact_expected_behavior_hint">Përshkruaj çfarë prisje të ndodhte.</string>
-    <string name="support_contact_debuglog_zip_error">Dështoi përgatitja e regjistrit të debugging për bashkëngjitur</string>
-    <string name="contact_send_action">Hap aplikacionin e emailit</string>
-    <plurals name="contact_word_count">
-        <item quantity="one">%1$d / %2$d fjalë</item>
-        <item quantity="other">%1$d / %2$d fjalë</item>
-    </plurals>
-    <string name="contact_welcome_msg">Lexoj çdo mesazh vetë dhe bëj çmos të përgjigjem, por meqë punoj vetëm, mund të duhet pak kohë. Faleminderit për durim.</string>
-    <string name="contact_footer_msg">Mesazhi yt do të dërgohet me email. Informacioni i pajisjes dhe i konfigurimit bashkëngjitet automatikisht.</string>
-    <string name="contact_no_email_app_msg">Nuk u gjet asnjë aplikacion emaili në këtë pajisje.</string>
-    <string name="contact_attachment_missing_msg">Skedari i regjistrit të debugging nuk ekziston më</string>
-
-    <!-- Stored logs -->
-    <string name="settings_support_stored_logs_label">Regjistrat e ruajtur të debugging</string>
-    <string name="settings_support_stored_logs_desc">%1$d seanca (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">Nuk ka regjistër të ruajtur debugging</string>
-    <string name="settings_support_stored_logs_delete_title">Fshi regjistrat e ruajtur?</string>
-    <string name="settings_support_stored_logs_delete_msg">Kjo do të fshijë të gjitha %1$d seancat e ruajtura të regjistrit të debugging.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Regjistrat e ruajtur të debugging u fshinë</string>
-
-    <!-- Premium feature label -->
-    <string name="label_pro_feature">Veçori premium</string>
-
-    <!-- Device limit banner -->
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">Versioni falas: %1$d nga %2$d pajisje</item>
-        <item quantity="other">Versioni falas: %1$d nga %2$d pajisje</item>
-    </plurals>
-
-    <!-- Theme color -->
-    <string name="ui_theme_color_setting_label">Ngjyra e temës</string>
-    <string name="ui_theme_color_setting_explanation">Paleta e ngjyrave e përdorur kur tematizohet aplikacioni.</string>
-    <string name="ui_theme_color_material_you_note">Ngjyra vendoset nga sfondi juaj kur përdorni Material You.</string>
-    <string name="ui_theme_color_blue_label">Blu</string>
-    <string name="ui_theme_color_sunset_label">Perëndim dielli</string>
 </resources>

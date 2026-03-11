@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">احترافي</string>
+    <string name="upgrade_feature_requires_pro">يتطلب BVM Pro</string>
+    <string name="upgrade_prompt_title">الترقية إلى BVM Pro</string>
+    <string name="upgrade_prompt_body">BVM Pro يمنحك نتائج أفضل، ومزيداً من المميزات والخيارات للمستخدمين المحترفين.</string>
+    <string name="upgrade_prompt_upgrade_action">تحديث</string>
+    <string name="upgrade_screen_title">الترقية إلى BVM Pro</string>
+    <string name="upgrade_screen_preamble">لا يعرض Bluetooth Volume Manager أية إعلانات ولا يبيع بيانات المستخدم. يتم تمويل عملي من قِبَلكم ❤️.</string>
+    <string name="upgrade_screen_why_title">المميزات</string>
+    <string name="upgrade_screen_why_body">• مطوّر متحمس 🧙
+• أجهزة غير محدودة ➡️➡️
+• إجراءات إضافية ⚙️
+والمزيد…</string>
+    <string name="upgrade_screen_how_title">الخيارات</string>
+    <string name="upgrade_screen_how_body">يمكنك الاختيار بين شراء مرّة واحدة واشتراك سنوي أرخص.\nيبدأ الاشتراك بالتجربة المجانية لمدة 14 يوما، وبعد ذلك ستتقاضى رسوما مرة واحدة في السنة. يمكن إلغاء التجربة والاشتراك في أي وقت.\nنفس الميزات لكن بنماذج تسعير مختلفة.</string>
+    <string name="upgrade_screen_subscription_trial_action">بدء التجربة المجانية لمدة 14 يوماً</string>
+    <string name="upgrade_screen_subscription_action">اشتراك</string>
+    <string name="upgrade_screen_subscription_action_hint">الاشتراك يكلف %s لكل سنة.</string>
+    <string name="upgrade_screen_iap_action">شراء مرة واحدة</string>
+    <string name="upgrade_screen_iap_action_hint">تكلفة الشراء لمرة واحدة %s.</string>
+    <string name="upgrade_screen_thanks_toast">أنت الأفضل ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">استعادة المُشتَرَى</string>
+    <string name="upgrade_screen_restore_purchase_message">الترقية الخاصة بك صالحة لكل الأجهزة باستخدام نفس حساب Google.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">نصائح استكشاف الأخطاء في الترقيات غير المعترف بها:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">قد تستغرق مزامنة متجر التشغيل وقتاً طويلا. حاول إعادة التشغيل، مسح ذاكرة التخزين المؤقت لـ Google Play أو الانتظار قليلا.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">الحسابات المتعددة يمكنها إرباك Google Play. سجّل الخروج من الحسابات الأخرى أو ثبّت من خلال موقع Google Play، الذي يفرض الرّبط مع حساب معين.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play غير متاح</string>
+    <string name="upgrades_gplay_unavailable_error_description">يتعذر على Bluetooth Volume Manager الاتصال بـ Google Play. هل تم تثبيت Google Play وتحديثه؟ هل تم تسجيل الدخول إلى حسابك في Google؟ حاول مسح ذاكرة التخزين المؤقت لتطبيق Google Play وإعادة تشغيل جهازك.</string>
+    <string name="upgrades_no_purchases_found_check_account">لم يتم العثور على عملية الشراء. هل تستخدم حساب Google الصحيح؟</string>
+</resources>

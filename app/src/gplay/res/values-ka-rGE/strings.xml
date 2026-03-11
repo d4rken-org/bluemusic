@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">პრო</string>
+    <string name="upgrade_feature_requires_pro">საჭიროა BVM Pro</string>
+    <string name="upgrade_prompt_title">გადაიდგეს BVM Pro-ზე</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro გთავაზობს უკეთეს შედეგადებს, მეტ თვისებასა და პარამეტრებს გამოცდილი მომხმარებისთვის.</string>
+    <string name="upgrade_prompt_upgrade_action">გარემონტება</string>
+    <string name="upgrade_screen_title">გადაიდგეს BVM Pro-ზე</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager რეკლამაგარეშია და მომხმარეთა მონაცემებს არ ყიდის. ჩემს სამუშაოს დაფინანსება თქვენია გვიერ გენიათ ❤️.</string>
+    <string name="upgrade_screen_why_title">უპირატესობები</string>
+    <string name="upgrade_screen_why_body">• მოტივირებული დამპროგრამებელი 🧙\n• ულიმიტო მოწყობილობები ➡️➡️\n• დამატებითი მოქმედები ⚙️\nდა მეტი მრავალი…</string>
+    <string name="upgrade_screen_how_title">ვარიანტები</string>
+    <string name="upgrade_screen_how_body">თქვენ შეგიძლიათ აირჩიოთ ერთჯერად შეძენასა და უფრო იაფ წლიურ გამოწერას შორის.\nგამოწერა იწყება უფასო 14-დღიანი საცდელი პერიოდით, რის შემდეგაც წელიწადში ერთხელ დაგეკისრებათ გადახდა. საცდელი და გამოწერა ნებისმიერ დროს შეიძლება გაუქმდეს.\nიგივე ფუნქციები, უბრალოდ განსხვავებული ფასების მოდელები.</string>
+    <string name="upgrade_screen_subscription_trial_action">დაიწყეთ უფასო 14-დღიანი საცდელი</string>
+    <string name="upgrade_screen_subscription_action">გამოწერა</string>
+    <string name="upgrade_screen_subscription_action_hint">გამოწერა ღირს %s წელიწადში.</string>
+    <string name="upgrade_screen_iap_action">ერთჯერადი შეძენა</string>
+    <string name="upgrade_screen_iap_action_hint">ერთჯერადი შეძენა ღირს %s.</string>
+    <string name="upgrade_screen_thanks_toast">Საუკეთესო ხარ! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">შეძენის აღდგენა</string>
+    <string name="upgrade_screen_restore_purchase_message">თქვენი განახლება მოქმედებს ყველა მოწყობილობაზე იმავე Google ანგარიშით.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">ამოუცნობი განახლებების პრობლემების მოგვარების რჩევები:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play Store სინქრონიზაციას შეიძლება დრო დასჭირდეს. სცადეთ გადატვირთვა, Google Play ქეშის გასუფთავება ან უბრალოდ დაელოდეთ.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">მრავალი ანგარიში შეიძლება აბნევდეს Google Play-ს. გამოდით სხვა ანგარიშებიდან ან დააინსტალირეთ Google Play ვებსაიტის მეშვეობით, რაც აიძულებს კონკრეტულ ანგარიშთან ასოციაციას.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play მიუწვდომელია</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager-ს არ შეუძლია Google Play-ზე დაკავშირება. დაყენებულია Google Play დაყენებულია და განახლებულია? ეში თქვენი Google ანგარიში შესულია? სცადეთ Google Play აპის ქეშის გასუფთავება და მოწყობილობის გადატვირთვა.</string>
+    <string name="upgrades_no_purchases_found_check_account">შესყიდვები ვერ მოიძებნა. სწორ ანგარიშს იყენებთ?</string>
+</resources>

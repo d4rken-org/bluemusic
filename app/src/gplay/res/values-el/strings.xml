@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">Απαιτεί το BVM Pro</string>
+    <string name="upgrade_prompt_title">Αναβαθμίστε στο BVM Pro</string>
+    <string name="upgrade_prompt_body">Το Bluetooth Volume Manager Pro προσφέρει καλύτερα αποτελέσματα, περισσότερες δυνατότητες και επιλογές για προχωρημένους χρήστες.</string>
+    <string name="upgrade_prompt_upgrade_action">Αναβάθμιση</string>
+    <string name="upgrade_screen_title">Αναβαθμίστε στο BVM Pro</string>
+    <string name="upgrade_screen_preamble">Το Bluetooth Volume Manager δεν έχει διαφημίσεις και δεν πωλεί δεδομένα χρηστών. Η δουλειά μου χρηματοδοτείται από εσάς ❤️.</string>
+    <string name="upgrade_screen_why_title">Πλεονεκτήματα</string>
+    <string name="upgrade_screen_why_body">• Ένας παρακινημένος προγραμματιστής 🧙
+• Απεριόριστες συσκευές ➡️➡️
+• Επιπλέον ενέργειες ⚙️
+και άλλα…</string>
+    <string name="upgrade_screen_how_title">Επιλογές</string>
+    <string name="upgrade_screen_how_body">Μπορείτε να επιλέξετε μεταξύ μιας εφάπαξ αγοράς και μιας φθηνότερης ετήσιας συνδρομής.\nΗ συνδρομή ξεκινά με μια δωρεάν δοκιμή 14 ημερών, μετά την οποία θα χρεώνεστε ετησίως. Η δοκιμή και η συνδρομή ακυρώνονται ανά πάσα στιγμή.\nΊδια χαρακτηριστικά, απλά διαφορετικά μοντέλα τιμολόγησης.</string>
+    <string name="upgrade_screen_subscription_trial_action">Έναρξη δωρεάν δοκιμής 14 ημερών</string>
+    <string name="upgrade_screen_subscription_action">Εγγραφή</string>
+    <string name="upgrade_screen_subscription_action_hint">Η συνδρομή κοστίζει %s ετησίως.</string>
+    <string name="upgrade_screen_iap_action">Εφάπαξ αγορά</string>
+    <string name="upgrade_screen_iap_action_hint">Η εφάπαξ αγορά κοστίζει %s.</string>
+    <string name="upgrade_screen_thanks_toast">Είστε οι καλύτεροι! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Επαναφορά αγοράς</string>
+    <string name="upgrade_screen_restore_purchase_message">Η αναβάθμιση σας είναι έγκυρη σε συσκευές στον ίδιο λογαριασμό Google.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Συμβουλές αντιμετώπισης προβλημάτων για μη αναγνωρισμένες αναβαθμίσεις:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Ο συγχρονισμός του Play Store ενδέχεται να πάρει χρόνο. Δοκιμάστε να κάνετε επανεκκίνηση, να καθαρίσετε την προσωρινή μνήμη του Google Play ή απλώς να περιμένετε.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Πολλοί λογαριασμοί μπορεί να μπερδέψουν το Google Play. Αποσυνδεθείτε από άλλους λογαριασμούς ή εγκαταστήστε το μέσω του ιστότοπου Google Play, κάτι που αναγκάζει τους συσχετισμούς με έναν συγκεκριμένο λογαριασμό.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Το Google Play δεν είναι διαθέσιμο</string>
+    <string name="upgrades_gplay_unavailable_error_description">Το Bluetooth Volume Manager δεν μπορεί να συνδεθεί με το Google Play. Είναι το Google Play εγκατεστημένο και ενημερωμένο; Έχετε συνδεθεί με τον λογαριασμό Google σας; Δοκιμάστε να διαγράψετε την προσωρινή μνήμη της εφαρμογής Google Play και να επανεκκινήσετε τη συσκευή σας.</string>
+    <string name="upgrades_no_purchases_found_check_account">Δεν βρέθηκαν αγορές. Χρησιμοποιείτε τον σωστό λογαριασμό;</string>
+</resources>

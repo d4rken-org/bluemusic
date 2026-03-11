@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">專業版</string>
+    <string name="upgrade_feature_requires_pro">需要 BVM Pro</string>
+    <string name="upgrade_prompt_title">升級至 BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro 提供更佳的結果、更多的功能和選項，適用於進階使用者。</string>
+    <string name="upgrade_prompt_upgrade_action">升級</string>
+    <string name="upgrade_screen_title">升級至 BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager 沒有廣告，也不會出售使用者資料。我的工作由你贊助 ❤️。</string>
+    <string name="upgrade_screen_why_title">優點</string>
+    <string name="upgrade_screen_why_body">• 充滿動力的開發者 🧙
+• 無限裝置 ➡️➡️
+• 額外動作 ⚙️
+以及更多…</string>
+    <string name="upgrade_screen_how_title">選項</string>
+    <string name="upgrade_screen_how_body">您可以選擇單次購買，也可以選擇更便宜的每年訂閱。\n訂閱開始時有 14 天的免費試用，之後每年計費。試用和訂閱可隨時取消。\n功能相同，僅有定價模式不同。</string>
+    <string name="upgrade_screen_subscription_trial_action">開始 14 天免費試用</string>
+    <string name="upgrade_screen_subscription_action">訂閱</string>
+    <string name="upgrade_screen_subscription_action_hint">訂閱費用為 %s 每年。</string>
+    <string name="upgrade_screen_iap_action">一次購買</string>
+    <string name="upgrade_screen_iap_action_hint">一次購買的費用為 %s。</string>
+    <string name="upgrade_screen_thanks_toast">您是最棒的！❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">還原購買</string>
+    <string name="upgrade_screen_restore_purchase_message">您的升級在同一 Google 帳戶的所有裝置上都有效。</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">無法辨識升級的疑難排解提示：</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play 商店同步處理可能需要一些時間。請嘗試重新開機、清除 Google Play 快取或只需等候。</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">多重帳戶可能會導致 Google Play 混亂。登出其他帳戶或透過 Google Play 網站安裝，這會強制與特定帳戶關聯。</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play 無法使用</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager 無法連接到 Google Play。Google Play 是否已安裝且為最新版本？您的 Google 帳戶是否已登入？請嘗試清除 Google Play 應用程式的快取並重新啟動您的裝置。</string>
+    <string name="upgrades_no_purchases_found_check_account">找不到購買，您正在使用正確的帳戶嗎？</string>
+</resources>

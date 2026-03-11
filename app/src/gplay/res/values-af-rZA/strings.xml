@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">Vereis BVM Pro</string>
+    <string name="upgrade_prompt_title">Opgradeer na BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro bied beter resultate, meer funksies en opsies vir kraggebruikers.</string>
+    <string name="upgrade_prompt_upgrade_action">Gradeer Op</string>
+    <string name="upgrade_screen_title">Opgradeer na BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager het geen advertensies nie en verkoop nie gebruikersdata nie. My werk word deur jou gefinansier ❤️.</string>
+    <string name="upgrade_screen_why_title">Voordele</string>
+    <string name="upgrade_screen_why_body">• \'n Gemotiveerde ontwikkelaar 🧙
+• Onbeperkte toestelle ➡️➡️
+• Ekstra aksies ⚙️
+en meer…</string>
+    <string name="upgrade_screen_how_title">Opsies</string>
+    <string name="upgrade_screen_how_body">Jy kan kies tussen \'n eenmalige aankoop en \'n goedkoper jaarlikse inskrywing.\nDie inskrywing begin met \'n gratis 14-dag proeftydperk, waarna jy een keer per jaar gehef sal word. Proef en inskrywing kan te eniger tyd gekanselleer word.\nDieselfde funksies, net verskillende prysmodelle.</string>
+    <string name="upgrade_screen_subscription_trial_action">Begin gratis 14-dag proef</string>
+    <string name="upgrade_screen_subscription_action">Teken in</string>
+    <string name="upgrade_screen_subscription_action_hint">Die inskrywing kos %s per jaar.</string>
+    <string name="upgrade_screen_iap_action">Eenmalige aankoop</string>
+    <string name="upgrade_screen_iap_action_hint">Die eenmalige aankoop kos %s.</string>
+    <string name="upgrade_screen_thanks_toast">Jy is die beste! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Herstel aankoop</string>
+    <string name="upgrade_screen_restore_purchase_message">Jou opgradering is geldig oor toestelle op dieselfde Google-rekening.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Foutherstel wenke vir onerkende opgraderings:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinkronisasie kan tyd neem. Probeer herlaai, maak Google Play kas skoon of wag net.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Veelvuldige rekeninge kan Google Play verwar. Meld af van ander rekeninge of installeer deur die Google Play webwerf, wat assosiasies met \'n spesifieke rekening dwing.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play is nie beskikbaar nie</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager kan nie aan Google Play koppel nie. Is Google Play geïnstalleer en opgedateer? Is jou Google-rekening aangemeld? Probeer om die kas van die Google Play-toepassing skoon te maak en jou toestel herlaai.</string>
+    <string name="upgrades_no_purchases_found_check_account">Geen aankope gevind nie. Gebruik jy die regte rekening?</string>
+</resources>

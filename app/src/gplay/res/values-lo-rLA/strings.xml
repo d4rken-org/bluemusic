@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">ຕ້ອງການ BVM Pro</string>
+    <string name="upgrade_prompt_title">ອັບເກຣດເປັນ BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ໃຫ້ຜ໏ລໍບທີ່ດີກວ່າ, ມີຄຸນສົມແລະຕັວເລືອກເພິ່ມເຕີມສຳຫຣັບຜູ້ໃຊ້ທີ່ເພີບ.</string>
+    <string name="upgrade_prompt_upgrade_action">ອັບເກຣດ</string>
+    <string name="upgrade_screen_title">ອັບເກຣດເປັນ BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager ບ່ມີໂຆສນາເກ໭ນແລະບ່ຂາຍຂ້ອມູນຜູ້ໃຊ້. ງານຂອງຂ້ອນສະຫນັບສນຸນໂດຍທ່ານ ❤️.</string>
+    <string name="upgrade_screen_why_title">ຂໍ້ດີ</string>
+    <string name="upgrade_screen_why_body">• ນ଱ກພັດທນາທີ່ມີແຣງຈູງໃຈ ༉
+• ອຸປກອນໄດ້ໄມ່ຈຳກັດ ➡️➡️
+• ການກຳໄວ້ເພິ່ມເຕີມ ⚙️
+ແລະอື່ນຢົ່ວ…</string>
+    <string name="upgrade_screen_how_title">ຕົວເລືອກ</string>
+    <string name="upgrade_screen_how_body">ທ່ານສາມາດເລືອກລະຫວ່າງການຊື້ຄັ້ງດຽວ ແລະການສະໝັກສະມາຊິກປະຈຳປີທີ່ຖືກກວ່າ.\nການສະໝັກສະມາຊິກເລີ່ມຕົ້ນດ້ວຍການທົດລອງຟຣີ 14 ວັນ, ຫຼັງຈາກນັ້ນທ່ານຈະຖືກຮຽກເກັບເງິນປີລະຄັ້ງ. ການທົດລອງ ແລະການສະໝັກສະມາຊິກສາມາດຍົກເລີກໄດ້ທຸກເວລາ.\nຄຸນສົມບັດດຽວກັນ, ພຽງແຕ່ຮູບແບບລາຄາທີ່ແຕກຕ່າງກັນ.</string>
+    <string name="upgrade_screen_subscription_trial_action">ເລີ່ມທົດລອງຟຣີ 14 ວັນ</string>
+    <string name="upgrade_screen_subscription_action">ສະໝັກສະມາຊິກ</string>
+    <string name="upgrade_screen_subscription_action_hint">ການສະໝັກສະມາຊິກລາຄາ %s ຕໍ່ປີ.</string>
+    <string name="upgrade_screen_iap_action">ການຊື້ຄັ້ງດຽວ</string>
+    <string name="upgrade_screen_iap_action_hint">ການຊື້ຄັ້ງດຽວລາຄາ %s.</string>
+    <string name="upgrade_screen_thanks_toast">ທ່ານດີທີ່ສຸດ! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">ກູ້ຄືນການຊື້</string>
+    <string name="upgrade_screen_restore_purchase_message">ການອັບເກຣດຂອງທ່ານໃຊ້ໄດ້ກັບອຸປະກອນຕ່າງໆໃນບັນຊີ Google ດຽວກັນ.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">ຄຳແນະນຳການແກ້ໄຂບັນຫາສຳລັບການອັບເກຣດທີ່ບໍ່ຮັບຮູ້:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">ການຊິງຄ໌ Play Store ອາດໃຊ້ເວລາ. ລອງຣີບູດ, ລ້າງແຄສ Google Play ຫຼືພຽງແຕ່ລໍຖ້າ.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">ບັນຊີຫຼາຍບັນຊີສາມາດເຮັດໃຫ້ Google Play ສັບສົນ. ອອກຈາກລະບົບຈາກບັນຊີອື່ນ ຫຼືຕິດຕັ້ງຜ່ານເວັບໄຊ Google Play, ເຊິ່ງບັງຄັບການເຊື່ອມໂຍງກັບບັນຊີສະເພາະ.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play ບໍ່ພ້ອມໃຊ້ງານ</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ໂຊ່ມຕ່ອກັບ Google Play ໄດ້. ໂດຍຕິດຕັ້ງ Google Play ແລະອັດເດທໄດ້ບ່? ເຂົ້າລັອກ Google ໄດ້ບ່? ລອງລ້າງແຄຊແລະຊົກເລີ່ມອຸປກອນຂອງທ່ານໃຫມ່.</string>
+    <string name="upgrades_no_purchases_found_check_account">ບໍ່ພົບການຊື້. ທ່ານກຳລັງໃຊ້ບັນຊີທີ່ຖືກຕ້ອງບໍ?</string>
+</resources>

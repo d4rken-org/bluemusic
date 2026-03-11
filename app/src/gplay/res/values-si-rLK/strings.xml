@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">BVM Pro අවශ්‍යයි</string>
+    <string name="upgrade_prompt_title">BVM Pro වෙත උත්‍යෝජනය කරන්න</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro වඩා හොඳ ප්‍රතිඵල, වැඩි විශේෂාංග සහ බලවත් පරිශීලකයින් සඳහා විකල්ප ලබා දෙයි.</string>
+    <string name="upgrade_prompt_upgrade_action">වැඩිදියුණු කරන්න</string>
+    <string name="upgrade_screen_title">BVM Pro වෙත උත්‍යෝජනය කරන්න</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager හි දැන්වීම් නොමැති අතර පරිශීලක දත්ත විකුණන්නේ නැත. මගේ වැඩ ඔබ විසින් මූල්‍යාධාර සපයයි ❤️.</string>
+    <string name="upgrade_screen_why_title">වාසි</string>
+    <string name="upgrade_screen_why_body">• උනන්දු සංවර්ධකයෙකු 🧙
+• අසීමිත උපකරණ ➡️➡️
+• අමතර ක්‍රියා ⚙️
+සහ තවත්…</string>
+    <string name="upgrade_screen_how_title">විකල්ප</string>
+    <string name="upgrade_screen_how_body">ඔබට එක් වරක් මිලදී ගැනීමක් සහ මිල අඩු වාර්ෂික දායකත්වයක් අතර තෝරා ගත හැක.\nදායකත්වය දින 14ක නොමිලේ අත්හදා බැලීමක් සමඟ ආරම්භ වන අතර, ඉන්පසු ඔබට වසරකට වරක් අය කෙරේ. අත්හදා බැලීම සහ දායකත්වය ඕනෑම වේලාවක අවලංගු කළ හැක.\nඑකම විශේෂාංග, මිල ගණන් ආකෘති පමණක් වෙනස්.</string>
+    <string name="upgrade_screen_subscription_trial_action">දින 14ක නොමිලේ අත්හදා බැලීම ආරම්භ කරන්න</string>
+    <string name="upgrade_screen_subscription_action">දායක වන්න</string>
+    <string name="upgrade_screen_subscription_action_hint">දායකත්වය වසරකට %s වැය වේ.</string>
+    <string name="upgrade_screen_iap_action">එක් වරක් මිලදී ගැනීම</string>
+    <string name="upgrade_screen_iap_action_hint">එක් වරක් මිලදී ගැනීම %s වැය වේ.</string>
+    <string name="upgrade_screen_thanks_toast">ඔබ හොඳම කෙනා! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">මිලදී ගැනීම ප්‍රතිසාධනය කරන්න</string>
+    <string name="upgrade_screen_restore_purchase_message">ඔබගේ උත්ශ්‍රේණිය එකම Google ගිණුමේ උපාංග හරහා වලංගු වේ.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">හඳුනා නොගත් උත්ශ්‍රේණි සඳහා දෝෂ නිරාකරණ ඉඟි:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play Store සමමුහුර්ත කිරීමට කාලය ගත විය හැක. නැවත ආරම්භ කිරීම, Google Play හැඹිලිය මැකීම හෝ සරලව රැඳී සිටීමට උත්සාහ කරන්න.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">බහු ගිණුම් Google Play ව්‍යාකූල කළ හැක. වෙනත් ගිණුම් වලින් පිටවන්න හෝ Google Play වෙබ් අඩවිය හරහා ස්ථාපනය කරන්න, එය නිශ්චිත ගිණුමක් සමඟ සම්බන්ධතා බල කරයි.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play ලබා ගත නොහැක</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager හට Google Play වෙත සම්බන්ධ වීමට නොහැකිය. Google Play ස්ථාපිත කර යාවත්කාලීන ද? ඔබේ Google ගිණුම පිවිසී ද? Google Play යෙදුමේ හැඹිලිය ඉවත් කර ඔබේ උපාංගය නැවත ආරම්භ කිරීමට උත්සාහ කරන්න.</string>
+    <string name="upgrades_no_purchases_found_check_account">කිසිදු මිලදී ගැනීමක් හමු නොවිණි. ඔබ නිවැරදි ගිණුම භාවිතා කරන්නේද?</string>
+</resources>

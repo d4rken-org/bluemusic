@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">Dastga BVM Pro</string>
+    <string name="upgrade_prompt_title">Upgradar a BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro offra megliers resultats, pli blers featura ed opziuns per utilisaders avanzads.</string>
+    <string name="upgrade_prompt_upgrade_action">Actualisar</string>
+    <string name="upgrade_screen_title">Upgradar a BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager n\'ha nagins annunzis e na venda betg las datas dals utilisaders. Mia lavur vegn finanziada da tai ❤️.</string>
+    <string name="upgrade_screen_why_title">Avantatgs</string>
+    <string name="upgrade_screen_why_body">• In sviluppader motivà 🧙\n• Apparats senza limita ➡️➡️\n• Acziuns supplementaras ⚙️\ne dapli…</string>
+    <string name="upgrade_screen_how_title">Opziuns</string>
+    <string name="upgrade_screen_how_body">Ti pos tscherner tranter ina cumprenda singula e in abunament annual pli bunmartgà.\nL\'abunament cumenza cun ina prova gratuita da 14 dis, suenter la quala vegns ti fatturà in\'ura a l\'onn. La prova ed il subscripziun èn revocabels en mintga mument.\nMemsmas caratteristicas, mo models da pretsch differents.</string>
+    <string name="upgrade_screen_subscription_trial_action">Cumenzar prova gratuita da 14 dis</string>
+    <string name="upgrade_screen_subscription_action">Abunament</string>
+    <string name="upgrade_screen_subscription_action_hint">L\'abunament custa %s per onn.</string>
+    <string name="upgrade_screen_iap_action">Cumprenda singula</string>
+    <string name="upgrade_screen_iap_action_hint">La cumprenda singula custa %s.</string>
+    <string name="upgrade_screen_thanks_toast">Ti es il meglier! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Recuperar cumprenda</string>
+    <string name="upgrade_screen_restore_purchase_message">Tia actualisaziun è valaivla sin tuts ils apparat sul medem conto Google.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Tips per la soluziun da problems per actualisaziuns betg agnoschidas:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">La sincronisaziun cun il Play Store po prender temp. Emprova da ristar l\'apparat, da stgular il cache da Google Play u simplamain spetga.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Divers contos pon cunfunder Google Play. Sorta dad autri contos u installa via il website da Google Play, che forza l\'assoziaziun cun in conto specific.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play n\'è betg disponibel</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager na po betg sa connectar cun Google Play. Es Google Play installar ed actualisà? Es tiu conto Google s\'annunzià? Emprova da stgular il cache da l\'applicaziun Google Play e da ristar tiu apparat.</string>
+    <string name="upgrades_no_purchases_found_check_account">Nagins acquists chattads. Utiliseschas ti il conto gist?</string>
+</resources>

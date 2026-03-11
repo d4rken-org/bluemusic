@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">Krefst BVM Pro</string>
+    <string name="upgrade_prompt_title">Uppfæra í BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro býður upp á betri niðurstöður, fleiri eiginleika og valkosti fyrir öfluga notendur.</string>
+    <string name="upgrade_prompt_upgrade_action">Uppfæra</string>
+    <string name="upgrade_screen_title">Uppfæra í BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager hefur engar auglýsingar og selur ekki notendagögn. Verk mitt er fjármagnat af þér ❤️.</string>
+    <string name="upgrade_screen_why_title">Kostir</string>
+    <string name="upgrade_screen_why_body">• Áhugasamur forritari 🧙\n• Ótakmörkuð tæki ➡️➡️\n• Auka aðgerðir ⚙️\nog fleira…</string>
+    <string name="upgrade_screen_how_title">Valkostir</string>
+    <string name="upgrade_screen_how_body">Þú getur valið á milli einskiptiskaupa og ódýrari árlegrar áskriftar.\nÁskriftin byrjar með ókeypis 14 daga prufu, eftir það verður þér rukkað einu sinni á ári. Prufan og áskrift er hægt að hætta við hvenær sem er.\nSömu eiginleikar, bara mismunandi verðlagslíkön.</string>
+    <string name="upgrade_screen_subscription_trial_action">Byrja ókeypis 14 daga prufu</string>
+    <string name="upgrade_screen_subscription_action">Gerast áskrifandi</string>
+    <string name="upgrade_screen_subscription_action_hint">Áskriftin kostar %s á ári.</string>
+    <string name="upgrade_screen_iap_action">Einskiptiskaup</string>
+    <string name="upgrade_screen_iap_action_hint">Einskiptiskaupið kostar %s.</string>
+    <string name="upgrade_screen_thanks_toast">Þú ert bestur! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Endurheimta kaup</string>
+    <string name="upgrade_screen_restore_purchase_message">Uppfærslan þín gildir á tækjum með sama Google reikning.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Úrræðaleitarráð fyrir óþekktar uppfærslur:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play Store samstilling getur tekið tíma. Reyndu að endurræsa, hreinsa Google Play skyndiminni eða bara bíða.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Margir reikningar geta ruglað Google Play. Skráðu þig út úr öðrum reikningum eða settu upp í gegnum Google Play vefsíðuna, sem neyðir tengsl við ákveðinn reikning.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play er ekki tiltækt</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager getur ekki tengst Google Play. Er Google Play uppsettur og uppfærður? Er Google reikningurinn þinð skráður inn? Prof aðu að hreinsa skyndiminnni Google Play forritsins og endurræsa tækið þit.</string>
+    <string name="upgrades_no_purchases_found_check_account">Engin kaup fundust. Ertu að nota réttan reikning?</string>
+</resources>

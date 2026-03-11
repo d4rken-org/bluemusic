@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">Потребен е BVM Pro</string>
+    <string name="upgrade_prompt_title">Надгради на BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro нуди подобри резултати, повеќе функции и опции за напредни корисници.</string>
+    <string name="upgrade_prompt_upgrade_action">Надградба</string>
+    <string name="upgrade_screen_title">Надгради на BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager нема реклами и не продава кориснички податоци. Мојата работа е финансирана од вас ❤️.</string>
+    <string name="upgrade_screen_why_title">Предности</string>
+    <string name="upgrade_screen_why_body">• Мотивиран програмер 🧙
+• Неограничен број уреди ➡️➡️
+• Дополнителни акции ⚙️
+и уште многу…</string>
+    <string name="upgrade_screen_how_title">Опции</string>
+    <string name="upgrade_screen_how_body">Можете да избирате помеѓу еднократна купувачка и поевтина годишна претплата.\nПретплатата започнува со бесплатен пробен период од 14 дена, по што ќе ви се наплаќа еднаш годишно. Пробниот период и претплатата можат да се откажат во секое време.\nИсти функции, само различни модели на цени.</string>
+    <string name="upgrade_screen_subscription_trial_action">Започнете бесплатен пробен период од 14 дена</string>
+    <string name="upgrade_screen_subscription_action">Претплатете се</string>
+    <string name="upgrade_screen_subscription_action_hint">Претплатата чини %s годишно.</string>
+    <string name="upgrade_screen_iap_action">Еднократна купувачка</string>
+    <string name="upgrade_screen_iap_action_hint">Еднократната купувачка чини %s.</string>
+    <string name="upgrade_screen_thanks_toast">Вие сте најдобри! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Обнови купувачка</string>
+    <string name="upgrade_screen_restore_purchase_message">Вашата надградба важи на сите уреди со иста Google сметка.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Совети за решавање проблеми за непрепознаени надградби:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Синхронизацијата на Play Store може да потрае. Обидете се да рестартирате, исчистете ја кеш меморијата на Google Play или едноставно почекајте.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Повеќе сметки можат да го збунат Google Play. Одјавете се од другите сметки или инсталирајте преку веб-страницата на Google Play, што принудува асоцијации со конкретна сметка.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play не е достапен</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager не може да се поврзе со Google Play. Дали Google Play е инсталиран и ажуриран? Дали вашата Google сметка е најавена? Обидете се да ја исчистите кеш меморијата на апликацијата Google Play и рестартирајте го вашиот уред.</string>
+    <string name="upgrades_no_purchases_found_check_account">Не се пронајдени купувања. Дали користите вистинска сметка?</string>
+</resources>

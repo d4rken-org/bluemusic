@@ -1,15 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth 音量マネージャ</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
     <string name="general_error_label">エラー</string>
     <string name="general_error_no_compatible_app_found_msg">このリクエストを処理できる互換性のあるアプリが見つかりません。</string>
     <string name="general_share_action">共有</string>
     <string name="general_back_action">戻る</string>
     <string name="general_show_details_action">詳細を表示</string>
-    <string name="general_clear_action">クリア</string>
-    <string name="general_navigate_back_action">戻る</string>
-    <string name="general_reset_action">リセット</string>
-    <string name="general_save_action">保存</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVMへようこそ</string>
     <string name="onboarding_welcome_message">Bluetooth音量マネージャは、Bluetoothデバイスの音量を自動的に管理できるようにします。</string>
     <string name="onboarding_welcome_action">はじめよう</string>
@@ -24,9 +23,11 @@
     <string name="onboarding_rewrite_message">Androidの変更とGoogleの要件により、アプリが確実に動作し続けるように、Bluetooth Volume Managerを一から完全に再構築しました。</string>
     <string name="onboarding_rewrite_features">このアップデート中に一部のデバイス設定がリセットされた可能性があります。デバイスの設定を確認してください。</string>
     <string name="onboarding_rewrite_action">続ける</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">管理されていないデバイスが見つかりません</string>
     <string name="discover_all_devices_managed_msg">ペアリングされたデバイスはすべて管理されています！新しいのが必要ですか？</string>
     <string name="discover_pair_new_device_action">新しいデバイスをペアリング</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">デバイス設定</string>
     <string name="devices_device_config_section_general_label">一般</string>
     <string name="devices_device_config_remove_device_label">デバイスを忘れる</string>
@@ -36,32 +37,31 @@
     <string name="devices_device_config_rename_device_label">デバイス名を変更</string>
     <string name="devices_device_config_rename_device_desc">このアプリ内で、可能であればシステム内でも、このデバイスの名前を変更します。</string>
     <string name="devices_device_config_rename_device_action">名前変更</string>
+    <string name="devices_device_config_enabled_label">有効</string>
+    <string name="devices_device_config_enabled_desc">接続時にこのデバイスに反応する</string>
     <string name="devices_device_config_section_timing_label">タイミング</string>
     <string name="devices_device_config_monitoring_duration_label">モニタリング間隔</string>
     <string name="devices_device_config_monitoring_duration_desc">いったん調整が完了した後、それ以上の音量変更がブロックされる時間をミリ秒単位で指定します。</string>
     <string name="devices_device_config_adjustment_delay_label">調節の遅延</string>
     <string name="devices_device_config_adjustment_delay_desc">各音量調整の間のミリ秒単位の遅延です。遅延0msは、このデバイスが接続されたときに即座に音量を設定することを意味します。</string>
-    <string name="devices_app_selection_currently_selected">現在選択中</string>
-    <string name="devices_app_selection_search_hint">アプリを検索...</string>
-    <string name="devices_app_selection_selected_count">%d個のアプリが選択されています</string>
-    <string name="devices_app_selection_title">アプリを選択</string>
     <string name="devices_device_config_reaction_delay_label">反応の遅延</string>
     <string name="devices_device_config_reaction_delay_desc">このアプリが端末に反応するまでのミリ秒単位の遅延。</string>
     <string name="devices_device_config_section_reaction_label">その他</string>
     <string name="devices_device_config_launch_app_label">アプリを起動</string>
     <string name="devices_device_config_launch_app_desc">このデバイスが接続されたときにアプリを起動します。</string>
     <string name="devices_device_config_launch_app_multiple_desc">%d個のアプリが選択されています</string>
+    <string name="devices_device_config_show_home_screen_label">ホーム画面を表示</string>
+    <string name="devices_device_config_show_home_screen_desc">このデバイスのすべてのイベントが処理された後、ホーム画面を表示しようとします。すべてのAndroidバージョンで動作するとは限りません。</string>
     <string name="devices_device_config_nudge_volume_label">音量の微調整</string>
     <string name="devices_device_config_nudge_volume_description">システム上で希望の音量が既に設定されていても、音量を一度下げてから上げます。</string>
-    <string name="devices_device_config_notification_policy_action">アクセスを許可</string>
-    <string name="devices_device_config_notification_policy_required_notification">通知音量の制御には通知ポリシーアクセスが必要です</string>
-    <string name="devices_device_config_notification_policy_required_ringtone">着信音量の制御には通知ポリシーアクセスが必要です</string>
     <string name="devices_device_config_visible_adjustments_label">表示される調整</string>
     <string name="devices_device_config_visible_adjustments_desc">デバイスカードに表示される調整項目を切り替えます</string>
     <string name="devices_device_config_keep_awake_label">スリープモードにしない</string>
     <string name="devices_device_config_keep_awake_desc">このデバイスが接続されている間は、画面をオンのままにします。</string>
     <string name="devices_device_config_volume_observe_label">変更を監視</string>
     <string name="devices_device_config_volume_observe_desc">このデバイスが接続されている間はアクティブのままにし、このアプリが原因ではない音量変更を保存します。</string>
+    <string name="devices_device_config_volume_save_on_disconnect_label">切断時に音量を保存</string>
+    <string name="devices_device_config_volume_save_on_disconnect_desc">このデバイスが切断されたときに、現在の音量レベルを取得して保存します。</string>
     <string name="devices_device_config_volume_lock_label">音量固定</string>
     <string name="devices_device_config_volume_lock_desc">このデバイスが接続されている間は、このアプリ以外による音量の変更はすべて元に戻されます。</string>
     <string name="devices_device_config_volume_rate_limiter_label">音量レート制限</string>
@@ -72,12 +72,12 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">音量減少間の最小時間: %d ms</string>
     <string name="devices_device_config_autoplay_label">自動再生</string>
     <string name="devices_device_config_autoplay_desc">このデバイスが接続されたときに、Bluetoothリモコンでの再生をシミュレートします。</string>
-    <string name="devices_device_config_autoplay_keycodes_available">利用可能なキータイプ</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">送信するキーの種類と順序を設定します</string>
-    <string name="devices_device_config_autoplay_keycodes_label">キータイプ</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">キーが設定されていません</string>
-    <string name="devices_device_config_autoplay_keycodes_order">選択されたキー（順序通り）</string>
     <string name="devices_device_config_autoplay_keycodes_title">自動再生キータイプ</string>
+    <string name="devices_device_config_autoplay_keycodes_available">利用可能なキータイプ</string>
+    <string name="devices_device_config_autoplay_keycodes_order">選択されたキー（順序通り）</string>
+    <string name="devices_device_config_autoplay_keycodes_label">キータイプ</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">送信するキーの種類と順序を設定します</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">キーが設定されていません</string>
     <string name="devices_device_config_section_volumes_label">音量</string>
     <string name="devices_device_config_section_volume_label">音量</string>
     <string name="devices_device_config_alarm_volume_label">アラームの音量</string>
@@ -90,6 +90,23 @@
     <string name="devices_device_config_call_volume_desc">このデバイスが接続されているとき、通話に影響する音量を制御します。</string>
     <string name="devices_device_config_ring_volume_label">着信音の音量</string>
     <string name="devices_device_config_ring_volume_desc">着信音に影響する音量を制御します。</string>
+    <string name="devices_device_config_notification_policy_required_ringtone">着信音量の制御には通知ポリシーアクセスが必要です</string>
+    <string name="devices_device_config_notification_policy_required_notification">通知音量の制御には通知ポリシーアクセスが必要です</string>
+    <string name="devices_device_config_notification_policy_required_dnd">おやすみモードの制御には通知ポリシーアクセスが必要です</string>
+    <string name="devices_device_config_notification_policy_action">アクセスを許可</string>
+    <string name="devices_device_config_dnd_on_connect_label">おやすみモード</string>
+    <string name="dnd_mode_dialog_title">おやすみモードを選択</string>
+    <string name="dnd_mode_dont_change">変更しない</string>
+    <string name="dnd_mode_off">オフ</string>
+    <string name="dnd_mode_priority_only">重要な通知のみ</string>
+    <string name="dnd_mode_alarms_only">アラームのみ</string>
+    <string name="dnd_mode_total_silence">完全無音</string>
+    <string name="devices_device_config_connection_alert_label">接続アラート</string>
+    <string name="connection_alert_dialog_title">接続アラート</string>
+    <string name="connection_alert_type_none">なし</string>
+    <string name="connection_alert_type_sound">サウンドのみ</string>
+    <string name="connection_alert_type_vibration">バイブのみ</string>
+    <string name="connection_alert_type_both">サウンドとバイブ</string>
     <string name="devices_stream_music_label">音楽</string>
     <string name="devices_audio_stream_call_label">通話</string>
     <string name="devices_audio_stream_ring_label">着信</string>
@@ -102,11 +119,11 @@
     <string name="devices_last_connected_label">最後の接続: %s</string>
     <string name="devices_currently_connected_label">現在接続中</string>
     <string name="devices_device_disabled_label">デバイス無効</string>
-    <string name="devices_device_config_enabled_label">有効</string>
-    <string name="devices_device_config_enabled_desc">接続時にこのデバイスに反応する</string>
     <string name="devices_no_volumes_configured">このデバイスに音量が設定されていません。「設定」をタップして音量設定を行ってください。</string>
+    <!-- Settings-->
     <string name="settings_label">設定</string>
     <string name="settings_category_other_label">その他</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">一般</string>
     <string name="general_settings_desc">アプリ全体に影響する一般的な設定。</string>
     <string name="settings_category_ui_label">ユーザーインターフェース</string>
@@ -121,8 +138,14 @@
     <string name="ui_theme_style_medium_contrast_label">中コントラスト</string>
     <string name="ui_theme_style_high_contrast_label">高コントラスト</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
+    <string name="ui_theme_color_setting_label">テーマカラー</string>
+    <string name="ui_theme_color_setting_explanation">アプリのテーマで使用されるカラーパレット。</string>
+    <string name="ui_theme_color_material_you_note">Material You使用時はカラーが壁紙で設定されます。</string>
+    <string name="ui_theme_color_blue_label">ブルー</string>
+    <string name="ui_theme_color_sunset_label">サンセット</string>
     <string name="ui_language_override_label">アプリ言語</string>
     <string name="ui_language_override_desc">システムのデフォルト言語とは獨立して、BVMに別の言語を選択します。</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">デバイス</string>
     <string name="devices_settings_desc">すべての管理デバイスに影響する設定。</string>
     <string name="label_app_enabled">アプリの有効化</string>
@@ -133,6 +156,7 @@
     <string name="description_volume_listener">デバイスが接続されている間はアプリを常駐させて、このアプリ以外による音量の変更を保存します。</string>
     <string name="label_boot_restore">起動時に復元</string>
     <string name="description_boot_restore">Bluetoothデバイスが接続されている場合、起動/再起動後に音量を復元します。</string>
+    <!-- Settings/Support-->
     <string name="settings_support_label">サポート</string>
     <string name="settings_support_description">ドキュメントを読んだり、問題を報告したり、他の人とチャットしたり、デバッグログを記録したりできます。</string>
     <string name="settings_support_wiki_label">ドキュメント</string>
@@ -143,24 +167,39 @@
     <string name="settings_support_debuglog_desc">アプリが行っているすべてをテキストファイルに記録して共有できます。</string>
     <string name="settings_support_debuglog_recording_desc">現在デバッグ情報を記録中です。タップして記録を停止します。</string>
     <string name="settings_support_debuglog_path">ログパス: %1$s</string>
+    <string name="settings_support_debuglog_short_recording_title">非常に短い録音</string>
+    <string name="settings_support_debuglog_short_recording_msg">非常に短い録音でした。デバッグログは録音であり、スナップショットではありません — ログを有用にするには、録音中に問題を再現してください。</string>
+    <string name="settings_support_debuglog_short_recording_continue">録音を続ける</string>
+    <string name="settings_support_debuglog_short_recording_stop">それでも停止する</string>
+    <string name="settings_support_debuglog_folder_label">デバッグログフォルダ</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="other">%1$d セッション、%2$s 使用</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">保存されたデバッグログなし</string>
+    <string name="settings_support_debuglog_folder_delete_title">すべてのデバッグログを削除しますか？</string>
+    <string name="settings_support_debuglog_folder_delete_msg">保存されたデバッグログセッションをすべて完全に削除します。</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">雑談や質問ができる場所。</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">謝辞</string>
     <string name="settings_acknowledgements_description">クレジット、ライセンス、特別な感謝</string>
     <string name="settings_acks_translation_header">翻訳</string>
     <string name="settings_acks_translators_title">翻訳者</string>
-    <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
+    <string name="settings_acks_translators_people">Estel Freesia;Re*Index.(ot_inc)</string>
     <string name="settings_acks_translate_title">BVMを翻訳</string>
     <string name="settings_acks_translate_desc">BVMをあなたの言語に翻訳するのを手伝ってください</string>
     <string name="settings_acks_thanks_header">謝辞</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">オープンソースプロジェクトの翻訳をサポートしてくださりありがとうございます</string>
     <string name="settings_licenses_label">ライセンス</string>
+    <string name="settings_translation_label">翻訳</string>
+    <string name="settings_translation_desc">このアプリをあなたの好きな言語に翻訳するのを手伝ってください</string>
     <string name="settings_sponsor_development_title">開発をスポンサー</string>
     <string name="settings_sponsor_development_summary">パトロンになって継続的な開発を可能にしてください。</string>
     <string name="settings_privacy_policy_label">プライバシーポリシー</string>
     <string name="settings_privacy_policy_desc">データを責任を持って処理します。</string>
     <string name="changelog_label">変更ログ</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">デバッグ通知</string>
     <string name="debug_log_consent_title">デバッグログ</string>
     <string name="debug_log_consent_explanation">この機能はアプリが行っているすべてを共有可能なファイルに記録します。生成されるファイルには機密情報（例：ファイル名やインストール済みアプリ）が含まれています。信頼できる相手（例：問題をトラブルシューティングしている開発者）とのみ共有してください。</string>
@@ -168,11 +207,65 @@
     <string name="debug_log_record_action">記録</string>
     <string name="debug_log_stop_action">記録停止</string>
     <string name="debug_log_screen_title">デバッグログレコーダー</string>
+    <string name="debug_log_screen_subtitle">録音したデバッグログを確認して共有</string>
+    <string name="debug_log_screen_sensitive_title">機密情報</string>
     <string name="debug_log_screen_sensitive_information_message">生成されるファイルには機密情報（例：ファイル名やインストール済みアプリ）が含まれています。信頼できる相手とのみ共有してください。</string>
     <string name="debug_log_screen_session_path_label">デバッグセッションパス</string>
     <string name="debug_log_screen_log_files_label">ログファイル</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="other">%1$d 個のファイルが準備完了 (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">破棄</string>
+    <string name="debug_log_screen_keep_action">保持</string>
+    <string name="debug_log_compressing_label">圧縮中…</string>
     <string name="debug_log_file_label">記録されたログファイル</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">ログは送信しましたか？</string>
+    <string name="support_debuglog_sent_message">デバッグログを送信済みの場合、デバイスから削除できます。削除しますか？</string>
+    <string name="support_debuglog_session_delete_title">デバッグログを削除しますか？</string>
+    <string name="support_debuglog_session_delete_message">このデバッグログセッションを完全に削除します。</string>
+    <string name="support_debuglog_session_recording">録音中…</string>
+    <string name="support_debuglog_session_compressing">圧縮中…</string>
+    <string name="support_debuglog_failed_empty_log">空のログ</string>
+    <string name="support_debuglog_failed_missing_log">ログが見つかりません</string>
+    <string name="support_debuglog_failed_corrupt_zip">ZIPファイルが壊れています</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP作成に失敗</string>
+    <string name="support_debuglog_clear_title">すべてのデバッグログを削除しますか？</string>
+    <string name="support_debuglog_clear_message">保存されたデバッグログセッションをすべて完全に削除します。</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">開発者に連絡</string>
+    <string name="settings_support_contact_desc">フォームに記入して開発者にメールを送信します。</string>
+    <string name="contact_screen_title">開発者に連絡</string>
+    <string name="contact_category_bug_label">バグ報告</string>
+    <string name="contact_category_feature_label">機能リクエスト</string>
+    <string name="contact_category_question_label">質問</string>
+    <string name="contact_description_label">説明</string>
+    <string name="contact_description_bug_hint">何が起きたか、問題の再現方法を説明してください。</string>
+    <string name="contact_description_feature_hint">追加してほしい機能を説明してください。</string>
+    <string name="contact_description_question_hint">質問を詳しく説明してください。</string>
+    <string name="contact_category_section_label">カテゴリ</string>
+    <string name="contact_debug_log_label">デバッグログ</string>
+    <string name="contact_debug_log_select_hint">添付するデバッグログを選択</string>
+    <string name="contact_debug_log_picker_hint">デバッグログを添付すると問題の診断が早くなります。</string>
+    <string name="contact_debug_log_picker_empty">デバッグログがありません。先に録音してください。</string>
+    <string name="contact_expected_behavior_label">期待される動作</string>
+    <string name="contact_expected_behavior_hint">代わりに期待していた動作を説明してください。</string>
+    <string name="support_contact_debuglog_zip_error">デバッグログの添付ファイル準備に失敗しました</string>
+    <string name="contact_send_action">メールアプリを開く</string>
+    <plurals name="contact_word_count">
+        <item quantity="other">%1$d / %2$d ワード</item>
+    </plurals>
+    <string name="contact_welcome_msg">すべてのメッセージを自分で読み、できる限り返信しますが、一人で作業しているため少し時間がかかる場合があります。ご辛抱ください。</string>
+    <string name="contact_footer_msg">メッセージはメールで送信されます。デバイスと設定情報は自動的に添付されます。</string>
+    <string name="contact_no_email_app_msg">このデバイスにメールアプリが見つかりません。</string>
+    <string name="contact_attachment_missing_msg">デバッグログファイルが見つかりません</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">保存されたデバッグログ</string>
+    <string name="settings_support_stored_logs_desc">%1$d セッション (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">保存されたデバッグログなし</string>
+    <string name="settings_support_stored_logs_delete_title">保存されたログを削除しますか？</string>
+    <string name="settings_support_stored_logs_delete_msg">保存されたデバッグログセッション %1$d 件をすべて削除します。</string>
+    <string name="settings_support_stored_logs_deleted_msg">保存されたデバッグログを削除しました</string>
     <string name="label_bug_reports">バグ報告</string>
     <string name="description_bug_reports">バグとクラッシュの自動報告。</string>
     <string name="label_add_device">デバイスを追加</string>
@@ -239,6 +332,10 @@
     <string name="android13_notification_permission_description">このアプリに通知を投稿する許可を与えてください。これにより、このアプリがアクティブで音量調整が行われている時に通知を表示できるようになります。</string>
     <string name="privacy_policy_label">プライバシーポリシー</string>
     <string name="managed_devices_empty_message">Bluetoothデバイスが設定されていません。\n+ボタンをタップして最初のデバイスを追加してください。</string>
+    <string name="label_pro_feature">プレミアム機能</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="other">無料版: %1$d / %2$d デバイス</item>
+    </plurals>
     <string name="general_delete_action">削除</string>
     <string name="general_cancel_action">キャンセル</string>
     <string name="general_ok_action">OK</string>
@@ -250,22 +347,22 @@
     <string name="android10_applaunch_hint_message">Android 10ではバックグラウンドからアプリを起動するために特別な許可が必要です。「他のアプリ上に表示」許可を与えてください。</string>
     <string name="notification_permission_hint_title">通知許可</string>
     <string name="notification_permission_hint_message">音量調整時に状態更新を見るために通知許可を与えてください。</string>
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">購入がキャンセルされました</string>
     <string name="error_iap_unavailable_message">アプリ内購入が利用できません</string>
     <string name="error_generic_message">エラーが発生しました。再度お試しください。</string>
     <string name="error_iap_owned_message">このアイテムは既に所有しています</string>
     <string name="label_no_devices_title">デバイスなし</string>
     <string name="bluemusic_mascot_description">アプリアイコン</string>
-
-    <!-- Do Not Disturb mode -->
-    <string name="devices_device_config_dnd_on_connect_label">おやすみモード</string>
-    <string name="dnd_mode_dialog_title">おやすみモードを選択</string>
-    <string name="dnd_mode_dont_change">変更しない</string>
-    <string name="dnd_mode_off">オフ</string>
-    <string name="dnd_mode_priority_only">重要な通知のみ</string>
-    <string name="dnd_mode_alarms_only">アラームのみ</string>
-    <string name="dnd_mode_total_silence">完全無音</string>
-
+    <!-- App Selection -->
+    <string name="devices_app_selection_title">アプリを選択</string>
+    <string name="devices_app_selection_search_hint">アプリを検索...</string>
+    <string name="devices_app_selection_currently_selected">現在選択中</string>
+    <string name="devices_app_selection_selected_count">%d個のアプリが選択されています</string>
+    <string name="general_navigate_back_action">戻る</string>
+    <string name="general_reset_action">リセット</string>
+    <string name="general_clear_action">クリア</string>
+    <string name="general_save_action">保存</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">ロック</string>
     <string name="devices_indicator_awake">スリープ無効</string>
@@ -277,101 +374,11 @@
     <string name="devices_indicator_auto">自動</string>
     <string name="devices_indicator_home">ホーム</string>
     <string name="devices_indicator_dnd">おやすみ</string>
-    <!-- Connection alert -->
-    <string name="devices_device_config_connection_alert_label">接続アラート</string>
-    <string name="connection_alert_dialog_title">接続アラート</string>
-    <string name="connection_alert_type_none">なし</string>
-    <string name="connection_alert_type_sound">サウンドのみ</string>
-    <string name="connection_alert_type_vibration">バイブのみ</string>
-    <string name="connection_alert_type_both">サウンドとバイブ</string>
     <string name="devices_indicator_alert">アラート</string>
-
-    <!-- Missing strings -->
-    <string name="devices_device_config_show_home_screen_label">ホーム画面を表示</string>
-    <string name="devices_device_config_show_home_screen_desc">このデバイスのすべてのイベントが処理された後、ホーム画面を表示しようとします。すべてのAndroidバージョンで動作するとは限りません。</string>
-    <string name="devices_device_config_volume_save_on_disconnect_label">切断時に音量を保存</string>
-    <string name="devices_device_config_volume_save_on_disconnect_desc">このデバイスが切断されたときに、現在の音量レベルを取得して保存します。</string>
-    <string name="devices_device_config_notification_policy_required_dnd">おやすみモードの制御には通知ポリシーアクセスが必要です</string>
-
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">音量 (0～100)</string>
     <string name="devices_volume_input_error">%1$d から %2$d の間の値を入力してください</string>
-
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ロック</string>
     <string name="devices_unlock_sliders_action">ロック解除</string>
-
-    <!-- Short recording warning -->
-    <string name="settings_support_debuglog_short_recording_stop">それでも停止する</string>
-    <string name="app_name_short">BVM</string>
-    <string name="settings_support_debuglog_short_recording_title">非常に短い録音</string>
-    <string name="settings_support_debuglog_short_recording_msg">非常に短い録音でした。デバッグログは録音であり、スナップショットではありません — ログを有用にするには、録音中に問題を再現してください。</string>
-    <string name="settings_support_debuglog_short_recording_continue">録音を続ける</string>
-    <string name="settings_support_debuglog_folder_label">デバッグログフォルダ</string>
-    <string name="settings_support_debuglog_folder_empty_desc">保存されたデバッグログなし</string>
-    <string name="settings_support_debuglog_folder_delete_title">すべてのデバッグログを削除しますか？</string>
-    <string name="settings_support_debuglog_folder_delete_msg">保存されたデバッグログセッションをすべて完全に削除します。</string>
-    <string name="debug_log_screen_subtitle">録音したデバッグログを確認して共有</string>
-    <string name="debug_log_screen_sensitive_title">機密情報</string>
-    <string name="debug_log_screen_keep_action">保持</string>
-    <string name="debug_log_compressing_label">圧縮中…</string>
-    <string name="support_debuglog_sent_title">ログは送信しましたか？</string>
-    <string name="support_debuglog_sent_message">デバッグログを送信済みの場合、デバイスから削除できます。削除しますか？</string>
-    <string name="support_debuglog_session_delete_title">デバッグログを削除しますか？</string>
-    <string name="support_debuglog_session_delete_message">このデバッグログセッションを完全に削除します。</string>
-    <string name="support_debuglog_session_recording">録音中…</string>
-    <string name="support_debuglog_session_compressing">圧縮中…</string>
-    <string name="support_debuglog_failed_empty_log">空のログ</string>
-    <string name="support_debuglog_failed_missing_log">ログが見つかりません</string>
-    <string name="support_debuglog_failed_corrupt_zip">ZIPファイルが壊れています</string>
-    <string name="support_debuglog_failed_zip_failed">ZIP作成に失敗</string>
-    <string name="support_debuglog_clear_title">すべてのデバッグログを削除しますか？</string>
-    <string name="support_debuglog_clear_message">保存されたデバッグログセッションをすべて完全に削除します。</string>
-    <string name="settings_support_contact_label">開発者に連絡</string>
-    <string name="settings_support_contact_desc">フォームに記入して開発者にメールを送信します。</string>
-    <string name="contact_screen_title">開発者に連絡</string>
-    <string name="contact_category_bug_label">バグ報告</string>
-    <string name="contact_category_feature_label">機能リクエスト</string>
-    <string name="contact_category_question_label">質問</string>
-    <string name="contact_description_label">説明</string>
-    <string name="contact_description_bug_hint">何が起きたか、問題の再現方法を説明してください。</string>
-    <string name="contact_description_feature_hint">追加してほしい機能を説明してください。</string>
-    <string name="contact_description_question_hint">質問を詳しく説明してください。</string>
-    <string name="contact_category_section_label">カテゴリ</string>
-    <string name="contact_debug_log_label">デバッグログ</string>
-    <string name="contact_debug_log_select_hint">添付するデバッグログを選択</string>
-    <string name="contact_debug_log_picker_hint">デバッグログを添付すると問題の診断が早くなります。</string>
-    <string name="contact_debug_log_picker_empty">デバッグログがありません。先に録音してください。</string>
-    <string name="contact_expected_behavior_label">期待される動作</string>
-    <string name="contact_expected_behavior_hint">代わりに期待していた動作を説明してください。</string>
-    <string name="support_contact_debuglog_zip_error">デバッグログの添付ファイル準備に失敗しました</string>
-    <string name="contact_send_action">メールアプリを開く</string>
-    <string name="contact_welcome_msg">すべてのメッセージを自分で読み、できる限り返信しますが、一人で作業しているため少し時間がかかる場合があります。ご辛抱ください。</string>
-    <string name="contact_footer_msg">メッセージはメールで送信されます。デバイスと設定情報は自動的に添付されます。</string>
-    <string name="contact_no_email_app_msg">このデバイスにメールアプリが見つかりません。</string>
-    <string name="contact_attachment_missing_msg">デバッグログファイルが見つかりません</string>
-    <string name="settings_support_stored_logs_label">保存されたデバッグログ</string>
-    <string name="settings_support_stored_logs_desc">%1$d セッション (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">保存されたデバッグログなし</string>
-    <string name="settings_support_stored_logs_delete_title">保存されたログを削除しますか？</string>
-    <string name="settings_support_stored_logs_delete_msg">保存されたデバッグログセッション %1$d 件をすべて削除します。</string>
-    <string name="settings_support_stored_logs_deleted_msg">保存されたデバッグログを削除しました</string>
-    <string name="label_pro_feature">プレミアム機能</string>
-    <string name="ui_theme_color_setting_label">テーマカラー</string>
-    <string name="ui_theme_color_setting_explanation">アプリのテーマで使用されるカラーパレット。</string>
-    <string name="ui_theme_color_material_you_note">Material You使用時はカラーが壁紙で設定されます。</string>
-    <string name="ui_theme_color_blue_label">ブルー</string>
-    <string name="ui_theme_color_sunset_label">サンセット</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="other">%1$d セッション、%2$s 使用</item>
-    </plurals>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="other">%1$d 個のファイルが準備完了 (%2$s)</item>
-    </plurals>
-    <plurals name="contact_word_count">
-        <item quantity="other">%1$d / %2$d ワード</item>
-    </plurals>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="other">無料版: %1$d / %2$d デバイス</item>
-    </plurals>
 </resources>

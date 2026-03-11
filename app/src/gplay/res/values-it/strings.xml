@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">Richiede BVM Pro</string>
+    <string name="upgrade_prompt_title">Aggiorna a BVM Pro</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro offre risultati migliori, più funzioni e opzioni per gli utenti avanzati.</string>
+    <string name="upgrade_prompt_upgrade_action">Acquista</string>
+    <string name="upgrade_screen_title">Aggiorna a BVM Pro</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager non contiene pubblicità e non vende i dati degli utenti. Il mio lavoro è finanziato da te ❤️.</string>
+    <string name="upgrade_screen_why_title">Vantaggi</string>
+    <string name="upgrade_screen_why_body">• Uno sviluppatore motivato 🧙
+• Dispositivi illimitati ➡️➡️
+• Azioni extra ⚙️
+e altro ancora…</string>
+    <string name="upgrade_screen_how_title">Opzioni</string>
+    <string name="upgrade_screen_how_body">È possibile scegliere tra un acquisto una tantum e un abbonamento annuale più economico.\nL\'abbonamento inizia con una prova gratuita di 14 giorni, dopo di che ti verrà addebitato il costo una volta all\'anno. La prova e l\'abbonamento sono cancellabili in qualsiasi momento.\nStesse funzionalità sbloccate, solo diversi modelli di prezzo.</string>
+    <string name="upgrade_screen_subscription_trial_action">Inizia la prova gratuita di 14 giorni</string>
+    <string name="upgrade_screen_subscription_action">Abbonati</string>
+    <string name="upgrade_screen_subscription_action_hint">L\'abbonamento costa %s all\'anno.</string>
+    <string name="upgrade_screen_iap_action">Acquisto una tantum</string>
+    <string name="upgrade_screen_iap_action_hint">L\'acquisto una tantum costa %s.</string>
+    <string name="upgrade_screen_thanks_toast">Sei il migliore! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Ripristina acquisto</string>
+    <string name="upgrade_screen_restore_purchase_message">La versione PRO è valida per tutti i dispositivi connessi all\'account Google con cui hai effettuato l\'acquisto.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Suggerimenti di risoluzione dei problemi per gli acquisti non riconosciuti:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">La sincronizzazione del Play Store potrebbe richiedere tempo. Prova a riavviare, cancellare la cache di Google Play o semplicemente ad aspettare.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Più account possono confondere Google Play. Esci dagli altri account o installare da PC attraverso il sito web di Google Play, che costringe le associazioni con un account specifico.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play non è disponibile</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager non riesce a connettersi a Google Play. Google Play è installato e aggiornato? Il tuo account Google è connesso? Prova a cancellare la cache dell’app Google Play e a riavviare il dispositivo.</string>
+    <string name="upgrades_no_purchases_found_check_account">Nessun acquisto trovato. Stai usando l\'account corretto?</string>
+</resources>

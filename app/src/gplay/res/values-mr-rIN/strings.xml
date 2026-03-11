@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">BVM Pro आवश्यक आहे</string>
+    <string name="upgrade_prompt_title">BVM Pro वर अपग्रेड करा</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro शक्तिशाली वापरकर्त्यांसाठी चांगले परिणाम, अधिक वैशिष्ट्ये आणि पर्याय देते.</string>
+    <string name="upgrade_prompt_upgrade_action">अपग्रेड करा</string>
+    <string name="upgrade_screen_title">BVM Pro वर अपग्रेड करा</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager ला कोणतीही अॅड नाही आणि वापरकर्त्यांचा डेटा विकत नाही. माझे काम तुम्ही उचलवून अर्थपुरवठा केलेली आहे ❤️.</string>
+    <string name="upgrade_screen_why_title">फायदे</string>
+    <string name="upgrade_screen_why_body">• एक प्रेरित विकसक 🧙
+• अमर्यादित डिव्हाइसेस ➡️➡️
+• अतिरिक्त क्रिया ⚙️
+आणि बरेच काही…</string>
+    <string name="upgrade_screen_how_title">पर्याय</string>
+    <string name="upgrade_screen_how_body">तुम्ही एकवेळ खरेदी आणि स्वस्त वार्षिक सदस्यत्व यांपैकी निवड करू शकता.
+सदस्यत्व मोफत 14-दिवसांच्या चाचणी सह सुरू होते, त्यानंतर तुम्हाला वर्षातून एकदा शुल्क आकारले जाईल. चाचणी आणि सदस्यत्व केव्हाही रद्द करता येते.
+समान वैशिष्ट्ये, फक्त वेगळे मूल्यनिर्धारण मॉडेल्स.</string>
+    <string name="upgrade_screen_subscription_trial_action">मोफत 14-दिवसांची चाचणी सुरू करा</string>
+    <string name="upgrade_screen_subscription_action">सदस्यत्व घ्या</string>
+    <string name="upgrade_screen_subscription_action_hint">सदस्यत्वाची किंमत वर्षाला %s आहे.</string>
+    <string name="upgrade_screen_iap_action">एकवेळ खरेदी</string>
+    <string name="upgrade_screen_iap_action_hint">एकवेळ खरेदीची किंमत %s आहे.</string>
+    <string name="upgrade_screen_thanks_toast">तुम्ही सर्वोत्तम आहात! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">खरेदी पुनस्थापित करा</string>
+    <string name="upgrade_screen_restore_purchase_message">तुमचे अपग्रेड एकाच गूगल खात्यावरील सर्व डिव्हाइसेसवर वैध आहे.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">नॉन-रिकॉग्नाइझ्ड अपग्रेड्ससाठी समस्यानिवारण टिप्स:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play Store सिंक्रोनायझेशनला वेळ लागू शकतो. रीबूट करण्याचा, Google Play कॅश साफ करण्याचा प्रयत्न करा किंवा फक्त थांबा.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">अनेक खाती Google Play ला गोंधळात टाकू शकतात. इतर खात्यांतून लॉग आउट व्हा किंवा Google Play वेबसाइटवरून इन्स्टॉल करा, जे विशिष्ट खात्याशी संबंध जोडण्यास भाग पाडते.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play उपलब्ध नाही</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play शी कनेक्ट करू शकत नाही. Google Play इन्स्टॉल आणि अपडेट आहे का? तुमचे Google खाते लॉग इन आहे का? Google Play अॅपचा कॅश साफ करण्याचा आणि डिव्हाइस रीबूट करण्याचा प्रयत्न करा.</string>
+    <string name="upgrades_no_purchases_found_check_account">कोणतीही खरेदी आढळली नाही. तुम्ही योग्य खाते वापरत आहात का?</string>
+</resources>

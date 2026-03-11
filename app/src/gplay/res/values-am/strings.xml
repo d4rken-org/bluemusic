@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">BVM Pro ያስፈሉ።</string>
+    <string name="upgrade_prompt_title">ወደ BVM Pro ክበቱ</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ለተጨማሪ ተመርጸውዎች፣ ተጨማሪ ብካዾች፥ እና የፐወር ተጠቃሚዎችን ይደግጋል።</string>
+    <string name="upgrade_prompt_upgrade_action">አሻሽል</string>
+    <string name="upgrade_screen_title">ወደ BVM Pro ክበቱ</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager ምንም እዋዀት ይረጋል፣ የተገባይ ውሂብንነም አይሸጥም። የ።ቡቡ፡ በ።ቡቡ፠ ዘርድ የካዘለኂው ❤️።</string>
+    <string name="upgrade_screen_why_title">ጥቅሞች</string>
+    <string name="upgrade_screen_why_body">• የተጠቀየ ማድርግዬ 🧙
+• ምንም አይኖን መሣሪያዎች ➡️➡️
+• ✏✏✏✏ ✏✏✏ ⚙️
+እና ይጀምሮ...</string>
+    <string name="upgrade_screen_how_title">አማራጮች</string>
+    <string name="upgrade_screen_how_body">በአንድ ጊዜ ግዢ እና በርካሽ የዓመታዊ ደንበኝነት መካከል መምረጥ ይችላሉ።\nደንበኝነቱ በነፃ የ14 ቀን ሙከራ ይጀምራል፣ ከዚያ በኋላ በዓመት አንድ ጊዜ ይከፈላሉ። ሙከራ እና ደንበኝነት በማንኛውም ጊዜ ሊሰረዝ ይችላል።\nተመሳሳይ ባህሪያት፣ የተለያዩ የዋጋ አሰጣጥ ሞዴሎች ብቻ።</string>
+    <string name="upgrade_screen_subscription_trial_action">ነፃ የ14 ቀን ሙከራ ይጀምሩ</string>
+    <string name="upgrade_screen_subscription_action">ይመዝገቡ</string>
+    <string name="upgrade_screen_subscription_action_hint">ደንበኝነቱ በዓመት %s ያስከፍላል።</string>
+    <string name="upgrade_screen_iap_action">አንድ ጊዜ ግዢ</string>
+    <string name="upgrade_screen_iap_action_hint">አንድ ጊዜ ግዢው %s ያስከፍላል።</string>
+    <string name="upgrade_screen_thanks_toast">እርስዎ ምርጥ ነዎት! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">ግዢን ወደነበረበት መልስ</string>
+    <string name="upgrade_screen_restore_purchase_message">ማሻሻያዎ በተመሳሳይ Google መለያ ላይ በመሳሪያዎች ላይ ልክ ነው።</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">ለማይታወቁ ማሻሻያዎች የመላ ፍለጋ ምክሮች፡</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">የPlay Store ሲምሪዝሽን ጊዜ ሊወስድ ይችላል። እንደገና ማስጀመር፣ የGoogle Play መሸጎጫ ማጥራት ወይም ብቻ መጠበቅ ይሞክሩ።</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">ብዙ መለያዎች Google Play ማምታታት ይችላሉ። ከሌሎች መለያዎች ይወጡ ወይም በGoogle Play ድርጣቢያ በኩል ይጫኑ፣ ይህም ከተወሰነ መለያ ጋር ግንኙነቶችን ያስገድዳል።</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play አይገኝም</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ወደ Google Play መገናኘት አይቻል። Google Play የተገጀተ እና ወደ ላይ የተዘመኘትነ? የGoogle አካወንት የነጩ ክ? Google Play አፕሊኬስንን በሜᇍ ካስቀጁ መሣሪያውን አስለስለስ ያስፈለግላ።</string>
+    <string name="upgrades_no_purchases_found_check_account">ምንም ግዢዎች አልተገኙም። ትክክለኛውን መለያ እየተጠቀሙ ነው?</string>
+</resources>

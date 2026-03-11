@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bluetooth Volume Manager</string>
+    <string name="app_name_short">BVM</string>
+    <!-- General -->
     <string name="general_error_label">දෝෂයකි</string>
     <string name="general_error_no_compatible_app_found_msg">මෙම ඉල්ලීම හසුරවන්නට ගැලපෙන යෙදුමක් හමු නොවිණි.</string>
     <string name="general_share_action">බෙදාගන්න</string>
     <string name="general_back_action">ආපසු</string>
     <string name="general_show_details_action">විස්තර පෙන්වන්න</string>
+    <!-- Onboarding-->
     <string name="onboarding_welcome_title">BVM වෙත සාදරයෙන් පිළිගනිමු</string>
     <string name="onboarding_welcome_message">Bluetooth Volume Manager ඔබේ Bluetooth උපාංගයන්හි හඩ ස්වයංක්‍රීයව කළමනාකරණය කිරීමට ඉඩ දෙයි.</string>
     <string name="onboarding_welcome_action">යමු</string>
@@ -20,9 +23,11 @@
     <string name="onboarding_rewrite_message">Android වෙනස්කම් සහ Google අවශ්‍යතා සමඟ සම්බන්ධ වීමට Bluetooth Volume Manager සම්පූර්ණයෙන් නැවත ලිව්වා. යෙදුම විශ්වාසනීය ලෙස ක්‍රියා කරන බව සහතික කිරීමට හැකි තැන්හිදී නවීකරණය කළා.</string>
     <string name="onboarding_rewrite_features">යාවත්කාලීන කිරීමේදී සමහර උපාංග සැකසීම් යළි සකසෙන්නට ඇත. සෑම දෙයක්ම නිවැරදිව සකසා ඇති බව සහතික කිරීමට ඔබේ උපාංගය සැකසීම් පරීක්ෂා කරන්න.</string>
     <string name="onboarding_rewrite_action">ඉදිරියට</string>
+    <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">කළමනා නොකළ උපාංග හමු නොවිණි</string>
     <string name="discover_all_devices_managed_msg">ඔබේ සියලු සම්බන්ධ කළ උපාංගයන් කළමනා කෙරෙයි! අලුත් එකක් ඕනෑද?</string>
     <string name="discover_pair_new_device_action">නව උපාංගයක් සම්බන්ධ කරන්න</string>
+    <!-- Devices -->
     <string name="devices_device_config_label">උපාංග සැකසුම</string>
     <string name="devices_device_config_section_general_label">සාමාන්‍ය</string>
     <string name="devices_device_config_remove_device_label">උපාංගය අමතක කරන්න</string>
@@ -66,7 +71,7 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">හඩ අඩුකිරීම ප්‍රමාණකාරකතාව</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">හඩ අඩුකිරීම් අතර අවම වේලාව: %d ms</string>
     <string name="devices_device_config_autoplay_label">ස්වයංක්‍රීය ධාවනය</string>
-    <string name="devices_device_config_autoplay_desc">මෙම උපාංගය සම්බන්ධ වූ විට බ්ලූටූත් රිමෝට් හි play බොත්තම 누ෑන්නාක් ලෙස ආකෘති කරන්න.</string>
+    <string name="devices_device_config_autoplay_desc">මෙම උපාංගය සම්බන්ධ වූ විට බ්ලූටූත් රිමෝට් හි play බොත්තම ඔබනු ලැබේ.</string>
     <string name="devices_device_config_autoplay_keycodes_title">ස්වයංක්‍රීය ධාවන යතුරු වර්ග</string>
     <string name="devices_device_config_autoplay_keycodes_available">ලබා ගත හැකි යතුරු වර්ග</string>
     <string name="devices_device_config_autoplay_keycodes_order">තෝරාගත් යතුරු (අනුපිළිවෙලෙහි)</string>
@@ -83,7 +88,7 @@
     <string name="devices_device_config_music_volume_desc">මෙම උපාංගය සම්බන්ධ වූ විට සංගීතය සහ ක්‍රීඩා කෙරෙහි බලපාන හඩ පාලනය කරන්න.</string>
     <string name="devices_device_config_call_volume_label">ඇමතුම් හඩ</string>
     <string name="devices_device_config_call_volume_desc">මෙම උපාංගය සම්බන්ධ වූ විට ඇමතුම් කෙරෙහි බලපාන හඩ පාලනය කරන්න.</string>
-    <string name="devices_device_config_ring_volume_label">呼出ශබ්ද හඩ</string>
+    <string name="devices_device_config_ring_volume_label">රිංඟ හඩ</string>
     <string name="devices_device_config_ring_volume_desc">ඔබේ රිංඟ ශ්‍රවණයට බලපාන හඩ පාලනය කරන්න.</string>
     <string name="devices_device_config_notification_policy_required_ringtone">රිංඟ හඩ පාලනය සඳහා දැනුම්දීම් ප්‍රතිපත්ති ප්‍රවේශය අවශ්‍ය වෙයි</string>
     <string name="devices_device_config_notification_policy_required_notification">දැනුම්දීම් හඩ පාලනය සඳහා දැනුම්දීම් ප්‍රතිපත්ති ප්‍රවේශය අවශ්‍ය වෙයි</string>
@@ -115,8 +120,10 @@
     <string name="devices_currently_connected_label">දැනට සම්බන්ධිතයි</string>
     <string name="devices_device_disabled_label">උපාංගය අබල කර ඇත</string>
     <string name="devices_no_volumes_configured">මෙම උපාංගය සඳහා හඩ ව්‍යවස්ථාපිත නැත. හඩ මනාප සකසීමට ව්‍යවස්ථාපනය ස්පර්ශ කරන්න.</string>
+    <!-- Settings-->
     <string name="settings_label">සැකසීම්</string>
     <string name="settings_category_other_label">අනෙකුත්</string>
+    <!-- Settings/General-->
     <string name="general_settings_label">සාමාන්‍ය</string>
     <string name="general_settings_desc">මුළු යෙදුමටම බලපාන සාමාන්‍ය සකසීම්.</string>
     <string name="settings_category_ui_label">පරිශීලක අතුරු මුහුණත</string>
@@ -131,8 +138,14 @@
     <string name="ui_theme_style_medium_contrast_label">මැදි විහිදීම</string>
     <string name="ui_theme_style_high_contrast_label">ඉහළ විහිදීම</string>
     <string name="ui_theme_style_materialyou_label">Material You</string>
+    <string name="ui_theme_color_setting_label">තේමා වර්ණය</string>
+    <string name="ui_theme_color_setting_explanation">යෙදුම් තේමා කිරීමේදී භාවිතා කරන වර්ණ පාලිත්තය.</string>
+    <string name="ui_theme_color_material_you_note">Material You භාවිතා කරන ඕනෑම දිනෙ ඔබේ wallpaper හි වර්ණය ද සකසයි.</string>
+    <string name="ui_theme_color_blue_label">නිල්</string>
+    <string name="ui_theme_color_sunset_label">හිරු බැසීම</string>
     <string name="ui_language_override_label">යෙදුම් භාෂාව</string>
     <string name="ui_language_override_desc">සිස්ටමයේ පෙරනිමි භාෂාවෙන් ස්වාධීනව BVM සඳහා වෙනත් භාෂාවක් තෝරන්න.</string>
+    <!-- Settings/Devices-->
     <string name="devices_settings_label">උපාංග</string>
     <string name="devices_settings_desc">සියලු කළමනාකරිත උපාංගයන් කෙරෙහි බලපාන සැකසීම්.</string>
     <string name="label_app_enabled">යෙදුම සබල කර ඇත</string>
@@ -143,6 +156,7 @@
     <string name="description_volume_listener">උපාංගය සම්බන්ධ වී ඇති ඕනෑම දිනෙ සක්‍රිය ව සිටින්න සහ මෙම යෙදුමෙන් නොකළ හඩ වෙනස්කම් සුරකින්න.</string>
     <string name="label_boot_restore">ආරම්භ කළ විට ප්‍රතිස්ථාපනය</string>
     <string name="description_boot_restore">බ්ලූටූත් උපාංගයක් සම්බන්ධ ඇත්නම් ආරම්භ/නැවත ආරම්භ කිරීමෙන් පසු හඩ ප්‍රතිස්ථාපනය කරන්න.</string>
+    <!-- Settings/Support-->
     <string name="settings_support_label">සහාය</string>
     <string name="settings_support_description">ලේඛ කියවන්න, ගැටළු වාර්තා කරන්න, අනෙකුත් අය සමඟ කතා කරන්න හෝ debug ලොග් රේකෝඩ් කරන්න.</string>
     <string name="settings_support_wiki_label">ලේඛ</string>
@@ -153,8 +167,21 @@
     <string name="settings_support_debuglog_desc">යෙදුම කරන සියල්ල ඔබට බෙදාගත හැකි පාඨ ගොනුවකට රේකෝඩ් කරන්න.</string>
     <string name="settings_support_debuglog_recording_desc">දැනට debug තොරතුරු රේකෝඩ් කරමින් ඇත. රේකෝඩ් කිරීම නැවැත්වීමට ස්පර්ශ කරන්න.</string>
     <string name="settings_support_debuglog_path">ලොග් මාර්ගය: %1$s</string>
-    <string name="settings_support_discord_label">Discord</string>
+    <string name="settings_support_debuglog_short_recording_title">ඉතා කෙටි රේකෝඩ්</string>
+    <string name="settings_support_debuglog_short_recording_msg">එය ඉතා කෙටි රේකෝඩ්ගලු. Debug ලොග් රේකෝඩ් ය, snapshot නොවේ — ලොගය ප්‍රයෝජනවත් වීමට රේකෝඩ් ක්‍රියාත්මකව ඇති අතරතුර ගැටලුව ප්‍රතිනිෂ්පාදනය කරන්න.</string>
+    <string name="settings_support_debuglog_short_recording_continue">රේකෝඩ් ඉදිරියට</string>
+    <string name="settings_support_debuglog_short_recording_stop">කෙසේ හෝ නැවැත්වන්න</string>
+    <string name="settings_support_debuglog_folder_label">Debug ලොග් ෆෝල්ඩරය</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d සැසිය %2$s භාවිතා කිරීම</item>
+        <item quantity="other">%1$d සැසි %2$s භාවිතා කිරීම</item>
+    </plurals>
+    <string name="settings_support_debuglog_folder_empty_desc">Debug ලොග් ගබඩා නැත</string>
+    <string name="settings_support_debuglog_folder_delete_title">සියලු debug ලොග් මකන්නද?</string>
+    <string name="settings_support_debuglog_folder_delete_msg">මෙය ගබඩා කළ සියලු debug ලොග් සැසි ස්ථිරවම මකනු ඇත.</string>
+    <string name="settings_support_discord_label">ඩිස්කෝඩ්</string>
     <string name="settings_support_discord_description">ගැවසීමට සහ ප්‍රශ්න ඇසීමට ස්ථානයකි.</string>
+    <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">ස්තූතිය</string>
     <string name="settings_acknowledgements_description">ණය, බලපත්‍ර, සහ විශේෂ ස්තූතිය</string>
     <string name="settings_acks_translation_header">පරිවර්තනය</string>
@@ -166,11 +193,14 @@
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">විවෘත මූලාශ්‍ර ව්‍යාපෘති පරිවර්තනය සඳහා සහාය</string>
     <string name="settings_licenses_label">බලපත්‍ර</string>
-    <string name="settings_sponsor_development_title">සංවර්ධනය 後援</string>
+    <string name="settings_translation_label">පරිවර්තනය</string>
+    <string name="settings_translation_desc">ඔබේ ප්‍රියතම භාෂාවට යෙදුම පරිවර්තනය කිරීමට උදව් කරන්න</string>
+    <string name="settings_sponsor_development_title">සංවර්ධනය අනුග්‍රහය</string>
     <string name="settings_sponsor_development_summary">ආධාරකරුවෙකු වී අඛණ්ඩ සංවර්ධනය හැකිවෙමින් ගත කරන්න.</string>
     <string name="settings_privacy_policy_label">රහස්‍යතා ප්‍රතිපත්තිය</string>
     <string name="settings_privacy_policy_desc">දත්ත වගකිවයුතු ලෙස හැසිරවීම.</string>
     <string name="changelog_label">වෙනස් කිරීම් ලැයිස්තුව</string>
+    <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug දැනුම්දීම්</string>
     <string name="debug_log_consent_title">Debug ලොගය</string>
     <string name="debug_log_consent_explanation">මෙම ලක්ෂණය යෙදුම කරන සියල්ල බෙදාගත හැකි ගොනුවකට රේකෝඩ් කරයි. ජනනය කරන ලද ගොනුවේ සංවේදී තොරතුරු (ගොනු නාම සහ ස්ථාපිත යෙදුම් ආදිය) ඇත. විශ්වාසනීය පාර්ශ්ව (ගැටළු නිරාකරණය කරන සංවර්ධකයෙකු ආදිය) සමඟ පමණක් බෙදා ගන්න.</string>
@@ -178,11 +208,67 @@
     <string name="debug_log_record_action">රේකෝඩ්</string>
     <string name="debug_log_stop_action">රේකෝඩ් කිරීම නැවැත්වීම</string>
     <string name="debug_log_screen_title">Debug ලොග් රේකෝඩරය</string>
+    <string name="debug_log_screen_subtitle">ඔබේ රේකෝඩ් කළ debug ලොගය සමාලෝචනය කර බෙදාගන්න</string>
+    <string name="debug_log_screen_sensitive_title">සංවේදී තොරතුරු</string>
     <string name="debug_log_screen_sensitive_information_message">ජනනය කරන ලද ගොනුවේ සංවේදී තොරතුරු (ගොනු නාම සහ ස්ථාපිත යෙදුම් ආදිය) ඇත. විශ්වාසනීය පාර්ශ්ව සමඟ පමණක් බෙදා ගන්න.</string>
     <string name="debug_log_screen_session_path_label">Debug සැසි මාර්ගය</string>
     <string name="debug_log_screen_log_files_label">ලොග් ගොනු</string>
+    <plurals name="debug_log_screen_log_files_ready">
+        <item quantity="one">%1$d ගොනුව සූදානම් (%2$s)</item>
+        <item quantity="other">%1$d ගොනු සූදානම් (%2$s)</item>
+    </plurals>
     <string name="debug_log_screen_discard_action">ඉවත් කිරීම</string>
+    <string name="debug_log_screen_keep_action">තබා ගන්න</string>
+    <string name="debug_log_compressing_label">සම්පීඩනය කිරීම…</string>
     <string name="debug_log_file_label">රේකෝඩ් කළ ලොග් ගොනුව</string>
+    <!-- Debug Log Sessions -->
+    <string name="support_debuglog_sent_title">ලොගය යැව්වාද?</string>
+    <string name="support_debuglog_sent_message">debug ලොගය යැව්වා නම්, එය උපාංගයෙන් මකා දැමිය හැකිය. ඉවත් කිරීමට කැමතිද?</string>
+    <string name="support_debuglog_session_delete_title">Debug ලොගය මකන්නද?</string>
+    <string name="support_debuglog_session_delete_message">මෙම debug ලොග් සැසිය ස්ථිරවම මකනු ඇත.</string>
+    <string name="support_debuglog_session_recording">රේකෝඩ් කිරීම…</string>
+    <string name="support_debuglog_session_compressing">සම්පීඩනය…</string>
+    <string name="support_debuglog_failed_empty_log">හිස් ලොගය</string>
+    <string name="support_debuglog_failed_missing_log">නොමැති ලොගය</string>
+    <string name="support_debuglog_failed_corrupt_zip">දූෂිත ZIP</string>
+    <string name="support_debuglog_failed_zip_failed">ZIP අසාර්ථකයි</string>
+    <string name="support_debuglog_clear_title">සියලු debug ලොග් මකන්නද?</string>
+    <string name="support_debuglog_clear_message">මෙය ගබඩා කළ සියලු debug ලොග් සැසි ස්ථිරවම මකනු ඇත.</string>
+    <!-- Support/Contact -->
+    <string name="settings_support_contact_label">සංවර්ධකයා ඇමතීම</string>
+    <string name="settings_support_contact_desc">සංවර්ධකයාට ඊමේල් යැවීමට ෆෝමයක් පුරවන්න.</string>
+    <string name="contact_screen_title">සංවර්ධකයා ඇමතීම</string>
+    <string name="contact_category_bug_label">දෝෂ වාර්තාව</string>
+    <string name="contact_category_feature_label">ලක්ෂණ ඉල්ලීම</string>
+    <string name="contact_category_question_label">ප්‍රශ්නය</string>
+    <string name="contact_description_label">විස්තරය</string>
+    <string name="contact_description_bug_hint">සිදු වූ දෙය සහ ගැටලුව නැවත ඇති කරන ආකාරය විස්තර කරන්න.</string>
+    <string name="contact_description_feature_hint">ඔබ දැකීමට කැමති ලක්ෂණය විස්තර කරන්න.</string>
+    <string name="contact_description_question_hint">ඔබේ ප්‍රශ්නය සවිස්තරාත්මකව විස්තර කරන්න.</string>
+    <string name="contact_category_section_label">කාණ්ඩය</string>
+    <string name="contact_debug_log_label">Debug ලොගය</string>
+    <string name="contact_debug_log_select_hint">අමුණා ගැනීමට debug ලොගයක් තෝරන්න</string>
+    <string name="contact_debug_log_picker_hint">ගැටලුව වේගයෙන් හඳුනා ගැනීමට debug ලොගයක් අමුණන්න.</string>
+    <string name="contact_debug_log_picker_empty">Debug ලොග් නොමැත. මුලින් එකක් රේකෝඩ් කරන්න.</string>
+    <string name="contact_expected_behavior_label">අපේක්ෂිත හැසිරීම</string>
+    <string name="contact_expected_behavior_hint">ඒ වෙනුවට ඔබ සිදු වනු ඇතැයි අපේක්ෂා කළ දෙය විස්තර කරන්න.</string>
+    <string name="support_contact_debuglog_zip_error">අමුණීම සඳහා debug ලොගය සූදානම් කිරීමට අසාර්ථක විය</string>
+    <string name="contact_send_action">ඊමේල් යෙදුම විවෘත කරන්න</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d වචනය</item>
+        <item quantity="other">%1$d / %2$d වචන</item>
+    </plurals>
+    <string name="contact_welcome_msg">මම සෑම පණිවිඩයක්ම ව්‍යක්තිකව කියවා ප්‍රතිචාර දීමට හැකි පමණ උත්සාහ කරමි, නමුත් මෙය තනිව කරන නිසා, ටිකක් කාලය ගත විය හැකිය. ඔබේ ඉවසීමට ස්තූතියි.</string>
+    <string name="contact_footer_msg">ඔබේ පණිවිඩය ඊමේල් හරහා යවනු ඇත. උපාංගය සහ සැකසුම් තොරතුරු ස්වයංක්‍රීයව අමුණයි.</string>
+    <string name="contact_no_email_app_msg">මෙම උපාංගයේ ඊමේල් යෙදුමක් හමු නොවිණි.</string>
+    <string name="contact_attachment_missing_msg">Debug ලොග් ගොනුව තවදුරටත් නොමැත</string>
+    <!-- Support/Stored Logs -->
+    <string name="settings_support_stored_logs_label">ගබඩා කළ debug ලොග්</string>
+    <string name="settings_support_stored_logs_desc">%1$d සැසි (%2$s)</string>
+    <string name="settings_support_stored_logs_empty">ගබඩා කළ debug ලොග් නැත</string>
+    <string name="settings_support_stored_logs_delete_title">ගබඩා කළ ලොග් මකන්නද?</string>
+    <string name="settings_support_stored_logs_delete_msg">මෙය ගබඩා කළ %1$d debug ලොග් සැසි සියල්ල මකනු ඇත.</string>
+    <string name="settings_support_stored_logs_deleted_msg">ගබඩා කළ debug ලොග් මකා දමන ලදී</string>
     <string name="label_bug_reports">දෝෂ වාර්තා</string>
     <string name="description_bug_reports">ස්වයංක්‍රීය දෝෂ සහ බිඳ වැටීම් වාර්තා.</string>
     <string name="label_add_device">උපාංගය එකතු කරන්න</string>
@@ -223,7 +309,7 @@
     <string name="label_keyevent_playpause">ධාවනය-විරාමය</string>
     <string name="label_keyevent_play">ධාවනය</string>
     <string name="label_keyevent_next">ඊළඟ</string>
-    <string name="label_install_id">Install ID</string>
+    <string name="label_install_id">ස්ථාපන හැඳු.</string>
     <string name="message_copied_to_clipboard">ක්ලිප්බෝඩ් වලට පිටපත් කළා</string>
     <string name="label_thanks">ස්තූතියි</string>
     <string name="label_licenses">බලපත්‍ර</string>
@@ -249,9 +335,14 @@
     <string name="android13_notification_permission_description">දැනුම්දීම් පළ කිරීමට මෙම යෙදුමට අවසරය ලබා දෙන්න. මෙය යෙදුම සක්‍රිය ඇති ඕනෑම දිනෙ සහ හඩ සකසීම් සිදු කරන ඕනෑම දිනෙ දැනුම්දීමක් පෙන්වීම සබල කරයි.</string>
     <string name="privacy_policy_label">රහස්‍යතා ප්‍රතිපත්තිය</string>
     <string name="managed_devices_empty_message">Bluetooth උපාංග ව්‍යවස්ථාපිත නැත.\nඔබේ පළමු උපාංගය එකතු කිරීමට + බොත්තම ස්පර්ශ කරන්න.</string>
+    <string name="label_pro_feature">Premium ලක්ෂණය</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">නොමිලේ අනුවාදය: %1$d / %2$d උපාංගය</item>
+        <item quantity="other">නොමිලේ අනුවාදය: %1$d / %2$d උපාංග</item>
+    </plurals>
     <string name="general_delete_action">මකන්න</string>
     <string name="general_cancel_action">අවලංගු</string>
-    <string name="general_ok_action">OK</string>
+    <string name="general_ok_action">හරි</string>
     <string name="general_configure_action">ව්‍යවස්ථාපනය</string>
     <string name="battery_optimization_hint_title">බැටරි ප්‍රශස්තකරණය</string>
     <string name="battery_optimization_hint_message">බැටරි ප්‍රශස්තකරණ සබල කර ඇති අතර නිසි ක්‍රියාකාරිත්වය වළක්වා ගත හැකිය. ඒවා අක්‍රිය කිරීම සලකා බලන්න.</string>
@@ -260,12 +351,14 @@
     <string name="android10_applaunch_hint_message">Android 10 පසුතලෙන් යෙදුම් දියත් කිරීමට විශේෂ අවසරයක් අවශ්‍ය වෙයි. &quot;Display over other apps&quot; අවසරය ලබා දෙන්න.</string>
     <string name="notification_permission_hint_title">දැනුම්දීම් අවසරය</string>
     <string name="notification_permission_hint_message">හඩ සකසීමේදී තත්ව යාවත්කාලීන දැකීමට දැනුම්දීම් අවසරය ලබා දෙන්න.</string>
+    <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">මිලදී ගැනීම අවලංගු කළා</string>
     <string name="error_iap_unavailable_message">යෙදුම් ඇතුළත මිලදී ගැනීම් නොලබා ගත හැකිය</string>
     <string name="error_generic_message">දෝෂයක් සිදු විය. කරුණාකර නැවත උත්සාහ කරන්න.</string>
     <string name="error_iap_owned_message">ඔබ දැනටමත් මෙම අයිතමය සතු වෙයි</string>
     <string name="label_no_devices_title">උපාංග නැත</string>
     <string name="bluemusic_mascot_description">යෙදුම් අයිකනය</string>
+    <!-- App Selection -->
     <string name="devices_app_selection_title">යෙදුම් තෝරන්න</string>
     <string name="devices_app_selection_search_hint">යෙදුම් සොයන්න…</string>
     <string name="devices_app_selection_currently_selected">දැනට තෝරාගෙන ඇත</string>
@@ -274,6 +367,7 @@
     <string name="general_reset_action">යළි සකසන්න</string>
     <string name="general_clear_action">හිස් කරන්න</string>
     <string name="general_save_action">සුරකින්න</string>
+    <!-- Device option indicators -->
     <string name="devices_indicator_lock">අගුල</string>
     <string name="devices_indicator_awake">සක්‍රිය</string>
     <string name="devices_indicator_nudge">තල්ලුව</string>
@@ -285,90 +379,10 @@
     <string name="devices_indicator_home">මුල්</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">අනතුරු ඇඟවීම</string>
-
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">හඩ (0–100)</string>
     <string name="devices_volume_input_error">%1$d සහ %2$d අතර අගයක් ඇතුළු කරන්න</string>
-
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">අගුලන්න</string>
     <string name="devices_unlock_sliders_action">අගුල ඇරීම</string>
-
-    <!-- Debug log short recording warning -->
-    <string name="settings_support_debuglog_short_recording_stop">කෙසේ හෝ නැවැත්වන්න</string>
-
-    <string name="settings_support_debuglog_short_recording_title">ඉතා කෙටි රේකෝඩ්</string>
-    <string name="settings_support_debuglog_short_recording_msg">එය ඉතා කෙටි රේකෝඩ්ගලු. Debug ලොග් රේකෝඩ් ය, snapshot නොවේ — ලොගය ප්‍රයෝජනවත් වීමට රේකෝඩ් ක්‍රියාත්මකව ඇති අතරතුර ගැටලුව ප්‍රතිනිෂ්පාදනය කරන්න.</string>
-    <string name="settings_support_debuglog_short_recording_continue">රේකෝඩ් ඉදිරියට</string>
-    <string name="settings_support_debuglog_folder_label">Debug ලොග් ෆෝල්ඩරය</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d සැසිය %2$s භාවිතා කිරීම</item>
-        <item quantity="other">%1$d සැසි %2$s භාවිතා කිරීම</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Debug ලොග් ගබඩා නැත</string>
-    <string name="settings_support_debuglog_folder_delete_title">සියලු debug ලොග් මකන්නද?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">මෙය ගබඩා කළ සියලු debug ලොග් සැසි ස්ථිරවම මකනු ඇත.</string>
-    <string name="debug_log_screen_subtitle">ඔබේ රේකෝඩ් කළ debug ලොගය සමාලෝචනය කර බෙදාගන්න</string>
-    <string name="debug_log_screen_sensitive_title">සංවේදී තොරතුරු</string>
-    <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="one">%1$d ගොනුව සූදානම් (%2$s)</item>
-        <item quantity="other">%1$d ගොනු සූදානම් (%2$s)</item>
-    </plurals>
-    <string name="debug_log_screen_keep_action">තබා ගන්න</string>
-    <string name="debug_log_compressing_label">සම්පීඩනය කිරීම…</string>
-    <string name="support_debuglog_sent_title">ලොගය යැව්වාද?</string>
-    <string name="support_debuglog_sent_message">debug ලොගය යැව්වා නම්, එය උපාංගයෙන් මකා දැමිය හැකිය. ඉවත් කිරීමට කැමතිද?</string>
-    <string name="support_debuglog_session_delete_title">Debug ලොගය මකන්නද?</string>
-    <string name="support_debuglog_session_delete_message">මෙම debug ලොග් සැසිය ස්ථිරවම මකනු ඇත.</string>
-    <string name="support_debuglog_session_recording">රේකෝඩ් කිරීම…</string>
-    <string name="support_debuglog_session_compressing">සම්පීඩනය…</string>
-    <string name="support_debuglog_failed_empty_log">හිස් ලොගය</string>
-    <string name="support_debuglog_failed_missing_log">නොමැති ලොගය</string>
-    <string name="support_debuglog_failed_corrupt_zip">දූෂිත ZIP</string>
-    <string name="support_debuglog_failed_zip_failed">ZIP අසාර්ථකයි</string>
-    <string name="support_debuglog_clear_title">සියලු debug ලොග් මකන්නද?</string>
-    <string name="support_debuglog_clear_message">මෙය ගබඩා කළ සියලු debug ලොග් සැසි ස්ථිරවම මකනු ඇත.</string>
-    <string name="settings_support_contact_label">සංවර්ධකයා ඇමතීම</string>
-    <string name="settings_support_contact_desc">සංවර්ධකයාට ඊමේල් යැවීමට ෆෝමයක් පුරවන්න.</string>
-    <string name="contact_screen_title">සංවර්ධකයා ඇමතීම</string>
-    <string name="contact_category_bug_label">දෝෂ වාර්තාව</string>
-    <string name="contact_category_feature_label">ලක්ෂණ ඉල්ලීම</string>
-    <string name="contact_category_question_label">ප්‍රශ්නය</string>
-    <string name="contact_description_label">විස්තරය</string>
-    <string name="contact_description_bug_hint">සිදු වූ දෙය සහ ගැටලුව නැවත ඇති කරන ආකාරය විස්තර කරන්න.</string>
-    <string name="contact_description_feature_hint">ඔබ දැකීමට කැමති ලක්ෂණය විස්තර කරන්න.</string>
-    <string name="contact_description_question_hint">ඔබේ ප්‍රශ්නය සවිස්තරාත්මකව විස්තර කරන්න.</string>
-    <string name="contact_category_section_label">කාණ්ඩය</string>
-    <string name="contact_debug_log_label">Debug ලොගය</string>
-    <string name="contact_debug_log_select_hint">අමුණා ගැනීමට debug ලොගයක් තෝරන්න</string>
-    <string name="contact_debug_log_picker_hint">ගැටලුව වේගයෙන් හඳුනා ගැනීමට debug ලොගයක් අමුණන්න.</string>
-    <string name="contact_debug_log_picker_empty">Debug ලොග් නොමැත. මුලින් එකක් රේකෝඩ් කරන්න.</string>
-    <string name="contact_expected_behavior_label">අපේක්ෂිත හැසිරීම</string>
-    <string name="contact_expected_behavior_hint">ඒ වෙනුවට ඔබ සිදු වනු ඇතැයි අපේක්ෂා කළ දෙය විස්තර කරන්න.</string>
-    <string name="support_contact_debuglog_zip_error">අමුණීම සඳහා debug ලොගය සූදානම් කිරීමට අසාර්ථක විය</string>
-    <string name="contact_send_action">ඊමේල් යෙදුම විවෘත කරන්න</string>
-    <plurals name="contact_word_count">
-        <item quantity="one">%1$d / %2$d වචනය</item>
-        <item quantity="other">%1$d / %2$d වචන</item>
-    </plurals>
-    <string name="contact_welcome_msg">මම සෑම පණිවිඩයක්ම ව්‍යක්තිකව කියවා ප්‍රතිචාර දීමට හැකි පමණ උත්සාහ කරමි, නමුත් මෙය තනිව කරන නිසා, ටිකක් කාලය ගත විය හැකිය. ඔබේ ඉවසීමට ස්තූතියි.</string>
-    <string name="contact_footer_msg">ඔබේ පණිවිඩය ඊමේල් හරහා යවනු ඇත. උපාංගය සහ සැකසුම් තොරතුරු ස්වයංක්‍රීයව අමුණයි.</string>
-    <string name="contact_no_email_app_msg">මෙම උපාංගයේ ඊමේල් යෙදුමක් හමු නොවිණි.</string>
-    <string name="contact_attachment_missing_msg">Debug ලොග් ගොනුව තවදුරටත් නොමැත</string>
-    <string name="settings_support_stored_logs_label">ගබඩා කළ debug ලොග්</string>
-    <string name="settings_support_stored_logs_desc">%1$d සැසි (%2$s)</string>
-    <string name="settings_support_stored_logs_empty">ගබඩා කළ debug ලොග් නැත</string>
-    <string name="settings_support_stored_logs_delete_title">ගබඩා කළ ලොග් මකන්නද?</string>
-    <string name="settings_support_stored_logs_delete_msg">මෙය ගබඩා කළ %1$d debug ලොග් සැසි සියල්ල මකනු ඇත.</string>
-    <string name="settings_support_stored_logs_deleted_msg">ගබඩා කළ debug ලොග් මකා දමන ලදී</string>
-    <string name="label_pro_feature">Premium ලක්ෂණය</string>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">නොමිලේ අනුවාදය: %1$d / %2$d උපාංගය</item>
-        <item quantity="other">නොමිලේ අනුවාදය: %1$d / %2$d උපාංග</item>
-    </plurals>
-    <string name="ui_theme_color_setting_label">තේමා වර්ණය</string>
-    <string name="ui_theme_color_setting_explanation">යෙදුම් තේමා කිරීමේදී භාවිතා කරන වර්ණ පාලිත්තය.</string>
-    <string name="ui_theme_color_material_you_note">Material You භාවිතා කරන ඕනෑම දිනෙ ඔබේ wallpaper හි වර්ණය ද සකසයි.</string>
-    <string name="ui_theme_color_blue_label">නිල්</string>
-    <string name="ui_theme_color_sunset_label">හිරු බැසීම</string>
 </resources>

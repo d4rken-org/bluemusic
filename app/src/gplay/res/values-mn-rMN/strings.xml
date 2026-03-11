@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">BVM Pro шаардлагана</string>
+    <string name="upgrade_prompt_title">BVM Pro рүү шилжээх</string>
+    <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro илүү үр дүн, илүү онцлог ба шинжлэх хэрэглэгчиддүгээр илүү сонголтыг саналддаг.</string>
+    <string name="upgrade_prompt_upgrade_action">Сайжруулах</string>
+    <string name="upgrade_screen_title">BVM Pro рүү шилжээх</string>
+    <string name="upgrade_screen_preamble">Bluetooth Volume Manager сурталчилгаагүй бөгөөд хэрэглэгчийн өгөгдлийг зардаггүй. Миний ажиллыг та нараар санхүүжнэ ❤️.</string>
+    <string name="upgrade_screen_why_title">Давуу талууд</string>
+    <string name="upgrade_screen_why_body">• Урамшуулсан хөгжлөлөөр 🧙\n• Хязгаагүй төхөөрөмжүүд ➡️➡️\n• Нэмэлт үйлдлүүд ⚙️\nба дараа…</string>
+    <string name="upgrade_screen_how_title">Сонголтууд</string>
+    <string name="upgrade_screen_how_body">Та нэг удаагийн худалдан авалт болон хямд жилийн захиалгын хооронд сонгох боломжтой.\nЗахиалга нь 14 хоногийн үнэ төлбөргүй туршилтаар эхэлдэг бөгөөд үүний дараа танаас жилд нэг удаа төлбөр авна. Туршилт болон захиалгыг хүссэн үедээ цуцалж болно.\nИжил боломжууд, зөвхөн өөр үнийн загварууд.</string>
+    <string name="upgrade_screen_subscription_trial_action">14 хоногийн үнэ төлбөргүй туршилт эхлүүлэх</string>
+    <string name="upgrade_screen_subscription_action">Захиалах</string>
+    <string name="upgrade_screen_subscription_action_hint">Захиалга жилд %s өртөгтэй.</string>
+    <string name="upgrade_screen_iap_action">Нэг удаагийн худалдан авалт</string>
+    <string name="upgrade_screen_iap_action_hint">Нэг удаагийн худалдан авалт %s өртөгтэй.</string>
+    <string name="upgrade_screen_thanks_toast">Та хамгийн шилдэг нь! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">Худалдан авалтыг сэргээх</string>
+    <string name="upgrade_screen_restore_purchase_message">Таны шинэчлэлт ижил Google бүртгэл дээрх төхөөрөмжүүдэд хүчинтэй.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Танигдаагүй шинэчлэлтүүдийн асуудал шийдвэрлэх зөвлөмжүүд:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Play Store синк хийхэд хугацаа шаардагдаж магадгүй. Дахин эхлүүлэх, Google Play кэшийг цэвэрлэх эсвэл зүгээр хүлээхийг оролдоно уу.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Олон бүртгэл Google Play-г төөрөгдүүлж болно. Бусад бүртгэлээс гарах эсвэл Google Play вэбсайтаар дамжуулан суулгах нь тодорхой бүртгэлтэй холбоосыг албадаж өгдөг.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Google Play боломжгүй байна</string>
+    <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play-тай холбогдож чадахгүй байна. Google Play суулгагдсан бөгөөд шинэчлэлтсэн уу? Google хаднаа нэвтрээсэн байна уу? Google Play аппын кэшийг арилгаад төхөөрөмжийгеэ дахин ньюцлаарай.</string>
+    <string name="upgrades_no_purchases_found_check_account">Худалдан авалт олдсонгүй. Та зөв бүртгэл ашиглаж байна уу?</string>
+</resources>

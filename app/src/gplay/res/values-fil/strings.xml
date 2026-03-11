@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_feature_requires_pro">Nangangailangan ng BVM Pro</string>
+    <string name="upgrade_prompt_title">I-upgrade sa BVM Pro</string>
+    <string name="upgrade_prompt_body">Ang Bluetooth Volume Manager Pro ay nag-aalok ng mas mahusay na mga resulta, mas maraming mga feature at mga opsyon para sa mga power user.</string>
+    <string name="upgrade_prompt_upgrade_action">I-upgrade</string>
+    <string name="upgrade_screen_title">I-upgrade sa BVM Pro</string>
+    <string name="upgrade_screen_preamble">Ang Bluetooth Volume Manager ay walang mga ad at hindi nagbebenta ng data ng user. Ang aking trabaho ay pinopondohan mo ❤️.</string>
+    <string name="upgrade_screen_why_title">Mga Benepisyo</string>
+    <string name="upgrade_screen_why_body">• Isang motivated na developer 🧙
+• Walang limitasyong mga device ➡️➡️
+• Mga karagdagang aksyon ⚙️
+at marami pa…</string>
+    <string name="upgrade_screen_how_title">Mga Opsyon</string>
+    <string name="upgrade_screen_how_body">Maaari kang pumili sa pagitan ng isang one-time na pagbili at isang mas murang taunang subscription.\nAng subscription ay nagsisimula sa libreng 14-araw na pagsubok, pagkatapos nito ay sisingilin ka ng isang beses bawat taon. Ang pagsubok at subscription ay maaaring kanselahin anumang oras.\nPareho ang mga feature, iba lang ang mga modelo ng pagpepresyo.</string>
+    <string name="upgrade_screen_subscription_trial_action">Simulan ang libreng 14-day trial</string>
+    <string name="upgrade_screen_subscription_action">Mag-subscribe</string>
+    <string name="upgrade_screen_subscription_action_hint">Ang subscription ay nagkakahalaga ng %s bawat taon.</string>
+    <string name="upgrade_screen_iap_action">One-time na pagbili</string>
+    <string name="upgrade_screen_iap_action_hint">Ang one-time na pagbili ay nagkakahalaga ng %s.</string>
+    <string name="upgrade_screen_thanks_toast">Ikaw ang pinakamahusay! ❤️</string>
+    <string name="upgrade_screen_restore_purchase_action">I-restore ang pagbili</string>
+    <string name="upgrade_screen_restore_purchase_message">Ang iyong pag-upgrade ay balido sa lahat ng mga device sa parehong Google account.</string>
+    <string name="upgrade_screen_restore_troubleshooting_msg">Mga tip sa pag-troubleshoot para sa mga hindi kinikilalang pag-upgrade:</string>
+    <string name="upgrade_screen_restore_sync_patience_hint">Ang Play Store synchronization ay maaaring tumagal ng oras. Subukang mag-reboot, i-clear ang Google Play cache o maghintay lamang.</string>
+    <string name="upgrade_screen_restore_multiaccount_hint">Ang maramihang mga account ay maaaring makalito sa Google Play. Mag-log out mula sa ibang mga account o mag-install sa pamamagitan ng Google Play website, na napipilitang nakipag-ugnayan sa isang partikular na account.</string>
+    <string name="upgrades_gplay_unavailable_error_title">Ang Google Play ay kasalukoyang hindi magagamit</string>
+    <string name="upgrades_gplay_unavailable_error_description">Hindi makakonekta ang Bluetooth Volume Manager sa Google Play. Naka-install ba at updated ang Google Play? Naka-log in ba ang iyong Google Account? Subukang i-clear ang cache ng Google Play app at i-reboot ang iyong device.</string>
+    <string name="upgrades_no_purchases_found_check_account">Walang nahanap na mga binili. Ginagamit mo ba ang iyong tamang account?</string>
+</resources>
