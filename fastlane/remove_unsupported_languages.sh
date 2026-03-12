@@ -8,5 +8,14 @@ rm -rv ./metadata/android/uz
 rm -rv ./metadata/android/pcm-NG
 rm -rv ./metadata/android/tl-PH
 rm -rv ./metadata/android/si-LK
+rm -rv ./metadata/android/ckb-IR
+rm -rv ./metadata/android/kmr-TR
+rm -rv ./metadata/android/ku-TR
+rm -rv ./metadata/android/ur-IN
+rm -rv ./metadata/android/zu
+rm -rv ./metadata/android/pa-IN
+rm -rv ./metadata/android/kaa
+rm -rv ./metadata/android/or-IN
+rm -rv ./metadata/android/nb
 find ./metadata/android -empty -type d -delete
 exit 0
