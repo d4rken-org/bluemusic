@@ -1,1 +1,1 @@
-Bluetooth ձայնի կարգավորիչ
+Bluetooth Volume Manager
