@@ -113,7 +113,7 @@
     <string name="devices_audio_stream_notification_label">Notifikation</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
     <string name="label_speaker_autosave">Autogemme volumen</string>
-    <string name="description_speaker_autosave">&quot;Enhedshøjtaler&quot;-indgången, som er ansvarlig for standardvolumener, opdaterer sig selv når en Bluetooth-enhed tilslutter. Bemærk: Dette virker ikke på alle enheder.</string>
+    <string name="description_speaker_autosave">\"Enhedshøjttaler\"-posten, som er ansvarlig for standardlydstyrker, opdaterer sig selv, når en Bluetooth-enhed opretter forbindelse. Bemærk: Dette virker ikke på alle enheder.</string>
     <string name="devices_neverseen_label">Aldrig set</string>
     <string name="devices_state_connected_label">Forbundet</string>
     <string name="devices_last_connected_label">Sidst tilsluttet: %s</string>
@@ -321,8 +321,8 @@
     <string name="description_exclude_health">Nogle Android-enheder hænger sig når de slår \'Sundhedsenhed\' Bluetooth-profiler op (HDP, 0x1400).</string>
     <string name="label_exclude_gattserver">Udelad GATT server profiler</string>
     <string name="label_exclude_gatt">Udelad GATT profiler</string>
-    <string name="description_exclude_gattserver">Ikke spørg efter Bluetooth-profiler af typen &quot;Generisk Attribut&quot; (GATT) server.</string>
-    <string name="description_exclude_gatt">Ikke spørg efter Bluetooth-profiler af typen &quot;Generisk Attribut&quot; (GATT) klient.</string>
+    <string name="description_exclude_gattserver">Ikke spørg efter Bluetooth-profiler af typen \"Generisk Attribut\" (GATT) server.</string>
+    <string name="description_exclude_gatt">Ikke spørg efter Bluetooth-profiler af typen \"Generisk Attribut\" (GATT) klient.</string>
     <string name="description_waiting_for_devicex">Venter på at %s fuldfører forbindelse</string>
     <string name="action_undo">Fortryd</string>
     <string name="action_show">Vis</string>

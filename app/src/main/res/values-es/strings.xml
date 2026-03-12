@@ -113,7 +113,7 @@
     <string name="devices_audio_stream_notification_label">Notificación</string>
     <string name="devices_audio_stream_alarm_label">Alarma</string>
     <string name="label_speaker_autosave">Guardar el volumen automáticamente</string>
-    <string name="description_speaker_autosave">La entrada &quot;Altavoz del dispositivo&quot;, que es responsable de los volúmenes predeterminados, se actualiza cuando se conecta un dispositivo Bluetooth. Nota: Esto no funciona en todos los dispositivos.</string>
+    <string name="description_speaker_autosave">La entrada \"altavoz del dispositivo\", que es responsable de los volúmenes predeterminados, se actualiza cuando se conecta un dispositivo Bluetooth. Nota: Esto no funciona en todos los dispositivos.</string>
     <string name="devices_neverseen_label">Nunca se ha visto</string>
     <string name="devices_state_connected_label">Conectado</string>
     <string name="devices_last_connected_label">Última conexión: %s</string>

@@ -337,8 +337,8 @@
     <string name="managed_devices_empty_message">कोई ब्लूटूथ डिवाइस कॉन्फिगर नहीं किया गया।\nअपना पहला डिवाइस जोड़ने के लिए + बटन पर टैप करें।</string>
     <string name="label_pro_feature">प्रीमियम फीचर</string>
     <plurals name="discover_device_limit_banner">
-        <item quantity="one">मुफ्त संस्करण: %1$d में से %2$d डिवाइस</item>
-        <item quantity="other">मुफ्त संस्करण: %1$d में से %2$d डिवाइस</item>
+        <item quantity="one">मुफ्त संस्करण: %2$d में से %1$d डिवाइस</item>
+        <item quantity="other">मुफ्त संस्करण: %2$d में से %1$d डिवाइस</item>
     </plurals>
     <string name="general_delete_action">डिलीट</string>
     <string name="general_cancel_action">रद्द</string>

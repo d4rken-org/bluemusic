@@ -113,7 +113,7 @@
     <string name="devices_audio_stream_notification_label">Ειδοποίηση</string>
     <string name="devices_audio_stream_alarm_label">Ξυπνητήρι</string>
     <string name="label_speaker_autosave">Αυτόματη αποθήκευση έντασης</string>
-    <string name="description_speaker_autosave">Η καταχώρηση &quot;Ακουστικό Συσκευής&quot;, η οποία είναι υπεύθυνη για προεπιλεγμένες εντάσεις, ενημερώνεται αυτόματα όταν συνδέεται μια συσκευή Bluetooth. Σημείωση: Αυτό δεν λειτουργεί σε όλες τις συσκευές.</string>
+    <string name="description_speaker_autosave">Η καταχώρηση \"Ακουστικό Συσκευής\", η οποία είναι υπεύθυνη για προεπιλεγμένες εντάσεις, ενημερώνεται αυτόματα όταν συνδέεται μια συσκευή Bluetooth. Σημείωση: Αυτό δεν λειτουργεί σε όλες τις συσκευές.</string>
     <string name="devices_neverseen_label">Ποτέ δεν συνδέθηκε</string>
     <string name="devices_state_connected_label">Συνδέθηκε</string>
     <string name="devices_last_connected_label">Τελευταία σύνδεση: %s</string>
@@ -331,7 +331,7 @@
     <string name="battery_optimizations_issue_description">Οι βελτιστοποήσεις μπαταρίας είναι ενεργοποιημένες για αυτήν την εφαρμογή και ενδέχεται να αποτρέψουν την λήψη δεδομένων Bluetooth.
 Παρακαλώ απενεργοποιήστε τις βελτιστοποιήσεις αυτές, εάν αντιμετωπίζετε προβλήματα.</string>
     <string name="label_bluetooth_settings">Ρυθμίσεις Bluetooth</string>
-    <string name="android10_applaunch_issue_description">Το Android 10 περιορίζει το πως οι εφαρμογές μπορούν να τρέχουν στο παρασκήνιο. Για να αφήσετε να ανοίγουν οι εφαρμογές όταν μια συσκευή Bluetooth συνδέεται, παραχωρήστε το δικαίωμα &quot;Εμφάνιση πάνω από τις εφαρμογές&quot; (SYSTEM_ALERT_WINDOW).</string>
+    <string name="android10_applaunch_issue_description">Το Android 10 περιορίζει το πως οι εφαρμογές μπορούν να τρέχουν στο παρασκήνιο. Για να αφήσετε να ανοίγουν οι εφαρμογές όταν μια συσκευή Bluetooth συνδέεται, παραχωρήστε το δικαίωμα \"Εμφάνιση πάνω από τις εφαρμογές\" (SYSTEM_ALERT_WINDOW).</string>
     <string name="label_opensource">Πηγαίος κώδικας</string>
     <string name="android13_notification_permission_description">Δώστε σε αυτή την εφαρμογή άδεια για αποστολή ειδοποιήσεων. Αυτό επιτρέπει την εμφάνιση ειδοποίησης όταν η εφαρμογή είναι ενεργή και γίνονται ρυθμίσεις έντασης.</string>
     <string name="privacy_policy_label">Πολιτική απορρήτου</string>

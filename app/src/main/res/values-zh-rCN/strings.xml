@@ -322,7 +322,7 @@
     <string name="description_exclude_gatt">不要查询“通用属性”（GATT）客户端类型的蓝牙配置文件。</string>
     <string name="description_waiting_for_devicex">等待 %s 完成连接</string>
     <string name="action_undo">撤销</string>
-    <string name="action_show">查看"电池优化"</string>
+    <string name="action_show">查看“电池优化”</string>
     <string name="action_dismiss">忽略</string>
     <string name="action_fix">修复</string>
     <string name="battery_optimizations_issue_description">为此应用启用了电池优化，可能会阻止其接收蓝牙事件。 如果遇到问题，请考虑禁用对此程序的电池优化。</string>

@@ -106,7 +106,7 @@
     <string name="connection_alert_type_none">Brak</string>
     <string name="connection_alert_type_sound">Tylko dźwięk</string>
     <string name="connection_alert_type_vibration">Tylko wibracja</string>
-    <string name="connection_alert_type_both">Dźwięk i wibracja</string>
+    <string name="connection_alert_type_both">Dźwięk i wibracje</string>
     <string name="devices_stream_music_label">Muzyka</string>
     <string name="devices_audio_stream_call_label">Połączenie</string>
     <string name="devices_audio_stream_ring_label">Dzwonek</string>
