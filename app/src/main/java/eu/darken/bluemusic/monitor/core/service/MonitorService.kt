@@ -87,25 +87,27 @@ class MonitorService : Service2() {
 
     @SuppressLint("InlinedApi")
     override fun onCreate() {
-        super.onCreate()
         log(TAG, VERBOSE) { "onCreate()" }
 
-        val notification = notifications.getInitialNotification()
+        // Promote to foreground BEFORE Hilt injection (super.onCreate) to avoid 5-second timeout
         try {
+            val earlyNotification = MonitorNotifications.createEarlyNotification(this)
             if (hasApiLevel(29)) {
                 startForeground(
                     MonitorNotifications.NOTIFICATION_ID,
-                    notification,
+                    earlyNotification,
                     ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE
                 )
             } else {
-                startForeground(MonitorNotifications.NOTIFICATION_ID, notification)
+                startForeground(MonitorNotifications.NOTIFICATION_ID, earlyNotification)
             }
         } catch (e: Exception) {
-            log(TAG, ERROR) { "Failed to start foreground: ${e.asLog()}" }
+            log(TAG, ERROR) { "Early foreground promotion failed: ${e.asLog()}" }
             stopSelf()
             return
         }
+
+        super.onCreate()
 
         ContextCompat.registerReceiver(
             this,
