@@ -113,7 +113,7 @@
     <string name="devices_audio_stream_notification_label">Benachrichtigung</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
     <string name="label_speaker_autosave">Lautstärke automatisch speichern</string>
-    <string name="description_speaker_autosave">Der &quot;Geräte-Lautsprecher&quot;-Eintrag, der zuständig für die Standardeinstellung der Lautstärke ist, aktualisiert sich selbst, sobald sich ein Bluetooth-Gerät verbindet. Anmerkung: Dies funktioniert nicht bei allen Geräten.</string>
+    <string name="description_speaker_autosave">Der \"Geräte-Lautsprecher\"-Eintrag, der zuständig für die Standardeinstellung der Lautstärke ist, aktualisiert sich selbst, sobald sich ein Bluetooth-Gerät verbindet. Anmerkung: Dies funktioniert nicht bei allen Geräten.</string>
     <string name="devices_neverseen_label">Nie gesehen</string>
     <string name="devices_state_connected_label">Verbunden</string>
     <string name="devices_last_connected_label">Zuletzt verbunden: %s</string>
@@ -318,11 +318,11 @@
     <string name="action_grant">Gewähren</string>
     <string name="label_advanced">Erweitert</string>
     <string name="label_exclude_health">Gesundheitsprofile ausschließen</string>
-    <string name="description_exclude_health">Einige Android-Geräte hängen sich auf, wenn sie das Bluetooth-Profil eines &quot;Gesundheitsgeräts&quot; auflösen (HDP, 0x1400).</string>
+    <string name="description_exclude_health">Einige Android-Geräte hängen sich auf, wenn sie das Bluetooth-Profil eines \"Gesundheitsgeräts\" auflösen (HDP, 0x1400).</string>
     <string name="label_exclude_gattserver">GATT-Server-Profile ausschließen</string>
     <string name="label_exclude_gatt">GATT-Profile ausschließen</string>
-    <string name="description_exclude_gattserver">Bluetooth-Profile des Typs &quot;Generisches Attribut&quot; (GATT) Server nicht abfragen.</string>
-    <string name="description_exclude_gatt">Bluetooth-Profile des Typs &quot;Generisches Attribut&quot; (GATT) Client nicht abfragen.</string>
+    <string name="description_exclude_gattserver">Bluetooth-Profile des Typs \"Generisches Attribut\" (GATT) Server nicht abfragen.</string>
+    <string name="description_exclude_gatt">Bluetooth-Profile des Typs \"Generisches Attribut\" (GATT) Client nicht abfragen.</string>
     <string name="description_waiting_for_devicex">Auf %s wartend, um die Verbindung fertigzustellen</string>
     <string name="action_undo">Rückgängig machen</string>
     <string name="action_show">Anzeigen</string>
@@ -330,7 +330,7 @@
     <string name="action_fix">Beheben</string>
     <string name="battery_optimizations_issue_description">Die Akku-Leistungsoptimierung ist für diese App aktiviert und kann sie daran hindern, Bluetooth-Events zu empfangen. Falls Du Probleme wahrnimmst, erwäge, die Optimierung zu deaktivieren.</string>
     <string name="label_bluetooth_settings">Bluetooth-Einstellungen</string>
-    <string name="android10_applaunch_issue_description">Android 10 beschränkt, wie Apps im Hintergrund gestartet werden können. Um das Öffnen von Apps zu gestatten, sobald sich ein Bluetooth-Gerät verbindet, gewähre die Berechtigung &quot;Display over other apps&quot; (SYSTEM_ALERT_WINDOW).</string>
+    <string name="android10_applaunch_issue_description">Android 10 beschränkt, wie Apps im Hintergrund gestartet werden können. Um das Öffnen von Apps zu gestatten, sobald sich ein Bluetooth-Gerät verbindet, gewähre die Berechtigung \"Display over other apps\" (SYSTEM_ALERT_WINDOW).</string>
     <string name="label_opensource">Quellcode</string>
     <string name="android13_notification_permission_description">Erteilen Sie dieser App die Berechtigung, Benachrichtigungen zu senden. Dies ermöglicht die Anzeige einer Benachrichtigung, wenn diese App aktiv ist und Lautstärkeanpassungen vorgenommen werden.</string>
     <string name="privacy_policy_label">Datenschutzerklärung</string>
@@ -348,7 +348,7 @@
     <string name="battery_optimization_hint_message">Batterieoptimierungen sind aktiviert und können den ordnungsgemäßen Betrieb verhindern. Erwägen Sie, sie zu deaktivieren.</string>
     <string name="battery_optimization_fix_action">Optimierungen deaktivieren</string>
     <string name="android10_applaunch_hint_title">App-Startberechtigung</string>
-    <string name="android10_applaunch_hint_message">Android 10 erfordert eine spezielle Berechtigung, um Apps zu starten oder den Startbildschirm aus dem Hintergrund anzuzeigen. Erteilen Sie die Berechtigung &quot;Über anderen Apps anzeigen&quot;.</string>
+    <string name="android10_applaunch_hint_message">Android 10 erfordert eine spezielle Berechtigung, um Apps zu starten oder den Startbildschirm aus dem Hintergrund anzuzeigen. Erteile die Berechtigung \"Über anderen Apps einblenden\".</string>
     <string name="notification_permission_hint_title">Benachrichtigungsberechtigung</string>
     <string name="notification_permission_hint_message">Erteilen Sie die Benachrichtigungsberechtigung, um Statusaktualisierungen beim Anpassen der Lautstärke zu sehen.</string>
     <!-- IAP Error Messages -->

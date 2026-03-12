@@ -113,7 +113,7 @@
     <string name="devices_audio_stream_notification_label">Oznámení</string>
     <string name="devices_audio_stream_alarm_label">Budík</string>
     <string name="label_speaker_autosave">Automaticky uložit hlasitost</string>
-    <string name="description_speaker_autosave">Vstup &quot;reproduktor zařízení&quot;, který je zodpovědný za výchozí hlasitosti se sám aktualizuje po připojení zařízení Bluetooth. Poznámka: Toto nefunguje na všech zařízeních.</string>
+    <string name="description_speaker_autosave">Vstup \"reproduktor zařízení\", který je zodpovědný za výchozí hlasitosti se sám aktualizuje po připojení zařízení Bluetooth. Poznámka: Toto nefunguje na všech zařízeních.</string>
     <string name="devices_neverseen_label">Nikdy neviděno</string>
     <string name="devices_state_connected_label">Připojeno</string>
     <string name="devices_last_connected_label">Naposledy připojeno: %s</string>

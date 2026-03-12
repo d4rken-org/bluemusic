@@ -92,7 +92,7 @@
     <string name="devices_device_config_ring_volume_desc">שליטה בעוצמה המשפיעה על צלצול ההתקשרות.</string>
     <string name="devices_device_config_notification_policy_required_ringtone">שליטה בעוצמת צלצול דורשת גישה למדיניות התראות</string>
     <string name="devices_device_config_notification_policy_required_notification">שליטה בעוצמת התראות דורשת גישה למדיניות התראות</string>
-    <string name="devices_device_config_notification_policy_required_dnd">שליטה במצב אל תפריע דורשת גישה למדיניות התראות</string>
+    <string name="devices_device_config_notification_policy_required_dnd">שליטה במצב \'אל תפריע\' מצריכה גישה למדיניות התראות</string>
     <string name="devices_device_config_notification_policy_action">הענק גישה</string>
     <string name="devices_device_config_dnd_on_connect_label">מצב אל תפריע</string>
     <string name="dnd_mode_dialog_title">בחר מצב DND</string>

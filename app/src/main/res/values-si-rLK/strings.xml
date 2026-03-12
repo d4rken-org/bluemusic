@@ -71,7 +71,7 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">හඩ අඩුකිරීම ප්‍රමාණකාරකතාව</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">හඩ අඩුකිරීම් අතර අවම වේලාව: %d ms</string>
     <string name="devices_device_config_autoplay_label">ස්වයංක්‍රීය ධාවනය</string>
-    <string name="devices_device_config_autoplay_desc">මෙම උපාංගය සම්බන්ධ වූ විට බ්ලූටූත් රිමෝට් හි play බොත්තම ඔබනු ලැබේ.</string>
+    <string name="devices_device_config_autoplay_desc">මෙම උපාංගය සම්බන්ධ වූ විට Bluetooth රිමෝට් හි play ගැසීම අනුකරණය කරයි.</string>
     <string name="devices_device_config_autoplay_keycodes_title">ස්වයංක්‍රීය ධාවන යතුරු වර්ග</string>
     <string name="devices_device_config_autoplay_keycodes_available">ලබා ගත හැකි යතුරු වර්ග</string>
     <string name="devices_device_config_autoplay_keycodes_order">තෝරාගත් යතුරු (අනුපිළිවෙලෙහි)</string>
@@ -88,7 +88,7 @@
     <string name="devices_device_config_music_volume_desc">මෙම උපාංගය සම්බන්ධ වූ විට සංගීතය සහ ක්‍රීඩා කෙරෙහි බලපාන හඩ පාලනය කරන්න.</string>
     <string name="devices_device_config_call_volume_label">ඇමතුම් හඩ</string>
     <string name="devices_device_config_call_volume_desc">මෙම උපාංගය සම්බන්ධ වූ විට ඇමතුම් කෙරෙහි බලපාන හඩ පාලනය කරන්න.</string>
-    <string name="devices_device_config_ring_volume_label">රිංඟ හඩ</string>
+    <string name="devices_device_config_ring_volume_label">රිං ශබ්ද ප්‍රමාණය</string>
     <string name="devices_device_config_ring_volume_desc">ඔබේ රිංඟ ශ්‍රවණයට බලපාන හඩ පාලනය කරන්න.</string>
     <string name="devices_device_config_notification_policy_required_ringtone">රිංඟ හඩ පාලනය සඳහා දැනුම්දීම් ප්‍රතිපත්ති ප්‍රවේශය අවශ්‍ය වෙයි</string>
     <string name="devices_device_config_notification_policy_required_notification">දැනුම්දීම් හඩ පාලනය සඳහා දැනුම්දීම් ප්‍රතිපත්ති ප්‍රවේශය අවශ්‍ය වෙයි</string>
@@ -195,7 +195,7 @@
     <string name="settings_licenses_label">බලපත්‍ර</string>
     <string name="settings_translation_label">පරිවර්තනය</string>
     <string name="settings_translation_desc">ඔබේ ප්‍රියතම භාෂාවට යෙදුම පරිවර්තනය කිරීමට උදව් කරන්න</string>
-    <string name="settings_sponsor_development_title">සංවර්ධනය අනුග්‍රහය</string>
+    <string name="settings_sponsor_development_title">සංවර්ධනයට අනුග්‍රහය දෙන්න</string>
     <string name="settings_sponsor_development_summary">ආධාරකරුවෙකු වී අඛණ්ඩ සංවර්ධනය හැකිවෙමින් ගත කරන්න.</string>
     <string name="settings_privacy_policy_label">රහස්‍යතා ප්‍රතිපත්තිය</string>
     <string name="settings_privacy_policy_desc">දත්ත වගකිවයුතු ලෙස හැසිරවීම.</string>
