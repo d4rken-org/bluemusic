@@ -17,5 +17,6 @@ rm -rv ./metadata/android/pa-IN
 rm -rv ./metadata/android/kaa
 rm -rv ./metadata/android/or-IN
 rm -rv ./metadata/android/nb
+rm -rv ./metadata/android/eo
 find ./metadata/android -empty -type d -delete
 exit 0
