@@ -17,7 +17,6 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.main.ui.MainActivity
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import javax.inject.Inject
@@ -34,15 +33,7 @@ class MonitorNotifications @Inject constructor(
     private val builder: NotificationCompat.Builder
 
     init {
-        @SuppressLint("NewApi")
-        if (hasApiLevel(Build.VERSION_CODES.O)) {
-            val channel = NotificationChannel(
-                NOTIFICATION_CHANNEL_ID,
-                context.getString(R.string.label_notification_channel_status),
-                NotificationManager.IMPORTANCE_MIN
-            )
-            notificationManager.createNotificationChannel(channel)
-        }
+        ensureNotificationChannel(context)
 
         val openIntent = Intent(context, MainActivity::class.java)
         val openPi = PendingIntent.getActivity(context, 0, openIntent, PendingIntentCompat.FLAG_IMMUTABLE)
@@ -113,11 +104,6 @@ class MonitorNotifications @Inject constructor(
         addAction(NotificationCompat.Action.Builder(0, context.getString(R.string.action_exit), stopPi).build())
     }
 
-    fun getInitialNotification(): Notification = runBlocking {
-        log(TAG) { "getInitialNotification()" }
-        builderLock.withLock { getBuilder(emptyList()).build() }
-    }
-
     suspend fun getDevicesNotification(devices: Collection<ManagedDevice>): Notification = builderLock.withLock {
         log(TAG) { "getDevicesNotification(devices=$devices)" }
         return@withLock getBuilder(devices).build()
@@ -128,5 +114,26 @@ class MonitorNotifications @Inject constructor(
         private const val NOTIFICATION_CHANNEL_ID = "notification.channel.core"
         internal const val NOTIFICATION_ID = 1
         const val ACTION_STOP_MONITOR = "eu.darken.bluemusic.monitor.STOP"
+
+        @SuppressLint("NewApi")
+        private fun ensureNotificationChannel(context: Context) {
+            if (hasApiLevel(Build.VERSION_CODES.O)) {
+                val nm = context.getSystemService(NotificationManager::class.java) as NotificationManager
+                nm.createNotificationChannel(
+                    NotificationChannel(
+                        NOTIFICATION_CHANNEL_ID,
+                        context.getString(R.string.label_notification_channel_status),
+                        NotificationManager.IMPORTANCE_MIN
+                    )
+                )
+            }
+        }
+
+        fun createEarlyNotification(context: Context): Notification {
+            ensureNotificationChannel(context)
+            return NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notification_small)
+                .build()
+        }
     }
 }
