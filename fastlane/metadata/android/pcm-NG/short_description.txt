@@ -1,1 +1,1 @@
-Different voice and music volume setting for each Bluetooth device wey you use.
+Set voice & music volume for each Bluetooth device.
