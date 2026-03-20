@@ -12,6 +12,8 @@ import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.devices.core.database.DeviceDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.plus
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -27,7 +29,7 @@ class DeviceRepo @Inject constructor(
 
     val devices = combine(
         bluetoothRepo.state,
-        deviceDatabase.devices.getAllDevices()
+        flow { emitAll(deviceDatabase.devices.getAllDevices()) }
     ) { btState, managed ->
         val pairedMap = btState.devices.associateBy { it.address }
         val mappings = managed
