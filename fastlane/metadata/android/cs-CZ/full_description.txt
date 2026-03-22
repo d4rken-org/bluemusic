@@ -3,10 +3,10 @@
 **Funkce:**
 * Nastavení hlasitosti hudby, hovorů, vyzvánění a oznámení pro každé zařízení  
 * Automatické odesílání příkazů médií, jako je Přehrát nebo Další  
-* Spouštět aplikace při připojení  
-* Udržovat obrazovku zapnutou  
-* Zamknout úrovně hlasitosti  
-* Obnovit hlasitost po odpojení  
+* Spouštění aplikace při připojení  
+* Ponechání zapnuté obrazovky  
+* Uzamknutí úrovně hlasitosti  
+* Obnovení hlasitosti po odpojení  
 
 Žádné reklamy, žádné sledování. Otevřený zdrojový kód.  
 Některé doplňky vyžadují placený upgrade pro podporu vývoje.
@@ -14,7 +14,7 @@ Některé doplňky vyžadují placený upgrade pro podporu vývoje.
 **Poznámka:** Tato aplikace nemůže zvýšit hlasitost nad systémové limity.
 
 **Oprávnění:**
-* **Internet** – pro volitelné zprávy o chybách  
+* **Internet** – pro volitelné hlášení chyb  
 * **Bluetooth** – pro detekci připojení zařízení  
 * **Nastavení zvuku** – pro změnu hlasitosti  
 * **Spuštění** – pro obnovení nastavení po restartu  
