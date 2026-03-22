@@ -9,10 +9,7 @@
     <string name="upgrade_screen_title">Upgradovat na BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager neobsahuje žádné reklamy a neprodává data uživatelů. Moje práce je financována vámi ❤️.</string>
     <string name="upgrade_screen_why_title">Výhody</string>
-    <string name="upgrade_screen_why_body">• Motivovaný vývojář 🧙
-• Neomezený počet zařízení ➡️➡️
-• Další akce ⚙️
-a více…</string>
+    <string name="upgrade_screen_why_body">• Motivovaný vývojář 🧙\n• Neomezený počet zařízení ➡️➡️\n• Další akce ⚙️\na více…</string>
     <string name="upgrade_screen_how_title">Možnosti</string>
     <string name="upgrade_screen_how_body">Můžete si vybrat mezi jednorázovým nákupem a levnějším ročním předplatným.\nPředplatné začíná 14denní bezplatnou zkušební dobou, po které budete jednou ročně účtováni. Zkušební dobu a předplatné je možné kdykoliv zrušit.\nStejné funkce, jen různé cenové modely.</string>
     <string name="upgrade_screen_subscription_trial_action">Zahájit bezplatnou 14denní zkušební dobu</string>
