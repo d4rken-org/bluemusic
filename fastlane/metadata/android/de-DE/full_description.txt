@@ -1,9 +1,9 @@
-Bluetooth-Lautstärken Manager kann auf Bluetooth-Geräte reagieren, die sich verbinden oder trennen.
+**Bluetooth-Lautstärke-Manager** erinnert sich an die Lautstärkepegel für jedes Bluetooth-Gerät und reagiert bei Verbindung oder Trennung der Verbindung.
 
 **Funktionen:**
-* Lautstärkeanpassung bei Musik, Anruf, Klingelton und Benachrichtigung.  
-* Schicken der Medienbefehle 'Abspielen" oder 'Nächstes'.  
-* Öffnen einer bestimmte App.  
+* Setze Musik, Anruf, Klingelton und Benachrichtigungslautstärke pro Gerät  
+* Medienbefehle wie 'Abspielen' oder 'Nächstes' automatisch senden  
+* Apps beim Verbinden starten  
 * Bildschirm eingeschaltet lassen.  
 * Lautstärkepegel sperren  
 * Wiederherstellung der vorherigen Lautstärkeeinstellungen nach Trennung.  
