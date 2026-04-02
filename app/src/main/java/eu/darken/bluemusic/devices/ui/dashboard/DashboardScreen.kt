@@ -1,6 +1,8 @@
 package eu.darken.bluemusic.devices.ui.dashboard
 
 import android.content.Intent
+import android.provider.Settings
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
@@ -58,6 +60,7 @@ import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.navigation.Nav
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.devices.core.DeviceAddr
@@ -245,8 +248,23 @@ private fun ManagedDevicesTopBar(
         },
         actions = {
             IconButton(onClick = {
-                val intent = Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS)
-                context.startActivity(intent)
+                try {
+                    val intent = Intent(Settings.ACTION_BLUETOOTH_SETTINGS)
+                    context.startActivity(intent)
+                } catch (e: Exception) {
+                    log(TAG) { "Failed to open Bluetooth settings: $e" }
+                    try {
+                        val fallback = Intent(Settings.ACTION_SETTINGS)
+                        context.startActivity(fallback)
+                    } catch (e2: Exception) {
+                        log(TAG) { "Failed to open general settings: $e2" }
+                        Toast.makeText(
+                            context,
+                            R.string.general_error_no_compatible_app_found_msg,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
             }) {
                 Icon(
                     imageVector = Icons.TwoTone.Bluetooth,
@@ -311,8 +329,23 @@ private fun BluetoothDisabledCard() {
             Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = {
-                    val intent = Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS)
-                    context.startActivity(intent)
+                    try {
+                        val intent = Intent(Settings.ACTION_BLUETOOTH_SETTINGS)
+                        context.startActivity(intent)
+                    } catch (e: Exception) {
+                        log(TAG) { "Failed to open Bluetooth settings: $e" }
+                        try {
+                            val fallback = Intent(Settings.ACTION_SETTINGS)
+                            context.startActivity(fallback)
+                        } catch (e2: Exception) {
+                            log(TAG) { "Failed to open general settings: $e2" }
+                            Toast.makeText(
+                                context,
+                                R.string.general_error_no_compatible_app_found_msg,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 },
                 colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.error
@@ -439,3 +472,5 @@ private fun ManagedDevicesScreenPermissionPreview() {
         )
     }
 }
+
+private val TAG = logTag("Dashboard", "Screen")
