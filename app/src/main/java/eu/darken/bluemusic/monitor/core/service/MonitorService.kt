@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.util.size
 import dagger.hilt.android.AndroidEntryPoint
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
+import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.currentState
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
@@ -257,6 +258,15 @@ class MonitorService : Service2() {
 
         if (managedDevice == null) {
             log(TAG, WARN) { "handleEvent: Can't find managed device for $bluetoothEvent" }
+            return
+        }
+
+        val isFakeSpeakerEvent = bluetoothEvent.sourceDevice.deviceType == SourceDevice.Type.PHONE_SPEAKER
+        if (isFakeSpeakerEvent
+            && bluetoothEvent.type == BluetoothEventQueue.Event.Type.CONNECTED
+            && !managedDevice.isConnected
+        ) {
+            log(TAG, INFO) { "Dropping stale fake speaker CONNECTED, speaker is not currently the active device" }
             return
         }
 

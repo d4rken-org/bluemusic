@@ -1,7 +1,6 @@
 package eu.darken.bluemusic.devices.core
 
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
-import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -23,28 +22,22 @@ class NewDeviceCreator @Inject constructor(
     suspend fun createNewdevice(address: DeviceAddr) {
         log(TAG, INFO) { "createNewdevice: $address" }
 
-        val device = bluetoothRepo.state
+        bluetoothRepo.state
             .filter { it.isReady }
             .first()
             .devices
             .find { it.address == address } ?: throw IllegalStateException("Device not found: $address")
 
-        var config = DeviceConfigEntity(
+        val config = DeviceConfigEntity(
             address = address,
             lastConnected = System.currentTimeMillis(),
             musicVolume = volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC),
         )
 
-        if (device.deviceType == SourceDevice.Type.PHONE_SPEAKER) {
-            config = config.copy(
-                volumeSaveOnDisconnect = true,
-            )
-        }
         deviceRepo.updateDevice(address) {
             config
         }
         log(TAG) { "Created new device config: $address" }
-
     }
 
     companion object {
