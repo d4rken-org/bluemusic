@@ -64,9 +64,10 @@ class FakeSpeakerEventDebouncer @Inject constructor(
     suspend fun cancelPendingFakeSpeakerConnect() {
         mutex.withLock {
             val job = pendingJob ?: return@withLock
+            pendingJob = null
+            if (!job.isActive) return@withLock
             log(TAG, INFO) { "Cancelled pending fake speaker connect" }
             job.cancel()
-            pendingJob = null
         }
     }
 
