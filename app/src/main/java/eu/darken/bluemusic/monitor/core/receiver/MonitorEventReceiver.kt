@@ -25,6 +25,7 @@ import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.service.BluetoothEventQueue
+import eu.darken.bluemusic.monitor.core.service.FakeSpeakerEventDebouncer
 import eu.darken.bluemusic.monitor.core.service.MonitorControl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
@@ -40,6 +41,7 @@ class MonitorEventReceiver : BroadcastReceiver() {
     @Inject lateinit var deviceRepo: DeviceRepo
     @Inject lateinit var dispatcherProvider: DispatcherProvider
     @Inject lateinit var eventQueue: BluetoothEventQueue
+    @Inject lateinit var fakeSpeakerEventDebouncer: FakeSpeakerEventDebouncer
     @Inject lateinit var monitorControl: MonitorControl
     @Inject @AppScope lateinit var appScope: CoroutineScope
 
@@ -124,22 +126,36 @@ class MonitorEventReceiver : BroadcastReceiver() {
             )
         )
 
-        val fakeSpeakerEvent = deviceRepo.getDevice(speakerDeviceProvider.address)?.let { speakerDevice ->
-            log(TAG, DEBUG) { "Speaker is a managed device, generating fake event." }
-            BluetoothEventQueue.Event(
-                type = when (eventType) {
-                    BluetoothEventQueue.Event.Type.CONNECTED -> BluetoothEventQueue.Event.Type.DISCONNECTED
-                    BluetoothEventQueue.Event.Type.DISCONNECTED -> BluetoothEventQueue.Event.Type.CONNECTED
-                },
-                sourceDevice = speakerDeviceProvider.getSpeaker(
-                    isConnected = eventType == BluetoothEventQueue.Event.Type.DISCONNECTED
-                ),
-            )
+        val speakerAddress = speakerDeviceProvider.address
+        val otherActiveRealDevices = devices.filter { other ->
+            other.isConnected
+                    && other.address != bluetoothDevice.address
+                    && other.address != speakerAddress
+        }
+        val speakerStateChanges = otherActiveRealDevices.isEmpty()
+
+        val fakeSpeakerEvent = if (speakerStateChanges) {
+            deviceRepo.getDevice(speakerAddress)?.let {
+                log(TAG, DEBUG) { "Speaker state will change, generating fake event." }
+                BluetoothEventQueue.Event(
+                    type = when (eventType) {
+                        BluetoothEventQueue.Event.Type.CONNECTED -> BluetoothEventQueue.Event.Type.DISCONNECTED
+                        BluetoothEventQueue.Event.Type.DISCONNECTED -> BluetoothEventQueue.Event.Type.CONNECTED
+                    },
+                    sourceDevice = speakerDeviceProvider.getSpeaker(
+                        isConnected = eventType == BluetoothEventQueue.Event.Type.DISCONNECTED
+                    ),
+                )
+            }
+        } else {
+            log(TAG, DEBUG) { "Other managed devices remain active, no fake speaker event needed." }
+            null
         }
 
         when (eventType) {
             BluetoothEventQueue.Event.Type.CONNECTED -> {
                 log(TAG, INFO) { "Sending speaker disconnect first, then device connect." }
+                fakeSpeakerEventDebouncer.cancelPendingFakeSpeakerConnect()
                 fakeSpeakerEvent?.let { eventQueue.submit(it) }
                 eventQueue.submit(actualEvent)
             }
@@ -147,7 +163,12 @@ class MonitorEventReceiver : BroadcastReceiver() {
             BluetoothEventQueue.Event.Type.DISCONNECTED -> {
                 log(TAG, INFO) { "Sending real device event first, then fake speaker connect." }
                 eventQueue.submit(actualEvent)
-                fakeSpeakerEvent?.let { eventQueue.submit(it) }
+                fakeSpeakerEvent?.let {
+                    fakeSpeakerEventDebouncer.scheduleFakeSpeakerConnect(
+                        event = it,
+                        debounce = FakeSpeakerEventDebouncer.DEFAULT_DEBOUNCE,
+                    )
+                }
             }
         }
 
