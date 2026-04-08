@@ -2,7 +2,7 @@
 
 # Bluetooth Volume Manager
 
-[![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/d4rken-org/bluemusic?include_prereleases)](https://github.com/d4rken-org/capod/releases/latest)
+[![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/d4rken-org/bluemusic?include_prereleases)](https://github.com/d4rken-org/bluemusic/releases/latest)
 [![RB Status](https://shields.rbtlog.dev/simple/eu.darken.bluemusic)](https://shields.rbtlog.dev/eu.darken.bluemusic)
 [![Code tests & eval](https://img.shields.io/github/actions/workflow/status/d4rken-org/bluemusic/code-checks.yml?logo=githubactions&label=Code%20tests
 )](https://github.com/d4rken-org/bluemusic/actions)
