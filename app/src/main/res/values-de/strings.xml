@@ -209,7 +209,7 @@
     <string name="debug_log_stop_action">Aufzeichnung stoppen</string>
     <string name="debug_log_screen_title">Debug Log Rekorder</string>
     <string name="debug_log_screen_subtitle">Aufgezeichnetes Debug-Protokoll überprüfen und teilen</string>
-    <string name="debug_log_screen_sensitive_title">Sensible Informationen</string>
+    <string name="debug_log_screen_sensitive_title">Kritische Informationen</string>
     <string name="debug_log_screen_sensitive_information_message">Die generierte Datei enthält sensible Informationen (z.B. Dateinamen und installierte Apps). Teile sie nur mit vertrauenswürdigen Parteien.</string>
     <string name="debug_log_screen_session_path_label">Debug-Sitzungspfad</string>
     <string name="debug_log_screen_log_files_label">Protokolldateien</string>

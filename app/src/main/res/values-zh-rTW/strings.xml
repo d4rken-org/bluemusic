@@ -13,9 +13,9 @@
     <string name="onboarding_welcome_message">藍牙音量管理員讓您可以自動管理藍牙裝置的音量。</string>
     <string name="onboarding_welcome_action">開始吧</string>
     <string name="onboarding_beta_title">測試版本</string>
-    <string name="onboarding_beta_message">這是測試版本。請保持幽默感並有備用計畫。如果遇到問題請回報給我們。</string>
+    <string name="onboarding_beta_message">這是一個測試版（beta版）。請保持幽默感並準備備用方案。如果您遇到任何問題，請及時回饋。</string>
     <string name="onboarding_beta_action">我什麼都不怕</string>
-    <string name="onboarding_privacy_title">隱私權與資料</string>
+    <string name="onboarding_privacy_title">隱私和數據</string>
     <string name="onboarding_privacy_message">藍牙音量管理員沒有廣告，也不會販賣使用者資料（甚至是開源的）。您的隱私對我們很重要。</string>
     <string name="onboarding_privacy_read_action">閱讀隱私權政策</string>
     <string name="onboarding_privacy_action">接受</string>
@@ -54,7 +54,7 @@
     <string name="devices_device_config_show_home_screen_desc">在所有事件為此裝置處理完畢後，嘗試顯示主畫面。這在某些 Android 版本上可能無效。</string>
     <string name="devices_device_config_nudge_volume_label">輕推音量</string>
     <string name="devices_device_config_nudge_volume_description">先降低再提高音量一格，即使期望的音量已經設定（根據系統顯示）。</string>
-    <string name="devices_device_config_visible_adjustments_label">可見的調整</string>
+    <string name="devices_device_config_visible_adjustments_label">可見調整</string>
     <string name="devices_device_config_visible_adjustments_desc">切換在裝置卡片上顯示哪些調整選項</string>
     <string name="devices_device_config_keep_awake_label">保持喚醒</string>
     <string name="devices_device_config_keep_awake_desc">這個裝置連線時保持螢幕始終亮起。</string>
