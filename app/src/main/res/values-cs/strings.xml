@@ -188,7 +188,7 @@
     <string name="settings_acknowledgements_description">Zásluhy, licence a zvláštní poděkování</string>
     <string name="settings_acks_translation_header">Překlad</string>
     <string name="settings_acks_translators_title">Překladatelé</string>
-    <string name="settings_acks_translators_people">novas78@xda;OndraVa;Woytazzer</string>
+    <string name="settings_acks_translators_people">novas78@xda;Matthias (darken)</string>
     <string name="settings_acks_translate_title">Přeložit BVM</string>
     <string name="settings_acks_translate_desc">Pomozte přeložit BVM do svého jazyka</string>
     <string name="settings_acks_thanks_header">Poděkování</string>
