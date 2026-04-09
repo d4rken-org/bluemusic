@@ -10,6 +10,7 @@ import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
+import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
@@ -31,6 +32,7 @@ import javax.inject.Singleton
 class EventDispatcher @Inject constructor(
     private val dispatcherProvider: DispatcherProvider,
     private val deviceRepo: DeviceRepo,
+    private val devicesSettings: DevicesSettings,
     private val connectionModuleMap: Set<@JvmSuppressWildcards ConnectionModule>,
     private val eventTypeDedupTracker: EventTypeDedupTracker,
 ) {
@@ -52,6 +54,8 @@ class EventDispatcher @Inject constructor(
             log(TAG, INFO) { "Dropping stale fake speaker CONNECTED, speaker is not currently the active device" }
             return
         }
+
+        eventTypeDedupTracker.observeEnabledState(devicesSettings.currentEnabledState())
 
         // Skip duplicate broadcasts with the same type for the same device.
         // Placed *after* the fake-speaker safeguard so early-returns there

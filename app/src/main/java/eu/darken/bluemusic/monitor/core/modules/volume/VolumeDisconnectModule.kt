@@ -127,9 +127,10 @@ class VolumeDisconnectModule @Inject constructor(
                             // Known limitation: on non-coupling devices, a
                             // user intentionally setting notification to 0
                             // while in vibrate/silent ringer mode will NOT be
-                            // captured by save-on-disconnect — they'd have to
-                            // use the app UI or rely on volumeObserving=true
-                            // to save the 0.
+                            // captured by save-on-disconnect. This heuristic
+                            // intentionally prefers preserving pre-existing
+                            // values on coupling devices over guessing at the
+                            // meaning of a single 0-read in non-Normal mode.
                             if (snap.currentLevel > 0) hardwareNormal else null
                         }
                     }
