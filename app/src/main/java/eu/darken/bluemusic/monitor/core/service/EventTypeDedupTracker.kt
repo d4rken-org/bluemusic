@@ -175,12 +175,27 @@ class EventTypeDedupTracker @Inject constructor(
 
         /**
          * Events of the same type for the same device within this window are
-         * treated as duplicates and dropped. 60s gives comfortable headroom
-         * over scott's observed 10s Samsung duplicates while staying well
-         * under any plausible legit same-type repeat (which would require an
-         * intervening opposite-type event to make sense physically).
+         * treated as duplicates and dropped. 15s covers the observed ~10s
+         * Samsung Galaxy Buds 3 Pro duplicate with a 50% safety margin, while
+         * keeping the window tight enough that rare missed-ACL edge cases
+         * (a `C → [missed D] → C` or `D → [missed C] → D` sequence within the
+         * TTL) have minimal blast radius.
+         *
+         * The tradeoff is asymmetric:
+         * - Samsung duplicates: ~100% reliable on affected devices, always
+         *   within ~10s, always dropped here. Net win.
+         * - Missed ACL broadcasts on modern Android: <1% for foreground
+         *   sessions, higher under aggressive OEM doze. A same-type repeat
+         *   within 15s that isn't a duplicate requires both the missed
+         *   intermediate event *and* a legit reconnect cycle inside the
+         *   window, which is exceedingly rare. If it does happen, the next
+         *   opposite-type event recovers cleanly (no lasting stuck state).
+         *
+         * Do not widen this back out without a corresponding dispatch-time
+         * state safeguard — anything longer re-introduces the risk of
+         * silently dropping real reconnects in rare-but-real edge cases.
          */
-        const val TTL_MS: Long = 60_000L
+        const val TTL_MS: Long = 15_000L
 
         /**
          * Entries older than this age are evicted during [shouldProcess] to
