@@ -10,7 +10,6 @@ import eu.darken.bluemusic.bluetooth.core.SourceDeviceWrapper
 import eu.darken.bluemusic.bluetooth.core.speaker.SpeakerDeviceProvider
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
-import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
@@ -66,16 +65,10 @@ class MonitorEventReceiver : BroadcastReceiver() {
 
         appScope.launch {
             try {
-                val isEnabled = devicesSettings.isEnabled.value()
-                // Always notify the tracker, including when we are about to
-                // return early below. Driving the tracker's transition clear
-                // from the receiver's own synchronous read closes the
-                // scheduler-race window between the flow collector in
-                // EventTypeDedupTracker.init and the receiver's isDuplicate
-                // call on the same coroutine.
-                eventTypeDedupTracker.notifyEnabledState(isEnabled)
+                val enabledState = devicesSettings.currentEnabledState()
+                eventTypeDedupTracker.observeEnabledState(enabledState)
 
-                if (!isEnabled) {
+                if (!enabledState.isEnabled) {
                     log(TAG, INFO) { "We are disabled." }
                     return@launch
                 }

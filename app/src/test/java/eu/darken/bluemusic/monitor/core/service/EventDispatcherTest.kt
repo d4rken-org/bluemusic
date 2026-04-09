@@ -25,7 +25,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 import testhelpers.coroutine.asDispatcherProvider
-import testhelpers.datastore.FakeDataStoreValue
 import testhelpers.time.FakeMonotonicClock
 
 class EventDispatcherTest : BaseTest() {
@@ -37,7 +36,8 @@ class EventDispatcherTest : BaseTest() {
     private lateinit var deviceRepo: DeviceRepo
     private lateinit var tracker: EventTypeDedupTracker
     private lateinit var devicesSettings: DevicesSettings
-    private lateinit var fakeIsEnabled: FakeDataStoreValue<Boolean>
+    private lateinit var enabledStateFlow: MutableStateFlow<DevicesSettings.EnabledState>
+    private lateinit var currentEnabledState: DevicesSettings.EnabledState
     private lateinit var clock: FakeMonotonicClock
     private lateinit var trackerScope: CoroutineScope
     private lateinit var module1: ConnectionModule
@@ -52,8 +52,10 @@ class EventDispatcherTest : BaseTest() {
         coEvery { deviceRepo.updateDevice(any(), any()) } returns Unit
 
         devicesSettings = mockk()
-        fakeIsEnabled = FakeDataStoreValue(initial = true)
-        every { devicesSettings.isEnabled } returns fakeIsEnabled.mock
+        currentEnabledState = DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 0L)
+        enabledStateFlow = MutableStateFlow(currentEnabledState)
+        every { devicesSettings.enabledState } returns enabledStateFlow
+        coEvery { devicesSettings.currentEnabledState() } answers { currentEnabledState }
 
         clock = FakeMonotonicClock(now = 0L)
         trackerScope = CoroutineScope(Dispatchers.Unconfined + Job())
@@ -105,6 +107,7 @@ class EventDispatcherTest : BaseTest() {
     private fun TestScope.createDispatcher() = EventDispatcher(
         dispatcherProvider = asDispatcherProvider(),
         deviceRepo = deviceRepo,
+        devicesSettings = devicesSettings,
         connectionModuleMap = setOf(module1, module2),
         eventTypeDedupTracker = tracker,
     )

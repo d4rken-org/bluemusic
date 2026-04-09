@@ -43,21 +43,19 @@ import javax.inject.Singleton
  * events while monitoring is disabled — so tracker state from before a
  * disabled gap cannot be trusted to reflect reality after re-enable.
  *
- * Clearing on [DevicesSettings.isEnabled] transitions is driven by two paths:
+ * Reset detection is driven by a monotonic toggle epoch in
+ * [DevicesSettings.EnabledState]. The epoch advances on every actual toggle,
+ * even if a consumer only observes the final boolean value after a rapid
+ * `true -> false -> true` cycle.
  *
- * 1. [MonitorEventReceiver] calls [notifyEnabledState] **synchronously on every
- *    broadcast** (before its own `!isEnabled` early return), so any transition
- *    coincident with a broadcast is observed immediately, before
- *    [isDuplicate] is consulted on the same call path.
- * 2. The [DevicesSettings.isEnabled] flow collector in [init] handles
- *    transitions that happen **while no broadcast is flying** (e.g. user toggles
- *    monitoring off then back on with no BT events in between). Without this
- *    backstop the tracker would never learn about the disabled interval.
+ * Observing that epoch is driven by two paths:
  *
- * Residual race: if a `true → false → true` cycle *and* a BT broadcast all
- * happen inside one scheduler tick (sub-ms), the flow collector may not have
- * drained yet when the receiver consults [isDuplicate]. This requires inputs
- * no human can produce.
+ * 1. [MonitorEventReceiver] and [EventDispatcher] call [observeEnabledState]
+ *    from the same snapshot they use for event handling, so queue consumers
+ *    can synchronously clear stale dedup state before consulting
+ *    [isDuplicate]/[shouldProcess].
+ * 2. The [DevicesSettings.enabledState] collector in [init] handles toggles
+ *    that happen while no event is being processed.
  *
  * Thread-safe via [@Synchronized]. Expected to be called both from the
  * sequential [BluetoothEventQueue.events] consumer in `MonitorService` AND from
@@ -74,51 +72,34 @@ class EventTypeDedupTracker @Inject constructor(
     private val lastProcessedEventType =
         mutableMapOf<String, Pair<BluetoothEventQueue.Event.Type, Long>>()
 
-    /**
-     * Last observed value of [DevicesSettings.isEnabled]. Bootstrapped to
-     * `true`, matching the DataStore default for `devices.enabled` — this is
-     * the state the tracker assumes until either [notifyEnabledState] or the
-     * backstop flow collector reports otherwise. Used to detect transitions
-     * in both code paths so only the first observer of a given transition
-     * triggers the clear.
-     */
-    private var lastSeenEnabled: Boolean = true
+    private var lastSeenEnabledState = DevicesSettings.EnabledState(
+        isEnabled = true,
+        toggleEpoch = 0L,
+    )
 
     init {
-        // Backstop: observes isEnabled changes that happen *without* any BT
-        // broadcast in flight. If the user toggles monitoring off then back on
-        // with no ACL events in between, the receiver-driven path in
-        // [notifyEnabledState] never sees the intermediate `false` value, so
-        // this collector is the only thing that can clear the map.
-        //
-        // When a broadcast *does* coincide with the transition, the receiver's
-        // synchronous [notifyEnabledState] call gets there first and this
-        // collector's later pass is a no-op (lastSeenEnabled already matches).
-        devicesSettings.isEnabled.flow
+        devicesSettings.enabledState
             .drop(1) // ignore initial replay
             .distinctUntilChanged()
-            .onEach { notifyEnabledState(it) }
+            .onEach { observeEnabledState(it) }
             .launchIn(appScope)
     }
 
     /**
-     * Synchronously records the current [DevicesSettings.isEnabled] value. If
-     * the passed value differs from the previously recorded one, the dedup map
-     * is cleared immediately before returning.
-     *
-     * Must be called by [MonitorEventReceiver] on every broadcast, **before**
-     * any `!isEnabled` early-return branch, so every broadcast contributes the
-     * `isEnabled` value the receiver itself used for its decision. This
-     * eliminates the scheduler race between the receiver reading the latest
-     * state and the async flow collector in [init] draining.
+     * Synchronously observes the caller's atomic enabled snapshot. A changed epoch means at least
+     * one toggle happened since the last observation, so stale dedup state must be cleared even if
+     * the current boolean matches the earlier one (for example a collapsed
+     * `true -> false -> true` cycle).
      */
     @Synchronized
-    fun notifyEnabledState(currentEnabled: Boolean) {
-        val previous = lastSeenEnabled
-        lastSeenEnabled = currentEnabled
-        if (previous != currentEnabled) {
+    fun observeEnabledState(currentState: DevicesSettings.EnabledState) {
+        val previousState = lastSeenEnabledState
+        lastSeenEnabledState = currentState
+        if (previousState.toggleEpoch != currentState.toggleEpoch) {
             log(TAG, INFO) {
-                "Monitoring toggled (isEnabled=$previous → $currentEnabled), clearing dedup state"
+                "Monitoring epoch advanced " +
+                    "(${previousState.toggleEpoch} → ${currentState.toggleEpoch}, " +
+                    "enabled=${previousState.isEnabled} → ${currentState.isEnabled}), clearing dedup state"
             }
             lastProcessedEventType.clear()
         }

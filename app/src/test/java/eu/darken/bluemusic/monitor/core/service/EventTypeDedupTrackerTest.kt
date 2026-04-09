@@ -4,6 +4,7 @@ import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.monitor.core.service.BluetoothEventQueue.Event.Type.CONNECTED
 import eu.darken.bluemusic.monitor.core.service.BluetoothEventQueue.Event.Type.DISCONNECTED
 import io.kotest.matchers.shouldBe
+import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.CoroutineScope
@@ -11,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -18,7 +20,6 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
-import testhelpers.datastore.FakeDataStoreValue
 import testhelpers.time.FakeMonotonicClock
 
 class EventTypeDedupTrackerTest : BaseTest() {
@@ -29,15 +30,18 @@ class EventTypeDedupTrackerTest : BaseTest() {
 
     private lateinit var tracker: EventTypeDedupTracker
     private lateinit var devicesSettings: DevicesSettings
-    private lateinit var fakeIsEnabled: FakeDataStoreValue<Boolean>
+    private lateinit var enabledStateFlow: MutableStateFlow<DevicesSettings.EnabledState>
+    private lateinit var currentEnabledState: DevicesSettings.EnabledState
     private lateinit var clock: FakeMonotonicClock
     private lateinit var trackerScope: CoroutineScope
 
     @BeforeEach
     fun setup() {
         devicesSettings = mockk()
-        fakeIsEnabled = FakeDataStoreValue(initial = true)
-        every { devicesSettings.isEnabled } returns fakeIsEnabled.mock
+        currentEnabledState = DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 0L)
+        enabledStateFlow = MutableStateFlow(currentEnabledState)
+        every { devicesSettings.enabledState } returns enabledStateFlow
+        coEvery { devicesSettings.currentEnabledState() } answers { currentEnabledState }
 
         clock = FakeMonotonicClock(now = 0L)
         trackerScope = CoroutineScope(Dispatchers.Unconfined + Job())
@@ -52,6 +56,15 @@ class EventTypeDedupTrackerTest : BaseTest() {
     @AfterEach
     fun teardown() {
         trackerScope.cancel()
+    }
+
+    private fun setEnabled(enabled: Boolean) {
+        currentEnabledState = if (currentEnabledState.isEnabled == enabled) {
+            currentEnabledState
+        } else {
+            currentEnabledState.copy(isEnabled = enabled, toggleEpoch = currentEnabledState.toggleEpoch + 1L)
+        }
+        enabledStateFlow.value = currentEnabledState
     }
 
     // --- shouldProcess basics ---
@@ -260,10 +273,10 @@ class EventTypeDedupTrackerTest : BaseTest() {
         tracker.isDuplicate(budsAddress, DISCONNECTED) shouldBe true
 
         // Toggle off (simulates user disabling monitoring)
-        fakeIsEnabled.value = false
+        setEnabled(false)
 
         // Toggle back on (simulates user re-enabling)
-        fakeIsEnabled.value = true
+        setEnabled(true)
 
         // Map should be cleared — the same event should no longer be a duplicate
         tracker.isDuplicate(budsAddress, DISCONNECTED) shouldBe false
@@ -277,7 +290,7 @@ class EventTypeDedupTrackerTest : BaseTest() {
 
         // Transition to disabled — the state is cleared as soon as we detect
         // the change, so re-enabling after an arbitrary delay still starts fresh.
-        fakeIsEnabled.value = false
+        setEnabled(false)
 
         tracker.isDuplicate(budsAddress, DISCONNECTED) shouldBe false
     }
@@ -294,7 +307,7 @@ class EventTypeDedupTrackerTest : BaseTest() {
 
         // t=5s: monitoring disabled
         clock.now = 5_000
-        fakeIsEnabled.value = false
+        setEnabled(false)
 
         // t=10s: device reconnects. Receiver would early-return on isEnabled=false,
         // so the CONNECTED event never reaches the tracker.
@@ -303,7 +316,7 @@ class EventTypeDedupTrackerTest : BaseTest() {
 
         // t=20s: monitoring re-enabled
         clock.now = 20_000
-        fakeIsEnabled.value = true
+        setEnabled(true)
 
         // t=25s: device disconnects again. Without the clear-on-toggle fix,
         // isDuplicate would see last=(DISCONNECTED, 0), age=25s < 60s → TRUE
@@ -314,93 +327,76 @@ class EventTypeDedupTrackerTest : BaseTest() {
         tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
     }
 
-    // --- notifyEnabledState (receiver-driven synchronous clear) ---
+    // --- observeEnabledState (receiver/dispatcher-driven synchronous clear) ---
 
     @Test
-    fun `notifyEnabledState - true to false clears state synchronously`() {
+    fun `observeEnabledState - toggle to disabled clears state synchronously`() {
         clock.now = 1_000
         tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
         tracker.isDuplicate(budsAddress, DISCONNECTED) shouldBe true
 
-        // Receiver hands us the new enabled value directly; must clear
-        // without waiting for the backstop flow collector.
-        tracker.notifyEnabledState(false)
+        tracker.observeEnabledState(
+            DevicesSettings.EnabledState(isEnabled = false, toggleEpoch = 1L)
+        )
 
         tracker.isDuplicate(budsAddress, DISCONNECTED) shouldBe false
     }
 
     @Test
-    fun `notifyEnabledState - false to true clears state synchronously`() {
+    fun `observeEnabledState - epoch change clears even when boolean is true`() {
         clock.now = 1_000
         tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
-        tracker.notifyEnabledState(false)
-        // State is gone after the first transition
 
-        // Seed something new while "disabled" (hypothetical path; real
-        // receiver would early-return, but the tracker itself is a singleton
-        // that can be called from anywhere).
-        tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
-
-        // Re-enable transition clears again
-        tracker.notifyEnabledState(true)
+        // Collapsed true -> false -> true cycle: the observer only sees the final
+        // `true`, but the epoch proves a toggle happened and must still clear.
+        tracker.observeEnabledState(
+            DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 2L)
+        )
         tracker.isDuplicate(budsAddress, DISCONNECTED) shouldBe false
     }
 
     @Test
-    fun `notifyEnabledState - repeated same value does not clear`() {
+    fun `observeEnabledState - repeated same epoch does not clear`() {
         clock.now = 1_000
         tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
 
-        // Receiver gets called with isEnabled=true on every broadcast, which is
-        // the normal running state — must not clear on every ping.
-        tracker.notifyEnabledState(true)
-        tracker.notifyEnabledState(true)
-        tracker.notifyEnabledState(true)
+        tracker.observeEnabledState(DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 0L))
+        tracker.observeEnabledState(DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 0L))
+        tracker.observeEnabledState(DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 0L))
 
         tracker.isDuplicate(budsAddress, DISCONNECTED) shouldBe true
     }
 
     @Test
-    fun `notifyEnabledState - first call matching bootstrap does not clear`() {
+    fun `observeEnabledState - first call matching bootstrap does not clear`() {
         clock.now = 1_000
         tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
 
-        // The tracker bootstraps `lastSeenEnabled=true` to match the
-        // `devices.enabled` DataStore default. A notifyEnabledState(true) call
-        // issued before any real transition must therefore be a no-op — it
-        // must NOT falsely clear a map populated by earlier shouldProcess
-        // calls.
-        tracker.notifyEnabledState(true)
+        tracker.observeEnabledState(DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 0L))
 
         tracker.isDuplicate(budsAddress, DISCONNECTED) shouldBe true
     }
 
     /**
-     * Simulates the scheduler race Codex flagged, under the write-site-notify
-     * architecture:
+     * Simulates the collapsed-toggle race:
      *
-     * - The ViewModel write path calls [notifyEnabledState] **synchronously**
-     *   alongside the DataStore write (see
-     *   [eu.darken.bluemusic.devices.ui.settings.DevicesSettingsViewModel.onToggleEnabled]).
-     * - A broadcast arriving between the write and the async flow collector
-     *   draining will still see an up-to-date tracker because the write path
-     *   already aligned it.
-     *
-     * Uses a [StandardTestDispatcher] so the tracker's init-block backstop
-     * collector stays queued until the test explicitly advances the
-     * scheduler. Without the write-site notify, the receiver's observation of
-     * `true` would not be able to detect the intermediate `false` and the map
-     * would remain stale. With it, the map is correctly cleared before the
-     * backstop ever runs.
+     * - DataStore commits `enabled=false, epoch=1`, then `enabled=true, epoch=2`
+     *   before the backstop collector drains.
+     * - The receiver/dispatcher only observes the final `enabled=true`, but its
+     *   atomic snapshot still carries `epoch=2`.
+     * - Observing that snapshot must clear the map immediately, before the
+     *   queued flow collector runs.
      */
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `race - write-site notify clears before backstop drains`() {
+    fun `race - observed epoch clears before backstop drains`() {
         val testDispatcher = StandardTestDispatcher()
         val testScope = TestScope(testDispatcher)
-        val raceFakeEnabled = FakeDataStoreValue(initial = true)
+        var raceState = DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 0L)
+        val raceStateFlow = MutableStateFlow(raceState)
         val raceSettings = mockk<DevicesSettings>().also {
-            every { it.isEnabled } returns raceFakeEnabled.mock
+            every { it.enabledState } returns raceStateFlow
+            coEvery { it.currentEnabledState() } answers { raceState }
         }
         val raceClock = FakeMonotonicClock(now = 0L)
         val raceTracker = EventTypeDedupTracker(
@@ -417,27 +413,22 @@ class EventTypeDedupTrackerTest : BaseTest() {
         raceClock.now = 1_000
         raceTracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
 
-        // Simulate the ViewModel write path: write to DataStore AND notify
-        // the tracker synchronously in the same coroutine. The test scope is
-        // NOT advanced between these calls, so the async flow collector
-        // queued by the DataStore write has NOT run yet — only the synchronous
-        // notify has touched the tracker.
-        raceFakeEnabled.value = false
-        raceTracker.notifyEnabledState(false)
-        raceFakeEnabled.value = true
-        raceTracker.notifyEnabledState(true)
+        // Two writes happen before the backstop collector drains. StateFlow may
+        // conflate them to the final `true`, but the epoch still reflects both
+        // toggles.
+        raceState = DevicesSettings.EnabledState(isEnabled = false, toggleEpoch = 1L)
+        raceStateFlow.value = raceState
+        raceState = DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 2L)
+        raceStateFlow.value = raceState
 
-        // At this point, the map MUST be cleared purely via the write-site
-        // notifications. The backstop collector is still queued in the
-        // scheduler and has not drained.
+        // The receiver/dispatcher path sees only the final `true`, but the
+        // epoch proves a toggle happened and must clear synchronously.
+        raceTracker.observeEnabledState(raceState)
         raceClock.now = 10_000
         raceTracker.isDuplicate(budsAddress, DISCONNECTED) shouldBe false
         raceTracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
 
-        // Draining the backstop collector afterwards must be idempotent — it
-        // may perceive the end-state only (due to StateFlow conflation on
-        // rapid writes), and its notifyEnabledState call must not clobber the
-        // entry we just legitimately seeded.
+        // Draining the backstop collector afterwards must be idempotent.
         testScope.advanceUntilIdle()
 
         raceClock.now = 11_000
@@ -457,9 +448,11 @@ class EventTypeDedupTrackerTest : BaseTest() {
     fun `backstop collector clears state on observed transition`() {
         val testDispatcher = StandardTestDispatcher()
         val testScope = TestScope(testDispatcher)
-        val raceFakeEnabled = FakeDataStoreValue(initial = true)
+        var raceState = DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 0L)
+        val raceStateFlow = MutableStateFlow(raceState)
         val raceSettings = mockk<DevicesSettings>().also {
-            every { it.isEnabled } returns raceFakeEnabled.mock
+            every { it.enabledState } returns raceStateFlow
+            coEvery { it.currentEnabledState() } answers { raceState }
         }
         val raceClock = FakeMonotonicClock(now = 0L)
         val raceTracker = EventTypeDedupTracker(
@@ -475,14 +468,16 @@ class EventTypeDedupTrackerTest : BaseTest() {
         // Toggle and drain between each write so the collector actually sees
         // both emissions (StateFlow conflation would otherwise collapse rapid
         // writes to the end state only).
-        raceFakeEnabled.value = false
+        raceState = DevicesSettings.EnabledState(isEnabled = false, toggleEpoch = 1L)
+        raceStateFlow.value = raceState
         testScope.advanceUntilIdle()
 
         // After observing the transition to `false`, the map is cleared.
         raceClock.now = 10_000
         raceTracker.isDuplicate(budsAddress, DISCONNECTED) shouldBe false
 
-        raceFakeEnabled.value = true
+        raceState = DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 2L)
+        raceStateFlow.value = raceState
         testScope.advanceUntilIdle()
 
         // And after flipping back, we're still in a clean state for the

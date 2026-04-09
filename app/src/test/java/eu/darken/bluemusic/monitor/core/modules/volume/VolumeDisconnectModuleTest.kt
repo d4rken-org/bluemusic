@@ -265,9 +265,7 @@ class VolumeDisconnectModuleTest : BaseTest() {
     // 8c. KNOWN LIMITATION (documented, intentional):
     //     Ringer VIBRATE, non-coupling device, user sets notification to 0,
     //     hardware=0, stored>0 → we cannot distinguish this from Pixel's
-    //     coupling-clamp on a single read, so we preserve stored. A user who
-    //     deliberately mutes notification in vibrate/silent on a non-coupling
-    //     device must use the app UI or volumeObserving=true to persist the 0.
+    //     coupling-clamp on a single read, so we preserve stored.
     // ------------------------------------------------------------------------
     @Test
     fun `known limitation - non-coupling user zero in vibrate is not captured`() = runTest {
