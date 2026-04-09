@@ -25,6 +25,7 @@ import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.service.BluetoothEventQueue
+import eu.darken.bluemusic.monitor.core.service.EventTypeDedupTracker
 import eu.darken.bluemusic.monitor.core.service.FakeSpeakerEventDebouncer
 import eu.darken.bluemusic.monitor.core.service.MonitorControl
 import kotlinx.coroutines.CoroutineScope
@@ -41,6 +42,7 @@ class MonitorEventReceiver : BroadcastReceiver() {
     @Inject lateinit var deviceRepo: DeviceRepo
     @Inject lateinit var dispatcherProvider: DispatcherProvider
     @Inject lateinit var eventQueue: BluetoothEventQueue
+    @Inject lateinit var eventTypeDedupTracker: EventTypeDedupTracker
     @Inject lateinit var fakeSpeakerEventDebouncer: FakeSpeakerEventDebouncer
     @Inject lateinit var monitorControl: MonitorControl
     @Inject @AppScope lateinit var appScope: CoroutineScope
@@ -64,7 +66,16 @@ class MonitorEventReceiver : BroadcastReceiver() {
 
         appScope.launch {
             try {
-                if (!devicesSettings.isEnabled.value()) {
+                val isEnabled = devicesSettings.isEnabled.value()
+                // Always notify the tracker, including when we are about to
+                // return early below. Driving the tracker's transition clear
+                // from the receiver's own synchronous read closes the
+                // scheduler-race window between the flow collector in
+                // EventTypeDedupTracker.init and the receiver's isDuplicate
+                // call on the same coroutine.
+                eventTypeDedupTracker.notifyEnabledState(isEnabled)
+
+                if (!isEnabled) {
                     log(TAG, INFO) { "We are disabled." }
                     return@launch
                 }
@@ -117,6 +128,18 @@ class MonitorEventReceiver : BroadcastReceiver() {
             return
         }
         log(TAG, DEBUG) { "Event concerns device $managedDevice" }
+
+        // Read-only pre-filter against duplicate ACL broadcasts (e.g. Samsung Galaxy Buds 3 Pro
+        // emits a follow-up ACL_DISCONNECTED ~10s after the first one). Skipping the broadcast
+        // here avoids wasted queue submission, debouncer reschedules, and the 10s goAsync delay
+        // at the end of this coroutine. IMPORTANT: isDuplicate is read-only; EventDispatcher is
+        // the single authoritative committer of dedup state via shouldProcess. Calling
+        // shouldProcess here instead would cause the dispatcher's own shouldProcess call to see
+        // this update and drop the first-occurrence event, breaking the entire pipeline.
+        if (eventTypeDedupTracker.isDuplicate(managedDevice.address, eventType)) {
+            log(TAG, INFO) { "Skipping duplicate $eventType broadcast for ${managedDevice.address}" }
+            return
+        }
 
         val actualEvent = BluetoothEventQueue.Event(
             type = eventType,

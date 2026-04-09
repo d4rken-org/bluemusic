@@ -23,6 +23,14 @@ fun DeviceConfigEntity.updateVolume(type: AudioStream.Type, volume: Float?): Dev
     AudioStream.Type.ALARM -> copy(alarmVolume = volume)
 }
 
+fun DeviceConfigEntity.getVolume(type: AudioStream.Type): Float? = when (type) {
+    AudioStream.Type.MUSIC -> musicVolume
+    AudioStream.Type.CALL -> callVolume
+    AudioStream.Type.RINGTONE -> ringVolume
+    AudioStream.Type.NOTIFICATION -> notificationVolume
+    AudioStream.Type.ALARM -> alarmVolume
+}
+
 /**
  * Type-safe volume update using VolumeMode
  */
