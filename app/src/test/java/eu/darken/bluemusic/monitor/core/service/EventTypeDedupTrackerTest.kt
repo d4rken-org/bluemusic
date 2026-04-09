@@ -160,6 +160,22 @@ class EventTypeDedupTrackerTest : BaseTest() {
         tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
     }
 
+    /**
+     * Symmetric missed-ACL recovery for the `C → [missed D] → C` direction.
+     * Documents the rationale for keeping [EventTypeDedupTracker.TTL_MS]
+     * narrow: once the window has elapsed, a legitimate reconnect after a
+     * missed intermediate DISCONNECTED must process so the user's audio
+     * route and volume restore actually run.
+     */
+    @Test
+    fun `recovers from dropped intermediate disconnect after TTL`() {
+        clock.now = 0
+        tracker.shouldProcess(budsAddress, CONNECTED) shouldBe true
+        // Intermediate DISCONNECTED was missed (doze, system load, OEM kill).
+        clock.now = EventTypeDedupTracker.TTL_MS + 100
+        tracker.shouldProcess(budsAddress, CONNECTED) shouldBe true
+    }
+
     @Test
     fun `TTL is per device, not global`() {
         clock.now = 0
@@ -297,7 +313,10 @@ class EventTypeDedupTrackerTest : BaseTest() {
 
     /**
      * Reproduces the exact Codex scenario: D → disable → (CONN dropped at
-     * receiver) → re-enable → D within TTL must NOT be suppressed.
+     * receiver) → re-enable → D within TTL must NOT be suppressed. Timeline
+     * is compressed to fit inside the 15s TTL so the test still exercises the
+     * "second D would be suppressed by TTL without the clear-on-toggle fix"
+     * path.
      */
     @Test
     fun `codex scenario - toggle gap does not suppress later events`() {
@@ -305,24 +324,24 @@ class EventTypeDedupTrackerTest : BaseTest() {
         clock.now = 0
         tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
 
-        // t=5s: monitoring disabled
-        clock.now = 5_000
+        // t=2s: monitoring disabled
+        clock.now = 2_000
         setEnabled(false)
 
-        // t=10s: device reconnects. Receiver would early-return on isEnabled=false,
+        // t=5s: device reconnects. Receiver would early-return on isEnabled=false,
         // so the CONNECTED event never reaches the tracker.
-        clock.now = 10_000
+        clock.now = 5_000
         // (no tracker call)
 
-        // t=20s: monitoring re-enabled
-        clock.now = 20_000
+        // t=8s: monitoring re-enabled
+        clock.now = 8_000
         setEnabled(true)
 
-        // t=25s: device disconnects again. Without the clear-on-toggle fix,
-        // isDuplicate would see last=(DISCONNECTED, 0), age=25s < 60s → TRUE
+        // t=12s: device disconnects again. Without the clear-on-toggle fix,
+        // isDuplicate would see last=(DISCONNECTED, 0), age=12s < 15s → TRUE
         // and silently drop the real disconnect. With the fix, the map was
-        // cleared at t=5s → isDuplicate returns false → event processes.
-        clock.now = 25_000
+        // cleared at t=2s → isDuplicate returns false → event processes.
+        clock.now = 12_000
         tracker.isDuplicate(budsAddress, DISCONNECTED) shouldBe false
         tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
     }
