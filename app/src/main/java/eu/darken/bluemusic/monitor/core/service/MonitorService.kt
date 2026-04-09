@@ -13,7 +13,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.util.size
 import dagger.hilt.android.AndroidEntryPoint
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
-import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.currentState
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
@@ -29,7 +28,6 @@ import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.ui.Service2
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
-import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
@@ -38,8 +36,6 @@ import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
-import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
-import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import eu.darken.bluemusic.monitor.ui.MonitorNotifications
 import kotlinx.coroutines.CancellationException
@@ -71,11 +67,11 @@ class MonitorService : Service2() {
     @Inject lateinit var notificationManager: NotificationManager
     @Inject lateinit var deviceRepo: DeviceRepo
     @Inject lateinit var bluetoothRepo: BluetoothRepo
-    @Inject lateinit var connectionModuleMap: Set<@JvmSuppressWildcards ConnectionModule>
     @Inject lateinit var volumeModuleMap: Set<@JvmSuppressWildcards VolumeModule>
     @Inject lateinit var volumeObserver: VolumeObserver
     @Inject lateinit var ringerModeObserver: RingerModeObserver
     @Inject lateinit var bluetoothEventQueue: BluetoothEventQueue
+    @Inject lateinit var eventDispatcher: EventDispatcher
 
     private val serviceScope by lazy {
         CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
@@ -192,7 +188,7 @@ class MonitorService : Service2() {
             .setupCommonEventHandlers(TAG) { "Event monitor" }
             .onEach { event ->
                 log(TAG, INFO) { "START Handling bluetooth event: $event" }
-                handleEvent(event)
+                eventDispatcher.dispatch(event)
                 log(TAG, INFO) { "STOP Handling bluetooth event: $event" }
             }
             .catch { log(TAG, WARN) { "Event monitor flow failed:\n${it.asLog()}" } }
@@ -249,76 +245,6 @@ class MonitorService : Service2() {
         override fun onReceive(context: Context, intent: Intent) {
             log(TAG) { "Stop monitor action received" }
             stopSelf()
-        }
-    }
-
-    private suspend fun handleEvent(bluetoothEvent: BluetoothEventQueue.Event) {
-        log(TAG) { "handleEvent: Handling $bluetoothEvent" }
-        val managedDevice = deviceRepo.getDevice(bluetoothEvent.sourceDevice.address)
-
-        if (managedDevice == null) {
-            log(TAG, WARN) { "handleEvent: Can't find managed device for $bluetoothEvent" }
-            return
-        }
-
-        val isFakeSpeakerEvent = bluetoothEvent.sourceDevice.deviceType == SourceDevice.Type.PHONE_SPEAKER
-        if (isFakeSpeakerEvent
-            && bluetoothEvent.type == BluetoothEventQueue.Event.Type.CONNECTED
-            && !managedDevice.isConnected
-        ) {
-            log(TAG, INFO) { "Dropping stale fake speaker CONNECTED, speaker is not currently the active device" }
-            return
-        }
-
-        val deviceEvent = when (bluetoothEvent.type) {
-            BluetoothEventQueue.Event.Type.CONNECTED -> DeviceEvent.Connected(managedDevice)
-            BluetoothEventQueue.Event.Type.DISCONNECTED -> DeviceEvent.Disconnected(managedDevice)
-        }
-
-        // TODO make this a module?
-        deviceRepo.updateDevice(managedDevice.address) {
-            it.copy(lastConnected = System.currentTimeMillis())
-        }
-
-        val priorityArray = SparseArray<MutableList<ConnectionModule>>()
-
-        for (module in connectionModuleMap) {
-            val priority = module.priority
-            var list = priorityArray.get(priority)
-            if (list == null) {
-                list = ArrayList()
-                priorityArray.put(priority, list)
-            }
-            list.add(module)
-        }
-
-        log(TAG) { "handleEvent: Processing event $deviceEvent" }
-
-        for (i in 0 until priorityArray.size) {
-            val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
-            log(TAG, VERBOSE) {
-                "handleEvent: ${currentPriorityModules.size} modules at priority ${priorityArray.keyAt(i)}"
-            }
-
-            coroutineScope {
-                currentPriorityModules.map { module ->
-                    async(dispatcherProvider.IO) {
-                        try {
-                            log(TAG, VERBOSE) {
-                                "handleEvent: ${module.tag} HANDLE-START for $deviceEvent"
-                            }
-                            module.handle(deviceEvent)
-                            log(TAG, VERBOSE) {
-                                "handleEvent: ${module.tag} HANDLE-STOP for $deviceEvent"
-                            }
-                        } catch (e: Exception) {
-                            log(TAG, ERROR) {
-                                "handleEvent: Error: ${module.tag} for $deviceEvent: ${e.asLog()}"
-                            }
-                        }
-                    }
-                }.awaitAll()
-            }
         }
     }
 

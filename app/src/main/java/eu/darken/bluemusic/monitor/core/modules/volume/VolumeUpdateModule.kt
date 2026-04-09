@@ -13,7 +13,11 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.updateVolume
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.RingerMode
+import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import java.time.Duration
@@ -24,6 +28,7 @@ import javax.inject.Singleton
 @Singleton
 class VolumeUpdateModule @Inject constructor(
     private val volumeTool: VolumeTool,
+    private val ringerTool: RingerTool,
     private val deviceRepo: DeviceRepo,
 ) : VolumeModule {
 
@@ -44,17 +49,65 @@ class VolumeUpdateModule @Inject constructor(
         val activeDevices = deviceRepo.currentDevices().filter { it.isActive }
         log(TAG, VERBOSE) { "Active devices (${activeDevices.size}): $activeDevices" }
 
-        val percentage = volumeTool.getVolumePercentage(id)
+        val ringerMode = ringerTool.getCurrentRingerMode()
+        val percentage = volumeTool.getVolumePercentage(id).coerceIn(0f, 1f)
 
         val now = Instant.now()
         activeDevices
             .filter { Duration.between(it.lastConnected, now) > it.actionDelay }
             .filter { it.volumeObserving && !it.volumeLock }
-            .filter { dev -> dev.getStreamType(id) != null && dev.getVolume(dev.getStreamType(id)!!) != null }
             .forEach { dev ->
-                log(TAG, INFO) { "Saving new volume ($percentage@$id) for $dev" }
+                val streamType = dev.getStreamType(id) ?: return@forEach
+                if (dev.getVolume(streamType) == null) return@forEach
+
+                // Map the raw hardware reading to a VolumeMode that accounts
+                // for the current ringer mode on streams that have sentinel
+                // states (RINGTONE) or unreliable hardware reads in
+                // vibrate/silent (NOTIFICATION).
+                //
+                // Without this, a user flipping the phone to vibrate
+                // mid-session would trigger STREAM_RING → 0 observations that
+                // overwrite the stored Vibrate sentinel (or a legitimate
+                // Normal value) with `Normal(0)`, racing against
+                // MonitorService.handleRingerMode() and losing non-deterministically.
+                val mode: VolumeMode? = when (streamType) {
+                    AudioStream.Type.RINGTONE -> when (ringerMode) {
+                        // RINGTONE owns first-class Silent/Vibrate sentinels.
+                        // Both this path and handleRingerMode() are allowed to
+                        // write them; they always agree on the sentinel value,
+                        // so last-writer-wins is safe.
+                        RingerMode.SILENT -> VolumeMode.Silent
+                        RingerMode.VIBRATE -> VolumeMode.Vibrate
+                        RingerMode.NORMAL -> VolumeMode.Normal(percentage)
+                    }
+
+                    AudioStream.Type.NOTIFICATION -> when (ringerMode) {
+                        RingerMode.NORMAL -> VolumeMode.Normal(percentage)
+                        else -> {
+                            // Same heuristic as VolumeDisconnectModule: in
+                            // non-Normal ringer mode, a 0 reading could be
+                            // either a Pixel-style platform clamp or an
+                            // intentional user mute on a non-coupling device.
+                            // Capture non-zero readings (clearly user intent)
+                            // and preserve stored on 0-readings (safer default
+                            // for the coupling case).
+                            if (event.newVolume > 0) VolumeMode.Normal(percentage) else null
+                        }
+                    }
+
+                    else -> VolumeMode.Normal(percentage)
+                }
+
+                if (mode == null) {
+                    log(TAG, VERBOSE) {
+                        "Skipping $streamType update for $dev, ringer=$ringerMode hardware=0"
+                    }
+                    return@forEach
+                }
+
+                log(TAG, INFO) { "Saving new volume ($mode@$id) for $dev" }
                 deviceRepo.updateDevice(dev.address) { oldConfig ->
-                    oldConfig.updateVolume(dev.getStreamType(id)!!, percentage)
+                    oldConfig.updateVolume(streamType, mode)
                 }
             }
     }

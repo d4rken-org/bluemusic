@@ -1,0 +1,299 @@
+package eu.darken.bluemusic.monitor.core.modules.volume
+
+import eu.darken.bluemusic.bluetooth.core.SourceDevice
+import eu.darken.bluemusic.devices.core.DeviceRepo
+import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.RingerMode
+import eu.darken.bluemusic.monitor.core.audio.RingerTool
+import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
+import io.kotest.matchers.shouldBe
+import io.mockk.Runs
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.every
+import io.mockk.just
+import io.mockk.mockk
+import io.mockk.slot
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.test.runTest
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import testhelpers.BaseTest
+
+class VolumeUpdateModuleTest : BaseTest() {
+
+    private val address = "AA:BB:CC:DD:EE:FF"
+
+    private lateinit var volumeTool: VolumeTool
+    private lateinit var ringerTool: RingerTool
+    private lateinit var deviceRepo: DeviceRepo
+    private lateinit var sourceDevice: SourceDevice
+    private lateinit var devicesFlow: MutableStateFlow<List<ManagedDevice>>
+
+    @BeforeEach
+    fun setup() {
+        volumeTool = mockk(relaxed = true)
+        ringerTool = mockk(relaxed = true)
+        deviceRepo = mockk(relaxed = true)
+        devicesFlow = MutableStateFlow(emptyList())
+        every { deviceRepo.devices } returns devicesFlow
+        coEvery { deviceRepo.updateDevice(any(), any()) } just Runs
+
+        sourceDevice = mockk {
+            every { this@mockk.address } returns this@VolumeUpdateModuleTest.address
+            every { label } returns "Test Device"
+            every { deviceType } returns SourceDevice.Type.HEADPHONES
+            every { getStreamId(AudioStream.Type.MUSIC) } returns AudioStream.Id.STREAM_MUSIC
+            every { getStreamId(AudioStream.Type.CALL) } returns AudioStream.Id.STREAM_VOICE_CALL
+            every { getStreamId(AudioStream.Type.RINGTONE) } returns AudioStream.Id.STREAM_RINGTONE
+            every { getStreamId(AudioStream.Type.NOTIFICATION) } returns AudioStream.Id.STREAM_NOTIFICATION
+            every { getStreamId(AudioStream.Type.ALARM) } returns AudioStream.Id.STREAM_ALARM
+        }
+    }
+
+    private fun createModule() = VolumeUpdateModule(
+        volumeTool = volumeTool,
+        ringerTool = ringerTool,
+        deviceRepo = deviceRepo,
+    )
+
+    private fun config(
+        musicVolume: Float? = null,
+        callVolume: Float? = null,
+        ringVolume: Float? = null,
+        notificationVolume: Float? = null,
+        alarmVolume: Float? = null,
+        volumeObserving: Boolean = true,
+        volumeLock: Boolean = false,
+        lastConnected: Long = 0L,
+    ): DeviceConfigEntity = DeviceConfigEntity(
+        address = address,
+        musicVolume = musicVolume,
+        callVolume = callVolume,
+        ringVolume = ringVolume,
+        notificationVolume = notificationVolume,
+        alarmVolume = alarmVolume,
+        volumeObserving = volumeObserving,
+        volumeLock = volumeLock,
+        lastConnected = lastConnected,
+    )
+
+    private fun managedDevice(config: DeviceConfigEntity) = ManagedDevice(
+        isConnected = true,
+        device = sourceDevice,
+        config = config,
+    )
+
+    private fun seedActive(device: ManagedDevice) {
+        devicesFlow.value = listOf(device)
+    }
+
+    private suspend fun runTransform(
+        module: VolumeUpdateModule,
+        event: VolumeEvent,
+        seedConfig: DeviceConfigEntity,
+    ): DeviceConfigEntity {
+        val slot = slot<(DeviceConfigEntity) -> DeviceConfigEntity>()
+        coEvery { deviceRepo.updateDevice(address, capture(slot)) } just Runs
+        module.handle(event)
+        return slot.captured(seedConfig)
+    }
+
+    // ------------------------------------------------------------------------
+    // wasUs guard — self-triggered events are ignored
+    // ------------------------------------------------------------------------
+    @Test
+    fun `self-triggered events are ignored`() = runTest {
+        val module = createModule()
+        val cfg = config(musicVolume = 0.5f)
+        seedActive(managedDevice(cfg))
+
+        every { volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 11) } returns true
+
+        module.handle(
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false)
+        )
+
+        coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+    }
+
+    // ------------------------------------------------------------------------
+    // Normal ringer + MUSIC → writes percent
+    // ------------------------------------------------------------------------
+    @Test
+    fun `normal ringer music change writes percent`() = runTest {
+        val module = createModule()
+        val cfg = config(musicVolume = 0.5f)
+        seedActive(managedDevice(cfg))
+
+        every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.32f
+        every { volumeTool.wasUs(any(), any()) } returns false
+
+        val result = runTransform(
+            module,
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 8, self = false),
+            cfg,
+        )
+
+        result.musicVolume shouldBe 0.32f
+    }
+
+    // ------------------------------------------------------------------------
+    // RINGTONE in VIBRATE → writes Vibrate sentinel (not Normal(0))
+    //
+    // Regression: without the ringer-aware mapping, the STREAM_RING→0
+    // observation that Android fires on every vibrate flip would silently
+    // overwrite a stored Vibrate sentinel (or Normal value) with 0.
+    // ------------------------------------------------------------------------
+    @Test
+    fun `vibrate ringer ring change writes vibrate sentinel`() = runTest {
+        val module = createModule()
+        val cfg = config(ringVolume = 0.48f)
+        seedActive(managedDevice(cfg))
+
+        every { ringerTool.getCurrentRingerMode() } returns RingerMode.VIBRATE
+        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_RINGTONE) } returns 0f
+        every { volumeTool.wasUs(any(), any()) } returns false
+
+        val result = runTransform(
+            module,
+            VolumeEvent(AudioStream.Id.STREAM_RINGTONE, 5, 0, self = false),
+            cfg,
+        )
+
+        result.ringVolume shouldBe VolumeMode.LEGACY_VIBRATE_VALUE
+    }
+
+    // ------------------------------------------------------------------------
+    // RINGTONE in SILENT → writes Silent sentinel
+    // ------------------------------------------------------------------------
+    @Test
+    fun `silent ringer ring change writes silent sentinel`() = runTest {
+        val module = createModule()
+        val cfg = config(ringVolume = 0.48f)
+        seedActive(managedDevice(cfg))
+
+        every { ringerTool.getCurrentRingerMode() } returns RingerMode.SILENT
+        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_RINGTONE) } returns 0f
+        every { volumeTool.wasUs(any(), any()) } returns false
+
+        val result = runTransform(
+            module,
+            VolumeEvent(AudioStream.Id.STREAM_RINGTONE, 5, 0, self = false),
+            cfg,
+        )
+
+        result.ringVolume shouldBe VolumeMode.LEGACY_SILENT_VALUE
+    }
+
+    // ------------------------------------------------------------------------
+    // NOTIFICATION in VIBRATE with hardware 0 → skipped (preserves stored)
+    //
+    // Matches the disconnect-module heuristic: a 0 reading under non-Normal
+    // ringer is ambiguous, preserve the stored value rather than zero it out.
+    // ------------------------------------------------------------------------
+    @Test
+    fun `vibrate ringer notification zero hardware preserves stored`() = runTest {
+        val module = createModule()
+        val cfg = config(notificationVolume = 0.19f)
+        seedActive(managedDevice(cfg))
+
+        every { ringerTool.getCurrentRingerMode() } returns RingerMode.VIBRATE
+        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_NOTIFICATION) } returns 0f
+        every { volumeTool.wasUs(any(), any()) } returns false
+
+        module.handle(
+            VolumeEvent(AudioStream.Id.STREAM_NOTIFICATION, 1, 0, self = false)
+        )
+
+        coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+    }
+
+    // ------------------------------------------------------------------------
+    // NOTIFICATION in VIBRATE with hardware > 0 → captured (non-coupling device)
+    // ------------------------------------------------------------------------
+    @Test
+    fun `vibrate ringer notification nonzero hardware captures change`() = runTest {
+        val module = createModule()
+        val cfg = config(notificationVolume = 0.19f)
+        seedActive(managedDevice(cfg))
+
+        every { ringerTool.getCurrentRingerMode() } returns RingerMode.VIBRATE
+        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_NOTIFICATION) } returns (5f / 7f)
+        every { volumeTool.wasUs(any(), any()) } returns false
+
+        val result = runTransform(
+            module,
+            VolumeEvent(AudioStream.Id.STREAM_NOTIFICATION, 1, 5, self = false),
+            cfg,
+        )
+
+        result.notificationVolume shouldBe (5f / 7f)
+    }
+
+    // ------------------------------------------------------------------------
+    // volumeObserving=false → no write
+    // ------------------------------------------------------------------------
+    @Test
+    fun `volumeObserving disabled - no write`() = runTest {
+        val module = createModule()
+        val cfg = config(musicVolume = 0.5f, volumeObserving = false)
+        seedActive(managedDevice(cfg))
+
+        every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.7f
+        every { volumeTool.wasUs(any(), any()) } returns false
+
+        module.handle(
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 17, self = false)
+        )
+
+        coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+    }
+
+    // ------------------------------------------------------------------------
+    // volumeLock=true → no write
+    // ------------------------------------------------------------------------
+    @Test
+    fun `volumeLock enabled - no write`() = runTest {
+        val module = createModule()
+        val cfg = config(musicVolume = 0.5f, volumeLock = true)
+        seedActive(managedDevice(cfg))
+
+        every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.7f
+        every { volumeTool.wasUs(any(), any()) } returns false
+
+        module.handle(
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 17, self = false)
+        )
+
+        coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+    }
+
+    // ------------------------------------------------------------------------
+    // Unconfigured stream (no stored value) → no write
+    // ------------------------------------------------------------------------
+    @Test
+    fun `unconfigured stream - no write`() = runTest {
+        val module = createModule()
+        // musicVolume explicitly null — this device does not track music volume
+        val cfg = config(musicVolume = null, callVolume = 0.3f)
+        seedActive(managedDevice(cfg))
+
+        every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.7f
+        every { volumeTool.wasUs(any(), any()) } returns false
+
+        module.handle(
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 17, self = false)
+        )
+
+        coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+    }
+}

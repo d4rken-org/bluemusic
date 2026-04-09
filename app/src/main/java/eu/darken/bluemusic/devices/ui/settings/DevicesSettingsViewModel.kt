@@ -10,6 +10,7 @@ import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
+import eu.darken.bluemusic.monitor.core.service.EventTypeDedupTracker
 import kotlinx.coroutines.flow.combine
 import javax.inject.Inject
 
@@ -20,6 +21,7 @@ constructor(
     dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
     private val devicesSettings: DevicesSettings,
+    private val eventTypeDedupTracker: EventTypeDedupTracker,
     upgradeRepo: UpgradeRepo,
 ) : ViewModel4(dispatcherProvider, logTag("Settings", "Devices", "ViewModel"), navCtrl) {
 
@@ -43,6 +45,14 @@ constructor(
     fun onToggleEnabled(enabled: Boolean) = launch {
         log(tag) { "onToggleEnabled($enabled)" }
         devicesSettings.isEnabled.value(enabled)
+        // Notify the dedup tracker synchronously on the same coroutine that
+        // owns the write. This closes the race where a BT broadcast arrives
+        // between the DataStore commit and the tracker's async flow
+        // collector catching up: the tracker's in-memory state is already
+        // aligned with the value the ViewModel just wrote, so a subsequent
+        // receiver read of isEnabled will see a tracker that has already
+        // cleared (if this write transitioned the state).
+        eventTypeDedupTracker.notifyEnabledState(enabled)
     }
 
     fun onToggleRestoreOnBoot(enabled: Boolean) = launch {
