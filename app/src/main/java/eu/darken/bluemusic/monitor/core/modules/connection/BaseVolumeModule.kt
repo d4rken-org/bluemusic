@@ -14,6 +14,7 @@ import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.takeWhile
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.roundToInt
@@ -115,15 +116,14 @@ abstract class BaseVolumeModule(
 
         log(tag, INFO) { "Monitoring volume (target=$volumeMode, level=$targetLevel) for $device" }
 
+        // Set to true inside collect to exit cleanly via takeWhile on the next element.
         var yielded = false
         withTimeoutOrNull(device.monitoringDuration.toMillis()) {
             volumeObserver.volumes
+                .filter { it.streamId == streamId }
+                .filter { it.newVolume != targetLevel }
                 .takeWhile { !yielded }
                 .collect { event ->
-                    if (event.streamId != streamId) return@collect
-
-                    if (event.newVolume == targetLevel) return@collect
-
                     if (!volumeTool.wasUs(streamId, targetLevel)) {
                         log(tag, INFO) {
                             "Monitor($type) yielding to external VolumeTool write on $device"

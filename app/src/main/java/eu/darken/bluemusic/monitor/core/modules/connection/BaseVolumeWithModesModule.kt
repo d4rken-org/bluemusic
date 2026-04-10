@@ -9,6 +9,8 @@ import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.takeWhile
 import kotlinx.coroutines.withTimeoutOrNull
 
 abstract class BaseVolumeWithModesModule(
@@ -60,13 +62,24 @@ abstract class BaseVolumeWithModesModule(
     private suspend fun monitorRingerMode(device: ManagedDevice, targetMode: RingerMode) {
         log(tag, INFO) { "Monitoring ringer mode (target=$targetMode) for $device" }
 
+        // Set to true inside collect to exit cleanly via takeWhile on the next element.
+        var yielded = false
         withTimeoutOrNull(device.monitoringDuration.toMillis()) {
             ringerModeObserver.ringerMode
+                .filter { it.newMode != targetMode }
+                .takeWhile { !yielded }
                 .collect { event ->
-                    if (event.newMode == targetMode) return@collect
+                    if (!ringerTool.wasUs(targetMode)) {
+                        log(tag, INFO) {
+                            "Monitor($type) yielding to external ringer mode change on $device"
+                        }
+                        yielded = true
+                        return@collect
+                    }
 
                     log(tag) {
-                        "Ringer mode changed to ${event.newMode}, restoring $targetMode"
+                        "Monitor($type) re-enforcing ringer mode " +
+                            "(${event.newMode} → $targetMode)"
                     }
                     ringerTool.setRingerMode(targetMode)
                 }
