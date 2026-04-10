@@ -14,6 +14,10 @@ class RingerTool @Inject constructor(
     private val audioManager: AudioManager
 ) {
 
+    @Volatile private var lastMode: RingerMode? = null
+
+    fun wasUs(mode: RingerMode): Boolean = lastMode == mode
+
     fun getCurrentRingerMode(): RingerMode = when (audioManager.ringerMode) {
         AudioManager.RINGER_MODE_NORMAL -> RingerMode.NORMAL
         AudioManager.RINGER_MODE_VIBRATE -> RingerMode.VIBRATE
@@ -37,6 +41,7 @@ class RingerTool @Inject constructor(
         }
 
         return try {
+            lastMode = mode
             audioManager.ringerMode = androidMode
             log(TAG, DEBUG) { "Changed ringer mode from $currentMode to $mode" }
             true
