@@ -1,9 +1,11 @@
 package eu.darken.bluemusic.monitor.core.service
 
+import eu.darken.bluemusic.common.debug.logging.Logging
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.monitor.core.service.BluetoothEventQueue.Event.Type.CONNECTED
 import eu.darken.bluemusic.monitor.core.service.BluetoothEventQueue.Event.Type.DISCONNECTED
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldContain
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
@@ -314,7 +316,7 @@ class EventTypeDedupTrackerTest : BaseTest() {
     /**
      * Reproduces the exact Codex scenario: D → disable → (CONN dropped at
      * receiver) → re-enable → D within TTL must NOT be suppressed. Timeline
-     * is compressed to fit inside the 15s TTL so the test still exercises the
+     * is compressed to fit inside the 20s TTL so the test still exercises the
      * "second D would be suppressed by TTL without the clear-on-toggle fix"
      * path.
      */
@@ -338,7 +340,7 @@ class EventTypeDedupTrackerTest : BaseTest() {
         setEnabled(true)
 
         // t=12s: device disconnects again. Without the clear-on-toggle fix,
-        // isDuplicate would see last=(DISCONNECTED, 0), age=12s < 15s → TRUE
+        // isDuplicate would see last=(DISCONNECTED, 0), age=12s < 20s → TRUE
         // and silently drop the real disconnect. With the fix, the map was
         // cleared at t=2s → isDuplicate returns false → event processes.
         clock.now = 12_000
@@ -505,5 +507,99 @@ class EventTypeDedupTrackerTest : BaseTest() {
         raceTracker.isDuplicate(budsAddress, DISCONNECTED) shouldBe false
 
         testScope.cancel()
+    }
+
+    // --- DEDUP_NEAR_MISS observability ---
+
+    private class CapturingLogger : Logging.Logger {
+        data class Entry(val priority: Logging.Priority, val tag: String, val message: String)
+
+        val entries = mutableListOf<Entry>()
+
+        override fun log(priority: Logging.Priority, tag: String, message: String, metaData: Map<String, Any>?) {
+            entries.add(Entry(priority, tag, message))
+        }
+    }
+
+    @Test
+    fun `near-miss WARN fires when same-type accepted within eviction window`() {
+        val logger = CapturingLogger()
+        Logging.install(logger)
+        try {
+            clock.now = 0
+            tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
+
+            // Accept just past TTL — within [TTL_MS, EVICTION_AGE_MS]
+            clock.now = EventTypeDedupTracker.TTL_MS + 1_000
+            tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
+
+            val warnEntries = logger.entries.filter {
+                it.priority == Logging.Priority.WARN && it.message.contains("DEDUP_NEAR_MISS")
+            }
+            warnEntries.size shouldBe 1
+            warnEntries[0].message shouldContain budsAddress
+            warnEntries[0].message shouldContain "margin="
+        } finally {
+            Logging.remove(logger)
+        }
+    }
+
+    @Test
+    fun `near-miss WARN does not fire for drop within TTL`() {
+        val logger = CapturingLogger()
+        Logging.install(logger)
+        try {
+            clock.now = 0
+            tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
+
+            clock.now = 5_000
+            tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe false
+
+            val warnEntries = logger.entries.filter {
+                it.priority == Logging.Priority.WARN && it.message.contains("DEDUP_NEAR_MISS")
+            }
+            warnEntries.size shouldBe 0
+        } finally {
+            Logging.remove(logger)
+        }
+    }
+
+    @Test
+    fun `near-miss WARN does not fire for fresh first-occurrence events`() {
+        val logger = CapturingLogger()
+        Logging.install(logger)
+        try {
+            clock.now = 0
+            tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
+            tracker.shouldProcess(watchAddress, CONNECTED) shouldBe true
+
+            val warnEntries = logger.entries.filter {
+                it.priority == Logging.Priority.WARN && it.message.contains("DEDUP_NEAR_MISS")
+            }
+            warnEntries.size shouldBe 0
+        } finally {
+            Logging.remove(logger)
+        }
+    }
+
+    @Test
+    fun `near-miss WARN does not fire for acceptance well past eviction window`() {
+        val logger = CapturingLogger()
+        Logging.install(logger)
+        try {
+            clock.now = 0
+            tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
+
+            // Well past EVICTION_AGE_MS — entry was evicted, treated as first-occurrence
+            clock.now = EventTypeDedupTracker.EVICTION_AGE_MS * 2
+            tracker.shouldProcess(budsAddress, DISCONNECTED) shouldBe true
+
+            val warnEntries = logger.entries.filter {
+                it.priority == Logging.Priority.WARN && it.message.contains("DEDUP_NEAR_MISS")
+            }
+            warnEntries.size shouldBe 0
+        } finally {
+            Logging.remove(logger)
+        }
     }
 }
