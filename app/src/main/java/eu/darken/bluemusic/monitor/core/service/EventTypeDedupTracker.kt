@@ -2,6 +2,7 @@ package eu.darken.bluemusic.monitor.core.service
 
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.time.MonotonicClock
@@ -145,10 +146,16 @@ class EventTypeDedupTracker @Inject constructor(
         if (last != null && last.first == type) {
             val ageMs = now - last.second
             if (ageMs < TTL_MS) {
-                log(TAG, INFO) { "Ignoring duplicate $type for $address (last seen ${ageMs}ms ago)" }
+                log(TAG, INFO) { "Ignoring duplicate $type for $address (last seen ${ageMs}ms ago, ttl=${TTL_MS}ms)" }
                 return false
             }
-            log(TAG, INFO) { "Accepting same-type $type for $address after TTL (${ageMs}ms ago)" }
+            log(TAG, INFO) { "Accepting same-type $type for $address after TTL (${ageMs}ms ago, ttl=${TTL_MS}ms)" }
+            if (ageMs < EVICTION_AGE_MS) {
+                log(TAG, WARN) {
+                    "DEDUP_NEAR_MISS: $type for $address accepted ${ageMs}ms after last " +
+                        "(ttl=${TTL_MS}ms, margin=${ageMs - TTL_MS}ms)"
+                }
+            }
         }
         evictStaleEntries(now)
         lastProcessedEventType[address] = type to now
@@ -175,27 +182,24 @@ class EventTypeDedupTracker @Inject constructor(
 
         /**
          * Events of the same type for the same device within this window are
-         * treated as duplicates and dropped. 15s covers the observed ~10s
-         * Samsung Galaxy Buds 3 Pro duplicate with a 50% safety margin, while
+         * treated as duplicates and dropped. 20s covers the observed ~10s
+         * Samsung Galaxy Buds 3 Pro duplicate with 100% safety margin, while
          * keeping the window tight enough that rare missed-ACL edge cases
          * (a `C → [missed D] → C` or `D → [missed C] → D` sequence within the
          * TTL) have minimal blast radius.
          *
-         * The tradeoff is asymmetric:
-         * - Samsung duplicates: ~100% reliable on affected devices, always
-         *   within ~10s, always dropped here. Net win.
-         * - Missed ACL broadcasts on modern Android: <1% for foreground
-         *   sessions, higher under aggressive OEM doze. A same-type repeat
-         *   within 15s that isn't a duplicate requires both the missed
-         *   intermediate event *and* a legit reconnect cycle inside the
-         *   window, which is exceedingly rare. If it does happen, the next
-         *   opposite-type event recovers cleanly (no lasting stuck state).
+         * 20s also ensures the dispatcher-level [shouldProcess] catches
+         * Samsung duplicates even when the fake-speaker CONNECTED handler
+         * blocks the queue for ~12s (observed: dispatch gap = 15.7s in
+         * production logs, which was outside the previous 15s TTL).
+         * At 20s both the receiver pre-filter AND the dispatcher agree,
+         * giving defense-in-depth.
          *
-         * Do not widen this back out without a corresponding dispatch-time
-         * state safeguard — anything longer re-introduces the risk of
-         * silently dropping real reconnects in rare-but-real edge cases.
+         * Same-type events accepted just past the TTL are logged at WARN
+         * level with a `DEDUP_NEAR_MISS` prefix so future debug logs
+         * self-diagnose whether the margin is adequate.
          */
-        const val TTL_MS: Long = 15_000L
+        const val TTL_MS: Long = 20_000L
 
         /**
          * Entries older than this age are evicted during [shouldProcess] to

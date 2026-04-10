@@ -14,6 +14,7 @@ import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import kotlinx.coroutines.delay
 import java.time.Instant
+import kotlin.math.roundToInt
 
 abstract class BaseVolumeModule(
     private val volumeTool: VolumeTool
@@ -93,14 +94,33 @@ abstract class BaseVolumeModule(
         }
 
         val targetPercentage = volumeMode.percentage
+        val streamId = device.getStreamId(type)
+        val targetLevel = (targetPercentage * volumeTool.getMaxVolume(streamId)).roundToInt()
 
         val monitorDuration = device.monitoringDuration
-        log(tag) { "Monitor($type) active for ${monitorDuration}ms." }
+        log(tag) { "Monitor($type) active for ${monitorDuration}ms, targetLevel=$targetLevel." }
 
-        val streamId = device.getStreamId(type)
-
+        // The monitor loop re-enforces the target against Android's own stream-level
+        // resets during BT audio route transitions (A2DP/SCO handoff). It must NOT
+        // fight deliberate writes from other code paths (user dragging the in-app
+        // slider, another module updating via VolumeTool). We detect those by checking
+        // wasUs(targetLevel): the loop only writes targetLevel, so lastUs[id] stays
+        // at targetLevel as long as we're the sole writer. If any other VolumeTool
+        // caller writes a different level, lastUs[id] changes → wasUs returns false
+        // → we yield. Android's own platform writes don't go through VolumeTool, so
+        // they don't affect lastUs and the loop correctly re-enforces against them.
+        //
+        // Known limitation: if a user drags during the actionDelay window (before
+        // setInitial even runs), setInitial will overwrite them with the connect-time
+        // snapshot. That's a separate issue — fixing it would require re-reading
+        // DeviceRepo after the delay.
         val targetTime = Instant.now() + monitorDuration
         while (Instant.now() < targetTime) {
+            if (!volumeTool.wasUs(streamId, targetLevel)) {
+                log(tag, INFO) { "Monitor($type) yielding to external VolumeTool write on $device" }
+                return
+            }
+
             if (volumeTool.changeVolume(streamId, targetPercentage)) {
                 log(tag) { "Monitor($type) adjusted volume." }
             }

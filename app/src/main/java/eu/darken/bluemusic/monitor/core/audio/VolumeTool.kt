@@ -115,6 +115,7 @@ class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
 
         val currentLevel = getCurrentVolume(streamId)
         if (currentLevel == targetLevel) {
+            lastUs[streamId] = targetLevel // Record intent so wasUs() reflects this target
             log(TAG, VERBOSE) { "Target volume of $targetLevel already set." }
             return false
         }
