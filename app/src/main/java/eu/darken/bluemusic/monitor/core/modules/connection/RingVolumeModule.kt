@@ -8,7 +8,9 @@ import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
+import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import javax.inject.Inject
@@ -17,9 +19,11 @@ import javax.inject.Singleton
 @Singleton
 class RingVolumeModule @Inject constructor(
     volumeTool: VolumeTool,
+    volumeObserver: VolumeObserver,
     ringerTool: RingerTool,
+    ringerModeObserver: RingerModeObserver,
     private val permissionHelper: PermissionHelper,
-) : BaseVolumeWithModesModule(volumeTool, ringerTool) {
+) : BaseVolumeWithModesModule(volumeTool, volumeObserver, ringerTool, ringerModeObserver) {
 
     override val type: AudioStream.Type = AudioStream.Type.RINGTONE
 

@@ -8,16 +8,19 @@ import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode.Companion.fromFloat
+import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import kotlinx.coroutines.delay
-import java.time.Instant
+import kotlinx.coroutines.flow.takeWhile
+import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.math.roundToInt
 
 abstract class BaseVolumeModule(
-    private val volumeTool: VolumeTool
+    private val volumeTool: VolumeTool,
+    private val volumeObserver: VolumeObserver,
 ) : ConnectionModule {
 
     abstract val type: AudioStream.Type
@@ -84,51 +87,59 @@ abstract class BaseVolumeModule(
         }
     }
 
+    /**
+     * Monitors the stream volume for [device.monitoringDuration] after [setInitial].
+     *
+     * Subscribes to [VolumeObserver.volumes] instead of polling. This is event-driven:
+     * only wakes when a volume actually changes (~5ms latency via ContentObserver,
+     * vs up to 250ms with the previous polling loop). Zero CPU work when idle.
+     *
+     * Re-enforcement logic:
+     * - External platform writes (Android route transition) → re-enforce our target.
+     * - Writes from other VolumeTool callers (user slider drag) → yield and exit.
+     * - Our own re-enforcement landing → ignore (event.newVolume == targetLevel).
+     *
+     * Known limitation: if a user drags during the actionDelay window (before
+     * setInitial even runs), setInitial will overwrite them with the connect-time
+     * snapshot. Fixing that would require re-reading DeviceRepo after the delay.
+     */
     protected open suspend fun monitor(device: ManagedDevice, volumeMode: VolumeMode) {
-        log(tag, INFO) { "Monitoring volume (target=$volumeMode) for $device" }
-
-        // Default implementation only handles normal volumes
         if (volumeMode !is VolumeMode.Normal) {
             log(tag) { "Special volume mode $volumeMode not supported in base monitoring" }
             return
         }
 
-        val targetPercentage = volumeMode.percentage
         val streamId = device.getStreamId(type)
+        val targetPercentage = volumeMode.percentage
         val targetLevel = (targetPercentage * volumeTool.getMaxVolume(streamId)).roundToInt()
 
-        val monitorDuration = device.monitoringDuration
-        log(tag) { "Monitor($type) active for ${monitorDuration}ms, targetLevel=$targetLevel." }
+        log(tag, INFO) { "Monitoring volume (target=$volumeMode, level=$targetLevel) for $device" }
 
-        // The monitor loop re-enforces the target against Android's own stream-level
-        // resets during BT audio route transitions (A2DP/SCO handoff). It must NOT
-        // fight deliberate writes from other code paths (user dragging the in-app
-        // slider, another module updating via VolumeTool). We detect those by checking
-        // wasUs(targetLevel): the loop only writes targetLevel, so lastUs[id] stays
-        // at targetLevel as long as we're the sole writer. If any other VolumeTool
-        // caller writes a different level, lastUs[id] changes → wasUs returns false
-        // → we yield. Android's own platform writes don't go through VolumeTool, so
-        // they don't affect lastUs and the loop correctly re-enforces against them.
-        //
-        // Known limitation: if a user drags during the actionDelay window (before
-        // setInitial even runs), setInitial will overwrite them with the connect-time
-        // snapshot. That's a separate issue — fixing it would require re-reading
-        // DeviceRepo after the delay.
-        val targetTime = Instant.now() + monitorDuration
-        while (Instant.now() < targetTime) {
-            if (!volumeTool.wasUs(streamId, targetLevel)) {
-                log(tag, INFO) { "Monitor($type) yielding to external VolumeTool write on $device" }
-                return
-            }
+        var yielded = false
+        withTimeoutOrNull(device.monitoringDuration.toMillis()) {
+            volumeObserver.volumes
+                .takeWhile { !yielded }
+                .collect { event ->
+                    if (event.streamId != streamId) return@collect
 
-            if (volumeTool.changeVolume(streamId, targetPercentage)) {
-                log(tag) { "Monitor($type) adjusted volume." }
-            }
+                    if (event.newVolume == targetLevel) return@collect
 
-            delay(250)
+                    if (!volumeTool.wasUs(streamId, targetLevel)) {
+                        log(tag, INFO) {
+                            "Monitor($type) yielding to external VolumeTool write on $device"
+                        }
+                        yielded = true
+                        return@collect
+                    }
+
+                    log(tag) {
+                        "Monitor($type) re-enforcing against external write " +
+                            "(${event.oldVolume} → ${event.newVolume}, target=$targetLevel)"
+                    }
+                    volumeTool.changeVolume(streamId, targetPercentage)
+                }
         }
+
         log(tag) { "Monitor($type) finished." }
     }
-
-
 }

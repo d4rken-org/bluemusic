@@ -2,36 +2,46 @@ package eu.darken.bluemusic.monitor.core.modules.connection
 
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
+import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import io.kotest.matchers.ints.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 import java.time.Duration
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class BaseVolumeModuleTest : BaseTest() {
 
     private val streamId = AudioStream.Id.STREAM_MUSIC
     private val maxLevel = 15
+    private val targetPercentage = 0.44f
+    private val targetLevel = 7 // (0.44 * 15).roundToInt()
 
     private lateinit var volumeTool: VolumeTool
+    private lateinit var volumeEvents: MutableSharedFlow<VolumeEvent>
+    private lateinit var volumeObserver: VolumeObserver
     private lateinit var device: ManagedDevice
     private lateinit var module: TestVolumeModule
 
-    /**
-     * Concrete subclass that exposes [monitor] for direct testing without
-     * going through [handle]'s actionDelay / setInitial overhead.
-     */
-    private class TestVolumeModule(volumeTool: VolumeTool) : BaseVolumeModule(volumeTool) {
+    private class TestVolumeModule(
+        volumeTool: VolumeTool,
+        volumeObserver: VolumeObserver,
+    ) : BaseVolumeModule(volumeTool, volumeObserver) {
         override val type = AudioStream.Type.MUSIC
         override val priority = 10
 
@@ -43,107 +53,108 @@ class BaseVolumeModuleTest : BaseTest() {
     @BeforeEach
     fun setup() {
         volumeTool = mockk(relaxed = true)
+        volumeEvents = MutableSharedFlow()
+        volumeObserver = mockk<VolumeObserver>().also {
+            every { it.volumes } returns volumeEvents
+        }
         device = mockk(relaxed = true)
-        module = TestVolumeModule(volumeTool)
+        module = TestVolumeModule(volumeTool, volumeObserver)
 
         every { device.getStreamId(AudioStream.Type.MUSIC) } returns streamId
+        every { device.monitoringDuration } returns Duration.ofSeconds(4)
         every { volumeTool.getMaxVolume(streamId) } returns maxLevel
     }
 
-    // --- monitor() wasUs-based abort ---
+    // --- Observer-driven monitor loop ---
 
-    /**
-     * The monitor loop should run to completion when wasUs(target) stays true.
-     * Using a 10ms wall-clock duration: with mocked delay returning instantly,
-     * the loop runs many iterations. We just verify it ran more than once and
-     * called changeVolume on each pass.
-     */
     @Test
-    fun `monitor loop runs to completion when wasUs stays true`() = runTest {
-        every { device.monitoringDuration } returns Duration.ofMillis(10)
+    fun `monitor completes on timeout when no events arrive`() = runTest(UnconfinedTestDispatcher()) {
         every { volumeTool.wasUs(streamId, any()) } returns true
-        var changeVolumeCount = 0
-        coEvery { volumeTool.changeVolume(streamId, any<Float>()) } answers {
-            changeVolumeCount++
-            true
-        }
 
-        module.callMonitor(device, VolumeMode.Normal(0.44f))
+        val job = launch { module.callMonitor(device, VolumeMode.Normal(targetPercentage)) }
 
-        changeVolumeCount shouldBeGreaterThan 1
+        advanceTimeBy(4_001)
+        job.join()
+
+        // No volume events emitted → no re-enforcement calls
+        coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>()) }
     }
 
-    /**
-     * When another VolumeTool caller writes a different level (e.g. user
-     * drags the slider via AdjustVolume), wasUs(targetLevel) returns false.
-     * The loop should abort immediately, calling changeVolume at most once
-     * (from the first iteration before the abort triggered on the next tick).
-     */
     @Test
-    fun `monitor loop aborts when wasUs returns false - user slider drag`() = runTest {
-        // 10s duration: without the abort, the test would take 10s of wall time
-        every { device.monitoringDuration } returns Duration.ofSeconds(10)
-        var wasUsCallCount = 0
-        every { volumeTool.wasUs(streamId, any()) } answers {
-            wasUsCallCount++
-            wasUsCallCount <= 1  // true on 1st call, false on 2nd
-        }
-        var changeVolumeCount = 0
-        coEvery { volumeTool.changeVolume(streamId, any<Float>()) } answers {
-            changeVolumeCount++
-            true
-        }
+    fun `monitor re-enforces when external platform write changes the level`() = runTest(UnconfinedTestDispatcher()) {
+        every { volumeTool.wasUs(streamId, targetLevel) } returns true
+        coEvery { volumeTool.changeVolume(streamId, targetPercentage) } returns true
 
-        module.callMonitor(device, VolumeMode.Normal(0.44f))
+        val job = launch { module.callMonitor(device, VolumeMode.Normal(targetPercentage)) }
 
-        // First iteration: wasUs=true → changeVolume called.
-        // Second iteration: wasUs=false → return before changeVolume.
-        changeVolumeCount shouldBe 1
+        // Simulate Android route-transition resetting the volume to 0
+        volumeEvents.emit(VolumeEvent(streamId, targetLevel, 0, self = false))
+
+        advanceTimeBy(4_001)
+        job.join()
+
+        coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, targetPercentage) }
     }
 
-    /**
-     * When Android's platform writes change the stream level during the BT
-     * routing transition, wasUs(target) stays true (Android doesn't go through
-     * VolumeTool) and the loop correctly re-enforces by calling changeVolume.
-     */
     @Test
-    fun `monitor loop re-enforces against external platform writes`() = runTest {
-        every { device.monitoringDuration } returns Duration.ofMillis(10)
-        // wasUs always true: the loop believes it's still in control
-        every { volumeTool.wasUs(streamId, any()) } returns true
-        // changeVolume returns true: means it actually wrote (hardware had drifted)
-        var changeVolumeCount = 0
-        coEvery { volumeTool.changeVolume(streamId, any<Float>()) } answers {
-            changeVolumeCount++
-            true
-        }
+    fun `monitor ignores events where our write landed at target`() = runTest(UnconfinedTestDispatcher()) {
+        every { volumeTool.wasUs(streamId, targetLevel) } returns true
 
-        module.callMonitor(device, VolumeMode.Normal(0.44f))
+        val job = launch { module.callMonitor(device, VolumeMode.Normal(targetPercentage)) }
 
-        // Multiple writes happened = the loop kept re-enforcing
-        changeVolumeCount shouldBeGreaterThan 1
+        // Our re-enforcement write completed — newVolume matches target
+        volumeEvents.emit(VolumeEvent(streamId, 0, targetLevel, self = false))
+
+        advanceTimeBy(4_001)
+        job.join()
+
+        // Should not try to re-enforce when we're already at target
+        coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>()) }
     }
 
-    /**
-     * Non-Normal VolumeMode (Silent, Vibrate) → monitor returns immediately
-     * without entering the loop.
-     */
     @Test
-    fun `monitor returns immediately for non-Normal volumeMode`() = runTest {
-        every { device.monitoringDuration } returns Duration.ofSeconds(10)
+    fun `monitor yields when another VolumeTool caller writes a different level`() = runTest(UnconfinedTestDispatcher()) {
+        // wasUs returns false = another BVM path (user slider) wrote via VolumeTool
+        every { volumeTool.wasUs(streamId, targetLevel) } returns false
 
+        val job = launch { module.callMonitor(device, VolumeMode.Normal(targetPercentage)) }
+
+        // External write arrives — but wasUs says we're not in control anymore
+        volumeEvents.emit(VolumeEvent(streamId, targetLevel, 10, self = false))
+
+        // The monitor should exit before the timeout
+        job.join()
+
+        // Should NOT re-enforce — yield to the external writer
+        coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>()) }
+    }
+
+    @Test
+    fun `monitor returns immediately for non-Normal volumeMode`() = runTest(UnconfinedTestDispatcher()) {
         module.callMonitor(device, VolumeMode.Silent)
 
         verify(exactly = 0) { volumeTool.wasUs(any(), any()) }
         coVerify(exactly = 0) { volumeTool.changeVolume(any(), any<Float>()) }
     }
 
+    @Test
+    fun `monitor ignores events for other streams`() = runTest(UnconfinedTestDispatcher()) {
+        every { volumeTool.wasUs(streamId, targetLevel) } returns true
+
+        val job = launch { module.callMonitor(device, VolumeMode.Normal(targetPercentage)) }
+
+        // Event for a different stream
+        volumeEvents.emit(VolumeEvent(AudioStream.Id.STREAM_ALARM, 5, 0, self = false))
+
+        advanceTimeBy(4_001)
+        job.join()
+
+        // Should not react to ALARM events when monitoring MUSIC
+        coVerify(exactly = 0) { volumeTool.changeVolume(any(), any<Float>()) }
+    }
+
     // --- handle() integration ---
 
-    /**
-     * Disconnected events are ignored by BaseVolumeModule (it only handles
-     * Connected events).
-     */
     @Test
     fun `handle ignores disconnected events`() = runTest {
         val event = DeviceEvent.Disconnected(device)
@@ -152,10 +163,6 @@ class BaseVolumeModuleTest : BaseTest() {
         coVerify(exactly = 0) { volumeTool.changeVolume(any(), any<Float>()) }
     }
 
-    /**
-     * If the device has no configured volume for this stream type,
-     * handle() returns early.
-     */
     @Test
     fun `handle returns early for unconfigured stream`() = runTest {
         every { device.getVolume(AudioStream.Type.MUSIC) } returns null
