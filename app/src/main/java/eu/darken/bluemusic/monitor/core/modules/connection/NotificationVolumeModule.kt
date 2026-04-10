@@ -8,6 +8,7 @@ import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import javax.inject.Inject
@@ -16,8 +17,9 @@ import javax.inject.Singleton
 @Singleton
 class NotificationVolumeModule @Inject constructor(
     volumeTool: VolumeTool,
-    private val permissionHelper: PermissionHelper
-) : BaseVolumeModule(volumeTool) {
+    volumeObserver: VolumeObserver,
+    private val permissionHelper: PermissionHelper,
+) : BaseVolumeModule(volumeTool, volumeObserver) {
 
     override val type: AudioStream.Type = AudioStream.Type.NOTIFICATION
 

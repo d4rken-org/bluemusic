@@ -4,16 +4,19 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
+import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
+import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
-import kotlinx.coroutines.delay
-import java.time.Instant
+import kotlinx.coroutines.withTimeoutOrNull
 
 abstract class BaseVolumeWithModesModule(
     volumeTool: VolumeTool,
-    private val ringerTool: RingerTool
-) : BaseVolumeModule(volumeTool) {
+    volumeObserver: VolumeObserver,
+    private val ringerTool: RingerTool,
+    private val ringerModeObserver: RingerModeObserver,
+) : BaseVolumeModule(volumeTool, volumeObserver) {
 
     override suspend fun setInitial(device: ManagedDevice, volumeMode: VolumeMode) {
         log(tag, INFO) { "Setting initial volume/mode ($volumeMode) for $device" }
@@ -57,18 +60,18 @@ abstract class BaseVolumeWithModesModule(
     private suspend fun monitorRingerMode(device: ManagedDevice, targetMode: RingerMode) {
         log(tag, INFO) { "Monitoring ringer mode (target=$targetMode) for $device" }
 
-        val monitorDuration = device.monitoringDuration
-        log(tag) { "Monitor($type) ringer mode active for ${monitorDuration}ms." }
+        withTimeoutOrNull(device.monitoringDuration.toMillis()) {
+            ringerModeObserver.ringerMode
+                .collect { event ->
+                    if (event.newMode == targetMode) return@collect
 
-        val targetTime = Instant.now() + monitorDuration
-        while (Instant.now() < targetTime) {
-            val currentMode = ringerTool.getCurrentRingerMode()
-            if (currentMode != targetMode) {
-                log(tag) { "Ringer mode changed from $currentMode to $targetMode, restoring..." }
-                ringerTool.setRingerMode(targetMode)
-            }
-            delay(250)
+                    log(tag) {
+                        "Ringer mode changed to ${event.newMode}, restoring $targetMode"
+                    }
+                    ringerTool.setRingerMode(targetMode)
+                }
         }
+
         log(tag) { "Monitor($type) ringer mode finished." }
     }
 }

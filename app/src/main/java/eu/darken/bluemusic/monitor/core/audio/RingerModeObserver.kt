@@ -7,23 +7,28 @@ import android.content.IntentFilter
 import android.media.AudioManager
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
+import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.shareIn
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class RingerModeObserver @Inject constructor(
     @ApplicationContext private val context: Context,
+    @AppScope private val appScope: CoroutineScope,
     private val ringerTool: RingerTool,
 ) {
 
-    private var cachedMode: RingerMode? = null
+    @Volatile private var cachedMode: RingerMode? = null
 
     val ringerMode: Flow<RingerModeEvent> = callbackFlow {
         // Get initial state
@@ -58,7 +63,11 @@ class RingerModeObserver @Inject constructor(
             log(TAG) { "Stopping listening for ringer mode change events" }
             context.unregisterReceiver(receiver)
         }
-    }
+    }.shareIn(
+        scope = appScope,
+        started = SharingStarted.WhileSubscribed(),
+        replay = 0,
+    )
 
     companion object {
         private val TAG = logTag("Monitor", "RingerModeObserver")

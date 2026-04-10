@@ -7,19 +7,25 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.provider.Settings
 import dagger.hilt.android.qualifiers.ApplicationContext
+import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.shareIn
+import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class VolumeObserver @Inject constructor(
     @ApplicationContext private val context: Context,
+    @AppScope private val appScope: CoroutineScope,
     private val volumeTool: VolumeTool,
 ) {
 
@@ -31,7 +37,7 @@ class VolumeObserver @Inject constructor(
         Handler(looper)
     }
 
-    private val volumesCache = mutableMapOf<AudioStream.Id, Int>()
+    private val volumesCache = ConcurrentHashMap<AudioStream.Id, Int>()
 
     val volumes: Flow<VolumeEvent> = callbackFlow {
         AudioStream.Id.entries.forEach { id ->
@@ -70,7 +76,11 @@ class VolumeObserver @Inject constructor(
             log(TAG) { "Stopping listening for volume change events" }
             contentResolver.unregisterContentObserver(observer)
         }
-    }
+    }.shareIn(
+        scope = appScope,
+        started = SharingStarted.WhileSubscribed(),
+        replay = 0,
+    )
 
     companion object {
         private val TAG = logTag("Monitor", "VolumeObserver")

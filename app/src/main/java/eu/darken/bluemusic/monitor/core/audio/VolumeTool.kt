@@ -11,6 +11,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.time.delay
 import java.time.Duration
+import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.math.roundToInt
@@ -21,7 +22,7 @@ class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
 
     @Volatile private var adjusting = false
     private val lock = Mutex()
-    private val lastUs = HashMap<AudioStream.Id, Int>()
+    private val lastUs = ConcurrentHashMap<AudioStream.Id, Int>()
 
     fun getCurrentVolume(id: AudioStream.Id): Int {
         return audioManager.getStreamVolume(id.id)
