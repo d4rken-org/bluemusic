@@ -185,10 +185,14 @@ class VolumeDisconnectModuleTest : BaseTest() {
     }
 
     // ------------------------------------------------------------------------
-    // 6. Ringer VIBRATE, stored Normal(0.48) ringtone → writes Vibrate sentinel
+    // 6. Ringer VIBRATE, stored Normal(0.48) ringtone → preserves stored value
+    //    (ringer mode is system-wide and may have been set by another device's
+    //     connect modules — disconnect-save can't distinguish that from a user
+    //     change, so it preserves the DB value and lets BVM UI or
+    //     volumeObserving handle ringer mode persistence)
     // ------------------------------------------------------------------------
     @Test
-    fun `vibrate ringer with stored normal ringtone writes vibrate sentinel`() = runTest {
+    fun `vibrate ringer with stored normal ringtone preserves stored value`() = runTest {
         val module = createModule()
         val cfg = config(ringVolume = 0.48f)
         val device = managedDevice(cfg)
@@ -198,7 +202,7 @@ class VolumeDisconnectModuleTest : BaseTest() {
 
         val result = runTransform(module, DeviceEvent.Disconnected(device), cfg)
 
-        result.ringVolume shouldBe VolumeMode.LEGACY_VIBRATE_VALUE
+        result.ringVolume shouldBe 0.48f
     }
 
     // ------------------------------------------------------------------------
@@ -303,10 +307,11 @@ class VolumeDisconnectModuleTest : BaseTest() {
     }
 
     // ------------------------------------------------------------------------
-    // 10. Ringer SILENT, stored Normal ringtone → writes Silent sentinel
+    // 10. Ringer SILENT, stored Normal ringtone → preserves stored value
+    //     (ringer mode is system-wide shared state, not per-device)
     // ------------------------------------------------------------------------
     @Test
-    fun `silent ringer with stored normal ringtone writes silent sentinel`() = runTest {
+    fun `silent ringer with stored normal ringtone preserves stored value`() = runTest {
         val module = createModule()
         val cfg = config(ringVolume = 0.5f)
         val device = managedDevice(cfg)
@@ -316,7 +321,7 @@ class VolumeDisconnectModuleTest : BaseTest() {
 
         val result = runTransform(module, DeviceEvent.Disconnected(device), cfg)
 
-        result.ringVolume shouldBe VolumeMode.LEGACY_SILENT_VALUE
+        result.ringVolume shouldBe 0.5f
     }
 
     // ------------------------------------------------------------------------

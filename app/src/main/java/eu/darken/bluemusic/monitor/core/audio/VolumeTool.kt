@@ -44,7 +44,18 @@ class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
         return try {
             audioManager.getStreamMinVolume(streamId.id)
         } catch (_: IllegalArgumentException) {
-            0
+            // STREAM_BLUETOOTH_HANDSFREE (type 6) is not a public stream type,
+            // so getStreamMinVolume rejects it. It shares the same audio path as
+            // STREAM_VOICE_CALL, so use that stream's min as a proxy.
+            if (streamId == AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE) {
+                try {
+                    audioManager.getStreamMinVolume(AudioStream.Id.STREAM_VOICE_CALL.id)
+                } catch (_: IllegalArgumentException) {
+                    0
+                }
+            } else {
+                0
+            }
         }
     }
 
