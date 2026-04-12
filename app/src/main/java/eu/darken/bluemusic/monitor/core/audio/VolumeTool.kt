@@ -29,11 +29,17 @@ fun percentageToLevel(percentage: Float, min: Int, max: Int): Int {
 }
 
 @Singleton
-class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
+class VolumeTool @Inject constructor(
+    private val audioManager: AudioManager,
+) {
+
+    private data class RecentWrite(val volume: Int, val timestamp: Long)
+
+    internal var clock: () -> Long = System::currentTimeMillis
 
     @Volatile private var adjusting = false
     private val lock = Mutex()
-    private val lastUs = ConcurrentHashMap<AudioStream.Id, Int>()
+    private val lastUs = ConcurrentHashMap<AudioStream.Id, RecentWrite>()
 
     fun getCurrentVolume(id: AudioStream.Id): Int {
         return audioManager.getStreamVolume(id.id)
@@ -67,7 +73,10 @@ class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
         log(TAG, VERBOSE) { "setVolume(streamId=$streamId, volume=$volume, flags=$flags)." }
         try {
             adjusting = true
-            lastUs[streamId] = volume
+            val now = clock()
+            val write = RecentWrite(volume, now)
+            lastUs[streamId] = write
+            mirroredPeer(streamId)?.let { lastUs[it] = write }
 
             delay(10)
 
@@ -81,7 +90,15 @@ class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
     }
 
     fun wasUs(id: AudioStream.Id, volume: Int): Boolean {
-        return (lastUs.containsKey(id) && lastUs[id] == volume) || adjusting
+        if (adjusting) return true
+        val entry = lastUs[id] ?: return false
+        return entry.volume == volume && (clock() - entry.timestamp) < WRITE_TTL_MS
+    }
+
+    private fun mirroredPeer(id: AudioStream.Id): AudioStream.Id? = when (id) {
+        AudioStream.Id.STREAM_VOICE_CALL -> AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE
+        AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE -> AudioStream.Id.STREAM_VOICE_CALL
+        else -> null
     }
 
     fun getVolumePercentage(streamId: AudioStream.Id): Float {
@@ -148,7 +165,7 @@ class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
 
         val currentLevel = getCurrentVolume(streamId)
         if (currentLevel == targetLevel) {
-            lastUs[streamId] = targetLevel // Record intent so wasUs() reflects this target
+            lastUs[streamId] = RecentWrite(targetLevel, clock())
             log(TAG, VERBOSE) { "Target volume of $targetLevel already set." }
             return false
         }
@@ -178,5 +195,6 @@ class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
 
     companion object {
         private val TAG = logTag("Audio", "StreamHelper")
+        private const val WRITE_TTL_MS = 500L
     }
 }
