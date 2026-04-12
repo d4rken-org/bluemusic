@@ -67,7 +67,10 @@ class EventDispatcher @Inject constructor(
 
         val deviceEvent = when (bluetoothEvent.type) {
             BluetoothEventQueue.Event.Type.CONNECTED -> DeviceEvent.Connected(managedDevice)
-            BluetoothEventQueue.Event.Type.DISCONNECTED -> DeviceEvent.Disconnected(managedDevice)
+            BluetoothEventQueue.Event.Type.DISCONNECTED -> DeviceEvent.Disconnected(
+                device = managedDevice,
+                volumeSnapshot = bluetoothEvent.volumeSnapshot,
+            )
         }
 
         // TODO make this a module?

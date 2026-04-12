@@ -18,11 +18,12 @@ import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
+import eu.darken.bluemusic.monitor.core.audio.levelToPercentage
+import eu.darken.bluemusic.monitor.core.audio.percentageToLevel
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.math.roundToInt
 
 @Singleton
 class VolumeDisconnectModule @Inject constructor(
@@ -46,6 +47,8 @@ class VolumeDisconnectModule @Inject constructor(
             return
         }
 
+
+
         log(TAG, INFO) { "Saving volumes on disconnect for device ${device.label}" }
 
         // TODO: RingerTool.getCurrentRingerMode() falls back to NORMAL on unknown
@@ -54,17 +57,29 @@ class VolumeDisconnectModule @Inject constructor(
         // RingerTool to expose an unknown/null state if the need arises.
         val ringerMode = ringerTool.getCurrentRingerMode()
 
-        // Phase 1: capture hardware facts only — no DB access yet. Using
-        // event.device (a snapshot) to decide "is this stream configured at all?"
-        // is acceptable because an unset-at-dispatch-time stream cannot
-        // legitimately become set again by the time the disconnect module runs
-        // at priority 1.
+        // Phase 1: use the pre-reroute volume snapshot captured synchronously
+        // in MonitorEventReceiver.onReceive (~2ms after ACL_DISCONNECTED).
+        // Falls back to a live hardware read if no snapshot is available
+        // (e.g. events from FakeSpeakerEventDebouncer or test harnesses).
         val snapshots = AudioStream.Type.entries.mapNotNull { type ->
             if (device.getVolume(type) == null) return@mapNotNull null
 
             val streamId = device.getStreamId(type)
-            val maxLevel = volumeTool.getMaxVolume(streamId)
-            val currentLevel = volumeTool.getCurrentVolume(streamId)
+            val snapshotLevel = event.volumeSnapshot?.levels?.get(streamId)
+            val currentLevel: Int
+            val maxLevel: Int
+            val minLevel: Int
+            if (snapshotLevel != null) {
+                currentLevel = snapshotLevel.current
+                minLevel = snapshotLevel.min
+                maxLevel = snapshotLevel.max
+                log(TAG, VERBOSE) { "$type: using pre-reroute snapshot (level=$currentLevel, min=$minLevel, max=$maxLevel)" }
+            } else {
+                currentLevel = volumeTool.getCurrentVolume(streamId)
+                minLevel = volumeTool.getMinVolume(streamId)
+                maxLevel = volumeTool.getMaxVolume(streamId)
+                log(TAG, VERBOSE) { "$type: no snapshot, falling back to hardware read (level=$currentLevel, min=$minLevel, max=$maxLevel)" }
+            }
             if (maxLevel <= 0 || currentLevel !in 0..maxLevel) {
                 log(TAG, WARN) {
                     "Skipping $type, bad hardware read (level=$currentLevel max=$maxLevel)"
@@ -72,7 +87,7 @@ class VolumeDisconnectModule @Inject constructor(
                 return@mapNotNull null
             }
 
-            Snapshot(type, currentLevel, maxLevel)
+            Snapshot(type, currentLevel, minLevel, maxLevel)
         }
 
         if (snapshots.isEmpty()) {
@@ -91,18 +106,12 @@ class VolumeDisconnectModule @Inject constructor(
                 val rawStored = oldConfig.getVolume(snap.type) ?: continue
                 val savedMode = VolumeMode.fromFloat(rawStored)
 
-                val percent = (snap.currentLevel.toFloat() / snap.maxLevel).coerceIn(0f, 1f)
-                val hardwareNormal = VolumeMode.Normal(percent)
+                val hardwareNormal = VolumeMode.Normal(
+                    levelToPercentage(snap.currentLevel, snap.minLevel, snap.maxLevel)
+                )
 
                 val currentMode: VolumeMode? = when (snap.type) {
                     AudioStream.Type.RINGTONE -> when (ringerMode) {
-                        // RINGTONE has first-class Silent/Vibrate sentinels;
-                        // we own the persistence path together with
-                        // MonitorService.handleRingerMode(). Both writers agree
-                        // on the sentinel value for a given ringer state, so
-                        // dual-writing is safe and closes the race where
-                        // handleRingerMode() bails out (no active device) before
-                        // our disconnect save runs.
                         RingerMode.SILENT -> VolumeMode.Silent
                         RingerMode.VIBRATE -> VolumeMode.Vibrate
                         RingerMode.NORMAL -> hardwareNormal
@@ -158,7 +167,7 @@ class VolumeDisconnectModule @Inject constructor(
                     // rewrite a higher-precision stored float with the
                     // discrete level/max ratio on every disconnect cycle.
                     savedMode is VolumeMode.Normal && currentMode is VolumeMode.Normal -> {
-                        val savedLevel = (savedMode.percentage * snap.maxLevel).roundToInt()
+                        val savedLevel = percentageToLevel(savedMode.percentage, snap.minLevel, snap.maxLevel)
                         savedLevel != snap.currentLevel
                     }
                     // Structural equality on Silent/Vibrate (data objects).
@@ -189,6 +198,7 @@ class VolumeDisconnectModule @Inject constructor(
     private data class Snapshot(
         val type: AudioStream.Type,
         val currentLevel: Int,
+        val minLevel: Int,
         val maxLevel: Int,
     )
 

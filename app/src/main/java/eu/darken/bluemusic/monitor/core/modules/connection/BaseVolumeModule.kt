@@ -10,6 +10,7 @@ import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode.Companion.fromFloat
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
+import eu.darken.bluemusic.monitor.core.audio.percentageToLevel
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
@@ -17,7 +18,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.takeWhile
 import kotlinx.coroutines.withTimeoutOrNull
-import kotlin.math.roundToInt
 
 abstract class BaseVolumeModule(
     private val volumeTool: VolumeTool,
@@ -112,7 +112,7 @@ abstract class BaseVolumeModule(
 
         val streamId = device.getStreamId(type)
         val targetPercentage = volumeMode.percentage
-        val targetLevel = (targetPercentage * volumeTool.getMaxVolume(streamId)).roundToInt()
+        val targetLevel = percentageToLevel(targetPercentage, volumeTool.getMinVolume(streamId), volumeTool.getMaxVolume(streamId))
 
         log(tag, INFO) { "Monitoring volume (target=$volumeMode, level=$targetLevel) for $device" }
 

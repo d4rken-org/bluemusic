@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.monitor.core.audio
 
 import android.media.AudioManager
+import android.os.Build
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
@@ -17,6 +18,16 @@ import javax.inject.Singleton
 import kotlin.math.roundToInt
 
 
+fun levelToPercentage(current: Int, min: Int, max: Int): Float {
+    val range = max - min
+    if (range <= 0) return 0f
+    return ((current - min).toFloat() / range).coerceIn(0f, 1f)
+}
+
+fun percentageToLevel(percentage: Float, min: Int, max: Int): Int {
+    return (min + (max - min) * percentage).roundToInt()
+}
+
 @Singleton
 class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
 
@@ -26,6 +37,15 @@ class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
 
     fun getCurrentVolume(id: AudioStream.Id): Int {
         return audioManager.getStreamVolume(id.id)
+    }
+
+    fun getMinVolume(streamId: AudioStream.Id): Int {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) return 0
+        return try {
+            audioManager.getStreamMinVolume(streamId.id)
+        } catch (_: IllegalArgumentException) {
+            0
+        }
     }
 
     fun getMaxVolume(streamId: AudioStream.Id): Int {
@@ -54,33 +74,35 @@ class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
     }
 
     fun getVolumePercentage(streamId: AudioStream.Id): Float {
-        return audioManager.getStreamVolume(streamId.id).toFloat() / audioManager.getStreamMaxVolume(streamId.id)
+        return levelToPercentage(getCurrentVolume(streamId), getMinVolume(streamId), getMaxVolume(streamId))
     }
 
     suspend fun lowerByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {
         val current = getCurrentVolume(streamId)
+        val min = getMinVolume(streamId)
         val max = getMaxVolume(streamId)
-        log(TAG, VERBOSE) { "lowerByOne(streamId=$streamId, visible=$visible): current=$current, max=$max" }
+        log(TAG, VERBOSE) { "lowerByOne(streamId=$streamId, visible=$visible): current=$current, min=$min, max=$max" }
 
-        if (current == 0) {
-            log(TAG, WARN) { "Volume was at 0, can't lower by one more." }
+        if (current <= min) {
+            log(TAG, WARN) { "Volume was at min ($min), can't lower by one more." }
             return false
         }
 
-        return changeVolume(streamId, (current - 1f) / max, visible)
+        return changeVolume(streamId, levelToPercentage(current - 1, min, max), visible)
     }
 
     suspend fun increaseByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {
         val current = getCurrentVolume(streamId)
+        val min = getMinVolume(streamId)
         val max = getMaxVolume(streamId)
-        log(TAG, VERBOSE) { "increaseByOne(streamId=$streamId, visible=$visible): current=$current, max=$max" }
+        log(TAG, VERBOSE) { "increaseByOne(streamId=$streamId, visible=$visible): current=$current, min=$min, max=$max" }
 
-        if (current == max) {
-            log(TAG, WARN) { "Volume was at max, can't increase by one more." }
+        if (current >= max) {
+            log(TAG, WARN) { "Volume was at max ($max), can't increase by one more." }
             return false
         }
 
-        return changeVolume(streamId, (current + 1f) / max, visible)
+        return changeVolume(streamId, levelToPercentage(current + 1, min, max), visible)
     }
 
     suspend fun changeVolume(
@@ -90,8 +112,7 @@ class VolumeTool @Inject constructor(private val audioManager: AudioManager) {
         delay: Duration = Duration.ZERO,
     ): Boolean {
         log(TAG, VERBOSE) { "changeVolume(streamId=$streamId, percent=$percent, visible=$visible, delay=$delay)" }
-        val max = getMaxVolume(streamId)
-        val target = (max * percent).roundToInt()
+        val target = percentageToLevel(percent, getMinVolume(streamId), getMaxVolume(streamId))
         return changeVolume(
             streamId = streamId,
             targetLevel = target,
