@@ -1,7 +1,10 @@
 package eu.darken.bluemusic.devices.ui.config
 
 import android.os.Build
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -9,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
@@ -20,6 +25,7 @@ import androidx.compose.material.icons.automirrored.twotone.Launch
 import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.DoNotDisturb
 import androidx.compose.material.icons.twotone.GraphicEq
+import androidx.compose.material.icons.twotone.Info
 import androidx.compose.material.icons.twotone.Home
 import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.Notifications
@@ -494,6 +500,36 @@ fun DeviceConfigScreen(
                             icon = Icons.TwoTone.PowerOff,
                             onCheckedChange = { onAction(ConfigAction.OnToggleVolumeSaveOnDisconnect) }
                         )
+
+                        AnimatedVisibility(visible = device.volumeSaveOnDisconnect) {
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp)
+                                    .padding(bottom = 8.dp),
+                                colors = CardDefaults.cardColors(
+                                    containerColor = MaterialTheme.colorScheme.secondaryContainer
+                                )
+                            ) {
+                                Row(
+                                    modifier = Modifier.padding(12.dp),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.TwoTone.Info,
+                                        contentDescription = null,
+                                        modifier = Modifier.size(20.dp),
+                                        tint = MaterialTheme.colorScheme.onSecondaryContainer,
+                                    )
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Text(
+                                        text = stringResource(R.string.devices_device_config_volume_save_on_disconnect_hint),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                    )
+                                }
+                            }
+                        }
 
                         SwitchPreference(
                             title = stringResource(R.string.devices_device_config_volume_rate_limiter_label),
