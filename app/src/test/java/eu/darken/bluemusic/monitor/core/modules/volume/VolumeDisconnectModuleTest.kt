@@ -186,8 +186,6 @@ class VolumeDisconnectModuleTest : BaseTest() {
 
     // ------------------------------------------------------------------------
     // 6. Ringer VIBRATE, stored Normal(0.48) ringtone → writes Vibrate sentinel
-    //    (closes the race where handleRingerMode() bails out before disconnect
-    //     runs because the device is no longer active)
     // ------------------------------------------------------------------------
     @Test
     fun `vibrate ringer with stored normal ringtone writes vibrate sentinel`() = runTest {
@@ -200,7 +198,6 @@ class VolumeDisconnectModuleTest : BaseTest() {
 
         val result = runTransform(module, DeviceEvent.Disconnected(device), cfg)
 
-        // Stored Normal → current Vibrate → mode change → write sentinel.
         result.ringVolume shouldBe VolumeMode.LEGACY_VIBRATE_VALUE
     }
 

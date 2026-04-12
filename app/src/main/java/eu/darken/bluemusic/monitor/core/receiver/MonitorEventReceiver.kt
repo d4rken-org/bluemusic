@@ -22,6 +22,7 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.getDevice
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.service.BluetoothEventQueue
 import eu.darken.bluemusic.monitor.core.service.EventTypeDedupTracker
@@ -61,6 +62,22 @@ class MonitorEventReceiver : BroadcastReceiver() {
             return
         }
 
+        // Capture volume snapshot synchronously before any async processing.
+        // At this point (~2ms after broadcast), audio routing hasn't changed
+        // yet. By the time the coroutine runs (~80ms+), Android will have
+        // rerouted and getStreamVolume() returns the new device's values.
+        // Needed for both DISCONNECTED (real device save-on-disconnect) and
+        // CONNECTED (the synthetic FakeSpeaker DISCONNECTED side effect).
+        val volumeSnapshot = BluetoothEventQueue.VolumeSnapshot(
+            levels = AudioStream.Id.entries.associateWith { id ->
+                BluetoothEventQueue.VolumeSnapshot.Level(
+                    current = volumeTool.getCurrentVolume(id),
+                    min = volumeTool.getMinVolume(id),
+                    max = volumeTool.getMaxVolume(id),
+                )
+            }
+        )
+
         val pendingResult = goAsync()
 
         appScope.launch {
@@ -85,7 +102,7 @@ class MonitorEventReceiver : BroadcastReceiver() {
                 }
 
                 monitorControl.startMonitor()
-                handleEvent(intent)
+                handleEvent(intent, volumeSnapshot)
             } catch (e: Exception) {
                 log(TAG, ERROR) { "Error handling bluetooth event: ${e.asLog()}" }
             } finally {
@@ -95,7 +112,7 @@ class MonitorEventReceiver : BroadcastReceiver() {
     }
 
     @SuppressLint("MissingPermission")
-    private suspend fun handleEvent(intent: Intent) {
+    private suspend fun handleEvent(intent: Intent, volumeSnapshot: BluetoothEventQueue.VolumeSnapshot?) {
         val bluetoothDevice = intent.getParcelableExtra<BluetoothDevice>(BluetoothDevice.EXTRA_DEVICE)
         if (bluetoothDevice == null) {
             log(TAG, WARN) { "Intent didn't contain a bluetooth device!" }
@@ -139,7 +156,8 @@ class MonitorEventReceiver : BroadcastReceiver() {
             sourceDevice = SourceDeviceWrapper.from(
                 realDevice = bluetoothDevice,
                 isConnected = eventType == BluetoothEventQueue.Event.Type.CONNECTED
-            )
+            ),
+            volumeSnapshot = volumeSnapshot,
         )
 
         val speakerAddress = speakerDeviceProvider.address
@@ -161,6 +179,7 @@ class MonitorEventReceiver : BroadcastReceiver() {
                     sourceDevice = speakerDeviceProvider.getSpeaker(
                         isConnected = eventType == BluetoothEventQueue.Event.Type.DISCONNECTED
                     ),
+                    volumeSnapshot = volumeSnapshot,
                 )
             }
         } else {

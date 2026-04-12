@@ -1,12 +1,11 @@
 package eu.darken.bluemusic.monitor.core.service
 
-import android.os.Parcelable
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.parcelize.Parcelize
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -22,16 +21,20 @@ class BluetoothEventQueue @Inject constructor() {
         _events.send(event)
     }
 
-    @Parcelize
     data class Event(
         val type: Type,
         val sourceDevice: SourceDevice,
-    ) : Parcelable {
+        val volumeSnapshot: VolumeSnapshot? = null,
+    ) {
         enum class Type {
             CONNECTED,
             DISCONNECTED,
             ;
         }
+    }
+
+    data class VolumeSnapshot(val levels: Map<AudioStream.Id, Level>) {
+        data class Level(val current: Int, val min: Int, val max: Int)
     }
 
     companion object {
