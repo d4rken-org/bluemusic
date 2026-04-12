@@ -112,9 +112,18 @@ class VolumeDisconnectModule @Inject constructor(
 
                 val currentMode: VolumeMode? = when (snap.type) {
                     AudioStream.Type.RINGTONE -> when (ringerMode) {
-                        RingerMode.SILENT -> VolumeMode.Silent
-                        RingerMode.VIBRATE -> VolumeMode.Vibrate
+                        // The ringer mode is a system-wide singleton that may
+                        // have been set by a DIFFERENT device's connect modules
+                        // (e.g. AirPods set Silent, then FakeSpeaker disconnects
+                        // — the speaker's save-on-disconnect sees Silent even
+                        // though the speaker's own config says Normal).
+                        //
+                        // Disconnect-save can only reliably capture the volume
+                        // level. Ringer mode sentinels (Silent/Vibrate) should
+                        // come from the BVM UI or volumeObserving, not from
+                        // reading shared system state at disconnect time.
                         RingerMode.NORMAL -> hardwareNormal
+                        else -> null
                     }
 
                     AudioStream.Type.NOTIFICATION -> when (ringerMode) {
