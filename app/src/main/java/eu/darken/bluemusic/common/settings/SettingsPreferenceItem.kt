@@ -18,6 +18,7 @@ fun SettingsPreferenceItem(
     title: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    titleContent: @Composable (() -> Unit)? = null,
     subtitle: String? = null,
     value: String? = null,
     trailingContent: @Composable (() -> Unit)? = null,
@@ -27,6 +28,7 @@ fun SettingsPreferenceItem(
         title = title,
         onClick = onClick,
         modifier = modifier,
+        titleContent = titleContent,
         subtitle = subtitle,
         trailingContent = trailingContent ?: if (value != null) {
             {
