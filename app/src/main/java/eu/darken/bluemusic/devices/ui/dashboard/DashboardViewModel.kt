@@ -20,10 +20,8 @@ import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.main.core.GeneralSettings
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
-import eu.darken.bluemusic.monitor.core.audio.RingerMode
-import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
-import eu.darken.bluemusic.monitor.core.audio.VolumeTool
+import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine
@@ -36,8 +34,7 @@ import javax.inject.Inject
 class DashboardViewModel @Inject constructor(
     private val permissionHelper: PermissionHelper,
     private val deviceRepo: DeviceRepo,
-    private val volumeTool: VolumeTool,
-    private val ringerTool: RingerTool,
+    private val volumeModeTool: VolumeModeTool,
     upgradeRepo: UpgradeRepo,
     bluetoothSource: BluetoothRepo,
     private val generalSettings: GeneralSettings,
@@ -205,27 +202,12 @@ class DashboardViewModel @Inject constructor(
                 val device = deviceRepo.getDevice(action.addr)
                 if (device?.isActive != true) return@launch
 
-                when (action.volumeMode) {
-                    is VolumeMode.Normal -> {
-                        volumeTool.changeVolume(
-                            streamId = device.getStreamId(action.type),
-                            percent = action.volumeMode.percentage,
-                            visible = device.visibleAdjustments,
-                        )
-                    }
-
-                    is VolumeMode.Silent -> {
-                        if (action.type == AudioStream.Type.RINGTONE) {
-                            ringerTool.setRingerMode(RingerMode.SILENT)
-                        }
-                    }
-
-                    is VolumeMode.Vibrate -> {
-                        if (action.type == AudioStream.Type.RINGTONE) {
-                            ringerTool.setRingerMode(RingerMode.VIBRATE)
-                        }
-                    }
-                }
+                volumeModeTool.apply(
+                    streamId = device.getStreamId(action.type),
+                    streamType = action.type,
+                    volumeMode = action.volumeMode,
+                    visible = device.visibleAdjustments,
+                )
             }
         }
     }
