@@ -3,12 +3,13 @@ package eu.darken.bluemusic.devices.ui.config.components
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.GraphicEq
 import androidx.compose.material.icons.twotone.Lock
-import androidx.compose.material.icons.twotone.Stars
 import androidx.compose.material.icons.twotone.Timer
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -19,11 +20,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.compose.UpgradeBadge
 
 @Composable
 fun SwitchPreference(
@@ -57,11 +57,17 @@ fun SwitchPreference(
         Column(
             modifier = Modifier.weight(1f)
         ) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurface
-            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                if (requiresPro && !isProVersion) {
+                    Spacer(modifier = Modifier.width(6.dp))
+                    UpgradeBadge()
+                }
+            }
             Text(
                 text = description,
                 style = MaterialTheme.typography.bodyMedium,
@@ -69,21 +75,11 @@ fun SwitchPreference(
             )
         }
 
-        // Switch or Upgrade icon
-        if (requiresPro && !isProVersion) {
-            Icon(
-                imageVector = Icons.TwoTone.Stars,
-                contentDescription = stringResource(R.string.label_pro_feature),
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(start = 16.dp)
-            )
-        } else {
-            Switch(
-                checked = isChecked,
-                onCheckedChange = null, // Disable direct switch interaction
-                modifier = Modifier.padding(start = 16.dp)
-            )
-        }
+        Switch(
+            checked = isChecked,
+            onCheckedChange = null, // Disable direct switch interaction
+            modifier = Modifier.padding(start = 16.dp)
+        )
     }
 }
 
@@ -117,11 +113,17 @@ fun ClickablePreference(
         Column(
             modifier = Modifier.weight(1f)
         ) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyLarge,
-                color = textColor ?: MaterialTheme.colorScheme.onSurface
-            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = textColor ?: MaterialTheme.colorScheme.onSurface
+                )
+                if (requiresPro && !isProVersion) {
+                    Spacer(modifier = Modifier.width(6.dp))
+                    UpgradeBadge()
+                }
+            }
             description?.let {
                 Text(
                     text = it,
@@ -129,16 +131,6 @@ fun ClickablePreference(
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
-        }
-
-        // Upgrade icon for pro features
-        if (requiresPro && !isProVersion) {
-            Icon(
-                imageVector = Icons.TwoTone.Stars,
-                contentDescription = stringResource(R.string.label_pro_feature),
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(start = 16.dp)
-            )
         }
     }
 }

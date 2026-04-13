@@ -2,16 +2,17 @@ package eu.darken.bluemusic.main.ui.settings.general
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.twotone.Palette
-import androidx.compose.material.icons.twotone.Stars
 import androidx.compose.material.icons.twotone.Translate
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -32,6 +33,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.compose.UpgradeBadge
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.error.ErrorEventHandler
@@ -97,13 +99,16 @@ fun GeneralSettingsScreen(
     ) { paddingValues ->
         val navBarPadding = navigationBarBottomPadding()
         val isMaterialYou = state.themeState.style == ThemeStyle.MATERIAL_YOU
-        val proStarIcon: @Composable (() -> Unit) = {
-            Icon(
-                imageVector = Icons.TwoTone.Stars,
-                contentDescription = stringResource(R.string.general_upgrade_action),
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(start = 16.dp).size(24.dp),
-            )
+        val proTitleBadge: @Composable (String) -> Unit = { title ->
+            Row {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Spacer(modifier = Modifier.width(6.dp))
+                UpgradeBadge()
+            }
         }
         LazyColumn(
             modifier = Modifier
@@ -121,9 +126,13 @@ fun GeneralSettingsScreen(
                 SettingsPreferenceItem(
                     icon = Icons.TwoTone.Palette,
                     title = stringResource(R.string.ui_theme_mode_setting_label),
+                    titleContent = if (!state.isUpgraded) {
+                        { proTitleBadge(stringResource(R.string.ui_theme_mode_setting_label)) }
+                    } else {
+                        null
+                    },
                     subtitle = stringResource(R.string.ui_theme_mode_setting_explanation),
                     value = if (state.isUpgraded) state.themeState.mode.label.get(context) else null,
-                    trailingContent = if (!state.isUpgraded) proStarIcon else null,
                     onClick = if (state.isUpgraded) {{ showThemeModeDialog = true }} else onUpgrade,
                 )
                 SettingsDivider()
@@ -133,9 +142,13 @@ fun GeneralSettingsScreen(
                 SettingsPreferenceItem(
                     icon = Icons.TwoTone.Palette,
                     title = stringResource(R.string.ui_theme_style_setting_label),
+                    titleContent = if (!state.isUpgraded) {
+                        { proTitleBadge(stringResource(R.string.ui_theme_style_setting_label)) }
+                    } else {
+                        null
+                    },
                     subtitle = stringResource(R.string.ui_theme_style_setting_explanation),
                     value = if (state.isUpgraded) state.themeState.style.label.get(context) else null,
-                    trailingContent = if (!state.isUpgraded) proStarIcon else null,
                     onClick = if (state.isUpgraded) {{ showThemeStyleDialog = true }} else onUpgrade,
                 )
                 SettingsDivider()
@@ -145,13 +158,17 @@ fun GeneralSettingsScreen(
                 SettingsPreferenceItem(
                     icon = Icons.TwoTone.Palette,
                     title = stringResource(R.string.ui_theme_color_setting_label),
+                    titleContent = if (!state.isUpgraded) {
+                        { proTitleBadge(stringResource(R.string.ui_theme_color_setting_label)) }
+                    } else {
+                        null
+                    },
                     subtitle = if (isMaterialYou) {
                         stringResource(R.string.ui_theme_color_material_you_note)
                     } else {
                         stringResource(R.string.ui_theme_color_setting_explanation)
                     },
                     value = if (state.isUpgraded && !isMaterialYou) state.themeState.color.label.get(context) else null,
-                    trailingContent = if (!state.isUpgraded) proStarIcon else null,
                     onClick = if (!state.isUpgraded) onUpgrade else {{ showThemeColorDialog = true }},
                 )
                 SettingsDivider()

@@ -27,6 +27,7 @@ fun SettingsBaseItem(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     icon: ImageVector? = null,
+    titleContent: @Composable (() -> Unit)? = null,
     subtitle: String? = null,
     onLongClick: (() -> Unit)? = null,
     trailingContent: @Composable (() -> Unit)? = null,
@@ -61,12 +62,16 @@ fun SettingsBaseItem(
                 .weight(1f)
                 .padding(start = if (icon != null) 16.dp else 0.dp)
         ) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.Normal,
-                color = MaterialTheme.colorScheme.onSurface
-            )
+            if (titleContent != null) {
+                titleContent()
+            } else {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Normal,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
             if (subtitle != null) {
                 Text(
                     text = subtitle,
