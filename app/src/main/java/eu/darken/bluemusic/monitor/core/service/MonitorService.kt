@@ -28,13 +28,8 @@ import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.ui.Service2
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
-import eu.darken.bluemusic.devices.core.updateVolume
-import eu.darken.bluemusic.monitor.core.audio.AudioStream
-import eu.darken.bluemusic.monitor.core.audio.RingerMode
-import eu.darken.bluemusic.monitor.core.audio.RingerModeEvent
 import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
-import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import eu.darken.bluemusic.monitor.ui.MonitorNotifications
@@ -72,6 +67,7 @@ class MonitorService : Service2() {
     @Inject lateinit var ringerModeObserver: RingerModeObserver
     @Inject lateinit var bluetoothEventQueue: BluetoothEventQueue
     @Inject lateinit var eventDispatcher: EventDispatcher
+    @Inject lateinit var ringerModeTransitionHandler: RingerModeTransitionHandler
 
     private val serviceScope by lazy {
         CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
@@ -173,7 +169,7 @@ class MonitorService : Service2() {
         ringerModeObserver.ringerMode
             .setupCommonEventHandlers(TAG) { "RingerMode monitor" }
             .distinctUntilChanged()
-            .onEach { handleRingerMode(it) }
+            .onEach { ringerModeTransitionHandler.handle(it) }
             .catch { log(TAG, WARN) { "RingerMode monitor flow failed:\n${it.asLog()}" } }
             .launchIn(serviceScope)
 
@@ -280,36 +276,6 @@ class MonitorService : Service2() {
                     }
                 }.awaitAll()
             }
-        }
-    }
-
-    private suspend fun handleRingerMode(event: RingerModeEvent) {
-        log(TAG, VERBOSE) { "handleRingerMode: $event" }
-        val activeDevice = deviceRepo.currentDevices().firstOrNull { it.isActive }
-        if (activeDevice == null) {
-            log(TAG, INFO) { "handleRingerMode: No active device, skipping." }
-            return
-        }
-        if (activeDevice.getVolume(AudioStream.Type.RINGTONE) == null) {
-            log(TAG, INFO) { "handleRingerMode: No ringtone volume configured, skipping." }
-            return
-        }
-
-        val volumeMode = when (event.newMode) {
-            RingerMode.SILENT -> VolumeMode.Silent
-            RingerMode.VIBRATE -> VolumeMode.Vibrate
-            RingerMode.NORMAL -> {
-                val currentVolume = activeDevice.getVolume(AudioStream.Type.RINGTONE)
-                if (currentVolume != null && currentVolume >= 0f) {
-                    VolumeMode.Normal(currentVolume)
-                } else {
-                    VolumeMode.Normal(0.5f)
-                }
-            }
-        }
-
-        deviceRepo.updateDevice(activeDevice.address) {
-            it.updateVolume(AudioStream.Type.RINGTONE, volumeMode)
         }
     }
 
