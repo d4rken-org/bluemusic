@@ -7,6 +7,7 @@ import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
+import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
@@ -18,6 +19,7 @@ abstract class BaseVolumeWithModesModule(
     volumeTool: VolumeTool,
     volumeObserver: VolumeObserver,
     observationGate: VolumeObservationGate,
+    private val volumeModeTool: VolumeModeTool,
     private val ringerTool: RingerTool,
     private val ringerModeObserver: RingerModeObserver,
 ) : BaseVolumeModule(volumeTool, volumeObserver, observationGate) {
@@ -27,27 +29,23 @@ abstract class BaseVolumeWithModesModule(
 
         when (volumeMode) {
             is VolumeMode.Silent -> {
-                log(tag, INFO) { "Setting ringer mode to SILENT for $device" }
-                if (ringerTool.setRingerMode(RingerMode.SILENT)) {
-                    log(tag) { "Successfully set ringer mode to SILENT" }
+                log(tag, INFO) { "Applying Silent mode for $device" }
+                if (volumeModeTool.alignSystemState(type, volumeMode)) {
+                    log(tag) { "Successfully applied Silent mode" }
                 }
                 return
             }
 
             is VolumeMode.Vibrate -> {
-                log(tag, INFO) { "Setting ringer mode to VIBRATE for $device" }
-                if (ringerTool.setRingerMode(RingerMode.VIBRATE)) {
-                    log(tag) { "Successfully set ringer mode to VIBRATE" }
+                log(tag, INFO) { "Applying Vibrate mode for $device" }
+                if (volumeModeTool.alignSystemState(type, volumeMode)) {
+                    log(tag) { "Successfully applied Vibrate mode" }
                 }
                 return
             }
 
             is VolumeMode.Normal -> {
-                // For normal volume levels, ensure we're in normal ringer mode
-                if (volumeMode.percentage > 0) {
-                    ringerTool.setRingerMode(RingerMode.NORMAL)
-                }
-                // Call parent implementation for normal volume handling
+                volumeModeTool.alignSystemState(type, volumeMode)
                 super.setInitial(device, volumeMode)
             }
         }
