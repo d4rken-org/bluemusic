@@ -1,56 +1,41 @@
 package eu.darken.bluemusic.upgrade.ui
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.twotone.Devices
+import androidx.compose.material.icons.twotone.Favorite
+import androidx.compose.material.icons.twotone.Palette
+import androidx.compose.material.icons.twotone.PlayCircle
+import androidx.compose.material.icons.twotone.Stars
+import androidx.compose.material.icons.twotone.Tune
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import eu.darken.bluemusic.R
-import eu.darken.bluemusic.common.compose.BlueMusicIcon
-import eu.darken.bluemusic.common.compose.ColoredTitleText
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
-import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.error.ErrorEventHandler
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
@@ -63,25 +48,19 @@ fun UpgradeScreenHost(vm: UpgradeViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
 
     val state by vm.state.collectAsStateWithLifecycle()
-    log(vm.tag) { "Screen state: $state" }
-    log(vm.tag) { "showRestoreFailedDialog: $showRestoreFailedDialog" }
-
-    state?.let { state ->
-        UpgradeScreen(
-            state = state,
-            onNavigateBack = { vm.navUp() },
-            onGoIap = { vm.onGoIap(context as android.app.Activity) },
-            onGoSubscription = { vm.onGoSubscription(context as android.app.Activity) },
-            onGoSubscriptionTrial = { vm.onGoSubscriptionTrial(context as android.app.Activity) },
-            onRestorePurchase = { vm.restorePurchase() },
-        )
-    }
+    UpgradeScreen(
+        state = state,
+        onNavigateBack = { vm.navUp() },
+        onGoIap = { vm.onGoIap(context as android.app.Activity) },
+        onGoSubscription = { vm.onGoSubscription(context as android.app.Activity) },
+        onGoSubscriptionTrial = { vm.onGoSubscriptionTrial(context as android.app.Activity) },
+        onRestorePurchase = { vm.restorePurchase() },
+    )
 
     LaunchedEffect(Unit) {
         vm.events.collect { event: UpgradeEvents ->
             when (event) {
                 UpgradeEvents.RestoreFailed -> {
-                    log(vm.tag) { "Received RestoreFailed event. Setting showRestoreFailedDialog to true." }
                     showRestoreFailedDialog = true
                 }
             }
@@ -97,249 +76,181 @@ fun UpgradeScreenHost(vm: UpgradeViewModel = hiltViewModel()) {
 
 @Composable
 fun UpgradeScreen(
-    state: UpgradeViewModel.State,
+    state: UpgradeViewModel.State?,
     onNavigateBack: () -> Unit,
     onGoIap: () -> Unit,
     onGoSubscription: () -> Unit,
     onGoSubscriptionTrial: () -> Unit,
     onRestorePurchase: () -> Unit,
 ) {
-    val scrollState = rememberScrollState()
-    val scrollProgress by remember {
-        derivedStateOf { (scrollState.value / 200f).coerceIn(0f, 1f) }
+    val benefits = listOf(
+        UpgradeBenefitItem(Icons.TwoTone.Devices, stringResource(R.string.upgrade_benefit_unlimited_devices)),
+        UpgradeBenefitItem(Icons.TwoTone.PlayCircle, stringResource(R.string.upgrade_benefit_connection_actions)),
+        UpgradeBenefitItem(Icons.TwoTone.Palette, stringResource(R.string.upgrade_benefit_theme_customization)),
+        UpgradeBenefitItem(Icons.TwoTone.Tune, stringResource(R.string.upgrade_benefit_power_controls)),
+        UpgradeBenefitItem(Icons.TwoTone.Favorite, stringResource(R.string.upgrade_benefit_support)),
+    )
+
+    UpgradeScreenScaffold(
+        title = stringResource(R.string.app_name_upgraded),
+        postfix = stringResource(R.string.app_name_upgrade_postfix),
+        preamble = stringResource(R.string.upgrade_screen_preamble),
+        benefitTitle = stringResource(R.string.upgrade_screen_why_title),
+        benefits = benefits,
+        onNavigateBack = onNavigateBack,
+    ) {
+        PricingContent(
+            state = state,
+            onGoIap = onGoIap,
+            onGoSubscription = onGoSubscription,
+            onGoSubscriptionTrial = onGoSubscriptionTrial,
+            onRestorePurchase = onRestorePurchase,
+        )
+    }
+}
+
+@Composable
+private fun PricingContent(
+    state: UpgradeViewModel.State?,
+    onGoIap: () -> Unit,
+    onGoSubscription: () -> Unit,
+    onGoSubscriptionTrial: () -> Unit,
+    onRestorePurchase: () -> Unit,
+) {
+    if (state == null) {
+        CircularProgressIndicator(modifier = Modifier.padding(vertical = 12.dp))
+        return
     }
 
-    val toolbarAlpha by animateFloatAsState(
-        targetValue = scrollProgress,
-        animationSpec = tween(300),
-        label = "toolbarAlpha"
-    )
+    val hasSubscriptionOption = state.subState.available || state.trialState.available
+    val hasIapOption = state.iapState.available
 
-    val contentAlpha by animateFloatAsState(
-        targetValue = 1f - scrollProgress,
-        animationSpec = tween(300),
-        label = "contentAlpha"
-    )
-
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    AnimatedVisibility(
-                        visible = scrollProgress > 0.5f
-                    ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            BlueMusicIcon(
-                                modifier = Modifier.graphicsLayer(alpha = toolbarAlpha),
-                                size = 32.dp
-                            )
-                            Spacer(modifier = Modifier.size(8.dp))
-                            ColoredTitleText(
-                                fullTitle = stringResource(R.string.app_name_upgraded),
-                                postfix = stringResource(R.string.app_name_upgrade_postfix),
-                                style = MaterialTheme.typography.titleLarge,
-                                modifier = Modifier.graphicsLayer(alpha = toolbarAlpha)
-                            )
-                        }
-                    }
-                },
-                navigationIcon = {
-                    IconButton(onClick = onNavigateBack) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = null
-                        )
-                    }
-                }
-            )
+    if (state.trialState.available || state.subState.available) {
+        val onPrimaryAction = if (state.trialState.available) onGoSubscriptionTrial else onGoSubscription
+        val primaryLabel = if (state.trialState.available) {
+            stringResource(R.string.upgrade_screen_subscription_trial_action)
+        } else {
+            stringResource(R.string.upgrade_screen_subscription_action)
         }
-    ) { paddingValues ->
-        Column(
+
+        Button(
+            onClick = onPrimaryAction,
             modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-                .verticalScroll(scrollState)
-                .padding(horizontal = 32.dp)
-                .padding(top = 8.dp, bottom = 32.dp)
-                .animateContentSize(animationSpec = tween(300))
+                .fillMaxWidth()
+                .height(48.dp),
         ) {
-            BlueMusicIcon(
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .graphicsLayer(alpha = contentAlpha),
-                size = 72.dp
+            Icon(
+                imageVector = Icons.TwoTone.Stars,
+                contentDescription = null,
             )
-
-            ColoredTitleText(
-                fullTitle = stringResource(R.string.app_name_upgraded),
-                postfix = stringResource(R.string.app_name_upgrade_postfix),
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .graphicsLayer(alpha = contentAlpha),
-                style = MaterialTheme.typography.headlineMedium
+            Text(
+                text = primaryLabel,
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(start = 8.dp),
             )
+        }
 
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Card(
+        state.subState.formattedPrice?.let { formattedPrice ->
+            Text(
+                text = stringResource(R.string.upgrade_screen_subscription_action_hint, formattedPrice),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 8.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.5f)
-                )
+                    .padding(top = 8.dp),
+            )
+        }
+    }
+
+    if (hasSubscriptionOption && hasIapOption) {
+        Spacer(modifier = Modifier.height(12.dp))
+    }
+
+    if (hasIapOption) {
+        if (hasSubscriptionOption) {
+            FilledTonalButton(
+                onClick = onGoIap,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(48.dp),
             ) {
                 Text(
-                    text = stringResource(R.string.upgrade_screen_preamble),
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(16.dp),
-                    textAlign = TextAlign.Start,
-                    color = MaterialTheme.colorScheme.onSecondaryContainer
+                    text = stringResource(R.string.upgrade_screen_iap_action),
+                    style = MaterialTheme.typography.titleMedium,
                 )
             }
-
-            Text(
-                text = stringResource(R.string.upgrade_screen_why_title),
-                style = MaterialTheme.typography.titleMedium,
+        } else {
+            Button(
+                onClick = onGoIap,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp, bottom = 8.dp)
-            )
-
-            Text(
-                text = stringResource(R.string.upgrade_screen_why_body),
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 8.dp)
-            )
-
-            HorizontalDivider(
-                modifier = Modifier.padding(vertical = 16.dp),
-                color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-            )
-
-            Text(
-                text = stringResource(R.string.upgrade_screen_how_title),
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 8.dp)
-            )
-
-            Text(
-                text = stringResource(R.string.upgrade_screen_how_body),
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier
-                    .fillMaxWidth()
-            )
-
-            // Subscription Button
-            AnimatedVisibility(
-                visible = state.subState.available || state.trialState.available,
-                enter = fadeIn(animationSpec = tween(600, delayMillis = 400))
+                    .height(48.dp),
             ) {
-                Column(
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    HorizontalDivider(
-                        modifier = Modifier.padding(vertical = 24.dp),
-                        color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                    )
-
-                    if (state.trialState.available) {
-                        Button(
-                            onClick = onGoSubscriptionTrial,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(48.dp)
-                        ) {
-                            Text(
-                                text = stringResource(R.string.upgrade_screen_subscription_trial_action),
-                                style = MaterialTheme.typography.titleMedium
-                            )
-                        }
-                    } else {
-                        OutlinedButton(
-                            onClick = onGoSubscription,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(48.dp)
-                        ) {
-                            Text(text = stringResource(R.string.upgrade_screen_subscription_action))
-                        }
-                    }
-
-                    Text(
-                        text = stringResource(
-                            R.string.upgrade_screen_subscription_action_hint,
-                            state.subState.formattedPrice ?: ""
-                        ),
-                        style = MaterialTheme.typography.labelSmall,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp, vertical = 4.dp),
-                        textAlign = TextAlign.Center,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            // One-time Purchase Button
-            AnimatedVisibility(
-                visible = state.iapState.available,
-                enter = fadeIn(animationSpec = tween(600, delayMillis = 500))
-            ) {
-                Column(
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    OutlinedButton(
-                        onClick = onGoIap,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(48.dp)
-                    ) {
-                        Text(text = stringResource(R.string.upgrade_screen_iap_action))
-                    }
-
-                    Text(
-                        text = stringResource(
-                            R.string.upgrade_screen_iap_action_hint,
-                            state.iapState.formattedPrice ?: ""
-                        ),
-                        style = MaterialTheme.typography.labelSmall,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp, vertical = 4.dp),
-                        textAlign = TextAlign.Center,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-            }
-
-            HorizontalDivider(
-                modifier = Modifier.padding(vertical = 16.dp),
-                color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-            )
-
-            // Restore Purchase Button
-            TextButton(
-                onClick = onRestorePurchase,
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
+                Icon(
+                    imageVector = Icons.TwoTone.Stars,
+                    contentDescription = null,
+                )
                 Text(
-                    text = stringResource(R.string.upgrade_screen_restore_purchase_action),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.primary
+                    text = stringResource(R.string.upgrade_screen_iap_action),
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.padding(start = 8.dp),
                 )
             }
         }
+
+        state.iapState.formattedPrice?.let { formattedPrice ->
+            Text(
+                text = stringResource(R.string.upgrade_screen_iap_action_hint, formattedPrice),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp),
+            )
+        }
     }
+
+    if (!hasSubscriptionOption && !hasIapOption) {
+        Button(
+            onClick = onGoIap,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp),
+        ) {
+            Icon(
+                imageVector = Icons.TwoTone.Stars,
+                contentDescription = null,
+            )
+            Text(
+                text = stringResource(R.string.general_upgrade_action),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(start = 8.dp),
+            )
+        }
+    }
+
+    Spacer(modifier = Modifier.height(16.dp))
+
+    OutlinedButton(
+        onClick = onRestorePurchase,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(48.dp),
+    ) {
+        Text(text = stringResource(R.string.upgrade_screen_restore_purchase_action))
+    }
+
+    Text(
+        text = stringResource(R.string.upgrade_screen_restore_purchase_message),
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 8.dp),
+    )
 }
 
 @Preview2

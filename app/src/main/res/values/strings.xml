@@ -326,6 +326,11 @@
     <string name="upgrade_prompt_upgrade_action">Upgrade</string>
     <string name="description_intro_purpose">This app allows your Android device to remember the volume of different Bluetooth devices.</string>
     <string name="description_intro_premium">If you like this app, consider upgrading to the premium version. It supports development and gets you a few extra features.</string>
+    <string name="upgrade_benefit_unlimited_devices">Unlimited device profiles</string>
+    <string name="upgrade_benefit_connection_actions">Autoplay, app launch and connection alerts</string>
+    <string name="upgrade_benefit_theme_customization">Theme, style and color customization</string>
+    <string name="upgrade_benefit_power_controls">Volume lock and rate limiting</string>
+    <string name="upgrade_benefit_support">Support independent development</string>
     <string name="description_intro_tap_the_button">Start by adding your first device.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth is disabled.</string>
     <string name="title_bluetooth_is_off">Bluetooth is Off</string>
