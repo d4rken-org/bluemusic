@@ -9,6 +9,7 @@ import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
+import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.takeWhile
 import kotlinx.coroutines.withTimeoutOrNull
@@ -16,9 +17,10 @@ import kotlinx.coroutines.withTimeoutOrNull
 abstract class BaseVolumeWithModesModule(
     volumeTool: VolumeTool,
     volumeObserver: VolumeObserver,
+    observationGate: VolumeObservationGate,
     private val ringerTool: RingerTool,
     private val ringerModeObserver: RingerModeObserver,
-) : BaseVolumeModule(volumeTool, volumeObserver) {
+) : BaseVolumeModule(volumeTool, volumeObserver, observationGate) {
 
     override suspend fun setInitial(device: ManagedDevice, volumeMode: VolumeMode) {
         log(tag, INFO) { "Setting initial volume/mode ($volumeMode) for $device" }

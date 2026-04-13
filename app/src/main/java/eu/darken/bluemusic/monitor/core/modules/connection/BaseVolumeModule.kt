@@ -14,6 +14,7 @@ import eu.darken.bluemusic.monitor.core.audio.percentageToLevel
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
+import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.takeWhile
@@ -22,6 +23,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 abstract class BaseVolumeModule(
     private val volumeTool: VolumeTool,
     private val volumeObserver: VolumeObserver,
+    private val observationGate: VolumeObservationGate,
 ) : ConnectionModule {
 
     abstract val type: AudioStream.Type
@@ -44,12 +46,17 @@ abstract class BaseVolumeModule(
             return
         }
 
+        val streamId = device.getStreamId(type)
+        observationGate.suppress(streamId)
+        try {
+            delayForReactionDelay(event)
 
-        delayForReactionDelay(event)
+            setInitial(device, volumeMode)
 
-        setInitial(device, volumeMode)
-
-        monitor(device, volumeMode)
+            monitor(device, volumeMode)
+        } finally {
+            observationGate.unsuppress(streamId)
+        }
     }
 
     protected open suspend fun setInitial(device: ManagedDevice, volumeMode: VolumeMode) {

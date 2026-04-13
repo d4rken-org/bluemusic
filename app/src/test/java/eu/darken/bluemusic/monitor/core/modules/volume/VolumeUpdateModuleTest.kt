@@ -31,6 +31,7 @@ class VolumeUpdateModuleTest : BaseTest() {
     private lateinit var volumeTool: VolumeTool
     private lateinit var ringerTool: RingerTool
     private lateinit var deviceRepo: DeviceRepo
+    private lateinit var observationGate: VolumeObservationGate
     private lateinit var sourceDevice: SourceDevice
     private lateinit var devicesFlow: MutableStateFlow<List<ManagedDevice>>
 
@@ -39,6 +40,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         volumeTool = mockk(relaxed = true)
         ringerTool = mockk(relaxed = true)
         deviceRepo = mockk(relaxed = true)
+        observationGate = VolumeObservationGate()
         devicesFlow = MutableStateFlow(emptyList())
         every { deviceRepo.devices } returns devicesFlow
         coEvery { deviceRepo.updateDevice(any(), any()) } just Runs
@@ -59,6 +61,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         volumeTool = volumeTool,
         ringerTool = ringerTool,
         deviceRepo = deviceRepo,
+        observationGate = observationGate,
     )
 
     private fun config(
@@ -116,6 +119,61 @@ class VolumeUpdateModuleTest : BaseTest() {
 
         module.handle(
             VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false)
+        )
+
+        coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+    }
+
+    // ------------------------------------------------------------------------
+    // observation gate — volume changes for suppressed streams are not persisted
+    // ------------------------------------------------------------------------
+    @Test
+    fun `volume changes for suppressed streams are not persisted`() = runTest {
+        val module = createModule()
+        val cfg = config(musicVolume = 0.5f)
+        seedActive(managedDevice(cfg))
+
+        every { volumeTool.wasUs(any(), any()) } returns false
+        observationGate.suppress(AudioStream.Id.STREAM_MUSIC)
+
+        module.handle(
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false)
+        )
+
+        coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+    }
+
+    @Test
+    fun `volume changes for unsuppressed streams are persisted`() = runTest {
+        val module = createModule()
+        val cfg = config(musicVolume = 0.5f)
+        seedActive(managedDevice(cfg))
+
+        every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.44f
+        every { volumeTool.wasUs(any(), any()) } returns false
+
+        observationGate.suppress(AudioStream.Id.STREAM_MUSIC)
+        observationGate.unsuppress(AudioStream.Id.STREAM_MUSIC)
+
+        module.handle(
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false)
+        )
+
+        coVerify(exactly = 1) { deviceRepo.updateDevice(any(), any()) }
+    }
+
+    @Test
+    fun `mirrored stream suppression blocks BLUETOOTH_HANDSFREE when VOICE_CALL is suppressed`() = runTest {
+        val module = createModule()
+        val cfg = config(callVolume = 1.0f)
+        seedActive(managedDevice(cfg))
+
+        every { volumeTool.wasUs(any(), any()) } returns false
+        observationGate.suppress(AudioStream.Id.STREAM_VOICE_CALL)
+
+        module.handle(
+            VolumeEvent(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, oldVolume = 15, newVolume = 11, self = false)
         )
 
         coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }

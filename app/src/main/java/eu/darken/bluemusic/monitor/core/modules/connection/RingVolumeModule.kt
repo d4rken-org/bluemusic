@@ -13,6 +13,7 @@ import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
+import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -20,10 +21,11 @@ import javax.inject.Singleton
 class RingVolumeModule @Inject constructor(
     volumeTool: VolumeTool,
     volumeObserver: VolumeObserver,
+    observationGate: VolumeObservationGate,
     ringerTool: RingerTool,
     ringerModeObserver: RingerModeObserver,
     private val permissionHelper: PermissionHelper,
-) : BaseVolumeWithModesModule(volumeTool, volumeObserver, ringerTool, ringerModeObserver) {
+) : BaseVolumeWithModesModule(volumeTool, volumeObserver, observationGate, ringerTool, ringerModeObserver) {
 
     override val type: AudioStream.Type = AudioStream.Type.RINGTONE
 
