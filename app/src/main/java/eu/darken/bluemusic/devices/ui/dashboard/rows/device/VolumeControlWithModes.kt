@@ -202,6 +202,8 @@ fun VolumeControlWithModes(
                 }
             }
 
+            Spacer(modifier = Modifier.width(8.dp))
+
             val isNormal = volumeMode is VolumeMode.Normal
             val canTap = isNormal && !isLocked
             Text(
