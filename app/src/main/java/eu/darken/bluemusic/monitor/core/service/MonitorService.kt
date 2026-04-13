@@ -73,6 +73,7 @@ class MonitorService : Service2() {
         CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
     }
 
+    private var injectionComplete = false
     private var monitoringJob: Job? = null
     @Volatile private var monitorGeneration = 0
 
@@ -100,7 +101,14 @@ class MonitorService : Service2() {
             return
         }
 
-        super.onCreate()
+        try {
+            super.onCreate()
+            injectionComplete = true
+        } catch (e: Exception) {
+            log(TAG, WARN) { "Hilt injection failed in onCreate(): ${e.asLog()}" }
+            stopSelf()
+            return
+        }
 
         ContextCompat.registerReceiver(
             this,
@@ -112,6 +120,12 @@ class MonitorService : Service2() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         log(TAG, VERBOSE) { "onStartCommand(intent=$intent, flags=$flags, startId=$startId)" }
+
+        if (!injectionComplete) {
+            log(TAG, WARN) { "onStartCommand: Injection incomplete, stopping service." }
+            stopSelf()
+            return START_NOT_STICKY
+        }
 
         val forceStart = intent?.getBooleanExtra(EXTRA_FORCE_START, false) ?: false
 
@@ -150,7 +164,11 @@ class MonitorService : Service2() {
         } catch (e: Exception) {
             log(TAG, WARN) { "Failed to unregister stopMonitor receiver: ${e.asLog()}" }
         }
-        serviceScope.cancel("Service destroyed")
+        if (injectionComplete) {
+            serviceScope.cancel("Service destroyed")
+        } else {
+            log(TAG, WARN) { "onDestroy: Skipping scope cancel, injection was incomplete." }
+        }
         super.onDestroy()
     }
 
