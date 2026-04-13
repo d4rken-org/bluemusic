@@ -37,7 +37,7 @@ class VolumeTool @Inject constructor(
 
     internal var clock: () -> Long = System::currentTimeMillis
 
-    @Volatile private var adjusting = false
+    @Volatile private var adjustingStream: AudioStream.Id? = null
     private val lock = Mutex()
     private val lastUs = ConcurrentHashMap<AudioStream.Id, RecentWrite>()
 
@@ -72,7 +72,7 @@ class VolumeTool @Inject constructor(
     private suspend fun setVolume(streamId: AudioStream.Id, volume: Int, flags: Int) = lock.withLock {
         log(TAG, VERBOSE) { "setVolume(streamId=$streamId, volume=$volume, flags=$flags)." }
         try {
-            adjusting = true
+            adjustingStream = streamId
             val now = clock()
             val write = RecentWrite(volume, now)
             lastUs[streamId] = write
@@ -85,12 +85,15 @@ class VolumeTool @Inject constructor(
 
             delay(10)
         } finally {
-            adjusting = false
+            adjustingStream = null
         }
     }
 
     fun wasUs(id: AudioStream.Id, volume: Int): Boolean {
-        if (adjusting) return true
+        val currentlyAdjusting = adjustingStream
+        if (currentlyAdjusting != null) {
+            if (currentlyAdjusting == id || mirroredPeer(currentlyAdjusting) == id) return true
+        }
         val entry = lastUs[id] ?: return false
         return entry.volume == volume && (clock() - entry.timestamp) < WRITE_TTL_MS
     }
@@ -103,6 +106,19 @@ class VolumeTool @Inject constructor(
 
     fun getVolumePercentage(streamId: AudioStream.Id): Float {
         return levelToPercentage(getCurrentVolume(streamId), getMinVolume(streamId), getMaxVolume(streamId))
+    }
+
+    /**
+     * Snaps an arbitrary percentage to the nearest discrete hardware step.
+     * This avoids the round-trip feedback loop where a raw float is persisted,
+     * snapped to an integer level by the hardware, and then re-derived as a
+     * different percentage by the volume observer.
+     */
+    fun snapPercentage(streamId: AudioStream.Id, percentage: Float): Float {
+        val min = getMinVolume(streamId)
+        val max = getMaxVolume(streamId)
+        val level = percentageToLevel(percentage, min, max)
+        return levelToPercentage(level, min, max)
     }
 
     suspend fun lowerByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {

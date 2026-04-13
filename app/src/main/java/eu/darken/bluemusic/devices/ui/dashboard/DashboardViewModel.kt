@@ -195,17 +195,23 @@ class DashboardViewModel @Inject constructor(
                 val locked = devicesSettings.lockedDevices.flow.first()
                 if (action.addr in locked) return@launch
 
+                val device = deviceRepo.getDevice(action.addr) ?: return@launch
+                val streamId = device.getStreamId(action.type)
+
+                // Snap to nearest hardware step before persisting to avoid the
+                // percent→level→percent round-trip that makes the slider jump.
+                val snapped = volumeModeTool.snapToStep(streamId, action.volumeMode)
+
                 deviceRepo.updateDevice(action.addr) { oldConfig ->
-                    oldConfig.updateVolume(action.type, action.volumeMode)
+                    oldConfig.updateVolume(action.type, snapped)
                 }
 
-                val device = deviceRepo.getDevice(action.addr)
-                if (device?.isActive != true) return@launch
+                if (!device.isActive) return@launch
 
                 volumeModeTool.apply(
-                    streamId = device.getStreamId(action.type),
+                    streamId = streamId,
                     streamType = action.type,
-                    volumeMode = action.volumeMode,
+                    volumeMode = snapped,
                     visible = device.visibleAdjustments,
                 )
             }

@@ -36,6 +36,12 @@ class VolumeModeTool @Inject constructor(
         }
     }
 
+    fun snapToStep(streamId: AudioStream.Id, volumeMode: VolumeMode): VolumeMode = when (volumeMode) {
+        is VolumeMode.Normal -> VolumeMode.Normal(volumeTool.snapPercentage(streamId, volumeMode.percentage))
+        is VolumeMode.Silent,
+        is VolumeMode.Vibrate -> volumeMode
+    }
+
     suspend fun apply(
         streamId: AudioStream.Id,
         streamType: AudioStream.Type,

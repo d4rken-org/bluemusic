@@ -15,6 +15,8 @@ import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
+import eu.darken.bluemusic.devices.core.DeviceRepo
+import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -23,11 +25,13 @@ class RingVolumeModule @Inject constructor(
     volumeTool: VolumeTool,
     volumeObserver: VolumeObserver,
     observationGate: VolumeObservationGate,
+    ownerRegistry: AudioStreamOwnerRegistry,
+    deviceRepo: DeviceRepo,
     volumeModeTool: VolumeModeTool,
     ringerTool: RingerTool,
     ringerModeObserver: RingerModeObserver,
     private val permissionHelper: PermissionHelper,
-) : BaseVolumeWithModesModule(volumeTool, volumeObserver, observationGate, volumeModeTool, ringerTool, ringerModeObserver) {
+) : BaseVolumeWithModesModule(volumeTool, volumeObserver, observationGate, ownerRegistry, deviceRepo, volumeModeTool, ringerTool, ringerModeObserver) {
 
     override val type: AudioStream.Type = AudioStream.Type.RINGTONE
 

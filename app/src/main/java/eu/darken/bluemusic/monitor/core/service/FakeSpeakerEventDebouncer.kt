@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.monitor.core.service
 
+import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.speaker.SpeakerDeviceProvider
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.datastore.value
@@ -31,13 +32,17 @@ class FakeSpeakerEventDebouncer @Inject constructor(
     private val mutex = Mutex()
     private var pendingJob: Job? = null
 
-    suspend fun scheduleFakeSpeakerConnect(event: BluetoothEventQueue.Event, debounce: Duration) {
+    suspend fun scheduleFakeSpeakerConnect(
+        sourceDevice: SourceDevice,
+        volumeSnapshot: BluetoothEventQueue.VolumeSnapshot?,
+        debounce: Duration,
+    ) {
         mutex.withLock {
             pendingJob?.let {
                 log(TAG, INFO) { "Replacing pending fake speaker connect with new schedule." }
                 it.cancel()
             }
-            log(TAG, INFO) { "Scheduling fake speaker connect (debounce=$debounce): $event" }
+            log(TAG, INFO) { "Scheduling fake speaker connect (debounce=$debounce)" }
             pendingJob = appScope.launch {
                 delay(debounce.toMillis())
 
@@ -55,6 +60,11 @@ class FakeSpeakerEventDebouncer @Inject constructor(
                     return@launch
                 }
 
+                val event = eventQueue.stampEvent(
+                    type = BluetoothEventQueue.Event.Type.CONNECTED,
+                    sourceDevice = sourceDevice,
+                    volumeSnapshot = volumeSnapshot,
+                )
                 log(TAG, INFO) { "Submitted debounced fake speaker connect: $event" }
                 eventQueue.submit(event)
             }

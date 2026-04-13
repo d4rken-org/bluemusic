@@ -2,6 +2,7 @@ package eu.darken.bluemusic.monitor.core.modules
 
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.monitor.core.ownership.DisconnectResult
 import eu.darken.bluemusic.monitor.core.service.BluetoothEventQueue.VolumeSnapshot
 
 interface DeviceEvent {
@@ -18,5 +19,6 @@ interface DeviceEvent {
     data class Disconnected(
         override val device: ManagedDevice,
         val volumeSnapshot: VolumeSnapshot? = null,
+        val disconnectResult: DisconnectResult? = null,
     ) : DeviceEvent
 }

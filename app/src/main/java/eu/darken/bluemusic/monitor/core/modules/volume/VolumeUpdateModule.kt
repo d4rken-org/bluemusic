@@ -20,6 +20,7 @@ import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
+import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import java.time.Duration
 import java.time.Instant
 import javax.inject.Inject
@@ -31,6 +32,7 @@ class VolumeUpdateModule @Inject constructor(
     private val ringerTool: RingerTool,
     private val deviceRepo: DeviceRepo,
     private val observationGate: VolumeObservationGate,
+    private val ownerRegistry: AudioStreamOwnerRegistry,
 ) : VolumeModule {
 
     override val tag: String
@@ -52,10 +54,16 @@ class VolumeUpdateModule @Inject constructor(
 
         log(TAG, DEBUG) { "Volume change $event" }
 
+        val ownerAddresses = ownerRegistry.ownerAddressesFor(id).toSet()
+        if (ownerAddresses.isEmpty()) {
+            log(TAG, VERBOSE) { "No owner for $id, skipping persist" }
+            return
+        }
+
         val allActive = deviceRepo.currentDevices().filter { it.isActive }
-        log(TAG, VERBOSE) { "Active devices (${allActive.size}): $allActive" }
 
         val candidates = allActive.filter { dev ->
+            if (dev.address !in ownerAddresses) return@filter false
             if (!dev.volumeObserving || dev.volumeLock) return@filter false
             val streamType = dev.getStreamType(id) ?: return@filter false
             dev.getVolume(streamType) != null
@@ -71,8 +79,8 @@ class VolumeUpdateModule @Inject constructor(
 
         if (stabilizing.isNotEmpty() && stable.isNotEmpty()) {
             log(TAG, VERBOSE) {
-                "Stream candidate in post-connect window alongside stable sibling; " +
-                    "skipping persist for $id to avoid cross-device contamination"
+                "Owner group member in post-connect window alongside stable sibling; " +
+                    "skipping persist for $id to avoid intra-group contamination"
             }
             return
         }
@@ -83,22 +91,8 @@ class VolumeUpdateModule @Inject constructor(
         stable.forEach { dev ->
             val streamType = dev.getStreamType(id)!!
 
-            // Map the raw hardware reading to a VolumeMode that accounts
-            // for the current ringer mode on streams that have sentinel
-            // states (RINGTONE) or unreliable hardware reads in
-            // vibrate/silent (NOTIFICATION).
-            //
-            // Without this, a user flipping the phone to vibrate
-            // mid-session would trigger STREAM_RING → 0 observations that
-            // overwrite the stored Vibrate sentinel (or a legitimate
-            // Normal value) with `Normal(0)`, racing against
-            // MonitorService.handleRingerMode() and losing non-deterministically.
             val mode: VolumeMode? = when (streamType) {
                 AudioStream.Type.RINGTONE -> when (ringerMode) {
-                    // RINGTONE owns first-class Silent/Vibrate sentinels.
-                    // Both this path and handleRingerMode() are allowed to
-                    // write them; they always agree on the sentinel value,
-                    // so last-writer-wins is safe.
                     RingerMode.SILENT -> VolumeMode.Silent
                     RingerMode.VIBRATE -> VolumeMode.Vibrate
                     RingerMode.NORMAL -> VolumeMode.Normal(percentage)
@@ -107,13 +101,6 @@ class VolumeUpdateModule @Inject constructor(
                 AudioStream.Type.NOTIFICATION -> when (ringerMode) {
                     RingerMode.NORMAL -> VolumeMode.Normal(percentage)
                     else -> {
-                        // Same heuristic as VolumeDisconnectModule: in
-                        // non-Normal ringer mode, a 0 reading could be
-                        // either a Pixel-style platform clamp or an
-                        // intentional user mute on a non-coupling device.
-                        // Capture non-zero readings (clearly user intent)
-                        // and preserve stored on 0-readings (safer default
-                        // for the coupling case).
                         if (event.newVolume > 0) VolumeMode.Normal(percentage) else null
                     }
                 }

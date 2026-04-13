@@ -39,11 +39,13 @@ class RingerModeTransitionHandlerTest : BaseTest() {
     private val deviceRepo = mockk<DeviceRepo>(relaxed = true)
     private val volumeTool = mockk<VolumeTool>(relaxed = true)
     private val observationGate = VolumeObservationGate()
+    private val ownerRegistry = eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry()
 
     private val handler = RingerModeTransitionHandler(
         deviceRepo = deviceRepo,
         volumeTool = volumeTool,
         observationGate = observationGate,
+        ownerRegistry = ownerRegistry,
     )
 
     @BeforeEach
@@ -137,7 +139,111 @@ class RingerModeTransitionHandlerTest : BaseTest() {
         observationGate.isSuppressed(AudioStream.Id.STREAM_NOTIFICATION) shouldBe false
     }
 
-    private fun setActiveDevice(
+    @Test
+    fun `two active devices different names - only owner gets ringer write`() = runTest {
+        val ownerAddr = "AA:BB:CC:DD:EE:FF"
+        val nonOwnerAddr = "11:22:33:44:55:66"
+
+        val ownerDevice = SourceDeviceWrapper(
+            address = ownerAddr,
+            alias = "AirPods",
+            name = "AirPods",
+            deviceType = SourceDevice.Type.HEADPHONES,
+            isConnected = true,
+        )
+        val nonOwnerDevice = SourceDeviceWrapper(
+            address = nonOwnerAddr,
+            alias = "Speaker",
+            name = "Speaker",
+            deviceType = SourceDevice.Type.PORTABLE_SPEAKER,
+            isConnected = true,
+        )
+
+        devicesFlow.value = listOf(
+            ManagedDevice(
+                isConnected = true,
+                device = nonOwnerDevice,
+                config = DeviceConfigEntity(
+                    address = nonOwnerAddr,
+                    ringVolume = 0.5f,
+                    notificationVolume = 0.6f,
+                    isEnabled = true,
+                ),
+            ),
+            ManagedDevice(
+                isConnected = true,
+                device = ownerDevice,
+                config = DeviceConfigEntity(
+                    address = ownerAddr,
+                    ringVolume = 0.5f,
+                    notificationVolume = 0.6f,
+                    isEnabled = true,
+                ),
+            ),
+        )
+        // Non-owner connected first, owner connected later → owner wins
+        ownerRegistry.onDeviceConnected(nonOwnerAddr, "Speaker", SourceDevice.Type.PORTABLE_SPEAKER, 1000L, 0L)
+        ownerRegistry.onDeviceConnected(ownerAddr, "AirPods", SourceDevice.Type.HEADPHONES, 2000L, 1L)
+
+        handler.handle(RingerModeEvent(oldMode = RingerMode.SILENT, newMode = RingerMode.NORMAL))
+
+        coVerify(exactly = 1) { deviceRepo.updateDevice(ownerAddr, any()) }
+        coVerify(exactly = 0) { deviceRepo.updateDevice(nonOwnerAddr, any()) }
+    }
+
+    @Test
+    fun `dual earbuds in owner group - both get ringer write`() = runTest {
+        val budL = "AA:BB:CC:DD:EE:01"
+        val budR = "AA:BB:CC:DD:EE:02"
+
+        val deviceL = SourceDeviceWrapper(
+            address = budL,
+            alias = "Buds3 Pro",
+            name = "Buds3 Pro",
+            deviceType = SourceDevice.Type.HEADPHONES,
+            isConnected = true,
+        )
+        val deviceR = SourceDeviceWrapper(
+            address = budR,
+            alias = "Buds3 Pro",
+            name = "Buds3 Pro",
+            deviceType = SourceDevice.Type.HEADPHONES,
+            isConnected = true,
+        )
+
+        devicesFlow.value = listOf(
+            ManagedDevice(
+                isConnected = true,
+                device = deviceL,
+                config = DeviceConfigEntity(
+                    address = budL,
+                    ringVolume = 0.5f,
+                    notificationVolume = 0.6f,
+                    isEnabled = true,
+                ),
+            ),
+            ManagedDevice(
+                isConnected = true,
+                device = deviceR,
+                config = DeviceConfigEntity(
+                    address = budR,
+                    ringVolume = 0.5f,
+                    notificationVolume = 0.6f,
+                    isEnabled = true,
+                ),
+            ),
+        )
+        // Same name + type + within 10s → grouped
+        ownerRegistry.onDeviceConnected(budL, "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+        ownerRegistry.onDeviceConnected(budR, "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1002L, 1L)
+
+        handler.handle(RingerModeEvent(oldMode = RingerMode.SILENT, newMode = RingerMode.NORMAL))
+
+        coVerify(exactly = 1) { deviceRepo.updateDevice(budL, any()) }
+        coVerify(exactly = 1) { deviceRepo.updateDevice(budR, any()) }
+    }
+
+    private suspend fun setActiveDevice(
         ringVolume: Float? = 0.5f,
         notificationVolume: Float? = null,
     ) {
@@ -153,6 +259,13 @@ class RingerModeTransitionHandlerTest : BaseTest() {
                     isEnabled = true,
                 ),
             )
+        )
+        ownerRegistry.onDeviceConnected(
+            address = address,
+            label = "Test Headphones",
+            deviceType = eu.darken.bluemusic.bluetooth.core.SourceDevice.Type.HEADPHONES,
+            receivedAtElapsedMs = 1000L,
+            sequence = 0L,
         )
     }
 }

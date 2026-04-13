@@ -11,6 +11,8 @@ import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
+import eu.darken.bluemusic.devices.core.DeviceRepo
+import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.takeWhile
 import kotlinx.coroutines.withTimeoutOrNull
@@ -19,10 +21,12 @@ abstract class BaseVolumeWithModesModule(
     volumeTool: VolumeTool,
     volumeObserver: VolumeObserver,
     observationGate: VolumeObservationGate,
+    ownerRegistry: AudioStreamOwnerRegistry,
+    deviceRepo: DeviceRepo,
     private val volumeModeTool: VolumeModeTool,
     private val ringerTool: RingerTool,
     private val ringerModeObserver: RingerModeObserver,
-) : BaseVolumeModule(volumeTool, volumeObserver, observationGate) {
+) : BaseVolumeModule(volumeTool, volumeObserver, observationGate, ownerRegistry, deviceRepo) {
 
     override suspend fun setInitial(device: ManagedDevice, volumeMode: VolumeMode) {
         log(tag, INFO) { "Setting initial volume/mode ($volumeMode) for $device" }
@@ -51,11 +55,11 @@ abstract class BaseVolumeWithModesModule(
         }
     }
 
-    override suspend fun monitor(device: ManagedDevice, volumeMode: VolumeMode) {
+    override suspend fun monitor(device: ManagedDevice, volumeMode: VolumeMode, generationAtStart: Long) {
         when (volumeMode) {
             is VolumeMode.Silent -> monitorRingerMode(device, RingerMode.SILENT)
             is VolumeMode.Vibrate -> monitorRingerMode(device, RingerMode.VIBRATE)
-            is VolumeMode.Normal -> super.monitor(device, volumeMode)
+            is VolumeMode.Normal -> super.monitor(device, volumeMode, generationAtStart)
         }
     }
 
