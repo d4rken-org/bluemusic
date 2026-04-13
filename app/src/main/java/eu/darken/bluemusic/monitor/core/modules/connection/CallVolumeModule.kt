@@ -9,6 +9,7 @@ import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
+import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -16,7 +17,8 @@ import javax.inject.Singleton
 class CallVolumeModule @Inject constructor(
     volumeTool: VolumeTool,
     volumeObserver: VolumeObserver,
-) : BaseVolumeModule(volumeTool, volumeObserver) {
+    observationGate: VolumeObservationGate,
+) : BaseVolumeModule(volumeTool, volumeObserver, observationGate) {
 
     override val type: AudioStream.Type = AudioStream.Type.CALL
 

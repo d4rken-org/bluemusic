@@ -7,6 +7,7 @@ import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
+import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -35,13 +36,15 @@ class BaseVolumeModuleTest : BaseTest() {
     private lateinit var volumeTool: VolumeTool
     private lateinit var volumeEvents: MutableSharedFlow<VolumeEvent>
     private lateinit var volumeObserver: VolumeObserver
+    private lateinit var observationGate: VolumeObservationGate
     private lateinit var device: ManagedDevice
     private lateinit var module: TestVolumeModule
 
     private class TestVolumeModule(
         volumeTool: VolumeTool,
         volumeObserver: VolumeObserver,
-    ) : BaseVolumeModule(volumeTool, volumeObserver) {
+        observationGate: VolumeObservationGate,
+    ) : BaseVolumeModule(volumeTool, volumeObserver, observationGate) {
         override val type = AudioStream.Type.MUSIC
         override val priority = 10
 
@@ -57,8 +60,9 @@ class BaseVolumeModuleTest : BaseTest() {
         volumeObserver = mockk<VolumeObserver>().also {
             every { it.volumes } returns volumeEvents
         }
+        observationGate = VolumeObservationGate()
         device = mockk(relaxed = true)
-        module = TestVolumeModule(volumeTool, volumeObserver)
+        module = TestVolumeModule(volumeTool, volumeObserver, observationGate)
 
         every { device.getStreamId(AudioStream.Type.MUSIC) } returns streamId
         every { device.monitoringDuration } returns Duration.ofSeconds(4)

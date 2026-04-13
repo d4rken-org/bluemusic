@@ -30,6 +30,7 @@ class VolumeUpdateModule @Inject constructor(
     private val volumeTool: VolumeTool,
     private val ringerTool: RingerTool,
     private val deviceRepo: DeviceRepo,
+    private val observationGate: VolumeObservationGate,
 ) : VolumeModule {
 
     override val tag: String
@@ -42,9 +43,14 @@ class VolumeUpdateModule @Inject constructor(
         if (volumeTool.wasUs(id, volume)) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             return
-        } else {
-            log(TAG, DEBUG) { "Volume change $event" }
         }
+
+        if (observationGate.isSuppressed(id)) {
+            log(TAG, VERBOSE) { "Observation suppressed for $id, skipping persist" }
+            return
+        }
+
+        log(TAG, DEBUG) { "Volume change $event" }
 
         val allActive = deviceRepo.currentDevices().filter { it.isActive }
         log(TAG, VERBOSE) { "Active devices (${allActive.size}): $allActive" }

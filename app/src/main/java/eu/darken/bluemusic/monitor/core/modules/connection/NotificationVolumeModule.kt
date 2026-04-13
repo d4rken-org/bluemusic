@@ -11,6 +11,7 @@ import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
+import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -18,8 +19,9 @@ import javax.inject.Singleton
 class NotificationVolumeModule @Inject constructor(
     volumeTool: VolumeTool,
     volumeObserver: VolumeObserver,
+    observationGate: VolumeObservationGate,
     private val permissionHelper: PermissionHelper,
-) : BaseVolumeModule(volumeTool, volumeObserver) {
+) : BaseVolumeModule(volumeTool, volumeObserver, observationGate) {
 
     override val type: AudioStream.Type = AudioStream.Type.NOTIFICATION
 
