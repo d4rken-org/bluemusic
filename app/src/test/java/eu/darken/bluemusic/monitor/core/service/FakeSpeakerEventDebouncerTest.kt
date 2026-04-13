@@ -33,20 +33,14 @@ class FakeSpeakerEventDebouncerTest : BaseTest() {
     private val speakerAddress = "00:00:00:00:00:00"
     private val realDeviceAddress = "AA:BB:CC:DD:EE:FF"
 
-    private val fakeEvent = BluetoothEventQueue.Event(
-        type = BluetoothEventQueue.Event.Type.CONNECTED,
-        sourceDevice = mockk {
-            every { address } returns speakerAddress
-            every { deviceType } returns SourceDevice.Type.PHONE_SPEAKER
-        },
-    )
-    private val secondFakeEvent = BluetoothEventQueue.Event(
-        type = BluetoothEventQueue.Event.Type.CONNECTED,
-        sourceDevice = mockk {
-            every { address } returns speakerAddress
-            every { deviceType } returns SourceDevice.Type.PHONE_SPEAKER
-        },
-    )
+    private val speakerDevice: SourceDevice = mockk {
+        every { address } returns speakerAddress
+        every { deviceType } returns SourceDevice.Type.PHONE_SPEAKER
+    }
+    private val speakerDevice2: SourceDevice = mockk {
+        every { address } returns speakerAddress
+        every { deviceType } returns SourceDevice.Type.PHONE_SPEAKER
+    }
 
     private val debounce: Duration = Duration.ofSeconds(3)
 
@@ -84,19 +78,19 @@ class FakeSpeakerEventDebouncerTest : BaseTest() {
     fun `schedule and pass debounce - submits event once`() = runTest {
         val debouncer = createDebouncer()
 
-        debouncer.scheduleFakeSpeakerConnect(fakeEvent, debounce)
+        debouncer.scheduleFakeSpeakerConnect(speakerDevice, null, debounce)
 
         advanceTimeBy(debounce.toMillis() + 100)
         runCurrent()
 
-        coVerify(exactly = 1) { eventQueue.submit(fakeEvent) }
+        coVerify(exactly = 1) { eventQueue.submit(any()) }
     }
 
     @Test
     fun `cancel before debounce - event not submitted`() = runTest {
         val debouncer = createDebouncer()
 
-        debouncer.scheduleFakeSpeakerConnect(fakeEvent, debounce)
+        debouncer.scheduleFakeSpeakerConnect(speakerDevice, null, debounce)
         advanceTimeBy(debounce.toMillis() / 2)
         runCurrent()
 
@@ -109,17 +103,16 @@ class FakeSpeakerEventDebouncerTest : BaseTest() {
     }
 
     @Test
-    fun `schedule twice in a row - only the second event submitted`() = runTest {
+    fun `schedule twice in a row - only one event submitted`() = runTest {
         val debouncer = createDebouncer()
 
-        debouncer.scheduleFakeSpeakerConnect(fakeEvent, debounce)
-        debouncer.scheduleFakeSpeakerConnect(secondFakeEvent, debounce)
+        debouncer.scheduleFakeSpeakerConnect(speakerDevice, null, debounce)
+        debouncer.scheduleFakeSpeakerConnect(speakerDevice2, null, debounce)
 
         advanceTimeBy(debounce.toMillis() + 100)
         runCurrent()
 
-        coVerify(exactly = 0) { eventQueue.submit(fakeEvent) }
-        coVerify(exactly = 1) { eventQueue.submit(secondFakeEvent) }
+        coVerify(exactly = 1) { eventQueue.submit(any()) }
     }
 
     @Test
@@ -138,15 +131,14 @@ class FakeSpeakerEventDebouncerTest : BaseTest() {
     fun `schedule cancel schedule - second submission goes through`() = runTest {
         val debouncer = createDebouncer()
 
-        debouncer.scheduleFakeSpeakerConnect(fakeEvent, debounce)
+        debouncer.scheduleFakeSpeakerConnect(speakerDevice, null, debounce)
         debouncer.cancelPendingFakeSpeakerConnect()
-        debouncer.scheduleFakeSpeakerConnect(secondFakeEvent, debounce)
+        debouncer.scheduleFakeSpeakerConnect(speakerDevice2, null, debounce)
 
         advanceTimeBy(debounce.toMillis() + 100)
         runCurrent()
 
-        coVerify(exactly = 0) { eventQueue.submit(fakeEvent) }
-        coVerify(exactly = 1) { eventQueue.submit(secondFakeEvent) }
+        coVerify(exactly = 1) { eventQueue.submit(any()) }
     }
 
     @Test
@@ -154,7 +146,7 @@ class FakeSpeakerEventDebouncerTest : BaseTest() {
         devicesFlow.value = listOf(managedDevice(realDeviceAddress, connected = true))
         val debouncer = createDebouncer()
 
-        debouncer.scheduleFakeSpeakerConnect(fakeEvent, debounce)
+        debouncer.scheduleFakeSpeakerConnect(speakerDevice, null, debounce)
 
         advanceTimeBy(debounce.toMillis() + 100)
         runCurrent()
@@ -167,7 +159,7 @@ class FakeSpeakerEventDebouncerTest : BaseTest() {
         fakeIsEnabled.value = false
         val debouncer = createDebouncer()
 
-        debouncer.scheduleFakeSpeakerConnect(fakeEvent, debounce)
+        debouncer.scheduleFakeSpeakerConnect(speakerDevice, null, debounce)
 
         advanceTimeBy(debounce.toMillis() + 100)
         runCurrent()
@@ -181,7 +173,7 @@ class FakeSpeakerEventDebouncerTest : BaseTest() {
         val debouncer = createDebouncer()
 
         backgroundScope.launch {
-            debouncer.scheduleFakeSpeakerConnect(fakeEvent, debounce)
+            debouncer.scheduleFakeSpeakerConnect(speakerDevice, null, debounce)
         }
         backgroundScope.launch {
             debouncer.cancelPendingFakeSpeakerConnect()

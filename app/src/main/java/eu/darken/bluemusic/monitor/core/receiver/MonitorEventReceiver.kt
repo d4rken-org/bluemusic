@@ -151,7 +151,7 @@ class MonitorEventReceiver : BroadcastReceiver() {
             return
         }
 
-        val actualEvent = BluetoothEventQueue.Event(
+        val actualEvent = eventQueue.stampEvent(
             type = eventType,
             sourceDevice = SourceDeviceWrapper.from(
                 realDevice = bluetoothDevice,
@@ -168,39 +168,46 @@ class MonitorEventReceiver : BroadcastReceiver() {
         }
         val speakerStateChanges = otherActiveRealDevices.isEmpty()
 
-        val fakeSpeakerEvent = if (speakerStateChanges) {
+        val fakeSpeakerEventType = if (speakerStateChanges) {
             deviceRepo.getDevice(speakerAddress)?.let {
                 log(TAG, DEBUG) { "Speaker state will change, generating fake event." }
-                BluetoothEventQueue.Event(
-                    type = when (eventType) {
-                        BluetoothEventQueue.Event.Type.CONNECTED -> BluetoothEventQueue.Event.Type.DISCONNECTED
-                        BluetoothEventQueue.Event.Type.DISCONNECTED -> BluetoothEventQueue.Event.Type.CONNECTED
-                    },
-                    sourceDevice = speakerDeviceProvider.getSpeaker(
-                        isConnected = eventType == BluetoothEventQueue.Event.Type.DISCONNECTED
-                    ),
-                    volumeSnapshot = volumeSnapshot,
-                )
+                when (eventType) {
+                    BluetoothEventQueue.Event.Type.CONNECTED -> BluetoothEventQueue.Event.Type.DISCONNECTED
+                    BluetoothEventQueue.Event.Type.DISCONNECTED -> BluetoothEventQueue.Event.Type.CONNECTED
+                }
             }
         } else {
             log(TAG, DEBUG) { "Other managed devices remain active, no fake speaker event needed." }
             null
         }
 
+        val fakeSpeakerDevice = if (fakeSpeakerEventType != null) {
+            speakerDeviceProvider.getSpeaker(
+                isConnected = eventType == BluetoothEventQueue.Event.Type.DISCONNECTED
+            )
+        } else null
+
         when (eventType) {
             BluetoothEventQueue.Event.Type.CONNECTED -> {
                 log(TAG, INFO) { "Sending speaker disconnect first, then device connect." }
                 fakeSpeakerEventDebouncer.cancelPendingFakeSpeakerConnect()
-                fakeSpeakerEvent?.let { eventQueue.submit(it) }
+                if (fakeSpeakerEventType != null && fakeSpeakerDevice != null) {
+                    eventQueue.submit(eventQueue.stampEvent(
+                        type = fakeSpeakerEventType,
+                        sourceDevice = fakeSpeakerDevice,
+                        volumeSnapshot = volumeSnapshot,
+                    ))
+                }
                 eventQueue.submit(actualEvent)
             }
 
             BluetoothEventQueue.Event.Type.DISCONNECTED -> {
                 log(TAG, INFO) { "Sending real device event first, then fake speaker connect." }
                 eventQueue.submit(actualEvent)
-                fakeSpeakerEvent?.let {
+                if (fakeSpeakerEventType != null && fakeSpeakerDevice != null) {
                     fakeSpeakerEventDebouncer.scheduleFakeSpeakerConnect(
-                        event = it,
+                        sourceDevice = fakeSpeakerDevice,
+                        volumeSnapshot = volumeSnapshot,
                         debounce = FakeSpeakerEventDebouncer.DEFAULT_DEBOUNCE,
                     )
                 }

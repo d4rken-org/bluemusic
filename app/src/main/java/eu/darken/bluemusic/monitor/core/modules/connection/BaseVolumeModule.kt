@@ -4,7 +4,9 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode.Companion.fromFloat
@@ -15,6 +17,7 @@ import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
+import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.takeWhile
@@ -24,6 +27,8 @@ abstract class BaseVolumeModule(
     private val volumeTool: VolumeTool,
     private val volumeObserver: VolumeObserver,
     private val observationGate: VolumeObservationGate,
+    private val ownerRegistry: AudioStreamOwnerRegistry,
+    private val deviceRepo: DeviceRepo,
 ) : ConnectionModule {
 
     abstract val type: AudioStream.Type
@@ -46,16 +51,32 @@ abstract class BaseVolumeModule(
             return
         }
 
+        val generationAtStart = ownerRegistry.ownershipGeneration()
+
         val streamId = device.getStreamId(type)
-        observationGate.suppress(streamId)
+        val token = observationGate.suppress(streamId)
         try {
             delayForReactionDelay(event)
 
-            setInitial(device, volumeMode)
+            if (ownerRegistry.ownershipGeneration() != generationAtStart) {
+                log(tag, INFO) { "Ownership changed during actionDelay, yielding" }
+                return
+            }
 
-            monitor(device, volumeMode)
+            val freshDevice = deviceRepo.getDevice(device.address) ?: run {
+                log(tag, INFO) { "Device ${device.address} no longer exists after delay, yielding" }
+                return
+            }
+            val freshVolumeMode = fromFloat(freshDevice.getVolume(type)) ?: run {
+                log(tag, INFO) { "Device ${device.address} volume no longer configured after delay, yielding" }
+                return
+            }
+
+            setInitial(freshDevice, freshVolumeMode)
+
+            monitor(freshDevice, freshVolumeMode, generationAtStart)
         } finally {
-            observationGate.unsuppress(streamId)
+            observationGate.unsuppress(token)
         }
     }
 
@@ -111,7 +132,11 @@ abstract class BaseVolumeModule(
      * setInitial even runs), setInitial will overwrite them with the connect-time
      * snapshot. Fixing that would require re-reading DeviceRepo after the delay.
      */
-    protected open suspend fun monitor(device: ManagedDevice, volumeMode: VolumeMode) {
+    protected open suspend fun monitor(
+        device: ManagedDevice,
+        volumeMode: VolumeMode,
+        generationAtStart: Long = -1L,
+    ) {
         if (volumeMode !is VolumeMode.Normal) {
             log(tag) { "Special volume mode $volumeMode not supported in base monitoring" }
             return
@@ -123,7 +148,6 @@ abstract class BaseVolumeModule(
 
         log(tag, INFO) { "Monitoring volume (target=$volumeMode, level=$targetLevel) for $device" }
 
-        // Set to true inside collect to exit cleanly via takeWhile on the next element.
         var yielded = false
         withTimeoutOrNull(device.monitoringDuration.toMillis()) {
             volumeObserver.volumes
@@ -131,6 +155,12 @@ abstract class BaseVolumeModule(
                 .filter { it.newVolume != targetLevel }
                 .takeWhile { !yielded }
                 .collect { event ->
+                    if (generationAtStart >= 0 && ownerRegistry.ownershipGeneration() != generationAtStart) {
+                        log(tag, INFO) { "Monitor($type) yielding, ownership changed" }
+                        yielded = true
+                        return@collect
+                    }
+
                     if (!volumeTool.wasUs(streamId, targetLevel)) {
                         log(tag, INFO) {
                             "Monitor($type) yielding to external VolumeTool write on $device"

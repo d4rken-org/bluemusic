@@ -484,7 +484,77 @@ class VolumeDisconnectModuleTest : BaseTest() {
     }
 
     // ------------------------------------------------------------------------
-    // 18. No notification-policy permission is irrelevant to the disconnect path
+    // 18. Owner disconnects (wasInOwnerGroup=true) → saves volumes
+    // ------------------------------------------------------------------------
+    @Test
+    fun `owner disconnect with wasInOwnerGroup true saves volumes`() = runTest {
+        val module = createModule()
+        val cfg = config(musicVolume = 0.5f)
+        val device = managedDevice(cfg)
+
+        every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+        mockStream(AudioStream.Id.STREAM_MUSIC, current = 20, max = 25)
+
+        val disconnectResult = eu.darken.bluemusic.monitor.core.ownership.DisconnectResult(
+            wasInOwnerGroup = true,
+            ownerGroupBefore = listOf(address),
+            ownerGroupAfter = null,
+        )
+
+        module.handle(DeviceEvent.Disconnected(device, disconnectResult = disconnectResult))
+
+        coVerify(exactly = 1) { deviceRepo.updateDevice(address, any()) }
+    }
+
+    // ------------------------------------------------------------------------
+    // 19. Non-owner disconnects (wasInOwnerGroup=false) → skips save
+    // ------------------------------------------------------------------------
+    @Test
+    fun `non-owner disconnect with wasInOwnerGroup false skips save`() = runTest {
+        val module = createModule()
+        val cfg = config(musicVolume = 0.5f)
+        val device = managedDevice(cfg)
+
+        every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+        mockStream(AudioStream.Id.STREAM_MUSIC, current = 20, max = 25)
+
+        val disconnectResult = eu.darken.bluemusic.monitor.core.ownership.DisconnectResult(
+            wasInOwnerGroup = false,
+            ownerGroupBefore = listOf("OTHER:ADDRESS:00:00"),
+            ownerGroupAfter = listOf("OTHER:ADDRESS:00:00"),
+        )
+
+        module.handle(DeviceEvent.Disconnected(device, disconnectResult = disconnectResult))
+
+        coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+    }
+
+    // ------------------------------------------------------------------------
+    // 20. One bud from owner pair disconnects → saves (was in owner group)
+    // ------------------------------------------------------------------------
+    @Test
+    fun `one bud from owner pair disconnects saves volumes`() = runTest {
+        val module = createModule()
+        val cfg = config(musicVolume = 0.5f)
+        val device = managedDevice(cfg)
+
+        every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+        mockStream(AudioStream.Id.STREAM_MUSIC, current = 20, max = 25)
+
+        val siblingAddress = "AA:BB:CC:DD:EE:02"
+        val disconnectResult = eu.darken.bluemusic.monitor.core.ownership.DisconnectResult(
+            wasInOwnerGroup = true,
+            ownerGroupBefore = listOf(address, siblingAddress),
+            ownerGroupAfter = listOf(siblingAddress),
+        )
+
+        module.handle(DeviceEvent.Disconnected(device, disconnectResult = disconnectResult))
+
+        coVerify(exactly = 1) { deviceRepo.updateDevice(address, any()) }
+    }
+
+    // ------------------------------------------------------------------------
+    // 21. No notification-policy permission is irrelevant to the disconnect path
     // ------------------------------------------------------------------------
     @Test
     fun `module does not depend on notification policy access`() = runTest {

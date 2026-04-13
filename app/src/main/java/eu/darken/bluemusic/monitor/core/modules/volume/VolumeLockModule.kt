@@ -11,15 +11,20 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode
+import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
+import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 internal class VolumeLockModule @Inject constructor(
     private val volumeTool: VolumeTool,
+    private val volumeModeTool: VolumeModeTool,
     private val deviceRepo: DeviceRepo,
+    private val ownerRegistry: AudioStreamOwnerRegistry,
 ) : VolumeModule {
 
     override val tag: String
@@ -34,18 +39,34 @@ internal class VolumeLockModule @Inject constructor(
             return
         }
 
+        val ownerAddresses = ownerRegistry.ownerAddressesFor(id).toSet()
+        if (ownerAddresses.isEmpty()) return
+
         deviceRepo.currentDevices()
-            .filter { device -> device.isActive && device.volumeLock && device.getStreamType(id) != null }
+            .filter { device ->
+                device.isActive
+                        && device.volumeLock
+                        && device.address in ownerAddresses
+                        && device.getStreamType(id) != null
+            }
             .forEach { device ->
                 val type = device.getStreamType(id)!!
-                val percentage: Float? = device.getVolume(type)
-                if (percentage == null) {
-                    log(TAG) { "Device $device has no specified target volume for $type, skipping volume lock." }
+                val rawFloat = device.getVolume(type) ?: return@forEach
+                val mode = VolumeMode.fromFloat(rawFloat)
+
+                if (mode == null) {
+                    log(TAG) { "Device $device has corrupt volume $rawFloat for $type, skipping." }
                     return@forEach
                 }
 
-                if (volumeTool.changeVolume(device.getStreamId(type), percentage)) {
-                    log(TAG) { "Engaged volume lock for $type and due to $device" }
+                if (volumeModeTool.apply(
+                        streamId = device.getStreamId(type),
+                        streamType = type,
+                        volumeMode = mode,
+                        visible = false,
+                    )
+                ) {
+                    log(TAG) { "Engaged volume lock for $type ($mode) due to $device" }
                 }
             }
 

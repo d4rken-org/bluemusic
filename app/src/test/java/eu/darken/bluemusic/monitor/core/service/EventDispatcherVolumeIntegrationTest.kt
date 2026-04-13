@@ -66,7 +66,7 @@ class EventDispatcherVolumeIntegrationTest : BaseTest() {
     }
 
     @Test
-    fun `mirrored handsfree observation persists after fake speaker call dispatch finishes`() = runTest {
+    fun `mirrored handsfree observation does not persist to non-owner headset after speaker takes over`() = runTest {
         val fixture = Fixture(this)
         val job = fixture.launchConnectDispatch()
 
@@ -86,8 +86,9 @@ class EventDispatcherVolumeIntegrationTest : BaseTest() {
             )
         )
 
-        fixture.headsetCallVolume() shouldBe (11f / 15f)
-        fixture.headsetCallWriteCount() shouldBe 1
+        // Headset is not the owner (speaker is), so volume observation is not persisted
+        fixture.headsetCallVolume() shouldBe fixture.initialHeadsetCallVolume
+        fixture.headsetCallWriteCount() shouldBe 0
     }
 
     private class Fixture(
@@ -165,6 +166,7 @@ class EventDispatcherVolumeIntegrationTest : BaseTest() {
         )
 
         val observationGate = VolumeObservationGate()
+        private val ownerRegistry = eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry()
 
         private val volumeTool = VolumeTool(audioManager).apply {
             clock = { scope.testScheduler.currentTime }
@@ -174,11 +176,14 @@ class EventDispatcherVolumeIntegrationTest : BaseTest() {
             ringerTool = ringerTool,
             deviceRepo = deviceRepo,
             observationGate = observationGate,
+            ownerRegistry = ownerRegistry,
         )
         private val callVolumeModule = CallVolumeModule(
             volumeTool = volumeTool,
             volumeObserver = volumeObserver,
             observationGate = observationGate,
+            ownerRegistry = ownerRegistry,
+            deviceRepo = deviceRepo,
         )
         private val tracker by lazy {
             EventTypeDedupTracker(
@@ -189,11 +194,13 @@ class EventDispatcherVolumeIntegrationTest : BaseTest() {
         }
         private val dispatcher by lazy {
             EventDispatcher(
+                appScope = scope,
                 dispatcherProvider = scope.coroutineContext.asDispatcherProvider(),
                 deviceRepo = deviceRepo,
                 devicesSettings = devicesSettings,
                 connectionModuleMap = setOf(callVolumeModule),
                 eventTypeDedupTracker = tracker,
+                ownerRegistry = ownerRegistry,
             )
         }
 

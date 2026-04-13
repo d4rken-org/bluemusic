@@ -47,7 +47,11 @@ class VolumeDisconnectModule @Inject constructor(
             return
         }
 
-
+        val disconnectResult = event.disconnectResult
+        if (disconnectResult != null && !disconnectResult.wasInOwnerGroup) {
+            log(TAG, VERBOSE) { "Device ${device.label} was not in owner group, skipping disconnect save" }
+            return
+        }
 
         log(TAG, INFO) { "Saving volumes on disconnect for device ${device.label}" }
 

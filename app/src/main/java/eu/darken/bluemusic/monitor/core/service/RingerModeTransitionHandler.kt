@@ -13,6 +13,7 @@ import eu.darken.bluemusic.monitor.core.audio.RingerModeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
+import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -21,25 +22,36 @@ class RingerModeTransitionHandler @Inject constructor(
     private val deviceRepo: DeviceRepo,
     private val volumeTool: VolumeTool,
     private val observationGate: VolumeObservationGate,
+    private val ownerRegistry: AudioStreamOwnerRegistry,
 ) {
 
     suspend fun handle(event: RingerModeEvent) {
         log(TAG, VERBOSE) { "handle: $event" }
-        val activeDevice = deviceRepo.currentDevices().firstOrNull { it.isActive }
-        if (activeDevice == null) {
-            log(TAG, INFO) { "No active device, skipping." }
+
+        val ownerAddresses = ownerRegistry.ownerAddressesFor(AudioStream.Id.STREAM_RINGTONE).toSet()
+        val ownerDevices = deviceRepo.currentDevices()
+            .filter { it.isActive && it.address in ownerAddresses }
+
+        if (ownerDevices.isEmpty()) {
+            log(TAG, INFO) { "No owner devices for ringtone, skipping." }
             return
         }
-        if (activeDevice.getVolume(AudioStream.Type.RINGTONE) == null) {
-            log(TAG, INFO) { "No ringtone volume configured, skipping." }
+
+        val eligibleDevices = ownerDevices.filter { it.getVolume(AudioStream.Type.RINGTONE) != null }
+        if (eligibleDevices.isEmpty()) {
+            log(TAG, INFO) { "No owner devices with ringtone volume configured, skipping." }
             return
         }
+
+        // Use the first eligible device's config for notification suppression decision.
+        // All group members should have similar config (earbuds are the same device).
+        val primaryDevice = eligibleDevices.first()
 
         val volumeMode = when (event.newMode) {
             RingerMode.SILENT -> VolumeMode.Silent
             RingerMode.VIBRATE -> VolumeMode.Vibrate
             RingerMode.NORMAL -> {
-                val currentVolume = activeDevice.getVolume(AudioStream.Type.RINGTONE)
+                val currentVolume = primaryDevice.getVolume(AudioStream.Type.RINGTONE)
                 if (currentVolume != null && currentVolume >= 0f) {
                     VolumeMode.Normal(currentVolume)
                 } else {
@@ -48,21 +60,23 @@ class RingerModeTransitionHandler @Inject constructor(
             }
         }
 
-        val storedNotification = activeDevice.getVolume(AudioStream.Type.NOTIFICATION)
+        val storedNotification = primaryDevice.getVolume(AudioStream.Type.NOTIFICATION)
             ?.takeIf { it >= 0f }
         val suppressNotification = event.newMode == RingerMode.NORMAL && storedNotification != null
 
-        if (suppressNotification) {
+        val token = if (suppressNotification) {
             observationGate.suppress(AudioStream.Id.STREAM_NOTIFICATION)
-        }
+        } else null
         try {
-            deviceRepo.updateDevice(activeDevice.address) {
-                it.updateVolume(AudioStream.Type.RINGTONE, volumeMode)
+            for (device in eligibleDevices) {
+                deviceRepo.updateDevice(device.address) {
+                    it.updateVolume(AudioStream.Type.RINGTONE, volumeMode)
+                }
             }
 
             if (storedNotification != null && suppressNotification) {
-                val streamId = activeDevice.getStreamId(AudioStream.Type.NOTIFICATION)
-                log(TAG, INFO) { "Re-applying stored notification volume ($storedNotification) for ${activeDevice.label}" }
+                val streamId = primaryDevice.getStreamId(AudioStream.Type.NOTIFICATION)
+                log(TAG, INFO) { "Re-applying stored notification volume ($storedNotification) for ${primaryDevice.label}" }
                 volumeTool.changeVolume(
                     streamId = streamId,
                     percent = storedNotification,
@@ -70,9 +84,7 @@ class RingerModeTransitionHandler @Inject constructor(
                 )
             }
         } finally {
-            if (suppressNotification) {
-                observationGate.unsuppress(AudioStream.Id.STREAM_NOTIFICATION)
-            }
+            token?.let { observationGate.unsuppress(it) }
         }
     }
 

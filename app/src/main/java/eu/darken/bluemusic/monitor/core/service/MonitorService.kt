@@ -68,6 +68,7 @@ class MonitorService : Service2() {
     @Inject lateinit var bluetoothEventQueue: BluetoothEventQueue
     @Inject lateinit var eventDispatcher: EventDispatcher
     @Inject lateinit var ringerModeTransitionHandler: RingerModeTransitionHandler
+    @Inject lateinit var ownerRegistry: eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 
     private val serviceScope by lazy {
         CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
@@ -165,6 +166,7 @@ class MonitorService : Service2() {
             log(TAG, WARN) { "Failed to unregister stopMonitor receiver: ${e.asLog()}" }
         }
         if (injectionComplete) {
+            eventDispatcher.cancelAllJobs()
             serviceScope.cancel("Service destroyed")
         } else {
             log(TAG, WARN) { "onDestroy: Skipping scope cancel, injection was incomplete." }
@@ -178,6 +180,9 @@ class MonitorService : Service2() {
             log(TAG, WARN) { "Aborting, Bluetooth state is not ready: $bluetoothState" }
             return
         }
+
+        ownerRegistry.reset()
+        ownerRegistry.bootstrap(deviceRepo.currentDevices())
 
         notificationManager.notify(
             MonitorNotifications.NOTIFICATION_ID,

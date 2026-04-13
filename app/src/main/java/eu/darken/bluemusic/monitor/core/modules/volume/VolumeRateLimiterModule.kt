@@ -15,6 +15,7 @@ import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
+import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import javax.inject.Inject
@@ -24,6 +25,7 @@ import javax.inject.Singleton
 internal class VolumeRateLimiterModule @Inject constructor(
     private val volumeTool: VolumeTool,
     private val deviceRepo: DeviceRepo,
+    private val ownerRegistry: AudioStreamOwnerRegistry,
 ) : VolumeModule {
 
     override val tag: String
@@ -38,6 +40,7 @@ internal class VolumeRateLimiterModule @Inject constructor(
     )
 
     private val volumeStates = mutableMapOf<AudioStream.Id, VolumeState>()
+    private var lastSeenGeneration: Long = -1L
     private val mutex = Mutex()
 
     override suspend fun handle(event: VolumeEvent) {
@@ -54,11 +57,24 @@ internal class VolumeRateLimiterModule @Inject constructor(
             return
         }
 
+        val ownerAddresses = ownerRegistry.ownerAddressesFor(id).toSet()
+        if (ownerAddresses.isEmpty()) return
+
         val currentTime = System.currentTimeMillis()
         val eligibleDevices = deviceRepo.currentDevices()
-            .filter { it.isActive && it.volumeRateLimiter && it.getStreamType(id) != null }
+            .filter { it.isActive && it.volumeRateLimiter && it.address in ownerAddresses && it.getStreamType(id) != null }
 
+        if (eligibleDevices.isEmpty()) return
+
+        // Clear state when ownership changes
+        val currentGeneration = ownerRegistry.ownershipGeneration()
         mutex.withLock {
+            if (currentGeneration != lastSeenGeneration) {
+                log(TAG, VERBOSE) { "Ownership generation changed ($lastSeenGeneration → $currentGeneration), clearing rate limiter state" }
+                volumeStates.clear()
+                lastSeenGeneration = currentGeneration
+            }
+
             eligibleDevices.forEach { device ->
                 processVolumeChange(device, id, oldVolume, newVolume, currentTime)
             }
