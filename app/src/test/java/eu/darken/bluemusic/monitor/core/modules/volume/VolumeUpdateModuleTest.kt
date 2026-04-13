@@ -10,6 +10,7 @@ import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
+import eu.darken.bluemusic.monitor.core.audio.levelToPercentage
 import io.kotest.matchers.shouldBe
 import io.mockk.Runs
 import io.mockk.coEvery
@@ -21,6 +22,7 @@ import io.mockk.slot
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 
@@ -46,6 +48,8 @@ class VolumeUpdateModuleTest : BaseTest() {
         devicesFlow = MutableStateFlow(emptyList())
         every { deviceRepo.devices } returns devicesFlow
         coEvery { deviceRepo.updateDevice(any(), any()) } just Runs
+        every { volumeTool.getMinVolume(any()) } returns 0
+        every { volumeTool.getMaxVolume(any()) } returns 15
 
         sourceDevice = mockk {
             every { this@mockk.address } returns this@VolumeUpdateModuleTest.address
@@ -156,11 +160,11 @@ class VolumeUpdateModuleTest : BaseTest() {
     @Test
     fun `volume changes for unsuppressed streams are persisted`() = runTest {
         val module = createModule()
-        val cfg = config(musicVolume = 0.5f)
+        // stored 0.1 → level 2, event newVolume=11 → different level → writes
+        val cfg = config(musicVolume = 0.1f)
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.44f
         every { volumeTool.wasUs(any(), any()) } returns false
 
         val token = observationGate.suppress(AudioStream.Id.STREAM_MUSIC)
@@ -195,11 +199,11 @@ class VolumeUpdateModuleTest : BaseTest() {
     @Test
     fun `normal ringer music change writes percent`() = runTest {
         val module = createModule()
-        val cfg = config(musicVolume = 0.5f)
+        // stored 0.1 → level 2, event newVolume=8 → different level → writes
+        val cfg = config(musicVolume = 0.1f)
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.32f
         every { volumeTool.wasUs(any(), any()) } returns false
 
         val result = runTransform(
@@ -208,7 +212,8 @@ class VolumeUpdateModuleTest : BaseTest() {
             cfg,
         )
 
-        result.musicVolume shouldBe 0.32f
+        // levelToPercentage(8, 0, 15) = 8/15
+        result.musicVolume shouldBe levelToPercentage(8, 0, 15)
     }
 
     // ------------------------------------------------------------------------
@@ -225,7 +230,6 @@ class VolumeUpdateModuleTest : BaseTest() {
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.VIBRATE
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_RINGTONE) } returns 0f
         every { volumeTool.wasUs(any(), any()) } returns false
 
         val result = runTransform(
@@ -247,7 +251,6 @@ class VolumeUpdateModuleTest : BaseTest() {
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.SILENT
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_RINGTONE) } returns 0f
         every { volumeTool.wasUs(any(), any()) } returns false
 
         val result = runTransform(
@@ -272,7 +275,6 @@ class VolumeUpdateModuleTest : BaseTest() {
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.VIBRATE
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_NOTIFICATION) } returns 0f
         every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(
@@ -288,11 +290,11 @@ class VolumeUpdateModuleTest : BaseTest() {
     @Test
     fun `vibrate ringer notification nonzero hardware captures change`() = runTest {
         val module = createModule()
+        // stored 0.19 → level 3, event newVolume=5 → different level → writes
         val cfg = config(notificationVolume = 0.19f)
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.VIBRATE
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_NOTIFICATION) } returns (5f / 7f)
         every { volumeTool.wasUs(any(), any()) } returns false
 
         val result = runTransform(
@@ -301,7 +303,8 @@ class VolumeUpdateModuleTest : BaseTest() {
             cfg,
         )
 
-        result.notificationVolume shouldBe (5f / 7f)
+        // levelToPercentage(5, 0, 15) = 5/15 = 1/3
+        result.notificationVolume shouldBe levelToPercentage(5, 0, 15)
     }
 
     // ------------------------------------------------------------------------
@@ -314,7 +317,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.7f
+
         every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(
@@ -334,7 +337,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.7f
+
         every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(
@@ -355,7 +358,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.7f
+
         every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(
@@ -386,7 +389,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         ownerRegistry.onDeviceConnected("AA:BB:CC:DD:EE:02", "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1002L, 1L)
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.7f
+
         every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
@@ -416,7 +419,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         ownerRegistry.onDeviceConnected("AA:BB:CC:DD:EE:02", "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1002L, 1L)
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.7f
+
         every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
@@ -459,7 +462,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         ownerRegistry.onDeviceConnected("AA:BB:CC:DD:EE:02", "Speaker", SourceDevice.Type.HEADPHONES, 2000L, 1L)
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.7f
+
         every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
@@ -487,7 +490,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         ownerRegistry.onDeviceConnected("AA:BB:CC:DD:EE:02", "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1002L, 1L)
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.7f
+
         every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
@@ -512,11 +515,123 @@ class VolumeUpdateModuleTest : BaseTest() {
         )
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-        every { volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC) } returns 0.7f
+
         every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
 
         coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+    }
+
+    // ------------------------------------------------------------------------
+    // Level-equivalence: stored float maps to observed level → skip persist
+    // ------------------------------------------------------------------------
+    @Nested
+    inner class LevelEquivalence {
+        @Test
+        fun `stored percentage maps to same level as observed — skips persist`() = runTest {
+            val module = createModule()
+            // 0.378 → percentageToLevel(0.378, 0, 15) = roundToInt(5.67) = 6
+            val cfg = config(musicVolume = 0.378f)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+            every { volumeTool.wasUs(any(), any()) } returns false
+
+            module.handle(
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 6, self = false)
+            )
+
+            coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+        }
+
+        @Test
+        fun `stored percentage maps to different level — persists new value`() = runTest {
+            val module = createModule()
+            // 0.378 → level 6, but observed level is 10 → different → writes
+            val cfg = config(musicVolume = 0.378f)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+            every { volumeTool.wasUs(any(), any()) } returns false
+
+            val result = runTransform(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 10, self = false),
+                cfg,
+            )
+
+            result.musicVolume shouldBe levelToPercentage(10, 0, 15)
+        }
+
+        @Test
+        fun `silent mode always persists regardless of level equivalence`() = runTest {
+            val module = createModule()
+            // Stored Normal percentage — ringer switched to SILENT → always writes sentinel
+            val cfg = config(ringVolume = 0.4f)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.SILENT
+            every { volumeTool.wasUs(any(), any()) } returns false
+
+            val result = runTransform(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_RINGTONE, oldVolume = 6, newVolume = 0, self = false),
+                cfg,
+            )
+
+            result.ringVolume shouldBe VolumeMode.LEGACY_SILENT_VALUE
+        }
+
+        @Test
+        fun `two grouped devices — one equivalent skips, sibling with different stored value persists`() = runTest {
+            val module = createModule()
+            val stableTime = System.currentTimeMillis() - 60_000L
+
+            val dev1 = makeSourceDevice("AA:BB:CC:DD:EE:01", "Buds3 Pro")
+            val dev2 = makeSourceDevice("AA:BB:CC:DD:EE:02", "Buds3 Pro")
+            // dev1: 0.378 → level 6, event newVolume=6 → same → skip
+            // dev2: 0.1 → level 2, event newVolume=6 → different → write
+            val cfg1 = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:01", musicVolume = 0.378f, volumeObserving = true, lastConnected = stableTime)
+            val cfg2 = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:02", musicVolume = 0.1f, volumeObserving = true, lastConnected = stableTime)
+            devicesFlow.value = listOf(
+                ManagedDevice(isConnected = true, device = dev1, config = cfg1),
+                ManagedDevice(isConnected = true, device = dev2, config = cfg2),
+            )
+
+            ownerRegistry.onDeviceConnected("AA:BB:CC:DD:EE:01", "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+            ownerRegistry.onDeviceConnected("AA:BB:CC:DD:EE:02", "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1002L, 1L)
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+            every { volumeTool.wasUs(any(), any()) } returns false
+
+            module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 6, self = false))
+
+            // dev1 skipped (equivalent), dev2 written (different level)
+            coVerify(exactly = 0) { deviceRepo.updateDevice("AA:BB:CC:DD:EE:01", any()) }
+            coVerify(exactly = 1) { deviceRepo.updateDevice("AA:BB:CC:DD:EE:02", any()) }
+        }
+
+        @Test
+        fun `non-zero min stream range — equivalence check uses correct min`() = runTest {
+            val module = createModule()
+            // Simulate a stream with min=1, max=7 (e.g. some devices' ringtone)
+            every { volumeTool.getMinVolume(AudioStream.Id.STREAM_MUSIC) } returns 1
+            every { volumeTool.getMaxVolume(AudioStream.Id.STREAM_MUSIC) } returns 7
+
+            // 0.5 → percentageToLevel(0.5, 1, 7) = (1 + 6*0.5).roundToInt() = 4
+            val cfg = config(musicVolume = 0.5f)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+            every { volumeTool.wasUs(any(), any()) } returns false
+
+            // event newVolume=4 → same as stored level → skip
+            module.handle(
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 3, newVolume = 4, self = false)
+            )
+
+            coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+        }
     }
 }
