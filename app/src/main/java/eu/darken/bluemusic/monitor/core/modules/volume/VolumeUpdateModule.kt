@@ -19,6 +19,8 @@ import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
+import eu.darken.bluemusic.monitor.core.audio.levelToPercentage
+import eu.darken.bluemusic.monitor.core.audio.percentageToLevel
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import java.time.Duration
@@ -86,7 +88,9 @@ class VolumeUpdateModule @Inject constructor(
         }
 
         val ringerMode = ringerTool.getCurrentRingerMode()
-        val percentage = volumeTool.getVolumePercentage(id).coerceIn(0f, 1f)
+        val min = volumeTool.getMinVolume(id)
+        val max = volumeTool.getMaxVolume(id)
+        val percentage = levelToPercentage(event.newVolume, min, max)
 
         stable.forEach { dev ->
             val streamType = dev.getStreamType(id)!!
@@ -113,6 +117,24 @@ class VolumeUpdateModule @Inject constructor(
                     "Skipping $streamType update for $dev, ringer=$ringerMode hardware=0"
                 }
                 return@forEach
+            }
+
+            // Skip persist if stored percentage already maps to the observed
+            // hardware level — avoids the percent→level→percent round-trip that makes dashboard sliders jump.
+            if (mode is VolumeMode.Normal) {
+                val storedVolume = dev.getVolume(streamType)
+                if (storedVolume != null) {
+                    val storedMode = VolumeMode.fromFloat(storedVolume)
+                    if (storedMode is VolumeMode.Normal) {
+                        val storedLevel = percentageToLevel(storedMode.percentage, min, max)
+                        if (storedLevel == event.newVolume) {
+                            log(TAG, VERBOSE) {
+                                "Stored ${storedMode.percentage} already maps to level ${event.newVolume}, skipping $dev"
+                            }
+                            return@forEach
+                        }
+                    }
+                }
             }
 
             log(TAG, INFO) { "Saving new volume ($mode@$id) for $dev" }

@@ -434,6 +434,7 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Enter a value between %1$d and %2$d</string>
+    <string name="devices_volume_input_caption">The actual volume may round to the nearest step your device supports.</string>
 
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Lock</string>

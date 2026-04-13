@@ -83,6 +83,12 @@ fun VolumeInputDialog(
                         modifier = Modifier.padding(top = 4.dp),
                     )
                 }
+                Text(
+                    text = stringResource(R.string.devices_volume_input_caption),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 8.dp),
+                )
             }
         },
         confirmButton = {

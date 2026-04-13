@@ -108,19 +108,6 @@ class VolumeTool @Inject constructor(
         return levelToPercentage(getCurrentVolume(streamId), getMinVolume(streamId), getMaxVolume(streamId))
     }
 
-    /**
-     * Snaps an arbitrary percentage to the nearest discrete hardware step.
-     * This avoids the round-trip feedback loop where a raw float is persisted,
-     * snapped to an integer level by the hardware, and then re-derived as a
-     * different percentage by the volume observer.
-     */
-    fun snapPercentage(streamId: AudioStream.Id, percentage: Float): Float {
-        val min = getMinVolume(streamId)
-        val max = getMaxVolume(streamId)
-        val level = percentageToLevel(percentage, min, max)
-        return levelToPercentage(level, min, max)
-    }
-
     suspend fun lowerByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {
         val current = getCurrentVolume(streamId)
         val min = getMinVolume(streamId)
