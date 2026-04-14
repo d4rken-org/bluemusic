@@ -39,34 +39,43 @@ class VolumeObserver @Inject constructor(
 
     private val volumesCache = ConcurrentHashMap<AudioStream.Id, Int>()
 
-    val volumes: Flow<VolumeEvent> = callbackFlow {
+    internal fun primeCache() {
         AudioStream.Id.entries.forEach { id ->
             val volume = volumeTool.getCurrentVolume(id)
             volumesCache[id] = volume
         }
+    }
+
+    internal fun dispatchVolumeChanges(selfChange: Boolean, emit: (VolumeEvent) -> Unit) {
+        log(TAG, VERBOSE) { "Change detected (selfChange=$selfChange)" }
+        AudioStream.Id.entries.forEach { id ->
+            val newVolume = volumeTool.getCurrentVolume(id)
+            val oldVolume = volumesCache[id] ?: -1
+            if (newVolume != oldVolume) {
+                val isSelf = volumeTool.wasUs(id, newVolume)
+                log(TAG) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume, self=$isSelf)" }
+                volumesCache[id] = newVolume
+                emit(
+                    VolumeEvent(
+                        streamId = id,
+                        oldVolume = oldVolume,
+                        newVolume = newVolume,
+                        self = isSelf
+                    )
+                )
+            }
+        }
+    }
+
+    val volumes: Flow<VolumeEvent> = callbackFlow {
+        primeCache()
 
         val observer = object : ContentObserver(handler) {
 
             override fun deliverSelfNotifications(): Boolean = true
 
             override fun onChange(selfChange: Boolean) {
-                log(TAG, VERBOSE) { "Change detected (selfChange=$selfChange)" }
-                AudioStream.Id.entries.forEach { id ->
-                    val newVolume = volumeTool.getCurrentVolume(id)
-                    val oldVolume = volumesCache[id] ?: -1
-                    if (newVolume != oldVolume) {
-                        val isSelf = volumeTool.wasUs(id, newVolume)
-                        log(TAG) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume, self=$isSelf)" }
-                        volumesCache[id] = newVolume
-                        val change = VolumeEvent(
-                            streamId = id,
-                            oldVolume = oldVolume,
-                            newVolume = newVolume,
-                            self = isSelf
-                        )
-                        trySendBlocking(change)
-                    }
-                }
+                dispatchVolumeChanges(selfChange) { trySendBlocking(it) }
             }
         }
 
