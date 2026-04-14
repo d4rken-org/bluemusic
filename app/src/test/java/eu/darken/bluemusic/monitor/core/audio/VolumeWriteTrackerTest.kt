@@ -117,6 +117,16 @@ class VolumeWriteTrackerTest : BaseTest() {
             tracker.wasUs(AudioStream.Id.STREAM_MUSIC, 7) shouldBe false
             tracker.wasUs(AudioStream.Id.STREAM_MUSIC, 11) shouldBe false
         }
+
+        @Test
+        fun `mismatch on voice call does not clear mirrored handsfree pending write`() {
+            tracker.onWriteStarted(AudioStream.Id.STREAM_VOICE_CALL, 8)
+            tracker.onWriteFinished()
+
+            tracker.wasUs(AudioStream.Id.STREAM_VOICE_CALL, 6) shouldBe false
+            tracker.wasUs(AudioStream.Id.STREAM_VOICE_CALL, 8) shouldBe false
+            tracker.wasUs(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, 8) shouldBe true
+        }
     }
 
     @Nested
@@ -177,6 +187,22 @@ class VolumeWriteTrackerTest : BaseTest() {
             tracker.onWriteStarted(AudioStream.Id.STREAM_MUSIC, 10)
 
             tracker.wasUs(AudioStream.Id.STREAM_RINGTONE, 10) shouldBe false
+        }
+
+        @Test
+        fun `mismatch during active write does not clear same stream pending write`() {
+            tracker.onWriteStarted(AudioStream.Id.STREAM_MUSIC, 10)
+
+            tracker.wasUs(AudioStream.Id.STREAM_MUSIC, 7) shouldBe false
+            tracker.wasUs(AudioStream.Id.STREAM_MUSIC, 10) shouldBe true
+        }
+
+        @Test
+        fun `mismatch during active voice call write does not clear mirrored pending write`() {
+            tracker.onWriteStarted(AudioStream.Id.STREAM_VOICE_CALL, 8)
+
+            tracker.wasUs(AudioStream.Id.STREAM_VOICE_CALL, 6) shouldBe false
+            tracker.wasUs(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, 8) shouldBe true
         }
     }
 
