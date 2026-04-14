@@ -40,7 +40,10 @@ class VolumeTool @Inject constructor(
 
     @Volatile private var adjustingStream: AudioStream.Id? = null
     private val lock = Mutex()
-    private val lastUs = ConcurrentHashMap<AudioStream.Id, RecentWrite>()
+    // Used by monitor loops that need to remember the last target we intended to hold.
+    private val recentTargets = ConcurrentHashMap<AudioStream.Id, RecentWrite>()
+    // Used by VolumeObserver to classify a matching observed change exactly once.
+    private val pendingObserverWrites = ConcurrentHashMap<AudioStream.Id, RecentWrite>()
 
     fun getCurrentVolume(id: AudioStream.Id): Int {
         return audioManager.getStreamVolume(id.id)
@@ -75,9 +78,8 @@ class VolumeTool @Inject constructor(
         try {
             adjustingStream = streamId
             val now = clock()
-            val write = RecentWrite(volume, now)
-            lastUs[streamId] = write
-            mirroredPeer(streamId)?.let { lastUs[it] = write }
+            rememberWrite(recentTargets, streamId, volume, mirror = true, timestamp = now)
+            rememberWrite(pendingObserverWrites, streamId, volume, mirror = true, timestamp = now)
 
             delay(10)
 
@@ -90,13 +92,20 @@ class VolumeTool @Inject constructor(
         }
     }
 
+    internal fun hasRecentTarget(id: AudioStream.Id, volume: Int): Boolean {
+        return hasFreshWrite(recentTargets, id, volume)
+    }
+
     fun wasUs(id: AudioStream.Id, volume: Int): Boolean {
+        if (consumePendingWrite(id, volume)) return true
+
         val currentlyAdjusting = adjustingStream
         if (currentlyAdjusting != null) {
-            if (currentlyAdjusting == id || mirroredPeer(currentlyAdjusting) == id) return true
+            if (currentlyAdjusting == id || mirroredPeer(currentlyAdjusting) == id) {
+                return hasFreshWrite(recentTargets, id, volume)
+            }
         }
-        val entry = lastUs[id] ?: return false
-        return entry.volume == volume && (clock() - entry.timestamp) < WRITE_TTL_MS
+        return false
     }
 
     private fun mirroredPeer(id: AudioStream.Id): AudioStream.Id? = when (id) {
@@ -169,7 +178,7 @@ class VolumeTool @Inject constructor(
 
         val currentLevel = getCurrentVolume(streamId)
         if (currentLevel == targetLevel) {
-            lastUs[streamId] = RecentWrite(targetLevel, clock())
+            rememberWrite(recentTargets, streamId, targetLevel, mirror = false, timestamp = clock())
             log(TAG, VERBOSE) { "Target volume of $targetLevel already set." }
             return false
         }
@@ -194,6 +203,53 @@ class VolumeTool @Inject constructor(
                 }
             }
         }
+        return true
+    }
+
+    private fun rememberWrite(
+        map: ConcurrentHashMap<AudioStream.Id, RecentWrite>,
+        streamId: AudioStream.Id,
+        volume: Int,
+        mirror: Boolean,
+        timestamp: Long,
+    ) {
+        val write = RecentWrite(volume, timestamp)
+        map[streamId] = write
+        if (mirror) {
+            mirroredPeer(streamId)?.let { map[it] = write }
+        }
+    }
+
+    private fun hasFreshWrite(
+        map: ConcurrentHashMap<AudioStream.Id, RecentWrite>,
+        id: AudioStream.Id,
+        volume: Int,
+    ): Boolean {
+        val entry = map[id] ?: return false
+        val now = clock()
+        if (entry.volume != volume) return false
+        if ((now - entry.timestamp) >= WRITE_TTL_MS) {
+            map.remove(id, entry)
+            return false
+        }
+        return true
+    }
+
+    private fun consumePendingWrite(id: AudioStream.Id, volume: Int): Boolean {
+        val entry = pendingObserverWrites[id] ?: return false
+        val now = clock()
+        if ((now - entry.timestamp) >= WRITE_TTL_MS) {
+            pendingObserverWrites.remove(id, entry)
+            return false
+        }
+        if (entry.volume != volume) {
+            val currentlyAdjusting = adjustingStream
+            if (currentlyAdjusting == null || (currentlyAdjusting != id && mirroredPeer(currentlyAdjusting) != id)) {
+                pendingObserverWrites.remove(id, entry)
+            }
+            return false
+        }
+        pendingObserverWrites.remove(id, entry)
         return true
     }
 

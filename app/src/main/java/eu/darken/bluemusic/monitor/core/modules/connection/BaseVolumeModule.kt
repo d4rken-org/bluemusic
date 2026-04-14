@@ -161,7 +161,7 @@ abstract class BaseVolumeModule(
                         return@collect
                     }
 
-                    if (!volumeTool.wasUs(streamId, targetLevel)) {
+                    if (!volumeTool.hasRecentTarget(streamId, targetLevel)) {
                         log(tag, INFO) {
                             "Monitor($type) yielding to external VolumeTool write on $device"
                         }

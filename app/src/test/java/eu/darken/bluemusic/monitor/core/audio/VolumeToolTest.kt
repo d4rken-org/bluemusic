@@ -85,15 +85,58 @@ class VolumeToolTest : BaseTest() {
     }
 
     @Nested
-    inner class AlreadyAtTarget {
+    inner class PendingConsumption {
         @Test
-        fun `already at target records direct stream only, not mirror`() = runTest {
+        fun `wasUs consumes matching pending write`() = runTest {
+            volumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 10)
+
+            volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 10) shouldBe true
+            volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 10) shouldBe false
+        }
+
+        @Test
+        fun `consuming pending write does not drop recent target`() = runTest {
+            volumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 10)
+
+            volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 10) shouldBe true
+            volumeTool.hasRecentTarget(AudioStream.Id.STREAM_MUSIC, 10) shouldBe true
+        }
+    }
+
+    @Nested
+    inner class RecentTargets {
+        @Test
+        fun `already at target records recent target direct stream only`() = runTest {
             every { audioManager.getStreamVolume(AudioStream.Id.STREAM_VOICE_CALL.id) } returns 10
 
             volumeTool.changeVolume(AudioStream.Id.STREAM_VOICE_CALL, targetLevel = 10)
 
-            volumeTool.wasUs(AudioStream.Id.STREAM_VOICE_CALL, 10) shouldBe true
-            volumeTool.wasUs(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, 10) shouldBe false
+            volumeTool.hasRecentTarget(AudioStream.Id.STREAM_VOICE_CALL, 10) shouldBe true
+            volumeTool.hasRecentTarget(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, 10) shouldBe false
+            volumeTool.wasUs(AudioStream.Id.STREAM_VOICE_CALL, 10) shouldBe false
+        }
+
+        @Test
+        fun `mirrored peer also keeps recent target`() = runTest {
+            volumeTool.changeVolume(AudioStream.Id.STREAM_VOICE_CALL, targetLevel = 8)
+
+            volumeTool.hasRecentTarget(AudioStream.Id.STREAM_VOICE_CALL, 8) shouldBe true
+            volumeTool.hasRecentTarget(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, 8) shouldBe true
+        }
+
+        @Test
+        fun `hasRecentTarget expires after TTL`() = runTest {
+            volumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 10)
+
+            fakeTime += 2500
+            volumeTool.hasRecentTarget(AudioStream.Id.STREAM_MUSIC, 10) shouldBe false
+        }
+
+        @Test
+        fun `hasRecentTarget returns false for unrelated stream`() = runTest {
+            volumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 10)
+
+            volumeTool.hasRecentTarget(AudioStream.Id.STREAM_RINGTONE, 10) shouldBe false
         }
     }
 
@@ -109,49 +152,6 @@ class VolumeToolTest : BaseTest() {
             volumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 5)
 
             volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 3) shouldBe false
-        }
-    }
-
-    @Nested
-    inner class StreamScopedAdjusting {
-        @Test
-        fun `wasUs returns false for unrelated stream after write completes`() = runTest {
-            volumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 10)
-
-            volumeTool.wasUs(AudioStream.Id.STREAM_RINGTONE, 5) shouldBe false
-            volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 10) shouldBe true
-        }
-
-        @Test
-        fun `wasUs returns true for written stream during active write`() = runTest {
-            // Mid-write fast-path: adjustingStream matches the queried stream
-            volumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 10)
-
-            volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 10) shouldBe true
-        }
-
-        @Test
-        fun `wasUs returns true for mirrored peer during active write`() = runTest {
-            volumeTool.changeVolume(AudioStream.Id.STREAM_VOICE_CALL, targetLevel = 8)
-
-            volumeTool.wasUs(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, 8) shouldBe true
-        }
-
-        @Test
-        fun `wasUs returns false for non-mirrored stream after write`() = runTest {
-            volumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 10)
-
-            volumeTool.wasUs(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, 10) shouldBe false
-            volumeTool.wasUs(AudioStream.Id.STREAM_ALARM, 10) shouldBe false
-        }
-
-        @Test
-        fun `adjustingStream is null after write completes`() = runTest {
-            volumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 10)
-
-            // After write, falls through to per-stream TTL check
-            // Unknown stream with no TTL entry returns false
-            volumeTool.wasUs(AudioStream.Id.STREAM_NOTIFICATION, 99) shouldBe false
         }
     }
 }
