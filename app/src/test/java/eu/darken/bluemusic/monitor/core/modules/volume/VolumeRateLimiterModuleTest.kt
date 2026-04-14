@@ -1,10 +1,11 @@
 package eu.darken.bluemusic.monitor.core.modules.volume
 
+import android.media.AudioManager
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
+import eu.darken.bluemusic.common.time.MonotonicClock
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
-import android.media.AudioManager
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
@@ -19,11 +20,13 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.time.FakeMonotonicClock
 
 class VolumeRateLimiterModuleTest : BaseTest() {
 
     private val address = "AA:BB:CC:DD:EE:FF"
 
+    private lateinit var clock: FakeMonotonicClock
     private lateinit var volumeTool: VolumeTool
     private lateinit var deviceRepo: DeviceRepo
     private lateinit var ownerRegistry: eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
@@ -32,6 +35,7 @@ class VolumeRateLimiterModuleTest : BaseTest() {
 
     @BeforeEach
     fun setup() {
+        clock = FakeMonotonicClock(now = 1000L)
         volumeTool = mockk(relaxed = true)
         deviceRepo = mockk(relaxed = true)
         ownerRegistry = eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry()
@@ -54,6 +58,7 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         volumeTool = volumeTool,
         deviceRepo = deviceRepo,
         ownerRegistry = ownerRegistry,
+        clock = clock,
     )
 
     private fun config(
@@ -100,6 +105,25 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 6, newVolume = 10, self = false))
 
         coVerify { volumeTool.changeVolume(streamId = AudioStream.Id.STREAM_MUSIC, targetLevel = 6) }
+    }
+
+    @Test
+    fun `rate limiting expires on monotonic clock boundary`() = runTest {
+        val module = createModule()
+        val cfg = config(musicVolume = 0.5f, volumeRateLimitIncreaseMs = 500L)
+        seedActive(managedDevice(cfg))
+
+        coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
+
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 6, self = false))
+
+        clock.now = 1499L
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 6, newVolume = 7, self = false))
+
+        clock.now = 1999L
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 6, newVolume = 7, self = false))
+
+        coVerify(exactly = 1) { volumeTool.changeVolume(streamId = AudioStream.Id.STREAM_MUSIC, targetLevel = 6) }
     }
 
     @Test
@@ -311,7 +335,14 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         val realVolumeTool = VolumeTool(audioManager).apply {
             clock = { fakeTime }
         }
-        val module = VolumeRateLimiterModule(realVolumeTool, deviceRepo, ownerRegistry)
+        val module = VolumeRateLimiterModule(
+            volumeTool = realVolumeTool,
+            deviceRepo = deviceRepo,
+            ownerRegistry = ownerRegistry,
+            clock = object : MonotonicClock {
+                override fun nowMs(): Long = fakeTime
+            },
+        )
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
