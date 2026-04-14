@@ -4,12 +4,14 @@ import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
+import android.media.AudioManager
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
+import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
@@ -24,7 +26,6 @@ class VolumeLockModuleTest : BaseTest() {
 
     private val address = "AA:BB:CC:DD:EE:FF"
 
-    private lateinit var volumeTool: VolumeTool
     private lateinit var volumeModeTool: VolumeModeTool
     private lateinit var deviceRepo: DeviceRepo
     private lateinit var ownerRegistry: AudioStreamOwnerRegistry
@@ -33,7 +34,6 @@ class VolumeLockModuleTest : BaseTest() {
 
     @BeforeEach
     fun setup() {
-        volumeTool = mockk(relaxed = true)
         volumeModeTool = mockk(relaxed = true)
         deviceRepo = mockk(relaxed = true)
         ownerRegistry = AudioStreamOwnerRegistry()
@@ -53,7 +53,6 @@ class VolumeLockModuleTest : BaseTest() {
     }
 
     private fun createModule() = VolumeLockModule(
-        volumeTool = volumeTool,
         volumeModeTool = volumeModeTool,
         deviceRepo = deviceRepo,
         ownerRegistry = ownerRegistry,
@@ -105,7 +104,6 @@ class VolumeLockModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f, volumeLock = true)
         seedOwner(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeModeTool.apply(any(), any(), any(), any()) } returns true
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false))
@@ -126,7 +124,6 @@ class VolumeLockModuleTest : BaseTest() {
         val cfg = config(ringVolume = VolumeMode.LEGACY_SILENT_VALUE, volumeLock = true)
         seedOwner(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeModeTool.apply(any(), any(), any(), any()) } returns true
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_RINGTONE, oldVolume = 5, newVolume = 3, self = false))
@@ -147,7 +144,6 @@ class VolumeLockModuleTest : BaseTest() {
         val cfg = config(ringVolume = VolumeMode.LEGACY_VIBRATE_VALUE, volumeLock = true)
         seedOwner(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeModeTool.apply(any(), any(), any(), any()) } returns true
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_RINGTONE, oldVolume = 5, newVolume = 3, self = false))
@@ -168,8 +164,6 @@ class VolumeLockModuleTest : BaseTest() {
         val cfg = config(musicVolume = null, volumeLock = true)
         seedOwner(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
-
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false))
 
         coVerify(exactly = 0) { volumeModeTool.apply(any(), any(), any(), any()) }
@@ -185,7 +179,6 @@ class VolumeLockModuleTest : BaseTest() {
         devicesFlow.value = listOf(dev1, dev2)
         ownerRegistry.onDeviceConnected(address, "Test Device", SourceDevice.Type.HEADPHONES, 1000L, 0L)
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeModeTool.apply(any(), any(), any(), any()) } returns true
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false))
@@ -199,9 +192,7 @@ class VolumeLockModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f, volumeLock = true)
         seedOwner(managedDevice(cfg))
 
-        every { volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 11) } returns true
-
-        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false))
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = true))
 
         coVerify(exactly = 0) { volumeModeTool.apply(any(), any(), any(), any()) }
     }
@@ -230,7 +221,6 @@ class VolumeLockModuleTest : BaseTest() {
         ownerRegistry.onDeviceConnected(address, "Test Device", SourceDevice.Type.HEADPHONES, 1000L, 0L)
         ownerRegistry.onDeviceConnected(address2, "Other Device", SourceDevice.Type.HEADPHONES, 500L, 1L)
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeModeTool.apply(any(), any(), any(), any()) } returns true
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false))
@@ -243,5 +233,31 @@ class VolumeLockModuleTest : BaseTest() {
                 visible = false,
             )
         }
+    }
+
+    @Test
+    fun `late observer event for self write does not re-engage lock`() = runTest {
+        // Synthesis: real VolumeTool + fake clock. A slider drag writes level 11,
+        // the observer fires 600ms later, and wasUs() must classify it as self
+        // so the lock doesn't snap back to the stored target (0.5 → level 7).
+        val audioManager = mockk<AudioManager>(relaxed = true)
+        every { audioManager.getStreamMaxVolume(any()) } returns 15
+        every { audioManager.getStreamVolume(any()) } returns 5
+        var fakeTime = 1000L
+        val realVolumeTool = VolumeTool(audioManager).apply {
+            clock = { fakeTime }
+        }
+        val module = VolumeLockModule(volumeModeTool, deviceRepo, ownerRegistry)
+        val cfg = config(musicVolume = 0.5f, volumeLock = true)
+        seedOwner(managedDevice(cfg))
+
+        realVolumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 11)
+        fakeTime += 600
+
+        val isSelf = realVolumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 11)
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = isSelf))
+
+        isSelf shouldBe true
+        coVerify(exactly = 0) { volumeModeTool.apply(any(), any(), any(), any()) }
     }
 }

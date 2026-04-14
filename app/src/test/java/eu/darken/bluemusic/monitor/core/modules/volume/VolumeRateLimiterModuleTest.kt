@@ -4,13 +4,16 @@ import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
+import android.media.AudioManager
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
+import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
@@ -91,7 +94,6 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 6, self = false))
@@ -106,7 +108,6 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 8, self = false))
@@ -120,7 +121,6 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 7, self = false))
@@ -134,7 +134,6 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 10, newVolume = 8, self = false))
@@ -148,9 +147,7 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 8) } returns true
-
-        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 8, self = false))
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 8, self = true))
 
         coVerify(exactly = 0) { volumeTool.changeVolume(streamId = any(), targetLevel = any()) }
     }
@@ -161,7 +158,6 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 8, self = false))
@@ -190,7 +186,6 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         devicesFlow.value = devicesFlow.value + ManagedDevice(isConnected = true, device = secondSource, config = secondCfg)
         // Don't register secondAddr in registry — it's not an owner
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 8, self = false))
@@ -205,7 +200,6 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
 
         // First event sets up state
@@ -237,7 +231,6 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
 
         // Establish reference at volume 10
@@ -271,7 +264,6 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
 
         // First owner: establish reference
@@ -302,10 +294,37 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         val cfg = config(volumeRateLimiter = false)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
-
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 10, self = false))
 
         coVerify(exactly = 0) { volumeTool.changeVolume(streamId = any(), targetLevel = any()) }
+    }
+
+    @Test
+    fun `late observer event for self write is not reverted`() = runTest {
+        // Synthesis: real VolumeTool with a fake clock, simulating a ~600ms
+        // ContentObserver delay after setStreamVolume. Proves the TTL is wide
+        // enough and the observer-time wasUs classification flows into the module.
+        val audioManager = mockk<AudioManager>(relaxed = true)
+        every { audioManager.getStreamMaxVolume(any()) } returns 15
+        every { audioManager.getStreamVolume(any()) } returns 2
+        var fakeTime = 1000L
+        val realVolumeTool = VolumeTool(audioManager).apply {
+            clock = { fakeTime }
+        }
+        val module = VolumeRateLimiterModule(realVolumeTool, deviceRepo, ownerRegistry)
+        val cfg = config(musicVolume = 0.5f)
+        seedActive(managedDevice(cfg))
+
+        realVolumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 11)
+        fakeTime += 600 // observer fires 600ms after the app write
+
+        val isSelf = realVolumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 11)
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 2, newVolume = 11, self = isSelf))
+
+        // TTL=2000ms; wasUs at t0+600ms still true → event.self=true → early return, no revert.
+        // Only the test's own setVolume(11) reached the AudioManager.
+        isSelf shouldBe true
+        verify(exactly = 1) { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, 11, 0) }
+        verify(exactly = 0) { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, match { it != 11 }, any()) }
     }
 }

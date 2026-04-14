@@ -50,18 +50,19 @@ class VolumeObserver @Inject constructor(
             override fun deliverSelfNotifications(): Boolean = true
 
             override fun onChange(selfChange: Boolean) {
-                log(TAG, VERBOSE) { "Change detected (self=$selfChange)" }
+                log(TAG, VERBOSE) { "Change detected (selfChange=$selfChange)" }
                 AudioStream.Id.entries.forEach { id ->
                     val newVolume = volumeTool.getCurrentVolume(id)
                     val oldVolume = volumesCache[id] ?: -1
                     if (newVolume != oldVolume) {
-                        log(TAG) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume)" }
+                        val isSelf = volumeTool.wasUs(id, newVolume)
+                        log(TAG) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume, self=$isSelf)" }
                         volumesCache[id] = newVolume
                         val change = VolumeEvent(
                             streamId = id,
                             oldVolume = oldVolume,
                             newVolume = newVolume,
-                            self = selfChange
+                            self = isSelf
                         )
                         trySendBlocking(change)
                     }

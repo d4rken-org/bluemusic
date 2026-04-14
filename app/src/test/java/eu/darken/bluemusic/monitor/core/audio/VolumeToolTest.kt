@@ -63,7 +63,7 @@ class VolumeToolTest : BaseTest() {
         fun `wasUs returns true within TTL`() = runTest {
             volumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 5)
 
-            fakeTime += 400 // 400ms < 500ms TTL
+            fakeTime += 1500 // 1500ms < 2000ms TTL
             volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 5) shouldBe true
         }
 
@@ -71,7 +71,7 @@ class VolumeToolTest : BaseTest() {
         fun `wasUs returns false after TTL expires`() = runTest {
             volumeTool.changeVolume(AudioStream.Id.STREAM_MUSIC, targetLevel = 5)
 
-            fakeTime += 600 // 600ms > 500ms TTL
+            fakeTime += 2500 // 2500ms > 2000ms TTL
             volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 5) shouldBe false
         }
 
@@ -79,7 +79,7 @@ class VolumeToolTest : BaseTest() {
         fun `mirrored entry also expires`() = runTest {
             volumeTool.changeVolume(AudioStream.Id.STREAM_VOICE_CALL, targetLevel = 8)
 
-            fakeTime += 600
+            fakeTime += 2500
             volumeTool.wasUs(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, 8) shouldBe false
         }
     }

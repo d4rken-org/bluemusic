@@ -49,7 +49,7 @@ internal class VolumeRateLimiterModule @Inject constructor(
         val oldVolume = event.oldVolume
 
         // Ignore changes triggered by us, but update our reference
-        if (volumeTool.wasUs(id, newVolume)) {
+        if (event.self) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             mutex.withLock {
                 volumeStates[id] = VolumeState(newVolume, System.currentTimeMillis())
