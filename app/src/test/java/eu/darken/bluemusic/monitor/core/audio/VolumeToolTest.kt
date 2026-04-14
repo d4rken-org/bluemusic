@@ -9,19 +9,27 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import java.time.Duration
 
 class VolumeToolTest : BaseTest() {
 
     private lateinit var audioManager: AudioManager
     private lateinit var volumeTool: VolumeTool
+    private lateinit var audioLevels: MutableMap<AudioStream.Id, Int>
     private var fakeTime = 0L
 
     @BeforeEach
     fun setup() {
         fakeTime = 1000L
         audioManager = mockk(relaxed = true)
+        audioLevels = AudioStream.Id.entries.associateWith { 0 }.toMutableMap()
         every { audioManager.getStreamMaxVolume(any()) } returns 15
-        every { audioManager.getStreamVolume(any()) } returns 0
+        every { audioManager.getStreamVolume(any()) } answers {
+            audioLevels[toStreamId(firstArg())] ?: 0
+        }
+        every { audioManager.setStreamVolume(any(), any(), any()) } answers {
+            audioLevels[toStreamId(firstArg())] = secondArg()
+        }
 
         volumeTool = VolumeTool(audioManager).apply {
             clock = { fakeTime }
@@ -50,7 +58,7 @@ class VolumeToolTest : BaseTest() {
 
     @Test
     fun `already at target remembers recent target without pending observer write`() = runTest {
-        every { audioManager.getStreamVolume(AudioStream.Id.STREAM_VOICE_CALL.id) } returns 10
+        audioLevels[AudioStream.Id.STREAM_VOICE_CALL] = 10
 
         volumeTool.changeVolume(AudioStream.Id.STREAM_VOICE_CALL, targetLevel = 10)
 
@@ -60,5 +68,33 @@ class VolumeToolTest : BaseTest() {
         verify(exactly = 0) {
             audioManager.setStreamVolume(AudioStream.Id.STREAM_VOICE_CALL.id, 10, any())
         }
+    }
+
+    @Test
+    fun `delayed stepped writes classify intermediate levels as self and retain final recent target`() = runTest {
+        audioLevels[AudioStream.Id.STREAM_MUSIC] = 2
+        val selfClassifications = mutableListOf<Pair<Int, Boolean>>()
+        every { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, any(), any()) } answers {
+            val level = secondArg<Int>()
+            audioLevels[AudioStream.Id.STREAM_MUSIC] = level
+            selfClassifications += level to volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, level)
+        }
+
+        volumeTool.changeVolume(
+            streamId = AudioStream.Id.STREAM_MUSIC,
+            targetLevel = 4,
+            delay = Duration.ofMillis(1),
+        )
+
+        selfClassifications shouldBe listOf(
+            2 to true,
+            3 to true,
+            4 to true,
+        )
+        volumeTool.hasRecentTarget(AudioStream.Id.STREAM_MUSIC, 4) shouldBe true
+    }
+
+    private fun toStreamId(id: Int): AudioStream.Id {
+        return AudioStream.Id.entries.first { it.id == id }
     }
 }
