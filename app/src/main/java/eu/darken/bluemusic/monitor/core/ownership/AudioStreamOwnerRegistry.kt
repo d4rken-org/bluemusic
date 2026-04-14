@@ -8,6 +8,7 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import javax.inject.Inject
@@ -100,7 +101,6 @@ class AudioStreamOwnerRegistry @Inject constructor() {
     }
 
     suspend fun ownerAddressesFor(streamId: AudioStream.Id): List<DeviceAddr> = mutex.withLock {
-        normalizeStream(streamId)
         val ownerGroup = resolveOwnerGroupLocked() ?: return@withLock emptyList()
         // Purely topological: return all addresses in the owner group.
         // Modules check device config (volumeObserving, volumeLock, etc.) themselves.
@@ -131,11 +131,11 @@ class AudioStreamOwnerRegistry @Inject constructor() {
 
     /**
      * Non-suspending reset for use in [android.app.Service.onDestroy] where no coroutine
-     * context is available.  Safe because the mutex is uncontested at service teardown —
-     * the service scope is cancelled immediately after this call.
+     * context is available.  Uses [runBlocking] to acquire the mutex, ensuring no
+     * concurrent readers (e.g. in-flight appScope jobs) observe a partially-cleared state.
      */
     fun resetBlocking() {
-        resetInternal()
+        runBlocking { mutex.withLock { resetInternal() } }
     }
 
     private fun resetInternal() {
@@ -197,11 +197,6 @@ class AudioStreamOwnerRegistry @Inject constructor() {
         if (a.approximate && b.approximate) return true
         // Fresh entries group within the 10s window.
         return kotlin.math.abs(a.connectedAt - b.connectedAt) <= GROUPING_WINDOW_MS
-    }
-
-    private fun normalizeStream(streamId: AudioStream.Id): AudioStream.Id = when (streamId) {
-        AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE -> AudioStream.Id.STREAM_VOICE_CALL
-        else -> streamId
     }
 
     companion object {

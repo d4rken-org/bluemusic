@@ -404,6 +404,17 @@ class AudioStreamOwnerRegistryTest : BaseTest() {
         }
 
         @Test
+        fun `resetBlocking clears all entries and generation`() = runTest {
+            registry.onDeviceConnected("AA:BB:CC:DD:EE:01", "DeviceA", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+            registry.onDeviceConnected("AA:BB:CC:DD:EE:02", "DeviceB", SourceDevice.Type.HEADPHONES, 5000L, 1L)
+
+            registry.resetBlocking()
+
+            registry.ownerAddressesFor(AudioStream.Id.STREAM_MUSIC).shouldBeEmpty()
+            registry.ownershipGeneration() shouldBe 0L
+        }
+
+        @Test
         fun `sequence breaks ties for same timestamp`() = runTest {
             registry.onDeviceConnected("AA:BB:CC:DD:EE:01", "DeviceA", SourceDevice.Type.HEADPHONES, 1000L, 0L)
             registry.onDeviceConnected("AA:BB:CC:DD:EE:02", "DeviceB", SourceDevice.Type.HEADPHONES, 1000L, 1L)

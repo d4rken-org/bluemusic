@@ -17,6 +17,7 @@ import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -26,7 +27,7 @@ class ConnectionAlertModule @Inject constructor(
     private val upgradeRepo: UpgradeRepo,
 ) : ConnectionModule {
 
-    private val activeAlertJobs = mutableMapOf<String, Job>()
+    private val activeAlertJobs = ConcurrentHashMap<String, Job>()
 
     override val tag: String
         get() = TAG

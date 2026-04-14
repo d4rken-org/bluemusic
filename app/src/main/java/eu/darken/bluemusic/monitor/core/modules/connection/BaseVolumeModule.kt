@@ -27,7 +27,7 @@ abstract class BaseVolumeModule(
     private val volumeTool: VolumeTool,
     private val volumeObserver: VolumeObserver,
     private val observationGate: VolumeObservationGate,
-    private val ownerRegistry: AudioStreamOwnerRegistry,
+    protected val ownerRegistry: AudioStreamOwnerRegistry,
     private val deviceRepo: DeviceRepo,
 ) : ConnectionModule {
 

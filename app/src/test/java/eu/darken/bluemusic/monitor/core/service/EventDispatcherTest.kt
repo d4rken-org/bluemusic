@@ -15,11 +15,13 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
@@ -29,6 +31,8 @@ import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 import testhelpers.coroutine.asDispatcherProvider
 import testhelpers.time.FakeMonotonicClock
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 
 class EventDispatcherTest : BaseTest() {
 
@@ -428,6 +432,74 @@ class EventDispatcherTest : BaseTest() {
     }
 
     @Test
+    fun `dispatch drops events after cancelAllJobs`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+        val dispatcher = createDispatcher()
+
+        dispatcher.cancelAllJobs()
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { module1.handle(any()) }
+    }
+
+    @Test
+    fun `cancelAllJobs waits for in-flight dispatch and cancels what it launches`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        val dispatchEntered = CompletableDeferred<Unit>()
+        val releaseDispatch = CompletableDeferred<Unit>()
+        coEvery { devicesSettings.currentEnabledState() } coAnswers {
+            dispatchEntered.complete(Unit)
+            releaseDispatch.await()
+            currentEnabledState
+        }
+
+        val dispatcher = createDispatcher()
+        val dispatchJob = launch { dispatcher.dispatch(event(budsAddress, CONNECTED)) }
+
+        dispatchEntered.await()
+
+        val cancelFinished = CountDownLatch(1)
+        val cancelThread = Thread {
+            dispatcher.cancelAllJobs()
+            cancelFinished.countDown()
+        }
+        cancelThread.start()
+
+        cancelFinished.await(100, TimeUnit.MILLISECONDS) shouldBe false
+
+        releaseDispatch.complete(Unit)
+        dispatchJob.join()
+
+        cancelFinished.await(1, TimeUnit.SECONDS) shouldBe true
+        cancelThread.join()
+
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { module1.handle(any()) }
+        coVerify(exactly = 0) { module2.handle(any()) }
+    }
+
+    @Test
+    fun `resetForNewSession re-enables dispatch after shutdown`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+        val dispatcher = createDispatcher()
+
+        dispatcher.cancelAllJobs()
+        dispatcher.resetForNewSession()
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        coVerify(exactly = 1) { module1.handle(any<DeviceEvent.Connected>()) }
+    }
+
+    @Test
     fun `two events for different addresses dispatch independently`() = runTest {
         val buds = managedDevice(budsAddress, connected = true)
         val watch = managedDevice(watchAddress, connected = true)
@@ -574,6 +646,80 @@ class EventDispatcherTest : BaseTest() {
 
         // Buds' slow ramp should NOT have completed — it was cancelled by ownership transfer
         budsRampCompleted shouldBe false
+    }
+
+    @Test
+    fun `cancelAllJobs cancels non-cancellable jobs too`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        val nonCancellable = mockk<ConnectionModule>(relaxed = true) {
+            every { priority } returns 1
+            every { tag } returns "NonCancellable"
+            every { cancellable } returns false
+        }
+
+        var jobCompleted = false
+        coEvery { nonCancellable.handle(any<DeviceEvent.Disconnected>()) } coAnswers {
+            kotlinx.coroutines.delay(10_000)
+            jobCompleted = true
+        }
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(nonCancellable),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        dispatcher.dispatch(event(budsAddress, DISCONNECTED))
+        dispatcher.cancelAllJobs()
+        advanceUntilIdle()
+
+        jobCompleted shouldBe false
+    }
+
+    @Test
+    fun `multiple non-cancellable jobs from same device all tracked`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        val nonCancellable = mockk<ConnectionModule>(relaxed = true) {
+            every { priority } returns 1
+            every { tag } returns "NonCancellable"
+            every { cancellable } returns false
+        }
+
+        var completionCount = java.util.concurrent.atomic.AtomicInteger(0)
+        coEvery { nonCancellable.handle(any<DeviceEvent.Disconnected>()) } coAnswers {
+            kotlinx.coroutines.delay(5000)
+            completionCount.incrementAndGet()
+        }
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(nonCancellable),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        // D1, C1 (clears dedup), D2 — two disconnect events for the same device
+        dispatcher.dispatch(event(budsAddress, DISCONNECTED))
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        dispatcher.dispatch(event(budsAddress, DISCONNECTED))
+
+        // Cancel all before they finish
+        dispatcher.cancelAllJobs()
+        advanceUntilIdle()
+
+        // Both non-cancellable disconnect jobs should have been cancelled
+        completionCount.get() shouldBe 0
     }
 
     @Test
