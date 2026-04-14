@@ -167,6 +167,7 @@ class MonitorService : Service2() {
         }
         if (injectionComplete) {
             eventDispatcher.cancelAllJobs()
+            ownerRegistry.resetBlocking()
             serviceScope.cancel("Service destroyed")
         } else {
             log(TAG, WARN) { "onDestroy: Skipping scope cancel, injection was incomplete." }
