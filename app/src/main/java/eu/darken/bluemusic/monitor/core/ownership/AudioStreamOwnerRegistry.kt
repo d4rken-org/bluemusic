@@ -119,6 +119,19 @@ class AudioStreamOwnerRegistry @Inject constructor() {
     }
 
     suspend fun reset() = mutex.withLock {
+        resetInternal()
+    }
+
+    /**
+     * Non-suspending reset for use in [android.app.Service.onDestroy] where no coroutine
+     * context is available.  Safe because the mutex is uncontested at service teardown —
+     * the service scope is cancelled immediately after this call.
+     */
+    fun resetBlocking() {
+        resetInternal()
+    }
+
+    private fun resetInternal() {
         log(TAG, INFO) { "reset: clearing ${entries.size} entries" }
         entries.clear()
         _generation = 0L
