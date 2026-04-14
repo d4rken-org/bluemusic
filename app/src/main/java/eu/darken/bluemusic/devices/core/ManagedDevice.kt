@@ -89,6 +89,9 @@ data class ManagedDevice(
     private val defaultMonitoringDuration: Duration = Duration.ofSeconds(4)
     private val defaultAdjustmentDelay: Duration = Duration.ofMillis(250)
 
+    fun toCompactString(): String =
+        "ManagedDevice($address/$label, active=$isActive, connected=$isConnected)"
+
     override fun toString(): String {
         return "ManagedDevice(isActive=$isActive, isConnected=$isConnected, isEnabled=$isEnabled, address=$address, last=$lastConnected, config=$config)"
     }

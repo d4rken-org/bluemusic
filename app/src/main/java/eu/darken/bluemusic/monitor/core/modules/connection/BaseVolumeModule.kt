@@ -81,7 +81,7 @@ abstract class BaseVolumeModule(
     }
 
     protected open suspend fun setInitial(device: ManagedDevice, volumeMode: VolumeMode) {
-        log(tag, INFO) { "Setting initial volume ($volumeMode) for $device" }
+        log(tag, INFO) { "Setting initial volume ($volumeMode) for ${device.address}/${device.label}" }
 
         // Default implementation only handles normal volumes
         if (volumeMode !is VolumeMode.Normal) {
@@ -146,7 +146,7 @@ abstract class BaseVolumeModule(
         val targetPercentage = volumeMode.percentage
         val targetLevel = percentageToLevel(targetPercentage, volumeTool.getMinVolume(streamId), volumeTool.getMaxVolume(streamId))
 
-        log(tag, INFO) { "Monitoring volume (target=$volumeMode, level=$targetLevel) for $device" }
+        log(tag, INFO) { "Monitoring volume (target=$volumeMode, level=$targetLevel) for ${device.address}/${device.label}" }
 
         var yielded = false
         withTimeoutOrNull(device.monitoringDuration.toMillis()) {

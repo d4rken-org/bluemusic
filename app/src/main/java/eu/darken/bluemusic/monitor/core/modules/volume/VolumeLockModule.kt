@@ -55,7 +55,7 @@ internal class VolumeLockModule @Inject constructor(
                 val mode = VolumeMode.fromFloat(rawFloat)
 
                 if (mode == null) {
-                    log(TAG) { "Device $device has corrupt volume $rawFloat for $type, skipping." }
+                    log(TAG) { "Device ${device.address}/${device.label} has corrupt volume $rawFloat for $type, skipping." }
                     return@forEach
                 }
 
@@ -66,7 +66,7 @@ internal class VolumeLockModule @Inject constructor(
                         visible = false,
                     )
                 ) {
-                    log(TAG) { "Engaged volume lock for $type ($mode) due to $device" }
+                    log(TAG) { "Engaged volume lock for $type ($mode) due to ${device.address}/${device.label}" }
                 }
             }
 

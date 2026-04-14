@@ -93,4 +93,29 @@ data class DeviceConfigEntity(
 
     @ColumnInfo(name = "connection_alert_sound_uri")
     val connectionAlertSoundUri: String? = null,
-)
+) {
+
+    fun toCompactString(): String = buildString {
+        append("Config($address")
+        if (customName != null) append(", name=$customName")
+        if (musicVolume != null) append(", music=$musicVolume")
+        if (callVolume != null) append(", call=$callVolume")
+        if (ringVolume != null) append(", ring=$ringVolume")
+        if (notificationVolume != null) append(", notif=$notificationVolume")
+        if (alarmVolume != null) append(", alarm=$alarmVolume")
+        if (volumeLock) append(", lock")
+        if (volumeObserving) append(", observing")
+        if (volumeRateLimiter) append(", rateLimiter")
+        if (volumeSaveOnDisconnect) append(", saveOnDisconnect")
+        if (keepAwake) append(", keepAwake")
+        if (nudgeVolume) append(", nudge")
+        if (autoplay) append(", autoplay")
+        if (launchPkgs.isNotEmpty()) append(", launch=$launchPkgs")
+        if (showHomeScreen) append(", showHome")
+        if (!isEnabled) append(", DISABLED")
+        if (dndMode != null) append(", dnd=$dndMode")
+        if (connectionAlertType != AlertType.NONE) append(", alert=$connectionAlertType")
+        append(")")
+    }
+
+}

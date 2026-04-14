@@ -14,11 +14,15 @@ interface DeviceEvent {
 
     data class Connected(
         override val device: ManagedDevice,
-    ) : DeviceEvent
+    ) : DeviceEvent {
+        override fun toString(): String = "Connected(${device.toCompactString()})"
+    }
 
     data class Disconnected(
         override val device: ManagedDevice,
         val volumeSnapshot: VolumeSnapshot? = null,
         val disconnectResult: DisconnectResult? = null,
-    ) : DeviceEvent
+    ) : DeviceEvent {
+        override fun toString(): String = "Disconnected(${device.toCompactString()}, disconnectResult=$disconnectResult)"
+    }
 }

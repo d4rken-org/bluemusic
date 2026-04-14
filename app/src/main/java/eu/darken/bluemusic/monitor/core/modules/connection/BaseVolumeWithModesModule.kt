@@ -29,11 +29,11 @@ abstract class BaseVolumeWithModesModule(
 ) : BaseVolumeModule(volumeTool, volumeObserver, observationGate, ownerRegistry, deviceRepo) {
 
     override suspend fun setInitial(device: ManagedDevice, volumeMode: VolumeMode) {
-        log(tag, INFO) { "Setting initial volume/mode ($volumeMode) for $device" }
+        log(tag, INFO) { "Setting initial volume/mode ($volumeMode) for ${device.address}/${device.label}" }
 
         when (volumeMode) {
             is VolumeMode.Silent -> {
-                log(tag, INFO) { "Applying Silent mode for $device" }
+                log(tag, INFO) { "Applying Silent mode for ${device.address}/${device.label}" }
                 if (volumeModeTool.alignSystemState(type, volumeMode)) {
                     log(tag) { "Successfully applied Silent mode" }
                 }
@@ -41,7 +41,7 @@ abstract class BaseVolumeWithModesModule(
             }
 
             is VolumeMode.Vibrate -> {
-                log(tag, INFO) { "Applying Vibrate mode for $device" }
+                log(tag, INFO) { "Applying Vibrate mode for ${device.address}/${device.label}" }
                 if (volumeModeTool.alignSystemState(type, volumeMode)) {
                     log(tag) { "Successfully applied Vibrate mode" }
                 }
@@ -64,7 +64,7 @@ abstract class BaseVolumeWithModesModule(
     }
 
     private suspend fun monitorRingerMode(device: ManagedDevice, targetMode: RingerMode) {
-        log(tag, INFO) { "Monitoring ringer mode (target=$targetMode) for $device" }
+        log(tag, INFO) { "Monitoring ringer mode (target=$targetMode) for ${device.address}/${device.label}" }
 
         // Set to true inside collect to exit cleanly via takeWhile on the next element.
         var yielded = false

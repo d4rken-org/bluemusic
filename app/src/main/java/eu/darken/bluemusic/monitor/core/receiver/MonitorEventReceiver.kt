@@ -130,14 +130,14 @@ class MonitorEventReceiver : BroadcastReceiver() {
         }
 
         val devices = deviceRepo.currentDevices()
-        log(TAG, DEBUG) { "Current devices: $devices" }
+        log(TAG, DEBUG) { "Current devices: ${devices.map { "${it.address}/${it.label}(active=${it.isActive})" }}" }
 
         val managedDevice = devices.singleOrNull { device -> device.address == bluetoothDevice.address }
         if (managedDevice == null) {
             log(TAG, DEBUG) { "Event belongs to an un-managed device" }
             return
         }
-        log(TAG, DEBUG) { "Event concerns device $managedDevice" }
+        log(TAG, DEBUG) { "Event concerns device ${managedDevice.toCompactString()}" }
 
         // Read-only pre-filter against duplicate ACL broadcasts (e.g. Samsung Galaxy Buds 3 Pro
         // emits a follow-up ACL_DISCONNECTED ~10s after the first one). Skipping the broadcast
