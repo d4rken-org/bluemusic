@@ -121,7 +121,7 @@ class VolumeUpdateModuleTest : BaseTest() {
     }
 
     // ------------------------------------------------------------------------
-    // wasUs guard — self-triggered events are ignored
+    // self-classified events are ignored
     // ------------------------------------------------------------------------
     @Test
     fun `self-triggered events are ignored`() = runTest {
@@ -129,10 +129,8 @@ class VolumeUpdateModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, 11) } returns true
-
         module.handle(
-            VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false)
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = true)
         )
 
         coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
@@ -147,7 +145,6 @@ class VolumeUpdateModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         observationGate.suppress(AudioStream.Id.STREAM_MUSIC)
 
         module.handle(
@@ -165,7 +162,6 @@ class VolumeUpdateModuleTest : BaseTest() {
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         val token = observationGate.suppress(AudioStream.Id.STREAM_MUSIC)
         observationGate.unsuppress(token)
@@ -183,7 +179,6 @@ class VolumeUpdateModuleTest : BaseTest() {
         val cfg = config(callVolume = 1.0f)
         seedActive(managedDevice(cfg))
 
-        every { volumeTool.wasUs(any(), any()) } returns false
         observationGate.suppress(AudioStream.Id.STREAM_VOICE_CALL)
 
         module.handle(
@@ -204,7 +199,6 @@ class VolumeUpdateModuleTest : BaseTest() {
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         val result = runTransform(
             module,
@@ -230,7 +224,6 @@ class VolumeUpdateModuleTest : BaseTest() {
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.VIBRATE
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         val result = runTransform(
             module,
@@ -251,7 +244,6 @@ class VolumeUpdateModuleTest : BaseTest() {
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.SILENT
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         val result = runTransform(
             module,
@@ -275,7 +267,6 @@ class VolumeUpdateModuleTest : BaseTest() {
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.VIBRATE
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(
             VolumeEvent(AudioStream.Id.STREAM_NOTIFICATION, 1, 0, self = false)
@@ -295,7 +286,6 @@ class VolumeUpdateModuleTest : BaseTest() {
         seedActive(managedDevice(cfg))
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.VIBRATE
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         val result = runTransform(
             module,
@@ -318,7 +308,6 @@ class VolumeUpdateModuleTest : BaseTest() {
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(
             VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 17, self = false)
@@ -338,7 +327,6 @@ class VolumeUpdateModuleTest : BaseTest() {
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(
             VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 17, self = false)
@@ -359,7 +347,6 @@ class VolumeUpdateModuleTest : BaseTest() {
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(
             VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 17, self = false)
@@ -390,7 +377,6 @@ class VolumeUpdateModuleTest : BaseTest() {
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
 
@@ -420,7 +406,6 @@ class VolumeUpdateModuleTest : BaseTest() {
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
 
@@ -463,7 +448,6 @@ class VolumeUpdateModuleTest : BaseTest() {
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
 
@@ -491,7 +475,6 @@ class VolumeUpdateModuleTest : BaseTest() {
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
 
@@ -516,7 +499,6 @@ class VolumeUpdateModuleTest : BaseTest() {
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
-        every { volumeTool.wasUs(any(), any()) } returns false
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
 
@@ -536,8 +518,7 @@ class VolumeUpdateModuleTest : BaseTest() {
             seedActive(managedDevice(cfg))
 
             every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-            every { volumeTool.wasUs(any(), any()) } returns false
-
+    
             module.handle(
                 VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 6, self = false)
             )
@@ -553,8 +534,7 @@ class VolumeUpdateModuleTest : BaseTest() {
             seedActive(managedDevice(cfg))
 
             every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-            every { volumeTool.wasUs(any(), any()) } returns false
-
+    
             val result = runTransform(
                 module,
                 VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 10, self = false),
@@ -572,8 +552,7 @@ class VolumeUpdateModuleTest : BaseTest() {
             seedActive(managedDevice(cfg))
 
             every { ringerTool.getCurrentRingerMode() } returns RingerMode.SILENT
-            every { volumeTool.wasUs(any(), any()) } returns false
-
+    
             val result = runTransform(
                 module,
                 VolumeEvent(AudioStream.Id.STREAM_RINGTONE, oldVolume = 6, newVolume = 0, self = false),
@@ -603,8 +582,7 @@ class VolumeUpdateModuleTest : BaseTest() {
             ownerRegistry.onDeviceConnected("AA:BB:CC:DD:EE:02", "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1002L, 1L)
 
             every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-            every { volumeTool.wasUs(any(), any()) } returns false
-
+    
             module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 6, self = false))
 
             // dev1 skipped (equivalent), dev2 written (different level)
@@ -624,8 +602,7 @@ class VolumeUpdateModuleTest : BaseTest() {
             seedActive(managedDevice(cfg))
 
             every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
-            every { volumeTool.wasUs(any(), any()) } returns false
-
+    
             // event newVolume=4 → same as stored level → skip
             module.handle(
                 VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 3, newVolume = 4, self = false)

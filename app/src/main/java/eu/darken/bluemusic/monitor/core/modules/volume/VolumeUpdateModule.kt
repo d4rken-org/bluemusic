@@ -42,9 +42,8 @@ class VolumeUpdateModule @Inject constructor(
 
     override suspend fun handle(event: VolumeEvent) {
         val id = event.streamId
-        val volume = event.newVolume
 
-        if (volumeTool.wasUs(id, volume)) {
+        if (event.self) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             return
         }

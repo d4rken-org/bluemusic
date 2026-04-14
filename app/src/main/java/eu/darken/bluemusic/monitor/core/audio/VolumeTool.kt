@@ -2,6 +2,7 @@ package eu.darken.bluemusic.monitor.core.audio
 
 import android.media.AudioManager
 import android.os.Build
+import android.os.SystemClock
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
@@ -35,7 +36,7 @@ class VolumeTool @Inject constructor(
 
     private data class RecentWrite(val volume: Int, val timestamp: Long)
 
-    internal var clock: () -> Long = System::currentTimeMillis
+    internal var clock: () -> Long = SystemClock::elapsedRealtime
 
     @Volatile private var adjustingStream: AudioStream.Id? = null
     private val lock = Mutex()
@@ -198,6 +199,6 @@ class VolumeTool @Inject constructor(
 
     companion object {
         private val TAG = logTag("Audio", "StreamHelper")
-        private const val WRITE_TTL_MS = 500L
+        private const val WRITE_TTL_MS = 2000L
     }
 }
