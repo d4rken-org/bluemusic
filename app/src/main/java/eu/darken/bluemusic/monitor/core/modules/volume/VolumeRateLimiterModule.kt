@@ -8,6 +8,7 @@ import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.time.MonotonicClock
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
@@ -26,6 +27,7 @@ internal class VolumeRateLimiterModule @Inject constructor(
     private val volumeTool: VolumeTool,
     private val deviceRepo: DeviceRepo,
     private val ownerRegistry: AudioStreamOwnerRegistry,
+    private val clock: MonotonicClock,
 ) : VolumeModule {
 
     override val tag: String
@@ -52,7 +54,7 @@ internal class VolumeRateLimiterModule @Inject constructor(
         if (event.self) {
             log(TAG, VERBOSE) { "Volume change was triggered by us, ignoring it." }
             mutex.withLock {
-                volumeStates[id] = VolumeState(newVolume, System.currentTimeMillis())
+                volumeStates[id] = VolumeState(newVolume, clock.nowMs())
             }
             return
         }
@@ -60,7 +62,7 @@ internal class VolumeRateLimiterModule @Inject constructor(
         val ownerAddresses = ownerRegistry.ownerAddressesFor(id).toSet()
         if (ownerAddresses.isEmpty()) return
 
-        val currentTime = System.currentTimeMillis()
+        val currentTime = clock.nowMs()
         val eligibleDevices = deviceRepo.currentDevices()
             .filter { it.isActive && it.volumeRateLimiter && it.address in ownerAddresses && it.getStreamType(id) != null }
 
