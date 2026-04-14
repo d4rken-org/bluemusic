@@ -221,7 +221,7 @@ class MonitorService : Service2() {
             .flatMapLatest { devices ->
                 val activeDevices = devices.filter { it.isActive }
 
-                log(TAG) { "monitorJob: Currently active devices: $activeDevices" }
+                log(TAG) { "monitorJob: Currently active devices: ${activeDevices.map { "${it.address}/${it.label}" }}" }
                 notificationManager.notify(
                     MonitorNotifications.NOTIFICATION_ID,
                     notifications.getDevicesNotification(activeDevices),
@@ -283,7 +283,7 @@ class MonitorService : Service2() {
 
         for (i in 0 until priorityArray.size) {
             val currentPriorityModules = priorityArray.get(priorityArray.keyAt(i))
-            log(TAG) {
+            log(TAG, VERBOSE) {
                 "handleVolume: ${currentPriorityModules.size} modules at priority ${priorityArray.keyAt(i)}"
             }
 

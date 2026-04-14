@@ -5,6 +5,8 @@ import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.replayingShare
@@ -72,6 +74,7 @@ class DeviceRepo @Inject constructor(
     suspend fun updateDevice(address: DeviceAddr, update: (DeviceConfigEntity) -> DeviceConfigEntity) {
         withContext(dispatcherProvider.IO) {
             var before = deviceDatabase.devices.getDevice(address)
+            val isNew = before == null
 
             if (before == null) {
                 log(TAG) { "Device not found for update: $address. Creating new." }
@@ -81,7 +84,13 @@ class DeviceRepo @Inject constructor(
             val updated = update(before)
             deviceDatabase.devices.updateDevice(updated)
 
-            log(TAG) { "Updated device config: $address" }
+            if (isNew) {
+                log(TAG, INFO) { "New device config: $updated" }
+            } else if (before != updated) {
+                log(TAG) { "Updated device config $address, before: $before" }
+            } else {
+                log(TAG, VERBOSE) { "Device config unchanged: $address" }
+            }
         }
     }
 

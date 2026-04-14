@@ -148,13 +148,9 @@ class EventDispatcher @Inject constructor(
                 modules.map { module ->
                     async(dispatcherProvider.IO) {
                         try {
-                            log(TAG, VERBOSE) {
-                                "dispatch: ${module.tag} HANDLE-START for $deviceEvent"
-                            }
+                            log(TAG, VERBOSE) { "dispatch: ${module.tag} HANDLE-START" }
                             module.handle(deviceEvent)
-                            log(TAG, VERBOSE) {
-                                "dispatch: ${module.tag} HANDLE-STOP for $deviceEvent"
-                            }
+                            log(TAG, VERBOSE) { "dispatch: ${module.tag} HANDLE-STOP" }
                         } catch (e: CancellationException) {
                             throw e
                         } catch (e: Exception) {

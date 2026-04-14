@@ -39,12 +39,12 @@ class KeepAwakeModule @Inject internal constructor(
 
         when (event) {
             is DeviceEvent.Connected -> {
-                log(TAG) { "Device connected with keep awake: $device" }
+                log(TAG) { "Device connected with keep awake: ${device.address}/${device.label}" }
                 wakeLockManager.setWakeLock(true)
             }
 
             is DeviceEvent.Disconnected -> {
-                log(TAG) { "Device disconnected with keep awake: $device" }
+                log(TAG) { "Device disconnected with keep awake: ${device.address}/${device.label}" }
                 if (!hasAnyKeepAwakeDevice) {
                     log(TAG) { "No more devices need keep awake, releasing wakelock" }
                     wakeLockManager.setWakeLock(false)

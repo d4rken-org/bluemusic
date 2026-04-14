@@ -137,7 +137,7 @@ class VolumeUpdateModule @Inject constructor(
                 }
             }
 
-            log(TAG, INFO) { "Saving new volume ($mode@$id) for $dev" }
+            log(TAG, INFO) { "Saving new volume ($mode@$id) for ${dev.address}/${dev.label}" }
             deviceRepo.updateDevice(dev.address) { oldConfig ->
                 oldConfig.updateVolume(streamType, mode)
             }

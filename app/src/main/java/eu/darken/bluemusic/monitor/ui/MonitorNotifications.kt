@@ -12,6 +12,7 @@ import androidx.core.app.NotificationCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.PendingIntentCompat
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.hasApiLevel
@@ -49,7 +50,7 @@ class MonitorNotifications @Inject constructor(
     private fun getBuilder(
         devices: Collection<ManagedDevice>,
     ): NotificationCompat.Builder = builder.apply {
-        log(TAG) { "getBuilder($devices)" }
+        log(TAG, VERBOSE) { "getBuilder(${devices.map { "${it.address}/${it.label}" }})" }
 
         if (devices.isNotEmpty()) {
             val sb = StringBuilder()
@@ -75,17 +76,17 @@ class MonitorNotifications @Inject constructor(
                 }
                 if (!locking && dev.volumeLock) {
                     locking = true
-                    log(TAG) { "Keep running because the device wants volume lock: $dev" }
+                    log(TAG) { "Keep running because the device wants volume lock: ${dev.address}/${dev.label}" }
                     extraFlags.add(context.getString(R.string.devices_device_config_volume_lock_label))
                 }
                 if (!waking && dev.keepAwake) {
                     waking = true
-                    log(TAG) { "Keep running because the device wants keep awake: $dev" }
+                    log(TAG) { "Keep running because the device wants keep awake: ${dev.address}/${dev.label}" }
                     extraFlags.add(context.getString(R.string.devices_device_config_keep_awake_label))
                 }
                 if (!limiting && dev.volumeRateLimiter) {
                     limiting = true
-                    log(TAG) { "Keep running because the device to be rate limited: $dev" }
+                    log(TAG) { "Keep running because the device to be rate limited: ${dev.address}/${dev.label}" }
                     extraFlags.add(context.getString(R.string.devices_device_config_volume_rate_limiter_label))
                 }
             }
@@ -105,7 +106,7 @@ class MonitorNotifications @Inject constructor(
     }
 
     suspend fun getDevicesNotification(devices: Collection<ManagedDevice>): Notification = builderLock.withLock {
-        log(TAG) { "getDevicesNotification(devices=$devices)" }
+        log(TAG, VERBOSE) { "getDevicesNotification(${devices.map { "${it.address}/${it.label}" }})" }
         return@withLock getBuilder(devices).build()
     }
 
