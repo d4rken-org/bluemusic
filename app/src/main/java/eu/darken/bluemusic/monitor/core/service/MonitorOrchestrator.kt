@@ -65,6 +65,7 @@ class MonitorOrchestrator @Inject constructor(
         val initialDevices = deviceRepo.currentDevices()
         ownerRegistry.reset()
         ownerRegistry.bootstrap(initialDevices)
+        eventDispatcher.resetForNewSession()
 
         onActiveDevicesChanged(initialDevices.filter { it.isActive })
 

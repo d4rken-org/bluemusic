@@ -48,12 +48,10 @@ class VolumeObservationGate @Inject constructor() {
 
     fun unsuppress(token: SuppressionToken) {
         for (s in token.streamIds) {
-            val ref = refCounts[s]
-            if (ref != null) {
-                val newVal = ref.decrementAndGet()
-                if (newVal <= 0) {
-                    refCounts.remove(s)
-                }
+            refCounts.compute(s) { _, ref ->
+                if (ref == null) null
+                else if (ref.decrementAndGet() <= 0) null
+                else ref
             }
         }
         log(TAG, VERBOSE) { "unsuppress(token=${token.id}), refs=${refSnapshot()}" }

@@ -24,6 +24,11 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -49,116 +54,128 @@ class EventDispatcher @Inject constructor(
     private val ownerRegistry: AudioStreamOwnerRegistry,
 ) {
 
-    private val activeJobs = mutableMapOf<DeviceAddr, Job>()
+    private val activeJobs = ConcurrentHashMap<DeviceAddr, Job>()
+    private val nonCancellableJobs: MutableSet<Job> = ConcurrentHashMap.newKeySet()
+    private val shutdown = AtomicBoolean(false)
+    private val dispatchMutex = Mutex()
 
     suspend fun dispatch(bluetoothEvent: BluetoothEventQueue.Event) {
-        log(TAG) { "dispatch: Handling $bluetoothEvent" }
-        val managedDevice = deviceRepo.getDevice(bluetoothEvent.sourceDevice.address)
+        dispatchMutex.withLock {
+            if (shutdown.get()) {
+                log(TAG, WARN) { "dispatch: Dropping event after shutdown: $bluetoothEvent" }
+                return@withLock
+            }
 
-        if (managedDevice == null) {
-            log(TAG, WARN) { "dispatch: Can't find managed device for $bluetoothEvent" }
-            return
-        }
+            log(TAG) { "dispatch: Handling $bluetoothEvent" }
+            val managedDevice = deviceRepo.getDevice(bluetoothEvent.sourceDevice.address)
 
-        val isFakeSpeakerEvent = bluetoothEvent.sourceDevice.deviceType == SourceDevice.Type.PHONE_SPEAKER
-        if (isFakeSpeakerEvent
-            && bluetoothEvent.type == BluetoothEventQueue.Event.Type.CONNECTED
-            && !managedDevice.isConnected
-        ) {
-            log(TAG, INFO) { "Dropping stale fake speaker CONNECTED, speaker is not currently the active device" }
-            return
-        }
+            if (managedDevice == null) {
+                log(TAG, WARN) { "dispatch: Can't find managed device for $bluetoothEvent" }
+                return@withLock
+            }
 
-        eventTypeDedupTracker.observeEnabledState(devicesSettings.currentEnabledState())
+            val isFakeSpeakerEvent = bluetoothEvent.sourceDevice.deviceType == SourceDevice.Type.PHONE_SPEAKER
+            if (isFakeSpeakerEvent
+                && bluetoothEvent.type == BluetoothEventQueue.Event.Type.CONNECTED
+                && !managedDevice.isConnected
+            ) {
+                log(TAG, INFO) { "Dropping stale fake speaker CONNECTED, speaker is not currently the active device" }
+                return@withLock
+            }
 
-        if (!eventTypeDedupTracker.shouldProcess(bluetoothEvent.sourceDevice.address, bluetoothEvent.type)) {
-            return
-        }
+            eventTypeDedupTracker.observeEnabledState(devicesSettings.currentEnabledState())
 
-        // --- Fast acceptance lane: ownership + state updates (synchronous) ---
+            if (!eventTypeDedupTracker.shouldProcess(bluetoothEvent.sourceDevice.address, bluetoothEvent.type)) {
+                return@withLock
+            }
 
-        var displacedOwnerAddresses: List<String> = emptyList()
+            // --- Fast acceptance lane: ownership + state updates (synchronous) ---
 
-        val deviceEvent = when (bluetoothEvent.type) {
-            BluetoothEventQueue.Event.Type.CONNECTED -> {
-                val connectResult = ownerRegistry.onDeviceConnected(
-                    address = managedDevice.address,
-                    label = managedDevice.label,
-                    deviceType = managedDevice.type,
-                    receivedAtElapsedMs = bluetoothEvent.receivedAtElapsedMs,
-                    sequence = bluetoothEvent.sequence,
-                )
-                if (connectResult.ownershipChanged) {
-                    displacedOwnerAddresses = connectResult.previousOwnerAddresses
+            var displacedOwnerAddresses: List<String> = emptyList()
+
+            val deviceEvent = when (bluetoothEvent.type) {
+                BluetoothEventQueue.Event.Type.CONNECTED -> {
+                    val connectResult = ownerRegistry.onDeviceConnected(
+                        address = managedDevice.address,
+                        label = managedDevice.label,
+                        deviceType = managedDevice.type,
+                        receivedAtElapsedMs = bluetoothEvent.receivedAtElapsedMs,
+                        sequence = bluetoothEvent.sequence,
+                    )
+                    if (connectResult.ownershipChanged) {
+                        displacedOwnerAddresses = connectResult.previousOwnerAddresses
+                    }
+                    DeviceEvent.Connected(managedDevice)
                 }
-                DeviceEvent.Connected(managedDevice)
+
+                BluetoothEventQueue.Event.Type.DISCONNECTED -> {
+                    val disconnectResult = ownerRegistry.resolveDisconnect(
+                        address = managedDevice.address,
+                        receivedAtElapsedMs = bluetoothEvent.receivedAtElapsedMs,
+                    )
+                    DeviceEvent.Disconnected(
+                        device = managedDevice,
+                        volumeSnapshot = bluetoothEvent.volumeSnapshot,
+                        disconnectResult = disconnectResult,
+                    )
+                }
             }
 
-            BluetoothEventQueue.Event.Type.DISCONNECTED -> {
-                val disconnectResult = ownerRegistry.resolveDisconnect(
-                    address = managedDevice.address,
-                    receivedAtElapsedMs = bluetoothEvent.receivedAtElapsedMs,
-                )
-                DeviceEvent.Disconnected(
-                    device = managedDevice,
-                    volumeSnapshot = bluetoothEvent.volumeSnapshot,
-                    disconnectResult = disconnectResult,
-                )
+            if (bluetoothEvent.type == BluetoothEventQueue.Event.Type.CONNECTED) {
+                deviceRepo.updateDevice(managedDevice.address) {
+                    it.copy(lastConnected = System.currentTimeMillis())
+                }
             }
-        }
 
-        if (bluetoothEvent.type == BluetoothEventQueue.Event.Type.CONNECTED) {
-            deviceRepo.updateDevice(managedDevice.address) {
-                it.copy(lastConnected = System.currentTimeMillis())
+            // --- Async module execution (non-blocking) ---
+
+            val address = managedDevice.address
+
+            // Cancel displaced owner's in-flight cancellable jobs when ownership transfers.
+            // e.g., AirPods ramping to 100% should stop when speaker takes ownership.
+            //
+            // Known limitation: real BT devices always take ownership from PHONE_SPEAKER
+            // (see resolveOwnerGroupLocked), so a reconnecting device will cancel the
+            // speaker's ramp and apply its own volumes — even if the speaker was just
+            // set up.  In chaotic connect/disconnect cycles (e.g., AirPods firmware
+            // briefly reconnecting after case closure), this causes visible volume churn:
+            // the device ramps up, disconnects, then the speaker restarts its ramp down.
+            // We can't suppress the device's connect because we can't distinguish an
+            // intentional connect from a firmware ghost reconnect at the ACL level.
+            for (displacedAddr in displacedOwnerAddresses) {
+                if (displacedAddr == address) continue
+                val displacedJob = activeJobs[displacedAddr]
+                if (displacedJob != null && displacedJob.isActive) {
+                    log(TAG, INFO) { "dispatch: Cancelling displaced owner job for $displacedAddr" }
+                    displacedJob.cancel(CancellationException("Ownership transferred to $address"))
+                }
             }
-        }
 
-        // --- Async module execution (non-blocking) ---
-
-        val address = managedDevice.address
-
-        // Cancel displaced owner's in-flight cancellable jobs when ownership transfers.
-        // e.g., AirPods ramping to 100% should stop when speaker takes ownership.
-        //
-        // Known limitation: real BT devices always take ownership from PHONE_SPEAKER
-        // (see resolveOwnerGroupLocked), so a reconnecting device will cancel the
-        // speaker's ramp and apply its own volumes — even if the speaker was just
-        // set up.  In chaotic connect/disconnect cycles (e.g., AirPods firmware
-        // briefly reconnecting after case closure), this causes visible volume churn:
-        // the device ramps up, disconnects, then the speaker restarts its ramp down.
-        // We can't suppress the device's connect because we can't distinguish an
-        // intentional connect from a firmware ghost reconnect at the ACL level.
-        for (displacedAddr in displacedOwnerAddresses) {
-            if (displacedAddr == address) continue
-            val displacedJob = activeJobs[displacedAddr]
-            if (displacedJob != null && displacedJob.isActive) {
-                log(TAG, INFO) { "dispatch: Cancelling displaced owner job for $displacedAddr" }
-                displacedJob.cancel(CancellationException("Ownership transferred to $address"))
+            val existingJob = activeJobs[address]
+            if (existingJob != null && existingJob.isActive) {
+                log(TAG, INFO) { "dispatch: Cancelling superseded cancellable job for $address" }
+                existingJob.cancel(CancellationException("Superseded by new ${bluetoothEvent.type} event"))
             }
-        }
 
-        val existingJob = activeJobs[address]
-        if (existingJob != null && existingJob.isActive) {
-            log(TAG, INFO) { "dispatch: Cancelling superseded cancellable job for $address" }
-            existingJob.cancel(CancellationException("Superseded by new ${bluetoothEvent.type} event"))
-        }
+            val cancellableModules = connectionModuleMap.filter { it.cancellable }
+            val nonCancellableModules = connectionModuleMap.filter { !it.cancellable }
 
-        val cancellableModules = connectionModuleMap.filter { it.cancellable }
-        val nonCancellableModules = connectionModuleMap.filter { !it.cancellable }
+            log(TAG) { "dispatch: Launching module work for $deviceEvent (${cancellableModules.size} cancellable, ${nonCancellableModules.size} non-cancellable)" }
 
-        log(TAG) { "dispatch: Launching module work for $deviceEvent (${cancellableModules.size} cancellable, ${nonCancellableModules.size} non-cancellable)" }
-
-        // Non-cancellable modules survive supersession — not tracked per device.
-        // Still children of appScope, so service shutdown cancels them.
-        if (nonCancellableModules.isNotEmpty()) {
-            appScope.launch(dispatcherProvider.IO) {
-                executeModules(deviceEvent, nonCancellableModules)
+            // Non-cancellable modules survive supersession but are tracked for teardown cleanup.
+            if (nonCancellableModules.isNotEmpty()) {
+                appScope.launch(dispatcherProvider.IO) {
+                    executeModules(deviceEvent, nonCancellableModules)
+                }.also { job ->
+                    nonCancellableJobs.add(job)
+                    job.invokeOnCompletion { nonCancellableJobs.remove(job) }
+                }
             }
-        }
 
-        // Cancellable modules are tracked and cancelled when a superseding event arrives.
-        activeJobs[address] = appScope.launch(dispatcherProvider.IO) {
-            executeModules(deviceEvent, cancellableModules)
+            // Cancellable modules are tracked and cancelled when a superseding event arrives.
+            activeJobs[address] = appScope.launch(dispatcherProvider.IO) {
+                executeModules(deviceEvent, cancellableModules)
+            }.also { job -> job.invokeOnCompletion { activeJobs.remove(address, job) } }
         }
     }
 
@@ -190,10 +207,26 @@ class EventDispatcher @Inject constructor(
         }
     }
 
+    fun resetForNewSession() {
+        runBlocking {
+            dispatchMutex.withLock {
+                shutdown.set(false)
+                log(TAG, INFO) { "resetForNewSession: Dispatcher ready for new events" }
+            }
+        }
+    }
+
     fun cancelAllJobs() {
-        log(TAG, INFO) { "cancelAllJobs: Cancelling ${activeJobs.size} in-flight jobs" }
-        activeJobs.values.forEach { it.cancel() }
-        activeJobs.clear()
+        shutdown.set(true)
+        runBlocking {
+            dispatchMutex.withLock {
+                log(TAG, INFO) { "cancelAllJobs: Cancelling ${activeJobs.size} cancellable + ${nonCancellableJobs.size} non-cancellable jobs" }
+                activeJobs.values.forEach { it.cancel() }
+                activeJobs.clear()
+                nonCancellableJobs.forEach { it.cancel() }
+                nonCancellableJobs.clear()
+            }
+        }
     }
 
     companion object {

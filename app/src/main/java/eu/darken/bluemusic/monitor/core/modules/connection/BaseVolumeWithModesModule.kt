@@ -57,25 +57,30 @@ abstract class BaseVolumeWithModesModule(
 
     override suspend fun monitor(device: ManagedDevice, volumeMode: VolumeMode, generationAtStart: Long) {
         when (volumeMode) {
-            is VolumeMode.Silent -> monitorRingerMode(device, RingerMode.SILENT)
-            is VolumeMode.Vibrate -> monitorRingerMode(device, RingerMode.VIBRATE)
+            is VolumeMode.Silent -> monitorRingerMode(device, RingerMode.SILENT, generationAtStart)
+            is VolumeMode.Vibrate -> monitorRingerMode(device, RingerMode.VIBRATE, generationAtStart)
             is VolumeMode.Normal -> super.monitor(device, volumeMode, generationAtStart)
         }
     }
 
-    private suspend fun monitorRingerMode(device: ManagedDevice, targetMode: RingerMode) {
+    private suspend fun monitorRingerMode(device: ManagedDevice, targetMode: RingerMode, generationAtStart: Long) {
         log(tag, INFO) { "Monitoring ringer mode (target=$targetMode) for ${device.address}/${device.label}" }
 
-        // Set to true inside collect to exit cleanly via takeWhile on the next element.
         var yielded = false
         withTimeoutOrNull(device.monitoringDuration.toMillis()) {
             ringerModeObserver.ringerMode
                 .filter { it.newMode != targetMode }
                 .takeWhile { !yielded }
                 .collect { event ->
+                    if (generationAtStart >= 0 && ownerRegistry.ownershipGeneration() != generationAtStart) {
+                        log(tag, INFO) { "Monitor($type) ringer mode yielding, ownership changed" }
+                        yielded = true
+                        return@collect
+                    }
+
                     if (!ringerTool.wasUs(targetMode)) {
                         log(tag, INFO) {
-                            "Monitor($type) yielding to external ringer mode change on $device"
+                            "Monitor($type) yielding to external ringer mode change on ${device.address}/${device.label}"
                         }
                         yielded = true
                         return@collect
