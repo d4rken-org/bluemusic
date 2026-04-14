@@ -572,4 +572,55 @@ class AudioStreamOwnerRegistryTest : BaseTest() {
             musicOwners shouldBe ringtoneOwners
         }
     }
+
+    @Nested
+    inner class ConnectResultContract {
+        @Test
+        fun `first connect returns empty previous and ownershipChanged true`() = runTest {
+            val result = registry.onDeviceConnected("AA:BB:CC:DD:EE:01", "DeviceA", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+
+            result.previousOwnerAddresses.shouldBeEmpty()
+            result.ownershipChanged shouldBe true
+        }
+
+        @Test
+        fun `second device displacing first returns first as previous owner`() = runTest {
+            registry.onDeviceConnected("AA:BB:CC:DD:EE:01", "DeviceA", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+            val result = registry.onDeviceConnected("AA:BB:CC:DD:EE:02", "DeviceB", SourceDevice.Type.HEADPHONES, 5000L, 1L)
+
+            result.previousOwnerAddresses shouldBe listOf("AA:BB:CC:DD:EE:01")
+            result.ownershipChanged shouldBe true
+        }
+
+        @Test
+        fun `same device reconnect returns itself as previous owner`() = runTest {
+            registry.onDeviceConnected("AA:BB:CC:DD:EE:01", "DeviceA", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+            val result = registry.onDeviceConnected("AA:BB:CC:DD:EE:01", "DeviceA", SourceDevice.Type.HEADPHONES, 5000L, 1L)
+
+            result.previousOwnerAddresses shouldBe listOf("AA:BB:CC:DD:EE:01")
+            result.ownershipChanged shouldBe false
+        }
+
+        @Test
+        fun `speaker connect while real device active does not change ownership`() = runTest {
+            registry.onDeviceConnected("AA:BB:CC:DD:EE:01", "Headphones", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+            val result = registry.onDeviceConnected("speaker", "Speaker", SourceDevice.Type.PHONE_SPEAKER, 2000L, 1L)
+
+            result.previousOwnerAddresses shouldBe listOf("AA:BB:CC:DD:EE:01")
+            result.ownershipChanged shouldBe false
+        }
+
+        @Test
+        fun `speaker fallback after disconnect returns displaced group`() = runTest {
+            registry.onDeviceConnected("AA:BB:CC:DD:EE:01", "Headphones", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+            registry.onDeviceConnected("speaker", "Speaker", SourceDevice.Type.PHONE_SPEAKER, 2000L, 1L)
+            registry.resolveDisconnect("AA:BB:CC:DD:EE:01", 3000L)
+
+            // Now speaker is owner. New device connects and displaces speaker.
+            val result = registry.onDeviceConnected("AA:BB:CC:DD:EE:02", "NewDevice", SourceDevice.Type.HEADPHONES, 4000L, 2L)
+
+            result.previousOwnerAddresses shouldBe listOf("speaker")
+            result.ownershipChanged shouldBe true
+        }
+    }
 }

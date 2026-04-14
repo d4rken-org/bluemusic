@@ -60,6 +60,7 @@ class EventDispatcherTest : BaseTest() {
         every { devicesSettings.enabledState } returns enabledStateFlow
         coEvery { devicesSettings.currentEnabledState() } answers { currentEnabledState }
 
+        nextEventSequence = 0L
         clock = FakeMonotonicClock(now = 0L)
         trackerScope = CoroutineScope(Dispatchers.Unconfined + Job())
 
@@ -97,17 +98,24 @@ class EventDispatcherTest : BaseTest() {
         }
     }
 
+    private var nextEventSequence = 0L
+
     private fun event(
         address: String,
         type: BluetoothEventQueue.Event.Type,
         deviceType: SourceDevice.Type = SourceDevice.Type.HEADPHONES,
-    ): BluetoothEventQueue.Event = BluetoothEventQueue.Event(
-        type = type,
-        sourceDevice = mockk {
-            every { this@mockk.address } returns address
-            every { this@mockk.deviceType } returns deviceType
-        },
-    )
+    ): BluetoothEventQueue.Event {
+        val seq = nextEventSequence++
+        return BluetoothEventQueue.Event(
+            type = type,
+            sourceDevice = mockk {
+                every { this@mockk.address } returns address
+                every { this@mockk.deviceType } returns deviceType
+            },
+            receivedAtElapsedMs = seq * 1000L,
+            sequence = seq,
+        )
+    }
 
     private fun TestScope.createDispatcher() = EventDispatcher(
         appScope = this,
@@ -313,8 +321,9 @@ class EventDispatcherTest : BaseTest() {
             if (module1CallCount == 1) throw RuntimeException("boom")
         }
 
-        dispatcher.dispatch(event(budsAddress, CONNECTED))
-        dispatcher.dispatch(event(watchAddress, CONNECTED))
+        // Use DISCONNECTED to avoid ownership displacement cancelling the first job
+        dispatcher.dispatch(event(budsAddress, DISCONNECTED))
+        dispatcher.dispatch(event(watchAddress, DISCONNECTED))
         advanceUntilIdle()
 
         module1CallCount shouldBe 2
@@ -425,13 +434,13 @@ class EventDispatcherTest : BaseTest() {
         devicesFlow.value = listOf(buds, watch)
         val dispatcher = createDispatcher()
 
-        // Both events should dispatch without interfering
-        dispatcher.dispatch(event(budsAddress, CONNECTED))
-        dispatcher.dispatch(event(watchAddress, CONNECTED))
+        // Use DISCONNECTED to avoid ownership displacement cancelling the first job
+        dispatcher.dispatch(event(budsAddress, DISCONNECTED))
+        dispatcher.dispatch(event(watchAddress, DISCONNECTED))
         advanceUntilIdle()
 
-        coVerify(exactly = 2) { module1.handle(any<DeviceEvent.Connected>()) }
-        coVerify(exactly = 2) { module2.handle(any<DeviceEvent.Connected>()) }
+        coVerify(exactly = 2) { module1.handle(any<DeviceEvent.Disconnected>()) }
+        coVerify(exactly = 2) { module2.handle(any<DeviceEvent.Disconnected>()) }
     }
 
     @Test
@@ -483,6 +492,88 @@ class EventDispatcherTest : BaseTest() {
         // The disconnect should have cancelled the connect's modules
         // and the disconnect modules should have run
         coVerify(atLeast = 1) { module1.handle(any<DeviceEvent.Disconnected>()) }
+    }
+
+    @Test
+    fun `disconnect save survives same-address reconnect`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        val disconnectModule = mockk<ConnectionModule>(relaxed = true) {
+            every { priority } returns 1
+            every { tag } returns "VolumeDisconnect"
+            every { cancellable } returns false
+        }
+        val connectModule = mockk<ConnectionModule>(relaxed = true) {
+            every { priority } returns 10
+            every { tag } returns "VolumeUpdate"
+            every { cancellable } returns true
+        }
+
+        var disconnectSaveCompleted = false
+        coEvery { disconnectModule.handle(any<DeviceEvent.Disconnected>()) } coAnswers {
+            kotlinx.coroutines.delay(2000) // Simulates DB write
+            disconnectSaveCompleted = true
+        }
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(disconnectModule, connectModule),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        // Device disconnects, then reconnects before disconnect save finishes
+        dispatcher.dispatch(event(budsAddress, DISCONNECTED))
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        // Non-cancellable disconnect save must complete despite supersession
+        disconnectSaveCompleted shouldBe true
+        // Cancellable connect modules still run for the reconnect
+        coVerify(exactly = 1) { connectModule.handle(any<DeviceEvent.Connected>()) }
+    }
+
+    @Test
+    fun `ownership transfer cancels displaced owner ramp`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        val watch = managedDevice(watchAddress, connected = true)
+        devicesFlow.value = listOf(buds, watch)
+
+        val slowModule = mockk<ConnectionModule>(relaxed = true) {
+            every { priority } returns 10
+            every { tag } returns "SlowRamp"
+            every { cancellable } returns true
+        }
+
+        var budsRampCompleted = false
+        coEvery { slowModule.handle(match<DeviceEvent.Connected> { it.device.address == budsAddress }) } coAnswers {
+            kotlinx.coroutines.delay(10_000) // Simulates slow volume ramp
+            budsRampCompleted = true
+        }
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(slowModule),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        // Buds connect (becomes owner), starts slow ramp
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+
+        // Watch connects (takes ownership via later timestamp) — should cancel buds' in-flight ramp
+        dispatcher.dispatch(event(watchAddress, CONNECTED))
+        advanceUntilIdle()
+
+        // Buds' slow ramp should NOT have completed — it was cancelled by ownership transfer
+        budsRampCompleted shouldBe false
     }
 
     @Test
