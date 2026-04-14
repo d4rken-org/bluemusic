@@ -1,6 +1,7 @@
 package eu.darken.bluemusic
 
 import android.app.Application
+import android.os.Looper
 import dagger.hilt.android.HiltAndroidApp
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
@@ -40,10 +41,13 @@ class App : Application() {
             curriculumVitae.updateAppLaunch()
         }
 
+        var foregroundExceptionHandled = false
         val oldHandler = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
-            if (throwable.isForegroundServiceTimingException()) {
+            if (throwable.isForegroundServiceTimingException() && !foregroundExceptionHandled) {
+                foregroundExceptionHandled = true
                 log(TAG, WARN) { "Suppressed foreground service timing exception: ${throwable.asLog()}" }
+                Looper.loop()
                 return@setDefaultUncaughtExceptionHandler
             }
             log(TAG, ERROR) { "UNCAUGHT EXCEPTION: ${throwable.asLog()}" }
