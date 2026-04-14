@@ -86,7 +86,7 @@ class BaseVolumeModuleTest : BaseTest() {
 
     @Test
     fun `monitor completes on timeout when no events arrive`() = runTest(UnconfinedTestDispatcher()) {
-        every { volumeTool.wasUs(streamId, any()) } returns true
+        every { volumeTool.hasRecentTarget(streamId, any()) } returns true
 
         val job = launch { module.callMonitor(device, VolumeMode.Normal(targetPercentage)) }
 
@@ -99,7 +99,7 @@ class BaseVolumeModuleTest : BaseTest() {
 
     @Test
     fun `monitor re-enforces when external platform write changes the level`() = runTest(UnconfinedTestDispatcher()) {
-        every { volumeTool.wasUs(streamId, targetLevel) } returns true
+        every { volumeTool.hasRecentTarget(streamId, targetLevel) } returns true
         coEvery { volumeTool.changeVolume(streamId, targetPercentage) } returns true
 
         val job = launch { module.callMonitor(device, VolumeMode.Normal(targetPercentage)) }
@@ -115,7 +115,7 @@ class BaseVolumeModuleTest : BaseTest() {
 
     @Test
     fun `monitor ignores events where our write landed at target`() = runTest(UnconfinedTestDispatcher()) {
-        every { volumeTool.wasUs(streamId, targetLevel) } returns true
+        every { volumeTool.hasRecentTarget(streamId, targetLevel) } returns true
 
         val job = launch { module.callMonitor(device, VolumeMode.Normal(targetPercentage)) }
 
@@ -131,12 +131,12 @@ class BaseVolumeModuleTest : BaseTest() {
 
     @Test
     fun `monitor yields when another VolumeTool caller writes a different level`() = runTest(UnconfinedTestDispatcher()) {
-        // wasUs returns false = another BVM path (user slider) wrote via VolumeTool
-        every { volumeTool.wasUs(streamId, targetLevel) } returns false
+        // hasRecentTarget returns false = another BVM path (user slider) wrote via VolumeTool
+        every { volumeTool.hasRecentTarget(streamId, targetLevel) } returns false
 
         val job = launch { module.callMonitor(device, VolumeMode.Normal(targetPercentage)) }
 
-        // External write arrives — but wasUs says we're not in control anymore
+        // External write arrives — but hasRecentTarget says we're not in control anymore
         volumeEvents.emit(VolumeEvent(streamId, targetLevel, 10, self = false))
 
         // The monitor should exit before the timeout
@@ -150,13 +150,13 @@ class BaseVolumeModuleTest : BaseTest() {
     fun `monitor returns immediately for non-Normal volumeMode`() = runTest(UnconfinedTestDispatcher()) {
         module.callMonitor(device, VolumeMode.Silent)
 
-        verify(exactly = 0) { volumeTool.wasUs(any(), any()) }
+        verify(exactly = 0) { volumeTool.hasRecentTarget(any(), any()) }
         coVerify(exactly = 0) { volumeTool.changeVolume(any(), any<Float>()) }
     }
 
     @Test
     fun `monitor ignores events for other streams`() = runTest(UnconfinedTestDispatcher()) {
-        every { volumeTool.wasUs(streamId, targetLevel) } returns true
+        every { volumeTool.hasRecentTarget(streamId, targetLevel) } returns true
 
         val job = launch { module.callMonitor(device, VolumeMode.Normal(targetPercentage)) }
 
@@ -267,7 +267,7 @@ class BaseVolumeModuleTest : BaseTest() {
             registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
-            every { volumeTool.wasUs(streamId, any()) } returns true
+            every { volumeTool.hasRecentTarget(streamId, any()) } returns true
             coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
 
             val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
@@ -291,7 +291,7 @@ class BaseVolumeModuleTest : BaseTest() {
             registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
-            every { volumeTool.wasUs(streamId, any()) } returns true
+            every { volumeTool.hasRecentTarget(streamId, any()) } returns true
             coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
 
             val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
@@ -312,8 +312,8 @@ class BaseVolumeModuleTest : BaseTest() {
         }
 
         @Test
-        fun `generation check does not interfere with wasUs yield`() = runTest(UnconfinedTestDispatcher()) {
-            // Generation stable but wasUs returns false → should still yield
+        fun `generation check does not interfere with hasRecentTarget yield`() = runTest(UnconfinedTestDispatcher()) {
+            // Generation stable but hasRecentTarget returns false → should still yield
             val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
             val registry = AudioStreamOwnerRegistry()
             val (mod, _) = createModuleWithDeps(registry, devicesFlow)
@@ -323,20 +323,20 @@ class BaseVolumeModuleTest : BaseTest() {
             registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
-            // wasUs true for initial check, false when monitor checks
-            every { volumeTool.wasUs(streamId, targetLevel) } returns false
+            // hasRecentTarget false when monitor checks
+            every { volumeTool.hasRecentTarget(streamId, targetLevel) } returns false
             coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
 
             val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
 
             advanceTimeBy(100) // In monitor
 
-            // Emit event — wasUs returns false → yield even though generation unchanged
+            // Emit event — hasRecentTarget returns false → yield even though generation unchanged
             volumeEvents.emit(VolumeEvent(streamId, targetLevel, 10, self = false))
 
             job.join()
 
-            // Should NOT re-enforce — wasUs yield
+            // Should NOT re-enforce — hasRecentTarget yield
             coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>()) }
         }
     }
@@ -385,7 +385,7 @@ class BaseVolumeModuleTest : BaseTest() {
             registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
-            every { volumeTool.wasUs(streamId, any()) } returns true
+            every { volumeTool.hasRecentTarget(streamId, any()) } returns true
             coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
 
             // Both start monitoring
@@ -419,7 +419,7 @@ class BaseVolumeModuleTest : BaseTest() {
             registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
-            every { volumeTool.wasUs(streamId, any()) } returns true
+            every { volumeTool.hasRecentTarget(streamId, any()) } returns true
             coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
 
             val job = launch { mod.handle(DeviceEvent.Connected(initialDev)) }
@@ -505,7 +505,7 @@ class BaseVolumeModuleTest : BaseTest() {
             registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
-            every { volumeTool.wasUs(streamId, targetLevel) } returns true
+            every { volumeTool.hasRecentTarget(streamId, targetLevel) } returns true
             coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
 
             val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
