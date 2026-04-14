@@ -40,6 +40,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -47,6 +49,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -124,10 +127,13 @@ fun DevicesScreen(
             listState.firstVisibleItemIndex > 0 || listState.firstVisibleItemScrollOffset > 0
         }
     }
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     Scaffold(
+        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             ManagedDevicesTopBar(
+                scrollBehavior = scrollBehavior,
                 isProVersion = state.isProVersion,
                 isBluetoothEnabled = state.isBluetoothEnabled,
                 hasBluetoothPermission = state.hasBluetoothPermission,
@@ -236,6 +242,7 @@ fun DevicesScreen(
 
 @Composable
 private fun ManagedDevicesTopBar(
+    scrollBehavior: TopAppBarScrollBehavior,
     isProVersion: Boolean,
     isBluetoothEnabled: Boolean,
     hasBluetoothPermission: Boolean,
@@ -246,6 +253,7 @@ private fun ManagedDevicesTopBar(
     val context = LocalContext.current
 
     TopAppBar(
+        scrollBehavior = scrollBehavior,
         title = {
             if (isProVersion) {
                 ColoredTitleText(
