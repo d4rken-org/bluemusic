@@ -13,7 +13,6 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.time.delay
 import java.time.Duration
-import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.math.roundToInt
@@ -34,16 +33,10 @@ class VolumeTool @Inject constructor(
     private val audioManager: AudioManager,
 ) {
 
-    private data class RecentWrite(val volume: Int, val timestamp: Long)
-
     internal var clock: () -> Long = SystemClock::elapsedRealtime
 
-    @Volatile private var adjustingStream: AudioStream.Id? = null
     private val lock = Mutex()
-    // Used by monitor loops that need to remember the last target we intended to hold.
-    private val recentTargets = ConcurrentHashMap<AudioStream.Id, RecentWrite>()
-    // Used by VolumeObserver to classify a matching observed change exactly once.
-    private val pendingObserverWrites = ConcurrentHashMap<AudioStream.Id, RecentWrite>()
+    private val writeTracker = VolumeWriteTracker(clock = { clock() })
 
     fun getCurrentVolume(id: AudioStream.Id): Int {
         return audioManager.getStreamVolume(id.id)
@@ -76,10 +69,7 @@ class VolumeTool @Inject constructor(
     private suspend fun setVolume(streamId: AudioStream.Id, volume: Int, flags: Int) = lock.withLock {
         log(TAG, VERBOSE) { "setVolume(streamId=$streamId, volume=$volume, flags=$flags)." }
         try {
-            adjustingStream = streamId
-            val now = clock()
-            rememberWrite(recentTargets, streamId, volume, mirror = true, timestamp = now)
-            rememberWrite(pendingObserverWrites, streamId, volume, mirror = true, timestamp = now)
+            writeTracker.onWriteStarted(streamId, volume)
 
             delay(10)
 
@@ -88,30 +78,16 @@ class VolumeTool @Inject constructor(
 
             delay(10)
         } finally {
-            adjustingStream = null
+            writeTracker.onWriteFinished()
         }
     }
 
     internal fun hasRecentTarget(id: AudioStream.Id, volume: Int): Boolean {
-        return hasFreshWrite(recentTargets, id, volume)
+        return writeTracker.hasRecentTarget(id, volume)
     }
 
     fun wasUs(id: AudioStream.Id, volume: Int): Boolean {
-        if (consumePendingWrite(id, volume)) return true
-
-        val currentlyAdjusting = adjustingStream
-        if (currentlyAdjusting != null) {
-            if (currentlyAdjusting == id || mirroredPeer(currentlyAdjusting) == id) {
-                return hasFreshWrite(recentTargets, id, volume)
-            }
-        }
-        return false
-    }
-
-    private fun mirroredPeer(id: AudioStream.Id): AudioStream.Id? = when (id) {
-        AudioStream.Id.STREAM_VOICE_CALL -> AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE
-        AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE -> AudioStream.Id.STREAM_VOICE_CALL
-        else -> null
+        return writeTracker.wasUs(id, volume)
     }
 
     fun getVolumePercentage(streamId: AudioStream.Id): Float {
@@ -178,7 +154,7 @@ class VolumeTool @Inject constructor(
 
         val currentLevel = getCurrentVolume(streamId)
         if (currentLevel == targetLevel) {
-            rememberWrite(recentTargets, streamId, targetLevel, mirror = false, timestamp = clock())
+            writeTracker.rememberCurrentTarget(streamId, targetLevel)
             log(TAG, VERBOSE) { "Target volume of $targetLevel already set." }
             return false
         }
@@ -206,55 +182,7 @@ class VolumeTool @Inject constructor(
         return true
     }
 
-    private fun rememberWrite(
-        map: ConcurrentHashMap<AudioStream.Id, RecentWrite>,
-        streamId: AudioStream.Id,
-        volume: Int,
-        mirror: Boolean,
-        timestamp: Long,
-    ) {
-        val write = RecentWrite(volume, timestamp)
-        map[streamId] = write
-        if (mirror) {
-            mirroredPeer(streamId)?.let { map[it] = write }
-        }
-    }
-
-    private fun hasFreshWrite(
-        map: ConcurrentHashMap<AudioStream.Id, RecentWrite>,
-        id: AudioStream.Id,
-        volume: Int,
-    ): Boolean {
-        val entry = map[id] ?: return false
-        val now = clock()
-        if (entry.volume != volume) return false
-        if ((now - entry.timestamp) >= WRITE_TTL_MS) {
-            map.remove(id, entry)
-            return false
-        }
-        return true
-    }
-
-    private fun consumePendingWrite(id: AudioStream.Id, volume: Int): Boolean {
-        val entry = pendingObserverWrites[id] ?: return false
-        val now = clock()
-        if ((now - entry.timestamp) >= WRITE_TTL_MS) {
-            pendingObserverWrites.remove(id, entry)
-            return false
-        }
-        if (entry.volume != volume) {
-            val currentlyAdjusting = adjustingStream
-            if (currentlyAdjusting == null || (currentlyAdjusting != id && mirroredPeer(currentlyAdjusting) != id)) {
-                pendingObserverWrites.remove(id, entry)
-            }
-            return false
-        }
-        pendingObserverWrites.remove(id, entry)
-        return true
-    }
-
     companion object {
         private val TAG = logTag("Audio", "StreamHelper")
-        private const val WRITE_TTL_MS = 2000L
     }
 }
