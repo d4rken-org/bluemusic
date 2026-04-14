@@ -26,6 +26,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BluetoothDisabled
 import androidx.compose.material.icons.twotone.Add
 import androidx.compose.material.icons.twotone.Bluetooth
+import androidx.compose.material.icons.twotone.BluetoothConnected
 import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.Settings
 import androidx.compose.material.icons.twotone.Stars
@@ -53,6 +54,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
+import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.compose.ColoredTitleText
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
@@ -127,6 +129,11 @@ fun DevicesScreen(
         topBar = {
             ManagedDevicesTopBar(
                 isProVersion = state.isProVersion,
+                isBluetoothEnabled = state.isBluetoothEnabled,
+                hasBluetoothPermission = state.hasBluetoothPermission,
+                hasConnectedDevice = state.devicesWithApps.any {
+                    it.device.type != SourceDevice.Type.PHONE_SPEAKER && it.device.isConnected
+                },
                 onNavigateToSettings = onNavigateToSettings,
                 onNavigateToUpgrade = onNavigateToUpgrade
             )
@@ -230,6 +237,9 @@ fun DevicesScreen(
 @Composable
 private fun ManagedDevicesTopBar(
     isProVersion: Boolean,
+    isBluetoothEnabled: Boolean,
+    hasBluetoothPermission: Boolean,
+    hasConnectedDevice: Boolean,
     onNavigateToSettings: () -> Unit,
     onNavigateToUpgrade: () -> Unit
 ) {
@@ -266,9 +276,19 @@ private fun ManagedDevicesTopBar(
                     }
                 }
             }) {
+                val isBluetoothReady = isBluetoothEnabled && hasBluetoothPermission
                 Icon(
-                    imageVector = Icons.TwoTone.Bluetooth,
-                    contentDescription = stringResource(R.string.label_bluetooth_settings)
+                    imageVector = when {
+                        !isBluetoothReady -> Icons.Filled.BluetoothDisabled
+                        hasConnectedDevice -> Icons.TwoTone.BluetoothConnected
+                        else -> Icons.TwoTone.Bluetooth
+                    },
+                    contentDescription = stringResource(R.string.label_bluetooth_settings),
+                    tint = if (isBluetoothReady && hasConnectedDevice) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.onSurface
+                    }
                 )
             }
             if (!isProVersion) {
