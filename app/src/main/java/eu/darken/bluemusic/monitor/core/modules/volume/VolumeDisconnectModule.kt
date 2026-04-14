@@ -36,6 +36,7 @@ class VolumeDisconnectModule @Inject constructor(
         get() = TAG
 
     override val priority: Int = 1 // Run early to capture volumes before other modules
+    override val cancellable: Boolean = false
 
     override suspend fun handle(event: DeviceEvent) {
         if (event !is DeviceEvent.Disconnected) return

@@ -26,8 +26,10 @@ class AudioStreamOwnerRegistry @Inject constructor() {
         deviceType: SourceDevice.Type,
         receivedAtElapsedMs: Long,
         sequence: Long,
-    ) = mutex.withLock {
-        val oldOwnerKey = resolveOwnerGroupLocked()?.ownerKey
+    ): ConnectResult = mutex.withLock {
+        val oldOwnerGroup = resolveOwnerGroupLocked()
+        val oldOwnerKey = oldOwnerGroup?.ownerKey
+        val previousOwnerAddresses = oldOwnerGroup?.entries?.map { it.address } ?: emptyList()
         entries[address] = ActiveEntry(
             address = address,
             label = label,
@@ -37,11 +39,16 @@ class AudioStreamOwnerRegistry @Inject constructor() {
             approximate = false,
         )
         val newOwnerKey = resolveOwnerGroupLocked()?.ownerKey
-        if (oldOwnerKey != newOwnerKey) {
+        val ownershipChanged = oldOwnerKey != newOwnerKey
+        if (ownershipChanged) {
             _generation++
             log(TAG, INFO) { "Ownership changed: gen=$_generation, old=$oldOwnerKey, new=$newOwnerKey" }
         }
         log(TAG, VERBOSE) { "onDeviceConnected: $address ($label), groups=${buildGroupsLocked()}" }
+        ConnectResult(
+            previousOwnerAddresses = previousOwnerAddresses,
+            ownershipChanged = ownershipChanged,
+        )
     }
 
     suspend fun resolveDisconnect(

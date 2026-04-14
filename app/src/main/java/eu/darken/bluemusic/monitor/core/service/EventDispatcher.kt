@@ -77,15 +77,20 @@ class EventDispatcher @Inject constructor(
 
         // --- Fast acceptance lane: ownership + state updates (synchronous) ---
 
+        var displacedOwnerAddresses: List<String> = emptyList()
+
         val deviceEvent = when (bluetoothEvent.type) {
             BluetoothEventQueue.Event.Type.CONNECTED -> {
-                ownerRegistry.onDeviceConnected(
+                val connectResult = ownerRegistry.onDeviceConnected(
                     address = managedDevice.address,
                     label = managedDevice.label,
                     deviceType = managedDevice.type,
                     receivedAtElapsedMs = bluetoothEvent.receivedAtElapsedMs,
                     sequence = bluetoothEvent.sequence,
                 )
+                if (connectResult.ownershipChanged) {
+                    displacedOwnerAddresses = connectResult.previousOwnerAddresses
+                }
                 DeviceEvent.Connected(managedDevice)
             }
 
@@ -111,6 +116,27 @@ class EventDispatcher @Inject constructor(
         // --- Async module execution (non-blocking) ---
 
         val address = managedDevice.address
+
+        // Cancel displaced owner's in-flight cancellable jobs when ownership transfers.
+        // e.g., AirPods ramping to 100% should stop when speaker takes ownership.
+        //
+        // Known limitation: real BT devices always take ownership from PHONE_SPEAKER
+        // (see resolveOwnerGroupLocked), so a reconnecting device will cancel the
+        // speaker's ramp and apply its own volumes — even if the speaker was just
+        // set up.  In chaotic connect/disconnect cycles (e.g., AirPods firmware
+        // briefly reconnecting after case closure), this causes visible volume churn:
+        // the device ramps up, disconnects, then the speaker restarts its ramp down.
+        // We can't suppress the device's connect because we can't distinguish an
+        // intentional connect from a firmware ghost reconnect at the ACL level.
+        for (displacedAddr in displacedOwnerAddresses) {
+            if (displacedAddr == address) continue
+            val displacedJob = activeJobs[displacedAddr]
+            if (displacedJob != null && displacedJob.isActive) {
+                log(TAG, INFO) { "dispatch: Cancelling displaced owner job for $displacedAddr" }
+                displacedJob.cancel(CancellationException("Ownership transferred to $address"))
+            }
+        }
+
         val existingJob = activeJobs[address]
         if (existingJob != null && existingJob.isActive) {
             log(TAG, INFO) { "dispatch: Cancelling superseded cancellable job for $address" }

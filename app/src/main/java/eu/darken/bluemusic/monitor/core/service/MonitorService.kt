@@ -32,6 +32,7 @@ import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
+import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import eu.darken.bluemusic.monitor.ui.MonitorNotifications
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
@@ -68,7 +69,7 @@ class MonitorService : Service2() {
     @Inject lateinit var bluetoothEventQueue: BluetoothEventQueue
     @Inject lateinit var eventDispatcher: EventDispatcher
     @Inject lateinit var ringerModeTransitionHandler: RingerModeTransitionHandler
-    @Inject lateinit var ownerRegistry: eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
+    @Inject lateinit var ownerRegistry: AudioStreamOwnerRegistry
 
     private val serviceScope by lazy {
         CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
@@ -141,7 +142,7 @@ class MonitorService : Service2() {
         monitoringJob = serviceScope.launch {
             try {
                 startMonitoring()
-            } catch (e: CancellationException) {
+            } catch (_: CancellationException) {
                 log(TAG) { "Monitor cancelled." }
             } catch (e: Exception) {
                 log(TAG, ERROR) { "Monitor failed: ${e.asLog()}" }

@@ -19,6 +19,11 @@ data class ActiveEntry(
     val approximate: Boolean,
 )
 
+data class ConnectResult(
+    val previousOwnerAddresses: List<DeviceAddr>,
+    val ownershipChanged: Boolean,
+)
+
 data class DisconnectResult(
     val wasInOwnerGroup: Boolean,
     val ownerGroupBefore: List<DeviceAddr>,
