@@ -198,9 +198,14 @@ class BluetoothRepo @Inject constructor(
     fun renameDevice(address: DeviceAddr, newName: String): Boolean {
         val realDevice = bluetoothAdapter.getRemoteDevice(address) ?: return false
         return if (hasApiLevel(31)) {
-            @Suppress("NewApi")
-            realDevice.alias = newName
-            true
+            try {
+                @Suppress("NewApi")
+                realDevice.alias = newName
+                true
+            } catch (e: SecurityException) {
+                log(TAG, ERROR) { "Failed to set alias (no CDM association): ${e.asLog()}" }
+                false
+            }
         } else {
             try {
                 val method = realDevice.javaClass.getMethod("setAlias", String::class.java)
