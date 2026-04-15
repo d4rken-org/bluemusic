@@ -63,6 +63,7 @@ class VolumeRateLimiterModuleTest : BaseTest() {
 
     private fun config(
         volumeRateLimiter: Boolean = true,
+        volumeLock: Boolean = false,
         isEnabled: Boolean = true,
         musicVolume: Float? = null,
         volumeRateLimitIncreaseMs: Long? = null,
@@ -70,6 +71,7 @@ class VolumeRateLimiterModuleTest : BaseTest() {
     ): DeviceConfigEntity = DeviceConfigEntity(
         address = address,
         volumeRateLimiter = volumeRateLimiter,
+        volumeLock = volumeLock,
         isEnabled = isEnabled,
         musicVolume = musicVolume,
         volumeRateLimitIncreaseMs = volumeRateLimitIncreaseMs,
@@ -316,6 +318,17 @@ class VolumeRateLimiterModuleTest : BaseTest() {
     fun `no eligible devices is no-op`() = runTest {
         val module = createModule()
         val cfg = config(volumeRateLimiter = false)
+        seedActive(managedDevice(cfg))
+
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 10, self = false))
+
+        coVerify(exactly = 0) { volumeTool.changeVolume(streamId = any(), targetLevel = any()) }
+    }
+
+    @Test
+    fun `volume lock overrides rate limiter at runtime`() = runTest {
+        val module = createModule()
+        val cfg = config(volumeRateLimiter = true, volumeLock = true, musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 10, self = false))

@@ -45,6 +45,26 @@
             android:exported="false" />
 
         <receiver
+            android:name="eu.darken.bluemusic.main.ui.widget.WidgetProvider"
+            android:exported="true"
+            android:label="@string/devices_device_config_volume_lock_label">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/volume_lock_widget_info" />
+        </receiver>
+
+        <activity
+            android:name="eu.darken.bluemusic.main.ui.widget.WidgetConfigurationActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <receiver
             android:name="eu.darken.bluemusic.monitor.core.receiver.MonitorEventReceiver"
             android:enabled="true"
             android:label="@string/app_name"

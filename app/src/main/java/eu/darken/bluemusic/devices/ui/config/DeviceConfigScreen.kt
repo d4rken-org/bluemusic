@@ -2,20 +2,19 @@ package eu.darken.bluemusic.devices.ui.config
 
 import android.os.Build
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -25,8 +24,8 @@ import androidx.compose.material.icons.automirrored.twotone.Launch
 import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.DoNotDisturb
 import androidx.compose.material.icons.twotone.GraphicEq
-import androidx.compose.material.icons.twotone.Info
 import androidx.compose.material.icons.twotone.Home
+import androidx.compose.material.icons.twotone.Info
 import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.Notifications
 import androidx.compose.material.icons.twotone.PlayArrow
@@ -56,6 +55,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
@@ -63,6 +63,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.common.compose.PreviewWrapper
@@ -70,7 +71,6 @@ import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.navigation.Nav
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.ui.config.components.ClickablePreference
 import eu.darken.bluemusic.devices.ui.config.components.DeviceHeaderCard
@@ -493,6 +493,10 @@ fun DeviceConfigScreen(
                             onCheckedChange = { onAction(ConfigAction.OnToggleVolumeObserving) }
                         )
 
+                        AnimatedVisibility(visible = device.volumeObservingOverridden) {
+                            FeatureOverriddenByVolumeLockCard()
+                        }
+
                         SwitchPreference(
                             title = stringResource(R.string.devices_device_config_volume_save_on_disconnect_label),
                             description = stringResource(R.string.devices_device_config_volume_save_on_disconnect_desc),
@@ -540,6 +544,10 @@ fun DeviceConfigScreen(
                             requiresPro = true,
                             isProVersion = state.isProVersion
                         )
+
+                        AnimatedVisibility(visible = device.volumeRateLimiterOverridden) {
+                            FeatureOverriddenByVolumeLockCard()
+                        }
 
                         if (device.volumeRateLimiter) {
                             ClickablePreference(
@@ -714,6 +722,37 @@ fun DeviceConfigScreen(
             }
 
 
+        }
+    }
+}
+
+@Composable
+private fun FeatureOverriddenByVolumeLockCard() {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+            .padding(bottom = 8.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.secondaryContainer
+        )
+    ) {
+        Row(
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(
+                imageVector = Icons.TwoTone.Info,
+                contentDescription = null,
+                modifier = Modifier.size(20.dp),
+                tint = MaterialTheme.colorScheme.onSecondaryContainer,
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = stringResource(R.string.devices_device_config_volume_lock_override_desc),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
+            )
         }
     }
 }

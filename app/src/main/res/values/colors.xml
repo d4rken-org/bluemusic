@@ -28,4 +28,9 @@
     <color name="red">#e51c23</color>
     <color name="brown">#795548</color>
     <color name="black">#000000</color>
+
+    <color name="widget_preview_background">#FFFFFBFF</color>
+    <color name="widget_preview_accent">#FFF0EBEF</color>
+    <color name="widget_preview_text_primary">#FF3B2F33</color>
+    <color name="widget_preview_text_secondary">#FF7A6C72</color>
 </resources>

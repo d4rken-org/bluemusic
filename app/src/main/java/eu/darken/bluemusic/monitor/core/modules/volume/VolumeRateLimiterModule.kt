@@ -64,7 +64,12 @@ internal class VolumeRateLimiterModule @Inject constructor(
 
         val currentTime = clock.nowMs()
         val eligibleDevices = deviceRepo.currentDevices()
-            .filter { it.isActive && it.volumeRateLimiter && it.address in ownerAddresses && it.getStreamType(id) != null }
+            .filter {
+                it.isActive &&
+                    it.volumeRateLimiterEffective &&
+                    it.address in ownerAddresses &&
+                    it.getStreamType(id) != null
+            }
 
         if (eligibleDevices.isEmpty()) return
 

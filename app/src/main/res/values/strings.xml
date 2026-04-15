@@ -71,6 +71,7 @@
     <string name="devices_device_config_volume_save_on_disconnect_hint">On some devices, the system switches audio routing before we can read the volumes. If the saved values don\'t match what you had set, try enabling \"Observe volume changes\" instead.</string>
     <string name="devices_device_config_volume_lock_label">Volume lock</string>
     <string name="devices_device_config_volume_lock_desc">Any volume changes not made through this app will be reverted while this device is connected.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Volume lock currently overrides this feature.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volume rate limiter</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limit the frequency of volume changes to prevent rapid or excessive volume adjustments.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volume increase delay</string>
@@ -439,4 +440,22 @@
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Lock</string>
     <string name="devices_unlock_sliders_action">Unlock</string>
+
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Shows volume lock status for the active Bluetooth device</string>
+    <string name="widget_no_device_label">No device connected</string>
+    <string name="widget_bluetooth_off_label">Bluetooth is off</string>
+    <string name="widget_error_label">Widget error</string>
+    <string name="widget_preview_device_label">My Headphones</string>
+    <string name="widget_config_title">Widget settings</string>
+    <string name="widget_config_preview_label">Preview</string>
+    <string name="widget_config_theme_label">Theme</string>
+    <string name="widget_config_bg_color_label">Background color</string>
+    <string name="widget_config_fg_color_label">Text color</string>
+    <string name="widget_config_bg_alpha_label">Background opacity</string>
+    <string name="widget_config_show_label_toggle">Show device name</string>
+    <string name="widget_config_show_label_description">Show the connected device above the lock status.</string>
+    <string name="widget_config_theme_green_label">Green</string>
+    <string name="widget_config_theme_red_label">Red</string>
+    <string name="widget_config_theme_custom_label">Custom</string>
 </resources>

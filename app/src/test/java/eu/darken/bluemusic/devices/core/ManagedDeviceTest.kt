@@ -91,6 +91,83 @@ class ManagedDeviceTest : BaseTest() {
             .requiresMonitor shouldBe true
     }
 
+    @Test
+    fun `volumeObservingEffective - false when overridden by volume lock`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLock = true,
+                volumeObserving = true,
+            )
+        ).volumeObservingEffective shouldBe false
+    }
+
+    @Test
+    fun `volumeRateLimiterEffective - false when overridden by volume lock`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLock = true,
+                volumeRateLimiter = true,
+            )
+        ).volumeRateLimiterEffective shouldBe false
+    }
+
+    @Test
+    fun `volumeObservingOverridden - true when both lock and observing are enabled`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLock = true,
+                volumeObserving = true,
+            )
+        ).volumeObservingOverridden shouldBe true
+    }
+
+    @Test
+    fun `volumeRateLimiterOverridden - true when both lock and limiter are enabled`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLock = true,
+                volumeRateLimiter = true,
+            )
+        ).volumeRateLimiterOverridden shouldBe true
+    }
+
+    @Test
+    fun `volumeObservingEffective - true when observing enabled and lock disabled`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLock = false,
+                volumeObserving = true,
+            )
+        ).volumeObservingEffective shouldBe true
+    }
+
+    @Test
+    fun `volumeRateLimiterEffective - true when limiter enabled and lock disabled`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLock = false,
+                volumeRateLimiter = true,
+            )
+        ).volumeRateLimiterEffective shouldBe true
+    }
+
+    @Test
+    fun `volumeObservingOverridden - false when lock disabled`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLock = false,
+                volumeObserving = true,
+            )
+        ).volumeObservingOverridden shouldBe false
+    }
+
     // endregion
 
     // region getVolume
