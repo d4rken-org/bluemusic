@@ -65,7 +65,7 @@ class VolumeUpdateModule @Inject constructor(
 
         val candidates = allActive.filter { dev ->
             if (dev.address !in ownerAddresses) return@filter false
-            if (!dev.volumeObserving || dev.volumeLock) return@filter false
+            if (!dev.volumeObservingEffective) return@filter false
             val streamType = dev.getStreamType(id) ?: return@filter false
             dev.getVolume(streamType) != null
         }

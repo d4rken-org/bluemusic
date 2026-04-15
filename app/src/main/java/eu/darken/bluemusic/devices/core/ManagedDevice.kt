@@ -45,6 +45,14 @@ data class ManagedDevice(
         get() = config.volumeObserving
     val volumeRateLimiter: Boolean
         get() = config.volumeRateLimiter
+    val volumeObservingEffective: Boolean
+        get() = volumeObserving && !volumeLock
+    val volumeRateLimiterEffective: Boolean
+        get() = volumeRateLimiter && !volumeLock
+    val volumeObservingOverridden: Boolean
+        get() = volumeObserving && volumeLock
+    val volumeRateLimiterOverridden: Boolean
+        get() = volumeRateLimiter && volumeLock
     val volumeRateLimitIncreaseMs: Long
         get() = config.volumeRateLimitIncreaseMs ?: 1000L
     val volumeRateLimitDecreaseMs: Long

@@ -17,7 +17,10 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.plus
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -28,6 +31,10 @@ class DeviceRepo @Inject constructor(
     private val bluetoothRepo: BluetoothRepo,
     private val dispatcherProvider: DispatcherProvider,
 ) {
+
+    private val deviceMutexes = ConcurrentHashMap<DeviceAddr, Mutex>()
+
+    private fun mutexFor(address: DeviceAddr): Mutex = deviceMutexes.getOrPut(address) { Mutex() }
 
     val devices = combine(
         bluetoothRepo.state,
@@ -72,24 +79,26 @@ class DeviceRepo @Inject constructor(
     }
 
     suspend fun updateDevice(address: DeviceAddr, update: (DeviceConfigEntity) -> DeviceConfigEntity) {
-        withContext(dispatcherProvider.IO) {
-            var before = deviceDatabase.devices.getDevice(address)
-            val isNew = before == null
+        mutexFor(address).withLock {
+            withContext(dispatcherProvider.IO) {
+                var before = deviceDatabase.devices.getDevice(address)
+                val isNew = before == null
 
-            if (before == null) {
-                log(TAG) { "Device not found for update: $address. Creating new." }
-                before = DeviceConfigEntity(address = address)
-            }
+                if (before == null) {
+                    log(TAG) { "Device not found for update: $address. Creating new." }
+                    before = DeviceConfigEntity(address = address)
+                }
 
-            val updated = update(before)
-            deviceDatabase.devices.updateDevice(updated)
+                val updated = update(before)
+                deviceDatabase.devices.updateDevice(updated)
 
-            if (isNew) {
-                log(TAG, INFO) { "New device config: $updated" }
-            } else if (before != updated) {
-                log(TAG) { "Updated device config $address, before: $before" }
-            } else {
-                log(TAG, VERBOSE) { "Device config unchanged: $address" }
+                if (isNew) {
+                    log(TAG, INFO) { "New device config: $updated" }
+                } else if (before != updated) {
+                    log(TAG) { "Updated device config $address, before: $before" }
+                } else {
+                    log(TAG, VERBOSE) { "Device config unchanged: $address" }
+                }
             }
         }
     }

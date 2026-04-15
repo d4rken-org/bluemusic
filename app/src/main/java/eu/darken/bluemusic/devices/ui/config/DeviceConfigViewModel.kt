@@ -20,6 +20,8 @@ import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.observeDevice
+import eu.darken.bluemusic.devices.core.ToggleResult
+import eu.darken.bluemusic.devices.core.toggleVolumeLock
 import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
@@ -220,23 +222,13 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnToggleVolumeLock -> {
-                if (!upgradeRepo.isPro()) {
-                    events.emit(ConfigEvent.RequiresPro)
-                } else {
-                    deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                        oldConfig.copy(
-                            volumeLock = !oldConfig.volumeLock,
-                            volumeObserving = if (oldConfig.volumeObserving && !oldConfig.volumeLock) false else oldConfig.volumeObserving,
-                            volumeRateLimiter = if (oldConfig.volumeRateLimiter && !oldConfig.volumeLock) false else oldConfig.volumeRateLimiter,
-                        )
-                    }
-                }
+                val result = deviceRepo.toggleVolumeLock(deviceAddress, upgradeRepo)
+                if (result == ToggleResult.NOT_PRO) events.emit(ConfigEvent.RequiresPro)
             }
 
             is ConfigAction.OnToggleVolumeObserving -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
                 oldConfig.copy(
                     volumeObserving = !oldConfig.volumeObserving,
-                    volumeLock = if (oldConfig.volumeLock && !oldConfig.volumeObserving) false else oldConfig.volumeLock,
                 )
             }
 
@@ -251,7 +243,6 @@ class DeviceConfigViewModel @AssistedInject constructor(
                     deviceRepo.updateDevice(deviceAddress) { oldConfig ->
                         oldConfig.copy(
                             volumeRateLimiter = !oldConfig.volumeRateLimiter,
-                            volumeLock = if (oldConfig.volumeLock && !oldConfig.volumeRateLimiter) false else oldConfig.volumeLock,
                         )
                     }
                 }

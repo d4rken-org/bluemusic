@@ -69,7 +69,7 @@ class MonitorNotifications @Inject constructor(
             for (dev in devices) {
                 if (!dev.isActive) continue
 
-                if (!listening && dev.volumeObserving) {
+                if (!listening && dev.volumeObservingEffective) {
                     listening = true
                     log(TAG) { "Keep running because we are observing changes" }
                     extraFlags.add(context.getString(R.string.label_volume_listener))
@@ -84,7 +84,7 @@ class MonitorNotifications @Inject constructor(
                     log(TAG) { "Keep running because the device wants keep awake: ${dev.address}/${dev.label}" }
                     extraFlags.add(context.getString(R.string.devices_device_config_keep_awake_label))
                 }
-                if (!limiting && dev.volumeRateLimiter) {
+                if (!limiting && dev.volumeRateLimiterEffective) {
                     limiting = true
                     log(TAG) { "Keep running because the device to be rate limited: ${dev.address}/${dev.label}" }
                     extraFlags.add(context.getString(R.string.devices_device_config_volume_rate_limiter_label))
