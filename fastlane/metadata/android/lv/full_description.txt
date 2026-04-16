@@ -1,22 +1,22 @@
-**Bluetooth skaļuma pārvaldnieks** atceras skaļuma līmeņus katrai jūsu Bluetooth ierīcei un reaģē, kad tās pievienojas vai atvienojas.
+**Bluetooth skaļuma pārvaldnieks** atceras skaļuma līmeņus katrai Bluetooth ierīcei un reaģē, kad tās savienojas vai atvienojas.
 
-**Funkcijas:**
-* Iestatīt mūzikas, zvana, zvanīšanas signala un paziņojumu skaļumus katrai ierīcei  
-* Automātiski sūtīt multivides komandas, piemēram, Atskaņot vai Nākamais  
-* Palaist lietotnes pievienojoties  
-* Turēt ekrānu nomodā  
-* Aizslēgt skaļuma līmeņus  
-* Atjaunot skaļumu pēc atvienojuma  
+**Iespējas:**
+* Mūzikas, zvana, zvanīšanas skaņas un paziņojumu skaļuma iestatīšana katrai ierīcei  
+* Automātiska informācijas nedēju komandu, piemēram, "Atskaņot" vai "Nākamais", sūtīšana  
+* Lietotņu palaišana pēc savienošanās  
+* Ekrāna izslēgšanās novēršana  
+* Skaļuma līmeņu noslēgšana  
+* Skaļuma atjaunošana pēc atvienošanās  
 
-Nav reklāmu, nav seklāšanas. Atvērts pirmkods.  
-Daži papildinajumi prasa apmaksatu jauninājumu, lai atbalstītu izstrādi.
+Bez reklāmām un izsekošanas. Atvērts pirmkods.  
+Dažām papildu iespējam ir nepieciešama maksas uzlabošana, lai atbalstītu izstrādi.
 
-**Piezmīšme:** Šī lietotne nevar paaugstināt skaļumu vai pārvarēt sistēmas skaļuma ierobežojumus.
+**Piezīme:** šī lietotne nevar pastiprināt skaļumu vai aizstāt sistēmas skaļuma ierobežojumus.
 
 **Atļaujas:**
-* **Internets** - klūddu ziņojumiem (pēc izvēles)  
-* **Bluetooth** - lai noteiktu ierīču savienojumus  
-* **Audio iestatījumi** - lai mainītu skaļumu  
-* **Palaistājs** - lai atjaunotu iestatījumus pēc pārstartēšanas  
-* **Nomoda bloktāze** - lai turētu ekrānu nomodā vai labotu Samsung kļūdas  
-* **Sistēmas briļinajuma logs** - automatiski palaist lietotnes (tikai Android 10)
+* **Internets** - kļūdu ziņojumiem (pēc izvēles)  
+* **Bluetooth** - lai noteiktu ierīces savienojumus  
+* **Skaņas iestatījumi** - lai mainītu skaļumu  
+* **Sāknēšana** - lai atjaunotu iestatījumus pēc pārsāknēšanas  
+* **Nomoda slēgšana** - lai novērstu ekrāna izslēgšanos vai labotu Samsung nepilnības  
+* **Sistēmas brīdinājuma logs** - lai automātiski palaistu lietotnes (tikai Android 10)

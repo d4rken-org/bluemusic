@@ -1,4 +1,4 @@
-**Bluetooth Volume Manager** man hljóðstyrksstig fyrir hvert Bluetooth tæki þitt og bregst við þgar þau tengjast eða aftengja.
+**Bluetooth Volume Manager** man hljóðstyrksstig fyrir hvert Bluetooth tæki þitt og bregst við þegar þau tengjast eða aftengja.
 
 **Eiginleikar:**
 * Stilltu tónlist, símtöl, hringitón og tilkynningahljóðstyrka í hverju tæki  
