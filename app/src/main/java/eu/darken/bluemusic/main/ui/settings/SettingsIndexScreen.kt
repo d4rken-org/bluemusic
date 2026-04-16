@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ListAlt
+import androidx.compose.material.icons.twotone.Backup
 import androidx.compose.material.icons.twotone.Devices
 import androidx.compose.material.icons.twotone.Favorite
 import androidx.compose.material.icons.twotone.Info
@@ -155,6 +156,16 @@ fun SettingsIndexScreen(
                     title = stringResource(R.string.devices_settings_label),
                     subtitle = stringResource(R.string.devices_settings_desc),
                     onClick = { onNavigateTo(Nav.Settings.Devices) },
+                )
+                SettingsDivider()
+            }
+
+            item {
+                SettingsBaseItem(
+                    icon = Icons.TwoTone.Backup,
+                    title = stringResource(R.string.backup_restore_settings_label),
+                    subtitle = stringResource(R.string.backup_restore_settings_desc),
+                    onClick = { onNavigateTo(Nav.Settings.BackupRestore) },
                 )
                 SettingsDivider()
             }

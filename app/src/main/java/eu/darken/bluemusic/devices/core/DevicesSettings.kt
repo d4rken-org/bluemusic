@@ -10,7 +10,9 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.common.BuildConfigWrap
 import eu.darken.bluemusic.common.datastore.PreferenceData
 import eu.darken.bluemusic.common.datastore.createValue
+import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.main.backup.core.DevicesSettingsBackup
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
@@ -87,6 +89,18 @@ class DevicesSettings @Inject constructor(
         val isEnabled: Boolean,
         val toggleEpoch: Long,
     )
+
+    suspend fun toBackup(): DevicesSettingsBackup = DevicesSettingsBackup(
+        isEnabled = isEnabled.value(),
+        restoreOnBoot = restoreOnBoot.value(),
+        lockedDevices = lockedDevices.value(),
+    )
+
+    suspend fun applyBackup(backup: DevicesSettingsBackup) {
+        setEnabled(backup.isEnabled)
+        restoreOnBoot.value(backup.restoreOnBoot)
+        lockedDevices.value(backup.lockedDevices)
+    }
 
     companion object {
         internal val TAG = logTag("Devices", "Settings")
