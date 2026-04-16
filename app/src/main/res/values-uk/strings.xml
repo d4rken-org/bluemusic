@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Залишатися активним, поки пристрій під\'єднаний, і зберігати зміни гучності, які не були викликані цим додатком.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Зберігати гучність при відключенні</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Захоплювати та зберігати поточні рівні гучності при відключенні цього пристрою.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">На деяких пристроях система перемикає маршрутизацію аудіо до того, як ми можемо зчитати рівні гучності. Якщо збережені значення не відповідають тому, що ви встановили, спробуйте натомість увімкнути «Спостерігати за змінами гучності».</string>
     <string name="devices_device_config_volume_lock_label">Блокування гучності</string>
     <string name="devices_device_config_volume_lock_desc">Будь-які зміни гучності, зроблені не через цей додаток, будуть скасовані, поки пристрій під\'єднаний.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Блокування гучності наразі перевизначає цю функцію.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Обмежувач частоти гучності</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Обмежує частоту змін гучності, щоб запобігти швидким або надмірним регулюванням.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Затримка збільшення гучності</string>
@@ -202,6 +204,23 @@
     <string name="settings_privacy_policy_label">Політика конфіденційності</string>
     <string name="settings_privacy_policy_desc">Відповідальне поводження з даними.</string>
     <string name="changelog_label">Список змін</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Резервне копіювання та відновлення</string>
+    <string name="backup_restore_settings_desc">Резервне копіювання та відновлення конфігурацій пристроїв і налаштувань.</string>
+    <string name="backup_restore_screen_title">Резервне копіювання та відновлення</string>
+    <string name="backup_restore_backup_desc">Створіть резервну копію всіх конфігурацій пристроїв і налаштувань програми.</string>
+    <string name="backup_restore_backup_action">Створити резервну копію</string>
+    <string name="backup_restore_restore_desc">Відновіть конфігурації пристроїв і налаштування програми з резервного файлу.</string>
+    <string name="backup_restore_restore_action">Вибрати файл резервної копії</string>
+    <string name="backup_restore_skip_existing_label">Пропустити наявні пристрої</string>
+    <string name="backup_restore_skip_existing_desc">Не перезаписувати пристрої, які вже налаштовано.</string>
+    <string name="backup_restore_preview_label">Попередній перегляд резервної копії</string>
+    <string name="backup_restore_preview_devices">%1$d пристроїв</string>
+    <string name="backup_restore_preview_overlap">%1$d із %2$d пристроїв вже налаштовано</string>
+    <string name="backup_restore_confirm_action">Відновити зараз</string>
+    <string name="backup_restore_success_backup">Резервну копію створено — збережено %1$d пристроїв.</string>
+    <string name="backup_restore_success_restore">Відновлення завершено — відновлено %1$d пристроїв, %2$d пропущено.</string>
+    <string name="backup_restore_version_warning">Цю резервну копію створено у версії %1$s. Ви використовуєте %2$s. Деякі налаштування можуть не відновитися коректно.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Сповіщення налагодження</string>
     <string name="debug_log_consent_title">Лог налагодження</string>
@@ -289,6 +308,7 @@
     <string name="label_status_adjusting_volumes">Налаштування гучності</string>
     <string name="label_premium_version">Преміум-версія</string>
     <string name="general_upgrade_action">Підвищити статус</string>
+    <string name="common_upgrade_required_label">Потрібне оновлення</string>
     <string name="description_premium_required_additional_devices">Керування додатковими пристроями можливе у преміум-версії.</string>
     <string name="description_premium_required_this_extra_option">Така додаткова функція вимагає преміум-версії цієї програми.</string>
     <string name="description_premium_upgrade_explanation">Щоб активувати додаткові функції та підтримати розробку, перейдіть на преміум-версію.</string>
@@ -297,6 +317,11 @@
     <string name="upgrade_prompt_upgrade_action">Підвищити</string>
     <string name="description_intro_purpose">Додаток дозволяє вашому Android запам\'ятовувати гучність різних пристроїв Bluetooth.</string>
     <string name="description_intro_premium">Якщо цей додаток Вам подобається, подумайте про перехід на преміум-версію. Це підтримає розробку, а Вам додасть декілька функцій.</string>
+    <string name="upgrade_benefit_unlimited_devices">Необмежена кількість профілів пристроїв</string>
+    <string name="upgrade_benefit_connection_actions">Автовідтворення, запуск програм та сповіщення про підключення</string>
+    <string name="upgrade_benefit_theme_customization">Налаштування теми, стилю та кольорів</string>
+    <string name="upgrade_benefit_power_controls">Блокування гучності та обмеження частоти</string>
+    <string name="upgrade_benefit_support">Підтримати незалежну розробку</string>
     <string name="description_intro_tap_the_button">Розпочнімо з додавання Вашого першого пристрою.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth вимкнений.</string>
     <string name="title_bluetooth_is_off">Bluetooth вимкнено</string>
@@ -390,7 +415,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Гучність (0–100)</string>
     <string name="devices_volume_input_error">Введи значення між %1$d і %2$d</string>
+    <string name="devices_volume_input_caption">Фактична гучність може округлятися до найближчого кроку, який підтримує ваш пристрій.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Заблокувати</string>
     <string name="devices_unlock_sliders_action">Розблокувати</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Показує статус блокування гучності для активного пристрою Bluetooth</string>
+    <string name="widget_no_device_label">Пристрій не підключено</string>
+    <string name="widget_bluetooth_off_label">Bluetooth вимкнено</string>
+    <string name="widget_error_label">Помилка віджета</string>
+    <string name="widget_preview_device_label">Мої навушники</string>
+    <string name="widget_config_title">Налаштування віджета</string>
+    <string name="widget_config_preview_label">Попередній перегляд</string>
+    <string name="widget_config_theme_label">Тема</string>
+    <string name="widget_config_bg_color_label">Колір фону</string>
+    <string name="widget_config_fg_color_label">Колір тексту</string>
+    <string name="widget_config_bg_alpha_label">Прозорість фону</string>
+    <string name="widget_config_show_label_toggle">Показувати назву пристрою</string>
+    <string name="widget_config_show_label_description">Показувати підключений пристрій над статусом блокування.</string>
+    <string name="widget_config_theme_green_label">Зелений</string>
+    <string name="widget_config_theme_red_label">Червоний</string>
+    <string name="widget_config_theme_custom_label">Власний</string>
 </resources>

@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">在此设备连接时保持活动状态，并保存非此应用引起的音量变化。</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">断开连接时保存音量</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">当此设备断开连接时捕获并保存当前音量级别。</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">在某些设备上，系统会在我们读取音量之前切换音频路由。如果保存的值与您设置的不符，请尝试改为启用\"监听音量变化\"。</string>
     <string name="devices_device_config_volume_lock_label">音量锁定</string>
     <string name="devices_device_config_volume_lock_desc">此设备连接时，非此应用进行的音量更改将被还原。</string>
+    <string name="devices_device_config_volume_lock_override_desc">音量锁定当前覆盖了此功能。</string>
     <string name="devices_device_config_volume_rate_limiter_label">音量频率限制器</string>
     <string name="devices_device_config_volume_rate_limiter_desc">限制音量变更的频率，以防止快速或过度的音量调整。</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">音量增加延迟</string>
@@ -199,6 +201,23 @@
     <string name="settings_privacy_policy_label">隐私政策</string>
     <string name="settings_privacy_policy_desc">负责任地处理数据。</string>
     <string name="changelog_label">更新日志</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">备份与恢复</string>
+    <string name="backup_restore_settings_desc">备份和恢复您的设备配置和设置。</string>
+    <string name="backup_restore_screen_title">备份与恢复</string>
+    <string name="backup_restore_backup_desc">创建所有设备配置和应用设置的备份。</string>
+    <string name="backup_restore_backup_action">创建备份</string>
+    <string name="backup_restore_restore_desc">从备份文件恢复设备配置和应用设置。</string>
+    <string name="backup_restore_restore_action">选择备份文件</string>
+    <string name="backup_restore_skip_existing_label">跳过已存在的设备</string>
+    <string name="backup_restore_skip_existing_desc">不覆盖已配置的设备。</string>
+    <string name="backup_restore_preview_label">备份预览</string>
+    <string name="backup_restore_preview_devices">%1$d 设备</string>
+    <string name="backup_restore_preview_overlap">%2$d 台设备中已配置 %1$d 台</string>
+    <string name="backup_restore_confirm_action">立即恢复</string>
+    <string name="backup_restore_success_backup">备份已创建 — 已保存 %1$d 台设备。</string>
+    <string name="backup_restore_success_restore">恢复完成 — 已恢复 %1$d 台设备，跳过 %2$d 台。</string>
+    <string name="backup_restore_version_warning">此备份是使用版本 %1$s 创建的。您当前运行的是 %2$s。部分设置可能无法正确恢复。</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">调试通知</string>
     <string name="debug_log_consent_title">调试日志</string>
@@ -280,6 +299,7 @@
     <string name="label_status_adjusting_volumes">调整音量</string>
     <string name="label_premium_version">高级版本</string>
     <string name="general_upgrade_action">升级</string>
+    <string name="common_upgrade_required_label">需要升级</string>
     <string name="description_premium_required_additional_devices">管理其他设备需要高级版本。</string>
     <string name="description_premium_required_this_extra_option">此额外选项需要此应用的高级版本。</string>
     <string name="description_premium_upgrade_explanation">获取高级版本以启用更多功能并支持开发。</string>
@@ -288,6 +308,11 @@
     <string name="upgrade_prompt_upgrade_action">升级</string>
     <string name="description_intro_purpose">此应用可让您的Android设备，记住来自不同蓝牙设备的音量。</string>
     <string name="description_intro_premium">如果您喜欢此应用，请考虑升级到高级版本。 以此支持开发并为您提供一些额外的功能。</string>
+    <string name="upgrade_benefit_unlimited_devices">无限设备配置</string>
+    <string name="upgrade_benefit_connection_actions">自动播放、启动应用及连接提醒</string>
+    <string name="upgrade_benefit_theme_customization">主题、样式和颜色自定义</string>
+    <string name="upgrade_benefit_power_controls">音量锁定和速率限制</string>
+    <string name="upgrade_benefit_support">支持独立开发</string>
     <string name="description_intro_tap_the_button">首先添加您的第一个设备。</string>
     <string name="description_bluetooth_is_disabled">蓝牙已禁用。</string>
     <string name="title_bluetooth_is_off">蓝牙已关闭</string>
@@ -378,7 +403,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">音量（0–100）</string>
     <string name="devices_volume_input_error">请输入 %1$d 到 %2$d 之间的值</string>
+    <string name="devices_volume_input_caption">实际音量可能会四舍五入到您设备支持的最近档位。</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">锁定</string>
     <string name="devices_unlock_sliders_action">解锁</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">显示当前连接蓝牙设备的音量锁定状态</string>
+    <string name="widget_no_device_label">未连接设备</string>
+    <string name="widget_bluetooth_off_label">蓝牙已关闭</string>
+    <string name="widget_error_label">小组件错误</string>
+    <string name="widget_preview_device_label">我的耳机</string>
+    <string name="widget_config_title">小组件设置</string>
+    <string name="widget_config_preview_label">预览</string>
+    <string name="widget_config_theme_label">主题</string>
+    <string name="widget_config_bg_color_label">背景颜色</string>
+    <string name="widget_config_fg_color_label">文字颜色</string>
+    <string name="widget_config_bg_alpha_label">背景透明度</string>
+    <string name="widget_config_show_label_toggle">显示设备名称</string>
+    <string name="widget_config_show_label_description">在锁定状态上方显示已连接的设备。</string>
+    <string name="widget_config_theme_green_label">绿色</string>
+    <string name="widget_config_theme_red_label">红色</string>
+    <string name="widget_config_theme_custom_label">自定义</string>
 </resources>

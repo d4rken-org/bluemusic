@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">Requereix BVM FOSS</string>
     <string name="upgrade_prompt_title">Millora a BVM FOSS</string>
     <string name="upgrade_prompt_body">Desbloquegeu funcions addicionals i convertiu-vos en mecenes per donar suport al continuïtat del suport!</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager no té anuncis i no ven dades d’usuari. El desenvolupament continuat només és possible gràcies a vosaltres.</string>
     <string name="upgrade_screen_how_title">Com ajudar</string>
     <string name="upgrade_screen_how_body">Convertiu-vos en mecenes i patrocinadors del desenvolupament! Toqueu el botó següent per activar totes les funcions addicionals i obrir el meu perfil de patrocinadors del GitHub.</string>
-    <string name="upgrade_screen_why_title">Això evoca 🪄</string>
+    <string name="upgrade_screen_why_title">En la mescla</string>
     <string name="upgrade_screen_why_body">• Un desenvolupador motivat 🧙\n• Dispositius il·limitats ➡️➡️\n• Accions addicionals ⚙️\ni més…</string>
     <string name="upgrade_screen_sponsor_action">Desenvolupament del patrocinador</string>
     <string name="upgrade_screen_sponsor_action_hint">L\'alternativa són els anuncis, les analítiques i Google Play 🙁</string>

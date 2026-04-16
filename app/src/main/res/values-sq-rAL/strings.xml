@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Qëndro aktiv ndërsa kjo pajisje lidhet dhe ruaj ndryshimet e volumit që nuk janë shkaktuar nga ky aplikacion.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Ruaj volumin në shkëputje</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Kap dhe ruaj nivelet aktuale të volumit kur kjo pajisje shkëputet.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Në disa pajisje, sistemi ndryshon drejtimin e audios para se të mund të lexojmë volumet. Nëse vlerat e ruajtura nuk përputhen me ato që keni vendosur, provoni të aktivizoni \"Vëzhgo ndryshimet e volumit\" Në vend.</string>
     <string name="devices_device_config_volume_lock_label">Zbritje e volumit</string>
     <string name="devices_device_config_volume_lock_desc">Çdo ndryshim i volumit jo i bërë përmes këtij aplikacioni do të kthehet ndërsa kjo pajisje lidhet.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Bllokimi i volumit aktualisht mbishkruan këtë funksion.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitues norma vëllimi</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limito frekuencën e ndryshimeve të volumit për të parandaluar përshtatjet e shpejta ose të tepërta të volumit.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Vonesa rritjeje vëllimi</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Politika e privatësisë</string>
     <string name="settings_privacy_policy_desc">Trajtim përgjegjës i të dhënave.</string>
     <string name="changelog_label">Ndryshimet regjistri</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Rezervim &amp; Rivendosje</string>
+    <string name="backup_restore_settings_desc">Rezervoni dhe rivendosni konfigurimet dhe cilësimet e pajisjes suaj.</string>
+    <string name="backup_restore_screen_title">Rezervim &amp; Rivendosje</string>
+    <string name="backup_restore_backup_desc">Krijoni një rezervim të të gjitha konfigurimeve të pajisjes dhe cilësimeve të aplikacionit.</string>
+    <string name="backup_restore_backup_action">Krijo rezervim</string>
+    <string name="backup_restore_restore_desc">Rivendos konfigurimet e pajisjes dhe cilësimet e aplikacionit nga një skedar rezervimi.</string>
+    <string name="backup_restore_restore_action">Zgjidh skedarin e rezervimit</string>
+    <string name="backup_restore_skip_existing_label">Kapërceni pajisjet ekzistuese</string>
+    <string name="backup_restore_skip_existing_desc">Mos mbishkruani pajisjet që janë konfiguruar tashmë.</string>
+    <string name="backup_restore_preview_label">Pamje paraprake e rezervimit</string>
+    <string name="backup_restore_preview_devices">%1$d pajisje</string>
+    <string name="backup_restore_preview_overlap">%1$d nga %2$d pajisje janë konfiguruar tashmë</string>
+    <string name="backup_restore_confirm_action">Rivendos tani</string>
+    <string name="backup_restore_success_backup">Rezervimi u krijua — %1$d pajisje u ruajtën.</string>
+    <string name="backup_restore_success_restore">Rivendosja u përfundua — %1$d pajisje u rivendosën, %2$d u kapërcyen.</string>
+    <string name="backup_restore_version_warning">Ky rezervim u krijua me versionin %1$s. Ju po përdorni %2$s. Disa cilësime mund të mos rivendosen saktë.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Njoftimet e debugging</string>
     <string name="debug_log_consent_title">Regjistri i gabimit</string>
@@ -277,12 +296,13 @@
     <string name="action_set">Vendos</string>
     <string name="action_cancel">Anulo</string>
     <string name="label_invalid_input">Hyrje e pavlefshme</string>
-    <string name="action_reset">Zgjojë</string>
+    <string name="action_reset">Rivendos</string>
     <string name="label_no_connected_devices">Nuk ka paisje të lidhur</string>
-    <string name="label_status_idle">Nëpërmjet</string>
+    <string name="label_status_idle">Joaktiv</string>
     <string name="label_status_adjusting_volumes">Përshtatje e volumeve</string>
     <string name="label_premium_version">Versioni premium</string>
     <string name="general_upgrade_action">Ngriti</string>
+    <string name="common_upgrade_required_label">Kërkohet përmirësim</string>
     <string name="description_premium_required_additional_devices">Menaxhimi i pajisjeve shtesë kërkon versionin premium.</string>
     <string name="description_premium_required_this_extra_option">Ky opsion shtesë kërkon versionin premium të këtij aplikacioni.</string>
     <string name="description_premium_upgrade_explanation">Mer versionin premium për të aktivizuar veçori shtesë dhe për të mbështetur zhvillimin.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Ngriti</string>
     <string name="description_intro_purpose">Ky aplikacion lejon pajisjen tuaj Android të mbajë mend volumin e pajisjeve të ndryshme Bluetooth.</string>
     <string name="description_intro_premium">Nëse të pëlqen ky aplikacion, konsideroj të ngritësh në versionin premium. Kjo mbështet zhvillimin dhe të merr disa veçori shtesë.</string>
+    <string name="upgrade_benefit_unlimited_devices">Profile të pakufizuara pajisje</string>
+    <string name="upgrade_benefit_connection_actions">Luajtje automatike, hapje aplikacioni dhe njoftime lidhjeje</string>
+    <string name="upgrade_benefit_theme_customization">Personalizim i temës, stilit dhe ngjyrës</string>
+    <string name="upgrade_benefit_power_controls">Bllokimi i volumit dhe kufizimi i shpejtësisë</string>
+    <string name="upgrade_benefit_support">Mbështetni zhvillimin e pavarur</string>
     <string name="description_intro_tap_the_button">Filloje duke shtuar pajisjen tuaj të parë.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth është i çaktivizuar.</string>
     <string name="title_bluetooth_is_off">Bluetooth është Mbyllur</string>
@@ -364,7 +389,7 @@
     <string name="devices_app_selection_currently_selected">Aktualisht i zgjedhur</string>
     <string name="devices_app_selection_selected_count">%d aplikacione të përzgjedhur</string>
     <string name="general_navigate_back_action">Navigo mbrapa</string>
-    <string name="general_reset_action">Zgjojë</string>
+    <string name="general_reset_action">Rivendos</string>
     <string name="general_clear_action">Pastro</string>
     <string name="general_save_action">Ruaj</string>
     <!-- Device option indicators -->
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Vëllimi (0–100)</string>
     <string name="devices_volume_input_error">Vendos një vlerë midis %1$d dhe %2$d</string>
+    <string name="devices_volume_input_caption">Volumi aktual mund të rrumbullakoset në hapin më të afërt që pajisja juaj mbëshëtet.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Blloko</string>
     <string name="devices_unlock_sliders_action">Zhblloko</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Tregon gjendjen e bllokimit të volumit për pajisjen aktive Bluetooth</string>
+    <string name="widget_no_device_label">Asnjë pajisje e lidhur</string>
+    <string name="widget_bluetooth_off_label">Bluetooth është i çaktivizuar</string>
+    <string name="widget_error_label">Gabim i miniaplikacionit</string>
+    <string name="widget_preview_device_label">Kufjet e mia</string>
+    <string name="widget_config_title">Cilësimet e miniaplikacionit</string>
+    <string name="widget_config_preview_label">Pamje paraprake</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Ngjyra e sfondit</string>
+    <string name="widget_config_fg_color_label">Ngjyra e tekstit</string>
+    <string name="widget_config_bg_alpha_label">Transparenca e sfondit</string>
+    <string name="widget_config_show_label_toggle">Trego emrin e pajisjes</string>
+    <string name="widget_config_show_label_description">Trego pajisjen e lidhur mbi gjendjen e bllokimit.</string>
+    <string name="widget_config_theme_green_label">Jeshile</string>
+    <string name="widget_config_theme_red_label">Kuq</string>
+    <string name="widget_config_theme_custom_label">Me porosi</string>
 </resources>

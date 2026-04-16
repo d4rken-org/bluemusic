@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">ဤကိရိယာ ချိတ်ဆက်နေစဉ် အသက်ဝင်နေ၍ ဤအပ် မဖြစ်ပေါ် စေသော အသံ ပြောင်းလဲမှုများ သိမ်းဆည်းမည်။</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ဖြတ်တောက်သောအခါ အသံ သိမ်းဆည်းမည်</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">ဤကိရိယာ ဖြတ်တောက်သောအခါ လက်ရှိ အသံအဆင့်များကို ဖမ်းယူ၍ သိမ်းဆည်းမည်။</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">စက်အချို့တွင်၊ ကျွန်ုပ်တို့ အသံနှုန်းများ ဖတ်ရှုနိုင်မီ စနစ်သည် အသံဖြတ်သန်းမှုကို ပြောင်းလဲသွားတတ်သည်။ သိမ်းဆည်းထားသောတန်ဖိုးများသည် သင်သတ်မှတ်ထားသည့်နှင့် မကိုက်ညီပါက \"အသံနှုန်း ပြောင်းလဲမှုများ စောင့်ကြည့်ရန်\" ကို ဖွင့်ကြည့်ပါ။</string>
     <string name="devices_device_config_volume_lock_label">အသံ သော့ခတ်</string>
     <string name="devices_device_config_volume_lock_desc">ဤကိရိယာ ချိတ်ဆက်နေစဉ် ဤအပ်မှတစ်ဆင့် မဟုတ်သော အသံပြောင်းလဲမှုများ ပြန်ထူးထားမည်။</string>
+    <string name="devices_device_config_volume_lock_override_desc">အသံအတိုးအကျယ် လော့ခ်သည် လောလောဆယ် ဤအင်္ဂါရပ်ကို အစားထိုးနေသည်။</string>
     <string name="devices_device_config_volume_rate_limiter_label">အသံအတိုးအကျယ်နှုန်းကန့်သတ်ကိရိယာ</string>
     <string name="devices_device_config_volume_rate_limiter_desc">အသံအတိုးအကျယ်ပြောင်းလဲမှုများ၏ကြိမ်ဆင်းသက်မှုကိုကန့်သတ်ပြီးမြန်လျှင်သို့မဟုတ်အလွန်အကျွံအသံထိန်းချုပ်မှုများကိုကာကွယ်ပါ။</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">အသံအတိုးအကျယ်တိုးစည်းမျဉ်း</string>
@@ -199,6 +201,22 @@
     <string name="settings_privacy_policy_label">ကိုယ်ရေးအချက်အလက် မူဝါဒ</string>
     <string name="settings_privacy_policy_desc">ဒေတာကို တာဝန်ယူမှုဖြင့် ကိုင်တွယ်ခြင်း</string>
     <string name="changelog_label">ပြောင်းလဲမှု မှတ်တမ်း</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Backup နှင့် Restore</string>
+    <string name="backup_restore_settings_desc">သင့်ကိရိယာ ဖွဲ့စည်းမှုများနှင့် ဆက်တင်များကို backup လုပ်ပြီး ပြန်လည်ရယူပါ။</string>
+    <string name="backup_restore_screen_title">Backup နှင့် Restore</string>
+    <string name="backup_restore_backup_desc">သင့်ကိရိယာ ဖွဲ့စည်းမှုများနှင့် အက်ပ်ဆက်တင်များ အားလုံးကို backup ဖန်တီးပါ။</string>
+    <string name="backup_restore_backup_action">Backup ဖန်တီးရန်</string>
+    <string name="backup_restore_restore_desc">Backup ဖိုင်မှ ကိရိယာ ဖွဲ့စည်းမှုများနှင့် အက်ပ်ဆက်တင်များကို ပြန်လည်ရယူပါ။</string>
+    <string name="backup_restore_restore_action">Backup ဖိုင် ရွေးပါ</string>
+    <string name="backup_restore_skip_existing_label">ရှိပြီးသား ကိရိယာများကို ကျော်သွားပါ</string>
+    <string name="backup_restore_skip_existing_desc">ဖွဲ့စည်းပြီးသား ကိရိယာများကို မထပ်ရေးပါနှင့်။</string>
+    <string name="backup_restore_preview_label">Backup အကြိုကြည့်ရှုမှု</string>
+    <string name="backup_restore_preview_devices">%1$d ကိရိယာများ</string>
+    <string name="backup_restore_confirm_action">ယခုပြန်လည်ရယူပါ</string>
+    <string name="backup_restore_success_backup">Backup ဖန်တီးပြီး — %1$d ကိရိယာများ သိမ်းဆည်းပြီး။</string>
+    <string name="backup_restore_success_restore">ပြန်လည်ရယူမှု ပြီးဆုံး — %1$d ကိရိယာများ ပြန်လည်ရယူပြီး၊ %2$d ခု ကျော်သွားသည်။</string>
+    <string name="backup_restore_version_warning">ဤ backup ကို ဗားရှင်း %1$s ဖြင့် ဖန်တီးထားသည်။ သင် %2$s ဖြင့် လည်ပတ်နေသည်။ ဆက်တင်အချို့ မှန်မှန်ကန်ကန် ပြန်လည်ရယူနိုင်မည် မဟုတ်ပါ။</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug အကြောင်းကြားချက်များ</string>
     <string name="debug_log_consent_title">Debug မှတ်တမ်း</string>
@@ -280,6 +298,7 @@
     <string name="label_status_adjusting_volumes">အသံ ချိန်ညှိနေသည်</string>
     <string name="label_premium_version">Premium မျိုးကွဲ</string>
     <string name="general_upgrade_action">အဆင့်မြှင့်တင်မည်</string>
+    <string name="common_upgrade_required_label">အဆင့်မြှင့်တင်ရန် လိုအပ်သည်</string>
     <string name="description_premium_required_additional_devices">ထပ်တိုးသော ကိရိယာများ စီမံရန် premium မျိုးကွဲ လိုအပ်သည်။</string>
     <string name="description_premium_required_this_extra_option">ဤ ထပ်ဆောင်း ရွေးချယ်မှုသည် ဤအပ်၏ premium မျိုးကွဲ လိုအပ်သည်။</string>
     <string name="description_premium_upgrade_explanation">ထပ်ဆောင်း လုပ်ဆောင်ချက်များ ဖွင့်ရန်နှင့် ဖွံ့ဖြိုးမှုကို ပံ့ပိုးရန် premium မျိုးကွဲ ရယူပါ။</string>
@@ -288,6 +307,11 @@
     <string name="upgrade_prompt_upgrade_action">အဆင့်မြှင့်တင်မည်</string>
     <string name="description_intro_purpose">ဤအပ်သည် သင့် Android ကိရိယာကို မတူညီသော Bluetooth ကိရိယာများ၏ အသံကို မှတ်မိစေသည်။</string>
     <string name="description_intro_premium">ဤအပ်ကို ကြိုက်လျှင် premium မျိုးကွဲသို့ အဆင့်မြှင့်တင်ရန် စဉ်းစားပါ။ ဖွံ့ဖြိုးမှုကို ပံ့ပိုးပြီး ထပ်ဆောင်း လုပ်ဆောင်ချက်ကိုလည်း ရနိုင်သည်။</string>
+    <string name="upgrade_benefit_unlimited_devices">ကန့်သတ်မှုမရှိသော ကိရိယာ ပရိုဖိုင်များ</string>
+    <string name="upgrade_benefit_connection_actions">အလိုအလျောက်ဖွင့်ခြင်း၊ အက်ပ်ဖွင့်ခြင်းနှင့် ချိတ်ဆက်မှု သတိပေးချက်များ</string>
+    <string name="upgrade_benefit_theme_customization">အပြင်အဆင်၊ ပုံစံနှင့် အရောင် စိတ်ကြိုက်ပြင်ဆင်မှု</string>
+    <string name="upgrade_benefit_power_controls">အသံအတိုးအကျယ် လော့ခ်နှင့် နှုန်ကန့်သတ်ခြင်း</string>
+    <string name="upgrade_benefit_support">လွတ်လပ်သော ဖန်တီးမှုကို ပံ့ပိုးပါ</string>
     <string name="description_intro_tap_the_button">ပထမဆုံး ကိရိယာ ထည့်ခြင်းဖြင့် စတင်ပါ။</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ပိတ်ထားသည်။</string>
     <string name="title_bluetooth_is_off">Bluetooth ပိတ်ထားသည်</string>
@@ -378,7 +402,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">အသံ (0–100)</string>
     <string name="devices_volume_input_error">%1$d နှင့် %2$d အကြား တန်ဖိုး ထည့်ပါ</string>
+    <string name="devices_volume_input_caption">တကယ့်အသံအတိုးအကျယ်သည် သင့်ကိရိယာ ထောထာကမှုအဆင့် အနီးဆုံးဆုံးသိုမှ လုံးလည်နိုင်သည်။</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">သော့ခတ်</string>
     <string name="devices_unlock_sliders_action">သော့ဖွင့်</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">လက်ရှိ Bluetooth ကိရိယာတီသော အသံအတိုးအကျယ် လော့ခ်အခရေအနေကို ပြသသည်</string>
+    <string name="widget_no_device_label">ကိရိယာ မချိတ်ဆက်ရသေား</string>
+    <string name="widget_bluetooth_off_label">Bluetooth ပိတ်ထားသည်</string>
+    <string name="widget_error_label">Widget အမှား</string>
+    <string name="widget_preview_device_label">ကျွန်ုပ်သော နာကြပ်</string>
+    <string name="widget_config_title">Widget ဆက်တင်များ</string>
+    <string name="widget_config_preview_label">အကြိုကြည့်ရှုမှု</string>
+    <string name="widget_config_theme_label">အပြင်အဆင်</string>
+    <string name="widget_config_bg_color_label">နောက်ခံအရောင်</string>
+    <string name="widget_config_fg_color_label">စာသားအရောင်</string>
+    <string name="widget_config_bg_alpha_label">နောက်ခံမြင်နိုင်မှု</string>
+    <string name="widget_config_show_label_toggle">ကိရိယာအမည် ပြပါ</string>
+    <string name="widget_config_show_label_description">ချိတ်ဆက်ထားသော ကိရိယာကို လော့ခ်အခရေအနေ အပော်သွင့် ပြပါ။</string>
+    <string name="widget_config_theme_green_label">စိမ်းရောင်</string>
+    <string name="widget_config_theme_red_label">နီရောင်</string>
+    <string name="widget_config_theme_custom_label">စိတ်ကြိုက်</string>
 </resources>

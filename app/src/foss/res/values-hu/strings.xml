@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">BVM FOSS szükséges</string>
     <string name="upgrade_prompt_title">Frissítés BVM FOSS-ra</string>
     <string name="upgrade_prompt_body">Fedezze fel a további funkciókat, és legyen patron támogató, hogy támogassa a folyamatos fejlesztést!</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">A Bluetooth Volume Manager nem tartalmaz hirdetéseket, és nem értékesít felhasználói adatokat. A folyamatos fejlesztést csak te teszed lehetővé.</string>
     <string name="upgrade_screen_how_title">Hogyan lehet segíteni</string>
     <string name="upgrade_screen_how_body">Legyen patron támogató és szponzorálja a fejlesztést! Kattintson az alábbi gombra az összes extra funkció aktiválásához és a GitHub Sponsors profilom megnyitásához.</string>
-    <string name="upgrade_screen_why_title">Ez varázsol 🪄</string>
+    <string name="upgrade_screen_why_title">A keverékben</string>
     <string name="upgrade_screen_why_body">• Egy motivált fejlesztő 🧙
 • Korlátlan eszközök ➡️➡️
 • Extra műveletek ⚙️

@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Aktiv bleiben, während dieses Gerät verbunden ist und Lautstärkeänderungen speichern, die nicht von dieser App verursacht wurden.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Lautstärke beim Trennen speichern</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Aktuelle Lautstärkepegel erfassen und speichern, wenn dieses Gerät getrennt wird.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Auf manchen Geräten wechselt das System das Audio-Routing, bevor wir die Lautstärken auslesen können. Falls die gespeicherten Werte nicht mit deinen Einstellungen übereinstimmen, versuche stattdessen „Lautstärkeänderungen beobachten“ zu aktivieren.</string>
     <string name="devices_device_config_volume_lock_label">Lautstärkesperre</string>
     <string name="devices_device_config_volume_lock_desc">Alle nicht über diese App vorgenommenen Lautstärkeänderungen werden zurückgesetzt, während dieses Gerät verbunden ist.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Lautstärkesperre überschreibt diese Funktion derzeit.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Lautstärke-Begrenzer</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Begrenzt die Häufigkeit von Lautstärkeänderungen, um schnelle oder übermäßige Lautstärke-Anpassungen zu verhindern.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Erhöhungsverzögerung</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Datenschutzbestimmungen</string>
     <string name="settings_privacy_policy_desc">Verantwortungsvoller Umgang mit Daten.</string>
     <string name="changelog_label">Änderungsprotokoll</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Sichern &amp; Wiederherstellen</string>
+    <string name="backup_restore_settings_desc">Sichere und stelle deine Gerätekonfigurationen und Einstellungen wieder her.</string>
+    <string name="backup_restore_screen_title">Sichern &amp; Wiederherstellen</string>
+    <string name="backup_restore_backup_desc">Erstelle eine Sicherung aller deiner Gerätekonfigurationen und App-Einstellungen.</string>
+    <string name="backup_restore_backup_action">Sicherung erstellen</string>
+    <string name="backup_restore_restore_desc">Gerätekonfigurationen und App-Einstellungen aus einer Sicherungsdatei wiederherstellen.</string>
+    <string name="backup_restore_restore_action">Sicherungsdatei auswählen</string>
+    <string name="backup_restore_skip_existing_label">Vorhandene Geräte überspringen</string>
+    <string name="backup_restore_skip_existing_desc">Geräte, die bereits konfiguriert sind, nicht überschreiben.</string>
+    <string name="backup_restore_preview_label">Sicherungsvorschau</string>
+    <string name="backup_restore_preview_devices">%1$d Geräte</string>
+    <string name="backup_restore_preview_overlap">%1$d von %2$d Geräten bereits konfiguriert</string>
+    <string name="backup_restore_confirm_action">Jetzt wiederherstellen</string>
+    <string name="backup_restore_success_backup">Sicherung erstellt — %1$d Geräte gespeichert.</string>
+    <string name="backup_restore_success_restore">Wiederherstellung abgeschlossen — %1$d Geräte wiederhergestellt, %2$d übersprungen.</string>
+    <string name="backup_restore_version_warning">Diese Sicherung wurde mit Version %1$s erstellt. Du verwendest %2$s. Einige Einstellungen werden möglicherweise nicht korrekt wiederhergestellt.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug-Benachrichtigungen</string>
     <string name="debug_log_consent_title">Debug-Protokoll</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Lautstärken werden angepasst</string>
     <string name="label_premium_version">Premium-Version</string>
     <string name="general_upgrade_action">Upgrade</string>
+    <string name="common_upgrade_required_label">Upgrade erforderlich</string>
     <string name="description_premium_required_additional_devices">Das Verwalten zusätzlicher Geräte erfordert die Premium-Version.</string>
     <string name="description_premium_required_this_extra_option">Diese Extraoption erfordert die Premium-Version dieser App.</string>
     <string name="description_premium_upgrade_explanation">Hol Dir die Premium-Version, um zusätzliche Funktionen freizuschalten und die Entwicklung zu unterstützen.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Upgraden</string>
     <string name="description_intro_purpose">Diese App erlaubt es Deinem Android-Gerät, die Lautstärke verschiedener Bluetooth-Geräte zu speichern.</string>
     <string name="description_intro_premium">Falls Dir diese App gefällt, erwäge eine Aufwertung zur Premium-Version. Dies unterstützt die Entwicklung und verschafft Dir einige Zusatzfunktionen.</string>
+    <string name="upgrade_benefit_unlimited_devices">Unbegrenzte Geräteprofile</string>
+    <string name="upgrade_benefit_connection_actions">Autoplay, App-Start und Verbindungsbenachrichtigungen</string>
+    <string name="upgrade_benefit_theme_customization">Design-, Stil- und Farbanpassung</string>
+    <string name="upgrade_benefit_power_controls">Lautstärkesperre und Ratenbegrenzung</string>
+    <string name="upgrade_benefit_support">Unabhängige Entwicklung unterstützen</string>
     <string name="description_intro_tap_the_button">Beginne durch Hinzufügen Deines ersten Geräts.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ist ausgeschaltet.</string>
     <string name="title_bluetooth_is_off">Bluetooth ist aus</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Lautstärke (0–100)</string>
     <string name="devices_volume_input_error">Gib einen Wert zwischen %1$d und %2$d ein</string>
+    <string name="devices_volume_input_caption">Die tatsächliche Lautstärke wird möglicherweise auf die nächste Stufe gerundet, die dein Gerät unterstützt.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Sperren</string>
     <string name="devices_unlock_sliders_action">Entsperren</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Zeigt den Lautstärrkesperrenstatus für das aktive Bluetooth-Gerät an</string>
+    <string name="widget_no_device_label">Kein Gerät verbunden</string>
+    <string name="widget_bluetooth_off_label">Bluetooth ist aus</string>
+    <string name="widget_error_label">Widget-Fehler</string>
+    <string name="widget_preview_device_label">Meine Kopfhörer</string>
+    <string name="widget_config_title">Widget-Einstellungen</string>
+    <string name="widget_config_preview_label">Vorschau</string>
+    <string name="widget_config_theme_label">Design auswählen</string>
+    <string name="widget_config_bg_color_label">Hintergrundfarbe</string>
+    <string name="widget_config_fg_color_label">Textfarbe</string>
+    <string name="widget_config_bg_alpha_label">Hintergrundtransparenz</string>
+    <string name="widget_config_show_label_toggle">Gerätenamen anzeigen</string>
+    <string name="widget_config_show_label_description">Zeigt das verbundene Gerät über dem Sperrstatus an.</string>
+    <string name="widget_config_theme_green_label">Grün</string>
+    <string name="widget_config_theme_red_label">Rot</string>
+    <string name="widget_config_theme_custom_label">Benutzerdefiniert</string>
 </resources>

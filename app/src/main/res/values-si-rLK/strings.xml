@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">මෙම උපාංගය සම්බන්ධ වී ඇති විට සක්‍රිය ව සිටින්න සහ මෙම යෙදුමෙන් නොකළ හඩ වෙනස්කම් සුරකින්න.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">විසන්ධිය හදී හඩ සුරකින්න</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">මෙම උපාංගය විසන්ධි වූ විට වත්මන් හඩ මට්ටම් ග්‍රහණය කර සුරකින්න.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">සමහර උපාංගවල, ශ්‍රව්‍ය මාර්ගගත කිරීම අප විසින් ශබ්ද මට්ටම් කියවීමට පෙර පද්ධතිය මාරු කරයි. සුරකින ලද අගයන් ඔබ සකසා ඇති ඒවාට නොගැළපේ නම්, ඒ වෙනුවට \"ශබ්ද මට්ටම් වෙනස්කම් නිරීක්ෂණය කරන්න\" සක්‍රීය කිරීමට උත්සාහ කරන්න.</string>
     <string name="devices_device_config_volume_lock_label">හඩ අගුලන්න</string>
     <string name="devices_device_config_volume_lock_desc">මෙම යෙදුම හරහා නොකළ ඕනෑම හඩ වෙනස්කමක් මෙම උපාංගය සම්බන්ධ වී ඇති ඕනෑම දිනෙ ආපසු හැරෙනු ඇත.</string>
+    <string name="devices_device_config_volume_lock_override_desc">වර්තමානයේ ශබ්ද අගුල මෙම විශේෂාංගය ඉක්මවා යයි.</string>
     <string name="devices_device_config_volume_rate_limiter_label">හඩ වේගය සීමාකාරක</string>
     <string name="devices_device_config_volume_rate_limiter_desc">වේග හඩ වෙනස්කම් වලට සීමාකරණ ක්‍රියාවලිය තිබිය, ශීඝ්‍ර හෝ අධික හඩ සකසීම් වළක්වන්න.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">හඩ වැඩිකිරීම ප්‍රමාණකාරකතාව</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">රහස්‍යතා ප්‍රතිපත්තිය</string>
     <string name="settings_privacy_policy_desc">දත්ත වගකිවයුතු ලෙස හැසිරවීම.</string>
     <string name="changelog_label">වෙනස් කිරීම් ලැයිස්තුව</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">උපස්ථ සහ ප්‍රතිසාධනය</string>
+    <string name="backup_restore_settings_desc">ඔබේ උපාංග වින්‍යාසයන් සහ සැකසුම් උපස්ථ කර ප්‍රතිසාධනය කරන්න.</string>
+    <string name="backup_restore_screen_title">උපස්ථ සහ ප්‍රතිසාධනය</string>
+    <string name="backup_restore_backup_desc">ඔබේ සියළු උපාංග වින්‍යාසයන් සහ යෙදුම් සැකසුම් උපස්ථයක් සාදන්න.</string>
+    <string name="backup_restore_backup_action">උපස්ථය සාදන්න</string>
+    <string name="backup_restore_restore_desc">උපස්ථ ගොනුවකින් උපාංග වින්‍යාසයන් සහ යෙදුම් සැකසුම් ප්‍රතිසාධනය කරන්න.</string>
+    <string name="backup_restore_restore_action">උපස්ථ ගොනුව තෝරන්න</string>
+    <string name="backup_restore_skip_existing_label">පවතින උපාංග මඟ හරින්න</string>
+    <string name="backup_restore_skip_existing_desc">දැනටමත් වින්‍යාස කළ උපාංග නැවත ලිවිය නොකරන්න.</string>
+    <string name="backup_restore_preview_label">උපස්ථ පූර්වදර්ශනය</string>
+    <string name="backup_restore_preview_devices">උපාංග %1$d</string>
+    <string name="backup_restore_preview_overlap">%2$d උපාංගයෙන් %1$d දැනටමත් වින්‍යාස කර ඇත</string>
+    <string name="backup_restore_confirm_action">දැන් ප්‍රතිසාධනය කරන්න</string>
+    <string name="backup_restore_success_backup">උපස්ථය සාදා ගන්නා ලදී — උපාංග %1$d සුරකින ලදී.</string>
+    <string name="backup_restore_success_restore">ප්‍රතිසාධනය සම්පූර්ණයි — උපාංග %1$d ප්‍රතිසාධනය කරන ලදී, %2$d මඟ හරින ලදී.</string>
+    <string name="backup_restore_version_warning">මෙම උපස්ථය %1$s අනුවාදය සමඟ සාදා ඇත. ඔබ %2$s ධාවනය කරයි. සමහර සැකසුම් නිවැරදිව ප්‍රතිසාධනය නොවිය හැක.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug දැනුම්දීම්</string>
     <string name="debug_log_consent_title">Debug ලොගය</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">හඩ සකසමින්</string>
     <string name="label_premium_version">Premium අනුවාදය</string>
     <string name="general_upgrade_action">උසස් කරන්න</string>
+    <string name="common_upgrade_required_label">උත්‍යාජනය අවශ්‍යයි</string>
     <string name="description_premium_required_additional_devices">අමතර උපාංගයන් කළමනාකරණය සඳහා premium අනුවාදය අවශ්‍ය වෙයි.</string>
     <string name="description_premium_required_this_extra_option">මෙම අමතර විකල්පය සඳහා මෙම යෙදුමේ premium අනුවාදය අවශ්‍ය වෙයි.</string>
     <string name="description_premium_upgrade_explanation">අමතර ලක්ෂණ සබල කිරීමට සහ සංවර්ධනය සඳහා සහාය වීමට premium අනුවාදය ලබා ගන්න.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">උසස් කරන්න</string>
     <string name="description_intro_purpose">මෙම යෙදුම ඔබේ Android උපාංගයට විවිධ Bluetooth උපාංගයන්හි හඩ මට්ටම් මතක් කර ගැනීමට ඉඩ දෙයි.</string>
     <string name="description_intro_premium">ඔබට මෙම යෙදුම කිනාකරීමක් ඇත්නම්, premium අනුවාදයට උසස් කිරීම සලකා බලන්න. එය සංවර්ධනය සහාය කරයි සහ ඔබට මිළ ගණන් ලක්ෂණ ලබා ගනී.</string>
+    <string name="upgrade_benefit_unlimited_devices">අසීමිත උපාංග පැතිකඩ</string>
+    <string name="upgrade_benefit_connection_actions">ස්වයංක්‍රීය ධාවනය, යෙදුම් දියත් කිරීම සහ සම්බන්ධ ඇඟවීම්</string>
+    <string name="upgrade_benefit_theme_customization">තේමාව, ශැලිය සහ වර්ණ අභිරුඩිකරණය</string>
+    <string name="upgrade_benefit_power_controls">ශබ්ද අගුල සහ වේග සීමාව</string>
+    <string name="upgrade_benefit_support">ස්වාධීන සංවර්ධනයට සහාය දෙන්න</string>
     <string name="description_intro_tap_the_button">ඔබේ පළමු උපාංගය එකතු කිරීමෙන් ආරම්භ කරන්න.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth අක්‍රිය කර ඇත.</string>
     <string name="title_bluetooth_is_off">Bluetooth ක්‍රියාවිරහිත</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">හඩ (0–100)</string>
     <string name="devices_volume_input_error">%1$d සහ %2$d අතර අගයක් ඇතුළු කරන්න</string>
+    <string name="devices_volume_input_caption">සැබා ශබ්දය ඔබේ උපාංගය සහාය දක්වන ආසන්නතම පියවරට වටකල් හැක.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">අගුලන්න</string>
     <string name="devices_unlock_sliders_action">අගුල ඇරීම</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">සක්‍රිය Bluetooth උපාංගය සංදහා ශබ්ද අගුල තත්ත්වය පෙන්වයි</string>
+    <string name="widget_no_device_label">සම්බන්ධ වූ උපාංගයක් නැත</string>
+    <string name="widget_bluetooth_off_label">Bluetooth අක්‍රියයි</string>
+    <string name="widget_error_label">විජට් දොෂය</string>
+    <string name="widget_preview_device_label">මගේ හෙඩ්ොන්</string>
+    <string name="widget_config_title">විජට් සැකසුම්</string>
+    <string name="widget_config_preview_label">පූර්වදර්ශනය</string>
+    <string name="widget_config_theme_label">තේමාව</string>
+    <string name="widget_config_bg_color_label">පසුබිම් වර්ණය</string>
+    <string name="widget_config_fg_color_label">පෙ඼ වර්ණය</string>
+    <string name="widget_config_bg_alpha_label">පසුබිම් අපාරදර්ශිතාව</string>
+    <string name="widget_config_show_label_toggle">උපාංගයේ නම පෙන්වන්න</string>
+    <string name="widget_config_show_label_description">සම්බන්ධිත උපාංගය අගුල් තත්ත්වයට ඉහ඼ින් පෙන්වන්න.</string>
+    <string name="widget_config_theme_green_label">කො඼</string>
+    <string name="widget_config_theme_red_label">රතු</string>
+    <string name="widget_config_theme_custom_label">අභිරුඩි</string>
 </resources>

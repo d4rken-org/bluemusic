@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Blijf actief terwijl dit apparaat verbonden is en sla volumewijzigingen op die niet door deze app zijn veroorzaakt.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Volume opslaan bij verbreking</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Leg de huidige volumeniveaus vast en sla ze op wanneer dit apparaat de verbinding verbreekt.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Op sommige apparaten schakelt het systeem de audio-routing om voordat we de volumes kunnen uitlezen. Als de opgeslagen waarden niet overeenkomen met wat je had ingesteld, probeer dan in plaats daarvan \"Volumewijzigingen observeren\" in te schakelen.</string>
     <string name="devices_device_config_volume_lock_label">Volumevergrendeling</string>
     <string name="devices_device_config_volume_lock_desc">Alle volumewijzigingen die niet via deze app worden gemaakt, worden ongedaan gemaakt terwijl dit apparaat is aangesloten.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Volumevergrendeling overschrijft deze functie momenteel.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volume snelheidsbegrenzer</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Beperk de frequentie van volumewijzigingen om snelle of buitensporige volumeaanpassingen te voorkomen.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volume verhogingsvertraging</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Privacybeleid</string>
     <string name="settings_privacy_policy_desc">Verantwoord omgaan met gegevens.</string>
     <string name="changelog_label">Wijzigingslog</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Back-up en herstel</string>
+    <string name="backup_restore_settings_desc">Maak een back-up en herstel je apparaatconfiguraties en instellingen.</string>
+    <string name="backup_restore_screen_title">Back-up en herstel</string>
+    <string name="backup_restore_backup_desc">Maak een back-up van al je apparaatconfiguraties en app-instellingen.</string>
+    <string name="backup_restore_backup_action">Back-up maken</string>
+    <string name="backup_restore_restore_desc">Herstel apparaatconfiguraties en app-instellingen vanuit een back-upbestand.</string>
+    <string name="backup_restore_restore_action">Back-upbestand selecteren</string>
+    <string name="backup_restore_skip_existing_label">Bestaande apparaten overslaan</string>
+    <string name="backup_restore_skip_existing_desc">Apparaten die al geconfigureerd zijn niet overschrijven.</string>
+    <string name="backup_restore_preview_label">Back-upvoorbeeld</string>
+    <string name="backup_restore_preview_devices">%1$d apparaten</string>
+    <string name="backup_restore_preview_overlap">%1$d van %2$d apparaten al geconfigureerd</string>
+    <string name="backup_restore_confirm_action">Nu herstellen</string>
+    <string name="backup_restore_success_backup">Back-up gemaakt — %1$d apparaten opgeslagen.</string>
+    <string name="backup_restore_success_restore">Herstel voltooid — %1$d apparaten hersteld, %2$d overgeslagen.</string>
+    <string name="backup_restore_version_warning">Deze back-up is gemaakt met versie %1$s. Je gebruikt %2$s. Sommige instellingen worden mogelijk niet correct hersteld.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug-meldingen</string>
     <string name="debug_log_consent_title">Debug-log</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Aanpassen volumes</string>
     <string name="label_premium_version">Premium versie</string>
     <string name="general_upgrade_action">Upgraden</string>
+    <string name="common_upgrade_required_label">Upgrade vereist</string>
     <string name="description_premium_required_additional_devices">Voor het beheren van extra apparaten, is de premium versie vereist.</string>
     <string name="description_premium_required_this_extra_option">Deze extra optie vereist helaas de premium-versie van deze app.</string>
     <string name="description_premium_upgrade_explanation">Koop de premium versie om de ontwikkeling te steunen en verkrijg extra functies.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Upgraden</string>
     <string name="description_intro_purpose">Deze app staat je Android toestel toe het volume te onthouden van verschillende Bluetooth-apparaten.</string>
     <string name="description_intro_premium">Als je deze app goed vind, overweeg om de premium-versie te kopen. Het steunt de ontwikkeling en je krijgt een paar extra functies.</string>
+    <string name="upgrade_benefit_unlimited_devices">Onbeperkte apparaatprofielen</string>
+    <string name="upgrade_benefit_connection_actions">Autoplay, app starten en verbindingswaarschuwingen</string>
+    <string name="upgrade_benefit_theme_customization">Thema-, stijl- en kleurcustomisatie</string>
+    <string name="upgrade_benefit_power_controls">Volumevergrendeling en snelheidsbegrenzing</string>
+    <string name="upgrade_benefit_support">Ondersteun onafhankelijke ontwikkeling</string>
     <string name="description_intro_tap_the_button">Begin met het toevoegen van het eerste apparaat.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth is uitgeschakeld.</string>
     <string name="title_bluetooth_is_off">Bluetooth is Uit</string>
@@ -320,9 +345,9 @@
     <string name="label_exclude_health">Gezondheid profielen uitsluiten</string>
     <string name="description_exclude_health">Sommige Android-apparaten hangen vast bij het zoeken naar Bluetooth-profielen (HDP, 0x1400).</string>
     <string name="label_exclude_gattserver">GATT server profielen uitsluiten</string>
-    <string name="label_exclude_gatt">GATT server profielen uitsluiten</string>
+    <string name="label_exclude_gatt">GATT client profielen uitsluiten</string>
     <string name="description_exclude_gattserver">Vraag geen Bluetooth profielen van type \'Algemene Attribuut\' (GATT) server aan.</string>
-    <string name="description_exclude_gatt">Vraag geen Bluetooth profielen van type \'Algemene Attribuut\' (GATT) server aan.</string>
+    <string name="description_exclude_gatt">Vraag geen Bluetooth profielen van type \'Algemene Attribuut\' (GATT) client aan.</string>
     <string name="description_waiting_for_devicex">Wachten op %s om de verbinding te voltooien</string>
     <string name="action_undo">Ongedaan maken</string>
     <string name="action_show">Toon</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Voer een waarde in tussen %1$d en %2$d</string>
+    <string name="devices_volume_input_caption">Het werkelijke volume wordt mogelijk afgerond naar de dichtstbijzijnde stap die je apparaat ondersteunt.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Vergrendelen</string>
     <string name="devices_unlock_sliders_action">Ontgrendelen</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Toont de volumevergrendelingsstatus voor het actieve Bluetooth-apparaat</string>
+    <string name="widget_no_device_label">Geen apparaat verbonden</string>
+    <string name="widget_bluetooth_off_label">Bluetooth is uitgeschakeld</string>
+    <string name="widget_error_label">Widgetfout</string>
+    <string name="widget_preview_device_label">Mijn Koptelefoon</string>
+    <string name="widget_config_title">Widgetinstellingen</string>
+    <string name="widget_config_preview_label">Voorbeeld</string>
+    <string name="widget_config_theme_label">Thema</string>
+    <string name="widget_config_bg_color_label">Achtergrondkleur</string>
+    <string name="widget_config_fg_color_label">Tekstkleur</string>
+    <string name="widget_config_bg_alpha_label">Achtergrondtransparantie</string>
+    <string name="widget_config_show_label_toggle">Toon apparaatnaam</string>
+    <string name="widget_config_show_label_description">Toon het verbonden apparaat boven de vergrendelingsstatus.</string>
+    <string name="widget_config_theme_green_label">Groen</string>
+    <string name="widget_config_theme_red_label">Rood</string>
+    <string name="widget_config_theme_custom_label">Aangepast</string>
 </resources>

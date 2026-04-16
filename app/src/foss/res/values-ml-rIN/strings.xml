@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">BVM FOSS ആവശ്യമാണ്</string>
     <string name="upgrade_prompt_title">BVM FOSS യിലേക്ക് അപ്ഗ്രേഡ് ചെയ്യുക</string>
     <string name="upgrade_prompt_body">കൂടുതൽ സവിശേഷതകൾ അൺലോക്കുചെയ്‌ത് തുടർ വികസനത്തെ പിന്തുണയ്ക്കുന്നതിന് ഒരു പാട്രോൺ ആകുക!</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager പ്രജ്ഞാപനങ്ങൾ ഇല്ല, ഉപയോക്തൃ ഡേറ്റ വിൽക്കുന്നില്ല. ഐക്കമാന വികസനം നിങ്ങൾ വഴി മാത്രം സാധ്യമാകുന്നു.</string>
     <string name="upgrade_screen_how_title">എങ്ങനെ സഹായിക്കാം</string>
     <string name="upgrade_screen_how_body">പാട്രോൺ ആകുകയും വികസനം സ്പോൺസർ ചെയ്യുകയും ചെയ്യുക! എല്ലാ അധിക സവിശേഷതകളും സജീവമാക്കാനും എന്റെ GitHub Sponsors പ്രൊഫൈൽ തുറക്കാനും താഴെയുള്ള ബട്ടൺ ടാപ്പ് ചെയ്യുക.</string>
-    <string name="upgrade_screen_why_title">ഇത് മനപ്പൂർവ്വം 🪄</string>
+    <string name="upgrade_screen_why_title">മിക്സിൽ</string>
     <string name="upgrade_screen_why_body">• ഒരു പ്രേരണപ്പെട്ട ഡെവലപ്പർ 🧙\n• അപരിമിത ഉപകരണങ്ങൾ ➡️➡️\n• അധിക ആക്ഷനുകൾ ⚙️\nകൂടുതൽ...</string>
     <string name="upgrade_screen_sponsor_action">വികസനം സ്പോൺസർ ചെയ്യുക</string>
     <string name="upgrade_screen_sponsor_action_hint">പരസ്യങ്ങൾ, അനലിറ്റിക്‌സ്, ഗൂഗിൾ പ്ലേ എന്നിവയാണ് ബദൽ🙁</string>

@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">ይህ መሣሪያ ሲጸራ ብራልት ቅበር ይህ አፕሊኬሰን ካልመኃ የተደረጉት የድምፅ ለውጦችን አዓርቦም።</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">በደረጩቦት ክምፅ አክብቢ</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">ይህ መሣሪያ ቢየወጥ የውት ድምፅ መፅረግዎችን ካፐረ እና አክብቢ።</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">በአንዳንድ መሳሪያዎች ላይ፣ ድምጽን ማንበብ ከምንችልበት ጊዜ በፊት ስርዓቱ የድምጽ አቅጣጫን ይቀይራል። የተቀመጡ እሴቶች ካዘጋጁት ጋር ካልተዛመዱ፣ ምትክ \"የድምጽ ለውጦችን ተመልከት\" ማስቻልን ይሞክሩ።</string>
     <string name="devices_device_config_volume_lock_label">የድምፅ መዘጋያ</string>
     <string name="devices_device_config_volume_lock_desc">ይህ አፕሊኬሰን ካልመኃ የተደረጉት የድምፅ ለውጦች ይህ መሣሪያ ሲጸራ እንዳለ ይመለሳካል።</string>
+    <string name="devices_device_config_volume_lock_override_desc">የድምፅ ቁልፍ በአሁኑ ጊዜ ይህን ባህሪ ይሽራል።</string>
     <string name="devices_device_config_volume_rate_limiter_label">የድምፅ መጥርተኛ</string>
     <string name="devices_device_config_volume_rate_limiter_desc">የድምፅ ለውጦች እድገትን አኪዶ ወይም መትብቹ የድምፅ ምስተካኪያዎችን ለመልያት።</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">የድምፅ መቀገል ሴንትር</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">የግላዊነት ፖሊሲ</string>
     <string name="settings_privacy_policy_desc">ውሂቡን በኃላፊነት መያዝ።</string>
     <string name="changelog_label">የለውጥ ዝርዝር</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">ምትኬ እና ወደ ነበረበት መመለስ</string>
+    <string name="backup_restore_settings_desc">የመሳሪያ ውቅሮችዎን እና ቅንብሮችዎን ምትኬ ያስቀምጡ እና ወደ ነበሩበት ይመልሱ።</string>
+    <string name="backup_restore_screen_title">ምትኬ እና ወደ ነበረበት መመለስ</string>
+    <string name="backup_restore_backup_desc">የሁሉም የመሳሪያ ውቅሮችዎ እና የመተግበሪያ ቅንብሮችዎ ምትኬ ይፍጠሩ።</string>
+    <string name="backup_restore_backup_action">ምትኬ ፍጠር</string>
+    <string name="backup_restore_restore_desc">ከምትኬ ፋይል የመሳሪያ ውቅሮችን እና የመተግበሪያ ቅንብሮችን ወደ ነበሩበት ይመልሱ።</string>
+    <string name="backup_restore_restore_action">የምትኬ ፋይል ይምረጡ</string>
+    <string name="backup_restore_skip_existing_label">ያሉ መሳሪያዎችን ይዝለሉ</string>
+    <string name="backup_restore_skip_existing_desc">ቀድሞ የተዋቀሩ መሳሪያዎችን አትሻር።</string>
+    <string name="backup_restore_preview_label">የምትኬ ቅድመ-እይታ</string>
+    <string name="backup_restore_preview_devices">%1$d መሳሪያዎች</string>
+    <string name="backup_restore_preview_overlap">%1$d ከ%2$d መሳሪያዎች ቀድሞ ተዋቅረዋል</string>
+    <string name="backup_restore_confirm_action">አሁን ወደ ነበረበት ይመልሱ</string>
+    <string name="backup_restore_success_backup">ምትኬ ተፈጥሯል — %1$d መሳሪያዎች ተቀምጠዋል።</string>
+    <string name="backup_restore_success_restore">ወደ ነበሩበት መመለስ ተጠናቅቋል — %1$d መሳሪያዎች ተመልሰዋል፣ %2$d ተዘለዋል።</string>
+    <string name="backup_restore_version_warning">ይህ ምትኬ በስሪት %1$s ተፈጥሯል። እርስዎ %2$s እያሄዱ ነው። አንዳንድ ቅንብሮች በትክክል ላይመለሱ ይችላሉ።</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">የመለያ ማስታወቂያዎች</string>
     <string name="debug_log_consent_title">የመለያ ምዝግብ ማስታወሻ</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">ድምጣዎች እዮድለድ</string>
     <string name="label_premium_version">የዘመን ስሪት</string>
     <string name="general_upgrade_action">አሻሽል</string>
+    <string name="common_upgrade_required_label">ማሻሻያ ያስፈልጋል</string>
     <string name="description_premium_required_additional_devices">✿ተጨማሪ መሣሪያዎችን ማስተካከል የዘመን ስሪት ይጠይቃል።</string>
     <string name="description_premium_required_this_extra_option">ይህ ተጨማሪ ይህን አፕሊኬሰን የዘመን ስሪት ይጠይቃል።</string>
     <string name="description_premium_upgrade_explanation">✿ተጨማሪ ብካዾችን ለማነሳት እና ቅቦቱን ለምደገብ የዘመን ስሪት ይየብሉ።</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">አሻሽል</string>
     <string name="description_intro_purpose">ይህ አፕሊኬስን የAndroid መሣሪያዎት የዓይባይት Bluetooth መሣሪያዎችን ድምፅ እንዲያስታወስ ይያዕዝበታለ።</string>
     <string name="description_intro_premium">ይህ አፕሊኬስን የወደደዱ ባይለ አፓግረብ ይደግፈሥል። የዘመን ስሪት ንድተዊን ይደግፈሡ ተጨማሪ ብካዾችንን ያየዘ፣ቦጥ።</string>
+    <string name="upgrade_benefit_unlimited_devices">ያልተወሰኑ የመሳሪያ መገለጫዎች</string>
+    <string name="upgrade_benefit_connection_actions">ራስ-ሰር አጫወት፣ መተግበሪያ ማስጀመሪያ እና የግንኙነት ማስጠንቀቂያዎች</string>
+    <string name="upgrade_benefit_theme_customization">ጭብጥ፣ ስልት እና የቀለም ብጁ ቅንብር</string>
+    <string name="upgrade_benefit_power_controls">የድምፅ ቁልፍ እና የፍጥነት ገደብ</string>
+    <string name="upgrade_benefit_support">ገለልተኛ ልማትን ይደግፉ</string>
     <string name="description_intro_tap_the_button">መረሻትዎን መሣሪያ አክብቢባብ ዘርኵ።</string>
     <string name="description_bluetooth_is_disabled">ብሉቱዝ ጠፍቷል.</string>
     <string name="title_bluetooth_is_off">Bluetooth ይዘጋል</string>
@@ -383,7 +408,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">ድምፅ (0-100)</string>
     <string name="devices_volume_input_error">ከ%1$d እስከ %2$d የሚደርስ ተመነ ይካተቱ</string>
+    <string name="devices_volume_input_caption">ትክክለኛው ድምፅ ወደ መሳሪያዎ ወደሚደግፈው ቅርብ ደረጃ ሊጠጋ ይችላል።</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">የትክት</string>
     <string name="devices_unlock_sliders_action">የትክት ዘርድ</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">ለነቃው ብሉቱዝ መሳሪያ የድምፅ ቁልፍ ሁኔታ ያሳያል</string>
+    <string name="widget_no_device_label">ምንም መሳሪያ አልተገናኘም</string>
+    <string name="widget_bluetooth_off_label">ብሉቱዝ ጠፍቷል</string>
+    <string name="widget_error_label">የዊጄት ስህተት</string>
+    <string name="widget_preview_device_label">የኔ ጆሮ ማዳመጫ</string>
+    <string name="widget_config_title">የዊጄት ቅንብሮች</string>
+    <string name="widget_config_preview_label">ቅድመ-እይታ</string>
+    <string name="widget_config_theme_label">ጭብጥ</string>
+    <string name="widget_config_bg_color_label">የዳራ ቀለም</string>
+    <string name="widget_config_fg_color_label">የፕሁፍ ቀለም</string>
+    <string name="widget_config_bg_alpha_label">የዳራ ግልፅነት</string>
+    <string name="widget_config_show_label_toggle">የመሳሪያ ስም አሳይ</string>
+    <string name="widget_config_show_label_description">የተገናነውን መሳሪያ ከቁልፍ ሁነታ በላይ አሳይ።</string>
+    <string name="widget_config_theme_green_label">አረንጋዴ</string>
+    <string name="widget_config_theme_red_label">ቀይ</string>
+    <string name="widget_config_theme_custom_label">ብጁ</string>
 </resources>

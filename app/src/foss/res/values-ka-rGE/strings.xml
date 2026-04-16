@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">საჭიროა BVM FOSS</string>
     <string name="upgrade_prompt_title">გადაიდგეს BVM FOSS-ზე</string>
     <string name="upgrade_prompt_body">განბლოკეთ დამატებითი ფუნქციები და გახდით მფარველი მუდმივი განვითარების მხარდასაჭერად!</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager რეკლამაგარეშია და მომხმარეთა მონაცემებს არ ყიდის. განვითარებად განვითარება მხოლოდ მხოლოდ შესაძლებელია ერთიადად თქვენით.</string>
     <string name="upgrade_screen_how_title">როგორ დაგეხმაროთ</string>
     <string name="upgrade_screen_how_body">გახდით მფარველი და სპონსორობა გაუწიეთ განვითარებას! შეეხეთ ქვემოთ მოცემულ ღილაკს, რათა ააქტიუროთ ყველა დამატებითი ფუნქცია და გახსნათ ჩემი GitHub Sponsors პროფილი.</string>
-    <string name="upgrade_screen_why_title">ეს იწვევს 🪄</string>
+    <string name="upgrade_screen_why_title">მიქსში</string>
     <string name="upgrade_screen_why_body">• მოტივირებული დამპროგრამებელი 🧙\n• ულიმიტო მოწყობილობები ➡️➡️\n• დამატებითი მოქმედები ⚙️\nდა მეტი მრავალი…</string>
     <string name="upgrade_screen_sponsor_action">სპონსორის განვითარება</string>
     <string name="upgrade_screen_sponsor_action_hint">ალტერნატივა არის რეკლამა, ანალიტიკა და Google Play 🙁</string>

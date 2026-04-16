@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">BVM FOSS шаардлагана</string>
     <string name="upgrade_prompt_title">BVM FOSS рүү шилжээх</string>
     <string name="upgrade_prompt_body">Нэмэлт боломжуудыг нээж, тасралтгүй хөгжлийг дэмжихийн тулд ивээн тэтгэгч болоорой!</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager сурталчилгаагүй бөгөөд хэрэглэгчийн өгөгдлийг зардаггүй. Цаашид хөгжлөлт зөвхөн тань боломжтой болгог.</string>
     <string name="upgrade_screen_how_title">Хэрхэн тусламж үзүүлэх</string>
     <string name="upgrade_screen_how_body">Ивээн тэтгэгч болж хөгжлийг дэмжээрэй! Бүх нэмэлт боломжуудыг идэвхжүүлж, миний GitHub Sponsors профайлыг нээхийн тулд доорх товчийг дарна уу.</string>
-    <string name="upgrade_screen_why_title">Энэ нь ид шидтэй 🪄</string>
+    <string name="upgrade_screen_why_title">Холилцоонд</string>
     <string name="upgrade_screen_why_body">• Урамшуулсан хөгжлөлөөр 🧙\n• Хязгаагүй төхөөрөмжүүд ➡️➡️\n• Нэмэлт үйлдлүүд ⚙️\nба дараа…</string>
     <string name="upgrade_screen_sponsor_action">Хөгжлийг дэмжих</string>
     <string name="upgrade_screen_sponsor_action_hint">Өөр сонголт бол зар сурталчилгаа, шинжилгээ, Google Play 🙁</string>

@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Bu cihaz bağlı ikən aktiv qal və bu tətbiqdən qaynaqlanmayan səs dəyişikliklərini saxla.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Bağlantı kəsildikdə səsi saxla</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Bu cihazın bağlantısı kəsildikdə mövcud səs səviyyələrini tutub saxlayın.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Bəzi cihazlarda sistem səs yolunu biz səviyyələri oxuya bilməzdən əvvəl dəyişir. Əgər saxlanılmış dəyərlər təyin etdiklərinizlə uyğun gəlmirsə, bunun əvəzinə \"Səs dəyişikliklərini izlə\" seçimini aktivləşdirməyə çalışın.</string>
     <string name="devices_device_config_volume_lock_label">Səs kilidi</string>
     <string name="devices_device_config_volume_lock_desc">Bu tətbiq üzərindən edilməyən istənilən səs dəyişiklikləri bu cihazla bağlantı qurularkən geri qaytarılacaqdır.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Səs kilidi hazırda bu funksiyanı ləğv edir.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Səs tezliyinin məhdudlaşdırıcısı</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Sürətli və ya artıq səs tənzimləmələrini qarşılamaq üçün səs dəyişikliklərinin tezliyini məhdudlaşdır.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Səs artırma gecikməsi</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Məxfilik siyasəti</string>
     <string name="settings_privacy_policy_desc">Məlumatları məsuliyyətlə idarə etmək.</string>
     <string name="changelog_label">Dəyişiklik jurnalı</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Ehtiyat nüsxə və Bərpa</string>
+    <string name="backup_restore_settings_desc">Cihaz konfiqurasiyalarınızı və parametrlərinizi ehtiyat nüsxəyə çıxarın və bərpa edin.</string>
+    <string name="backup_restore_screen_title">Ehtiyat nüsxə və Bərpa</string>
+    <string name="backup_restore_backup_desc">Bütün cihaz konfiqurasiyalarınızın və tətbiq parametrlərinizin ehtiyat nüsxəsini yaradın.</string>
+    <string name="backup_restore_backup_action">Ehtiyat nüsxə yarat</string>
+    <string name="backup_restore_restore_desc">Ehtiyat nüsxə faylından cihaz konfiqurasiyalarını və tətbiq parametrlərini bərpa edin.</string>
+    <string name="backup_restore_restore_action">Ehtiyat nüsxə faylını seçin</string>
+    <string name="backup_restore_skip_existing_label">Mövcud cihazları atla</string>
+    <string name="backup_restore_skip_existing_desc">Artıq konfiqurasiya edilmiş cihazların üzərinə yazmayın.</string>
+    <string name="backup_restore_preview_label">Ehtiyat nüsxənin önizləməsi</string>
+    <string name="backup_restore_preview_devices">%1$d cihaz</string>
+    <string name="backup_restore_preview_overlap">%2$d cihazdan %1$d-i artıq konfiqurasiya edilib</string>
+    <string name="backup_restore_confirm_action">İndi bərpa et</string>
+    <string name="backup_restore_success_backup">Ehtiyat nüsxə yeradıldı — %1$d cihaz saxlanıldı.</string>
+    <string name="backup_restore_success_restore">Bərpa tamamlandı — %1$d cihaz bərpa edildi, %2$d atlandı.</string>
+    <string name="backup_restore_version_warning">Bu ehtiyat nüsxə %1$s versiyasi ilə yeradılıb. Siz %2$s versiyasini işlədirsiz. Bəzi parametrlər düzgün bərpa edilməyə bilər.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Sazlama bildirişləri</string>
     <string name="debug_log_consent_title">Sazlama jurnalı</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Səs səviyyəsini nizamla</string>
     <string name="label_premium_version">Premium versiya</string>
     <string name="general_upgrade_action">Yüksəlt</string>
+    <string name="common_upgrade_required_label">Yüksəltmə tələb olunur</string>
     <string name="description_premium_required_additional_devices">Əlavə cihazları idarə etmək üçün premium versiya lazımdır.</string>
     <string name="description_premium_required_this_extra_option">Bu ekstra seçim, tətbiqin premium versiyasını tələb edir.</string>
     <string name="description_premium_upgrade_explanation">Əlavə özəllikləri fəallaşdırmaq və tətbiqin inkişafını dəstəkləmək üçün premium versiyanı alın.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Yüksəlt</string>
     <string name="description_intro_purpose">Bu tətbiq, Android cihazınıza fərqli Bluetooth cihazının səs səviyyəsini xatırlamasına icazə verər.</string>
     <string name="description_intro_premium">Bu tətbiqi bəyənsəniz, premium versiyaya yüksəltməyi düşünün. Bu, tətbiqin inkişafını dəstəkləyir və sizə bir neçə ekstra özəllik verir.</string>
+    <string name="upgrade_benefit_unlimited_devices">Limitsiz cihaz profilləri</string>
+    <string name="upgrade_benefit_connection_actions">Avtomatik oynatma, tətbiq işə salma və bağlantı xəbərdaqlıqları</string>
+    <string name="upgrade_benefit_theme_customization">Tema, stil və rəng fərdiləşdirməsi</string>
+    <string name="upgrade_benefit_power_controls">Səs kilidi və sürət məhdudiyyəti</string>
+    <string name="upgrade_benefit_support">Müstəqil inkəşafı dəstəkləyin</string>
     <string name="description_intro_tap_the_button">İlk cihazınızı əlavə edərək başlayın.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth sıradan çıxarıldı.</string>
     <string name="title_bluetooth_is_off">Bluetooth Söndürülüb</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Səs (0–100)</string>
     <string name="devices_volume_input_error">%1$d ilə %2$d arasında bir dəyər daxil edin</string>
+    <string name="devices_volume_input_caption">Həqiqi səs səviyyəsi cihazınızın dəstəklədiyi ən yaxın addıma yuvarlana bilər.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Kilit</string>
     <string name="devices_unlock_sliders_action">Kilidi aç</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Aktiv Bluetooth cihazının səs kilidi vəziyyətini göstərir</string>
+    <string name="widget_no_device_label">Bağlı cihaz yoxdur</string>
+    <string name="widget_bluetooth_off_label">Bluetooth söndürülüb</string>
+    <string name="widget_error_label">Vidcet xətası</string>
+    <string name="widget_preview_device_label">Mənim qulaqlıqlarım</string>
+    <string name="widget_config_title">Vidcet parametrləri</string>
+    <string name="widget_config_preview_label">Önizləmə</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Fon rəngi</string>
+    <string name="widget_config_fg_color_label">Mətn rəngi</string>
+    <string name="widget_config_bg_alpha_label">Fon şəffaflığı</string>
+    <string name="widget_config_show_label_toggle">Cihaz adını göstər</string>
+    <string name="widget_config_show_label_description">Kilit vəziyyətinin üstündə qoşulmuş cihazı göstərin.</string>
+    <string name="widget_config_theme_green_label">Yaşıl</string>
+    <string name="widget_config_theme_red_label">Qırmızı</string>
+    <string name="widget_config_theme_custom_label">Fərdi</string>
 </resources>

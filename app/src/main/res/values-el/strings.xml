@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Παραμένει ενεργή όσο αυτή η συσκευή είναι συνδεδεμένη και αποθηκεύει τις αλλαγές έντασης που δεν έχουν γίνει από αυτή την εφαρμογή.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Αποθήκευση έντασης κατά την αποσύνδεση</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Καταγραφή και αποθήκευση των τρεχουσών επιπέδων έντασης όταν αποσυνδεθεί αυτή η συσκευή.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Σε ορισμένες συσκευές, το σύστημα αλλάζει τη δρομολόγηση ήχου πριν μπορέσουμε να διαβάσουμε τις εντάσεις. Αν οι αποθηκευμένες τιμές δεν αντιστοιχούν σε αυτό που είχατε ορίσει, δοκιμάστε να ενεργοποιήσετε την επιλογή \"Παρακολούθηση αλλαγών έντασης\" αντ\'αυτού.</string>
     <string name="devices_device_config_volume_lock_label">Κλείδωμα έντασης</string>
     <string name="devices_device_config_volume_lock_desc">Οποιεσδήποτε αλλαγές έντασης που δεν έχουν γίνει μέσω αυτής της εφαρμογής, θα επανέλθουν όσο αυτή η συσκευή είναι συνδεδεμένη.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Το κλείδωμα έντασης παρακάμπτει αυτήν τη λειτουργία αυτή τη στιγμή.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Περιοριστής ρυθμού έντασης</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Περιορίστε τη συχνότητα των αλλαγών έντασης για να αποτρέψετε γρήγορες ή υπερβολικές προσαρμογές έντασης.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Καθυστέρηση αύξησης έντασης</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Πολιτική απορρήτου</string>
     <string name="settings_privacy_policy_desc">Διαχείριση δεδομένων με υπευθυνότητα.</string>
     <string name="changelog_label">Αρχείο αλλαγών</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Δημιουργία αντιγράφων &amp; Επαναφορά</string>
+    <string name="backup_restore_settings_desc">Δημιουργήστε αντίγραφα ασφαλείας και επαναφέρετε τις ρυθμίσεις και τις διαμορφώσεις της συσκευής σας.</string>
+    <string name="backup_restore_screen_title">Δημιουργία αντιγράφων &amp; Επαναφορά</string>
+    <string name="backup_restore_backup_desc">Δημιουργήστε ένα αντίγραφο ασφαλείας όλων των ρυθμίσεων της εφαρμογής και των διαμορφώσεων της συσκευής σας.</string>
+    <string name="backup_restore_backup_action">Δημιουργία αντιγράφου ασφαλείας</string>
+    <string name="backup_restore_restore_desc">Επαναφέρετε διαμορφώσεις συσκευής και ρυθμίσεις εφαρμογής από ένα αρχείο αντιγράφου ασφαλείας.</string>
+    <string name="backup_restore_restore_action">Επιλογή αρχείου αντιγράφου ασφαλείας</string>
+    <string name="backup_restore_skip_existing_label">Παράλειψη υπαρχουσών συσκευών</string>
+    <string name="backup_restore_skip_existing_desc">Μη αντικατάσταση συσκευών που έχουν ήδη ρυθμιστεί.</string>
+    <string name="backup_restore_preview_label">Προεπισκόπηση αντιγράφου ασφαλείας</string>
+    <string name="backup_restore_preview_devices">%1$d συσκευές</string>
+    <string name="backup_restore_preview_overlap">%1$d από %2$d συσκευές έχουν ήδη ρυθμιστεί</string>
+    <string name="backup_restore_confirm_action">Επαναφορά τώρα</string>
+    <string name="backup_restore_success_backup">Αντίγραφο ασφαλείας δημιουργήθηκε — %1$d συσκευές αποθηκεύτηκαν.</string>
+    <string name="backup_restore_success_restore">Επαναφορά ολοκληρώθηκε — %1$d συσκευές επαναφέρθηκαν, %2$d παραλείφθηκαν.</string>
+    <string name="backup_restore_version_warning">Αυτό το αντίγραφο ασφαλείας δημιουργήθηκε με την έκδοση %1$s. Χρησιμοποιείτε την %2$s. Ορισμένες ρυθμίσεις ενδέχεται να μην επαναφερθούν σωστά.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Ειδοποιήσεις debug</string>
     <string name="debug_log_consent_title">Αρχείο debug</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Ρύθμιση εντάσεων</string>
     <string name="label_premium_version">Premium έκδοση</string>
     <string name="general_upgrade_action">Αναβάθμιση</string>
+    <string name="common_upgrade_required_label">Απαιτείται αναβάθμιση</string>
     <string name="description_premium_required_additional_devices">Η διαχείριση πρόσθετων συσκευών απαιτεί την έκδοση Premium.</string>
     <string name="description_premium_required_this_extra_option">Αυτή η επιπλέον επιλογή απαιτεί την έκδοση Premium της εφαρμογής.</string>
     <string name="description_premium_upgrade_explanation">Αποκτήστε την Premium έκδοση για να ενεργοποιήσετε πρόσθετες λειτουργίες και να υποστηρίξετε την ανάπτυξη της εφαρμογής.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Αναβάθμιση</string>
     <string name="description_intro_purpose">Αυτή η εφαρμογή επιτρέπει στην συσκευή Android σας να θυμάται την ένταση όλων των διαφορετικών συσκευών Bluetooth.</string>
     <string name="description_intro_premium">Αν σας αρέσει αυτή η εφαρμογή, εξετάστε την αναβάθμιση στην έκδοση premium. Υποστηρίζει την ανάπτυξή της και σας φέρνει μερικά επιπλέον χαρακτηριστικά.</string>
+    <string name="upgrade_benefit_unlimited_devices">Απεριόριστα προφίλ συσκευών</string>
+    <string name="upgrade_benefit_connection_actions">Αυτόματη αναπαραγωγή, εκκίνηση εφαρμογής και ειδοποιήσεις σύνδεσης</string>
+    <string name="upgrade_benefit_theme_customization">Προσαρμογή θέματος, στυλ και χρώματος</string>
+    <string name="upgrade_benefit_power_controls">Κλείδωμα έντασης και περιορισμός ρυθμού</string>
+    <string name="upgrade_benefit_support">Υποστήριξη ανεξάρτητης ανάπτυξης</string>
     <string name="description_intro_tap_the_button">Ξεκινήστε προσθέτοντας την πρώτη συσκευή σας.</string>
     <string name="description_bluetooth_is_disabled">Το Bluetooth είναι απενεργοποιημένο.</string>
     <string name="title_bluetooth_is_off">Το Bluetooth είναι απενεργοποιημένο</string>
@@ -383,7 +408,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Ένταση (0–100)</string>
     <string name="devices_volume_input_error">Εισάγετε τιμή μεταξύ %1$d και %2$d</string>
+    <string name="devices_volume_input_caption">Η πραγματική ένταση ενδέχεται να στρογγυλοποιηθεί στο πλησιέστερο βήμα που υποστηρίζει η συσκευή σας.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Κλείδωμα</string>
     <string name="devices_unlock_sliders_action">Ξεκλείδωμα</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Εμφανίζει την κατάσταση κλειδώματος έντασης για την ενεργή συσκευή Bluetooth</string>
+    <string name="widget_no_device_label">Δεν υπάρχει συνδεδεμένη συσκευή</string>
+    <string name="widget_bluetooth_off_label">Το Bluetooth είναι απενεργοποιημένο</string>
+    <string name="widget_error_label">Σφάλμα widget</string>
+    <string name="widget_preview_device_label">Τα ακουστικά μου</string>
+    <string name="widget_config_title">Ρυθμίσεις widget</string>
+    <string name="widget_config_preview_label">Προεπισκόπηση</string>
+    <string name="widget_config_theme_label">Θέμα</string>
+    <string name="widget_config_bg_color_label">Χρώμα φόντου</string>
+    <string name="widget_config_fg_color_label">Χρώμα κειμένου</string>
+    <string name="widget_config_bg_alpha_label">Αδιαφάνεια φόντου</string>
+    <string name="widget_config_show_label_toggle">Εμφάνιση ονόματος συσκευής</string>
+    <string name="widget_config_show_label_description">Εμφάνιση της συνδεδεμένης συσκευής πάνω από την κατάσταση κλειδώματος.</string>
+    <string name="widget_config_theme_green_label">Πράσινο</string>
+    <string name="widget_config_theme_red_label">Κόκκινο</string>
+    <string name="widget_config_theme_custom_label">Προσαρμοσμένο</string>
 </resources>

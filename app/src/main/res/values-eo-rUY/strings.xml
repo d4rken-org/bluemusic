@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Resti aktiva dum ĉi tiu aparato estas konektita kaj konservi volumenŝanĝojn kiuj ne estis kaŭzitaj de ĉi tiu apo.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Konservi volumenon ĉe malkonekto</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Kapti kaj konservi la aktualajn volumenajn nivelojn kiam ĉi tiu aparato malkonektas.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Sur iuj aparatoj, la sistemo ŝanĝas la sonvojon antaŭ ol ni povas legi la volumojn. Se la konservitaj valoroj ne kongruas kun tio, kion vi agordis, provu anstataŭe aktivigi \"Observi volumŝanĝojn\".</string>
     <string name="devices_device_config_volume_lock_label">Volumena ŝloso</string>
     <string name="devices_device_config_volume_lock_desc">Ĉiuj volumenŝanĝoj nefaritaj per ĉi tiu apo estos malfaritaj dum ĉi tiu aparato estas konektita.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Volumŝloso aktuale superregas ĉi tiun funkcion.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volumena rapida limigilo</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limigi la frekvencon de volumenŝanĝoj por malhelpi rapidajn aŭ trooajn volumenĝustigojn.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volumena pliigo-prokrasto</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Privateca politiko</string>
     <string name="settings_privacy_policy_desc">Traktante datumojn respondece.</string>
     <string name="changelog_label">Ŝanĝoregistro</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Sekurkopio kaj Restaŭro</string>
+    <string name="backup_restore_settings_desc">Sekurkopiu kaj restaŭru viajn aparatajn agordojn kaj aplikaĵajn agordojn.</string>
+    <string name="backup_restore_screen_title">Sekurkopio kaj Restaŭro</string>
+    <string name="backup_restore_backup_desc">Kreu sekurkopion de ĉiuj viaj aparataj agordoj kaj aplikaĵaj agordoj.</string>
+    <string name="backup_restore_backup_action">Krei sekurkopion</string>
+    <string name="backup_restore_restore_desc">Restaŭru aparatajn agordojn kaj aplikaĵajn agordojn el sekurkopiodosiero.</string>
+    <string name="backup_restore_restore_action">Elekti sekurkopiodosieron</string>
+    <string name="backup_restore_skip_existing_label">Preterpasi ekzistantajn aparatojn</string>
+    <string name="backup_restore_skip_existing_desc">Ne anstataŭu aparatojn kiuj jam estas agordita.</string>
+    <string name="backup_restore_preview_label">Antaŭvido de sekurkopio</string>
+    <string name="backup_restore_preview_devices">%1$d aparatoj</string>
+    <string name="backup_restore_preview_overlap">%1$d el %2$d aparatoj jam estas agordita</string>
+    <string name="backup_restore_confirm_action">Restaŭri nun</string>
+    <string name="backup_restore_success_backup">Sekurkopio kreita — %1$d aparatoj konservita.</string>
+    <string name="backup_restore_success_restore">Restaŭro kompleta — %1$d aparatoj restaŭrita, %2$d preterpasita.</string>
+    <string name="backup_restore_version_warning">Ĉi tiu sekurkopio estis kreita kun versio %1$s. Vi uzas %2$s. Kelkaj agordoj eble ne restaŭros ĝuste.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Senararigaj sciigoj</string>
     <string name="debug_log_consent_title">Senarariga protokolo</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">ĝustigante volumenojn</string>
     <string name="label_premium_version">Premiumversio</string>
     <string name="general_upgrade_action">Plibonigi</string>
+    <string name="common_upgrade_required_label">Apgrejdo necesa</string>
     <string name="description_premium_required_additional_devices">Administri pliajn aparatojn postulas la premiumversion.</string>
     <string name="description_premium_required_this_extra_option">Ĉi tiu ekstra opcio postulas la premiumversion de ĉi tiu apo.</string>
     <string name="description_premium_upgrade_explanation">Akiru la premiumversion por ebligi pliajn funkciojn kaj subteni disvolvadon.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Plibonigi</string>
     <string name="description_intro_purpose">Ĉi tiu apo permesas al via Android-aparato memorigi la volumenon de malsamaj Bluetooth-aparatoj.</string>
     <string name="description_intro_premium">Se vi ŝatas ĉi tiun apon, konsideru plibonigi al la premiumversio. ĝi subtenas disvolvadon kaj donas al vi kelkajn ekstraajn funkciojn.</string>
+    <string name="upgrade_benefit_unlimited_devices">Senlimaj aparataj profiloj</string>
+    <string name="upgrade_benefit_connection_actions">Aŭtoludado, lanĉo de aplikaĵo kaj konektaj sciigoj</string>
+    <string name="upgrade_benefit_theme_customization">Personagigo de temo, stilo kaj koloro</string>
+    <string name="upgrade_benefit_power_controls">Volumsloso kaj kvanta limigado</string>
+    <string name="upgrade_benefit_support">Subteni sendependan disvolvadon</string>
     <string name="description_intro_tap_the_button">Komencu per aldono de via unua aparato.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth estas malŝaltita.</string>
     <string name="title_bluetooth_is_off">Bluetooth estas Malŝaltita</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volumeno (0–100)</string>
     <string name="devices_volume_input_error">Enigu valoron inter %1$d kaj %2$d</string>
+    <string name="devices_volume_input_caption">La reala volumo eble arogdigos al la plej proksima stupeto kiun via aparato subtenas.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Ŝlosi</string>
     <string name="devices_unlock_sliders_action">Malŝlosi</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Montras la staton de volumsloso por la aktiva Bludenta aparato</string>
+    <string name="widget_no_device_label">Neniu aparato konektita</string>
+    <string name="widget_bluetooth_off_label">Blodento estas malaktiva</string>
+    <string name="widget_error_label">Fenestraja eraro</string>
+    <string name="widget_preview_device_label">Miaj Kasclobusoj</string>
+    <string name="widget_config_title">Fenestrajetaj agordoj</string>
+    <string name="widget_config_preview_label">Antauvido</string>
+    <string name="widget_config_theme_label">Temo</string>
+    <string name="widget_config_bg_color_label">Fona koloro</string>
+    <string name="widget_config_fg_color_label">Teksta koloro</string>
+    <string name="widget_config_bg_alpha_label">Fona travidebleco</string>
+    <string name="widget_config_show_label_toggle">Montri aparatnomon</string>
+    <string name="widget_config_show_label_description">Montru la konektitan aparaton super la slosa stato.</string>
+    <string name="widget_config_theme_green_label">Verda</string>
+    <string name="widget_config_theme_red_label">Rugxa</string>
+    <string name="widget_config_theme_custom_label">Propra</string>
 </resources>

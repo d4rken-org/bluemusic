@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">Basegna BVM FOSS</string>
     <string name="upgrade_prompt_title">Actualisar a BVM FOSS</string>
     <string name="upgrade_prompt_body">Deblocha funcziuns supplementaras e daventescha in patronu per sustegnair il svilup ulterior!</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager n\'ha naginas reclamas e na vend betg datas d\'utilisaders. Il svilup ulterior è mo pussaivel grazia a tai.</string>
     <string name="upgrade_screen_how_title">Tge che ti pos far</string>
     <string name="upgrade_screen_how_body">Daventescha in patronu e sustegna il svilup! Tocca il buttun sut per activar tut las funcziuns extras e vrar mai il profil GitHub Sponsors.</string>
-    <string name="upgrade_screen_why_title">Quest activescha 🪄</string>
+    <string name="upgrade_screen_why_title">En il mix</string>
     <string name="upgrade_screen_why_body">• In sviluppader motivat 🧙
 • Apparats senza limita ➡️➡️
 • Acziuns extras ⚙️

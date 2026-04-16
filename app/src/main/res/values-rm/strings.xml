@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Restar activ cura che quest apparat è connectà e salvar midadas da volum che n\'han betg vegnì chaschunadas da questa app.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Salvar il volum tar la disconnexiun</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Capitar e salvar ils nivels da volum actuals cura che quest apparat sa disconnecta.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Sin tscherts apparats, il sistem commuta il direcziun d\'audio avant ch\'ins po ledscher ils volums. Sch\'ils valurs memorizads na correspundan betg a quai che vus avais fixà, empruvegia d\'activar \"Observar midadas dal volum\" en substitut.</string>
     <string name="devices_device_config_volume_lock_label">Bloccar il volum</string>
     <string name="devices_device_config_volume_lock_desc">Tut las midadas da volum betg fatgas tras questa app vegnan revocadas cura che quest apparat è connectà.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Il blocco dal volumen surpassa actualmain questa funcziun.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitatur da frequenza da volum</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limitar la frequenza da midadas da volum per evitar adattaments da volum rapidamain u excessivamain.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Retard d\'augmentaziún da volum</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Protecziun da datas</string>
     <string name="settings_privacy_policy_desc">Tractar datas a moda responsabla.</string>
     <string name="changelog_label">Protocol da midadas</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Backup &amp; Restauraziun</string>
+    <string name="backup_restore_settings_desc">Fa in backup ed restaurescha las configuraziouns da tes apparat ed ils parameters.</string>
+    <string name="backup_restore_screen_title">Backup &amp; Restauraziun</string>
+    <string name="backup_restore_backup_desc">Crea in backup da tut las configuraziouns da tes apparat ed ils parameters da l\'app.</string>
+    <string name="backup_restore_backup_action">Crear backup</string>
+    <string name="backup_restore_restore_desc">Restaurescha las configuraziouns dal apparat ed ils parameters da l\'app dad in fichier da backup.</string>
+    <string name="backup_restore_restore_action">Tscherner fichier da backup</string>
+    <string name="backup_restore_skip_existing_label">Siglir sur apparats existents</string>
+    <string name="backup_restore_skip_existing_desc">Na surscriva betg apparats ch\'èn gia configurads.</string>
+    <string name="backup_restore_preview_label">Prevista dal backup</string>
+    <string name="backup_restore_preview_devices">%1$d apparats</string>
+    <string name="backup_restore_preview_overlap">%1$d dad %2$d apparats gia configurads</string>
+    <string name="backup_restore_confirm_action">Restaurar ussa</string>
+    <string name="backup_restore_success_backup">Backup creà — %1$d apparats salvads.</string>
+    <string name="backup_restore_success_restore">Restauraziun cumpletta — %1$d apparats restaurads, %2$d siglids.</string>
+    <string name="backup_restore_version_warning">Quest backup è vegnì creà cun la versiun %1$s. Ti stais utilisond %2$s. Tscherts parameters na vegnan betg restaurads correctly.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Notificaziuns da debugging</string>
     <string name="debug_log_consent_title">Protocol da debugging</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Adattar ils volumes</string>
     <string name="label_premium_version">Versiun premium</string>
     <string name="general_upgrade_action">Actualisar</string>
+    <string name="common_upgrade_required_label">Actualisaziun necessaria</string>
     <string name="description_premium_required_additional_devices">Administrar apparats supplementars dastga la versiun premium.</string>
     <string name="description_premium_required_this_extra_option">Questa opziun supplementara dastga la versiun premium da questa app.</string>
     <string name="description_premium_upgrade_explanation">Procura la versiun premium per activar funcziuns supplementaras e sustegnair il svilup.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Actualisar</string>
     <string name="description_intro_purpose">Questa app permetta a tiu apparat Android da memorar il volum da differents apparats Bluetooth.</string>
     <string name="description_intro_premium">Sch\'ti plascha questa app, considera da far in upgrade a la versiun premium. Ella sustegna il svilup e ta procura pliras funcziuns supplementaras.</string>
+    <string name="upgrade_benefit_unlimited_devices">Profils d\'apparat senza limita</string>
+    <string name="upgrade_benefit_connection_actions">Autoplay, aviadira d\'app ed avis da connexiun</string>
+    <string name="upgrade_benefit_theme_customization">Personalisaziun da tema, stil e colur</string>
+    <string name="upgrade_benefit_power_controls">Blocco dal volumen e limitaziun da debit</string>
+    <string name="upgrade_benefit_support">Sustegn al svilup independent</string>
     <string name="description_intro_tap_the_button">Cumenza cun agiuntar tiu emprim apparat.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth è deactivà.</string>
     <string name="title_bluetooth_is_off">Bluetooth è deactivà</string>
@@ -316,7 +341,7 @@
     <string name="description_ring_volume_additional_permission">Permissiuns supplementaras èn necessarias per midar il volum da siglun.</string>
     <string name="label_missing_permissions">Permissiuns mancantes</string>
     <string name="action_grant">Conceder</string>
-    <string name="label_advanced">AvanZà</string>
+    <string name="label_advanced">Avanzà</string>
     <string name="label_exclude_health">Excluder profils da sanadad</string>
     <string name="description_exclude_health">Plirs apparats Android s\'inmoveschan cura ch\'ins retschertgescha profils Bluetooth \'Health Device\' (HDP, 0x1400).</string>
     <string name="label_exclude_gattserver">Excluder profils da server GATT</string>
@@ -361,7 +386,7 @@
     <!-- App Selection -->
     <string name="devices_app_selection_title">Tscherner apps</string>
     <string name="devices_app_selection_search_hint">Retscherchar apps…</string>
-    <string name="devices_app_selection_currently_selected">Actualamain tscherNì</string>
+    <string name="devices_app_selection_currently_selected">Actualamain tschernì</string>
     <string name="devices_app_selection_selected_count">%d apps tschernidas</string>
     <string name="general_navigate_back_action">Navigar enavos</string>
     <string name="general_reset_action">Reinizialisar</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volum (0–100)</string>
     <string name="devices_volume_input_error">Endatescha in valur tranter %1$d e %2$d</string>
+    <string name="devices_volume_input_caption">Il volumen actual po vegnir arravundà al pass pli prossim che tes apparat supporta.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Bloccar</string>
     <string name="devices_unlock_sliders_action">Disbloccar</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Mussa il status dal blocco dal volumen per l\'apparat Bluetooth activ</string>
+    <string name="widget_no_device_label">Nagin apparat connectà</string>
+    <string name="widget_bluetooth_off_label">Bluetooth è deactivà</string>
+    <string name="widget_error_label">Errur dal widget</string>
+    <string name="widget_preview_device_label">Mes Cascs</string>
+    <string name="widget_config_title">Parameters dal widget</string>
+    <string name="widget_config_preview_label">Prevista</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Colur dal fund</string>
+    <string name="widget_config_fg_color_label">Colur dal text</string>
+    <string name="widget_config_bg_alpha_label">Opacitad dal fund</string>
+    <string name="widget_config_show_label_toggle">Mussar il num dal apparat</string>
+    <string name="widget_config_show_label_description">Mussa l\'apparat connectà sur il status dal blocco.</string>
+    <string name="widget_config_theme_green_label">Verd</string>
+    <string name="widget_config_theme_red_label">Cotschen</string>
+    <string name="widget_config_theme_custom_label">Persunalisà</string>
 </resources>

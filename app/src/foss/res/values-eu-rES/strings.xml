@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">BVM FOSS beharrezkoa da</string>
     <string name="upgrade_prompt_title">Berritu BVM FOSS-era</string>
     <string name="upgrade_prompt_body">Eginbide gehigarriak desblokeatu eta babesle izan etengabeko garapena laguntzeko!</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager-ek ez du iragarkirik eta ez du erabiltzailearen daturik saltzen. Garapenarekin jarraitzea zuk soilik egiten da posible.</string>
     <string name="upgrade_screen_how_title">Nola lagundu</string>
     <string name="upgrade_screen_how_body">Izan babesle eta garapen babeslari! Egin klik beheko botoian eginbide gehigarri guztiak aktibatzeko eta nire GitHub Sponsors profila irekitzeko.</string>
-    <string name="upgrade_screen_why_title">Honek sortzen du 🪄</string>
+    <string name="upgrade_screen_why_title">Nahasketaren erdian</string>
     <string name="upgrade_screen_why_body">• Garatzaile motibatu bat 🧙\n• Mugagabeko gailuak ➡️➡️\n• Ekintza gehigarriak ⚙️\neta gehiago…</string>
     <string name="upgrade_screen_sponsor_action">Garapena babestu</string>
     <string name="upgrade_screen_sponsor_action_hint">Alternatiboa iragarkinak, analisiak eta Google Play dira 🙁</string>

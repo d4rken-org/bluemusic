@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Ole aktiivne, kui seade on ühendatud ja salvesta helitugevuse muudatused, mida see rakendus ei põhjustanud.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Salvesta heli ühenduse katkestamisel</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Talleta ja salvesta praegused helitasemed kui selle seadme ühendus katkestatakse.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Mõnedel seadmetel lülitab süsteem helimarsruutimist enne, kui me saame helitugevusi lugeda. Kui salvestatud väärtused ei vasta sellele, mida olite seadnud, proovige selle asemel lubada „Jälgi helitugevuse muutusi\".</string>
     <string name="devices_device_config_volume_lock_label">Helitugevuse lukustamine</string>
     <string name="devices_device_config_volume_lock_desc">Kõik selle rakenduse välised heli muudatused tühistatakse, kui seade on ühendatud.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Helitugevuse lukk tühistab praegu selle funktsiooni.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Helitugevuse määra piirang</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Piirita helitugevuse muutuste sagedust, et vältida kiiret või liigset muutmist.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Helitugevuse tõstmise viivitus</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Privaatsuspoliitika</string>
     <string name="settings_privacy_policy_desc">Andmete vastutustundlik käitlemine.</string>
     <string name="changelog_label">Muudatuste logi</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Varundamine ja taastamine</string>
+    <string name="backup_restore_settings_desc">Varunda ja taasta oma seadme konfiguratsioonid ja sätted.</string>
+    <string name="backup_restore_screen_title">Varundamine ja taastamine</string>
+    <string name="backup_restore_backup_desc">Loo varukoopia kõigist oma seadme konfiguratsioonidest ja rakenduse sätetest.</string>
+    <string name="backup_restore_backup_action">Loo varukoopia</string>
+    <string name="backup_restore_restore_desc">Taasta seadme konfiguratsioonid ja rakenduse sätted varufailist.</string>
+    <string name="backup_restore_restore_action">Vali varufail</string>
+    <string name="backup_restore_skip_existing_label">Jäta olemasolevad seadmed vahele</string>
+    <string name="backup_restore_skip_existing_desc">Ära kirjuta üle seadmeid, mis on juba konfigureeritud.</string>
+    <string name="backup_restore_preview_label">Varukoopia eelvaade</string>
+    <string name="backup_restore_preview_devices">%1$d seadet</string>
+    <string name="backup_restore_preview_overlap">%1$d/%2$d seadet on juba konfigureeritud</string>
+    <string name="backup_restore_confirm_action">Taasta kohe</string>
+    <string name="backup_restore_success_backup">Varukoopia loodud — %1$d seadet salvestatud.</string>
+    <string name="backup_restore_success_restore">Taastamine lõpetatud — %1$d seadet taastatud, %2$d vahele jäetud.</string>
+    <string name="backup_restore_version_warning">See varukoopia loodi versiooniga %1$s. Sul on käimas %2$s. Mõned sätted ei pruugi õigesti taastuda.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Silumisteavitused</string>
     <string name="debug_log_consent_title">Silumislogi</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Helide reguleerimine</string>
     <string name="label_premium_version">Tasuline versioon</string>
     <string name="general_upgrade_action">Täienda</string>
+    <string name="common_upgrade_required_label">Uuendamine nõutav</string>
     <string name="description_premium_required_additional_devices">Lisaseadmete haldamine vajab tasulist versiooni.</string>
     <string name="description_premium_required_this_extra_option">Kahjuks nõuab see lisavalik rakenduse tasulist versiooni.</string>
     <string name="description_premium_upgrade_explanation">Lisavõimaluste lubamiseks ja arendamise toetamiseks hankige tasuline versioon.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Täienda</string>
     <string name="description_intro_purpose">See rakendus võimaldab teie Androidi seadmel meelde jätta erinevaid sinihammast toetavate seadmete heli.</string>
     <string name="description_intro_premium">Kui teile meeldib see rakendus, siis kaaluge tasulisele versioonile üleminekut. Sellega toetate arendust ja saate juurde paar lisavõimalust.</string>
+    <string name="upgrade_benefit_unlimited_devices">Piiramatu arv seadmeprofiile</string>
+    <string name="upgrade_benefit_connection_actions">Automaatesitus, rakenduse käivitus ja ühendusmärguanded</string>
+    <string name="upgrade_benefit_theme_customization">Teema, stiili ja värvi kohandamine</string>
+    <string name="upgrade_benefit_power_controls">Helitugevuse lukk ja piiramise määr</string>
+    <string name="upgrade_benefit_support">Toeta iseseisvat arendust</string>
     <string name="description_intro_tap_the_button">Alustage lisades üks seade.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth on välja lülitatud.</string>
     <string name="title_bluetooth_is_off">Bluetooth on väljas</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Helitugevus (0–100)</string>
     <string name="devices_volume_input_error">Sisesta väärtus vahemikus %1$d kuni %2$d</string>
+    <string name="devices_volume_input_caption">Tegelik helitugevus võib ümardusse lähimale sammule, mida su seade toetab.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Lukusta</string>
     <string name="devices_unlock_sliders_action">Ava lukk</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Näitab aktiivse Bluetoothi seadme helitugevuse luku olekut</string>
+    <string name="widget_no_device_label">Ühtegi seadet pole ühendatud</string>
+    <string name="widget_bluetooth_off_label">Bluetooth on väljas</string>
+    <string name="widget_error_label">Vidina viga</string>
+    <string name="widget_preview_device_label">Minu kõrvaklapid</string>
+    <string name="widget_config_title">Vidina seaded</string>
+    <string name="widget_config_preview_label">Eelvaade</string>
+    <string name="widget_config_theme_label">Teema</string>
+    <string name="widget_config_bg_color_label">Tausta värvus</string>
+    <string name="widget_config_fg_color_label">Teksti värv</string>
+    <string name="widget_config_bg_alpha_label">Tausta läbipäevus</string>
+    <string name="widget_config_show_label_toggle">Kuva seadme nimi</string>
+    <string name="widget_config_show_label_description">Näita ühendatud seadet luku oleku kohal.</string>
+    <string name="widget_config_theme_green_label">Roheline</string>
+    <string name="widget_config_theme_red_label">Punane</string>
+    <string name="widget_config_theme_custom_label">Kohandatud</string>
 </resources>

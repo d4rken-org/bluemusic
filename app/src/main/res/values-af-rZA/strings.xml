@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Bly aktief terwyl hierdie toestel gekoppel is en stoor volumeveranderinge wat nie deur hierdie program veroorsaak is nie.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Stoor volume by ontkoppeling</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Vang en stoor die huidige volumevlakke wanneer hierdie toestel ontkoppel word.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Op sommige toestelle skakel die stelsel oudioroeteer oor voordat ons die volumes kan lees. As die gestoorde waardes nie ooreenstem met wat jy gestel het nie, probeer eerder \"Waarneem volumeveranderings\" aktiveer.</string>
     <string name="devices_device_config_volume_lock_label">Volume-slot</string>
     <string name="devices_device_config_volume_lock_desc">Enige volumeveranderinge wat nie deur hierdie program gemaak is nie, sal teruggestel word terwyl hierdie toestel gekoppel is.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Volumeslot oorheers tans hierdie funksie.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volume spoedbegrenzer</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Beperk die frekwensie van volumeveranderinge om vinnige of buitensporige volumejusteringe te voorkom.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volume verhogingsvertraging</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Privaatheidsbeleid</string>
     <string name="settings_privacy_policy_desc">Data verantwoordelik hanteer.</string>
     <string name="changelog_label">Wysigingslys</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Rugsteun &amp; Herstel</string>
+    <string name="backup_restore_settings_desc">Rugsteun en herstel jou toestelkonfigurasies en instellings.</string>
+    <string name="backup_restore_screen_title">Rugsteun &amp; Herstel</string>
+    <string name="backup_restore_backup_desc">Skep \'n rugsteun van al jou toestelkonfigurasies en toepassingsinstellings.</string>
+    <string name="backup_restore_backup_action">Skep rugsteun</string>
+    <string name="backup_restore_restore_desc">Herstel toestelkonfigurasies en toepassingsinstellings vanaf \'n rugsteunlêer.</string>
+    <string name="backup_restore_restore_action">Kies rugsteunlêer</string>
+    <string name="backup_restore_skip_existing_label">Slaan bestaande toestelle oor</string>
+    <string name="backup_restore_skip_existing_desc">Moenie toestelle wat reeds gekonfigureer is, oorskryf nie.</string>
+    <string name="backup_restore_preview_label">Rugsteunvoorskou</string>
+    <string name="backup_restore_preview_devices">%1$d toestelle</string>
+    <string name="backup_restore_preview_overlap">%1$d van %2$d toestelle reeds gekonfigureer</string>
+    <string name="backup_restore_confirm_action">Herstel nou</string>
+    <string name="backup_restore_success_backup">Rugsteun geskep — %1$d toestelle gestoor.</string>
+    <string name="backup_restore_success_restore">Herstel voltooi — %1$d toestelle herstel, %2$d oorgeslaan.</string>
+    <string name="backup_restore_version_warning">Hierdie rugsteun is geskep met weergawe %1$s. Jy gebruik tans %2$s. Sommige instellings word moontlik nie korrek herstel nie.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Ontfoutingskennisgewings</string>
     <string name="debug_log_consent_title">Ontfoutingslog</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Pas Volumes aan</string>
     <string name="label_premium_version">Premium weergawe</string>
     <string name="general_upgrade_action">Gradeer Op</string>
+    <string name="common_upgrade_required_label">Opgradering benodig</string>
     <string name="description_premium_required_additional_devices">Om bykomende toestelle te beheer vereis die premium weergawe.</string>
     <string name="description_premium_required_this_extra_option">Hierdie ekstra opsie vereis die premium weergawe van hierdie program.</string>
     <string name="description_premium_upgrade_explanation">Kry die premium weergawe om bykomende kenmerke te aktiveer en ontwikkeling te ondersteun.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Gradeer op</string>
     <string name="description_intro_purpose">Hierdie program laat Android toe om die volume instellings van verskeie Bluetooth toestelle te onthou.</string>
     <string name="description_intro_premium">Indien jy die program geniet oorweeg dit asb. om op te gradeer na die premium weergawe. Dit ondersteun verdere ontwikkeling en maak \'n paar ekstra eienskappe beskikbaar.</string>
+    <string name="upgrade_benefit_unlimited_devices">Onbeperkte toestelprofile</string>
+    <string name="upgrade_benefit_connection_actions">Outoafspeel, toepassing-begin en verbindingswaarskuwings</string>
+    <string name="upgrade_benefit_theme_customization">Tema-, styl- en kleurasepassing</string>
+    <string name="upgrade_benefit_power_controls">Volumeslot en koersbeperking</string>
+    <string name="upgrade_benefit_support">Ondersteun onafhanklike ontwikkeling</string>
     <string name="description_intro_tap_the_button">Begin deur jou eerste toestel by te voeg.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth is gedeaktiveer.</string>
     <string name="title_bluetooth_is_off">Bluetooth is af</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Voer \'n waarde tussen %1$d en %2$d in</string>
+    <string name="devices_volume_input_caption">Die werklike volume mag afrond na die naaste stap wat jou toestel ondersteun.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Sluit</string>
     <string name="devices_unlock_sliders_action">Ontsluit</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Wys volumeslot-status vir die aktiewe Bluetooth-toestel</string>
+    <string name="widget_no_device_label">Geen toestel gekoppel</string>
+    <string name="widget_bluetooth_off_label">Bluetooth is af</string>
+    <string name="widget_error_label">Wurfie-fout</string>
+    <string name="widget_preview_device_label">My Oorfone</string>
+    <string name="widget_config_title">Wurfie-instellings</string>
+    <string name="widget_config_preview_label">Voorskou</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Agtergrondkleur</string>
+    <string name="widget_config_fg_color_label">Tekskleur</string>
+    <string name="widget_config_bg_alpha_label">Agtergrond-deursigtigheid</string>
+    <string name="widget_config_show_label_toggle">Wys toestelnaam</string>
+    <string name="widget_config_show_label_description">Wys die gekoppelde toestel bo die slotstatus.</string>
+    <string name="widget_config_theme_green_label">Groen</string>
+    <string name="widget_config_theme_red_label">Rooi</string>
+    <string name="widget_config_theme_custom_label">Aangepas</string>
 </resources>

@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Forbli aktiv mens denne enheten er tilkoblet og lagre volumendringer som ikke har blitt forvoldt av denne appen.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Lagre volum ved frakobling</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Fang og lagre gjeldende volumnivåer når denne enheten kobles fra.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">På noen enheter bytter systemet lydrouting før vi kan lese volumene. Hvis de lagrede verdiene ikke stemmer overens med det du hadde angitt, kan du prøve å aktivere «Observer volumendringer» i stedet.</string>
     <string name="devices_device_config_volume_lock_label">Volumlås</string>
     <string name="devices_device_config_volume_lock_desc">Eventuelle volumendringer som ikke gjøres gjennom denne appen, blir tilbakestilt mens denne enheten er tilkoblet.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Volumelås overstyrer for øyeblikket denne funksjonen.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volumbegrenser</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Begrens hyppigheten av volumendringer for å forhindre raske eller overdrevne volumjusteringer.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volumøkningsforsinkelse</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Personvernregler</string>
     <string name="settings_privacy_policy_desc">Håndtere data ansvarlig.</string>
     <string name="changelog_label">Endringslogg</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Sikkerhetskopi og gjenoppretting</string>
+    <string name="backup_restore_settings_desc">Sikkerhetskopier og gjenopprett enhetskonfigurasjoner og innstillinger.</string>
+    <string name="backup_restore_screen_title">Sikkerhetskopi og gjenoppretting</string>
+    <string name="backup_restore_backup_desc">Opprett en sikkerhetskopi av alle enhetskonfigurasjoner og appinnstillinger.</string>
+    <string name="backup_restore_backup_action">Opprett sikkerhetskopi</string>
+    <string name="backup_restore_restore_desc">Gjenopprett enhetskonfigurasjoner og appinnstillinger fra en sikkerhetskopifil.</string>
+    <string name="backup_restore_restore_action">Velg sikkerhetskopifil</string>
+    <string name="backup_restore_skip_existing_label">Hopp over eksisterende enheter</string>
+    <string name="backup_restore_skip_existing_desc">Ikke overskriv enheter som allerede er konfigurert.</string>
+    <string name="backup_restore_preview_label">Forhåndsvisning av sikkerhetskopi</string>
+    <string name="backup_restore_preview_devices">%1$d enheter</string>
+    <string name="backup_restore_preview_overlap">%1$d av %2$d enheter er allerede konfigurert</string>
+    <string name="backup_restore_confirm_action">Gjenopprett nå</string>
+    <string name="backup_restore_success_backup">Sikkerhetskopi opprettet — %1$d enheter lagret.</string>
+    <string name="backup_restore_success_restore">Gjenoppretting fullført — %1$d enheter gjenopprettet, %2$d hoppet over.</string>
+    <string name="backup_restore_version_warning">Denne sikkerhetskopien ble opprettet med versjon %1$s. Du kjører %2$s. Noen innstillinger gjenopprettes kanskje ikke riktig.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Feilsøkingsvarsler</string>
     <string name="debug_log_consent_title">Feilsøkingslogg</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Justerer volumer</string>
     <string name="label_premium_version">Premiumversjon</string>
     <string name="general_upgrade_action">Oppgrader</string>
+    <string name="common_upgrade_required_label">Oppgradering kreves</string>
     <string name="description_premium_required_additional_devices">Administrering av flere enheter krever premiumversjonen.</string>
     <string name="description_premium_required_this_extra_option">Dette ekstra alternativet krever premiumversjonen av denne appen.</string>
     <string name="description_premium_upgrade_explanation">Få premiumversjonen for å aktivere tilleggsfunksjoner og støtte utviklingen.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Oppgrader</string>
     <string name="description_intro_purpose">Denne appen lar din Android-enhet huske volumet av forskjellige Bluetooth enheter.</string>
     <string name="description_intro_premium">Hvis du liker denne appen, vurder å oppgradere til premiumversjonen. Det støtter utviklingen og gir deg noen ekstra funksjoner.</string>
+    <string name="upgrade_benefit_unlimited_devices">Ubegrenset antall enhetsprofiler</string>
+    <string name="upgrade_benefit_connection_actions">Autoavspilling, appstart og tilkoblingsvarsler</string>
+    <string name="upgrade_benefit_theme_customization">Tilpasning av tema, stil og farge</string>
+    <string name="upgrade_benefit_power_controls">Volumlås og hastighetsbegrensning</string>
+    <string name="upgrade_benefit_support">Støtt uavhengig utvikling</string>
     <string name="description_intro_tap_the_button">Start ved å legge til din første enhet.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth er deaktivert.</string>
     <string name="title_bluetooth_is_off">Bluetooth er av</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volum (0–100)</string>
     <string name="devices_volume_input_error">Skriv inn en verdi mellom %1$d og %2$d</string>
+    <string name="devices_volume_input_caption">Det faktiske volumet kan rundes av til nærmeste trinn enheten din støtter.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Lås</string>
     <string name="devices_unlock_sliders_action">Lås opp</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Viser volumlåsstatus for den aktive Bluetooth-enheten</string>
+    <string name="widget_no_device_label">Ingen enhet tilkoblet</string>
+    <string name="widget_bluetooth_off_label">Bluetooth er av</string>
+    <string name="widget_error_label">Widget-feil</string>
+    <string name="widget_preview_device_label">Mine hodetelefoner</string>
+    <string name="widget_config_title">Widget-innstillinger</string>
+    <string name="widget_config_preview_label">Forhåndsvisning</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Bakgrunnsfarge</string>
+    <string name="widget_config_fg_color_label">Tekstfarge</string>
+    <string name="widget_config_bg_alpha_label">Bakgrunnsopasitet</string>
+    <string name="widget_config_show_label_toggle">Vis enhetsnavn</string>
+    <string name="widget_config_show_label_description">Vis den tilkoblede enheten over låsestatusen.</string>
+    <string name="widget_config_theme_green_label">Grønn</string>
+    <string name="widget_config_theme_red_label">Rød</string>
+    <string name="widget_config_theme_custom_label">Egendefinert</string>
 </resources>

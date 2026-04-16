@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">हे डिव्हाइस कनेक्ट असताना सक्रिय राहा आणि या अॅपमुळे न झालेले व्हॉल्युम बदल जतन करा.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">डिस्कनेक्ट झाल्यावर व्हॉल्युम जतन करा</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">हे डिव्हाइस डिस्कनेक्ट झाल्यावर सध्याच्या व्हॉल्युम पातळी कॅप्चर करा आणि जतन करा.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">काही डिव्हाइसवर, आम्ही व्हॉल्यूम वाचण्यापूर्वी सिस्टम ऑडिओ रूटिंग बदलते. जर जतन केलेली मूल्ये तुम्ही सेट केलेल्याशी जुळत नसतील, तर त्याऐवजी \"व्हॉल्यूम बदल निरीक्षण करा\" सक्षम करण्याचा प्रयत्न करा.</string>
     <string name="devices_device_config_volume_lock_label">व्हॉल्युम लॉक</string>
     <string name="devices_device_config_volume_lock_desc">या अॅपद्वारे न केलेले कोणतेही व्हॉल्युम बदल हे डिव्हाइस कनेक्ट असताना परत केले जातील.</string>
+    <string name="devices_device_config_volume_lock_override_desc">व्हॉल्युम लॉक सध्या या वैशिष्ट्याला ओव्हरराइड करत आहे.</string>
     <string name="devices_device_config_volume_rate_limiter_label">व्हॉल्युम दर मर्यादक</string>
     <string name="devices_device_config_volume_rate_limiter_desc">जलद किंवा अत्याधिक व्हॉल्युम समायोजन टाळण्यासाठी व्हॉल्युम बदलांची वारंवारिता मर्यादित करा.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">व्हॉल्युम वाढ विलंब</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">गोपनीयता धोरण</string>
     <string name="settings_privacy_policy_desc">डेटा जबाबदारीने हाताळणे.</string>
     <string name="changelog_label">बदल लॉग</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">बॅकअप आणि पुनर्संचयित करा</string>
+    <string name="backup_restore_settings_desc">तुमच्या डिव्हाइस कॉन्फिगरेशन आणि सेटिंग्जचा बॅकअप घ्या आणि पुनर्संचयित करा.</string>
+    <string name="backup_restore_screen_title">बॅकअप आणि पुनर्संचयित करा</string>
+    <string name="backup_restore_backup_desc">तुमच्या सर्व डिव्हाइस कॉन्फिगरेशन आणि अ‍ॅप सेटिंग्जचा बॅकअप तयार करा.</string>
+    <string name="backup_restore_backup_action">बॅकअप तयार करा</string>
+    <string name="backup_restore_restore_desc">बॅकअप फाइलमधून डिव्हाइस कॉन्फिगरेशन आणि अ‍ॅप सेटिंग्ज पुनर्संचयित करा.</string>
+    <string name="backup_restore_restore_action">बॅकअप फाइल निवडा</string>
+    <string name="backup_restore_skip_existing_label">विद्यमान डिव्हाइसेस वगळा</string>
+    <string name="backup_restore_skip_existing_desc">आधीच कॉन्फिगर केलेल्या डिव्हाइसेस ओव्हरराइट करू नका.</string>
+    <string name="backup_restore_preview_label">बॅकअप पूर्वावलोकन</string>
+    <string name="backup_restore_preview_devices">%1$d डिव्हाइसेस</string>
+    <string name="backup_restore_preview_overlap">%1$d पैकी %2$d डिव्हाइसेस आधीच कॉन्फिगर केलेले</string>
+    <string name="backup_restore_confirm_action">आत्ता पुनर्संचयित करा</string>
+    <string name="backup_restore_success_backup">बॅकअप तयार झाला — %1$d डिव्हाइसेस जतन केले.</string>
+    <string name="backup_restore_success_restore">पुनर्संचयित पूर्ण — %1$d डिव्हाइसेस पुनर्संचयित, %2$d वगळले.</string>
+    <string name="backup_restore_version_warning">हा बॅकअप आवृत्ती %1$s सह तयार केला होता. तुम्ही %2$s चालवत आहात. काही सेटिंग्ज योग्यरित्या पुनर्संचयित होणार नाहीत.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">डीबग सूचना</string>
     <string name="debug_log_consent_title">डीबग लॉग</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">व्हॉल्युम समायोजित करत आहे</string>
     <string name="label_premium_version">प्रीमियम आवृत्ती</string>
     <string name="general_upgrade_action">अपग्रेड करा</string>
+    <string name="common_upgrade_required_label">अपग्रेड आवश्यक</string>
     <string name="description_premium_required_additional_devices">अतिरिक्त डिव्हाइस व्यवस्थापित करण्यासाठी प्रीमियम आवृत्ती आवश्यक आहे.</string>
     <string name="description_premium_required_this_extra_option">या अतिरिक्त पर्यायासाठी या अॅपची प्रीमियम आवृत्ती आवश्यक आहे.</string>
     <string name="description_premium_upgrade_explanation">अतिरिक्त वैशिष्ट्ये सक्षम करण्यासाठी आणि विकासास समर्थन करण्यासाठी प्रीमियम आवृत्ती मिळवा.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">अपग्रेड करा</string>
     <string name="description_intro_purpose">हा अॅप तुमच्या Android डिव्हाइसला वेगवेगळ्या Bluetooth डिव्हाइसचे व्हॉल्युम लक्षात ठेवण्याची परवानगी देतो.</string>
     <string name="description_intro_premium">जर तुम्हाला हा अॅप आवडत असेल, तर प्रीमियम आवृत्तीमध्ये अपग्रेड करण्याचा विचार करा. हे विकासास समर्थन करते आणि तुम्हाला काही अतिरिक्त वैशिष्ट्ये मिळतात.</string>
+    <string name="upgrade_benefit_unlimited_devices">अमर्यादित डिव्हाइस प्रोफाइल</string>
+    <string name="upgrade_benefit_connection_actions">ऑटोप्ले, अ‍ॅप लॉन्च आणि कनेक्शन सूचना</string>
+    <string name="upgrade_benefit_theme_customization">थीम, स्टाइल आणि रंग सानुकूलन</string>
+    <string name="upgrade_benefit_power_controls">व्हॉल्युम लॉक आणि दर मर्यादा</string>
+    <string name="upgrade_benefit_support">स्वतंत्र विकासाला समर्थन द्या</string>
     <string name="description_intro_tap_the_button">तुमचे पहिले डिव्हाइस जोडून सुरुवात करा.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth अक्षम केले आहे.</string>
     <string name="title_bluetooth_is_off">Bluetooth बंद आहे</string>
@@ -337,10 +362,6 @@
     <string name="managed_devices_empty_message">कोणतेही ब्लूटूथ डिव्हाइस कॉन्फिगर केलेले नाही.
 + बटण टॅप करा आणि तुमचे पहिले डिव्हाइस जोडा.</string>
     <string name="label_pro_feature">प्रीमियम वैशिष्ट्य</string>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">मोफत आवृत्ती: %2$d पैकी %1$d डिव्हाइस</item>
-        <item quantity="other">मोफत आवृत्ती: %2$d पैकी %1$d डिव्हाइसेस</item>
-    </plurals>
     <string name="general_delete_action">हटवा</string>
     <string name="general_cancel_action">रद्द करा</string>
     <string name="general_ok_action">ठीक आहे</string>
@@ -381,9 +402,26 @@
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">सूचना</string>
     <!-- Volume input dialog -->
-    <string name="devices_volume_input_hint">व्हॉल्यूम (0–1 00)</string>
     <string name="devices_volume_input_error">%1$d आणि %2$d मध्ये मूल्य प्रवाश करा</string>
+    <string name="devices_volume_input_caption">वास्तविक व्हॉल्युम तुमच्या डिव्हाइसने समर्थित जवळच्या स्टेपला गोल होउ शकतो.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">लॉक</string>
     <string name="devices_unlock_sliders_action">अनलॉक</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">सक्रिय ब्लूटूथ डिव्हाइससाठी व्हॉल्युम लॉक स्थिती दाखवते</string>
+    <string name="widget_no_device_label">कोणतेही डिव्हाइस कनेक्ट नाही</string>
+    <string name="widget_bluetooth_off_label">ब्लूटूथ बंद आहे</string>
+    <string name="widget_error_label">विजेट त्रुटी</string>
+    <string name="widget_preview_device_label">माझ्या हेडफोन्स</string>
+    <string name="widget_config_title">विजेट सेटिंग्ज</string>
+    <string name="widget_config_preview_label">पूर्वावलोकन</string>
+    <string name="widget_config_theme_label">थीम</string>
+    <string name="widget_config_bg_color_label">पार्श्वभूमी रंग</string>
+    <string name="widget_config_fg_color_label">मजकूर रंग</string>
+    <string name="widget_config_bg_alpha_label">पार्श्वभूमी अपारदर्शकता</string>
+    <string name="widget_config_show_label_toggle">डिव्हाइसचे नाव दाखवा</string>
+    <string name="widget_config_show_label_description">लॉक स्थितीच्या वर कनेक्ट केलेले डिव्हाइस दाखवा.</string>
+    <string name="widget_config_theme_green_label">हिरवा</string>
+    <string name="widget_config_theme_red_label">लाल</string>
+    <string name="widget_config_theme_custom_label">सानुकूल</string>
 </resources>

@@ -26,7 +26,7 @@
     <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">Hallitsemattomia laitteita ei löydy</string>
     <string name="discover_all_devices_managed_msg">Kaikki paritetut laitteesi on hallittu! Tarvitsetko uuden?</string>
-    <string name="discover_pair_new_device_action">Parита uusi laite</string>
+    <string name="discover_pair_new_device_action">Parita uusi laite</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Laitteen asetukset</string>
     <string name="devices_device_config_section_general_label">Yleiset</string>
@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Pysy aktiivisena kun tämä laite on yhdistettynä ja tallenna äänenvoimakkuusmuutokset, joita tämä sovellus ei ole aiheuttanut.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Tallenna äänenvoimakkuus yhteyden katketessa</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Tallenna nykyiset äänenvoimakkuustasot, kun tämä laite katkaistaan.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Joissakin laitteissa järjestelmä vaihtaa äänireititystä ennen kuin voimme lukea äänenvoimakkuudet. Jos tallennetut arvot eivät vastaa asettamiasi, kokeile ottaa käyttöön \"Tarkkaile äänenvoimakkuuden muutoksia\".</string>
     <string name="devices_device_config_volume_lock_label">Äänenvoimakkuuden lukitus</string>
     <string name="devices_device_config_volume_lock_desc">Kaikki äänenvoimakkuusmuutokset, joita ei tehdä tämän sovelluksen kautta, kumotaan kun tämä laite on yhdistettynä.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Äänenvoimakkuuden lukitus ohittaa tällä hetkellä tämän ominaisuuden.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Äänenvoimakkuuden nopeus rajaus</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Rajoita äänenvoimakkuus muutokset estääksesi nopeat tai liian suuret säädöt.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Äänenvoimakkuuden nosto viive</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Tietosuojakäytäntö</string>
     <string name="settings_privacy_policy_desc">Tietojen vastuullinen käsittely.</string>
     <string name="changelog_label">Muutosloki</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Varmuuskopiointi ja palautus</string>
+    <string name="backup_restore_settings_desc">Varmuuskopioi ja palauta laitteen asetukset ja konfiguraatiot.</string>
+    <string name="backup_restore_screen_title">Varmuuskopiointi ja palautus</string>
+    <string name="backup_restore_backup_desc">Luo varmuuskopio kaikista laitekonfiguraatioistasi ja sovelluksen asetuksista.</string>
+    <string name="backup_restore_backup_action">Luo varmuuskopio</string>
+    <string name="backup_restore_restore_desc">Palauta laitekonfiguraatiot ja sovelluksen asetukset varmuuskopiotiedostosta.</string>
+    <string name="backup_restore_restore_action">Valitse varmuuskopiotiedosto</string>
+    <string name="backup_restore_skip_existing_label">Ohita olemassa olevat laitteet</string>
+    <string name="backup_restore_skip_existing_desc">Älä ylikirjoita laitteita, jotka on jo määritetty.</string>
+    <string name="backup_restore_preview_label">Varmuuskopion esikatselu</string>
+    <string name="backup_restore_preview_devices">%1$d laitetta</string>
+    <string name="backup_restore_preview_overlap">%1$d / %2$d laitteesta on jo määritetty</string>
+    <string name="backup_restore_confirm_action">Palauta nyt</string>
+    <string name="backup_restore_success_backup">Varmuuskopio luotu — %1$d laitetta tallennettu.</string>
+    <string name="backup_restore_success_restore">Palautus valmis — %1$d laitetta palautettu, %2$d ohitettu.</string>
+    <string name="backup_restore_version_warning">Tämä varmuuskopio on luotu versiolla %1$s. Käytät versiota %2$s. Osa asetuksista ei välttämättä palaudu oikein.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug-ilmoitukset</string>
     <string name="debug_log_consent_title">Debug-loki</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Säädetään äänenvoimakkuuksia</string>
     <string name="label_premium_version">Premium versio</string>
     <string name="general_upgrade_action">Päivitä</string>
+    <string name="common_upgrade_required_label">Päivitys vaaditaan</string>
     <string name="description_premium_required_additional_devices">Useamman laitteen hallinta vaatii premium version.</string>
     <string name="description_premium_required_this_extra_option">Tämä lisäominaisuus vaatii premium version sovelluksesta.</string>
     <string name="description_premium_upgrade_explanation">Hanki premium versio aktivoidaksesi lisäominaisuuksia ja tukeaksesi kehitystä.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Päivitä</string>
     <string name="description_intro_purpose">Tämä sovellus mahdollistaa Android laitteesi muistaa erillisten Bluetooth laitteiden äänenvoimakkuuden.</string>
     <string name="description_intro_premium">Jos pidät tästä sovelluksesta, harkitse päivittäväsi premium versioon. Se tukee kehittämistä ja antaa muutaman lisäominaisuuden.</string>
+    <string name="upgrade_benefit_unlimited_devices">Rajattomat laiteprofiillit</string>
+    <string name="upgrade_benefit_connection_actions">Automaattinen toisto, sovelluksen käynnistys ja yhteysilmoitukset</string>
+    <string name="upgrade_benefit_theme_customization">Teeman, tyylin ja värin mukauttaminen</string>
+    <string name="upgrade_benefit_power_controls">Äänenvoimakkuuden lukitus ja nopeusrajoitus</string>
+    <string name="upgrade_benefit_support">Tue itsenäistä kehitystä</string>
     <string name="description_intro_tap_the_button">Aloita lisäämällä ensimmäinen laitteesi.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ei ole käytössä.</string>
     <string name="title_bluetooth_is_off">Bluetooth on pois päältä</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Äänenvoimakkuus (0–100)</string>
     <string name="devices_volume_input_error">Anna arvo väliltä %1$d ja %2$d</string>
+    <string name="devices_volume_input_caption">Todellinen äänenvoimakkuus saatetaan pyöristää lähimpään laitteesi tukemaan askeleeseen.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Lukitse</string>
     <string name="devices_unlock_sliders_action">Avaa lukitus</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Näyttää aktiivisen Bluetooth-laitteen äänenvoimakkuuden lukitustilan</string>
+    <string name="widget_no_device_label">Ei laitetta yhdistettynä</string>
+    <string name="widget_bluetooth_off_label">Bluetooth on pois päältä</string>
+    <string name="widget_error_label">Widgetin virhe</string>
+    <string name="widget_preview_device_label">Omat kuulokkeet</string>
+    <string name="widget_config_title">Widgetin asetukset</string>
+    <string name="widget_config_preview_label">Esikatselu</string>
+    <string name="widget_config_theme_label">Teema</string>
+    <string name="widget_config_bg_color_label">Taustaväri</string>
+    <string name="widget_config_fg_color_label">Tekstin väri</string>
+    <string name="widget_config_bg_alpha_label">Taustan läpinäkyvyys</string>
+    <string name="widget_config_show_label_toggle">Näytä laitteen nimi</string>
+    <string name="widget_config_show_label_description">Näytä yhdistetty laite lukitustilan yläpuolella.</string>
+    <string name="widget_config_theme_green_label">Vihreä</string>
+    <string name="widget_config_theme_red_label">Punainen</string>
+    <string name="widget_config_theme_custom_label">Mukautettu</string>
 </resources>

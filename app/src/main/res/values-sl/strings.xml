@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Ostani aktiven, ko je ta naprava priklopljena, in shrani spremembe glasnosti, ki jih ni povzročila ta aplikacija.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Shrani glasnost ob odključitvi</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Zabeleži in shrani trenutne ravni glasnosti, ko se ta naprava odključi.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Na nekaterih napravah sistem preklopi zvočno usmerjanje, preden uspemo prebrati glasnosti. Če shranjene vrednosti ne ustrezajo tistemu, kar ste nastavili, poskusite namesto tega omogočiti »Opazuj spremembe glasnosti«.</string>
     <string name="devices_device_config_volume_lock_label">Zaklepanje glasnosti</string>
     <string name="devices_device_config_volume_lock_desc">Vse spremembe glasnosti, ki niso bile narejene prek te aplikacije, bodo vrnjene, medtem ko je ta naprava priklopljena.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Zaklepanje glasnosti trenutno preglasi to funkcijo.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Omejevalnik hitrosti glasnosti</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Omejite pogostost sprememb glasnosti, da preprečite hitre ali prekomerne prilagoditve glasnosti.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Zamik povečevanja glasnosti</string>
@@ -202,6 +204,23 @@
     <string name="settings_privacy_policy_label">Pravilnik o zasebnosti</string>
     <string name="settings_privacy_policy_desc">Odgovorno ravnanje s podatki.</string>
     <string name="changelog_label">Dnevnik sprememb</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Varnostno kopiranje in obnovitev</string>
+    <string name="backup_restore_settings_desc">Varnostno kopirajte in obnovite konfiguracije naprav ter nastavitve.</string>
+    <string name="backup_restore_screen_title">Varnostno kopiranje in obnovitev</string>
+    <string name="backup_restore_backup_desc">Ustvarite varnostno kopijo vseh konfiguracij naprav in nastavitev aplikacije.</string>
+    <string name="backup_restore_backup_action">Ustvari varnostno kopijo</string>
+    <string name="backup_restore_restore_desc">Obnovite konfiguracije naprav in nastavitve aplikacije iz varnostne kopije.</string>
+    <string name="backup_restore_restore_action">Izberi datoteko varnostne kopije</string>
+    <string name="backup_restore_skip_existing_label">Preskoči obstoječe naprave</string>
+    <string name="backup_restore_skip_existing_desc">Ne prepisuj naprav, ki so že konfigurirane.</string>
+    <string name="backup_restore_preview_label">Predogled varnostne kopije</string>
+    <string name="backup_restore_preview_devices">%1$d naprav</string>
+    <string name="backup_restore_preview_overlap">%1$d od %2$d naprav je že konfiguriranih</string>
+    <string name="backup_restore_confirm_action">Obnovi zdaj</string>
+    <string name="backup_restore_success_backup">Varnostna kopija ustvarjena — shranjenih %1$d naprav.</string>
+    <string name="backup_restore_success_restore">Obnovitev zaključena — obnovljenih %1$d naprav, %2$d preskočenih.</string>
+    <string name="backup_restore_version_warning">Ta varnostna kopija je bila ustvarjena z različico %1$s. Trenutno uporabljate %2$s. Nekatere nastavitve morda ne bodo obnovljene pravilno.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Obvestila o razhroščevanju</string>
     <string name="debug_log_consent_title">Razhroščevalni dnevnik</string>
@@ -216,8 +235,8 @@
     <string name="debug_log_screen_session_path_label">Pot seje za odpravljanje napak</string>
     <string name="debug_log_screen_log_files_label">Dnevniške datoteke</string>
     <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="one">Datoteka je pripravljena (%2$s).</item>
-        <item quantity="two">Datoteki sta pripravljeni (%2$s).</item>
+        <item quantity="one">%1$d datoteka je pripravljena (%2$s).</item>
+        <item quantity="two">%1$d datoteki sta pripravljeni (%2$s).</item>
         <item quantity="few">%1$d datoteke so pripravljene (%2$s).</item>
         <item quantity="other">%1$d datotek je pripravljenih (%2$s).</item>
     </plurals>
@@ -289,6 +308,7 @@
     <string name="label_status_adjusting_volumes">Prilagajanje glasnosti</string>
     <string name="label_premium_version">Premium različica</string>
     <string name="general_upgrade_action">Nadgradi</string>
+    <string name="common_upgrade_required_label">Zahtevana nadgradnja</string>
     <string name="description_premium_required_additional_devices">Upravljanje dodatnih naprav zahteva premium različico.</string>
     <string name="description_premium_required_this_extra_option">Ta dodatna možnost zahteva premium različico te aplikacije.</string>
     <string name="description_premium_upgrade_explanation">Pridobite premium različico za omogočanje dodatnih funkcij in podporo razvoju.</string>
@@ -297,6 +317,11 @@
     <string name="upgrade_prompt_upgrade_action">Nadgradi</string>
     <string name="description_intro_purpose">Ta aplikacija omogoča vaši napravi Android, da si zapomni glasnost različnih naprav Bluetooth.</string>
     <string name="description_intro_premium">Če vam je ta aplikacija všeč, razmislite o nadgradnji na premium različico. Podpira razvoj in vam omogoča nekaj dodatnih funkcij.</string>
+    <string name="upgrade_benefit_unlimited_devices">Neomejeni profili naprav</string>
+    <string name="upgrade_benefit_connection_actions">Samodejno predvajanje, zagon aplikacij in obvestila o povezavi</string>
+    <string name="upgrade_benefit_theme_customization">Prilagoditev teme, sloga in barv</string>
+    <string name="upgrade_benefit_power_controls">Zaklepanje glasnosti in omejevanje hitrosti</string>
+    <string name="upgrade_benefit_support">Podpri neodvisen razvoj</string>
     <string name="description_intro_tap_the_button">Začnite z dodajanjem prve naprave.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth je onemogočen.</string>
     <string name="title_bluetooth_is_off">Bluetooth je izklopljen</string>
@@ -390,7 +415,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Glasnost (0–100)</string>
     <string name="devices_volume_input_error">Vnesite vrednost med %1$d in %2$d</string>
+    <string name="devices_volume_input_caption">Dejanska glasnost se lahko zaokroži na najbližji korak, ki ga naprava podpira.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Zakleni</string>
     <string name="devices_unlock_sliders_action">Odkleni</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Prikazuje stanje zaklepanja glasnosti za aktivno Bluetooth napravo</string>
+    <string name="widget_no_device_label">Nobena naprava ni povežana</string>
+    <string name="widget_bluetooth_off_label">Bluetooth je izklopljen</string>
+    <string name="widget_error_label">Napaka gradnika</string>
+    <string name="widget_preview_device_label">Moje slušalke</string>
+    <string name="widget_config_title">Nastavitve gradnika</string>
+    <string name="widget_config_preview_label">Predogled</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Barva ozadja</string>
+    <string name="widget_config_fg_color_label">Barva besedila</string>
+    <string name="widget_config_bg_alpha_label">Prosojnost ozadja</string>
+    <string name="widget_config_show_label_toggle">Prikaži ime naprave</string>
+    <string name="widget_config_show_label_description">Prikaži povežano napravo nad stanjem zaklepa.</string>
+    <string name="widget_config_theme_green_label">Zelena</string>
+    <string name="widget_config_theme_red_label">Rdeča</string>
+    <string name="widget_config_theme_custom_label">Po meri</string>
 </resources>

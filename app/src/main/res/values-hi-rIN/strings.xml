@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">जब यह डिवाइस जुड़ा हो तो सक्रिय रहें और उन वॉल्यूम परिवर्तनों को सेव करें जो इस ऐप के कारण नहीं हुए हैं।</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">डिस्कनेक्ट पर वॉल्यूम सेव करें</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">इस डिवाइस के डिस्कनेक्ट होने पर वर्तमान वॉल्यूम स्तर कैप्चर करें और सेव करें।</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">कुछ डिवाइस पर, सिस्टम ऑडियो रूटिंग बदल देता है इससे पहले कि हम वॉल्यूम पढ़ सकें। अगर सेव की गई वैल्यू वो नहीं है जो आपने सेट की थी, तो इसके बजाय \"वॉल्यूम परिवर्तन देखें\" को सक्षम करने का प्रयास करें।</string>
     <string name="devices_device_config_volume_lock_label">वॉल्यूम लॉक</string>
     <string name="devices_device_config_volume_lock_desc">इस उपकरण के माध्यम से नहीं किए गए किसी भी मात्रा परिवर्तन को वापस कर दिया जाएगा, जबकि यह उपकरण जुड़ा हुआ है।</string>
+    <string name="devices_device_config_volume_lock_override_desc">वॉल्यूम लॉक अभी इस सुविधा को ओवरराइड कर रहा है।</string>
     <string name="devices_device_config_volume_rate_limiter_label">वॉल्यूम दर सीमक</string>
     <string name="devices_device_config_volume_rate_limiter_desc">वॉल्यूम परिवर्तनों की आवृत्ति को सीमित करें ताकि तेज़ या अत्यधिक वॉल्यूम समायोजन को रोका जा सके।</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">वॉल्यूम बढ़ाने में देरी</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">प्राइवेसी पालिसी</string>
     <string name="settings_privacy_policy_desc">डेटा को जिम्मेदारी से हैंडल करना।</string>
     <string name="changelog_label">बदलाव लॉग</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">बैकअप और रिस्टोर</string>
+    <string name="backup_restore_settings_desc">अपने डिवाइस कॉन्फ़िगरेशन और सेटिंग्स का बैकअप लें और रिस्टोर करें।</string>
+    <string name="backup_restore_screen_title">बैकअप और रिस्टोर</string>
+    <string name="backup_restore_backup_desc">अपने सभी डिवाइस कॉन्फ़िगरेशन और ऐप सेटिंग्स का बैकअप बनाएं।</string>
+    <string name="backup_restore_backup_action">बैकअप बनाएं</string>
+    <string name="backup_restore_restore_desc">बैकअप फ़ाइल से डिवाइस कॉन्फ़िगरेशन और ऐप सेटिंग्स रिस्टोर करें।</string>
+    <string name="backup_restore_restore_action">बैकअप फ़ाइल चुनें</string>
+    <string name="backup_restore_skip_existing_label">मौजूदा डिवाइस छोड़ें</string>
+    <string name="backup_restore_skip_existing_desc">जो डिवाइस पहले से कॉन्फ़िगर हैं उन्हें ओवरराइट न करें।</string>
+    <string name="backup_restore_preview_label">बैकअप पूर्वावलोकन</string>
+    <string name="backup_restore_preview_devices">%1$d डिवाइस</string>
+    <string name="backup_restore_preview_overlap">%1$d में से %2$d डिवाइस पहले से कॉन्फ़िगर हैं</string>
+    <string name="backup_restore_confirm_action">अभी रिस्टोर करें</string>
+    <string name="backup_restore_success_backup">बैकअप बनाया गया — %1$d डिवाइस सेव हुए।</string>
+    <string name="backup_restore_success_restore">रिस्टोर पूर्ण — %1$d डिवाइस रिस्टोर हुए, %2$d छोड़े गए।</string>
+    <string name="backup_restore_version_warning">यह बैकअप वर्शन %1$s से बनाया गया था। आप %2$s चला रहे हैं। कुछ सेटिंग्स सही तरह से रिस्टोर नहीं हो सकती हैं।</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">डिबग अधिसूचनाएं</string>
     <string name="debug_log_consent_title">डिबग लॉग</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">वॉल्यूम समायोजन</string>
     <string name="label_premium_version">प्रीमियम संस्करण</string>
     <string name="general_upgrade_action">अपग्रेड</string>
+    <string name="common_upgrade_required_label">अपग्रेड आवश्यक है</string>
     <string name="description_premium_required_additional_devices">अतिरिक्त डिवाइस के प्रबंधन के लिए प्रीमियम संस्करण की आवश्यकता होती है।</string>
     <string name="description_premium_required_this_extra_option">यह अतिरिक्त विकल्प के लिए इस एप्प के प्रीमियम संस्करण की आवश्यकता है।</string>
     <string name="description_premium_upgrade_explanation">अतिरिक्त सुविधाओं को सक्षम करने और विकास का समर्थन करने के लिए प्रीमियम संस्करण प्राप्त करें।</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">अपग्रेड</string>
     <string name="description_intro_purpose">यह ऐप आपके एंड्रॉइड डिवाइस को विभिन्न ब्लूटूथ उपकरणों की मात्रा याद रखने की अनुमति देता है।</string>
     <string name="description_intro_premium">यदि आप इस एप्लिकेशन को पसंद करते हैं, तो प्रीमियम संस्करण में अपग्रेड करने पर विचार करें। यह विकास का समर्थन करता है और आपको कुछ अतिरिक्त सुविधाएं प्रदान करता है।</string>
+    <string name="upgrade_benefit_unlimited_devices">असीमित डिवाइस प्रोफ़ाइल</string>
+    <string name="upgrade_benefit_connection_actions">ऑटोप्ले, ऐप लॉन्च और कनेक्शन अलर्ट</string>
+    <string name="upgrade_benefit_theme_customization">थीम, स्टाइल और रंग कस्टमाइज़ेशन</string>
+    <string name="upgrade_benefit_power_controls">वॉल्यूम लॉक और रेट लिमिटिंग</string>
+    <string name="upgrade_benefit_support">स्वतंत्र विकास का समर्थन करें</string>
     <string name="description_intro_tap_the_button">अपना पहला डिवाइस जोड़कर प्रारंभ करें।</string>
     <string name="description_bluetooth_is_disabled">ब्लूटूथ अक्षम है।</string>
     <string name="title_bluetooth_is_off">ब्लूटूथ बंद है</string>
@@ -337,8 +362,8 @@
     <string name="managed_devices_empty_message">कोई ब्लूटूथ डिवाइस कॉन्फिगर नहीं किया गया।\nअपना पहला डिवाइस जोड़ने के लिए + बटन पर टैप करें।</string>
     <string name="label_pro_feature">प्रीमियम फीचर</string>
     <plurals name="discover_device_limit_banner">
-        <item quantity="one">मुफ्त संस्करण: %2$d में से %1$d डिवाइस</item>
-        <item quantity="other">मुफ्त संस्करण: %2$d में से %1$d डिवाइस</item>
+        <item quantity="one">मुफ्त संस्करण: %1$d में से %2$d डिवाइस</item>
+        <item quantity="other">मुफ्त संस्करण: %1$d में से %2$d डिवाइस</item>
     </plurals>
     <string name="general_delete_action">डिलीट</string>
     <string name="general_cancel_action">रद्द</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">वॉल्यूम (0–100)</string>
     <string name="devices_volume_input_error">%1$d और %2$d के बीच एक मान दर्ज करें</string>
+    <string name="devices_volume_input_caption">असली वॉल्यूम आपके डिवाइस द्वारा समर्थित निकटतम स्टेप तक राउंड हो सकता है।</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">लॉक करें</string>
     <string name="devices_unlock_sliders_action">अनलॉक करें</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">सक्रिय Bluetooth डिवाइस की वॉल्यूम लॉक स्थिति दिखाता है</string>
+    <string name="widget_no_device_label">कोई डिवाइस कनेक्ट नहीं है</string>
+    <string name="widget_bluetooth_off_label">Bluetooth बंद है</string>
+    <string name="widget_error_label">विजेट त्रुटि</string>
+    <string name="widget_preview_device_label">मेरे हेडफ़ोन</string>
+    <string name="widget_config_title">विजेट सेटिंग्स</string>
+    <string name="widget_config_preview_label">पूर्वावलोकन</string>
+    <string name="widget_config_theme_label">थीम</string>
+    <string name="widget_config_bg_color_label">पृष्ठभूमि रंग</string>
+    <string name="widget_config_fg_color_label">टेक्स्ट रंग</string>
+    <string name="widget_config_bg_alpha_label">पृष्ठभूमि अपारदर्शिता</string>
+    <string name="widget_config_show_label_toggle">डिवाइस का नाम दिखाएं</string>
+    <string name="widget_config_show_label_description">लॉक स्थिति के ऊपर कनेक्टेड डिवाइस दिखाएं।</string>
+    <string name="widget_config_theme_green_label">हरा</string>
+    <string name="widget_config_theme_red_label">लाल</string>
+    <string name="widget_config_theme_custom_label">कस्टम</string>
 </resources>

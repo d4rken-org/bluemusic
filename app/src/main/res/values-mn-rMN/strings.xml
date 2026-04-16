@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Энэ төхөөрөмжий холбогдсон байхд идэвхүүлэн тогтноод энэ аппын үйлдЍлгүй дууны өөрчлөлтийг хадгалах.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Салгаах үед дууг хадгалах</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Энэ төхөөрөмжий салгахад одоохийн дууны түвшийг бариж хадгалах.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Зарим төхөөрөмж дээр систем нь биднийг дуу хоолойн түвшинг уншихаас өмнө аудио чиглүүлэлтийг солидог. Хадгалагдсан утга нь тохируулсан утгатай таарахгүй байвал, оронд нь \"Дуу хоолойн өөрчлөлтийг ажиглах\" функцийг идэвхжүүлж үзнэ үү.</string>
     <string name="devices_device_config_volume_lock_label">Дууны түгжийн цооц</string>
     <string name="devices_device_config_volume_lock_desc">Энэ төхөөрөмжий холбогдсон байхад энэ аппаас бус дууны өөрчлөлтийг буцаан тохиргуулана.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Дууны түгжээ одоо энэ функцийг дарж байна.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Дууны өөрчлөлтийн хүчгэгүй</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Хүнцэрэгч эсвэл дууны өөрчлөлтыг сэргийлэхийн тулд дууны өөрчлөлтийн давтамжийг хязгаалах.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Дууг нэмэхийн хоцорлолт</string>
@@ -200,6 +202,22 @@
     <string name="settings_privacy_policy_label">Нууцлалын бодлого</string>
     <string name="settings_privacy_policy_desc">Өгөгдлийг хариуцлагатайгаар зохицуулах.</string>
     <string name="changelog_label">Өөрчлөлтийн түүх</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Нөөцлөлт &amp; Сэргээлт</string>
+    <string name="backup_restore_settings_desc">Төхөөрөмжийн тохиргоо болон тохируулгуудаа нөөцлөх, сэргээх.</string>
+    <string name="backup_restore_screen_title">Нөөцлөлт &amp; Сэргээлт</string>
+    <string name="backup_restore_backup_desc">Бүх төхөөрөмжийн тохиргоо болон апп-ын тохируулгуудын нөөцлөлт үүсгэх.</string>
+    <string name="backup_restore_backup_action">Нөөцлөлт үүсгэх</string>
+    <string name="backup_restore_restore_desc">Нөөцлөлтийн файлаас төхөөрөмжийн тохиргоо болон апп-ын тохируулгуудыг сэргээх.</string>
+    <string name="backup_restore_restore_action">Нөөцлөлтийн файл сонгох</string>
+    <string name="backup_restore_skip_existing_label">Одоо байгаа төхөөрөмжүүдийг алгасах</string>
+    <string name="backup_restore_skip_existing_desc">Аль хэдийн тохируулсан төхөөрөмжүүдийг дарж бичихгүй байх.</string>
+    <string name="backup_restore_preview_label">Нөөцлөлтийн урьдчилал</string>
+    <string name="backup_restore_preview_devices">%1$d төхөөрөмж</string>
+    <string name="backup_restore_confirm_action">Одоо сэргээх</string>
+    <string name="backup_restore_success_backup">Нөөцлөлт үүсгэгдсэн — %1$d төхөөрөмж хадагалсан.</string>
+    <string name="backup_restore_success_restore">Сэргээлт дууссан — %1$d төхөөрөмж сэргээгдсэн, %2$d алгассан.</string>
+    <string name="backup_restore_version_warning">Энэ нөөцлөлт %1$s хувилбариар үүсгэгдсэн. Та %2$s ашиглаж байна. Деяки тохируулга зөв сэргээгдсэхгүй байж болно.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Дебаг мэдэгдэл</string>
     <string name="debug_log_consent_title">Дибаг лог</string>
@@ -283,6 +301,7 @@
     <string name="label_status_adjusting_volumes">Дууг тохиргуулаж байна</string>
     <string name="label_premium_version">Премиум хувилбар</string>
     <string name="general_upgrade_action">Сайжруулах</string>
+    <string name="common_upgrade_required_label">Шинэчлэлт шаардлагатай</string>
     <string name="description_premium_required_additional_devices">Нэмэлт төхөөрөмжүүд удаалахад премиум хувилбар шаардлагана.</string>
     <string name="description_premium_required_this_extra_option">Энэ нэмэлт сонголтд энэ аппын премиум хувилбар шаардлагана.</string>
     <string name="description_premium_upgrade_explanation">Нэмэлт онцлогдох ба хөгжлөлтийг дэмжлэхийн тулд премиум хувилбар аваарай.</string>
@@ -291,6 +310,11 @@
     <string name="upgrade_prompt_upgrade_action">Сайжруулах</string>
     <string name="description_intro_purpose">Энэ апп таны Android төхөөрөмжийд өөр өөр Bluetooth төхөөрөмжийн дууг санаах боломжийг олгодог.</string>
     <string name="description_intro_premium">Хэрэв энэ апп танд таалагдсан бол, премиум хувилбар рүү шилжээрэй. Тэр хөгжлөлтийг дэмжлээд хэдэх бөгөөд цөөхөн онцлог авчуулна.</string>
+    <string name="upgrade_benefit_unlimited_devices">Хязгаалаггүй төхөөрөмжийн профайлууд</string>
+    <string name="upgrade_benefit_connection_actions">Автомат тоглуулалт, апп нээх, холбооны мэдэгдэл</string>
+    <string name="upgrade_benefit_theme_customization">Тем, хэв болон өнгийн өнгөрөмжийнх тохиргулалт</string>
+    <string name="upgrade_benefit_power_controls">Дууны түгжээ болон хурдаасыйн хязаалалт</string>
+    <string name="upgrade_benefit_support">Бие хөгжлөлтийн хөгжлөлтийг дэмжлээх</string>
     <string name="description_intro_tap_the_button">Эхлээд анхны төхөөрөмжийгӝэ нэмж эхлээ.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth идэвхгүй байна.</string>
     <string name="title_bluetooth_is_off">Bluetooth унтраассан</string>
@@ -336,10 +360,6 @@
     <string name="privacy_policy_label">Нууцлалын бодлого</string>
     <string name="managed_devices_empty_message">Bluetooth төхөөрөмжий тохиргоогүй.\nАнхны төхөөрөмжийгӝэ нэмж + товч дарна.</string>
     <string name="label_pro_feature">Премиум онцлог</string>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">үнэгүй хувилбар: %2$d төхөөрөмжийаас %1$d</item>
-        <item quantity="other">үнэгүй хувилбар: %2$d төхөөрөмжийаас %1$d</item>
-    </plurals>
     <string name="general_delete_action">Устгах</string>
     <string name="general_cancel_action">Цуцлах</string>
     <string name="general_ok_action">Зөвшөөрөх</string>
@@ -380,9 +400,26 @@
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Дохиолго</string>
     <!-- Volume input dialog -->
-    <string name="devices_volume_input_hint">Дуу (0–1000)</string>
     <string name="devices_volume_input_error">%1$d ба %2$d хооронды утга оруулна</string>
+    <string name="devices_volume_input_caption">Таны төхөөрөмж дэмжиглэх дууны хамгийн алхамдаа дүгрэж асвал дээш дуунд ойрож болох тал.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Түгжийх</string>
     <string name="devices_unlock_sliders_action">Тайлах</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Идэвхийлэлттэй Bluetooth төхөөрөмжийн дууны түгжээг үзүүл́эх</string>
+    <string name="widget_no_device_label">Төхөөрөмж холбогдоогүй</string>
+    <string name="widget_bluetooth_off_label">Bluetooth унтараа байна</string>
+    <string name="widget_error_label">Вижетийн алдаа</string>
+    <string name="widget_preview_device_label">Миний чихэвч</string>
+    <string name="widget_config_title">Вижетийн тохиргулалт</string>
+    <string name="widget_config_preview_label">Урьдчилал</string>
+    <string name="widget_config_theme_label">Тем</string>
+    <string name="widget_config_bg_color_label">Арьны өнгө</string>
+    <string name="widget_config_fg_color_label">Текстийн өнгө</string>
+    <string name="widget_config_bg_alpha_label">Арьны тодо</string>
+    <string name="widget_config_show_label_toggle">Төхөөрөмжийн нэр үзүүлэх</string>
+    <string name="widget_config_show_label_description">Холбогдсон төхөөрөмжийг түгжээг дүрслэнгийн дээд үзүүлэх.</string>
+    <string name="widget_config_theme_green_label">Ногоон</string>
+    <string name="widget_config_theme_red_label">Улаан</string>
+    <string name="widget_config_theme_custom_label">Дурьмалах</string>
 </resources>

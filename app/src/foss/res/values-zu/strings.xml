@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">Kudingeka i-BVM FOSS</string>
     <string name="upgrade_prompt_title">Buyekeza kuya ku-BVM FOSS</string>
     <string name="upgrade_prompt_body">Vula izici ezengeziwe futhi ube ngumnikazi ukuze usekele ukuthuthukiswa okuqhubekayo!</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">I-Bluetooth Volume Manager ayinazo izikhangiso futhi ayithengisi idatha yabasebenzisi. Ukuthuthukiswa okuqhubekayo kwenziwa kuphela nguwe.</string>
     <string name="upgrade_screen_how_title">Indlela yokusiza</string>
     <string name="upgrade_screen_how_body">Yiba ngumnikazi futhi uxhase ukuthuthukiswa! Thepha inkinobho engezansi ukuze unike amandla zonke izici ezengeziwe futhi uvule iphrofayili yami ye-GitHub Sponsors.</string>
-    <string name="upgrade_screen_why_title">Lokhu kwenza umlingo 🪄</string>
+    <string name="upgrade_screen_why_title">Kulo mxube</string>
     <string name="upgrade_screen_why_body">• Umthuthuki okhuthazekile 🧟\n• Amadivayisi angenamkhawulo ➡️➡️\n• Izenzo ezengeziwe ⚙️\nnakunye...</string>
     <string name="upgrade_screen_sponsor_action">Xhasa ukuthuthukiswa</string>
     <string name="upgrade_screen_sponsor_action_hint">Enye indlela izikhangiso, ukuhlaziya ne-Google Play 🙁</string>

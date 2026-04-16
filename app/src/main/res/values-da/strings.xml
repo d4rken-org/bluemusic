@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Forbliv aktiv mens denne enhed er tilsluttet og gem lydstyrkeændringer som ikke er forårsaget af denne app.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Gem volume ved frakobling</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Fang og gem de nuværende lydniveauer når denne enhed frakobles.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">På nogle enheder skifter systemet lydrouting, før vi kan aflæse lydstyrken. Hvis de gemte værdier ikke stemmer overens med det, du har indstillet, kan du prøve at aktivere \"Observer lydstyrkeændringer\" i stedet.</string>
     <string name="devices_device_config_volume_lock_label">Lydstyrkelås</string>
     <string name="devices_device_config_volume_lock_desc">Alle lydstyrkeændringer ikke lavet gennem denne app vil blive tilbageført mens denne enhed er tilsluttet.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Lydstyrkelås tilsidesætter i øjeblikket denne funktion.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Lydstyrke-begrenzer</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Begræns hyppigheden af lydstyrkeændringer for at forhindre hurtige eller overdrevne lydstyrkeindstillinger.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Lydstyrkeforøgelsesforsinkelse</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Privatlivspolitik</string>
     <string name="settings_privacy_policy_desc">Håndtering af data ansvarligt.</string>
     <string name="changelog_label">Ændringslog</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Sikkerhedskopi &amp; Gendannelse</string>
+    <string name="backup_restore_settings_desc">Sikkerhedskopier og gendan dine enhedskonfigurationer og indstillinger.</string>
+    <string name="backup_restore_screen_title">Sikkerhedskopi &amp; Gendannelse</string>
+    <string name="backup_restore_backup_desc">Opret en sikkerhedskopi af alle dine enhedskonfigurationer og app-indstillinger.</string>
+    <string name="backup_restore_backup_action">Opret sikkerhedskopi</string>
+    <string name="backup_restore_restore_desc">Gendan enhedskonfigurationer og app-indstillinger fra en sikkerhedskopifil.</string>
+    <string name="backup_restore_restore_action">Vælg sikkerhedskopifil</string>
+    <string name="backup_restore_skip_existing_label">Spring eksisterende enheder over</string>
+    <string name="backup_restore_skip_existing_desc">Overskriv ikke enheder, der allerede er konfigureret.</string>
+    <string name="backup_restore_preview_label">Forhåndsvisning af sikkerhedskopi</string>
+    <string name="backup_restore_preview_devices">%1$d enheder</string>
+    <string name="backup_restore_preview_overlap">%1$d af %2$d enheder er allerede konfigureret</string>
+    <string name="backup_restore_confirm_action">Gendan nu</string>
+    <string name="backup_restore_success_backup">Sikkerhedskopi oprettet — %1$d enheder gemt.</string>
+    <string name="backup_restore_success_restore">Gendannelse fuldført — %1$d enheder gendannet, %2$d sprunget over.</string>
+    <string name="backup_restore_version_warning">Denne sikkerhedskopi blev oprettet med version %1$s. Du kører %2$s. Nogle indstillinger gendannes muligvis ikke korrekt.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug-notifikationer</string>
     <string name="debug_log_consent_title">Fejlfindingslog</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Justerer lydstyrker</string>
     <string name="label_premium_version">Premium-version</string>
     <string name="general_upgrade_action">Opgrader</string>
+    <string name="common_upgrade_required_label">Opgradering påkrævet</string>
     <string name="description_premium_required_additional_devices">Administrering af flere enheder kræver premium-versionen.</string>
     <string name="description_premium_required_this_extra_option">Dette ekstra alternativ kræver premium-versionen af denne app.</string>
     <string name="description_premium_upgrade_explanation">Få premium-versionen for at aktivere ekstra funktioner og støtte udviklingen.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Opgrader</string>
     <string name="description_intro_purpose">Denne app tillader din Android at huske lydstyrken for forskellige Bluetooth-enheder.</string>
     <string name="description_intro_premium">Hvis du kan lide denne app, må du gerne vurdere at skifte til premium-versionen. Det støtter udviklingen og giver dig ekstra funktioner.</string>
+    <string name="upgrade_benefit_unlimited_devices">Ubegrænsede enhedsprofiler</string>
+    <string name="upgrade_benefit_connection_actions">Autoafspilning, app-start og forbindelsesadvarsler</string>
+    <string name="upgrade_benefit_theme_customization">Tema-, stil- og farvetilpasning</string>
+    <string name="upgrade_benefit_power_controls">Lydstyrkelås og hastighedsbegrænsning</string>
+    <string name="upgrade_benefit_support">Støt uafhængig udvikling</string>
     <string name="description_intro_tap_the_button">Start med at tilføje din første enhed.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth er deaktiveret.</string>
     <string name="title_bluetooth_is_off">Bluetooth er slukket</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Lydstyrke (0–100)</string>
     <string name="devices_volume_input_error">Angiv en værdi mellem %1$d og %2$d</string>
+    <string name="devices_volume_input_caption">Den faktiske lydstyrke kan afrundes til det nærmeste trin, din enhed understøtter.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Lås</string>
     <string name="devices_unlock_sliders_action">Lås op</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Viser lydstyrkelåsstatus for den aktive Bluetooth-enhed</string>
+    <string name="widget_no_device_label">Ingen enhed tilsluttet</string>
+    <string name="widget_bluetooth_off_label">Bluetooth er slået fra</string>
+    <string name="widget_error_label">Widget-fejl</string>
+    <string name="widget_preview_device_label">Mine hovedtelefoner</string>
+    <string name="widget_config_title">Widget-indstillinger</string>
+    <string name="widget_config_preview_label">Forhåndsvisning</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Baggrundsfarve</string>
+    <string name="widget_config_fg_color_label">Tekstfarve</string>
+    <string name="widget_config_bg_alpha_label">Baggrundsgennemsigtighed</string>
+    <string name="widget_config_show_label_toggle">Vis enhedsnavn</string>
+    <string name="widget_config_show_label_description">Vis den tilsluttede enhed over låsestatussen.</string>
+    <string name="widget_config_theme_green_label">Grøn</string>
+    <string name="widget_config_theme_red_label">Rød</string>
+    <string name="widget_config_theme_custom_label">Brugerdefineret</string>
 </resources>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">BVM FOSS ಅಗತ್ಯ</string>
     <string name="upgrade_prompt_title">BVM FOSS ಗೆ ದರ್ಜೆಯೇರಿ</string>
     <string name="upgrade_prompt_body">ಹೆಚ್ಚಿನ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಿ ಮತ್ತು ನಿರಂತರ ಅಭಿವರ್ಧನೆಗೆ ಬೆಂಬಲಿಸಲು ಪ್ರಾಯೋಜಕರಾಗಿ!</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ಜಾಹೀರಾತುಗಳಿಲ್ಲ ಮತ್ತು ಬಳಕೆದಾರರ ಡೇಟಾ ಮಾರಾಟುವುದಿಲ್ಲ. ನಿಮ್ಮಿಂದ ಮಾತ್ರ ನಿರಂತರ ಅಭಿವರ್ಧನೆ ಸಾಧ್ಯ.</string>
     <string name="upgrade_screen_how_title">ಸಹಾಯ ಮಾಡುವ ವಿಧಾನ</string>
     <string name="upgrade_screen_how_body">ಪ್ರಾಯೋಜಕರಾಗಿ ಅಭಿವರ್ಧನೆಯನ್ನು ಬೆಂಬಲಿಸಿ! ಎಲ್ಲಾ ಹೆಚ್ಚಿನ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ಮತ್ತು ನನ್ನ GitHub Sponsors ಪ್ರೋಫೈಲ್ ತೆರೆಯಲು ಕೆಳಗಿನ ಬಟನ ಟ್ಯಾಪ್ ಮಾಡಿ.</string>
-    <string name="upgrade_screen_why_title">ಇದು ಇವನ್ನು ಸಿದ್ಧಪಡಿಸುತ್ತದೆ 🪄</string>
+    <string name="upgrade_screen_why_title">ಮಿಶ್ರಣದಲ್ಲಿ</string>
     <string name="upgrade_screen_why_body">• ಪ್ರೇರಿತ ಅಭಿವರ್ಧಕ 🧙
 • ಸಿಮಿತವಿಲ್ಲದ ಸಾಧನಗಳು ➡️➡️
 • ಹೆಚ್ಚಿನ ಕಾರ್ಯಗಳು ⚙️

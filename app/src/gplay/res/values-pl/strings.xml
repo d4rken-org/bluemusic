@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM Pro</string>
     <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_badge_label">PRO</string>
     <string name="upgrade_feature_requires_pro">Wymaga BVM Pro</string>
     <string name="upgrade_prompt_title">Uaktualnij do BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro oferuje lepsze wyniki, więcej funkcji i opcji dla zaawansowanych użytkowników.</string>

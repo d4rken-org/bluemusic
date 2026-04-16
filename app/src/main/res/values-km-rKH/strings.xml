@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">នៅសក្មពេលឧបករណ៍នេះភ្ជាប់ ហើយរក្សាតុកការផ្លាស់ប្តូរកម្រិតសំឡេងដែលមិនត្រូវបានបង្កើតឡើងដោយកម្មវិធីនេះ។</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">រក្សាតុកកម្រិតសំឡេងពេលផ្តាច់</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">ចាប្យក ហើយរក្សាតុកកម្រិតសំឡេងបច្ចុប្បន្នពេលឧបករណ៍នេះផ្តាច់។</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">នៅលើឧបករណ៍មួយចំនួន ប្រព័ន្ធប្តូរការដឹកជញ្ជូនសំឡេងមុនពេលយើងអាចអានកម្រិតសំឡេងបាន។ ប្រសិនបើតម្លៃដែលបានរក្សាទុកមិនត្រូវគ្នានឹងអ្វីដែលអ្នកបានកំណត់ សូមសាកល្បងបើកដំណើរការ \"ការសង្កេតការផ្លាស់ប្តូរកម្រិតសំឡេង\" ជំនួសវិញ។</string>
     <string name="devices_device_config_volume_lock_label">ចាក់សោកម្រិតសំឡេង</string>
     <string name="devices_device_config_volume_lock_desc">ការផ្លាស់ប្តូរកម្រិតសំឡេងណាមួយដែលមិនធ្វើតាមរយៈស្រងកម្មវិធីនេះ នឹងត្រូវបានដំណើរការពេលឧបករណ៍នេះភ្ជាប់។</string>
+    <string name="devices_device_config_volume_lock_override_desc">ការចាក់សោសំឡេងបច្ចុប្បន្នបដិសេធមុខងារនេះ។</string>
     <string name="devices_device_config_volume_rate_limiter_label">កម្មវិធីកំណត់ល្បើឞកម្រិតសំឡេង</string>
     <string name="devices_device_config_volume_rate_limiter_desc">កំណត់ប្រើកង់នៃការផ្លាស់ប្តូរកម្រិតសំឡេង ដើម្បីការពារការកែតម្រូវកម្រិតសំឡេងលើន អែឡ្វើហួសប្រមាណ។</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ការពន្យារពេលការបង្កើនកម្រិតសំឡេង</string>
@@ -199,6 +201,23 @@
     <string name="settings_privacy_policy_label">គោលការណ៍ឯកជនភាព</string>
     <string name="settings_privacy_policy_desc">ការដោះស្រាយទិន្នន័យដោយមានការទទួលខុសត្រូវ។</string>
     <string name="changelog_label">កំណត់ហេតុផ្លាស់ប្ដូរ</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">បម្រុងទុក &amp; ស្តារ</string>
+    <string name="backup_restore_settings_desc">បម្រុងទុក និងស្តារការកំណត់រចនាសម្ព័ន្ធ និងការកំណត់ឧបករណ៍របស់អ្នក។</string>
+    <string name="backup_restore_screen_title">បម្រុងទុក &amp; ស្តារ</string>
+    <string name="backup_restore_backup_desc">បង្កើតការបម្រុងទុកនៃការកំណត់រចនាសម្ព័ន្ធឧបករណ៍ និងការកំណត់កម្មវិធីទាំងអស់របស់អ្នក។</string>
+    <string name="backup_restore_backup_action">បង្កើតការបម្រុងទុក</string>
+    <string name="backup_restore_restore_desc">ស្តារការកំណត់រចនាសម្ព័ន្ធឧបករណ៍ និងការកំណត់កម្មវិធីពីឯកសារបម្រុងទុក។</string>
+    <string name="backup_restore_restore_action">ជ្រើសរើសឯកសារបម្រុងទុក</string>
+    <string name="backup_restore_skip_existing_label">រំលងឧបករណ៍ដែលមានស្រាប់</string>
+    <string name="backup_restore_skip_existing_desc">កុំសរសេរជាន់លើឧបករណ៍ដែលបានកំណត់រចនាសម្ព័ន្ធហើយ។</string>
+    <string name="backup_restore_preview_label">មើលការបម្រុងទុក</string>
+    <string name="backup_restore_preview_devices">ឧបករណ៍ %1$d</string>
+    <string name="backup_restore_preview_overlap">%1$d ក្នុងចំណោម %2$d ឧបករណ៍បានកំណត់រចនាសម្ព័ន្ធហើយ</string>
+    <string name="backup_restore_confirm_action">ស្តារឥឡូវនេះ</string>
+    <string name="backup_restore_success_backup">បម្រុងទុកបានបង្កើត — ឧបករណ៍ %1$d ត្រូវបានរក្សាទុក។</string>
+    <string name="backup_restore_success_restore">ការស្តារបានបញ្ចប់ — ឧបករណ៍ %1$d ត្រូវបានស្តារ, %2$d ត្រូវបានរំលង។</string>
+    <string name="backup_restore_version_warning">ការបម្រុងទុកនេះត្រូវបានបង្កើតជាមួយកំណែ %1$s។ អ្នកកំពុងដំណើរការ %2$s។ ការកំណត់ខ្លះអាចមិនស្តារបានត្រឹមត្រូវ។</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">ការជូនដំណឹងកែកំហុស</string>
     <string name="debug_log_consent_title">កំណត់ហេតុកំហុស</string>
@@ -280,6 +299,7 @@
     <string name="label_status_adjusting_volumes">កំពុងកែតម្រូវកម្រិតសំឡេង</string>
     <string name="label_premium_version">កំណែពិសេស</string>
     <string name="general_upgrade_action">វិសិដ្ឋកម្ម</string>
+    <string name="common_upgrade_required_label">តម្រូវការធ្វើឱ្យប្រសើរ</string>
     <string name="description_premium_required_additional_devices">ការគ្រប់គ្រងឧបករណ៍បន្ថែមតម្រូវឡើយមានកំណែពិសេស។</string>
     <string name="description_premium_required_this_extra_option">ជម្រើសបន្ថែមនេះតម្រូវឡើយមានកំណែពិសេសនៃកម្មវិធីនេះ។</string>
     <string name="description_premium_upgrade_explanation">ត្រស័យបានកំណែពិសេសដើម្បីបើកមុខងារបន្ថែម និងគាំត្រការអភិវឌ្ញន៍។</string>
@@ -288,6 +308,11 @@
     <string name="upgrade_prompt_upgrade_action">វិសិដ្ឋកម្ម</string>
     <string name="description_intro_purpose">កម្មវិធីនេះអនុញ្ញាតឱ្យឧបករណ៍ Android របស់អ្នកចងចាំកម្រិតសំឡេងនៃឧបករណ៍ Bluetooth ផ្សើៗ។</string>
     <string name="description_intro_premium">ប្រសិនបើអ្នកចូលចិត្តកម្មវិធីនេះ សូមពិចារណាធ្វើឡើយប្រសើរជាងឡើងតៅកំណែពិសេស។ វាគាំត្រការអភិវឌ្ញន៍ ហើយអ្នកនឹងត្រស័យបានមុខងារបន្ថែមមួយចំនួន។</string>
+    <string name="upgrade_benefit_unlimited_devices">ប្រវត្តិរូបឧបករណ៍គ្មានដែនកំណត់</string>
+    <string name="upgrade_benefit_connection_actions">ចាកស្វ័យប្រវត្តិ, ការចាប្តើមកម្មវិធី និងការជូនដំណឹងការតភ្ជាប់</string>
+    <string name="upgrade_benefit_theme_customization">ការប្តូររូបរាង, រចនាប័ត្ម និងពណ៍</string>
+    <string name="upgrade_benefit_power_controls">ការចាកសោសំឡេង និងការកំណត់ល្បើន</string>
+    <string name="upgrade_benefit_support">គាំត្រការអភិវដ្ឌន៍ឥសរាជ្យ</string>
     <string name="description_intro_tap_the_button">ចាប់ផ្តើមដោយបន្ថែមឧបករណ៍ដំបូងរបស់អ្នក។</string>
     <string name="description_bluetooth_is_disabled">ប៊្លូធូសត្រូវបានបិទ.</string>
     <string name="title_bluetooth_is_off">Bluetooth ត្រូវបានបិត</string>
@@ -378,7 +403,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">សង្កេតសម្លេង (0–10​0)</string>
     <string name="devices_volume_input_error">ប័កដំលែកត្រងលេខ %1$d ណិង %2$d</string>
+    <string name="devices_volume_input_caption">កម្រិតសំឡេងជាក់ស្តែងអាចបង្គត់ទៅជំហានដែលនៅជិតបំផុតដែលឧបករណ៍របស់អ្នកគាំទ្រ។</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ចាក់សោ</string>
     <string name="devices_unlock_sliders_action">ដកច្សក់សោ</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">បង្ហាញស្ថានភាពការចាកសោសំឡេងសម្រាប់ឧបករណ៍ Bluetooth សក្ម</string>
+    <string name="widget_no_device_label">គ្មានឧបករណ៍ភ្ជាប់</string>
+    <string name="widget_bluetooth_off_label">Bluetooth បិត</string>
+    <string name="widget_error_label">កំហុសធាតុក្រាហ្វិក</string>
+    <string name="widget_preview_device_label">កាសសំឡេងរបស់ខ្ញុម</string>
+    <string name="widget_config_title">ការកំណត់ធាតុក្រាហ្វិក</string>
+    <string name="widget_config_preview_label">មើលជាមុន</string>
+    <string name="widget_config_theme_label">រូបរាង</string>
+    <string name="widget_config_bg_color_label">ពណ៍ផ្តឹខាងក្រោយ</string>
+    <string name="widget_config_fg_color_label">ពណ៍អក្សរ</string>
+    <string name="widget_config_bg_alpha_label">ភាពស្លុឡផ្តឹខាងក្រោយ</string>
+    <string name="widget_config_show_label_toggle">បង្ហាញឮ្មោឥបករណ៍</string>
+    <string name="widget_config_show_label_description">បង្ហាញឧបករណ៍ដែលភ្ជាប់នៅខាងលើស្ថានភាពចាកសោ។</string>
+    <string name="widget_config_theme_green_label">បួតង</string>
+    <string name="widget_config_theme_red_label">ក្រហម</string>
+    <string name="widget_config_theme_custom_label">ផ្តាលខ្លួន</string>
 </resources>

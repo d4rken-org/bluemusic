@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Kaa hai wakati kifaa hiki kimeunganishwa na uhifadhi mabadiliko ya sauti ambayo hayakusababishwa na programu hii.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Hifadhi sauti unapotengana</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Piga picha na uhifadhi viwango vya sasa vya sauti kifaa hiki kinapotengana.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Kwenye baadhi ya vifaa, mfumo hubadilisha njia ya sauti kabla hatujasoma viwango vya sauti. Ikiwa thamani zilizohifadhiwa hazilingani na ulichoweka, jaribu kuwasha \"Angalia mabadiliko ya sauti\" badala yake.</string>
     <string name="devices_device_config_volume_lock_label">Kufuli la sauti</string>
     <string name="devices_device_config_volume_lock_desc">Mabadiliko yoyote ya sauti ambayo hayakufanywa kupitia programu hii yatafutwa wakati kifaa hiki kimeunganishwa.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Kufuli cha sauti kwa sasa kinazidi kipengele hiki.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Kizuizi cha kiwango cha sauti</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Zuia mara kwa mara ya mabadiliko ya sauti ili kuzuia marekebisho ya haraka au ya kupita kiasi.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ucheleweshaji wa kuongeza sauti</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Sera ya faragha</string>
     <string name="settings_privacy_policy_desc">Kushughulikia data kwa uwazi.</string>
     <string name="changelog_label">Historia ya mabadiliko</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Hifadhi &amp; Urejesho</string>
+    <string name="backup_restore_settings_desc">Hifadhi na urejeshee usanidi wa kifaa chako na mipangilio yako.</string>
+    <string name="backup_restore_screen_title">Hifadhi &amp; Urejesho</string>
+    <string name="backup_restore_backup_desc">Unda hifadhi ya usanidi wote wa vifaa vyako na mipangilio ya programu.</string>
+    <string name="backup_restore_backup_action">Unda hifadhi</string>
+    <string name="backup_restore_restore_desc">Rejesha usanidi wa vifaa na mipangilio ya programu kutoka kwenye faili la hifadhi.</string>
+    <string name="backup_restore_restore_action">Chagua faili la hifadhi</string>
+    <string name="backup_restore_skip_existing_label">Ruka vifaa vilivyopo</string>
+    <string name="backup_restore_skip_existing_desc">Usifute vifaa ambavyo tayari vimesanidiwa.</string>
+    <string name="backup_restore_preview_label">Muhtasari wa hifadhi</string>
+    <string name="backup_restore_preview_devices">%1$d vifaa</string>
+    <string name="backup_restore_preview_overlap">%1$d kati ya %2$d vifaa tayari vimesanidiwa</string>
+    <string name="backup_restore_confirm_action">Rejesha sasa</string>
+    <string name="backup_restore_success_backup">Hifadhi imeundwa — vifaa %1$d vimehifadhiwa.</string>
+    <string name="backup_restore_success_restore">Urejesho umekamilika — vifaa %1$d vimerejeshwa, %2$d vimerukwa.</string>
+    <string name="backup_restore_version_warning">Hifadhi hii iliundwa na toleo %1$s. Unaendesha %2$s. Baadhi ya mipangilio inaweza isirejeshwe vizuri.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Arifa za marekebisho</string>
     <string name="debug_log_consent_title">Rekodi ya utatuzi</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Inabadilisha sauti</string>
     <string name="label_premium_version">Toleo la premium</string>
     <string name="general_upgrade_action">Boresha</string>
+    <string name="common_upgrade_required_label">Uboreshaji unahitajika</string>
     <string name="description_premium_required_additional_devices">Kudhibiti vifaa vya ziada kunahitaji toleo la premium.</string>
     <string name="description_premium_required_this_extra_option">Chaguo hili la ziada linahitaji toleo la premium la programu hii.</string>
     <string name="description_premium_upgrade_explanation">Pata toleo la premium ili kuwasha vipengele vya ziada na kusaidia maendeleo.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Boresha</string>
     <string name="description_intro_purpose">Programu hii inaruhusu kifaa chako cha Android kukumbuka sauti ya vifaa tofauti vya Bluetooth.</string>
     <string name="description_intro_premium">Kama unapenda programu hii, fikiria kuboresha hadi toleo la premium. Inasaidia maendeleo na kukupa vipengele vya ziada.</string>
+    <string name="upgrade_benefit_unlimited_devices">Wasifu usio na kikomo wa vifaa</string>
+    <string name="upgrade_benefit_connection_actions">Kucheza kiotomatiki, uzinduzi wa programu na arifa za muunganisho</string>
+    <string name="upgrade_benefit_theme_customization">Ubinafsishaji wa mandhari, mtindo na rangi</string>
+    <string name="upgrade_benefit_power_controls">Kufuli cha sauti na ukomo wa kiwango</string>
+    <string name="upgrade_benefit_support">Saidia maendeleo ya kujitegemea</string>
     <string name="description_intro_tap_the_button">Anza kwa kuongeza kifaa chako cha kwanza.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth imezimwa.</string>
     <string name="title_bluetooth_is_off">Bluetooth Imezimwa</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Sauti (0–100)</string>
     <string name="devices_volume_input_error">Ingiza thamani kati ya %1$d na %2$d</string>
+    <string name="devices_volume_input_caption">Sauti halisi inaweza kukaribiana na hatua ya karibu zaidi inayoungwa mkono na kifaa chako.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Funga</string>
     <string name="devices_unlock_sliders_action">Fungua</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Inaonyesha hali ya kufuli cha sauti kwa kifaa cha Bluetooth kinachofanya kazi</string>
+    <string name="widget_no_device_label">Hakuna kifaa kilichounganishwa</string>
+    <string name="widget_bluetooth_off_label">Bluetooth imezimwa</string>
+    <string name="widget_error_label">Hitilafu ya wijeti</string>
+    <string name="widget_preview_device_label">Vipokea sauti Vyangu</string>
+    <string name="widget_config_title">Mipangilio ya wijeti</string>
+    <string name="widget_config_preview_label">Muhtasari</string>
+    <string name="widget_config_theme_label">Mandhari</string>
+    <string name="widget_config_bg_color_label">Rangi ya usuli</string>
+    <string name="widget_config_fg_color_label">Rangi ya maandishi</string>
+    <string name="widget_config_bg_alpha_label">Uwazi wa usuli</string>
+    <string name="widget_config_show_label_toggle">Onyesha jina la kifaa</string>
+    <string name="widget_config_show_label_description">Onyesha kifaa kilichounganishwa juu ya hali ya kufuli.</string>
+    <string name="widget_config_theme_green_label">Kijani</string>
+    <string name="widget_config_theme_red_label">Nyekundu</string>
+    <string name="widget_config_theme_custom_label">Desturi</string>
 </resources>

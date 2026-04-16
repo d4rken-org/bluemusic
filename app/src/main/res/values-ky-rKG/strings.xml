@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Бул түзмөк туташып турганда активдүү болуп, бул колдонмо жасабаган үн өзгөртүүлөрүн сактаңыз.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Ажыратылганда үндү сактоо</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Бул түзмөк ажыратылганда учурдагы үн деңгээлдерин тартып алып сактоо.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Кээ бир түзмөктөрдө, система үн маршрутизациясын биз үндүктүн деңгээлин окуй алганга чейин которуп салат. Эгер сакталган маанилер сиз коюп кеткен маанилерге дал келбесе, анын ордуна \"Үн өзгөрүүлөрүн байкоо\" функциясын иштетип көрүңүз.</string>
     <string name="devices_device_config_volume_lock_label">Үн кулпусу</string>
     <string name="devices_device_config_volume_lock_desc">Бул колдонмо аркылуу менен жасалбаган үн өзгөртүүлөрү бул түзмөк туташып турганда кайтарылып берилет.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Үн кулпусу азыр бул функцияны жокко чыгарат.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Үн ылдамдыгын чектөүчү</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Тез же ашыкча үн тууралоолорунун алдын алуу үчүн үн өзгөртүүлөрүнүн жыштыгын чектөүү.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Үн жогорулатуу кечиктирүүсү</string>
@@ -140,7 +142,7 @@
     <string name="ui_theme_style_materialyou_label">Material You</string>
     <string name="ui_theme_color_setting_label">Теманын түсү</string>
     <string name="ui_theme_color_setting_explanation">Колдонмону темалоода колдонулган түс палитрасы.</string>
-    <string name="ui_theme_color_material_you_note">Material You колдонулганда түс фон сүрөтүңҿз аркылуу менен орнотулат.</string>
+    <string name="ui_theme_color_material_you_note">Material You колдонулганда түс фон сүрөтүңүз аркылуу менен орнотулат.</string>
     <string name="ui_theme_color_blue_label">Көк</string>
     <string name="ui_theme_color_sunset_label">Батыш</string>
     <string name="ui_language_override_label">Колдонмонун тили</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Купуялык саясаты</string>
     <string name="settings_privacy_policy_desc">Маалыматтарды жоопкерчилик менен иштетүү.</string>
     <string name="changelog_label">Өзгөртүүлөр журналы</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Камдык көчүрмө жана калыбына келтирүү</string>
+    <string name="backup_restore_settings_desc">Түзмөгүңүздүн конфигурацияларын жана жөндөөлөрүн камдык көчүрмөгө сактаңыз жана калыбына келтириңиз.</string>
+    <string name="backup_restore_screen_title">Камдык көчүрмө жана калыбына келтирүү</string>
+    <string name="backup_restore_backup_desc">Бардык түзмөк конфигурацияларыңыздын жана колдонмо жөндөөлөрүңүздүн камдык көчүрмөсүн жасаңыз.</string>
+    <string name="backup_restore_backup_action">Камдык көчүрмө жасоо</string>
+    <string name="backup_restore_restore_desc">Камдык файлдан түзмөк конфигурацияларын жана колдонмо жөндөөлөрүн калыбына келтириңиз.</string>
+    <string name="backup_restore_restore_action">Камдык файлды тандоо</string>
+    <string name="backup_restore_skip_existing_label">Учурдагы түзмөктөрдү өткөрүп жиберүү</string>
+    <string name="backup_restore_skip_existing_desc">Мурунтан конфигурацияланган түзмөктөрдү кайра жазбаңыз.</string>
+    <string name="backup_restore_preview_label">Камдык көчүрмөнүн алдын көрүнүшү</string>
+    <string name="backup_restore_preview_devices">%1$d түзмөк</string>
+    <string name="backup_restore_preview_overlap">%2$d түзмөктүн %1$dу мурун конфигурацияланган</string>
+    <string name="backup_restore_confirm_action">Азыр калыбына келтирүү</string>
+    <string name="backup_restore_success_backup">Камдык көчүрмө жасалды — %1$d түзмөк сакталды.</string>
+    <string name="backup_restore_success_restore">Калыбына келтирүү аякталды — %1$d түзмөк калыбына келтирилди, %2$d өткөрүлдү.</string>
+    <string name="backup_restore_version_warning">Бул камдык көчүрмө %1$s нүскасы менен жасалды. Сиз %2$s нүскасын колдонудасыз. Кэйбир жөндөөлөр туура калыбына келтирилбашы мүмкүн.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Мүчүлүштүктөрдү оңдоо билдирүүлөрү</string>
     <string name="debug_log_consent_title">Мүчүлүштүктөрдү оңдоо журналы</string>
@@ -283,14 +302,20 @@
     <string name="label_status_adjusting_volumes">Үндөрдү тууралап жатат</string>
     <string name="label_premium_version">Премиум нускасы</string>
     <string name="general_upgrade_action">Жаңыртуу</string>
+    <string name="common_upgrade_required_label">Жаңылануу кажет</string>
     <string name="description_premium_required_additional_devices">Кошумча түзмөктөрдү башкаруу премиум нускасын талап кылат.</string>
     <string name="description_premium_required_this_extra_option">Бул кошумча параметр бул колдонмонун премиум нускасын талап кылат.</string>
     <string name="description_premium_upgrade_explanation">Кошумча функцияларды иштетүү жана иштеп чыгууну колдоо үчүн премиум нускасын алыңыз.</string>
     <string name="label_premium_version_required">Премиум нускасы талап кылынат</string>
     <string name="upgrade_feature_requires_pro">Бул функция премиум нускасын талап кылат</string>
     <string name="upgrade_prompt_upgrade_action">Жаңыртуу</string>
-    <string name="description_intro_purpose">Бул колдонмо Android түзмөгүңҿзгө ар кандай Bluetooth түзмөктөрүнүн үн деңгээлдерин эстеп калууга мүмкүндүк берет.</string>
+    <string name="description_intro_purpose">Бул колдонмо Android түзмөгүңүзгө ар кандай Bluetooth түзмөктөрүнүн үн деңгээлдерин эстеп калууга мүмкүндүк берет.</string>
     <string name="description_intro_premium">Эгер бул колдонмо жакса, премиум нускасына өтүүнү карап көрүңүз. Ал иштеп чыгууну колдойт жана бир нече кошумча функцияларды берет.</string>
+    <string name="upgrade_benefit_unlimited_devices">Чексиз түзмөк профилдери</string>
+    <string name="upgrade_benefit_connection_actions">Автоойнотуу, колдонмо ишке жүгүртүү жана кошулуу эскертүүлөрү</string>
+    <string name="upgrade_benefit_theme_customization">Тема, стиль жана түс теңдеөлөө</string>
+    <string name="upgrade_benefit_power_controls">Үн кулпусу жана жылдамдык чектөө</string>
+    <string name="upgrade_benefit_support">Кez карандысыз иштеп чыгууну колдоо</string>
     <string name="description_intro_tap_the_button">Биринчи түзмөгүңүздү кошуудан баштаңыз.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth өчүрүлгөн.</string>
     <string name="title_bluetooth_is_off">Bluetooth өчүк</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Үн деңгели (0–100)</string>
     <string name="devices_volume_input_error">%1$d менен %2$d аралыҕындагы мааны киргизиңиз</string>
+    <string name="devices_volume_input_caption">Нактыы үн түзмөгүңүз колдогон жакын кадамга дүңдөлүшү мүмкүн.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Күлүптүү</string>
     <string name="devices_unlock_sliders_action">Күлүптү ачуу</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Активдүү Bluetooth түзмөгүнүн үн кулпусунун бүрдүгүн көрсөтөт</string>
+    <string name="widget_no_device_label">Түзмөк кошулулган жок</string>
+    <string name="widget_bluetooth_off_label">Bluetooth өчүп турат</string>
+    <string name="widget_error_label">Виджет катасы</string>
+    <string name="widget_preview_device_label">Менин күналоолором</string>
+    <string name="widget_config_title">Виджет жөндөөлөрү</string>
+    <string name="widget_config_preview_label">Алдын көрүнүш</string>
+    <string name="widget_config_theme_label">Тема</string>
+    <string name="widget_config_bg_color_label">Арка фону</string>
+    <string name="widget_config_fg_color_label">Текст түсү</string>
+    <string name="widget_config_bg_alpha_label">Арка фонунун опацитети</string>
+    <string name="widget_config_show_label_toggle">Түзмөк атын көрсөтүү</string>
+    <string name="widget_config_show_label_description">Кошулулган түзмөктү кулпу абалынын үстүндә көрсөтүү.</string>
+    <string name="widget_config_theme_green_label">Жашыл</string>
+    <string name="widget_config_theme_red_label">Кызыл</string>
+    <string name="widget_config_theme_custom_label">Озгөчөлүклөштүрүлган</string>
 </resources>

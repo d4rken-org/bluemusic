@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">הישאר פעיל כאשר המכשיר מחובר ושמור שינויי עוצמה שלא נגרמו על ידי האפליקציה.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">שמור עוצמה בניתוק</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">צלם ושמור את רמות העוצמה הנוכחיות כאשר מכשיר זה מתנתק.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">במכשירים מסוימים, המערכת מחליפה את ניתוב השמע לפני שאנחנו יכולים לקרוא את עוצמות הקול. אם הערכים השמורים לא תואמים למה שהגדרת, נסה להפעיל במקום זאת את \"צפה בשינויי עוצמת קול\".</string>
     <string name="devices_device_config_volume_lock_label">נעילת ווליום</string>
     <string name="devices_device_config_volume_lock_desc">כל שינויי עוצמה שלא בוצעו דרך אפליקציה זו יוחזרו כאשר המכשיר מחובר.</string>
+    <string name="devices_device_config_volume_lock_override_desc">נעילת עוצמת הקול מבטלת כרגע תכונה זו.</string>
     <string name="devices_device_config_volume_rate_limiter_label">מנקה קצב עוצמה</string>
     <string name="devices_device_config_volume_rate_limiter_desc">הגבלת תכיפות שינויי עוצמה כדי למנוע התאמות עוצמה מהירות או מוגזמות.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">השהיית הגדלת עוצמה</string>
@@ -202,6 +204,23 @@
     <string name="settings_privacy_policy_label">מדיניות פרטיות</string>
     <string name="settings_privacy_policy_desc">טיפול במידע באחריות.</string>
     <string name="changelog_label">לוג שינויים</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">גיבוי ושחזור</string>
+    <string name="backup_restore_settings_desc">גבה ושחזר את תצורות המכשיר וההגדרות שלך.</string>
+    <string name="backup_restore_screen_title">גיבוי ושחזור</string>
+    <string name="backup_restore_backup_desc">צור גיבוי של כל תצורות המכשיר והגדרות האפליקציה שלך.</string>
+    <string name="backup_restore_backup_action">צור גיבוי</string>
+    <string name="backup_restore_restore_desc">שחזר תצורות מכשיר והגדרות אפליקציה מקובץ גיבוי.</string>
+    <string name="backup_restore_restore_action">בחר קובץ גיבוי</string>
+    <string name="backup_restore_skip_existing_label">דלג על מכשירים קיימים</string>
+    <string name="backup_restore_skip_existing_desc">אל תדרוס מכשירים שכבר הוגדרו.</string>
+    <string name="backup_restore_preview_label">תצוגה מקדימה של גיבוי</string>
+    <string name="backup_restore_preview_devices">%1$d מכשירים</string>
+    <string name="backup_restore_preview_overlap">%1$d מתוך %2$d מכשירים כבר מוגדרים</string>
+    <string name="backup_restore_confirm_action">שחזר עכשיו</string>
+    <string name="backup_restore_success_backup">הגיבוי נוצר — %1$d מכשירים נשמרו.</string>
+    <string name="backup_restore_success_restore">השחזור הושלם — %1$d מכשירים שוחזרו, %2$d דולגו.</string>
+    <string name="backup_restore_version_warning">גיבוי זה נוצר עם גרסה %1$s. אתה מריץ %2$s. ייתכן שחלק מההגדרות לא ישוחזרו כראוי.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">התראות ניפוי באגים</string>
     <string name="debug_log_consent_title">לוג ניפוי באגים</string>
@@ -289,6 +308,7 @@
     <string name="label_status_adjusting_volumes">התאמת ווליום</string>
     <string name="label_premium_version">גרסת פרימיום</string>
     <string name="general_upgrade_action">שדרוג</string>
+    <string name="common_upgrade_required_label">נדרש שדרוג</string>
     <string name="description_premium_required_additional_devices">ניהול מכשירים נוספים דורש גרסת פרמיום.</string>
     <string name="description_premium_required_this_extra_option">לאפשרות נוספת זו נדרשת גרסת הפרימיום של האפליקציה.</string>
     <string name="description_premium_upgrade_explanation">השיגו את גרסת הפרימיום כדי לאפשר תכונות נוספות וכדי לתמוך בפיתוח.</string>
@@ -297,6 +317,11 @@
     <string name="upgrade_prompt_upgrade_action">שדרג</string>
     <string name="description_intro_purpose">אפליקציה זו מאפשרת למכשיר האנדרואיד שלכם לזכור רמות ווליום של מכשירי Bluetooth שונים.</string>
     <string name="description_intro_premium">אם אתם אוהבים את האפליקציה הזו, שקלו לשדרג לגרסת הפרימיום. היא תומכת בפיתוח ומאפשרת מספר תכונות נוספות.</string>
+    <string name="upgrade_benefit_unlimited_devices">פרופילי מכשיר ללא הגבלה</string>
+    <string name="upgrade_benefit_connection_actions">ניגון אוטומטי, הפעלת אפליקציה והתראות חיבור</string>
+    <string name="upgrade_benefit_theme_customization">התאמה אישית של ערכת נושא, סגנון וצבע</string>
+    <string name="upgrade_benefit_power_controls">נעילת עוצמת קול והגבלת קצב</string>
+    <string name="upgrade_benefit_support">תמוך בפיתוח עצמאי</string>
     <string name="description_intro_tap_the_button">התחילו על ידי הוספת המכשיר הראשון שלכם.</string>
     <string name="description_bluetooth_is_disabled">בלוטות\' מנוטרל.</string>
     <string name="title_bluetooth_is_off">בלוטוס כבוי</string>
@@ -390,7 +415,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">עוצמה (0–100)</string>
     <string name="devices_volume_input_error">הזן ערך בין %1$d ל-%2$d</string>
+    <string name="devices_volume_input_caption">עוצמת הקול בפועל עשויה להתעגל לשלב הקרוב ביותר שהמכשיר שלך תומך בו.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">נעל</string>
     <string name="devices_unlock_sliders_action">שחרר נעילה</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">מציג את מצב נעילת עוצמת הקול עבור מכשיר הבלוטות\'ה הפעיל</string>
+    <string name="widget_no_device_label">אין מכשיר מחובר</string>
+    <string name="widget_bluetooth_off_label">הבלוטות\'ה כבוי</string>
+    <string name="widget_error_label">שגיאת ווידג\'ט</string>
+    <string name="widget_preview_device_label">האוזניות שלי</string>
+    <string name="widget_config_title">הגדרות ווידג\'ט</string>
+    <string name="widget_config_preview_label">תצוגה מקדימה</string>
+    <string name="widget_config_theme_label">ערכת נושא</string>
+    <string name="widget_config_bg_color_label">צבע רקע</string>
+    <string name="widget_config_fg_color_label">צבע טקסט</string>
+    <string name="widget_config_bg_alpha_label">שקיפות רקע</string>
+    <string name="widget_config_show_label_toggle">הצג שם מכשיר</string>
+    <string name="widget_config_show_label_description">הצג את המכשיר המחובר מעל מצב הנעילה.</string>
+    <string name="widget_config_theme_green_label">ירוק</string>
+    <string name="widget_config_theme_red_label">אדום</string>
+    <string name="widget_config_theme_custom_label">מותאם אישית</string>
 </resources>

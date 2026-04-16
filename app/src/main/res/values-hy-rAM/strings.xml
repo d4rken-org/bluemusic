@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Ակտիվ մնալ, մինչ այս սարքը կապված է, և պահպանել ծավալի փոփոխությունները, որոնք չեն բուխված այս հավելվածի կողմից:</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Պահպանել ծավալը անջատելիս</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Գրանցել և պահպանել ընթացիկ ծավալի մակարդակները, երբ այս սարքն անջատվում է:</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Որոշ սարքերում համակարգը փոխում է ձայնի երթուղավորումը նախքան մենք ծավալները կարդալ կարողանանք: Եթե պահված արժեքները չեն համապատասխանում ձեր կարգավորածին, փոխարենը փորձեք միացնել «Հետևել ծավալի փոփոխություններին»:</string>
     <string name="devices_device_config_volume_lock_label">Ծավալի կողպեք</string>
     <string name="devices_device_config_volume_lock_desc">Ծավալի բոլոր փոփոխությունները, որոնք կատարված չեն այս հավելվածի կողմից, կվերականգնվեն, մինչ այս սարքը կապակցված է:</string>
+    <string name="devices_device_config_volume_lock_override_desc">Ձայնի կողպեքն այժմ գերակայում է այս գործառույթի նկատմամբ:</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ծավալի արագության սահմանիչ</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Սահմանափակել ծավալի փոփոխությունների հաճախականությունը՝ արագ կամ ավելցուկային ծավալի ճշգրտումները կանխելու համար:</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ծավալի բարձրացման ուշացում</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Գաղտնիության քաղաքականություն</string>
     <string name="settings_privacy_policy_desc">Տվյալների պատասխանատու մշակում։</string>
     <string name="changelog_label">Փոփոխությունների մատյան</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Կրկնօրինակում և վերականգնում</string>
+    <string name="backup_restore_settings_desc">Կրկնօրինակեք և վերականգնեք ձեր սարքի կազմաձևերն ու կարգավորումները:</string>
+    <string name="backup_restore_screen_title">Կրկնօրինակում և վերականգնում</string>
+    <string name="backup_restore_backup_desc">Ստեղծեք ձեր բոլոր սարքի կազմաձևերի և հավելվածի կարգավորումների կրկնօրինակը:</string>
+    <string name="backup_restore_backup_action">Ստեղծել կրկնօրինակ</string>
+    <string name="backup_restore_restore_desc">Վերականգնեք սարքի կազմաձևերն ու հավելվածի կարգավորումները կրկնօրինակ ֆայլից:</string>
+    <string name="backup_restore_restore_action">Ընտրել կրկնօրինակ ֆայլ</string>
+    <string name="backup_restore_skip_existing_label">Բաց թողնել գոյություն ունեցող սարքերը</string>
+    <string name="backup_restore_skip_existing_desc">Մի վերագրեք արդեն կազմաձևված սարքերը:</string>
+    <string name="backup_restore_preview_label">Կրկնօրինակի նախադիտում</string>
+    <string name="backup_restore_preview_devices">%1$d սարք</string>
+    <string name="backup_restore_preview_overlap">%2$d սարքից %1$d-ն արդեն կազմաձևված է</string>
+    <string name="backup_restore_confirm_action">Վերականգնել հիմա</string>
+    <string name="backup_restore_success_backup">Կրկնօրինակը ստեղծված է — պահպանված է %1$d սարք:</string>
+    <string name="backup_restore_success_restore">Վերականգնումն ավարտված է — վերականգնված է %1$d սարք, բաց թողնված՝ %2$d:</string>
+    <string name="backup_restore_version_warning">Այս կրկնօրինակը ստեղծվել է %1$s տարբերակով: Դուք օգտագործում եք %2$s: Որոշ կարգավորումներ կարող են ճիշտ չվերականգնվել:</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Վրիպազերծման ծանուցումներ</string>
     <string name="debug_log_consent_title">Կարգաբերման մատյան</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Բազմաչափ ձայները</string>
     <string name="label_premium_version">Պրեմիում տարբերակ</string>
     <string name="general_upgrade_action">Թարմացնել</string>
+    <string name="common_upgrade_required_label">Անհրաժեշտ է բարելավում</string>
     <string name="description_premium_required_additional_devices">Լրացուցիչ սարքերի կառավարումը պահանջում է պրեմիում տարբերակ։</string>
     <string name="description_premium_required_this_extra_option">Այս լրացուցիչ ընտրանքը պահանջում է հավելվածի պրեմիում տարբերակ։</string>
     <string name="description_premium_upgrade_explanation">Ձեռք բերեք պրեմիում տարբերակը՝ լռացուցիչ հնարավորություններ ակտիվացնելու և զարգացումը աձակցնելու համառ</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Թարմացնել</string>
     <string name="description_intro_purpose">Այս հավելվածը թույլ է տալիս ձեր Android սարքին հիշել տարբեր Bluetooth սարքերի ձայնի մակարդակը։</string>
     <string name="description_intro_premium">Եթե ձեզ դուր է գալիս այս հավելվածը, ապա մտածեք պրեմիում տարբերակին անցնելու մասին։ Դա աջակցում է մշակմանը և ձեզ տալիս է մի քանի լրացուցիչ գործառույթներ։</string>
+    <string name="upgrade_benefit_unlimited_devices">Անսահմանափակ սարքի պրոֆիլներ</string>
+    <string name="upgrade_benefit_connection_actions">Ավտոնվագարկում, հավելվածի գործարկում և կապի ծանուցումներ</string>
+    <string name="upgrade_benefit_theme_customization">Թեմայի, ոճի և գույնի հարմարեցում</string>
+    <string name="upgrade_benefit_power_controls">Ձայնի կողպեք և արագության սահմանափակում</string>
+    <string name="upgrade_benefit_support">Աջակցել անկախ մշակմանը</string>
     <string name="description_intro_tap_the_button">Սկսեք՝ ավելացնելով ձեր առաջին սարքը։</string>
     <string name="description_bluetooth_is_disabled">Bluetooth-ն անջատված է.</string>
     <string name="title_bluetooth_is_off">Bluetooth-ն անձատված է</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">ձայն (0–1 00)</string>
     <string name="devices_volume_input_error">Մուտքագրեք արժեքուտյուն %1$d և %2$d արժեշտում</string>
+    <string name="devices_volume_input_caption">Իրական ձայնը կարող է կլորացվել ձեր սարքի կողմից աջակցվող մոտակա քայլին:</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Կողել</string>
     <string name="devices_unlock_sliders_action">Ալարկել</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Ցուցադրում է ձայնի կողպեքի կարգավիճակը ակտիվ Bluetooth սարքի համար</string>
+    <string name="widget_no_device_label">Սարք միացված չէ</string>
+    <string name="widget_bluetooth_off_label">Bluetooth-ն անջատված է</string>
+    <string name="widget_error_label">Վիջեթի սխալ</string>
+    <string name="widget_preview_device_label">Իմ ականջակալները</string>
+    <string name="widget_config_title">Վիջեթի կարգավորումներ</string>
+    <string name="widget_config_preview_label">Նախադիտում</string>
+    <string name="widget_config_theme_label">Թեմա</string>
+    <string name="widget_config_bg_color_label">Ֆոնի գույն</string>
+    <string name="widget_config_fg_color_label">Տեքստի գույն</string>
+    <string name="widget_config_bg_alpha_label">Ֆոնի թափանցիկություն</string>
+    <string name="widget_config_show_label_toggle">Ցուցադրել սարքի անվանումը</string>
+    <string name="widget_config_show_label_description">Ցուցադրել կապված սարքը կողպեքի կարգավիճակի վերևում:</string>
+    <string name="widget_config_theme_green_label">Կանաչ</string>
+    <string name="widget_config_theme_red_label">Կարմիր</string>
+    <string name="widget_config_theme_custom_label">Հատուկ</string>
 </resources>

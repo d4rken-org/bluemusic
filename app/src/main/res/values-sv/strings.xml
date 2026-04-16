@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Håll dig aktiv medan denna enhet är ansluten och spara volymförändringar som inte orsakats av denna app.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Spara volym vid frånkoppling</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Fånga och spara aktuella volymnivåer när denna enhet kopplas från.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">På vissa enheter växlar systemet ljuddirigering innan vi hinner läsa volymerna. Om de sparade värdena inte stämmer med vad du hade ställt in, prova att aktivera \"Observera volymändringar\" istället.</string>
     <string name="devices_device_config_volume_lock_label">Volymlås</string>
     <string name="devices_device_config_volume_lock_desc">Alla volymförändringar som inte görs via denna app kommer att återställas medan denna enhet är ansluten.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Volymspärr åsidosätter den här funktionen för tillfället.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volymhastighetsbegränsare</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Begränsa frekvensen av volymförändringar för att förhindra snabba eller överdrivna volymjusteringar.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volymökningsfördröjning</string>
@@ -186,7 +188,7 @@
     <string name="settings_acknowledgements_description">Tack, licenser och särskilt tack</string>
     <string name="settings_acks_translation_header">Översättning</string>
     <string name="settings_acks_translators_title">Översättare</string>
-    <string name="settings_acks_translators_people">Gamechanger181;Google Översätt</string>
+    <string name="settings_acks_translators_people">Gamechanger181</string>
     <string name="settings_acks_translate_title">Översätt BVM</string>
     <string name="settings_acks_translate_desc">Hjälp till att översätta BVM till ditt språk</string>
     <string name="settings_acks_thanks_header">Tack</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Integritetspolicy</string>
     <string name="settings_privacy_policy_desc">Hantera data ansvarsfullt.</string>
     <string name="changelog_label">Förändringslogg</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Säkerhetskopiering &amp; återställning</string>
+    <string name="backup_restore_settings_desc">Säkerhetskopiera och återställ dina enhetskonfigurationer och inställningar.</string>
+    <string name="backup_restore_screen_title">Säkerhetskopiering &amp; återställning</string>
+    <string name="backup_restore_backup_desc">Skapa en säkerhetskopia av alla dina enhetskonfigurationer och appinställningar.</string>
+    <string name="backup_restore_backup_action">Skapa säkerhetskopia</string>
+    <string name="backup_restore_restore_desc">Återställ enhetskonfigurationer och appinställningar från en säkerhetskopieringsfil.</string>
+    <string name="backup_restore_restore_action">Välj säkerhetskopieringsfil</string>
+    <string name="backup_restore_skip_existing_label">Hoppa över befintliga enheter</string>
+    <string name="backup_restore_skip_existing_desc">Skriv inte över enheter som redan är konfigurerade.</string>
+    <string name="backup_restore_preview_label">Förhandsgranskning av säkerhetskopia</string>
+    <string name="backup_restore_preview_devices">%1$d enheter</string>
+    <string name="backup_restore_preview_overlap">%1$d av %2$d enheter redan konfigurerade</string>
+    <string name="backup_restore_confirm_action">Återställ nu</string>
+    <string name="backup_restore_success_backup">Säkerhetskopia skapad — %1$d enheter sparade.</string>
+    <string name="backup_restore_success_restore">Återställning klar — %1$d enheter återställda, %2$d hoppades över.</string>
+    <string name="backup_restore_version_warning">Den här säkerhetskopian skapades med version %1$s. Du kör %2$s. Vissa inställningar kanske inte återställs korrekt.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug-aviseringar</string>
     <string name="debug_log_consent_title">Debug-logg</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Justerar volymer</string>
     <string name="label_premium_version">Premium-version</string>
     <string name="general_upgrade_action">Uppgradera</string>
+    <string name="common_upgrade_required_label">Uppgradering krävs</string>
     <string name="description_premium_required_additional_devices">För att hantera ytterligare enheter krävs premiumversionen.</string>
     <string name="description_premium_required_this_extra_option">Det här extra-alternativet kräver premiumversionen av den här appen.</string>
     <string name="description_premium_upgrade_explanation">Skaffa premiumversionen för att möjliggöra ytterligare funktioner och för att bidra till utvecklingen.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Uppgradera</string>
     <string name="description_intro_purpose">Med den här appen kan din Android-enhet komma ihåg volymen för olika Bluetooth-enheter.</string>
     <string name="description_intro_premium">Om du gillar den här appen, överväg att uppgradera till premiumversionen. Denna stöder utvecklingen och ger dig några extrafunktioner.</string>
+    <string name="upgrade_benefit_unlimited_devices">Obegränsade enhetsprofiler</string>
+    <string name="upgrade_benefit_connection_actions">Automatisk uppspelning, appstart och anslutningsaviseringar</string>
+    <string name="upgrade_benefit_theme_customization">Anpassning av tema, stil och färg</string>
+    <string name="upgrade_benefit_power_controls">Volymspärr och hastighetsbegränsning</string>
+    <string name="upgrade_benefit_support">Stöd oberoende utveckling</string>
     <string name="description_intro_tap_the_button">Börja med att lägga till din första enhet.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth är inaktiverat.</string>
     <string name="title_bluetooth_is_off">Bluetooth är av</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volym (0–100)</string>
     <string name="devices_volume_input_error">Ange ett värde mellan %1$d och %2$d</string>
+    <string name="devices_volume_input_caption">Den faktiska volymen kan avrundas till närmaste steg som din enhet stöder.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Lås</string>
     <string name="devices_unlock_sliders_action">Lås upp</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Visar volymspärrens status för den aktiva Bluetooth-enheten</string>
+    <string name="widget_no_device_label">Ingen enhet ansluten</string>
+    <string name="widget_bluetooth_off_label">Bluetooth är avstängt</string>
+    <string name="widget_error_label">Widgetfel</string>
+    <string name="widget_preview_device_label">Mina hörlurar</string>
+    <string name="widget_config_title">Widgetinställningar</string>
+    <string name="widget_config_preview_label">Förhandsgranskning</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Bakgrundsfärg</string>
+    <string name="widget_config_fg_color_label">Textfärg</string>
+    <string name="widget_config_bg_alpha_label">Bakgrundsopacitet</string>
+    <string name="widget_config_show_label_toggle">Visa enhetsnamn</string>
+    <string name="widget_config_show_label_description">Visa den anslutna enheten ovanför låsstatus.</string>
+    <string name="widget_config_theme_green_label">Grön</string>
+    <string name="widget_config_theme_red_label">Röd</string>
+    <string name="widget_config_theme_custom_label">Anpassad</string>
 </resources>

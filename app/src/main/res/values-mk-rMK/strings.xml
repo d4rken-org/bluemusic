@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Остани активна додека овој уред е поврзан и зачувај ги промените на јачината на звукот кои не се предизвикани од оваа апликација.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Зачувај јачина на звук при исклучување</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Сними ги и зачувај ги тековните нивоа на јачина на звук кога уредот се исклучува.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">На некои уреди, системот го менува аудио рутирањето пред да можеме да ги прочитаме јачините. Ако зачуваните вредности не се совпаѓаат со тоа што го поставивте, обидете се да го овозможите „Набљудувај промени на јачина“ наместо тоа.</string>
     <string name="devices_device_config_volume_lock_label">Гласот е заклучен</string>
     <string name="devices_device_config_volume_lock_desc">Сите промени на гласот што не се направени преку оваа апликација ќе бидат вратени додека е поврзан овој уред.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Заклучувањето на јачина на звук моментално го прескокнува овој функционал.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ограничувач на фреквенција на јачина на звук</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ограничува фреквенција на промени во јачина на звук за да се спречи брзо или прекомерно подесување.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Заостану при зголемување на јачина на звук</string>
@@ -179,7 +181,6 @@
     <string name="settings_support_debuglog_folder_empty_desc">Нема зачувани дебаг логови</string>
     <string name="settings_support_debuglog_folder_delete_title">Да се избришат сите дебаг логови?</string>
     <string name="settings_support_debuglog_folder_delete_msg">Ова трајно ќе ги избрише сите зачувани сесии на дебаг лог.</string>
-    <string name="settings_support_discord_label">Раздор</string>
     <string name="settings_support_discord_description">Место каде можеш да се дружиш и да поставуваш прашања.</string>
     <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Признанија</string>
@@ -200,6 +201,23 @@
     <string name="settings_privacy_policy_label">Политика за приватност</string>
     <string name="settings_privacy_policy_desc">Одговорно ракување со податоците.</string>
     <string name="changelog_label">Историја на промени</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Резервна копија и враќање</string>
+    <string name="backup_restore_settings_desc">Направете резервна копија и вратете ги конфигурациите на уредите и поставките.</string>
+    <string name="backup_restore_screen_title">Резервна копија и враќање</string>
+    <string name="backup_restore_backup_desc">Создадете резервна копија од сите конфигурации на уредите и поставките на апликацијата.</string>
+    <string name="backup_restore_backup_action">Создај резервна копија</string>
+    <string name="backup_restore_restore_desc">Вратете ги конфигурациите на уредите и поставките на апликацијата од резервна датотека.</string>
+    <string name="backup_restore_restore_action">Изберете резервна датотека</string>
+    <string name="backup_restore_skip_existing_label">Прескокни постоечки уреди</string>
+    <string name="backup_restore_skip_existing_desc">Не ги препишувај уредите кои веќе се конфигурирани.</string>
+    <string name="backup_restore_preview_label">Преглед на резервна копија</string>
+    <string name="backup_restore_preview_devices">%1$d уреди</string>
+    <string name="backup_restore_preview_overlap">%1$d од %2$d уреди веќе се конфигурирани</string>
+    <string name="backup_restore_confirm_action">Врати сега</string>
+    <string name="backup_restore_success_backup">Резервна копија создадена — %1$d уреди зачувани.</string>
+    <string name="backup_restore_success_restore">Враќањето е завршено — %1$d уреди вратени, %2$d прескокнати.</string>
+    <string name="backup_restore_version_warning">Оваа резервна копија е создадена со верзија %1$s. Вие користите %2$s. Некои поставки може да не се вратат правилно.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Дебаг известувања</string>
     <string name="debug_log_consent_title">Дебаг лог</string>
@@ -283,6 +301,7 @@
     <string name="label_status_adjusting_volumes">Прилагодување на тон</string>
     <string name="label_premium_version">Премиум верзија</string>
     <string name="general_upgrade_action">Надградба</string>
+    <string name="common_upgrade_required_label">Потребна надградба</string>
     <string name="description_premium_required_additional_devices">За управувањето со дополнителни уреди треба премиум верзија.</string>
     <string name="description_premium_required_this_extra_option">Оваа дополнителна опција бара премиум верзија на оваа апликација.</string>
     <string name="description_premium_upgrade_explanation">Добијте премиум верзија за да овозможите дополнителни функции и поддршка за развој.</string>
@@ -291,6 +310,11 @@
     <string name="upgrade_prompt_upgrade_action">Надгради</string>
     <string name="description_intro_purpose">Оваа апликација дозволува вашиот Андроид уред го памети нивото на глас на различни Блутут уреди.</string>
     <string name="description_intro_premium">Ако ви се допаѓа оваа апликација, размислете за надградба на премиум верзија. Го поддржува развојот и добива неколку дополнителни функции.</string>
+    <string name="upgrade_benefit_unlimited_devices">Неограничен број профили на уреди</string>
+    <string name="upgrade_benefit_connection_actions">Автоматско пуштање, стартување на апликација и известувања за поврзување</string>
+    <string name="upgrade_benefit_theme_customization">Прилагодување на тема, стил и боја</string>
+    <string name="upgrade_benefit_power_controls">Заклучување на јачина на звук и ограничување на стапка</string>
+    <string name="upgrade_benefit_support">Поддржи независен развој</string>
     <string name="description_intro_tap_the_button">Започнете со додавање на вашиот прв уред.</string>
     <string name="description_bluetooth_is_disabled">Блутутот е исклучен.</string>
     <string name="title_bluetooth_is_off">Bluetooth е исклучен</string>
@@ -382,7 +406,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Јачина на звук (0–100)</string>
     <string name="devices_volume_input_error">Внеси вредност помеѓу %1$d и %2$d</string>
+    <string name="devices_volume_input_caption">Вистинската јачина на звук може да се заокружи на најблискиот чекор кој го поддржува вашиот уред.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Заклучи</string>
     <string name="devices_unlock_sliders_action">Отклучи</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Ја прикажува состојбата на заклучувањето на јачина на звук за активниот Bluetooth уред</string>
+    <string name="widget_no_device_label">Нема поврзан уред</string>
+    <string name="widget_bluetooth_off_label">Bluetooth е исклучен</string>
+    <string name="widget_error_label">Грешка на виџетот</string>
+    <string name="widget_preview_device_label">Мои слушалки</string>
+    <string name="widget_config_title">Поставки на виџетот</string>
+    <string name="widget_config_preview_label">Преглед</string>
+    <string name="widget_config_theme_label">Тема</string>
+    <string name="widget_config_bg_color_label">Боја на позадина</string>
+    <string name="widget_config_fg_color_label">Боја на текст</string>
+    <string name="widget_config_bg_alpha_label">Проѝирност на позадина</string>
+    <string name="widget_config_show_label_toggle">Прикажи го името на уредот</string>
+    <string name="widget_config_show_label_description">Прикажи го поврзаниот уред над статусот на заклучување.</string>
+    <string name="widget_config_theme_green_label">Зелена</string>
+    <string name="widget_config_theme_red_label">Црвена</string>
+    <string name="widget_config_theme_custom_label">Прилагодено</string>
 </resources>

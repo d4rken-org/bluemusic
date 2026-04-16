@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">ສັກກະວະໃນຂະທີ່ອຸປະກອນນີ້ຕ່ອ ແລະບັນທຶກການປ່ຽນແປງລະດັບສຽງທີ່ບໍ່ໄດ້ເກີດຈາກແອັບນີ້.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ບັນທຶກລະດັບສຽງເມື່ອຕັດການຕ່ອ</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">ຈັບຖ຺ ແລະບັນທຶກລະດັບສຽງປັຈຈຸບັນເມື່ອອຸປະກອນນີ້ຕັດການຕ່ອ.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">ໃນບາງອຸປະກອນ, ລະບົບຈະສະຫຼັບເສັ້ນທາງສຽງກ່ອນທີ່ພວກເຮົາຈະສາມາດອ່ານລະດັບສຽງໄດ້. ຖ້າຄ່າທີ່ບັນທຶກໄວ້ບໍ່ກົງກັບສິ່ງທີ່ທ່ານຕັ້ງໄວ້, ລອງເປີດໃຊ້ \"ສັງເກດການປ່ຽນແປງລະດັບສຽງ\" ແທນ.</string>
     <string name="devices_device_config_volume_lock_label">ການຖົງລະດັບສຽງ</string>
     <string name="devices_device_config_volume_lock_desc">ການປ່ຽນແປງລະດັບສຽງທີ່ບໍ່ໄດ້ທຳຜ່ານແອັບນີ້ຈະຖືກກູ້ຄືນໃນຂະທີ່ອຸປະກອນນີ້ຕ່ອອຍູ່.</string>
+    <string name="devices_device_config_volume_lock_override_desc">ການລັອກລະດັບສຽງກຳລັງແທນທີ່ຄຸນສົມບັດນີ້ຢູ່.</string>
     <string name="devices_device_config_volume_rate_limiter_label">ຕັວຈຳກັດອັດຕາລະດັບສຽງ</string>
     <string name="devices_device_config_volume_rate_limiter_desc">ຈຳກັດຄວາມຖີ່ແຜນຂອງການປ່ຽນແປງລະດັບສຽງ ເພື່ອປ້ອງກັນການປັບລະດັບສຽງຢ່າງເຣັຈ ຫລືອແມ່ນ້ອຍເກີນ.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ການຊັກຊ້າການເພີ່ມລະດັບສຽງ</string>
@@ -199,6 +201,23 @@
     <string name="settings_privacy_policy_label">ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ</string>
     <string name="settings_privacy_policy_desc">ການຈັດການຂໍ້ມູນຢ່າງມີຄວາມຮັບຜິດຊອບ.</string>
     <string name="changelog_label">ບັນຊີການປ່ຽນແປງ</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">ສຳຮອງ &amp; ກູ້ຄືນ</string>
+    <string name="backup_restore_settings_desc">ສຳຮອງ ແລະ ກູ້ຄືນການຕັ້ງຄ່າ ແລະ ການຕັ້ງຄ່າອຸປະກອນຂອງທ່ານ.</string>
+    <string name="backup_restore_screen_title">ສຳຮອງ &amp; ກູ້ຄືນ</string>
+    <string name="backup_restore_backup_desc">ສ້າງການສຳຮອງຂໍ້ມູນທັງໝົດຂອງການຕັ້ງຄ່າອຸປະກອນ ແລະ ການຕັ້ງຄ່າແອັບຂອງທ່ານ.</string>
+    <string name="backup_restore_backup_action">ສ້າງການສຳຮອງ</string>
+    <string name="backup_restore_restore_desc">ກູ້ຄືນການຕັ້ງຄ່າອຸປະກອນ ແລະ ການຕັ້ງຄ່າແອັບຈາກໄຟລ໌ສຳຮອງ.</string>
+    <string name="backup_restore_restore_action">ເລືອກໄຟລ໌ສຳຮອງ</string>
+    <string name="backup_restore_skip_existing_label">ຂ້າມອຸປະກອນທີ່ມີຢູ່ແລ້ວ</string>
+    <string name="backup_restore_skip_existing_desc">ບໍ່ຂຽນທັບອຸປະກອນທີ່ຕັ້ງຄ່າໄວ້ແລ້ວ.</string>
+    <string name="backup_restore_preview_label">ຕົວຢ່າງການສຳຮອງ</string>
+    <string name="backup_restore_preview_devices">%1$d ອຸປະກອນ</string>
+    <string name="backup_restore_preview_overlap">%1$d ໃນ %2$d ອຸປະກອນທີ່ຕັ້ງຄ່າໄວ້ແລ້ວ</string>
+    <string name="backup_restore_confirm_action">ກູ້ຄືນດຽວນີ້</string>
+    <string name="backup_restore_success_backup">ສ້າງການສຳຮອງສຳເລັດ — ບັນທຶກ %1$d ອຸປະກອນແລ້ວ.</string>
+    <string name="backup_restore_success_restore">ກູ້ຄືນສຳເລັດ — ກູ້ %1$d ອຸປະກອນ, ຂ້າມ %2$d.</string>
+    <string name="backup_restore_version_warning">ການສຳຮອງນີ້ຖືກສ້າງດ້ວຍເວີຊັນ %1$s. ທ່ານກຳລັງໃຊ້ %2$s. ການຕັ້ງຄ່າບາງຢ່າງອາດກູ້ຄືນໄດ້ບໍ່ຖືກຕ້ອງ.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">ການແຈ້ງເຕືອນດີບັກ</string>
     <string name="debug_log_consent_title">ບັນທຶກ debug</string>
@@ -280,6 +299,7 @@
     <string name="label_status_adjusting_volumes">ກຳລັງປັບລະດັບສຽງ</string>
     <string name="label_premium_version">ເວີຊັນພຣີເມີຍມ</string>
     <string name="general_upgrade_action">ອັບເກຣດ</string>
+    <string name="common_upgrade_required_label">ຕ້ອງການອັບເກຣດ</string>
     <string name="description_premium_required_additional_devices">ການຈັດການອຸປະກອນເພິ່ມເຕີມຕ້ອງການເວີຊັນພຣີເມີຍມ.</string>
     <string name="description_premium_required_this_extra_option">ຕ଱ວເລືອກໄ0ພິ່ມໄ0ຕີມນີ້ຕ້ອງການໄ0ວີຊັນພຣີໄ0ມີຍມຂອງໄ0ແອັບນີ້.</string>
     <string name="description_premium_upgrade_explanation">ຮັບໄ0ວີຊັນພຣີໄ0ມີຍມໄ0ພື່ອໄ0ອີນໃຊ້ງານຟີໄ0ຈີໄ0ພິ່ມໄ0ຕີມໄ1ລະສນັບສະນູນການພັດທນາ.</string>
@@ -288,6 +308,11 @@
     <string name="upgrade_prompt_upgrade_action">ອັບເກຣດ</string>
     <string name="description_intro_purpose">ແອັບນີ້ອະນຸຍາດໃຫ້ອຸປະກອນ Android ຂອງທ່ານຈດຈຳລະດັບສຽງຂອງອຸປະກອນ Bluetooth ຕ່າງๆ</string>
     <string name="description_intro_premium">ຖ້າທ່ານຊອບແອັບນີ້ ຕິດຕ່ອແບບລະດັບພຣີເມີຍມ. ມັນສນັບສະນູນການພັດທນາແລະໄ4ດ້ການຟີເຈີໄ0ພິ່ມໄ0ຕີມ.</string>
+    <string name="upgrade_benefit_unlimited_devices">ໂປຣໄຟລ໌ອຸປະກອນບໍ່ຈຳກັດ</string>
+    <string name="upgrade_benefit_connection_actions">ຫຼິ້ນອັດຕະໂນມັດ, ເປີດແອັບ ແລະ ການແຈ້ງເຕືອນການເຊື່ອມຕໍ່</string>
+    <string name="upgrade_benefit_theme_customization">ການປັບແຕ່ໝົດໂຖກ, ສໄຕລ໌ ແລະ ສີ</string>
+    <string name="upgrade_benefit_power_controls">ການລັອກລະດັບສຽງ ແລະ ການຈຳກັດອັດຕະ</string>
+    <string name="upgrade_benefit_support">ສະໝັບສະໝູນການພັດທະນາອິດສະຫຼະ</string>
     <string name="description_intro_tap_the_button">ເລີ່ມດ້ວຍການໄ0ພີ່ມອຸປະກອນໄ1ລກຂອງທ່ານ.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ຖືກປິດ.</string>
     <string name="title_bluetooth_is_off">Bluetooth ປິດອຍູ່</string>
@@ -378,7 +403,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">ລະດັບສຽງ (0–100)</string>
     <string name="devices_volume_input_error">ປ້ອນຄ່າລະຫວ່າງ %1$d ແລະ %2$d</string>
+    <string name="devices_volume_input_caption">ລະດັບສຽງຕົວຈິງອາດຈະປັດເປີ່ນເຂ້າໝູ້ຂັ້ນທີ່ໃກ້ທີ່ສຸດທີ່ອຸປະກອນຂອງທ່ານຮອງຮັບ.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ລັອກ</string>
     <string name="devices_unlock_sliders_action">ປໝດລັອກ</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">ສະແດງສະຖານະການລັອກລະດັບສຽງສຳຫຼັບອຸປະກອນ Bluetooth ທີ່ໃຊ້ງານຢູ່</string>
+    <string name="widget_no_device_label">ບໍ່ມີອຸປະກອນເຊື່ອມຕໍ່</string>
+    <string name="widget_bluetooth_off_label">Bluetooth ປິດຢູ່</string>
+    <string name="widget_error_label">ຂໍ້ຜິດພາດຂອງວິດເຈັດ</string>
+    <string name="widget_preview_device_label">ຫູຟັງຂອງຂ້ອຍ</string>
+    <string name="widget_config_title">ການຕັ້ງຄ່າວິດເຈັດ</string>
+    <string name="widget_config_preview_label">ຕົວຢ່າງ</string>
+    <string name="widget_config_theme_label">ໝົດໂຖກ</string>
+    <string name="widget_config_bg_color_label">ສີພື້ນຫຼັງ</string>
+    <string name="widget_config_fg_color_label">ສີຕົວໝັງສື</string>
+    <string name="widget_config_bg_alpha_label">ຄວາມໂປ່ງໃສຂອງພື້ນຫຼັງ</string>
+    <string name="widget_config_show_label_toggle">ສະແດງຊື່ອຸປະກອນ</string>
+    <string name="widget_config_show_label_description">ສະແດງອຸປະກອນທີ່ເຊື່ອມຕໍ່ຢູ່ເທິງສະຖານະການລັອກ.</string>
+    <string name="widget_config_theme_green_label">ສີຂຽວ</string>
+    <string name="widget_config_theme_red_label">ສີແດງ</string>
+    <string name="widget_config_theme_custom_label">ກຳນົດເອງ</string>
 </resources>
