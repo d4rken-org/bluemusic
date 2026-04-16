@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">BVM FOSS hewce dike</string>
     <string name="upgrade_prompt_title">Biçe BVM FOSS</string>
     <string name="upgrade_prompt_body">Taybetmendîên zêde veke!</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">BVM reklamê nake. Geşedana berdewam tenê bi we gengaz e.</string>
     <string name="upgrade_screen_how_title">Çawa bipşixe</string>
     <string name="upgrade_screen_how_body">Bibin patronek û geşedanê sponsor bikin!</string>
-    <string name="upgrade_screen_why_title">Ev dike 🪄</string>
+    <string name="upgrade_screen_why_title">Di tevliheviyê de</string>
     <string name="upgrade_screen_why_body">• Gelek û zêdetir…</string>
     <string name="upgrade_screen_sponsor_action">Geşedanê sponsor bike</string>
     <string name="upgrade_screen_sponsor_action_hint">Alternatif reklam, analitik û Google Play ye</string>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM Pro</string>
     <string name="app_name_upgrade_postfix">專業版</string>
+    <string name="upgrade_badge_label">PRO</string>
     <string name="upgrade_feature_requires_pro">需要 BVM Pro</string>
     <string name="upgrade_prompt_title">升級至 BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro 提供更佳的結果、更多的功能和選項，適用於進階使用者。</string>

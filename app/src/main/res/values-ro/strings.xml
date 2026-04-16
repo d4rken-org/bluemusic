@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Rămâi activ cât timp acest dispozitiv este conectat și salvează schimbările de volum care nu au fost cauzate de această aplicație.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Salvează volumul la deconectare</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Capturează și salvează nivelurile curente de volum când se deconectează acest dispozitiv.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Pe unele dispozitive, sistemul schimba rutarea audio inainte ca noi sa putem citi volumele. Daca valorile salvate nu corespund cu ce ai setat, incearca sa activezi \"Observa modificarile de volum\" in schimb.</string>
     <string name="devices_device_config_volume_lock_label">Blocare volum</string>
     <string name="devices_device_config_volume_lock_desc">Orice schimbări de volum care nu sunt făcute prin această aplicație vor fi revenite cât timp acest dispozitiv este conectat.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Blocarea volumului suprascrie în prezent această funcție.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitator de rată volum</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limitează frecvența schimbărilor de volum pentru a preveni ajustările rapide sau excesive.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Întârziere creștere volum</string>
@@ -201,6 +203,23 @@
     <string name="settings_privacy_policy_label">Politica de confidențialitate</string>
     <string name="settings_privacy_policy_desc">Gestionarea datelor în mod responsabil.</string>
     <string name="changelog_label">Jurnalul de modificari</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Backup &amp; Restaurare</string>
+    <string name="backup_restore_settings_desc">Faceți backup și restaurați configurațiile dispozitivului și setările.</string>
+    <string name="backup_restore_screen_title">Backup &amp; Restaurare</string>
+    <string name="backup_restore_backup_desc">Creați un backup al tuturor configurațiilor dispozitivului și setărilor aplicației.</string>
+    <string name="backup_restore_backup_action">Creare backup</string>
+    <string name="backup_restore_restore_desc">Restaurați configurațiile dispozitivului și setările aplicației dintr-un fișier de backup.</string>
+    <string name="backup_restore_restore_action">Selectați fișierul de backup</string>
+    <string name="backup_restore_skip_existing_label">Omiteți dispozitivele existente</string>
+    <string name="backup_restore_skip_existing_desc">Nu suprascrieți dispozitivele deja configurate.</string>
+    <string name="backup_restore_preview_label">Previzualizare backup</string>
+    <string name="backup_restore_preview_devices">%1$d dispozitive</string>
+    <string name="backup_restore_preview_overlap">%1$d din %2$d dispozitive deja configurate</string>
+    <string name="backup_restore_confirm_action">Restaurează acum</string>
+    <string name="backup_restore_success_backup">Backup creat — %1$d dispozitive salvate.</string>
+    <string name="backup_restore_success_restore">Restaurare completă — %1$d dispozitive restaurate, %2$d omise.</string>
+    <string name="backup_restore_version_warning">Acest backup a fost creat cu versiunea %1$s. Rulați versiunea %2$s. Unele setări s-ar putea să nu fie restaurate corect.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Notificări de depanare</string>
     <string name="debug_log_consent_title">Jurnal de depanare</string>
@@ -286,6 +305,7 @@
     <string name="label_status_adjusting_volumes">Ajustez volumele</string>
     <string name="label_premium_version">Versiune Premium</string>
     <string name="general_upgrade_action">Actualizează</string>
+    <string name="common_upgrade_required_label">Upgrade necesar</string>
     <string name="description_premium_required_additional_devices">Gestionarea dispozitivelor adiționale necesită versiunea premium.</string>
     <string name="description_premium_required_this_extra_option">Această opțiune suplimentară necesită versiunea premium a acestei aplicații.</string>
     <string name="description_premium_upgrade_explanation">Obține versiunea premium pentru a activa funcționalități adiționale și a sprijini dezvoltarea.</string>
@@ -294,6 +314,11 @@
     <string name="upgrade_prompt_upgrade_action">Actualizează</string>
     <string name="description_intro_purpose">Această aplicație permite dispozitivului tău Android să îi amintească volumul diferitelor dispozitive Bluetooth.</string>
     <string name="description_intro_premium">Dacă îți place această aplicație, ia în considerare actualizarea la versiunea premium. Sprijină dezvoltarea și obții câteva funcționalități suplimentare.</string>
+    <string name="upgrade_benefit_unlimited_devices">Profile nelimitate de dispozitive</string>
+    <string name="upgrade_benefit_connection_actions">Redare automată, lansare aplicație și alerte de conexiune</string>
+    <string name="upgrade_benefit_theme_customization">Personalizare temă, stil și culori</string>
+    <string name="upgrade_benefit_power_controls">Blocare volum și limitare rată</string>
+    <string name="upgrade_benefit_support">Susține dezvoltarea independentă</string>
     <string name="description_intro_tap_the_button">Începe prin adăugarea primului tău dispozitiv.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth este dezactivat.</string>
     <string name="title_bluetooth_is_off">Bluetooth este Oprit</string>
@@ -386,7 +411,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volum (0–100)</string>
     <string name="devices_volume_input_error">Introdu o valoare între %1$d și %2$d</string>
+    <string name="devices_volume_input_caption">Volumul real se poate rotunji la cel mai apropiat pas acceptat de dispozitivul tău.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Blochează</string>
     <string name="devices_unlock_sliders_action">Deblochează</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Afișează starea de blocare a volumului pentru dispozitivul Bluetooth activ</string>
+    <string name="widget_no_device_label">Niciun dispozitiv conectat</string>
+    <string name="widget_bluetooth_off_label">Bluetooth-ul este oprit</string>
+    <string name="widget_error_label">Eroare widget</string>
+    <string name="widget_preview_device_label">Căștile mele</string>
+    <string name="widget_config_title">Setări widget</string>
+    <string name="widget_config_preview_label">Previzualizare</string>
+    <string name="widget_config_theme_label">Temă</string>
+    <string name="widget_config_bg_color_label">Culoarea fundalului</string>
+    <string name="widget_config_fg_color_label">Culoarea textului</string>
+    <string name="widget_config_bg_alpha_label">Opacitatea fundalului</string>
+    <string name="widget_config_show_label_toggle">Afișează numele dispozitivului</string>
+    <string name="widget_config_show_label_description">Afișează dispozitivul conectat deasupra stării de blocare.</string>
+    <string name="widget_config_theme_green_label">Verde</string>
+    <string name="widget_config_theme_red_label">Roșu</string>
+    <string name="widget_config_theme_custom_label">Personalizat</string>
 </resources>

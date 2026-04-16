@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">ഈ ഉപകരണം കണക്‌റ് ആയിരിക്കുമ്പോൾ സജീവമായിരിക്കുകയും ഈ ആപ്പ് കാരണമല്ലാത്ത വോള്യം മാറ്റങ്ങൾ സംരക്ഷിക്കുകയും ചെയ്യുക.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ഡിസ്‌കണക്‌റ് ചെയ്യുമ്പോൾ വോള്യം സംരക്ഷിക്കുക</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">ഈ ഉപകരണം ഡിസ്‌കണക്‌റ് ചെയ്യുമ്പോൾ നിലവിലെ വോള്യം നിലകൾ ക്യാപ്ചർ ചെയ്ത് സംരക്ഷിക്കുക.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">ചില ഉപകരണങ്ങളിൽ, വോള്യം വായിക്കാൻ കഴിയുന്നതിന് മുമ്പ് സിസ്റ്റം ഓഡിയോ റൂട്ടിംഗ് മാറ്റുന്നു. സേവ് ചെയ്ത മൂല്യങ്ങൾ നിങ്ങൾ സജ്ജമാക്കിയതിന് അനുയോജ്യമല്ലെങ്കിൽ, പകരം \"വോള്യം മാറ്റങ്ങൾ നിരീക്ഷിക്കുക\" പ്രവർത്തനക്ഷമമാക്കാൻ ശ്രമിക്കുക.</string>
     <string name="devices_device_config_volume_lock_label">വോള്യം ലോക്ക്</string>
     <string name="devices_device_config_volume_lock_desc">ഈ ഉപകരണം കണക്‌റ് ആയിരിക്കുമ്പോൾ ഈ ആപ്പ് വഴിയല്ലാതെ വരുത്തുന്ന വോള്യം മാറ്റങ്ങൾ പഴയപടിയാകും.</string>
+    <string name="devices_device_config_volume_lock_override_desc">വോളിയം ലോക്ക് നിലവിൽ ഈ ഫീച്ചർ ഓവർറൈഡ് ചെയ്യുന്നു.</string>
     <string name="devices_device_config_volume_rate_limiter_label">വോള്യം നിരക്ക് നിയന്ത്രണി</string>
     <string name="devices_device_config_volume_rate_limiter_desc">അതിവേഗ അല്ലെങ്കിൽ അമിത വോള്യം ക്രമീകരണങ്ങൾ തടയാൻ വോള്യം മാറ്റങ്ങളുടെ ആവൃത്തി പരിമിതപ്പെടുത്തുക.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">വോള്യം വർദ്ധന കാലതാമസം</string>
@@ -200,6 +202,22 @@
     <string name="settings_privacy_policy_label">സ്വകാര്യതാ നയം</string>
     <string name="settings_privacy_policy_desc">ഡാറ്റ ഉത്തരവാദിത്തത്തോടെ കൈകാര്യം ചെയ്യുന്നു.</string>
     <string name="changelog_label">മാറ്റങ്ങളുടെ പട്ടിക</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">ബാക്കപ്പ് &amp; പുനഃസ്ഥാപനം</string>
+    <string name="backup_restore_settings_desc">നിങ്ങളുടെ ഉപകരണ കോൺഫിഗറേഷനുകളും ക്രമീകരണങ്ങളും ബാക്കപ്പ് ചെയ്ത് പുനഃസ്ഥാപിക്കുക.</string>
+    <string name="backup_restore_screen_title">ബാക്കപ്പ് &amp; പുനഃസ്ഥാപനം</string>
+    <string name="backup_restore_backup_desc">നിങ്ങളുടെ എല്ലാ ഉപകരണ കോൺഫിഗറേഷനുകളുടെയും ആപ്പ് ക്രമീകരണങ്ങളുടെയും ഒരു ബാക്കപ്പ് ഉണ്ടാക്കുക.</string>
+    <string name="backup_restore_backup_action">ബാക്കപ്പ് ഉണ്ടാക്കുക</string>
+    <string name="backup_restore_restore_desc">ഒരു ബാക്കപ്പ് ഫയലിൽ നിന്ന് ഉപകരണ കോൺഫിഗറേഷനുകളും ആപ്പ് ക്രമീകരണങ്ങളും പുനഃസ്ഥാപിക്കുക.</string>
+    <string name="backup_restore_restore_action">ബാക്കപ്പ് ഫയൽ തിരഞ്ഞെടുക്കുക</string>
+    <string name="backup_restore_skip_existing_label">നിലവിലുള്ള ഉപകരണങ്ങൾ ഒഴിവാക്കുക</string>
+    <string name="backup_restore_skip_existing_desc">ഇതിനകം കോൺഫിഗർ ചെയ്ത ഉപകരണങ്ങൾ തിരുത്തിയെഴുതരുത്.</string>
+    <string name="backup_restore_preview_label">ബാക്കപ്പ് പ്രിവ്യൂ</string>
+    <string name="backup_restore_preview_devices">%1$d ഉപകരണങ്ങൾ</string>
+    <string name="backup_restore_confirm_action">ഇപ്പോൾ പുനഃസ്ഥാപിക്കുക</string>
+    <string name="backup_restore_success_backup">ബാക്കപ്പ് സൃഷ്ടിച്ചു — %1$d ഉപകരണങ്ങൾ സംരക്ഷിച്ചു.</string>
+    <string name="backup_restore_success_restore">പുനഃസ്ഥാപനം പൂർത്തിയായി — %1$d ഉപകരണങ്ങൾ പുനഃസ്ഥാപിച്ചു, %2$d ഒഴിവാക്കി.</string>
+    <string name="backup_restore_version_warning">ഈ ബാക്കപ്പ് %1$s പതിപ്പ് ഉപയോഗിച്ചാണ് സൃഷ്ടിച്ചത്. നിങ്ങൾ %2$s പ്രവർത്തിപ്പിക്കുന്നു. ചില ക്രമീകരണങ്ങൾ ശരിയായി പുനഃസ്ഥാപിക്കപ്പെടാതിരിക്കാം.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">ഡീബഗ് അറിയിപ്പുകൾ</string>
     <string name="debug_log_consent_title">ഡീബഗ് ലോഗ്</string>
@@ -283,6 +301,7 @@
     <string name="label_status_adjusting_volumes">വോള്യങ്ങൾ ക്രമീകരിക്കുന്നു</string>
     <string name="label_premium_version">പ്രീമിയം വേർഷൻ</string>
     <string name="general_upgrade_action">അപ്ഗ്രേഡുചെയ്യുക</string>
+    <string name="common_upgrade_required_label">അപ്‌ഗ്രേഡ് ആവശ്യമാണ്</string>
     <string name="description_premium_required_additional_devices">അധിക ഉപകരണങ്ങൾ നിർവ്വഹിക്കണമെങ്കിൽ പ്രീമിയം വേർഷൻ ആവശ്യമാണ്.</string>
     <string name="description_premium_required_this_extra_option">ഈ അധിക ഓപ്ഷന് ഈ ആപ്പിന്റെ പ്രീമിയം വേർഷൻ ആവശ്യമാണ്.</string>
     <string name="description_premium_upgrade_explanation">അധിക ഫീചർസ് പ്രവർത്തനക്ഷമമാക്കാനും വികസനം പിന്തുണയ്ക്കാനും പ്രീമിയം വേർഷൻ നേടുക.</string>
@@ -291,6 +310,11 @@
     <string name="upgrade_prompt_upgrade_action">അപ്ഗ്രേഡുചെയ്യുക</string>
     <string name="description_intro_purpose">ഈ ആപ്പ് നിങ്ങളുടെ Android ഉപകരണത്തെ വ്യത്യസ്ത Bluetooth ഉപകരണങ്ങളുടെ വോള്യം ഓർക്കാൻ അനുവദിക്കുന്നു.</string>
     <string name="description_intro_premium">ഈ ആപ്പ് ഇഷ്ടമായാൽ, പ്രീമിയം വേർഷനിലേക്ക് അപ്ഗ്രേഡ് ചെയ്യുന്നത് പരിഗണിക്കുക. ഇത് വികസനത്തെ പിന്തുണയ്ക്കുകയും ചില അധിക ഫീചർസ് നൽകുകയും ചെയ്യുന്നു.</string>
+    <string name="upgrade_benefit_unlimited_devices">പരിധിയില്ലാത്ത ഉപകരണ പ്രൊഫൈലുകൾ</string>
+    <string name="upgrade_benefit_connection_actions">ഓട്ടോപ്ലേ, ആപ്പ് ലോഞ്ച്, കണക്ഷൻ അലർട്ടുകൾ</string>
+    <string name="upgrade_benefit_theme_customization">തീം, ശൈലി, നിറ കസ്റ്റമൈസേഷൻ</string>
+    <string name="upgrade_benefit_power_controls">വോളിയം ലോക്കും റേറ്റ് ലിമിറ്റിങ്ങും</string>
+    <string name="upgrade_benefit_support">സ്വതന്ത്ര വികസനം പിന്തുനക്കുക</string>
     <string name="description_intro_tap_the_button">നിങ്ങളുടെ ആദ്യ ഉപകരണം ചേർത്ത് ആരംഭിക്കുക.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth പ്രവർത്തനരഹിതമാക്കിയിരിക്കുന്നു.</string>
     <string name="title_bluetooth_is_off">Bluetooth ഓഫ്ഫ് ആണ്</string>
@@ -336,10 +360,6 @@
     <string name="privacy_policy_label">സ്വകാര്യതാ നയം</string>
     <string name="managed_devices_empty_message">യാതൊരു Bluetooth ഉപകരണവും ക്രമീകരിക്കപ്പെട്ടിട്ടില്ല.\nഫസ്റ്റ് ഉപകരണം ചേർക്കാൻ + ബട്ടൻ ടാപ് ചെയ്യുക.</string>
     <string name="label_pro_feature">പ്രീമിയം ഫീച്ചർ</string>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">സ്വതന്ത്ര പതിപ്പ്: %2$d ഉപകരണത്തിൽ %1$d</item>
-        <item quantity="other">സ്വതന്ത്ര പതിപ്പ്: %2$d ഉപകരണങ്ങളിൽ %1$d</item>
-    </plurals>
     <string name="general_delete_action">ഇല്ലാതാക്കുക</string>
     <string name="general_cancel_action">റദ്ദ്ചെയ്യുക</string>
     <string name="general_ok_action">ശരി</string>
@@ -380,9 +400,26 @@
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">മുന്നറിയിപ്പ്</string>
     <!-- Volume input dialog -->
-    <string name="devices_volume_input_hint">വോള്യം (0⃣സ്കേൽ സ്കേൽസ്കേൽ100)</string>
     <string name="devices_volume_input_error">%1$d ക്കും %2$d ക്കും ഇടയിലുള്ള ഒരു മൂല്യം നൽകുക</string>
+    <string name="devices_volume_input_caption">യഥാർത്ഥ വോളിയം നിങ്ങളുടെ ഉപകരണം പിന്തുനക്കുന്ന ഏറ്റവും അടുത്ത സ്റ്റെപ്പിലേക്ക് റൗണ്ട് ചെയ്‌തേക്കാം.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ലോക്ക് ചെയ്യുക</string>
     <string name="devices_unlock_sliders_action">അൻലോക്ക് ചെയ്യുക</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">സജീവ ബ്ലൂടൂത്ത് ഉപകരണത്തിന്റെ വോളിയം ലോക്ക് സ്ഥിതി കാണിക്കുന്നു</string>
+    <string name="widget_no_device_label">ഉപകരണം കണക്‌റ്റ് ചെയ്‌തിട്ടില്ല</string>
+    <string name="widget_bluetooth_off_label">ബ്ലൂടൂത്ത് ഓഫാണ്</string>
+    <string name="widget_error_label">വിജറ്റ് പ്രശ്നം</string>
+    <string name="widget_preview_device_label">എന്റെ ഹെഡ്‌ഫോൺ</string>
+    <string name="widget_config_title">വിജറ്റ് ക്രമീകരണങ്ങൾ</string>
+    <string name="widget_config_preview_label">പ്രിവ്യൂ</string>
+    <string name="widget_config_theme_label">തീം</string>
+    <string name="widget_config_bg_color_label">പശ്ചാത്തല നിറം</string>
+    <string name="widget_config_fg_color_label">ടെക്സ്റ്റ് നിറം</string>
+    <string name="widget_config_bg_alpha_label">പശ്ചാത്തല അതാർയത</string>
+    <string name="widget_config_show_label_toggle">ഉപകരണ നാമം കാണിക്കുക</string>
+    <string name="widget_config_show_label_description">ലോക്ക് സ്ഥിതിക്ക് മുകളിൽ കണക്‌റ്റ് ചെയ്‌ത ഉപകരണം കാണിക്കുക.</string>
+    <string name="widget_config_theme_green_label">പച്ച</string>
+    <string name="widget_config_theme_red_label">ചുവപ്പ്</string>
+    <string name="widget_config_theme_custom_label">കസ്റ്റം</string>
 </resources>

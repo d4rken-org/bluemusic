@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Permanecer activo mientras este dispositivo está conectado y guardar los cambios de volumen que no hayan sido causados por esta app.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Guardar volumen al desconectar</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Capturar y guardar los niveles de volumen actuales cuando este dispositivo se desconecta.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">En algunos dispositivos, el sistema cambia el enrutamiento de audio antes de que podamos leer los volúmenes. Si los valores guardados no coinciden con lo que habías configurado, intenta habilitar \"Observar cambios de volumen\" en su lugar.</string>
     <string name="devices_device_config_volume_lock_label">Bloqueo de volumen</string>
     <string name="devices_device_config_volume_lock_desc">Cualquier cambio de volumen que no se haga a través de esta app será revertido mientras este dispositivo esté conectado.</string>
+    <string name="devices_device_config_volume_lock_override_desc">El bloqueo de volumen anula esta función actualmente.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitador de tasa de volumen</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limitar la frecuencia de cambios de volumen para evitar ajustes rápidos o excesivos.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Retraso de aumento de volumen</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Política de privacidad</string>
     <string name="settings_privacy_policy_desc">Tratamiento responsable de datos.</string>
     <string name="changelog_label">Historial de cambios</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Copia de seguridad y restauración</string>
+    <string name="backup_restore_settings_desc">Haz una copia de seguridad y restaura las configuraciones de tus dispositivos y ajustes.</string>
+    <string name="backup_restore_screen_title">Copia de seguridad y restauración</string>
+    <string name="backup_restore_backup_desc">Crea una copia de seguridad de todas las configuraciones de tus dispositivos y ajustes de la app.</string>
+    <string name="backup_restore_backup_action">Crear copia de seguridad</string>
+    <string name="backup_restore_restore_desc">Restaura las configuraciones de dispositivos y ajustes de la app desde un archivo de respaldo.</string>
+    <string name="backup_restore_restore_action">Seleccionar archivo de respaldo</string>
+    <string name="backup_restore_skip_existing_label">Omitir dispositivos existentes</string>
+    <string name="backup_restore_skip_existing_desc">No sobrescribir dispositivos que ya están configurados.</string>
+    <string name="backup_restore_preview_label">Vista previa del respaldo</string>
+    <string name="backup_restore_preview_devices">%1$d dispositivos</string>
+    <string name="backup_restore_preview_overlap">%1$d de %2$d dispositivos ya configurados</string>
+    <string name="backup_restore_confirm_action">Restaurar ahora</string>
+    <string name="backup_restore_success_backup">Respaldo creado — %1$d dispositivos guardados.</string>
+    <string name="backup_restore_success_restore">Restauración completa — %1$d dispositivos restaurados, %2$d omitidos.</string>
+    <string name="backup_restore_version_warning">Este respaldo fue creado con la versión %1$s. Estás usando %2$s. Puede que algunos ajustes no se restauren correctamente.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Notificaciones de depuración</string>
     <string name="debug_log_consent_title">Registro de depuración</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Ajustando volúmenes</string>
     <string name="label_premium_version">Versión premium</string>
     <string name="general_upgrade_action">Actualizar</string>
+    <string name="common_upgrade_required_label">Actualización requerida</string>
     <string name="description_premium_required_additional_devices">Gestionar dispositivos adicionales requiere la versión premium.</string>
     <string name="description_premium_required_this_extra_option">Esta opción adicional requiere la versión premium de esta app.</string>
     <string name="description_premium_upgrade_explanation">Obtén la versión premium para activar funciones adicionales y apoyar el desarrollo.</string>
@@ -291,8 +311,13 @@
     <string name="upgrade_prompt_upgrade_action">Actualizar</string>
     <string name="description_intro_purpose">Esta app permite que tu dispositivo Android recuerde el volumen de diferentes dispositivos Bluetooth.</string>
     <string name="description_intro_premium">Si te gusta esta app, considera actualizarte a la versión premium. Apoya el desarrollo y te otorga algunas funciones extra.</string>
+    <string name="upgrade_benefit_unlimited_devices">Perfiles de dispositivo ilimitados</string>
+    <string name="upgrade_benefit_connection_actions">Reproducción automática, inicio de app y alertas de conexión</string>
+    <string name="upgrade_benefit_theme_customization">Personalización de tema, estilo y color</string>
+    <string name="upgrade_benefit_power_controls">Bloqueo de volumen y limitación de velocidad</string>
+    <string name="upgrade_benefit_support">Apoya el desarrollo independiente</string>
     <string name="description_intro_tap_the_button">Empieza agregando tu primer dispositivo.</string>
-    <string name="description_bluetooth_is_disabled">En español Bluetooth desactivado.</string>
+    <string name="description_bluetooth_is_disabled">Bluetooth desactivado.</string>
     <string name="title_bluetooth_is_off">El Bluetooth está desactivado</string>
     <string name="action_enable_bluetooth">Activar Bluetooth</string>
     <string name="title_bluetooth_permission_required">Se requiere permiso de Bluetooth</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volumen (0–100)</string>
     <string name="devices_volume_input_error">Ingresa un valor entre %1$d y %2$d</string>
+    <string name="devices_volume_input_caption">El volumen real puede redondearse al paso más cercano que admite tu dispositivo.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Bloquear</string>
     <string name="devices_unlock_sliders_action">Desbloquear</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Muestra el estado del bloqueo de volumen para el dispositivo Bluetooth activo</string>
+    <string name="widget_no_device_label">No hay dispositivo conectado</string>
+    <string name="widget_bluetooth_off_label">El Bluetooth está apagado</string>
+    <string name="widget_error_label">Error del widget</string>
+    <string name="widget_preview_device_label">Mis audífonos</string>
+    <string name="widget_config_title">Configuración del widget</string>
+    <string name="widget_config_preview_label">Vista previa</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Color de fondo</string>
+    <string name="widget_config_fg_color_label">Color del texto</string>
+    <string name="widget_config_bg_alpha_label">Opacidad del fondo</string>
+    <string name="widget_config_show_label_toggle">Mostrar nombre del dispositivo</string>
+    <string name="widget_config_show_label_description">Muestra el dispositivo conectado encima del estado de bloqueo.</string>
+    <string name="widget_config_theme_green_label">Verde</string>
+    <string name="widget_config_theme_red_label">Rojo</string>
+    <string name="widget_config_theme_custom_label">Personalizado</string>
 </resources>

@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Aktibo egon gailu hau konektatuta dagoen bitartean eta aplikazio honek eragin ez dituen bolumen aldaketak gorde.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Gorde bolumena deskonektatzean</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Hartu eta gorde uneko bolumen mailak gailu hau deskonektatzen denean.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Zenbait gailutan, sistemak audio bideraketa aldatzen du bolumenak irakurri aurretik. Gordetako balioak ezarritakoarekin bat ez badatoz, saiatu \"Begiratu bolumen aldaketak\" gaituz.</string>
     <string name="devices_device_config_volume_lock_label">Bolumen blokeoa</string>
     <string name="devices_device_config_volume_lock_desc">Aplikazio honek ez dituen bolumen aldaketak atzera egingo dira gailu hau konektatuta dagoen bitartean.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Bolumen blokeoak gaur egun funtzio hau gainidazten du.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Bolumen maiztasun mugatzailea</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Mugatu bolumen aldaketen maiztasuna azkarregi edo gehiegizko bolumen doikuntzak saihesteko.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Bolumen igoera atzeratzea</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Pribatutasun-politika</string>
     <string name="settings_privacy_policy_desc">Datuak erantzunkidetasunez kudeatzea.</string>
     <string name="changelog_label">Aldaketa-erregistroa</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Babeskopia eta leheneratzea</string>
+    <string name="backup_restore_settings_desc">Zure gailuen konfigurazioak eta ezarpenak babeskopian gorde eta leheneratu.</string>
+    <string name="backup_restore_screen_title">Babeskopia eta leheneratzea</string>
+    <string name="backup_restore_backup_desc">Sortu zure gailuen konfigurazio eta aplikazioaren ezarpen guztien babeskopia.</string>
+    <string name="backup_restore_backup_action">Sortu babeskopia</string>
+    <string name="backup_restore_restore_desc">Leheneratu gailuen konfigurazioak eta aplikazioaren ezarpenak babeskopia fitxategi batetik.</string>
+    <string name="backup_restore_restore_action">Hautatu babeskopia fitxategia</string>
+    <string name="backup_restore_skip_existing_label">Saltatu lehendik dauden gailuak</string>
+    <string name="backup_restore_skip_existing_desc">Ez gainidatzi jadanik konfiguratuta dauden gailuak.</string>
+    <string name="backup_restore_preview_label">Babeskopia aurrebista</string>
+    <string name="backup_restore_preview_devices">%1$d gailu</string>
+    <string name="backup_restore_preview_overlap">%1$d gailutik %2$d jadanik konfiguratuta</string>
+    <string name="backup_restore_confirm_action">Leheneratu orain</string>
+    <string name="backup_restore_success_backup">Babeskopia sortua — %1$d gailu gordeta.</string>
+    <string name="backup_restore_success_restore">Leheneratzea osatuta — %1$d gailu leheneratuta, %2$d saltatuta.</string>
+    <string name="backup_restore_version_warning">Babeskopia hau %1$s bertsioarekin sortu zen. %2$s exekutatzen ari zara. Baliteke ezarpen batzuk ez leheneratzea zuzen.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Arazketa-jakinarazpenak</string>
     <string name="debug_log_consent_title">Arazketa-erregistroa</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Bolumenak doitzen</string>
     <string name="label_premium_version">Premium bertsioa</string>
     <string name="general_upgrade_action">Eguneratu</string>
+    <string name="common_upgrade_required_label">Berritzea beharrezkoa</string>
     <string name="description_premium_required_additional_devices">Gailu gehigarriak kudeatzeko premium bertsioa behar da.</string>
     <string name="description_premium_required_this_extra_option">Aukera gehigarri honek aplikazioaren premium bertsioa behar du.</string>
     <string name="description_premium_upgrade_explanation">Lortu premium bertsioa ezaugarri gehigarriak gaitzeko eta garapena laguntzeko.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Eguneratu</string>
     <string name="description_intro_purpose">Aplikazio honek zure Android gailuari Bluetooth gailu desberdinen bolumena gogoratzeko aukera ematen dio.</string>
     <string name="description_intro_premium">Aplikazioa gustuko baduzu, kontuan hartu premium bertsiora berritzea. Garapena laguntzen du eta ezaugarri gehigarri batzuk eskuratzen dituzu.</string>
+    <string name="upgrade_benefit_unlimited_devices">Gailu profil mugagabeak</string>
+    <string name="upgrade_benefit_connection_actions">Autoerreproduzioa, aplikazioa abiaraztea eta konexio alertak</string>
+    <string name="upgrade_benefit_theme_customization">Gaia, estiloa eta koloreen pertsonalizazioa</string>
+    <string name="upgrade_benefit_power_controls">Bolumen blokeoa eta abiadura murriztea</string>
+    <string name="upgrade_benefit_support">Garapen independentea babestu</string>
     <string name="description_intro_tap_the_button">Hasi zure lehen gailua gehituz.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth desgaituta dago.</string>
     <string name="title_bluetooth_is_off">Bluetooth itzalita dago</string>
@@ -337,8 +362,8 @@
     <string name="managed_devices_empty_message">Ez dago Bluetooth gailurik konfiguratuta.\nSakatu + botoia zure lehen gailua gehitzeko.</string>
     <string name="label_pro_feature">Premium ezaugarria</string>
     <plurals name="discover_device_limit_banner">
-        <item quantity="one">Doako bertsioa: %2$d gailutatik %1$d</item>
-        <item quantity="other">Doako bertsioa: %2$d gailutatik %1$d</item>
+        <item quantity="one">Doako bertsioa: %1$d gailutatik %2$d</item>
+        <item quantity="other">Doako bertsioa: %1$d gailutatik %2$d</item>
     </plurals>
     <string name="general_delete_action">Ezabatu</string>
     <string name="general_cancel_action">Utzi</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Bolumena (0–100)</string>
     <string name="devices_volume_input_error">Sartu %1$d eta %2$d arteko balio bat</string>
+    <string name="devices_volume_input_caption">Benetako bolumena zure gailuak onartzen duen urrats hurbilenera biribildu daiteke.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Blokeatu</string>
     <string name="devices_unlock_sliders_action">Desblokeatu</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Aktibo dagoen Bluetooth gailuaren bolumen blokearen egoera erakusten du</string>
+    <string name="widget_no_device_label">Ez dago gailurik konektatuta</string>
+    <string name="widget_bluetooth_off_label">Bluetooth-a itzalita dago</string>
+    <string name="widget_error_label">Widget errorea</string>
+    <string name="widget_preview_device_label">Nire Entzungailuak</string>
+    <string name="widget_config_title">Widget ezarpenak</string>
+    <string name="widget_config_preview_label">Aurrebista</string>
+    <string name="widget_config_theme_label">Gaia</string>
+    <string name="widget_config_bg_color_label">Atzeko planoko kolorea</string>
+    <string name="widget_config_fg_color_label">Testu kolorea</string>
+    <string name="widget_config_bg_alpha_label">Atzeko planoko opakutasuna</string>
+    <string name="widget_config_show_label_toggle">Gailu izena erakutsi</string>
+    <string name="widget_config_show_label_description">Erakutsi konektatutako gailua blokeo egoeraren gainean.</string>
+    <string name="widget_config_theme_green_label">Berdea</string>
+    <string name="widget_config_theme_red_label">Gorria</string>
+    <string name="widget_config_theme_custom_label">Pertsonalizatua</string>
 </resources>

@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Duy trì hoạt động khi thiết bị này kết nối và lưu các thay đổi âm lượng không do ứng dụng này gây ra.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Lưu âm lượng khi ngắt kết nối</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Chụp và lưu mức âm lượng hiện tại khi thiết bị này ngắt kết nối.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Trên một số thiết bị, hệ thống chuyển đổi định tuyến âm thanh trước khi chúng tôi có thể đọc âm lượng. Nếu các giá trị đã lưu không khớp với những gì bạn đã đặt, hãy thử bật \"Theo dõi thay đổi âm lượng\" thay thế.</string>
     <string name="devices_device_config_volume_lock_label">Khóa âm lượng</string>
     <string name="devices_device_config_volume_lock_desc">Mọi thay đổi âm lượng không được thực hiện thông qua ứng dụng này sẽ được hoàn nguyên trong khi thiết bị này được kết nối.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Khóa âm lượng hiện đang ghi đè tính năng này.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Giới hạn tốc độ âm lượng</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Giới hạn tần suất thay đổi âm lượng để ngăn chặn điều chỉnh âm lượng nhanh chóng hoặc quá mức.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Độ trễ tăng âm lượng</string>
@@ -201,6 +203,23 @@ TheNothingGuy</string>
     <string name="settings_privacy_policy_label">Chính sách bảo mật</string>
     <string name="settings_privacy_policy_desc">Xử lý dữ liệu có trách nhiệm.</string>
     <string name="changelog_label">Nhật ký thay đổi</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Sao lưu &amp; Khôi phục</string>
+    <string name="backup_restore_settings_desc">Sao lưu và khôi phục cấu hình thiết bị và cài đặt của bạn.</string>
+    <string name="backup_restore_screen_title">Sao lưu &amp; Khôi phục</string>
+    <string name="backup_restore_backup_desc">Tạo bản sao lưu cho tất cả cấu hình thiết bị và cài đặt ứng dụng của bạn.</string>
+    <string name="backup_restore_backup_action">Tạo bản sao lưu</string>
+    <string name="backup_restore_restore_desc">Khôi phục cấu hình thiết bị và cài đặt ứng dụng từ tệp sao lưu.</string>
+    <string name="backup_restore_restore_action">Chọn tệp sao lưu</string>
+    <string name="backup_restore_skip_existing_label">Bỏ qua thiết bị đã có</string>
+    <string name="backup_restore_skip_existing_desc">Không ghi đè lên các thiết bị đã được cấu hình.</string>
+    <string name="backup_restore_preview_label">Xem trước bản sao lưu</string>
+    <string name="backup_restore_preview_devices">%1$d thiết bị</string>
+    <string name="backup_restore_preview_overlap">%1$d trong số %2$d thiết bị đã được cấu hình</string>
+    <string name="backup_restore_confirm_action">Khôi phục ngay</string>
+    <string name="backup_restore_success_backup">Đã tạo bản sao lưu — đã lưu %1$d thiết bị.</string>
+    <string name="backup_restore_success_restore">Khôi phục hoàn tất — đã khôi phục %1$d thiết bị, bỏ qua %2$d.</string>
+    <string name="backup_restore_version_warning">Bản sao lưu này được tạo với phiên bản %1$s. Bạn đang dùng phiên bản %2$s. Một số cài đặt có thể không được khôi phục đúng.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Thông báo gỡ lỗi</string>
     <string name="debug_log_consent_title">Nhật ký gỡ lỗi</string>
@@ -282,6 +301,7 @@ TheNothingGuy</string>
     <string name="label_status_adjusting_volumes">Điều chỉnh âm lượng</string>
     <string name="label_premium_version">Bản trả phí</string>
     <string name="general_upgrade_action">Nâng cấp</string>
+    <string name="common_upgrade_required_label">Yêu cầu nâng cấp</string>
     <string name="description_premium_required_additional_devices">Quản lý bổ xung các thiết bị yêu cầu phiên bản cao cấp.</string>
     <string name="description_premium_required_this_extra_option">Tùy chọn bổ xung này yêu cầu phiên bản cao cấp của ứng dụng này.</string>
     <string name="description_premium_upgrade_explanation">Nhận phiên bản trả phí để kích hoạt các tính năng bổ sung và hỗ trợ phát triển.</string>
@@ -290,6 +310,11 @@ TheNothingGuy</string>
     <string name="upgrade_prompt_upgrade_action">Nâng cấp</string>
     <string name="description_intro_purpose">Ứng dụng này cho phép Android ghi nhớ mức âm lượng của thiết bị Bluetooth khác nhau.</string>
     <string name="description_intro_premium">Nếu bạn thích ứng dụng này, hãy cân nhắc nâng cấp lên phiên bản cao cấp. Nó hỗ trợ phát triển và giúp bạn có thêm một vài tính năng.</string>
+    <string name="upgrade_benefit_unlimited_devices">Không giới hạn hồ sơ thiết bị</string>
+    <string name="upgrade_benefit_connection_actions">Tự phát, mở ứng dụng và cảnh báo kết nối</string>
+    <string name="upgrade_benefit_theme_customization">Tùy chỉnh giao diện, kiểu dáng và màu sắc</string>
+    <string name="upgrade_benefit_power_controls">Khóa âm lượng và giới hạn tốc độ</string>
+    <string name="upgrade_benefit_support">Hỗ trợ phát triển độc lập</string>
     <string name="description_intro_tap_the_button">Bắt đầu bằng cách thêm thiết bị đầu tiên của bạn.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth bị tắt.</string>
     <string name="title_bluetooth_is_off">Bluetooth đã tắt</string>
@@ -381,7 +406,25 @@ TheNothingGuy</string>
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Âm lượng (0–100)</string>
     <string name="devices_volume_input_error">Nhập giá trị từ %1$d đến %2$d</string>
+    <string name="devices_volume_input_caption">Âm lượng thực tế có thể làm tròn đến mức gần nhất mà thiết bị của bạn hỗ trợ.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Khóa</string>
     <string name="devices_unlock_sliders_action">Mở khóa</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Hiển thị trạng thái khóa âm lượng cho thiết bị Bluetooth đang hoạt động</string>
+    <string name="widget_no_device_label">Không có thiết bị nào kết nối</string>
+    <string name="widget_bluetooth_off_label">Bluetooth đang tắt</string>
+    <string name="widget_error_label">Lỗi widget</string>
+    <string name="widget_preview_device_label">Tai nghe của tôi</string>
+    <string name="widget_config_title">Cài đặt widget</string>
+    <string name="widget_config_preview_label">Xem trước</string>
+    <string name="widget_config_theme_label">Chủ đề</string>
+    <string name="widget_config_bg_color_label">Màu nền</string>
+    <string name="widget_config_fg_color_label">Màu chữ</string>
+    <string name="widget_config_bg_alpha_label">Độ mờ nền</string>
+    <string name="widget_config_show_label_toggle">Hiển thị tên thiết bị</string>
+    <string name="widget_config_show_label_description">Hiển thị thiết bị đã kết nối phía trên trạng thái khóa.</string>
+    <string name="widget_config_theme_green_label">Xanh lá</string>
+    <string name="widget_config_theme_red_label">Đỏ</string>
+    <string name="widget_config_theme_custom_label">Tùy chỉnh</string>
 </resources>

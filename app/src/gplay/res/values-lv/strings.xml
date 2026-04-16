@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BSP Pro</string>
     <string name="app_name_upgrade_postfix">Pro</string>
+    <string name="upgrade_badge_label">PRO</string>
     <string name="upgrade_feature_requires_pro">Nepieciešams BSP Pro</string>
     <string name="upgrade_prompt_title">Jaunināt uz BSP Pro</string>
     <string name="upgrade_prompt_body">Bluetooth skaļuma pārvaldnieks Pro piedāvā labākus rezultātus, vairāk funkciju un opciju sapļrotājiem lietotājiem.</string>

@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Tetap aktif saat perangkat ini terhubung dan simpan perubahan volume yang tidak disebabkan oleh aplikasi ini.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Simpan volume saat putus</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Tangkap dan simpan level volume saat ini ketika perangkat ini memutus sambungan.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Di beberapa perangkat, sistem mengalihkan perutean audio sebelum kami dapat membaca volume. Jika nilai yang disimpan tidak sesuai dengan yang telah Anda atur, coba aktifkan \"Amati perubahan volume\" sebagai gantinya.</string>
     <string name="devices_device_config_volume_lock_label">Kunci volume</string>
     <string name="devices_device_config_volume_lock_desc">Perubahan volume yang tidak buat melalui aplikasi ini akan dikembalikan ketika perangkat ini tersambung.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Kunci volume saat ini menimpa fitur ini.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Pembatas laju volume</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Batasi frekuensi perubahan volume untuk mencegah penyesuaian volume yang cepat atau berlebihan.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Penundaan peningkatan volume</string>
@@ -199,6 +201,23 @@
     <string name="settings_privacy_policy_label">Kebijakan privasi</string>
     <string name="settings_privacy_policy_desc">Menangani data dengan bertanggung jawab.</string>
     <string name="changelog_label">Log perubahan</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Cadangan &amp; Pemulihan</string>
+    <string name="backup_restore_settings_desc">Cadangkan dan pulihkan konfigurasi perangkat dan pengaturan Anda.</string>
+    <string name="backup_restore_screen_title">Cadangan &amp; Pemulihan</string>
+    <string name="backup_restore_backup_desc">Buat cadangan semua konfigurasi perangkat dan pengaturan aplikasi Anda.</string>
+    <string name="backup_restore_backup_action">Buat cadangan</string>
+    <string name="backup_restore_restore_desc">Pulihkan konfigurasi perangkat dan pengaturan aplikasi dari file cadangan.</string>
+    <string name="backup_restore_restore_action">Pilih file cadangan</string>
+    <string name="backup_restore_skip_existing_label">Lewati perangkat yang sudah ada</string>
+    <string name="backup_restore_skip_existing_desc">Jangan timpa perangkat yang sudah dikonfigurasi.</string>
+    <string name="backup_restore_preview_label">Pratinjau cadangan</string>
+    <string name="backup_restore_preview_devices">%1$d perangkat</string>
+    <string name="backup_restore_preview_overlap">%1$d dari %2$d perangkat sudah dikonfigurasi</string>
+    <string name="backup_restore_confirm_action">Pulihkan sekarang</string>
+    <string name="backup_restore_success_backup">Cadangan dibuat — %1$d perangkat disimpan.</string>
+    <string name="backup_restore_success_restore">Pemulihan selesai — %1$d perangkat dipulihkan, %2$d dilewati.</string>
+    <string name="backup_restore_version_warning">Cadangan ini dibuat dengan versi %1$s. Kamu menjalankan %2$s. Beberapa pengaturan mungkin tidak dipulihkan dengan benar.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Notifikasi debug</string>
     <string name="debug_log_consent_title">Log debug</string>
@@ -280,6 +299,7 @@
     <string name="label_status_adjusting_volumes">Menyesuaikan volume</string>
     <string name="label_premium_version">Versi premium</string>
     <string name="general_upgrade_action">Tingkatkan</string>
+    <string name="common_upgrade_required_label">Upgrade diperlukan</string>
     <string name="description_premium_required_additional_devices">Mengelola perangkat tambahan membutuhkan versi premium.</string>
     <string name="description_premium_required_this_extra_option">Pengaturan tambahan ini membutuhkan versi premium dari aplikasi ini.</string>
     <string name="description_premium_upgrade_explanation">Dapatkan versi premium untuk mengaktifkan fitur tambahan dan mendukung pengembangan.</string>
@@ -288,6 +308,11 @@
     <string name="upgrade_prompt_upgrade_action">Tingkatkan</string>
     <string name="description_intro_purpose">Aplikasi ini memungkinkan perangkat Android mengingat volume suara untuk perangkat Bluetooth berbeda.</string>
     <string name="description_intro_premium">Bila Anda menyukai aplikasi ini, harap untuk mempertimbangkan meningkatkan ke versi premium. Hal ini mendukung pengembangan dan memberikan fitur-fitur tambahan untuk Anda.</string>
+    <string name="upgrade_benefit_unlimited_devices">Profil perangkat tak terbatas</string>
+    <string name="upgrade_benefit_connection_actions">Putar otomatis, peluncuran aplikasi, dan notifikasi koneksi</string>
+    <string name="upgrade_benefit_theme_customization">Kustomisasi tema, gaya, dan warna</string>
+    <string name="upgrade_benefit_power_controls">Kunci volume dan pembatasan laju</string>
+    <string name="upgrade_benefit_support">Dukung pengembangan independen</string>
     <string name="description_intro_tap_the_button">Mulai dengan menambah perangkat pertama Anda.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth dimatikan.</string>
     <string name="title_bluetooth_is_off">Bluetooth Mati</string>
@@ -310,7 +335,7 @@
     <string name="message_copied_to_clipboard">Salin ke Papan Klip</string>
     <string name="label_thanks">Terima kasih</string>
     <string name="label_licenses">Lisensi</string>
-    <string name="description_ring_volume_additional_permission">Perzinaan tambahan dibutuhkan untuk dapat mengubah volume dering.</string>
+    <string name="description_ring_volume_additional_permission">Izin tambahan dibutuhkan untuk dapat mengubah volume dering.</string>
     <string name="label_missing_permissions">Perizinan kurang</string>
     <string name="action_grant">Diizinkan</string>
     <string name="label_advanced">Lanjutan</string>
@@ -378,7 +403,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Masukkan nilai antara %1$d dan %2$d</string>
+    <string name="devices_volume_input_caption">Volume aktual mungkin dibulatkan ke langkah terdekat yang didukung perangkat Anda.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Kunci</string>
     <string name="devices_unlock_sliders_action">Buka kunci</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Menampilkan status kunci volume untuk Perangkat Bluetooth aktif</string>
+    <string name="widget_no_device_label">Tidak ada perangkat terhubung</string>
+    <string name="widget_bluetooth_off_label">Bluetooth mati</string>
+    <string name="widget_error_label">Error widget</string>
+    <string name="widget_preview_device_label">Headphone Saya</string>
+    <string name="widget_config_title">Pengaturan widget</string>
+    <string name="widget_config_preview_label">Pratinjau</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Warna latar belakang</string>
+    <string name="widget_config_fg_color_label">Warna teks</string>
+    <string name="widget_config_bg_alpha_label">Opasitas latar belakang</string>
+    <string name="widget_config_show_label_toggle">Tampilkan nama perangkat</string>
+    <string name="widget_config_show_label_description">Tampilkan perangkat yang terhubung di atas status kunci.</string>
+    <string name="widget_config_theme_green_label">Hijau</string>
+    <string name="widget_config_theme_red_label">Merah</string>
+    <string name="widget_config_theme_custom_label">Kustom</string>
 </resources>

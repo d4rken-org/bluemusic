@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Laikyti aktyviu kol šis įrenginys prijungtas ir išsaugoti garsumo pokyčius, kurių neatliko ši programa.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Išsaugoti garsumą atjungus</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Užfiksuoti ir išsaugoti dabartinius garsumo lygius atjungus šį įrenginį.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Kai kuriuose irenginiuose sistema perjungia garso marsrutizavima pries tai, kai spegiame nuskaityti garsuma. Jei issaugotos reiksmes neatitinka to, ka buvote nustaste, pabandykite ijungti Stebeti garsumo pokycus.</string>
     <string name="devices_device_config_volume_lock_label">Garsumo užraktas</string>
     <string name="devices_device_config_volume_lock_desc">Visi garsumo pokyčiai, neatliekami per šią programą, bus atstatyti kol šis įrenginys prijungtas.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Garso užraktas šiuo metu nepaisys šios funkcijos.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Garsumo keitimo limitavimas</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Riboti garsumo keitimo dažnumą, kad išvengtumėte greitų ar per didelių garsumo reguliavimų.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Garsumo kėlimo delsa</string>
@@ -202,6 +204,23 @@
     <string name="settings_privacy_policy_label">Privatumo politika</string>
     <string name="settings_privacy_policy_desc">Atsakingas duomenų tvarkymas.</string>
     <string name="changelog_label">Pakeitimų žurnalas</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Atsarginė kopija ir atkūrimas</string>
+    <string name="backup_restore_settings_desc">Kurkite atsargines kopijas ir atkurkite įrenginio konfigūracijas bei nustatymus.</string>
+    <string name="backup_restore_screen_title">Atsarginė kopija ir atkūrimas</string>
+    <string name="backup_restore_backup_desc">Sukurkite visų įrenginio konfigūracijų ir programos nustatymų atsarginę kopiją.</string>
+    <string name="backup_restore_backup_action">Kurti atsarginę kopiją</string>
+    <string name="backup_restore_restore_desc">Atkurkite įrenginio konfigūracijas ir programos nustatymus iš atsarginės kopijos failo.</string>
+    <string name="backup_restore_restore_action">Pasirinkti atsarginės kopijos failą</string>
+    <string name="backup_restore_skip_existing_label">Praleisti esamus įrenginius</string>
+    <string name="backup_restore_skip_existing_desc">Neperrašyti jau sukonfigūruotų įrenginių.</string>
+    <string name="backup_restore_preview_label">Atsarginės kopijos peržiūra</string>
+    <string name="backup_restore_preview_devices">%1$d įrenginių</string>
+    <string name="backup_restore_preview_overlap">%1$d iš %2$d įrenginių jau sukonfigūruoti</string>
+    <string name="backup_restore_confirm_action">Atkurti dabar</string>
+    <string name="backup_restore_success_backup">Atsarginė kopija sukurta — %1$d įrenginių išsaugota.</string>
+    <string name="backup_restore_success_restore">Atkūrimas baigtas — %1$d įrenginių atkurta, %2$d praleista.</string>
+    <string name="backup_restore_version_warning">Ši atsarginė kopija buvo sukurta su versija %1$s. Jūs naudojate %2$s. Kai kurie nustatymai gali būti atkurti neteisingai.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Derinimo pranešimai</string>
     <string name="debug_log_consent_title">Derinimo žurnalas</string>
@@ -289,6 +308,7 @@
     <string name="label_status_adjusting_volumes">Garsumo valdymas</string>
     <string name="label_premium_version">Premium versija</string>
     <string name="general_upgrade_action">Atnaujinti</string>
+    <string name="common_upgrade_required_label">Reikalingas atnaujinimas</string>
     <string name="description_premium_required_additional_devices">Papildomų įrenginių valdymui įsigykite Premium versiją.</string>
     <string name="description_premium_required_this_extra_option">Papildomam funkcionalumui reikalinga Premium programos versija.</string>
     <string name="description_premium_upgrade_explanation">Gauti Premium versiją ir įjungti papildomas galimybes. Taip padėsite programai tobulėti.</string>
@@ -297,6 +317,11 @@
     <string name="upgrade_prompt_upgrade_action">Atnaujinti</string>
     <string name="description_intro_purpose">Ši programa leidžia jūsų Android įrenginiui prisiminti įvairių Bluetooth įrenginių garsumo nustatymus.</string>
     <string name="description_intro_premium">Jei jums patinka ši programa, apsvarstykite galimybę įsigyti Premium versiją. Tai leis kūrėjui tobulėti bei gausite kelias papildomas funkcijas.</string>
+    <string name="upgrade_benefit_unlimited_devices">Neriboti įrenginių profiliai</string>
+    <string name="upgrade_benefit_connection_actions">Automatinis paleidimas, programų paleidimas ir prisijungimo pranešimai</string>
+    <string name="upgrade_benefit_theme_customization">Temos, stiliaus ir spalvų tinkinimas</string>
+    <string name="upgrade_benefit_power_controls">Garso užraktas ir greičio ribojimas</string>
+    <string name="upgrade_benefit_support">Palaikykite nepriklausomą kūrimą</string>
     <string name="description_intro_tap_the_button">Pradėkite pridėdami pirmą įrenginį.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth išjungtas.</string>
     <string name="title_bluetooth_is_off">Bluetooth išjungtas</string>
@@ -390,7 +415,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Garsumas (0–100)</string>
     <string name="devices_volume_input_error">Įveskite reikšmę nuo %1$d iki %2$d</string>
+    <string name="devices_volume_input_caption">Tikrasis garsumas gali būti suapvalintas iki artimiausiojo žingsnio, kurį palaiko jūsų įrenginys.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Užrakinti</string>
     <string name="devices_unlock_sliders_action">Atrakinti</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Rodo aktyvaus „Bluetooth“ įrenginio garso užrakto būseną</string>
+    <string name="widget_no_device_label">Nėra prijungto įrenginio</string>
+    <string name="widget_bluetooth_off_label">„Bluetooth“ išjungtas</string>
+    <string name="widget_error_label">Valdiklio klaida</string>
+    <string name="widget_preview_device_label">Mano ausinės</string>
+    <string name="widget_config_title">Valdiklio nustatymai</string>
+    <string name="widget_config_preview_label">Peržiūra</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Fono spalva</string>
+    <string name="widget_config_fg_color_label">Teksto spalva</string>
+    <string name="widget_config_bg_alpha_label">Fono permatomumas</string>
+    <string name="widget_config_show_label_toggle">Rodyti įrenginio pavadinimą</string>
+    <string name="widget_config_show_label_description">Rodyti prijungtą įrenginį virš užrakto būsenos.</string>
+    <string name="widget_config_theme_green_label">Žalia</string>
+    <string name="widget_config_theme_red_label">Raudona</string>
+    <string name="widget_config_theme_custom_label">Pasirinktinė</string>
 </resources>

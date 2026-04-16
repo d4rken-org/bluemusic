@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Stay active while dis device dey connected and save volume changes wey dis app no cause.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Save volume on disconnect</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Capture and save di current volume levels when dis device disconnect.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">For some devices, di system go switch audio routing before we fit read di volumes. If di values wey dem save no match wetin you set before, try make you on \"Observe volume changes\" instead.</string>
     <string name="devices_device_config_volume_lock_label">Volume lock</string>
     <string name="devices_device_config_volume_lock_desc">Any volume changes wey dis app no make go revert while dis device dey connected.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Volume lock dey override dis feature for now.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volume rate limiter</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limit how often volume changes dey happen to prevent quick or excessive volume adjustments.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volume increase delay</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Privacy policy</string>
     <string name="settings_privacy_policy_desc">Handling data responsibly.</string>
     <string name="changelog_label">Changelog</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Backup &amp; Restore</string>
+    <string name="backup_restore_settings_desc">Back up and restore di settings and configurations for your device.</string>
+    <string name="backup_restore_screen_title">Backup &amp; Restore</string>
+    <string name="backup_restore_backup_desc">Create backup for all your device configurations and app settings.</string>
+    <string name="backup_restore_backup_action">Create backup</string>
+    <string name="backup_restore_restore_desc">Restore device configurations and app settings from one backup file.</string>
+    <string name="backup_restore_restore_action">Select backup file</string>
+    <string name="backup_restore_skip_existing_label">Skip devices wey already dey</string>
+    <string name="backup_restore_skip_existing_desc">No overwrite devices wey don already configured.</string>
+    <string name="backup_restore_preview_label">Backup preview</string>
+    <string name="backup_restore_preview_devices">%1$d devices</string>
+    <string name="backup_restore_preview_overlap">%1$d of %2$d devices don already configured</string>
+    <string name="backup_restore_confirm_action">Restore now</string>
+    <string name="backup_restore_success_backup">Backup don create — %1$d devices saved.</string>
+    <string name="backup_restore_success_restore">Restore don finish — %1$d devices restored, %2$d skipped.</string>
+    <string name="backup_restore_version_warning">Dem create dis backup with version %1$s. You dey run %2$s. Some settings fit no restore well.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug notifications</string>
     <string name="debug_log_consent_title">Debug log</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Adjusting volumes</string>
     <string name="label_premium_version">Premium version</string>
     <string name="general_upgrade_action">Upgrade</string>
+    <string name="common_upgrade_required_label">You need upgrade</string>
     <string name="description_premium_required_additional_devices">To manage more devices, you need di premium version.</string>
     <string name="description_premium_required_this_extra_option">Dis extra option need di premium version of dis app.</string>
     <string name="description_premium_upgrade_explanation">Get di premium version to enable more features and support development.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Upgrade</string>
     <string name="description_intro_purpose">Dis app go allow your Android device remember di volume of different Bluetooth devices.</string>
     <string name="description_intro_premium">If you like dis app, consider upgrade to di premium version. E dey support development and give you small extra features.</string>
+    <string name="upgrade_benefit_unlimited_devices">Unlimited device profiles</string>
+    <string name="upgrade_benefit_connection_actions">Autoplay, app launch and connection alerts</string>
+    <string name="upgrade_benefit_theme_customization">Theme, style and color customization</string>
+    <string name="upgrade_benefit_power_controls">Volume lock and rate limiting</string>
+    <string name="upgrade_benefit_support">Support independent development</string>
     <string name="description_intro_tap_the_button">Start by adding your first device.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth don off.</string>
     <string name="title_bluetooth_is_off">Bluetooth dey Off</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0-100)</string>
     <string name="devices_volume_input_error">Enter value between %1$d and %2$d</string>
+    <string name="devices_volume_input_caption">Di actual volume fit round to di nearest step wey your device support.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Lock</string>
     <string name="devices_unlock_sliders_action">Unlock</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Show volume lock status for di active Bluetooth device</string>
+    <string name="widget_no_device_label">No device connect</string>
+    <string name="widget_bluetooth_off_label">Bluetooth don off</string>
+    <string name="widget_error_label">Widget error</string>
+    <string name="widget_preview_device_label">My Headphones</string>
+    <string name="widget_config_title">Widget settings</string>
+    <string name="widget_config_preview_label">Preview</string>
+    <string name="widget_config_theme_label">Theme</string>
+    <string name="widget_config_bg_color_label">Background color</string>
+    <string name="widget_config_fg_color_label">Text color</string>
+    <string name="widget_config_bg_alpha_label">Background opacity</string>
+    <string name="widget_config_show_label_toggle">Show device name</string>
+    <string name="widget_config_show_label_description">Show di connected device above di lock status.</string>
+    <string name="widget_config_theme_green_label">Green</string>
+    <string name="widget_config_theme_red_label">Red</string>
+    <string name="widget_config_theme_custom_label">Custom</string>
 </resources>

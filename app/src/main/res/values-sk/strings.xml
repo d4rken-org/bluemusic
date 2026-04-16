@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Zostane aktívna počas pripojenia tohto zariadenia a uloží zmeny hlasitosti, ktoré neboli vykonané touto aplikáciou.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Uložiť hlasitosť pri odpojení</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Zachyť a ulož aktuálne úrovne hlasitosti pri odpojení tohto zariadenia.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Na niektorých zariadeniach systém prepína smerovanie zvuku skôr, ako stihneme načítať hlasitosti. Ak uložené hodnoty nezodpovedajú tomu, čo ste nastavili, skúste radšej zapnúť \"Sledovať zmeny hlasitosti\".</string>
     <string name="devices_device_config_volume_lock_label">Uzamknutie hlasitosti</string>
     <string name="devices_device_config_volume_lock_desc">Všetky zmeny hlasitosti, ktoré neboli vykonané touto aplikáciou sa zrušia po pripojení zariadenia.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Uzamknutie hlasitosti momentálne potláča túto funkciu.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Regulátor frekvencie hlasitosti</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Obmedzuje frekvenciu zmien hlasitosti, aby sa zabránilo rýchlym alebo nadmerným úpravám.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Oneskorenie zvýšenia hlasitosti</string>
@@ -202,6 +204,23 @@
     <string name="settings_privacy_policy_label">Zásady ochrany osobných údajov</string>
     <string name="settings_privacy_policy_desc">Zodpovedné zaobchádzanie s dátami.</string>
     <string name="changelog_label">Zoznam zmien</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Zálohovanie a obnovenie</string>
+    <string name="backup_restore_settings_desc">Zálohujte a obnovte konfigurácie zariadení a nastavenia.</string>
+    <string name="backup_restore_screen_title">Zálohovanie a obnovenie</string>
+    <string name="backup_restore_backup_desc">Vytvorte zálohu všetkých konfigurácií zariadení a nastavení aplikácie.</string>
+    <string name="backup_restore_backup_action">Vytvoriť zálohu</string>
+    <string name="backup_restore_restore_desc">Obnoviť konfigurácie zariadení a nastavenia aplikácie zo záložného súboru.</string>
+    <string name="backup_restore_restore_action">Vybrať záložný súbor</string>
+    <string name="backup_restore_skip_existing_label">Preskočiť existujúce zariadenia</string>
+    <string name="backup_restore_skip_existing_desc">Neprepísať zariadenia, ktoré sú už nakonfigurované.</string>
+    <string name="backup_restore_preview_label">Náhľad zálohy</string>
+    <string name="backup_restore_preview_devices">%1$d zariadení</string>
+    <string name="backup_restore_preview_overlap">%1$d z %2$d zariadení je už nakonfigurovaných</string>
+    <string name="backup_restore_confirm_action">Obnoviť teraz</string>
+    <string name="backup_restore_success_backup">Záloha vytvorená — uložených %1$d zariadení.</string>
+    <string name="backup_restore_success_restore">Obnovenie dokončené — obnovených %1$d zariadení, %2$d preskočených.</string>
+    <string name="backup_restore_version_warning">Táto záloha bola vytvorená s verziou %1$s. Momentálne používate %2$s. Niektoré nastavenia sa nemusia obnoviť správne.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Ladiace notifikácie</string>
     <string name="debug_log_consent_title">Ladiaci log</string>
@@ -289,6 +308,7 @@
     <string name="label_status_adjusting_volumes">Úprava hlasitosti</string>
     <string name="label_premium_version">Prémiová verzia</string>
     <string name="general_upgrade_action">Upgradovať</string>
+    <string name="common_upgrade_required_label">Vyžaduje sa upgrade</string>
     <string name="description_premium_required_additional_devices">Správa ďalších zariadení vyžaduje prémiovú verziu.</string>
     <string name="description_premium_required_this_extra_option">Toto je extra funkcia, ktorá vyžaduje prémiovú verziu.</string>
     <string name="description_premium_upgrade_explanation">Získajte prémiovú verziu a povoľte ďalšie funkcie a podporte vývoj.</string>
@@ -297,6 +317,11 @@
     <string name="upgrade_prompt_upgrade_action">Upgradovať</string>
     <string name="description_intro_purpose">Táto aplikácia umožňuje vášmu Android zariadeniu uložiť hlasitosti pre rôzne Bluetooth zariadenia.</string>
     <string name="description_intro_premium">Ak sa vám páči táto aplikácia, zvážte upgrade na prémiovú verziu. Podporíte vývoj a dostanete pár funkcií navyše.</string>
+    <string name="upgrade_benefit_unlimited_devices">Neobmedzené profily zariadení</string>
+    <string name="upgrade_benefit_connection_actions">Automatické prehrávanie, spustenie aplikácie a upozornenia na pripojenie</string>
+    <string name="upgrade_benefit_theme_customization">Prispôsobenie témy, štýlu a farieb</string>
+    <string name="upgrade_benefit_power_controls">Uzamknutie hlasitosti a obmedzenie rýchlosti</string>
+    <string name="upgrade_benefit_support">Podpora nezávislého vývoja</string>
     <string name="description_intro_tap_the_button">Začnite pridaním vášho prvého zariadenia.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth je vypnutý.</string>
     <string name="title_bluetooth_is_off">Bluetooth je vypnutý</string>
@@ -390,7 +415,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Hlasitosť (0–100)</string>
     <string name="devices_volume_input_error">Zadaj hodnotu medzi %1$d a %2$d</string>
+    <string name="devices_volume_input_caption">Skutočná hlasitosť sa môže zaokrúhliť na najbližší krok, ktorý vaše zariadenie podporuje.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Uzamknúť</string>
     <string name="devices_unlock_sliders_action">Odomknúť</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Zobrazuje stav uzamknutia hlasitosti pre aktívne Bluetooth zariadenie</string>
+    <string name="widget_no_device_label">Žiadne zariadenie nie je pripojené</string>
+    <string name="widget_bluetooth_off_label">Bluetooth je vypnutý</string>
+    <string name="widget_error_label">Chyba widgetu</string>
+    <string name="widget_preview_device_label">Moje slúchadlá</string>
+    <string name="widget_config_title">Nastavenia widgetu</string>
+    <string name="widget_config_preview_label">Náhľad</string>
+    <string name="widget_config_theme_label">Téma</string>
+    <string name="widget_config_bg_color_label">Farba pozadia</string>
+    <string name="widget_config_fg_color_label">Farba textu</string>
+    <string name="widget_config_bg_alpha_label">Priehľadnosť pozadia</string>
+    <string name="widget_config_show_label_toggle">Zobraziť názov zariadenia</string>
+    <string name="widget_config_show_label_description">Zobrazě pripojené zariadenie nad stavom zámku.</string>
+    <string name="widget_config_theme_green_label">Zelená</string>
+    <string name="widget_config_theme_red_label">Červená</string>
+    <string name="widget_config_theme_custom_label">Vlastné</string>
 </resources>

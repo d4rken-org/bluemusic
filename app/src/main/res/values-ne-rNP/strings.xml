@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">यो उपकरण जडान भएको बेला सक्रिय रहनुहोस् र यस एपले नगराएका भोल्युम परिवर्तनहरू सुरक्षित गर्नुहोस्।</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">विच्छेद हुँदा भोल्युम सुरक्षित गर्नुहोस्</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">यो उपकरण विच्छेद हुँदा हालको भोल्युम स्तरहरू कैद गरी सुरक्षित गर्नुहोस्।</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">केही यन्त्रहरूमा, प्रणालीले हामीले भोल्युम पढ्न सक्नु अघि नै अडियो राउटिङ बदल्छ। यदि सुरक्षित गरिएका मानहरू तपाईंले सेट गर्नुभएको कुरासँग मेल खाँदैन भने, यसको सट्टा \"भोल्युम परिवर्तनहरू अवलोकन गर्नुहोस्\" सक्षम गर्ने प्रयास गर्नुहोस्।</string>
     <string name="devices_device_config_volume_lock_label">भोल्युम लक</string>
     <string name="devices_device_config_volume_lock_desc">यो उपकरण जडान भएको बेला यस एपबाट नगरिएका कुनै पनि भोल्युम परिवर्तनहरू फिर्ता हुनेछन्।</string>
+    <string name="devices_device_config_volume_lock_override_desc">भोल्युम लक हाल यो सुविधालाई ओभरराइड गर्दैछ।</string>
     <string name="devices_device_config_volume_rate_limiter_label">भोल्युम दर सीमक</string>
     <string name="devices_device_config_volume_rate_limiter_desc">द्रुत वा अत्यधिक भोल्युम समायोजनलाई रोक्नको लागि भोल्युम परिवर्तनको आवृत्ति सीमित गर्नुहोस्।</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">भोल्युम वृद्धि विलम्ब</string>
@@ -200,6 +202,22 @@
     <string name="settings_privacy_policy_label">गोपनीयता नीति</string>
     <string name="settings_privacy_policy_desc">डेटा जिम्मेवारीपूर्वक ह्यान्डल गर्दै।</string>
     <string name="changelog_label">परिवर्तन लग</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">ब्याकअप र रिस्टोर</string>
+    <string name="backup_restore_settings_desc">आफ्नो यन्त्रका कन्फिगरेसनहरू र सेटिङहरू ब्याकअप र रिस्टोर गर्नुहोस्।</string>
+    <string name="backup_restore_screen_title">ब्याकअप र रिस्टोर</string>
+    <string name="backup_restore_backup_desc">आफ्ना सबै यन्त्र कन्फिगरेसनहरू र एप सेटिङहरूको ब्याकअप सिर्जना गर्नुहोस्।</string>
+    <string name="backup_restore_backup_action">ब्याकअप सिर्जना गर्नुहोस्</string>
+    <string name="backup_restore_restore_desc">ब्याकअप फाइलबाट यन्त्र कन्फिगरेसनहरू र एप सेटिङहरू रिस्टोर गर्नुहोस्।</string>
+    <string name="backup_restore_restore_action">ब्याकअप फाइल छान्नुहोस्</string>
+    <string name="backup_restore_skip_existing_label">अवस्थित यन्त्रहरू छोड्नुहोस्</string>
+    <string name="backup_restore_skip_existing_desc">पहिले नै कन्फिगर गरिएका यन्त्रहरू ओभरराइट नगर्नुहोस्।</string>
+    <string name="backup_restore_preview_label">ब्याकअप पूर्वावलोकन</string>
+    <string name="backup_restore_preview_devices">%1$d यन्त्रहरू</string>
+    <string name="backup_restore_confirm_action">अहिले रिस्टोर गर्नुहोस्</string>
+    <string name="backup_restore_success_backup">ब्याकअप सिर्जना भयो — %1$d यन्त्रहरू सुरक्षित गरियो।</string>
+    <string name="backup_restore_success_restore">रिस्टोर सम्पन्न — %1$d यन्त्रहरू रिस्टोर गरियो, %2$d छोडियो।</string>
+    <string name="backup_restore_version_warning">यो ब्याकअप संस्करण %1$s सँग सिर्जना गरिएको थियो। तपाईं %2$s चलाउँदै हुनुहुन्छ। केही सेटिङहरू सही ढंगले रिस्टोर नहुन सक्छन्।</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">डिबग सूचनाहरू</string>
     <string name="debug_log_consent_title">डिबग लग</string>
@@ -283,6 +301,7 @@
     <string name="label_status_adjusting_volumes">भोल्युमहरू समायोजन गर्दै</string>
     <string name="label_premium_version">प्रिमियम संस्करण</string>
     <string name="general_upgrade_action">अपग्रेड गर्नुहोस्</string>
+    <string name="common_upgrade_required_label">अपग्रेड आवश्यक छ</string>
     <string name="description_premium_required_additional_devices">थप उपकरणहरू व्यवस्थापन गर्न प्रिमियम संस्करण आवश्यक छ।</string>
     <string name="description_premium_required_this_extra_option">यो अतिरिक्त विकल्पलाई यस एपको प्रिमियम संस्करण आवश्यक छ।</string>
     <string name="description_premium_upgrade_explanation">थप सुविधाहरू सक्षम गर्न र विकासलाई समर्थन गर्न प्रिमियम संस्करण प्राप्त गर्नुहोस्।</string>
@@ -291,6 +310,11 @@
     <string name="upgrade_prompt_upgrade_action">अपग्रेड गर्नुहोस्</string>
     <string name="description_intro_purpose">यो एपले तपाईंको Android उपकरणलाई विभिन्न Bluetooth उपकरणहरूको भोल्युम सम्झन दिन्छ।</string>
     <string name="description_intro_premium">यदि तपाईंलाई यो एप मनपर्छ भने, प्रिमियम संस्करणमा अपग्रेड गर्ने विचार गर्नुहोस्। यसले विकासलाई समर्थन गर्छ र तपाईंलाई केही अतिरिक्त सुविधाहरू दिन्छ।</string>
+    <string name="upgrade_benefit_unlimited_devices">असीमित यन्त्र प्रोफाइलहरू</string>
+    <string name="upgrade_benefit_connection_actions">अटोप्ले, एप लन्च र कनेक्सन अलर्टहरू</string>
+    <string name="upgrade_benefit_theme_customization">थिम, शैली र रङ्ग अनुकूलन</string>
+    <string name="upgrade_benefit_power_controls">भोल्युम लक र दर सीमाकरण</string>
+    <string name="upgrade_benefit_support">स्वतन्त्र विकासलाई सहयोग गर्नुहोस्</string>
     <string name="description_intro_tap_the_button">आफ्नो पहिलो उपकरण थपेर सुरु गर्नुहोस्।</string>
     <string name="description_bluetooth_is_disabled">ब्लुटुथ असक्षम पारिएको छ.</string>
     <string name="title_bluetooth_is_off">Bluetooth बन्द छ</string>
@@ -336,10 +360,6 @@
     <string name="privacy_policy_label">गोपनीयता नीति</string>
     <string name="managed_devices_empty_message">कुनै Bluetooth उपकरण कन्फिगर गरिएको छैन।\nआफ्नो पहिलो उपकरण थप्न + बटन थिज्नुहोस्।</string>
     <string name="label_pro_feature">प्रिमियम सुविधा</string>
-    <plurals name="discover_device_limit_banner">
-        <item quantity="one">निःशुल्क संस्करण: %2$d मध्ये %1$d उपकरण</item>
-        <item quantity="other">निःशुल्क संस्करण: %2$d मध्ये %1$d उपकरणहरू</item>
-    </plurals>
     <string name="general_delete_action">मेटाउनुहोस्</string>
     <string name="general_cancel_action">रद्द गर्नुहोस्</string>
     <string name="general_ok_action">ठिक छ</string>
@@ -382,7 +402,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">भोल्युम (०–१००)</string>
     <string name="devices_volume_input_error">%1$d र %2$d बिचको मान हाल्नुहोस्</string>
+    <string name="devices_volume_input_caption">वास्तविक भोल्युम तपाईंको यन्त्रले समर्थन गर्ने नजिकको चरणमा गोल हुन सक्छ।</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ताला लगाउनुस्</string>
     <string name="devices_unlock_sliders_action">ताला खोल्नुस्</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">सक्रिय Bluetooth यन्त्रको भोल्युम लक स्थिति देखाउँछ</string>
+    <string name="widget_no_device_label">कुनै यन्त्र जोडिएको छैन</string>
+    <string name="widget_bluetooth_off_label">Bluetooth बन्द छ</string>
+    <string name="widget_error_label">विजेट त्रुटि</string>
+    <string name="widget_preview_device_label">मेरा हेडफोन</string>
+    <string name="widget_config_title">विजेट सेटिङहरू</string>
+    <string name="widget_config_preview_label">पूर्वावलोकन</string>
+    <string name="widget_config_theme_label">थिम</string>
+    <string name="widget_config_bg_color_label">पृष्ठभूमि रङ्ग</string>
+    <string name="widget_config_fg_color_label">पाठ रङ्ग</string>
+    <string name="widget_config_bg_alpha_label">पृष्ठभूमि अपारदर्शिता</string>
+    <string name="widget_config_show_label_toggle">यन्त्रको नाम देखाउनुहोस्</string>
+    <string name="widget_config_show_label_description">लक स्थितिभन्दा माथि जोडिएको यन्त्र देखाउँछ।</string>
+    <string name="widget_config_theme_green_label">हरियो</string>
+    <string name="widget_config_theme_red_label">रातो</string>
+    <string name="widget_config_theme_custom_label">कस्टम</string>
 </resources>

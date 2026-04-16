@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">このデバイスが接続されている間はアクティブのままにし、このアプリが原因ではない音量変更を保存します。</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">切断時に音量を保存</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">このデバイスが切断されたときに、現在の音量レベルを取得して保存します。</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">デバイスによっては、音量を読み取る前にシステムがオーディオルーティングを切り替えることがあります。保存された値が設定した値と一致しない場合は、代わりに「音量変化を監視する」を有効にしてみてください。</string>
     <string name="devices_device_config_volume_lock_label">音量固定</string>
     <string name="devices_device_config_volume_lock_desc">このデバイスが接続されている間は、このアプリ以外による音量の変更はすべて元に戻されます。</string>
+    <string name="devices_device_config_volume_lock_override_desc">ボリュームロックが現在この機能を上書きしています。</string>
     <string name="devices_device_config_volume_rate_limiter_label">音量レート制限</string>
     <string name="devices_device_config_volume_rate_limiter_desc">音量変更の頻度を制限して、急激または過度な音量調整を防ぎます。</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">音量増加の遅延</string>
@@ -199,6 +201,23 @@
     <string name="settings_privacy_policy_label">プライバシーポリシー</string>
     <string name="settings_privacy_policy_desc">データを責任を持って処理します。</string>
     <string name="changelog_label">変更ログ</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">バックアップと復元</string>
+    <string name="backup_restore_settings_desc">デバイス設定とアプリ設定をバックアップおよび復元します。</string>
+    <string name="backup_restore_screen_title">バックアップと復元</string>
+    <string name="backup_restore_backup_desc">すべてのデバイス設定とアプリ設定のバックアップを作成します。</string>
+    <string name="backup_restore_backup_action">バックアップを作成</string>
+    <string name="backup_restore_restore_desc">バックアップファイルからデバイス設定とアプリ設定を復元します。</string>
+    <string name="backup_restore_restore_action">バックアップファイルを選択</string>
+    <string name="backup_restore_skip_existing_label">既存のデバイスをスキップ</string>
+    <string name="backup_restore_skip_existing_desc">既に設定済みのデバイスを上書きしません。</string>
+    <string name="backup_restore_preview_label">バックアッププレビュー</string>
+    <string name="backup_restore_preview_devices">%1$d 台のデバイス</string>
+    <string name="backup_restore_preview_overlap">%2$d台中%1$d台のデバイスは既に設定済み</string>
+    <string name="backup_restore_confirm_action">今すぐ復元</string>
+    <string name="backup_restore_success_backup">バックアップを作成しました—%1$d台のデバイスを保存しました。</string>
+    <string name="backup_restore_success_restore">復元完了—%1$d台のデバイスを復元し、%2$d台をスキップしました。</string>
+    <string name="backup_restore_version_warning">このバックアップはバージョン%1$sで作成されました。現在%2$sを実行中です。一部の設定が正しく復元されない場合があります。</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">デバッグ通知</string>
     <string name="debug_log_consent_title">デバッグログ</string>
@@ -280,6 +299,7 @@
     <string name="label_status_adjusting_volumes">音量調整中</string>
     <string name="label_premium_version">プレミアム版</string>
     <string name="general_upgrade_action">アップグレード</string>
+    <string name="common_upgrade_required_label">アップグレードが必要</string>
     <string name="description_premium_required_additional_devices">追加のデバイスを管理するには、プレミアム版が必要です。</string>
     <string name="description_premium_required_this_extra_option">残念ながら、この特別なオプションにはこのアプリのプレミアム版が必要です。</string>
     <string name="description_premium_upgrade_explanation">追加機能を有効にして開発をサポートするために、プレミアム版を入手します。</string>
@@ -288,6 +308,11 @@
     <string name="upgrade_prompt_upgrade_action">アップグレード</string>
     <string name="description_intro_purpose">このアプリは、Android端末がBluetoothデバイスごとに音量を記憶できるようにします。</string>
     <string name="description_intro_premium">もしこのアプリが気に入ったなら、プレミアム版にアップグレードすることをお考えください。プレミアム版の購入によって、開発のサポートといくつかの特別な機能の利用が可能になります。</string>
+    <string name="upgrade_benefit_unlimited_devices">無制限のデバイスプロファイル</string>
+    <string name="upgrade_benefit_connection_actions">自動再生、アプリ起動、接続通知</string>
+    <string name="upgrade_benefit_theme_customization">テーマ、スタイル、カラーのカスタマイズ</string>
+    <string name="upgrade_benefit_power_controls">ボリュームロックとレート制限</string>
+    <string name="upgrade_benefit_support">独立開発をサポート</string>
     <string name="description_intro_tap_the_button">まずあなたの最初のデバイスを追加します。</string>
     <string name="description_bluetooth_is_disabled">Bluetoothが無効です。</string>
     <string name="title_bluetooth_is_off">Bluetoothがオフです</string>
@@ -378,7 +403,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">音量 (0～100)</string>
     <string name="devices_volume_input_error">%1$d から %2$d の間の値を入力してください</string>
+    <string name="devices_volume_input_caption">実際の音量は、お使いのデバイスが対応する最小ステップに丸められる場合があります。</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ロック</string>
     <string name="devices_unlock_sliders_action">ロック解除</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">アクティブなBluetoothデバイスのボリュームロックの状態を表示</string>
+    <string name="widget_no_device_label">デバイスが接続されていません</string>
+    <string name="widget_bluetooth_off_label">Bluetoothがオフです</string>
+    <string name="widget_error_label">ウィジェットエラー</string>
+    <string name="widget_preview_device_label">私のヘッドフォン</string>
+    <string name="widget_config_title">ウィジェット設定</string>
+    <string name="widget_config_preview_label">プレビュー</string>
+    <string name="widget_config_theme_label">テーマ</string>
+    <string name="widget_config_bg_color_label">背景色</string>
+    <string name="widget_config_fg_color_label">テキストの色</string>
+    <string name="widget_config_bg_alpha_label">背景の透明度</string>
+    <string name="widget_config_show_label_toggle">デバイス名を表示</string>
+    <string name="widget_config_show_label_description">ロック状態の上に接続済みデバイスを表示する。</string>
+    <string name="widget_config_theme_green_label">緑</string>
+    <string name="widget_config_theme_red_label">赤</string>
+    <string name="widget_config_theme_custom_label">カスタム</string>
 </resources>

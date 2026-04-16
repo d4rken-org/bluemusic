@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">ยังคงทำงานอยู่ขณะที่อุปกรณ์นี้เชื่อมต่อและบันทึกการเปลี่ยนแปลงระดับเสียงที่ไม่ได้เกิดจากแอปนี้</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">บันทึกระดับเสียงเมื่อตัดการเชื่อมต่อ</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">บันทึกและจัดเก็บระดับเสียงปัจจุบันเมื่ออุปกรณ์นี้ตัดการเชื่อมต่อ</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">ในบางอุปกรณ์ ระบบจะเปลี่ยนเส้นทางเสียงก่อนที่เราจะอ่านค่าระดับเสียงได้ หากค่าที่บันทึกไว้ไม่ตรงกับที่คุณตั้งไว้ ให้ลองเปิดใช้ \"สังเกตการเปลี่ยนแปลงระดับเสียง\" แทน</string>
     <string name="devices_device_config_volume_lock_label">ล็อกระดับเสียง</string>
     <string name="devices_device_config_volume_lock_desc">การเปลี่ยนแปลงระดับเสียงที่ไม่ได้ทำผ่านแอปนี้จะถูกย้อนกลับขณะที่อุปกรณ์นี้เชื่อมต่ออยู่</string>
+    <string name="devices_device_config_volume_lock_override_desc">การล็อกระดับเสียงกำลังแทนที่ฟีเจอร์นี้อยู่</string>
     <string name="devices_device_config_volume_rate_limiter_label">ตัวจำกัดอัตราเสียง</string>
     <string name="devices_device_config_volume_rate_limiter_desc">จำกัดความถี่ของการเปลี่ยนแปลงระดับเสียงเพื่อป้องกันการปรับระดับเสียงอย่างรวดเร็วหรือมากเกินไป</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ความล่าช้าการเพิ่มระดับเสียง</string>
@@ -199,6 +201,23 @@
     <string name="settings_privacy_policy_label">นโยบายความเป็นส่วนตัว</string>
     <string name="settings_privacy_policy_desc">การจัดการข้อมูลอย่างมีความรับผิดชอบ</string>
     <string name="changelog_label">บันทึกการเปลี่ยนแปลง</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">สำรองและกู้คืน</string>
+    <string name="backup_restore_settings_desc">สำรองและกู้คืนการตั้งค่าอุปกรณ์และการตั้งค่าแอปของคุณ</string>
+    <string name="backup_restore_screen_title">สำรองและกู้คืน</string>
+    <string name="backup_restore_backup_desc">สร้างข้อมูลสำรองของการตั้งค่าอุปกรณ์และแอปทั้งหมดของคุณ</string>
+    <string name="backup_restore_backup_action">สร้างข้อมูลสำรอง</string>
+    <string name="backup_restore_restore_desc">กู้คืนการตั้งค่าอุปกรณ์และแอปจากไฟล์สำรองข้อมูล</string>
+    <string name="backup_restore_restore_action">เลือกไฟล์สำรองข้อมูล</string>
+    <string name="backup_restore_skip_existing_label">ข้ามอุปกรณ์ที่มีอยู่แล้ว</string>
+    <string name="backup_restore_skip_existing_desc">ไม่เขียนทับอุปกรณ์ที่ตั้งค่าไว้แล้ว</string>
+    <string name="backup_restore_preview_label">ตัวอย่างข้อมูลสำรอง</string>
+    <string name="backup_restore_preview_devices">%1$d อุปกรณ์</string>
+    <string name="backup_restore_preview_overlap">%1$d จาก %2$d อุปกรณ์ที่ตั้งค่าไว้แล้ว</string>
+    <string name="backup_restore_confirm_action">กู้คืนเดี๋ยวนี้</string>
+    <string name="backup_restore_success_backup">สร้างข้อมูลสำรองแล้ว — บันทึก %1$d อุปกรณ์</string>
+    <string name="backup_restore_success_restore">กู้คืนเสร็จสิ้น — กู้คืน %1$d อุปกรณ์, ข้าม %2$d อุปกรณ์</string>
+    <string name="backup_restore_version_warning">ข้อมูลสำรองนี้สร้างด้วยเวอร์ชัน %1$s คุณกำลังใช้ %2$s การตั้งค่าบางอย่างอาจกู้คืนไม่ถูกต้อง</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">การแจ้งเตือนดีบัก</string>
     <string name="debug_log_consent_title">ล็อกดีบัก</string>
@@ -280,6 +299,7 @@
     <string name="label_status_adjusting_volumes">ปรับระดับเสียง</string>
     <string name="label_premium_version">รุ่นพรีเมี่ยม</string>
     <string name="general_upgrade_action">อัปเกรด</string>
+    <string name="common_upgrade_required_label">ต้องอัปเกรด</string>
     <string name="description_premium_required_additional_devices">การจัดการอุปกรณ์เพิ่มเติมต้องใช้รุ่นพรีเมี่ยม</string>
     <string name="description_premium_required_this_extra_option">ตัวเลือกนี้จำเป็นต้องมีรุ่นพรีเมี่ยมของ app นี้</string>
     <string name="description_premium_upgrade_explanation">รับเวอร์ชันพรีเมียมเพื่อเปิดใช้งานคุณลักษณะเพิ่มเติมและสนับสนุนการพัฒนา</string>
@@ -288,6 +308,11 @@
     <string name="upgrade_prompt_upgrade_action">อัปเกรด</string>
     <string name="description_intro_purpose">แอปนี้ช่วยให้อุปกรณ์ Android ของคุณจดจำระดับเสียงของอุปกรณ์บลูทูธแต่ละตัว</string>
     <string name="description_intro_premium">หากคุณชอบแอปพลิเคชันนี้ให้พิจารณาการอัปเกรดเป็นเวอร์ชันพรีเมียม สนับสนุนการพัฒนาและเพิ่มคุณสมบัติพิเศษให้คุณ</string>
+    <string name="upgrade_benefit_unlimited_devices">โปรไฟล์อุปกรณ์ไม่จำกัด</string>
+    <string name="upgrade_benefit_connection_actions">เล่นอัตโนมัติ, เปิดแอป และการแจ้งเตือนการเชื่อมต่อ</string>
+    <string name="upgrade_benefit_theme_customization">ปรับแต่งธีม, สไตล์ และสีสัน</string>
+    <string name="upgrade_benefit_power_controls">การล็อกระดับเสียงและการจำกัดอัตรา</string>
+    <string name="upgrade_benefit_support">สนับสนุนการพัฒนาอิสระ</string>
     <string name="description_intro_tap_the_button">เริ่มต้นด้วยการเพิ่มอุปกรณ์ตัวแรกของคุณ</string>
     <string name="description_bluetooth_is_disabled">บลูทูธถูกปิดใช้งาน</string>
     <string name="title_bluetooth_is_off">บลูทูธปิดอยู่</string>
@@ -378,7 +403,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">ระดับเสียง (0–100)</string>
     <string name="devices_volume_input_error">ป้อนค่าระหว่าง %1$d และ %2$d</string>
+    <string name="devices_volume_input_caption">ระดับเสียงจริงอาจปัดเป็นขั้นที่ใกล้ที่สุดที่อุปกรณ์ของคุณรองรับ</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ล็อก</string>
     <string name="devices_unlock_sliders_action">ปลดล็อก</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">แสดงสถานะการล็อกระดับเสียงสำหรับอุปกรณ์บลูทูธ์ที่ใช้งานอยู่</string>
+    <string name="widget_no_device_label">ไม่มีอุปกรณ์ที่เชื่อมต่อ</string>
+    <string name="widget_bluetooth_off_label">บลูทูธ์ปิดอยู่</string>
+    <string name="widget_error_label">ข้อผิดพลาดวิดเจ็ต</string>
+    <string name="widget_preview_device_label">หูฟังของฉัน</string>
+    <string name="widget_config_title">ตั้งค่าวิดเจ็ต</string>
+    <string name="widget_config_preview_label">ตัวอย่าง</string>
+    <string name="widget_config_theme_label">ธีม</string>
+    <string name="widget_config_bg_color_label">สีพื้นหลัง</string>
+    <string name="widget_config_fg_color_label">สีข้อความ</string>
+    <string name="widget_config_bg_alpha_label">ความโปร่งใสของพื้นหลัง</string>
+    <string name="widget_config_show_label_toggle">แสดงชื่ออุปกรณ์</string>
+    <string name="widget_config_show_label_description">แสดงอุปกรณ์ที่เชื่อมต่อไว้เหนือสถานะการล็อก</string>
+    <string name="widget_config_theme_green_label">เขียว</string>
+    <string name="widget_config_theme_red_label">แดง</string>
+    <string name="widget_config_theme_custom_label">กำหนดเอง</string>
 </resources>

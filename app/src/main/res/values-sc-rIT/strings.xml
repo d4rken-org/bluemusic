@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Remàni ativu mentre custu dispositivu est connètidu e sàlva sos cambios de volume chi non sunt istados causàdos dae s\'app.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Sàlva su volume a disconnessione</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Càptura e sàlva sos livèllos de volume attuales cando su dispositivu si disconnèttet.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">In calicunu dispositivu, su sistema cambiat su rutamentu de s\'àudio prima chi nois podimus lèghere sos volumes. Si sos valores salvados non currispondent a cussos chi ti ses postu, proa a abilitare \"Observa sos cambios de volume\" in su logu suu.</string>
     <string name="devices_device_config_volume_lock_label">Bloccu de volume</string>
     <string name="devices_device_config_volume_lock_desc">Calsiasi cambiu de volume non fatu tramite s\'app serrà reversìdu mentre custu dispositivu est connètidu.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Su blocu de volume annullat custu funtzionamentu in custu momentu.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitatore de frequèntzia de volume</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limita sa frequèntzia de sos cambios de volume pro prevènnere aggiustamentos ràpidos o ecèssivos.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ritàrdu de augmentu de volume</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Política de privatesa</string>
     <string name="settings_privacy_policy_desc">Gestire sos datos in manera responsàbbile.</string>
     <string name="changelog_label">Registro de cambios</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Backup &amp; Restauratzione</string>
+    <string name="backup_restore_settings_desc">Fai su backup e restaura is configuratziones e impostatziones de su dispositivu tuo.</string>
+    <string name="backup_restore_screen_title">Backup &amp; Restauratzione</string>
+    <string name="backup_restore_backup_desc">Crea un backup de totus is configuratziones de su dispositivu e de is impostatziones de s\'app.</string>
+    <string name="backup_restore_backup_action">Crea backup</string>
+    <string name="backup_restore_restore_desc">Restaura is configuratziones de su dispositivu e is impostatziones de s\'app dae un archiviu de backup.</string>
+    <string name="backup_restore_restore_action">Seletzioni su file de backup</string>
+    <string name="backup_restore_skip_existing_label">Salta is dispositivus esistentes</string>
+    <string name="backup_restore_skip_existing_desc">Non subraiscriri is dispositivus chi funt giai configuraus.</string>
+    <string name="backup_restore_preview_label">Anteprima de backup</string>
+    <string name="backup_restore_preview_devices">%1$d dispositivus</string>
+    <string name="backup_restore_preview_overlap">%1$d de %2$d dispositivus giai configuraus</string>
+    <string name="backup_restore_confirm_action">Restaura immoe</string>
+    <string name="backup_restore_success_backup">Backup creadu — %1$d dispositivus salvaus.</string>
+    <string name="backup_restore_success_restore">Restauratzione compia — %1$d dispositivus restauraus, %2$d saltaus.</string>
+    <string name="backup_restore_version_warning">Custu backup est istadu creadu cun sa versione %1$s. Ses impreende %2$s. Calecuna impostazione poderet non si restaurare bene.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Notìfigas de debug</string>
     <string name="debug_log_consent_title">Log de debug</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Aggiustende sos volumes</string>
     <string name="label_premium_version">Versione premium</string>
     <string name="general_upgrade_action">Aggiornamentu</string>
+    <string name="common_upgrade_required_label">Aggiornamentu requeridu</string>
     <string name="description_premium_required_additional_devices">Sa gestione de dispositivos aditzionales richièdet sa versione premium.</string>
     <string name="description_premium_required_this_extra_option">Cussa optzzione aditzionale richièdet sa versione premium de s\'app.</string>
     <string name="description_premium_upgrade_explanation">Procùrati sa versione premium pro abilitare funtzionalidades aditzionales e suportare su sviluppu.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Aggiornamentu</string>
     <string name="description_intro_purpose">S\'app permìttit a su dispositivu Android tuo de recordare su volume de sos diversos dispositivos Bluetooth.</string>
     <string name="description_intro_premium">Si ti pìachet s\'app, cunsìdera de aggiornare a sa versione premium. Suportat su sviluppu e ti dat calicunas funtzionalidades aditzionales.</string>
+    <string name="upgrade_benefit_unlimited_devices">Profilis de dispositivu illimitaus</string>
+    <string name="upgrade_benefit_connection_actions">Riprodutzione automàtica, apertura de app e avisos de connessione</string>
+    <string name="upgrade_benefit_theme_customization">Personalizatzione de tema, stile e colore</string>
+    <string name="upgrade_benefit_power_controls">Blocu de volume e limitatzione de velotzidade</string>
+    <string name="upgrade_benefit_support">Sostieni su svilupu indipendente</string>
     <string name="description_intro_tap_the_button">Cumintzat aggiungèndende su primu dispositivu tuo.</string>
     <string name="description_bluetooth_is_disabled">Su Bluetooth est disabilitàdu.</string>
     <string name="title_bluetooth_is_off">Su Bluetooth est isgèliu</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volume (0–100)</string>
     <string name="devices_volume_input_error">Inseri unu valore intre %1$d e %2$d</string>
+    <string name="devices_volume_input_caption">Su volume efettivu podet arrotundare a su passu prus prochimanu chi su dispositivu tue sotennet.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Blocca</string>
     <string name="devices_unlock_sliders_action">Sblocca</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Mustra su stadu de su blocu de volume pro su dispositivu Bluetooth ativu</string>
+    <string name="widget_no_device_label">Perunu dispositivu connetu</string>
+    <string name="widget_bluetooth_off_label">Su Bluetooth est ispintu</string>
+    <string name="widget_error_label">Errore de widget</string>
+    <string name="widget_preview_device_label">Is Cuffias Mias</string>
+    <string name="widget_config_title">Impostatziones de widget</string>
+    <string name="widget_config_preview_label">Anteprima</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Colore de sa fundal</string>
+    <string name="widget_config_fg_color_label">Colore de su testu</string>
+    <string name="widget_config_bg_alpha_label">Opatzidade de sa fundal</string>
+    <string name="widget_config_show_label_toggle">Mustra su nùmene de su dispositivu</string>
+    <string name="widget_config_show_label_description">Mustra su dispositivu connetu acanta a su stadu de su blocu.</string>
+    <string name="widget_config_theme_green_label">Birde</string>
+    <string name="widget_config_theme_red_label">Ruggiu</string>
+    <string name="widget_config_theme_custom_label">Personalizadu</string>
 </resources>

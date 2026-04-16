@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">جب یہ ڈیوائس منسلک ہو فعال رہیں اور والیوم تبدیلیاں محفوظ کریں جو اس ایپ نے نہیں کیں۔</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ڈسکنیکٹ پر والیوم محفوظ کریں</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">جب یہ ڈیوائس ڈسکنیکٹ ہو تو موجودہ والیوم لیولز کیپچر کریں اور محفوظ کریں۔</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">کچھ آلات پر، سسٹم آڈیو روٹنگ کو اس سے پہلے بدل دیتا ہے جب ہم والیوم پڑھ سکیں۔ اگر محفوظ کی گئی قدریں آپ کی مقررہ قدروں سے میل نہیں کھاتیں، تو اس کے بجائے \"والیوم میں تبدیلیاں مشاہدہ کریں\" کو فعال کرنے کی کوشش کریں۔</string>
     <string name="devices_device_config_volume_lock_label">والیوم لاک</string>
     <string name="devices_device_config_volume_lock_desc">جب یہ ڈیوائس منسلک ہو تو اس ایپ کے علاوہ کئی گئی کوئی بھی والیوم تبدیلی واپس کر دی جائے گی۔</string>
+    <string name="devices_device_config_volume_lock_override_desc">والیوم لاک فی الحال اس فیچر کو اوور رائڈ کر رہا ہے۔</string>
     <string name="devices_device_config_volume_rate_limiter_label">والیوم ریٹ لیمیٹر</string>
     <string name="devices_device_config_volume_rate_limiter_desc">تیز یا زیادہ والیوم ایڈجسٹمنٹ سے بچنے کے لیے والیوم تبدیلیوں کی فریکوئنسی محدود کریں۔</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">والیوم اضافہ تاخیر</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">پرائیویسی پالیسی</string>
     <string name="settings_privacy_policy_desc">ڈیٹا کو ذمہ داری سے سنبھالنا۔</string>
     <string name="changelog_label">تبدیلیوں کی فہرست</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">بیک اپ اور ریسٹور</string>
+    <string name="backup_restore_settings_desc">اپنے ڈیوائس کنفیگریشنز اور سیٹنگز کا بیک اپ لیں اور بحال کریں۔</string>
+    <string name="backup_restore_screen_title">بیک اپ اور ریسٹور</string>
+    <string name="backup_restore_backup_desc">اپنے تمام ڈیوائس کنفیگریشنز اور ایپ سیٹنگز کا بیک اپ بنائیں۔</string>
+    <string name="backup_restore_backup_action">بیک اپ بنائیں</string>
+    <string name="backup_restore_restore_desc">بیک اپ فائل سے ڈیوائس کنفیگریشنز اور ایپ سیٹنگز بحال کریں۔</string>
+    <string name="backup_restore_restore_action">بیک اپ فائل منتخب کریں</string>
+    <string name="backup_restore_skip_existing_label">موجودہ ڈیوائسز کو چھوڑ دیں</string>
+    <string name="backup_restore_skip_existing_desc">پہلے سے کنفیگر ڈیوائسز کو اوور رائٹ نہ کریں۔</string>
+    <string name="backup_restore_preview_label">بیک اپ پریویو</string>
+    <string name="backup_restore_preview_devices">%1$d ڈیوائسز</string>
+    <string name="backup_restore_preview_overlap">%1$d میں سے %2$d ڈیوائسز پہلے سے کنفیگر ہیں</string>
+    <string name="backup_restore_confirm_action">ابھی بحال کریں</string>
+    <string name="backup_restore_success_backup">بیک اپ بنایا گیا — %1$d ڈیوائسز محفوظ کیے گیے۔</string>
+    <string name="backup_restore_success_restore">بحالی مکمل — %1$d ڈیوائسز بحال کیے گیے، %2$d چھوڑ دیے گیے۔</string>
+    <string name="backup_restore_version_warning">یہ بیک اپ ورژن %1$s سے بنایا گیا تھا۔ آپ %2$s چلا رہے ہیں۔ کچھ سیٹنگز صحیح طریقے سے بحال نہیں ہو سکتیں۔</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">ڈیبگ نوٹیفکیشنز</string>
     <string name="debug_log_consent_title">ڈیبگ لاگ</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">والیومز ایڈجسٹ ہو رہی ہیں</string>
     <string name="label_premium_version">پریمیم ورژن</string>
     <string name="general_upgrade_action">اپ گریڈ کریں</string>
+    <string name="common_upgrade_required_label">اپگریڈ ضروری ہے</string>
     <string name="description_premium_required_additional_devices">اضافی ڈیوائسیز کی نگرانی کے لیے پریمیم ورژن کی ضرورت ہے۔</string>
     <string name="description_premium_required_this_extra_option">یہ اضافی آپشن ایپ کے پریمیم ورژن کی ضرورت ہے۔</string>
     <string name="description_premium_upgrade_explanation">اضافی خصوصیات فعال کرنے اور ترقی کی حمایت کے لیے پریمیم ورژن حاصل کریں۔</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">اپ گریڈ کریں</string>
     <string name="description_intro_purpose">یہ ایپ آپ کے اینڈرائیڈ ڈیوائس کو مختلف بلوٹوتھ ڈیوائسز کا والیوم یاد رکھنے دیتی ہے۔</string>
     <string name="description_intro_premium">اگر آپ یہ ایپ پسند کرتے ہیں، صدقہ پریمیم ورژن میں اپ گریڈ کریں۔ یہ ترقی کی حمایت کرتا ہے اور آپ کو چند اضافی خصوصیات ملتی ہیں۔</string>
+    <string name="upgrade_benefit_unlimited_devices">لامحدود ڈیوائس پروفائلز</string>
+    <string name="upgrade_benefit_connection_actions">آٹوپلے، ایپ لانچ اور کنکشن الرٹس</string>
+    <string name="upgrade_benefit_theme_customization">تھیم، اسٹائل اور رنگ کی حسب ضرورت تبدیلی</string>
+    <string name="upgrade_benefit_power_controls">والیوم لاک اور ریٹ لمیٹنگ</string>
+    <string name="upgrade_benefit_support">آزاد ترقی کو سپورٹ کریں</string>
     <string name="description_intro_tap_the_button">اپنی پہلی ڈیوائس شامل کرکے شروع کریں۔</string>
     <string name="description_bluetooth_is_disabled">بلوٹوتھ غیر فعال ہے.</string>
     <string name="title_bluetooth_is_off">بلوٹوتھ بند ہے</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">والیوم (0–100)</string>
     <string name="devices_volume_input_error">%1$d اور %2$d کے درمیان قدر درج کریں</string>
+    <string name="devices_volume_input_caption">اصل والیوم آپ کے ڈیوائس کے قریب ترین اسٹیپ پر گول ہو سکتا ہے۔</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">لاک</string>
     <string name="devices_unlock_sliders_action">انلاک</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">فعال بلوٹوتھ ڈیوائس کے لیے والیوم لاک اسٹیٹس دکھاتا ہے</string>
+    <string name="widget_no_device_label">کوئی ڈیوائس منسلک نہیں</string>
+    <string name="widget_bluetooth_off_label">بلوٹوتھ بند ہے</string>
+    <string name="widget_error_label">ویجٹ ایرر</string>
+    <string name="widget_preview_device_label">میرے ہیڈفونز</string>
+    <string name="widget_config_title">ویجٹ سیٹنگز</string>
+    <string name="widget_config_preview_label">پریویو</string>
+    <string name="widget_config_theme_label">تھیم</string>
+    <string name="widget_config_bg_color_label">بیک گراؤنڈ رنگ</string>
+    <string name="widget_config_fg_color_label">ٹیکسٹ رنگ</string>
+    <string name="widget_config_bg_alpha_label">بیک گراؤنڈ شفافیت</string>
+    <string name="widget_config_show_label_toggle">ڈیوائس کا نام دکھائیں</string>
+    <string name="widget_config_show_label_description">لاک اسٹیٹس کے اوپر منسلک ڈیوائس دکھائیں۔</string>
+    <string name="widget_config_theme_green_label">سبز</string>
+    <string name="widget_config_theme_red_label">سرخ</string>
+    <string name="widget_config_theme_custom_label">کسٹم</string>
 </resources>

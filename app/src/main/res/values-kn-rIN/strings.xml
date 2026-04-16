@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">ಈ ಸಾಧನ ಜೋಡಿಗೊಂಡಿರುವಾಗ ಸಕ್ರಿಯವಾಗಿರಿ ಮತ್ತು ಈ ಅಪ್ಲಿಕೇಶನ್ ಮಾಡ್ಯದ ವಾಲ್ಯೂಮ್ ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿಕೊಳ್ಳಿ.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ಸಂಪರ್ಕ ಕೆಳೆದಾಗ ವಾಲ್ಯೂಮ್ ಉಳಿಸಿ</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">ಈ ಸಾಧನ ಸಂಪರ್ಕ ಕೆಳೆದಾಗ ప್ರಸ್ತುತ ವಾಲ್ಯೂಮ್ ಮಟ್ಟಗಳನ್ನು ಹಿಡಿದು ಉಳಿಸಿ.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">ಕೆಲವು ಸಾಧನಗಳಲ್ಲಿ, ನಾವು ವಾಲ್ಯೂಮ್‌ಗಳನ್ನು ಓದುವ ಮೊದಲು ಸಿಸ್ಟಮ್ ಆಡಿಯೋ ರೂಟಿಂಗ್ ಅನ್ನು ಬದಲಾಯಿಸುತ್ತದೆ. ಉಳಿಸಿದ ಮೌಲ್ಯಗಳು ನೀವು ಹೊಂದಿಸಿದ್ದಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗದಿದ್ದರೆ, ಬದಲಿಗೆ \"ವಾಲ್ಯೂಮ್ ಬದಲಾವಣೆಗಳನ್ನು ಗಮನಿಸಿ\" ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ಪ್ರಯತ್ನಿಸಿ.</string>
     <string name="devices_device_config_volume_lock_label">ವಾಲ್ಯೂಮ್ ಲಾಕ್</string>
     <string name="devices_device_config_volume_lock_desc">ಈ ಸಾಧನ ಜೋಡಿಗೊಂಡಿರುವಾಗ ಈ ಅಪ್ಲಿಕೇಶನ್ ಮೂಲಕ ಮಾಡೞಯದ ಯಾವುದೇ ವಾಲ್ಯೂಮ್ ಬದಲಾವಣೆಗಳನ್ನು ವೆನಕ್ಕೆ ತಿರುಗಿಸಲಾಗುತ್ತದೆ.</string>
+    <string name="devices_device_config_volume_lock_override_desc">ವಾಲ್ಯೂಮ್ ಲಾಕ್ ಪ್ರಸ್ತುತ ಈ ವೈಶಿಷ್ಟ್ಯವನ್ನು ಅತಿಕ್ರಮಿಸುತ್ತಿದೆ.</string>
     <string name="devices_device_config_volume_rate_limiter_label">ವಾಲ್ಯೂಮ್ ದರ ನಿಯಂತ್ರಕ</string>
     <string name="devices_device_config_volume_rate_limiter_desc">ತ್ವರಿತ ಅಥವಾ ಅತಿರಿಕ್ತ ವಾಲ್ಯೂಮ್ ಸರಿಹೊಂದಿಕೆಗಳನ್ನು ತಡೆಗಟ್ಟಲು ವಾಲ್ಯೂಮ್ ಬದಲಾವಣೆಗಳ ಆವೃತ್ತಿಯನ್ನು ಸಿಮಿತಗೊಳಿಸಿ.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ವಾಲ್ಯೂಮ್ ಹೆಚ್ಚಳಿಕೆ ವಿಳಂಬ</string>
@@ -101,8 +103,8 @@
     <string name="dnd_mode_priority_only">ಪ್ರಾಧಾನ್ಯತೆ ಮಾತ್ರ</string>
     <string name="dnd_mode_alarms_only">ಅಲಾರ್ಮ್ಗಳು ಮಾತ್ರ</string>
     <string name="dnd_mode_total_silence">ಪೂರ್ಣ ಮೂಕ</string>
-    <string name="devices_device_config_connection_alert_label">ಸಂಪರ್ಕ เಎಚ್ಚರಿಕೆ</string>
-    <string name="connection_alert_dialog_title">ಸಂಪರ್ಕ เಎಚ್ಚರಿಕೆ</string>
+    <string name="devices_device_config_connection_alert_label">ಸಂಪರ್ಕ ಎಚ್ಚರಿಕೆ</string>
+    <string name="connection_alert_dialog_title">ಸಂಪರ್ಕ ಎಚ್ಚರಿಕೆ</string>
     <string name="connection_alert_type_none">ಯಾವುದೂ ಇಲ್ಲ</string>
     <string name="connection_alert_type_sound">ಶಬ್ದ ಮಾತ್ರ</string>
     <string name="connection_alert_type_vibration">ವೈಬ್ರೇಶನ್ ಮಾತ್ರ</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">ಗೌಪ್ಯತೆ ನೀತಿ</string>
     <string name="settings_privacy_policy_desc">ಡೇಟಾವನ್ನು ಜವಾಬ್ದಾರಿಯುತವಾಗಿ ನಿರ್ವಹಿಸುವುದು.</string>
     <string name="changelog_label">ಬದಲಾವಣೆ ಲಾಗ್</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">ಬ್ಯಾಕಪ್ ಮತ್ತು ಮರುಸ್ಥಾಪನೆ</string>
+    <string name="backup_restore_settings_desc">ನಿಮ್ಮ ಸಾಧನ ಸಂರಚನೆಗಳು ಮತ್ತು ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಬ್ಯಾಕಪ್ ಮಾಡಿ ಮತ್ತು ಮರುಸ್ಥಾಪಿಸಿ.</string>
+    <string name="backup_restore_screen_title">ಬ್ಯಾಕಪ್ ಮತ್ತು ಮರುಸ್ಥಾಪನೆ</string>
+    <string name="backup_restore_backup_desc">ನಿಮ್ಮ ಎಲ್ಲಾ ಸಾಧನ ಸಂರಚನೆಗಳು ಮತ್ತು ಅಪ್ಲಿಕೇಶನ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳ ಬ್ಯಾಕಪ್ ರಚಿಸಿ.</string>
+    <string name="backup_restore_backup_action">ಬ್ಯಾಕಪ್ ರಚಿಸಿ</string>
+    <string name="backup_restore_restore_desc">ಬ್ಯಾಕಪ್ ಫೈಲ್‌ನಿಂದ ಸಾಧನ ಸಂರಚನೆಗಳು ಮತ್ತು ಅಪ್ಲಿಕೇಶನ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಿ.</string>
+    <string name="backup_restore_restore_action">ಬ್ಯಾಕಪ್ ಫೈಲ್ ಆಯ್ಕೆ ಮಾಡಿ</string>
+    <string name="backup_restore_skip_existing_label">ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಸಾಧನಗಳನ್ನು ಬಿಟ್ಟುಬಿಡಿ</string>
+    <string name="backup_restore_skip_existing_desc">ಈಗಾಗಲೇ ಕಾನ್ಫಿಗರ್ ಮಾಡಲಾದ ಸಾಧನಗಳನ್ನು ತಿದ್ದಿ ಬರೆಯಬೇಡಿ.</string>
+    <string name="backup_restore_preview_label">ಬ್ಯಾಕಪ್ ಪೂರ್ವವೀಕ್ಷಣೆ</string>
+    <string name="backup_restore_preview_devices">%1$d ಸಾಧನಗಳು</string>
+    <string name="backup_restore_preview_overlap">%2$d ಸಾಧನಗಳಲ್ಲಿ %1$d ಈಗಾಗಲೇ ಕಾನ್ಫಿಗರ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="backup_restore_confirm_action">ಈಗ ಮರುಸ್ಥಾಪಿಸಿ</string>
+    <string name="backup_restore_success_backup">ಬ್ಯಾಕಪ್ ರಚಿಸಲಾಗಿದೆ — %1$d ಸಾಧನಗಳು ಉಳಿಸಲಾಗಿದೆ.</string>
+    <string name="backup_restore_success_restore">ಮರುಸ್ಥಾಪನೆ ಪೂರ್ಣಗೊಂಡಿದೆ — %1$d ಸಾಧನಗಳು ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ, %2$d ಬಿಟ್ಟುಬಿಡಲಾಗಿದೆ.</string>
+    <string name="backup_restore_version_warning">ಈ ಬ್ಯಾಕಪ್ ಆವೃತ್ತಿ %1$s ನೊಂದಿಗೆ ರಚಿಸಲಾಗಿದೆ. ನೀವು %2$s ಚಾಲಿಸುತ್ತಿದ್ದೀರಿ. ಕೆಲವು ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಸರಿಯಾಗಿ ಮರುಸ್ಥಾಪನೆ ಆಗದಿರಬಹುದು.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">ಡೀಬಗ್ ಅಧಿಸೂಚನೆಗಳು</string>
     <string name="debug_log_consent_title">ಡೀಬಗ್ ಲಾಗ್</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">ವಾಲ್ಯೂಮ್ ಸರಿಹೊಂದಿಸಲಾಗುತ್ತಿದೆ</string>
     <string name="label_premium_version">ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ</string>
     <string name="general_upgrade_action">ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ</string>
+    <string name="common_upgrade_required_label">ಅಪ್‌ಗ್ರೇಡ್ ಅಗತ್ಯವಿದೆ</string>
     <string name="description_premium_required_additional_devices">ಹೆಚ್ಚಿನ ಸಾಧನಗಳನ್ನು ನಿರ್ವಹಿಸಲು ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ ಅಗತ್ಯ.</string>
     <string name="description_premium_required_this_extra_option">ಈ ಹೆಚ್ಚಿನ ಆಯ್ಕೆಗೆ ಈ ಅಪ್ಲಿಕೇಶನ್ನ ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ ಅಗತ್ಯ.</string>
     <string name="description_premium_upgrade_explanation">ಹೆಚ್ಚಿನ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಸಕ್ರಿಯಮಾಡಲು ಮತ್ತು ಅಭಿವೃದ್ಧಿ ಬೆಂಬಲಿಸಲು ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ ಪಡೆಯಿ.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ</string>
     <string name="description_intro_purpose">ಈ ಅಪ್ಲಿಕೇಶನ್ ನಿಮ್ಮ Android ಸಾಧನಕ್ಕೆ ವಿವಿಧ Bluetooth ಸಾಧನಗಳ ವಾಲ್ಯೂಮ್ ನೆನಪಿಟ್ಟುಕೊಳ್ಳಲು ಅನುಮತಿಸುತ್ತದೆ.</string>
     <string name="description_intro_premium">ಈ ಅಪ್ ನಿಮ್ಮಗೆ ಇಷ್ಟವಾದರೆ, ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿಗೆ ದೋಫ್ಗೊಳಿಸುವನ್ನು ಪರಿಗಣಿಸಿ. ಇದು ಅಭಿವೃದ್ಧಿಯನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ ಮತ್ತು ಕೆಲವು ಹೆಚ್ಚಿನ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ತರುತ್ತದೆ.</string>
+    <string name="upgrade_benefit_unlimited_devices">ಅಪರಿಮಿತ ಸಾಧನ ಪ್ರೊಫೈಲ್‌ಗಳು</string>
+    <string name="upgrade_benefit_connection_actions">ಸ್ವಯಂಪ್ಲೇ, ಅಪ್ಲಿಕೇಶನ್ ಲಾಂಚ್ ಮತ್ತು ಸಂಪರ್ಕ ಎಚ್ಚರಿಕೆಗಳು</string>
+    <string name="upgrade_benefit_theme_customization">ಥೀಮ್, ಶೈಲಿ ಮತ್ತು ಬಣ್ಣ ಕಸ್ಟಮೈಸೇಶನ್</string>
+    <string name="upgrade_benefit_power_controls">ವಾಲ್ಯೂಮ್ ಲಾಕ್ ಮತ್ತು ದರ ಮಿತಿ</string>
+    <string name="upgrade_benefit_support">ಸ್ವತಂತ್ರ ಅಭಿವೃದ್ಧಿಯನ್ನು ಬೆಂಬಲಿಸಿ</string>
     <string name="description_intro_tap_the_button">ನಿಮ್ಮ ಮೊದಲ ಸಾಧನ ಸೇರಿಸುವೊದರಿಂದ ಪ್ರಾರಂಭಿಸಿ.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ.</string>
     <string name="title_bluetooth_is_off">Bluetooth ಆಫ್ ಆಗಿದೆ</string>
@@ -383,7 +408,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">ವಾಲ್ಯೂಮ್ (0–100)</string>
     <string name="devices_volume_input_error">%1$d ಮತ್ತು %2$d ನಡುವೆ ಮಔಲ್ಯ ನಮೂದಿಸಿ</string>
+    <string name="devices_volume_input_caption">ನಿಮ್ಮ ಸಾಧನ ಬೆಂಬಲಿಸುವ ಹತ್ತಿರದ ಹಂತಕ್ಕೆ ನಿಜವಾದ ವಾಲ್ಯೂಮ್ ದುಂಡಾಗಬಹುದು.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">ಲಾಕ್</string>
     <string name="devices_unlock_sliders_action">ಅನ್ಲಾಕ್</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">ಸಕ್ರಿಯ ಬ್ಲೂಟೂತ್ ಸಾಧನದ ವಾಲ್ಯೂಮ್ ಲಾಕ್ ಸ್ಥಿತಿಯನ್ನು ತೋರಿಸುತ್ತದೆ</string>
+    <string name="widget_no_device_label">ಯಾವುದೇ ಸಾಧನ ಸಂಪರ್ಕಗೊಂಡಿಲ್ಲ</string>
+    <string name="widget_bluetooth_off_label">ಬ್ಲೂಟೂತ್ ಆಫ್ ಆಗಿದೆ</string>
+    <string name="widget_error_label">ವಿಜೆಟ್ ದೋಷ</string>
+    <string name="widget_preview_device_label">ನನ್ನ ಹೆಡ್‌ಫೋನ್‌ಗಳು</string>
+    <string name="widget_config_title">ವಿಜೆಟ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+    <string name="widget_config_preview_label">ಪೂರ್ವವೀಕ್ಷಣೆ</string>
+    <string name="widget_config_theme_label">ಥೀಮ್</string>
+    <string name="widget_config_bg_color_label">ಹಿನ್ನೆಲೆ ಬಣ್ಣ</string>
+    <string name="widget_config_fg_color_label">ಪಟ್ಯ ಬಣ್ಣ</string>
+    <string name="widget_config_bg_alpha_label">ಹಿನ್ನೆಲೆ ಪಾರದರ್ಶಕತೆ</string>
+    <string name="widget_config_show_label_toggle">ಸಾಧನದ ಹೆಸರು ತೋರಿಸಿ</string>
+    <string name="widget_config_show_label_description">ಲಾಕ್ ಸ್ಥಿತಿಯ ಮೇಲೆ ಸಂಪರ್ಕಿತ ಸಾಧನ ತೋರಿಸಿ.</string>
+    <string name="widget_config_theme_green_label">ಹಸಿರು</string>
+    <string name="widget_config_theme_red_label">ಕೆಂಪು</string>
+    <string name="widget_config_theme_custom_label">ಕಸ್ಟಮ್</string>
 </resources>

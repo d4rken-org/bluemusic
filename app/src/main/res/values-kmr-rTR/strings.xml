@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Aktif bimîne dema ev cîhaz bi hestek be û guherînên dengê ku ne ji vê bernameê ne hatine parastin bike.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Dema veqetandê dengê tomar bike</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Astên dengê niha bigire û tomar bike dema ev cîhaz veçê dibe.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Li ser hin amûran, pergal rêhevaliya dengê berî ku em karibin qebareyan bixwînin diguheze. Eger nirxên tomarkirî bi yên ku we danîbûn re nekin yek, li şûna wan hewl bidin ku \"Guhertinên qebareyan bişopîne\" çalak bikin.</string>
     <string name="devices_device_config_volume_lock_label">Kilîda dengê</string>
     <string name="devices_device_config_volume_lock_desc">Her guherîna dengê ku ne ji vê bernameê hatibe kirin dema ev cîhaz bi hestek be were vegerandin.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Kilîda dengbêjiyê niha vê taybetmendiyê derbas dike.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Sînorkerê leza dengê</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Frekansa guherînên dengê sînor bike ji bo pêşgîrîna ji guherînên dengê zûr an zêde.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Derengiya bilindkirina dengê</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Polîtîkaya nepenîtiyê</string>
     <string name="settings_privacy_policy_desc">Bi berpirsiyarî daneyan bi rêve bibin.</string>
     <string name="changelog_label">Tomara guhertinan</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Backup &amp; Vegerandin</string>
+    <string name="backup_restore_settings_desc">Veavakirinên cîhazê û mîhengên xwe bişkîne û vegerîne.</string>
+    <string name="backup_restore_screen_title">Backup &amp; Vegerandin</string>
+    <string name="backup_restore_backup_desc">Ji hemû veavakirinên cîhazê û mîhengên sepanê backup biafirîne.</string>
+    <string name="backup_restore_backup_action">Backup biafirîne</string>
+    <string name="backup_restore_restore_desc">Veavakirinên cîhazê û mîhengên sepanê ji pelê backup vegerîne.</string>
+    <string name="backup_restore_restore_action">Pelê backup hilbijêre</string>
+    <string name="backup_restore_skip_existing_label">Cîhazên heyî derbas bike</string>
+    <string name="backup_restore_skip_existing_desc">Cîhazên ku jixwe hatine mîhengkirin nûve neke.</string>
+    <string name="backup_restore_preview_label">Pêşdîtina backupê</string>
+    <string name="backup_restore_preview_devices">%1$d cîhaz</string>
+    <string name="backup_restore_preview_overlap">%1$d ji %2$d cîhazan jixwe hatine mîhengkirin</string>
+    <string name="backup_restore_confirm_action">Niha vegerîne</string>
+    <string name="backup_restore_success_backup">Backup hat çêkirin — %1$d cîhaz hatin tomarkirin.</string>
+    <string name="backup_restore_success_restore">Vegerandin qediya — %1$d cîhaz hat vegerandin, %2$d hat derbaskirin.</string>
+    <string name="backup_restore_version_warning">Ev backup bi guhertoya %1$s hat çêkirin. Tu %2$s xebitandî. Hin mîheng dibe ku rast neyên vegerandin.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Agahdariyên çareserkirinê</string>
     <string name="debug_log_consent_title">Tomara çareserkirinê</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Dengê tê rastkar kirin</string>
     <string name="label_premium_version">Guhertoya premium</string>
     <string name="general_upgrade_action">Nûjen bike</string>
+    <string name="common_upgrade_required_label">Bilindkirina pêdivî ye</string>
     <string name="description_premium_required_additional_devices">Birêvebirin cîhazên zedê guhertoya premium hewce dike.</string>
     <string name="description_premium_required_this_extra_option">Ev vebijark guhertoya premium hewce dike.</string>
     <string name="description_premium_upgrade_explanation">Guhertoya premium bistinin da taybetmendên zedê aktif bikin.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Nûjen bike</string>
     <string name="description_intro_purpose">Ev bername dihêle cîhaza Android-a we astên dengê cîhazên Bluetooth ji bîr bike.</string>
     <string name="description_intro_premium">Heger hûn vê bernameê hez bikin, pêşniyar dikin guhertoya premium bistinin. Ew perkifkirinê piştgirî dike û taybetmendên zedê bide we.</string>
+    <string name="upgrade_benefit_unlimited_devices">Profîlên cîhazê yên bêsînor</string>
+    <string name="upgrade_benefit_connection_actions">Otomatîkî lêdan, vekirin a sepanê û hişyariyên girêdanê</string>
+    <string name="upgrade_benefit_theme_customization">Xweşkirina tema, stil û rengî</string>
+    <string name="upgrade_benefit_power_controls">Kilîda dengbêjiyê û sînorkirina rêjeyê</string>
+    <string name="upgrade_benefit_support">Piştgirî ji pêşvebrina serbixwe re bike</string>
     <string name="description_intro_tap_the_button">Bi zêdekirina cîhaza xwe ya yekemî dest pê bikin.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth neçalak e.</string>
     <string name="title_bluetooth_is_off">Bluetooth neaktîf e</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Dengbêj (0–100)</string>
     <string name="devices_volume_input_error">Nirxek di navbera %1$d û %2$d de binivîse</string>
+    <string name="devices_volume_input_caption">Dengbêjiya rastîn dibe ku li gava herî nezîk a ku cîhazê te piştgirî dike were gêrandin.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Kilît</string>
     <string name="devices_unlock_sliders_action">Kilîtê veke</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Rewşa kilîda dengbêjiyê ji bo cîhaza Bluetooth ya çalak nîşan dide</string>
+    <string name="widget_no_device_label">Cîhaz girêdayî nîne</string>
+    <string name="widget_bluetooth_off_label">Bluetooth vekirî nîne</string>
+    <string name="widget_error_label">Xeletiya widget</string>
+    <string name="widget_preview_device_label">Kulîkên min</string>
+    <string name="widget_config_title">Mîhengên widget</string>
+    <string name="widget_config_preview_label">Pêşdîtin</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Rengê paşxanê</string>
+    <string name="widget_config_fg_color_label">Rengê nivîsê</string>
+    <string name="widget_config_bg_alpha_label">Şeffafiya paşxanê</string>
+    <string name="widget_config_show_label_toggle">Navê cîhazê nîşan bide</string>
+    <string name="widget_config_show_label_description">Cîhaza girêdayî li jor rewşa kilîdê nîşan bide.</string>
+    <string name="widget_config_theme_green_label">Kesk</string>
+    <string name="widget_config_theme_red_label">Sor</string>
+    <string name="widget_config_theme_custom_label">Taybet</string>
 </resources>

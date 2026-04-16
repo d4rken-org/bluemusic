@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM Pro</string>
     <string name="app_name_upgrade_postfix">احترافي</string>
+    <string name="upgrade_badge_label">PRO</string>
     <string name="upgrade_feature_requires_pro">يتطلب BVM Pro</string>
     <string name="upgrade_prompt_title">الترقية إلى BVM Pro</string>
     <string name="upgrade_prompt_body">BVM Pro يمنحك نتائج أفضل، ومزيداً من المميزات والخيارات للمستخدمين المحترفين.</string>

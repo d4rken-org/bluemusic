@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Roman actiu mentre aquest dispositiu estigui connectat i desa els canvis de volum que no hagin estat causats per aquesta aplicació.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Desa el volum en desconnectar</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Captura i desa els nivells de volum actuals quan es desconnecta aquest dispositiu.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">En alguns dispositius, el sistema canvia l\'enrutament d\'àudio abans que puguem llegir els volums. Si els valors desats no coincideixen amb els que havíeu configurat, proveu d\'activar \"Observa els canvis de volum\".</string>
     <string name="devices_device_config_volume_lock_label">Bloqueig de volum</string>
     <string name="devices_device_config_volume_lock_desc">Qualsevol canvi de volum que no s\'hagi fet a través d\'aquesta aplicació es revertirà mentre aquest dispositiu estigui connectat.</string>
+    <string name="devices_device_config_volume_lock_override_desc">El bloqueig de volum substitueix actualment aquesta funció.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitador de taxa de volum</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limita la freqüència dels canvis de volum per evitar ajustaments ràpids o excessius.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Retard d\'augment de volum</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Política de privadesa</string>
     <string name="settings_privacy_policy_desc">Gestió responsable de dades.</string>
     <string name="changelog_label">Registre de canvis</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Còpia de seguretat i restauració</string>
+    <string name="backup_restore_settings_desc">Fes una còpia de seguretat i restaura les configuracions dels dispositius i els paràmetres.</string>
+    <string name="backup_restore_screen_title">Còpia de seguretat i restauració</string>
+    <string name="backup_restore_backup_desc">Crea una còpia de seguretat de totes les configuracions dels dispositius i els paràmetres de l\'aplicació.</string>
+    <string name="backup_restore_backup_action">Crea una còpia de seguretat</string>
+    <string name="backup_restore_restore_desc">Restaura les configuracions dels dispositius i els paràmetres de l\'aplicació des d\'un fitxer de còpia de seguretat.</string>
+    <string name="backup_restore_restore_action">Selecciona un fitxer de còpia de seguretat</string>
+    <string name="backup_restore_skip_existing_label">Omet els dispositius existents</string>
+    <string name="backup_restore_skip_existing_desc">No sobreescriguis els dispositius que ja estan configurats.</string>
+    <string name="backup_restore_preview_label">Vista prèvia de la còpia de seguretat</string>
+    <string name="backup_restore_preview_devices">%1$d dispositius</string>
+    <string name="backup_restore_preview_overlap">%1$d de %2$d dispositius ja configurats</string>
+    <string name="backup_restore_confirm_action">Restaura ara</string>
+    <string name="backup_restore_success_backup">Còpia de seguretat creada — %1$d dispositius desats.</string>
+    <string name="backup_restore_success_restore">Restauració completa — %1$d dispositius restaurats, %2$d omesos.</string>
+    <string name="backup_restore_version_warning">Aquesta còpia de seguretat es va crear amb la versió %1$s. Estàs executant %2$s. Alguns paràmetres potó no es restaurin correctament.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Notificacions de depuració</string>
     <string name="debug_log_consent_title">Registre de depuració</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Configura els volums</string>
     <string name="label_premium_version">Versió prèmium</string>
     <string name="general_upgrade_action">Millora</string>
+    <string name="common_upgrade_required_label">Cal actualitzar</string>
     <string name="description_premium_required_additional_devices">La gestió de dispositius addicionals requereix la versió prèmium.</string>
     <string name="description_premium_required_this_extra_option">Malauradament, aquesta opció addicional requereix la versió prèmium d\'aquesta aplicació.</string>
     <string name="description_premium_upgrade_explanation">Obteniu la versió prèmium per activar funcions addicionals i donar suport al desenvolupament.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Actualitza</string>
     <string name="description_intro_purpose">Aquesta aplicació permet als dispositius Android recordar el volum de diferents dispositius Bluetooth.</string>
     <string name="description_intro_premium">Si us agrada aquesta aplicació, tingueu en compte l\'actualització a la versió prèmium. Donareu suport al desenvolupament i obtindreu algunes funcions addicionals.</string>
+    <string name="upgrade_benefit_unlimited_devices">Perfils de dispositiu il·limitats</string>
+    <string name="upgrade_benefit_connection_actions">Reproducció automàtica, llançament d’aplicacions i alertes de connexió</string>
+    <string name="upgrade_benefit_theme_customization">Personalització de tema, estil i color</string>
+    <string name="upgrade_benefit_power_controls">Bloqueig de volum i limitació de velocitat</string>
+    <string name="upgrade_benefit_support">Dóna suport al desenvolupament independent</string>
     <string name="description_intro_tap_the_button">Comenceu afegint el primer dispositiu.</string>
     <string name="description_bluetooth_is_disabled">El Bluetooth està desactivat.</string>
     <string name="title_bluetooth_is_off">El Bluetooth està apagat</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volum (0–100)</string>
     <string name="devices_volume_input_error">Introdueix un valor entre %1$d i %2$d</string>
+    <string name="devices_volume_input_caption">El volum real pot arrodonir-se al graons més proper que admet el teu dispositiu.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Bloqueja</string>
     <string name="devices_unlock_sliders_action">Desbloqueja</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Mostra l’estat del bloqueig de volum per al dispositiu Bluetooth actiu</string>
+    <string name="widget_no_device_label">Cap dispositiu connectat</string>
+    <string name="widget_bluetooth_off_label">El Bluetooth està desactivat</string>
+    <string name="widget_error_label">Error del giny</string>
+    <string name="widget_preview_device_label">Els meus auriculars</string>
+    <string name="widget_config_title">Configuració del giny</string>
+    <string name="widget_config_preview_label">Vista prèvia</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Color de fons</string>
+    <string name="widget_config_fg_color_label">Color del text</string>
+    <string name="widget_config_bg_alpha_label">Opacitat del fons</string>
+    <string name="widget_config_show_label_toggle">Mostra el nom del dispositiu</string>
+    <string name="widget_config_show_label_description">Mostra el dispositiu connectat sobre l’estat del bloqueig.</string>
+    <string name="widget_config_theme_green_label">Verd</string>
+    <string name="widget_config_theme_red_label">Vermell</string>
+    <string name="widget_config_theme_custom_label">Personalitzat</string>
 </resources>

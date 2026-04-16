@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">ఈ పరికరం కనెక్ట్ అయి ఉన్నప్పుడు చురుగ్గా ఉండి, ఈ యాప్ వల్ల కాని వాల్యూమ్ మార్పులను సేవ్ చేయండి.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">డిస్‌కనెక్ట్ అయినప్పుడు వాల్యూమ్ సేవ్ చేయి</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">ఈ పరికరం డిస్‌కనెక్ట్ అయినప్పుడు ప్రస్తుత వాల్యూమ్ స్థాయిలను క్యాప్చర్ చేసి సేవ్ చేయండి.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">కొన్ని పరికరాలలో, మేము వాల్యూమ్‌లు చదవడానికి ముందే సిస్టమ్ ఆడియో రూటింగ్‌ను మారుస్తుంది. సేవ్ చేసిన విలువలు మీరు సెట్ చేసినవానితో సరిపోలకపోతే, బదులుగా \"వాల్యూమ్ మార్పులను గమనించు\" ని ప్రారంభించడానికి ప్రయత్నించండి.</string>
     <string name="devices_device_config_volume_lock_label">వాల్యూమ్ లాక్</string>
     <string name="devices_device_config_volume_lock_desc">ఈ పరికరం కనెక్ట్ అయి ఉన్నప్పుడు ఈ యాప్ ద్వారా చేయని ఏదైనా వాల్యూమ్ మార్పులు రద్దు చేయబడతాయి.</string>
+    <string name="devices_device_config_volume_lock_override_desc">వాల్యూమ్ లాక్ ప్రస్తుతం ఈ ఫీచర్‌ను ఓవర్‌రైడ్ చేస్తోంది.</string>
     <string name="devices_device_config_volume_rate_limiter_label">వాల్యూమ్ రేట్ లిమిటర్</string>
     <string name="devices_device_config_volume_rate_limiter_desc">వేగంగా లేదా అధికంగా వాల్యూమ్ సర్దుబాట్లు జరగకుండా నిరోధించడానికి వాల్యూమ్ మార్పుల పౌనఃపున్యాన్ని పరిమితం చేయండి.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">వాల్యూమ్ పెరుగుదల జాప్యం</string>
@@ -173,8 +175,8 @@
     <string name="settings_support_debuglog_short_recording_stop">ఏదైనా ఆపు</string>
     <string name="settings_support_debuglog_folder_label">డీబగ్ లాగ్ ఫోల్డర్</string>
     <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d సెషన్ %2$s ఉపయ౏గిస్తోంది</item>
-        <item quantity="other">%1$d సెషన్‌లు %2$s ఉపయ౏గిస్తున్నాయి</item>
+        <item quantity="one">%1$d సెషన్ %2$s ఉపయోగిస్తోంది</item>
+        <item quantity="other">%1$d సెషన్‌లు %2$s ఉపయోగిస్తున్నాయి</item>
     </plurals>
     <string name="settings_support_debuglog_folder_empty_desc">డీబగ్ లాగ్‌లు సేవ్ చేయబడలేదు</string>
     <string name="settings_support_debuglog_folder_delete_title">అన్ని డీబగ్ లాగ్‌లు తొలగించాలా?</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">గోప్యతా విధానం</string>
     <string name="settings_privacy_policy_desc">డేటాను బాధ్యతగా నిర్వహించడం.</string>
     <string name="changelog_label">మార్పుల లాగ్</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">బ్యాకప్ &amp; రీస్టోర్</string>
+    <string name="backup_restore_settings_desc">మీ పరికర కాన్ఫిగరేషన్‌లు మరియు సెట్టింగ్‌లను బ్యాకప్ చేయండి మరియు పునరుద్ధరించండి.</string>
+    <string name="backup_restore_screen_title">బ్యాకప్ &amp; రీస్టోర్</string>
+    <string name="backup_restore_backup_desc">మీ అన్ని పరికర కాన్ఫిగరేషన్‌లు మరియు యాప్ సెట్టింగ్‌ల బ్యాకప్ తయారు చేయండి.</string>
+    <string name="backup_restore_backup_action">బ్యాకప్ తయారు చేయండి</string>
+    <string name="backup_restore_restore_desc">బ్యాకప్ ఫైల్ నుండి పరికర కాన్ఫిగరేషన్‌లు మరియు యాప్ సెట్టింగ్‌లను పునరుద్ధరించండి.</string>
+    <string name="backup_restore_restore_action">బ్యాకప్ ఫైల్ ఎంచుకోండి</string>
+    <string name="backup_restore_skip_existing_label">ఇప్పటికే ఉన్న పరికరాలను దాటవేయండి</string>
+    <string name="backup_restore_skip_existing_desc">ఇప్పటికే కాన్ఫిగర్ చేయబడిన పరికరాలను ఓవర్‌రైట్ చేయకండి.</string>
+    <string name="backup_restore_preview_label">బ్యాకప్ ప్రివ్యూ</string>
+    <string name="backup_restore_preview_devices">%1$d పరికరాలు</string>
+    <string name="backup_restore_preview_overlap">%2$d లో %1$d పరికరాలు ఇప్పటికే కాన్ఫిగర్ చేయబడ్డాయి</string>
+    <string name="backup_restore_confirm_action">ఇప్పుడే పునరుద్ధరించండి</string>
+    <string name="backup_restore_success_backup">బ్యాకప్ తయారైంది — %1$d పరికరాలు సేవ్ చేయబడ్డాయి.</string>
+    <string name="backup_restore_success_restore">పునరుద్ధరణ పూర్తైంది — %1$d పరికరాలు పునరుద్ధరించబడ్డాయి, %2$d దాటవేయబడ్డాయి.</string>
+    <string name="backup_restore_version_warning">ఈ బ్యాకప్ వర్షన్ %1$s తో తయారు చేయబడింది. మీరు %2$s నడుపుతున్నారు. కొన్ని సెట్టింగ్‌లు సరిగా పునరుద్ధరించబడకపోవచ్చు.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">డీబగ్ నోటిఫికేషన్లు</string>
     <string name="debug_log_consent_title">డిబగ్ లాగ్</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">వాల్యూమ్‌లు సర్దుబాటు చేస్తోంది</string>
     <string name="label_premium_version">ప్రీమియం వెర్షన్</string>
     <string name="general_upgrade_action">అప్‌గ్రేడ్ చేయండి</string>
+    <string name="common_upgrade_required_label">అప్‌గ్రేడ్ అవసరం</string>
     <string name="description_premium_required_additional_devices">అదనపు పరికరాలను నిర్వహించడానికి ప్రీమియం వెర్షన్ అవసరం.</string>
     <string name="description_premium_required_this_extra_option">ఈ అదనపు ఎంపికకు ఈ యాప్ యొక్క ప్రీమియం వెర్షన్ అవసరం.</string>
     <string name="description_premium_upgrade_explanation">అదనపు ఫీచర్లను ఎనేబుల్ చేసి డెవలప్‌మెంట్‌కు మద్దతివ్వడానికి ప్రీమియం వెర్షన్ పొందండి.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">అప్‌గ్రేడ్ చేయండి</string>
     <string name="description_intro_purpose">ఈ యాప్ మీ Android పరికరం వేర్వేరు Bluetooth పరికరాల వాల్యూమ్‌ను గుర్తుంచుకోవడానికి అనుమతిస్తుంది.</string>
     <string name="description_intro_premium">మీకు ఈ యాప్ నచ్చినట్లయితే, ప్రీమియం వెర్షన్‌కు అప్‌గ్రేడ్ చేయడాన్ని పరిగణించండి. ఇది డెవలప్‌మెంట్‌కు మద్దతిస్తుంది మరియు కొన్ని అదనపు ఫీచర్లు అందిస్తుంది.</string>
+    <string name="upgrade_benefit_unlimited_devices">అపరిమిత పరికర ప్రొఫైల్‌లు</string>
+    <string name="upgrade_benefit_connection_actions">ఆటోప్లే, యాప్ లాంచ్ మరియు కనెక్షన్ అలర్ట్‌లు</string>
+    <string name="upgrade_benefit_theme_customization">థీమ్, స్టైల్ మరియు రంగు కస్టమైజేషన్</string>
+    <string name="upgrade_benefit_power_controls">వాల్యూమ్ లాక్ మరియు రేట్ లిమిటింగ్</string>
+    <string name="upgrade_benefit_support">స్వతంత్ర అభివృద్ధికి మద్దతు ఇవ్వండి</string>
     <string name="description_intro_tap_the_button">మీ మొదటి పరికరాన్ని జోడించడం ద్వారా ప్రారంభించండి.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth నిలిపివేయబడింది.</string>
     <string name="title_bluetooth_is_off">Bluetooth ఆఫ్‌లో ఉంది</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">వాల్యూమ్ (0–100)</string>
     <string name="devices_volume_input_error">%1$d మరియు %2$d మధ్య విలువ నమోదు చేయండి</string>
+    <string name="devices_volume_input_caption">వాస్తవ వాల్యూమ్ మీ పరికరం సపోర్ట్ చేసే దగ్గరి స్టెప్‌కు రౌండ్ అవుతుంది.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">లాక్</string>
     <string name="devices_unlock_sliders_action">అన్‌లాక్</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">యాక్టివ్ బ్లూటూత్ పరికరం వాల్యూమ్ లాక్ స్థితి చూపుతుంది</string>
+    <string name="widget_no_device_label">పరికరం కనెక్ట్ కాలేదు</string>
+    <string name="widget_bluetooth_off_label">బ్లూటూత్ ఆఫ్ చేయబడింది</string>
+    <string name="widget_error_label">విజెట్ లోపం</string>
+    <string name="widget_preview_device_label">నా హెడ్‌ఫోన్స్</string>
+    <string name="widget_config_title">విజెట్ సెట్టింగ్‌లు</string>
+    <string name="widget_config_preview_label">ప్రివ్యూ</string>
+    <string name="widget_config_theme_label">థీమ్</string>
+    <string name="widget_config_bg_color_label">నేపథ్య రంగు</string>
+    <string name="widget_config_fg_color_label">టెక్స్ట్ రంగు</string>
+    <string name="widget_config_bg_alpha_label">నేపథ్య పారదర్శకత</string>
+    <string name="widget_config_show_label_toggle">పరికర పేరు చూపించు</string>
+    <string name="widget_config_show_label_description">లాక్ స్థితి పైన కనెక్ట్ అయిన పరికరం చూపించు.</string>
+    <string name="widget_config_theme_green_label">ఆకుపచ్చ</string>
+    <string name="widget_config_theme_red_label">ఎరుపు</string>
+    <string name="widget_config_theme_custom_label">కస్టమ్</string>
 </resources>

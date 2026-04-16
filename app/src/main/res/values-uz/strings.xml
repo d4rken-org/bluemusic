@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Bu qurilma ulanganda faol bo\'lib turib, ushbu ilova tomonidan amalga oshirilmagan ovoz o\'zgarishlarini saqlash.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Uzilganda ovozni saqlash</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Bu qurilma uzilganda joriy ovoz darajalarini olish va saqlash.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Ba\'zi qurilmalarda tizim ovoz balandligini o\'qishdan oldin audio marshrutni almashtiradi. Agar saqlangan qiymatlar siz o\'rnatgan qiymatga mos kelmasa, uning o\'rniga \"Ovoz balandligi o\'zgarishlarini kuzatish\" opsiyasini yoqib ko\'ring.</string>
     <string name="devices_device_config_volume_lock_label">Ovoz qulfi</string>
     <string name="devices_device_config_volume_lock_desc">Bu qurilma ulanganda ushbu ilova orqali amalga oshirilmagan barcha ovoz o\'zgarishlari bekor qilinadi.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Ovoz qulfi hozirda bu funksiyani bekor qilmoqda.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ovoz tezligi cheklagichi</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Tez yoki haddan ziyod ovoz o\'zgarishlarining oldini olish uchun ovoz o\'zgarishlari chastotasini cheklash.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ovoz oshirish kechikishi</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Maxfiylik siyosati</string>
     <string name="settings_privacy_policy_desc">Ma\'lumotlar bilan mas\'uliyat bilan ishlash.</string>
     <string name="changelog_label">O\'zgarishlar jurnali</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Zaxira nusxa va Tiklash</string>
+    <string name="backup_restore_settings_desc">Qurilma konfiguratsiyalari va sozlamalaringizni zaxiralang va tiklang.</string>
+    <string name="backup_restore_screen_title">Zaxira nusxa va Tiklash</string>
+    <string name="backup_restore_backup_desc">Barcha qurilma konfiguratsiyalari va ilova sozlamalarining zaxira nusxasini yarating.</string>
+    <string name="backup_restore_backup_action">Zaxira nusxa yaratish</string>
+    <string name="backup_restore_restore_desc">Zaxira faylidan qurilma konfiguratsiyalari va ilova sozlamalarini tiklang.</string>
+    <string name="backup_restore_restore_action">Zaxira faylini tanlang</string>
+    <string name="backup_restore_skip_existing_label">Mavjud qurilmalarni o\'tkazib yuborish</string>
+    <string name="backup_restore_skip_existing_desc">Allaqachon sozlangan qurilmalarni qayta yozmang.</string>
+    <string name="backup_restore_preview_label">Zaxira ko\'rinishi</string>
+    <string name="backup_restore_preview_devices">%1$d ta qurilma</string>
+    <string name="backup_restore_preview_overlap">%2$d ta qurilmadan %1$d tasi allaqachon sozlangan</string>
+    <string name="backup_restore_confirm_action">Hozir tiklash</string>
+    <string name="backup_restore_success_backup">Zaxira yaratildi — %1$d ta qurilma saqlandi.</string>
+    <string name="backup_restore_success_restore">Tiklash tugadi — %1$d ta qurilma tiklandi, %2$d tasi o\'tkazib yuborildi.</string>
+    <string name="backup_restore_version_warning">Bu zaxira %1$s versiyasida yaratilgan. Siz %2$s versiyasini ishlatyapsiz. Ba\'zi sozlamalar to\'g\'ri tiklanmasligi mumkin.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Nosozliklarni tuzatish bildirishlari</string>
     <string name="debug_log_consent_title">Debug jurnal</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Ovozlarni sozlash</string>
     <string name="label_premium_version">Premium versiya</string>
     <string name="general_upgrade_action">Yangilash</string>
+    <string name="common_upgrade_required_label">Yangilash talab qilinadi</string>
     <string name="description_premium_required_additional_devices">Qo\'shimcha qurilmalarni boshqarish uchun premium versiya talab qilinadi.</string>
     <string name="description_premium_required_this_extra_option">Bu qo\'shimcha opsiya uchun ushbu ilovaning premium versiyasi talab qilinadi.</string>
     <string name="description_premium_upgrade_explanation">Qo\'shimcha funksiyalarni yoqish va rivojlanishni qo\'llab-quvvatlash uchun premium versiyani oling.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Yangilash</string>
     <string name="description_intro_purpose">Bu ilova Android qurilmangizga turli Bluetooth qurilmalar uchun ovoz darajasini eslab qolish imkonini beradi.</string>
     <string name="description_intro_premium">Agar bu ilovani yoqsangiz, premium versiyaga o\'tishni o\'ylang. Bu rivojlanishni qo\'llab-quvvatlaydi va bir nechta qo\'shimcha funksiyalarni beradi.</string>
+    <string name="upgrade_benefit_unlimited_devices">Cheklanmagan qurilma profillari</string>
+    <string name="upgrade_benefit_connection_actions">Avtomatik ijro, ilova ishga tushirish va ulanish ogohlantirishlari</string>
+    <string name="upgrade_benefit_theme_customization">Mavzu, uslub va rang sozlamalari</string>
+    <string name="upgrade_benefit_power_controls">Ovoz qulfi va tezlik cheklash</string>
+    <string name="upgrade_benefit_support">Mustaqil rivojlanishni qo\'llab-quvvatlash</string>
     <string name="description_intro_tap_the_button">Birinchi qurilmangizni qo\'shib boshlang.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth o\'chirilgan.</string>
     <string name="title_bluetooth_is_off">Bluetooth o\'chiq</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Ovoz (0–100)</string>
     <string name="devices_volume_input_error">%1$d va %2$d orasida qiymat kiriting</string>
+    <string name="devices_volume_input_caption">Haqiqiy ovoz darajasi qurilmangiz qo\'llab-quvvatlaydigan eng yaqin qadamga yaxlitlanishi mumkin.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Qulflash</string>
     <string name="devices_unlock_sliders_action">Qulfni ochish</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Faol Bluetooth qurilmasi uchun ovoz qulfi holatini ko\'rsatadi</string>
+    <string name="widget_no_device_label">Hech qanday qurilma ulanmagan</string>
+    <string name="widget_bluetooth_off_label">Bluetooth o\'chirilgan</string>
+    <string name="widget_error_label">Vidjet xatosi</string>
+    <string name="widget_preview_device_label">Mening quloqchinlarim</string>
+    <string name="widget_config_title">Vidjet sozlamalari</string>
+    <string name="widget_config_preview_label">Ko\'rinish</string>
+    <string name="widget_config_theme_label">Mavzu</string>
+    <string name="widget_config_bg_color_label">Fon rangi</string>
+    <string name="widget_config_fg_color_label">Matn rangi</string>
+    <string name="widget_config_bg_alpha_label">Fon shaffofligi</string>
+    <string name="widget_config_show_label_toggle">Qurilma nomini ko\'rsatish</string>
+    <string name="widget_config_show_label_description">Ulangan qurilmani qulf holati ustida ko\'rsatish.</string>
+    <string name="widget_config_theme_green_label">Yashil</string>
+    <string name="widget_config_theme_red_label">Qizil</string>
+    <string name="widget_config_theme_custom_label">Maxsus</string>
 </resources>

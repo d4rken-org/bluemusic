@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Остани активен докато устройството е свързано и запазвай промените в силата на звука, които не са причинени от това приложение.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Запази силата на звука при изключване</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Запазва текущите нива на звука при прекъсване на връзката с това устройство.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">При някои устройства системата превключва аудио маршрутизацията, преди да успеем да прочетем нивата на звука. Ако запазените стойности не съвпадат с това, което сте задали, опитайте да активирате „Наблюдаване на промените в звука“ вместо това.</string>
     <string name="devices_device_config_volume_lock_label">Заключване на звука</string>
     <string name="devices_device_config_volume_lock_desc">Всякакви промени в силата на звука, направени извън приложението, ще бъдат отменени докато устройството е свързано.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Заключването на силата на звука в момента замества тази функция.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ограничител на честотата на силата на звука</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ограничава честотата на промените в силата на звука, за да се предотврати бързо или прекомерно регулиране.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Забавяне на увеличението на силата на звука</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Политика за поверителност</string>
     <string name="settings_privacy_policy_desc">Отговорно боравене с данните.</string>
     <string name="changelog_label">Списък с промени</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Архивиране и възстановяване</string>
+    <string name="backup_restore_settings_desc">Архивирайте и възстановете конфигурациите и настройките на устройствата си.</string>
+    <string name="backup_restore_screen_title">Архивиране и възстановяване</string>
+    <string name="backup_restore_backup_desc">Създайте архив на всички конфигурации на устройства и настройки на приложението.</string>
+    <string name="backup_restore_backup_action">Създаване на архив</string>
+    <string name="backup_restore_restore_desc">Възстановете конфигурациите на устройства и настройките на приложението от архивен файл.</string>
+    <string name="backup_restore_restore_action">Избиране на архивен файл</string>
+    <string name="backup_restore_skip_existing_label">Пропускане на съществуващи устройства</string>
+    <string name="backup_restore_skip_existing_desc">Не презаписвайте устройства, които вече са конфигурирани.</string>
+    <string name="backup_restore_preview_label">Преглед на архива</string>
+    <string name="backup_restore_preview_devices">%1$d устройства</string>
+    <string name="backup_restore_preview_overlap">%1$d от %2$d устройства вече конфигурирани</string>
+    <string name="backup_restore_confirm_action">Възстанови сега</string>
+    <string name="backup_restore_success_backup">Архивът е създаден — %1$d устройства запазени.</string>
+    <string name="backup_restore_success_restore">Възстановяването е завършено — %1$d устройства възстановени, %2$d пропуснати.</string>
+    <string name="backup_restore_version_warning">Този архив е създаден с версия %1$s. Вие използвате %2$s. Някои настройки може да не се възстановят правилно.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Дебъг известия</string>
     <string name="debug_log_consent_title">Дебъг лог</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Коригира звука</string>
     <string name="label_premium_version">Премиум версия</string>
     <string name="general_upgrade_action">Ъпгрейд</string>
+    <string name="common_upgrade_required_label">Необходимо е надграждане</string>
     <string name="description_premium_required_additional_devices">Управление на допълнителни устройства изисква премиум версия.</string>
     <string name="description_premium_required_this_extra_option">Тази допълнителна опция изисква премиум версията на приложението.</string>
     <string name="description_premium_upgrade_explanation">Вземете премиум версията, за да разрешите допълнителните функции и подкрепите развитието.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Ъпгрейд</string>
     <string name="description_intro_purpose">Приложението позволява вашето устройство да запомни силата на звука за различни Bluetooth устройства.</string>
     <string name="description_intro_premium">Ако харесвате приложението закупете премиум версията. Тя подкрепя разработката и Ви предоставя екстра функции.</string>
+    <string name="upgrade_benefit_unlimited_devices">Неограничени профили на устройства</string>
+    <string name="upgrade_benefit_connection_actions">Автоматично пускане, стартиране на приложения и сигнали за връзка</string>
+    <string name="upgrade_benefit_theme_customization">Персонализиране на тема, стил и цвят</string>
+    <string name="upgrade_benefit_power_controls">Заключване на силата на звука и ограничаване на скоростта</string>
+    <string name="upgrade_benefit_support">Подкрепете независимото разработване</string>
     <string name="description_intro_tap_the_button">Започнете, като добавите първото си устройство.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth е изключен.</string>
     <string name="title_bluetooth_is_off">Bluetooth е изключен</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Сила на звука (0–100)</string>
     <string name="devices_volume_input_error">Въведи стойност между %1$d и %2$d</string>
+    <string name="devices_volume_input_caption">Действителната сила на звука може да се закръгли до най-близката стъпка, поддържана от вашето устройство.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Заключи</string>
     <string name="devices_unlock_sliders_action">Отключи</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Показва статуса на заключването на силата на звука за активното Bluetooth устройство</string>
+    <string name="widget_no_device_label">Няма свързано устройство</string>
+    <string name="widget_bluetooth_off_label">Bluetooth е изключен</string>
+    <string name="widget_error_label">Грешка на уиджета</string>
+    <string name="widget_preview_device_label">Моите слушалки</string>
+    <string name="widget_config_title">Настройки на уиджета</string>
+    <string name="widget_config_preview_label">Преглед</string>
+    <string name="widget_config_theme_label">Тема</string>
+    <string name="widget_config_bg_color_label">Цвят на фона</string>
+    <string name="widget_config_fg_color_label">Цвят на текста</string>
+    <string name="widget_config_bg_alpha_label">Прозрачност на фона</string>
+    <string name="widget_config_show_label_toggle">Показване на името на устройството</string>
+    <string name="widget_config_show_label_description">Показва свързаното устройство над статуса на заключването.</string>
+    <string name="widget_config_theme_green_label">Зелен</string>
+    <string name="widget_config_theme_red_label">Червен</string>
+    <string name="widget_config_theme_custom_label">Персонализиран</string>
 </resources>

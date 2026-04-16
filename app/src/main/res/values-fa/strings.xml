@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">حین اتصال این دستگاه فعال بمان و تغییرات صدایی که توسط این برنامه ایجاد نشده را ذخیره کن.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ذخیره صدا حین قطع اتصال</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">سطح صدای فعلی را حین قطع اتصال این دستگاه ذخیره کن.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">در برخی دستگاه‌ها، سیستم مسیریابی صدا را قبل از اینکه بتوانیم حجم‌ها را بخوانیم تغییر می‌دهد. اگر مقادیر ذخیره‌شده با آنچه تنظیم کرده بودید مطابقت ندارد، به جای آن «مشاهده تغییرات حجم» را فعال کنید.</string>
     <string name="devices_device_config_volume_lock_label">قفل صدا</string>
     <string name="devices_device_config_volume_lock_desc">هرگونه تغییر صدایی که توسط این برنامه انجام نشده، حین اتصال این دستگاه برگشت داده خواهد شد.</string>
+    <string name="devices_device_config_volume_lock_override_desc">قفل صدا در حال حاضر این ویژگی را لغو می‌کند.</string>
     <string name="devices_device_config_volume_rate_limiter_label">محدودیت،‌گذار تغییر صدا</string>
     <string name="devices_device_config_volume_rate_limiter_desc">فرکانس تغییرات صدا را محدود کن تا از تغییرات سریع یا افراطی جلوگیری شود.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">تأخیر افزایش صدا</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">سیاست حفظ حریم خصوصی</string>
     <string name="settings_privacy_policy_desc">رعایت مسئولانه داده‌ها.</string>
     <string name="changelog_label">گزارش تغییرات</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">پشتیبان‌گیری و بازیابی</string>
+    <string name="backup_restore_settings_desc">از تنظیمات و پیکربندی‌های دستگاه‌هایتان پشتیبان بگیرید و آن‌ها را بازیابی کنید.</string>
+    <string name="backup_restore_screen_title">پشتیبان‌گیری و بازیابی</string>
+    <string name="backup_restore_backup_desc">از تمام پیکربندی‌های دستگاه و تنظیمات برنامه‌تان یک نسخه پشتیبان بسازید.</string>
+    <string name="backup_restore_backup_action">ایجاد پشتیبان</string>
+    <string name="backup_restore_restore_desc">پیکربندی‌های دستگاه و تنظیمات برنامه را از یک فایل پشتیبان بازیابی کنید.</string>
+    <string name="backup_restore_restore_action">انتخاب فایل پشتیبان</string>
+    <string name="backup_restore_skip_existing_label">رد کردن دستگاه‌های موجود</string>
+    <string name="backup_restore_skip_existing_desc">دستگاه‌هایی که قبلاً پیکربندی شده‌اند را بازنویسی نکن.</string>
+    <string name="backup_restore_preview_label">پیش‌نمایش پشتیبان</string>
+    <string name="backup_restore_preview_devices">%1$d دستگاه</string>
+    <string name="backup_restore_preview_overlap">%1$d از %2$d دستگاه از قبل پیکربندی شده</string>
+    <string name="backup_restore_confirm_action">بازیابی همین الان</string>
+    <string name="backup_restore_success_backup">پشتیبان ایجاد شد — %1$d دستگاه ذخیره شد.</string>
+    <string name="backup_restore_success_restore">بازیابی کامل شد — %1$d دستگاه بازیابی شد، %2$d نادیده گرفته شد.</string>
+    <string name="backup_restore_version_warning">این پشتیبان با نسخه %1$s ایجاد شده. شما نسخه %2$s را اجرا می‌کنید. ممکن است برخی تنظیمات به درستی بازیابی نشوند.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">اعلانهای اشکال زدایی</string>
     <string name="debug_log_consent_title">گزارش خطاء</string>
@@ -275,7 +294,7 @@
     <string name="label_just_a_moment_please">یه لحظه صبر کن.</string>
     <string name="label_notification_channel_status">وضعیت</string>
     <string name="action_set">تنظیم</string>
-    <string name="action_cancel">لفو</string>
+    <string name="action_cancel">لغو</string>
     <string name="label_invalid_input">ورودی نامعتبر</string>
     <string name="action_reset">بازنشانی</string>
     <string name="label_no_connected_devices">هیچ دستگاهی متصل نیست</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">در حال تنظیم صداها</string>
     <string name="label_premium_version">نسخه پریمیوم</string>
     <string name="general_upgrade_action">ارتقاء</string>
+    <string name="common_upgrade_required_label">ارتقا لازم است</string>
     <string name="description_premium_required_additional_devices">مدیریت دستگاه‌های بیشتر نیازمند نسخه پریمیوم است.</string>
     <string name="description_premium_required_this_extra_option">این گزینه اضافی نیازمند نسخه پریمیوم این برنامه است.</string>
     <string name="description_premium_upgrade_explanation">نسخه پریمیوم را بگیرید تا ویژگی‌های اضافی فعال و توسعه را حمایت کنید.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">ارتقاء</string>
     <string name="description_intro_purpose">این برنامه به دستگاه اندروید شما امکان می‌دهد صدای دستگاه‌های بلوتوث مختلف را به خاطر بسپارد.</string>
     <string name="description_intro_premium">اگر این برنامه را دوست دارید، فکر ارتقاء به نسخه پریمیوم را بکن. توسعه را حمایت کرده و چند ویژگی اضافی هم می‌گیرید.</string>
+    <string name="upgrade_benefit_unlimited_devices">پروفایل‌های دستگاه نامحدود</string>
+    <string name="upgrade_benefit_connection_actions">پخش خودکار، راه‌اندازی برنامه و هشدارهای اتصال</string>
+    <string name="upgrade_benefit_theme_customization">شخصی‌سازی تم، سبک و رنگ</string>
+    <string name="upgrade_benefit_power_controls">قفل صدا و محدودسازی نرخ</string>
+    <string name="upgrade_benefit_support">حمایت از توسعه مستقل</string>
     <string name="description_intro_tap_the_button">با اضافه کردن اولین دستگاهت شروع کن.</string>
     <string name="description_bluetooth_is_disabled">بلوتوث غیرفعال است.</string>
     <string name="title_bluetooth_is_off">بلوتوث خاموش است</string>
@@ -341,7 +366,7 @@
         <item quantity="other">نسخه رایگان: %1$d از %2$d دستگاه</item>
     </plurals>
     <string name="general_delete_action">حذف</string>
-    <string name="general_cancel_action">لفو</string>
+    <string name="general_cancel_action">لغو</string>
     <string name="general_ok_action">باشه</string>
     <string name="general_configure_action">پیکربندی</string>
     <string name="battery_optimization_hint_title">بهینه‌سازی باتری</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">صدا (0–100)</string>
     <string name="devices_volume_input_error">یک مقدار بین %1$d و %2$d وارد کنید</string>
+    <string name="devices_volume_input_caption">میزان واقعی صدا ممکن است به نزدیک‌ترین گام پشتیبانی‌شده توسط دستگاهتان گرد شود.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">قفل کن</string>
     <string name="devices_unlock_sliders_action">باز کن</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">وضعیت قفل صدا برای دستگاه بلوتوث فعال را نشان می‌دهد</string>
+    <string name="widget_no_device_label">هیچ دستگاهی متصل نیست</string>
+    <string name="widget_bluetooth_off_label">بلوتوث خاموش است</string>
+    <string name="widget_error_label">خطای ویجت</string>
+    <string name="widget_preview_device_label">هدفون‌های من</string>
+    <string name="widget_config_title">تنظیمات ویجت</string>
+    <string name="widget_config_preview_label">پیش‌نمایش</string>
+    <string name="widget_config_theme_label">پوسته</string>
+    <string name="widget_config_bg_color_label">رنگ پس‌زمینه</string>
+    <string name="widget_config_fg_color_label">رنگ متن</string>
+    <string name="widget_config_bg_alpha_label">شفافیت پس‌زمینه</string>
+    <string name="widget_config_show_label_toggle">نمایش نام دستگاه</string>
+    <string name="widget_config_show_label_description">دستگاه متصل را بالای وضعیت قفل نشان بده.</string>
+    <string name="widget_config_theme_green_label">سبز</string>
+    <string name="widget_config_theme_red_label">قرمز</string>
+    <string name="widget_config_theme_custom_label">سفارشی</string>
 </resources>

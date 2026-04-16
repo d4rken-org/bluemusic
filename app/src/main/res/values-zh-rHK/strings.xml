@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">裝置連接期間保持活動，並儲存非此應用引起的音量變化。</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">斷開時儲存音量</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">裝置斷開連接時，擷取並儲存當前音量居。</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">在某些裝置上，系統會在我們能讀取音量之前切換音訊路由。如果儲存的數值與您設定的不符，請改為啟用「觀察音量變更」。</string>
     <string name="devices_device_config_volume_lock_label">音量鎖定</string>
     <string name="devices_device_config_volume_lock_desc">裝置連接期間，任何非通過此應用進行的音量變化將被撤銷。</string>
+    <string name="devices_device_config_volume_lock_override_desc">音量鎖定目前覆蓋了此功能。</string>
     <string name="devices_device_config_volume_rate_limiter_label">音量限流器</string>
     <string name="devices_device_config_volume_rate_limiter_desc">限制音量變化频率，以防止快速或過度的音量調整。</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">音量增加延遲</string>
@@ -104,7 +106,7 @@
     <string name="devices_device_config_connection_alert_label">連接提示</string>
     <string name="connection_alert_dialog_title">連接提示</string>
     <string name="connection_alert_type_none">無</string>
-    <string name="connection_alert_type_sound">僅隙音效</string>
+    <string name="connection_alert_type_sound">僅聲音</string>
     <string name="connection_alert_type_vibration">僅震動</string>
     <string name="connection_alert_type_both">音效和震動</string>
     <string name="devices_stream_music_label">音樂</string>
@@ -199,6 +201,23 @@
     <string name="settings_privacy_policy_label">私隱政策</string>
     <string name="settings_privacy_policy_desc">以負責的態度處理資料。</string>
     <string name="changelog_label">變更記錄</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">備份與還原</string>
+    <string name="backup_restore_settings_desc">備份及還原您的裝置設定和應用程式設定。</string>
+    <string name="backup_restore_screen_title">備份與還原</string>
+    <string name="backup_restore_backup_desc">為您所有的裝置設定和應用程式設定建立備份。</string>
+    <string name="backup_restore_backup_action">建立備份</string>
+    <string name="backup_restore_restore_desc">從備份檔案還原裝置設定和應用程式設定。</string>
+    <string name="backup_restore_restore_action">選擇備份檔案</string>
+    <string name="backup_restore_skip_existing_label">跳過已有的裝置</string>
+    <string name="backup_restore_skip_existing_desc">不覆蓋已設定的裝置。</string>
+    <string name="backup_restore_preview_label">備份預覽</string>
+    <string name="backup_restore_preview_devices">%1$d 個裝置</string>
+    <string name="backup_restore_preview_overlap">%1$d/%2$d 個裝置已設定</string>
+    <string name="backup_restore_confirm_action">立即還原</string>
+    <string name="backup_restore_success_backup">備份已建立 — 已儲存 %1$d 個裝置。</string>
+    <string name="backup_restore_success_restore">還原完成 — 已還原 %1$d 個裝置，已跳過 %2$d 個。</string>
+    <string name="backup_restore_version_warning">此備份是以版本 %1$s 建立的。您目前執行的是 %2$s。部分設定可能無法正確還原。</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">偵錯通知</string>
     <string name="debug_log_consent_title">偵錯記錄</string>
@@ -280,6 +299,7 @@
     <string name="label_status_adjusting_volumes">正在調整音量</string>
     <string name="label_premium_version">高級版本</string>
     <string name="general_upgrade_action">升級</string>
+    <string name="common_upgrade_required_label">需要升級</string>
     <string name="description_premium_required_additional_devices">管理額外裝置需要高級版本。</string>
     <string name="description_premium_required_this_extra_option">此額外選項需要此應用的高級版本。</string>
     <string name="description_premium_upgrade_explanation">获取高級版本以啟用額外功能並支持開發。</string>
@@ -288,6 +308,11 @@
     <string name="upgrade_prompt_upgrade_action">升級</string>
     <string name="description_intro_purpose">此應用讓你的 Android 裝置記住不同藍牙裝置的音量。</string>
     <string name="description_intro_premium">如果你喜歡此應用，請考慮升級至高級版本。這支持開發並為你提供一些額外功能。</string>
+    <string name="upgrade_benefit_unlimited_devices">無限裝置設定檔</string>
+    <string name="upgrade_benefit_connection_actions">自動播放、啟動應用程式及連線提醒</string>
+    <string name="upgrade_benefit_theme_customization">主題、樣式及顏色自訂</string>
+    <string name="upgrade_benefit_power_controls">音量鎖定及速率限制</string>
+    <string name="upgrade_benefit_support">支持獨立開發</string>
     <string name="description_intro_tap_the_button">從新增你的第一個裝置開始。</string>
     <string name="description_bluetooth_is_disabled">藍牙已停用.</string>
     <string name="title_bluetooth_is_off">藍牙已關閉</string>
@@ -378,7 +403,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">音量 (0–100)</string>
     <string name="devices_volume_input_error">請輸入 %1$d 至 %2$d 之間的數字</string>
+    <string name="devices_volume_input_caption">實際音量可能會四捨五入至您裝置所支援的最近一個音量級別。</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">鎖定</string>
     <string name="devices_unlock_sliders_action">解鎖</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">顯示目前連線藍牙裝置的音量鎖定狀態</string>
+    <string name="widget_no_device_label">未連線任何裝置</string>
+    <string name="widget_bluetooth_off_label">藍牙已關閉</string>
+    <string name="widget_error_label">小工具錯誤</string>
+    <string name="widget_preview_device_label">我的耳機</string>
+    <string name="widget_config_title">小工具設定</string>
+    <string name="widget_config_preview_label">預覽</string>
+    <string name="widget_config_theme_label">主題</string>
+    <string name="widget_config_bg_color_label">背景顏色</string>
+    <string name="widget_config_fg_color_label">文字顏色</string>
+    <string name="widget_config_bg_alpha_label">背景透明度</string>
+    <string name="widget_config_show_label_toggle">顯示裝置名稱</string>
+    <string name="widget_config_show_label_description">在鎖定狀態上方顯示已連線的裝置。</string>
+    <string name="widget_config_theme_green_label">綠色</string>
+    <string name="widget_config_theme_red_label">紅色</string>
+    <string name="widget_config_theme_custom_label">自訂</string>
 </resources>

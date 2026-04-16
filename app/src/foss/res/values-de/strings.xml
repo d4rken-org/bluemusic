@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">Erfordert BVM FOSS</string>
     <string name="upgrade_prompt_title">Auf BVM FOSS upgraden</string>
     <string name="upgrade_prompt_body">Schalte zusätzliche Funktionen frei und werde Patron, um die Weiterentwicklung zu unterstützen!</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager enthält keine Werbung und verkauft keine Nutzerdaten. Die Weiterentwicklung wird nur durch dich ermöglicht.</string>
     <string name="upgrade_screen_how_title">Wie kann ich helfen?</string>
     <string name="upgrade_screen_how_body">Werde Förderer und unterstütze Entwicklung! Klicke auf die Schaltfläche unten, um alle zusätzlichen Funktionen zu aktivieren und mein GitHub-Sponsorenprofil zu öffnen.</string>
-    <string name="upgrade_screen_why_title">Das zaubert herbei 🪄</string>
+    <string name="upgrade_screen_why_title">Im Mix</string>
     <string name="upgrade_screen_why_body">• Einen motivierten Entwickler 🧙
 • Unbegrenzte Geräte ➡️➡️
 • Extra-Aktionen ⚙️

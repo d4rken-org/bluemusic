@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Maradj aktív, amíg ez az eszköz csatlakoztatva van, és mentsd a hangerőváltozásokat, amelyeket nem ez az alkalmazás okozott.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Hangerő mentése lecsatlakozáskor</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Rögzíti és menti az aktuális hangerőszinteket, amikor az eszköz lecsatlakozik.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Egyes eszközökön a rendszer az audió útvonalat még azelőtt váltja, mielőtt le tudnánk olvasni a hangerőket. Ha a mentett értékek nem egyeznek meg azzal, amit beállítottál, próbáld meg ehelyett bekapcsolni a Hangerőváltozások figyelése lehetőséget.</string>
     <string name="devices_device_config_volume_lock_label">Hangerő zárolás</string>
     <string name="devices_device_config_volume_lock_desc">Minden hangerőváltozás, amit nem ezen az alkalmazáson keresztül csináltak, visszaállításra kerül, amíg ez az eszköz csatlakoztatva van.</string>
+    <string name="devices_device_config_volume_lock_override_desc">A hangerőzár jelenleg felülbírálja ezt a funkciót.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Hangerő sebességlimitáló</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Korlátozzad a hangerőváltozások gyakoriságát, hogy elkerüld a gyors vagy túlzott hangerőbeállításokat.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Hangerő emelés késleltetése</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Adatvédelmi irányelvek</string>
     <string name="settings_privacy_policy_desc">Adatok felelősségteljes kezelése.</string>
     <string name="changelog_label">Változásnapló</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Biztonsági mentés &amp; Visszaállítás</string>
+    <string name="backup_restore_settings_desc">Készíts biztonsági mentést az eszközkonfigurációidról és beállításaidról, vagy állítsd vissza azokat.</string>
+    <string name="backup_restore_screen_title">Biztonsági mentés &amp; Visszaállítás</string>
+    <string name="backup_restore_backup_desc">Biztonsági mentés készítése az összes eszközkonfigurációdról és alkalmazásbeállításodról.</string>
+    <string name="backup_restore_backup_action">Biztonsági mentés készítése</string>
+    <string name="backup_restore_restore_desc">Eszközkonfigurációk és alkalmazásbeállítások visszaállítása egy mentési fájlból.</string>
+    <string name="backup_restore_restore_action">Mentési fájl kiválasztása</string>
+    <string name="backup_restore_skip_existing_label">Meglévő eszközök kihagyása</string>
+    <string name="backup_restore_skip_existing_desc">Ne írd felül a már konfigurált eszközöket.</string>
+    <string name="backup_restore_preview_label">Mentés előnézete</string>
+    <string name="backup_restore_preview_devices">%1$d eszköz</string>
+    <string name="backup_restore_preview_overlap">%1$d eszközből %2$d már konfigurálva van</string>
+    <string name="backup_restore_confirm_action">Visszaállítás most</string>
+    <string name="backup_restore_success_backup">Mentés elkészült – %1$d eszköz elmentve.</string>
+    <string name="backup_restore_success_restore">Visszaállítás kész – %1$d eszköz visszaállítva, %2$d kihagyva.</string>
+    <string name="backup_restore_version_warning">Ez a mentés a(z) %1$s verzióval készült. Jelenleg a(z) %2$s fut. Néhány beállítás esetleg nem áll vissza megfelelően.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Hibakeresési értesítések</string>
     <string name="debug_log_consent_title">Hibakeresési napló</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Hangerő beállítása</string>
     <string name="label_premium_version">Prémium verzió</string>
     <string name="general_upgrade_action">Frissítés</string>
+    <string name="common_upgrade_required_label">Frissítés szükséges</string>
     <string name="description_premium_required_additional_devices">További eszközök kezelése megköveteli a prémium verziót.</string>
     <string name="description_premium_required_this_extra_option">Ez az extra funkció az alkalmazás prémium verzióját igényli.</string>
     <string name="description_premium_upgrade_explanation">Szerezd meg a prémium verziót a további funkciók és a fejlesztés támogatásához.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Frissítés</string>
     <string name="description_intro_purpose">Ez az alkalmazás lehetővé teszi, hogy az Android készüléked emlékezzen a különböző Bluetooth-eszközök hangerejére.</string>
     <string name="description_intro_premium">Ha tetszik ez az alkalmazás, fontolja meg a prémium verzióra való frissítést. Támogatja a fejlesztést, és extra funkciókat biztosít.</string>
+    <string name="upgrade_benefit_unlimited_devices">Korlátlan eszközprofilok</string>
+    <string name="upgrade_benefit_connection_actions">Automatikus lejátszás, alkalmazásindítás és kapcsolódási értesítések</string>
+    <string name="upgrade_benefit_theme_customization">Téma, stílus és szín testreszabása</string>
+    <string name="upgrade_benefit_power_controls">Hangerőzár és sebességkorlátozás</string>
+    <string name="upgrade_benefit_support">Független fejlesztés támogatása</string>
     <string name="description_intro_tap_the_button">Kezdéshez adj hozzá az első eszközt.</string>
     <string name="description_bluetooth_is_disabled">A Bluetooth ki van kapcsolva.</string>
     <string name="title_bluetooth_is_off">A Bluetooth ki van kapcsolva</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Hangerő (0–100)</string>
     <string name="devices_volume_input_error">Adj meg egy értéket %1$d és %2$d között</string>
+    <string name="devices_volume_input_caption">A tényleges hangerő a készüléked által támogatott legközelebbi lépésre kerekítődhet.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Zárolás</string>
     <string name="devices_unlock_sliders_action">Feloldás</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Megjeleníti az aktív Bluetooth-eszköz hangerőzárának állapotát</string>
+    <string name="widget_no_device_label">Nincs csatlakoztatott eszköz</string>
+    <string name="widget_bluetooth_off_label">A Bluetooth ki van kapcsolva</string>
+    <string name="widget_error_label">Widget hiba</string>
+    <string name="widget_preview_device_label">Saját fejhallgatóm</string>
+    <string name="widget_config_title">Widget beállítások</string>
+    <string name="widget_config_preview_label">Előnézet</string>
+    <string name="widget_config_theme_label">Téma</string>
+    <string name="widget_config_bg_color_label">Háttérszín</string>
+    <string name="widget_config_fg_color_label">Szövegszín</string>
+    <string name="widget_config_bg_alpha_label">Háttér átlátszósága</string>
+    <string name="widget_config_show_label_toggle">Eszköznév megjelenítése</string>
+    <string name="widget_config_show_label_description">Jelenítsd meg a csatlakoztatott eszközt a zárállapot felett.</string>
+    <string name="widget_config_theme_green_label">Zöld</string>
+    <string name="widget_config_theme_red_label">Piros</string>
+    <string name="widget_config_theme_custom_label">Egyéni</string>
 </resources>

@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Bu cihaz bağlıyken aktif kal ve bu uygulamanın neden olmadığı ses değişikliklerini kaydet.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Bağlantı kesildiğinde sesi kaydet</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Bu cihaz bağlantısı kesildiğinde mevcut ses seviyelerini yakala ve kaydet.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Bazı cihazlarda sistem, sesleri okuyabilmemizden önce ses yönlendirmesini değiştirir. Kaydedilen değerler ayarladığınızla eşleşmiyorsa bunun yerine \"Ses değişikliklerini gözlemle\" seçeneğini etkinleştirmeyi deneyin.</string>
     <string name="devices_device_config_volume_lock_label">Ses kilidi</string>
     <string name="devices_device_config_volume_lock_desc">Bu uygulama üzerinden yapılmayan ses değişiklikleri bu cihaz bağlıyken geri döndürülecektir.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Ses kilidi şu anda bu özelliği geçersiz kılıyor.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ses hızı sınırlayıcı</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Hızlı veya aşırı ses ayarlamalarını önlemek için ses değişikliklerinin sıklığını sınırla.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ses artırma gecikmesi</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Gizlilik politikası</string>
     <string name="settings_privacy_policy_desc">Verileri sorumlu bir şekilde işleme.</string>
     <string name="changelog_label">Değişiklik günlüğü</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Yedekle ve Geri Yükle</string>
+    <string name="backup_restore_settings_desc">Cihaz yapılandırmalarınızı ve ayarlarınızı yedekleyin ve geri yükleyin.</string>
+    <string name="backup_restore_screen_title">Yedekle ve Geri Yükle</string>
+    <string name="backup_restore_backup_desc">Tüm cihaz yapılandırmalarınızın ve uygulama ayarlarınızın yedeğini oluşturun.</string>
+    <string name="backup_restore_backup_action">Yedek oluştur</string>
+    <string name="backup_restore_restore_desc">Cihaz yapılandırmalarını ve uygulama ayarlarını bir yedek dosyasından geri yükleyin.</string>
+    <string name="backup_restore_restore_action">Yedek dosyası seç</string>
+    <string name="backup_restore_skip_existing_label">Mevcut cihazları atla</string>
+    <string name="backup_restore_skip_existing_desc">Zaten yapılandırılmış olan cihazların üzerine yazma.</string>
+    <string name="backup_restore_preview_label">Yedek önizlemesi</string>
+    <string name="backup_restore_preview_devices">%1$d cihaz</string>
+    <string name="backup_restore_preview_overlap">%2$d cihazdan %1$d tanesi zaten yapılandırılmış</string>
+    <string name="backup_restore_confirm_action">Şimdi geri yükle</string>
+    <string name="backup_restore_success_backup">Yedek oluşturuldu — %1$d cihaz kaydedildi.</string>
+    <string name="backup_restore_success_restore">Geri yükleme tamamlandı — %1$d cihaz geri yüklendi, %2$d atlandı.</string>
+    <string name="backup_restore_version_warning">Bu yedek %1$s sürümüyle oluşturuldu. Siz %2$s çalıştırıyorsunuz. Bazı ayarlar doğru geri yüklenmeyebilir.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Hata ayıklama bildirimleri</string>
     <string name="debug_log_consent_title">Hata ayıklama kayıtı</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">Ses düzeyini ayarla</string>
     <string name="label_premium_version">Ücretli Sürüm</string>
     <string name="general_upgrade_action">Yükselt</string>
+    <string name="common_upgrade_required_label">Yükseltme gerekli</string>
     <string name="description_premium_required_additional_devices">Ek cihazları yönetmek, ücretli sürümü gerektirir.</string>
     <string name="description_premium_required_this_extra_option">Bu ilave seçenek uygulamanın ücretli sürümünü gerektirir.</string>
     <string name="description_premium_upgrade_explanation">Ek özellikleri etkinleştirmek ve geliştirmeyi desteklemek için premium sürümü edinin.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">Yükselt</string>
     <string name="description_intro_purpose">Bu uygulama, Android cihazınızın farklı Bluetooth cihazlarının ses seviyesini hatırlamasını sağlar.</string>
     <string name="description_intro_premium">Bu uygulamayı beğendiyseniz, premium sürüme geçmeyi düşünün. Geliştirmeyi destekler ve size birkaç ekstra özellik sağlar.</string>
+    <string name="upgrade_benefit_unlimited_devices">Sınırsız cihaz profili</string>
+    <string name="upgrade_benefit_connection_actions">Otomatik oynatma, uygulama başlatma ve bağlantı uyarıları</string>
+    <string name="upgrade_benefit_theme_customization">Tema, stil ve renk özelleştirmesi</string>
+    <string name="upgrade_benefit_power_controls">Ses kilidi ve hız sınırlama</string>
+    <string name="upgrade_benefit_support">Bağımsız geliştirmeyi destekle</string>
     <string name="description_intro_tap_the_button">İlk aygıtınızı ekleyerek başlayın.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth devre dışı.</string>
     <string name="title_bluetooth_is_off">Bluetooth Kapalı</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Ses düzeyi (0–100)</string>
     <string name="devices_volume_input_error">%1$d ile %2$d arasında bir değer girin</string>
+    <string name="devices_volume_input_caption">Gerçek ses seviyesi, cihazınızın desteklediği en yakın adıma yuvarlanabilir.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Kilitle</string>
     <string name="devices_unlock_sliders_action">Kilidi aç</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Aktif Bluetooth cihazının ses kilidi durumunu gösterir</string>
+    <string name="widget_no_device_label">Bağlı cihaz yok</string>
+    <string name="widget_bluetooth_off_label">Bluetooth kapalı</string>
+    <string name="widget_error_label">Widget hatası</string>
+    <string name="widget_preview_device_label">Kulaklıklarım</string>
+    <string name="widget_config_title">Widget ayarları</string>
+    <string name="widget_config_preview_label">Önizleme</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Arka plan rengi</string>
+    <string name="widget_config_fg_color_label">Metin rengi</string>
+    <string name="widget_config_bg_alpha_label">Arka plan opaklığı</string>
+    <string name="widget_config_show_label_toggle">Cihaz adını göster</string>
+    <string name="widget_config_show_label_description">Bağlı cihazı kilit durumunun üzerinde göster.</string>
+    <string name="widget_config_theme_green_label">Yeşil</string>
+    <string name="widget_config_theme_red_label">Kırmızı</string>
+    <string name="widget_config_theme_custom_label">Özel</string>
 </resources>

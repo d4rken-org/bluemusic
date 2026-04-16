@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">BVM FOSS ያስፈሉ።</string>
     <string name="upgrade_prompt_title">ወደ BVM FOSS ክበቱ</string>
     <string name="upgrade_prompt_body">ተጨማሪ ባህሪያትን ይክፈቱ እና ቀጣይ ልማትን ለመደገፍ ደጋፊ ይሁኑ!</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ምንም እዋዀት ይረጋል፣ የተገባይ ውሂብንነም አይሸጥም። የተቆተቀወ ቅብት በእርስዎን ብቼድ ይተቀጥላል።</string>
     <string name="upgrade_screen_how_title">እንዴት መርዳት እንደሚችሉ</string>
     <string name="upgrade_screen_how_body">ደጋፊ ይሁኑ እና ልማትን ይደግፉ! ሁሉንም ተጨማሪ ባህሪያት ለማንቃት እና የእኔን GitHub Sponsors መገለጫ ለመክፈት ከታች ያለውን ቁልፍ ይንኩ።</string>
-    <string name="upgrade_screen_why_title">ይህ ያደርጋል 🪄</string>
+    <string name="upgrade_screen_why_title">በባልት መካከል</string>
     <string name="upgrade_screen_why_body">• የተጠቀየ ማድርግዬ 🧙
 • ምንም አይኖን መሣሪያዎች ➡️➡️
 • ✏✏✏✏ ✏✏✏ ⚙️

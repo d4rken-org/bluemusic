@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Ostani aktivan dok je ovaj uređaj povezan i spremi promjene glasnoće koje nisu uzrokovane ovom aplikacijom.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Spremi glasnoću pri odspajanju</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Zabilježi i spremi trenutne razine glasnoće kada se ovaj uređaj odspoji.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Na nekim uređajima, sustav prebacuje audio usmjeravanje prije nego što možemo očitati glasnoće. Ako spremljene vrijednosti ne odgovaraju onome što ste postavili, pokušajte umjesto toga omogućiti „Prati promjene glasnoće\".</string>
     <string name="devices_device_config_volume_lock_label">Zaključavanje glasnoće</string>
     <string name="devices_device_config_volume_lock_desc">Bilo kakve promjene u glasnoći napravljene kroz aplikaciju će biti vraćene dok je ovaj uređaj povezan.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Zaključavanje glasnoće trenutno nadjačava ovu značajku.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ograničnik frekvencije glasnoće</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ograničava frekvenciju promjena glasnoće kako bi se izbjegla brza ili pretjerana podešavanja.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Kašnjenje povećanja glasnoće</string>
@@ -201,6 +203,23 @@
     <string name="settings_privacy_policy_label">Pravila privatnosti</string>
     <string name="settings_privacy_policy_desc">Odgovorno rukovanje podacima.</string>
     <string name="changelog_label">Dnevnik promjena</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Sigurnosna kopija i obnavljanje</string>
+    <string name="backup_restore_settings_desc">Napravite sigurnosnu kopiju i obnovite konfiguracije uređaja i postavke.</string>
+    <string name="backup_restore_screen_title">Sigurnosna kopija i obnavljanje</string>
+    <string name="backup_restore_backup_desc">Napravite sigurnosnu kopiju svih konfiguracija uređaja i postavki aplikacije.</string>
+    <string name="backup_restore_backup_action">Napravi sigurnosnu kopiju</string>
+    <string name="backup_restore_restore_desc">Obnovite konfiguracije uređaja i postavke aplikacije iz datoteke sigurnosne kopije.</string>
+    <string name="backup_restore_restore_action">Odaberi datoteku sigurnosne kopije</string>
+    <string name="backup_restore_skip_existing_label">Preskoči postojeće uređaje</string>
+    <string name="backup_restore_skip_existing_desc">Ne prepisuj uređaje koji su već konfigurirani.</string>
+    <string name="backup_restore_preview_label">Pregled sigurnosne kopije</string>
+    <string name="backup_restore_preview_devices">%1$d uređaja</string>
+    <string name="backup_restore_preview_overlap">%1$d od %2$d uređaja je već konfigurirano</string>
+    <string name="backup_restore_confirm_action">Obnovi odmah</string>
+    <string name="backup_restore_success_backup">Sigurnosna kopija kreirana — %1$d uređaja spremljeno.</string>
+    <string name="backup_restore_success_restore">Obnavljanje završeno — %1$d uređaja obnovljeno, %2$d preskočeno.</string>
+    <string name="backup_restore_version_warning">Ova sigurnosna kopija kreirana je s verzijom %1$s. Trenutno koristite %2$s. Neke postavke možda neće biti pravilno obnovljene.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug obavijesti</string>
     <string name="debug_log_consent_title">Zapisnik za otklanjanje pogrešaka</string>
@@ -286,6 +305,7 @@
     <string name="label_status_adjusting_volumes">Podešavanje glasnoća</string>
     <string name="label_premium_version">Premium verzija</string>
     <string name="general_upgrade_action">Nadogradi</string>
+    <string name="common_upgrade_required_label">Nadogradnja potrebna</string>
     <string name="description_premium_required_additional_devices">Upravljanje dodatnim uređajima zahtijeva premium verziju.</string>
     <string name="description_premium_required_this_extra_option">Ova dodatna opcija zahtijeva premium verziju ove aplikacije.</string>
     <string name="description_premium_upgrade_explanation">Nabavite premium verziju kako bi omogućili dodatne značajke i podržali razvoj.</string>
@@ -294,6 +314,11 @@
     <string name="upgrade_prompt_upgrade_action">Nadogradi</string>
     <string name="description_intro_purpose">Ova aplikacija dopušta Vašem Android uređaju da zapamti glasnoću različitih Bluetooth uređaja.</string>
     <string name="description_intro_premium">Ako Vam se aplikacija sviđa, razmislite o nadogradnji na premium verziju. Ona podržava razvoj i omogućava Vam par dodatnih značajki.</string>
+    <string name="upgrade_benefit_unlimited_devices">Neograničeni profili uređaja</string>
+    <string name="upgrade_benefit_connection_actions">Automatska reprodukcija, pokretanje aplikacije i obavijesti o spajanju</string>
+    <string name="upgrade_benefit_theme_customization">Prilagodba teme, stila i boja</string>
+    <string name="upgrade_benefit_power_controls">Zaključavanje glasnoće i ograničenje brzine</string>
+    <string name="upgrade_benefit_support">Podržite neovisni razvoj</string>
     <string name="description_intro_tap_the_button">Započnite dodavanjem svog prvog uređaja.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth je onemogućen.</string>
     <string name="title_bluetooth_is_off">Bluetooth je isključen</string>
@@ -386,7 +411,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Glasnoća (0–100)</string>
     <string name="devices_volume_input_error">Unesi vrijednost između %1$d i %2$d</string>
+    <string name="devices_volume_input_caption">Stvarna glasnoća može se zaokružiti na najbliži korak koji vaš uređaj podržava.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Zaključaj</string>
     <string name="devices_unlock_sliders_action">Otključaj</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Prikazuje status zaključavanja glasnoće za aktivni Bluetooth uređaj</string>
+    <string name="widget_no_device_label">Nema povezanog uređaja</string>
+    <string name="widget_bluetooth_off_label">Bluetooth je isključen</string>
+    <string name="widget_error_label">Greška widgeta</string>
+    <string name="widget_preview_device_label">Moje slušalice</string>
+    <string name="widget_config_title">Postavke widgeta</string>
+    <string name="widget_config_preview_label">Pregled</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Boja pozadine</string>
+    <string name="widget_config_fg_color_label">Boja teksta</string>
+    <string name="widget_config_bg_alpha_label">Neprozirnost pozadine</string>
+    <string name="widget_config_show_label_toggle">Prikaži naziv uređaja</string>
+    <string name="widget_config_show_label_description">Prikaži povezani uređaj iznad statusa zaključavanja.</string>
+    <string name="widget_config_theme_green_label">Zelena</string>
+    <string name="widget_config_theme_red_label">Crvena</string>
+    <string name="widget_config_theme_custom_label">Prilagođeno</string>
 </resources>

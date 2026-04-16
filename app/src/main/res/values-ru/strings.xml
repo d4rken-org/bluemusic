@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Оставаться активным пока устройство подключено и сохранять изменения громкости, которые не были вызваны этим приложением.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Сохранить громкость при отключении</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Захватить и сохранить текущие уровни громкости при отключении этого устройства.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">На некоторых устройствах система переключает маршрутизацию звука до того, как мы успеваем считать уровни громкости. Если сохранённые значения не совпадают с теми, что вы установили, попробуйте вместо этого включить «Отслеживать изменения громкости».</string>
     <string name="devices_device_config_volume_lock_label">Блокировка громкости</string>
     <string name="devices_device_config_volume_lock_desc">Любые изменения громкости, не сделанные через это приложение, будут возвращены, к умолчаниям, пока это устройство подключено.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Блокировка громкости в данный момент переопределяет эту функцию.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ограничитель частоты громкости</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ограничивает частоту изменений громкости для предотвращения быстрых или чрезмерных настроек.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Задержка увеличения громкости</string>
@@ -202,6 +204,23 @@
     <string name="settings_privacy_policy_label">Политика конфиденциальности</string>
     <string name="settings_privacy_policy_desc">Ответственное обращение с данными.</string>
     <string name="changelog_label">Список изменений</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Резервное копирование и восстановление</string>
+    <string name="backup_restore_settings_desc">Создайте резервную копию и восстановите конфигурации устройств и настройки.</string>
+    <string name="backup_restore_screen_title">Резервное копирование и восстановление</string>
+    <string name="backup_restore_backup_desc">Создайте резервную копию всех конфигураций устройств и настроек приложения.</string>
+    <string name="backup_restore_backup_action">Создать резервную копию</string>
+    <string name="backup_restore_restore_desc">Восстановите конфигурации устройств и настройки приложения из файла резервной копии.</string>
+    <string name="backup_restore_restore_action">Выбрать файл резервной копии</string>
+    <string name="backup_restore_skip_existing_label">Пропустить существующие устройства</string>
+    <string name="backup_restore_skip_existing_desc">Не перезаписывать уже настроенные устройства.</string>
+    <string name="backup_restore_preview_label">Предварительный просмотр резервной копии</string>
+    <string name="backup_restore_preview_devices">%1$d устр.</string>
+    <string name="backup_restore_preview_overlap">%1$d из %2$d устройств уже настроено</string>
+    <string name="backup_restore_confirm_action">Восстановить сейчас</string>
+    <string name="backup_restore_success_backup">Резервная копия создана — сохранено устройств: %1$d.</string>
+    <string name="backup_restore_success_restore">Восстановление завершено — восстановлено: %1$d, пропущено: %2$d.</string>
+    <string name="backup_restore_version_warning">Эта резервная копия создана в версии %1$s. У вас запущена версия %2$s. Некоторые настройки могут не восстановиться корректно.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Уведомления отладки</string>
     <string name="debug_log_consent_title">Лог отладки</string>
@@ -289,6 +308,7 @@
     <string name="label_status_adjusting_volumes">Настройка громкости</string>
     <string name="label_premium_version">Премиум-версия</string>
     <string name="general_upgrade_action">Обновление</string>
+    <string name="common_upgrade_required_label">Требуется обновление</string>
     <string name="description_premium_required_additional_devices">Для управления дополнительными устройствами необходима премиум-версия.</string>
     <string name="description_premium_required_this_extra_option">К сожалению, для этой дополнительной опции требуется премиум-версия данного приложения.</string>
     <string name="description_premium_upgrade_explanation">Приобретите премиум-версию для включения дополнительных возможностей и поддержки разработки.</string>
@@ -297,6 +317,11 @@
     <string name="upgrade_prompt_upgrade_action">Обновить</string>
     <string name="description_intro_purpose">Приложение позволяет системе Андроид запомнить громкость различных устройств Bluetooth.</string>
     <string name="description_intro_premium">Если Вам нравится это приложение, рассмотрите возможность обновления до премиум-версии. Это обеспечивает поддержку разработки и предоставляет несколько дополнительных функций.</string>
+    <string name="upgrade_benefit_unlimited_devices">Неограниченное количество профилей устройств</string>
+    <string name="upgrade_benefit_connection_actions">Автовоспроизведение, запуск приложений и оповещения о подключении</string>
+    <string name="upgrade_benefit_theme_customization">Настройка темы, стиля и цвета</string>
+    <string name="upgrade_benefit_power_controls">Блокировка громкости и ограничение скорости</string>
+    <string name="upgrade_benefit_support">Поддержать независимую разработку</string>
     <string name="description_intro_tap_the_button">Начните с добавления первого устройства.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth отключен.</string>
     <string name="title_bluetooth_is_off">Bluetooth выключен</string>
@@ -390,7 +415,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Громкость (0–100)</string>
     <string name="devices_volume_input_error">Введи значение от %1$d до %2$d</string>
+    <string name="devices_volume_input_caption">Фактическая громкость может округляться до ближайшего шага, поддерживаемого вашим устройством.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Заблокировать</string>
     <string name="devices_unlock_sliders_action">Разблокировать</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Показывает статус блокировки громкости для активного Bluetooth-устройства</string>
+    <string name="widget_no_device_label">Нет подключённых устройств</string>
+    <string name="widget_bluetooth_off_label">Bluetooth выключен</string>
+    <string name="widget_error_label">Ошибка виджета</string>
+    <string name="widget_preview_device_label">Мои наушники</string>
+    <string name="widget_config_title">Настройки виджета</string>
+    <string name="widget_config_preview_label">Предпросмотр</string>
+    <string name="widget_config_theme_label">Тема</string>
+    <string name="widget_config_bg_color_label">Цвет фона</string>
+    <string name="widget_config_fg_color_label">Цвет текста</string>
+    <string name="widget_config_bg_alpha_label">Прозрачность фона</string>
+    <string name="widget_config_show_label_toggle">Показывать имя устройства</string>
+    <string name="widget_config_show_label_description">Показывать подключённое устройство над статусом блокировки.</string>
+    <string name="widget_config_theme_green_label">Зелёный</string>
+    <string name="widget_config_theme_red_label">Красный</string>
+    <string name="widget_config_theme_custom_label">Пользовательский</string>
 </resources>

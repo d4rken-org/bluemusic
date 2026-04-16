@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">დარჩე აქტიური სანამ ამ მოწყობილობა დაკავშირებულია და შეინახე ხმის ცვლილებები, რომლებიც ამ აპს არ გამოუწვევია.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ხმის შენახვა გათიშვისას</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">შეინახოს ხმის მიმდინარე დონეები ამ მოწყობილობის გათიშვისას.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">ზოგიერთ მოწყობილობაზე სისტემა ცვლის აუდიო მარშრუტს სანამ ჩვენ ვოლუმებს წავიკითხავთ. თუ შენახული მნიშვნელობები არ ემთხვევა იმას, რაც დააყენეთ, სცადეთ სამაგიეროდ \"ვოლუმის ცვლილებების დაკვირვება\" ჩართვა.</string>
     <string name="devices_device_config_volume_lock_label">ხმის ჩაკეტვა</string>
     <string name="devices_device_config_volume_lock_desc">ამ აპის გარეშე განხორციელებული ნებისმიერი ხმის ცვლილება გაუქმდება სანამ ეს მოწყობილობა დაკავშირებულია.</string>
+    <string name="devices_device_config_volume_lock_override_desc">მოცულობის დაბლოკვა ამჟამად უგულებელყოფს ამ ფუნქციას.</string>
     <string name="devices_device_config_volume_rate_limiter_label">ხმის სიჩქარის შემზღუდველი</string>
     <string name="devices_device_config_volume_rate_limiter_desc">შეზღუდე ხმის ცვლილებების სიხშირე სწრაფი ან ჭარბი ხმის რეგულირებების თავიდან ასაცილებლად.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ხმის გაზრდის შეფერხება</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">Კონფიდენციალურობის პოლიტიკა</string>
     <string name="settings_privacy_policy_desc">მონაცემების პასუხისმგებლობით დამუშავება.</string>
     <string name="changelog_label">ცვლილებების ჟურნალი</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">სარეზერვო ასლი და აღდგენა</string>
+    <string name="backup_restore_settings_desc">შექმენით სარეზერვო ასლი და აღადგინეთ თქვენი მოწყობილობის კონფიგურაციები და პარამეტრები.</string>
+    <string name="backup_restore_screen_title">სარეზერვო ასლი და აღდგენა</string>
+    <string name="backup_restore_backup_desc">შექმენით ყველა თქვენი მოწყობილობის კონფიგურაციისა და აპის პარამეტრების სარეზერვო ასლი.</string>
+    <string name="backup_restore_backup_action">სარეზერვო ასლის შექმნა</string>
+    <string name="backup_restore_restore_desc">სარეზერვო ფაილიდან მოწყობილობის კონფიგურაციებისა და აპის პარამეტრების აღდგენა.</string>
+    <string name="backup_restore_restore_action">სარეზერვო ფაილის არჩევა</string>
+    <string name="backup_restore_skip_existing_label">არსებული მოწყობილობების გამოტოვება</string>
+    <string name="backup_restore_skip_existing_desc">ნუ გადააწერ უკვე კონფიგურირებულ მოწყობილობებს.</string>
+    <string name="backup_restore_preview_label">სარეზერვო ასლის გადახედვა</string>
+    <string name="backup_restore_preview_devices">%1$d მოწყობილობა</string>
+    <string name="backup_restore_preview_overlap">%1$d/%2$d მოწყობილობა უკვე კონფიგურირებულია</string>
+    <string name="backup_restore_confirm_action">ახლავე აღდგენა</string>
+    <string name="backup_restore_success_backup">სარეზერვო ასლი შეიქმნა — %1$d მოწყობილობა შენახულია.</string>
+    <string name="backup_restore_success_restore">აღდგენა დასრულდა — %1$d მოწყობილობა აღდგენილია, %2$d გამოტოვებულია.</string>
+    <string name="backup_restore_version_warning">ეს სარეზერვო ასლი შეიქმნა ვერსიით %1$s. თქვენ იყენებთ %2$s. ზოგიერთერი პარამეტრი შეიძლება სწორად ვერ აღდგეს.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">გამართვის შეტყობინებები</string>
     <string name="debug_log_consent_title">გამართვის ჟურნალი</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">ხმების რეგულირება</string>
     <string name="label_premium_version">პრემიუმ ვერსია</string>
     <string name="general_upgrade_action">გარემონტება</string>
+    <string name="common_upgrade_required_label">საჭიროა განახლება</string>
     <string name="description_premium_required_additional_devices">დამატებითი მოწყობილობების მართვა მოითხოვს პრემიუმ ვერსიას.</string>
     <string name="description_premium_required_this_extra_option">ეს დამატებითი ვარიანტი მოითხოვს ამ აპის პრემიუმ ვერსიას.</string>
     <string name="description_premium_upgrade_explanation">მიიღეთ პრემიუმ ვერსია დამატებითი ფუნქციების ჩასართავად და განვითარების მხარდასაჭერად.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">გარემონტება</string>
     <string name="description_intro_purpose">ეს აპი საშუალებას აძლევს თქვენს Android მოწყობილობას დაიმახსოვროს სხვადასხვა Bluetooth მოწყობილობის ხმა.</string>
     <string name="description_intro_premium">თუ ეს აპი გიყვართ, განიხილეთ პრემიუმ ვერსიაზე გადასვლა. ეს ეხმარება განვითარებას და გეძლევათ რამდენიმე დამატებითი ფუნქცია.</string>
+    <string name="upgrade_benefit_unlimited_devices">შეუზღუდავი მოწყობილობის პროფილები</string>
+    <string name="upgrade_benefit_connection_actions">ავტომატური დაკვრა, აპის გაშვება და კავშირის შეტყობინებები</string>
+    <string name="upgrade_benefit_theme_customization">თემის, სტილისა და ფერის მორგება</string>
+    <string name="upgrade_benefit_power_controls">ხმის დაბლოკვა და სიჩქარის შეზღუდვა</string>
+    <string name="upgrade_benefit_support">დამოუკიდებელი განვითარების მხარდაჭერა</string>
     <string name="description_intro_tap_the_button">დაიწყეთ პირველი მოწყობილობის დამატებით.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth გათიშულია.</string>
     <string name="title_bluetooth_is_off">Bluetooth გამორთულია</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">ხმაური (0-100)</string>
     <string name="devices_volume_input_error">შეიყვანეთ მნიშვნელობანი %1$d-დან %2$d-მდე</string>
+    <string name="devices_volume_input_caption">რეალური ხმა შეიძლება დამრგვალდეს თქვენი მოწყობილობის მიერ მხარდაჭერილ უახლოეს ნაბიჯამდე.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">დაბლოკვა</string>
     <string name="devices_unlock_sliders_action">გახსნა</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">აჩვენებს ხმის დაბლოკვის სტატუსს აქტიური Bluetooth მოწყობილობისთვის</string>
+    <string name="widget_no_device_label">მოწყობილობა არ არის დაკავშირებული</string>
+    <string name="widget_bluetooth_off_label">Bluetooth გამორთულია</string>
+    <string name="widget_error_label">ვიჯეტის შეცდომა</string>
+    <string name="widget_preview_device_label">ჩემი ყურსასმენები</string>
+    <string name="widget_config_title">ვიჯეტის პარამეტრები</string>
+    <string name="widget_config_preview_label">გადახედვა</string>
+    <string name="widget_config_theme_label">თემა</string>
+    <string name="widget_config_bg_color_label">ფონის ფერი</string>
+    <string name="widget_config_fg_color_label">ტექსტის ფერი</string>
+    <string name="widget_config_bg_alpha_label">ფონის გამჭვირვალობა</string>
+    <string name="widget_config_show_label_toggle">მოწყობილობის სახელის ჩვენება</string>
+    <string name="widget_config_show_label_description">დაბლოკვის სტატუსის ზემოთ გამოჩნდება დაკავშირებული მოწყობილობა.</string>
+    <string name="widget_config_theme_green_label">მწვანე</string>
+    <string name="widget_config_theme_red_label">წითელი</string>
+    <string name="widget_config_theme_custom_label">მორგებული</string>
 </resources>

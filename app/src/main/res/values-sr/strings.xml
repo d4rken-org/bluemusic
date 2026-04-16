@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Остај активан док је овај уређај повезан и сачувај промене јачине звука које нису направљене овом апликацијом.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Сачувај јачину при искључивању</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Сними и сачувај тренутне нивое јачине звука кад се овај уређај искључи.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">На неким уређајима систем мења аудио рутирање пре него што успемо да очитамо јачину звука. Ако сачуване вредности не одговарају ономе што сте поставили, покушајте да уместо тога омогућите „Посматрај промене јачине звука“.</string>
     <string name="devices_device_config_volume_lock_label">Закључавање јачине</string>
     <string name="devices_device_config_volume_lock_desc">Све промене јачине звука направљене ван ове апликације биће враћене док је овај уређај повезан.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Закључавање јачине звука тренутно замењује ову функцију.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ограничавач брзине јачине</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ограничи учесталост промена јачине звука да би се спречили брзи или прекомерни прелази јачине.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Кашњење повећања јачине</string>
@@ -187,7 +189,7 @@
     <string name="settings_acknowledgements_description">заслуге, лиценце и посебна захвалност</string>
     <string name="settings_acks_translation_header">Превод</string>
     <string name="settings_acks_translators_title">Преводиоци</string>
-    <string name="settings_acks_translators_people">AI Assistant;Claude</string>
+    <string name="settings_acks_translators_people">Особа1;Особа2(опционо@email.com)</string>
     <string name="settings_acks_translate_title">Преведи BVM</string>
     <string name="settings_acks_translate_desc">Помози превођење BVM на свој језик</string>
     <string name="settings_acks_thanks_header">Хвала</string>
@@ -201,6 +203,23 @@
     <string name="settings_privacy_policy_label">Политика приватности</string>
     <string name="settings_privacy_policy_desc">Одговорно поступање са подацима.</string>
     <string name="changelog_label">Дневник измена</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Резервна копија и враћање</string>
+    <string name="backup_restore_settings_desc">Направите резервну копију и вратите конфигурације уређаја и подешавања.</string>
+    <string name="backup_restore_screen_title">Резервна копија и враћање</string>
+    <string name="backup_restore_backup_desc">Направите резервну копију свих конфигурација уређаја и подешавања апликације.</string>
+    <string name="backup_restore_backup_action">Направи резервну копију</string>
+    <string name="backup_restore_restore_desc">Вратите конфигурације уређаја и подешавања апликације из резервне датотеке.</string>
+    <string name="backup_restore_restore_action">Изаберите резервну датотеку</string>
+    <string name="backup_restore_skip_existing_label">Прескочи постојеће уређаје</string>
+    <string name="backup_restore_skip_existing_desc">Немој да препишеш уређаје који су већ конфигурисани.</string>
+    <string name="backup_restore_preview_label">Преглед резервне копије</string>
+    <string name="backup_restore_preview_devices">%1$d уређаја</string>
+    <string name="backup_restore_preview_overlap">%1$d од %2$d уређаја је већ конфигурисано</string>
+    <string name="backup_restore_confirm_action">Врати одмах</string>
+    <string name="backup_restore_success_backup">Резервна копија је направљена — %1$d уређаја је сачувано.</string>
+    <string name="backup_restore_success_restore">Враћање завршено — %1$d уређаја враћено, %2$d прескочено.</string>
+    <string name="backup_restore_version_warning">Ова резервна копија је направљена са верзијом %1$s. Тренутно користите %2$s. Нека подешавања можда неће бити правилно враћена.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Обавештења о отклањању грешака</string>
     <string name="debug_log_consent_title">Извештај о грешкама</string>
@@ -286,6 +305,7 @@
     <string name="label_status_adjusting_volumes">Подешавање јачина</string>
     <string name="label_premium_version">Премијум верзија</string>
     <string name="general_upgrade_action">Надогради</string>
+    <string name="common_upgrade_required_label">Потребна надоградња</string>
     <string name="description_premium_required_additional_devices">Управљање додатним уређајима захтева премијум верзију.</string>
     <string name="description_premium_required_this_extra_option">Ова додатна опција захтева премијум верзију апликације.</string>
     <string name="description_premium_upgrade_explanation">Набави премијум верзију да укључиш додатне функције и подржиш развој.</string>
@@ -294,6 +314,11 @@
     <string name="upgrade_prompt_upgrade_action">Надогради</string>
     <string name="description_intro_purpose">Ова апликација омогућава твом Андроид уређају да памти јачину звука различитих Bluetooth уређаја.</string>
     <string name="description_intro_premium">Ако ти се допада апликација, размотри надоградњу на премијум верзију. Подржава развој и доноси неколико додатних функција.</string>
+    <string name="upgrade_benefit_unlimited_devices">Неограничени профили уређаја</string>
+    <string name="upgrade_benefit_connection_actions">Аутоматско пуштање, покретање апликације и упозорења о вези</string>
+    <string name="upgrade_benefit_theme_customization">Прилагођавање теме, стила и боје</string>
+    <string name="upgrade_benefit_power_controls">Закључавање јачине звука и ограничавање брзине</string>
+    <string name="upgrade_benefit_support">Подржите независни развој</string>
     <string name="description_intro_tap_the_button">Почни додавањем свог првог уређаја.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth је онемогућен.</string>
     <string name="title_bluetooth_is_off">Bluetooth је искључен</string>
@@ -386,7 +411,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Јачина (0–100)</string>
     <string name="devices_volume_input_error">Унеси вредност између %1$d и %2$d</string>
+    <string name="devices_volume_input_caption">Стварна јачина звука може бити заокружена на најближи корак који ваш уређај подржава.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Закључај</string>
     <string name="devices_unlock_sliders_action">Откључај</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Приказује статус закључавања јачине звука за активни Bluetooth уређај</string>
+    <string name="widget_no_device_label">Нема повезаног уређаја</string>
+    <string name="widget_bluetooth_off_label">Bluetooth је искључен</string>
+    <string name="widget_error_label">Грешка виџета</string>
+    <string name="widget_preview_device_label">Моје слушалице</string>
+    <string name="widget_config_title">Подешавања виџета</string>
+    <string name="widget_config_preview_label">Преглед</string>
+    <string name="widget_config_theme_label">Тема</string>
+    <string name="widget_config_bg_color_label">Боја позадине</string>
+    <string name="widget_config_fg_color_label">Боја текста</string>
+    <string name="widget_config_bg_alpha_label">Непровидност позадине</string>
+    <string name="widget_config_show_label_toggle">Прикажи назив уређаја</string>
+    <string name="widget_config_show_label_description">Прикажи повезани уређај изнад статуса закључавања.</string>
+    <string name="widget_config_theme_green_label">Зелена</string>
+    <string name="widget_config_theme_red_label">Црвена</string>
+    <string name="widget_config_theme_custom_label">Прилагођено</string>
 </resources>

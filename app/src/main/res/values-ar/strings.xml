@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">ابق نشطاً بينما هذا الجهاز متصل واحفظ تغييرات الصوت التي لم يسببها هذا التطبيق.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">حفظ الصوت عند قطع الاتصال</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">التقط واحفظ مستويات الصوت الحالية عند قطع اتصال هذا الجهاز.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">في بعض الأجهزة، يقوم النظام بتبديل توجيه الصوت قبل أن نتمكن من قراءة مستويات الصوت. إذا كانت القيم المحفوظة لا تتطابق مع ما قمت بضبطه، فحاول تفعيل \"مراقبة تغييرات الصوت\" بدلاً من ذلك.</string>
     <string name="devices_device_config_volume_lock_label">قفل الصوت</string>
     <string name="devices_device_config_volume_lock_desc">سيتم التراجع عن أي تغييرات في مستوى الصوت لم تُجرَ عبر هذا التطبيق أثناء اتصال هذا الجهاز.</string>
+    <string name="devices_device_config_volume_lock_override_desc">قفل الصوت يتجاوز هذه الميزة حاليًا.</string>
     <string name="devices_device_config_volume_rate_limiter_label">منظم معدل الصوت</string>
     <string name="devices_device_config_volume_rate_limiter_desc">تحديد تكرار تغييرات الصوت لمنع التعديلات السريعة أو المفرطة على الصوت.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">تأخير زيادة الصوت</string>
@@ -204,6 +206,23 @@
     <string name="settings_privacy_policy_label">سياسة الخصوصية</string>
     <string name="settings_privacy_policy_desc">التعامل مع البيانات بمسؤولية.</string>
     <string name="changelog_label">سجل التغييرات</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">النسخ الاحتياطي والاستعادة</string>
+    <string name="backup_restore_settings_desc">احتفظ بنسخة احتياطية واستعد تهيئات الجهاز والإعدادات.</string>
+    <string name="backup_restore_screen_title">النسخ الاحتياطي والاستعادة</string>
+    <string name="backup_restore_backup_desc">أنشئ نسخة احتياطية من جميع تهيئات الجهاز وإعدادات التطبيق.</string>
+    <string name="backup_restore_backup_action">إنشاء نسخة احتياطية</string>
+    <string name="backup_restore_restore_desc">استعد تهيئات الجهاز وإعدادات التطبيق من ملف النسخة الاحتياطية.</string>
+    <string name="backup_restore_restore_action">اختر ملف النسخة الاحتياطية</string>
+    <string name="backup_restore_skip_existing_label">تخطي الأجهزة الموجودة</string>
+    <string name="backup_restore_skip_existing_desc">لا تستبدل الأجهزة المهيأة مسبقًا.</string>
+    <string name="backup_restore_preview_label">معاينة النسخة الاحتياطية</string>
+    <string name="backup_restore_preview_devices">%1$d جهازًا</string>
+    <string name="backup_restore_preview_overlap">%1$d من %2$d جهاز مهيأ مسبقًا</string>
+    <string name="backup_restore_confirm_action">استعد الآن</string>
+    <string name="backup_restore_success_backup">تم إنشاء النسخة الاحتياطية — تم حفظ %1$d جهاز.</string>
+    <string name="backup_restore_success_restore">اكتملت الاستعادة — تم استعادة %1$d جهاز، تم تخطي %2$d.</string>
+    <string name="backup_restore_version_warning">تم إنشاء هذه النسخة الاحتياطية بالإصدار %1$s. أنت تشغّل %2$s. قد لا تُستعاد بعض الإعدادات بشكل صحيح.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">إشعارات التشخيص</string>
     <string name="debug_log_consent_title">سجل التشخيص</string>
@@ -295,6 +314,7 @@
     <string name="label_status_adjusting_volumes">ضبط مستويات الصوت</string>
     <string name="label_premium_version">الإصدار المتميز</string>
     <string name="general_upgrade_action">تحديث</string>
+    <string name="common_upgrade_required_label">الترقية مطلوبة</string>
     <string name="description_premium_required_additional_devices">إدارة الأجهزة الإضافية يتطلب الإصدار المتميز.</string>
     <string name="description_premium_required_this_extra_option">للأسف، يتطلب هذا الخيار الإضافي الإصدار المتميز من هذا التطبيق.</string>
     <string name="description_premium_upgrade_explanation">الحصول على الإصدار المتميز لتفعيل الميزات الإضافية ودعم التطور.</string>
@@ -303,6 +323,11 @@
     <string name="upgrade_prompt_upgrade_action">تحديث</string>
     <string name="description_intro_purpose">يسمح هذا التطبيق للأندرويد بتذكر حجم الصوت لمختلف أجهزة البلوتوث.</string>
     <string name="description_intro_premium">إذا اعجبك هذا التطبيق، يمكنك الترقية إلى الإصدار المتميز. لدعم التنمية والحصول على بعض الميزات الإضافية.</string>
+    <string name="upgrade_benefit_unlimited_devices">ملفات تعريف أجهزة غير محدودة</string>
+    <string name="upgrade_benefit_connection_actions">التشغيل التلقائي وإطلاق التطبيق وتنبيهات الاتصال</string>
+    <string name="upgrade_benefit_theme_customization">تخصيص السمة والنمط واللون</string>
+    <string name="upgrade_benefit_power_controls">قفل الصوت والحد من المعدل</string>
+    <string name="upgrade_benefit_support">دعم التطوير المستقل</string>
     <string name="description_intro_tap_the_button">ابدأ أولا بإضافة جهازك.</string>
     <string name="description_bluetooth_is_disabled">البلوتوث غير مفعل.</string>
     <string name="title_bluetooth_is_off">البلوتوث مغلق</string>
@@ -398,7 +423,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">مستوى الصوت (0–100)</string>
     <string name="devices_volume_input_error">أدخل قيمة بين %1$d و %2$d</string>
+    <string name="devices_volume_input_caption">قد يُقرَّب مستوى الصوت الفعلي إلى أقرب خطوة يدعمها جهازك.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">قفل</string>
     <string name="devices_unlock_sliders_action">فتح القفل</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">يعرض حالة قفل الصوت لجهاز البلوتوث النشط</string>
+    <string name="widget_no_device_label">لا يوجد جهاز متصل</string>
+    <string name="widget_bluetooth_off_label">البلوتوث متوقف</string>
+    <string name="widget_error_label">خطأ في الأداة</string>
+    <string name="widget_preview_device_label">سماعات الرأس</string>
+    <string name="widget_config_title">إعدادات الأداة</string>
+    <string name="widget_config_preview_label">معاينة</string>
+    <string name="widget_config_theme_label">السمة</string>
+    <string name="widget_config_bg_color_label">لون الخلفية</string>
+    <string name="widget_config_fg_color_label">لون النص</string>
+    <string name="widget_config_bg_alpha_label">شفافية الخلفية</string>
+    <string name="widget_config_show_label_toggle">عرض اسم الجهاز</string>
+    <string name="widget_config_show_label_description">عرض الجهاز المتصل فوق حالة القفل.</string>
+    <string name="widget_config_theme_green_label">أخضر</string>
+    <string name="widget_config_theme_red_label">أحمر</string>
+    <string name="widget_config_theme_custom_label">مخصص</string>
 </resources>

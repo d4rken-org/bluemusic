@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">இந்த சாதனம் இணைக்கப்பட்டிருக்கும்போது உல்னிலையிருக்கும் மற்றும் இந்த ஆப்்இனால் ஏற்படாத ஒலி மாற்றங்களை சேமிக்கும்.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">தொடர்பு துணிக்கத்தில் ஒலி அளவை சேமி</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">இந்த சாதனம் தொடர்பு துணிக்கப்படும்போது தற்போதுள்ள ஒலி அளவுகளைக் குறித்து சேமிக்கும்.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">சில சாதனங்களில், நாங்கள் ஒலி அளவுகளை படிக்கும் முன்பே கணினி ஆடியோ ரூட்டிங்கை மாற்றிவிடும். சேமிக்கப்பட்ட மதிப்புகள் நீங்கள் அமைத்தவற்றுடன் பொருந்தவில்லை என்றால், பதிலாக \"ஒலி அளவு மாற்றங்களை கவனி\" என்பதை இயக்க முயற்சிக்கவும்.</string>
     <string name="devices_device_config_volume_lock_label">ஒலி பூட்டு</string>
     <string name="devices_device_config_volume_lock_desc">இந்த சாதனம் இணைக்கப்பட்டிருக்கும்போது இந்த ஆப் அன்றி மாற்றப்பட்ட ஒலி மாற்றங்கள் உதாரணமாக மாற்றப்படும்.</string>
+    <string name="devices_device_config_volume_lock_override_desc">தொகுதி பூட்டு தற்போது இந்த அம்சத்தை மேலெழுதுகிறது.</string>
     <string name="devices_device_config_volume_rate_limiter_label">ஒலி விகித கட்டுப்பாடு</string>
     <string name="devices_device_config_volume_rate_limiter_desc">விரைவாக மற்றும் அதிகமாக ஒலி சரிசெய்த்தல்களைத் தடுக்க ஒலி மாற்றங்களின் அலைவீச்சைக் கட்டுப்படுத்து.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ஒலி ஐர்த்தல் தாமதம்</string>
@@ -118,7 +120,7 @@
     <string name="devices_state_connected_label">இணைக்கப்பட்டது</string>
     <string name="devices_last_connected_label">கடைசியாக இணைக்கப்பட்டது: %s</string>
     <string name="devices_currently_connected_label">தற்போது இணைக்கப்பட்டுள்ளது</string>
-    <string name="devices_device_disabled_label">சாதனம் உப஺3்கப்பட்டுள்ளது</string>
+    <string name="devices_device_disabled_label">சாதனம் முடக்கப்பட்டுள்ளது</string>
     <string name="devices_no_volumes_configured">இந்த சாதனத்திற்கு ஒலி அளவுகள் ஏதும் கட்டமைக்கப்படவில்லை. ஒலி அளவு அமைப்புகளை அமைக்க கட்டமை தட்டும்.</string>
     <!-- Settings-->
     <string name="settings_label">அமைப்புகள்</string>
@@ -200,6 +202,23 @@
     <string name="settings_privacy_policy_label">தனியுரிமை கொள்கை</string>
     <string name="settings_privacy_policy_desc">தகவலை பொறுப்புடனுடன் கைகாளவது.</string>
     <string name="changelog_label">மாற்றங்கள் பதிவு</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">காப்புப்பிரதி &amp; மீட்டமைவு</string>
+    <string name="backup_restore_settings_desc">உங்கள் சாதன உள்ளமைவுகள் மற்றும் அமைப்புகளை காப்புப்பிரதி எடுக்கவும் மீட்டமைக்கவும்.</string>
+    <string name="backup_restore_screen_title">காப்புப்பிரதி &amp; மீட்டமைவு</string>
+    <string name="backup_restore_backup_desc">உங்கள் அனைத்து சாதன உள்ளமைவுகள் மற்றும் பயன்பாட்டு அமைப்புகளின் காப்புப்பிரதி உருவாக்கவும்.</string>
+    <string name="backup_restore_backup_action">காப்புப்பிரதி உருவாக்கு</string>
+    <string name="backup_restore_restore_desc">காப்புப்பிரதி கோப்பிலிருந்து சாதன உள்ளமைவுகள் மற்றும் பயன்பாட்டு அமைப்புகளை மீட்டமைக்கவும்.</string>
+    <string name="backup_restore_restore_action">காப்புப்பிரதி கோப்பை தேர்ந்தெடு</string>
+    <string name="backup_restore_skip_existing_label">ஏற்கனவே உள்ள சாதனங்களை தவிர்</string>
+    <string name="backup_restore_skip_existing_desc">ஏற்கனவே உள்ளமைக்கப்பட்ட சாதனங்களை மேலெழுத வேண்டாம்.</string>
+    <string name="backup_restore_preview_label">காப்புப்பிரதி முன்னோட்டம்</string>
+    <string name="backup_restore_preview_devices">%1$d சாதனங்கள்</string>
+    <string name="backup_restore_preview_overlap">%2$d சாதனங்களில் %1$d ஏற்கனவே உள்ளமைக்கப்பட்டவை</string>
+    <string name="backup_restore_confirm_action">இப்போது மீட்டமை</string>
+    <string name="backup_restore_success_backup">காப்புப்பிரதி உருவாக்கப்பட்டது — %1$d சாதனங்கள் சேமிக்கப்பட்டன.</string>
+    <string name="backup_restore_success_restore">மீட்டமைவு முடிந்தது — %1$d சாதனங்கள் மீட்டமைக்கப்பட்டன, %2$d தவிர்க்கப்பட்டன.</string>
+    <string name="backup_restore_version_warning">இந்த காப்புப்பிரதி %1$s பதிப்பில் உருவாக்கப்பட்டது. நீங்கள் %2$s இயக்குகிறீர்கள். சில அமைப்புகள் சரியாக மீட்டமைக்கப்படாமல் போகலாம்.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">பிழைத்திருத்த அறிவிப்புகள்</string>
     <string name="debug_log_consent_title">பிழைத்திருத்த பதிவு</string>
@@ -283,6 +302,7 @@
     <string name="label_status_adjusting_volumes">ஒலி அளவுகளை சரிசெய்த்தல் செய்து கொண்டிருக்கிறது</string>
     <string name="label_premium_version">ப்ரிமியம் பதிப்பு</string>
     <string name="general_upgrade_action">மேம்படுத்து</string>
+    <string name="common_upgrade_required_label">மேம்படுத்தல் தேவை</string>
     <string name="description_premium_required_additional_devices">கூடுதலான சாதனங்களை நிர்வகிக்க ப்ரிமியம் பதிப்பு தேவைப்படுகிறது.</string>
     <string name="description_premium_required_this_extra_option">இந்த ஏனும் விருப்பமான விளையாட்டு இந்த ஆப்்அின் ப்ரிமியம் பதிப்பை தேவைப்படுகிறது.</string>
     <string name="description_premium_upgrade_explanation">கூடுதலான சிறப்பியகளை இயக்கி மேம்பாட்டை ஆதரிக்க ப்ரிமியம் பதிப்பைப் பெறும்.</string>
@@ -291,6 +311,11 @@
     <string name="upgrade_prompt_upgrade_action">மேம்படுத்து</string>
     <string name="description_intro_purpose">இந்த ஆப்் உங்கள் Android சாதனம் மாற்றமான Bluetooth சாதனங்களின் ஒலி அளவுகளை நினைவில் வைக்க உதவுகிறது.</string>
     <string name="description_intro_premium">இந்த ஆப்்அன்னை விரும்பினால், ப்ரிமியம் பதிப்பிற்கு மேம்படுத்தலைப் பரிசீலிக்கவும். இது மேம்பாட்டை ஆதரிக்கிறது மற்றும் சில கூடுதலான சிறப்பியகளைக் கொடுக்கிறது.</string>
+    <string name="upgrade_benefit_unlimited_devices">வரம்பற்ற சாதன சுயவிவரங்கள்</string>
+    <string name="upgrade_benefit_connection_actions">தானியங்கி இயக்கம், பயன்பாட்டு தொடக்கம் மற்றும் இணைப்பு எச்சரிக்கைகள்</string>
+    <string name="upgrade_benefit_theme_customization">தீம், பாணி மற்றும் வண்ண தனிப்பயனாக்கம்</string>
+    <string name="upgrade_benefit_power_controls">தொகுதி பூட்டு மற்றும் வீத வரம்பிடல்</string>
+    <string name="upgrade_benefit_support">சுயாதீன வளர்ச்சியை ஆதரிக்கவும்</string>
     <string name="description_intro_tap_the_button">உங்கள் முதல் சாதனத்தை சேர்பதிலிருந்து தொடங்கும்.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth அணைக்கப்பட்டுள்ளது.</string>
     <string name="title_bluetooth_is_off">Bluetooth அணைந்துள்ளது</string>
@@ -382,7 +407,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">ஐடியம் (0–1(0))</string>
     <string name="devices_volume_input_error">%1$d மற்றும் %2$d இடையில் ஒரு மதிப்பை உள்ளிடுக</string>
+    <string name="devices_volume_input_caption">உண்மையான ஒலியளவு உங்கள் சாதனம் ஆதரிக்கும் அருகாமை படிக்கு வட்டமிடப்படலாம்.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">பூட்டு</string>
     <string name="devices_unlock_sliders_action">திறு</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">செயலில் உள்ள Bluetooth சாதனத்தின் தொகுதி பூட்டு நிலையை காட்டுகிறது</string>
+    <string name="widget_no_device_label">சாதனம் இணைக்கப்படவில்ளை</string>
+    <string name="widget_bluetooth_off_label">Bluetooth அணைந்துள்ளது</string>
+    <string name="widget_error_label">விட்ஜெட் பிழை</string>
+    <string name="widget_preview_device_label">என் ஹெட்ஃபோன்கள்</string>
+    <string name="widget_config_title">விட்ஜெட் அமைப்புகள்</string>
+    <string name="widget_config_preview_label">முன்னோட்டம்</string>
+    <string name="widget_config_theme_label">தீம்</string>
+    <string name="widget_config_bg_color_label">பின்னணி நிறம்</string>
+    <string name="widget_config_fg_color_label">உரை நிறம்</string>
+    <string name="widget_config_bg_alpha_label">பின்னணி ஒளிபுகாநிலை</string>
+    <string name="widget_config_show_label_toggle">சாதன பெயர் காட்டு</string>
+    <string name="widget_config_show_label_description">பூட்டு நிலைக்கு மேலே இணைக்கப்பட்ட சாதனத்தை காட்டு.</string>
+    <string name="widget_config_theme_green_label">பச்சை</string>
+    <string name="widget_config_theme_red_label">சிவப்பு</string>
+    <string name="widget_config_theme_custom_label">தனிப்பயன்</string>
 </resources>

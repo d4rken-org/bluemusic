@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">FOSS</string>
+    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">需要 BVM FOSS</string>
     <string name="upgrade_prompt_title">升級至 BVM FOSS</string>
     <string name="upgrade_prompt_body">解鎖額外功能，並成為贊助者，以支持持續開發！</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager 沒有廣告，也不會出售使用者資料。持續的開發由你們所支援。</string>
     <string name="upgrade_screen_how_title">如何協助</string>
     <string name="upgrade_screen_how_body">成為贊助者並贊助開發！輕觸下面的按鈕，啟用所有額外功能，並開啟我的 Github 贊助者設定檔。</string>
-    <string name="upgrade_screen_why_title">此如魔術一般 🪄</string>
+    <string name="upgrade_screen_why_title">进入混音</string>
     <string name="upgrade_screen_why_body">• 充滿動力的開發者 🧙
 • 無限裝置 ➡️➡️
 • 額外動作 ⚙️

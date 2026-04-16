@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Palikt aktīvam, kamēr šī ierīce ir pievienota, un saglabāt skaļuma izmaiņas, kas nav radusās no šīs lietotnes.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Saglabāt skaļumu atvienojot</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Uztvert un saglabāt pašreizējos skaļuma līmeņus, kad šī ierīce atvienojas.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Dažās ierīcēs sistēma pārslēdz audio maršrutēšanu, pirms mēs varam nolasīt skaļumus. Ja saglabātās vērtības neatbilst tam, ko biji iestatījis, mēģini tā vietā iespējot \"Novērot skaļuma izmaiņas\".</string>
     <string name="devices_device_config_volume_lock_label">Skaļuma bloktāze</string>
     <string name="devices_device_config_volume_lock_desc">Jebkādas skaļuma izmaiņas, kas nav veiktas caur šo lietotni, tiks atatstatas atpakaļ, kamēr šī ierīce ir pievienota.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Skaļuma bloķēšana pašlaik ignorē šo funkciju.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Skaļuma ātruma ierobežotājs</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ierobežot skaļuma izmaiņu biežumu, lai novērstu ātras vai pārmērīgas skaļuma korekcijas.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Skaļuma palielinošanas aizture</string>
@@ -201,6 +203,23 @@
     <string name="settings_privacy_policy_label">Privātuma politika</string>
     <string name="settings_privacy_policy_desc">Atbildīga datu apstrāde.</string>
     <string name="changelog_label">Izmaiņu žurnāls</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Dublēšana un atjaunošana</string>
+    <string name="backup_restore_settings_desc">Dublējiet un atjaunojiet ierīces konfigurācijas un iestatījumus.</string>
+    <string name="backup_restore_screen_title">Dublēšana un atjaunošana</string>
+    <string name="backup_restore_backup_desc">Izveidojiet visu ierīces konfigurāciju un lietotnes iestatījumu dublējumu.</string>
+    <string name="backup_restore_backup_action">Izveidot dublējumu</string>
+    <string name="backup_restore_restore_desc">Atjaunojiet ierīces konfigurācijas un lietotnes iestatījumus no dublējuma faila.</string>
+    <string name="backup_restore_restore_action">Atlasīt dublējuma failu</string>
+    <string name="backup_restore_skip_existing_label">Izlaist esošās ierīces</string>
+    <string name="backup_restore_skip_existing_desc">Nepārrakstīt ierīces, kas jau ir konfigurētas.</string>
+    <string name="backup_restore_preview_label">Dublējuma priekšskatījums</string>
+    <string name="backup_restore_preview_devices">%1$d ierīces</string>
+    <string name="backup_restore_preview_overlap">%1$d no %2$d ierīcēm jau konfigurēts</string>
+    <string name="backup_restore_confirm_action">Atjaunot tagad</string>
+    <string name="backup_restore_success_backup">Dublējums izveidots — saglabātas %1$d ierīces.</string>
+    <string name="backup_restore_success_restore">Atjaunošana pabeigta — atjaunotas %1$d ierīces, izlaistas %2$d.</string>
+    <string name="backup_restore_version_warning">Šis dublējums tika izveidots ar versiju %1$s. Jūs izmantojat %2$s. Daži iestatījumi var netikt atjaunoti pareizi.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Atkļūdošanas paziņojumi</string>
     <string name="debug_log_consent_title">Atkļūdošanas žurnāls</string>
@@ -286,6 +305,7 @@
     <string name="label_status_adjusting_volumes">Skaļumu pielāgošana</string>
     <string name="label_premium_version">Premium versija</string>
     <string name="general_upgrade_action">Jaunināt</string>
+    <string name="common_upgrade_required_label">Nepieciešams jauninājums</string>
     <string name="description_premium_required_additional_devices">Papildu ierīču pārvaldīšana prasa premium versiju.</string>
     <string name="description_premium_required_this_extra_option">Šī papildu opcija prasa šīs lietotnes premium versiju.</string>
     <string name="description_premium_upgrade_explanation">Iegūbiet premium versiju, lai iespējotu papildu funkcijas un atbalstītu izstrādi.</string>
@@ -294,6 +314,11 @@
     <string name="upgrade_prompt_upgrade_action">Jaunināt</string>
     <string name="description_intro_purpose">Šī lietotne ļauj jūsu Android ierīcei atcerēties dažādu Bluetooth ierīču skaļumus.</string>
     <string name="description_intro_premium">Ja jums patika šī lietotne, apsveriet jaunināšanu uz premium versiju. Tas atbalsta izstrādi un snēdz dažas papildu funkcijas.</string>
+    <string name="upgrade_benefit_unlimited_devices">Neierobežots ierīcī profilu skaits</string>
+    <string name="upgrade_benefit_connection_actions">Automātiskā atskaņošana, lietotnes palaist un savienojuma brīdinājumi</string>
+    <string name="upgrade_benefit_theme_customization">Temāta, stila un krāsu pielāgošana</string>
+    <string name="upgrade_benefit_power_controls">Skaļuma bloķēšana un ātruma ierobežošana</string>
+    <string name="upgrade_benefit_support">Atbalstīt neatkarīgu izstrādi</string>
     <string name="description_intro_tap_the_button">Sāciet, pievienojot savu pirmo ierīci.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ir atspējots.</string>
     <string name="title_bluetooth_is_off">Bluetooth ir izslēgts</string>
@@ -386,7 +411,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Skaļums (0–100)</string>
     <string name="devices_volume_input_error">Ievadiet vērtību starp %1$d un %2$d</string>
+    <string name="devices_volume_input_caption">Faktiskais skaļums var tikt noapaļots līdz tuvākajam solim, ko ierīce atbalsta.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Aizslēgt</string>
     <string name="devices_unlock_sliders_action">Atslēgt</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Rāda skaļuma bloķēšanas stāvokli aktīvajai Bluetooth ierīcei</string>
+    <string name="widget_no_device_label">Nav pievienota ierīce</string>
+    <string name="widget_bluetooth_off_label">Bluetooth ir izslēgts</string>
+    <string name="widget_error_label">Vidžeta kļūda</string>
+    <string name="widget_preview_device_label">Manas austiņas</string>
+    <string name="widget_config_title">Vidžeta iestatījumi</string>
+    <string name="widget_config_preview_label">Priekšskatījums</string>
+    <string name="widget_config_theme_label">Temāts</string>
+    <string name="widget_config_bg_color_label">Fona krāsa</string>
+    <string name="widget_config_fg_color_label">Teksta krāsa</string>
+    <string name="widget_config_bg_alpha_label">Fona necaurredzamība</string>
+    <string name="widget_config_show_label_toggle">Rādīt ierīces nosaukumu</string>
+    <string name="widget_config_show_label_description">Rādīt pievienoto ierīci vīrs bloķēšanas stāvokļa.</string>
+    <string name="widget_config_theme_green_label">Zaļa</string>
+    <string name="widget_config_theme_red_label">Sarkana</string>
+    <string name="widget_config_theme_custom_label">Pielāgots</string>
 </resources>

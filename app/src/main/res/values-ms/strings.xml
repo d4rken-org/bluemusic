@@ -62,8 +62,10 @@
     <string name="devices_device_config_volume_observe_desc">Kekal aktif semasa peranti ini disambungkan dan simpan perubahan volum yang bukan disebabkan oleh apl ini.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Simpan volum semasa putus sambungan</string>
     <string name="devices_device_config_volume_save_on_disconnect_desc">Tangkap dan simpan tahap volum semasa apabila peranti ini diputuskan sambungan.</string>
+    <string name="devices_device_config_volume_save_on_disconnect_hint">Pada sesetengah peranti, sistem menukar penghalaan audio sebelum kami sempat membaca kelantangan. Jika nilai yang disimpan tidak sepadan dengan apa yang anda tetapkan, cuba aktifkan \"Perhatikan perubahan kelantangan\" sebaliknya.</string>
     <string name="devices_device_config_volume_lock_label">Kunci volum</string>
     <string name="devices_device_config_volume_lock_desc">Sebarang perubahan volum yang tidak dilakukan melalui apl ini akan dikembalikan sementara peranti ini dihubungkan.</string>
+    <string name="devices_device_config_volume_lock_override_desc">Kunci kelantangan sedang mengatasi ciri ini.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Pembatas kadar volum</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Hadkan kekerapan perubahan volum untuk menghalang pelarasan volum yang cepat atau berlebihan.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Kelewatan kenaikan volum</string>
@@ -178,7 +180,6 @@
     <string name="settings_support_debuglog_folder_empty_desc">Tiada log nyahpepijat tersimpan</string>
     <string name="settings_support_debuglog_folder_delete_title">Padam semua log nyahpepijat?</string>
     <string name="settings_support_debuglog_folder_delete_msg">Ini akan memadamkan semua sesi log nyahpepijat yang tersimpan secara kekal.</string>
-    <string name="settings_support_discord_label">Percanggahan</string>
     <string name="settings_support_discord_description">Tempat untuk bergaul dan bertanya soalan.</string>
     <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Penghargaan</string>
@@ -199,6 +200,23 @@
     <string name="settings_privacy_policy_label">Dasar privasi</string>
     <string name="settings_privacy_policy_desc">Mengendalikan data secara bertanggungjawab.</string>
     <string name="changelog_label">Log perubahan</string>
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Sandaran &amp; Pulih</string>
+    <string name="backup_restore_settings_desc">Sandarkan dan pulihkan konfigurasi peranti serta tetapan anda.</string>
+    <string name="backup_restore_screen_title">Sandaran &amp; Pulih</string>
+    <string name="backup_restore_backup_desc">Buat sandaran semua konfigurasi peranti dan tetapan aplikasi anda.</string>
+    <string name="backup_restore_backup_action">Buat sandaran</string>
+    <string name="backup_restore_restore_desc">Pulihkan konfigurasi peranti dan tetapan aplikasi daripada fail sandaran.</string>
+    <string name="backup_restore_restore_action">Pilih fail sandaran</string>
+    <string name="backup_restore_skip_existing_label">Langkau peranti yang sedia ada</string>
+    <string name="backup_restore_skip_existing_desc">Jangan ganti peranti yang telah dikonfigurasi.</string>
+    <string name="backup_restore_preview_label">Pratonton sandaran</string>
+    <string name="backup_restore_preview_devices">%1$d peranti</string>
+    <string name="backup_restore_preview_overlap">%1$d daripada %2$d peranti telah dikonfigurasi</string>
+    <string name="backup_restore_confirm_action">Pulihkan sekarang</string>
+    <string name="backup_restore_success_backup">Sandaran dibuat — %1$d peranti disimpan.</string>
+    <string name="backup_restore_success_restore">Pemulihan selesai — %1$d peranti dipulihkan, %2$d dilangkau.</string>
+    <string name="backup_restore_version_warning">Sandaran ini dibuat dengan versi %1$s. Anda sedang menggunakan %2$s. Sesetengah tetapan mungkin tidak dipulihkan dengan betul.</string>
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Pemberitahuan nyahpepijat</string>
     <string name="debug_log_consent_title">Log nyahpepijat</string>
@@ -280,6 +298,7 @@
     <string name="label_status_adjusting_volumes">Melaraskan volum</string>
     <string name="label_premium_version">Versi premium</string>
     <string name="general_upgrade_action">Naik taraf</string>
+    <string name="common_upgrade_required_label">Naik taraf diperlukan</string>
     <string name="description_premium_required_additional_devices">Meguruskan peranti tambahan memerlukan versi premium.</string>
     <string name="description_premium_required_this_extra_option">Opsyen ekstra ini memerlukan versi premium dari apl ini.</string>
     <string name="description_premium_upgrade_explanation">Dapatkan versi premium untuk dayakan ciri-ciri tambahan serta menyokong pembangunan.</string>
@@ -288,6 +307,11 @@
     <string name="upgrade_prompt_upgrade_action">Naik taraf</string>
     <string name="description_intro_purpose">Apl ini membolehkan peranti Android anda mengingati volum dari peranti Bluetooth yang berbeza.</string>
     <string name="description_intro_premium">Jika anda sukakan apl ini, pertimbangkan untuk menaik taraf ke versi premium. Ia menyokong pembangunan serta membolehkan anda mendapat beberapa ciri ekstra.</string>
+    <string name="upgrade_benefit_unlimited_devices">Profil peranti tanpa had</string>
+    <string name="upgrade_benefit_connection_actions">Main auto, lancar aplikasi dan amaran sambungan</string>
+    <string name="upgrade_benefit_theme_customization">Penyesuaian tema, gaya dan warna</string>
+    <string name="upgrade_benefit_power_controls">Kunci kelantangan dan pengehadan kadar</string>
+    <string name="upgrade_benefit_support">Sokong pembangunan bebas</string>
     <string name="description_intro_tap_the_button">Mula dengan memasukkan peranti pertama anda.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth dinyahdayakan.</string>
     <string name="title_bluetooth_is_off">Bluetooth Dimatikan</string>
@@ -327,7 +351,6 @@
     <string name="action_fix">Betulkan</string>
     <string name="battery_optimizations_issue_description">Pengoptimuman bateri boleh didayakan bagi apl ini dan dapat mencegahnya dari menerima aktiviti Bluetooth. Pertimbang untuk nyahdayakan pengoptimuman jika anda mengalami isu.</string>
     <string name="label_bluetooth_settings">Tetapan bluetooth</string>
-    <string name="android10_applaunch_issue_description">Android 10 mengawal bagaimana apl boleh dilancarkan dari latar belakang. Bagi membolehkan apl dibuka bila peranti Bluetooth bersambung, berikan kebenaran \&quot;Paparan ke atas apl lain\&quot; (SISTEM_WASPADA_TETINGKAP).</string>
     <string name="label_opensource">Kod sumber</string>
     <string name="android13_notification_permission_description">Beri apl ini kebenaran untuk hantar pemberitahuan. Ini membolehkan memaparkan pemberitahuan apabila apl ini aktif dan pelarasan volum sedang dibuat.</string>
     <string name="privacy_policy_label">Dasar privasi</string>
@@ -378,7 +401,25 @@
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">Volum (0–100)</string>
     <string name="devices_volume_input_error">Masukkan nilai antara %1$d dan %2$d</string>
+    <string name="devices_volume_input_caption">Kelantangan sebenar mungkin dibulatkan kepada langkah terdekat yang disokong oleh peranti anda.</string>
     <!-- Lock/unlock sliders -->
     <string name="devices_lock_sliders_action">Kunci</string>
     <string name="devices_unlock_sliders_action">Buka kunci</string>
+    <!-- Widget -->
+    <string name="widget_volume_lock_description">Menunjukkan status kunci kelantangan untuk peranti Bluetooth yang aktif</string>
+    <string name="widget_no_device_label">Tiada peranti yang terhubung</string>
+    <string name="widget_bluetooth_off_label">Bluetooth dimatikan</string>
+    <string name="widget_error_label">Ralat widget</string>
+    <string name="widget_preview_device_label">Fon Kepala Saya</string>
+    <string name="widget_config_title">Tetapan widget</string>
+    <string name="widget_config_preview_label">Pratonton</string>
+    <string name="widget_config_theme_label">Tema</string>
+    <string name="widget_config_bg_color_label">Warna latar belakang</string>
+    <string name="widget_config_fg_color_label">Warna teks</string>
+    <string name="widget_config_bg_alpha_label">Kelegapan latar belakang</string>
+    <string name="widget_config_show_label_toggle">Tunjukkan nama peranti</string>
+    <string name="widget_config_show_label_description">Tunjukkan peranti yang disambungkan di atas status kunci.</string>
+    <string name="widget_config_theme_green_label">Hijau</string>
+    <string name="widget_config_theme_red_label">Merah</string>
+    <string name="widget_config_theme_custom_label">Tersuai</string>
 </resources>

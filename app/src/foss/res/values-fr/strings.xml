@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
     <string name="app_name_upgrade_postfix">Logiciel libre</string>
+    <string name="upgrade_badge_label">Logiciel libre</string>
     <string name="upgrade_feature_requires_pro">Nécessite BVM FOSS</string>
     <string name="upgrade_prompt_title">Passer à BVM FOSS</string>
     <string name="upgrade_prompt_body">Débloquez des fonctions supplémentaires et devenez mécène pour soutenir le développement continu.</string>
@@ -10,7 +11,7 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager n’affiche pas de publicités et ne vend pas les données des utilisateurs. La poursuite du développement n’est possible que grâce à vous.</string>
     <string name="upgrade_screen_how_title">Comment aider</string>
     <string name="upgrade_screen_how_body">Devenez mécène et commanditez le développement d’Octi. Touchez le bouton ci-dessous pour activer les fonctions supplémentaires et ouvrir mon profil « GitHub Sponsors ».</string>
-    <string name="upgrade_screen_why_title">Vous obtiendrez comme par magie 🪄 :</string>
+    <string name="upgrade_screen_why_title">Dans le mix</string>
     <string name="upgrade_screen_why_body">• Un développeur motivé 🧙
 • Appareils illimités ➡️➡️
 • Actions supplémentaires ⚙️
