@@ -227,6 +227,24 @@
 
     <string name="changelog_label">Changelog</string>
 
+    <!-- Backup & Restore -->
+    <string name="backup_restore_settings_label">Backup &amp; Restore</string>
+    <string name="backup_restore_settings_desc">Back up and restore your device configurations and settings.</string>
+    <string name="backup_restore_screen_title">Backup &amp; Restore</string>
+    <string name="backup_restore_backup_desc">Create a backup of all your device configurations and app settings.</string>
+    <string name="backup_restore_backup_action">Create backup</string>
+    <string name="backup_restore_restore_desc">Restore device configurations and app settings from a backup file.</string>
+    <string name="backup_restore_restore_action">Select backup file</string>
+    <string name="backup_restore_skip_existing_label">Skip existing devices</string>
+    <string name="backup_restore_skip_existing_desc">Don\'t overwrite devices that are already configured.</string>
+    <string name="backup_restore_preview_label">Backup preview</string>
+    <string name="backup_restore_preview_devices">%1$d devices</string>
+    <string name="backup_restore_preview_overlap">%1$d of %2$d devices already configured</string>
+    <string name="backup_restore_confirm_action">Restore now</string>
+    <string name="backup_restore_success_backup">Backup created — %1$d devices saved.</string>
+    <string name="backup_restore_success_restore">Restore complete — %1$d devices restored, %2$d skipped.</string>
+    <string name="backup_restore_version_warning">This backup was created with version %1$s. You\'re running %2$s. Some settings may not restore correctly.</string>
+
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Debug notifications</string>
     <string name="debug_log_consent_title">Debug log</string>

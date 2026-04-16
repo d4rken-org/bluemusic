@@ -64,6 +64,11 @@ sealed interface Nav : NavigationDestination {
         }
 
         @Serializable
+        data object BackupRestore : Settings {
+            private fun readResolve(): Any = BackupRestore
+        }
+
+        @Serializable
         data object ContactSupport : Settings {
             private fun readResolve(): Any = ContactSupport
         }
