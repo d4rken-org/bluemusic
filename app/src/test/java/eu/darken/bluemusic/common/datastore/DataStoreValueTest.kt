@@ -18,8 +18,8 @@ import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.withContext
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
-import java.io.File
 import testhelpers.BaseTest
+import java.io.File
 
 class DataStoreValueTest : BaseTest() {
 
@@ -212,6 +212,46 @@ class DataStoreValueTest : BaseTest() {
             flow.first() shouldBe 3.6f
             testStore.data.first()[floatPreferencesKey(keyName)] shouldBe null
         }
+    }
+
+    @Test
+    fun `setIn writes into a MutablePreferences block`(@TempDir tempDir: File) = runTest {
+        val testStore = createDataStore(this, tempDir)
+
+        val flagA = testStore.createValue("flagA", false)
+        val flagB = testStore.createValue("flagB", true)
+
+        testStore.updateData { prefs ->
+            prefs.toMutablePreferences().apply {
+                flagA.setIn(this, true)
+                flagB.setIn(this, false)
+            }.toPreferences()
+        }
+
+        flagA.value() shouldBe true
+        flagB.value() shouldBe false
+    }
+
+    @Test
+    fun `setIn with null writer output removes the key`(@TempDir tempDir: File) = runTest {
+        val testStore = createDataStore(this, tempDir)
+
+        val nullable = testStore.createValue<String?>("maybe", "default")
+
+        testStore.updateData { prefs ->
+            prefs.toMutablePreferences().apply {
+                nullable.setIn(this, "stored")
+            }.toPreferences()
+        }
+        nullable.value() shouldBe "stored"
+
+        testStore.updateData { prefs ->
+            prefs.toMutablePreferences().apply {
+                nullable.setIn(this, null)
+            }.toPreferences()
+        }
+        nullable.value() shouldBe "default"
+        testStore.data.first()[stringPreferencesKey("maybe")] shouldBe null
     }
 
     @Test

@@ -10,12 +10,12 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
+import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.database.DeviceDatabase
 import eu.darken.bluemusic.main.core.GeneralSettings
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
@@ -67,8 +67,14 @@ class BackupRestoreManager @Inject constructor(
 
         val backup = gatherBackupData()
 
-        log(TAG, DEBUG) { "Backup metadata: formatVersion=${backup.formatVersion}, appVersion=${backup.appVersion}, createdAt=${backup.createdAt}" }
-        log(TAG, DEBUG) { "Backup contents: ${backup.deviceConfigs.size} devices, devicesSettings=${backup.devicesSettings}, generalSettings=${backup.generalSettings}" }
+        log(
+            TAG,
+            DEBUG
+        ) { "Backup metadata: formatVersion=${backup.formatVersion}, appVersion=${backup.appVersion}, createdAt=${backup.createdAt}" }
+        log(
+            TAG,
+            DEBUG
+        ) { "Backup contents: ${backup.deviceConfigs.size} devices, devicesSettings=${backup.devicesSettings}, generalSettings=${backup.generalSettings}" }
 
         backup.deviceConfigs.forEachIndexed { i, device ->
             log(TAG, VERBOSE) { "Backup device[$i]: ${device.address} (name=${device.customName})" }
@@ -133,7 +139,10 @@ class BackupRestoreManager @Inject constructor(
         }
 
         log(TAG, DEBUG) { "Parsed: formatVersion=${backup.formatVersion}, appVersion=${backup.appVersion}, createdAt=${backup.createdAt}" }
-        log(TAG, DEBUG) { "Parsed: ${backup.deviceConfigs.size} devices, devicesSettings=${backup.devicesSettings}, generalSettings=${backup.generalSettings}" }
+        log(
+            TAG,
+            DEBUG
+        ) { "Parsed: ${backup.deviceConfigs.size} devices, devicesSettings=${backup.devicesSettings}, generalSettings=${backup.generalSettings}" }
 
         if (backup.formatVersion != CURRENT_FORMAT_VERSION) {
             log(TAG, WARN) { "Unsupported format version: ${backup.formatVersion} (expected $CURRENT_FORMAT_VERSION)" }
@@ -152,36 +161,50 @@ class BackupRestoreManager @Inject constructor(
             log(TAG, VERBOSE) { "Parsed device[$i]: ${device.address} (name=${device.customName})" }
         }
 
-        log(TAG, INFO) { "Parsed backup: ${backup.deviceConfigs.size} devices, versionMismatch=$versionMismatch, ${enumWarnings.size} enum warnings" }
+        log(
+            TAG,
+            INFO
+        ) { "Parsed backup: ${backup.deviceConfigs.size} devices, versionMismatch=$versionMismatch, ${enumWarnings.size} enum warnings" }
         ParseResult(backup = backup, versionMismatch = versionMismatch, enumWarnings = enumWarnings)
     }
 
     suspend fun applyRestore(backup: AppBackup, skipExisting: Boolean): RestoreResult =
         withContext(dispatcherProvider.IO) {
-            log(TAG, INFO) { "applyRestore(devices=${backup.deviceConfigs.size}, skipExisting=$skipExisting)" }
+            val deduped = backup.deviceConfigs.distinctBy { it.address }
+            val duplicateCount = backup.deviceConfigs.size - deduped.size
+            log(TAG, INFO) {
+                "applyRestore(devices=${deduped.size}, skipExisting=$skipExisting, duplicatesDropped=$duplicateCount)"
+            }
             log(TAG, VERBOSE) { "Restore JSON:\n${prettyJson.encodeToString(AppBackup.serializer(), backup)}" }
 
             val dao = deviceDatabase.devices
-            val existing = dao.getAllDevices().first().associateBy { it.address }.keys
-            log(TAG, DEBUG) { "Existing devices (${existing.size}): $existing" }
-
             var restoredCount = 0
             var skippedCount = 0
 
-            backup.deviceConfigs.forEach { deviceBackup ->
-                if (skipExisting && deviceBackup.address in existing) {
-                    log(TAG, DEBUG) { "Skipping existing device: ${deviceBackup.address} (name=${deviceBackup.customName})" }
-                    skippedCount++
-                    return@forEach
+            try {
+                deviceDatabase.withTransaction {
+                    val existing = dao.getAllDevicesOnce().associateBy { it.address }.keys
+                    log(TAG, DEBUG) { "Existing devices (${existing.size}): $existing" }
+
+                    deduped.forEach { deviceBackup ->
+                        if (skipExisting && deviceBackup.address in existing) {
+                            log(TAG, DEBUG) { "Skipping existing device: ${deviceBackup.address} (name=${deviceBackup.customName})" }
+                            skippedCount++
+                            return@forEach
+                        }
+                        val entity = deviceBackup.toEntity()
+                        val isUpdate = deviceBackup.address in existing
+                        log(TAG, DEBUG) { "${if (isUpdate) "Updating" else "Inserting"} device: ${entity.toCompactString()}" }
+                        dao.updateDevice(entity)
+                        restoredCount++
+                    }
                 }
-                val entity = deviceBackup.toEntity()
-                val isUpdate = deviceBackup.address in existing
-                log(TAG, DEBUG) { "${if (isUpdate) "Updating" else "Inserting"} device: ${entity.toCompactString()}" }
-                dao.updateDevice(entity)
-                restoredCount++
+            } catch (e: Exception) {
+                log(TAG, WARN) { "Device-write transaction failed, rolled back: ${e.asLog()}" }
+                throw e
             }
 
-            log(TAG, DEBUG) { "Restoring DevicesSettings: $backup.devicesSettings" }
+            log(TAG, DEBUG) { "Restoring DevicesSettings: ${backup.devicesSettings}" }
             devicesSettings.applyBackup(backup.devicesSettings)
 
             log(TAG, DEBUG) { "Restoring GeneralSettings: ${backup.generalSettings}" }
@@ -202,7 +225,7 @@ class BackupRestoreManager @Inject constructor(
     }
 
     private suspend fun gatherBackupData(): AppBackup {
-        val devices = deviceDatabase.devices.getAllDevices().first()
+        val devices = deviceDatabase.devices.getAllDevicesOnce()
         return AppBackup(
             formatVersion = CURRENT_FORMAT_VERSION,
             appVersion = BuildConfigWrap.VERSION_NAME,
@@ -219,6 +242,15 @@ class BackupRestoreManager @Inject constructor(
             addAll(device.detectUnknownEnums())
         }
         addAll(generalSettings.detectUnknownEnums(backup.generalSettings))
+
+        val duplicates = backup.deviceConfigs
+            .groupingBy { it.address }
+            .eachCount()
+            .filter { it.value > 1 }
+            .keys
+        duplicates.forEach { address ->
+            add("Backup contains duplicate entries for device $address, only the first will be applied")
+        }
     }
 
     private fun String.toComparableJson(): String = try {

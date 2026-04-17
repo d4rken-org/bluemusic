@@ -97,9 +97,21 @@ class DevicesSettings @Inject constructor(
     )
 
     suspend fun applyBackup(backup: DevicesSettingsBackup) {
-        setEnabled(backup.isEnabled)
-        restoreOnBoot.value(backup.restoreOnBoot)
-        lockedDevices.value(backup.lockedDevices)
+        dataStore.updateData { prefs ->
+            prefs.toMutablePreferences().apply {
+                val currentEnabled = this[KEY_ENABLED] ?: true
+                val currentEpoch = this[KEY_ENABLED_EPOCH] ?: 0L
+                if (currentEnabled == backup.isEnabled) {
+                    this[KEY_ENABLED] = currentEnabled
+                    this[KEY_ENABLED_EPOCH] = currentEpoch
+                } else {
+                    this[KEY_ENABLED] = backup.isEnabled
+                    this[KEY_ENABLED_EPOCH] = currentEpoch + 1L
+                }
+                restoreOnBoot.setIn(this, backup.restoreOnBoot)
+                lockedDevices.setIn(this, backup.lockedDevices)
+            }.toPreferences()
+        }
     }
 
     companion object {

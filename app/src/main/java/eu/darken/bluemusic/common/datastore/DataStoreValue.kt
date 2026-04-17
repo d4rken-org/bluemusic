@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.common.datastore
 
 import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.MutablePreferences
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.floatPreferencesKey
@@ -62,6 +63,17 @@ class DataStoreValue<T : Any?>(
         }
 
         return Updated(old = (values[0] as T), new = (values[1] as T))
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    fun setIn(prefs: MutablePreferences, value: T) {
+        val toWrite = writer(value)
+        if (Bugs.isTrace) log(dataStoreTag) { "SET_IN $keyName <- $toWrite" }
+        if (toWrite == null) {
+            prefs.remove(key)
+        } else {
+            prefs[key as Preferences.Key<Any>] = toWrite
+        }
     }
 }
 
