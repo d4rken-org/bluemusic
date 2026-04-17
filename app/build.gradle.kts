@@ -327,6 +327,7 @@ dependencies {
     testImplementation("io.kotest:kotest-property-jvm:6.1.3")
 
     testImplementation("android.arch.core:core-testing:1.1.1")
+    testImplementation("org.robolectric:robolectric:4.14.1")
     debugImplementation("androidx.test:core-ktx:1.7.0")
 
 

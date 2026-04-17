@@ -10,10 +10,10 @@ import eu.darken.bluemusic.common.datastore.PreferenceData
 import eu.darken.bluemusic.common.datastore.createValue
 import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.main.backup.core.GeneralSettingsBackup
 import eu.darken.bluemusic.common.theming.ThemeColor
 import eu.darken.bluemusic.common.theming.ThemeMode
 import eu.darken.bluemusic.common.theming.ThemeStyle
+import eu.darken.bluemusic.main.backup.core.GeneralSettingsBackup
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -60,14 +60,18 @@ class GeneralSettings @Inject constructor(
     )
 
     suspend fun applyBackup(backup: GeneralSettingsBackup) {
-        themeMode.value(ThemeMode.entries.find { it.name == backup.themeMode } ?: ThemeMode.SYSTEM)
-        themeStyle.value(ThemeStyle.entries.find { it.name == backup.themeStyle } ?: ThemeStyle.DEFAULT)
-        themeColor.value(ThemeColor.entries.find { it.name == backup.themeColor } ?: ThemeColor.BLUE)
-        // Progression flags: only set to true, never revert to false
-        if (backup.isOnboardingCompleted) isOnboardingCompleted.value(true)
-        if (backup.isBatteryOptimizationHintDismissed) isBatteryOptimizationHintDismissed.value(true)
-        if (backup.isAndroid10AppLaunchHintDismissed) isAndroid10AppLaunchHintDismissed.value(true)
-        if (backup.isNotificationPermissionHintDismissed) isNotificationPermissionHintDismissed.value(true)
+        dataStore.updateData { prefs ->
+            prefs.toMutablePreferences().apply {
+                themeMode.setIn(this, ThemeMode.entries.find { it.name == backup.themeMode } ?: ThemeMode.SYSTEM)
+                themeStyle.setIn(this, ThemeStyle.entries.find { it.name == backup.themeStyle } ?: ThemeStyle.DEFAULT)
+                themeColor.setIn(this, ThemeColor.entries.find { it.name == backup.themeColor } ?: ThemeColor.BLUE)
+                // Progression flags: only set to true, never revert to false
+                if (backup.isOnboardingCompleted) isOnboardingCompleted.setIn(this, true)
+                if (backup.isBatteryOptimizationHintDismissed) isBatteryOptimizationHintDismissed.setIn(this, true)
+                if (backup.isAndroid10AppLaunchHintDismissed) isAndroid10AppLaunchHintDismissed.setIn(this, true)
+                if (backup.isNotificationPermissionHintDismissed) isNotificationPermissionHintDismissed.setIn(this, true)
+            }.toPreferences()
+        }
     }
 
     fun detectUnknownEnums(backup: GeneralSettingsBackup): List<String> = buildList {

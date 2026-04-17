@@ -14,7 +14,6 @@ import eu.darken.bluemusic.main.backup.core.BackupRestoreManager
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import java.time.LocalDate
 import javax.inject.Inject
@@ -88,7 +87,7 @@ class BackupRestoreViewModel @Inject constructor(
             val parseResult = backupRestoreManager.parseBackup(uri)
             val fileName = backupRestoreManager.resolveFileName(uri)
 
-            val existingAddresses = deviceDatabase.devices.getAllDevices().first()
+            val existingAddresses = deviceDatabase.devices.getAllDevicesOnce()
                 .map { it.address }
                 .toSet()
             val overlapCount = parseResult.backup.deviceConfigs.count { it.address in existingAddresses }
@@ -110,13 +109,13 @@ class BackupRestoreViewModel @Inject constructor(
     fun onConfirmRestore() = launch {
         val preview = pendingRestoreFlow.value ?: return@launch
         log(tag, INFO) { "onConfirmRestore()" }
-        pendingRestoreFlow.value = null
         isWorkingFlow.value = true
         try {
             val result = backupRestoreManager.applyRestore(
                 backup = preview.backup,
                 skipExisting = skipExistingFlow.value,
             )
+            pendingRestoreFlow.value = null
             lastResultFlow.value = OperationResult(
                 type = OperationType.RESTORE,
                 deviceCount = result.deviceCount,
