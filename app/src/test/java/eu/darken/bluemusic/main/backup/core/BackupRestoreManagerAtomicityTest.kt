@@ -74,56 +74,60 @@ class BackupRestoreManagerAtomicityTest {
     }
 
     @Test
-    fun `device-write exception rolls back transaction`() = runBlocking {
-        val existing1 = DeviceConfigEntity(address = "AA:AA:AA:AA:AA:AA", customName = "Original A")
-        val existing2 = DeviceConfigEntity(address = "BB:BB:BB:BB:BB:BB", customName = "Original B")
-        roomDb.devices().updateDevice(existing1)
-        roomDb.devices().updateDevice(existing2)
+    fun `device-write exception rolls back transaction`() {
+        runBlocking {
+            val existing1 = DeviceConfigEntity(address = "AA:AA:AA:AA:AA:AA", customName = "Original A")
+            val existing2 = DeviceConfigEntity(address = "BB:BB:BB:BB:BB:BB", customName = "Original B")
+            roomDb.devices().updateDevice(existing1)
+            roomDb.devices().updateDevice(existing2)
 
-        deviceDatabase.setDaoForTest(ThrowingDao(roomDb.devices(), throwAfterWrites = 1))
+            deviceDatabase.setDaoForTest(ThrowingDao(roomDb.devices(), throwAfterWrites = 1))
 
-        val incomingBackup = AppBackup(
-            formatVersion = 1,
-            appVersion = "1.0.0",
-            createdAt = "2026-01-01T00:00:00Z",
-            deviceConfigs = listOf(
-                DeviceConfigBackup(address = "CC:CC:CC:CC:CC:CC", customName = "New C"),
-                DeviceConfigBackup(address = "DD:DD:DD:DD:DD:DD", customName = "New D"),
-            ),
-        )
+            val incomingBackup = AppBackup(
+                formatVersion = 1,
+                appVersion = "1.0.0",
+                createdAt = "2026-01-01T00:00:00Z",
+                deviceConfigs = listOf(
+                    DeviceConfigBackup(address = "CC:CC:CC:CC:CC:CC", customName = "New C"),
+                    DeviceConfigBackup(address = "DD:DD:DD:DD:DD:DD", customName = "New D"),
+                ),
+            )
 
-        shouldThrow<IOException> {
-            manager.applyRestore(incomingBackup, skipExisting = false)
+            shouldThrow<IOException> {
+                manager.applyRestore(incomingBackup, skipExisting = false)
+            }
+
+            deviceDatabase.setDaoForTest(null)
+            val actual = roomDb.devices().getAllDevicesOnce()
+            actual.map { it.address } shouldContainExactlyInAnyOrder listOf(
+                "AA:AA:AA:AA:AA:AA",
+                "BB:BB:BB:BB:BB:BB",
+            )
+            actual.first { it.address == "AA:AA:AA:AA:AA:AA" }.customName shouldBe "Original A"
         }
-
-        deviceDatabase.setDaoForTest(null)
-        val actual = roomDb.devices().getAllDevicesOnce()
-        actual.map { it.address } shouldContainExactlyInAnyOrder listOf(
-            "AA:AA:AA:AA:AA:AA",
-            "BB:BB:BB:BB:BB:BB",
-        )
-        actual.first { it.address == "AA:AA:AA:AA:AA:AA" }.customName shouldBe "Original A"
     }
 
     @Test
-    fun `successful restore writes all rows`() = runBlocking {
-        val incomingBackup = AppBackup(
-            formatVersion = 1,
-            appVersion = "1.0.0",
-            createdAt = "2026-01-01T00:00:00Z",
-            deviceConfigs = listOf(
-                DeviceConfigBackup(address = "AA:AA:AA:AA:AA:AA", customName = "Alpha"),
-                DeviceConfigBackup(address = "BB:BB:BB:BB:BB:BB", customName = "Beta"),
-            ),
-        )
+    fun `successful restore writes all rows`() {
+        runBlocking {
+            val incomingBackup = AppBackup(
+                formatVersion = 1,
+                appVersion = "1.0.0",
+                createdAt = "2026-01-01T00:00:00Z",
+                deviceConfigs = listOf(
+                    DeviceConfigBackup(address = "AA:AA:AA:AA:AA:AA", customName = "Alpha"),
+                    DeviceConfigBackup(address = "BB:BB:BB:BB:BB:BB", customName = "Beta"),
+                ),
+            )
 
-        manager.applyRestore(incomingBackup, skipExisting = false)
+            manager.applyRestore(incomingBackup, skipExisting = false)
 
-        val actual = roomDb.devices().getAllDevicesOnce()
-        actual.map { it.address } shouldContainExactlyInAnyOrder listOf(
-            "AA:AA:AA:AA:AA:AA",
-            "BB:BB:BB:BB:BB:BB",
-        )
+            val actual = roomDb.devices().getAllDevicesOnce()
+            actual.map { it.address } shouldContainExactlyInAnyOrder listOf(
+                "AA:AA:AA:AA:AA:AA",
+                "BB:BB:BB:BB:BB:BB",
+            )
+        }
     }
 
     private class ThrowingDao(

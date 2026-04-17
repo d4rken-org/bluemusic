@@ -147,20 +147,10 @@ class WidgetRenderStateMapperTest {
     }
 
     @Test
-    fun `theme with only background color still resolves without blending accent`() {
-        val theme = WidgetTheme(
-            backgroundColor = Color.rgb(10, 10, 10),
-            foregroundColor = null,
-        )
-        WidgetRenderStateMapper.resolvedAccentColor(context, theme)
-    }
-
-    @Test
-    fun `theme with only foreground color still resolves without blending accent`() {
-        val theme = WidgetTheme(
-            backgroundColor = null,
-            foregroundColor = Color.rgb(240, 240, 240),
-        )
-        WidgetRenderStateMapper.resolvedAccentColor(context, theme)
+    fun `partially custom theme resolves accent via fallback`() {
+        val bgOnly = WidgetTheme(backgroundColor = Color.rgb(10, 10, 10), foregroundColor = null)
+        val fgOnly = WidgetTheme(backgroundColor = null, foregroundColor = Color.rgb(240, 240, 240))
+        WidgetRenderStateMapper.resolvedAccentColor(context, bgOnly)
+        WidgetRenderStateMapper.resolvedAccentColor(context, fgOnly)
     }
 }
