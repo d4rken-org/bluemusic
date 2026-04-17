@@ -5,12 +5,13 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import androidx.lifecycle.SavedStateHandle
-import androidx.test.core.app.ApplicationProvider
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.mockkStatic
 import io.mockk.slot
+import io.mockk.unmockkStatic
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,29 +20,38 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import testhelpers.BaseTest
 import testhelpers.coroutine.TestDispatcherProvider
 
 @OptIn(ExperimentalCoroutinesApi::class)
-@RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE, sdk = [34])
-class WidgetConfigurationViewModelTest {
+class WidgetConfigurationViewModelTest : BaseTest() {
 
     private val widgetId = 42
     private lateinit var context: Context
     private lateinit var upgradeRepo: UpgradeRepo
     private lateinit var upgradeInfo: MutableStateFlow<FakeUpgradeInfo>
     private lateinit var appWidgetManager: AppWidgetManager
-    private var storedOptions: Bundle = Bundle()
+    private lateinit var storedOptions: Bundle
 
-    @Before
+    @BeforeEach
     fun setup() {
-        context = ApplicationProvider.getApplicationContext()
+        mockkStatic(Color::class)
+        every { Color.rgb(any<Int>(), any<Int>(), any<Int>()) } answers {
+            val r = firstArg<Int>() and 0xff
+            val g = secondArg<Int>() and 0xff
+            val b = thirdArg<Int>() and 0xff
+            (0xff shl 24) or (r shl 16) or (g shl 8) or b
+        }
+        every { Color.alpha(any<Int>()) } answers { (firstArg<Int>() ushr 24) and 0xff }
+        every { Color.red(any<Int>()) } answers { (firstArg<Int>() shr 16) and 0xff }
+        every { Color.green(any<Int>()) } answers { (firstArg<Int>() shr 8) and 0xff }
+        every { Color.blue(any<Int>()) } answers { firstArg<Int>() and 0xff }
+
+        context = mockk(relaxed = true)
+        storedOptions = mapBackedBundle()
 
         upgradeInfo = MutableStateFlow(FakeUpgradeInfo(isUpgraded = true))
         upgradeRepo = mockk(relaxed = true)
@@ -54,13 +64,14 @@ class WidgetConfigurationViewModelTest {
             storedOptions = updated.captured
         }
 
-        io.mockk.mockkStatic(AppWidgetManager::class)
+        mockkStatic(AppWidgetManager::class)
         every { AppWidgetManager.getInstance(any()) } returns appWidgetManager
     }
 
-    @After
+    @AfterEach
     fun tearDown() {
-        io.mockk.unmockkStatic(AppWidgetManager::class)
+        unmockkStatic(AppWidgetManager::class)
+        unmockkStatic(Color::class)
     }
 
     private fun viewModel(
@@ -134,7 +145,7 @@ class WidgetConfigurationViewModelTest {
     @Test
     fun `resetToDefaults restores default theme`() = runTest {
         val vm = viewModel()
-        vm.enterCustomMode(Color.RED, Color.BLUE)
+        vm.enterCustomMode(Color.rgb(255, 0, 0), Color.rgb(0, 0, 255))
         advanceUntilIdle()
 
         vm.resetToDefaults()
@@ -159,6 +170,45 @@ class WidgetConfigurationViewModelTest {
         roundTripped.backgroundColor shouldBe WidgetTheme.Preset.CLASSIC_LIGHT.presetBg
         roundTripped.foregroundColor shouldBe WidgetTheme.Preset.CLASSIC_LIGHT.presetFg
         roundTripped.backgroundAlpha shouldBe 128
+    }
+
+    private fun mapBackedBundle(): Bundle {
+        val store = mutableMapOf<String, Any?>()
+        val bundle = mockk<Bundle>(relaxed = true)
+        every { bundle.putString(any(), any()) } answers {
+            store[firstArg()] = secondArg<String?>()
+        }
+        every { bundle.getString(any()) } answers {
+            store[firstArg()] as? String
+        }
+        every { bundle.getString(any(), any<String>()) } answers {
+            (store[firstArg()] as? String) ?: secondArg()
+        }
+        every { bundle.putInt(any(), any<Int>()) } answers {
+            store[firstArg()] = secondArg<Int>()
+        }
+        every { bundle.getInt(any()) } answers {
+            (store[firstArg()] as? Int) ?: 0
+        }
+        every { bundle.getInt(any(), any<Int>()) } answers {
+            (store[firstArg()] as? Int) ?: secondArg()
+        }
+        every { bundle.putBoolean(any(), any<Boolean>()) } answers {
+            store[firstArg()] = secondArg<Boolean>()
+        }
+        every { bundle.getBoolean(any()) } answers {
+            (store[firstArg()] as? Boolean) ?: false
+        }
+        every { bundle.getBoolean(any(), any<Boolean>()) } answers {
+            (store[firstArg()] as? Boolean) ?: secondArg()
+        }
+        every { bundle.remove(any()) } answers {
+            store.remove(firstArg())
+        }
+        every { bundle.containsKey(any()) } answers {
+            firstArg<String>() in store
+        }
+        return bundle
     }
 
     private data class FakeUpgradeInfo(
