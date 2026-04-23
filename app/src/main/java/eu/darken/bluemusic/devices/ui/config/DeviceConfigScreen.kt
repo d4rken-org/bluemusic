@@ -82,6 +82,7 @@ import eu.darken.bluemusic.devices.ui.config.dialogs.DeleteDeviceDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.DndModeDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.RenameDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.TimingDialog
+import eu.darken.bluemusic.devices.ui.AutoplayKeycodes
 import eu.darken.bluemusic.devices.ui.icon
 import eu.darken.bluemusic.devices.ui.settings.dialogs.AutoplayKeycodesDialog
 import eu.darken.bluemusic.monitor.core.alert.AlertType
@@ -611,19 +612,9 @@ fun DeviceConfigScreen(
                                 description = if (device.autoplayKeycodes.isEmpty()) {
                                     stringResource(R.string.devices_device_config_autoplay_keycodes_none_set)
                                 } else {
-                                    val keycodeNames = device.autoplayKeycodes.mapNotNull { keycode ->
-                                        when (keycode) {
-                                            android.view.KeyEvent.KEYCODE_MEDIA_PLAY -> "Play"
-                                            android.view.KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE -> "Play/Pause"
-                                            android.view.KeyEvent.KEYCODE_MEDIA_NEXT -> "Next"
-                                            android.view.KeyEvent.KEYCODE_MEDIA_PREVIOUS -> "Previous"
-                                            android.view.KeyEvent.KEYCODE_MEDIA_STOP -> "Stop"
-                                            android.view.KeyEvent.KEYCODE_MEDIA_REWIND -> "Rewind"
-                                            android.view.KeyEvent.KEYCODE_MEDIA_FAST_FORWARD -> "Fast Forward"
-                                            else -> null
-                                        }
-                                    }
-                                    keycodeNames.joinToString(", ")
+                                    device.autoplayKeycodes
+                                        .map { AutoplayKeycodes.resolve(it).label() }
+                                        .joinToString(", ")
                                 },
                                 icon = Icons.TwoTone.Tune,
                                 onClick = { onAction(ConfigAction.OnEditAutoplayKeycodesClicked) },

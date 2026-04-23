@@ -195,7 +195,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
 
             is ConfigAction.OnEditAutoplayKeycodes -> {
                 deviceRepo.updateDevice(deviceAddress) { oldConfig ->
-                    oldConfig.copy(autoplayKeycodes = action.keycodes)
+                    oldConfig.copy(autoplayKeycodes = action.keycodes.distinct())
                 }
             }
 

@@ -79,13 +79,35 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Volume decrease delay</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimum time between volume decreases: %d ms</string>
     <string name="devices_device_config_autoplay_label">Autoplay</string>
-    <string name="devices_device_config_autoplay_desc">Simulate pressing play on a Bluetooth remote when this device connects.</string>
+    <string name="devices_device_config_autoplay_desc">Send the configured media key commands when this device connects.</string>
     <string name="devices_device_config_autoplay_keycodes_title">Autoplay Key Types</string>
     <string name="devices_device_config_autoplay_keycodes_available">Available key types</string>
     <string name="devices_device_config_autoplay_keycodes_order">Selected keys (in order)</string>
     <string name="devices_device_config_autoplay_keycodes_label">Key types</string>
     <string name="devices_device_config_autoplay_keycodes_desc">Configure which keys to send and in what order</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">No keys configured</string>
+    <string name="devices_autoplay_keycode_play_label">Play</string>
+    <string name="devices_autoplay_keycode_play_pause_label">Play/Pause</string>
+    <string name="devices_autoplay_keycode_next_label">Next</string>
+    <string name="devices_autoplay_keycode_previous_label">Previous</string>
+    <string name="devices_autoplay_keycode_stop_label">Stop</string>
+    <string name="devices_autoplay_keycode_rewind_label">Rewind</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">Fast Forward</string>
+    <string name="devices_autoplay_keycode_play_desc">Sends play command only</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">Toggles between play and pause</string>
+    <string name="devices_autoplay_keycode_next_desc">Skip to next track</string>
+    <string name="devices_autoplay_keycode_previous_desc">Go to previous track</string>
+    <string name="devices_autoplay_keycode_stop_desc">Stop playback</string>
+    <string name="devices_autoplay_keycode_rewind_desc">Rewind current track</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">Fast forward current track</string>
+    <string name="devices_autoplay_keycode_unknown_label">Unknown (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d key</item>
+        <item quantity="other">%d keys</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">Move up</string>
+    <string name="cd_autoplay_keycode_move_down">Move down</string>
+    <string name="cd_autoplay_keycode_remove">Remove</string>
 
     <string name="devices_device_config_section_volumes_label">Volumes</string>
     <string name="devices_device_config_section_volume_label">Volume</string>
@@ -448,7 +470,6 @@
     <string name="devices_indicator_disconnect">Disconnect</string>
     <string name="devices_indicator_limit">Limit</string>
     <string name="devices_indicator_launch">Launch</string>
-    <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alert</string>
