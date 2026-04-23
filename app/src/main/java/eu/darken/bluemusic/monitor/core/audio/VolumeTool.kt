@@ -74,7 +74,11 @@ class VolumeTool @Inject constructor(
             delay(10)
 
             // https://stackoverflow.com/questions/6733163/notificationmanager-notify-fails-with-securityexception
-            audioManager.setStreamVolume(streamId.id, volume, flags)
+            try {
+                audioManager.setStreamVolume(streamId.id, volume, flags)
+            } catch (e: SecurityException) {
+                log(TAG, WARN) { "setStreamVolume($streamId, $volume) denied: ${e.message}" }
+            }
 
             delay(10)
         } finally {

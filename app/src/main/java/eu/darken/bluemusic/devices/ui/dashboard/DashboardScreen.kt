@@ -71,6 +71,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.ui.dashboard.rows.Android10AppLaunchHintCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.BatteryOptimizationHintCard
+import eu.darken.bluemusic.devices.ui.dashboard.rows.DndAccessHintCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.EmptyDevicesCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.NotificationPermissionHintCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.device.ManagedDeviceItem
@@ -202,6 +203,15 @@ fun DevicesScreen(
                     Android10AppLaunchHintCard(
                         intent = state.android10AppLaunchIntent,
                         onDismiss = { onDeviceAction(DashboardAction.DismissAndroid10AppLaunchHint) }
+                    )
+                }
+            }
+
+            if (state.showDndAccessHint && state.dndAccessIntent != null) {
+                item {
+                    DndAccessHintCard(
+                        intent = state.dndAccessIntent,
+                        onDismiss = { onDeviceAction(DashboardAction.DismissDndAccessHint) }
                     )
                 }
             }

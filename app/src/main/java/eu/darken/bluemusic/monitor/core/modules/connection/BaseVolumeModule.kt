@@ -2,6 +2,7 @@ package eu.darken.bluemusic.monitor.core.modules.connection
 
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
@@ -36,7 +37,7 @@ abstract class BaseVolumeModule(
     override val tag: String
         get() = logTag("Monitor", "$type", "Volume", "Module")
 
-    open suspend fun areRequirementsMet(): Boolean = true
+    open suspend fun unmetRequirement(): String? = null
 
     override suspend fun handle(event: DeviceEvent) {
         if (event !is DeviceEvent.Connected) return
@@ -46,8 +47,9 @@ abstract class BaseVolumeModule(
         log(tag) { "Desired $type volume is $volumeMode" }
         if (volumeMode == null) return
 
-        if (!areRequirementsMet()) {
-            log(tag) { "Requirements not met!" }
+        val unmet = unmetRequirement()
+        if (unmet != null) {
+            log(tag, WARN) { "Skipping volume restore — requirement not met: $unmet" }
             return
         }
 

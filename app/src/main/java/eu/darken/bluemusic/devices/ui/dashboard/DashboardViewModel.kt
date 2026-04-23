@@ -88,6 +88,24 @@ class DashboardViewModel @Inject constructor(
         permissionHelper.getNotificationPermissionHint(isDismissed)
     }
 
+    private val dndAccessHintFlow = combine(
+        flow {
+            while (true) {
+                emit(System.currentTimeMillis())
+                delay(1000)
+            }
+        },
+        generalSettings.isDndAccessHintDismissed.flow,
+        devicesFlow,
+    ) { _, isDismissed, devices ->
+        val hasDevicesNeedingDnd = devices.any { device ->
+            device.getVolume(AudioStream.Type.RINGTONE) != null ||
+                device.getVolume(AudioStream.Type.NOTIFICATION) != null ||
+                device.dndMode != null
+        }
+        permissionHelper.getDndAccessHint(isDismissed, hasDevicesNeedingDnd)
+    }
+
     private val devicesWithAppsFlow = combine(
         devicesFlow,
         appRepo.apps
@@ -110,8 +128,9 @@ class DashboardViewModel @Inject constructor(
         batteryOptimizationHintFlow,
         overlayPermissionHintFlow,
         notificationPermissionHintFlow,
+        dndAccessHintFlow,
         devicesSettings.lockedDevices.flow,
-    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint, lockedDevices ->
+    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint, dndHint, lockedDevices ->
         State(
             isProVersion = upgradeInfo.isUpgraded,
             isBluetoothEnabled = bluetoothState.isEnabled,
@@ -123,6 +142,8 @@ class DashboardViewModel @Inject constructor(
             showAndroid10AppLaunchHint = overlayHint.shouldShow,
             android10AppLaunchIntent = overlayHint.intent,
             showNotificationPermissionHint = notificationHint.shouldShow,
+            showDndAccessHint = dndHint.shouldShow,
+            dndAccessIntent = dndHint.intent,
         )
     }.asStateFlow()
 
@@ -143,6 +164,8 @@ class DashboardViewModel @Inject constructor(
         val showAndroid10AppLaunchHint: Boolean = false,
         val android10AppLaunchIntent: Intent? = null,
         val showNotificationPermissionHint: Boolean = false,
+        val showDndAccessHint: Boolean = false,
+        val dndAccessIntent: Intent? = null,
     ) {
         // Convenience property for backwards compatibility
         val devices: List<ManagedDevice> get() = devicesWithApps.map { it.device }
@@ -182,6 +205,12 @@ class DashboardViewModel @Inject constructor(
             is DashboardAction.DismissNotificationPermissionHint -> {
                 launch {
                     generalSettings.isNotificationPermissionHintDismissed.update { true }
+                }
+            }
+
+            is DashboardAction.DismissDndAccessHint -> {
+                launch {
+                    generalSettings.isDndAccessHintDismissed.update { true }
                 }
             }
 

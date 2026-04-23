@@ -47,6 +47,7 @@ class GeneralSettings @Inject constructor(
     val isBatteryOptimizationHintDismissed = dataStore.createValue("hints.battery.optimization.dismissed", false)
     val isAndroid10AppLaunchHintDismissed = dataStore.createValue("hints.android10.applaunch.dismissed", false)
     val isNotificationPermissionHintDismissed = dataStore.createValue("hints.notification.permission.dismissed", false)
+    val isDndAccessHintDismissed = dataStore.createValue("hints.dnd.access.dismissed", false)
 
 
     suspend fun toBackup(): GeneralSettingsBackup = GeneralSettingsBackup(
@@ -57,6 +58,7 @@ class GeneralSettings @Inject constructor(
         isBatteryOptimizationHintDismissed = isBatteryOptimizationHintDismissed.value(),
         isAndroid10AppLaunchHintDismissed = isAndroid10AppLaunchHintDismissed.value(),
         isNotificationPermissionHintDismissed = isNotificationPermissionHintDismissed.value(),
+        isDndAccessHintDismissed = isDndAccessHintDismissed.value(),
     )
 
     suspend fun applyBackup(backup: GeneralSettingsBackup) {
@@ -70,6 +72,7 @@ class GeneralSettings @Inject constructor(
                 if (backup.isBatteryOptimizationHintDismissed) isBatteryOptimizationHintDismissed.setIn(this, true)
                 if (backup.isAndroid10AppLaunchHintDismissed) isAndroid10AppLaunchHintDismissed.setIn(this, true)
                 if (backup.isNotificationPermissionHintDismissed) isNotificationPermissionHintDismissed.setIn(this, true)
+                if (backup.isDndAccessHintDismissed) isDndAccessHintDismissed.setIn(this, true)
             }.toPreferences()
         }
     }

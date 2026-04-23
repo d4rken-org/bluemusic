@@ -61,4 +61,5 @@ data class GeneralSettingsBackup(
     val isBatteryOptimizationHintDismissed: Boolean = false,
     val isAndroid10AppLaunchHintDismissed: Boolean = false,
     val isNotificationPermissionHintDismissed: Boolean = false,
+    val isDndAccessHintDismissed: Boolean = false,
 )
