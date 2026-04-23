@@ -20,15 +20,16 @@ globs:
 
 - The app uses Navigation3 (alpha) for Compose screens (`androidx.navigation3:navigation3-*`).
 - The main directions are inside the `Nav` file (`common/navigation/Nav.kt`).
-- Each screen should have its own navigation entry providing class (extending `NavigationEntry`).
+- Each screen implements `NavigationEntry` and is registered via a Hilt module (`@Module @InstallIn(SingletonComponent::class)`) using `@Binds @IntoSet`, then consumed as `Set<NavigationEntry>` in `MainActivity`. Reference: `bluetooth/ui/discover/DiscoverNavigation.kt`.
 
 ## ViewModel Pattern
 
-- Extend `BaseViewModel<State, Event>` (or `ViewModel1` through `ViewModel4` variants)
-- Use `@HiltViewModel` annotation
-- State management via `StateFlow`
-- Events via `Channel<Event>`
-- Example: `class MyViewModel @Inject constructor(...) : BaseViewModel<MyState, MyEvent>()`
+- Extend `ViewModel1`–`ViewModel4` from `common/ui/` (pick by capability: `ViewModel2` adds StateFlow helpers, `ViewModel3` adds `errorEvents: SingleEventFlow<Throwable>`, `ViewModel4` adds `NavigationController` integration).
+- `BaseViewModel` in `common/architecture/` is legacy/unused — do not extend it.
+- Use `@HiltViewModel`; inject `DispatcherProvider` for coroutine contexts.
+- State via `StateFlow`. Error events via `SingleEventFlow<Throwable>` exposed by `ViewModel3+`. Custom events: prefer `SingleEventFlow<T>`; if using `Channel<T>` directly, keep it private and expose via `receiveAsFlow()` — never expose a raw `Channel`.
+- For ViewModels that need nav arguments, use `@AssistedInject` with a Hilt factory (reference: `devices/ui/appselection/AppSelectionViewModel.kt`).
+- Example: `class MyViewModel @Inject constructor(dispatcherProvider: DispatcherProvider, ...) : ViewModel3(dispatcherProvider)`
 
 ## Key Packages
 
@@ -41,7 +42,7 @@ globs:
 
 ## Common Base Classes
 
-- **ViewModels**: Extend `BaseViewModel<State, Event>` from `common/architecture/`
+- **ViewModels**: Extend `ViewModel1`–`ViewModel4` from `common/ui/`. `BaseViewModel` in `common/architecture/` is legacy.
 - **Services**: Extend `Service2` for lifecycle-aware services
 - **Activities**: Extend `Activity2` for common functionality
 - **Compose Previews**: Use `@Preview2` with `PreviewWrapper`

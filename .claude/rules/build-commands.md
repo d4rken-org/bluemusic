@@ -19,11 +19,15 @@ globs:
 ./gradlew test                   # Run all unit tests
 ./gradlew testFossDebugUnitTest  # Run FOSS debug unit tests
 
+# Screenshot testing (Compose screenshot validation, alpha API)
+./gradlew validateScreenshotTest           # Validate against golden images (all variants)
+./gradlew updateScreenshotTest             # Regenerate golden images (all variants)
+./gradlew validateFossDebugScreenshotTest  # Validate FOSS debug variant only
+./gradlew updateFossDebugScreenshotTest    # Regenerate FOSS debug goldens only
+
 # Code quality
 ./gradlew lint                   # Run lint checks
-./gradlew lintFix               # Run lint with auto-fix
-./gradlew ktlintCheck           # Run ktlint checks (if configured)
-./gradlew ktlintFormat          # Run ktlint format (if configured)
+./gradlew lintFix                # Run lint with auto-fix
 ```
 
 ## Tips

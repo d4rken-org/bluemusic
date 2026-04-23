@@ -10,7 +10,7 @@ globs:
 
 - All user facing strings should be extracted to `values/strings.xml` and translated for all other languages too.
 - String resources are spread across:
-  - Common: `app/src/main/res/values*/strings.xml` (44+ locales)
+  - Common: `app/src/main/res/values*/strings.xml` (77 translated locales + base `values/`)
   - FOSS flavor: `app/src/foss/res/values*/strings.xml`
   - Google Play flavor: `app/src/gplay/res/values*/strings.xml`
 

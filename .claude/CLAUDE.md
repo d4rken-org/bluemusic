@@ -20,7 +20,7 @@ Use `assembleFossDebug` for quick iteration. See `rules/build-commands.md` for a
 | Application Class | `app/src/main/java/eu/darken/bluemusic/App.kt` |
 | Navigation Routes | `app/src/main/java/eu/darken/bluemusic/common/navigation/Nav.kt` |
 | Database (Room) | `app/src/main/java/eu/darken/bluemusic/devices/core/database/DevicesRoomDb.kt` |
-| String Resources | `app/src/main/res/values*/strings.xml` (44+ locales) |
+| String Resources | `app/src/main/res/values*/strings.xml` (77 translated locales + base) |
 | FOSS Strings | `app/src/foss/res/values*/strings.xml` |
 | GPlay Strings | `app/src/gplay/res/values*/strings.xml` |
 | Build Config | `app/build.gradle.kts` |
@@ -31,8 +31,8 @@ Detailed guidance is in `.claude/rules/`:
 
 - **[architecture.md](rules/architecture.md)** - Package structure, Navigation3, ViewModel pattern, base classes, error handling, permissions
 - **[code-style.md](rules/code-style.md)** - Kotlin conventions, Compose patterns, state management
-- **[testing.md](rules/testing.md)** - JUnit/Mockk/Kotest, no androidTest
-- **[localization.md](rules/localization.md)** - String extraction, 44+ locales, translation workflow
+- **[testing.md](rules/testing.md)** - JUnit/Mockk/Kotest, screenshot tests; no instrumented androidTest
+- **[localization.md](rules/localization.md)** - String extraction, 77 translated locales, translation workflow
 - **[build-commands.md](rules/build-commands.md)** - All gradlew commands
 - **[commit-guidelines.md](rules/commit-guidelines.md)** - Commit message format and conventions
 - **[agent-instructions.md](rules/agent-instructions.md)** - Sub-agent delegation, exploring vs implementing
