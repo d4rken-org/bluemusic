@@ -31,16 +31,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
+import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
-
-data class KeycodeOption(
-    val keycode: Int,
-    val name: String,
-    val description: String
-)
+import eu.darken.bluemusic.devices.ui.AutoplayKeycodes
 
 @Composable
 fun AutoplayKeycodesDialog(
@@ -48,47 +43,9 @@ fun AutoplayKeycodesDialog(
     onConfirm: (List<Int>) -> Unit,
     onDismiss: () -> Unit
 ) {
-    val availableKeycodes = remember {
-        listOf(
-            KeycodeOption(
-                KeyEvent.KEYCODE_MEDIA_PLAY,
-                "Play",
-                "Sends play command only"
-            ),
-            KeycodeOption(
-                KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE,
-                "Play/Pause",
-                "Toggles between play and pause"
-            ),
-            KeycodeOption(
-                KeyEvent.KEYCODE_MEDIA_NEXT,
-                "Next",
-                "Skip to next track"
-            ),
-            KeycodeOption(
-                KeyEvent.KEYCODE_MEDIA_PREVIOUS,
-                "Previous",
-                "Go to previous track"
-            ),
-            KeycodeOption(
-                KeyEvent.KEYCODE_MEDIA_STOP,
-                "Stop",
-                "Stop playback"
-            ),
-            KeycodeOption(
-                KeyEvent.KEYCODE_MEDIA_REWIND,
-                "Rewind",
-                "Rewind current track"
-            ),
-            KeycodeOption(
-                KeyEvent.KEYCODE_MEDIA_FAST_FORWARD,
-                "Fast Forward",
-                "Fast forward current track"
-            )
-        )
-    }
+    val availableKeycodes = remember { AutoplayKeycodes.knownCodes }
 
-    var selectedKeycodes by remember { mutableStateOf(currentKeycodes) }
+    var selectedKeycodes by remember { mutableStateOf(currentKeycodes.distinct()) }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -115,7 +72,7 @@ fun AutoplayKeycodesDialog(
                                 checked = selectedKeycodes.contains(keycodeOption.keycode),
                                 onCheckedChange = { checked ->
                                     selectedKeycodes = if (checked) {
-                                        selectedKeycodes + keycodeOption.keycode
+                                        (selectedKeycodes + keycodeOption.keycode).distinct()
                                     } else {
                                         selectedKeycodes - keycodeOption.keycode
                                     }
@@ -125,11 +82,11 @@ fun AutoplayKeycodesDialog(
                                 modifier = Modifier.weight(1f)
                             ) {
                                 Text(
-                                    text = keycodeOption.name,
+                                    text = keycodeOption.label(),
                                     style = MaterialTheme.typography.bodyLarge
                                 )
                                 Text(
-                                    text = keycodeOption.description,
+                                    text = keycodeOption.description(),
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -153,6 +110,7 @@ fun AutoplayKeycodesDialog(
                         items(selectedKeycodes) { keycode ->
                             val keycodeOption = availableKeycodes.find { it.keycode == keycode }
                             if (keycodeOption != null) {
+                                val index = selectedKeycodes.indexOf(keycode)
                                 Card(
                                     modifier = Modifier.fillMaxWidth(),
                                     colors = CardDefaults.cardColors(
@@ -166,13 +124,12 @@ fun AutoplayKeycodesDialog(
                                         verticalAlignment = Alignment.CenterVertically
                                     ) {
                                         Text(
-                                            text = keycodeOption.name,
+                                            text = keycodeOption.label(),
                                             modifier = Modifier.weight(1f)
                                         )
                                         Row {
                                             IconButton(
                                                 onClick = {
-                                                    val index = selectedKeycodes.indexOf(keycode)
                                                     if (index > 0) {
                                                         selectedKeycodes = selectedKeycodes.toMutableList().apply {
                                                             removeAt(index)
@@ -180,16 +137,15 @@ fun AutoplayKeycodesDialog(
                                                         }
                                                     }
                                                 },
-                                                enabled = selectedKeycodes.indexOf(keycode) > 0
+                                                enabled = index > 0
                                             ) {
                                                 Icon(
                                                     Icons.Default.ArrowUpward,
-                                                    contentDescription = "Move up"
+                                                    contentDescription = stringResource(R.string.cd_autoplay_keycode_move_up)
                                                 )
                                             }
                                             IconButton(
                                                 onClick = {
-                                                    val index = selectedKeycodes.indexOf(keycode)
                                                     if (index < selectedKeycodes.size - 1) {
                                                         selectedKeycodes = selectedKeycodes.toMutableList().apply {
                                                             removeAt(index)
@@ -197,11 +153,11 @@ fun AutoplayKeycodesDialog(
                                                         }
                                                     }
                                                 },
-                                                enabled = selectedKeycodes.indexOf(keycode) < selectedKeycodes.size - 1
+                                                enabled = index < selectedKeycodes.size - 1
                                             ) {
                                                 Icon(
                                                     Icons.Default.ArrowDownward,
-                                                    contentDescription = "Move down"
+                                                    contentDescription = stringResource(R.string.cd_autoplay_keycode_move_down)
                                                 )
                                             }
                                             IconButton(
@@ -211,7 +167,7 @@ fun AutoplayKeycodesDialog(
                                             ) {
                                                 Icon(
                                                     Icons.Default.Delete,
-                                                    contentDescription = "Remove"
+                                                    contentDescription = stringResource(R.string.cd_autoplay_keycode_remove)
                                                 )
                                             }
                                         }
@@ -241,7 +197,7 @@ fun AutoplayKeycodesDialog(
     )
 }
 
-@Preview
+@Preview2
 @Composable
 private fun AutoplayKeycodesDialogPreview() {
     PreviewWrapper {
