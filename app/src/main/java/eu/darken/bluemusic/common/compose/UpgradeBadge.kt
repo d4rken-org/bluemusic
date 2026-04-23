@@ -37,3 +37,11 @@ fun UpgradeBadge(modifier: Modifier = Modifier) {
         )
     }
 }
+
+@Preview2
+@Composable
+private fun UpgradeBadgePreview() {
+    PreviewWrapper {
+        UpgradeBadge()
+    }
+}

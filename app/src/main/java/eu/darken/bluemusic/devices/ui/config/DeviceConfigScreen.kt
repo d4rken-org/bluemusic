@@ -59,6 +59,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -607,12 +608,17 @@ fun DeviceConfigScreen(
                         )
 
                         if (device.autoplay) {
+                            val codes = device.autoplayKeycodes
                             ClickablePreference(
                                 title = stringResource(R.string.devices_device_config_autoplay_keycodes_label),
-                                description = if (device.autoplayKeycodes.isEmpty()) {
-                                    stringResource(R.string.devices_device_config_autoplay_keycodes_none_set)
-                                } else {
-                                    device.autoplayKeycodes
+                                description = when {
+                                    codes.isEmpty() -> stringResource(R.string.devices_device_config_autoplay_keycodes_none_set)
+                                    codes.size > 3 -> pluralStringResource(
+                                        R.plurals.devices_indicator_auto_count,
+                                        codes.size,
+                                        codes.size,
+                                    )
+                                    else -> codes
                                         .map { AutoplayKeycodes.resolve(it).label() }
                                         .joinToString(", ")
                                 },
