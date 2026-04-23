@@ -75,6 +75,7 @@ class BackupDataTest : BaseTest() {
             isBatteryOptimizationHintDismissed = true,
             isAndroid10AppLaunchHintDismissed = true,
             isNotificationPermissionHintDismissed = true,
+            isDndAccessHintDismissed = true,
         ),
     )
 
@@ -165,7 +166,8 @@ class BackupDataTest : BaseTest() {
                     "isOnboardingCompleted": true,
                     "isBatteryOptimizationHintDismissed": true,
                     "isAndroid10AppLaunchHintDismissed": true,
-                    "isNotificationPermissionHintDismissed": true
+                    "isNotificationPermissionHintDismissed": true,
+                    "isDndAccessHintDismissed": true
                 }
             }
         """.trimIndent()

@@ -130,4 +130,20 @@ class PermissionHelper @Inject constructor(
 
     @RequiresApi(Build.VERSION_CODES.M)
     fun getNotificationPolicyAccessIntent(): Intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
+
+    fun getDndAccessHint(isDismissed: Boolean, hasDevicesNeedingDnd: Boolean): PermissionHint {
+        val shouldShow = hasApiLevel(Build.VERSION_CODES.M) &&
+                hasDevicesNeedingDnd &&
+                !hasNotificationPolicyAccess() &&
+                !isDismissed
+        return if (shouldShow) {
+            @SuppressLint("NewApi")
+            val intent = getNotificationPolicyAccessIntent().apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            PermissionHint(shouldShow = true, intent = intent)
+        } else {
+            PermissionHint(shouldShow = false)
+        }
+    }
 }

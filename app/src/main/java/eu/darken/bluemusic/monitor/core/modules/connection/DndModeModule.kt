@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.hasApiLevel
@@ -40,7 +41,7 @@ class DndModeModule @Inject constructor(
 
         device.dndMode?.let { mode ->
             if (!permissionHelper.hasNotificationPolicyAccess()) {
-                log(TAG) { "Skipping DND mode handling - no notification policy access" }
+                log(TAG, WARN) { "Skipping DND mode — requirement not met: ACCESS_NOTIFICATION_POLICY (DND access) is not granted" }
                 return
             }
 

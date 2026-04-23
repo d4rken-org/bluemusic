@@ -30,7 +30,11 @@ class NotificationVolumeModule @Inject constructor(
     override val type: AudioStream.Type = AudioStream.Type.NOTIFICATION
 
     @Suppress("NewApi")
-    override suspend fun areRequirementsMet(): Boolean = !hasApiLevel(23) || permissionHelper.hasNotificationPolicyAccess()
+    override suspend fun unmetRequirement(): String? = when {
+        !hasApiLevel(23) -> null
+        permissionHelper.hasNotificationPolicyAccess() -> null
+        else -> "ACCESS_NOTIFICATION_POLICY (DND access) is not granted"
+    }
 
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
