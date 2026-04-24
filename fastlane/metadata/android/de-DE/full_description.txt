@@ -1,4 +1,4 @@
-**Bluetooth-Lautstärke-Manager** erinnert sich an die Lautstärkepegel für jedes Bluetooth-Gerät und reagiert bei Verbindung oder Trennung der Verbindung.
+**Bluetooth Volume Manager** remembers volume levels for each of your Bluetooth devices and reacts when they connect or disconnect.
 
 **Funktionen:**
 * Setze Musik, Anruf, Klingelton und Benachrichtigungslautstärke pro Gerät  
@@ -17,6 +17,6 @@ Einige Extras erfordern ein kostenpflichtiges Upgrade zur Unterstützung der Ent
 * 'Internet' für Fehlerberichte.  
 * 'Bluetooth', um mit Bluetooth-Geräten zu arbeiten.  
 * 'Modify audio settings', um Lautstärke zu ändern.  
-* 'Boot completed', um die Lautstärkeeinstellungen nach Neustarts wiederherzustellen.  
+* **Boot** – um die Einstellungen nach einem Neustart wiederherzustellen  
 * 'WAKE_LOCK', um einen Fehler bei Samsung-Geräten zu beheben und den Bildschirm bei Bedarf wachzuhalten.  
 * **Systembenachrichtigungsfenster** – zum automatischen Starten von Apps (nur Android 10)
