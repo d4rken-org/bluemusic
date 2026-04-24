@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">వాల్యూమ్ తగ్గుదల జాప్యం</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">వాల్యూమ్ తగ్గుదల మధ్య కనీస సమయం: %d ms</string>
     <string name="devices_device_config_autoplay_label">స్వయంచాలక ప్లే</string>
-    <string name="devices_device_config_autoplay_desc">ఈ పరికరం కనెక్ట్ అయినప్పుడు Bluetooth రిమోట్‌పై ప్లే నొక్కడాన్ని అనుకరించండి.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">స్వయంచాలక ప్లే కీ రకాలు</string>
-    <string name="devices_device_config_autoplay_keycodes_available">అందుబాటులో ఉన్న కీ రకాలు</string>
-    <string name="devices_device_config_autoplay_keycodes_order">ఎంచుకున్న కీలు (క్రమంలో)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">కీ రకాలు</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">ఏ కీలు పంపాలో మరియు ఏ క్రమంలో పంపాలో కాన్ఫిగర్ చేయండి</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">కీలు కాన్ఫిగర్ చేయబడలేదు</string>
+    <string name="devices_device_config_autoplay_desc">ఈ డివైస్ కనెక్ట్ అయినప్పుడు కాన్ఫిగర్ చేసిన మీడియా కీ కమాండ్‌లను పంపించు.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">ఆటోప్లే కమాండ్‌లు</string>
+    <string name="devices_device_config_autoplay_keycodes_order">కమాండ్ సీక్వెన్స్</string>
+    <string name="devices_device_config_autoplay_keycodes_label">కమాండ్‌లు</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">ఏ కమాండ్‌లను ఏ క్రమంలో పంపించాలో కాన్ఫిగర్ చేయండి</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">ఏ కమాండ్‌లూ కాన్ఫిగర్ చేయలేదు</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">కమాండ్ జోడించు</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">గరిష్ఠంగా %1$d కమాండ్‌లు</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">ఇంకా కమాండ్‌లు లేవు. ప్రారంభించడానికి \"కమాండ్ జోడించు\" నొక్కండి.</string>
+    <string name="devices_autoplay_keycode_play_label">ప్లే</string>
+    <string name="devices_autoplay_keycode_play_pause_label">ప్లే/పాజ్</string>
+    <string name="devices_autoplay_keycode_next_label">తదుపరి</string>
+    <string name="devices_autoplay_keycode_previous_label">మునుపటి</string>
+    <string name="devices_autoplay_keycode_stop_label">ఆపు</string>
+    <string name="devices_autoplay_keycode_rewind_label">రివైండ్</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">ఫాస్ట్ ఫార్వర్డ్</string>
+    <string name="devices_autoplay_keycode_play_desc">ప్లే కమాండ్ మాత్రమే పంపిస్తుంది</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">ప్లే మరియు పాజ్ మధ్య టోగుల్ చేస్తుంది</string>
+    <string name="devices_autoplay_keycode_next_desc">తదుపరి ట్రాక్‌కు దాటు</string>
+    <string name="devices_autoplay_keycode_previous_desc">మునుపటి ట్రాక్‌కు వెళ్ళు</string>
+    <string name="devices_autoplay_keycode_stop_desc">ప్లేబ్యాక్ ఆపు</string>
+    <string name="devices_autoplay_keycode_rewind_desc">ప్రస్తుత ట్రాక్ రివైండ్ చేయి</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">ప్రస్తుత ట్రాక్ ఫాస్ట్ ఫార్వర్డ్ చేయి</string>
+    <string name="devices_autoplay_keycode_unknown_label">తెలియని (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d కమాండ్</item>
+        <item quantity="other">%d కమాండ్‌లు</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">పైకి జరుపు</string>
+    <string name="cd_autoplay_keycode_move_down">కిందకు జరుపు</string>
+    <string name="cd_autoplay_keycode_remove">తీసివేయండి</string>
     <string name="devices_device_config_section_volumes_label">వాల్యూమ్‌లు</string>
     <string name="devices_device_config_section_volume_label">వాల్యూమ్</string>
     <string name="devices_device_config_alarm_volume_label">అలారం వాల్యూమ్</string>
@@ -175,8 +199,8 @@
     <string name="settings_support_debuglog_short_recording_stop">ఏదైనా ఆపు</string>
     <string name="settings_support_debuglog_folder_label">డీబగ్ లాగ్ ఫోల్డర్</string>
     <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d సెషన్ %2$s ఉపయోగిస్తోంది</item>
-        <item quantity="other">%1$d సెషన్‌లు %2$s ఉపయోగిస్తున్నాయి</item>
+        <item quantity="one">%1$d సెషన్ %2$s ఉపయ౏గిస్తోంది</item>
+        <item quantity="other">%1$d సెషన్‌లు %2$s ఉపయ౏గిస్తున్నాయి</item>
     </plurals>
     <string name="settings_support_debuglog_folder_empty_desc">డీబగ్ లాగ్‌లు సేవ్ చేయబడలేదు</string>
     <string name="settings_support_debuglog_folder_delete_title">అన్ని డీబగ్ లాగ్‌లు తొలగించాలా?</string>
@@ -376,6 +400,9 @@
     <string name="android10_applaunch_hint_message">Android 10 బ్యాక్‌గ్రౌండ్ నుండి యాప్‌లు ప్రారంభించడానికి లేదా హోమ్ స్క్రీన్ చూపించడానికి ప్రత్యేక అనుమతి అవసరం. \"ఇతర యాప్‌లపై ప్రదర్శించు\" అనుమతిని మంజూరు చేయండి.</string>
     <string name="notification_permission_hint_title">నోటిఫికేషన్ అనుమతి</string>
     <string name="notification_permission_hint_message">వాల్యూమ్‌లు సర్దుబాటు చేసేటప్పుడు స్టేటస్ అప్‌డేట్‌లు చూడడానికి నోటిఫికేషన్ అనుమతి మంజూరు చేయండి.</string>
+    <string name="dnd_access_hint_title">డు నాట్ డిస్టర్బ్ యాక్సెస్</string>
+    <string name="dnd_access_hint_message">డు నాట్ డిస్టర్బ్ యాక్సెస్ లేకుండా, మీ డివైస్‌లు కనెక్ట్ అయినప్పుడు రింగ్‌టోన్, నోటిఫికేషన్ మరియు DND మోడ్ సెట్టింగ్‌లు వర్తించవు.</string>
+    <string name="dnd_access_fix_action">యాక్సెస్ మంజూరు చేయండి</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">కొనుగోలు రద్దు చేయబడింది</string>
     <string name="error_iap_unavailable_message">యాప్-లో కొనుగోళ్ళు అందుబాటులో లేవు</string>
@@ -400,7 +427,6 @@
     <string name="devices_indicator_disconnect">డిస్‌కనెక్ట్ చేయి</string>
     <string name="devices_indicator_limit">పరిమితి</string>
     <string name="devices_indicator_launch">ప్రారంభించు</string>
-    <string name="devices_indicator_auto">ఆటో</string>
     <string name="devices_indicator_home">హోమ్</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">హెచ్చరిక</string>

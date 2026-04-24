@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Bluetooth-Lautstärken Manager</string>
-    <string name="app_name_short">BVM</string>
+    <string name="app_name">Bluetooth Lautstärke</string>
+    <string name="app_name_short">BLM</string>
     <!-- General -->
     <string name="general_error_label">Fehler</string>
     <string name="general_error_no_compatible_app_found_msg">Keine kompatible App gefunden, um diese Anfrage zu bearbeiten.</string>
@@ -9,14 +9,14 @@
     <string name="general_back_action">Zurück</string>
     <string name="general_show_details_action">Details anzeigen</string>
     <!-- Onboarding-->
-    <string name="onboarding_welcome_title">Willkommen bei BVM</string>
-    <string name="onboarding_welcome_message">Bluetooth Volume Manager ermöglicht es Dir, Bluetooth-Gerätelautstärken automatisch zu verwalten.</string>
+    <string name="onboarding_welcome_title">Willkommen bei BLM</string>
+    <string name="onboarding_welcome_message">Bluetooth-Lautstärke-Manager ermöglicht es Dir, Bluetooth-Gerätelautstärken automatisch zu verwalten.</string>
     <string name="onboarding_welcome_action">Los geht\'s</string>
     <string name="onboarding_beta_title">Beta-Version</string>
     <string name="onboarding_beta_message">Dies ist eine Beta (Test) Version. Fahre mit Humor und einem Backup-Plan fort. Bitte melde auftretende Probleme.</string>
     <string name="onboarding_beta_action">Ich fürchte nichts</string>
     <string name="onboarding_privacy_title">Datenschutz &amp; Daten</string>
-    <string name="onboarding_privacy_message">Bluetooth Volume Manager hat keine Werbung und verkauft keine Benutzerdaten (es ist sogar Open-Source). Deine Privatsphäre ist mir wichtig.</string>
+    <string name="onboarding_privacy_message">Bluetooth-Lautstärke-Manager hat keine Werbung und verkauft keine Benutzerdaten (es ist sogar Open-Source). Deine Privatsphäre ist mir wichtig.</string>
     <string name="onboarding_privacy_read_action">Datenschutzerklärung lesen</string>
     <string name="onboarding_privacy_action">Akzeptieren</string>
     <string name="onboarding_rewrite_title">App modernisiert</string>
@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Senkungsverzögerung</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Mindestzeit zwischen Lautstärkesenkungen: %d ms</string>
     <string name="devices_device_config_autoplay_label">Autoplay</string>
-    <string name="devices_device_config_autoplay_desc">Die \'Autoplay\' Funktion simuliert einen Knopfdruck auf \'Play\' einer Bluetoothfernsteuerung.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Autoplay-Tastentyp</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Verfügbare Tastentypen</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Ausgewählte Tasten (in der Reihenfolge)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Tastentypen</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Konfiguriere, welche Tasten gesendet werden sollen und in welcher Reihenfolge</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Keine Tasten konfiguriert</string>
+    <string name="devices_device_config_autoplay_desc">Sendet die konfigurierten Medientastenbefehle, wenn dieses Gerät verbunden wird.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Autoplay-Befehle</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Befehlsreihenfolge</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Befehle</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Konfiguriere, welche Befehle in welcher Reihenfolge gesendet werden</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Keine Befehle konfiguriert</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">Befehl hinzufügen</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">Maximal %1$d Befehle</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">Noch keine Befehle. Tippe auf „Befehl hinzufügen“, um zu beginnen.</string>
+    <string name="devices_autoplay_keycode_play_label">Abspielen</string>
+    <string name="devices_autoplay_keycode_play_pause_label">Wiedergabe/Pause</string>
+    <string name="devices_autoplay_keycode_next_label">Nächste</string>
+    <string name="devices_autoplay_keycode_previous_label">Zurück</string>
+    <string name="devices_autoplay_keycode_stop_label">Stopp</string>
+    <string name="devices_autoplay_keycode_rewind_label">Zurückspulen</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">Vorspulen</string>
+    <string name="devices_autoplay_keycode_play_desc">Sendet nur den Wiedergabe-Befehl</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">Wechselt zwischen Wiedergabe und Pause</string>
+    <string name="devices_autoplay_keycode_next_desc">Zum nächsten Titel springen</string>
+    <string name="devices_autoplay_keycode_previous_desc">Zum vorherigen Titel wechseln</string>
+    <string name="devices_autoplay_keycode_stop_desc">Wiedergabe stoppen</string>
+    <string name="devices_autoplay_keycode_rewind_desc">Aktuellen Titel zurückspulen</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">Aktuellen Titel vorspulen</string>
+    <string name="devices_autoplay_keycode_unknown_label">Unbekannt (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d Befehl</item>
+        <item quantity="other">%d Befehle</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">Nach oben</string>
+    <string name="cd_autoplay_keycode_move_down">Nach unten</string>
+    <string name="cd_autoplay_keycode_remove">Entfernen</string>
     <string name="devices_device_config_section_volumes_label">Lautstärken</string>
     <string name="devices_device_config_section_volume_label">Lautstärke</string>
     <string name="devices_device_config_alarm_volume_label">Alarmlautstärke</string>
@@ -146,7 +170,7 @@
     <string name="ui_theme_color_blue_label">Blau</string>
     <string name="ui_theme_color_sunset_label">Sonnenuntergang</string>
     <string name="ui_language_override_label">App-Sprache</string>
-    <string name="ui_language_override_desc">Wähle eine andere Sprache für BVM, unabhängig von der Standardsprache deines Systems.</string>
+    <string name="ui_language_override_desc">Wähle eine andere Sprache für BLM, unabhängig von der Standardsprache deines Systems.</string>
     <!-- Settings/Devices-->
     <string name="devices_settings_label">Geräte</string>
     <string name="devices_settings_desc">Einstellungen, die alle verwalteten Geräte betreffen.</string>
@@ -162,7 +186,7 @@
     <string name="settings_support_label">Unterstützung</string>
     <string name="settings_support_description">Dokumentation lesen, Probleme melden, mit Anderen chatten oder Debug-Protokolle aufzeichnen.</string>
     <string name="settings_support_wiki_label">Dokumentation</string>
-    <string name="settings_support_wiki_description">Lerne, wie Du BVM effektiv nutzt</string>
+    <string name="settings_support_wiki_description">Lerne, wie Du BLM effektiv nutzt</string>
     <string name="settings_support_issue_tracker_description">Ein öffentlicher Problemtracker für Fehlerberichte und Funktionsanfragen.</string>
     <string name="settings_support_issue_tracker_label">Problemtracker</string>
     <string name="settings_support_debuglog_label">Debug-Protokoll</string>
@@ -189,8 +213,8 @@
     <string name="settings_acks_translation_header">Übersetzung</string>
     <string name="settings_acks_translators_title">Übersetzer</string>
     <string name="settings_acks_translators_people">Gamechanger181;Darken;uli;derPacifist</string>
-    <string name="settings_acks_translate_title">BVM übersetzen</string>
-    <string name="settings_acks_translate_desc">Hilf mit, BVM in deine Sprache zu übersetzen</string>
+    <string name="settings_acks_translate_title">BLM übersetzen</string>
+    <string name="settings_acks_translate_desc">Hilf mit, BLM in deine Sprache zu übersetzen</string>
     <string name="settings_acks_thanks_header">Danke</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Zur Unterstützung der Übersetzung von Open-Source-Projekten</string>
@@ -376,6 +400,9 @@
     <string name="android10_applaunch_hint_message">Android 10 erfordert eine spezielle Berechtigung, um Apps zu starten oder den Startbildschirm aus dem Hintergrund anzuzeigen. Erteile die Berechtigung \"Über anderen Apps einblenden\".</string>
     <string name="notification_permission_hint_title">Benachrichtigungsberechtigung</string>
     <string name="notification_permission_hint_message">Erteile die Benachrichtigungsberechtigung, um Statusaktualisierungen beim Anpassen der Lautstärke zu sehen.</string>
+    <string name="dnd_access_hint_title">Zugriff auf „Nicht stören“</string>
+    <string name="dnd_access_hint_message">Ohne Zugriff auf „Nicht stören“ können Klingelton-, Benachrichtigungs- und DND-Einstellungen nicht angewendet werden, wenn deine Geräte verbunden werden.</string>
+    <string name="dnd_access_fix_action">Zugriff gewähren</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Kauf abgebrochen</string>
     <string name="error_iap_unavailable_message">In-App-Käufe sind nicht verfügbar</string>
@@ -400,7 +427,6 @@
     <string name="devices_indicator_disconnect">Trennen</string>
     <string name="devices_indicator_limit">Begrenzen</string>
     <string name="devices_indicator_launch">Starten</string>
-    <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Start</string>
     <string name="devices_indicator_dnd">Bitte-nicht-stören</string>
     <string name="devices_indicator_alert">Alarm</string>
@@ -412,7 +438,7 @@
     <string name="devices_lock_sliders_action">Sperren</string>
     <string name="devices_unlock_sliders_action">Entsperren</string>
     <!-- Widget -->
-    <string name="widget_volume_lock_description">Zeigt den Lautstärrkesperrenstatus für das aktive Bluetooth-Gerät an</string>
+    <string name="widget_volume_lock_description">Zeigt den Lautstärkesperrenstatus für das aktive Bluetooth-Gerät an</string>
     <string name="widget_no_device_label">Kein Gerät verbunden</string>
     <string name="widget_bluetooth_off_label">Bluetooth ist aus</string>
     <string name="widget_error_label">Widget-Fehler</string>

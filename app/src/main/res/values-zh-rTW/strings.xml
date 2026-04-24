@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Bluetooth Volume Manager</string>
+    <string name="app_name"></string>
     <string name="app_name_short">BVM</string>
     <!-- General -->
     <string name="general_error_label">錯誤</string>
@@ -20,7 +20,7 @@
     <string name="onboarding_privacy_read_action">閱讀隱私權政策</string>
     <string name="onboarding_privacy_action">接受</string>
     <string name="onboarding_rewrite_title">應用程式重新改寫！</string>
-    <string name="onboarding_rewrite_message">我必須重新撰寫應用程式以跟上 Android 的變化和 Google 的要求。我已盡可能對應用程式進行現代化，以確保其持續可靠地運作。</string>
+    <string name="onboarding_rewrite_message">I had to rewrite the app to keep up with Android changes and Google requirements. I\'ve modernized the app where possible to ensure it continues working reliably.</string>
     <string name="onboarding_rewrite_features">在此次更新過程中，某些裝置設定可能已被重設。請檢查您的裝置設定。</string>
     <string name="onboarding_rewrite_action">繼續</string>
     <!-- Discover -->
@@ -73,13 +73,36 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">音量降低延遲</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">音量降低之間的最短時間：%d ms</string>
     <string name="devices_device_config_autoplay_label">自動播放</string>
-    <string name="devices_device_config_autoplay_desc">在這個裝置連線時模擬按下藍牙遙控器的播放鍵。</string>
-    <string name="devices_device_config_autoplay_keycodes_title">自動播放按鍵類型</string>
-    <string name="devices_device_config_autoplay_keycodes_available">可用按鍵類型</string>
-    <string name="devices_device_config_autoplay_keycodes_order">已選取的按鍵（依順序）</string>
-    <string name="devices_device_config_autoplay_keycodes_label">按鍵類型</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">設定要發送的按鍵以及發送順序</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">未設定按鍵</string>
+    <string name="devices_device_config_autoplay_desc">當此裝置連接時，發送已設定的媒體鍵指令。</string>
+    <string name="devices_device_config_autoplay_keycodes_title">自動播放指令</string>
+    <string name="devices_device_config_autoplay_keycodes_order">指令序列</string>
+    <string name="devices_device_config_autoplay_keycodes_label">指令</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">設定要發送哪些指令及其順序</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">未設定指令</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">新增指令</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">最多 %1$d 個指令</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">尚無指令。點選「新增指令」開始。</string>
+    <string name="devices_autoplay_keycode_play_label">播放</string>
+    <string name="devices_autoplay_keycode_play_pause_label">播放／暫停</string>
+    <string name="devices_autoplay_keycode_next_label">下一首</string>
+    <string name="devices_autoplay_keycode_previous_label">上一首</string>
+    <string name="devices_autoplay_keycode_stop_label">停止</string>
+    <string name="devices_autoplay_keycode_rewind_label">倒退</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">快進</string>
+    <string name="devices_autoplay_keycode_play_desc">僅發送播放指令</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">在播放和暫停之間切換</string>
+    <string name="devices_autoplay_keycode_next_desc">跳到下一首曲目</string>
+    <string name="devices_autoplay_keycode_previous_desc">返回上一首曲目</string>
+    <string name="devices_autoplay_keycode_stop_desc">停止播放</string>
+    <string name="devices_autoplay_keycode_rewind_desc">倒退目前曲目</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">快進目前曲目</string>
+    <string name="devices_autoplay_keycode_unknown_label">未知（%1$d）</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="other">%d 個指令</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">向上移動</string>
+    <string name="cd_autoplay_keycode_move_down">向下移動</string>
+    <string name="cd_autoplay_keycode_remove">移除</string>
     <string name="devices_device_config_section_volumes_label">音量</string>
     <string name="devices_device_config_section_volume_label">音量</string>
     <string name="devices_device_config_alarm_volume_label">鬧鐘音量</string>
@@ -101,12 +124,12 @@
     <string name="dnd_mode_dont_change">不更改</string>
     <string name="dnd_mode_off">關閉</string>
     <string name="dnd_mode_priority_only">僅優先</string>
-    <string name="dnd_mode_alarms_only">僅鬧鐘</string>
+    <string name="dnd_mode_alarms_only">Alarms only</string>
     <string name="dnd_mode_total_silence">完全靜音</string>
     <string name="devices_device_config_connection_alert_label">連線提醒</string>
     <string name="connection_alert_dialog_title">連線提醒</string>
     <string name="connection_alert_type_none">無</string>
-    <string name="connection_alert_type_sound">僅聲音</string>
+    <string name="connection_alert_type_sound">Sound only</string>
     <string name="connection_alert_type_vibration">僅震動</string>
     <string name="connection_alert_type_both">聲音和震動</string>
     <string name="devices_stream_music_label">音樂</string>
@@ -154,7 +177,7 @@
     <string name="description_app_enabled">切換應用對音量和藍牙事件作出反應的能力。</string>
     <string name="label_visible_volume_adjustments">可見調整</string>
     <string name="description_visible_volume_adjustments">在此應用調整時顯示系統音量視窗。</string>
-    <string name="label_volume_listener">監聽變化</string>
+    <string name="label_volume_listener">Observe changes</string>
     <string name="description_volume_listener">當此應用程式正在為此裝置進行調整時，顯示系統音量視窗</string>
     <string name="label_boot_restore">開機後復原</string>
     <string name="description_boot_restore">在開機/重新開機後，如果連上藍牙裝置就復原音量。</string>
@@ -226,7 +249,7 @@
     <string name="debug_log_record_action">記錄</string>
     <string name="debug_log_stop_action">停止記錄</string>
     <string name="debug_log_screen_title">除錯日誌記錄器</string>
-    <string name="debug_log_screen_subtitle">查看並分享您錄製的除錯日誌</string>
+    <string name="debug_log_screen_subtitle">Review and share your recorded debug log</string>
     <string name="debug_log_screen_sensitive_title">敏感資訊</string>
     <string name="debug_log_screen_sensitive_information_message">產生的檔案包含敏感資訊（例如檔案名稱和已安裝的應用程式）。請只與可信任的對象分享。</string>
     <string name="debug_log_screen_session_path_label">除錯工作階段路徑</string>
@@ -372,6 +395,9 @@
     <string name="android10_applaunch_hint_message">Android 10 需要特殊權限才能從背景啟動應用程式。請授予「顯示在其他應用程式上層」權限。</string>
     <string name="notification_permission_hint_title">通知權限</string>
     <string name="notification_permission_hint_message">授予通知權限以在調整音量時查看狀態更新。</string>
+    <string name="dnd_access_hint_title">請勿打擾存取權限</string>
+    <string name="dnd_access_hint_message">若未取得「請勿打擾」存取權限，當您的裝置連接時，將無法套用鈴聲、通知及「請勿打擾」模式設定。</string>
+    <string name="dnd_access_fix_action">授予存取權</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">購買已取消</string>
     <string name="error_iap_unavailable_message">無法使用應用程式內購買</string>
@@ -396,10 +422,9 @@
     <string name="devices_indicator_disconnect">斷線</string>
     <string name="devices_indicator_limit">限制</string>
     <string name="devices_indicator_launch">啟動</string>
-    <string name="devices_indicator_auto">自動</string>
     <string name="devices_indicator_home">主頁</string>
     <string name="devices_indicator_dnd">勿擾</string>
-    <string name="devices_indicator_alert">提醒</string>
+    <string name="devices_indicator_alert">Alert</string>
     <!-- Volume input dialog -->
     <string name="devices_volume_input_hint">音量（0–100）</string>
     <string name="devices_volume_input_error">請輸入 %1$d 到 %2$d 之間的值</string>

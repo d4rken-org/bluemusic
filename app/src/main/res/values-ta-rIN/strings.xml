@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">ஒலி குறைய்தல் தாமதம்</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">ஒலி குறைய்தல்களுக்கும் இடையிலான குறைந்தபட்ச நேரம்: %d ms</string>
     <string name="devices_device_config_autoplay_label">தானியங்கு இசைப்பிச்சு</string>
-    <string name="devices_device_config_autoplay_desc">இந்த சாதனம் இணைக்கப்படும்போது Bluetooth ரிமோட்டில் இசை படுத்து பட்டனை அதிக்கும் படி பழகுவெஒக்கும்.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">தானியங்கு இசைப்பிச்சு உலை வகைகள்</string>
-    <string name="devices_device_config_autoplay_keycodes_available">கிடைக்கக்கூடிய உலை வகைகள்</string>
-    <string name="devices_device_config_autoplay_keycodes_order">தேர்ந்தெடுக்கப்பட்ட உலைகள் (வரிசைப்படி)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">உலை வகைகள்</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">எந்த உலைகளை அனுப்பினால் எங்கெ அந்த வரிசையில் அனுப்பவென்பதைக் கட்டமைக்கும்</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">உலைகள் கட்டமைக்கப்படவில்லை</string>
+    <string name="devices_device_config_autoplay_desc">இந்த சாதனம் இணைக்கப்படும்போது கட்டமைக்கப்பட்ட மீடியா கீ கட்டளைகளை அனுப்பு.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">தானியங்கி இயக்க கட்டளைகள்</string>
+    <string name="devices_device_config_autoplay_keycodes_order">கட்டளை வரிசை</string>
+    <string name="devices_device_config_autoplay_keycodes_label">கட்டளைகள்</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">எந்த கட்டளைகளை அனுப்ப வேண்டும், எந்த வரிசையில் என்று அமைக்கவும்</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">கட்டளைகள் எதுவும் அமைக்கப்படவில்லை</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">கட்டளை சேர்க்கவும்</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">அதிகபட்சம் %1$d கட்டளைகள்</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">இன்னும் கட்டளைகள் இல்லை. தொடங்க \"கட்டளை சேர்க்கவும்\" என்பதை தட்டவும்.</string>
+    <string name="devices_autoplay_keycode_play_label">இயக்கு</string>
+    <string name="devices_autoplay_keycode_play_pause_label">இயக்கு/இடைநிறுத்து</string>
+    <string name="devices_autoplay_keycode_next_label">அடுத்தது</string>
+    <string name="devices_autoplay_keycode_previous_label">முந்தையது</string>
+    <string name="devices_autoplay_keycode_stop_label">நிறுத்து</string>
+    <string name="devices_autoplay_keycode_rewind_label">பின்னோக்கி</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">வேகமாக முன்னோக்கி</string>
+    <string name="devices_autoplay_keycode_play_desc">இயக்கு கட்டளையை மட்டும் அனுப்புகிறது</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">இயக்கு மற்றும் இடைநிறுத்துக்கு இடையில் மாறுகிறது</string>
+    <string name="devices_autoplay_keycode_next_desc">அடுத்த பாடலுக்கு தவிர்க்கவும்</string>
+    <string name="devices_autoplay_keycode_previous_desc">முந்தைய பாடலுக்கு செல்லவும்</string>
+    <string name="devices_autoplay_keycode_stop_desc">இயக்கத்தை நிறுத்து</string>
+    <string name="devices_autoplay_keycode_rewind_desc">தற்போதைய பாடலை பின்னோக்கி இயக்கு</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">தற்போதைய பாடலை வேகமாக முன்னோக்கி இயக்கு</string>
+    <string name="devices_autoplay_keycode_unknown_label">தெரியாதது (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d கட்டளை</item>
+        <item quantity="other">%d கட்டளைகள்</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">மேலே நகர்த்து</string>
+    <string name="cd_autoplay_keycode_move_down">கீழே நகர்த்து</string>
+    <string name="cd_autoplay_keycode_remove">அகற்று</string>
     <string name="devices_device_config_section_volumes_label">ஒலி அளவுகள்</string>
     <string name="devices_device_config_section_volume_label">ஒலி அளவு</string>
     <string name="devices_device_config_alarm_volume_label">அலாரம் ஒலி அளவு</string>
@@ -376,6 +400,9 @@
     <string name="android10_applaunch_hint_message">Android 10 பின்னிலையிருந்து ஆப்களை தொடங்க அல்லது இல்ல திரையைக் காட்ட சிறப்பு அனுமதி தேவைப்படுகிறது. \"மற்ற ஆப்களின் மேல் காட்டு\" அனுமதி வழங்கும்.</string>
     <string name="notification_permission_hint_title">அறிவிப்பு அனுமதி</string>
     <string name="notification_permission_hint_message">ஒலி அளவுகளை சரிசெய்யும்போது நிலைமாற்றங்களைப் பார்க்க அறிவிப்பு அனுமதி வழங்கும்.</string>
+    <string name="dnd_access_hint_title">தொந்தரவு செய்யாதீர்கள் அணுகல்</string>
+    <string name="dnd_access_hint_message">தொந்தரவு செய்யாதீர்கள் அணுகல் இல்லாமல், உங்கள் சாதனங்கள் இணைக்கப்படும்போது ரிங்டோன், அறிவிப்பு மற்றும் DND முறை அமைப்புகளை பயன்படுத்த முடியாது.</string>
+    <string name="dnd_access_fix_action">அணுகலை வழங்கு</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">கொள்முடிவு ரத்துசெய்யப்பட்டது</string>
     <string name="error_iap_unavailable_message">ஆப்் உள்ளை கொள்முடிவுகள் கிடையவில்லை</string>
@@ -400,12 +427,11 @@
     <string name="devices_indicator_disconnect">தொடர்பு துணிக்கு</string>
     <string name="devices_indicator_limit">கட்டுப்படுத்து</string>
     <string name="devices_indicator_launch">தொடங்கு</string>
-    <string name="devices_indicator_auto">தான்</string>
     <string name="devices_indicator_home">இல்லம்</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">எச்சரிக்கை</string>
     <!-- Volume input dialog -->
-    <string name="devices_volume_input_hint">ஐடியம் (0–1(0))</string>
+    <string name="devices_volume_input_hint">ஒலி அளவு (0–100)</string>
     <string name="devices_volume_input_error">%1$d மற்றும் %2$d இடையில் ஒரு மதிப்பை உள்ளிடுக</string>
     <string name="devices_volume_input_caption">உண்மையான ஒலியளவு உங்கள் சாதனம் ஆதரிக்கும் அருகாமை படிக்கு வட்டமிடப்படலாம்.</string>
     <!-- Lock/unlock sliders -->

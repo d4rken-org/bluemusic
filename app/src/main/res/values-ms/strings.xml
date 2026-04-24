@@ -73,13 +73,36 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Kelewatan penurunan volum</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Masa minimum di antara penurunan volum: %d ms</string>
     <string name="devices_device_config_autoplay_label">Automain</string>
-    <string name="devices_device_config_autoplay_desc">Menekan main disimulasikan pada kawalan jauh Bluetooth bila peranti ini terhubung.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Jenis Kekunci Automain</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Jenis kekunci yang tersedia</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Kekunci yang dipilih (mengikut urutan)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Jenis kekunci</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Konfigurasikan kekunci mana yang hendak dihantar dan dalam urutan apa</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Tiada kekunci dikonfigurasi</string>
+    <string name="devices_device_config_autoplay_desc">Hantar arahan kekunci media yang dikonfigurasikan apabila peranti ini disambungkan.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Arahan main semula automatik</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Urutan arahan</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Arahan</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Konfigurasikan arahan yang hendak dihantar dan dalam urutan apa</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Tiada arahan dikonfigurasikan</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">Tambah arahan</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">Maksimum %1$d arahan</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">Tiada arahan lagi. Ketik \"Tambah arahan\" untuk mula.</string>
+    <string name="devices_autoplay_keycode_play_label">Main</string>
+    <string name="devices_autoplay_keycode_play_pause_label">Main/Jeda</string>
+    <string name="devices_autoplay_keycode_next_label">Seterusnya</string>
+    <string name="devices_autoplay_keycode_previous_label">Sebelumnya</string>
+    <string name="devices_autoplay_keycode_stop_label">Berhenti</string>
+    <string name="devices_autoplay_keycode_rewind_label">Putar Balik</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">Mara Laju</string>
+    <string name="devices_autoplay_keycode_play_desc">Hantar arahan main sahaja</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">Togol antara main dan jeda</string>
+    <string name="devices_autoplay_keycode_next_desc">Langkau ke trek seterusnya</string>
+    <string name="devices_autoplay_keycode_previous_desc">Pergi ke trek sebelumnya</string>
+    <string name="devices_autoplay_keycode_stop_desc">Hentikan main balik</string>
+    <string name="devices_autoplay_keycode_rewind_desc">Putar balik trek semasa</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">Mara laju trek semasa</string>
+    <string name="devices_autoplay_keycode_unknown_label">Tidak diketahui (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="other">%d arahan</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">Gerak ke atas</string>
+    <string name="cd_autoplay_keycode_move_down">Gerak ke bawah</string>
+    <string name="cd_autoplay_keycode_remove">Alih keluar</string>
     <string name="devices_device_config_section_volumes_label">Volum</string>
     <string name="devices_device_config_section_volume_label">Volum</string>
     <string name="devices_device_config_alarm_volume_label">Volum penggera</string>
@@ -180,6 +203,7 @@
     <string name="settings_support_debuglog_folder_empty_desc">Tiada log nyahpepijat tersimpan</string>
     <string name="settings_support_debuglog_folder_delete_title">Padam semua log nyahpepijat?</string>
     <string name="settings_support_debuglog_folder_delete_msg">Ini akan memadamkan semua sesi log nyahpepijat yang tersimpan secara kekal.</string>
+    <string name="settings_support_discord_label">Percanggahan</string>
     <string name="settings_support_discord_description">Tempat untuk bergaul dan bertanya soalan.</string>
     <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Penghargaan</string>
@@ -351,6 +375,7 @@
     <string name="action_fix">Betulkan</string>
     <string name="battery_optimizations_issue_description">Pengoptimuman bateri boleh didayakan bagi apl ini dan dapat mencegahnya dari menerima aktiviti Bluetooth. Pertimbang untuk nyahdayakan pengoptimuman jika anda mengalami isu.</string>
     <string name="label_bluetooth_settings">Tetapan bluetooth</string>
+    <string name="android10_applaunch_issue_description">Android 10 mengawal bagaimana apl boleh dilancarkan dari latar belakang. Bagi membolehkan apl dibuka bila peranti Bluetooth bersambung, berikan kebenaran \&quot;Paparan ke atas apl lain\&quot; (SISTEM_WASPADA_TETINGKAP).</string>
     <string name="label_opensource">Kod sumber</string>
     <string name="android13_notification_permission_description">Beri apl ini kebenaran untuk hantar pemberitahuan. Ini membolehkan memaparkan pemberitahuan apabila apl ini aktif dan pelarasan volum sedang dibuat.</string>
     <string name="privacy_policy_label">Dasar privasi</string>
@@ -370,6 +395,9 @@
     <string name="android10_applaunch_hint_message">Android 10 memerlukan kebenaran khas untuk melancarkan apl dari latar belakang. Beri kebenaran &quot;Paparan ke atas apl lain&quot;.</string>
     <string name="notification_permission_hint_title">Kebenaran pemberitahuan</string>
     <string name="notification_permission_hint_message">Beri kebenaran pemberitahuan untuk lihat kemas kini status semasa melaraskan volum.</string>
+    <string name="dnd_access_hint_title">Akses Jangan Ganggu</string>
+    <string name="dnd_access_hint_message">Tanpa akses Jangan Ganggu, tetapan nada dering, pemberitahuan, dan mod JG tidak dapat diterapkan apabila peranti anda disambungkan.</string>
+    <string name="dnd_access_fix_action">Berikan akses</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Pembelian dibatalkan</string>
     <string name="error_iap_unavailable_message">Pembelian dalam apl tidak tersedia</string>
@@ -394,7 +422,6 @@
     <string name="devices_indicator_disconnect">Putus</string>
     <string name="devices_indicator_limit">Had</string>
     <string name="devices_indicator_launch">Lancar</string>
-    <string name="devices_indicator_auto">Automatik</string>
     <string name="devices_indicator_home">Utama</string>
     <string name="devices_indicator_dnd">JG</string>
     <string name="devices_indicator_alert">Amaran</string>

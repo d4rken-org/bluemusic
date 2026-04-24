@@ -73,13 +73,39 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Затрымка зніжэння гучнасці</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Мінімальны час паміж зніжэннямі гучнасці: %d мс</string>
     <string name="devices_device_config_autoplay_label">Аўтазапуск</string>
-    <string name="devices_device_config_autoplay_desc">Сімуляваць націск кнопкі адтварэння на пульце Bluetooth пры падключэнні гэтай прылады.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Тыпы клавіш аўтазапуску</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Даступныя тыпы клавіш</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Выбраныя клавішы (па парадку)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Тыпы клавіш</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Наладзіць, якія клавішы адпраўляць і ў якім парадку</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Клавішы не наладжаны</string>
+    <string name="devices_device_config_autoplay_desc">Адпраўляць настроеныя медыякаманды пры падключэнні гэтай прылады.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Каманды аўтаўзнаўлення</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Паслядоўнасць каманд</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Каманды</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Настройце, якія каманды адпраўляць і ў якой паслядоўнасці</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Няма настроеных каманд</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">Дадаць каманду</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">Максімум %1$d каманд</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">Каманд пакуль няма. Націсніце «Дадаць каманду», каб пачаць.</string>
+    <string name="devices_autoplay_keycode_play_label">Граць</string>
+    <string name="devices_autoplay_keycode_play_pause_label">Граць/Паўза</string>
+    <string name="devices_autoplay_keycode_next_label">Наступны</string>
+    <string name="devices_autoplay_keycode_previous_label">Папярэдні</string>
+    <string name="devices_autoplay_keycode_stop_label">Спыніць</string>
+    <string name="devices_autoplay_keycode_rewind_label">Перамотаць назад</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">Швідкая перамотка</string>
+    <string name="devices_autoplay_keycode_play_desc">Адпраўляе толькі каманду γрання</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">Пераключае паміж граннем і паўзай</string>
+    <string name="devices_autoplay_keycode_next_desc">Перайсці да наступнай кампазіцыі</string>
+    <string name="devices_autoplay_keycode_previous_desc">Перайсці да папярэдняй кампазіцыі</string>
+    <string name="devices_autoplay_keycode_stop_desc">Спыніць вазнаванне</string>
+    <string name="devices_autoplay_keycode_rewind_desc">Перамотваць бягучую кампазіцыю</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">Швідка перамотка бягучай кампазіцыі</string>
+    <string name="devices_autoplay_keycode_unknown_label">Невядомае (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d каманда</item>
+        <item quantity="few">%d каманды</item>
+        <item quantity="many">%d каманд</item>
+        <item quantity="other">%d каманды</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">Перамясціць уверх</string>
+    <string name="cd_autoplay_keycode_move_down">Перамясціць ўніз</string>
+    <string name="cd_autoplay_keycode_remove">Выдаліць</string>
     <string name="devices_device_config_section_volumes_label">Гучнасці</string>
     <string name="devices_device_config_section_volume_label">Гучнасць</string>
     <string name="devices_device_config_alarm_volume_label">Гучнасць будзільніка</string>
@@ -174,6 +200,12 @@
     <string name="settings_support_debuglog_short_recording_continue">Працягнуць запіс</string>
     <string name="settings_support_debuglog_short_recording_stop">Усё роўна спыніць</string>
     <string name="settings_support_debuglog_folder_label">Папка журналаў адладкі</string>
+    <plurals name="settings_support_debuglog_folder_desc">
+        <item quantity="one">%1$d сесія з выкарыстаннем %2$s</item>
+        <item quantity="few">%1$d сесіі з выкарыстаннем %2$s</item>
+        <item quantity="many">%1$d сесій з выкарыстаннем %2$s</item>
+        <item quantity="other">%1$d сесіі з выкарыстаннем %2$s</item>
+    </plurals>
     <string name="settings_support_debuglog_folder_empty_desc">Журналы адладкі не захаваны</string>
     <string name="settings_support_debuglog_folder_delete_title">Выдаліць усе журналы адладкі?</string>
     <string name="settings_support_debuglog_folder_delete_msg">Гэта назаўжды выдаліць усе захаваныя сеансы журналаў адладкі.</string>
@@ -271,6 +303,12 @@
     <string name="contact_expected_behavior_hint">Апішыце, чаго вы чакалі замест гэтага.</string>
     <string name="support_contact_debuglog_zip_error">Не ўдалося падрыхтаваць журнал адладкі для прыкрэплення</string>
     <string name="contact_send_action">Адкрыць дадатак электроннай пошты</string>
+    <plurals name="contact_word_count">
+        <item quantity="one">%1$d / %2$d слова</item>
+        <item quantity="few">%1$d / %2$d словы</item>
+        <item quantity="many">%1$d / %2$d слоў</item>
+        <item quantity="other">%1$d / %2$d словы</item>
+    </plurals>
     <string name="contact_welcome_msg">Я сам чытаю кожнае паведамленне і стараюся адказваць, але паколькі я працую над гэтым адзін, гэта можа заняць некаторы час. Дзякуй за цярпенне.</string>
     <string name="contact_footer_msg">Ваша паведамленне будзе адпраўлена па электроннай пошце. Інфармацыя аб прыладзе і наладах прыкрапляецца аўтаматычна.</string>
     <string name="contact_no_email_app_msg">На гэтай прыладзе не знойдзены дадатак электроннай пошты.</string>
@@ -355,6 +393,12 @@
     <string name="privacy_policy_label">Палітыка канфідэнцыяльнасці</string>
     <string name="managed_devices_empty_message">Прылады Bluetooth не наладжаны.\nНацісніце кнопку +, каб дадаць першую прыладу.</string>
     <string name="label_pro_feature">Прэміум-функцыя</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">Бясплатная версія: %1$d з %2$d прылады</item>
+        <item quantity="few">Бясплатная версія: %1$d з %2$d прылады</item>
+        <item quantity="many">Бясплатная версія: %1$d з %2$d прылад</item>
+        <item quantity="other">Бясплатная версія: %1$d з %2$d прылад</item>
+    </plurals>
     <string name="general_delete_action">Выдаліць</string>
     <string name="general_cancel_action">Скасаваць</string>
     <string name="general_ok_action">АК</string>
@@ -366,6 +410,9 @@
     <string name="android10_applaunch_hint_message">Android 10 патрабуе спецыяльнага дазволу для запуску дадаткаў або паказу галоўнага экрана з фону. Дайце дазвол \"Паказ над іншымі дадаткамі\".</string>
     <string name="notification_permission_hint_title">Дазвол на апавяшчэнні</string>
     <string name="notification_permission_hint_message">Дайце дазвол на апавяшчэнні, каб бачыць абнаўленні стану пры рэгуляванні гучнасці.</string>
+    <string name="dnd_access_hint_title">Доступ да рэжыму «Не турбаваць»</string>
+    <string name="dnd_access_hint_message">Без доступу да рэжыму «Не турбаваць» налады звонку, апавяшчэнняў і рэжым «Не турбаваць» нельга адасобіць пры падключэнні вашых прылад.</string>
+    <string name="dnd_access_fix_action">Даць доступ</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Пакупка адменена</string>
     <string name="error_iap_unavailable_message">Пакупкі ў дадатку недаступны</string>
@@ -390,7 +437,6 @@
     <string name="devices_indicator_disconnect">Адключыць</string>
     <string name="devices_indicator_limit">Абмежаванне</string>
     <string name="devices_indicator_launch">Запусціць</string>
-    <string name="devices_indicator_auto">Аўта</string>
     <string name="devices_indicator_home">Дадому</string>
     <string name="devices_indicator_dnd">Не турбаваць</string>
     <string name="devices_indicator_alert">Абвестка</string>

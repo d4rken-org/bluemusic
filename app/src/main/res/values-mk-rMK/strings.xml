@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Заостану при намалување на јачина на звук</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Минимално време помеѓу намалувањата на јачина на звук: %d ms</string>
     <string name="devices_device_config_autoplay_label">Автостарт</string>
-    <string name="devices_device_config_autoplay_desc">Симулирајте притискање старт на Блутут управувач кога овој уред се поврзува.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Типови на копчиња за автоматско пуштање</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Достапни типови на копчиња</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Избрани копчиња (по редослед)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Типови на копчиња</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Конфигурирај кои копчиња да се пратат и во кој редослед</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Нема конфигурирани копчиња</string>
+    <string name="devices_device_config_autoplay_desc">Испрати ги конфигурираните команди за медиумски копчиња кога овој уред се поврзува.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Команди за автоматско пуштање</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Редослед на команди</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Команди</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Конфигурирај кои команди да се испратат и во кој редослед</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Нема конфигурирани команди</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">Додај команда</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">Максимум %1$d команди</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">Се уште нема команди. Допри „Додај команда“ за да започнеш.</string>
+    <string name="devices_autoplay_keycode_play_label">Старт</string>
+    <string name="devices_autoplay_keycode_play_pause_label">Пушти/Паузирај</string>
+    <string name="devices_autoplay_keycode_next_label">Следно</string>
+    <string name="devices_autoplay_keycode_previous_label">Претходна</string>
+    <string name="devices_autoplay_keycode_stop_label">Стоп</string>
+    <string name="devices_autoplay_keycode_rewind_label">Премотај назад</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">Брзо напред</string>
+    <string name="devices_autoplay_keycode_play_desc">Испраќа само команда за пуштање</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">Префрла помеѓу пуштање и пауза</string>
+    <string name="devices_autoplay_keycode_next_desc">Прескокни на следна песна</string>
+    <string name="devices_autoplay_keycode_previous_desc">Оди на претходна песна</string>
+    <string name="devices_autoplay_keycode_stop_desc">Запри репродукција</string>
+    <string name="devices_autoplay_keycode_rewind_desc">Премотај ја тековната песна назад</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">Брзо напред за тековната песна</string>
+    <string name="devices_autoplay_keycode_unknown_label">Непознато (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d команда</item>
+        <item quantity="other">%d команди</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">Помести горе</string>
+    <string name="cd_autoplay_keycode_move_down">Помести долу</string>
+    <string name="cd_autoplay_keycode_remove">Отстрани</string>
     <string name="devices_device_config_section_volumes_label">Јачини на звук</string>
     <string name="devices_device_config_section_volume_label">Јачина на звук</string>
     <string name="devices_device_config_alarm_volume_label">Јачина на алармот</string>
@@ -181,6 +205,7 @@
     <string name="settings_support_debuglog_folder_empty_desc">Нема зачувани дебаг логови</string>
     <string name="settings_support_debuglog_folder_delete_title">Да се избришат сите дебаг логови?</string>
     <string name="settings_support_debuglog_folder_delete_msg">Ова трајно ќе ги избрише сите зачувани сесии на дебаг лог.</string>
+    <string name="settings_support_discord_label">Раздор</string>
     <string name="settings_support_discord_description">Место каде можеш да се дружиш и да поставуваш прашања.</string>
     <!-- Settings/Acks-->
     <string name="settings_acknowledgements_label">Признанија</string>
@@ -375,6 +400,9 @@
     <string name="android10_applaunch_hint_message">Android 10 бара посебна дозвола за стартување апликации или прикажување на почетниот екран од позадина. Дај дозвола „Прикажи над другите апликации\".</string>
     <string name="notification_permission_hint_title">Дозвола за известувања</string>
     <string name="notification_permission_hint_message">Дај дозвола за известувања за да гледаш ажурирања на статусот при прилагодување на јачината на звукот.</string>
+    <string name="dnd_access_hint_title">Пристап до Не вознемирувај</string>
+    <string name="dnd_access_hint_message">Без пристап до Не вознемирувај, поставките за ѕвонење, известување и режимот Не вознемирувај не можат да се применат кога вашите уреди се поврзуваат.</string>
+    <string name="dnd_access_fix_action">Дозволи пристап</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Купувањето е откажано</string>
     <string name="error_iap_unavailable_message">Купувањата во апликацијата не се достапни</string>
@@ -399,7 +427,6 @@
     <string name="devices_indicator_disconnect">Исклучи</string>
     <string name="devices_indicator_limit">Лимит</string>
     <string name="devices_indicator_launch">Стартај</string>
-    <string name="devices_indicator_auto">Авто</string>
     <string name="devices_indicator_home">Почеток</string>
     <string name="devices_indicator_dnd">НВ</string>
     <string name="devices_indicator_alert">Известување</string>

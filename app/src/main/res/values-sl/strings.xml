@@ -73,13 +73,39 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Zamik zmanjševanja glasnosti</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Minimalni čas med zmanjševanji glasnosti: %d ms</string>
     <string name="devices_device_config_autoplay_label">Samodejno predvajanje</string>
-    <string name="devices_device_config_autoplay_desc">Simuliraj pritisk tipke za predvajanje na daljinskem upravljalniku Bluetooth, ko se ta naprava poveže.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Vrste tipk za samodejno predvajanje</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Razpoložjive vrste tipk</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Izbrane tipke (po vrstnem redu)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Vrste tipk</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Konfigurirajte, katere tipke pošljete in v katerem vrstnem redu</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Ni nastavljenih tipk</string>
+    <string name="devices_device_config_autoplay_desc">Pošlji konfigurirane ukaze medijskega ključa ob povezavi te naprave.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Ukazi za samodejno predvajanje</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Zaporedje ukazov</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Ukazi</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Nastavi, katere ukaze poslati in kakšnem vrstnem redu</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Ni konfiguriranih ukazov</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">Dodaj ukaz</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">Največ %1$d ukazov</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">Še ni ukazov. Tapni »Dodaj ukaz«, da začneš.</string>
+    <string name="devices_autoplay_keycode_play_label">Predvajaj</string>
+    <string name="devices_autoplay_keycode_play_pause_label">Predvajaj/Premor</string>
+    <string name="devices_autoplay_keycode_next_label">Naprej</string>
+    <string name="devices_autoplay_keycode_previous_label">Nazaj</string>
+    <string name="devices_autoplay_keycode_stop_label">Ustavi</string>
+    <string name="devices_autoplay_keycode_rewind_label">Previj nazaj</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">Hitro previjanje naprej</string>
+    <string name="devices_autoplay_keycode_play_desc">Pošlje samo ukaz za predvajanje</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">Preklopi med predvajanjem in premorom</string>
+    <string name="devices_autoplay_keycode_next_desc">Preskoči na naslednjo skladbo</string>
+    <string name="devices_autoplay_keycode_previous_desc">Pojdi na prejšnjo skladbo</string>
+    <string name="devices_autoplay_keycode_stop_desc">Ustavi predvajanje</string>
+    <string name="devices_autoplay_keycode_rewind_desc">Previj trenutno skladbo nazaj</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">Hitro previj trenutno skladbo naprej</string>
+    <string name="devices_autoplay_keycode_unknown_label">Neznano (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d ukaz</item>
+        <item quantity="two">%d ukaza</item>
+        <item quantity="few">%d ukazi</item>
+        <item quantity="other">%d ukazov</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">Premakni gor</string>
+    <string name="cd_autoplay_keycode_move_down">Premakni dol</string>
+    <string name="cd_autoplay_keycode_remove">Odstrani</string>
     <string name="devices_device_config_section_volumes_label">Glasnosti</string>
     <string name="devices_device_config_section_volume_label">Glasnost</string>
     <string name="devices_device_config_alarm_volume_label">Glasnost alarma</string>
@@ -235,8 +261,8 @@
     <string name="debug_log_screen_session_path_label">Pot seje za odpravljanje napak</string>
     <string name="debug_log_screen_log_files_label">Dnevniške datoteke</string>
     <plurals name="debug_log_screen_log_files_ready">
-        <item quantity="one">%1$d datoteka je pripravljena (%2$s).</item>
-        <item quantity="two">%1$d datoteki sta pripravljeni (%2$s).</item>
+        <item quantity="one">Datoteka je pripravljena (%2$s).</item>
+        <item quantity="two">Datoteki sta pripravljeni (%2$s).</item>
         <item quantity="few">%1$d datoteke so pripravljene (%2$s).</item>
         <item quantity="other">%1$d datotek je pripravljenih (%2$s).</item>
     </plurals>
@@ -384,6 +410,9 @@
     <string name="android10_applaunch_hint_message">Android 10 zahteva posebno dovoljenje za zagon aplikacij ali prikaz začetnega zaslona iz ozadja. Podeli dovoljenje „Prikazovanje nad drugimi aplikacijami“.</string>
     <string name="notification_permission_hint_title">Dovoljenje za obvestila</string>
     <string name="notification_permission_hint_message">Podeli dovoljenje za obvestila, da vidite posodobitve stanja med prilagajanjem glasnosti.</string>
+    <string name="dnd_access_hint_title">Dostop do »Ne moti«</string>
+    <string name="dnd_access_hint_message">Brez dostopa do »Ne moti« nastavitve zvonca, obvestil in načina »Ne moti« ne morejo biti uporabljene ob povezavi vaših naprav.</string>
+    <string name="dnd_access_fix_action">Odobri dostop</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Nakup prekinjen</string>
     <string name="error_iap_unavailable_message">Nakupi v aplikaciji niso na voljo</string>
@@ -408,7 +437,6 @@
     <string name="devices_indicator_disconnect">Odklči</string>
     <string name="devices_indicator_limit">Omejitev</string>
     <string name="devices_indicator_launch">Zaženi</string>
-    <string name="devices_indicator_auto">Samodejno</string>
     <string name="devices_indicator_home">Domov</string>
     <string name="devices_indicator_dnd">Ne moti</string>
     <string name="devices_indicator_alert">Opozorilo</string>

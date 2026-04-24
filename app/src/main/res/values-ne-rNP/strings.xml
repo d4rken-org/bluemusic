@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">भोल्युम कमी विलम्ब</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">भोल्युम कमीबिचको न्यूनतम समय: %d ms</string>
     <string name="devices_device_config_autoplay_label">स्वतः प्ले</string>
-    <string name="devices_device_config_autoplay_desc">यो उपकरण जडान हुँदा Bluetooth रिमोटमा प्ले थिच्ने अनुकरण गर्नुहोस्।</string>
-    <string name="devices_device_config_autoplay_keycodes_title">स्वतः प्ले कुञ्जी प्रकारहरू</string>
-    <string name="devices_device_config_autoplay_keycodes_available">उपलब्ध कुञ्जी प्रकारहरू</string>
-    <string name="devices_device_config_autoplay_keycodes_order">चयन गरिएका कुञ्जीहरू (क्रममा)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">कुञ्जी प्रकारहरू</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">कुन कुञ्जीहरू पठाउने र कुन क्रममा कन्फिगर गर्नुहोस्</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">कुनै कुञ्जी कन्फिगर गरिएको छैन</string>
+    <string name="devices_device_config_autoplay_desc">यो यन्त्र जडान हुँदा कन्फिगर गरिएका मिडिया कुञ्जी आदेशहरू पठाउनुहोस्।</string>
+    <string name="devices_device_config_autoplay_keycodes_title">अटोप्ले आदेशहरू</string>
+    <string name="devices_device_config_autoplay_keycodes_order">आदेश अनुक्रम</string>
+    <string name="devices_device_config_autoplay_keycodes_label">आदेशहरू</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">कुन आदेशहरू पठाउने र कुन क्रममा पठाउने कन्फिगर गर्नुहोस्</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">कुनै आदेश कन्फिगर गरिएको छैन</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">आदेश थप्नुहोस्</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">अधिकतम %1$d आदेशहरू</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">अहिलेसम्म कुनै आदेश छैन। सुरु गर्न \"आदेश थप्नुहोस्\" थिच्नुहोस्।</string>
+    <string name="devices_autoplay_keycode_play_label">प्ले</string>
+    <string name="devices_autoplay_keycode_play_pause_label">प्ले/पज</string>
+    <string name="devices_autoplay_keycode_next_label">अर्को</string>
+    <string name="devices_autoplay_keycode_previous_label">अघिल्लो</string>
+    <string name="devices_autoplay_keycode_stop_label">रोक्नुहोस्</string>
+    <string name="devices_autoplay_keycode_rewind_label">रिवाइन्ड</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">फास्ट फरवार्ड</string>
+    <string name="devices_autoplay_keycode_play_desc">केवल प्ले आदेश पठाउँछ</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">प्ले र पज बीच टगल गर्छ</string>
+    <string name="devices_autoplay_keycode_next_desc">अर्को ट्र्याकमा जानुहोस्</string>
+    <string name="devices_autoplay_keycode_previous_desc">अघिल्लो ट्र्याकमा जानुहोस्</string>
+    <string name="devices_autoplay_keycode_stop_desc">प्लेब्याक रोक्नुहोस्</string>
+    <string name="devices_autoplay_keycode_rewind_desc">हालको ट्र्याक रिवाइन्ड गर्नुहोस्</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">हालको ट्र्याक फास्ट फरवार्ड गर्नुहोस्</string>
+    <string name="devices_autoplay_keycode_unknown_label">अज्ञात (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d आदेश</item>
+        <item quantity="other">%d आदेशहरू</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">माथि सार्नुहोस्</string>
+    <string name="cd_autoplay_keycode_move_down">तल सार्नुहोस्</string>
+    <string name="cd_autoplay_keycode_remove">हटाउनुहोस्</string>
     <string name="devices_device_config_section_volumes_label">भोल्युमहरू</string>
     <string name="devices_device_config_section_volume_label">भोल्युम</string>
     <string name="devices_device_config_alarm_volume_label">अलार्म भोल्युम</string>
@@ -214,6 +238,7 @@
     <string name="backup_restore_skip_existing_desc">पहिले नै कन्फिगर गरिएका यन्त्रहरू ओभरराइट नगर्नुहोस्।</string>
     <string name="backup_restore_preview_label">ब्याकअप पूर्वावलोकन</string>
     <string name="backup_restore_preview_devices">%1$d यन्त्रहरू</string>
+    <string name="backup_restore_preview_overlap">%2$d मध्ये %1$d यन्त्रहरू पहिले नै कन्फिगर गरिएका छन्</string>
     <string name="backup_restore_confirm_action">अहिले रिस्टोर गर्नुहोस्</string>
     <string name="backup_restore_success_backup">ब्याकअप सिर्जना भयो — %1$d यन्त्रहरू सुरक्षित गरियो।</string>
     <string name="backup_restore_success_restore">रिस्टोर सम्पन्न — %1$d यन्त्रहरू रिस्टोर गरियो, %2$d छोडियो।</string>
@@ -360,6 +385,10 @@
     <string name="privacy_policy_label">गोपनीयता नीति</string>
     <string name="managed_devices_empty_message">कुनै Bluetooth उपकरण कन्फिगर गरिएको छैन।\nआफ्नो पहिलो उपकरण थप्न + बटन थिज्नुहोस्।</string>
     <string name="label_pro_feature">प्रिमियम सुविधा</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">निःशुल्क संस्करण: %2$d मध्ये %1$d उपकरण</item>
+        <item quantity="other">निःशुल्क संस्करण: %2$d मध्ये %1$d उपकरणहरू</item>
+    </plurals>
     <string name="general_delete_action">मेटाउनुहोस्</string>
     <string name="general_cancel_action">रद्द गर्नुहोस्</string>
     <string name="general_ok_action">ठिक छ</string>
@@ -371,6 +400,9 @@
     <string name="android10_applaunch_hint_message">Android 10 लाई पृष्ठभूमिबाट एपहरू खोल्न वा होम स्क्रिन देखाउन विशेष अनुमति आवश्यक छ। \"अन्य एपहरूमाथि प्रदर्शन\" अनुमति दिनुहोस्।</string>
     <string name="notification_permission_hint_title">सूचना अनुमति</string>
     <string name="notification_permission_hint_message">भोल्युमहरू समायोजन गर्दा स्थिति अद्यावधिकहरू हेर्न सूचना अनुमति दिनुहोस्।</string>
+    <string name="dnd_access_hint_title">बाधा नगर्नुहोस् पहुँच</string>
+    <string name="dnd_access_hint_message">बाधा नगर्नुहोस् पहुँच बिना, तपाईंका यन्त्रहरू जडान हुँदा रिङटोन, सूचना, र DND मोड सेटिङहरू लागू गर्न सकिँदैन।</string>
+    <string name="dnd_access_fix_action">पहुँच दिनुहोस्</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">खरिद रद्द गरियो</string>
     <string name="error_iap_unavailable_message">इन-एप खरिदहरू उपलब्ध छैनन्</string>
@@ -395,7 +427,6 @@
     <string name="devices_indicator_disconnect">विच्छेद गर्नुस्</string>
     <string name="devices_indicator_limit">सीमा</string>
     <string name="devices_indicator_launch">सुरू गर्नुस्</string>
-    <string name="devices_indicator_auto">स्वतः</string>
     <string name="devices_indicator_home">गृह</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">सूचना</string>

@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">व्हॉल्युम कमी विलंब</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">व्हॉल्युम घटींमधील किमान वेळ: %d ms</string>
     <string name="devices_device_config_autoplay_label">स्वयंप्ले</string>
-    <string name="devices_device_config_autoplay_desc">हे डिव्हाइस कनेक्ट झाल्यावर Bluetooth रिमोटवर प्ले दाबण्याचे अनुकरण करा.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">स्वयंप्ले की प्रकार</string>
-    <string name="devices_device_config_autoplay_keycodes_available">उपलब्ध की प्रकार</string>
-    <string name="devices_device_config_autoplay_keycodes_order">निवडलेल्या की (क्रमाने)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">की प्रकार</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">कोणत्या की पाठवायच्या आणि कोणत्या क्रमाने ते कॉन्फिगर करा</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">कोणत्याही की कॉन्यिगर केल्या नाहीत</string>
+    <string name="devices_device_config_autoplay_desc">हे डिव्हाइस कनेक्ट झाल्यावर कॉन्फिगर केलेल्या मीडिया की कमांड पाठवा.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">ऑटोप्ले कमांड</string>
+    <string name="devices_device_config_autoplay_keycodes_order">कमांड क्रम</string>
+    <string name="devices_device_config_autoplay_keycodes_label">कमांड</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">कोणत्या कमांड पाठवायच्या आणि कोणत्या क्रमाने ते कॉन्फिगर करा</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">कोणत्याही कमांड कॉन्फिगर केल्या नाहीत</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">कमांड जोडा</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">जास्तीत जास्त %1$d कमांड</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">अजून कोणत्याही कमांड नाहीत. सुरू करण्यासाठी \"कमांड जोडा\" टॅप करा.</string>
+    <string name="devices_autoplay_keycode_play_label">प्ले</string>
+    <string name="devices_autoplay_keycode_play_pause_label">प्ले/पॉज</string>
+    <string name="devices_autoplay_keycode_next_label">पुढील</string>
+    <string name="devices_autoplay_keycode_previous_label">मागील</string>
+    <string name="devices_autoplay_keycode_stop_label">थांबवा</string>
+    <string name="devices_autoplay_keycode_rewind_label">रिवाइंड</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">फास्ट फॉरवर्ड</string>
+    <string name="devices_autoplay_keycode_play_desc">फक्त प्ले कमांड पाठवते</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">प्ले आणि पॉज दरम्यान टॉगल करते</string>
+    <string name="devices_autoplay_keycode_next_desc">पुढील ट्रॅकवर जा</string>
+    <string name="devices_autoplay_keycode_previous_desc">मागील ट्रॅकवर जा</string>
+    <string name="devices_autoplay_keycode_stop_desc">प्लेबॅक थांबवा</string>
+    <string name="devices_autoplay_keycode_rewind_desc">सध्याचा ट्रॅक रिवाइंड करा</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">सध्याचा ट्रॅक फास्ट फॉरवर्ड करा</string>
+    <string name="devices_autoplay_keycode_unknown_label">अज्ञात (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d कमांड</item>
+        <item quantity="other">%d कमांड</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">वर हलवा</string>
+    <string name="cd_autoplay_keycode_move_down">खाली हलवा</string>
+    <string name="cd_autoplay_keycode_remove">काढा</string>
     <string name="devices_device_config_section_volumes_label">व्हॉल्युम्स</string>
     <string name="devices_device_config_section_volume_label">व्हॉल्युम</string>
     <string name="devices_device_config_alarm_volume_label">अलार्म व्हॉल्युम</string>
@@ -362,6 +386,10 @@
     <string name="managed_devices_empty_message">कोणतेही ब्लूटूथ डिव्हाइस कॉन्फिगर केलेले नाही.
 + बटण टॅप करा आणि तुमचे पहिले डिव्हाइस जोडा.</string>
     <string name="label_pro_feature">प्रीमियम वैशिष्ट्य</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">मोफत आवृत्ती: %2$d पैकी %1$d डिव्हाइस</item>
+        <item quantity="other">मोफत आवृत्ती: %2$d पैकी %1$d डिव्हाइसेस</item>
+    </plurals>
     <string name="general_delete_action">हटवा</string>
     <string name="general_cancel_action">रद्द करा</string>
     <string name="general_ok_action">ठीक आहे</string>
@@ -373,6 +401,9 @@
     <string name="android10_applaunch_hint_message">Android 10 ला पार्श्वभूमीतून अॅप्स लाँच करण्यासाठी किंवा होम स्क्रीन दाखवण्यासाठी विशेष परवानगी आवश्यक आहे. \"इतर अॅप्सवर प्रदर्शित करा\" परवानगी द्या.</string>
     <string name="notification_permission_hint_title">सूचना परवानगी</string>
     <string name="notification_permission_hint_message">व्हॉल्यूम समायोजित करताना स्थिती अपडेट्स पाहण्यासाठी सूचना परवानगी द्या.</string>
+    <string name="dnd_access_hint_title">डू नॉट डिस्टर्ब अॅक्सेस</string>
+    <string name="dnd_access_hint_message">डू नॉट डिस्टर्ब अॅक्सेसशिवाय, तुमचे डिव्हाइस कनेक्ट झाल्यावर रिंगटोन, नोटिफिकेशन आणि DND मोड सेटिंग्ज लागू होऊ शकत नाहीत.</string>
+    <string name="dnd_access_fix_action">अॅक्सेस द्या</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">खरेदी रद्द केली</string>
     <string name="error_iap_unavailable_message">इन-अॅप खरेदी उपलब्ध नाहीत</string>
@@ -397,11 +428,11 @@
     <string name="devices_indicator_disconnect">डिसकनेक्ट</string>
     <string name="devices_indicator_limit">मर्यादा</string>
     <string name="devices_indicator_launch">लाँच करा</string>
-    <string name="devices_indicator_auto">ऑटो</string>
     <string name="devices_indicator_home">होम</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">सूचना</string>
     <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">व्हॉल्यूम (0–100)</string>
     <string name="devices_volume_input_error">%1$d आणि %2$d मध्ये मूल्य प्रवाश करा</string>
     <string name="devices_volume_input_caption">वास्तविक व्हॉल्युम तुमच्या डिव्हाइसने समर्थित जवळच्या स्टेपला गोल होउ शकतो.</string>
     <!-- Lock/unlock sliders -->

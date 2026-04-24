@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">वॉल्यूम घटाने में देरी</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">वॉल्यूम घटाने के बीच न्यूनतम समय: %d ms</string>
     <string name="devices_device_config_autoplay_label">स्वचालित</string>
-    <string name="devices_device_config_autoplay_desc">जब यह डिवाइस कनेक्ट होता है तो ब्लूटूथ रिमोट पर प्ले बटन दबाकर उसका का अनुकरण करें।</string>
-    <string name="devices_device_config_autoplay_keycodes_title">ऑटोप्ले की प्रकार</string>
-    <string name="devices_device_config_autoplay_keycodes_available">उपलब्ध की प्रकार</string>
-    <string name="devices_device_config_autoplay_keycodes_order">चयनित की (क्रम में)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">की प्रकार</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">कॉन्फ़िगर करें कि कौन सी की भेजनी हैं और किस क्रम में</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">कोई की कॉन्फ़िगर नहीं</string>
+    <string name="devices_device_config_autoplay_desc">जब यह डिवाइस कनेक्ट होता है तो कॉन्फ़िगर किए गए मीडिया की कमांड भेजें।</string>
+    <string name="devices_device_config_autoplay_keycodes_title">ऑटोप्ले कमांड</string>
+    <string name="devices_device_config_autoplay_keycodes_order">कमांड क्रम</string>
+    <string name="devices_device_config_autoplay_keycodes_label">कमांड</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">कॉन्फ़िगर करें कि कौन सी कमांड भेजनी हैं और किस क्रम में</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">कोई कमांड कॉन्फ़िगर नहीं है</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">कमांड जोड़ें</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">अधिकतम %1$d कमांड</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">अभी तक कोई कमांड नहीं। शुरू करने के लिए \"कमांड जोड़ें\" पर टैप करें।</string>
+    <string name="devices_autoplay_keycode_play_label">चलाएँ</string>
+    <string name="devices_autoplay_keycode_play_pause_label">चलाएं/रोकें</string>
+    <string name="devices_autoplay_keycode_next_label">आगे</string>
+    <string name="devices_autoplay_keycode_previous_label">पिछला</string>
+    <string name="devices_autoplay_keycode_stop_label">रोकें</string>
+    <string name="devices_autoplay_keycode_rewind_label">रिवाइंड</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">फास्ट फॉरवर्ड</string>
+    <string name="devices_autoplay_keycode_play_desc">केवल प्ले कमांड भेजता है</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">प्ले और पॉज़ के बीच टॉगल करता है</string>
+    <string name="devices_autoplay_keycode_next_desc">अगले ट्रैक पर जाएं</string>
+    <string name="devices_autoplay_keycode_previous_desc">पिछले ट्रैक पर जाएं</string>
+    <string name="devices_autoplay_keycode_stop_desc">प्लेबैक बंद करें</string>
+    <string name="devices_autoplay_keycode_rewind_desc">वर्तमान ट्रैक रिवाइंड करें</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">वर्तमान ट्रैक फास्ट फॉरवर्ड करें</string>
+    <string name="devices_autoplay_keycode_unknown_label">अज्ञात (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d कमांड</item>
+        <item quantity="other">%d कमांड</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">ओपर ले जाएं</string>
+    <string name="cd_autoplay_keycode_move_down">नीचे ले जाएं</string>
+    <string name="cd_autoplay_keycode_remove">हटाएं</string>
     <string name="devices_device_config_section_volumes_label">ध्वनि</string>
     <string name="devices_device_config_section_volume_label">वॉल्यूम</string>
     <string name="devices_device_config_alarm_volume_label">अलार्म वॉल्यूम</string>
@@ -362,8 +386,8 @@
     <string name="managed_devices_empty_message">कोई ब्लूटूथ डिवाइस कॉन्फिगर नहीं किया गया।\nअपना पहला डिवाइस जोड़ने के लिए + बटन पर टैप करें।</string>
     <string name="label_pro_feature">प्रीमियम फीचर</string>
     <plurals name="discover_device_limit_banner">
-        <item quantity="one">मुफ्त संस्करण: %1$d में से %2$d डिवाइस</item>
-        <item quantity="other">मुफ्त संस्करण: %1$d में से %2$d डिवाइस</item>
+        <item quantity="one">मुफ्त संस्करण: %2$d में से %1$d डिवाइस</item>
+        <item quantity="other">मुफ्त संस्करण: %2$d में से %1$d डिवाइस</item>
     </plurals>
     <string name="general_delete_action">डिलीट</string>
     <string name="general_cancel_action">रद्द</string>
@@ -376,6 +400,9 @@
     <string name="android10_applaunch_hint_message">एंड्राइड 10 में बैकग्राउंड से आप लॉन्च करने के लिए विशेष अनुमति की आवश्यकता है। &quot;दूसरे आप पर प्रदर्शित करें&quot; अनुमति दें।</string>
     <string name="notification_permission_hint_title">अधिसूचना अनुमति</string>
     <string name="notification_permission_hint_message">वॉल्यूम समायोजित करते समय स्थिति अपडेट देखने के लिए अधिसूचना अनुमति दें।</string>
+    <string name="dnd_access_hint_title">डू नॉट डिस्टर्ब एक्सेस</string>
+    <string name="dnd_access_hint_message">डू नॉट डिस्टर्ब एक्सेस के बिना, रिंगटोन, नोटिफ़िकेशन और DND मोड सेटिंग्स आपके डिवाइसेस कनेक्ट होने पर लागू नहीं हो सकतीं।</string>
+    <string name="dnd_access_fix_action">पहुंच प्रदान करें</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">खरीदारी रद्द</string>
     <string name="error_iap_unavailable_message">इन-आप खरीदारी उपलब्ध नहीं</string>
@@ -400,7 +427,6 @@
     <string name="devices_indicator_disconnect">डिस्कनेक्ट</string>
     <string name="devices_indicator_limit">सीमा</string>
     <string name="devices_indicator_launch">लॉन्च</string>
-    <string name="devices_indicator_auto">ऑटो</string>
     <string name="devices_indicator_home">होम</string>
     <string name="devices_indicator_dnd">परेशान न करें</string>
     <string name="devices_indicator_alert">अलर्ट</string>

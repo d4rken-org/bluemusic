@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">تأخیر کاهش صدا</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">حداقل فاصله بین کاهش‌های صدا: %d میلی‌ثانیه</string>
     <string name="devices_device_config_autoplay_label">پخش خودکار</string>
-    <string name="devices_device_config_autoplay_desc">شبیه‌سازی فشار دکمه پخش در یک ریموت بلوتوث هنگام اتصال این دستگاه.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">نوع کلیدهای پخش خودکار</string>
-    <string name="devices_device_config_autoplay_keycodes_available">نوع کلیدهای موجود</string>
-    <string name="devices_device_config_autoplay_keycodes_order">کلیدهای انتخاب شده (به ترتیب)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">نوع کلیدها</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">تنظیم کلیدهای ارسالی و ترتیب آنها</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">کلیدی تنظیم نشده</string>
+    <string name="devices_device_config_autoplay_desc">دستورهای کلید رسانه پیکربندی‌شده را هنگام اتصال این دستگاه ارسال کن.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">دستورهای پخش خودکار</string>
+    <string name="devices_device_config_autoplay_keycodes_order">ترتیب دستورها</string>
+    <string name="devices_device_config_autoplay_keycodes_label">دستورها</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">تنظیم کن کدام دستورها و به چه ترتیبی ارسال شوند</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">هیچ دستوری پیکربندی نشده</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">افزودن دستور</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">حداکثر %1$d دستور</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">هنوز هیچ دستوری نیست. روی «افزودن دستور» ضربه بزنید تا شروع کنید.</string>
+    <string name="devices_autoplay_keycode_play_label">پخش</string>
+    <string name="devices_autoplay_keycode_play_pause_label">پخش/مکث</string>
+    <string name="devices_autoplay_keycode_next_label">بعدی</string>
+    <string name="devices_autoplay_keycode_previous_label">قبلی</string>
+    <string name="devices_autoplay_keycode_stop_label">توقف</string>
+    <string name="devices_autoplay_keycode_rewind_label">برگشت سریع</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">جلو سریع</string>
+    <string name="devices_autoplay_keycode_play_desc">فقط دستور پخش را ارسال می‌کند</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">بین پخش و مکث جابجا می‌شود</string>
+    <string name="devices_autoplay_keycode_next_desc">رفتن به آهنگ بعدی</string>
+    <string name="devices_autoplay_keycode_previous_desc">رفتن به آهنگ قبلی</string>
+    <string name="devices_autoplay_keycode_stop_desc">توقف پخش</string>
+    <string name="devices_autoplay_keycode_rewind_desc">برگشت به عقب آهنگ جاری</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">جلو بردن سریع آهنگ جاری</string>
+    <string name="devices_autoplay_keycode_unknown_label">ناشناخته (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d دستور</item>
+        <item quantity="other">%d دستور</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">انتقال به بالا</string>
+    <string name="cd_autoplay_keycode_move_down">انتقال به پایین</string>
+    <string name="cd_autoplay_keycode_remove">حذف</string>
     <string name="devices_device_config_section_volumes_label">صداها</string>
     <string name="devices_device_config_section_volume_label">صدا</string>
     <string name="devices_device_config_alarm_volume_label">صدای هشدار</string>
@@ -294,7 +318,7 @@
     <string name="label_just_a_moment_please">یه لحظه صبر کن.</string>
     <string name="label_notification_channel_status">وضعیت</string>
     <string name="action_set">تنظیم</string>
-    <string name="action_cancel">لغو</string>
+    <string name="action_cancel">لفو</string>
     <string name="label_invalid_input">ورودی نامعتبر</string>
     <string name="action_reset">بازنشانی</string>
     <string name="label_no_connected_devices">هیچ دستگاهی متصل نیست</string>
@@ -366,7 +390,7 @@
         <item quantity="other">نسخه رایگان: %1$d از %2$d دستگاه</item>
     </plurals>
     <string name="general_delete_action">حذف</string>
-    <string name="general_cancel_action">لغو</string>
+    <string name="general_cancel_action">لفو</string>
     <string name="general_ok_action">باشه</string>
     <string name="general_configure_action">پیکربندی</string>
     <string name="battery_optimization_hint_title">بهینه‌سازی باتری</string>
@@ -376,6 +400,9 @@
     <string name="android10_applaunch_hint_message">اندروید 10 برای راه‌اندازی برنامه‌ها یا نمایش صفحه اصلی از پس‌زمینه، مجوز ویژه لازم دارد. مجوز «نمایش روی برنامه‌های دیگر» را اعطا کنید.</string>
     <string name="notification_permission_hint_title">مجوز اعلان</string>
     <string name="notification_permission_hint_message">برای مشاهده به‌روزرسانی وضعیت حین تنظیم صدا، مجوز اعلان بدهید.</string>
+    <string name="dnd_access_hint_title">دسترسی به مزاحم نشوید</string>
+    <string name="dnd_access_hint_message">بدون دسترسی به «مزاحم نشوید»، تنظیمات زنگ، اعلان و حالت DND هنگام اتصال دستگاه‌هایتان اعمال نمی‌شوند.</string>
+    <string name="dnd_access_fix_action">موافقت کردن با دسترسی</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">خرید لغو شد</string>
     <string name="error_iap_unavailable_message">خرید درون‌برنامهای در دسترس نیست</string>
@@ -400,7 +427,6 @@
     <string name="devices_indicator_disconnect">قطع اتصال</string>
     <string name="devices_indicator_limit">محدودیت</string>
     <string name="devices_indicator_launch">راه‌اندازی</string>
-    <string name="devices_indicator_auto">خودکار</string>
     <string name="devices_indicator_home">خانه</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">هشدار</string>
