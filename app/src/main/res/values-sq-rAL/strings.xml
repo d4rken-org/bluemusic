@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Vonesa zvogëlimi vëllumi</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Koha minimale midis zvogëlimeve të volumit: %d ms</string>
     <string name="devices_device_config_autoplay_label">Luajtje automatike</string>
-    <string name="devices_device_config_autoplay_desc">Simulo shtypjen e luajtjes në një telekomandë Bluetooth kur kjo pajisje lidhet.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Llojet e Çelësave Luajtja Automatike</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Llojet e çelësave të disponueshëm</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Çelësat e zgjedhur (në rend)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Llojet e çelësave</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Konfiguro cilat çelësa të dërgosh dhe në çfarë rendi</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Nuk ka çelësa të konfiguruar</string>
+    <string name="devices_device_config_autoplay_desc">Dërgoni komandat e konfiguruara të tastave media kur ky pajisje lidhet.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Komandat e luajtjes automatike</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Sekuenca e komandave</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Komandat</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Konfiguroni cilat komanda të dërgoni dhe në çfarë rendi</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Nuk ka komanda të konfiguruara</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">Shto komandë</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">Maksimumi %1$d komanda</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">Nuk ka komanda ende. Trokitni \"Shto komandë\" për të filluar.</string>
+    <string name="devices_autoplay_keycode_play_label">Luaj</string>
+    <string name="devices_autoplay_keycode_play_pause_label">Luaj/Pause</string>
+    <string name="devices_autoplay_keycode_next_label">Tjetra</string>
+    <string name="devices_autoplay_keycode_previous_label">E mëparshme</string>
+    <string name="devices_autoplay_keycode_stop_label">Ndalo</string>
+    <string name="devices_autoplay_keycode_rewind_label">Kthehu prapa</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">Shpejto përpara</string>
+    <string name="devices_autoplay_keycode_play_desc">Dërgoën vetëm komandën e luajtjes</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">Kalon ndërmjet luajtjes dhe pauzës</string>
+    <string name="devices_autoplay_keycode_next_desc">Kalo te pista tjetër</string>
+    <string name="devices_autoplay_keycode_previous_desc">Shko te pista e mëparshme</string>
+    <string name="devices_autoplay_keycode_stop_desc">Ndalo luajtjen</string>
+    <string name="devices_autoplay_keycode_rewind_desc">Kthehu prapa në pistën aktuale</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">Shpejto përpara pistën aktuale</string>
+    <string name="devices_autoplay_keycode_unknown_label">E panjohur (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d komandë</item>
+        <item quantity="other">%d komanda</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">Lëviz lart</string>
+    <string name="cd_autoplay_keycode_move_down">Lëviz poshtë</string>
+    <string name="cd_autoplay_keycode_remove">Hiq</string>
     <string name="devices_device_config_section_volumes_label">Volumet</string>
     <string name="devices_device_config_section_volume_label">Vëllimi</string>
     <string name="devices_device_config_alarm_volume_label">Vëllimi i alarmit</string>
@@ -296,9 +320,9 @@
     <string name="action_set">Vendos</string>
     <string name="action_cancel">Anulo</string>
     <string name="label_invalid_input">Hyrje e pavlefshme</string>
-    <string name="action_reset">Rivendos</string>
+    <string name="action_reset">Zgjojë</string>
     <string name="label_no_connected_devices">Nuk ka paisje të lidhur</string>
-    <string name="label_status_idle">Joaktiv</string>
+    <string name="label_status_idle">Nëpërmjet</string>
     <string name="label_status_adjusting_volumes">Përshtatje e volumeve</string>
     <string name="label_premium_version">Versioni premium</string>
     <string name="general_upgrade_action">Ngriti</string>
@@ -376,6 +400,9 @@
     <string name="android10_applaunch_hint_message">Android 10 kërkon lejen e veçantë për të lanuar aplikacionet ose për të shfaqur ekranin fillestar nga sfoni. Jepni lejën \"Shfaq mbi aplikacionet e tjera\".</string>
     <string name="notification_permission_hint_title">Leja për njoftimet</string>
     <string name="notification_permission_hint_message">Jepeni lejën e njoftimit për të parë përditësimet e statusit kur përshtatni volumet.</string>
+    <string name="dnd_access_hint_title">Qasja në \"Mos shqetëso\"</string>
+    <string name="dnd_access_hint_message">Pa qasje në \"Mos shqetëso\", cilësimet e ziles, njoftimeve dhe modalitetit DND nuk mund të aplikohen kur pajisjet tuaja lidhen.</string>
+    <string name="dnd_access_fix_action">Lejo qasje</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Blerjeja u anulua</string>
     <string name="error_iap_unavailable_message">Blerjet brenda aplikacionit nuk janë të disponueshme</string>
@@ -389,7 +416,7 @@
     <string name="devices_app_selection_currently_selected">Aktualisht i zgjedhur</string>
     <string name="devices_app_selection_selected_count">%d aplikacione të përzgjedhur</string>
     <string name="general_navigate_back_action">Navigo mbrapa</string>
-    <string name="general_reset_action">Rivendos</string>
+    <string name="general_reset_action">Zgjojë</string>
     <string name="general_clear_action">Pastro</string>
     <string name="general_save_action">Ruaj</string>
     <!-- Device option indicators -->
@@ -400,7 +427,6 @@
     <string name="devices_indicator_disconnect">Shkëputje</string>
     <string name="devices_indicator_limit">Kufiri</string>
     <string name="devices_indicator_launch">Lance</string>
-    <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Shtëpi</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alarm</string>

@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Bolumen jaitsiera atzeratzea</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Gutxieneko denbora bolumen jaitsieren artean: %d ms</string>
     <string name="devices_device_config_autoplay_label">Erreprodukzio automatikoa</string>
-    <string name="devices_device_config_autoplay_desc">Simulatu erreproduzitu botoia sakatzea Bluetooth urrunetik gailu hau konektatzen denean.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Erreprodukzio automatikoko tekla motak</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Erabilgarri dauden tekla motak</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Hautatutako teklak (ordenan)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Tekla motak</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Konfiguratu zein tekla bidali eta zein ordenetan</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Ez dago teklarik konfiguratuta</string>
+    <string name="devices_device_config_autoplay_desc">Bidali konfiguratutako multimedia tekla-komandoak gailu hau konektatzen denean.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Erreprodukzio automatikoko komandoak</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Komando sekuentzia</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Komandoak</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Konfiguratu zein komando bidali eta zein ordenatan</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Ez dago komandorik konfiguratuta</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">Gehitu komandoa</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">Gehienez %1$d komando</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">Oraindik ez dago komandorik. Sakatu \"Gehitu komandoa\" hasteko.</string>
+    <string name="devices_autoplay_keycode_play_label">Erreproduzitu</string>
+    <string name="devices_autoplay_keycode_play_pause_label">Erreproduzitu/Pausatu</string>
+    <string name="devices_autoplay_keycode_next_label">Hurrengoa</string>
+    <string name="devices_autoplay_keycode_previous_label">Aurrekoa</string>
+    <string name="devices_autoplay_keycode_stop_label">Gelditu</string>
+    <string name="devices_autoplay_keycode_rewind_label">Atzeratu</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">Aurreratu</string>
+    <string name="devices_autoplay_keycode_play_desc">Erreprodukzio komandoa soilik bidaltzen du</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">Erreprodukzioaren eta pausaren artean alternatzen du</string>
+    <string name="devices_autoplay_keycode_next_desc">Hurrengo pistara salto egin</string>
+    <string name="devices_autoplay_keycode_previous_desc">Aurreko pistara joan</string>
+    <string name="devices_autoplay_keycode_stop_desc">Erreprodukzioa gelditu</string>
+    <string name="devices_autoplay_keycode_rewind_desc">Uneko pista atzeratu</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">Uneko pista aurreratu</string>
+    <string name="devices_autoplay_keycode_unknown_label">Ezezaguna (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d komando</item>
+        <item quantity="other">%d komando</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">Igo</string>
+    <string name="cd_autoplay_keycode_move_down">Jaitsi</string>
+    <string name="cd_autoplay_keycode_remove">Kendu</string>
     <string name="devices_device_config_section_volumes_label">Bolumenak</string>
     <string name="devices_device_config_section_volume_label">Bolumena</string>
     <string name="devices_device_config_alarm_volume_label">Alarma bolumena</string>
@@ -214,7 +238,7 @@
     <string name="backup_restore_skip_existing_desc">Ez gainidatzi jadanik konfiguratuta dauden gailuak.</string>
     <string name="backup_restore_preview_label">Babeskopia aurrebista</string>
     <string name="backup_restore_preview_devices">%1$d gailu</string>
-    <string name="backup_restore_preview_overlap">%1$d gailutik %2$d jadanik konfiguratuta</string>
+    <string name="backup_restore_preview_overlap">%2$d gailutik %1$d jadanik konfiguratuta</string>
     <string name="backup_restore_confirm_action">Leheneratu orain</string>
     <string name="backup_restore_success_backup">Babeskopia sortua — %1$d gailu gordeta.</string>
     <string name="backup_restore_success_restore">Leheneratzea osatuta — %1$d gailu leheneratuta, %2$d saltatuta.</string>
@@ -362,8 +386,8 @@
     <string name="managed_devices_empty_message">Ez dago Bluetooth gailurik konfiguratuta.\nSakatu + botoia zure lehen gailua gehitzeko.</string>
     <string name="label_pro_feature">Premium ezaugarria</string>
     <plurals name="discover_device_limit_banner">
-        <item quantity="one">Doako bertsioa: %1$d gailutatik %2$d</item>
-        <item quantity="other">Doako bertsioa: %1$d gailutatik %2$d</item>
+        <item quantity="one">Doako bertsioa: %2$d gailutatik %1$d</item>
+        <item quantity="other">Doako bertsioa: %2$d gailutatik %1$d</item>
     </plurals>
     <string name="general_delete_action">Ezabatu</string>
     <string name="general_cancel_action">Utzi</string>
@@ -376,6 +400,9 @@
     <string name="android10_applaunch_hint_message">Android 10-ek baimen berezi bat behar du atzealdetik aplikazioak abiarazteko edo hasierako pantaila erakusteko. Eman \"Beste aplikazioen gainean bistaratu\" baimena.</string>
     <string name="notification_permission_hint_title">Jakinarazpen baimena</string>
     <string name="notification_permission_hint_message">Eman jakinarazpen baimena egoera eguneraketak ikusteko bolumenak doitzen direnean.</string>
+    <string name="dnd_access_hint_title">Ez molestatzeko sarbidea</string>
+    <string name="dnd_access_hint_message">Ez molestatzeko sarbiderik gabe, ezin dira ezarri tonu-jotzailea, jakinarazpena eta Ez molestatu moduko ezarpenak zure gailuak konektatzen direnean.</string>
+    <string name="dnd_access_fix_action">Sarbidea eman</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Erosketa bertan behera utzi da</string>
     <string name="error_iap_unavailable_message">Aplikazioko erosketak ez daude erabilgarri</string>
@@ -400,7 +427,6 @@
     <string name="devices_indicator_disconnect">Deskonektatu</string>
     <string name="devices_indicator_limit">Muga</string>
     <string name="devices_indicator_launch">Abiarazi</string>
-    <string name="devices_indicator_auto">Auto</string>
     <string name="devices_indicator_home">Hasiera</string>
     <string name="devices_indicator_dnd">EMN</string>
     <string name="devices_indicator_alert">Alerta</string>

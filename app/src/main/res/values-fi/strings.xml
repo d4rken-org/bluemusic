@@ -26,7 +26,7 @@
     <!-- Discover -->
     <string name="discover_no_unmnaged_devices_msg">Hallitsemattomia laitteita ei löydy</string>
     <string name="discover_all_devices_managed_msg">Kaikki paritetut laitteesi on hallittu! Tarvitsetko uuden?</string>
-    <string name="discover_pair_new_device_action">Parita uusi laite</string>
+    <string name="discover_pair_new_device_action">Parита uusi laite</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Laitteen asetukset</string>
     <string name="devices_device_config_section_general_label">Yleiset</string>
@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Äänenvoimakkuuden lasku viive</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Pienin aika äänenvoimakkuuden laskujen välillä: %d ms</string>
     <string name="devices_device_config_autoplay_label">Automaattinen toisto</string>
-    <string name="devices_device_config_autoplay_desc">Simuloi Toisto napin painallusta yhdistetyltä Bluetooth laitteelta, kun se yhdistää.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Automaattisen toiston näppäintyypit</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Saatavilla olevat näppäintyypit</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Valitut näppäimet (järjestyksessä)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Näppäintyypit</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Määritä mitkä näppäimet lähetetään ja missä järjestyksessä</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Näppäimiä ei ole määritetty</string>
+    <string name="devices_device_config_autoplay_desc">Lähettää määritetyt mediakomentojen näppäinkomennot, kun laite yhdistää.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Automaattisen toiston komennot</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Komentojen järjestys</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Komennot</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Määritä lähetettävät komennot ja niiden järjestys</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Ei määritettyjä komentoja</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">Lisää komento</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">Enintään %1$d komentoa</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">Ei komentoja vielä. Napauta \"Lisää komento\" aloittaaksesi.</string>
+    <string name="devices_autoplay_keycode_play_label">Toista</string>
+    <string name="devices_autoplay_keycode_play_pause_label">Toista/Tauko</string>
+    <string name="devices_autoplay_keycode_next_label">Seuraava</string>
+    <string name="devices_autoplay_keycode_previous_label">Edellinen</string>
+    <string name="devices_autoplay_keycode_stop_label">Pysäytä</string>
+    <string name="devices_autoplay_keycode_rewind_label">Kelaa taaksepäin</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">Pikakelaus eteenpäin</string>
+    <string name="devices_autoplay_keycode_play_desc">Lähettää vain toista-komennon</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">Vaihtaa toiston ja tauon välillä</string>
+    <string name="devices_autoplay_keycode_next_desc">Siirry seuraavaan kappaleeseen</string>
+    <string name="devices_autoplay_keycode_previous_desc">Siirry edelliseen kappaleeseen</string>
+    <string name="devices_autoplay_keycode_stop_desc">Pysäytä toisto</string>
+    <string name="devices_autoplay_keycode_rewind_desc">Kelaa nykyinen kappale taaksepäin</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">Pikakelaa nykyinen kappale eteenpäin</string>
+    <string name="devices_autoplay_keycode_unknown_label">Tuntematon (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d komento</item>
+        <item quantity="other">%d komentoa</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">Siirrä ylös</string>
+    <string name="cd_autoplay_keycode_move_down">Siirrä alas</string>
+    <string name="cd_autoplay_keycode_remove">Poista</string>
     <string name="devices_device_config_section_volumes_label">Äänenvoimakkuudet</string>
     <string name="devices_device_config_section_volume_label">Äänenvoimakkuus</string>
     <string name="devices_device_config_alarm_volume_label">Hälytysäänenvoimakkuus</string>
@@ -376,6 +400,9 @@
     <string name="android10_applaunch_hint_message">Android 10 vaatii erityiskäyttöoikeuden käynnistää sovelluksia tai näyttää kotinäyttöä taustalta. Myönnä \"Näytä muiden sovellusten päällä\" käyttöoikeus.</string>
     <string name="notification_permission_hint_title">Ilmoituskäyttöoikeus</string>
     <string name="notification_permission_hint_message">Myönnä ilmoituskäyttöoikeus nähdäksesi tilatuspäivitykset äänenvoimakkuuksia säädettäessä.</string>
+    <string name="dnd_access_hint_title">Älä häiritse -käyttöoikeus</string>
+    <string name="dnd_access_hint_message">Ilman Älä häiritse -käyttöoikeutta soittoääni-, ilmoitus- ja Älä häiritse -tila-asetuksia ei voi soveltaa, kun laitteet yhdistävät.</string>
+    <string name="dnd_access_fix_action">Myönnä käyttöoikeus</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Osto peruutettu</string>
     <string name="error_iap_unavailable_message">Sovelluksen sisäiset ostokset eivät ole saatavilla</string>
@@ -400,7 +427,6 @@
     <string name="devices_indicator_disconnect">Katkaise</string>
     <string name="devices_indicator_limit">Rajaus</string>
     <string name="devices_indicator_launch">Käynnistä</string>
-    <string name="devices_indicator_auto">Automaattinen</string>
     <string name="devices_indicator_home">Koti</string>
     <string name="devices_indicator_dnd">ÄH</string>
     <string name="devices_indicator_alert">Hälytys</string>

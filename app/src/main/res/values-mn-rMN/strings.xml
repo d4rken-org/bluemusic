@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">Дууг бууруулахын хоцорлолт</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">Дууг бууруулахын хооронд хамгийн цаг: %d мс</string>
     <string name="devices_device_config_autoplay_label">Автотоглуулах</string>
-    <string name="devices_device_config_autoplay_desc">Энэ төхөөрөмжий холбогдоход Bluetooth алсан дахин тоглуулах товчийг даруулахыг дуурайлах.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">Автотоглуулахын товчийн төрөл</string>
-    <string name="devices_device_config_autoplay_keycodes_available">Боломжтой товчийн төрөл</string>
-    <string name="devices_device_config_autoplay_keycodes_order">Сонгосон товчууд (дараалалаар)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">Товчийн төрөл</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Ямар товчууд илгээх, ямар дараалалаар илгээхийг тохиргуулах</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">Тохиргоогүйгаасы товч байхгүй</string>
+    <string name="devices_device_config_autoplay_desc">Энэ төхөөрөмж холбогдоход тохируулсан медиа товчлуурын командуудыг илгээнэ.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">Автоматаар тоглуулах командууд</string>
+    <string name="devices_device_config_autoplay_keycodes_order">Командын дараалал</string>
+    <string name="devices_device_config_autoplay_keycodes_label">Командууд</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">Ямар командуудыг ямар дарааллаар илгээхийг тохируулах</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">Тохируулсан команд байхгүй</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">Команд нэмэх</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">Хамгийн ихдээ %1$d команд</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">Команд байхгүй байна. Эхлэхийн тулд \"Команд нэмэх\" товчийг дарна уу.</string>
+    <string name="devices_autoplay_keycode_play_label">Тоглуулах</string>
+    <string name="devices_autoplay_keycode_play_pause_label">Тоглуулах/Зогсоох</string>
+    <string name="devices_autoplay_keycode_next_label">Дараагийн</string>
+    <string name="devices_autoplay_keycode_previous_label">Өмнөх</string>
+    <string name="devices_autoplay_keycode_stop_label">Зогсоох</string>
+    <string name="devices_autoplay_keycode_rewind_label">Буцааж нааш</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">Хурдан урагш</string>
+    <string name="devices_autoplay_keycode_play_desc">Зөвхөн тоглуулах командыг илгээнэ</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">Тоглуулах болон зогсоохын хооронд солигдоно</string>
+    <string name="devices_autoplay_keycode_next_desc">Дараагийн дуунд шилжих</string>
+    <string name="devices_autoplay_keycode_previous_desc">Өмнөх дуунд шилжих</string>
+    <string name="devices_autoplay_keycode_stop_desc">Тоглуулалтыг зогсоох</string>
+    <string name="devices_autoplay_keycode_rewind_desc">Одоогийн дууг буцааж наашлах</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">Одоогийн дууг хурдан урагшлах</string>
+    <string name="devices_autoplay_keycode_unknown_label">Төдийгүй (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d команд</item>
+        <item quantity="other">%d команд</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">Дээш шилжүүлэх</string>
+    <string name="cd_autoplay_keycode_move_down">Доош шилжүүлэх</string>
+    <string name="cd_autoplay_keycode_remove">Хасах</string>
     <string name="devices_device_config_section_volumes_label">Дууннууд</string>
     <string name="devices_device_config_section_volume_label">Дуу</string>
     <string name="devices_device_config_alarm_volume_label">Дохианы дуу</string>
@@ -214,6 +238,7 @@
     <string name="backup_restore_skip_existing_desc">Аль хэдийн тохируулсан төхөөрөмжүүдийг дарж бичихгүй байх.</string>
     <string name="backup_restore_preview_label">Нөөцлөлтийн урьдчилал</string>
     <string name="backup_restore_preview_devices">%1$d төхөөрөмж</string>
+    <string name="backup_restore_preview_overlap">%2$d төхөөрөмжийн %1$d нь нь аль тохируулсан</string>
     <string name="backup_restore_confirm_action">Одоо сэргээх</string>
     <string name="backup_restore_success_backup">Нөөцлөлт үүсгэгдсэн — %1$d төхөөрөмж хадагалсан.</string>
     <string name="backup_restore_success_restore">Сэргээлт дууссан — %1$d төхөөрөмж сэргээгдсэн, %2$d алгассан.</string>
@@ -360,6 +385,10 @@
     <string name="privacy_policy_label">Нууцлалын бодлого</string>
     <string name="managed_devices_empty_message">Bluetooth төхөөрөмжий тохиргоогүй.\nАнхны төхөөрөмжийгӝэ нэмж + товч дарна.</string>
     <string name="label_pro_feature">Премиум онцлог</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">үнэгүй хувилбар: %2$d төхөөрөмжийаас %1$d</item>
+        <item quantity="other">үнэгүй хувилбар: %2$d төхөөрөмжийаас %1$d</item>
+    </plurals>
     <string name="general_delete_action">Устгах</string>
     <string name="general_cancel_action">Цуцлах</string>
     <string name="general_ok_action">Зөвшөөрөх</string>
@@ -371,6 +400,9 @@
     <string name="android10_applaunch_hint_message">Android 10 апп ажиллуулах эсвэл арьанаас дэлгэцийн дэлгэц харуулахад онцгойн зөвшөөрөл шаардлагана. \"Өөр аппуудаас харах\" зөвшөөрөл олго.</string>
     <string name="notification_permission_hint_title">Мэдэгдэлгэийн зөвшөөрөл</string>
     <string name="notification_permission_hint_message">Дууг тохиргуулахад төлөвийн шинэчлэл үзэхийн тулд мэдэгдэлгэийн зөвшөөрөл олго.</string>
+    <string name="dnd_access_hint_title">Тасалдахгүй горимт авах эрх</string>
+    <string name="dnd_access_hint_message">Тасалдахгүй горимт авах эрхгүйгээр хүү звон, мэдэгдэлгээрийн цонхиу, ТӢГ төршлийн тохиргуултыг таны төхөөрөмжүүд холбогдоход ашиглана хэрэгжүй.</string>
+    <string name="dnd_access_fix_action">Хандалт олгох</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Худалдалцаагүй болсон</string>
     <string name="error_iap_unavailable_message">Апп дотоодх худалдалцаа боломжгүй</string>
@@ -395,11 +427,11 @@
     <string name="devices_indicator_disconnect">Салгах</string>
     <string name="devices_indicator_limit">Хязгаалалт</string>
     <string name="devices_indicator_launch">Ажиллуулах</string>
-    <string name="devices_indicator_auto">Авто</string>
     <string name="devices_indicator_home">Дэлгэц</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Дохиолго</string>
     <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">Дуу (0–1000)</string>
     <string name="devices_volume_input_error">%1$d ба %2$d хооронды утга оруулна</string>
     <string name="devices_volume_input_caption">Таны төхөөрөмж дэмжиглэх дууны хамгийн алхамдаа дүгрэж асвал дээш дуунд ойрож болох тал.</string>
     <!-- Lock/unlock sliders -->

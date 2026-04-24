@@ -73,13 +73,37 @@
     <string name="devices_device_config_volume_rate_limit_decrease_duration_label">വോള്യം കുറയ്ക്കൽ കാലതാമസം</string>
     <string name="devices_device_config_volume_rate_limit_decrease_duration_desc">വോള്യം കുറയ്ക്കലുകൾക്കിടയിലെ കുറഞ്ഞ സമയം: %d ms</string>
     <string name="devices_device_config_autoplay_label">ഓട്ടോപ്ലേ</string>
-    <string name="devices_device_config_autoplay_desc">ഈ ഉപകരണം കണക്‌റ് ചെയ്യുമ്പോൾ Bluetooth റിമോട്ടിൽ പ്ലേ അമർത്തുന്നത് അനുകരിക്കുക.</string>
-    <string name="devices_device_config_autoplay_keycodes_title">ഓട്ടോപ്ലേ കീ തരങ്ങൾ</string>
-    <string name="devices_device_config_autoplay_keycodes_available">ലഭ്യമായ കീ തരങ്ങൾ</string>
-    <string name="devices_device_config_autoplay_keycodes_order">തിരഞ്ഞെടുത്ത കീകൾ (ക്രമത്തിൽ)</string>
-    <string name="devices_device_config_autoplay_keycodes_label">കീ തരങ്ങൾ</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">ഏതൊക്കെ കീകൾ അയക്കണം, ഏതു ക്രമത്തിൽ എന്ന് ക്രമീകരിക്കുക</string>
-    <string name="devices_device_config_autoplay_keycodes_none_set">കീകൾ ഒന്നും ക്രമീകരിച്ചിട്ടില്ല</string>
+    <string name="devices_device_config_autoplay_desc">ഈ ഉപകരണം കണക്‍റ്റ് ചെയ്യുമ്പോൾ ക്രമീകരിച്ച മീഡിയ കീ കമാൻഡുകൾ അയയ്ക്കുക.</string>
+    <string name="devices_device_config_autoplay_keycodes_title">ഓട്ടോപ്ലേ കമാൻഡുകൾ</string>
+    <string name="devices_device_config_autoplay_keycodes_order">കമാൻഡ് ക്രമം</string>
+    <string name="devices_device_config_autoplay_keycodes_label">കമാൻഡുകൾ</string>
+    <string name="devices_device_config_autoplay_keycodes_desc">ഏതൊക്കെ കമാൻഡുകൾ അയക്കണം, ഏത് ക്രമത്തിൽ എന്ന് ക്രമീകരിക്കുക</string>
+    <string name="devices_device_config_autoplay_keycodes_none_set">കമാൻഡുകളൊന്നും ക്രമീകരിച്ചിട്ടില്ല</string>
+    <string name="devices_device_config_autoplay_keycodes_add_action">കമാൻഡ് ചേർക്കുക</string>
+    <string name="devices_device_config_autoplay_keycodes_max_reached">പരമാവധി %1$d കമാൻഡുകൾ</string>
+    <string name="devices_device_config_autoplay_keycodes_empty">ഇതുവരെ കമാൻഡുകളൊന്നുമില്ല. ആരംഭിക്കാൻ \"കമാൻഡ് ചേർക്കുക\" ടാപ്പ് ചെയ്യുക.</string>
+    <string name="devices_autoplay_keycode_play_label">പ്ലേ</string>
+    <string name="devices_autoplay_keycode_play_pause_label">പ്ലേ/പോസ്‌ </string>
+    <string name="devices_autoplay_keycode_next_label">അടുത്തത്</string>
+    <string name="devices_autoplay_keycode_previous_label">മുൻപത്തേത്</string>
+    <string name="devices_autoplay_keycode_stop_label">നിർത്തുക</string>
+    <string name="devices_autoplay_keycode_rewind_label">റിവൈൻഡ്</string>
+    <string name="devices_autoplay_keycode_fast_forward_label">ഫാസ്റ്റ് ഫോർവേഡ്</string>
+    <string name="devices_autoplay_keycode_play_desc">പ്ലേ കമാൻഡ് മാത്രം അയക്കുന്നു</string>
+    <string name="devices_autoplay_keycode_play_pause_desc">പ്ലേ, പോസ് ഇടയിൽ ടോഗിൾ ചെയ്യുന്നു</string>
+    <string name="devices_autoplay_keycode_next_desc">അടുത്ത ട്രാക്കിലേക്ക് ഒഴിവാക്കുക</string>
+    <string name="devices_autoplay_keycode_previous_desc">മുൻ ട്രാക്കിലേക്ക് പോകുക</string>
+    <string name="devices_autoplay_keycode_stop_desc">പ്ലേബാക്ക് നിർത്തുക</string>
+    <string name="devices_autoplay_keycode_rewind_desc">നിലവിലെ ട്രാക്ക് റിവൈൻഡ് ചെയ്യുക</string>
+    <string name="devices_autoplay_keycode_fast_forward_desc">നിലവിലെ ട്രാക്ക് ഫാസ്റ്റ് ഫോർവേഡ് ചെയ്യുക</string>
+    <string name="devices_autoplay_keycode_unknown_label">അജ്ഞാതം (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d കമാൻഡ്</item>
+        <item quantity="other">%d കമാൻഡുകൾ</item>
+    </plurals>
+    <string name="cd_autoplay_keycode_move_up">മേല്പ്പോട്ട് നീക്കുക</string>
+    <string name="cd_autoplay_keycode_move_down">താഴോട്ട് നീക്കുക</string>
+    <string name="cd_autoplay_keycode_remove">നീക്കം ചെയ്യുക</string>
     <string name="devices_device_config_section_volumes_label">വോള്യങ്ങൾ</string>
     <string name="devices_device_config_section_volume_label">വോള്യം</string>
     <string name="devices_device_config_alarm_volume_label">അലാം വോള്യം</string>
@@ -214,6 +238,7 @@
     <string name="backup_restore_skip_existing_desc">ഇതിനകം കോൺഫിഗർ ചെയ്ത ഉപകരണങ്ങൾ തിരുത്തിയെഴുതരുത്.</string>
     <string name="backup_restore_preview_label">ബാക്കപ്പ് പ്രിവ്യൂ</string>
     <string name="backup_restore_preview_devices">%1$d ഉപകരണങ്ങൾ</string>
+    <string name="backup_restore_preview_overlap">%2$d-ൽ %1$d ഉപകരണങ്ങൾ ഇതിനകം കോൺഫിഗർ ചെയ്തു</string>
     <string name="backup_restore_confirm_action">ഇപ്പോൾ പുനഃസ്ഥാപിക്കുക</string>
     <string name="backup_restore_success_backup">ബാക്കപ്പ് സൃഷ്ടിച്ചു — %1$d ഉപകരണങ്ങൾ സംരക്ഷിച്ചു.</string>
     <string name="backup_restore_success_restore">പുനഃസ്ഥാപനം പൂർത്തിയായി — %1$d ഉപകരണങ്ങൾ പുനഃസ്ഥാപിച്ചു, %2$d ഒഴിവാക്കി.</string>
@@ -360,17 +385,24 @@
     <string name="privacy_policy_label">സ്വകാര്യതാ നയം</string>
     <string name="managed_devices_empty_message">യാതൊരു Bluetooth ഉപകരണവും ക്രമീകരിക്കപ്പെട്ടിട്ടില്ല.\nഫസ്റ്റ് ഉപകരണം ചേർക്കാൻ + ബട്ടൻ ടാപ് ചെയ്യുക.</string>
     <string name="label_pro_feature">പ്രീമിയം ഫീച്ചർ</string>
+    <plurals name="discover_device_limit_banner">
+        <item quantity="one">സ്വതന്ത്ര പതിപ്പ്: %2$d ഉപകരണത്തിൽ %1$d</item>
+        <item quantity="other">സ്വതന്ത്ര പതിപ്പ്: %2$d ഉപകരണങ്ങളിൽ %1$d</item>
+    </plurals>
     <string name="general_delete_action">ഇല്ലാതാക്കുക</string>
     <string name="general_cancel_action">റദ്ദ്ചെയ്യുക</string>
     <string name="general_ok_action">ശരി</string>
     <string name="general_configure_action">ക്രമീകരിക്കുക</string>
     <string name="battery_optimization_hint_title">ബാറ്റരി ഒപ്റ്റിമൈസേഷൻ</string>
-    <string name="battery_optimization_hint_message">ബാറ്റരി ഒപ്റ്റിമൈസേഷൻ സക്രിയമാണ്, ഇത് ശരിയായ പ്രവർത്തനം തടയാമ്. ഇവ പ്രവർത്തനം ംഗം വേണ്ടെണ്ഡു പരിഗണിക്കുക.</string>
-    <string name="battery_optimization_fix_action">ഒപ്റ്റിമൈസേഷൻ പ്രവർത്തനം ംഗം വേണ്ടെണ്ഡു</string>
+    <string name="battery_optimization_hint_message">ബാറ്റരി ഒപ്റ്റിമൈസേഷൻ സക്രിയമാണ്, ഇത് ശരിയായ പ്രവർത്തനം തടയാം. ഇവ പ്രവർത്തനരഹിതമാക്കുന്നത് പരിഗണിക്കുക.</string>
+    <string name="battery_optimization_fix_action">ഒപ്റ്റിമൈസേഷൻ പ്രവർത്തനരഹിതമാക്കുക</string>
     <string name="android10_applaunch_hint_title">ആപ്പ് തുറക്കൽ അനുമതി</string>
     <string name="android10_applaunch_hint_message">Android 10 പ്രവർത്തന പിൻത്തിൽ നിന്ന് ആപ്പുകൾ ദൂരൈക്കേൻ കഴിയുന്നതിന് പ്രത്യേക അനുമതി ആവശ്യമാണ്. \"മറ്റ് ആപ്പുകൾക് മുകളിൽ പ്രദർശിപ്പിക്കുക\" അനുമതി നൽകുക.</string>
     <string name="notification_permission_hint_title">അധിസൂചന അനുമതി</string>
     <string name="notification_permission_hint_message">വോള്യം ക്രമീകരിക്കുമ്പോൾ സ്റ്റേറ്റസ് അപ്ഡേറ്റുകൾ കാണാൻ അധിസൂചന അനുമതി നൽകുക.</string>
+    <string name="dnd_access_hint_title">സ്ക്രീൻ കിളയ്ക്കൾ മറക്കീ അക്സെസ് (Do Not Disturb)</string>
+    <string name="dnd_access_hint_message">Do Not Disturb ആക്സെസ് ഇല്ലാതെ, താങ്കളുടെ ഉപകരണങ്ങൾ കണക്‍റ്റ് ചെയ്യുമ്പോൾ രിംഗ്ടോണ്‍, നോടിഫിക്കേഷൻ, DND മോഡ് ക്രമീകരണങ്ങൾ പ്രയോഗിക്കാൻ കഴിയുകയില്ല.</string>
+    <string name="dnd_access_fix_action">Grant access</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">വാങ്ങൽ റദ്ദാകി</string>
     <string name="error_iap_unavailable_message">ആപ്പിനുള്ളിലെ വാങ്ങലുകൾ ലഭ്യമല്ല</string>
@@ -395,11 +427,11 @@
     <string name="devices_indicator_disconnect">വിച്ഛേദിക്കുക</string>
     <string name="devices_indicator_limit">പരിധി</string>
     <string name="devices_indicator_launch">തുറക്കുക</string>
-    <string name="devices_indicator_auto">പ്രത്യേക</string>
     <string name="devices_indicator_home">ഹോം</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">മുന്നറിയിപ്പ്</string>
     <!-- Volume input dialog -->
+    <string name="devices_volume_input_hint">വോള്യം (0–100)</string>
     <string name="devices_volume_input_error">%1$d ക്കും %2$d ക്കും ഇടയിലുള്ള ഒരു മൂല്യം നൽകുക</string>
     <string name="devices_volume_input_caption">യഥാർത്ഥ വോളിയം നിങ്ങളുടെ ഉപകരണം പിന്തുനക്കുന്ന ഏറ്റവും അടുത്ത സ്റ്റെപ്പിലേക്ക് റൗണ്ട് ചെയ്‌തേക്കാം.</string>
     <!-- Lock/unlock sliders -->
