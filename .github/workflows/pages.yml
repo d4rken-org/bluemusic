@@ -27,6 +27,8 @@ jobs:
 
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 #v1.0.13
+        env:
+          JEKYLL_GITHUB_TOKEN: ${{ github.token }}
         with:
           source: ./
           destination: ./_site
@@ -42,6 +44,7 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: build
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-22.04
     permissions:
       pages: write
