@@ -30,3 +30,8 @@ fastlane/README.md
 .worktrees
 
 .codex
+
+# Jekyll local dev artifacts
+_site/
+.jekyll-cache/
+vendor/bundle/
