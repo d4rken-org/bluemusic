@@ -34,6 +34,7 @@ Detailed guidance is in `.claude/rules/`:
 - **[testing.md](rules/testing.md)** - JUnit/Mockk/Kotest, screenshot tests; no instrumented androidTest
 - **[localization.md](rules/localization.md)** - String extraction, 77 translated locales, translation workflow
 - **[build-commands.md](rules/build-commands.md)** - All gradlew commands
+- **[release.md](rules/release.md)** - Release flow, version bumping, and tag validation
 - **[commit-guidelines.md](rules/commit-guidelines.md)** - Commit message format and conventions
 - **[agent-instructions.md](rules/agent-instructions.md)** - Sub-agent delegation, exploring vs implementing
 
