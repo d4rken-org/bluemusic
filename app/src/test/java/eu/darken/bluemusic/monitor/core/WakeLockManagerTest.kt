@@ -83,11 +83,13 @@ class WakeLockManagerTest {
 
     @Test
     fun `wakeScreenNow launches activity when overlay ok`() {
-        // needsOverlayPermission() returns false in two cases:
+        // needsOverlayPermission() returns false in two cases — both must proceed:
         //   1. Android 6-9 (BAL not enforced, no SAW required)
         //   2. Android 10+ with SAW already granted
-        // In both, the activity launch must proceed.
+        // We additionally assert canDrawOverlays() is NEVER consulted by the gate,
+        // catching any regression that brings back the overly-broad pre-Codex check.
         every { permissionHelper.needsOverlayPermission() } returns false
+        every { permissionHelper.canDrawOverlays() } returns false // simulates Android 6-9 default
 
         val mgr = manager()
         mgr.wakeScreenNow()
@@ -101,19 +103,5 @@ class WakeLockManagerTest {
         (flags and Intent.FLAG_ACTIVITY_NEW_TASK) shouldBe Intent.FLAG_ACTIVITY_NEW_TASK
         (flags and Intent.FLAG_ACTIVITY_NO_HISTORY) shouldBe Intent.FLAG_ACTIVITY_NO_HISTORY
         (flags and Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS) shouldBe Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
-    }
-
-    @Test
-    fun `wakeScreenNow gate uses needsOverlayPermission only`() {
-        // Codex regression guard: catches a future change reverting back to the
-        // overly-broad canDrawOverlays() gate which would silently no-op on Android 6-9.
-        every { permissionHelper.needsOverlayPermission() } returns false
-        every { permissionHelper.canDrawOverlays() } returns false // simulating Android 6-9 default
-
-        val mgr = manager()
-        mgr.wakeScreenNow()
-
-        // Should still launch — needsOverlayPermission is the only gate.
-        Shadows.shadowOf(context).peekNextStartedActivity() shouldNotBe null
     }
 }
