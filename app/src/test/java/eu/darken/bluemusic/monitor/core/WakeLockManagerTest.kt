@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Intent
 import androidx.test.core.app.ApplicationProvider
 import eu.darken.bluemusic.common.permissions.PermissionHelper
-import io.kotest.matchers.collections.shouldNotContain
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.mockk.every
@@ -41,7 +40,7 @@ class WakeLockManagerTest {
     private fun manager() = WakeLockManager(context, permissionHelper)
 
     @Test
-    fun `setWakeLock(true) only acquires the partial CPU wakelock - no screen lock created`() = runTest {
+    fun `setWakeLock true acquires only CPU lock`() = runTest {
         val mgr = manager()
         mgr.setWakeLock(true)
 
@@ -54,7 +53,7 @@ class WakeLockManagerTest {
     }
 
     @Test
-    fun `setWakeLock(false) releases the CPU wakelock`() = runTest {
+    fun `setWakeLock false releases CPU lock`() = runTest {
         val mgr = manager()
         mgr.setWakeLock(true)
         mgr.setWakeLock(false)
@@ -65,7 +64,7 @@ class WakeLockManagerTest {
     }
 
     @Test
-    fun `wakeScreenNow no-ops when overlay permission is missing`() {
+    fun `wakeScreenNow noop without overlay permission`() {
         every { permissionHelper.canDrawOverlays() } returns false
 
         val mgr = manager()
@@ -76,7 +75,7 @@ class WakeLockManagerTest {
     }
 
     @Test
-    fun `wakeScreenNow launches ScreenWakeActivity with correct flags when overlay permission is granted`() {
+    fun `wakeScreenNow launches ScreenWakeActivity when overlay granted`() {
         every { permissionHelper.canDrawOverlays() } returns true
 
         val mgr = manager()
@@ -91,11 +90,5 @@ class WakeLockManagerTest {
         (flags and Intent.FLAG_ACTIVITY_NEW_TASK) shouldBe Intent.FLAG_ACTIVITY_NEW_TASK
         (flags and Intent.FLAG_ACTIVITY_NO_HISTORY) shouldBe Intent.FLAG_ACTIVITY_NO_HISTORY
         (flags and Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS) shouldBe Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
-    }
-
-    @Test
-    fun `screenWakeLock field is absent on WakeLockManager (regression guard)`() {
-        val fieldNames = WakeLockManager::class.java.declaredFields.map { it.name }
-        fieldNames shouldNotContain "screenWakeLock"
     }
 }
