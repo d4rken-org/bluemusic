@@ -23,6 +23,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
@@ -56,8 +61,25 @@ class EventDispatcher @Inject constructor(
 
     private val activeJobs = ConcurrentHashMap<DeviceAddr, Job>()
     private val nonCancellableJobs: MutableSet<Job> = ConcurrentHashMap.newKeySet()
+    private val trackedJobs: MutableSet<Job> = ConcurrentHashMap.newKeySet()
     private val shutdown = AtomicBoolean(false)
     private val dispatchMutex = Mutex()
+
+    private val _isIdle = MutableStateFlow(true)
+    val isIdle: StateFlow<Boolean> = _isIdle.asStateFlow()
+
+    suspend fun awaitIdle() {
+        isIdle.filter { it }.first()
+    }
+
+    private fun trackJob(job: Job) {
+        trackedJobs.add(job)
+        _isIdle.value = false
+        job.invokeOnCompletion {
+            trackedJobs.remove(job)
+            if (trackedJobs.isEmpty()) _isIdle.value = true
+        }
+    }
 
     suspend fun dispatch(bluetoothEvent: BluetoothEventQueue.Event) {
         dispatchMutex.withLock {
@@ -169,13 +191,17 @@ class EventDispatcher @Inject constructor(
                 }.also { job ->
                     nonCancellableJobs.add(job)
                     job.invokeOnCompletion { nonCancellableJobs.remove(job) }
+                    trackJob(job)
                 }
             }
 
             // Cancellable modules are tracked and cancelled when a superseding event arrives.
             activeJobs[address] = appScope.launch(dispatcherProvider.IO) {
                 executeModules(deviceEvent, cancellableModules)
-            }.also { job -> job.invokeOnCompletion { activeJobs.remove(address, job) } }
+            }.also { job ->
+                job.invokeOnCompletion { activeJobs.remove(address, job) }
+                trackJob(job)
+            }
         }
     }
 

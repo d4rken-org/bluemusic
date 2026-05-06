@@ -5,11 +5,15 @@ import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.currentTime
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 import java.time.Duration
+
+@OptIn(ExperimentalCoroutinesApi::class)
 
 class VolumeToolTest : BaseTest() {
 
@@ -71,13 +75,13 @@ class VolumeToolTest : BaseTest() {
     }
 
     @Test
-    fun `delayed stepped writes classify intermediate levels as self and retain final recent target`() = runTest {
+    fun `delayed stepped writes skip no-op start step and retain final recent target`() = runTest {
         audioLevels[AudioStream.Id.STREAM_MUSIC] = 2
-        val selfClassifications = mutableListOf<Pair<Int, Boolean>>()
+        val writes = mutableListOf<Int>()
         every { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, any(), any()) } answers {
             val level = secondArg<Int>()
             audioLevels[AudioStream.Id.STREAM_MUSIC] = level
-            selfClassifications += level to volumeTool.wasUs(AudioStream.Id.STREAM_MUSIC, level)
+            writes += level
         }
 
         volumeTool.changeVolume(
@@ -86,12 +90,124 @@ class VolumeToolTest : BaseTest() {
             delay = Duration.ofMillis(1),
         )
 
-        selfClassifications shouldBe listOf(
-            2 to true,
-            3 to true,
-            4 to true,
-        )
+        // Old behavior wrote 2,3,4 (no-op start). New behavior writes only 3,4.
+        writes shouldBe listOf(3, 4)
         volumeTool.hasRecentTarget(AudioStream.Id.STREAM_MUSIC, 4) shouldBe true
+    }
+
+    @Test
+    fun `ramp from 9 to 20 writes exactly 11 levels with no trailing delay`() = runTest {
+        every { audioManager.getStreamMaxVolume(any()) } returns 25
+        audioLevels[AudioStream.Id.STREAM_MUSIC] = 9
+        val writes = mutableListOf<Int>()
+        every { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, any(), any()) } answers {
+            val level = secondArg<Int>()
+            audioLevels[AudioStream.Id.STREAM_MUSIC] = level
+            writes += level
+        }
+
+        val started = currentTime
+        volumeTool.changeVolume(
+            streamId = AudioStream.Id.STREAM_MUSIC,
+            targetLevel = 20,
+            delay = Duration.ofMillis(500),
+        )
+        val elapsed = currentTime - started
+
+        writes shouldBe (10..20).toList()
+        // Per setVolume(): each call adds 10ms before + 10ms after = 20ms.
+        // 11 writes with 10 inter-write delays of 500ms (no trailing delay):
+        // 11 * 20 (write overhead) + 10 * 500 (inter-write delays) = 220 + 5000 = 5220
+        elapsed shouldBe 5220L
+    }
+
+    @Test
+    fun `ramp downwards to target writes step-by-step skipping current level`() = runTest {
+        audioLevels[AudioStream.Id.STREAM_MUSIC] = 10
+        val writes = mutableListOf<Int>()
+        every { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, any(), any()) } answers {
+            val level = secondArg<Int>()
+            audioLevels[AudioStream.Id.STREAM_MUSIC] = level
+            writes += level
+        }
+
+        volumeTool.changeVolume(
+            streamId = AudioStream.Id.STREAM_MUSIC,
+            targetLevel = 7,
+            delay = Duration.ofMillis(1),
+        )
+
+        // 10 → 7 should write 9, 8, 7 (skip 10)
+        writes shouldBe listOf(9, 8, 7)
+        volumeTool.hasRecentTarget(AudioStream.Id.STREAM_MUSIC, 7) shouldBe true
+    }
+
+    @Test
+    fun `target level below min is clamped to min`() = runTest {
+        // In unit tests Build.VERSION.SDK_INT is 0 (no Robolectric), so getMinVolume returns 0.
+        audioLevels[AudioStream.Id.STREAM_MUSIC] = 3
+        val writes = mutableListOf<Int>()
+        every { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, any(), any()) } answers {
+            val level = secondArg<Int>()
+            audioLevels[AudioStream.Id.STREAM_MUSIC] = level
+            writes += level
+        }
+
+        volumeTool.changeVolume(
+            streamId = AudioStream.Id.STREAM_MUSIC,
+            targetLevel = -2,
+            delay = Duration.ofMillis(1),
+        )
+
+        // Clamped to min=0. Should ramp down 3 → 2 → 1 → 0.
+        writes shouldBe listOf(2, 1, 0)
+        volumeTool.hasRecentTarget(AudioStream.Id.STREAM_MUSIC, 0) shouldBe true
+    }
+
+    @Test
+    fun `ramp with visible=false uses flag 0 for every write`() = runTest {
+        audioLevels[AudioStream.Id.STREAM_MUSIC] = 2
+        val flags = mutableListOf<Int>()
+        every { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, any(), any()) } answers {
+            val level = secondArg<Int>()
+            val flag = thirdArg<Int>()
+            audioLevels[AudioStream.Id.STREAM_MUSIC] = level
+            flags += flag
+        }
+
+        volumeTool.changeVolume(
+            streamId = AudioStream.Id.STREAM_MUSIC,
+            targetLevel = 5,
+            visible = false,
+            delay = Duration.ofMillis(1),
+        )
+
+        flags shouldBe listOf(0, 0, 0)
+    }
+
+    @Test
+    fun `ramp with visible=true uses FLAG_SHOW_UI for every write`() = runTest {
+        audioLevels[AudioStream.Id.STREAM_MUSIC] = 2
+        val flags = mutableListOf<Int>()
+        every { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, any(), any()) } answers {
+            val level = secondArg<Int>()
+            val flag = thirdArg<Int>()
+            audioLevels[AudioStream.Id.STREAM_MUSIC] = level
+            flags += flag
+        }
+
+        volumeTool.changeVolume(
+            streamId = AudioStream.Id.STREAM_MUSIC,
+            targetLevel = 5,
+            visible = true,
+            delay = Duration.ofMillis(1),
+        )
+
+        flags shouldBe listOf(
+            android.media.AudioManager.FLAG_SHOW_UI,
+            android.media.AudioManager.FLAG_SHOW_UI,
+            android.media.AudioManager.FLAG_SHOW_UI,
+        )
     }
 
     private fun toStreamId(id: Int): AudioStream.Id {

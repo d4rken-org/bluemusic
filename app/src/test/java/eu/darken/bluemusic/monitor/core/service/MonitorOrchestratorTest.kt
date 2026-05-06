@@ -13,9 +13,11 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
@@ -38,6 +40,7 @@ class MonitorOrchestratorTest : BaseTest() {
 
     private lateinit var devicesFlow: MutableStateFlow<List<ManagedDevice>>
     private lateinit var stateFlow: MutableStateFlow<BluetoothRepo.State>
+    private lateinit var idleFlow: MutableStateFlow<Boolean>
 
     @BeforeEach
     fun setup() {
@@ -54,7 +57,11 @@ class MonitorOrchestratorTest : BaseTest() {
         volumeObserver = mockk { every { volumes } returns MutableSharedFlow() }
         ringerModeObserver = mockk { every { ringerMode } returns MutableSharedFlow() }
         bluetoothEventQueue = mockk { every { events } returns MutableSharedFlow() }
-        eventDispatcher = mockk(relaxed = true)
+        idleFlow = MutableStateFlow(true)
+        eventDispatcher = mockk(relaxed = true) {
+            every { isIdle } returns idleFlow
+            coEvery { awaitIdle() } coAnswers { idleFlow.filter { it }.first() }
+        }
         ringerModeTransitionHandler = mockk(relaxed = true)
         ownerRegistry = mockk(relaxed = true)
         volumeEventDispatcher = mockk(relaxed = true)
@@ -139,13 +146,11 @@ class MonitorOrchestratorTest : BaseTest() {
     }
 
     @Test
-    fun `active devices without requiresMonitor - stops after grace period`() = runTest {
-        val monitoringDuration = Duration.ofSeconds(5)
+    fun `active devices without requiresMonitor - stops after idle grace period`() = runTest {
         val device = managedDevice(
             "AA:BB:CC:DD:EE:FF",
             active = true,
             requiresMonitor = false,
-            monitoringDuration = monitoringDuration,
         )
         devicesFlow.value = listOf(device)
 
@@ -157,8 +162,80 @@ class MonitorOrchestratorTest : BaseTest() {
             monitorReturned = true
         }
 
-        // 15s grace + 5s monitoring = 20s (throttleLatest emits first value immediately)
-        advanceTimeBy(19_000)
+        // Dispatcher is idle from the start. 15s grace before stopping.
+        advanceTimeBy(14_000)
+        monitorReturned shouldBe false
+
+        advanceTimeBy(2_000)
+        advanceUntilIdle()
+        monitorReturned shouldBe true
+
+        job.cancel()
+    }
+
+    @Test
+    fun `slow handler in flight - kill timer does not fire until awaitIdle resolves`() = runTest {
+        idleFlow.value = false // Dispatcher busy from start
+        val device = managedDevice(
+            "AA:BB:CC:DD:EE:FF",
+            active = true,
+            requiresMonitor = false,
+        )
+        devicesFlow.value = listOf(device)
+
+        val orchestrator = createOrchestrator()
+        var monitorReturned = false
+
+        val job = launch {
+            orchestrator.monitor(this@runTest) {}
+            monitorReturned = true
+        }
+
+        // 30s in, dispatcher still busy → must not return
+        advanceTimeBy(30_000)
+        monitorReturned shouldBe false
+
+        // Dispatcher becomes idle
+        idleFlow.value = true
+        advanceTimeBy(14_000)
+        monitorReturned shouldBe false
+
+        advanceTimeBy(2_000)
+        advanceUntilIdle()
+        monitorReturned shouldBe true
+
+        job.cancel()
+    }
+
+    @Test
+    fun `dispatcher going busy during 15s grace restarts cooldown`() = runTest {
+        val device = managedDevice(
+            "AA:BB:CC:DD:EE:FF",
+            active = true,
+            requiresMonitor = false,
+        )
+        devicesFlow.value = listOf(device)
+
+        val orchestrator = createOrchestrator()
+        var monitorReturned = false
+
+        val job = launch {
+            orchestrator.monitor(this@runTest) {}
+            monitorReturned = true
+        }
+
+        // Idle from start; advance 10s into grace window
+        advanceTimeBy(10_000)
+        monitorReturned shouldBe false
+
+        // Mid-grace, dispatcher goes busy → resets cooldown
+        idleFlow.value = false
+        advanceTimeBy(20_000)
+        monitorReturned shouldBe false
+
+        // Dispatcher becomes idle again
+        idleFlow.value = true
+        advanceTimeBy(14_000)
         monitorReturned shouldBe false
 
         advanceTimeBy(2_000)

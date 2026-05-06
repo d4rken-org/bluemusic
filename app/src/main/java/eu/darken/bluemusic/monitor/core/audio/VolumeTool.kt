@@ -151,36 +151,34 @@ class VolumeTool @Inject constructor(
         log(TAG, VERBOSE) { "changeVolume(streamId=$streamId, level=$targetLevel, visible=$visible, delay=$delay)" }
 
         val max = getMaxVolume(streamId)
-        if (targetLevel > max) {
-            log(TAG, WARN) { "Target volume of $targetLevel exceeds max of $max." }
-            return false
+        val min = getMinVolume(streamId)
+        val clampedTarget = targetLevel.coerceIn(min, max)
+        if (clampedTarget != targetLevel) {
+            log(TAG, WARN) { "Target level $targetLevel clamped to $clampedTarget (min=$min, max=$max)." }
         }
 
         val currentLevel = getCurrentVolume(streamId)
-        if (currentLevel == targetLevel) {
-            writeTracker.rememberCurrentTarget(streamId, targetLevel)
-            log(TAG, VERBOSE) { "Target volume of $targetLevel already set." }
+        if (currentLevel == clampedTarget) {
+            writeTracker.rememberCurrentTarget(streamId, clampedTarget)
+            log(TAG, VERBOSE) { "Target volume of $clampedTarget already set." }
             return false
         }
 
         log(TAG, DEBUG) {
-            "Adjusting volume (streamId=$streamId, targetLevel=$targetLevel, current=$currentLevel, max=$max, visible=$visible, delay=$delay)."
+            "Adjusting volume (streamId=$streamId, targetLevel=$clampedTarget, current=$currentLevel, max=$max, visible=$visible, delay=$delay)."
         }
+        val flag = if (visible) AudioManager.FLAG_SHOW_UI else 0
         if (delay == Duration.ZERO) {
-            setVolume(streamId, targetLevel, if (visible) AudioManager.FLAG_SHOW_UI else 0)
+            setVolume(streamId, clampedTarget, flag)
         } else {
-            if (currentLevel < targetLevel) {
-                for (volumeStep in currentLevel..targetLevel) {
-                    setVolume(streamId, volumeStep, if (visible) AudioManager.FLAG_SHOW_UI else 0)
-
-                    delay(delay)
-                }
+            val range: IntProgression = if (currentLevel < clampedTarget) {
+                (currentLevel + 1)..clampedTarget
             } else {
-                for (volumeStep in currentLevel downTo targetLevel) {
-                    setVolume(streamId, volumeStep, if (visible) AudioManager.FLAG_SHOW_UI else 0)
-
-                    delay(delay)
-                }
+                (currentLevel - 1) downTo clampedTarget
+            }
+            for (step in range) {
+                setVolume(streamId, step, flag)
+                if (step != range.last) delay(delay)
             }
         }
         return true
