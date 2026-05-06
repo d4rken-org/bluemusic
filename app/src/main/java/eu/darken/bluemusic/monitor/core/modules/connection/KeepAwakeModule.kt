@@ -32,18 +32,17 @@ class KeepAwakeModule @Inject internal constructor(
         val device = event.device
         if (!device.keepAwake) return
 
-        delayForReactionDelay(event)
-
-        val deviceMap = deviceRepo.currentDevices().associateBy { it.address }
-        val hasAnyKeepAwakeDevice = deviceMap.values.any { d -> d.keepAwake && d.isActive }
-
         when (event) {
             is DeviceEvent.Connected -> {
-                log(TAG) { "Device connected with keep awake: ${device.address}/${device.label}" }
+                log(TAG) { "KeepAwake on connect: ${device.address}/${device.label}" }
                 wakeLockManager.setWakeLock(true)
+                wakeLockManager.wakeScreenNow()
             }
 
             is DeviceEvent.Disconnected -> {
+                delayForReactionDelay(event)
+                val deviceMap = deviceRepo.currentDevices().associateBy { it.address }
+                val hasAnyKeepAwakeDevice = deviceMap.values.any { d -> d.keepAwake && d.isActive }
                 log(TAG) { "Device disconnected with keep awake: ${device.address}/${device.label}" }
                 if (!hasAnyKeepAwakeDevice) {
                     log(TAG) { "No more devices need keep awake, releasing wakelock" }

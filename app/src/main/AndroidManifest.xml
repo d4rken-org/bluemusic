@@ -44,6 +44,13 @@
             android:name="eu.darken.bluemusic.common.debug.recorder.ui.RecorderActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".monitor.core.screenwake.ScreenWakeActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:exported="false" />
+
         <receiver
             android:name="eu.darken.bluemusic.main.ui.widget.WidgetProvider"
             android:exported="true"
