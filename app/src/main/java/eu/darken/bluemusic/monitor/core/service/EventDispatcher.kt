@@ -34,6 +34,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicLong
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -68,16 +69,32 @@ class EventDispatcher @Inject constructor(
     private val _isIdle = MutableStateFlow(true)
     val isIdle: StateFlow<Boolean> = _isIdle.asStateFlow()
 
+    // Monotonic counter incremented on every job tracked. Allows the orchestrator's
+    // cooldown to detect "work happened during grace" deterministically, without
+    // depending on StateFlow conflation behaviour for short-lived work.
+    private val workGeneration = AtomicLong(0)
+    fun currentWorkGeneration(): Long = workGeneration.get()
+
+    // Lock that serializes the (set mutation + _isIdle write) pair so completion
+    // callbacks for old jobs can't overwrite an `_isIdle = false` set by a fresh
+    // trackJob — see EventDispatcherTest.`isIdle stays consistent under concurrent track and complete`.
+    private val trackingLock = Any()
+
     suspend fun awaitIdle() {
         isIdle.filter { it }.first()
     }
 
     private fun trackJob(job: Job) {
-        trackedJobs.add(job)
-        _isIdle.value = false
+        workGeneration.incrementAndGet()
+        synchronized(trackingLock) {
+            trackedJobs.add(job)
+            _isIdle.value = false
+        }
         job.invokeOnCompletion {
-            trackedJobs.remove(job)
-            if (trackedJobs.isEmpty()) _isIdle.value = true
+            synchronized(trackingLock) {
+                trackedJobs.remove(job)
+                if (trackedJobs.isEmpty()) _isIdle.value = true
+            }
         }
     }
 

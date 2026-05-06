@@ -143,6 +143,31 @@ class VolumeToolTest : BaseTest() {
     }
 
     @Test
+    fun `min greater than max returns false without writing or recording target`() = runTest {
+        // Defensive guard: if the platform reports degenerate stream bounds (min > max),
+        // VolumeTool aborts before calling coerceIn (which would throw IllegalArgumentException).
+        every { audioManager.getStreamMaxVolume(any()) } returns -1
+        // getMinVolume returns 0 in unit tests (Build.VERSION.SDK_INT==0 path), so 0 > -1.
+        audioLevels[AudioStream.Id.STREAM_MUSIC] = 0
+        val writes = mutableListOf<Int>()
+        every { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, any(), any()) } answers {
+            val level = secondArg<Int>()
+            audioLevels[AudioStream.Id.STREAM_MUSIC] = level
+            writes += level
+        }
+
+        val result = volumeTool.changeVolume(
+            streamId = AudioStream.Id.STREAM_MUSIC,
+            targetLevel = 5,
+            delay = Duration.ofMillis(1),
+        )
+
+        result shouldBe false
+        writes shouldBe emptyList()
+        volumeTool.hasRecentTarget(AudioStream.Id.STREAM_MUSIC, 5) shouldBe false
+    }
+
+    @Test
     fun `target level below min is clamped to min`() = runTest {
         // In unit tests Build.VERSION.SDK_INT is 0 (no Robolectric), so getMinVolume returns 0.
         audioLevels[AudioStream.Id.STREAM_MUSIC] = 3
