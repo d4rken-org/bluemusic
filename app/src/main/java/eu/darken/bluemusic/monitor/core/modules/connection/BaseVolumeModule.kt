@@ -106,14 +106,15 @@ abstract class BaseVolumeModule(
             val currentVolume = volumeTool.getCurrentVolume(device.getStreamId(type))
 
             log(tag, VERBOSE) { "Current volume is $currentVolume and we will lower then raise it." }
-            if (volumeTool.lowerByOne(device.getStreamId(type), true)) {
+            val visible = device.visibleAdjustments
+            if (volumeTool.lowerByOne(device.getStreamId(type), visible)) {
                 log(tag, VERBOSE) { "Volume was nudged lower, now nudging higher, to previous value." }
                 delay(500)
-                volumeTool.increaseByOne(device.getStreamId(type), true)
-            } else if (volumeTool.increaseByOne(device.getStreamId(type), true)) {
+                volumeTool.increaseByOne(device.getStreamId(type), visible)
+            } else if (volumeTool.increaseByOne(device.getStreamId(type), visible)) {
                 log(tag, VERBOSE) { "Volume was nudged higher, now nudging lower, to previous value." }
                 delay(500)
-                volumeTool.lowerByOne(device.getStreamId(type), true)
+                volumeTool.lowerByOne(device.getStreamId(type), visible)
             }
         }
     }

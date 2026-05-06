@@ -738,4 +738,235 @@ class EventDispatcherTest : BaseTest() {
 
         coVerify(exactly = 1) { deviceRepo.updateDevice(budsAddress, any()) }
     }
+
+    @Test
+    fun `isIdle starts true before any dispatch`() = runTest {
+        val dispatcher = createDispatcher()
+        dispatcher.isIdle.value shouldBe true
+    }
+
+    @Test
+    fun `isIdle flips false on dispatch and back to true after cancellable job completes`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        val running = CompletableDeferred<Unit>()
+        val release = CompletableDeferred<Unit>()
+        coEvery { module1.handle(any()) } coAnswers {
+            running.complete(Unit)
+            release.await()
+        }
+
+        val dispatcher = createDispatcher()
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+
+        running.await()
+        dispatcher.isIdle.value shouldBe false
+
+        release.complete(Unit)
+        advanceUntilIdle()
+
+        dispatcher.isIdle.value shouldBe true
+    }
+
+    @Test
+    fun `isIdle flips false on dispatch and back to true after non-cancellable job completes`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        val running = CompletableDeferred<Unit>()
+        val release = CompletableDeferred<Unit>()
+        val nonCancellable = mockk<ConnectionModule>(relaxed = true) {
+            every { priority } returns 1
+            every { tag } returns "NonCancellable"
+            every { cancellable } returns false
+        }
+        coEvery { nonCancellable.handle(any()) } coAnswers {
+            running.complete(Unit)
+            release.await()
+        }
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(nonCancellable),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+        dispatcher.dispatch(event(budsAddress, DISCONNECTED))
+
+        running.await()
+        dispatcher.isIdle.value shouldBe false
+
+        release.complete(Unit)
+        advanceUntilIdle()
+
+        dispatcher.isIdle.value shouldBe true
+    }
+
+    @Test
+    fun `isIdle stays false until both cancellable and non-cancellable jobs complete`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        val cancellableRunning = CompletableDeferred<Unit>()
+        val cancellableRelease = CompletableDeferred<Unit>()
+        val nonCancellableRunning = CompletableDeferred<Unit>()
+        val nonCancellableRelease = CompletableDeferred<Unit>()
+
+        val cancellableMod = mockk<ConnectionModule>(relaxed = true) {
+            every { priority } returns 10
+            every { tag } returns "Cancellable"
+            every { cancellable } returns true
+        }
+        coEvery { cancellableMod.handle(any()) } coAnswers {
+            cancellableRunning.complete(Unit)
+            cancellableRelease.await()
+        }
+        val nonCancellableMod = mockk<ConnectionModule>(relaxed = true) {
+            every { priority } returns 1
+            every { tag } returns "NonCancellable"
+            every { cancellable } returns false
+        }
+        coEvery { nonCancellableMod.handle(any()) } coAnswers {
+            nonCancellableRunning.complete(Unit)
+            nonCancellableRelease.await()
+        }
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(cancellableMod, nonCancellableMod),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+
+        cancellableRunning.await()
+        nonCancellableRunning.await()
+        dispatcher.isIdle.value shouldBe false
+
+        // Release only the cancellable; non-cancellable still in flight
+        cancellableRelease.complete(Unit)
+        advanceUntilIdle()
+        dispatcher.isIdle.value shouldBe false
+
+        // Release the non-cancellable too
+        nonCancellableRelease.complete(Unit)
+        advanceUntilIdle()
+        dispatcher.isIdle.value shouldBe true
+    }
+
+    @Test
+    fun `awaitIdle returns immediately when already idle`() = runTest {
+        val dispatcher = createDispatcher()
+        dispatcher.awaitIdle()
+        dispatcher.isIdle.value shouldBe true
+    }
+
+    @Test
+    fun `awaitIdle suspends until in-flight jobs complete`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        val running = CompletableDeferred<Unit>()
+        val release = CompletableDeferred<Unit>()
+        coEvery { module1.handle(any()) } coAnswers {
+            running.complete(Unit)
+            release.await()
+        }
+
+        val dispatcher = createDispatcher()
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        running.await()
+
+        var awaitIdleReturned = false
+        val waiter = launch {
+            dispatcher.awaitIdle()
+            awaitIdleReturned = true
+        }
+
+        advanceUntilIdle()
+        awaitIdleReturned shouldBe false
+
+        release.complete(Unit)
+        advanceUntilIdle()
+        waiter.join()
+        awaitIdleReturned shouldBe true
+    }
+
+    @Test
+    fun `superseded job still counts as in-flight until invokeOnCompletion runs`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        val firstRunning = CompletableDeferred<Unit>()
+        val secondRunning = CompletableDeferred<Unit>()
+        val secondRelease = CompletableDeferred<Unit>()
+        var callCount = 0
+        coEvery { module1.handle(any()) } coAnswers {
+            val n = ++callCount
+            if (n == 1) {
+                firstRunning.complete(Unit)
+                kotlinx.coroutines.delay(60_000)
+            } else {
+                secondRunning.complete(Unit)
+                secondRelease.await()
+            }
+        }
+
+        val dispatcher = createDispatcher()
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        firstRunning.await()
+        dispatcher.isIdle.value shouldBe false
+
+        // Supersede with a disconnect — this cancels the first job, but its
+        // invokeOnCompletion runs eventually and untracks it.
+        dispatcher.dispatch(event(budsAddress, DISCONNECTED))
+        secondRunning.await()
+        dispatcher.isIdle.value shouldBe false
+
+        secondRelease.complete(Unit)
+        advanceUntilIdle()
+        dispatcher.isIdle.value shouldBe true
+    }
+
+    @Test
+    fun `cancelAllJobs followed by resetForNewSession does not strand awaitIdle`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        val release = CompletableDeferred<Unit>()
+        coEvery { module1.handle(any()) } coAnswers { release.await() }
+
+        val dispatcher = createDispatcher()
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        dispatcher.isIdle.value shouldBe false
+
+        dispatcher.cancelAllJobs()
+        advanceUntilIdle()
+
+        dispatcher.isIdle.value shouldBe true
+
+        dispatcher.resetForNewSession()
+
+        var awaitIdleReturned = false
+        val waiter = launch {
+            dispatcher.awaitIdle()
+            awaitIdleReturned = true
+        }
+        advanceUntilIdle()
+        waiter.join()
+        awaitIdleReturned shouldBe true
+
+        // Release the deferred so the cancelled coroutine can finish unwinding cleanly.
+        release.complete(Unit)
+    }
 }

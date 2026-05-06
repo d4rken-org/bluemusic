@@ -522,4 +522,105 @@ class BaseVolumeModuleTest : BaseTest() {
             coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, 0.44f) }
         }
     }
+
+    @Nested
+    inner class NudgeVisibility {
+        // Device with nudgeVolume=true and visibleAdjustments configurable; setInitial finds
+        // current=target so it falls into the nudge path.
+
+        private fun deviceWithNudge(visibleAdjustments: Boolean): ManagedDevice = ManagedDevice(
+            isConnected = true,
+            device = testSourceDevice,
+            config = DeviceConfigEntity(
+                address = testAddress,
+                musicVolume = 0.44f,
+                actionDelay = 0L,
+                monitoringDuration = 0L,
+                isEnabled = true,
+                nudgeVolume = true,
+                visibleAdjustments = visibleAdjustments,
+            ),
+        )
+
+        @Test
+        fun `nudge with visibleAdjustments=false passes visible=false to volume tool`() = runTest(UnconfinedTestDispatcher()) {
+            val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
+            val registry = AudioStreamOwnerRegistry()
+            val (mod, _) = createModuleWithDeps(registry, devicesFlow)
+
+            val dev = deviceWithNudge(visibleAdjustments = false)
+            devicesFlow.value = listOf(dev)
+            registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+
+            every { volumeTool.getMaxVolume(streamId) } returns maxLevel
+            every { volumeTool.getCurrentVolume(streamId) } returns targetLevel
+            // changeVolume returns false (already at target) → enters nudge branch
+            coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns false
+            coEvery { volumeTool.lowerByOne(streamId, false) } returns true
+            coEvery { volumeTool.increaseByOne(streamId, false) } returns true
+
+            val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
+            advanceTimeBy(1_000) // past the inter-nudge delay(500)
+            job.join()
+
+            coVerify(exactly = 1) { volumeTool.lowerByOne(streamId, false) }
+            coVerify(exactly = 1) { volumeTool.increaseByOne(streamId, false) }
+            coVerify(exactly = 0) { volumeTool.lowerByOne(streamId, true) }
+            coVerify(exactly = 0) { volumeTool.increaseByOne(streamId, true) }
+        }
+
+        @Test
+        fun `nudge with visibleAdjustments=true passes visible=true to volume tool`() = runTest(UnconfinedTestDispatcher()) {
+            val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
+            val registry = AudioStreamOwnerRegistry()
+            val (mod, _) = createModuleWithDeps(registry, devicesFlow)
+
+            val dev = deviceWithNudge(visibleAdjustments = true)
+            devicesFlow.value = listOf(dev)
+            registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+
+            every { volumeTool.getMaxVolume(streamId) } returns maxLevel
+            every { volumeTool.getCurrentVolume(streamId) } returns targetLevel
+            coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns false
+            coEvery { volumeTool.lowerByOne(streamId, true) } returns true
+            coEvery { volumeTool.increaseByOne(streamId, true) } returns true
+
+            val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
+            advanceTimeBy(1_000)
+            job.join()
+
+            coVerify(exactly = 1) { volumeTool.lowerByOne(streamId, true) }
+            coVerify(exactly = 1) { volumeTool.increaseByOne(streamId, true) }
+            coVerify(exactly = 0) { volumeTool.lowerByOne(streamId, false) }
+            coVerify(exactly = 0) { volumeTool.increaseByOne(streamId, false) }
+        }
+
+        @Test
+        fun `nudge increase-then-lower path also respects visibleAdjustments=false`() = runTest(UnconfinedTestDispatcher()) {
+            // First lowerByOne returns false (e.g. already at min) → falls into the increase-then-lower branch.
+            val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
+            val registry = AudioStreamOwnerRegistry()
+            val (mod, _) = createModuleWithDeps(registry, devicesFlow)
+
+            val dev = deviceWithNudge(visibleAdjustments = false)
+            devicesFlow.value = listOf(dev)
+            registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+
+            every { volumeTool.getMaxVolume(streamId) } returns maxLevel
+            every { volumeTool.getCurrentVolume(streamId) } returns targetLevel
+            coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns false
+            coEvery { volumeTool.lowerByOne(streamId, false) } returns false
+            coEvery { volumeTool.increaseByOne(streamId, false) } returns true
+
+            val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
+            advanceTimeBy(1_000)
+            job.join()
+
+            // path 1 lowerByOne returns false → enters else-if branch → increaseByOne, then recovery lowerByOne
+            coVerify(exactly = 2) { volumeTool.lowerByOne(streamId, false) }
+            coVerify(exactly = 1) { volumeTool.increaseByOne(streamId, false) }
+            coVerify(exactly = 0) { volumeTool.lowerByOne(streamId, true) }
+            coVerify(exactly = 0) { volumeTool.increaseByOne(streamId, true) }
+        }
+    }
 }
