@@ -1,11 +1,13 @@
 package eu.darken.bluemusic.monitor.core
 
+import android.app.KeyguardManager
 import android.content.Context
 import android.content.Intent
 import android.os.PowerManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
@@ -23,6 +25,7 @@ class WakeLockManager @Inject constructor(
     private val permissionHelper: PermissionHelper,
 ) {
     private val powerManager by lazy { context.getSystemService(Context.POWER_SERVICE) as PowerManager }
+    private val keyguardManager by lazy { context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager }
 
     private val mutex = Mutex()
     private var cpuWakeLock: PowerManager.WakeLock? = null
@@ -66,6 +69,13 @@ class WakeLockManager @Inject constructor(
         // gated off.
         if (permissionHelper.needsOverlayPermission()) {
             log(TAG, WARN) { "Skipping screen wake: overlay permission not granted (Android 10+)." }
+            return
+        }
+        // Skip the wake-and-hold round-trip when the device is already in active use
+        // (interactive AND not behind the keyguard). On the lockscreen we still wake
+        // so the launched app can surface above the keyguard.
+        if (powerManager.isInteractive && !keyguardManager.isKeyguardLocked) {
+            log(TAG, VERBOSE) { "Screen on and unlocked; skipping wake." }
             return
         }
         try {
