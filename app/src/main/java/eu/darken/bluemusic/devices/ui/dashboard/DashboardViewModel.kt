@@ -71,7 +71,7 @@ class DashboardViewModel @Inject constructor(
         generalSettings.isAndroid10AppLaunchHintDismissed.flow,
         devicesFlow
     ) { _, isDismissed, devices ->
-        val hasDevicesNeedingOverlay = devices.any { it.launchPkgs.isNotEmpty() || it.showHomeScreen }
+        val hasDevicesNeedingOverlay = devices.any { it.launchPkgs.isNotEmpty() || it.showHomeScreen || it.keepAwake }
         val hint = permissionHelper.getOverlayPermissionHint(isDismissed, hasDevicesNeedingOverlay)
         hint
     }
