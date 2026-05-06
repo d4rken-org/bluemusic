@@ -969,4 +969,74 @@ class EventDispatcherTest : BaseTest() {
         // Release the deferred so the cancelled coroutine can finish unwinding cleanly.
         release.complete(Unit)
     }
+
+    @Test
+    fun `currentWorkGeneration starts at 0 and increments on dispatch`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        val release = CompletableDeferred<Unit>()
+        coEvery { module1.handle(any()) } coAnswers { release.await() }
+
+        val dispatcher = createDispatcher()
+        dispatcher.currentWorkGeneration() shouldBe 0L
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        // At least one trackJob ran (the cancellable launch).
+        (dispatcher.currentWorkGeneration() > 0L) shouldBe true
+
+        release.complete(Unit)
+    }
+
+    @Test
+    fun `currentWorkGeneration keeps increasing across multiple dispatches`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        val firstRelease = CompletableDeferred<Unit>()
+        val secondRelease = CompletableDeferred<Unit>()
+        var callCount = 0
+        coEvery { module1.handle(any()) } coAnswers {
+            val n = ++callCount
+            if (n == 1) firstRelease.await() else secondRelease.await()
+        }
+
+        val dispatcher = createDispatcher()
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+        val genAfterFirst = dispatcher.currentWorkGeneration()
+        (genAfterFirst > 0L) shouldBe true
+
+        dispatcher.dispatch(event(budsAddress, DISCONNECTED))
+        advanceUntilIdle()
+        val genAfterSecond = dispatcher.currentWorkGeneration()
+        (genAfterSecond > genAfterFirst) shouldBe true
+
+        firstRelease.complete(Unit)
+        secondRelease.complete(Unit)
+    }
+
+    @Test
+    fun `currentWorkGeneration increments even when a fast dispatch finishes before isIdle is observed`() = runTest {
+        // Verifies that the orchestrator's "did anything happen during grace?" check
+        // remains accurate even for blink-and-you-miss-it dispatches whose isIdle=false
+        // gets conflated by StateFlow before any collector observes it.
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+
+        // Module returns immediately — total in-flight time is microseconds.
+        coEvery { module1.handle(any()) } returns Unit
+
+        val dispatcher = createDispatcher()
+        val genBefore = dispatcher.currentWorkGeneration()
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        dispatcher.isIdle.value shouldBe true
+        (dispatcher.currentWorkGeneration() > genBefore) shouldBe true
+    }
 }

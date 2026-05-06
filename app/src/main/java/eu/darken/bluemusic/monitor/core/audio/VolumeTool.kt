@@ -152,6 +152,10 @@ class VolumeTool @Inject constructor(
 
         val max = getMaxVolume(streamId)
         val min = getMinVolume(streamId)
+        if (min > max) {
+            log(TAG, WARN) { "Invalid stream bounds: min=$min > max=$max for $streamId; aborting changeVolume." }
+            return false
+        }
         val clampedTarget = targetLevel.coerceIn(min, max)
         if (clampedTarget != targetLevel) {
             log(TAG, WARN) { "Target level $targetLevel clamped to $clampedTarget (min=$min, max=$max)." }

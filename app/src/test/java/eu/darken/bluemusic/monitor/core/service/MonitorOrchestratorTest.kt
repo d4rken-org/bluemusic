@@ -25,6 +25,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 import java.time.Duration
+import java.util.concurrent.atomic.AtomicLong
 
 class MonitorOrchestratorTest : BaseTest() {
 
@@ -41,6 +42,7 @@ class MonitorOrchestratorTest : BaseTest() {
     private lateinit var devicesFlow: MutableStateFlow<List<ManagedDevice>>
     private lateinit var stateFlow: MutableStateFlow<BluetoothRepo.State>
     private lateinit var idleFlow: MutableStateFlow<Boolean>
+    private lateinit var workGen: AtomicLong
 
     @BeforeEach
     fun setup() {
@@ -58,9 +60,11 @@ class MonitorOrchestratorTest : BaseTest() {
         ringerModeObserver = mockk { every { ringerMode } returns MutableSharedFlow() }
         bluetoothEventQueue = mockk { every { events } returns MutableSharedFlow() }
         idleFlow = MutableStateFlow(true)
+        workGen = AtomicLong(0)
         eventDispatcher = mockk(relaxed = true) {
             every { isIdle } returns idleFlow
             coEvery { awaitIdle() } coAnswers { idleFlow.filter { it }.first() }
+            every { currentWorkGeneration() } answers { workGen.get() }
         }
         ringerModeTransitionHandler = mockk(relaxed = true)
         ownerRegistry = mockk(relaxed = true)
@@ -224,17 +228,65 @@ class MonitorOrchestratorTest : BaseTest() {
             monitorReturned = true
         }
 
-        // Idle from start; advance 10s into grace window
+        // Idle from start; advance 10s into the first grace window.
         advanceTimeBy(10_000)
         monitorReturned shouldBe false
 
-        // Mid-grace, dispatcher goes busy → resets cooldown
+        // Mid-grace: dispatcher gets new work — bump generation AND flip idle to false
+        // to simulate what trackJob() does in production. The cooldown checks generation
+        // (not isIdle) at the end of the 15s delay, so this *will* be detected.
+        workGen.incrementAndGet()
         idleFlow.value = false
+
+        // Finish out the original 15s delay — orchestrator sees generation changed, restarts.
+        advanceTimeBy(5_001)
+        monitorReturned shouldBe false
+
+        // Restart loop calls awaitIdle() which suspends because dispatcher is busy.
         advanceTimeBy(20_000)
         monitorReturned shouldBe false
 
-        // Dispatcher becomes idle again
+        // Dispatcher becomes idle again — awaitIdle() returns, new 15s grace begins.
         idleFlow.value = true
+        advanceTimeBy(14_000)
+        monitorReturned shouldBe false
+
+        advanceTimeBy(2_000)
+        advanceUntilIdle()
+        monitorReturned shouldBe true
+
+        job.cancel()
+    }
+
+    @Test
+    fun `work bump alone during grace restarts cooldown even without idle flip`() = runTest {
+        // Edge case: a fast dispatch that completes within the 15s grace window —
+        // its trackJob bumps the generation but isIdle may already be true again
+        // by the time the cooldown's delay completes. Generation-based check still detects it.
+        val device = managedDevice(
+            "AA:BB:CC:DD:EE:FF",
+            active = true,
+            requiresMonitor = false,
+        )
+        devicesFlow.value = listOf(device)
+
+        val orchestrator = createOrchestrator()
+        var monitorReturned = false
+
+        val job = launch {
+            orchestrator.monitor(this@runTest) {}
+            monitorReturned = true
+        }
+
+        // Mid-grace, simulate a brief dispatch that bumps generation but leaves idle=true.
+        advanceTimeBy(10_000)
+        workGen.incrementAndGet()
+
+        // Finish out the original 15s delay — generation differs → restart.
+        advanceTimeBy(5_001)
+        monitorReturned shouldBe false
+
+        // Second grace window with no further work.
         advanceTimeBy(14_000)
         monitorReturned shouldBe false
 

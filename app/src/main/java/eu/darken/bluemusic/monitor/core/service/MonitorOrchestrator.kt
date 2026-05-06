@@ -22,13 +22,10 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.emptyFlow
-import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.withTimeoutOrNull
 import java.time.Duration
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -121,16 +118,15 @@ class MonitorOrchestrator @Inject constructor(
                         log(TAG) { "Active devices present; waiting for dispatcher idle then 15s grace before stopping." }
                         while (true) {
                             eventDispatcher.awaitIdle()
-                            val wentBusy = withTimeoutOrNull(Duration.ofSeconds(15).toMillis()) {
-                                eventDispatcher.isIdle.filter { !it }.first()
-                                true
+                            val genAtStart = eventDispatcher.currentWorkGeneration()
+                            delay(Duration.ofSeconds(15).toMillis())
+                            if (eventDispatcher.currentWorkGeneration() != genAtStart) {
+                                log(TAG) { "Dispatcher had new work during grace; restarting cooldown." }
+                                continue
                             }
-                            if (wentBusy == null) {
-                                log(TAG) { "Dispatcher idle for 15s; stopping." }
-                                monitorJob.cancel()
-                                return@flow
-                            }
-                            log(TAG) { "Dispatcher went busy during grace; restarting cooldown." }
+                            log(TAG) { "Dispatcher idle for 15s; stopping." }
+                            monitorJob.cancel()
+                            return@flow
                         }
                     }
 
