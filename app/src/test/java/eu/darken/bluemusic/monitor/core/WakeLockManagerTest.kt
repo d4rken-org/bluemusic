@@ -40,16 +40,23 @@ class WakeLockManagerTest {
     private fun manager() = WakeLockManager(context, permissionHelper)
 
     @Test
-    fun `setWakeLock true acquires only CPU lock`() = runTest {
+    fun `setWakeLock true acquires CPU lock and is idempotent`() = runTest {
+        // Pre-condition: no wake lock exists before setWakeLock is called.
+        ShadowPowerManager.getLatestWakeLock() shouldBe null
+
         val mgr = manager()
         mgr.setWakeLock(true)
 
-        // Robolectric tracks every PowerManager.newWakeLock() call.
-        // Regression guard: only the CPU lock is created/acquired (no SCREEN_BRIGHT_WAKE_LOCK).
+        // Regression guard: tag and held state. The latest lock IS the only lock since
+        // none existed pre-call.
         val lock = ShadowPowerManager.getLatestWakeLock()
         lock shouldNotBe null
         Shadows.shadowOf(lock).tag shouldBe "BlueMusic:KeepAwakeCPU"
         lock.isHeld shouldBe true
+
+        // Idempotency: calling again must not create a second lock.
+        mgr.setWakeLock(true)
+        ShadowPowerManager.getLatestWakeLock() shouldBe lock
     }
 
     @Test
@@ -64,8 +71,8 @@ class WakeLockManagerTest {
     }
 
     @Test
-    fun `wakeScreenNow noop without overlay permission`() {
-        every { permissionHelper.canDrawOverlays() } returns false
+    fun `wakeScreenNow noop on API29+ without overlay perm`() {
+        every { permissionHelper.needsOverlayPermission() } returns true
 
         val mgr = manager()
         mgr.wakeScreenNow()
@@ -75,8 +82,12 @@ class WakeLockManagerTest {
     }
 
     @Test
-    fun `wakeScreenNow launches ScreenWakeActivity when overlay granted`() {
-        every { permissionHelper.canDrawOverlays() } returns true
+    fun `wakeScreenNow launches activity when overlay ok`() {
+        // needsOverlayPermission() returns false in two cases:
+        //   1. Android 6-9 (BAL not enforced, no SAW required)
+        //   2. Android 10+ with SAW already granted
+        // In both, the activity launch must proceed.
+        every { permissionHelper.needsOverlayPermission() } returns false
 
         val mgr = manager()
         mgr.wakeScreenNow()
@@ -90,5 +101,19 @@ class WakeLockManagerTest {
         (flags and Intent.FLAG_ACTIVITY_NEW_TASK) shouldBe Intent.FLAG_ACTIVITY_NEW_TASK
         (flags and Intent.FLAG_ACTIVITY_NO_HISTORY) shouldBe Intent.FLAG_ACTIVITY_NO_HISTORY
         (flags and Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS) shouldBe Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS
+    }
+
+    @Test
+    fun `wakeScreenNow gate uses needsOverlayPermission only`() {
+        // Codex regression guard: catches a future change reverting back to the
+        // overly-broad canDrawOverlays() gate which would silently no-op on Android 6-9.
+        every { permissionHelper.needsOverlayPermission() } returns false
+        every { permissionHelper.canDrawOverlays() } returns false // simulating Android 6-9 default
+
+        val mgr = manager()
+        mgr.wakeScreenNow()
+
+        // Should still launch — needsOverlayPermission is the only gate.
+        Shadows.shadowOf(context).peekNextStartedActivity() shouldNotBe null
     }
 }

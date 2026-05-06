@@ -59,8 +59,13 @@ class WakeLockManager @Inject constructor(
     }
 
     fun wakeScreenNow() {
-        if (!permissionHelper.canDrawOverlays()) {
-            log(TAG, WARN) { "Skipping screen wake: overlay permission not granted." }
+        // Background activity launch (BAL) restrictions only apply on API 29+ (Android 10+).
+        // On API 23-28 a transparent activity launch from a foreground service is permitted
+        // without SYSTEM_ALERT_WINDOW. Skipping only when the OS would actually reject the
+        // launch avoids silently no-oping on Android 6-9 where the dashboard hint is also
+        // gated off.
+        if (permissionHelper.needsOverlayPermission()) {
+            log(TAG, WARN) { "Skipping screen wake: overlay permission not granted (Android 10+)." }
             return
         }
         try {
@@ -72,7 +77,9 @@ class WakeLockManager @Inject constructor(
                 )
             }
             context.startActivity(intent)
-            log(TAG, INFO) { "Launched ScreenWakeActivity." }
+            // OS-level BAL denial may not throw — this log means "launch requested",
+            // not necessarily "screen actually woke".
+            log(TAG, INFO) { "Requested ScreenWakeActivity launch." }
         } catch (e: Exception) {
             log(TAG, WARN) { "Failed to launch ScreenWakeActivity: ${e.asLog()}" }
         }
