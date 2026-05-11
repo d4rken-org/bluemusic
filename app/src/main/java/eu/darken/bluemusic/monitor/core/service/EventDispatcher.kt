@@ -16,6 +16,7 @@ import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
+import eu.darken.bluemusic.monitor.core.modules.SettlePolicy
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
@@ -23,6 +24,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -32,6 +34,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import java.time.Duration
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicLong
@@ -222,26 +225,71 @@ class EventDispatcher @Inject constructor(
         }
     }
 
+    /**
+     * Filters [modules] by [ConnectionModule.appliesTo] for this event, then runs them in
+     * two groups: [SettlePolicy.Immediate] modules first, followed by a single
+     * `delay(actionDelay)` barrier, followed by the [SettlePolicy.AfterDeviceSettle] /
+     * [SettlePolicy.AfterDeviceSettlePlus] modules.
+     *
+     * Called twice per dispatched event — once for the non-cancellable group and once for
+     * the cancellable group — so the barrier fires at most once per module-job-group.
+     * In practice the non-cancellable group has only Immediate modules (no barrier paid),
+     * and the cancellable group has the settled modules (one barrier).
+     */
     private suspend fun executeModules(deviceEvent: DeviceEvent, modules: Collection<ConnectionModule>) {
-        val modulesByPriority = modules
-            .groupBy { it.priority }
-            .toSortedMap()
+        val applicable = modules.filter { module ->
+            runCatching { module.appliesTo(deviceEvent) }.getOrElse {
+                log(TAG, ERROR) { "appliesTo threw for ${module.tag}; treating as not-applicable: ${it.asLog()}" }
+                false
+            }
+        }
+        if (applicable.isEmpty()) {
+            log(TAG, VERBOSE) { "executeModules: no applicable modules for $deviceEvent" }
+            return
+        }
 
-        for ((priority, modules) in modulesByPriority) {
-            log(TAG, VERBOSE) { "dispatch: ${modules.size} modules at priority $priority" }
+        val planned = applicable.map { it to safePolicy(it, deviceEvent) }
+        val (immediate, settled) = planned.partition { (_, policy) -> policy == SettlePolicy.Immediate }
 
+        if (immediate.isNotEmpty()) runByPriority(deviceEvent, immediate)
+
+        if (settled.isNotEmpty()) {
+            val actionDelay = deviceEvent.device.actionDelay
+            log(TAG, VERBOSE) { "executeModules: settle barrier — sleeping $actionDelay before ${settled.size} settled modules" }
+            delay(actionDelay.toMillis())
+            runByPriority(deviceEvent, settled)
+        }
+    }
+
+    private fun safePolicy(module: ConnectionModule, event: DeviceEvent): SettlePolicy =
+        runCatching { module.settlePolicy(event) }.getOrElse {
+            log(TAG, ERROR) { "settlePolicy threw for ${module.tag}; defaulting to AfterDeviceSettle: ${it.asLog()}" }
+            SettlePolicy.AfterDeviceSettle
+        }
+
+    private suspend fun runByPriority(
+        deviceEvent: DeviceEvent,
+        planned: List<Pair<ConnectionModule, SettlePolicy>>,
+    ) {
+        planned.groupBy { (module, _) -> module.priority }.toSortedMap().forEach { (priority, group) ->
+            log(TAG, VERBOSE) { "runByPriority: ${group.size} modules at priority $priority" }
             coroutineScope {
-                modules.map { module ->
+                group.map { (module, policy) ->
                     async(dispatcherProvider.IO) {
                         try {
-                            log(TAG, VERBOSE) { "dispatch: ${module.tag} HANDLE-START" }
+                            val extra = (policy as? SettlePolicy.AfterDeviceSettlePlus)?.extraDelay
+                            if (extra != null && extra > Duration.ZERO) {
+                                log(TAG, VERBOSE) { "runByPriority: ${module.tag} extra delay $extra" }
+                                delay(extra.toMillis())
+                            }
+                            log(TAG, VERBOSE) { "runByPriority: ${module.tag} HANDLE-START" }
                             module.handle(deviceEvent)
-                            log(TAG, VERBOSE) { "dispatch: ${module.tag} HANDLE-STOP" }
+                            log(TAG, VERBOSE) { "runByPriority: ${module.tag} HANDLE-STOP" }
                         } catch (e: CancellationException) {
                             throw e
                         } catch (e: Exception) {
                             log(TAG, ERROR) {
-                                "dispatch: Error: ${module.tag} for $deviceEvent: ${e.asLog()}"
+                                "runByPriority: Error: ${module.tag} for $deviceEvent: ${e.asLog()}"
                             }
                         }
                     }

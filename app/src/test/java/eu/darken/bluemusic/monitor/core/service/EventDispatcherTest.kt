@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.currentTime
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
@@ -73,16 +74,20 @@ class EventDispatcherTest : BaseTest() {
             devicesSettings = devicesSettings,
             clock = clock,
         )
-        module1 = mockk(relaxed = true) {
-            every { priority } returns 10
-            every { tag } returns "Module1"
-            every { cancellable } returns true
-        }
-        module2 = mockk(relaxed = true) {
-            every { priority } returns 10
-            every { tag } returns "Module2"
-            every { cancellable } returns true
-        }
+        module1 = mockConnectionModule(name = "Module1")
+        module2 = mockConnectionModule(name = "Module2")
+    }
+
+    private fun mockConnectionModule(
+        name: String,
+        priority: Int = 10,
+        cancellable: Boolean = true,
+        appliesTo: Boolean = true,
+    ): ConnectionModule = mockk(relaxed = true) {
+        every { this@mockk.priority } returns priority
+        every { tag } returns name
+        every { this@mockk.cancellable } returns cancellable
+        every { appliesTo(any()) } returns appliesTo
     }
 
     @AfterEach
@@ -94,9 +99,11 @@ class EventDispatcherTest : BaseTest() {
         address: String,
         connected: Boolean = true,
         deviceType: SourceDevice.Type = SourceDevice.Type.HEADPHONES,
+        actionDelay: java.time.Duration = java.time.Duration.ZERO,
     ): ManagedDevice = mockk(relaxed = true) {
         every { this@mockk.address } returns address
         every { isConnected } returns connected
+        every { this@mockk.actionDelay } returns actionDelay
         every { device } returns mockk(relaxed = true) {
             every { this@mockk.deviceType } returns deviceType
         }
@@ -338,14 +345,8 @@ class EventDispatcherTest : BaseTest() {
         val buds = managedDevice(budsAddress, connected = true)
         devicesFlow.value = listOf(buds)
 
-        val highPriority = mockk<ConnectionModule>(relaxed = true) {
-            every { priority } returns 1
-            every { tag } returns "HighPri"
-        }
-        val lowPriority = mockk<ConnectionModule>(relaxed = true) {
-            every { priority } returns 10
-            every { tag } returns "LowPri"
-        }
+        val highPriority = mockConnectionModule(name = "HighPri", priority = 1)
+        val lowPriority = mockConnectionModule(name = "LowPri", priority = 10)
 
         val executionOrder = mutableListOf<String>()
         coEvery { highPriority.handle(any()) } coAnswers { executionOrder.add("high") }
@@ -372,16 +373,8 @@ class EventDispatcherTest : BaseTest() {
         val buds = managedDevice(budsAddress, connected = true)
         devicesFlow.value = listOf(buds)
 
-        val nonCancellable = mockk<ConnectionModule>(relaxed = true) {
-            every { priority } returns 1
-            every { tag } returns "NonCancellable"
-            every { cancellable } returns false
-        }
-        val cancellable = mockk<ConnectionModule>(relaxed = true) {
-            every { priority } returns 10
-            every { tag } returns "Cancellable"
-            every { cancellable } returns true
-        }
+        val nonCancellable = mockConnectionModule(name = "NonCancellable", priority = 1, cancellable = false)
+        val cancellable = mockConnectionModule(name = "Cancellable", priority = 10)
 
         var nonCancellableCompleted = false
         coEvery { nonCancellable.handle(any<DeviceEvent.Connected>()) } coAnswers {
@@ -571,16 +564,8 @@ class EventDispatcherTest : BaseTest() {
         val buds = managedDevice(budsAddress, connected = true)
         devicesFlow.value = listOf(buds)
 
-        val disconnectModule = mockk<ConnectionModule>(relaxed = true) {
-            every { priority } returns 1
-            every { tag } returns "VolumeDisconnect"
-            every { cancellable } returns false
-        }
-        val connectModule = mockk<ConnectionModule>(relaxed = true) {
-            every { priority } returns 10
-            every { tag } returns "VolumeUpdate"
-            every { cancellable } returns true
-        }
+        val disconnectModule = mockConnectionModule(name = "VolumeDisconnect", priority = 1, cancellable = false)
+        val connectModule = mockConnectionModule(name = "VolumeUpdate", priority = 10)
 
         var disconnectSaveCompleted = false
         coEvery { disconnectModule.handle(any<DeviceEvent.Disconnected>()) } coAnswers {
@@ -615,11 +600,7 @@ class EventDispatcherTest : BaseTest() {
         val watch = managedDevice(watchAddress, connected = true)
         devicesFlow.value = listOf(buds, watch)
 
-        val slowModule = mockk<ConnectionModule>(relaxed = true) {
-            every { priority } returns 10
-            every { tag } returns "SlowRamp"
-            every { cancellable } returns true
-        }
+        val slowModule = mockConnectionModule(name = "SlowRamp", priority = 10)
 
         var budsRampCompleted = false
         coEvery { slowModule.handle(match<DeviceEvent.Connected> { it.device.address == budsAddress }) } coAnswers {
@@ -653,11 +634,7 @@ class EventDispatcherTest : BaseTest() {
         val buds = managedDevice(budsAddress, connected = true)
         devicesFlow.value = listOf(buds)
 
-        val nonCancellable = mockk<ConnectionModule>(relaxed = true) {
-            every { priority } returns 1
-            every { tag } returns "NonCancellable"
-            every { cancellable } returns false
-        }
+        val nonCancellable = mockConnectionModule(name = "NonCancellable", priority = 1, cancellable = false)
 
         var jobCompleted = false
         coEvery { nonCancellable.handle(any<DeviceEvent.Disconnected>()) } coAnswers {
@@ -687,11 +664,7 @@ class EventDispatcherTest : BaseTest() {
         val buds = managedDevice(budsAddress, connected = true)
         devicesFlow.value = listOf(buds)
 
-        val nonCancellable = mockk<ConnectionModule>(relaxed = true) {
-            every { priority } returns 1
-            every { tag } returns "NonCancellable"
-            every { cancellable } returns false
-        }
+        val nonCancellable = mockConnectionModule(name = "NonCancellable", priority = 1, cancellable = false)
 
         var completionCount = java.util.concurrent.atomic.AtomicInteger(0)
         coEvery { nonCancellable.handle(any<DeviceEvent.Disconnected>()) } coAnswers {
@@ -776,11 +749,7 @@ class EventDispatcherTest : BaseTest() {
 
         val running = CompletableDeferred<Unit>()
         val release = CompletableDeferred<Unit>()
-        val nonCancellable = mockk<ConnectionModule>(relaxed = true) {
-            every { priority } returns 1
-            every { tag } returns "NonCancellable"
-            every { cancellable } returns false
-        }
+        val nonCancellable = mockConnectionModule(name = "NonCancellable", priority = 1, cancellable = false)
         coEvery { nonCancellable.handle(any()) } coAnswers {
             running.complete(Unit)
             release.await()
@@ -816,20 +785,12 @@ class EventDispatcherTest : BaseTest() {
         val nonCancellableRunning = CompletableDeferred<Unit>()
         val nonCancellableRelease = CompletableDeferred<Unit>()
 
-        val cancellableMod = mockk<ConnectionModule>(relaxed = true) {
-            every { priority } returns 10
-            every { tag } returns "Cancellable"
-            every { cancellable } returns true
-        }
+        val cancellableMod = mockConnectionModule(name = "Cancellable", priority = 10)
         coEvery { cancellableMod.handle(any()) } coAnswers {
             cancellableRunning.complete(Unit)
             cancellableRelease.await()
         }
-        val nonCancellableMod = mockk<ConnectionModule>(relaxed = true) {
-            every { priority } returns 1
-            every { tag } returns "NonCancellable"
-            every { cancellable } returns false
-        }
+        val nonCancellableMod = mockConnectionModule(name = "NonCancellable", priority = 1, cancellable = false)
         coEvery { nonCancellableMod.handle(any()) } coAnswers {
             nonCancellableRunning.complete(Unit)
             nonCancellableRelease.await()
@@ -1039,4 +1000,207 @@ class EventDispatcherTest : BaseTest() {
         dispatcher.isIdle.value shouldBe true
         (dispatcher.currentWorkGeneration() > genBefore) shouldBe true
     }
+
+    // region SettlePolicy barrier
+
+    @Test
+    fun `settled modules wait actionDelay barrier once, not once per module`() = runTest {
+        val testScope = this
+        val buds = managedDevice(budsAddress, connected = true, actionDelay = java.time.Duration.ofSeconds(6))
+        devicesFlow.value = listOf(buds)
+
+        val handleTimes = mutableListOf<Long>()
+        val m1 = mockConnectionModule(name = "M1", priority = 5)
+        val m2 = mockConnectionModule(name = "M2", priority = 10)
+        val m3 = mockConnectionModule(name = "M3", priority = 25)
+        coEvery { m1.handle(any()) } coAnswers { handleTimes += testScope.currentTime }
+        coEvery { m2.handle(any()) } coAnswers { handleTimes += testScope.currentTime }
+        coEvery { m3.handle(any()) } coAnswers { handleTimes += testScope.currentTime }
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(m1, m2, m3),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        // All three modules ran after exactly one 6-second barrier — not three stacked 6s.
+        handleTimes.size shouldBe 3
+        handleTimes.all { it >= 6000 } shouldBe true
+        handleTimes.all { it < 12000 } shouldBe true // would be >= 12s with even one extra barrier
+    }
+
+    @Test
+    fun `immediate modules run before the settle barrier`() = runTest {
+        val testScope = this
+        val buds = managedDevice(budsAddress, connected = true, actionDelay = java.time.Duration.ofSeconds(6))
+        devicesFlow.value = listOf(buds)
+
+        val immediateTime = CompletableDeferred<Long>()
+        val settledTime = CompletableDeferred<Long>()
+        val immediate = mockConnectionModule(name = "Immediate", priority = 3)
+        every { immediate.settlePolicy(any()) } returns eu.darken.bluemusic.monitor.core.modules.SettlePolicy.Immediate
+        val settled = mockConnectionModule(name = "Settled", priority = 5)
+        coEvery { immediate.handle(any()) } coAnswers { immediateTime.complete(testScope.currentTime) }
+        coEvery { settled.handle(any()) } coAnswers { settledTime.complete(testScope.currentTime) }
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(immediate, settled),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        immediateTime.await() shouldBe 0L
+        settledTime.await() shouldBe 6000L
+    }
+
+    @Test
+    fun `AfterDeviceSettlePlus waits the extra delay after the barrier`() = runTest {
+        val testScope = this
+        val buds = managedDevice(budsAddress, connected = true, actionDelay = java.time.Duration.ofSeconds(4))
+        devicesFlow.value = listOf(buds)
+
+        val plusTime = CompletableDeferred<Long>()
+        val plus = mockConnectionModule(name = "Plus", priority = 5)
+        every { plus.settlePolicy(any()) } returns
+            eu.darken.bluemusic.monitor.core.modules.SettlePolicy.AfterDeviceSettlePlus(java.time.Duration.ofSeconds(2))
+        coEvery { plus.handle(any()) } coAnswers { plusTime.complete(testScope.currentTime) }
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(plus),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        // 4s barrier + 2s extra = 6s before handle runs.
+        plusTime.await() shouldBe 6000L
+    }
+
+    @Test
+    fun `modules with appliesTo=false are filtered out before barrier`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true, actionDelay = java.time.Duration.ofSeconds(6))
+        devicesFlow.value = listOf(buds)
+
+        val skipped = mockConnectionModule(name = "Skipped", priority = 5, appliesTo = false)
+        val runs = mockConnectionModule(name = "Runs", priority = 5, appliesTo = true)
+        coEvery { runs.handle(any()) } returns Unit
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(skipped, runs),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { skipped.handle(any()) }
+        coVerify(exactly = 1) { runs.handle(any()) }
+    }
+
+    @Test
+    fun `only immediate modules apply - no barrier paid`() = runTest {
+        val testScope = this
+        val buds = managedDevice(budsAddress, connected = true, actionDelay = java.time.Duration.ofSeconds(6))
+        devicesFlow.value = listOf(buds)
+
+        val handleTime = CompletableDeferred<Long>()
+        val immediate = mockConnectionModule(name = "Immediate", priority = 3)
+        every { immediate.settlePolicy(any()) } returns eu.darken.bluemusic.monitor.core.modules.SettlePolicy.Immediate
+        coEvery { immediate.handle(any()) } coAnswers { handleTime.complete(testScope.currentTime) }
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(immediate),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        // No settled modules → no barrier. Immediate runs at T=0.
+        handleTime.await() shouldBe 0L
+    }
+
+    @Test
+    fun `no modules apply - nothing runs, no barrier`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true, actionDelay = java.time.Duration.ofSeconds(6))
+        devicesFlow.value = listOf(buds)
+
+        val m = mockConnectionModule(name = "M", priority = 5, appliesTo = false)
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(m),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { m.handle(any()) }
+        // currentTime advanced only by trivial things (event delivery), not by a 6s barrier.
+        (currentTime < 6000) shouldBe true
+    }
+
+    @Test
+    fun `appliesTo throwing does not abort other modules`() = runTest {
+        val buds = managedDevice(budsAddress, connected = true, actionDelay = java.time.Duration.ofSeconds(0))
+        devicesFlow.value = listOf(buds)
+
+        val thrower = mockConnectionModule(name = "Thrower", priority = 5)
+        every { thrower.appliesTo(any()) } throws RuntimeException("boom")
+        val survivor = mockConnectionModule(name = "Survivor", priority = 5)
+        coEvery { survivor.handle(any()) } returns Unit
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(thrower, survivor),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { thrower.handle(any()) }
+        coVerify(exactly = 1) { survivor.handle(any()) }
+    }
+
+    // endregion
 }

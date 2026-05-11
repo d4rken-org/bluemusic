@@ -10,7 +10,6 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import kotlinx.coroutines.delay
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -25,13 +24,15 @@ class AppLaunchModule @Inject constructor(
 
     override val priority: Int = 5
 
+    private fun isApplicable(event: DeviceEvent): Boolean =
+        event is DeviceEvent.Connected && event.device.launchPkgs.isNotEmpty()
+
+    override fun appliesTo(event: DeviceEvent): Boolean = isApplicable(event)
+
     override suspend fun handle(event: DeviceEvent) {
-        if (event !is DeviceEvent.Connected) return
+        if (!isApplicable(event)) return
         val device = event.device
         val appsToLaunch = device.launchPkgs
-        if (appsToLaunch.isEmpty()) return
-
-        delayForReactionDelay(event)
 
         log(TAG) { "Launching ${appsToLaunch.size} apps: $appsToLaunch" }
 

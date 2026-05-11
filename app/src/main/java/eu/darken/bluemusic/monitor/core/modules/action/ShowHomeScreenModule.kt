@@ -10,7 +10,6 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -24,13 +23,14 @@ class ShowHomeScreenModule @Inject internal constructor(
 
     override val priority: Int = 100
 
+    private fun isApplicable(event: DeviceEvent): Boolean =
+        event is DeviceEvent.Connected && event.device.showHomeScreen
+
+    override fun appliesTo(event: DeviceEvent): Boolean = isApplicable(event)
+
     override suspend fun handle(event: DeviceEvent) {
-        if (event !is DeviceEvent.Connected) return
-
+        if (!isApplicable(event)) return
         val device = event.device
-        if (!device.showHomeScreen) return
-
-        delayForReactionDelay(event)
 
         log(TAG) { "Showing home screen for device: ${device.label}" }
         appRepo.goToHomeScreen()

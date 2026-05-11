@@ -166,4 +166,22 @@ class KeepAwakeModuleTest : BaseTest() {
             coVerify(exactly = 1) { wakeLockManager.wakeScreenNow() }
             coVerify(exactly = 0) { wakeLockManager.setWakeLock(false) }
         }
+
+    @Test
+    fun `Disconnected skips wakelock release if device reconnected during dispatcher barrier`() =
+        runTest(UnconfinedTestDispatcher()) {
+            // The dispatcher applies the settle barrier before our Disconnected handle
+            // runs. By the time we read DeviceRepo here, the device may already be
+            // connected again (rapid reconnect). Releasing the wakelock would then
+            // immediately get re-acquired by the new Connected handler — wasteful and
+            // briefly drops the wakelock for no reason.
+            val module = KeepAwakeModule(deviceRepo, wakeLockManager)
+            val reconnectedDev = device(keepAwake = true, actionDelayMs = 0L, connected = true)
+            devicesFlow.value = listOf(reconnectedDev)
+
+            module.handle(DeviceEvent.Disconnected(reconnectedDev))
+
+            coVerify(exactly = 0) { wakeLockManager.setWakeLock(any()) }
+            coVerify(exactly = 0) { wakeLockManager.wakeScreenNow() }
+        }
 }
