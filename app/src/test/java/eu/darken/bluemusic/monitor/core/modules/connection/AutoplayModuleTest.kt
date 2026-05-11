@@ -106,4 +106,13 @@ class AutoplayModuleTest : BaseTest() {
         // Regression guard so future tuning is intentional.
         AutoplayModule.APP_READY_EXTRA_DELAY shouldBe Duration.ofSeconds(2)
     }
+
+    @Test
+    fun `priority is AFTER volume modules - safety guard`() {
+        // CRITICAL: Autoplay must run AFTER volume modules so the user's configured
+        // volume is in effect before any media key is dispatched. Otherwise playback
+        // can briefly play at OS-default level (often louder than the user's target).
+        // BaseVolumeModule.priority = 10 (the EventModule default). Autoplay must be > 10.
+        (module().priority > 10) shouldBe true
+    }
 }
