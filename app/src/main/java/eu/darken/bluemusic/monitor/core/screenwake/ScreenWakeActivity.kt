@@ -4,7 +4,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.MotionEvent
 import android.view.WindowManager
 import eu.darken.bluemusic.common.ui.Activity2
 
@@ -25,6 +24,10 @@ class ScreenWakeActivity : Activity2() {
         // launched (typically the music app) before system display timeout fires.
         // FLAG_KEEP_SCREEN_ON is dropped automatically when the activity finishes.
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        // This activity is visually transparent, so it must not consume the first
+        // tap or swipe after wake. Let touches pass through to the lockscreen or
+        // launched app underneath while the timer controls our own lifetime.
+        window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
     }
 
     override fun onResume() {
@@ -35,13 +38,6 @@ class ScreenWakeActivity : Activity2() {
         // kills the activity under memory pressure — all three drop FLAG_KEEP_SCREEN_ON
         // and let the system display timeout take over.
         Handler(Looper.getMainLooper()).postDelayed(::finish, HOLD_DURATION_MS)
-    }
-
-    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        // The user is interacting now — get out of their way immediately. The host app
-        // they tapped will keep the screen on naturally from here.
-        finish()
-        return true
     }
 
     companion object {
