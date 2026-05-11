@@ -28,7 +28,13 @@ class AutoplayModule @Inject constructor(
     override val tag: String
         get() = TAG
 
-    override val priority: Int = 8
+    // Run AFTER volume modules (priority 10) so the user's configured volume is in effect
+    // before any media key is dispatched. Starting music at an OS-default level and then
+    // ramping volume up while playback is in progress can briefly play loud — a real
+    // safety hazard, especially on headphones. PR1 had lowered this to 8 thinking the
+    // per-module reactionDelay cushion would mask the timing; collapsing those delays in
+    // PR4 exposed the issue, so we move back to the original "Autoplay last" ordering.
+    override val priority: Int = 20
 
     private fun isApplicable(event: DeviceEvent): Boolean =
         event is DeviceEvent.Connected

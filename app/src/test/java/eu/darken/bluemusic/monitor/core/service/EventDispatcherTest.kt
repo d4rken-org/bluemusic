@@ -1176,6 +1176,46 @@ class EventDispatcherTest : BaseTest() {
     }
 
     @Test
+    fun `autoplay-like priority runs strictly after volume-like priority`() = runTest {
+        // Safety invariant: a media-key dispatch must not start before the volume target
+        // is set, otherwise the user can briefly hear playback at the OS-default level
+        // (loud on headphones). Encoded as priority ordering, dispatcher must run lower
+        // priority numbers first.
+        val testScope = this
+        val buds = managedDevice(budsAddress, connected = true, actionDelay = java.time.Duration.ofSeconds(0))
+        devicesFlow.value = listOf(buds)
+
+        val volumeFinishedAt = CompletableDeferred<Long>()
+        val autoplayStartedAt = CompletableDeferred<Long>()
+        val volumeLike = mockConnectionModule(name = "VolumeLike", priority = 10)
+        val autoplayLike = mockConnectionModule(name = "AutoplayLike", priority = 20)
+        coEvery { volumeLike.handle(any()) } coAnswers {
+            // Simulate a volume ramp by virtually-sleeping 5s before completing.
+            kotlinx.coroutines.delay(5000)
+            volumeFinishedAt.complete(testScope.currentTime)
+        }
+        coEvery { autoplayLike.handle(any()) } coAnswers {
+            autoplayStartedAt.complete(testScope.currentTime)
+        }
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(volumeLike, autoplayLike),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        // Autoplay must NOT start before volume has finished.
+        (autoplayStartedAt.await() >= volumeFinishedAt.await()) shouldBe true
+    }
+
+    @Test
     fun `supersede during settle barrier cancels handle`() = runTest {
         // A superseding dispatch for the same address cancels the in-flight cancellable
         // launch. Pre-PR4 the test relied on per-module delays inside handle — now the
