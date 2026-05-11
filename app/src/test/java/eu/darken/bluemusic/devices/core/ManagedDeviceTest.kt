@@ -266,8 +266,8 @@ class ManagedDeviceTest : BaseTest() {
     }
 
     @Test
-    fun `actionDelay defaults to 6s when null`() {
-        create().actionDelay shouldBe Duration.ofSeconds(6)
+    fun `actionDelay defaults to 4s when null`() {
+        create().actionDelay shouldBe Duration.ofSeconds(4)
     }
 
     @Test

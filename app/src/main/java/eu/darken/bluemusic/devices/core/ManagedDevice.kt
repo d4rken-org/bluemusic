@@ -103,10 +103,7 @@ data class ManagedDevice(
         return null
     }
 
-    // 6s is the global settle barrier window for devices without a user-configured override.
-    // Post per-module-delay collapse this is the only "wait for BT route to stabilize"
-    // window most pipelines pay; previously each module independently waited 4s of its own.
-    private val defaultActionDelay: Duration = Duration.ofSeconds(6)
+    private val defaultActionDelay: Duration = Duration.ofSeconds(4)
     private val defaultMonitoringDuration: Duration = Duration.ofSeconds(4)
     private val defaultAdjustmentDelay: Duration = Duration.ofMillis(250)
 
