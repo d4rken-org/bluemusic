@@ -231,37 +231,18 @@ class BaseVolumeModuleTest : BaseTest() {
 
     @Nested
     inner class OwnershipGeneration {
+        // Note: the historical "generation changes during actionDelay" / "generation
+        // stable during actionDelay" tests were removed when per-module reactionDelay
+        // was collapsed into a single dispatcher barrier. Cancellation during the
+        // barrier is now an EventDispatcher concern — see
+        // `EventDispatcherTest.cancellation during the settle barrier propagates`.
+
         @Test
-        fun `generation changes during actionDelay - yields before setInitial`() = runTest(UnconfinedTestDispatcher()) {
+        fun `handle proceeds to setInitial when ownership is stable`() = runTest(UnconfinedTestDispatcher()) {
             val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
             val registry = AudioStreamOwnerRegistry()
             val (mod, _) = createModuleWithDeps(registry, devicesFlow)
-            val dev = realDevice(actionDelayMs = 2000L)
-            devicesFlow.value = listOf(dev)
-
-            registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
-
-            every { volumeTool.getMaxVolume(streamId) } returns maxLevel
-
-            val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
-
-            // During actionDelay, a new device takes ownership
-            advanceTimeBy(1000)
-            registry.onDeviceConnected("NEW:ADDR:00:00:00:01", "NewDevice", SourceDevice.Type.HEADPHONES, 5000L, 1L)
-
-            advanceTimeBy(1500) // past the delay
-            job.join()
-
-            // setInitial should NOT have been called because generation changed
-            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>()) }
-        }
-
-        @Test
-        fun `generation stable during actionDelay - proceeds to setInitial`() = runTest(UnconfinedTestDispatcher()) {
-            val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
-            val registry = AudioStreamOwnerRegistry()
-            val (mod, _) = createModuleWithDeps(registry, devicesFlow)
-            val dev = realDevice(actionDelayMs = 1000L)
+            val dev = realDevice(actionDelayMs = 0L)
             devicesFlow.value = listOf(dev)
 
             registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
@@ -271,12 +252,9 @@ class BaseVolumeModuleTest : BaseTest() {
             coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
 
             val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
-
-            advanceTimeBy(1500) // past actionDelay
             advanceTimeBy(5000) // past monitoring
             job.join()
 
-            // setInitial SHOULD have been called
             coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) }
         }
 

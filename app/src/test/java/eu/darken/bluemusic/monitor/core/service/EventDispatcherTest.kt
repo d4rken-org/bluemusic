@@ -1176,6 +1176,39 @@ class EventDispatcherTest : BaseTest() {
     }
 
     @Test
+    fun `supersede during settle barrier cancels handle`() = runTest {
+        // A superseding dispatch for the same address cancels the in-flight cancellable
+        // launch. Pre-PR4 the test relied on per-module delays inside handle — now the
+        // barrier lives in the dispatcher, so the supersede must cancel the barrier delay
+        // before the module's handle is ever invoked.
+        val buds = managedDevice(budsAddress, connected = true, actionDelay = java.time.Duration.ofSeconds(6))
+        devicesFlow.value = listOf(buds)
+
+        val m = mockConnectionModule(name = "M", priority = 5)
+        coEvery { m.handle(any()) } returns Unit
+
+        val dispatcher = EventDispatcher(
+            appScope = this,
+            dispatcherProvider = asDispatcherProvider(),
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            connectionModuleMap = setOf(m),
+            eventTypeDedupTracker = tracker,
+            ownerRegistry = AudioStreamOwnerRegistry(),
+        )
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        // No time advance — first dispatch is suspended in the 6s barrier
+        dispatcher.dispatch(event(budsAddress, DISCONNECTED))
+        advanceUntilIdle()
+
+        // The CONNECTED handle never runs (cancelled mid-barrier).
+        // The DISCONNECTED handle runs after its own barrier.
+        coVerify(exactly = 0) { m.handle(any<DeviceEvent.Connected>()) }
+        coVerify(exactly = 1) { m.handle(any<DeviceEvent.Disconnected>()) }
+    }
+
+    @Test
     fun `appliesTo throwing does not abort other modules`() = runTest {
         val buds = managedDevice(budsAddress, connected = true, actionDelay = java.time.Duration.ofSeconds(0))
         devicesFlow.value = listOf(buds)

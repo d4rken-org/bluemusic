@@ -56,11 +56,14 @@ class KeepAwakeModule @Inject internal constructor(
             is DeviceEvent.Disconnected -> {
                 // Dispatcher already applied the settle barrier. The cancellable launch
                 // should have been cancelled if a reconnect arrived during the wait, but
-                // double-check the device hasn't been reconnected just in case (cheap).
+                // double-check (cheap). The new Connected handler will hold the wakelock
+                // — only short-circuit if the reconnected device is itself an *active*
+                // keep-awake device. Otherwise fall through so the aggregate check below
+                // can release if no other keepAwake device is around.
                 val devices = deviceRepo.currentDevices()
                 val maybeReconnected = devices.firstOrNull { it.address == device.address }
-                if (maybeReconnected?.isConnected == true) {
-                    log(TAG) { "${device.address} reconnected during disconnect handling; skipping wakelock release." }
+                if (maybeReconnected != null && maybeReconnected.isActive && maybeReconnected.keepAwake) {
+                    log(TAG) { "${device.address} reconnected as active keepAwake device; skipping release." }
                     return
                 }
 

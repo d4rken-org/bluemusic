@@ -6,7 +6,6 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.hasApiLevel
@@ -32,6 +31,10 @@ class DndModeModule @Inject constructor(
         event is DeviceEvent.Connected
             && hasApiLevel(Build.VERSION_CODES.M)
             && event.device.dndMode != null
+            // Include the DND-permission check so the dispatcher doesn't pay the settle
+            // barrier for users with dndMode configured but the permission revoked. The
+            // check is a sync Android NotificationManager query — safe in appliesTo.
+            && permissionHelper.hasNotificationPolicyAccess()
 
     override fun appliesTo(event: DeviceEvent): Boolean = isApplicable(event)
 
@@ -39,11 +42,6 @@ class DndModeModule @Inject constructor(
         if (!isApplicable(event)) return
         val device = event.device
         val mode = device.dndMode ?: return
-
-        if (!permissionHelper.hasNotificationPolicyAccess()) {
-            log(TAG, WARN) { "Skipping DND mode — requirement not met: ACCESS_NOTIFICATION_POLICY (DND access) is not granted" }
-            return
-        }
 
         log(TAG) { "Setting DND mode on connect to $mode for device ${device.label}" }
         dndTool.setDndMode(mode)
