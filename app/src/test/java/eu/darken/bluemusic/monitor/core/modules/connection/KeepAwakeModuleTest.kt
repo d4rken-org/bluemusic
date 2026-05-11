@@ -184,4 +184,35 @@ class KeepAwakeModuleTest : BaseTest() {
             coVerify(exactly = 0) { wakeLockManager.setWakeLock(any()) }
             coVerify(exactly = 0) { wakeLockManager.wakeScreenNow() }
         }
+
+    @Test
+    fun `Disconnected releases wakelock if device reconnected but keepAwake was disabled`() =
+        runTest(UnconfinedTestDispatcher()) {
+            // If the user toggled keepAwake off (or disabled the device) during the
+            // dispatcher barrier, the reconnected device is no longer an active
+            // keep-awake host — the wakelock should be released, not held forever.
+            val module = KeepAwakeModule(deviceRepo, wakeLockManager)
+            val reconnectedButDisabled = device(keepAwake = false, actionDelayMs = 0L, connected = true)
+            devicesFlow.value = listOf(reconnectedButDisabled)
+
+            module.handle(DeviceEvent.Disconnected(reconnectedButDisabled.copy(config = reconnectedButDisabled.config.copy(keepAwake = true))))
+
+            coVerify(exactly = 1) { wakeLockManager.setWakeLock(false) }
+            coVerify(exactly = 0) { wakeLockManager.setWakeLock(true) }
+        }
+
+    @Test
+    fun `Disconnected releases wakelock if device reconnected but no longer enabled`() =
+        runTest(UnconfinedTestDispatcher()) {
+            // device.isActive = isConnected && config.isEnabled. A reconnected-but-disabled
+            // device is not active even with keepAwake=true. Cleanup should release.
+            val module = KeepAwakeModule(deviceRepo, wakeLockManager)
+            val reconnectedDisabled = device(keepAwake = true, actionDelayMs = 0L, connected = true, enabled = false)
+            devicesFlow.value = listOf(reconnectedDisabled)
+
+            module.handle(DeviceEvent.Disconnected(reconnectedDisabled))
+
+            coVerify(exactly = 1) { wakeLockManager.setWakeLock(false) }
+            coVerify(exactly = 0) { wakeLockManager.setWakeLock(true) }
+        }
 }
