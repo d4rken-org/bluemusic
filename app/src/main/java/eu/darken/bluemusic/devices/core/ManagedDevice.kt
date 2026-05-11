@@ -73,8 +73,18 @@ data class ManagedDevice(
         get() = config.connectionAlertType
     val connectionAlertSoundUri: String?
         get() = config.connectionAlertSoundUri
-    val requiresMonitor: Boolean
-        get() = volumeLock || volumeObserving || volumeRateLimiter
+    /**
+     * True when this device requires the foreground service to keep running for ongoing work.
+     *
+     * - Volume monitoring (lock / observing / rate-limiter) needs continuous re-enforcement.
+     * - Keep-awake needs the partial CPU wakelock held until disconnect.
+     *
+     * One-shot features (autoplay, app launch, connection alert, show home screen) are NOT
+     * included — they fire once during the connect dispatch and the service is free to stop
+     * after the post-dispatch idle grace.
+     */
+    val requiresPersistentSession: Boolean
+        get() = volumeLock || volumeObserving || volumeRateLimiter || keepAwake
 
     fun getVolume(type: AudioStream.Type): Float? = when (type) {
         AudioStream.Type.MUSIC -> config.musicVolume

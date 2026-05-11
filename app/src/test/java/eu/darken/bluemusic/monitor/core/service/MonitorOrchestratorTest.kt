@@ -86,12 +86,12 @@ class MonitorOrchestratorTest : BaseTest() {
     private fun managedDevice(
         address: String,
         active: Boolean = true,
-        requiresMonitor: Boolean = false,
+        requiresPersistentSession: Boolean = false,
         monitoringDuration: Duration = Duration.ZERO,
     ): ManagedDevice = mockk(relaxed = true) {
         every { this@mockk.address } returns address
         every { isActive } returns active
-        every { this@mockk.requiresMonitor } returns requiresMonitor
+        every { this@mockk.requiresPersistentSession } returns requiresPersistentSession
         every { this@mockk.monitoringDuration } returns monitoringDuration
         every { label } returns address
     }
@@ -131,8 +131,8 @@ class MonitorOrchestratorTest : BaseTest() {
     // --- Shutdown heuristics ---
 
     @Test
-    fun `requiresMonitor devices keep monitoring alive`() = runTest {
-        val device = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresMonitor = true)
+    fun `requiresPersistentSession devices keep monitoring alive`() = runTest {
+        val device = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresPersistentSession = true)
         devicesFlow.value = listOf(device)
 
         val orchestrator = createOrchestrator()
@@ -150,11 +150,11 @@ class MonitorOrchestratorTest : BaseTest() {
     }
 
     @Test
-    fun `active devices without requiresMonitor - stops after idle grace period`() = runTest {
+    fun `active devices without requiresPersistentSession - stops after idle grace period`() = runTest {
         val device = managedDevice(
             "AA:BB:CC:DD:EE:FF",
             active = true,
-            requiresMonitor = false,
+            requiresPersistentSession = false,
         )
         devicesFlow.value = listOf(device)
 
@@ -183,7 +183,7 @@ class MonitorOrchestratorTest : BaseTest() {
         val device = managedDevice(
             "AA:BB:CC:DD:EE:FF",
             active = true,
-            requiresMonitor = false,
+            requiresPersistentSession = false,
         )
         devicesFlow.value = listOf(device)
 
@@ -216,7 +216,7 @@ class MonitorOrchestratorTest : BaseTest() {
         val device = managedDevice(
             "AA:BB:CC:DD:EE:FF",
             active = true,
-            requiresMonitor = false,
+            requiresPersistentSession = false,
         )
         devicesFlow.value = listOf(device)
 
@@ -266,7 +266,7 @@ class MonitorOrchestratorTest : BaseTest() {
         val device = managedDevice(
             "AA:BB:CC:DD:EE:FF",
             active = true,
-            requiresMonitor = false,
+            requiresPersistentSession = false,
         )
         devicesFlow.value = listOf(device)
 
@@ -322,7 +322,7 @@ class MonitorOrchestratorTest : BaseTest() {
 
     @Test
     fun `device list changes mid-monitoring fires callback with updated list`() = runTest {
-        val device1 = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresMonitor = true)
+        val device1 = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresPersistentSession = true)
         devicesFlow.value = listOf(device1)
 
         val callbackInvocations = mutableListOf<List<ManagedDevice>>()
@@ -334,7 +334,7 @@ class MonitorOrchestratorTest : BaseTest() {
 
         advanceTimeBy(5_000)
 
-        val device2 = managedDevice("11:22:33:44:55:66", active = true, requiresMonitor = true)
+        val device2 = managedDevice("11:22:33:44:55:66", active = true, requiresPersistentSession = true)
         devicesFlow.value = listOf(device1, device2)
         advanceTimeBy(5_000)
 
@@ -353,7 +353,7 @@ class MonitorOrchestratorTest : BaseTest() {
 
         coEvery { ringerModeTransitionHandler.handle(any()) } throws RuntimeException("boom")
 
-        val device = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresMonitor = true)
+        val device = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresPersistentSession = true)
         devicesFlow.value = listOf(device)
 
         val callbackInvocations = mutableListOf<List<ManagedDevice>>()
@@ -380,7 +380,7 @@ class MonitorOrchestratorTest : BaseTest() {
 
         coEvery { volumeEventDispatcher.dispatch(any()) } throws RuntimeException("boom")
 
-        val device = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresMonitor = true)
+        val device = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresPersistentSession = true)
         devicesFlow.value = listOf(device)
 
         val callbackInvocations = mutableListOf<List<ManagedDevice>>()
@@ -406,7 +406,7 @@ class MonitorOrchestratorTest : BaseTest() {
 
         coEvery { eventDispatcher.dispatch(any()) } throws RuntimeException("boom")
 
-        val device = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresMonitor = true)
+        val device = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresPersistentSession = true)
         devicesFlow.value = listOf(device)
 
         val callbackInvocations = mutableListOf<List<ManagedDevice>>()

@@ -66,29 +66,45 @@ class ManagedDeviceTest : BaseTest() {
 
     // endregion
 
-    // region requiresMonitor
+    // region requiresPersistentSession
 
     @Test
-    fun `requiresMonitor - all false`() {
-        create().requiresMonitor shouldBe false
+    fun `requiresPersistentSession - all false`() {
+        create().requiresPersistentSession shouldBe false
     }
 
     @Test
-    fun `requiresMonitor - volumeLock true`() {
+    fun `requiresPersistentSession - volumeLock true`() {
         create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", volumeLock = true))
-            .requiresMonitor shouldBe true
+            .requiresPersistentSession shouldBe true
     }
 
     @Test
-    fun `requiresMonitor - volumeObserving true`() {
+    fun `requiresPersistentSession - volumeObserving true`() {
         create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", volumeObserving = true))
-            .requiresMonitor shouldBe true
+            .requiresPersistentSession shouldBe true
     }
 
     @Test
-    fun `requiresMonitor - volumeRateLimiter true`() {
+    fun `requiresPersistentSession - volumeRateLimiter true`() {
         create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", volumeRateLimiter = true))
-            .requiresMonitor shouldBe true
+            .requiresPersistentSession shouldBe true
+    }
+
+    @Test
+    fun `requiresPersistentSession - keepAwake true`() {
+        create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", keepAwake = true))
+            .requiresPersistentSession shouldBe true
+    }
+
+    @Test
+    fun `requiresPersistentSession - one-shot features alone do NOT flip true`() {
+        create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", autoplay = true))
+            .requiresPersistentSession shouldBe false
+        create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", launchPkgs = listOf("com.example")))
+            .requiresPersistentSession shouldBe false
+        create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", showHomeScreen = true))
+            .requiresPersistentSession shouldBe false
     }
 
     @Test
