@@ -13,7 +13,6 @@ import eu.darken.bluemusic.monitor.core.alert.AlertTool
 import eu.darken.bluemusic.monitor.core.alert.AlertType
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -34,11 +33,14 @@ class ConnectionAlertModule @Inject constructor(
 
     override val priority: Int = 25
 
-    override suspend fun handle(event: DeviceEvent) {
-        if (event !is DeviceEvent.Connected) return
+    private fun isApplicable(event: DeviceEvent): Boolean =
+        event is DeviceEvent.Connected && event.device.connectionAlertType != AlertType.NONE
 
+    override fun appliesTo(event: DeviceEvent): Boolean = isApplicable(event)
+
+    override suspend fun handle(event: DeviceEvent) {
+        if (!isApplicable(event)) return
         val device = event.device
-        if (device.connectionAlertType == AlertType.NONE) return
 
         if (!upgradeRepo.isPro()) {
             log(TAG) { "Skipping connection alert - requires Pro version" }
@@ -51,8 +53,6 @@ class ConnectionAlertModule @Inject constructor(
 
         coroutineScope {
             activeAlertJobs[device.address] = launch {
-                delayForReactionDelay(event)
-
                 alertTool.playAlert(device.connectionAlertType, device.connectionAlertSoundUri)
                 log(TAG) { "Played connection alert (type=${device.connectionAlertType}) for device ${device.label}" }
             }

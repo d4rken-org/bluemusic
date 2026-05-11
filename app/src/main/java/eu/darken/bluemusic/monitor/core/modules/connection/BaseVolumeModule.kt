@@ -16,7 +16,6 @@ import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.audio.percentageToLevel
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import kotlinx.coroutines.delay
@@ -39,13 +38,16 @@ abstract class BaseVolumeModule(
 
     open suspend fun unmetRequirement(): String? = null
 
+    private fun isApplicable(event: DeviceEvent): Boolean =
+        event is DeviceEvent.Connected && fromFloat(event.device.getVolume(type)) != null
+
+    override fun appliesTo(event: DeviceEvent): Boolean = isApplicable(event)
+
     override suspend fun handle(event: DeviceEvent) {
-        if (event !is DeviceEvent.Connected) return
+        if (!isApplicable(event)) return
         val device = event.device
-        val volumeFloat = device.getVolume(type)
-        val volumeMode = fromFloat(volumeFloat)
+        val volumeMode = fromFloat(device.getVolume(type)) ?: return
         log(tag) { "Desired $type volume is $volumeMode" }
-        if (volumeMode == null) return
 
         val unmet = unmetRequirement()
         if (unmet != null) {
@@ -53,26 +55,21 @@ abstract class BaseVolumeModule(
             return
         }
 
-        val generationAtStart = ownerRegistry.ownershipGeneration()
-
         val streamId = device.getStreamId(type)
         val token = observationGate.suppress(streamId)
         try {
-            delayForReactionDelay(event)
-
-            if (ownerRegistry.ownershipGeneration() != generationAtStart) {
-                log(tag, INFO) { "Ownership changed during actionDelay, yielding" }
-                return
-            }
-
+            // The dispatcher has already paid the actionDelay barrier before invoking us.
+            // Re-read the device config in case the user updated it between dispatch and
+            // now, and snapshot ownership generation as the baseline for monitor() below.
             val freshDevice = deviceRepo.getDevice(device.address) ?: run {
-                log(tag, INFO) { "Device ${device.address} no longer exists after delay, yielding" }
+                log(tag, INFO) { "Device ${device.address} no longer exists, yielding" }
                 return
             }
             val freshVolumeMode = fromFloat(freshDevice.getVolume(type)) ?: run {
-                log(tag, INFO) { "Device ${device.address} volume no longer configured after delay, yielding" }
+                log(tag, INFO) { "Device ${device.address} volume no longer configured, yielding" }
                 return
             }
+            val generationAtStart = ownerRegistry.ownershipGeneration()
 
             setInitial(freshDevice, freshVolumeMode)
 
@@ -131,9 +128,11 @@ abstract class BaseVolumeModule(
      * - Writes from other VolumeTool callers (user slider drag) → yield and exit.
      * - Our own re-enforcement landing → ignore (event.newVolume == targetLevel).
      *
-     * Known limitation: if a user drags during the actionDelay window (before
+     * Known limitation: if a user drags during the dispatcher's settle barrier (before
      * setInitial even runs), setInitial will overwrite them with the connect-time
-     * snapshot. Fixing that would require re-reading DeviceRepo after the delay.
+     * snapshot. The handle path re-reads DeviceRepo after the barrier so a user's
+     * config change is picked up, but a transient hardware-volume drag during the
+     * barrier is still clobbered.
      */
     protected open suspend fun monitor(
         device: ManagedDevice,

@@ -14,8 +14,9 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
+import eu.darken.bluemusic.monitor.core.modules.SettlePolicy
 import kotlinx.coroutines.delay
+import java.time.Duration
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -29,20 +30,38 @@ class AutoplayModule @Inject constructor(
 
     override val priority: Int = 8
 
+    private fun isApplicable(event: DeviceEvent): Boolean =
+        event is DeviceEvent.Connected
+            && event.device.autoplay
+            && event.device.autoplayKeycodes.isNotEmpty()
+
+    override fun appliesTo(event: DeviceEvent): Boolean = isApplicable(event)
+
+    /**
+     * Wait an extra [APP_READY_EXTRA_DELAY] beyond the dispatcher's settle barrier when
+     * [event] is Connected and the user has configured a non-zero actionDelay. Previously
+     * Autoplay accidentally inherited cushion from earlier phases' stacked delays; with
+     * the per-module delays collapsed into a single barrier that cushion is gone, so the
+     * launched media app may not be foreground-ready to receive the media key when the
+     * barrier ends. Users who explicitly configured actionDelay=0 opt into no waiting at
+     * all and don't get the extra wait either.
+     */
+    override fun settlePolicy(event: DeviceEvent): SettlePolicy {
+        if (event !is DeviceEvent.Connected) return SettlePolicy.AfterDeviceSettle
+        return if (event.device.actionDelay > Duration.ZERO) {
+            SettlePolicy.AfterDeviceSettlePlus(APP_READY_EXTRA_DELAY)
+        } else {
+            SettlePolicy.AfterDeviceSettle
+        }
+    }
+
     override suspend fun handle(event: DeviceEvent) {
-        if (event !is DeviceEvent.Connected) return
+        if (!isApplicable(event)) return
 
         val device = event.device
-        if (!device.autoplay) return
         log(TAG) { "Autoplay enabled (playing=${audioManager.isMusicActive})." }
 
         val autoplayKeycodes = device.autoplayKeycodes
-        if (autoplayKeycodes.isEmpty()) {
-            log(TAG, WARN) { "Autoplay enabled but no keycodes configured for device ${device.label}" }
-            return
-        }
-
-        delayForReactionDelay(event)
 
         // Send all keycodes in sequence
         for (keycode in autoplayKeycodes) {
@@ -85,5 +104,9 @@ class AutoplayModule @Inject constructor(
 
     companion object {
         private val TAG = logTag("Monitor", "Autoplay", "Module")
+
+        // Approximate time for a launched media app to be foreground-ready to receive
+        // KEYCODE_MEDIA_PLAY. Bump if "Plays 1/3 of the time" reports return.
+        internal val APP_READY_EXTRA_DELAY: Duration = Duration.ofSeconds(2)
     }
 }

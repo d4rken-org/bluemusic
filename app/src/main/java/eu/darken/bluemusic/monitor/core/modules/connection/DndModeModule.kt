@@ -14,7 +14,6 @@ import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.monitor.core.audio.DndTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -29,27 +28,25 @@ class DndModeModule @Inject constructor(
 
     override val priority: Int = 3 // Before volume modules
 
-    override suspend fun handle(event: DeviceEvent) {
-        if (event !is DeviceEvent.Connected) return
+    private fun isApplicable(event: DeviceEvent): Boolean =
+        event is DeviceEvent.Connected
+            && hasApiLevel(Build.VERSION_CODES.M)
+            && event.device.dndMode != null
 
-        if (!hasApiLevel(Build.VERSION_CODES.M)) {
-            log(TAG) { "Skipping DND mode handling - requires API 23+" }
+    override fun appliesTo(event: DeviceEvent): Boolean = isApplicable(event)
+
+    override suspend fun handle(event: DeviceEvent) {
+        if (!isApplicable(event)) return
+        val device = event.device
+        val mode = device.dndMode ?: return
+
+        if (!permissionHelper.hasNotificationPolicyAccess()) {
+            log(TAG, WARN) { "Skipping DND mode — requirement not met: ACCESS_NOTIFICATION_POLICY (DND access) is not granted" }
             return
         }
 
-        val device = event.device
-
-        device.dndMode?.let { mode ->
-            if (!permissionHelper.hasNotificationPolicyAccess()) {
-                log(TAG, WARN) { "Skipping DND mode — requirement not met: ACCESS_NOTIFICATION_POLICY (DND access) is not granted" }
-                return
-            }
-
-            delayForReactionDelay(event)
-
-            log(TAG) { "Setting DND mode on connect to $mode for device ${device.label}" }
-            dndTool.setDndMode(mode)
-        }
+        log(TAG) { "Setting DND mode on connect to $mode for device ${device.label}" }
+        dndTool.setDndMode(mode)
     }
 
     @Module @InstallIn(SingletonComponent::class)

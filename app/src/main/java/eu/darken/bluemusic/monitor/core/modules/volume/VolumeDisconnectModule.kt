@@ -22,6 +22,7 @@ import eu.darken.bluemusic.monitor.core.audio.levelToPercentage
 import eu.darken.bluemusic.monitor.core.audio.percentageToLevel
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
+import eu.darken.bluemusic.monitor.core.modules.SettlePolicy
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -38,15 +39,22 @@ class VolumeDisconnectModule @Inject constructor(
     override val priority: Int = 1 // Run early to capture volumes before other modules
     override val cancellable: Boolean = false
 
+    private fun isApplicable(event: DeviceEvent): Boolean =
+        event is DeviceEvent.Disconnected && event.device.volumeSaveOnDisconnect
+
+    override fun appliesTo(event: DeviceEvent): Boolean = isApplicable(event)
+
+    /**
+     * Always runs immediately — capturing the pre-reroute volume snapshot needs to happen
+     * before the BT route changes; waiting the settle barrier would defeat the purpose.
+     */
+    override fun settlePolicy(event: DeviceEvent): SettlePolicy = SettlePolicy.Immediate
+
     override suspend fun handle(event: DeviceEvent) {
-        if (event !is DeviceEvent.Disconnected) return
+        if (!isApplicable(event)) return
+        event as DeviceEvent.Disconnected
 
         val device = event.device
-
-        if (!device.volumeSaveOnDisconnect) {
-            log(TAG, VERBOSE) { "Device ${device.label} does not have 'save on disconnect' enabled" }
-            return
-        }
 
         val disconnectResult = event.disconnectResult
         if (disconnectResult != null && !disconnectResult.wasInOwnerGroup) {

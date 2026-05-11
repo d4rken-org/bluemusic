@@ -412,10 +412,13 @@ class BaseVolumeModuleTest : BaseTest() {
             val registry = AudioStreamOwnerRegistry()
             val (mod, _) = createModuleWithDeps(registry, devicesFlow)
 
-            val initialDev = realDevice(musicVolume = 0.44f, actionDelayMs = 1000L)
-            val updatedDev = realDevice(musicVolume = 0.8f, actionDelayMs = 1000L)
-            devicesFlow.value = listOf(initialDev)
-
+            // The dispatcher applies actionDelay outside handle now. Inside handle, the
+            // module still re-reads DeviceRepo so a config change between event capture
+            // and module run (e.g. the user edited target volume during the dispatcher's
+            // settle barrier) is honored.
+            val initialDev = realDevice(musicVolume = 0.44f, actionDelayMs = 0L)
+            val updatedDev = realDevice(musicVolume = 0.8f, actionDelayMs = 0L)
+            devicesFlow.value = listOf(updatedDev) // simulates: edit landed during dispatcher barrier
             registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
@@ -423,38 +426,27 @@ class BaseVolumeModuleTest : BaseTest() {
             coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
 
             val job = launch { mod.handle(DeviceEvent.Connected(initialDev)) }
-
-            // During actionDelay, user changes target volume
-            advanceTimeBy(500)
-            devicesFlow.value = listOf(updatedDev)
-
-            advanceTimeBy(1500) // Past delay
             advanceTimeBy(5000) // Past monitor
             job.join()
 
-            // setInitial should use the re-resolved volume (0.8), not original (0.44)
+            // setInitial should use the re-resolved volume (0.8), not the event's snapshot (0.44)
             coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, 0.8f, any(), any()) }
             coVerify(exactly = 0) { volumeTool.changeVolume(streamId, 0.44f, any(), any()) }
         }
 
         @Test
-        fun `device deleted during actionDelay - yields`() = runTest(UnconfinedTestDispatcher()) {
+        fun `device deleted before handle runs - yields`() = runTest(UnconfinedTestDispatcher()) {
             val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
             val registry = AudioStreamOwnerRegistry()
             val (mod, _) = createModuleWithDeps(registry, devicesFlow)
 
-            val dev = realDevice(actionDelayMs = 1000L)
-            devicesFlow.value = listOf(dev)
+            val dev = realDevice(actionDelayMs = 0L)
+            devicesFlow.value = emptyList() // simulates: device deleted during dispatcher barrier
             registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
 
             val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
-
-            // Device removed during actionDelay
-            advanceTimeBy(500)
-            devicesFlow.value = emptyList()
-
             advanceTimeBy(1500)
             job.join()
 
@@ -466,24 +458,19 @@ class BaseVolumeModuleTest : BaseTest() {
         }
 
         @Test
-        fun `volume unconfigured after delay - yields`() = runTest(UnconfinedTestDispatcher()) {
+        fun `volume unconfigured before handle runs - yields`() = runTest(UnconfinedTestDispatcher()) {
             val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
             val registry = AudioStreamOwnerRegistry()
             val (mod, _) = createModuleWithDeps(registry, devicesFlow)
 
-            val dev = realDevice(musicVolume = 0.44f, actionDelayMs = 1000L)
-            val devNoVolume = realDevice(musicVolume = null, actionDelayMs = 1000L)
-            devicesFlow.value = listOf(dev)
+            val dev = realDevice(musicVolume = 0.44f, actionDelayMs = 0L)
+            val devNoVolume = realDevice(musicVolume = null, actionDelayMs = 0L)
+            devicesFlow.value = listOf(devNoVolume) // simulates: user disabled volume during barrier
             registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
 
             val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
-
-            // User disables music volume during delay
-            advanceTimeBy(500)
-            devicesFlow.value = listOf(devNoVolume)
-
             advanceTimeBy(1500)
             job.join()
 

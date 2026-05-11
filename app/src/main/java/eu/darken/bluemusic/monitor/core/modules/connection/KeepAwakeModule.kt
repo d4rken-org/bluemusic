@@ -13,7 +13,7 @@ import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.monitor.core.WakeLockManager
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
-import eu.darken.bluemusic.monitor.core.modules.delayForReactionDelay
+import eu.darken.bluemusic.monitor.core.modules.SettlePolicy
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -28,9 +28,23 @@ class KeepAwakeModule @Inject internal constructor(
 
     override val priority: Int = 3
 
+    override fun appliesTo(event: DeviceEvent): Boolean = event.device.keepAwake
+
+    /**
+     * On Connected: wake the screen immediately, before the settle barrier — the user
+     * expects the screen to wake the moment the device connects, not 6 seconds later.
+     * On Disconnected: wait the barrier so a rapid reconnect (cancellable supersede)
+     * has the chance to interrupt before we release the wakelock.
+     */
+    override fun settlePolicy(event: DeviceEvent): SettlePolicy = when (event) {
+        is DeviceEvent.Connected -> SettlePolicy.Immediate
+        is DeviceEvent.Disconnected -> SettlePolicy.AfterDeviceSettle
+        else -> SettlePolicy.AfterDeviceSettle
+    }
+
     override suspend fun handle(event: DeviceEvent) {
+        if (!appliesTo(event)) return
         val device = event.device
-        if (!device.keepAwake) return
 
         when (event) {
             is DeviceEvent.Connected -> {
@@ -40,9 +54,17 @@ class KeepAwakeModule @Inject internal constructor(
             }
 
             is DeviceEvent.Disconnected -> {
-                delayForReactionDelay(event)
-                val deviceMap = deviceRepo.currentDevices().associateBy { it.address }
-                val hasAnyKeepAwakeDevice = deviceMap.values.any { d -> d.keepAwake && d.isActive }
+                // Dispatcher already applied the settle barrier. The cancellable launch
+                // should have been cancelled if a reconnect arrived during the wait, but
+                // double-check the device hasn't been reconnected just in case (cheap).
+                val devices = deviceRepo.currentDevices()
+                val maybeReconnected = devices.firstOrNull { it.address == device.address }
+                if (maybeReconnected?.isConnected == true) {
+                    log(TAG) { "${device.address} reconnected during disconnect handling; skipping wakelock release." }
+                    return
+                }
+
+                val hasAnyKeepAwakeDevice = devices.any { d -> d.keepAwake && d.isActive }
                 log(TAG) { "Device disconnected with keep awake: ${device.address}/${device.label}" }
                 if (!hasAnyKeepAwakeDevice) {
                     log(TAG) { "No more devices need keep awake, releasing wakelock" }
