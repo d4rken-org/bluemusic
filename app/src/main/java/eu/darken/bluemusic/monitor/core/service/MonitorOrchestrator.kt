@@ -106,7 +106,7 @@ class MonitorOrchestrator @Inject constructor(
                 log(TAG) { "monitor: Currently active devices: ${activeDevices.map { "${it.address}/${it.label}" }}" }
                 onActiveDevicesChanged(activeDevices)
 
-                val stayActive = activeDevices.any { it.requiresMonitor }
+                val stayActive = activeDevices.any { it.requiresPersistentSession }
 
                 when {
                     activeDevices.isNotEmpty() && stayActive -> {

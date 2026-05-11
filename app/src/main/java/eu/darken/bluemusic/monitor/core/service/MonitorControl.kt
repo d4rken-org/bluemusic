@@ -32,14 +32,14 @@ class MonitorControl @Inject constructor(
         deviceRepo.devices
             .map { devices ->
                 devices.any { device ->
-                    device.isConnected && device.requiresMonitor
+                    device.isConnected && device.requiresPersistentSession
                 }
             }
             .distinctUntilChanged()
             .setupCommonEventHandlers(TAG) { "Device monitor" }
-            .onEach { requiresMonitor ->
-                if (requiresMonitor) {
-                    log(TAG) { "Connected device requires monitor, starting monitor service" }
+            .onEach { needsService ->
+                if (needsService) {
+                    log(TAG) { "Connected device needs persistent session, starting monitor service" }
                     startMonitor()
                 }
             }
