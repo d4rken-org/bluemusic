@@ -63,7 +63,7 @@
     <string name="devices_device_config_visible_adjustments_label">Visible adjustments</string>
     <string name="devices_device_config_visible_adjustments_desc">Show the system\'s volume window while this app makes adjustments for this device.</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
-    <string name="devices_device_config_keep_awake_desc">Try to keep the device awake while connected. Behavior may vary depending on Android version.</string>
+    <string name="devices_device_config_keep_awake_desc">Keeps the app awake in the background while connected so volume control keeps working, and wakes the screen when a device connects (needs the \"Display over other apps\" permission). On newer Android versions the screen may still turn off on its own.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
     <string name="devices_device_config_volume_observe_desc">Stay active while this device is connected and save volume changes that have not been caused by this app.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Save volume on disconnect</string>
