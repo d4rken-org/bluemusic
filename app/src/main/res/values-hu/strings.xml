@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Látható beállítások</string>
     <string name="devices_device_config_visible_adjustments_desc">A rendszer hangerő ablakának megjelenítése, miközben ez az alkalmazás beállításokat végez az eszközön.</string>
     <string name="devices_device_config_keep_awake_label">Ébren tartás</string>
-    <string name="devices_device_config_keep_awake_desc">Tartsd a készüléket ébren, miközben az eszköz csatlakoztatva van. A viselkedés az Android verziótól függően eltérő lehet.</string>
+    <string name="devices_device_config_keep_awake_desc">Az alkalmazás ébren tartása a háttérben csatlakozáskor, hogy a hangerő-szabályozás működjön, és felébreszti a képernyőt, amikor egy eszköz csatlakozik (szükséges a \"Megjelenítés más alkalmazások felett\" engedély). Az újabb Android-verziókon a képernyő továbbra is kikapcsolódhat.</string>
     <string name="devices_device_config_volume_observe_label">Változások megfigyelése</string>
     <string name="devices_device_config_volume_observe_desc">Maradj aktív, amíg ez az eszköz csatlakoztatva van, és mentsd a hangerőváltozásokat, amelyeket nem ez az alkalmazás okozott.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Hangerő mentése lecsatlakozáskor</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Akkumulátor optimalizálás</string>
     <string name="battery_optimization_hint_message">Az akkumulátor optimalizálás engedélyezett és megakadályozhatja a megfelelő működést. Fontold meg a letiltásukat.</string>
     <string name="battery_optimization_fix_action">Optimalizálás letiltása</string>
-    <string name="android10_applaunch_hint_title">Alkalmazás indítási engedély</string>
-    <string name="android10_applaunch_hint_message">Az Android 10 külön engedélyt igényel az alkalmazások háttérből való indításához. Add meg a &quot;Megjelenítés más alkalmazások felett&quot; engedélyt.</string>
+    <string name="android10_applaunch_hint_title">Megjelenítés más alkalmazások felett engedély</string>
+    <string name="android10_applaunch_hint_message">Az Android 10+ verzióhoz speciális engedély szükséges az alkalmazások indításához, a kezdőképernyő megjelenítéséhez vagy a képernyő felébresztéséhez háttérből csatlakozáskor. Add meg a \"Megjelenítés más alkalmazások felett\" engedélyt.</string>
     <string name="notification_permission_hint_title">Értesítési engedély</string>
     <string name="notification_permission_hint_message">Add meg az értesítési engedélyt az állapotfrissítések látásához hangerőbeállításkor.</string>
     <string name="dnd_access_hint_title">Ne zavarj hozzáférés</string>

@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">可見調整</string>
     <string name="devices_device_config_visible_adjustments_desc">切換在裝置卡片上顯示哪些調整選項</string>
     <string name="devices_device_config_keep_awake_label">保持喚醒</string>
-    <string name="devices_device_config_keep_awake_desc">這個裝置連線時保持螢幕始終亮起。</string>
+    <string name="devices_device_config_keep_awake_desc">在連線時保持應用程式在背景運作，讓音量控制持續有效，並在裝置連線時喚醒螢幕（需要「顯示在其他應用程式上層」權限）。在較新的 Android 版本上，螢幕可能仍會自動關閉。</string>
     <string name="devices_device_config_volume_observe_label">觀察變更</string>
     <string name="devices_device_config_volume_observe_desc">在此裝置連接時保持活躍，並儲存非由這個應用程式引起的音量變更。</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">斷線時儲存音量</string>
@@ -391,8 +391,8 @@
     <string name="battery_optimization_hint_title">電池最佳化</string>
     <string name="battery_optimization_hint_message">電池最佳化已啟用，可能會影響正常運作。請考慮停用它們。</string>
     <string name="battery_optimization_fix_action">停用最佳化</string>
-    <string name="android10_applaunch_hint_title">應用程式啟動權限</string>
-    <string name="android10_applaunch_hint_message">Android 10 需要特殊權限才能從背景啟動應用程式。請授予「顯示在其他應用程式上層」權限。</string>
+    <string name="android10_applaunch_hint_title">顯示在應用程式上層的權限</string>
+    <string name="android10_applaunch_hint_message">Android 10 以上版本需要特殊權限才能啟動應用程式、顯示主畫面或在背景連線時喚醒螢幕。請授予「顯示在其他應用程式上層」權限。</string>
     <string name="notification_permission_hint_title">通知權限</string>
     <string name="notification_permission_hint_message">授予通知權限以在調整音量時查看狀態更新。</string>
     <string name="dnd_access_hint_title">請勿打擾存取權限</string>

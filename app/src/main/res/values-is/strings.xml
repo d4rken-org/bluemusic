@@ -38,14 +38,14 @@
     <string name="devices_device_config_rename_device_desc">Endurnefnir þetta tæki í þessu forriti og ef mögulegt er, í kerfinu.</string>
     <string name="devices_device_config_rename_device_action">Endurnefna</string>
     <string name="devices_device_config_enabled_label">Virkt</string>
-    <string name="devices_device_config_enabled_desc">Bregaðast við þessu tæki þegar það tengist</string>
+    <string name="devices_device_config_enabled_desc">Bregaðast við þessu tæki þegar það er tengt</string>
     <string name="devices_device_config_section_timing_label">Tímasetning</string>
     <string name="devices_device_config_monitoring_duration_label">Eftirlitslengd</string>
     <string name="devices_device_config_monitoring_duration_desc">Lengd í millisekúndum, eftir að leiðréttingar hafa verið gerðar, þar sem allar frekari hljóðstyrkbreytingar verða læstar.</string>
     <string name="devices_device_config_adjustment_delay_label">Leiðréttingartöf</string>
     <string name="devices_device_config_adjustment_delay_desc">Töf í millisekúndum milli hverrar hljóðstyrksleiðréttingar. Töf í 0ms þýðir að hljóðstyrkur er stilltur um leið og tækið tengist.</string>
     <string name="devices_device_config_reaction_delay_label">Viðbragðstöf</string>
-    <string name="devices_device_config_reaction_delay_desc">Tafir í millisekúndur þar til þetta forrit bregst við þessu tæki.</string>
+    <string name="devices_device_config_reaction_delay_desc">Tafir í millisekúndum þar til þetta forrit bregst við þessu tæki.</string>
     <string name="devices_device_config_section_reaction_label">Viðbragð</string>
     <string name="devices_device_config_launch_app_label">Ræsa forrit</string>
     <string name="devices_device_config_launch_app_desc">Ræsir forrit þegar þetta tæki tengist.</string>
@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Sýnilegar leiðréttingar</string>
     <string name="devices_device_config_visible_adjustments_desc">Sýndu hljóðstyrksglugga kerfisins á meðan þetta forrit gerðir leiðréttingar fyrir þetta tæki.</string>
     <string name="devices_device_config_keep_awake_label">Halda vakandi</string>
-    <string name="devices_device_config_keep_awake_desc">Reyndu að halda tækinu vakandi meðan það er tengt. Hegðun getur verið breytileg eftir Android útgáfu.</string>
+    <string name="devices_device_config_keep_awake_desc">Heldur appinu vakandi í bakgrunni meðan tækið er tengt svo hljóðstyrksstýring virkar áfram, og vekur skjáinn þegar tæki tengist („Birta yfir öðrum öppum“ heimild). Á nýrri Android-útgáfum gæti skjárinn samt slokknað af sjálfu sér.</string>
     <string name="devices_device_config_volume_observe_label">Fylgjast með breytingum</string>
     <string name="devices_device_config_volume_observe_desc">Vertu virkur meðan þetta tæki er tengt og vistaðu hljóðstyrkbreytingar sem þetta forrit olli ekki.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Vista hljóðstyrk við aftengingu</string>
@@ -208,19 +208,19 @@
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Staður til að hanga og spyrja spurninga.</string>
     <!-- Settings/Acks-->
-    <string name="settings_acknowledgements_label">Þakkir</string>
+    <string name="settings_acknowledgements_label">Þakkir fá</string>
     <string name="settings_acknowledgements_description">Inneignir, leyfi og sérstakar þakkir</string>
     <string name="settings_acks_translation_header">Þýðing</string>
     <string name="settings_acks_translators_title">Þýðendur</string>
     <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">Þyða BVM</string>
-    <string name="settings_acks_translate_desc">Hjálaðu til að þyða BVM yfir á þit tungumál</string>
+    <string name="settings_acks_translate_title">Þýða BVM</string>
+    <string name="settings_acks_translate_desc">Hjálpaðu við þýðingu á BVM yfir á þitt tungumál</string>
     <string name="settings_acks_thanks_header">Takk</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
-    <string name="settings_acks_crowdin_desc">Fyrir stuðning við þyðingar á opnum hugbúnaðarverkefnum</string>
+    <string name="settings_acks_crowdin_desc">Fyrir stuðning við þýðingar á opnum hugbúnaðarverkefnum</string>
     <string name="settings_licenses_label">Leyfi</string>
     <string name="settings_translation_label">Þýðing</string>
-    <string name="settings_translation_desc">Hjálaðu til að þyða forritið yfir á uppáhaldstungumál þit</string>
+    <string name="settings_translation_desc">Hjálpaðu við að þýða forritið yfir á uppáhaldstungumálið þitt</string>
     <string name="settings_sponsor_development_title">Styrkja þróun</string>
     <string name="settings_sponsor_development_summary">Verðu styrktarmaður og gera áframhaldandi þroðun mögulega.</string>
     <string name="settings_privacy_policy_label">Persónuverndarstefna</string>
@@ -246,14 +246,14 @@
     <!-- Debug Log -->
     <string name="debug_notification_channel_label">Villuleit tilkynningar</string>
     <string name="debug_log_consent_title">Villuleitarskrá</string>
-    <string name="debug_log_consent_explanation">Þessi eiginleiki skráir allt sem forritið er að gera í deilanlega skrá. Búna skráin inniheldur viðkvæmar upplýsingar (t.d. skráarnöfn og uppsett forrit). Deildu henni aðeins með áreiðanlegum aðilum (t.d. þróunaraðila sem er að leysa vandamál).</string>
-    <string name="debug_log_recording_progress">Skrái villuleit annál</string>
+    <string name="debug_log_consent_explanation">Þessi eiginleiki skráir allt sem forritið gerir í deilanlega skrá. Skráin inniheldur viðkvæmar upplýsingar (t.d. skráarnöfn og uppsett forrit). Deildu henni aðeins með traustum aðilum (t.d. þróunaraðila sem er að leysa vandamál).</string>
+    <string name="debug_log_recording_progress">Skrái villuleitarannál</string>
     <string name="debug_log_record_action">Skrá</string>
     <string name="debug_log_stop_action">Stoppa upptöku</string>
     <string name="debug_log_screen_title">Villuletarskráningartaeki</string>
     <string name="debug_log_screen_subtitle">Skoðaðu og deildu skráðri villuletarskrá þíinni</string>
     <string name="debug_log_screen_sensitive_title">Viðkvæmar upplýsingar</string>
-    <string name="debug_log_screen_sensitive_information_message">Búna skráin inniheldur viðkvæmar upplýsingar (t.d. skráarnöfn og uppsett forrit). Deildu henni aðeins með áreiðanlegum aðilum.</string>
+    <string name="debug_log_screen_sensitive_information_message">Skráin inniheldur viðkvæmar upplýsingar (t.d. skráarnöfn og uppsett forrit). Deildu henni aðeins með traustum aðilum.</string>
     <string name="debug_log_screen_session_path_label">Slað villuletarlotu</string>
     <string name="debug_log_screen_log_files_label">Skráarskrár</string>
     <plurals name="debug_log_screen_log_files_ready">
@@ -263,7 +263,7 @@
     <string name="debug_log_screen_discard_action">Henda</string>
     <string name="debug_log_screen_keep_action">Geyma</string>
     <string name="debug_log_compressing_label">ÞJappa…</string>
-    <string name="debug_log_file_label">Skráð annáll skrá</string>
+    <string name="debug_log_file_label">Skráð villuleitarskrá</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Skrá send?</string>
     <string name="support_debuglog_sent_message">Ef þú hefur sent villuletarskrána má eyða henni af tækinu. Viltu fjarlægja hana?</string>
@@ -319,7 +319,7 @@
     <string name="label_notification_channel_status">Staða</string>
     <string name="action_set">Stilla</string>
     <string name="action_cancel">Hætta við</string>
-    <string name="label_invalid_input">Ógild inntak</string>
+    <string name="label_invalid_input">Ógilt inntak</string>
     <string name="action_reset">Endurstilla</string>
     <string name="label_no_connected_devices">Engin tæki tengd</string>
     <string name="label_status_idle">Aðgerðarlægur</string>
@@ -353,7 +353,7 @@
     <string name="label_welcome">Velkomin</string>
     <string name="description_intro_contact">Ekki hika við að hafa samband ef þú hefur spurningar eða jafnvel hugmynd að nýj um eiginleika.</string>
     <string name="label_translation">Þýðing</string>
-    <string name="description_help_translate">Hjálaðu mér að gera þetta forrit tiltækt á öðrum tungumálum.</string>
+    <string name="description_help_translate">Hjálpaðu mér við að gera þetta forrit tiltækt á öðrum tungumálum.</string>
     <string name="label_device_speaker">Hátalari tækis</string>
     <string name="label_keyevent_playpause">Spila-hlé</string>
     <string name="label_keyevent_play">Spila</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Rafhlöðufínstilling</string>
     <string name="battery_optimization_hint_message">Rafhlöðufínstillingar eru virkar og geta komið í veg fyrir rétta virkni. Íhugið að slökkva á þem.</string>
     <string name="battery_optimization_fix_action">Slökkva á fínstillingum</string>
-    <string name="android10_applaunch_hint_title">Leyfi til að ræsa forrit</string>
-    <string name="android10_applaunch_hint_message">Android 10 krefst sérstaks leyfis til að ræsa forrit eða sýna heimaskjáinn frá bakgrunni. Veittu leyfin \"Birta yfir önnur forrit\".</string>
+    <string name="android10_applaunch_hint_title">Birta yfir öðrum öppum heimild</string>
+    <string name="android10_applaunch_hint_message">Android 10+ þarf sérstaka heimild til að ræsa öpp, sýna heimaskjáinn eða vekja skjáinn úr bakgrunni þegar tæki tengist. Veittu „Birta yfir öðrum öppum“ heimild.</string>
     <string name="notification_permission_hint_title">Tilkynningaleyfi</string>
     <string name="notification_permission_hint_message">Veittu tilkynningaleyfi til að sjá stöðuuppfærslur þgar hljóðstyrkar eru stilltir.</string>
     <string name="dnd_access_hint_title">Aðgangur að „Trufla ekki“</string>

@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Aggiustamentos visìbbiles</string>
     <string name="devices_device_config_visible_adjustments_desc">Amostra sa finestra de volume de su sistema mentre s\'app fàchet aggiustamentos pro custu dispositivu.</string>
     <string name="devices_device_config_keep_awake_label">Teni in veglia</string>
-    <string name="devices_device_config_keep_awake_desc">Prova a tènnere su dispositivu in veglia mentre est connètidu. Su cumportamentu podet variare a segunda de sa versione de Android.</string>
+    <string name="devices_device_config_keep_awake_desc">Mantènet l\'app dischida in su background mentras est connetída gosi su controlèu de su volumene sighit a funtzionare, e ischidat sa schermida cando unu dispositivu si connectat (necessítat sa permissione \"Mustrare subra de áteras apps\"). In sas versiones prus noas de Android sa schermida podet galu si studare a solía.</string>
     <string name="devices_device_config_volume_observe_label">Osserva sos cambios</string>
     <string name="devices_device_config_volume_observe_desc">Remàni ativu mentre custu dispositivu est connètidu e sàlva sos cambios de volume chi non sunt istados causàdos dae s\'app.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Sàlva su volume a disconnessione</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Ottimizatzione de bateria</string>
     <string name="battery_optimization_hint_message">Sas ottimizatziones de bateria sunt abilitàdas e podent prevènnere su funtzionamentu currètu. Cunsìdera de disabilitarelas.</string>
     <string name="battery_optimization_fix_action">Disabilita sas ottimizatziones</string>
-    <string name="android10_applaunch_hint_title">Permissu de làntziu de s\'app</string>
-    <string name="android10_applaunch_hint_message">Android 10 richièdet unu permissu spetziale pro lantzare apps o amostare sa schermata printzipale dae su background. Contzèddi su permissu &quot;Amostra subra àteras apps&quot;.</string>
+    <string name="android10_applaunch_hint_title">Permissione de mustrare subra de apps</string>
+    <string name="android10_applaunch_hint_message">Android 10+ at bisongiu de una permissione speciale pro aviare apps, mustrare sa pantalla printzipale o ischidare sa schermida dae su background cando unu dispositivu si connectat. Cuncede sa permissione \"Mustrare subra de áteras apps\".</string>
     <string name="notification_permission_hint_title">Permissu de notìfigas</string>
     <string name="notification_permission_hint_message">Contzèddi su permissu de notìfigas pro vìdere aggiornamentos de istadu cando si aggiùstant sos volumes.</string>
     <string name="dnd_access_hint_title">Acesetu Non disturbare</string>

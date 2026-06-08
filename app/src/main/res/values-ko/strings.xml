@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">보이는 조정</string>
     <string name="devices_device_config_visible_adjustments_desc">기기 카드에 표시할 조정을 선택하세요</string>
     <string name="devices_device_config_keep_awake_label">켜짐 유지</string>
-    <string name="devices_device_config_keep_awake_desc">이 디바이스를 연결하고 있을 때 화면을 계속 켜진 상태로 유지합니다.</string>
+    <string name="devices_device_config_keep_awake_desc">기기에 연결되어 있는 동안 앱을 백그라운드에서 활성 상태로 유지하여 볼륨 제어가 계속 작동하도록 하고, 기기가 연결되면 화면을 깨웁니다(\"다른 앱 위에 표시\" 권한 필요). 최신 Android 버전에서는 화면이 자동으로 꺼질 수 있습니다.</string>
     <string name="devices_device_config_volume_observe_label">변경 감시</string>
     <string name="devices_device_config_volume_observe_desc">이 디바이스가 연결되어 있는 동안 활성 상태를 유지하고 이 앱에서 생성되지 않은 음량 변경사항을 저장합니다.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">연결 해제 시 음량 저장</string>
@@ -391,8 +391,8 @@
     <string name="battery_optimization_hint_title">배터리 최적화</string>
     <string name="battery_optimization_hint_message">배터리 최적화가 켜져 있어 정상 동작을 방해할 수 있습니다. 끄기를 고려해보세요.</string>
     <string name="battery_optimization_fix_action">최적화 비활성화</string>
-    <string name="android10_applaunch_hint_title">앱 실행 권한</string>
-    <string name="android10_applaunch_hint_message">안드로이드 10은 백그라운드에서 앱을 실행하려면 특별 권한이 필요합니다. &quot;다른 앱 위에 표시&quot; 권한을 허용하세요.</string>
+    <string name="android10_applaunch_hint_title">다른 앱 위에 표시 권한</string>
+    <string name="android10_applaunch_hint_message">Android 10 이상에서는 앱을 실행하거나 홈 화면을 표시하거나 백그라운드에서 화면을 깨우기 위한 특별한 권한이 필요합니다. \"다른 앱 위에 표시\" 권한을 허용하세요.</string>
     <string name="notification_permission_hint_title">알림 권한</string>
     <string name="notification_permission_hint_message">음량 조절 시 상태 업데이트를 보려면 알림 권한을 허용하세요.</string>
     <string name="dnd_access_hint_title">방해 금지 접근 권한</string>

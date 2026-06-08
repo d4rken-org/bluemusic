@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Бачныя рэгулёўкі</string>
     <string name="devices_device_config_visible_adjustments_desc">Паказваць акно гучнасці сістэмы, пакуль гэты дадатак рэгуліруе гучнасць для гэтай прылады.</string>
     <string name="devices_device_config_keep_awake_label">Не даваць засыпаць</string>
-    <string name="devices_device_config_keep_awake_desc">Паспрабаваць ўтрымліваць прыладу актыўнай пад час падключэння. Паводзіны могуць адрознівацьца ў залежнасці ад версіі Android.</string>
+    <string name="devices_device_config_keep_awake_desc">Утрымлівае дадатак активным у фоне ў час падлучэння, каб кантроль гучнасці працаваў, і будзіць экран пры падлучэнні прыбора (патрабуе дазвол «Паказвацца над іншымі дадаткамі»). На новейшых версіях Android экран можа ўсё яшчэ патухнуць самастойна.</string>
     <string name="devices_device_config_volume_observe_label">Назіраць за зменамі</string>
     <string name="devices_device_config_volume_observe_desc">Заставацौца актыўным, пакуль гэта прылада падключана, і захоўваць змены гучнасці, якія не зробленыя гэтым дадаткам.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Захаваць гучнасць пры адключэнні</string>
@@ -406,8 +406,8 @@
     <string name="battery_optimization_hint_title">Аптымізацыя батарэі</string>
     <string name="battery_optimization_hint_message">Аптымізацыя батарэі ўключана і можа перашкодзіць правільнай рабоце. Разгледзце магчымасць іх адключэння.</string>
     <string name="battery_optimization_fix_action">Адключыць аптымізацыі</string>
-    <string name="android10_applaunch_hint_title">Дазвол на запуск дадатку</string>
-    <string name="android10_applaunch_hint_message">Android 10 патрабуе спецыяльнага дазволу для запуску дадаткаў або паказу галоўнага экрана з фону. Дайце дазвол \"Паказ над іншымі дадаткамі\".</string>
+    <string name="android10_applaunch_hint_title">Дазвол паказваць над дадаткамі</string>
+    <string name="android10_applaunch_hint_message">Android 10+ патрабуе адмысловы дазвол для запуску дадаткаў, паказу галоўнага экрана альбо абуджэння экрана з фону пры падлучэнні. Дайце дазвол «Паказвацца над іншымі дадаткамі».</string>
     <string name="notification_permission_hint_title">Дазвол на апавяшчэнні</string>
     <string name="notification_permission_hint_message">Дайце дазвол на апавяшчэнні, каб бачыць абнаўленні стану пры рэгуляванні гучнасці.</string>
     <string name="dnd_access_hint_title">Доступ да рэжыму «Не турбаваць»</string>

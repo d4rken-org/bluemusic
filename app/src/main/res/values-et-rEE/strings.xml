@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Nähtavad kohandused</string>
     <string name="devices_device_config_visible_adjustments_desc">Lülita, millised kohandused seadme kaardil näidatakse</string>
     <string name="devices_device_config_keep_awake_label">Hoia ärkvel</string>
-    <string name="devices_device_config_keep_awake_desc">Hoia ekraani sees kui seade on ühendatud.</string>
+    <string name="devices_device_config_keep_awake_desc">Hoiab rakenduse aktiivsena taustal, kuni see on ühendatud, et helitugevuse juhtimine jätkaks töötamist, ja äratab ekraani, kui seade ühendatakse (vajab \"Teiste rakenduste üle kuva\" luba). Uuematel Android\'i versioonidel võib ekraan siiski iseseisvalt välja lülituda.</string>
     <string name="devices_device_config_volume_observe_label">Jälgi muudatusi</string>
     <string name="devices_device_config_volume_observe_desc">Ole aktiivne, kui seade on ühendatud ja salvesta helitugevuse muudatused, mida see rakendus ei põhjustanud.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Salvesta heli ühenduse katkestamisel</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Aku optimeerimine</string>
     <string name="battery_optimization_hint_message">Aku optimeerimine on lubatud ja võib takistada õiget toimimist. Kaalu selle keelamist.</string>
     <string name="battery_optimization_fix_action">Keela optimeerimine</string>
-    <string name="android10_applaunch_hint_title">Rakenduse käivitamise luba</string>
-    <string name="android10_applaunch_hint_message">Android 10 nõuab rakenduste taustal käivitamiseks eriõigust. Anna „Kuva teiste rakenduste peal\" luba.</string>
+    <string name="android10_applaunch_hint_title">Luba teiste rakenduste üle ekraani kuvamiseks</string>
+    <string name="android10_applaunch_hint_message">Android 10+ nõuab rakenduste käivitamiseks, avalehe näitamiseks või ekraani äratamiseks taustast ühenduse ajal spetsiaalset luba. Andke \"Teiste rakenduste üle kuva\" luba.</string>
     <string name="notification_permission_hint_title">Teavituse luba</string>
     <string name="notification_permission_hint_message">Anna teavitusluba, et näha olekuuuendusi helitugevuse reguleerimisel.</string>
     <string name="dnd_access_hint_title">Mitte segada juurdepääs</string>

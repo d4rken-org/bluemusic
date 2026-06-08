@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Synliga justeringar</string>
     <string name="devices_device_config_visible_adjustments_desc">Växla vilka justeringar som visas på enhetskortet</string>
     <string name="devices_device_config_keep_awake_label">Håll vaken</string>
-    <string name="devices_device_config_keep_awake_desc">Håll skärmen på medan denna enhet är ansluten.</string>
+    <string name="devices_device_config_keep_awake_desc">Håller appen aktiv i bakgrunden när den är ansluten så att volymkontrollen fortsätter att fungera, och väcker skärmen när en enhet ansluts (kräver behörigheten \"Visa över andra appar\"). På nyare Android-versioner kan skärmen fortfarande stängas av automatiskt.</string>
     <string name="devices_device_config_volume_observe_label">Observera förändringar</string>
     <string name="devices_device_config_volume_observe_desc">Håll dig aktiv medan denna enhet är ansluten och spara volymförändringar som inte orsakats av denna app.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Spara volym vid frånkoppling</string>
@@ -212,7 +212,6 @@
     <string name="settings_acknowledgements_description">Tack, licenser och särskilt tack</string>
     <string name="settings_acks_translation_header">Översättning</string>
     <string name="settings_acks_translators_title">Översättare</string>
-    <string name="settings_acks_translators_people">Gamechanger181</string>
     <string name="settings_acks_translate_title">Översätt BVM</string>
     <string name="settings_acks_translate_desc">Hjälp till att översätta BVM till ditt språk</string>
     <string name="settings_acks_thanks_header">Tack</string>
@@ -396,11 +395,11 @@
     <string name="battery_optimization_hint_title">Batterioptimering</string>
     <string name="battery_optimization_hint_message">Batterioptimering är aktiverad och kan hindra korrekt drift. Överväg att inaktivera dem.</string>
     <string name="battery_optimization_fix_action">Inaktivera optimering</string>
-    <string name="android10_applaunch_hint_title">Appstartsbehörighet</string>
-    <string name="android10_applaunch_hint_message">Android 10 kräver specialbehörighet för att starta appar eller visa hemskärmen från bakgrunden. Bevilja behörigheten &quot;Visa över andra appar&quot;.</string>
+    <string name="android10_applaunch_hint_title">Behörighet för att visa över appar</string>
+    <string name="android10_applaunch_hint_message">Android 10+ kräver en särskild behörighet för att starta appar, visa hemskärmen eller väcka skärmen från bakgrunden när en enhet ansluts. Ge behörigheten \"Visa över andra appar\".</string>
     <string name="notification_permission_hint_title">Aviseringsbehörighet</string>
     <string name="notification_permission_hint_message">Bevilja aviseringsbehörighet för att se statusuppdateringar när volymer justeras.</string>
-    <string name="dnd_access_hint_title">Stör ej-åtkomst</string>
+    <string name="dnd_access_hint_title">Åtkomst till Stör ej</string>
     <string name="dnd_access_hint_message">Utan Stör ej-åtkomst kan inställningar för ringsignal, aviseringar och Stör ej-läge inte tillämpas när dina enheter ansluter.</string>
     <string name="dnd_access_fix_action">Ge tillgång</string>
     <!-- IAP Error Messages -->

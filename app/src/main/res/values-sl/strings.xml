@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Vidne prilagoditve</string>
     <string name="devices_device_config_visible_adjustments_desc">Prikaži sistemsko okno glasnosti, ko ta aplikacija prilagaja glasnost za to napravo.</string>
     <string name="devices_device_config_keep_awake_label">Ohrani aktiven</string>
-    <string name="devices_device_config_keep_awake_desc">Poskusi ohraniti napravo aktivno med priklopom. Vedenje se lahko razlikuje glede na različico Androida.</string>
+    <string name="devices_device_config_keep_awake_desc">Ohranja aplikacijo budno v ozadju med povezavo, tako da nadzor glasnosti ostane delujoč, in prebudi zaslon, ko se naprava poveže (potrebno je dovoljenje »Prikaz nad drugimi aplikacijami«). Na novejših različicah Androida se lahko zaslon kljub temu izklopi sam od sebe.</string>
     <string name="devices_device_config_volume_observe_label">Opazuj spremembe</string>
     <string name="devices_device_config_volume_observe_desc">Ostani aktiven, ko je ta naprava priklopljena, in shrani spremembe glasnosti, ki jih ni povzročila ta aplikacija.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Shrani glasnost ob odključitvi</string>
@@ -406,8 +406,8 @@
     <string name="battery_optimization_hint_title">Optimizacija baterije</string>
     <string name="battery_optimization_hint_message">Optimizacije baterije so omogočene in lahko preprečijo pravilno delovanje. Razmislite o njihovem onemogočanju.</string>
     <string name="battery_optimization_fix_action">Onemogoči optimizacije</string>
-    <string name="android10_applaunch_hint_title">Dovoljenje za zagon aplikacij</string>
-    <string name="android10_applaunch_hint_message">Android 10 zahteva posebno dovoljenje za zagon aplikacij ali prikaz začetnega zaslona iz ozadja. Podeli dovoljenje „Prikazovanje nad drugimi aplikacijami“.</string>
+    <string name="android10_applaunch_hint_title">Dovoljenje za prikaz nad drugimi aplikacijami</string>
+    <string name="android10_applaunch_hint_message">Android 10+ potrebuje posebno dovoljenje za zagon aplikacij, prikaz domačega zaslona ali prebujanje zaslona iz ozadja pri povezavi. Odobrite »Prikaz nad drugimi aplikacijami«.</string>
     <string name="notification_permission_hint_title">Dovoljenje za obvestila</string>
     <string name="notification_permission_hint_message">Podeli dovoljenje za obvestila, da vidite posodobitve stanja med prilagajanjem glasnosti.</string>
     <string name="dnd_access_hint_title">Dostop do »Ne moti«</string>

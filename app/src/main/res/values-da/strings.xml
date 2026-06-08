@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Synlige justeringer</string>
     <string name="devices_device_config_visible_adjustments_desc">Vis systemets lydstyrkevindue mens denne app laver justeringer for denne enhed.</string>
     <string name="devices_device_config_keep_awake_label">Hold vågen</string>
-    <string name="devices_device_config_keep_awake_desc">Prøv at holde enheden vågen mens den er tilsluttet. Adfærd kan variere afhængigt af Android-version.</string>
+    <string name="devices_device_config_keep_awake_desc">Holder appen aktiv i baggrunden, mens den er forbundet, så lydkontrol fortsætter med at fungere, og vækker skærmen, når en enhed forbindes (kræver tilladelsen \"Vises over andre apps\"). På nyere Android-versioner kan skærmen stadig slukke af sig selv.</string>
     <string name="devices_device_config_volume_observe_label">Observer ændringer</string>
     <string name="devices_device_config_volume_observe_desc">Forbliv aktiv mens denne enhed er tilsluttet og gem lydstyrkeændringer som ikke er forårsaget af denne app.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Gem volume ved frakobling</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Batteri-optimering</string>
     <string name="battery_optimization_hint_message">Batteri-optimering er aktiveret og kan forhindre korrekt drift. Overvej at deaktivere dem.</string>
     <string name="battery_optimization_fix_action">Deaktiver optimeringer</string>
-    <string name="android10_applaunch_hint_title">App-starttilladelse</string>
-    <string name="android10_applaunch_hint_message">Android 10 kræver særlig tilladelse for at starte apps eller vise startskærmen fra baggrunden. Giv tilladelsen &quot;Vis over andre apps&quot;.</string>
+    <string name="android10_applaunch_hint_title">Tilladelsen \"Vises over andre apps\"</string>
+    <string name="android10_applaunch_hint_message">Android 10+ kræver en særlig tilladelse til at starte apps, vise startskærmen eller vække skærmen fra baggrunden, når en enhed forbindes. Giv tilladelsen \"Vises over andre apps\".</string>
     <string name="notification_permission_hint_title">Notifikationstilladelse</string>
     <string name="notification_permission_hint_message">Giv notifikationstilladelse for at se statusopdateringer når lydstyrker justeres.</string>
     <string name="dnd_access_hint_title">Forstyr ikke-adgang</string>

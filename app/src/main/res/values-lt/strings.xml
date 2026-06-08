@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Matomi reguliavimai</string>
     <string name="devices_device_config_visible_adjustments_desc">Perjunkite, kurie reguliavimai rodomi įrenginio kortelėje</string>
     <string name="devices_device_config_keep_awake_label">Laikyti aktyvų</string>
-    <string name="devices_device_config_keep_awake_desc">Bandyti laikyti įrenginį aktyvų kol jis prijungtas. Elgsena gali skirtis priklausomai nuo Android versijos.</string>
+    <string name="devices_device_config_keep_awake_desc">Palaiko programą budrią fone, kai sujungta, kad garsumo valdymas veiktų toliau, ir pažadina ekraną, kai prijungiamas įrenginys (reikalingas „Rodyti virš kitų programų“ leidimas). Naujesnėse Android versijose ekranas vis tiek gali išsijungti savaime.</string>
     <string name="devices_device_config_volume_observe_label">Stebėti pokyčius</string>
     <string name="devices_device_config_volume_observe_desc">Laikyti aktyviu kol šis įrenginys prijungtas ir išsaugoti garsumo pokyčius, kurių neatliko ši programa.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Išsaugoti garsumą atjungus</string>
@@ -97,6 +97,12 @@
     <string name="devices_autoplay_keycode_rewind_desc">Atsukti dabartinį takelį atgal</string>
     <string name="devices_autoplay_keycode_fast_forward_desc">Greitai persukti dabartinį takelį</string>
     <string name="devices_autoplay_keycode_unknown_label">Nežinoma (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d komanda</item>
+        <item quantity="few">%d komandos</item>
+        <item quantity="many">%d komandos</item>
+        <item quantity="other">%d komandų</item>
+    </plurals>
     <string name="cd_autoplay_keycode_move_up">Perkelti aukštyn</string>
     <string name="cd_autoplay_keycode_move_down">Perkelti žemyn</string>
     <string name="cd_autoplay_keycode_remove">Pašalinti</string>
@@ -400,11 +406,11 @@
     <string name="battery_optimization_hint_title">Baterijos optimizavimas</string>
     <string name="battery_optimization_hint_message">Baterijos optimizavimas įjungtas ir gali trukdyti tinkamam veikimui. Apsvarstykite galimybę jį išjungti.</string>
     <string name="battery_optimization_fix_action">Išjungti optimizavimą</string>
-    <string name="android10_applaunch_hint_title">Programos paleidimo leidimas</string>
-    <string name="android10_applaunch_hint_message">Android 10 reikia specialaus leidimo paleisti programas iš fono. Suteikite leidimą &quot;Rodyti virš kitų programų&quot;.</string>
+    <string name="android10_applaunch_hint_title">Rodyti virš kitų programų leidimas</string>
+    <string name="android10_applaunch_hint_message">Android 10+ reikalingas specialus leidimas paleisti programas, parodyti pagrindinį ekraną arba pažadinti ekraną iš fono, kai prijungiamas įrenginys. Suteikite „Rodyti virš kitų programų“ leidimą.</string>
     <string name="notification_permission_hint_title">Pranešimų leidimas</string>
     <string name="notification_permission_hint_message">Suteikite pranešimų leidimą, kad matytumėte būsenos atnaujinimus reguliuojant garsumus.</string>
-    <string name="dnd_access_hint_title">Netrukdyti prieiga</string>
+    <string name="dnd_access_hint_title">Prieiga prie režimo Netrukdyti</string>
     <string name="dnd_access_hint_message">Be prieigos prie „Netrukdyti“, skambėjimo tono, pranešimų ir DND režimo nustatymai negali būti pritaikomi, kai jūsų įrenginiai prisijungia.</string>
     <string name="dnd_access_fix_action">Suteikti prieigą</string>
     <!-- IAP Error Messages -->

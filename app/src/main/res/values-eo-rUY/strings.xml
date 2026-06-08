@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Videblaj ĝustigoj</string>
     <string name="devices_device_config_visible_adjustments_desc">Montri la volumenfenestron de la sistemo dum ĉi tiu apo faras ĝustigojn por ĉi tiu aparato.</string>
     <string name="devices_device_config_keep_awake_label">Teni veka</string>
-    <string name="devices_device_config_keep_awake_desc">Provi teni la aparaton veka dum konektita. Konduto povas varii depende de la Android-versio.</string>
+    <string name="devices_device_config_keep_awake_desc">Tenas la aplikaĵon maldormanta en la fono dum konektite por ke volumkontrolo daŭre funkcias, kaj vekigas la ekranon kiam aparato konektitas (necesas la permeso \"Montri super aliaj aplikaĵoj\"). En novaj Android-versioj la ekrano povas ankoraŭ malpali mem.</string>
     <string name="devices_device_config_volume_observe_label">Observi ŝanĝojn</string>
     <string name="devices_device_config_volume_observe_desc">Resti aktiva dum ĉi tiu aparato estas konektita kaj konservi volumenŝanĝojn kiuj ne estis kaŭzitaj de ĉi tiu apo.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Konservi volumenon ĉe malkonekto</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Bateria optimumigo</string>
     <string name="battery_optimization_hint_message">Bateriooptimumigoj estas ebligitaj kaj povas malhelpi ĝustan funkciadon. Konsideru malŝalti ilin.</string>
     <string name="battery_optimization_fix_action">Malŝalti optimumigojn</string>
-    <string name="android10_applaunch_hint_title">Permeso por lanĉi apojn</string>
-    <string name="android10_applaunch_hint_message">Android 10 postulas specialan permeson por lanĉi apojn aŭ montri la hejman ekranon el la fono. Donu permeson \"Montri super aliaj apoj\".</string>
+    <string name="android10_applaunch_hint_title">Permeso \"Montri super aliaj aplikaĵoj\"</string>
+    <string name="android10_applaunch_hint_message">Android 10+ necesas specialan permeson por lanĉi aplikaĵojn, montri la ĉefekranon aŭ veki la ekranon el la fono dum konektado. Donu la permeson \"Montri super aliaj aplikaĵoj\".</string>
     <string name="notification_permission_hint_title">Sciiga permeso</string>
     <string name="notification_permission_hint_message">Donu sciigan permeson por vidi statajn ĝisdatigojn dum ĝustigado de volumenoj.</string>
     <string name="dnd_access_hint_title">Ne-Ĝeni aliro</string>

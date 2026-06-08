@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">ການປັບແບບແສດງຜລ</string>
     <string name="devices_device_config_visible_adjustments_desc">ແສດງຫນ້າຕ່າງລະດັບສຽງຂອງລະບົບໃນຂະທີ່ແອັບນີ້ປັບສຳຫລັບອຸປະກອນນີ້.</string>
     <string name="devices_device_config_keep_awake_label">ຕື່ນຕ຺ພົນ</string>
-    <string name="devices_device_config_keep_awake_desc">ພະຍາຍຕື່ນຕ຺ພົນອຸປະກອນໃນຂະທີ່ຕ່ອອຍູ່. ພະຕ຿ການອາດແຕກຕ່າງກັນຕາມເວີຊັນ Android.</string>
+    <string name="devices_device_config_keep_awake_desc">ຮັກສາແອັບໃຫ້ເຕືອນຢູ່ໃນພື້ນຫຼັງໃນຂະນະທີ່ເຊື່ອມຕໍ່ ເພື່ອໃຫ້ການຄວບຄຸມລະດັບສຽງສືບຕໍ່ເຮັດວຽກ ແລະປຸກໜ້າຈໍເມື່ອອຸປະກອນເຊື່ອມຕໍ່ (ຕ້ອງການການອະນຸຍາດ \"ສະແດງຜົນຢູ່ຕໍ່ໜ້າແອັບອື່ນໆ\"). ໃນເວີຊັນ Android ໃໝ່ກວ່ານັ້ນ ໜ້າຈໍອາດຍັງດັບໄປເອງ.</string>
     <string name="devices_device_config_volume_observe_label">ສັງເກດການປ່ຽນແປງ</string>
     <string name="devices_device_config_volume_observe_desc">ສັກກະວະໃນຂະທີ່ອຸປະກອນນີ້ຕ່ອ ແລະບັນທຶກການປ່ຽນແປງລະດັບສຽງທີ່ບໍ່ໄດ້ເກີດຈາກແອັບນີ້.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ບັນທຶກລະດັບສຽງເມື່ອຕັດການຕ່ອ</string>
@@ -391,8 +391,8 @@
     <string name="battery_optimization_hint_title">ການອຫນຸເທບັດເຕຣີ</string>
     <string name="battery_optimization_hint_message">ການອຫນຸເທບັດເຕຣີເອີນໃຊ້ງານແລະອາດເປີດກັ້ນການທຳງານ. ກະລຸນາປິດການອຫນຸເທ.</string>
     <string name="battery_optimization_fix_action">ປິດການອຫນຸເທ</string>
-    <string name="android10_applaunch_hint_title">ສິດທິ່ເປີດແອັບ</string>
-    <string name="android10_applaunch_hint_message">Android 10 ຕ້ອງການສິດທິ່ພິເສດເພື່ອເປີດແອັບຫລືອແສດງຫນ້າຈອຫລັກຈາກພື້ນຫລັງ. ມອບສິດທິ່ \"Display over other apps\".</string>
+    <string name="android10_applaunch_hint_title">ການອະນຸຍາດສະແດງຜົນຢູ່ຕໍ່ໜ້າແອັບ</string>
+    <string name="android10_applaunch_hint_message">Android 10+ ຕ້ອງການການອະນຸຍາດພິເສດເພື່ອເປີດແອັບ ສະແດງໜ້າຈໍຫຼັກ ຫຼືປຸກໜ້າຈໍຈາກພື້ນຫຼັງເມື່ອເຊື່ອມຕໍ່. ໃຫ້ການອະນຸຍາດ \"ສະແດງຜົນຢູ່ຕໍ່ໜ້າແອັບອື່ນໆ\".</string>
     <string name="notification_permission_hint_title">ສິດທິ່ການແຈ້ງ</string>
     <string name="notification_permission_hint_message">ມອບສິດທິ່ການແຈ້ງເພື່ອເຫັນການອັບເດດສະຖານະເມື່ອປັບລະດັບສຽງ.</string>
     <string name="dnd_access_hint_title">ການເຂົ້າເຖິງ Do Not Disturb</string>

@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Sigbare aanpassings</string>
     <string name="devices_device_config_visible_adjustments_desc">Wys die stelsel se volume venster terwyl hierdie app aanpassings maak vir hierdie toestel.</string>
     <string name="devices_device_config_keep_awake_label">Hou wakker</string>
-    <string name="devices_device_config_keep_awake_desc">Probeer om die toestel wakker te hou terwyl dit gekoppel is. Gedrag kan verskil afhangende van die Android-weergawe.</string>
+    <string name="devices_device_config_keep_awake_desc">Hou die app wakker in die agtergrond terwyl dit gekoppel is sodat volumebeheer bly werk, en maak die skerm wakker wanneer \'n toestel koppel (benodig die \"Vertoon oor ander toepassings\"-toestemming). Op nuwer Android-weergawes kan die skerm steeds vanself afskakel.</string>
     <string name="devices_device_config_volume_observe_label">Waarneem veranderinge</string>
     <string name="devices_device_config_volume_observe_desc">Bly aktief terwyl hierdie toestel gekoppel is en stoor volumeveranderinge wat nie deur hierdie program veroorsaak is nie.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Stoor volume by ontkoppeling</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Battery-optimisering</string>
     <string name="battery_optimization_hint_message">Battery-optimiserings is geaktiveer en kan behoorlike werking voorkom. Oorweeg om dit te deaktiveer.</string>
     <string name="battery_optimization_fix_action">Deaktiveer optimiserings</string>
-    <string name="android10_applaunch_hint_title">Programlanser-toestemming</string>
-    <string name="android10_applaunch_hint_message">Android 10 vereis spesiale toestemming om programme of die tuisskerm vanaf die agtergrond te wys. Verleen &quot;Vertoon oor ander programme&quot;-toestemming.</string>
+    <string name="android10_applaunch_hint_title">Vertoon oor toepassings-toestemming</string>
+    <string name="android10_applaunch_hint_message">Android 10+ benodig \'n spesiale toestemming om toepassings te laai, die tuis-skerm te wys, of die skerm vanuit die agtergrond wakker te maak wanneer \'n toestel koppel. Ken die \"Vertoon oor ander toepassings\"-toestemming toe.</string>
     <string name="notification_permission_hint_title">Kennisgewing-toestemming</string>
     <string name="notification_permission_hint_message">Verleen kennisgewing-toestemming om statusopdaterings te sien terwyl volumes aangepas word.</string>
     <string name="dnd_access_hint_title">Moenie Steur Nie-toegang</string>

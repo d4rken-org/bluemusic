@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">ხილული რეგულირებები</string>
     <string name="devices_device_config_visible_adjustments_desc">ამ მოწყობილობისთვის რეგულირებების გაკეთებისას აჩვენოს სისტემის ხმის ფანჯარა.</string>
     <string name="devices_device_config_keep_awake_label">გამოღვიძებულ შენარჩუნება</string>
-    <string name="devices_device_config_keep_awake_desc">სცადე მოწყობილობა გამოღვიძებული იყოს დაკავშირების დროს. ქცევა შეიძლება განსხვავდეს Android-ის ვერსიის მიხედვით.</string>
+    <string name="devices_device_config_keep_awake_desc">ინახავს აპლიკაციას აქტიურ მდგომარეობაში ფონში, სანამ დაკავშირებული ხარ, რათა ხმის კონტროლი გაგრძელდეს, და აღვიძებს ეკრანს, როდესაც მოწყობილობა უკავშირდება (საჭიროა \"აპების თავზე ჩვენება\" ნებართვა). უფრო ახალ Android ვერსიებში ეკრანი მაინც შეიძლება დამოუკიდებლად გამოირთოს.</string>
     <string name="devices_device_config_volume_observe_label">ცვლილებების დაკვირვება</string>
     <string name="devices_device_config_volume_observe_desc">დარჩე აქტიური სანამ ამ მოწყობილობა დაკავშირებულია და შეინახე ხმის ცვლილებები, რომლებიც ამ აპს არ გამოუწვევია.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ხმის შენახვა გათიშვისას</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">ბატარეის ოპტიმიზაცია</string>
     <string name="battery_optimization_hint_message">ბატარეის ოპტიმიზაციები ჩართულია და შეიძლება ხელი შეუშალოს სწორ ოპერაციას. განიხილეთ მათი გამორთვა.</string>
     <string name="battery_optimization_fix_action">ოპტიმიზაციების გამორთვა</string>
-    <string name="android10_applaunch_hint_title">აპის გაშვის ნებართვა</string>
-    <string name="android10_applaunch_hint_message">Android 10 მოითხოვს სპეციალურ ნებართვას ფონიდან აპების გასაშვებად ან მთავარი ეკრანის საჩვენებლად. მიეცით ნებართვა \"სხვა აპებზე ჩვენება\".</string>
+    <string name="android10_applaunch_hint_title">აპების თავზე ჩვენების ნებართვა</string>
+    <string name="android10_applaunch_hint_message">Android 10+-ს სჭირდება სპეციალური ნებართვა აპლიკაციების გასაშვებად, მთავარი ეკრანის საჩვენებლად ან ფონიდან ეკრანის გასაღვიძებლად კავშირისას. მიანიჭე \"აპების თავზე ჩვენება\" ნებართვა.</string>
     <string name="notification_permission_hint_title">შეტყობინებების ნებართვა</string>
     <string name="notification_permission_hint_message">მიეცით შეტყობინებების ნებართვა სტატუსის განახლებების სანახავად ხმის რეგულირებისას.</string>
     <string name="dnd_access_hint_title">\"არ შეაწუხოთ\" წვდომა</string>

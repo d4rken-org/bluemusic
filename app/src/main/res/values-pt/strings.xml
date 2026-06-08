@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Ajustes visíveis</string>
     <string name="devices_device_config_visible_adjustments_desc">Mostra a janela de volume do sistema enquanto a aplicação estiver a fazer os ajustes para este dispositivo.</string>
     <string name="devices_device_config_keep_awake_label">Manter acordado</string>
-    <string name="devices_device_config_keep_awake_desc">Mantém o ecrã ligado enquanto este dispositivo está conectado.</string>
+    <string name="devices_device_config_keep_awake_desc">Mantém a aplicação ativa em segundo plano enquanto conectada para que o controlo de volume continue a funcionar, e acorda o ecrã quando um dispositivo se conecta (requer a permissão \"Sobreposição a outras apps\"). Em versões mais recentes do Android o ecrã pode ainda assim desligar-se automaticamente.</string>
     <string name="devices_device_config_volume_observe_label">Observar alterações</string>
     <string name="devices_device_config_volume_observe_desc">Mantém-se ativo enquanto este dispositivo está conectado e guarda alterações de volume que não tenham sido causadas por esta aplicação.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Guardar volume ao desligar</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Otimização da bateria</string>
     <string name="battery_optimization_hint_message">As otimizações da bateria estão ativas e podem impedir o funcionamento adequado. Considera desativá-las.</string>
     <string name="battery_optimization_fix_action">Desativar otimizações</string>
-    <string name="android10_applaunch_hint_title">Permissão de lançamento de aplicação</string>
-    <string name="android10_applaunch_hint_message">O Android 10 requer permissão especial para lançar aplicações em segundo plano. Concede a permissão &quot;Mostrar sobre outras aplicações&quot;.</string>
+    <string name="android10_applaunch_hint_title">Permissão de sobreposição a outras apps</string>
+    <string name="android10_applaunch_hint_message">Android 10+ requer uma permissão especial para iniciar aplicações, mostrar o ecrã inicial ou acordar o ecrã a partir de segundo plano ao conectar. Conceda a permissão \"Sobreposição a outras apps\".</string>
     <string name="notification_permission_hint_title">Permissão de notificação</string>
     <string name="notification_permission_hint_message">Concede permissão de notificação para veres atualizações de estado ao ajustar volumes.</string>
     <string name="dnd_access_hint_title">Acesso ao Não Incomodar</string>

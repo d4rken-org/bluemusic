@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">ദൃശ്യ ക്രമീകരണങ്ങൾ</string>
     <string name="devices_device_config_visible_adjustments_desc">ഈ ആപ്പ് ഈ ഉപകരണത്തിനായി ക്രമീകരണങ്ങൾ നടത്തുമ്പോൾ സിസ്റ്റത്തിന്റെ വോള്യം വിൻഡോ കാണിക്കുക.</string>
     <string name="devices_device_config_keep_awake_label">ഉണർന്നിരിക്കുക</string>
-    <string name="devices_device_config_keep_awake_desc">കണക്‌റ് ആയിരിക്കുമ്പോൾ ഉപകരണം ഉണർന്നിരിക്കാൻ ശ്രമിക്കുക. Android വേർഷൻ അനുസരിച്ച് പ്രവർത്തനം വ്യത്യാസപ്പെടാം.</string>
+    <string name="devices_device_config_keep_awake_desc">ഉപകരണം കണക്റ്റ് ചെയ്യപ്പെട്ടിരിക്കുമ്പോൾ ആപ്പ് പശ്ചാത്തലത്തിൽ ജാഗരിതമായി സൂക്ഷിക്കുന്നതിനാൽ വോളിയം നിയന്ത്രണം പ്രവർത്തിക്കുന്നത് തുടരുന്നു, കൂടാതെ ഉപകരണം കണക്റ്റ് ചെയ്യുമ്പോൾ സ്ക്രീൻ ഉണർത്തുന്നു (\"മറ്റ് ആപ്പുകൾക്കു മുകളിൽ പ്രദർശിപ്പിക്കുക\" അനുമതി ആവശ്യമാണ്). പുതിയ Android പതിപ്പുകളിൽ സ്ക്രീൻ സ്വയം ഓഫാകാം.</string>
     <string name="devices_device_config_volume_observe_label">മാറ്റങ്ങൾ നിരീക്ഷിക്കുക</string>
     <string name="devices_device_config_volume_observe_desc">ഈ ഉപകരണം കണക്‌റ് ആയിരിക്കുമ്പോൾ സജീവമായിരിക്കുകയും ഈ ആപ്പ് കാരണമല്ലാത്ത വോള്യം മാറ്റങ്ങൾ സംരക്ഷിക്കുകയും ചെയ്യുക.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ഡിസ്‌കണക്‌റ് ചെയ്യുമ്പോൾ വോള്യം സംരക്ഷിക്കുക</string>
@@ -394,10 +394,10 @@
     <string name="general_ok_action">ശരി</string>
     <string name="general_configure_action">ക്രമീകരിക്കുക</string>
     <string name="battery_optimization_hint_title">ബാറ്റരി ഒപ്റ്റിമൈസേഷൻ</string>
-    <string name="battery_optimization_hint_message">ബാറ്റരി ഒപ്റ്റിമൈസേഷൻ സക്രിയമാണ്, ഇത് ശരിയായ പ്രവർത്തനം തടയാം. ഇവ പ്രവർത്തനരഹിതമാക്കുന്നത് പരിഗണിക്കുക.</string>
-    <string name="battery_optimization_fix_action">ഒപ്റ്റിമൈസേഷൻ പ്രവർത്തനരഹിതമാക്കുക</string>
-    <string name="android10_applaunch_hint_title">ആപ്പ് തുറക്കൽ അനുമതി</string>
-    <string name="android10_applaunch_hint_message">Android 10 പ്രവർത്തന പിൻത്തിൽ നിന്ന് ആപ്പുകൾ ദൂരൈക്കേൻ കഴിയുന്നതിന് പ്രത്യേക അനുമതി ആവശ്യമാണ്. \"മറ്റ് ആപ്പുകൾക് മുകളിൽ പ്രദർശിപ്പിക്കുക\" അനുമതി നൽകുക.</string>
+    <string name="battery_optimization_hint_message">ബാറ്ററി ഒപ്റ്റിമൈസേഷനുകൾ പ്രവർത്തനക്ഷമമാണ്, അത് ശരിയായ പ്രവർത്തനം തടയാനിടയാണ്. അവ പ്രവർത്തനരഹിതമാക്കാൻ പരിഗണിക്കുക.</string>
+    <string name="battery_optimization_fix_action">ഒപ്റ്റിമൈസേഷനുകൾ പ്രവർത്തനരഹിതമാക്കുക</string>
+    <string name="android10_applaunch_hint_title">ആപ്പുകൾക്കു മുകളിൽ പ്രദർശിപ്പിക്കാനുള്ള അനുമതി</string>
+    <string name="android10_applaunch_hint_message">ആപ്പുകൾ സമാരംഭിക്കാനോ, ഹോം സ്ക്രീൻ കാണിക്കാനോ, അല്ലെങ്കിൽ കണക്റ്റ് ചെയ്യുമ്പോൾ പശ്ചാത്തലത്തിൽ നിന്ന് സ്ക്രീൻ ഉണർത്താനോ Android 10+ ന് പ്രത്യേക അനുമതി ആവശ്യമാണ്. \"മറ്റ് ആപ്പുകൾക്കു മുകളിൽ പ്രദർശിപ്പിക്കുക\" അനുമതി നൽകുക.</string>
     <string name="notification_permission_hint_title">അധിസൂചന അനുമതി</string>
     <string name="notification_permission_hint_message">വോള്യം ക്രമീകരിക്കുമ്പോൾ സ്റ്റേറ്റസ് അപ്ഡേറ്റുകൾ കാണാൻ അധിസൂചന അനുമതി നൽകുക.</string>
     <string name="dnd_access_hint_title">സ്ക്രീൻ കിളയ്ക്കൾ മറക്കീ അക്സെസ് (Do Not Disturb)</string>
@@ -431,7 +431,7 @@
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">മുന്നറിയിപ്പ്</string>
     <!-- Volume input dialog -->
-    <string name="devices_volume_input_hint">വോള്യം (0–100)</string>
+    <string name="devices_volume_input_hint">വോളിയം (0–100)</string>
     <string name="devices_volume_input_error">%1$d ക്കും %2$d ക്കും ഇടയിലുള്ള ഒരു മൂല്യം നൽകുക</string>
     <string name="devices_volume_input_caption">യഥാർത്ഥ വോളിയം നിങ്ങളുടെ ഉപകരണം പിന്തുനക്കുന്ന ഏറ്റവും അടുത്ത സ്റ്റെപ്പിലേക്ക് റൗണ്ട് ചെയ്‌തേക്കാം.</string>
     <!-- Lock/unlock sliders -->

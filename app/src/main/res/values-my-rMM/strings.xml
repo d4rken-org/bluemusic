@@ -57,7 +57,6 @@
     <string name="devices_device_config_visible_adjustments_label">မြင်သာသော ချိန်ညှိမှုများ</string>
     <string name="devices_device_config_visible_adjustments_desc">ဤကိရိယာအတွက် ဤအပ် ချိန်ညှိမှုများ ပြုလုပ်နေစဉ် စနစ်၏ အသံ ဝင်းဒိုး ပြသမည်။</string>
     <string name="devices_device_config_keep_awake_label">နိုးနေစေမည်</string>
-    <string name="devices_device_config_keep_awake_desc">ချိတ်ဆက်နေစဉ် ကိရိယာကို နိုးနေစေရန် ကြိုးစားမည်။ Android မျိုးကွဲပေါ် မူတည်ပြီး ကွဲပြားနိုင်သည်။</string>
     <string name="devices_device_config_volume_observe_label">ပြောင်းလဲမှုများ စောင့်ကြည့်မည်</string>
     <string name="devices_device_config_volume_observe_desc">ဤကိရိယာ ချိတ်ဆက်နေစဉ် အသက်ဝင်နေ၍ ဤအပ် မဖြစ်ပေါ် စေသော အသံ ပြောင်းလဲမှုများ သိမ်းဆည်းမည်။</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ဖြတ်တောက်သောအခါ အသံ သိမ်းဆည်းမည်</string>
@@ -391,8 +390,6 @@
     <string name="battery_optimization_hint_title">ဘက်ထရီ ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း</string>
     <string name="battery_optimization_hint_message">ဘက်ထရီ ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း ဖွင့်ထားပြီး မှန်ကန်သော လုပ်ဆောင်မှုကို တားဆီးနိုင်သည်။ ပိတ်ရန် စဉ်းစားပါ။</string>
     <string name="battery_optimization_fix_action">ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း ပိတ်မည်</string>
-    <string name="android10_applaunch_hint_title">အပ် ဖွင့်ခြင်း ခွင့်ပြုချက်</string>
-    <string name="android10_applaunch_hint_message">Android 10 သည် နောက်ခံမှ အပ်များ ဖွင့်ရန် အထူး ခွင့်ပြုချက် လိုအပ်သည်။ &quot;အခြားအပ်များ အပေါ် ပြသမည်&quot; ခွင့်ပြုချက် ပေးပါ။</string>
     <string name="notification_permission_hint_title">အကြောင်းကြားချက် ခွင့်ပြုချက်</string>
     <string name="notification_permission_hint_message">အသံ ချိန်ညှိမှု ပြုလုပ်စဉ် အခြေအနေ မွမ်းမံချက်များ ကြည့်ရှုရန် အကြောင်းကြားချက် ခွင့်ပြုချက် ပေးပါ။</string>
     <string name="dnd_access_hint_title">မနှောင့်ယှက်ရ ဝင်ရောက်ခွင့်</string>

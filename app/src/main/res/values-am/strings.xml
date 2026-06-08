@@ -57,7 +57,6 @@
     <string name="devices_device_config_visible_adjustments_label">የምስተካኪያ ለይት</string>
     <string name="devices_device_config_visible_adjustments_desc">ይህ አፕሊኬሰን ለይህ መሣሪያ ምስተካኪያ በሜደረግበት ወቀት የስርዓቱን ድምፅ መስካኪያን ኣይጥ (window) አሳይ።</string>
     <string name="devices_device_config_keep_awake_label">ተገናት ዘዅር</string>
-    <string name="devices_device_config_keep_awake_desc">ተገና ሲጸራ መሣሪያውን ተገና ለማደረግ ይዘርካል። ጥrንስ በAndroid ስሪት ላይ ተመርቶ ይለይ።</string>
     <string name="devices_device_config_volume_observe_label">ለውጦች ታይ</string>
     <string name="devices_device_config_volume_observe_desc">ይህ መሣሪያ ሲጸራ ብራልት ቅበር ይህ አፕሊኬሰን ካልመኃ የተደረጉት የድምፅ ለውጦችን አዓርቦም።</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">በደረጩቦት ክምፅ አክብቢ</string>
@@ -327,9 +326,9 @@
     <string name="label_premium_version">የዘመን ስሪት</string>
     <string name="general_upgrade_action">አሻሽል</string>
     <string name="common_upgrade_required_label">ማሻሻያ ያስፈልጋል</string>
-    <string name="description_premium_required_additional_devices">ተጨማሪ መሣሪያዎችን ማስተካከል የዘመን ስሪት ይጠይቃል።</string>
+    <string name="description_premium_required_additional_devices">ተጨማሪ መሳሪያዎችን ማስተዳደር ከፍተኛ ስሪትን ይፈልጋል።</string>
     <string name="description_premium_required_this_extra_option">ይህ ተጨማሪ ይህን አፕሊኬሰን የዘመን ስሪት ይጠይቃል።</string>
-    <string name="description_premium_upgrade_explanation">ተጨማሪ ብካዾችን ለማነሳት እና ቅቦቱን ለምደገብ የዘመን ስሪት ይየብሉ።</string>
+    <string name="description_premium_upgrade_explanation">ተጨማሪ ባህሪዎችን ለማስቻል እና እድገትን ለመደገፍ ከፍተኛ ስሪትን ያግኙ።</string>
     <string name="label_premium_version_required">የዘመን ስሪት ክድምነት</string>
     <string name="upgrade_feature_requires_pro">ይህ ባ⁚ራ የዘመን ስሪት ይኀላል</string>
     <string name="upgrade_prompt_upgrade_action">አሻሽል</string>
@@ -362,7 +361,7 @@
     <string name="message_copied_to_clipboard">ወደ ክልረስ-ሰሩድ ተቃለገበ፡</string>
     <string name="label_thanks">አመሰግናለሁ</string>
     <string name="label_licenses">ፈቃዶች</string>
-    <string name="description_ring_volume_additional_permission">የዚማት ድምፅ ለመቀይረት ተጨማሪ እዋዀወች ክርድ ያስፈለሥለ።</string>
+    <string name="description_ring_volume_additional_permission">የደወል ድምጽ ለመለወጥ ተጨማሪ ፈቃዶች አስፈላጊ ናቸው።</string>
     <string name="label_missing_permissions">የፐየ እዋዀወች ክርድ</string>
     <string name="action_grant">ክርድ ክርድ</string>
     <string name="label_advanced">ወሰፉድ</string>
@@ -397,8 +396,6 @@
     <string name="battery_optimization_hint_title">የደም ያሌዅ አመ፥ት</string>
     <string name="battery_optimization_hint_message">የደም ያሌዅ አመ፥ቶች ተፈንንዎል፥ ጀነታ ስራት እንዲያደርኑ እይዻይ።</string>
     <string name="battery_optimization_fix_action">አመ፥ት አታካል</string>
-    <string name="android10_applaunch_hint_title">የአፕሊኬስን ዘርድ እዋዀ</string>
-    <string name="android10_applaunch_hint_message">Android 10 አፕሊኬስዎችን ለምደረግ ወይም የምር በራን ለማሳይት ብካዾ እዋዀ ክርድ ያስፈለጋል። “ከግብ አፕሊኬስዎች የማሳይት” እዋዀ ክርድ ይስጀዘ።</string>
     <string name="notification_permission_hint_title">የክርዘት እዋዀ</string>
     <string name="notification_permission_hint_message">ድምጣዎችን በሚካካልበት ሁኔተት ለማወቀት የክርዘት እዋዀ ክርድ ይስጀዘ።</string>
     <string name="dnd_access_hint_title">አትረብሽ ፍቃድ</string>

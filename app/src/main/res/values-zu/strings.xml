@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Ukuhlela okubonakalayo</string>
     <string name="devices_device_config_visible_adjustments_desc">Bonisa ifasitela lamavolumu alesistem ngenkathi lolu hlelo lwehlisa ivolumu yale divayisi.</string>
     <string name="devices_device_config_keep_awake_label">Gcina iphapheme</string>
-    <string name="devices_device_config_keep_awake_desc">Zama ukugcina idivayisi iphapheme uma ixhunyiwe. Ukusebenza kungashintsha ngokuya ngenguqulo ye-Android.</string>
+    <string name="devices_device_config_keep_awake_desc">Igcina uhlelo lokusebenza luvukile ngemuva ngenkathi luxhunyiwe ukuze ukulawulwa komsindo kuqhubeke kusebenza, futhi ivuse isikrini uma idivayisi ixhumeka (kudinga imvume \"Bonisa phezu kwezinye izinhlelo\"). Kuzinguqulo ze-Android ezintsha isikrini singase sicime ngokwaso.</string>
     <string name="devices_device_config_volume_observe_label">Buka izinguquko</string>
     <string name="devices_device_config_volume_observe_desc">Hlala usebenza ngenkathi le divayisi ixhunyiwe futhi ulondoloze izinguquko zamavolumu ezingenziwanga ngalolu hlelo.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Londoloza ivolumu uma inqumeka</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Ukuqinisekisa ibhethri</string>
     <string name="battery_optimization_hint_message">Ukuqinisekisa ibhethri kukhona futhi kungavimbela ukusebenza kahle. Cabanga ukucisha zona.</string>
     <string name="battery_optimization_fix_action">Cisha ukuqinisekisa</string>
-    <string name="android10_applaunch_hint_title">Imvume yokuqalisa uhlelo</string>
-    <string name="android10_applaunch_hint_message">I-Android 10 idinga imvume ekhethekile ukuqalisa izinhlelo noma ukubonisa isikrini sasekhaya emuva. Nikeza imvume \"Bonisa phezu kwezinhlelo ezinye\".</string>
+    <string name="android10_applaunch_hint_title">Imvume yokubonisa phezu kwezinye izinhlelo</string>
+    <string name="android10_applaunch_hint_message">I-Android 10+ idinga imvume ekhethekile ukuvula izinhlelo zokusebenza, ukubonisa ikhasi lasekhaya, noma ukuvusa isikrini lisuka ngemuva uma idivayisi ixhumeka. Nikeza imvume \"Bonisa phezu kwezinye izinhlelo\".</string>
     <string name="notification_permission_hint_title">Imvume yesaziso</string>
     <string name="notification_permission_hint_message">Nikeza imvume yesaziso ukubona izibuyekezo zesimo uma uhlela amavolumu.</string>
     <string name="dnd_access_hint_title">Ukufinyelela kwe-Do Not Disturb</string>

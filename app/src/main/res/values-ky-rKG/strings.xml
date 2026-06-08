@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Көрүнүктүү тууралоолор</string>
     <string name="devices_device_config_visible_adjustments_desc">Бул колдонмо бул түзмөк үчүн тууралоолор жасап жатканда системанын үн терезесин көрсөтүүгө.</string>
     <string name="devices_device_config_keep_awake_label">Ойгонуп туруу</string>
-    <string name="devices_device_config_keep_awake_desc">Туташып турганда түзмөктү ойгонуп турууга аракет кылыңыз. Жүрүм-туруму Android версиясына жараша айырмаланышы мүмкүн.</string>
+    <string name="devices_device_config_keep_awake_desc">Программа фондо ишке бараткан учурда активдүү калышы көлөмүн контролдоо иштеп туруусу үчүн керек, ошондой эле шайман туташканда экранды ояндап салат (\"Башка колдонмолордун үстүнөн көрсөтүү\" уруксаты талап кылынат). Жаңы Android версияларында экран дагы деле өз алдынча өчүп калышы мүмкүн.</string>
     <string name="devices_device_config_volume_observe_label">Өзгөрүүлөрдү байкоо</string>
     <string name="devices_device_config_volume_observe_desc">Бул түзмөк туташып турганда активдүү болуп, бул колдонмо жасабаган үн өзгөртүүлөрүн сактаңыз.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Ажыратылганда үндү сактоо</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Батарея оптимизациясы</string>
     <string name="battery_optimization_hint_message">Батарея оптимизациялары иштетилген жана туура иштешине тоскоол коюшу мүмкүн. Аларды өчүрүп коюунуну карап көрүңүз.</string>
     <string name="battery_optimization_fix_action">Оптимизацияларды өчүрүү</string>
-    <string name="android10_applaunch_hint_title">Колдонмону ишке салуу уруксаты</string>
-    <string name="android10_applaunch_hint_message">Android 10 колдонмолорду ишке салуу немесе фондон баш экранды көрсөтүү үчүн арнайы уруксат талап кылат. \"Башка колдонмолордун үстүндө көрсөтүү\" уруксатын бериңиз.</string>
+    <string name="android10_applaunch_hint_title">Башка колдонмолордун үстүнөн көрсөтүү уруксаты</string>
+    <string name="android10_applaunch_hint_message">Android 10+ колдонмолорду иштетүү, үй экранын көрсөтүү же фондон экранды ояндап салуу үчүн атайын уруксат талап кылат. \"Башка колдонмолордун үстүнөн көрсөтүү\" уруксатын бер.</string>
     <string name="notification_permission_hint_title">Билдирме уруксаты</string>
     <string name="notification_permission_hint_message">үн деңгелин өзгөртүүлөрдү көрүү үчүн билдирме уруксатын бериңиз.</string>
     <string name="dnd_access_hint_title">\"Тынчтыктыма тоскоол болбо\" мүмкүнчүлүгүнө уруксат</string>

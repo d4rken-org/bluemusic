@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Видљива подешавања</string>
     <string name="devices_device_config_visible_adjustments_desc">Прикажи системски прозор јачине звука док ова апликација врши подешавања за овај уређај.</string>
     <string name="devices_device_config_keep_awake_label">Одржи буђним</string>
-    <string name="devices_device_config_keep_awake_desc">Покуша да одржи уређај будним док је повезан. Понашање може да варира у зависности од верзије Андроида.</string>
+    <string name="devices_device_config_keep_awake_desc">Одржава апликацију пробуђеном у позадини док је повезана тако да контрола јачине звука наставља да ради, и буди екран када се уређај повеже (захтева дозволу „Приказ преко других апликација“). На новијим верзијама Андроида екран се можда и даље може угасити самостално.</string>
     <string name="devices_device_config_volume_observe_label">Прати промене</string>
     <string name="devices_device_config_volume_observe_desc">Остај активан док је овај уређај повезан и сачувај промене јачине звука које нису направљене овом апликацијом.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Сачувај јачину при искључивању</string>
@@ -214,7 +214,6 @@
     <string name="settings_acknowledgements_description">заслуге, лиценце и посебна захвалност</string>
     <string name="settings_acks_translation_header">Превод</string>
     <string name="settings_acks_translators_title">Преводиоци</string>
-    <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
     <string name="settings_acks_translate_title">Преведи BVM</string>
     <string name="settings_acks_translate_desc">Помози превођење BVM на свој језик</string>
     <string name="settings_acks_thanks_header">Хвала</string>
@@ -401,11 +400,11 @@
     <string name="battery_optimization_hint_title">Оптимизација батерије</string>
     <string name="battery_optimization_hint_message">Оптимизација батерије је омогућена и може спречити исправан рад. Размотри искључивање.</string>
     <string name="battery_optimization_fix_action">Онемогући оптимизације</string>
-    <string name="android10_applaunch_hint_title">Дозвола за покретање апликација</string>
-    <string name="android10_applaunch_hint_message">Андроид 10 захтева посебну дозволу за покретање апликација или приказ почетног екрана из позадине. Додели дозволу „Приказ преко других апликација“.</string>
+    <string name="android10_applaunch_hint_title">Дозвола за приказ преко апликација</string>
+    <string name="android10_applaunch_hint_message">Андроид 10+ захтева посебну дозволу да би лансирао апликације, приказао почетни екран или пробудио екран из позадине при повезивању. Дајте дозволу „Приказ преко других апликација“.</string>
     <string name="notification_permission_hint_title">Дозвола за обавештења</string>
     <string name="notification_permission_hint_message">Додели дозволу за обавештења да видиш ажурирања статуса приликом подешавања јачина.</string>
-    <string name="dnd_access_hint_title">Приступ режиму „Не узнемирај“</string>
+    <string name="dnd_access_hint_title">Приступ режиму Не узнемиравај</string>
     <string name="dnd_access_hint_message">Без приступа режиму „Не узнемирај“, подешавања звона, обавештења и DND режима не могу бити примењена када се твоји уређаји повежу.</string>
     <string name="dnd_access_fix_action">Додели приступ</string>
     <!-- IAP Error Messages -->

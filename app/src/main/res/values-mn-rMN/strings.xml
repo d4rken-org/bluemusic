@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Харагдах тохиргуулалт</string>
     <string name="devices_device_config_visible_adjustments_desc">Энэ апп төхөөрөмжийд тохиргуулалт хийгээд системийн дууны цонхыг харуулах.</string>
     <string name="devices_device_config_keep_awake_label">Сэржүүлээр байлгаах</string>
-    <string name="devices_device_config_keep_awake_desc">Холбогдсон үед төхөөрөмжийг сэржүүлээр байлгаахыг оролдуула. Android-ын хувилбараас шалтгаалт өөрчөгдөнө.</string>
+    <string name="devices_device_config_keep_awake_desc">Апп холбогдсон үед дэвсгэрт идэвхтэй байснаар дууны түвшний удирдлага ажилласаар байж, төхөөрөмж холбогдоход дэлгэцийг сэрээдэг (\"Бусад аппын дээр харуулах\" зөвшөөрөл шаардлагатай). Шинэ Android хувилбаруудад дэлгэц өөрөө унтарсаар байж болно.</string>
     <string name="devices_device_config_volume_observe_label">Өөрчлөлт ажиглах</string>
     <string name="devices_device_config_volume_observe_desc">Энэ төхөөрөмжий холбогдсон байхд идэвхүүлэн тогтноод энэ аппын үйлдЍлгүй дууны өөрчлөлтийг хадгалах.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Салгаах үед дууг хадгалах</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Батарейн оптимчлал</string>
     <string name="battery_optimization_hint_message">Батарейн оптимчлал идэвхүүлсэн бөгөөд зөв үйлажиллагахаас сэргийлж болно. Тэдгээгийг унтраахыг анхаарай.</string>
     <string name="battery_optimization_fix_action">Оптимчлалалтыг унтраах</string>
-    <string name="android10_applaunch_hint_title">Апп ажиллуулахын зөвшөөрөл</string>
-    <string name="android10_applaunch_hint_message">Android 10 апп ажиллуулах эсвэл арьанаас дэлгэцийн дэлгэц харуулахад онцгойн зөвшөөрөл шаардлагана. \"Өөр аппуудаас харах\" зөвшөөрөл олго.</string>
+    <string name="android10_applaunch_hint_title">Бусад аппын дээр харуулах зөвшөөрөл</string>
+    <string name="android10_applaunch_hint_message">Android 10+ нь апп нээх, үндсэн дэлгэцийг харуулах, эсвэл холбогдоход дэвсгэрээс дэлгэцийг сэрээхийн тулд тусгай зөвшөөрөл шаарддаг. \"Бусад аппын дээр харуулах\" зөвшөөрлийг өгнө үү.</string>
     <string name="notification_permission_hint_title">Мэдэгдэлгэийн зөвшөөрөл</string>
     <string name="notification_permission_hint_message">Дууг тохиргуулахад төлөвийн шинэчлэл үзэхийн тулд мэдэгдэлгэийн зөвшөөрөл олго.</string>
     <string name="dnd_access_hint_title">Тасалдахгүй горимт авах эрх</string>

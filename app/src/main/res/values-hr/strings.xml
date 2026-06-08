@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Vidljive prilagodbe</string>
     <string name="devices_device_config_visible_adjustments_desc">Uključi/isključi koje se prilagodbe prikazuju na kartici uređaja</string>
     <string name="devices_device_config_keep_awake_label">Zadrži budnim</string>
-    <string name="devices_device_config_keep_awake_desc">Zadržite zaslon uključenim dok je ovaj uređaj povezan.</string>
+    <string name="devices_device_config_keep_awake_desc">Održava aplikaciju aktivnom u pozadini tijekom povezivanja tako da kontrola glasnoće nastavlja raditi, i budi zaslon kada se uređaj poveže (treba dozvolu \"Prikaz preko ostalih aplikacija\"). Na novijim verzijama Androida zaslon se i dalje može ugasiti sam od sebe.</string>
     <string name="devices_device_config_volume_observe_label">Prati promjene</string>
     <string name="devices_device_config_volume_observe_desc">Ostani aktivan dok je ovaj uređaj povezan i spremi promjene glasnoće koje nisu uzrokovane ovom aplikacijom.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Spremi glasnoću pri odspajanju</string>
@@ -97,6 +97,11 @@
     <string name="devices_autoplay_keycode_rewind_desc">Premotaj trenutnu pjesmu unatrag</string>
     <string name="devices_autoplay_keycode_fast_forward_desc">Brzo premotaj trenutnu pjesmu naprijed</string>
     <string name="devices_autoplay_keycode_unknown_label">Nepoznato (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d naredba</item>
+        <item quantity="few">%d naredbe</item>
+        <item quantity="other">%d naredbi</item>
+    </plurals>
     <string name="cd_autoplay_keycode_move_up">Pomakni gore</string>
     <string name="cd_autoplay_keycode_move_down">Pomakni dolje</string>
     <string name="cd_autoplay_keycode_remove">Ukloni</string>
@@ -396,11 +401,11 @@
     <string name="battery_optimization_hint_title">Optimizacija baterije</string>
     <string name="battery_optimization_hint_message">Optimizacije baterije su uključene i mogu spriječiti pravilno funkcioniranje. Razmislite o njihovom onemogućavanju.</string>
     <string name="battery_optimization_fix_action">Onemogući optimizacije</string>
-    <string name="android10_applaunch_hint_title">Dopuštenje za pokretanje aplikacija</string>
-    <string name="android10_applaunch_hint_message">Android 10 zahtijeva posebno dopuštenje za pokretanje aplikacija iz pozadine. Dajte dopuštenje &quot;Prikazivanje preko drugih aplikacija&quot;.</string>
+    <string name="android10_applaunch_hint_title">Dozvola za prikaz preko aplikacija</string>
+    <string name="android10_applaunch_hint_message">Android 10+ treba posebnu dozvolu za pokretanje aplikacija, prikaz početnog zaslona ili buđenje zaslona iz pozadine pri povezivanju. Dozvoli \"Prikaz preko ostalih aplikacija\".</string>
     <string name="notification_permission_hint_title">Dopuštenje za obavijesti</string>
     <string name="notification_permission_hint_message">Dajte dopuštenje za obavijesti kako biste vidjeli ažuriranja stanja pri prilagodbi glasnoće.</string>
-    <string name="dnd_access_hint_title">Pristup opciji Ne uznemiravaj</string>
+    <string name="dnd_access_hint_title">Pristup načinu Ne uznemiravaj</string>
     <string name="dnd_access_hint_message">Bez pristupa opciji Ne uznemiravaj, postavke zvona, obavijesti i načina Ne uznemiravaj ne mogu se primijeniti kada se vaši uređaji povežu.</string>
     <string name="dnd_access_fix_action">Dozvoli pristup</string>
     <!-- IAP Error Messages -->

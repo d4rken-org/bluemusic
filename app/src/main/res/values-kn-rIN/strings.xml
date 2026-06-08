@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">ದೃಶ್ಯ ಸರಿಹೊಂದಿಕೆಗಳು</string>
     <string name="devices_device_config_visible_adjustments_desc">ಈ ಅಪ್ಲಿಕೇಶನ್ ಈ ಸಾಧನಕ್ಕಾಗಿ ಸರಿಹೊಂದಿಕೆ ಮಾಡುವಾಗ ಸಿಸ್ಟಮ್ನ ವಾಲ್ಯೂಮ್ ವಿಂಡೋ ತೋರಿಸಿ.</string>
     <string name="devices_device_config_keep_awake_label">ಎಚ್ಚರಗೊಳಿಸಿ</string>
-    <string name="devices_device_config_keep_awake_desc">ಜೋಡಿಗೊಂಡಿರುವಾಗ ಸಾಧನವನ್ನು ಎಚ್ಚರಗೊಳಿಸಲು ಪ್ರಯತ್ನಿಸಿ. Android ಆವೃತ್ತಿ ಅವಲಂಬಿಸಿ ನಡವಳಿಕೆ ಭಿನ್ನವಾಗಬಹುದು.</string>
+    <string name="devices_device_config_keep_awake_desc">ಸಂಪರ್ಕಿತ ಸಮಯದಲ್ಲಿ ಅ್ಯಪ್ಲಿಕೇಶನ್ ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಕಾರ್ಯಕ್ಷಮವಾಗಿರುತ್ತದೆ ಆದ್ದರಿಂದ ವಾಲ್ಯೂಮ್ ನಿಯಂತ್ರಣ ಕೆಲಸ ಮಾಡುತ್ತಲೇ ಇರುತ್ತದೆ ಮತ್ತು ಸಾಧನ ಸಂಪರ್ಕಿತವಾದಾಗ ಪರದೆಯನ್ನು ಜಾಗೃತಗೊಳಿಸುತ್ತದೆ (\"ಇತರ ಆ್ಯಪ್‌ಗಳ ಮೇಲೆ ಪ್ರದರ್ಶನ\" ಅನುಮತಿ ಅಗತ್ಯ). ಹೊಸ Android ಆವೃತ್ತಿಗಳಲ್ಲಿ ಪರದೆ ತಾನಾಗಿಯೇ ಆಫ್ ಆಗಿಬಿಡಬಹುದು.</string>
     <string name="devices_device_config_volume_observe_label">ಬದಲಾವಣೆಗಳನ್ನು ಗಮನಿಸಿ</string>
     <string name="devices_device_config_volume_observe_desc">ಈ ಸಾಧನ ಜೋಡಿಗೊಂಡಿರುವಾಗ ಸಕ್ರಿಯವಾಗಿರಿ ಮತ್ತು ಈ ಅಪ್ಲಿಕೇಶನ್ ಮಾಡ್ಯದ ವಾಲ್ಯೂಮ್ ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿಕೊಳ್ಳಿ.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ಸಂಪರ್ಕ ಕೆಳೆದಾಗ ವಾಲ್ಯೂಮ್ ಉಳಿಸಿ</string>
@@ -397,8 +397,8 @@
     <string name="battery_optimization_hint_title">ಬ್ಯಾಟರಿ ಆಪ್ಟಿಮೈಜೇಶನ್</string>
     <string name="battery_optimization_hint_message">ಬ್ಯಾಟರಿ ಆಪ್ಟಿಮೈಜೇಶನ್‌ಗಳು ಸಕ್ರಿಯವಾಗಿವೆ ಮತ್ತು ಸರಿಯಾದ ಕಾರ್ಯಾಚರಣೆಗೆ ತಡೆಯಾಗಬಹುದು. ಅವುಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲು ಪರಿಗಣಿಸಿ</string>
     <string name="battery_optimization_fix_action">ಆಪ್ಟಿಮೈಜೇಶನ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ</string>
-    <string name="android10_applaunch_hint_title">ಅಪ್ ಪ್ರಾರಂಭ ಅನುಮತಿ</string>
-    <string name="android10_applaunch_hint_message">Android 10 ಹಿನ್ನೆಲೆಯಿಂದ ಅಪ್‌ಗಳನ್ನು ಪ್ರಾರಂಭಿಸಲು ಅಥವಾ ಮುಖಪುಟ ತೋರಿಸಲು ವಿಶೇಷ ಅನುಮತಿ ಅಪೇಕ್ಷಿಸುತ್ತದೆ. \"ಇತರ ಅಪ್‌ಗಳ ಮೇಲೆ ಪ್ರದರ್ಶನ\" ಅನುಮತಿ ನೀಡಿ</string>
+    <string name="android10_applaunch_hint_title">ಇತರ ಆ್ಯಪ್‌ಗಳ ಮೇಲೆ ಪ್ರದರ್ಶನ ಅನುಮತಿ</string>
+    <string name="android10_applaunch_hint_message">Android 10+ ಗೆ ಆ್ಯಪ್‌ಗಳನ್ನು ಪ್ರಾರಂಭಿಸಲು, ಮುಖಪುಟವನ್ನು ತೋರಿಸಲು ಅಥವಾ ಸಂಪರ್ಕವಾದಾಗ ಹಿನ್ನೆಲೆಯಿಂದ ಪರದೆಯನ್ನು ಜಾಗೃತಗೊಳಿಸಲು ವಿಶೇಷ ಅನುಮತಿ ಅಗತ್ಯ. \"ಇತರ ಆ್ಯಪ್‌ಗಳ ಮೇಲೆ ಪ್ರದರ್ಶನ\" ಅನುಮತಿ ನೀಡಿ.</string>
     <string name="notification_permission_hint_title">ಅಧಿಸೂಚನೆ ಅನುಮತಿ</string>
     <string name="notification_permission_hint_message">ವಾಲ್ಯೂಮ್ ಸರಿಯಾಸುವಾಗ ಸ್ಟೇಟಸ್ ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ನೋಡಲು ಅಧಿಸೂಚನೆ ಅನುಮತಿ ನೀಡಿ</string>
     <string name="dnd_access_hint_title">ಡೂ ನಾಟ್ ಡಿಸ್ಟರ್ಬ್ ಪ್ರವೇಶ</string>

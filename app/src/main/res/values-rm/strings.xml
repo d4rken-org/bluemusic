@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Adattaments visibels</string>
     <string name="devices_device_config_visible_adjustments_desc">Mussar la fanestra da volum dal sistem cura ch\'esta app fa adattaments per quest apparat.</string>
     <string name="devices_device_config_keep_awake_label">Tegnair svegl</string>
-    <string name="devices_device_config_keep_awake_desc">Emprova da tegnair l\'apparat svegl durant la connexiun. Il cumportament po variar tenor la versiun d\'Android.</string>
+    <string name="devices_device_config_keep_awake_desc">Mantegna l\'app sveglia en il fund durant la connexiun per che la controlla da la forza da tun cuntinuescha a funcziunar, e sveglia l\'ecran sch\'ina apparat sa conecta (necessita la permission «Visualisaziun davart otras apps»). En versiuns pli novas d\'Android po che l\'ecran sa stizza anc da sez.</string>
     <string name="devices_device_config_volume_observe_label">Observar midadas</string>
     <string name="devices_device_config_volume_observe_desc">Restar activ cura che quest apparat è connectà e salvar midadas da volum che n\'han betg vegnì chaschunadas da questa app.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Salvar il volum tar la disconnexiun</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Optimisaziún da battaria</string>
     <string name="battery_optimization_hint_message">Las optimisaziuns da battaria èn activadas e pon evitar il funcziun correct. Considera da deactivarlas.</string>
     <string name="battery_optimization_fix_action">Deactivar optimisaziuns</string>
-    <string name="android10_applaunch_hint_title">Permissiun per aviar apps</string>
-    <string name="android10_applaunch_hint_message">Android 10 dastga ina permissiun speziala per aviar apps u mussar la pagina principala dal fund. Conceder la permissiun \"Mussar sur autras apps\".</string>
+    <string name="android10_applaunch_hint_title">Permission da visualisaziun davart apps</string>
+    <string name="android10_applaunch_hint_message">Android 10+ necessita ina permission speziala per pudair avrir apps, mussar la fanestra da start u svegliar l\'ecran dal fund cun ina connexiun. Permetta la permission «Visualisaziun davart otras apps».</string>
     <string name="notification_permission_hint_title">Permissiun da notificaziún</string>
     <string name="notification_permission_hint_message">Conceder la permissiun da notificaziún per vair actualisaziuns da status cura ch\'ins adattescha ils volumes.</string>
     <string name="dnd_access_hint_title">Access a «Na disturbar»</string>
@@ -413,7 +413,7 @@
     <!-- App Selection -->
     <string name="devices_app_selection_title">Tscherner apps</string>
     <string name="devices_app_selection_search_hint">Retscherchar apps…</string>
-    <string name="devices_app_selection_currently_selected">Actualamain tschernì</string>
+    <string name="devices_app_selection_currently_selected">Actualmain selecziunà</string>
     <string name="devices_app_selection_selected_count">%d apps tschernidas</string>
     <string name="general_navigate_back_action">Navigar enavos</string>
     <string name="general_reset_action">Reinizialisar</string>

@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Synlige justeringer</string>
     <string name="devices_device_config_visible_adjustments_desc">Slå på/av hvilke justeringer som vises på enhetskortet</string>
     <string name="devices_device_config_keep_awake_label">Hold aktiv</string>
-    <string name="devices_device_config_keep_awake_desc">Prøv å holde enheten våken mens den er tilkoblet. Oppførselen kan variere avhengig av Android-versjon.</string>
+    <string name="devices_device_config_keep_awake_desc">Holder appen aktiv i bakgrunnen mens du er koblet til slik at volumkontroll fungerer, og vekker skjermen når en enhet kobles til (krever tillatelsen \"Vis over andre apper\"). På nyere Android-versjoner kan skjermen fortsatt slås av av seg selv.</string>
     <string name="devices_device_config_volume_observe_label">Observer endringer</string>
     <string name="devices_device_config_volume_observe_desc">Forbli aktiv mens denne enheten er tilkoblet og lagre volumendringer som ikke har blitt forvoldt av denne appen.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Lagre volum ved frakobling</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Batterioptimalisering</string>
     <string name="battery_optimization_hint_message">Batterioptimaliseringer er aktivert og kan forhindre riktig drift. Vurder å deaktivere dem.</string>
     <string name="battery_optimization_fix_action">Deaktiver optimaliseringer</string>
-    <string name="android10_applaunch_hint_title">App-oppstartstillatelse</string>
-    <string name="android10_applaunch_hint_message">Android 10 krever spesiell tillatelse for å starte apper fra bakgrunnen. Gi \"Vis over andre apper\"-tillatelse.</string>
+    <string name="android10_applaunch_hint_title">Tillatelse for å vise over apper</string>
+    <string name="android10_applaunch_hint_message">Android 10+ trenger en spesiell tillatelse for å starte apper, vise startskjermen eller vekke skjermen fra bakgrunnen når en enhet kobles til. Gi tillatelsen \"Vis over andre apper\".</string>
     <string name="notification_permission_hint_title">Varslingstillatelse</string>
     <string name="notification_permission_hint_message">Gi varslingstillatelse for å se statusoppdateringer når volum justeres.</string>
     <string name="dnd_access_hint_title">Ikke forstyrr-tilgang</string>

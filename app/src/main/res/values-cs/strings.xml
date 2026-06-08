@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Viditelné změny</string>
     <string name="devices_device_config_visible_adjustments_desc">Zobrazit systémové okno hlasitosti, když aplikace upravuje hlasitost pro toto zařízení.</string>
     <string name="devices_device_config_keep_awake_label">Zakázat režim spánku</string>
-    <string name="devices_device_config_keep_awake_desc">Ponechá obrazovku zapnutou během připojení.</string>
+    <string name="devices_device_config_keep_awake_desc">Udržuje aplikaci aktivní na pozadí při připojení, aby ovládání hlasitosti stále fungovalo, a probouzí obrazovku při připojení zařízení (vyžaduje oprávnění \"Zobrazit přes ostatní aplikace\"). Na novějších verzích Androidu se obrazovka přesto může vypnout sama.</string>
     <string name="devices_device_config_volume_observe_label">Sledování změn</string>
     <string name="devices_device_config_volume_observe_desc">Zůstaňte na pozoru, když je toto zařízení připojeno a uložte změny hlasitosti, které nepocházejí z této aplikace.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Uložit hlasitost při odpojení</string>
@@ -406,8 +406,8 @@
     <string name="battery_optimization_hint_title">Optimalizace baterie</string>
     <string name="battery_optimization_hint_message">Optimalizace baterie je zapnutá a může bránit správnému fungování. Zvažte její vypnutí.</string>
     <string name="battery_optimization_fix_action">Vypnout optimalizace</string>
-    <string name="android10_applaunch_hint_title">Oprávnění ke spuštění aplikace</string>
-    <string name="android10_applaunch_hint_message">Android 10 vyžaduje speciální oprávnění k spouštění aplikací nebo zobrazení domovské obrazovky na pozadí. Udělejte oprávnění \"Zobrazit přes ostatní aplikace\".</string>
+    <string name="android10_applaunch_hint_title">Oprávnění \"Zobrazit přes ostatní aplikace\"</string>
+    <string name="android10_applaunch_hint_message">Android 10+ vyžaduje zvláštní oprávnění ke spuštění aplikací, zobrazení domovské obrazovky nebo probuzení obrazovky z pozadí při připojení. Udělte oprávnění \"Zobrazit přes ostatní aplikace\".</string>
     <string name="notification_permission_hint_title">Oprávnění pro oznámení</string>
     <string name="notification_permission_hint_message">Udělte oprávnění k zobrazování aktualizací stavu při nastavování hlasitosti.</string>
     <string name="dnd_access_hint_title">Přístup k režimu Nerušit</string>

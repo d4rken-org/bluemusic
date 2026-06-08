@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Điều chỉnh hiển thị</string>
     <string name="devices_device_config_visible_adjustments_desc">Chuyển đổi điều chỉnh nào được hiển thị trên thẻ thiết bị</string>
     <string name="devices_device_config_keep_awake_label">Giữ màn hình sáng</string>
-    <string name="devices_device_config_keep_awake_desc">Giữ màn hình bật trong khi thiết bị này được kết nối.</string>
+    <string name="devices_device_config_keep_awake_desc">Giữ ứng dụng hoạt động trong nền khi kết nối để điều khiển âm lượng tiếp tục hoạt động, và đánh thức màn hình khi một thiết bị kết nối (cần quyền \"Hiển thị trên ứng dụng khác\"). Trên các phiên bản Android mới hơn, màn hình vẫn có thể tự tắt.</string>
     <string name="devices_device_config_volume_observe_label">Theo dõi thay đổi</string>
     <string name="devices_device_config_volume_observe_desc">Duy trì hoạt động khi thiết bị này kết nối và lưu các thay đổi âm lượng không do ứng dụng này gây ra.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Lưu âm lượng khi ngắt kết nối</string>
@@ -394,8 +394,8 @@ TheNothingGuy</string>
     <string name="battery_optimization_hint_title">Tối ưu hóa pin</string>
     <string name="battery_optimization_hint_message">Tối ưu hóa pin đang bật và có thể ngăn cản hoạt động bình thường. Hãy cân nhắc tắt chúng.</string>
     <string name="battery_optimization_fix_action">Tắt tối ưu hóa</string>
-    <string name="android10_applaunch_hint_title">Quyền khởi động ứng dụng</string>
-    <string name="android10_applaunch_hint_message">Android 10 yêu cầu quyền đặc biệt để khởi động ứng dụng từ nền. Cấp quyền &quot;Hiển thị trên các ứng dụng khác&quot;.</string>
+    <string name="android10_applaunch_hint_title">Quyền hiển thị trên ứng dụng khác</string>
+    <string name="android10_applaunch_hint_message">Android 10+ cần một quyền đặc biệt để khởi chạy ứng dụng, hiển thị màn hình chính hoặc đánh thức màn hình từ nền khi kết nối. Cấp quyền \"Hiển thị trên ứng dụng khác\".</string>
     <string name="notification_permission_hint_title">Quyền thông báo</string>
     <string name="notification_permission_hint_message">Cấp quyền thông báo để xem cập nhật trạng thái khi điều chỉnh âm lượng.</string>
     <string name="dnd_access_hint_title">Quyền truy cập Không làm phiền</string>

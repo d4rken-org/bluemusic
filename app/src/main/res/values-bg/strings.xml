@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Видими настройки</string>
     <string name="devices_device_config_visible_adjustments_desc">Показвай системния прозорец за звука, докато приложението регулира звука за това устройство.</string>
     <string name="devices_device_config_keep_awake_label">Остани буден</string>
-    <string name="devices_device_config_keep_awake_desc">Опитва се да поддържа устройството будно докато е свързано. Поведението може да се различава в зависимост от версията на Android.</string>
+    <string name="devices_device_config_keep_awake_desc">Поддържа приложението активно във фона, докато е свързано, така че контролът на звука да продължи да работи, и събужда екрана, когато устройство се свърже (изисква разрешението \"Показване над други приложения\"). На по-новите версии на Android екранът все още може да се изключи самостоятелно.</string>
     <string name="devices_device_config_volume_observe_label">Наблюдавай промените</string>
     <string name="devices_device_config_volume_observe_desc">Остани активен докато устройството е свързано и запазвай промените в силата на звука, които не са причинени от това приложение.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Запази силата на звука при изключване</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Оптимизация на батерията</string>
     <string name="battery_optimization_hint_message">Оптимизациите на батерията са включени и могат да попречат на нормалната работа. Помисли да ги изключиш.</string>
     <string name="battery_optimization_fix_action">Изключи оптимизациите</string>
-    <string name="android10_applaunch_hint_title">Разрешение за стартиране на приложения</string>
-    <string name="android10_applaunch_hint_message">Android 10 изисква специално разрешение за стартиране на приложения или показване на начален екран от фон. Предостави разрешение „Показване върху други приложения\".</string>
+    <string name="android10_applaunch_hint_title">Разрешение за показване над приложения</string>
+    <string name="android10_applaunch_hint_message">Android 10+ изисква специално разрешение за стартиране на приложения, показване на началния екран или събуждане на екрана от фона при свързване. Дайте разрешението \"Показване над други приложения\".</string>
     <string name="notification_permission_hint_title">Разрешение за известия</string>
     <string name="notification_permission_hint_message">Предостави разрешение за известия, за да виждаш актуализации на статуса при настройване на звука.</string>
     <string name="dnd_access_hint_title">Достъп до режим Не пречи</string>

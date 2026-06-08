@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Ko\'rinadigan sozlamalar</string>
     <string name="devices_device_config_visible_adjustments_desc">Bu ilova ushbu qurilma uchun sozlamalar amalga oshirayotganda tizimning ovoz oynasini ko\'rsatish.</string>
     <string name="devices_device_config_keep_awake_label">Uyg\'oq saqlash</string>
-    <string name="devices_device_config_keep_awake_desc">Ulanganda qurilmani uyg\'oq saqlashga harakat qilish. Xatti-harakat Android versiyasiga qarab farq qilishi mumkin.</string>
+    <string name="devices_device_config_keep_awake_desc">Ilovani orqa fonda faol holatda saqlaydi, ulanганиda ovoz boshqaruvi ishlashda davom etadi va qurilma ulanganda ekranni uyg\'otadi (\"Boshqa ilovalar ustida ko\'rsatish\" ruxsati talab qilinadi). Android\'ning yangi versiyalarida ekran baribir o\'z-o\'zidan o\'chib qolishi mumkin.</string>
     <string name="devices_device_config_volume_observe_label">O\'zgarishlarni kuzatish</string>
     <string name="devices_device_config_volume_observe_desc">Bu qurilma ulanganda faol bo\'lib turib, ushbu ilova tomonidan amalga oshirilmagan ovoz o\'zgarishlarini saqlash.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Uzilganda ovozni saqlash</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Batareya optimallashuvi</string>
     <string name="battery_optimization_hint_message">Batareya optimallashtirishlari yoqilgan va to\'g\'ri ishlashga to\'sqinlik qilishi mumkin. Ularni o\'chirishni ko\'ring.</string>
     <string name="battery_optimization_fix_action">Optimallashtirishlarni o\'chirish</string>
-    <string name="android10_applaunch_hint_title">Ilovani ishga tushirish ruxsati</string>
-    <string name="android10_applaunch_hint_message">Android 10 fonda ilovalarni ishga tushirish yoki bosh ekranni ko\'rsatish uchun maxsus ruxsat talab qiladi. \"Boshqa ilovalar ustida ko\'rsatish\" ruxsatini bering.</string>
+    <string name="android10_applaunch_hint_title">Ilovalar ustida ko\'rsatish ruxsati</string>
+    <string name="android10_applaunch_hint_message">Android 10+ ilovalarni ishga tushirish, bosh ekranni ko\'rsatish yoki orqa fondan ekranni uyg\'otish uchun maxsus ruxsatni talab qiladi. \"Boshqa ilovalar ustida ko\'rsatish\" ruxsatini bering.</string>
     <string name="notification_permission_hint_title">Bildirishnoma ruxsati</string>
     <string name="notification_permission_hint_message">Ovoz sozlanayotganda holat yangilanishlarini ko\'rish uchun bildirishnoma ruxsatini bering.</string>
     <string name="dnd_access_hint_title">Bezovta qilmang rejimiga kirish</string>

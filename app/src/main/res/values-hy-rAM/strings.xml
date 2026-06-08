@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Տեսանելի ճշգրտումներ</string>
     <string name="devices_device_config_visible_adjustments_desc">Ցուցադրել կարգաբերի ծավալի պատուհանը, երբ հավելվածն այս սարքի համար ճշգրտումներ է կատարում:</string>
     <string name="devices_device_config_keep_awake_label">Պահել արթուն</string>
-    <string name="devices_device_config_keep_awake_desc">Փորձել պահել սարքը արթուն կապված լինելու ժամանակ: Վարքը կարող է տարբեր լինել Android-ի տարբերակից կախված:</string>
+    <string name="devices_device_config_keep_awake_desc">Պահում է հավելվածը ակտիվ ֆոնային ռեժիմում, քանի դեռ միացված է, որպեսզի ձայնի կառավարումը շարունակի գործել, և արթնացնում է էկրանը, երբ սարք է միանում («Այլ հավելվածների վրա ցուցադրվել» թույլտվությունն է պետք): Android-ի ավելի նոր տարբերակներում էկրանը կարող է այնուամենայնիվ ինքնուրույն անջատվել:</string>
     <string name="devices_device_config_volume_observe_label">Դիտել փոփոխությունները</string>
     <string name="devices_device_config_volume_observe_desc">Ակտիվ մնալ, մինչ այս սարքը կապված է, և պահպանել ծավալի փոփոխությունները, որոնք չեն բուխված այս հավելվածի կողմից:</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Պահպանել ծավալը անջատելիս</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Մարտկոցի օպտիմալացում</string>
     <string name="battery_optimization_hint_message">Մարտկոցի օպտիմալացումները ինկնակակվածն լինելու կարող կան խոչինդոտել նորմալ աշխատանքին։ Մտածեք անջատելու մասին։</string>
     <string name="battery_optimization_fix_action">Անջատել օպտիմալացումները</string>
-    <string name="android10_applaunch_hint_title">Հավելված գորկալության թույլտվություն</string>
-    <string name="android10_applaunch_hint_message">Android 10-ը հավելվածները կամ գլխագլխի ելքնը բացելու համար հատկուկ թույլտվություն է պահանջվում։ Տրամադրել «Display over other apps» թույլտվությունը։</string>
+    <string name="android10_applaunch_hint_title">Հավելվածների վրա ցուցադրվելու թույլտվություն</string>
+    <string name="android10_applaunch_hint_message">Android 10+-ին անհրաժեշտ է հատուկ թույլտվություն՝ հավելվածներ գործարկելու, գլխավոր էկրանը ցույց տալու կամ միանալիս էկրանը ֆոնից արթնացնելու համար: Տրամադրեք «Այլ հավելվածների վրա ցուցադրվել» թույլտվությունը:</string>
     <string name="notification_permission_hint_title">Ծաբելությունների թույլտվություն</string>
     <string name="notification_permission_hint_message">Տրամադրել ծաբելությունների թույլտվությունը բակածական ելքնի կարգավորում կատարելիս կարգավիչակի ստացումներին տեսնելու։</string>
     <string name="dnd_access_hint_title">«Մի անհանգստացրեք» հասանելիություն</string>

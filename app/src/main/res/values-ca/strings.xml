@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Ajustos visibles</string>
     <string name="devices_device_config_visible_adjustments_desc">Alterna quins ajustaments es mostren a la targeta del dispositiu</string>
     <string name="devices_device_config_keep_awake_label">Mantén actiu</string>
-    <string name="devices_device_config_keep_awake_desc">Manté la pantalla activada mentre aquest dispositiu estigui connectat.</string>
+    <string name="devices_device_config_keep_awake_desc">Manté l\'aplicació activa en segon pla mentre està connectada perquè el control de volum funcioni, i desperta la pantalla quan es connecta un dispositiu (necessita el permís «Mostrar sobre altres aplicacions»). En versions més noves d\'Android, la pantalla pot apagar-se automàticament.</string>
     <string name="devices_device_config_volume_observe_label">Observa els canvis</string>
     <string name="devices_device_config_volume_observe_desc">Roman actiu mentre aquest dispositiu estigui connectat i desa els canvis de volum que no hagin estat causats per aquesta aplicació.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Desa el volum en desconnectar</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Optimització de la bateria</string>
     <string name="battery_optimization_hint_message">Les optimitzacions de la bateria estan activades i poden impedir el funcionament correcte. Considera desactivar-les.</string>
     <string name="battery_optimization_fix_action">Desactiva les optimitzacions</string>
-    <string name="android10_applaunch_hint_title">Permís d\'inici d\'aplicació</string>
-    <string name="android10_applaunch_hint_message">Android 10 requereix un permís especial per iniciar aplicacions o mostrar la pantalla d\'inici des del segon pla. Concedeix el permís «Mostra a sobre d\'altres aplicacions».</string>
+    <string name="android10_applaunch_hint_title">Permís de mostrar sobre altres aplicacions</string>
+    <string name="android10_applaunch_hint_message">Android 10+ necessita un permís especial per llançar aplicacions, mostrar la pantalla d\'inici o despertar la pantalla des de segon pla quan es connecta un dispositiu. Concedeix el permís «Mostrar sobre altres aplicacions».</string>
     <string name="notification_permission_hint_title">Permís de notificació</string>
     <string name="notification_permission_hint_message">Concedeix el permís de notificació per veure actualitzacions d\'estat quan s\'ajusten els volums.</string>
     <string name="dnd_access_hint_title">Accés a No molestar</string>
