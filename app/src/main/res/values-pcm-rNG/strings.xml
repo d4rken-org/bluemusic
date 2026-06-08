@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Visible adjustments</string>
     <string name="devices_device_config_visible_adjustments_desc">Show di system volume window while dis app dey make adjustments for dis device.</string>
     <string name="devices_device_config_keep_awake_label">Keep awake</string>
-    <string name="devices_device_config_keep_awake_desc">Try keep di device awake while e dey connected. Behavior fit differ depending on Android version.</string>
+    <string name="devices_device_config_keep_awake_desc">E dey keep di app awake for background while e don connect so volume control go continue to work, and e go wake screen when device don connect (e need di \"Display over other apps\" permission). On newer Android versions di screen fit still turn off on im own.</string>
     <string name="devices_device_config_volume_observe_label">Observe changes</string>
     <string name="devices_device_config_volume_observe_desc">Stay active while dis device dey connected and save volume changes wey dis app no cause.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Save volume on disconnect</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Battery optimization</string>
     <string name="battery_optimization_hint_message">Battery optimizations dey enabled and fit prevent di app from working properly. Consider disable dem.</string>
     <string name="battery_optimization_fix_action">Disable optimizations</string>
-    <string name="android10_applaunch_hint_title">App launch permission</string>
-    <string name="android10_applaunch_hint_message">Android 10 need special permission to launch apps or show home screen from background. Grant \"Display over other apps\" permission.</string>
+    <string name="android10_applaunch_hint_title">Permission to show on top of other apps</string>
+    <string name="android10_applaunch_hint_message">Android 10+ need special permission to launch apps, show di home screen, or wake screen from background when device don connect. Give \"Display over other apps\" permission.</string>
     <string name="notification_permission_hint_title">Notification permission</string>
     <string name="notification_permission_hint_message">Grant notification permission to see status updates when dem dey adjust volumes.</string>
     <string name="dnd_access_hint_title">Do Not Disturb access</string>

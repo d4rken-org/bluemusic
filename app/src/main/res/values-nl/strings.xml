@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Zichtbare aanpassingen</string>
     <string name="devices_device_config_visible_adjustments_desc">Schakel in welke aanpassingen worden getoond op de apparaatkaart</string>
     <string name="devices_device_config_keep_awake_label">Ingeschakeld houden</string>
-    <string name="devices_device_config_keep_awake_desc">Houd het scherm aan terwijl dit apparaat is aangesloten.</string>
+    <string name="devices_device_config_keep_awake_desc">Houdt de app actief op de achtergrond terwijl deze verbonden is, zodat volumebeheer blijft werken, en schakelt het scherm in wanneer een apparaat verbinding maakt (vereist de \"Weergeven over andere apps\"-toestemming). Op nieuwere Android-versies kan het scherm toch nog vanzelf uitschakelen.</string>
     <string name="devices_device_config_volume_observe_label">Wijzigingen observeren</string>
     <string name="devices_device_config_volume_observe_desc">Blijf actief terwijl dit apparaat verbonden is en sla volumewijzigingen op die niet door deze app zijn veroorzaakt.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Volume opslaan bij verbreking</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Batterijoptimalisatie</string>
     <string name="battery_optimization_hint_message">Batterijoptimalisaties zijn ingeschakeld en kunnen de juiste werking verstoren. Overweeg ze uit te schakelen.</string>
     <string name="battery_optimization_fix_action">Optimalisaties uitschakelen</string>
-    <string name="android10_applaunch_hint_title">App-start toestemming</string>
-    <string name="android10_applaunch_hint_message">Android 10 vereist speciale toestemming om apps vanuit de achtergrond te starten. Verleen &quot;Over andere apps weergeven&quot; toestemming.</string>
+    <string name="android10_applaunch_hint_title">Toestemming voor weergeven over apps</string>
+    <string name="android10_applaunch_hint_message">Android 10+ heeft een speciale toestemming nodig om apps te starten, het startscherm weer te geven of het scherm vanuit de achtergrond in te schakelen wanneer een apparaat verbinding maakt. Verleen de \"Weergeven over andere apps\"-toestemming.</string>
     <string name="notification_permission_hint_title">Meldingstoestemming</string>
     <string name="notification_permission_hint_message">Geef meldingstoestemming om statusupdates te zien bij het aanpassen van volumes.</string>
     <string name="dnd_access_hint_title">Niet storen-toegang</string>

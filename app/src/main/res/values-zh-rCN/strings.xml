@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">可见的调整</string>
     <string name="devices_device_config_visible_adjustments_desc">当此应用为此设备进行调整时，显示系统的音量窗口。</string>
     <string name="devices_device_config_keep_awake_label">保持唤醒</string>
-    <string name="devices_device_config_keep_awake_desc">尝试在连接时保持设备唤醒。行为可能因Android版本而异。</string>
+    <string name="devices_device_config_keep_awake_desc">在连接时保持应用在后台运行，以便音量控制继续工作，并在设备连接时唤醒屏幕（需要“显示在其他应用上层”权限）。在较新的 Android 版本上，屏幕仍可能自动关闭。</string>
     <string name="devices_device_config_volume_observe_label">监听变化</string>
     <string name="devices_device_config_volume_observe_desc">在此设备连接时保持活动状态，并保存非此应用引起的音量变化。</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">断开连接时保存音量</string>
@@ -391,11 +391,11 @@
     <string name="battery_optimization_hint_title">电池优化</string>
     <string name="battery_optimization_hint_message">已启用电池优化，可能会阻止正常操作。请考虑禁用它们。</string>
     <string name="battery_optimization_fix_action">禁用优化</string>
-    <string name="android10_applaunch_hint_title">应用启动权限</string>
-    <string name="android10_applaunch_hint_message">Android 10 需要特殊权限才能从后台启动应用。请授予“在其他应用上层显示”权限。</string>
+    <string name="android10_applaunch_hint_title">显示在其他应用上层权限</string>
+    <string name="android10_applaunch_hint_message">Android 10 及更高版本需要特殊权限来启动应用、显示主屏幕或在后台连接时唤醒屏幕。请授予“显示在其他应用上层”权限。</string>
     <string name="notification_permission_hint_title">通知权限</string>
     <string name="notification_permission_hint_message">授予通知权限以在调整音量时查看状态更新。</string>
-    <string name="dnd_access_hint_title">免打扰权限</string>
+    <string name="dnd_access_hint_title">勿扰模式访问权限</string>
     <string name="dnd_access_hint_message">如果没有免打扰权限，当设备连接时将无法应用铃声、通知和免打扰模式设置。</string>
     <string name="dnd_access_fix_action">授予权限</string>
     <!-- IAP Error Messages -->

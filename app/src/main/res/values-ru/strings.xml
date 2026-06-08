@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Видимые настройки</string>
     <string name="devices_device_config_visible_adjustments_desc">Переключение отображаемых настроек на карточке устройства</string>
     <string name="devices_device_config_keep_awake_label">Активный режим</string>
-    <string name="devices_device_config_keep_awake_desc">Оставлять экран включённым при подключенном устройстве.</string>
+    <string name="devices_device_config_keep_awake_desc">Держит приложение активным в фоне при подключении, чтобы управление громкостью продолжало работать, и пробуждает экран при подключении устройства (требует разрешение «Поверх других приложений»). На новых версиях Android экран может всё равно отключиться автоматически.</string>
     <string name="devices_device_config_volume_observe_label">Отслеживать изменения</string>
     <string name="devices_device_config_volume_observe_desc">Оставаться активным пока устройство подключено и сохранять изменения громкости, которые не были вызваны этим приложением.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Сохранить громкость при отключении</string>
@@ -97,6 +97,12 @@
     <string name="devices_autoplay_keycode_rewind_desc">Перемотать текущий трек назад</string>
     <string name="devices_autoplay_keycode_fast_forward_desc">Быстрая перемотка текущего трека</string>
     <string name="devices_autoplay_keycode_unknown_label">Неизвестно (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d команда</item>
+        <item quantity="few">%d команды</item>
+        <item quantity="many">%d команд</item>
+        <item quantity="other">%d команды</item>
+    </plurals>
     <string name="cd_autoplay_keycode_move_up">Переместить выше</string>
     <string name="cd_autoplay_keycode_move_down">Переместить ниже</string>
     <string name="cd_autoplay_keycode_remove">Удалить</string>
@@ -400,8 +406,8 @@
     <string name="battery_optimization_hint_title">Оптимизация батареи</string>
     <string name="battery_optimization_hint_message">Оптимизация батареи включена и может мешать нормальной работе. Рассмотри возможность отключения.</string>
     <string name="battery_optimization_fix_action">Отключить оптимизацию</string>
-    <string name="android10_applaunch_hint_title">Разрешение на запуск приложений</string>
-    <string name="android10_applaunch_hint_message">Android 10 требует специальное разрешение для запуска приложений из фона. Предоставь разрешение &quot;Отображать поверх других приложений&quot;.</string>
+    <string name="android10_applaunch_hint_title">Разрешение «Поверх других приложений»</string>
+    <string name="android10_applaunch_hint_message">Android 10+ требует специального разрешения для запуска приложений, отображения главного экрана или пробуждения экрана из фона при подключении. Выдай разрешение «Поверх других приложений».</string>
     <string name="notification_permission_hint_title">Разрешение на уведомления</string>
     <string name="notification_permission_hint_message">Предоставь разрешение на уведомления, чтобы видеть обновления статуса при настройке громкости.</string>
     <string name="dnd_access_hint_title">Доступ к режиму «Не беспокоить»</string>

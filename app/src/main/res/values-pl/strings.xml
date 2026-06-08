@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Widoczne dostosowania</string>
     <string name="devices_device_config_visible_adjustments_desc">Pokazuj systemowe okno głośności, gdy aplikacja dostosowuje głośność dla tego urządzenia.</string>
     <string name="devices_device_config_keep_awake_label">Utrzymaj wybudzony</string>
-    <string name="devices_device_config_keep_awake_desc">Zachowuje ekran w stanie wybudzenia, gdy urządzenie jest podłączone.</string>
+    <string name="devices_device_config_keep_awake_desc">Utrzymuje aplikację aktywną w tle podczas połączenia, aby kontrola głośności działała prawidłowo, i włącza ekran po podłączeniu urządzenia (wymaga uprawnienia „Wyświetlanie nad innymi aplikacjami”). Na nowszych wersjach Androida ekran może mimo to wyłączyć się samodzielnie.</string>
     <string name="devices_device_config_volume_observe_label">Obserwuj zmiany</string>
     <string name="devices_device_config_volume_observe_desc">Pozostań aktywny, gdy to urządzenie jest połączone i zapisuj zmiany głośności, które nie zostały spowodowane przez tę aplikację.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Zapisz głośność przy rozłączeniu</string>
@@ -407,8 +407,8 @@ Karol Szastok (K4r0lSz);</string>
     <string name="battery_optimization_hint_title">Optymalizacja baterii</string>
     <string name="battery_optimization_hint_message">Optymalizacje baterii są włączone i mogą przeszkódzić w prawidłowym działaniu. Rozważ ich wyłączenie.</string>
     <string name="battery_optimization_fix_action">Wyłącz optymalizacje</string>
-    <string name="android10_applaunch_hint_title">Uprawnienie uruchamiania aplikacji</string>
-    <string name="android10_applaunch_hint_message">Android 10 wymaga specjalnego uprawnienia do uruchamiania aplikacji w tle. Przyznaj uprawnienie &quot;Wyświetlanie nad innymi aplikacjami&quot;.</string>
+    <string name="android10_applaunch_hint_title">Uprawnienie do wyświetlania nad aplikacjami</string>
+    <string name="android10_applaunch_hint_message">Android 10+ wymaga specjalnego uprawnienia do uruchamiania aplikacji, wyświetlania ekranu głównego lub włączania ekranu z tła po podłączeniu. Udziel uprawnienia „Wyświetlanie nad innymi aplikacjami”.</string>
     <string name="notification_permission_hint_title">Uprawnienie do powiadomień</string>
     <string name="notification_permission_hint_message">Przyznaj uprawnienie do powiadomień, aby widzieć aktualizacje stanu podczas dostosowywania głośności.</string>
     <string name="dnd_access_hint_title">Dostęp do trybu Nie przeszkadzać</string>

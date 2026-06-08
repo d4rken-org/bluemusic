@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">表示される調整</string>
     <string name="devices_device_config_visible_adjustments_desc">デバイスカードに表示される調整項目を切り替えます</string>
     <string name="devices_device_config_keep_awake_label">スリープモードにしない</string>
-    <string name="devices_device_config_keep_awake_desc">このデバイスが接続されている間は、画面をオンのままにします。</string>
+    <string name="devices_device_config_keep_awake_desc">接続されている間、アプリをバックグラウンドで実行し続けるため、音量コントロールが機能し続けます。デバイスが接続されたときに画面をオンにします（「他のアプリの上に重ねて表示」権限が必要です）。新しいAndroidバージョンでは、画面が自動的にオフになる可能性があります。</string>
     <string name="devices_device_config_volume_observe_label">変更を監視</string>
     <string name="devices_device_config_volume_observe_desc">このデバイスが接続されている間はアクティブのままにし、このアプリが原因ではない音量変更を保存します。</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">切断時に音量を保存</string>
@@ -391,8 +391,8 @@
     <string name="battery_optimization_hint_title">バッテリー最適化</string>
     <string name="battery_optimization_hint_message">バッテリー最適化が有効になっており、正常な動作を妨げる可能性があります。無効にすることを検討してください。</string>
     <string name="battery_optimization_fix_action">最適化を無効にする</string>
-    <string name="android10_applaunch_hint_title">アプリ起動許可</string>
-    <string name="android10_applaunch_hint_message">Android 10ではバックグラウンドからアプリを起動するために特別な許可が必要です。「他のアプリ上に表示」許可を与えてください。</string>
+    <string name="android10_applaunch_hint_title">他のアプリの上に重ねて表示権限</string>
+    <string name="android10_applaunch_hint_message">Android 10以降では、バックグラウンドからアプリを起動したり、ホーム画面を表示したり、画面をオンにするために特別な権限が必要です。「他のアプリの上に重ねて表示」権限を付与してください。</string>
     <string name="notification_permission_hint_title">通知許可</string>
     <string name="notification_permission_hint_message">音量調整時に状態更新を見るために通知許可を与えてください。</string>
     <string name="dnd_access_hint_title">サイレントモードへのアクセス</string>

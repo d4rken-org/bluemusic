@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">కనిపించే సర్దుబాట్లు</string>
     <string name="devices_device_config_visible_adjustments_desc">ఈ యాప్ ఈ పరికరం కోసం సర్దుబాట్లు చేస్తున్నప్పుడు సిస్టమ్ వాల్యూమ్ విండో చూపించు.</string>
     <string name="devices_device_config_keep_awake_label">మేలుకునే ఉంచు</string>
-    <string name="devices_device_config_keep_awake_desc">కనెక్ట్ అయి ఉన్నప్పుడు పరికరాన్ని మేలుకునే ఉంచడానికి ప్రయత్నించండి. Android వెర్షన్‌ను బట్టి ప్రవర్తన మారవచ్చు.</string>
+    <string name="devices_device_config_keep_awake_desc">అనుసంధానించినప్పుడు యాప్‌ను నేపథ్యంలో మెలకువగా ఉంచుతుంది కాబట్టి వాల్యూమ్ నియంత్రణ కొనసాగుతుంది, మరియు ఒక పరికరం కనెక్ట్ అయినప్పుడు స్క్రీన్‌ను నిద్రలేపుతుంది (\"ఇతర యాప్‌ల పైన ప్రదర్శన\" అనుమతి అవసరం). కొత్త Android సంస్కరణలలో స్క్రీన్ ఇప్పటికీ తనంతట తానే ఆఫ్ అయిపోవచ్చు.</string>
     <string name="devices_device_config_volume_observe_label">మార్పులను గమనించు</string>
     <string name="devices_device_config_volume_observe_desc">ఈ పరికరం కనెక్ట్ అయి ఉన్నప్పుడు చురుగ్గా ఉండి, ఈ యాప్ వల్ల కాని వాల్యూమ్ మార్పులను సేవ్ చేయండి.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">డిస్‌కనెక్ట్ అయినప్పుడు వాల్యూమ్ సేవ్ చేయి</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">బ్యాటరీ ఆప్టిమైజేషన్</string>
     <string name="battery_optimization_hint_message">బ్యాటరీ ఆప్టిమైజేషన్‌లు ప్రారంభించబడ్డాయి మరియు సరైన పనితీరును నిరోధించవచ్చు. వాటిని నిలిపివేయడాన్ని పరిగణించండి.</string>
     <string name="battery_optimization_fix_action">ఆప్టిమైజేషన్‌లను నిలిపివేయి</string>
-    <string name="android10_applaunch_hint_title">యాప్ లాంచ్ అనుమతి</string>
-    <string name="android10_applaunch_hint_message">Android 10 బ్యాక్‌గ్రౌండ్ నుండి యాప్‌లు ప్రారంభించడానికి లేదా హోమ్ స్క్రీన్ చూపించడానికి ప్రత్యేక అనుమతి అవసరం. \"ఇతర యాప్‌లపై ప్రదర్శించు\" అనుమతిని మంజూరు చేయండి.</string>
+    <string name="android10_applaunch_hint_title">యాప్‌ల పైన ప్రదర్శన అనుమతి</string>
+    <string name="android10_applaunch_hint_message">Android 10+ యాప్‌లను ప్రారంభించటానికి, హోమ్ స్క్రీన్‌ను చూపించటానికి, లేదా నేపథ్యం నుండి కనెక్ట్‌పై స్క్రీన్‌ను నిద్రలేపటానికి ఒక ప్రత్యేక అనుమతి అవసరం. \"ఇతర యాప్‌ల పైన ప్రదర్శన\" అనుమతిని ఇవ్వండి.</string>
     <string name="notification_permission_hint_title">నోటిఫికేషన్ అనుమతి</string>
     <string name="notification_permission_hint_message">వాల్యూమ్‌లు సర్దుబాటు చేసేటప్పుడు స్టేటస్ అప్‌డేట్‌లు చూడడానికి నోటిఫికేషన్ అనుమతి మంజూరు చేయండి.</string>
     <string name="dnd_access_hint_title">డు నాట్ డిస్టర్బ్ యాక్సెస్</string>

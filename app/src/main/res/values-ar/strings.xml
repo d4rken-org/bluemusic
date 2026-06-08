@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">التعديلات المرئية</string>
     <string name="devices_device_config_visible_adjustments_desc">تبديل التطبيقات التي يتم عرضها على بطاقة الجهاز</string>
     <string name="devices_device_config_keep_awake_label">ابق مستيقظ</string>
-    <string name="devices_device_config_keep_awake_desc">ابق الشاشة منشطة بينما هذا الجهاز متصل.</string>
+    <string name="devices_device_config_keep_awake_desc">تبقي التطبيق مستيقظًا في الخلفية أثناء الاتصال بحيث يستمر التحكم في مستوى الصوت في العمل، وتوقظ الشاشة عند توصيل جهاز (يتطلب إذن \"العرض فوق التطبيقات الأخرى\"). على إصدارات Android الأحدث قد تنطفئ الشاشة من تلقاء نفسها على أي حال.</string>
     <string name="devices_device_config_volume_observe_label">مراقبة التغييرات</string>
     <string name="devices_device_config_volume_observe_desc">ابق نشطاً بينما هذا الجهاز متصل واحفظ تغييرات الصوت التي لم يسببها هذا التطبيق.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">حفظ الصوت عند قطع الاتصال</string>
@@ -416,8 +416,8 @@
     <string name="battery_optimization_hint_title">تحسين البطارية</string>
     <string name="battery_optimization_hint_message">تحسينات البطارية مفعلة وقد تمنع الأداء الصحيح. فكر في تعطيلها.</string>
     <string name="battery_optimization_fix_action">تعطيل التحسينات</string>
-    <string name="android10_applaunch_hint_title">إذن إطلاق التطبيق</string>
-    <string name="android10_applaunch_hint_message">يتطلب Android 10 إذنًا خاصًا لإطلاق التطبيقات من الخلفية. امنح إذن &quot;العرض فوق التطبيقات الأخرى&quot;.</string>
+    <string name="android10_applaunch_hint_title">إذن العرض فوق التطبيقات</string>
+    <string name="android10_applaunch_hint_message">Android 10 والإصدارات الأحدث بحاجة إلى إذن خاص لتشغيل التطبيقات أو عرض الشاشة الرئيسية أو إيقاظ الشاشة من الخلفية عند الاتصال. امنح إذن \"العرض فوق التطبيقات الأخرى\".</string>
     <string name="notification_permission_hint_title">إذن الإشعارات</string>
     <string name="notification_permission_hint_message">امنح إذن الإشعارات لرؤية تحديثات الحالة عند ضبط مستويات الصوت.</string>
     <string name="dnd_access_hint_title">وصول وضع عدم الإزعاج</string>

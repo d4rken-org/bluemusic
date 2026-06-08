@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Marekebisho yanayoonekana</string>
     <string name="devices_device_config_visible_adjustments_desc">Onyesha dirisha la sauti la mfumo wakati programu hii inafanya marekebisho kwa kifaa hiki.</string>
     <string name="devices_device_config_keep_awake_label">Weka macho</string>
-    <string name="devices_device_config_keep_awake_desc">Jaribu kuweka kifaa kimacho wakati kimeunganishwa. Tabia inaweza kutofautiana kulingana na toleo la Android.</string>
+    <string name="devices_device_config_keep_awake_desc">Huiweka programu hai mandharinyuma wakati wa uunganisho ili udhibiti wa sauti ufanye kazi, na kuamsha skrini wakati kifaa kinapounganisha (inahitaji ruhusa ya \"Kuonyesha juu ya programu zingine\"). Katika matoleo mapya zaidi ya Android skrini inaweza bado kuzimika yenyewe.</string>
     <string name="devices_device_config_volume_observe_label">Angalia mabadiliko</string>
     <string name="devices_device_config_volume_observe_desc">Kaa hai wakati kifaa hiki kimeunganishwa na uhifadhi mabadiliko ya sauti ambayo hayakusababishwa na programu hii.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Hifadhi sauti unapotengana</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Uboreshaji wa betri</string>
     <string name="battery_optimization_hint_message">Uboreshaji wa betri umewezeshwa na unaweza kuzuia utendaji sahihi. Fikiria kuuzima.</string>
     <string name="battery_optimization_fix_action">Zima uboreshaji</string>
-    <string name="android10_applaunch_hint_title">Ruhusa ya kuzindua programu</string>
-    <string name="android10_applaunch_hint_message">Android 10 inahitaji ruhusa maalum kuzindua programu au kuonyesha skrini ya nyumbani kutoka nyuma. Toa ruhusa ya \"Onyesha juu ya programu nyingine\".</string>
+    <string name="android10_applaunch_hint_title">Ruhusa ya kuonyesha juu ya programu</string>
+    <string name="android10_applaunch_hint_message">Android 10+ inahitaji ruhusa maalum kuzindua programu, kuonyesha skrini ya nyumbani, au kuamsha skrini kutoka mandharinyuma wakati wa uunganisho. Toa ruhusa ya \"Kuonyesha juu ya programu zingine\".</string>
     <string name="notification_permission_hint_title">Ruhusa ya arifa</string>
     <string name="notification_permission_hint_message">Toa ruhusa ya arifa kuona masasisho ya hali wakati wa kubadilisha sauti.</string>
     <string name="dnd_access_hint_title">Ufikiaji wa Usisumbue</string>

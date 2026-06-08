@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">दृश्यमान समायोजने</string>
     <string name="devices_device_config_visible_adjustments_desc">हा अॅप या डिव्हाइससाठी समायोजने करत असताना सिस्टमचे व्हॉल्युम विंडो दाखवा.</string>
     <string name="devices_device_config_keep_awake_label">जागे ठेवा</string>
-    <string name="devices_device_config_keep_awake_desc">कनेक्ट असताना डिव्हाइस जागे ठेवण्याचा प्रयत्न करा. Android आवृत्तीनुसार वर्तन बदलू शकते.</string>
+    <string name="devices_device_config_keep_awake_desc">डिव्हाइस जोडलेले असताना अ‍ॅप पार्श्वभूमीमध्ये जागृत ठेवते जेणेकरून व्हॉल्यूम नियंत्रण कार्य करत राहते, आणि डिव्हाइस जोडले जाते तेव्हा स्क्रीन जागृत करते (\"अ‍ॅप्सच्या वर प्रदर्शित करा\" परवानगी आवश्यक आहे). नवीन Android आवृत्त्यांमध्ये स्क्रीन स्वतःच बंद होऊ शकते.</string>
     <string name="devices_device_config_volume_observe_label">बदल निरीक्षण करा</string>
     <string name="devices_device_config_volume_observe_desc">हे डिव्हाइस कनेक्ट असताना सक्रिय राहा आणि या अॅपमुळे न झालेले व्हॉल्युम बदल जतन करा.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">डिस्कनेक्ट झाल्यावर व्हॉल्युम जतन करा</string>
@@ -397,13 +397,13 @@
     <string name="battery_optimization_hint_title">बॅटरी ऑप्टिमायझेशन</string>
     <string name="battery_optimization_hint_message">बॅटरी ऑप्टिमायझेशन सक्षम आहेत आणि योग्य ऑपरेशनला प्रतिबंध करू शकतात. ते अक्षम करण्याचा विचार करा.</string>
     <string name="battery_optimization_fix_action">ऑप्टिमायझेशन अक्षम करा</string>
-    <string name="android10_applaunch_hint_title">अॅप लाँच परवानगी</string>
-    <string name="android10_applaunch_hint_message">Android 10 ला पार्श्वभूमीतून अॅप्स लाँच करण्यासाठी किंवा होम स्क्रीन दाखवण्यासाठी विशेष परवानगी आवश्यक आहे. \"इतर अॅप्सवर प्रदर्शित करा\" परवानगी द्या.</string>
+    <string name="android10_applaunch_hint_title">अ‍ॅप्सच्या वर प्रदर्शित करा परवानगी</string>
+    <string name="android10_applaunch_hint_message">Android 10+ ला अ‍ॅप लॉन्च करणे, होम स्क्रीन दाखवणे किंवा पार्श्वभूमीतून डिव्हाइस जोडल्यावर स्क्रीन जागृत करण्यासाठी विशेष परवानगी आवश्यक आहे. \"अ‍ॅप्सच्या वर प्रदर्शित करा\" परवानगी द्या.</string>
     <string name="notification_permission_hint_title">सूचना परवानगी</string>
     <string name="notification_permission_hint_message">व्हॉल्यूम समायोजित करताना स्थिती अपडेट्स पाहण्यासाठी सूचना परवानगी द्या.</string>
-    <string name="dnd_access_hint_title">डू नॉट डिस्टर्ब अॅक्सेस</string>
-    <string name="dnd_access_hint_message">डू नॉट डिस्टर्ब अॅक्सेसशिवाय, तुमचे डिव्हाइस कनेक्ट झाल्यावर रिंगटोन, नोटिफिकेशन आणि DND मोड सेटिंग्ज लागू होऊ शकत नाहीत.</string>
-    <string name="dnd_access_fix_action">अॅक्सेस द्या</string>
+    <string name="dnd_access_hint_title">व्यत्यय मोड प्रवेश</string>
+    <string name="dnd_access_hint_message">व्यत्यय मोड प्रवेशाशिवाय, रिंगटोन, सूचना आणि व्यत्यय मोड सेटिंग्ज तुमच्या डिव्हाइससह कनेक्ट होताना लागू केल्या जाऊ शकत नाहीत.</string>
+    <string name="dnd_access_fix_action">प्रवेश मंजूर करा</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">खरेदी रद्द केली</string>
     <string name="error_iap_unavailable_message">इन-अॅप खरेदी उपलब्ध नाहीत</string>

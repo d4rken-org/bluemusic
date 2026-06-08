@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Ajustements visibles</string>
     <string name="devices_device_config_visible_adjustments_desc">Afficher la fenêtre de volume du système pendant que cette application fait des ajustements pour ce périphérique.</string>
     <string name="devices_device_config_keep_awake_label">Garder éveillé</string>
-    <string name="devices_device_config_keep_awake_desc">Essayer de garder l\'appareil éveillé pendant qu\'il est connecté. Le comportement peut varier selon la version d\'Android.</string>
+    <string name="devices_device_config_keep_awake_desc">Maintient l’appli active en arrière-plan lorsqu’elle est connectée pour que le contrôle du volume continue de fonctionner, et réveille l’écran quand un appareil se connecte (nécessite la permission « Par-dessus les autres applis »). Sur les versions plus récentes d’Android, l’écran peut quand même s’éteindre tout seul.</string>
     <string name="devices_device_config_volume_observe_label">Observer les changements</string>
     <string name="devices_device_config_volume_observe_desc">Rester actif pendant que ce périphérique est connecté et enregistrer les changements de volume qui n\'ont pas été causés par cette application.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Sauvegarder le volume à la déconnexion</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Optimisation de la batterie</string>
     <string name="battery_optimization_hint_message">Les optimisations de batterie sont activées et peuvent empêcher le bon fonctionnement. Envisagez de les désactiver.</string>
     <string name="battery_optimization_fix_action">Désactiver les optimisations</string>
-    <string name="android10_applaunch_hint_title">Permission de lancement d\'application</string>
-    <string name="android10_applaunch_hint_message">Android 10 nécessite une permission spéciale pour lancer des applications en arrière-plan. Accordez la permission &quot;Afficher par-dessus les autres applications&quot;.</string>
+    <string name="android10_applaunch_hint_title">Permission Superposition à d’autres applis</string>
+    <string name="android10_applaunch_hint_message">Android 10+ a besoin d’une permission spéciale pour lancer des applis, afficher l’écran d’accueil, ou réveiller l’écran depuis l’arrière-plan lors d’une connexion. Accorde la permission « Par-dessus les autres applis ».</string>
     <string name="notification_permission_hint_title">Permission de notification</string>
     <string name="notification_permission_hint_message">Accordez la permission de notification pour voir les mises à jour de statut lors des ajustements de volume.</string>
     <string name="dnd_access_hint_title">Accès Ne pas déranger</string>

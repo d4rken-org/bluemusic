@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Penyesuaian terlihat</string>
     <string name="devices_device_config_visible_adjustments_desc">Pilih pengaturan mana yang ditampilkan pada kartu perangkat</string>
     <string name="devices_device_config_keep_awake_label">Tetap terjaga</string>
-    <string name="devices_device_config_keep_awake_desc">Jaga layar agak tetap aktif ketika perangkat ini tersambung.</string>
+    <string name="devices_device_config_keep_awake_desc">Membuat aplikasi tetap aktif di latar belakang saat terhubung agar kontrol volume tetap berfungsi, dan membangunkan layar saat perangkat terhubung (memerlukan izin \"Tampilkan di atas aplikasi lain\"). Di versi Android yang lebih baru, layar mungkin masih mati dengan sendirinya.</string>
     <string name="devices_device_config_volume_observe_label">Pantau perubahan</string>
     <string name="devices_device_config_volume_observe_desc">Tetap aktif saat perangkat ini terhubung dan simpan perubahan volume yang tidak disebabkan oleh aplikasi ini.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Simpan volume saat putus</string>
@@ -358,7 +358,7 @@
     <string name="message_copied_to_clipboard">Salin ke Papan Klip</string>
     <string name="label_thanks">Terima kasih</string>
     <string name="label_licenses">Lisensi</string>
-    <string name="description_ring_volume_additional_permission">Perizinan tambahan dibutuhkan untuk dapat mengubah volume dering.</string>
+    <string name="description_ring_volume_additional_permission">Diperlukan izin tambahan untuk mengubah volume dering.</string>
     <string name="label_missing_permissions">Perizinan kurang</string>
     <string name="action_grant">Diizinkan</string>
     <string name="label_advanced">Lanjutan</string>
@@ -391,8 +391,8 @@
     <string name="battery_optimization_hint_title">Optimasi baterai</string>
     <string name="battery_optimization_hint_message">Optimasi baterai diaktifkan dan dapat mencegah operasi yang tepat. Pertimbangkan untuk menonaktifkannya.</string>
     <string name="battery_optimization_fix_action">Nonaktifkan optimasi</string>
-    <string name="android10_applaunch_hint_title">Izin peluncuran aplikasi</string>
-    <string name="android10_applaunch_hint_message">Android 10 memerlukan izin khusus untuk meluncurkan aplikasi dari latar belakang. Berikan izin &quot;Tampilkan di atas aplikasi lain&quot;.</string>
+    <string name="android10_applaunch_hint_title">Izin tampilkan di atas aplikasi lain</string>
+    <string name="android10_applaunch_hint_message">Android 10+ memerlukan izin khusus untuk meluncurkan aplikasi, menampilkan layar utama, atau membangunkan layar dari latar belakang saat perangkat terhubung. Berikan izin \"Tampilkan di atas aplikasi lain\".</string>
     <string name="notification_permission_hint_title">Izin notifikasi</string>
     <string name="notification_permission_hint_message">Berikan izin notifikasi untuk melihat update status saat menyesuaikan volume.</string>
     <string name="dnd_access_hint_title">Akses Jangan Ganggu</string>

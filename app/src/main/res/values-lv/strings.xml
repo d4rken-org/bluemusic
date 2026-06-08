@@ -4,17 +4,17 @@
     <string name="app_name_short">BSP</string>
     <!-- General -->
     <string name="general_error_label">Kļūda</string>
-    <string name="general_error_no_compatible_app_found_msg">Nav atrasta saderīga lietotne šī pieprasījuma apstrādei.</string>
-    <string name="general_share_action">Dalīties</string>
+    <string name="general_error_no_compatible_app_found_msg">Šī pieprasījuma apstrādei nav atrasta neviena saderīga lietotne.</string>
+    <string name="general_share_action">Kopīgot</string>
     <string name="general_back_action">Atpakaļ</string>
-    <string name="general_show_details_action">Rādīt sīkāku informāciju</string>
+    <string name="general_show_details_action">Rādīt informāciju</string>
     <!-- Onboarding-->
-    <string name="onboarding_welcome_title">Laipni lūgti BSP</string>
-    <string name="onboarding_welcome_message">Bluetooth skaļuma pārvaldnieks ļauj automātiski pārvaldīt Bluetooth ierīču skaļumus.</string>
-    <string name="onboarding_welcome_action">Sāksim</string>
+    <string name="onboarding_welcome_title">Laipni lūdzam BSP</string>
+    <string name="onboarding_welcome_message">Bluetooth skaļuma pārvaldnieks ļauj automātiski pārvaldīt Bluetooth ierīču skaļumu.</string>
+    <string name="onboarding_welcome_action">Aiziet</string>
     <string name="onboarding_beta_title">Beta versija</string>
-    <string name="onboarding_beta_message">Šī ir beta (testēšanas) versija. Turpiniet ar humora izjūtu un rezerves plānu. Lūdzu, ziņojiet par problēmām, ar kurām saskariesties.</string>
-    <string name="onboarding_beta_action">Es nebaidOs no neka</string>
+    <string name="onboarding_beta_message">Šis ir beta (pārbaudez) būvējums. Ieteicams turpināt ar humora izjūtu un atkāpšanās plānu. Lūgums ziņot par novērotajām nepilnībām.</string>
+    <string name="onboarding_beta_action">Es nebaidos ne nieka</string>
     <string name="onboarding_privacy_title">Privātums un dati</string>
     <string name="onboarding_privacy_message">Bluetooth skaļuma pārvaldniekam nav reklāmu un tas nepārdod lietotāju datus (tas pat ir atvērtā pirmkoda). Jūsu privātums man ir svarīgs.</string>
     <string name="onboarding_privacy_read_action">Lasīt privātuma politiku</string>
@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Redzamas pielāgošanas</string>
     <string name="devices_device_config_visible_adjustments_desc">Rādīt sistēmas skaļuma logu, kamēr šī lietotne veic pielāgošanas šai ierīcei.</string>
     <string name="devices_device_config_keep_awake_label">Turēt nomods</string>
-    <string name="devices_device_config_keep_awake_desc">Mēģināt turēt ierīci nomodā kamrē tā ir pievienota. Uzvedība var atšķirtīs atkarībā no Android versijas.</string>
+    <string name="devices_device_config_keep_awake_desc">Patur lietotni aktīvu fonā, kamēr ir savienota, lai skaļuma vadība turpinātu darboties, un pamodina ekrānu, kad savienojas ierīce (nepieciešama atļauja „Rādīšana virs citām lietotnēm“). Jaunākās Android versijās ekrāns joprojām var izslēgties pats.</string>
     <string name="devices_device_config_volume_observe_label">Novērot izmaiņas</string>
     <string name="devices_device_config_volume_observe_desc">Palikt aktīvam, kamēr šī ierīce ir pievienota, un saglabāt skaļuma izmaiņas, kas nav radusās no šīs lietotnes.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Saglabāt skaļumu atvienojot</string>
@@ -97,6 +97,11 @@
     <string name="devices_autoplay_keycode_rewind_desc">Attīt atpakaļ pašreizējo ierakstu</string>
     <string name="devices_autoplay_keycode_fast_forward_desc">Ātri pārtīt uz priekšu pašreizējajā ierakstā</string>
     <string name="devices_autoplay_keycode_unknown_label">Nezīnāms (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="zero">%d komandu</item>
+        <item quantity="one">%d komanda</item>
+        <item quantity="other">%d komandas</item>
+    </plurals>
     <string name="cd_autoplay_keycode_move_up">Pārvietot uz augšu</string>
     <string name="cd_autoplay_keycode_move_down">Pārvietot uz leju</string>
     <string name="cd_autoplay_keycode_remove">Noņemt</string>
@@ -396,8 +401,8 @@
     <string name="battery_optimization_hint_title">Akumlatora optimizācija</string>
     <string name="battery_optimization_hint_message">Akumlatora optimizācijas ir iespējotas un var trāukcēt pareizu darbību. Apsveriet to atspējošanu.</string>
     <string name="battery_optimization_fix_action">Atspējot optimizācijas</string>
-    <string name="android10_applaunch_hint_title">Lietotnes palaišanas atļauja</string>
-    <string name="android10_applaunch_hint_message">Android 10 prasa īpašu atļauju, lai palaistu lietotnes vai rādītu sākuma ekrānu no fona. Piešķiriet atļauju \"Attēlošana virs citām lietotnēm\".</string>
+    <string name="android10_applaunch_hint_title">Rādīšanas virs lietotnēm atļauja</string>
+    <string name="android10_applaunch_hint_message">Android 10+ nepieciešama īpaša atļauja, lai palaistu lietotnes, rādītu sākuma ekrānu vai pamodinātu ekrānu no fona, kad savienojas ierīce. Piešķiriet atļauju „Rādīšana virs citām lietotnēm“.</string>
     <string name="notification_permission_hint_title">Paziņojumu atļauja</string>
     <string name="notification_permission_hint_message">Piešķiriet paziņojumu atļauju, lai redzetu stāvokļa atjauninājumus, pielāgojot skaļumus.</string>
     <string name="dnd_access_hint_title">Netraukt piekļuves</string>

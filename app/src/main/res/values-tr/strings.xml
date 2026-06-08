@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Görünür ayarlamalar</string>
     <string name="devices_device_config_visible_adjustments_desc">Bu uygulama ayarlamalar yaparken sistemin ses penceresi gösteriliyor.</string>
     <string name="devices_device_config_keep_awake_label">Uyanık tut</string>
-    <string name="devices_device_config_keep_awake_desc">Bu cihaz bağlıyken ekranı açık tutun.</string>
+    <string name="devices_device_config_keep_awake_desc">Uygulamayı bağlıyken arka planda aktif tutar; böylece ses kontrolü çalışmaya devam eder ve bir cihaz bağlandığında ekranı uyandırır (\"Diğer uygulamaların üzerinde göster\" izni gerekir). Daha yeni Android sürümlerinde ekran yine de kendiliğinden kapanabilir.</string>
     <string name="devices_device_config_volume_observe_label">Değişiklikleri gözlemle</string>
     <string name="devices_device_config_volume_observe_desc">Bu cihaz bağlıyken aktif kal ve bu uygulamanın neden olmadığı ses değişikliklerini kaydet.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Bağlantı kesildiğinde sesi kaydet</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Pil optimizasyonu</string>
     <string name="battery_optimization_hint_message">Pil optimizasyonları etkin ve düzgün çalışmayı engelleyebilir. Bunları devre dışı bırakmayı düşün.</string>
     <string name="battery_optimization_fix_action">Optimizasyonları devre dışı bırak</string>
-    <string name="android10_applaunch_hint_title">Uygulama başlatma izni</string>
-    <string name="android10_applaunch_hint_message">Android 10 uygulamaları arka plandan başlatmak için özel izin gerektirir. &quot;Diğer uygulamalar üzerinde görüntüleme&quot; iznini ver.</string>
+    <string name="android10_applaunch_hint_title">Diğer uygulamaların üzerinde göster izni</string>
+    <string name="android10_applaunch_hint_message">Android 10+ uygulamaları başlatmak, ana ekranı göstermek veya arka planda ekranı uyandırmak için özel bir izin gerektirir. \"Diğer uygulamaların üzerinde göster\" iznini ver.</string>
     <string name="notification_permission_hint_title">Bildirim izni</string>
     <string name="notification_permission_hint_message">Ses ayarlanırken durum güncellemelerini görmek için bildirim iznini ver.</string>
     <string name="dnd_access_hint_title">Rahatsız Etme erişimi</string>

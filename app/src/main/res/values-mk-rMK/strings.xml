@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Видливи прилагодувања</string>
     <string name="devices_device_config_visible_adjustments_desc">Префрли кои прилагодувања се прикажуваат на картичката на уредот</string>
     <string name="devices_device_config_keep_awake_label">Остани буден</string>
-    <string name="devices_device_config_keep_awake_desc">Чувајте го екранот уклучен додека е поврзан овој уред.</string>
+    <string name="devices_device_config_keep_awake_desc">Ја одржува апликацијата будна во позадина додека е поврзана за да продолжи да работи контролата на јачината на звукот, и го буди екранот кога се поврзува уред (потребна е дозволата „Приказ преку други апликации“). На поновите верзии на Android екранот сепак може да се исклучи сам.</string>
     <string name="devices_device_config_volume_observe_label">Набљудувај промени</string>
     <string name="devices_device_config_volume_observe_desc">Остани активна додека овој уред е поврзан и зачувај ги промените на јачината на звукот кои не се предизвикани од оваа апликација.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Зачувај јачина на звук при исклучување</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Оптимизација на батерија</string>
     <string name="battery_optimization_hint_message">Оптимизациите на батеријата се вклучени и може да спречат правилно функционирање. Размисли за нивно исклучување.</string>
     <string name="battery_optimization_fix_action">Исклучи оптимизации</string>
-    <string name="android10_applaunch_hint_title">Дозвола за стартување апликации</string>
-    <string name="android10_applaunch_hint_message">Android 10 бара посебна дозвола за стартување апликации или прикажување на почетниот екран од позадина. Дај дозвола „Прикажи над другите апликации\".</string>
+    <string name="android10_applaunch_hint_title">Дозвола за приказ преку апликации</string>
+    <string name="android10_applaunch_hint_message">Android 10+ бара специјална дозвола за да ги стартува апликациите, да го прикаже почетниот екран или да го разбуди екранот од позадина при поврзување. Доделете ја дозволата „Приказ преку други апликации“.</string>
     <string name="notification_permission_hint_title">Дозвола за известувања</string>
     <string name="notification_permission_hint_message">Дај дозвола за известувања за да гледаш ажурирања на статусот при прилагодување на јачината на звукот.</string>
     <string name="dnd_access_hint_title">Пристап до Не вознемирувај</string>

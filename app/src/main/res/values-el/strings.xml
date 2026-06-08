@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Ορατές προσαρμογές</string>
     <string name="devices_device_config_visible_adjustments_desc">Εναλλαγή των προσαρμογών που εμφανίζονται στην κάρτα συσκευής</string>
     <string name="devices_device_config_keep_awake_label">Διατήρηση λειτουργίας</string>
-    <string name="devices_device_config_keep_awake_desc">Κρατήστε την οθόνη ανοιχτή όσο αυτή η συσκευή είναι συνδεδεμένη.</string>
+    <string name="devices_device_config_keep_awake_desc">Κρατά την εφαρμογή ενεργή στο παρασκήνιο ενώ είναι συνδεδεμένη, ώστε ο έλεγχος έντασης να συνεχίζει να λειτουργεί, και ενεργοποιεί την οθόνη όταν συνδέεται μια συσκευή (απαιτείται η άδεια \"Εμφάνιση πάνω από άλλες εφαρμογές\"). Στις νεότερες εκδόσεις του Android η οθόνη ενδέχεται να σβήσει ακόμα και από μόνη της.</string>
     <string name="devices_device_config_volume_observe_label">Παρακολούθηση αλλαγών</string>
     <string name="devices_device_config_volume_observe_desc">Παραμένει ενεργή όσο αυτή η συσκευή είναι συνδεδεμένη και αποθηκεύει τις αλλαγές έντασης που δεν έχουν γίνει από αυτή την εφαρμογή.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Αποθήκευση έντασης κατά την αποσύνδεση</string>
@@ -397,8 +397,8 @@
     <string name="battery_optimization_hint_title">Βελτιστοποίηση μπαταρίας</string>
     <string name="battery_optimization_hint_message">Οι βελτιστοποιήσεις μπαταρίας είναι ενεργοποιημένες και μπορεί να εμποδίσουν την κανονική λειτουργία. Σκεφτείτε να τις απενεργοποιήσετε.</string>
     <string name="battery_optimization_fix_action">Απενεργοποίηση βελτιστοποιήσεων</string>
-    <string name="android10_applaunch_hint_title">Άδεια εκκίνησης εφαρμογών</string>
-    <string name="android10_applaunch_hint_message">Το Android 10 απαιτεί ειδική άδεια για να εκκινεί εφαρμογές από το παρασκήνιο. Χορηγήστε την άδεια &quot;Εμφάνιση πάνω από άλλες εφαρμογές&quot;.</string>
+    <string name="android10_applaunch_hint_title">Άδεια εμφάνισης πάνω από εφαρμογές</string>
+    <string name="android10_applaunch_hint_message">Android 10+ χρειάζεται ειδική άδεια για να ενεργοποιήσει εφαρμογές, να εμφανίσει την αρχική οθόνη ή να ενεργοποιήσει την οθόνη από το παρασκήνιο κατά τη σύνδεση. Χορήγησε την άδεια \"Εμφάνιση πάνω από άλλες εφαρμογές\".</string>
     <string name="notification_permission_hint_title">Άδεια ειδοποιήσεων</string>
     <string name="notification_permission_hint_message">Χορηγήστε άδεια ειδοποιήσεων για να βλέπετε ενημερώσεις κατάστασης κατά τη ρύθμιση εντάσεων.</string>
     <string name="dnd_access_hint_title">Πρόσβαση «Μην ενοχλείτε»</string>

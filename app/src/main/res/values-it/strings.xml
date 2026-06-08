@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Regolazioni visibili</string>
     <string name="devices_device_config_visible_adjustments_desc">Mostra la finestra del volume del sistema mentre questa app effettua regolazioni per questo dispositivo.</string>
     <string name="devices_device_config_keep_awake_label">Mantieni attivo</string>
-    <string name="devices_device_config_keep_awake_desc">Prova a mantenere il dispositivo attivo mentre è connesso. Il comportamento può variare a seconda della versione di Android.</string>
+    <string name="devices_device_config_keep_awake_desc">Mantiene l’app attiva in background mentre è connessa affinché il controllo del volume continui a funzionare e riattiva lo schermo quando un dispositivo si connette (richiede il permesso \"Visualizzazione sopra altre app\"). Nelle versioni più recenti di Android lo schermo potrebbe ancora spegnersi autonomamente.</string>
     <string name="devices_device_config_volume_observe_label">Osserva cambiamenti</string>
     <string name="devices_device_config_volume_observe_desc">Resta attivo mentre questo dispositivo è connesso e salva i cambiamenti di volume non causati da questa app.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Salva volume alla disconnessione</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Ottimizzazione batteria</string>
     <string name="battery_optimization_hint_message">Le ottimizzazioni della batteria sono abilitate e possono impedire il corretto funzionamento. Considera di disabilitarle.</string>
     <string name="battery_optimization_fix_action">Disabilita ottimizzazioni</string>
-    <string name="android10_applaunch_hint_title">Permesso avvio app</string>
-    <string name="android10_applaunch_hint_message">Android 10 richiede un permesso speciale per avviare app dal background. Concedi il permesso &quot;Visualizza sopra altre app&quot;.</string>
+    <string name="android10_applaunch_hint_title">Permesso Visualizzazione sopra altre app</string>
+    <string name="android10_applaunch_hint_message">Android 10+ richiede un permesso speciale per avviare app, visualizzare la schermata home o riattivare lo schermo dal background al momento della connessione. Concedi il permesso \"Visualizzazione sopra altre app\".</string>
     <string name="notification_permission_hint_title">Permesso notifiche</string>
     <string name="notification_permission_hint_message">Concedi il permesso notifiche per vedere aggiornamenti di stato durante le regolazioni del volume.</string>
     <string name="dnd_access_hint_title">Accesso a Non disturbare</string>

@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Rastkarîn diyar</string>
     <string name="devices_device_config_visible_adjustments_desc">Pencereya dengê sîstemê nîşan bide dema vê bernameê ji bo vê cîhazê rastkarîn dike.</string>
     <string name="devices_device_config_keep_awake_label">Hişyar bimîne</string>
-    <string name="devices_device_config_keep_awake_desc">Hewl bide cîhaz di dema hevbestê de hişyar bimîne. Tevger dibe ku li gorî guhertoya Android biguheze.</string>
+    <string name="devices_device_config_keep_awake_desc">Sepanê di paşerojê de hiş dimîne dema ku girêdayî ye ji bo ku kontrola dengê berdewam bike, û ekranê hişyar dike gava ku cîhazek girêdide (destûra \"Nîşandan li ser sepanan\" pêwist e). Di guhertoyek Androidê ya nûtir de ekran dikare xwe bi xwe vemire.</string>
     <string name="devices_device_config_volume_observe_label">Guherînen bihîstin</string>
     <string name="devices_device_config_volume_observe_desc">Aktif bimîne dema ev cîhaz bi hestek be û guherînên dengê ku ne ji vê bernameê ne hatine parastin bike.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Dema veqetandê dengê tomar bike</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Optimîzasyona battery</string>
     <string name="battery_optimization_hint_message">Optimîzasyona battery aktif e.</string>
     <string name="battery_optimization_fix_action">Optimîzasyon bitebitandin</string>
-    <string name="android10_applaunch_hint_title">Destvîrîna destpêkirina bernameê</string>
-    <string name="android10_applaunch_hint_message">Android 10 destvîrîna taybetî hewce dike da bernameên ji pavenkê dest pê bikin. Destvîrîna \'Nîşan li ser bernameên din\' bide.</string>
+    <string name="android10_applaunch_hint_title">Destûra nîşandana li ser sepanan</string>
+    <string name="android10_applaunch_hint_message">Android 10+ destûrek taybet pêwist dike ji bo ku sepanan veke, ekrana malê nîşan bide, an jî ekranê di paşerojê de hişyar bike dema girêdanê. Destûra \"Nîşandana li ser sepanan\" bide.</string>
     <string name="notification_permission_hint_title">Destvîrîna agahdar</string>
     <string name="notification_permission_hint_message">Destvîrîna agahdar bide da zabanîn dema deng tê rastkar kirin bibîne.</string>
     <string name="dnd_access_hint_title">Destresa Nexwazîna Acizkarî</string>

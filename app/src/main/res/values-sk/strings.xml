@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Viditeľné úpravy</string>
     <string name="devices_device_config_visible_adjustments_desc">Prepni, ktoré úpravy sa zobrazia na karte zariadenia</string>
     <string name="devices_device_config_keep_awake_label">Zakázať režim spánku</string>
-    <string name="devices_device_config_keep_awake_desc">Ponechá zapnutú obrazovku počas pripojenia.</string>
+    <string name="devices_device_config_keep_awake_desc">Udržuje aplikáciu aktívnu na pozadí počas pripojenia, aby ovládanie hlasitosti naďalej fungovalo, a zobudí obrazovku pri pripojení zariadenia (vyžaduje povolenie „Zobrazovanie cez iné aplikácie“). Na novších verziách Androidu sa obrazovka môže vypnúť sama.</string>
     <string name="devices_device_config_volume_observe_label">Sledovať zmeny</string>
     <string name="devices_device_config_volume_observe_desc">Zostane aktívna počas pripojenia tohto zariadenia a uloží zmeny hlasitosti, ktoré neboli vykonané touto aplikáciou.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Uložiť hlasitosť pri odpojení</string>
@@ -97,6 +97,12 @@
     <string name="devices_autoplay_keycode_rewind_desc">Pretočiť aktuálnu skladbu dozadu</string>
     <string name="devices_autoplay_keycode_fast_forward_desc">Rýchlo pretočiť aktuálnu skladbu vpred</string>
     <string name="devices_autoplay_keycode_unknown_label">Neznámy (%1$d)</string>
+    <plurals name="devices_indicator_auto_count">
+        <item quantity="one">%d príkaz</item>
+        <item quantity="few">%d príkazy</item>
+        <item quantity="many">%d príkazu</item>
+        <item quantity="other">%d príkazov</item>
+    </plurals>
     <string name="cd_autoplay_keycode_move_up">Presunúť nahor</string>
     <string name="cd_autoplay_keycode_move_down">Presunúť nadol</string>
     <string name="cd_autoplay_keycode_remove">Odstrániť</string>
@@ -400,11 +406,11 @@
     <string name="battery_optimization_hint_title">Optimalizácia batérie</string>
     <string name="battery_optimization_hint_message">Optimalizácie batérie sú zapnuté a môžu zabrániť správnemu fungovaniu. Zvážte ich vypnutie.</string>
     <string name="battery_optimization_fix_action">Vypnúť optimalizácie</string>
-    <string name="android10_applaunch_hint_title">Povolenie na spustenie aplikácie</string>
-    <string name="android10_applaunch_hint_message">Android 10 vyžaduje špeciálne povolenie na spúšťanie aplikácií na pozadí. Udeľ povolenie &quot;Zobraziť cez iné aplikácie&quot;.</string>
+    <string name="android10_applaunch_hint_title">Povolenie Zobrazovanie cez iné aplikácie</string>
+    <string name="android10_applaunch_hint_message">Android 10+ potrebuje špeciálne povolenie na spustenie aplikácií, zobrazenie domovskej obrazovky alebo zobudenie obrazovky z pozadia pri pripojení. Udeľte povolenie „Zobrazovanie cez iné aplikácie“.</string>
     <string name="notification_permission_hint_title">Povolenie notifikácií</string>
     <string name="notification_permission_hint_message">Udeľ povolenie notifikácií, aby si videl stavové aktualizácie počas úpravy hlasitosti.</string>
-    <string name="dnd_access_hint_title">Prístup k Nerušiť</string>
+    <string name="dnd_access_hint_title">Prístup k režimu Nerušiť</string>
     <string name="dnd_access_hint_message">Bez prístupu k Nerušiť nie je možné použiť nastavenia zvonenia, upozornení a režimu Nerušiť pri pripojení vašich zariadení.</string>
     <string name="dnd_access_fix_action">Povoliť prístup</string>
     <!-- IAP Error Messages -->

@@ -57,7 +57,6 @@
     <string name="devices_device_config_visible_adjustments_label">දෘශ්‍ය සකසීම්</string>
     <string name="devices_device_config_visible_adjustments_desc">උපාංග කාඩ්පතෙහි දැකිය හැකි සකසීම් ටොගල් කරන්න</string>
     <string name="devices_device_config_keep_awake_label">සක්‍රිය තබා ගන්න</string>
-    <string name="devices_device_config_keep_awake_desc">මෙම උපාංගය සම්බන්ධ වී ඇති ඕනෑම දිනෙක තිරය සක්‍රිය තබා ගන්න.</string>
     <string name="devices_device_config_volume_observe_label">වෙනස්කම් නිරීක්ෂණය කරන්න</string>
     <string name="devices_device_config_volume_observe_desc">මෙම උපාංගය සම්බන්ධ වී ඇති විට සක්‍රිය ව සිටින්න සහ මෙම යෙදුමෙන් නොකළ හඩ වෙනස්කම් සුරකින්න.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">විසන්ධිය හදී හඩ සුරකින්න</string>
@@ -396,8 +395,7 @@
     <string name="battery_optimization_hint_title">බැටරි ප්‍රශස්තකරණය</string>
     <string name="battery_optimization_hint_message">බැටරි ප්‍රශස්තකරණ සබල කර ඇති අතර නිසි ක්‍රියාකාරිත්වය වළක්වා ගත හැකිය. ඒවා අක්‍රිය කිරීම සලකා බලන්න.</string>
     <string name="battery_optimization_fix_action">ප්‍රශස්තකරණ අක්‍රිය කරන්න</string>
-    <string name="android10_applaunch_hint_title">යෙදුම් දියත් කිරීමේ අවසරය</string>
-    <string name="android10_applaunch_hint_message">Android 10 පසුතලෙන් යෙදුම් දියත් කිරීමට විශේෂ අවසරයක් අවශ්‍ය වෙයි. &quot;Display over other apps&quot; අවසරය ලබා දෙන්න.</string>
+    <string name="android10_applaunch_hint_title">යෙදුම් වලට වඩා පෙන්වන්න අවසරය</string>
     <string name="notification_permission_hint_title">දැනුම්දීම් අවසරය</string>
     <string name="notification_permission_hint_message">හඩ සකසීමේදී තත්ව යාවත්කාලීන දැකීමට දැනුම්දීම් අවසරය ලබා දෙන්න.</string>
     <string name="dnd_access_hint_title">බාධා නොකරන්න ප්‍රවේශය</string>
@@ -450,7 +448,7 @@
     <string name="widget_config_fg_color_label">පෙළ වර්ණය</string>
     <string name="widget_config_bg_alpha_label">පසුබිම් අපාරදර්ශිතාව</string>
     <string name="widget_config_show_label_toggle">උපාංගයේ නම පෙන්වන්න</string>
-    <string name="widget_config_show_label_description">සම්බන්ධිත උපාංගය අගුල් තත්ත්වයට ඉහළින් පෙන්වන්න.</string>
+    <string name="widget_config_show_label_description">සංයුක්ත උපාංගය ඉරණම් තිරයට ඉහළින් පෙන්වන්න.</string>
     <string name="widget_config_theme_green_label">කොළ</string>
     <string name="widget_config_theme_red_label">රතු</string>
     <string name="widget_config_theme_custom_label">අභිරුඩි</string>

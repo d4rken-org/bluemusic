@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Ajustări vizibile</string>
     <string name="devices_device_config_visible_adjustments_desc">Comută care ajustări sunt afișate pe cardul dispozitivului</string>
     <string name="devices_device_config_keep_awake_label">Menține activ</string>
-    <string name="devices_device_config_keep_awake_desc">Menține ecranul pornit cât timp acest dispozitiv este conectat.</string>
+    <string name="devices_device_config_keep_awake_desc">Menține aplicația activă în fundal în timp ce este conectată, pentru ca controlul volumului să continue să funcționeze, și trezește ecranul când se conectează un dispozitiv (necesită permisiunea \"Afișare peste alte aplicații\"). Pe versiunile mai noi de Android, ecranul poate totuși să se oprească de la sine.</string>
     <string name="devices_device_config_volume_observe_label">Observă schimbările</string>
     <string name="devices_device_config_volume_observe_desc">Rămâi activ cât timp acest dispozitiv este conectat și salvează schimbările de volum care nu au fost cauzate de această aplicație.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Salvează volumul la deconectare</string>
@@ -401,8 +401,8 @@
     <string name="battery_optimization_hint_title">Optimizarea bateriei</string>
     <string name="battery_optimization_hint_message">Optimizările de baterie sunt activate și pot preveni funcționarea corectă. Ia în considerare dezactivarea lor.</string>
     <string name="battery_optimization_fix_action">Dezactivează optimizările</string>
-    <string name="android10_applaunch_hint_title">Permisiune lansare aplicație</string>
-    <string name="android10_applaunch_hint_message">Android 10 necesită permisiune specială pentru a lansa aplicații din fundal. Acordă permisiunea &quot;Afișare peste alte aplicații&quot;.</string>
+    <string name="android10_applaunch_hint_title">Permisiunea Afișare peste alte aplicații</string>
+    <string name="android10_applaunch_hint_message">Android 10+ necesită o permisiune specială pentru a lansa aplicații, a arăta ecranul de start sau a trezi ecranul din fundal când se conectează un dispozitiv. Acordă permisiunea \"Afișare peste alte aplicații\".</string>
     <string name="notification_permission_hint_title">Permisiune notificări</string>
     <string name="notification_permission_hint_message">Acordă permisiunea pentru notificări pentru a vedea actualizări de stare când se ajustează volumele.</string>
     <string name="dnd_access_hint_title">Acces la Nu deranja</string>

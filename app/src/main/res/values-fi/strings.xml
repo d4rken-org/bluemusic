@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Näkyvät säädöt</string>
     <string name="devices_device_config_visible_adjustments_desc">Näytä järjestelmän äänenvoimakkuusikkuna, kun sovellus tekee säätöjä tälle laitteelle.</string>
     <string name="devices_device_config_keep_awake_label">Pysy hereillä</string>
-    <string name="devices_device_config_keep_awake_desc">Yritä pitää laite hereillä yhdistettynä ollessa. Käyttäytyminen voi vaihdella Android-version mukaan.</string>
+    <string name="devices_device_config_keep_awake_desc">Pitää sovelluksen hereillä taustalla yhteyden ollessa muodostettuna, jotta äänenvoimakkuuden hallinta toimii, ja herättää näytön, kun laite muodostaa yhteyden (vaatii \"Näyttö muiden sovellusten päällä\" -oikeuden). Uudemmissa Android-versioissa näyttö voi silti sammua itsestään.</string>
     <string name="devices_device_config_volume_observe_label">Tarkkaile muutoksia</string>
     <string name="devices_device_config_volume_observe_desc">Pysy aktiivisena kun tämä laite on yhdistettynä ja tallenna äänenvoimakkuusmuutokset, joita tämä sovellus ei ole aiheuttanut.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Tallenna äänenvoimakkuus yhteyden katketessa</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Akun optimointi</string>
     <string name="battery_optimization_hint_message">Akun optimointi on käytössä ja saattaa estää oikean toiminnan. Harkitse niiden poistamista käytöstä.</string>
     <string name="battery_optimization_fix_action">Poista optimointi käytöstä</string>
-    <string name="android10_applaunch_hint_title">Sovelluksen käynnistyskäyttöoikeus</string>
-    <string name="android10_applaunch_hint_message">Android 10 vaatii erityiskäyttöoikeuden käynnistää sovelluksia tai näyttää kotinäyttöä taustalta. Myönnä \"Näytä muiden sovellusten päällä\" käyttöoikeus.</string>
+    <string name="android10_applaunch_hint_title">Näyttö muiden sovellusten päällä -oikeus</string>
+    <string name="android10_applaunch_hint_message">Android 10+ vaatii erityisen oikeuden sovellusten käynnistämiseen, kotinäytön näyttämiseen tai näytön herättämiseen taustalla yhteyden muodostuessa. Myönnä \"Näyttö muiden sovellusten päällä\" -oikeus.</string>
     <string name="notification_permission_hint_title">Ilmoituskäyttöoikeus</string>
     <string name="notification_permission_hint_message">Myönnä ilmoituskäyttöoikeus nähdäksesi tilatuspäivitykset äänenvoimakkuuksia säädettäessä.</string>
     <string name="dnd_access_hint_title">Älä häiritse -käyttöoikeus</string>

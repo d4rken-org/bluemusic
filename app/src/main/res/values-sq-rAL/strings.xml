@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Përshtatje të dukshme</string>
     <string name="devices_device_config_visible_adjustments_desc">Shfaq dritaren e volumit të sistemit ndërsa ky aplikacion bën përshtatje për këtë pajisje.</string>
     <string name="devices_device_config_keep_awake_label">Mbaje zgjuar</string>
-    <string name="devices_device_config_keep_awake_desc">Provo të mbaje pajisjen zgjuar ndërsa lidhet. Sjellja mund të ndryshojë në varësi të versionit të Android.</string>
+    <string name="devices_device_config_keep_awake_desc">Mban aplikacionin zgjuar në sfond ndërsa është i lidhur që kontrolli i zërit të vazhdojë të funksionojë, dhe zgjon ekranin kur lidhet një pajisje (kërkon lejen \"Shfaq mbi aplikacione të tjera\"). Në versionet më të reja të Android-it, ekrani mund të fiket vetë.</string>
     <string name="devices_device_config_volume_observe_label">Mbikëqyr ndryshimet</string>
     <string name="devices_device_config_volume_observe_desc">Qëndro aktiv ndërsa kjo pajisje lidhet dhe ruaj ndryshimet e volumit që nuk janë shkaktuar nga ky aplikacion.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Ruaj volumin në shkëputje</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Optimizimi i baterisë</string>
     <string name="battery_optimization_hint_message">Optimizatat e baterisë janë të aktivizuara dhe mund të parandalojnë funksionimin e duhur. Konsideroni çaktivizimin e tyre.</string>
     <string name="battery_optimization_fix_action">Çaktivizo optimizatat</string>
-    <string name="android10_applaunch_hint_title">Leja për lanimin e aplikacionit</string>
-    <string name="android10_applaunch_hint_message">Android 10 kërkon lejen e veçantë për të lanuar aplikacionet ose për të shfaqur ekranin fillestar nga sfoni. Jepni lejën \"Shfaq mbi aplikacionet e tjera\".</string>
+    <string name="android10_applaunch_hint_title">Leja për të shfaqur mbi aplikacione</string>
+    <string name="android10_applaunch_hint_message">Android 10+ kërkon një leje të veçantë për të nisur aplikacione, për të shfaqur ekranin bazë, ose për të zgjuar ekranin nga sfondi kur lidhet një pajisje. Jepni lejen \"Shfaq mbi aplikacione të tjera\".</string>
     <string name="notification_permission_hint_title">Leja për njoftimet</string>
     <string name="notification_permission_hint_message">Jepeni lejën e njoftimit për të parë përditësimet e statusit kur përshtatni volumet.</string>
     <string name="dnd_access_hint_title">Qasja në \"Mos shqetëso\"</string>

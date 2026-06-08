@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">การปรับที่มองเห็นได้</string>
     <string name="devices_device_config_visible_adjustments_desc">แสดงหน้าต่างระดับเสียงของระบบในขณะที่แอปนี้ทำการปรับสำหรับอุปกรณ์นี้</string>
     <string name="devices_device_config_keep_awake_label">เปิดหน้าจอไว้</string>
-    <string name="devices_device_config_keep_awake_desc">เปิดหน้าจอไว้ขณะที่อุปกรณ์นี้เชื่อมต่ออยู่</string>
+    <string name="devices_device_config_keep_awake_desc">ให้แอปทำงานต่อเนื่องในพื้นหลังขณะเชื่อมต่ออยู่เพื่อให้การควบคุมระดับเสียงยังคงทำงาน และปลุกหน้าจอเมื่อมีอุปกรณ์เชื่อมต่อ (ต้องใช้สิทธิ์ \"แสดงผลบนแอปอื่น\") ในเวอร์ชัน Android ที่ใหม่กว่า หน้าจออาจปิดได้อยู่ดี</string>
     <string name="devices_device_config_volume_observe_label">สังเกตการเปลี่ยนแปลง</string>
     <string name="devices_device_config_volume_observe_desc">ยังคงทำงานอยู่ขณะที่อุปกรณ์นี้เชื่อมต่อและบันทึกการเปลี่ยนแปลงระดับเสียงที่ไม่ได้เกิดจากแอปนี้</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">บันทึกระดับเสียงเมื่อตัดการเชื่อมต่อ</string>
@@ -391,8 +391,8 @@
     <string name="battery_optimization_hint_title">การเพิ่มประสิทธิภาพแบตเตอรี่</string>
     <string name="battery_optimization_hint_message">การเพิ่มประสิทธิภาพแบตเตอรี่เปิดใช้งานอยู่และอาจป้องกันการทำงานที่ถูกต้อง พิจารณาปิดการใช้งาน</string>
     <string name="battery_optimization_fix_action">ปิดการเพิ่มประสิทธิภาพ</string>
-    <string name="android10_applaunch_hint_title">สิทธิ์เปิดแอป</string>
-    <string name="android10_applaunch_hint_message">Android 10 ต้องการสิทธิ์พิเศษในการเปิดแอปจากพื้นหลัง อนุญาตสิทธิ์ &quot;แสดงเหนือแอปอื่น&quot;</string>
+    <string name="android10_applaunch_hint_title">สิทธิ์ในการแสดงผลบนแอปอื่น</string>
+    <string name="android10_applaunch_hint_message">Android 10 ขึ้นไปต้องใช้สิทธิ์พิเศษเพื่อเปิดแอป แสดงหน้าจอหลัก หรือปลุกหน้าจอจากพื้นหลังเมื่อเชื่อมต่อ โปรดให้สิทธิ์ \"แสดงผลบนแอปอื่น\"</string>
     <string name="notification_permission_hint_title">สิทธิ์การแจ้งเตือน</string>
     <string name="notification_permission_hint_message">อนุญาตสิทธิ์การแจ้งเตือนเพื่อดูการอัปเดตสถานะเมื่อปรับระดับเสียง</string>
     <string name="dnd_access_hint_title">การเข้าถึง Do Not Disturb</string>

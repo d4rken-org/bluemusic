@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Pelarasan kelihatan</string>
     <string name="devices_device_config_visible_adjustments_desc">Tukar pelarasan mana yang ditunjukkan pada kad peranti</string>
     <string name="devices_device_config_keep_awake_label">Kekal sedar</string>
-    <string name="devices_device_config_keep_awake_desc">Kekalkan skrin terus berjaga sementara peranti ini dihubungkan.</string>
+    <string name="devices_device_config_keep_awake_desc">Memastikan apl tetap aktif di latar belakang semasa tersambung supaya kawalan volum terus berfungsi, dan membangunkan skrin apabila peranti tersambung (memerlukan kebenaran \"Paparkan di atas apl lain\"). Pada versi Android yang lebih baharu, skrin mungkin masih boleh tutup dengan sendirinya.</string>
     <string name="devices_device_config_volume_observe_label">Perhatikan perubahan</string>
     <string name="devices_device_config_volume_observe_desc">Kekal aktif semasa peranti ini disambungkan dan simpan perubahan volum yang bukan disebabkan oleh apl ini.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Simpan volum semasa putus sambungan</string>
@@ -391,8 +391,8 @@
     <string name="battery_optimization_hint_title">Pengoptimuman bateri</string>
     <string name="battery_optimization_hint_message">Pengoptimuman bateri didayakan dan mungkin menghalang operasi yang betul. Pertimbang untuk nyahdayakannya.</string>
     <string name="battery_optimization_fix_action">Nyahdayakan pengoptimuman</string>
-    <string name="android10_applaunch_hint_title">Kebenaran pelancaran apl</string>
-    <string name="android10_applaunch_hint_message">Android 10 memerlukan kebenaran khas untuk melancarkan apl dari latar belakang. Beri kebenaran &quot;Paparan ke atas apl lain&quot;.</string>
+    <string name="android10_applaunch_hint_title">Kebenaran paparkan di atas apl</string>
+    <string name="android10_applaunch_hint_message">Android 10+ memerlukan kebenaran istimewa untuk melancarkan apl, menunjukkan skrin utama, atau membangunkan skrin dari latar belakang apabila peranti tersambung. Berikan kebenaran \"Paparkan di atas apl lain\".</string>
     <string name="notification_permission_hint_title">Kebenaran pemberitahuan</string>
     <string name="notification_permission_hint_message">Beri kebenaran pemberitahuan untuk lihat kemas kini status semasa melaraskan volum.</string>
     <string name="dnd_access_hint_title">Akses Jangan Ganggu</string>

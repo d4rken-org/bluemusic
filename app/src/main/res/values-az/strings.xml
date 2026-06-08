@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Görünən tənzimləmələr</string>
     <string name="devices_device_config_visible_adjustments_desc">Cihaz kartında hansı tənzimləmələrin göstərilməsini açıb-bağlayın</string>
     <string name="devices_device_config_keep_awake_label">Oyaq saxla</string>
-    <string name="devices_device_config_keep_awake_desc">Cihazla bağlantı qurularkən ekranı açıq saxla.</string>
+    <string name="devices_device_config_keep_awake_desc">Tətbiq bağlı olarkən fonda aktiv saxlanılır, beləliklə səs kontrolü işləməyə davam edir və cihaz qoşulduqda ekranı oyandırır (\"Digər tətbiqlərin üzərində göstəriş\" icazəsi lazımdır). Daha yeni Android versiyalarında ekran yenə də öz-özünə sönə bilər.</string>
     <string name="devices_device_config_volume_observe_label">Dəyişiklikləri müşahidə et</string>
     <string name="devices_device_config_volume_observe_desc">Bu cihaz bağlı ikən aktiv qal və bu tətbiqdən qaynaqlanmayan səs dəyişikliklərini saxla.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Bağlantı kəsildikdə səsi saxla</string>
@@ -396,11 +396,11 @@
     <string name="battery_optimization_hint_title">Batareya optimallaşdırması</string>
     <string name="battery_optimization_hint_message">Batareya optimallaşdırması aktivdir və düzgün işləməyə mane ola bilər. Söndürməyi düşünün.</string>
     <string name="battery_optimization_fix_action">Optimallaşdırmanı söndür</string>
-    <string name="android10_applaunch_hint_title">Tətbiq başlatma icazəsi</string>
-    <string name="android10_applaunch_hint_message">Android 10, tətbiqləri arxaplandan başlatmaq üçün xüsusi icazə tələb edir. \"Digər tətbiqlərin üzərində görüntülə\" icazəsini ver.</string>
+    <string name="android10_applaunch_hint_title">Digər tətbiqlərin üzərində göstəriş icazəsi</string>
+    <string name="android10_applaunch_hint_message">Android 10+ tətbiqləri başlatmaq, ana ekranı göstərmək və ya fonda cihaz qoşulduqda ekranı oyandırmaq üçün xüsusi icazə lazımdır. \"Digər tətbiqlərin üzərində göstəriş\" icazəsini verin.</string>
     <string name="notification_permission_hint_title">Bildiriş icazəsi</string>
     <string name="notification_permission_hint_message">Səs tənzimləmələri zamanı vəziyyət yeniləmələrini görmək üçün bildiriş icazəsi ver.</string>
-    <string name="dnd_access_hint_title">Narahat etmə rejimi əlavəsi</string>
+    <string name="dnd_access_hint_title">Narahat etməyin rejiminə giriş</string>
     <string name="dnd_access_hint_message">Narahat etmə rejiminə giriş olmadan, zəng çalğısı, bildiriş və Narahat etmə rejimi parametrləri cihazlarınız qoşulduqda tətbiq edilməyə bilər.</string>
     <string name="dnd_access_fix_action">Giriş icazəsi ver</string>
     <!-- IAP Error Messages -->

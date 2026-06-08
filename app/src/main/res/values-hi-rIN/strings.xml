@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">दृश्य समायोजन</string>
     <string name="devices_device_config_visible_adjustments_desc">डिवाइस कार्ड पर कौन से समायोजन दिखाए जाएं, इसे टॉगल करें</string>
     <string name="devices_device_config_keep_awake_label">स्क्रीन चालू रखें</string>
-    <string name="devices_device_config_keep_awake_desc">इस उपकरण के कनेक्ट होने के दौरान स्क्रीन को चालू रखें</string>
+    <string name="devices_device_config_keep_awake_desc">ऐप को कनेक्ट होने पर बैकग्राउंड में जागृत रखता है ताकि वॉल्यूम नियंत्रण काम करता रहे, और जब कोई डिवाइस कनेक्ट हो तो स्क्रीन को जागृत करता है (\"अन्य ऐप्स पर प्रदर्शित करें\" अनुमति की आवश्यकता है)। नए Android संस्करणों पर स्क्रीन अपने आप बंद हो सकती है।</string>
     <string name="devices_device_config_volume_observe_label">परिवर्तन देखें</string>
     <string name="devices_device_config_volume_observe_desc">जब यह डिवाइस जुड़ा हो तो सक्रिय रहें और उन वॉल्यूम परिवर्तनों को सेव करें जो इस ऐप के कारण नहीं हुए हैं।</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">डिस्कनेक्ट पर वॉल्यूम सेव करें</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">बैटरी ओप्टिमाइजेशन</string>
     <string name="battery_optimization_hint_message">बैटरी ओप्टिमाइजेशन सक्षम हैं और सही ऑपरेशन को रोक सकते हैं। इन्हें अक्षम करने पर विचार करें।</string>
     <string name="battery_optimization_fix_action">ओप्टिमाइजेशन अक्षम करें</string>
-    <string name="android10_applaunch_hint_title">आप लॉन्च अनुमति</string>
-    <string name="android10_applaunch_hint_message">एंड्राइड 10 में बैकग्राउंड से आप लॉन्च करने के लिए विशेष अनुमति की आवश्यकता है। &quot;दूसरे आप पर प्रदर्शित करें&quot; अनुमति दें।</string>
+    <string name="android10_applaunch_hint_title">ऐप्स पर प्रदर्शित करने की अनुमति</string>
+    <string name="android10_applaunch_hint_message">Android 10+ को ऐप्स लॉन्च करने, होम स्क्रीन दिखाने, या बैकग्राउंड से स्क्रीन जागृत करने के लिए एक विशेष अनुमति की आवश्यकता है। \"अन्य ऐप्स पर प्रदर्शित करें\" अनुमति दें।</string>
     <string name="notification_permission_hint_title">अधिसूचना अनुमति</string>
     <string name="notification_permission_hint_message">वॉल्यूम समायोजित करते समय स्थिति अपडेट देखने के लिए अधिसूचना अनुमति दें।</string>
     <string name="dnd_access_hint_title">डू नॉट डिस्टर्ब एक्सेस</string>

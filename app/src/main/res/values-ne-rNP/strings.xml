@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">दृश्यमान समायोजनहरू</string>
     <string name="devices_device_config_visible_adjustments_desc">यस एपले यस उपकरणका लागि समायोजन गर्दा प्रणालीको भोल्युम विन्डो देखाउनुहोस्।</string>
     <string name="devices_device_config_keep_awake_label">जागा राख्नुहोस्</string>
-    <string name="devices_device_config_keep_awake_desc">जडान भएको बेला उपकरणलाई जागा राख्ने प्रयास गर्नुहोस्। Android संस्करणमा निर्भर गर्दै व्यवहार फरक हुन सक्छ।</string>
+    <string name="devices_device_config_keep_awake_desc">जोडिएको समयमा एप लाई पृष्ठभूमिमा जागृत राख्छ ताकि भोल्युम नियन्त्रण काम गरिरहोस्, र उपकरण जोडिएको बेला स्क्रिन जगाउँछ (\"अन्य एपहरूमाथि प्रदर्शन\" अनुमति आवश्यक छ)। नयाँ Android संस्करणहरूमा स्क्रिन अझै पनि आफैं बन्द हुन सक्छ।</string>
     <string name="devices_device_config_volume_observe_label">परिवर्तनहरू अवलोकन गर्नुहोस्</string>
     <string name="devices_device_config_volume_observe_desc">यो उपकरण जडान भएको बेला सक्रिय रहनुहोस् र यस एपले नगराएका भोल्युम परिवर्तनहरू सुरक्षित गर्नुहोस्।</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">विच्छेद हुँदा भोल्युम सुरक्षित गर्नुहोस्</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">ब्याट्री अप्टिमाइजेसन</string>
     <string name="battery_optimization_hint_message">ब्याट्री अप्टिमाइजेसनहरू सक्षम छन् र उचित सञ्चालनलाई रोक्न सक्छ। तिनीहरू अक्षम गर्ने विचार गर्नुहोस्।</string>
     <string name="battery_optimization_fix_action">अप्टिमाइजेसनहरू अक्षम गर्नुहोस्</string>
-    <string name="android10_applaunch_hint_title">एप खोल्ने अनुमति</string>
-    <string name="android10_applaunch_hint_message">Android 10 लाई पृष्ठभूमिबाट एपहरू खोल्न वा होम स्क्रिन देखाउन विशेष अनुमति आवश्यक छ। \"अन्य एपहरूमाथि प्रदर्शन\" अनुमति दिनुहोस्।</string>
+    <string name="android10_applaunch_hint_title">अन्य एपहरूमाथि प्रदर्शन अनुमति</string>
+    <string name="android10_applaunch_hint_message">Android 10+ लाई एपहरू सुरु गर्न, होम स्क्रिन देखाउन, वा जोडिएको बेला पृष्ठभूमिबाट स्क्रिन जगाउन विशेष अनुमति चाहिन्छ। \"अन्य एपहरूमाथि प्रदर्शन\" अनुमति दिनुहोस्।</string>
     <string name="notification_permission_hint_title">सूचना अनुमति</string>
     <string name="notification_permission_hint_message">भोल्युमहरू समायोजन गर्दा स्थिति अद्यावधिकहरू हेर्न सूचना अनुमति दिनुहोस्।</string>
     <string name="dnd_access_hint_title">बाधा नगर्नुहोस् पहुँच</string>

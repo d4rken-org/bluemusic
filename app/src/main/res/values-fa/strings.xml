@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">تنظیمات قابل مشاهده</string>
     <string name="devices_device_config_visible_adjustments_desc">نمایش پنجره صدای سیستم حین اعمال تنظیمات برنامه برای این دستگاه.</string>
     <string name="devices_device_config_keep_awake_label">بیدار نگه داشتن</string>
-    <string name="devices_device_config_keep_awake_desc">تلاش برای بیدار نگه داشتن دستگاه حین اتصال. رفتار بسته به نسخه اندروید متفاوت است.</string>
+    <string name="devices_device_config_keep_awake_desc">برنامه را در پس‌زمینه فعال نگه می‌دارد درحالی‌که متصل است تا کنترل صدا کار کند، و صفحه را بیدار می‌کند هنگامی‌که دستگاهی متصل می‌شود (نیاز به اجازه «نمایش روی برنامه‌های دیگر» دارد). در نسخه‌های جدیدتر اندروید صفحه ممکن است خود به خود خاموش شود.</string>
     <string name="devices_device_config_volume_observe_label">پایش تغییرات</string>
     <string name="devices_device_config_volume_observe_desc">حین اتصال این دستگاه فعال بمان و تغییرات صدایی که توسط این برنامه ایجاد نشده را ذخیره کن.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ذخیره صدا حین قطع اتصال</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">بهینه‌سازی باتری</string>
     <string name="battery_optimization_hint_message">بهینه‌سازی باتری فعال است و ممکن است عملکرد صحیح را مختل کند. غیرفعال کردن آن را بررسی کنید.</string>
     <string name="battery_optimization_fix_action">غیرفعال‌سازی بهینه‌سازی‌ها</string>
-    <string name="android10_applaunch_hint_title">مجوز راه‌اندازی برنامه</string>
-    <string name="android10_applaunch_hint_message">اندروید 10 برای راه‌اندازی برنامه‌ها یا نمایش صفحه اصلی از پس‌زمینه، مجوز ویژه لازم دارد. مجوز «نمایش روی برنامه‌های دیگر» را اعطا کنید.</string>
+    <string name="android10_applaunch_hint_title">اجازه نمایش روی برنامه‌های دیگر</string>
+    <string name="android10_applaunch_hint_message">اندروید ۱۰ به بعد نیاز به اجازه خاصی دارد تا برنامه‌ها را اجرا کند، صفحه‌ی خانه را نمایش دهد، یا صفحه را از پس‌زمینه بیدار کند هنگام اتصال. اجازه «نمایش روی برنامه‌های دیگر» را بدهید.</string>
     <string name="notification_permission_hint_title">مجوز اعلان</string>
     <string name="notification_permission_hint_message">برای مشاهده به‌روزرسانی وضعیت حین تنظیم صدا، مجوز اعلان بدهید.</string>
     <string name="dnd_access_hint_title">دسترسی به مزاحم نشوید</string>

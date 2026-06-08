@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Doikuntza ikusgarriak</string>
     <string name="devices_device_config_visible_adjustments_desc">Sistemaren bolumen leihoa erakutsi aplikazio honek gailu honetarako doikuntzak egiten dituen bitartean.</string>
     <string name="devices_device_config_keep_awake_label">Esnai mantendu</string>
-    <string name="devices_device_config_keep_awake_desc">Saiatu gailua esnai mantentzen konektatuta dagoen bitartean. Portaera Android bertsioarengatik aldatu daiteke.</string>
+    <string name="devices_device_config_keep_awake_desc">Aplikazioa aktibo mantentzen du atzean konektatuta dagoen bitartean, bolumearen kontrola funtzionatzen jarraitu dezan, eta pantaila esnatzen du gailua konektatzen denean (\"Beste aplikazioen gainean bistaratzea\" baimena behar da). Android bertsio berriagoan pantaila nork bere aldetik itzal daiteke.</string>
     <string name="devices_device_config_volume_observe_label">Aldaketak behatu</string>
     <string name="devices_device_config_volume_observe_desc">Aktibo egon gailu hau konektatuta dagoen bitartean eta aplikazio honek eragin ez dituen bolumen aldaketak gorde.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Gorde bolumena deskonektatzean</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Bateria optimizazioa</string>
     <string name="battery_optimization_hint_message">Bateria optimizazioak gaituta daude eta funtzionamendu egokia eragotzi dezakete. Kontuan hartu desgaitzea.</string>
     <string name="battery_optimization_fix_action">Desgaitu optimizazioak</string>
-    <string name="android10_applaunch_hint_title">Aplikazioa abiarazteko baimena</string>
-    <string name="android10_applaunch_hint_message">Android 10-ek baimen berezi bat behar du atzealdetik aplikazioak abiarazteko edo hasierako pantaila erakusteko. Eman \"Beste aplikazioen gainean bistaratu\" baimena.</string>
+    <string name="android10_applaunch_hint_title">Beste aplikazioen gainean bistaratzea baimena</string>
+    <string name="android10_applaunch_hint_message">Android 10+ bertsioak baimena berezian behar du aplikazioak abiarazteko, hasierako pantaila erakusteko edo pantaila esnatzeko atzeko planoan konektatzearen ondoren. Eman \"Beste aplikazioen gainean bistaratzea\" baimena.</string>
     <string name="notification_permission_hint_title">Jakinarazpen baimena</string>
     <string name="notification_permission_hint_message">Eman jakinarazpen baimena egoera eguneraketak ikusteko bolumenak doitzen direnean.</string>
     <string name="dnd_access_hint_title">Ez molestatzeko sarbidea</string>

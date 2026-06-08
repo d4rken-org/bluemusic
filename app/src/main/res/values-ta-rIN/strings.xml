@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">காணும் சரிசெய்த்தல்கள்</string>
     <string name="devices_device_config_visible_adjustments_desc">இந்த ஆப்் இந்த சாதனத்திற்காக சரிசெய்த்தல்கள் செய்யும்போது கணினியின் ஒலி சாளர்த்தைக் காட்டு.</string>
     <string name="devices_device_config_keep_awake_label">விழிப்பாக வை</string>
-    <string name="devices_device_config_keep_awake_desc">இணைக்கப்பட்டிருக்கும்போது சாதனத்தை விழிப்பாக வைக்க முயற்சிக்கும். ஆற்றல் Android பதிப்பின் படி மாறலாம்.</string>
+    <string name="devices_device_config_keep_awake_desc">இணைக்கப்பட்டுள்ளபோது ஆப்ஸை பின்னணியில் விழிப்புடன் வைத்திருக்கிறது, இதன் மூலம் ஒலி அளவு கட்டுப்பாடு செயல்படுகிறது, மேலும் சாதனம் இணையும்போது திரையை விழிப்புடன் வைக்கிறது (\"மற்ற ஆப்ஸ் மீது காண்பி\" அனுமதி தேவை). புதிய Android பதிப்புகளில் திரை தன்னைத்தானே முடக்கப்படலாம்.</string>
     <string name="devices_device_config_volume_observe_label">மாற்றங்களைக் கவனி</string>
     <string name="devices_device_config_volume_observe_desc">இந்த சாதனம் இணைக்கப்பட்டிருக்கும்போது உல்னிலையிருக்கும் மற்றும் இந்த ஆப்்இனால் ஏற்படாத ஒலி மாற்றங்களை சேமிக்கும்.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">தொடர்பு துணிக்கத்தில் ஒலி அளவை சேமி</string>
@@ -144,7 +144,7 @@
     <string name="devices_state_connected_label">இணைக்கப்பட்டது</string>
     <string name="devices_last_connected_label">கடைசியாக இணைக்கப்பட்டது: %s</string>
     <string name="devices_currently_connected_label">தற்போது இணைக்கப்பட்டுள்ளது</string>
-    <string name="devices_device_disabled_label">சாதனம் முடக்கப்பட்டுள்ளது</string>
+    <string name="devices_device_disabled_label">சாதனம் முடக்கப்பட்டது</string>
     <string name="devices_no_volumes_configured">இந்த சாதனத்திற்கு ஒலி அளவுகள் ஏதும் கட்டமைக்கப்படவில்லை. ஒலி அளவு அமைப்புகளை அமைக்க கட்டமை தட்டும்.</string>
     <!-- Settings-->
     <string name="settings_label">அமைப்புகள்</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">பட்டரி மேம்பாடு</string>
     <string name="battery_optimization_hint_message">பட்டரி மேம்பாடுகள் இயக்கப்பட்டுள்ளன மற்றும் சரியான இயக்கத்தைத் தடுக்கலாம். அவற்றை குறைக்கலாம்.</string>
     <string name="battery_optimization_fix_action">மேம்பாடுகளை குறைக்கு</string>
-    <string name="android10_applaunch_hint_title">ஆப்் தொடங்கு அனுமதி</string>
-    <string name="android10_applaunch_hint_message">Android 10 பின்னிலையிருந்து ஆப்களை தொடங்க அல்லது இல்ல திரையைக் காட்ட சிறப்பு அனுமதி தேவைப்படுகிறது. \"மற்ற ஆப்களின் மேல் காட்டு\" அனுமதி வழங்கும்.</string>
+    <string name="android10_applaunch_hint_title">மற்ற ஆப்ஸ் மீது காண்பி அனுமதி</string>
+    <string name="android10_applaunch_hint_message">Android 10+ ஆப்ஸ்களை தொடங்க, முகப்பு திரையைக் காட்ட, அல்லது பின்னணியிலிருந்து திரையை விழிக்க ஒரு சிறப்பு அனுமதி தேவை. \"மற்ற ஆப்ஸ் மீது காண்பி\" அனுமதியை வழங்கவும்.</string>
     <string name="notification_permission_hint_title">அறிவிப்பு அனுமதி</string>
     <string name="notification_permission_hint_message">ஒலி அளவுகளை சரிசெய்யும்போது நிலைமாற்றங்களைப் பார்க்க அறிவிப்பு அனுமதி வழங்கும்.</string>
     <string name="dnd_access_hint_title">தொந்தரவு செய்யாதீர்கள் அணுகல்</string>
@@ -431,7 +431,7 @@
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">எச்சரிக்கை</string>
     <!-- Volume input dialog -->
-    <string name="devices_volume_input_hint">ஒலி அளவு (0–100)</string>
+    <string name="devices_volume_input_hint">ஒலியளவு (0–100)</string>
     <string name="devices_volume_input_error">%1$d மற்றும் %2$d இடையில் ஒரு மதிப்பை உள்ளிடுக</string>
     <string name="devices_volume_input_caption">உண்மையான ஒலியளவு உங்கள் சாதனம் ஆதரிக்கும் அருகாமை படிக்கு வட்டமிடப்படலாம்.</string>
     <!-- Lock/unlock sliders -->

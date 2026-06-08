@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">نظر آنے والی ایڈجسٹمنٹس</string>
     <string name="devices_device_config_visible_adjustments_desc">جب یہ ایپ اس ڈیوائس کے لیے ایڈجسٹمنٹ کرے تو سسٹم وکا لیوم ونڈو دکھائیں۔</string>
     <string name="devices_device_config_keep_awake_label">جگائے رکھیں</string>
-    <string name="devices_device_config_keep_awake_desc">منسلک ہونے کے دوران ڈیوائس کو جگائے رکھنے کی کوشش کریں۔ طرز عمل اینڈرائیڈ ورژن کے مطابق مختلف ہو سکتا ہے۔</string>
+    <string name="devices_device_config_keep_awake_desc">جب منسلک ہو تو ایپ کو پس منظر میں جاگتا رکھتا ہے تاکہ والیوم کنٹرول کام کرتا رہے، اور جب کوئی ڈیوائس منسلک ہو تو اسکرین کو جگا دیتا ہے (\"دوسری ایپلیکیشنوں پر ڈسپلے\" کی اجازت کی ضرورت ہے)۔ نئے Android ورژنز پر اسکرین اپنے آپ بند ہو سکتی ہے۔</string>
     <string name="devices_device_config_volume_observe_label">تبدیلیاں مشاہدہ کریں</string>
     <string name="devices_device_config_volume_observe_desc">جب یہ ڈیوائس منسلک ہو فعال رہیں اور والیوم تبدیلیاں محفوظ کریں جو اس ایپ نے نہیں کیں۔</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ڈسکنیکٹ پر والیوم محفوظ کریں</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">بیٹری آپٹیمائزیشن</string>
     <string name="battery_optimization_hint_message">بیٹری آپٹیمائزیشنز فعال ہیں اور صحیح کام کاج روک سکتی ہیں۔ انہیں بند کرنے کی کوشش کریں۔</string>
     <string name="battery_optimization_fix_action">آپٹیمائزیشنز بند کریں</string>
-    <string name="android10_applaunch_hint_title">ایپ شروع کرنے کی اجازت</string>
-    <string name="android10_applaunch_hint_message">اینڈرائیڈ 10 کو بیک گراؤنڈ سے ایپس شروع کرنے یا ہوم اسکرین دکھانے کے لیے خصوصی اجازت کی ضرورت ہے۔ \'دوسری ایپس کے اوپر دکھائیں\' اجازت دیں۔</string>
+    <string name="android10_applaunch_hint_title">ایپس پر ڈسپلے کی اجازت</string>
+    <string name="android10_applaunch_hint_message">Android 10+ کو ایپس شروع کرنے، ہوم اسکرین دکھانے، یا پس منظر سے منسلک ہونے پر اسکرین کو جگا کرنے کے لیے ایک خصوصی اجازت کی ضرورت ہے۔ \"دوسری ایپلیکیشنوں پر ڈسپلے\" کی اجازت دیں۔</string>
     <string name="notification_permission_hint_title">نوٹیفیکیشن کی اجازت</string>
     <string name="notification_permission_hint_message">والیوم ایڈجسٹ کرتے وقت سٹیٹس اپڈیٹس دیکھنے کے لیے نوٹیفیکیشن کی اجازت دیں۔</string>
     <string name="dnd_access_hint_title">ڈو ناٹ ڈسٹرب رسائی</string>

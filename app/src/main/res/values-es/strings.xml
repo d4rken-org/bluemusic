@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Ajustes visibles</string>
     <string name="devices_device_config_visible_adjustments_desc">Muestra la ventana de volumen del sistema mientras esta aplicación realiza ajustes para este dispositivo.</string>
     <string name="devices_device_config_keep_awake_label">Mantente activo</string>
-    <string name="devices_device_config_keep_awake_desc">Intentar mantener el dispositivo activo mientras está conectado. El comportamiento puede variar según la versión de Android.</string>
+    <string name="devices_device_config_keep_awake_desc">Mantiene la aplicación activa en segundo plano mientras está conectada para que el control de volumen siga funcionando, y despierta la pantalla cuando se conecta un dispositivo (requiere el permiso \"Mostrar sobre otras aplicaciones\"). En versiones más nuevas de Android, la pantalla puede apagarse por su cuenta.</string>
     <string name="devices_device_config_volume_observe_label">Observar cambios</string>
     <string name="devices_device_config_volume_observe_desc">Mantente activo mientras este dispositivo está conectado y guarda los cambios de volumen que no han sido causados por esta aplicación.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">Guardar volumen al desconectar</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Optimización de batería</string>
     <string name="battery_optimization_hint_message">Las optimizaciones de batería están habilitadas y pueden evitar el funcionamiento adecuado. Considera deshabilitarlas.</string>
     <string name="battery_optimization_fix_action">Deshabilitar optimizaciones</string>
-    <string name="android10_applaunch_hint_title">Permiso de inicio de aplicación</string>
-    <string name="android10_applaunch_hint_message">Android 10 requiere permiso especial para iniciar aplicaciones desde el fondo. Otorga el permiso &quot;Mostrar sobre otras aplicaciones&quot;.</string>
+    <string name="android10_applaunch_hint_title">Permiso Mostrar sobre otras aplicaciones</string>
+    <string name="android10_applaunch_hint_message">Android 10+ necesita un permiso especial para lanzar aplicaciones, mostrar la pantalla de inicio o despertar la pantalla desde el segundo plano al conectarse. Concede el permiso \"Mostrar sobre otras aplicaciones\".</string>
     <string name="notification_permission_hint_title">Permiso de notificación</string>
     <string name="notification_permission_hint_message">Otorga permiso de notificación para ver actualizaciones de estado al ajustar volúmenes.</string>
     <string name="dnd_access_hint_title">Acceso a No molestar</string>

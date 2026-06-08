@@ -57,7 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">Nakikitang mga pagsasaayos</string>
     <string name="devices_device_config_visible_adjustments_desc">I-toggle kung aling mga pagsasaayos ang ipapakita sa device card</string>
     <string name="devices_device_config_keep_awake_label">Panatilihing gising</string>
-    <string name="devices_device_config_keep_awake_desc">Subukang panatilihing gising ang device habang nakakonekta. Maaaring mag-iba ang gawi depende sa bersyon ng Android.</string>
+    <string name="devices_device_config_keep_awake_desc">Pinapanatiling gising ang app sa background habang konektado upang patuloy na gumana ang volume control, at ginagising ang screen kapag kumokonekta ang isang device (kailangan ang \"Pahintulot na ipakita sa ibabaw ng ibang apps\"). Sa mas bagong Android versions, maaari pa ring mag-off ang screen nang mag-isa.</string>
     <string name="devices_device_config_volume_observe_label">Obserbahan ang mga pagbabago</string>
     <string name="devices_device_config_volume_observe_desc">Manatiling aktibo habang nakakonekta ang device na ito at i-save ang mga pagbabago sa volume na hindi kagagawan ng app na ito.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">I-save ang volume sa pag-disconnect</string>
@@ -396,8 +396,8 @@
     <string name="battery_optimization_hint_title">Pag-optimize ng baterya</string>
     <string name="battery_optimization_hint_message">Naka-enable ang battery optimizations at maaaring pumigil sa tamang pagpapatakbo. Pag-isipang i-disable ang mga ito.</string>
     <string name="battery_optimization_fix_action">I-disable ang optimizations</string>
-    <string name="android10_applaunch_hint_title">Permiso sa paglulunsad ng app</string>
-    <string name="android10_applaunch_hint_message">Ang Android 10 ay nangangailangan ng espesyal na permiso para ilunsad ang mga app o ipakita ang home screen mula sa background. Bigyan ng permisong \"Display over other apps\".</string>
+    <string name="android10_applaunch_hint_title">Pahintulot na ipakita sa ibabaw ng ibang apps</string>
+    <string name="android10_applaunch_hint_message">Ang Android 10+ ay nangangailangan ng espesyal na pahintulot upang ilunsad ang mga app, ipakita ang home screen, o gisingin ang screen mula sa background kapag kumonekta. Ibigay ang pahintulot na \"Ipakita sa ibabaw ng ibang apps\".</string>
     <string name="notification_permission_hint_title">Permiso sa notification</string>
     <string name="notification_permission_hint_message">Bigyan ng notification permission para makita ang mga update sa katayuan kapag nagbabago ng volume.</string>
     <string name="dnd_access_hint_title">Access sa Do Not Disturb</string>
