@@ -153,6 +153,21 @@ class EventDispatcherTest : BaseTest() {
     }
 
     @Test
+    fun `event is dropped while app is disabled`() = runTest {
+        currentEnabledState = DevicesSettings.EnabledState(isEnabled = false, toggleEpoch = 1L)
+        val buds = managedDevice(budsAddress, connected = true)
+        devicesFlow.value = listOf(buds)
+        val dispatcher = createDispatcher()
+
+        dispatcher.dispatch(event(budsAddress, CONNECTED))
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { module1.handle(any()) }
+        coVerify(exactly = 0) { module2.handle(any()) }
+        coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+    }
+
+    @Test
     fun `fresh event is dispatched to all modules`() = runTest {
         val buds = managedDevice(budsAddress, connected = true)
         devicesFlow.value = listOf(buds)

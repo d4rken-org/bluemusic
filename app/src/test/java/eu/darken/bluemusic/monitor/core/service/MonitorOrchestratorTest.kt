@@ -2,6 +2,7 @@ package eu.darken.bluemusic.monitor.core.service
 
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.devices.core.DeviceRepo
+import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.monitor.core.audio.RingerModeEvent
 import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
@@ -9,10 +10,13 @@ import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import io.kotest.matchers.shouldBe
+import io.mockk.Runs
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
+import io.mockk.just
 import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filter
@@ -39,8 +43,10 @@ class MonitorOrchestratorTest : BaseTest() {
     private lateinit var ownerRegistry: AudioStreamOwnerRegistry
     private lateinit var volumeEventDispatcher: VolumeEventDispatcher
 
+    private lateinit var devicesSettings: DevicesSettings
     private lateinit var devicesFlow: MutableStateFlow<List<ManagedDevice>>
     private lateinit var stateFlow: MutableStateFlow<BluetoothRepo.State>
+    private lateinit var enabledFlow: MutableStateFlow<DevicesSettings.EnabledState>
     private lateinit var idleFlow: MutableStateFlow<Boolean>
     private lateinit var workGen: AtomicLong
 
@@ -51,6 +57,12 @@ class MonitorOrchestratorTest : BaseTest() {
         )
         bluetoothRepo = mockk { every { state } returns stateFlow }
 
+        enabledFlow = MutableStateFlow(DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 0L))
+        devicesSettings = mockk {
+            every { enabledState } returns enabledFlow
+            coEvery { currentEnabledState() } answers { enabledFlow.value }
+        }
+
         devicesFlow = MutableStateFlow(emptyList())
         deviceRepo = mockk(relaxed = true) {
             every { devices } returns devicesFlow
@@ -58,7 +70,10 @@ class MonitorOrchestratorTest : BaseTest() {
 
         volumeObserver = mockk { every { volumes } returns MutableSharedFlow() }
         ringerModeObserver = mockk { every { ringerMode } returns MutableSharedFlow() }
-        bluetoothEventQueue = mockk { every { events } returns MutableSharedFlow() }
+        bluetoothEventQueue = mockk {
+            every { events } returns MutableSharedFlow()
+            every { clear() } just Runs
+        }
         idleFlow = MutableStateFlow(true)
         workGen = AtomicLong(0)
         eventDispatcher = mockk(relaxed = true) {
@@ -74,6 +89,7 @@ class MonitorOrchestratorTest : BaseTest() {
     private fun createOrchestrator() = MonitorOrchestrator(
         bluetoothRepo = bluetoothRepo,
         deviceRepo = deviceRepo,
+        devicesSettings = devicesSettings,
         volumeObserver = volumeObserver,
         ringerModeObserver = ringerModeObserver,
         bluetoothEventQueue = bluetoothEventQueue,
@@ -340,6 +356,76 @@ class MonitorOrchestratorTest : BaseTest() {
 
         // Initial callback + at least one update
         (callbackInvocations.size >= 2) shouldBe true
+
+        job.cancel()
+    }
+
+    // --- App enabled gating ---
+
+    @Test
+    fun `disabled at start - returns immediately and clears queued events`() = runTest {
+        enabledFlow.value = DevicesSettings.EnabledState(isEnabled = false, toggleEpoch = 1L)
+        val device = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresPersistentSession = true)
+        devicesFlow.value = listOf(device)
+
+        val callbackInvocations = mutableListOf<List<ManagedDevice>>()
+        val orchestrator = createOrchestrator()
+
+        orchestrator.monitor(this) { callbackInvocations.add(it) }
+        advanceUntilIdle()
+
+        callbackInvocations shouldBe emptyList()
+        coVerify(exactly = 0) { ownerRegistry.reset() }
+        verify(exactly = 1) { bluetoothEventQueue.clear() }
+    }
+
+    @Test
+    fun `disabling mid-monitoring stops even with persistent session device`() = runTest {
+        val device = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresPersistentSession = true)
+        devicesFlow.value = listOf(device)
+
+        val orchestrator = createOrchestrator()
+        var monitorReturned = false
+
+        val job = launch {
+            orchestrator.monitor(this@runTest) {}
+            monitorReturned = true
+        }
+
+        advanceTimeBy(30_000)
+        monitorReturned shouldBe false
+
+        enabledFlow.value = DevicesSettings.EnabledState(isEnabled = false, toggleEpoch = 1L)
+        advanceUntilIdle()
+
+        monitorReturned shouldBe true
+        verify(atLeast = 1) { eventDispatcher.cancelAllJobs() }
+        verify(atLeast = 1) { bluetoothEventQueue.clear() }
+
+        job.cancel()
+    }
+
+    @Test
+    fun `collapsed toggle cycle (epoch change while enabled) stops the session`() = runTest {
+        val device = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresPersistentSession = true)
+        devicesFlow.value = listOf(device)
+
+        val orchestrator = createOrchestrator()
+        var monitorReturned = false
+
+        val job = launch {
+            orchestrator.monitor(this@runTest) {}
+            monitorReturned = true
+        }
+
+        advanceTimeBy(5_000)
+        monitorReturned shouldBe false
+
+        // e.g. backup restore flips enabled off and on; observer only sees the final true
+        enabledFlow.value = DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 2L)
+        advanceUntilIdle()
+
+        monitorReturned shouldBe true
 
         job.cancel()
     }

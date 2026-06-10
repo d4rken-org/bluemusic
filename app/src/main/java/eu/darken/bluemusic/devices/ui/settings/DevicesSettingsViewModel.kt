@@ -45,6 +45,10 @@ constructor(
     fun onToggleEnabled(enabled: Boolean) = launch {
         log(tag) { "onToggleEnabled($enabled)" }
         devicesSettings.setEnabled(enabled)
+        // Disabling is handled centrally: MonitorControl observes enabledState and stops the
+        // service; the orchestrator's own watcher tears down the session as a safety net.
+        // forceStart: a quick disable->enable can race the old session's teardown — a plain
+        // start would be swallowed by onStartCommand and killed by the old job's stopSelf.
         if (enabled) {
             monitorControl.startMonitor(forceStart = true)
         }

@@ -14,6 +14,7 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.monitor.core.screenwake.ScreenWakeActivity
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import javax.inject.Inject
@@ -60,6 +61,12 @@ class WakeLockManager @Inject constructor(
             }
         }
     }
+
+    /**
+     * Synchronous release for teardown paths (e.g. Service.onDestroy) where launching a
+     * coroutine could outlive the process. Release is fast (mutex + release call).
+     */
+    fun releaseBlocking() = runBlocking { setWakeLock(false) }
 
     fun wakeScreenNow() {
         // Background activity launch (BAL) restrictions only apply on API 29+ (Android 10+).
