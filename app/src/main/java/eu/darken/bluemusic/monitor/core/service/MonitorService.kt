@@ -20,6 +20,7 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.common.ui.Service2
+import eu.darken.bluemusic.monitor.core.WakeLockManager
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import eu.darken.bluemusic.monitor.ui.MonitorNotifications
 import kotlinx.coroutines.CancellationException
@@ -40,6 +41,7 @@ class MonitorService : Service2() {
     @Inject lateinit var orchestrator: MonitorOrchestrator
     @Inject lateinit var eventDispatcher: EventDispatcher
     @Inject lateinit var ownerRegistry: AudioStreamOwnerRegistry
+    @Inject lateinit var wakeLockManager: WakeLockManager
 
     private val serviceScope by lazy {
         CoroutineScope(SupervisorJob() + dispatcherProvider.IO)
@@ -138,6 +140,7 @@ class MonitorService : Service2() {
         }
         if (injectionComplete) {
             eventDispatcher.cancelAllJobs()
+            wakeLockManager.releaseBlocking()
             ownerRegistry.resetBlocking()
             serviceScope.cancel("Service destroyed")
         } else {

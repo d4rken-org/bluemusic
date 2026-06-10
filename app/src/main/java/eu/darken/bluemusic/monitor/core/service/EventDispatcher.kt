@@ -125,7 +125,12 @@ class EventDispatcher @Inject constructor(
                 return@withLock
             }
 
-            eventTypeDedupTracker.observeEnabledState(devicesSettings.currentEnabledState())
+            val enabledState = devicesSettings.currentEnabledState()
+            eventTypeDedupTracker.observeEnabledState(enabledState)
+            if (!enabledState.isEnabled) {
+                log(TAG, WARN) { "dispatch: Dropping event, app is disabled: $bluetoothEvent" }
+                return@withLock
+            }
 
             if (!eventTypeDedupTracker.shouldProcess(bluetoothEvent.sourceDevice.address, bluetoothEvent.type)) {
                 return@withLock

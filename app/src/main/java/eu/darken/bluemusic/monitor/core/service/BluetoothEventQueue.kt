@@ -26,6 +26,16 @@ class BluetoothEventQueue @Inject constructor() {
         _events.send(event)
     }
 
+    /**
+     * Drops all queued events. Called when monitoring shuts down due to the app being
+     * disabled, so stale pre-disable events don't fire after a later re-enable.
+     */
+    fun clear() {
+        var dropped = 0
+        while (_events.tryReceive().isSuccess) dropped++
+        if (dropped > 0) log(TAG) { "clear(): dropped $dropped stale events" }
+    }
+
     fun stampEvent(
         type: Event.Type,
         sourceDevice: SourceDevice,

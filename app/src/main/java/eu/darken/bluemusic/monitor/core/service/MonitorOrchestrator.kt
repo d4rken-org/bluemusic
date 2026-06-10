@@ -11,6 +11,7 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import eu.darken.bluemusic.common.flow.throttleLatest
 import eu.darken.bluemusic.devices.core.DeviceRepo
+import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
@@ -22,10 +23,12 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.take
 import java.time.Duration
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -34,6 +37,7 @@ import javax.inject.Singleton
 class MonitorOrchestrator @Inject constructor(
     private val bluetoothRepo: BluetoothRepo,
     private val deviceRepo: DeviceRepo,
+    private val devicesSettings: DevicesSettings,
     private val volumeObserver: VolumeObserver,
     private val ringerModeObserver: RingerModeObserver,
     private val bluetoothEventQueue: BluetoothEventQueue,
@@ -56,6 +60,13 @@ class MonitorOrchestrator @Inject constructor(
         scope: CoroutineScope,
         onActiveDevicesChanged: suspend (List<ManagedDevice>) -> Unit,
     ) {
+        val startEnabledState = devicesSettings.currentEnabledState()
+        if (!startEnabledState.isEnabled) {
+            log(TAG, WARN) { "Aborting, app is disabled: $startEnabledState" }
+            bluetoothEventQueue.clear()
+            return
+        }
+
         val bluetoothState = bluetoothRepo.currentState()
         if (!bluetoothState.isReady) {
             log(TAG, WARN) { "Aborting, Bluetooth state is not ready: $bluetoothState" }
@@ -71,6 +82,19 @@ class MonitorOrchestrator @Inject constructor(
 
         val monitorJob = Job(scope.coroutineContext[Job])
         val monitorScope = CoroutineScope(scope.coroutineContext + monitorJob)
+
+        devicesSettings.enabledState
+            .setupCommonEventHandlers(TAG) { "Enabled monitor" }
+            .filter { !it.isEnabled || it.toggleEpoch != startEnabledState.toggleEpoch }
+            .take(1)
+            .onEach { state ->
+                log(TAG, WARN) { "App was disabled or toggled ($startEnabledState -> $state), stopping monitor." }
+                eventDispatcher.cancelAllJobs()
+                bluetoothEventQueue.clear()
+                monitorJob.cancel()
+            }
+            .catch { log(TAG, WARN) { "Enabled monitor flow failed:\n${it.asLog()}" } }
+            .launchIn(monitorScope)
 
         ringerModeObserver.ringerMode
             .setupCommonEventHandlers(TAG) { "RingerMode monitor" }
