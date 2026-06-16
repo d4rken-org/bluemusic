@@ -10,6 +10,7 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.permissions.PermissionHelper
+import eu.darken.bluemusic.monitor.core.audio.DndMode
 import eu.darken.bluemusic.monitor.core.audio.DndTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
@@ -31,6 +32,9 @@ class DndModeModule @Inject constructor(
         event is DeviceEvent.Connected
             && hasApiLevel(Build.VERSION_CODES.M)
             && event.device.dndMode != null
+            // OFF can't turn DND off on API 35+ (discussion #230); skip it here so a stale
+            // OFF config doesn't make the dispatcher pay the settle barrier for a no-op.
+            && !(event.device.dndMode == DndMode.OFF && !DndMode.canTurnDndOff())
             // Include the DND-permission check so the dispatcher doesn't pay the settle
             // barrier for users with dndMode configured but the permission revoked. The
             // check is a sync Android NotificationManager query — safe in appliesTo.

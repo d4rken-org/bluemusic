@@ -30,15 +30,20 @@ fun DndModeDialog(
     onConfirm: (DndMode?) -> Unit,
     onDismiss: () -> Unit
 ) {
-    val dndModes = listOf(
-        null to stringResource(R.string.dnd_mode_dont_change),
-        DndMode.OFF to stringResource(R.string.dnd_mode_off),
-        DndMode.PRIORITY_ONLY to stringResource(R.string.dnd_mode_priority_only),
-        DndMode.ALARMS_ONLY to stringResource(R.string.dnd_mode_alarms_only),
-        DndMode.TOTAL_SILENCE to stringResource(R.string.dnd_mode_total_silence)
-    )
+    // On Android 15+ apps can't turn DND off (see DndMode.canTurnDndOff / discussion #230), so
+    // hide the "Off" option and treat any stale saved OFF as "Don't change" — re-saving then
+    // self-heals the obsolete config.
+    val canTurnOff = DndMode.canTurnDndOff()
+    val effectiveCurrent = if (currentMode == DndMode.OFF && !canTurnOff) null else currentMode
+    val dndModes = buildList {
+        add(null to stringResource(R.string.dnd_mode_dont_change))
+        if (canTurnOff) add(DndMode.OFF to stringResource(R.string.dnd_mode_off))
+        add(DndMode.PRIORITY_ONLY to stringResource(R.string.dnd_mode_priority_only))
+        add(DndMode.ALARMS_ONLY to stringResource(R.string.dnd_mode_alarms_only))
+        add(DndMode.TOTAL_SILENCE to stringResource(R.string.dnd_mode_total_silence))
+    }
 
-    var selectedMode by remember { mutableStateOf(currentMode) }
+    var selectedMode by remember { mutableStateOf(effectiveCurrent) }
 
     AlertDialog(
         onDismissRequest = onDismiss,
