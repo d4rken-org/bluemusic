@@ -17,13 +17,6 @@ class DndTool @Inject constructor(
     private val notificationManager: NotificationManager,
 ) {
     @SuppressLint("NewApi")
-    fun getCurrentDndMode(): DndMode = if (hasApiLevel(Build.VERSION_CODES.M)) {
-        DndMode.fromInterruptionFilter(notificationManager.currentInterruptionFilter)
-    } else {
-        DndMode.OFF
-    }
-
-    @SuppressLint("NewApi")
     fun setDndMode(mode: DndMode): Boolean {
         if (!hasApiLevel(Build.VERSION_CODES.M)) {
             log(TAG, WARN) { "DND mode requires API 23+" }
@@ -35,17 +28,23 @@ class DndTool @Inject constructor(
             return false
         }
 
-        log(TAG, VERBOSE) { "setDndMode(mode=$mode)" }
+        val rawFilter = notificationManager.currentInterruptionFilter
+        val currentMode = DndMode.fromInterruptionFilter(rawFilter)
+        log(TAG, VERBOSE) { "setDndMode(mode=$mode, currentMode=$currentMode, rawFilter=$rawFilter, sdk=${Build.VERSION.SDK_INT})" }
 
-        val currentMode = getCurrentDndMode()
+        if (mode == DndMode.OFF && !DndMode.canTurnDndOff()) {
+            log(TAG, WARN) { "Ignoring DndMode.OFF: apps can't turn DND off on API ${Build.VERSION.SDK_INT} (discussion #230). currentMode=$currentMode rawFilter=$rawFilter" }
+            return false
+        }
+
         if (currentMode == mode) {
-            log(TAG, VERBOSE) { "DND mode already set to $mode" }
+            log(TAG, VERBOSE) { "DND mode already set to $mode (rawFilter=$rawFilter)" }
             return false
         }
 
         return try {
             notificationManager.setInterruptionFilter(mode.toInterruptionFilter())
-            log(TAG, DEBUG) { "Changed DND mode from $currentMode to $mode" }
+            log(TAG, DEBUG) { "Changed DND mode from $currentMode to $mode (rawFilter was $rawFilter)" }
             true
         } catch (e: Exception) {
             log(TAG, WARN) { "Failed to set DND mode: ${e.message}" }

@@ -308,7 +308,12 @@ fun DeviceConfigScreenHost(
 private fun getDndModeDescription(mode: DndMode?): String {
     return when (mode) {
         null -> stringResource(R.string.dnd_mode_dont_change)
-        DndMode.OFF -> stringResource(R.string.dnd_mode_off)
+        // A stale OFF can't turn DND off on API 35+ (discussion #230); present it as "Don't change".
+        DndMode.OFF -> if (DndMode.canTurnDndOff()) {
+            stringResource(R.string.dnd_mode_off)
+        } else {
+            stringResource(R.string.dnd_mode_dont_change)
+        }
         DndMode.PRIORITY_ONLY -> stringResource(R.string.dnd_mode_priority_only)
         DndMode.ALARMS_ONLY -> stringResource(R.string.dnd_mode_alarms_only)
         DndMode.TOTAL_SILENCE -> stringResource(R.string.dnd_mode_total_silence)

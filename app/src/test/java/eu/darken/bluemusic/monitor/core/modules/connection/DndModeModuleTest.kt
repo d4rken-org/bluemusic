@@ -91,6 +91,27 @@ class DndModeModuleTest : BaseTest() {
     }
 
     @Test
+    fun `appliesTo OFF below API 35 is true`() {
+        // OFF still works via the legacy setInterruptionFilter path before Android 15.
+        every { BuildWrap.VERSION.SDK_INT } returns 30
+        module().appliesTo(DeviceEvent.Connected(device(dndMode = DndMode.OFF))) shouldBe true
+    }
+
+    @Test
+    fun `appliesTo OFF on API 35+ is false`() {
+        // Apps can't turn DND off on Android 15+ (discussion #230); a stale OFF config must
+        // not drag the dispatcher through the settle barrier for a guaranteed no-op.
+        every { BuildWrap.VERSION.SDK_INT } returns 35
+        module().appliesTo(DeviceEvent.Connected(device(dndMode = DndMode.OFF))) shouldBe false
+    }
+
+    @Test
+    fun `appliesTo non-OFF mode on API 35+ is still true`() {
+        every { BuildWrap.VERSION.SDK_INT } returns 35
+        module().appliesTo(DeviceEvent.Connected(device(dndMode = DndMode.PRIORITY_ONLY))) shouldBe true
+    }
+
+    @Test
     fun `handle sets DND mode when applicable`() = runTest(UnconfinedTestDispatcher()) {
         every { permissionHelper.hasNotificationPolicyAccess() } returns true
         module().handle(DeviceEvent.Connected(device(dndMode = DndMode.PRIORITY_ONLY)))
