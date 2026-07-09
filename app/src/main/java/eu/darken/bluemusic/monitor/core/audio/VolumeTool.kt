@@ -1,5 +1,7 @@
 package eu.darken.bluemusic.monitor.core.audio
 
+import android.media.AudioAttributes
+import android.media.AudioDeviceInfo
 import android.media.AudioManager
 import android.os.Build
 import android.os.SystemClock
@@ -96,6 +98,65 @@ class VolumeTool @Inject constructor(
 
     fun getVolumePercentage(streamId: AudioStream.Id): Float {
         return levelToPercentage(getCurrentVolume(streamId), getMinVolume(streamId), getMaxVolume(streamId))
+    }
+
+    /**
+     * Diagnostic only (issue #232): describes the active media output route.
+     * On some Android 16 builds the audio route tears down ~2s before
+     * ACL_DISCONNECTED, so the phone speaker's volume gets attributed to the
+     * disconnecting BT device. Logging this alongside volume changes lets a
+     * debug log reveal whether media is still routed to Bluetooth at that moment.
+     *
+     * API 33+ returns the predicted active route; below that only the connected
+     * output list is available (labelled accordingly, not the active route).
+     */
+    @Suppress("DEPRECATION") // isBluetoothA2dpOn/ScoOn are deprecated but still the routing signal we want to log
+    fun describeActiveMediaRoute(): String {
+        val start = clock()
+        return try {
+            val a2dp = audioManager.isBluetoothA2dpOn
+            val sco = audioManager.isBluetoothScoOn
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                val attrs = AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .build()
+                val devices = audioManager.getAudioDevicesForAttributes(attrs)
+                val desc = devices.joinToString(",") { describeDevice(it) }.ifEmpty { "none" }
+                "predicted=[$desc] a2dpOn=$a2dp scoOn=$sco queryMs=${clock() - start}"
+            } else {
+                val outputs = audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
+                val desc = outputs.joinToString(",") { describeDevice(it) }.ifEmpty { "none" }
+                "availableOnly=[$desc] a2dpOn=$a2dp scoOn=$sco queryMs=${clock() - start} (no active-route API < API33)"
+            }
+        } catch (e: Exception) {
+            "route-query-failed: ${e.javaClass.simpleName}: ${e.message}"
+        }
+    }
+
+    private fun describeDevice(device: AudioDeviceInfo): String {
+        val name = typeName(device.type)
+        val product = device.productName?.toString()?.trim()?.takeIf { it.isNotEmpty() }
+        return if (product != null) "$name#${device.type} '$product'" else "$name#${device.type}"
+    }
+
+    // AudioDeviceInfo.TYPE_* are compile-time int constants (inlined), safe to
+    // reference regardless of minSdk. The raw type int is always printed too.
+    private fun typeName(type: Int): String = when (type) {
+        AudioDeviceInfo.TYPE_BLUETOOTH_A2DP -> "BT_A2DP"
+        AudioDeviceInfo.TYPE_BLUETOOTH_SCO -> "BT_SCO"
+        AudioDeviceInfo.TYPE_BUILTIN_SPEAKER -> "SPEAKER"
+        AudioDeviceInfo.TYPE_BUILTIN_SPEAKER_SAFE -> "SPEAKER_SAFE"
+        AudioDeviceInfo.TYPE_BUILTIN_EARPIECE -> "EARPIECE"
+        AudioDeviceInfo.TYPE_WIRED_HEADPHONES -> "WIRED_HP"
+        AudioDeviceInfo.TYPE_WIRED_HEADSET -> "WIRED_HS"
+        AudioDeviceInfo.TYPE_USB_DEVICE -> "USB_DEVICE"
+        AudioDeviceInfo.TYPE_USB_HEADSET -> "USB_HEADSET"
+        AudioDeviceInfo.TYPE_HEARING_AID -> "HEARING_AID"
+        AudioDeviceInfo.TYPE_BLE_HEADSET -> "BLE_HEADSET"
+        AudioDeviceInfo.TYPE_BLE_SPEAKER -> "BLE_SPEAKER"
+        AudioDeviceInfo.TYPE_BLE_BROADCAST -> "BLE_BROADCAST"
+        else -> "OTHER"
     }
 
     suspend fun lowerByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {

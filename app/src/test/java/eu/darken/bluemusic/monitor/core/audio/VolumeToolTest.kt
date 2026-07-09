@@ -2,6 +2,7 @@ package eu.darken.bluemusic.monitor.core.audio
 
 import android.media.AudioManager
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldContain
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -233,6 +234,28 @@ class VolumeToolTest : BaseTest() {
             android.media.AudioManager.FLAG_SHOW_UI,
             android.media.AudioManager.FLAG_SHOW_UI,
         )
+    }
+
+    // In a pure-JVM test Build.VERSION.SDK_INT is 0, so describeActiveMediaRoute
+    // takes the < API33 fallback branch (getDevices + a2dp/sco booleans).
+    @Test
+    fun `describeActiveMediaRoute falls back to available outputs below API33`() = runTest {
+        every { audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS) } returns emptyArray()
+        every { audioManager.isBluetoothA2dpOn } returns false
+        every { audioManager.isBluetoothScoOn } returns false
+
+        val result = volumeTool.describeActiveMediaRoute()
+
+        result shouldContain "availableOnly=[none]"
+        result shouldContain "a2dpOn=false"
+        result shouldContain "no active-route API"
+    }
+
+    @Test
+    fun `describeActiveMediaRoute swallows route-query failures`() = runTest {
+        every { audioManager.getDevices(any()) } throws SecurityException("nope")
+
+        volumeTool.describeActiveMediaRoute() shouldBe "route-query-failed: SecurityException: nope"
     }
 
     private fun toStreamId(id: Int): AudioStream.Id {

@@ -48,11 +48,20 @@ class VolumeObserver @Inject constructor(
 
     internal fun dispatchVolumeChanges(selfChange: Boolean, emit: (VolumeEvent) -> Unit) {
         log(TAG, VERBOSE) { "Change detected (selfChange=$selfChange)" }
+        // Diagnostic (issue #232): query the active media route once per dispatch,
+        // only when something actually changed, to correlate 15->0 drops with routing.
+        var routeLogged = false
         AudioStream.Id.entries.forEach { id ->
             val newVolume = volumeTool.getCurrentVolume(id)
             val oldVolume = volumesCache[id] ?: -1
             if (newVolume != oldVolume) {
+                // Classify self-ness first: wasUs() is TTL-sensitive, so the route
+                // query (a binder call) must not delay it and skew the window.
                 val isSelf = volumeTool.wasUs(id, newVolume)
+                if (!routeLogged) {
+                    log(TAG) { "Media route on change: ${volumeTool.describeActiveMediaRoute()}" }
+                    routeLogged = true
+                }
                 log(TAG) { "Volume changed (type=$id, old=$oldVolume, new=$newVolume, self=$isSelf)" }
                 volumesCache[id] = newVolume
                 emit(

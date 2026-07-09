@@ -63,6 +63,8 @@ class VolumeDisconnectModule @Inject constructor(
         }
 
         log(TAG, INFO) { "Saving volumes on disconnect for device ${device.label}" }
+        // Diagnostic (issue #232): live route now, to compare against the pre-reroute snapshot.
+        log(TAG, INFO) { "Media route at disconnect-save for ${device.label}: ${volumeTool.describeActiveMediaRoute()}" }
 
         // TODO: RingerTool.getCurrentRingerMode() falls back to NORMAL on unknown
         // Android modes. If Android ever adds a new ringer mode, this module will
