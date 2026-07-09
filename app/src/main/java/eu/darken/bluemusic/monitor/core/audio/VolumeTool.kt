@@ -122,16 +122,30 @@ class VolumeTool @Inject constructor(
                     .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                     .build()
                 val devices = audioManager.getAudioDevicesForAttributes(attrs)
-                val desc = devices.joinToString(",") { describeDevice(it) }.ifEmpty { "none" }
-                "predicted=[$desc] a2dpOn=$a2dp scoOn=$sco queryMs=${clock() - start}"
+                formatMediaRoute(active = true, devices = devices, a2dp = a2dp, sco = sco, queryMs = clock() - start)
             } else {
-                val outputs = audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
-                val desc = outputs.joinToString(",") { describeDevice(it) }.ifEmpty { "none" }
-                "availableOnly=[$desc] a2dpOn=$a2dp scoOn=$sco queryMs=${clock() - start} (no active-route API < API33)"
+                val outputs = audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS).toList()
+                formatMediaRoute(active = false, devices = outputs, a2dp = a2dp, sco = sco, queryMs = clock() - start)
             }
         } catch (e: Exception) {
             "route-query-failed: ${e.javaClass.simpleName}: ${e.message}"
         }
+    }
+
+    // Separated from the platform query so the formatting can be unit-tested in
+    // plain JVM without Robolectric. `active` = predicted route (API 33+),
+    // otherwise the connected-output list (which is not the active route).
+    internal fun formatMediaRoute(
+        active: Boolean,
+        devices: List<AudioDeviceInfo>,
+        a2dp: Boolean,
+        sco: Boolean,
+        queryMs: Long,
+    ): String {
+        val desc = devices.joinToString(",") { describeDevice(it) }.ifEmpty { "none" }
+        val head = if (active) "predicted" else "availableOnly"
+        val tail = if (active) "" else " (no active-route API < API33)"
+        return "$head=[$desc] a2dpOn=$a2dp scoOn=$sco queryMs=$queryMs$tail"
     }
 
     private fun describeDevice(device: AudioDeviceInfo): String {

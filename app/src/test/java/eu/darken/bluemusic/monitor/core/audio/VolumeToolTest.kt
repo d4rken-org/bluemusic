@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.monitor.core.audio
 
+import android.media.AudioDeviceInfo
 import android.media.AudioManager
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
@@ -256,6 +257,42 @@ class VolumeToolTest : BaseTest() {
         every { audioManager.getDevices(any()) } throws SecurityException("nope")
 
         volumeTool.describeActiveMediaRoute() shouldBe "route-query-failed: SecurityException: nope"
+    }
+
+    // The API 33+ predicted branch can't run in plain JVM (AudioAttributes.Builder
+    // is a stub), so the formatting is verified directly via the extracted helper.
+    private fun audioDevice(type: Int, product: CharSequence?): AudioDeviceInfo = mockk {
+        every { getType() } returns type
+        every { productName } returns product
+    }
+
+    @Test
+    fun `formatMediaRoute predicted lists type, raw id and product name`() {
+        val speaker = audioDevice(AudioDeviceInfo.TYPE_BUILTIN_SPEAKER, "Phone Speaker")
+
+        volumeTool.formatMediaRoute(active = true, devices = listOf(speaker), a2dp = true, sco = false, queryMs = 0) shouldBe
+            "predicted=[SPEAKER#${AudioDeviceInfo.TYPE_BUILTIN_SPEAKER} 'Phone Speaker'] a2dpOn=true scoOn=false queryMs=0"
+    }
+
+    @Test
+    fun `formatMediaRoute labels bluetooth a2dp and omits blank product name`() {
+        val bt = audioDevice(AudioDeviceInfo.TYPE_BLUETOOTH_A2DP, "   ")
+
+        volumeTool.formatMediaRoute(active = true, devices = listOf(bt), a2dp = true, sco = false, queryMs = 3) shouldBe
+            "predicted=[BT_A2DP#${AudioDeviceInfo.TYPE_BLUETOOTH_A2DP}] a2dpOn=true scoOn=false queryMs=3"
+    }
+
+    @Test
+    fun `formatMediaRoute maps unknown type to OTHER with raw id`() {
+        val other = audioDevice(999, null)
+
+        volumeTool.formatMediaRoute(active = true, devices = listOf(other), a2dp = false, sco = false, queryMs = 0) shouldContain "OTHER#999]"
+    }
+
+    @Test
+    fun `formatMediaRoute reports none and availableOnly suffix`() {
+        volumeTool.formatMediaRoute(active = false, devices = emptyList(), a2dp = false, sco = false, queryMs = 0) shouldBe
+            "availableOnly=[none] a2dpOn=false scoOn=false queryMs=0 (no active-route API < API33)"
     }
 
     private fun toStreamId(id: Int): AudioStream.Id {
