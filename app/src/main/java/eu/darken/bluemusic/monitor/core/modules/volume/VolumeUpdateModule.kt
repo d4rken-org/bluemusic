@@ -54,6 +54,8 @@ class VolumeUpdateModule @Inject constructor(
         }
 
         log(TAG, DEBUG) { "Volume change $event" }
+        // Diagnostic (issue #232): route at the moment we decide to persist.
+        log(TAG, DEBUG) { "Media route for $id: ${volumeTool.describeActiveMediaRoute()}" }
 
         val ownerAddresses = ownerRegistry.ownerAddressesFor(id).toSet()
         if (ownerAddresses.isEmpty()) {

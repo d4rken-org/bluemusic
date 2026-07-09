@@ -78,6 +78,11 @@ class MonitorEventReceiver : BroadcastReceiver() {
             }
         )
 
+        // Diagnostic (issue #232): capture the active media route at broadcast time,
+        // synchronously, to reveal whether it already reports the phone speaker
+        // during the pre-disconnect window.
+        log(TAG, DEBUG) { "Route at broadcast (action=${intent.action}): ${volumeTool.describeActiveMediaRoute()}" }
+
         val pendingResult = goAsync()
 
         appScope.launch {
