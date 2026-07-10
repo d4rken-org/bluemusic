@@ -1,6 +1,8 @@
 package eu.darken.bluemusic.upgrade.core
 
 import android.app.Activity
+import com.android.billingclient.api.BillingClient.BillingResponseCode
+import com.android.billingclient.api.BillingResult
 import com.android.billingclient.api.Purchase
 import eu.darken.bluemusic.common.datastore.DataStoreValue
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
@@ -19,6 +21,7 @@ import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
@@ -44,10 +47,12 @@ class UpgradeRepoGplayTest : BaseTest() {
         lastSku: String = "",
         billingData: BillingData = BillingData(emptySet()),
         freshBillingData: BillingManager.FreshData? = null,
+        purchaseFailures: Flow<BillingResult> = emptyFlow(),
     ): UpgradeRepoGplay {
         every { billingManager.billingData } returns flowOf(billingData)
         every { billingManager.freshBillingData } returns
             (freshBillingData?.let { flowOf(it) } ?: emptyFlow())
+        every { billingManager.purchaseFailures } returns purchaseFailures
         every { lastProState.flow } returns flowOf(lastProAt)
         every { billingCache.lastProStateAt } returns lastProState
         every { lastProStateSku.flow } returns flowOf(lastSku)
@@ -289,5 +294,26 @@ class UpgradeRepoGplayTest : BaseTest() {
         repo(lastProAt = 0L).launchBillingFlow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null) { errors.add(it) }
 
         errors.single() shouldBe failure
+    }
+
+    @Test fun `async already-owned purchase failure silently restores`() = runTest2 {
+        coEvery { billingManager.refresh() } returns BillingData(setOf(proPurchase()))
+        val alreadyOwned = BillingResult.newBuilder()
+            .setResponseCode(BillingResponseCode.ITEM_ALREADY_OWNED)
+            .build()
+
+        repo(lastProAt = 0L, purchaseFailures = flowOf(alreadyOwned))
+
+        coVerify(exactly = 1) { billingManager.refresh() }
+    }
+
+    @Test fun `other async purchase failures are ignored`() = runTest2 {
+        val canceled = BillingResult.newBuilder()
+            .setResponseCode(BillingResponseCode.USER_CANCELED)
+            .build()
+
+        repo(lastProAt = 0L, purchaseFailures = flowOf(canceled))
+
+        coVerify(exactly = 0) { billingManager.refresh() }
     }
 }
