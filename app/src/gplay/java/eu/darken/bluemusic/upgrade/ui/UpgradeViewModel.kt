@@ -16,6 +16,7 @@ import eu.darken.bluemusic.upgrade.core.UpgradeRepoGplay
 import eu.darken.bluemusic.upgrade.core.billing.GplayServiceUnavailableException
 import eu.darken.bluemusic.upgrade.core.billing.Sku
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flow
@@ -32,6 +33,8 @@ class UpgradeViewModel @Inject constructor(
 ) : ViewModel4(dispatcherProvider, logTag("Upgrade", "Screen", "VM"), navCtrl) {
 
     val events = SingleEventFlow<UpgradeEvents>()
+
+    private val restoring = MutableStateFlow(false)
 
     init {
         upgradeRepo.upgradeInfo
@@ -66,7 +69,8 @@ class UpgradeViewModel @Inject constructor(
         },
         upgradeRepo.upgradeInfo,
         upgradeRepo.wasEverPro,
-    ) { iap, sub, current, wasEverPro ->
+        restoring,
+    ) { iap, sub, current, wasEverPro, isRestoring ->
         if (iap == null && sub == null) {
             errorEvents.emit(
                 GplayServiceUnavailableException(RuntimeException("IAP and SUB data request timed out."))
@@ -101,6 +105,7 @@ class UpgradeViewModel @Inject constructor(
             trialState = trialState,
             // Hidden while a grace period or an actual purchase keeps the user Pro.
             wasPreviouslyPro = wasEverPro && !current.isUpgraded,
+            restoreInProgress = isRestoring,
         )
     }.asStateFlow()
 
@@ -109,6 +114,7 @@ class UpgradeViewModel @Inject constructor(
         val subState: Sub,
         val trialState: Trial,
         val wasPreviouslyPro: Boolean = false,
+        val restoreInProgress: Boolean = false,
     ) {
 
         class Iap(
@@ -143,6 +149,14 @@ class UpgradeViewModel @Inject constructor(
     }
 
     fun restorePurchase() = launch {
+        // Single-flight: repeated taps while a restore is running (worst case bounded by
+        // RESTORE_TIMEOUT_MS) must not stack concurrent restores and duplicate result dialogs. The
+        // UI also disables the buttons, but that can lag a dispatch turn — this guard is the real
+        // protection.
+        if (!restoring.compareAndSet(expect = false, update = true)) {
+            log(tag) { "restorePurchase() ignored, already in progress" }
+            return@launch
+        }
         log(tag) { "restorePurchase()" }
 
         try {
@@ -169,6 +183,10 @@ class UpgradeViewModel @Inject constructor(
             // of the generic "restore failed" message, so the user can tell the two cases apart.
             log(tag, WARN) { "Restore purchase errored: ${e.asLog()}" }
             errorEvents.tryEmit(e)
+        } finally {
+            // Reset only after result handling, so the single-flight guard covers the whole
+            // user-visible action, including dialog emission.
+            restoring.value = false
         }
     }
 
