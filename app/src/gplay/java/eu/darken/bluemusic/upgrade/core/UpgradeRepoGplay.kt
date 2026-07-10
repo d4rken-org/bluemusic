@@ -21,8 +21,11 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.retryWhen
 import kotlinx.coroutines.flow.shareIn
@@ -41,6 +44,28 @@ class UpgradeRepoGplay @Inject constructor(
 ) : UpgradeRepo {
 
     override val mainWebsite: String = SITE
+
+    init {
+        // Grace bookkeeping is driven by *fresh* Play query results only (per-connection/manual
+        // refreshes, completed purchases) — never by the replayed billingData/upgradeInfo flows.
+        // Replayed data re-running the reactive mapping must not re-stamp the timestamp, otherwise a
+        // long-lived process (e.g. while the monitor service is up) could keep extending the grace
+        // window from data that is weeks old.
+        billingManager.freshBillingData
+            .onEach { stampLastProState(it) }
+            .catch { log(TAG, ERROR) { "Pro state stamping failed: ${it.asLog()}" } }
+            .setupCommonEventHandlers(TAG) { "lastProState-stamping" }
+            .launchIn(scope)
+    }
+
+    private suspend fun stampLastProState(data: BillingData) {
+        val sku = preferredProSku(Info(billingData = data).upgrades) ?: return
+        log(TAG, VERBOSE) { "Fresh Pro state confirmed by $sku, stamping." }
+        // SKU before timestamp: if we die in between, the old timestamp keeps its old window class
+        // instead of a fresh timestamp being interpreted with a stale SKU.
+        billingCache.lastProStateSku.value(sku.id)
+        billingCache.lastProStateAt.value(System.currentTimeMillis())
+    }
 
     override val upgradeInfo: Flow<Info> = billingManager.billingData
         .map<BillingData, BillingData?> { it }
@@ -122,22 +147,15 @@ class UpgradeRepoGplay @Inject constructor(
     }
 
     // Shared Pro/grace mapping used by both the reactive upgradeInfo flow and restorePurchaseNow().
-    // Only relinquishes Pro if we haven't had it for a while (grace period).
+    // Only relinquishes Pro if we haven't had it for a while (grace period). Pure: the grace
+    // timestamp is stamped by the freshBillingData collector above, not from mapped (possibly
+    // replayed) flow data.
     private suspend fun BillingData?.toUpgradeInfo(): Info {
         val now = System.currentTimeMillis()
         val lastProStateAt = billingCache.lastProStateAt.value()
         log(TAG) { "toUpgradeInfo(): now=$now, lastProStateAt=$lastProStateAt, data=$this" }
         return when {
-            this?.purchases?.isNotEmpty() == true -> {
-                val info = Info(billingData = this)
-                // Only a *known* Pro SKU counts as "last Pro state" — an unrecognized purchase must
-                // not refresh the grace timestamp. Prefer the permanent IAP so it drives the window.
-                preferredProSku(info.upgrades)?.let { sku ->
-                    billingCache.lastProStateAt.value(now)
-                    billingCache.lastProStateSku.value(sku.id)
-                }
-                info
-            }
+            this?.purchases?.isNotEmpty() == true -> Info(billingData = this)
 
             (now - lastProStateAt) < graceWindowMs() -> {
                 log(TAG, VERBOSE) { "We are not pro, but were recently, did GPlay try annoy us again?" }
