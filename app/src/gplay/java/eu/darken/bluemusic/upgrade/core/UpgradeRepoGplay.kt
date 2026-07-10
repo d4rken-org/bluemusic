@@ -32,6 +32,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.retryWhen
 import kotlinx.coroutines.flow.shareIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeoutOrNull
 import java.time.Duration
@@ -116,11 +117,13 @@ class UpgradeRepoGplay @Inject constructor(
     // restore banner. Local signal only — a fresh install or switched Google account starts false.
     val wasEverPro: Flow<Boolean> = billingCache.lastProStateAt.flow.map { it > 0 }
 
-    private val autoRestoring = MutableStateFlow(false)
+    // Counter, not a flag: overlapping already-owned recoveries (buy taps racing the UI disable)
+    // must keep the busy signal up until the LAST one finishes.
+    private val autoRestoring = MutableStateFlow(0)
 
     // The already-owned auto-restore below runs invisibly on AppScope; expose its busy state so the
     // UI can pause entitlement actions instead of racing it with a manual restore or another buy.
-    val autoRestoreBusy: Flow<Boolean> = autoRestoring
+    val autoRestoreBusy: Flow<Boolean> = autoRestoring.map { it > 0 }
 
     fun launchBillingFlow(
         activity: Activity,
@@ -144,7 +147,7 @@ class UpgradeRepoGplay @Inject constructor(
                         // Stale local state: Play says they already own it, so tapping "buy" really
                         // means "unlock what I own" — restore instead of showing an error.
                         log(TAG, INFO) { "Launch says already owned -> restoring purchase" }
-                        autoRestoring.value = true
+                        autoRestoring.update { it + 1 }
                         val restored = try {
                             withTimeoutOrNull(RESTORE_ON_OWNED_TIMEOUT_MS) { restorePurchaseNow() }
                         } catch (re: CancellationException) {
@@ -153,7 +156,7 @@ class UpgradeRepoGplay @Inject constructor(
                             log(TAG, WARN) { "Restore after already-owned failed: ${re.asLog()}" }
                             null
                         } finally {
-                            autoRestoring.value = false
+                            autoRestoring.update { it - 1 }
                         }
                         if (restored?.isUpgraded != true) {
                             // Couldn't reconcile the entitlement (pending purchase, account mismatch,

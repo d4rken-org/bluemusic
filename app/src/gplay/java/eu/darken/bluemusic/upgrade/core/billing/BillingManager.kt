@@ -60,7 +60,7 @@ class BillingManager @Inject constructor(
         .onEach {
             try {
                 val fresh = it.refreshPurchases()
-                freshData.emit(FreshData(BillingData(purchases = fresh), isFullSnapshot = true))
+                freshData.emit(FreshData(BillingData(purchases = fresh.purchases), isFullSnapshot = fresh.isComplete))
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
@@ -174,8 +174,9 @@ class BillingManager @Inject constructor(
         // Query in the caller's context and return the result directly, so callers get the fresh
         // purchases (and any billing error) with a real happens-before instead of racing the shared
         // upgradeInfo replay cache.
-        return BillingData(purchases = useConnection { refreshPurchases() })
-            .also { freshData.emit(FreshData(it, isFullSnapshot = true)) }
+        val fresh = useConnection { refreshPurchases() }
+        return BillingData(purchases = fresh.purchases)
+            .also { freshData.emit(FreshData(it, isFullSnapshot = fresh.isComplete)) }
     }
 
     companion object {
