@@ -23,6 +23,7 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
@@ -115,6 +116,12 @@ class UpgradeRepoGplay @Inject constructor(
     // restore banner. Local signal only — a fresh install or switched Google account starts false.
     val wasEverPro: Flow<Boolean> = billingCache.lastProStateAt.flow.map { it > 0 }
 
+    private val autoRestoring = MutableStateFlow(false)
+
+    // The already-owned auto-restore below runs invisibly on AppScope; expose its busy state so the
+    // UI can pause entitlement actions instead of racing it with a manual restore or another buy.
+    val autoRestoreBusy: Flow<Boolean> = autoRestoring
+
     fun launchBillingFlow(
         activity: Activity,
         sku: Sku,
@@ -137,6 +144,7 @@ class UpgradeRepoGplay @Inject constructor(
                         // Stale local state: Play says they already own it, so tapping "buy" really
                         // means "unlock what I own" — restore instead of showing an error.
                         log(TAG, INFO) { "Launch says already owned -> restoring purchase" }
+                        autoRestoring.value = true
                         val restored = try {
                             withTimeoutOrNull(RESTORE_ON_OWNED_TIMEOUT_MS) { restorePurchaseNow() }
                         } catch (re: CancellationException) {
@@ -144,6 +152,8 @@ class UpgradeRepoGplay @Inject constructor(
                         } catch (re: Exception) {
                             log(TAG, WARN) { "Restore after already-owned failed: ${re.asLog()}" }
                             null
+                        } finally {
+                            autoRestoring.value = false
                         }
                         if (restored?.isUpgraded != true) {
                             // Couldn't reconcile the entitlement (pending purchase, account mismatch,

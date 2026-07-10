@@ -36,6 +36,14 @@ class UpgradeViewModel @Inject constructor(
 
     private val restoring = MutableStateFlow(false)
 
+    // Manual restore or the repo's invisible already-owned auto-restore: either pauses the
+    // entitlement actions.
+    private val restoreBusy = combine(restoring, upgradeRepo.autoRestoreBusy) { manual, auto ->
+        manual || auto
+    }
+
+    private var hasShownUnavailableError = false
+
     init {
         upgradeRepo.upgradeInfo
             .filter { it.isUpgraded }
@@ -69,12 +77,19 @@ class UpgradeViewModel @Inject constructor(
         },
         upgradeRepo.upgradeInfo,
         upgradeRepo.wasEverPro,
-        restoring,
+        restoreBusy,
     ) { iap, sub, current, wasEverPro, isRestoring ->
         if (iap == null && sub == null) {
-            errorEvents.emit(
-                GplayServiceUnavailableException(RuntimeException("IAP and SUB data request timed out."))
-            )
+            // This combine re-runs on every upstream change (e.g. restore progress toggling) —
+            // emit the unavailable error once per failure episode, not once per recombination.
+            if (!hasShownUnavailableError) {
+                hasShownUnavailableError = true
+                errorEvents.emit(
+                    GplayServiceUnavailableException(RuntimeException("IAP and SUB data request timed out."))
+                )
+            }
+        } else {
+            hasShownUnavailableError = false
         }
 
         val iapOffer = iap?.singleOrNull { it.sku.id == OurSku.Iap.PRO_UPGRADE.id }?.details?.oneTimePurchaseOfferDetails
