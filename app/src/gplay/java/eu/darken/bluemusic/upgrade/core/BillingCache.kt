@@ -21,4 +21,16 @@ class BillingCache @Inject constructor(
 
     val lastProStateAt = dataStore.createValue("gplay.cache.lastProAt", 0L)
     val lastProStateSku = dataStore.createValue("gplay.cache.lastProSku", "")
+
+    // Both values describe one fact — "when were we last Pro, and via which SKU" — so they are
+    // written in a single DataStore transaction: a process death can't leave a fresh timestamp
+    // paired with a stale SKU (which would select the wrong grace window).
+    suspend fun stampLastProState(skuId: String, at: Long) {
+        dataStore.updateData { prefs ->
+            prefs.toMutablePreferences().apply {
+                lastProStateSku.setIn(this, skuId)
+                lastProStateAt.setIn(this, at)
+            }.toPreferences()
+        }
+    }
 }

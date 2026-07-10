@@ -41,18 +41,26 @@ class BillingManager @Inject constructor(
     connectionProvider: BillingConnectionProvider,
 ) {
 
+    // Fresh Play data plus its provenance: a query result covers all owned products, while a
+    // purchase event only carries the products of that transaction — consumers deciding between
+    // per-SKU behaviors (like grace windows) need to know the difference.
+    data class FreshData(
+        val data: BillingData,
+        val isFullSnapshot: Boolean,
+    )
+
     // Emits only data that was *freshly* obtained from Play: per-connection/manual query results and
     // completed purchase events. Unlike billingData below (whose shareIn replay re-serves old data to
     // late subscribers), every emission here represents an actual Play round-trip, so consumers can
     // safely use it for time-based bookkeeping like the Pro grace period.
-    private val freshData = MutableSharedFlow<BillingData>(replay = 1)
-    val freshBillingData: Flow<BillingData> = freshData
+    private val freshData = MutableSharedFlow<FreshData>(replay = 1)
+    val freshBillingData: Flow<FreshData> = freshData
 
     private val connection = connectionProvider.connection
         .onEach {
             try {
                 val fresh = it.refreshPurchases()
-                freshData.emit(BillingData(purchases = fresh))
+                freshData.emit(FreshData(BillingData(purchases = fresh), isFullSnapshot = true))
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
@@ -82,7 +90,7 @@ class BillingManager @Inject constructor(
                     ?.takeIf { (result, _) -> result.isSuccess }
                     ?.let { (_, purchases) -> purchases?.filter { it.purchaseState == PurchaseState.PURCHASED } }
             }
-            .onEach { freshData.emit(BillingData(purchases = it)) }
+            .onEach { freshData.emit(FreshData(BillingData(purchases = it), isFullSnapshot = false)) }
             .setupCommonEventHandlers(TAG) { "fresh-purchase-events" }
             .launchIn(scope)
 
@@ -166,7 +174,8 @@ class BillingManager @Inject constructor(
         // Query in the caller's context and return the result directly, so callers get the fresh
         // purchases (and any billing error) with a real happens-before instead of racing the shared
         // upgradeInfo replay cache.
-        return BillingData(purchases = useConnection { refreshPurchases() }).also { freshData.emit(it) }
+        return BillingData(purchases = useConnection { refreshPurchases() })
+            .also { freshData.emit(FreshData(it, isFullSnapshot = true)) }
     }
 
     companion object {

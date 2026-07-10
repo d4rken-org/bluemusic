@@ -13,6 +13,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 import io.mockk.coEvery
+import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
@@ -42,7 +43,7 @@ class UpgradeRepoGplayTest : BaseTest() {
         lastProAt: Long,
         lastSku: String = "",
         billingData: BillingData = BillingData(emptySet()),
-        freshBillingData: BillingData? = null,
+        freshBillingData: BillingManager.FreshData? = null,
     ): UpgradeRepoGplay {
         every { billingManager.billingData } returns flowOf(billingData)
         every { billingManager.freshBillingData } returns
@@ -51,6 +52,7 @@ class UpgradeRepoGplayTest : BaseTest() {
         every { billingCache.lastProStateAt } returns lastProState
         every { lastProStateSku.flow } returns flowOf(lastSku)
         every { billingCache.lastProStateSku } returns lastProStateSku
+        coJustRun { billingCache.stampLastProState(any(), any()) }
         return UpgradeRepoGplay(scope, billingManager, billingCache)
     }
 
@@ -178,15 +180,19 @@ class UpgradeRepoGplayTest : BaseTest() {
         repo.upgradeInfo.first { it.isUpgraded }.isUpgraded shouldBe true
         repo.upgradeInfo.first { it.isUpgraded }.isUpgraded shouldBe true
 
-        coVerify(exactly = 0) { lastProState.update(any()) }
-        coVerify(exactly = 0) { lastProStateSku.update(any()) }
+        coVerify(exactly = 0) { billingCache.stampLastProState(any(), any()) }
     }
 
     @Test fun `fresh billing data stamps the grace timestamp`() = runTest2 {
-        repo(lastProAt = 0L, freshBillingData = BillingData(setOf(proPurchase())))
+        repo(
+            lastProAt = 0L,
+            freshBillingData = BillingManager.FreshData(
+                BillingData(setOf(proPurchase())),
+                isFullSnapshot = true,
+            ),
+        )
 
-        coVerify(exactly = 1) { lastProStateSku.update(any()) }
-        coVerify(exactly = 1) { lastProState.update(any()) }
+        coVerify(exactly = 1) { billingCache.stampLastProState(OurSku.Iap.PRO_UPGRADE.id, any()) }
     }
 
     @Test fun `fresh data without a known pro SKU does not stamp`() = runTest2 {
@@ -194,10 +200,41 @@ class UpgradeRepoGplayTest : BaseTest() {
             every { products } returns listOf("some.unknown.product")
             every { purchaseTime } returns 1_000L
         }
-        repo(lastProAt = 0L, freshBillingData = BillingData(setOf(unknown)))
+        repo(
+            lastProAt = 0L,
+            freshBillingData = BillingManager.FreshData(BillingData(setOf(unknown)), isFullSnapshot = true),
+        )
 
-        coVerify(exactly = 0) { lastProState.update(any()) }
-        coVerify(exactly = 0) { lastProStateSku.update(any()) }
+        coVerify(exactly = 0) { billingCache.stampLastProState(any(), any()) }
+    }
+
+    @Test fun `a subscription-only purchase event does not downgrade the IAP grace class`() = runTest2 {
+        val subOnly = mockk<Purchase>().apply {
+            every { products } returns listOf(OurSku.Sub.PRO_UPGRADE.id)
+            every { purchaseTime } returns 1_000L
+        }
+        repo(
+            lastProAt = 1_000L,
+            lastSku = OurSku.Iap.PRO_UPGRADE.id,
+            freshBillingData = BillingManager.FreshData(BillingData(setOf(subOnly)), isFullSnapshot = false),
+        )
+
+        // Timestamp refreshes, but the stored SKU keeps the permanent IAP's 30-day class.
+        coVerify(exactly = 1) { billingCache.stampLastProState(OurSku.Iap.PRO_UPGRADE.id, any()) }
+    }
+
+    @Test fun `a full snapshot with only a subscription stamps the subscription class`() = runTest2 {
+        val subOnly = mockk<Purchase>().apply {
+            every { products } returns listOf(OurSku.Sub.PRO_UPGRADE.id)
+            every { purchaseTime } returns 1_000L
+        }
+        repo(
+            lastProAt = 1_000L,
+            lastSku = OurSku.Iap.PRO_UPGRADE.id,
+            freshBillingData = BillingManager.FreshData(BillingData(setOf(subOnly)), isFullSnapshot = true),
+        )
+
+        coVerify(exactly = 1) { billingCache.stampLastProState(OurSku.Sub.PRO_UPGRADE.id, any()) }
     }
 
     @Test fun `already-owned buy attempt silently restores the purchase instead of erroring`() = runTest2 {
