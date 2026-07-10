@@ -19,8 +19,8 @@ import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import eu.darken.bluemusic.upgrade.core.billing.BillingManager.Companion.tryMapUserFriendly
 import eu.darken.bluemusic.upgrade.core.billing.Sku
 import eu.darken.bluemusic.upgrade.core.billing.SkuDetails
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -73,27 +73,34 @@ data class BillingConnection(
         return purchaseData
     }
 
-    suspend fun refreshPurchases() = coroutineScope {
+    // Returns the freshly queried PURCHASED purchases so callers get a guaranteed happens-before
+    // relation instead of racing the shared purchases/upgradeInfo replay caches after a refresh.
+    // Tolerant of a single product-type failure: if either query finds a purchase we treat that as
+    // authoritative, and only propagate an error when nothing was found AND a query failed — so the
+    // caller can tell "not owned" apart from "couldn't verify".
+    suspend fun refreshPurchases(): Collection<Purchase> = coroutineScope {
         log(TAG) { "refreshPurchases()" }
-        val iapJob = async {
-            try {
-                val iaps = queryPurchases(BillingClient.ProductType.INAPP)
-                log(TAG) { "Refreshed IAPs: $iaps" }
-                queryCacheIaps.value = iaps.filter { it.purchaseState == PurchaseState.PURCHASED }
-            } catch (e: Exception) {
-                throw e.tryMapUserFriendly()
-            }
-        }
-        val subJob = async {
-            try {
-                val subs = queryPurchases(BillingClient.ProductType.SUBS)
-                log(TAG) { "Refreshed SUBs: $subs" }
-                queryCacheSubs.value = subs.filter { it.purchaseState == PurchaseState.PURCHASED }
-            } catch (e: Exception) {
-                throw e.tryMapUserFriendly()
-            }
-        }
-        awaitAll(iapJob, subJob)
+        val iapJob = async { queryPurchasedProducts(BillingClient.ProductType.INAPP) { queryCacheIaps.value = it } }
+        val subJob = async { queryPurchasedProducts(BillingClient.ProductType.SUBS) { queryCacheSubs.value = it } }
+        val iap = iapJob.await()
+        val sub = subJob.await()
+        log(TAG) { "Refreshed IAPs=${iap.getOrNull()}, SUBs=${sub.getOrNull()}" }
+        combinePurchaseResults(iap, sub)
+    }
+
+    // Never throws except on cancellation, so a single failing product-type query doesn't cancel the
+    // sibling query (or the coroutineScope). The exception is already user-friendly-mapped.
+    private suspend fun queryPurchasedProducts(
+        @BillingClient.ProductType type: String,
+        cache: (Collection<Purchase>) -> Unit,
+    ): Result<Collection<Purchase>> = try {
+        val purchased = queryPurchases(type).filter { it.purchaseState == PurchaseState.PURCHASED }
+        cache(purchased)
+        Result.success(purchased)
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: Exception) {
+        Result.failure(e.tryMapUserFriendly())
     }
 
     suspend fun acknowledgePurchase(purchase: Purchase): BillingResult {
@@ -185,5 +192,25 @@ data class BillingConnection(
 
     companion object {
         val TAG: String = logTag("Upgrade", "Gplay", "Billing", "ClientConnection")
+
+        // Combines the two product-type query results: a purchase found by either type is
+        // authoritative; an error is only propagated when nothing was found, so callers can tell
+        // "not owned" apart from "couldn't verify one product type". Treating any found purchase as
+        // authoritative is safe here because every product this app sells is a Pro SKU (see
+        // OurSku.PRO_SKUS) — there are no unrelated products whose presence could mask a failed
+        // query for the type that actually carries the entitlement. Pure and unit-tested.
+        internal fun combinePurchaseResults(
+            iap: Result<Collection<Purchase>>,
+            sub: Result<Collection<Purchase>>,
+        ): Collection<Purchase> {
+            val found = iap.getOrNull().orEmpty() + sub.getOrNull().orEmpty()
+            return when {
+                found.isNotEmpty() -> found.sortedByDescending { it.purchaseTime }
+                else -> {
+                    (iap.exceptionOrNull() ?: sub.exceptionOrNull())?.let { throw it }
+                    emptyList()
+                }
+            }
+        }
     }
 }

@@ -2,7 +2,6 @@ package eu.darken.bluemusic.upgrade.core
 
 import android.app.Activity
 import eu.darken.bluemusic.common.coroutine.AppScope
-import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
@@ -16,6 +15,7 @@ import eu.darken.bluemusic.upgrade.core.billing.BillingManager
 import eu.darken.bluemusic.upgrade.core.billing.PurchasedSku
 import eu.darken.bluemusic.upgrade.core.billing.Sku
 import eu.darken.bluemusic.upgrade.core.billing.SkuDetails
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
@@ -27,6 +27,7 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.retryWhen
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.launch
+import java.time.Duration
 import java.time.Instant
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -35,7 +36,6 @@ import kotlin.math.pow
 @Singleton
 class UpgradeRepoGplay @Inject constructor(
     @param:AppScope private val scope: CoroutineScope,
-    private val dispatcherProvider: DispatcherProvider,
     private val billingManager: BillingManager,
     private val billingCache: BillingCache,
 ) : UpgradeRepo {
@@ -46,36 +46,15 @@ class UpgradeRepoGplay @Inject constructor(
         .map<BillingData, BillingData?> { it }
         .onStart { emit(null) }
         .setupCommonEventHandlers(TAG) { "upgradeInfo1" }
-        .map { data: BillingData? -> // Only relinquish pro state if we haven't had it for a while
-            val now = System.currentTimeMillis()
-            val lastProStateAt = billingCache.lastProStateAt.value()
-            log(TAG) { "Map: now=$now, lastProStateAt=$lastProStateAt, data=${data}" }
-
-            when {
-                data?.purchases?.isNotEmpty() == true -> {
-                    // If we are pro refresh timestamp
-                    billingCache.lastProStateAt.value(now)
-                    Info(billingData = data)
-                }
-
-                (now - lastProStateAt) < 7 * 24 * 60 * 1000L -> { // 7 days
-                    log(TAG, VERBOSE) { "We are not pro, but were recently, did GPlay try annoy us again?" }
-                    Info(gracePeriod = true, billingData = null)
-                }
-
-                else -> {
-                    Info(billingData = data)
-                }
-            }
-        }
+        .map { data: BillingData? -> data.toUpgradeInfo() }
         .distinctUntilChanged()
         .retryWhen { error, attempt ->
             // Ignore Google Play errors if the last pro state was recent
             val now = System.currentTimeMillis()
             val lastProStateAt = billingCache.lastProStateAt.value()
             log(TAG) { "Catch: now=$now, lastProStateAt=$lastProStateAt, attempt=$attempt, error=$error" }
-            if ((now - lastProStateAt) < 7 * 24 * 60 * 1000L) { // 7 days
-                log(TAG, VERBOSE) { "We are not pro, but were recently, and just and an error, what is GPlay doing???" }
+            if ((now - lastProStateAt) < GRACE_PERIOD_MS) {
+                log(TAG, VERBOSE) { "We are not pro, but were recently, and just got an error, what is GPlay doing???" }
                 emit(Info(gracePeriod = true, billingData = null))
             } else {
                 emit(Info(error = error, billingData = null))
@@ -89,7 +68,7 @@ class UpgradeRepoGplay @Inject constructor(
     suspend fun launchBillingFlow(activity: Activity, sku: Sku, offer: Sku.Subscription.Offer?) {
         log(TAG) { "launchBillingFlow($activity,$sku)" }
         val resultChannel = Channel<Result<Unit>>()
-        
+
         scope.launch {
             try {
                 billingManager.startIapFlow(activity, sku, offer)
@@ -108,7 +87,60 @@ class UpgradeRepoGplay @Inject constructor(
 
     override suspend fun refresh() {
         log(TAG) { "refresh()" }
-        billingManager.refresh()
+        try {
+            billingManager.refresh()
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            // Background refresh: keep the old swallow-and-log behaviour so callers like MainViewModel
+            // aren't affected. The explicit restore path uses restorePurchaseNow(), which surfaces errors.
+            log(TAG, ERROR) { "Background refresh failed: ${e.asLog()}" }
+        }
+    }
+
+    // Explicit "Restore purchase": query Play now and evaluate Pro from the returned data in the same
+    // coroutine (real happens-before), so we never read a stale upgradeInfo replay. Billing errors
+    // propagate so the caller can distinguish "not owned" from "Play unavailable".
+    suspend fun restorePurchaseNow(): Info {
+        log(TAG) { "restorePurchaseNow()" }
+        return try {
+            billingManager.refresh().toUpgradeInfo()
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            // Mirror the reactive flow's retryWhen: a transient Play error while we were Pro recently
+            // keeps us Pro via the grace period; otherwise surface the error so the caller can show
+            // the proper "Play unavailable" message instead of a generic restore failure.
+            val lastProStateAt = billingCache.lastProStateAt.value()
+            if ((System.currentTimeMillis() - lastProStateAt) < GRACE_PERIOD_MS) {
+                log(TAG, VERBOSE) { "restore hit a Play error but we were Pro recently -> grace" }
+                Info(gracePeriod = true, billingData = null)
+            } else {
+                throw e
+            }
+        }
+    }
+
+    // Shared Pro/grace mapping used by both the reactive upgradeInfo flow and restorePurchaseNow().
+    // Only relinquishes Pro if we haven't had it for a while (grace period).
+    private suspend fun BillingData?.toUpgradeInfo(): Info {
+        val now = System.currentTimeMillis()
+        val lastProStateAt = billingCache.lastProStateAt.value()
+        log(TAG) { "toUpgradeInfo(): now=$now, lastProStateAt=$lastProStateAt, data=$this" }
+        return when {
+            this?.purchases?.isNotEmpty() == true -> {
+                // If we are pro refresh timestamp
+                billingCache.lastProStateAt.value(now)
+                Info(billingData = this)
+            }
+
+            (now - lastProStateAt) < GRACE_PERIOD_MS -> {
+                log(TAG, VERBOSE) { "We are not pro, but were recently, did GPlay try annoy us again?" }
+                Info(gracePeriod = true, billingData = null)
+            }
+
+            else -> Info(billingData = this)
+        }
     }
 
     data class Info(
@@ -145,6 +177,10 @@ class UpgradeRepoGplay @Inject constructor(
 
     companion object {
         private const val SITE = "https://play.google.com/store/apps/details?id=eu.darken.bluemusic"
+
+        // Keep paying users Pro through transient empty/failed Play Billing responses.
+        val GRACE_PERIOD_MS = Duration.ofDays(7).toMillis()
+
         val TAG: String = logTag("Upgrade", "Gplay", "Repo")
     }
 }
