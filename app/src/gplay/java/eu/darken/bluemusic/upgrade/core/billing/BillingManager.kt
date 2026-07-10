@@ -28,7 +28,6 @@ import kotlinx.coroutines.flow.retryWhen
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.flow.take
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -136,17 +135,12 @@ class BillingManager @Inject constructor(
         }
     }
 
-    suspend fun refresh() {
+    suspend fun refresh(): BillingData {
         log(TAG) { "refresh()" }
-        scope.launch {
-            useConnection {
-                try {
-                    refreshPurchases()
-                } catch (e: Exception) {
-                    log(TAG, ERROR) { "Manual purchase data refresh failed: ${e.asLog()}" }
-                }
-            }
-        }.join()
+        // Query in the caller's context and return the result directly, so callers get the fresh
+        // purchases (and any billing error) with a real happens-before instead of racing the shared
+        // upgradeInfo replay cache.
+        return BillingData(purchases = useConnection { refreshPurchases() })
     }
 
     companion object {
