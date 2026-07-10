@@ -65,7 +65,8 @@ class UpgradeViewModel @Inject constructor(
             emit(data)
         },
         upgradeRepo.upgradeInfo,
-    ) { iap, sub, current ->
+        upgradeRepo.wasEverPro,
+    ) { iap, sub, current, wasEverPro ->
         if (iap == null && sub == null) {
             errorEvents.emit(
                 GplayServiceUnavailableException(RuntimeException("IAP and SUB data request timed out."))
@@ -98,6 +99,8 @@ class UpgradeViewModel @Inject constructor(
             iapState = iapState,
             subState = subState,
             trialState = trialState,
+            // Hidden while a grace period or an actual purchase keeps the user Pro.
+            wasPreviouslyPro = wasEverPro && !current.isUpgraded,
         )
     }.asStateFlow()
 
@@ -105,6 +108,7 @@ class UpgradeViewModel @Inject constructor(
         val iapState: Iap,
         val subState: Sub,
         val trialState: Trial,
+        val wasPreviouslyPro: Boolean = false,
     ) {
 
         class Iap(

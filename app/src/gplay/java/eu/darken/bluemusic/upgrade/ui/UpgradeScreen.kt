@@ -12,8 +12,11 @@ import androidx.compose.material.icons.twotone.Palette
 import androidx.compose.material.icons.twotone.PlayCircle
 import androidx.compose.material.icons.twotone.Stars
 import androidx.compose.material.icons.twotone.Tune
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
@@ -120,6 +123,12 @@ private fun PricingContent(
     if (state == null) {
         CircularProgressIndicator(modifier = Modifier.padding(vertical = 12.dp))
         return
+    }
+
+    if (state.wasPreviouslyPro) {
+        RestoreBanner(onRestorePurchase = onRestorePurchase)
+
+        Spacer(modifier = Modifier.height(16.dp))
     }
 
     val hasSubscriptionOption = state.subState.available || state.trialState.available
@@ -253,6 +262,42 @@ private fun PricingContent(
     )
 }
 
+@Composable
+private fun RestoreBanner(
+    onRestorePurchase: () -> Unit,
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+            contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+        ),
+    ) {
+        Column(modifier = Modifier.padding(14.dp)) {
+            Text(
+                text = stringResource(R.string.upgrade_screen_restore_banner_title),
+                style = MaterialTheme.typography.titleMedium,
+            )
+
+            Spacer(modifier = Modifier.height(6.dp))
+
+            Text(
+                text = stringResource(R.string.upgrade_screen_restore_banner_body),
+                style = MaterialTheme.typography.bodyMedium,
+            )
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Button(
+                onClick = onRestorePurchase,
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(text = stringResource(R.string.upgrade_screen_restore_purchase_action))
+            }
+        }
+    }
+}
+
 @Preview2
 @Composable
 fun UpgradeScreenPreview() {
@@ -281,6 +326,35 @@ fun UpgradeScreenPreview() {
     }
 }
 
+
+@Preview2
+@Composable
+fun UpgradeScreenPreviouslyProPreview() {
+    PreviewWrapper {
+        UpgradeScreen(
+            state = UpgradeViewModel.State(
+                iapState = UpgradeViewModel.State.Iap(
+                    available = true,
+                    formattedPrice = "$4.99",
+                ),
+                subState = UpgradeViewModel.State.Sub(
+                    available = true,
+                    formattedPrice = "$2.99",
+                ),
+                trialState = UpgradeViewModel.State.Trial(
+                    available = false,
+                    formattedPrice = null,
+                ),
+                wasPreviouslyPro = true,
+            ),
+            onNavigateBack = {},
+            onGoIap = {},
+            onGoSubscription = {},
+            onGoSubscriptionTrial = {},
+            onRestorePurchase = {},
+        )
+    }
+}
 
 @Composable
 fun RestoreFailedDialog(
