@@ -30,6 +30,12 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store synchronization may take time. Try rebooting, clearing Google Play cache or simply wait.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Multiple accounts can confuse Google Play. Log out of other accounts or install through the Google Play website, which forces associations with a specific account.</string>
 
+    <string name="upgrades_gplay_already_owned_error_title">Already purchased</string>
+    <string name="upgrades_gplay_already_owned_error_description">Use the \"Restore purchase\" option to restore your purchase. If the issue persists, try clearing Google Play cache and restarting your device.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play error</string>
+    <string name="upgrades_gplay_internal_error_description">An internal Google Play error occurred. Please try the following:\n\n• Restart your device\n• Clear Google Play Store cache\n• Try again later</string>
+    <string name="upgrades_gplay_network_error_title">Connection error</string>
+    <string name="upgrades_gplay_network_error_description">Unable to connect to Google Play. Please check your internet connection and try again.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play is unavailable</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager can\'t connect to Google Play. Is Google Play installed and up to date? Is your Google Account logged in? Try clearing the cache of the Google Play app and rebooting your device.</string>
     <string name="upgrades_no_purchases_found_check_account">No purchases found. Are you using the right account?</string>

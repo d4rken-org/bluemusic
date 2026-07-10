@@ -1,13 +1,17 @@
 package eu.darken.bluemusic.upgrade.core
 
+import android.app.Activity
 import com.android.billingclient.api.Purchase
 import eu.darken.bluemusic.common.datastore.DataStoreValue
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.upgrade.core.billing.BillingData
 import eu.darken.bluemusic.upgrade.core.billing.BillingManager
+import eu.darken.bluemusic.upgrade.core.billing.ItemAlreadyOwnedBillingException
 import eu.darken.bluemusic.upgrade.core.billing.PurchasedSku
+import eu.darken.bluemusic.upgrade.core.billing.UserCanceledBillingException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeInstanceOf
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
@@ -194,5 +198,59 @@ class UpgradeRepoGplayTest : BaseTest() {
 
         coVerify(exactly = 0) { lastProState.update(any()) }
         coVerify(exactly = 0) { lastProStateSku.update(any()) }
+    }
+
+    @Test fun `already-owned buy attempt silently restores the purchase instead of erroring`() = runTest2 {
+        coEvery { billingManager.startIapFlow(any(), any(), null) } throws
+            ItemAlreadyOwnedBillingException(RuntimeException("launch result"))
+        coEvery { billingManager.refresh() } returns BillingData(setOf(proPurchase()))
+
+        val errors = mutableListOf<Throwable>()
+        repo(lastProAt = 0L).launchBillingFlow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null) { errors.add(it) }
+
+        errors shouldBe emptyList<Throwable>()
+    }
+
+    @Test fun `already-owned buy attempt falls back to the error dialog when restore finds nothing`() = runTest2 {
+        coEvery { billingManager.startIapFlow(any(), any(), null) } throws
+            ItemAlreadyOwnedBillingException(RuntimeException("launch result"))
+        coEvery { billingManager.refresh() } returns BillingData(emptySet())
+
+        val errors = mutableListOf<Throwable>()
+        // Grace expired -> the restore can't rescue the entitlement either.
+        repo(lastProAt = 0L).launchBillingFlow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null) { errors.add(it) }
+
+        errors.single().shouldBeInstanceOf<ItemAlreadyOwnedBillingException>()
+    }
+
+    @Test fun `already-owned buy attempt falls back to the error dialog when restore itself errors`() = runTest2 {
+        coEvery { billingManager.startIapFlow(any(), any(), null) } throws
+            ItemAlreadyOwnedBillingException(RuntimeException("launch result"))
+        coEvery { billingManager.refresh() } throws RuntimeException("Play unavailable")
+
+        val errors = mutableListOf<Throwable>()
+        repo(lastProAt = 0L).launchBillingFlow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null) { errors.add(it) }
+
+        errors.single().shouldBeInstanceOf<ItemAlreadyOwnedBillingException>()
+    }
+
+    @Test fun `user cancel during the buy flow stays silent`() = runTest2 {
+        coEvery { billingManager.startIapFlow(any(), any(), null) } throws
+            UserCanceledBillingException(RuntimeException("launch result"))
+
+        val errors = mutableListOf<Throwable>()
+        repo(lastProAt = 0L).launchBillingFlow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null) { errors.add(it) }
+
+        errors shouldBe emptyList<Throwable>()
+    }
+
+    @Test fun `other buy flow failures reach the error callback`() = runTest2 {
+        val failure = RuntimeException("launch failed")
+        coEvery { billingManager.startIapFlow(any(), any(), null) } throws failure
+
+        val errors = mutableListOf<Throwable>()
+        repo(lastProAt = 0L).launchBillingFlow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null) { errors.add(it) }
+
+        errors.single() shouldBe failure
     }
 }
