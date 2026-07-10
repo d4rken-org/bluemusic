@@ -58,7 +58,7 @@ class BillingManagerTest : BaseTest() {
         val refreshed = manager.refresh()
 
         refreshed shouldBe BillingData(listOf(owned))
-        manager.freshBillingData.first() shouldBe refreshed
+        manager.freshBillingData.first() shouldBe BillingManager.FreshData(refreshed, isFullSnapshot = true)
     }
 
     @Test fun `completed purchase events emit fresh billing data`() = runTest2 {
@@ -71,7 +71,8 @@ class BillingManagerTest : BaseTest() {
             )
         )
 
-        manager.freshBillingData.first() shouldBe BillingData(listOf(owned))
+        manager.freshBillingData.first() shouldBe
+            BillingManager.FreshData(BillingData(listOf(owned)), isFullSnapshot = false)
     }
 
     @Test fun `failed purchase events do not emit fresh billing data`() = runTest2 {
@@ -85,7 +86,8 @@ class BillingManagerTest : BaseTest() {
         )
 
         // Only the initial refresh result may arrive, never the failed event's payload.
-        manager.freshBillingData.first() shouldBe BillingData(listOf(owned))
+        manager.freshBillingData.first() shouldBe
+            BillingManager.FreshData(BillingData(listOf(owned)), isFullSnapshot = true)
     }
 
     // A manager whose connection fails launchBillingFlow with the given launch-result code —

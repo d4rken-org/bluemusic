@@ -24,7 +24,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
@@ -56,19 +55,37 @@ class UpgradeRepoGplay @Inject constructor(
         // long-lived process (e.g. while the monitor service is up) could keep extending the grace
         // window from data that is weeks old.
         billingManager.freshBillingData
-            .onEach { stampLastProState(it) }
-            .catch { log(TAG, ERROR) { "Pro state stamping failed: ${it.asLog()}" } }
+            .onEach { fresh ->
+                try {
+                    stampLastProState(fresh)
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    // Isolate per-emission failures: one failed write must not kill this permanent
+                    // collector and stop all future grace bookkeeping.
+                    log(TAG, ERROR) { "Pro state stamping failed: ${e.asLog()}" }
+                }
+            }
             .setupCommonEventHandlers(TAG) { "lastProState-stamping" }
             .launchIn(scope)
     }
 
-    private suspend fun stampLastProState(data: BillingData) {
-        val sku = preferredProSku(Info(billingData = data).upgrades) ?: return
-        log(TAG, VERBOSE) { "Fresh Pro state confirmed by $sku, stamping." }
-        // SKU before timestamp: if we die in between, the old timestamp keeps its old window class
-        // instead of a fresh timestamp being interpreted with a stale SKU.
-        billingCache.lastProStateSku.value(sku.id)
-        billingCache.lastProStateAt.value(System.currentTimeMillis())
+    private suspend fun stampLastProState(fresh: BillingManager.FreshData) {
+        val sku = preferredProSku(Info(billingData = fresh.data).upgrades) ?: return
+        val storedSkuId = billingCache.lastProStateSku.value()
+        val storedType = OurSku.PRO_SKUS.singleOrNull { it.id == storedSkuId }?.type
+        // A purchase event is not a full ownership snapshot: a subscription-only event must not
+        // downgrade the grace class of a previously confirmed permanent IAP. Full query snapshots
+        // are authoritative and always win.
+        val effectiveSkuId = if (
+            !fresh.isFullSnapshot && storedType == Sku.Type.IAP && sku.type != Sku.Type.IAP
+        ) {
+            storedSkuId
+        } else {
+            sku.id
+        }
+        log(TAG, VERBOSE) { "Fresh Pro state confirmed by $sku, stamping $effectiveSkuId." }
+        billingCache.stampLastProState(effectiveSkuId, System.currentTimeMillis())
     }
 
     override val upgradeInfo: Flow<Info> = billingManager.billingData
@@ -110,6 +127,8 @@ class UpgradeRepoGplay @Inject constructor(
         scope.launch {
             try {
                 billingManager.startIapFlow(activity, sku, offer)
+            } catch (e: CancellationException) {
+                throw e
             } catch (e: Exception) {
                 when {
                     e is UserCanceledBillingException -> log(TAG) { "User canceled billing flow" }
