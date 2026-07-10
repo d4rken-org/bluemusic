@@ -36,18 +36,19 @@ data class BillingConnection(
     val purchaseEvents: Flow<Pair<BillingResult, Collection<Purchase>?>?>,
 ) {
 
-    private val queryCacheIaps = MutableStateFlow<Collection<Purchase>?>(null)
-    private val queryCacheSubs = MutableStateFlow<Collection<Purchase>?>(null)
+    // Last authoritative ownership snapshot: the combined result of a successful refreshPurchases().
+    // A single snapshot (instead of per-product-type caches) makes sure a partial result — one
+    // product type failed but the other found a purchase — still reaches the reactive purchases
+    // flow, matching exactly what refreshPurchases() reported to its caller.
+    private val querySnapshot = MutableStateFlow<Collection<Purchase>?>(null)
 
     val purchases: Flow<Collection<Purchase>> = combine(
         purchaseEvents,
-        queryCacheIaps.filterNotNull(),
-        queryCacheSubs.filterNotNull(),
-    ) { purchaseEvent, iapCache, subCache ->
+        querySnapshot.filterNotNull(),
+    ) { purchaseEvent, snapshot ->
         val combined = mutableSetOf<Purchase>()
 
-        combined.addAll(iapCache)
-        combined.addAll(subCache)
+        combined.addAll(snapshot)
 
         purchaseEvent
             ?.takeIf { (result, _) -> result.isSuccess }
@@ -82,23 +83,20 @@ data class BillingConnection(
     // caller can tell "not owned" apart from "couldn't verify".
     suspend fun refreshPurchases(): Collection<Purchase> = coroutineScope {
         log(TAG) { "refreshPurchases()" }
-        val iapJob = async { queryPurchasedProducts(BillingClient.ProductType.INAPP) { queryCacheIaps.value = it } }
-        val subJob = async { queryPurchasedProducts(BillingClient.ProductType.SUBS) { queryCacheSubs.value = it } }
+        val iapJob = async { queryPurchasedProducts(BillingClient.ProductType.INAPP) }
+        val subJob = async { queryPurchasedProducts(BillingClient.ProductType.SUBS) }
         val iap = iapJob.await()
         val sub = subJob.await()
         log(TAG) { "Refreshed IAPs=${iap.getOrNull()}, SUBs=${sub.getOrNull()}" }
-        combinePurchaseResults(iap, sub)
+        combinePurchaseResults(iap, sub).also { querySnapshot.value = it }
     }
 
     // Never throws except on cancellation, so a single failing product-type query doesn't cancel the
     // sibling query (or the coroutineScope). The exception is already user-friendly-mapped.
     private suspend fun queryPurchasedProducts(
         @BillingClient.ProductType type: String,
-        cache: (Collection<Purchase>) -> Unit,
     ): Result<Collection<Purchase>> = try {
-        val purchased = queryPurchases(type).filter { it.purchaseState == PurchaseState.PURCHASED }
-        cache(purchased)
-        Result.success(purchased)
+        Result.success(queryPurchases(type).filter { it.purchaseState == PurchaseState.PURCHASED })
     } catch (e: CancellationException) {
         throw e
     } catch (e: Exception) {
