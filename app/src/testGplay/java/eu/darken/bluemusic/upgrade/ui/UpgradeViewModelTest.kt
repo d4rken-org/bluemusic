@@ -2,6 +2,7 @@ package eu.darken.bluemusic.upgrade.ui
 
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.upgrade.core.UpgradeRepoGplay
+import eu.darken.bluemusic.upgrade.core.billing.GplayServiceUnavailableException
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -43,6 +44,7 @@ class UpgradeViewModelTest : BaseTest() {
     private fun mockRepo(): UpgradeRepoGplay = mockk<UpgradeRepoGplay>(relaxed = true).apply {
         every { upgradeInfo } returns MutableStateFlow(UpgradeRepoGplay.Info(false, null, null))
         every { wasEverPro } returns MutableStateFlow(false)
+        every { autoRestoreBusy } returns MutableStateFlow(false)
         coEvery { querySkus(*anyVararg()) } returns emptyList()
     }
 
@@ -160,6 +162,49 @@ class UpgradeViewModelTest : BaseTest() {
         advanceUntilIdle()
 
         event.await() shouldBe UpgradeEvents.RestoreFailed
+    }
+
+    @Test fun `auto-restore busy state pauses the ui like a manual restore`() = runTest2(
+        context = testDispatcher,
+    ) {
+        val repo = mockRepo()
+        every { repo.autoRestoreBusy } returns MutableStateFlow(true)
+        val vm = buildVm(repo)
+
+        val state = async { vm.state.filterNotNull().first() }
+        advanceUntilIdle()
+
+        state.await().restoreInProgress shouldBe true
+    }
+
+    @Test fun `play-unavailable error is emitted once despite state recombinations`() = runTest2(
+        context = testDispatcher,
+    ) {
+        val repo = mockRepo()
+        // Both SKU queries exceed the 5s query timeout -> "Play unavailable" episode.
+        coEvery { repo.querySkus(*anyVararg()) } coAnswers {
+            delay(6_000)
+            emptyList()
+        }
+        coEvery { repo.restorePurchaseNow() } coAnswers {
+            delay(1_000)
+            UpgradeRepoGplay.Info(gracePeriod = true, billingData = null)
+        }
+        val vm = buildVm(repo)
+
+        val errors = mutableListOf<Throwable>()
+        val errorCollector = launch { vm.errorEvents.collect { errors.add(it) } }
+        val stateCollector = launch { vm.state.collect {} }
+        advanceUntilIdle()
+
+        // Restore progress toggling recombines the state twice more.
+        vm.restorePurchase()
+        advanceUntilIdle()
+
+        errors.filterIsInstance<GplayServiceUnavailableException>().size shouldBe 1
+
+        errorCollector.cancel()
+        stateCollector.cancel()
     }
 
     @Test fun `restore errors surface via errorEvents not RestoreFailed`() = runTest2(
