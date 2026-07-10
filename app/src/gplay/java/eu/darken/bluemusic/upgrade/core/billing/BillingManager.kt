@@ -2,6 +2,7 @@ package eu.darken.bluemusic.upgrade.core.billing
 
 import android.app.Activity
 import com.android.billingclient.api.BillingClient.BillingResponseCode
+import com.android.billingclient.api.Purchase.PurchaseState
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
@@ -13,16 +14,19 @@ import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import eu.darken.bluemusic.upgrade.core.billing.client.BillingClientException
 import eu.darken.bluemusic.upgrade.core.billing.client.BillingConnection
 import eu.darken.bluemusic.upgrade.core.billing.client.BillingConnectionProvider
+import eu.darken.bluemusic.upgrade.core.billing.client.isSuccess
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.retryWhen
 import kotlinx.coroutines.flow.shareIn
@@ -37,10 +41,20 @@ class BillingManager @Inject constructor(
     connectionProvider: BillingConnectionProvider,
 ) {
 
+    // Emits only data that was *freshly* obtained from Play: per-connection/manual query results and
+    // completed purchase events. Unlike billingData below (whose shareIn replay re-serves old data to
+    // late subscribers), every emission here represents an actual Play round-trip, so consumers can
+    // safely use it for time-based bookkeeping like the Pro grace period.
+    private val freshData = MutableSharedFlow<BillingData>(replay = 1)
+    val freshBillingData: Flow<BillingData> = freshData
+
     private val connection = connectionProvider.connection
         .onEach {
             try {
-                it.refreshPurchases()
+                val fresh = it.refreshPurchases()
+                freshData.emit(BillingData(purchases = fresh))
+            } catch (e: CancellationException) {
+                throw e
             } catch (e: Exception) {
                 log(TAG, ERROR) { "Initial purchase data refresh failed: ${e.asLog()}" }
             }
@@ -60,6 +74,18 @@ class BillingManager @Inject constructor(
         .shareIn(scope, WhileSubscribed(3000L, 0L), replay = 1)
 
     init {
+        // Completed purchases arriving via the PurchasesUpdatedListener are fresh Play data too.
+        connection
+            .flatMapLatest { it.purchaseEvents }
+            .mapNotNull { event ->
+                event
+                    ?.takeIf { (result, _) -> result.isSuccess }
+                    ?.let { (_, purchases) -> purchases?.filter { it.purchaseState == PurchaseState.PURCHASED } }
+            }
+            .onEach { freshData.emit(BillingData(purchases = it)) }
+            .setupCommonEventHandlers(TAG) { "fresh-purchase-events" }
+            .launchIn(scope)
+
         purchases
             .onEach { purchases ->
                 purchases
@@ -140,7 +166,7 @@ class BillingManager @Inject constructor(
         // Query in the caller's context and return the result directly, so callers get the fresh
         // purchases (and any billing error) with a real happens-before instead of racing the shared
         // upgradeInfo replay cache.
-        return BillingData(purchases = useConnection { refreshPurchases() })
+        return BillingData(purchases = useConnection { refreshPurchases() }).also { freshData.emit(it) }
     }
 
     companion object {

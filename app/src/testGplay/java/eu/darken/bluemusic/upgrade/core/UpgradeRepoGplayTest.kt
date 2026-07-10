@@ -9,10 +9,13 @@ import eu.darken.bluemusic.upgrade.core.billing.PurchasedSku
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.emptyFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
@@ -26,18 +29,24 @@ class UpgradeRepoGplayTest : BaseTest() {
     private val billingManager = mockk<BillingManager>()
     private val billingCache = mockk<BillingCache>()
 
+    private val lastProState = mockk<DataStoreValue<Long>>(relaxed = true)
+    private val lastProStateSku = mockk<DataStoreValue<String>>(relaxed = true)
+
     // Builds a repo whose stored last-Pro timestamp is `lastProAt`. billingData is stubbed only
     // because the upgradeInfo flow references it at construction; it is never collected here.
-    private fun repo(lastProAt: Long, lastSku: String = ""): UpgradeRepoGplay {
-        every { billingManager.billingData } returns flowOf(BillingData(emptySet()))
-        val lastPro = mockk<DataStoreValue<Long>>(relaxed = true).apply {
-            every { flow } returns flowOf(lastProAt)
-        }
-        every { billingCache.lastProStateAt } returns lastPro
-        val lastProSku = mockk<DataStoreValue<String>>(relaxed = true).apply {
-            every { flow } returns flowOf(lastSku)
-        }
-        every { billingCache.lastProStateSku } returns lastProSku
+    private fun repo(
+        lastProAt: Long,
+        lastSku: String = "",
+        billingData: BillingData = BillingData(emptySet()),
+        freshBillingData: BillingData? = null,
+    ): UpgradeRepoGplay {
+        every { billingManager.billingData } returns flowOf(billingData)
+        every { billingManager.freshBillingData } returns
+            (freshBillingData?.let { flowOf(it) } ?: emptyFlow())
+        every { lastProState.flow } returns flowOf(lastProAt)
+        every { billingCache.lastProStateAt } returns lastProState
+        every { lastProStateSku.flow } returns flowOf(lastSku)
+        every { billingCache.lastProStateSku } returns lastProStateSku
         return UpgradeRepoGplay(scope, billingManager, billingCache)
     }
 
@@ -153,5 +162,37 @@ class UpgradeRepoGplayTest : BaseTest() {
         UpgradeRepoGplay.preferredProSku(listOf(iap))?.id shouldBe OurSku.Iap.PRO_UPGRADE.id
         UpgradeRepoGplay.preferredProSku(listOf(sub))?.id shouldBe OurSku.Sub.PRO_UPGRADE.id
         UpgradeRepoGplay.preferredProSku(emptyList()) shouldBe null
+    }
+
+    @Test fun `mapped billing data does not stamp the grace timestamp`() = runTest2 {
+        // The reactive mapping can run on replayed (stale) data, e.g. when the upgrade screen is
+        // reopened in a long-lived process — that must not extend the grace window.
+        val repo = repo(lastProAt = 0L, billingData = BillingData(setOf(proPurchase())))
+
+        // upgradeInfo is seeded with a null emission; wait for the purchase-mapped one, twice, so
+        // the second collection is served from the shareIn replay cache.
+        repo.upgradeInfo.first { it.isUpgraded }.isUpgraded shouldBe true
+        repo.upgradeInfo.first { it.isUpgraded }.isUpgraded shouldBe true
+
+        coVerify(exactly = 0) { lastProState.update(any()) }
+        coVerify(exactly = 0) { lastProStateSku.update(any()) }
+    }
+
+    @Test fun `fresh billing data stamps the grace timestamp`() = runTest2 {
+        repo(lastProAt = 0L, freshBillingData = BillingData(setOf(proPurchase())))
+
+        coVerify(exactly = 1) { lastProStateSku.update(any()) }
+        coVerify(exactly = 1) { lastProState.update(any()) }
+    }
+
+    @Test fun `fresh data without a known pro SKU does not stamp`() = runTest2 {
+        val unknown = mockk<Purchase>().apply {
+            every { products } returns listOf("some.unknown.product")
+            every { purchaseTime } returns 1_000L
+        }
+        repo(lastProAt = 0L, freshBillingData = BillingData(setOf(unknown)))
+
+        coVerify(exactly = 0) { lastProState.update(any()) }
+        coVerify(exactly = 0) { lastProStateSku.update(any()) }
     }
 }
