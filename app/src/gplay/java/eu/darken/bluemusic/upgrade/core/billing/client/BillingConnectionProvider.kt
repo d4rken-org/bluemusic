@@ -33,6 +33,7 @@ class BillingConnectionProvider @Inject constructor(
 
     private val provider: Flow<BillingConnection> = callbackFlow {
         val purchaseEvents = MutableStateFlow<Pair<BillingResult, Collection<Purchase>?>?>(null)
+        val failureEvents = MutableStateFlow<BillingResult?>(null)
 
         val client = newBuilder(context).apply {
             enablePendingPurchases(
@@ -50,6 +51,11 @@ class BillingConnectionProvider @Inject constructor(
                     log(TAG, WARN) {
                         "error: onPurchasesUpdated(code=${result.responseCode}, message=${result.debugMessage}, purchases=$purchases)"
                     }
+                    // Failures are stored separately: async ITEM_ALREADY_OWNED drives the auto-restore
+                    // in UpgradeRepoGplay. A failure must not overwrite the last successful event —
+                    // the purchases combine would otherwise lose a fresh entitlement the query
+                    // snapshot doesn't contain yet.
+                    failureEvents.value = result
                 }
             }
         }.build()
@@ -63,7 +69,7 @@ class BillingConnectionProvider @Inject constructor(
 
                 when (result.responseCode) {
                     BillingResponseCode.OK -> {
-                        val connection = BillingConnection(client, purchaseEvents)
+                        val connection = BillingConnection(client, purchaseEvents, failureEvents)
                         trySendBlocking(connection)
                     }
 

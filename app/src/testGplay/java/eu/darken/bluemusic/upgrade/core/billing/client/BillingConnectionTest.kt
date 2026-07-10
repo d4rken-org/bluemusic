@@ -110,6 +110,42 @@ class BillingConnectionTest : BaseTest() {
         every { TextUtils.isEmpty(anyNullable()) } answers { firstArg<CharSequence?>().isNullOrEmpty() }
     }
 
+    @Test fun `purchase failures carry only non-OK listener results`() = runTest2 {
+        val failures = MutableStateFlow<BillingResult?>(null)
+        val connection = BillingConnection(mockk(), MutableStateFlow(null), failures)
+
+        failures.value = result(BillingResponseCode.ITEM_ALREADY_OWNED)
+
+        connection.purchaseFailures.first().responseCode shouldBe BillingResponseCode.ITEM_ALREADY_OWNED
+    }
+
+    @Test fun `a later failure event does not remove a fresh purchase from the purchases flow`() = runTest2 {
+        // Success and failure events live in separate flows: a USER_CANCELED arriving after a
+        // successful purchase event must not overwrite it — the purchase may not be in the query
+        // snapshot yet and would otherwise vanish from raw billing data until the next query.
+        mockkStatic("com.android.billingclient.api.BillingClientKotlinKt")
+        try {
+            val client = mockk<BillingClient>()
+            coEvery { client.queryPurchasesAsync(any<QueryPurchasesParams>()) } returns
+                PurchasesResult(result(BillingResponseCode.OK), emptyList())
+            val events = MutableStateFlow<Pair<BillingResult, Collection<Purchase>?>?>(null)
+            val failures = MutableStateFlow<BillingResult?>(null)
+            val connection = BillingConnection(client, events, failures)
+            connection.refreshPurchases() // empty snapshot, predates the purchase
+
+            val owned = mockk<Purchase>().apply {
+                every { purchaseState } returns PurchaseState.PURCHASED
+                every { purchaseTime } returns 1_000L
+            }
+            events.value = result(BillingResponseCode.OK) to listOf(owned)
+            failures.value = result(BillingResponseCode.USER_CANCELED)
+
+            connection.purchases.first() shouldBe listOf(owned)
+        } finally {
+            unmockkStatic("com.android.billingclient.api.BillingClientKotlinKt")
+        }
+    }
+
     @Test fun `launch billing flow throws on a non-OK launch result`() = runTest2 {
         Dispatchers.setMain(UnconfinedTestDispatcher())
         mockTextUtils()

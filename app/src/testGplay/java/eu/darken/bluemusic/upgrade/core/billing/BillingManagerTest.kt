@@ -16,10 +16,14 @@ import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.test.advanceTimeBy
+import kotlinx.coroutines.test.advanceUntilIdle
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 import testhelpers.coroutine.runTest2
@@ -38,11 +42,13 @@ class BillingManagerTest : BaseTest() {
         refreshResults: List<Collection<Purchase>>,
         events: Flow<Pair<BillingResult, Collection<Purchase>?>?> = emptyFlow(),
         refreshComplete: Boolean = true,
+        failures: Flow<BillingResult> = emptyFlow(),
     ) = mockk<BillingConnection>().apply {
         coEvery { refreshPurchases() } returnsMany
             refreshResults.map { BillingConnection.PurchaseRefresh(it, isComplete = refreshComplete) }
         every { purchases } returns emptyFlow()
         every { purchaseEvents } returns events
+        every { purchaseFailures } returns failures
     }
 
     private fun manager(connection: BillingConnection): BillingManager {
@@ -150,5 +156,43 @@ class BillingManagerTest : BaseTest() {
             launchFailingManager(BillingResponseCode.DEVELOPER_ERROR)
                 .startIapFlow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null)
         }
+    }
+
+    @Test fun `non-OK purchase events are exposed as purchase failures`() = runTest2 {
+        val alreadyOwned = BillingResult.newBuilder()
+            .setResponseCode(BillingResponseCode.ITEM_ALREADY_OWNED)
+            .build()
+        val manager = manager(
+            connection(
+                refreshResults = listOf(emptyList()),
+                failures = flowOf(alreadyOwned),
+            )
+        )
+
+        manager.purchaseFailures.first() shouldBe alreadyOwned
+    }
+
+    @Test fun `connection failures retry instead of killing billing`() = runTest2 {
+        // The old catch{log} swallowed terminal connection failures; with the ack collector pinning
+        // the shareIn subscription forever, billing stayed dead until process restart.
+        val owned = purchase()
+        var attempts = 0
+        // First refresh result feeds the initial per-connection refresh, second the manual one.
+        val connection = connection(refreshResults = listOf(emptyList(), listOf(owned)))
+        val provider = mockk<BillingConnectionProvider>().apply {
+            every { this@apply.connection } returns flow {
+                attempts++
+                if (attempts == 1) throw BillingException("Play is updating itself")
+                emit(connection)
+            }
+        }
+        val manager = BillingManager(backgroundScope, provider)
+
+        val refreshed = async { manager.refresh() }
+        advanceTimeBy(31_000) // past the first 30s retry backoff
+        advanceUntilIdle()
+
+        refreshed.await() shouldBe BillingData(listOf(owned))
+        attempts shouldBe 2
     }
 }

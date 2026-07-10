@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.upgrade.core
 
 import android.app.Activity
+import com.android.billingclient.api.BillingClient.BillingResponseCode
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
@@ -26,6 +27,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
@@ -50,6 +52,14 @@ class UpgradeRepoGplay @Inject constructor(
 
     override val mainWebsite: String = SITE
 
+    // Counter, not a flag: overlapping already-owned recoveries (buy taps racing the UI disable)
+    // must keep the busy signal up until the LAST one finishes.
+    private val autoRestoring = MutableStateFlow(0)
+
+    // The already-owned auto-restores below run invisibly on AppScope; expose their busy state so
+    // the UI can pause entitlement actions instead of racing them with a manual restore or a buy.
+    val autoRestoreBusy: Flow<Boolean> = autoRestoring.map { it > 0 }
+
     init {
         // Grace bookkeeping is driven by *fresh* Play query results only (per-connection/manual
         // refreshes, completed purchases) — never by the replayed billingData/upgradeInfo flows.
@@ -69,6 +79,27 @@ class UpgradeRepoGplay @Inject constructor(
                 }
             }
             .setupCommonEventHandlers(TAG) { "lastProState-stamping" }
+            .launchIn(scope)
+
+        // Async variant of the launch-result ITEM_ALREADY_OWNED case: Play told us mid-flow that the
+        // user already owns it. Reconcile silently — Play shows its own UI for purchase-sheet
+        // failures, so no app-side dialog here.
+        billingManager.purchaseFailures
+            .filter { it.responseCode == BillingResponseCode.ITEM_ALREADY_OWNED }
+            .onEach {
+                log(TAG, INFO) { "Async already-owned event -> restoring purchase" }
+                autoRestoring.update { it + 1 }
+                try {
+                    withTimeoutOrNull(RESTORE_ON_OWNED_TIMEOUT_MS) { restorePurchaseNow() }
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    log(TAG, WARN) { "Async already-owned restore failed: ${e.asLog()}" }
+                } finally {
+                    autoRestoring.update { it - 1 }
+                }
+            }
+            .setupCommonEventHandlers(TAG) { "asyncAlreadyOwned" }
             .launchIn(scope)
     }
 
@@ -115,15 +146,9 @@ class UpgradeRepoGplay @Inject constructor(
 
     // True once we've ever confirmed a (known) Pro purchase on this install; drives the proactive
     // restore banner. Local signal only — a fresh install or switched Google account starts false.
-    val wasEverPro: Flow<Boolean> = billingCache.lastProStateAt.flow.map { it > 0 }
-
-    // Counter, not a flag: overlapping already-owned recoveries (buy taps racing the UI disable)
-    // must keep the busy signal up until the LAST one finishes.
-    private val autoRestoring = MutableStateFlow(0)
-
-    // The already-owned auto-restore below runs invisibly on AppScope; expose its busy state so the
-    // UI can pause entitlement actions instead of racing it with a manual restore or another buy.
-    val autoRestoreBusy: Flow<Boolean> = autoRestoring.map { it > 0 }
+    val wasEverPro: Flow<Boolean> = billingCache.lastProStateAt.flow
+        .map { it > 0 }
+        .distinctUntilChanged()
 
     fun launchBillingFlow(
         activity: Activity,
@@ -179,7 +204,9 @@ class UpgradeRepoGplay @Inject constructor(
     override suspend fun refresh() {
         log(TAG) { "refresh()" }
         try {
-            billingManager.refresh()
+            // Bounded: with unbounded connection retry, an unavailable Play would otherwise keep
+            // background callers (MainViewModel) suspended indefinitely.
+            withTimeoutOrNull(REFRESH_TIMEOUT_MS) { billingManager.refresh() }
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
@@ -284,6 +311,7 @@ class UpgradeRepoGplay @Inject constructor(
         val GRACE_PERIOD_MS = Duration.ofDays(7).toMillis()
         val GRACE_PERIOD_IAP_MS = Duration.ofDays(30).toMillis()
         private const val RESTORE_ON_OWNED_TIMEOUT_MS = 15_000L
+        private const val REFRESH_TIMEOUT_MS = 30_000L
 
         val TAG: String = logTag("Upgrade", "Gplay", "Repo")
 

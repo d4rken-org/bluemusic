@@ -2,6 +2,7 @@ package eu.darken.bluemusic.upgrade.core.billing
 
 import android.app.Activity
 import com.android.billingclient.api.BillingClient.BillingResponseCode
+import com.android.billingclient.api.BillingResult
 import com.android.billingclient.api.Purchase.PurchaseState
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
@@ -21,7 +22,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.launchIn
@@ -67,7 +67,19 @@ class BillingManager @Inject constructor(
                 log(TAG, ERROR) { "Initial purchase data refresh failed: ${e.asLog()}" }
             }
         }
-        .catch { log(TAG, ERROR) { "Unable to provide client connection:\n${it.asLog()}" } }
+        .retryWhen { cause, attempt ->
+            // Never give up terminally: the ack collector pins this shareIn forever, so WhileSubscribed
+            // can't restart a completed upstream — a swallowed terminal failure (e.g. one transient
+            // BILLING_UNAVAILABLE while Play updates itself at boot) would leave billing dead until
+            // process restart. Retry with capped backoff instead; Play recovering makes this heal.
+            if (cause is CancellationException) {
+                false
+            } else {
+                log(TAG, WARN) { "Billing connection failed (attempt=$attempt), will retry: ${cause.asLog()}" }
+                delay((30_000L * (attempt + 1)).coerceAtMost(300_000L))
+                true
+            }
+        }
         .setupCommonEventHandlers(TAG) { "connection" }
         .shareIn(scope, WhileSubscribed(3000L, 0L), replay = 1)
 
@@ -80,6 +92,10 @@ class BillingManager @Inject constructor(
     val billingData: Flow<BillingData> = purchases
         .map { BillingData(purchases = it) }
         .shareIn(scope, WhileSubscribed(3000L, 0L), replay = 1)
+
+    val purchaseFailures: Flow<BillingResult> = connection
+        .flatMapLatest { it.purchaseFailures }
+        .setupCommonEventHandlers(TAG) { "purchaseFailures" }
 
     init {
         // Completed purchases arriving via the PurchasesUpdatedListener are fresh Play data too.

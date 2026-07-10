@@ -34,6 +34,7 @@ import kotlin.coroutines.suspendCoroutine
 data class BillingConnection(
     private val client: BillingClient,
     val purchaseEvents: Flow<Pair<BillingResult, Collection<Purchase>?>?>,
+    private val failureEvents: Flow<BillingResult?> = MutableStateFlow(null),
 ) {
 
     // Last authoritative ownership snapshot: the combined result of a successful refreshPurchases().
@@ -57,6 +58,10 @@ data class BillingConnection(
 
         combined.sortedByDescending { it.purchaseTime }
     }.setupCommonEventHandlers(TAG) { "purchases" }
+
+    // Non-OK results from onPurchasesUpdated (e.g. async ITEM_ALREADY_OWNED after the Play sheet
+    // opened). Consumed by a single persistent collector in UpgradeRepoGplay — not an event bus.
+    val purchaseFailures: Flow<BillingResult> = failureEvents.filterNotNull()
 
     private suspend fun queryPurchases(@BillingClient.ProductType type: String): Collection<Purchase> {
         val params = QueryPurchasesParams.newBuilder().apply {
