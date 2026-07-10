@@ -126,10 +126,17 @@ private fun PricingContent(
     }
 
     if (state.wasPreviouslyPro) {
-        RestoreBanner(onRestorePurchase = onRestorePurchase)
+        RestoreBanner(
+            onRestorePurchase = onRestorePurchase,
+            restoreInProgress = state.restoreInProgress,
+        )
 
         Spacer(modifier = Modifier.height(16.dp))
     }
+
+    // While a restore runs, all entitlement actions pause: a purchase flow racing a restore would
+    // just confuse both the user and Play.
+    val actionsEnabled = !state.restoreInProgress
 
     val hasSubscriptionOption = state.subState.available || state.trialState.available
     val hasIapOption = state.iapState.available
@@ -144,6 +151,7 @@ private fun PricingContent(
 
         Button(
             onClick = onPrimaryAction,
+            enabled = actionsEnabled,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
@@ -180,6 +188,7 @@ private fun PricingContent(
         if (hasSubscriptionOption) {
             FilledTonalButton(
                 onClick = onGoIap,
+                enabled = actionsEnabled,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp),
@@ -192,6 +201,7 @@ private fun PricingContent(
         } else {
             Button(
                 onClick = onGoIap,
+                enabled = actionsEnabled,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(48.dp),
@@ -224,6 +234,7 @@ private fun PricingContent(
     if (!hasSubscriptionOption && !hasIapOption) {
         Button(
             onClick = onGoIap,
+            enabled = actionsEnabled,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
@@ -244,11 +255,23 @@ private fun PricingContent(
 
     OutlinedButton(
         onClick = onRestorePurchase,
+        enabled = actionsEnabled,
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
     ) {
-        Text(text = stringResource(R.string.upgrade_screen_restore_purchase_action))
+        if (state.restoreInProgress) {
+            CircularProgressIndicator(
+                modifier = Modifier.size(18.dp),
+                strokeWidth = 2.dp,
+            )
+            Text(
+                text = stringResource(R.string.upgrade_screen_restore_purchase_action),
+                modifier = Modifier.padding(start = 8.dp),
+            )
+        } else {
+            Text(text = stringResource(R.string.upgrade_screen_restore_purchase_action))
+        }
     }
 
     Text(
@@ -265,6 +288,7 @@ private fun PricingContent(
 @Composable
 private fun RestoreBanner(
     onRestorePurchase: () -> Unit,
+    restoreInProgress: Boolean = false,
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -290,9 +314,21 @@ private fun RestoreBanner(
 
             Button(
                 onClick = onRestorePurchase,
+                enabled = !restoreInProgress,
                 modifier = Modifier.fillMaxWidth(),
             ) {
-                Text(text = stringResource(R.string.upgrade_screen_restore_purchase_action))
+                if (restoreInProgress) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(18.dp),
+                        strokeWidth = 2.dp,
+                    )
+                    Text(
+                        text = stringResource(R.string.upgrade_screen_restore_purchase_action),
+                        modifier = Modifier.padding(start = 8.dp),
+                    )
+                } else {
+                    Text(text = stringResource(R.string.upgrade_screen_restore_purchase_action))
+                }
             }
         }
     }
