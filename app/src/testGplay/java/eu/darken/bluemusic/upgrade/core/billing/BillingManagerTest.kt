@@ -1,11 +1,15 @@
 package eu.darken.bluemusic.upgrade.core.billing
 
+import android.app.Activity
 import com.android.billingclient.api.BillingClient.BillingResponseCode
 import com.android.billingclient.api.BillingResult
 import com.android.billingclient.api.Purchase
 import com.android.billingclient.api.Purchase.PurchaseState
+import eu.darken.bluemusic.upgrade.core.OurSku
+import eu.darken.bluemusic.upgrade.core.billing.client.BillingClientException
 import eu.darken.bluemusic.upgrade.core.billing.client.BillingConnection
 import eu.darken.bluemusic.upgrade.core.billing.client.BillingConnectionProvider
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.every
@@ -82,5 +86,53 @@ class BillingManagerTest : BaseTest() {
 
         // Only the initial refresh result may arrive, never the failed event's payload.
         manager.freshBillingData.first() shouldBe BillingData(listOf(owned))
+    }
+
+    // A manager whose connection fails launchBillingFlow with the given launch-result code —
+    // the path Play uses for immediate "buy" failures (returned result, not an exception).
+    private fun launchFailingManager(code: Int): BillingManager {
+        val connection = mockk<BillingConnection>().apply {
+            coEvery { refreshPurchases() } returns emptyList()
+            every { purchases } returns emptyFlow()
+            every { purchaseEvents } returns emptyFlow()
+            coEvery { launchBillingFlow(any(), any(), null) } throws
+                BillingClientException(BillingResult.newBuilder().setResponseCode(code).build())
+        }
+        return manager(connection)
+    }
+
+    @Test fun `already-owned launch failure maps to ItemAlreadyOwnedBillingException`() = runTest2 {
+        shouldThrow<ItemAlreadyOwnedBillingException> {
+            launchFailingManager(BillingResponseCode.ITEM_ALREADY_OWNED)
+                .startIapFlow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null)
+        }
+    }
+
+    @Test fun `user cancel from the launch result maps to UserCanceledBillingException`() = runTest2 {
+        shouldThrow<UserCanceledBillingException> {
+            launchFailingManager(BillingResponseCode.USER_CANCELED)
+                .startIapFlow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null)
+        }
+    }
+
+    @Test fun `billing-unavailable launch failure maps to the service error`() = runTest2 {
+        shouldThrow<GplayServiceUnavailableException> {
+            launchFailingManager(BillingResponseCode.BILLING_UNAVAILABLE)
+                .startIapFlow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null)
+        }
+    }
+
+    @Test fun `network launch failure maps to NetworkBillingException`() = runTest2 {
+        shouldThrow<NetworkBillingException> {
+            launchFailingManager(BillingResponseCode.NETWORK_ERROR)
+                .startIapFlow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null)
+        }
+    }
+
+    @Test fun `developer errors are rethrown unmapped`() = runTest2 {
+        shouldThrow<BillingClientException> {
+            launchFailingManager(BillingResponseCode.DEVELOPER_ERROR)
+                .startIapFlow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null)
+        }
     }
 }
