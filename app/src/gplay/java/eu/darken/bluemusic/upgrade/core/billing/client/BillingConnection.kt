@@ -81,14 +81,23 @@ data class BillingConnection(
     // Tolerant of a single product-type failure: if either query finds a purchase we treat that as
     // authoritative, and only propagate an error when nothing was found AND a query failed — so the
     // caller can tell "not owned" apart from "couldn't verify".
-    suspend fun refreshPurchases(): Collection<Purchase> = coroutineScope {
+    // The purchases of a refresh plus whether it covered both product types: a partial result (one
+    // query failed) is still authoritative for what it FOUND, but must not be treated as proof of
+    // absence for the type that couldn't be checked.
+    data class PurchaseRefresh(
+        val purchases: Collection<Purchase>,
+        val isComplete: Boolean,
+    )
+
+    suspend fun refreshPurchases(): PurchaseRefresh = coroutineScope {
         log(TAG) { "refreshPurchases()" }
         val iapJob = async { queryPurchasedProducts(BillingClient.ProductType.INAPP) }
         val subJob = async { queryPurchasedProducts(BillingClient.ProductType.SUBS) }
         val iap = iapJob.await()
         val sub = subJob.await()
         log(TAG) { "Refreshed IAPs=${iap.getOrNull()}, SUBs=${sub.getOrNull()}" }
-        combinePurchaseResults(iap, sub).also { querySnapshot.value = it }
+        val combined = combinePurchaseResults(iap, sub).also { querySnapshot.value = it }
+        PurchaseRefresh(purchases = combined, isComplete = iap.isSuccess && sub.isSuccess)
     }
 
     // Never throws except on cancellation, so a single failing product-type query doesn't cancel the

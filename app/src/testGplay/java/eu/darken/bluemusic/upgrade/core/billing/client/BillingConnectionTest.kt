@@ -94,7 +94,9 @@ class BillingConnectionTest : BaseTest() {
             )
             val connection = BillingConnection(client, MutableStateFlow(null))
 
-            connection.refreshPurchases() shouldBe listOf(owned)
+            val refresh = connection.refreshPurchases()
+            refresh.purchases shouldBe listOf(owned)
+            refresh.isComplete shouldBe false
             connection.purchases.first() shouldBe listOf(owned)
         } finally {
             unmockkStatic("com.android.billingclient.api.BillingClientKotlinKt")

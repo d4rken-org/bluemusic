@@ -37,8 +37,10 @@ class BillingManagerTest : BaseTest() {
     private fun connection(
         refreshResults: List<Collection<Purchase>>,
         events: Flow<Pair<BillingResult, Collection<Purchase>?>?> = emptyFlow(),
+        refreshComplete: Boolean = true,
     ) = mockk<BillingConnection>().apply {
-        coEvery { refreshPurchases() } returnsMany refreshResults
+        coEvery { refreshPurchases() } returnsMany
+            refreshResults.map { BillingConnection.PurchaseRefresh(it, isComplete = refreshComplete) }
         every { purchases } returns emptyFlow()
         every { purchaseEvents } returns events
     }
@@ -59,6 +61,17 @@ class BillingManagerTest : BaseTest() {
 
         refreshed shouldBe BillingData(listOf(owned))
         manager.freshBillingData.first() shouldBe BillingManager.FreshData(refreshed, isFullSnapshot = true)
+    }
+
+    @Test fun `a partial refresh is not labeled a full snapshot`() = runTest2 {
+        val owned = purchase()
+        val manager = manager(
+            connection(refreshResults = listOf(emptyList(), listOf(owned)), refreshComplete = false)
+        )
+
+        manager.refresh()
+
+        manager.freshBillingData.first().isFullSnapshot shouldBe false
     }
 
     @Test fun `completed purchase events emit fresh billing data`() = runTest2 {
@@ -94,7 +107,8 @@ class BillingManagerTest : BaseTest() {
     // the path Play uses for immediate "buy" failures (returned result, not an exception).
     private fun launchFailingManager(code: Int): BillingManager {
         val connection = mockk<BillingConnection>().apply {
-            coEvery { refreshPurchases() } returns emptyList()
+            coEvery { refreshPurchases() } returns
+                BillingConnection.PurchaseRefresh(emptyList(), isComplete = true)
             every { purchases } returns emptyFlow()
             every { purchaseEvents } returns emptyFlow()
             coEvery { launchBillingFlow(any(), any(), null) } throws
