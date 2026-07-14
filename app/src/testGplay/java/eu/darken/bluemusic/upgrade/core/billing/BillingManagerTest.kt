@@ -10,13 +10,16 @@ import eu.darken.bluemusic.upgrade.core.billing.client.BillingClientException
 import eu.darken.bluemusic.upgrade.core.billing.client.BillingConnection
 import eu.darken.bluemusic.upgrade.core.billing.client.BillingConnectionProvider
 import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.longs.shouldBeLessThan
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.first
@@ -24,6 +27,8 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.currentTime
+import kotlinx.coroutines.test.runCurrent
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 import testhelpers.coroutine.runTest2
@@ -194,5 +199,121 @@ class BillingManagerTest : BaseTest() {
 
         refreshed.await() shouldBe BillingData(listOf(owned))
         attempts shouldBe 2
+    }
+
+    @Test fun `active demand cuts the reconnect backoff short`() = runTest2 {
+        val owned = purchase()
+        var attempts = 0
+        val connection = connection(refreshResults = listOf(emptyList(), listOf(owned)))
+        val provider = mockk<BillingConnectionProvider>().apply {
+            every { this@apply.connection } returns flow {
+                attempts++
+                if (attempts == 1) throw BillingException("Play is updating itself")
+                emit(connection)
+            }
+        }
+        val manager = BillingManager(backgroundScope, provider)
+        runCurrent() // first connection attempt fails, the 30s backoff starts
+
+        // A user tapping restore/buy right after fixing their Play situation must not wait out the
+        // backoff timer — the demand signal reconnects immediately.
+        val refreshed = async { manager.refresh() }
+        runCurrent()
+
+        refreshed.await() shouldBe BillingData(listOf(owned))
+        attempts shouldBe 2
+        currentTime shouldBeLessThan 30_000L
+    }
+
+    @Test fun `demand during a failing connection attempt is not lost`() = runTest2 {
+        val owned = purchase()
+        var attempts = 0
+        val connection = connection(refreshResults = listOf(emptyList(), listOf(owned)))
+        val provider = mockk<BillingConnectionProvider>().apply {
+            every { this@apply.connection } returns flow {
+                attempts++
+                if (attempts == 1) {
+                    delay(1_000) // demand arrives while this attempt is still in flight
+                    throw BillingException("Play is updating itself")
+                }
+                emit(connection)
+            }
+        }
+        val manager = BillingManager(backgroundScope, provider)
+        runCurrent() // attempt 1 in flight, suspended
+
+        val refreshed = async { manager.refresh() } // demand lands mid-attempt
+        runCurrent()
+        advanceTimeBy(1_001) // attempt 1 fails; the pending demand must skip the backoff
+        runCurrent()
+
+        refreshed.await() shouldBe BillingData(listOf(owned))
+        attempts shouldBe 2
+        currentTime shouldBeLessThan 30_000L
+    }
+
+    @Test fun `demand served by a healthy connection does not skip a later backoff`() = runTest2 {
+        var attempts = 0
+        val die = CompletableDeferred<Unit>()
+        val connection = connection(refreshResults = List(4) { emptyList<Purchase>() })
+        val provider = mockk<BillingConnectionProvider>().apply {
+            every { this@apply.connection } returns flow {
+                when (attempts++) {
+                    0 -> {
+                        emit(connection)
+                        die.await()
+                        throw BillingException("connection died")
+                    }
+
+                    else -> emit(connection)
+                }
+            }
+        }
+        val manager = BillingManager(backgroundScope, provider)
+        runCurrent()
+
+        val refreshed = async { manager.refresh() } // demand is served by the healthy connection
+        runCurrent()
+        refreshed.await()
+
+        die.complete(Unit) // now the connection dies
+        runCurrent()
+
+        // The long-served demand must not short-circuit this backoff.
+        advanceTimeBy(29_000)
+        runCurrent()
+        attempts shouldBe 1
+
+        advanceTimeBy(2_000)
+        runCurrent()
+        attempts shouldBe 2
+    }
+
+    @Test fun `backoff streak resets after a successful connection`() = runTest2 {
+        var attempts = 0
+        val connection = connection(refreshResults = List(4) { emptyList<Purchase>() })
+        val provider = mockk<BillingConnectionProvider>().apply {
+            every { this@apply.connection } returns flow {
+                when (attempts++) {
+                    0 -> throw BillingException("fail 1") // streak 1 -> 30s backoff
+                    1 -> {
+                        emit(connection) // success resets the streak...
+                        throw BillingException("fail 2") // ...so this must back off 30s, not 60s
+                    }
+
+                    else -> emit(connection)
+                }
+            }
+        }
+        BillingManager(backgroundScope, provider)
+
+        advanceTimeBy(30_001)
+        runCurrent()
+        advanceTimeBy(30_001)
+        runCurrent()
+
+        // With a lifetime attempt counter the second backoff would be 60s and the third attempt
+        // wouldn't have run yet.
+        attempts shouldBe 3
     }
 }
