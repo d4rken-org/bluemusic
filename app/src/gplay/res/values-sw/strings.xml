@@ -10,9 +10,6 @@
     <string name="upgrade_screen_title">Boresha hadi BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager haina matangazo na haiuzi data ya mtumiaji. Kazi yangu inafadhiliwa na wewe ❤️.</string>
     <string name="upgrade_screen_why_title">Faida</string>
-    <string name="upgrade_screen_why_body">• Msanidi aliyehamasika 🧙\n• Vifaa visivyo na kikomo ➡️➡️\n• Vitendo vya ziada ⚙️\nna zaidi…</string>
-    <string name="upgrade_screen_how_title">Chaguo</string>
-    <string name="upgrade_screen_how_body">Unaweza kuchagua kati ya ununuzi wa mara moja na usajili wa kila mwaka ulio rahisi zaidi.\nUsajili unaanza na majaribio ya bure ya siku 14, baada ya hapo utalipishwa mara moja kwa mwaka. Majaribio na usajili vinaweza kufutwa wakati wowote.\nVipengele sawa, tu mifano tofauti ya bei.</string>
     <string name="upgrade_screen_subscription_trial_action">Anza majaribio ya bure ya siku 14</string>
     <string name="upgrade_screen_subscription_action">Jisajili</string>
     <string name="upgrade_screen_subscription_action_hint">Usajili ungharimu %s kwa mwaka.</string>

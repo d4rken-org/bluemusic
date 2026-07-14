@@ -10,12 +10,6 @@
     <string name="upgrade_screen_title">Atnaujinti į BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager neturi reklamų ir neparduoda naudotojų duomenų. Mano darbas finansuojamas jūsų ❤️.</string>
     <string name="upgrade_screen_why_title">Privalumai</string>
-    <string name="upgrade_screen_why_body">• Motyvuotas kūrėjas 🧙
-• Neriboti įrenginiai ➡️➡️
-• Papildomi veiksmai ⚙️
-ir daugiau…</string>
-    <string name="upgrade_screen_how_title">Parinktys</string>
-    <string name="upgrade_screen_how_body">Galite rinktis tarp vienkartinio pirkimo ir pigesnės metinės prenumeratos.\nPrenumerata prasideda nemokamuoju 14 dienų bandomuoju laikotarpiu, po kurio jums bus imamas mokestis kartą per metus. Bandomasis laikotarpis ir prenumerata gali būti atšaukti bet kada.\nTos pačios funkcijos, tik skirtingi kainų modeliai.</string>
     <string name="upgrade_screen_subscription_trial_action">Pradėti nemokamą 14 dienų bandomąjį laikotarpį</string>
     <string name="upgrade_screen_subscription_action">Prenumeruoti</string>
     <string name="upgrade_screen_subscription_action_hint">Prenumerata kainuoja %s per metus.</string>

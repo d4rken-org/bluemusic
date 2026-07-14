@@ -10,9 +10,6 @@
     <string name="upgrade_screen_title">BVM Pro га өтүү</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager жарнамаларсыз жана пайдалануучулардын мәлиматын сатпайт. Менин жумушум сиздин қаржыланат ❤️.</string>
     <string name="upgrade_screen_why_title">Артыкчылыктары</string>
-    <string name="upgrade_screen_why_body">• Мотивацияланган ишкери девелопчу 🧙\n• Чексиз түзмөктөр ➡️➡️\n• Кошумча акциялар ⚙️\nжана көбүрөк…</string>
-    <string name="upgrade_screen_how_title">Мүмкүнчүлүктөр</string>
-    <string name="upgrade_screen_how_body">Бир жолку сатып алуу немесе арзан жылдык жазылык арасында тандашыңыз.\nЖазылык 14 күндүк бепло сынамадан башталат, андан кейин жылына бир жолу акы төлөнет.Сынама жана жазылыкъты каалаган учурда бекер кылууга болот.\nБирдей функциялар, тек эргежтүүлүү моделдери айырма.</string>
     <string name="upgrade_screen_subscription_trial_action">14 күндүк бепло сынаманы баштоо</string>
     <string name="upgrade_screen_subscription_action">Жазылуу</string>
     <string name="upgrade_screen_subscription_action_hint">Жазылык жылына %s түрүн.</string>

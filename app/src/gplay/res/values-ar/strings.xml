@@ -10,12 +10,6 @@
     <string name="upgrade_screen_title">الترقية إلى BVM Pro</string>
     <string name="upgrade_screen_preamble">لا يعرض Bluetooth Volume Manager أية إعلانات ولا يبيع بيانات المستخدم. يتم تمويل عملي من قِبَلكم ❤️.</string>
     <string name="upgrade_screen_why_title">المميزات</string>
-    <string name="upgrade_screen_why_body">• مطوّر متحمس 🧙
-• أجهزة غير محدودة ➡️➡️
-• إجراءات إضافية ⚙️
-والمزيد…</string>
-    <string name="upgrade_screen_how_title">الخيارات</string>
-    <string name="upgrade_screen_how_body">يمكنك الاختيار بين شراء مرّة واحدة واشتراك سنوي أرخص.\nيبدأ الاشتراك بالتجربة المجانية لمدة 14 يوما، وبعد ذلك ستتقاضى رسوما مرة واحدة في السنة. يمكن إلغاء التجربة والاشتراك في أي وقت.\nنفس الميزات لكن بنماذج تسعير مختلفة.</string>
     <string name="upgrade_screen_subscription_trial_action">بدء التجربة المجانية لمدة 14 يوماً</string>
     <string name="upgrade_screen_subscription_action">اشتراك</string>
     <string name="upgrade_screen_subscription_action_hint">الاشتراك يكلف %s لكل سنة.</string>

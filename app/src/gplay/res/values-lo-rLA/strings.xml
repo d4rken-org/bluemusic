@@ -10,12 +10,6 @@
     <string name="upgrade_screen_title">ອັບເກຣດເປັນ BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ບ່ມີໂຆສນາເກ໭ນແລະບ່ຂາຍຂ້ອມູນຜູ້ໃຊ້. ງານຂອງຂ້ອນສະຫນັບສນຸນໂດຍທ່ານ ❤️.</string>
     <string name="upgrade_screen_why_title">ຂໍ້ດີ</string>
-    <string name="upgrade_screen_why_body">• ນ଱ກພັດທນາທີ່ມີແຣງຈູງໃຈ ༉
-• ອຸປກອນໄດ້ໄມ່ຈຳກັດ ➡️➡️
-• ການກຳໄວ້ເພິ່ມເຕີມ ⚙️
-ແລະอື່ນຢົ່ວ…</string>
-    <string name="upgrade_screen_how_title">ຕົວເລືອກ</string>
-    <string name="upgrade_screen_how_body">ທ່ານສາມາດເລືອກລະຫວ່າງການຊື້ຄັ້ງດຽວ ແລະການສະໝັກສະມາຊິກປະຈຳປີທີ່ຖືກກວ່າ.\nການສະໝັກສະມາຊິກເລີ່ມຕົ້ນດ້ວຍການທົດລອງຟຣີ 14 ວັນ, ຫຼັງຈາກນັ້ນທ່ານຈະຖືກຮຽກເກັບເງິນປີລະຄັ້ງ. ການທົດລອງ ແລະການສະໝັກສະມາຊິກສາມາດຍົກເລີກໄດ້ທຸກເວລາ.\nຄຸນສົມບັດດຽວກັນ, ພຽງແຕ່ຮູບແບບລາຄາທີ່ແຕກຕ່າງກັນ.</string>
     <string name="upgrade_screen_subscription_trial_action">ເລີ່ມທົດລອງຟຣີ 14 ວັນ</string>
     <string name="upgrade_screen_subscription_action">ສະໝັກສະມາຊິກ</string>
     <string name="upgrade_screen_subscription_action_hint">ການສະໝັກສະມາຊິກລາຄາ %s ຕໍ່ປີ.</string>

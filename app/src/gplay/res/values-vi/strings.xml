@@ -10,12 +10,6 @@
     <string name="upgrade_screen_title">Nâng cấp lên BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager không có quảng cáo và không bán dữ liệu người dùng. Công việc của tôi được tài trợ bởi bạn ❤️.</string>
     <string name="upgrade_screen_why_title">Lợi thế</string>
-    <string name="upgrade_screen_why_body">• Nhà phát triển tâm huyết 🧙
-• Thiết bị không giới hạn ➡️➡️
-• Hành động bổ sung ⚙️
-và nhiều hơn nữa…</string>
-    <string name="upgrade_screen_how_title">Tùy chọn</string>
-    <string name="upgrade_screen_how_body">Bạn có thể chọn giữa mua một lần và đăng ký hàng năm rẻ hơn.\nĐăng ký bắt đầu bằng bản dùng thử miễn phí 14 ngày, sau đó bạn sẽ bị tính phí một lần mỗi năm. Bản dùng thử và đăng ký có thể bị hủy bất kỳ lúc nào.\nTính năng giống nhau, chỉ khác mô hình định giá.</string>
     <string name="upgrade_screen_subscription_trial_action">Bắt đầu dùng thử 14 ngày miễn phí</string>
     <string name="upgrade_screen_subscription_action">Đăng ký</string>
     <string name="upgrade_screen_subscription_action_hint">Chi phí đăng ký %s mỗi năm.</string>

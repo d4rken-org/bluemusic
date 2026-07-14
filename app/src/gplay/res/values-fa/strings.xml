@@ -10,9 +10,6 @@
     <string name="upgrade_screen_title">ارتقاء به BVM Pro</string>
     <string name="upgrade_screen_preamble">مدیر صدای بلوتوث تبلیغات ندارد و داده‌های کاربر را نمی‌فروشد. کار من توسط شما تأمین می‌شود ❤️.</string>
     <string name="upgrade_screen_why_title">مزایا</string>
-    <string name="upgrade_screen_why_body">• یک دولوپر انگیزه‌مند 🧙\n• دستگاه‌های نامحدود ➡️➡️\n• اقدامات اضافی ⚙️\nو بیشتر…</string>
-    <string name="upgrade_screen_how_title">گزینه‌ها</string>
-    <string name="upgrade_screen_how_body">می‌توانید بین یک خرید یک‌باره و یک اشتراک سالیانه ارزان‌تر انتخاب کنید.\nاشتراک با یک دوره آزمایشی ۱۴ روزه رایگان شروع می‌شود و پس از آن به صورت سالیانه هزینه می‌شود. دوره آزمایشی و اشتراک در هر زمان قابل لغو هستند.\nهمان ویژگی‌ها، فقط مدل‌های قیمتی متفاوت.</string>
     <string name="upgrade_screen_subscription_trial_action">شروع دوره آزمایشی ۱۴ روزه رایگان</string>
     <string name="upgrade_screen_subscription_action">اشتراک</string>
     <string name="upgrade_screen_subscription_action_hint">هزینه اشتراک سالیانه %s است.</string>

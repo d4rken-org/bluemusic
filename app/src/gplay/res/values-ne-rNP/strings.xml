@@ -10,9 +10,6 @@
     <string name="upgrade_screen_title">BVM Pro मा अपग्रेड गर्नुहोस्</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager मा कुनै विज्ञापन छैन र यसले प्रयोगकर्ताको डेटा बাंड्दैन। मेरो काम तपाईंले गर्नुभएको आर्थिक सहयोगबाट चलिरहेको छ ❤️।</string>
     <string name="upgrade_screen_why_title">फाइदाहरू</string>
-    <string name="upgrade_screen_why_body">• एक प्रेरित डेभलपर 🧙\n• असीमित यन्त्रहरू ➡️➡️\n• थप क्रियाहरू ⚙️\nर थप…</string>
-    <string name="upgrade_screen_how_title">विकल्पहरू</string>
-    <string name="upgrade_screen_how_body">तपाईं एक-पटक खरिद र सस्तो वार्षिक सदस्यता बीच छनौट गर्न सक्नुहुन्छ।\nसदस्यता 14-दिनको निःशुल्क परीक्षणको साथ सुरु हुन्छ, जसपछि तपाईंलाई वर्षमा एक पटक शुल्क लगाइनेछ। परीक्षण र सदस्यता कुनै पनि समयमा रद्द गर्न सकिन्छ।\nउस्तै सुविधाहरू, केवल फरक मूल्य निर्धारण मोडेलहरू।</string>
     <string name="upgrade_screen_subscription_trial_action">14-दिनको निःशुल्क परीक्षण सुरु गर्नुहोस्</string>
     <string name="upgrade_screen_subscription_action">सदस्यता लिनुहोस्</string>
     <string name="upgrade_screen_subscription_action_hint">सदस्यता प्रति वर्ष %s लाग्छ।</string>

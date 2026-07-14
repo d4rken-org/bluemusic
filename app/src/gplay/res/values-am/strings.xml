@@ -10,12 +10,6 @@
     <string name="upgrade_screen_title">ወደ BVM Pro ክበቱ</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ምንም እዋዀት ይረጋል፣ የተገባይ ውሂብንነም አይሸጥም። የ።ቡቡ፡ በ።ቡቡ፠ ዘርድ የካዘለኂው ❤️።</string>
     <string name="upgrade_screen_why_title">ጥቅሞች</string>
-    <string name="upgrade_screen_why_body">• የተጠቀየ ማድርግዬ 🧙
-• ምንም አይኖን መሣሪያዎች ➡️➡️
-• ✏✏✏✏ ✏✏✏ ⚙️
-እና ይጀምሮ...</string>
-    <string name="upgrade_screen_how_title">አማራጮች</string>
-    <string name="upgrade_screen_how_body">በአንድ ጊዜ ግዢ እና በርካሽ የዓመታዊ ደንበኝነት መካከል መምረጥ ይችላሉ።\nደንበኝነቱ በነፃ የ14 ቀን ሙከራ ይጀምራል፣ ከዚያ በኋላ በዓመት አንድ ጊዜ ይከፈላሉ። ሙከራ እና ደንበኝነት በማንኛውም ጊዜ ሊሰረዝ ይችላል።\nተመሳሳይ ባህሪያት፣ የተለያዩ የዋጋ አሰጣጥ ሞዴሎች ብቻ።</string>
     <string name="upgrade_screen_subscription_trial_action">ነፃ የ14 ቀን ሙከራ ይጀምሩ</string>
     <string name="upgrade_screen_subscription_action">ይመዝገቡ</string>
     <string name="upgrade_screen_subscription_action_hint">ደንበኝነቱ በዓመት %s ያስከፍላል።</string>

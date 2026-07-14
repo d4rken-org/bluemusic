@@ -10,12 +10,6 @@
     <string name="upgrade_screen_title">I-upgrade sa BVM Pro</string>
     <string name="upgrade_screen_preamble">Ang Bluetooth Volume Manager ay walang mga ad at hindi nagbebenta ng data ng user. Ang aking trabaho ay pinopondohan mo ❤️.</string>
     <string name="upgrade_screen_why_title">Mga Benepisyo</string>
-    <string name="upgrade_screen_why_body">• Isang motivated na developer 🧙
-• Walang limitasyong mga device ➡️➡️
-• Mga karagdagang aksyon ⚙️
-at marami pa…</string>
-    <string name="upgrade_screen_how_title">Mga Opsyon</string>
-    <string name="upgrade_screen_how_body">Maaari kang pumili sa pagitan ng isang one-time na pagbili at isang mas murang taunang subscription.\nAng subscription ay nagsisimula sa libreng 14-araw na pagsubok, pagkatapos nito ay sisingilin ka ng isang beses bawat taon. Ang pagsubok at subscription ay maaaring kanselahin anumang oras.\nPareho ang mga feature, iba lang ang mga modelo ng pagpepresyo.</string>
     <string name="upgrade_screen_subscription_trial_action">Simulan ang libreng 14-day trial</string>
     <string name="upgrade_screen_subscription_action">Mag-subscribe</string>
     <string name="upgrade_screen_subscription_action_hint">Ang subscription ay nagkakahalaga ng %s bawat taon.</string>

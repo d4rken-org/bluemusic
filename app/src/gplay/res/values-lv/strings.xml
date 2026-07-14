@@ -10,9 +10,6 @@
     <string name="upgrade_screen_title">Jaunināt uz BSP Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth skaļuma pārvaldniekam nav reklāmu un tas nepardod lietotāju datus. Manu darbu finansiē jūs.</string>
     <string name="upgrade_screen_why_title">Priekšrocības</string>
-    <string name="upgrade_screen_why_body">* Motivēts izstrādātājs\n* Neierobežotas ierīces\n* Papildu darbības\nun vairāk...</string>
-    <string name="upgrade_screen_how_title">Opcijas</string>
-    <string name="upgrade_screen_how_body">Varat izvēlēties starp vienreizēju pirkumu un lētāku gada abonementu.\nAbonements sākas ar bezmaksas 14 dienu izmēģinājuma periodu, pēc kura jums tiks iekasēta maksa reizi gadā. Izmēģinājumu un abonementu var atcelt jebkurā laikā.\nTas pašas funkcijas, tikai dažādi cenu modeļi.</string>
     <string name="upgrade_screen_subscription_trial_action">Sāciet bezmaksas 14 dienu izmēģinājumu</string>
     <string name="upgrade_screen_subscription_action">Abonēt</string>
     <string name="upgrade_screen_subscription_action_hint">Abonements maksā %s gadā.</string>

@@ -10,9 +10,6 @@
     <string name="upgrade_screen_title">Надогради на BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager нема реклама и не продаје корисничке податке. Мој рад финансираш ти ❤️.</string>
     <string name="upgrade_screen_why_title">Предности</string>
-    <string name="upgrade_screen_why_body">• Мотивисан програмер 🧙\n• Неограничен број уређаја ➡️➡️\n• Додатне акције ⚙️\nи још много…</string>
-    <string name="upgrade_screen_how_title">Опције</string>
-    <string name="upgrade_screen_how_body">Можете бирати између једнократне куповине и јефтиније годишње претплате.\nПретплата почиње са бесплатним 14-дневним пробним периодом, након чега ће вам бити наплаћено једном годишње. Пробни период и претплата се могу отказати у било које време.\nИсте функције, само различити модели цена.</string>
     <string name="upgrade_screen_subscription_trial_action">Започни бесплатни 14-дневни пробни период</string>
     <string name="upgrade_screen_subscription_action">Претплати се</string>
     <string name="upgrade_screen_subscription_action_hint">Претплата кошта %s годишње.</string>
