@@ -10,9 +10,6 @@
     <string name="upgrade_screen_title">BVM Pro కి అప్‌గ్రేడ్ చేయండి</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager కి ప్రకటనలు లేవు మరియు వినియోగదారు డేటాను విక్రయించదు. నా పని మీరు ఆర్థిక సహాయం చేస్తున్నారు ❤️.</string>
     <string name="upgrade_screen_why_title">ప్రయోజనాలు</string>
-    <string name="upgrade_screen_why_body">• ఒక ప్రేరణ పొందిన డెవలపర్ 🧙\n• అపరిమిత పరికరాలు ➡️➡️\n• అదనపు చర్యలు ⚙️\nమరియు మరిన్ని…</string>
-    <string name="upgrade_screen_how_title">ఎంపికలు</string>
-    <string name="upgrade_screen_how_body">మీరు ఒక్కసారి కొనుగోలు మరియు చౌకైన వార్షిక సబ్‌స్క్రిప్షన్ మధ్య ఎంచుకోవచ్చు.\nసబ్‌స్క్రిప్షన్ ఉచిత 14-రోజుల ట్రయల్‌తో ప్రారంభమవుతుంది, ఆ తర్వాత సంవత్సరానికి ఒకసారి మీకు ఛార్జ్ చేయబడుతుంది. ట్రయల్ మరియు సబ్‌స్క్రిప్షన్ ఎప్పుడైనా రద్దు చేయవచ్చు.\nఅదే ఫీచర్లు, కేవలం వేర్వేరు ధర నమూనాలు.</string>
     <string name="upgrade_screen_subscription_trial_action">ఉచిత 14-రోజుల ట్రయల్ ప్రారంభించండి</string>
     <string name="upgrade_screen_subscription_action">చందాదారులవండి</string>
     <string name="upgrade_screen_subscription_action_hint">ఏడాదికి చందా %s అవుతుంది.</string>

@@ -10,12 +10,6 @@
     <string name="upgrade_screen_title">升級至 BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager 沒有廣告，也不會出售使用者資料。我的工作由你贊助 ❤️。</string>
     <string name="upgrade_screen_why_title">優點</string>
-    <string name="upgrade_screen_why_body">• 充滿動力的開發者 🧙
-• 無限裝置 ➡️➡️
-• 額外動作 ⚙️
-以及更多…</string>
-    <string name="upgrade_screen_how_title">選項</string>
-    <string name="upgrade_screen_how_body">您可以選擇單次購買，也可以選擇更便宜的每年訂閱。\n訂閱開始時有 14 天的免費試用，之後每年計費。試用和訂閱可隨時取消。\n功能相同，僅有定價模式不同。</string>
     <string name="upgrade_screen_subscription_trial_action">開始 14 天免費試用</string>
     <string name="upgrade_screen_subscription_action">訂閱</string>
     <string name="upgrade_screen_subscription_action_hint">訂閱費用為 %s 每年。</string>

@@ -10,9 +10,6 @@
     <string name="upgrade_screen_title">Berritu BVM Pro-ra</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager-ek ez du iragarkirik eta ez du erabiltzailearen daturik saltzen. Nire lana zuk finantzatzen duzu ❤️.</string>
     <string name="upgrade_screen_why_title">Abantailak</string>
-    <string name="upgrade_screen_why_body">• Garatzaile motibatu bat 🧙\n• Mugagabeko gailuak ➡️➡️\n• Ekintza gehigarriak ⚙️\neta gehiago…</string>
-    <string name="upgrade_screen_how_title">Ezarpenak</string>
-    <string name="upgrade_screen_how_body">Aukera dezakezu erosketa bakarra eta urteko harpidetza merkeagoa.\nHarpidetza 14 eguneko doako epaiketa batekin hasten da. Ondoren, urtean behin kobratuko duzu. Epaiketa eta harpidetza edozein unetan ezeztatu daitezke.\nEzaugarri berdinak, prezio eredu desberdinak.</string>
     <string name="upgrade_screen_subscription_trial_action">14 eguneko proba doan hasi</string>
     <string name="upgrade_screen_subscription_action">Harpidetu</string>
     <string name="upgrade_screen_subscription_action_hint">Harpidetza urtero %s-ko prezioa du.</string>

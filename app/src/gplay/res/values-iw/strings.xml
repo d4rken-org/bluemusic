@@ -10,12 +10,6 @@
     <string name="upgrade_screen_title">שדרג ל-BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ללא מודעות ואינה מוכרת נתוני משתמשים. העבודה שלי ממומנת על ידך ❤️.</string>
     <string name="upgrade_screen_why_title">יתרונות</string>
-    <string name="upgrade_screen_why_body">• מפתח מוטיבציה גבוהה 🧙
-• מכשירים ללא הגבלה ➡️➡️
-• פעולות נוספות ⚙️
-ועוד…</string>
-    <string name="upgrade_screen_how_title">הגדרות</string>
-    <string name="upgrade_screen_how_body">אתה יכול לבחור בין רכישה חד פעמית לבין מנוי שנתי זול יותר.\nהמינוי מתחיל בניסיון חינם של 14 יום, ולאחר מכן תחויב פעם בשנה. גרסת ניסיון ומנוי ניתנים לביטול בכל עת.\nאותן תכונות, רק דגמי תמחור שונים.</string>
     <string name="upgrade_screen_subscription_trial_action">התחילו 14 ימי ניסיון</string>
     <string name="upgrade_screen_subscription_action">הירשם כמנוי</string>
     <string name="upgrade_screen_subscription_action_hint">המנוי עולה %s לשנה.</string>

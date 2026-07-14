@@ -10,12 +10,6 @@
     <string name="upgrade_screen_title">BVM Pro ga o\'tish</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager reklamasiz va foydalanuvchi ma\'lumotlarini sotmaydi. Mening ishim siz tomonidan moliyalashtiriladi ❤️.</string>
     <string name="upgrade_screen_why_title">Afzalliklar</string>
-    <string name="upgrade_screen_why_body">• Motivatsiyali dasturchi 🧙
-• Cheksiz qurilmalar ➡️➡️
-• Qo\'shimcha amallar ⚙️
-va boshqalar…</string>
-    <string name="upgrade_screen_how_title">Variantlar</string>
-    <string name="upgrade_screen_how_body">Siz bir martalik xarid va arzonroq yillik obuna o\'rtasida tanlov qilishingiz mumkin.\nObuna bepul 14 kunlik sinov davri bilan boshlanadi, shundan so\'ng sizdan yiliga bir marta to\'lov olinadi. Sinov va obunani istalgan vaqtda bekor qilish mumkin.\nXuddi shu xususiyatlar, faqat turli narx modellari.</string>
     <string name="upgrade_screen_subscription_trial_action">Bepul 14 kunlik sinovni boshlang</string>
     <string name="upgrade_screen_subscription_action">Obuna bo\'ling</string>
     <string name="upgrade_screen_subscription_action_hint">Obuna yiliga %s turadi.</string>

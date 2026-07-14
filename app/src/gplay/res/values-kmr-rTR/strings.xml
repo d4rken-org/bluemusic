@@ -10,14 +10,6 @@
     <string name="upgrade_screen_title">Biçe BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager reklamê nake û daneya bikarhêner nafroşe. Xebata min ji aliyê we ve tê fînanskirinê ❤️.</string>
     <string name="upgrade_screen_why_title">Avantaj</string>
-    <string name="upgrade_screen_why_body">• Geşedêrekî dilxwaz 🧙
-• Cêhazên bê-sînor ➡️➡️
-• Kiryarên zêde ⚙️
-û zêdetir…</string>
-    <string name="upgrade_screen_how_title">Vebijark</string>
-    <string name="upgrade_screen_how_body">Hûn dikarin di navbera kirîna yekcar û aboneyeke salarê ya erzantir de hilbijêrîn.
-Aboneyê bi ceribandîneke 14 rojî ya belaş dest pê dike, piştî wê salê carekê tê deynkirinê. Ceribandîn û aboneyê her dem tên îpta lkirinê.
-Heman taybetmendî, tenê modelên bihayê cuda.</string>
     <string name="upgrade_screen_subscription_trial_action">Ceribandîna 14-rojî ya belaş dest pê bike</string>
     <string name="upgrade_screen_subscription_action">Abone bibe</string>
     <string name="upgrade_screen_subscription_action_hint">Aboneyê salê %s lêdixe.</string>

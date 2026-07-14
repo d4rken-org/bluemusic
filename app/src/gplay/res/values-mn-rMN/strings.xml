@@ -10,9 +10,6 @@
     <string name="upgrade_screen_title">BVM Pro рүү шилжээх</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager сурталчилгаагүй бөгөөд хэрэглэгчийн өгөгдлийг зардаггүй. Миний ажиллыг та нараар санхүүжнэ ❤️.</string>
     <string name="upgrade_screen_why_title">Давуу талууд</string>
-    <string name="upgrade_screen_why_body">• Урамшуулсан хөгжлөлөөр 🧙\n• Хязгаагүй төхөөрөмжүүд ➡️➡️\n• Нэмэлт үйлдлүүд ⚙️\nба дараа…</string>
-    <string name="upgrade_screen_how_title">Сонголтууд</string>
-    <string name="upgrade_screen_how_body">Та нэг удаагийн худалдан авалт болон хямд жилийн захиалгын хооронд сонгох боломжтой.\nЗахиалга нь 14 хоногийн үнэ төлбөргүй туршилтаар эхэлдэг бөгөөд үүний дараа танаас жилд нэг удаа төлбөр авна. Туршилт болон захиалгыг хүссэн үедээ цуцалж болно.\nИжил боломжууд, зөвхөн өөр үнийн загварууд.</string>
     <string name="upgrade_screen_subscription_trial_action">14 хоногийн үнэ төлбөргүй туршилт эхлүүлэх</string>
     <string name="upgrade_screen_subscription_action">Захиалах</string>
     <string name="upgrade_screen_subscription_action_hint">Захиалга жилд %s өртөгтэй.</string>

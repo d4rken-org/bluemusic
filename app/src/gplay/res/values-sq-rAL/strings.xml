@@ -10,12 +10,6 @@
     <string name="upgrade_screen_title">Përmirëso në BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager nuk ka reklama dhe nuk shet të dhënat e përdoruesit. Puna ime financohet nga ju ❤️.</string>
     <string name="upgrade_screen_why_title">Avantazhet</string>
-    <string name="upgrade_screen_why_body">• Një zhvillues i motivuar 🧙
-• Pajisje të pakufizuara ➡️➡️
-• Veprime shtesë ⚙️
-dhe më shumë…</string>
-    <string name="upgrade_screen_how_title">Opsione</string>
-    <string name="upgrade_screen_how_body">Mund të zgjedhësh midis një blerjeje të një herëshme dhe një abonimi vjetor më të lirë.\nAbonimi fillon me një provë falas 14-ditore, pas së cilës do të tarifohesh një herë në vit. Prova dhe abonimi janë të anulueshme në çdo kohë.\nTë njëjtat veçori, vetëm modele të ndryshme çmimesh.</string>
     <string name="upgrade_screen_subscription_trial_action">Filloni provën falas 14-ditore</string>
     <string name="upgrade_screen_subscription_action">Abonohu</string>
     <string name="upgrade_screen_subscription_action_hint">Abonimi kushton %s në vit.</string>

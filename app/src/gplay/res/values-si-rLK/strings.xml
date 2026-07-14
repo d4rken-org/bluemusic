@@ -10,12 +10,6 @@
     <string name="upgrade_screen_title">BVM Pro වෙත උත්‍යෝජනය කරන්න</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager හි දැන්වීම් නොමැති අතර පරිශීලක දත්ත විකුණන්නේ නැත. මගේ වැඩ ඔබ විසින් මූල්‍යාධාර සපයයි ❤️.</string>
     <string name="upgrade_screen_why_title">වාසි</string>
-    <string name="upgrade_screen_why_body">• උනන්දු සංවර්ධකයෙකු 🧙
-• අසීමිත උපකරණ ➡️➡️
-• අමතර ක්‍රියා ⚙️
-සහ තවත්…</string>
-    <string name="upgrade_screen_how_title">විකල්ප</string>
-    <string name="upgrade_screen_how_body">ඔබට එක් වරක් මිලදී ගැනීමක් සහ මිල අඩු වාර්ෂික දායකත්වයක් අතර තෝරා ගත හැක.\nදායකත්වය දින 14ක නොමිලේ අත්හදා බැලීමක් සමඟ ආරම්භ වන අතර, ඉන්පසු ඔබට වසරකට වරක් අය කෙරේ. අත්හදා බැලීම සහ දායකත්වය ඕනෑම වේලාවක අවලංගු කළ හැක.\nඑකම විශේෂාංග, මිල ගණන් ආකෘති පමණක් වෙනස්.</string>
     <string name="upgrade_screen_subscription_trial_action">දින 14ක නොමිලේ අත්හදා බැලීම ආරම්භ කරන්න</string>
     <string name="upgrade_screen_subscription_action">දායක වන්න</string>
     <string name="upgrade_screen_subscription_action_hint">දායකත්වය වසරකට %s වැය වේ.</string>
