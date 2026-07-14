@@ -181,9 +181,9 @@ class UpgradeViewModelTest : BaseTest() {
         context = testDispatcher,
     ) {
         val repo = mockRepo()
-        // Both SKU queries exceed the 5s query timeout -> "Play unavailable" episode.
+        // Both SKU queries exceed the 15s query timeout -> "Play unavailable" episode.
         coEvery { repo.querySkus(*anyVararg()) } coAnswers {
-            delay(6_000)
+            delay(16_000)
             emptyList()
         }
         coEvery { repo.restorePurchaseNow() } coAnswers {

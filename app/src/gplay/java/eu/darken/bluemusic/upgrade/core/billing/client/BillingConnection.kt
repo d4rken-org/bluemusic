@@ -169,6 +169,17 @@ data class BillingConnection(
             throw IllegalStateException("No details available for ${skus.joinToString { "${it.type}-${it.id}" }}")
         }
 
+        // Concise offer overview: makes "Play withheld an offer (e.g. trial eligibility)" vs "app
+        // failed to match it" diagnosable from debug logs without wading through the full JSON.
+        log(TAG) {
+            val offers = details.joinToString { detail ->
+                val subOffers = detail.subscriptionOfferDetails
+                    ?.joinToString { "${it.basePlanId}/${it.offerId ?: "base"}" }
+                "${detail.productId} -> [${subOffers ?: "one-time"}]"
+            }
+            "querySkus() offers: $offers"
+        }
+
         return details
             .groupBy { it.productId }
             .mapNotNull { (key, details) ->

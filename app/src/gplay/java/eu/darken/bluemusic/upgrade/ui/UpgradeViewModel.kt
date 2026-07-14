@@ -54,7 +54,7 @@ class UpgradeViewModel @Inject constructor(
 
     val state = combine(
         flow {
-            val data = withTimeoutOrNull(5000) {
+            val data = withTimeoutOrNull(SKU_QUERY_TIMEOUT_MS) {
                 try {
                     upgradeRepo.querySkus(*OurSku.PRO_SKUS.filterIsInstance<Sku.Iap>().toTypedArray())
                 } catch (e: Exception) {
@@ -65,7 +65,7 @@ class UpgradeViewModel @Inject constructor(
             emit(data)
         },
         flow {
-            val data = withTimeoutOrNull(5000) {
+            val data = withTimeoutOrNull(SKU_QUERY_TIMEOUT_MS) {
                 try {
                     upgradeRepo.querySkus(*OurSku.PRO_SKUS.filterIsInstance<Sku.Subscription>().toTypedArray())
                 } catch (e: Exception) {
@@ -217,5 +217,9 @@ class UpgradeViewModel @Inject constructor(
 
     companion object {
         private const val RESTORE_TIMEOUT_MS = 15_000L
+
+        // The very first billing query after Play sign-in can take >8s (measured) while Play warms
+        // up — 5s produced false "Play unavailable" dialogs on slow-but-healthy stores.
+        private const val SKU_QUERY_TIMEOUT_MS = 15_000L
     }
 }
