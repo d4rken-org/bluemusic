@@ -26,12 +26,18 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.flow.retryWhen
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.withTimeoutOrNull
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -56,8 +62,29 @@ class BillingManager @Inject constructor(
     private val freshData = MutableSharedFlow<FreshData>(replay = 1)
     val freshBillingData: Flow<FreshData> = freshData
 
+    // Bumped whenever someone actively wants billing NOW (see useConnection): a pending reconnect
+    // backoff is cut short instead of making the user wait out the timer. A generation counter
+    // (compared against the value captured at attempt start) instead of an event flow, so demand
+    // arriving while a connection attempt is still in flight isn't lost, while demand that was
+    // already satisfied by a healthy connection can't skip a future backoff.
+    private val connectionDemand = MutableStateFlow(0)
+
+    // Highest demand generation actually served by a healthy connection (see useConnection):
+    // demand that was already satisfied must not skip a backoff after a later disconnect.
+    private val servedDemand = MutableStateFlow(0)
+
+    // Consecutive failed connection attempts since the last successful one. retryWhen's `attempt`
+    // counter never resets within a collection, so a long-lived process with earlier (healed)
+    // failures would otherwise start every new failure episode at the maximum backoff.
+    private var connectionFailStreak = 0
+
+    // Only touched from the sharing collector (onStart/onEach/retryWhen run sequentially there).
+    private var demandAtAttemptStart = 0
+
     private val connection = connectionProvider.connection
+        .onStart { demandAtAttemptStart = connectionDemand.value }
         .onEach {
+            connectionFailStreak = 0
             try {
                 val fresh = it.refreshPurchases()
                 freshData.emit(FreshData(BillingData(purchases = fresh.purchases), isFullSnapshot = fresh.isComplete))
@@ -67,7 +94,7 @@ class BillingManager @Inject constructor(
                 log(TAG, ERROR) { "Initial purchase data refresh failed: ${e.asLog()}" }
             }
         }
-        .retryWhen { cause, attempt ->
+        .retryWhen { cause, _ ->
             // Never give up terminally: the ack collector pins this shareIn forever, so WhileSubscribed
             // can't restart a completed upstream — a swallowed terminal failure (e.g. one transient
             // BILLING_UNAVAILABLE while Play updates itself at boot) would leave billing dead until
@@ -75,8 +102,20 @@ class BillingManager @Inject constructor(
             if (cause is CancellationException) {
                 false
             } else {
-                log(TAG, WARN) { "Billing connection failed (attempt=$attempt), will retry: ${cause.asLog()}" }
-                delay((30_000L * (attempt + 1)).coerceAtMost(300_000L))
+                connectionFailStreak++
+                val backoffMs = (30_000L * connectionFailStreak).coerceAtMost(300_000L)
+                log(TAG, WARN) {
+                    "Billing connection failed (streak=$connectionFailStreak), retrying in ${backoffMs}ms: ${cause.asLog()}"
+                }
+                // Wait out the backoff, but let active billing demand short-circuit it: a user who
+                // just fixed their Play situation (signed in, updated the store) shouldn't wait for
+                // the timer when they tap restore/buy or reopen the upgrade screen. Only demand that
+                // is newer than the failed attempt AND not yet served counts — the former limits a
+                // still-waiting caller to one skip per attempt (no tight retry loop), the latter
+                // keeps demand already satisfied by a healthy connection from skipping this backoff.
+                withTimeoutOrNull(backoffMs) {
+                    connectionDemand.first { it != demandAtAttemptStart && it > servedDemand.value }
+                }
                 true
             }
         }
@@ -162,10 +201,21 @@ class BillingManager @Inject constructor(
             .launchIn(scope)
     }
 
-    private suspend fun <T> useConnection(action: suspend BillingConnection.() -> T): T = connection
-        .map { action(it) }
-        .take(1)
-        .single()
+    private suspend fun <T> useConnection(action: suspend BillingConnection.() -> T): T {
+        // Every caller here is active demand (opening the upgrade screen, restore/buy taps, purchase
+        // acks) — cut a pending reconnect backoff short. A no-op while the connection is healthy.
+        val demandGen = connectionDemand.updateAndGet { it + 1 }
+        try {
+            return connection
+                .map { action(it) }
+                .take(1)
+                .single()
+        } finally {
+            // Settled on ANY termination — success, error, or the caller's own timeout/cancel: a
+            // call that is over is no longer pending demand and must not skip a much later backoff.
+            servedDemand.update { served -> maxOf(served, demandGen) }
+        }
+    }
 
     suspend fun querySkus(vararg skus: Sku): Collection<SkuDetails> = useConnection {
         log(TAG) { "querySkus(): $skus..." }
