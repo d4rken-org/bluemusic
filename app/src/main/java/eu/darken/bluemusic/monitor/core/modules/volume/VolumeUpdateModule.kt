@@ -91,7 +91,20 @@ class VolumeUpdateModule @Inject constructor(
         val ringerMode = ringerTool.getCurrentRingerMode()
         val min = volumeTool.getMinVolume(id)
         val max = volumeTool.getMaxVolume(id)
-        val percentage = levelToPercentage(event.newVolume, min, max)
+
+        // If VolumeRateLimiterModule (priority 5) was eligible to act on this stream, it may have
+        // already corrected the jump this event reports, and its own write only produces a `self`
+        // event we'd ignore — so persist the live hardware level instead of the event's value.
+        // Without an eligible limiter we keep the event's snapshot: a later live read could catch
+        // an unrelated route change instead (issue #232).
+        val limiterMayHaveIntervened = allActive.any {
+            it.volumeRateLimiterEffective && it.address in ownerAddresses && it.getStreamType(id) != null
+        }
+        val effectiveVolume = if (limiterMayHaveIntervened) volumeTool.getCurrentVolume(id) else event.newVolume
+        if (effectiveVolume != event.newVolume) {
+            log(TAG, DEBUG) { "Hardware level for $id is $effectiveVolume, not event's ${event.newVolume}, persisting hardware level" }
+        }
+        val percentage = levelToPercentage(effectiveVolume, min, max)
 
         stable.forEach { dev ->
             val streamType = dev.getStreamType(id)!!
@@ -106,7 +119,7 @@ class VolumeUpdateModule @Inject constructor(
                 AudioStream.Type.NOTIFICATION -> when (ringerMode) {
                     RingerMode.NORMAL -> VolumeMode.Normal(percentage)
                     else -> {
-                        if (event.newVolume > 0) VolumeMode.Normal(percentage) else null
+                        if (effectiveVolume > 0) VolumeMode.Normal(percentage) else null
                     }
                 }
 
@@ -128,9 +141,9 @@ class VolumeUpdateModule @Inject constructor(
                     val storedMode = VolumeMode.fromFloat(storedVolume)
                     if (storedMode is VolumeMode.Normal) {
                         val storedLevel = percentageToLevel(storedMode.percentage, min, max)
-                        if (storedLevel == event.newVolume) {
+                        if (storedLevel == effectiveVolume) {
                             log(TAG, VERBOSE) {
-                                "Stored ${storedMode.percentage} already maps to level ${event.newVolume}, skipping $dev"
+                                "Stored ${storedMode.percentage} already maps to level $effectiveVolume, skipping $dev"
                             }
                             return@forEach
                         }

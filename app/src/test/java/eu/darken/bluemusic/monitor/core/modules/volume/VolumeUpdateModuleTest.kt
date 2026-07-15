@@ -79,6 +79,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         alarmVolume: Float? = null,
         volumeObserving: Boolean = true,
         volumeLock: Boolean = false,
+        volumeRateLimiter: Boolean = false,
         lastConnected: Long = 0L,
     ): DeviceConfigEntity = DeviceConfigEntity(
         address = address,
@@ -89,6 +90,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         alarmVolume = alarmVolume,
         volumeObserving = volumeObserving,
         volumeLock = volumeLock,
+        volumeRateLimiter = volumeRateLimiter,
         lastConnected = lastConnected,
     )
 
@@ -109,14 +111,30 @@ class VolumeUpdateModuleTest : BaseTest() {
         )
     }
 
+    /**
+     * When a rate-limiter-eligible owner exists, the module persists the live
+     * hardware level instead of the event's value. Default: hardware matches
+     * what the event reported; tests for the rate-limiter interplay pass a
+     * diverging [hardwareLevel].
+     */
+    private suspend fun handleObserved(
+        module: VolumeUpdateModule,
+        event: VolumeEvent,
+        hardwareLevel: Int = event.newVolume,
+    ) {
+        every { volumeTool.getCurrentVolume(event.streamId) } returns hardwareLevel
+        module.handle(event)
+    }
+
     private suspend fun runTransform(
         module: VolumeUpdateModule,
         event: VolumeEvent,
         seedConfig: DeviceConfigEntity,
+        hardwareLevel: Int = event.newVolume,
     ): DeviceConfigEntity {
         val slot = slot<(DeviceConfigEntity) -> DeviceConfigEntity>()
         coEvery { deviceRepo.updateDevice(address, capture(slot)) } just Runs
-        module.handle(event)
+        handleObserved(module, event, hardwareLevel)
         return slot.captured(seedConfig)
     }
 
@@ -129,8 +147,9 @@ class VolumeUpdateModuleTest : BaseTest() {
         val cfg = config(musicVolume = 0.5f)
         seedActive(managedDevice(cfg))
 
-        module.handle(
-            VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = true)
+        handleObserved(
+            module,
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = true),
         )
 
         coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
@@ -147,8 +166,9 @@ class VolumeUpdateModuleTest : BaseTest() {
 
         observationGate.suppress(AudioStream.Id.STREAM_MUSIC)
 
-        module.handle(
-            VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false)
+        handleObserved(
+            module,
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false),
         )
 
         coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
@@ -166,8 +186,9 @@ class VolumeUpdateModuleTest : BaseTest() {
         val token = observationGate.suppress(AudioStream.Id.STREAM_MUSIC)
         observationGate.unsuppress(token)
 
-        module.handle(
-            VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false)
+        handleObserved(
+            module,
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false),
         )
 
         coVerify(exactly = 1) { deviceRepo.updateDevice(any(), any()) }
@@ -181,8 +202,9 @@ class VolumeUpdateModuleTest : BaseTest() {
 
         observationGate.suppress(AudioStream.Id.STREAM_VOICE_CALL)
 
-        module.handle(
-            VolumeEvent(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, oldVolume = 15, newVolume = 11, self = false)
+        handleObserved(
+            module,
+            VolumeEvent(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE, oldVolume = 15, newVolume = 11, self = false),
         )
 
         coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
@@ -268,8 +290,9 @@ class VolumeUpdateModuleTest : BaseTest() {
 
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.VIBRATE
 
-        module.handle(
-            VolumeEvent(AudioStream.Id.STREAM_NOTIFICATION, 1, 0, self = false)
+        handleObserved(
+            module,
+            VolumeEvent(AudioStream.Id.STREAM_NOTIFICATION, 1, 0, self = false),
         )
 
         coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
@@ -309,8 +332,9 @@ class VolumeUpdateModuleTest : BaseTest() {
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
 
-        module.handle(
-            VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 17, self = false)
+        handleObserved(
+            module,
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 17, self = false),
         )
 
         coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
@@ -328,8 +352,9 @@ class VolumeUpdateModuleTest : BaseTest() {
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
 
-        module.handle(
-            VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 17, self = false)
+        handleObserved(
+            module,
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 17, self = false),
         )
 
         coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
@@ -348,8 +373,9 @@ class VolumeUpdateModuleTest : BaseTest() {
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
 
-        module.handle(
-            VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 17, self = false)
+        handleObserved(
+            module,
+            VolumeEvent(AudioStream.Id.STREAM_MUSIC, 11, 17, self = false),
         )
 
         coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
@@ -378,7 +404,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
 
-        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
+        handleObserved(module, VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
 
         coVerify(exactly = 1) { deviceRepo.updateDevice("AA:BB:CC:DD:EE:01", any()) }
         coVerify(exactly = 0) { deviceRepo.updateDevice("AA:BB:CC:DD:EE:02", any()) }
@@ -407,7 +433,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
 
-        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
+        handleObserved(module, VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
 
         coVerify(exactly = 1) { deviceRepo.updateDevice("AA:BB:CC:DD:EE:01", any()) }
         coVerify(exactly = 0) { deviceRepo.updateDevice("AA:BB:CC:DD:EE:02", any()) }
@@ -449,7 +475,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
 
-        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
+        handleObserved(module, VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
 
         coVerify(exactly = 0) { deviceRepo.updateDevice("AA:BB:CC:DD:EE:01", any()) }
         coVerify(exactly = 1) { deviceRepo.updateDevice("AA:BB:CC:DD:EE:02", any()) }
@@ -476,7 +502,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
 
-        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
+        handleObserved(module, VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
 
         coVerify(exactly = 1) { deviceRepo.updateDevice("AA:BB:CC:DD:EE:01", any()) }
         coVerify(exactly = 1) { deviceRepo.updateDevice("AA:BB:CC:DD:EE:02", any()) }
@@ -500,7 +526,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
 
-        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
+        handleObserved(module, VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false))
 
         coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
     }
@@ -519,8 +545,9 @@ class VolumeUpdateModuleTest : BaseTest() {
 
             every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
     
-            module.handle(
-                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 6, self = false)
+            handleObserved(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 6, self = false),
             )
 
             coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
@@ -583,7 +610,7 @@ class VolumeUpdateModuleTest : BaseTest() {
 
             every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
     
-            module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 6, self = false))
+            handleObserved(module, VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 6, self = false))
 
             // dev1 skipped (equivalent), dev2 written (different level)
             coVerify(exactly = 0) { deviceRepo.updateDevice("AA:BB:CC:DD:EE:01", any()) }
@@ -604,11 +631,102 @@ class VolumeUpdateModuleTest : BaseTest() {
             every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
     
             // event newVolume=4 → same as stored level → skip
-            module.handle(
-                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 3, newVolume = 4, self = false)
+            handleObserved(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 3, newVolume = 4, self = false),
             )
 
             coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Hardware readback: persist what's actually set, not what the event said
+    //
+    // Regression: with the rate limiter (priority 5) enabled, a Zello-style
+    // volume jump is physically clamped before this module (priority 10) runs,
+    // but the event still carries the original high value. Persisting the event
+    // value stored the blocked jump and restored it on the next connect.
+    //
+    // Readback only happens when a rate-limiter-eligible owner exists for the
+    // stream — otherwise the event's snapshot is kept, so a late live read
+    // can't pick up an unrelated route change (issue #232).
+    // ------------------------------------------------------------------------
+    @Nested
+    inner class HardwareReadback {
+        @Test
+        fun `persists hardware level when it differs from event volume`() = runTest {
+            val module = createModule()
+            // stored 0.1 → level 2; event reports jump to 15, but limiter clamped hardware to 6
+            val cfg = config(musicVolume = 0.1f, volumeRateLimiter = true)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            val result = runTransform(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 15, self = false),
+                cfg,
+                hardwareLevel = 6,
+            )
+
+            result.musicVolume shouldBe levelToPercentage(6, 0, 15)
+        }
+
+        @Test
+        fun `skips persist when hardware was reverted to the stored level`() = runTest {
+            val module = createModule()
+            // stored maps to level 5; event reports jump to 15, but limiter reverted hardware to 5
+            val cfg = config(musicVolume = levelToPercentage(5, 0, 15), volumeRateLimiter = true)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            handleObserved(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 15, self = false),
+                hardwareLevel = 5,
+            )
+
+            coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+        }
+
+        @Test
+        fun `notification zero-guard under vibrate uses hardware level`() = runTest {
+            val module = createModule()
+            // event says 5, but hardware reads 0 → ambiguous 0 under vibrate → preserve stored
+            val cfg = config(notificationVolume = 0.19f, volumeRateLimiter = true)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.VIBRATE
+
+            handleObserved(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_NOTIFICATION, oldVolume = 1, newVolume = 5, self = false),
+                hardwareLevel = 0,
+            )
+
+            coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+        }
+
+        @Test
+        fun `without eligible rate limiter the event volume is persisted, not the live read`() = runTest {
+            val module = createModule()
+            // No limiter on this device → no priority-5 writer, keep the event's snapshot
+            // even when the live read disagrees (e.g. route already torn down, issue #232).
+            val cfg = config(musicVolume = 0.1f, volumeRateLimiter = false)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            val result = runTransform(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false),
+                cfg,
+                hardwareLevel = 0,
+            )
+
+            result.musicVolume shouldBe levelToPercentage(11, 0, 15)
         }
     }
 }
