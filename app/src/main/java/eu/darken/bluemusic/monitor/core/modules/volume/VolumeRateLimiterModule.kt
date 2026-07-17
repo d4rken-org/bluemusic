@@ -82,39 +82,45 @@ internal class VolumeRateLimiterModule @Inject constructor(
                 lastSeenGeneration = currentGeneration
             }
 
-            eligibleDevices.forEach { device ->
-                processVolumeChange(device, id, oldVolume, newVolume, currentTime)
-            }
+            processVolumeChange(eligibleDevices, id, oldVolume, newVolume, currentTime)
         }
     }
 
+    /**
+     * One decision per stream and event: at most one hardware call and at most one state update.
+     * Iterating the group instead would mutate the shared per-stream state once per device,
+     * making the outcome depend on repository iteration order (and letting a 0ms member
+     * step past a sibling's window).
+     */
     private suspend fun processVolumeChange(
-        device: ManagedDevice,
+        devices: Collection<ManagedDevice>,
         streamId: AudioStream.Id,
         oldVolume: Int,
         newVolume: Int,
         currentTime: Long
     ) {
-        val streamType = device.getStreamType(streamId) ?: return
-
         val currentState = volumeStates[streamId]
 
         // Determine the reference volume (last allowed or old volume for initial state)
         val referenceVolume = currentState?.lastAllowedVolume ?: oldVolume.takeIf { it != -1 } ?: newVolume
 
-        // Determine direction and select appropriate rate limit
+        // Determine direction, then let the most restrictive (longest) window in the owner group
+        // govern the whole group. Owner groups are usually paired earbuds, but same-name devices
+        // connecting within the grouping window (or bootstrap entries) can group too — they are
+        // already treated as one owner everywhere else.
         val volumeDiff = newVolume - referenceVolume
         val rateLimitMs = if (volumeDiff > 0) {
-            device.volumeRateLimitIncreaseMs
+            devices.maxOf { it.volumeRateLimitIncreaseMs }
         } else {
-            device.volumeRateLimitDecreaseMs
+            devices.maxOf { it.volumeRateLimitDecreaseMs }
         }
+        val members = devices.map { "${it.address}/${it.label}" }.sorted()
 
         // Check rate limiting
         if (currentState != null && (currentTime - currentState.lastChangeTimestamp) < rateLimitMs) {
-            log(TAG) { "Volume changed too quickly for $streamType, reverting from $newVolume to $referenceVolume" }
+            log(TAG) { "Volume changed too quickly for $streamId $members, reverting from $newVolume to $referenceVolume" }
             if (volumeTool.changeVolume(streamId = streamId, targetLevel = referenceVolume)) {
-                log(TAG) { "Reverted volume for $streamType to $referenceVolume due to rate limiting" }
+                log(TAG) { "Reverted volume for $streamId to $referenceVolume due to rate limiting" }
             }
             // Update timestamp to reset the timer
             volumeStates[streamId] = VolumeState(referenceVolume, currentTime)
@@ -129,15 +135,15 @@ internal class VolumeRateLimiterModule @Inject constructor(
         }
 
         if (clampedVolume != newVolume) {
-            log(TAG) { "Volume change limited for $streamType: requested=$newVolume, reference=$referenceVolume, limited to=$clampedVolume" }
+            log(TAG) { "Volume change limited for $streamId $members: requested=$newVolume, reference=$referenceVolume, limited to=$clampedVolume" }
             if (volumeTool.changeVolume(streamId = streamId, targetLevel = clampedVolume)) {
-                log(TAG) { "Applied rate-limited volume for $streamType to $clampedVolume" }
+                log(TAG) { "Applied rate-limited volume for $streamId to $clampedVolume" }
                 volumeStates[streamId] = VolumeState(clampedVolume, currentTime)
             }
         } else {
             // Volume change is within allowed range - accept it
             volumeStates[streamId] = VolumeState(newVolume, currentTime)
-            log(TAG, VERBOSE) { "Allowed volume change for $streamType to $newVolume" }
+            log(TAG, VERBOSE) { "Allowed volume change for $streamId to $newVolume" }
         }
     }
 
