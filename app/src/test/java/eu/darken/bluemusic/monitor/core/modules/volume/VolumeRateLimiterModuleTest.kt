@@ -95,6 +95,51 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         )
     }
 
+    private fun groupedSource(addr: String, name: String): SourceDevice = mockk {
+        every { this@mockk.address } returns addr
+        every { label } returns name
+        every { deviceType } returns SourceDevice.Type.HEADPHONES
+        every { getStreamId(AudioStream.Type.MUSIC) } returns AudioStream.Id.STREAM_MUSIC
+        every { getStreamId(AudioStream.Type.CALL) } returns AudioStream.Id.STREAM_VOICE_CALL
+        every { getStreamId(AudioStream.Type.RINGTONE) } returns AudioStream.Id.STREAM_RINGTONE
+        every { getStreamId(AudioStream.Type.NOTIFICATION) } returns AudioStream.Id.STREAM_NOTIFICATION
+        every { getStreamId(AudioStream.Type.ALARM) } returns AudioStream.Id.STREAM_ALARM
+    }
+
+    private fun groupedDevice(
+        addr: String,
+        increaseMs: Long? = null,
+        decreaseMs: Long? = null,
+        rateLimiter: Boolean = true,
+        volumeLock: Boolean = false,
+    ): ManagedDevice = ManagedDevice(
+        isConnected = true,
+        device = groupedSource(addr, "Buds3 Pro"),
+        config = DeviceConfigEntity(
+            address = addr,
+            volumeRateLimiter = rateLimiter,
+            volumeLock = volumeLock,
+            isEnabled = true,
+            musicVolume = 0.5f,
+            volumeRateLimitIncreaseMs = increaseMs,
+            volumeRateLimitDecreaseMs = decreaseMs,
+        ),
+    )
+
+    /** Same label + type, connects 2ms apart → one owner group (grouped earbuds). */
+    private suspend fun seedGroup(devices: List<ManagedDevice>) {
+        devicesFlow.value = devices
+        devices.forEachIndexed { index, device ->
+            ownerRegistry.onDeviceConnected(
+                address = device.address,
+                label = device.label,
+                deviceType = device.type,
+                receivedAtElapsedMs = 1000L + index * 2,
+                sequence = index.toLong(),
+            )
+        }
+    }
+
     @Test
     fun `volume change within rate window is reverted`() = runTest {
         val module = createModule()
@@ -334,6 +379,110 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 10, self = false))
 
         coVerify(exactly = 0) { volumeTool.changeVolume(streamId = any(), targetLevel = any()) }
+    }
+
+    // ------------------------------------------------------------------------
+    // Owner-group decisions: one decision per stream/event, most restrictive
+    // window wins, independent of repository iteration order.
+    // ------------------------------------------------------------------------
+
+    @Test
+    fun `grouped 0ms member cannot double-step past sibling window - either order`() = runTest {
+        for (zeroFirst in listOf(true, false)) {
+            setup()
+            val zero = groupedDevice("AA:BB:CC:DD:EE:01", increaseMs = 0L)
+            val slow = groupedDevice("AA:BB:CC:DD:EE:02", increaseMs = 1000L)
+            seedGroup(if (zeroFirst) listOf(zero, slow) else listOf(slow, zero))
+
+            coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
+
+            val module = createModule()
+            module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 15, self = false))
+
+            // Exactly one correction to reference+1 — no second pass stepping to 7
+            coVerify(exactly = 1) { volumeTool.changeVolume(streamId = any(), targetLevel = any()) }
+            coVerify(exactly = 1) { volumeTool.changeVolume(streamId = AudioStream.Id.STREAM_MUSIC, targetLevel = 6) }
+        }
+    }
+
+    @Test
+    fun `grouped devices - longest window governs regardless of order`() = runTest {
+        for (fastFirst in listOf(true, false)) {
+            setup()
+            val fast = groupedDevice("AA:BB:CC:DD:EE:01", increaseMs = 500L)
+            val slow = groupedDevice("AA:BB:CC:DD:EE:02", increaseMs = 1000L)
+            seedGroup(if (fastFirst) listOf(fast, slow) else listOf(slow, fast))
+
+            coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
+
+            val module = createModule()
+            // Allowed single step establishes state at t=1000
+            module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 6, self = false))
+
+            // 700ms later: past fast's 500ms window, within slow's 1000ms window
+            clock.now = 1700L
+            module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 6, newVolume = 15, self = false))
+
+            // Most restrictive window applies → single revert to 6, never a step to 7
+            coVerify(exactly = 1) { volumeTool.changeVolume(streamId = AudioStream.Id.STREAM_MUSIC, targetLevel = 6) }
+            coVerify(exactly = 0) { volumeTool.changeVolume(streamId = AudioStream.Id.STREAM_MUSIC, targetLevel = 7) }
+        }
+    }
+
+    @Test
+    fun `ineligible group member does not influence the group window`() = runTest {
+        val zero = groupedDevice("AA:BB:CC:DD:EE:01", increaseMs = 0L)
+        // Locked sibling has a long window, but volumeLock makes it rate-limiter-ineligible
+        val locked = groupedDevice("AA:BB:CC:DD:EE:02", increaseMs = 1000L, volumeLock = true)
+        seedGroup(listOf(zero, locked))
+
+        coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
+
+        val module = createModule()
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 6, self = false))
+        // Same clock time: with a 0ms window the jump step-clamps instead of reverting
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 6, newVolume = 15, self = false))
+
+        coVerify(exactly = 1) { volumeTool.changeVolume(streamId = AudioStream.Id.STREAM_MUSIC, targetLevel = 7) }
+    }
+
+    @Test
+    fun `all-zero group acts as pure step limiter - one step per event`() = runTest {
+        val a = groupedDevice("AA:BB:CC:DD:EE:01", increaseMs = 0L)
+        val b = groupedDevice("AA:BB:CC:DD:EE:02", increaseMs = 0L)
+        seedGroup(listOf(a, b))
+
+        coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
+
+        val module = createModule()
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 15, self = false))
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 6, newVolume = 15, self = false))
+
+        coVerify(exactly = 1) { volumeTool.changeVolume(streamId = AudioStream.Id.STREAM_MUSIC, targetLevel = 6) }
+        coVerify(exactly = 1) { volumeTool.changeVolume(streamId = AudioStream.Id.STREAM_MUSIC, targetLevel = 7) }
+        coVerify(exactly = 2) { volumeTool.changeVolume(streamId = any(), targetLevel = any()) }
+    }
+
+    @Test
+    fun `decrease direction aggregates decrease windows not increase windows`() = runTest {
+        // Tiny increase windows would (wrongly) let the drop through if the
+        // aggregation picked the wrong property for a decrease
+        val a = groupedDevice("AA:BB:CC:DD:EE:01", increaseMs = 50L, decreaseMs = 500L)
+        val b = groupedDevice("AA:BB:CC:DD:EE:02", increaseMs = 50L, decreaseMs = 1000L)
+        seedGroup(listOf(a, b))
+
+        coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
+
+        val module = createModule()
+        // Allowed single-step decrease establishes state at t=1000
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 10, newVolume = 9, self = false))
+
+        // 700ms later: past both increase windows and a's decrease window, within b's 1000ms decrease window
+        clock.now = 1700L
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 9, newVolume = 0, self = false))
+
+        coVerify(exactly = 1) { volumeTool.changeVolume(streamId = AudioStream.Id.STREAM_MUSIC, targetLevel = 9) }
+        coVerify(exactly = 0) { volumeTool.changeVolume(streamId = AudioStream.Id.STREAM_MUSIC, targetLevel = 8) }
     }
 
     @Test

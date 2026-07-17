@@ -93,18 +93,61 @@ class VolumeRateLimiterPersistIntegrationTest : BaseTest() {
         fixture.totalWriteCount() shouldBe 1
     }
 
+    @Test
+    fun `grouped earbuds - one hardware correction, both configs persist the clamped level`() = runTest {
+        // Order matters for the regression: the per-device fold would let the
+        // 0ms member (processed second) step past the sibling's clamp to 7.
+        val fixture = Fixture.createGroup(
+            this,
+            listOf(
+                Fixture.DeviceSpec(
+                    address = "AA:BB:CC:DD:EE:01",
+                    label = "Buds3 Pro",
+                    musicVolume = levelToPercentage(5, 0, 15),
+                    rateLimitIncreaseMs = 1000L,
+                ),
+                Fixture.DeviceSpec(
+                    address = "AA:BB:CC:DD:EE:02",
+                    label = "Buds3 Pro",
+                    musicVolume = levelToPercentage(5, 0, 15),
+                    rateLimitIncreaseMs = 0L,
+                ),
+            ),
+        )
+
+        fixture.setHardware(15)
+        fixture.dispatch(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 15, self = false))
+
+        fixture.hardware() shouldBe 6
+        fixture.hardwareWriteCount(AudioStream.Id.STREAM_MUSIC) shouldBe 1
+        fixture.storedMusicVolume("AA:BB:CC:DD:EE:01") shouldBe levelToPercentage(6, 0, 15)
+        fixture.storedMusicVolume("AA:BB:CC:DD:EE:02") shouldBe levelToPercentage(6, 0, 15)
+        fixture.totalWriteCount() shouldBe 2
+
+        // Self follow-up from the limiter's correction adds neither persists nor hardware writes
+        fixture.dispatch(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 15, newVolume = 6, self = true))
+        fixture.totalWriteCount() shouldBe 2
+        fixture.hardwareWriteCount(AudioStream.Id.STREAM_MUSIC) shouldBe 1
+    }
+
     private class Fixture(
         scope: TestScope,
-        initialMusicVolume: Float,
-        initialCallVolume: Float? = null,
+        private val specs: List<DeviceSpec>,
     ) {
-        private val address = "AA:BB:CC:DD:EE:FF"
+        data class DeviceSpec(
+            val address: String,
+            val label: String = "Test Device",
+            val musicVolume: Float? = null,
+            val callVolume: Float? = null,
+            val rateLimitIncreaseMs: Long? = null,
+        )
 
         private val audioLevels = mutableMapOf(
             AudioStream.Id.STREAM_MUSIC to 5,
             AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE to 5,
         )
         private val writeLog = mutableListOf<Pair<DeviceConfigEntity, DeviceConfigEntity>>()
+        private val hardwareWrites = mutableListOf<Pair<AudioStream.Id, Int>>()
 
         private val audioManager = mockk<AudioManager>(relaxed = true)
         private val ringerTool = mockk<RingerTool>()
@@ -113,9 +156,9 @@ class VolumeRateLimiterPersistIntegrationTest : BaseTest() {
         private val observationGate = VolumeObservationGate()
         private val ownerRegistry = eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry()
 
-        private val sourceDevice = mockk<SourceDevice> {
-            every { this@mockk.address } returns this@Fixture.address
-            every { label } returns "Test Device"
+        private fun sourceDevice(spec: DeviceSpec) = mockk<SourceDevice> {
+            every { this@mockk.address } returns spec.address
+            every { label } returns spec.label
             every { deviceType } returns SourceDevice.Type.HEADPHONES
             every { getStreamId(AudioStream.Type.MUSIC) } returns AudioStream.Id.STREAM_MUSIC
             // Headset-realistic: CALL maps to the handsfree stream
@@ -126,21 +169,22 @@ class VolumeRateLimiterPersistIntegrationTest : BaseTest() {
         }
 
         private val devicesFlow = MutableStateFlow(
-            listOf(
+            specs.map { spec ->
                 ManagedDevice(
                     isConnected = true,
-                    device = sourceDevice,
+                    device = sourceDevice(spec),
                     config = DeviceConfigEntity(
-                        address = address,
-                        musicVolume = initialMusicVolume,
-                        callVolume = initialCallVolume,
+                        address = spec.address,
+                        musicVolume = spec.musicVolume,
+                        callVolume = spec.callVolume,
                         volumeObserving = true,
                         volumeRateLimiter = true,
+                        volumeRateLimitIncreaseMs = spec.rateLimitIncreaseMs,
                         isEnabled = true,
                         lastConnected = 0L, // long past → device counts as stable
                     ),
                 )
-            )
+            }
         )
 
         private val volumeTool = VolumeTool(audioManager).apply {
@@ -174,7 +218,9 @@ class VolumeRateLimiterPersistIntegrationTest : BaseTest() {
                 audioLevels[toStreamId(firstArg())] ?: 0
             }
             every { audioManager.setStreamVolume(any(), any(), any()) } answers {
-                audioLevels[toStreamId(firstArg())] = secondArg()
+                val stream = toStreamId(firstArg())
+                audioLevels[stream] = secondArg()
+                hardwareWrites += stream to secondArg()
             }
 
             coEvery { deviceRepo.updateDevice(any(), any()) } coAnswers {
@@ -193,13 +239,15 @@ class VolumeRateLimiterPersistIntegrationTest : BaseTest() {
         }
 
         private suspend fun registerOwner() {
-            ownerRegistry.onDeviceConnected(
-                address = address,
-                label = "Test Device",
-                deviceType = SourceDevice.Type.HEADPHONES,
-                receivedAtElapsedMs = 1000L,
-                sequence = 0L,
-            )
+            specs.forEachIndexed { index, spec ->
+                ownerRegistry.onDeviceConnected(
+                    address = spec.address,
+                    label = spec.label,
+                    deviceType = SourceDevice.Type.HEADPHONES,
+                    receivedAtElapsedMs = 1000L + index * 2,
+                    sequence = index.toLong(),
+                )
+            }
         }
 
         suspend fun dispatch(event: VolumeEvent) = dispatcher.dispatch(event)
@@ -210,12 +258,17 @@ class VolumeRateLimiterPersistIntegrationTest : BaseTest() {
 
         fun hardware(stream: AudioStream.Id = AudioStream.Id.STREAM_MUSIC): Int = audioLevels.getValue(stream)
 
-        fun storedMusicVolume(): Float? = devicesFlow.value.first { it.address == address }.config.musicVolume
+        fun storedMusicVolume(address: String = specs.first().address): Float? =
+            devicesFlow.value.first { it.address == address }.config.musicVolume
 
-        fun storedCallVolume(): Float? = devicesFlow.value.first { it.address == address }.config.callVolume
+        fun storedCallVolume(address: String = specs.first().address): Float? =
+            devicesFlow.value.first { it.address == address }.config.callVolume
 
         /** Every updateDevice call, including no-op writes — pins "no second persist attempt". */
         fun totalWriteCount(): Int = writeLog.size
+
+        /** Every setStreamVolume call for the stream — pins "exactly one hardware correction". */
+        fun hardwareWriteCount(stream: AudioStream.Id): Int = hardwareWrites.count { it.first == stream }
 
         private fun toStreamId(rawStreamId: Int): AudioStream.Id =
             AudioStream.Id.entries.first { it.id == rawStreamId }
@@ -225,7 +278,13 @@ class VolumeRateLimiterPersistIntegrationTest : BaseTest() {
                 scope: TestScope,
                 initialMusicVolume: Float,
                 initialCallVolume: Float? = null,
-            ): Fixture = Fixture(scope, initialMusicVolume, initialCallVolume).apply { registerOwner() }
+            ): Fixture = createGroup(
+                scope,
+                listOf(DeviceSpec(address = "AA:BB:CC:DD:EE:FF", musicVolume = initialMusicVolume, callVolume = initialCallVolume)),
+            )
+
+            suspend fun createGroup(scope: TestScope, specs: List<DeviceSpec>): Fixture =
+                Fixture(scope, specs).apply { registerOwner() }
         }
     }
 }
