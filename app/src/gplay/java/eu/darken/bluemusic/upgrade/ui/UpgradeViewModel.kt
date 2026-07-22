@@ -190,6 +190,12 @@ class UpgradeViewModel @AssistedInject constructor(
     fun onGoIap(activity: Activity) {
         log(tag) { "onGoIap($activity)" }
         launch {
+            // Mutually exclusive with a restore: a purchase verification and a restore both hit Play,
+            // and running them together can stack result dialogs.
+            if (restoring.value) {
+                log(tag) { "onGoIap() ignored, a restore is in progress" }
+                return@launch
+            }
             // Single-flight: repeated taps while the fail-closed check runs must not stack.
             if (!verifying.compareAndSet(expect = false, update = true)) {
                 log(tag) { "onGoIap() ignored, verification already in progress" }
@@ -249,6 +255,12 @@ class UpgradeViewModel @AssistedInject constructor(
     }
 
     fun restorePurchase() = launch {
+        // Mutually exclusive with the IAP verification gate (see onGoIap): both hit Play and stacking
+        // them can duplicate result dialogs.
+        if (verifying.value) {
+            log(tag) { "restorePurchase() ignored, a verification is in progress" }
+            return@launch
+        }
         // Single-flight: repeated taps while a restore runs must not stack concurrent restores and
         // duplicate result dialogs.
         if (!restoring.compareAndSet(expect = false, update = true)) {

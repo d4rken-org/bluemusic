@@ -144,8 +144,10 @@ fun UpgradeScreen(
             )
 
             loaded != null && loaded.grace != null -> GraceContent(
-                grace = loaded.grace,
-                restoreInProgress = loaded.restoreInProgress,
+                state = loaded,
+                onGoIap = onGoIap,
+                onGoSubscription = onGoSubscription,
+                onGoSubscriptionTrial = onGoSubscriptionTrial,
                 onRestorePurchase = onRestorePurchase,
             )
 
@@ -263,6 +265,7 @@ private fun OwnerContent(
     Spacer(modifier = Modifier.height(16.dp))
     StatusRestoreSection(
         restoreInProgress = state.restoreInProgress,
+        verificationInProgress = state.verificationInProgress,
         onRestorePurchase = onRestorePurchase,
     )
 }
@@ -271,10 +274,13 @@ private fun OwnerContent(
 
 @Composable
 private fun GraceContent(
-    grace: GraceHint,
-    restoreInProgress: Boolean,
+    state: UpgradeUiState.Loaded,
+    onGoIap: () -> Unit,
+    onGoSubscription: () -> Unit,
+    onGoSubscriptionTrial: () -> Unit,
     onRestorePurchase: () -> Unit,
 ) {
+    val grace = state.grace ?: return
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
@@ -307,13 +313,23 @@ private fun GraceContent(
         }
     }
 
-    // Only the aged (diagnostics) stage offers a restore escape hatch; the quiet stage stays calm.
+    // The quiet stage stays calm. The aged (diagnostics) stage offers a restore escape hatch AND
+    // re-surfaces the purchase offers, so a genuinely-lapsed subscriber can re-subscribe or switch to
+    // the one-time purchase without waiting the grace window out.
     if (grace.showDiagnostics) {
         Spacer(modifier = Modifier.height(16.dp))
         RestoreButton(
-            restoreInProgress = restoreInProgress,
+            restoreInProgress = state.restoreInProgress,
+            enabled = !state.restoreInProgress && !state.verificationInProgress,
             onRestorePurchase = onRestorePurchase,
             filled = true,
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        OfferButtons(
+            state = state,
+            onGoIap = onGoIap,
+            onGoSubscription = onGoSubscription,
+            onGoSubscriptionTrial = onGoSubscriptionTrial,
         )
     }
 }
@@ -347,14 +363,43 @@ private fun AcquisitionContent(
     Spacer(modifier = Modifier.height(18.dp))
 
     if (state.wasPreviouslyPro) {
-        RestoreBanner(onRestorePurchase = onRestorePurchase, restoreInProgress = state.restoreInProgress)
+        RestoreBanner(
+            onRestorePurchase = onRestorePurchase,
+            restoreInProgress = state.restoreInProgress,
+            verificationInProgress = state.verificationInProgress,
+        )
         Spacer(modifier = Modifier.height(16.dp))
     }
 
-    // Show/hide by whether an offer EXISTS; enable by whether the action is currently usable. Using
-    // the busy-gated *Enabled flags for visibility would swap the real buttons for the generic
-    // fallback during the unsettled window or while a restore/verify runs.
-    val genericEnabled = !state.restoreInProgress && !state.verificationInProgress
+    OfferButtons(
+        state = state,
+        onGoIap = onGoIap,
+        onGoSubscription = onGoSubscription,
+        onGoSubscriptionTrial = onGoSubscriptionTrial,
+    )
+
+    Spacer(modifier = Modifier.height(16.dp))
+    RestoreButton(
+        restoreInProgress = state.restoreInProgress,
+        enabled = !state.restoreInProgress && !state.verificationInProgress,
+        onRestorePurchase = onRestorePurchase,
+        filled = false,
+    )
+    PriceHint(stringResource(R.string.upgrade_screen_restore_purchase_message))
+}
+
+// The subscription / one-time / generic purchase buttons. Shared by the acquisition screen and the
+// aged grace stage. Show/hide by whether an offer EXISTS (subscriptionAvailable/iapAvailable); enable
+// by whether the action is currently usable (the busy-gated *Enabled flags) — using the busy-gated
+// flags for visibility would swap the real buttons for the generic fallback during the unsettled
+// window or while a restore/verify runs.
+@Composable
+private fun OfferButtons(
+    state: UpgradeUiState.Loaded,
+    onGoIap: () -> Unit,
+    onGoSubscription: () -> Unit,
+    onGoSubscriptionTrial: () -> Unit,
+) {
     val hasSub = state.subscriptionAvailable
     val hasIap = state.iapAvailable
 
@@ -422,7 +467,7 @@ private fun AcquisitionContent(
     if (!hasSub && !hasIap) {
         Button(
             onClick = onGoIap,
-            enabled = genericEnabled,
+            enabled = !state.restoreInProgress && !state.verificationInProgress,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
@@ -435,10 +480,6 @@ private fun AcquisitionContent(
             )
         }
     }
-
-    Spacer(modifier = Modifier.height(16.dp))
-    RestoreButton(restoreInProgress = state.restoreInProgress, onRestorePurchase = onRestorePurchase, filled = false)
-    PriceHint(stringResource(R.string.upgrade_screen_restore_purchase_message))
 }
 
 // ---- Shared bits ----
@@ -482,6 +523,7 @@ private fun StatusCard(
 @Composable
 private fun StatusRestoreSection(
     restoreInProgress: Boolean,
+    verificationInProgress: Boolean,
     onRestorePurchase: () -> Unit,
 ) {
     Text(
@@ -495,12 +537,18 @@ private fun StatusRestoreSection(
         color = MaterialTheme.colorScheme.onSurfaceVariant,
     )
     Spacer(modifier = Modifier.height(10.dp))
-    RestoreButton(restoreInProgress = restoreInProgress, onRestorePurchase = onRestorePurchase, filled = false)
+    RestoreButton(
+        restoreInProgress = restoreInProgress,
+        enabled = !restoreInProgress && !verificationInProgress,
+        onRestorePurchase = onRestorePurchase,
+        filled = false,
+    )
 }
 
 @Composable
 private fun RestoreButton(
     restoreInProgress: Boolean,
+    enabled: Boolean,
     onRestorePurchase: () -> Unit,
     filled: Boolean,
 ) {
@@ -518,7 +566,7 @@ private fun RestoreButton(
     if (filled) {
         Button(
             onClick = onRestorePurchase,
-            enabled = !restoreInProgress,
+            enabled = enabled,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
@@ -526,7 +574,7 @@ private fun RestoreButton(
     } else {
         OutlinedButton(
             onClick = onRestorePurchase,
-            enabled = !restoreInProgress,
+            enabled = enabled,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
@@ -551,6 +599,7 @@ private fun PriceHint(text: String) {
 private fun RestoreBanner(
     onRestorePurchase: () -> Unit,
     restoreInProgress: Boolean,
+    verificationInProgress: Boolean,
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -570,7 +619,12 @@ private fun RestoreBanner(
                 style = MaterialTheme.typography.bodyMedium,
             )
             Spacer(modifier = Modifier.height(12.dp))
-            RestoreButton(restoreInProgress = restoreInProgress, onRestorePurchase = onRestorePurchase, filled = true)
+            RestoreButton(
+                restoreInProgress = restoreInProgress,
+                enabled = !restoreInProgress && !verificationInProgress,
+                onRestorePurchase = onRestorePurchase,
+                filled = true,
+            )
         }
     }
 }
