@@ -9,6 +9,8 @@ import eu.darken.bluemusic.common.flow.SingleEventFlow
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.upgrade.core.UpgradeRepoFoss
+import kotlinx.coroutines.flow.map
+import java.time.Instant
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,6 +22,16 @@ class UpgradeViewModel @Inject constructor(
 ) : ViewModel4(dispatcherProvider, logTag("Upgrade", "Screen", "VM"), navCtrl) {
 
     val events = SingleEventFlow<UpgradeEvent>()
+
+    // Drives the supporter-status view (shown whenever already a supporter) vs the sponsor pitch.
+    val state = upgradeRepo.upgradeInfo
+        .map { info -> State(isSupporter = info.isUpgraded, supporterSince = info.upgradedAt) }
+        .asStateFlow()
+
+    data class State(
+        val isSupporter: Boolean = false,
+        val supporterSince: Instant? = null,
+    )
 
     private var sponsorPageOpenedAt: Long?
         get() = savedState[KEY_OPENED_AT]
@@ -34,6 +46,13 @@ class UpgradeViewModel @Inject constructor(
         log(tag) { "openSponsor()" }
         sponsorPageOpenedAt = System.currentTimeMillis()
         hasPausedSinceOpen = false
+        upgradeRepo.openGithubSponsorsPage()
+    }
+
+    // Status-view variant: an existing supporter re-visiting the sponsor page must NOT re-arm the
+    // unlock heuristic (which would trigger the "back already?" nudge on return).
+    fun openSponsorPage() {
+        log(tag) { "openSponsorPage()" }
         upgradeRepo.openGithubSponsorsPage()
     }
 

@@ -36,9 +36,7 @@ sealed interface Nav : NavigationDestination {
         }
 
         @Serializable
-        data object Upgrade : Main {
-            private fun readResolve(): Any = Upgrade
-        }
+        data class Upgrade(val manage: Boolean = false) : Main
 
     }
 
