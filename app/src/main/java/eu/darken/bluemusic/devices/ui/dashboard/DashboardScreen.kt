@@ -104,7 +104,7 @@ fun DevicesScreenHost(vm: DashboardViewModel = hiltViewModel()) {
             onDeviceConfig = { vm.navTo(Nav.Main.DeviceConfig(it)) },
             onDeviceAction = { vm.action(it) },
             onNavigateToSettings = { vm.navTo(Nav.Main.SettingsIndex) },
-            onNavigateToUpgrade = { vm.navTo(Nav.Main.Upgrade) },
+            onNavigateToUpgrade = { vm.navTo(Nav.Main.Upgrade()) },
             onRequestBluetoothPermission = {
                 vm.action(DashboardAction.RequestBluetoothPermission)
             },

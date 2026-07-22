@@ -172,16 +172,24 @@ fun SettingsIndexScreen(
 
             item { SettingsCategoryHeader(stringResource(R.string.settings_category_other_label)) }
 
-            if (!state.isUpgraded) {
-                item {
-                    SettingsBaseItem(
-                        icon = Icons.TwoTone.Stars,
-                        title = stringResource(R.string.upgrade_prompt_title),
-                        subtitle = stringResource(R.string.upgrade_prompt_body),
-                        onClick = { onNavigateTo(Nav.Main.Upgrade) },
-                    )
-                    SettingsDivider()
-                }
+            item {
+                SettingsBaseItem(
+                    icon = Icons.TwoTone.Stars,
+                    title = if (state.isUpgraded) {
+                        stringResource(R.string.settings_upgrade_status_title)
+                    } else {
+                        stringResource(R.string.upgrade_prompt_title)
+                    },
+                    subtitle = if (state.isUpgraded) {
+                        stringResource(R.string.settings_upgrade_status_desc)
+                    } else {
+                        stringResource(R.string.upgrade_prompt_body)
+                    },
+                    // manage=true so an existing Pro/supporter lands on the status view instead of
+                    // being auto-navigated straight back out.
+                    onClick = { onNavigateTo(Nav.Main.Upgrade(manage = true)) },
+                )
+                SettingsDivider()
             }
 
             item {

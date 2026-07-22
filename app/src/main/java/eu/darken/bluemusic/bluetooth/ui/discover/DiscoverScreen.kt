@@ -65,7 +65,7 @@ fun DiscoverScreenHost(vm: DiscoverViewModel = hiltViewModel()) {
     LaunchedEffect(Unit) {
         vm.events.collect { event ->
             when (event) {
-                is DiscoverEvent.RequiresUpgrade -> vm.navTo(Nav.Main.Upgrade)
+                is DiscoverEvent.RequiresUpgrade -> vm.navTo(Nav.Main.Upgrade())
             }
         }
     }
@@ -75,7 +75,7 @@ fun DiscoverScreenHost(vm: DiscoverViewModel = hiltViewModel()) {
             state = state,
             onDeviceSelected = { vm.onDeviceSelected(it) },
             onNavigateBack = { vm.navUp() },
-            onNavigateToUpgrade = { vm.navTo(Nav.Main.Upgrade) },
+            onNavigateToUpgrade = { vm.navTo(Nav.Main.Upgrade()) },
         )
     }
 }

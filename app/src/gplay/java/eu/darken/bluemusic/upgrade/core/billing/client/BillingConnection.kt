@@ -117,6 +117,27 @@ data class BillingConnection(
         Result.failure(e.tryMapUserFriendly())
     }
 
+    // Fresh SUBS-only ownership read for the fail-closed IAP switch gate. PURE READ: it must NOT
+    // write querySnapshot (which holds the combined IAP+SUB ownership snapshot — a SUBS-only write
+    // would drop a known IAP purchase and transiently un-Pro an IAP owner) and must NOT feed the
+    // freshData path. Unions the freshly queried SUBS with the last snapshot, deduped by token with
+    // the FRESH copy winning: a sub the user just cancelled comes back from Play with
+    // isAutoRenewing=false and correctly overwrites a stale renewing snapshot entry, while a sub the
+    // fresh query transiently missed survives from the snapshot (over-blocking the switch is safe;
+    // missing a renewing sub is not). Including any IAP entries from the snapshot is harmless: the
+    // gate only checks isAutoRenewing, and one-time purchases are never auto-renewing.
+    suspend fun querySubscriptions(): Collection<Purchase> {
+        val fresh = queryPurchases(BillingClient.ProductType.SUBS)
+            .filter { it.purchaseState == PurchaseState.PURCHASED }
+        val byToken = LinkedHashMap<String, Purchase>()
+        querySnapshot.value
+            .orEmpty()
+            .filter { it.purchaseState == PurchaseState.PURCHASED }
+            .forEach { byToken[it.purchaseToken] = it }
+        fresh.forEach { byToken[it.purchaseToken] = it }
+        return byToken.values.toList()
+    }
+
     suspend fun acknowledgePurchase(purchase: Purchase): BillingResult {
         val ack = AcknowledgePurchaseParams.newBuilder().apply {
             setPurchaseToken(purchase.purchaseToken)

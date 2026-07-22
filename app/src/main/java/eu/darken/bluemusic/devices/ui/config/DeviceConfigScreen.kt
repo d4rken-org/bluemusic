@@ -144,7 +144,7 @@ fun DeviceConfigScreenHost(
                 }
 
                 is ConfigEvent.NavigateBack -> vm.navUp()
-                is ConfigEvent.RequiresPro -> vm.navTo(Nav.Main.Upgrade)
+                is ConfigEvent.RequiresPro -> vm.navTo(Nav.Main.Upgrade())
 
                 is ConfigEvent.RequiresNotificationPolicyAccess -> {
                     val message = when (event.feature) {

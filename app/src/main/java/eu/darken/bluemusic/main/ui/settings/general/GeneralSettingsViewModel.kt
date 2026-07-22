@@ -73,7 +73,7 @@ constructor(
 
     fun upgrade() = launch {
         log(tag) { "upgrade()" }
-        navTo(Nav.Main.Upgrade)
+        navTo(Nav.Main.Upgrade())
     }
 
     data class State(

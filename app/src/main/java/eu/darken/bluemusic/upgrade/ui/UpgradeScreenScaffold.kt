@@ -42,16 +42,16 @@ internal data class UpgradeBenefitItem(
     val text: String,
 )
 
+// Reusable shell: scrolling container + hero + floating back button + optional snackbar, with an
+// arbitrary body slot below the hero. The acquisition scaffold and the Pro-status (owner/grace)
+// screens all build on this so the header/back/scroll behaviour stays identical.
 @Composable
-internal fun UpgradeScreenScaffold(
+internal fun UpgradeScreenShell(
     title: String,
     postfix: String,
-    preamble: String,
-    benefitTitle: String,
-    benefits: List<UpgradeBenefitItem>,
     onNavigateBack: () -> Unit,
     snackbarHostState: SnackbarHostState? = null,
-    actions: @Composable ColumnScope.() -> Unit,
+    content: @Composable ColumnScope.() -> Unit,
 ) {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
@@ -80,30 +80,7 @@ internal fun UpgradeScreenScaffold(
 
                     Spacer(modifier = Modifier.size(16.dp))
 
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                        ),
-                    ) {
-                        Text(
-                            text = preamble,
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSecondaryContainer,
-                            modifier = Modifier.padding(14.dp),
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.size(14.dp))
-
-                    BenefitListCard(
-                        title = benefitTitle,
-                        benefits = benefits,
-                    )
-
-                    Spacer(modifier = Modifier.size(18.dp))
-
-                    actions()
+                    content()
                 }
             }
         }
@@ -125,6 +102,52 @@ internal fun UpgradeScreenScaffold(
                     .padding(horizontal = 16.dp, vertical = 8.dp),
             )
         }
+    }
+}
+
+// Acquisition scaffold: the shell plus the standard "why upgrade" pitch (preamble card + benefit
+// list), with an actions slot for the purchase buttons. Used by both flavors' acquisition screens.
+@Composable
+internal fun UpgradeScreenScaffold(
+    title: String,
+    postfix: String,
+    preamble: String,
+    benefitTitle: String,
+    benefits: List<UpgradeBenefitItem>,
+    onNavigateBack: () -> Unit,
+    snackbarHostState: SnackbarHostState? = null,
+    actions: @Composable ColumnScope.() -> Unit,
+) {
+    UpgradeScreenShell(
+        title = title,
+        postfix = postfix,
+        onNavigateBack = onNavigateBack,
+        snackbarHostState = snackbarHostState,
+    ) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+            ),
+        ) {
+            Text(
+                text = preamble,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                modifier = Modifier.padding(14.dp),
+            )
+        }
+
+        Spacer(modifier = Modifier.size(14.dp))
+
+        BenefitListCard(
+            title = benefitTitle,
+            benefits = benefits,
+        )
+
+        Spacer(modifier = Modifier.size(18.dp))
+
+        actions()
     }
 }
 
@@ -177,7 +200,7 @@ private fun UpgradeHero(
 }
 
 @Composable
-private fun BenefitListCard(
+internal fun BenefitListCard(
     title: String,
     benefits: List<UpgradeBenefitItem>,
 ) {

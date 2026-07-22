@@ -2,6 +2,7 @@ package eu.darken.bluemusic.upgrade.core
 
 import android.app.Activity
 import com.android.billingclient.api.BillingClient.BillingResponseCode
+import com.android.billingclient.api.Purchase
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
@@ -28,8 +29,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.retryWhen
@@ -149,6 +152,32 @@ class UpgradeRepoGplay @Inject constructor(
     val wasEverPro: Flow<Boolean> = billingCache.lastProStateAt.flow
         .map { it > 0 }
         .distinctUntilChanged()
+
+    // When we last confirmed a (known) Pro purchase from fresh Play data. Drives the two-stage grace
+    // display: the quiet "confirming your purchase" stage becomes the diagnostics stage once the
+    // entitlement has been unconfirmed past GRACE_DIAGNOSTICS_AFTER_MS. Reusing this timestamp (set at
+    // confirmation, frozen when the entitlement lapses) instead of a separate "unconfirmed episode"
+    // stamp means the diagnostics boundary can't get stuck during a Play outage.
+    val lastProStateAt: Flow<Long> = billingCache.lastProStateAt.flow.distinctUntilChanged()
+
+    // False until the first authoritative Play round-trip settles OR a fallback timeout elapses, then
+    // true. The fallback flow is upstream-INDEPENDENT so a dead Play can't pin the UI on Loading
+    // forever. NOTE: settled != ownership-known — a fallback-driven settle can flip true before
+    // ownership is known, so every purchase action reachable while settled must be independently
+    // double-bill-safe (the IAP button via the fail-closed gate, the sub button via ITEM_ALREADY_OWNED).
+    val isSettled: Flow<Boolean> = merge(
+        billingManager.freshBillingData.map { true },
+        flow {
+            delay(SETTLE_FALLBACK_MS)
+            emit(true)
+        },
+    )
+        .onStart { emit(false) }
+        .distinctUntilChanged()
+
+    // Fresh SUBS-only Play read for the fail-closed IAP switch gate. Errors propagate (see
+    // BillingManager.querySubscriptions) so the caller fails closed on any failure.
+    suspend fun queryCurrentSubscriptions(): Collection<Purchase> = billingManager.querySubscriptions()
 
     fun launchBillingFlow(
         activity: Activity,
@@ -312,6 +341,10 @@ class UpgradeRepoGplay @Inject constructor(
         val GRACE_PERIOD_IAP_MS = Duration.ofDays(30).toMillis()
         private const val RESTORE_ON_OWNED_TIMEOUT_MS = 15_000L
         private const val REFRESH_TIMEOUT_MS = 30_000L
+
+        // The first Play round-trip after sign-in can take >8s; give the UI a bounded wait before it
+        // stops showing Loading, so a dead/slow Play can't pin it there forever.
+        val SETTLE_FALLBACK_MS = Duration.ofSeconds(10).toMillis()
 
         val TAG: String = logTag("Upgrade", "Gplay", "Repo")
 

@@ -13,6 +13,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.longs.shouldBeLessThan
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.CompletableDeferred
@@ -21,6 +22,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -287,6 +289,62 @@ class BillingManagerTest : BaseTest() {
         advanceTimeBy(2_000)
         runCurrent()
         attempts shouldBe 2
+    }
+
+    private fun unacked(token: String) = mockk<Purchase>().apply {
+        every { purchaseState } returns PurchaseState.PURCHASED
+        every { purchaseTime } returns 1_000L
+        every { isAcknowledged } returns false
+        every { purchaseToken } returns token
+    }
+
+    @Test fun `an already-acked token is not acknowledged again on a later emission`() = runTest2 {
+        // The immutable Purchase snapshot keeps reporting isAcknowledged=false until a fresh query
+        // supersedes it, so without a token guard every re-emission would re-ack the same purchase.
+        val ok = BillingResult.newBuilder().setResponseCode(BillingResponseCode.OK).build()
+        val a = unacked("A")
+        val b = unacked("B")
+        val purchasesFlow = MutableStateFlow<Collection<Purchase>>(emptyList())
+        val connection = mockk<BillingConnection>().apply {
+            coEvery { refreshPurchases() } returns
+                BillingConnection.PurchaseRefresh(emptyList(), isComplete = true)
+            every { purchases } returns purchasesFlow
+            every { purchaseEvents } returns emptyFlow()
+            every { purchaseFailures } returns emptyFlow()
+            coEvery { acknowledgePurchase(any()) } returns ok
+        }
+        manager(connection)
+
+        purchasesFlow.value = listOf(a)
+        advanceUntilIdle()
+        purchasesFlow.value = listOf(a, b)
+        advanceUntilIdle()
+
+        coVerify(exactly = 1) { connection.acknowledgePurchase(a) }
+        coVerify(exactly = 1) { connection.acknowledgePurchase(b) }
+    }
+
+    @Test fun `an ack that stays unavailable gives up without an endless retry loop`() = runTest2 {
+        val unavailable = BillingResult.newBuilder()
+            .setResponseCode(BillingResponseCode.BILLING_UNAVAILABLE)
+            .build()
+        val a = unacked("A")
+        val purchasesFlow = MutableStateFlow<Collection<Purchase>>(emptyList())
+        val connection = mockk<BillingConnection>().apply {
+            coEvery { refreshPurchases() } returns
+                BillingConnection.PurchaseRefresh(emptyList(), isComplete = true)
+            every { purchases } returns purchasesFlow
+            every { purchaseEvents } returns emptyFlow()
+            every { purchaseFailures } returns emptyFlow()
+            coEvery { acknowledgePurchase(a) } throws BillingClientException(unavailable)
+        }
+        manager(connection)
+
+        purchasesFlow.value = listOf(a)
+        advanceUntilIdle()
+
+        // BILLING_UNAVAILABLE has nothing to retry against -> exactly one attempt, then give up.
+        coVerify(exactly = 1) { connection.acknowledgePurchase(a) }
     }
 
     @Test fun `backoff streak resets after a successful connection`() = runTest2 {

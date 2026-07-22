@@ -3,6 +3,7 @@ package eu.darken.bluemusic.upgrade.core.billing
 import android.app.Activity
 import com.android.billingclient.api.BillingClient.BillingResponseCode
 import com.android.billingclient.api.BillingResult
+import com.android.billingclient.api.Purchase
 import com.android.billingclient.api.Purchase.PurchaseState
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
@@ -81,6 +82,13 @@ class BillingManager @Inject constructor(
     // Only touched from the sharing collector (onStart/onEach/retryWhen run sequentially there).
     private var demandAtAttemptStart = 0
 
+    // Purchase tokens we've already successfully acknowledged this process. The immutable Purchase
+    // snapshot keeps reporting isAcknowledged=false until a fresh query supersedes it, so the ack
+    // collector below would otherwise re-ack the same purchase on every re-emission. A token is added
+    // ONLY after a successful ack, so a failed ack stays retryable. Touched only from the single ack
+    // collector coroutine — no synchronization needed.
+    private val ackedTokens = mutableSetOf<String>()
+
     private val connection = connectionProvider.connection
         .onStart { demandAtAttemptStart = connectionDemand.value }
         .onEach {
@@ -153,22 +161,24 @@ class BillingManager @Inject constructor(
             .onEach { purchases ->
                 purchases
                     .filter {
-                        val needsAck = !it.isAcknowledged
+                        val needsAck = !it.isAcknowledged && it.purchaseToken !in ackedTokens
 
                         if (needsAck) log(TAG, INFO) { "Needs ACK: $it" }
                         else log(TAG) { "Already ACK'ed: $it" }
 
                         needsAck
                     }
-                    .forEach {
-                        log(TAG, INFO) { "Acknowledging purchase: $it" }
-
-                        try {
-                            useConnection {
-                                acknowledgePurchase(it)
-                            }
-                        } catch (e: Exception) {
-                            log(TAG, ERROR) { "Failed to ancknowledge purchase: $it\n${e.asLog()}" }
+                    .forEach { purchase ->
+                        log(TAG, INFO) { "Acknowledging purchase: $purchase" }
+                        // Retry transient failures inline (bounded, with backoff) rather than relying
+                        // on the shared purchases flow to re-emit: Purchase.equals is content-based and
+                        // the upstream is distinctUntilChanged, so re-querying the SAME still-unacked
+                        // purchase would be deduped and never reach this collector again — risking
+                        // Play's ~3-day auto-refund of unacknowledged purchases. The token is stored
+                        // only on success, so a fully-failed ack still stays eligible on any later
+                        // distinct emission as a last resort.
+                        if (acknowledgeWithRetry(purchase)) {
+                            ackedTokens.add(purchase.purchaseToken)
                         }
                     }
             }
@@ -201,6 +211,32 @@ class BillingManager @Inject constructor(
             .launchIn(scope)
     }
 
+    // Bounded inline ack retry: recovers a transient acknowledge failure (network/service hiccup right
+    // after a purchase) without depending on a fresh distinct purchases emission. Gives up on
+    // BILLING_UNAVAILABLE (nothing to retry against) or after ACK_MAX_RETRIES. Returns whether the
+    // purchase is now acknowledged.
+    private suspend fun acknowledgeWithRetry(purchase: Purchase): Boolean {
+        var attempt = 0
+        while (true) {
+            try {
+                useConnection { acknowledgePurchase(purchase) }
+                return true
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                attempt++
+                val unavailable = e is BillingClientException &&
+                    e.result.responseCode == BillingResponseCode.BILLING_UNAVAILABLE
+                if (unavailable || attempt > ACK_MAX_RETRIES) {
+                    log(TAG, ERROR) { "Giving up acknowledging $purchase after $attempt attempt(s): ${e.asLog()}" }
+                    return false
+                }
+                log(TAG, WARN) { "Ack attempt $attempt failed for $purchase, retrying: ${e.asLog()}" }
+                delay(ACK_RETRY_BASE_MS * attempt)
+            }
+        }
+    }
+
     private suspend fun <T> useConnection(action: suspend BillingConnection.() -> T): T {
         // Every caller here is active demand (opening the upgrade screen, restore/buy taps, purchase
         // acks) — cut a pending reconnect backoff short. A no-op while the connection is healthy.
@@ -222,6 +258,18 @@ class BillingManager @Inject constructor(
         querySkus(*skus).also {
             log(TAG) { "querySkus(): $it" }
         }
+    }
+
+    // Fresh SUBS-only ownership read for the fail-closed IAP switch gate. Errors PROPAGATE (mapped
+    // user-friendly) so the caller can fail closed on any failure — never swallow into an empty
+    // result, which would look like "no renewing sub" and let a double purchase through.
+    suspend fun querySubscriptions(): Collection<Purchase> = try {
+        useConnection { querySubscriptions() }
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: Exception) {
+        log(TAG, WARN) { "querySubscriptions() failed:\n${e.asLog()}" }
+        throw e.tryMapUserFriendly()
     }
 
     suspend fun startIapFlow(activity: Activity, sku: Sku, offer: Sku.Subscription.Offer?) {
@@ -246,6 +294,9 @@ class BillingManager @Inject constructor(
     }
 
     companion object {
+        private const val ACK_MAX_RETRIES = 3
+        private const val ACK_RETRY_BASE_MS = 3_000L
+
         internal fun Throwable.tryMapUserFriendly(): Throwable {
             if (this !is BillingClientException) return this
 
