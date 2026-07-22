@@ -179,6 +179,43 @@ class UpgradeViewModelTest : BaseTest() {
         verify(exactly = 0) { repo.launchBillingFlow(any(), any(), any(), any()) }
     }
 
+    @Test fun `restore is ignored while a verification is in progress`() = runTest2(
+        context = testDispatcher,
+    ) {
+        val repo = mockRepo()
+        coEvery { repo.queryCurrentSubscriptions() } coAnswers {
+            delay(5_000)
+            emptyList()
+        }
+        val vm = buildVm(repo)
+
+        vm.onGoIap(mockk(relaxed = true)) // holds the verifying guard through the SUBS check
+        advanceTimeBy(1_000)
+        vm.restorePurchase() // must be rejected while verifying
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { repo.restorePurchaseNow() }
+    }
+
+    @Test fun `iap verification is ignored while a restore is in progress`() = runTest2(
+        context = testDispatcher,
+    ) {
+        val repo = mockRepo()
+        coEvery { repo.restorePurchaseNow() } coAnswers {
+            delay(5_000)
+            UpgradeRepoGplay.Info(gracePeriod = true, billingData = null)
+        }
+        val vm = buildVm(repo)
+
+        vm.restorePurchase() // holds the restoring guard
+        advanceTimeBy(1_000)
+        vm.onGoIap(mockk(relaxed = true)) // must be rejected while restoring
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { repo.queryCurrentSubscriptions() }
+        verify(exactly = 0) { repo.launchBillingFlow(any(), any(), any(), any()) }
+    }
+
     @Test fun `restore is single flight`() = runTest2(context = testDispatcher) {
         val repo = mockRepo()
         coEvery { repo.restorePurchaseNow() } coAnswers {
