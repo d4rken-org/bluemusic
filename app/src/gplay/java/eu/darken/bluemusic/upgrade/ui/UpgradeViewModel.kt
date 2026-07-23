@@ -290,37 +290,52 @@ class UpgradeViewModel @AssistedInject constructor(
                 log(tag) { "restorePurchase() ignored, an auto-restore is in progress" }
                 return@launch
             }
-            val restored = coroutineScope {
-                // A warm billing cache answers instantly; pad to a minimum visible duration so the
-                // spinner doesn't flash for a single frame and leave the user unsure anything happened.
+            // Capture the result OR the error inside the scope, then wait out the min-visible pad
+            // before surfacing either — a thrown error must not skip the pad and flash the spinner for
+            // a single frame (previously the throw cancelled the pad job and jumped straight to catch).
+            val outcome = coroutineScope {
                 val minVisible = async { delay(RESTORE_MIN_VISIBLE_MS) }
-                val result = withTimeoutOrNull(RESTORE_TIMEOUT_MS) { upgradeRepo.restorePurchaseNow() }
+                val result = try {
+                    Result.success(withTimeoutOrNull(RESTORE_TIMEOUT_MS) { upgradeRepo.restorePurchaseNow() })
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    Result.failure(e)
+                }
                 minVisible.await()
                 result
             }
-            when {
-                restored == null -> {
-                    log(tag, WARN) { "Restore purchase timed out" }
-                    events.tryEmit(UpgradeEvents.RestoreFailed)
-                }
+            outcome.fold(
+                onSuccess = { restored ->
+                    when {
+                        restored == null -> {
+                            log(tag, WARN) { "Restore purchase timed out" }
+                            events.tryEmit(UpgradeEvents.RestoreFailed)
+                        }
 
-                restored.upgrades.isNotEmpty() -> {
-                    log(tag, INFO) { "Restored purchase :))" }
-                    events.tryEmit(UpgradeEvents.RestoreSucceeded)
-                }
+                        restored.upgrades.isNotEmpty() -> {
+                            log(tag, INFO) { "Restored purchase :))" }
+                            events.tryEmit(UpgradeEvents.RestoreSucceeded)
+                        }
 
-                else -> {
-                    // Grace-only (no owned purchase) is not a real restore success.
-                    log(tag, WARN) { "Restore purchase failed (grace-only or not owned)" }
-                    events.tryEmit(UpgradeEvents.RestoreFailed)
-                }
-            }
+                        else -> {
+                            // Grace-only (no owned purchase) is not a real restore success.
+                            log(tag, WARN) { "Restore purchase failed (grace-only or not owned)" }
+                            events.tryEmit(UpgradeEvents.RestoreFailed)
+                        }
+                    }
+                },
+                onFailure = { e ->
+                    // Play/billing error (e.g. service unavailable): surface the proper error dialog
+                    // instead of the generic "restore failed" message.
+                    log(tag, WARN) { "Restore purchase errored: ${e.asLog()}" }
+                    errorEvents.tryEmit(e)
+                },
+            )
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
-            // Play/billing error (e.g. service unavailable): surface the proper error dialog instead of
-            // the generic "restore failed" message.
-            log(tag, WARN) { "Restore purchase errored: ${e.asLog()}" }
+            log(tag, WARN) { "Restore purchase errored (outer): ${e.asLog()}" }
             errorEvents.tryEmit(e)
         } finally {
             restoring.value = false

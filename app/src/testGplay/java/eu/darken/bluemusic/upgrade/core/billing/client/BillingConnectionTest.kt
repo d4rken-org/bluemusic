@@ -182,6 +182,54 @@ class BillingConnectionTest : BaseTest() {
         }
     }
 
+    @Test fun `a purchase event surfaces even before any query snapshot exists`() = runTest2 {
+        // If the initial ownership refresh failed (querySnapshot still null), a purchase completed
+        // afterwards must still reach the purchases flow (to be acked/unlocked), not be stranded until
+        // a later refresh establishes a snapshot.
+        val owned = mockk<Purchase>().apply {
+            every { purchaseState } returns PurchaseState.PURCHASED
+            every { purchaseTime } returns 1_000L
+            every { purchaseToken } returns "X"
+        }
+        val events = MutableStateFlow<Pair<BillingResult, Collection<Purchase>?>?>(
+            result(BillingResponseCode.OK) to listOf(owned),
+        )
+        val connection = BillingConnection(mockk(), events) // no refreshPurchases -> snapshot stays null
+
+        connection.purchases.first() shouldBe listOf(owned)
+    }
+
+    @Test fun `a partial refresh preserves the un-queried product type`() = runTest2 {
+        mockkStatic("com.android.billingclient.api.BillingClientKotlinKt")
+        try {
+            val iap = mockk<Purchase>().apply {
+                every { purchaseState } returns PurchaseState.PURCHASED
+                every { purchaseTime } returns 1_000L
+                every { purchaseToken } returns "iap"
+            }
+            val sub = mockk<Purchase>().apply {
+                every { purchaseState } returns PurchaseState.PURCHASED
+                every { purchaseTime } returns 2_000L
+                every { purchaseToken } returns "sub"
+            }
+            val client = mockk<BillingClient>()
+            coEvery { client.queryPurchasesAsync(any<QueryPurchasesParams>()) } returnsMany listOf(
+                PurchasesResult(result(BillingResponseCode.OK), listOf(iap)),   // refresh 1 INAPP
+                PurchasesResult(result(BillingResponseCode.OK), listOf(sub)),   // refresh 1 SUBS -> full snapshot
+                PurchasesResult(result(BillingResponseCode.OK), listOf(iap)),   // refresh 2 INAPP
+                PurchasesResult(result(BillingResponseCode.ERROR), emptyList()), // refresh 2 SUBS FAILS
+            )
+            val connection = BillingConnection(client, MutableStateFlow(null))
+            connection.refreshPurchases() // snapshot = [iap, sub]
+
+            val partial = connection.refreshPurchases() // SUBS failed; the sub must not be dropped
+            partial.isComplete shouldBe false
+            partial.purchases.map { it.purchaseToken }.toSet() shouldBe setOf("iap", "sub")
+        } finally {
+            unmockkStatic("com.android.billingclient.api.BillingClientKotlinKt")
+        }
+    }
+
     @Test fun `a fresh snapshot supersedes a stale purchase event with the same token`() = runTest2 {
         // A subscription bought this session (renewing event) that is then cancelled: the authoritative
         // query snapshot (isAutoRenewing=false) must supersede the stale event by token, not coexist

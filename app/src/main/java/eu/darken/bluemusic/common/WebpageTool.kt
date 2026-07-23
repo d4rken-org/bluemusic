@@ -15,23 +15,26 @@ class WebpageTool @Inject constructor(
     @param:ApplicationContext private val context: Context,
 ) {
 
-    fun open(address: String) {
-        open(context, address)
-    }
+    // Returns whether an activity was actually started, so callers that gate behaviour on the page
+    // having opened (e.g. the FOSS sponsor unlock heuristic) don't fire when no browser handled it.
+    fun open(address: String): Boolean = open(context, address)
 
     companion object {
-        fun open(context: Context, address: String) {
+        fun open(context: Context, address: String): Boolean {
             val intent = Intent(Intent.ACTION_VIEW, address.toUri()).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
-            try {
+            return try {
                 context.startActivity(intent)
+                true
             } catch (e: ActivityNotFoundException) {
                 log(ERROR) { "Failed to launch. No compatible activity!" }
+                false
             } catch (e: SecurityException) {
                 // Permission Denial: starting Intent { act=android.intent.action.VIEW dat=https://github.com/...
                 // flg=0x10000000 cmp=com.mxtech.videoplayer.pro/com.mxtech.videoplayer.ActivityWebBrowser }
                 log(ERROR) { "Failed to launch activity due to $e" }
+                false
             }
         }
     }

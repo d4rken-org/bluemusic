@@ -58,9 +58,9 @@ class UpgradeRepoFoss @Inject constructor(
         }
         .shareIn(scope, SharingStarted.WhileSubscribed(3000L, 0L), replay = 1)
 
-    fun openGithubSponsorsPage() {
+    fun openGithubSponsorsPage(): Boolean {
         log(TAG) { "openGithubSponsorsPage()" }
-        webpageTool.open(mainWebsite)
+        return webpageTool.open(mainWebsite)
     }
 
     suspend fun confirmGithubSponsorsUpgrade() {
