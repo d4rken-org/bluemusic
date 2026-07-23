@@ -27,6 +27,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flow
@@ -44,7 +45,6 @@ import java.time.Duration
 import java.time.Instant
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.math.pow
 
 @Singleton
 class UpgradeRepoGplay @Inject constructor(
@@ -133,7 +133,7 @@ class UpgradeRepoGplay @Inject constructor(
         .retryWhen { error, attempt ->
             // Ignore Google Play errors if the last pro state was recent
             val now = System.currentTimeMillis()
-            val lastProStateAt = billingCache.lastProStateAt.value()
+            val lastProStateAt = readLastProStateAtSafe()
             log(TAG) { "Catch: now=$now, lastProStateAt=$lastProStateAt, attempt=$attempt, error=$error" }
             if ((now - lastProStateAt) < graceWindowMs()) {
                 log(TAG, VERBOSE) { "We are not pro, but were recently, and just got an error, what is GPlay doing???" }
@@ -141,7 +141,9 @@ class UpgradeRepoGplay @Inject constructor(
             } else {
                 emit(Info(error = error, billingData = null))
             }
-            delay(30_000L * 2.0.pow(attempt.toDouble()).toLong())
+            // Integer, capped backoff: the old 2.0.pow(attempt) formula slept for hours after a handful
+            // of failures and eventually overflowed Long into a delay(negative) hot loop.
+            delay((30_000L * (attempt + 1)).coerceAtMost(300_000L))
             true
         }
         .setupCommonEventHandlers(TAG) { "upgradeInfo2" }
@@ -151,6 +153,9 @@ class UpgradeRepoGplay @Inject constructor(
     // restore banner. Local signal only — a fresh install or switched Google account starts false.
     val wasEverPro: Flow<Boolean> = billingCache.lastProStateAt.flow
         .map { it > 0 }
+        // Fail-soft: a broken/full-disk DataStore must not error out this flow (and the combine that
+        // reads it) — degrade to "not previously pro" instead.
+        .catch { e -> log(TAG, WARN) { "wasEverPro read failed: ${e.asLog()}" }; emit(false) }
         .distinctUntilChanged()
 
     // When we last confirmed a (known) Pro purchase from fresh Play data. Drives the two-stage grace
@@ -158,7 +163,9 @@ class UpgradeRepoGplay @Inject constructor(
     // entitlement has been unconfirmed past GRACE_DIAGNOSTICS_AFTER_MS. Reusing this timestamp (set at
     // confirmation, frozen when the entitlement lapses) instead of a separate "unconfirmed episode"
     // stamp means the diagnostics boundary can't get stuck during a Play outage.
-    val lastProStateAt: Flow<Long> = billingCache.lastProStateAt.flow.distinctUntilChanged()
+    val lastProStateAt: Flow<Long> = billingCache.lastProStateAt.flow
+        .catch { e -> log(TAG, WARN) { "lastProStateAt read failed: ${e.asLog()}" }; emit(0L) }
+        .distinctUntilChanged()
 
     // False until the first authoritative Play round-trip settles OR a fallback timeout elapses, then
     // true. The fallback flow is upstream-INDEPENDENT so a dead Play can't pin the UI on Loading
@@ -258,7 +265,7 @@ class UpgradeRepoGplay @Inject constructor(
             // Mirror the reactive flow's retryWhen: a transient Play error while we were Pro recently
             // keeps us Pro via the grace period; otherwise surface the error so the caller can show
             // the proper "Play unavailable" message instead of a generic restore failure.
-            val lastProStateAt = billingCache.lastProStateAt.value()
+            val lastProStateAt = readLastProStateAtSafe()
             if ((System.currentTimeMillis() - lastProStateAt) < graceWindowMs()) {
                 log(TAG, VERBOSE) { "restore hit a Play error but we were Pro recently -> grace" }
                 Info(gracePeriod = true, billingData = null)
@@ -273,29 +280,45 @@ class UpgradeRepoGplay @Inject constructor(
     // timestamp is stamped by the freshBillingData collector above, not from mapped (possibly
     // replayed) flow data.
     private suspend fun BillingData?.toUpgradeInfo(): Info {
+        // A confirmed purchase wins IMMEDIATELY, before any grace-cache read: never gate a real
+        // entitlement behind a (possibly hung/failing, e.g. full-disk) DataStore read.
+        if (this?.purchases?.isNotEmpty() == true) return Info(billingData = this)
+
+        // Grace fallback: bounded + fail-soft reads so a broken DataStore can neither hang nor throw
+        // out of this reactive mapping (which would loop the flow and stick the screen on loading).
         val now = System.currentTimeMillis()
-        val lastProStateAt = billingCache.lastProStateAt.value()
+        val lastProStateAt = readLastProStateAtSafe()
         log(TAG) { "toUpgradeInfo(): now=$now, lastProStateAt=$lastProStateAt, data=$this" }
-        return when {
-            this?.purchases?.isNotEmpty() == true -> Info(billingData = this)
-
-            (now - lastProStateAt) < graceWindowMs() -> {
-                log(TAG, VERBOSE) { "We are not pro, but were recently, did GPlay try annoy us again?" }
-                Info(gracePeriod = true, billingData = null)
-            }
-
-            else -> Info(billingData = this)
+        return if ((now - lastProStateAt) < graceWindowMs()) {
+            log(TAG, VERBOSE) { "We are not pro, but were recently, did GPlay try annoy us again?" }
+            Info(gracePeriod = true, billingData = null)
+        } else {
+            Info(billingData = this)
         }
     }
 
     // Grace window depends on what was last owned: a permanent one-time purchase gets a long window,
-    // a subscription (or an unknown/legacy last SKU) gets the short default.
+    // a subscription (or an unknown/legacy/unreadable last SKU) gets the short default.
     private suspend fun graceWindowMs(): Long {
-        val lastSku = billingCache.lastProStateSku.value()
+        val lastSku = readSafe("lastProStateSku") { billingCache.lastProStateSku.value() }
         val type = OurSku.PRO_SKUS.singleOrNull { it.id == lastSku }?.type
         val window = if (type == Sku.Type.IAP) GRACE_PERIOD_IAP_MS else GRACE_PERIOD_MS
         log(TAG) { "graceWindowMs(): lastSku=$lastSku, type=$type -> ${window}ms" }
         return window
+    }
+
+    // Bounded + fail-soft DataStore read: on hang (timeout) or failure, degrade to "not recently pro"
+    // (0L) so the grace fallback can never freeze or crash the entitlement mapping.
+    private suspend fun readLastProStateAtSafe(): Long =
+        readSafe("lastProStateAt") { billingCache.lastProStateAt.value() } ?: 0L
+
+    private suspend fun <T> readSafe(name: String, read: suspend () -> T): T? = try {
+        withTimeoutOrNull(CACHE_READ_TIMEOUT_MS) { read() }
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: Exception) {
+        log(TAG, WARN) { "$name read failed: ${e.asLog()}" }
+        null
     }
 
     data class Info(
@@ -341,6 +364,10 @@ class UpgradeRepoGplay @Inject constructor(
         val GRACE_PERIOD_IAP_MS = Duration.ofDays(30).toMillis()
         private const val RESTORE_ON_OWNED_TIMEOUT_MS = 15_000L
         private const val REFRESH_TIMEOUT_MS = 30_000L
+
+        // Bound on a single grace-cache DataStore read, so a hung/full-disk store can't stall the
+        // reactive entitlement mapping.
+        private const val CACHE_READ_TIMEOUT_MS = 2_000L
 
         // The first Play round-trip after sign-in can take >8s; give the UI a bounded wait before it
         // stops showing Loading, so a dead/slow Play can't pin it there forever.

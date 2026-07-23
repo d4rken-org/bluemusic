@@ -4,7 +4,6 @@ import com.android.billingclient.api.Purchase
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.upgrade.core.OurSku
 import eu.darken.bluemusic.upgrade.core.UpgradeRepoGplay
-import eu.darken.bluemusic.upgrade.core.billing.GplayServiceUnavailableException
 import eu.darken.bluemusic.upgrade.core.billing.PurchasedSku
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
@@ -358,32 +357,42 @@ class UpgradeViewModelTest : BaseTest() {
         state.await().restoreInProgress shouldBe true
     }
 
-    @Test fun `play-unavailable error is emitted once despite state recombinations`() = runTest2(
+    @Test fun `both price queries failing yields the Unavailable state`() = runTest2(
         context = testDispatcher,
     ) {
         val repo = mockRepo()
         coEvery { repo.querySkus(*anyVararg()) } coAnswers {
-            delay(16_000)
+            delay(16_000) // exceeds the 15s query timeout -> null -> Unavailable
             emptyList()
-        }
-        coEvery { repo.restorePurchaseNow() } coAnswers {
-            delay(1_000)
-            UpgradeRepoGplay.Info(gracePeriod = true, billingData = null)
         }
         val vm = buildVm(repo)
 
-        val errors = mutableListOf<Throwable>()
-        val errorCollector = launch { vm.errorEvents.collect { errors.add(it) } }
-        val stateCollector = launch { vm.state.collect {} }
+        val state = async {
+            vm.state.filterNotNull().filterIsInstance<UpgradeUiState.Unavailable>().first()
+        }
         advanceUntilIdle()
 
-        vm.restorePurchase()
+        state.await() // resolves only if the Unavailable state was emitted
+    }
+
+    @Test fun `onRetry re-runs the failed price query`() = runTest2(context = testDispatcher) {
+        val repo = mockRepo()
+        var calls = 0
+        coEvery { repo.querySkus(*anyVararg()) } coAnswers {
+            calls++
+            throw RuntimeException("Play down")
+        }
+        val vm = buildVm(repo)
+
+        val collector = launch { vm.state.collect {} }
+        advanceUntilIdle()
+        val afterFirst = calls // iap + sub
+
+        vm.onRetry()
         advanceUntilIdle()
 
-        errors.filterIsInstance<GplayServiceUnavailableException>().size shouldBe 1
-
-        errorCollector.cancel()
-        stateCollector.cancel()
+        (calls > afterFirst) shouldBe true
+        collector.cancel()
     }
 
     @Test fun `restore errors surface via errorEvents not RestoreFailed`() = runTest2(

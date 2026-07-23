@@ -78,6 +78,7 @@ fun UpgradeScreenHost(
         onGoSubscriptionTrial = { vm.onGoSubscriptionTrial(context as Activity) },
         onManageSubscription = { vm.onManageSubscription() },
         onRestorePurchase = { vm.restorePurchase() },
+        onRetry = { vm.onRetry() },
     )
 
     LaunchedEffect(Unit) {
@@ -114,6 +115,7 @@ fun UpgradeScreen(
     onGoSubscriptionTrial: () -> Unit,
     onManageSubscription: () -> Unit,
     onRestorePurchase: () -> Unit,
+    onRetry: () -> Unit,
     snackbarHostState: SnackbarHostState? = null,
 ) {
     val loaded = state as? UpgradeUiState.Loaded
@@ -135,6 +137,8 @@ fun UpgradeScreen(
             state == null || state is UpgradeUiState.Loading -> {
                 CircularProgressIndicator(modifier = Modifier.padding(vertical = 24.dp))
             }
+
+            state is UpgradeUiState.Unavailable -> UnavailableContent(onRetry = onRetry)
 
             loaded != null && isOwner -> OwnerContent(
                 state = loaded,
@@ -331,6 +335,40 @@ private fun GraceContent(
             onGoSubscription = onGoSubscription,
             onGoSubscriptionTrial = onGoSubscriptionTrial,
         )
+    }
+}
+
+// ---- Unavailable (price query failed) ----
+
+@Composable
+private fun UnavailableContent(onRetry: () -> Unit) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.errorContainer,
+            contentColor = MaterialTheme.colorScheme.onErrorContainer,
+        ),
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = stringResource(R.string.upgrades_gplay_unavailable_error_title),
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            Text(
+                text = stringResource(R.string.upgrades_gplay_unavailable_error_description),
+                style = MaterialTheme.typography.bodyMedium,
+            )
+        }
+    }
+    Spacer(modifier = Modifier.height(16.dp))
+    Button(
+        onClick = onRetry,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(48.dp),
+    ) {
+        Text(text = stringResource(R.string.upgrade_screen_retry_action))
     }
 }
 
@@ -719,7 +757,7 @@ private fun UpgradeScreenAcquisitionPreview() {
         UpgradeScreen(
             state = previewLoaded(),
             onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {},
+            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
         )
     }
 }
@@ -731,7 +769,7 @@ private fun UpgradeScreenOwnerSubRenewingPreview() {
         UpgradeScreen(
             state = previewLoaded(ownership = Ownership(subscription = SubscriptionOwnership(isAutoRenewing = true))),
             onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {},
+            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
         )
     }
 }
@@ -743,7 +781,7 @@ private fun UpgradeScreenOwnerSubNotRenewingPreview() {
         UpgradeScreen(
             state = previewLoaded(ownership = Ownership(subscription = SubscriptionOwnership(isAutoRenewing = false))),
             onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {},
+            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
         )
     }
 }
@@ -755,7 +793,7 @@ private fun UpgradeScreenOwnerIapPreview() {
         UpgradeScreen(
             state = previewLoaded(ownership = Ownership(hasIap = true)),
             onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {},
+            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
         )
     }
 }
@@ -767,7 +805,7 @@ private fun UpgradeScreenGraceQuietPreview() {
         UpgradeScreen(
             state = previewLoaded(grace = GraceHint(showDiagnostics = false)),
             onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {},
+            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
         )
     }
 }
@@ -779,7 +817,19 @@ private fun UpgradeScreenGraceDiagnosticsPreview() {
         UpgradeScreen(
             state = previewLoaded(grace = GraceHint(showDiagnostics = true)),
             onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {},
+            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun UpgradeScreenUnavailablePreview() {
+    PreviewWrapper {
+        UpgradeScreen(
+            state = UpgradeUiState.Unavailable(RuntimeException("Play unavailable")),
+            onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
+            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
         )
     }
 }

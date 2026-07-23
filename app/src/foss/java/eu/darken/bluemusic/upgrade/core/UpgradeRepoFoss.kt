@@ -21,7 +21,6 @@ import java.time.Instant
 import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.math.pow
 
 @Singleton
 class UpgradeRepoFoss @Inject constructor(
@@ -52,7 +51,9 @@ class UpgradeRepoFoss @Inject constructor(
         .distinctUntilChanged()
         .retryWhen { error, attempt ->
             emit(Info(error = error))
-            delay(30_000L * 2.0.pow(attempt.toDouble()).toLong())
+            // Integer, capped backoff: the old 2.0.pow(attempt) formula slept for hours and could
+            // overflow Long into a delay(negative) hot loop.
+            delay((30_000L * (attempt + 1)).coerceAtMost(300_000L))
             true
         }
         .shareIn(scope, SharingStarted.WhileSubscribed(3000L, 0L), replay = 1)

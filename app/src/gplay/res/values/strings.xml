@@ -54,6 +54,8 @@
     <string name="upgrade_screen_grace_body_short">Hang tight — we\'re double-checking your purchase with Google Play.</string>
     <string name="upgrade_screen_grace_body">We still can\'t confirm your purchase with Google Play. Try restoring it, or check that you\'re signed in with the right account.</string>
 
+    <string name="upgrade_screen_retry_action">Retry</string>
+
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Subscription still active</string>
     <string name="upgrade_screen_sub_still_renewing_message">Your subscription is still set to renew. Cancel it in Google Play first, then come back to buy the one-time purchase — that way you won\'t be charged twice.</string>

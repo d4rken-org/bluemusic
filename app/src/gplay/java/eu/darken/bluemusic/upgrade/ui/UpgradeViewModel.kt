@@ -28,10 +28,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.withTimeoutOrNull
 import java.time.Duration
 
@@ -54,8 +56,6 @@ class UpgradeViewModel @AssistedInject constructor(
         manual || auto
     }
 
-    private var hasShownUnavailableError = false
-
     init {
         // Only the acquisition entry (manage=false, opened from an upsell) auto-closes the instant the
         // user becomes Pro. The manage entry (settings status row, manage=true) stays open so an owner
@@ -74,16 +74,24 @@ class UpgradeViewModel @AssistedInject constructor(
         data class Done(val iap: Collection<SkuDetails>?, val sub: Collection<SkuDetails>?) : SkuQueries
     }
 
-    private val skuQueries = flow {
-        emit(SkuQueries.Loading)
-        val result = coroutineScope {
-            val iapJob = async { queryOrNull(OurSku.PRO_SKUS.filterIsInstance<Sku.Iap>()) }
-            val subJob = async { queryOrNull(OurSku.PRO_SKUS.filterIsInstance<Sku.Subscription>()) }
-            SkuQueries.Done(iap = iapJob.await(), sub = subJob.await())
+    // Bumped by onRetry() so a user stuck on the Unavailable state can re-run the price queries
+    // without leaving and reopening the screen.
+    private val skuRetry = MutableStateFlow(0)
+
+    private val skuQueries = skuRetry.flatMapLatest {
+        flow {
+            emit(SkuQueries.Loading)
+            val result = coroutineScope {
+                val iapJob = async { queryOrNull(OurSku.PRO_SKUS.filterIsInstance<Sku.Iap>()) }
+                val subJob = async { queryOrNull(OurSku.PRO_SKUS.filterIsInstance<Sku.Subscription>()) }
+                SkuQueries.Done(iap = iapJob.await(), sub = subJob.await())
+            }
+            emit(result)
         }
-        emit(result)
     }
 
+    // A failed/timed-out price query returns null; the combine surfaces it as the Unavailable state
+    // (with Retry) rather than an error dialog, so the failure has a recovery path on screen.
     private suspend fun queryOrNull(skus: List<Sku>): Collection<SkuDetails>? =
         withTimeoutOrNull(SKU_QUERY_TIMEOUT_MS) {
             try {
@@ -91,7 +99,7 @@ class UpgradeViewModel @AssistedInject constructor(
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
-                errorEvents.emit(e)
+                log(tag, WARN) { "SKU query failed: ${e.asLog()}" }
                 null
             }
         }
@@ -153,25 +161,17 @@ class UpgradeViewModel @AssistedInject constructor(
         val priceIndependent = ownership.ownsAnything || grace != null
 
         val done = queries as? SkuQueries.Done
-        if (done == null) {
-            hasShownUnavailableError = false
-            if (!priceIndependent) return@combine UpgradeUiState.Loading
-        }
+        if (done == null && !priceIndependent) return@combine UpgradeUiState.Loading
 
         val iap = done?.iap
         val sub = done?.sub
 
+        // Both price queries failed for a user who needs prices -> Unavailable (error card + Retry),
+        // never a dead end. Owners/grace are priceIndependent and fall through to their own content.
         if (done != null && iap == null && sub == null && !priceIndependent) {
-            // Re-runs on every upstream change (e.g. restore progress toggling) — emit the unavailable
-            // error once per failure episode, not once per recombination.
-            if (!hasShownUnavailableError) {
-                hasShownUnavailableError = true
-                errorEvents.emit(
-                    GplayServiceUnavailableException(RuntimeException("IAP and SUB data request timed out.")),
-                )
-            }
-        } else {
-            hasShownUnavailableError = false
+            return@combine UpgradeUiState.Unavailable(
+                GplayServiceUnavailableException(RuntimeException("IAP and SUB data request timed out.")),
+            )
         }
 
         toLoadedState(
@@ -190,9 +190,10 @@ class UpgradeViewModel @AssistedInject constructor(
     fun onGoIap(activity: Activity) {
         log(tag) { "onGoIap($activity)" }
         launch {
-            // Mutually exclusive with a restore: a purchase verification and a restore both hit Play,
-            // and running them together can stack result dialogs.
-            if (restoring.value) {
+            // Mutually exclusive with a restore (manual OR the silent already-owned auto-restore): a
+            // purchase verification and a restore both hit Play, and running them together can stack
+            // result dialogs or let a buy race the already-owned recovery.
+            if (restoring.value || upgradeRepo.autoRestoreBusy.first()) {
                 log(tag) { "onGoIap() ignored, a restore is in progress" }
                 return@launch
             }
@@ -254,11 +255,16 @@ class UpgradeViewModel @AssistedInject constructor(
         webpageTool.open(PLAY_SUBSCRIPTION_SITE)
     }
 
+    fun onRetry() {
+        log(tag) { "onRetry()" }
+        skuRetry.update { it + 1 }
+    }
+
     fun restorePurchase() = launch {
-        // Mutually exclusive with the IAP verification gate (see onGoIap): both hit Play and stacking
-        // them can duplicate result dialogs.
-        if (verifying.value) {
-            log(tag) { "restorePurchase() ignored, a verification is in progress" }
+        // Mutually exclusive with the IAP verification gate (see onGoIap) and with the silent
+        // already-owned auto-restore: all hit Play and stacking them can duplicate result dialogs.
+        if (verifying.value || upgradeRepo.autoRestoreBusy.first()) {
+            log(tag) { "restorePurchase() ignored, a verification or auto-restore is in progress" }
             return@launch
         }
         // Single-flight: repeated taps while a restore runs must not stack concurrent restores and
