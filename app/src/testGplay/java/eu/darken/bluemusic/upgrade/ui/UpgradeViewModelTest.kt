@@ -300,6 +300,29 @@ class UpgradeViewModelTest : BaseTest() {
         collector.cancel()
     }
 
+    @Test fun `a restore error still waits the minimum visible duration`() = runTest2(
+        context = testDispatcher,
+    ) {
+        val repo = mockRepo()
+        coEvery { repo.restorePurchaseNow() } throws RuntimeException("Play down")
+        val vm = buildVm(repo)
+
+        var fired = false
+        val collector = launch {
+            vm.errorEvents.first()
+            fired = true
+        }
+
+        vm.restorePurchase()
+        advanceTimeBy(1_000)
+        // The error must not surface before the 1.5s min-visible pad (previously a throw skipped it).
+        fired shouldBe false
+        advanceTimeBy(1_000)
+        fired shouldBe true
+
+        collector.cancel()
+    }
+
     @Test fun `restore that times out emits RestoreFailed and re-enables the UI`() = runTest2(
         context = testDispatcher,
     ) {

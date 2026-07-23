@@ -27,6 +27,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.mapNotNull
@@ -157,7 +158,16 @@ class BillingManager @Inject constructor(
             .setupCommonEventHandlers(TAG) { "fresh-purchase-events" }
             .launchIn(scope)
 
-        purchases
+        // Drive acks from TWO merged sources in a single collector (so ackedTokens stays
+        // single-threaded, no sync needed):
+        //  - `purchases`: the deduped ownership flow. Subscribing here also PINS the connection
+        //    shareIn alive for the process, so billing stays connected in the background for acks.
+        //  - `freshBillingData`: emitted on EVERY fresh Play round-trip (per-connection refresh,
+        //    purchase event, manual refresh) and NOT distinctUntilChanged'd. This re-drives a
+        //    previously-failed ack on the next refresh, since re-querying the SAME still-unacked
+        //    purchase yields a content-equal snapshot that the deduped `purchases` flow would suppress
+        //    — otherwise a failed ack could sit until Play's ~3-day auto-refund.
+        merge(purchases, freshBillingData.map { it.data.purchases })
             .onEach { purchases ->
                 purchases
                     .filter {
@@ -170,13 +180,9 @@ class BillingManager @Inject constructor(
                     }
                     .forEach { purchase ->
                         log(TAG, INFO) { "Acknowledging purchase: $purchase" }
-                        // Retry transient failures inline (bounded, with backoff) rather than relying
-                        // on the shared purchases flow to re-emit: Purchase.equals is content-based and
-                        // the upstream is distinctUntilChanged, so re-querying the SAME still-unacked
-                        // purchase would be deduped and never reach this collector again — risking
-                        // Play's ~3-day auto-refund of unacknowledged purchases. The token is stored
-                        // only on success, so a fully-failed ack still stays eligible on any later
-                        // distinct emission as a last resort.
+                        // Retry transient failures inline (bounded, with backoff). The token is stored
+                        // only on success, so a fully-failed ack stays eligible on the next fresh
+                        // round-trip.
                         if (acknowledgeWithRetry(purchase)) {
                             ackedTokens.add(purchase.purchaseToken)
                         }

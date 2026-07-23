@@ -108,7 +108,9 @@ class UpgradeRepoGplay @Inject constructor(
 
     private suspend fun stampLastProState(fresh: BillingManager.FreshData) {
         val sku = preferredProSku(Info(billingData = fresh.data).upgrades) ?: return
-        val storedSkuId = billingCache.lastProStateSku.value()
+        // Bounded + fail-soft: a hung/full-disk DataStore must not stall this permanent
+        // freshBillingData collector (which would eventually backpressure all later fresh emissions).
+        val storedSkuId = readSafe("lastProStateSku") { billingCache.lastProStateSku.value() }
         val storedType = OurSku.PRO_SKUS.singleOrNull { it.id == storedSkuId }?.type
         // A purchase event is not a full ownership snapshot: a subscription-only event must not
         // downgrade the grace class of a previously confirmed permanent IAP. Full query snapshots
@@ -116,12 +118,20 @@ class UpgradeRepoGplay @Inject constructor(
         val effectiveSkuId = if (
             !fresh.isFullSnapshot && storedType == Sku.Type.IAP && sku.type != Sku.Type.IAP
         ) {
-            storedSkuId
+            storedSkuId ?: sku.id
         } else {
             sku.id
         }
         log(TAG, VERBOSE) { "Fresh Pro state confirmed by $sku, stamping $effectiveSkuId." }
-        billingCache.stampLastProState(effectiveSkuId, System.currentTimeMillis())
+        try {
+            withTimeoutOrNull(CACHE_WRITE_TIMEOUT_MS) {
+                billingCache.stampLastProState(effectiveSkuId, System.currentTimeMillis())
+            }
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            log(TAG, WARN) { "stampLastProState write failed: ${e.asLog()}" }
+        }
     }
 
     override val upgradeInfo: Flow<Info> = billingManager.billingData
@@ -371,6 +381,10 @@ class UpgradeRepoGplay @Inject constructor(
         // Bound on a single grace-cache DataStore read, so a hung/full-disk store can't stall the
         // reactive entitlement mapping.
         private const val CACHE_READ_TIMEOUT_MS = 2_000L
+
+        // Bound on the grace-state stamp write, so a hung store can't stall the freshBillingData
+        // bookkeeping collector.
+        private const val CACHE_WRITE_TIMEOUT_MS = 5_000L
 
         // The first Play round-trip after sign-in can take >8s; give the UI a bounded wait before it
         // stops showing Loading, so a dead/slow Play can't pin it there forever.

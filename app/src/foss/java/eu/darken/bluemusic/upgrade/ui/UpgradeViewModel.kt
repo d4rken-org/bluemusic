@@ -44,9 +44,14 @@ class UpgradeViewModel @Inject constructor(
     fun openSponsor() {
         if (sponsorPageOpenedAt != null) return
         log(tag) { "openSponsor()" }
+        // Only arm the return-after-5s unlock heuristic if the sponsor page actually opened; otherwise
+        // an unrelated later pause/resume could grant supporter status with no page ever shown.
+        if (!upgradeRepo.openGithubSponsorsPage()) {
+            log(tag) { "Sponsor page didn't open; not arming the unlock heuristic" }
+            return
+        }
         sponsorPageOpenedAt = System.currentTimeMillis()
         hasPausedSinceOpen = false
-        upgradeRepo.openGithubSponsorsPage()
     }
 
     // Status-view variant: an existing supporter re-visiting the sponsor page must NOT re-arm the
