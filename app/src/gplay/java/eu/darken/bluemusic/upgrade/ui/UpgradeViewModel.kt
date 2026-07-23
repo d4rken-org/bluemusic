@@ -51,6 +51,13 @@ class UpgradeViewModel @AssistedInject constructor(
     private val restoring = MutableStateFlow(false)
     private val verifying = MutableStateFlow(false)
 
+    // Single ATOMIC entry guard for every Play entitlement action (buy IAP, buy sub, restore). Each
+    // CASes this as its first action, so two can't run concurrently (which could stack Play
+    // round-trips and duplicate result dialogs). Using separate check-then-CAS on verifying/restoring
+    // had a race across the suspending autoRestoreBusy read. verifying/restoring stay for the
+    // per-button spinner UI.
+    private val actionBusy = MutableStateFlow(false)
+
     // Manual restore OR the repo's invisible already-owned auto-restore: either pauses entitlement actions.
     private val restoreBusy = combine(restoring, upgradeRepo.autoRestoreBusy) { manual, auto ->
         manual || auto
@@ -190,19 +197,18 @@ class UpgradeViewModel @AssistedInject constructor(
     fun onGoIap(activity: Activity) {
         log(tag) { "onGoIap($activity)" }
         launch {
-            // Mutually exclusive with a restore (manual OR the silent already-owned auto-restore): a
-            // purchase verification and a restore both hit Play, and running them together can stack
-            // result dialogs or let a buy race the already-owned recovery.
-            if (restoring.value || upgradeRepo.autoRestoreBusy.first()) {
-                log(tag) { "onGoIap() ignored, a restore is in progress" }
+            // Atomic single-flight across ALL entitlement actions (see actionBusy).
+            if (!actionBusy.compareAndSet(expect = false, update = true)) {
+                log(tag) { "onGoIap() ignored, another billing action is in progress" }
                 return@launch
             }
-            // Single-flight: repeated taps while the fail-closed check runs must not stack.
-            if (!verifying.compareAndSet(expect = false, update = true)) {
-                log(tag) { "onGoIap() ignored, verification already in progress" }
-                return@launch
-            }
+            verifying.value = true
             try {
+                // Defer to the silent already-owned auto-restore while it reconciles.
+                if (upgradeRepo.autoRestoreBusy.first()) {
+                    log(tag) { "onGoIap() ignored, an auto-restore is in progress" }
+                    return@launch
+                }
                 // Fail-closed double-billing gate. A fresh SUBS-only Play read on every IAP tap: a
                 // timeout AND any exception both fold to the fail-closed path — we never launch the
                 // one-time purchase while a subscription is (or might still be) renewing.
@@ -226,28 +232,37 @@ class UpgradeViewModel @AssistedInject constructor(
                 }
             } finally {
                 verifying.value = false
+                actionBusy.value = false
             }
         }
     }
 
     fun onGoSubscription(activity: Activity) {
         log(tag) { "onGoSubscription($activity)" }
-        upgradeRepo.launchBillingFlow(
-            activity,
-            OurSku.Sub.PRO_UPGRADE,
-            OurSku.Sub.PRO_UPGRADE.BASE_OFFER,
-            onError = errorEvents::tryEmit,
-        )
+        launchSubscription(activity, OurSku.Sub.PRO_UPGRADE.BASE_OFFER)
     }
 
     fun onGoSubscriptionTrial(activity: Activity) {
         log(tag) { "onGoSubscriptionTrial($activity)" }
-        upgradeRepo.launchBillingFlow(
-            activity,
-            OurSku.Sub.PRO_UPGRADE,
-            OurSku.Sub.PRO_UPGRADE.TRIAL_OFFER,
-            onError = errorEvents::tryEmit,
-        )
+        launchSubscription(activity, OurSku.Sub.PRO_UPGRADE.TRIAL_OFFER)
+    }
+
+    private fun launchSubscription(activity: Activity, offer: Sku.Subscription.Offer) = launch {
+        // Same atomic entry guard as the other actions, so a subscription buy can't start while a
+        // restore/verify is running (and vice versa).
+        if (!actionBusy.compareAndSet(expect = false, update = true)) {
+            log(tag) { "launchSubscription() ignored, another billing action is in progress" }
+            return@launch
+        }
+        try {
+            if (upgradeRepo.autoRestoreBusy.first()) {
+                log(tag) { "launchSubscription() ignored, an auto-restore is in progress" }
+                return@launch
+            }
+            upgradeRepo.launchBillingFlow(activity, OurSku.Sub.PRO_UPGRADE, offer, onError = errorEvents::tryEmit)
+        } finally {
+            actionBusy.value = false
+        }
     }
 
     fun onManageSubscription() {
@@ -261,21 +276,20 @@ class UpgradeViewModel @AssistedInject constructor(
     }
 
     fun restorePurchase() = launch {
-        // Mutually exclusive with the IAP verification gate (see onGoIap) and with the silent
-        // already-owned auto-restore: all hit Play and stacking them can duplicate result dialogs.
-        if (verifying.value || upgradeRepo.autoRestoreBusy.first()) {
-            log(tag) { "restorePurchase() ignored, a verification or auto-restore is in progress" }
+        // Atomic single-flight across ALL entitlement actions (see actionBusy).
+        if (!actionBusy.compareAndSet(expect = false, update = true)) {
+            log(tag) { "restorePurchase() ignored, another billing action is in progress" }
             return@launch
         }
-        // Single-flight: repeated taps while a restore runs must not stack concurrent restores and
-        // duplicate result dialogs.
-        if (!restoring.compareAndSet(expect = false, update = true)) {
-            log(tag) { "restorePurchase() ignored, already in progress" }
-            return@launch
-        }
+        restoring.value = true
         log(tag) { "restorePurchase()" }
 
         try {
+            // Defer to the silent already-owned auto-restore while it reconciles.
+            if (upgradeRepo.autoRestoreBusy.first()) {
+                log(tag) { "restorePurchase() ignored, an auto-restore is in progress" }
+                return@launch
+            }
             val restored = coroutineScope {
                 // A warm billing cache answers instantly; pad to a minimum visible duration so the
                 // spinner doesn't flash for a single frame and leave the user unsure anything happened.
@@ -310,6 +324,7 @@ class UpgradeViewModel @AssistedInject constructor(
             errorEvents.tryEmit(e)
         } finally {
             restoring.value = false
+            actionBusy.value = false
         }
     }
 

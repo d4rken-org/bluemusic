@@ -47,16 +47,21 @@ data class BillingConnection(
         purchaseEvents,
         querySnapshot.filterNotNull(),
     ) { purchaseEvent, snapshot ->
-        val combined = mutableSetOf<Purchase>()
-
-        combined.addAll(snapshot)
-
+        // Deduplicate by purchaseToken, with the authoritative query snapshot winning on conflict.
+        // The immutable Purchase from a listener event and the one from a later query differ (ack
+        // state; isAutoRenewing flips after a cancel), so Purchase.equals returns false and a plain
+        // Set would keep BOTH — a stale renewing/owned copy would then lock the sub→IAP switch or
+        // retain entitlement after a refund until the connection is recreated. A purchase event still
+        // survives while the snapshot hasn't caught it yet (its token isn't in the snapshot), so a
+        // just-completed purchase is never lost.
+        val byToken = LinkedHashMap<String, Purchase>()
         purchaseEvent
             ?.takeIf { (result, _) -> result.isSuccess }
             ?.let { (_, purchases) -> purchases?.filter { it.purchaseState == PurchaseState.PURCHASED } }
-            ?.let { combined.addAll(it) }
+            ?.forEach { byToken[it.purchaseToken] = it }
+        snapshot.forEach { byToken[it.purchaseToken] = it }
 
-        combined.sortedByDescending { it.purchaseTime }
+        byToken.values.sortedByDescending { it.purchaseTime }
     }.setupCommonEventHandlers(TAG) { "purchases" }
 
     // Non-OK results from onPurchasesUpdated (e.g. async ITEM_ALREADY_OWNED after the Play sheet

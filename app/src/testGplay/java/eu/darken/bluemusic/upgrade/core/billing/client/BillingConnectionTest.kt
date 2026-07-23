@@ -85,6 +85,7 @@ class BillingConnectionTest : BaseTest() {
             val owned = mockk<Purchase>().apply {
                 every { purchaseState } returns PurchaseState.PURCHASED
                 every { purchaseTime } returns 1_000L
+                every { purchaseToken } returns "owned"
             }
             val client = mockk<BillingClient>()
             // Single-threaded test dispatcher: first query is INAPP, second is SUBS.
@@ -181,6 +182,42 @@ class BillingConnectionTest : BaseTest() {
         }
     }
 
+    @Test fun `a fresh snapshot supersedes a stale purchase event with the same token`() = runTest2 {
+        // A subscription bought this session (renewing event) that is then cancelled: the authoritative
+        // query snapshot (isAutoRenewing=false) must supersede the stale event by token, not coexist
+        // with it — otherwise the sub->IAP switch stays locked as "renewing".
+        mockkStatic("com.android.billingclient.api.BillingClientKotlinKt")
+        try {
+            val renewing = mockk<Purchase>().apply {
+                every { purchaseState } returns PurchaseState.PURCHASED
+                every { purchaseTime } returns 1_000L
+                every { purchaseToken } returns "A"
+                every { isAutoRenewing } returns true
+            }
+            val cancelled = mockk<Purchase>().apply {
+                every { purchaseState } returns PurchaseState.PURCHASED
+                every { purchaseTime } returns 1_000L
+                every { purchaseToken } returns "A"
+                every { isAutoRenewing } returns false
+            }
+            val client = mockk<BillingClient>()
+            coEvery { client.queryPurchasesAsync(any<QueryPurchasesParams>()) } returnsMany listOf(
+                PurchasesResult(result(BillingResponseCode.OK), emptyList()),      // refresh INAPP
+                PurchasesResult(result(BillingResponseCode.OK), listOf(cancelled)), // refresh SUBS -> snapshot
+            )
+            val events = MutableStateFlow<Pair<BillingResult, Collection<Purchase>?>?>(
+                result(BillingResponseCode.OK) to listOf(renewing),
+            )
+            val connection = BillingConnection(client, events)
+            connection.refreshPurchases()
+
+            val result = connection.purchases.first()
+            result.map { it.isAutoRenewing } shouldBe listOf(false)
+        } finally {
+            unmockkStatic("com.android.billingclient.api.BillingClientKotlinKt")
+        }
+    }
+
     // The BillingFlowParams builder calls TextUtils.isEmpty, which is an unmocked Android stub in
     // plain JVM tests — give it its real behavior.
     private fun mockTextUtils() {
@@ -214,6 +251,7 @@ class BillingConnectionTest : BaseTest() {
             val owned = mockk<Purchase>().apply {
                 every { purchaseState } returns PurchaseState.PURCHASED
                 every { purchaseTime } returns 1_000L
+                every { purchaseToken } returns "owned"
             }
             events.value = result(BillingResponseCode.OK) to listOf(owned)
             failures.value = result(BillingResponseCode.USER_CANCELED)
