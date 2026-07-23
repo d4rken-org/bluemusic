@@ -8,6 +8,10 @@ sealed interface UpgradeUiState {
 
     data object Loading : UpgradeUiState
 
+    // Play couldn't return prices (both SKU queries failed/timed out) for a non-owner/non-grace user —
+    // show an error card with a Retry instead of leaving them stuck with no way to pick a plan.
+    data class Unavailable(val error: Throwable) : UpgradeUiState
+
     data class Loaded(
         val subscriptionAction: SubscriptionAction,
         val subscriptionEnabled: Boolean,
