@@ -280,9 +280,12 @@ class UpgradeRepoGplay @Inject constructor(
     // timestamp is stamped by the freshBillingData collector above, not from mapped (possibly
     // replayed) flow data.
     private suspend fun BillingData?.toUpgradeInfo(): Info {
-        // A confirmed purchase wins IMMEDIATELY, before any grace-cache read: never gate a real
-        // entitlement behind a (possibly hung/failing, e.g. full-disk) DataStore read.
-        if (this?.purchases?.isNotEmpty() == true) return Info(billingData = this)
+        // A confirmed KNOWN Pro purchase wins IMMEDIATELY, before any grace-cache read: never gate a
+        // real entitlement behind a (possibly hung/failing, e.g. full-disk) DataStore read. Branch on
+        // MAPPED upgrades, not the raw purchase list — a purchase of only unrecognized product IDs
+        // maps to zero upgrades and must fall through to the grace window, not masquerade as Pro.
+        val confirmed = Info(billingData = this)
+        if (confirmed.upgrades.isNotEmpty()) return confirmed
 
         // Grace fallback: bounded + fail-soft reads so a broken DataStore can neither hang nor throw
         // out of this reactive mapping (which would loop the flow and stick the screen on loading).
@@ -293,7 +296,7 @@ class UpgradeRepoGplay @Inject constructor(
             log(TAG, VERBOSE) { "We are not pro, but were recently, did GPlay try annoy us again?" }
             Info(gracePeriod = true, billingData = null)
         } else {
-            Info(billingData = this)
+            confirmed
         }
     }
 

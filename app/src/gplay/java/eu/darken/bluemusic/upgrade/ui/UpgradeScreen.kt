@@ -153,6 +153,7 @@ fun UpgradeScreen(
                 onGoSubscription = onGoSubscription,
                 onGoSubscriptionTrial = onGoSubscriptionTrial,
                 onRestorePurchase = onRestorePurchase,
+                onRetry = onRetry,
             )
 
             loaded != null -> AcquisitionContent(
@@ -161,6 +162,7 @@ fun UpgradeScreen(
                 onGoSubscription = onGoSubscription,
                 onGoSubscriptionTrial = onGoSubscriptionTrial,
                 onRestorePurchase = onRestorePurchase,
+                onRetry = onRetry,
             )
         }
     }
@@ -283,6 +285,7 @@ private fun GraceContent(
     onGoSubscription: () -> Unit,
     onGoSubscriptionTrial: () -> Unit,
     onRestorePurchase: () -> Unit,
+    onRetry: () -> Unit,
 ) {
     val grace = state.grace ?: return
     Card(
@@ -334,6 +337,11 @@ private fun GraceContent(
             onGoIap = onGoIap,
             onGoSubscription = onGoSubscription,
             onGoSubscriptionTrial = onGoSubscriptionTrial,
+            onRetry = onRetry,
+            // Grace = the user is Pro but Play can't confirm. Only offer the one-time IAP, which Play
+            // blocks with ITEM_ALREADY_OWNED if already owned; a subscription purchase here could
+            // double-bill an unconfirmed permanent-IAP owner.
+            allowSubscription = false,
         )
     }
 }
@@ -381,6 +389,7 @@ private fun AcquisitionContent(
     onGoSubscription: () -> Unit,
     onGoSubscriptionTrial: () -> Unit,
     onRestorePurchase: () -> Unit,
+    onRetry: () -> Unit,
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -414,6 +423,7 @@ private fun AcquisitionContent(
         onGoIap = onGoIap,
         onGoSubscription = onGoSubscription,
         onGoSubscriptionTrial = onGoSubscriptionTrial,
+        onRetry = onRetry,
     )
 
     Spacer(modifier = Modifier.height(16.dp))
@@ -437,8 +447,13 @@ private fun OfferButtons(
     onGoIap: () -> Unit,
     onGoSubscription: () -> Unit,
     onGoSubscriptionTrial: () -> Unit,
+    onRetry: () -> Unit,
+    // Grace passes false: only the one-time IAP (which Play blocks with ITEM_ALREADY_OWNED if already
+    // owned) is safe to offer to an UNCONFIRMED owner. A subscription purchase has no cross-SKU
+    // double-bill protection, so an unconfirmed permanent-IAP owner could pay twice.
+    allowSubscription: Boolean = true,
 ) {
-    val hasSub = state.subscriptionAvailable
+    val hasSub = state.subscriptionAvailable && allowSubscription
     val hasIap = state.iapAvailable
 
     if (hasSub) {
@@ -503,6 +518,9 @@ private fun OfferButtons(
     }
 
     if (!hasSub && !hasIap) {
+        // No offers loaded (e.g. a transient Play price hiccup for a grace/price-independent user).
+        // Give a Retry to reload the offers, plus the generic upgrade button (which re-queries at
+        // purchase time) as a fallback.
         Button(
             onClick = onGoIap,
             enabled = !state.restoreInProgress && !state.verificationInProgress,
@@ -516,6 +534,16 @@ private fun OfferButtons(
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(start = 8.dp),
             )
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedButton(
+            onClick = onRetry,
+            enabled = !state.restoreInProgress && !state.verificationInProgress,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp),
+        ) {
+            Text(text = stringResource(R.string.upgrade_screen_retry_action))
         }
     }
 }
