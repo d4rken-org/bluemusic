@@ -13,8 +13,8 @@ import androidx.compose.material.icons.twotone.Palette
 import androidx.compose.material.icons.twotone.PlayCircle
 import androidx.compose.material.icons.twotone.Tune
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -142,9 +142,9 @@ fun SupporterStatusScreen(
         postfix = stringResource(R.string.app_name_upgrade_postfix),
         onNavigateBack = onNavigateBack,
     ) {
-        Card(
+        ElevatedCard(
             modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(
+            colors = CardDefaults.elevatedCardColors(
                 containerColor = MaterialTheme.colorScheme.secondaryContainer,
                 contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
             ),

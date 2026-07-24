@@ -13,6 +13,7 @@ import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.SingleEventFlow
+import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.upgrade.core.OurSku
@@ -268,6 +269,11 @@ class UpgradeViewModel @AssistedInject constructor(
     fun onManageSubscription() {
         log(tag) { "onManageSubscription()" }
         webpageTool.open(PLAY_SUBSCRIPTION_SITE)
+    }
+
+    fun onContactSupport() {
+        log(tag) { "onContactSupport()" }
+        navTo(Nav.Settings.ContactSupport)
     }
 
     fun onRetry() {

@@ -18,6 +18,8 @@
     <string name="upgrade_screen_subscription_action_hint">The subscription costs %s per year.</string>
     <string name="upgrade_screen_iap_action">One-time purchase</string>
     <string name="upgrade_screen_iap_action_hint">The one-time purchase costs %s.</string>
+    <string name="upgrade_screen_offer_divider_or">or</string>
+    <string name="upgrade_screen_offer_same_features">Same features, just different pricing models.</string>
     <string name="upgrade_screen_thanks_toast">You are the best! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Restore purchase</string>
     <string name="upgrade_screen_restore_banner_title">Already bought BVM Pro?</string>
@@ -32,6 +34,8 @@
     <string name="settings_upgrade_status_desc">View your Pro status</string>
 
     <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Congratulations!</string>
+    <string name="upgrade_screen_owned_congrats_body">You\'ve got BVM Pro — thanks for supporting development. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">One-time purchase</string>
     <string name="upgrade_screen_owned_iap_body">You own BVM Pro forever. Thanks for your support ❤️</string>
     <string name="upgrade_screen_owned_sub_title">Subscription</string>
