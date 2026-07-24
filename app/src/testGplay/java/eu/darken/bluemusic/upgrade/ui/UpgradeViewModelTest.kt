@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.upgrade.ui
 
 import com.android.billingclient.api.Purchase
+import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.upgrade.core.OurSku
 import eu.darken.bluemusic.upgrade.core.UpgradeRepoGplay
@@ -416,6 +417,23 @@ class UpgradeViewModelTest : BaseTest() {
 
         (calls > afterFirst) shouldBe true
         collector.cancel()
+    }
+
+    @Test fun `onContactSupport navigates to the contact screen`() = runTest2(context = testDispatcher) {
+        val repo = mockRepo()
+        val navCtrl = mockk<NavigationController>(relaxed = true)
+        val vm = UpgradeViewModel(
+            manage = true,
+            dispatcherProvider = TestDispatcherProvider(testDispatcher),
+            navCtrl = navCtrl,
+            upgradeRepo = repo,
+            webpageTool = mockk(relaxed = true),
+        )
+
+        vm.onContactSupport()
+        advanceUntilIdle()
+
+        verify { navCtrl.goTo(Nav.Settings.ContactSupport, null, false) }
     }
 
     @Test fun `restore errors surface via errorEvents not RestoreFailed`() = runTest2(

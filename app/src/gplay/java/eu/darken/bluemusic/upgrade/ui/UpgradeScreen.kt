@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.upgrade.ui
 
 import android.app.Activity
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -21,10 +22,11 @@ import androidx.compose.material.icons.twotone.Tune
 import androidx.compose.material.icons.twotone.Verified
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -36,6 +38,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -62,9 +65,9 @@ fun UpgradeScreenHost(
     val snackbarHostState = remember { SnackbarHostState() }
     val restoreSucceededMessage = stringResource(R.string.upgrade_screen_thanks_toast)
 
-    var showRestoreFailedDialog by remember { mutableStateOf(false) }
-    var showStillRenewingDialog by remember { mutableStateOf(false) }
-    var showCheckFailedDialog by remember { mutableStateOf(false) }
+    var showRestoreFailedDialog by rememberSaveable { mutableStateOf(false) }
+    var showStillRenewingDialog by rememberSaveable { mutableStateOf(false) }
+    var showCheckFailedDialog by rememberSaveable { mutableStateOf(false) }
 
     ErrorEventHandler(vm)
 
@@ -93,7 +96,13 @@ fun UpgradeScreenHost(
     }
 
     if (showRestoreFailedDialog) {
-        RestoreFailedDialog(onDismiss = { showRestoreFailedDialog = false })
+        RestoreFailedDialog(
+            onContactSupport = {
+                showRestoreFailedDialog = false
+                vm.onContactSupport()
+            },
+            onDismiss = { showRestoreFailedDialog = false },
+        )
     }
     if (showStillRenewingDialog) {
         SubscriptionStillRenewingDialog(
@@ -122,6 +131,17 @@ fun UpgradeScreen(
     val isOwner = loaded?.ownership?.ownsAnything == true
     val inGrace = loaded?.grace != null
 
+    // Coarse phase for the content cross-fade. Deliberately excludes prices, busy flags and
+    // subscriptionAction: within-phase changes (price load, restore/verify spinners, TRIAL<->STANDARD,
+    // grace quiet<->diagnostics) update in place, only phase changes (e.g. Loading -> offers) fade.
+    val phase = when {
+        state == null || state is UpgradeUiState.Loading -> UpgradeContentPhase.LOADING
+        state is UpgradeUiState.Unavailable -> UpgradeContentPhase.UNAVAILABLE
+        isOwner -> UpgradeContentPhase.OWNER
+        inGrace -> UpgradeContentPhase.GRACE
+        else -> UpgradeContentPhase.ACQUISITION
+    }
+
     UpgradeScreenShell(
         // Owners and grace users get the celebratory "Pro" title; acquisition gets the plain pitch title.
         title = if (isOwner || inGrace) {
@@ -133,40 +153,56 @@ fun UpgradeScreen(
         onNavigateBack = onNavigateBack,
         snackbarHostState = snackbarHostState,
     ) {
-        when {
-            state == null || state is UpgradeUiState.Loading -> {
-                CircularProgressIndicator(modifier = Modifier.padding(vertical = 24.dp))
+        Crossfade(targetState = phase, label = "upgrade-content") { target ->
+            // One Column per branch so animation content never overlaps; each branch reads the live
+            // state so the incoming frame always shows current data.
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                when (target) {
+                    UpgradeContentPhase.LOADING ->
+                        CircularProgressIndicator(modifier = Modifier.padding(vertical = 24.dp))
+
+                    UpgradeContentPhase.UNAVAILABLE -> UnavailableContent(onRetry = onRetry)
+
+                    UpgradeContentPhase.OWNER -> loaded?.let {
+                        OwnerContent(
+                            state = it,
+                            onGoIap = onGoIap,
+                            onManageSubscription = onManageSubscription,
+                            onRestorePurchase = onRestorePurchase,
+                        )
+                    }
+
+                    UpgradeContentPhase.GRACE -> loaded?.let {
+                        GraceContent(
+                            state = it,
+                            onGoIap = onGoIap,
+                            onGoSubscription = onGoSubscription,
+                            onGoSubscriptionTrial = onGoSubscriptionTrial,
+                            onRestorePurchase = onRestorePurchase,
+                            onRetry = onRetry,
+                        )
+                    }
+
+                    UpgradeContentPhase.ACQUISITION -> loaded?.let {
+                        AcquisitionContent(
+                            state = it,
+                            onGoIap = onGoIap,
+                            onGoSubscription = onGoSubscription,
+                            onGoSubscriptionTrial = onGoSubscriptionTrial,
+                            onRestorePurchase = onRestorePurchase,
+                            onRetry = onRetry,
+                        )
+                    }
+                }
             }
-
-            state is UpgradeUiState.Unavailable -> UnavailableContent(onRetry = onRetry)
-
-            loaded != null && isOwner -> OwnerContent(
-                state = loaded,
-                onGoIap = onGoIap,
-                onManageSubscription = onManageSubscription,
-                onRestorePurchase = onRestorePurchase,
-            )
-
-            loaded != null && loaded.grace != null -> GraceContent(
-                state = loaded,
-                onGoIap = onGoIap,
-                onGoSubscription = onGoSubscription,
-                onGoSubscriptionTrial = onGoSubscriptionTrial,
-                onRestorePurchase = onRestorePurchase,
-                onRetry = onRetry,
-            )
-
-            loaded != null -> AcquisitionContent(
-                state = loaded,
-                onGoIap = onGoIap,
-                onGoSubscription = onGoSubscription,
-                onGoSubscriptionTrial = onGoSubscriptionTrial,
-                onRestorePurchase = onRestorePurchase,
-                onRetry = onRetry,
-            )
         }
     }
 }
+
+private enum class UpgradeContentPhase { LOADING, UNAVAILABLE, OWNER, GRACE, ACQUISITION }
 
 // ---- Owner (Pro status) ----
 
@@ -180,6 +216,8 @@ private fun OwnerContent(
     val ownership = state.ownership
     val subscription = ownership.subscription
 
+    CongratulationsCard()
+    Spacer(modifier = Modifier.height(12.dp))
     BenefitsRecapCard()
 
     if (ownership.hasIap) {
@@ -227,7 +265,7 @@ private fun OwnerContent(
     if (subscription != null && !ownership.hasIap) {
         val switchUnlocked = !subscription.isAutoRenewing
         Spacer(modifier = Modifier.height(12.dp))
-        Card(modifier = Modifier.fillMaxWidth()) {
+        ElevatedCard(modifier = Modifier.fillMaxWidth()) {
             Column(modifier = Modifier.padding(14.dp)) {
                 Text(
                     text = stringResource(R.string.upgrade_screen_switch_title),
@@ -288,9 +326,9 @@ private fun GraceContent(
     onRetry: () -> Unit,
 ) {
     val grace = state.grace ?: return
-    Card(
+    ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
+        colors = CardDefaults.elevatedCardColors(
             containerColor = MaterialTheme.colorScheme.secondaryContainer,
             contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
         ),
@@ -350,9 +388,9 @@ private fun GraceContent(
 
 @Composable
 private fun UnavailableContent(onRetry: () -> Unit) {
-    Card(
+    ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
+        colors = CardDefaults.elevatedCardColors(
             containerColor = MaterialTheme.colorScheme.errorContainer,
             contentColor = MaterialTheme.colorScheme.onErrorContainer,
         ),
@@ -391,9 +429,9 @@ private fun AcquisitionContent(
     onRestorePurchase: () -> Unit,
     onRetry: () -> Unit,
 ) {
-    Card(
+    ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
+        colors = CardDefaults.elevatedCardColors(
             containerColor = MaterialTheme.colorScheme.secondaryContainer,
         ),
     ) {
@@ -480,7 +518,7 @@ private fun OfferButtons(
         }
     }
 
-    if (hasSub && hasIap) Spacer(modifier = Modifier.height(12.dp))
+    if (hasSub && hasIap) OrDivider()
 
     if (hasIap) {
         if (hasSub) {
@@ -517,6 +555,18 @@ private fun OfferButtons(
         }
     }
 
+    if (hasSub && hasIap) {
+        Text(
+            text = stringResource(R.string.upgrade_screen_offer_same_features),
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp),
+        )
+    }
+
     if (!hasSub && !hasIap) {
         // No offers loaded (e.g. a transient Play price hiccup for a grace/price-independent user).
         // Give a Retry to reload the offers, plus the generic upgrade button (which re-queries at
@@ -551,6 +601,37 @@ private fun OfferButtons(
 // ---- Shared bits ----
 
 @Composable
+private fun CongratulationsCard() {
+    ElevatedCard(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = MaterialTheme.colorScheme.secondaryContainer,
+            contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+        ),
+    ) {
+        Column(modifier = Modifier.padding(14.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.TwoTone.Verified,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                )
+                Text(
+                    text = stringResource(R.string.upgrade_screen_owned_congrats_title),
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.padding(start = 8.dp),
+                )
+            }
+            Spacer(modifier = Modifier.height(6.dp))
+            Text(
+                text = stringResource(R.string.upgrade_screen_owned_congrats_body),
+                style = MaterialTheme.typography.bodyMedium,
+            )
+        }
+    }
+}
+
+@Composable
 private fun BenefitsRecapCard() {
     val benefits = listOf(
         UpgradeBenefitItem(Icons.TwoTone.Devices, stringResource(R.string.upgrade_benefit_unlimited_devices)),
@@ -569,7 +650,7 @@ private fun StatusCard(
     body: String,
     extra: @Composable (() -> Unit)? = null,
 ) {
-    Card(modifier = Modifier.fillMaxWidth()) {
+    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
         Column(modifier = Modifier.padding(14.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(imageVector = icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
@@ -649,6 +730,25 @@ private fun RestoreButton(
 }
 
 @Composable
+private fun OrDivider() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        HorizontalDivider(modifier = Modifier.weight(1f))
+        Text(
+            text = stringResource(R.string.upgrade_screen_offer_divider_or),
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(horizontal = 12.dp),
+        )
+        HorizontalDivider(modifier = Modifier.weight(1f))
+    }
+}
+
+@Composable
 private fun PriceHint(text: String) {
     Text(
         text = text,
@@ -667,9 +767,9 @@ private fun RestoreBanner(
     restoreInProgress: Boolean,
     verificationInProgress: Boolean,
 ) {
-    Card(
+    ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
+        colors = CardDefaults.elevatedCardColors(
             containerColor = MaterialTheme.colorScheme.tertiaryContainer,
             contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
         ),
@@ -698,7 +798,10 @@ private fun RestoreBanner(
 // ---- Dialogs ----
 
 @Composable
-fun RestoreFailedDialog(onDismiss: () -> Unit) {
+fun RestoreFailedDialog(
+    onContactSupport: () -> Unit,
+    onDismiss: () -> Unit,
+) {
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
@@ -708,6 +811,11 @@ fun RestoreFailedDialog(onDismiss: () -> Unit) {
             )
         },
         confirmButton = {
+            TextButton(onClick = onContactSupport) {
+                Text(stringResource(R.string.settings_support_contact_label))
+            }
+        },
+        dismissButton = {
             TextButton(onClick = onDismiss) { Text(stringResource(id = android.R.string.ok)) }
         },
         text = {
@@ -865,5 +973,5 @@ private fun UpgradeScreenUnavailablePreview() {
 @Preview2
 @Composable
 private fun RestoreFailedDialogPreview() {
-    PreviewWrapper { RestoreFailedDialog(onDismiss = {}) }
+    PreviewWrapper { RestoreFailedDialog(onContactSupport = {}, onDismiss = {}) }
 }
