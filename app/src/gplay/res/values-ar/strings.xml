@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">الاشتراك يكلف %s لكل سنة.</string>
     <string name="upgrade_screen_iap_action">شراء مرة واحدة</string>
     <string name="upgrade_screen_iap_action_hint">تكلفة الشراء لمرة واحدة %s.</string>
+    <string name="upgrade_screen_offer_divider_or">أو</string>
+    <string name="upgrade_screen_offer_same_features">نفس الميزات، فقط بنماذج تسعير مختلفة.</string>
     <string name="upgrade_screen_thanks_toast">أنت الأفضل ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">استعادة المُشتَرَى</string>
+    <string name="upgrade_screen_restore_banner_title">هل اشتريت BVM Pro من قبل؟</string>
+    <string name="upgrade_screen_restore_banner_body">يبدو أنك قمت بالترقية على هذا الجهاز من قبل. استعد عملية الشراء لإلغاء القفل مرة أخرى.</string>
     <string name="upgrade_screen_restore_purchase_message">الترقية الخاصة بك صالحة لكل الأجهزة باستخدام نفس حساب Google.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">نصائح استكشاف الأخطاء في الترقيات غير المعترف بها:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">قد تستغرق مزامنة متجر التشغيل وقتاً طويلا. حاول إعادة التشغيل، مسح ذاكرة التخزين المؤقت لـ Google Play أو الانتظار قليلا.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">الحسابات المتعددة يمكنها إرباك Google Play. سجّل الخروج من الحسابات الأخرى أو ثبّت من خلال موقع Google Play، الذي يفرض الرّبط مع حساب معين.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">عرض حالة Pro الخاصة بك</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">تهانينا!</string>
+    <string name="upgrade_screen_owned_congrats_body">لقد حصلت على BVM Pro — شكرًا لدعمك التطوير. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">شراء مرة واحدة</string>
+    <string name="upgrade_screen_owned_iap_body">أنت تمتلك BVM Pro إلى الأبد. شكرًا لدعمك ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">الاشتراك</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">اشتراكك في BVM Pro نشط ومُعد للتجديد.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">اشتراكك في BVM Pro نشط لكنه لن يتجدد. يظل ساريًا حتى نهاية الفترة الحالية.</string>
+    <string name="upgrade_screen_owned_both_warning">لديك كل من الاشتراك والشراء لمرة واحدة. ألغِ الاشتراك في Google Play حتى لا تُخصم منك رسوم مرة أخرى.</string>
+    <string name="upgrade_screen_manage_subscription">إدارة الاشتراك</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">التبديل إلى شراء لمرة واحدة</string>
+    <string name="upgrade_screen_switch_purchase_note">هذا شراء منفصل لمرة واحدة. لا يؤدي إلى إلغاء اشتراكك أو استرداد قيمته، لذا ألغِ الاشتراك في Google Play أيضًا. استخدم نفس حساب Google للاثنين.</string>
+    <string name="upgrade_screen_switch_locked_note">متاح بمجرد أن يصبح اشتراكك غير مُعد للتجديد. ألغه في Google Play للتبديل — ستحتفظ بـ Pro حتى نهاية الفترة الحالية.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">هل تبدو الحالة غير صحيحة؟</string>
+    <string name="upgrade_screen_status_restore_body">إذا لم تظهر عملية الشراء هنا، فحاول استعادتها.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">جارٍ تأكيد عملية الشراء</string>
+    <string name="upgrade_screen_grace_body_short">لحظات من فضلك — نتحقق مرة أخرى من عملية الشراء الخاصة بك مع Google Play.</string>
+    <string name="upgrade_screen_grace_body">ما زلنا غير قادرين على تأكيد عملية الشراء الخاصة بك مع Google Play. حاول استعادتها، أو تحقق من أنك مسجل الدخول بالحساب الصحيح.</string>
+    <string name="upgrade_screen_retry_action">إعادة المحاولة</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">الاشتراك ما زال نشطًا</string>
+    <string name="upgrade_screen_sub_still_renewing_message">اشتراكك لا يزال مُعدًا للتجديد. ألغه في Google Play أولاً، ثم عد لشراء الشراء لمرة واحدة — بهذه الطريقة لن تُخصم منك رسوم مرتين.</string>
+    <string name="upgrade_screen_sub_check_failed_message">لم نتمكن من التحقق من حالة اشتراكك. يُرجى التحقق من اتصالك والمحاولة مرة أخرى.</string>
+    <string name="upgrades_gplay_already_owned_error_title">تم الشراء بالفعل</string>
+    <string name="upgrades_gplay_already_owned_error_description">استخدم خيار \"استعادة الشراء\" لاستعادة عملية الشراء الخاصة بك. إذا استمرت المشكلة، حاول مسح ذاكرة التخزين المؤقتة لـ Google Play وإعادة تشغيل جهازك.</string>
+    <string name="upgrades_gplay_internal_error_title">خطأ في Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">حدث خطأ داخلي في Google Play. يُرجى تجربة ما يلي:\n\n• إعادة تشغيل جهازك\n• مسح ذاكرة التخزين المؤقتة لمتجر Google Play\n• المحاولة مرة أخرى لاحقًا</string>
+    <string name="upgrades_gplay_network_error_title">خطأ في الاتصال</string>
+    <string name="upgrades_gplay_network_error_description">تعذر الاتصال بـ Google Play. يُرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play غير متاح</string>
     <string name="upgrades_gplay_unavailable_error_description">يتعذر على Bluetooth Volume Manager الاتصال بـ Google Play. هل تم تثبيت Google Play وتحديثه؟ هل تم تسجيل الدخول إلى حسابك في Google؟ حاول مسح ذاكرة التخزين المؤقت لتطبيق Google Play وإعادة تشغيل جهازك.</string>
     <string name="upgrades_no_purchases_found_check_account">لم يتم العثور على عملية الشراء. هل تستخدم حساب Google الصحيح؟</string>

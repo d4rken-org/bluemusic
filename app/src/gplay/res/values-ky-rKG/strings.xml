@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Жазылык жылына %s түрүн.</string>
     <string name="upgrade_screen_iap_action">Бир жолку сатып алуу</string>
     <string name="upgrade_screen_iap_action_hint">Бир жолку сатып алуу %s түрүн.</string>
+    <string name="upgrade_screen_offer_divider_or">же</string>
+    <string name="upgrade_screen_offer_same_features">Бирдей функциялар, жөн гана баа моделдери ар башка.</string>
     <string name="upgrade_screen_thanks_toast">Сиз ең жакшысыз! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Сатып алууну берновулоо</string>
+    <string name="upgrade_screen_restore_banner_title">Буга чейин BVM Pro сатып алдыңыз?</string>
+    <string name="upgrade_screen_restore_banner_body">Окшоп турганча, сиз ушул түзүлмөдө мурда жаңырттыңыз. Аны кайра ачуу үчүн сатып алууңузду калыбына келтириңиз.</string>
     <string name="upgrade_screen_restore_purchase_message">Сиздин апгрейд бирдей Google аккаунттагы бардык түзмөктөрдө жарамдуу.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Танылбаган апгрейддер үчүн күйүү чечүү кеңештҩрүлөрү:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store синхрондоо уакыт алышы мүмкүн. Чүмүрлөө, Google Play кэшин тазалоону немесе жой күтүүдү бүлкүүнүз карап көрүңүз.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Бирден көп аккаунт Google Play арачан чаташтырат. Башка аккаунттардан чыгыңыз немесе белгилүү аккаунт менен байланышты мәжбүрлеечи Google Play вебсайты аркылу уруксаттырында орнотуңуз.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Сиздин Pro абалын көрүңүз</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Куттуктаймын!</string>
+    <string name="upgrade_screen_owned_congrats_body">Сизде BVM Pro бар — өнүктүрүүгө колдоо көрсөткөнүңүз үчүн рахмат. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Бир жолку сатып алуу</string>
+    <string name="upgrade_screen_owned_iap_body">Сизде BVM Pro түбөлүк. Колдоо көрсөткөнүңүз үчүн рахмат ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Подписка</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Сиздин BVM Pro подпискасы белсенди жана кайталанууга коюлган.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Сиздин BVM Pro подпискасы белсенди, бирок кайталанбайт. Ал азыркы мезгилдин аягына чейин жарактуу.</string>
+    <string name="upgrade_screen_owned_both_warning">Сизде подписка жана бир жолу сатып алуу бар. Кайра төлөм алынбашы үчүн подписканы Google Play\'де жокко чыгарыңыз.</string>
+    <string name="upgrade_screen_manage_subscription">Подписканы башкаруу</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Бир жолу сатып алууга өтүү</string>
+    <string name="upgrade_screen_switch_purchase_note">Бул өзүнчө бир жолу сатып алуу. Ал сиздин подписканы жокко чыгарбайт же акча кайтарбайт, ошондуктан Google Play\'де да жокко чыгарыңыз. Экөө үчүн бир эле Google аккаунтту колдонуңуз.</string>
+    <string name="upgrade_screen_switch_locked_note">Подписка кайталанууга коюлбай калгандан кийин жеткиликтүү болот. Өтүү үчүн Google Play\'де аны жокко чыгарыңыз — азыркы мезгил бүткөнгө чейин Pro сакталат.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Статус туура эмес көрүнүп жатабы?</string>
+    <string name="upgrade_screen_status_restore_body">Эгер сиздин сатып алуу бул жерде көрүнбөсө, аны калыбына келтирүүгө аракет кылыңыз.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Сатып алууну ырастоо</string>
+    <string name="upgrade_screen_grace_body_short">Бир аз кутуңуз — биз сатып алууңузду Google Play менен кайра текшерүүдө турабыз.</string>
+    <string name="upgrade_screen_grace_body">Биз дагы эле сатып алууңузду Google Play менен ырастай албайбыз. Аны калыбына келтирүүгө аракет кылыңыз же туура аккаунтка киргениңизди текшерүңүз.</string>
+    <string name="upgrade_screen_retry_action">Кайра аракет кылуу</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Жазылуу дагы эле активдүү</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Сиздин жазылуу дагы эле кайталанууга коюлган. Адегенде аны Google Play\'де жокко чыгарыңыз, андан кийин бир жолу сатып алуу үчүн кайра келиңиз — ошентип эки жолу төлөбойсуңуз.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Биз сиздин жазылуу статусун текшей албадык. Байланышыңызды текшеңиз жана кайра аракет кылыңыз.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Мурда сатылып алынган</string>
+    <string name="upgrades_gplay_already_owned_error_description">\"Сатып алууну калыбына келтирүү\" опциясын колдонуп, сатып алууңузду калыбына келтириңиз. Эгер проблема сакталса, Google Play кэшин тазалап жана түзмөгүңүздү кайра жүктөп көрүңүз.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play катасы</string>
+    <string name="upgrades_gplay_internal_error_description">Google Play ички катасы пайда болду. Төмөндөгүлөрдү аракет кылып көрүңүз:\n\n• Түзмөгүңүздү кайта баштаңыз\n• Google Play Store кэшин тазалаңыз\n• Кийинчереэк аракет кылыңыз</string>
+    <string name="upgrades_gplay_network_error_title">Байланыш катасы</string>
+    <string name="upgrades_gplay_network_error_description">Google Play\'ге туташуу мүмкүн болбоду. Интернет байланышыңызды текшериңиз жана кайра аракет кылыңыз.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play жетиштүүсүз</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play га байлана албайт. Google Play орнотулган жана жаңыртылганбы? Google аккаунтыңызга киргенбе? Google Play кэшин тазалап, түзмөгүңүздү кайра чүмүрлөө көрүңүз.</string>
     <string name="upgrades_no_purchases_found_check_account">Эч кандай сатып алуулар табылган жок. Туура каттоо эсебин колдонуп жатасызбы?</string>

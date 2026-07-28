@@ -20,4 +20,12 @@
     <string name="upgrade_screen_sponsor_action_hint">Альтернатива — реклама, аналитика и Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Спасибо за поддержку разработки с открытым исходным кодом ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">Уже вернулись? Ваша поддержка помогает BVM жить!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">Посмотреть статус поддержки</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">Спасибо за вашу поддержку</string>
+    <string name="upgrade_screen_supporter_status_body">Вы разблокировали все дополнительные функции, поддержав разработку open-source проекта.</string>
+    <string name="upgrade_screen_supporter_since">Поддерживает с %s</string>
+    <string name="upgrade_screen_supporter_visit_action">Открыть GitHub Sponsors</string>
 </resources>

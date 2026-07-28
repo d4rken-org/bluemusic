@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">L\'abunament custa %s per onn.</string>
     <string name="upgrade_screen_iap_action">Cumprenda singula</string>
     <string name="upgrade_screen_iap_action_hint">La cumprenda singula custa %s.</string>
+    <string name="upgrade_screen_offer_divider_or">u</string>
+    <string name="upgrade_screen_offer_same_features">Mateunas funcziuns, nussas models da prezia differents.</string>
     <string name="upgrade_screen_thanks_toast">Ti es il meglier! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Recuperar cumprenda</string>
+    <string name="upgrade_screen_restore_banner_title">Hai gia cumprau BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Sembia che ti aias gia actualisau sin quel apparat. Restituir tia cumpaira per sblochir quella ancora ina giada.</string>
     <string name="upgrade_screen_restore_purchase_message">Tia actualisaziun è valaivla sin tuts ils apparat sul medem conto Google.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Tips per la soluziun da problems per actualisaziuns betg agnoschidas:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">La sincronisaziun cun il Play Store po prender temp. Emprova da ristar l\'apparat, da stgular il cache da Google Play u simplamain spetga.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Divers contos pon cunfunder Google Play. Sorta dad autri contos u installa via il website da Google Play, che forza l\'assoziaziun cun in conto specific.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Vesair tiu status Pro</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Felicitaziuns!</string>
+    <string name="upgrade_screen_owned_congrats_body">Hai BVM Pro — grazia per sustenir il svilup. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Cumpaira ina giada</string>
+    <string name="upgrade_screen_owned_iap_body">Ti es proprietari da BVM Pro eternamain. Grazia per tia sustegna ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Abunament</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Vossa abunament BVM Pro è activa e configurada per renovar se.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Vossa abunament BVM Pro è activa, ma na vegn betg renovada. Ella resta valida fina al fin dal perioda actual.</string>
+    <string name="upgrade_screen_owned_both_warning">Vus avais ina abunament e ina aquista ina metta. Annulai l\'abunament en Google Play che na vegniais betg chargiais pli.</string>
+    <string name="upgrade_screen_manage_subscription">Administrar l\'abunament</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Midar ad ina aquista ina metta</string>
+    <string name="upgrade_screen_switch_purchase_note">Questa è ina autra aquista ina metta. Ella na annulescha betg e na rumburscha betg vossa abunament, perquai annulai quella en Google Play er. Utilisai il medem cunt Google per l\'ina sco per l\'autra.</string>
+    <string name="upgrade_screen_switch_locked_note">Disponibla sch\'il voss abunament na vegn betg pli configurada per renovar. Annulai l\'abunament en Google Play per midar — vus tegnais Pro fina al fin dal perioda actual.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Statisa è chatta?</string>
+    <string name="upgrade_screen_status_restore_body">Sch\'il voss aquista na vegn betg mussau chi, empruvai da restaurar.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Confirmonda da tia commanda</string>
+    <string name="upgrade_screen_grace_body_short">Spetga - nus controllain tia commanda cun Google Play.</string>
+    <string name="upgrade_screen_grace_body">Nus n\'empruvain anc a confirmar tia commanda cun Google Play. Prouva da restituir, u controllescha che tu es logieu cun il cunt correct.</string>
+    <string name="upgrade_screen_retry_action">Emprouva uss</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">L\'abunament è anc activ</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Tia abunament è anc sa da renovar. Annulla la avant-maun en Google Play, lura vegn uss a cumprar la commanda unica - uschia na vegn ti na chargiau duas vias.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Nus n\'empruvain a controlleschar il status da tia abunament. Controllescha per plaschair tia connexiun e prouva uss.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Gia cumpra</string>
+    <string name="upgrades_gplay_already_owned_error_description">Utilisescha l\'opziun \"Restituir la commanda\" per restituir tia commanda. Sche il problem persista, emprouva a stritgar il cache da Google Play e da restartar tia apparat.</string>
+    <string name="upgrades_gplay_internal_error_title">Errur da Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Igl ha dà in sbagl intern da Google Play. Prova las suandantas mesiras:\n\n• Reavair tia apparat\n• Svida la cache da Google Play Store\n• Prova pli tard</string>
+    <string name="upgrades_gplay_network_error_title">Sbagl da connexiun</string>
+    <string name="upgrades_gplay_network_error_description">Impussibel da connectar a Google Play. Controllescha tia connexiun d\'internet e prova anc ina volta.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play n\'è betg disponibel</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager na po betg sa connectar cun Google Play. Es Google Play installar ed actualisà? Es tiu conto Google s\'annunzià? Emprova da stgular il cache da l\'applicaziun Google Play e da ristar tiu apparat.</string>
     <string name="upgrades_no_purchases_found_check_account">Nagins acquists chattads. Utiliseschas ti il conto gist?</string>

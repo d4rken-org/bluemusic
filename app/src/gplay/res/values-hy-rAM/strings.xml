@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Բաժանորդագրությունը արժե %s տարեկան:</string>
     <string name="upgrade_screen_iap_action">Միանգամյա գնում</string>
     <string name="upgrade_screen_iap_action_hint">Միանգամյա գնումը արժե %s:</string>
+    <string name="upgrade_screen_offer_divider_or">կամ</string>
+    <string name="upgrade_screen_offer_same_features">Նույն հնարավորությունները, պարզապես տարբեր գնագոյացման մոդելներ։</string>
     <string name="upgrade_screen_thanks_toast">Դուք լավագույնն եք! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Վերականգնել գնումը</string>
+    <string name="upgrade_screen_restore_banner_title">Արդեն գնե՞լ եք BVM Pro-ն</string>
+    <string name="upgrade_screen_restore_banner_body">Կարծես դուք արդեն արդիականացրել եք այս սարքում։ Վերականգնեք ձեր գնումը՝ այն կրկին բացելու համար։</string>
     <string name="upgrade_screen_restore_purchase_message">Ձեր թարմացումը գործում է նույն Google հաշվով սարքերում:</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Խնդիրների լուծման խորհուրդներ չճանաչված թարմացումների համար՝</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store համաժամանակեցումը կարող է ժամանակ խլել: Փորձեք վերագործարկել, մաքրել Google Play քեշը կամ պարզապես սպասել:</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Բազմաթիվ հաշիվները կարող են շփոթեցնել Google Play-ին: Դուրս եկեք այլ հաշիվներից կամ տեղադրեք Google Play կայքի միջոցով, որը ստիպում է կապեր կոնկրետ հաշվի հետ:</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Դիտեք ձեր Pro կարգավիճակը</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Շնորհավորում ենք!</string>
+    <string name="upgrade_screen_owned_congrats_body">Դուք ունեք BVM Pro — շնորհակալություն մշակումն աջակցելու համար։ ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Միանգամյա գնում</string>
+    <string name="upgrade_screen_owned_iap_body">Դուք BVM Pro-ի սեփականատերն եք ընդմիշտ։ Շնորհակալություն ձեր աջակցության համար ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Բաժանորդագրություն</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Ձեր BVM Pro բաժանորդագրությունը ակտիվ է և կնորոգվի։</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Ձեր BVM Pro բաժանորդագրությունը ակտիվ է, բայց չի կնորոգվի։ Այն վավեր կմնա մինչև ընթացիկ շրջանի ավարտը։</string>
+    <string name="upgrade_screen_owned_both_warning">Դուք ունեք ե’ւ բաժանորդագրություն, ե’ւ միանվագ գնում։ Չեղարկեք բաժանորդագրությունը Google Play-ում, որպեսզի կրկին գումար չգանձվի ձեզանից։</string>
+    <string name="upgrade_screen_manage_subscription">Կառավարել բաժանորդագրությունը</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Անցնել միանվագ գնման</string>
+    <string name="upgrade_screen_switch_purchase_note">Սա առանձին միանվագ գնում է։ Այն չի չեղարկում կամ չի փոխհատուցում ձեր բաժանորդագրությունը, ուստի չեղարկեք այն Google Play-ում ևս։ Երկուսի համար էլ օգտագործեք նույն Google հաշիվը։</string>
+    <string name="upgrade_screen_switch_locked_note">Հասանելի է, երբ ձեր բաժանորդագրությունն այլևս նախատեսված չէ երկարաձգվել։ Չեղարկեք այն Google Play-ում, որպեսզի անցնեք — դուք կպահպանեք Pro-ն մինչև ընթացիկ շրջանի ավարտը։</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Կարգավիճակը սխա՞լ է թվում։</string>
+    <string name="upgrade_screen_status_restore_body">Եթե ձեր գնումն այստեղ չի երևում, փորձեք վերականգնել այն։</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Ձեր գնման հաստատում</string>
+    <string name="upgrade_screen_grace_body_short">Մի փոքր սպասեք — մենք կրկնակի ստուգում ենք ձեր գնումը Google Play-ի հետ։</string>
+    <string name="upgrade_screen_grace_body">Մենք դեռ չենք կարողանում հաստատել ձեր գնումը Google Play-ի հետ։ Փորձեք վերականգնել այն կամ ստուգեք, որ մուտք եք գործել ճիշտ հաշվով։</string>
+    <string name="upgrade_screen_retry_action">Կրկին փորձել</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Բաժանորդագրությունը դեռ ակտիվ է</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Ձեր բաժանորդագրությունը դեռ նախատեսված է երկարաձգվել։ Նախ չեղարկեք այն Google Play-ում, ապա վերադարձեք՝ միանվագ գնումը կատարելու համար — այդպես ձեզանից գումար կրկնակի չի գանձվի։</string>
+    <string name="upgrade_screen_sub_check_failed_message">Մենք չկարողացանք ստուգել ձեր բաժանորդագրության կարգավիճակը։ Ստուգեք ձեր կապը և կրկին փորձեք։</string>
+    <string name="upgrades_gplay_already_owned_error_title">Արդեն գնված է</string>
+    <string name="upgrades_gplay_already_owned_error_description">Օգտագործեք «Վերականգնել գնումը» տարբերակը՝ ձեր գնումը վերականգնելու համար։ Եթե խնդիրը շարունակվում է, փորձեք մաքրել Google Play-ի քեշը և վերագործարկել ձեր սարքը։</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play-ի սխալ</string>
+    <string name="upgrades_gplay_internal_error_description">Google Play-ում տեղի է ունեցել ներքին սխալ։ Փորձեք հետևյալը՝\n\n• Վերագործարկեք ձեր սարքը\n• Մաքրեք Google Play Store-ի քեշը\n• Փորձեք կրկին ավելի ուշ</string>
+    <string name="upgrades_gplay_network_error_title">Կապի սխալ</string>
+    <string name="upgrades_gplay_network_error_description">Հնարավոր չէ միանալ Google Play-ին։ Ստուգեք ձեր ինտերնետ կապը և կրկին փորձեք։</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play հասանելի չէ</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager-ե հնարավորություն չունի կապուտվել Google Play-ին։ Google Play տեղադրված և արդիականացված ե՞ Կիրարնեք Google հաշվիե մուտքագրված ե՞ Պորդեք մաքրել Google Play տվյալե և վերագնել սարքե։</string>
     <string name="upgrades_no_purchases_found_check_account">Գնումներ չեն գտնվել: Օգտագործում եք ճիշտ հաշիվը:</string>

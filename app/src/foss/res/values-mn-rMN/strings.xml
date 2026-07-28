@@ -17,4 +17,12 @@
     <string name="upgrade_screen_sponsor_action_hint">Өөр сонголт бол зар сурталчилгаа, шинжилгээ, Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Нээлттэй эхийн хөгжлийг дэмжсэнд баярлалаа ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">Аль буцлаа вүү? Таны дэмжләлт BVM-иг амьд байлгадаг!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">Дэмжигчийн статусаа үзэх</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">Таны дэмжлэгт баярлалаа</string>
+    <string name="upgrade_screen_supporter_status_body">Та нээлттэй эхийн хөгжүүлэлтийг дэмжсэнээр бүх нэмэлт функцийг нээсэн байна.</string>
+    <string name="upgrade_screen_supporter_since">%s-ээс дэмжигч</string>
+    <string name="upgrade_screen_supporter_visit_action">GitHub спонсорыг зочилох</string>
 </resources>

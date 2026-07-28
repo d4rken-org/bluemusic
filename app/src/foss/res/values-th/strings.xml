@@ -17,4 +17,12 @@
     <string name="upgrade_screen_sponsor_action_hint">ทางเลือกคือโฆษณา การวิเคราะห์ และ Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">ขอบคุณสำหรับการสนับสนุนการพัฒนาโอเพ่นซอร์ส ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast"></string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">ดูสถานะผู้สนับสนุนของคุณ</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">ขอบคุณสำหรับการสนับสนุนของคุณ</string>
+    <string name="upgrade_screen_supporter_status_body">คุณได้ปลดล็อกฟีเจอร์พิเศษทั้งหมดโดยการสนับสนุนการพัฒนาโอเพนซอร์ส</string>
+    <string name="upgrade_screen_supporter_since">ผู้สนับสนุนตั้งแต่ %s</string>
+    <string name="upgrade_screen_supporter_visit_action">เยี่ยมชม GitHub Sponsors</string>
 </resources>

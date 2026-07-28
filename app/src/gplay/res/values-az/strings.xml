@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Abunə ildə %s başa gəlir.</string>
     <string name="upgrade_screen_iap_action">Birdəfəlik alış</string>
     <string name="upgrade_screen_iap_action_hint">Birdəfəlik alış %s başa gəlir.</string>
+    <string name="upgrade_screen_offer_divider_or">və ya</string>
+    <string name="upgrade_screen_offer_same_features">Eyni funksiyalar, sadəcə fərqli qiymət modelləri.</string>
     <string name="upgrade_screen_thanks_toast">Siz ən yaxşısınız! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Alışı bərpa et</string>
+    <string name="upgrade_screen_restore_banner_title">Artıq BVM Pro almısınız?</string>
+    <string name="upgrade_screen_restore_banner_body">Görünür, siz bu cihazda əvvəllər yeniləmisiniz. Onu yenidən açmaq üçün alışınızı bərpa edin.</string>
     <string name="upgrade_screen_restore_purchase_message">Yeniləməniz eyni Google hesabında cihazlar arasında keçərlidir.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Tanınmayan yeniləmələr üçün problemlərin həlli məsləhətləri:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinxronlaşdırması vaxt ala bilər. Yenidən başlatmağı, Google Play keşini təmizləməyi və ya sadəcə gözləməyi sınayın.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Çoxlu hesablar Google Play-i çaşdıra bilər. Digər hesablardan çıxın və ya Google Play veb saytı vasitəsilə quraşdırın ki, bu da müəyyən hesabla əlaqələri məcbur edir.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Pro statusunuza baxın</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Təbriklər!</string>
+    <string name="upgrade_screen_owned_congrats_body">BVM Pro sizdədir — inkişafı dəstəklədiyiniz üçün təşəkkürlər. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Birdəfəlik alış</string>
+    <string name="upgrade_screen_owned_iap_body">BVM Pro həmişəlik sizindir. Dəstəyiniz üçün təşəkkürlər ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Abunəlik</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">BVM Pro abunəliyiniz aktivdir və yenilənməyə təyin edilib.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">BVM Pro abunəliyiniz aktivdir, lakin yenilənməyəcək. O, cari dövrün sonuna qədər etibarlı qalacaq.</string>
+    <string name="upgrade_screen_owned_both_warning">Sizdə həm abunəlik, həm də birdəfəlik alış var. Yenidən ödəniş alınmaması üçün abunəliyi Google Play-də ləğv edin.</string>
+    <string name="upgrade_screen_manage_subscription">Abunəliyi idarə edin</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Birdəfəlik alışa keçin</string>
+    <string name="upgrade_screen_switch_purchase_note">Bu ayrı bir birdəfəlik alışdır. O, abunəliyinizi ləğv etmir və ya pulunu geri qaytarmır, ona görə də onu da Google Play-də ləğv edin. Hər ikisi üçün eyni Google hesabından istifadə edin.</string>
+    <string name="upgrade_screen_switch_locked_note">Abunəliyiniz artıq yenilənməyə təyin edilmədikdə əlçatan olur. Keçmək üçün onu Google Play-də ləğv edin — cari dövr bitənə qədər Pro-nu saxlayacaqsınız.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Status səhv görünür?</string>
+    <string name="upgrade_screen_status_restore_body">Əgər alışınız burada görünmürsə, onu bərpa etməyə çalışın.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Alışınız təsdiqlənir</string>
+    <string name="upgrade_screen_grace_body_short">Bir az gözləyin — Google Play ilə alışınızı yenidən yoxlayırıq.</string>
+    <string name="upgrade_screen_grace_body">Google Play ilə alışınızı hələ də təsdiqləyə bilmirik. Onu bərpa etməyə çalışın və ya doğru hesabla daxil olduğunuzu yoxlayın.</string>
+    <string name="upgrade_screen_retry_action">Yenidən cəhd edin</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Abunəlik hələ də aktivdir</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Abunəliyiniz hələ də yenilənməyə təyin edilib. Əvvəlcə onu Google Play-də ləğv edin, sonra birdəfəlik alışı almaq üçün geri qayıdın — bu şəkildə iki dəfə ödəniş almayacaqsınız.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Abunəlik statusunuzu yoxlaya bilmədik. Zəhmət olmasa bağlantınızı yoxlayın və yenidən cəhd edin.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Artıq alınıb</string>
+    <string name="upgrades_gplay_already_owned_error_description">Alışınızı bərpa etmək üçün \"Alışı bərpa et\" seçimindən istifadə edin. Problem davam edərsə, Google Play keşini təmizləməyə və cihazınızı yenidən başlatmağa çalışın.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play xətası</string>
+    <string name="upgrades_gplay_internal_error_description">Daxili Google Play xətası baş verdi. Zəhmət olmasa aşağıdakıları sınayın:\n\n• Cihazınızı yenidən başladın\n• Google Play Store keşini təmizləyin\n• Sonra yenidən cəhd edin</string>
+    <string name="upgrades_gplay_network_error_title">Bağlantı xətası</string>
+    <string name="upgrades_gplay_network_error_description">Google Play-ə qoşulmaq mümkün olmadı. Zəhmət olmasa internet bağlantınızı yoxlayın və yenidən cəhd edin.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play əlçatan deyil</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play-ə qoşula bilmir. Google Play quraşdırılıb və yenilənib? Google Hesabınıza daxil olubsunuz? Google Play tətbiqinin keşini təmizləməyə və cihazınızı yenidən başlatmağa çalışın.</string>
     <string name="upgrades_no_purchases_found_check_account">Heç bir alış tapılmadı. Düzgün hesabdan istifadə edirsiniz?</string>

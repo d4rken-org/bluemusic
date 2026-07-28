@@ -17,4 +17,12 @@
     <string name="upgrade_screen_sponsor_action_hint">പരസ്യങ്ങൾ, അനലിറ്റിക്‌സ്, ഗൂഗിൾ പ്ലേ എന്നിവയാണ് ബദൽ🙁</string>
     <string name="upgrade_screen_thanks_toast">ഓപ്പൺ സോഴ്‌സ് വികസനത്തെ പിന്തുണച്ചതിന് നന്ദി ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">ഇത്രയും വേഗം പിന്തിരിച്ചു? നിങ്ങളുടെ പിന്തുണ BVM നിലനിർത്തുന്നു!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">നിങ്ങളുടെ സപ്പോർടർ സ്റ്റാറ്റസ് കാണുക</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">നിങ്ങളുടെ പിന്തുണയ്ക്കുള്ള നന്ദി</string>
+    <string name="upgrade_screen_supporter_status_body">തുറന്ന സോഴ്സ് വികസനത്തെ പിന്തുണച്ച് നിങ്ങൾ എല്ലാ അധിക സവിശേഷതകളും അൻലോക്ക് ചെയ്തിരിക്കുന്നു.</string>
+    <string name="upgrade_screen_supporter_since">%s മുതൽ സപ്പോർടർ</string>
+    <string name="upgrade_screen_supporter_visit_action">GitHub Sponsors സന്ദർശിക്കുക</string>
 </resources>

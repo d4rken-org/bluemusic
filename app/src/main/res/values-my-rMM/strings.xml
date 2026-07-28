@@ -57,6 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">မြင်သာသော ချိန်ညှိမှုများ</string>
     <string name="devices_device_config_visible_adjustments_desc">ဤကိရိယာအတွက် ဤအပ် ချိန်ညှိမှုများ ပြုလုပ်နေစဉ် စနစ်၏ အသံ ဝင်းဒိုး ပြသမည်။</string>
     <string name="devices_device_config_keep_awake_label">နိုးနေစေမည်</string>
+    <string name="devices_device_config_keep_awake_desc">ချိတ်ဆက်ထားစဉ်အက်ပ်အားနောက်ခံတွင်နိုးထားစွာထားခြင်းဖြင့်အသံအတိုးအကျယ်ထိန်းချုပ်မှုအလုပ်မြဲမြံစွာဆောင်ရွက်နိုင်ပြီးစက်ပစ္စည်းမှချိတ်ဆက်သည့်အခါမျက်နှာပြင်နိုးထားစေသည် (\"အခြားအက်ပ်များအပေါ်တွင်ပြသခွင့်ပြုချက်လိုအပ်သည်\")။ ပိုမိုအသစ်သော Android ဗားရှင်းများတွင်မျက်နှာပြင်သည်အကဆီကိုယ်တိုင်ပိတ်သွားနိုင်သည်။</string>
     <string name="devices_device_config_volume_observe_label">ပြောင်းလဲမှုများ စောင့်ကြည့်မည်</string>
     <string name="devices_device_config_volume_observe_desc">ဤကိရိယာ ချိတ်ဆက်နေစဉ် အသက်ဝင်နေ၍ ဤအပ် မဖြစ်ပေါ် စေသော အသံ ပြောင်းလဲမှုများ သိမ်းဆည်းမည်။</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">ဖြတ်တောက်သောအခါ အသံ သိမ်းဆည်းမည်</string>
@@ -390,6 +391,8 @@
     <string name="battery_optimization_hint_title">ဘက်ထရီ ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း</string>
     <string name="battery_optimization_hint_message">ဘက်ထရီ ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း ဖွင့်ထားပြီး မှန်ကန်သော လုပ်ဆောင်မှုကို တားဆီးနိုင်သည်။ ပိတ်ရန် စဉ်းစားပါ။</string>
     <string name="battery_optimization_fix_action">ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း ပိတ်မည်</string>
+    <string name="android10_applaunch_hint_title">အခြားအက်ပ်များအပေါ်တွင်ပြသခွင့်ပြုချက်</string>
+    <string name="android10_applaunch_hint_message">Android 10+ တွင်အက်ပ်များစတင်ခြင်း၊ပင်မမျက်နှာပြင်ကိုပြသခြင်းသို့မဟုတ်ချိတ်ဆက်စဉ်နောက်ခံမှမျက်နှာပြင်နိုးထားစေရန်အတွက်အထူးခွင့်ပြုချက်လိုအပ်သည်။ \"အခြားအက်ပ်များအပေါ်တွင်ပြသခွင့်ပြုချက်\" ကိုပေးအပ်ပါ။</string>
     <string name="notification_permission_hint_title">အကြောင်းကြားချက် ခွင့်ပြုချက်</string>
     <string name="notification_permission_hint_message">အသံ ချိန်ညှိမှု ပြုလုပ်စဉ် အခြေအနေ မွမ်းမံချက်များ ကြည့်ရှုရန် အကြောင်းကြားချက် ခွင့်ပြုချက် ပေးပါ။</string>
     <string name="dnd_access_hint_title">မနှောင့်ယှက်ရ ဝင်ရောက်ခွင့်</string>

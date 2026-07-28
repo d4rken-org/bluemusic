@@ -20,4 +20,12 @@
     <string name="upgrade_screen_sponsor_action_hint">အခြားရွေးချယ်စရာမှာ ကြော်ငြာများ၊ ခွဲခြမ်းစိတ်ဖြာခြင်းနှင့် Google Play တို့ဖြစ်သည် 🙁</string>
     <string name="upgrade_screen_thanks_toast">ပွင့်လင်းရင်းမြစ် ဖွံ့ဖြိုးတိုးတက်မှုကို ပံ့ပိုးပေးသည့်အတွက် ကျေးဇူးတင်ပါသည် ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">ပြန်ရောက်လာပြီးလား? သင့၏ ထောက်ပံ့ထားမှုသည် BVM ကို ရှင်သနသောဆီပါ!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">သင်၏တောက်ခံသူအဆင့်ကိုကြည့်ရှုပါ</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">သင်၏တောက်ခံမှုအတွက်ကျေးဇူးတင်ပါသည်</string>
+    <string name="upgrade_screen_supporter_status_body">သင်သည် အဖွင့်အရင်းအမြစ်ဆော့ဝဲလ်တီထွင်မှုကို တောက်ခံခြင်းဖြင့် အပိုင်းအခြင်းအားလုံး ဖွင့်လှစ်ခဲ့ပါပြီ။</string>
+    <string name="upgrade_screen_supporter_since">%s မှစျ်လ် အတောက်အပံပေးသူ</string>
+    <string name="upgrade_screen_supporter_visit_action">GitHub Sponsors သွားကြည့်ပါ</string>
 </resources>

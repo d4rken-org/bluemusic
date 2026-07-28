@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">سبسکرپشن کی قیمت %s سالانہ ہے۔</string>
     <string name="upgrade_screen_iap_action">ایک بار کی خریداری</string>
     <string name="upgrade_screen_iap_action_hint">ایک بار کی خریداری کی قیمت %s ہے۔</string>
+    <string name="upgrade_screen_offer_divider_or">یا</string>
+    <string name="upgrade_screen_offer_same_features">ایک جیسی خصوصیات، بس مختلف قیمت کے منصوبے۔</string>
     <string name="upgrade_screen_thanks_toast">آپ بہترین ہیں! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">خریداری بحال کریں</string>
+    <string name="upgrade_screen_restore_banner_title">پہلے سے BVM Pro خریدا ہے؟</string>
+    <string name="upgrade_screen_restore_banner_body">ایسا لگتا ہے کہ آپ نے اس ڈیوائس پر پہلے اپ گریڈ کیا تھا۔ اسے دوبارہ آن لاک کرنے کے لیے اپنی خریداری بحال کریں۔</string>
     <string name="upgrade_screen_restore_purchase_message">آپ کی اپ گریڈ ایک ہی Google اکاؤنٹ پر ڈیوائسز پر درست ہے۔</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">غیر تسلیم شدہ اپ گریڈز کے لیے ٹربل شوٹنگ ٹپس:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store سنک میں وقت لگ سکتا ہے۔ ری بوٹ کرنے، Google Play کیش صاف کرنے یا صرف انتظار کرنے کی کوشش کریں۔</string>
     <string name="upgrade_screen_restore_multiaccount_hint">متعدد اکاؤنٹس Google Play کو الجھا سکتے ہیں۔ دیگر اکاؤنٹس سے لاگ آوٹ کریں یا Google Play ویب سائٹ کے ذریعے انسٹال کریں، جو مخصوص اکاؤنٹ کے ساتھ ایسوسی ایشن کو مجبور کرتا ہے۔</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">اپنی Pro حالت دیکھیں</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">مبارک ہو!</string>
+    <string name="upgrade_screen_owned_congrats_body">آپ کے پاس BVM Pro ہے — ترقی میں معاونت کے لیے شکریہ۔ ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">ایک بار کی خریداری</string>
+    <string name="upgrade_screen_owned_iap_body">آپ BVM Pro کو ہمیشہ کے لیے رکھتے ہیں۔ آپ کی معاونت کے لیے شکریہ ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">رکنیت</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">آپ کی BVM Pro رکنیت فعال ہے اور تجدید کے لیے مقرر ہے۔</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">آپ کی BVM Pro رکنیت فعال ہے لیکن تجدید نہیں ہوگی۔ یہ موجودہ مدت کے اختتام تک درست رہے گی۔</string>
+    <string name="upgrade_screen_owned_both_warning">آپ کے پاس رکنیت اور ایک بار خریداری دونوں ہیں۔ Google Play میں رکنیت منسوخ کریں تاکہ آپ سے دوبارہ چارج نہ کیا جائے۔</string>
+    <string name="upgrade_screen_manage_subscription">رکنیت کا نظم کریں</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">ایک بار خریداری پر تبدیل کریں</string>
+    <string name="upgrade_screen_switch_purchase_note">یہ الگ ایک بار خریداری ہے۔ یہ آپ کی رکنیت کو منسوخ یا واپسی نہیں کرتی ہے، تو Google Play میں بھی اسے منسوخ کریں۔ دونوں کے لیے اسی Google اکاؤنٹ کا استعمال کریں۔</string>
+    <string name="upgrade_screen_switch_locked_note">دستیاب ہے جب آپ کی رکنیت اب تجدید کے لیے مقرر نہ ہو۔ منتقل کرنے کے لیے Google Play میں اسے منسوخ کریں — آپ موجودہ مدت کے اختتام تک Pro رکھیں۔</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">حالت غلط لگ رہی ہے؟</string>
+    <string name="upgrade_screen_status_restore_body">اگر آپ کی خریداری یہاں نظر نہیں آ رہی ہے، تو اسے بحال کرنے کی کوشش کریں۔</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">آپ کی خریداری کی تصدیق کی جا رہی ہے</string>
+    <string name="upgrade_screen_grace_body_short">صبر کریں — ہم آپ کی خریداری کو Google Play کے ساتھ دوبارہ جانچ رہے ہیں۔</string>
+    <string name="upgrade_screen_grace_body">ہم ابھی بھی آپ کی خریداری کو Google Play کے ساتھ تصدیق نہیں کر سکتے۔ اسے بحال کرنے کی کوشش کریں، یا یقینی بنائیں کہ آپ صحیح اکاؤنٹ کے ساتھ سائن ان ہیں۔</string>
+    <string name="upgrade_screen_retry_action">دوبارہ کوشش کریں</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">رکنیت ابھی فعال ہے</string>
+    <string name="upgrade_screen_sub_still_renewing_message">آپ کی رکنیت ابھی بھی تجدید کے لیے سیٹ ہے۔ پہلے اسے Google Play میں منسوخ کریں، پھر واپس آئیں اور ایک بار کی خریداری کریں — اس طریقے آپ سے دوہری رقم نہیں لی جائے گی۔</string>
+    <string name="upgrade_screen_sub_check_failed_message">ہم آپ کی رکنیت کی حالت کو چیک نہیں کر سکے۔ براہ کرم اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں۔</string>
+    <string name="upgrades_gplay_already_owned_error_title">پہلے سے خریدا گیا</string>
+    <string name="upgrades_gplay_already_owned_error_description">اپنی خریداری کو بحال کرنے کے لیے \"خریداری بحال کریں\" آپشن استعمال کریں۔ اگر مسئلہ برقرار ہے، تو Google Play کیش صاف کرنے اور اپنے ڈیوائس کو دوبارہ شروع کرنے کی کوشش کریں۔</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play خرابی</string>
+    <string name="upgrades_gplay_internal_error_description">Google Play میں ایک اندرونی خرابی واقع ہوئی ہے۔ براہ کرم درج ذیل کی کوشش کریں:\n\n• اپنے ڈیوائس کو دوبارہ شروع کریں\n• Google Play Store کیش صاف کریں\n• بعد میں دوبارہ کوشش کریں</string>
+    <string name="upgrades_gplay_network_error_title">کنکشن میں خرابی</string>
+    <string name="upgrades_gplay_network_error_description">Google Play سے جڑ نہیں سکے۔ براہ کرم اپنی انٹرنیٹ کنکشن چیک کریں اور دوبارہ کوشش کریں۔</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play دستیاب نہیں ہے</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager گوگل پلے سے منسلک نہیں ہو سکتا۔ کیا گوگل پلے نصب اور تازہ کاری ہے؟ کیا آپ کا گوگل اکاؤنٹ لاگ ان ہے؟ گوگل پلے ایپ کیں صاف کریں اور ڈیوائس ریبوٹ کریں۔</string>
     <string name="upgrades_no_purchases_found_check_account">کوئی خریداری نہیں ملی۔ کیا آپ صحیح اکاؤنٹ استعمال کر رہے ہیں؟</string>

@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Obuna yiliga %s turadi.</string>
     <string name="upgrade_screen_iap_action">Bir martalik xarid</string>
     <string name="upgrade_screen_iap_action_hint">Bir martalik xarid %s turadi.</string>
+    <string name="upgrade_screen_offer_divider_or">yoki</string>
+    <string name="upgrade_screen_offer_same_features">Bir xil xususiyatlar, faqat turli xil narx modellari.</string>
     <string name="upgrade_screen_thanks_toast">Siz eng zo\'rsiz! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Xaridni tiklash</string>
+    <string name="upgrade_screen_restore_banner_title">Allaqachon BVM Pro sotib oldingizmi?</string>
+    <string name="upgrade_screen_restore_banner_body">Ko\'rinadi, bu qurilmada oldindan yangilagan edingiz. Xaridingizni tiklang.</string>
     <string name="upgrade_screen_restore_purchase_message">Sizning yanglanishingiz bir xil Google hisobidagi qurilmalarda amal qiladi.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Tan olinmagan yangilanishlar uchun muammolarni hal qilish maslahatlari:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinxronlashtiruvi vaqt olishi mumkin. Qayta ishga tushirish, Google Play keshini tozalash yoki shunchaki kutishni sinab ko\'ring.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Ko\'p hisoblar Google Play-ni chalkashtirib yuborishi mumkin. Boshqa hisoblardan chiqing yoki Google Play veb-sayti orqali o\'rnating, bu esa ma\'lum bir hisob bilan bog\'lanishni majburiy qiladi.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Pro statusini ko\'ring</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Tabriklaymiz!</string>
+    <string name="upgrade_screen_owned_congrats_body">Siz BVM Pro-ni oldingiz — rivojlanishni qo\'llab-quvvatlashingiz uchun rahmat. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Bir martalik xarid</string>
+    <string name="upgrade_screen_owned_iap_body">Siz BVM Pro-ni abadiy egalaysiz. Qo\'llab-quvvatlashingiz uchun rahmat ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Obuna</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Sizning BVM Pro obunangiz faol va qayta yangilanishga o\'rnatilgan.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Sizning BVM Pro obunangiz faol, lekin qayta yangilanmaydi. U joriy davr oxirigacha amal qiladi.</string>
+    <string name="upgrade_screen_owned_both_warning">Sizda ham obuna va bir martalik xarid mavjud. Google Play\'da obunani bekor qiling, shunda yana hisoblanmaysiz.</string>
+    <string name="upgrade_screen_manage_subscription">Obunani boshqarish</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Bir martalik xaridga o\'ting</string>
+    <string name="upgrade_screen_switch_purchase_note">Bu alohida bir martalik xariddir. U sizning obunangizni bekor qilmaydi yoki pul qaytarmaydi, shuning uchun buni Google Play\'da ham bekor qiling. Ikkalasi uchun ham bir xil Google hisobini ishlating.</string>
+    <string name="upgrade_screen_switch_locked_note">Sizning obunangiz qayta yangilanishga o\'rnatilmagan bo\'lgach mavjud bo\'ladi. O\'tish uchun uni Google Play\'da bekor qiling — siz joriy davr oxirigacha Pro sifatida qolasiz.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Holat noto\'g\'rimi ko\'rinmoqda?</string>
+    <string name="upgrade_screen_status_restore_body">Agar sizning xaridingiz bu yerda ko\'rinmasa, uni tiklashni harakat qiling.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Sizning xaridingiz tasdiqlanmoqda</string>
+    <string name="upgrade_screen_grace_body_short">Sabr qiling — biz sizning Google Play-dagi xaridingizni qayta tekshiryapmiz.</string>
+    <string name="upgrade_screen_grace_body">Biz hali ham sizning Google Play-dagi xaridingizni tasdiqlay olmayapmiz. Uni tiklashga harakat qiling yoki to\'g\'ri hisob bilan kirganingizni tekshiring.</string>
+    <string name="upgrade_screen_retry_action">Qayta harakat qiling</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Obuna hali ham faol</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Sizning obunangiz hali ham yangilashga o\'rnatilib boradi. Avval Google Play-da uni bekor qiling, so\'ng bir marta xaridni sotib olish uchun qaytib keling — shu tarzda sizdan ikki marta to\'lov qilinmaydi.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Biz sizning obunaning holatini tekshire olmadik. Iltimos, ulanishni tekshiring va qayta harakat qiling.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Allaqachon sotib olingan</string>
+    <string name="upgrades_gplay_already_owned_error_description">Xaridingizni tiklash uchun \"Xaridni tiklash\" variantidan foydalaning. Agar muammo davom etsa, Google Play keshini o\'chirib, qurilmangizni qayta ishga tushiring.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play xatosi</string>
+    <string name="upgrades_gplay_internal_error_description">Google Play-da ichki xato yuz berdi. Iltimos, quyidagi amallarni bajarib ko\'ring:\n\n• Qurilmangizni qayta ishga tushiring\n• Google Play Store keshini o\'chiring\n• Keyinroq qayta harakat qiling</string>
+    <string name="upgrades_gplay_network_error_title">Ulanish xatosi</string>
+    <string name="upgrades_gplay_network_error_description">Google Play bilan bog\'lana olmadi. Iltimos, internet ulanishingizni tekshiring va qayta urinib ko\'ring.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play mavjud emas</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play ga ulana olmadi. Google Play o\'rnatilgan va yangilangan? Google hisobingizda kirgansizmi? Google Play ilovasi keshini tozalab, qurilmangizni qayta yoqishga urinib ko\'ring.</string>
     <string name="upgrades_no_purchases_found_check_account">Hech qanday xarid topilmadi. To\'g\'ri hisobdan foydalanyapsizmi?</string>

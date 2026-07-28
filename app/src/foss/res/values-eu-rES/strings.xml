@@ -17,4 +17,12 @@
     <string name="upgrade_screen_sponsor_action_hint">Alternatiboa iragarkinak, analisiak eta Google Play dira 🙁</string>
     <string name="upgrade_screen_thanks_toast">Eskerrik asko iturburu irekiko garapena babesten duzulako ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">Itzuli al zara jada? Zure laguntzak BVM bizirik mantentzen du!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">Ikusi zure laguntzaile-egoera</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">Eskerrik asko zure laguntzagatik</string>
+    <string name="upgrade_screen_supporter_status_body">Ezaugarri gehigarri guztiak desblokeatu dituzu iturburu irekiko garapena babestuz.</string>
+    <string name="upgrade_screen_supporter_since">Laguntzaile %s(e)tik</string>
+    <string name="upgrade_screen_supporter_visit_action">Bisitatu GitHub Sponsors</string>
 </resources>

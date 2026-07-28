@@ -20,4 +20,12 @@
     <string name="upgrade_screen_sponsor_action_hint">ಪರ್ಯಾಯ ಜಾಹೀರಾತುಗಳು, ವಿಶ್ಲೇಷಣೆ ಮತ್ತು Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">ಓಪನ್-ಸೋರ್ಸ್ ಅಭಿವರ್ಧನೆಗೆ ಬೆಂಬಲಿಸಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">ಇಷ್ಟು ಬೇಗನೇ ಹಿಂದೆ? ನಿಮ್ಮ ಬೆಂಬಲು BVM ಅನ್ನು ಬಳಿಯಾಗಿಸುತ್ತದೆ!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">ನಿಮ್ಮ ಬೆಂಬಲಕಾರ ಸ್ಥಿತಿಯನ್ನು ವೀಕ್ಷಿಸಿ</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">ನಿಮ್ಮ ಬೆಂಬಲಕ್ಕಾಗಿ ಧನ್ಯವಾದ</string>
+    <string name="upgrade_screen_supporter_status_body">ನೀವು ಓಪನ್-ಸೋರ್ಸ್ ಅಭಿವೃದ್ಧಿಯನ್ನು ಬೆಂಬಲಿಸುವ ಮೂಲಕ ಎಲ್ಲಾ ಹೆಚ್ಚುವರಿ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿದ್ದೀರಿ.</string>
+    <string name="upgrade_screen_supporter_since">%s ಇಂದ ಬೆಂಬಲಕಾರ</string>
+    <string name="upgrade_screen_supporter_visit_action">GitHub Sponsors ಭೇಟಿ ಮಾಡಿ</string>
 </resources>

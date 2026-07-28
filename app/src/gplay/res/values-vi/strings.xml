@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Chi phí đăng ký %s mỗi năm.</string>
     <string name="upgrade_screen_iap_action">Thanh toán một lần</string>
     <string name="upgrade_screen_iap_action_hint">Chi phí mua một lần là %s.</string>
+    <string name="upgrade_screen_offer_divider_or">hoặc</string>
+    <string name="upgrade_screen_offer_same_features">Cùng tính năng, chỉ khác mô hình giá.</string>
     <string name="upgrade_screen_thanks_toast">Bạn là nhất! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Khôi phục thanh toán</string>
+    <string name="upgrade_screen_restore_banner_title">Đã mua BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Có vẻ bạn đã nâng cấp trên thiết bị này trước đó. Khôi phục giao dịch mua để mở khóa lại.</string>
     <string name="upgrade_screen_restore_purchase_message">Bản nâng cấp của bạn hợp lệ trên các thiết bị trên cùng một tài khoản Google.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Mẹo khắc phục sự cố cho các bản nâng cấp không được nhận dạng:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Đồng bộ hóa Cửa hàng Play có thể mất thời gian. Hãy thử khởi động lại, xóa bộ nhớ đệm của Google Play hoặc chỉ cần đợi.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Nhiều tài khoản có thể gây nhầm lẫn cho Google Play. Đăng xuất khỏi các tài khoản khác hoặc cài đặt thông qua trang web Google Play, trang này buộc liên kết với một tài khoản cụ thể.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Xem trạng thái Pro của bạn</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Chúc mừng!</string>
+    <string name="upgrade_screen_owned_congrats_body">Bạn đã có BVM Pro — cảm ơn bạn đã ủng hộ quá trình phát triển. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Thanh toán một lần</string>
+    <string name="upgrade_screen_owned_iap_body">Bạn sở hữu BVM Pro vĩnh viễn. Cảm ơn sự ủng hộ của bạn ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Gói đăng ký</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Gói đăng ký BVM Pro của bạn đang hoạt động và sẽ tự động gia hạn.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Gói đăng ký BVM Pro của bạn đang hoạt động nhưng sẽ không gia hạn. Gói vẫn có hiệu lực đến hết kỳ hiện tại.</string>
+    <string name="upgrade_screen_owned_both_warning">Bạn có cả gói đăng ký và giao dịch mua một lần. Hãy hủy gói đăng ký trong Google Play để không bị tính phí lần nữa.</string>
+    <string name="upgrade_screen_manage_subscription">Quản lý gói đăng ký</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Chuyển sang mua một lần</string>
+    <string name="upgrade_screen_switch_purchase_note">Đây là một giao dịch mua một lần riêng biệt. Nó không hủy hay hoàn tiền gói đăng ký của bạn, vì vậy hãy hủy gói đó trong Google Play luôn. Sử dụng cùng một tài khoản Google cho cả hai.</string>
+    <string name="upgrade_screen_switch_locked_note">Chỉ khả dụng khi gói đăng ký của bạn không còn được đặt để gia hạn. Hủy gói đó trong Google Play để chuyển đổi — bạn vẫn giữ Pro đến khi kỳ hiện tại kết thúc.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Trạng thái có vẻ không đúng?</string>
+    <string name="upgrade_screen_status_restore_body">Nếu giao dịch mua của bạn không hiển thị ở đây, hãy thử khôi phục lại.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Đang xác nhận giao dịch mua của bạn</string>
+    <string name="upgrade_screen_grace_body_short">Chờ chút — chúng tôi đang kiểm tra lại giao dịch mua của bạn với Google Play.</string>
+    <string name="upgrade_screen_grace_body">Chúng tôi vẫn chưa thể xác nhận giao dịch mua của bạn với Google Play. Hãy thử khôi phục lại, hoặc kiểm tra xem bạn đã đăng nhập đúng tài khoản chưa.</string>
+    <string name="upgrade_screen_retry_action">Thử lại</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Gói đăng ký vẫn đang hoạt động</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Gói đăng ký của bạn vẫn được đặt để gia hạn. Hãy hủy gói đó trong Google Play trước, sau đó quay lại mua giao dịch một lần — như vậy bạn sẽ không bị tính phí hai lần.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Chúng tôi không thể kiểm tra trạng thái gói đăng ký của bạn. Vui lòng kiểm tra kết nối và thử lại.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Đã mua</string>
+    <string name="upgrades_gplay_already_owned_error_description">Sử dụng tùy chọn \"Khôi phục giao dịch mua\" để khôi phục giao dịch mua của bạn. Nếu vấn đề vẫn tiếp diễn, hãy thử xóa bộ nhớ đệm Google Play và khởi động lại thiết bị của bạn.</string>
+    <string name="upgrades_gplay_internal_error_title">Lỗi Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Đã xảy ra lỗi nội bộ của Google Play. Vui lòng thử những điều sau:\n\n• Khởi động lại thiết bị của bạn\n• Xóa bộ nhớ cache của Google Play Store\n• Thử lại sau</string>
+    <string name="upgrades_gplay_network_error_title">Lỗi kết nối</string>
+    <string name="upgrades_gplay_network_error_description">Không thể kết nối với Google Play. Vui lòng kiểm tra kết nối internet của bạn và thử lại.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play không khả dụng</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager không thể kết nối với Google Play. Google Play đã được cài đặt và cập nhật chưa? Bạn đã đăng nhập tài khoản Google chưa? Hãy thử xóa bộ nhớ cache của ứng dụng Google Play và khởi động lại thiết bị.</string>
     <string name="upgrades_no_purchases_found_check_account">Không tìm thấy giao dịch nào. Bạn có đang sử dụng đúng tài khoản không?</string>

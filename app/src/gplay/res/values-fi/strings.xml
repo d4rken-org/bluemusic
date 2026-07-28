@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Tilaus maksaa %s vuodessa.</string>
     <string name="upgrade_screen_iap_action">Kertaostos</string>
     <string name="upgrade_screen_iap_action_hint">Kertaostos maksaa %s.</string>
+    <string name="upgrade_screen_offer_divider_or">tai</string>
+    <string name="upgrade_screen_offer_same_features">Samat ominaisuudet, vain erilaiset hinnoittelumallit.</string>
     <string name="upgrade_screen_thanks_toast">Olet paras! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Palauta ostos</string>
+    <string name="upgrade_screen_restore_banner_title">Ostitko jo BVM Pro:n?</string>
+    <string name="upgrade_screen_restore_banner_body">Näyttää siltä, että olet päivittänyt tämän laitteen aiemmin. Palauta ostoksesi avataksesi sen uudelleen.</string>
     <string name="upgrade_screen_restore_purchase_message">Päivityksesi on voimassa laitteissa samalla Google-tilillä.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Vianmääritysvinkkejä tunnistamattomille päivityksille:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store -synkronointi voi kestää. Kokeile uudelleenkäynnistystä, Google Play -välimuistin tyhjentämistä tai vain odottamista.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Useat tilit voivat hämmentää Google Playta. Kirjaudu ulos muista tileistä tai asenna Google Play -verkkosivuston kautta, joka pakottaa yhteydet tiettyyn tiliin.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Katso Pro-tilasi</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Onnittelut!</string>
+    <string name="upgrade_screen_owned_congrats_body">Sinulla on nyt BVM Pro — kiitos, että tuet kehitystä. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Kertaostos</string>
+    <string name="upgrade_screen_owned_iap_body">Omistat BVM Pron ikuisesti. Kiitos tuestasi ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Tilaus</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">BVM Pro -tilauksesi on aktiivinen ja se uusiutuu automaattisesti.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">BVM Pro -tilauksesi on aktiivinen, mutta se ei uusiudu. Se on voimassa nykyisen jakson loppuun asti.</string>
+    <string name="upgrade_screen_owned_both_warning">Sinulla on sekä tilaus että kertaosto. Peruuta tilaus Google Playssa, ettei sinulta veloiteta uudelleen.</string>
+    <string name="upgrade_screen_manage_subscription">Hallinnoi tilausta</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Vaihda kertaostoon</string>
+    <string name="upgrade_screen_switch_purchase_note">Tämä on erillinen kertaosto. Se ei peru tai palauta tilaustasi, joten peruuta myös se Google Playssa. Käytä samaa Google-tiliä molemmissa.</string>
+    <string name="upgrade_screen_switch_locked_note">Käytettävissä, kun tilauksesi ei enää uusiudu automaattisesti. Peruuta se Google Playssa vaihtaaksesi — säilytät Pro-ominaisuudet nykyisen jakson loppuun asti.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Näyttääkö tila väärältä?</string>
+    <string name="upgrade_screen_status_restore_body">Jos ostoksesi ei näy täällä, yritä palauttaa se.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Vahvistetaan ostostasi</string>
+    <string name="upgrade_screen_grace_body_short">Odota hetki — tarkistamme ostoksesi vielä kerran Google Playsta.</string>
+    <string name="upgrade_screen_grace_body">Emme vieläkään pysty vahvistamaan ostostasi Google Playsta. Yritä palauttaa se tai tarkista, että olet kirjautunut oikealla tilillä.</string>
+    <string name="upgrade_screen_retry_action">Yritä uudelleen</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Tilaus on yhä aktiivinen</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Tilauksesi uusiutuu yhä automaattisesti. Peruuta se ensin Google Playssa ja palaa sitten ostamaan kertaosto — näin sinulta ei veloiteta kahdesti.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Emme pystyneet tarkistamaan tilauksesi tilaa. Tarkista yhteytesi ja yritä uudelleen.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Jo ostettu</string>
+    <string name="upgrades_gplay_already_owned_error_description">Käytä \"Palauta ostos\" -toimintoa palauttaaksesi ostoksesi. Jos ongelma jatkuu, tyhjennä Google Play -välimuisti ja käynnistä laite uudelleen.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play -virhe</string>
+    <string name="upgrades_gplay_internal_error_description">Google Play-yhteydessä tapahtui sisäinen virhe. Kokeile seuraavia:\n\n• Käynnistä laite uudelleen\n• Tyhjennä Google Play Store -välimuisti\n• Yritä myöhemmin uudelleen</string>
+    <string name="upgrades_gplay_network_error_title">Yhteysvirhe</string>
+    <string name="upgrades_gplay_network_error_description">Google Playhin ei saatu yhteyttä. Tarkista internetyhteytesi ja yritä uudelleen.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ei ole käytettävissä</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ei voi yhdistää Google Playhin. Onko Google Play asennettu ja ajan tasalla? Onko Google-tilisi kirjautunut sisään? Kokeile tyhjenntää Google Play -sovelluksen välimuisti ja käynnistä laite uudelleen.</string>
     <string name="upgrades_no_purchases_found_check_account">Ostoja ei löytynyt. Käytätkö oikeaa tiliä?</string>

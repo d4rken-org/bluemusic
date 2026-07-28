@@ -20,4 +20,12 @@ va boshqalar…</string>
     <string name="upgrade_screen_sponsor_action_hint">Muqobil reklama, tahlil va Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Ochiq manba rivojlanishini qo\'llab-quvvatlaganingiz uchun rahmat ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">Allaqachon ketayapsizmi? Sizning qo\'llab-quvvatlashingiz BVM ni tirik saqlaydi!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">Tarafdor statusini ko\'ring</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">Qo\'llab-quvvatlashingiz uchun rahmat</string>
+    <string name="upgrade_screen_supporter_status_body">Siz ochiq kodli taraqqiyotni qo\'llab-quvvatlab, barcha qo\'shimcha xususiyatlarni ochib oldingiz.</string>
+    <string name="upgrade_screen_supporter_since">Tarafdor: %s dan beri</string>
+    <string name="upgrade_screen_supporter_visit_action">GitHub Sponsorsni ziyoratlang</string>
 </resources>

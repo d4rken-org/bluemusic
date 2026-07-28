@@ -17,4 +17,12 @@
     <string name="upgrade_screen_sponsor_action_hint">Mbadala ni matangazo, uchambuzi na Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Asante kwa kuunga mkono maendeleo ya chanzo wazi ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">Umirudi tayari? Msaada wako unaihifadhi BVM hai!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">Tazama hali yako ya mchangiaji</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">Asante kwa msaada wako</string>
+    <string name="upgrade_screen_supporter_status_body">Umefungua vipengele vyote vya ziada kwa kusaidia maendeleo ya chanzo huria.</string>
+    <string name="upgrade_screen_supporter_since">Mchangiaji tangu %s</string>
+    <string name="upgrade_screen_supporter_visit_action">Tembelea GitHub Sponsors</string>
 </resources>

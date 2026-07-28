@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Kos langganan %s setahun.</string>
     <string name="upgrade_screen_iap_action">Belian sekali</string>
     <string name="upgrade_screen_iap_action_hint">Kos pembelian sekali ialah %s.</string>
+    <string name="upgrade_screen_offer_divider_or">atau</string>
+    <string name="upgrade_screen_offer_same_features">Ciri-ciri yang sama, hanya model harga yang berbeza.</string>
     <string name="upgrade_screen_thanks_toast">Anda lah yang terbaik! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Pulihkan pembelian</string>
+    <string name="upgrade_screen_restore_banner_title">Sudah membeli BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Nampaknya anda telah menaik taraf pada peranti ini sebelumnya. Pulihkan pembelian anda untuk membukanya semula.</string>
     <string name="upgrade_screen_restore_purchase_message">Naik taraf anda sah merentasi peranti pada akaun Google yang sama.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Petua penyelesaian masalah untuk naik taraf yang tidak diiktiraf:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Penyegerakan Play Store mungkin mengambil masa. Cuba but semula, kosongkan cache Google Play atau tunggu sahaja.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Pelbagai akaun boleh mengelirukan Google Play. Log keluar dari akaun lain atau pasang melalui laman web Google Play, yang memaksa perkaitan dengan akaun tertentu.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Lihat status Pro anda</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Tahniah!</string>
+    <string name="upgrade_screen_owned_congrats_body">Anda telah mendapatkan BVM Pro — terima kasih atas sokongan pembangunan. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Belian sekali</string>
+    <string name="upgrade_screen_owned_iap_body">Anda memiliki BVM Pro selamanya. Terima kasih atas sokongan anda ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Langganan</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Langganan BVM Pro anda sedang aktif dan ditetapkan untuk diperbaharui.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Langganan BVM Pro anda sedang aktif tetapi tidak akan diperbaharui. Ia tetap sah hingga akhir tempoh semasa.</string>
+    <string name="upgrade_screen_owned_both_warning">Anda mempunyai kedua-dua langganan dan pembelian sekali jalan. Batalkan langganan di Google Play supaya anda tidak dicaj semula.</string>
+    <string name="upgrade_screen_manage_subscription">Urus langganan</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Tukar kepada pembelian sekali jalan</string>
+    <string name="upgrade_screen_switch_purchase_note">Ini adalah pembelian sekali jalan yang berasingan. Ia tidak membatalkan atau membayar balik langganan anda, jadi batalkan itu di Google Play juga. Gunakan akaun Google yang sama untuk kedua-duanya.</string>
+    <string name="upgrade_screen_switch_locked_note">Tersedia selepas langganan anda tidak lagi ditetapkan untuk diperbaharui. Batalkan di Google Play untuk menukar — anda mengekalkan Pro sehingga akhir tempoh semasa.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Status kelihatan salah?</string>
+    <string name="upgrade_screen_status_restore_body">Jika pembelian anda tidak muncul di sini, cuba memulihkannya.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Mengesahkan pembelian anda</string>
+    <string name="upgrade_screen_grace_body_short">Tunggu sebentar — kami sedang mengesahkan semula pembelian anda dengan Google Play.</string>
+    <string name="upgrade_screen_grace_body">Kami masih tidak dapat mengesahkan pembelian anda dengan Google Play. Cuba pulihkan ia, atau periksa bahawa anda telah log masuk dengan akaun yang betul.</string>
+    <string name="upgrade_screen_retry_action">Cuba Lagi</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Langganan masih aktif</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Langganan anda masih ditetapkan untuk diperbaharui. Batalkan ia di Google Play terlebih dahulu, kemudian kembali untuk membeli pembelian satu kali — dengan cara itu anda tidak akan dikenakan bayaran dua kali.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Kami tidak dapat memeriksa status langganan anda. Sila periksa sambungan anda dan cuba lagi.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Sudah dibeli</string>
+    <string name="upgrades_gplay_already_owned_error_description">Gunakan pilihan \"Pulih pembelian\" untuk memulihkan pembelian anda. Jika masalah berterusan, cuba hapuskan cache Google Play dan mulai semula peranti anda.</string>
+    <string name="upgrades_gplay_internal_error_title">Ralat Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Ralat dalaman Google Play telah berlaku. Sila cuba yang berikut:\n\n• Mulai semula peranti anda\n• Hapuskan cache Google Play Store\n• Cuba lagi kemudian</string>
+    <string name="upgrades_gplay_network_error_title">Ralat sambungan</string>
+    <string name="upgrades_gplay_network_error_description">Tidak dapat menyambung ke Google Play. Sila periksa sambungan internet anda dan cuba semula.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play tidak tersedia</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager tidak dapat menyambung ke Google Play. Adakah Google Play dipasang dan dikemaskini? Adakah Akaun Google anda log masuk? Cuba kosongkan cache aplikasi Google Play dan but semula peranti anda.</string>
     <string name="upgrades_no_purchases_found_check_account">Tiada pembelian ditemui. Adakah anda menggunakan akaun yang betul?</string>

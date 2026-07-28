@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Ang subscription ay nagkakahalaga ng %s bawat taon.</string>
     <string name="upgrade_screen_iap_action">One-time na pagbili</string>
     <string name="upgrade_screen_iap_action_hint">Ang one-time na pagbili ay nagkakahalaga ng %s.</string>
+    <string name="upgrade_screen_offer_divider_or">o</string>
+    <string name="upgrade_screen_offer_same_features">Parehong mga feature, iba lang ang pricing model.</string>
     <string name="upgrade_screen_thanks_toast">Ikaw ang pinakamahusay! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">I-restore ang pagbili</string>
+    <string name="upgrade_screen_restore_banner_title">Nabili mo na ba ang BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Mukhang na-upgrade mo na ang device na ito dati. I-restore ang iyong purchase para ma-unlock ulit ito.</string>
     <string name="upgrade_screen_restore_purchase_message">Ang iyong pag-upgrade ay balido sa lahat ng mga device sa parehong Google account.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Mga tip sa pag-troubleshoot para sa mga hindi kinikilalang pag-upgrade:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Ang Play Store synchronization ay maaaring tumagal ng oras. Subukang mag-reboot, i-clear ang Google Play cache o maghintay lamang.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Ang maramihang mga account ay maaaring makalito sa Google Play. Mag-log out mula sa ibang mga account o mag-install sa pamamagitan ng Google Play website, na napipilitang nakipag-ugnayan sa isang partikular na account.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Tingnan ang iyong Pro status</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Binabati kita!</string>
+    <string name="upgrade_screen_owned_congrats_body">Nakuha mo na ang BVM Pro — salamat sa pagsuporta sa development. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">One-time na pagbili</string>
+    <string name="upgrade_screen_owned_iap_body">Pag-aari mo na ang BVM Pro magpakailanman. Salamat sa iyong suporta ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Suskripsyon</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Aktibo ang iyong BVM Pro subscription at naka-set na mag-renew.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Aktibo ang iyong BVM Pro subscription pero hindi ito mag-re-renew. Mananatili itong valid hanggang matapos ang kasalukuyang period.</string>
+    <string name="upgrade_screen_owned_both_warning">Meron kang parehong subscription at one-time purchase. I-cancel ang subscription sa Google Play para hindi ka na sisingilin ulit.</string>
+    <string name="upgrade_screen_manage_subscription">Pamahalaan ang subscription</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Lumipat sa one-time purchase</string>
+    <string name="upgrade_screen_switch_purchase_note">Ito ay hiwalay na one-time purchase. Hindi nito kina-cancel o rine-refund ang iyong subscription, kaya i-cancel din iyon sa Google Play. Gamitin ang parehong Google account para sa dalawa.</string>
+    <string name="upgrade_screen_switch_locked_note">Magiging available ito kapag hindi na naka-set mag-renew ang iyong subscription. I-cancel ito sa Google Play para makalipat — mananatili sa iyo ang Pro hanggang matapos ang kasalukuyang period.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Mali ang status?</string>
+    <string name="upgrade_screen_status_restore_body">Kung hindi lumalabas dito ang iyong purchase, subukan itong i-restore.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Kinukumpirma ang iyong purchase</string>
+    <string name="upgrade_screen_grace_body_short">Sandali lang — dinodoble-check namin ang iyong purchase sa Google Play.</string>
+    <string name="upgrade_screen_grace_body">Hindi pa rin namin makumpirma ang iyong purchase sa Google Play. Subukan itong i-restore, o tingnan kung naka-sign in ka sa tamang account.</string>
+    <string name="upgrade_screen_retry_action">Ulitin</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Aktibo pa rin ang subscription</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Naka-set pa rin mag-renew ang iyong subscription. I-cancel muna ito sa Google Play, tapos bumalik para bilhin ang one-time purchase — sa ganoong paraan hindi ka masisingil nang dalawang beses.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Hindi namin nasuri ang status ng iyong subscription. Pakisuri ang iyong koneksyon at subukan ulit.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Nabili na</string>
+    <string name="upgrades_gplay_already_owned_error_description">Gamitin ang opsyong \"I-restore ang purchase\" para i-restore ang iyong purchase. Kung nagpapatuloy ang isyu, subukang i-clear ang Google Play cache at i-restart ang iyong device.</string>
+    <string name="upgrades_gplay_internal_error_title">Error sa Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">May naganap na internal na error sa Google Play. Pakisubukan ang mga sumusunod:\n\n• I-restart ang iyong device\n• I-clear ang Google Play Store cache\n• Subukan ulit mamaya</string>
+    <string name="upgrades_gplay_network_error_title">Error sa koneksyon</string>
+    <string name="upgrades_gplay_network_error_description">Hindi makakonekta sa Google Play. Pakisuri ang iyong internet connection at subukan ulit.</string>
     <string name="upgrades_gplay_unavailable_error_title">Ang Google Play ay kasalukoyang hindi magagamit</string>
     <string name="upgrades_gplay_unavailable_error_description">Hindi makakonekta ang Bluetooth Volume Manager sa Google Play. Naka-install ba at updated ang Google Play? Naka-log in ba ang iyong Google Account? Subukang i-clear ang cache ng Google Play app at i-reboot ang iyong device.</string>
     <string name="upgrades_no_purchases_found_check_account">Walang nahanap na mga binili. Ginagamit mo ba ang iyong tamang account?</string>

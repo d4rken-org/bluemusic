@@ -214,6 +214,7 @@
     <string name="settings_acknowledgements_description">заслуге, лиценце и посебна захвалност</string>
     <string name="settings_acks_translation_header">Превод</string>
     <string name="settings_acks_translators_title">Преводиоци</string>
+    <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
     <string name="settings_acks_translate_title">Преведи BVM</string>
     <string name="settings_acks_translate_desc">Помози превођење BVM на свој језик</string>
     <string name="settings_acks_thanks_header">Хвала</string>

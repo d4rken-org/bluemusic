@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">ការជាវមានតម្លៃ %s ក្នុងមួយឆ្នាំ។</string>
     <string name="upgrade_screen_iap_action">ការជាវតែម្ដងរួច</string>
     <string name="upgrade_screen_iap_action_hint">ការជាវតែម្ដងរួចតម្លៃ %s។</string>
+    <string name="upgrade_screen_offer_divider_or">ឬ</string>
+    <string name="upgrade_screen_offer_same_features">លក្ខណៈពិសេសដូចគ្នា គ្រាន់តែម៉ូដែលកំណត់តម្លៃខុសគ្នា។</string>
     <string name="upgrade_screen_thanks_toast">អ្នកជាមនុស្សល្អបំផុត! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">ស្តារការជាវមកវិញ</string>
+    <string name="upgrade_screen_restore_banner_title">បានទិញ BVM Pro រួចហើយមែនទេ?</string>
+    <string name="upgrade_screen_restore_banner_body">ហាក់ដូចជាអ្នកបានអាប់ស្រ្គេតលើឧបករណ៍នេះពីមុនមក។ សូមស្តារការទិញរបស់អ្នកឡើងវិញ ដើម្បីដោះសោវាម្តងទៀត។</string>
     <string name="upgrade_screen_restore_purchase_message">ការដំឡើងរបស់អ្នកមានសុពលភាពនៅលើឧបករណ៍នានានៅលើគណនី Google ដូចគ្នា។</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">គន្លឹះដោះស្រាយបញ្ហាសម្រាប់ការដំឡើងដែលមិនបានទទួលស្គាល់៖</string>
     <string name="upgrade_screen_restore_sync_patience_hint">ការធ្វើសមកាលកម្ម Play Store អាចចំណាយពេល។ សាកល្បងចាប់ផ្តើមឡើងវិញ សម្អាតឃ្លាំងសម្ងាត់ Google Play ឬគ្រាន់តែរង់ចាំ។</string>
     <string name="upgrade_screen_restore_multiaccount_hint">គណនីច្រើនអាចធ្វើឱ្យ Google Play ច្រឡំ។ ចេញពីគណនីផ្សេងទៀត ឬដំឡើងតាមរយៈគេហទំព័រ Google Play ដែលបង្ខំការភ្ជាប់ជាមួយគណនីជាក់លាក់។</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">មើលស្ថានភាព Pro របស់អ្នក</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">សូមអបអរសាទរ!</string>
+    <string name="upgrade_screen_owned_congrats_body">អ្នកមាន BVM Pro ហើយ — សូមអរគុណសម្រាប់ការគាំទ្រការអភិវឌ្ឍន៍។ ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">ការជាវតែម្ដងរួច</string>
+    <string name="upgrade_screen_owned_iap_body">អ្នកជាកម្មសិទ្ធិករ BVM Pro ជារៀងរហូត។ សូមអរគុណសម្រាប់ការគាំទ្ររបស់អ្នក ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">ការជាវ</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">ការជាវ BVM Pro របស់អ្នកកំពុងសកម្ម ហើយត្រូវបានកំណត់ឱ្យបន្តជាថ្មី។</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">ការជាវ BVM Pro របស់អ្នកកំពុងសកម្ម ប៉ុន្តែនឹងមិនបន្តជាថ្មីទេ។ វានៅតែមានសុពលភាពរហូតដល់ចុងបញ្ចប់នៃរយៈពេលបច្ចុប្បន្ន។</string>
+    <string name="upgrade_screen_owned_both_warning">អ្នកមានទាំងការជាវ និងការទិញតែម្តង។ សូមលុបចោលការជាវនៅក្នុង Google Play ដើម្បីកុំឱ្យអ្នកត្រូវបានគិតប្រាក់ម្តងទៀត។</string>
+    <string name="upgrade_screen_manage_subscription">គ្រប់គ្រងការជាវ</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">ប្តូរទៅជាការទិញតែម្តង</string>
+    <string name="upgrade_screen_switch_purchase_note">នេះជាការទិញតែម្តងដាច់ដោយឡែក។ វាមិនលុបចោល ឬសងប្រាក់ការជាវរបស់អ្នកទេ ដូច្នេះសូមលុបចោលការជាវនោះនៅក្នុង Google Play ដែរ។ សូមប្រើគណនី Google ដូចគ្នាសម្រាប់ទាំងពីរ។</string>
+    <string name="upgrade_screen_switch_locked_note">អាចប្រើបានតែនៅពេលដែលការជាវរបស់អ្នកលែងត្រូវបានកំណត់ឱ្យបន្តជាថ្មី។ សូមលុបចោលវានៅក្នុង Google Play ដើម្បីប្តូរ — អ្នកនៅតែរក្សា Pro រហូតដល់រយៈពេលបច្ចុប្បន្នបញ្ចប់។</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">ស្ថានភាពមើលទៅមិនត្រឹមត្រូវ?</string>
+    <string name="upgrade_screen_status_restore_body">ប្រសិនបើការទិញរបស់អ្នកមិនបង្ហាញនៅទីនេះទេ សូមព្យាយាមស្តារវាឡើងវិញ។</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">កំពុងបញ្ជាក់ការទិញរបស់អ្នក</string>
+    <string name="upgrade_screen_grace_body_short">សូមរង់ចាំបន្តិច — យើងកំពុងពិនិត្យការទិញរបស់អ្នកម្តងទៀតជាមួយ Google Play។</string>
+    <string name="upgrade_screen_grace_body">យើងនៅតែមិនអាចបញ្ជាក់ការទិញរបស់អ្នកជាមួយ Google Play បានទេ។ សូមព្យាយាមស្តារវាឡើងវិញ ឬពិនិត្យមើលថាអ្នកបានចូលគណនីត្រឹមត្រូវ។</string>
+    <string name="upgrade_screen_retry_action">ព្យាយាមម្តងទៀត</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">ការជាវនៅតែសកម្ម</string>
+    <string name="upgrade_screen_sub_still_renewing_message">ការជាវរបស់អ្នកនៅតែត្រូវបានកំណត់ឱ្យបន្តជាថ្មី។ សូមលុបចោលវានៅក្នុង Google Play ជាមុនសិន បន្ទាប់មកត្រឡប់មកទិញការទិញតែម្តងវិញ — ដោយវិធីនេះអ្នកនឹងមិនត្រូវបានគិតប្រាក់ពីរដងទេ។</string>
+    <string name="upgrade_screen_sub_check_failed_message">យើងមិនអាចពិនិត្យស្ថានភាពការជាវរបស់អ្នកបានទេ។ សូមពិនិត្យការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្តងទៀត។</string>
+    <string name="upgrades_gplay_already_owned_error_title">បានទិញរួចហើយ</string>
+    <string name="upgrades_gplay_already_owned_error_description">សូមប្រើជម្រើស \"ស្តារការទិញ\" ដើម្បីស្តារការទិញរបស់អ្នក។ ប្រសិនបើបញ្ហានៅតែកើតមាន សូមព្យាយាមសម្អាតឃ្លាំងសម្ងាត់ Google Play ហើយចាប់ផ្តើមឧបករណ៍របស់អ្នកឡើងវិញ។</string>
+    <string name="upgrades_gplay_internal_error_title">កំហុស Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">កំហុសផ្ទៃក្នុងរបស់ Google Play បានកើតឡើង។ សូមព្យាយាមធ្វើដូចខាងក្រោម៖\n\n• ចាប់ផ្តើមឧបករណ៍របស់អ្នកឡើងវិញ\n• សម្អាតឃ្លាំងសម្ងាត់ Google Play Store\n• ព្យាយាមម្តងទៀតនៅពេលក្រោយ</string>
+    <string name="upgrades_gplay_network_error_title">កំហុសការតភ្ជាប់</string>
+    <string name="upgrades_gplay_network_error_description">មិនអាចភ្ជាប់ទៅ Google Play បានទេ។ សូមពិនិត្យការតភ្ជាប់អ៊ីនធឺណិតរបស់អ្នក ហើយព្យាយាមម្តងទៀត។</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play មិនអាចប្រើបាន</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager មិនអាចភ្ជាប់ទៅ Google Play បានទេ។ តើ Google Play ត្រូវបានដំឡើងហើយទាន់សម័យទេ? តើគណនី Google របស់អ្នកបានចូលហើយទេ? សូមព្យាយាមមើលការសម្អាតឃ្លាំងសម្ងាត់នៃកម្មវិធី Google Play ហើយចាប់ផ្ដើមដំណើរការឧបករណ៍ឡើងវិញ។</string>
     <string name="upgrades_no_purchases_found_check_account">រកមិនឃើញការទិញ។ តើអ្នកកំពុងប្រើគណនីត្រឹមត្រូវទេ?</string>

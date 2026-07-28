@@ -17,4 +17,12 @@
     <string name="upgrade_screen_sponsor_action_hint">ప్రత్యామనాయం ప్రకటనలు, అనలిటిక్స్ మరియు Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">ఓపెన్ సోర్స్ అభివృద్ధికి మద్దతు ఇచ్చినందుకు ధన్యవాదాలు ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">ఇప్పుడే వెనక్కు వెళ్తున్నారా? మీ సహాయంతో BVM జీవంతో ఉంటుంది!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">మీ సపోర్టర్ స్థితిని చూడండి</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">మీ సపోర్టు కోసం ధన్యవాదాలు</string>
+    <string name="upgrade_screen_supporter_status_body">ఓపెన్-సోర్స్ డెవలప్‌మెంట్‌కు సపోర్ట్ చేయడం ద్వారా మీరు అన్ని అదనపు ఫీచర్‌లను అన్‌లాక్ చేసారు.</string>
+    <string name="upgrade_screen_supporter_since">%s నుండి సపోర్టర్</string>
+    <string name="upgrade_screen_supporter_visit_action">GitHub స్పాన్సర్‌లను సందర్శించండి</string>
 </resources>

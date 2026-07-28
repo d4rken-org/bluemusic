@@ -20,4 +20,12 @@
     <string name="upgrade_screen_sponsor_action_hint">विज्ञापन, एनालिटिक्स और गूगल प्ले ये सभी वैकल्पिक है🙁</string>
     <string name="upgrade_screen_thanks_toast">ओपन-सोर्स विकास ❤️ का समर्थन करने के लिए धन्यवाद</string>
     <string name="upgrade_screen_sponsor_too_fast">वापस आ गए? आपका सहयोग BVM को जीवित रखता है!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">अपनी समर्थक स्थिति देखें</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">आपके समर्थन के लिए धन्यवाद</string>
+    <string name="upgrade_screen_supporter_status_body">ओपन-सोर्स विकास का समर्थन करके आपने सभी अतिरिक्त सुविधाएं अनलॉक कर ली हैं।</string>
+    <string name="upgrade_screen_supporter_since">%s से समर्थक</string>
+    <string name="upgrade_screen_supporter_visit_action">GitHub Sponsors पर जाएं</string>
 </resources>

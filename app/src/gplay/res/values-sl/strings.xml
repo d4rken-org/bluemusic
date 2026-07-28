@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Naročnina stane %s na leto.</string>
     <string name="upgrade_screen_iap_action">Enkratni nakup</string>
     <string name="upgrade_screen_iap_action_hint">Enkratni nakup stane %s.</string>
+    <string name="upgrade_screen_offer_divider_or">ali</string>
+    <string name="upgrade_screen_offer_same_features">Iste lastnosti, le drugačni modeli cenovanja.</string>
     <string name="upgrade_screen_thanks_toast">Hvala! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Obnovi nakup</string>
+    <string name="upgrade_screen_restore_banner_title">Ste že kupili BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Izgleda, da ste to napravo že nadgradili. Obnovite nakup, da ga znova odklenete.</string>
     <string name="upgrade_screen_restore_purchase_message">Nadgradnja je veljavna v vseh napravah, kjer ste prijavljeni z istim Googlovim računom.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Nasveti za odpravljanje težav pri neprepoznanih nadgradnjah:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Sinhronizacija s Trgovino Play bo morda trajala nekaj časa.  Poizkusite s ponovnim zagnom naprave, čiščenjem predpomnilnika Googla Play ali preprosto počakajte.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Več računov lahko zmede Google Play.  Odjavite se iz drugih računov ali namestite preko spletne strani Google Play, ki vsili povezavo z določenim računom.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Preglejte svoj status Pro</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Čestitke!</string>
+    <string name="upgrade_screen_owned_congrats_body">Imate BVM Pro — hvala, da podpirate razvoj. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Enkratni nakup</string>
+    <string name="upgrade_screen_owned_iap_body">BVM Pro je vaš za vedno. Hvala za vašo podporo ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Naročnina</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Vaša BVM Pro naročnina je aktivna in je nastavljena na obnavljanje.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Vaša BVM Pro naročnina je aktivna, vendar se ne bo obnovila. Ostane veljavna do konca trenutnega obdobja.</string>
+    <string name="upgrade_screen_owned_both_warning">Imate tako naročnino kot tudi enkratni nakup. Prekličite naročnino v Google Play, da vas ne bi ponovno zaračunali.</string>
+    <string name="upgrade_screen_manage_subscription">Upravljanje naročnine</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Preklopi na enkratni nakup</string>
+    <string name="upgrade_screen_switch_purchase_note">To je ločen enkratni nakup. Ne prekliče in ne vrne vaše naročnine, zato to prekličite tudi v Google Play. Uporabite isti račun Google za oba.</string>
+    <string name="upgrade_screen_switch_locked_note">Dostopno, ko vaša naročnina ne bo več nastavljena na obnavljanje. Prekličite jo v Google Play za prestop — Pro obdržite do konca trenutnega obdobja.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Ali status izgleda napačen?</string>
+    <string name="upgrade_screen_status_restore_body">Če se vaš nakup tukaj ne prikazuje, poskusite ga obnoviti.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Potrditev vašega nakupa</string>
+    <string name="upgrade_screen_grace_body_short">Počakaj — ponovno preverjamo tvoj nakup pri Google Play.</string>
+    <string name="upgrade_screen_grace_body">Še vedno ne moremo potrditi tvojega nakupa pri Google Play. Poskusi ga obnoviti ali preveri, da si prijavljen s pravim računom.</string>
+    <string name="upgrade_screen_retry_action">Poskusi ponovno</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Naročnina je še vedno aktivna</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Tvoja naročnina je še vedno nastavljena za obnovitev. Najprej jo prekliči v Google Play, nato se vrni in kupi enkratni nakup — na ta način ne boš zaračunan dvakrat.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Nismo mogli preveriti stanja tvoje naročnine. Prosimo, preveri svojo povezavo in poskusi ponovno.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Že kupljeno</string>
+    <string name="upgrades_gplay_already_owned_error_description">Uporabi možnost »Obnovi nakup«, da obnoviš svoj nakup. Če se težava nadaljuje, poskusi počistiti predpomnilnik Google Play in ponovno zagnati napravo.</string>
+    <string name="upgrades_gplay_internal_error_title">Napaka Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Prišlo je do notranje napake Google Play. Prosimo, poskusi naslednje:\n\n• Ponovno zagnani napravo\n• Počisti predpomnilnik Google Play Store\n• Poskusi ponovno kasneje</string>
+    <string name="upgrades_gplay_network_error_title">Napaka pri povezavi</string>
+    <string name="upgrades_gplay_network_error_description">Ni mogoče se povezati s Google Play. Preverite svojo internetno povezavo in poskusite znova.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ni na voljo.</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager se ne more povezati z Google Play. Ali je Google Play nameščen in posodobljen? Ali ste prijavljeni v Google Račun? Poskusite počistiti predpomnilnik aplikacije Google Play in znova zagnati napravo.</string>
     <string name="upgrades_no_purchases_found_check_account">Nakup ni bil najden.  Ali uporabljate pravi račun?</string>

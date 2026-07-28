@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Het abonnement kost %s per jaar.</string>
     <string name="upgrade_screen_iap_action">Eenmalige aankoop</string>
     <string name="upgrade_screen_iap_action_hint">De eenmalige aankoop kost %s.</string>
+    <string name="upgrade_screen_offer_divider_or">of</string>
+    <string name="upgrade_screen_offer_same_features">Dezelfde functies, alleen verschillende prijsmodellen.</string>
     <string name="upgrade_screen_thanks_toast">Jij bent de beste! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Herstel aankoop</string>
+    <string name="upgrade_screen_restore_banner_title">Heb je BVM Pro al gekocht?</string>
+    <string name="upgrade_screen_restore_banner_body">Het lijkt erop dat je eerder op dit apparaat een upgrade hebt gedaan. Herstel je aankoop om het opnieuw te ontgrendelen.</string>
     <string name="upgrade_screen_restore_purchase_message">Je upgrade is geldig op alle apparaten met hetzelfde Google-account.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Tips voor het oplossen van problemen met niet herkende upgrades:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Synchronisatie via de Play Store kan enige tijd duren. Probeer opnieuw op te starten, de Google Play cache te wissen of wacht gewoon.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Meerdere accounts kunnen Google Play in verwarring brengen. Meld je af bij andere accounts of installeer deze via de website van Google Play, waardoor koppelingen met een specifiek account worden afgedwongen.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Bekijk je Pro-status</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Gefeliciteerd!</string>
+    <string name="upgrade_screen_owned_congrats_body">Je hebt BVM Pro — bedankt voor je steun voor de ontwikkeling. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Eenmalige aankoop</string>
+    <string name="upgrade_screen_owned_iap_body">Je bezit BVM Pro voor altijd. Bedankt voor je steun ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Abonnement</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Je BVM Pro-abonnement is actief en ingesteld om te verlengen.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Je BVM Pro-abonnement is actief maar verlengt niet. Het blijft geldig tot het einde van de huidige periode.</string>
+    <string name="upgrade_screen_owned_both_warning">Je hebt zowel een abonnement als een eenmalige aankoop. Zeg het abonnement op in Google Play zodat je niet opnieuw wordt gefactureerd.</string>
+    <string name="upgrade_screen_manage_subscription">Abonnement beheren</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Overstappen naar een eenmalige aankoop</string>
+    <string name="upgrade_screen_switch_purchase_note">Dit is een aparte eenmalige aankoop. Hiermee wordt je abonnement niet geannuleerd en het aankoopbedrag wordt niet terugbetaald. Zeg het abonnement ook op in Google Play. Gebruik voor beide aankopen hetzelfde Google-account.</string>
+    <string name="upgrade_screen_switch_locked_note">Beschikbaar wanneer je abonnement niet meer is ingesteld om te verlengen. Zeg het op in Google Play om over te schakelen — je behoudt Pro tot het einde van de huidige periode.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">De status lijkt onjuist?</string>
+    <string name="upgrade_screen_status_restore_body">Als je aankoop hier niet wordt weergegeven, probeer deze te herstellen.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Je aankoop bevestigen</string>
+    <string name="upgrade_screen_grace_body_short">Even geduld — we controleren je aankoop met Google Play.</string>
+    <string name="upgrade_screen_grace_body">We kunnen je aankoop nog steeds niet bevestigen met Google Play. Probeer het te herstellen, of controleer dat je bent ingelogd met het juiste account.</string>
+    <string name="upgrade_screen_retry_action">Opnieuw proberen</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Abonnement nog steeds actief</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Je abonnement is nog steeds ingesteld om te vernieuwen. Annuleer dit eerst in Google Play, kom dan terug om de eenmalige aankoop te doen — zo word je niet twee keer in rekening gebracht.</string>
+    <string name="upgrade_screen_sub_check_failed_message">We konden je abonnementsstatus niet controleren. Controleer je verbinding en probeer het opnieuw.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Reeds gekocht</string>
+    <string name="upgrades_gplay_already_owned_error_description">Gebruik de optie \'Aankoop herstellen\' om uw aankoop te herstellen. Als het probleem aanhoudt, probeer dan de cache van Google Play te wissen en uw apparaat opnieuw op te starten.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play-fout</string>
+    <string name="upgrades_gplay_internal_error_description">Er is een interne Google Play-fout opgetreden. Probeer het volgende:\n\n• Herstart je apparaat\n• Wis de cache van de Google Play Store\n• Probeer het later opnieuw</string>
+    <string name="upgrades_gplay_network_error_title">Verbindingsfout</string>
+    <string name="upgrades_gplay_network_error_description">Kan geen verbinding maken met Google Play. Controleer je internetverbinding en probeer het opnieuw.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play is niet beschikbaar</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager kan geen verbinding maken met Google Play. Is Google Play geïnstalleerd en up-to-date? Is je Google-account ingelogd? Probeer de cache van de Google Play-app te wissen en je apparaat opnieuw op te starten.</string>
     <string name="upgrades_no_purchases_found_check_account">Geen aankopen gevonden. Gebruik je de juiste rekening?</string>
