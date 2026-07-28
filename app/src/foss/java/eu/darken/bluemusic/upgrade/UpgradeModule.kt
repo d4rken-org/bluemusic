@@ -4,7 +4,9 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import eu.darken.bluemusic.common.upgrade.UpgradeDiagnostics
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
+import eu.darken.bluemusic.upgrade.core.UpgradeDiagnosticsFoss
 import eu.darken.bluemusic.upgrade.core.UpgradeRepoFoss
 import javax.inject.Singleton
 
@@ -14,5 +16,9 @@ abstract class UpgradeModule {
     @Binds
     @Singleton
     abstract fun control(foss: UpgradeRepoFoss): UpgradeRepo
+
+    @Binds
+    @Singleton
+    abstract fun diagnostics(foss: UpgradeDiagnosticsFoss): UpgradeDiagnostics
 
 }
