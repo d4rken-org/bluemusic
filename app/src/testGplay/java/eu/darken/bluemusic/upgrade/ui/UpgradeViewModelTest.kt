@@ -251,7 +251,7 @@ class UpgradeViewModelTest : BaseTest() {
         val repo = mockRepo()
         val owned = mockk<UpgradeRepoGplay.Info> {
             every { upgrades } returns listOf(mockk<PurchasedSku>())
-            every { isUpgraded } returns true
+            every { isPro } returns true
         }
         coEvery { repo.restorePurchaseNow() } returns owned
         val vm = buildVm(repo)

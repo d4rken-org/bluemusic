@@ -6,6 +6,7 @@ import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.datastore.value
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.flow.SingleEventFlow
 import eu.darken.bluemusic.common.flow.combine
 import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.locale.LocaleManager
@@ -18,6 +19,7 @@ import eu.darken.bluemusic.common.theming.ThemeStyle
 import eu.darken.bluemusic.common.theming.themeState
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
+import eu.darken.bluemusic.common.upgrade.isProForUi
 import eu.darken.bluemusic.main.core.GeneralSettings
 import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
@@ -33,6 +35,8 @@ constructor(
     private val upgradeRepo: UpgradeRepo,
 ) : ViewModel4(dispatcherProvider, logTag("Settings", "General", "ViewModel"), navCtrl) {
 
+    val events = SingleEventFlow<GeneralSettingsDialog>()
+
     val state = combine(
         generalSettings.themeState,
         flowOf(hasApiLevel(33)),
@@ -41,7 +45,7 @@ constructor(
         State(
             themeState = themeState,
             showLanguageSwitcher = languageSwitcher,
-            isUpgraded = upgradeInfo.isUpgraded,
+            isUpgraded = upgradeInfo.isPro,
         )
     }
         .asStateFlow()
@@ -54,6 +58,18 @@ constructor(
         } else {
             throw IllegalStateException("This should not be clickable below API 33...")
         }
+    }
+
+    // The three theme rows render their Pro badge off the passively collected state, which reports
+    // non-Pro while billing is still settling. The tap route is gated separately so a paying user
+    // who taps during that window opens the picker instead of being sent to the upgrade screen.
+    fun onThemeRowClicked(dialog: GeneralSettingsDialog) = launch {
+        log(tag) { "onThemeRowClicked($dialog)" }
+        if (!upgradeRepo.isProForUi()) {
+            navTo(Nav.Main.Upgrade())
+            return@launch
+        }
+        events.emit(dialog)
     }
 
     fun updateThemeMode(mode: ThemeMode) = launch {
@@ -69,11 +85,6 @@ constructor(
     fun updateThemeColor(color: ThemeColor) = launch {
         log(tag) { "updateThemeColor($color)" }
         generalSettings.themeColor.value(color)
-    }
-
-    fun upgrade() = launch {
-        log(tag) { "upgrade()" }
-        navTo(Nav.Main.Upgrade())
     }
 
     data class State(

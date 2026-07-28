@@ -70,7 +70,7 @@ class UpgradeViewModel @AssistedInject constructor(
         // can see their status and switch subscription -> one-time purchase.
         if (!manage) {
             upgradeRepo.upgradeInfo
-                .filter { it.isUpgraded }
+                .filter { it.isPro }
                 .take(1)
                 .onEach { navUp() }
                 .launchInViewModel()
@@ -155,7 +155,7 @@ class UpgradeViewModel @AssistedInject constructor(
         // Pro without any owned purchase == grace. Stage 1 shows immediately; the diagnostics stage
         // appears only once the entitlement has been unconfirmed past the 24h boundary (derived from
         // the last-confirmed timestamp, which can't get stuck during a Play outage).
-        val grace = if (current.isUpgraded && !ownership.ownsAnything) {
+        val grace = if (current.isPro && !ownership.ownsAnything) {
             GraceHint(
                 showDiagnostics = sig.lastProStateAt > 0L &&
                     (System.currentTimeMillis() - sig.lastProStateAt) >= GRACE_DIAGNOSTICS_AFTER_MS,
@@ -188,7 +188,7 @@ class UpgradeViewModel @AssistedInject constructor(
             ownership = ownership,
             grace = grace,
             // Hidden while a grace period or an actual purchase keeps the user Pro.
-            wasPreviouslyPro = sig.wasEverPro && !current.isUpgraded,
+            wasPreviouslyPro = sig.wasEverPro && !current.isPro,
             settled = sig.settled,
             restoreInProgress = isRestoring,
             verificationInProgress = isVerifying,

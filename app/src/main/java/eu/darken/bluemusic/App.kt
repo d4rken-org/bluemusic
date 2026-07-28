@@ -86,7 +86,7 @@ class App : Application() {
                 .flatMapLatest { hasWidgets ->
                     if (!hasWidgets) return@flatMapLatest emptyFlow()
                     upgradeRepo.upgradeInfo
-                        .map { it.isUpgraded }
+                        .map { it.isPro }
                         .distinctUntilChanged()
                         .drop(1)
                 }

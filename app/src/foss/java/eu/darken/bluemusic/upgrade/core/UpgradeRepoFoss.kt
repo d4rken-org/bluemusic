@@ -29,7 +29,9 @@ class UpgradeRepoFoss @Inject constructor(
     private val webpageTool: WebpageTool,
 ) : UpgradeRepo {
 
-    override val mainWebsite: String = SITE
+    override val storeSite: String = STORE_SITE
+    override val upgradeSite: String = UPGRADE_SITE
+    override val betaSite: String = BETA_SITE
 
     private val refreshTrigger = MutableStateFlow(UUID.randomUUID())
 
@@ -41,7 +43,7 @@ class UpgradeRepoFoss @Inject constructor(
             Info()
         } else {
             Info(
-                isUpgraded = true,
+                isPro = true,
                 upgradedAt = data.upgradedAt,
                 fossUpgradeType = data.upgradeType,
             )
@@ -60,7 +62,7 @@ class UpgradeRepoFoss @Inject constructor(
 
     fun openGithubSponsorsPage(): Boolean {
         log(TAG) { "openGithubSponsorsPage()" }
-        return webpageTool.open(mainWebsite)
+        return webpageTool.open(upgradeSite)
     }
 
     suspend fun confirmGithubSponsorsUpgrade() {
@@ -77,16 +79,21 @@ class UpgradeRepoFoss @Inject constructor(
     }
 
     data class Info(
-        override val isUpgraded: Boolean = false,
+        override val isPro: Boolean = false,
         override val upgradedAt: Instant? = null,
         val fossUpgradeType: FossUpgrade.Type? = null,
         override val error: Throwable? = null,
     ) : UpgradeRepo.Info {
         override val type: UpgradeRepo.Type = UpgradeRepo.Type.FOSS
+
+        // FOSS reads a local cache, so every emission already reflects a real entitlement lookup.
+        override val isSettled: Boolean = true
     }
 
     companion object {
-        private const val SITE = "https://github.com/sponsors/d4rken"
+        private const val STORE_SITE = "https://github.com/d4rken-org/bluemusic"
+        private const val UPGRADE_SITE = "https://github.com/sponsors/d4rken"
+        private const val BETA_SITE = "https://github.com/d4rken-org/bluemusic/releases"
         private val TAG = logTag("Upgrade", "Foss", "Repo")
     }
 }

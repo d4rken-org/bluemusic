@@ -50,7 +50,7 @@ class WidgetConfigurationViewModel @Inject constructor(
     ) { theme, forceCustom, upgradeInfo ->
         val activePreset = if (forceCustom) null else WidgetTheme.matchPreset(theme)
         State(
-            isPro = upgradeInfo.isUpgraded,
+            isPro = upgradeInfo.isPro,
             theme = theme,
             activePreset = activePreset,
             isCustomMode = activePreset == null,

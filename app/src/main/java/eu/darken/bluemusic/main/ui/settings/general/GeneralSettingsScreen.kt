@@ -21,6 +21,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,16 +52,23 @@ fun GeneralSettingsScreenHost(vm: GeneralSettingsViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
 
     val state by vm.state.collectAsStateWithLifecycle()
+    var activeDialog by remember { mutableStateOf<GeneralSettingsDialog?>(null) }
+
+    LaunchedEffect(Unit) {
+        vm.events.collect { dialog -> activeDialog = dialog }
+    }
 
     state?.let { vmState ->
         GeneralSettingsScreen(
             state = vmState,
+            activeDialog = activeDialog,
             onNavigateUp = { vm.navUp() },
             onLanguageSwitcher = { vm.showLanguagePicker() },
+            onThemeRowClicked = { vm.onThemeRowClicked(it) },
             onThemeModeSelected = { vm.updateThemeMode(it) },
             onThemeStyleSelected = { vm.updateThemeStyle(it) },
             onThemeColorSelected = { vm.updateThemeColor(it) },
-            onUpgrade = { vm.upgrade() },
+            onDialogDismissed = { activeDialog = null },
         )
     }
 }
@@ -68,17 +76,16 @@ fun GeneralSettingsScreenHost(vm: GeneralSettingsViewModel = hiltViewModel()) {
 @Composable
 fun GeneralSettingsScreen(
     state: GeneralSettingsViewModel.State,
+    activeDialog: GeneralSettingsDialog? = null,
     onNavigateUp: () -> Unit,
     onLanguageSwitcher: (() -> Unit)?,
+    onThemeRowClicked: (GeneralSettingsDialog) -> Unit,
     onThemeModeSelected: (ThemeMode) -> Unit,
     onThemeStyleSelected: (ThemeStyle) -> Unit,
     onThemeColorSelected: (ThemeColor) -> Unit,
-    onUpgrade: () -> Unit,
+    onDialogDismissed: () -> Unit,
 ) {
     val context = LocalContext.current
-    var showThemeModeDialog by remember { mutableStateOf(false) }
-    var showThemeStyleDialog by remember { mutableStateOf(false) }
-    var showThemeColorDialog by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -133,7 +140,7 @@ fun GeneralSettingsScreen(
                     },
                     subtitle = stringResource(R.string.ui_theme_mode_setting_explanation),
                     value = if (state.isUpgraded) state.themeState.mode.label.get(context) else null,
-                    onClick = if (state.isUpgraded) {{ showThemeModeDialog = true }} else onUpgrade,
+                    onClick = { onThemeRowClicked(GeneralSettingsDialog.THEME_MODE) },
                 )
                 SettingsDivider()
             }
@@ -149,7 +156,7 @@ fun GeneralSettingsScreen(
                     },
                     subtitle = stringResource(R.string.ui_theme_style_setting_explanation),
                     value = if (state.isUpgraded) state.themeState.style.label.get(context) else null,
-                    onClick = if (state.isUpgraded) {{ showThemeStyleDialog = true }} else onUpgrade,
+                    onClick = { onThemeRowClicked(GeneralSettingsDialog.THEME_STYLE) },
                 )
                 SettingsDivider()
             }
@@ -169,7 +176,7 @@ fun GeneralSettingsScreen(
                         stringResource(R.string.ui_theme_color_setting_explanation)
                     },
                     value = if (state.isUpgraded && !isMaterialYou) state.themeState.color.label.get(context) else null,
-                    onClick = if (!state.isUpgraded) onUpgrade else {{ showThemeColorDialog = true }},
+                    onClick = { onThemeRowClicked(GeneralSettingsDialog.THEME_COLOR) },
                 )
                 SettingsDivider()
             }
@@ -188,43 +195,41 @@ fun GeneralSettingsScreen(
         }
     }
 
-    if (showThemeModeDialog) {
-        EnumSelectorDialog(
+    when (activeDialog) {
+        GeneralSettingsDialog.THEME_MODE -> EnumSelectorDialog(
             title = stringResource(R.string.ui_theme_mode_setting_label),
             options = ThemeMode.entries,
             selectedOption = state.themeState.mode,
             onOptionSelected = { mode ->
                 onThemeModeSelected(mode)
-                showThemeModeDialog = false
+                onDialogDismissed()
             },
-            onDismiss = { showThemeModeDialog = false }
+            onDismiss = onDialogDismissed,
         )
-    }
 
-    if (showThemeStyleDialog) {
-        EnumSelectorDialog(
+        GeneralSettingsDialog.THEME_STYLE -> EnumSelectorDialog(
             title = stringResource(R.string.ui_theme_style_setting_label),
             options = ThemeStyle.entries,
             selectedOption = state.themeState.style,
             onOptionSelected = { style ->
                 onThemeStyleSelected(style)
-                showThemeStyleDialog = false
+                onDialogDismissed()
             },
-            onDismiss = { showThemeStyleDialog = false }
+            onDismiss = onDialogDismissed,
         )
-    }
 
-    if (showThemeColorDialog) {
-        EnumSelectorDialog(
+        GeneralSettingsDialog.THEME_COLOR -> EnumSelectorDialog(
             title = stringResource(R.string.ui_theme_color_setting_label),
             options = ThemeColor.entries,
             selectedOption = state.themeState.color,
             onOptionSelected = { color ->
                 onThemeColorSelected(color)
-                showThemeColorDialog = false
+                onDialogDismissed()
             },
-            onDismiss = { showThemeColorDialog = false }
+            onDismiss = onDialogDismissed,
         )
+
+        null -> Unit
     }
 }
 
@@ -236,10 +241,11 @@ private fun GeneralSettingsScreenPreview() {
             state = GeneralSettingsViewModel.State(isUpgraded = true),
             onNavigateUp = {},
             onLanguageSwitcher = {},
+            onThemeRowClicked = {},
             onThemeModeSelected = {},
             onThemeStyleSelected = {},
             onThemeColorSelected = {},
-            onUpgrade = {},
+            onDialogDismissed = {},
         )
     }
 }

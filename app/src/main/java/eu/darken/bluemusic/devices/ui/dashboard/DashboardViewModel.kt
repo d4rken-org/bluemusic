@@ -8,10 +8,12 @@ import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
+import eu.darken.bluemusic.common.upgrade.isProForUi
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
@@ -35,7 +37,7 @@ class DashboardViewModel @Inject constructor(
     private val permissionHelper: PermissionHelper,
     private val deviceRepo: DeviceRepo,
     private val volumeModeTool: VolumeModeTool,
-    upgradeRepo: UpgradeRepo,
+    private val upgradeRepo: UpgradeRepo,
     bluetoothSource: BluetoothRepo,
     private val generalSettings: GeneralSettings,
     private val devicesSettings: DevicesSettings,
@@ -132,7 +134,7 @@ class DashboardViewModel @Inject constructor(
         devicesSettings.lockedDevices.flow,
     ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint, dndHint, lockedDevices ->
         State(
-            isProVersion = upgradeInfo.isUpgraded,
+            isProVersion = upgradeInfo.isPro,
             isBluetoothEnabled = bluetoothState.isEnabled,
             hasBluetoothPermission = bluetoothState.hasPermission,
             devicesWithApps = devicesWithApps,
@@ -169,6 +171,14 @@ class DashboardViewModel @Inject constructor(
     ) {
         // Convenience property for backwards compatibility
         val devices: List<ManagedDevice> get() = devicesWithApps.map { it.device }
+    }
+
+    // The upgrade icon is rendered off the passively collected state, which reports non-Pro while
+    // billing is still settling. Re-check through the UI gate on tap so an actual Pro user lands on
+    // the status view instead of an acquisition screen that immediately navigates back out.
+    fun onUpgradeClicked() = launch {
+        log(tag) { "onUpgradeClicked()" }
+        navTo(Nav.Main.Upgrade(manage = upgradeRepo.isProForUi()))
     }
 
     fun action(action: DashboardAction) = launch {

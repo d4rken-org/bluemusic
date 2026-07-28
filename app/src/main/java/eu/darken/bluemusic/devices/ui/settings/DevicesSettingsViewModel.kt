@@ -31,7 +31,7 @@ constructor(
         devicesSettings.restoreOnBoot.flow,
     ) { upgradeInfo, isEnabled, restoreOnBoot ->
         State(
-            isUpgraded = upgradeInfo.isUpgraded,
+            isUpgraded = upgradeInfo.isPro,
             isEnabled = isEnabled,
             restoreOnBoot = restoreOnBoot,
         )

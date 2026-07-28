@@ -71,14 +71,14 @@ class UpgradeRepoGplayTest : BaseTest() {
             gracePeriod = false,
             billingData = null
         ).apply {
-            isUpgraded shouldBe false
+            isPro shouldBe false
             type shouldBe UpgradeRepo.Type.GPLAY
         }
 
         UpgradeRepoGplay.Info(
             gracePeriod = true,
             billingData = null
-        ).isUpgraded shouldBe true
+        ).isPro shouldBe true
 
         val info = UpgradeRepoGplay.Info(
             gracePeriod = false,
@@ -91,7 +91,7 @@ class UpgradeRepoGplayTest : BaseTest() {
                 )
             )
         )
-        info.isUpgraded shouldBe true
+        info.isPro shouldBe true
         info.upgradedAt shouldBe Instant.parse("2023-12-10T00:00:00Z")
     }
 
@@ -104,26 +104,26 @@ class UpgradeRepoGplayTest : BaseTest() {
     @Test fun `restore returns pro when a purchase is found`() = runTest2 {
         coEvery { billingManager.refresh() } returns BillingData(setOf(proPurchase()))
 
-        repo(lastProAt = 0L).restorePurchaseNow().isUpgraded shouldBe true
+        repo(lastProAt = 0L).restorePurchaseNow().isPro shouldBe true
     }
 
     @Test fun `restore keeps pro within grace when the query comes back empty`() = runTest2 {
         coEvery { billingManager.refresh() } returns BillingData(emptySet())
 
-        repo(lastProAt = System.currentTimeMillis() - 1_000).restorePurchaseNow().isUpgraded shouldBe true
+        repo(lastProAt = System.currentTimeMillis() - 1_000).restorePurchaseNow().isPro shouldBe true
     }
 
     @Test fun `restore is not pro when the query is empty and grace has expired`() = runTest2 {
         coEvery { billingManager.refresh() } returns BillingData(emptySet())
 
         val expired = System.currentTimeMillis() - UpgradeRepoGplay.GRACE_PERIOD_MS - 1_000
-        repo(lastProAt = expired).restorePurchaseNow().isUpgraded shouldBe false
+        repo(lastProAt = expired).restorePurchaseNow().isPro shouldBe false
     }
 
     @Test fun `restore keeps pro within grace when the query errors`() = runTest2 {
         coEvery { billingManager.refresh() } throws RuntimeException("Play unavailable")
 
-        repo(lastProAt = System.currentTimeMillis() - 1_000).restorePurchaseNow().isUpgraded shouldBe true
+        repo(lastProAt = System.currentTimeMillis() - 1_000).restorePurchaseNow().isPro shouldBe true
     }
 
     @Test fun `restore rethrows the error when it happens outside grace`() = runTest2 {
@@ -140,7 +140,7 @@ class UpgradeRepoGplayTest : BaseTest() {
         val twentyDaysAgo = System.currentTimeMillis() - Duration.ofDays(20).toMillis()
 
         repo(lastProAt = twentyDaysAgo, lastSku = OurSku.Iap.PRO_UPGRADE.id)
-            .restorePurchaseNow().isUpgraded shouldBe true
+            .restorePurchaseNow().isPro shouldBe true
     }
 
     @Test fun `subscription grace expires after the short window`() = runTest2 {
@@ -148,7 +148,7 @@ class UpgradeRepoGplayTest : BaseTest() {
         val twentyDaysAgo = System.currentTimeMillis() - Duration.ofDays(20).toMillis()
 
         repo(lastProAt = twentyDaysAgo, lastSku = OurSku.Sub.PRO_UPGRADE.id)
-            .restorePurchaseNow().isUpgraded shouldBe false
+            .restorePurchaseNow().isPro shouldBe false
     }
 
     @Test fun `legacy empty last SKU falls back to the short window`() = runTest2 {
@@ -157,7 +157,7 @@ class UpgradeRepoGplayTest : BaseTest() {
 
         // Existing installs have a timestamp but no recorded SKU: they keep the old 7-day window
         // until the next successful query records one.
-        repo(lastProAt = twentyDaysAgo, lastSku = "").restorePurchaseNow().isUpgraded shouldBe false
+        repo(lastProAt = twentyDaysAgo, lastSku = "").restorePurchaseNow().isPro shouldBe false
     }
 
     @Test fun `IAP grace window is longer than the subscription window`() {
@@ -182,8 +182,8 @@ class UpgradeRepoGplayTest : BaseTest() {
 
         // upgradeInfo is seeded with a null emission; wait for the purchase-mapped one, twice, so
         // the second collection is served from the shareIn replay cache.
-        repo.upgradeInfo.first { it.isUpgraded }.isUpgraded shouldBe true
-        repo.upgradeInfo.first { it.isUpgraded }.isUpgraded shouldBe true
+        repo.upgradeInfo.first { it.isPro }.isPro shouldBe true
+        repo.upgradeInfo.first { it.isPro }.isPro shouldBe true
 
         coVerify(exactly = 0) { billingCache.stampLastProState(any(), any()) }
     }
