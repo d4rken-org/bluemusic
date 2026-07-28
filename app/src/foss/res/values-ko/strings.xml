@@ -20,4 +20,12 @@
     <string name="upgrade_screen_sponsor_action_hint">다른 방식은 광고, 데이터 수집, 그리고 플레이 스토어입니다 🙁</string>
     <string name="upgrade_screen_thanks_toast">오픈소스 개발을 지원해주셔서 감사합니다 ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">벌써 돌아오셨군요? 여러분의 지원이 BVM을 살아있게 합니다!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">후원자 상태 보기</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">성원에 감사드립니다</string>
+    <string name="upgrade_screen_supporter_status_body">오픈소스 개발을 지원해 주셔서 모든 추가 기능이 잠금 해제되었습니다.</string>
+    <string name="upgrade_screen_supporter_since">%s부터 후원자</string>
+    <string name="upgrade_screen_supporter_visit_action">GitHub Sponsors 방문</string>
 </resources>

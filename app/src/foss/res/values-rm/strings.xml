@@ -20,4 +20,12 @@ e dapli…</string>
     <string name="upgrade_screen_sponsor_action_hint">L\'alternativa è reclamas, analytics e Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Grazia per sustegnair il svilup open-source ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">Turnà? Tia sustegnaziun mantegna BVM viv!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">Mira tia status da supporter</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">Grazia per tia sapport</string>
+    <string name="upgrade_screen_supporter_status_body">Tu has debloccà totas las funczias extras perquai che tu supporter il svilup da software open-source.</string>
+    <string name="upgrade_screen_supporter_since">Supporter dapi %s</string>
+    <string name="upgrade_screen_supporter_visit_action">Visita GitHub Sponsors</string>
 </resources>

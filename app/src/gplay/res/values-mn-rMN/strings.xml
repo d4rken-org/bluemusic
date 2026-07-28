@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Захиалга жилд %s өртөгтэй.</string>
     <string name="upgrade_screen_iap_action">Нэг удаагийн худалдан авалт</string>
     <string name="upgrade_screen_iap_action_hint">Нэг удаагийн худалдан авалт %s өртөгтэй.</string>
+    <string name="upgrade_screen_offer_divider_or">эсвэл</string>
+    <string name="upgrade_screen_offer_same_features">Ижил функцууд, зөвхөн өөр өөр үнийн загварууд.</string>
     <string name="upgrade_screen_thanks_toast">Та хамгийн шилдэг нь! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Худалдан авалтыг сэргээх</string>
+    <string name="upgrade_screen_restore_banner_title">BVM Pro аль хэдийн авсан уу?</string>
+    <string name="upgrade_screen_restore_banner_body">Та энэ төхөөрөмжид өмнө нь шинэчилсэн бололтой. Үүнийг дахин нээхийн тулд худалдан авалтыг сэргээнэ үү.</string>
     <string name="upgrade_screen_restore_purchase_message">Таны шинэчлэлт ижил Google бүртгэл дээрх төхөөрөмжүүдэд хүчинтэй.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Танигдаагүй шинэчлэлтүүдийн асуудал шийдвэрлэх зөвлөмжүүд:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store синк хийхэд хугацаа шаардагдаж магадгүй. Дахин эхлүүлэх, Google Play кэшийг цэвэрлэх эсвэл зүгээр хүлээхийг оролдоно уу.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Олон бүртгэл Google Play-г төөрөгдүүлж болно. Бусад бүртгэлээс гарах эсвэл Google Play вэбсайтаар дамжуулан суулгах нь тодорхой бүртгэлтэй холбоосыг албадаж өгдөг.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Таны Pro статусыг үзэх</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Баяр хүргэе!</string>
+    <string name="upgrade_screen_owned_congrats_body">Та BVM Pro авсан — хөгжүүлэлтийг дэмжсэнд баярлалаа. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Нэг удаагийн худалдан авалт</string>
+    <string name="upgrade_screen_owned_iap_body">Та BVM Pro-г үүрд эзэмшиж байна. Таны дэмжлэгэнд баярлалаа ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Захиалга</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Таны BVM Pro подписк идэвхтэй бөгөөд сэргээгдэхээр тохируулагдсан.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Таны BVM Pro подписк идэвхтэй боловч сэргээгдэхгүй. Энэ нь одоогийн үе төгсгөл хүртэл хүчинтэй хэвээр байна.</string>
+    <string name="upgrade_screen_owned_both_warning">Та подписк болон нэг удаагийн худалдан авалтын хоёуланг эзэмшээд байна. Google Play-д подпискийг цуцлаарай. Ингэснээр та дахин төлөхгүй болно.</string>
+    <string name="upgrade_screen_manage_subscription">Подпискийг удирдах</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Нэг удаагийн худалдан авалт руу шилжүүлэх</string>
+    <string name="upgrade_screen_switch_purchase_note">Энэ нь тусдаа нэг удаагийн худалдан авалт юм. Энэ нь таны подпискийг цуцлахгүй эсвэл буцаан төлөлөлт өгөхгүй тул Google Play-д түүнийг бас цуцлаарай. Хоёулангийн хувьд ижил Google данстай ашиглаарай.</string>
+    <string name="upgrade_screen_switch_locked_note">Таны подпискийг сэргээгдэхээр тохируулахыг болиулсаны дараа боломжтой байна. Google Play-д түүнийг цуцлаарай солихын тулд. Та одоогийн үе төгсгөл хүртэл хүчинтэй Pro-г хадгалах болно.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Статус буруу харагдаж байна уу?</string>
+    <string name="upgrade_screen_status_restore_body">Хэрвэг таны худалдан авалт энд харагдахгүй байвал сэргэхийг оролдоорой.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Таны худалдан авалтыг баталгаажуулж байна</string>
+    <string name="upgrade_screen_grace_body_short">Зүгээр байгаарай — бид таны худалдан авалтыг Google Play-тай дахин шалгаж байна.</string>
+    <string name="upgrade_screen_grace_body">Бид таны худалдан авалтыг Google Play-тай баталгаажуулж чадаагүй байна. Үүнийг сэргэхийг оролдоно уу эсвэл зөв бүртгэлээр нэвтэрсэн эсэхийг шалгана уу.</string>
+    <string name="upgrade_screen_retry_action">Дахин оролдох</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Захиалга идэвхтэй байна</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Таны захиалга сэргээгдэхээр тохируулагдсан байна. Эхлээд Google Play-д цуцлана уу, дараа нь нэг удаагийн худалдан авалт хийхээр буцаж ирнэ үү — ингэснээр та хоёр удаа суллагдахгүй.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Бид таны захиалгын статусыг шалгаж чадаагүй. Интернэт холболт шалгаж дахин оролдоно уу.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Аль хэдийн худалдан авсан</string>
+    <string name="upgrades_gplay_already_owned_error_description">\"Худалдан авалтыг сэргэх\" сонголтыг ашиглан таны худалдан авалтыг сэргээнэ үү. Хэрвээ асуудал үргэлжвэл Google Play-ийн кеш цэвэрлэж, төхөөрөмжөө дахин эхлүүлэхийг оролдоно уу.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play алдаа</string>
+    <string name="upgrades_gplay_internal_error_description">Google Play-ийн дотоод алдаа гарсан. Дараахийг оролдоно уу:\n\n• Төхөөрөмжөө дахин эхлүүлнэ үү\n• Google Play Store-ийн кеш цэвэрлнэ үү\n• Дараа нь дахин оролдоно уу</string>
+    <string name="upgrades_gplay_network_error_title">Холболтын алдаа</string>
+    <string name="upgrades_gplay_network_error_description">Google Play-д холбогдох боломжгүй. Интернет холболтоо шалгаж, дахин оролдоно уу.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play боломжгүй байна</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play-тай холбогдож чадахгүй байна. Google Play суулгагдсан бөгөөд шинэчлэлтсэн уу? Google хаднаа нэвтрээсэн байна уу? Google Play аппын кэшийг арилгаад төхөөрөмжийгеэ дахин ньюцлаарай.</string>
     <string name="upgrades_no_purchases_found_check_account">Худалдан авалт олдсонгүй. Та зөв бүртгэл ашиглаж байна уу?</string>

@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">La abono kostas %s jare.</string>
     <string name="upgrade_screen_iap_action">Unufoja aĉeto</string>
     <string name="upgrade_screen_iap_action_hint">La unufoja aĉeto kostas %s.</string>
+    <string name="upgrade_screen_offer_divider_or">aŭ</string>
+    <string name="upgrade_screen_offer_same_features">Samaj funkcioj, nur malsamaj prezmodeligoj.</string>
     <string name="upgrade_screen_thanks_toast">Vi estas la plej bona! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Restarigi aĉeton</string>
+    <string name="upgrade_screen_restore_banner_title">Ĉu vi jam aĉetis BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Ŝajnas, ke vi antaŭe ĝisdatigis ĉi tiun aparaton. Restaŭru vian aĉeton por malŝlosi ĝin denove.</string>
     <string name="upgrade_screen_restore_purchase_message">Via plibonigo validas tra aparatoj sur la sama Google-konto.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Konsiletoj pri solvado de problemoj por nerekoneblaj plibonigoj:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">La sinkronigado de Play Store povas daŭri. Provu restarigi, forigi la kaŝmemoron de Google Play aŭ simple atendi.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Multoblaj kontoj povas konfuzi Google Play. Elsalutu el aliaj kontoj aŭ instalu per la retejo de Google Play, kiu devigas asociadon kun specifa konto.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Vidu vian Pro-staton</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Gratulojn!</string>
+    <string name="upgrade_screen_owned_congrats_body">Vi havas BVM Pro — dankon pro la subteno de disvolvado. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Unufoja aĉeto</string>
+    <string name="upgrade_screen_owned_iap_body">Vi posedas BVM Pro ĉiam. Dankon pro via subteno ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Abono</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Via abono de BVM Pro estas aktiva kaj starigita por renoviĝi.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Via abono de BVM Pro estas aktiva sed ne renoviĝos. Ĝi restas valida ĝis la fino de la nuna periodo.</string>
+    <string name="upgrade_screen_owned_both_warning">Vi havas kaj abonon kaj unufojan aĉeton. Nuligu la abonon en Google Play por ne esti ŝarĝita denove.</string>
+    <string name="upgrade_screen_manage_subscription">Administri abonon</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Ŝanĝi al unufoja aĉeto</string>
+    <string name="upgrade_screen_switch_purchase_note">Ĉi tio estas aparta unufoja aĉeto. Ĝi ne nuligos aŭ repagos vian abonon, do nuligu tion ankaŭ en Google Play. Uzu la saman Google-konton por ambaŭ.</string>
+    <string name="upgrade_screen_switch_locked_note">Havebla kiam via abono ne plu estas starigita por renoviĝi. Nuligu ĝin en Google Play por ŝanĝi — vi konservas Pro ĝis la fino de la nuna periodo.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Ĉu la stato ŝajnas malĝusta?</string>
+    <string name="upgrade_screen_status_restore_body">Se via aĉeto ne aperas ĉi tie, provu ĝin refari.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Konfirmante vian aĉeton</string>
+    <string name="upgrade_screen_grace_body_short">Atenda momenton — ni duoble kontrolas vian aĉeton kun Google Play.</string>
+    <string name="upgrade_screen_grace_body">Ni daŭre ne povas konfirmi vian aĉeton kun Google Play. Provu rekuperi ĝin, aŭ kontrolu, ke vi estas ensalutita per la ĝusta konto.</string>
+    <string name="upgrade_screen_retry_action">Reprovu</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Abonado daŭre aktiva</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Via abonado estas daŭre agordita por renovi. Nuligu ĝin en Google Play unue, poste revenu por aĉeti unufojan aĉeton — tiele vi ne estos ŝarĝita dufoje.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Ni ne povis kontroli vian abonadan staton. Bonvolu kontroli vian konekton kaj provu denove.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Jam aĉetita</string>
+    <string name="upgrades_gplay_already_owned_error_description">Uzu la \"Rekuperi aĉeton\" eblecon por rekuperi vian aĉeton. Se la problemo daŭras, provu forviŝi la kaŝmemoron de Google Play Store kaj restartigi vian aparaton.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play eraro</string>
+    <string name="upgrades_gplay_internal_error_description">Interna Google Play eraro okazis. Bonvolu provi jenon:\n\n• Restartigu vian aparaton\n• Forviŝu la kaŝmemoron de Google Play Store\n• Provu denove poste</string>
+    <string name="upgrades_gplay_network_error_title">Konekta eraro</string>
+    <string name="upgrades_gplay_network_error_description">Ne eblas konektiĝi al Google Play. Bonvolu kontroli vian interretan konekton kaj provu denove.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ne estas disponebla</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ne povas konektiĝi al Google Play. Ču Google Play estas instalita kaj ĝisdatigita? Ču via Google-konto estas ensalutinta? Provu forigi la kaŝmemoron de la aplikaĵo Google Play kaj restartiĝi vian aparaton.</string>
     <string name="upgrades_no_purchases_found_check_account">Neniaj aĉetoj trovis. Ču vi uzas la ĝustan konton?</string>

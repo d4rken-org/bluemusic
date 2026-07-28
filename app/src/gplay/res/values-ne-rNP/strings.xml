@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">सदस्यता प्रति वर्ष %s लाग्छ।</string>
     <string name="upgrade_screen_iap_action">एक-पटक खरिद</string>
     <string name="upgrade_screen_iap_action_hint">एक-पटक खरिद %s लाग्छ।</string>
+    <string name="upgrade_screen_offer_divider_or">वा</string>
+    <string name="upgrade_screen_offer_same_features">एकै सुविधा, केवल फरक मूल्य निर्धारण मोडल।</string>
     <string name="upgrade_screen_thanks_toast">तपाईं उत्कृष्ट हुनुहुन्छ! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">खरिद पुनर्स्थापना गर्नुहोस्</string>
+    <string name="upgrade_screen_restore_banner_title">पहिले नै BVM Pro किन्नुभएको छ?</string>
+    <string name="upgrade_screen_restore_banner_body">यस्तो लाग्छ कि तपाईंले यो उपकरणमा पहिले अपग्रेड गर्नुभएको छ। यसलाई फेरि अनलक गर्न आफ्नो खरिद पुनर्स्थापन गर्नुहोस्।</string>
     <string name="upgrade_screen_restore_purchase_message">तपाईंको अपग्रेड उही Google खातामा भएका उपकरणहरूमा मान्य छ।</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">अपरिचित अपग्रेडहरूका लागि समस्या निवारण सुझावहरू:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store सिङ्कमा समय लाग्न सक्छ। रिबुट गर्ने, Google Play क्यास खाली गर्ने वा केवल पर्खने प्रयास गर्नुहोस्।</string>
     <string name="upgrade_screen_restore_multiaccount_hint">धेरै खाताहरूले Google Play लाई भ्रमित गर्न सक्छ। अन्य खाताहरूबाट लग आउट गर्नुहोस् वा Google Play वेबसाइट मार्फत स्थापना गर्नुहोस्, जसले विशिष्ट खातासँग सम्बन्धहरू बल गर्दछ।</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">आफ्नो Pro स्थिति हेर्नुहोस्</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">बधाई छ!</string>
+    <string name="upgrade_screen_owned_congrats_body">तपाईंसँग BVM Pro छ — विकास समर्थन गरेकोको लागि धन्यवाद। ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">एक-पटक खरिद</string>
+    <string name="upgrade_screen_owned_iap_body">तपाईंसँग सदैको लागि BVM Pro छ। आफ्नो समर्थनको लागि धन्यवाद ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">सदस्यता</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">तपाइँको BVM Pro सदस्यता सक्रिय छ र नवीकरण हुन सेट गरिएको छ।</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">तपाइँको BVM Pro सदस्यता सक्रिय छ तर नवीकरण हुने छैन। यो हालको अवधिको अन्तसम्म वैध रहनेछ।</string>
+    <string name="upgrade_screen_owned_both_warning">तपाइँसँग सदस्यता र एकै पटकको खरिद दुवै छन्। Google Play मा सदस्यता रद्द गर्नुहोस् ताकि तपाइँलाई फेरि चार्ज नगरिओस्।</string>
+    <string name="upgrade_screen_manage_subscription">सदस्यता व्यवस्थापन गर्नुहोस्</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">एकै पटकको खरिदमा स्विच गर्नुहोस्</string>
+    <string name="upgrade_screen_switch_purchase_note">यो अलग एकै पटकको खरिद हो। यसले तपाइँको सदस्यता रद्द वा फिर्ता गर्दैन, त्यसैले यसलाई Google Play मा पनि रद्द गर्नुहोस्। दुवैको लागि एउटै Google खाता प्रयोग गर्नुहोस्।</string>
+    <string name="upgrade_screen_switch_locked_note">तपाइँको सदस्यता नवीकरण हुन सेट नभएपछि उपलब्ध हुनेछ। स्विच गर्न Google Play मा यसलाई रद्द गर्नुहोस् — तपाइँ हालको अवधि समाप्त नभएसम्म Pro राख्नुहुन्छ।</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">स्थिति गलत लाग्छ?</string>
+    <string name="upgrade_screen_status_restore_body">यदि तपाइँको खरिद यहाँ देखिइरहेको छैन भने, यसलाई पुनः प्राप्त गर्ने प्रयास गर्नुहोस्।</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">तपाइँको खरिद पुष्टि गरिँदैछ</string>
+    <string name="upgrade_screen_grace_body_short">धैर्य राख्नुहोस् — हामी तपाईंको ख्रिद Google Play सँग पुनः जाँच गरिरहेका छौँ।</string>
+    <string name="upgrade_screen_grace_body">हामी अझै पनि Google Play सँग तपाईंको ख्रिद पुष्टि गर्न सक्दिनौँ। यसलाई पुनर्स्थापन गर्ने प्रयास गर्नुहोस्, वा तपाईं सही खाताको साथ साइन इन गरेको छ भनी जाँच गर्नुहोस्।</string>
+    <string name="upgrade_screen_retry_action">फेरी प्रयास गर्नुहोस्</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">सदस्यता अझै सक्रिय छ</string>
+    <string name="upgrade_screen_sub_still_renewing_message">तपाईंको सदस्यता अझै नवीकरण गर्न सेट गरिएको छ। यसलाई पहिले Google Play मा रद्द गर्नुहोस्, त्यसपछि एकबार खरिद गर्न फिर्ता आउनुहोस् — त्यसरी तपाईंलाई दुबै पटक शुल्क लिइने छैन।</string>
+    <string name="upgrade_screen_sub_check_failed_message">हामी तपाईंको सदस्यता स्थिति जाँच गर्न सकेनौँ। कृपया तपाईंको जडान जाँच गर्नुहोस् र फेरी प्रयास गर्नुहोस्।</string>
+    <string name="upgrades_gplay_already_owned_error_title">पहिले नै खरिद गरिएको</string>
+    <string name="upgrades_gplay_already_owned_error_description">तपाईंको खरिद पुनर्स्थापन गर्न \"खरिद पुनर्स्थापन गर्नुहोस्\" विकल्पको प्रयोग गर्नुहोस्। यदि समस्या कायम रहन्छ भने, Google Play क्यास साफ गर्ने र आफ्नो डिभाइस पुनः सुरु गर्ने प्रयास गर्नुहोस्।</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play त्रुटि</string>
+    <string name="upgrades_gplay_internal_error_description">एक आन्तरिक Google Play त्रुटि भयो। कृपया निम्न प्रयास गर्नुहोस्:\n\n• तपाईंको डिभाइस पुनः सुरु गर्नुहोस्\n• Google Play Store क्यास साफ गर्नुहोस्\n• पछि प्रयास गर्नुहोस्</string>
+    <string name="upgrades_gplay_network_error_title">जडान त्रुटि</string>
+    <string name="upgrades_gplay_network_error_description">Google Play मा जडान गर्न सक्नु भएन। कृपया आफ्नो इन्टरनेट जडान जाँच गर्नुहोस् र फेरि प्रयास गर्नुहोस्।</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play उपलब्ध छैन</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play मा जोडिन सक्दैन। क्षमा गर्नुहोस्, Google Play स्थापित र अद्यतन छ? तपाईंको Google खाता लग इन गरिएको छ? Google Play अ्यापको क्यास साफ गर्नुहोस् र आफ्नो यन्त्र पुनःसुरू गर्नुहोस्।</string>
     <string name="upgrades_no_purchases_found_check_account">कुनै खरिदहरू फेला परेनन्। के तपाईं सही खाता प्रयोग गर्दै हुनुहुन्छ?</string>

@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">സബ്‌സ്‌ക്രിപ്‌ഷന്റെ വില പ്രതിവർഷം %s ആണ്.</string>
     <string name="upgrade_screen_iap_action">ഒറ്റത്തവണ വാങ്ങൽ</string>
     <string name="upgrade_screen_iap_action_hint">ഒറ്റത്തവണ വാങ്ങലിന്റെ വില %s ആണ്.</string>
+    <string name="upgrade_screen_offer_divider_or">അല്ലെങ്കിൽ</string>
+    <string name="upgrade_screen_offer_same_features">ഒരേ സവിശേഷതകൾ, വെറും വ്യത്യസ്ത വിലനിർണയ മാതൃകകൾ.</string>
     <string name="upgrade_screen_thanks_toast">നന്ദി❤️</string>
     <string name="upgrade_screen_restore_purchase_action">വാങ്ങൽ പുനഃസ്ഥാപിക്കുക</string>
+    <string name="upgrade_screen_restore_banner_title">ഇതിനകം BVM Pro വാങ്ങിയോ?</string>
+    <string name="upgrade_screen_restore_banner_body">നിങ്ങൾ ഈ ഡിവൈസിൽ മുമ്പ് അപ്ഗ്രേഡ് ചെയ്തതായി തോന്നുന്നു. വീണ്ടും അൺലോക്ക് ചെയ്യാൻ നിങ്ങളുടെ ക്രയം പുനഃസ്ഥാപിക്കുക.</string>
     <string name="upgrade_screen_restore_purchase_message">നിങ്ങളുടെ അപ്‌ഗ്രേഡ് ഒരേ Google അക്കൗണ്ടിലെ എല്ലാ ഉപകരണങ്ങളിലും സാധുവാണ്.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">തിരിച്ചറിയാത്ത അപ്‌ഗ്രേഡുകൾക്കുള്ള ട്രബിൾഷൂട്ടിംഗ് നുറുങ്ങുകൾ:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play സ്റ്റോർ സിൻക്രൊണൈസേഷൻ സമയമെടുത്തേക്കാം. റീബൂട്ട് ചെയ്യുക, Google Play കാഷെ മായ്‌ക്കുക അല്ലെങ്കിൽ കാത്തിരിക്കുക.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">ഒന്നിലധികം അക്കൗണ്ടുകൾ Google Play-യെ ആശയക്കുഴപ്പത്തിലാക്കാം. മറ്റ് അക്കൗണ്ടുകളിൽ നിന്ന് ലോഗൗട്ട് ചെയ്യുക അല്ലെങ്കിൽ Google Play വെബ്‌സൈറ്റ് വഴി ഇൻസ്റ്റാൾ ചെയ്യുക, ഇത് ഒരു നിർദ്ദിഷ്ട അക്കൗണ്ടുമായുള്ള ബന്ധം നിർബന്ധമാക്കുന്നു.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">നിങ്ങളുടെ Pro സ്ഥിതി കാണുക</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">അഭിനന്ദനങ്ങൾ!</string>
+    <string name="upgrade_screen_owned_congrats_body">നിങ്ങൾക്ക് BVM Pro ലഭിച്ചു — വികസനത്തെ പിന്തുണയ്ക്കുന്നതിന് നന്ദി. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">ഒറ്റത്തവണ വാങ്ങൽ</string>
+    <string name="upgrade_screen_owned_iap_body">നിങ്ങൾ BVM Pro എന്നെന്നോളം സ്വന്തമാക്കിയിരിക്കുന്നു. നിങ്ങളുടെ പിന്തുണയ്ക്കുന്നതിന് നന്ദി ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">സബ്സ്ക്രിപ്ഷൻ</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">നിങ്ങളുടെ BVM Pro സബ്സ്ക്രിപ്ഷൻ സജീവമാണ് കൂടാതെ നവീകരണത്തിന് സെറ്റ് ചെയ്തിരിക്കുന്നു.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">നിങ്ങളുടെ BVM Pro സബ്സ്ക്രിപ്ഷൻ സജീവമാണ് എന്നാൽ നവീകരിക്കില്ല. നിലവിലെ കാലയളവിന്റെ അവസാനം വരെ ഇത് സാധുവായി നിലനിൽക്കുന്നു.</string>
+    <string name="upgrade_screen_owned_both_warning">നിങ്ങൾക്ക് സബ്സ്ക്രിപ്ഷനും ഒറിക്കലുളിറ്റ വാങ്ങലും ഉണ്ട്. Google Play ൽ സബ്സ്ക്രിപ്ഷൻ റദ്ദ് ചെയ്യുക അങ്ങനെ നിങ്ങൾ വീണ്ടും ചാർജ് ചെയ്യപ്പെടുകയില്ല.</string>
+    <string name="upgrade_screen_manage_subscription">സബ്സ്ക്രിപ്ഷൻ നിയന്ത്രിക്കുക</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">ഒറിക്കലുളള വാങ്ങലിലേക്ക് മാറുക</string>
+    <string name="upgrade_screen_switch_purchase_note">ഇത് ഒരു സ്വതന്ത്ര ഒറിക്കലുളള വാങ്ങൽ ആണ്. ഇത് നിങ്ങളുടെ സബ്സ്ക്രിപ്ഷൻ റദ്ദ് ചെയ്യുകയോ പണം തിരികെ നൽകുകയോ ചെയ്യില്ല, അതിനാൽ Google Play ൽ അതും റദ്ദ് ചെയ്യുക. രണ്ടിനും ഒറ്റെ Google അക്കൗണ്ട് ഉപയോഗിക്കുക.</string>
+    <string name="upgrade_screen_switch_locked_note">നിങ്ങളുടെ സബ്സ്ക്രിപ്ഷൻ നവീകരണത്തിന് സെറ്റ് ചെയ്തിരിക്കാത്തിനുശേഷം ലഭ്യമാണ്. മാറാൻ Google Play ൽ അത് റദ്ദ് ചെയ്യുക — നിലവിലെ കാലയളവ് അവസാനിക്കുന്നത് വരെ നിങ്ങൾ Pro സൂക്ഷിക്കുന്നു.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">സ്ഥിതി തെറ്റായി കാണപ്പെടുന്നോ?</string>
+    <string name="upgrade_screen_status_restore_body">നിങ്ങളുടെ വാങ്ങൽ ഇവിടെ കാണിക്കുന്നില്ലെങ്കിൽ, അത് പുനഃസ്ഥാപിക്കാൻ ശ്രമിക്കുക.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">നിങ്ങളുടെ വാങ്ങൽ സ്ഥിരീകരിക്കുന്നു</string>
+    <string name="upgrade_screen_grace_body_short">കാത്തിരിക്കുക — നിങ്ങളുടെ Google Play വാങ്ങൽ ഞങ്ങൾ പരിശോധിച്ച് വരുകയാണ്.</string>
+    <string name="upgrade_screen_grace_body">നിങ്ങളുടെ Google Play വാങ്ങൽ കണ്ഫർം ചെയ്യാൻ ഞങ്ങൾക്ക് കഴിഞ്ഞില്ല. അത് പുനരുദ്ധരിക്കാൻ ശ്രമിക്കുക, അല്ലെങ്കിൽ നിങ്ങൾ ശരിയായ അക്കൗണ്ടിൽ സൈൻ ഇൻ ചെയ്തിരിക്കുന്നുണ്ടെന്ന് പരിശോധിക്കുക.</string>
+    <string name="upgrade_screen_retry_action">വീണ്ടും ശ്രമിക്കുക</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">സബ്സ്ക്രിപ്ഷൻ ഇപ്പോഴും സജീവമാണ്</string>
+    <string name="upgrade_screen_sub_still_renewing_message">നിങ്ങളുടെ സബ്സ്ക്രിപ്ഷൻ പുതുക്കാൻ സജ്ജമായിരിക്കുന്നു. Google Play-ൽ ആദ്യം അത് റദ്ദ് ചെയ്യുക, പിന്നെ ഒറിക്കലുളള വാങ്ങലിനായി തിരികെ വരിക — ഈ വിധത്തിൽ നിങ്ങൾക്ക് രണ്ടുതവണ ചാർജ് ചെയ്യപ്പെടുകയില്ല.</string>
+    <string name="upgrade_screen_sub_check_failed_message">നിങ്ങളുടെ സബ്സ്ക്രിപ്ഷൻ അവസ്ഥ പരിശോധിക്കാൻ ഞങ്ങൾക്ക് കഴിഞ്ഞില്ല. ദയവായി നിങ്ങളുടെ കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.</string>
+    <string name="upgrades_gplay_already_owned_error_title">ഇതിനകം വാങ്ങിയിരിക്കുന്നു</string>
+    <string name="upgrades_gplay_already_owned_error_description">നിങ്ങളുടെ വാങ്ങൽ പുനരുദ്ധരിക്കാൻ \"വാങ്ങൽ പുനരുദ്ധരിക്കുക\" ഓപ്ഷൻ ഉപയോഗിക്കുക. പ്രശ്നം തുടരുന്നുണ്ടെങ്കിൽ, Google Play കാഷെ നീക്കം ചെയ്യുകയോ നിങ്ങളുടെ ഡിവൈസ് പുനരാരംഭിക്കുകയോ ചെയ്തു നോക്കുക.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play പിശക്</string>
+    <string name="upgrades_gplay_internal_error_description">ഒരു ആന്തരിക Google Play പിശക് സംഭവിച്ചു. ദയവായി താഴെ കാണിച്ച കാര്യങ്ങൾ ശ്രമിക്കുക:\n\n• നിങ്ങളുടെ ഡിവൈസ് പുനരാരംഭിക്കുക\n• Google Play Store കാഷെ നീക്കം ചെയ്യുക\n• പിന്നീട് പരിശ്രമിക്കുക</string>
+    <string name="upgrades_gplay_network_error_title">കണക്ഷൻ പിഴവ്</string>
+    <string name="upgrades_gplay_network_error_description">Google Play ൽ ബന്ധപ്പെടാൻ കഴിഞ്ഞില്ല. ദയവായി നിങ്ങളുടെ ഇന്റർനെറ്റ് കണക്ഷൻ പരിശോധിക്കുകയും വീണ്ടും ശ്രമിക്കുകയും ചെയ്യുക.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ലഭ്യമല്ല</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ക്ക് Google Play യുമായ് ബന്ധപ്പെടാൻ കഴിയുന്നില്ല. Google Play ഇൻസ്റ്റൽ ചെയ്ത് അപ്ഡേറ്റ് ചെയ്തിട്ടുണ്ടോ? നിങ്ങളുടെ Google അക്കൗൺട് ലോഗിൻ ചെയ്തിട്ടുണ്ടോ? Google Play ആപ്പിന്റെ ക്യാഷ് മാർജിക്കുകയും ഉപകരണം രീബൂട്ട് ചെയ്യുകയും ശ്രമിക്കുക.</string>
     <string name="upgrades_no_purchases_found_check_account">വാങ്ങലുകളൊന്നും കണ്ടെത്തിയില്ല. നിങ്ങൾ ശരിയായ അക്കൗണ്ട് തന്നെയാണോ ഉപയോഗിക്കുന്നത്?</string>

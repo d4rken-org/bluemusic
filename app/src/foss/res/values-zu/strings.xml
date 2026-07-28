@@ -17,4 +17,12 @@
     <string name="upgrade_screen_sponsor_action_hint">Enye indlela izikhangiso, ukuhlaziya ne-Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Ngiyabonga ngokusekela ukuthuthukiswa komthombo ovulekile ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">Ubuyile kakade? Ukusekela kwakho kugcina i-BVM iphila!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">Buka isimo sakho se-supporter</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">Ngiyabonga ngokusekela kwakho</string>
+    <string name="upgrade_screen_supporter_status_body">Uvule lonke izici ezongeza ngokusekela umthuthukiso we-open-source.</string>
+    <string name="upgrade_screen_supporter_since">Isekeli kusukela %s</string>
+    <string name="upgrade_screen_supporter_visit_action">Vakashela i-GitHub Sponsors</string>
 </resources>

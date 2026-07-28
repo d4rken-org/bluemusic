@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">ደንበኝነቱ በዓመት %s ያስከፍላል።</string>
     <string name="upgrade_screen_iap_action">አንድ ጊዜ ግዢ</string>
     <string name="upgrade_screen_iap_action_hint">አንድ ጊዜ ግዢው %s ያስከፍላል።</string>
+    <string name="upgrade_screen_offer_divider_or">ወይም</string>
+    <string name="upgrade_screen_offer_same_features">ተመሳሳይ ባህሪዎች፣ በቅንዓት የተለያዩ ዋጋ ሞዴሎች።</string>
     <string name="upgrade_screen_thanks_toast">እርስዎ ምርጥ ነዎት! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">ግዢን ወደነበረበት መልስ</string>
+    <string name="upgrade_screen_restore_banner_title">ቀድሞ BVM Pro ገዙ?</string>
+    <string name="upgrade_screen_restore_banner_body">ቀድሞ በዚህ መሳሪያ ላይ ሻመም ይመስላል። ገዝተውዎትን ወደ ሪስ አድርገው ዓላ።</string>
     <string name="upgrade_screen_restore_purchase_message">ማሻሻያዎ በተመሳሳይ Google መለያ ላይ በመሳሪያዎች ላይ ልክ ነው።</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">ለማይታወቁ ማሻሻያዎች የመላ ፍለጋ ምክሮች፡</string>
     <string name="upgrade_screen_restore_sync_patience_hint">የPlay Store ሲምሪዝሽን ጊዜ ሊወስድ ይችላል። እንደገና ማስጀመር፣ የGoogle Play መሸጎጫ ማጥራት ወይም ብቻ መጠበቅ ይሞክሩ።</string>
     <string name="upgrade_screen_restore_multiaccount_hint">ብዙ መለያዎች Google Play ማምታታት ይችላሉ። ከሌሎች መለያዎች ይወጡ ወይም በGoogle Play ድርጣቢያ በኩል ይጫኑ፣ ይህም ከተወሰነ መለያ ጋር ግንኙነቶችን ያስገድዳል።</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Pro ሁኔታዎ ይመልከቱ</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">እንቋዕ!</string>
+    <string name="upgrade_screen_owned_congrats_body">BVM Pro አግኝተዋል — ልማትን ከደገፋችሁ ምስጋና ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">አንድ ጊዜ ግዢ</string>
+    <string name="upgrade_screen_owned_iap_body">BVM Pro ለዘላለም የዎትን ነው። ድጋፊነታችሁ ምስጋና ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">ምዝገባ</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">የBVM Pro ምዝገባዎ ንቁ ነው እና ለመደስ ተዘጋጁ</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">የBVM Pro ምዝገባዎ ንቁ ነው ግን አይሐድስም። እስከ ያሁኑ ወር መጨረሻ ትክክል ነው</string>
+    <string name="upgrade_screen_owned_both_warning">ምዝገባ እና ነጠላ ግዢ ሁለቱም አለብዎ። Google Play ውስጥ ምዝገባውን ሰርዙ ስለዚህ እንደገና ክፍያ አይሰጣችሁም</string>
+    <string name="upgrade_screen_manage_subscription">ምዝገባ አስተዳዳር</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">ወደ ነጠላ ግዥ ተሸጋገር</string>
+    <string name="upgrade_screen_switch_purchase_note">ይህ ተለያዩ ነጠላ ግዥ ነው። ሰደቤ ግዳጅዎን አይሰርዝም ወይም አይመልሰውም። ስለዚህ ግዳጅዎን በGoogle Play ላይም ይሰርዙ። ሁለቱንም ተመሳሳይ Google ሒሳብ ይጠቀሙ።</string>
+    <string name="upgrade_screen_switch_locked_note">ሰደቤ ግዳጅዎ እንደገና ሚሞላ ካልተደረገ በኋላ ይገኛል። ለመሸጋገር በGoogle Play ላይ ይሰርዙ — ወደ አሁኑ ጊዜ ሳበቃ ድረስ Pro ይጠብቀዋል።</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">ሁኔታ ትክክል አይመስልም?</string>
+    <string name="upgrade_screen_status_restore_body">ግዥዎ እዚህ ካልታየ ግዥዎን ለመመለስ ይሞክሩ።</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">ግዥዎን ማረጋገጥ</string>
+    <string name="upgrade_screen_grace_body_short">ይዘቅዙ — ግዥዎን Google Play ጋር ማረጋገጥ ነው።</string>
+    <string name="upgrade_screen_grace_body">ግዥዎን Google Play ጋር አሁንም ማረጋገጥ አንችልም። ግዥዎን ለመመለስ ይሞክሩ ወይም ትክክለኛው Google ሒሳብ ጋር ተመዝገቡ።</string>
+    <string name="upgrade_screen_retry_action">ድጋሚ ሞክር</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">ምዝገባ ገና ንቁ ነው</string>
+    <string name="upgrade_screen_sub_still_renewing_message">ምዝገባዎ ገና እንደገና ለማደስ ተዘጋጅቶ ነው። በመጀመሪያ በGoogle Play ውስጥ ሰርዙት፣ ከዚያም ወደዚህ ተመለሱ አንድ ጊዜ ግዢ ለመግዛት - በዚህ መንገድ ሁለት ጊዜ ክፍያ አይወስዱም።</string>
+    <string name="upgrade_screen_sub_check_failed_message">ምዝገባዎን ሁኔታ ማረጋገጥ አልቻልንም። እባክዎ ግንኙነትዎን ይፈትሹ እና ድጋሚ ሞክሩ።</string>
+    <string name="upgrades_gplay_already_owned_error_title">ተገዛ ነው</string>
+    <string name="upgrades_gplay_already_owned_error_description">\'ግዢ ወደ ኋላ መመለስ\' አማራጭ ተጠቀም ግዢዎን ለመመለስ። ችግሩ ካልተፈታ፣ Google Play ካሽ ይጽደ እና መሳሪያዎን ድጋሚ ያስጀምሩ።</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play ስህተት</string>
+    <string name="upgrades_gplay_internal_error_description">የGoogle Play ውስጣዊ ስህተት ተከስቷል። እባክዎ የሚከተሉትን ሞክሩ:\n\n• መሳሪያዎን ድጋሚ ያስጀምሩ\n• Google Play Store ካሽ ይጽደ\n• ቆይተው ድጋሚ ሞክሩ</string>
+    <string name="upgrades_gplay_network_error_title">ግንኙነት ስህተት</string>
+    <string name="upgrades_gplay_network_error_description">ከGoogle Play ጋር ለመገናኘት አልተቻለም። እባክዎ የኢንተርኔት ግንኙነትዎን ምልከቱ እና እንደገና ይሞክሩ።</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play አይገኝም</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ወደ Google Play መገናኘት አይቻል። Google Play የተገጀተ እና ወደ ላይ የተዘመኘትነ? የGoogle አካወንት የነጩ ክ? Google Play አፕሊኬስንን በሜᇍ ካስቀጁ መሣሪያውን አስለስለስ ያስፈለግላ።</string>
     <string name="upgrades_no_purchases_found_check_account">ምንም ግዢዎች አልተገኙም። ትክክለኛውን መለያ እየተጠቀሙ ነው?</string>

@@ -17,4 +17,12 @@
     <string name="upgrade_screen_sponsor_action_hint">Alternatīva ir reklāmas, analītika un Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Paldies par atklātā koda attīstības atbalstīšanu ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">Jau atpakaļ? Jūsu atbalsts uztur BSP dzīvu!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">Skatīt savu atbalstītāja statusu</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">Paldies par atbalstu</string>
+    <string name="upgrade_screen_supporter_status_body">Tu esi atbloķējis visas papildu funkcijas, atbalstot atvērtā koda izstrādi.</string>
+    <string name="upgrade_screen_supporter_since">Atbalstītājs kopš %s</string>
+    <string name="upgrade_screen_supporter_visit_action">Apmeklēt GitHub Sponsors</string>
 </resources>

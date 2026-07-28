@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">A subscrición custa %s ao ano.</string>
     <string name="upgrade_screen_iap_action">Compra única</string>
     <string name="upgrade_screen_iap_action_hint">A compra única custa %s.</string>
+    <string name="upgrade_screen_offer_divider_or">ou</string>
+    <string name="upgrade_screen_offer_same_features">As mesmas funcións, só cambian os modelos de prezos.</string>
     <string name="upgrade_screen_thanks_toast">Es o mellor! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Restaurar compra</string>
+    <string name="upgrade_screen_restore_banner_title">Xa mercaches BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Parece que xa actualizaches neste dispositivo antes. Restaura a túa compra para desbloqueala de novo.</string>
     <string name="upgrade_screen_restore_purchase_message">A túa actualización é válida en dispositivos coa mesma conta de Google.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Consellos de solución de problemas para actualizacións non recoñecidas:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">A sincronización de Play Store pode levar tempo. Proba reiniciar, limpar a caché de Google Play ou simplemente esperar.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Múltiples contas poden confundir Google Play. Pecha sesión noutras contas ou instala a través do sitio web de Google Play, que forza asociacións cunha conta específica.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Ver o teu estado Pro</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Noraboa!</string>
+    <string name="upgrade_screen_owned_congrats_body">Xa tes BVM Pro — grazas por apoiar o desenvolvemento. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Compra única</string>
+    <string name="upgrade_screen_owned_iap_body">BVM Pro é teu para sempre. Grazas polo teu apoio ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Subscrición</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">A túa subscrición BVM Pro está activa e configurada para renovarse.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">A túa subscrición BVM Pro está activa pero non se renovará. Permanece válida ata o final do período actual.</string>
+    <string name="upgrade_screen_owned_both_warning">Tes tanto a subscrición coma a compra única. Cancela a subscrición en Google Play para non ser cobrado de novo.</string>
+    <string name="upgrade_screen_manage_subscription">Xestionar subscrición</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Cambiar a unha compra única</string>
+    <string name="upgrade_screen_switch_purchase_note">Esta é unha compra única separada. Non cancela nin reembolsa a túa subscrición, así que cancela tamén esa en Google Play. Usa a mesma conta de Google para ambas.</string>
+    <string name="upgrade_screen_switch_locked_note">Dispoñible unha vez que a túa subscrición xa non estea configurada para renovarse. Cancélaa en Google Play para cambiar — manterás Pro ata que remate o período actual.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">O estado parece incorrecto?</string>
+    <string name="upgrade_screen_status_restore_body">Se a túa compra non aparece aquí, tenta restaurala.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Confirmando a túa compra</string>
+    <string name="upgrade_screen_grace_body_short">Un momento — estamos verificando de novo a túa compra con Google Play.</string>
+    <string name="upgrade_screen_grace_body">Aínda non podemos confirmar a túa compra con Google Play. Tenta restaurala, ou comproba que iniciaches sesión coa conta correcta.</string>
+    <string name="upgrade_screen_retry_action">Reintentar</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Subscrición aínda activa</string>
+    <string name="upgrade_screen_sub_still_renewing_message">A túa subscrición aínda está configurada para renovarse. Cancélaa primeiro en Google Play e despois volve para mercar a compra única — así non se che cobrará dúas veces.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Non puidemos comprobar o estado da túa subscrición. Comproba a túa conexión e téntao de novo.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Xa mercado</string>
+    <string name="upgrades_gplay_already_owned_error_description">Usa a opción \"Restaurar compra\" para restaurar a túa compra. Se o problema persiste, tenta limpar a caché de Google Play e reiniciar o teu dispositivo.</string>
+    <string name="upgrades_gplay_internal_error_title">Erro de Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Produciuse un erro interno de Google Play. Tenta o seguinte:\n\n• Reinicia o teu dispositivo\n• Limpa a caché da Google Play Store\n• Téntao de novo máis tarde</string>
+    <string name="upgrades_gplay_network_error_title">Erro de conexión</string>
+    <string name="upgrades_gplay_network_error_description">Non foi posible conectar con Google Play. Comproba a túa conexión a internet e téntao de novo.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play non está dispoñible</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager non pode conectarse a Google Play. ¿Está Google Play instalado e actualizado? ¿Iniciaches sesión na túa conta de Google? Proba a borrar a caché da app Google Play e reinicia o dispositivo.</string>
     <string name="upgrades_no_purchases_found_check_account">Non se atoparon compras. Estás usando a conta correcta?</string>

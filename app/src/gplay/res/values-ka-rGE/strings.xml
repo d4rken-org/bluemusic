@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">გამოწერა ღირს %s წელიწადში.</string>
     <string name="upgrade_screen_iap_action">ერთჯერადი შეძენა</string>
     <string name="upgrade_screen_iap_action_hint">ერთჯერადი შეძენა ღირს %s.</string>
+    <string name="upgrade_screen_offer_divider_or">ან</string>
+    <string name="upgrade_screen_offer_same_features">იგივე ფუნქციები, უბრალოდ განსხვავებული ფასის მოდელები.</string>
     <string name="upgrade_screen_thanks_toast">Საუკეთესო ხარ! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">შეძენის აღდგენა</string>
+    <string name="upgrade_screen_restore_banner_title">უკვე შეიძინეთ BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">როგორც ჩანს, ამ მოწყობილობაზე ადრე უკვე განაახლეთ. აღადგინეთ თქვენი შენაძენი, რომ ხელახლა გახსნათ.</string>
     <string name="upgrade_screen_restore_purchase_message">თქვენი განახლება მოქმედებს ყველა მოწყობილობაზე იმავე Google ანგარიშით.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">ამოუცნობი განახლებების პრობლემების მოგვარების რჩევები:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store სინქრონიზაციას შეიძლება დრო დასჭირდეს. სცადეთ გადატვირთვა, Google Play ქეშის გასუფთავება ან უბრალოდ დაელოდეთ.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">მრავალი ანგარიში შეიძლება აბნევდეს Google Play-ს. გამოდით სხვა ანგარიშებიდან ან დააინსტალირეთ Google Play ვებსაიტის მეშვეობით, რაც აიძულებს კონკრეტულ ანგარიშთან ასოციაციას.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">იხილეთ თქვენი Pro სტატუსი</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">გილოცავთ!</string>
+    <string name="upgrade_screen_owned_congrats_body">თქვენ გაქვთ BVM Pro — მადლობა განვითარების მხარდაჭერისთვის. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">ერთჯერადი შეძენა</string>
+    <string name="upgrade_screen_owned_iap_body">BVM Pro სამუდამოდ გეკუთვნით. მადლობა თქვენი მხარდაჭერისთვის ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">გამოწერა</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">თქვენი BVM Pro გამოწერა აქტიურია და განახლდება ავტომატურად.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">თქვენი BVM Pro გამოწერა აქტიურია, მაგრამ არ განახლდება. ის ძალაში რჩება მიმდინარე პერიოდის დასრულებამდე.</string>
+    <string name="upgrade_screen_owned_both_warning">თქვენ გაქვთ როგორც გამოწერა, ასევე ერთჯერადი შენაძენი. გააუქმეთ გამოწერა Google Play-ში, რომ ხელახლა არ გადაგახდევინონ.</string>
+    <string name="upgrade_screen_manage_subscription">გამოწერის მართვა</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">გადართვა ერთჯერად შენაძენზე</string>
+    <string name="upgrade_screen_switch_purchase_note">ეს ცალკე ერთჯერადი შენაძენია. ის არ აუქმებს ან არ აბრუნებს თანხას თქვენს გამოწერაზე, ამიტომ ის ცალკე გააუქმეთ Google Play-ში. ორივესთვის გამოიყენეთ იგივე Google ანგარიში.</string>
+    <string name="upgrade_screen_switch_locked_note">ხელმისაწვდომი გახდება, როცა თქვენი გამოწერა აღარ იქნება ავტომატური განახლების რეჟიმში. გადასართავად გააუქმეთ ის Google Play-ში — Pro-ს შეინარჩუნებთ მიმდინარე პერიოდის დასრულებამდე.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">სტატუსი არასწორად გამოიყურება?</string>
+    <string name="upgrade_screen_status_restore_body">თუ თქვენი შენაძენი აქ არ ჩანს, სცადეთ მისი აღდგენა.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">თქვენი შენაძენის დადასტურება</string>
+    <string name="upgrade_screen_grace_body_short">დაელოდეთ — ვამოწმებთ თქვენს შენაძენს Google Play-სთან.</string>
+    <string name="upgrade_screen_grace_body">ჯერ კიდევ ვერ ვადასტურებთ თქვენს შენაძენს Google Play-სთან. სცადეთ მისი აღდგენა, ან შეამოწმეთ, რომ სწორი ანგარიშით ხართ შესული.</string>
+    <string name="upgrade_screen_retry_action">თავიდან ცდა</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">გამოწერა ჯერ კიდევ აქტიურია</string>
+    <string name="upgrade_screen_sub_still_renewing_message">თქვენი გამოწერა ჯერ კიდევ ავტომატურად განახლდება. ჯერ გააუქმეთ ის Google Play-ში, შემდეგ დაბრუნდით ერთჯერადი შენაძენის შესაძენად — ასე ორჯერ არ გადაგახდევინებენ.</string>
+    <string name="upgrade_screen_sub_check_failed_message">ვერ შევძელით თქვენი გამოწერის სტატუსის შემოწმება. გთხოვთ, შეამოწმოთ თქვენი კავშირი და ხელახლა სცადოთ.</string>
+    <string name="upgrades_gplay_already_owned_error_title">უკვე შეძენილია</string>
+    <string name="upgrades_gplay_already_owned_error_description">გამოიყენეთ „შენაძენის აღდგენა\" ოფცია თქვენი შენაძენის აღსადგენად. თუ პრობლემა გრძელდება, სცადეთ Google Play-ის ქეშის გასუფთავება და მოწყობილობის გადატვირთვა.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play-ის შეცდომა</string>
+    <string name="upgrades_gplay_internal_error_description">მოხდა Google Play-ის შიდა შეცდომა. გთხოვთ სცადოთ შემდეგი:\n\n• გადატვირთეთ მოწყობილობა\n• გაასუფთავეთ Google Play Store-ის ქეში\n• სცადეთ მოგვიანებით</string>
+    <string name="upgrades_gplay_network_error_title">კავშირის შეცდომა</string>
+    <string name="upgrades_gplay_network_error_description">ვერ ხერხდება Google Play-სთან დაკავშირება. გთხოვთ, შეამოწმოთ თქვენი ინტერნეტ კავშირი და ხელახლა სცადოთ.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play მიუწვდომელია</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager-ს არ შეუძლია Google Play-ზე დაკავშირება. დაყენებულია Google Play დაყენებულია და განახლებულია? ეში თქვენი Google ანგარიში შესულია? სცადეთ Google Play აპის ქეშის გასუფთავება და მოწყობილობის გადატვირთვა.</string>
     <string name="upgrades_no_purchases_found_check_account">შესყიდვები ვერ მოიძებნა. სწორ ანგარიშს იყენებთ?</string>

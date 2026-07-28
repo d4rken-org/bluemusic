@@ -20,4 +20,12 @@
     <string name="upgrade_screen_sponsor_action_hint">取而代之的是广告、分析和 Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">感谢您支持开源开发 ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">这么快就回来了？您的支持让 BVM 持续运行！</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">查看您的支持者状态</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">感谢您的支持</string>
+    <string name="upgrade_screen_supporter_status_body">您通过支持开源开发已解锁所有额外功能。</string>
+    <string name="upgrade_screen_supporter_since">自 %s 以来的支持者</string>
+    <string name="upgrade_screen_supporter_visit_action">访问 GitHub Sponsors</string>
 </resources>

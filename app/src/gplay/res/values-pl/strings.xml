@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Subskrypcja kosztuje %s rocznie.</string>
     <string name="upgrade_screen_iap_action">Jednorazowy zakup</string>
     <string name="upgrade_screen_iap_action_hint">Jednorazowy zakup kosztuje %s.</string>
+    <string name="upgrade_screen_offer_divider_or">lub</string>
+    <string name="upgrade_screen_offer_same_features">Te same funkcje, tylko różne modele cenowe.</string>
     <string name="upgrade_screen_thanks_toast">Jesteś najlepszy! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Przywróć zakup</string>
+    <string name="upgrade_screen_restore_banner_title">Już kupiłeś BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Wygląda na to, że na tym urządzeniu dokonano już wcześniej uaktualnienia do BVM Pro. Przywróć zakup, aby odblokować je ponownie.</string>
     <string name="upgrade_screen_restore_purchase_message">Twoje uaktualnienie jest ważne na wszystkich urządzeniach korzystających z tego samego konta Google.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Wskazówki dotyczące rozwiązywania problemów w przypadku nierozpoznanych uaktualnień:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Synchronizacja Sklepu Play może zająć trochę czasu. Spróbuj uruchomić ponownie, wyczyścić pamięć podręczną Google Play lub po prostu poczekać.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Wiele kont może powodować problemy z Google Play. Wyloguj się z innych kont lub zainstaluj aplikację przez stronę Google Play, co wymusi powiązanie z konkretnym kontem.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Zobacz swój status Pro</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Gratulacje!</string>
+    <string name="upgrade_screen_owned_congrats_body">Masz już BVM Pro — dzięki za wsparcie rozwoju aplikacji. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Jednorazowy zakup</string>
+    <string name="upgrade_screen_owned_iap_body">BVM Pro jest twoje na zawsze. Dziękujemy za wsparcie ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Subskrypcja</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Twoja subskrypcja BVM Pro jest aktywna i zostanie odnowiona.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Twoja subskrypcja BVM Pro jest aktywna, ale nie zostanie odnowiona. Pozostanie ważna do końca bieżącego okresu rozliczeniowego.</string>
+    <string name="upgrade_screen_owned_both_warning">Masz zarówno subskrypcję, jak i zakup jednorazowy. Anuluj subskrypcję w Google Play, aby uniknąć ponownego naliczenia opłaty.</string>
+    <string name="upgrade_screen_manage_subscription">Zarządzaj subskrypcją</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Przejdź na jednorazowy zakup</string>
+    <string name="upgrade_screen_switch_purchase_note">To osobny, jednorazowy zakup. Nie anuluje ani nie zwraca kosztów subskrypcji, więc musisz anulować ją osobno w Google Play. Użyj tego samego konta Google do obu zakupów.</string>
+    <string name="upgrade_screen_switch_locked_note">Dostępne, gdy Twoja subskrypcja nie będzie już ustawiona na odnawianie. Anuluj ją w Google Play, aby przełączyć — zachowasz Pro do końca bieżącego okresu.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Status wygląda źle?</string>
+    <string name="upgrade_screen_status_restore_body">Jeśli Twój zakup się tu nie pojawia, spróbuj go przywrócić.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Potwierdzanie twojego zakupu</string>
+    <string name="upgrade_screen_grace_body_short">Chwila cierpliwości — sprawdzamy jeszcze raz Twój zakup w Google Play.</string>
+    <string name="upgrade_screen_grace_body">Nadal nie możemy potwierdzić Twojego zakupu w Google Play. Spróbuj go przywrócić lub sprawdź, czy używasz właściwego konta.</string>
+    <string name="upgrade_screen_retry_action">Ponów</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Subskrypcja nadal aktywna</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Twoja subskrypcja nadal jest ustawiona na odnawianie. Najpierw anuluj ją w Google Play, a potem wróć, aby kupić wersję jednorazową — dzięki temu unikniesz podwójnej opłaty.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Nie udało się sprawdzić statusu Twojej subskrypcji. Sprawdź połączenie internetowe i spróbuj ponownie.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Już zakupiono</string>
+    <string name="upgrades_gplay_already_owned_error_description">Użyj opcji \"Przywróć zakup\", aby przywrócić zakup. Jeśli problem będzie się powtarzał, spróbuj wyczyścić pamięć podręczną Google Play i ponownie uruchomić urządzenie.</string>
+    <string name="upgrades_gplay_internal_error_title">Błąd Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Wystąpił wewnętrzny błąd Google Play. Spróbuj najpierw:\n\n• Uruchomić ponownie urządzenie\n• Wyczyść pamięć podręczną sklepu Google Play\n• Spróbuj ponownie później</string>
+    <string name="upgrades_gplay_network_error_title">Błąd połączenia</string>
+    <string name="upgrades_gplay_network_error_description">Nie udało się połączyć się z Google Play. Sprawdź swoje połączenie internetowe i spróbuj ponownie.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play jest niedostępne</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager nie może połączyć się z Google Play. Czy Google Play jest zainstalowany i aktualny? Czy jesteś zalogowany na swoim koncie Google? Spróbuj wyczyścić pamięć podręczną aplikacji Google Play i zrestartować urządzenie.</string>
     <string name="upgrades_no_purchases_found_check_account">Nie znaleziono zakupów. Czy używasz właściwego konta?</string>
