@@ -1,14 +1,13 @@
 ---
-description: String resource extraction, locales, and translation workflow
-globs:
-  - "app/src/main/res/values*/strings.xml"
-  - "app/src/foss/res/values*/strings.xml"
-  - "app/src/gplay/res/values*/strings.xml"
+description: String resource layout and the Crowdin translation flow
+paths:
+  - "app/src/{main,foss,gplay}/res/values*/strings.xml"
+  - "fastlane/metadata/android/**"
 ---
 
 # Localization
 
-- All user facing strings should be extracted to `values/strings.xml` and translated for all other languages too.
+- All user facing strings should be extracted to `values/strings.xml`.
 - String resources are spread across:
   - Common: `app/src/main/res/values*/strings.xml` (77 translated locales + base `values/`)
   - FOSS flavor: `app/src/foss/res/values*/strings.xml`
@@ -16,5 +15,9 @@ globs:
 
 ## Translation Workflow
 
-- When localizing texts, create a TODO for each locale you need to provide translations for.
-- Use sub-agents, one agent per TODO (if possible).
+Translations come from Crowdin (project `879504`, see `crowdin.yaml` / `crowdin.sh`), not
+from you. Write the English string in the base `values/strings.xml` and stop there.
+
+- Do not hand-write or fan out sub-agents to produce per-locale translations.
+- To pull and validate incoming translations, use the `android-translation:crowdin-pull`
+  skill; to fill gaps on Crowdin itself, use `android-translation:crowdin-translate`.

@@ -1,10 +1,5 @@
 ---
 description: Gradle build, test, and lint commands
-globs:
-  - "build.gradle*"
-  - "app/build.gradle*"
-  - "settings.gradle*"
-  - "gradle/**"
 ---
 
 # Build Commands
@@ -32,5 +27,8 @@ globs:
 
 ## Tips
 
-- Prefer running builds and lint in sub-agents to keep the main context window clean.
+- Run builds, tests, and lint through the `devtools:build-runner` agent. It keeps verbose
+  output out of the main context and returns a pass/fail summary with the exact error lines.
+  Do not tail the log inline instead — on a gradle failure the last N lines are the
+  `BUILD FAILED` banner, not the compile error that caused it.
 - Use `assembleFossDebug` for quick iteration; it's the fastest build variant.

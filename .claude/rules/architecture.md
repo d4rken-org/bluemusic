@@ -1,7 +1,7 @@
 ---
 description: Architecture patterns, navigation, ViewModels, base classes, error handling, permissions
-globs:
-  - "app/src/main/java/**/*.kt"
+paths:
+  - "app/src/{main,foss,gplay,debug}/java/**/*.kt"
   - "app/src/main/java/**/*.java"
 ---
 
