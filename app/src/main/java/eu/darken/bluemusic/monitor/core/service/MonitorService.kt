@@ -101,14 +101,14 @@ class MonitorService : Service2() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        log(TAG, VERBOSE) { "onStartCommand(intent=$intent, flags=$flags, startId=$startId)" }
-
         // Every startForegroundService() re-arms the startForeground() obligation,
         // so every onStartCommand has to satisfy it again, no matter how it exits.
         if (!promoteToForeground(lastNotification ?: MonitorNotifications.createEarlyNotification(this))) {
             stopSelf()
             return START_NOT_STICKY
         }
+
+        log(TAG, VERBOSE) { "onStartCommand(intent=$intent, flags=$flags, startId=$startId)" }
 
         if (!injectionComplete) {
             log(TAG, WARN) { "onStartCommand: Injection incomplete, stopping service." }
