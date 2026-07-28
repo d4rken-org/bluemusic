@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Afzalliklar</string>
     <string name="upgrade_screen_subscription_trial_action">Bepul 14 kunlik sinovni boshlang</string>
     <string name="upgrade_screen_subscription_action">Obuna bo\'ling</string>
-    <string name="upgrade_screen_subscription_action_hint">Obuna yiliga %s turadi.</string>
     <string name="upgrade_screen_iap_action">Bir martalik xarid</string>
-    <string name="upgrade_screen_iap_action_hint">Bir martalik xarid %s turadi.</string>
     <string name="upgrade_screen_offer_divider_or">yoki</string>
-    <string name="upgrade_screen_offer_same_features">Bir xil xususiyatlar, faqat turli xil narx modellari.</string>
     <string name="upgrade_screen_thanks_toast">Siz eng zo\'rsiz! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Xaridni tiklash</string>
     <string name="upgrade_screen_restore_banner_title">Allaqachon BVM Pro sotib oldingizmi?</string>
     <string name="upgrade_screen_restore_banner_body">Ko\'rinadi, bu qurilmada oldindan yangilagan edingiz. Xaridingizni tiklang.</string>
-    <string name="upgrade_screen_restore_purchase_message">Sizning yanglanishingiz bir xil Google hisobidagi qurilmalarda amal qiladi.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Tan olinmagan yangilanishlar uchun muammolarni hal qilish maslahatlari:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinxronlashtiruvi vaqt olishi mumkin. Qayta ishga tushirish, Google Play keshini tozalash yoki shunchaki kutishni sinab ko\'ring.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Ko\'p hisoblar Google Play-ni chalkashtirib yuborishi mumkin. Boshqa hisoblardan chiqing yoki Google Play veb-sayti orqali o\'rnating, bu esa ma\'lum bir hisob bilan bog\'lanishni majburiy qiladi.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Pro statusini ko\'ring</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Tabriklaymiz!</string>
-    <string name="upgrade_screen_owned_congrats_body">Siz BVM Pro-ni oldingiz — rivojlanishni qo\'llab-quvvatlashingiz uchun rahmat. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">Bir martalik xarid</string>
     <string name="upgrade_screen_owned_iap_body">Siz BVM Pro-ni abadiy egalaysiz. Qo\'llab-quvvatlashingiz uchun rahmat ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Obuna</string>
     <string name="upgrade_screen_owned_sub_renewing_body">Sizning BVM Pro obunangiz faol va qayta yangilanishga o\'rnatilgan.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">Sizning BVM Pro obunangiz faol, lekin qayta yangilanmaydi. U joriy davr oxirigacha amal qiladi.</string>
     <string name="upgrade_screen_owned_both_warning">Sizda ham obuna va bir martalik xarid mavjud. Google Play\'da obunani bekor qiling, shunda yana hisoblanmaysiz.</string>
     <string name="upgrade_screen_manage_subscription">Obunani boshqarish</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Bir martalik xaridga o\'ting</string>
-    <string name="upgrade_screen_switch_purchase_note">Bu alohida bir martalik xariddir. U sizning obunangizni bekor qilmaydi yoki pul qaytarmaydi, shuning uchun buni Google Play\'da ham bekor qiling. Ikkalasi uchun ham bir xil Google hisobini ishlating.</string>
-    <string name="upgrade_screen_switch_locked_note">Sizning obunangiz qayta yangilanishga o\'rnatilmagan bo\'lgach mavjud bo\'ladi. O\'tish uchun uni Google Play\'da bekor qiling — siz joriy davr oxirigacha Pro sifatida qolasiz.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">Holat noto\'g\'rimi ko\'rinmoqda?</string>
     <string name="upgrade_screen_status_restore_body">Agar sizning xaridingiz bu yerda ko\'rinmasa, uni tiklashni harakat qiling.</string>

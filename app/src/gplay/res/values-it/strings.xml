@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Vantaggi</string>
     <string name="upgrade_screen_subscription_trial_action">Inizia la prova gratuita di 14 giorni</string>
     <string name="upgrade_screen_subscription_action">Abbonati</string>
-    <string name="upgrade_screen_subscription_action_hint">L\'abbonamento costa %s all\'anno.</string>
     <string name="upgrade_screen_iap_action">Acquisto una tantum</string>
-    <string name="upgrade_screen_iap_action_hint">L\'acquisto una tantum costa %s.</string>
     <string name="upgrade_screen_offer_divider_or">o</string>
-    <string name="upgrade_screen_offer_same_features">Le stesse funzionalità, solo modelli di prezzo diversi.</string>
     <string name="upgrade_screen_thanks_toast">Sei il migliore! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Ripristina acquisto</string>
     <string name="upgrade_screen_restore_banner_title">Hai già acquistato BVM Pro?</string>
     <string name="upgrade_screen_restore_banner_body">Sembra che tu abbia già effettuato l’upgrade su questo dispositivo. Ripristina il tuo acquisto per sbloccarlo di nuovo.</string>
-    <string name="upgrade_screen_restore_purchase_message">La versione PRO è valida per tutti i dispositivi connessi all\'account Google con cui hai effettuato l\'acquisto.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Suggerimenti di risoluzione dei problemi per gli acquisti non riconosciuti:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">La sincronizzazione del Play Store potrebbe richiedere tempo. Prova a riavviare, cancellare la cache di Google Play o semplicemente ad aspettare.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Più account possono confondere Google Play. Esci dagli altri account o installare da PC attraverso il sito web di Google Play, che costringe le associazioni con un account specifico.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Visualizza il tuo stato Pro</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Congratulazioni!</string>
-    <string name="upgrade_screen_owned_congrats_body">Hai ottenuto BVM Pro — grazie per aver sostenuto lo sviluppo. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">Acquisto una tantum</string>
     <string name="upgrade_screen_owned_iap_body">Possiedi BVM Pro per sempre. Grazie per il tuo supporto ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Abbonamento</string>
     <string name="upgrade_screen_owned_sub_renewing_body">Il tuo abbonamento a BVM Pro è attivo e impostato per il rinnovo.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">Il tuo abbonamento a BVM Pro è attivo ma non si rinnoverà. Rimane valido fino alla fine del periodo corrente.</string>
     <string name="upgrade_screen_owned_both_warning">Hai sia un abbonamento che l’acquisto una tantum. Annulla l’abbonamento in Google Play per non essere addebitato di nuovo.</string>
     <string name="upgrade_screen_manage_subscription">Gestisci abbonamento</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Passa a un acquisto una tantum</string>
-    <string name="upgrade_screen_switch_purchase_note">Questo è un acquisto una tantum separato. Non annulla né rimborsa il tuo abbonamento, quindi annullalo anche in Google Play. Usa lo stesso account Google per entrambi.</string>
-    <string name="upgrade_screen_switch_locked_note">Disponibile quando il tuo abbonamento non è più impostato per il rinnovo. Annullalo in Google Play per effettuare il passaggio — manterrai Pro fino alla fine del periodo corrente.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">Lo stato non sembra corretto?</string>
     <string name="upgrade_screen_status_restore_body">Se il tuo acquisto non compare qui, prova a ripristinarlo.</string>

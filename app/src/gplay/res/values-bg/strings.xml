@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Предимства</string>
     <string name="upgrade_screen_subscription_trial_action">Започнете безплатен 14-дневен пробен период</string>
     <string name="upgrade_screen_subscription_action">Абонирайте се</string>
-    <string name="upgrade_screen_subscription_action_hint">Абонаментът струва %s годишно.</string>
     <string name="upgrade_screen_iap_action">Еднократна покупка</string>
-    <string name="upgrade_screen_iap_action_hint">Еднократната покупка струва %s.</string>
     <string name="upgrade_screen_offer_divider_or">или</string>
-    <string name="upgrade_screen_offer_same_features">Същите функции, само различни модели на ценообразуване.</string>
     <string name="upgrade_screen_thanks_toast">Вие сте най-добрите! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Възстановете покупката</string>
     <string name="upgrade_screen_restore_banner_title">Вече сте купили BVM Pro?</string>
     <string name="upgrade_screen_restore_banner_body">Изглежда, че вече сте надградили на това устройство. Възстановете покупката си, за да я отключите отново.</string>
-    <string name="upgrade_screen_restore_purchase_message">Вашето надстройване е валидно на устройства със същия Google акаунт.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Съвети за отстраняване на проблеми за неразпознати надстройвания:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Синхронизацията на Play Store може да отнеме време. Опитайте рестартиране, изчистване на кеша на Google Play или просто изчакайте.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Множествените акаунти могат да объркат Google Play. Излезте от други акаунти или инсталирайте чрез уебсайта на Google Play, който принуждава асоциации с конкретен акаунт.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Вижте своя Pro статус</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Поздравления!</string>
-    <string name="upgrade_screen_owned_congrats_body">Вече имате BVM Pro — благодарим ви, че подкрепяте разработката. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">Еднократна покупка</string>
     <string name="upgrade_screen_owned_iap_body">Притежавате BVM Pro завинаги. Благодарим ви за подкрепата ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Абонамент</string>
     <string name="upgrade_screen_owned_sub_renewing_body">Вашият абонамент за BVM Pro е активен и ще се поднови.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">Вашият абонамент за BVM Pro е активен, но няма да се поднови. Той остава валиден до края на текущия период.</string>
     <string name="upgrade_screen_owned_both_warning">Имате едновременно абонамент и еднократна покупка. Отменете абонамента в Google Play, за да не бъдете таксувани отново.</string>
     <string name="upgrade_screen_manage_subscription">Управление на абонамента</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Преминаване към еднократна покупка</string>
-    <string name="upgrade_screen_switch_purchase_note">Това е отделна еднократна покупка. Тя не отменя и не възстановява средствата от абонамента ви, така че отменете и него в Google Play. Използвайте един и същ акаунт в Google за двете.</string>
-    <string name="upgrade_screen_switch_locked_note">Налично, след като абонаментът ви вече не е зададен за подновяване. Отменете го в Google Play, за да преминете — запазвате Pro до края на текущия период.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">Статусът изглежда грешен?</string>
     <string name="upgrade_screen_status_restore_body">Ако покупката ви не се показва тук, опитайте да я възстановите.</string>

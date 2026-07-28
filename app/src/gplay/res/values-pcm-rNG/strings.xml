@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Advantages</string>
     <string name="upgrade_screen_subscription_trial_action">Start free 14-day trial</string>
     <string name="upgrade_screen_subscription_action">Subscribe</string>
-    <string name="upgrade_screen_subscription_action_hint">Di subscription cost %s per year.</string>
     <string name="upgrade_screen_iap_action">One-time purchase</string>
-    <string name="upgrade_screen_iap_action_hint">Di one-time purchase cost %s.</string>
     <string name="upgrade_screen_offer_divider_or">abi</string>
-    <string name="upgrade_screen_offer_same_features">Same features, just different prices.</string>
     <string name="upgrade_screen_thanks_toast">You be di best!</string>
     <string name="upgrade_screen_restore_purchase_action">Restore purchase</string>
     <string name="upgrade_screen_restore_banner_title">You don buy BVM Pro before?</string>
     <string name="upgrade_screen_restore_banner_body">E look like you don upgrade this device before. Restore your purchase to unlock am again.</string>
-    <string name="upgrade_screen_restore_purchase_message">Your upgrade dey valid across devices on di same Google account.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Troubleshooting tips for unrecognized upgrades:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store synchronization fit take time. Try reboot, clear Google Play cache or just wait.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Multiple accounts fit confuse Google Play. Log out of other accounts or install through di Google Play website, wey go force association with specific account.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">See your Pro status</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Congratulations!</string>
-    <string name="upgrade_screen_owned_congrats_body">You don get BVM Pro — thank you for supporting development. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">One-time purchase</string>
     <string name="upgrade_screen_owned_iap_body">You own BVM Pro forever. Thank you for your support ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Subscription</string>
     <string name="upgrade_screen_owned_sub_renewing_body">Your BVM Pro subscription don active and e go renew.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">Your BVM Pro subscription don active but e no go renew. E go stay valid till the end of this period.</string>
     <string name="upgrade_screen_owned_both_warning">You get both subscription and one-time purchase. Cancel the subscription for Google Play so dem no go charge you again.</string>
     <string name="upgrade_screen_manage_subscription">Manage your subscription</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Switch to one-time purchase</string>
-    <string name="upgrade_screen_switch_purchase_note">This na separate one-time purchase. E no go cancel or refund your subscription, so cancel that one for Google Play too. Use the same Google account for both.</string>
-    <string name="upgrade_screen_switch_locked_note">E go dey available once your subscription no longer dey set to renew. Cancel am for Google Play to switch — you go still get Pro until the current period end.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">Status look wrong?</string>
     <string name="upgrade_screen_status_restore_body">If your purchase no show here, try restore am.</string>

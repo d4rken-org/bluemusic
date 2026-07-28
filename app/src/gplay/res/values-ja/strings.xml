@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">メリット</string>
     <string name="upgrade_screen_subscription_trial_action">14日間の無料トライアルを開始</string>
     <string name="upgrade_screen_subscription_action">登録</string>
-    <string name="upgrade_screen_subscription_action_hint">定期購入は、年/%sのお支払いです。</string>
     <string name="upgrade_screen_iap_action">1 回限りの購入</string>
-    <string name="upgrade_screen_iap_action_hint">1回限りの購入は、%sのお支払いです。</string>
     <string name="upgrade_screen_offer_divider_or">または</string>
-    <string name="upgrade_screen_offer_same_features">機能は同じで、料金プランが異なるだけです。</string>
     <string name="upgrade_screen_thanks_toast">あなたは最高です！ ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">購入を復元</string>
     <string name="upgrade_screen_restore_banner_title">すでにBVM Proを購入済みですか?</string>
     <string name="upgrade_screen_restore_banner_body">このデバイスで以前アップグレードされているようです。購入を復元して、もう一度ロックを解除してください。</string>
-    <string name="upgrade_screen_restore_purchase_message">アップグレードは同じGoogleアカウントであれば全ての端末で適用されます。</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">トラブルが起きた際のヒント</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Playストアの同期には時間がかかる場合があります。 そのまましばらくお待ちください。改善されない場合は、再起動するか、Playストアのキャッシュを削除してみてください。</string>
     <string name="upgrade_screen_restore_multiaccount_hint">複数のGoogleアカウントでログインしてあると、Playストアで不具合が発生する場合があります。 他のアカウントからログアウトするか、Web版Playストアからインストールすることで、正常にGoogleアカウントとの連携がされます。</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Proステータスを確認</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">おめでとうございます!</string>
-    <string name="upgrade_screen_owned_congrats_body">BVM Proを入手しました。開発を応援してくれてありがとうございます。❤️</string>
     <string name="upgrade_screen_owned_iap_title">1 回限りの購入</string>
     <string name="upgrade_screen_owned_iap_body">BVM Proを永久に所有しています。応援ありがとうございます ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">サブスクリプション</string>
     <string name="upgrade_screen_owned_sub_renewing_body">BVM Proのサブスクリプションは有効で、更新される設定になっています。</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">BVM Proのサブスクリプションは有効ですが、更新されません。現在の期間の終了まで有効です。</string>
     <string name="upgrade_screen_owned_both_warning">サブスクリプションと買い切り購入の両方をお持ちです。二重に請求されないよう、Google Playでサブスクリプションを解約してください。</string>
     <string name="upgrade_screen_manage_subscription">サブスクリプションを管理</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">買い切り購入に切り替える</string>
-    <string name="upgrade_screen_switch_purchase_note">これは別の買い切り購入です。サブスクリプションは自動的に解約または返金されないため、Google Playでもサブスクリプションを解約してください。両方で同じGoogleアカウントを使用してください。</string>
-    <string name="upgrade_screen_switch_locked_note">サブスクリプションが更新されない設定になると利用できます。切り替えるにはGoogle Playで解約してください—現在の期間が終わるまではProを利用できます。</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">ステータスがおかしいですか?</string>
     <string name="upgrade_screen_status_restore_body">購入がここに表示されない場合は、復元をお試しください。</string>

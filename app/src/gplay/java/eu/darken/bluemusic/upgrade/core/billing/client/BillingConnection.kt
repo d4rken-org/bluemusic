@@ -3,103 +3,196 @@ package eu.darken.bluemusic.upgrade.core.billing.client
 import android.app.Activity
 import com.android.billingclient.api.AcknowledgePurchaseParams
 import com.android.billingclient.api.BillingClient
+import com.android.billingclient.api.BillingClient.BillingResponseCode
 import com.android.billingclient.api.BillingFlowParams
 import com.android.billingclient.api.BillingResult
-import com.android.billingclient.api.ProductDetails
 import com.android.billingclient.api.Purchase
 import com.android.billingclient.api.Purchase.PurchaseState
 import com.android.billingclient.api.QueryProductDetailsParams
 import com.android.billingclient.api.QueryProductDetailsResult
 import com.android.billingclient.api.QueryPurchasesParams
-import com.android.billingclient.api.queryPurchasesAsync
+import com.android.billingclient.api.UnfetchedProduct
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
+import eu.darken.bluemusic.upgrade.core.OurSku
 import eu.darken.bluemusic.upgrade.core.billing.BillingManager.Companion.tryMapUserFriendly
+import eu.darken.bluemusic.upgrade.core.billing.OfferUnavailableBillingException
 import eu.darken.bluemusic.upgrade.core.billing.Sku
 import eu.darken.bluemusic.upgrade.core.billing.SkuDetails
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.mapNotNull
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
-data class BillingConnection(
+class BillingConnection(
     private val client: BillingClient,
-    val purchaseEvents: Flow<Pair<BillingResult, Collection<Purchase>?>?>,
-    private val failureEvents: Flow<BillingResult?> = MutableStateFlow(null),
+    private val skuTypeOf: (String) -> Sku.Type? = DEFAULT_SKU_TYPE_RESOLVER,
 ) {
 
-    // Last authoritative ownership snapshot: the combined result of a successful refreshPurchases().
-    // A single snapshot (instead of per-product-type caches) makes sure a partial result — one
-    // product type failed but the other found a purchase — still reaches the reactive purchases
-    // flow, matching exactly what refreshPurchases() reported to its caller.
-    private val querySnapshot = MutableStateFlow<Collection<Purchase>?>(null)
+    // A purchase proven by an onPurchasesUpdated success event. Additive only: events prove
+    // ownership, never absence. `gen` orders it against queries (a query that STARTED before this
+    // event must not clear it); `type` is resolved at ingestion so a later per-type query that
+    // confirms absence can supersede it (null = product unknown to this app, only a complete
+    // refresh may clear it).
+    data class OverlayEntry(
+        val purchase: Purchase,
+        val gen: Long,
+        val type: Sku.Type?,
+    )
 
-    val purchases: Flow<Collection<Purchase>> = combine(
-        purchaseEvents,
-        querySnapshot,
-    ) { purchaseEvent, snapshot ->
-        val eventPurchases = purchaseEvent
-            ?.takeIf { (result, _) -> result.isSuccess }
-            ?.let { (_, purchases) -> purchases?.filter { it.purchaseState == PurchaseState.PURCHASED } }
-            .orEmpty()
+    // The single, atomically-updated ownership state of this connection. Split state (per-type
+    // caches, separate event flows) exposed intermediate combinations and starved on partial
+    // failures — every mutation here is a pure copy applied under `reducerLock`, so observers only
+    // ever see committed states and refreshPurchases() can return the exact state it committed.
+    data class ReducerState(
+        val iapSnapshot: Collection<Purchase>? = null,
+        val subSnapshot: Collection<Purchase>? = null,
+        val overlay: List<OverlayEntry> = emptyList(),
+        val eventGen: Long = 0L,
+    ) {
 
-        // Emit only once we have SOMETHING authoritative — a query snapshot OR a completed purchase
-        // event. This keeps the pre-first-query "not pro" flash suppressed, while still surfacing a
-        // purchase completed AFTER the initial ownership refresh failed (snapshot still null), which a
-        // plain querySnapshot.filterNotNull() gate would strand (never acked, never unlocked).
-        if (snapshot == null && eventPurchases.isEmpty()) return@combine null
+        internal fun withEvent(
+            purchased: Collection<Purchase>,
+            typeOf: (String) -> Sku.Type?,
+        ): ReducerState {
+            val gen = eventGen + 1
+            val entries = purchased.map { purchase ->
+                OverlayEntry(
+                    purchase = purchase,
+                    gen = gen,
+                    type = purchase.products.firstNotNullOfOrNull(typeOf),
+                )
+            }
+            return copy(eventGen = gen, overlay = overlay + entries)
+        }
 
-        // Deduplicate by purchaseToken, with the authoritative query snapshot winning on conflict.
-        // The immutable Purchase from a listener event and the one from a later query differ (ack
-        // state; isAutoRenewing flips after a cancel), so Purchase.equals returns false and a plain
-        // Set would keep BOTH — a stale renewing/owned copy would then lock the sub→IAP switch or
-        // retain entitlement after a refund until the connection is recreated. A purchase event still
-        // survives while the snapshot hasn't caught it yet (its token isn't in the snapshot).
-        val byToken = LinkedHashMap<String, Purchase>()
-        eventPurchases.forEach { byToken[it.purchaseToken] = it }
-        snapshot?.forEach { byToken[it.purchaseToken] = it }
+        internal fun withQueryResults(
+            iap: Collection<Purchase>?,
+            sub: Collection<Purchase>?,
+            genAtQueryStart: Long,
+        ): ReducerState {
+            val clearedTypes = setOfNotNull(
+                Sku.Type.IAP.takeIf { iap != null },
+                Sku.Type.SUBSCRIPTION.takeIf { sub != null },
+            )
+            val isComplete = clearedTypes.size == 2
+            return copy(
+                iapSnapshot = iap ?: iapSnapshot,
+                subSnapshot = sub ?: subSnapshot,
+                // A successful per-type query is authoritative for that type: overlay entries it
+                // could have seen (gen <= start) are superseded by its result. Entries of a FAILED
+                // type survive, as do events that arrived after the query started. Untyped entries
+                // (unknown product) only fall to a complete refresh.
+                overlay = overlay.filterNot { entry ->
+                    entry.gen <= genAtQueryStart &&
+                        (entry.type in clearedTypes || (isComplete && entry.type == null))
+                },
+            )
+        }
 
-        byToken.values.sortedByDescending { it.purchaseTime }
+        // Never verified anything this connection: downstream must not mistake "don't know yet"
+        // for "owns nothing".
+        internal val isSettled: Boolean
+            get() = iapSnapshot != null || subSnapshot != null
+
+        // Snapshots first, overlay overwrites: a surviving overlay entry is by construction newer
+        // than the last successful query of its type (older ones were cleared), so its purchase
+        // data (ack state etc.) is fresher. Dedup by purchaseToken (the stable purchase identity):
+        // snapshot and overlay instances of the same purchase can differ in ack state, so Purchase
+        // equality or object identity would retain both instead of letting the newer one win.
+        internal fun merged(): Collection<Purchase> {
+            val byToken = LinkedHashMap<String, Purchase>()
+            iapSnapshot.orEmpty().forEach { byToken[it.purchaseToken] = it }
+            subSnapshot.orEmpty().forEach { byToken[it.purchaseToken] = it }
+            overlay.forEach { byToken[it.purchase.purchaseToken] = it.purchase }
+            return byToken.values.sortedByDescending { it.purchaseTime }
+        }
     }
-        .filterNotNull()
-        .setupCommonEventHandlers(TAG) { "purchases" }
+
+    // Fresh data straight from a Play round-trip, in COMMIT ORDER: emitted under the same lock
+    // that mutates the reducer state, so a consumer can never observe a purchase event AFTER the
+    // query commit that superseded it (or a stale snapshot after a newer event). Query emissions
+    // carry only what the queries confirmed — never retained stale data — because consumers use
+    // this for time-based bookkeeping like the Pro grace period.
+    data class FreshUpdate(
+        val purchases: Collection<Purchase>,
+        val isFullSnapshot: Boolean,
+        // Wall-clock time this update was COMMITTED under reducerLock — i.e. when Play actually
+        // confirmed this data. Defaults to construction time, which at every production call site is
+        // the commit instant (this type is only ever built inside the reducer commit below). The Pro
+        // entitlement layer stamps its grace anchor with this so a confirmation and a later
+        // connection failure are ordered by when they HAPPENED, not by when each separate flow got
+        // around to processing them — see UpgradeRepoGplay.recordProState / BillingCache
+        // .stampLastProState.
+        val occurredAt: Long = System.currentTimeMillis(),
+    )
+
+    // Guards state mutation + fresh emission as one atomic step. Kept a plain monitor (not a
+    // Mutex): the listener path is synchronous on Play's callback thread.
+    private val reducerLock = Any()
+    private val state = MutableStateFlow(ReducerState())
+    // UNLIMITED: event volume is tiny and a silently dropped item would lose a grace stamp or an
+    // already-owned recovery. Closed by the provider when the connection dies.
+    private val freshUpdatesChannel = Channel<FreshUpdate>(Channel.UNLIMITED)
+    private val failureChannel = Channel<BillingResult>(Channel.UNLIMITED)
+
+    val freshUpdates: Flow<FreshUpdate> = freshUpdatesChannel.receiveAsFlow()
 
     // Non-OK results from onPurchasesUpdated (e.g. async ITEM_ALREADY_OWNED after the Play sheet
-    // opened). Consumed by a single persistent collector in UpgradeRepoGplay — not an event bus.
-    val purchaseFailures: Flow<BillingResult> = failureEvents.filterNotNull()
+    // opened). A channel, not state: events must not conflate, and a late subscriber must not be
+    // served a stale failure. Consumed by a single persistent collector chain.
+    val purchaseFailures: Flow<BillingResult> = failureChannel.receiveAsFlow()
 
-    private suspend fun queryPurchases(@BillingClient.ProductType type: String): Collection<Purchase> {
-        val params = QueryPurchasesParams.newBuilder().apply {
-            setProductType(type)
-        }.build()
-        val (billingResult, purchaseData) = client.queryPurchasesAsync(params)
+    val purchases: Flow<Collection<Purchase>> = state
+        .mapNotNull { current -> current.takeIf { it.isSettled }?.merged() }
+        .setupCommonEventHandlers(TAG) { "purchases" }
 
-        log(TAG) {
-            "queryPurchases($type): code=${billingResult.isSuccess}, message=${billingResult.debugMessage}, purchaseData=${purchaseData}"
+    // Called synchronously from the PurchasesUpdatedListener on Play's callback thread:
+    // exactly-once per callback, ordered, and atomic with the fresh emission. Success and failure
+    // results stay strictly apart — a failure (reopened sheet -> USER_CANCELED) must not evict a
+    // fresh purchase event.
+    internal fun onPurchasesUpdated(result: BillingResult, purchases: Collection<Purchase>?) {
+        if (result.isSuccess) {
+            log(TAG) {
+                "onPurchasesUpdated(code=${result.responseCode}, message=${result.debugMessage}, " +
+                    "purchases=${purchases?.redacted()})"
+            }
+            // PENDING purchases must never surface as owned (or stamp the Pro grace cache).
+            val purchased = purchases.orEmpty().filter { it.purchaseState == PurchaseState.PURCHASED }
+            synchronized(reducerLock) {
+                state.value = state.value.withEvent(purchased, skuTypeOf)
+                if (purchased.isNotEmpty()) {
+                    freshUpdatesChannel.trySend(FreshUpdate(purchased, isFullSnapshot = false))
+                }
+            }
+        } else {
+            log(TAG, WARN) {
+                "error: onPurchasesUpdated(code=${result.responseCode}, message=${result.debugMessage}, " +
+                    "purchases=${purchases?.redacted()})"
+            }
+            failureChannel.trySend(result)
         }
-
-        if (!billingResult.isSuccess) {
-            log(TAG, WARN) { "queryPurchases() failed" }
-            throw BillingClientException(billingResult)
-        }
-
-        return purchaseData
     }
 
-    // Returns the freshly queried PURCHASED purchases so callers get a guaranteed happens-before
-    // relation instead of racing the shared purchases/upgradeInfo replay caches after a refresh.
-    // Tolerant of a single product-type failure: if either query finds a purchase we treat that as
-    // authoritative, and only propagate an error when nothing was found AND a query failed — so the
-    // caller can tell "not owned" apart from "couldn't verify".
+    // Called by the provider when this connection ends: completes the event flows so consumers
+    // don't wait on a dead connection's channels.
+    internal fun close() {
+        freshUpdatesChannel.close()
+        failureChannel.close()
+    }
+
     // The purchases of a refresh plus whether it covered both product types: a partial result (one
     // query failed) is still authoritative for what it FOUND, but must not be treated as proof of
     // absence for the type that couldn't be checked.
@@ -108,34 +201,75 @@ data class BillingConnection(
         val isComplete: Boolean,
     )
 
-    suspend fun refreshPurchases(): PurchaseRefresh = coroutineScope {
-        log(TAG) { "refreshPurchases()" }
-        val iapJob = async { queryPurchasedProducts(BillingClient.ProductType.INAPP) }
-        val subJob = async { queryPurchasedProducts(BillingClient.ProductType.SUBS) }
-        val iap = iapJob.await()
-        val sub = subJob.await()
-        log(TAG) { "Refreshed IAPs=${iap.getOrNull()}, SUBs=${sub.getOrNull()}" }
-        val combined = combinePurchaseResults(iap, sub)
-        val isComplete = iap.isSuccess && sub.isSuccess
-        // A full snapshot (both queries succeeded) is authoritative and replaces the snapshot. A PARTIAL
-        // refresh (one product type failed) only proves what it FOUND; overwriting with just that type
-        // would drop the un-queried type's known purchases (a both-IAP-and-sub owner would briefly lose
-        // one record). Merge by token onto the prior snapshot instead, so found purchases surface while
-        // the unverifiable type's entitlement is preserved (fail-open — a later full refresh corrects it).
-        val snapshot = if (isComplete) {
-            combined
-        } else {
-            val byToken = LinkedHashMap<String, Purchase>()
-            querySnapshot.value.orEmpty().forEach { byToken[it.purchaseToken] = it }
-            combined.forEach { byToken[it.purchaseToken] = it }
-            byToken.values.sortedByDescending { it.purchaseTime }
+    // Serializes concurrent refreshes (manual, background, auto-restore): an older query that got
+    // descheduled after Play answered must not commit over a newer one's result.
+    private val refreshMutex = Mutex()
+
+    // Queries both product types and commits the result into the reducer state in ONE atomic
+    // update, then returns the merged view of exactly that committed state — so the reactive
+    // purchases flow and this return value can never disagree. Tolerant of a single product-type
+    // failure: found purchases are authoritative, and an error only propagates when nothing was
+    // found AND a query failed, so the caller can tell "not owned" apart from "couldn't verify".
+    suspend fun refreshPurchases(): PurchaseRefresh = refreshMutex.withLock {
+        coroutineScope {
+            log(TAG) { "refreshPurchases()" }
+            val genAtQueryStart = state.value.eventGen
+            val iapJob = async { queryPurchasedProducts(BillingClient.ProductType.INAPP) }
+            val subJob = async { queryPurchasedProducts(BillingClient.ProductType.SUBS) }
+            val iap = iapJob.await()
+            val sub = subJob.await()
+            log(TAG) { "Refreshed IAPs=${iap.getOrNull()?.redacted()}, SUBs=${sub.getOrNull()?.redacted()}" }
+
+            // Commit BEFORE the couldn't-verify error check: a successful per-type result is
+            // authoritative even when its sibling failed — verified absence (e.g. a refunded IAP)
+            // must not be discarded just because the SUB query errored.
+            val isComplete = iap.isSuccess && sub.isSuccess
+            val committed = synchronized(reducerLock) {
+                val next = state.value.withQueryResults(
+                    iap = iap.getOrNull(),
+                    sub = sub.getOrNull(),
+                    genAtQueryStart = genAtQueryStart,
+                )
+                state.value = next
+                if (iap.isSuccess || sub.isSuccess) {
+                    // Only what the queries CONFIRMED — retained stale data of a failed type stays
+                    // out of the fresh stream (it would keep re-stamping the grace window).
+                    val confirmed = (iap.getOrNull().orEmpty() + sub.getOrNull().orEmpty())
+                        .sortedByDescending { it.purchaseTime }
+                    // A surviving overlay entry (purchase event newer than the query start, or of
+                    // a failed type) means this result does NOT prove total absence: it must not
+                    // count as a full snapshot, or an empty query racing a fresh purchase event
+                    // would start a false unconfirmed-grace episode.
+                    val provesAbsence = isComplete && next.overlay.isEmpty()
+                    freshUpdatesChannel.trySend(FreshUpdate(confirmed, isFullSnapshot = provesAbsence))
+                }
+                next
+            }
+
+            // Support-log anchor, at INFO because purchase complaints arrive as debug recordings.
+            // Logs what these queries CONFIRMED, kept distinct from the committed view: merged()
+            // retains a failed type's previous purchases, so reporting it as "what Play returned"
+            // would be the same false-certainty trap the copy elsewhere had to fix. Product IDs
+            // only -- never the Purchase, which carries order and token data.
+            log(TAG, INFO) {
+                val confirmedIds = (iap.getOrNull().orEmpty() + sub.getOrNull().orEmpty()).flatMap { it.products }
+                "refreshPurchases(): confirmed=$confirmedIds, isComplete=$isComplete, " +
+                    "iapOk=${iap.isSuccess}, subOk=${sub.isSuccess}, merged=${committed.merged().size}"
+            }
+
+            // Throws when nothing was found and a query failed, so the caller can tell "not
+            // owned" apart from "couldn't verify".
+            combinePurchaseResults(iap, sub)
+
+            PurchaseRefresh(
+                purchases = committed.merged(),
+                isComplete = isComplete,
+            )
         }
-        querySnapshot.value = snapshot
-        PurchaseRefresh(purchases = snapshot, isComplete = isComplete)
     }
 
-    // Never throws except on cancellation, so a single failing product-type query doesn't cancel the
-    // sibling query (or the coroutineScope). The exception is already user-friendly-mapped.
+    // Never throws except on cancellation, so a single failing product-type query doesn't cancel
+    // the sibling query (or the coroutineScope). The exception is already user-friendly-mapped.
     private suspend fun queryPurchasedProducts(
         @BillingClient.ProductType type: String,
     ): Result<Collection<Purchase>> = try {
@@ -146,37 +280,77 @@ data class BillingConnection(
         Result.failure(e.tryMapUserFriendly())
     }
 
-    // Fresh SUBS-only ownership read for the fail-closed IAP switch gate. PURE READ: it must NOT
-    // write querySnapshot (which holds the combined IAP+SUB ownership snapshot — a SUBS-only write
-    // would drop a known IAP purchase and transiently un-Pro an IAP owner) and must NOT feed the
-    // freshData path. Unions the freshly queried SUBS with the last snapshot, deduped by token with
-    // the FRESH copy winning: a sub the user just cancelled comes back from Play with
-    // isAutoRenewing=false and correctly overwrites a stale renewing snapshot entry, while a sub the
-    // fresh query transiently missed survives from the snapshot (over-blocking the switch is safe;
-    // missing a renewing sub is not). Including any IAP entries from the snapshot is harmless: the
-    // gate only checks isAutoRenewing, and one-time purchases are never auto-renewing.
-    suspend fun querySubscriptions(): Collection<Purchase> {
-        val fresh = queryPurchases(BillingClient.ProductType.SUBS)
-            .filter { it.purchaseState == PurchaseState.PURCHASED }
-        val byToken = LinkedHashMap<String, Purchase>()
-        querySnapshot.value
-            .orEmpty()
-            .filter { it.purchaseState == PurchaseState.PURCHASED }
-            .forEach { byToken[it.purchaseToken] = it }
-        fresh.forEach { byToken[it.purchaseToken] = it }
-        return byToken.values.toList()
+    private suspend fun queryPurchases(@BillingClient.ProductType type: String): Collection<Purchase> {
+        val params = QueryPurchasesParams.newBuilder().apply {
+            setProductType(type)
+        }.build()
+        // Own cancellable wrapper instead of the billing-ktx extension: a non-cancellable
+        // suspension would make the timeouts around refreshes hang until Play's callback fires.
+        // The onCancellation overload makes a callback racing the cancellation a no-op instead of
+        // an IllegalStateException on Play's thread.
+        val (billingResult, purchaseData) = suspendCancellableCoroutine<Pair<BillingResult, List<Purchase>>> { continuation ->
+            client.queryPurchasesAsync(params) { result, purchases ->
+                if (continuation.isActive) continuation.resume(result to purchases) { _, _, _ -> }
+            }
+        }
+
+        log(TAG) {
+            "queryPurchases($type): code=${billingResult.isSuccess}, message=${billingResult.debugMessage}, " +
+                "purchaseData=${purchaseData.redacted()}"
+        }
+
+        if (!billingResult.isSuccess) {
+            log(TAG, WARN) { "queryPurchases() failed" }
+            throw BillingClientException(billingResult)
+        }
+
+        return purchaseData
     }
 
+    // Strict SUBS-only query for the pre-purchase subscription gate: unlike refreshPurchases(),
+    // a failure propagates (no cross-type tolerance) — callers must be able to fail closed on
+    // "couldn't verify". Commits through the reducer like any query, so the reactive purchases
+    // flow picks up the fresh renewal state, and emits a partial fresh update: it proves what the
+    // SUBS query found, never the absence of anything it didn't cover.
+    suspend fun querySubscriptions(): Collection<Purchase> = refreshMutex.withLock {
+        log(TAG) { "querySubscriptions()" }
+        val genAtQueryStart = state.value.eventGen
+        val subs = queryPurchases(BillingClient.ProductType.SUBS)
+            .filter { it.purchaseState == PurchaseState.PURCHASED }
+        val committed = synchronized(reducerLock) {
+            val next = state.value.withQueryResults(
+                iap = null,
+                sub = subs,
+                genAtQueryStart = genAtQueryStart,
+            )
+            state.value = next
+            freshUpdatesChannel.trySend(FreshUpdate(subs, isFullSnapshot = false))
+            next
+        }
+        // The COMMITTED view, not the raw response: a purchase event that arrived after the query
+        // started survives the commit as a newer overlay and must reach the gate too — otherwise a
+        // just-purchased renewing sub could slip past the fail-closed double-billing check.
+        // Non-IAP overlays only; untyped (unknown product) entries stay in on the safe side.
+        val byToken = LinkedHashMap<String, Purchase>()
+        subs.forEach { byToken[it.purchaseToken] = it }
+        committed.overlay
+            .filter { it.type != Sku.Type.IAP }
+            .forEach { byToken[it.purchase.purchaseToken] = it.purchase }
+        byToken.values.sortedByDescending { it.purchaseTime }
+    }
     suspend fun acknowledgePurchase(purchase: Purchase): BillingResult {
         val ack = AcknowledgePurchaseParams.newBuilder().apply {
             setPurchaseToken(purchase.purchaseToken)
         }.build()
 
-        val ackResult = suspendCoroutine<BillingResult> { continuation ->
-            client.acknowledgePurchase(ack) { continuation.resume(it) }
+        val ackResult = suspendCancellableCoroutine<BillingResult> { continuation ->
+            client.acknowledgePurchase(ack) {
+                if (continuation.isActive) continuation.resume(it) { _, _, _ -> }
+            }
         }
         log(TAG) {
-            "acknowledgePurchase(purchase=$purchase): code=${ackResult.responseCode}, message=${ackResult.debugMessage})"
+            "acknowledgePurchase(purchase=${purchase.redacted()}): code=${ackResult.responseCode}, " +
+                "message=${ackResult.debugMessage})"
         }
 
         if (!ackResult.isSuccess) {
@@ -187,15 +361,17 @@ data class BillingConnection(
 
     suspend fun querySkus(vararg skus: Sku): Collection<SkuDetails> {
         log(TAG) { "querySkus(skus=${skus.joinToString { it.print() }})..." }
-        val productList = skus.map { sku ->
+        // Play answers per product, not per request entry: a duplicated request entry would make the
+        // exactly-one-match rule below ambiguous for no reason.
+        val requested = skus.distinctBy { it.id to it.type }
+        if (requested.size != skus.size) {
+            log(TAG, WARN) { "querySkus(): deduped duplicate request entries: ${skus.joinToString { it.print() }}" }
+        }
+
+        val productList = requested.map { sku ->
             QueryProductDetailsParams.Product.newBuilder().apply {
                 setProductId(sku.id)
-                setProductType(
-                    when (sku.type) {
-                        Sku.Type.IAP -> BillingClient.ProductType.INAPP
-                        Sku.Type.SUBSCRIPTION -> BillingClient.ProductType.SUBS
-                    }
-                )
+                setProductType(sku.playProductType)
             }.build()
         }
 
@@ -203,42 +379,72 @@ data class BillingConnection(
             setProductList(productList)
         }.build()
 
-        val (result, details) = suspendCoroutine<Pair<BillingResult, Collection<ProductDetails>?>> { continuation ->
-            client.queryProductDetailsAsync(params) { result: BillingResult, queryResult: QueryProductDetailsResult ->
-                continuation.resume(result to queryResult.productDetailsList)
+        // Cancellable so the ViewModel's query timeout and flatMapLatest-based retry actually work:
+        // with suspendCoroutine a missing Play callback kept the timeout suspended indefinitely.
+        val (result, queryResult) = suspendCancellableCoroutine<Pair<BillingResult, QueryProductDetailsResult>> { continuation ->
+            client.queryProductDetailsAsync(params) { result, queryResult ->
+                if (continuation.isActive) {
+                    continuation.resume(result to queryResult) { _, _, _ -> }
+                }
             }
         }
+        val details = queryResult.productDetailsList.orEmpty()
+        val unfetched = queryResult.unfetchedProductList.orEmpty()
 
         log(TAG) {
-            "querySkus(skus=${skus.joinToString { it.print() }}): code=${result.responseCode}, debug=${result.debugMessage}), skuDetails=$details"
+            "querySkus(skus=${skus.joinToString { it.print() }}): code=${result.responseCode}, " +
+                "debug=${result.debugMessage}, skuDetails=$details, unfetched=${unfetched.printed()}"
         }
 
-        if (!result.isSuccess) throw BillingClientException(result)
-
-        if (details.isNullOrEmpty()) {
-            throw IllegalStateException("No details available for ${skus.joinToString { "${it.type}-${it.id}" }}")
-        }
-
-        // Concise offer overview: makes "Play withheld an offer (e.g. trial eligibility)" vs "app
-        // failed to match it" diagnosable from debug logs without wading through the full JSON.
-        log(TAG) {
-            val offers = details.joinToString { detail ->
-                val subOffers = detail.subscriptionOfferDetails
-                    ?.joinToString { "${it.basePlanId}/${it.offerId ?: "base"}" }
-                "${detail.productId} -> [${subOffers ?: "one-time"}]"
+        if (!result.isSuccess) {
+            log(TAG, WARN) { "querySkus() failed: code=${result.responseCode}, message=${result.debugMessage}" }
+            val firstSku = requested.firstOrNull()
+            if (result.responseCode == BillingResponseCode.ITEM_UNAVAILABLE && firstSku != null) {
+                // Merchandising state (region, account eligibility, pulled product), not a defect:
+                // typed so the user gets copy instead of a bug report.
+                throw OfferUnavailableBillingException(firstSku, null)
             }
-            "querySkus() offers: $offers"
+            throw BillingClientException(result)
         }
 
-        return details
-            .groupBy { it.productId }
-            .mapNotNull { (key, details) ->
-                val sku = skus
-                    .single { it.id == key }
-                val detail = details.single { it.productId == sku.id }
-
-                SkuDetails(sku, detail)
+        if (unfetched.isNotEmpty()) {
+            log(TAG, WARN) { "querySkus(): Play did not fetch ${unfetched.printed()}" }
+        }
+        // A malformed product ID is OUR configuration defect and stays on the reportable path. The
+        // merchandising statuses (product pulled, no eligible offer) are normal Play conditions and
+        // fall out of the per-sku matching below as OfferUnavailableBillingException.
+        unfetched
+            .firstOrNull { it.statusCode == UnfetchedProduct.StatusCode.INVALID_PRODUCT_ID_FORMAT }
+            ?.let { invalid ->
+                throw BillingClientException(
+                    BillingResult.newBuilder().apply {
+                        setResponseCode(BillingResponseCode.DEVELOPER_ERROR)
+                        setDebugMessage("Invalid product id format: ${invalid.productId} (${invalid.productType})")
+                    }.build()
+                )
             }
+
+        val returned = details.groupBy { it.productId to it.productType }
+        val requestedKeys = requested.map { it.id to it.playProductType }.toSet()
+        returned.keys
+            .filterNot { it in requestedKeys }
+            .forEach { (id, type) -> log(TAG, WARN) { "querySkus(): skipping unrequested product $id ($type)" } }
+
+        // Iterating the REQUEST (not the response) is what makes an omitted sku visible at all:
+        // walking the returned groups only ever visits what Play chose to send.
+        return requested.map { sku ->
+            val matches = returned[sku.id to sku.playProductType].orEmpty()
+            // Exactly one, never "the first of several": a duplicate row means we can't tell which
+            // one Play meant, and guessing would sell the user a different product.
+            val detail = matches.singleOrNull()
+            if (detail == null) {
+                log(TAG, WARN) {
+                    "querySkus(): expected exactly 1 detail for ${sku.print()}, got ${matches.size} of $details"
+                }
+                throw OfferUnavailableBillingException(sku, null)
+            }
+            SkuDetails(sku, detail)
+        }
     }
 
     suspend fun launchBillingFlow(activity: Activity, sku: Sku, targetOffer: Sku.Subscription.Offer?): BillingResult {
@@ -247,14 +453,31 @@ data class BillingConnection(
             requireNotNull(targetOffer) { "SUB skus require a target offer" }
         }
 
-        val data = querySkus(sku).single { it.sku == sku }
+        val skuDetails = querySkus(sku)
+        val data = skuDetails.singleOrNull { it.sku == sku }
+        if (data == null) {
+            log(TAG, WARN) { "launchBillingFlow(): no unique details for ${sku.print()} in $skuDetails" }
+            throw OfferUnavailableBillingException(sku, targetOffer)
+        }
 
         val params = BillingFlowParams.newBuilder().apply {
             val productDetail = BillingFlowParams.ProductDetailsParams.newBuilder().apply {
                 setProductDetails(data.details)
                 if (sku is Sku.Subscription && targetOffer != null) {
-                    val offer = data.details.subscriptionOfferDetails!!.single {
+                    // singleOrNull, not single: an absent offer (withheld/revoked) and an ambiguous
+                    // duplicate both mean we must not guess an offer token — the wrong one bills the
+                    // user at the wrong price.
+                    val offer = data.details.subscriptionOfferDetails?.singleOrNull {
                         targetOffer.matches(it)
+                    }
+                    if (offer == null) {
+                        log(TAG, WARN) {
+                            val available = data.details.subscriptionOfferDetails
+                                ?.map { "${it.basePlanId}/${it.offerId}" }
+                            "launchBillingFlow(): offer ${targetOffer.basePlanId}/${targetOffer.offerId} " +
+                                "unavailable for ${sku.print()}, available=$available"
+                        }
+                        throw OfferUnavailableBillingException(sku, targetOffer)
                     }
                     setOfferToken(offer.offerToken)
                 }
@@ -272,7 +495,14 @@ data class BillingConnection(
         log(TAG) {
             "launchBillingFlow(sku=$sku): code=${result.responseCode}, message=${result.debugMessage}"
         }
-        if (!result.isSuccess) throw BillingClientException(result)
+        if (!result.isSuccess) {
+            // Same merchandising state as at query time, just reported by the launch instead: the
+            // product/offer isn't purchasable, which is not a defect worth reporting.
+            if (result.responseCode == BillingResponseCode.ITEM_UNAVAILABLE) {
+                throw OfferUnavailableBillingException(sku, targetOffer)
+            }
+            throw BillingClientException(result)
+        }
 
         return result
     }
@@ -280,12 +510,30 @@ data class BillingConnection(
     companion object {
         val TAG: String = logTag("Upgrade", "Gplay", "Billing", "ClientConnection")
 
+        // Play's product-type string for one of our SKUs. Part of the match key: a product ID alone
+        // is not unique across product types.
+        private val Sku.playProductType: String
+            get() = when (type) {
+                Sku.Type.IAP -> BillingClient.ProductType.INAPP
+                Sku.Type.SUBSCRIPTION -> BillingClient.ProductType.SUBS
+            }
+
+        // Log-friendly rendering of the products Play refused to fetch (no purchase data involved).
+        private fun Collection<UnfetchedProduct>.printed(): String =
+            joinToString(prefix = "[", postfix = "]") { "${it.productId}(${it.productType})=${it.statusCode}" }
+
+        // Classifies event purchases by product type at ingestion, so a later per-type query can
+        // authoritatively supersede them. Unknown products stay untyped (cleared only by a
+        // complete refresh).
+        internal val DEFAULT_SKU_TYPE_RESOLVER: (String) -> Sku.Type? = { productId ->
+            OurSku.PRO_SKUS.singleOrNull { it.id == productId }?.type
+        }
+
         // Combines the two product-type query results: a purchase found by either type is
         // authoritative; an error is only propagated when nothing was found, so callers can tell
-        // "not owned" apart from "couldn't verify one product type". Treating any found purchase as
-        // authoritative is safe here because every product this app sells is a Pro SKU (see
-        // OurSku.PRO_SKUS) — there are no unrelated products whose presence could mask a failed
-        // query for the type that actually carries the entitlement. Pure and unit-tested.
+        // "not owned" apart from "couldn't verify one product type". Treating any found purchase
+        // as authoritative is safe because every product this app sells is a Pro SKU (see
+        // OurSku.PRO_SKUS). Pure and unit-tested.
         internal fun combinePurchaseResults(
             iap: Result<Collection<Purchase>>,
             sub: Result<Collection<Purchase>>,

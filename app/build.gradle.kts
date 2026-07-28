@@ -328,11 +328,12 @@ dependencies {
 
     testImplementation("android.arch.core:core-testing:1.1.1")
     testImplementation("org.robolectric:robolectric:4.14.1")
+    testImplementation("androidx.compose.ui:ui-test-junit4-android")
     debugImplementation("androidx.test:core-ktx:1.7.0")
 
 
-    "gplayImplementation"("com.android.billingclient:billing:8.0.0")
-    "gplayImplementation"("com.android.billingclient:billing-ktx:8.0.0")
+    "gplayImplementation"("com.android.billingclient:billing:8.3.0")
+    "gplayImplementation"("com.android.billingclient:billing-ktx:8.3.0")
 
     implementation("io.github.z4kn4fein:semver:3.0.0")
 

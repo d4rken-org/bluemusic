@@ -1,12 +1,11 @@
 package eu.darken.bluemusic.upgrade.core.billing.client
 
 import android.content.Context
+import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.BillingClient.BillingResponseCode
-import com.android.billingclient.api.BillingClient.newBuilder
 import com.android.billingclient.api.BillingClientStateListener
 import com.android.billingclient.api.BillingResult
 import com.android.billingclient.api.PendingPurchasesParams
-import com.android.billingclient.api.Purchase
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
@@ -15,61 +14,62 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import eu.darken.bluemusic.upgrade.core.billing.BillingException
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.retryWhen
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
+// A single connection attempt: emits one BillingConnection, stays open for its lifetime, and
+// closes with the exception on setup failure or disconnect. NO retry here — BillingManager's
+// connect loop owns all retry policy, so every wait stays interruptible by user demand (the old
+// nested retryWhen added up to ~30s of demand-blind delays before the manager ever saw a failure).
 @Singleton
 class BillingConnectionProvider @Inject constructor(
-    @param:ApplicationContext private val context: Context,
+    @ApplicationContext private val context: Context,
 ) {
 
-    private val provider: Flow<BillingConnection> = callbackFlow {
-        val purchaseEvents = MutableStateFlow<Pair<BillingResult, Collection<Purchase>?>?>(null)
-        val failureEvents = MutableStateFlow<BillingResult?>(null)
+    val connection: Flow<BillingConnection> = callbackFlow {
+        // The listener must exist before the client, the connection needs the client: bridge via
+        // this reference. onPurchasesUpdated can only fire for an ACTIVE connection, i.e. after
+        // setup finished and the reference was set — a null here would be a Play contract breach,
+        // and dropping such an event is the only sane response.
+        var connectionRef: BillingConnection? = null
 
-        val client = newBuilder(context).apply {
+        val client = BillingClient.newBuilder(context).apply {
             enablePendingPurchases(
                 PendingPurchasesParams.newBuilder().apply {
                     enableOneTimeProducts()
                 }.build()
             )
             setListener { result, purchases ->
-                if (result.isSuccess) {
-                    log(TAG) {
-                        "onPurchasesUpdated(code=${result.responseCode}, message=${result.debugMessage}, purchases=$purchases)"
-                    }
-                    purchaseEvents.value = result to purchases
-                } else {
-                    log(TAG, WARN) {
-                        "error: onPurchasesUpdated(code=${result.responseCode}, message=${result.debugMessage}, purchases=$purchases)"
-                    }
-                    // Failures are stored separately: async ITEM_ALREADY_OWNED drives the auto-restore
-                    // in UpgradeRepoGplay. A failure must not overwrite the last successful event —
-                    // the purchases combine would otherwise lose a fresh entitlement the query
-                    // snapshot doesn't contain yet.
-                    failureEvents.value = result
-                }
+                connectionRef?.onPurchasesUpdated(result, purchases)
+                    ?: log(TAG, WARN) { "onPurchasesUpdated(code=${result.responseCode}) before setup finished?!" }
             }
         }.build()
+
+        // A never-answering Play (no setup callback at all) must fail this attempt into the
+        // manager's backoff instead of hanging it outside any timeout.
+        val setupTimeout = launch {
+            delay(SETUP_TIMEOUT_MS)
+            close(BillingException("Billing client setup timed out"))
+        }
 
         log(TAG, VERBOSE) { "startConnection(...)" }
         client.startConnection(object : BillingClientStateListener {
             override fun onBillingSetupFinished(result: BillingResult) {
+                setupTimeout.cancel()
                 log(TAG, VERBOSE) {
                     "onBillingSetupFinished(code=${result.responseCode}, message=${result.debugMessage})"
                 }
 
                 when (result.responseCode) {
                     BillingResponseCode.OK -> {
-                        val connection = BillingConnection(client, purchaseEvents, failureEvents)
+                        val connection = BillingConnection(client)
+                        connectionRef = connection
                         trySendBlocking(connection)
                     }
 
@@ -89,44 +89,18 @@ class BillingConnectionProvider @Inject constructor(
         awaitClose {
             try {
                 log(TAG) { "Stopping billing client connection" }
+                // Complete the event channels first so consumers stop waiting on a dead connection.
+                connectionRef?.close()
                 client.endConnection()
             } catch (e: Exception) {
                 log(TAG, WARN) { "Couldn't end billing client connection: ${e.asLog()}" }
             }
         }
-    }
-
-    val connection: Flow<BillingConnection> = provider
-        .setupCommonEventHandlers(TAG) { "provider" }
-        .retryWhen { cause, attempt ->
-            log(TAG) { "Billing client connection error: ${cause.asLog()}" }
-
-            if (cause is CancellationException) {
-                log(TAG) { "BillingClient connection cancelled." }
-                return@retryWhen false
-            }
-
-            if (cause !is BillingException) {
-                log(TAG, WARN) { "Unknown exception type: $cause" }
-                return@retryWhen false
-            }
-
-            if (cause is BillingClientException && cause.result.responseCode == BillingResponseCode.BILLING_UNAVAILABLE) {
-                log(TAG) { "Got BILLING_UNAVAILABLE while trying to connect client." }
-                return@retryWhen false
-            }
-
-            if (attempt > 5) {
-                log(TAG, WARN) { "Reached attempt limit: $attempt due to $cause" }
-                return@retryWhen false
-            }
-
-            log(TAG) { "Will retry BillingClient connection... *sigh*" }
-            delay(2000 * attempt)
-            true
-        }
+    }.setupCommonEventHandlers(TAG) { "provider" }
 
     companion object {
+        private const val SETUP_TIMEOUT_MS = 30_000L
+
         val TAG: String = logTag("Upgrade", "Gplay", "Billing", "Client", "ConnectionProvider")
     }
 }

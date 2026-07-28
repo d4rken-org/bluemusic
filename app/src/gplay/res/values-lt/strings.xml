@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Privalumai</string>
     <string name="upgrade_screen_subscription_trial_action">Pradėti nemokamą 14 dienų bandomąjį laikotarpį</string>
     <string name="upgrade_screen_subscription_action">Prenumeruoti</string>
-    <string name="upgrade_screen_subscription_action_hint">Prenumerata kainuoja %s per metus.</string>
     <string name="upgrade_screen_iap_action">Vienkartinis pirkimas</string>
-    <string name="upgrade_screen_iap_action_hint">Vienkartinis pirkimas kainuoja %s.</string>
     <string name="upgrade_screen_offer_divider_or">arba</string>
-    <string name="upgrade_screen_offer_same_features">Tos pačios funkcijos, tik skirtingi kainodaros modeliai.</string>
     <string name="upgrade_screen_thanks_toast">Jūs geriausi! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Atkurti pirkimą</string>
     <string name="upgrade_screen_restore_banner_title">Jau įsigijote BVM Pro?</string>
     <string name="upgrade_screen_restore_banner_body">Atrodo, kad šiame įrenginyje jau atlikote atnaujinimą anksčiau. Atkurkite pirkinį, kad vėl jį atrakintumėte.</string>
-    <string name="upgrade_screen_restore_purchase_message">Jūsų naujinimas galioja įrenginiuose su ta pačia Google paskyra.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Trikčių šalinimo patarimai neatpažintiems naujinimams:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinchronizacija gali užtrukti. Pabandykite paleisti iš naujo, išvalyti Google Play talpyklą arba tiesiog palaukti.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Kelios paskyros gali supainioti Google Play. Atsijunkite nuo kitų paskyrų arba įdiekite per Google Play svetainę, kuri priverčia susieti su konkrečia paskyra.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Peržiūrėkite savo Pro būseną</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Sveikiname!</string>
-    <string name="upgrade_screen_owned_congrats_body">Jūs turite BVM Pro — dėkojame, kad remiate kūrimą. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">Vienkartinis pirkimas</string>
     <string name="upgrade_screen_owned_iap_body">Jūs visam laikui esate BVM Pro savininkas. Dėkojame už paramą ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Prenumerata</string>
     <string name="upgrade_screen_owned_sub_renewing_body">Jūsų BVM Pro prenumerata yra aktyvi ir bus atnaujinta.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">Jūsų BVM Pro prenumerata yra aktyvi, tačiau nebus atnaujinta. Ji galios iki dabartinio laikotarpio pabaigos.</string>
     <string name="upgrade_screen_owned_both_warning">Turite ir prenumeratą, ir vienkartinį pirkinį. Atšaukite prenumeratą „Google Play“, kad daugiau nebūtumėte apmokestinti.</string>
     <string name="upgrade_screen_manage_subscription">Tvarkyti prenumeratą</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Pereiti prie vienkartinio pirkinio</string>
-    <string name="upgrade_screen_switch_purchase_note">Tai atskiras vienkartinis pirkinys. Jis neatšaukia ir negrąžina pinigų už jūsų prenumeratą, todėl ją taip pat atšaukite „Google Play“. Abiem atvejais naudokite tą pačią „Google“ paskyrą.</string>
-    <string name="upgrade_screen_switch_locked_note">Bus prieinama, kai jūsų prenumerata nebebus atnaujinama. Atšaukite ją „Google Play“, kad galėtumėte pereiti — Pro funkcijas išlaikysite iki dabartinio laikotarpio pabaigos.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">Būsena atrodo klaidinga?</string>
     <string name="upgrade_screen_status_restore_body">Jei jūsų pirkinys čia nerodomas, pabandykite jį atkurti.</string>

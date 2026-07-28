@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Vantàgios</string>
     <string name="upgrade_screen_subscription_trial_action">Cumintza sa proa de badas de 14 dies</string>
     <string name="upgrade_screen_subscription_action">Abbòna·ti</string>
-    <string name="upgrade_screen_subscription_action_hint">S\'abbonamentu costat %s a s\'annu.</string>
     <string name="upgrade_screen_iap_action">Cùmperu de una borta</string>
-    <string name="upgrade_screen_iap_action_hint">Su cùmperu de una borta costat %s.</string>
     <string name="upgrade_screen_offer_divider_or">o</string>
-    <string name="upgrade_screen_offer_same_features">Istessas funtzionalitatzes, solu modelos de prezos differentes.</string>
     <string name="upgrade_screen_thanks_toast">Ses su mègius! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Recùpera su cùmperu</string>
     <string name="upgrade_screen_restore_banner_title">Giai abbadu BVM Pro?</string>
     <string name="upgrade_screen_restore_banner_body">Sembriat chi ti sias aggiornadu in custu dispositivu inantis. Recupera sa cumpra tua pro ischida ancora.</string>
-    <string name="upgrade_screen_restore_purchase_message">S\'agiornamentu tuo est vàlidu in dispositivos diferentes cun su matèssiu contu Google.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Cunsigiàdos pro risòlvere problemas cun agiornamentos non reconnotos:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Sa sincronizatzione de Play Store podet leare tempus. Proa a torrare a allùghere, limpiare sa cache de Google Play o simplesmente iseta.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Contos mùltiplos podent cunfùndere Google Play. Essi dae àteros contos o installa dae su situ web de Google Play, chi fortza assotziatziones cun unu contu ispetzìficu.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Controlla sa tua situatzione Pro</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Congratulatziones!</string>
-    <string name="upgrade_screen_owned_congrats_body">Tenes BVM Pro — gràtzias pro su suportu a su sviluppu. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">Cùmperu de una borta</string>
     <string name="upgrade_screen_owned_iap_body">Tenes BVM Pro pro semper. Gràtzias pro su suportu tuyu ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Subscritzione</string>
     <string name="upgrade_screen_owned_sub_renewing_body">Sa tua subscritzione BVM Pro est ativa e istada a s\'annovu.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">Sa tua subscritzione BVM Pro est ativa pero no s\'annovat. Rimànghet valida fintzas a sa fine de su periddu atuale.</string>
     <string name="upgrade_screen_owned_both_warning">Tenes una subscritzione e un\'acquistu unica. Annulla sa subscritzione in Google Play po no si ti cariegas de nou.</string>
     <string name="upgrade_screen_manage_subscription">Gestione sa subscritzione</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Passa a un\'acquistu unica</string>
-    <string name="upgrade_screen_switch_purchase_note">Custu est un\'acquistu unica separadu. No anulla ne refrundida sa tua subscritzione, potzo annulla mancamente sa cussa in Google Play. Imprea sa matessi contu Google pro ambentu.</string>
-    <string name="upgrade_screen_switch_locked_note">Disponibele una borta ca sa tua subscritzione no est prus istada a s\'annovu. Annulla in Google Play pro commutare — tenes Pro fintzas a sa fine de su periddu atuale.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">S\'istadu at bidu mali?</string>
     <string name="upgrade_screen_status_restore_body">Si s\'acquistu tuvu no at bidu issu, tenta a s\'istorare.</string>
