@@ -25,6 +25,8 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 import testhelpers.coroutine.TestDispatcherProvider
+import testhelpers.upgrade.FakeUpgradeInfo
+import testhelpers.upgrade.fakeUpgradeInfos
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class WidgetConfigurationViewModelTest : BaseTest() {
@@ -32,7 +34,7 @@ class WidgetConfigurationViewModelTest : BaseTest() {
     private val widgetId = 42
     private lateinit var context: Context
     private lateinit var upgradeRepo: UpgradeRepo
-    private lateinit var upgradeInfo: MutableStateFlow<FakeUpgradeInfo>
+    private lateinit var upgradeInfo: MutableStateFlow<UpgradeRepo.Info>
     private lateinit var appWidgetManager: AppWidgetManager
     private lateinit var storedOptions: Bundle
 
@@ -53,7 +55,7 @@ class WidgetConfigurationViewModelTest : BaseTest() {
         context = mockk(relaxed = true)
         storedOptions = mapBackedBundle()
 
-        upgradeInfo = MutableStateFlow(FakeUpgradeInfo(isUpgraded = true))
+        upgradeInfo = fakeUpgradeInfos(FakeUpgradeInfo(isPro = true))
         upgradeRepo = mockk(relaxed = true)
         every { upgradeRepo.upgradeInfo } returns upgradeInfo
 
@@ -210,11 +212,4 @@ class WidgetConfigurationViewModelTest : BaseTest() {
         }
         return bundle
     }
-
-    private data class FakeUpgradeInfo(
-        override val isUpgraded: Boolean,
-        override val type: UpgradeRepo.Type = UpgradeRepo.Type.FOSS,
-        override val upgradedAt: java.time.Instant? = null,
-        override val error: Throwable? = null,
-    ) : UpgradeRepo.Info
 }

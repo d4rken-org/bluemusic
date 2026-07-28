@@ -25,7 +25,7 @@ class UpgradeViewModel @Inject constructor(
 
     // Drives the supporter-status view (shown whenever already a supporter) vs the sponsor pitch.
     val state = upgradeRepo.upgradeInfo
-        .map { info -> State(isSupporter = info.isUpgraded, supporterSince = info.upgradedAt) }
+        .map { info -> State(isSupporter = info.isPro, supporterSince = info.upgradedAt) }
         .asStateFlow()
 
     data class State(

@@ -5,6 +5,7 @@ import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDeviceWrapper
 import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.datastore.DataStoreValue
+import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
@@ -18,16 +19,21 @@ import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.slot
+import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 import testhelpers.coroutine.TestDispatcherProvider
+import testhelpers.upgrade.FakeUpgradeInfo
+import testhelpers.upgrade.fakeUpgradeInfos
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class DashboardViewModelTest : BaseTest() {
@@ -36,6 +42,7 @@ class DashboardViewModelTest : BaseTest() {
     private lateinit var deviceRepo: DeviceRepo
     private lateinit var devicesFlow: MutableStateFlow<List<ManagedDevice>>
     private lateinit var upgradeRepo: UpgradeRepo
+    private lateinit var upgradeInfos: MutableStateFlow<UpgradeRepo.Info>
     private lateinit var bluetoothRepo: BluetoothRepo
     private lateinit var generalSettings: GeneralSettings
     private lateinit var devicesSettings: DevicesSettings
@@ -62,14 +69,8 @@ class DashboardViewModelTest : BaseTest() {
         devicesFlow = MutableStateFlow(emptyList())
         every { deviceRepo.devices } returns devicesFlow
 
-        every { upgradeRepo.upgradeInfo } returns MutableStateFlow(
-            object : UpgradeRepo.Info {
-                override val isUpgraded = false
-                override val type = UpgradeRepo.Type.FOSS
-                override val upgradedAt: java.time.Instant? = null
-                override val error: Throwable? = null
-            }
-        )
+        upgradeInfos = fakeUpgradeInfos()
+        every { upgradeRepo.upgradeInfo } returns upgradeInfos
         every { bluetoothRepo.state } returns MutableStateFlow(
             BluetoothRepo.State(isEnabled = true, hasPermission = true, devices = emptySet())
         )
@@ -110,7 +111,7 @@ class DashboardViewModelTest : BaseTest() {
         return mock
     }
 
-    private fun viewModel() = DashboardViewModel(
+    private fun TestScope.viewModel() = DashboardViewModel(
         permissionHelper = permissionHelper,
         deviceRepo = deviceRepo,
         volumeModeTool = mockk(relaxed = true),
@@ -118,7 +119,7 @@ class DashboardViewModelTest : BaseTest() {
         bluetoothSource = bluetoothRepo,
         generalSettings = generalSettings,
         devicesSettings = devicesSettings,
-        dispatcherProvider = TestDispatcherProvider(UnconfinedTestDispatcher()),
+        dispatcherProvider = TestDispatcherProvider(UnconfinedTestDispatcher(testScheduler)),
         navCtrl = navCtrl,
         appRepo = appRepo,
     )
@@ -185,6 +186,33 @@ class DashboardViewModelTest : BaseTest() {
         viewModel().state.filterNotNull().first()
         needsOverlaySlot.captured shouldBe true
     }
+
+    @Test
+    fun `upgrade icon tap routes a settled non-pro user to the acquisition screen`() =
+        runTest(UnconfinedTestDispatcher()) {
+            upgradeInfos.value = FakeUpgradeInfo(isPro = false, isSettled = true)
+
+            viewModel().onUpgradeClicked()
+            advanceUntilIdle()
+
+            verify { navCtrl.goTo(Nav.Main.Upgrade(manage = false), any(), any()) }
+        }
+
+    @Test
+    fun `upgrade icon tap waits out the unsettled window and routes a pro user to manage`() =
+        runTest(UnconfinedTestDispatcher()) {
+            upgradeInfos.value = FakeUpgradeInfo(isPro = false, isSettled = false)
+
+            val vm = viewModel()
+            vm.onUpgradeClicked()
+            // Still gated: nothing decided while billing hasn't settled.
+            verify(exactly = 0) { navCtrl.goTo(any(), any(), any()) }
+
+            upgradeInfos.value = FakeUpgradeInfo(isPro = true, isSettled = true)
+            advanceUntilIdle()
+
+            verify { navCtrl.goTo(Nav.Main.Upgrade(manage = true), any(), any()) }
+        }
 
     @Test
     fun `device with showHomeScreen flags hasDevicesNeedingOverlay = true`() = runTest(UnconfinedTestDispatcher()) {

@@ -15,7 +15,7 @@ import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
-import eu.darken.bluemusic.common.upgrade.isPro
+import eu.darken.bluemusic.common.upgrade.isProForUi
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
@@ -72,7 +72,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
         
         State(
             device = device,
-            isProVersion = upgradeInfo.isUpgraded,
+            isProVersion = upgradeInfo.isPro,
             launchAppLabel = launchAppLabel,
             launchAppLabels = launchAppLabels
         )
@@ -159,7 +159,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnLaunchAppClicked -> {
-                if (!upgradeRepo.isPro()) {
+                if (!upgradeRepo.isProForUi()) {
                     events.emit(ConfigEvent.RequiresPro)
                 } else {
                     navTo(Nav.Main.AppSelection(deviceAddress))
@@ -176,7 +176,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnToggleAutoPlay -> {
-                if (!upgradeRepo.isPro()) {
+                if (!upgradeRepo.isProForUi()) {
                     events.emit(ConfigEvent.RequiresPro)
                 } else {
                     deviceRepo.updateDevice(deviceAddress) { oldConfig ->
@@ -186,7 +186,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnEditAutoplayKeycodesClicked -> {
-                if (!upgradeRepo.isPro()) {
+                if (!upgradeRepo.isProForUi()) {
                     events.emit(ConfigEvent.RequiresPro)
                 } else {
                     events.emit(ConfigEvent.ShowAutoplayKeycodesDialog)
@@ -212,7 +212,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnToggleShowHomeScreen -> {
-                if (!upgradeRepo.isPro()) {
+                if (!upgradeRepo.isProForUi()) {
                     events.emit(ConfigEvent.RequiresPro)
                 } else {
                     deviceRepo.updateDevice(deviceAddress) { oldConfig ->
@@ -237,7 +237,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnToggleVolumeRateLimiter -> {
-                if (!upgradeRepo.isPro()) {
+                if (!upgradeRepo.isProForUi()) {
                     events.emit(ConfigEvent.RequiresPro)
                 } else {
                     deviceRepo.updateDevice(deviceAddress) { oldConfig ->
@@ -328,7 +328,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
             }
 
             is ConfigAction.OnEditConnectionAlertClicked -> {
-                if (!upgradeRepo.isPro()) {
+                if (!upgradeRepo.isProForUi()) {
                     events.emit(ConfigEvent.RequiresPro)
                 } else {
                     val device = currentState().device

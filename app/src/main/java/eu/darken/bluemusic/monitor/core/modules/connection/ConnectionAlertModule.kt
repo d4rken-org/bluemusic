@@ -8,7 +8,7 @@ import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
-import eu.darken.bluemusic.common.upgrade.isPro
+import eu.darken.bluemusic.common.upgrade.isProSettled
 import eu.darken.bluemusic.monitor.core.alert.AlertTool
 import eu.darken.bluemusic.monitor.core.alert.AlertType
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.time.Duration.Companion.seconds
 
 @Singleton
 class ConnectionAlertModule @Inject constructor(
@@ -42,7 +43,10 @@ class ConnectionAlertModule @Inject constructor(
         if (!isApplicable(event)) return
         val device = event.device
 
-        if (!upgradeRepo.isPro()) {
+        // Background gate on a device-connect event, i.e. exactly when a cold start may still be
+        // waiting on Play. A raw isPro() read would silently suppress a paying user's alert, so this
+        // reconciles first — bounded, so the alert is delayed at most this long in the unsettled window.
+        if (!upgradeRepo.isProSettled(timeout = 3.seconds)) {
             log(TAG) { "Skipping connection alert - requires Pro version" }
             return
         }

@@ -48,7 +48,7 @@ class VolumeLockGlanceWidget : GlanceAppWidget() {
             ep = EntryPointAccessors.fromApplication(context, WidgetEntryPoint::class.java)
             appWidgetId = GlanceAppWidgetManager(context).getAppWidgetId(id)
             log(TAG, VERBOSE) { "provideGlance(appWidgetId=$appWidgetId)" }
-            initialIsPro = ep.upgradeRepo().upgradeInfo.first().isUpgraded
+            initialIsPro = ep.upgradeRepo().upgradeInfo.first().isPro
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
@@ -75,7 +75,7 @@ class VolumeLockGlanceWidget : GlanceAppWidget() {
             )
             val upgradeInfo by ep.upgradeRepo().upgradeInfo.collectAsState(initial = null)
 
-            val isPro = upgradeInfo?.isUpgraded ?: initialIsPro
+            val isPro = upgradeInfo?.isPro ?: initialIsPro
 
             val theme = try {
                 WidgetTheme.fromBundle(

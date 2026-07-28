@@ -32,7 +32,7 @@ class SettingsViewModel @Inject constructor(
         .map { upgradeInfo ->
             State(
                 versionText = BuildConfigWrap.VERSION_DESCRIPTION,
-                isUpgraded = upgradeInfo.isUpgraded
+                isUpgraded = upgradeInfo.isPro
             )
         }
         .asStateFlow()

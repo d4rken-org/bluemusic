@@ -28,6 +28,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flow
@@ -53,7 +54,9 @@ class UpgradeRepoGplay @Inject constructor(
     private val billingCache: BillingCache,
 ) : UpgradeRepo {
 
-    override val mainWebsite: String = SITE
+    override val storeSite: String = STORE_SITE
+    override val upgradeSite: String = UPGRADE_SITE
+    override val betaSite: String = BETA_SITE
 
     // Counter, not a flag: overlapping already-owned recoveries (buy taps racing the UI disable)
     // must keep the busy signal up until the LAST one finishes.
@@ -134,7 +137,7 @@ class UpgradeRepoGplay @Inject constructor(
         }
     }
 
-    override val upgradeInfo: Flow<Info> = billingManager.billingData
+    private val upgradeInfoRaw: Flow<Info> = billingManager.billingData
         .map<BillingData, BillingData?> { it }
         .onStart { emit(null) }
         .setupCommonEventHandlers(TAG) { "upgradeInfo1" }
@@ -192,6 +195,14 @@ class UpgradeRepoGplay @Inject constructor(
         .onStart { emit(false) }
         .distinctUntilChanged()
 
+    // Settledness rides every Info emission (canonical UpgradeRepo.Info shape) so it can never be
+    // observed out of step with the ownership data it describes. Until the core port lands it is
+    // still derived from the repo-level settle signal above.
+    override val upgradeInfo: Flow<Info> = combine(
+        upgradeInfoRaw,
+        isSettled,
+    ) { info, settled -> info.copy(isSettled = settled) }
+
     // Fresh SUBS-only Play read for the fail-closed IAP switch gate. Errors propagate (see
     // BillingManager.querySubscriptions) so the caller fails closed on any failure.
     suspend fun queryCurrentSubscriptions(): Collection<Purchase> = billingManager.querySubscriptions()
@@ -204,7 +215,7 @@ class UpgradeRepoGplay @Inject constructor(
     ) {
         log(TAG) { "launchBillingFlow($activity,$sku)" }
         // AppScope on purpose: the purchase flow and the already-owned recovery below must survive
-        // the upgrade screen being closed; the reactive isUpgraded emission unlocks the app either way.
+        // the upgrade screen being closed; the reactive isPro emission unlocks the app either way.
         scope.launch {
             try {
                 billingManager.startIapFlow(activity, sku, offer)
@@ -229,7 +240,7 @@ class UpgradeRepoGplay @Inject constructor(
                         } finally {
                             autoRestoring.update { it - 1 }
                         }
-                        if (restored?.isUpgraded != true) {
+                        if (restored?.isPro != true) {
                             // Couldn't reconcile the entitlement (pending purchase, account mismatch,
                             // Play quirk) — fall back to the already-owned dialog with restore tips.
                             onError(e)
@@ -267,8 +278,9 @@ class UpgradeRepoGplay @Inject constructor(
     // propagate so the caller can distinguish "not owned" from "Play unavailable".
     suspend fun restorePurchaseNow(): Info {
         log(TAG) { "restorePurchaseNow()" }
+        // Both outcomes below are the result of a completed Play round-trip, so they are settled.
         return try {
-            billingManager.refresh().toUpgradeInfo()
+            billingManager.refresh().toUpgradeInfo().copy(isSettled = true)
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
@@ -278,7 +290,7 @@ class UpgradeRepoGplay @Inject constructor(
             val lastProStateAt = readLastProStateAtSafe()
             if ((System.currentTimeMillis() - lastProStateAt) < graceWindowMs()) {
                 log(TAG, VERBOSE) { "restore hit a Play error but we were Pro recently -> grace" }
-                Info(gracePeriod = true, billingData = null)
+                Info(gracePeriod = true, billingData = null, isSettled = true)
             } else {
                 throw e
             }
@@ -338,6 +350,7 @@ class UpgradeRepoGplay @Inject constructor(
         private val gracePeriod: Boolean = false,
         private val billingData: BillingData?,
         override val error: Throwable? = null,
+        override val isSettled: Boolean = false,
     ) : UpgradeRepo.Info {
 
         override val type: UpgradeRepo.Type = UpgradeRepo.Type.GPLAY
@@ -358,7 +371,7 @@ class UpgradeRepoGplay @Inject constructor(
             ?.flatten()
             ?: emptySet()
 
-        override val isUpgraded: Boolean = upgrades.isNotEmpty() || gracePeriod
+        override val isPro: Boolean = upgrades.isNotEmpty() || gracePeriod
 
         override val upgradedAt: Instant? = upgrades
             .maxByOrNull { it.purchase.purchaseTime }
@@ -367,7 +380,9 @@ class UpgradeRepoGplay @Inject constructor(
 
 
     companion object {
-        private const val SITE = "https://play.google.com/store/apps/details?id=eu.darken.bluemusic"
+        private const val STORE_SITE = "https://play.google.com/store/apps/details?id=eu.darken.bluemusic"
+        private const val UPGRADE_SITE = "https://play.google.com/store/apps/details?id=eu.darken.bluemusic"
+        private const val BETA_SITE = "https://play.google.com/apps/testing/eu.darken.bluemusic"
 
         // Keep paying users Pro through transient empty/failed Play Billing responses. A permanent
         // one-time purchase should almost never be dropped on a hiccup, so it gets a long window; a
