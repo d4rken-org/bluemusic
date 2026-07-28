@@ -11,9 +11,12 @@ import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
+import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.DynamicStateFlow
+import eu.darken.bluemusic.common.upgrade.UpgradeDiagnostics
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
@@ -32,6 +35,7 @@ class RecorderModule @Inject constructor(
     @AppScope private val appScope: CoroutineScope,
     private val dispatcherProvider: DispatcherProvider,
     private val blueMusicId: BlueMusicId,
+    private val upgradeDiagnostics: UpgradeDiagnostics,
 ) {
 
     @Volatile
@@ -78,6 +82,17 @@ class RecorderModule @Inject constructor(
             }
             log(TAG, INFO) { "Build.Fingerprint: ${Build.FINGERPRINT}" }
             log(TAG, INFO) { "BuildConfig.Versions: ${BuildConfigWrap.VERSION_DESCRIPTION}" }
+
+            try {
+                // Billing complaints usually arrive as debug logs: having the local entitlement
+                // record in the header saves a support round-trip.
+                upgradeDiagnostics.debugInfo()?.let { log(TAG, INFO) { "Upgrade diagnostics: $it" } }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                // Diagnostics only — a broken read must not stop the recorder from starting.
+                log(TAG, WARN) { "Upgrade diagnostics unavailable: ${e.asLog()}" }
+            }
 
             val startedAt = if (existingDir != null) {
                 existingDir.lastModified()
