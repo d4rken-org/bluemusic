@@ -20,4 +20,12 @@
     <string name="upgrade_screen_sponsor_action_hint">पर्याय म्हणजे अॅड, अॅनालिटिक्स आणि Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">ओपन-सोर्स विकासाला पाठिंबा दिल्याबद्दल धन्यवाद ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">आधीच माघारी? तुमच्या सहयोगाने BVM जिवंत राहते!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">आपली समर्थक स्थिती पहा</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">आपल्या समर्थनाबद्दल धन्यवाद</string>
+    <string name="upgrade_screen_supporter_status_body">ओपन-सोर्स विकासाला समर्थन देऊन आपण सर्व अतिरिक्त वैशिष्ट्ये अनलॉक केली आहेत.</string>
+    <string name="upgrade_screen_supporter_since">%s पासून समर्थक</string>
+    <string name="upgrade_screen_supporter_visit_action">GitHub Sponsors ला भेट द्या</string>
 </resources>

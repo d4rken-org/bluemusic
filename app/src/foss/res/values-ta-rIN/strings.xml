@@ -20,4 +20,12 @@
     <string name="upgrade_screen_sponsor_action_hint">மாற்று விளம்பரங்கள், பகுப்பாய்வுகள் மற்றும் Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">திறந்த மூல மேம்பாட்டை ஆதரித்ததற்கு நன்றி ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">ஏற்கனவே திரும்பிவிட்டீர்களா? உங்கள் மொத்தம் BVMஐ உயிரோடு வைக்கிறது!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">உங்கள் ஆதரவாளர் நிலையைக் காணவும்</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">உங்கள் ஆதரவுக்கு நன்றி</string>
+    <string name="upgrade_screen_supporter_status_body">திறந்த மூல மென்பொருள் மேம்பாட்டை ஆதரிப்பதன் மூலம் நீங்கள் அனைத்து கூடுதல் அம்சங்களையும் திறக்க முடிந்துவிட்டீர்கள்.</string>
+    <string name="upgrade_screen_supporter_since">%s முதல் ஆதரவாளர்</string>
+    <string name="upgrade_screen_supporter_visit_action">GitHub Sponsors ஐப் பார்வையிடவும்</string>
 </resources>

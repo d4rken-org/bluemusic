@@ -1,3 +1,13 @@
+---
+description: Release flow, version bumping, and tag validation
+paths:
+  - "version.properties"
+  - "VERSION"
+  - "tools/release/**"
+  - ".github/workflows/release-*.yml"
+  - "buildSrc/src/main/java/ProjectConfigPlugin.kt"
+---
+
 # Release
 
 Operator-facing release docs: see `.github/RELEASING.md`.

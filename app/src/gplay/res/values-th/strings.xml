@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">การสมัครสมาชิกค่าใช้จ่าย %s ต่อปี</string>
     <string name="upgrade_screen_iap_action">ซื้อครั้งเดียว</string>
     <string name="upgrade_screen_iap_action_hint">การซื้อครั้งเดียวค่าใช้จ่าย %s</string>
+    <string name="upgrade_screen_offer_divider_or">หรือ</string>
+    <string name="upgrade_screen_offer_same_features">คุณสมบัติเดียวกัน แต่มีรูปแบบการจ่ายเงินที่แตกต่างกัน</string>
     <string name="upgrade_screen_thanks_toast">คุณเป็นคนที่ดีที่สุด! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">กู้คืนการซื้อ</string>
+    <string name="upgrade_screen_restore_banner_title">ซื้อ BVM Pro แล้วหรือ</string>
+    <string name="upgrade_screen_restore_banner_body">ดูเหมือนว่าคุณได้อัปเกรดบนอุปกรณ์นี้มาแล้ว คืนค่าการซื้อของคุณเพื่อปลดล็อกอีกครั้ง</string>
     <string name="upgrade_screen_restore_purchase_message">การอัปเกรดของคุณใช้ได้กับอุปกรณ์ต่างๆ ในบัญชี Google เดียวกัน</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">เคล็ดลับการแก้ไขปัญหาสำหรับการอัปเกรดที่ไม่ได้รับการยอมรับ:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">การซิงค์ Play Store อาจใช้เวลา ลองรีบูต ล้างแคช Google Play หรือรอสักครู่</string>
     <string name="upgrade_screen_restore_multiaccount_hint">บัญชีหลายบัญชีอาจทำให้ Google Play สับสน ออกจากบัญชีอื่นหรือติดตั้งผ่านเว็บไซต์ Google Play ซึ่งบังคับให้เชื่อมโยงกับบัญชีเฉพาะ</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">ดูสถานะ Pro ของคุณ</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">ยินดีด้วย</string>
+    <string name="upgrade_screen_owned_congrats_body">คุณได้ BVM Pro แล้ว — ขอบคุณที่สนับสนุนการพัฒนา ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">ซื้อครั้งเดียว</string>
+    <string name="upgrade_screen_owned_iap_body">คุณเป็นเจ้าของ BVM Pro ตลอดไป ขอบคุณสำหรับการสนับสนุนของคุณ ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">สมัครสมาชิก</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">การสมัครสมาชิก BVM Pro ของคุณใช้งานอยู่และจะต่ออายุโดยอัตโนมัติ</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">การสมัครสมาชิก BVM Pro ของคุณใช้งานอยู่แต่จะไม่ต่ออายุ ยังใช้ได้จนสิ้นสุดช่วงเวลาปัจจุบัน</string>
+    <string name="upgrade_screen_owned_both_warning">คุณมีทั้งการสมัครสมาชิกและการซื้อครั้งเดียว ยกเลิกการสมัครสมาชิกใน Google Play เพื่อไม่ให้ถูกเรียกเก็บเงินอีกครั้ง</string>
+    <string name="upgrade_screen_manage_subscription">จัดการการสมัครสมาชิก</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">เปลี่ยนไปใช้การซื้อครั้งเดียว</string>
+    <string name="upgrade_screen_switch_purchase_note">นี่คือการซื้อครั้งเดียวแยกต่างหาก ไม่ได้ยกเลิกหรือคืนเงินการสมัครสมาชิกของคุณ ต้องยกเลิกใน Google Play ด้วย ใช้บัญชี Google เดียวกันสำหรับทั้งสอง</string>
+    <string name="upgrade_screen_switch_locked_note">พร้อมใช้งานเมื่อการสมัครสมาชิกของคุณไม่ได้ตั้งค่าให้ต่ออายุอัตโนมัติอีกต่อไป ยกเลิกใน Google Play เพื่อเปลี่ยน — คุณจะเก็บ Pro ไว้จนกว่าช่วงเวลาปัจจุบันจะสิ้นสุด</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">สถานะดูเหมือนผิดหรือ</string>
+    <string name="upgrade_screen_status_restore_body">หากการซื้อของคุณไม่ปรากฏที่นี่ ลองคืนค่าเดิม</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">กำลังยืนยันการซื้อของคุณ</string>
+    <string name="upgrade_screen_grace_body_short">กรุณารอสักครู่ — เรากำลังตรวจสอบการซื้อของคุณกับ Google Play</string>
+    <string name="upgrade_screen_grace_body">เราไม่สามารถยืนยันการซื้อของคุณกับ Google Play ได้ ลองกู้คืนการซื้อ หรือตรวจสอบว่าคุณลงชื่อเข้าใช้ด้วยบัญชีที่ถูกต้อง</string>
+    <string name="upgrade_screen_retry_action">ลองใหม่</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">การสมัครสมาชิกยังใช้งานอยู่</string>
+    <string name="upgrade_screen_sub_still_renewing_message">การสมัครสมาชิกของคุณยังตั้งค่าให้ต่ออายุ ยกเลิกการสมัครใน Google Play ก่อน จากนั้นกลับมาซื้อแบบครั้งเดียว — ด้วยวิธีนี้คุณจะไม่ถูกเรียกเก็บเงินสองครั้ง</string>
+    <string name="upgrade_screen_sub_check_failed_message">เราไม่สามารถตรวจสอบสถานะการสมัครสมาชิกของคุณได้ โปรดตรวจสอบการเชื่อมต่อและลองใหม่</string>
+    <string name="upgrades_gplay_already_owned_error_title">ซื้อไปแล้ว</string>
+    <string name="upgrades_gplay_already_owned_error_description">ใช้ตัวเลือก \"กู้คืนการซื้อ\" เพื่อกู้คืนการซื้อของคุณ หากปัญหายังคงเกิดขึ้น ให้ลองล้างแคชของ Google Play และรีสตาร์ตอุปกรณ์ของคุณ</string>
+    <string name="upgrades_gplay_internal_error_title">ข้อผิดพลาด Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">เกิดข้อผิดพลาดภายในของ Google Play โปรดลองดำเนินการต่อไปนี้:\n\n• รีสตาร์ตอุปกรณ์ของคุณ\n• ล้างแคช Google Play Store\n• ลองใหม่ในภายหลัง</string>
+    <string name="upgrades_gplay_network_error_title">ข้อผิดพลาดในการเชื่อมต่อ</string>
+    <string name="upgrades_gplay_network_error_description">ไม่สามารถเชื่อมต่อกับ Google Play โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณและลองอีกครั้ง</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ไม่พร้อมใช้งาน</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ไม่สามารถเชื่อมต่อกับ Google Play ได้ Google Play ได้รับการติดตั้งและอัปเดตแล้วหรือไม่? บัญชี Google ของคุณเข้าสู่ระบบแล้วหรือไม่? ลองล้างแคชของแอป Google Play และรีบูตอุปกรณ์ของคุณ</string>
     <string name="upgrades_no_purchases_found_check_account">ไม่พบการซื้อ คุณใช้บัญชีที่ถูกต้องหรือไม่?</string>

@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Падпіска каштуе %s у год.</string>
     <string name="upgrade_screen_iap_action">Аднаразовая пакупка</string>
     <string name="upgrade_screen_iap_action_hint">Аднаразовая пакупка каштуе %s.</string>
+    <string name="upgrade_screen_offer_divider_or">або</string>
+    <string name="upgrade_screen_offer_same_features">Тыя ж функцыі, проста іншыя мадэлі коштаў.</string>
     <string name="upgrade_screen_thanks_toast">Вы найлепшы! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Аднавіць пакупку</string>
+    <string name="upgrade_screen_restore_banner_title">Ужо купілі BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Падобна, вы ўжо абнаўляліся на гэтай прыладзе раней. Аднавіце пакупку, каб разблакіраваць яе зноў.</string>
     <string name="upgrade_screen_restore_purchase_message">Ваша абнаўленне дзейнічае на ўсіх прыладах з аднолькавым уліковым запісам Google.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Парады па вырашэнню непаладак пры нераспазнаных абнаўленнях:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Сінхранізацыя з Play Store можа заняць пэўны час. Паспрабуйце перазагрузіцца, ачысціць кэш Google Play або проста пачакаць.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Некалькі ўліковых запісаў могуць заблытаць Google Play. Выйдзіце з іншых уліковых запісаў або ўсталюйце праз вэб-сайт Google Play, які вызначае сувязь з пэўным уліковым запісам.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Праглядзець ваш Pro-статус</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Віншуем!</string>
+    <string name="upgrade_screen_owned_congrats_body">Вы атрымалі BVM Pro — дзякуй за падтрымку распрацоўкі. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Аднаразовая пакупка</string>
+    <string name="upgrade_screen_owned_iap_body">Вы валодаеце BVM Pro назаўжды. Дзякуй за вашу падтрымку ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Падпіска</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Ваша падпіска BVM Pro актыўная і будзе аднаўляцца.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Ваша падпіска BVM Pro актыўная, але не будзе аднаўляцца. Яна застаецца дзейснай да канца бягучага перыяду.</string>
+    <string name="upgrade_screen_owned_both_warning">У вас ёсць і падпіска, і аднаразовая пакупка. Скасуйце падпіску ў Google Play, каб з вас не спаганялі плату зноў.</string>
+    <string name="upgrade_screen_manage_subscription">Кіраваць падпіскай</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Перайсці на аднаразовую пакупку</string>
+    <string name="upgrade_screen_switch_purchase_note">Гэта асобная аднаразовая пакупка. Яна не скасоўвае і не вяртае сродкі за вашу падпіску, таму скасуйце яе таксама ў Google Play. Выкарыстоўвайце адзін і той жа акаунт Google для абадвух.</string>
+    <string name="upgrade_screen_switch_locked_note">Даступна, калі ваша падпіска больш не будзе аднаўляцца. Скасуйце яе ў Google Play, каб пераключыцца — вы захаваеце Pro да канца бягучага перыяду.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Статус выглядае няправільна?</string>
+    <string name="upgrade_screen_status_restore_body">Калі ваша пакупка тут не адлюстроўваецца, паспрабуйце яе аднавіць.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Пацвярджэнне вашай пакупкі</string>
+    <string name="upgrade_screen_grace_body_short">Крыху пачакайце — мы паўторна правераем вашу пакупку чараз Google Play.</string>
+    <string name="upgrade_screen_grace_body">Мы ўсё яшчэ не можам пацвердзіць вашу пакупку чараз Google Play. Паспрабуйце аднавіць яе або праверце, што вы ўвайшлі ў патрэбны акаунт.</string>
+    <string name="upgrade_screen_retry_action">Паўтарыць</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Падпіска ўсё яшчэ актыўная</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Ваша падпіска ўсё яшчэ будзе аднаўляцца. Скасуйце яе ў Google Play спачатку, потым вярніцеся, каб купіць аднаразовую пакупку — такім чынам з вас не спагоняць плату двайчы.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Мы не змаглі праверыць статус вашай падпіскі. Праверце злучэнне і паспрабуйце зноў.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Ужо куплена</string>
+    <string name="upgrades_gplay_already_owned_error_description">Скарыстайцеся апцыяй «Аднавіць пакупку», каб аднавіць вашу пакупку. Калі праблема застаецца, паспрабуйце ачысціць кэш Google Play і перазапусціць прыладу.</string>
+    <string name="upgrades_gplay_internal_error_title">Памылка Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Адбылася ўнутраняя памылка Google Play. Паспрабуйце наступнае:\n\n• Перазапусціце прыладу\n• Ачысціце кэш Google Play Store\n• Паспрабуйце зноў пазней</string>
+    <string name="upgrades_gplay_network_error_title">Памылка злучэння</string>
+    <string name="upgrades_gplay_network_error_description">Не ўдалося падключыцца да Google Play. Праверце інтэрнэт-злучэнне і паспрабуйце зноў.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play недаступны</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager не можа падключыцца да Google Play. Ці устанаўлены і абнаўлены Google Play? Ці ўвойдзены ваш акаўнт Google? Спрабуйце ачысціць кэш Google Play і перазагрузіць прыладу.</string>
     <string name="upgrades_no_purchases_found_check_account">Пакупак не знойдзена. Вы выкарыстоўваеце правільны ўліковы запіс?</string>

@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Die inskrywing kos %s per jaar.</string>
     <string name="upgrade_screen_iap_action">Eenmalige aankoop</string>
     <string name="upgrade_screen_iap_action_hint">Die eenmalige aankoop kos %s.</string>
+    <string name="upgrade_screen_offer_divider_or">of</string>
+    <string name="upgrade_screen_offer_same_features">Dieselfde kenmerke, net verskillende prysmodelle.</string>
     <string name="upgrade_screen_thanks_toast">Jy is die beste! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Herstel aankoop</string>
+    <string name="upgrade_screen_restore_banner_title">Reeds BVM Pro gekoop?</string>
+    <string name="upgrade_screen_restore_banner_body">Dit lyk of jy voorheen op hierdie toestel opgegradeer het. Herstel jou aankoop om dit weer te ontsluit.</string>
     <string name="upgrade_screen_restore_purchase_message">Jou opgradering is geldig oor toestelle op dieselfde Google-rekening.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Foutherstel wenke vir onerkende opgraderings:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinkronisasie kan tyd neem. Probeer herlaai, maak Google Play kas skoon of wag net.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Veelvuldige rekeninge kan Google Play verwar. Meld af van ander rekeninge of installeer deur die Google Play webwerf, wat assosiasies met \'n spesifieke rekening dwing.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Bekyk jou Pro-status</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Geluk!</string>
+    <string name="upgrade_screen_owned_congrats_body">Jy het BVM Pro — dankie dat jy ontwikkeling ondersteun. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Eenmalige aankoop</string>
+    <string name="upgrade_screen_owned_iap_body">Jy besit BVM Pro vir altyd. Dankie vir jou ondersteuning ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Subskripsie</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Jou BVM Pro-subskripsie is aktief en gestel om te hernu.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Jou BVM Pro-subskripsie is aktief, maar sal nie hernu word nie. Dit bly geldig tot die einde van die huidige tydperk.</string>
+    <string name="upgrade_screen_owned_both_warning">Jy het beide \'n subskripsie en die eenmalige aankoop. Kanselleer die subskripsie in Google Play sodat jy nie weer gehef word nie.</string>
+    <string name="upgrade_screen_manage_subscription">Bestuur subskripsie</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Wissel na \'n eenmalige aankoop</string>
+    <string name="upgrade_screen_switch_purchase_note">Dit is \'n aparte eenmalige aankoop. Dit kanselleer of terugbetaal nie jou subskripsie nie, so kanselleer dit ook in Google Play. Gebruik dieselfde Google-rekening vir albei.</string>
+    <string name="upgrade_screen_switch_locked_note">Beskikbaar sodra jou subskripsie nie meer gestel is om te hernu nie. Kanselleer dit in Google Play om te wissel — jy behou Pro tot die huidige tydperk eindig.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Lyk die status verkeerd?</string>
+    <string name="upgrade_screen_status_restore_body">As jou aankoop nie hier verskyn nie, probeer dit herstel.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Bevestig jou aankoop</string>
+    <string name="upgrade_screen_grace_body_short">Hou vas — ons is besig om jou aankoop dubbel te bevestig by Google Play.</string>
+    <string name="upgrade_screen_grace_body">Ons kan steeds nie jou aankoop by Google Play bevestig nie. Probeer dit herstel, of maak seker jy is aangemeld met die regte rekening.</string>
+    <string name="upgrade_screen_retry_action">Probeer weer</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Subskripsie steeds aktief</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Jou subskripsie is steeds gestel om te hernu. Kanselleer dit eers in Google Play, kom dan terug om die eenmalige aankoop te koop — so word jy nie twee keer gehef nie.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Ons kon nie jou subskripsiestatus bevestig nie. Kyk asseblief jou verbinding en probeer weer.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Reeds gekoop</string>
+    <string name="upgrades_gplay_already_owned_error_description">Gebruik die \"Herstel aankoop\"-opsie om jou aankoop te herstel. As die probleem voortduur, probeer om die Google Play-kas skoon te maak en jou toestel te herbegin.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play-fout</string>
+    <string name="upgrades_gplay_internal_error_description">\'n Interne Google Play-fout het voorgekom. Probeer asseblief die volgende:\n\n• Herbegin jou toestel\n• Maak die Google Play Store-kas skoon\n• Probeer later weer</string>
+    <string name="upgrades_gplay_network_error_title">Verbindingsfout</string>
+    <string name="upgrades_gplay_network_error_description">Kan nie aan Google Play koppel nie. Kyk asseblief jou internetverbinding en probeer weer.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play is nie beskikbaar nie</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager kan nie aan Google Play koppel nie. Is Google Play geïnstalleer en opgedateer? Is jou Google-rekening aangemeld? Probeer om die kas van die Google Play-toepassing skoon te maak en jou toestel herlaai.</string>
     <string name="upgrades_no_purchases_found_check_account">Geen aankope gevind nie. Gebruik jy die regte rekening?</string>

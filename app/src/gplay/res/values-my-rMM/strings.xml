@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Subscription သည် နှစ်စဉ် %s ကျသင့်သည်။</string>
     <string name="upgrade_screen_iap_action">တစ်ကြိမ်တည်း ဝယ်ယူမှု</string>
     <string name="upgrade_screen_iap_action_hint">တစ်ကြိမ်တည်း ဝယ်ယူမှုသည် %s ကျသင့်သည်။</string>
+    <string name="upgrade_screen_offer_divider_or">သို့မဟုတ်</string>
+    <string name="upgrade_screen_offer_same_features">အလားတူလုပ်ဆောင်ချက်များ၊ဈေးနှုန်းမော်ဒယ်များသာကွဲပြားသည်။</string>
     <string name="upgrade_screen_thanks_toast">သင်သည် အကောင်းဆုံးပါ! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">ဝယ်ယူမှုကို ပြန်လည်ရယူမည်</string>
+    <string name="upgrade_screen_restore_banner_title">ရှေ့ဦးစွာ BVM Pro ကိုဝယ်ယူထားပြီးလား?</string>
+    <string name="upgrade_screen_restore_banner_body">ယခင်ကတွင်ဤစက်ပစ္စည်းတွင်အဆင့်မြှင့်တင်ထားခြင်းရှိသည်။သင်၏ဝယ်ယူမှုကိုပြန်လည်ရယူသုံးခွင့်ပွင့်လင်းပါ။</string>
     <string name="upgrade_screen_restore_purchase_message">သင်၏အဆင့်မြှင့်မှုသည် တူညီသော Google အကောင့်ရှိ စက်များတွင် အသုံးပြုနိုင်ပါသည်။</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">အသိအမှတ်မပြုသော အဆင့်မြှင့်မှုများအတွက် ပြဿနာဖြေရှင်းခြင်း အကြံပြုချက်များ-</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store sync လုပ်ရန် အချိန်ယူနိုင်ပါသည်။ ပြန်လည်စတင်ခြင်း၊ Google Play cache ရှင်းလင်းခြင်း သို့မဟုတ် ရိုးရိုးစောင့်ဆိုင်းခြင်း ပြုလုပ်ကြည့်ပါ။</string>
     <string name="upgrade_screen_restore_multiaccount_hint">အကောင့်များစွာသည် Google Play ကို ရှုပ်ထွေးစေနိုင်သည်။ အခြားအကောင့်များမှ ထွက်ပါ သို့မဟုတ် Google Play ဝဘ်ဆိုဒ်မှတစ်ဆင့် ထည့်သွင်းပါ၊ ၎င်းသည် သတ်မှတ်ထားသော အကောင့်နှင့် ချိတ်ဆက်မှုကို တွန်းအားပေးသည်။</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">သင်၏Pro အခြေအနေကိုကြည့်ရှုပါ</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">ကောင်းကျိုးတွေ!</string>
+    <string name="upgrade_screen_owned_congrats_body">သင့်ထံ BVM Pro ရှိသည် — ဖန်တီးမှုအတွက် အထောက်အပံ့ ပေးသည့်အတွက် ကျေးဇူးတင်ပါသည်။ ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">တစ်ကြိမ်တည်း ဝယ်ယူမှု</string>
+    <string name="upgrade_screen_owned_iap_body">သင်သည် BVM Pro ကို အစဉ်အမြဲ ပိုင်ဆိုင်သည်။ သင်၏ အထောက်အပံ့အတွက် ကျေးဇူးတင်ပါသည် ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">စာရင်းသွင်းမှု</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">သင်၏ BVM Pro စာရင်းသွင်းမှု အလုပ်ဆောင်နေပြီး အလိုအလျောက်အသစ်ဖြစ်စေရန်သတ်မှတ်ထားသည်။</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">သင်၏ BVM Pro စာရင်းသွင်းမှု အလုပ်ဆောင်နေသော်လည်း အသစ်မဖြစ်စေပါ။ ယခုအခါ ကာလ အဆုံးအထိ အသုံးပြုနိုင်သည်။</string>
+    <string name="upgrade_screen_owned_both_warning">သင်သည် စာရင်းသွင်းမှု နှင့် တစ်ကြိမ်တည်းသည့် ဝယ်ယူမှု နှစ်ခုလုံးကို ပိုင်ဆိုင်သည်။ Google Play တွင် စာရင်းသွင်းမှုကို ပယ်ဖျက်ပါ။ သို့မှ သင် ထပ်မံ ငွေချေမည်မဟုတ်ပါ။</string>
+    <string name="upgrade_screen_manage_subscription">စာရင်းသွင်းမှု စီမံခြင်း</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">တစ်ကြိမ်တည်းသည့် ဝယ်ယူမှုသို့ ပြောင်းလဲခြင်း</string>
+    <string name="upgrade_screen_switch_purchase_note">ဤသည်မှာ သီးခြား တစ်ကြိမ်တည်းသည့် ဝယ်ယူမှု ဖြစ်သည်။ သင်၏ စာရင်းသွင်းမှုကို ဖျက်လည်း မည်သည့်နည်း မည်သည့်ပုံစံ မျှ နေမည်မဟုတ်ပါ။ ထို့ကြောင့် Google Play တွင်လည်း ပယ်ဖျက်ပါ။ နှစ်ခုလုံးအတွက် တူညီသည့် Google အကောင့်ကို အသုံးပြုပါ။</string>
+    <string name="upgrade_screen_switch_locked_note">သင်၏ စာရင်းသွင်းမှု အလိုအလျောက်အသစ်မဖြစ်စေတော့သည့အခါ ရရှိနိုင်သည်။ ပြောင်းလဲရန် Google Play တွင် ပယ်ဖျက်ပါ — သင်သည် ယခုအခါ ကာလ အဆုံးအထိ Pro ကိုကိုင်ဆောင်သည်။</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">အခြေအနေ မှားတွဲသလား?</string>
+    <string name="upgrade_screen_status_restore_body">အကယ်၏ သင်၏ ဝယ်ယူမှုကို ဤတွင် မတွဲရှိပါက ၊ ဩင်းကို ပြန်လည်ရယူကြိုးစားပါ။</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">သင်၏ ဝယ်ယူမှုအား အတဝ်ပြုနေသည်</string>
+    <string name="upgrade_screen_grace_body_short">စိုက်ခိုင်နေပါ — ကျွန်ုပ်တို့သည် Google Play နှင့် သင်၏ ဝယ်ယူမှုအား ထပ်မံစိစစေနေသည်။</string>
+    <string name="upgrade_screen_grace_body">ကျွန်ုပ်တို့သည် Google Play နှင့် သင်၏ ဝယ်ယူမှုအား အတဝ်မပြုနိုင်တေဲပါ။ ဩင်းကို ပြန်လည်ရယူကြိုးစားပါ၊ သို့မဟုတ် သင်သည် မှန်ကန်သောအကောင့်ဖြင့် ဆိုင်းဝင်ထားသည်ကို စစ်ဆေပါ။</string>
+    <string name="upgrade_screen_retry_action">ထပ်မံကြိုးစားပါ</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">စာရင်းသွင်းမှု ပြဲး အလုပ်ဆောင်နေသည်</string>
+    <string name="upgrade_screen_sub_still_renewing_message">သင်၏ စာရင်းသွင်းမှုစိ ယခုအခါ အလိုအလျောက်အသစ်ဖြစ်စေရန် သတ်မှတ်ထားသည်။ Google Play တွင် ပထမဆုံ ပယ်ဖျက်ပါ။ ထို့နောက် တစ်ကြိမ်တည်းသည့် ဝယ်ယူမှုကို ဝယ်ယူပါ — သို့မှ သင်သည် အကြိမ်နှစ်ကြိမ် အခြေခြံရီမည်မဟုတ်ပါ။</string>
+    <string name="upgrade_screen_sub_check_failed_message">ကျွန်ုပ်တို့သည် သင်၏ စာရင်းသွင်းမှု အခြေအနေကို မစိစစနိုင်ခဲပါ။ သင်၏ အင်တာနက်ချိတ်ဆက်မှုကို ကျေးဇူးပြီး စစ်ဆပါ၊ ထို့နောက် ထပ်မံကြိုးစားပါ။</string>
+    <string name="upgrades_gplay_already_owned_error_title">ယခင်က ဝယ်ယူပြီးပြီ</string>
+    <string name="upgrades_gplay_already_owned_error_description">သင်၏ဝယ်ယူမှုကိုပြန်လည်ရယူရန် \"ဝယ်ယူမှုပြန်လည်ရယူ\" ရွေးချယ်မှုကိုအသုံးပြုပါ။ အကယ်၏ပြဲဆနာအဆက်အလက်ရှိပါက Google Play ကက်ရှ်ကိုရှင်လင်းပြီးသင်၏ကိရိယာကိုပြန်စတင်ကြည့်ပါ။</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play အမှားအယွင်း</string>
+    <string name="upgrades_gplay_internal_error_description">Google Play အတွင်းပိုင်းအမှားအယွင်း ပော့ပောက်ခဲျသည်။ အောက်ပာတွေကိုစမ်းသပ်ကြည့်ပါ:\n\n• သင်၏ကိရိယာကိုပြန်စတင်ပါ\n• Google Play Store ကက်ရှ်ကိုရှင်လင်းပါ\n• နောက်မှထပ်မံစမ်းသပ်ကြည့်ပါ</string>
+    <string name="upgrades_gplay_network_error_title">ချိတ်ဆက်မှုအမှားအယွင်း</string>
+    <string name="upgrades_gplay_network_error_description">Google Play သို့ချိတ်ဆက်၏မရနိုင်ပါ။ သင်၏အင််ဂာရပ်ချိတ်ဆက်မှုကိုစုံစမ်းပြီးထပ်မံစမ်းသပ်ကြည့်ပါ။</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play မရရှိနိုင်ပါ</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager မှ Google Play သို့ ချိတ်ဆက်၍မရပါ။ Google Play ထည့်သွင်းပြီး နောက်ဆုံးဗားရှင်းဖြစ်ပါသလား? သင်၏ Google အကောင့် ဝင်ရောက်ထားပါသလား? Google Play အက်ပ်၏ cache ကိုရှင်းလင်းပြီး ကိရိယာကိုပြန်လည်စတင်ကြည့်ပါ။</string>
     <string name="upgrades_no_purchases_found_check_account">ဝယ်ယူမှုများ ရှာမတွေ့ပါ။ မှန်ကန်သော အကောင့်ကို အသုံးပြုနေပါသလား။</string>

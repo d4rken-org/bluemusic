@@ -17,4 +17,12 @@
     <string name="upgrade_screen_sponsor_action_hint">La alternativo estas reklamoj, analizoj kaj Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Dankon pro subteno de malfermita kodo ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">Jam reen? Via subteno konservas BVM viva!</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">Vidu vian subtenantan staton</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">Dankon pro via subteno</string>
+    <string name="upgrade_screen_supporter_status_body">Vi malŝlosis ĉiujn aldonajn funkciojn per subteno de malfermitkoda programado.</string>
+    <string name="upgrade_screen_supporter_since">Subtenanto ekde %s</string>
+    <string name="upgrade_screen_supporter_visit_action">Vizitu GitHub Sponsors</string>
 </resources>

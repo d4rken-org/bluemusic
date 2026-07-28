@@ -20,4 +20,12 @@
     <string name="upgrade_screen_sponsor_action_hint">አማራጩ ማስታወቂያዎች፣ ትንታኔዎች እና Google Play ናቸው 🙁</string>
     <string name="upgrade_screen_thanks_toast">ክፍት ምንጭ ልማትን ስለደገፉ እናመሰግናለን ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">አልበጅ ተመለሱ? የ።ቡቡ፡ ስሮት BVMን ብርህ ዘተዃል።</string>
+    <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
+    <string name="settings_upgrade_status_title">BVM FOSS</string>
+    <string name="settings_upgrade_status_desc">ደጋፊ ሁኔታዎን ይመልከቱ</string>
+    <!-- Supporter status view -->
+    <string name="upgrade_screen_supporter_status_title">ድጋፋችሁ ስለወሰዳችሁ አመሰግናለሁ</string>
+    <string name="upgrade_screen_supporter_status_body">ነጻ ምንጭ ልማትን በድጋፍ ሁሉንም ተጨማሪ ባህሪያት አንስተሳሉ።</string>
+    <string name="upgrade_screen_supporter_since">ከ%s ጀምሮ ደጋፊ</string>
+    <string name="upgrade_screen_supporter_visit_action">GitHub Sponsors ይጎብኙ</string>
 </resources>

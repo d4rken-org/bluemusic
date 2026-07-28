@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Подписка стоит %s в год.</string>
     <string name="upgrade_screen_iap_action">Разовая покупка</string>
     <string name="upgrade_screen_iap_action_hint">Разовая покупка стоит %s.</string>
+    <string name="upgrade_screen_offer_divider_or">или</string>
+    <string name="upgrade_screen_offer_same_features">Те же функции, просто разные модели ценообразования.</string>
     <string name="upgrade_screen_thanks_toast">Вы лучший! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Восстановить покупку</string>
+    <string name="upgrade_screen_restore_banner_title">Уже купили BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Похоже, вы уже покупали BVM Pro на этом устройстве. Восстановите покупку, чтобы снова её разблокировать.</string>
     <string name="upgrade_screen_restore_purchase_message">Ваше обновление действительно на всех устройствах с одной учетной записи Google.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Советы по устранению неполадок для неизвестных обновлений:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Синхронизация Play Store может занять некоторое время. Попробуйте перезагрузиться, очистить кэш Google Play или просто подождать.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Множественные аккаунты могут путать Google Play. Выйдите из других аккаунтов или установите через веб-сайт Google Play, который определяет связь с определенной учетной записью.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Посмотреть статус Pro</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Поздравляем!</string>
+    <string name="upgrade_screen_owned_congrats_body">У вас есть BVM Pro — спасибо за поддержку разработки. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Единовременная покупка</string>
+    <string name="upgrade_screen_owned_iap_body">BVM Pro теперь навсегда ваш. Спасибо за поддержку ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Подписка</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Ваша подписка BVM Pro активна и будет продлена.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Ваша подписка BVM Pro активна, но не будет продлена. Она остаётся действительной до конца текущего периода.</string>
+    <string name="upgrade_screen_owned_both_warning">У вас есть и подписка, и разовая покупка. Отмените подписку в Google Play, чтобы с вас больше не списывали деньги.</string>
+    <string name="upgrade_screen_manage_subscription">Управлять подпиской</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Перейти на разовую покупку</string>
+    <string name="upgrade_screen_switch_purchase_note">Это отдельная разовая покупка. Она не отменяет подписку и не возвращает за неё деньги, поэтому отмените её отдельно в Google Play. Используйте один и тот же аккаунт Google для обеих покупок.</string>
+    <string name="upgrade_screen_switch_locked_note">Станет доступно, когда подписка перестанет продлеваться. Отмените её в Google Play, чтобы переключиться — Pro останется у вас до конца текущего периода.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Статус выглядит неправильно?</string>
+    <string name="upgrade_screen_status_restore_body">Если ваша покупка не отображается здесь, попробуйте восстановить её.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Подтверждение покупки</string>
+    <string name="upgrade_screen_grace_body_short">Подождите немного — мы проверяем вашу покупку в Google Play.</string>
+    <string name="upgrade_screen_grace_body">Нам всё ещё не удаётся подтвердить вашу покупку в Google Play. Попробуйте восстановить её или проверьте, что вы вошли в нужный аккаунт.</string>
+    <string name="upgrade_screen_retry_action">Повторить</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Подписка всё ещё активна</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Ваша подписка всё ещё продлевается. Сначала отмените её в Google Play, а потом вернитесь, чтобы купить разовую покупку — так вы не заплатите дважды.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Не удалось проверить статус вашей подписки. Проверьте подключение и попробуйте снова.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Уже приобретено</string>
+    <string name="upgrades_gplay_already_owned_error_description">Используйте опцию \"Восстановить покупку\" для восстановления. Если проблема не устранена, попробуйте очистить кэш Google Play и перезагрузить устройство.</string>
+    <string name="upgrades_gplay_internal_error_title">Ошибка Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Произошла внутренняя ошибка Google Play. Пожалуйста, попробуйте следующее:\n\n• Перезапустите устройство\n• Очистите кэш Google Play Store\n• Повторите попытку позже</string>
+    <string name="upgrades_gplay_network_error_title">Ошибка соединения</string>
+    <string name="upgrades_gplay_network_error_description">Не удалось подключиться к Google Play. Пожалуйста, проверьте подключение к интернету и повторите попытку.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play недоступен</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager не может подключиться к Google Play. Проверьте, установлен ли Google Play и обновлён ли до последней версии? Выполнен ли вход с Вашей учётной записью Google? Попробуйте очистить кэш Google Play и перезагрузить устройство.</string>
     <string name="upgrades_no_purchases_found_check_account">Покупки не найдены. Используете ли Вы правильный аккаунт?</string>

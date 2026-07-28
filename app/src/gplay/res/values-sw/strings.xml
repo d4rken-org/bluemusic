@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Usajili ungharimu %s kwa mwaka.</string>
     <string name="upgrade_screen_iap_action">Ununuzi wa mara moja</string>
     <string name="upgrade_screen_iap_action_hint">Ununuzi wa mara moja ungharimu %s.</string>
+    <string name="upgrade_screen_offer_divider_or">au</string>
+    <string name="upgrade_screen_offer_same_features">Vipengele vile, tu mifumo tofauti ya bei.</string>
     <string name="upgrade_screen_thanks_toast">Wewe ni bora zaidi! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Rejesha ununuzi</string>
+    <string name="upgrade_screen_restore_banner_title">Umekwisha kununua BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Inaonekana umefanya upgrade kwenye kifaa hiki hapo awali. Rejesha kununuzi wako ili kulifungua tena.</string>
     <string name="upgrade_screen_restore_purchase_message">Uboreshaji wako ni halali kwenye vifaa vya akaunti ile ile ya Google.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Vidokezo vya kutatua matatizo kwa uboreshaji usiotambuliwa:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Ulandanishi wa Play Store unaweza kuchukua muda. Jaribu kuanzisha upya, kusafisha akiba ya Google Play au tu subiri.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Akaunti nyingi zinaweza kuchanganya Google Play. Toka kwenye akaunti zingine au sakinisha kupitia tovuti ya Google Play, ambayo inalazimisha uhusiano na akaunti maalum.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Tazama hali ya Pro yako</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Hongera!</string>
+    <string name="upgrade_screen_owned_congrats_body">Umepata BVM Pro — asante kwa kusaidia maendeleo. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Ununuzi wa mara moja</string>
+    <string name="upgrade_screen_owned_iap_body">BVM Pro ni yako milele. Asante kwa usaidizi wako ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Usajili</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Usajili wako wa BVM Pro unatumika na umewekwa kurejea.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Usajili wako wa BVM Pro unatumika lakini hautarejea. Utabaki kuwa halali hadi mwisho wa kipindi cha sasa.</string>
+    <string name="upgrade_screen_owned_both_warning">Una usajili na ununuzi wa mara moja. Ghairi usajili katika Google Play ili usitozwe tena.</string>
+    <string name="upgrade_screen_manage_subscription">Dhibiti usajili</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Badili kuwa ununuzi wa mara moja</string>
+    <string name="upgrade_screen_switch_purchase_note">Hii ni ununuzi wa mara moja tofauti. Haifuti au kurudisha usajili wako, kwa hiyo ghairi hiyo pia katika Google Play. Tumia akaunti sawa ya Google kwa zote.</string>
+    <string name="upgrade_screen_switch_locked_note">Itapatikana baada ya usajili wako kutorejea tena. Ghairi katika Google Play kubadilisha — unabaki na Pro hadi kipindi cha sasa kinapoisha.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Hali inaonekana si sahihi?</string>
+    <string name="upgrade_screen_status_restore_body">Ikiwa ununuzi wako hauonekani hapa, jaribu kuurejesha.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Inathibitisha ununuzi wako</string>
+    <string name="upgrade_screen_grace_body_short">Subiri kidogo — tunakagua tena ununuzi wako kwa Google Play.</string>
+    <string name="upgrade_screen_grace_body">Bado hatuwezi kuthibitisha ununuzi wako kwa Google Play. Jaribu kuurejesha, au angalia kuwa umeingia kwa akaunti sahihi.</string>
+    <string name="upgrade_screen_retry_action">Jaribu tena</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Usajili bado ni hai</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Usajili wako bado umewekwa kurejea. Ghairi katika Google Play kwanza, kisha rudi kununua kwa mara moja — kwa hiyo hutatozwa mara mbili.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Hatukuweza kuangalia hali ya usajili wako. Tafadhali angalia muunganisho wako na jaribu tena.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Tayari umeshanunua</string>
+    <string name="upgrades_gplay_already_owned_error_description">Tumia chaguo la \"Rejesha ununuzi\" kurejesha ununuzi wako. Ikiwa tatizo linaendelea, jaribu kuondoa akache ya Google Play na kuanzisha upya kifaa chako.</string>
+    <string name="upgrades_gplay_internal_error_title">Hitilafu ya Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Hitilafu ya ndani ya Google Play ilitokea. Tafadhali jaribu zifuatazo:\n\n• Anzisha upya kifaa chako\n• Ondoa akache ya Google Play Store\n• Jaribu baadaye</string>
+    <string name="upgrades_gplay_network_error_title">Hitilafu ya muunganisho</string>
+    <string name="upgrades_gplay_network_error_description">Haiwezi kuungana na Google Play. Tafadhali angalia muunganisho wako wa mtandao na jaribu tena.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play haipo</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager haiwezi kuunganika na Google Play. Je, Google Play imewekwa na iko ya kisasa? Je, akaunti yako ya Google imeingia? Jaribu kufuta kashe ya programu ya Google Play na kuanzisha upya kifaa chako.</string>
     <string name="upgrades_no_purchases_found_check_account">Hakuna ununuzi uliopatikana. Je, unatumia akaunti sahihi?</string>

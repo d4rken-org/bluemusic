@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">সাবস্ক্রিপশনে প্রতি এক বছরে %s খরচ হয়।</string>
     <string name="upgrade_screen_iap_action">এককালীন ক্রয়</string>
     <string name="upgrade_screen_iap_action_hint">একবারেই কিনে ফেলতে খরচ হবে: %s.</string>
+    <string name="upgrade_screen_offer_divider_or">অথবা</string>
+    <string name="upgrade_screen_offer_same_features">একই বৈশিষ্ট্য, শুধু মূল্য নির্ধারণের মডেল ভিন্ন।</string>
     <string name="upgrade_screen_thanks_toast">আপনি সেরা ভাই আপনি সেরা! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">ক্রয় পুনরুদ্ধার</string>
+    <string name="upgrade_screen_restore_banner_title">আগে থেকেই BVM Pro কিনেছেন?</string>
+    <string name="upgrade_screen_restore_banner_body">মনে হচ্ছে আপনি আগে এই ডিভাইসে আপগ্রেড করেছিলেন। এটি আবার আনলক করতে আপনার ক্রয় পুনরুদ্ধার করুন।</string>
     <string name="upgrade_screen_restore_purchase_message">আপনার আপগ্রেড একই Google অ্যাকাউন্টের ডিভাইস জুড়ে বৈধ।</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">অচেনা আপগ্রেডের জন্য সমস্যা সমাধানের টিপস:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">প্লে স্টোর সিঙ্ক্রোনাইজেশনে সময় লাগতে পারে। রিবুট করার চেষ্টা করুন, Google Play ক্যাশে সাফ করুন বা অপেক্ষা করুন।</string>
     <string name="upgrade_screen_restore_multiaccount_hint">একাধিক অ্যাকাউন্ট Google Play কে বিভ্রান্ত করতে পারে। অন্যান্য অ্যাকাউন্ট থেকে লগ আউট করুন বা Google Play ওয়েবসাইটের মাধ্যমে ইনস্টল করুন, যা একটি নির্দিষ্ট অ্যাকাউন্টের সাথে যুক্ত হতে বাধ্য করে।</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">আপনার Pro স্ট্যাটাস দেখুন</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">অভিনন্দন!</string>
+    <string name="upgrade_screen_owned_congrats_body">আপনি BVM Pro পেয়ে গেছেন — ডেভেলপমেন্টে সহায়তা করার জন্য ধন্যবাদ। ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">এককালীন ক্রয়</string>
+    <string name="upgrade_screen_owned_iap_body">আপনি চিরতরে BVM Pro-এর মালিক। আপনার সহায়তার জন্য ধন্যবাদ ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">সাবস্ক্রিপশন</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">আপনার BVM Pro সাবস্ক্রিপশন সক্রিয় এবং নবায়ন করার জন্য সেট করা আছে।</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">আপনার BVM Pro সাবস্ক্রিপশন সক্রিয় আছে কিন্তু নবায়ন হবে না। এটি বর্তমান মেয়াদ শেষ না হওয়া পর্যন্ত বৈধ থাকবে।</string>
+    <string name="upgrade_screen_owned_both_warning">আপনার কাছে সাবস্ক্রিপশন এবং একবারের ক্রয় উভয়ই আছে। আবার চার্জ এড়াতে Google Play-তে সাবস্ক্রিপশন বাতিল করুন।</string>
+    <string name="upgrade_screen_manage_subscription">সাবস্ক্রিপশন পরিচালনা করুন</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">একবারের ক্রয়ে পরিবর্তন করুন</string>
+    <string name="upgrade_screen_switch_purchase_note">এটি একটি আলাদা একবারের ক্রয়। এটি আপনার সাবস্ক্রিপশন বাতিল বা ফেরত দেয় না, তাই সেটিও Google Play-তে বাতিল করুন। উভয়ের জন্য একই Google অ্যাকাউন্ট ব্যবহার করুন।</string>
+    <string name="upgrade_screen_switch_locked_note">আপনার সাবস্ক্রিপশন আর নবায়নের জন্য সেট না থাকলে এটি উপলব্ধ হবে। পরিবর্তন করতে Google Play-তে এটি বাতিল করুন — বর্তমান মেয়াদ শেষ না হওয়া পর্যন্ত আপনি Pro বজায় রাখবেন।</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">স্ট্যাটাস ভুল মনে হচ্ছে?</string>
+    <string name="upgrade_screen_status_restore_body">যদি আপনার ক্রয় এখানে না দেখায়, তাহলে এটি পুনরুদ্ধার করার চেষ্টা করুন।</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">আপনার ক্রয় নিশ্চিত করা হচ্ছে</string>
+    <string name="upgrade_screen_grace_body_short">একটু অপেক্ষা করুন — আমরা Google Play-র সাথে আপনার ক্রয় আবার যাচাই করছি।</string>
+    <string name="upgrade_screen_grace_body">আমরা এখনও Google Play-এর সাথে আপনার ক্রয় নিশ্চিত করতে পারছি না। এটি পুনরুদ্ধার করার চেষ্টা করুন, অথবা আপনি সঠিক অ্যাকাউন্টে সাইন ইন করেছেন কিনা তা যাচাই করুন।</string>
+    <string name="upgrade_screen_retry_action">আবার চেষ্টা করুন</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">সাবস্ক্রিপশন এখনও সক্রিয়</string>
+    <string name="upgrade_screen_sub_still_renewing_message">আপনার সাবস্ক্রিপশন এখনও নবায়নের জন্য সেট করা আছে। প্রথমে Google Play-তে এটি বাতিল করুন, তারপর একবারের ক্রয় কিনতে ফিরে আসুন — এভাবে আপনার কাছ থেকে দুইবার চার্জ নেওয়া হবে না।</string>
+    <string name="upgrade_screen_sub_check_failed_message">আমরা আপনার সাবস্ক্রিপশন স্ট্যাটাস যাচাই করতে পারিনি। অনুগ্রহ করে আপনার সংযোগ যাচাই করে আবার চেষ্টা করুন।</string>
+    <string name="upgrades_gplay_already_owned_error_title">ইতিমধ্যে কেনা হয়েছে</string>
+    <string name="upgrades_gplay_already_owned_error_description">আপনার ক্রয় পুনরুদ্ধার করতে \"ক্রয় পুনরুদ্ধার করুন\" অপশনটি ব্যবহার করুন। সমস্যা থেকেই গেলে, Google Play ক্যাশে সাফ করে আপনার ডিভাইস পুনরায় চালু করার চেষ্টা করুন।</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play ত্রুটি</string>
+    <string name="upgrades_gplay_internal_error_description">একটি অভ্যন্তরীণ Google Play ত্রুটি ঘটেছে। অনুগ্রহ করে নিম্নলিখিতগুলো চেষ্টা করুন:\n\n• আপনার ডিভাইস পুনরায় চালু করুন\n• Google Play Store ক্যাশে সাফ করুন\n• পরে আবার চেষ্টা করুন</string>
+    <string name="upgrades_gplay_network_error_title">সংযোগ ত্রুটি</string>
+    <string name="upgrades_gplay_network_error_description">Google Play-এর সাথে সংযোগ করা যাচ্ছে না। অনুগ্রহ করে আপনার ইন্টারনেট সংযোগ যাচাই করে আবার চেষ্টা করুন।</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play অনুপলব্ধ৷</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play-এ সংযোগ করতে পারছে না। কি Google Play ইনস্টল এবং আপডেট আছে? আপনার Google অ্যাকাউন্ট লগইন করা আছে? Google Play অ্যাপের ক্যাশ পরিষ্কার করে ডিভাইস রিবুট করুন।</string>
     <string name="upgrades_no_purchases_found_check_account">আপনার পার্সেস পাওয়া যায় নাই। আপনি সঠিক অ্যাকাউন্ট ব্যবহার করছেন?</string>

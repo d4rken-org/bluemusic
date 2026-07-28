@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Áskriftin kostar %s á ári.</string>
     <string name="upgrade_screen_iap_action">Einskiptiskaup</string>
     <string name="upgrade_screen_iap_action_hint">Einskiptiskaup kosta %s.</string>
+    <string name="upgrade_screen_offer_divider_or">eða</string>
+    <string name="upgrade_screen_offer_same_features">Sömu eiginleikar, bara mismunandi verðlagningarleiðir.</string>
     <string name="upgrade_screen_thanks_toast">Þú ert bestur! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Endurheimta kaup</string>
+    <string name="upgrade_screen_restore_banner_title">Þegar keypt BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Það lítur út fyrir að þú hafir uppfært á þessu tæki áður. Endurheimtu kaupin þín til að opna það aftur.</string>
     <string name="upgrade_screen_restore_purchase_message">Uppfærslan þín gildir á tækjum með sama Google reikning.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Úrræðaleitarráð fyrir óþekktar uppfærslur:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store samstilling getur tekið tíma. Reyndu að endurræsa, hreinsa Google Play skyndiminni eða bara bíða.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Margir reikningar geta ruglað Google Play. Skráðu þig út úr öðrum reikningum eða settu upp í gegnum Google Play vefsíðuna, sem neyðir tengsl við ákveðinn reikning.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Skoða Pro-stöðu þína</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Til hamingju!</string>
+    <string name="upgrade_screen_owned_congrats_body">Þú ert með BVM Pro — takk fyrir að styðja þróunina. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Einskiptiskaup</string>
+    <string name="upgrade_screen_owned_iap_body">Þú átt BVM Pro að eilífu. Takk fyrir stuðninginn ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Áskrift</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Áskriftin þín að BVM Pro er virk og stillt á að endurnýjast.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Áskriftin þín að BVM Pro er virk en mun ekki endurnýjast. Hún gildir til loka núverandi tímabils.</string>
+    <string name="upgrade_screen_owned_both_warning">Þú ert bæði með áskrift og eingreiðslukaup. Segðu upp áskriftinni í Google Play svo ekki verði rukað af þér aftur.</string>
+    <string name="upgrade_screen_manage_subscription">Stjórna áskrift</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Skipta yfir í eingreiðslukaup</string>
+    <string name="upgrade_screen_switch_purchase_note">Þetta er sérstakt eingreiðslukaup. Það segir ekki upp áskriftinni þinni né endurgreiðir hana, svo segðu henni líka upp í Google Play. Notaðu sama Google-reikning fyrir bæði.</string>
+    <string name="upgrade_screen_switch_locked_note">Í boði þegar áskriftin þín er ekki lengur stillt á að endurnýjast. Segðu henni upp í Google Play til að skipta — þú heldur Pro til loka núverandi tímabils.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Lítur staðan út fyrir að vera röng?</string>
+    <string name="upgrade_screen_status_restore_body">Ef kaupin þín birtast ekki hér skaltu reyna að endurheimta þau.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Staðfesti kaupin þín</string>
+    <string name="upgrade_screen_grace_body_short">Andaðu rólega — við erum að tvítékka kaupin þín hjá Google Play.</string>
+    <string name="upgrade_screen_grace_body">Við getum enn ekki staðfest kaupin þín hjá Google Play. Reyndu að endurheimta þau, eða athugaðu hvort þú sért innskráð(ur) með réttan reikning.</string>
+    <string name="upgrade_screen_retry_action">Reyna aftur</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Áskrift enn virk</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Áskriftin þín er enn stillt á að endurnýjast. Segðu henni upp í Google Play fyrst og komdu svo aftur til að kaupa eingreiðslukaupin — þannig verðurðu ekki rukuð(ur) tvisvar.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Við gátum ekki athugað áskriftarstöðu þína. Athugaðu nettenginguna og reyndu aftur.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Þegar keypt</string>
+    <string name="upgrades_gplay_already_owned_error_description">Notaðu valkostinn „Endurheimta kaup“ til að endurheimta kaupin þín. Ef vandamálið er viðvarandi skaltu reyna að hreinsa skyndiminni Google Play og endurræsa tækið.</string>
+    <string name="upgrades_gplay_internal_error_title">Villa í Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Innri villa kom upp í Google Play. Prófaðu eftirfarandi:\n\n• Endurræstu tækið\n• Hreinsaðu skyndiminni Google Play Store\n• Reyndu aftur síðar</string>
+    <string name="upgrades_gplay_network_error_title">Tengingarvilla</string>
+    <string name="upgrades_gplay_network_error_description">Ekki tókst að tengjast Google Play. Athugaðu nettenginguna og reyndu aftur.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play er ekki tiltækt</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager getur ekki tengst Google Play. Er Google Play uppsett og uppfært? Ertu skráður inn á Google reikninginn? Prófaðu að hreinsa skyndiminnni Google Play forritsins og endurræsa tækið þit.</string>
     <string name="upgrades_no_purchases_found_check_account">Engin kaup fundust. Ertu að nota réttan reikning?</string>

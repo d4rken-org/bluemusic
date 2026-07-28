@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Di subscription cost %s per year.</string>
     <string name="upgrade_screen_iap_action">One-time purchase</string>
     <string name="upgrade_screen_iap_action_hint">Di one-time purchase cost %s.</string>
+    <string name="upgrade_screen_offer_divider_or">abi</string>
+    <string name="upgrade_screen_offer_same_features">Same features, just different prices.</string>
     <string name="upgrade_screen_thanks_toast">You be di best!</string>
     <string name="upgrade_screen_restore_purchase_action">Restore purchase</string>
+    <string name="upgrade_screen_restore_banner_title">You don buy BVM Pro before?</string>
+    <string name="upgrade_screen_restore_banner_body">E look like you don upgrade this device before. Restore your purchase to unlock am again.</string>
     <string name="upgrade_screen_restore_purchase_message">Your upgrade dey valid across devices on di same Google account.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Troubleshooting tips for unrecognized upgrades:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store synchronization fit take time. Try reboot, clear Google Play cache or just wait.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Multiple accounts fit confuse Google Play. Log out of other accounts or install through di Google Play website, wey go force association with specific account.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">See your Pro status</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Congratulations!</string>
+    <string name="upgrade_screen_owned_congrats_body">You don get BVM Pro — thank you for supporting development. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">One-time purchase</string>
+    <string name="upgrade_screen_owned_iap_body">You own BVM Pro forever. Thank you for your support ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Subscription</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Your BVM Pro subscription don active and e go renew.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Your BVM Pro subscription don active but e no go renew. E go stay valid till the end of this period.</string>
+    <string name="upgrade_screen_owned_both_warning">You get both subscription and one-time purchase. Cancel the subscription for Google Play so dem no go charge you again.</string>
+    <string name="upgrade_screen_manage_subscription">Manage your subscription</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Switch to one-time purchase</string>
+    <string name="upgrade_screen_switch_purchase_note">This na separate one-time purchase. E no go cancel or refund your subscription, so cancel that one for Google Play too. Use the same Google account for both.</string>
+    <string name="upgrade_screen_switch_locked_note">E go dey available once your subscription no longer dey set to renew. Cancel am for Google Play to switch — you go still get Pro until the current period end.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Status look wrong?</string>
+    <string name="upgrade_screen_status_restore_body">If your purchase no show here, try restore am.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">We dey confirm your purchase</string>
+    <string name="upgrade_screen_grace_body_short">Wait small — we dey double-check your purchase with Google Play.</string>
+    <string name="upgrade_screen_grace_body">We still no fit confirm your purchase with Google Play. Try restore am, or check say you don sign in with the right account.</string>
+    <string name="upgrade_screen_retry_action">Try again</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Subscription still active</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Your subscription still dey set to renew. Cancel am for Google Play first, then come back buy the one-time purchase — that way dem no go charge you twice.</string>
+    <string name="upgrade_screen_sub_check_failed_message">We no fit check your subscription status. Check your connection and try again.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Already purchased</string>
+    <string name="upgrades_gplay_already_owned_error_description">Use the \"Restore purchase\" option to restore your purchase. If the problem still dey, try clear Google Play cache and restart your device.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play error</string>
+    <string name="upgrades_gplay_internal_error_description">Error don happen for inside Google Play. Abeg try dis dem:\n\n• Restart your device\n• Clear Google Play Store cache\n• Try again later</string>
+    <string name="upgrades_gplay_network_error_title">Connection error</string>
+    <string name="upgrades_gplay_network_error_description">You no fit connect to Google Play. Abeg check your internet connection and try again.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play no dey available</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager no fit connect to Google Play. Google Play don install and up to date? Your Google Account don log in? Try clear di cache of Google Play app and reboot your device.</string>
     <string name="upgrades_no_purchases_found_check_account">No purchases found. You dey use di right account?</string>

@@ -57,6 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">දෘශ්‍ය සකසීම්</string>
     <string name="devices_device_config_visible_adjustments_desc">උපාංග කාඩ්පතෙහි දැකිය හැකි සකසීම් ටොගල් කරන්න</string>
     <string name="devices_device_config_keep_awake_label">සක්‍රිය තබා ගන්න</string>
+    <string name="devices_device_config_keep_awake_desc">යෙදුම පසුබිම්ගතව ඉතිරි තබා ගනී සංයුක්ත වී ඇති අතරතුර එමඟින් ශබ්දය පාලනය ක්‍රියා කිරීම දිගටම පවතින අතර, ස්ථාපනයක් සංයුක්ත වූ විට තිරය ජාග්‍රත් කරයි (\"අනෙකුත් යෙදුම්ට වඩා ඉහළින් ප්‍රදර්ශනය\" අවසරය අවශ්‍යයි). නවතර Android අනුවාදවල තිරය තවම ස්වයංක්‍රීයව වසා ගතහැකිය.</string>
     <string name="devices_device_config_volume_observe_label">වෙනස්කම් නිරීක්ෂණය කරන්න</string>
     <string name="devices_device_config_volume_observe_desc">මෙම උපාංගය සම්බන්ධ වී ඇති විට සක්‍රිය ව සිටින්න සහ මෙම යෙදුමෙන් නොකළ හඩ වෙනස්කම් සුරකින්න.</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">විසන්ධිය හදී හඩ සුරකින්න</string>
@@ -396,6 +397,7 @@
     <string name="battery_optimization_hint_message">බැටරි ප්‍රශස්තකරණ සබල කර ඇති අතර නිසි ක්‍රියාකාරිත්වය වළක්වා ගත හැකිය. ඒවා අක්‍රිය කිරීම සලකා බලන්න.</string>
     <string name="battery_optimization_fix_action">ප්‍රශස්තකරණ අක්‍රිය කරන්න</string>
     <string name="android10_applaunch_hint_title">යෙදුම් වලට වඩා පෙන්වන්න අවසරය</string>
+    <string name="android10_applaunch_hint_message">Android 10+ ට යෙදුම් ආරම්භ කිරීම, මුල් තිරය පෙන්වීම, හෝ සංයොගයේදී පසුබිම මිට තිරය ජාග්‍රත් කිරීම සඳහා විශේෂ අවසරයක් අවශ්‍ය වේ. \"අනෙකුත් යෙදුම්ට වඩා ඉහළින් ප්‍රදර්ශනය\" අවසරය ලබා දෙන්න.</string>
     <string name="notification_permission_hint_title">දැනුම්දීම් අවසරය</string>
     <string name="notification_permission_hint_message">හඩ සකසීමේදී තත්ව යාවත්කාලීන දැකීමට දැනුම්දීම් අවසරය ලබා දෙන්න.</string>
     <string name="dnd_access_hint_title">බාධා නොකරන්න ප්‍රවේශය</string>

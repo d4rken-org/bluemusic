@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Η συνδρομή κοστίζει %s ετησίως.</string>
     <string name="upgrade_screen_iap_action">Εφάπαξ αγορά</string>
     <string name="upgrade_screen_iap_action_hint">Η εφάπαξ αγορά κοστίζει %s.</string>
+    <string name="upgrade_screen_offer_divider_or">ή</string>
+    <string name="upgrade_screen_offer_same_features">Ίδια χαρακτηριστικά, απλώς διαφορετικά μοντέλα τιμολόγησης.</string>
     <string name="upgrade_screen_thanks_toast">Είστε οι καλύτεροι! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Επαναφορά αγοράς</string>
+    <string name="upgrade_screen_restore_banner_title">Έχεις ήδη αγοράσει το BVM Pro;</string>
+    <string name="upgrade_screen_restore_banner_body">Φαίνεται πως έκανες αναβάθμιση σε αυτή τη συσκευή παλαιότερα. Κάνε επαναφορά της αγοράς σου για να την ξεκλειδώσεις ξανά.</string>
     <string name="upgrade_screen_restore_purchase_message">Η αναβάθμιση σας είναι έγκυρη σε συσκευές στον ίδιο λογαριασμό Google.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Συμβουλές αντιμετώπισης προβλημάτων για μη αναγνωρισμένες αναβαθμίσεις:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Ο συγχρονισμός του Play Store ενδέχεται να πάρει χρόνο. Δοκιμάστε να κάνετε επανεκκίνηση, να καθαρίσετε την προσωρινή μνήμη του Google Play ή απλώς να περιμένετε.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Πολλοί λογαριασμοί μπορεί να μπερδέψουν το Google Play. Αποσυνδεθείτε από άλλους λογαριασμούς ή εγκαταστήστε το μέσω του ιστότοπου Google Play, κάτι που αναγκάζει τους συσχετισμούς με έναν συγκεκριμένο λογαριασμό.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Δες την κατάσταση Pro σου</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Συγχαρητήρια!</string>
+    <string name="upgrade_screen_owned_congrats_body">Απέκτησες το BVM Pro — ευχαριστούμε που υποστηρίζεις την ανάπτυξη. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Εφάπαξ αγορά</string>
+    <string name="upgrade_screen_owned_iap_body">Το BVM Pro είναι δικό σου για πάντα. Ευχαριστούμε για την υποστήριξη ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Συνδρομή</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Η συνδρομή σου στο BVM Pro είναι ενεργή και έχει οριστεί να ανανεωθεί.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Η συνδρομή σου στο BVM Pro είναι ενεργή αλλά δεν θα ανανεωθεί. Παραμένει έγκυρη μέχρι το τέλος της τρέχουσας περιόδου.</string>
+    <string name="upgrade_screen_owned_both_warning">Έχεις και συνδρομή και εφάπαξ αγορά. Ακύρωσε τη συνδρομή στο Google Play ώστε να μην χρεωθείς ξανά.</string>
+    <string name="upgrade_screen_manage_subscription">Διαχείριση συνδρομής</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Αλλαγή σε εφάπαξ αγορά</string>
+    <string name="upgrade_screen_switch_purchase_note">Αυτή είναι μια ξεχωριστή εφάπαξ αγορά. Δεν ακυρώνει ούτε επιστρέφει τα χρήματα της συνδρομής σου, γι\' αυτό ακύρωσέ την και στο Google Play. Χρησιμοποίησε τον ίδιο λογαριασμό Google και για τις δύο.</string>
+    <string name="upgrade_screen_switch_locked_note">Διαθέσιμο μόλις η συνδρομή σου δεν είναι πλέον ρυθμισμένη να ανανεωθεί. Ακύρωσέ την στο Google Play για να αλλάξεις — κρατάς το Pro μέχρι να λήξει η τρέχουσα περίοδος.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Η κατάσταση φαίνεται λάθος;</string>
+    <string name="upgrade_screen_status_restore_body">Αν η αγορά σου δεν εμφανίζεται εδώ, δοκίμασε να την επαναφέρεις.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Επιβεβαίωση της αγοράς σου</string>
+    <string name="upgrade_screen_grace_body_short">Λίγη υπομονή — ελέγχουμε ξανά την αγορά σου με το Google Play.</string>
+    <string name="upgrade_screen_grace_body">Δεν μπορούμε ακόμα να επιβεβαιώσουμε την αγορά σου με το Google Play. Δοκίμασε να την επαναφέρεις ή έλεγξε ότι έχεις συνδεθεί με τον σωστό λογαριασμό.</string>
+    <string name="upgrade_screen_retry_action">Δοκίμασε ξανά</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Η συνδρομή είναι ακόμα ενεργή</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Η συνδρομή σου εξακολουθεί να είναι ρυθμισμένη να ανανεωθεί. Ακύρωσέ την πρώτα στο Google Play και μετά επέστρεψε για να αγοράσεις την εφάπαξ αγορά — έτσι δεν θα χρεωθείς δύο φορές.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Δεν μπορέσαμε να ελέγξουμε την κατάσταση της συνδρομής σου. Έλεγξε τη σύνδεσή σου και δοκίμασε ξανά.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Ήδη αγορασμένο</string>
+    <string name="upgrades_gplay_already_owned_error_description">Χρησιμοποιήστε την επιλογή \"Επαναφορά αγοράς\" για να επαναφέρετε την αγορά σας. Εάν το πρόβλημα παραμένει, δοκιμάστε να καθαρίσετε την προσωρινή μνήμη του Google Play και να επανεκκινήσετε τη συσκευή σας.</string>
+    <string name="upgrades_gplay_internal_error_title">Σφάλμα Google Play</string>
+    <string name="upgrades_gplay_internal_error_description">Παρουσιάστηκε εσωτερικό σφάλμα του Google Play. Δοκιμάστε τα εξής:\n\n• Επανεκκινήστε τη συσκευή σας\n• Καθαρίστε την προσωρινή μνήμη του Google Play Store\n• Δοκιμάστε ξανά αργότερα</string>
+    <string name="upgrades_gplay_network_error_title">Σφάλμα σύνδεσης</string>
+    <string name="upgrades_gplay_network_error_description">Αδυναμία σύνδεσης με το Google Play. Ελέγξτε τη σύνδεσή σας στο διαδίκτυο και δοκιμάστε ξανά.</string>
     <string name="upgrades_gplay_unavailable_error_title">Το Google Play δεν είναι διαθέσιμο</string>
     <string name="upgrades_gplay_unavailable_error_description">Το Bluetooth Volume Manager δεν μπορεί να συνδεθεί με το Google Play. Είναι το Google Play εγκατεστημένο και ενημερωμένο; Έχετε συνδεθεί με τον λογαριασμό Google σας; Δοκιμάστε να διαγράψετε την προσωρινή μνήμη της εφαρμογής Google Play και να επανεκκινήσετε τη συσκευή σας.</string>
     <string name="upgrades_no_purchases_found_check_account">Δεν βρέθηκαν αγορές. Χρησιμοποιείτε τον σωστό λογαριασμό;</string>

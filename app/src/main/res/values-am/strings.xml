@@ -57,6 +57,7 @@
     <string name="devices_device_config_visible_adjustments_label">የምስተካኪያ ለይት</string>
     <string name="devices_device_config_visible_adjustments_desc">ይህ አፕሊኬሰን ለይህ መሣሪያ ምስተካኪያ በሜደረግበት ወቀት የስርዓቱን ድምፅ መስካኪያን ኣይጥ (window) አሳይ።</string>
     <string name="devices_device_config_keep_awake_label">ተገናት ዘዅር</string>
+    <string name="devices_device_config_keep_awake_desc">ተገናኙ ሲሆኑ አተገባበሪያውን በስርዓተ ኃላፍ ንቁ ያርቃል ስለዚህም የድምጽ ቁጥጥር ሥራ ይቀጥላል፣ እና መሳሪያ ሲገናኝ ስክሪኑን ይነቅሳል (ይህ \"መተግበሪያ ላይ ጣቢያ ማሳያ\" ፍቃድ ይሻል)። በአዳዲስ አንድሮይድ ስሪቶች ውስጥ ስክሪኑ በራሱ ሊጠፋ ይችላል።</string>
     <string name="devices_device_config_volume_observe_label">ለውጦች ታይ</string>
     <string name="devices_device_config_volume_observe_desc">ይህ መሣሪያ ሲጸራ ብራልት ቅበር ይህ አፕሊኬሰን ካልመኃ የተደረጉት የድምፅ ለውጦችን አዓርቦም።</string>
     <string name="devices_device_config_volume_save_on_disconnect_label">በደረጩቦት ክምፅ አክብቢ</string>
@@ -396,6 +397,8 @@
     <string name="battery_optimization_hint_title">የደም ያሌዅ አመ፥ት</string>
     <string name="battery_optimization_hint_message">የደም ያሌዅ አመ፥ቶች ተፈንንዎል፥ ጀነታ ስራት እንዲያደርኑ እይዻይ።</string>
     <string name="battery_optimization_fix_action">አመ፥ት አታካል</string>
+    <string name="android10_applaunch_hint_title">መተግበሪያ ላይ ጣቢያ ማሳያ ፍቃድ</string>
+    <string name="android10_applaunch_hint_message">አንድሮይድ 10+ ወይም በላይ መተግበሪያ ለጀመር፣ መነሻ ስክሪን ለማሳየት፣ ወይም ተገናኙ በሚሆንበት ጊዜ ስክሪን ከስርዓተ ኃላፍ ለመነቅስ ልዩ ፍቃድ ይፈልጋል። \"መተግበሪያ ላይ ጣቢያ ማሳያ\" ፍቃድ ይስጡ።</string>
     <string name="notification_permission_hint_title">የክርዘት እዋዀ</string>
     <string name="notification_permission_hint_message">ድምጣዎችን በሚካካልበት ሁኔተት ለማወቀት የክርዘት እዋዀ ክርድ ይስጀዘ።</string>
     <string name="dnd_access_hint_title">አትረብሽ ፍቃድ</string>

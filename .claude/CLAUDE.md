@@ -32,15 +32,28 @@ Detailed guidance is in `.claude/rules/`:
 - **[architecture.md](rules/architecture.md)** - Package structure, Navigation3, ViewModel pattern, base classes, error handling, permissions
 - **[code-style.md](rules/code-style.md)** - Kotlin conventions, Compose patterns, state management
 - **[testing.md](rules/testing.md)** - JUnit/Mockk/Kotest, screenshot tests; no instrumented androidTest
-- **[localization.md](rules/localization.md)** - String extraction, 77 translated locales, translation workflow
+- **[localization.md](rules/localization.md)** - String extraction, 77 locales, Crowdin flow
 - **[build-commands.md](rules/build-commands.md)** - All gradlew commands
 - **[release.md](rules/release.md)** - Release flow, version bumping, and tag validation
 - **[commit-guidelines.md](rules/commit-guidelines.md)** - Commit message format and conventions
-- **[agent-instructions.md](rules/agent-instructions.md)** - Sub-agent delegation, exploring vs implementing
+- **[agent-instructions.md](rules/agent-instructions.md)** - When to delegate to a sub-agent
+
+`architecture.md`, `code-style.md`, `testing.md`, `localization.md`, and `release.md` are
+path-scoped via `paths:` frontmatter — they load only when you touch matching files. The
+rest load every session.
+
+## Working Style
+
+- Before the first tool call, say in one sentence what you're about to do. While working,
+  give a brief update only when you find something important or change direction. Lead the
+  final message with the outcome.
+- Match written artifacts — PR descriptions, plan docs, reports — to what the task needs.
+  Cover the substance; no filler sections or redundant summaries.
 
 ## Dev Tips
 
-- Run builds and lint checks in sub-agents to keep the main context window clean.
 - The FOSS debug variant (`assembleFossDebug`) builds fastest for iteration.
 - Check `rules/architecture.md` before adding new screens or ViewModels.
-- All user-facing strings must be localized (see `rules/localization.md`).
+- Write user-facing strings in the base `values/strings.xml` only — translations come from
+  Crowdin, never from you.
+- No `androidTest` in this project; Compose UI is covered by the `screenshotTest` source set.

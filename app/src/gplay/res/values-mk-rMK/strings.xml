@@ -15,12 +15,51 @@
     <string name="upgrade_screen_subscription_action_hint">Претплатата чини %s годишно.</string>
     <string name="upgrade_screen_iap_action">Еднократна купувачка</string>
     <string name="upgrade_screen_iap_action_hint">Еднократната купувачка чини %s.</string>
+    <string name="upgrade_screen_offer_divider_or">или</string>
+    <string name="upgrade_screen_offer_same_features">Исти функции, само различни модели на цени.</string>
     <string name="upgrade_screen_thanks_toast">Вие сте најдобри! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Обнови купувачка</string>
+    <string name="upgrade_screen_restore_banner_title">Веќе го купивте BVM Pro?</string>
+    <string name="upgrade_screen_restore_banner_body">Изгледа дека веќе сте надградиле на овој уред претходно. Обновете ја вашата куповина за да го отклучите повторно.</string>
     <string name="upgrade_screen_restore_purchase_message">Вашата надградба важи на сите уреди со иста Google сметка.</string>
     <string name="upgrade_screen_restore_troubleshooting_msg">Совети за решавање проблеми за непрепознаени надградби:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Синхронизацијата на Play Store може да потрае. Обидете се да рестартирате, исчистете ја кеш меморијата на Google Play или едноставно почекајте.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Повеќе сметки можат да го збунат Google Play. Одјавете се од другите сметки или инсталирајте преку веб-страницата на Google Play, што принудува асоцијации со конкретна сметка.</string>
+    <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
+    <string name="settings_upgrade_status_title">BVM Pro</string>
+    <string name="settings_upgrade_status_desc">Погледнете го вашиот Pro статус</string>
+    <!-- Pro status view: owned products -->
+    <string name="upgrade_screen_owned_congrats_title">Честитки!</string>
+    <string name="upgrade_screen_owned_congrats_body">Го имате BVM Pro — благодариме што го поддржувате развојот. ❤️</string>
+    <string name="upgrade_screen_owned_iap_title">Еднократна купувачка</string>
+    <string name="upgrade_screen_owned_iap_body">Го поседувате BVM Pro засекогаш. Благодариме за вашата поддршка ❤️</string>
+    <string name="upgrade_screen_owned_sub_title">Претплата</string>
+    <string name="upgrade_screen_owned_sub_renewing_body">Вашата BVM Pro претплата е активна и поставена да се обнови.</string>
+    <string name="upgrade_screen_owned_sub_not_renewing_body">Вашата BVM Pro претплата е активна, но нема да се обнови. Останува валидна до крајот на тековниот период.</string>
+    <string name="upgrade_screen_owned_both_warning">Имате и претплата и еднократна куповина. Откажете ја претплатата во Google Play за да не бидете наплатени повторно.</string>
+    <string name="upgrade_screen_manage_subscription">Управување со претплата</string>
+    <!-- Pro status view: switch subscription -> one-time purchase -->
+    <string name="upgrade_screen_switch_title">Префрлете се на еднократна куповина</string>
+    <string name="upgrade_screen_switch_purchase_note">Ова е одделна еднократна куповина. Таа не ја откажува или враќа вашата претплата, затоа откажете ја и таа во Google Play. Користете ја истата Google сметка за обете.</string>
+    <string name="upgrade_screen_switch_locked_note">Достапно откако вашата претплата повеќе не е поставена да се обнови. Откажете ја во Google Play за да се префрлите — останувате со Pro до крајот на тековниот период.</string>
+    <!-- Pro status view: restore section -->
+    <string name="upgrade_screen_status_restore_title">Статусот изгледа погрешен?</string>
+    <string name="upgrade_screen_status_restore_body">Ако вашата куповина не се појавува тука, обидете се да ја вратите.</string>
+    <!-- Grace period: confirming a purchase with Google Play -->
+    <string name="upgrade_screen_grace_title">Потврдување на вашата куповина</string>
+    <string name="upgrade_screen_grace_body_short">Чекајте — ја проверуваме вашата куповина со Google Play.</string>
+    <string name="upgrade_screen_grace_body">Сè уште не можеме да ја потврдиме вашата куповина со Google Play. Обидете се да ја обновите, или проверете дали сте најавени со вистинската сметка.</string>
+    <string name="upgrade_screen_retry_action">Пробајте повторно</string>
+    <!-- Fail-closed switch gate dialogs -->
+    <string name="upgrade_screen_sub_still_renewing_title">Претплатата е сè уште активна</string>
+    <string name="upgrade_screen_sub_still_renewing_message">Вашата претплата е сè уште поставена да се обнови. Прво откажете ја во Google Play, потоа вратете се да ја купите еднократната куповина — на тој начин нема да бидете наплатени двапати.</string>
+    <string name="upgrade_screen_sub_check_failed_message">Не можевме да го провериме вашиот статус на претплата. Ве молиме проверете ја вашата врска и обидете се повторно.</string>
+    <string name="upgrades_gplay_already_owned_error_title">Веќе купено</string>
+    <string name="upgrades_gplay_already_owned_error_description">Користете ја опцијата „Обнови куповина\" за да ја обновите вашата куповина. Ако проблемот продолжува, обидете се да го исчистите кешот на Google Play Store и да го рестартирате уредот.</string>
+    <string name="upgrades_gplay_internal_error_title">Google Play грешка</string>
+    <string name="upgrades_gplay_internal_error_description">Се случи интерна грешка на Google Play. Ве молиме обидете се со следново:\n\n• Рестартирајте го вашиот уред\n• Исчистете го кешот на Google Play Store\n• Обидете се подоцна</string>
+    <string name="upgrades_gplay_network_error_title">Грешка при поврзување</string>
+    <string name="upgrades_gplay_network_error_description">Не успеавме да се поврземе со Google Play. Проверете ја вашата интернет врска и обидете се повторно.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play не е достапен</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager не може да се поврзе со Google Play. Дали Google Play е инсталиран и ажуриран? Дали вашата Google сметка е најавена? Обидете се да ја исчистите кеш меморијата на апликацијата Google Play и рестартирајте го вашиот уред.</string>
     <string name="upgrades_no_purchases_found_check_account">Не се пронајдени купувања. Дали користите вистинска сметка?</string>
