@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.monitor.core.service
 
+import android.app.Application
 import android.app.Notification
 import android.app.NotificationManager
 import android.app.Service
@@ -26,14 +27,16 @@ import kotlin.reflect.full.declaredMemberFunctions
 import kotlin.reflect.jvm.isAccessible
 
 @RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE, sdk = [34])
+@Config(manifest = Config.NONE, sdk = [34], application = Application::class)
 class MonitorServiceTest {
 
     private val context: Context = ApplicationProvider.getApplicationContext()
 
     /**
-     * `create()` runs the real Hilt injection and the initial foreground promotion, internal
-     * state that only the running monitor produces is set directly afterwards.
+     * Runs against a plain [Application]: booting the real Hilt app would install its uncaught
+     * exception handler in the test JVM (killing the executor on stray background exceptions)
+     * and spin up flavor-specific singletons. `create()` runs the initial foreground promotion;
+     * Hilt injection fails gracefully and all internal state is set directly via reflection.
      */
     private fun createService(): MonitorService = Robolectric.buildService(MonitorService::class.java)
         .create()
