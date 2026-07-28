@@ -154,6 +154,22 @@ class MonitorControlTest : BaseTest() {
     }
 
     @Test
+    fun `startMonitor swallows a rejected service start`() = runTest(UnconfinedTestDispatcher()) {
+        every { context.startServiceCompat(any()) } throws IllegalStateException("Not allowed to start service")
+        val control = MonitorControl(
+            appScope = backgroundScope,
+            context = context,
+            deviceRepo = deviceRepo,
+            devicesSettings = devicesSettings,
+            monitorNotifications = monitorNotifications,
+        )
+
+        control.startMonitor()
+
+        verify(atLeast = 1) { context.startServiceCompat(fakeIntent) }
+    }
+
+    @Test
     fun `startMonitor is a no-op while app is disabled`() = runTest(UnconfinedTestDispatcher()) {
         enabledFlow.value = DevicesSettings.EnabledState(isEnabled = false, toggleEpoch = 1L)
         val control = MonitorControl(
