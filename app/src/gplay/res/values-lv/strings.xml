@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Priekšrocības</string>
     <string name="upgrade_screen_subscription_trial_action">Sāciet bezmaksas 14 dienu izmēģinājumu</string>
     <string name="upgrade_screen_subscription_action">Abonēt</string>
-    <string name="upgrade_screen_subscription_action_hint">Abonements maksā %s gadā.</string>
     <string name="upgrade_screen_iap_action">Vienreizējs pirkums</string>
-    <string name="upgrade_screen_iap_action_hint">Vienreizējais pirkums maksā %s.</string>
     <string name="upgrade_screen_offer_divider_or">vai</string>
-    <string name="upgrade_screen_offer_same_features">Tādas pašas funkcijas, tikai atšķirīgi cenu modeļi.</string>
     <string name="upgrade_screen_thanks_toast">Jūs esat labākais! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Atjaunot pirkumu</string>
     <string name="upgrade_screen_restore_banner_title">Jau iegādājies BVM Pro?</string>
     <string name="upgrade_screen_restore_banner_body">Šķiet, ka iepriekš esi jau uzlabojis šo ierīci. Atjauno savu pirkumu, lai to atkal atbloķētu.</string>
-    <string name="upgrade_screen_restore_purchase_message">Jūsu uzlabojums ir derīgs ierīcēs ar to pašu Google kontu.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Problēmu risināšanas padomi neatpazītiem uzlabojumiem:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinhronizācija var aizņemt laiku. Mēģiniet restartēt, notīrīt Google Play kešatmiņu vai vienkārši uzgaidīt.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Vairāki konti var sajaukt Google Play. Izejiet no citiem kontiem vai instalējiet caur Google Play tīmekļa vietni, kas piespiedu kārtā izveido asociācijas ar konkrētu kontu.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Skatīt savu Pro statusu</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Apsveicam!</string>
-    <string name="upgrade_screen_owned_congrats_body">Tev tagad ir BVM Pro — paldies, ka atbalsti izstrādi. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">Vienreizējs pirkums</string>
     <string name="upgrade_screen_owned_iap_body">BVM Pro tev pieder uz visiem laikiem. Paldies par atbalstu ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Abonements</string>
     <string name="upgrade_screen_owned_sub_renewing_body">Tavs BVM Pro abonements ir aktīvs un iestatīts atjaunoties.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">Tavs BVM Pro abonements ir aktīvs, bet netiks atjaunots. Tas paliks derīgs līdz pašreizējā perioda beigām.</string>
     <string name="upgrade_screen_owned_both_warning">Tev ir gan abonements, gan vienreizējais pirkums. Atcel abonementu Google Play, lai tev atkārtoti neieturētu maksu.</string>
     <string name="upgrade_screen_manage_subscription">Pārvaldīt abonementu</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Pāriet uz vienreizēju pirkumu</string>
-    <string name="upgrade_screen_switch_purchase_note">Šis ir atsevišķis vienreizējais pirkums. Tas neatcel un neatmaksā tavu abonementu, tāpēc atcel arī to Google Play. Abiem izmanto vienu un to pašu Google kontu.</string>
-    <string name="upgrade_screen_switch_locked_note">Pieejams, kad tavs abonements vairs nav iestatīts atjaunoties. Atcel to Google Play, lai pārietu — Pro statuss saglabāsies līdz pašreizējā perioda beigām.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">Statuss izskatās nepareizs?</string>
     <string name="upgrade_screen_status_restore_body">Ja tavs pirkums šeit nav redzams, mēģini to atjaunot.</string>

@@ -2,15 +2,18 @@ package eu.darken.bluemusic.upgrade.ui
 
 import eu.darken.bluemusic.upgrade.core.OurSku
 import eu.darken.bluemusic.upgrade.core.UpgradeRepoGplay
+import eu.darken.bluemusic.upgrade.core.billing.Sku
 import eu.darken.bluemusic.upgrade.core.billing.SkuDetails
 
-sealed interface UpgradeUiState {
+// Render-state model for the gplay upgrade screen plus the pure mappers that build it. Kept apart
+// from both the composables and the ViewModel: previews and tests construct these directly, and
+// neither side should have to drag the other in for it.
+internal sealed interface GplayUpgradeUiState {
+    data object Loading : GplayUpgradeUiState
 
-    data object Loading : UpgradeUiState
-
-    // Play couldn't return prices (both SKU queries failed/timed out) for a non-owner/non-grace user —
-    // show an error card with a Retry instead of leaving them stuck with no way to pick a plan.
-    data class Unavailable(val error: Throwable) : UpgradeUiState
+    data class Unavailable(
+        val error: Throwable,
+    ) : GplayUpgradeUiState
 
     data class Loaded(
         val subscriptionAction: SubscriptionAction,
@@ -21,83 +24,93 @@ sealed interface UpgradeUiState {
         val ownership: Ownership = Ownership(),
         val grace: GraceHint? = null,
         val wasPreviouslyPro: Boolean = false,
-        val restoreInProgress: Boolean = false,
-        val verificationInProgress: Boolean = false,
-    ) : UpgradeUiState {
-
-        // Whether an eligible, not-yet-owned offer EXISTS — independent of transient busy/settle state.
-        // Drives which acquisition buttons are shown; the busy-gated *Enabled flags drive whether they
-        // are clickable. Keeping these separate avoids the real buttons flickering out to a generic
-        // fallback button during the unsettled window or while a restore/verify runs.
-        val subscriptionAvailable: Boolean
-            get() = subscriptionAction != SubscriptionAction.UNAVAILABLE && ownership.subscription == null
-        val iapAvailable: Boolean
-            get() = iapPrice != null && !ownership.hasIap
-    }
+        val busy: BusyOp? = null,
+    ) : GplayUpgradeUiState
 }
 
-// Non-null only while the user is Pro purely via the local grace window (no owned purchase). Stage 1
-// ("confirming your purchase", quiet) becomes stage 2 (diagnostics + restore + offers) once the
-// entitlement has been unconfirmed past the 24h boundary.
-data class GraceHint(val showDiagnostics: Boolean)
+// The ONE entitlement operation currently running. Purchases and restores talk to the same Play
+// account state, so they are mutually exclusive by construction: a single slot (instead of the
+// former independent verifying/restoring flags) makes "which one is busy" unambiguous for both the
+// arbiter in the ViewModel and the spinner placement in the UI.
+internal enum class BusyOp {
+    IAP,
+    SUBSCRIPTION,
+    RESTORE,
+}
 
-data class Ownership(
+// Pro is active purely via the local grace window (no owned purchase). Stage 1 shows a quiet
+// "still active" confirmation; diagnostics + restore CTA appear once the episode has aged.
+internal data class GraceHint(
+    val showDiagnostics: Boolean,
+)
+
+internal data class Ownership(
     val hasIap: Boolean = false,
     val subscription: SubscriptionOwnership? = null,
 ) {
-    val ownsAnything: Boolean get() = hasIap || subscription != null
+    val ownsAnything: Boolean
+        get() = hasIap || subscription != null
 }
 
-data class SubscriptionOwnership(val isAutoRenewing: Boolean)
+internal data class SubscriptionOwnership(
+    val isAutoRenewing: Boolean,
+)
 
-enum class SubscriptionAction { TRIAL, STANDARD, UNAVAILABLE }
+internal enum class SubscriptionAction {
+    TRIAL,
+    STANDARD,
+    UNAVAILABLE,
+}
 
-// Conservative: if ANY record for the subscription SKU still claims auto-renew, treat the whole
-// subscription as renewing. This can only under-offer the one-time switch (never wrongly enable it);
-// the actual buy tap re-verifies against a fresh Play query anyway.
-fun UpgradeRepoGplay.Info.toOwnership(): Ownership = Ownership(
-    hasIap = upgrades.any {
-        it.sku == OurSku.Iap.PRO_UPGRADE || it.sku == OurSku.Iap.PRO_UPGRADE_LEGACY
-    },
+// Display-only ownership mapping from the (replayed) upgradeInfo. Conservative: if ANY record for
+// the sub SKU still claims auto-renew (e.g. a retained purchase event next to fresher query data),
+// treat it as renewing — that can only under-offer the one-time purchase, never enable it wrongly;
+// the actual purchase gate re-verifies against a fresh SUBS query in the ViewModel.
+//
+// hasIap matches ANY IAP-type purchase (not a specific product id): a legacy `upgrade.premium`
+// owner is a real one-time owner and must be treated as such — otherwise they'd be shown
+// acquisition offers and could re-buy.
+internal fun UpgradeRepoGplay.Info.toOwnership() = Ownership(
+    hasIap = upgrades.any { it.sku.type == Sku.Type.IAP },
     subscription = upgrades
         .filter { it.sku == OurSku.Sub.PRO_UPGRADE }
         .takeIf { it.isNotEmpty() }
         ?.let { subs -> SubscriptionOwnership(isAutoRenewing = subs.any { it.purchase.isAutoRenewing }) },
 )
 
-fun toLoadedState(
+internal fun toLoadedState(
     iap: SkuDetails?,
     sub: SkuDetails?,
     ownership: Ownership,
-    grace: GraceHint?,
-    wasPreviouslyPro: Boolean,
-    settled: Boolean,
-    restoreInProgress: Boolean,
-    verificationInProgress: Boolean,
-): UpgradeUiState.Loaded {
+    grace: GraceHint? = null,
+    wasPreviouslyPro: Boolean = false,
+    busy: BusyOp? = null,
+): GplayUpgradeUiState.Loaded {
     val iapOffer = iap?.details?.oneTimePurchaseOfferDetails
-    val subOffer = sub?.details?.subscriptionOfferDetails?.singleOrNull {
-        OurSku.Sub.PRO_UPGRADE.BASE_OFFER.matches(it)
+    val subOffer = sub?.details?.subscriptionOfferDetails?.singleOrNull { offer ->
+        OurSku.Sub.PRO_UPGRADE.BASE_OFFER.matches(offer)
     }
-    val subOfferTrial = sub?.details?.subscriptionOfferDetails?.singleOrNull {
-        OurSku.Sub.PRO_UPGRADE.TRIAL_OFFER.matches(it)
+    val subOfferTrial = sub?.details?.subscriptionOfferDetails?.singleOrNull { offer ->
+        OurSku.Sub.PRO_UPGRADE.TRIAL_OFFER.matches(offer)
     }
-    val actionsFree = settled && !restoreInProgress && !verificationInProgress
-    return UpgradeUiState.Loaded(
+
+    return GplayUpgradeUiState.Loaded(
         subscriptionAction = when {
             subOfferTrial != null -> SubscriptionAction.TRIAL
             subOffer != null -> SubscriptionAction.STANDARD
             else -> SubscriptionAction.UNAVAILABLE
         },
+        // Any running entitlement operation (restore, manual or the invisible already-owned
+        // recovery, and purchases) pauses the buy actions too — starting a purchase while an
+        // entitlement is being reconciled just races Play into ITEM_ALREADY_OWNED.
         subscriptionEnabled = (subOffer != null || subOfferTrial != null) &&
-            ownership.subscription == null && actionsFree,
-        subscriptionPrice = subOffer?.pricingPhases?.pricingPhaseList?.firstOrNull()?.formattedPrice,
-        iapEnabled = iapOffer != null && !ownership.hasIap && actionsFree,
+            ownership.subscription == null && busy == null,
+        subscriptionPrice = subOffer?.pricingPhases?.pricingPhaseList?.lastOrNull()?.formattedPrice,
+        iapEnabled = iapOffer != null && !ownership.hasIap && busy == null,
         iapPrice = iapOffer?.formattedPrice,
         ownership = ownership,
         grace = grace,
         wasPreviouslyPro = wasPreviouslyPro,
-        restoreInProgress = restoreInProgress,
-        verificationInProgress = verificationInProgress,
+        busy = busy,
     )
 }

@@ -3,6 +3,7 @@ package eu.darken.bluemusic.upgrade.core
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -16,7 +17,7 @@ import javax.inject.Singleton
 
 @Singleton
 class BillingCache @Inject constructor(
-    @param:ApplicationContext private val context: Context,
+    @ApplicationContext private val context: Context,
 ) {
 
     private val Context.dataStore by preferencesDataStore(name = "settings_gplay")
@@ -24,10 +25,11 @@ class BillingCache @Inject constructor(
     private val dataStore: DataStore<Preferences>
         get() = context.dataStore
 
-    // Raw keys shared between the DataStoreValues and the snapshot read — one source of truth for
-    // key name and encoding.
+    // Raw keys shared between the DataStoreValues and stampLastProState's transaction — one
+    // source of truth for key name and encoding.
     private val lastProStateAtKey = longPreferencesKey("gplay.cache.lastProAt")
     private val lastProStateSkuKey = stringPreferencesKey("gplay.cache.lastProSku")
+    private val proUnconfirmedSinceKey = longPreferencesKey("gplay.cache.proUnconfirmedAt")
 
     val lastProStateAt = dataStore.createValue(
         key = lastProStateAtKey,
@@ -40,7 +42,16 @@ class BillingCache @Inject constructor(
         writer = basicWriter(),
     )
 
-    // Point-in-time view of the cached values. Reading them via separate .value() calls can
+    // Start of the current "fresh data can't confirm Pro" episode (0 = none/confirmed). Drives the
+    // delayed grace hint on the upgrade screen; stamped only from fresh billing reconciliations —
+    // see UpgradeRepoGplay.recordProUnconfirmed().
+    val proUnconfirmedSince = dataStore.createValue(
+        key = proUnconfirmedSinceKey,
+        reader = basicReader(0L),
+        writer = basicWriter(),
+    )
+
+    // Point-in-time view of all three values. Reading them via three separate .value() calls can
     // straddle a concurrent stampLastProState() and observe a combination that never existed --
     // that write is transactional precisely because the values are only meaningful together.
     data class Snapshot(
@@ -54,21 +65,23 @@ class BillingCache @Inject constructor(
         return Snapshot(
             lastProStateAt = prefs[lastProStateAtKey] ?: 0L,
             lastProStateSku = prefs[lastProStateSkuKey] ?: "",
-            // The current entitlement layer has no "fresh data can't confirm Pro" episode tracking,
-            // so there is nothing persisted to read: always reported as "no open episode".
-            proUnconfirmedSince = 0L,
+            proUnconfirmedSince = prefs[proUnconfirmedSinceKey] ?: 0L,
         )
     }
 
-    // Both values describe one fact — "when were we last Pro, and via which SKU" — so they are
-    // written in a single DataStore transaction: a process death can't leave a fresh timestamp
-    // paired with a stale SKU (which would select the wrong grace window).
+    // One transaction for all three values: the timestamp gates the grace period, the SKU modifies
+    // its window length, and a confirmation closes the unconfirmed episode — none of it may be
+    // observable half-updated. `at` is the confirmation's OCCURRENCE time (commit time of the Play
+    // round-trip). The episode is closed only if it began at or before `at`: a failure that occurred
+    // AFTER this confirmation (e.g. a connection drop right after this success, delivered to the
+    // entitlement layer out of order) opened a still-valid episode that this older confirmation must
+    // not erase.
     suspend fun stampLastProState(skuId: String, at: Long) {
-        dataStore.updateData { prefs ->
-            prefs.toMutablePreferences().apply {
-                lastProStateSku.setIn(this, skuId)
-                lastProStateAt.setIn(this, at)
-            }.toPreferences()
+        dataStore.edit { prefs ->
+            prefs[lastProStateSkuKey] = skuId
+            prefs[lastProStateAtKey] = at
+            val episodeStart = prefs[proUnconfirmedSinceKey] ?: 0L
+            if (episodeStart in 1..at) prefs[proUnconfirmedSinceKey] = 0L
         }
     }
 }

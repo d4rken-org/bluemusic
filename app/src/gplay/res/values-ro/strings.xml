@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Avantaje</string>
     <string name="upgrade_screen_subscription_trial_action">Începeți trial-ul gratuit 14 zile</string>
     <string name="upgrade_screen_subscription_action">Abonează-te</string>
-    <string name="upgrade_screen_subscription_action_hint">Abonamentul costă %s pe an.</string>
     <string name="upgrade_screen_iap_action">Achiziție unică</string>
-    <string name="upgrade_screen_iap_action_hint">Achiziția unică costă %s.</string>
     <string name="upgrade_screen_offer_divider_or">sau</string>
-    <string name="upgrade_screen_offer_same_features">Aceleași funcții, doar cu modele de preț diferite.</string>
     <string name="upgrade_screen_thanks_toast">Ești cel mai bun! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Restabiliți achiziția</string>
     <string name="upgrade_screen_restore_banner_title">Ai cumpărat deja BVM Pro?</string>
     <string name="upgrade_screen_restore_banner_body">Se pare că ai mai făcut upgrade pe acest dispozitiv. Restabilește achiziția pentru a o debloca din nou.</string>
-    <string name="upgrade_screen_restore_purchase_message">Actualizarea dvs. este valabilă pe toate dispozitivele dvs. pe același cont Google.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Sfaturi depanare pentru upgrade-uri nerecunoscute:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Sincronizarea Magazinului Play poate dura timp. Încercați repornirea, ștergeți memoria cache Google Play sau doar așteptați.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Conturile multiple pot deruta Google Play. Deconectați-vă din alte conturi sau instalați prin site-ul Google Play, care forțează asociațiile cu un anumit cont.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Vizualizează-ți statusul Pro</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Felicitări!</string>
-    <string name="upgrade_screen_owned_congrats_body">Ai BVM Pro — mulțumesc că susții dezvoltarea. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">Achiziție unică</string>
     <string name="upgrade_screen_owned_iap_body">Deții BVM Pro pentru totdeauna. Mulțumesc pentru suportul tău ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Abonament</string>
     <string name="upgrade_screen_owned_sub_renewing_body">Abonamentul tău BVM Pro este activ și setat să se reînnoiască.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">Abonamentul tău BVM Pro este activ, dar nu se va reînnoi. Rămâne valabil până la sfârșitul perioadei curente.</string>
     <string name="upgrade_screen_owned_both_warning">Ai atât un abonament, cât și o achiziție unică. Anulează abonamentul din Google Play ca să nu fii taxat din nou.</string>
     <string name="upgrade_screen_manage_subscription">Gestionează abonamentul</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Treci la o achiziție unică</string>
-    <string name="upgrade_screen_switch_purchase_note">Aceasta este o achiziție unică separată. Nu anulează și nu rambursează abonamentul, așa că anulează-l și pe acela în Google Play. Folosește același cont Google pentru ambele.</string>
-    <string name="upgrade_screen_switch_locked_note">Disponibil când abonamentul tău nu mai e setat să se reînnoiască. Anulează-l în Google Play ca să treci la achiziția unică — păstrezi Pro până la sfârșitul perioadei curente.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">Starea pare greșită?</string>
     <string name="upgrade_screen_status_restore_body">Dacă achiziția ta nu apare aici, încearcă să o restabilești.</string>

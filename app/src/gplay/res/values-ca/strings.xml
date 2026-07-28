@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Avantatges</string>
     <string name="upgrade_screen_subscription_trial_action">Comença la prova gratuïta de 14 dies</string>
     <string name="upgrade_screen_subscription_action">Subscripció</string>
-    <string name="upgrade_screen_subscription_action_hint">El preu de la subscripció és de %s anuals.</string>
     <string name="upgrade_screen_iap_action">Compra única</string>
-    <string name="upgrade_screen_iap_action_hint">El preu de la compra única és de %s.</string>
     <string name="upgrade_screen_offer_divider_or">o</string>
-    <string name="upgrade_screen_offer_same_features">Mateixes funcions, només canvia el model de preus.</string>
     <string name="upgrade_screen_thanks_toast">Sou el millor! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Restaura la compra</string>
     <string name="upgrade_screen_restore_banner_title">Ja heu comprat BVM Pro?</string>
     <string name="upgrade_screen_restore_banner_body">Sembla que ja vau actualitzar en aquest dispositiu abans. Restaureu la vostra compra per tornar-la a desbloquejar.</string>
-    <string name="upgrade_screen_restore_purchase_message">La vostra millora és vàlida en tots els dispositius del mateix compte de Google.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Consells de resolució de problemes per a millores no reconegudes:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">La sincronització del Play Store pot trigar un temps. Proveu de reiniciar, esborrar la memòria cau del Google Play o simplement espereu.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Diversos comptes poden confondre el Google Play. Tanqueu la sessió d\'altres comptes o instal·leu-lo a través del lloc web del Google Play, que obliga a associar-los amb un compte específic.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Consulteu el vostre estat Pro</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Enhorabona!</string>
-    <string name="upgrade_screen_owned_congrats_body">Ja teniu BVM Pro. Gràcies per donar suport al desenvolupament. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">Compra única</string>
     <string name="upgrade_screen_owned_iap_body">Teniu BVM Pro per sempre. Gràcies pel vostre suport ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Subscripció</string>
     <string name="upgrade_screen_owned_sub_renewing_body">La vostra subscripció a BVM Pro està activa i es renovarà.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">La vostra subscripció a BVM Pro està activa però no es renovarà. Es mantindrà vàlida fins al final del període actual.</string>
     <string name="upgrade_screen_owned_both_warning">Teniu tant la subscripció com la compra única. Cancel·leu la subscripció a Google Play perquè no us tornin a cobrar.</string>
     <string name="upgrade_screen_manage_subscription">Gestiona la subscripció</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Canvieu a una compra única</string>
-    <string name="upgrade_screen_switch_purchase_note">Això és una compra única independent. No cancel·la ni reemborsa la vostra subscripció, així que cancel·leu-la també a Google Play. Utilitzeu el mateix compte de Google per a totes dues.</string>
-    <string name="upgrade_screen_switch_locked_note">Disponible quan la vostra subscripció ja no estigui configurada per renovar-se. Cancel·leu-la a Google Play per canviar: mantindreu el Pro fins que acabi el període actual.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">L\'estat sembla incorrecte?</string>
     <string name="upgrade_screen_status_restore_body">Si la vostra compra no apareix aquí, proveu de restaurar-la.</string>

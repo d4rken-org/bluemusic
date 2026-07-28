@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">優點</string>
     <string name="upgrade_screen_subscription_trial_action">開始 14 天免費試用</string>
     <string name="upgrade_screen_subscription_action">訂閱</string>
-    <string name="upgrade_screen_subscription_action_hint">訂閱費用為 %s 每年。</string>
     <string name="upgrade_screen_iap_action">一次購買</string>
-    <string name="upgrade_screen_iap_action_hint">一次購買的費用為 %s。</string>
     <string name="upgrade_screen_offer_divider_or">或</string>
-    <string name="upgrade_screen_offer_same_features">功能一樣，只是定價模式不同。</string>
     <string name="upgrade_screen_thanks_toast">您是最棒的！❤️</string>
     <string name="upgrade_screen_restore_purchase_action">還原購買</string>
     <string name="upgrade_screen_restore_banner_title">已經買過 BVM Pro？</string>
     <string name="upgrade_screen_restore_banner_body">看起來您之前在此裝置上已升級過。還原您的購買以再次解鎖。</string>
-    <string name="upgrade_screen_restore_purchase_message">您的升級在同一 Google 帳戶的所有裝置上都有效。</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">無法辨識升級的疑難排解提示：</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play 商店同步處理可能需要一些時間。請嘗試重新開機、清除 Google Play 快取或只需等候。</string>
     <string name="upgrade_screen_restore_multiaccount_hint">多重帳戶可能會導致 Google Play 混亂。登出其他帳戶或透過 Google Play 網站安裝，這會強制與特定帳戶關聯。</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">查看您的 Pro 狀態</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">恭喜！</string>
-    <string name="upgrade_screen_owned_congrats_body">您已獲得 BVM Pro——謝謝您支持開發。❤️</string>
     <string name="upgrade_screen_owned_iap_title">一次購買</string>
     <string name="upgrade_screen_owned_iap_body">您永遠擁有 BVM Pro。感謝您的支持 ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">訂閱</string>
     <string name="upgrade_screen_owned_sub_renewing_body">您的 BVM Pro 訂閱處於有效狀態且將續訂。</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">您的 BVM Pro 訂閱處於有效狀態但不會續訂。它在目前期間結束前保持有效。</string>
     <string name="upgrade_screen_owned_both_warning">您同時擁有訂閱和一次性購買。請在 Google Play 中取消訂閱以避免再次收費。</string>
     <string name="upgrade_screen_manage_subscription">管理訂閱</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">切換為一次性購買</string>
-    <string name="upgrade_screen_switch_purchase_note">這是獨立的一次性購買。它不會取消或退款您的訂閱，因此請也在 Google Play 中取消該訂閱。兩者請使用同一個 Google 帳戶。</string>
-    <string name="upgrade_screen_switch_locked_note">當您的訂閱不再設定為續訂後即可使用。在 Google Play 中取消訂閱以進行切換 — 您將保持 Pro 狀態直到目前期間結束。</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">狀態看起來有誤？</string>
     <string name="upgrade_screen_status_restore_body">如果您的購買未顯示在這裡，請嘗試還原它。</string>

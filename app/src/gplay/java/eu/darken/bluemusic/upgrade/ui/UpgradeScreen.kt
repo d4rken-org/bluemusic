@@ -1,49 +1,32 @@
 package eu.darken.bluemusic.upgrade.ui
 
-import android.app.Activity
-import androidx.compose.animation.Crossfade
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import android.widget.Toast
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.twotone.Autorenew
-import androidx.compose.material.icons.twotone.Devices
-import androidx.compose.material.icons.twotone.Favorite
-import androidx.compose.material.icons.twotone.Palette
-import androidx.compose.material.icons.twotone.PlayCircle
-import androidx.compose.material.icons.twotone.Stars
-import androidx.compose.material.icons.twotone.Tune
-import androidx.compose.material.icons.twotone.Verified
+import androidx.compose.material.icons.twotone.AutoAwesome
+import androidx.compose.material.icons.twotone.WarningAmber
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -51,7 +34,6 @@ import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.error.ErrorEventHandler
-
 
 @Composable
 fun UpgradeScreenHost(
@@ -61,899 +43,389 @@ fun UpgradeScreenHost(
         creationCallback = { factory: UpgradeViewModel.Factory -> factory.create(manage = manage) },
     ),
 ) {
-    val context = LocalContext.current
-    val snackbarHostState = remember { SnackbarHostState() }
-    val restoreSucceededMessage = stringResource(R.string.upgrade_screen_thanks_toast)
-
-    var showRestoreFailedDialog by rememberSaveable { mutableStateOf(false) }
-    var showStillRenewingDialog by rememberSaveable { mutableStateOf(false) }
-    var showCheckFailedDialog by rememberSaveable { mutableStateOf(false) }
-
     ErrorEventHandler(vm)
 
-    val state by vm.state.collectAsStateWithLifecycle()
-    UpgradeScreen(
-        state = state,
-        snackbarHostState = snackbarHostState,
-        onNavigateBack = { vm.navUp() },
-        onGoIap = { vm.onGoIap(context as Activity) },
-        onGoSubscription = { vm.onGoSubscription(context as Activity) },
-        onGoSubscriptionTrial = { vm.onGoSubscriptionTrial(context as Activity) },
-        onManageSubscription = { vm.onManageSubscription() },
-        onRestorePurchase = { vm.restorePurchase() },
-        onRetry = { vm.onRetry() },
-    )
+    val context = LocalContext.current
+    val activity = context as? android.app.Activity
 
-    LaunchedEffect(Unit) {
+    // No screen-level resume refresh: MainActivity already refreshes the upgrade repo on every
+    // activity resume, which covers returning from Play after cancelling the subscription there.
+
+    // rememberSaveable, not remember: these are driven by one-shot events that are already consumed
+    // from the flow, so a rotation while a dialog is up would drop it for good.
+    var showRestoreFailed by rememberSaveable { mutableStateOf(false) }
+    var showRestoreInconclusive by rememberSaveable { mutableStateOf(false) }
+    var showStillRenewing by rememberSaveable { mutableStateOf(false) }
+    var showCheckFailed by rememberSaveable { mutableStateOf(false) }
+
+    LaunchedEffect(vm) {
         vm.events.collect { event ->
             when (event) {
-                UpgradeEvents.RestoreSucceeded -> snackbarHostState.showSnackbar(restoreSucceededMessage)
-                UpgradeEvents.RestoreFailed -> showRestoreFailedDialog = true
-                UpgradeEvents.SubscriptionStillRenewing -> showStillRenewingDialog = true
-                UpgradeEvents.SubscriptionCheckFailed -> showCheckFailedDialog = true
+                UpgradeEvents.RestoreSucceeded -> Toast.makeText(
+                    context,
+                    context.getString(R.string.upgrade_screen_thanks_toast),
+                    Toast.LENGTH_LONG,
+                ).show()
+
+                UpgradeEvents.RestoreFailed -> showRestoreFailed = true
+                UpgradeEvents.RestoreInconclusive -> showRestoreInconclusive = true
+                UpgradeEvents.SubscriptionStillRenewing -> showStillRenewing = true
+                UpgradeEvents.SubscriptionCheckFailed -> showCheckFailed = true
             }
         }
     }
 
-    if (showRestoreFailedDialog) {
+    if (showRestoreFailed) {
         RestoreFailedDialog(
             onContactSupport = {
-                showRestoreFailedDialog = false
+                showRestoreFailed = false
                 vm.onContactSupport()
             },
-            onDismiss = { showRestoreFailedDialog = false },
+            onDismiss = { showRestoreFailed = false },
         )
     }
-    if (showStillRenewingDialog) {
-        SubscriptionStillRenewingDialog(
-            onManageSubscription = { vm.onManageSubscription() },
-            onDismiss = { showStillRenewingDialog = false },
+
+    if (showRestoreInconclusive) {
+        RestoreInconclusiveDialog(
+            onRetry = {
+                showRestoreInconclusive = false
+                vm.restorePurchase()
+            },
+            onDismiss = { showRestoreInconclusive = false },
         )
     }
-    if (showCheckFailedDialog) {
-        SubscriptionCheckFailedDialog(onDismiss = { showCheckFailedDialog = false })
-    }
-}
 
-@Composable
-fun UpgradeScreen(
-    state: UpgradeUiState?,
-    onNavigateBack: () -> Unit,
-    onGoIap: () -> Unit,
-    onGoSubscription: () -> Unit,
-    onGoSubscriptionTrial: () -> Unit,
-    onManageSubscription: () -> Unit,
-    onRestorePurchase: () -> Unit,
-    onRetry: () -> Unit,
-    snackbarHostState: SnackbarHostState? = null,
-) {
-    val loaded = state as? UpgradeUiState.Loaded
-    val isOwner = loaded?.ownership?.ownsAnything == true
-    val inGrace = loaded?.grace != null
-
-    // Coarse phase for the content cross-fade. Deliberately excludes prices, busy flags and
-    // subscriptionAction: within-phase changes (price load, restore/verify spinners, TRIAL<->STANDARD,
-    // grace quiet<->diagnostics) update in place, only phase changes (e.g. Loading -> offers) fade.
-    val phase = when {
-        state == null || state is UpgradeUiState.Loading -> UpgradeContentPhase.LOADING
-        state is UpgradeUiState.Unavailable -> UpgradeContentPhase.UNAVAILABLE
-        isOwner -> UpgradeContentPhase.OWNER
-        inGrace -> UpgradeContentPhase.GRACE
-        else -> UpgradeContentPhase.ACQUISITION
-    }
-
-    UpgradeScreenShell(
-        // Owners and grace users get the celebratory "Pro" title; acquisition gets the plain pitch title.
-        title = if (isOwner || inGrace) {
-            stringResource(R.string.app_name_upgraded)
-        } else {
-            stringResource(R.string.upgrade_screen_title)
-        },
-        postfix = stringResource(R.string.app_name_upgrade_postfix),
-        onNavigateBack = onNavigateBack,
-        snackbarHostState = snackbarHostState,
-    ) {
-        Crossfade(targetState = phase, label = "upgrade-content") { target ->
-            // One Column per branch so animation content never overlaps; each branch reads the live
-            // state so the incoming frame always shows current data.
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                when (target) {
-                    UpgradeContentPhase.LOADING ->
-                        CircularProgressIndicator(modifier = Modifier.padding(vertical = 24.dp))
-
-                    UpgradeContentPhase.UNAVAILABLE -> UnavailableContent(onRetry = onRetry)
-
-                    UpgradeContentPhase.OWNER -> loaded?.let {
-                        OwnerContent(
-                            state = it,
-                            onGoIap = onGoIap,
-                            onManageSubscription = onManageSubscription,
-                            onRestorePurchase = onRestorePurchase,
-                        )
-                    }
-
-                    UpgradeContentPhase.GRACE -> loaded?.let {
-                        GraceContent(
-                            state = it,
-                            onGoIap = onGoIap,
-                            onGoSubscription = onGoSubscription,
-                            onGoSubscriptionTrial = onGoSubscriptionTrial,
-                            onRestorePurchase = onRestorePurchase,
-                            onRetry = onRetry,
-                        )
-                    }
-
-                    UpgradeContentPhase.ACQUISITION -> loaded?.let {
-                        AcquisitionContent(
-                            state = it,
-                            onGoIap = onGoIap,
-                            onGoSubscription = onGoSubscription,
-                            onGoSubscriptionTrial = onGoSubscriptionTrial,
-                            onRestorePurchase = onRestorePurchase,
-                            onRetry = onRetry,
-                        )
-                    }
+    if (showStillRenewing) {
+        AlertDialog(
+            onDismissRequest = { showStillRenewing = false },
+            title = { Text(stringResource(R.string.upgrade_screen_sub_still_renewing_title)) },
+            text = { Text(stringResource(R.string.upgrade_screen_sub_still_renewing_message)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    showStillRenewing = false
+                    vm.onManageSubscription()
+                }) {
+                    Text(stringResource(R.string.upgrade_screen_manage_subscription))
                 }
-            }
-        }
-    }
-}
-
-private enum class UpgradeContentPhase { LOADING, UNAVAILABLE, OWNER, GRACE, ACQUISITION }
-
-// ---- Owner (Pro status) ----
-
-@Composable
-private fun OwnerContent(
-    state: UpgradeUiState.Loaded,
-    onGoIap: () -> Unit,
-    onManageSubscription: () -> Unit,
-    onRestorePurchase: () -> Unit,
-) {
-    val ownership = state.ownership
-    val subscription = ownership.subscription
-
-    CongratulationsCard()
-    Spacer(modifier = Modifier.height(12.dp))
-    BenefitsRecapCard()
-
-    if (ownership.hasIap) {
-        Spacer(modifier = Modifier.height(12.dp))
-        StatusCard(
-            icon = Icons.TwoTone.Stars,
-            title = stringResource(R.string.upgrade_screen_owned_iap_title),
-            body = stringResource(R.string.upgrade_screen_owned_iap_body),
-        )
-    }
-
-    if (subscription != null) {
-        Spacer(modifier = Modifier.height(12.dp))
-        StatusCard(
-            icon = Icons.TwoTone.Autorenew,
-            title = stringResource(R.string.upgrade_screen_owned_sub_title),
-            body = stringResource(
-                if (subscription.isAutoRenewing) {
-                    R.string.upgrade_screen_owned_sub_renewing_body
-                } else {
-                    R.string.upgrade_screen_owned_sub_not_renewing_body
-                },
-            ),
-        ) {
-            if (subscription.isAutoRenewing && ownership.hasIap) {
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = stringResource(R.string.upgrade_screen_owned_both_warning),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.error,
-                )
-            }
-            Spacer(modifier = Modifier.height(12.dp))
-            OutlinedButton(
-                onClick = onManageSubscription,
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text(text = stringResource(R.string.upgrade_screen_manage_subscription))
-            }
-        }
-    }
-
-    // The switch offer: any subscriber who doesn't own the one-time purchase. Locked while the
-    // subscription is still set to renew (buying now would double-bill); unlocked once it won't renew.
-    if (subscription != null && !ownership.hasIap) {
-        val switchUnlocked = !subscription.isAutoRenewing
-        Spacer(modifier = Modifier.height(12.dp))
-        ElevatedCard(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.padding(14.dp)) {
-                Text(
-                    text = stringResource(R.string.upgrade_screen_switch_title),
-                    style = MaterialTheme.typography.titleMedium,
-                )
-                state.iapPrice?.let { price ->
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = stringResource(R.string.upgrade_screen_iap_action_hint, price),
-                        style = MaterialTheme.typography.bodyMedium,
-                    )
+            },
+            dismissButton = {
+                TextButton(onClick = { showStillRenewing = false }) {
+                    Text(stringResource(R.string.general_dismiss_action))
                 }
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = stringResource(
-                        if (switchUnlocked) {
-                            R.string.upgrade_screen_switch_purchase_note
-                        } else {
-                            R.string.upgrade_screen_switch_locked_note
-                        },
-                    ),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                Spacer(modifier = Modifier.height(12.dp))
-                Button(
-                    onClick = onGoIap,
-                    enabled = switchUnlocked && !state.verificationInProgress && !state.restoreInProgress,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    if (state.verificationInProgress) {
-                        CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
-                        Spacer(modifier = Modifier.size(8.dp))
-                    }
-                    Text(text = stringResource(R.string.upgrade_screen_iap_action))
+            },
+        )
+    }
+
+    if (showCheckFailed) {
+        AlertDialog(
+            onDismissRequest = { showCheckFailed = false },
+            text = { Text(stringResource(R.string.upgrade_screen_sub_check_failed_message)) },
+            confirmButton = {
+                TextButton(onClick = { showCheckFailed = false }) {
+                    Text(stringResource(R.string.general_dismiss_action))
                 }
-            }
-        }
-    }
-
-    Spacer(modifier = Modifier.height(16.dp))
-    StatusRestoreSection(
-        restoreInProgress = state.restoreInProgress,
-        verificationInProgress = state.verificationInProgress,
-        onRestorePurchase = onRestorePurchase,
-    )
-}
-
-// ---- Grace (Pro active, Play can't confirm) ----
-
-@Composable
-private fun GraceContent(
-    state: UpgradeUiState.Loaded,
-    onGoIap: () -> Unit,
-    onGoSubscription: () -> Unit,
-    onGoSubscriptionTrial: () -> Unit,
-    onRestorePurchase: () -> Unit,
-    onRetry: () -> Unit,
-) {
-    val grace = state.grace ?: return
-    ElevatedCard(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-            contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-        ),
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            if (grace.showDiagnostics) {
-                Icon(imageVector = Icons.TwoTone.Verified, contentDescription = null)
-            } else {
-                CircularProgressIndicator(modifier = Modifier.size(24.dp), strokeWidth = 2.dp)
-            }
-            Spacer(modifier = Modifier.height(10.dp))
-            Text(
-                text = stringResource(R.string.upgrade_screen_grace_title),
-                style = MaterialTheme.typography.titleMedium,
-            )
-            Spacer(modifier = Modifier.height(6.dp))
-            Text(
-                text = stringResource(
-                    if (grace.showDiagnostics) {
-                        R.string.upgrade_screen_grace_body
-                    } else {
-                        R.string.upgrade_screen_grace_body_short
-                    },
-                ),
-                style = MaterialTheme.typography.bodyMedium,
-            )
-        }
-    }
-
-    // The quiet stage stays calm. The aged (diagnostics) stage offers a restore escape hatch AND
-    // re-surfaces the purchase offers, so a genuinely-lapsed subscriber can re-subscribe or switch to
-    // the one-time purchase without waiting the grace window out.
-    if (grace.showDiagnostics) {
-        Spacer(modifier = Modifier.height(16.dp))
-        RestoreButton(
-            restoreInProgress = state.restoreInProgress,
-            enabled = !state.restoreInProgress && !state.verificationInProgress,
-            onRestorePurchase = onRestorePurchase,
-            filled = true,
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        OfferButtons(
-            state = state,
-            onGoIap = onGoIap,
-            onGoSubscription = onGoSubscription,
-            onGoSubscriptionTrial = onGoSubscriptionTrial,
-            onRetry = onRetry,
-            // Grace = the user is Pro but Play can't confirm. Only offer the one-time IAP, which Play
-            // blocks with ITEM_ALREADY_OWNED if already owned; a subscription purchase here could
-            // double-bill an unconfirmed permanent-IAP owner.
-            allowSubscription = false,
-        )
-    }
-}
-
-// ---- Unavailable (price query failed) ----
-
-@Composable
-private fun UnavailableContent(onRetry: () -> Unit) {
-    ElevatedCard(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.errorContainer,
-            contentColor = MaterialTheme.colorScheme.onErrorContainer,
-        ),
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                text = stringResource(R.string.upgrades_gplay_unavailable_error_title),
-                style = MaterialTheme.typography.titleMedium,
-            )
-            Spacer(modifier = Modifier.height(6.dp))
-            Text(
-                text = stringResource(R.string.upgrades_gplay_unavailable_error_description),
-                style = MaterialTheme.typography.bodyMedium,
-            )
-        }
-    }
-    Spacer(modifier = Modifier.height(16.dp))
-    Button(
-        onClick = onRetry,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(48.dp),
-    ) {
-        Text(text = stringResource(R.string.upgrade_screen_retry_action))
-    }
-}
-
-// ---- Acquisition (sales) ----
-
-@Composable
-private fun AcquisitionContent(
-    state: UpgradeUiState.Loaded,
-    onGoIap: () -> Unit,
-    onGoSubscription: () -> Unit,
-    onGoSubscriptionTrial: () -> Unit,
-    onRestorePurchase: () -> Unit,
-    onRetry: () -> Unit,
-) {
-    ElevatedCard(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-        ),
-    ) {
-        Text(
-            text = stringResource(R.string.upgrade_screen_preamble),
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSecondaryContainer,
-            modifier = Modifier.padding(14.dp),
+            },
         )
     }
 
-    Spacer(modifier = Modifier.height(14.dp))
-    BenefitsRecapCard()
-    Spacer(modifier = Modifier.height(18.dp))
+    val uiState by vm.state.collectAsStateWithLifecycle()
 
-    if (state.wasPreviouslyPro) {
-        RestoreBanner(
-            onRestorePurchase = onRestorePurchase,
-            restoreInProgress = state.restoreInProgress,
-            verificationInProgress = state.verificationInProgress,
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-    }
-
-    OfferButtons(
-        state = state,
-        onGoIap = onGoIap,
-        onGoSubscription = onGoSubscription,
-        onGoSubscriptionTrial = onGoSubscriptionTrial,
-        onRetry = onRetry,
+    UpgradeScreen(
+        uiState = uiState,
+        onIap = { activity?.let { vm.onGoIap(it) } },
+        onSubscription = { activity?.let { vm.onGoSubscription(it) } },
+        onSubscriptionTrial = { activity?.let { vm.onGoSubscriptionTrial(it) } },
+        onRestore = vm::restorePurchase,
+        onManageSubscription = vm::onManageSubscription,
+        onRetry = vm::retrySkuQuery,
+        onNavigateUp = vm::navUp,
     )
-
-    Spacer(modifier = Modifier.height(16.dp))
-    RestoreButton(
-        restoreInProgress = state.restoreInProgress,
-        enabled = !state.restoreInProgress && !state.verificationInProgress,
-        onRestorePurchase = onRestorePurchase,
-        filled = false,
-    )
-    PriceHint(stringResource(R.string.upgrade_screen_restore_purchase_message))
 }
 
-// The subscription / one-time / generic purchase buttons. Shared by the acquisition screen and the
-// aged grace stage. Show/hide by whether an offer EXISTS (subscriptionAvailable/iapAvailable); enable
-// by whether the action is currently usable (the busy-gated *Enabled flags) — using the busy-gated
-// flags for visibility would swap the real buttons for the generic fallback during the unsettled
-// window or while a restore/verify runs.
+/**
+ * Shown when Play answered and no purchase was found. Leads with the just-happened live check,
+ * which is literally true here: non-answers route to [RestoreInconclusiveDialog] instead. This is
+ * the ONLY contact-support surface — escalation comes after an empty restore, never before.
+ */
 @Composable
-private fun OfferButtons(
-    state: UpgradeUiState.Loaded,
-    onGoIap: () -> Unit,
-    onGoSubscription: () -> Unit,
-    onGoSubscriptionTrial: () -> Unit,
-    onRetry: () -> Unit,
-    // Grace passes false: only the one-time IAP (which Play blocks with ITEM_ALREADY_OWNED if already
-    // owned) is safe to offer to an UNCONFIRMED owner. A subscription purchase has no cross-SKU
-    // double-bill protection, so an unconfirmed permanent-IAP owner could pay twice.
-    allowSubscription: Boolean = true,
+internal fun RestoreFailedDialog(
+    onContactSupport: () -> Unit = {},
+    onDismiss: () -> Unit = {},
 ) {
-    val hasSub = state.subscriptionAvailable && allowSubscription
-    val hasIap = state.iapAvailable
-
-    if (hasSub) {
-        val isTrial = state.subscriptionAction == SubscriptionAction.TRIAL
-        Button(
-            onClick = if (isTrial) onGoSubscriptionTrial else onGoSubscription,
-            enabled = state.subscriptionEnabled,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp),
-        ) {
-            Icon(imageVector = Icons.TwoTone.Stars, contentDescription = null)
-            Text(
-                text = stringResource(
-                    if (isTrial) R.string.upgrade_screen_subscription_trial_action
-                    else R.string.upgrade_screen_subscription_action,
-                ),
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(start = 8.dp),
-            )
-        }
-        state.subscriptionPrice?.let { price ->
-            PriceHint(stringResource(R.string.upgrade_screen_subscription_action_hint, price))
-        }
-    }
-
-    if (hasSub && hasIap) OrDivider()
-
-    if (hasIap) {
-        if (hasSub) {
-            FilledTonalButton(
-                onClick = onGoIap,
-                enabled = state.iapEnabled,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp),
-            ) {
-                Text(
-                    text = stringResource(R.string.upgrade_screen_iap_action),
-                    style = MaterialTheme.typography.titleMedium,
-                )
-            }
-        } else {
-            Button(
-                onClick = onGoIap,
-                enabled = state.iapEnabled,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp),
-            ) {
-                Icon(imageVector = Icons.TwoTone.Stars, contentDescription = null)
-                Text(
-                    text = stringResource(R.string.upgrade_screen_iap_action),
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(start = 8.dp),
-                )
-            }
-        }
-        state.iapPrice?.let { price ->
-            PriceHint(stringResource(R.string.upgrade_screen_iap_action_hint, price))
-        }
-    }
-
-    if (hasSub && hasIap) {
-        Text(
-            text = stringResource(R.string.upgrade_screen_offer_same_features),
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp),
-        )
-    }
-
-    if (!hasSub && !hasIap) {
-        // No offers loaded (e.g. a transient Play price hiccup for a grace/price-independent user).
-        // Give a Retry to reload the offers, plus the generic upgrade button (which re-queries at
-        // purchase time) as a fallback.
-        Button(
-            onClick = onGoIap,
-            enabled = !state.restoreInProgress && !state.verificationInProgress,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp),
-        ) {
-            Icon(imageVector = Icons.TwoTone.Stars, contentDescription = null)
-            Text(
-                text = stringResource(R.string.general_upgrade_action),
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(start = 8.dp),
-            )
-        }
-        Spacer(modifier = Modifier.height(8.dp))
-        OutlinedButton(
-            onClick = onRetry,
-            enabled = !state.restoreInProgress && !state.verificationInProgress,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp),
-        ) {
-            Text(text = stringResource(R.string.upgrade_screen_retry_action))
-        }
-    }
-}
-
-// ---- Shared bits ----
-
-@Composable
-private fun CongratulationsCard() {
-    ElevatedCard(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-            contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-        ),
-    ) {
-        Column(modifier = Modifier.padding(14.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    imageVector = Icons.TwoTone.Verified,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary,
-                )
-                Text(
-                    text = stringResource(R.string.upgrade_screen_owned_congrats_title),
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(start = 8.dp),
-                )
-            }
-            Spacer(modifier = Modifier.height(6.dp))
-            Text(
-                text = stringResource(R.string.upgrade_screen_owned_congrats_body),
-                style = MaterialTheme.typography.bodyMedium,
-            )
-        }
-    }
-}
-
-@Composable
-private fun BenefitsRecapCard() {
-    val benefits = listOf(
-        UpgradeBenefitItem(Icons.TwoTone.Devices, stringResource(R.string.upgrade_benefit_unlimited_devices)),
-        UpgradeBenefitItem(Icons.TwoTone.PlayCircle, stringResource(R.string.upgrade_benefit_connection_actions)),
-        UpgradeBenefitItem(Icons.TwoTone.Palette, stringResource(R.string.upgrade_benefit_theme_customization)),
-        UpgradeBenefitItem(Icons.TwoTone.Tune, stringResource(R.string.upgrade_benefit_power_controls)),
-        UpgradeBenefitItem(Icons.TwoTone.Favorite, stringResource(R.string.upgrade_benefit_support)),
-    )
-    BenefitListCard(title = stringResource(R.string.upgrade_screen_why_title), benefits = benefits)
-}
-
-@Composable
-private fun StatusCard(
-    icon: ImageVector,
-    title: String,
-    body: String,
-    extra: @Composable (() -> Unit)? = null,
-) {
-    ElevatedCard(modifier = Modifier.fillMaxWidth()) {
-        Column(modifier = Modifier.padding(14.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(imageVector = icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary)
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.padding(start = 8.dp),
-                )
-            }
-            Spacer(modifier = Modifier.height(6.dp))
-            Text(text = body, style = MaterialTheme.typography.bodyMedium)
-            extra?.invoke()
-        }
-    }
-}
-
-@Composable
-private fun StatusRestoreSection(
-    restoreInProgress: Boolean,
-    verificationInProgress: Boolean,
-    onRestorePurchase: () -> Unit,
-) {
-    Text(
-        text = stringResource(R.string.upgrade_screen_status_restore_title),
-        style = MaterialTheme.typography.titleMedium,
-    )
-    Spacer(modifier = Modifier.height(6.dp))
-    Text(
-        text = stringResource(R.string.upgrade_screen_status_restore_body),
-        style = MaterialTheme.typography.bodySmall,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-    )
-    Spacer(modifier = Modifier.height(10.dp))
-    RestoreButton(
-        restoreInProgress = restoreInProgress,
-        enabled = !restoreInProgress && !verificationInProgress,
-        onRestorePurchase = onRestorePurchase,
-        filled = false,
-    )
-}
-
-@Composable
-private fun RestoreButton(
-    restoreInProgress: Boolean,
-    enabled: Boolean,
-    onRestorePurchase: () -> Unit,
-    filled: Boolean,
-) {
-    val content: @Composable () -> Unit = {
-        if (restoreInProgress) {
-            CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
-            Text(
-                text = stringResource(R.string.upgrade_screen_restore_purchase_action),
-                modifier = Modifier.padding(start = 8.dp),
-            )
-        } else {
-            Text(text = stringResource(R.string.upgrade_screen_restore_purchase_action))
-        }
-    }
-    if (filled) {
-        Button(
-            onClick = onRestorePurchase,
-            enabled = enabled,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp),
-        ) { content() }
-    } else {
-        OutlinedButton(
-            onClick = onRestorePurchase,
-            enabled = enabled,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp),
-        ) { content() }
-    }
-}
-
-@Composable
-private fun OrDivider() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        HorizontalDivider(modifier = Modifier.weight(1f))
-        Text(
-            text = stringResource(R.string.upgrade_screen_offer_divider_or),
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.padding(horizontal = 12.dp),
-        )
-        HorizontalDivider(modifier = Modifier.weight(1f))
-    }
-}
-
-@Composable
-private fun PriceHint(text: String) {
-    Text(
-        text = text,
-        style = MaterialTheme.typography.bodySmall,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        textAlign = TextAlign.Center,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 8.dp),
-    )
-}
-
-@Composable
-private fun RestoreBanner(
-    onRestorePurchase: () -> Unit,
-    restoreInProgress: Boolean,
-    verificationInProgress: Boolean,
-) {
-    ElevatedCard(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-            contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
-        ),
-    ) {
-        Column(modifier = Modifier.padding(14.dp)) {
-            Text(
-                text = stringResource(R.string.upgrade_screen_restore_banner_title),
-                style = MaterialTheme.typography.titleMedium,
-            )
-            Spacer(modifier = Modifier.height(6.dp))
-            Text(
-                text = stringResource(R.string.upgrade_screen_restore_banner_body),
-                style = MaterialTheme.typography.bodyMedium,
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-            RestoreButton(
-                restoreInProgress = restoreInProgress,
-                enabled = !restoreInProgress && !verificationInProgress,
-                onRestorePurchase = onRestorePurchase,
-                filled = true,
-            )
-        }
-    }
-}
-
-// ---- Dialogs ----
-
-@Composable
-fun RestoreFailedDialog(
-    onContactSupport: () -> Unit,
-    onDismiss: () -> Unit,
-) {
+    val checkedMsg = stringResource(R.string.upgrade_screen_restore_checked_message)
+    val multiAccountHint = stringResource(R.string.upgrade_screen_restore_multiaccount_hint)
+    val syncHint = stringResource(R.string.upgrade_screen_restore_sync_patience_hint)
+    val contactHint = stringResource(R.string.upgrade_screen_restore_contact_hint)
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = {
-            Text(
-                text = stringResource(R.string.general_error_label),
-                style = MaterialTheme.typography.headlineSmall,
-            )
-        },
+        text = { Text("$checkedMsg\n\n$multiAccountHint\n\n$syncHint\n\n$contactHint") },
         confirmButton = {
             TextButton(onClick = onContactSupport) {
                 Text(stringResource(R.string.settings_support_contact_label))
             }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text(stringResource(id = android.R.string.ok)) }
-        },
-        text = {
-            Text(
-                text = """
-                    ${stringResource(R.string.upgrade_screen_restore_purchase_message)}
-
-                    ${stringResource(R.string.upgrade_screen_restore_troubleshooting_msg)}
-
-                    ${stringResource(R.string.upgrade_screen_restore_sync_patience_hint)}
-
-                    ${stringResource(R.string.upgrade_screen_restore_multiaccount_hint)}
-                """.trimIndent(),
-            )
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.general_dismiss_action))
+            }
         },
     )
 }
 
+/**
+ * Shown when the restore never got an answer (timeout, or a Play error absorbed by grace). Carries
+ * no multi-account hint and no contact-support action: nothing was established, so both would be
+ * premature. Retry is the useful move, and `restorePurchase()` is single-flight.
+ */
 @Composable
-fun SubscriptionStillRenewingDialog(
-    onManageSubscription: () -> Unit,
-    onDismiss: () -> Unit,
+internal fun RestoreInconclusiveDialog(
+    onRetry: () -> Unit = {},
+    onDismiss: () -> Unit = {},
 ) {
+    val inconclusiveMsg = stringResource(R.string.upgrade_screen_restore_inconclusive_message)
+    val syncHint = stringResource(R.string.upgrade_screen_restore_sync_patience_hint)
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.upgrade_screen_sub_still_renewing_title)) },
-        text = { Text(stringResource(R.string.upgrade_screen_sub_still_renewing_message)) },
+        text = { Text("$inconclusiveMsg\n\n$syncHint") },
         confirmButton = {
-            TextButton(onClick = {
-                onManageSubscription()
-                onDismiss()
-            }) {
-                Text(stringResource(R.string.upgrade_screen_manage_subscription))
+            TextButton(onClick = onRetry) {
+                Text(stringResource(R.string.upgrade_screen_retry_action))
             }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) { Text(stringResource(id = android.R.string.cancel)) }
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.general_dismiss_action))
+            }
         },
     )
 }
 
 @Composable
-fun SubscriptionCheckFailedDialog(onDismiss: () -> Unit) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.general_error_label)) },
-        text = { Text(stringResource(R.string.upgrade_screen_sub_check_failed_message)) },
-        confirmButton = {
-            TextButton(onClick = onDismiss) { Text(stringResource(id = android.R.string.ok)) }
+internal fun UpgradeScreen(
+    uiState: GplayUpgradeUiState = GplayUpgradeUiState.Loading,
+    onIap: () -> Unit = {},
+    onSubscription: () -> Unit = {},
+    onSubscriptionTrial: () -> Unit = {},
+    onRestore: () -> Unit = {},
+    onManageSubscription: () -> Unit = {},
+    onRetry: () -> Unit = {},
+    onNavigateUp: () -> Unit = {},
+) {
+    // Owners get the ownership presentation: no acquisition upsell (pitch, benefits, offers box)
+    // anywhere — the one-time purchase appears only as the ownership view's own switch offer,
+    // locked while the subscription still renews.
+    val loaded = uiState as? GplayUpgradeUiState.Loaded
+    val ownedState = loaded?.takeIf { it.ownership.ownsAnything }
+
+    UpgradeScreenScaffold(
+        // Grace users are still Pro: they get the status title too — a "Get Pro" title on the
+        // status screen would contradict the rest of the app, which behaves upgraded. The postfix
+        // is highlighted like the dashboard title does it.
+        title = if (ownedState != null || loaded?.grace != null) {
+            upgradeScreenTitle(upgraded = true)
+        } else {
+            AnnotatedString(stringResource(R.string.upgrade_screen_title))
         },
-    )
+        onNavigateUp = onNavigateUp,
+    ) { paddingValues ->
+        UpgradeScreenContent(
+            paddingValues = paddingValues,
+            contentPadding = PaddingValues(start = 24.dp, top = 16.dp, end = 24.dp, bottom = 32.dp),
+        ) {
+            if (ownedState == null) {
+                // Owners get the badge inside the congrats hero card instead. Once a grace episode
+                // ages into the diagnostics stage, the header switches to the attention mood,
+                // matching the "needs your attention" state. A young episode keeps the calm badge:
+                // its message is that nothing is wrong.
+                UpgradeHeader(happy = loaded?.grace?.showDiagnostics != true)
+            }
+
+            if (ownedState != null) {
+                UpgradeOwnershipContent(
+                    uiState = ownedState,
+                    onIap = onIap,
+                    onManageSubscription = onManageSubscription,
+                    onRestore = onRestore,
+                )
+            } else {
+                UpgradeAcquisitionContent(
+                    uiState = uiState,
+                    onIap = onIap,
+                    onSubscription = onSubscription,
+                    onSubscriptionTrial = onSubscriptionTrial,
+                    onRestore = onRestore,
+                    onRetry = onRetry,
+                )
+            }
+        }
+    }
 }
 
-// ---- Previews ----
+@Composable
+private fun UpgradeAcquisitionContent(
+    uiState: GplayUpgradeUiState,
+    onIap: () -> Unit,
+    onSubscription: () -> Unit,
+    onSubscriptionTrial: () -> Unit,
+    onRestore: () -> Unit,
+    onRetry: () -> Unit,
+) {
+    val loadedState = uiState as? GplayUpgradeUiState.Loaded
+    val inGrace = loadedState?.grace != null
+    loadedState?.grace?.let { grace ->
+        UpgradeGraceCard(
+            showDiagnostics = grace.showDiagnostics,
+            onRestore = onRestore,
+            busy = loadedState.busy,
+        )
+    }
 
-private fun previewLoaded(
-    ownership: Ownership = Ownership(),
-    grace: GraceHint? = null,
-    wasPreviouslyPro: Boolean = false,
-) = UpgradeUiState.Loaded(
-    subscriptionAction = SubscriptionAction.TRIAL,
-    subscriptionEnabled = ownership.subscription == null,
-    subscriptionPrice = "$2.99",
-    iapEnabled = !ownership.hasIap,
-    iapPrice = "$4.99",
-    ownership = ownership,
-    grace = grace,
-    wasPreviouslyPro = wasPreviouslyPro,
-)
+    // Grace users never see the pitch (they are Pro, sales copy next to a "still active" card
+    // reads as a contradiction), and the OFFERS follow the episode age — the client can't tell a
+    // blip from a lapsed purchase, so time is the arbiter: a young episode (likely self-healing
+    // blip) shows calm status only, an aged one (likely really gone) adds restore AND the offers,
+    // so an expired subscriber can switch without waiting out the full grace window.
+    if (!inGrace) {
+        UpgradePreambleCard(
+            text = stringResource(R.string.upgrade_screen_preamble),
+            colors = CardDefaults.elevatedCardColors(
+                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+            ),
+        )
+
+        if (uiState is GplayUpgradeUiState.Loaded && uiState.wasPreviouslyPro) {
+            // The targeted returning-buyer nudge: prominent placement and emphasis, and the ONLY
+            // restore affordance on the screen — a second one below would make the screen feel
+            // uncertain about its own advice.
+            UpgradeRestoreSection(
+                title = stringResource(R.string.upgrade_screen_restore_banner_title),
+                body = stringResource(R.string.upgrade_screen_restore_banner_body),
+                onRestore = onRestore,
+                modifier = Modifier.testTag(UpgradeScreenTags.GPLAY_RESTORE_BANNER),
+                busy = uiState.busy,
+                emphasized = true,
+                restoreTag = UpgradeScreenTags.GPLAY_RESTORE_BANNER_ACTION,
+            )
+        }
+
+        UpgradeSectionCard(
+            title = stringResource(R.string.upgrade_screen_why_title),
+            icon = Icons.TwoTone.AutoAwesome,
+        ) {
+            UpgradeFeatureList(text = stringResource(R.string.upgrade_screen_benefits_body))
+        }
+    }
+
+    // During a YOUNG grace episode the offers box is hidden: likely a blip, and offers next to
+    // "Pro is still active" would contradict it. An aged episode brings them back.
+    if (!inGrace || loadedState?.grace?.showDiagnostics == true) {
+        UpgradeOffersBox(
+            uiState = uiState,
+            onIap = onIap,
+            onSubscription = onSubscription,
+            onSubscriptionTrial = onSubscriptionTrial,
+            onRetry = onRetry,
+        )
+    }
+
+    // Restore is account reconciliation, not an offer — its own described section, after the
+    // offers. Only for plain acquisition: returning buyers get the emphasized section up top
+    // instead, and grace users' restore is owned by the grace card's two-stage disclosure.
+    val loadedForRestore = uiState as? GplayUpgradeUiState.Loaded
+    if (loadedForRestore != null && !loadedForRestore.wasPreviouslyPro && loadedForRestore.grace == null) {
+        UpgradeRestoreSection(
+            title = stringResource(R.string.upgrade_screen_restore_banner_title),
+            body = stringResource(R.string.upgrade_screen_restore_body),
+            onRestore = onRestore,
+            busy = loadedForRestore.busy,
+        )
+    }
+}
+
+// All purchase framing lives inside the offers box (LoadedOffers) — no separate explainer card.
+// Each state brings its OWN container: the error state is a full card itself, wrapping it in the
+// action card produced a card-in-card.
+@Composable
+private fun UpgradeOffersBox(
+    uiState: GplayUpgradeUiState,
+    onIap: () -> Unit,
+    onSubscription: () -> Unit,
+    onSubscriptionTrial: () -> Unit,
+    onRetry: () -> Unit,
+) {
+    AnimatedContent(
+        targetState = uiState,
+        transitionSpec = { fadeIn() togetherWith fadeOut() },
+        label = "upgrade-offers",
+    ) { state ->
+        when (state) {
+            GplayUpgradeUiState.Loading -> UpgradeActionCard { UpgradeLoadingBlock() }
+            is GplayUpgradeUiState.Unavailable -> UpgradeInlineStateCard(
+                title = stringResource(R.string.upgrades_gplay_unavailable_error_title),
+                body = stringResource(R.string.upgrade_screen_offers_unavailable_message),
+                icon = Icons.TwoTone.WarningAmber,
+            ) {
+                // Play can be slow rather than broken (cold store, first sign-in): let
+                // the user re-run the offer queries instead of leaving a dead screen.
+                OutlinedButton(
+                    onClick = onRetry,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .testTag(UpgradeScreenTags.GPLAY_RETRY),
+                ) {
+                    Text(stringResource(R.string.upgrade_screen_retry_action))
+                }
+            }
+            is GplayUpgradeUiState.Loaded -> UpgradeActionCard {
+                LoadedOffers(
+                    uiState = state,
+                    onIap = onIap,
+                    onSubscription = onSubscription,
+                    onSubscriptionTrial = onSubscriptionTrial,
+                )
+            }
+        }
+    }
+}
 
 @Preview2
 @Composable
-private fun UpgradeScreenAcquisitionPreview() {
+private fun UpgradeScreenLoadingPreview() {
+    PreviewWrapper {
+        UpgradeScreen(uiState = GplayUpgradeUiState.Loading)
+    }
+}
+
+@Preview2
+@Composable
+private fun UpgradeScreenLoadedPreview() {
     PreviewWrapper {
         UpgradeScreen(
-            state = previewLoaded(),
-            onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
+            uiState = GplayUpgradeUiState.Loaded(
+                subscriptionAction = SubscriptionAction.TRIAL,
+                subscriptionEnabled = true,
+                subscriptionPrice = "$12.99",
+                iapEnabled = true,
+                iapPrice = "$24.99",
+            ),
         )
     }
 }
 
 @Preview2
 @Composable
-private fun UpgradeScreenOwnerSubRenewingPreview() {
+private fun UpgradeScreenReturningBuyerPreview() {
     PreviewWrapper {
         UpgradeScreen(
-            state = previewLoaded(ownership = Ownership(subscription = SubscriptionOwnership(isAutoRenewing = true))),
-            onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
-        )
-    }
-}
-
-@Preview2
-@Composable
-private fun UpgradeScreenOwnerSubNotRenewingPreview() {
-    PreviewWrapper {
-        UpgradeScreen(
-            state = previewLoaded(ownership = Ownership(subscription = SubscriptionOwnership(isAutoRenewing = false))),
-            onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
-        )
-    }
-}
-
-@Preview2
-@Composable
-private fun UpgradeScreenOwnerIapPreview() {
-    PreviewWrapper {
-        UpgradeScreen(
-            state = previewLoaded(ownership = Ownership(hasIap = true)),
-            onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
-        )
-    }
-}
-
-@Preview2
-@Composable
-private fun UpgradeScreenGraceQuietPreview() {
-    PreviewWrapper {
-        UpgradeScreen(
-            state = previewLoaded(grace = GraceHint(showDiagnostics = false)),
-            onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
-        )
-    }
-}
-
-@Preview2
-@Composable
-private fun UpgradeScreenGraceDiagnosticsPreview() {
-    PreviewWrapper {
-        UpgradeScreen(
-            state = previewLoaded(grace = GraceHint(showDiagnostics = true)),
-            onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
+            uiState = GplayUpgradeUiState.Loaded(
+                subscriptionAction = SubscriptionAction.STANDARD,
+                subscriptionEnabled = true,
+                subscriptionPrice = "$12.99",
+                iapEnabled = true,
+                iapPrice = "$24.99",
+                wasPreviouslyPro = true,
+            ),
         )
     }
 }
@@ -963,15 +435,9 @@ private fun UpgradeScreenGraceDiagnosticsPreview() {
 private fun UpgradeScreenUnavailablePreview() {
     PreviewWrapper {
         UpgradeScreen(
-            state = UpgradeUiState.Unavailable(RuntimeException("Play unavailable")),
-            onNavigateBack = {}, onGoIap = {}, onGoSubscription = {},
-            onGoSubscriptionTrial = {}, onManageSubscription = {}, onRestorePurchase = {}, onRetry = {},
+            uiState = GplayUpgradeUiState.Unavailable(
+                error = RuntimeException("Google Play unavailable"),
+            ),
         )
     }
-}
-
-@Preview2
-@Composable
-private fun RestoreFailedDialogPreview() {
-    PreviewWrapper { RestoreFailedDialog(onContactSupport = {}, onDismiss = {}) }
 }

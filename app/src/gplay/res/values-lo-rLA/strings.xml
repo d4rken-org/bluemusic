@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">ຂໍ້ດີ</string>
     <string name="upgrade_screen_subscription_trial_action">ເລີ່ມທົດລອງຟຣີ 14 ວັນ</string>
     <string name="upgrade_screen_subscription_action">ສະໝັກສະມາຊິກ</string>
-    <string name="upgrade_screen_subscription_action_hint">ການສະໝັກສະມາຊິກລາຄາ %s ຕໍ່ປີ.</string>
     <string name="upgrade_screen_iap_action">ການຊື້ຄັ້ງດຽວ</string>
-    <string name="upgrade_screen_iap_action_hint">ການຊື້ຄັ້ງດຽວລາຄາ %s.</string>
     <string name="upgrade_screen_offer_divider_or">ຫຼື</string>
-    <string name="upgrade_screen_offer_same_features">ຄຸນສົມບັດຄືກັນ, ພຽງແຕ່ຮູບແບບລາຄາແຕກຕ່າງກັນ.</string>
     <string name="upgrade_screen_thanks_toast">ທ່ານດີທີ່ສຸດ! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">ກູ້ຄືນການຊື້</string>
     <string name="upgrade_screen_restore_banner_title">ຊື້ BVM Pro ແລ້ວບໍ?</string>
     <string name="upgrade_screen_restore_banner_body">ເບິ່ງຄືວ່າທ່ານໄດ້ອັບເກຣດອຸປະກອນນີ້ມາກ່ອນແລ້ວ. ກູ້ຄືນການຊື້ຂອງທ່ານເພື່ອປົດລັອກມັນອີກຄັ້ງ.</string>
-    <string name="upgrade_screen_restore_purchase_message">ການອັບເກຣດຂອງທ່ານໃຊ້ໄດ້ກັບອຸປະກອນຕ່າງໆໃນບັນຊີ Google ດຽວກັນ.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">ຄຳແນະນຳການແກ້ໄຂບັນຫາສຳລັບການອັບເກຣດທີ່ບໍ່ຮັບຮູ້:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">ການຊິງຄ໌ Play Store ອາດໃຊ້ເວລາ. ລອງຣີບູດ, ລ້າງແຄສ Google Play ຫຼືພຽງແຕ່ລໍຖ້າ.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">ບັນຊີຫຼາຍບັນຊີສາມາດເຮັດໃຫ້ Google Play ສັບສົນ. ອອກຈາກລະບົບຈາກບັນຊີອື່ນ ຫຼືຕິດຕັ້ງຜ່ານເວັບໄຊ Google Play, ເຊິ່ງບັງຄັບການເຊື່ອມໂຍງກັບບັນຊີສະເພາະ.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">ເບິ່ງສະຖານະ Pro ຂອງທ່ານ</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">ຂໍສະແດງຄວາມຍິນດີ!</string>
-    <string name="upgrade_screen_owned_congrats_body">ທ່ານໄດ້ BVM Pro ແລ້ວ — ຂອບໃຈທີ່ສະໜັບສະໜູນການພັດທະນາ. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">ການຊື້ຄັ້ງດຽວ</string>
     <string name="upgrade_screen_owned_iap_body">ທ່ານເປັນເຈົ້າຂອງ BVM Pro ຕະຫຼອດໄປ. ຂອບໃຈສຳລັບການສະໜັບສະໜູນຂອງທ່ານ ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">ການສະໝັກສະມາຊິກ</string>
     <string name="upgrade_screen_owned_sub_renewing_body">ການສະໝັກສະມາຊິກ BVM Pro ຂອງທ່ານກຳລັງເປີດໃຊ້ງານ ແລະ ຕັ້ງໄວ້ໃຫ້ຕໍ່ອາຍຸ.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">ການສະໝັກສະມາຊິກ BVM Pro ຂອງທ່ານກຳລັງເປີດໃຊ້ງານ ແຕ່ຈະບໍ່ຕໍ່ອາຍຸ. ມັນຈະໃຊ້ໄດ້ຈົນເຖິງທ້າຍໄລຍະປັດຈຸບັນ.</string>
     <string name="upgrade_screen_owned_both_warning">ທ່ານມີທັງການສະໝັກສະມາຊິກ ແລະ ການຊື້ແບບຄັ້ງດຽວ. ຍົກເລີກການສະໝັກສະມາຊິກໃນ Google Play ເພື່ອບໍ່ໃຫ້ຖືກຮຽກເກັບເງິນອີກ.</string>
     <string name="upgrade_screen_manage_subscription">ຈັດການການສະໝັກສະມາຊິກ</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">ປ່ຽນໄປໃຊ້ການຊື້ແບບຄັ້ງດຽວ</string>
-    <string name="upgrade_screen_switch_purchase_note">ນີ້ແມ່ນການຊື້ແບບຄັ້ງດຽວທີ່ແຍກຕ່າງຫາກ. ມັນບໍ່ໄດ້ຍົກເລີກ ຫຼື ຄືນເງິນການສະໝັກສະມາຊິກຂອງທ່ານ, ສະນັ້ນໃຫ້ຍົກເລີກອັນນັ້ນໃນ Google Play ນຳ. ໃຊ້ບັນຊີ Google ດຽວກັນສຳລັບທັງສອງ.</string>
-    <string name="upgrade_screen_switch_locked_note">ໃຊ້ໄດ້ເມື່ອການສະໝັກສະມາຊິກຂອງທ່ານບໍ່ຕັ້ງໄວ້ໃຫ້ຕໍ່ອາຍຸອີກຕໍ່ໄປ. ຍົກເລີກມັນໃນ Google Play ເພື່ອປ່ຽນ — ທ່ານຈະຮັກສາ Pro ໄວ້ຈົນເຖິງທ້າຍໄລຍະປັດຈຸບັນ.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">ສະຖານະເບິ່ງຄືວ່າຜິດພາດບໍ?</string>
     <string name="upgrade_screen_status_restore_body">ຖ້າການຊື້ຂອງທ່ານບໍ່ປາກົດຢູ່ບ່ອນນີ້, ລອງກູ້ຄືນມັນ.</string>

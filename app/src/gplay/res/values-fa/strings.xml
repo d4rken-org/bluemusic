@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">مزایا</string>
     <string name="upgrade_screen_subscription_trial_action">شروع دوره آزمایشی ۱۴ روزه رایگان</string>
     <string name="upgrade_screen_subscription_action">اشتراک</string>
-    <string name="upgrade_screen_subscription_action_hint">هزینه اشتراک سالیانه %s است.</string>
     <string name="upgrade_screen_iap_action">خرید یکباره</string>
-    <string name="upgrade_screen_iap_action_hint">هزینه خرید یک‌باره %s است.</string>
     <string name="upgrade_screen_offer_divider_or">یا</string>
-    <string name="upgrade_screen_offer_same_features">امکانات یکسان، فقط مدل‌های قیمت‌گذاری متفاوت.</string>
     <string name="upgrade_screen_thanks_toast">تو بهترینی! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">بازیابی خرید</string>
     <string name="upgrade_screen_restore_banner_title">قبلاً BVM Pro را خریده‌اید؟</string>
     <string name="upgrade_screen_restore_banner_body">به نظر می‌رسد قبلاً در این دستگاه ارتقا داده‌اید. خرید خود را بازیابی کنید تا دوباره باز شود.</string>
-    <string name="upgrade_screen_restore_purchase_message">به‌روزرسانی شما در تمامی دستگاه‌های موجود در همان حساب Google معتبر است.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">نکات عیب یابی ارتقاهای ناشناخته:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">ممکن است همگام‌سازی فروشگاه Google Play کمی زمان ببرد. سعی کنید دستگاه خود را مجدداً راه‌اندازی کنید، کش برنامه Google Play را پاک کنید یا کمی صبر کنید.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">داشتن حساب‌های متعدد می‌تواند Google Play را گیج کند. از سایر حساب‌ها خارج شوید یا از طریق وب‌سایت Google Play نصب کنید، که انجمن‌ها را با یک حساب خاص تحمیل می‌کند.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">وضعیت Pro خود را مشاهده کنید</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">تبریک می‌گوییم!</string>
-    <string name="upgrade_screen_owned_congrats_body">شما BVM Pro را دارید — با تشکر از حمایتتان از توسعه. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">خرید یکباره</string>
     <string name="upgrade_screen_owned_iap_body">شما برای همیشه مالک BVM Pro هستید. با تشکر از حمایتتان ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">اشتراک</string>
     <string name="upgrade_screen_owned_sub_renewing_body">اشتراک BVM Pro شما فعال است و برای تمدید تنظیم شده است.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">اشتراک BVM Pro شما فعال است اما تمدید نخواهد شد. تا پایان دوره فعلی معتبر باقی می‌ماند.</string>
     <string name="upgrade_screen_owned_both_warning">شما هم اشتراک و هم خرید یک‌باره را دارید. برای اینکه دوباره از شما هزینه دریافت نشود، اشتراک را در Google Play لغو کنید.</string>
     <string name="upgrade_screen_manage_subscription">مدیریت اشتراک</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">تغییر به خرید یک‌باره</string>
-    <string name="upgrade_screen_switch_purchase_note">این یک خرید یک‌باره جداگانه است. اشتراک شما را لغو یا بازپرداخت نمی‌کند، بنابراین آن را هم در Google Play لغو کنید. از یک حساب Google یکسان برای هر دو استفاده کنید.</string>
-    <string name="upgrade_screen_switch_locked_note">زمانی در دسترس است که اشتراک شما دیگر برای تمدید تنظیم نشده باشد. برای تغییر، آن را در Google Play لغو کنید — تا پایان دوره فعلی Pro را نگه می‌دارید.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">وضعیت اشتباه به نظر می‌رسد؟</string>
     <string name="upgrade_screen_status_restore_body">اگر خرید شما اینجا نمایش داده نمی‌شود، سعی کنید آن را بازیابی کنید.</string>

@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Avantajlar</string>
     <string name="upgrade_screen_subscription_trial_action">14 günlük ücretsiz denemeyi başlatın</string>
     <string name="upgrade_screen_subscription_action">Abone ol</string>
-    <string name="upgrade_screen_subscription_action_hint">Abonelik ücreti yıllık %s\'dir.</string>
     <string name="upgrade_screen_iap_action">Tek seferlik satın alma</string>
-    <string name="upgrade_screen_iap_action_hint">Tek seferlik satın alma ücreti %s.</string>
     <string name="upgrade_screen_offer_divider_or">veya</string>
-    <string name="upgrade_screen_offer_same_features">Aynı özellikler, sadece farklı fiyatlandırma modelleri.</string>
     <string name="upgrade_screen_thanks_toast">Çok teşekkürler! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Satın almayı geri yükle</string>
     <string name="upgrade_screen_restore_banner_title">BVM Pro\'yu zaten satın aldınız mı?</string>
     <string name="upgrade_screen_restore_banner_body">Bu cihazda daha önce yükseltme yaptığınız görülüyor. Bunu tekrar açmak için satın almayı geri yükleyin.</string>
-    <string name="upgrade_screen_restore_purchase_message">Yükseltmeniz aynı Google hesabındaki cihazlar arasında geçerlidir.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Tanınmayan yükseltmeler için sorun giderme ipuçları:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store senkronizasyonu zaman alabilir. Yeniden başlatmayı, Google Play önbelleğini temizlemeyi deneyin veya sadece bekleyin.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Birden fazla hesap Google Play\'i karıştırabilir. Diğer hesaplardan çıkış yapın veya belirli bir hesapla ilişkilendirmeye zorlayan Google Play web sitesi üzerinden yükleyin.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Pro durumunuzu görüntüleyin</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Tebrikler!</string>
-    <string name="upgrade_screen_owned_congrats_body">BVM Pro\'ya sahipsiniz — geliştirmeyi desteklediğiniz için teşekkür ederiz. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">Tek seferlik satın alma</string>
     <string name="upgrade_screen_owned_iap_body">BVM Pro\'ya sonsuza dek sahipsiniz. Desteğiniz için teşekkür ederiz ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Abonelik</string>
     <string name="upgrade_screen_owned_sub_renewing_body">BVM Pro aboneliğiniz aktif ve yenilenecek şekilde ayarlanmış.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">BVM Pro aboneliğiniz aktif ama yenilenmeyecek. Mevcut dönemin sonuna kadar geçerli kalacak.</string>
     <string name="upgrade_screen_owned_both_warning">Hem bir aboneliğiniz hem de tek seferlik bir satın almış durumdasınız. Tekrar ücretlendirilmemek için Google Play\'de aboneliği iptal edin.</string>
     <string name="upgrade_screen_manage_subscription">Aboneliği yönet</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Tek seferlik satın almaya geç</string>
-    <string name="upgrade_screen_switch_purchase_note">Bu, ayrı bir tek seferlik satın almadır. Aboneliğinizi iptal etmez veya geri ödemez, bu yüzden bunu Google Play\'de de iptal edin. Her ikisi için aynı Google hesabını kullanın.</string>
-    <string name="upgrade_screen_switch_locked_note">Aboneliğiniz artık yenilenecek şekilde ayarlanmadığında kullanılabilir. Geçiş yapmak için Google Play\'de iptal edin — mevcut dönem sonuna kadar Pro\'ya sahip kalırsınız.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">Durum yanlış mı görünüyor?</string>
     <string name="upgrade_screen_status_restore_body">Satın almayı burada görmüyorsanız, geri yüklemeyi deneyin.</string>

@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">ಪ್ರಯೋಜನಗಳು</string>
     <string name="upgrade_screen_subscription_trial_action">ಉಚಿತ 14-ದಿನಗಳ ಪರೀಕ್ಷೆ ಪ್ರಾರಂಭಿಸಿ</string>
     <string name="upgrade_screen_subscription_action">ಚಂದಾಸಮ್ಮತಿ ಪಡೆಯಿ</string>
-    <string name="upgrade_screen_subscription_action_hint">ಚಂದಾಸಮ್ಮತಿಗೆ ಪ್ರತಿ ವರ್ಷ %s ಖರ್ಚಾಗುತ್ತದೆ.</string>
     <string name="upgrade_screen_iap_action">ಒಂದು ಬಾರಿನ ಖರೀದು</string>
-    <string name="upgrade_screen_iap_action_hint">ಒಂದು ಬಾರಿನ ಖರೀದು %s ಖರ್ಚಾಗುತ್ತದೆ.</string>
     <string name="upgrade_screen_offer_divider_or">ಅಥವಾ</string>
-    <string name="upgrade_screen_offer_same_features">ಅದೇ ವೈಶಿಷ್ಟ್ಯಗಳು, ಕೇವಲ ವಿಭಿನ್ನ ಬೆಲೆ ಮಾದರಿಗಳು.</string>
     <string name="upgrade_screen_thanks_toast">ನೀವು ಅತ್ಯುತ್ತಮರು! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">ಖರೀದು ಮರುಸ್ಥಾಪಿಸಿ</string>
     <string name="upgrade_screen_restore_banner_title">ಈಗಾಗಲೇ BVM Pro ಖರೀದಿಸಿದ್ದೀರಾ?</string>
     <string name="upgrade_screen_restore_banner_body">ನೀವು ಈ ಸಾಧನದಲ್ಲಿ ಮೊದಲೇ ನವೀಕರಣ ಮಾಡಿದ್ದರೆ ತೋರುತ್ತದೆ. ಅದನ್ನು ಮತ್ತೆ ಅನ್ಲಾಕ್ ಮಾಡಲು ನಿಮ್ಮ ಖರೀದಿ ಪುನರುದ್ಧಾರ ಮಾಡಿ.</string>
-    <string name="upgrade_screen_restore_purchase_message">ನಿಮ್ಮ ದರ್ಜೆಯೇರಿಕೆ ಅದೇ Google ಖಾತೆಯಲ್ಲಿನ ಸಾಧನಗಳಲ್ಲಿ ಮಾನ್ಯವಾಗಿರುತ್ತದೆ.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">ಗುರುತಿಸಾಲ್ಪಡದ ದರ್ಜೆಯೇರಿಕೆಗಳಿಗೆ ತೊಂದರೆ ನಿವಾರಣೆ ಸೂಚನೆಗಳು:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store ಸಿಂಕ್ರೈನಿಕರಣಕ್ಕೆ ಸಮಯ ಕೆಲವುತ್ತದೆ. ಮರುಬುಟ್ ಮಾಡಿ, Google Play ಕ್ಯಾಚೆ ತೆರವುಮಾಡಿ ಅಥವಾ ಕಾಯಿರಿ.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">ಬಹುಖಾತೆಗಳು Google Play ಅನ್ನು ಗೊಂದಲಗೊಳಿಸಬಹುದು. ಇತರ ಖಾತೆಗಳಿಂದ ಲಾಗ್ ಆಉಟ್ ಮಾಡಿ ಅಥವಾ Google Play ವೆಬ್ ತಾಣದ ಮೂಲಕ ಇನ್ಸ್ಟಾಲ್ ಮಾಡಿ.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">ನಿಮ್ಮ ಪ್ರೋ ಸ್ಥಿತಿ ನೋಡಿ</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">ಅಭಿನಂದನೆ!</string>
-    <string name="upgrade_screen_owned_congrats_body">ನೀವು BVM Pro ಪಡೆದಿದ್ದೀರಿ — ಅಭಿವೃದ್ಧಿ ಬೆಂಬಲಿಸಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">ಏಕ-ಕಾಲೀನ ಖರೀದಿ</string>
     <string name="upgrade_screen_owned_iap_body">ನೀವು BVM Pro ಚಿರಕಾಲಕ್ಕೆ ಸ್ವಾಧೀನ ಮಾಡಿಕೊಂಡಿದ್ದೀರಿ. ನಿಮ್ಮ ಬೆಂಬಲಕ್ಕೆ ಧನ್ಯವಾದಗಳು ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">ಸದಸ್ಯತೆ</string>
     <string name="upgrade_screen_owned_sub_renewing_body">ನಿಮ್ಮ BVM Pro ಸದಸ್ಯತೆ ಸಕ್ರಿಯ ಮತ್ತು ನವೀಕರಣಕ್ಕಾಗಿ ಹೊಂದಿಸಿದೆ.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">ನಿಮ್ಮ BVM Pro ಸದಸ್ಯತೆ ಸಕ್ರಿಯವಾಗಿದೆ ಆದರೆ ನವೀಕರಣವಾಗುವುದಿಲ್ಲ. ಅದು ಪ್ರಸ್ತುತ ಅವಧಿಯ ಅಂತ್ಯ ವರೆಗೆ ಮಾನ್ಯವಾಗಿರುತ್ತದೆ.</string>
     <string name="upgrade_screen_owned_both_warning">ನೀವು ಸದಸ್ಯತೆ ಮತ್ತು ಏಕ-ಬಾರಿ ಖರೀದಿ ಎರಡನ್ನೂ ಹೊಂದಿದ್ದೀರಿ. Google Play ನಲ್ಲಿ ಸದಸ್ಯತೆಯನ್ನು ರದ್ದುಗೊಳಿಸಿ ಆದ್ದರಿಂದ ನಿಮ್ಮನ್ನು ಮತ್ತೆ ಚಾರ್ಜ ಮಾಡಲಾಗುವುದಿಲ್ಲ.</string>
     <string name="upgrade_screen_manage_subscription">ಸದಸ್ಯತೆಯನ್ನು ನಿರ್ವಹಿಸಿ</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">ಏಕ-ಬಾರಿ ಖರೀದಿಗೆ ಬದಲಿಕೊಳ್ಳಿ</string>
-    <string name="upgrade_screen_switch_purchase_note">ಇದು ಪ್ರತ್ಯೇಕ ಏಕ-ಬಾರಿ ಖರೀದಿ. ಇದು ನಿಮ್ಮ ಸದಸ್ಯತೆಯನ್ನು ರದ್ದುಗೊಳಿಸುವುದಿಲ್ಲ ಅಥವಾ ಮರುಪಾವತಿ ಮಾಡುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ ಅದನ್ನು Google Play ನಲ್ಲಿಯೂ ರದ್ದುಗೊಳಿಸಿ. ಎರಡಕ್ಕೂ ಅದೇ Google ಖಾತೆಯನ್ನು ಬಳಸಿ.</string>
-    <string name="upgrade_screen_switch_locked_note">ನಿಮ್ಮ ಸದಸ್ಯತೆ ನವೀಕರಣಕ್ಕಾಗಿ ಹೊಂದಿಸದಿರುವ ಬಳಿಕ ಲಭ್ಯವಾಗುತ್ತದೆ. ಬದಲಿಕೊಳ್ಳಲು Google Play ನಲ್ಲಿ ಅದನ್ನು ರದ್ದುಗೊಳಿಸಿ — ನೀವು ಪ್ರಸ್ತುತ ಅವಧಿ ಅಂತ್ಯ ವರೆಗೆ Pro ಅನ್ನು ಇರಿಸಿಕೊಳ್ಳುತ್ತೀರಿ.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">ಸ್ಥಿತಿ ತಪ್ಪಾಗಿ ತೋರುತ್ತಿದೆಯೇ?</string>
     <string name="upgrade_screen_status_restore_body">ನಿಮ್ಮ ಖರೀದಿ ಇಲ್ಲಿ ಕಾಣಿಸದಿದ್ದರೆ, ಅದನ್ನು ಮರುಸ್ಥಾಪಿಸಲು ಪ್ರಯತ್ನಿಸಿ.</string>

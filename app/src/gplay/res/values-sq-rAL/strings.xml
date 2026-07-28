@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Avantazhet</string>
     <string name="upgrade_screen_subscription_trial_action">Filloni provën falas 14-ditore</string>
     <string name="upgrade_screen_subscription_action">Abonohu</string>
-    <string name="upgrade_screen_subscription_action_hint">Abonimi kushton %s në vit.</string>
     <string name="upgrade_screen_iap_action">Blerje një herë</string>
-    <string name="upgrade_screen_iap_action_hint">Blerja një herë kushton %s.</string>
     <string name="upgrade_screen_offer_divider_or">ose</string>
-    <string name="upgrade_screen_offer_same_features">Të njëjtat karakteristika, thjesht modele të ndryshme të çmimeve.</string>
     <string name="upgrade_screen_thanks_toast">Ti je më i miri! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Rivendos blerjen</string>
     <string name="upgrade_screen_restore_banner_title">E keni blerë tashmë BVM Pro?</string>
     <string name="upgrade_screen_restore_banner_body">Duket se e keni përmirësuar më parë në këtë pajisje. Rikthejeni blerjen tuaj për ta shkyçur atë përsëri.</string>
-    <string name="upgrade_screen_restore_purchase_message">Përmirësimi yt(blerja) është i vlefshëm në të gjitha pajisjet në të njëjtën llogari të Google.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Këshilla për zgjidhjen e problemeve për përmirësimet e panjohura:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Sinkronizimi i Play Store-it mund të marrë kohë. Provoni të rindizni, pastroni cache-in e Google Play ose thjesht prisni.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Llogaritë e shumta mund të habisin Google Play. Dilni nga llogaritë e tjera ose instaloni përmes faqes së internetit të Google Play, gjë që detyron lidhjet me një llogari specifike.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Shikoni statusin tuaj Pro</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Urime!</string>
-    <string name="upgrade_screen_owned_congrats_body">Keni marrë BVM Pro — faleminderit për mbështetjen e zhvillimit. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">Blerje një herë</string>
     <string name="upgrade_screen_owned_iap_body">Jeni zotëruesi i BVM Pro përgjithmonë. Faleminderit për mbështetjen tuaj ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Abonim</string>
     <string name="upgrade_screen_owned_sub_renewing_body">Abonimi juaj BVM Pro është aktiv dhe do të rinovohet.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">Abonimi juaj BVM Pro është aktiv, por nuk do të rinovohet. Mbetet i vlefshëm deri në fund të periudhës aktuale.</string>
     <string name="upgrade_screen_owned_both_warning">Ju keni njëkohësisht një abonim dhe blerjen njëherësh. Anulojeni abonimin në Google Play që të mos ngarkoheni përsëri.</string>
     <string name="upgrade_screen_manage_subscription">Menaxho abonimin</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Kaloni në një blerje njëherësh</string>
-    <string name="upgrade_screen_switch_purchase_note">Kjo është një blerje njëherësh e veçantë. Ajo nuk anulon apo rimburson abonimin tuaj, prandaj anulojeni atë edhe në Google Play. Përdorni të njëjtën llogari Google për të dyja.</string>
-    <string name="upgrade_screen_switch_locked_note">I disponueshëm pasi abonimi juaj të mos jetë më i caktuar për rinovim. Anulojeni në Google Play për të kaluar — mbani Pro deri në fund të periudhës aktuale.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">Statusi duket i gabuar?</string>
     <string name="upgrade_screen_status_restore_body">Nëse blerja juaj nuk shfaqet këtu, provoni ta riktheni.</string>

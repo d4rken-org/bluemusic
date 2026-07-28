@@ -4,11 +4,9 @@ import android.app.Activity
 import com.android.billingclient.api.BillingClient.BillingResponseCode
 import com.android.billingclient.api.BillingResult
 import com.android.billingclient.api.Purchase
-import com.android.billingclient.api.Purchase.PurchaseState
 import eu.darken.bluemusic.common.coroutine.AppScope
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
+import eu.darken.bluemusic.common.debug.Bugs
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.*
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -16,29 +14,16 @@ import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import eu.darken.bluemusic.upgrade.core.billing.client.BillingClientException
 import eu.darken.bluemusic.upgrade.core.billing.client.BillingConnection
 import eu.darken.bluemusic.upgrade.core.billing.client.BillingConnectionProvider
-import eu.darken.bluemusic.upgrade.core.billing.client.isSuccess
+import eu.darken.bluemusic.upgrade.core.billing.client.redacted
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.merge
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.mapNotNull
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.flow.updateAndGet
-import kotlinx.coroutines.flow.retryWhen
-import kotlinx.coroutines.flow.shareIn
-import kotlinx.coroutines.flow.single
-import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeoutOrNull
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -49,20 +34,15 @@ class BillingManager @Inject constructor(
     connectionProvider: BillingConnectionProvider,
 ) {
 
-    // Fresh Play data plus its provenance: a query result covers all owned products, while a
-    // purchase event only carries the products of that transaction — consumers deciding between
-    // per-SKU behaviors (like grace windows) need to know the difference.
+    // Fresh Play data plus its provenance: a query result covers owned products of the queried
+    // types, while a purchase event only carries the products of that transaction — consumers
+    // deciding between per-SKU behaviors (like grace windows) need to know the difference.
     data class FreshData(
         val data: BillingData,
         val isFullSnapshot: Boolean,
+        // Commit time of the underlying Play round-trip — see BillingConnection.FreshUpdate.occurredAt.
+        val occurredAt: Long = System.currentTimeMillis(),
     )
-
-    // Emits only data that was *freshly* obtained from Play: per-connection/manual query results and
-    // completed purchase events. Unlike billingData below (whose shareIn replay re-serves old data to
-    // late subscribers), every emission here represents an actual Play round-trip, so consumers can
-    // safely use it for time-based bookkeeping like the Pro grace period.
-    private val freshData = MutableSharedFlow<FreshData>(replay = 1)
-    val freshBillingData: Flow<FreshData> = freshData
 
     // Bumped whenever someone actively wants billing NOW (see useConnection): a pending reconnect
     // backoff is cut short instead of making the user wait out the timer. A generation counter
@@ -71,190 +51,384 @@ class BillingManager @Inject constructor(
     // already satisfied by a healthy connection can't skip a future backoff.
     private val connectionDemand = MutableStateFlow(0)
 
-    // Highest demand generation actually served by a healthy connection (see useConnection):
-    // demand that was already satisfied must not skip a backoff after a later disconnect.
+    // Highest demand generation whose useConnection call already terminated (served, failed, or
+    // cancelled): settled demand must not skip a backoff after a later disconnect.
     private val servedDemand = MutableStateFlow(0)
 
-    // Consecutive failed connection attempts since the last successful one. retryWhen's `attempt`
-    // counter never resets within a collection, so a long-lived process with earlier (healed)
-    // failures would otherwise start every new failure episode at the maximum backoff.
-    private var connectionFailStreak = 0
+    // Signalled when an action fails with a response code that means the current connection is
+    // dead (binder gone) — Play doesn't always deliver onBillingServiceDisconnected, and a dead
+    // connection must not stay installed for later callers.
+    private val invalidations = Channel<Unit>(Channel.CONFLATED)
 
-    // Only touched from the sharing collector (onStart/onEach/retryWhen run sequentially there).
-    private var demandAtAttemptStart = 0
+    // The currently usable connection, null while (re)connecting. Nulled BEFORE any backoff, so a
+    // dead connection is unreachable by construction — no replay cache to serve stale clients.
+    private val connectionHolder = MutableStateFlow<BillingConnection?>(null)
 
-    // Purchase tokens we've already successfully acknowledged this process. The immutable Purchase
-    // snapshot keeps reporting isAcknowledged=false until a fresh query supersedes it, so the ack
-    // collector below would otherwise re-ack the same purchase on every re-emission. A token is added
-    // ONLY after a successful ack, so a failed ack stays retryable. Touched only from the single ack
-    // collector coroutine — no synchronization needed.
-    private val ackedTokens = mutableSetOf<String>()
+    // At least one connect-loop iteration FAILED since process start. Success needs no explicit
+    // signal: it is implied by billingData emitting (the connection is only published after its
+    // initial refreshPurchases committed), so settledness travels with the data itself and can't
+    // lead it. Failures are different — the connect loop swallows them (it retries forever) and
+    // downstream flows just stay quiet during an outage, so consumers need this explicit signal
+    // to settle their null seed instead of waiting on a broken connection indefinitely.
+    private val failedOnce = MutableStateFlow(false)
+    val isFailureSettled: Flow<Boolean> = failedOnce
 
-    private val connection = connectionProvider.connection
-        .onStart { demandAtAttemptStart = connectionDemand.value }
-        .onEach {
-            connectionFailStreak = 0
-            try {
-                val fresh = it.refreshPurchases()
-                freshData.emit(FreshData(BillingData(purchases = fresh.purchases), isFullSnapshot = fresh.isComplete))
-            } catch (e: CancellationException) {
-                throw e
-            } catch (e: Exception) {
-                log(TAG, ERROR) { "Initial purchase data refresh failed: ${e.asLog()}" }
-            }
-        }
-        .retryWhen { cause, _ ->
-            // Never give up terminally: the ack collector pins this shareIn forever, so WhileSubscribed
-            // can't restart a completed upstream — a swallowed terminal failure (e.g. one transient
-            // BILLING_UNAVAILABLE while Play updates itself at boot) would leave billing dead until
-            // process restart. Retry with capped backoff instead; Play recovering makes this heal.
-            if (cause is CancellationException) {
-                false
-            } else {
-                connectionFailStreak++
-                val backoffMs = (30_000L * connectionFailStreak).coerceAtMost(300_000L)
-                log(TAG, WARN) {
-                    "Billing connection failed (streak=$connectionFailStreak), retrying in ${backoffMs}ms: ${cause.asLog()}"
+    // Fires once per failed connect-loop iteration: connection setup failure, the mandatory initial
+    // refreshPurchases erroring or timing out, an established connection dropping, an action-level
+    // invalidation (SERVICE_DISCONNECTED/SERVICE_TIMEOUT from any useConnection call), or an
+    // unexpected provider completion. Every one is a fresh reconciliation that couldn't confirm Pro.
+    // The connect loop retries these internally and downstream flows just go quiet, so without this
+    // explicit signal the grace episode clock (UpgradeRepoGplay.proUnconfirmedSince) would only
+    // advance on an explicit ON_RESUME refresh().
+    //
+    // Each value is the failure's OCCURRENCE time (epoch millis). It has to be, not a bare Unit: the
+    // channel buffers, and this feed and freshBillingData are separate flows with no cross-stream
+    // ordering, so a failure enqueued before a later retry succeeds could be consumed AFTER that
+    // success already confirmed Pro and closed the episode. Carrying the failure's own timestamp lets
+    // the consumer compare it against the last confirmation and drop a superseded one instead of
+    // reopening a closed episode. UNLIMITED + receiveAsFlow (same idiom as BillingConnection
+    // .freshUpdates): one lifetime consumer, buffered so a failure that fires before it subscribes
+    // isn't lost.
+    private val connectionFailuresChannel = Channel<Long>(Channel.UNLIMITED)
+    val connectionFailures: Flow<Long> = connectionFailuresChannel.receiveAsFlow()
+
+    init {
+        // The connect loop: owns ALL retry policy. Deliberately NOT wrapped in
+        // setupCommonEventHandlers — its catch{} swallows cancellations, and this loop must die
+        // with the scope, not retry through it.
+        scope.launch {
+            var failStreak = 0
+            while (true) {
+                val demandAtStart = connectionDemand.value
+                // Drain invalidations from the previous connection's lifetime: a signal referring
+                // to an already-dead connection must not kill the upcoming attempt. (A racing
+                // signal between here and the watcher below costs one extra reconnect, nothing
+                // more.)
+                while (invalidations.tryReceive().isSuccess) {
+                    // drained
                 }
-                // Wait out the backoff, but let active billing demand short-circuit it: a user who
-                // just fixed their Play situation (signed in, updated the store) shouldn't wait for
-                // the timer when they tap restore/buy or reopen the upgrade screen. Only demand that
-                // is newer than the failed attempt AND not yet served counts — the former limits a
-                // still-waiting caller to one skip per attempt (no tight retry loop), the latter
-                // keeps demand already satisfied by a healthy connection from skipping this backoff.
+                try {
+                    coroutineScope {
+                        val invalidationWatcher = launch {
+                            invalidations.receive()
+                            throw BillingException("Billing connection invalidated by a failed action")
+                        }
+                        try {
+                            connectionProvider.connection.collect { connection ->
+                                // A refresh that can't verify anything (nothing found + a query
+                                // failed) throws and counts as a connection failure — otherwise a
+                                // cold start against a broken Play would starve billingData and
+                                // isFailureSettled forever with no retry. withTimeoutOrNull, NOT
+                                // withTimeout: TimeoutCancellationException is a
+                                // CancellationException and would kill this loop.
+                                withTimeoutOrNull(INITIAL_REFRESH_TIMEOUT_MS) {
+                                    connection.refreshPurchases()
+                                } ?: throw BillingException("Initial purchase refresh timed out")
+
+                                failStreak = 0
+                                connectionHolder.value = connection
+                                log(TAG, INFO) { "Billing connection established" }
+                            }
+                            // The provider flow stays open for the connection's lifetime; a normal
+                            // completion means the connection is gone without an error — treat it
+                            // like one so we reconnect (with backoff, no tight loop).
+                            throw BillingException("Billing connection completed unexpectedly")
+                        } finally {
+                            invalidationWatcher.cancel()
+                        }
+                    }
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    log(TAG, WARN) { "Billing connection failed: ${e.asLog()}" }
+                    // A failed iteration is a fresh reconciliation that couldn't confirm Pro — signal
+                    // it (with its occurrence time) so the entitlement layer can advance the grace
+                    // episode clock even when no explicit refresh() caller is watching. Superseded
+                    // failures are dropped downstream; duplicates are idempotent (set-if-unset).
+                    connectionFailuresChannel.trySend(System.currentTimeMillis())
+                }
+                connectionHolder.value = null
+                // Only reachable via the catch above (the collect never returns normally and
+                // cancellation rethrows past this) — a genuinely failure-only signal.
+                failedOnce.value = true
+                // A swallowed cancellation (e.g. via a flow wrapper) must not convert scope death
+                // into another connection attempt.
+                ensureActive()
+                failStreak++
+                val backoffMs = if (failStreak >= 5) MAX_BACKOFF_MS else 2_000L shl (2 * (failStreak - 1))
+                log(TAG) { "Billing reconnect backoff: streak=$failStreak, waiting ${backoffMs}ms" }
+                // Interruptible backoff: demand that is newer than this attempt AND not yet served
+                // skips the wait — a user who just fixed their Play situation shouldn't wait out
+                // the timer. The demandAtStart comparison limits a still-waiting caller to one
+                // skip per attempt (no tight retry loop).
                 withTimeoutOrNull(backoffMs) {
-                    connectionDemand.first { it != demandAtAttemptStart && it > servedDemand.value }
+                    connectionDemand.first { it != demandAtStart && it > servedDemand.value }
                 }
-                true
             }
         }
-        .setupCommonEventHandlers(TAG) { "connection" }
-        .shareIn(scope, WhileSubscribed(3000L, 0L), replay = 1)
+    }
 
-    private val purchases = connection
-        .flatMapLatest { it.purchases }
+    // Re-drives the ack pass WITHOUT a new purchases emission: `purchases` is distinctUntilChanged,
+    // so a refresh returning a byte-identical (still unacknowledged) list is deduped and could never
+    // retry a failed ack -- the pipeline starved until Play sent something different. Declared ahead
+    // of `purchases` because that chain's failure recovery signals it.
+    private val ackRetryTrigger = MutableStateFlow(0)
+
+    // Never-terminal resubscribe for the hot billing sources: a shared flow has no owner to restart
+    // it, so an upstream failure would kill the sharing coroutine and leave every subscriber (incl.
+    // the ack collector) hanging for the process lifetime.
+    private fun <T> Flow<T>.resubscribeOnFailure(label: String, onRecover: () -> Unit = {}): Flow<T> =
+        retryWhen { cause, _ ->
+            if (cause is CancellationException) return@retryWhen false
+            log(TAG, ERROR) { "$label failed, resubscribing: ${cause.asLog()}" }
+            delay(SHARE_RETRY_MS)
+            onRecover()
+            true
+        }
+
+    private val purchases = connectionHolder
+        // NOT filterNotNull(): the null emission is what detaches a dead connection's inner flows.
+        .flatMapLatest { connection ->
+            (connection?.purchases ?: emptyFlow())
+                // The retry sits INSIDE the flatMapLatest, and that placement is load-bearing:
+                // flatMapLatest hands values to its downstream across a channel, and a failure of
+                // the inner flow cancels the coroutine that drains it -- a value emitted just
+                // before the failure is then discarded instead of delivered. Retrying out here
+                // keeps the failure off that boundary, so the last pre-failure emission (e.g. the
+                // purchase that still needs acknowledging) survives the outage.
+                .resubscribeOnFailure("purchases") {
+                    // The resubscribed source replays a byte-identical list, which the
+                    // distinctUntilChanged below rightly drops -- so recovery has to nudge the ack
+                    // pass explicitly, or a purchase that arrived just before the failure would sit
+                    // there until the 5-minute reschedule.
+                    ackRetryTrigger.update { it + 1 }
+                }
+        }
         .distinctUntilChanged()
         .setupCommonEventHandlers(TAG) { "purchases" }
+        // Belt for the plumbing outside the source flow itself: connectionHolder is a state holder
+        // that never throws, so this should never fire -- but a dead sharing coroutine is
+        // unrecoverable, and that is not a risk worth leaving open. No nudge needed here: this
+        // resubscribes distinctUntilChanged too, so the replayed list gets through on its own.
+        .resubscribeOnFailure("purchases-share")
         .shareIn(scope, WhileSubscribed(3000L, 0L), replay = 1)
 
     val billingData: Flow<BillingData> = purchases
         .map { BillingData(purchases = it) }
         .shareIn(scope, WhileSubscribed(3000L, 0L), replay = 1)
 
-    val purchaseFailures: Flow<BillingResult> = connection
-        .flatMapLatest { it.purchaseFailures }
+    val purchaseFailures: Flow<BillingResult> = connectionHolder
+        .flatMapLatest { it?.purchaseFailures ?: emptyFlow() }
         .setupCommonEventHandlers(TAG) { "purchaseFailures" }
 
+    // Only data that was *freshly* obtained from Play, in the connection's COMMIT ORDER: query
+    // results and completed purchase events, emitted by the reducer itself. Unlike billingData
+    // (whose shareIn replay re-serves old data to late subscribers), every emission here
+    // represents an actual Play round-trip, so consumers can safely use it for time-based
+    // bookkeeping like the Pro grace period. Eagerly: the per-connection channel has exactly one
+    // consumer — this chain — which must not depend on downstream subscribers.
+    val freshBillingData: Flow<FreshData> = connectionHolder
+        .flatMapLatest { connection ->
+            (connection?.freshUpdates ?: emptyFlow())
+                // Inside the flatMapLatest for the same reason as `purchases`: a failure escaping
+                // the boundary discards the update that was already handed to the channel -- and
+                // every emission here is a real Play round-trip the grace bookkeeping needs.
+                .resubscribeOnFailure("freshBillingData")
+        }
+        .map { FreshData(data = BillingData(purchases = it.purchases), isFullSnapshot = it.isFullSnapshot, occurredAt = it.occurredAt) }
+        .setupCommonEventHandlers(TAG) { "freshBillingData" }
+        // Same belt as `purchases`: an Eagerly shared flow that dies stays dead, and this one feeds
+        // both the grace bookkeeping and the ack collector's re-drive signal.
+        .resubscribeOnFailure("freshBillingData-share")
+        .shareIn(scope, SharingStarted.Eagerly, replay = 1)
+
+    // Tokens we've already SUCCESSFULLY acknowledged this process. LOG-LEVEL HINT ONLY: it selects
+    // INFO (first ack) vs DEBUG (idempotent repeat) and MUST NOT gate the acknowledgePurchase call
+    // below. The immutable Purchase snapshot keeps reporting isAcknowledged=false until a fresh Play
+    // query supersedes it, so the ack re-fires every emission until then; re-acking is a documented
+    // no-op on Play's side, whereas skipping a needed ack gets the purchase auto-refunded after 3
+    // days -- so the ack stays unconditional and this set only quiets the log spam. Single
+    // sequential collector (the ack pass below), no locking needed.
+    private val loggedAckTokens = mutableSetOf<String>()
+
+    // Tokens whose PERMANENT ack failure was already reported. Play will keep rejecting these
+    // (developer error, item not owned, unsupported feature), so the bug report fires once per token
+    // instead of once per pass. Same single-collector confinement as loggedAckTokens.
+    private val reportedAckFailures = mutableSetOf<String>()
+
+    // At most one reschedule timer in flight: repeated failures must not stack timers.
+    private val ackRetryPending = MutableStateFlow(false)
+
     init {
-        // Completed purchases arriving via the PurchasesUpdatedListener are fresh Play data too.
-        connection
-            .flatMapLatest { it.purchaseEvents }
-            .mapNotNull { event ->
-                event
-                    ?.takeIf { (result, _) -> result.isSuccess }
-                    ?.let { (_, purchases) -> purchases?.filter { it.purchaseState == PurchaseState.PURCHASED } }
-            }
-            .onEach { freshData.emit(FreshData(BillingData(purchases = it), isFullSnapshot = false)) }
-            .setupCommonEventHandlers(TAG) { "fresh-purchase-events" }
-            .launchIn(scope)
-
-        // Drive acks from TWO merged sources in a single collector (so ackedTokens stays
-        // single-threaded, no sync needed):
-        //  - `purchases`: the deduped ownership flow. Subscribing here also PINS the connection
-        //    shareIn alive for the process, so billing stays connected in the background for acks.
-        //  - `freshBillingData`: emitted on EVERY fresh Play round-trip (per-connection refresh,
-        //    purchase event, manual refresh) and NOT distinctUntilChanged'd. This re-drives a
-        //    previously-failed ack on the next refresh, since re-querying the SAME still-unacked
-        //    purchase yields a content-equal snapshot that the deduped `purchases` flow would suppress
-        //    — otherwise a failed ack could sit until Play's ~3-day auto-refund.
-        merge(purchases, freshBillingData.map { it.data.purchases })
-            .onEach { purchases ->
-                purchases
-                    .filter {
-                        val needsAck = !it.isAcknowledged && it.purchaseToken !in ackedTokens
-
-                        if (needsAck) log(TAG, INFO) { "Needs ACK: $it" }
-                        else log(TAG) { "Already ACK'ed: $it" }
-
-                        needsAck
-                    }
-                    .forEach { purchase ->
-                        log(TAG, INFO) { "Acknowledging purchase: $purchase" }
-                        // Retry transient failures inline (bounded, with backoff). The token is stored
-                        // only on success, so a fully-failed ack stays eligible on the next fresh
-                        // round-trip.
-                        if (acknowledgeWithRetry(purchase)) {
-                            ackedTokens.add(purchase.purchaseToken)
-                        }
-                    }
-            }
+        combine(
+            // The canonical list is the ONLY data slot. The other side is signal-only, so a partial
+            // (e.g. SUBS-only) fresh emission can never become the retried set.
+            purchases,
+            merge(freshBillingData.map { }, ackRetryTrigger.map { }),
+        ) { currentPurchases, _ -> currentPurchases }
+            .onEach { runAckPass(it) }
             .setupCommonEventHandlers(TAG) { "connection-acks" }
-            .retryWhen { cause, attempt ->
+            // Never-dying belt: runAckPass only lets CancellationException escape, so this catches
+            // flow-plumbing failures only -- the collector must live for the whole process.
+            .retryWhen { cause, _ ->
                 if (cause is CancellationException) {
-                    log(TAG) { "Ack was cancelled (appScope?) cancelled." }
+                    log(TAG) { "Ack collector was cancelled (appScope died)" }
                     return@retryWhen false
                 }
-                if (attempt > 5) {
-                    log(TAG, WARN) { "Reached attempt limit: $attempt due to $cause" }
-                    return@retryWhen false
-                }
-                if (cause !is BillingException) {
-                    log(TAG, WARN) { "Unknown BillingClient exception type: $cause" }
-                    return@retryWhen false
-                } else {
-                    log(TAG) { "BillingClient exception: $cause" }
-                }
-
-                if (cause is BillingClientException && cause.result.responseCode == BillingResponseCode.BILLING_UNAVAILABLE) {
-                    log(TAG) { "Got BILLING_UNAVAILABLE while trying to ACK purchase." }
-                    return@retryWhen false
-                }
-
-                log(TAG) { "Will retry ACK" }
-                delay(3000 * attempt)
+                log(TAG, ERROR) { "Ack collector failed, restarting: ${cause.asLog()}" }
+                delay(ACK_CHAIN_RETRY_MS)
                 true
             }
             .launchIn(scope)
     }
 
-    // Bounded inline ack retry: recovers a transient acknowledge failure (network/service hiccup right
-    // after a purchase) without depending on a fresh distinct purchases emission. Gives up on
-    // BILLING_UNAVAILABLE (nothing to retry against) or after ACK_MAX_RETRIES. Returns whether the
-    // purchase is now acknowledged.
-    private suspend fun acknowledgeWithRetry(purchase: Purchase): Boolean {
-        var attempt = 0
-        while (true) {
-            try {
-                useConnection { acknowledgePurchase(purchase) }
-                return true
-            } catch (e: CancellationException) {
-                throw e
-            } catch (e: Exception) {
-                attempt++
-                val unavailable = e is BillingClientException &&
-                    e.result.responseCode == BillingResponseCode.BILLING_UNAVAILABLE
-                if (unavailable || attempt > ACK_MAX_RETRIES) {
-                    log(TAG, ERROR) { "Giving up acknowledging $purchase after $attempt attempt(s): ${e.asLog()}" }
-                    return false
+    // Per-purchase acknowledgement result. Derived ONLY from the acknowledgePurchase call (success =
+    // returned without throwing; it throws on non-OK) -- NEVER from re-reading Purchase
+    // .isAcknowledged, whose immutable snapshot stays false until a fresh Play query.
+    private enum class AckOutcome { SUCCESS, TRANSIENT, PERMANENT }
+
+    // One acknowledgement pass over the canonical purchase list. Never throws except cancellation:
+    // transient failures schedule a re-drive, permanent ones are reported and left to organic fresh
+    // -data signals.
+    private suspend fun runAckPass(purchases: Collection<Purchase>) {
+        val needAck = purchases.filter {
+            val needsAck = !it.isAcknowledged
+
+            if (needsAck) log(TAG) { "Needs ACK: ${it.redacted()}" }
+            else log(TAG) { "Already ACK'ed: ${it.redacted()}" }
+
+            needsAck
+        }
+
+        var transientFailures = 0
+
+        for (purchase in needAck) {
+            // First ack of a token is INFO; idempotent repeats drop to DEBUG. This never gates the
+            // ack -- acknowledgePurchase runs regardless of set membership.
+            val ackPriority = if (purchase.purchaseToken in loggedAckTokens) DEBUG else INFO
+            log(TAG, ackPriority) { "Acknowledging purchase: ${purchase.redacted()}" }
+
+            var outcome = AckOutcome.TRANSIENT
+            var abortPass = false
+
+            for (attempt in 1..ACK_MAX_ATTEMPTS) {
+                outcome = try {
+                    // Bounded: useConnection waits for a connection indefinitely, so without this an
+                    // outage would park the pass (and every later retry) forever. A null result is a
+                    // failed TRANSIENT attempt -- either the wait or the ack itself ran out of time.
+                    val acked = withTimeoutOrNull(ACK_CONNECTION_TIMEOUT_MS) {
+                        useConnection { acknowledgePurchase(purchase) }
+                    }
+                    if (acked != null) {
+                        AckOutcome.SUCCESS
+                    } else {
+                        log(TAG, WARN) { "Ack attempt $attempt timed out: ${purchase.redacted()}" }
+                        AckOutcome.TRANSIENT
+                    }
+                } catch (e: CancellationException) {
+                    // AppScope death is not an acknowledgement failure: no reschedule, no retries.
+                    throw e
+                } catch (e: Exception) {
+                    val code = (e as? BillingClientException)?.result?.responseCode
+                    when {
+                        code == BillingResponseCode.BILLING_UNAVAILABLE -> {
+                            // Connection-level condition: every other purchase in this pass would
+                            // fail the same way. The reschedule keeps re-attempting later -- unlike
+                            // before, this no longer permanently kills the ack retries.
+                            log(TAG, WARN) { "BILLING_UNAVAILABLE, aborting ack pass:\n${e.asLog()}" }
+                            abortPass = true
+                            AckOutcome.TRANSIENT
+                        }
+
+                        (code != null && code in PERMANENT_ACK_CODES) || e !is BillingException -> {
+                            reportPermanentAckFailure(purchase, e)
+                            AckOutcome.PERMANENT
+                        }
+
+                        else -> {
+                            log(TAG, WARN) { "Ack attempt $attempt failed: ${purchase.redacted()}\n${e.asLog()}" }
+                            AckOutcome.TRANSIENT
+                        }
+                    }
                 }
-                log(TAG, WARN) { "Ack attempt $attempt failed for $purchase, retrying: ${e.asLog()}" }
-                delay(ACK_RETRY_BASE_MS * attempt)
+
+                if (outcome == AckOutcome.SUCCESS) {
+                    // Only after a *successful* ack: a failed one never lands here, so it stays loud
+                    // and retryable.
+                    loggedAckTokens.add(purchase.purchaseToken)
+                    break
+                }
+                if (outcome == AckOutcome.PERMANENT || abortPass) break
+                // 3s, 6s -- `attempt` starts at 1, deliberately no zero-delay first retry.
+                if (attempt < ACK_MAX_ATTEMPTS) delay(ACK_RETRY_DELAY_MS * attempt)
             }
+
+            if (outcome == AckOutcome.TRANSIENT) transientFailures++
+            if (abortPass) break
+        }
+
+        // Permanent failures never arm the timer -- only organic fresh-data signals re-attempt them.
+        if (transientFailures > 0) {
+            log(TAG, ERROR) {
+                "$transientFailures purchase(s) left unacknowledged, re-driving in ${ACK_RESCHEDULE_MS}ms"
+            }
+            scheduleAckRetry()
+        }
+    }
+
+    // A purchase Play will keep rejecting: report it once per token, then stay quiet. The pass still
+    // re-attempts it whenever fresh Play data arrives -- the ack is never skipped, only the noise is.
+    private fun reportPermanentAckFailure(purchase: Purchase, error: Exception) {
+        if (reportedAckFailures.add(purchase.purchaseToken)) {
+            log(TAG, ERROR) { "Permanent ack failure for ${purchase.redacted()}:\n${error.asLog()}" }
+            Bugs.report(RuntimeException("Failed to acknowledge purchase", error))
+        } else {
+            log(TAG, WARN) { "Permanent ack failure (already reported) for ${purchase.redacted()}" }
+        }
+    }
+
+    // Arms the re-drive timer at most once: further failures while it is pending join the same
+    // scheduled pass instead of stacking timers.
+    private fun scheduleAckRetry() {
+        if (!ackRetryPending.compareAndSet(expect = false, update = true)) {
+            log(TAG) { "Ack retry already scheduled" }
+            return
+        }
+        scope.launch {
+            delay(ACK_RESCHEDULE_MS)
+            ackRetryPending.value = false
+            ackRetryTrigger.update { it + 1 }
         }
     }
 
     private suspend fun <T> useConnection(action: suspend BillingConnection.() -> T): T {
-        // Every caller here is active demand (opening the upgrade screen, restore/buy taps, purchase
-        // acks) — cut a pending reconnect backoff short. A no-op while the connection is healthy.
+        // Every caller here is active demand (opening the upgrade screen, restore/buy taps,
+        // purchase acks) — cut a pending reconnect backoff short. A no-op while healthy.
         val demandGen = connectionDemand.updateAndGet { it + 1 }
+        var used: BillingConnection? = null
         try {
-            return connection
-                .map { action(it) }
-                .take(1)
-                .single()
+            val connection = connectionHolder.filterNotNull().first().also { used = it }
+            return connection.action()
+        } catch (e: Exception) {
+            // These codes mean the binder is gone. Play doesn't reliably deliver
+            // onBillingServiceDisconnected for them, so uninstall the dead connection RIGHT HERE
+            // (the loop's teardown takes several dispatches — later callers must not grab the
+            // stale holder in that window) and tell the connect loop to clean up and reconnect.
+            // The failure may arrive user-friendly-mapped (e.g. GplayServiceUnavailableException
+            // from a refresh), so inspect the cause chain, not just the exception itself.
+            // CAS + identity check: a fresh replacement must not be killed for its predecessor's
+            // failure.
+            val clientError = (e as? BillingClientException) ?: (e.cause as? BillingClientException)
+            if (clientError != null && clientError.result.responseCode in INVALIDATING_CODES && used != null) {
+                if (connectionHolder.compareAndSet(used, null)) {
+                    log(TAG, WARN) { "Connection reported dead by action (${clientError.result.responseCode}), invalidating." }
+                    invalidations.trySend(Unit)
+                }
+            }
+            throw e
         } finally {
             // Settled on ANY termination — success, error, or the caller's own timeout/cancel: a
-            // call that is over is no longer pending demand and must not skip a much later backoff.
+            // call that is over is no longer pending demand and must not skip a later backoff.
             servedDemand.update { served -> maxOf(served, demandGen) }
         }
     }
@@ -266,25 +440,34 @@ class BillingManager @Inject constructor(
         }
     }
 
-    // Fresh SUBS-only ownership read for the fail-closed IAP switch gate. Errors PROPAGATE (mapped
-    // user-friendly) so the caller can fail closed on any failure — never swallow into an empty
-    // result, which would look like "no renewing sub" and let a double purchase through.
-    suspend fun querySubscriptions(): Collection<Purchase> = try {
-        useConnection { querySubscriptions() }
-    } catch (e: CancellationException) {
-        throw e
-    } catch (e: Exception) {
-        log(TAG, WARN) { "querySubscriptions() failed:\n${e.asLog()}" }
-        throw e.tryMapUserFriendly()
-    }
-
     suspend fun startIapFlow(activity: Activity, sku: Sku, offer: Sku.Subscription.Offer?) {
         try {
             useConnection {
                 launchBillingFlow(activity, sku, offer)
             }
+        } catch (e: CancellationException) {
+            // Not an error: routing this into Bugs.report (or mapping it) would fake telemetry
+            // and break structured cancellation.
+            throw e
         } catch (e: Exception) {
             log(TAG, WARN) { "Failed to start IAP flow:\n${e.asLog()}" }
+            // Expected environmental/user situations — user-facing handling only, no bug report.
+            // ITEM_ALREADY_OWNED is auto-handled by UpgradeRepoGplay (restore instead of error).
+            val ignoredCodes = listOf(
+                BillingResponseCode.USER_CANCELED,
+                BillingResponseCode.BILLING_UNAVAILABLE,
+                BillingResponseCode.ERROR,
+                BillingResponseCode.ITEM_ALREADY_OWNED,
+            )
+            when {
+                e !is BillingException -> {
+                    Bugs.report(RuntimeException("State exception for $sku, U", e))
+                }
+                e is BillingClientException && !e.result.responseCode.let { ignoredCodes.contains(it) } -> {
+                    Bugs.report(RuntimeException("Client exception for $sku", e))
+                }
+            }
+
             throw e.tryMapUserFriendly()
         }
     }
@@ -292,17 +475,25 @@ class BillingManager @Inject constructor(
     suspend fun refresh(): BillingData {
         log(TAG) { "refresh()" }
         // Query in the caller's context and return the result directly, so callers get the fresh
-        // purchases (and any billing error) with a real happens-before instead of racing the shared
-        // upgradeInfo replay cache.
+        // purchases (and any billing error) with a real happens-before instead of racing the
+        // shared upgradeInfo replay cache. The freshBillingData emission happens inside the
+        // reducer's commit, in commit order — not here.
         val fresh = useConnection { refreshPurchases() }
         return BillingData(purchases = fresh.purchases)
-            .also { freshData.emit(FreshData(it, isFullSnapshot = fresh.isComplete)) }
+    }
+
+    // Strict SUBS-only query for the pre-purchase subscription gate: unlike refresh(), a failure
+    // here propagates (user-friendly-mapped) instead of being masked by the other product type.
+    suspend fun querySubscriptions(): Collection<Purchase> = try {
+        useConnection { querySubscriptions() }
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: Exception) {
+        log(TAG, WARN) { "querySubscriptions() failed: ${e.asLog()}" }
+        throw e.tryMapUserFriendly()
     }
 
     companion object {
-        private const val ACK_MAX_RETRIES = 3
-        private const val ACK_RETRY_BASE_MS = 3_000L
-
         internal fun Throwable.tryMapUserFriendly(): Throwable {
             if (this !is BillingClientException) return this
 
@@ -312,13 +503,43 @@ class BillingManager @Inject constructor(
                 BillingResponseCode.SERVICE_UNAVAILABLE,
                 BillingResponseCode.SERVICE_DISCONNECTED,
                 BillingResponseCode.SERVICE_TIMEOUT -> GplayServiceUnavailableException(this)
-
                 BillingResponseCode.ERROR -> InternalBillingException(this)
                 BillingResponseCode.NETWORK_ERROR -> NetworkBillingException(this)
                 BillingResponseCode.ITEM_ALREADY_OWNED -> ItemAlreadyOwnedBillingException(this)
                 else -> this
             }
         }
+
+        @Suppress("DEPRECATION")
+        private val INVALIDATING_CODES = setOf(
+            BillingResponseCode.SERVICE_DISCONNECTED,
+            BillingResponseCode.SERVICE_TIMEOUT,
+        )
+
+        // Ack failures Play won't stop reporting no matter how often we retry: a retry loop would
+        // just burn battery and log noise. Everything else (service down, network, timeouts,
+        // unmapped codes) is treated as transient.
+        private val PERMANENT_ACK_CODES = setOf(
+            BillingResponseCode.DEVELOPER_ERROR,
+            BillingResponseCode.FEATURE_NOT_SUPPORTED,
+            BillingResponseCode.ITEM_NOT_OWNED,
+        )
+
+        private const val INITIAL_REFRESH_TIMEOUT_MS = 30_000L
+        private const val MAX_BACKOFF_MS = 300_000L
+
+        // Inline attempts per purchase and their backoff (3s, 6s): covers a short Play hiccup
+        // without leaving an unacknowledged purchase near its 3-day auto-refund deadline.
+        private const val ACK_MAX_ATTEMPTS = 3
+        private const val ACK_RETRY_DELAY_MS = 3_000L
+        // Whole-pass re-drive after the inline attempts couldn't finish: the purchase list itself is
+        // deduped, so this timer is what keeps a failed ack alive across a longer outage.
+        private const val ACK_RESCHEDULE_MS = 300_000L
+        // Bounds the (otherwise unbounded) connection wait plus ack round-trip of one attempt.
+        private const val ACK_CONNECTION_TIMEOUT_MS = 30_000L
+        // Restart delay for the ack collector itself and for the hot shared sources it feeds on.
+        private const val ACK_CHAIN_RETRY_MS = 60_000L
+        private const val SHARE_RETRY_MS = 60_000L
 
         val TAG: String = logTag("Upgrade", "Gplay", "Billing", "Manager")
     }

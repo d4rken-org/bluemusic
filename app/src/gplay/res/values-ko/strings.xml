@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">장점</string>
     <string name="upgrade_screen_subscription_trial_action">14일 무료 평가판 시작</string>
     <string name="upgrade_screen_subscription_action">구독하기</string>
-    <string name="upgrade_screen_subscription_action_hint">구독은 매년 %s 가 청구됩니다.</string>
     <string name="upgrade_screen_iap_action">영구적 구매</string>
-    <string name="upgrade_screen_iap_action_hint">영구적으로 구매하면 %s 이(가) 청구됩니다.</string>
     <string name="upgrade_screen_offer_divider_or">또는</string>
-    <string name="upgrade_screen_offer_same_features">동일한 기능, 가격 모델만 다릅니다.</string>
     <string name="upgrade_screen_thanks_toast">감사합니다! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">구매 복원</string>
     <string name="upgrade_screen_restore_banner_title">이미 BVM Pro를 구매하셨나요?</string>
     <string name="upgrade_screen_restore_banner_body">이 기기에서 이전에 업그레이드하신 것 같습니다. 구매 내역을 복원하여 다시 잠금을 해제하세요.</string>
-    <string name="upgrade_screen_restore_purchase_message">업그레이드는 동일한 Google 계정의 모든 기기에서 유효합니다.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">인식할 수 없는 업그레이드에 대한 문제 해결 팁:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Play 스토어 동기화는 시간이 걸릴 수 있습니다. 재부팅하거나 Google Play 캐시를 지우거나 잠시 기다려 보세요.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">기기에 등록된 여러 개의 계정으로 인해 Google Play가 혼동될 수 있습니다. 다른 계정을 로그아웃하거나 Google Play 웹사이트를 통해 설치하면 특정 계정과 강제로 연결됩니다.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Pro 상태 보기</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">축하합니다!</string>
-    <string name="upgrade_screen_owned_congrats_body">BVM Pro를 구매하셨습니다 — 개발을 지원해 주셔서 감사합니다. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">영구적 구매</string>
     <string name="upgrade_screen_owned_iap_body">BVM Pro를 영구 소유하고 계십니다. 성원에 감사드립니다 ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">구독</string>
     <string name="upgrade_screen_owned_sub_renewing_body">BVM Pro 구독이 활성화되어 있으며 자동 갱신됩니다.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">BVM Pro 구독이 활성화되어 있지만 갱신되지 않습니다. 현재 결제 주기가 끝날 때까지 유효합니다.</string>
     <string name="upgrade_screen_owned_both_warning">구독과 일회성 구매를 모두 보유하고 계십니다. 다시 청구되지 않도록 Google Play에서 구독을 취소하세요.</string>
     <string name="upgrade_screen_manage_subscription">구독 관리</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">일회성 구매로 전환</string>
-    <string name="upgrade_screen_switch_purchase_note">이는 별도의 일회성 구매입니다. 구독을 취소하거나 환불하지 않으므로 Google Play에서도 구독을 취소해야 합니다. 둘 다 동일한 Google 계정을 사용하세요.</string>
-    <string name="upgrade_screen_switch_locked_note">구독이 더 이상 자동 갱신되지 않을 때 사용할 수 있습니다. 전환하려면 Google Play에서 구독을 취소하세요 — 현재 결제 주기가 끝날 때까지는 Pro를 계속 사용할 수 있습니다.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">상태가 잘못된 것 같나요?</string>
     <string name="upgrade_screen_status_restore_body">구매 내역이 여기에 표시되지 않는다면 복원을 시도해 보세요.</string>

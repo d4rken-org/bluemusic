@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Предности</string>
     <string name="upgrade_screen_subscription_trial_action">Започнете бесплатен пробен период од 14 дена</string>
     <string name="upgrade_screen_subscription_action">Претплатете се</string>
-    <string name="upgrade_screen_subscription_action_hint">Претплатата чини %s годишно.</string>
     <string name="upgrade_screen_iap_action">Еднократна купувачка</string>
-    <string name="upgrade_screen_iap_action_hint">Еднократната купувачка чини %s.</string>
     <string name="upgrade_screen_offer_divider_or">или</string>
-    <string name="upgrade_screen_offer_same_features">Исти функции, само различни модели на цени.</string>
     <string name="upgrade_screen_thanks_toast">Вие сте најдобри! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Обнови купувачка</string>
     <string name="upgrade_screen_restore_banner_title">Веќе го купивте BVM Pro?</string>
     <string name="upgrade_screen_restore_banner_body">Изгледа дека веќе сте надградиле на овој уред претходно. Обновете ја вашата куповина за да го отклучите повторно.</string>
-    <string name="upgrade_screen_restore_purchase_message">Вашата надградба важи на сите уреди со иста Google сметка.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Совети за решавање проблеми за непрепознаени надградби:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Синхронизацијата на Play Store може да потрае. Обидете се да рестартирате, исчистете ја кеш меморијата на Google Play или едноставно почекајте.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Повеќе сметки можат да го збунат Google Play. Одјавете се од другите сметки или инсталирајте преку веб-страницата на Google Play, што принудува асоцијации со конкретна сметка.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Погледнете го вашиот Pro статус</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Честитки!</string>
-    <string name="upgrade_screen_owned_congrats_body">Го имате BVM Pro — благодариме што го поддржувате развојот. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">Еднократна купувачка</string>
     <string name="upgrade_screen_owned_iap_body">Го поседувате BVM Pro засекогаш. Благодариме за вашата поддршка ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Претплата</string>
     <string name="upgrade_screen_owned_sub_renewing_body">Вашата BVM Pro претплата е активна и поставена да се обнови.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">Вашата BVM Pro претплата е активна, но нема да се обнови. Останува валидна до крајот на тековниот период.</string>
     <string name="upgrade_screen_owned_both_warning">Имате и претплата и еднократна куповина. Откажете ја претплатата во Google Play за да не бидете наплатени повторно.</string>
     <string name="upgrade_screen_manage_subscription">Управување со претплата</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Префрлете се на еднократна куповина</string>
-    <string name="upgrade_screen_switch_purchase_note">Ова е одделна еднократна куповина. Таа не ја откажува или враќа вашата претплата, затоа откажете ја и таа во Google Play. Користете ја истата Google сметка за обете.</string>
-    <string name="upgrade_screen_switch_locked_note">Достапно откако вашата претплата повеќе не е поставена да се обнови. Откажете ја во Google Play за да се префрлите — останувате со Pro до крајот на тековниот период.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">Статусот изгледа погрешен?</string>
     <string name="upgrade_screen_status_restore_body">Ако вашата куповина не се појавува тука, обидете се да ја вратите.</string>

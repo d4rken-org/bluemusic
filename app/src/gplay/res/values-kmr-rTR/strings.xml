@@ -12,36 +12,25 @@
     <string name="upgrade_screen_why_title">Avantaj</string>
     <string name="upgrade_screen_subscription_trial_action">Ceribandîna 14-rojî ya belaş dest pê bike</string>
     <string name="upgrade_screen_subscription_action">Abone bibe</string>
-    <string name="upgrade_screen_subscription_action_hint">Aboneyê salê %s lêdixe.</string>
     <string name="upgrade_screen_iap_action">Kirîna yekcar</string>
-    <string name="upgrade_screen_iap_action_hint">Kirîna yekcar %s lêdixe.</string>
     <string name="upgrade_screen_offer_divider_or">an</string>
-    <string name="upgrade_screen_offer_same_features">Heman taybetmendî, tenê bihaye cuda ye.</string>
     <string name="upgrade_screen_thanks_toast">Hûn herî baş in! ❤️</string>
     <string name="upgrade_screen_restore_purchase_action">Kirîna vegerîne</string>
     <string name="upgrade_screen_restore_banner_title">Tu berê BVM Pro kîrî?</string>
     <string name="upgrade_screen_restore_banner_body">Xuya dike ku tu berê li vî aparatî upgrade kî. Kîrîna xwe vegere bike û dîsa vekî bike.</string>
-    <string name="upgrade_screen_restore_purchase_message">Nuvekirinê we li ser hemû cîhazên bi heman hesabê Google derbasdar e.</string>
-    <string name="upgrade_screen_restore_troubleshooting_msg">Rêgezên çareserkirinê ji bo nuvekirinên nenas:</string>
     <string name="upgrade_screen_restore_sync_patience_hint">Hevdengkirina Play Store dibe ku wext bigire. Vegere, cache ya Google Play pak bike an tenê bisekine.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Hesabên gelek dikarin Google Play tevlihev bikin. Ji hesabên din derkeve an bi malpera Google Play saz bike.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
     <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Rewşa Pro-ya xwe bibîne</string>
     <!-- Pro status view: owned products -->
-    <string name="upgrade_screen_owned_congrats_title">Pîroz be!</string>
-    <string name="upgrade_screen_owned_congrats_body">Tu BVM Pro wergirt — spas ji bo piştgiriya pêşkeftinê. ❤️</string>
     <string name="upgrade_screen_owned_iap_title">Kîrîna yek carê</string>
     <string name="upgrade_screen_owned_iap_body">Tu BVM Pro ji bo herî demî xwedî ye. Spas ji bo piştgiriya te ❤️</string>
-    <string name="upgrade_screen_owned_sub_title">Abonekirî</string>
     <string name="upgrade_screen_owned_sub_renewing_body">Abonekiriya BVM Pro ya te çalak e û li ser nûkiriyanî ye.</string>
     <string name="upgrade_screen_owned_sub_not_renewing_body">Abonekiriya BVM Pro ya te çalak e lê nabe ku tê danîn. Ew derbasdar dimîne heya qedc demanê vê.</string>
     <string name="upgrade_screen_owned_both_warning">Tu hem abonekirî hem jî kirrîna yek carî heye. Abonekiriya di Google Play de betal bike da tu carekê din nexas nebe.</string>
     <string name="upgrade_screen_manage_subscription">Abonekirî rêvebir bike</string>
     <!-- Pro status view: switch subscription -> one-time purchase -->
-    <string name="upgrade_screen_switch_title">Veguherîn kirrîna yek carî</string>
-    <string name="upgrade_screen_switch_purchase_note">Ev kirrîna yek carî ya veqetandî ye. Ew abonekiriya te nabetal nakin û paşveger nake, ji ber vê tu ew di Google Play de jî betal bike. Hesabê Google yek tewhe ji bo herdu yê bikar bîn.</string>
-    <string name="upgrade_screen_switch_locked_note">Dema abonekiriya te nabe ku tê danîn derketî ye. Ew di Google Play de betal bike da tu biguherînî — tu Pro heya qedc demanê vê hildigre.</string>
     <!-- Pro status view: restore section -->
     <string name="upgrade_screen_status_restore_title">Statusa ne rast xuya dike?</string>
     <string name="upgrade_screen_status_restore_body">Heke kirrîna te li vir nabêje, hewl bide ku tê bersivekirin.</string>
