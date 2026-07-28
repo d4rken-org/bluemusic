@@ -65,26 +65,26 @@
     <string name="upgrades_no_purchases_found_check_account">No purchases found. Are you using the right account?</string>
 
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
-    <string name="upgrade_screen_offers_title">Pick your plan</string>
+    <string name="upgrade_screen_offers_title">Upgrade options</string>
     <string name="upgrade_screen_offers_body">Both options unlock the exact same Pro features — pick whichever suits you.</string>
     <string name="upgrade_screen_offers_unavailable_message">Google Play didn\'t return any prices right now. Give it a moment and tap retry.</string>
     <string name="upgrade_screen_benefits_body">• Unlimited devices\n• Custom connection actions\n• Theme customization\n• Advanced volume controls\n• Support future development ❤️</string>
     <string name="upgrade_screen_subscription_offer_title">Yearly subscription</string>
-    <string name="upgrade_screen_subscription_offer_body">Starts with a free trial, then renews yearly. Cancel anytime.</string>
-    <string name="upgrade_screen_subscription_offer_body_no_trial">Renews yearly. Cancel anytime.</string>
+    <string name="upgrade_screen_subscription_offer_body">Starts with a free trial, then renews yearly. Cancel anytime in Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Renews yearly. Cancel anytime in Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Lifetime unlock</string>
-    <string name="upgrade_screen_iap_offer_body">Pay once and own BVM Pro forever.</string>
+    <string name="upgrade_screen_iap_offer_body">Pay once and own Pro forever.</string>
     <string name="upgrade_screen_owned_hero_title">You\'re Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">You own %1$s forever.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Your %1$s subscription is active.</string>
-    <string name="upgrade_screen_owned_iap_purchase_note">Your subscription isn\'t set to renew, so you can switch to the one-time purchase now.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Your subscription isn\'t set to renew, so you can switch to the one-time purchase now. Heads up: it\'s a separate charge that won\'t cancel or refund your subscription, so use the same Google account for both.</string>
     <string name="upgrade_screen_owned_iap_locked_note">Cancel your renewing subscription in Google Play first, then you can switch to the one-time purchase.</string>
     <string name="upgrade_screen_restore_body">Already bought Pro on this account? Ask Google Play to re-check your purchases.</string>
     <string name="upgrade_screen_restore_checked_message">We asked Google Play to re-check this account\'s purchases and didn\'t find one.</string>
-    <string name="upgrade_screen_restore_contact_hint">Still stuck? Get in touch and we\'ll sort it out.</string>
-    <string name="upgrade_screen_restore_inconclusive_message">We couldn\'t finish checking with Google Play in time. Your Pro status is unchanged — give it a moment and try again.</string>
+    <string name="upgrade_screen_restore_contact_hint">Still stuck? Get in touch from the same Google account you bought with, include your Google Play order number, and we\'ll sort it out.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">We couldn\'t finish checking with Google Play in time, so we still don\'t know your purchase status — give it a moment and try again.</string>
     <string name="upgrades_gplay_billing_error_label">Purchase problem</string>
-    <string name="upgrades_gplay_billing_error_description">Google Play reported a problem: %1$s</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play reported a problem: %1$s. Give it another try later or restart your device.</string>
     <string name="upgrades_gplay_offer_unavailable_title">Offer unavailable</string>
     <string name="upgrades_gplay_offer_unavailable_description">Google Play didn\'t offer this item right now. It may not be available for your account or region yet — please try again later.</string>
 </resources>
