@@ -1,10 +1,7 @@
 ---
 description: Testing approach, frameworks, and guidelines
-globs:
-  - "app/src/test/**/*.kt"
-  - "app/src/testFossDebug/**/*.kt"
-  - "app/src/testGplayDebug/**/*.kt"
-  - "app/src/screenshotTest/**/*.kt"
+paths:
+  - "app/src/{test,testGplay,screenshotTest,screenshotTestGplayDebug}/**/*.{kt,java}"
 ---
 
 # Testing

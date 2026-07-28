@@ -1,7 +1,7 @@
 ---
 description: Kotlin conventions, Compose patterns, state management
-globs:
-  - "app/src/main/java/**/*.kt"
+paths:
+  - "app/src/{main,foss,gplay,debug}/java/**/*.kt"
   - "app/src/main/java/**/*.java"
 ---
 
@@ -12,6 +12,7 @@ globs:
 - Follow existing patterns in the codebase
 - Prefer immutable data classes for state
 - When writing user facing texts, prefer informal and casual language.
+- Never hardcode a user-facing string; extract it to `values/strings.xml` (see `rules/localization.md`).
 - Use Hilt for dependency injection in new code
 - Do NOT add comments on obvious code
 - Prefer exposing fewer fields and functions and enabling specific functionality via extension functions
