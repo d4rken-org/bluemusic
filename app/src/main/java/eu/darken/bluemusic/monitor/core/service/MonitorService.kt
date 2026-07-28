@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.monitor.core.service
 
 import android.annotation.SuppressLint
+import android.app.Notification
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -50,27 +51,34 @@ class MonitorService : Service2() {
     private var injectionComplete = false
     private var monitoringJob: Job? = null
     @Volatile private var monitorGeneration = 0
+    @Volatile private var lastNotification: Notification? = null
 
     override fun onBind(intent: Intent?): IBinder? = null
 
     @SuppressLint("InlinedApi")
+    private fun promoteToForeground(notification: Notification): Boolean {
+        try {
+            if (hasApiLevel(29)) {
+                startForeground(
+                    MonitorNotifications.NOTIFICATION_ID,
+                    notification,
+                    ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE
+                )
+            } else {
+                startForeground(MonitorNotifications.NOTIFICATION_ID, notification)
+            }
+        } catch (e: Exception) {
+            log(TAG, ERROR) { "Foreground promotion failed: ${e.asLog()}" }
+            return false
+        }
+        return true
+    }
+
     override fun onCreate() {
         log(TAG, VERBOSE) { "onCreate()" }
 
         // Promote to foreground BEFORE Hilt injection (super.onCreate) to avoid 5-second timeout
-        try {
-            val earlyNotification = MonitorNotifications.createEarlyNotification(this)
-            if (hasApiLevel(29)) {
-                startForeground(
-                    MonitorNotifications.NOTIFICATION_ID,
-                    earlyNotification,
-                    ServiceInfo.FOREGROUND_SERVICE_TYPE_CONNECTED_DEVICE
-                )
-            } else {
-                startForeground(MonitorNotifications.NOTIFICATION_ID, earlyNotification)
-            }
-        } catch (e: Exception) {
-            log(TAG, ERROR) { "Early foreground promotion failed: ${e.asLog()}" }
+        if (!promoteToForeground(MonitorNotifications.createEarlyNotification(this))) {
             stopSelf()
             return
         }
@@ -94,6 +102,13 @@ class MonitorService : Service2() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         log(TAG, VERBOSE) { "onStartCommand(intent=$intent, flags=$flags, startId=$startId)" }
+
+        // Every startForegroundService() re-arms the startForeground() obligation,
+        // so every onStartCommand has to satisfy it again, no matter how it exits.
+        if (!promoteToForeground(lastNotification ?: MonitorNotifications.createEarlyNotification(this))) {
+            stopSelf()
+            return START_NOT_STICKY
+        }
 
         if (!injectionComplete) {
             log(TAG, WARN) { "onStartCommand: Injection incomplete, stopping service." }
@@ -150,10 +165,9 @@ class MonitorService : Service2() {
     }
 
     private suspend fun updateNotification(activeDevices: List<ManagedDevice>) {
-        notificationManager.notify(
-            MonitorNotifications.NOTIFICATION_ID,
-            notifications.getDevicesNotification(activeDevices),
-        )
+        val notification = notifications.getDevicesNotification(activeDevices)
+        lastNotification = notification
+        notificationManager.notify(MonitorNotifications.NOTIFICATION_ID, notification)
     }
 
     private val stopMonitorReceiver = object : BroadcastReceiver() {
