@@ -8,6 +8,7 @@ import eu.darken.bluemusic.common.datastore.DataStoreValue
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.upgrade.core.billing.BillingData
 import eu.darken.bluemusic.upgrade.core.billing.BillingManager
+import eu.darken.bluemusic.upgrade.core.billing.GplayServiceUnavailableException
 import eu.darken.bluemusic.upgrade.core.billing.ItemAlreadyOwnedBillingException
 import eu.darken.bluemusic.upgrade.core.billing.PurchasedSku
 import eu.darken.bluemusic.upgrade.core.billing.UserCanceledBillingException
@@ -25,6 +26,7 @@ import io.mockk.slot
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -69,6 +71,10 @@ class UpgradeRepoGplayTest : BaseTest() {
         proUnconfirmedSince: Long = 0L,
         connectionFailures: Flow<Long> = emptyFlow(),
         failureSettled: Flow<Boolean> = flowOf(false),
+        // The cache-backed flows are dereferenced during construction, so a test that needs a
+        // FAILING one has to install it here — overriding the mock afterwards is too late.
+        lastProAtFlow: Flow<Long>? = null,
+        proUnconfirmedFlow: Flow<Long>? = null,
     ): UpgradeRepoGplay {
         every { billingManager.billingData } returns (billingDataFlow ?: flowOf(billingData))
         every { billingManager.freshBillingData } returns
@@ -83,7 +89,7 @@ class UpgradeRepoGplayTest : BaseTest() {
             else -> flowOf(*purchaseFailures.toTypedArray())
         }
         lastProAtMock = mockk<DataStoreValue<Long>>(relaxed = true).apply {
-            every { flow } returns flowOf(lastProAt)
+            every { flow } returns (lastProAtFlow ?: flowOf(lastProAt))
         }
         every { billingCache.lastProStateAt } returns lastProAtMock
         lastProSkuMock = mockk<DataStoreValue<String>>(relaxed = true).apply {
@@ -91,7 +97,7 @@ class UpgradeRepoGplayTest : BaseTest() {
         }
         every { billingCache.lastProStateSku } returns lastProSkuMock
         proUnconfirmedMock = mockk<DataStoreValue<Long>>(relaxed = true).apply {
-            every { flow } returns flowOf(proUnconfirmedSince)
+            every { flow } returns (proUnconfirmedFlow ?: flowOf(proUnconfirmedSince))
         }
         every { billingCache.proUnconfirmedSince } returns proUnconfirmedMock
         coJustRun { billingCache.stampLastProState(any(), any()) }
@@ -403,6 +409,22 @@ class UpgradeRepoGplayTest : BaseTest() {
         errors.single() shouldBe failure
     }
 
+    @Test fun `a launch that never resolves times out instead of parking the busy guard`() = runTest2 {
+        // useConnection waits for a healthy connection indefinitely. Unbounded, a Play outage
+        // between rendering the offers and this tap parks the launch forever with launchBusySku
+        // still held — every purchase button stays busy and no error ever reaches the user.
+        coEvery { billingManager.startIapFlow(any(), any(), null) } coAnswers { awaitCancellation() }
+
+        val errors = mutableListOf<Throwable>()
+        val repo = repo(lastProAt = 0L).apply { launchTimeoutMs = 50L }
+        repo.launchBillingFlowNow(mockk<Activity>(), OurSku.Iap.PRO_UPGRADE, null) { errors.add(it) }
+
+        // Play unavailable, not a generic failure: the user gets the dialog with the Play fix action.
+        errors.single().shouldBeInstanceOf<GplayServiceUnavailableException>()
+        // Released, so the next deliberate tap works.
+        repo.purchaseLaunchSku.value shouldBe null
+    }
+
     @Test fun `fresh empty full snapshot during grace starts the unconfirmed episode clock`() = runTest2 {
         repo(
             lastProAt = System.currentTimeMillis() - 1_000,
@@ -708,6 +730,22 @@ class UpgradeRepoGplayTest : BaseTest() {
         // Monotonic across the retry resubscribe: the re-emitted null seed must not regress an
         // already-settled stream back to unsettled (the runningReduce latch).
         infos[1].isSettled shouldBe true
+    }
+
+    @Test fun `wasEverPro degrades to false when the cache is unreadable`() = runTest2 {
+        // Fail-soft on purpose: this feeds the upgrade screen's combine, whose safeStateIn fallback
+        // is terminal (it catches, so the retry button can't revive it). Erroring here would take
+        // the whole screen down until it is reopened, over a restore banner.
+        val repo = repo(lastProAt = 0L, lastProAtFlow = flow { throw IOException("disk full") })
+
+        repo.wasEverPro.first() shouldBe false
+    }
+
+    @Test fun `proUnconfirmedSince degrades to zero when the cache is unreadable`() = runTest2 {
+        // 0 reads as "no unconfirmed episode", i.e. the quiet grace stage without diagnostics.
+        val repo = repo(lastProAt = 0L, proUnconfirmedFlow = flow { throw IOException("disk full") })
+
+        repo.proUnconfirmedSince.first() shouldBe 0L
     }
 
     @Test fun `a persistently failing grace cache does not kill upgradeInfo`() = runTest2 {
