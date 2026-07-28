@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.main.backup.core
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
@@ -29,7 +30,7 @@ import testhelpers.coroutine.TestDispatcherProvider
 import java.io.IOException
 
 @RunWith(RobolectricTestRunner::class)
-@Config(manifest = Config.NONE, sdk = [34])
+@Config(manifest = Config.NONE, sdk = [34], application = Application::class)
 class BackupRestoreManagerAtomicityTest {
 
     private lateinit var roomDb: DevicesRoomDb
