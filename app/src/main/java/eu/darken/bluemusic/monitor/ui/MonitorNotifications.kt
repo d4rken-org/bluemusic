@@ -132,8 +132,15 @@ class MonitorNotifications @Inject constructor(
 
         fun createEarlyNotification(context: Context): Notification {
             ensureNotificationChannel(context)
+
+            val openIntent = Intent(context, MainActivity::class.java)
+            val openPi = PendingIntent.getActivity(context, 0, openIntent, PendingIntentCompat.FLAG_IMMUTABLE)
+
             return NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notification_small)
+                .setContentTitle(context.getString(R.string.app_name))
+                .setContentText(context.getString(R.string.monitor_notification_starting))
+                .setContentIntent(openPi)
                 .build()
         }
     }

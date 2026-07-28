@@ -1,13 +1,17 @@
 package eu.darken.bluemusic.monitor.core.service
 
+import android.annotation.SuppressLint
+import android.app.ForegroundServiceStartNotAllowedException
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
+import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
+import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.startServiceCompat
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
@@ -72,6 +76,7 @@ class MonitorControl @Inject constructor(
             .launchIn(appScope)
     }
 
+    @SuppressLint("NewApi")
     suspend fun startMonitor(forceStart: Boolean = false) {
         log(TAG, VERBOSE) { "startMonitor(forceStart=$forceStart)" }
         if (!devicesSettings.currentEnabledState().isEnabled) {
@@ -82,7 +87,11 @@ class MonitorControl @Inject constructor(
             context.startServiceCompat(MonitorService.intent(context, forceStart))
             log(TAG) { "Monitor start request sent." }
         } catch (e: IllegalStateException) {
-            log(TAG, WARN) { "Failed to start monitor service: ${e.message}" }
+            if (hasApiLevel(31) && e is ForegroundServiceStartNotAllowedException) {
+                log(TAG, WARN) { "Start rejected, app is not allowed to start a FGS from the background: ${e.asLog()}" }
+            } else {
+                log(TAG, WARN) { "Failed to start monitor service: ${e.asLog()}" }
+            }
         }
     }
 

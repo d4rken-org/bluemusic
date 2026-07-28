@@ -1,7 +1,6 @@
 package eu.darken.bluemusic
 
 import android.app.Application
-import android.os.Looper
 import dagger.hilt.android.HiltAndroidApp
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.common.coroutine.AppScope
@@ -10,7 +9,6 @@ import eu.darken.bluemusic.common.debug.DebugSettings
 import eu.darken.bluemusic.common.debug.logging.LogCatLogger
 import eu.darken.bluemusic.common.debug.logging.Logging
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
@@ -107,15 +105,8 @@ class App : Application() {
                 .collect { widgetManager.refreshWidgets() }
         }
 
-        var foregroundExceptionHandled = false
         val oldHandler = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
-            if (throwable.isForegroundServiceTimingException() && !foregroundExceptionHandled) {
-                foregroundExceptionHandled = true
-                log(TAG, WARN) { "Suppressed foreground service timing exception: ${throwable.asLog()}" }
-                Looper.loop()
-                return@setDefaultUncaughtExceptionHandler
-            }
             log(TAG, ERROR) { "UNCAUGHT EXCEPTION: ${throwable.asLog()}" }
             if (oldHandler != null) oldHandler.uncaughtException(thread, throwable) else exitProcess(1)
             Thread.sleep(100)
@@ -126,14 +117,5 @@ class App : Application() {
 
     companion object {
         private val TAG = logTag("App")
-
-        private fun Throwable.isForegroundServiceTimingException(): Boolean {
-            var current: Throwable? = this
-            while (current != null) {
-                if (current.javaClass.simpleName == "ForegroundServiceDidNotStartInTimeException") return true
-                current = current.cause
-            }
-            return false
-        }
     }
 }
