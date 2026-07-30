@@ -18,9 +18,11 @@ import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.yield
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -224,6 +226,34 @@ class RecorderModuleTest : BaseTest() {
             coVerify { mockRecorder.start(any()) }
             coVerify { mockRecorder.stop() }
             module.state.first().isRecording shouldBe false
+            // DebugSessionManager reads this field directly — a stale value would advertise a
+            // session that no recorder is writing to.
+            module.currentLogDir shouldBe null
+        }
+
+        @Test
+        fun `a cancellation during the state commit stops the uncommitted recorder`() = runTest {
+            // currentLogDir is published before the state commit lands: a cancellation while the
+            // commit is in flight would leave a running recorder behind a log dir that the state
+            // never learns about.
+            File(externalDir, "bluemusic_force_debug_run").createNewFile()
+
+            val dispatcher = StandardTestDispatcher(testScheduler)
+            val moduleScope = CoroutineScope(dispatcher + Job())
+            val module = createModule(moduleScope, dispatcher)
+
+            // Queued alongside the module's own coroutines: the first turn where currentLogDir is
+            // set is the one where reconcileState() is parked in the state commit.
+            val canceller = launch {
+                var turns = 0
+                while (module.currentLogDir == null && turns++ < 1000) yield()
+                moduleScope.cancel()
+            }
+            advanceUntilIdle()
+            canceller.isCompleted shouldBe true
+
+            coVerify { mockRecorder.start(any()) }
+            coVerify { mockRecorder.stop() }
             // DebugSessionManager reads this field directly — a stale value would advertise a
             // session that no recorder is writing to.
             module.currentLogDir shouldBe null

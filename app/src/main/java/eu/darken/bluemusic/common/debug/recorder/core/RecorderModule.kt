@@ -80,7 +80,7 @@ class RecorderModule @Inject constructor(
             val newRecorder = recorderProvider.get()
             newRecorder.start(logFile)
 
-            val startedAt = try {
+            try {
                 triggerFile.createNewFile()
 
                 if (existingDir != null) {
@@ -108,7 +108,13 @@ class RecorderModule @Inject constructor(
 
                 this@RecorderModule.currentLogDir = sessionDir
 
-                recordingStartedAt
+                internalState.updateBlocking {
+                    copy(
+                        recorder = newRecorder,
+                        currentLogDir = sessionDir,
+                        recordingStartedAt = recordingStartedAt,
+                    )
+                }
             } catch (e: Exception) {
                 // The recorder is already live but not yet committed to the state: an exception escaping
                 // the header would abandon it where stopRecorder() can't reach it.
@@ -121,14 +127,6 @@ class RecorderModule @Inject constructor(
                     this@RecorderModule.currentLogDir = null
                 }
                 throw e
-            }
-
-            internalState.updateBlocking {
-                copy(
-                    recorder = newRecorder,
-                    currentLogDir = sessionDir,
-                    recordingStartedAt = startedAt,
-                )
             }
         } else if (!state.shouldRecord && state.isRecording) {
             state.recorder!!.stop()
