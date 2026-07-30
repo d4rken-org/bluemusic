@@ -18,15 +18,18 @@ import eu.darken.bluemusic.common.flow.DynamicStateFlow
 import eu.darken.bluemusic.common.upgrade.UpgradeDiagnostics
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.plus
+import kotlinx.coroutines.withContext
 import androidx.annotation.VisibleForTesting
 import java.io.File
 import javax.inject.Inject
+import javax.inject.Provider
 import javax.inject.Singleton
 
 @Singleton
@@ -36,6 +39,7 @@ class RecorderModule @Inject constructor(
     private val dispatcherProvider: DispatcherProvider,
     private val blueMusicId: BlueMusicId,
     private val upgradeDiagnostics: UpgradeDiagnostics,
+    private val recorderProvider: Provider<Recorder>,
 ) {
 
     @Volatile
@@ -73,34 +77,51 @@ class RecorderModule @Inject constructor(
             val existingDir = findExistingSessionDir()
             val sessionDir = existingDir ?: createSessionDir()
             val logFile = File(sessionDir, "core.log")
-            val newRecorder = Recorder()
+            val newRecorder = recorderProvider.get()
             newRecorder.start(logFile)
-            triggerFile.createNewFile()
 
-            if (existingDir != null) {
-                log(TAG, INFO) { "Resuming recording in existing session: ${existingDir.name}" }
-            }
-            log(TAG, INFO) { "Build.Fingerprint: ${Build.FINGERPRINT}" }
-            log(TAG, INFO) { "BuildConfig.Versions: ${BuildConfigWrap.VERSION_DESCRIPTION}" }
+            val startedAt = try {
+                triggerFile.createNewFile()
 
-            try {
-                // Billing complaints usually arrive as debug logs: having the local entitlement
-                // record in the header saves a support round-trip.
-                upgradeDiagnostics.debugInfo()?.let { log(TAG, INFO) { "Upgrade diagnostics: $it" } }
-            } catch (e: CancellationException) {
-                throw e
+                if (existingDir != null) {
+                    log(TAG, INFO) { "Resuming recording in existing session: ${existingDir.name}" }
+                }
+                log(TAG, INFO) { "Build.Fingerprint: ${Build.FINGERPRINT}" }
+                log(TAG, INFO) { "BuildConfig.Versions: ${BuildConfigWrap.VERSION_DESCRIPTION}" }
+
+                try {
+                    // Billing complaints usually arrive as debug logs: having the local entitlement
+                    // record in the header saves a support round-trip.
+                    upgradeDiagnostics.debugInfo()?.let { log(TAG, INFO) { "Upgrade diagnostics: $it" } }
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    // Diagnostics only — a broken read must not stop the recorder from starting.
+                    log(TAG, WARN) { "Upgrade diagnostics unavailable: ${e.asLog()}" }
+                }
+
+                val recordingStartedAt = if (existingDir != null) {
+                    existingDir.lastModified()
+                } else {
+                    System.currentTimeMillis()
+                }
+
+                this@RecorderModule.currentLogDir = sessionDir
+
+                recordingStartedAt
             } catch (e: Exception) {
-                // Diagnostics only — a broken read must not stop the recorder from starting.
-                log(TAG, WARN) { "Upgrade diagnostics unavailable: ${e.asLog()}" }
+                // The recorder is already live but not yet committed to the state: an exception escaping
+                // the header would abandon it where stopRecorder() can't reach it.
+                withContext(NonCancellable) {
+                    try {
+                        newRecorder.stop()
+                    } catch (stopError: Exception) {
+                        e.addSuppressed(stopError)
+                    }
+                    this@RecorderModule.currentLogDir = null
+                }
+                throw e
             }
-
-            val startedAt = if (existingDir != null) {
-                existingDir.lastModified()
-            } else {
-                System.currentTimeMillis()
-            }
-
-            this@RecorderModule.currentLogDir = sessionDir
 
             internalState.updateBlocking {
                 copy(

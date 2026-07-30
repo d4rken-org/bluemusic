@@ -1,12 +1,35 @@
 package eu.darken.bluemusic.common.debug.recorder.core
 
+import android.content.Context
+import eu.darken.bluemusic.common.BlueMusicId
+import eu.darken.bluemusic.common.upgrade.UpgradeDiagnostics
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import io.kotest.matchers.types.shouldBeInstanceOf
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.every
+import io.mockk.mockk
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.awaitCancellation
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.runTest
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
-import java.io.File
 import testhelpers.BaseTest
+import testhelpers.coroutine.TestDispatcherProvider
+import java.io.File
+import java.io.IOException
+import javax.inject.Provider
 
 class RecorderModuleTest : BaseTest() {
 
@@ -132,6 +155,125 @@ class RecorderModuleTest : BaseTest() {
 
             // Returns from first directory that has a match (ext), not the globally most recent
             RecorderModule.findExistingSessionDir(listOf(extDir, cacheDir)) shouldBe extSession
+        }
+    }
+
+    @Nested
+    inner class StartGuard {
+
+        @TempDir lateinit var tempDir: File
+
+        private val context: Context = mockk(relaxed = true)
+        private val blueMusicId: BlueMusicId = mockk()
+        private val upgradeDiagnostics: UpgradeDiagnostics = mockk()
+        private val recorderProvider: Provider<Recorder> = mockk()
+        private val mockRecorder: Recorder = mockk()
+
+        private lateinit var externalDir: File
+        private lateinit var cacheDir: File
+
+        @BeforeEach
+        fun setup() {
+            externalDir = File(tempDir, "external").apply { mkdirs() }
+            cacheDir = File(tempDir, "cache").apply { mkdirs() }
+
+            every { context.getExternalFilesDir(null) } returns externalDir
+            every { context.cacheDir } returns cacheDir
+
+            every { blueMusicId.id } returns "abcdefgh12345678"
+            coEvery { upgradeDiagnostics.debugInfo() } returns "BillingCache(test)"
+
+            every { recorderProvider.get() } returns mockRecorder
+            coEvery { mockRecorder.start(any()) } returns Unit
+            coEvery { mockRecorder.stop() } returns Unit
+        }
+
+        private fun createModule(scope: CoroutineScope, dispatcher: CoroutineDispatcher) = RecorderModule(
+            context = context,
+            appScope = scope,
+            dispatcherProvider = TestDispatcherProvider(dispatcher),
+            blueMusicId = blueMusicId,
+            upgradeDiagnostics = upgradeDiagnostics,
+            recorderProvider = recorderProvider,
+        )
+
+        /** A recorder started from the debug settings has no trigger file yet — and an unwritable
+         * external files dir makes creating it fail right after the recorder went live. */
+        private fun blockTriggerFileCreation() {
+            val blockedParent = File(tempDir, "blocked").apply { createNewFile() }
+            every { context.getExternalFilesDir(null) } returns blockedParent
+        }
+
+        @Test
+        fun `a cancellation during the log header stops the uncommitted recorder`() = runTest {
+            // The recorder is started before the header is written but only committed to the state
+            // afterwards: a cancellation in between would orphan a running recorder that
+            // stopRecorder() can never reach.
+            File(externalDir, "bluemusic_force_debug_run").createNewFile()
+            coEvery { upgradeDiagnostics.debugInfo() } coAnswers { awaitCancellation() }
+
+            val dispatcher = UnconfinedTestDispatcher(testScheduler)
+            val moduleScope = CoroutineScope(dispatcher + Job())
+            val module = createModule(moduleScope, dispatcher)
+            advanceUntilIdle()
+
+            // Cancelling the module's scope cancels the in-flight header read.
+            moduleScope.cancel()
+            advanceUntilIdle()
+
+            coVerify { mockRecorder.start(any()) }
+            coVerify { mockRecorder.stop() }
+            module.state.first().isRecording shouldBe false
+            // DebugSessionManager reads this field directly — a stale value would advertise a
+            // session that no recorder is writing to.
+            module.currentLogDir shouldBe null
+        }
+
+        @Test
+        fun `a failing log header stops the uncommitted recorder`() = runTest {
+            // Same window as above, but for ordinary failures of the header writes.
+            blockTriggerFileCreation()
+
+            val dispatcher = UnconfinedTestDispatcher(testScheduler)
+            var caught: Throwable? = null
+            val handler = CoroutineExceptionHandler { _, error -> caught = error }
+            val moduleScope = CoroutineScope(dispatcher + Job() + handler)
+            val module = createModule(moduleScope, dispatcher)
+            // The recorder is enabled from the debug settings, so there is no trigger file yet.
+            val starter = launch { module.startRecorder() }
+            advanceUntilIdle()
+
+            caught.shouldBeInstanceOf<IOException>()
+            coVerify { mockRecorder.start(any()) }
+            coVerify { mockRecorder.stop() }
+            module.state.first().isRecording shouldBe false
+            module.currentLogDir shouldBe null
+
+            starter.cancel()
+            moduleScope.cancel()
+        }
+
+        @Test
+        fun `a failing stop is reported with the original failure`() = runTest {
+            // The stop is a best-effort cleanup: losing the reason the start failed would leave the
+            // debug log with a mystery instead of the disk error that caused it.
+            blockTriggerFileCreation()
+            val stopError = IllegalStateException("recorder is wedged")
+            coEvery { mockRecorder.stop() } throws stopError
+
+            val dispatcher = UnconfinedTestDispatcher(testScheduler)
+            var caught: Throwable? = null
+            val handler = CoroutineExceptionHandler { _, error -> caught = error }
+            val moduleScope = CoroutineScope(dispatcher + Job() + handler)
+            val module = createModule(moduleScope, dispatcher)
+            val starter = launch { module.startRecorder() }
+            advanceUntilIdle()
+
+            caught.shouldBeInstanceOf<IOException>()
+            caught!!.suppressed.toList() shouldBe listOf(stopError)
+
+            starter.cancel()
+            moduleScope.cancel()
         }
     }
 }
