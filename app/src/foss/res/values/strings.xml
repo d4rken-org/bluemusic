@@ -25,6 +25,11 @@
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">View your supporter status</string>
 
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">You are on the free version</string>
+    <string name="upgrade_screen_status_free_body">Become a supporter to unlock the extra features and sponsor continued development.</string>
+    <string name="upgrade_screen_status_free_action">See upgrade options</string>
+
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Thanks for your support</string>
     <string name="upgrade_screen_supporter_status_body">You\'ve unlocked all extra features by supporting open-source development.</string>

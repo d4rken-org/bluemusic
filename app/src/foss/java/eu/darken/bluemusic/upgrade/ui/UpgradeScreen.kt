@@ -1,21 +1,15 @@
 package eu.darken.bluemusic.upgrade.ui
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import android.widget.Toast
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.twotone.Devices
+import androidx.compose.material.icons.twotone.AutoAwesome
 import androidx.compose.material.icons.twotone.Favorite
-import androidx.compose.material.icons.twotone.Palette
-import androidx.compose.material.icons.twotone.PlayCircle
-import androidx.compose.material.icons.twotone.Tune
+import androidx.compose.material.icons.twotone.Info
+import androidx.compose.material.icons.twotone.Verified
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.SnackbarHostState
@@ -24,11 +18,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.AnnotatedString
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
@@ -37,178 +31,284 @@ import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.error.ErrorEventHandler
+import eu.darken.bluemusic.common.navigation.Nav
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
+// Which presentation the FOSS upgrade screen shows: the classic support pitch, or one of the
+// status views behind the settings "supporter status" entry.
+internal enum class FossUpgradeView {
+    PITCH,
+    STATUS_FREE,
+    STATUS_UPGRADED,
+}
+
 @Composable
 fun UpgradeScreenHost(
-    manage: Boolean,
+    route: Nav.Main.Upgrade,
     vm: UpgradeViewModel = hiltViewModel(),
 ) {
+    LaunchedEffect(route) { vm.bindRoute(route) }
     ErrorEventHandler(vm)
 
+    val context = LocalContext.current
     val snackbarHostState = remember { SnackbarHostState() }
-    val tooFastMessage = stringResource(R.string.upgrade_screen_sponsor_too_fast)
+    // Seeded from the ViewModel's handle-backed pending launch: after a process death while the
+    // sponsor page was open, a blank tracker would swallow the very first return. The handle is the
+    // authority on whether a return is still expected, so it reconstructs the tracker's state.
+    val sponsorReturnTracker = remember(vm) {
+        SponsorReturnTracker(wentToBackground = vm.hasPendingSponsorLaunch())
+    }
 
-    LifecycleEventEffect(Lifecycle.Event.ON_PAUSE) { vm.onPaused() }
-    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { vm.onResumed() }
+    LaunchedEffect(Unit) {
+        vm.snackbarEvents.collect { stringRes ->
+            snackbarHostState.showSnackbar(context.getString(stringRes))
+        }
+    }
 
-    LaunchedEffect(vm.events) {
-        vm.events.collect { event ->
-            when (event) {
-                is UpgradeEvent.SpendMoreTime -> snackbarHostState.showSnackbar(message = tooFastMessage)
-            }
+    LaunchedEffect(Unit) {
+        vm.toastEvents.collect { stringRes ->
+            Toast.makeText(context, context.getString(stringRes), Toast.LENGTH_LONG).show()
+        }
+    }
+
+    LifecycleEventEffect(Lifecycle.Event.ON_STOP) {
+        sponsorReturnTracker.onStop()
+    }
+    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
+        if (sponsorReturnTracker.consumeResumeReturn()) {
+            vm.checkSponsorReturn()
         }
     }
 
     val state by vm.state.collectAsStateWithLifecycle()
 
-    // Show the supporter-status view whenever the user is already a supporter (independent of the
-    // manage flag); otherwise the sponsor pitch.
-    if (state?.isSupporter == true) {
-        SupporterStatusScreen(
-            supporterSince = state?.supporterSince,
-            onNavigateBack = { vm.navUp() },
-            onVisitSponsors = { vm.openSponsorPage() },
-        )
-    } else {
-        UpgradeScreen(
-            onNavigateBack = { vm.navUp() },
-            onSponsorClick = { vm.openSponsor() },
-            snackbarHostState = snackbarHostState,
-        )
-    }
+    UpgradeScreen(
+        // Until the route binding lands (one frame): the default route keeps rendering the pitch
+        // exactly as before, only the manage route waits for the status decision.
+        view = state.view ?: FossUpgradeView.PITCH.takeIf { !route.manage },
+        supporterSince = state.supporterSince,
+        snackbarHostState = snackbarHostState,
+        onGithubSponsors = vm::goGithubSponsors,
+        onOpenSponsors = vm::openSponsors,
+        onShowUpgradeOptions = vm::onShowUpgradeOptions,
+        onNavigateUp = vm::navUp,
+    )
 }
 
 @Composable
-fun UpgradeScreen(
-    onNavigateBack: () -> Unit,
-    onSponsorClick: () -> Unit,
+internal fun UpgradeScreen(
+    view: FossUpgradeView? = FossUpgradeView.PITCH,
+    supporterSince: Instant? = null,
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
+    onGithubSponsors: () -> Unit = {},
+    onOpenSponsors: () -> Unit = {},
+    onShowUpgradeOptions: () -> Unit = {},
+    onNavigateUp: () -> Unit = {},
 ) {
-    val benefits = listOf(
-        UpgradeBenefitItem(Icons.TwoTone.Devices, stringResource(R.string.upgrade_benefit_unlimited_devices)),
-        UpgradeBenefitItem(Icons.TwoTone.PlayCircle, stringResource(R.string.upgrade_benefit_connection_actions)),
-        UpgradeBenefitItem(Icons.TwoTone.Palette, stringResource(R.string.upgrade_benefit_theme_customization)),
-        UpgradeBenefitItem(Icons.TwoTone.Tune, stringResource(R.string.upgrade_benefit_power_controls)),
-        UpgradeBenefitItem(Icons.TwoTone.Favorite, stringResource(R.string.upgrade_benefit_support)),
-    )
-
     UpgradeScreenScaffold(
-        title = stringResource(R.string.app_name_upgraded),
-        postfix = stringResource(R.string.app_name_upgrade_postfix),
-        preamble = stringResource(R.string.upgrade_screen_preamble),
-        benefitTitle = stringResource(R.string.upgrade_screen_why_title),
-        benefits = benefits,
-        onNavigateBack = onNavigateBack,
+        // Status views describe the existing install, not a support ask — they get the composed
+        // flavor title, with the postfix highlighted for supporters like the dashboard does it.
+        title = if (view == FossUpgradeView.PITCH) {
+            AnnotatedString(stringResource(R.string.upgrade_screen_title))
+        } else {
+            upgradeScreenTitle(upgraded = view == FossUpgradeView.STATUS_UPGRADED)
+        },
+        onNavigateUp = onNavigateUp,
         snackbarHostState = snackbarHostState,
-    ) {
-        Button(
-            onClick = onSponsorClick,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp),
-        ) {
-            Icon(imageVector = Icons.TwoTone.Favorite, contentDescription = null)
-            Text(
-                text = stringResource(R.string.upgrade_screen_sponsor_action),
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(start = 8.dp),
+    ) { paddingValues ->
+        when (view) {
+            null -> Unit // Route not bound yet (single frame); content lands with the next state.
+            FossUpgradeView.PITCH -> UpgradePitchContent(
+                paddingValues = paddingValues,
+                onGithubSponsors = onGithubSponsors,
+            )
+
+            FossUpgradeView.STATUS_FREE -> UpgradeStatusFreeContent(
+                paddingValues = paddingValues,
+                onShowUpgradeOptions = onShowUpgradeOptions,
+            )
+
+            FossUpgradeView.STATUS_UPGRADED -> UpgradeStatusUpgradedContent(
+                paddingValues = paddingValues,
+                supporterSince = supporterSince,
+                onOpenSponsors = onOpenSponsors,
             )
         }
-
-        Text(
-            text = stringResource(R.string.upgrade_screen_sponsor_action_hint),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp),
-        )
     }
 }
 
 @Composable
-fun SupporterStatusScreen(
-    supporterSince: Instant?,
-    onNavigateBack: () -> Unit,
-    onVisitSponsors: () -> Unit,
+private fun UpgradePitchContent(
+    paddingValues: PaddingValues,
+    onGithubSponsors: () -> Unit,
 ) {
-    UpgradeScreenShell(
-        title = stringResource(R.string.app_name_upgraded),
-        postfix = stringResource(R.string.app_name_upgrade_postfix),
-        onNavigateBack = onNavigateBack,
+    UpgradeScreenContent(
+        paddingValues = paddingValues,
     ) {
-        ElevatedCard(
-            modifier = Modifier.fillMaxWidth(),
+        UpgradeHeader()
+
+        UpgradePreambleCard(
+            text = stringResource(R.string.upgrade_screen_preamble),
+            colors = CardDefaults.elevatedCardColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+            ),
+        )
+
+        UpgradeSectionCard(
+            title = stringResource(R.string.upgrade_screen_why_title),
+            icon = Icons.TwoTone.AutoAwesome,
+        ) {
+            UpgradeFeatureList(text = stringResource(R.string.upgrade_screen_why_body))
+        }
+
+        UpgradeSectionCard(
+            title = stringResource(R.string.upgrade_screen_how_title),
+            icon = Icons.TwoTone.Favorite,
+        ) {
+            UpgradeSectionBody(text = stringResource(R.string.upgrade_screen_how_body))
+        }
+
+        UpgradeActionCard(
+            colors = CardDefaults.elevatedCardColors(
+                containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+            ),
+        ) {
+            Button(
+                onClick = onGithubSponsors,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .testTag(UpgradeScreenTags.FOSS_SPONSOR),
+            ) {
+                Text(stringResource(R.string.upgrade_screen_sponsor_action))
+            }
+
+            UpgradeHintText(text = stringResource(R.string.upgrade_screen_sponsor_action_hint))
+        }
+    }
+}
+
+@Composable
+private fun UpgradeStatusFreeContent(
+    paddingValues: PaddingValues,
+    onShowUpgradeOptions: () -> Unit,
+) {
+    UpgradeScreenContent(
+        paddingValues = paddingValues,
+    ) {
+        UpgradeHeader()
+
+        UpgradeSectionCard(
+            title = stringResource(R.string.upgrade_screen_status_free_title),
+            icon = Icons.TwoTone.Info,
+            modifier = Modifier.testTag(UpgradeScreenTags.FOSS_STATUS_FREE),
+        ) {
+            UpgradeSectionBody(text = stringResource(R.string.upgrade_screen_status_free_body))
+            Button(
+                onClick = onShowUpgradeOptions,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .testTag(UpgradeScreenTags.FOSS_SHOW_OPTIONS),
+            ) {
+                Text(stringResource(R.string.upgrade_screen_status_free_action))
+            }
+        }
+    }
+}
+
+@Composable
+private fun UpgradeStatusUpgradedContent(
+    paddingValues: PaddingValues,
+    supporterSince: Instant? = null,
+    onOpenSponsors: () -> Unit,
+) {
+    UpgradeScreenContent(
+        paddingValues = paddingValues,
+    ) {
+        UpgradeHeader()
+
+        UpgradeSectionCard(
+            title = stringResource(R.string.upgrade_screen_supporter_status_title),
+            icon = Icons.TwoTone.Verified,
+            modifier = Modifier.testTag(UpgradeScreenTags.FOSS_STATUS_UPGRADED),
             colors = CardDefaults.elevatedCardColors(
                 containerColor = MaterialTheme.colorScheme.secondaryContainer,
                 contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
             ),
         ) {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(imageVector = Icons.TwoTone.Favorite, contentDescription = null)
-                    Text(
-                        text = stringResource(R.string.upgrade_screen_supporter_status_title),
-                        style = MaterialTheme.typography.titleMedium,
-                        modifier = Modifier.padding(start = 8.dp),
-                    )
+            Text(
+                text = stringResource(R.string.upgrade_screen_supporter_status_body),
+                style = MaterialTheme.typography.bodyMedium,
+            )
+            supporterSince?.let { since ->
+                val formatter = remember {
+                    DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withZone(ZoneId.systemDefault())
                 }
-                Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = stringResource(R.string.upgrade_screen_supporter_status_body),
-                    style = MaterialTheme.typography.bodyMedium,
+                    text = stringResource(R.string.upgrade_screen_supporter_since, formatter.format(since)),
+                    style = MaterialTheme.typography.bodySmall,
                 )
-                supporterSince?.let { since ->
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = stringResource(R.string.upgrade_screen_supporter_since, SUPPORTER_DATE_FORMAT.format(since)),
-                        style = MaterialTheme.typography.bodySmall,
-                    )
-                }
             }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
-
-        OutlinedButton(
-            onClick = onVisitSponsors,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp),
-        ) {
-            Icon(imageVector = Icons.TwoTone.Favorite, contentDescription = null)
-            Text(
-                text = stringResource(R.string.upgrade_screen_supporter_visit_action),
-                modifier = Modifier.padding(start = 8.dp),
-            )
+        UpgradeActionCard {
+            OutlinedButton(
+                onClick = onOpenSponsors,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .testTag(UpgradeScreenTags.FOSS_DONATE),
+            ) {
+                Text(stringResource(R.string.upgrade_screen_supporter_visit_action))
+            }
         }
     }
 }
 
-private val SUPPORTER_DATE_FORMAT: DateTimeFormatter =
-    DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withZone(ZoneId.systemDefault())
+internal class SponsorReturnTracker(
+    private var wentToBackground: Boolean = false,
+) {
+
+    fun onStop() {
+        wentToBackground = true
+    }
+
+    fun consumeResumeReturn(): Boolean {
+        return if (wentToBackground) {
+            wentToBackground = false
+            true
+        } else {
+            false
+        }
+    }
+}
 
 @Preview2
 @Composable
 private fun UpgradeScreenPreview() {
     PreviewWrapper {
-        UpgradeScreen(onNavigateBack = {}, onSponsorClick = {})
+        UpgradeScreen()
     }
 }
 
 @Preview2
 @Composable
-private fun SupporterStatusScreenPreview() {
+private fun UpgradeScreenStatusFreePreview() {
     PreviewWrapper {
-        SupporterStatusScreen(
+        UpgradeScreen(view = FossUpgradeView.STATUS_FREE)
+    }
+}
+
+@Preview2
+@Composable
+private fun UpgradeScreenStatusUpgradedPreview() {
+    PreviewWrapper {
+        UpgradeScreen(
+            view = FossUpgradeView.STATUS_UPGRADED,
             supporterSince = Instant.ofEpochMilli(1_700_000_000_000L),
-            onNavigateBack = {},
-            onVisitSponsors = {},
         )
     }
 }

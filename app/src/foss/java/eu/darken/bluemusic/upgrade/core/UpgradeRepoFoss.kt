@@ -65,8 +65,8 @@ class UpgradeRepoFoss @Inject constructor(
         return webpageTool.open(upgradeSite)
     }
 
-    suspend fun confirmGithubSponsorsUpgrade() {
-        log(TAG) { "confirmGithubSponsorsUpgrade()" }
+    suspend fun persistUpgrade() {
+        log(TAG) { "persistUpgrade()" }
         fossCache.upgrade.valueBlocking = FossUpgrade(
             upgradedAt = Instant.now(),
             upgradeType = FossUpgrade.Type.GITHUB_SPONSORS
