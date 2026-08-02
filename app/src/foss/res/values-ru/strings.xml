@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
-    <string name="app_name_upgrade_postfix">FOSS</string>
-    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">Требуется BVM FOSS</string>
     <string name="upgrade_prompt_title">Обновить до BVM FOSS</string>
     <string name="upgrade_prompt_body">Разблокируйте дополнительные возможности и станьте спонсором, чтобы поддержать разработку приложения!</string>

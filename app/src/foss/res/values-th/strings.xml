@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
-    <string name="app_name_upgrade_postfix">บังคับ</string>
-    <string name="upgrade_badge_label">บังคับ</string>
     <string name="upgrade_feature_requires_pro">ต้องใช้ BVM FOSS</string>
     <string name="upgrade_prompt_title">อัปเกรดเป็น BVM FOSS</string>
     <string name="upgrade_prompt_body">ปลดล็อกฟีเจอร์เพิ่มเติมและเป็นผู้อุปถัมภ์เพื่อสนับสนุนการพัฒนาอย่างต่อเนื่อง!</string>

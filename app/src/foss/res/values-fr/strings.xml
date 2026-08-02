@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
-    <string name="app_name_upgrade_postfix">Logiciel libre</string>
-    <string name="upgrade_badge_label">Logiciel libre</string>
     <string name="upgrade_feature_requires_pro">Nécessite BVM FOSS</string>
     <string name="upgrade_prompt_title">Passer à BVM FOSS</string>
     <string name="upgrade_prompt_body">Débloquez des fonctions supplémentaires et devenez mécène pour soutenir le développement continu.</string>
