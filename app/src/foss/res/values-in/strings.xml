@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
-    <string name="app_name_upgrade_postfix">Perangkat Lunak Gratis dan Sumber Terbuka</string>
-    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">Membutuhkan BVM FOSS</string>
     <string name="upgrade_prompt_title">Upgrade ke BVM FOSS</string>
     <string name="upgrade_prompt_body">Buka fitur-fitur tambahan dan jadilah penyokong yang mendukung pengembangan yang berkelanjutan!</string>

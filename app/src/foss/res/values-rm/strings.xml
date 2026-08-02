@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
-    <string name="app_name_upgrade_postfix">FOSS</string>
-    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">Basegna BVM FOSS</string>
     <string name="upgrade_prompt_title">Actualisar a BVM FOSS</string>
     <string name="upgrade_prompt_body">Deblocha funcziuns supplementaras e daventescha in patronu per sustegnair il svilup ulterior!</string>

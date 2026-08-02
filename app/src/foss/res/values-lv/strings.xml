@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_upgraded">BSP FOSS</string>
-    <string name="app_name_upgrade_postfix">FOSS</string>
-    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">Nepieciešams BSP FOSS</string>
     <string name="upgrade_prompt_title">Jaunināt uz BSP FOSS</string>
     <string name="upgrade_prompt_body">Atslēdz papildu iespējas un kļūsti par aizbildni, lai atbalstītu izstrādes nepārtrauktību!</string>

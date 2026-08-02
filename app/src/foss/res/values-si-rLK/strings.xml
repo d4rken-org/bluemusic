@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name_upgraded">BVM FOSS</string>
-    <string name="app_name_upgrade_postfix">FOSS</string>
-    <string name="upgrade_badge_label">FOSS</string>
     <string name="upgrade_feature_requires_pro">BVM FOSS අවශ්‍යයි</string>
     <string name="upgrade_prompt_title">BVM FOSS වෙත උත්‍යෝජනය කරන්න</string>
     <string name="upgrade_prompt_body">අමතර විශේෂාංග අඟුල හරිමින් අඛණ්ඩ සංවර්ධනයට සහාය වීමට අනුග්‍රාහකයෙකු වන්න!</string>
