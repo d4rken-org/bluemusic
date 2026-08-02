@@ -358,4 +358,44 @@ class FossUpgradeViewModelTest : BaseTest() {
         coVerify(exactly = 0) { repo.persistUpgrade() }
         vm.state.value.supporterSince shouldBe Instant.EPOCH
     }
+
+    @Test
+    fun `a long sponsor visit by an already upgraded user does not re-persist the upgrade`() = runTest2(
+        context = testDispatcher,
+    ) {
+        // The armed path taken by a supporter who tapped the pitch's sponsor button again: persisting
+        // would rewrite upgradedAt and visibly reset the "supporter since" date the status screen
+        // shows, and the thanks toast belongs to an unlock that already happened.
+        val repo = mockRepo(MutableStateFlow(upgradedInfo()))
+        val vm = buildVm(repo = repo)
+
+        val nudges = mutableListOf<Int>()
+        val thanks = mutableListOf<Int>()
+        val snackbarCollector = launch(start = CoroutineStart.UNDISPATCHED) {
+            vm.snackbarEvents.collect { nudges.add(it) }
+        }
+        val toastCollector = launch(start = CoroutineStart.UNDISPATCHED) { vm.toastEvents.collect { thanks.add(it) } }
+
+        vm.goGithubSponsors()
+        ShadowSystemClock.advanceBy(Duration.ofSeconds(6))
+        vm.checkSponsorReturn()
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { repo.persistUpgrade() }
+        thanks.shouldBeEmpty()
+        nudges.shouldBeEmpty()
+        // The pending launch is consumed even on the quiet path.
+        vm.hasPendingSponsorLaunch() shouldBe false
+
+        // A later resume finds nothing armed and stays a no-op.
+        vm.checkSponsorReturn()
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { repo.persistUpgrade() }
+        thanks.shouldBeEmpty()
+        nudges.shouldBeEmpty()
+
+        snackbarCollector.cancel()
+        toastCollector.cancel()
+    }
 }

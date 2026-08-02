@@ -60,6 +60,8 @@ class UpgradeRepoFoss @Inject constructor(
         }
         .shareIn(scope, SharingStarted.WhileSubscribed(3000L, 0L), replay = 1)
 
+    // Synchronous so the caller learns whether the page actually opened: the FOSS unlock heuristic
+    // only arms on a successful launch, and a fire-and-forget coroutine can't report that back.
     fun openGithubSponsorsPage(): Boolean {
         log(TAG) { "openGithubSponsorsPage()" }
         return webpageTool.open(upgradeSite)

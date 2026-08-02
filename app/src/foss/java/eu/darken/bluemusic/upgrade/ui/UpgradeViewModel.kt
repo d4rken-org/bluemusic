@@ -143,18 +143,21 @@ class UpgradeViewModel @Inject constructor(
 
     fun checkSponsorReturn() = launch {
         val pressedAt = handle.remove<Long>(KEY_SPONSOR_PRESSED_AT) ?: return@launch
+
+        // Evaluated before the duration: an already upgraded supporter (recurring donation button)
+        // has nothing left to unlock, and persisting again would rewrite their upgradedAt — visibly
+        // resetting the "supporter since" date the status screen shows them.
+        if (upgradeRepo.upgradeInfo.first().isPro) {
+            log(tag) { "checkSponsorReturn(): Already upgraded, staying quiet" }
+            return@launch
+        }
+
         val elapsed = SystemClock.elapsedRealtime() - pressedAt
         log(tag) { "checkSponsorReturn(): elapsed=${elapsed}ms" }
 
         if (elapsed < SPONSOR_DELAY_MS) {
-            // The nudge belongs to the unlock heuristic. An already upgraded user (recurring
-            // donation button) has nothing to unlock — peeking at the page needs no feedback.
-            if (upgradeRepo.upgradeInfo.first().isPro) {
-                log(tag) { "checkSponsorReturn(): Too quick, but already upgraded, staying quiet" }
-            } else {
-                log(tag) { "checkSponsorReturn(): Too quick, showing snackbar" }
-                snackbarEvents.tryEmit(R.string.upgrade_screen_sponsor_too_fast)
-            }
+            log(tag) { "checkSponsorReturn(): Too quick, showing snackbar" }
+            snackbarEvents.tryEmit(R.string.upgrade_screen_sponsor_too_fast)
         } else {
             log(tag) { "checkSponsorReturn(): Delay passed, persisting upgrade" }
             upgradeRepo.persistUpgrade()
