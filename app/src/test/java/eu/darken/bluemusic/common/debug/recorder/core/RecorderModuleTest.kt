@@ -2,7 +2,9 @@ package eu.darken.bluemusic.common.debug.recorder.core
 
 import android.content.Context
 import eu.darken.bluemusic.common.BlueMusicId
+import eu.darken.bluemusic.common.debug.logging.Logging
 import eu.darken.bluemusic.common.upgrade.UpgradeDiagnostics
+import io.kotest.matchers.longs.shouldBeLessThan
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.types.shouldBeInstanceOf
@@ -13,15 +15,20 @@ import io.mockk.mockk
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.withTimeout
 import kotlinx.coroutines.yield
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
@@ -31,7 +38,9 @@ import testhelpers.BaseTest
 import testhelpers.coroutine.TestDispatcherProvider
 import java.io.File
 import java.io.IOException
+import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Provider
+import kotlin.system.measureTimeMillis
 
 class RecorderModuleTest : BaseTest() {
 
@@ -199,6 +208,38 @@ class RecorderModuleTest : BaseTest() {
             recorderProvider = recorderProvider,
         )
 
+        private val logLines = CopyOnWriteArrayList<String>()
+        private val logCapture = object : Logging.Logger {
+            override fun log(priority: Logging.Priority, tag: String, message: String, metaData: Map<String, Any>?) {
+                logLines.add(message)
+            }
+        }
+
+        /**
+         * Real dispatchers on purpose: the header's read deadline is wall-clock, so a virtual-time
+         * test would skip past it instead of exercising it — an ignored seam has to fail this, not
+         * pass after the full production budget. The seam is set before [RecorderModule.startRecorder]
+         * so no header read can run against the production bound.
+         *
+         * The block runs inside its own deadline: a missing or mis-wired production bound must fail
+         * this test rather than wedge the gradle worker on a read that never answers.
+         */
+        private fun withRealtimeModule(
+            headerTimeoutMs: Long = 300L,
+            block: suspend (RecorderModule) -> Unit,
+        ) {
+            val moduleScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
+            Logging.install(logCapture)
+            try {
+                val module = createModule(moduleScope, Dispatchers.IO)
+                module.headerReadTimeoutMs = headerTimeoutMs
+                runBlocking { withTimeout(TEST_ENVELOPE_MS) { block(module) } }
+            } finally {
+                Logging.remove(logCapture)
+                moduleScope.cancel()
+            }
+        }
+
         /** A recorder started from the debug settings has no trigger file yet — and an unwritable
          * external files dir makes creating it fail right after the recorder went live. */
         private fun blockTriggerFileCreation() {
@@ -217,7 +258,9 @@ class RecorderModuleTest : BaseTest() {
             val dispatcher = UnconfinedTestDispatcher(testScheduler)
             val moduleScope = CoroutineScope(dispatcher + Job())
             val module = createModule(moduleScope, dispatcher)
-            advanceUntilIdle()
+            // runCurrent, not advanceUntilIdle: the header read is bounded, and advancing virtual
+            // time would jump that deadline so the header completes before the cancellation lands.
+            runCurrent()
 
             // Cancelling the module's scope cancels the in-flight header read.
             moduleScope.cancel()
@@ -305,5 +348,41 @@ class RecorderModuleTest : BaseTest() {
             starter.cancel()
             moduleScope.cancel()
         }
+
+        /**
+         * Debug recording is what a user reaches for when the app is ALREADY misbehaving, so a
+         * diagnostics source that never answers must not be the thing that denies them the log.
+         */
+        @Test
+        fun `a wedged upgrade diagnostics read does not hold up the recording`() {
+            coEvery { upgradeDiagnostics.debugInfo() } coAnswers { awaitCancellation() }
+
+            withRealtimeModule(headerTimeoutMs = 300L) { module ->
+                val elapsed = measureTimeMillis { module.startRecorder() }
+
+                module.state.first().isRecording shouldBe true
+                logLines.any { it.startsWith("Upgrade diagnostics unavailable") } shouldBe true
+                // Non-vacuity: without the bound this would sit on the wedged read forever.
+                elapsed shouldBeLessThan 1_500L
+            }
+        }
+
+        @Test
+        fun `a flavor without diagnostics is not reported as unavailable`() {
+            // FOSS has nothing to report and returns null: no diagnostics line at all, and above all
+            // not one claiming the read failed or timed out.
+            coEvery { upgradeDiagnostics.debugInfo() } returns null
+
+            withRealtimeModule { module ->
+                module.startRecorder()
+
+                module.state.first().isRecording shouldBe true
+                logLines.any { it.startsWith("Upgrade diagnostics") } shouldBe false
+            }
+        }
     }
 }
+
+// Independent of the production bound: a missing or mis-wired one has to fail the test, not hang
+// the gradle worker.
+private const val TEST_ENVELOPE_MS = 10_000L

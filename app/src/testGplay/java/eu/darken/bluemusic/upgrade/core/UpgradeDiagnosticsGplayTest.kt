@@ -2,15 +2,21 @@ package eu.darken.bluemusic.upgrade.core
 
 import eu.darken.bluemusic.main.core.CurriculumVitae
 import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.longs.shouldBeLessThan
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.string.shouldNotContain
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeout
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import kotlin.system.measureTimeMillis
 
 class UpgradeDiagnosticsGplayTest : BaseTest() {
 
@@ -124,6 +130,36 @@ class UpgradeDiagnosticsGplayTest : BaseTest() {
     }
 
     @Test
+    fun `a wedged history is reported as unavailable`() = runTest {
+        // Counterpart to the wedged cache above: a never-answering CurriculumVitae store would hold
+        // the debug-log header -- and with it the start of the recording -- forever.
+        val diagnostics = UpgradeDiagnosticsGplay(
+            billingCache = mockk<BillingCache>().apply {
+                coEvery { snapshot() } returns BillingCache.Snapshot(
+                    lastProStateAt = 0L,
+                    lastProStateSku = "",
+                    proUnconfirmedSince = 0L,
+                )
+            },
+            curriculumVitae = mockk<CurriculumVitae>().apply {
+                coEvery { proHistory() } coAnswers { awaitCancellation() }
+            },
+        ).apply { historyTimeoutMs = 50L }
+
+        lateinit var info: String
+        // Real time on purpose: under virtual time the bound would fire instantly while nothing else
+        // is scheduled, so an ignored seam would still pass. The envelope is independent of the
+        // production bound: a missing or mis-wired one has to fail the test, not hang the worker.
+        val elapsed = withContext(Dispatchers.IO) {
+            withTimeout(TEST_ENVELOPE_MS) { measureTimeMillis { info = diagnostics.debugInfo() } }
+        }
+
+        info shouldContain "BillingCache(lastProStateAt=never"
+        info shouldContain "ProHistory=unavailable"
+        elapsed shouldBeLessThan 1_000L
+    }
+
+    @Test
     fun `a confirmed purchase reports an instant and the sku`() = runTest {
         val info = create(
             {
@@ -155,3 +191,7 @@ class UpgradeDiagnosticsGplayTest : BaseTest() {
         info shouldContain "proUnconfirmedSince=2023-11-14T22:21:40Z"
     }
 }
+
+// Independent of the production bound: a missing or mis-wired one has to fail the test, not hang
+// the gradle worker.
+private const val TEST_ENVELOPE_MS = 10_000L
