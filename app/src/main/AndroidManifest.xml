@@ -31,9 +31,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <!-- singleTask: single-activity app, there must never be two MainActivity instances in one
+             task. The monitor notification's open-app intent is a bare component intent, which
+             defeats root-intent task matching — with launchMode=standard a launcher-icon tap onto a
+             notification-rooted task stacked a duplicate instance, wedging the singleton
+             NavigationController (dead back navigation, emulator-confirmed). -->
         <activity
             android:name="eu.darken.bluemusic.main.ui.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

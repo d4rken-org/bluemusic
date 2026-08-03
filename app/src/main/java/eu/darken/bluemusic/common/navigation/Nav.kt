@@ -6,34 +6,22 @@ import kotlinx.serialization.Serializable
 sealed interface Nav : NavigationDestination {
     sealed interface Main : Nav {
         @Serializable
-        data object Onboarding : Main {
-            private fun readResolve(): Any = Onboarding
-        }
+        data object Onboarding : Main
 
         @Serializable
-        data object ManageDevices : Main {
-            private fun readResolve(): Any = ManageDevices
-        }
+        data object ManageDevices : Main
 
         @Serializable
-        data object DiscoverDevices : Main {
-            private fun readResolve(): Any = ManageDevices
-        }
+        data object DiscoverDevices : Main
 
         @Serializable
-        data class DeviceConfig(val addr: DeviceAddr) : Main {
-            private fun readResolve(): Any = ManageDevices
-        }
+        data class DeviceConfig(val addr: DeviceAddr) : Main
 
         @Serializable
-        data class AppSelection(val addr: DeviceAddr) : Main {
-            private fun readResolve(): Any = ManageDevices
-        }
+        data class AppSelection(val addr: DeviceAddr) : Main
 
         @Serializable
-        data object SettingsIndex : Main {
-            private fun readResolve(): Any = SettingsIndex
-        }
+        data object SettingsIndex : Main
 
         @Serializable
         data class Upgrade(val manage: Boolean = false) : Main
@@ -42,33 +30,21 @@ sealed interface Nav : NavigationDestination {
 
     sealed interface Settings : Nav {
         @Serializable
-        data object General : Settings {
-            private fun readResolve(): Any = General
-        }
+        data object General : Settings
 
         @Serializable
-        data object Devices : Settings {
-            private fun readResolve(): Any = Devices
-        }
+        data object Devices : Settings
 
         @Serializable
-        data object Support : Settings {
-            private fun readResolve(): Any = General
-        }
+        data object Support : Settings
 
         @Serializable
-        data object Acks : Settings {
-            private fun readResolve(): Any = General
-        }
+        data object Acks : Settings
 
         @Serializable
-        data object BackupRestore : Settings {
-            private fun readResolve(): Any = BackupRestore
-        }
+        data object BackupRestore : Settings
 
         @Serializable
-        data object ContactSupport : Settings {
-            private fun readResolve(): Any = ContactSupport
-        }
+        data object ContactSupport : Settings
     }
 }
