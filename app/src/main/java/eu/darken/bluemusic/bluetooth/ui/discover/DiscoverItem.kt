@@ -6,9 +6,12 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
+import eu.darken.bluemusic.bluetooth.core.speaker.FakeSpeakerDevice
 import eu.darken.bluemusic.bluetooth.core.toIcon
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
@@ -28,9 +31,10 @@ fun DeviceItem(
             )
         },
         supportingContent = {
+            val isSpeaker = device.deviceType == SourceDevice.Type.PHONE_SPEAKER
             Text(
-                text = device.address,
-                maxLines = 1,
+                text = if (isSpeaker) stringResource(R.string.discover_device_speaker_desc) else device.address,
+                maxLines = if (isSpeaker) 3 else 1,
                 overflow = TextOverflow.Companion.Ellipsis
             )
         },
@@ -50,6 +54,17 @@ private fun DeviceItemPreview() {
     PreviewWrapper {
         DeviceItem(
             device = MockDevice(),
+            onClick = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun DeviceItemSpeakerPreview() {
+    PreviewWrapper {
+        DeviceItem(
+            device = FakeSpeakerDevice(label = "Device speaker (Pixel 7)", isConnected = false),
             onClick = {},
         )
     }
