@@ -11,6 +11,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
@@ -75,7 +77,14 @@ class MainActivity : Activity2() {
 
         val backStack = rememberNavBackStack(start)
 
-        LaunchedEffect(Unit) { navCtrl.setup(backStack) }
+        LaunchedEffect(backStack) { navCtrl.setup(backStack) }
+
+        // Re-bind on every resume: if another MainActivity instance ever grabbed the singleton
+        // controller, the foregrounded composition takes ownership back (see issue with dead
+        // back navigation after a second activity instance).
+        LifecycleEventEffect(Lifecycle.Event.ON_RESUME) {
+            navCtrl.setup(backStack)
+        }
 
         NavDisplay(
             backStack = backStack,
