@@ -103,6 +103,22 @@ class DeviceRepo @Inject constructor(
         }
     }
 
+    suspend fun createDeviceIfAbsent(address: DeviceAddr, create: () -> DeviceConfigEntity): Boolean =
+        mutexFor(address).withLock {
+            withContext(dispatcherProvider.IO) {
+                val existing = deviceDatabase.devices.getDevice(address)
+                if (existing != null) {
+                    log(TAG) { "createDeviceIfAbsent: config already exists for $address, keeping it" }
+                    return@withContext false
+                }
+
+                val config = create()
+                deviceDatabase.devices.updateDevice(config)
+                log(TAG, INFO) { "New device config: $config" }
+                true
+            }
+        }
+
     suspend fun isManaged(address: DeviceAddr): Boolean =
         deviceDatabase.devices.getDevice(address) != null
 

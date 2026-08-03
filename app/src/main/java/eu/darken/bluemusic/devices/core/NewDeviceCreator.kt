@@ -38,10 +38,8 @@ class NewDeviceCreator @Inject constructor(
             musicVolume = volumeTool.getVolumePercentage(AudioStream.Id.STREAM_MUSIC),
         )
 
-        deviceRepo.updateDevice(address) {
-            config
-        }
-        log(TAG) { "Created new device config: $address" }
+        val created = deviceRepo.createDeviceIfAbsent(address) { config }
+        log(TAG) { "createNewdevice: $address created=$created" }
     }
 
     companion object {

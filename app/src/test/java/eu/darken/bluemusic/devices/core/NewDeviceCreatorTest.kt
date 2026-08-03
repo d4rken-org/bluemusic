@@ -2,10 +2,13 @@ package eu.darken.bluemusic.devices.core
 
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.bluetooth.core.speaker.SpeakerDeviceProvider
+import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
+import io.kotest.matchers.shouldBe
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.slot
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -47,8 +50,19 @@ class NewDeviceCreatorTest : BaseTest() {
         runTest(UnconfinedTestDispatcher()) {
             creator().createNewdevice(SPEAKER_ADDR)
 
-            coVerify { deviceRepo.updateDevice(eq(SPEAKER_ADDR), any()) }
+            coVerify { deviceRepo.createDeviceIfAbsent(eq(SPEAKER_ADDR), any()) }
         }
+
+    @Test
+    fun `creating a device inserts if absent instead of overwriting`() = runTest(UnconfinedTestDispatcher()) {
+        val configSlot = slot<() -> DeviceConfigEntity>()
+
+        creator().createNewdevice(SPEAKER_ADDR)
+
+        coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+        coVerify { deviceRepo.createDeviceIfAbsent(eq(SPEAKER_ADDR), capture(configSlot)) }
+        configSlot.captured().address shouldBe SPEAKER_ADDR
+    }
 
     companion object {
         private const val SPEAKER_ADDR = "self:speaker:main"
