@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">রিং</string>
     <string name="devices_audio_stream_notification_label">নোটিফিকেশন</string>
     <string name="devices_audio_stream_alarm_label">অ্যালার্ম</string>
-    <string name="label_speaker_autosave">অটোসেভ ভলিউম</string>
-    <string name="description_speaker_autosave">\"ডিভাইস স্পিকার\" প্রবিষ্টি, যা ডিফল্ট ভলিউমের জন্য দায়ী, ব্লুটুথ ডিভাইস সংযুক্ত হলে নিজেই আপডেট হয়। নোট: এটি সব ডিভাইসে কাজ করে না।</string>
     <string name="devices_neverseen_label">কখনো দেখা যায়নি</string>
     <string name="devices_state_connected_label">সংযুক্ত</string>
     <string name="devices_last_connected_label">শেষ সংযোগ: %s</string>

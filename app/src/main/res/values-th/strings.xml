@@ -137,8 +137,6 @@
     <string name="devices_audio_stream_ring_label">เสียงเรียกเข้า</string>
     <string name="devices_audio_stream_notification_label">การแจ้งเตือน</string>
     <string name="devices_audio_stream_alarm_label">การแจ้งเตือน</string>
-    <string name="label_speaker_autosave">บันทึกระดับเสียงอัตโนมัติ</string>
-    <string name="description_speaker_autosave">รายการอุปกรณ์ \&quot;Device Speaker\&quot; ซึ่งมีหน้าที่รับผิดชอบเกี่ยวกับระดับเสียงเริ่มต้นจะอัปเดตเองเมื่ออุปกรณ์เชื่อมต่อกับบลูทูธ หมายเหตุ: ไม่สามารถใช้ได้กับทุกอุปกรณ์</string>
     <string name="devices_neverseen_label">ไม่เคยเห็น</string>
     <string name="devices_state_connected_label">เชื่อมต่อแล้ว</string>
     <string name="devices_last_connected_label">เชื่อมต่อครั้งล่าสุด: %s</string>

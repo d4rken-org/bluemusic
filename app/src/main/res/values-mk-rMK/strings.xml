@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Ѕвонење</string>
     <string name="devices_audio_stream_notification_label">Известување</string>
     <string name="devices_audio_stream_alarm_label">Аларм</string>
-    <string name="label_speaker_autosave">Автозачувај глас</string>
-    <string name="description_speaker_autosave">\&quot;Звучник на уредот\&quot;, кој е одговорен за стандардниот глас, се ажурира кога Блутут уред ќе се поврзе. Забелешка: Ова не работи на сите уреди.</string>
     <string name="devices_neverseen_label">Никогаш не виден</string>
     <string name="devices_state_connected_label">Конектирано</string>
     <string name="devices_last_connected_label">Последно поврзано: %s</string>

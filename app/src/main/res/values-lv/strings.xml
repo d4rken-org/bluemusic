@@ -139,8 +139,6 @@
     <string name="devices_audio_stream_ring_label">Zvanīšana</string>
     <string name="devices_audio_stream_notification_label">Paziņojums</string>
     <string name="devices_audio_stream_alarm_label">Trauksme</string>
-    <string name="label_speaker_autosave">Automātiskā skaļuma saglabāšana</string>
-    <string name="description_speaker_autosave">Ieraksts \"Ierīces skalruņis\", kas ir atbildīgs par noklusejuma skaļumiem, atjauninās sevi, kad pievienojas Bluetooth ierīce. Piezmīšme: Tas nedarbojas visās ierīcēs.</string>
     <string name="devices_neverseen_label">Nekad nav redzets</string>
     <string name="devices_state_connected_label">Pievienots</string>
     <string name="devices_last_connected_label">Pēdējā reize pievienots: %s</string>

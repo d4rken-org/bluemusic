@@ -137,8 +137,6 @@
     <string name="devices_audio_stream_ring_label">벨소리</string>
     <string name="devices_audio_stream_notification_label">알림</string>
     <string name="devices_audio_stream_alarm_label">알람</string>
-    <string name="label_speaker_autosave">음량 자동 저장</string>
-    <string name="description_speaker_autosave">기본 음량을 담당하는 \&quot;디바이스 스피커\&quot; 항목을 블루투스 장치가 연결될 때 자동으로 업데이트합니다. 이 설정은 모든 기기에서 동작하지는 않습니다.</string>
     <string name="devices_neverseen_label">마지막 연결 없음</string>
     <string name="devices_state_connected_label">연결됨</string>
     <string name="devices_last_connected_label">마지막 연결: %s</string>

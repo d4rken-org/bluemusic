@@ -140,8 +140,6 @@
     <string name="devices_audio_stream_ring_label">Званок</string>
     <string name="devices_audio_stream_notification_label">Апавяшчэнне</string>
     <string name="devices_audio_stream_alarm_label">Будзільнік</string>
-    <string name="label_speaker_autosave">Аўтазахаванне гучнасці</string>
-    <string name="description_speaker_autosave">Запіс \"Дынамік прылады\", які адказвае за гучнасць па змаўчанні, абнаўляецца пры падключэнні прылады Bluetooth. Заўвага: гэта не працуе на ўсіх прыладах.</string>
     <string name="devices_neverseen_label">Ніколі не бачылася</string>
     <string name="devices_state_connected_label">Падключана</string>
     <string name="devices_last_connected_label">Апошняе падключэнне: %s</string>

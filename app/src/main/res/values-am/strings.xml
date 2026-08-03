@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">ዚማት</string>
     <string name="devices_audio_stream_notification_label">ክርዘት</string>
     <string name="devices_audio_stream_alarm_label">ቃሌሚ</string>
-    <string name="label_speaker_autosave">የድምፅ አውቲማቲክ አክብቢ</string>
-    <string name="description_speaker_autosave">ለደርግ ድምጣዎች የሚወድ የመሣሪያ የገዛ ስፒከር ብቱን Bluetooth መሣሪያ ሲጸራ እናቱን ያዘምናል። ስጀራዊ። ይህ በሁሉም መሣሪያ ላይ አይቀዳደም።</string>
     <string name="devices_neverseen_label">አልተካከለም</string>
     <string name="devices_state_connected_label">ተጸርቦል።</string>
     <string name="devices_last_connected_label">መጨረሻይም ሰዓት %s</string>

@@ -137,8 +137,6 @@
     <string name="devices_audio_stream_ring_label">着信</string>
     <string name="devices_audio_stream_notification_label">通知</string>
     <string name="devices_audio_stream_alarm_label">アラーム</string>
-    <string name="label_speaker_autosave">音量を自動保存</string>
-    <string name="description_speaker_autosave">\&quot;端末スピーカー\&quot;はデフォルト音量を担当しており、Bluetoothデバイスが接続されたときに自分自身を更新します。注: すべての端末で動作するわけではありません。</string>
     <string name="devices_neverseen_label">接続履歴なし</string>
     <string name="devices_state_connected_label">接続済み</string>
     <string name="devices_last_connected_label">最後の接続: %s</string>

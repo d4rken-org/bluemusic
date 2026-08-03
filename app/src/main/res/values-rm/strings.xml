@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Siglun</string>
     <string name="devices_audio_stream_notification_label">Notificaziún</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="label_speaker_autosave">Salvar automaticamain il volum</string>
-    <string name="description_speaker_autosave">L\'entrada «Locutur da l\'apparat», che è responsabla per ils volumes standard, s\'actualisescha cura ch\'in apparat Bluetooth sa connecta. Remarca: Quai na funcziunescha betg sin tuts apparats.</string>
     <string name="devices_neverseen_label">Mai vist</string>
     <string name="devices_state_connected_label">Connectà</string>
     <string name="devices_last_connected_label">Ultima connexiun: %s</string>

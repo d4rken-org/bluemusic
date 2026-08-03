@@ -48,6 +48,7 @@ class GeneralSettings @Inject constructor(
     val isAndroid10AppLaunchHintDismissed = dataStore.createValue("hints.android10.applaunch.dismissed", false)
     val isNotificationPermissionHintDismissed = dataStore.createValue("hints.notification.permission.dismissed", false)
     val isDndAccessHintDismissed = dataStore.createValue("hints.dnd.access.dismissed", false)
+    val isSpeakerHintDismissed = dataStore.createValue("hints.speaker.device.dismissed", false)
 
 
     suspend fun toBackup(): GeneralSettingsBackup = GeneralSettingsBackup(
@@ -59,6 +60,7 @@ class GeneralSettings @Inject constructor(
         isAndroid10AppLaunchHintDismissed = isAndroid10AppLaunchHintDismissed.value(),
         isNotificationPermissionHintDismissed = isNotificationPermissionHintDismissed.value(),
         isDndAccessHintDismissed = isDndAccessHintDismissed.value(),
+        isSpeakerHintDismissed = isSpeakerHintDismissed.value(),
     )
 
     suspend fun applyBackup(backup: GeneralSettingsBackup) {
@@ -73,6 +75,7 @@ class GeneralSettings @Inject constructor(
                 if (backup.isAndroid10AppLaunchHintDismissed) isAndroid10AppLaunchHintDismissed.setIn(this, true)
                 if (backup.isNotificationPermissionHintDismissed) isNotificationPermissionHintDismissed.setIn(this, true)
                 if (backup.isDndAccessHintDismissed) isDndAccessHintDismissed.setIn(this, true)
+                if (backup.isSpeakerHintDismissed) isSpeakerHintDismissed.setIn(this, true)
             }.toPreferences()
         }
     }

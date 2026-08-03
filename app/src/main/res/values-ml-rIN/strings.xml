@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">റിംഗ്</string>
     <string name="devices_audio_stream_notification_label">നോട്ടിഫിക്കേഷൻ</string>
     <string name="devices_audio_stream_alarm_label">അലാം</string>
-    <string name="label_speaker_autosave">ഓട്ടോ സേവ് വോള്യം</string>
-    <string name="description_speaker_autosave">ഡിഫോൾട് വോള്യങ്ങൾക്ക് ഉത്തരവാദിത്വമുള്ള \"ഡിവൈസ് സ്പീക്കർ\" എൻട്രി, ഒരു Bluetooth ഉപകരണം കണക്‌റ് ചെയ്യുമ്പോൾ സ്വയം അപ്ഡേറ്റ് ചെയ്യുന്നു. ശ്രദ്ധ: ഇത് എല്ലാ ഉപകരണങ്ങളിലും പ്രവർത്തിക്കുന്നില്ല.</string>
     <string name="devices_neverseen_label">ഒരിക്കലും കണ്ടിട്ടില്ല</string>
     <string name="devices_state_connected_label">കണക്‌റ് ആണ്</string>
     <string name="devices_last_connected_label">അവസാനം കണക്‌റ് ആയത്: %s</string>

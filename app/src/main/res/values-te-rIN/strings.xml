@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">రింగ్</string>
     <string name="devices_audio_stream_notification_label">నోటిఫికేషన్</string>
     <string name="devices_audio_stream_alarm_label">అలారం</string>
-    <string name="label_speaker_autosave">వాల్యూమ్ స్వయంచాలకంగా సేవ్ చేయి</string>
-    <string name="description_speaker_autosave">\"Device Speaker\" ఎంట్రీ, ఇది డిఫాల్ట్ వాల్యూమ్‌లకు బాధ్యత వహిస్తుంది, Bluetooth పరికరం కనెక్ట్ అయినప్పుడు తనంతట తానే అప్‌డేట్ అవుతుంది. గమనిక: ఇది అన్ని పరికరాలలో పని చేయదు.</string>
     <string name="devices_neverseen_label">ఎప్పుడూ కనుగొనబడలేదు</string>
     <string name="devices_state_connected_label">కనెక్ట్ అయింది</string>
     <string name="devices_last_connected_label">చివరిగా కనెక్ట్ అయింది: %s</string>

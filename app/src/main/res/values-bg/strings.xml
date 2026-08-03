@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Звънене</string>
     <string name="devices_audio_stream_notification_label">Известие</string>
     <string name="devices_audio_stream_alarm_label">Аларма</string>
-    <string name="label_speaker_autosave">Автоматично запазване на звука</string>
-    <string name="description_speaker_autosave">Записът „Високоговорител на устройство\", отговорен за стандартните нива на звука, се актуализира автоматично при свързване на Bluetooth устройство. Забележка: Не работи на всички устройства.</string>
     <string name="devices_neverseen_label">Несвързван</string>
     <string name="devices_state_connected_label">Свързано</string>
     <string name="devices_last_connected_label">Последно свързване: %s</string>

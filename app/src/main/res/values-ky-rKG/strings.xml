@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Коңгуроо</string>
     <string name="devices_audio_stream_notification_label">Билдирме</string>
     <string name="devices_audio_stream_alarm_label">Ойготкуч</string>
-    <string name="label_speaker_autosave">Үндү автосактоо</string>
-    <string name="description_speaker_autosave">Демейки үндөр үчүн жооп берген \"Түзмөктүн динамиги\" жазуусу Bluetooth түзмөк туташканда өзүн жаңыртат. Ескертүү: Бул бардык түзмөктөрдө иштебейт.</string>
     <string name="devices_neverseen_label">Эч качан көрүлгөн жок</string>
     <string name="devices_state_connected_label">Туташкан</string>
     <string name="devices_last_connected_label">Акыркы туташуу: %s</string>

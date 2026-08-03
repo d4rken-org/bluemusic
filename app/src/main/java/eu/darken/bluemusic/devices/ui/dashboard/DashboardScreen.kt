@@ -71,6 +71,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.ui.dashboard.rows.Android10AppLaunchHintCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.BatteryOptimizationHintCard
+import eu.darken.bluemusic.devices.ui.dashboard.rows.DeviceSpeakerHintCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.DndAccessHintCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.EmptyDevicesCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.NotificationPermissionHintCard
@@ -221,6 +222,15 @@ fun DevicesScreen(
                     NotificationPermissionHintCard(
                         onRequestPermission = { onDeviceAction(DashboardAction.RequestNotificationPermission) },
                         onDismiss = { onDeviceAction(DashboardAction.DismissNotificationPermissionHint) }
+                    )
+                }
+            }
+
+            if (state.showSpeakerHint) {
+                item {
+                    DeviceSpeakerHintCard(
+                        onDismiss = { onDeviceAction(DashboardAction.DismissSpeakerHint) },
+                        onAdd = { onDeviceAction(DashboardAction.AddSpeakerDevice) }
                     )
                 }
             }
@@ -460,6 +470,29 @@ private fun DevicesScreenPreview() {
                 devicesWithApps = devices.map { DashboardViewModel.DeviceWithApps(it, emptyList()) },
                 isBluetoothEnabled = true,
                 isProVersion = false,
+            ),
+            onAddDevice = {},
+            onDeviceConfig = {},
+            onDeviceAction = {},
+            onNavigateToSettings = {},
+            onNavigateToUpgrade = {},
+            onRequestBluetoothPermission = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun DevicesScreenSpeakerHintPreview() {
+    val devices = listOf(MockDevice().toManagedDevice(isConnected = true))
+
+    PreviewWrapper {
+        DevicesScreen(
+            state = DashboardViewModel.State(
+                devicesWithApps = devices.map { DashboardViewModel.DeviceWithApps(it, emptyList()) },
+                isBluetoothEnabled = true,
+                isProVersion = false,
+                showSpeakerHint = true,
             ),
             onAddDevice = {},
             onDeviceConfig = {},

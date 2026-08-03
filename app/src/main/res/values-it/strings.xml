@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Suoneria</string>
     <string name="devices_audio_stream_notification_label">Notifica</string>
     <string name="devices_audio_stream_alarm_label">Sveglia</string>
-    <string name="label_speaker_autosave">Salva automaticamente il volume</string>
-    <string name="description_speaker_autosave">La voce \&quot;Speaker del dispositivo\&quot;, responsabile dei volumi di default, si aggiorna in modo automatico alla connessione di una periferica Bluetooth. Nota: questa funzione non è disponibile per tutti i dispositivi.</string>
     <string name="devices_neverseen_label">Mai visto</string>
     <string name="devices_state_connected_label">Connesso</string>
     <string name="devices_last_connected_label">Ultima connessione: %s</string>

@@ -3,6 +3,7 @@ package eu.darken.bluemusic.devices.ui.dashboard
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDeviceWrapper
+import eu.darken.bluemusic.bluetooth.core.speaker.SpeakerDeviceProvider
 import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.datastore.DataStoreValue
 import eu.darken.bluemusic.common.navigation.Nav
@@ -13,9 +14,11 @@ import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.NewDeviceCreator
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.main.core.GeneralSettings
 import io.kotest.matchers.shouldBe
+import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.slot
@@ -49,10 +52,14 @@ class DashboardViewModelTest : BaseTest() {
     private lateinit var appRepo: AppRepo
     private lateinit var navCtrl: NavigationController
 
+    private lateinit var deviceCreator: NewDeviceCreator
+    private lateinit var speakerProvider: SpeakerDeviceProvider
+
     private lateinit var batteryHintDismissed: DataStoreValue<Boolean>
     private lateinit var android10HintDismissed: DataStoreValue<Boolean>
     private lateinit var notificationHintDismissed: DataStoreValue<Boolean>
     private lateinit var dndHintDismissed: DataStoreValue<Boolean>
+    private lateinit var speakerHintDismissed: DataStoreValue<Boolean>
     private lateinit var lockedDevices: DataStoreValue<Set<DeviceAddr>>
 
     @BeforeEach
@@ -65,6 +72,9 @@ class DashboardViewModelTest : BaseTest() {
         devicesSettings = mockk(relaxed = true)
         appRepo = mockk(relaxed = true)
         navCtrl = mockk(relaxed = true)
+        deviceCreator = mockk(relaxed = true)
+        speakerProvider = mockk(relaxed = true)
+        every { speakerProvider.address } returns SPEAKER_ADDR
 
         devicesFlow = MutableStateFlow(emptyList())
         every { deviceRepo.devices } returns devicesFlow
@@ -80,12 +90,14 @@ class DashboardViewModelTest : BaseTest() {
         android10HintDismissed = stubBoolValue(false)
         notificationHintDismissed = stubBoolValue(true)
         dndHintDismissed = stubBoolValue(true)
+        speakerHintDismissed = stubBoolValue(false)
         lockedDevices = stubSetValue(emptySet())
 
         every { generalSettings.isBatteryOptimizationHintDismissed } returns batteryHintDismissed
         every { generalSettings.isAndroid10AppLaunchHintDismissed } returns android10HintDismissed
         every { generalSettings.isNotificationPermissionHintDismissed } returns notificationHintDismissed
         every { generalSettings.isDndAccessHintDismissed } returns dndHintDismissed
+        every { generalSettings.isSpeakerHintDismissed } returns speakerHintDismissed
         every { devicesSettings.lockedDevices } returns lockedDevices
 
         // Default: hint helpers report shouldShow=false unless test sets up otherwise.
@@ -119,6 +131,8 @@ class DashboardViewModelTest : BaseTest() {
         bluetoothSource = bluetoothRepo,
         generalSettings = generalSettings,
         devicesSettings = devicesSettings,
+        deviceCreator = deviceCreator,
+        speakerProvider = speakerProvider,
         dispatcherProvider = TestDispatcherProvider(UnconfinedTestDispatcher(testScheduler)),
         navCtrl = navCtrl,
         appRepo = appRepo,
@@ -144,6 +158,21 @@ class DashboardViewModelTest : BaseTest() {
             keepAwake = keepAwake,
             showHomeScreen = showHomeScreen,
             launchPkgs = launchPkgs,
+        ),
+    )
+
+    private fun speakerDevice(): ManagedDevice = ManagedDevice(
+        isConnected = false,
+        device = SourceDeviceWrapper(
+            address = SPEAKER_ADDR,
+            alias = "Device speaker",
+            name = "Device speaker",
+            deviceType = SourceDevice.Type.PHONE_SPEAKER,
+            isConnected = false,
+        ),
+        config = DeviceConfigEntity(
+            address = SPEAKER_ADDR,
+            isEnabled = true,
         ),
     )
 
@@ -225,5 +254,94 @@ class DashboardViewModelTest : BaseTest() {
 
         viewModel().state.filterNotNull().first()
         needsOverlaySlot.captured shouldBe true
+    }
+
+    @Test
+    fun `speaker hint shows while the speaker is unmanaged`() = runTest(UnconfinedTestDispatcher()) {
+        devicesFlow.value = listOf(device())
+
+        viewModel().state.filterNotNull().first().showSpeakerHint shouldBe true
+    }
+
+    @Test
+    fun `speaker hint stays hidden once dismissed`() = runTest(UnconfinedTestDispatcher()) {
+        every { speakerHintDismissed.flow } returns MutableStateFlow(true)
+        devicesFlow.value = listOf(device())
+
+        viewModel().state.filterNotNull().first().showSpeakerHint shouldBe false
+    }
+
+    @Test
+    fun `speaker hint stays hidden without any managed device`() = runTest(UnconfinedTestDispatcher()) {
+        devicesFlow.value = emptyList()
+
+        viewModel().state.filterNotNull().first().showSpeakerHint shouldBe false
+    }
+
+    @Test
+    fun `speaker hint stays hidden when the speaker is already managed`() = runTest(UnconfinedTestDispatcher()) {
+        devicesFlow.value = listOf(device(), speakerDevice())
+
+        viewModel().state.filterNotNull().first().showSpeakerHint shouldBe false
+    }
+
+    @Test
+    fun `speaker hint shows for a free user at the device limit`() = runTest(UnconfinedTestDispatcher()) {
+        upgradeInfos.value = FakeUpgradeInfo(isPro = false, isSettled = true)
+        devicesFlow.value = listOf(device(address = "AA:AA:AA:AA:AA:AA"), device(address = "BB:BB:BB:BB:BB:BB"))
+
+        viewModel().state.filterNotNull().first().showSpeakerHint shouldBe true
+    }
+
+    @Test
+    fun `adding the speaker creates it and opens its config`() = runTest(UnconfinedTestDispatcher()) {
+        devicesFlow.value = listOf(device())
+
+        viewModel().action(DashboardAction.AddSpeakerDevice)
+        advanceUntilIdle()
+
+        coVerify { deviceCreator.createNewdevice(SPEAKER_ADDR) }
+        verify { navCtrl.goTo(Nav.Main.DeviceConfig(SPEAKER_ADDR), any(), any()) }
+    }
+
+    @Test
+    fun `adding the speaker at the free limit routes to upgrade`() = runTest(UnconfinedTestDispatcher()) {
+        upgradeInfos.value = FakeUpgradeInfo(isPro = false, isSettled = true)
+        devicesFlow.value = listOf(device(address = "AA:AA:AA:AA:AA:AA"), device(address = "BB:BB:BB:BB:BB:BB"))
+
+        viewModel().action(DashboardAction.AddSpeakerDevice)
+        advanceUntilIdle()
+
+        coVerify(exactly = 0) { deviceCreator.createNewdevice(any()) }
+        verify { navCtrl.goTo(Nav.Main.Upgrade(), any(), any()) }
+    }
+
+    @Test
+    fun `adding an already managed speaker opens its config even at the free limit`() =
+        runTest(UnconfinedTestDispatcher()) {
+            upgradeInfos.value = FakeUpgradeInfo(isPro = false, isSettled = true)
+            devicesFlow.value = listOf(device(address = "AA:AA:AA:AA:AA:AA"), speakerDevice())
+
+            viewModel().action(DashboardAction.AddSpeakerDevice)
+            advanceUntilIdle()
+
+            coVerify(exactly = 0) { deviceCreator.createNewdevice(any()) }
+            verify(exactly = 0) { navCtrl.goTo(Nav.Main.Upgrade(), any(), any()) }
+            verify { navCtrl.goTo(Nav.Main.DeviceConfig(SPEAKER_ADDR), any(), any()) }
+        }
+
+    @Test
+    fun `dismissing the speaker hint persists the flag`() = runTest(UnconfinedTestDispatcher()) {
+        val updateSlot = slot<(Boolean) -> Boolean?>()
+
+        viewModel().action(DashboardAction.DismissSpeakerHint)
+        advanceUntilIdle()
+
+        coVerify { speakerHintDismissed.update(capture(updateSlot)) }
+        updateSlot.captured(false) shouldBe true
+    }
+
+    companion object {
+        private const val SPEAKER_ADDR = "self:speaker:main"
     }
 }

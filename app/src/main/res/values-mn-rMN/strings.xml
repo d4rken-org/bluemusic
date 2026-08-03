@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Дүүгэх</string>
     <string name="devices_audio_stream_notification_label">Мэдэгдэлгэ</string>
     <string name="devices_audio_stream_alarm_label">Дохио</string>
-    <string name="label_speaker_autosave">Дууг автоматаар хадгалах</string>
-    <string name="description_speaker_autosave">Өөрчлөлтийн дараахи төхөөрөмжийн дууг хариуладаг \"Төхөөрөмжийн чайгъ\" оролго Bluetooth төхөөрөмжий холбогдоход өөрөө өөрчлөгдөнө. Тайлбар: энэ бүх төхөөрөмжийд ажиллахгүй.</string>
     <string name="devices_neverseen_label">Хэзээгүй байсан</string>
     <string name="devices_state_connected_label">Холбогдсон</string>
     <string name="devices_last_connected_label">Сүүлийн холбогдолт: %s</string>

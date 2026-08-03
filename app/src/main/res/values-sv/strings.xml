@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Ringsignal</string>
     <string name="devices_audio_stream_notification_label">Avisering</string>
     <string name="devices_audio_stream_alarm_label">Larm</string>
-    <string name="label_speaker_autosave">Autospara volym</string>
-    <string name="description_speaker_autosave">Posten \&quot;Enhetshögtalare\&quot;, som ansvarar för standardvolymerna, uppdaterar sig själv när en Bluetooth-enhet ansluts. Obs: Detta fungerar inte på alla enheter.</string>
     <string name="devices_neverseen_label">Aldrig sedd</string>
     <string name="devices_state_connected_label">Ansluten</string>
     <string name="devices_last_connected_label">Senast ansluten: %s</string>

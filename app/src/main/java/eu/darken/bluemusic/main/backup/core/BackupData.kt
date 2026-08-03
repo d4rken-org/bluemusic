@@ -62,4 +62,5 @@ data class GeneralSettingsBackup(
     val isAndroid10AppLaunchHintDismissed: Boolean = false,
     val isNotificationPermissionHintDismissed: Boolean = false,
     val isDndAccessHintDismissed: Boolean = false,
+    val isSpeakerHintDismissed: Boolean = false,
 )

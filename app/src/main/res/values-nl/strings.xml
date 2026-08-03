@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Beltoon</string>
     <string name="devices_audio_stream_notification_label">Melding</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="label_speaker_autosave">Volume automatisch opslaan</string>
-    <string name="description_speaker_autosave">De \&quot;Apparaat luidspreker\&quot; entry, die verantwoordelijk is voor standaard volumes, updates zichzelf wanneer een Bluetooth-apparaat verbinding maakt. Opmerking: dit werkt niet op alle apparaten.</string>
     <string name="devices_neverseen_label">Nooit gezien</string>
     <string name="devices_state_connected_label">Verbonden</string>
     <string name="devices_last_connected_label">Laatst verbonden: %s</string>

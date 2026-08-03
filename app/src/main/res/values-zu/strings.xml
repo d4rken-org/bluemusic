@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Ukhalo</string>
     <string name="devices_audio_stream_notification_label">Isaziso</string>
     <string name="devices_audio_stream_alarm_label">I-alamu</string>
-    <string name="label_speaker_autosave">Londoloza ivolumu ngokuzenzakalelayo</string>
-    <string name="description_speaker_autosave">Isidindo \"Isipika Sedivayisi\", esibhekele amavolumu omqoka, zibuyekeza yona ngokwayo uma idivayisi ye-Bluetooth ixhuma. Qaphela: Lokhu akusebenzi kuzo zonke izidivayisi.</string>
     <string name="devices_neverseen_label">Akuzange ibonakale</string>
     <string name="devices_state_connected_label">Ixhunyiwe</string>
     <string name="devices_last_connected_label">Ixhunyiwe okwedlule: %s</string>

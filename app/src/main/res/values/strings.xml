@@ -30,6 +30,7 @@
     <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
     <string name="discover_all_devices_managed_msg">All your paired devices are managed! Need a new one?</string>
     <string name="discover_pair_new_device_action">Pair new device</string>
+    <string name="discover_device_speaker_desc">This phone\'s own speaker. Its volumes are applied when audio switches back to the phone, e.g. after your Bluetooth device disconnects.</string>
 
     <!-- Devices -->
     <string name="devices_device_config_label">Device configuration</string>
@@ -147,9 +148,6 @@
     <string name="devices_audio_stream_ring_label">Ring</string>
     <string name="devices_audio_stream_notification_label">Notification</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-
-    <string name="label_speaker_autosave">Autosave volume</string>
-    <string name="description_speaker_autosave">The \"Device Speaker\" entry, which is responsible for default volumes, updates itself when a Bluetooth device connects. Note: This does not work on all devices.</string>
 
     <string name="devices_neverseen_label">Never seen</string>
     <string name="devices_state_connected_label">Connected</string>
@@ -446,6 +444,9 @@
     <string name="dnd_access_hint_title">Do Not Disturb access</string>
     <string name="dnd_access_hint_message">Without Do Not Disturb access, ringtone, notification, and DND mode settings can\'t be applied when your devices connect.</string>
     <string name="dnd_access_fix_action">Grant access</string>
+    <string name="device_speaker_hint_title">Volumes after disconnect</string>
+    <string name="device_speaker_hint_message">Want your volumes restored when a Bluetooth device disconnects? Add \"Device speaker\" as a managed device — its volumes are applied when audio switches back to your phone.</string>
+    <string name="device_speaker_hint_action">Add</string>
 
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Purchase cancelled</string>

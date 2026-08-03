@@ -3,6 +3,8 @@ package eu.darken.bluemusic.devices.ui.dashboard
 import android.content.Intent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
+import eu.darken.bluemusic.bluetooth.core.SourceDevice
+import eu.darken.bluemusic.bluetooth.core.speaker.SpeakerDeviceProvider
 import eu.darken.bluemusic.common.apps.AppInfo
 import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
@@ -15,9 +17,11 @@ import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.common.upgrade.isProForUi
 import eu.darken.bluemusic.devices.core.DeviceAddr
+import eu.darken.bluemusic.devices.core.DeviceLimits
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.NewDeviceCreator
 import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.main.core.GeneralSettings
@@ -41,6 +45,8 @@ class DashboardViewModel @Inject constructor(
     bluetoothSource: BluetoothRepo,
     private val generalSettings: GeneralSettings,
     private val devicesSettings: DevicesSettings,
+    private val deviceCreator: NewDeviceCreator,
+    private val speakerProvider: SpeakerDeviceProvider,
     dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
     appRepo: AppRepo,
@@ -132,7 +138,8 @@ class DashboardViewModel @Inject constructor(
         notificationPermissionHintFlow,
         dndAccessHintFlow,
         devicesSettings.lockedDevices.flow,
-    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint, dndHint, lockedDevices ->
+        generalSettings.isSpeakerHintDismissed.flow,
+    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint, dndHint, lockedDevices, speakerHintDismissed ->
         State(
             isProVersion = upgradeInfo.isPro,
             isBluetoothEnabled = bluetoothState.isEnabled,
@@ -146,6 +153,9 @@ class DashboardViewModel @Inject constructor(
             showNotificationPermissionHint = notificationHint.shouldShow,
             showDndAccessHint = dndHint.shouldShow,
             dndAccessIntent = dndHint.intent,
+            showSpeakerHint = !speakerHintDismissed &&
+                devicesWithApps.any { it.device.type != SourceDevice.Type.PHONE_SPEAKER } &&
+                devicesWithApps.none { it.device.type == SourceDevice.Type.PHONE_SPEAKER },
         )
     }.asStateFlow()
 
@@ -168,6 +178,7 @@ class DashboardViewModel @Inject constructor(
         val showNotificationPermissionHint: Boolean = false,
         val showDndAccessHint: Boolean = false,
         val dndAccessIntent: Intent? = null,
+        val showSpeakerHint: Boolean = false,
     ) {
         // Convenience property for backwards compatibility
         val devices: List<ManagedDevice> get() = devicesWithApps.map { it.device }
@@ -222,6 +233,30 @@ class DashboardViewModel @Inject constructor(
                 launch {
                     generalSettings.isDndAccessHintDismissed.update { true }
                 }
+            }
+
+            is DashboardAction.DismissSpeakerHint -> {
+                launch {
+                    generalSettings.isSpeakerHintDismissed.update { true }
+                }
+            }
+
+            is DashboardAction.AddSpeakerDevice -> {
+                val devices = deviceRepo.devices.first()
+                val speakerAddr = speakerProvider.address
+
+                if (devices.any { it.type == SourceDevice.Type.PHONE_SPEAKER }) {
+                    navTo(Nav.Main.DeviceConfig(speakerAddr))
+                    return@launch
+                }
+
+                if (devices.size >= DeviceLimits.FREE_DEVICE_LIMIT && !upgradeRepo.isProForUi()) {
+                    navTo(Nav.Main.Upgrade())
+                    return@launch
+                }
+
+                deviceCreator.createNewdevice(speakerAddr)
+                navTo(Nav.Main.DeviceConfig(speakerAddr))
             }
 
             is DashboardAction.ToggleAdjustmentLock -> {

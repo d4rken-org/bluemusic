@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Csengő</string>
     <string name="devices_audio_stream_notification_label">Értesítés</string>
     <string name="devices_audio_stream_alarm_label">Ébresztő</string>
-    <string name="label_speaker_autosave">Hangerő automatikus mentése</string>
-    <string name="description_speaker_autosave">Az \&quot;Eszköz hangszóró\&quot; bejegyzés, amely az alapértelmezett hangerőért felelős, frissíti magát, amikor egy Bluetooth eszköz csatlakozik. Megjegyzés: Ez nem minden eszközön működik.</string>
     <string name="devices_neverseen_label">Soha nem látott</string>
     <string name="devices_state_connected_label">Csatlakozva</string>
     <string name="devices_last_connected_label">Utoljára csatlakozva: %s</string>

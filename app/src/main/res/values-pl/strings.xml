@@ -140,8 +140,6 @@
     <string name="devices_audio_stream_ring_label">Dzwonek</string>
     <string name="devices_audio_stream_notification_label">Powiadomienie</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="label_speaker_autosave">Automatyczny zapis głośności</string>
-    <string name="description_speaker_autosave">Wpis \&quot;Głośnik urządzenia\&quot;, który jest odpowiedzialny za domyślne głośności, aktualizuje się samodzielnie, gdy urządzenie Bluetooth podłącza się. Informacja: Nie działa ze wszystkimi urządzeniami.</string>
     <string name="devices_neverseen_label">Nigdy nie podłączone</string>
     <string name="devices_state_connected_label">Połączony</string>
     <string name="devices_last_connected_label">Ostatnio połączony: %s</string>

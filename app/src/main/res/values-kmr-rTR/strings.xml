@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Zengil</string>
     <string name="devices_audio_stream_notification_label">Agahdarî</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="label_speaker_autosave">Dengê bixweber tomar bike</string>
-    <string name="description_speaker_autosave">Tomara Bilendkera Cîhazê, ku berpirsiyara dengên pêwîst e, xwe nûve dike dema cîhazek Bluetooth bi hestek dibe. Not: Ev li ser hemû cîhazan naxebite.</string>
     <string name="devices_neverseen_label">Hên nehatî dîtin</string>
     <string name="devices_state_connected_label">Bi hestek</string>
     <string name="devices_last_connected_label">Dawiya hevbestê: %s</string>

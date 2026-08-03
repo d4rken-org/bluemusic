@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Soitto</string>
     <string name="devices_audio_stream_notification_label">Ilmoitus</string>
     <string name="devices_audio_stream_alarm_label">Hälytys</string>
-    <string name="label_speaker_autosave">Tallenna äänenvoimakkuus automaattisesti</string>
-    <string name="description_speaker_autosave">\"Laitteen kaiutin\" merkintä, mikä on vastuussa oletus äänenvoimakkuuksista, päivittää itsensä, kun Bluetooth laite yhdistää. Huomio: tämä ei toimi kaikilla laitteilla.</string>
     <string name="devices_neverseen_label">Ei nähty</string>
     <string name="devices_state_connected_label">Yhdistetty</string>
     <string name="devices_last_connected_label">Viimeksi yhdistetty: %s</string>

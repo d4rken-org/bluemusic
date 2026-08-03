@@ -23,7 +23,7 @@ class BackupDataTest : BaseTest() {
     }
 
     private fun createMaximalFixture() = AppBackup(
-        formatVersion = 1,
+        formatVersion = 2,
         appVersion = "3.3.1",
         appVersionCode = 33100L,
         createdAt = "2026-04-16T14:30:00Z",
@@ -76,6 +76,7 @@ class BackupDataTest : BaseTest() {
             isAndroid10AppLaunchHintDismissed = true,
             isNotificationPermissionHintDismissed = true,
             isDndAccessHintDismissed = true,
+            isSpeakerHintDismissed = true,
         ),
     )
 
@@ -93,7 +94,7 @@ class BackupDataTest : BaseTest() {
 
         actualJson.toComparableJson() shouldBe """
             {
-                "formatVersion": 1,
+                "formatVersion": 2,
                 "appVersion": "3.3.1",
                 "appVersionCode": 33100,
                 "createdAt": "2026-04-16T14:30:00Z",
@@ -167,7 +168,8 @@ class BackupDataTest : BaseTest() {
                     "isBatteryOptimizationHintDismissed": true,
                     "isAndroid10AppLaunchHintDismissed": true,
                     "isNotificationPermissionHintDismissed": true,
-                    "isDndAccessHintDismissed": true
+                    "isDndAccessHintDismissed": true,
+                    "isSpeakerHintDismissed": true
                 }
             }
         """.trimIndent()
@@ -244,6 +246,32 @@ class BackupDataTest : BaseTest() {
         defaults.autoplayKeycodes shouldBe emptyList()
         defaults.showHomeScreen shouldBe false
         defaults.visibleAdjustments shouldBe true
+    }
+
+    @Test
+    fun `v1 payload without the speaker hint flag decodes with it disabled`() {
+        val jsonString = """
+        {
+            "formatVersion": 1,
+            "appVersion": "3.3.1",
+            "createdAt": "2026-04-16T14:30:00Z",
+            "generalSettings": {
+                "themeMode": "DARK",
+                "themeStyle": "MATERIAL_YOU",
+                "themeColor": "SUNSET",
+                "isOnboardingCompleted": true,
+                "isBatteryOptimizationHintDismissed": true,
+                "isAndroid10AppLaunchHintDismissed": true,
+                "isNotificationPermissionHintDismissed": true,
+                "isDndAccessHintDismissed": true
+            }
+        }
+        """.trimIndent()
+
+        val backup = json.decodeFromString(AppBackup.serializer(), jsonString)
+        backup.formatVersion shouldBe 1
+        backup.generalSettings.isDndAccessHintDismissed shouldBe true
+        backup.generalSettings.isSpeakerHintDismissed shouldBe false
     }
 
     @Test

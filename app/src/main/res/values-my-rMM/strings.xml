@@ -137,8 +137,6 @@
     <string name="devices_audio_stream_ring_label">မြည်သံ</string>
     <string name="devices_audio_stream_notification_label">အကြောင်းကြားချက်</string>
     <string name="devices_audio_stream_alarm_label">နှိုးစက်</string>
-    <string name="label_speaker_autosave">အသံ အလိုအလျောက် သိမ်းဆည်း</string>
-    <string name="description_speaker_autosave">မူရင်း အသံများ တာဝန်ရှိသော &quot;Device Speaker&quot; ဝင်ခွင့်သည် Bluetooth ကိရိယာ ချိတ်ဆက်သောအခါ မိမိ အပ်ဒိတ်လုပ်သည်။ မှတ်ချက်: ကိရိယာ အားလုံးတွင် အလုပ်မဖြစ်နိုင်ပါ။</string>
     <string name="devices_neverseen_label">မတွေ့ဖူးသေး</string>
     <string name="devices_state_connected_label">ချိတ်ဆက်ထားသည်</string>
     <string name="devices_last_connected_label">နောက်ဆုံး ချိတ်ဆက်: %s</string>

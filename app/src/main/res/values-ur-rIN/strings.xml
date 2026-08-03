@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">رنگٹون</string>
     <string name="devices_audio_stream_notification_label">نوٹیفیکیشن</string>
     <string name="devices_audio_stream_alarm_label">الارم</string>
-    <string name="label_speaker_autosave">والیوم خودکار محفوظ</string>
-    <string name="description_speaker_autosave">\"ڈیوائس اسپیکر\" کی اینٹری، جو ڈیفالٹ والیومز کی ذمہ دار ہے، ایچ جب بلوٹوتھ ڈیوائس منسلک ہوتی ہے تو خود بخود اپڈیٹ ہو جاتی ہے۔ نوٹ: یہ تمام ڈیوائسز پر کام نہیں کرتا۔</string>
     <string name="devices_neverseen_label">کبھی نہیں دیکھی</string>
     <string name="devices_state_connected_label">منسلک</string>
     <string name="devices_last_connected_label">آخری کنیکشن: %s</string>

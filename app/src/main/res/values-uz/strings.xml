@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Jiringlash</string>
     <string name="devices_audio_stream_notification_label">Bildirishnoma</string>
     <string name="devices_audio_stream_alarm_label">Signal</string>
-    <string name="label_speaker_autosave">Ovozni avtomatik saqlash</string>
-    <string name="description_speaker_autosave">Bluetooth qurilma ulanganda standart ovozlarni boshqaradigan \"Qurilma dinamigi\" yozuvi o\'zini yangilaydi. Eslatma: Bu barcha qurilmalarda ishlamaydi.</string>
     <string name="devices_neverseen_label">Hech qachon ko\'rilmagan</string>
     <string name="devices_state_connected_label">Ulangan</string>
     <string name="devices_last_connected_label">Oxirgi ulanish: %s</string>

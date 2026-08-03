@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Toque</string>
     <string name="devices_audio_stream_notification_label">Notificação</string>
     <string name="devices_audio_stream_alarm_label">Alarme</string>
-    <string name="label_speaker_autosave">Salvar volume automaticamente</string>
-    <string name="description_speaker_autosave">O registro de \&quot;Alto-falante do dispositivo\&quot;, que é responsável pelos volumes padrão, é atualizado quando um dispositivo Bluetooth é conectado. Nota: Isto não funciona em todos os dispositivos.</string>
     <string name="devices_neverseen_label">Nunca visto</string>
     <string name="devices_state_connected_label">Conectado</string>
     <string name="devices_last_connected_label">Última conexão: %s</string>
