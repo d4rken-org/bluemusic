@@ -206,7 +206,12 @@ class RecorderModuleTest : BaseTest() {
             blueMusicId = blueMusicId,
             upgradeDiagnostics = upgradeDiagnostics,
             recorderProvider = recorderProvider,
-        )
+        ).apply {
+            // The monotonic seam defaults to SystemClock.elapsedRealtime, an Android framework stub
+            // that throws in plain JVM tests. Nothing here measures durations — RecorderModuleDurationTest
+            // does — these starts just must not trip over the default.
+            monotonicClock = { 0L }
+        }
 
         private val logLines = CopyOnWriteArrayList<String>()
         private val logCapture = object : Logging.Logger {

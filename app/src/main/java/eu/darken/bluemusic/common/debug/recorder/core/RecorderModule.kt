@@ -47,6 +47,11 @@ class RecorderModule @Inject constructor(
     // advance the production bound. Same pattern as BillingCache.cacheTimeoutMs.
     internal var headerReadTimeoutMs: Long = HEADER_READ_TIMEOUT_MS
 
+    // Test seams for the two clocks the recording heuristics use. Same pattern as the header bound:
+    // the durations are wall-clock/monotonic, so virtual time cannot drive them.
+    internal var wallClock: () -> Long = System::currentTimeMillis
+    internal var monotonicClock: () -> Long = android.os.SystemClock::elapsedRealtime
+
     @Volatile
     internal var currentLogDir: File? = null
         private set
@@ -79,6 +84,12 @@ class RecorderModule @Inject constructor(
 
     private suspend fun reconcileState(state: State) {
         if (!state.isRecording && state.shouldRecord) {
+            // Keyed on the trigger file, NOT on directory reuse: a completed session dir survives
+            // stopping, so findExistingSessionDir() also matches an ordinary repeat recording. Only
+            // a trigger that already existed before this start sequence means the process died
+            // mid-recording and we are resuming it — the one case with no usable monotonic base.
+            val isProcessResume = triggerFile.exists()
+
             val existingDir = findExistingSessionDir()
             val sessionDir = existingDir ?: createSessionDir()
             val logFile = File(sessionDir, "core.log")
@@ -119,7 +130,7 @@ class RecorderModule @Inject constructor(
                 val recordingStartedAt = if (existingDir != null) {
                     existingDir.lastModified()
                 } else {
-                    System.currentTimeMillis()
+                    wallClock()
                 }
 
                 this@RecorderModule.currentLogDir = sessionDir
@@ -129,6 +140,10 @@ class RecorderModule @Inject constructor(
                         recorder = newRecorder,
                         currentLogDir = sessionDir,
                         recordingStartedAt = recordingStartedAt,
+                        // A fresh start that reuses an old session dir gets BOTH bases: the mtime
+                        // wall stamp above and this monotonic one. The heuristic prefers the
+                        // monotonic base, so the stale mtime never decides a live recording.
+                        recordingStartedAtMonotonic = if (isProcessResume) null else monotonicClock(),
                     )
                 }
             } catch (e: Exception) {
@@ -158,6 +173,7 @@ class RecorderModule @Inject constructor(
                     recorder = null,
                     currentLogDir = null,
                     recordingStartedAt = 0L,
+                    recordingStartedAtMonotonic = null,
                 )
             }
         }
@@ -224,8 +240,12 @@ class RecorderModule @Inject constructor(
         if (!currentState.isRecording) return StopResult.NotRecording
 
         val logDir = currentState.currentLogDir ?: return StopResult.NotRecording
-        val elapsed = System.currentTimeMillis() - currentState.recordingStartedAt
-        if (elapsed < MIN_RECORDING_MS) return StopResult.TooShort
+        val elapsed = currentState.recordingStartedAtMonotonic
+            ?.let { monotonicClock() - it }             // live session: immune to wall-clock adjustments
+            ?: (wallClock() - currentState.recordingStartedAt)  // resumed: only the mtime-derived wall start exists
+        // Negative = wall clock moved backward across a resume; fail open (no warning) rather than
+        // trap the user in TooShort.
+        if (elapsed in 0 until MIN_RECORDING_MS) return StopResult.TooShort
 
         stopRecorder()
         val sessionId = DebugSessionManager.deriveSessionId(logDir)
@@ -243,6 +263,11 @@ class RecorderModule @Inject constructor(
         internal val recorder: Recorder? = null,
         val currentLogDir: File? = null,
         val recordingStartedAt: Long = 0L,
+        // Monotonic base for the duration heuristic, null when there is none: a session resumed
+        // after process death has only the persisted wall-clock start, and a monotonic value from a
+        // previous process or boot is meaningless. Nullable rather than 0L — 0 is a legal
+        // elapsedRealtime near boot.
+        val recordingStartedAtMonotonic: Long? = null,
     ) {
         val isRecording: Boolean
             get() = recorder != null
@@ -254,7 +279,18 @@ class RecorderModule @Inject constructor(
     companion object {
         internal val TAG = logTag("Debug", "Log", "Recorder", "Module")
         private const val FORCE_FILE = "bluemusic_force_debug_run"
-        private const val MIN_RECORDING_MS = 5_000L
+        /**
+         * Duration heuristic for "did you forget to reproduce the issue?". A recording stopped
+         * this quickly usually contains nothing but the recorder starting and stopping, which
+         * costs a support round-trip to re-request.
+         *
+         * It stays a prompt because short recordings can be perfectly valid: a crash is logged
+         * and flushed immediately, so the reproduction is already on disk. The
+         * [StopResult.TooShort] consumers (the Support and ContactSupport screens) turn it into
+         * a ShowShortRecordingWarning event, and their "stop anyway" answer goes through the
+         * direct force-stop path, which has no duration check.
+         */
+        private const val MIN_RECORDING_MS = 10_000L
 
         // Budget for the header's diagnostics read.
         private const val HEADER_READ_TIMEOUT_MS = 5_000L
