@@ -144,7 +144,7 @@ class BackupRestoreManager @Inject constructor(
             DEBUG
         ) { "Parsed: ${backup.deviceConfigs.size} devices, devicesSettings=${backup.devicesSettings}, generalSettings=${backup.generalSettings}" }
 
-        if (backup.formatVersion != CURRENT_FORMAT_VERSION) {
+        if (backup.formatVersion !in SUPPORTED_FORMAT_VERSIONS) {
             log(TAG, WARN) { "Unsupported format version: ${backup.formatVersion} (expected $CURRENT_FORMAT_VERSION)" }
             throw BackupError.UnsupportedFormatVersion(backup.formatVersion)
         }
@@ -262,7 +262,8 @@ class BackupRestoreManager @Inject constructor(
 
     companion object {
         private val TAG = logTag("Backup", "Restore", "Manager")
-        const val CURRENT_FORMAT_VERSION = 1
+        const val CURRENT_FORMAT_VERSION = 2
+        val SUPPORTED_FORMAT_VERSIONS = setOf(1, 2)
         const val BACKUP_JSON_ENTRY = "backup.json"
     }
 }

@@ -11,6 +11,7 @@ import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.common.upgrade.isProForUi
+import eu.darken.bluemusic.devices.core.DeviceLimits
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.NewDeviceCreator
 import kotlinx.coroutines.flow.combine
@@ -54,7 +55,7 @@ class DiscoverViewModel @Inject constructor(
                 ),
             managedDeviceCount = managed.size,
             isProVersion = upgradeInfo.isPro,
-            freeDeviceLimit = FREE_DEVICE_LIMIT,
+            freeDeviceLimit = DeviceLimits.FREE_DEVICE_LIMIT,
         )
     }.asStateFlow()
 
@@ -63,7 +64,7 @@ class DiscoverViewModel @Inject constructor(
         val isLoading: Boolean = false,
         val isProVersion: Boolean = false,
         val managedDeviceCount: Int = 0,
-        val freeDeviceLimit: Int = FREE_DEVICE_LIMIT,
+        val freeDeviceLimit: Int = DeviceLimits.FREE_DEVICE_LIMIT,
         val error: String? = null,
         val showUpgradeDialog: Boolean = false,
         val shouldClose: Boolean = false
@@ -76,17 +77,13 @@ class DiscoverViewModel @Inject constructor(
 
             // Limit first so free users under the limit never pay the gate's wait; the gate itself
             // reads through isProForUi so a Pro user isn't blocked while billing is still settling.
-            if (currentState.managedDeviceCount >= FREE_DEVICE_LIMIT && !upgradeRepo.isProForUi()) {
+            if (currentState.managedDeviceCount >= DeviceLimits.FREE_DEVICE_LIMIT && !upgradeRepo.isProForUi()) {
                 events.emit(DiscoverEvent.RequiresUpgrade)
             } else {
                 deviceCreator.createNewdevice(device.address)
                 navCtrl.up()
             }
         }
-    }
-
-    companion object {
-        private const val FREE_DEVICE_LIMIT = 2
     }
 
 }

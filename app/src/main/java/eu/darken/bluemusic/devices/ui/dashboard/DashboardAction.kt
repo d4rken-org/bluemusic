@@ -24,5 +24,9 @@ sealed interface DashboardAction {
 
     data object DismissDndAccessHint : DashboardAction
 
+    data object DismissSpeakerHint : DashboardAction
+
+    data object AddSpeakerDevice : DashboardAction
+
     data class ToggleAdjustmentLock(val addr: DeviceAddr) : DashboardAction
 }

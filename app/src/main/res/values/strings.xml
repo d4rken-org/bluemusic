@@ -444,6 +444,9 @@
     <string name="dnd_access_hint_title">Do Not Disturb access</string>
     <string name="dnd_access_hint_message">Without Do Not Disturb access, ringtone, notification, and DND mode settings can\'t be applied when your devices connect.</string>
     <string name="dnd_access_fix_action">Grant access</string>
+    <string name="device_speaker_hint_title">Volumes after disconnect</string>
+    <string name="device_speaker_hint_message">Want your volumes restored when a Bluetooth device disconnects? Add \"Device speaker\" as a managed device — its volumes are applied when audio switches back to your phone.</string>
+    <string name="device_speaker_hint_action">Add</string>
 
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Purchase cancelled</string>

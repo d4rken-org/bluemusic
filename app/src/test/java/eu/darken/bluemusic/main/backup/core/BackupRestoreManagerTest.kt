@@ -227,6 +227,35 @@ class BackupRestoreManagerTest : BaseTest() {
     }
 
     @Test
+    fun `parseBackup accepts a v1 backup without the speaker hint flag`() = runTest {
+        val file = File(tempDir, "v1.zip")
+        val backupJson = """
+            {
+                "formatVersion": 1,
+                "appVersion": "3.3.1",
+                "createdAt": "2026-01-01T00:00:00Z",
+                "deviceConfigs": [{"address": "AA:BB:CC:DD:EE:FF"}],
+                "generalSettings": {"isDndAccessHintDismissed": true}
+            }
+        """.trimIndent()
+        ZipOutputStream(FileOutputStream(file)).use { zip ->
+            zip.putNextEntry(ZipEntry("backup.json"))
+            zip.write(backupJson.toByteArray())
+            zip.closeEntry()
+        }
+        val uri = mockk<Uri>(relaxed = true)
+        every { contentResolver.openInputStream(uri) } answers { FileInputStream(file) }
+
+        val parsed = manager.parseBackup(uri)
+
+        parsed.backup.formatVersion shouldBe 1
+        parsed.backup.generalSettings.isSpeakerHintDismissed shouldBe false
+
+        manager.applyRestore(parsed.backup, skipExisting = false).deviceCount shouldBe 1
+        coVerify { generalSettings.applyBackup(parsed.backup.generalSettings) }
+    }
+
+    @Test
     fun `parseBackup flags duplicate addresses in warnings`() = runTest {
         val (uri, file) = tempUri("dup.zip")
         val backup = AppBackup(
