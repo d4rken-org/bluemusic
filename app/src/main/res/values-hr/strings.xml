@@ -139,8 +139,6 @@
     <string name="devices_audio_stream_ring_label">Zvono</string>
     <string name="devices_audio_stream_notification_label">Obavijest</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="label_speaker_autosave">Automatsko spremanje glasnoće zvuka</string>
-    <string name="description_speaker_autosave">Unos \&quot;Zvučnik uređaja\&quot;, koji je zadužen za zadane glasnoće zvuka, samostalno se ažurira tijekom spajanja Bluetooth uređaja. Napomena: ovo ne radi na svim uređajima.</string>
     <string name="devices_neverseen_label">Nikad viđen</string>
     <string name="devices_state_connected_label">Povezano</string>
     <string name="devices_last_connected_label">Posljednji put povezan: %s</string>

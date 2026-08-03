@@ -137,8 +137,6 @@
     <string name="devices_audio_stream_ring_label">Chuông</string>
     <string name="devices_audio_stream_notification_label">Thông báo</string>
     <string name="devices_audio_stream_alarm_label">Báo thức</string>
-    <string name="label_speaker_autosave">Lưu mức âm lượng tự động</string>
-    <string name="description_speaker_autosave">Mục \&quot;Loa thiết bị\&quot;, chịu trách nhiệm về âm lượng mặc định, sẽ tự cập nhật khi thiết bị Bluetooth kết nối. Lưu ý: Điều này không hoạt động trên tất cả các thiết bị.</string>
     <string name="devices_neverseen_label">Không nhìn thấy</string>
     <string name="devices_state_connected_label">Đã kết nối</string>
     <string name="devices_last_connected_label">Lần kết nối cuối: %s</string>

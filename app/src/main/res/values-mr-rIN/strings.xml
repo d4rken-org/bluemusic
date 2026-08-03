@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">रिंग</string>
     <string name="devices_audio_stream_notification_label">सूचना</string>
     <string name="devices_audio_stream_alarm_label">अलार्म</string>
-    <string name="label_speaker_autosave">व्हॉल्युम स्वयं-जतन</string>
-    <string name="description_speaker_autosave">\"डिव्हाइस स्पीकर\" नोंद, जी डीफॉल्ट व्हॉल्युमसाठी जबाबदार आहे, Bluetooth डिव्हाइस कनेक्ट झाल्यावर स्वतःला अद्यतनित करते. टीप: हे सर्व डिव्हाइसवर कार्य करत नाही.</string>
     <string name="devices_neverseen_label">कधीही दिसले नाही</string>
     <string name="devices_state_connected_label">कनेक्ट केलेले</string>
     <string name="devices_last_connected_label">शेवटचे कनेक्ट: %s</string>

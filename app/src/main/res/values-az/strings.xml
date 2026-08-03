@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Zəng səsi</string>
     <string name="devices_audio_stream_notification_label">Bildiriş</string>
     <string name="devices_audio_stream_alarm_label">Zəngli saat</string>
-    <string name="label_speaker_autosave">Səsi avtomatik saxla</string>
-    <string name="description_speaker_autosave">Standart səs səviyyələrindən məsul olan \"Cihaz dinamiki\" girişi, Bluetooth cihazı bağlantı qurduqda özünü yeniləyir. Qeyd: Bu, bütün cihazlarda işləmir.</string>
     <string name="devices_neverseen_label">Heç vaxt görünmədi</string>
     <string name="devices_state_connected_label">Bağlantı quruldu</string>
     <string name="devices_last_connected_label">Son qoşulma: %s</string>

@@ -140,8 +140,6 @@
     <string name="devices_audio_stream_ring_label">Zvonenie</string>
     <string name="devices_audio_stream_notification_label">Upozornenie</string>
     <string name="devices_audio_stream_alarm_label">Budík</string>
-    <string name="label_speaker_autosave">Automaticky uložiť hlasitosť</string>
-    <string name="description_speaker_autosave">Vstup reproduktoru zariadenia, ktorý je zodpovedný za predvolené hlasitosti sa sám aktualizuje po pripojení Bluetooth zariadenia. Poznámka: Toto nefunguje na všetkých zariadeniach.</string>
     <string name="devices_neverseen_label">Nikdy nevidené</string>
     <string name="devices_state_connected_label">Pripojené</string>
     <string name="devices_last_connected_label">Naposledy pripojené: %s</string>

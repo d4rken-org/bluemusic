@@ -140,8 +140,6 @@
     <string name="devices_audio_stream_ring_label">Дзвінок</string>
     <string name="devices_audio_stream_notification_label">Сповіщення</string>
     <string name="devices_audio_stream_alarm_label">Будильник</string>
-    <string name="label_speaker_autosave">Автозбереження гучності</string>
-    <string name="description_speaker_autosave">Запис \&quot;Динамік пристрою\&quot;, який відповідає за стандартні гучності, оновлюється при підключенні Bluetooth-пристрою. Примітка: Працює не на всіх пристроях.</string>
     <string name="devices_neverseen_label">Незнайомий пристрій</string>
     <string name="devices_state_connected_label">Під\'єднано</string>
     <string name="devices_last_connected_label">Останнє під\'єднання: %s</string>

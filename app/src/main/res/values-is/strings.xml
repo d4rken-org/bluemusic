@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Hringja</string>
     <string name="devices_audio_stream_notification_label">Tilkynning</string>
     <string name="devices_audio_stream_alarm_label">Viðvörun</string>
-    <string name="label_speaker_autosave">Sjálfvirk hljóðstyrksupp-skráning</string>
-    <string name="description_speaker_autosave">Færslan \"Hátalari tækis\", sem ber ábyrgð á sjálfgefnum hljóðstyrkum, uppfærir sig þgar Bluetooth tæki tengist. Athugið: Þetta virkar ekki á öllum tækjum.</string>
     <string name="devices_neverseen_label">Aldrei séð</string>
     <string name="devices_state_connected_label">Tengt</string>
     <string name="devices_last_connected_label">Síðast tengt: %s</string>

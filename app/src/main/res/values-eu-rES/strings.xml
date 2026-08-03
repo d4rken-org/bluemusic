@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Tonua</string>
     <string name="devices_audio_stream_notification_label">Jakinarazpena</string>
     <string name="devices_audio_stream_alarm_label">Alarma</string>
-    <string name="label_speaker_autosave">Bolumen gorde automatikoa</string>
-    <string name="description_speaker_autosave">\"Gailuaren bozgorailua\" sarrerak, lehenetsitako bolumenen ardura duena, bere burua eguneratzen du Bluetooth gailu bat konektatzen denean. Oharra: Honek ez du gailu guztietan funtzionatzen.</string>
     <string name="devices_neverseen_label">Inoiz ikusi ez</string>
     <string name="devices_state_connected_label">Konektatuta</string>
     <string name="devices_last_connected_label">Azken konexioa: %s</string>

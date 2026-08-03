@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">ರಿಂಗ್</string>
     <string name="devices_audio_stream_notification_label">ಅಧಿಸೂಚನೆ</string>
     <string name="devices_audio_stream_alarm_label">ಅಲಾರ್ಮ್</string>
-    <string name="label_speaker_autosave">ಸ್ವಯಂಚಾಲಿತ ವಾಲ್ಯೂಮ್ ಉಳಿಸಿ</string>
-    <string name="description_speaker_autosave">ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ \"Device Speaker\" ನಮೋದು, ಅಂದರೆ ಡಿಫಾಲ್ಟ್ ವಾಲ್ಯೂಮ್ಗಳ್ಗೆ ಜವಾಬ್ದಾರಿಯಾದದು, Bluetooth ಸಾಧನ ಜೋಡಿಗೊಂಡಾಗ ತನ್ನನ್ನು ತಾನೇ ನವೀಕರಿಸಿಕೊಳ್ಳುತ್ತದೆ. ಟಿಪ್ಪಣಿ: ಇದು ಎಲ್ಲಾ ಸಾಧನಗಳಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸುವುದಿಲ್ಲ.</string>
     <string name="devices_neverseen_label">ಎಂದೂ ಕಂಡಿಲ್ಲ</string>
     <string name="devices_state_connected_label">ಜೋಡಿಗೊಂಡಿದೆ</string>
     <string name="devices_last_connected_label">ಕೊನೆಯಾಗಿ ಜೋಡಿಗೊಂಡದ್ದು: %s</string>

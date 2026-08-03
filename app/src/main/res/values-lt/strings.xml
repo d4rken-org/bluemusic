@@ -140,8 +140,6 @@
     <string name="devices_audio_stream_ring_label">Skambėjimas</string>
     <string name="devices_audio_stream_notification_label">Pranešimas</string>
     <string name="devices_audio_stream_alarm_label">Signalas</string>
-    <string name="label_speaker_autosave">Automatiškai išsaugoti garsumą</string>
-    <string name="description_speaker_autosave">\&quot;Įrenginio garsiakalbis\&quot; punktas, atsakingas už numatytą garsumą, automatiškai atsinaujina kai prijungiamas Bluetooth įrenginys. Pastaba: Tai veikia ne visuose įrenginiuose.</string>
     <string name="devices_neverseen_label">Nematytas</string>
     <string name="devices_state_connected_label">Prisijungta</string>
     <string name="devices_last_connected_label">Paskutinį kartą prisijungta: %s</string>

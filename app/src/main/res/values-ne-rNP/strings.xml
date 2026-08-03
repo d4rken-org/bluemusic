@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">रिङ</string>
     <string name="devices_audio_stream_notification_label">सूचना</string>
     <string name="devices_audio_stream_alarm_label">अलार्म</string>
-    <string name="label_speaker_autosave">स्वतः भोल्युम सुरक्षित</string>
-    <string name="description_speaker_autosave">\"Device Speaker\" प्रविष्टि, जो पूर्वनिर्धारित भोल्युमहरूको लागि जिम्मेवार छ, Bluetooth उपकरण जडान हुँदा आफैं अद्यावधिक हुन्छ। नोट: यो सबै उपकरणहरूमा काम गर्दैन।</string>
     <string name="devices_neverseen_label">कहिल्यै देखिएन</string>
     <string name="devices_state_connected_label">जडान भयो</string>
     <string name="devices_last_connected_label">अन्तिम जडान: %s</string>

@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Ringing</string>
     <string name="devices_audio_stream_notification_label">Varsling</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="label_speaker_autosave">Autolagringsvolum</string>
-    <string name="description_speaker_autosave">\&quot;Enhetshøyttaler\&quot;, som er ansvarlig for standardvolumene, oppdaterer seg selv når en Bluetooth-enhet kobles til. Merk: Dette virker ikke på alle enheter.</string>
     <string name="devices_neverseen_label">Aldri sett</string>
     <string name="devices_state_connected_label">Tilkoblet</string>
     <string name="devices_last_connected_label">Sist tilkoblet: %s</string>

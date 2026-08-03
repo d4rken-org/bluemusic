@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Mlio</string>
     <string name="devices_audio_stream_notification_label">Arifa</string>
     <string name="devices_audio_stream_alarm_label">Kengele</string>
-    <string name="label_speaker_autosave">Hifadhi sauti kiotomatiki</string>
-    <string name="description_speaker_autosave">Ingizo la \"Spika ya Kifaa\", ambalo linawajibika kwa sauti chaguo-msingi, hujisasisha yenyewe wakati kifaa cha Bluetooth kinaunganishwa. Kumbuka: Hii haifanyi kazi katika vifaa vyote.</string>
     <string name="devices_neverseen_label">Haijawahi kuonekana</string>
     <string name="devices_state_connected_label">Imeunganishwa</string>
     <string name="devices_last_connected_label">Iliunganishwa mara ya mwisho: %s</string>

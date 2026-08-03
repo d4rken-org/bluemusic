@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Ring</string>
     <string name="devices_audio_stream_notification_label">Notification</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="label_speaker_autosave">Awtomatikong pag-save ng volume</string>
-    <string name="description_speaker_autosave">Ang entry na \"Device Speaker\", na responsable sa mga default na volume, ay ina-update ang sarili kapag kumonekta ang isang Bluetooth device. Tandaan: Hindi ito gumagana sa lahat ng device.</string>
     <string name="devices_neverseen_label">Hindi nakikita</string>
     <string name="devices_state_connected_label">Nakakonekta</string>
     <string name="devices_last_connected_label">Huling nakakonekta: %s</string>

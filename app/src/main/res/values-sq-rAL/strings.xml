@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Zile</string>
     <string name="devices_audio_stream_notification_label">Njoftim</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="label_speaker_autosave">Ruajtje automatike e volumit</string>
-    <string name="description_speaker_autosave">Hyrja \"Altoparlanti i pajisjes\", e cila është përgjegjëse për volumet e paracaktuara, përditësohet vetvetiu kur lidhet një pajisje Bluetooth. Shënim: Kjo nuk funksionon në të gjitha pajisjet.</string>
     <string name="devices_neverseen_label">Kurrë i parë</string>
     <string name="devices_state_connected_label">I lidhur</string>
     <string name="devices_last_connected_label">I lidhur për herë të fundit: %s</string>

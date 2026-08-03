@@ -137,8 +137,6 @@
     <string name="devices_audio_stream_ring_label">铃声</string>
     <string name="devices_audio_stream_notification_label">通知</string>
     <string name="devices_audio_stream_alarm_label">闹钟</string>
-    <string name="label_speaker_autosave">自动保存音量</string>
-    <string name="description_speaker_autosave">负责默认音量的\"设备扬声器\"条目在蓝牙设备连接时会自动更新。注意：这不适用于所有设备。</string>
     <string name="devices_neverseen_label">设备未曾连接</string>
     <string name="devices_state_connected_label">设备已连接</string>
     <string name="devices_last_connected_label">最后连接：%s</string>

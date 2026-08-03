@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">රිංඟ</string>
     <string name="devices_audio_stream_notification_label">දැනුම්දීම</string>
     <string name="devices_audio_stream_alarm_label">සීනුව</string>
-    <string name="label_speaker_autosave">හඩ ස්වයං-සුරකින්න</string>
-    <string name="description_speaker_autosave">පෙරනිමි හඩ සඳහා වගකිව යුතු \&quot;උපාංග ශ්‍රවණය\&quot; ඇතුළත් කිරීම, බ්ලූටූත් උපාංගයක් සම්බන්ධ වූ විට ස්වයංව යාවත්කාලීන කරයි. සටහන: මෙය සියලු උපාංගයන් හි ක්‍රියා නොකරයි.</string>
     <string name="devices_neverseen_label">කිසිදා දක්නා නොලැබිණ</string>
     <string name="devices_state_connected_label">සම්බන්ධිතයි</string>
     <string name="devices_last_connected_label">අවසාන සම්බන්ධය: %s</string>

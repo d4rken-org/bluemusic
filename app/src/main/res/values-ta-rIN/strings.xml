@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">ரிங்</string>
     <string name="devices_audio_stream_notification_label">அறிவிப்பு</string>
     <string name="devices_audio_stream_alarm_label">அலாரம்</string>
-    <string name="label_speaker_autosave">ஒலி அளவு தானாக சேமி</string>
-    <string name="description_speaker_autosave">இயற்படியான ஒலி அளவுகளுக்கு பொறுப்பான \"சாதன ஸ்பீக்கர்\" பதிவு Bluetooth சாதனம் இணைக்கப்படும்போது தானாக புதுப்பிக்கப்படும். குறிப்பு: இது அனைத்து சாதனங்களிலும் இயங்காது.</string>
     <string name="devices_neverseen_label">ஒருமுறையும் காணப்படவில்லை</string>
     <string name="devices_state_connected_label">இணைக்கப்பட்டது</string>
     <string name="devices_last_connected_label">கடைசியாக இணைக்கப்பட்டது: %s</string>

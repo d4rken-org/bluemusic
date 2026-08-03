@@ -142,8 +142,6 @@
     <string name="devices_audio_stream_ring_label">رنين</string>
     <string name="devices_audio_stream_notification_label">تنبيه</string>
     <string name="devices_audio_stream_alarm_label">منبّه</string>
-    <string name="label_speaker_autosave">حفظ تلقائي للصوت</string>
-    <string name="description_speaker_autosave">مدخل \"مكبر صوت الجهاز\"، المسؤول عن مستويات الصوت الافتراضية، يحديث نفسه عند اتصال جهاز بلوتوث. ملاحظة: هـذا لا يعمل على جميع الأجهزة.</string>
     <string name="devices_neverseen_label">لم يسبق رؤيته</string>
     <string name="devices_state_connected_label">متصل</string>
     <string name="devices_last_connected_label">آخر اتصال: %s</string>

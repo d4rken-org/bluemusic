@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Zil</string>
     <string name="devices_audio_stream_notification_label">Bildirim</string>
     <string name="devices_audio_stream_alarm_label">Alarm Sesi</string>
-    <string name="label_speaker_autosave">Sesi otomatik kaydetme</string>
-    <string name="description_speaker_autosave">Varsayılan seslerden sorumlu olan \&quot;Aygıt Hoparlörü\&quot; girişi, bir Bluetooth aygıtı bağlandığında kendini günceller. Not: Bu, tüm cihazlarda çalışmaz.</string>
     <string name="devices_neverseen_label">Hiç görülmedi</string>
     <string name="devices_state_connected_label">Bağlandı</string>
     <string name="devices_last_connected_label">Son bağlantı: %s</string>

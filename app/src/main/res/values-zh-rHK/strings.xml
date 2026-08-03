@@ -137,8 +137,6 @@
     <string name="devices_audio_stream_ring_label">鈴聲</string>
     <string name="devices_audio_stream_notification_label">通知</string>
     <string name="devices_audio_stream_alarm_label">鬧鐘</string>
-    <string name="label_speaker_autosave">自動儲存音量</string>
-    <string name="description_speaker_autosave">「裝置揚聲器」條目負責預設音量，會在藍牙裝置連接時自動更新。注意：這并非在所有裝置上都有效。</string>
     <string name="devices_neverseen_label">從未見過</string>
     <string name="devices_state_connected_label">已連接</string>
     <string name="devices_last_connected_label">上次連接：%s</string>

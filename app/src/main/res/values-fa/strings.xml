@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">زنگ</string>
     <string name="devices_audio_stream_notification_label">اعلان</string>
     <string name="devices_audio_stream_alarm_label">هشدار</string>
-    <string name="label_speaker_autosave">ذخیره خودکار صدا</string>
-    <string name="description_speaker_autosave">ورودی «بلندگوی دستگاه» که مسئول صداهای پیش‌فرض است، هنگام اتصال دستگاه بلوتوث خود را به‌روز می‌کند. توجه: روی همه دستگاه‌ها کار نمی‌کند.</string>
     <string name="devices_neverseen_label">هرگز دیده نشده</string>
     <string name="devices_state_connected_label">متصل</string>
     <string name="devices_last_connected_label">آخرین اتصال: %s</string>

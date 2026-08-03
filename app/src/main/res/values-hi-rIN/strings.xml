@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">रिंग</string>
     <string name="devices_audio_stream_notification_label">अधिसूचना</string>
     <string name="devices_audio_stream_alarm_label">अलार्म</string>
-    <string name="label_speaker_autosave">स्वचलित ध्वनि सहेजन</string>
-    <string name="description_speaker_autosave">\&quot;डिवाइस स्पीकर\&quot; प्रविष्टि, जो डिफ़ॉल्ट वॉल्यूम के लिए ज़िंमेदार है, किसी ब्लूटूथ डिवाइस के कनेक्ट होने पर स्वयं अद्यतन करता है । नोट: यह सभी डिवाइस पर काम नहीं करता है ।</string>
     <string name="devices_neverseen_label">कभी नहीं देखा</string>
     <string name="devices_state_connected_label">जुड गया</string>
     <string name="devices_last_connected_label">आखिरी बार जुड़ा: %s</string>

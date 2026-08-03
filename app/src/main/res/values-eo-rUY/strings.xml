@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">Sonorilo</string>
     <string name="devices_audio_stream_notification_label">Sciiĝo</string>
     <string name="devices_audio_stream_alarm_label">Alarmo</string>
-    <string name="label_speaker_autosave">Aŭtomata konservado de volumeno</string>
-    <string name="description_speaker_autosave">La eniro \"Aparata Laŭtparolilo\", kiu respondecas pri implicaj volumenoj, ĝisdatigas sin kiam Bluetooth-aparato konektas. Noto: Ĉi tio ne funkcias sur ĉiuj aparatoj.</string>
     <string name="devices_neverseen_label">Neniam vidita</string>
     <string name="devices_state_connected_label">Konektita</string>
     <string name="devices_last_connected_label">Laste konektita: %s</string>

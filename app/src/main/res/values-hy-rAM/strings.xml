@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">զանգակոց</string>
     <string name="devices_audio_stream_notification_label">Ծակուցություն</string>
     <string name="devices_audio_stream_alarm_label">Ռլարմ</string>
-    <string name="label_speaker_autosave">Ծավալի ավտոպահպանում</string>
-    <string name="description_speaker_autosave">\"Device Speaker\" կետքը, որն լռկլի ծավալների համար և, ինքնաթարկվում և երբ Bluetooth սարք կապակցվում և:</string>
     <string name="devices_neverseen_label">Արտասակ չի կապված</string>
     <string name="devices_state_connected_label">Կապակցված</string>
     <string name="devices_last_connected_label">վերջին կապակցությունը: %s</string>

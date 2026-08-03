@@ -140,8 +140,6 @@
     <string name="devices_audio_stream_ring_label">צלצול</string>
     <string name="devices_audio_stream_notification_label">התראה</string>
     <string name="devices_audio_stream_alarm_label">התראה</string>
-    <string name="label_speaker_autosave">שמירה אוטומטית של עוצמה</string>
-    <string name="description_speaker_autosave">הרשומה של \&quot;רמקול מכשיר\&quot;, האחראית לעוצמות ברירת מחדל, מעדכנת את עצמה כאשר מתחבר מכשיר בלוטוס. הערה: זה לא עובד בכל המכשירים.</string>
     <string name="devices_neverseen_label">לא נראה מעולם</string>
     <string name="devices_state_connected_label">מחובר</string>
     <string name="devices_last_connected_label">חיבור אחרון: %s</string>

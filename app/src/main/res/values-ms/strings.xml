@@ -137,8 +137,6 @@
     <string name="devices_audio_stream_ring_label">Deringan</string>
     <string name="devices_audio_stream_notification_label">Pemberitahuan</string>
     <string name="devices_audio_stream_alarm_label">Penggera</string>
-    <string name="label_speaker_autosave">Volum autosimpan</string>
-    <string name="description_speaker_autosave">Kemasukan \&quot;Pembesar Suara Peranti\&quot;, yang mana bertanggungjawab pada volum lalai, mengemas kini dengan sendirinya bila peranti Bluetooth bersambung. Nota: Ini tidak berlaku pada semua peranti.</string>
     <string name="devices_neverseen_label">Tiada terlihat</string>
     <string name="devices_state_connected_label">Dihubungkan</string>
     <string name="devices_last_connected_label">Terakhir disambung: %s</string>

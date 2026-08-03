@@ -138,8 +138,6 @@
     <string name="devices_audio_stream_ring_label">ზარის მელოდია</string>
     <string name="devices_audio_stream_notification_label">შეტყობინება</string>
     <string name="devices_audio_stream_alarm_label">მაღვიძარა</string>
-    <string name="label_speaker_autosave">ხმის ავტომატური შენახვა</string>
-    <string name="description_speaker_autosave">\"მოწყობილობის დინამიკი\" ჩანაწერი, რომელიც პასუხისმგებელია ნაგულისხმევ ხმებზე, ახლდება Bluetooth მოწყობილობის დაკავშირებისას. შენიშვნა: ეს ყველა მოწყობილობაზე არ მუშაობს.</string>
     <string name="devices_neverseen_label">არასდროს დანახული</string>
     <string name="devices_state_connected_label">დაკავშირებული</string>
     <string name="devices_last_connected_label">ბოლოს დაკავშირება: %s</string>
