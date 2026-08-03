@@ -34,7 +34,7 @@ fun DeviceItem(
             val isSpeaker = device.deviceType == SourceDevice.Type.PHONE_SPEAKER
             Text(
                 text = if (isSpeaker) stringResource(R.string.discover_device_speaker_desc) else device.address,
-                maxLines = if (isSpeaker) 3 else 1,
+                maxLines = if (isSpeaker) Int.MAX_VALUE else 1,
                 overflow = TextOverflow.Companion.Ellipsis
             )
         },
