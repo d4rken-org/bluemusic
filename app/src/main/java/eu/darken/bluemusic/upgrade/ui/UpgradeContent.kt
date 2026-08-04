@@ -4,6 +4,7 @@ import androidx.annotation.StringRes
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,7 +20,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.ArrowBack
 import androidx.compose.material.icons.twotone.CheckCircle
-import androidx.compose.material.icons.twotone.Stars
 import androidx.compose.material.icons.twotone.WarningAmber
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
@@ -42,6 +42,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -49,9 +50,13 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
+import eu.darken.bluemusic.common.compose.BlueMusicIcon
+import eu.darken.bluemusic.common.compose.Preview2
+import eu.darken.bluemusic.common.compose.PreviewWrapper
 
 internal object UpgradeScreenTags {
     const val LOADING = "upgrade_loading"
@@ -78,10 +83,14 @@ internal object UpgradeScreenTags {
     const val GPLAY_GRACE_SPINNER = "upgrade_gplay_grace_spinner"
     const val GPLAY_GRACE_RESTORE = "upgrade_gplay_grace_restore"
 
-    // Acquisition-header mood (replaces the sdm mascot's happy/grumpy states: BlueMusic has no
-    // mascot). Calm badge while nothing is wrong, attention badge once a grace episode aged.
+    // Acquisition-header mood. The calm state is the app icon itself, the attention state a warning
+    // badge once a grace episode aged. Both tags stay on the STANDALONE header — the hero card
+    // brings its own, flavor-neutral icon tag.
     const val GPLAY_HEADER_CALM = "upgrade_gplay_header_calm"
     const val GPLAY_HEADER_ATTENTION = "upgrade_gplay_header_attention"
+
+    const val HERO = "upgrade_hero"
+    const val HERO_ICON = "upgrade_hero_icon"
 }
 
 // Composed app title with the flavor postfix highlighted while the upgrade is active — the same
@@ -198,9 +207,9 @@ internal fun UpgradeScreenContent(
     }
 }
 
-// BlueMusic has no mascot: the acquisition header is a themed status badge instead of the sdm
-// mascot. [happy] carries the same mood the mascot used to — a calm Pro badge while nothing is
-// wrong, an attention badge once a grace episode has aged into its diagnostics stage.
+// The standalone header carries the same mood the fleet's mascot does: the app icon while nothing
+// is wrong, a warning badge once a grace episode has aged into its diagnostics stage. That warning
+// badge is the ONLY place a non-icon graphic survives — everywhere else the icon is the mascot.
 @Composable
 internal fun UpgradeHeader(
     modifier: Modifier = Modifier,
@@ -214,36 +223,152 @@ internal fun UpgradeHeader(
             color = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.35f),
             shape = CircleShape,
         ) {
-            Icon(
-                imageVector = if (happy) Icons.TwoTone.Stars else Icons.TwoTone.WarningAmber,
-                contentDescription = null,
-                tint = if (happy) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error,
-                modifier = Modifier
-                    .padding(20.dp)
-                    .size(56.dp)
-                    .testTag(if (happy) UpgradeScreenTags.GPLAY_HEADER_CALM else UpgradeScreenTags.GPLAY_HEADER_ATTENTION),
-            )
+            if (happy) {
+                BlueMusicIcon(
+                    size = 56.dp,
+                    modifier = Modifier
+                        .padding(20.dp)
+                        .testTag(UpgradeScreenTags.GPLAY_HEADER_CALM),
+                )
+            } else {
+                Icon(
+                    imageVector = Icons.TwoTone.WarningAmber,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.error,
+                    modifier = Modifier
+                        .padding(20.dp)
+                        .size(56.dp)
+                        .testTag(UpgradeScreenTags.GPLAY_HEADER_ATTENTION),
+                )
+            }
         }
     }
 }
 
+private val HERO_GAP = 16.dp
+
+// Below this much room for the copy the side-by-side split stops paying for itself: measured on a
+// 320dp screen at 200% font, the row wrapped the preamble over 10 lines (breaking a word mid-way)
+// and came out TALLER than stacking, which needs 6. Scaled by fontScale because the squeeze comes
+// from text size as much as from screen width — at 200% font even a normal-width phone must stack.
+private val HERO_MIN_TEXT_WIDTH = 150.dp
+
+// The screen opener: app icon and preamble in one card instead of a floating badge stacked on a
+// separate text box. Side-by-side keeps the icon at eye level with the copy it introduces, and buys
+// back the vertical space the standalone header used to spend above the fold — but only while the
+// copy still has room to breathe, hence the stacked fallback.
 @Composable
-internal fun UpgradePreambleCard(
+internal fun UpgradeHeroCard(
     text: String,
     modifier: Modifier = Modifier,
+    iconSize: Dp = 88.dp,
     colors: CardColors = CardDefaults.elevatedCardColors(),
 ) {
     ElevatedCard(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .testTag(UpgradeScreenTags.HERO),
         colors = colors,
     ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodyMedium,
+        BoxWithConstraints(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
-        )
+                .padding(8.dp)
+                .padding(end = 8.dp),
+        ) {
+            val minTextWidth = HERO_MIN_TEXT_WIDTH * LocalDensity.current.fontScale
+            if (maxWidth - iconSize - HERO_GAP < minTextWidth) {
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    BlueMusicIcon(
+                        size = iconSize,
+                        modifier = Modifier.testTag(UpgradeScreenTags.HERO_ICON),
+                    )
+                    Text(
+                        text = text,
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+            } else {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(HERO_GAP),
+                ) {
+                    BlueMusicIcon(
+                        size = iconSize,
+                        modifier = Modifier.testTag(UpgradeScreenTags.HERO_ICON),
+                    )
+                    Text(
+                        text = text,
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.weight(1f),
+                    )
+                }
+            }
+        }
+    }
+}
+
+// Preview copy matches the shipped preamble in length: the icon/text split only reads correctly if
+// the text wraps like it does in the app.
+private const val PREVIEW_PREAMBLE =
+    "Bluetooth Volume Manager has no ads and doesn't sell user data. My work is financed by you ❤️."
+
+@Preview2
+@Composable
+private fun UpgradeHeroCardPreview() {
+    PreviewWrapper {
+        Column(modifier = Modifier.padding(16.dp)) {
+            UpgradeHeroCard(text = PREVIEW_PREAMBLE)
+        }
+    }
+}
+
+// Preview2 only varies light/dark, so it can never reach the stacked branch. These two pin the
+// thresholds that flip it: a narrow screen, and a normal-width screen at 200% font. 280dp, not
+// 320dp: at 320dp the text still gets ~160dp once the paddings come off, so the row survives.
+@Preview(showBackground = true, name = "Compact width", widthDp = 280)
+@Preview(showBackground = true, name = "Huge font", fontScale = 2f)
+@Composable
+private fun UpgradeHeroCardCompactPreview() {
+    PreviewWrapper {
+        Column(modifier = Modifier.padding(16.dp)) {
+            UpgradeHeroCard(text = PREVIEW_PREAMBLE)
+        }
+    }
+}
+
+// Both flavors tint the hero: FOSS on primaryContainer, GPLAY on secondaryContainer. Neither is
+// the composable's default, so the default-colored preview above would not catch a contrast
+// regression on the colors that actually ship.
+@Preview2
+@Composable
+private fun UpgradeHeroCardTintedPreview() {
+    PreviewWrapper {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+            UpgradeHeroCard(
+                text = PREVIEW_PREAMBLE,
+                colors = CardDefaults.elevatedCardColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                ),
+            )
+            UpgradeHeroCard(
+                text = PREVIEW_PREAMBLE,
+                colors = CardDefaults.elevatedCardColors(
+                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                ),
+            )
+        }
     }
 }
 

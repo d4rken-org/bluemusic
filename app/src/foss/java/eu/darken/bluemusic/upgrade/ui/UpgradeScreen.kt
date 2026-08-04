@@ -148,9 +148,7 @@ private fun UpgradePitchContent(
     UpgradeScreenContent(
         paddingValues = paddingValues,
     ) {
-        UpgradeHeader()
-
-        UpgradePreambleCard(
+        UpgradeHeroCard(
             text = stringResource(R.string.upgrade_screen_preamble),
             colors = CardDefaults.elevatedCardColors(
                 containerColor = MaterialTheme.colorScheme.primaryContainer,

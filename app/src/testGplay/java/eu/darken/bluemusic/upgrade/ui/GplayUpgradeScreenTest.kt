@@ -101,6 +101,11 @@ class GplayUpgradeScreenTest : BaseComposeRobolectricTest() {
         composeRule.onAllNodesWithTag(UpgradeScreenTags.ACTIONS).assertCountEquals(0)
         composeRule.onAllNodesWithText(context.getString(R.string.upgrade_screen_preamble)).assertCountEquals(1)
         composeRule.onAllNodesWithText(context.getString(R.string.upgrade_screen_why_title)).assertCountEquals(1)
+        // Preamble and app icon ship together in the hero card outside grace: one hero, one icon,
+        // so a leftover standalone header next to the hero would fail here.
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.HERO).assertCountEquals(1)
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.HERO_ICON).assertCountEquals(1)
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_HEADER_CALM).assertCountEquals(0)
     }
 
     @Test
@@ -213,6 +218,10 @@ class GplayUpgradeScreenTest : BaseComposeRobolectricTest() {
             .assertCountEquals(1)
         composeRule.onAllNodesWithText(context.getString(R.string.upgrades_gplay_unavailable_error_title))
             .assertCountEquals(0)
+        // Still the acquisition presentation: hero card with the app icon, no standalone header.
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.HERO).assertCountEquals(1)
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.HERO_ICON).assertCountEquals(1)
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_HEADER_CALM).assertCountEquals(0)
     }
 
     @Test
@@ -483,6 +492,9 @@ class GplayUpgradeScreenTest : BaseComposeRobolectricTest() {
             .assertCountEquals(1)
         composeRule.onAllNodesWithText(appNameWithPostfixedHeroBody(R.string.upgrade_screen_owned_hero_sub_body))
             .assertCountEquals(0)
+        // Owners get the ownership hero instead of the pitch hero: no acquisition preamble card.
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.HERO).assertCountEquals(0)
+        composeRule.onAllNodesWithText(context.getString(R.string.upgrade_screen_preamble)).assertCountEquals(0)
     }
 
     @Test
@@ -542,11 +554,13 @@ class GplayUpgradeScreenTest : BaseComposeRobolectricTest() {
         composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_GRACE).assertCountEquals(1)
         composeRule.onAllNodesWithText(context.getString(R.string.upgrade_screen_grace_title)).assertCountEquals(1)
         composeRule.onAllNodesWithText(context.getString(R.string.upgrade_screen_grace_body_short)).assertCountEquals(1)
-        // "Confirming…" is backed by motion during the quiet stage; the mascot stays cheerful.
+        // "Confirming…" is backed by motion during the quiet stage; the header stays calm.
         composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_GRACE_SPINNER).assertCountEquals(1)
-        // BlueMusic has no mascot: the calm header badge carries the "nothing is wrong" mood.
+        // Grace has no preamble to pair the icon with, so the app icon stays a standalone header
+        // and carries the "nothing is wrong" mood — no hero card here.
         composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_HEADER_CALM).assertCountEquals(1)
         composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_HEADER_ATTENTION).assertCountEquals(0)
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.HERO).assertCountEquals(0)
         composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_GRACE_RESTORE).assertCountEquals(0)
         // The grace card owns restore via its two-stage disclosure — the generic restore section
         // must not undercut the calm quiet stage with its own restore CTA.
@@ -599,6 +613,7 @@ class GplayUpgradeScreenTest : BaseComposeRobolectricTest() {
         // The aged copy asks the user to act: the header switches to the attention badge.
         composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_HEADER_ATTENTION).assertCountEquals(1)
         composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_HEADER_CALM).assertCountEquals(0)
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.HERO).assertCountEquals(0)
         // The aged episode is treated as likely-permanent: the offers come back so an expired
         // subscriber can switch without waiting out the full grace window. Still no sales pitch.
         composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_SUBSCRIPTION).assertCountEquals(1)
