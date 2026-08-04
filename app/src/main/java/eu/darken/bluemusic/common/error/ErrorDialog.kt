@@ -61,7 +61,7 @@ fun ErrorDialog(throwable: Throwable, onDismiss: () -> Unit) {
 
                 localizedError.fixAction?.let { action ->
                     TextButton(onClick = onDismiss) {
-                        Text(stringResource(R.string.general_cancel_action))
+                        Text(stringResource(R.string.general_dismiss_action))
                     }
                     Spacer(modifier = Modifier.width(8.dp))
                     TextButton(
