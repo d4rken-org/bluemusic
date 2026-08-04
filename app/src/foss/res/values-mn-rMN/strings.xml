@@ -9,8 +9,6 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager сурталчилгаагүй бөгөөд хэрэглэгчийн өгөгдлийг зардаггүй. Цаашид хөгжлөлт зөвхөн тань боломжтой болгог.</string>
     <string name="upgrade_screen_how_title">Хэрхэн тусламж үзүүлэх</string>
     <string name="upgrade_screen_how_body">Ивээн тэтгэгч болж хөгжлийг дэмжээрэй! Бүх нэмэлт боломжуудыг идэвхжүүлж, миний GitHub Sponsors профайлыг нээхийн тулд доорх товчийг дарна уу.</string>
-    <string name="upgrade_screen_why_title">Холилцоонд</string>
-    <string name="upgrade_screen_why_body">• Урамшуулсан хөгжлөлөөр 🧙\n• Хязгаагүй төхөөрөмжүүд ➡️➡️\n• Нэмэлт үйлдлүүд ⚙️\nба дараа…</string>
     <string name="upgrade_screen_sponsor_action">Хөгжлийг дэмжих</string>
     <string name="upgrade_screen_sponsor_action_hint">Өөр сонголт бол зар сурталчилгаа, шинжилгээ, Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Нээлттэй эхийн хөгжлийг дэмжсэнд баярлалаа ❤️</string>

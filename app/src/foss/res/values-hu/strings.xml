@@ -9,11 +9,6 @@
     <string name="upgrade_screen_preamble">A Bluetooth Volume Manager nem tartalmaz hirdetéseket, és nem értékesít felhasználói adatokat. A folyamatos fejlesztést csak te teszed lehetővé.</string>
     <string name="upgrade_screen_how_title">Hogyan lehet segíteni</string>
     <string name="upgrade_screen_how_body">Legyen patron támogató és szponzorálja a fejlesztést! Kattintson az alábbi gombra az összes extra funkció aktiválásához és a GitHub Sponsors profilom megnyitásához.</string>
-    <string name="upgrade_screen_why_title">A keverékben</string>
-    <string name="upgrade_screen_why_body">• Egy motivált fejlesztő 🧙
-• Korlátlan eszközök ➡️➡️
-• Extra műveletek ⚙️
-és még sok más…</string>
     <string name="upgrade_screen_sponsor_action">Szponzori fejlesztés</string>
     <string name="upgrade_screen_sponsor_action_hint">Az alternatívák a hirdetések, az elemzések és a Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Köszönjük, hogy támogatod a nyílt forráskódú fejlesztést ❤️</string>

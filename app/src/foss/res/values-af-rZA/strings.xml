@@ -9,11 +9,6 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager het geen advertensies nie en verkoop nie gebruikersdata nie. Voortgesette ontwikkeling word slegs deur jou moontlik gemaak.</string>
     <string name="upgrade_screen_how_title">Hoe om te help</string>
     <string name="upgrade_screen_how_body">Word \'n beskermheer en borg ontwikkeling! Tik die knoppie hieronder om alle ekstra funksies te aktiveer en my GitHub Sponsors profiel oop te maak.</string>
-    <string name="upgrade_screen_why_title">In die mengsel</string>
-    <string name="upgrade_screen_why_body">• \'n Gemotiveerde ontwikkelaar 🧙
-• Onbeperkte toestelle ➡️➡️
-• Ekstra aksies ⚙️
-en meer…</string>
     <string name="upgrade_screen_sponsor_action">Borg ontwikkeling</string>
     <string name="upgrade_screen_sponsor_action_hint">Die alternatief is advertensies, analitiek en Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Dankie dat jy oopbron ontwikkeling ondersteun ❤️</string>

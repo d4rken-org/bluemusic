@@ -9,8 +9,6 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager რეკლამაგარეშია და მომხმარეთა მონაცემებს არ ყიდის. განვითარებად განვითარება მხოლოდ მხოლოდ შესაძლებელია ერთიადად თქვენით.</string>
     <string name="upgrade_screen_how_title">როგორ დაგეხმაროთ</string>
     <string name="upgrade_screen_how_body">გახდით მფარველი და სპონსორობა გაუწიეთ განვითარებას! შეეხეთ ქვემოთ მოცემულ ღილაკს, რათა ააქტიუროთ ყველა დამატებითი ფუნქცია და გახსნათ ჩემი GitHub Sponsors პროფილი.</string>
-    <string name="upgrade_screen_why_title">მიქსში</string>
-    <string name="upgrade_screen_why_body">• მოტივირებული დამპროგრამებელი 🧙\n• ულიმიტო მოწყობილობები ➡️➡️\n• დამატებითი მოქმედები ⚙️\nდა მეტი მრავალი…</string>
     <string name="upgrade_screen_sponsor_action">სპონსორის განვითარება</string>
     <string name="upgrade_screen_sponsor_action_hint">ალტერნატივა არის რეკლამა, ანალიტიკა და Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">გმადლობთ ღია კოდის განვითარების მხარდაჭერისთვის ❤️</string>
