@@ -247,11 +247,23 @@ internal fun UpgradeScreen(
             contentPadding = PaddingValues(start = 24.dp, top = 16.dp, end = 24.dp, bottom = 32.dp),
         ) {
             if (ownedState == null) {
-                // Owners get the badge inside the congrats hero card instead. Once a grace episode
-                // ages into the diagnostics stage, the header switches to the attention mood,
-                // matching the "needs your attention" state. A young episode keeps the calm badge:
-                // its message is that nothing is wrong.
-                UpgradeHeader(happy = loaded?.grace?.showDiagnostics != true)
+                if (loaded?.grace != null) {
+                    // Grace users never see the preamble (sales copy contradicts "still active"),
+                    // so there is nothing to pair the icon with — it stays a standalone header
+                    // above the grace card. Once the episode ages into the diagnostics stage the
+                    // header switches to the attention mood, matching the "needs your attention"
+                    // state; a young episode keeps the calm app icon, its message being that
+                    // nothing is wrong.
+                    UpgradeHeader(happy = loaded.grace.showDiagnostics != true)
+                } else {
+                    UpgradeHeroCard(
+                        text = stringResource(R.string.upgrade_screen_preamble),
+                        colors = CardDefaults.elevatedCardColors(
+                            containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                            contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                        ),
+                    )
+                }
             }
 
             if (ownedState != null) {
@@ -300,14 +312,8 @@ private fun UpgradeAcquisitionContent(
     // blip) shows calm status only, an aged one (likely really gone) adds restore AND the offers,
     // so an expired subscriber can switch without waiting out the full grace window.
     if (!inGrace) {
-        UpgradePreambleCard(
-            text = stringResource(R.string.upgrade_screen_preamble),
-            colors = CardDefaults.elevatedCardColors(
-                containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-            ),
-        )
-
+        // The preamble itself now lives in the hero card at the top of the screen, next to the
+        // app icon.
         if (uiState is GplayUpgradeUiState.Loaded && uiState.wasPreviouslyPro) {
             // The targeted returning-buyer nudge: prominent placement and emphasis, and the ONLY
             // restore affordance on the screen — a second one below would make the screen feel

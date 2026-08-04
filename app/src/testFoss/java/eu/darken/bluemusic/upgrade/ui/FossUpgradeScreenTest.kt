@@ -44,6 +44,11 @@ class FossUpgradeScreenTest : BaseComposeRobolectricTest() {
         composeRule.onAllNodesWithText(firstFeatureLine(context, R.string.upgrade_screen_why_body)).assertCountEquals(1)
         composeRule.onAllNodesWithText(context.getString(R.string.upgrade_screen_sponsor_action_hint)).assertCountEquals(1)
         composeRule.onAllNodesWithTag(UpgradeScreenTags.FOSS_SPONSOR).assertCountEquals(1)
+        // Preamble and app icon ship together in the pitch hero card: one hero, one icon, and no
+        // leftover standalone header above it.
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.HERO).assertCountEquals(1)
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.HERO_ICON).assertCountEquals(1)
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_HEADER_CALM).assertCountEquals(0)
     }
 
     @Test
@@ -73,6 +78,9 @@ class FossUpgradeScreenTest : BaseComposeRobolectricTest() {
         composeRule.onAllNodesWithTag(UpgradeScreenTags.FOSS_SHOW_OPTIONS).assertCountEquals(1)
         composeRule.onAllNodesWithTag(UpgradeScreenTags.FOSS_SPONSOR).assertCountEquals(0)
         composeRule.onAllNodesWithText(context.getString(R.string.upgrade_screen_preamble)).assertCountEquals(0)
+        // Status views have no preamble to pair the icon with: standalone header, no hero card.
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.HERO).assertCountEquals(0)
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_HEADER_CALM).assertCountEquals(1)
     }
 
     @Test
@@ -109,6 +117,9 @@ class FossUpgradeScreenTest : BaseComposeRobolectricTest() {
         composeRule.onAllNodesWithTag(UpgradeScreenTags.FOSS_DONATE).assertCountEquals(1)
         composeRule.onAllNodesWithTag(UpgradeScreenTags.FOSS_SHOW_OPTIONS).assertCountEquals(0)
         composeRule.onAllNodesWithTag(UpgradeScreenTags.FOSS_SPONSOR).assertCountEquals(0)
+        // Status views have no preamble to pair the icon with: standalone header, no hero card.
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.HERO).assertCountEquals(0)
+        composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_HEADER_CALM).assertCountEquals(1)
     }
 
     @Test
