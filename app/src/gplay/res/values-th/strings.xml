@@ -7,7 +7,6 @@
     <string name="upgrade_prompt_title">อัปเกรดเป็น BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ให้ผลลัพธ์ที่ดีกว่า ฟีเจอร์เพิ่มเติม และตัวเลือกสำหรับผู้ใช้ขั้นสูง</string>
     <string name="upgrade_prompt_upgrade_action">อัปเกรด</string>
-    <string name="upgrade_screen_title">อัปเกรดเป็น BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ไม่มีโฆษณาและไม่ขายข้อมูลผู้ใช้ งานของฉันได้รับการสนับสนุนทางการเงินจากคุณ ❤️</string>
     <string name="upgrade_screen_why_title">ข้อดี</string>
     <string name="upgrade_screen_subscription_trial_action">เริ่มทดลองใช้ฟรี 14 วัน</string>

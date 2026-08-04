@@ -7,7 +7,6 @@
     <string name="upgrade_prompt_title">Անցնել BVM Pro-ին</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ավելի լավ արդյունքներ՝ գորունակություններ և հնարավորություններ հզոր ուժղատություն ունեցողների համար։</string>
     <string name="upgrade_prompt_upgrade_action">Թարմացնել</string>
-    <string name="upgrade_screen_title">Անցնել BVM Pro-ին</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager-ում գովազդներ չկան և ուժղատության տվյալներ չի վարարկում։ Մեր աշխատանքե ժղարգարվում ե դզեր կողմից։</string>
     <string name="upgrade_screen_why_title">Առավելություններ</string>
     <string name="upgrade_screen_subscription_trial_action">Սկսել անվճար 14 օրվա փորձարկումը</string>

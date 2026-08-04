@@ -7,7 +7,6 @@
     <string name="upgrade_prompt_title">Passer à BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro offre de meilleurs résultats, plus de fonctions et d’options pour les utilisateurs expérimentés.</string>
     <string name="upgrade_prompt_upgrade_action">Surclasser</string>
-    <string name="upgrade_screen_title">Passer à BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager n’affiche pas de publicités et ne vend pas les données des utilisateurs. Mon travail est financé par vous ❤️.</string>
     <string name="upgrade_screen_why_title">Avantages</string>
     <string name="upgrade_screen_subscription_trial_action">Commencer l’essai gratuit de 14 jours</string>
