@@ -3,17 +3,21 @@ package eu.darken.bluemusic.upgrade.core
 import eu.darken.bluemusic.common.WebpageTool
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
+import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.setupCommonEventHandlers
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.retryWhen
 import kotlinx.coroutines.flow.shareIn
 
@@ -35,29 +39,52 @@ class UpgradeRepoFoss @Inject constructor(
 
     private val refreshTrigger = MutableStateFlow(UUID.randomUUID())
 
-    override val upgradeInfo: Flow<UpgradeRepo.Info> = combine(
-        fossCache.upgrade.flow,
-        refreshTrigger
-    ) { data, _ ->
-        if (data == null) {
-            Info()
-        } else {
-            Info(
-                isPro = true,
-                upgradedAt = data.upgradedAt,
-                fossUpgradeType = data.upgradeType,
-            )
+    // Written only from the sharing coroutine (single collector) — no synchronization needed.
+    // Recorded INSIDE the flatMapLatest block, upstream of its channel buffer: a downstream onEach
+    // can still be waiting on a buffered emission when the inner flow throws, and the retry below
+    // would then read a stale (null) value and revoke an entitlement we already saw.
+    private var lastKnownInfo: Info? = null
+
+    // Integer, capped backoff: the old 2.0.pow(attempt) formula slept for hours and could overflow
+    // Long into a delay(negative) hot loop. Overridable so tests can drive the retry loop without
+    // sleeping through the real schedule.
+    internal var retryDelayMs: (attempt: Long) -> Long = { (30_000L * (it + 1)).coerceAtMost(300_000L) }
+
+    // Synthesis of the two shapes: the automatic retry loop stays (nothing calls refresh() while an
+    // error screen is open, so dropping it would strip the only recovery an idle user gets), but it
+    // moves INSIDE the flatMapLatest and gains last-known preservation. Consequences: a late read
+    // failure rides on the previously seen Info instead of revoking a supporter's entitlement, and
+    // refresh() now CANCELS an in-flight backoff delay and resubscribes immediately — where before
+    // a successful persist could take up to five minutes to reach collectors.
+    override val upgradeInfo: Flow<UpgradeRepo.Info> = refreshTrigger
+        .flatMapLatest {
+            fossCache.upgrade.flow
+                .map { data ->
+                    if (data == null) {
+                        Info()
+                    } else {
+                        Info(
+                            isPro = true,
+                            upgradedAt = data.upgradedAt,
+                            fossUpgradeType = data.upgradeType,
+                        )
+                    }
+                }
+                // Same coroutine as the throw below, so the ordering is guaranteed. Only
+                // successfully mapped elements pass here — retry emissions go straight downstream
+                // and never record themselves as a last known state.
+                .onEach { lastKnownInfo = it }
+                .retryWhen { error, attempt ->
+                    if (error is CancellationException) return@retryWhen false
+                    log(TAG, WARN) { "upgradeInfo read failed (attempt=$attempt): ${error.asLog()}" }
+                    emit((lastKnownInfo ?: Info()).copy(error = error))
+                    delay(retryDelayMs(attempt))
+                    true
+                }
         }
-    }
-        .setupCommonEventHandlers(TAG) { "upgradeInfo" }
+        // MainActivity refreshes on every resume: dedupe the identical re-emissions that produces.
         .distinctUntilChanged()
-        .retryWhen { error, attempt ->
-            emit(Info(error = error))
-            // Integer, capped backoff: the old 2.0.pow(attempt) formula slept for hours and could
-            // overflow Long into a delay(negative) hot loop.
-            delay((30_000L * (attempt + 1)).coerceAtMost(300_000L))
-            true
-        }
+        .setupCommonEventHandlers(TAG) { "upgradeInfo" }
         .shareIn(scope, SharingStarted.WhileSubscribed(3000L, 0L), replay = 1)
 
     // Synchronous so the caller learns whether the page actually opened: the FOSS unlock heuristic
@@ -91,6 +118,9 @@ class UpgradeRepoFoss @Inject constructor(
                 upgradeType = FossUpgrade.Type.GITHUB_SPONSORS,
             )
         }
+        // A returned transaction proves the store is readable again: revive a possibly error-stuck
+        // inner flow so the record propagates to collectors still holding the error replay.
+        refresh()
         return if (updated.old == null) {
             true
         } else {
