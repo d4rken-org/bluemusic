@@ -69,7 +69,7 @@
     <string name="upgrade_screen_offers_title">Upgrade options</string>
     <string name="upgrade_screen_offers_body">Both options unlock the exact same Pro features — pick whichever suits you.</string>
     <string name="upgrade_screen_offers_unavailable_title">Prices unavailable</string>
-    <string name="upgrade_screen_offers_unavailable_message">Google Play didn\'t return any prices right now. Give it a moment and tap retry.</string>
+    <string name="upgrade_screen_offers_unavailable_message">Prices couldn\'t be loaded right now. Check Google Play and try again in a moment.</string>
     <string name="upgrade_screen_benefits_body">• Unlimited devices\n• Custom connection actions\n• Theme customization\n• Advanced volume controls\n• Support future development ❤️</string>
     <string name="upgrade_screen_subscription_offer_title">Yearly subscription</string>
     <string name="upgrade_screen_subscription_offer_body">Starts with a free trial, then renews yearly. Cancel anytime in Google Play.</string>
