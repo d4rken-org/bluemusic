@@ -7,7 +7,6 @@
     <string name="upgrade_prompt_title">Обновить до BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro предлагает лучшие результаты, больше функций и опций для опытных пользователей.</string>
     <string name="upgrade_prompt_upgrade_action">Обновление</string>
-    <string name="upgrade_screen_title">Обновить до BVM Pro</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager не содержит рекламы и не продаёт данные пользователей. Моя работа финансируется вами ❤️.</string>
     <string name="upgrade_screen_why_title">Преимущества</string>
     <string name="upgrade_screen_subscription_trial_action">Начать 14-дневный бесплатный период</string>

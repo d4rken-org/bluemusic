@@ -10,7 +10,8 @@
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro offers better results, more features and options for power users.</string>
     <string name="upgrade_prompt_upgrade_action">Upgrade</string>
 
-    <string name="upgrade_screen_title">Upgrade to BVM Pro</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Upgrade to %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager has no ads and doesn\'t sell user data. My work is financed by you ❤️.</string>
     <string name="upgrade_screen_why_title">Advantages</string>
     <string name="upgrade_screen_subscription_trial_action">Start free 14-day trial</string>

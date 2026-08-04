@@ -43,7 +43,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -85,15 +84,42 @@ internal object UpgradeScreenTags {
     const val GPLAY_HEADER_ATTENTION = "upgrade_gplay_header_attention"
 }
 
-// Composed app title with the flavor postfix highlighted in the upgraded color while Pro is
-// active — the same treatment the dashboard title uses.
+// Composed app title with the flavor postfix highlighted while the upgrade is active — the same
+// "BVM Pro" the dashboard shows, in the theme's tertiary role instead of a raw brand hex.
+// Appended, not split out of a single composed string: a substring search would silently lose the
+// highlight in every locale whose translation words the composed name differently, while the short
+// brand name is untranslated and the postfix is its own resource in every locale.
 @Composable
 internal fun upgradeScreenTitle(upgraded: Boolean): AnnotatedString = buildAnnotatedString {
-    append(stringResource(R.string.app_name))
+    append(stringResource(R.string.app_name_short))
     append(" ")
-    if (upgraded) pushStyle(SpanStyle(color = colorResource(R.color.colorUpgraded)))
+    if (upgraded) pushStyle(SpanStyle(color = MaterialTheme.colorScheme.tertiary))
     append(stringResource(R.string.app_name_upgrade_postfix))
     if (upgraded) pop()
+}
+
+// Marker char for brand-title splicing: formatted into the translated pattern via the normal
+// Android format path (so %1$s vs %s, argument reordering, and %% all behave), then replaced
+// with the styled brand. U+FFFC (object replacement) cannot occur in a real translation.
+internal const val BRAND_TITLE_MARKER = "￼"
+
+internal fun spliceBrandTitle(formatted: String, brand: AnnotatedString): AnnotatedString = buildAnnotatedString {
+    var rest = formatted
+    var found = false
+    while (true) {
+        val idx = rest.indexOf(BRAND_TITLE_MARKER)
+        if (idx < 0) break
+        found = true
+        append(rest.substring(0, idx))
+        append(brand)
+        rest = rest.substring(idx + BRAND_TITLE_MARKER.length)
+    }
+    append(rest)
+    if (!found) {
+        // Defensive: a translation that lost its placeholder still shows the brand.
+        append(" ")
+        append(brand)
+    }
 }
 
 @Composable

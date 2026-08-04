@@ -7,7 +7,6 @@
     <string name="upgrade_prompt_title">Frissítés BVM Pro-ra</string>
     <string name="upgrade_prompt_body">A Bluetooth Volume Manager Pro jobb eredményeket, több funkciót és lehetőséget kínál a haladó felhasználóknak.</string>
     <string name="upgrade_prompt_upgrade_action">Frissítés</string>
-    <string name="upgrade_screen_title">Frissítés BVM Pro-ra</string>
     <string name="upgrade_screen_preamble">A Bluetooth Volume Manager nem tartalmaz hirdetéseket, és nem értékesít felhasználói adatokat. A munkámat te finanszírozód ❤️.</string>
     <string name="upgrade_screen_why_title">Előnyök</string>
     <string name="upgrade_screen_subscription_trial_action">Ingyenes 14 napos próbaidőszak indítása</string>
