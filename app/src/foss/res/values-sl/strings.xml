@@ -9,8 +9,6 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager nima oglasov in ne prodaja uporabniških podatkov. Nadaljnji razvoj je omogočen samo z vašo podporo.</string>
     <string name="upgrade_screen_how_title">Kako pomagati.</string>
     <string name="upgrade_screen_how_body">Postanite pokrovitelj in prispevajte k razvoju!  Dotaknite se spodnjega gumba, da omogočite dodatne funkcije in odprete moj pokroviteljski profil na GitHubu.</string>
-    <string name="upgrade_screen_why_title">V mešanici</string>
-    <string name="upgrade_screen_why_body">• Motiviran razvijalec 🧙\n• Neomejene naprave ➡️➡️\n• Dodatna dejanja ⚙️\nin več…</string>
     <string name="upgrade_screen_sponsor_action">Podpri razvoj</string>
     <string name="upgrade_screen_sponsor_action_hint">Druga možnost so oglasi, analitika in Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Hvala za podporo odprtokodnemu razvoju ❤️</string>

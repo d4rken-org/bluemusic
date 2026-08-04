@@ -9,8 +9,6 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager haina matangazo na haiuzi data ya mtumiaji. Maendeleo yanayoendelea yanawezeshwa tu na wewe.</string>
     <string name="upgrade_screen_how_title">Jinsi ya kusaidia</string>
     <string name="upgrade_screen_how_body">Kuwa mfumo na mfadhili wa maendeleo! Gusa kitufe kilicho hapa chini ili kuwezesha vipengele vyote vya ziada na kufungua wasifu wangu wa GitHub Sponsors.</string>
-    <string name="upgrade_screen_why_title">Katika mchanganyiko</string>
-    <string name="upgrade_screen_why_body">• Msanidi aliyehamasika 🧙\n• Vifaa visivyo na kikomo ➡️➡️\n• Vitendo vya ziada ⚙️\nna zaidi…</string>
     <string name="upgrade_screen_sponsor_action">Faidhi maendeleo</string>
     <string name="upgrade_screen_sponsor_action_hint">Mbadala ni matangazo, uchambuzi na Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Asante kwa kuunga mkono maendeleo ya chanzo wazi ❤️</string>

@@ -9,11 +9,6 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ला कोणतीही अॅड नाही आणि वापरकर्त्यांचा डेटा विकत नाही. सतत विकास केवळ तुमच्यामुळेही शक्य आहे.</string>
     <string name="upgrade_screen_how_title">कसे मदत करावी</string>
     <string name="upgrade_screen_how_body">प्रायोजक व्हा आणि विकासाला पाठिंबा द्या! सर्व अतिरिक्त वैशिष्ट्ये सक्रिय करण्यासाठी खालील बटण टॅप करा आणि माझे GitHub Sponsors प्रोफाइल उघडा.</string>
-    <string name="upgrade_screen_why_title">मिश्रणात</string>
-    <string name="upgrade_screen_why_body">• एक प्रेरित विकसक 🧙
-• अमर्यादित डिव्हाइसेस ➡️➡️
-• अतिरिक्त क्रिया ⚙️
-आणि बरेच काही…</string>
     <string name="upgrade_screen_sponsor_action">विकासाला पाठिंबा द्या</string>
     <string name="upgrade_screen_sponsor_action_hint">पर्याय म्हणजे अॅड, अॅनालिटिक्स आणि Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">ओपन-सोर्स विकासाला पाठिंबा दिल्याबद्दल धन्यवाद ❤️</string>

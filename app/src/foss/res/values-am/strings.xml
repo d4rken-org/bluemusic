@@ -9,11 +9,6 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ምንም እዋዀት ይረጋል፣ የተገባይ ውሂብንነም አይሸጥም። የተቆተቀወ ቅብት በእርስዎን ብቼድ ይተቀጥላል።</string>
     <string name="upgrade_screen_how_title">እንዴት መርዳት እንደሚችሉ</string>
     <string name="upgrade_screen_how_body">ደጋፊ ይሁኑ እና ልማትን ይደግፉ! ሁሉንም ተጨማሪ ባህሪያት ለማንቃት እና የእኔን GitHub Sponsors መገለጫ ለመክፈት ከታች ያለውን ቁልፍ ይንኩ።</string>
-    <string name="upgrade_screen_why_title">በባልት መካከል</string>
-    <string name="upgrade_screen_why_body">• የተጠቀየ ማድርግዬ 🧙
-• ምንም አይኖን መሣሪያዎች ➡️➡️
-• ✏✏✏✏ ✏✏✏ ⚙️
-እና ይጀምሮ...</string>
     <string name="upgrade_screen_sponsor_action">ልማትን ይደግፉ</string>
     <string name="upgrade_screen_sponsor_action_hint">አማራጩ ማስታወቂያዎች፣ ትንታኔዎች እና Google Play ናቸው 🙁</string>
     <string name="upgrade_screen_thanks_toast">ክፍት ምንጭ ልማትን ስለደገፉ እናመሰግናለን ❤️</string>

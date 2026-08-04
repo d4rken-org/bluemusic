@@ -9,11 +9,6 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ບ່ມີໂຆສນາແລະບ່ຂາຍຂ້ອມູນຜູ້ໃຊ້. ການພັດທນາຕ່ອເນື່ອງເປັນໄປໄດ້ໂດຍມີທ່ານເທ່ານັ້ນ.</string>
     <string name="upgrade_screen_how_title">ວິທີການຊ່ວຍເຫຼືອ</string>
     <string name="upgrade_screen_how_body">ກາຍເປັນຜູ້ອຸປະຖໍາ ແລະ ໃຫ້ການສະໜັບສະໜູນການພັດທະນາ! ກົດປຸ່ມຂ້າງລຸ່ມເພື່ອເປີດໃຊ້ງານຄຸນສົມບັດເພີ່ມເຕີມທັງໝົດ ແລະ ເປີດໂປຣໄຟລ໌ GitHub Sponsors ຂອງຂ້ອຍ.</string>
-    <string name="upgrade_screen_why_title">ໃນວົງຈອນ</string>
-    <string name="upgrade_screen_why_body">• ນ଱ກພັດທນາທີ່ມີແຣງຈູງໃຈ ༉
-• ອຸປກອນໄດ້ໄມ່ຈຳກັດ ➡️➡️
-• ການກຳໄວ້ເພິ່ມເຕີມ ⚙️
-ແລະອື່ນຢົ່ວ…</string>
     <string name="upgrade_screen_sponsor_action">ສະໜັບສະໜູນການພັດທະນາ</string>
     <string name="upgrade_screen_sponsor_action_hint">ທາງເລືອກແມ່ນໂຄສະນາ, ການວິເຄາະ ແລະ Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">ຂອບໃຈສໍາລັບການສະໜັບສະໜູນການພັດທະນາແຫຼ່ງເປີດ ❤️</string>

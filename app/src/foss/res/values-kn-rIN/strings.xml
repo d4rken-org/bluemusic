@@ -9,11 +9,6 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ಜಾಹೀರಾತುಗಳಿಲ್ಲ ಮತ್ತು ಬಳಕೆದಾರರ ಡೇಟಾ ಮಾರಾಟುವುದಿಲ್ಲ. ನಿಮ್ಮಿಂದ ಮಾತ್ರ ನಿರಂತರ ಅಭಿವರ್ಧನೆ ಸಾಧ್ಯ.</string>
     <string name="upgrade_screen_how_title">ಸಹಾಯ ಮಾಡುವ ವಿಧಾನ</string>
     <string name="upgrade_screen_how_body">ಪ್ರಾಯೋಜಕರಾಗಿ ಅಭಿವರ್ಧನೆಯನ್ನು ಬೆಂಬಲಿಸಿ! ಎಲ್ಲಾ ಹೆಚ್ಚಿನ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ಮತ್ತು ನನ್ನ GitHub Sponsors ಪ್ರೋಫೈಲ್ ತೆರೆಯಲು ಕೆಳಗಿನ ಬಟನ ಟ್ಯಾಪ್ ಮಾಡಿ.</string>
-    <string name="upgrade_screen_why_title">ಮಿಶ್ರಣದಲ್ಲಿ</string>
-    <string name="upgrade_screen_why_body">• ಪ್ರೇರಿತ ಅಭಿವರ್ಧಕ 🧙
-• ಸಿಮಿತವಿಲ್ಲದ ಸಾಧನಗಳು ➡️➡️
-• ಹೆಚ್ಚಿನ ಕಾರ್ಯಗಳು ⚙️
-ಮತ್ತು ಇನ್ನಂತಃ…</string>
     <string name="upgrade_screen_sponsor_action">ಅಭಿವರ್ಧನೆಗೆ ಪ್ರಾಯೋಜಕತವನ್ನು ನೀಡಿ</string>
     <string name="upgrade_screen_sponsor_action_hint">ಪರ್ಯಾಯ ಜಾಹೀರಾತುಗಳು, ವಿಶ್ಲೇಷಣೆ ಮತ್ತು Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">ಓಪನ್-ಸೋರ್ಸ್ ಅಭಿವರ್ಧನೆಗೆ ಬೆಂಬಲಿಸಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು ❤️</string>
