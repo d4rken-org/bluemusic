@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.devices.ui.dashboard
 
+import android.app.Activity
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDeviceWrapper
@@ -9,6 +10,7 @@ import eu.darken.bluemusic.common.datastore.DataStoreValue
 import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.permissions.PermissionHelper
+import eu.darken.bluemusic.common.review.ReviewTool
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.DeviceRepo
@@ -18,6 +20,7 @@ import eu.darken.bluemusic.devices.core.NewDeviceCreator
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.main.core.GeneralSettings
 import io.kotest.matchers.shouldBe
+import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
@@ -54,6 +57,8 @@ class DashboardViewModelTest : BaseTest() {
 
     private lateinit var deviceCreator: NewDeviceCreator
     private lateinit var speakerProvider: SpeakerDeviceProvider
+    private lateinit var reviewTool: ReviewTool
+    private lateinit var reviewStates: MutableStateFlow<ReviewTool.State>
 
     private lateinit var batteryHintDismissed: DataStoreValue<Boolean>
     private lateinit var android10HintDismissed: DataStoreValue<Boolean>
@@ -75,6 +80,15 @@ class DashboardViewModelTest : BaseTest() {
         deviceCreator = mockk(relaxed = true)
         speakerProvider = mockk(relaxed = true)
         every { speakerProvider.address } returns SPEAKER_ADDR
+
+        // Explicit, never relaxed: a relaxed ReviewTool would hand out an empty state flow and
+        // silently turn every "the card is shown" assertion into a false negative.
+        reviewStates = MutableStateFlow(ReviewTool.State())
+        reviewTool = mockk<ReviewTool>().apply {
+            every { state } returns reviewStates
+            coJustRun { dismiss() }
+            coJustRun { reviewNow(any()) }
+        }
 
         devicesFlow = MutableStateFlow(emptyList())
         every { deviceRepo.devices } returns devicesFlow
@@ -133,6 +147,7 @@ class DashboardViewModelTest : BaseTest() {
         devicesSettings = devicesSettings,
         deviceCreator = deviceCreator,
         speakerProvider = speakerProvider,
+        reviewTool = reviewTool,
         dispatcherProvider = TestDispatcherProvider(UnconfinedTestDispatcher(testScheduler)),
         navCtrl = navCtrl,
         appRepo = appRepo,
@@ -339,6 +354,84 @@ class DashboardViewModelTest : BaseTest() {
 
         coVerify { speakerHintDismissed.update(capture(updateSlot)) }
         updateSlot.captured(false) shouldBe true
+    }
+
+    /**
+     * Every gate the review card sits behind, satisfied at once. The negative tests below each flip
+     * exactly one of them, so a gate that silently stops mattering surfaces as a failure.
+     */
+    private fun quietDashboard() {
+        every { bluetoothRepo.state } returns MutableStateFlow(
+            BluetoothRepo.State(isEnabled = true, hasPermission = true, devices = emptySet())
+        )
+        every { permissionHelper.getBatteryOptimizationHint(any()) } returns
+                PermissionHelper.PermissionHint(shouldShow = false)
+        every { permissionHelper.getOverlayPermissionHint(any(), any()) } returns
+                PermissionHelper.PermissionHint(shouldShow = false)
+        every { permissionHelper.getNotificationPermissionHint(any()) } returns
+                PermissionHelper.PermissionHint(shouldShow = false)
+        every { permissionHelper.getDndAccessHint(any(), any()) } returns
+                PermissionHelper.PermissionHint(shouldShow = false)
+        // The shared fixture leaves the speaker hint active as soon as a device exists.
+        every { speakerHintDismissed.flow } returns MutableStateFlow(true)
+        devicesFlow.value = listOf(device())
+        reviewStates.value = ReviewTool.State(shouldAskForReview = true)
+    }
+
+    @Test
+    fun `the review card shows on a quiet dashboard`() = runTest(UnconfinedTestDispatcher()) {
+        quietDashboard()
+
+        viewModel().state.filterNotNull().first().showReviewCard shouldBe true
+    }
+
+    @Test
+    fun `the review card yields to a permission hint`() = runTest(UnconfinedTestDispatcher()) {
+        quietDashboard()
+        every { permissionHelper.getNotificationPermissionHint(any()) } returns
+                PermissionHelper.PermissionHint(shouldShow = true)
+
+        viewModel().state.filterNotNull().first().showReviewCard shouldBe false
+    }
+
+    @Test
+    fun `the review card stays hidden while bluetooth is off`() = runTest(UnconfinedTestDispatcher()) {
+        quietDashboard()
+        every { bluetoothRepo.state } returns MutableStateFlow(
+            BluetoothRepo.State(isEnabled = false, hasPermission = true, devices = emptySet())
+        )
+
+        viewModel().state.filterNotNull().first().showReviewCard shouldBe false
+    }
+
+    @Test
+    fun `the review card stays hidden without any managed device`() = runTest(UnconfinedTestDispatcher()) {
+        quietDashboard()
+        devicesFlow.value = emptyList()
+
+        viewModel().state.filterNotNull().first().showReviewCard shouldBe false
+    }
+
+    @Test
+    fun `dismissing the review card delegates to the review tool`() = runTest(UnconfinedTestDispatcher()) {
+        viewModel().reviewDismiss()
+        advanceUntilIdle()
+
+        coVerify { reviewTool.dismiss() }
+    }
+
+    @Test
+    fun `the review action forwards the hosting activity unchanged`() = runTest(UnconfinedTestDispatcher()) {
+        val activity = mockk<Activity>()
+        val activitySlot = slot<Activity>()
+
+        viewModel().reviewNow(activity)
+        advanceUntilIdle()
+
+        // Play's flow is launched on whatever Activity the screen handed over, a substitute would
+        // put the review dialog on the wrong window.
+        coVerify { reviewTool.reviewNow(capture(activitySlot)) }
+        activitySlot.captured shouldBe activity
     }
 
     companion object {
