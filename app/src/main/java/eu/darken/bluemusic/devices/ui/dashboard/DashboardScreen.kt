@@ -75,12 +75,15 @@ import eu.darken.bluemusic.devices.ui.dashboard.rows.DeviceSpeakerHintCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.DndAccessHintCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.EmptyDevicesCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.NotificationPermissionHintCard
+import eu.darken.bluemusic.devices.ui.dashboard.rows.ReviewCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.device.ManagedDeviceItem
 
 @Composable
 fun DevicesScreenHost(vm: DashboardViewModel = hiltViewModel()) {
 
     val state by vm.state.collectAsStateWithLifecycle()
+
+    val activity = LocalContext.current as? android.app.Activity
 
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission()
@@ -109,6 +112,8 @@ fun DevicesScreenHost(vm: DashboardViewModel = hiltViewModel()) {
             onRequestBluetoothPermission = {
                 vm.action(DashboardAction.RequestBluetoothPermission)
             },
+            onReview = activity?.let { { vm.reviewNow(it) } },
+            onReviewDismiss = { vm.reviewDismiss() },
         )
     }
 }
@@ -122,6 +127,8 @@ fun DevicesScreen(
     onNavigateToSettings: () -> Unit,
     onNavigateToUpgrade: () -> Unit,
     onRequestBluetoothPermission: () -> Unit,
+    onReview: (() -> Unit)? = null,
+    onReviewDismiss: () -> Unit = {},
 ) {
     val listState = rememberLazyListState()
     val isScrolledDown by remember {
@@ -231,6 +238,15 @@ fun DevicesScreen(
                     DeviceSpeakerHintCard(
                         onDismiss = { onDeviceAction(DashboardAction.DismissSpeakerHint) },
                         onAdd = { onDeviceAction(DashboardAction.AddSpeakerDevice) }
+                    )
+                }
+            }
+
+            if (state.showReviewCard) {
+                item {
+                    ReviewCard(
+                        onReview = onReview,
+                        onDismiss = onReviewDismiss
                     )
                 }
             }
