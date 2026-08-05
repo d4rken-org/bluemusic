@@ -24,6 +24,7 @@ import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 import java.io.IOException
 import java.time.Instant
+import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.atomic.AtomicInteger
 
 class UpgradeRepoFossTest : BaseTest() {
@@ -206,6 +207,121 @@ class UpgradeRepoFossTest : BaseTest() {
                     isPro shouldBe true
                     error shouldBe null
                 }
+            }
+        } finally {
+            scope.cancel()
+        }
+    }
+
+    @Test
+    fun `a second failure episode surfaces its own error`(): Unit = runBlocking {
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+        try {
+            // Fail, recover, fail again, recover - all within ONE inner subscription chain. The
+            // library's retry attempt counter never resets on a successful emission, so gating on it
+            // would leave the second episode completely silent: the UI would never learn.
+            val subscriptions = AtomicInteger(0)
+            val upgradeValue = createUpgradeValue(flow {
+                when (subscriptions.getAndIncrement()) {
+                    0 -> throw IOException("cache broken")
+                    1 -> {
+                        emit(record)
+                        throw IOException("cache broken again")
+                    }
+
+                    else -> emit(record)
+                }
+            })
+            val repo = createRepo(scope, upgradeValue)
+            repo.retryDelayMs = { 10L }
+
+            val received = Channel<UpgradeRepo.Info>(Channel.UNLIMITED)
+            scope.launch { repo.upgradeInfo.collect { received.send(it) } }
+
+            withTimeout(10_000) {
+                val infos = mutableListOf<UpgradeRepo.Info>()
+
+                // Episode 1: the very first read fails.
+                infos.add(received.receive())
+                infos[0].error.shouldBeInstanceOf<IOException>()
+
+                // Recovery, then the read that starts episode 2.
+                infos.add(received.receive())
+                infos[1].apply {
+                    isPro shouldBe true
+                    error shouldBe null
+                }
+
+                // Episode 2 has to report itself too. It rides lastKnownInfo, so the entitlement
+                // seen right before it survives the failure.
+                infos.add(received.receive())
+                infos[2].apply {
+                    error.shouldBeInstanceOf<IOException>()
+                    isPro shouldBe true
+                }
+
+                // And the loop keeps healing afterwards.
+                infos.add(received.receive())
+                infos[3].apply {
+                    isPro shouldBe true
+                    error shouldBe null
+                }
+
+                // Exactly one error report per episode: neither muted nor re-raised per wake-up.
+                infos.count { it.error != null } shouldBe 2
+            }
+        } finally {
+            scope.cancel()
+        }
+    }
+
+    @Test
+    fun `each failure episode reports once and backs off from scratch`(): Unit = runBlocking {
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+        try {
+            // Fail, fail, recover-then-fail: two consecutive failures make one episode, the healthy
+            // read in between ends it.
+            val subscriptions = AtomicInteger(0)
+            val upgradeValue = createUpgradeValue(flow {
+                when (subscriptions.getAndIncrement()) {
+                    0, 1 -> throw IOException("cache broken")
+                    2 -> {
+                        emit(record)
+                        throw IOException("cache broken again")
+                    }
+
+                    else -> emit(record)
+                }
+            })
+            val repo = createRepo(scope, upgradeValue)
+            // Every backoff index the loop asks for, in order. Written from the sharing coroutine
+            // and read from the test one.
+            val backoffIndices = CopyOnWriteArrayList<Long>()
+            repo.retryDelayMs = { attempt ->
+                backoffIndices.add(attempt)
+                10L
+            }
+
+            val received = Channel<UpgradeRepo.Info>(Channel.UNLIMITED)
+            scope.launch { repo.upgradeInfo.collect { received.send(it) } }
+
+            withTimeout(10_000) {
+                val infos = List(4) { received.receive() }
+
+                // Both episode-1 failures really happened, yet only the first one reached a
+                // collector - a per-attempt emission would re-raise the error dialog on every
+                // backoff wake-up.
+                infos.take(2).count { it.error != null } shouldBe 1
+                infos[1].apply {
+                    isPro shouldBe true
+                    error shouldBe null
+                }
+                infos[2].error.shouldBeInstanceOf<IOException>()
+
+                // The escalating index restarts at 0 for episode 2. Reading the library's own
+                // attempt parameter instead would have asked for index 2 here, i.e. resumed the
+                // backoff at an already escalated delay.
+                backoffIndices.toList() shouldBe listOf(0L, 1L, 0L)
             }
         } finally {
             scope.cancel()
