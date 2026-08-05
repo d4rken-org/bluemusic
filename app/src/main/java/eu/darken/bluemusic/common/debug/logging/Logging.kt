@@ -63,8 +63,10 @@ object Logging {
     }
 
     fun remove(logger: Logger) {
-        log(TAG, INFO) { "Removing: $logger" }
+        // Deregister first: a logger being torn down still receives anything we log before that, and
+        // if it throws on that line it would stay installed forever.
         synchronized(internalLoggers) { internalLoggers.remove(logger) }
+        log(TAG, INFO) { "Removed: $logger" }
     }
 
     fun logInternal(

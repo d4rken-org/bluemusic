@@ -40,3 +40,13 @@ fun Throwable.getStackTraceString(): String {
 
 fun Throwable.tryUnwrap(kClass: KClass<RuntimeException> = RuntimeException::class): Throwable =
     if (!kClass.isInstance(this)) this else cause ?: this
+
+/**
+ * Attaches a secondary failure to the one being reported. Cleanup can hand back the very throwable
+ * it is cleaning up after — a recorder broken in one way throws it on the start line and again on
+ * the teardown line — and [Throwable.addSuppressed] rejects self-suppression with an
+ * [IllegalArgumentException], which would abort the cleanup before the failure is ever reported.
+ */
+fun Throwable.addSuppressedSafely(other: Throwable) {
+    if (this !== other) addSuppressed(other)
+}
