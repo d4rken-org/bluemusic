@@ -21,12 +21,29 @@ import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
+import eu.darken.bluemusic.common.debug.logging.asLog
+import eu.darken.bluemusic.common.debug.logging.log
+import eu.darken.bluemusic.common.debug.logging.logTag
 
 @Composable
 fun ErrorDialog(throwable: Throwable, onDismiss: () -> Unit) {
     val context = LocalContext.current
     val activity = context as? Activity
     val localizedError = throwable.localized(context)
+
+    fun dispatchAndDismiss(action: (Activity) -> Unit) {
+        // Error actions are arbitrary third-party code (intent launches, navigation): a throw here
+        // would crash the UI thread from inside a click handler, and skipping onDismiss() would
+        // leave the dialog latched on the current error with no way out.
+        try {
+            activity?.let(action)
+        } catch (e: Exception) {
+            log(TAG, ERROR) { "Error action failed: ${e.asLog()}" }
+        } finally {
+            onDismiss()
+        }
+    }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -50,7 +67,7 @@ fun ErrorDialog(throwable: Throwable, onDismiss: () -> Unit) {
         confirmButton = {
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
                 localizedError.infoAction?.let { action ->
-                    TextButton(onClick = { activity?.let { action.invoke(it) } }) {
+                    TextButton(onClick = { dispatchAndDismiss(action) }) {
                         Text(
                             localizedError.infoActionLabel?.get(context)
                                 ?: stringResource(R.string.general_show_details_action)
@@ -64,12 +81,7 @@ fun ErrorDialog(throwable: Throwable, onDismiss: () -> Unit) {
                         Text(stringResource(R.string.general_dismiss_action))
                     }
                     Spacer(modifier = Modifier.width(8.dp))
-                    TextButton(
-                        onClick = {
-                            activity?.let { action.invoke(it) }
-                            onDismiss()
-                        }
-                    ) {
+                    TextButton(onClick = { dispatchAndDismiss(action) }) {
                         Text(
                             localizedError.fixActionLabel?.get(context)
                                 ?: stringResource(android.R.string.ok)
@@ -83,6 +95,8 @@ fun ErrorDialog(throwable: Throwable, onDismiss: () -> Unit) {
         }
     )
 }
+
+private val TAG = logTag("Error", "Dialog")
 
 @Preview2
 @Composable
