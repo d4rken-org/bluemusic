@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.devices.ui.dashboard
 
+import android.app.Activity
 import android.content.Intent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
@@ -13,6 +14,7 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.permissions.PermissionHelper
+import eu.darken.bluemusic.common.review.ReviewTool
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.common.upgrade.isProForUi
@@ -30,6 +32,7 @@ import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -47,6 +50,7 @@ class DashboardViewModel @Inject constructor(
     private val devicesSettings: DevicesSettings,
     private val deviceCreator: NewDeviceCreator,
     private val speakerProvider: SpeakerDeviceProvider,
+    private val reviewTool: ReviewTool,
     dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
     appRepo: AppRepo,
@@ -139,7 +143,16 @@ class DashboardViewModel @Inject constructor(
         dndAccessHintFlow,
         devicesSettings.lockedDevices.flow,
         generalSettings.isSpeakerHintDismissed.flow,
-    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint, dndHint, lockedDevices, speakerHintDismissed ->
+        // The review prompt is a nice-to-have: a failing review backend must never take the whole
+        // dashboard down with it, so it falls back to "don't ask".
+        reviewTool.state.catch { e ->
+            if (e is kotlinx.coroutines.CancellationException) throw e
+            emit(ReviewTool.State())
+        },
+    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint, dndHint, lockedDevices, speakerHintDismissed, review ->
+        val showSpeakerHint = !speakerHintDismissed &&
+            devicesWithApps.any { it.device.type != SourceDevice.Type.PHONE_SPEAKER } &&
+            devicesWithApps.none { it.device.type == SourceDevice.Type.PHONE_SPEAKER }
         State(
             isProVersion = upgradeInfo.isPro,
             isBluetoothEnabled = bluetoothState.isEnabled,
@@ -153,9 +166,18 @@ class DashboardViewModel @Inject constructor(
             showNotificationPermissionHint = notificationHint.shouldShow,
             showDndAccessHint = dndHint.shouldShow,
             dndAccessIntent = dndHint.intent,
-            showSpeakerHint = !speakerHintDismissed &&
-                devicesWithApps.any { it.device.type != SourceDevice.Type.PHONE_SPEAKER } &&
-                devicesWithApps.none { it.device.type == SourceDevice.Type.PHONE_SPEAKER },
+            showSpeakerHint = showSpeakerHint,
+            // Lowest priority card: only asked for on an otherwise quiet dashboard, i.e. no hint or
+            // permission card is competing for attention and the user actually has devices set up.
+            showReviewCard = review.shouldAskForReview &&
+                bluetoothState.hasPermission &&
+                bluetoothState.isEnabled &&
+                !batteryHint.shouldShow &&
+                !overlayHint.shouldShow &&
+                !dndHint.shouldShow &&
+                !notificationHint.shouldShow &&
+                !showSpeakerHint &&
+                devicesWithApps.isNotEmpty(),
         )
     }.asStateFlow()
 
@@ -179,6 +201,7 @@ class DashboardViewModel @Inject constructor(
         val showDndAccessHint: Boolean = false,
         val dndAccessIntent: Intent? = null,
         val showSpeakerHint: Boolean = false,
+        val showReviewCard: Boolean = false,
     ) {
         // Convenience property for backwards compatibility
         val devices: List<ManagedDevice> get() = devicesWithApps.map { it.device }
@@ -190,6 +213,18 @@ class DashboardViewModel @Inject constructor(
     fun onUpgradeClicked() = launch {
         log(tag) { "onUpgradeClicked()" }
         navTo(Nav.Main.Upgrade(manage = upgradeRepo.isProForUi()))
+    }
+
+    // Play's in-app review flow needs the hosting Activity, which never belongs in a [DashboardAction]
+    // value. Kept symmetrical with its dismiss counterpart, same shape as [onUpgradeClicked].
+    fun reviewNow(activity: Activity) = launch {
+        log(tag) { "reviewNow($activity)" }
+        reviewTool.reviewNow(activity)
+    }
+
+    fun reviewDismiss() = launch {
+        log(tag) { "reviewDismiss()" }
+        reviewTool.dismiss()
     }
 
     fun action(action: DashboardAction) = launch {
