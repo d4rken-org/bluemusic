@@ -34,23 +34,39 @@ class DashboardScreenReviewTest : BaseComposeRobolectricTest() {
         showReviewCard = true,
     )
 
+    // Two compositions, not one: the card latches its tap targets against the review/dismiss race,
+    // so a single card can only ever report one of the two actions.
     @Test
-    fun `both review actions reach the screen callbacks`() {
+    fun `the review action reaches the screen callback`() {
         var reviewed = 0
-        var dismissed = 0
         composeRule.setContent {
             PreviewWrapper {
                 DashboardScreenUnderTest(
                     onReview = { reviewed++ },
-                    onReviewDismiss = { dismissed++ },
+                    onReviewDismiss = {},
                 )
             }
         }
 
         composeRule.onNodeWithText(reviewAction).performClick()
-        composeRule.onNodeWithText(dismissAction).performClick()
 
         reviewed shouldBe 1
+    }
+
+    @Test
+    fun `the dismiss action reaches the screen callback`() {
+        var dismissed = 0
+        composeRule.setContent {
+            PreviewWrapper {
+                DashboardScreenUnderTest(
+                    onReview = {},
+                    onReviewDismiss = { dismissed++ },
+                )
+            }
+        }
+
+        composeRule.onNodeWithText(dismissAction).performClick()
+
         dismissed shouldBe 1
     }
 
