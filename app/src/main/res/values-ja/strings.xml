@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">管理されていないデバイスが見つかりません</string>
     <string name="discover_all_devices_managed_msg">ペアリングされたデバイスはすべて管理されています！新しいのが必要ですか？</string>
     <string name="discover_pair_new_device_action">新しいデバイスをペアリング</string>
+    <string name="discover_device_speaker_desc">この電話自体のスピーカー。Bluetooth デバイスが切断された後など、オーディオが電話に戻されるとき、そのボリュームが適用されます。</string>
     <!-- Devices -->
     <string name="devices_device_config_label">デバイス設定</string>
     <string name="devices_device_config_section_general_label">一般</string>
@@ -311,6 +312,7 @@
     <string name="label_add_device">デバイスを追加</string>
     <string name="label_just_a_moment_please">少々お待ちください。</string>
     <string name="label_notification_channel_status">状態</string>
+    <string name="monitor_notification_starting">起動中…</string>
     <string name="action_set">セット</string>
     <string name="action_cancel">キャンセル</string>
     <string name="label_invalid_input">無効な入力</string>
@@ -385,6 +387,7 @@
     <string name="general_delete_action">削除</string>
     <string name="general_cancel_action">キャンセル</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_progress_loading">読み込み中…</string>
     <string name="general_configure_action">設定</string>
     <string name="battery_optimization_hint_title">バッテリー最適化</string>
     <string name="battery_optimization_hint_message">バッテリー最適化が有効になっており、正常な動作を妨げる可能性があります。無効にすることを検討してください。</string>
@@ -396,6 +399,12 @@
     <string name="dnd_access_hint_title">サイレントモードへのアクセス</string>
     <string name="dnd_access_hint_message">サイレントモードへのアクセスがないと、デバイスの接続時に着信音、通知、DND モードの設定が適用されません。</string>
     <string name="dnd_access_fix_action">アクセスを許可</string>
+    <string name="device_speaker_hint_title">切断後のボリューム</string>
+    <string name="device_speaker_hint_message">Bluetooth デバイスが切断されたときにボリュームを復元したいですか？「デバイススピーカー」を管理対象デバイスとして追加すると、オーディオが電話に戻されるとき、そのボリュームが適用されます。</string>
+    <string name="device_speaker_hint_action">追加</string>
+    <string name="review_app_body">BVMをレビューしませんか？ ❤️</string>
+    <string name="review_app_review_action">レビュー</string>
+    <string name="review_app_dismiss_action">また後で</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">購入がキャンセルされました</string>
     <string name="error_iap_unavailable_message">アプリ内購入が利用できません</string>

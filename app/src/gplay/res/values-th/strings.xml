@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">อัปเกรดเป็น BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ให้ผลลัพธ์ที่ดีกว่า ฟีเจอร์เพิ่มเติม และตัวเลือกสำหรับผู้ใช้ขั้นสูง</string>
     <string name="upgrade_prompt_upgrade_action">อัปเกรด</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">อัปเกรดเป็น %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ไม่มีโฆษณาและไม่ขายข้อมูลผู้ใช้ งานของฉันได้รับการสนับสนุนทางการเงินจากคุณ ❤️</string>
     <string name="upgrade_screen_why_title">ข้อดี</string>
     <string name="upgrade_screen_subscription_trial_action">เริ่มทดลองใช้ฟรี 14 วัน</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">ไม่สามารถเชื่อมต่อกับ Google Play โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณและลองอีกครั้ง</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ไม่พร้อมใช้งาน</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ไม่สามารถเชื่อมต่อกับ Google Play ได้ Google Play ได้รับการติดตั้งและอัปเดตแล้วหรือไม่? บัญชี Google ของคุณเข้าสู่ระบบแล้วหรือไม่? ลองล้างแคชของแอป Google Play และรีบูตอุปกรณ์ของคุณ</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">ไม่สามารถเปิด Google Play ได้ แอปอาจหายไป ปิดใช้งาน หรือถูกจำกัดบนอุปกรณ์นี้</string>
     <string name="upgrades_no_purchases_found_check_account">ไม่พบการซื้อ คุณใช้บัญชีที่ถูกต้องหรือไม่?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">ตัวเลือกอัปเกรด</string>
+    <string name="upgrade_screen_offers_body">ตัวเลือกทั้งสองปลดล็อกฟีเจอร์ Pro เดียวกัน — เลือกตัวเลือกใดก็ได้ที่เหมาะกับคุณ</string>
+    <string name="upgrade_screen_offers_unavailable_title">ไม่พบราคา</string>
+    <string name="upgrade_screen_offers_unavailable_message">ราคาไม่สามารถโหลดได้ในขณะนี้ ตรวจสอบ Google Play และลองอีกครั้งในอีกสักครู่</string>
+    <string name="upgrade_screen_benefits_body">• อุปกรณ์ไม่จำกัด\n• การดำเนินการเชื่อมต่อที่กำหนดเอง\n• ปรับแต่งธีม\n• ตัวควบคุมระดับเสียงขั้นสูง\n• สนับสนุนการพัฒนาในอนาคต ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">การสมัครสมาชิกรายปี</string>
+    <string name="upgrade_screen_subscription_offer_body">เริ่มต้นด้วยการทดลองใช้ฟรี จากนั้นต่ออายุรายปี คุณสามารถยกเลิกได้ตลอดเวลาใน Google Play</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">ต่ออายุรายปี คุณสามารถยกเลิกได้ตลอดเวลาใน Google Play</string>
+    <string name="upgrade_screen_iap_offer_title">ปลดล็อกตลอดชีวิต</string>
+    <string name="upgrade_screen_iap_offer_body">จ่ายเพียงครั้งเดียวและเป็นเจ้าของ Pro ตลอดไป</string>
+    <string name="upgrade_screen_owned_hero_title">คุณเป็น Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">คุณเป็นเจ้าของ %1$s ตลอดไป</string>
+    <string name="upgrade_screen_owned_hero_sub_body">การสมัครสมาชิก %1$s ของคุณใช้งานได้</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">การสมัครสมาชิกของคุณไม่ได้ตั้งค่าให้ต่ออายุ ดังนั้นคุณสามารถเปลี่ยนไปเป็นการซื้อครั้งเดียวได้แล้ว โปรดทราบ: เป็นการเรียกเก็บเงินแยกต่างหากซึ่งจะไม่ยกเลิกหรือคืนเงินการสมัครสมาชิกของคุณ ดังนั้นให้ใช้บัญชี Google เดียวกันสำหรับทั้งสองแบบ</string>
+    <string name="upgrade_screen_owned_iap_locked_note">ยกเลิกการสมัครสมาชิกที่ต่ออายุของคุณใน Google Play ก่อน จากนั้นคุณสามารถเปลี่ยนไปเป็นการซื้อครั้งเดียว</string>
+    <string name="upgrade_screen_restore_body">ซื้อ Pro แล้วบนบัญชีนี้หรือ? ขอให้ Google Play ตรวจสอบการซื้อของคุณอีกครั้ง</string>
+    <string name="upgrade_screen_restore_checked_message">เราขอให้ Google Play ตรวจสอบการซื้อของบัญชีนี้อีกครั้งและไม่พบการซื้อใดๆ</string>
+    <string name="upgrade_screen_restore_contact_hint">ยังติดอยู่? ติดต่อจากบัญชี Google เดียวกันที่คุณซื้อด้วย แสดงหมายเลขการสั่งซื้อ Google Play ของคุณ และเราจะแก้ไขให้คุณ</string>
+    <string name="upgrade_screen_restore_inconclusive_message">เราไม่สามารถเสร็จสิ้นการตรวจสอบกับ Google Play ได้ทันเวลา ดังนั้นเรายังไม่ทราบสถานะการซื้อของคุณ — รอสักครู่แล้วลองอีกครั้ง</string>
+    <string name="upgrades_gplay_billing_error_label">ปัญหาการซื้อ</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play รายงานปัญหา: %1$s ลองอีกครั้งในภายหลังหรือเปิดอุปกรณ์ของคุณใหม่</string>
+    <string name="upgrades_gplay_offer_unavailable_title">ไม่พบข้อเสนอ</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play ไม่ได้นำเสนอรายการนี้ในขณะนี้ อาจยังไม่พร้อมสำหรับบัญชีหรือภูมิภาคของคุณ — โปรดลองอีกครั้งในภายหลัง</string>
 </resources>

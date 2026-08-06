@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Aucun périphérique non géré trouvé</string>
     <string name="discover_all_devices_managed_msg">Tous vos appareils appairés sont gérés ! Besoin d\'un nouveau ?</string>
     <string name="discover_pair_new_device_action">Appairer un nouvel appareil</string>
+    <string name="discover_device_speaker_desc">Le haut-parleur propre de ce téléphone. Ses volumes sont appliqués lorsque l\'audio revient au téléphone, par exemple après la déconnexion de votre appareil Bluetooth.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Configuration du périphérique</string>
     <string name="devices_device_config_section_general_label">Général</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Ajouter un périphérique</string>
     <string name="label_just_a_moment_please">Un instant, s\'il vous plaît.</string>
     <string name="label_notification_channel_status">État</string>
+    <string name="monitor_notification_starting">Démarrage…</string>
     <string name="action_set">Définir</string>
     <string name="action_cancel">Annuler</string>
     <string name="label_invalid_input">Entrée invalide</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Supprimer</string>
     <string name="general_cancel_action">Annuler</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Fermer</string>
+    <string name="general_progress_loading">Chargement…</string>
     <string name="general_configure_action">Configurer</string>
     <string name="battery_optimization_hint_title">Optimisation de la batterie</string>
     <string name="battery_optimization_hint_message">Les optimisations de batterie sont activées et peuvent empêcher le bon fonctionnement. Envisagez de les désactiver.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Accès Ne pas déranger</string>
     <string name="dnd_access_hint_message">Sans accès Ne pas déranger, les paramètres de sonnerie, de notification et de mode NPD ne peuvent pas être appliqués lors de la connexion de vos appareils.</string>
     <string name="dnd_access_fix_action">Accorder l’accès</string>
+    <string name="device_speaker_hint_title">Volumes après la déconnexion</string>
+    <string name="device_speaker_hint_message">Voulez-vous que vos volumes soient restaurés lors de la déconnexion d\'un appareil Bluetooth ? Ajoutez « Haut-parleur de l\'appareil » comme appareil géré — ses volumes sont appliqués lorsque l\'audio revient à votre téléphone.</string>
+    <string name="device_speaker_hint_action">Ajouter</string>
+    <string name="review_app_body">Voudrais-tu évaluer BVM ? ❤️</string>
+    <string name="review_app_review_action">Évaluation</string>
+    <string name="review_app_dismiss_action">Plus tard, peut-être</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Achat annulé</string>
     <string name="error_iap_unavailable_message">Les achats intégrés ne sont pas disponibles</string>

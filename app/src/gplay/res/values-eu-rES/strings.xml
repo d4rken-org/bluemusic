@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Berritu BVM Pro-ra</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro-k emaitza hobeak, ezaugarri gehiago eta aukera gehiago eskaintzen ditu erabiltzaile aurreratuei.</string>
     <string name="upgrade_prompt_upgrade_action">Eguneratu</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Igo %1$s-ra</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager-ek ez du iragarkirik eta ez du erabiltzailearen daturik saltzen. Nire lana zuk finantzatzen duzu ❤️.</string>
     <string name="upgrade_screen_why_title">Abantailak</string>
     <string name="upgrade_screen_subscription_trial_action">14 eguneko proba doan hasi</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Ezin izan da Google Play-rekin konektatu. Egiaztatu zure interneteko konexioa eta saiatu berriro.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ez dago erabilgarri</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager-ek ezin du Google Play-ra konektatu. Google Play instalatuta eta eguneratuta al dago? Zure Google kontua saioa hasi al du? Saiatu Google Play aplikazioaren cachea garbitzen eta gailua berrabiarazten.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Play ireki ez da ahal izan. Agian falta dago, desgaituta dago edo mugatuta dago gailu honetan.</string>
     <string name="upgrades_no_purchases_found_check_account">Ez dira erosketarik aurkitu. Kontu zuzena erabiltzen ari zara?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Hobekuntza aukerak</string>
+    <string name="upgrade_screen_offers_body">Bi aukerek Pro ezaugarri berdinak desblokeatu dituzte — egin zure gogoan duena.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Prezioak ez daude erabilgarri</string>
+    <string name="upgrade_screen_offers_unavailable_message">Prezioak ez dira kargatu ahal izan orain. Begiratu Google Play eta berriro saia zaitez unean batean.</string>
+    <string name="upgrade_screen_benefits_body">• Mugarik gabeko gailuak\n• Konexio ekintza pertsonalizatuak\n• Tema pertsonalizazioa\n• Bolumen kontrol aurreratuak\n• Etorkizunaren garapena laguntza ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Urtean behin harpidetza</string>
+    <string name="upgrade_screen_subscription_offer_body">Librezko saiakera batekin hasi, ondoren urtean behin berritsi. Atzera dezakezu Google Play-n nahi duzun unean.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Urtean behin berritsi. Atzera dezakezu Google Play-n nahi duzun unean.</string>
+    <string name="upgrade_screen_iap_offer_title">Betirako desblokeo</string>
+    <string name="upgrade_screen_iap_offer_body">Behin ordaindu eta Pro betirako.</string>
+    <string name="upgrade_screen_owned_hero_title">Pro zara! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">%1$s betirako dituzu.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Zure %1$s harpidetzak aktibo daude.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Zure harpidetza ez dago berritsi ezarrita, beraz orain aldatu dezakezu ordain bakarrean. Kontuan: ordain bakarra berezia da eta ez du zure harpidetzari uko egingo, beraz kontua berean ordaindu beharko duzu.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Lehenik zure berritsi diren harpidetzak atzera dezakezu Google Play-n, ondoren ordain bakarrean aldatu dezakezu.</string>
+    <string name="upgrade_screen_restore_body">Pro dagoeneko erosi duzu kontu honetan? Google Play-ri zure erosketak berriro begiratzeko eskatu.</string>
+    <string name="upgrade_screen_restore_checked_message">Google Play-ri kontu horren erosketak berriro begiratzeko eskatu genion eta ez genion bat aurkitu.</string>
+    <string name="upgrade_screen_restore_contact_hint">Oraindik arazo? Google Play kontutik harremanetan jarri, zure erosketaren zenbakia sartu, eta konpondu egingo dugu.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Google Play-rekin denboraz begiratzea ezin izan genuen bukatu, beraz zure erosketaren egoera oraindik ez dakigu — itxaron eta berriro saia zaitez.</string>
+    <string name="upgrades_gplay_billing_error_label">Erosketa arazoa</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play-k arazoa jakinarazi zuen: %1$s. Gero saia zaitez edo gailua berrabiarazi.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Eskaintza ez dago erabilgarri</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play-k ez du item hau orain eskaintzen. Baliteke zure kontua edo espareltzea ez dagoela oraindik — saia zaitez gero.</string>
 </resources>

@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">لم يتم العثور على أجهزة غير مُدارة</string>
     <string name="discover_all_devices_managed_msg">جميع أجهزتك المقترنة مُدارة! هل تحتاج لجهاز جديد؟</string>
     <string name="discover_pair_new_device_action">اقتران جهاز جديد</string>
+    <string name="discover_device_speaker_desc">مكبر الصوت الخاص بهذا الهاتف. يتم تطبيق مستويات الصوت الخاصة به عندما ينتقل الصوت مرة أخرى إلى الهاتف، على سبيل المثال بعد قطع اتصال جهاز Bluetooth الخاص بك.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">إعدادات الجهاز</string>
     <string name="devices_device_config_section_general_label">عام</string>
@@ -331,6 +332,7 @@
     <string name="label_add_device">إضافة جهاز</string>
     <string name="label_just_a_moment_please">لحظة فقط، من فضلك.</string>
     <string name="label_notification_channel_status">الحالة</string>
+    <string name="monitor_notification_starting">جاري البدء…</string>
     <string name="action_set">ضبط</string>
     <string name="action_cancel">إلغاء</string>
     <string name="label_invalid_input">الإدخال غير صالح</string>
@@ -410,6 +412,8 @@
     <string name="general_delete_action">حذف</string>
     <string name="general_cancel_action">إلغاء</string>
     <string name="general_ok_action">حسناً</string>
+    <string name="general_dismiss_action">تجاهل</string>
+    <string name="general_progress_loading">جاري التحميل…</string>
     <string name="general_configure_action">تكوين</string>
     <string name="battery_optimization_hint_title">تحسين البطارية</string>
     <string name="battery_optimization_hint_message">تحسينات البطارية مفعلة وقد تمنع الأداء الصحيح. فكر في تعطيلها.</string>
@@ -421,6 +425,12 @@
     <string name="dnd_access_hint_title">وصول وضع عدم الإزعاج</string>
     <string name="dnd_access_hint_message">بدون وصول وضع عدم الإزعاج، لا يمكن تطبيق إعدادات نغمة الرنين والإشعارات ووضع عدم الإزعاج عند اتصال أجهزتك.</string>
     <string name="dnd_access_fix_action">السماح بالوصول</string>
+    <string name="device_speaker_hint_title">مستويات الصوت بعد قطع الاتصال</string>
+    <string name="device_speaker_hint_message">هل تريد استعادة مستويات الصوت عند قطع اتصال جهاز Bluetooth؟ أضف \"مكبر صوت الجهاز\" كجهاز مُدار — يتم تطبيق مستويات الصوت الخاصة به عند عودة الصوت إلى هاتفك.</string>
+    <string name="device_speaker_hint_action">إضافة</string>
+    <string name="review_app_body">هل ترغب في ترك تعليق لـ BVM؟ ❤️</string>
+    <string name="review_app_review_action">مراجعة</string>
+    <string name="review_app_dismiss_action">ربما لاحقًا</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">تم إلغاء الشراء</string>
     <string name="error_iap_unavailable_message">المشتريات داخل التطبيق غير متاحة</string>

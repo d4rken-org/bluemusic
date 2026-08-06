@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Αναβαθμίστε στο BVM Pro</string>
     <string name="upgrade_prompt_body">Το Bluetooth Volume Manager Pro προσφέρει καλύτερα αποτελέσματα, περισσότερες δυνατότητες και επιλογές για προχωρημένους χρήστες.</string>
     <string name="upgrade_prompt_upgrade_action">Αναβάθμιση</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Αναβάθμιση σε %1$s</string>
     <string name="upgrade_screen_preamble">Το Bluetooth Volume Manager δεν έχει διαφημίσεις και δεν πωλεί δεδομένα χρηστών. Η δουλειά μου χρηματοδοτείται από εσάς ❤️.</string>
     <string name="upgrade_screen_why_title">Πλεονεκτήματα</string>
     <string name="upgrade_screen_subscription_trial_action">Έναρξη δωρεάν δοκιμής 14 ημερών</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Αδυναμία σύνδεσης με το Google Play. Ελέγξτε τη σύνδεσή σας στο διαδίκτυο και δοκιμάστε ξανά.</string>
     <string name="upgrades_gplay_unavailable_error_title">Το Google Play δεν είναι διαθέσιμο</string>
     <string name="upgrades_gplay_unavailable_error_description">Το Bluetooth Volume Manager δεν μπορεί να συνδεθεί με το Google Play. Είναι το Google Play εγκατεστημένο και ενημερωμένο; Έχετε συνδεθεί με τον λογαριασμό Google σας; Δοκιμάστε να διαγράψετε την προσωρινή μνήμη της εφαρμογής Google Play και να επανεκκινήσετε τη συσκευή σας.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Δεν μπόρεσε να ανοίξει το Google Play. Ενδέχεται να λείπει, να είναι απενεργοποιημένο ή περιορισμένο σε αυτήν τη συσκευή.</string>
     <string name="upgrades_no_purchases_found_check_account">Δεν βρέθηκαν αγορές. Χρησιμοποιείτε τον σωστό λογαριασμό;</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Επιλογές αναβάθμισης</string>
+    <string name="upgrade_screen_offers_body">Και οι δύο επιλογές ξεκλειδώνουν ακριβώς τα ίδια Pro χαρακτηριστικά — επιλέξτε ό,τι σας ταιριάζει.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Τιμές μη διαθέσιμες</string>
+    <string name="upgrade_screen_offers_unavailable_message">Οι τιμές δεν μπόρεσαν να φορτωθούν αυτή τη στιγμή. Ελέγξτε το Google Play και δοκιμάστε ξανά σε λίγο.</string>
+    <string name="upgrade_screen_benefits_body">• Απεριόριστες συσκευές\n• Προσαρμοσμένες ενέργειες σύνδεσης\n• Προσαρμογή θέματος\n• Προχωρημένα χειριστήρια έντασης\n• Υποστήριξη μελλοντικής ανάπτυξης ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Ετήσια συνδρομή</string>
+    <string name="upgrade_screen_subscription_offer_body">Ξεκινά με δωρεάν δοκιμή, στη συνέχεια ανανεώνεται ετησίως. Ακύρωση ανά πάσα στιγμή στο Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Ανανεώνεται ετησίως. Ακύρωση ανά πάσα στιγμή στο Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Ξεκλείδωμα για πάντα</string>
+    <string name="upgrade_screen_iap_offer_body">Πληρώστε μια φορά και κατέχετε Pro για πάντα.</string>
+    <string name="upgrade_screen_owned_hero_title">Είστε Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Κατέχετε %1$s για πάντα.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Η συνδρομή σας %1$s είναι ενεργή.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Η συνδρομή σας δεν έχει ρυθμιστεί για ανανέωση, οπότε μπορείτε να κάνετε εναλλαγή στην αγορά μίας φοράς τώρα. Προσοχή: είναι ξεχωριστή χρέωση που δεν θα ακυρώσει ή επιστρέψει τη συνδρομή σας, επομένως χρησιμοποιήστε το ίδιο λογαριασμό Google και για τα δύο.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Ακυρώστε πρώτα τη συνδρομή σας που ανανεώνεται στο Google Play, στη συνέχεια μπορείτε να κάνετε εναλλαγή στην αγορά μίας φοράς τώρα.</string>
+    <string name="upgrade_screen_restore_body">Έχετε ήδη αγοράσει Pro σε αυτό το λογαριασμό; Ζητήστε από το Google Play να επανελέγξει τις αγορές σας.</string>
+    <string name="upgrade_screen_restore_checked_message">Ζητήσαμε από το Google Play να επανελέγξει τις αγορές αυτού του λογαριασμού και δεν βρήκαμε καμία.</string>
+    <string name="upgrade_screen_restore_contact_hint">Εξακολουθείτε να έχετε πρόβλημα; Επικοινωνήστε μαζί μας χρησιμοποιώντας τον ίδιο λογαριασμό Google που χρησιμοποιήσατε για αγορά, συμπεριλάβετε τον αριθμό παραγγελίας σας στο Google Play και θα το λύσουμε.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Δεν μπορέσαμε να ολοκληρώσουμε τον έλεγχο με το Google Play έγκαιρα, οπότε δεν γνωρίζουμε ακόμα την κατάστασή σας — περιμένετε λίγο και δοκιμάστε ξανά.</string>
+    <string name="upgrades_gplay_billing_error_label">Πρόβλημα αγοράς</string>
+    <string name="upgrades_gplay_billing_error_description">Το Google Play ανέφερε ένα πρόβλημα: %1$s. Δοκιμάστε ξανά αργότερα ή επανεκκινήστε τη συσκευή σας.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Μη διαθέσιμη προσφορά</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Το Google Play δεν προσφέρει αυτό το είδος αυτή τη στιγμή. Ενδέχεται να μην είναι ακόμα διαθέσιμο για το λογαριασμό σας ή την περιοχή σας — δοκιμάστε ξανά αργότερα.</string>
 </resources>

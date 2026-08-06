@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Upgrade ke BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro menawarkan hasil lebih baik, lebih banyak fitur dan opsi untuk pengguna mahir.</string>
     <string name="upgrade_prompt_upgrade_action">Tingkatkan</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Tingkatkan ke %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager tidak menampilkan iklan dan tidak menjual data pengguna. Pekerjaan saya dibiayai oleh Anda ❤️.</string>
     <string name="upgrade_screen_why_title">Kelebihan</string>
     <string name="upgrade_screen_subscription_trial_action">Mulai coba gratis 14 hari</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Tidak dapat terhubung ke Google Play. Silakan periksa koneksi internet Anda dan coba lagi.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play tidak tersedia</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager tidak dapat terhubung ke Google Play. Apakah Google Play sudah terpasang dan diperbarui? Apakah Akun Google Anda sudah masuk? Coba hapus cache aplikasi Google Play dan mulai ulang perangkat Anda.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Tidak bisa membuka Google Play. Aplikasinya mungkin tidak tersedia, dinonaktifkan, atau dibatasi di perangkat ini.</string>
     <string name="upgrades_no_purchases_found_check_account">Pembelian tidak ditemukan. Apakah Anda menggunakan akun yang benar?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Opsi upgrade</string>
+    <string name="upgrade_screen_offers_body">Kedua opsi membuka fitur Pro yang sama persis — pilih yang paling sesuai untuk Anda.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Harga tidak tersedia</string>
+    <string name="upgrade_screen_offers_unavailable_message">Harga tidak dapat dimuat sekarang. Periksa Google Play dan coba lagi sebentar.</string>
+    <string name="upgrade_screen_benefits_body">• Perangkat tak terbatas\n• Tindakan koneksi kustom\n• Kustomisasi tema\n• Kontrol volume lanjutan\n• Dukung pengembangan di masa depan ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Langganan tahunan</string>
+    <string name="upgrade_screen_subscription_offer_body">Dimulai dengan uji coba gratis, lalu diperbarui setiap tahun. Batalkan kapan saja di Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Diperbarui setiap tahun. Batalkan kapan saja di Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Akses seumur hidup</string>
+    <string name="upgrade_screen_iap_offer_body">Bayar sekali dan miliki Pro selamanya.</string>
+    <string name="upgrade_screen_owned_hero_title">Anda Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Anda memiliki %1$s selamanya.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Langganan %1$s Anda aktif.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Langganan Anda tidak diatur untuk diperbarui, jadi Anda dapat beralih ke pembelian sekali bayar sekarang. Perhatian: ini adalah tagihan terpisah yang tidak akan membatalkan atau memberikan pengembalian dana untuk langganan Anda, jadi gunakan akun Google yang sama untuk keduanya.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Batalkan langganan yang diperbarui di Google Play terlebih dahulu, kemudian Anda dapat beralih ke pembelian sekali bayar.</string>
+    <string name="upgrade_screen_restore_body">Sudah membeli Pro di akun ini? Minta Google Play untuk memeriksa kembali pembelian Anda.</string>
+    <string name="upgrade_screen_restore_checked_message">Kami meminta Google Play untuk memeriksa kembali pembelian akun ini dan tidak menemukan satupun.</string>
+    <string name="upgrade_screen_restore_contact_hint">Masih terjebak? Hubungi kami dari akun Google yang sama yang Anda gunakan untuk membeli, sertakan nomor pesanan Google Play Anda, dan kami akan menyelesaikannya.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Kami tidak dapat menyelesaikan pemeriksaan dengan Google Play tepat waktu, jadi kami masih tidak mengetahui status pembelian Anda — tunggu sebentar dan coba lagi.</string>
+    <string name="upgrades_gplay_billing_error_label">Masalah pembelian</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play melaporkan masalah: %1$s. Coba lagi nanti atau mulai ulang perangkat Anda.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Penawaran tidak tersedia</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play tidak menawarkan item ini sekarang. Mungkin belum tersedia untuk akun atau wilayah Anda — silakan coba lagi nanti.</string>
 </resources>

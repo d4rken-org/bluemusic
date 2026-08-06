@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">I-upgrade sa BVM Pro</string>
     <string name="upgrade_prompt_body">Ang Bluetooth Volume Manager Pro ay nag-aalok ng mas mahusay na mga resulta, mas maraming mga feature at mga opsyon para sa mga power user.</string>
     <string name="upgrade_prompt_upgrade_action">I-upgrade</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">I-upgrade sa %1$s</string>
     <string name="upgrade_screen_preamble">Ang Bluetooth Volume Manager ay walang mga ad at hindi nagbebenta ng data ng user. Ang aking trabaho ay pinopondohan mo ❤️.</string>
     <string name="upgrade_screen_why_title">Mga Benepisyo</string>
     <string name="upgrade_screen_subscription_trial_action">Simulan ang libreng 14-day trial</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Hindi makakonekta sa Google Play. Pakisuri ang iyong internet connection at subukan ulit.</string>
     <string name="upgrades_gplay_unavailable_error_title">Ang Google Play ay kasalukoyang hindi magagamit</string>
     <string name="upgrades_gplay_unavailable_error_description">Hindi makakonekta ang Bluetooth Volume Manager sa Google Play. Naka-install ba at updated ang Google Play? Naka-log in ba ang iyong Google Account? Subukang i-clear ang cache ng Google Play app at i-reboot ang iyong device.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Hindi mabuksan ang Google Play. Maaari itong wala, na-disable, o na-restrict sa device na ito.</string>
     <string name="upgrades_no_purchases_found_check_account">Walang nahanap na mga binili. Ginagamit mo ba ang iyong tamang account?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Mga opsyon sa upgrade</string>
+    <string name="upgrade_screen_offers_body">Ang parehong opsyon ay nag-unlock ng parehong Pro features — pumili ng swak sa iyo.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Hindi available ang mga presyo</string>
+    <string name="upgrade_screen_offers_unavailable_message">Ang mga presyo ay hindi maaaring ma-load sa kasalukuyan. Suriin ang Google Play at subukan muli sa ilang sandali.</string>
+    <string name="upgrade_screen_benefits_body">• Walang hanggang devices\n• Custom na aksyon sa koneksyon\n• Customization ng tema\n• Advanced na kontrol sa volume\n• Suportahan ang hinaharap na development ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Taunang subscription</string>
+    <string name="upgrade_screen_subscription_offer_body">Nagsisimula sa libreng trial, pagkatapos ay nag-renew taun-taon. Maaaring kanselahin anumang oras sa Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Nag-renew taun-taon. Maaaring kanselahin anumang oras sa Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Pangmatagalang unlock</string>
+    <string name="upgrade_screen_iap_offer_body">Magbayad nang minsan at magmamay-ari ng Pro magpakailanman.</string>
+    <string name="upgrade_screen_owned_hero_title">Pro ka na! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Magmamay-ari ka ng %1$s magpakailanman.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Ang iyong %1$s subscription ay aktibo.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Ang iyong subscription ay hindi itinakda na mag-renew, kaya maaari ka nang lumipat sa one-time purchase ngayon. Abiso: ito ay isang hiwalay na bayad na hindi magkakansel o magbabigay ng refund sa iyong subscription, kaya gamitin ang parehong Google account para sa pareho.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Kanselahin muna sa Google Play ang iyong nag-renew na subscription, pagkatapos ay maaari kang lumipat sa one-time purchase.</string>
+    <string name="upgrade_screen_restore_body">Nabili na ang Pro sa account na ito? Tanungin ang Google Play na muling suriin ang iyong mga pagbili.</string>
+    <string name="upgrade_screen_restore_checked_message">Humingi kami sa Google Play na muling suriin ang mga pagbili ng account na ito ngunit walang nahanap.</string>
+    <string name="upgrade_screen_restore_contact_hint">May problema pa rin? Makipag-ugnayan gamit ang parehong Google account na ginamit mo sa pagbili, isama ang iyong Google Play order number, at kami ay magresolba nito.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Hindi namin nakumpleto ang pagsusuri sa Google Play sa oras, kaya hindi pa rin namin alam ang iyong status sa pagbili — magbigay ng ilang sandali at subukan muli.</string>
+    <string name="upgrades_gplay_billing_error_label">Problema sa pagbili</string>
+    <string name="upgrades_gplay_billing_error_description">Nag-report ang Google Play ng isang problema: %1$s. Subukan muli sa ibang pagkakataon o i-restart ang iyong device.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Hindi available ang alok</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Ang Google Play ay hindi nag-aalok ng item na ito sa kasalukuyan. Maaaring hindi ito available pa para sa iyong account o rehiyon — mangyaring subukan muli sa ibang pagkakataon.</string>
 </resources>

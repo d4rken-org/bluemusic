@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">BVM Pro သို့ အဆင့်မြှင့်ပါ</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro သည် ပိုမိုကောင်းမွန်သော ရလဒ်များ၊ ပိုမိုများပြားသော လုပ်ဆောင်ချက်များနှင့် ကျွမ်းကျင်အသုံးပြုသူများအတွက် ရွေးချယ်စရာများကို ပေးပါသည်။</string>
     <string name="upgrade_prompt_upgrade_action">အဆင့်မြှင့်ပါ</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">%1$s သို့ အဆင့်မြှင့်တင်ပါ</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager တွင် ကြော်ငြာများမရှိပါ၊ အသုံးပြုသူဒေတာများကိုလည်း မရောင်းချပါ။ ကျွန်ုပ်၏အလုပ်ကို သင်မှ ငွေကြေးထောက်ပံ့ထားပါသည် ❤️။</string>
     <string name="upgrade_screen_why_title">အကျိုးကျေးဇူးများ</string>
     <string name="upgrade_screen_subscription_trial_action">၁၄ ရက် အခမဲ့အစမ်းသုံးခြင်း စတင်မည်</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Google Play သို့ချိတ်ဆက်၏မရနိုင်ပါ။ သင်၏အင််ဂာရပ်ချိတ်ဆက်မှုကိုစုံစမ်းပြီးထပ်မံစမ်းသပ်ကြည့်ပါ။</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play မရရှိနိုင်ပါ</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager မှ Google Play သို့ ချိတ်ဆက်၍မရပါ။ Google Play ထည့်သွင်းပြီး နောက်ဆုံးဗားရှင်းဖြစ်ပါသလား? သင်၏ Google အကောင့် ဝင်ရောက်ထားပါသလား? Google Play အက်ပ်၏ cache ကိုရှင်းလင်းပြီး ကိရိယာကိုပြန်လည်စတင်ကြည့်ပါ။</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Play ကို မဖွင့်နိုင်ခဲ့ပါ။ ယင်းသည် ဤကိရိယာ ပေါ်တွင် မရှိခြင်း၊ ပိတ်ထားခြင်း သို့မဟုတ် ကန့်သတ်ထားခြင်း ရှိနိုင်ပါသည်။</string>
     <string name="upgrades_no_purchases_found_check_account">ဝယ်ယူမှုများ ရှာမတွေ့ပါ။ မှန်ကန်သော အကောင့်ကို အသုံးပြုနေပါသလား။</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">အဆင့်မြှင့်တင်ခြင်းရွေးချယ်မှုများ</string>
+    <string name="upgrade_screen_offers_body">ရွေးချယ်မှုနှစ်ခုစလုံးသည် အတူတူ Pro သွင်သတ္တာများကို သုံးစွဲနိုင်စေသည် — သင့်လျှောက်တွင်ရှိသည့်အရာ ရွေးချယ်ပါ။</string>
+    <string name="upgrade_screen_offers_unavailable_title">စျေးနှုန်းများမရှိပါ</string>
+    <string name="upgrade_screen_offers_unavailable_message">စျေးနှုန်းများကို ယခုအခါ အားပြုပါခွင့်မရခဲ့သည်။ Google Play ကို စစ်ဆေးပြီး အခြိန်အနည်းငယ်အတွင်း ထပ်မံစမ်းသုံးပါ။</string>
+    <string name="upgrade_screen_benefits_body">• အကန့်အသတ်မရှိသော စက်ပစ္စည်းများ\n• စိတ်ကြိုက်ချိတ်ဆက်မှု လုပ်ဆောင်ချက်များ\n• ပုံစံအင်္ဂါ စိတ်ကြိုက်ပြင်ဆင်ခြင်း\n• အဆင့်မြင့်အသံအတိုးအကျယ်ထိန်းချုပ်မှုများ\n• အနာဂတ် ထုတ်ပြန်မှု ထောက်ခံခြင်း ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">နှစ်စဉ်စာရင်းသွင်း</string>
+    <string name="upgrade_screen_subscription_offer_body">အခမဲ့စမ်းသုံးခွင်မှ စတင်လည်ပတ်ပြီး နှစ်စဉ်သုံးဆောင်းခွင်။ Google Play တွင် အချိန်မည်သည့်အခါမျိုးတွင် ပယ်ဖျက်နိုင်ပါသည်။</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">နှစ်စဉ်သုံးဆောင်းခွင်။ Google Play တွင် အချိန်မည်သည့်အခါမျိုးတွင် ပယ်ဖျက်နိုင်ပါသည်။</string>
+    <string name="upgrade_screen_iap_offer_title">အစဉ်အမြဲဖွင့်လှစ်ခြင်း</string>
+    <string name="upgrade_screen_iap_offer_body">တစ်ကြိမ်ငွေချေ ပြီး Pro ကို အစဉ်အမြဲ ပိုင်ဆိုင်ပါ။</string>
+    <string name="upgrade_screen_owned_hero_title">သင်သည် Pro ဖြစ်ပါသည်။ ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">သင်သည် %1$s ကို အစဉ်အမြဲ ပိုင်ဆိုင်ပါသည်။</string>
+    <string name="upgrade_screen_owned_hero_sub_body">သင်၏ %1$s စာရင်းသွင်းမှု ရှင်သန်လျက်ရှိပါသည်။</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">သင်၏စာရင်းသွင်းမှု သုံးဆောင်းရန် သတ်မှတ်မထားသောကြောင့် သုံးဆောင်းခွင်တစ်ကြိမ်သို့ သင်ပြောင်းလဲနိုင်ပါသည်။ သတိပေးချက်- ၎င်းသည် သင်၏စာရင်းသွင်းမှုကို ပယ်ဖျက်ခြင်း သို့မဟုတ် ငွေပြန်အခ်င်းမပေးသည့် သီးခြားငွေချေခြင်းဖြစ်သောကြောင့် နှစ်ခုစလုံးအတွက် တူညီသော Google အကောင့်ကို အသုံးပြုပါ။</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Google Play တွင် သုံးဆောင်းမည်ဖြစ်သည့် သင်၏စာရင်းသွင်းမှုကို ကြိုးစီးပင်ပယ်ဖျက်ပါ၊ ထို့နောက် သုံးဆောင်းခွင်တစ်ကြိမ်သို့ သင်ပြောင်းလဲနိုင်ပါသည်။</string>
+    <string name="upgrade_screen_restore_body">ဤအကောင့်တွင် Pro ကို အသုံးပြုထားပြီးပါလား။ သင်၏ဝယ်ယူမှုများကို ထပ်မံစစ်ဆေးရန် Google Play ကို တောင်းဆိုပါ။</string>
+    <string name="upgrade_screen_restore_checked_message">ကျွန်ုပ်တို့သည် Google Play ကို ဤအကောင့်၏ဝယ်ယူမှုများကို ထပ်မံစစ်ဆေးရန် တောင်းဆိုခဲ့သည်သော်လည်း မတွေ့ရှိခဲ့ပါ။</string>
+    <string name="upgrade_screen_restore_contact_hint">အဆင်မပြေရဲပါလား။ သင်ဝယ်ယူသည့်တူညီသော Google အကောင့်မှ ကျွန်ုပ်တို့ထံ ဆက်သွယ်ပြီး သင်၏ Google Play အမှာစာနံပါတ်ကို ထည့်သွင်းပါ၊ ထို့ကြောင့် ကျွန်ုပ်တို့သည် ၎င်းကို ဖြေရှင်းပေးပါ့မည်။</string>
+    <string name="upgrade_screen_restore_inconclusive_message">ကျွန်ုပ်တို့သည် Google Play ဖြင့် အချိန်မှီ စစ်ဆေးခြင်းကို ပြီးမြောက်နိုင်ခြင်းမရှိသောကြောင့်၊ ကျွန်ုပ်တို့သည် သင်၏ဝယ်ယူမှုအခြေအနေကို အခြိုးမသိသေးပါ — ခဏစောင့်ထားပြီး ထပ်မံစမ်းသုံးပါ။</string>
+    <string name="upgrades_gplay_billing_error_label">ဝယ်ယူမှုပြဿနာ</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play သည် ပြဿနာတစ်ခုကို အစီရင်ခံခဲ့သည်- %1$s။ နောက်ပိုင်းတွင် ထပ်မံစမ်းသုံးပြီး သို့မဟုတ် သင်၏စက်ပစ္စည်းကို စတင်လည်ပတ်ပါ။</string>
+    <string name="upgrades_gplay_offer_unavailable_title">အခွင်လျှောက်ကြောင်းမရှိ</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play သည် ယခုအခါ ဤပစ္စည်းကို အခွင်လျှောက်ကြောင်းမပေးသည်။ ၎င်းသည် သင်၏အကောင့် သို့မဟုတ် ဒေသအတွက် အဆင်မပြေသေးရှိနိုင်ပါ — နောက်ပိုင်းတွင် စမ်းသုံးပါ။</string>
 </resources>

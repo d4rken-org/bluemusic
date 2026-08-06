@@ -315,6 +315,7 @@
     <string name="label_add_device">Aggiunghe dispositivu</string>
     <string name="label_just_a_moment_please">Unu momentu, prite.</string>
     <string name="label_notification_channel_status">Istadu</string>
+    <string name="monitor_notification_starting">Iniciende…</string>
     <string name="action_set">Imposta</string>
     <string name="action_cancel">Annùlla</string>
     <string name="label_invalid_input">Input non vàlidu</string>
@@ -390,6 +391,8 @@
     <string name="general_delete_action">Càncella</string>
     <string name="general_cancel_action">Annùlla</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Serrare</string>
+    <string name="general_progress_loading">Carrighende…</string>
     <string name="general_configure_action">Configura</string>
     <string name="battery_optimization_hint_title">Ottimizatzione de bateria</string>
     <string name="battery_optimization_hint_message">Sas ottimizatziones de bateria sunt abilitàdas e podent prevènnere su funtzionamentu currètu. Cunsìdera de disabilitarelas.</string>
@@ -401,6 +404,11 @@
     <string name="dnd_access_hint_title">Acesetu Non disturbare</string>
     <string name="dnd_access_hint_message">Sena s\'acesetu Non disturbare, is impostatziones de soneria, notificatziones e modu Non disturbare no podent èssere aplicadas cando is tuos dispositivus si connetant.</string>
     <string name="dnd_access_fix_action">Cuncèdere s\'atzessu</string>
+    <string name="device_speaker_hint_title">Volmenes dae su disconnect</string>
+    <string name="device_speaker_hint_action">Agiunghe</string>
+    <string name="review_app_body">Boles làssare una revisione a BVM? ❤️</string>
+    <string name="review_app_review_action">Revisione</string>
+    <string name="review_app_dismiss_action">Forsis più in antis</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Acchìstu annullàdu</string>
     <string name="error_iap_unavailable_message">Sos acchìstos in-app non sunt disponìbbiles</string>

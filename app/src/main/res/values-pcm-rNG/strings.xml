@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">No unmanaged devices found</string>
     <string name="discover_all_devices_managed_msg">All your paired devices dey managed! You need new one?</string>
     <string name="discover_pair_new_device_action">Pair new device</string>
+    <string name="discover_device_speaker_desc">Di phone speaker. E apply di volumes when audio switch back to phone, like afta your Bluetooth device disconnect.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Device configuration</string>
     <string name="devices_device_config_section_general_label">General</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Add device</string>
     <string name="label_just_a_moment_please">Wait small, abeg.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="monitor_notification_starting">Dey start…</string>
     <string name="action_set">Set</string>
     <string name="action_cancel">Cancel</string>
     <string name="label_invalid_input">Invalid input</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Delete</string>
     <string name="general_cancel_action">Cancel</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Comot</string>
+    <string name="general_progress_loading">Dey load…</string>
     <string name="general_configure_action">Configure</string>
     <string name="battery_optimization_hint_title">Battery optimization</string>
     <string name="battery_optimization_hint_message">Battery optimizations dey enabled and fit prevent di app from working properly. Consider disable dem.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Do Not Disturb access</string>
     <string name="dnd_access_hint_message">Without Do Not Disturb access, ringtone, notification, and DND mode settings no go fit work wen your devices connect.</string>
     <string name="dnd_access_fix_action">Give access</string>
+    <string name="device_speaker_hint_title">Volumes afta disconnect</string>
+    <string name="device_speaker_hint_message">You want your volumes come back when Bluetooth device disconnect? Add \'Device speaker\' as managed device — e go apply di volumes when audio switch back to your phone.</string>
+    <string name="device_speaker_hint_action">Add</string>
+    <string name="review_app_body">You go like leave BVM review? ❤️</string>
+    <string name="review_app_review_action">Review</string>
+    <string name="review_app_dismiss_action">Later nau</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Purchase cancelled</string>
     <string name="error_iap_unavailable_message">In-app purchases no dey available</string>

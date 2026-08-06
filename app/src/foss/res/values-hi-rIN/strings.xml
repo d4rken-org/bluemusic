@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager में कोई विज्ञापन नहीं है और वह उपयोगकर्ता डेटा नहीं बेचता। निरंतर विकास केवल आपकी वजह से संभव है।</string>
     <string name="upgrade_screen_how_title">कैसे सहायता करें</string>
     <string name="upgrade_screen_how_body">संरक्षक बनें और विकास को प्रायोजित करें! सभी अतिरिक्त सुविधाओं को सक्रिय करने और मेरी GitHub Sponsors प्रोफ़ाइल खोलने के लिए नीचे दिए गए बटन को टैप करें।</string>
+    <string name="upgrade_screen_why_title">लाभ</string>
+    <string name="upgrade_screen_why_body">• असीमित डिवाइस\n• कस्टम कनेक्शन क्रियाएँ\n• थीम अनुकूलन\n• उन्नत वॉल्यूम नियंत्रण\n• ओपन-सोर्स विकास का समर्थन 🧙</string>
     <string name="upgrade_screen_sponsor_action">विकास को प्रायोजक करें</string>
     <string name="upgrade_screen_sponsor_action_hint">विज्ञापन, एनालिटिक्स और गूगल प्ले ये सभी वैकल्पिक है🙁</string>
     <string name="upgrade_screen_thanks_toast">ओपन-सोर्स विकास ❤️ का समर्थन करने के लिए धन्यवाद</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">अपनी समर्थक स्थिति देखें</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">आप मुफ्त संस्करण पर हैं</string>
+    <string name="upgrade_screen_status_free_body">अतिरिक्त सुविधाओं को अनलॉक करने और निरंतर विकास को प्रायोजित करने के लिए एक समर्थक बनें।</string>
+    <string name="upgrade_screen_status_free_action">अपग्रेड विकल्प देखें</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">आपके समर्थन के लिए धन्यवाद</string>
     <string name="upgrade_screen_supporter_status_body">ओपन-सोर्स विकास का समर्थन करके आपने सभी अतिरिक्त सुविधाएं अनलॉक कर ली हैं।</string>

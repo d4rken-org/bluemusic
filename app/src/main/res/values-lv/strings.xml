@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Nav atrasts neviena nepārvalditā ierīce</string>
     <string name="discover_all_devices_managed_msg">Visas jūsu savienotās ierīces tiek pārvaldītas! Vajag jaunu?</string>
     <string name="discover_pair_new_device_action">Savienot jaunu ierīci</string>
+    <string name="discover_device_speaker_desc">Tālruņa savs skaļrunis. Tā skaļumi tiek piemēroti, kad audio pārslēdzas atpakaļ uz tālruni, piemēram, pēc Bluetooth ierīces atvienošanas.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Ierīces konfigurācija</string>
     <string name="devices_device_config_section_general_label">Vispārīgi</string>
@@ -319,6 +320,7 @@
     <string name="label_add_device">Pievienot ierīci</string>
     <string name="label_just_a_moment_please">Uzgaņiet, lūdzu.</string>
     <string name="label_notification_channel_status">Stāvoklis</string>
+    <string name="monitor_notification_starting">Uzsāk...</string>
     <string name="action_set">Iestatīt</string>
     <string name="action_cancel">Atcelt</string>
     <string name="label_invalid_input">Nederīga ievade</string>
@@ -395,6 +397,8 @@
     <string name="general_delete_action">Dzēst</string>
     <string name="general_cancel_action">Atcelt</string>
     <string name="general_ok_action">Labi</string>
+    <string name="general_dismiss_action">Noraidīt</string>
+    <string name="general_progress_loading">Ielāde...</string>
     <string name="general_configure_action">Konfigurēt</string>
     <string name="battery_optimization_hint_title">Akumlatora optimizācija</string>
     <string name="battery_optimization_hint_message">Akumlatora optimizācijas ir iespējotas un var trāukcēt pareizu darbību. Apsveriet to atspējošanu.</string>
@@ -406,6 +410,12 @@
     <string name="dnd_access_hint_title">Netraukt piekļuves</string>
     <string name="dnd_access_hint_message">Bez Netraukt piekļuves, zvana signāla, paziņojumu un Netraukt režīma iestatījumus nevar lietot, kad jūsu ierīces piesledzas.</string>
     <string name="dnd_access_fix_action">Piešķirt piekļuvi</string>
+    <string name="device_speaker_hint_title">Skaļumi pēc atvienošanas</string>
+    <string name="device_speaker_hint_message">Vai vēlaties, lai jūsu skaļumi tiktu atjaunoti, atvienojot Bluetooth ierīci? Pievienojiet \"Ierīces skaļrunis\" kā pārvaldītu ierīci — tā skaļumi tiek piemēroti, kad audio pārslēdzas atpakaļ uz jūsu tālruni.</string>
+    <string name="device_speaker_hint_action">Pievienot</string>
+    <string name="review_app_body">Vai gribi atstāt BVM atsauksmi? ❤️</string>
+    <string name="review_app_review_action">Atsauksme</string>
+    <string name="review_app_dismiss_action">Varbūt vēlāk</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Pirkums atcelts</string>
     <string name="error_iap_unavailable_message">Pirkumi lietotnē nav pieejami</string>

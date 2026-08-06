@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Biçe BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ji bo bikarhênerên pêşkeftî encamên baştir, taybetmendî û vebijarkên zêdetir pêşkêş dike.</string>
     <string name="upgrade_prompt_upgrade_action">Nûjen bike</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Bihevkirin a %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager reklamê nake û daneya bikarhêner nafroşe. Xebata min ji aliyê we ve tê fînanskirinê ❤️.</string>
     <string name="upgrade_screen_why_title">Avantaj</string>
     <string name="upgrade_screen_subscription_trial_action">Ceribandîna 14-rojî ya belaş dest pê bike</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Nabigihije Google Play-ê. Linkê internet xwe kontrol bikin û dîsa hewl bidin.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play nayê dîtin</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager nikare bi Google Play re girêbide. Ma Google Play saz û nûkirî ye? Cache ya Google Play pak bike û cîhazê xwe ji nû ve bixebite.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Play nehat vekirin. Dibe ku winda bûbe, nehatiye çalak kirin an tê sînordar kirin di vê cihazê de.</string>
     <string name="upgrades_no_purchases_found_check_account">Kirîn nehatin dîtin. Hûn hesabê rast bikar tînin?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Vebijarkên bihevkirinê</string>
+    <string name="upgrade_screen_offers_body">Her du vebijark taybetmendiyên Pro-yê yên xwe de vekirî dikin — ya ku tu dixwazî, hilbijêre.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Nîqaş nebe</string>
+    <string name="upgrade_screen_offers_unavailable_message">Nîqaş niha ne dikarin were barkî. Google Play-ê kontrol bike û dûmahî dîsa hewl bide.</string>
+    <string name="upgrade_screen_benefits_body">• Amûrên bê sînor\n• Aksiyonên peywendîyê yên taybet\n• Guzerandinê reng\n• Kontrolên helûskên pêşketî\n• Piştgiriya pêşveçûna borî ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Abonementeya salane</string>
+    <string name="upgrade_screen_subscription_offer_body">Bi ceribandineke azad dest pê dike, hingê her sal nûborn dike. Her dem de di Google Play de betal bike.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Her sal nûborn dike. Her dem de di Google Play de betal bike.</string>
+    <string name="upgrade_screen_iap_offer_title">Azadî ya belavê</string>
+    <string name="upgrade_screen_iap_offer_body">Carekî bide û Pro-yî eternê xwedî bike.</string>
+    <string name="upgrade_screen_owned_hero_title">Tu Pro yî! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Tu %1$s eternê xwedî dikî.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Abonementeya %1$s ya te çalak e.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Abonementeya te nabe ku nûborn bibe, ji ber vê tu niha dikarî derbasî kirrîna yekcarî yî. Baldar: ew jor a cuda ye ku nabe ku abonementeya te betal bibe an jî gerîyê bide, ji ber vê hesaba Google ya heman ji bo her du bikarbîne.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Pêşî abonementeya nûborn a te di Google Play de betal bike, hingê tu dikarî derbasî kirrîna yekcarî yî.</string>
+    <string name="upgrade_screen_restore_body">Tu li ser vê hesabê Pro kirin? Google Play-î bibêje ku kirrîn a te dîsa kontrol bike.</string>
+    <string name="upgrade_screen_restore_checked_message">Me Google Play-î xwest ku kirrîn a vê hesabê dîsa kontrol bike û ne yek ne dît.</string>
+    <string name="upgrade_screen_restore_contact_hint">Hîn jî giredayî? Bi hesaba Google ya heman ku te bi wê kirrî kirin pê re têkilî tê de, hejmara fermanî ya Google Play-ê jî de, em ew çareser dikin.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Me ne karibe kontrolkirina Google Play-ê di demê de rewşenbend bike, ji ber vê me hîn nizanin ku bazirganî ya te çi ye — sekinînek cihê bike û dîsa hewl bide.</string>
+    <string name="upgrades_gplay_billing_error_label">Pirsgirêka bazirganîyê</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play pirsgirêyek ragihand: %1$s. Dûmahî dîsa hewl bide an jî amûra xwe dîsa dest pê bike.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Pêşkêşî nebe</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play ev tişt niha ne pêşkêş kir. Ew dikare ji bo hesaba te an herêma te hîn peyda nebe — tûjî dûmahî dîsa hewl bide.</string>
 </resources>

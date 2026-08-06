@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">ወደ BVM Pro ክበቱ</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ለተጨማሪ ተመርጸውዎች፣ ተጨማሪ ብካዾች፥ እና የፐወር ተጠቃሚዎችን ይደግጋል።</string>
     <string name="upgrade_prompt_upgrade_action">አሻሽል</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">ወደ %1$s ሻመ</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ምንም እዋዀት ይረጋል፣ የተገባይ ውሂብንነም አይሸጥም። የ።ቡቡ፡ በ።ቡቡ፠ ዘርድ የካዘለኂው ❤️።</string>
     <string name="upgrade_screen_why_title">ጥቅሞች</string>
     <string name="upgrade_screen_subscription_trial_action">ነፃ የ14 ቀን ሙከራ ይጀምሩ</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">ከGoogle Play ጋር ለመገናኘት አልተቻለም። እባክዎ የኢንተርኔት ግንኙነትዎን ምልከቱ እና እንደገና ይሞክሩ።</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play አይገኝም</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ወደ Google Play መገናኘት አይቻል። Google Play የተገጀተ እና ወደ ላይ የተዘመኘትነ? የGoogle አካወንት የነጩ ክ? Google Play አፕሊኬስንን በሜᇍ ካስቀጁ መሣሪያውን አስለስለስ ያስፈለግላ።</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Play መክፈት አልተቻለም። በዚህ መሳሪያ ላይ ሊሆን ይችላል የሌለ፣ ተሰናክሎ ወይም ተገድቦ።</string>
     <string name="upgrades_no_purchases_found_check_account">ምንም ግዢዎች አልተገኙም። ትክክለኛውን መለያ እየተጠቀሙ ነው?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">የሻመ ምርጫዎች</string>
+    <string name="upgrade_screen_offers_body">ሁለቱም ምርጫዎች ተመሳሳይ Pro ሞያዎችን ይከፍታሉ — የሚስማሙ ይምረጡ።</string>
+    <string name="upgrade_screen_offers_unavailable_title">ክፋይ ተደራሽ አይደለም</string>
+    <string name="upgrade_screen_offers_unavailable_message">ክፋይ ገና ሊጫን አይችልም. Google Play ሞኩር ወደ ውሎ ሞክር.</string>
+    <string name="upgrade_screen_benefits_body">• ገደብ ነጻ መሳሪያዎች\n• ተስተካካሪ ግንኙነት ድርጊቶች\n• ገጽታ ማበጀት\n• የላቀ ድምጽ ቁጥጥር\n• ወደፊት ልማት ድጋፍ ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">ዓመታዊ ደንገስ</string>
+    <string name="upgrade_screen_subscription_offer_body">ነፃ ሙከራ ሊያስተዋወቅ, ከዚያም ዓመት ነግ ታደድ. Google Play ውስጥ ማቋረጥ ይችሉ.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">ዓመት ነግ ታደድ. Google Play ውስጥ ማቋረጥ ይችሉ.</string>
+    <string name="upgrade_screen_iap_offer_title">ሕይወት ሙሉ ሽቅ</string>
+    <string name="upgrade_screen_iap_offer_body">አንድ ጊዜ ክፈል Pro ሕይወት ሙሉ ይሆን።</string>
+    <string name="upgrade_screen_owned_hero_title">እርስዎ Pro ነዎት! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">እርስዎ %1$s ሕይወት ሙሉ ይይዝሉ።</string>
+    <string name="upgrade_screen_owned_hero_sub_body">እርስዎ %1$s ደንገስ ንቁ ነው።</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">ወደ ደንገስ አሁን ማሪትዎ ተዘጋጅ አለ, ስለዚህ ወደ አንድ ጊዜ ግዢ ቀይር ይችሉ. ተጠንቂ: ይህ አንድ የተለየ ክፈያ ሂሳብ ወይም refund ደንገስ, ስለዚህ ሁለቱም ተመሳሳይ Google ሂሳብ ይጠቀም.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">ወደ Google Play ረድኤት ደንገስ ልከ ዝቅ ማቋረጥ, ከዚያም ወደ አንድ ጊዜ ግዢ ቀይር ይችሉ.</string>
+    <string name="upgrade_screen_restore_body">Pro አስቀድሞ ገዝተሃል? Google Play ን ድጋሰ-ጽሕ ግዢዎ ይጠይቁ.</string>
+    <string name="upgrade_screen_restore_checked_message">Google Play ድጋሰ-ጽሕ ዓይነት ለእዚህ ሒሳብ ግዢ ስላልገኘን።</string>
+    <string name="upgrade_screen_restore_contact_hint">ገና ተወኙ? ራስዎን ከ ተመሳሳይ Google ሂሳብ ጋር ወደ ገበታ ይግቡ, Google Play ጥያቄ ቁጥር ያካትቱ, እና ልታደርገው ሞወ.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Google Play ጊዜ ውስጥ ፍትሔ ረዝመ ስላልቻልን, ሁሉ ግዢ ሁኔታ አያውቁ — ጊዜ ሰጥ እና ሞክር.</string>
+    <string name="upgrades_gplay_billing_error_label">ግዢ ችግር</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play ችግር ሪፖርት: %1$s. ወደ ውሎ ሞክር ወይም መሳሪያ ዱር.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">ቅናሽ ተደራሽ አይደለም</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play ይህ ዓይነት አሁን ሊሰጥ አይችልም. ይህ ሊሆን ይችላል አንተ ሂሳብ ወይም ክልል አሁንም — ቀጥለን ለመሞከር ይሞክሩ.</string>
 </resources>

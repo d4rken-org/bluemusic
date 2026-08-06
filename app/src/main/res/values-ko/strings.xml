@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">관리되지 않는 디바이스를 찾을 수 없습니다</string>
     <string name="discover_all_devices_managed_msg">모든 페어링된 기기가 이미 관리되고 있어요! 새로운 기기가 필요하신가요?</string>
     <string name="discover_pair_new_device_action">새 기기 페어링</string>
+    <string name="discover_device_speaker_desc">이 휴대폰의 자체 스피커입니다. 오디오가 휴대폰으로 전환될 때(예: Bluetooth 기기 연결 해제 후) 음량이 적용됩니다.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">디바이스 설정</string>
     <string name="devices_device_config_section_general_label">일반</string>
@@ -311,6 +312,7 @@
     <string name="label_add_device">디바이스 추가</string>
     <string name="label_just_a_moment_please">잠시만 기다려주세요.</string>
     <string name="label_notification_channel_status">상태</string>
+    <string name="monitor_notification_starting">시작 중입니다…</string>
     <string name="action_set">설정</string>
     <string name="action_cancel">취소</string>
     <string name="label_invalid_input">잘못된 입력</string>
@@ -385,6 +387,8 @@
     <string name="general_delete_action">삭제</string>
     <string name="general_cancel_action">취소</string>
     <string name="general_ok_action">확인</string>
+    <string name="general_dismiss_action">닫기</string>
+    <string name="general_progress_loading">불러오는 중…</string>
     <string name="general_configure_action">구성</string>
     <string name="battery_optimization_hint_title">배터리 최적화</string>
     <string name="battery_optimization_hint_message">배터리 최적화가 켜져 있어 정상 동작을 방해할 수 있습니다. 끄기를 고려해보세요.</string>
@@ -396,6 +400,12 @@
     <string name="dnd_access_hint_title">방해 금지 접근 권한</string>
     <string name="dnd_access_hint_message">방해 금지 접근 권한이 없으면 기기가 연결될 때 벨소리, 알림, 방해 금지 모드 설정을 적용할 수 없습니다.</string>
     <string name="dnd_access_fix_action">접근 권한 부여</string>
+    <string name="device_speaker_hint_title">연결 해제 후 음량</string>
+    <string name="device_speaker_hint_message">Bluetooth 기기가 연결 해제될 때 음량을 복원하고 싶으신가요? \"기기 스피커\"를 관리 기기로 추가하세요 — 오디오가 휴대폰으로 전환될 때 음량이 적용됩니다.</string>
+    <string name="device_speaker_hint_action">추가</string>
+    <string name="review_app_body">BVM 리뷰를 남겨주시겠어요? ❤️</string>
+    <string name="review_app_review_action">리뷰</string>
+    <string name="review_app_dismiss_action">다음에 해요</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">구매 취소됨</string>
     <string name="error_iap_unavailable_message">인앱 구매를 이용할 수 없습니다</string>

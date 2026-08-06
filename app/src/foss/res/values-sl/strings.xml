@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager nima oglasov in ne prodaja uporabniških podatkov. Nadaljnji razvoj je omogočen samo z vašo podporo.</string>
     <string name="upgrade_screen_how_title">Kako pomagati.</string>
     <string name="upgrade_screen_how_body">Postanite pokrovitelj in prispevajte k razvoju!  Dotaknite se spodnjega gumba, da omogočite dodatne funkcije in odprete moj pokroviteljski profil na GitHubu.</string>
+    <string name="upgrade_screen_why_title">Prednosti</string>
+    <string name="upgrade_screen_why_body">• Neomejene naprave\n• Prilagojene možnosti priklopitve\n• Prilagajanje teme\n• Napredni nadzori glasnosti\n• Podpora razvoju odprtokodnega programa 🧙</string>
     <string name="upgrade_screen_sponsor_action">Podpri razvoj</string>
     <string name="upgrade_screen_sponsor_action_hint">Druga možnost so oglasi, analitika in Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Hvala za podporo odprtokodnemu razvoju ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Oglejte si status podpornika</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Ste na brezplačni različici</string>
+    <string name="upgrade_screen_status_free_body">Postanite podpornik, da odklenete dodatne funkcije in sponzorirate nadaljnji razvoj.</string>
+    <string name="upgrade_screen_status_free_action">Oglejte si možnosti nadgradnje</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Hvala za vašo podporo</string>
     <string name="upgrade_screen_supporter_status_body">Odklenili ste vse dodatne funkcije s podporo razvoju odprtokodnega programja.</string>

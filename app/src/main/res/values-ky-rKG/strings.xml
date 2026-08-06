@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Башкарылбаган түзмөктөр табылган жок</string>
     <string name="discover_all_devices_managed_msg">Бардык жупташтырылган түзмөктөрүңүз башкарылууда! Жаңы бирин кошосузбу?</string>
     <string name="discover_pair_new_device_action">Жаңы түзмөктү жупташтыруу</string>
+    <string name="discover_device_speaker_desc">Телефондун өзүнүн докладчы. Анын үндөрү аудио телефонго артка кайтканда колдонулат, мисалы Bluetooth түзмөгүңүз ажыратылгандан кийин.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Түзмөктүн конфигурациясы</string>
     <string name="devices_device_config_section_general_label">Жалпы</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Түзмөк кошуу</string>
     <string name="label_just_a_moment_please">Бир мүнөт, сураныч.</string>
     <string name="label_notification_channel_status">Абал</string>
+    <string name="monitor_notification_starting">Иштелип жатат…</string>
     <string name="action_set">Коюуу</string>
     <string name="action_cancel">Жокко чыгаруу</string>
     <string name="label_invalid_input">Жараксыз киргизүү</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Жойуу</string>
     <string name="general_cancel_action">Жокко чыгаруу</string>
     <string name="general_ok_action">Жарайлык</string>
+    <string name="general_dismiss_action">Жабуу</string>
+    <string name="general_progress_loading">Жүктөлүп жатат…</string>
     <string name="general_configure_action">Конфигурациялоо</string>
     <string name="battery_optimization_hint_title">Батарея оптимизациясы</string>
     <string name="battery_optimization_hint_message">Батарея оптимизациялары иштетилген жана туура иштешине тоскоол коюшу мүмкүн. Аларды өчүрүп коюунуну карап көрүңүз.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">\"Тынчтыктыма тоскоол болбо\" мүмкүнчүлүгүнө уруксат</string>
     <string name="dnd_access_hint_message">\"Тынчтыктыма тоскоол болбо\" мүмкүнчүлүгүнсүз, шыңгыроо үнү, билдирүү жана DND режим жөндөөлөрү түзмөктөрүңүз туташканда колдонула албайт.</string>
     <string name="dnd_access_fix_action">Уруксат берүү</string>
+    <string name="device_speaker_hint_title">Ажыратылгандан кийинки үндөр</string>
+    <string name="device_speaker_hint_message">Bluetooth түзмөгүңүз ажыратылганда үндөрүңүз калыбына келсе деп ойлойсузбу? \"Түзмөк докладчы\" каза кыла турган түзмөк катары кошуңуз — анын үндөрү аудио сиздин телефонго артка кайтканда колдонулат.</string>
+    <string name="device_speaker_hint_action">Кошуу</string>
+    <string name="review_app_body">BVM үчүн рецензия жазасыңарбы? ❤️</string>
+    <string name="review_app_review_action">Рецензия</string>
+    <string name="review_app_dismiss_action">Кийин</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Сатып алуу бекер кылынды</string>
     <string name="error_iap_unavailable_message">Колдонмо ишинде сатып алуу мүмкүн эмес</string>

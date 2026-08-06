@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Nenhum dispositivo não gerido encontrado</string>
     <string name="discover_all_devices_managed_msg">Todos os seus dispositivos emparelhados estão geridos! Precisa de um novo?</string>
     <string name="discover_pair_new_device_action">Emparelhar novo dispositivo</string>
+    <string name="discover_device_speaker_desc">O altifalante integrado do telefone. Os seus volumes são aplicados quando o áudio regressa ao telefone, por exemplo, após o seu dispositivo Bluetooth se desligar.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Configuração do dispositivo</string>
     <string name="devices_device_config_section_general_label">Geral</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Adicionar dispositivo</string>
     <string name="label_just_a_moment_please">Aguarde um pouco.</string>
     <string name="label_notification_channel_status">Estado</string>
+    <string name="monitor_notification_starting">A iniciar…</string>
     <string name="action_set">Definir</string>
     <string name="action_cancel">Cancelar</string>
     <string name="label_invalid_input">Entrada inválida</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Eliminar</string>
     <string name="general_cancel_action">Cancelar</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Dispensar</string>
+    <string name="general_progress_loading">A carregar…</string>
     <string name="general_configure_action">Configurar</string>
     <string name="battery_optimization_hint_title">Otimização da bateria</string>
     <string name="battery_optimization_hint_message">As otimizações da bateria estão ativas e podem impedir o funcionamento adequado. Considera desativá-las.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Acesso ao Não Incomodar</string>
     <string name="dnd_access_hint_message">Sem acesso ao Não Incomodar, as definições de toque, notificação e modo Não Incomodar não podem ser aplicadas quando os teus dispositivos se ligam.</string>
     <string name="dnd_access_fix_action">Conceder acesso</string>
+    <string name="device_speaker_hint_title">Volumes após desligação</string>
+    <string name="device_speaker_hint_message">Quer que os seus volumes sejam restaurados quando um dispositivo Bluetooth se desligar? Adicione \"Altifalante do dispositivo\" como um dispositivo gerido — os seus volumes são aplicados quando o áudio regressa ao seu telefone.</string>
+    <string name="device_speaker_hint_action">Adicionar</string>
+    <string name="review_app_body">Gostaria de avaliar o BVM? ❤️</string>
+    <string name="review_app_review_action">Avaliar</string>
+    <string name="review_app_dismiss_action">Talvez mais tarde</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Compra cancelada</string>
     <string name="error_iap_unavailable_message">Compras na aplicação não estão disponíveis</string>

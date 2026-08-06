@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Non se atoparon dispositivos non xestionados</string>
     <string name="discover_all_devices_managed_msg">Todos os teus dispositivos emparellados están xestionados! Necesitas un novo?</string>
     <string name="discover_pair_new_device_action">Emparellar novo dispositivo</string>
+    <string name="discover_device_speaker_desc">O propio altofalante do teléfono. Os seus volumes aplícanse cando o audio volve ao teléfono, p.e., despois de que se desconecte o teu dispositivo Bluetooth.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Configuración do dispositivo</string>
     <string name="devices_device_config_section_general_label">Xeral</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Engadir dispositivo</string>
     <string name="label_just_a_moment_please">Agarda un intre, por favor.</string>
     <string name="label_notification_channel_status">Estado</string>
+    <string name="monitor_notification_starting">Iniciando…</string>
     <string name="action_set">Establecer</string>
     <string name="action_cancel">Cancelar</string>
     <string name="label_invalid_input">Entrada non válida</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Eliminar</string>
     <string name="general_cancel_action">Cancelar</string>
     <string name="general_ok_action">Aceptar</string>
+    <string name="general_dismiss_action">Descartar</string>
+    <string name="general_progress_loading">Cargando…</string>
     <string name="general_configure_action">Configurar</string>
     <string name="battery_optimization_hint_title">Optimización da batería</string>
     <string name="battery_optimization_hint_message">As optimizacións da batería están activadas e poden impedir o correcto funcionamento. Considera desactivalas.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Acceso a Non molestar</string>
     <string name="dnd_access_hint_message">Sen acceso a Non molestar, non se poden aplicar os axustes de ton de chamada, notificación e modo Non molestar cando os teus dispositivos se conectan.</string>
     <string name="dnd_access_fix_action">Conceder acceso</string>
+    <string name="device_speaker_hint_title">Volumes despois da desconexión</string>
+    <string name="device_speaker_hint_message">¿Queres que os teus volumes se restauren cando un dispositivo Bluetooth se desconecta? Engade \"Altofalante do dispositivo\" como un dispositivo xestionado — os seus volumes aplícanse cando o audio volve ao teu teléfono.</string>
+    <string name="device_speaker_hint_action">Engadir</string>
+    <string name="review_app_body">Gustaríalle deixar unha valoración para BVM? ❤️</string>
+    <string name="review_app_review_action">Valorar</string>
+    <string name="review_app_dismiss_action">Quizais máis tarde</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Compra cancelada</string>
     <string name="error_iap_unavailable_message">As compras dentro da aplicación non están dispoñibles</string>

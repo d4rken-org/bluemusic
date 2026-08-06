@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name_upgraded">BSP Pro</string>
     <string name="app_name_upgrade_postfix">Pro</string>
     <string name="upgrade_badge_label">PRO</string>
     <string name="upgrade_feature_requires_pro">Nepieciešams BSP Pro</string>
     <string name="upgrade_prompt_title">Jaunināt uz BSP Pro</string>
     <string name="upgrade_prompt_body">Bluetooth skaļuma pārvaldnieks Pro piedāvā labākus rezultātus, vairāk funkciju un opciju sapļrotājiem lietotājiem.</string>
     <string name="upgrade_prompt_upgrade_action">Jaunināt</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Jaunināt uz %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth skaļuma pārvaldniekam nav reklāmu un tas nepardod lietotāju datus. Manu darbu finansiē jūs.</string>
     <string name="upgrade_screen_why_title">Priekšrocības</string>
     <string name="upgrade_screen_subscription_trial_action">Sāciet bezmaksas 14 dienu izmēģinājumu</string>
@@ -49,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Neizdevās izveidot savienojumu ar Google Play. Lūdzu, pārbaudi interneta savienojumu un mēģini vēlreiz.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play nav pieejams</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth skaļuma pārvaldnieks nevar izveidot savienojumu ar Google Play. Vai Google Play ir instalēts un atjaunināts? Vai Google konts ir piezēmošanās? Mēģiniet notīrīt Google Play lietotnes kešatmiņu un pārstārtout ierīci.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Nevarēja atvērt Google Play. Tas var nebūt instalēts, atspējots vai ierobežots šajā ierīcē.</string>
     <string name="upgrades_no_purchases_found_check_account">Pirkumi nav atrasti. Vai izmantojat pareizo kontu?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Jaunināšanas opcijas</string>
+    <string name="upgrade_screen_offers_body">Abas opcijas atbloķē tieši tās pašas Pro funkcijas — izvēlieties to, kas jums der.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Cenas nav pieejamas</string>
+    <string name="upgrade_screen_offers_unavailable_message">Cenas šobrīd nevarēja ielādēt. Pārbaudiet Google Play un mēģiniet vēlreiz pēc brīža.</string>
+    <string name="upgrade_screen_benefits_body">• Neierobežoti ierīces\n• Pielāgoti savienojuma darbības\n• Tēmas pielāgošana\n• Papildu skaļuma vadības iespējas\n• Atbalstīt turpmāko attīstību ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Gadīga abonēšana</string>
+    <string name="upgrade_screen_subscription_offer_body">Sākas ar bezmaksas izmēģinājumu, tad atjaunojas katru gadu. Jebkurā brīdī to varat atteikt no Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Atjaunojas katru gadu. Jebkurā brīdī to varat atteikt no Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Mūžīga atbloķēšana</string>
+    <string name="upgrade_screen_iap_offer_body">Maksājiet vienreiz un Pro būs jūsu uz mūžu.</string>
+    <string name="upgrade_screen_owned_hero_title">Jūs esat Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Jums pieder %1$s uz mūžu.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Jūsu %1$s abonēšana ir aktīva.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Jūsu abonēšana nav iestatīta atjaunošanai, tāpēc varat pārslēgties uz vienreizēju pirkumu tagad. Pievērsiet uzmanību: tā ir atsevišķa maksāšana, kas neatceļ vai neatgriezīs jūsu abonēšanu, tāpēc izmantojiet vienu un to pašu Google kontu abiem.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Vispirms atceliet savu atjaunojamo abonēšanu Google Play, pēc tam varat pārslēgties uz vienreizēju pirkumu.</string>
+    <string name="upgrade_screen_restore_body">Jau pirkāt Pro šajā kontā? Lūdziet Google Play pārbaudīt jūsu pirkumus.</string>
+    <string name="upgrade_screen_restore_checked_message">Mēs lūdzām Google Play pārbaudīt šī konta pirkumus un neatradām nevienu.</string>
+    <string name="upgrade_screen_restore_contact_hint">Joprojām iestrēgusi? Sazinieties no tā paša Google konta, ar kuro esat veikuši pirkumu, iekļaujiet Google Play pasūtījuma numuru, un mēs to sakārtosim.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Mēs nevarējām laicīgi pabeigt pārbaudi ar Google Play, tāpēc mēs vēl nezinām jūsu pirkuma statusu — gaidiet brīdi un mēģiniet vēlreiz.</string>
+    <string name="upgrades_gplay_billing_error_label">Pirkuma problēma</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play ziņoja par problēmu: %1$s. Mēģiniet vēlreiz vēlāk vai restartējiet ierīci.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Piedāvājums nav pieejams</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play šobrīd nepiedāvāja šo vienumu. Tas var būt nepieejams jūsu kontam vai reģionam — lūdzu, mēģiniet vēlreiz vēlāk.</string>
 </resources>

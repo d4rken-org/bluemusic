@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Nu s-au găsit dispozitive negestionate</string>
     <string name="discover_all_devices_managed_msg">Toate dispozitivele tale asociate sunt gestionate! Ai nevoie de unul nou?</string>
     <string name="discover_pair_new_device_action">Asociază dispozitiv nou</string>
+    <string name="discover_device_speaker_desc">Difuzorul propriu al telefonului. Volumele sale sunt aplicate când audio se comută înapoi la telefon, de exemplu după ce dispozitivul Bluetooth se deconectează.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Configurația dispozitivului</string>
     <string name="devices_device_config_section_general_label">General</string>
@@ -319,6 +320,7 @@
     <string name="label_add_device">Adaugă dispozitiv</string>
     <string name="label_just_a_moment_please">O clipă, te rog.</string>
     <string name="label_notification_channel_status">Stare</string>
+    <string name="monitor_notification_starting">Se pornește…</string>
     <string name="action_set">Setează</string>
     <string name="action_cancel">Anulează</string>
     <string name="label_invalid_input">Date de intrare nevalide</string>
@@ -395,6 +397,8 @@
     <string name="general_delete_action">Șterge</string>
     <string name="general_cancel_action">Anulează</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Respinge</string>
+    <string name="general_progress_loading">Se încarcă…</string>
     <string name="general_configure_action">Configurează</string>
     <string name="battery_optimization_hint_title">Optimizarea bateriei</string>
     <string name="battery_optimization_hint_message">Optimizările de baterie sunt activate și pot preveni funcționarea corectă. Ia în considerare dezactivarea lor.</string>
@@ -406,6 +410,12 @@
     <string name="dnd_access_hint_title">Acces la Nu deranja</string>
     <string name="dnd_access_hint_message">Fără acces la Nu deranja, setările pentru ton de apel, notificări și modul Nu deranja nu pot fi aplicate când dispozitivele tale se conectează.</string>
     <string name="dnd_access_fix_action">Acordă accesul</string>
+    <string name="device_speaker_hint_title">Volume după deconectare</string>
+    <string name="device_speaker_hint_message">Vrei ca volumele tale să fie restaurate când un dispozitiv Bluetooth se deconectează? Adaugă \"Difuzor dispozitiv\" ca dispozitiv gestionat — volumele sale sunt aplicate când audio se comută înapoi la telefonul tău.</string>
+    <string name="device_speaker_hint_action">Adaugă</string>
+    <string name="review_app_body">Doriți să lăsați aplicației BVM o recenzie? ❤️</string>
+    <string name="review_app_review_action">Revizuire</string>
+    <string name="review_app_dismiss_action">Poate mai târziu</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Achiziţie anulată</string>
     <string name="error_iap_unavailable_message">Achiziţiile din aplicație nu sunt disponibile</string>

@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Engin óstýrð tæki fundust</string>
     <string name="discover_all_devices_managed_msg">Öll pöruð tæki þín eru stýrð! Þarftu nýtt?</string>
     <string name="discover_pair_new_device_action">Para nýtt tæki</string>
+    <string name="discover_device_speaker_desc">Eigin hátalari þessa sími. Hljóðstyrk hans er notaður þegar hljóð skiptir aftur til símans, t.d. eftir að Bluetooth tækinu þínu er aftengst.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Tækjastillingar</string>
     <string name="devices_device_config_section_general_label">Almennt</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Bæta við tæki</string>
     <string name="label_just_a_moment_please">Augnablik, takk.</string>
     <string name="label_notification_channel_status">Staða</string>
+    <string name="monitor_notification_starting">Ræsir…</string>
     <string name="action_set">Stilla</string>
     <string name="action_cancel">Hætta við</string>
     <string name="label_invalid_input">Ógilt inntak</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Eyða</string>
     <string name="general_cancel_action">Hætta við</string>
     <string name="general_ok_action">Í lagi</string>
+    <string name="general_dismiss_action">Hafna</string>
+    <string name="general_progress_loading">Hleður…</string>
     <string name="general_configure_action">Stilla</string>
     <string name="battery_optimization_hint_title">Rafhlöðufínstilling</string>
     <string name="battery_optimization_hint_message">Rafhlöðufínstillingar eru virkar og geta komið í veg fyrir rétta virkni. Íhugið að slökkva á þem.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Aðgangur að „Trufla ekki“</string>
     <string name="dnd_access_hint_message">Án aðgangs að „Trufla ekki“ er ekki hægt að nota stillingar fyrir hringitón, tilkynningar og „Trufla ekki“-stillingar þegar tækin þín tengjast.</string>
     <string name="dnd_access_fix_action">Veita aðgang</string>
+    <string name="device_speaker_hint_title">Hljóðstyrk eftir aftengslu</string>
+    <string name="device_speaker_hint_message">Viltu að hljóðstyrk þinn sé endurreistur þegar Bluetooth tæki aftengist? Bættu við \"Símháltalara\" sem stjórnað tæki — hljóðstyrk hans er notaður þegar hljóð skiptir aftur til símans þíns.</string>
+    <string name="device_speaker_hint_action">Bæta við</string>
+    <string name="review_app_body">Viltu skilja eftir umsögn um BVM? ❤️</string>
+    <string name="review_app_review_action">Umsögn</string>
+    <string name="review_app_dismiss_action">Kannski síðar</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Kaup afturkallað</string>
     <string name="error_iap_unavailable_message">Kaup í forriti eru ekki tiltæk</string>

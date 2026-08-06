@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Yönetilmeyen cihaz bulunamadı</string>
     <string name="discover_all_devices_managed_msg">Tüm eşleştirilmiş cihazların yönetiliyor! Yeni bir tane mi lazım?</string>
     <string name="discover_pair_new_device_action">Yeni cihaz eşleştir</string>
+    <string name="discover_device_speaker_desc">Telefonun kendi hoparlörü. Ses telefona geri döndüğünde (örneğin Bluetooth cihazınızın bağlantısı kesildiğinde) ses seviyeleri uygulanır.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Cihaz yapılandırması</string>
     <string name="devices_device_config_section_general_label">Genel</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Cihaz ekle</string>
     <string name="label_just_a_moment_please">Bir dakika, lütfen.</string>
     <string name="label_notification_channel_status">Durum</string>
+    <string name="monitor_notification_starting">Başlatılıyor…</string>
     <string name="action_set">Ayarla</string>
     <string name="action_cancel">İptal</string>
     <string name="label_invalid_input">Geçersiz giriş</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Sil</string>
     <string name="general_cancel_action">İptal</string>
     <string name="general_ok_action">Tamam</string>
+    <string name="general_dismiss_action">Yoksay</string>
+    <string name="general_progress_loading">Yükleniyor…</string>
     <string name="general_configure_action">Yapılandır</string>
     <string name="battery_optimization_hint_title">Pil optimizasyonu</string>
     <string name="battery_optimization_hint_message">Pil optimizasyonları etkin ve düzgün çalışmayı engelleyebilir. Bunları devre dışı bırakmayı düşün.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Rahatsız Etme erişimi</string>
     <string name="dnd_access_hint_message">Rahatsız Etme erişimi olmadan, cihazlarınız bağlandığında zıl sesi, bildirim ve Rahatsız Etme modu ayarları uygulanamaz.</string>
     <string name="dnd_access_fix_action">Erişim izni ver</string>
+    <string name="device_speaker_hint_title">Bağlantı kesilince ses seviyeleri</string>
+    <string name="device_speaker_hint_message">Bluetooth cihazının bağlantısı kesildiğinde ses seviyeleriniz geri yüklenmesini mi istiyorsunuz? \"Cihaz hoparlörü\"nü yönetilen bir cihaz olarak ekleyin — ses telefona geri döndüğünde ses seviyeleri uygulanır.</string>
+    <string name="device_speaker_hint_action">Ekle</string>
+    <string name="review_app_body">BVM\'e bir inceleme bırakmak ister misin? ❤️</string>
+    <string name="review_app_review_action">Değerlendir</string>
+    <string name="review_app_dismiss_action">Belki daha sonra</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Satın alma iptal edildi</string>
     <string name="error_iap_unavailable_message">Uygulama içi satın almalar mevcut değil</string>

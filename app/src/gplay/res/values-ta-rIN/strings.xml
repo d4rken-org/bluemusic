@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">BVM Proக்கு மேம்படுத்து</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro சிறந்த தர்வ்ூதல்கள், மேலும் அனுபவம், மேலும் அமைப்்புகள் மற்றும் சக்தியான பயனர்களுக்கான விருப்பங்களை வாயில் வளர்கிறது.</string>
     <string name="upgrade_prompt_upgrade_action">மேம்படுத்து</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">%1$s க்கு மேம்படுத்தவும்</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager விளம்பரங்கள் இல்லாதது மற்றும் பயனர் தரவுகளை விற்கவிற்கை இல்லை. என் பணியின் நிதியம் உங்களால் வழங்கப்படுகிறது.</string>
     <string name="upgrade_screen_why_title">நன்மைகள்</string>
     <string name="upgrade_screen_subscription_trial_action">இலவச 14-நாள் சோதனையைத் தொடங்கு</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Google Play கு இணைய முடியவில்லை. தயவு செய்து உங்கள் இணைய இணைப்பை சரிபார்த்து மீண்டும் முயற்சி செய்யவும்.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play கிடைக்கவில்லை</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Playஆல் இணையமுடியவில்லை. Google Play நிறுவப்பட்டு புதுப்பிக்கப்பட்டதா? உங்கள் Google கணக்கு உள்நுழைகிறீர்களா? Google Play பயன்பாட்டுகள் தீளிப்பை அழித்து சாதனத்தை மறுதொடக்கம் செய்து முயற்சிக்கவும்.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Play ஐ திறக்க முடியவில்லை. இது சாதனத்தில் இல்லாமல் இருக்கலாம், முடக்கப்பட்டிருக்கலாம் அல்லது கட்டுப்படுத்தப்பட்டிருக்கலாம்.</string>
     <string name="upgrades_no_purchases_found_check_account">கொள்முதல்கள் எதுவும் இல்லை. நீங்கள் சரியான கணக்கைப் பயன்படுத்துகிறீர்களா?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">மேம்படுத்தல் விருப்பங்கள்</string>
+    <string name="upgrade_screen_offers_body">இரண்டு விருப்பங்களும் ஒரே Pro அம்சங்களை திறக்கின்றன — உங்களுக்குப் பொருத்தமான ஒன்றைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="upgrade_screen_offers_unavailable_title">விலைகள் கிடைக்கவில்லை</string>
+    <string name="upgrade_screen_offers_unavailable_message">விலைகள் இப்போது ஏற்ற முடியவில்லை. Google Play ஐ சரிபார்க்கவும் மற்றும் ஒரு தருணத்தில் மீண்டும் முயற்சி செய்யவும்.</string>
+    <string name="upgrade_screen_benefits_body">• வரம்பற்ற சாதனங்கள்\n• தனிப்பயன் இணைப்பு செயல்கள்\n• கருப்பொருள் தனிப்பயனாக்கம்\n• முன்னேற்ற ஒலி கட்டுப்பாடுகள்\n• வருங்கால வளர்ச்சிக்கு ஆதரவு ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">வருடாந்த சந்தா</string>
+    <string name="upgrade_screen_subscription_offer_body">இலவச சோதனையுடன் தொடங்குகிறது, பின்னர் ஆண்டுக்கு புதுப்பிக்கப்படுகிறது. Google Play இல் எந்த நேரத்திலும் ரத்து செய்யலாம்.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">ஆண்டுக்கு புதுப்பிக்கப்படுகிறது. Google Play இல் எந்த நேரத்திலும் ரத்து செய்யலாம்.</string>
+    <string name="upgrade_screen_iap_offer_title">வாழ்நாள் திறக்கல்</string>
+    <string name="upgrade_screen_iap_offer_body">ஒரு முறை பணம் செலுத்தவும் மற்றும் Pro ஐ என்றென்றும் சொந்தமாக வைத்துக்கொள்ளவும்.</string>
+    <string name="upgrade_screen_owned_hero_title">நீங்கள் Pro ஆகிவிட்டீர்கள்! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">நீங்கள் %1$s ஐ என்றென்றும் சொந்தமாக வைத்துக்கொள்ளுகிறீர்கள்.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">உங்கள் %1$s சந்தா செயல்பாட்டுக்குள் உள்ளது.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">உங்கள் சந்தா புதுப்பிக்க அமைக்கப்படவில்லை, எனவே நீங்கள் இப்போது ஒரு முறை வாங்குதலுக்கு மாற்றலாம். முன்னெச்சரிக்கை: இது உங்கள் சந்தாவை ரத்து செய்யாமல் அல்லது திருப்பி செலுத்தாமல் ஒரு தனிப்பட்ட கட்டணம், எனவே இரண்டிற்கும் ஒரே Google கணக்கைப் பயன்படுத்தவும்.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Google Play இல் உங்கள் புதுப்பிக்கப்படும் சந்தாவை முதலில் ரத்து செய்யவும், பின்னர் நீங்கள் ஒரு முறை வாங்குதலுக்கு மாற்றலாம்.</string>
+    <string name="upgrade_screen_restore_body">ஏற்கனவே இந்த கணக்கில் Pro ஐ வாங்கினீர்களா? Google Play ஐ உங்கள் வாங்குதல்களை மீண்டும் சரிபார்க்க கேளுங்கள்.</string>
+    <string name="upgrade_screen_restore_checked_message">நாங்கள் Google Play ஐ இந்த கணக்கின் வாங்குதல்களை மீண்டும் சரிபார்க்க கேட்டோம் மற்றும் ஒன்றைக் கண்டுபிடிக்கவில்லை.</string>
+    <string name="upgrade_screen_restore_contact_hint">இன்னும் சிக்கலில் உள்ளீர்களா? நீங்கள் வாங்கிய ஒரே Google கணக்கிலிருந்து தொடர்பு கொள்ளுங்கள், உங்கள் Google Play ஆணை எண்ணைச் சேர்த்து, நாங்கள் அதைத் தீர்ப்போம்.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">நாங்கள் Google Play உடன் சரிபார்ப்பை சரியான நேரத்தில் முடிக்க முடியவில்லை, எனவே உங்கள் வாங்குதல் நிலை இன்னும் தெரியவில்லை — ஒரு தருணத்தை கொடுங்கள் மற்றும் மீண்டும் முயற்சி செய்யவும்.</string>
+    <string name="upgrades_gplay_billing_error_label">வாங்குதல் சிக்கல்</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play ஒரு சிக்கலை அறிவித்தது: %1$s. பிறகு இன்னொரு முறை முயற்சி செய்யுங்கள் அல்லது உங்கள் சாதனத்தை மறுதொடக்கம் செய்யுங்கள்.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">வாய்ப்பு கிடைக்கவில்லை</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play இப்போது இந்த உருப்படியை வழங்கவில்லை. இது உங்கள் கணக்கு அல்லது பிராந்திய இப்போது கிடைக்கவில்லை — பிறகு மீண்டும் முயற்சி செய்யவும்.</string>
 </resources>

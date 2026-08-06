@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">دستگاه مدیریت‌نشده‌ای یافت نشد</string>
     <string name="discover_all_devices_managed_msg">همه دستگاه‌های جفت‌شده شما مدیریت می‌شوند! به یکی جدید نیاز دارید؟</string>
     <string name="discover_pair_new_device_action">جفت کردن دستگاه جدید</string>
+    <string name="discover_device_speaker_desc">بلندگوی خود این تلفن. صدای آن زمانی اعمال می‌شود که صدا به تلفن بازگردد، مثلاً بعد از قطع اتصال دستگاه بلوتوث شما.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">پیکربندی دستگاه</string>
     <string name="devices_device_config_section_general_label">عمومی</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">افزودن دستگاه</string>
     <string name="label_just_a_moment_please">یه لحظه صبر کن.</string>
     <string name="label_notification_channel_status">وضعیت</string>
+    <string name="monitor_notification_starting">در حال شروع…</string>
     <string name="action_set">تنظیم</string>
     <string name="action_cancel">لفو</string>
     <string name="label_invalid_input">ورودی نامعتبر</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">حذف</string>
     <string name="general_cancel_action">لفو</string>
     <string name="general_ok_action">باشه</string>
+    <string name="general_dismiss_action">نادیده گرفتن</string>
+    <string name="general_progress_loading">بارگذاری…</string>
     <string name="general_configure_action">پیکربندی</string>
     <string name="battery_optimization_hint_title">بهینه‌سازی باتری</string>
     <string name="battery_optimization_hint_message">بهینه‌سازی باتری فعال است و ممکن است عملکرد صحیح را مختل کند. غیرفعال کردن آن را بررسی کنید.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">دسترسی به مزاحم نشوید</string>
     <string name="dnd_access_hint_message">بدون دسترسی به «مزاحم نشوید»، تنظیمات زنگ، اعلان و حالت DND هنگام اتصال دستگاه‌هایتان اعمال نمی‌شوند.</string>
     <string name="dnd_access_fix_action">موافقت کردن با دسترسی</string>
+    <string name="device_speaker_hint_title">صدا بعد از قطع اتصال</string>
+    <string name="device_speaker_hint_message">می‌خواهید صداهای خود را هنگام قطع اتصال دستگاه بلوتوث بازیابی کنید؟ \"Device speaker\" را به عنوان یک دستگاه مدیریت‌شده اضافه کنید — صداهای آن زمانی اعمال می‌شود که صدا به تلفن شما بازگردد.</string>
+    <string name="device_speaker_hint_action">افزودن</string>
+    <string name="review_app_body">آیا می خواهید نظری برای BVM بگذارید؟ ❤️</string>
+    <string name="review_app_review_action">مرور</string>
+    <string name="review_app_dismiss_action">شاید بعداً</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">خرید لغو شد</string>
     <string name="error_iap_unavailable_message">خرید درون‌برنامهای در دسترس نیست</string>

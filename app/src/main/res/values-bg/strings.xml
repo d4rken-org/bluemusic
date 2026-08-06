@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Не са намерени неуправлявани устройства</string>
     <string name="discover_all_devices_managed_msg">Всички сдвоени устройства се управляват! Нужно ли ти е ново?</string>
     <string name="discover_pair_new_device_action">Сдвои ново устройство</string>
+    <string name="discover_device_speaker_desc">Собственият говорител на телефона. Неговите нива на звука се прилагат, когато аудиото се върне към телефона, напр. след като вашето Bluetooth устройство се развърже.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Конфигурация на устройство</string>
     <string name="devices_device_config_section_general_label">Основни</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Добави устройство</string>
     <string name="label_just_a_moment_please">Момент, моля.</string>
     <string name="label_notification_channel_status">Статус</string>
+    <string name="monitor_notification_starting">Стартиране…</string>
     <string name="action_set">Настрой</string>
     <string name="action_cancel">Отказ</string>
     <string name="label_invalid_input">Невалидно въвеждане</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Изтрий</string>
     <string name="general_cancel_action">Отказ</string>
     <string name="general_ok_action">ОК</string>
+    <string name="general_dismiss_action">Отхвърляне</string>
+    <string name="general_progress_loading">Зареждане…</string>
     <string name="general_configure_action">Конфигурирай</string>
     <string name="battery_optimization_hint_title">Оптимизация на батерията</string>
     <string name="battery_optimization_hint_message">Оптимизациите на батерията са включени и могат да попречат на нормалната работа. Помисли да ги изключиш.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Достъп до режим Не пречи</string>
     <string name="dnd_access_hint_message">Без достъп до режим Не пречи, настройките за звънец, уведомления и режим БзП не могат да се прилагат, когато устройствата ти се свържат.</string>
     <string name="dnd_access_fix_action">Даване на достъп</string>
+    <string name="device_speaker_hint_title">Нива на звука след развръзване</string>
+    <string name="device_speaker_hint_message">Искате ли вашите нива на звука да се възстановяват, когато Bluetooth устройството се развърже? Добавете \"Говорител на устройството\" като управлявано устройство — неговите нива на звука се прилагат, когато аудиото се върне към телефона ви.</string>
+    <string name="device_speaker_hint_action">Добави</string>
+    <string name="review_app_body">Бихте ли искали да оставите на BVM оценка? ❤️</string>
+    <string name="review_app_review_action">Преглед</string>
+    <string name="review_app_dismiss_action">Може би по-късно</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Покупката е отменена</string>
     <string name="error_iap_unavailable_message">Покупките в приложението не са налични</string>

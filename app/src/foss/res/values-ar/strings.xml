@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">لا يعرض Bluetooth Volume Manager أية إعلانات ولا يبيع بيانات المستخدم. التطوير المستمر ممكن فقط بدعمكم.</string>
     <string name="upgrade_screen_how_title">كيف أساعدك</string>
     <string name="upgrade_screen_how_body">كن داعما وراعيا للتطوير! انقر على الزر أدناه لتفعيل جميع الميزات الإضافية وفتح ملفي الخاص برعاة GitHub.</string>
+    <string name="upgrade_screen_why_title">المميزات</string>
+    <string name="upgrade_screen_why_body">• عدد غير محدود من الأجهزة\n• إجراءات اتصال مخصصة\n• تخصيص المظهر\n• عناصر تحكم صوت متقدمة\n• دعم تطوير المصادر المفتوحة 🧙</string>
     <string name="upgrade_screen_sponsor_action">ادعم التطوير</string>
     <string name="upgrade_screen_sponsor_action_hint">البديل هو الإعلانات والتحليلات و Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">شكراً على دعمك لتطوير المصادر المفتوحة ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">عرض حالة الداعم الخاصة بك</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">أنت على النسخة المجانية</string>
+    <string name="upgrade_screen_status_free_body">أصبح مؤيدًا لفتح الميزات الإضافية وتمويل التطوير المستمر.</string>
+    <string name="upgrade_screen_status_free_action">شاهد خيارات الترقية</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">شكرًا لدعمك</string>
     <string name="upgrade_screen_supporter_status_body">لقد فتحت جميع الميزات الإضافية بدعمك لتطوير المصدر المفتوح.</string>

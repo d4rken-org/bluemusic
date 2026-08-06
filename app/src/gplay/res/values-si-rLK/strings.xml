@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">BVM Pro වෙත උත්‍යෝජනය කරන්න</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro වඩා හොඳ ප්‍රතිඵල, වැඩි විශේෂාංග සහ බලවත් පරිශීලකයින් සඳහා විකල්ප ලබා දෙයි.</string>
     <string name="upgrade_prompt_upgrade_action">වැඩිදියුණු කරන්න</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">%1$s වෙත උත්තර කරන්න</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager හි දැන්වීම් නොමැති අතර පරිශීලක දත්ත විකුණන්නේ නැත. මගේ වැඩ ඔබ විසින් මූල්‍යාධාර සපයයි ❤️.</string>
     <string name="upgrade_screen_why_title">වාසි</string>
     <string name="upgrade_screen_subscription_trial_action">දින 14ක නොමිලේ අත්හදා බැලීම ආරම්භ කරන්න</string>
@@ -50,5 +52,26 @@
     <string name="upgrades_gplay_network_error_description">Google Play සමඟ සම්බන්ධ වීමට නොහැකි විය. කරුණාකර ඔබගේ අන්තර්ජාල සම්බන්ධතාව පරීක්ෂා කර නැවත උත්සාහ කරන්න.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ලබා ගත නොහැක</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager හට Google Play වෙත සම්බන්ධ වීමට නොහැකිය. Google Play ස්ථාපිත කර යාවත්කාලීන ද? ඔබේ Google ගිණුම පිවිසී ද? Google Play යෙදුමේ හැඹිලිය ඉවත් කර ඔබේ උපාංගය නැවත ආරම්භ කිරීමට උත්සාහ කරන්න.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Play විවෘත කිරීමට නොහැකි විය. එය මෙම උපාංගයේ අතුරුදහන්, අබල හෝ සීමා කර ඇත.</string>
     <string name="upgrades_no_purchases_found_check_account">කිසිදු මිලදී ගැනීමක් හමු නොවිණි. ඔබ නිවැරදි ගිණුම භාවිතා කරන්නේද?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">උත්තරණ විකල්පයන්</string>
+    <string name="upgrade_screen_offers_body">දෙවිධ විකල්පයන්ම එකම ප්‍රෝ ගුණාංගයන් අගුළු ඇරයි — ඔබට සුදුසු එකක් තෝරන්න.</string>
+    <string name="upgrade_screen_offers_unavailable_title">මිල ලබාගත නොහැක</string>
+    <string name="upgrade_screen_offers_unavailable_message">මිල දැනින් පූරණය කළ හැකි නොවිණි. Google Play පිරික්සා ගෙන තත්පරයකින් නැවත ප්‍රයාස කරන්න.</string>
+    <string name="upgrade_screen_benefits_body">• සීමාවිරහිත උපාංගයන්\n• අභිරුචි සංයෝගනය ක්‍රියා\n• තේමා අභිරුචිකරණ\n• උසස් ශබ්ද පාලන\n• අනාගත සංවර්ධනය සහාය කරන්න ❤️</string>
+    <string name="upgrade_screen_subscription_offer_body">නිරීක්ෂණ කාලය සමඟ ආරම්භ වන්න, පසුව වාර්ෂිකව නවීකරණය කරන්න. Google Play හි ඕනෑම අවස්ථාවක අවලංගු කරන්න.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">වාර්ෂිකව නවීකරණය කරන්න. Google Play හි ඕනෑම අවස්ථාවක අවලංගු කරන්න.</string>
+    <string name="upgrade_screen_iap_offer_title">ජීවිතකාල අගුළු හැරීම</string>
+    <string name="upgrade_screen_iap_offer_body">එක්වර ගෙවන්න සහ ඉතිරි කාලය Pro හිමිකරන්න.</string>
+    <string name="upgrade_screen_owned_hero_title">ඔබ Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">ඔබ %1$s ඉතිරි කාලය හිමිකරන්න.</string>
+    <string name="upgrade_screen_restore_body">මේ ගිණුමෙහි දැනටමත් Pro ගෙවා ඇත? Google Play ට ඔබේ ගෙවීම් නැවත පිරික්සීමට ඉල්ලා සිටින්න.</string>
+    <string name="upgrade_screen_restore_checked_message">අපි Google Play ට මේ ගිණුමේ ගෙවීම් නැවත පිරික්සීමට ඉල්ලා සිටින කිසිවක් සොයාගෙන නැත.</string>
+    <string name="upgrade_screen_restore_contact_hint">තවදුරටත් සිරස්ස? ඔබ ගෙවා ගත් එකම Google ගිණුමෙන් සම්බන්ධ වන්න, ඔබේ Google Play ඇණවුම් අංකය ඇතුළු කරන්න, සහ අපි එය විසඳා ගනිමු.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">අපි Google Play සමඟ කාලීනව පිරික්සීම අවසන් කිරීමට හැකි නොවිණි, එබැවින් අපි තවමත් ඔබේ ගෙවීමේ තත්ත්වය දන්නේ නැත — තත්පරයක් ගෙවී නැවත ප්‍රයාස කරන්න.</string>
+    <string name="upgrades_gplay_billing_error_label">ගෙවීමේ ගැටලුව</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play ගැටලුවක් වාර්තා කළේය: %1$s. පසුව නැවත ප්‍රයාස කරන්න හෝ ඔබේ උපාංගය නැවත ආරම්භ කරන්න.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">ඉදිරිපත්කරණ ලබාගත නොහැක</string>
 </resources>

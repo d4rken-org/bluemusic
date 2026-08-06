@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager പ്രജ്ഞാപനങ്ങൾ ഇല്ല, ഉപയോക്തൃ ഡേറ്റ വിൽക്കുന്നില്ല. ഐക്കമാന വികസനം നിങ്ങൾ വഴി മാത്രം സാധ്യമാകുന്നു.</string>
     <string name="upgrade_screen_how_title">എങ്ങനെ സഹായിക്കാം</string>
     <string name="upgrade_screen_how_body">പാട്രോൺ ആകുകയും വികസനം സ്പോൺസർ ചെയ്യുകയും ചെയ്യുക! എല്ലാ അധിക സവിശേഷതകളും സജീവമാക്കാനും എന്റെ GitHub Sponsors പ്രൊഫൈൽ തുറക്കാനും താഴെയുള്ള ബട്ടൺ ടാപ്പ് ചെയ്യുക.</string>
+    <string name="upgrade_screen_why_title">പ്രയോജനങ്ങൾ</string>
+    <string name="upgrade_screen_why_body">• പരിധിയില്ലാത്ത ഡിവൈസുകൾ\n• കസ്റ്റം കണക്ഷൻ പ്രവർത്തനങ്ങൾ\n• തീം അനുകൂലീകരണം\n• വിപുലമായ വോളിയം നിയന്ത്രണങ്ങൾ\n• തുറന്ന സ്രോത വികസനം പിന്തുണയ്ക്കുക 🧙</string>
     <string name="upgrade_screen_sponsor_action">വികസനം സ്പോൺസർ ചെയ്യുക</string>
     <string name="upgrade_screen_sponsor_action_hint">പരസ്യങ്ങൾ, അനലിറ്റിക്‌സ്, ഗൂഗിൾ പ്ലേ എന്നിവയാണ് ബദൽ🙁</string>
     <string name="upgrade_screen_thanks_toast">ഓപ്പൺ സോഴ്‌സ് വികസനത്തെ പിന്തുണച്ചതിന് നന്ദി ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">നിങ്ങളുടെ സപ്പോർടർ സ്റ്റാറ്റസ് കാണുക</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">നിങ്ങൾ സ്വതന്ത്ര പതിപ്പ് ഉപയോഗിക്കുന്നു</string>
+    <string name="upgrade_screen_status_free_body">അതിരിക്ത സവിശേഷതകൾ അൺലോക്ക് ചെയ്യുന്നതിനും തുടർന്നുള്ള വികസനം പിന്തുണയ്ക്കുന്നതിനും ഒരു സപ്പോർട്ടർ ആകുക.</string>
+    <string name="upgrade_screen_status_free_action">അപ്ഗ്രേഡ് ഐച്ഛികതകൾ കാണുക</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">നിങ്ങളുടെ പിന്തുണയ്ക്കുള്ള നന്ദി</string>
     <string name="upgrade_screen_supporter_status_body">തുറന്ന സോഴ്സ് വികസനത്തെ പിന്തുണച്ച് നിങ്ങൾ എല്ലാ അധിക സവിശേഷതകളും അൻലോക്ക് ചെയ്തിരിക്കുന്നു.</string>

@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager không có quảng cáo và không bán dữ liệu người dùng. Việc tiếp tục phát triển chỉ có thể thực hiện được nhờ bạn.</string>
     <string name="upgrade_screen_how_title">Làm thế nào để giúp đỡ</string>
     <string name="upgrade_screen_how_body">Trở thành người bảo trợ và tài trợ phát triển! Nhấp vào nút bên dưới để kích hoạt tất cả các tính năng bổ sung và mở hồ sơ Nhà tài trợ GitHub của tôi.</string>
+    <string name="upgrade_screen_why_title">Lợi thế</string>
+    <string name="upgrade_screen_why_body">• Thiết bị không giới hạn\n• Tùy chỉnh hành động kết nối\n• Tùy chỉnh chủ đề\n• Điều khiển âm lượng nâng cao\n• Hỗ trợ phát triển mã nguồn mở 🧙</string>
     <string name="upgrade_screen_sponsor_action">Tài trợ nhà phát triển</string>
     <string name="upgrade_screen_sponsor_action_hint">Giải pháp thay thế là quảng cáo, phân tích và Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Cảm ơn bạn đã hỗ trợ phát triển mã nguồn mở ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Xem trạng thái người ủng hộ của bạn</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Bạn đang sử dụng phiên bản miễn phí</string>
+    <string name="upgrade_screen_status_free_body">Trở thành một người ủng hộ để mở khóa các tính năng bổ sung và tài trợ phát triển tiếp tục.</string>
+    <string name="upgrade_screen_status_free_action">Xem các tùy chọn nâng cấp</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Cảm ơn sự ủng hộ của bạn</string>
     <string name="upgrade_screen_supporter_status_body">Bạn đã mở khóa tất cả các tính năng bổ sung nhờ ủng hộ phát triển mã nguồn mở.</string>

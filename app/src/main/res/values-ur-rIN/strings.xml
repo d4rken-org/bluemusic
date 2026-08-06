@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">کوئی غیر منظم ڈیوائس نہیں ملی</string>
     <string name="discover_all_devices_managed_msg">آپ کی تمام جوڑی گئی ڈیوائسیں منظم ہیں! کوئی نئی ڈیوائس چاہیے؟</string>
     <string name="discover_pair_new_device_action">نئی ڈیوائس جوڑیں</string>
+    <string name="discover_device_speaker_desc">یہ فون کا اپنا اسپیکر۔ جب آڈیو فون پر واپس آتا ہے تو اس کے حجم کو لاگو کیا جاتا ہے، مثال کے طور پر آپ کے Bluetooth ڈیوائس کے منقطع ہونے کے بعد۔</string>
     <!-- Devices -->
     <string name="devices_device_config_label">ڈیوائس کی ترتیب</string>
     <string name="devices_device_config_section_general_label">عمومی</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">ڈیوائس شامل کریں</string>
     <string name="label_just_a_moment_please">بس ایک لمحہ۔</string>
     <string name="label_notification_channel_status">حیثیت</string>
+    <string name="monitor_notification_starting">شروع ہو رہا ہے…</string>
     <string name="action_set">سیٹ کریں</string>
     <string name="action_cancel">منسوخ کریں</string>
     <string name="label_invalid_input">غلط ان پٹ</string>
@@ -390,6 +392,7 @@
     <string name="general_delete_action">حذف کریں</string>
     <string name="general_cancel_action">منسوخ کریں</string>
     <string name="general_ok_action">ٹھیک ہے</string>
+    <string name="general_progress_loading">لوڈ ہو رہا ہے…</string>
     <string name="general_configure_action">ترتیب دیں</string>
     <string name="battery_optimization_hint_title">بیٹری آپٹیمائزیشن</string>
     <string name="battery_optimization_hint_message">بیٹری آپٹیمائزیشنز فعال ہیں اور صحیح کام کاج روک سکتی ہیں۔ انہیں بند کرنے کی کوشش کریں۔</string>
@@ -401,6 +404,12 @@
     <string name="dnd_access_hint_title">ڈو ناٹ ڈسٹرب رسائی</string>
     <string name="dnd_access_hint_message">ڈو ناٹ ڈسٹرب رسائی کے بغیر، آپ کے ڈیوائسز سے کنیکٹ ہونے پر رنگ، اطلاع اور ڈی این ڈی موڈ کی سیٹنگز لاگو نہیں ہو سکتیں۔</string>
     <string name="dnd_access_fix_action">رسائی فراہم کریں</string>
+    <string name="device_speaker_hint_title">منقطع کے بعد حجم</string>
+    <string name="device_speaker_hint_message">کیا آپ چاہتے ہیں کہ جب Bluetooth ڈیوائس منقطع ہو تو آپ کا حجم بحال ہو؟ \"Device speaker\" کو ایک منظم شدہ ڈیوائس کے طور پر شامل کریں — اس کے حجم کو لاگو کیا جاتا ہے جب آڈیو آپ کے فون پر واپس آتا ہے۔</string>
+    <string name="device_speaker_hint_action">شامل کریں</string>
+    <string name="review_app_body">کیا آپ BVM کے لیے ریویو چھوڑنا چاہیں گے؟️ ❤️</string>
+    <string name="review_app_review_action">ریویو</string>
+    <string name="review_app_dismiss_action">شاید بعد میں</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">خریداری منسوخ</string>
     <string name="error_iap_unavailable_message">این ایپ خریداری دستیاب نہیں</string>

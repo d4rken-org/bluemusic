@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">İdarəsiz cihaz tapılmadı</string>
     <string name="discover_all_devices_managed_msg">Bütün cütləşdirilmiş cihazlarınız idarə olunur! Yenisini əlavə etmək istəyirsiniz?</string>
     <string name="discover_pair_new_device_action">Yeni cihaz cütləşdir</string>
+    <string name="discover_device_speaker_desc">Bu telefonun öz hoparlörü. Onun səs səviyyələri audio telefona qayıtdıqda tətbiq edilir, məsələn Bluetooth cihazınız ayırıldıqdan sonra.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Cihaz konfiqurasiyası</string>
     <string name="devices_device_config_section_general_label">Ümumi</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Cihaz əlavə et</string>
     <string name="label_just_a_moment_please">Bir dəqiqə, zəhmət olmasa.</string>
     <string name="label_notification_channel_status">Vəziyyət</string>
+    <string name="monitor_notification_starting">Başladılır…</string>
     <string name="action_set">Tənzimlə</string>
     <string name="action_cancel">İmtina</string>
     <string name="label_invalid_input">Etibarsız giriş</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Sil</string>
     <string name="general_cancel_action">Ləğv et</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Rədd et</string>
+    <string name="general_progress_loading">Yüklənir</string>
     <string name="general_configure_action">Konfiqurasiya et</string>
     <string name="battery_optimization_hint_title">Batareya optimallaşdırması</string>
     <string name="battery_optimization_hint_message">Batareya optimallaşdırması aktivdir və düzgün işləməyə mane ola bilər. Söndürməyi düşünün.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Narahat etməyin rejiminə giriş</string>
     <string name="dnd_access_hint_message">Narahat etmə rejiminə giriş olmadan, zəng çalğısı, bildiriş və Narahat etmə rejimi parametrləri cihazlarınız qoşulduqda tətbiq edilməyə bilər.</string>
     <string name="dnd_access_fix_action">Giriş icazəsi ver</string>
+    <string name="device_speaker_hint_title">Ayırıldıqdan sonra səs səviyyələri</string>
+    <string name="device_speaker_hint_message">Bluetooth cihazı ayırıldıqda səs səviyyələriniz bərpa olunmasını istəyirsiniz? \"Cihaz hoparlörü\"-nü yönetilən cihaz olaraq əlavə edin — onun səs səviyyələri audionuz telefonunuza qayıtdıqda tətbiq edilir.</string>
+    <string name="device_speaker_hint_action">Əlavə et</string>
+    <string name="review_app_body">BVM üçün rəy yazmaq istərdinmi? ❤️</string>
+    <string name="review_app_review_action">Baxış</string>
+    <string name="review_app_dismiss_action">Bəlkə sonra</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Satınalma ləğv edildi</string>
     <string name="error_iap_unavailable_message">Tətbiq daxili alışlar mövcud deyil</string>

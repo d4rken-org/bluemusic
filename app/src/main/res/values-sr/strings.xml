@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Ниједан неуправљан уређај није понађен</string>
     <string name="discover_all_devices_managed_msg">Сви ваши спарени уређаји су већ управљани! Требате нови?</string>
     <string name="discover_pair_new_device_action">Упари нови уређај</string>
+    <string name="discover_device_speaker_desc">Сопствени звучник телефона. Јачине звука се примењују када се звук врати на телефон, нпр. након што се твој Bluetooth уређај откачи.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Конфигурација уређаја</string>
     <string name="devices_device_config_section_general_label">Oпште</string>
@@ -319,6 +320,7 @@
     <string name="label_add_device">Додај уређај</string>
     <string name="label_just_a_moment_please">Моментице, молим.</string>
     <string name="label_notification_channel_status">Статус</string>
+    <string name="monitor_notification_starting">Покретање…</string>
     <string name="action_set">Постави</string>
     <string name="action_cancel">Откажи</string>
     <string name="label_invalid_input">Неисправан унос</string>
@@ -395,6 +397,8 @@
     <string name="general_delete_action">Обриши</string>
     <string name="general_cancel_action">Откажи</string>
     <string name="general_ok_action">У реду</string>
+    <string name="general_dismiss_action">Одбаци</string>
+    <string name="general_progress_loading">Учитавање…</string>
     <string name="general_configure_action">Подеси</string>
     <string name="battery_optimization_hint_title">Оптимизација батерије</string>
     <string name="battery_optimization_hint_message">Оптимизација батерије је омогућена и може спречити исправан рад. Размотри искључивање.</string>
@@ -406,6 +410,12 @@
     <string name="dnd_access_hint_title">Приступ режиму Не узнемиравај</string>
     <string name="dnd_access_hint_message">Без приступа режиму „Не узнемирај“, подешавања звона, обавештења и DND режима не могу бити примењена када се твоји уређаји повежу.</string>
     <string name="dnd_access_fix_action">Додели приступ</string>
+    <string name="device_speaker_hint_title">Јачине звука након откачињавања</string>
+    <string name="device_speaker_hint_message">Желиш да се твоје јачине звука врате када се Bluetooth уређај откачи? Додај „Звучник уређаја“ као управљан уређај — његове јачине звука се примењују када се звук врати на твој телефон.</string>
+    <string name="device_speaker_hint_action">Додај</string>
+    <string name="review_app_body">Желиш ли оставити рецензију за BVM? ❤️</string>
+    <string name="review_app_review_action">Оцени</string>
+    <string name="review_app_dismiss_action">Можда касније</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Куповина отказана</string>
     <string name="error_iap_unavailable_message">Куповине у апликацији нису доступне</string>

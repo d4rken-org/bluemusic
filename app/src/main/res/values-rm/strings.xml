@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Nagins apparats betg administrads chattads</string>
     <string name="discover_all_devices_managed_msg">Tuts tes apparats accopplads èn administrads! Dovras in nov?</string>
     <string name="discover_pair_new_device_action">Accopplar nov apparat</string>
+    <string name="discover_device_speaker_desc">La proprisa lavaglia dal telefon. Sias volumen vegn applitgada tgidoñ che l\'audio cuntrescha novamain ala lavaglia dal telefon, p.ex. sdraa che tia apparail Bluetooth sa deconnecta.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Configuraziún da l\'apparat</string>
     <string name="devices_device_config_section_general_label">General</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Agiuntar apparat</string>
     <string name="label_just_a_moment_please">In mument, per plaschair.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="monitor_notification_starting">Davart uschieus…</string>
     <string name="action_set">Fixar</string>
     <string name="action_cancel">Interrumper</string>
     <string name="label_invalid_input">Intrada invalida</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Stizzar</string>
     <string name="general_cancel_action">Interrumper</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Fermar</string>
+    <string name="general_progress_loading">Chargond…</string>
     <string name="general_configure_action">Configurar</string>
     <string name="battery_optimization_hint_title">Optimisaziún da battaria</string>
     <string name="battery_optimization_hint_message">Las optimisaziuns da battaria èn activadas e pon evitar il funcziun correct. Considera da deactivarlas.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Access a «Na disturbar»</string>
     <string name="dnd_access_hint_message">Senza access a «Na disturbar», las reglazions per sonnaria, notificaziuns ed il modus DND na pon betg vegnir applitgadas cur che vos apparats sa connectan.</string>
     <string name="dnd_access_fix_action">Conceder access</string>
+    <string name="device_speaker_hint_title">Volumen sdraa la deconnexiun</string>
+    <string name="device_speaker_hint_message">Vul ti che tias volumen vegnan restauradas tgidoñ che üna apparail Bluetooth sa deconnecta? Agiunscha \"Lavaglia dal apparail\" sco üna apparail administrada — sias volumen vegn applitgada tgidoñ che l\'audio cuntrescha novamain ala tia lavaglia dal telefon.</string>
+    <string name="device_speaker_hint_action">Agiunscha</string>
+    <string name="review_app_body">Vuls tu laschar ina recenziun per BVM? ❤️</string>
+    <string name="review_app_review_action">Recenziun</string>
+    <string name="review_app_dismiss_action">Magari pli tard</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Cumpra annullada</string>
     <string name="error_iap_unavailable_message">Cumpras en l\'app na sun betg disponiblas</string>

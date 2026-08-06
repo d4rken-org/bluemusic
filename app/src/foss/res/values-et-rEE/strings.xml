@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manageris pole reklaame ja see ei müü kasutajaandmeid. Jätkuv arendamine on võimalik vaid teie abil.</string>
     <string name="upgrade_screen_how_title">Kuidas aidata?</string>
     <string name="upgrade_screen_how_body">Hakake toetajaks ja rahastage arendamist. Kõikide lisavõimaluste kasutamiseks ja minu GitHub Sponsors profiili avamiseks puudutage alumist nuppu.</string>
+    <string name="upgrade_screen_why_title">Eelised</string>
+    <string name="upgrade_screen_why_body">• Piiramatu seadmete arv\n• Kohandatud ühendustegevused\n• Kujunduse kohandamine\n• Täpsemad helitugevuse juhtelemendid\n• Toeta avatud lähtekoodiga arendust 🧙</string>
     <string name="upgrade_screen_sponsor_action">Rahastage arendamist</string>
     <string name="upgrade_screen_sponsor_action_hint">Teiseks võimaluseks on reklaamid, analüüs ja Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Aitäh, et toetate avatud lähtekoodiga arendamist ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Vaata oma toetaja staatust</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Kasutad tasuta versiooni</string>
+    <string name="upgrade_screen_status_free_body">Saa toetajaks, et avada lisafunktsioonid ja rahastada jätkuvat arengut.</string>
+    <string name="upgrade_screen_status_free_action">Vaadake täiendamise valikuid</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Täname toetuse eest</string>
     <string name="upgrade_screen_supporter_status_body">Oled avanud kõik lisafunktsioonid, toetades avatud lähtekoodiga arendust.</string>

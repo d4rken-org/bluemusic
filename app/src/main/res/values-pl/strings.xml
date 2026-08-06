@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Nie znaleziono niezarządzanych urządzeń</string>
     <string name="discover_all_devices_managed_msg">Wszystkie twoje sparowane urządzenia są już zarządzane! Potrzebujesz nowego?</string>
     <string name="discover_pair_new_device_action">Sparuj nowe urządzenie</string>
+    <string name="discover_device_speaker_desc">Wbudowany głośnik telefonu. Jego głośności są stosowane, gdy dźwięk wraca do telefonu, np. po rozłączeniu urządzenia Bluetooth.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Konfiguracja urządzenia</string>
     <string name="devices_device_config_section_general_label">Ogólne</string>
@@ -324,6 +325,7 @@ Karol Szastok (K4r0lSz);</string>
     <string name="label_add_device">Dodaj urządzenie</string>
     <string name="label_just_a_moment_please">Chwileczkę.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="monitor_notification_starting">Uruchamianie…</string>
     <string name="action_set">Ustaw</string>
     <string name="action_cancel">Anuluj</string>
     <string name="label_invalid_input">Nieprawidłowa wartość</string>
@@ -401,6 +403,8 @@ Karol Szastok (K4r0lSz);</string>
     <string name="general_delete_action">Usuń</string>
     <string name="general_cancel_action">Anuluj</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Zamknij</string>
+    <string name="general_progress_loading">Ładowanie…</string>
     <string name="general_configure_action">Konfiguruj</string>
     <string name="battery_optimization_hint_title">Optymalizacja baterii</string>
     <string name="battery_optimization_hint_message">Optymalizacje baterii są włączone i mogą przeszkódzić w prawidłowym działaniu. Rozważ ich wyłączenie.</string>
@@ -412,6 +416,12 @@ Karol Szastok (K4r0lSz);</string>
     <string name="dnd_access_hint_title">Dostęp do trybu Nie przeszkadzać</string>
     <string name="dnd_access_hint_message">Bez dostępu do trybu Nie przeszkadzać nie można zastosować ustawień dzwonka, powiadomień i trybu DND podczas łączenia urządzeń.</string>
     <string name="dnd_access_fix_action">Udziel dostępu</string>
+    <string name="device_speaker_hint_title">Głośności po rozłączeniu</string>
+    <string name="device_speaker_hint_message">Chcesz przywrócić głośności po rozłączeniu urządzenia Bluetooth? Dodaj „Głośnik urządzenia” jako zarządzane urządzenie — jego głośności są stosowane, gdy dźwięk wraca do twojego telefonu.</string>
+    <string name="device_speaker_hint_action">Dodaj</string>
+    <string name="review_app_body">Wystawisz opinię dla BVM? ❤️</string>
+    <string name="review_app_review_action">Oceń</string>
+    <string name="review_app_dismiss_action">Może później</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Zakup anulowany</string>
     <string name="error_iap_unavailable_message">Zakupy w aplikacji nie są dostępne</string>

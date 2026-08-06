@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">I-Bluetooth Volume Manager ayinazo izikhangiso futhi ayithengisi idatha yabasebenzisi. Ukuthuthukiswa okuqhubekayo kwenziwa kuphela nguwe.</string>
     <string name="upgrade_screen_how_title">Indlela yokusiza</string>
     <string name="upgrade_screen_how_body">Yiba ngumnikazi futhi uxhase ukuthuthukiswa! Thepha inkinobho engezansi ukuze unike amandla zonke izici ezengeziwe futhi uvule iphrofayili yami ye-GitHub Sponsors.</string>
+    <string name="upgrade_screen_why_title">Izinzuzo</string>
+    <string name="upgrade_screen_why_body">• Imizila engenali\n• Izenzo zokuxhuma zezithubutuhu\n• Ukwenyusa imibono\n• Ukulawula umthwali ophumelele\n• Okusekela ukuthuthuka kwe-open-source 🧙</string>
     <string name="upgrade_screen_sponsor_action">Xhasa ukuthuthukiswa</string>
     <string name="upgrade_screen_sponsor_action_hint">Enye indlela izikhangiso, ukuhlaziya ne-Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Ngiyabonga ngokusekela ukuthuthukiswa komthombo ovulekile ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Buka isimo sakho se-supporter</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Ungakho ichasiyoni engenalo intengo</string>
+    <string name="upgrade_screen_status_free_body">Yiba ongolutho ukuvula izici ezengeziwe futhi ukhuthaze nokuqhubeka nokuthuthuka.</string>
+    <string name="upgrade_screen_status_free_action">Bona okukhethwa kokukhulisa</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Ngiyabonga ngokusekela kwakho</string>
     <string name="upgrade_screen_supporter_status_body">Uvule lonke izici ezongeza ngokusekela umthuthukiso we-open-source.</string>

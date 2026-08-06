@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">ບໍ່ພົບອຸປະກອນທີ່ບໍ່ໄດ້ຈັດການ</string>
     <string name="discover_all_devices_managed_msg">ອຸປະກອນທີ່ຈັບຄູ່ທັງໝົດຂອງທ່ານຖືກຈັດການແລ້ວ! ຕ້ອງການໃໝ່ບໍ?</string>
     <string name="discover_pair_new_device_action">ຈັບຄູ່ອຸປະກອນໃໝ່</string>
+    <string name="discover_device_speaker_desc">ລຳໂພງຂອງໂທລະສັບນີ້ເອງ. ລະດັບສຽງຂອງມັນຖືກໃຊ້ໃນເວລາທີ່ສຽງກັບຄືນສູ່ໂທລະສັບ, ຕົວຍ່າງ ໜຼັງຈາກທີ່ອຸປະກອນ Bluetooth ຂອງທ່ານຕັດການເຊື່ອມຕໍ່.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">ການຕັ້ງຄ່າອຸປະກອນ</string>
     <string name="devices_device_config_section_general_label">ທົ່ວໄປ</string>
@@ -311,6 +312,7 @@
     <string name="label_add_device">ເພີ່ມອຸປະກອນ</string>
     <string name="label_just_a_moment_please">ສ଱ກຄູ່ ກະລຸນາ.</string>
     <string name="label_notification_channel_status">ສະຖານະ</string>
+    <string name="monitor_notification_starting">ກຳລັງເລີ່ມຕົ້ນ...</string>
     <string name="action_set">ຕັ້ງ</string>
     <string name="action_cancel">ຍົກເລີກ</string>
     <string name="label_invalid_input">ຂໍ້ມູນທີ່ປ້ອນບໍ່ຖືກຕ້ອງ</string>
@@ -385,6 +387,8 @@
     <string name="general_delete_action">ລຶບ</string>
     <string name="general_cancel_action">ຍົກເລີກ</string>
     <string name="general_ok_action">ຕົກລອງ</string>
+    <string name="general_dismiss_action">ປະຕິເສດ</string>
+    <string name="general_progress_loading">ກຳລັງໂຫຼດ...</string>
     <string name="general_configure_action">ຕັ້ງຄ່າ</string>
     <string name="battery_optimization_hint_title">ການອຫນຸເທບັດເຕຣີ</string>
     <string name="battery_optimization_hint_message">ການອຫນຸເທບັດເຕຣີເອີນໃຊ້ງານແລະອາດເປີດກັ້ນການທຳງານ. ກະລຸນາປິດການອຫນຸເທ.</string>
@@ -396,6 +400,12 @@
     <string name="dnd_access_hint_title">ການເຂົ້າເຖິງ Do Not Disturb</string>
     <string name="dnd_access_hint_message">ໂດຍບໍ່ມີການເຂົ້າເຖິງ Do Not Disturb, ການຕັ້ງຄ່າສຽງໂທລະສັບ, ການແຈ້ງເຕືອນ ແລະ ໂໝດ DND ບໍ່ສາມາດໃຊ້ໄດ້ເມື່ອອຸປະກອນຂອງທ່ານເຊື່ອມຕໍ່.</string>
     <string name="dnd_access_fix_action">ໃຫ້ການເຂົ້າເຖິງ</string>
+    <string name="device_speaker_hint_title">ສຽງຫຼັງຈາກຕັດການເຊື່ອມຕໍ່</string>
+    <string name="device_speaker_hint_message">ຕໍ້ງການໃຫ້ສຽງຂອງທ່ານກັບຄືນໃນເວລາທີ່ອຸປະກອນ Bluetooth ຕັດການເຊື່ອມຕໍ່ບໍ? ເພີ່ມ \"ລຳໂພງອຸປະກອນ\" ເປັນອຸປະກອນທີ່ຈັດການ — ລະດັບສຽງຂອງມັນຖືກໃຊ້ໃນເວລາທີ່ສຽງກັບຄືນສູ່ໂທລະສັບຂອງທ່ານ.</string>
+    <string name="device_speaker_hint_action">ເພີ່ມ</string>
+    <string name="review_app_body">ທ່ານຈະໃຫ້ຄຳເຫັນໃຫ້ BVM ບໍ? ❤️</string>
+    <string name="review_app_review_action">ຄຳເຫັນ</string>
+    <string name="review_app_dismiss_action">ບາງທີພາຍຫຼັງ</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">ການຊື້ຖືກຍກເລີກ</string>
     <string name="error_iap_unavailable_message">ການຊື້ພາຍໃນແອັບບໍ່ພອ້ມໃຊ້ງານ</string>

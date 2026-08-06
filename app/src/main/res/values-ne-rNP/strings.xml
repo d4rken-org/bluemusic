@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">कुनै अव्यवस्थित उपकरण फेला परेन</string>
     <string name="discover_all_devices_managed_msg">तपाईंका सबै जोडिएका उपकरणहरू व्यवस्थित छन्! नयाँ चाहिन्छ?</string>
     <string name="discover_pair_new_device_action">नयाँ उपकरण जोड्नुहोस्</string>
+    <string name="discover_device_speaker_desc">यो फोनको आफ्नो स्पिकर। यसको भलिउमहरू लागू हुन्छन् जब अडियो फोनमा फेरि स्विच हुन्छ, उदाहरणार्थ आपको Bluetooth उपकरण काट हुन्छ पछि।</string>
     <!-- Devices -->
     <string name="devices_device_config_label">उपकरण कन्फिगरेसन</string>
     <string name="devices_device_config_section_general_label">सामान्य</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">उपकरण थप्नुहोस्</string>
     <string name="label_just_a_moment_please">एक क्षण पर्खनुहोस्।</string>
     <string name="label_notification_channel_status">स्थिति</string>
+    <string name="monitor_notification_starting">सुरु हो दै…</string>
     <string name="action_set">सेट गर्नुहोस्</string>
     <string name="action_cancel">रद्द गर्नुहोस्</string>
     <string name="label_invalid_input">अवैध इनपुट</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">मेटाउनुहोस्</string>
     <string name="general_cancel_action">रद्द गर्नुहोस्</string>
     <string name="general_ok_action">ठिक छ</string>
+    <string name="general_dismiss_action">बन्द गर्नुहोस्</string>
+    <string name="general_progress_loading">लोड गर्दै…</string>
     <string name="general_configure_action">कन्फिगर गर्नुहोस्</string>
     <string name="battery_optimization_hint_title">ब्याट्री अप्टिमाइजेसन</string>
     <string name="battery_optimization_hint_message">ब्याट्री अप्टिमाइजेसनहरू सक्षम छन् र उचित सञ्चालनलाई रोक्न सक्छ। तिनीहरू अक्षम गर्ने विचार गर्नुहोस्।</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">बाधा नगर्नुहोस् पहुँच</string>
     <string name="dnd_access_hint_message">बाधा नगर्नुहोस् पहुँच बिना, तपाईंका यन्त्रहरू जडान हुँदा रिङटोन, सूचना, र DND मोड सेटिङहरू लागू गर्न सकिँदैन।</string>
     <string name="dnd_access_fix_action">पहुँच दिनुहोस्</string>
+    <string name="device_speaker_hint_title">डिस्कनेक्ट गरेपछि भलिउमहरू</string>
+    <string name="device_speaker_hint_message">Bluetooth उपकरण काट हुँदा भलिउमहरू पुनर्स्थापन गर्न चाहानुहुन्छ? \"Device speaker\" लाई प्रबन्धित उपकरण को रूपमा जोड्नुहोस् — यसको भलिउमहरू लागू हुन्छन् जब अडियो आपको फोनमा फेरि स्विच हुन्छ।</string>
+    <string name="device_speaker_hint_action">जोड्नुहोस्</string>
+    <string name="review_app_body">के तपाईं BVM को लागि समीक्षा दिन चाहनुहुन्छ? ❤️</string>
+    <string name="review_app_review_action">समीक्षा</string>
+    <string name="review_app_dismiss_action">पछि गर्ने</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">खरिद रद्द गरियो</string>
     <string name="error_iap_unavailable_message">इन-एप खरिदहरू उपलब्ध छैनन्</string>

@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">စီမံမထားသော ကိရိယာ မတွေ့ပါ</string>
     <string name="discover_all_devices_managed_msg">ချိတ်ဆက်ထားသည့် ကိရိယာ အားလုံး စီမံပြီးပါပြီ! အသစ်တစ်ခု လိုပါသလား?</string>
     <string name="discover_pair_new_device_action">ကိရိယာ အသစ် တွဲချိတ်မည်</string>
+    <string name="discover_device_speaker_desc">ဤဖုန်း၏ကိုယ်ပိုင်စပီကာ။ အသံသည် ဖုန်းသို့ပြန်ပြောင်းလဲသောအခါ ၎င်း၏အသံအတိုးအကျယ်များ အသုံးချထားသည်၊ ဥပမာ၊ သင်၏Bluetooth စက်ပစ္စည်း ချိတ်ဆက်မှုအဆုံးသတ်ပြီးနောက်။</string>
     <!-- Devices -->
     <string name="devices_device_config_label">ကိရိယာ ဖွဲ့စည်းမှု</string>
     <string name="devices_device_config_section_general_label">အထွေထွေ</string>
@@ -311,6 +312,7 @@
     <string name="label_add_device">ကိရိယာ ထည့်မည်</string>
     <string name="label_just_a_moment_please">ခဏစောင့်ပါ</string>
     <string name="label_notification_channel_status">အခြေအနေ</string>
+    <string name="monitor_notification_starting">စတင်နေပါသည်…</string>
     <string name="action_set">သတ်မှတ်မည်</string>
     <string name="action_cancel">ပယ်ဖျက်</string>
     <string name="label_invalid_input">မမှန်ကန်သော ထည့်သွင်းမှု</string>
@@ -385,6 +387,8 @@
     <string name="general_delete_action">ဖျက်မည်</string>
     <string name="general_cancel_action">ပယ်ဖျက်</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">ပယ်ဖျက်ပါ</string>
+    <string name="general_progress_loading">တင်နေပါသည်…</string>
     <string name="general_configure_action">ပြင်ဆင်မည်</string>
     <string name="battery_optimization_hint_title">ဘက်ထရီ ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း</string>
     <string name="battery_optimization_hint_message">ဘက်ထရီ ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း ဖွင့်ထားပြီး မှန်ကန်သော လုပ်ဆောင်မှုကို တားဆီးနိုင်သည်။ ပိတ်ရန် စဉ်းစားပါ။</string>
@@ -396,6 +400,12 @@
     <string name="dnd_access_hint_title">မနှောင့်ယှက်ရ ဝင်ရောက်ခွင့်</string>
     <string name="dnd_access_hint_message">မနှောင့်ယှက်ရ ဝင်ရောက်ခွင့်မရှိဘဲ၊ သင့်စက်ပစ္စည်းများ ချိတ်ဆက်သည့်အခါ ဖုန်းမြည်သံ၊ အကြောင်းကြားချက်နှင့် DND မုဒ် ဆက်တင်များကို သုံးစွဲ၍မရနိုင်ပါ။</string>
     <string name="dnd_access_fix_action">အသုံးပြုခွင့်ပေးပါ</string>
+    <string name="device_speaker_hint_title">ချိတ်ဆက်မှုအဆုံးသတ်ပြီးနောက် အသံများ</string>
+    <string name="device_speaker_hint_message">Bluetooth စက်ပစ္စည်း ချိတ်ဆက်မှုအဆုံးသတ်သောအခါ သင်၏အသံများ ပြန်လည်ရယူလိုပါသလား။ \"Device speaker\" ကို စီမံခန့်ခွဲထားသောစက်ပစ္စည်းအဖြစ် ထည့်သွင်းပါ — ၎င်း၏အသံများသည် အသံသည် သင်၏ဖုန်းသို့ပြန်ပြောင်းလဲသောအခါ အသုံးချထားသည်။</string>
+    <string name="device_speaker_hint_action">ထည့်သွင်း</string>
+    <string name="review_app_body">BVM အတွက် သုံးသပ်ချက် ချန်ထားလိုပါသလား။ ❤️</string>
+    <string name="review_app_review_action">သုံးသပ်ချက် ပေးရန်</string>
+    <string name="review_app_dismiss_action">နောက်ပိုင်းမှ</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">ဝယ်ယူမှု ပယ်ဖျက်ခဲ့သည်</string>
     <string name="error_iap_unavailable_message">အပ် အတွင်း ဝယ်ယူမှုများ မရနိုင်</string>

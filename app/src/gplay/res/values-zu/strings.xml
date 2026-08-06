@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Buyekeza kuya ku-BVM Pro</string>
     <string name="upgrade_prompt_body">I-Bluetooth Volume Manager Pro inikezela imiphumela engcono, izici ezengeziwe nezinketho zabasebenzisi abaphakeme.</string>
     <string name="upgrade_prompt_upgrade_action">Thuthukisa</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Khulisa ku-%1$s</string>
     <string name="upgrade_screen_preamble">I-Bluetooth Volume Manager ayinazo izikhangiso futhi ayithengisi idatha yabasebenzisi. Umsebenzi wami uxhaswa nguwe ❤️.</string>
     <string name="upgrade_screen_why_title">Izinzuzo</string>
     <string name="upgrade_screen_subscription_trial_action">Qala ukuhlola kwamahhala kwezinsuku eziyi-14</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Ayikwazi ukuxhumana ne-Google Play. Ngiyacela uhlole ikonekshini yakho ye-inthanethi futhi uphinde uzame.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ayitholakali</string>
     <string name="upgrades_gplay_unavailable_error_description">I-Bluetooth Volume Manager ayikwazi ukuxhuma ku-Google Play. Ingabe i-Google Play ifakiwe futhi ibuyekeziwe? Ingabe i-Google Account yakho ingene? Zama ukukhwebula i-cache ye-Google Play uqalise kabusha idivayisi yakho.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Ayikwazanga ukuvula i-Google Play. Ingabe ayikhona, itumiwe noma imiselelwa kulolu longezelelo.</string>
     <string name="upgrades_no_purchases_found_check_account">Akukho ukuthenga okutholiwe. Ingabe usebenzisa i-akhawunti efanele?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Okukhethwa kokukhulisa</string>
+    <string name="upgrade_screen_offers_body">Izinzwalo zombili zivulela izici ze-Pro ezifanayo — khetha eyakho.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Izilinganiso zentengiso ayitholakali</string>
+    <string name="upgrade_screen_offers_unavailable_message">Izilinganiso zentengiso azisize kulayisha manje. Hlola i-Google Play futhi zama kabusha ngesikhathi.</string>
+    <string name="upgrade_screen_benefits_body">• Imizila engenali\n• Izenzo zokuxhuma zezithubutuhu\n• Ukwenyusa imibono\n• Ukulawula umthwali ophumelele\n• Okusekela ukuthuthuka kwesikhathi esizayo ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Isikwelekelo sonyaka</string>
+    <string name="upgrade_screen_subscription_offer_body">Iqala nokuhlola okungenalo intengo, bese kutheshwa kabusha ngonyaka. Khansela nganoma iyiphi isikhathi ku-Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Kutheshwa kabusha ngonyaka. Khansela nganoma iyiphi isikhathi ku-Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Ukuvula ngokusisele</string>
+    <string name="upgrade_screen_iap_offer_body">Khokha kanye futhi unabe ne-Pro ngokusisele.</string>
+    <string name="upgrade_screen_owned_hero_title">Ungu-Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Unabe ne-%1$s ngokusisele.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Isikwelekelo se-%1$s sakho siyasebenza.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Isikwelekelo sakho ayisetheka ukubuya, ngakho ungashintshela ekuthengeni kanye manje. Ziqapela: lingubhili elahlukile engezelwe engayikhanseli noma ingayibuyele ngemali isikwelekelo sakho, ngakho sebenzisa i-akhawunti ye-Google efanayo kuzo zombili.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Khansela isikwelekelo sakho etheshwayo kabusha ku-Google Play kuqala, bese ungashintshela ekuthengeni kanye.</string>
+    <string name="upgrade_screen_restore_body">Sekuthengile i-Pro ekhawuntini? Cela i-Google Play ukuthi ibuyehlole izithengelo zakho.</string>
+    <string name="upgrade_screen_restore_checked_message">Sicele i-Google Play ukuthi ibuyehlole izithengelo zekhawuntini futhi ayitholikali.</string>
+    <string name="upgrade_screen_restore_contact_hint">Kusisekile? Thintanana ngaphandle kwekhawunti ye-Google efanayo oshicile nayo, ungeze inombolo ye-oda ye-Google Play, futhi sizolungisa.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Asakwazanga ukuphothula uhlolo ku-Google Play ngesikhathi, ngakho asikakazi isimo sakho sokuthengela — nikeza umomindi futhi zama kabusha.</string>
+    <string name="upgrades_gplay_billing_error_label">Inkinga yokuthengela</string>
+    <string name="upgrades_gplay_billing_error_description">I-Google Play ibikele inkinga: %1$s. Nikeza elinye ukulingisa kamuva noma uqale kabusha isixwayiso sakho.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Inzwalo ayitholakali</string>
+    <string name="upgrades_gplay_offer_unavailable_description">I-Google Play ayinike indlela yaleli tshubatshuba manje. Ingenxa yokukhubeka ayitholakali ngekhawunti yakho noma indawo — sicela zama kabusha kamuva.</string>
 </resources>

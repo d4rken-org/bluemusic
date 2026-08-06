@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ምንም እዋዀት ይረጋል፣ የተገባይ ውሂብንነም አይሸጥም። የተቆተቀወ ቅብት በእርስዎን ብቼድ ይተቀጥላል።</string>
     <string name="upgrade_screen_how_title">እንዴት መርዳት እንደሚችሉ</string>
     <string name="upgrade_screen_how_body">ደጋፊ ይሁኑ እና ልማትን ይደግፉ! ሁሉንም ተጨማሪ ባህሪያት ለማንቃት እና የእኔን GitHub Sponsors መገለጫ ለመክፈት ከታች ያለውን ቁልፍ ይንኩ።</string>
+    <string name="upgrade_screen_why_title">ጥቅሞች</string>
+    <string name="upgrade_screen_why_body">• ገደብ ነጻ መሳሪያዎች\n• ተስተካካሪ ግንኙነት ድርጊቶች\n• ገጽታ ማበጀት\n• የላቀ ድምጽ ቁጥጥር\n• ዓለም አቀፍ ልማት ድጋፍ 🧙</string>
     <string name="upgrade_screen_sponsor_action">ልማትን ይደግፉ</string>
     <string name="upgrade_screen_sponsor_action_hint">አማራጩ ማስታወቂያዎች፣ ትንታኔዎች እና Google Play ናቸው 🙁</string>
     <string name="upgrade_screen_thanks_toast">ክፍት ምንጭ ልማትን ስለደገፉ እናመሰግናለን ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">ደጋፊ ሁኔታዎን ይመልከቱ</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">ነፃ ወለታ ወደ ይህ ደርሰዋል።</string>
+    <string name="upgrade_screen_status_free_body">ድጋሪ ተላ ተጨማሪ ሞያዎች ሽቅ ለማድረግ ወደፊት ልማት ድጋፍ.</string>
+    <string name="upgrade_screen_status_free_action">የሻመ ምርጫዎች ይመልከቱ</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">ድጋፋችሁ ስለወሰዳችሁ አመሰግናለሁ</string>
     <string name="upgrade_screen_supporter_status_body">ነጻ ምንጭ ልማትን በድጋፍ ሁሉንም ተጨማሪ ባህሪያት አንስተሳሉ።</string>

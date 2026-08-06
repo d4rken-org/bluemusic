@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">कोई अप्रबंधित डिवाइस नहीं मिला</string>
     <string name="discover_all_devices_managed_msg">आपके सभी पेयर्ड डिवाइस प्रबंधित हैं! एक नया चाहिए?</string>
     <string name="discover_pair_new_device_action">नया डिवाइस पेयर करें</string>
+    <string name="discover_device_speaker_desc">इस फोन का अपना स्पीकर। इसकी वॉल्यूम तब लागू होती है जब ऑडियो फोन पर वापस स्विच हो, जैसे आपके Bluetooth डिवाइस के डिस्कनेक्ट होने के बाद।</string>
     <!-- Devices -->
     <string name="devices_device_config_label">डिवाइस कॉन्फिगरेशन</string>
     <string name="devices_device_config_section_general_label">सामान्य</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">डिवाइस जोड़ें</string>
     <string name="label_just_a_moment_please">कृपया, एक पल रुके</string>
     <string name="label_notification_channel_status">स्थिति</string>
+    <string name="monitor_notification_starting">शुरुआत हो रही है…</string>
     <string name="action_set">सेट</string>
     <string name="action_cancel">रद्द</string>
     <string name="label_invalid_input">अमान्य इनपुट</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">डिलीट</string>
     <string name="general_cancel_action">रद्द</string>
     <string name="general_ok_action">ठीक है</string>
+    <string name="general_dismiss_action">खारिज करें</string>
+    <string name="general_progress_loading">लोड हो रहा है…</string>
     <string name="general_configure_action">कॉन्फिगर</string>
     <string name="battery_optimization_hint_title">बैटरी ओप्टिमाइजेशन</string>
     <string name="battery_optimization_hint_message">बैटरी ओप्टिमाइजेशन सक्षम हैं और सही ऑपरेशन को रोक सकते हैं। इन्हें अक्षम करने पर विचार करें।</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">डू नॉट डिस्टर्ब एक्सेस</string>
     <string name="dnd_access_hint_message">डू नॉट डिस्टर्ब एक्सेस के बिना, रिंगटोन, नोटिफ़िकेशन और DND मोड सेटिंग्स आपके डिवाइसेस कनेक्ट होने पर लागू नहीं हो सकतीं।</string>
     <string name="dnd_access_fix_action">पहुंच प्रदान करें</string>
+    <string name="device_speaker_hint_title">डिस्कनेक्ट के बाद वॉल्यूम</string>
+    <string name="device_speaker_hint_message">क्या आप चाहते हैं कि आपकी वॉल्यूम तब बहाल हो जब कोई Bluetooth डिवाइस डिस्कनेक्ट हो? \"डिवाइस स्पीकर\" को एक प्रबंधित डिवाइस के रूप में जोड़ें — इसकी वॉल्यूम तब लागू होती है जब ऑडियो आपके फोन पर वापस स्विच हो।</string>
+    <string name="device_speaker_hint_action">जोड़ें</string>
+    <string name="review_app_body">क्या आप BVM को एक समीक्षा देना चाहेंगे? ❤️</string>
+    <string name="review_app_review_action">समीक्षा करें</string>
+    <string name="review_app_dismiss_action">शायद बाद में</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">खरीदारी रद्द</string>
     <string name="error_iap_unavailable_message">इन-आप खरीदारी उपलब्ध नहीं</string>

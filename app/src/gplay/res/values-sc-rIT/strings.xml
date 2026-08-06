@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Addobba a BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro oferit risultados mègius, prus caraterìsticas e optziones pro utentes avantzados.</string>
     <string name="upgrade_prompt_upgrade_action">Agiornare</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Umpadu a %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager non tenet publitzidade e non bendet datos de sos utentes. Su traballu meu est finantziadu dae bois ❤️.</string>
     <string name="upgrade_screen_why_title">Vantàgios</string>
     <string name="upgrade_screen_subscription_trial_action">Cumintza sa proa de badas de 14 dies</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">No podo connetimi a Google Play. Controlla sa connessione de internet e tenta de novu.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play no est disponìbile</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager non podet si connètere a Google Play. Google Play est installadu e agiornadu? Su contu Google tuo est intradu? Proa a limpiare sa cache de s\'aplicatzione Google Play e a torrare a allùghere su dispositivu tuo.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">No at po abri Google Play. At po esser mancu, disabilidu o restrintu in custu dispositivu.</string>
     <string name="upgrades_no_purchases_found_check_account">Perunu cùmperu agatadu. Ses impreande su contu giustu?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Optziones de umpadu</string>
+    <string name="upgrade_screen_offers_body">Ambas as optziones isbalumant sa mesma funtzionalidades Pro — iscolzi chini ti cumenti.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Prezos no disponìbiles</string>
+    <string name="upgrade_screen_offers_unavailable_message">Sos prezos no podan esse carrigaus in custu momentu. Controlla Google Play e proba de nouv in un momentu.</string>
+    <string name="upgrade_screen_benefits_body">• Dispositivos illimitaus\n• Atziones de connessione personalizadas\n• Personalizatzione de tema\n• Controlos de volume avanzados\n• Suportu at su isvilluppu futuru ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Sottoscritzione annuali</string>
+    <string name="upgrade_screen_subscription_offer_body">Comintzat cun una prueba libera, pue se renovaz anualmente. Annulla in calet in Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Se renovaz anualmente. Annulla in calet in Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Disblocu de vida</string>
+    <string name="upgrade_screen_iap_offer_body">Paga una borta e possess Pro pro semper.</string>
+    <string name="upgrade_screen_owned_hero_title">Ses Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Tu possidis %1$s pro semper.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Tua sottoscritzione %1$s est attiva.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Tua sottoscritzione no est cunfigurada pro renovatzione, assa t\'as pòdis cambiare a una cumpra una borta. Atentzione: est un cariggu separadu chi no at annulla o resfuindit tua sottoscritzione, assa etzas a mesma cunta Google pro ambas.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Annulla prima tua sottoscritzione chi se renovaz in Google Play, pue t\'as pòdis cambiare a una cumpra una borta.</string>
+    <string name="upgrade_screen_restore_body">Gia cumpradas Pro in custu contu? Chidi a Google Play a verificare de nouv tuas cumpras.</string>
+    <string name="upgrade_screen_restore_checked_message">Abbiamus chistu a Google Play a verificare de nouv tuas cumpras de custu contu e no abbiamus atonadu nent.</string>
+    <string name="upgrade_screen_restore_contact_hint">Sempre inblocadu? Chuntattane dae sa mesma cunta Google cun chi as cumpradas, includi su numeru de ordine de Google Play, e abbiamus a issonnet.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Non abbiamus potidu finire a verificare cun Google Play in tempus, assa non abbiamus ancora sa tua situatzione de cumpra — aspeta un momentu e proba de nouv.</string>
+    <string name="upgrades_gplay_billing_error_label">Problema de cumpra</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play at informadu de unu problema: %1$s. Proba de nouv più tardi o reini sa tua aplicatzione.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Oferta no disponìbile</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play no at ofertu custu produttu in custu momentu. Deppu no essere disponìbile pro sa tua cunta o regione ancora — chi proba de nouv più tardi.</string>
 </resources>

@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Nâng cấp lên BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro mang lại kết quả tốt hơn, nhiều tính năng và tùy chọn hơn cho người dùng.</string>
     <string name="upgrade_prompt_upgrade_action">Nâng cấp</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Nâng cấp lên %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager không có quảng cáo và không bán dữ liệu người dùng. Công việc của tôi được tài trợ bởi bạn ❤️.</string>
     <string name="upgrade_screen_why_title">Lợi thế</string>
     <string name="upgrade_screen_subscription_trial_action">Bắt đầu dùng thử 14 ngày miễn phí</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Không thể kết nối với Google Play. Vui lòng kiểm tra kết nối internet của bạn và thử lại.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play không khả dụng</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager không thể kết nối với Google Play. Google Play đã được cài đặt và cập nhật chưa? Bạn đã đăng nhập tài khoản Google chưa? Hãy thử xóa bộ nhớ cache của ứng dụng Google Play và khởi động lại thiết bị.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Không mở được Google Play. Có thể ứng dụng bị thiếu, bị tắt hoặc bị hạn chế trên thiết bị này.</string>
     <string name="upgrades_no_purchases_found_check_account">Không tìm thấy giao dịch nào. Bạn có đang sử dụng đúng tài khoản không?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Các tùy chọn nâng cấp</string>
+    <string name="upgrade_screen_offers_body">Cả hai tùy chọn đều mở khóa các tính năng Pro giống hệt nhau — hãy chọn tùy chọn phù hợp với bạn.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Giá không có sẵn</string>
+    <string name="upgrade_screen_offers_unavailable_message">Không thể tải giá lúc này. Kiểm tra Google Play và thử lại trong giây lát.</string>
+    <string name="upgrade_screen_benefits_body">• Thiết bị không giới hạn\n• Tùy chỉnh hành động kết nối\n• Tùy chỉnh chủ đề\n• Điều khiển âm lượng nâng cao\n• Hỗ trợ phát triển trong tương lai ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Gói đăng ký hàng năm</string>
+    <string name="upgrade_screen_subscription_offer_body">Bắt đầu bằng bản dùng thử miễn phí, sau đó gia hạn hàng năm. Hủy bất kỳ lúc nào trong Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Gia hạn hàng năm. Hủy bất kỳ lúc nào trong Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Mở khóa vĩnh viễn</string>
+    <string name="upgrade_screen_iap_offer_body">Trả một lần và sở hữu Pro mãi mãi.</string>
+    <string name="upgrade_screen_owned_hero_title">Bạn là Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Bạn sở hữu %1$s mãi mãi.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Đăng ký %1$s của bạn đang hoạt động.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Đăng ký của bạn không được đặt để gia hạn, vì vậy bạn có thể chuyển sang mua một lần ngay bây giờ. Chú ý: đây là một khoản phí riêng biệt sẽ không hủy hoặc hoàn lại đăng ký của bạn, vì vậy hãy sử dụng cùng một tài khoản Google cho cả hai.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Hủy đăng ký gia hạn của bạn trong Google Play trước, sau đó bạn có thể chuyển sang mua một lần.</string>
+    <string name="upgrade_screen_restore_body">Đã mua Pro trên tài khoản này? Yêu cầu Google Play kiểm tra lại các lần mua của bạn.</string>
+    <string name="upgrade_screen_restore_checked_message">Chúng tôi đã yêu cầu Google Play kiểm tra lại các lần mua của tài khoản này và không tìm thấy.</string>
+    <string name="upgrade_screen_restore_contact_hint">Vẫn còn vấn đề? Liên hệ từ cùng một tài khoản Google mà bạn đã mua, bao gồm số đơn hàng Google Play của bạn, và chúng tôi sẽ giải quyết.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Chúng tôi không thể hoàn thành kiểm tra với Google Play kịp thời, vì vậy chúng tôi vẫn không biết trạng thái mua hàng của bạn — chờ một chút và thử lại.</string>
+    <string name="upgrades_gplay_billing_error_label">Vấn đề mua hàng</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play báo cáo một vấn đề: %1$s. Hãy thử lại sau hoặc khởi động lại thiết bị của bạn.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Ưu đãi không có sẵn</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play không cung cấp mục này ngay bây giờ. Nó có thể chưa có sẵn cho tài khoản hoặc khu vực của bạn — vui lòng thử lại sau.</string>
 </resources>

@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Geen onbeheerde apparaten gevonden</string>
     <string name="discover_all_devices_managed_msg">Al je gekoppelde apparaten worden beheerd! Tijd voor een nieuwe?</string>
     <string name="discover_pair_new_device_action">Nieuw apparaat koppelen</string>
+    <string name="discover_device_speaker_desc">De eigen spreker van deze telefoon. De volumes ervan worden toegepast wanneer audio terugschakelt naar de telefoon, bijvoorbeeld nadat je Bluetooth-apparaat wordt verbroken.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Apparaatconfiguratie</string>
     <string name="devices_device_config_section_general_label">Algemeen</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Apparaat toevoegen</string>
     <string name="label_just_a_moment_please">Een ogenblik, alstublieft.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="monitor_notification_starting">Aan de slag…</string>
     <string name="action_set">Stel in</string>
     <string name="action_cancel">Annuleren</string>
     <string name="label_invalid_input">Ongeldige invoer</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Verwijderen</string>
     <string name="general_cancel_action">Annuleren</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Afwijzen</string>
+    <string name="general_progress_loading">Bezig met laden…</string>
     <string name="general_configure_action">Configureren</string>
     <string name="battery_optimization_hint_title">Batterijoptimalisatie</string>
     <string name="battery_optimization_hint_message">Batterijoptimalisaties zijn ingeschakeld en kunnen de juiste werking verstoren. Overweeg ze uit te schakelen.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Niet storen-toegang</string>
     <string name="dnd_access_hint_message">Zonder Niet storen-toegang kunnen beltoon-, meldings- en Niet storen-instellingen niet worden toegepast wanneer je apparaten verbinding maken.</string>
     <string name="dnd_access_fix_action">Toegang verlenen</string>
+    <string name="device_speaker_hint_title">Volumes na verbreking</string>
+    <string name="device_speaker_hint_message">Wil je je volumes herstellen wanneer een Bluetooth-apparaat wordt verbroken? Voeg \"Apparaatluidspreker\" toe als beheerd apparaat — de volumes ervan worden toegepast wanneer audio terugschakelt naar je telefoon.</string>
+    <string name="device_speaker_hint_action">Toevoegen</string>
+    <string name="review_app_body">Wil je BVM een beoordeling achterlaten? ❤️</string>
+    <string name="review_app_review_action">Beoordeling</string>
+    <string name="review_app_dismiss_action">Misschien later</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Aankoop geannuleerd</string>
     <string name="error_iap_unavailable_message">In-app aankopen zijn niet beschikbaar</string>

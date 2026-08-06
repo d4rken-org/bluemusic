@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">שדרג ל-BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro מציע תוצאות טובות יותר, יותר תכונות ואפשרויות למשתמשים מתקדמים.</string>
     <string name="upgrade_prompt_upgrade_action">שדרוג</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">שדרג ל-%1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ללא מודעות ואינה מוכרת נתוני משתמשים. העבודה שלי ממומנת על ידך ❤️.</string>
     <string name="upgrade_screen_why_title">יתרונות</string>
     <string name="upgrade_screen_subscription_trial_action">התחילו 14 ימי ניסיון</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">לא ניתן להתחבר ל-Google Play. בדקו את חיבור האינטרנט שלכם ונסו שוב.</string>
     <string name="upgrades_gplay_unavailable_error_title">החנות של גוגל לא זמינה כרגע</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager לא מצליחה להתחבר ל-Google Play. האם Google Play מותקן ומעודכן? האם חשבון Google שלך מחובר? נסה לנקות את המטמון של אפליקציית Google Play ולהפעיל מחדש את המכשיר.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">לא ניתן לפתוח את Google Play. ייתכן שהוא לא מותקן, מנוטרל או מוגבל במכשיר זה.</string>
     <string name="upgrades_no_purchases_found_check_account">לא נמצאו רכישות. האם אתה משתמש בחשבון הנכון?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">אפשרויות שדרוג</string>
+    <string name="upgrade_screen_offers_body">שתי האפשרויות משחררות את אותן תכונות Pro בדיוק - בחר באיזו שמתאימה לך.</string>
+    <string name="upgrade_screen_offers_unavailable_title">מחירים לא זמינים</string>
+    <string name="upgrade_screen_offers_unavailable_message">לא ניתן היה לטעון מחירים כרגע. בדוק את Google Play ונסה שוב בעוד רגע.</string>
+    <string name="upgrade_screen_benefits_body">• מכשירים בלתי מוגבלים\n• פעולות חיבור מותאמות\n• התאמה של ערכת נושא\n• בקרות עוצמת קול מתקדמות\n• תמיכה בפיתוח עתידי ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">מנוי שנתי</string>
+    <string name="upgrade_screen_subscription_offer_body">מתחיל בניסיון חינם, ואחר כך מתחדש מדי שנה. בטל בכל עת ב-Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">מתחדש מדי שנה. בטל בכל עת ב-Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">פתיחה לכל החיים</string>
+    <string name="upgrade_screen_iap_offer_body">שלם פעם אחת והחזק Pro לתמיד.</string>
+    <string name="upgrade_screen_owned_hero_title">אתה Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">אתה מחזיק את %1$s לתמיד.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">המנוי שלך %1$s פעיל.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">המנוי שלך אינו מוגדר להתחדש, כך שתוכל לעבור לרכישה חד-פעמית עכשיו. זהירות: זו חיוב נפרד שלא יבטל או יחזיר את המנוי שלך, כך השתמש באותו חשבון Google לשניהם.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">בטל תחילה את המנוי המתחדש שלך ב-Google Play, ואחר כך תוכל לעבור לרכישה חד-פעמית.</string>
+    <string name="upgrade_screen_restore_body">כבר קנית Pro בחשבון זה? בקש מ-Google Play לבדוק שוב את הקניות שלך.</string>
+    <string name="upgrade_screen_restore_checked_message">ביקשנו מ-Google Play לבדוק שוב את הקניות של חשבון זה ולא מצאנו אחת.</string>
+    <string name="upgrade_screen_restore_contact_hint">עדיין תקוע? צור קשר מאותו חשבון Google שבו קנית, כלול את מספר ההזמנה של Google Play שלך, ואנחנו נסדר זאת.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">לא הצלחנו לסיים את הבדיקה עם Google Play בזמן, כך אנחנו עדיין לא יודעים את מצב הקניה שלך - תן לזה רגע ונסה שוב.</string>
+    <string name="upgrades_gplay_billing_error_label">בעיית רכישה</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play דיווח על בעיה: %1$s. נסה שוב מאוחר יותר או הפעל מחדש את המכשיר שלך.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">הצעה לא זמינה</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play לא הציע את הפריט הזה כרגע. ייתכן שהוא עדיין לא זמין לחשבון או לאזור שלך - אנא נסה שוב מאוחר יותר.</string>
 </resources>

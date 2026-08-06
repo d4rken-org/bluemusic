@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Nessun dispositivo non gestito trovato</string>
     <string name="discover_all_devices_managed_msg">Tutti i tuoi dispositivi accoppiati sono gestiti! Te ne serve uno nuovo?</string>
     <string name="discover_pair_new_device_action">Accoppia nuovo dispositivo</string>
+    <string name="discover_device_speaker_desc">L\'altoparlante del telefono stesso. I suoi volumi vengono applicati quando l\'audio torna al telefono, ad es. dopo che il dispositivo Bluetooth si disconnette.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Configurazione dispositivo</string>
     <string name="devices_device_config_section_general_label">Generale</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Aggiungi un dispositivo</string>
     <string name="label_just_a_moment_please">Solo un momento, per favore.</string>
     <string name="label_notification_channel_status">Stato</string>
+    <string name="monitor_notification_starting">Avvio in corso…</string>
     <string name="action_set">Imposta</string>
     <string name="action_cancel">Annulla</string>
     <string name="label_invalid_input">Input non valido</string>
@@ -390,6 +392,7 @@
     <string name="general_delete_action">Elimina</string>
     <string name="general_cancel_action">Annulla</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_progress_loading">Caricamento…</string>
     <string name="general_configure_action">Configura</string>
     <string name="battery_optimization_hint_title">Ottimizzazione batteria</string>
     <string name="battery_optimization_hint_message">Le ottimizzazioni della batteria sono abilitate e possono impedire il corretto funzionamento. Considera di disabilitarle.</string>
@@ -401,6 +404,12 @@
     <string name="dnd_access_hint_title">Accesso a Non disturbare</string>
     <string name="dnd_access_hint_message">Senza accesso a Non disturbare, le impostazioni di suoneria, notifiche e modalita Non disturbare non possono essere applicate quando i tuoi dispositivi si connettono.</string>
     <string name="dnd_access_fix_action">Consenti accesso</string>
+    <string name="device_speaker_hint_title">Volumi dopo la disconnessione</string>
+    <string name="device_speaker_hint_message">Vuoi che i tuoi volumi vengano ripristinati quando un dispositivo Bluetooth si disconnette? Aggiungi \"Altoparlante del dispositivo\" come dispositivo gestito — i suoi volumi vengono applicati quando l\'audio torna al telefono.</string>
+    <string name="device_speaker_hint_action">Aggiungi</string>
+    <string name="review_app_body">Vuoi lasciare una recensione su BVM? ❤️</string>
+    <string name="review_app_review_action">Recensione</string>
+    <string name="review_app_dismiss_action">Forse più tardi</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Acquisto annullato</string>
     <string name="error_iap_unavailable_message">Gli acquisti in-app non sono disponibili</string>

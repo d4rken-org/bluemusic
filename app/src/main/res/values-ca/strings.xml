@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">No s\'han trobat dispositius no gestionats</string>
     <string name="discover_all_devices_managed_msg">Tots els dispositius emparellats estan gestionats! En necessites un de nou?</string>
     <string name="discover_pair_new_device_action">Emparella un dispositiu nou</string>
+    <string name="discover_device_speaker_desc">L\'altaveu propi del telèfon. Els seus volums s\'apliquen quan l\'àudio canvia de nou al telèfon, per exemple, després que es desconnecti el dispositiu Bluetooth.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Configuració del dispositiu</string>
     <string name="devices_device_config_section_general_label">General</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Afegeix un dispositiu</string>
     <string name="label_just_a_moment_please">Un moment.</string>
     <string name="label_notification_channel_status">Estat</string>
+    <string name="monitor_notification_starting">Iniciant…</string>
     <string name="action_set">Estableix</string>
     <string name="action_cancel">Cancel·la</string>
     <string name="label_invalid_input">Entrada no vàlida</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Suprimeix</string>
     <string name="general_cancel_action">Cancel·la</string>
     <string name="general_ok_action">D\'acord</string>
+    <string name="general_dismiss_action">Ignora</string>
+    <string name="general_progress_loading">S\'està carregant</string>
     <string name="general_configure_action">Configura</string>
     <string name="battery_optimization_hint_title">Optimització de la bateria</string>
     <string name="battery_optimization_hint_message">Les optimitzacions de la bateria estan activades i poden impedir el funcionament correcte. Considera desactivar-les.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Accés a No molestar</string>
     <string name="dnd_access_hint_message">Sense accés a No molestar, no es poden aplicar els paràmetres de to de trucada, notificació i mode No molestar quan es connecten els teus dispositius.</string>
     <string name="dnd_access_fix_action">Permet l\'accés</string>
+    <string name="device_speaker_hint_title">Volums després de desconnectar</string>
+    <string name="device_speaker_hint_message">Vols que els volums es restaurin quan es desconnecti un dispositiu Bluetooth? Afegeix \"Altaveu del dispositiu\" com a dispositiu gestionat — els seus volums s\'apliquen quan l\'àudio canvia de nou al telèfon.</string>
+    <string name="device_speaker_hint_action">Afegeix</string>
+    <string name="review_app_body">Voleu deixar una ressenya de BVM? ❤️</string>
+    <string name="review_app_review_action">Revisió</string>
+    <string name="review_app_dismiss_action">Potser més tard</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Compra cancel·lada</string>
     <string name="error_iap_unavailable_message">Les compres integrades no estan disponibles</string>

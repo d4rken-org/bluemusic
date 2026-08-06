@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">រកមិនឃើញឧបករណ៍ដែលមិនបានគ្រប់គ្រង</string>
     <string name="discover_all_devices_managed_msg">ឧបករណ៍ដែលបានផ្សារភ្ជាប់ទាំងអស់របស់អ្នកត្រូវបានគ្រប់គ្រង! ត្រូវការឧបករណ៍ថ្មីទេ?</string>
     <string name="discover_pair_new_device_action">ផ្សារភ្ជាប់ឧបករណ៍ថ្មី</string>
+    <string name="discover_device_speaker_desc">ស្ពីករ​របស់​ទូរស័ព្ទ។ កម្រិត​សម្លេង​របស់វា​ត្រូវ​បាន​ប្រើ​នៅ​ពេល​សម្លេង​ប្តូរ​ត្រឡប់​ទៅ​ទូរស័ព្ទ ដូច​ជា​បន្ទាប់​ពី​ឧបករណ៍​ប៊ុលធូស​របស់​អ្នក​ផ្ដាច់។</string>
     <!-- Devices -->
     <string name="devices_device_config_label">ការកំណត់ឧបករណ៍</string>
     <string name="devices_device_config_section_general_label">ជាទូទៅ</string>
@@ -311,6 +312,7 @@
     <string name="label_add_device">បន្ថែមឧបករណ៍</string>
     <string name="label_just_a_moment_please">សូមរង់ចាំបន្តិច។</string>
     <string name="label_notification_channel_status">ស្ថានភាព</string>
+    <string name="monitor_notification_starting">កំពុងចាប់ផ្តើម…</string>
     <string name="action_set">កំណត់</string>
     <string name="action_cancel">បោះបង់</string>
     <string name="label_invalid_input">ធាតុបញ្ចូលមិនត្រឹមត្រូវ</string>
@@ -385,6 +387,8 @@
     <string name="general_delete_action">លុប</string>
     <string name="general_cancel_action">បោះបង់</string>
     <string name="general_ok_action">យល់ព្រម</string>
+    <string name="general_dismiss_action">បដិសេធ</string>
+    <string name="general_progress_loading">កំពុងផ្ទុក…</string>
     <string name="general_configure_action">កំណត់</string>
     <string name="battery_optimization_hint_title">ការបង្កើនប្រសិទ្ធភាពថ្ម</string>
     <string name="battery_optimization_hint_message">ការបង្កើនប្រសិទ្ធភាពថ្មត្រូវបានបើកដំណើរការ ហើយអាចរារាំងការដំណើរការត្រឹមត្រូវ។ សូមពិចារណាបិទមុខងារនេះ។</string>
@@ -396,6 +400,12 @@
     <string name="dnd_access_hint_title">ការចូលប្រើ​ \"កុំរំខាន\"</string>
     <string name="dnd_access_hint_message">បើរគ្មានការចូលប្រើ​ \"កុំរំខាន\" តែ ការកំណត់សំលេងរោតើ ការជូនដំណឺង និងរប័យ DND មិនអាចអនុវត្តបាននៅពេលឧបករណ៍របស់អនកភ្ជាប់តែ។</string>
     <string name="dnd_access_fix_action">ផ្តល់សិទ្ធិចូលប្រើ</string>
+    <string name="device_speaker_hint_title">កម្រិតសម្លេងបន្ទាប់ពីផ្តាច់</string>
+    <string name="device_speaker_hint_message">ចង់ឱ្យកម្រិតសម្លេងរបស់អ្នកត្រូវបានស្ដារឡើងវិញនៅពេលដែលឧបករណ៍ Bluetooth ផ្តាច់ទេ? បន្ថែម \"Device speaker\" ជាឧបករណ៍គ្រប់គ្រង — កម្រិតសម្លេងរបស់វាត្រូវបានអនុវត្តនៅពេលដែលសម្លេងប្តូរត្រឡប់ទៅទូរស័ព្ទរបស់អ្នក។</string>
+    <string name="device_speaker_hint_action">បន្ថែម</string>
+    <string name="review_app_body">តើ​អ្នក​ចង់​វាយតម្លៃ BVM មែនទេ? ❤️</string>
+    <string name="review_app_review_action">វាយតម្លៃ</string>
+    <string name="review_app_dismiss_action">ប្រហែលពេលក្រោយ</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">ការទិញត្រូវបានបោះបង់</string>
     <string name="error_iap_unavailable_message">ការទិញក្នុងកម្មវិធីមិនអាចប្រើបានទេ</string>

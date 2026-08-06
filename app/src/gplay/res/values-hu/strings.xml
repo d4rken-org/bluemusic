@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Frissítés BVM Pro-ra</string>
     <string name="upgrade_prompt_body">A Bluetooth Volume Manager Pro jobb eredményeket, több funkciót és lehetőséget kínál a haladó felhasználóknak.</string>
     <string name="upgrade_prompt_upgrade_action">Frissítés</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Frissítés a %1$s-re</string>
     <string name="upgrade_screen_preamble">A Bluetooth Volume Manager nem tartalmaz hirdetéseket, és nem értékesít felhasználói adatokat. A munkámat te finanszírozód ❤️.</string>
     <string name="upgrade_screen_why_title">Előnyök</string>
     <string name="upgrade_screen_subscription_trial_action">Ingyenes 14 napos próbaidőszak indítása</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Nem sikerült kapcsolódni a Google Playhez. Ellenőrizd az internetkapcsolatod, és próbáld újra.</string>
     <string name="upgrades_gplay_unavailable_error_title">A Google Play nem elérhető</string>
     <string name="upgrades_gplay_unavailable_error_description">A Bluetooth Volume Manager nem tud csatlakozni a Google Playhez. Telepítve és naprакész a Google Play? Be vagy jelentkezve a Google-fiókodba? Próbáld meg törölni a Google Play alkalmazás gyorsítótárát és indítsd újra az eszközt.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Nem sikerült megnyitni a Google Play-t. Lehetséges, hogy az eszközön hiányzik, letiltott vagy korlátozott.</string>
     <string name="upgrades_no_purchases_found_check_account">Nem található vásárlás. A megfelelő fiókot használja?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Frissítési lehetőségek</string>
+    <string name="upgrade_screen_offers_body">Mindkét lehetőség ugyanazokat a Pro funkciókat oldja fel – válaszd azt, amelyik jobban passzol hozzád.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Az árak nem érhetőek el</string>
+    <string name="upgrade_screen_offers_unavailable_message">Az árakat nem lehetett most betölteni. Ellenőrizd a Google Play-t és próbálkozz később.</string>
+    <string name="upgrade_screen_benefits_body">• Korlátlan eszközök\n• Egyéni csatlakozási műveletek\n• Téma testreszabása\n• Speciális hangerő-vezérlés\n• Támogass a folyamatos fejlesztést ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Éves előfizetés</string>
+    <string name="upgrade_screen_subscription_offer_body">Ingyenes próbaverzióval kezdődik, majd évente megújul. Bármikor törölheted a Google Play-ben.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Évente megújul. Bármikor törölheted a Google Play-ben.</string>
+    <string name="upgrade_screen_iap_offer_title">Élettartam feloldás</string>
+    <string name="upgrade_screen_iap_offer_body">Fizess egyszer, és a Pro funkciókat örökre megtartod.</string>
+    <string name="upgrade_screen_owned_hero_title">Pro vagy! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Az %1$s örökre a tiéd.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Az %1$s előfizetésed aktív.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Az előfizetésed nem fog megújulni, így mostantól az egyszeri vásárlásra válthatsz. Figyelem: ez egy külön díj, amely nem szünteti meg és nem adja vissza az előfizetésed, ezért mindkettőhöz ugyanazt a Google-fiókot használd.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Előbb szüntessed meg a Google Play-ben a megújuló előfizetésed, utána az egyszeri vásárlásra válthatsz.</string>
+    <string name="upgrade_screen_restore_body">Már vásárolt Pro-t erre a fiókra? Kérd meg a Google Play-t, hogy ellenőrizze újra a vásárlásaidat.</string>
+    <string name="upgrade_screen_restore_checked_message">Megkértük a Google Play-t, hogy ellenőrizze újra a vásárlásaidat, de nem találtunk semmi.</string>
+    <string name="upgrade_screen_restore_contact_hint">Még mindig elakadt? Lépj velünk kapcsolatba ugyanarról a Google-fiókról, és add meg a Google Play rendelési számodat – mi rendezzük el.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Nem tudtuk időben befejezni a Google Play-vel való ellenőrzést, ezért még nem ismerjük a vásárlási állapotodat – várj egy kicsit és próbálkozz újra.</string>
+    <string name="upgrades_gplay_billing_error_label">Vásárlási probléma</string>
+    <string name="upgrades_gplay_billing_error_description">A Google Play problémát jelzett: %1$s. Próbálkozz később vagy indítsd újra az eszközt.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Ajánlat nem elérhető</string>
+    <string name="upgrades_gplay_offer_unavailable_description">A Google Play jelenleg nem kínálja ezt az elemet. Előfordulhat, hogy még nem elérhető a fiókodra vagy a régiódra – próbálkozz később.</string>
 </resources>

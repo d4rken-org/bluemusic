@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager birtir engar auglýsingar og selur ekki notendagögn. Áframhaldandi þróun er eingungu möguleg þökk sé þér.</string>
     <string name="upgrade_screen_how_title">Hvernig á að hjálpa</string>
     <string name="upgrade_screen_how_body">Vertu styrktaraðili og styrktu þróun! Ýttu á hnappinn hér að neðan til að virkja alla viðbótareiginleika og opna GitHub Sponsors prófílinn minn.</string>
+    <string name="upgrade_screen_why_title">Kostir</string>
+    <string name="upgrade_screen_why_body">• Ótakmörk tæki\n• Sérsniðnar tengingaðgerðir\n• Sérsniðning útlits\n• Ítarleg hljóðstyrk stjórnun\n• Stuðningur við opna hugbúnaðarþróun 🧙</string>
     <string name="upgrade_screen_sponsor_action">Styrkja þróun</string>
     <string name="upgrade_screen_sponsor_action_hint">Valkosturinn eru auglýsingar, greiningar og Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Takk fyrir að styðja opna hugbúnaðarþróun ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Skoða stuðningsstöðu þína</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Þú ert á ókeypis útgáfunni</string>
+    <string name="upgrade_screen_status_free_body">Vertu stuðningsaðili til að opna aukaeiginleika og styðja áframhaldandi þróun.</string>
+    <string name="upgrade_screen_status_free_action">Sjá uppfærslumöguleika</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Takk fyrir stuðninginn</string>
     <string name="upgrade_screen_supporter_status_body">Þú hefur opnað alla aukaeiginleika með því að styðja þróun opins hugbúnaðar.</string>

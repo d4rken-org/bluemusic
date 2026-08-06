@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Удаалагдаагүй төхөөрөмжий олдсонгүй</string>
     <string name="discover_all_devices_managed_msg">Таны харилцан бүх төхөөрөмжийг удааладаж байна! Шинэ нэг нэмжийг хариалцуулах гэж</string>
     <string name="discover_pair_new_device_action">Шинэ төхөөрөмжийг харилцах</string>
+    <string name="discover_device_speaker_desc">Энэ утасны өөрийн чанга яригч. Түүний эзлэхүүнүүд аудио утас руу эргэж ирэхэд хэрэглэгдэнэ, жишээлбэл таны Bluetooth төхөөрөмж салсны дараа.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Төхөөрөмжийн тохиргуулалт</string>
     <string name="devices_device_config_section_general_label">Ерөнхийлэл</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Төхөөрөмжий нэмэх</string>
     <string name="label_just_a_moment_please">Нэг зураар хүлээнүү.</string>
     <string name="label_notification_channel_status">Төлөв</string>
+    <string name="monitor_notification_starting">Эхэлж байна…</string>
     <string name="action_set">Тохируулах</string>
     <string name="action_cancel">Цуцлах</string>
     <string name="label_invalid_input">Буруу оролт</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Устгах</string>
     <string name="general_cancel_action">Цуцлах</string>
     <string name="general_ok_action">Зөвшөөрөх</string>
+    <string name="general_dismiss_action">Хаах</string>
+    <string name="general_progress_loading">Ачаалж байна…</string>
     <string name="general_configure_action">Тохируулах</string>
     <string name="battery_optimization_hint_title">Батарейн оптимчлал</string>
     <string name="battery_optimization_hint_message">Батарейн оптимчлал идэвхүүлсэн бөгөөд зөв үйлажиллагахаас сэргийлж болно. Тэдгээгийг унтраахыг анхаарай.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Тасалдахгүй горимт авах эрх</string>
     <string name="dnd_access_hint_message">Тасалдахгүй горимт авах эрхгүйгээр хүү звон, мэдэгдэлгээрийн цонхиу, ТӢГ төршлийн тохиргуултыг таны төхөөрөмжүүд холбогдоход ашиглана хэрэгжүй.</string>
     <string name="dnd_access_fix_action">Хандалт олгох</string>
+    <string name="device_speaker_hint_title">Салгасны дараа эзлэхүүнүүд</string>
+    <string name="device_speaker_hint_message">Bluetooth төхөөрөмж салах үед таны эзлэхүүнүүд сэргээгдэхийг хүсэж байна уу? \"Төхөөрөмжийн чанга яригч\"-ийг удирдлагатай төхөөрөмж болгон нэмнэ үү — түүний эзлэхүүнүүд аудио та утас руу эргэж ирэхэд хэрэглэгдэнэ.</string>
+    <string name="device_speaker_hint_action">Нэмэх</string>
+    <string name="review_app_body">Та BVM-д үнэлгээ үлдээхийг хүсч байна уу? ❤️</string>
+    <string name="review_app_review_action">Үнэлгээ</string>
+    <string name="review_app_dismiss_action">Дараа нь магадгүй</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Худалдалцаагүй болсон</string>
     <string name="error_iap_unavailable_message">Апп дотоодх худалдалцаа боломжгүй</string>

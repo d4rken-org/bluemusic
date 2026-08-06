@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">ارتقاء به BVM Pro</string>
     <string name="upgrade_prompt_body">مدیر صدای بلوتوث Pro نتایج بهتر، ویژگی‌ها و گزینه‌های بیشتری برای کاربران حرفه‌ای ارائه می‌دهد.</string>
     <string name="upgrade_prompt_upgrade_action">ارتقاء</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">ارتقا به %1$s</string>
     <string name="upgrade_screen_preamble">مدیر صدای بلوتوث تبلیغات ندارد و داده‌های کاربر را نمی‌فروشد. کار من توسط شما تأمین می‌شود ❤️.</string>
     <string name="upgrade_screen_why_title">مزایا</string>
     <string name="upgrade_screen_subscription_trial_action">شروع دوره آزمایشی ۱۴ روزه رایگان</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">اتصال به Google Play ممکن نیست. لطفاً اتصال اینترنت خود را بررسی کرده و دوباره تلاش کنید.</string>
     <string name="upgrades_gplay_unavailable_error_title">گوگل پلی در دسترس نیست</string>
     <string name="upgrades_gplay_unavailable_error_description">مدیر صدای بلوتوث نمی‌تواند به Google Play وصل شود. آیا Google Play نصب و به‌روز است؟ آیا حساب گوگلتان وارد شده؟ حافظه‌پنهان برنامه Google Play را پاک کنید و دستگاه را راه‌اندازی مجدد کنید.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">نمی‌توان Google Play را باز کرد. ممکن است در این دستگاه نصب نشده، غیرفعال یا محدود باشد.</string>
     <string name="upgrades_no_purchases_found_check_account">هیچ خریدی یافت نشد. آیا از حساب صحیح استفاده می‌کنید؟</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">گزینه‌های ارتقا</string>
+    <string name="upgrade_screen_offers_body">هر دو گزینه دقیقا همان ویژگی‌های Pro را باز می‌کنند — هرکدام که برای شما مناسب است انتخاب کنید.</string>
+    <string name="upgrade_screen_offers_unavailable_title">قیمت‌ها در دسترس نیست</string>
+    <string name="upgrade_screen_offers_unavailable_message">قیمت‌ها در حال حاضر قابل بارگذاری نیستند. Google Play را بررسی کنید و لحظه‌ای دوباره سعی کنید.</string>
+    <string name="upgrade_screen_benefits_body">• دستگاه‌های نامحدود\n• اقدامات اتصال سفارشی\n• سفارشی‌سازی تم\n• کنترل‌های صدای پیشرفته\n• حمایت از توسعه آینده ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">اشتراک سالانه</string>
+    <string name="upgrade_screen_subscription_offer_body">با یک دوره آزمایشی رایگان شروع می‌شود، سپس هر سال تجدید می‌شود. در هر زمان در Google Play لغو کنید.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">هر سال تجدید می‌شود. در هر زمان در Google Play لغو کنید.</string>
+    <string name="upgrade_screen_iap_offer_title">باز کردن دائمی</string>
+    <string name="upgrade_screen_iap_offer_body">یک بار پرداخت کنید و Pro را برای همیشه داشته باشید.</string>
+    <string name="upgrade_screen_owned_hero_title">شما Pro هستید! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">شما برای همیشه %1$s را مالک هستید.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">اشتراک %1$s شما فعال است.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">اشتراک شما برای تجدید تنظیم نشده است، بنابراین اکنون می‌توانید به خریدهای یک‌باره تغییر دهید. توجه داشته باشید: این یک هزینه جداگانه است که اشتراک شما را لغو یا بازپرداخت نخواهد کرد، بنابراین برای هر دو از همان حساب Google استفاده کنید.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">ابتدا اشتراک تجدیدی خود را در Google Play لغو کنید، سپس می‌توانید به خریدهای یک‌باره تغییر دهید.</string>
+    <string name="upgrade_screen_restore_body">آیا قبلاً Pro را در این حساب خریداری کرده‌اید؟ از Google Play بخواهید خریدهای شما را دوباره بررسی کند.</string>
+    <string name="upgrade_screen_restore_checked_message">ما از Google Play خواستیم خریدهای این حساب را دوباره بررسی کند و هیچ کدام یافت نشد.</string>
+    <string name="upgrade_screen_restore_contact_hint">هنوز مشکل دارید؟ از همان حساب Google که خریدید تماس بگیرید، شماره سفارش Google Play خود را درج کنید و ما مشکل را حل خواهیم کرد.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">ما نتوانستیم به موقع بررسی را با Google Play تمام کنیم، بنابراین ما هنوز وضعیت خریدتان را نمی‌دانیم — لحظه‌ای صبر کنید و دوباره سعی کنید.</string>
+    <string name="upgrades_gplay_billing_error_label">مشکل خرید</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play مشکلی را گزارش کرد: %1$s. بعداً دوباره سعی کنید یا دستگاه خود را دوباره راه‌اندازی کنید.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">پیشنهاد در دسترس نیست</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play در حال حاضر این مورد را ارائه نداد. ممکن است هنوز برای حساب یا منطقه شما در دسترس نباشد — لطفاً بعداً دوباره سعی کنید.</string>
 </resources>

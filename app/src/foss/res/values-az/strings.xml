@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager-də reklam yoxdur və istifadəçi məlumatlarını satmır. Davamlı inkışaf yalnız sizin sayənizdə mümkündür.</string>
     <string name="upgrade_screen_how_title">Necə kömək etmək</string>
     <string name="upgrade_screen_how_body">Himayədar olun və inkişafı sponsor edin! Bütün əlavə xüsusiyyətləri aktivləşdirmək və mənim GitHub Sponsors profilimi açmaq üçün aşağıdakı düyməni toxunun.</string>
+    <string name="upgrade_screen_why_title">Üstünlüklər</string>
+    <string name="upgrade_screen_why_body">• Sınırsız cihazlar\n• Fərdi bağlantı əməliyyatları\n• Tema fərdiləşdirmə\n• Qabaqcıl səs idarəetmə\n• Açıq mənbə inkişafına dəstək 🧙</string>
     <string name="upgrade_screen_sponsor_action">İnkişafı sponsor edin</string>
     <string name="upgrade_screen_sponsor_action_hint">Alternativ reklamlar, analitika və Google Play-dir 🙁</string>
     <string name="upgrade_screen_thanks_toast">Açıq mənbə inkişafını dəstəklədiyiniz üçün təşəkkür edirik ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Dəstəkçi statusunuza baxın</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Siz pulsuz versiyada olursunuz</string>
+    <string name="upgrade_screen_status_free_body">Əlavə xüsusiyyətləri açmaq və davam edən inkişafı sponsorlamaq üçün tərəfdar olun.</string>
+    <string name="upgrade_screen_status_free_action">Yüksəltmə seçimlərini görün</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Dəstəyiniz üçün təşəkkürlər</string>
     <string name="upgrade_screen_supporter_status_body">Açıq mənbə inkişafını dəstəklədiyiniz üçün bütün əlavə funksiyaların kilidini açdınız.</string>

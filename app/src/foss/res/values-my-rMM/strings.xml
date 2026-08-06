@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager တွင် ကြော်ငြာများမရှိပြီး အသုံးပြုသူဒေတာများကိုလည်း မရောင်းချပါ။ ဆက်လက်ဖွံ့ဖြိုးတိုးတက်မှုသည် သင့ေကြောင့်သာသာ ဖြစ်နိုင်သည်။</string>
     <string name="upgrade_screen_how_title">ကူညီနည်းလမ်း</string>
     <string name="upgrade_screen_how_body">ကူညီသူဖြစ်ပြီး ဖွံ့ဖြိုးတိုးတက်မှုကို ကမကထပံ့ပိုးပါ! အပိုဝန်ဆောင်မှုများအားလုံးကို ဖွင့်ပြီး ကျွန်ုပ်၏ GitHub Sponsors ပရိုဖိုင်းကို ဖွင့်ရန် အောက်ပါခလုတ်ကို နှိပ်ပါ။</string>
+    <string name="upgrade_screen_why_title">အကျိုးကျေးဇူးများ</string>
+    <string name="upgrade_screen_why_body">• အကန့်အသတ်မရှိသော စက်ပစ္စည်းများ\n• စိတ်ကြိုက်ချိတ်ဆက်မှု လုပ်ဆောင်ချက်များ\n• ပုံစံအင်္ဂါ စိတ်ကြိုက်ပြင်ဆင်ခြင်း\n• အဆင့်မြင့်အသံအတိုးအကျယ်ထိန်းချုပ်မှုများ\n• အဖွင့်အရင်းအမြစ်ထုတ်ပြန်မှု ထောက်ခံခြင်း 🧙</string>
     <string name="upgrade_screen_sponsor_action">ဖွံ့ဖြိုးတိုးတက်မှုကို ကမကထပံ့ပိုးရန်</string>
     <string name="upgrade_screen_sponsor_action_hint">အခြားရွေးချယ်စရာမှာ ကြော်ငြာများ၊ ခွဲခြမ်းစိတ်ဖြာခြင်းနှင့် Google Play တို့ဖြစ်သည် 🙁</string>
     <string name="upgrade_screen_thanks_toast">ပွင့်လင်းရင်းမြစ် ဖွံ့ဖြိုးတိုးတက်မှုကို ပံ့ပိုးပေးသည့်အတွက် ကျေးဇူးတင်ပါသည် ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">သင်၏တောက်ခံသူအဆင့်ကိုကြည့်ရှုပါ</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">သင်သည် အခမဲ့ဗားရှင်းတွင် ရှိပါသည်</string>
+    <string name="upgrade_screen_status_free_body">အကြံအပြင်ဆောင်ရွက်သူ ဖြစ်လာပြီး ထပ်ဆောင်းအင်္ဂါရပ်များကိုအသုံးပြုနိုင်စေရန်နှင့် ဆက်တိုက်တည်ဆောက်ခြင်းအားပံ့ပိုးပါ</string>
+    <string name="upgrade_screen_status_free_action">အဆင့်မြှင့်တင်ခြင်းရွေးချယ်မှုများကို ကြည့်ရှုပါ</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">သင်၏တောက်ခံမှုအတွက်ကျေးဇူးတင်ပါသည်</string>
     <string name="upgrade_screen_supporter_status_body">သင်သည် အဖွင့်အရင်းအမြစ်ဆော့ဝဲလ်တီထွင်မှုကို တောက်ခံခြင်းဖြင့် အပိုင်းအခြင်းအားလုံး ဖွင့်လှစ်ခဲ့ပါပြီ။</string>

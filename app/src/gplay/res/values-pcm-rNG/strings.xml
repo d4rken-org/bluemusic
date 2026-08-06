@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Upgrade to BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro dey give better results, more features and options for power users.</string>
     <string name="upgrade_prompt_upgrade_action">Upgrade</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Upgrade to %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager no get ads and no dey sell user data. My work dey financed by you.</string>
     <string name="upgrade_screen_why_title">Advantages</string>
     <string name="upgrade_screen_subscription_trial_action">Start free 14-day trial</string>
@@ -50,5 +52,29 @@
     <string name="upgrades_gplay_network_error_description">You no fit connect to Google Play. Abeg check your internet connection and try again.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play no dey available</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager no fit connect to Google Play. Google Play don install and up to date? Your Google Account don log in? Try clear di cache of Google Play app and reboot your device.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">No fit open Google Play. E fit be say am don miss, disabled or e restricted on this device.</string>
     <string name="upgrades_no_purchases_found_check_account">No purchases found. You dey use di right account?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Ways to upgrade</string>
+    <string name="upgrade_screen_offers_body">Both options go unlock same Pro features — pick di one wey fit you best.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Prices no show</string>
+    <string name="upgrade_screen_offers_unavailable_message">Prices no fit load now. Check Google Play and try again later.</string>
+    <string name="upgrade_screen_benefits_body">• Unlimited devices\n• Make your own connection actions\n• Change your theme\n• Top volume controls\n• Support future development ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Yearly subscription</string>
+    <string name="upgrade_screen_subscription_offer_body">E start with free trial first, den e renew every year. Cancel am anytime for Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">E renew every year. Cancel am anytime for Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Forever unlock</string>
+    <string name="upgrade_screen_owned_hero_title">You be Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Your %1$s subscription active.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Your subscription no set to renew, so you fit switch to one-time purchase now. Hear me: e go charge you separate and e no go cancel or refund your subscription, so use di same Google account for both.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Cancel your subscription wey dey renew for Google Play first, den you fit switch to one-time purchase.</string>
+    <string name="upgrade_screen_restore_body">You buy Pro before for this account? Ask Google Play make e check your purchases again.</string>
+    <string name="upgrade_screen_restore_checked_message">We ask Google Play check this account purchases again but e no find anything.</string>
+    <string name="upgrade_screen_restore_contact_hint">Still stuck? Get in touch from di same Google account wey you buy with, add your Google Play order number, and we go fix am.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">We no fit finish di check with Google Play in time, so we no know your purchase status yet — wait small and try again.</string>
+    <string name="upgrades_gplay_billing_error_label">Buy problem</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play report problem: %1$s. Try am again later or restart your device.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Offer no show</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play no offer this item now. E no dey available for your account or region yet — try again later.</string>
 </resources>

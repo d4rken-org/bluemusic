@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">BVM Pro рүү шилжээх</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro илүү үр дүн, илүү онцлог ба шинжлэх хэрэглэгчиддүгээр илүү сонголтыг саналддаг.</string>
     <string name="upgrade_prompt_upgrade_action">Сайжруулах</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">%1$s рүү шаруулах</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager сурталчилгаагүй бөгөөд хэрэглэгчийн өгөгдлийг зардаггүй. Миний ажиллыг та нараар санхүүжнэ ❤️.</string>
     <string name="upgrade_screen_why_title">Давуу талууд</string>
     <string name="upgrade_screen_subscription_trial_action">14 хоногийн үнэ төлбөргүй туршилт эхлүүлэх</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Google Play-д холбогдох боломжгүй. Интернет холболтоо шалгаж, дахин оролдоно уу.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play боломжгүй байна</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play-тай холбогдож чадахгүй байна. Google Play суулгагдсан бөгөөд шинэчлэлтсэн уу? Google хаднаа нэвтрээсэн байна уу? Google Play аппын кэшийг арилгаад төхөөрөмжийгеэ дахин ньюцлаарай.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Play-г нээх боломжгүй байна. Энэ төхөөрөмжид байхгүй, идэвхгүй эсвэл хязгаарлагдсан байж болно.</string>
     <string name="upgrades_no_purchases_found_check_account">Худалдан авалт олдсонгүй. Та зөв бүртгэл ашиглаж байна уу?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Шаруулах сонголтууд</string>
+    <string name="upgrade_screen_offers_body">Хоёр сонголт нь яг адилхан Pro функцүүдийг нээдэг — танд тохирохыг сонгоно уу.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Үнэ боломжгүй</string>
+    <string name="upgrade_screen_offers_unavailable_message">Үнэ одоо ачаалж чадсонгүй. Google Play дээр шалгаж, дараа нь дахин оролдоно уу.</string>
+    <string name="upgrade_screen_benefits_body">• Хязгааргүй төхөөрөмж\n• Өөрчлөлттэй холболтын үйлдэл\n• Сэдвийн өөрчлөлт\n• Дэвшилтэт эзлэхүүнийг удирдах\n• Ирээдүйн хөгжүүлэлтийг дэмжих ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Жилийн захиалга</string>
+    <string name="upgrade_screen_subscription_offer_body">Үнэгүй туршилтаас эхлээд жил бүр сэргээгдэнэ. Google Play-ээс ямар ч үед цуцлаж болно.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Жил бүр сэргээгдэнэ. Google Play-ээс ямар ч үед цуцлаж болно.</string>
+    <string name="upgrade_screen_iap_offer_title">Бүх нас болгоны түлхүүц задлах</string>
+    <string name="upgrade_screen_iap_offer_body">Нэг удаа төлөөд Pro-г бүх нас болгоны эзэмших.</string>
+    <string name="upgrade_screen_owned_hero_title">Та Pro байна! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Та %1$s-г бүх нас болгоны эзэмшинэ.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Таны %1$s захиалга идэвхтэй байна.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Таны захиалга сэргээгдэхийн тулд тогтоогдоогүй байгаа тул одоо нэг удаа худалдаж авахад шилжүүлж болно. Анхааруулга: энэ нь таны захиалгыг цуцлахгүй эсвэл буцаан олгохгүй тусдаа төлбөр байгаа тул хоёуланд нь ижил Google данс ашигла.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Эхлээд Google Play-ээс таны сэргээгдэх захиалгыг цуцлаж, дараа нь нэг удаа худалдаж авахад шилжүүлж болно.</string>
+    <string name="upgrade_screen_restore_body">Энэ дансанд аль хэдийн Pro авсан уу? Google Play-ээс та худалдан авалтаа дахин шалгахыг хүс.</string>
+    <string name="upgrade_screen_restore_checked_message">Бид Google Play-ээс энэ дансанд худалдан авалт байгаа эсэхийг дахин шалгахыг хүсэж, олсонгүй.</string>
+    <string name="upgrade_screen_restore_contact_hint">Хэрэн цаашид асуудалтай уу? Та худалдан авалт хийсэн ижил Google данс дээр биднэтэй холбоо барь, Google Play захиалгын дугаараа оруулж, бид үүнийг шийдүүлнэ.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Бид Google Play-тэй цаг хугацааны дотор шалгалтыг дуусгаж чадаагүй, тул таны худалдан авалтын статус үл мэдэгдэх байна — түр хүлээтэл дахин оролдоно уу.</string>
+    <string name="upgrades_gplay_billing_error_label">Худалдан авалтын асуудал</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play асуудлыг мэдээлэв: %1$s. Дараа нь дахин оролдоно уу эсвэл таны төхөөрөмжийг дахин идэвхжүүлнэ үү.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Санал боломжгүй</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play энэ товчийг одоо санал болгосонгүй. Энэ нь та болон та оршин сууцаж буй бүсэд бэлэн биш байж болно — дараа нь дахин оролдоно уу.</string>
 </resources>

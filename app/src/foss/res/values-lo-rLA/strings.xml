@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ບ່ມີໂຆສນາແລະບ່ຂາຍຂ້ອມູນຜູ້ໃຊ້. ການພັດທນາຕ່ອເນື່ອງເປັນໄປໄດ້ໂດຍມີທ່ານເທ່ານັ້ນ.</string>
     <string name="upgrade_screen_how_title">ວິທີການຊ່ວຍເຫຼືອ</string>
     <string name="upgrade_screen_how_body">ກາຍເປັນຜູ້ອຸປະຖໍາ ແລະ ໃຫ້ການສະໜັບສະໜູນການພັດທະນາ! ກົດປຸ່ມຂ້າງລຸ່ມເພື່ອເປີດໃຊ້ງານຄຸນສົມບັດເພີ່ມເຕີມທັງໝົດ ແລະ ເປີດໂປຣໄຟລ໌ GitHub Sponsors ຂອງຂ້ອຍ.</string>
+    <string name="upgrade_screen_why_title">ຂໍ້ດີ</string>
+    <string name="upgrade_screen_why_body">• ອຸປະກອນທີ່ບໍ່ມີຂອບເຂດ\n• ການດໍາເນີນການເຊື່ອມຕໍ່ທີ່ກຳນົດເອງ\n• ການປັບແຕ່ງຫຼອຂໍ້\n• ການຄວບຄຸມສຽງທີ່ກ້າວໜ້າ\n• ສະໜັບສະໜູນການພັດທະນາຊອບແວເປິດເຜີຍ 🧙</string>
     <string name="upgrade_screen_sponsor_action">ສະໜັບສະໜູນການພັດທະນາ</string>
     <string name="upgrade_screen_sponsor_action_hint">ທາງເລືອກແມ່ນໂຄສະນາ, ການວິເຄາະ ແລະ Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">ຂອບໃຈສໍາລັບການສະໜັບສະໜູນການພັດທະນາແຫຼ່ງເປີດ ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">ເບິ່ງສະຖານະຜູ້ສະໝັບສະໝູນຂອງທ່ານ</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">ທ່ານຍູ່ໃນຮູບແບບຟຣີ</string>
+    <string name="upgrade_screen_status_free_body">ກາຍເປັນຜູ້ສະໜັບສະໜູນເພື່ອປົ່ອຍໃຫ້ຟີເຈີພິສະ ແລະສະໜັບສະໜູນການພັດທະນາຕໍ່ໄປ.</string>
+    <string name="upgrade_screen_status_free_action">ເບິ່ງຕົວເລືອກການອັບເກຣດ</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">ຂອບໃຈສຳລັບການສະໝັບສະໝູນຂອງທ່ານ</string>
     <string name="upgrade_screen_supporter_status_body">ທ່ານໄດ້ປົດລັອກຄຸນສົມບັດພິເສດທັງໝົດໂດຍການສະໝັບສະໝູນການພັດທະນາລະໝັດເປີດ.</string>

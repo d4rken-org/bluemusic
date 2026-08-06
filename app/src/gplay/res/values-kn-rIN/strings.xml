@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">BVM Pro ಗೆ ದರ್ಜೆಯೇರಿ</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ಉತ್ತಮ ಫಲಿತಾಂಶಗಳನ್ನು, ಹೆಚ್ಚಿನ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಮತ್ತು ಪವರ್ ಬಳಕೆದಾರರಿಗೆ ಆಯ್ಕೆಗಳನ್ನು ನೀಡುತ್ತದೆ.</string>
     <string name="upgrade_prompt_upgrade_action">ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">%1$s ಗೆ ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ಜಾಹೀರಾತುಗಳಿಲ್ಲ ಮತ್ತು ಬಳಕೆದಾರರ ಡೇಟಾ ಮಾರಾಟುವುದಿಲ್ಲ. ನನ್ನ ಕೆಲಸ ನಿಮ್ಮಿಂದ ಹಗಲಾಗುತ್ತದೆ ❤️.</string>
     <string name="upgrade_screen_why_title">ಪ್ರಯೋಜನಗಳು</string>
     <string name="upgrade_screen_subscription_trial_action">ಉಚಿತ 14-ದಿನಗಳ ಪರೀಕ್ಷೆ ಪ್ರಾರಂಭಿಸಿ</string>
@@ -50,5 +52,29 @@
     <string name="upgrades_gplay_network_error_description">ಗೂಗಲ್ ಪ್ಲೇಗೆ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಪುನಃ ಪ್ರಯತ್ನಿಸಿ.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ಲಭ್ಯವಿಲ್ಲ</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play ಗೆ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ. Google Play ಇನ್ಸ್ಟಾಲ್ ಆಗಿ ನವೀಕರಿಸಲಾಗಿದೆಯೇ? ನಿಮ್ಮ Google ಖಾತೆ ಲಾಗಿನ್ ಆಗಿದೆಯೇ? Google Play ಅಪ್ ಕ್ಯಾಚೆ ತೆರವುಮಾಡಿ ಮರುಬುಟ್ ಮಾಡಿ.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Play ಅನ್ನು ತೆರೆಯಲಾಗಲಿಲ್ಲ. ಇದು ಸ್ಥಾಪಿತವಾಗಿರದೆ, ನಿಷ್ಕ್ರಿಯವಾಗಿರುವ ಅಥವಾ ಈ ಸಾಧನದಲ್ಲಿ ನಿರ್ಬಂಧಿತವಾಗಿರುವ ಸಾಧ್ಯತೆ ಇದೆ.</string>
     <string name="upgrades_no_purchases_found_check_account">ಯಾವುದೇ ಖರೀದಿಗಳು ಕಂಡುಬಂದಿಲ್ಲ. ನೀವು ಸರಿಯಾದ ಖಾತೆಯನ್ನು ಬಳಸುತ್ತಿದ್ದೀರಾ?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">ಅಪ್‌ಗ್ರೇಡ್ ಆಯ್ಕೆಗಳು</string>
+    <string name="upgrade_screen_offers_body">ಎರಡೂ ಆಯ್ಕೆಗಳು ನಿಖಿಲವಾಗಿ ಅದೇ ಪ್ರೋ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡುತ್ತವೆ — ನಿಮಗೆ ಸರಿಯಾದುದನ್ನು ಆರಿಸಿಕೊಳ್ಳಿ.</string>
+    <string name="upgrade_screen_offers_unavailable_title">ಬೆಲೆಗಳು ಲಭ್ಯವಲ್ಲ</string>
+    <string name="upgrade_screen_offers_unavailable_message">ಬೆಲೆಗಳನ್ನು ಈಗ ಲೋಡ್ ಮಾಡಲಾಗಲಿಲ್ಲ. Google Play ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="upgrade_screen_benefits_body">• ಅಸೀಮಿತ ಸಾಧನಗಳು\n• ಕಸ್ಟಮ್ ಸಂಪರ್ಕ ಕ್ರಿಯೆಗಳು\n• ಥೀಮ್ ಅನುಕೂಲನ\n• ಮುಂದುವರಿದ ವಾಲ್ಯೂಮ್ ನಿಯಂತ್ರಣಗಳು\n• ಭವಿಷ್ಯತ್ತಿನ ಅಭಿವೃದ್ಧಿಯನ್ನು ಬೆಂಬಲಿಸಿ ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">ವಾರ್ಷಿಕ ಯೋಜನೆ</string>
+    <string name="upgrade_screen_subscription_offer_body">ಉಚಿತ ಪ್ರಯೋಗವೊಂದಿಗೆ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ, ನಂತರ ವಾರ್ಷಿಕವಾಗಿ ನವೀಕರಣವಾಗುತ್ತದೆ. Google Play ನಲ್ಲಿ ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ರದ್ದುಮಾಡಿ.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">ವಾರ್ಷಿಕವಾಗಿ ನವೀಕರಣವಾಗುತ್ತದೆ. Google Play ನಲ್ಲಿ ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ರದ್ದುಮಾಡಿ.</string>
+    <string name="upgrade_screen_iap_offer_title">ಜೀವನಕಾಲದ ಅನ್‌ಲಾಕ್</string>
+    <string name="upgrade_screen_iap_offer_body">ಒಮ್ಮೆ ಪಾವತಿ ಮಾಡಿ, ಶಾಶ್ವತವಾಗಿ ಪ್ರೋ ಪಡೆ.</string>
+    <string name="upgrade_screen_owned_hero_title">ನೀವು ಪ್ರೋ! ❤️</string>
+    <string name="upgrade_screen_owned_hero_sub_body">ನಿಮ್ಮ %1$s ಸಂಚಯ ಸಕ್ರಿಯವಾಗಿದೆ.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Google Play ನಲ್ಲಿ ನಿಮ್ಮ ನವೀಕರಣ ಸಂಚಯವನ್ನು ಮೊದಲು ರದ್ದುಮಾಡಿ, ನಂತರ ಏಕ-ಬಾರಿ ಖರೀದಿಗೆ ಬದಲಾಯಿಸಬಹುದು.</string>
+    <string name="upgrade_screen_restore_body">ಈ ಖಾತೆಯಲ್ಲಿ ಪ್ರೋ ಈಗಾಗಲೇ ಖರೀದಿಸಿದ್ದೀರಾ? ನಿಮ್ಮ ಖರೀದಿಗಳನ್ನು ಮರುಪರೀಕ್ಷೆ ಮಾಡಲು Google Play ಅನ್ನು ಕೇಳಿ.</string>
+    <string name="upgrade_screen_restore_checked_message">ನಾವು Google Play ಅನ್ನು ಈ ಖಾತೆಯ ಖರೀದಿಗಳನ್ನು ಮರುಪರೀಕ್ಷೆ ಮಾಡಲು ಕೇಳಿದ್ದೇವೆ ಮತ್ತು ಯಾವುದನ್ನೂ ಕಂಡುಹಿಡಿಯಲಿಲ್ಲ.</string>
+    <string name="upgrade_screen_restore_contact_hint">ಇನ್ನೂ ಅಡ್ಡಿಯಾಗಿದೆ? ನೀವು ಖರೀದಿಸಿದ ಅದೇ Google ಖಾತೆಯಿಂದ ಸಂಪರ್ಕಿಸಿ, ನಿಮ್ಮ Google Play ಆದೇಶ ಸಂಖ್ಯೆಯನ್ನು ಸೇರಿಸಿ, ಮತ್ತು ನಾವು ಅದನ್ನು ಪರಿಹರಿಸುತ್ತೇವೆ.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">ನಾವು Google Play ನೊಂದಿಗೆ ಸಮಯದಲ್ಲಿ ಪರೀಕ್ಷೆ ಮಾಡಿ ಮುಗಿಸಲಿಲ್ಲ, ಆದ್ದರಿಂದ ನಾವು ಇನ್ನೂ ನಿಮ್ಮ ಖರೀದಿ ಸ್ಥಿತಿ ತಿಳಿದಿಲ್ಲ — ಒಂದು ಕ್ಷಣ ಕಾಯಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="upgrades_gplay_billing_error_label">ಖರೀದಿ ಸಮಸ್ಯೆ</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play ಸಮಸ್ಯೆ ವರದಿ ಮಾಡಿದೆ: %1$s. ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ನಿಮ್ಮ ಸಾಧನವನ್ನು ಪುನರಾರಂಭಿಸಿ.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">ಪ್ರಸ್ತಾವ ಲಭ್ಯವಲ್ಲ</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play ಈಗ ಈ ಐಟಮ್ ಪ್ರಸ್ತಾವ ಮಾಡಲಿಲ್ಲ. ಇದು ನಿಮ್ಮ ಖಾತೆ ಅಥವಾ ಪ್ರದೇಶಕ್ಕೆ ಇನ್ನೂ ಲಭ್ಯವಿರಬಹುದು — ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
 </resources>

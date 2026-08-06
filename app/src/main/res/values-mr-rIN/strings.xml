@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">कोणतेही अव्यवस्थापित डिव्हाइस आढळले नाही</string>
     <string name="discover_all_devices_managed_msg">तुमची सर्व जोडलेली डिव्हाइस व्यवस्थापित आहेत! नवीन हवे आहे का?</string>
     <string name="discover_pair_new_device_action">नवीन डिव्हाइस जोडा</string>
+    <string name="discover_device_speaker_desc">या फोनचा स्वतःचा स्पीकर. जेव्हा ऑडिओ फोनवर परत स्विच होते तेव्हा त्याचे व्हॉल्यूम लागू होतात, उदा. तुमचे Bluetooth डिव्हाइस डिस्कनेक्ट झाल्यानंतर.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">डिव्हाइस कॉन्फिगरेशन</string>
     <string name="devices_device_config_section_general_label">सामान्य</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">डिव्हाइस जोडा</string>
     <string name="label_just_a_moment_please">एक क्षण, कृपया.</string>
     <string name="label_notification_channel_status">स्थिती</string>
+    <string name="monitor_notification_starting">शुरू होत आहे…</string>
     <string name="action_set">सेट करा</string>
     <string name="action_cancel">रद्द करा</string>
     <string name="label_invalid_input">अवैध इनपुट</string>
@@ -391,6 +393,8 @@
     <string name="general_delete_action">हटवा</string>
     <string name="general_cancel_action">रद्द करा</string>
     <string name="general_ok_action">ठीक आहे</string>
+    <string name="general_dismiss_action">खारिज करा</string>
+    <string name="general_progress_loading">लोड होत आहे…</string>
     <string name="general_configure_action">कॉन्फिगर करा</string>
     <string name="battery_optimization_hint_title">बॅटरी ऑप्टिमायझेशन</string>
     <string name="battery_optimization_hint_message">बॅटरी ऑप्टिमायझेशन सक्षम आहेत आणि योग्य ऑपरेशनला प्रतिबंध करू शकतात. ते अक्षम करण्याचा विचार करा.</string>
@@ -402,6 +406,12 @@
     <string name="dnd_access_hint_title">व्यत्यय मोड प्रवेश</string>
     <string name="dnd_access_hint_message">व्यत्यय मोड प्रवेशाशिवाय, रिंगटोन, सूचना आणि व्यत्यय मोड सेटिंग्ज तुमच्या डिव्हाइससह कनेक्ट होताना लागू केल्या जाऊ शकत नाहीत.</string>
     <string name="dnd_access_fix_action">प्रवेश मंजूर करा</string>
+    <string name="device_speaker_hint_title">डिस्कनेक्ट केल्यानंतर व्हॉल्यूम</string>
+    <string name="device_speaker_hint_message">Bluetooth डिव्हाइस डिस्कनेक्ट होताना तुमचे व्हॉल्यूम पुनर्स्थापित हवेत का? “डिव्हाइस स्पीकर” हे व्यवस्थापित डिव्हाइस म्हणून जोडा — जेव्हा ऑडिओ तुमच्या फोनवर परत स्विच होते तेव्हा त्याचे व्हॉल्यूम लागू होतात.</string>
+    <string name="device_speaker_hint_action">जोडा</string>
+    <string name="review_app_body">BVM ला रिव्यू द्यायचे आहे का? ❤️</string>
+    <string name="review_app_review_action">रिव्यू</string>
+    <string name="review_app_dismiss_action">मग नंतर</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">खरेदी रद्द केली</string>
     <string name="error_iap_unavailable_message">इन-अॅप खरेदी उपलब्ध नाहीत</string>
