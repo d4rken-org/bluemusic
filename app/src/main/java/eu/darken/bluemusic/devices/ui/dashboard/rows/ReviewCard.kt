@@ -19,7 +19,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,8 +44,11 @@ fun ReviewCard(
     // the review bookkeeping with a snooze) and a review after a dismiss. A repeated review tap is
     // harmless, the tool's single-flight lock absorbs it, and blocking it here would leave a dead
     // card whenever a Play request fails and nothing gets persisted.
-    var dismissLocked by rememberSaveable { mutableStateOf(false) }
-    var fullyLatched by rememberSaveable { mutableStateOf(false) }
+    // Plain remember, not rememberSaveable: the card lives in a lazy list, whose host retains
+    // saveable state across item removal, so a latched card that left the list would come back
+    // latched. Disposal on removal is the intended reset and the latch window is sub-second.
+    var dismissLocked by remember { mutableStateOf(false) }
+    var fullyLatched by remember { mutableStateOf(false) }
     Card(
         modifier = Modifier
             .fillMaxWidth()
