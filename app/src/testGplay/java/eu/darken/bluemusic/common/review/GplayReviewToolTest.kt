@@ -17,13 +17,16 @@ import io.mockk.mockk
 import io.mockk.slot
 import io.mockk.verify
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestScope
-import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.advanceTimeBy
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.serialization.SerializationException
 import org.junit.jupiter.api.Test
@@ -38,11 +41,12 @@ class GplayReviewToolTest : BaseTest() {
     private val manager = mockk<ReviewManager>()
     private val settings = mockk<ReviewSettings>()
     private val upgradeRepo = mockk<UpgradeRepo>()
+
+    // The fake is kept next to its mock: it is backed by a MutableStateFlow, so a value written
+    // after the tool started collecting still reaches the pipeline (`lastDismissedFake.value = ...`).
+    private lateinit var lastDismissedFake: FakeDataStoreValue<Instant?>
     private lateinit var lastDismissedMock: DataStoreValue<Instant?>
     private lateinit var reviewedAtMock: DataStoreValue<Instant?>
-
-    // The `.value(new)` writes go through `update`, which the fake answers and records.
-    private fun rwSetting(initial: Instant?): DataStoreValue<Instant?> = FakeDataStoreValue(initial).mock
 
     // The tool's own scope has to run on the test scheduler, otherwise the probe backoff and the
     // state throttle would burn real time.
@@ -50,9 +54,12 @@ class GplayReviewToolTest : BaseTest() {
         upgradedAt: Instant? = Instant.now().minus(Duration.ofDays(30)),
         lastDismissed: Instant? = null,
         reviewedAt: Instant? = null,
+        minDuration: Duration? = null,
     ): GplayReviewTool {
-        lastDismissedMock = rwSetting(lastDismissed)
-        reviewedAtMock = rwSetting(reviewedAt)
+        // The `.value(new)` writes go through `update`, which the fake answers and records.
+        lastDismissedFake = FakeDataStoreValue(lastDismissed)
+        lastDismissedMock = lastDismissedFake.mock
+        reviewedAtMock = FakeDataStoreValue(reviewedAt).mock
         every { settings.lastDismissed } returns lastDismissedMock
         every { settings.reviewedAt } returns reviewedAtMock
 
@@ -65,7 +72,13 @@ class GplayReviewToolTest : BaseTest() {
             settings = settings,
             manager = manager,
             upgradeRepo = upgradeRepo,
-        ).apply { probeRetryDelay = Duration.ofSeconds(1) }
+        ).apply {
+            probeRetryDelay = PROBE_RETRY_DELAY
+            probeFailureCooldown = PROBE_FAILURE_COOLDOWN
+            requestTimeout = REQUEST_TIMEOUT
+            launchTimeout = LAUNCH_TIMEOUT
+            minDuration?.let { reviewMinDuration = it }
+        }
     }
 
     private fun reviewInfo(canShow: Boolean = true): ReviewInfo {
@@ -85,8 +98,29 @@ class GplayReviewToolTest : BaseTest() {
 
     private fun launchOk(): Task<Void?> = Tasks.forResult(null)
 
+    // A Play call that never comes back: the ktx wrapper suspends on the listeners it registers
+    // with the Task, and a relaxed mock never invokes them.
+    private fun <T> hangingTask(): Task<T> = mockk<Task<T>>(relaxed = true).apply {
+        every { isComplete } returns false
+    }
+
     // The `onStart` seed is not a computed state, every assertion has to await the first real one.
     private suspend fun GplayReviewTool.computedState() = state.drop(1).first()
+
+    // Live view of everything the tool emitted so far, for assertions that have to move the clock
+    // between emissions instead of awaiting a single one.
+    private fun TestScope.collectStates(tool: GplayReviewTool): List<ReviewTool.State> {
+        val states = mutableListOf<ReviewTool.State>()
+        backgroundScope.launch { tool.state.collect { states += it } }
+        return states
+    }
+
+    // The tool's flows all run on the background scope, and `advanceUntilIdle` only advances while
+    // there is foreground work, so every wait has to name the span it is waiting for.
+    private fun TestScope.advanceBy(duration: Duration) {
+        advanceTimeBy(duration.toMillis())
+        runCurrent()
+    }
 
     @Test fun `an eligible user is asked for a review`() = runTest2 {
         every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo())
@@ -112,6 +146,18 @@ class GplayReviewToolTest : BaseTest() {
 
         tool(lastDismissed = Instant.now().minus(Duration.ofDays(3)))
             .computedState().shouldAskForReview shouldBe false
+
+        verify(exactly = 0) { manager.requestReviewFlow() }
+    }
+
+    @Test fun `a user who already reviewed is never asked or probed again`() = runTest2 {
+        every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo())
+
+        tool(reviewedAt = Instant.now().minus(Duration.ofDays(200))).computedState().apply {
+            shouldAskForReview shouldBe false
+            // The card is gone for good, but the fact stays readable for anything else that asks.
+            hasReviewed shouldBe true
+        }
 
         verify(exactly = 0) { manager.requestReviewFlow() }
     }
@@ -172,6 +218,33 @@ class GplayReviewToolTest : BaseTest() {
         coVerify(exactly = 0) { reviewedAtMock.update(any()) }
     }
 
+    @Test fun `a launch the user dismissed instantly counts as a snooze`() = runTest2 {
+        every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo())
+        every { manager.launchReviewFlow(any(), any()) } returns launchOk()
+        val tool = tool()
+
+        tool.reviewNow(activity())
+
+        // Play returns immediately when it decides not to show anything, that is not a review.
+        coVerify(exactly = 1) { lastDismissedMock.update(any()) }
+        coVerify(exactly = 0) { reviewedAtMock.update(any()) }
+    }
+
+    @Test fun `a launch the user stayed in counts as a completed review`() = runTest2 {
+        every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo())
+        // Real sleep on purpose: the heuristic measures wall clock, virtual time cannot reach it.
+        every { manager.launchReviewFlow(any(), any()) } answers {
+            Thread.sleep(150)
+            launchOk()
+        }
+        val tool = tool(minDuration = Duration.ofMillis(50))
+
+        tool.reviewNow(activity())
+
+        coVerify(exactly = 1) { reviewedAtMock.update(any()) }
+        coVerify(exactly = 0) { lastDismissedMock.update(any()) }
+    }
+
     @Test fun `a dead activity aborts the launch without persisting`() = runTest2 {
         every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo())
         every { manager.launchReviewFlow(any(), any()) } returns launchOk()
@@ -202,8 +275,10 @@ class GplayReviewToolTest : BaseTest() {
         val tool = tool()
         val activity = activity()
 
+        // runCurrent, not advanceUntilIdle: the first call has to be parked on the request when the
+        // second tap arrives, an unbounded time advance would trip the request timeout first.
         val first = launch { tool.reviewNow(activity) }
-        advanceUntilIdle()
+        runCurrent()
 
         tool.reviewNow(activity)
 
@@ -235,9 +310,18 @@ class GplayReviewToolTest : BaseTest() {
         verify(exactly = 3) { manager.requestReviewFlow() }
     }
 
+    @Test fun `an isNoOp probe answer is accepted instead of retried`() = runTest2 {
+        every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo(canShow = false))
+
+        tool().computedState().shouldAskForReview shouldBe false
+
+        // isNoOp is an answer, not a failure: burning the retry budget on it would just cost quota.
+        verify(exactly = 1) { manager.requestReviewFlow() }
+    }
+
     @Test fun `corrupt review settings fall back to the default state`() = runTest2 {
         every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo())
-        lastDismissedMock = rwSetting(null)
+        lastDismissedMock = FakeDataStoreValue<Instant?>(null).mock
         // A malformed stored timestamp throws when the DataStore flow is read.
         reviewedAtMock = mockk<DataStoreValue<Instant?>>().apply {
             every { flow } returns flow { throw SerializationException("corrupt") }
@@ -284,5 +368,292 @@ class GplayReviewToolTest : BaseTest() {
         computed shouldBe null
         // The general failure path would have burned all 3 attempts and settled on "unavailable".
         verify(exactly = 1) { manager.requestReviewFlow() }
+    }
+
+    @Test fun `a probe that times out abandons the whole round`() = runTest2 {
+        var hanging = true
+        every { manager.requestReviewFlow() } answers {
+            if (hanging) hangingTask() else Tasks.forResult(reviewInfo())
+        }
+        val tool = tool()
+        val states = collectStates(tool)
+
+        advanceBy(REQUEST_TIMEOUT.multipliedBy(2))
+
+        // Our timeout does not cancel the Play Task: an in-round retry would stack concurrent
+        // quota-consuming requests against a service that is already hung.
+        verify(exactly = 1) { manager.requestReviewFlow() }
+        states.last().shouldAskForReview shouldBe false
+
+        hanging = false
+        advanceBy(PROBE_FAILURE_COOLDOWN.multipliedBy(2))
+
+        // Recovery comes from the next cooldown round, not from the abandoned one.
+        verify(exactly = 2) { manager.requestReviewFlow() }
+        states.last().shouldAskForReview shouldBe true
+    }
+
+    @Test fun `a probe exception is still retried inside the round`() = runTest2 {
+        // Only a timeout abandons the round, the exception path keeps its 3 attempt budget.
+        every { manager.requestReviewFlow() } returnsMany listOf(
+            Tasks.forException(RuntimeException("Play unavailable")),
+            Tasks.forResult(reviewInfo()),
+        )
+        val tool = tool()
+        val states = collectStates(tool)
+
+        advanceBy(PROBE_RETRY_DELAY.multipliedBy(4))
+
+        verify(exactly = 2) { manager.requestReviewFlow() }
+        states.last().shouldAskForReview shouldBe true
+    }
+
+    @Test fun `a hanging fresh request releases the lock without persisting`() = runTest2 {
+        var hanging = true
+        every { manager.requestReviewFlow() } answers {
+            if (hanging) hangingTask() else Tasks.forResult(reviewInfo())
+        }
+        every { manager.launchReviewFlow(any(), any()) } returns launchOk()
+        val tool = tool()
+        val activity = activity()
+
+        tool.reviewNow(activity)
+
+        // A hang is not user intent: no launch, no bookkeeping, the next tap has to be able to retry.
+        verify(exactly = 0) { manager.launchReviewFlow(any(), any()) }
+        coVerify(exactly = 0) { lastDismissedMock.update(any()) }
+        coVerify(exactly = 0) { reviewedAtMock.update(any()) }
+
+        hanging = false
+        tool.reviewNow(activity)
+
+        // Without the timeout the single-flight lock would still be held by the first tap.
+        verify(exactly = 1) { manager.launchReviewFlow(activity, any()) }
+    }
+
+    @Test fun `a hanging launch releases the lock without persisting`() = runTest2 {
+        every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo())
+        var hanging = true
+        every { manager.launchReviewFlow(any(), any()) } answers {
+            if (hanging) hangingTask() else launchOk()
+        }
+        val tool = tool()
+        val activity = activity()
+
+        tool.reviewNow(activity)
+
+        // The outcome is unknown, so neither the review nor the snooze may be recorded, and the
+        // duration heuristic must not treat the timeout as a completed review.
+        coVerify(exactly = 0) { reviewedAtMock.update(any()) }
+        coVerify(exactly = 0) { lastDismissedMock.update(any()) }
+
+        hanging = false
+        tool.reviewNow(activity)
+
+        verify(exactly = 2) { manager.launchReviewFlow(activity, any()) }
+    }
+
+    @Test fun `a dismiss racing the fresh request aborts the launch`() = runTest2 {
+        val tool = tool()
+        every { manager.requestReviewFlow() } answers {
+            // The user hits "maybe later" while Play is still answering the review tap.
+            runBlocking { tool.dismiss() }
+            Tasks.forResult(reviewInfo())
+        }
+        every { manager.launchReviewFlow(any(), any()) } returns launchOk()
+
+        tool.reviewNow(activity())
+
+        verify(exactly = 0) { manager.launchReviewFlow(any(), any()) }
+        // Only the dismiss' own write, reviewNow must not add bookkeeping on top of it.
+        coVerify(exactly = 1) { lastDismissedMock.update(any()) }
+        coVerify(exactly = 0) { reviewedAtMock.update(any()) }
+    }
+
+    @Test fun `a definitive probe answer is not requested twice`() = runTest2 {
+        every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo())
+        val tool = tool()
+
+        val first = mutableListOf<ReviewTool.State>()
+        val firstJob = backgroundScope.launch { tool.state.collect { first += it } }
+        advanceBy(Duration.ofSeconds(1))
+        first.last().shouldAskForReview shouldBe true
+        firstJob.cancelAndJoin()
+
+        val second = mutableListOf<ReviewTool.State>()
+        val secondJob = backgroundScope.launch { tool.state.collect { second += it } }
+        advanceBy(Duration.ofSeconds(1))
+        second.last().shouldAskForReview shouldBe true
+        secondJob.cancelAndJoin()
+
+        // Play's answer holds for the rest of the process, a re-subscription must not cost quota.
+        verify(exactly = 1) { manager.requestReviewFlow() }
+    }
+
+    @Test fun `an isNoOp answer is not requested twice either`() = runTest2 {
+        every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo(canShow = false))
+        val tool = tool()
+
+        val first = mutableListOf<ReviewTool.State>()
+        val firstJob = backgroundScope.launch { tool.state.collect { first += it } }
+        advanceBy(Duration.ofSeconds(1))
+        first.last().shouldAskForReview shouldBe false
+        firstJob.cancelAndJoin()
+
+        val second = mutableListOf<ReviewTool.State>()
+        val secondJob = backgroundScope.launch { tool.state.collect { second += it } }
+        advanceBy(Duration.ofSeconds(1))
+        second.last().shouldAskForReview shouldBe false
+        secondJob.cancelAndJoin()
+
+        // isNoOp is a verdict, not a failure: it is cached like any other answer.
+        verify(exactly = 1) { manager.requestReviewFlow() }
+    }
+
+    @Test fun `a transient probe failure is retried after the cooldown`() = runTest2 {
+        var healthy = false
+        every { manager.requestReviewFlow() } answers {
+            if (healthy) Tasks.forResult(reviewInfo()) else Tasks.forException(RuntimeException("Play unavailable"))
+        }
+        val tool = tool()
+        val states = collectStates(tool)
+
+        advanceBy(PROBE_FAILURE_COOLDOWN.dividedBy(2))
+
+        verify(exactly = 3) { manager.requestReviewFlow() }
+        states.last().shouldAskForReview shouldBe false
+
+        healthy = true
+        advanceBy(PROBE_FAILURE_COOLDOWN)
+
+        // A failure is not an answer, so Play gets asked again once the cooldown is over.
+        verify(exactly = 4) { manager.requestReviewFlow() }
+        states.last().shouldAskForReview shouldBe true
+    }
+
+    @Test fun `the probe retry rounds are bounded`() = runTest2 {
+        every { manager.requestReviewFlow() } returns Tasks.forException(RuntimeException("Play unavailable"))
+        val tool = tool()
+        val states = collectStates(tool)
+
+        advanceBy(PROBE_FAILURE_COOLDOWN.multipliedBy(4))
+
+        // The initial round plus 3 cooldown rounds, 3 attempts each, then the process gives up.
+        verify(exactly = 12) { manager.requestReviewFlow() }
+        states.last().shouldAskForReview shouldBe false
+
+        advanceBy(PROBE_FAILURE_COOLDOWN.multipliedBy(20))
+
+        verify(exactly = 12) { manager.requestReviewFlow() }
+
+        // The budget is spent for the process: an eligibility flicker restarts the probe branch,
+        // but it must not hand out a fresh set of rounds.
+        lastDismissedFake.value = Instant.now()
+        advanceBy(Duration.ofSeconds(1))
+        lastDismissedFake.value = null
+        advanceBy(PROBE_FAILURE_COOLDOWN.multipliedBy(10))
+
+        verify(exactly = 12) { manager.requestReviewFlow() }
+    }
+
+    @Test fun `a snooze running out flips the card on without a restart`() = runTest2 {
+        every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo())
+        var fakeNow = BASE_NOW
+        val tool = tool(
+            upgradedAt = BASE_NOW.minus(Duration.ofDays(60)),
+            lastDismissed = BASE_NOW.minus(Duration.ofDays(13)),
+        ).apply { nowProvider = { fakeNow } }
+        val states = collectStates(tool)
+
+        advanceBy(Duration.ofSeconds(1))
+        states.last().shouldAskForReview shouldBe false
+
+        // The snooze ends a day later: the scheduled re-evaluation has to re-read the clock.
+        fakeNow = BASE_NOW.plus(Duration.ofDays(2))
+        advanceBy(Duration.ofDays(2))
+
+        states.last().shouldAskForReview shouldBe true
+    }
+
+    @Test fun `the pro grace period boundary is strict`() = runTest2 {
+        every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo())
+        var fakeNow = BASE_NOW
+        val upgradedAt = BASE_NOW.minus(Duration.ofDays(21))
+
+        val atBoundary = tool(upgradedAt = upgradedAt).apply { nowProvider = { fakeNow } }
+        val atBoundaryStates = collectStates(atBoundary)
+        advanceBy(Duration.ofSeconds(1))
+        // 21 days have to have passed, not just been reached
+        atBoundaryStates.last().shouldAskForReview shouldBe false
+
+        // A second instance because nothing is pending on the first one: the wake schedule only
+        // keeps boundaries strictly after "now", and this one is exactly "now".
+        fakeNow = BASE_NOW.plus(Duration.ofSeconds(1))
+        val pastBoundary = tool(upgradedAt = upgradedAt).apply { nowProvider = { fakeNow } }
+        val pastBoundaryStates = collectStates(pastBoundary)
+        advanceBy(Duration.ofSeconds(1))
+
+        pastBoundaryStates.last().shouldAskForReview shouldBe true
+    }
+
+    @Test fun `a new dismiss reschedules the boundary re-evaluation`() = runTest2 {
+        every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo())
+        var fakeNow = BASE_NOW
+        val tool = tool(
+            upgradedAt = BASE_NOW.minus(Duration.ofDays(60)),
+            lastDismissed = BASE_NOW.minus(Duration.ofDays(13)),
+        ).apply { nowProvider = { fakeNow } }
+        val states = collectStates(tool)
+
+        advanceBy(Duration.ofSeconds(1))
+        states.last().shouldAskForReview shouldBe false
+
+        // Dismissed again while the old snooze end was still scheduled
+        lastDismissedFake.value = BASE_NOW
+        advanceBy(Duration.ofSeconds(1))
+
+        fakeNow = BASE_NOW.plus(Duration.ofDays(2))
+        advanceBy(Duration.ofDays(3))
+        // The stale boundary must not flip the card back on, the new snooze governs now
+        states.last().shouldAskForReview shouldBe false
+
+        fakeNow = BASE_NOW.plus(Duration.ofDays(15))
+        advanceBy(Duration.ofDays(15))
+
+        states.last().shouldAskForReview shouldBe true
+    }
+
+    @Test fun `a clock that moved backwards re-evaluates instead of flipping`() = runTest2 {
+        every { manager.requestReviewFlow() } returns Tasks.forResult(reviewInfo())
+        var fakeNow = BASE_NOW
+        val tool = tool(
+            upgradedAt = BASE_NOW.minus(Duration.ofDays(60)),
+            lastDismissed = BASE_NOW.minus(Duration.ofDays(13)),
+        ).apply { nowProvider = { fakeNow } }
+        val states = collectStates(tool)
+
+        advanceBy(Duration.ofSeconds(1))
+        states.last().shouldAskForReview shouldBe false
+
+        // The device clock moved back: the wake fires on schedule, but the snooze is still running
+        fakeNow = BASE_NOW.minus(Duration.ofDays(5))
+        advanceBy(Duration.ofDays(30))
+
+        states.last().shouldAskForReview shouldBe false
+        verify(exactly = 0) { manager.requestReviewFlow() }
+
+        // Rescheduling is capped, so a backwards clock cannot keep the process waking forever
+        fakeNow = BASE_NOW.plus(Duration.ofDays(2))
+        advanceBy(Duration.ofDays(30))
+
+        states.last().shouldAskForReview shouldBe false
+    }
+
+    companion object {
+        private val BASE_NOW: Instant = Instant.parse("2024-06-01T12:00:00Z")
+        private val PROBE_RETRY_DELAY: Duration = Duration.ofSeconds(1)
+        private val PROBE_FAILURE_COOLDOWN: Duration = Duration.ofMinutes(5)
+        private val REQUEST_TIMEOUT: Duration = Duration.ofSeconds(5)
+        private val LAUNCH_TIMEOUT: Duration = Duration.ofMinutes(1)
     }
 }
