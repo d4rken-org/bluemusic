@@ -364,8 +364,6 @@
     <string name="description_premium_required_this_extra_option">This extra option requires the premium version of this app.</string>
     <string name="description_premium_upgrade_explanation">Get the premium version to enable additional features and support development.</string>
     <string name="label_premium_version_required">Premium version required</string>
-    <string name="upgrade_feature_requires_pro">This feature requires the premium version</string>
-    <string name="upgrade_prompt_upgrade_action">Upgrade</string>
     <string name="description_intro_purpose">This app allows your Android device to remember the volume of different Bluetooth devices.</string>
     <string name="description_intro_premium">If you like this app, consider upgrading to the premium version. It supports development and gets you a few extra features.</string>
     <string name="upgrade_benefit_unlimited_devices">Unlimited device profiles</string>
