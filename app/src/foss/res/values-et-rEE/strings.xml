@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_upgraded">BVM FOSS</string>
     <string name="upgrade_feature_requires_pro">Vajab BVM FOSS versiooni</string>
     <string name="upgrade_prompt_title">Uuenda BVM FOSS-iks</string>
     <string name="upgrade_prompt_body">Lubage lisavõimalused ja hakake toetajaks, et edendada arendamist.</string>

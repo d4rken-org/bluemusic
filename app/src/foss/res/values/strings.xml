@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_upgraded">BVM FOSS</string>
+    <string name="app_name_upgraded" translatable="false">BVM FOSS</string>
     <string name="app_name_upgrade_postfix" translatable="false">FOSS</string>
     <string name="upgrade_badge_label" translatable="false">FOSS</string>
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_upgraded">BVM FOSS</string>
     <string name="upgrade_feature_requires_pro">Изисква BVM FOSS</string>
     <string name="upgrade_prompt_title">Надграждане до BVM FOSS</string>
     <string name="upgrade_prompt_body">Отключете допълнителни функции и станете покровител, за да подкрепите непрекъснатото развитие!</string>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_upgraded">BVM FOSS</string>
     <string name="upgrade_feature_requires_pro">BVM FOSS প্রয়োজন</string>
     <string name="upgrade_prompt_title">BVM FOSS-এ আপগ্রেড করুন</string>
     <string name="upgrade_prompt_body">অতিরিক্ত ফিচার আনলক করুন এবং ক্রমাগত বিকাশকে সমর্থন করার জন্য একজন পৃষ্ঠপোষক হন!</string>
