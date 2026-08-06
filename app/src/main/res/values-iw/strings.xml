@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">לא נמצאו מכשירים לא מנוהלים</string>
     <string name="discover_all_devices_managed_msg">כל המכשירים המצומדים שלכם מנוהלים! צריכים חדש?</string>
     <string name="discover_pair_new_device_action">צמד מכשיר חדש</string>
+    <string name="discover_device_speaker_desc">הרמקול של הטלפון הזה. עוצמות הקול שלו מוחלות כאשר האודיו חוזר לטלפון, למשל לאחר ניתוק מכשיר ה-Bluetooth שלך.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">תצורת מכשיר</string>
     <string name="devices_device_config_section_general_label">כללי</string>
@@ -323,6 +324,7 @@
     <string name="label_add_device">הוספת התקן</string>
     <string name="label_just_a_moment_please">אנא המתינו.</string>
     <string name="label_notification_channel_status">מצב</string>
+    <string name="monitor_notification_starting">מתחיל…</string>
     <string name="action_set">קביעה</string>
     <string name="action_cancel">ביטול</string>
     <string name="label_invalid_input">קלט לא תקין</string>
@@ -400,6 +402,8 @@
     <string name="general_delete_action">מחק</string>
     <string name="general_cancel_action">בטל</string>
     <string name="general_ok_action">אישור</string>
+    <string name="general_dismiss_action">דחה</string>
+    <string name="general_progress_loading">טוען…</string>
     <string name="general_configure_action">הגדר</string>
     <string name="battery_optimization_hint_title">אימוץ סוללה</string>
     <string name="battery_optimization_hint_message">אימוצי סוללה מופעלים ועלולים למנוע פעילות תקינה. שקלו להשביתם.</string>
@@ -411,6 +415,12 @@
     <string name="dnd_access_hint_title">גישה למצב \"נא לא להפריע\"</string>
     <string name="dnd_access_hint_message">ללא גישה למצב אל תפריע, לא ניתן להחיל הגדרות צלצול, התראות ומצב DND כאשר המכשירים שלך מתחברים.</string>
     <string name="dnd_access_fix_action">אשר גישה</string>
+    <string name="device_speaker_hint_title">עוצמות הקול לאחר הניתוק</string>
+    <string name="device_speaker_hint_message">רוצה שעוצמות הקול שלך יוחזרו כאשר מכשיר Bluetooth מתנתק? הוסף את \"רמקול המכשיר\" כמכשיר מנוהל - עוצמות הקול שלו מוחלות כאשר האודיו חוזר לטלפון שלך.</string>
+    <string name="device_speaker_hint_action">הוסף</string>
+    <string name="review_app_body">האם תרצה להשאיר ביקורת ל-BVM? ❤️</string>
+    <string name="review_app_review_action">סקירה</string>
+    <string name="review_app_dismiss_action">אולי מאוחר יותר</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">רכישה בוטלה</string>
     <string name="error_iap_unavailable_message">רכישות בתוך האפליקציה לא זמינות</string>

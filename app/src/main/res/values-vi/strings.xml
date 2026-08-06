@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Không tìm thấy thiết bị chưa được quản lý</string>
     <string name="discover_all_devices_managed_msg">Tất cả thiết bị đã ghép nối đều được quản lý! Cần thiết bị mới?</string>
     <string name="discover_pair_new_device_action">Ghép nối thiết bị mới</string>
+    <string name="discover_device_speaker_desc">Loa của chính chiếc điện thoại này. Âm lượng của nó được áp dụng khi âm thanh chuyển trở lại điện thoại, ví dụ như sau khi thiết bị Bluetooth của bạn ngắt kết nối.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Cấu hình thiết bị</string>
     <string name="devices_device_config_section_general_label">Tổng quan</string>
@@ -313,6 +314,7 @@ TheNothingGuy</string>
     <string name="label_add_device">Thêm thiết bị</string>
     <string name="label_just_a_moment_please">Xin chờ một chút.</string>
     <string name="label_notification_channel_status">Trạng thái</string>
+    <string name="monitor_notification_starting">Khởi động…</string>
     <string name="action_set">Đặt</string>
     <string name="action_cancel">Hủy bỏ</string>
     <string name="label_invalid_input">Dữ liệu nhập không hợp lệ</string>
@@ -388,6 +390,8 @@ TheNothingGuy</string>
     <string name="general_delete_action">Xóa</string>
     <string name="general_cancel_action">Hủy</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Bỏ qua</string>
+    <string name="general_progress_loading">Đang tải…</string>
     <string name="general_configure_action">Cấu hình</string>
     <string name="battery_optimization_hint_title">Tối ưu hóa pin</string>
     <string name="battery_optimization_hint_message">Tối ưu hóa pin đang bật và có thể ngăn cản hoạt động bình thường. Hãy cân nhắc tắt chúng.</string>
@@ -399,6 +403,12 @@ TheNothingGuy</string>
     <string name="dnd_access_hint_title">Quyền truy cập Không làm phiền</string>
     <string name="dnd_access_hint_message">Nếu không có quyền truy cập Không làm phiền, cài đặt nhạc chuông, thông báo và chế độ DND sẽ không được áp dụng khi thiết bị của bạn kết nối.</string>
     <string name="dnd_access_fix_action">Cấp quyền truy cập</string>
+    <string name="device_speaker_hint_title">Âm lượng sau khi ngắt kết nối</string>
+    <string name="device_speaker_hint_message">Muốn khôi phục âm lượng của bạn khi một thiết bị Bluetooth ngắt kết nối? Thêm \"Loa thiết bị\" làm thiết bị được quản lý — âm lượng của nó được áp dụng khi âm thanh chuyển trở lại điện thoại của bạn.</string>
+    <string name="device_speaker_hint_action">Thêm</string>
+    <string name="review_app_body">Bạn có muốn để lại đánh giá cho BVM không? ❤️</string>
+    <string name="review_app_review_action">Đánh giá</string>
+    <string name="review_app_dismiss_action">Để sau</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Mua hàng bị hủy</string>
     <string name="error_iap_unavailable_message">Mua hàng trong ứng dụng không khả dụng</string>

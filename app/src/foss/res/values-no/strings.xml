@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager har ingen annonser og selger ikke brukerdata. Fortsatt utvikling er bare mulig ved hjelp av deg.</string>
     <string name="upgrade_screen_how_title">Hvordan hjelpe</string>
     <string name="upgrade_screen_how_body">Bli en patron og støtt utviklingen! Trykk på knappen under for å aktivere alle ekstra funksjoner og åpne sponsorprofilen min på GitHub.</string>
+    <string name="upgrade_screen_why_title">Fordeler</string>
+    <string name="upgrade_screen_why_body">• Ubegrensede enheter\n• Egendefinerte tilkoblingshandlinger\n• Tematilpasning\n• Avanserte volumkontroller\n• Støtt åpen kildekodeutvikling 🧙</string>
     <string name="upgrade_screen_sponsor_action">Støtt utviklingen</string>
     <string name="upgrade_screen_sponsor_action_hint">Alternativet er annonser, analyser og Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Takk for at du støtter utviklingen som har åpen kildekode ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Se din støtterstatus</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Du bruker den gratis versjonen</string>
+    <string name="upgrade_screen_status_free_body">Bli en støttespiller for å låse opp ekstra funksjoner og sponse fortsatt utvikling.</string>
+    <string name="upgrade_screen_status_free_action">Se oppgraderingsalternativer</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Takk for din støtte</string>
     <string name="upgrade_screen_supporter_status_body">Du har låst opp alle ekstrafunksjoner ved å støtte utvikling av åpen kildekode.</string>

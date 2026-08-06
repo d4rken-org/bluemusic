@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Actualizar a BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ofrece mejores resultados, más características y opciones para los usuarios avanzados.</string>
     <string name="upgrade_prompt_upgrade_action">Actualizar</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Actualizar a %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager no tiene anuncios y no vende los datos de los usuarios. Mi trabajo está financiado por ti ❤️.</string>
     <string name="upgrade_screen_why_title">Ventajas</string>
     <string name="upgrade_screen_subscription_trial_action">Empieza la prueba gratuita de 14 días</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">No se pudo conectar con Google Play. Comprueba tu conexión a internet e inténtalo de nuevo.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play no está disponible</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager no puede conectarse a Google Play. ¿Está Google Play instalado y actualizado? ¿Has iniciado sesión con tu cuenta de Google? Prueba a borrar la caché de la aplicación Google Play y reinicia tu dispositivo.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">No se pudo abrir Google Play. Puede estar ausente, deshabilitado o restringido en este dispositivo.</string>
     <string name="upgrades_no_purchases_found_check_account">No se encontraron compras. ¿Estás usando la cuenta correcta?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Opciones de actualización</string>
+    <string name="upgrade_screen_offers_body">Ambas opciones desbloquean exactamente las mismas funciones Pro — elige la que te convenga mejor.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Precios no disponibles</string>
+    <string name="upgrade_screen_offers_unavailable_message">Los precios no se pudieron cargar en este momento. Verifica Google Play e intenta de nuevo en un momento.</string>
+    <string name="upgrade_screen_benefits_body">• Dispositivos ilimitados\n• Acciones de conexión personalizadas\n• Personalización de temas\n• Controles de volumen avanzados\n• Apoya el desarrollo futuro ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Suscripción anual</string>
+    <string name="upgrade_screen_subscription_offer_body">Comienza con una prueba gratuita y luego se renueva anualmente. Cancela en cualquier momento en Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Se renueva anualmente. Cancela en cualquier momento en Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Desbloqueo de por vida</string>
+    <string name="upgrade_screen_iap_offer_body">Paga una sola vez y disfruta de Pro para siempre.</string>
+    <string name="upgrade_screen_owned_hero_title">¡Eres Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Tienes %1$s para siempre.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Tu suscripción %1$s está activa.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Tu suscripción no está configurada para renovarse, así que puedes cambiar a la compra de una sola vez ahora. Atención: es un cargo separado que no cancelará ni reembolsará tu suscripción, así que usa la misma cuenta de Google para ambas.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Cancela primero tu suscripción renovable en Google Play, luego puedes cambiar a la compra de una sola vez.</string>
+    <string name="upgrade_screen_restore_body">¿Ya compraste Pro en esta cuenta? Pídele a Google Play que verifique nuevamente tus compras.</string>
+    <string name="upgrade_screen_restore_checked_message">Le pedimos a Google Play que verificara nuevamente las compras de esta cuenta y no encontramos ninguna.</string>
+    <string name="upgrade_screen_restore_contact_hint">¿Aún sin resolver? Ponte en contacto desde la misma cuenta de Google con la que compraste, incluye tu número de pedido de Google Play, y lo resolveremos.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">No pudimos terminar de verificar con Google Play a tiempo, así que aún no sabemos tu estado de compra — espera un momento e intenta de nuevo.</string>
+    <string name="upgrades_gplay_billing_error_label">Problema de compra</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play informó de un problema: %1$s. Intenta de nuevo más tarde o reinicia tu dispositivo.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Oferta no disponible</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play no está ofreciendo este elemento en este momento. Puede que no esté disponible para tu cuenta o región aún — intenta de nuevo más tarde.</string>
 </resources>

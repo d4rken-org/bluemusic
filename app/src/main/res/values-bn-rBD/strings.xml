@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">কোনো অপরিচালিত ডিভাইস পাওয়া যায়নি</string>
     <string name="discover_all_devices_managed_msg">আপনার সব পেয়ার করা ডিভাইস পরিচালিত! নতুন একটি দরকার?</string>
     <string name="discover_pair_new_device_action">নতুন ডিভাইস পেয়ার করুন</string>
+    <string name="discover_device_speaker_desc">এই ফোনের নিজস্ব স্পিকার। যখন অডিও ফোনে ফিরে আসে তখন এর ভলিউম প্রয়োগ করা হয়, যেমন আপনার Bluetooth ডিভাইস সংযোগ বিচ্ছিন্ন হওয়ার পরে।</string>
     <!-- Devices -->
     <string name="devices_device_config_label">ডিভাইস কনফিগারেশন</string>
     <string name="devices_device_config_section_general_label">সাধারণ</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">ডিভাইস যোগ করুন</string>
     <string name="label_just_a_moment_please">একটু অপেক্ষা করুন।</string>
     <string name="label_notification_channel_status">অবস্থা</string>
+    <string name="monitor_notification_starting">চালু হচ্ছে…</string>
     <string name="action_set">সেট</string>
     <string name="action_cancel">বাতিল করুন</string>
     <string name="label_invalid_input">অবৈধ ইনপুট</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">মুছে ফেলুন</string>
     <string name="general_cancel_action">বাতিল করুন</string>
     <string name="general_ok_action">ওকে</string>
+    <string name="general_dismiss_action">খারিজ করুন</string>
+    <string name="general_progress_loading">লোড হচ্ছে…</string>
     <string name="general_configure_action">কনফিগার</string>
     <string name="battery_optimization_hint_title">ব্যাটারি অপ্টিমাইজেশন</string>
     <string name="battery_optimization_hint_message">ব্যাটারি অপ্টিমাইজেশন সক্রিয় এবং সঠিক কার্যশীলতা বিঘ্নিত করতে পারে। নিষ্ক্রিয় করার কথা ভাবুন।</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">বিরক্ত করবেন না অ্যাক্সেস</string>
     <string name="dnd_access_hint_message">বিরক্ত করবেন না অ্যাক্সেস ছাড়া, আপনার ডিভাইস সংযুক্ত হলে রিংটোন, নোটিফিকেশন এবং DND মোড সেটিংস প্রয়োগ হবে না।</string>
     <string name="dnd_access_fix_action">অ্যাক্সেস অনুমোদন করুন</string>
+    <string name="device_speaker_hint_title">সংযোগ বিচ্ছিন্নের পরে ভলিউম</string>
+    <string name="device_speaker_hint_message">একটি Bluetooth ডিভাইস সংযোগ বিচ্ছিন্ন হলে আপনার ভলিউম পুনরুদ্ধার করতে চান? \"Device speaker\" একটি পরিচালিত ডিভাইস হিসাবে যোগ করুন — যখন অডিও আপনার ফোনে ফিরে আসে তখন এর ভলিউম প্রয়োগ করা হয়।</string>
+    <string name="device_speaker_hint_action">যোগ করুন</string>
+    <string name="review_app_body">আপনি কি BVM-কে একটি পর্যালোচনা দিতে চান? ❤️</string>
+    <string name="review_app_review_action">পর্যালোচনা করুন</string>
+    <string name="review_app_dismiss_action">হয়তো পরে</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">কেনাকাটা বাতিল</string>
     <string name="error_iap_unavailable_message">ইন-অ্যাপ কেনাকাটা পাওয়া যাচ্ছে না</string>

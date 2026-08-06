@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Azikho izidivayisi ezingaphathwa ezitholakele</string>
     <string name="discover_all_devices_managed_msg">Wonke amadivayisi akho asebenzisana nawo aphathwa! Udinga elisha?</string>
     <string name="discover_pair_new_device_action">Hlanganisa idivayisi entsha</string>
+    <string name="discover_device_speaker_desc">Isahluko sefowuni sayo. Umthwali waso usetshenziswa lapho umsindo ubuya efowunini, isibonelo, emva kokuthi isixwayiso sakho se-Bluetooth siqedele ukunxibelelana.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Ukucwaninga kwedivayisi</string>
     <string name="devices_device_config_section_general_label">Okujwayelekile</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Engeza idivayisi</string>
     <string name="label_just_a_moment_please">Isikhashana nje, sicela.</string>
     <string name="label_notification_channel_status">Isimo</string>
+    <string name="monitor_notification_starting">Iqalaqala...</string>
     <string name="action_set">Setha</string>
     <string name="action_cancel">Yekisa</string>
     <string name="label_invalid_input">Okokufaka okungalungile</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Susa</string>
     <string name="general_cancel_action">Yekisa</string>
     <string name="general_ok_action">KULUNGILE</string>
+    <string name="general_dismiss_action">Lahla</string>
+    <string name="general_progress_loading">Iyalayisha...</string>
     <string name="general_configure_action">Lungiselela</string>
     <string name="battery_optimization_hint_title">Ukuqinisekisa ibhethri</string>
     <string name="battery_optimization_hint_message">Ukuqinisekisa ibhethri kukhona futhi kungavimbela ukusebenza kahle. Cabanga ukucisha zona.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Ukufinyelela kwe-Do Not Disturb</string>
     <string name="dnd_access_hint_message">Ngaphandle kokufinyelela kwe-Do Not Disturb, izilungiselelo zeringithoni, isaziso, kanye ne-DND mode azikwazi ukusetshenziswana lapho amadivayisi akho exhuma.</string>
     <string name="dnd_access_fix_action">Nikeza ukufinyelela</string>
+    <string name="device_speaker_hint_title">Umthwali emva kokuqedela ukunxibelelana</string>
+    <string name="device_speaker_hint_message">Ufuna umthwali wakho ubuyele lapho isixwayiso se-Bluetooth siqedela ukunxibelelana? Engeza \"Isahluko sesixwayiso\" njengesikhwama esiphathwayo — umthwali waso usetshenziswa lapho umsindo ubuya efowunini yakho.</string>
+    <string name="device_speaker_hint_action">Engeza</string>
+    <string name="review_app_body">Ungathanda ukushiyela i-BVM ukubuyekeza? ❤️</string>
+    <string name="review_app_review_action">Buyekeza</string>
+    <string name="review_app_dismiss_action">Mhlawumbe kamuva</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Ukuthenga kukhanseliwe</string>
     <string name="error_iap_unavailable_message">Ukuthenga phakathi kohlelo akutholakali</string>

@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Geen onbestuurde toestelle gevind nie</string>
     <string name="discover_all_devices_managed_msg">Al jou gekoppelde toestelle word bestuur! Het jy \'n nuwe een nodig?</string>
     <string name="discover_pair_new_device_action">Koppel nuwe toestel</string>
+    <string name="discover_device_speaker_desc">Hierdie selfoon se eie spreker. Die volumes daarvan word toegepas wanneer oudio terugskakel na die selfoon, bv. nadat jou Bluetooth-toestel ontkoppel.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Toestel-konfigurasie</string>
     <string name="devices_device_config_section_general_label">Algemeen</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Voeg toestel by</string>
     <string name="label_just_a_moment_please">Net \'n oomblik, asseblief.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="monitor_notification_starting">Begin…</string>
     <string name="action_set">Stel</string>
     <string name="action_cancel">Kanselleer</string>
     <string name="label_invalid_input">Ongeldige invoer</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Verwyder</string>
     <string name="general_cancel_action">Kanselleer</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Maak toe</string>
+    <string name="general_progress_loading">Laai…</string>
     <string name="general_configure_action">Stel op</string>
     <string name="battery_optimization_hint_title">Battery-optimisering</string>
     <string name="battery_optimization_hint_message">Battery-optimiserings is geaktiveer en kan behoorlike werking voorkom. Oorweeg om dit te deaktiveer.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Moenie Steur Nie-toegang</string>
     <string name="dnd_access_hint_message">Sonder Moenie Steur Nie-toegang kan luitoon-, kennisgewing- en MSN-moduusinstellings nie toegepas word wanneer jou toestelle koppel nie.</string>
     <string name="dnd_access_fix_action">Verleen toegang</string>
+    <string name="device_speaker_hint_title">Volumes na ontkoppeling</string>
+    <string name="device_speaker_hint_message">Wil jy jou volumes herstel wanneer \'n Bluetooth-toestel ontkoppel? Voeg \"Toestelspreker\" as \'n bestuurde toestel by — die volumes daarvan word toegepas wanneer oudio terugskakel na jou selfoon.</string>
+    <string name="device_speaker_hint_action">Voeg by</string>
+    <string name="review_app_body">Wil jy graag vir BVM \'n hersiening los? ❤️</string>
+    <string name="review_app_review_action">Hersien</string>
+    <string name="review_app_dismiss_action">Miskien later</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Aankoop gekanselleer</string>
     <string name="error_iap_unavailable_message">In-program-aankope is nie beskikbaar nie</string>

@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager no tenet pubblicidade e no vendet datos de s\'usuàriu. S\'isvilupu continuadu est possìbile solamente gràtzias a tene.</string>
     <string name="upgrade_screen_how_title">Comente agiudare</string>
     <string name="upgrade_screen_how_body">Diventa patronu e sponsoriza s\'isvilupu! Tocca su butone in bassu pro ativare totu sas funtzionalidades addizionales e abèrrere su profilu meu de GitHub Sponsors.</string>
+    <string name="upgrade_screen_why_title">Vantàgios</string>
+    <string name="upgrade_screen_why_body">• Dispositivos illimitaus\n• Atziones de connessione personalizadas\n• Personalizatzione de tema\n• Controlos de volume avanzados\n• Suportu at su isvilluppu open-source 🧙</string>
     <string name="upgrade_screen_sponsor_action">Sponsoriza s\'isvilupu</string>
     <string name="upgrade_screen_sponsor_action_hint">S\'alternativa sunt sa pubblicidade, s\'anàlisi e Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Gràtzias pro sustènnere s\'isvilupu de còdighe abertu ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Bili su tuo istadu de suportador</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Ses in sa bertzione libera</string>
+    <string name="upgrade_screen_status_free_body">Diventa unu suportatore pro a disblocca sa funtzionalidades estras e finantza s\'isvilluppu continuadu.</string>
+    <string name="upgrade_screen_status_free_action">Bide optziones de umpadu</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Grazie pro tuo suportu</string>
     <string name="upgrade_screen_supporter_status_body">Has desbloccadu totu sas funzionalidades extras suportande su sviluppu open-source.</string>

@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Нет неуправляемых устройств</string>
     <string name="discover_all_devices_managed_msg">Все твои подключенные устройства уже управляются! Нужно новое?</string>
     <string name="discover_pair_new_device_action">Подключить новое устройство</string>
+    <string name="discover_device_speaker_desc">Встроенный динамик телефона. Его громкость применяется, когда звук переключается обратно на телефон, например, после отключения устройства Bluetooth.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Настройки устройства</string>
     <string name="devices_device_config_section_general_label">Общее</string>
@@ -323,6 +324,7 @@
     <string name="label_add_device">Добавить устройство</string>
     <string name="label_just_a_moment_please">Минуточку, пожалуйста.</string>
     <string name="label_notification_channel_status">Состояние</string>
+    <string name="monitor_notification_starting">Запуск…</string>
     <string name="action_set">Установка</string>
     <string name="action_cancel">Отмена</string>
     <string name="label_invalid_input">Недопустимый ввод</string>
@@ -400,6 +402,8 @@
     <string name="general_delete_action">Удалить</string>
     <string name="general_cancel_action">Отмена</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Отклонить</string>
+    <string name="general_progress_loading">Загрузка…</string>
     <string name="general_configure_action">Настроить</string>
     <string name="battery_optimization_hint_title">Оптимизация батареи</string>
     <string name="battery_optimization_hint_message">Оптимизация батареи включена и может мешать нормальной работе. Рассмотри возможность отключения.</string>
@@ -411,6 +415,12 @@
     <string name="dnd_access_hint_title">Доступ к режиму «Не беспокоить»</string>
     <string name="dnd_access_hint_message">Без доступа к режиму «Не беспокоить» нельзя применить настройки звонка, уведомлений и режима «Не беспокоить» при подключении устройств.</string>
     <string name="dnd_access_fix_action">Предоставить доступ</string>
+    <string name="device_speaker_hint_title">Громкость после отключения</string>
+    <string name="device_speaker_hint_message">Хотите, чтобы громкость восстанавливалась при отключении устройства Bluetooth? Добавьте «Динамик устройства» как управляемое устройство — его громкость применяется, когда звук переключается обратно на ваш телефон.</string>
+    <string name="device_speaker_hint_action">Добавить</string>
+    <string name="review_app_body">Вы хотите оставить отзыв для BVM? ❤️</string>
+    <string name="review_app_review_action">Отзыв</string>
+    <string name="review_app_dismiss_action">Возможно, позже</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Покупка отменена</string>
     <string name="error_iap_unavailable_message">Покупки в приложении недоступны</string>

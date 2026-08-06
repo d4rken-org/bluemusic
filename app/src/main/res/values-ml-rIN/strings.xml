@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">നിർവ്വഹിക്കാത്ത ഉപകരണങ്ങൾ കണ്ടെത്തിയില്ല</string>
     <string name="discover_all_devices_managed_msg">നിങ്ങളുടെ എല്ലാ ജോടിചേർത്ത ഉപകരണങ്ങളും നിർവ്വഹിക്കുന്നു! ഒരു പുതിയത് വേണോ?</string>
     <string name="discover_pair_new_device_action">പുതിയ ഉപകരണം ജോടിചേർക്കുക</string>
+    <string name="discover_device_speaker_desc">ഈ ഫോണിന്റെ സ്വന്ത സ്പീക്കർ. നിങ്ങളുടെ Bluetooth ഡിവൈസ് വിച്ഛേദിക്കുമ്പോൾ അതിന്റെ വോളിയങ്ങൾ ഫോണിലേക്ക് ഓഡിയോ മടങ്ങുമ്പോൾ പ്രയോഗിക്കുന്നു.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">ഉപകരണ ക്രമീകരണം</string>
     <string name="devices_device_config_section_general_label">പൊതുവായ</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">ഉപകരണം ചേർക്കുക</string>
     <string name="label_just_a_moment_please">ഒരു നിമിഷം, ദയവായി.</string>
     <string name="label_notification_channel_status">നില</string>
+    <string name="monitor_notification_starting">ആരംഭിക്കുന്നു…</string>
     <string name="action_set">സജ്ജീകരിക്കുക</string>
     <string name="action_cancel">റദ്ദ്ചെയ്യുക</string>
     <string name="label_invalid_input">അസാധുവായ ഇൻപുട്ട്</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">ഇല്ലാതാക്കുക</string>
     <string name="general_cancel_action">റദ്ദ്ചെയ്യുക</string>
     <string name="general_ok_action">ശരി</string>
+    <string name="general_dismiss_action">തള്ളിക്കളയുക</string>
+    <string name="general_progress_loading">ലോഡ് ചെയ്യുന്നു…</string>
     <string name="general_configure_action">ക്രമീകരിക്കുക</string>
     <string name="battery_optimization_hint_title">ബാറ്റരി ഒപ്റ്റിമൈസേഷൻ</string>
     <string name="battery_optimization_hint_message">ബാറ്ററി ഒപ്റ്റിമൈസേഷനുകൾ പ്രവർത്തനക്ഷമമാണ്, അത് ശരിയായ പ്രവർത്തനം തടയാനിടയാണ്. അവ പ്രവർത്തനരഹിതമാക്കാൻ പരിഗണിക്കുക.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">സ്ക്രീൻ കിളയ്ക്കൾ മറക്കീ അക്സെസ് (Do Not Disturb)</string>
     <string name="dnd_access_hint_message">Do Not Disturb ആക്സെസ് ഇല്ലാതെ, താങ്കളുടെ ഉപകരണങ്ങൾ കണക്‍റ്റ് ചെയ്യുമ്പോൾ രിംഗ്ടോണ്‍, നോടിഫിക്കേഷൻ, DND മോഡ് ക്രമീകരണങ്ങൾ പ്രയോഗിക്കാൻ കഴിയുകയില്ല.</string>
     <string name="dnd_access_fix_action">Grant access</string>
+    <string name="device_speaker_hint_title">വിച്ഛേദനത്തിനുശേഷമുള്ള വോളിയങ്ങൾ</string>
+    <string name="device_speaker_hint_message">Bluetooth ഡിവൈസ് വിച്ഛേദിക്കുമ്പോൾ നിങ്ങളുടെ വോളിയങ്ങൾ പുനഃസ്ഥാപിക്കപ്പെടണമെന്ന് ആഗ്രഹിക്കുന്നുണ്ടോ? \"ഡിവൈസ് സ്പീക്കർ\" നിയന്ത്രിതമായ ഡിവൈസായി ചേർക്കുക — നിങ്ങളുടെ ഫോണിലേക്ക് ഓഡിയോ മടങ്ങുമ്പോൾ അതിന്റെ വോളിയങ്ങൾ പ്രയോഗിക്കുന്നു.</string>
+    <string name="device_speaker_hint_action">ചേർക്കുക</string>
+    <string name="review_app_body">BVM-നെ കുറിച്ച് ഒരു നിരൂപണം നൽകാൻ ഇഷ്ടമുണ്ടോ? ❤️</string>
+    <string name="review_app_review_action">നിരൂപണം</string>
+    <string name="review_app_dismiss_action">പിന്നീട്</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">വാങ്ങൽ റദ്ദാകി</string>
     <string name="error_iap_unavailable_message">ആപ്പിനുള്ളിലെ വാങ്ങലുകൾ ലഭ്യമല്ല</string>

@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Walang mga ads ang Bluetooth Volume Manager at hindi nagbebenta ng data ng user. Ang patuloy na development ay posible lamang dahil sa inyo.</string>
     <string name="upgrade_screen_how_title">Paano tumulong</string>
     <string name="upgrade_screen_how_body">Maging patron at mag-sponsor ng development! I-tap ang button sa ibaba para ma-activate ang lahat ng extra features at buksan ang aking GitHub Sponsors profile.</string>
+    <string name="upgrade_screen_why_title">Mga Benepisyo</string>
+    <string name="upgrade_screen_why_body">• Walang hanggang devices\n• Custom na aksyon sa koneksyon\n• Customization ng tema\n• Advanced na kontrol sa volume\n• Suportahan ang open-source development 🧙</string>
     <string name="upgrade_screen_sponsor_action">Mag-sponsor ng development</string>
     <string name="upgrade_screen_sponsor_action_hint">Ang alternative ay ads, analytics at Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Salamat sa pagsuporta sa open-source development ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Tingnan ang iyong supporter status</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Nasa free version ka</string>
+    <string name="upgrade_screen_status_free_body">Maging supporter upang i-unlock ang mga karagdagang feature at mag-sponsor ng patuloy na development.</string>
+    <string name="upgrade_screen_status_free_action">Tingnan ang mga opsyon sa upgrade</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Salamat sa iyong suporta</string>
     <string name="upgrade_screen_supporter_status_body">Na-unlock mo na ang lahat ng extra na feature sa pagsuporta sa open-source development.</string>

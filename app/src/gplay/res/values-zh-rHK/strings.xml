@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">升級到 BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro 為進階用戶提供更好的效果、更多功能和選項。</string>
     <string name="upgrade_prompt_upgrade_action">升級</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">升級至 %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager 沒有廣告，也不出售用戶數據。我的工作由你支持 ❤️。</string>
     <string name="upgrade_screen_why_title">優點</string>
     <string name="upgrade_screen_subscription_trial_action">開始 14 天免費試用</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">無法連接 Google Play。請檢查您的網際網路連接並重試。</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play 無法使用</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager 無法連接 Google Play。Google Play 已安裝且是最新版本？你的 Google 帳戶已登入？請嘗試清除 Google Play 應用的快取並重新啟動裝置。</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">無法開啟 Google Play。它可能在此裝置上遺失、停用或受限。</string>
     <string name="upgrades_no_purchases_found_check_account">找不到購買，您正在使用正確的帳戶嗎？</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">升級選項</string>
+    <string name="upgrade_screen_offers_body">兩個選項都能解鎖相同的 Pro 功能 — 選擇最適合你的。</string>
+    <string name="upgrade_screen_offers_unavailable_title">價格不可用</string>
+    <string name="upgrade_screen_offers_unavailable_message">無法立即載入價格。檢查 Google Play 並稍後再試。</string>
+    <string name="upgrade_screen_benefits_body">• 無限裝置\n• 自訂連線動作\n• 主題自訂\n• 進階音量控制\n• 支持未來開發 ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">年度訂閱</string>
+    <string name="upgrade_screen_subscription_offer_body">開始免費試用，然後按年續約。可隨時在 Google Play 中取消。</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">按年續約。可隨時在 Google Play 中取消。</string>
+    <string name="upgrade_screen_iap_offer_title">永久解鎖</string>
+    <string name="upgrade_screen_iap_offer_body">一次付款，永久擁有 Pro。</string>
+    <string name="upgrade_screen_owned_hero_title">你已是 Pro！❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">你永久擁有 %1$s。</string>
+    <string name="upgrade_screen_owned_hero_sub_body">你的 %1$s 訂閱已啟用。</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">你的訂閱未設定續約，所以你現在可以改用一次性購買。提醒：這是單獨收費的，不會取消或退款你的訂閱，所以請對兩者使用相同的 Google 帳戶。</string>
+    <string name="upgrade_screen_owned_iap_locked_note">先在 Google Play 中取消你的續約訂閱，然後就可以改用一次性購買。</string>
+    <string name="upgrade_screen_restore_body">已經在此帳戶購買 Pro？請求 Google Play 重新檢查你的購買。</string>
+    <string name="upgrade_screen_restore_checked_message">我們要求 Google Play 重新檢查此帳戶的購買紀錄，但未找到任何購買。</string>
+    <string name="upgrade_screen_restore_contact_hint">仍有困難？請從你購買時使用的同一 Google 帳戶與我們聯絡，包括你的 Google Play 訂單編號，我們會為你解決。</string>
+    <string name="upgrade_screen_restore_inconclusive_message">我們無法及時完成 Google Play 檢查，所以仍不知道你的購買狀態 — 請稍候再試一次。</string>
+    <string name="upgrades_gplay_billing_error_label">購買問題</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play 報告了一個問題：%1$s。稍後重試或重新啟動你的裝置。</string>
+    <string name="upgrades_gplay_offer_unavailable_title">優惠不可用</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play 目前未提供此商品。它可能尚未提供給你的帳戶或地區 — 請稍後再試。</string>
 </resources>

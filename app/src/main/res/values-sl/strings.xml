@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Ni najdenih neupravljanih naprav</string>
     <string name="discover_all_devices_managed_msg">Vse vaše seznanjene naprave so upravljane! Želite dodati novo?</string>
     <string name="discover_pair_new_device_action">Seznani novo napravo</string>
+    <string name="discover_device_speaker_desc">Lastni zvočnik telefona. Njegove glasnosti se uporabijo, ko se avdio vrne na telefon, npr. po preklopu vaše naprave Bluetooth.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Konfiguracija naprave</string>
     <string name="devices_device_config_section_general_label">Splošno</string>
@@ -323,6 +324,7 @@
     <string name="label_add_device">Dodaj napravo</string>
     <string name="label_just_a_moment_please">Prosim, trenutek.</string>
     <string name="label_notification_channel_status">Stanje</string>
+    <string name="monitor_notification_starting">Zaganjanje…</string>
     <string name="action_set">Nastavi</string>
     <string name="action_cancel">Prekliči</string>
     <string name="label_invalid_input">Neveljaven vnos.</string>
@@ -400,6 +402,8 @@
     <string name="general_delete_action">Izbriši</string>
     <string name="general_cancel_action">Prekliči</string>
     <string name="general_ok_action">V redu</string>
+    <string name="general_dismiss_action">Opusti</string>
+    <string name="general_progress_loading">Nalaganje…</string>
     <string name="general_configure_action">Konfiguriraj</string>
     <string name="battery_optimization_hint_title">Optimizacija baterije</string>
     <string name="battery_optimization_hint_message">Optimizacije baterije so omogočene in lahko preprečijo pravilno delovanje. Razmislite o njihovem onemogočanju.</string>
@@ -411,6 +415,12 @@
     <string name="dnd_access_hint_title">Dostop do »Ne moti«</string>
     <string name="dnd_access_hint_message">Brez dostopa do »Ne moti« nastavitve zvonca, obvestil in načina »Ne moti« ne morejo biti uporabljene ob povezavi vaših naprav.</string>
     <string name="dnd_access_fix_action">Odobri dostop</string>
+    <string name="device_speaker_hint_title">Glasnosti po prekinitvi</string>
+    <string name="device_speaker_hint_message">Želite, da se vaše glasnosti obnovijo, ko se naprava Bluetooth prekine? Dodajte \"Zvočnik naprave\" kot upravljano napravo — njegove glasnosti se uporabijo, ko se avdio vrne na vaš telefon.</string>
+    <string name="device_speaker_hint_action">Dodajte</string>
+    <string name="review_app_body">Bi radi ocenili BVM? ❤️</string>
+    <string name="review_app_review_action">Oceni</string>
+    <string name="review_app_dismiss_action">Morda kasneje</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Nakup prekinjen</string>
     <string name="error_iap_unavailable_message">Nakupi v aplikaciji niso na voljo</string>

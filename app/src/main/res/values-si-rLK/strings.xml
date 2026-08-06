@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">කළමනා නොකළ උපාංග හමු නොවිණි</string>
     <string name="discover_all_devices_managed_msg">ඔබේ සියලු සම්බන්ධ කළ උපාංගයන් කළමනා කෙරෙයි! අලුත් එකක් ඕනෑද?</string>
     <string name="discover_pair_new_device_action">නව උපාංගයක් සම්බන්ධ කරන්න</string>
+    <string name="discover_device_speaker_desc">මේ ජංගම දූරකතනයේ තමන්ගේ ශබ්දකය. ශබ්ද ජංගම දූරකතනයට ආපසු මාරු වූ විට එහි පරිමාවන් යෙදේ, උදා. ඔබේ Bluetooth උපාංගය විසංයෝගිත වූ පසු.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">උපාංග සැකසුම</string>
     <string name="devices_device_config_section_general_label">සාමාන්‍ය</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">උපාංගය එකතු කරන්න</string>
     <string name="label_just_a_moment_please">ටිකක් ඉන්න.</string>
     <string name="label_notification_channel_status">තත්වය</string>
+    <string name="monitor_notification_starting">ආරම්භ කරමින්…</string>
     <string name="action_set">සකසන්න</string>
     <string name="action_cancel">අවලංගු කරන්න</string>
     <string name="label_invalid_input">වලංගු නොවන ආදානයකි</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">මකන්න</string>
     <string name="general_cancel_action">අවලංගු</string>
     <string name="general_ok_action">හරි</string>
+    <string name="general_dismiss_action">ඉවතලන්න</string>
+    <string name="general_progress_loading">පූරණය කරමින්…</string>
     <string name="general_configure_action">ව්‍යවස්ථාපනය</string>
     <string name="battery_optimization_hint_title">බැටරි ප්‍රශස්තකරණය</string>
     <string name="battery_optimization_hint_message">බැටරි ප්‍රශස්තකරණ සබල කර ඇති අතර නිසි ක්‍රියාකාරිත්වය වළක්වා ගත හැකිය. ඒවා අක්‍රිය කිරීම සලකා බලන්න.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">බාධා නොකරන්න ප්‍රවේශය</string>
     <string name="dnd_access_hint_message">බාධා නොකරන්න ප්‍රවේශය නොමැතිව, ඔබේ උපාංග සම්බන්ධ වූ විට රිං ශබ්දය, දැනුම්දීම් සහ DND මාදිලි සැකසුම් යෙදිය නොහැකිය.</string>
     <string name="dnd_access_fix_action">ප්‍රවේශය ලබාදෙන්න</string>
+    <string name="device_speaker_hint_title">විසංයෝගනයට පසු පරිමාවන්</string>
+    <string name="device_speaker_hint_message">Bluetooth උපාංගයක් විසංයෝගිත වූ විට ඔබේ පරිමාවන් ප්‍රතිසංස්කරණය කිරීමට අවශ්‍ය ද? \"Device speaker\" පිළිවෙළු සිටින උපාංගයක් ලෙස එක් කරන්න — ශබ්ද ඔබේ ජංගම දූරකතනයට ආපසු මාරු වූ විට එහි පරිමාවන් යෙදේ.</string>
+    <string name="device_speaker_hint_action">එක් කරන්න</string>
+    <string name="review_app_body">ඔබ BVM සඳහා සමාලෝචනයක් ලිවීමට කැමතිද?️ ❤️</string>
+    <string name="review_app_review_action">සමාලෝචනය</string>
+    <string name="review_app_dismiss_action">පසුව සමහර විට</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">මිලදී ගැනීම අවලංගු කළා</string>
     <string name="error_iap_unavailable_message">යෙදුම් ඇතුළත මිලදී ගැනීම් නොලබා ගත හැකිය</string>

@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">BVM reklamê nake. Geşedana berdewam tenê bi we gengaz e.</string>
     <string name="upgrade_screen_how_title">Çawa bipşixe</string>
     <string name="upgrade_screen_how_body">Bibin patronek û geşedanê sponsor bikin!</string>
+    <string name="upgrade_screen_why_title">Avantaj</string>
+    <string name="upgrade_screen_why_body">• Amûrên bê sînor\n• Aksiyonên peywendîyê yên taybet\n• Guzerandinê reng\n• Kontrolên helûskên pêşketî\n• Piştgiriya pêşveçûna netewî ya alib 🧙</string>
     <string name="upgrade_screen_sponsor_action">Geşedanê sponsor bike</string>
     <string name="upgrade_screen_sponsor_action_hint">Alternatif reklam, analitik û Google Play ye</string>
     <string name="upgrade_screen_thanks_toast">Spas ji bo pishtgiriya çavkaniya vekirî</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Statûya piştgirêrê xwe bibînin</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Tu li ser vêjean azad yî</string>
+    <string name="upgrade_screen_status_free_body">Bibe alîkar da ku taybetmendiyên zêde vekî û pêşveçûna berdewam alîkar bike.</string>
+    <string name="upgrade_screen_status_free_action">Vebijarkên bihevkirinê bibîn</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Spasî li piştgirîya we</string>
     <string name="upgrade_screen_supporter_status_body">We bi piştgirî dan pêşevekiriya çavkanîya vekirî hemû taybetmendiyên zêde tê destxistîn.</string>

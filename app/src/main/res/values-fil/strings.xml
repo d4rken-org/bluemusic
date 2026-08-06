@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Walang nahanap na hindi pinamahalaaang device</string>
     <string name="discover_all_devices_managed_msg">Lahat ng iyong paired na device ay pinamamahalaan na! Kailangan ng bago?</string>
     <string name="discover_pair_new_device_action">Mag-pair ng bagong device</string>
+    <string name="discover_device_speaker_desc">Ang sariling speaker ng phone na ito. Ang mga volume nito ay inilalapat kapag bumalik ang audio sa phone, hal. pagkatapos ang iyong Bluetooth device ay nag-disconnect.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Configuration ng device</string>
     <string name="devices_device_config_section_general_label">Pangkalahatan</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Magdagdag ng device</string>
     <string name="label_just_a_moment_please">Sandali lang, pakiusap.</string>
     <string name="label_notification_channel_status">Katayuan</string>
+    <string name="monitor_notification_starting">Nagsisimula…</string>
     <string name="action_set">I-set</string>
     <string name="action_cancel">Kanselahin</string>
     <string name="label_invalid_input">Maling input</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Burahin</string>
     <string name="general_cancel_action">Kanselahin</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Huwag pansinin</string>
+    <string name="general_progress_loading">Naglo-load…</string>
     <string name="general_configure_action">I-configure</string>
     <string name="battery_optimization_hint_title">Pag-optimize ng baterya</string>
     <string name="battery_optimization_hint_message">Naka-enable ang battery optimizations at maaaring pumigil sa tamang pagpapatakbo. Pag-isipang i-disable ang mga ito.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Access sa Do Not Disturb</string>
     <string name="dnd_access_hint_message">Kung wala ang access sa Do Not Disturb, hindi mailalapat ang mga setting ng ringtone, notification, at DND mode kapag kumonekta ang iyong mga device.</string>
     <string name="dnd_access_fix_action">Magbigay-pahintulot</string>
+    <string name="device_speaker_hint_title">Volume pagkatapos ng disconnect</string>
+    <string name="device_speaker_hint_message">Gusto mo bang maibalik ang iyong mga volume kapag nag-disconnect ang Bluetooth device? Idagdag ang \"Device speaker\" bilang managed device — ang mga volume nito ay inilalapat kapag bumalik ang audio sa iyong phone.</string>
+    <string name="device_speaker_hint_action">Idagdag</string>
+    <string name="review_app_body">Gusto ba ninyong mag-iwan ng review para sa BVM? ❤️</string>
+    <string name="review_app_review_action">Pagsusuri</string>
+    <string name="review_app_dismiss_action">Siguro mamaya</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Kinansela ang pagbili</string>
     <string name="error_iap_unavailable_message">Hindi available ang mga in-app na pagbili</string>

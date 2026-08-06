@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Uppfæra í BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro býður upp á betri niðurstöður, fleiri eiginleika og valkosti fyrir öfluga notendur.</string>
     <string name="upgrade_prompt_upgrade_action">Uppfæra</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Uppfæra í %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager birtir engar auglýsingar og selur ekki notendagögn. Verk mitt er fjármagnaö af þér ❤️.</string>
     <string name="upgrade_screen_why_title">Kostir</string>
     <string name="upgrade_screen_subscription_trial_action">Byrja ókeypis 14 daga prufu</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Ekki tókst að tengjast Google Play. Athugaðu nettenginguna og reyndu aftur.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play er ekki tiltækt</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager getur ekki tengst Google Play. Er Google Play uppsett og uppfært? Ertu skráður inn á Google reikninginn? Prófaðu að hreinsa skyndiminnni Google Play forritsins og endurræsa tækið þit.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Gat ekki opnað Google Play. Það gæti verið að vantast, óvirkjað eða takmarkað á þessu tæki.</string>
     <string name="upgrades_no_purchases_found_check_account">Engin kaup fundust. Ertu að nota réttan reikning?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Uppfærslumöguleikar</string>
+    <string name="upgrade_screen_offers_body">Báðir valkostir opna sömu Pro eiginleika — veldu þann sem hentar þér best.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Verð ekki tiltekt</string>
+    <string name="upgrade_screen_offers_unavailable_message">Ekki tókst að hlaða verðum núna. Athugaðu Google Play og reyndu aftur eftir stund.</string>
+    <string name="upgrade_screen_benefits_body">• Ótakmörk tæki\n• Sérsniðnar tengingaðgerðir\n• Sérsniðning útlits\n• Ítarleg hljóðstyrk stjórnun\n• Stuðningur við framtíðarþróun ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Árleg áskrift</string>
+    <string name="upgrade_screen_subscription_offer_body">Byrjar með óendurgjaldri prufu, endurnýist síðan ár hvert. Segðu upp hvenær sem er í Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Endurnýist ár hvert. Segðu upp hvenær sem er í Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Ævarleigu aðgangur</string>
+    <string name="upgrade_screen_iap_offer_body">Borga einu sinni og eiga Pro endalaust.</string>
+    <string name="upgrade_screen_owned_hero_title">Þú ert Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Þú átt %1$s endalaust.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Þín %1$s áskrift er virk.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Þín áskrift er ekki stillt til endurnýjunar, svo þú getur skipt yfir í einfalda kaup nú. Viðvörun: þetta er sérstakt gjald sem mun ekki hætta við eða endurgreiða áskriftina þína, svo notaðu sama Google reikning fyrir bæði.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Segðu upp endurnýjandi áskrift þinni í Google Play fyrst, síðan geturðu skipt yfir í einfalda kaup.</string>
+    <string name="upgrade_screen_restore_body">Keyptir þú nú þegar Pro á þessum reikningi? Bið Google Play um að endurathuga kaup þín.</string>
+    <string name="upgrade_screen_restore_checked_message">Við báðum Google Play um að endurathuga kaup þessa reiknings og fundum ekkert.</string>
+    <string name="upgrade_screen_restore_contact_hint">Enn fastur? Hafðu samband frá sama Google reikningi og þú keyptir frá, taktu með Google Play pöntunarnúmerið, og við munum leysa það.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Við gátum ekki lokið athugun með Google Play á réttum tíma, svo við vitum enn ekki stöðu kaupa þinna — gefðu því stund og reyndu aftur.</string>
+    <string name="upgrades_gplay_billing_error_label">Vandamál við kaup</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play tilkynnti vandamál: %1$s. Reyndu aftur seinna eða endurræstu tækið þitt.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Tilboð ekki tiltækt</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play bauð ekki þennan hlut núna. Það gæti ekki verið tiltækt fyrir þinn reikning eða svæði ennþá — reyndu aftur seinna.</string>
 </resources>

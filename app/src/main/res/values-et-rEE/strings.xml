@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Haldamata seadmeid ei leitud</string>
     <string name="discover_all_devices_managed_msg">Kõik sinu seotud seadmed on hallatud! Vajad uut?</string>
     <string name="discover_pair_new_device_action">Seo uus seade</string>
+    <string name="discover_device_speaker_desc">Telefoni enda kõlar. Selle helitugevused rakendatakse, kui heli lülitub tagasi telefoni, nt pärast Bluetooth-seadme lahtiühendamist.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Seadme seaded</string>
     <string name="devices_device_config_section_general_label">Üldine</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Lisa seade</string>
     <string name="label_just_a_moment_please">Palun oodake üks hetk.</string>
     <string name="label_notification_channel_status">Olek</string>
+    <string name="monitor_notification_starting">Käivitamine…</string>
     <string name="action_set">Määra</string>
     <string name="action_cancel">Tühista</string>
     <string name="label_invalid_input">Vigane sisend</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Kustuta</string>
     <string name="general_cancel_action">Tühista</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Sulge</string>
+    <string name="general_progress_loading">Laeb…</string>
     <string name="general_configure_action">Seadista</string>
     <string name="battery_optimization_hint_title">Aku optimeerimine</string>
     <string name="battery_optimization_hint_message">Aku optimeerimine on lubatud ja võib takistada õiget toimimist. Kaalu selle keelamist.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Mitte segada juurdepääs</string>
     <string name="dnd_access_hint_message">Ilma Mitte segada juurdepääsuta ei saa helina, teate ja DND-réžiimi seadeid rakendada, kui teie seadmed ühenduvad.</string>
     <string name="dnd_access_fix_action">Võimalda juurdepääs</string>
+    <string name="device_speaker_hint_title">Helitugevused pärast lahtiühendamist</string>
+    <string name="device_speaker_hint_message">Kas soovid oma helitugevusi taastada, kui Bluetooth-seade lahti ühendatakse? Lisa \"Seadme kõlar\" hallatavaks seadmeks — selle helitugevused rakendatakse, kui heli lülitub tagasi sinu telefoni.</string>
+    <string name="device_speaker_hint_action">Lisa</string>
+    <string name="review_app_body">Tahate kommenteerida BVM? ❤️</string>
+    <string name="review_app_review_action">Arvustus</string>
+    <string name="review_app_dismiss_action">Võib-olla hiljem</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Ost tühistatud</string>
     <string name="error_iap_unavailable_message">Rakendusesisesed ostud pole saadaval</string>

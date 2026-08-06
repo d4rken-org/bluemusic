@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Nem találhatók nem kezelt eszközök</string>
     <string name="discover_all_devices_managed_msg">Minden párosított eszközöd kezelt! Kell egy új?</string>
     <string name="discover_pair_new_device_action">Új eszköz párosítása</string>
+    <string name="discover_device_speaker_desc">A telefon beépített hangszórója. Hangereje akkor érvényesül, amikor a hang visszakapcsolódik a telefonra, például a Bluetooth-eszköz lecsatlakozása után.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Eszköz beállítása</string>
     <string name="devices_device_config_section_general_label">Általános</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Eszköz hozzáadása</string>
     <string name="label_just_a_moment_please">Egy pillanat, kérlek.</string>
     <string name="label_notification_channel_status">Állapot</string>
+    <string name="monitor_notification_starting">Indítás…</string>
     <string name="action_set">Beállítás</string>
     <string name="action_cancel">Mégse</string>
     <string name="label_invalid_input">Érvénytelen adat</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Törlés</string>
     <string name="general_cancel_action">Mégse</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Elvetés</string>
+    <string name="general_progress_loading">Betöltés…</string>
     <string name="general_configure_action">Konfigurálás</string>
     <string name="battery_optimization_hint_title">Akkumulátor optimalizálás</string>
     <string name="battery_optimization_hint_message">Az akkumulátor optimalizálás engedélyezett és megakadályozhatja a megfelelő működést. Fontold meg a letiltásukat.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Ne zavarj hozzáférés</string>
     <string name="dnd_access_hint_message">Ne zavarj hozzáférés nélkül a csengőhang, az értesítés és a Ne zavarj módus beállításai nem alkalmazhatók, amikor az eszközeid csatlakoznak.</string>
     <string name="dnd_access_fix_action">Hozzáférés megadása</string>
+    <string name="device_speaker_hint_title">Hangerő lecsatlakozás után</string>
+    <string name="device_speaker_hint_message">Szeretnéd, ha a hangerőid helyreállnának, amikor egy Bluetooth-eszköz lecsatlakozik? Add az „Eszköz hangszórója”-t egy kezelt eszközként – hangereje akkor érvényesül, amikor a hang visszakapcsolódik a telefonra.</string>
+    <string name="device_speaker_hint_action">Hozzáadás</string>
+    <string name="review_app_body">Szeretnél véleményt hagyni a BVM-ről? ❤️</string>
+    <string name="review_app_review_action">Áttekintés</string>
+    <string name="review_app_dismiss_action">Talán később</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Vásárlás megszakítva</string>
     <string name="error_iap_unavailable_message">Az alkalmazáson belüli vásárlások nem elérhetőek</string>

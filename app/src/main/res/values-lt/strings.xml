@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Nevaldomi įrenginiai nerasti</string>
     <string name="discover_all_devices_managed_msg">Visi suporuoti įrenginiai valdomi! Reikia naujo?</string>
     <string name="discover_pair_new_device_action">Suporuoti naują įrenginį</string>
+    <string name="discover_device_speaker_desc">Jūsų telefono savasis garsiakalbis. Jo garsumai yra taikomi, kai garsas persijungia atgal į telefoną, pvz., po to, kai jūsų „Bluetooth“ įrenginys atsijungia.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Įrenginio konfigūracija</string>
     <string name="devices_device_config_section_general_label">Bendra</string>
@@ -323,6 +324,7 @@
     <string name="label_add_device">Pridėti įrenginį</string>
     <string name="label_just_a_moment_please">Luktelkite.</string>
     <string name="label_notification_channel_status">Būsena</string>
+    <string name="monitor_notification_starting">Pradedama…</string>
     <string name="action_set">Nustatyti</string>
     <string name="action_cancel">Atšaukti</string>
     <string name="label_invalid_input">Netinkama įvestis</string>
@@ -400,6 +402,8 @@
     <string name="general_delete_action">Ištrinti</string>
     <string name="general_cancel_action">Atšaukti</string>
     <string name="general_ok_action">Gerai</string>
+    <string name="general_dismiss_action">Atšaukti</string>
+    <string name="general_progress_loading">Įkeliama…</string>
     <string name="general_configure_action">Konfigūruoti</string>
     <string name="battery_optimization_hint_title">Baterijos optimizavimas</string>
     <string name="battery_optimization_hint_message">Baterijos optimizavimas įjungtas ir gali trukdyti tinkamam veikimui. Apsvarstykite galimybę jį išjungti.</string>
@@ -411,6 +415,12 @@
     <string name="dnd_access_hint_title">Prieiga prie režimo Netrukdyti</string>
     <string name="dnd_access_hint_message">Be prieigos prie „Netrukdyti“, skambėjimo tono, pranešimų ir DND režimo nustatymai negali būti pritaikomi, kai jūsų įrenginiai prisijungia.</string>
     <string name="dnd_access_fix_action">Suteikti prieigą</string>
+    <string name="device_speaker_hint_title">Garsumai po atjungimo</string>
+    <string name="device_speaker_hint_message">Norite, kad jūsų garsumai būtų atkurti, kai „Bluetooth“ įrenginys atsijungia? Pridėkite „Įrenginio garsiakalbį“ kaip valdomą įrenginį — jo garsumai yra taikomi, kai garsas persijungia atgal į jūsų telefoną.</string>
+    <string name="device_speaker_hint_action">Pridėti</string>
+    <string name="review_app_body">Ar norėtum palikti BVM apžvalgą? ❤️</string>
+    <string name="review_app_review_action">Apžvalga</string>
+    <string name="review_app_dismiss_action">Galbūt vėliau</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Pirkimas atšauktas</string>
     <string name="error_iap_unavailable_message">Pirkimai programoje nepasiekiami</string>

@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Нема пронајдено неуправувани уреди</string>
     <string name="discover_all_devices_managed_msg">Сите твои спарени уреди се управувани! Треба нов?</string>
     <string name="discover_pair_new_device_action">Спари нов уред</string>
+    <string name="discover_device_speaker_desc">Вградениот звучник на телефонот. Неговите волумени се применуваат кога аудио се враќа на телефонот, нпр. откако се прекине вашиот Bluetooth уред.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Конфигурација на уредот</string>
     <string name="devices_device_config_section_general_label">Генерално</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Додај уред</string>
     <string name="label_just_a_moment_please">Само еден момент, ве молиме.</string>
     <string name="label_notification_channel_status">Статус</string>
+    <string name="monitor_notification_starting">Стартување…</string>
     <string name="action_set">Поставете</string>
     <string name="action_cancel">Откажи</string>
     <string name="label_invalid_input">Невалиден внес</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Избриши</string>
     <string name="general_cancel_action">Откажи</string>
     <string name="general_ok_action">ОК</string>
+    <string name="general_dismiss_action">Отфрли</string>
+    <string name="general_progress_loading">Вчитување…</string>
     <string name="general_configure_action">Конфигурирај</string>
     <string name="battery_optimization_hint_title">Оптимизација на батерија</string>
     <string name="battery_optimization_hint_message">Оптимизациите на батеријата се вклучени и може да спречат правилно функционирање. Размисли за нивно исклучување.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Пристап до Не вознемирувај</string>
     <string name="dnd_access_hint_message">Без пристап до Не вознемирувај, поставките за ѕвонење, известување и режимот Не вознемирувај не можат да се применат кога вашите уреди се поврзуваат.</string>
     <string name="dnd_access_fix_action">Дозволи пристап</string>
+    <string name="device_speaker_hint_title">Волумени по прекинување</string>
+    <string name="device_speaker_hint_message">Сакате ли вашите волумени да се враќаат кога Bluetooth уредот се прекине? Додајте го \"Звучникот на уред\" како управуван уред — неговите волумени се применуваат кога аудио се враќа на вашиот телефон.</string>
+    <string name="device_speaker_hint_action">Додај</string>
+    <string name="review_app_body">Сакаш ли да напишеш преглед на BVM? ❤️</string>
+    <string name="review_app_review_action">Преглед</string>
+    <string name="review_app_dismiss_action">Можеби подоцна</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Купувањето е откажано</string>
     <string name="error_iap_unavailable_message">Купувањата во апликацијата не се достапни</string>

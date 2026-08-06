@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Δεν βρέθηκαν μη διαχειρισμένες συσκευές</string>
     <string name="discover_all_devices_managed_msg">Όλες οι συζευγμένες συσκευές σας διαχειρίζονται ήδη! Χρειάζεστε κάποια καινούρια;</string>
     <string name="discover_pair_new_device_action">Σύζευξη νέας συσκευής</string>
+    <string name="discover_device_speaker_desc">Το ηχείο του τηλεφώνου. Οι εντάσεις του εφαρμόζονται όταν ο ήχος επιστρέφει στο τηλέφωνο, π.χ. μετά την αποσύνδεση της συσκευής Bluetooth σας.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Διαμόρφωση συσκευής</string>
     <string name="devices_device_config_section_general_label">Γενικά</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Προσθήκη συσκευής</string>
     <string name="label_just_a_moment_please">Μια στιγμή, παρακαλώ.</string>
     <string name="label_notification_channel_status">Κατάσταση</string>
+    <string name="monitor_notification_starting">Εκκίνηση…</string>
     <string name="action_set">Ορισμός</string>
     <string name="action_cancel">Ακύρωση</string>
     <string name="label_invalid_input">Μή έκγυρη εισαγωγή</string>
@@ -391,6 +393,8 @@
     <string name="general_delete_action">Διαγραφή</string>
     <string name="general_cancel_action">Ακύρωση</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Κλείσιμο</string>
+    <string name="general_progress_loading">Φόρτωση…</string>
     <string name="general_configure_action">Διαμόρφωση</string>
     <string name="battery_optimization_hint_title">Βελτιστοποίηση μπαταρίας</string>
     <string name="battery_optimization_hint_message">Οι βελτιστοποιήσεις μπαταρίας είναι ενεργοποιημένες και μπορεί να εμποδίσουν την κανονική λειτουργία. Σκεφτείτε να τις απενεργοποιήσετε.</string>
@@ -402,6 +406,12 @@
     <string name="dnd_access_hint_title">Πρόσβαση «Μην ενοχλείτε»</string>
     <string name="dnd_access_hint_message">Χωρίς πρόσβαση «Μην ενοχλείτε», οι ρυθμίσεις ήχου κλήσης, ειδοποιήσεων και λειτουργίας ΜΕ δεν μπορούν να εφαρμοστούν όταν συνδέονται οι συσκευές σας.</string>
     <string name="dnd_access_fix_action">Παραχώρηση πρόσβασης</string>
+    <string name="device_speaker_hint_title">Εντάσεις μετά την αποσύνδεση</string>
+    <string name="device_speaker_hint_message">Θέλετε οι εντάσεις σας να επαναφέρονται όταν αποσυνδέεται μια συσκευή Bluetooth; Προσθέστε το \"Device speaker\" ως διαχειριζόμενη συσκευή — οι εντάσεις του εφαρμόζονται όταν ο ήχος επιστρέφει στο τηλέφωνό σας.</string>
+    <string name="device_speaker_hint_action">Προσθήκη</string>
+    <string name="review_app_body">Θα ήθελες να αφήσεις μια αξιολόγηση για το BVM; ❤️</string>
+    <string name="review_app_review_action">Αξιολόγηση</string>
+    <string name="review_app_dismiss_action">Ίσως αργότερα</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Αγορά ακυρώθηκε</string>
     <string name="error_iap_unavailable_message">Οι αγορές μέσα στην εφαρμογή δεν είναι διαθέσιμες</string>

@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">BVM Pro യിലേക്ക് അപ്ഗ്രേഡ് ചെയ്യുക</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro മികക്കല് മിക്ക ഫലം, പവർ ഉപയോക്താക്കൾക്ക് കൂടുതൽ ഫീച്ചർം ഓപ്ഷനുകളും നൽകുന്നു.</string>
     <string name="upgrade_prompt_upgrade_action">അപ്ഗ്രേഡുചെയ്യുക</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">%1$s-ലേക്ക് അപ്ഗ്രേഡ് ചെയ്യുക</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager പ്രജ്ഞാപനങ്ങൾ ഇല്ല, ഉപയോക്തൃ ഡേറ്റ വിൽക്കുന്നില്ല. എന്റെ ജോലി നിങ്ങൾ വഴി ധനസഹായം കിട്ടുന്നു ❤️.</string>
     <string name="upgrade_screen_why_title">പ്രയോജനങ്ങൾ</string>
     <string name="upgrade_screen_subscription_trial_action">സൗജന്യ 14-ദിവസ ട്രയൽ ആരംഭിക്കുക</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Google Play ൽ ബന്ധപ്പെടാൻ കഴിഞ്ഞില്ല. ദയവായി നിങ്ങളുടെ ഇന്റർനെറ്റ് കണക്ഷൻ പരിശോധിക്കുകയും വീണ്ടും ശ്രമിക്കുകയും ചെയ്യുക.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ലഭ്യമല്ല</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ക്ക് Google Play യുമായ് ബന്ധപ്പെടാൻ കഴിയുന്നില്ല. Google Play ഇൻസ്റ്റൽ ചെയ്ത് അപ്ഡേറ്റ് ചെയ്തിട്ടുണ്ടോ? നിങ്ങളുടെ Google അക്കൗൺട് ലോഗിൻ ചെയ്തിട്ടുണ്ടോ? Google Play ആപ്പിന്റെ ക്യാഷ് മാർജിക്കുകയും ഉപകരണം രീബൂട്ട് ചെയ്യുകയും ശ്രമിക്കുക.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Play തുറക്കാൻ കഴിഞ്ഞില്ല. ഈ ഉപകരണത്തിൽ ഇത് നഷ്ടപ്പെട്ടതോ നിഷ്ക്രിയമാക്കപ്പെട്ടതോ നിയന്ത്രിതമാക്കപ്പെട്ടതോ ആയിരിക്കാം.</string>
     <string name="upgrades_no_purchases_found_check_account">വാങ്ങലുകളൊന്നും കണ്ടെത്തിയില്ല. നിങ്ങൾ ശരിയായ അക്കൗണ്ട് തന്നെയാണോ ഉപയോഗിക്കുന്നത്?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">അപ്ഗ്രേഡ് ഐച്ഛികതകൾ</string>
+    <string name="upgrade_screen_offers_body">രണ്ട് ഐച്ഛികതകളും ഒരേപോലെ Pro സവിശേഷതകൾ അൺലോക്ക് ചെയ്യുന്നു — നിങ്ങൾക്ക് ഇഷ്ടപ്പെട്ടത് തിരഞ്ഞെടുക്കുക.</string>
+    <string name="upgrade_screen_offers_unavailable_title">വിലകൾ ലഭ്യമല്ല</string>
+    <string name="upgrade_screen_offers_unavailable_message">വിലകൾ ഇപ്പോൾ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല. Google Play പരിശോധിക്കുക നിന്നും ഒരു നിമിഷത്തിൽ വീണ്ടും ശ്രമിക്കുക.</string>
+    <string name="upgrade_screen_benefits_body">• പരിധിയില്ലാത്ത ഡിവൈസുകൾ\n• കസ്റ്റം കണക്ഷൻ പ്രവർത്തനങ്ങൾ\n• തീം അനുകൂലീകരണം\n• വിപുലമായ വോളിയം നിയന്ത്രണങ്ങൾ\n• ഭാവിഷ്യത്തിന്റെ വികസനം പിന്തുണയ്ക്കുക ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">വാർഷിക സബ്സ്ക്രിപ്ഷൻ</string>
+    <string name="upgrade_screen_subscription_offer_body">സ്വതന്ത്ര പരീക്ഷണം ഉപയോഗിച്ച് ആരംഭിക്കുന്നു, പിന്നീട് വർഷത്തിലൊരിക്കൽ പുതുക്കുന്നു. Google Play-ൽ എപ്പോൾ വേണ്ടലും റദ്ദ് ചെയ്യുക.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">വർഷത്തിലൊരിക്കൽ പുതുക്കുന്നു. Google Play-ൽ എപ്പോൾ വേണ്ടലും റദ്ദ് ചെയ്യുക.</string>
+    <string name="upgrade_screen_iap_offer_title">ജീവിതകാല അൺലോക്ക്</string>
+    <string name="upgrade_screen_iap_offer_body">ഒരിക്കൽ നൽകുക നിന്നും Pro നിരന്തരം സ്വാധീനിക്കുക.</string>
+    <string name="upgrade_screen_owned_hero_title">നിങ്ങൾ Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">നിങ്ങൾ %1$s നിരന്തരം ഉടമകളാണ്.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">നിങ്ങളുടെ %1$s സബ്സ്ക്രിപ്ഷൻ സജീവമാണ്.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">നിങ്ങളുടെ സബ്സ്ക്രിപ്ഷൻ പുതുക്കുന്നതിനായി സജ്ജീകരിച്ചിട്ടില്ല, അതിനാൽ നിങ്ങൾ ഇപ്പോൾ ഒരിക്കൽ വാങ്ങലിലേക്ക് മാറാൻ കഴിയും. ശ്രദ്ധിക്കുക: ഇത് ഒരു വ്യത്യസ്ത ചാർജ് ആണ് അത് നിങ്ങളുടെ സബ്സ്ക്രിപ്ഷൻ റദ്ദ് അല്ലെങ്കിൽ വിനിയോഗം ചെയ്യില്ല, അതിനാൽ രണ്ടിനും ഒരേ Google അക്കൗണ്ട് ഉപയോഗിക്കുക.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">ആദ്യം Google Play-ൽ നിങ്ങളുടെ പുതുക്കുന്ന സബ്സ്ക്രിപ്ഷൻ റദ്ദ് ചെയ്യുക, പിന്നീട് നിങ്ങൾ ഒരിക്കൽ വാങ്ങലിലേക്ക് മാറാൻ കഴിയും.</string>
+    <string name="upgrade_screen_restore_body">ഈ അക്കൗണ്ടിൽ ഇതിനകം Pro വാങ്ങിയിട്ടുണ്ടോ? Google Play-നോട് നിങ്ങളുടെ വാങ്ങലുകൾ വീണ്ടും പരിശോധിക്കാൻ ആവശ്യപ്പെടുക.</string>
+    <string name="upgrade_screen_restore_checked_message">ഈ അക്കൗണ്ടിന്റെ വാങ്ങലുകൾ വീണ്ടും പരിശോധിക്കാൻ ഞങ്ങൾ Google Play-നോട് ആവശ്യപ്പെട്ടെങ്കിലും ഒന്നും കണ്ടെത്തിയില്ല.</string>
+    <string name="upgrade_screen_restore_contact_hint">ഇപ്പോഴും കുടുങ്ങിയിരിക്കുന്നോ? നിങ്ങൾ വാങ്ങിയ ഒരേ Google അക്കൗണ്ടിൽ നിന്ന് ഞങ്ങളെ ബന്ധപ്പെടുക, നിങ്ങളുടെ Google Play ഓർഡർ നമ്പർ ഉൾപ്പെടുത്തുക, ഞങ്ങൾ അത് പരിഹരിക്കും.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">ഞങ്ങൾ സമയത്തിൽ Google Play ഉപയോഗിച്ച് പരിശോധന പൂർത്തിയാക്കാൻ കഴിഞ്ഞില്ല, അതിനാൽ ഞങ്ങൾ ഇപ്പോഴും നിങ്ങളുടെ വാങ്ങൽ സ്ഥിതി അറിയിക്കുന്നില്ല — ഒരു നിമിഷം കാത്തിരിക്കുക നിന്നും വീണ്ടും ശ്രമിക്കുക.</string>
+    <string name="upgrades_gplay_billing_error_label">വാങ്ങൽ പ്രശ്നം</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play ഒരു പ്രശ്നം റിപ്പോർട്ട് ചെയ്തു: %1$s. പിന്നീട് വീണ്ടും ശ്രമിക്കുക അല്ലെങ്കിൽ നിങ്ങളുടെ ഡിവൈസ് പുനരാരംഭിക്കുക.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">ഓഫർ ലഭ്യമല്ല</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play ഇപ്പോൾ ഈ ഇനം വാഗ്ദാനം ചെയ്തില്ല. ഇത് നിങ്ങളുടെ അക്കൗണ്ടിനോ മേഖലയ്ക്കോ ഇതിനകം ലഭ്യമായിരിക്കണമെന്നില്ല — ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.</string>
 </resources>

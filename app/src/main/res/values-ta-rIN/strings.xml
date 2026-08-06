@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">நிர்வகிக்கப்படாத சாதனங்கள் ஏதும் காணப்படவில்லை</string>
     <string name="discover_all_devices_managed_msg">உங்கள் எல்லா இணைக்கப்பட்ட சாதனங்களும் நிர்வகிக்கப்படுகின்றன! புதிதாக ஒன்று தேவையா?</string>
     <string name="discover_pair_new_device_action">புதிய சாதனத்தை இணைக்கவும்</string>
+    <string name="discover_device_speaker_desc">இந்த ஃபோனின் சொந்த ஸ்பீக்கர். ஆடியோ ஃபோனுக்கு மீண்டும் மாறும் போது அதன் ஒலிகள் பயன்படுத்தப்படுகிறது, எ.கா. உங்கள் ப்ளூடூத் சாதனம் துண்டிக்கப்பட்ட பின்னர்.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">சாதன அமைப்பு</string>
     <string name="devices_device_config_section_general_label">பொது</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">சாதனம் சேர்க்கவும்</string>
     <string name="label_just_a_moment_please">ஒரு நிமிடம் தாமதிக்கவும்.</string>
     <string name="label_notification_channel_status">நிலை</string>
+    <string name="monitor_notification_starting">தொடங்குகிறது…</string>
     <string name="action_set">அமை</string>
     <string name="action_cancel">ரத்து செய்</string>
     <string name="label_invalid_input">தவறான உள்ளீடு</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">நீக்கு</string>
     <string name="general_cancel_action">ரத்து செய்</string>
     <string name="general_ok_action">சரி</string>
+    <string name="general_dismiss_action">நிராகரி</string>
+    <string name="general_progress_loading">ஏற்றுகிறது…</string>
     <string name="general_configure_action">கட்டமை</string>
     <string name="battery_optimization_hint_title">பட்டரி மேம்பாடு</string>
     <string name="battery_optimization_hint_message">பட்டரி மேம்பாடுகள் இயக்கப்பட்டுள்ளன மற்றும் சரியான இயக்கத்தைத் தடுக்கலாம். அவற்றை குறைக்கலாம்.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">தொந்தரவு செய்யாதீர்கள் அணுகல்</string>
     <string name="dnd_access_hint_message">தொந்தரவு செய்யாதீர்கள் அணுகல் இல்லாமல், உங்கள் சாதனங்கள் இணைக்கப்படும்போது ரிங்டோன், அறிவிப்பு மற்றும் DND முறை அமைப்புகளை பயன்படுத்த முடியாது.</string>
     <string name="dnd_access_fix_action">அணுகலை வழங்கு</string>
+    <string name="device_speaker_hint_title">முறிப்பின் பிறகு ஒலிகள்</string>
+    <string name="device_speaker_hint_message">ப்ளூடூத் சாதனம் முறிந்தபோது உங்கள் ஒலிகள் மீட்டெடுக்க வேண்டுமா? \"சாதன ஸ்பீக்கர்\" ஐ நிர்வகிக்கப்பட்ட சாதனமாக சேர்க்கவும் — ஆடியோ உங்கள் ஃபோனுக்கு மீண்டும் மாறும் போது அதன் ஒலிகள் பயன்படுத்தப்படுகிறது.</string>
+    <string name="device_speaker_hint_action">சேர்க்கவும்</string>
+    <string name="review_app_body">நீங்கள் BVM க்கு மார்வை வழங்க விரும்புகிறீர்களா? ❤️</string>
+    <string name="review_app_review_action">மார்வு</string>
+    <string name="review_app_dismiss_action">பிறகு வேளையில்</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">கொள்முடிவு ரத்துசெய்யப்பட்டது</string>
     <string name="error_iap_unavailable_message">ஆப்் உள்ளை கொள்முடிவுகள் கிடையவில்லை</string>

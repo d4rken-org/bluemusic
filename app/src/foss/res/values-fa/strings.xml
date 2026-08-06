@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">مدیر صدای بلوتوث تبلیغات ندارد و داده‌های کاربر را نمی‌فروشد. توسعه مداوم تنها با کمک شما ممکن می‌شود.</string>
     <string name="upgrade_screen_how_title">چگونه کمک کنیم</string>
     <string name="upgrade_screen_how_body">به حامی تبدیل شوید و توسعه را حمایت کنید! برای فعال کردن همه ویژگی‌های اضافی و باز کردن نمایه GitHub Sponsors من، روی دکمه زیر ضربه بزنید.</string>
+    <string name="upgrade_screen_why_title">مزایا</string>
+    <string name="upgrade_screen_why_body">• دستگاه‌های نامحدود\n• اقدامات اتصال سفارشی\n• سفارشی‌سازی تم\n• کنترل‌های صدای پیشرفته\n• حمایت از توسعه متن‌باز 🧙</string>
     <string name="upgrade_screen_sponsor_action">حامی توسعه دهنده</string>
     <string name="upgrade_screen_sponsor_action_hint">جایگزین تبلیغات، تجزیه و تحلیل و Google Play 🙁 هستند</string>
     <string name="upgrade_screen_thanks_toast">از شما برای حمایت از توسعه منبع باز سپاسگزاریم ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">وضعیت حامی خود را مشاهده کنید</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">شما در نسخه رایگان هستید</string>
+    <string name="upgrade_screen_status_free_body">به یک حامی تبدیل شوید تا ویژگی‌های اضافی را باز کنید و توسعه مستمر را حمایت کنید.</string>
+    <string name="upgrade_screen_status_free_action">مشاهده گزینه‌های ارتقا</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">با تشکر از حمایت شما</string>
     <string name="upgrade_screen_supporter_status_body">با حمایت از توسعه متن‌باز، تمام امکانات اضافی را باز کرده‌اید.</string>

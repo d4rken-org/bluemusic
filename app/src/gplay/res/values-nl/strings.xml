@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Upgrade naar BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro biedt betere resultaten, meer functies en opties voor hoofdgebruikers.</string>
     <string name="upgrade_prompt_upgrade_action">Upgraden</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Upgrade naar %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager bevat geen advertenties en verkoopt geen gebruikersgegevens. Mijn werk wordt door jou gefinancierd ❤️.</string>
     <string name="upgrade_screen_why_title">Voordelen</string>
     <string name="upgrade_screen_subscription_trial_action">Start gratis proefperiode van 14 dagen</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Kan geen verbinding maken met Google Play. Controleer je internetverbinding en probeer het opnieuw.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play is niet beschikbaar</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager kan geen verbinding maken met Google Play. Is Google Play geïnstalleerd en up-to-date? Is je Google-account ingelogd? Probeer de cache van de Google Play-app te wissen en je apparaat opnieuw op te starten.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Kon Google Play niet openen. Het kan zijn dat het ontbreekt, is uitgeschakeld of beperkt is op dit apparaat.</string>
     <string name="upgrades_no_purchases_found_check_account">Geen aankopen gevonden. Gebruik je de juiste rekening?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Upgrade-opties</string>
+    <string name="upgrade_screen_offers_body">Beide opties ontgrendelen exact dezelfde Pro-functies — kies wat het beste voor je past.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Prijzen niet beschikbaar</string>
+    <string name="upgrade_screen_offers_unavailable_message">Prijzen konden nu niet worden geladen. Controleer Google Play en probeer het over een moment opnieuw.</string>
+    <string name="upgrade_screen_benefits_body">• Onbeperkte apparaten\n• Aangepaste verbindingsacties\n• Thema-aanpassingen\n• Geavanceerde volumeregelingen\n• Ondersteun toekomstige ontwikkeling ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Jaarlijks abonnement</string>
+    <string name="upgrade_screen_subscription_offer_body">Begint met een gratis proefperiode en vernieuwt dan jaarlijks. Annuleren kan op elk moment in Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Wordt jaarlijks verlengd. Annuleer op elk moment via Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Levenslange ontgrendeling</string>
+    <string name="upgrade_screen_iap_offer_body">Betaal eenmaal en heb Pro voor altijd.</string>
+    <string name="upgrade_screen_owned_hero_title">Je bent Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Je bezit %1$s voor altijd.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Je %1$s-abonnement is actief.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Je abonnement staat niet ingesteld om te vernieuwen, dus je kunt nu naar de eenmalige aankoop overstappen. Let op: dit is een aparte aankoop die je abonnement niet annuleert of terugbetaalt, dus gebruik hetzelfde Google-account voor beide.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Annuleer eerst je verlengde abonnement in Google Play, dan kun je overstappen naar de eenmalige aankoop.</string>
+    <string name="upgrade_screen_restore_body">Al Pro gekocht op dit account? Vraag Google Play om je aankopen opnieuw te controleren.</string>
+    <string name="upgrade_screen_restore_checked_message">We hebben Google Play gevraagd om de aankopen op dit account opnieuw te controleren, maar hebben er geen gevonden.</string>
+    <string name="upgrade_screen_restore_contact_hint">Nog steeds vast? Neem contact op vanuit hetzelfde Google-account waarmee je hebt gekocht, voeg je Google Play-ordernummer in en we zullen het oplossen.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">We konden de controle met Google Play niet op tijd afmaken, dus we weten nog steeds niet of je iets hebt aangeschaft — wacht even en probeer opnieuw.</string>
+    <string name="upgrades_gplay_billing_error_label">Aankoopprobleem</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play heeft een probleem gemeld: %1$s. Probeer het later opnieuw of herstart je apparaat.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Aanbieding niet beschikbaar</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play biedt dit artikel nu niet aan. Het is mogelijk nog niet beschikbaar voor je account of regio — probeer het later opnieuw.</string>
 </resources>

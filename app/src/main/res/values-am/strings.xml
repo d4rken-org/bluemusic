@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">በኤፕ ያልተቀቀሉ መሣሪያዎች አይገኙ፡ም</string>
     <string name="discover_all_devices_managed_msg">የተጀረዱ መሣሪያዎችዋበት ሁሉም ይተቀቀላሉ። አዲስጀሩ? </string>
     <string name="discover_pair_new_device_action">አዲስ መሣሪያ አወች</string>
+    <string name="discover_device_speaker_desc">ይህ ስልክ ራሱ ተናጋሪ. ጎን ድምጽ ተግባር ስልክ, e.g. ከ Bluetooth መሳሪያ ስልክ ሊብ ወድ ድምጽ ተግባር.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">የመሣሪያ ውቅረት</string>
     <string name="devices_device_config_section_general_label">አጠቃላይ</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">መሣሪያ አክብቢ</string>
     <string name="label_just_a_moment_please">ንዘት ይበዐዘብ።</string>
     <string name="label_notification_channel_status">ሁኔተት</string>
+    <string name="monitor_notification_starting">ገና ጀምሮ…</string>
     <string name="action_set">አድርግ</string>
     <string name="action_cancel">ሰርዝ</string>
     <string name="label_invalid_input">ልክ ያልሆነ ግባት</string>
@@ -391,6 +393,8 @@
     <string name="general_delete_action">ሰርዝ</string>
     <string name="general_cancel_action">ሰርዝ</string>
     <string name="general_ok_action">እሰተ</string>
+    <string name="general_dismiss_action">አስወግድ</string>
+    <string name="general_progress_loading">መጫን…</string>
     <string name="general_configure_action">አድርግ</string>
     <string name="battery_optimization_hint_title">የደም ያሌዅ አመ፥ት</string>
     <string name="battery_optimization_hint_message">የደም ያሌዅ አመ፥ቶች ተፈንንዎል፥ ጀነታ ስራት እንዲያደርኑ እይዻይ።</string>
@@ -402,6 +406,12 @@
     <string name="dnd_access_hint_title">አትረብሽ ፍቃድ</string>
     <string name="dnd_access_hint_message">የ\'አትረብሽ\' ፍቃድ ሳይኖር፣ የደወል፣ ማሳወቂያ እና DND ሁነታ ቅንብሮች መሳሪያዎችዎ ሲገናኙ ሊተገበሩ አይችሉም።</string>
     <string name="dnd_access_fix_action">መዳረሻ ስጥ</string>
+    <string name="device_speaker_hint_title">Bluetooth ከተያያዙ በኋላ ድምጽ</string>
+    <string name="device_speaker_hint_message">Bluetooth መሳሪያ ስልክ ድምጽ ወደ ሊብ ይህ ወደ ያለ ፈለገ? \"ስልክ ተናጋሪ\" በ አምሳያ መሳሪያ ተጨምር — ጎን ድምጽ ተግባር ተዋወቀ.</string>
+    <string name="device_speaker_hint_action">ታክል</string>
+    <string name="review_app_body">ለBVM ግምገማ ማስቀመጥ ይፈልጋሉ? ❤️</string>
+    <string name="review_app_review_action">ግምገማ</string>
+    <string name="review_app_dismiss_action">ምናልባት በኋላ</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">ቕሌያ ተሰርዩ።</string>
     <string name="error_iap_unavailable_message">የአፕሊኬስን ዃየቶች አይገኙም።</string>

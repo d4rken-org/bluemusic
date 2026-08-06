@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager n\'ha naginas reclamas e na vend betg datas d\'utilisaders. Il svilup ulterior è mo pussaivel grazia a tai.</string>
     <string name="upgrade_screen_how_title">Tge che ti pos far</string>
     <string name="upgrade_screen_how_body">Daventescha in patronu e sustegna il svilup! Tocca il buttun sut per activar tut las funcziuns extras e vrar mai il profil GitHub Sponsors.</string>
+    <string name="upgrade_screen_why_title">Avantaschas</string>
+    <string name="upgrade_screen_why_body">• Apparails sensa limit\n• Acziuns da cunnexiun persunalisadas\n• Persunalisaziun dal tema\n• Controllas da volumen avanzads\n• Sustegn dal svilup open-source 🧙</string>
     <string name="upgrade_screen_sponsor_action">Sustegnair il svilup</string>
     <string name="upgrade_screen_sponsor_action_hint">L\'alternativa è reclamas, analytics e Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Grazia per sustegnair il svilup open-source ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Mira tia status da supporter</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Ti es en la versiun gratuita</string>
+    <string name="upgrade_screen_status_free_body">Dveinta sustengida per debliedar las funcziuns extras e sustegn il svilup cuntinuai.</string>
+    <string name="upgrade_screen_status_free_action">Vescha las opziuns da promomn</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Grazia per tia sapport</string>
     <string name="upgrade_screen_supporter_status_body">Tu has debloccà totas las funczias extras perquai che tu supporter il svilup da software open-source.</string>

@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ಜಾಹೀರಾತುಗಳಿಲ್ಲ ಮತ್ತು ಬಳಕೆದಾರರ ಡೇಟಾ ಮಾರಾಟುವುದಿಲ್ಲ. ನಿಮ್ಮಿಂದ ಮಾತ್ರ ನಿರಂತರ ಅಭಿವರ್ಧನೆ ಸಾಧ್ಯ.</string>
     <string name="upgrade_screen_how_title">ಸಹಾಯ ಮಾಡುವ ವಿಧಾನ</string>
     <string name="upgrade_screen_how_body">ಪ್ರಾಯೋಜಕರಾಗಿ ಅಭಿವರ್ಧನೆಯನ್ನು ಬೆಂಬಲಿಸಿ! ಎಲ್ಲಾ ಹೆಚ್ಚಿನ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ಮತ್ತು ನನ್ನ GitHub Sponsors ಪ್ರೋಫೈಲ್ ತೆರೆಯಲು ಕೆಳಗಿನ ಬಟನ ಟ್ಯಾಪ್ ಮಾಡಿ.</string>
+    <string name="upgrade_screen_why_title">ಪ್ರಯೋಜನಗಳು</string>
+    <string name="upgrade_screen_why_body">• ಅಸೀಮಿತ ಸಾಧನಗಳು\n• ಕಸ್ಟಮ್ ಸಂಪರ್ಕ ಕ್ರಿಯೆಗಳು\n• ಥೀಮ್ ಅನುಕೂಲನ\n• ಮುಂದುವರಿದ ವಾಲ್ಯೂಮ್ ನಿಯಂತ್ರಣಗಳು\n• ಮುಕ್ತ-ಮೂಲ ಅಭಿವೃದ್ಧಿಯನ್ನು ಬೆಂಬಲಿಸಿ 🧙</string>
     <string name="upgrade_screen_sponsor_action">ಅಭಿವರ್ಧನೆಗೆ ಪ್ರಾಯೋಜಕತವನ್ನು ನೀಡಿ</string>
     <string name="upgrade_screen_sponsor_action_hint">ಪರ್ಯಾಯ ಜಾಹೀರಾತುಗಳು, ವಿಶ್ಲೇಷಣೆ ಮತ್ತು Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">ಓಪನ್-ಸೋರ್ಸ್ ಅಭಿವರ್ಧನೆಗೆ ಬೆಂಬಲಿಸಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದಗಳು ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">ನಿಮ್ಮ ಬೆಂಬಲಕಾರ ಸ್ಥಿತಿಯನ್ನು ವೀಕ್ಷಿಸಿ</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">ನೀವು ಉಚಿತ ಆವೃತ್ತಿಯಲ್ಲಿ ಇದ್ದೀರಿ</string>
+    <string name="upgrade_screen_status_free_body">ಅತಿರಿಕ್ತ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಲು ಮತ್ತು ಮುಂದುವರಿದ ಅಭಿವೃದ್ಧಿಯನ್ನು ಪ್ರಾಯೋಜಿಸಲು ಸಮರ್ಥಕ ಆಗಿ.</string>
+    <string name="upgrade_screen_status_free_action">ಅಪ್‌ಗ್ರೇಡ್ ಆಯ್ಕೆಗಳನ್ನು ನೋಡಿ</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">ನಿಮ್ಮ ಬೆಂಬಲಕ್ಕಾಗಿ ಧನ್ಯವಾದ</string>
     <string name="upgrade_screen_supporter_status_body">ನೀವು ಓಪನ್-ಸೋರ್ಸ್ ಅಭಿವೃದ್ಧಿಯನ್ನು ಬೆಂಬಲಿಸುವ ಮೂಲಕ ಎಲ್ಲಾ ಹೆಚ್ಚುವರಿ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿದ್ದೀರಿ.</string>

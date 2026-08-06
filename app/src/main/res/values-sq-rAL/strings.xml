@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Nuk u gjetën pajisje të pamenaxhuara</string>
     <string name="discover_all_devices_managed_msg">Të gjitha pajisjet e tua të çiftuara janë të menaxhuara! Ke nevojë për një të re?</string>
     <string name="discover_pair_new_device_action">Çiftua pajisje të re</string>
+    <string name="discover_device_speaker_desc">Altoparlanti i vetë i këtij telefoni. Volumet e tij zbatohen kur audio kthehet në telefon, p.sh. pasi pajisja juaj Bluetooth shkëputohet.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Konfigurimi i pajisjes</string>
     <string name="devices_device_config_section_general_label">Përgjithshta</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Shto pajisje</string>
     <string name="label_just_a_moment_please">Shëndete, një moment.</string>
     <string name="label_notification_channel_status">Statusi</string>
+    <string name="monitor_notification_starting">Po nisen…</string>
     <string name="action_set">Vendos</string>
     <string name="action_cancel">Anulo</string>
     <string name="label_invalid_input">Hyrje e pavlefshme</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Fshi</string>
     <string name="general_cancel_action">Anulo</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Largoje</string>
+    <string name="general_progress_loading">Po ngarkohet…</string>
     <string name="general_configure_action">Konfiguro</string>
     <string name="battery_optimization_hint_title">Optimizimi i baterisë</string>
     <string name="battery_optimization_hint_message">Optimizatat e baterisë janë të aktivizuara dhe mund të parandalojnë funksionimin e duhur. Konsideroni çaktivizimin e tyre.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Qasja në \"Mos shqetëso\"</string>
     <string name="dnd_access_hint_message">Pa qasje në \"Mos shqetëso\", cilësimet e ziles, njoftimeve dhe modalitetit DND nuk mund të aplikohen kur pajisjet tuaja lidhen.</string>
     <string name="dnd_access_fix_action">Lejo qasje</string>
+    <string name="device_speaker_hint_title">Volumet pas shkëputjes</string>
+    <string name="device_speaker_hint_message">Dëshironi që volumet tuaja të rikthehen kur një pajisje Bluetooth shkëputohet? Shtoni \"Altoparlanti i pajisjes\" si pajisje e administruar — volumet e tij zbatohen kur audio kthehet në telefonin tuaj.</string>
+    <string name="device_speaker_hint_action">Shto</string>
+    <string name="review_app_body">Dëshironi t\'i lini një koment BVM? ❤️</string>
+    <string name="review_app_review_action">Rishikimi</string>
+    <string name="review_app_dismiss_action">Ndoshta më vonë</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Blerjeja u anulua</string>
     <string name="error_iap_unavailable_message">Blerjet brenda aplikacionit nuk janë të disponueshme</string>

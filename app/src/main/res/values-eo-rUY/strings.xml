@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Neniuj neadministrataj aparatoj trovitaj</string>
     <string name="discover_all_devices_managed_msg">Ĉiuj viaj parigitaj aparatoj estas administrataj! Bezonas novan?</string>
     <string name="discover_pair_new_device_action">Pari novan aparaton</string>
+    <string name="discover_device_speaker_desc">La propra son-aparato de ĉi tiu telefono. Ĝia sonlaŭto estas aplikata kiam la sono revenas al la telefono, ekz. post kiam via Bluetooth-aparato malkonektiĝas.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Aparata agordo</string>
     <string name="devices_device_config_section_general_label">Ĝenerala</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Aldoni aparaton</string>
     <string name="label_just_a_moment_please">Nur momenton, bonvolu.</string>
     <string name="label_notification_channel_status">Stato</string>
+    <string name="monitor_notification_starting">Komencas…</string>
     <string name="action_set">Agordi</string>
     <string name="action_cancel">Nuligi</string>
     <string name="label_invalid_input">Nevalida enigo</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Forigi</string>
     <string name="general_cancel_action">Nuligi</string>
     <string name="general_ok_action">Bone</string>
+    <string name="general_dismiss_action">Fermi</string>
+    <string name="general_progress_loading">Ŝarĝas…</string>
     <string name="general_configure_action">Agordi</string>
     <string name="battery_optimization_hint_title">Bateria optimumigo</string>
     <string name="battery_optimization_hint_message">Bateriooptimumigoj estas ebligitaj kaj povas malhelpi ĝustan funkciadon. Konsideru malŝalti ilin.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Ne-Ĝeni aliro</string>
     <string name="dnd_access_hint_message">Sen Ne-Ĝeni aliro, sonorilo, sciigo, kaj DND-reĝim-agordoj ne povas esti aplikataj kiam viaj aparatoj konektas.</string>
     <string name="dnd_access_fix_action">Doni aliron</string>
+    <string name="device_speaker_hint_title">Sonlaŭto post malkonekto</string>
+    <string name="device_speaker_hint_message">Ĉu vi volas restarigi vian sonlaŭton kiam Bluetooth-aparato malkonektiĝas? Aldonu \"Son-aparaton de la aparato\" kiel administratan aparaton — ĝia sonlaŭto estas aplikata kiam la sono revenas al via telefono.</string>
+    <string name="device_speaker_hint_action">Aldoni</string>
+    <string name="review_app_body">Ĉu vi ŝatus lasi al BVM recenzon? ❤️</string>
+    <string name="review_app_review_action">Recenzo</string>
+    <string name="review_app_dismiss_action">Eble poste</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Aĉeto nuligita</string>
     <string name="error_iap_unavailable_message">Enaĉetoj ne disponeblaj</string>

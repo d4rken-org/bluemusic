@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">ไม่พบอุปกรณ์ที่ยังไม่ได้จัดการ</string>
     <string name="discover_all_devices_managed_msg">อุปกรณ์ที่จับคู่ทั้งหมดถูกจัดการแล้ว! ต้องการอันใหม่มั้ย?</string>
     <string name="discover_pair_new_device_action">จับคู่อุปกรณ์ใหม่</string>
+    <string name="discover_device_speaker_desc">ลำโพงของโทรศัพท์เครื่องนี้ ระดับเสียงจะถูกนำไปใช้เมื่อเสียงสลับกลับไปยังโทรศัพท์ เช่น หลังจากอุปกรณ์ Bluetooth ของคุณตัดการเชื่อมต่อ</string>
     <!-- Devices -->
     <string name="devices_device_config_label">การตั้งค่าอุปกรณ์</string>
     <string name="devices_device_config_section_general_label">ทั่วไป</string>
@@ -311,6 +312,7 @@
     <string name="label_add_device">เพิ่มอุปกรณ์</string>
     <string name="label_just_a_moment_please">โปรดรอสักครู่</string>
     <string name="label_notification_channel_status">สถานะ</string>
+    <string name="monitor_notification_starting">กำลังเริ่มต้น…</string>
     <string name="action_set">ตั้งค่า</string>
     <string name="action_cancel">ยกเลิก</string>
     <string name="label_invalid_input">ใส่ไม่ถูกต้อง</string>
@@ -385,6 +387,8 @@
     <string name="general_delete_action">ลบ</string>
     <string name="general_cancel_action">ยกเลิก</string>
     <string name="general_ok_action">ตกลง</string>
+    <string name="general_dismiss_action">ปิด</string>
+    <string name="general_progress_loading">กำลังโหลด…</string>
     <string name="general_configure_action">กำหนดค่า</string>
     <string name="battery_optimization_hint_title">การเพิ่มประสิทธิภาพแบตเตอรี่</string>
     <string name="battery_optimization_hint_message">การเพิ่มประสิทธิภาพแบตเตอรี่เปิดใช้งานอยู่และอาจป้องกันการทำงานที่ถูกต้อง พิจารณาปิดการใช้งาน</string>
@@ -396,6 +400,12 @@
     <string name="dnd_access_hint_title">การเข้าถึง Do Not Disturb</string>
     <string name="dnd_access_hint_message">หากไม่มีการเข้าถึง Do Not Disturb การตั้งค่าเสียงเรียกเข้า การแจ้งเตือน และโหมด DND จะไม่ถูกใช้งานเมื่ออุปกรณ์ของคุณเชื่อมต่อ</string>
     <string name="dnd_access_fix_action">ให้สิทธิ์การเข้าถึง</string>
+    <string name="device_speaker_hint_title">ระดับเสียงหลังการตัดการเชื่อมต่อ</string>
+    <string name="device_speaker_hint_message">ต้องการให้ระดับเสียงของคุณคืนค่าเมื่ออุปกรณ์ Bluetooth ตัดการเชื่อมต่อหรือไม่? เพิ่ม \"Device speaker\" เป็นอุปกรณ์ที่จัดการ — ระดับเสียงจะถูกนำไปใช้เมื่อเสียงสลับกลับไปยังโทรศัพท์ของคุณ</string>
+    <string name="device_speaker_hint_action">เพิ่ม</string>
+    <string name="review_app_body">คุณต้องการให้คะแนน BVM หรือไม่? ❤️</string>
+    <string name="review_app_review_action">รีวิว</string>
+    <string name="review_app_dismiss_action">อาจในคราวหน้า</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">ยกเลิกการซื้อ</string>
     <string name="error_iap_unavailable_message">ไม่สามารถซื้อในแอปได้</string>

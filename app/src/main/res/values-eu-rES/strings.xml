@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Ez da kudeatugabeko gailurik aurkitu</string>
     <string name="discover_all_devices_managed_msg">Zure emparejatutako gailu guztiak kudeatuta daude! Berri bat behar duzu?</string>
     <string name="discover_pair_new_device_action">Gailu berria emparejatu</string>
+    <string name="discover_device_speaker_desc">Telefonoaren besteriko altabotzaile. Bere bolumenak aplikatzen dira entzungarria telefonora itzultzen denean, adibidez Bluetooth gailua deskonektatzen denean.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Gailuaren konfigurazioa</string>
     <string name="devices_device_config_section_general_label">Orokorra</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Gehitu gailua</string>
     <string name="label_just_a_moment_please">Mesedez, itxoin une bat.</string>
     <string name="label_notification_channel_status">Egoera</string>
+    <string name="monitor_notification_starting">Hasieratzen…</string>
     <string name="action_set">Ezarri</string>
     <string name="action_cancel">Utzi</string>
     <string name="label_invalid_input">Sarrera baliogabea</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Ezabatu</string>
     <string name="general_cancel_action">Utzi</string>
     <string name="general_ok_action">Ados</string>
+    <string name="general_dismiss_action">Baztertu</string>
+    <string name="general_progress_loading">Kargatzen…</string>
     <string name="general_configure_action">Konfiguratu</string>
     <string name="battery_optimization_hint_title">Bateria optimizazioa</string>
     <string name="battery_optimization_hint_message">Bateria optimizazioak gaituta daude eta funtzionamendu egokia eragotzi dezakete. Kontuan hartu desgaitzea.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Ez molestatzeko sarbidea</string>
     <string name="dnd_access_hint_message">Ez molestatzeko sarbiderik gabe, ezin dira ezarri tonu-jotzailea, jakinarazpena eta Ez molestatu moduko ezarpenak zure gailuak konektatzen direnean.</string>
     <string name="dnd_access_fix_action">Sarbidea eman</string>
+    <string name="device_speaker_hint_title">Bolumenak deskonexio ondoren</string>
+    <string name="device_speaker_hint_message">Nahi duzu zure bolumenak berreskuratzea Bluetooth gailua deskonektatzen denean? Gehitu «Gailuaren altabotzaile» kudeatutako gailua bezala — bere bolumenak aplikatzen dira entzungarria zure telefonora itzultzen denean.</string>
+    <string name="device_speaker_hint_action">Gehitu</string>
+    <string name="review_app_body">BVMari berrikuspen bat utzi nahi zenuke? ❤️</string>
+    <string name="review_app_review_action">Berrikuspen</string>
+    <string name="review_app_dismiss_action">Agian geroago</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Erosketa bertan behera utzi da</string>
     <string name="error_iap_unavailable_message">Aplikazioko erosketak ez daude erabilgarri</string>

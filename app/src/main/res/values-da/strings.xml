@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Ingen uhåndterede enheder fundet</string>
     <string name="discover_all_devices_managed_msg">Alle dine parrede enheder er allerede håndteret! Har du brug for en ny?</string>
     <string name="discover_pair_new_device_action">Par ny enhed</string>
+    <string name="discover_device_speaker_desc">Denne telefons egen højttaler. Dens lydstyrker bruges, når lyd skifter tilbage til telefonen, f.eks. efter at din Bluetooth-enhed afbryder forbindelsen.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Enhedskonfiguration</string>
     <string name="devices_device_config_section_general_label">Generelt</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Tilføj enhed</string>
     <string name="label_just_a_moment_please">Et øjeblik.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="monitor_notification_starting">Starter op…</string>
     <string name="action_set">Vælg</string>
     <string name="action_cancel">Annuller</string>
     <string name="label_invalid_input">Ugyldigt input</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Slet</string>
     <string name="general_cancel_action">Annuller</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Afvis</string>
+    <string name="general_progress_loading">Indlæser…</string>
     <string name="general_configure_action">Konfigurer</string>
     <string name="battery_optimization_hint_title">Batteri-optimering</string>
     <string name="battery_optimization_hint_message">Batteri-optimering er aktiveret og kan forhindre korrekt drift. Overvej at deaktivere dem.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Forstyr ikke-adgang</string>
     <string name="dnd_access_hint_message">Uden Forstyr ikke-adgang kan indstillinger for ringetone, notifikation og Forstyr ikke-tilstand ikke anvendes, når dine enheder tilsluttes.</string>
     <string name="dnd_access_fix_action">Giv adgang</string>
+    <string name="device_speaker_hint_title">Lydstyrker efter afbrydelse</string>
+    <string name="device_speaker_hint_message">Vil du have dine lydstyrker gendannet, når en Bluetooth-enhed afbryder forbindelsen? Tilføj \"Enhedshøjttaler\" som en administreret enhed — dens lydstyrker bruges, når lyd skifter tilbage til din telefon.</string>
+    <string name="device_speaker_hint_action">Tilføj</string>
+    <string name="review_app_body">Har du lyst til at give BVM en anmeldelse? ❤️</string>
+    <string name="review_app_review_action">Bedøm</string>
+    <string name="review_app_dismiss_action">Måske senere</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Køb annulleret</string>
     <string name="error_iap_unavailable_message">In-app køb er ikke tilgængelige</string>

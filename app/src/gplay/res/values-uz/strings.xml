@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">BVM Pro ga o\'tish</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro quvvatli foydalanuvchilar uchun yaxshiroq natijalar, ko\'proq funksiyalar va opsiyalar taklif qiladi.</string>
     <string name="upgrade_prompt_upgrade_action">Yangilash</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">%1$s ga yangilash</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager reklamasiz va foydalanuvchi ma\'lumotlarini sotmaydi. Mening ishim siz tomonidan moliyalashtiriladi ❤️.</string>
     <string name="upgrade_screen_why_title">Afzalliklar</string>
     <string name="upgrade_screen_subscription_trial_action">Bepul 14 kunlik sinovni boshlang</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Google Play bilan bog\'lana olmadi. Iltimos, internet ulanishingizni tekshiring va qayta urinib ko\'ring.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play mavjud emas</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play ga ulana olmadi. Google Play o\'rnatilgan va yangilangan? Google hisobingizda kirgansizmi? Google Play ilovasi keshini tozalab, qurilmangizni qayta yoqishga urinib ko\'ring.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Play\'ni ochib bo\'lmadi. Bu qurilmada yo\'q, o\'chirib qo\'yilgan yoki cheklangan bo\'lishi mumkin.</string>
     <string name="upgrades_no_purchases_found_check_account">Hech qanday xarid topilmadi. To\'g\'ri hisobdan foydalanyapsizmi?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Yangilash variantlari</string>
+    <string name="upgrade_screen_offers_body">Ikkala variant ham bir xil Pro imkoniyatlarini ochadi — o\'zingizga mos kelgan birini tanlang.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Narxlar mavjud emas</string>
+    <string name="upgrade_screen_offers_unavailable_message">Narxlarni hozir yuklab bo\'lmadi. Google Play\'ni tekshiring va bir lahzadan so\'ng qayta urinib ko\'ring.</string>
+    <string name="upgrade_screen_benefits_body">• Cheksiz qurilmalar\n• Maxsus ulanish harakatlari\n• Tema sozlanmasi\n• Ilg\'or ovoz boshqarish\n• Kelajakdagi ishlanmani qo\'llash ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Yillik obuna</string>
+    <string name="upgrade_screen_subscription_offer_body">Bepul sinashdan boshlanadi, keyin yilga qayta yangilanadi. Google Play\'da istalgan vaqtda bekor qilish mumkin.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Yilga qayta yangilanadi. Google Play\'da istalgan vaqtda bekor qilish mumkin.</string>
+    <string name="upgrade_screen_iap_offer_title">Umrbod yoqish</string>
+    <string name="upgrade_screen_iap_offer_body">Bir marta to\'lang va abadiy Pro egasi bo\'ling.</string>
+    <string name="upgrade_screen_owned_hero_title">Siz Pro\'siz! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Siz %1$s ni abadiy egallaysiz.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">%1$s obunangiz faol.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Obunangiz qayta yangilanishga o\'rnatilmagan, shuning uchun endi bir martalik xaridga o\'tishingiz mumkin. Diqqat: bu alohida to\'lov bo\'lib, obunangizni bekor qilmaydi yoki pulini qaytarmaydi, shuning uchun ikkalasi uchun ham bir xil Google hisobidan foydalaning.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Avval Google Play\'da qayta yangilanib turadigan obunangizni bekor qiling, keyin bir martalik xaridga o\'tishingiz mumkin.</string>
+    <string name="upgrade_screen_restore_body">Ushbu hisobda Pro allaqachon sotib olinganmi? Google Play\'dan xaridlaringizni qayta tekshirishni so\'rang.</string>
+    <string name="upgrade_screen_restore_checked_message">Biz Google Play\'dan ushbu hisob xaridlarini qayta tekshirishni so\'radik va hech narsa topilmadi.</string>
+    <string name="upgrade_screen_restore_contact_hint">Hali ham muammo bormi? Sotib olgan Google hisobingizdan bog\'laning, Google Play buyurtma raqamingizni ko\'rsating, biz uni hal qilamiz.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Google Play bilan tekshirishni vaqtida tugata olmadik, shuning uchun xarid holatingizni hali bilmaymiz — biroz kutib, qayta urinib ko\'ring.</string>
+    <string name="upgrades_gplay_billing_error_label">Xarid muammosi</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play muammo haqida xabar berdi: %1$s. Keyinroq qayta urinib ko\'ring yoki qurilmangizni qayta ishga tushiring.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Taklif mavjud emas</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play hozircha bu mahsulotni taklif qilmadi. U sizning hisobingiz yoki mintaqangiz uchun hali mavjud bo\'lmasligi mumkin — keyinroq qayta urinib ko\'ring.</string>
 </resources>

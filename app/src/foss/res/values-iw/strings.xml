@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager ללא מודעות ואינה מוכרת נתוני משתמשים. המשך הפיתוח מתאפשר רק על ידך.</string>
     <string name="upgrade_screen_how_title">איך לעזור</string>
     <string name="upgrade_screen_how_body">הפוך לפטרון ונותן חסות לפיתוח! הקש על הכפתור למטה כדי להפעיל את כל התכונות הנוספות ולפתוח את פרופיל הספונסרים בגיטהאב שלי.</string>
+    <string name="upgrade_screen_why_title">יתרונות</string>
+    <string name="upgrade_screen_why_body">• מכשירים בלתי מוגבלים\n• פעולות חיבור מותאמות\n• התאמה של ערכת נושא\n• בקרות עוצמת קול מתקדמות\n• תמיכה בפיתוח קוד-פתוח 🧙</string>
     <string name="upgrade_screen_sponsor_action">תמוך בפיתוח</string>
     <string name="upgrade_screen_sponsor_action_hint">האלטרנטיבה הן מודעות, אנליטיקס ו-Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">תודה שתמכת בפיתוח קוד פתוח ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">הצגת סטטוס התומך שלכם</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">אתה בגרסה החינמית</string>
+    <string name="upgrade_screen_status_free_body">הפוך לתומך כדי לשחרר את התכונות הנוספות ולתמוך בפיתוח מתמשך.</string>
+    <string name="upgrade_screen_status_free_action">ראה אפשרויות שדרוג</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">תודה על התמיכה שלכם</string>
     <string name="upgrade_screen_supporter_status_body">פתחתם את כל התכונות הנוספות בזכות התמיכה בפיתוח קוד פתוח.</string>

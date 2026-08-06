@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">没有找到未管理的设备</string>
     <string name="discover_all_devices_managed_msg">你所有配对的设备都已管理！需要新的吗？</string>
     <string name="discover_pair_new_device_action">配对新设备</string>
+    <string name="discover_device_speaker_desc">此手机自己的扬声器。当音频切换回手机时（例如蓝牙设备断开连接后），将应用其音量。</string>
     <!-- Devices -->
     <string name="devices_device_config_label">设备配置</string>
     <string name="devices_device_config_section_general_label">常规</string>
@@ -311,6 +312,7 @@
     <string name="label_add_device">添加设备</string>
     <string name="label_just_a_moment_please">请稍等一下。</string>
     <string name="label_notification_channel_status">状态</string>
+    <string name="monitor_notification_starting">正在启动…</string>
     <string name="action_set">应用</string>
     <string name="action_cancel">取消</string>
     <string name="label_invalid_input">输入的内容无效</string>
@@ -385,6 +387,8 @@
     <string name="general_delete_action">删除</string>
     <string name="general_cancel_action">取消</string>
     <string name="general_ok_action">确定</string>
+    <string name="general_dismiss_action">取消</string>
+    <string name="general_progress_loading">正在加载…</string>
     <string name="general_configure_action">配置</string>
     <string name="battery_optimization_hint_title">电池优化</string>
     <string name="battery_optimization_hint_message">已启用电池优化，可能会阻止正常操作。请考虑禁用它们。</string>
@@ -396,6 +400,12 @@
     <string name="dnd_access_hint_title">勿扰模式访问权限</string>
     <string name="dnd_access_hint_message">如果没有免打扰权限，当设备连接时将无法应用铃声、通知和免打扰模式设置。</string>
     <string name="dnd_access_fix_action">授予权限</string>
+    <string name="device_speaker_hint_title">断开连接后的音量</string>
+    <string name="device_speaker_hint_message">想在蓝牙设备断开连接时恢复你的音量？添加“设备扬声器”作为受管设备——当音频切换回你的手机时，将应用其音量。</string>
+    <string name="device_speaker_hint_action">添加</string>
+    <string name="review_app_body">想给 BVM 写一条评论吗？❤️</string>
+    <string name="review_app_review_action">评论</string>
+    <string name="review_app_dismiss_action">稍后再说</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">购买已取消</string>
     <string name="error_iap_unavailable_message">应用内购买不可用</string>

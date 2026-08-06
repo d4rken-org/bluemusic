@@ -390,6 +390,8 @@
     <string name="general_delete_action">Futa</string>
     <string name="general_cancel_action">Ghairi</string>
     <string name="general_ok_action">Sawa</string>
+    <string name="general_dismiss_action">Ondoa</string>
+    <string name="general_progress_loading">Inapakia…</string>
     <string name="general_configure_action">Sanidi</string>
     <string name="battery_optimization_hint_title">Uboreshaji wa betri</string>
     <string name="battery_optimization_hint_message">Uboreshaji wa betri umewezeshwa na unaweza kuzuia utendaji sahihi. Fikiria kuuzima.</string>
@@ -401,6 +403,10 @@
     <string name="dnd_access_hint_title">Ufikiaji wa Usisumbue</string>
     <string name="dnd_access_hint_message">Bila ufikiaji wa Usisumbue, mipangilio ya sauti ya simu, arifa, na hali ya DND haiwezi kutumika wakati vifaa vyako vinapoungana.</string>
     <string name="dnd_access_fix_action">Ruhusu ufikiaji</string>
+    <string name="device_speaker_hint_action">Ongeza</string>
+    <string name="review_app_body">Je, ungependa kuacha mapitio ya BVM? ❤️</string>
+    <string name="review_app_review_action">Mapitio</string>
+    <string name="review_app_dismiss_action">Labda baadaye</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Ununuzi umefutwa</string>
     <string name="error_iap_unavailable_message">Manunuzi ndani ya programu hayapatikani</string>

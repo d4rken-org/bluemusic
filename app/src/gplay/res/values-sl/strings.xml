@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Nadgradite na BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ponuja boljše rezultate, več funkcij in možnosti za napredne uporabnike.</string>
     <string name="upgrade_prompt_upgrade_action">Nadgradi</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Nadgradite na %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager nima oglasov in ne prodaja uporabniških podatkov. Moje delo financirate vi ❤️.</string>
     <string name="upgrade_screen_why_title">Prednosti</string>
     <string name="upgrade_screen_subscription_trial_action">Začni 14-dnevni preizkus</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Ni mogoče se povezati s Google Play. Preverite svojo internetno povezavo in poskusite znova.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ni na voljo.</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager se ne more povezati z Google Play. Ali je Google Play nameščen in posodobljen? Ali ste prijavljeni v Google Račun? Poskusite počistiti predpomnilnik aplikacije Google Play in znova zagnati napravo.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Ni bilo mogoče odpreti Google Play. Morda je onemogočena, ni dostopna ali omejena na tej napravi.</string>
     <string name="upgrades_no_purchases_found_check_account">Nakup ni bil najden.  Ali uporabljate pravi račun?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Možnosti nadgradnje</string>
+    <string name="upgrade_screen_offers_body">Obe možnosti odkleneta enake Pro funkcije — izberite tisto, ki vam najbolj ustreza.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Cene niso na voljo</string>
+    <string name="upgrade_screen_offers_unavailable_message">Cen ni bilo mogoče naložiti zdaj. Preverite Google Play in poskusite znova v trenutku.</string>
+    <string name="upgrade_screen_benefits_body">• Neomejene naprave\n• Prilagojene možnosti priklopitve\n• Prilagajanje teme\n• Napredni nadzori glasnosti\n• Podpora prihodnjemu razvoju ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Letna naročnina</string>
+    <string name="upgrade_screen_subscription_offer_body">Začne s preizkušnim obdobjem, nato se obnavlja letno. Prekličite kadar koli v Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Obnavlja se letno. Prekličite kadar koli v Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Trajno odklenjevanje</string>
+    <string name="upgrade_screen_iap_offer_body">Plačajte enkrat in imate Pro za vedno.</string>
+    <string name="upgrade_screen_owned_hero_title">Ste Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Imate %1$s za vedno.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Vaša %1$s naročnina je aktivna.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Vaša naročnina ni nastavljena za obnavljanje, zato se lahko zdaj preklopite na enkratni nakup. Opozorilo: to je ločena pristojbina, ki ne bo preklicala ali povrnila vaše naročnine, zato za obe uporabite isti račun Google.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Najprej prekličite svojo obnavljajočo se naročnino v Google Play, nato pa se lahko preklopite na enkratni nakup.</string>
+    <string name="upgrade_screen_restore_body">Ste že kupili Pro na tem računu? Prosite Google Play, da ponovno preveri vaše nakupe.</string>
+    <string name="upgrade_screen_restore_checked_message">Prosili smo Google Play, da ponovno preveri nakupe tega računa, in nismo našli nobenega.</string>
+    <string name="upgrade_screen_restore_contact_hint">Še vedno imate težave? Stopite v stik s tistega Google računa, s katerim ste kupili, vključite svojo številko naročila Google Play, in uredili bomo.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Nismo mogli pravočasno zaključiti preverjanja s Google Play, zato še vedno ne vemo, kakšen je vaš status nakupa — počakajte trenutek in poskusite znova.</string>
+    <string name="upgrades_gplay_billing_error_label">Problem z nakupom</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play je poročal o problemu: %1$s. Poskusite znova pozneje ali znova zaženite napravo.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Ponudba ni na voljo</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play to trenutno ne ponuja. Morda še ni na voljo za vaš račun ali regijo — poskusite znova kasneje.</string>
 </resources>

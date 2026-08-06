@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Nenašli sa žiadne nespravované zariadenia</string>
     <string name="discover_all_devices_managed_msg">Všetky spárované zariadenia sú spravované! Potrebuješ nové?</string>
     <string name="discover_pair_new_device_action">Spárovať nové zariadenie</string>
+    <string name="discover_device_speaker_desc">Vlastný reproduktor telefónu. Jeho hlasitosti sa aplikujú, keď sa zvuk prepne späť na telefón, napr. po odpojení zariadenia Bluetooth.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Konfigurácia zariadenia</string>
     <string name="devices_device_config_section_general_label">Všeobecné</string>
@@ -323,6 +324,7 @@
     <string name="label_add_device">Pridať zariadenie</string>
     <string name="label_just_a_moment_please">Chvíľočku, prosím.</string>
     <string name="label_notification_channel_status">Stav</string>
+    <string name="monitor_notification_starting">Spúšťa sa…</string>
     <string name="action_set">Nastaviť</string>
     <string name="action_cancel">Zrušiť</string>
     <string name="label_invalid_input">Neplatný vstup</string>
@@ -400,6 +402,8 @@
     <string name="general_delete_action">Odstrániť</string>
     <string name="general_cancel_action">Zrušiť</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Odmietnuť</string>
+    <string name="general_progress_loading">Načítava…</string>
     <string name="general_configure_action">Konfigurovať</string>
     <string name="battery_optimization_hint_title">Optimalizácia batérie</string>
     <string name="battery_optimization_hint_message">Optimalizácie batérie sú zapnuté a môžu zabrániť správnemu fungovaniu. Zvážte ich vypnutie.</string>
@@ -411,6 +415,12 @@
     <string name="dnd_access_hint_title">Prístup k režimu Nerušiť</string>
     <string name="dnd_access_hint_message">Bez prístupu k Nerušiť nie je možné použiť nastavenia zvonenia, upozornení a režimu Nerušiť pri pripojení vašich zariadení.</string>
     <string name="dnd_access_fix_action">Povoliť prístup</string>
+    <string name="device_speaker_hint_title">Hlasitosti po odpojení</string>
+    <string name="device_speaker_hint_message">Chcete, aby sa vaše hlasitosti obnovili, keď sa zariadenie Bluetooth odpojí? Pridajte „Reproduktor zariadenia“ ako spravované zariadenie — jeho hlasitosti sa aplikujú, keď sa zvuk prepne späť na váš telefón.</string>
+    <string name="device_speaker_hint_action">Pridať</string>
+    <string name="review_app_body">Chceli by ste zanechať recenziu BVM? ❤️</string>
+    <string name="review_app_review_action">Ohodnotiť</string>
+    <string name="review_app_dismiss_action">Možno pozdejšie</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Nákup zrušený</string>
     <string name="error_iap_unavailable_message">Nákupy v aplikácii nie sú dostupné</string>

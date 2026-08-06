@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Päivitä BVM Pro:hon</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro tarjoaa parempia tuloksia, enemmän ominaisuuksia ja vaihtoehtoja tehokäyttäjille.</string>
     <string name="upgrade_prompt_upgrade_action">Päivitä</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Päivitä versioon %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Managerissa ei ole mainoksia eikä se myy käyttäjätietoja. Työni rahoitetaan sinun toimestasi ❤️.</string>
     <string name="upgrade_screen_why_title">Edut</string>
     <string name="upgrade_screen_subscription_trial_action">Aloita ilmainen 14 päivän kokeilu</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Google Playhin ei saatu yhteyttä. Tarkista internetyhteytesi ja yritä uudelleen.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play ei ole käytettävissä</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ei voi yhdistää Google Playhin. Onko Google Play asennettu ja ajan tasalla? Onko Google-tilisi kirjautunut sisään? Kokeile tyhjenntää Google Play -sovelluksen välimuisti ja käynnistä laite uudelleen.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Playta ei voitu avata. Se saattaa olla puuttuva, käytöstä poistettu tai rajoitettu tällä laitteella.</string>
     <string name="upgrades_no_purchases_found_check_account">Ostoja ei löytynyt. Käytätkö oikeaa tiliä?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Päivitysvaihtoehdot</string>
+    <string name="upgrade_screen_offers_body">Molemmat vaihtoehdot vapauttavat täsmälleen samat Pro-ominaisuudet – valitse se, joka sopii sinulle parhaiten.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Hinnat eivät ole saatavilla</string>
+    <string name="upgrade_screen_offers_unavailable_message">Hintoja ei voitu ladata juuri nyt. Tarkista Google Play ja yritä uudelleen hetken kuluttua.</string>
+    <string name="upgrade_screen_benefits_body">• Rajattomat laitteet\n• Mukautetut yhteyden toiminnot\n• Teeman mukauttaminen\n• Kehittyneet äänenvoimakkuuden säädöt\n• Tulevaisuuden kehityksen tukeminen ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Vuosittainen tilaus</string>
+    <string name="upgrade_screen_subscription_offer_body">Alkaa ilmaisella kokeiluversiolla, sitten uusitaan vuosittain. Peruuta milloin tahansa Google Playssa.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Uusitaan vuosittain. Peruuta milloin tahansa Google Playssa.</string>
+    <string name="upgrade_screen_iap_offer_title">Elinikäinen avaus</string>
+    <string name="upgrade_screen_iap_offer_body">Maksa kerran ja omista Pro ikuisesti.</string>
+    <string name="upgrade_screen_owned_hero_title">Olet Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Omistat %1$s ikuisesti.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Tilauksesi %1$s on aktiivinen.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Tilauksesi ei ole asetettu uusiutumaan, joten voit nyt vaihtaa kertamaksuun. Huomio: se on erillinen maksu, joka ei peruuta tai palauta tilaustasi, joten käytä molemmissa samaa Google-tiliä.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Peruuta ensin uusiutuva tilauksesi Google Playssa, sitten voit vaihtaa kertamaksuun.</string>
+    <string name="upgrade_screen_restore_body">Ostanut Pro:n jo tällä tilillä? Pyydä Google Playta tarkistamaan ostoksesi uudelleen.</string>
+    <string name="upgrade_screen_restore_checked_message">Pyysimme Google Playta tarkistamaan tämän tilin ostokset uudelleen, mutta emme löytäneet yhtään.</string>
+    <string name="upgrade_screen_restore_contact_hint">Vielä jumissa? Ota yhteyttä samasta Google-tilistä, jolla ostit, sisällytä Google Play -tilausnumerosi, ja ratkaisemme sen.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Emme voineet suorittaa Google Play -tarkistusta ajoissa, joten emme vieläkään tiedä ostostasi – odota hetki ja yritä uudelleen.</string>
+    <string name="upgrades_gplay_billing_error_label">Ostosongelma</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play ilmoitti ongelmasta: %1$s. Yritä uudelleen myöhemmin tai käynnistä laitteesi uudelleen.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Tarjous ei ole saatavilla</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play ei tarjonnut tätä kohdetta juuri nyt. Se ei ehkä ole vielä saatavilla tilillesi tai alueellesi – yritä uudelleen myöhemmin.</string>
 </resources>

@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Некіраваныя прылады не знойдзены</string>
     <string name="discover_all_devices_managed_msg">Усе вашы спалучаныя прылады кіруюцца! Патрэбна новая?</string>
     <string name="discover_pair_new_device_action">Спалучыць новую прыладу</string>
+    <string name="discover_device_speaker_desc">Дынамік тэлефона. Яго гучнасці прымяняюцца, калі аўдыё вяртаецца да тэлефона, напр. пасля адключэння вашай прылады Bluetooth.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Канфігурацыя прылады</string>
     <string name="devices_device_config_section_general_label">Агульныя</string>
@@ -323,6 +324,7 @@
     <string name="label_add_device">Дадаць прыладу</string>
     <string name="label_just_a_moment_please">Хвіліначку, калі ласка.</string>
     <string name="label_notification_channel_status">Стан</string>
+    <string name="monitor_notification_starting">Запускаюцца…</string>
     <string name="action_set">Усталяваць</string>
     <string name="action_cancel">Скасаваць</string>
     <string name="label_invalid_input">Няправільнае значэнне</string>
@@ -400,6 +402,8 @@
     <string name="general_delete_action">Выдаліць</string>
     <string name="general_cancel_action">Скасаваць</string>
     <string name="general_ok_action">АК</string>
+    <string name="general_dismiss_action">Адхіліць</string>
+    <string name="general_progress_loading">Загрузка…</string>
     <string name="general_configure_action">Наладзіць</string>
     <string name="battery_optimization_hint_title">Аптымізацыя батарэі</string>
     <string name="battery_optimization_hint_message">Аптымізацыя батарэі ўключана і можа перашкодзіць правільнай рабоце. Разгледзце магчымасць іх адключэння.</string>
@@ -411,6 +415,12 @@
     <string name="dnd_access_hint_title">Доступ да рэжыму «Не турбаваць»</string>
     <string name="dnd_access_hint_message">Без доступу да рэжыму «Не турбаваць» налады звонку, апавяшчэнняў і рэжым «Не турбаваць» нельга адасобіць пры падключэнні вашых прылад.</string>
     <string name="dnd_access_fix_action">Даць доступ</string>
+    <string name="device_speaker_hint_title">Гучнасць пасля адключэння</string>
+    <string name="device_speaker_hint_message">Хочаце аднавіць вашы гучнасці пры адключэнні прылады Bluetooth? Дадайце \"Device speaker\" як кіруемую прыладу — яе гучнасці прымяняюцца, калі аўдыё вяртаецца да вашага тэлефона.</string>
+    <string name="device_speaker_hint_action">Дадаць</string>
+    <string name="review_app_body">Ці ты хочаш пакінуць водгук на BVM? ❤️</string>
+    <string name="review_app_review_action">Водгук</string>
+    <string name="review_app_dismiss_action">Магчыма пазней</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Пакупка адменена</string>
     <string name="error_iap_unavailable_message">Пакупкі ў дадатку недаступны</string>

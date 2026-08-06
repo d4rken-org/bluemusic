@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">BVM Pro にアップグレード</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Proは、パワーユーザーにより良い結果、より多くの機能とオプションを提供します。</string>
     <string name="upgrade_prompt_upgrade_action">アップグレード</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">%1$s にアップグレード</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Managerは広告がなく、ユーザーデータを販売しません。私の作業はあなたによって支えられています ❤️。</string>
     <string name="upgrade_screen_why_title">メリット</string>
     <string name="upgrade_screen_subscription_trial_action">14日間の無料トライアルを開始</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Google Playに接続できません。インターネット接続を確認してもう一度お試しください。</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Playは利用できません</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager は Google Play に接続できません。Google Play はインストールされており、最新の状態ですか？Google アカウントにログインしていますか？Google Play アプリのキャッシュをクリアしてデバイスを再起動してみてください。</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Google Play を開けませんでした。このデバイスで見つからない、無効になっている、または制限されている可能性があります。</string>
     <string name="upgrades_no_purchases_found_check_account">購入が確認できませんでした。正しいアカウントを使用していますでしょうか？</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">アップグレードオプション</string>
+    <string name="upgrade_screen_offers_body">どちらのオプションでも全く同じ Pro 機能が利用できます。あなたに合った方をお選びください。</string>
+    <string name="upgrade_screen_offers_unavailable_title">価格が利用できません</string>
+    <string name="upgrade_screen_offers_unavailable_message">現在、価格を読み込めません。Google Play を確認して、後ほどもう一度お試しください。</string>
+    <string name="upgrade_screen_benefits_body">• 無制限のデバイス\n• カスタム接続アクション\n• テーマのカスタマイズ\n• 高度なボリュームコントロール\n• 今後の開発をサポート ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">年間サブスクリプション</string>
+    <string name="upgrade_screen_subscription_offer_body">無料トライアルから開始して、毎年更新されます。Google Play からいつでもキャンセルできます。</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">毎年更新されます。Google Play からいつでもキャンセルできます。</string>
+    <string name="upgrade_screen_iap_offer_title">生涯ロック解除</string>
+    <string name="upgrade_screen_iap_offer_body">1 回の支払いで Pro を永遠に所有できます。</string>
+    <string name="upgrade_screen_owned_hero_title">Pro になりました！❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">%1$s を永遠に所有しています。</string>
+    <string name="upgrade_screen_owned_hero_sub_body">あなたの %1$s サブスクリプションは有効です。</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">サブスクリプションが更新されるように設定されていないため、今は 1 回限りの購入に切り替えられます。注意：これは別の課金であり、サブスクリプションのキャンセルや払い戻しは行われません。両方に同じ Google アカウントを使用してください。</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Google Play でサブスクリプションをキャンセルしてから、1 回限りの購入に切り替えられます。</string>
+    <string name="upgrade_screen_restore_body">このアカウントで Pro を購入済みですか？Google Play に購入内容の再確認を依頼してください。</string>
+    <string name="upgrade_screen_restore_checked_message">Google Play にこのアカウントの購入内容を再確認するよう依頼しましたが、見つかりませんでした。</string>
+    <string name="upgrade_screen_restore_contact_hint">まだお困りですか？購入に使用した同じ Google アカウントからお問い合わせください。Google Play の注文番号を含めていただければ、対応いたします。</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Google Play との確認をタイムリーに完了できなかったため、購入ステータスがわかりません。しばらく待ってからもう一度お試しください。</string>
+    <string name="upgrades_gplay_billing_error_label">購入の問題</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play が問題を報告しました：%1$s。後ほどもう一度お試しいただくか、デバイスを再起動してください。</string>
+    <string name="upgrades_gplay_offer_unavailable_title">オファーが利用できません</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play はこのアイテムを現在提供していません。アカウントまたは地域でまだ利用できない可能性があります。後ほどもう一度お試しください。</string>
 </resources>

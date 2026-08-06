@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Actualizează la BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro oferă rezultate mai bune, mai multe funcții şi opțiuni pentru utilizatorii avanсați.</string>
     <string name="upgrade_prompt_upgrade_action">Actualizează</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Upgrade la %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager nu are reclame şi nu vinde datele utilizatorilor. Munca mea este finanțată de tine ❤️.</string>
     <string name="upgrade_screen_why_title">Avantaje</string>
     <string name="upgrade_screen_subscription_trial_action">Începeți trial-ul gratuit 14 zile</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Nu se poate conecta la Google Play. Verifică conexiunea ta la internet și încearcă din nou.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play nu este disponibil</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager nu se poate conecta la Google Play. Este Google Play instalat şi actualizat? Eşti conectat cu contul Google? Încearcă să ștergă cache-ul aplicației Google Play şi reporneşte dispozitivul.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Nu s-a putut deschide Google Play. Este posibil să lipsească, să fie dezactivat sau restricționat pe acest dispozitiv.</string>
     <string name="upgrades_no_purchases_found_check_account">Nu s-a găsit nicio achiziție. Ești sigur că folosești contul corect?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Opțiuni de upgrade</string>
+    <string name="upgrade_screen_offers_body">Ambele opțiuni deblochează exact aceleași funcții Pro — alege pe care ți se potrivește.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Prețuri indisponibile</string>
+    <string name="upgrade_screen_offers_unavailable_message">Prețurile nu au putut fi încărcate acum. Verifică Google Play și încearcă din nou într-un moment.</string>
+    <string name="upgrade_screen_benefits_body">• Dispozitive nelimitate\n• Acțiuni de conexiune personalizate\n• Personalizare temă\n• Comenzi volum avansate\n• Suportă dezvoltarea viitoare ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Abonament anual</string>
+    <string name="upgrade_screen_subscription_offer_body">Începe cu o versiune de probă gratuită, apoi se reînnuiește anual. Anulează oricând în Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Se reînnuiește anual. Anulează oricând în Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Deblocare pe viață</string>
+    <string name="upgrade_screen_iap_offer_body">Plătește o dată și deține Pro pentru totdeauna.</string>
+    <string name="upgrade_screen_owned_hero_title">Ești Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Deții %1$s pentru totdeauna.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Abonamentul tău %1$s este activ.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Abonamentul tău nu este setat să se reînnuiască, deci poți trece la achiziția unică acum. Atenție: este o taxă separată care nu va anula sau returna abonamentul tău, deci folosește același cont Google pentru ambele.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Anulează mai întâi abonamentul tău care se reînnuiește în Google Play, apoi poți trece la achiziția unică.</string>
+    <string name="upgrade_screen_restore_body">Ai cumpărat deja Pro pe acest cont? Cere Google Play să-ți reverifice achizițiile.</string>
+    <string name="upgrade_screen_restore_checked_message">Am cerut Google Play să reverifice achizițiile acestui cont și nu am găsit una.</string>
+    <string name="upgrade_screen_restore_contact_hint">Încă blocat? Contactează-ne din același cont Google cu care ai cumpărat, include numărul comenzii Google Play și o vom rezolva.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Nu am putut termina verificarea cu Google Play la timp, deci încă nu știm starea achiziției tale — dă-i un moment și încearcă din nou.</string>
+    <string name="upgrades_gplay_billing_error_label">Problemă de achiziție</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play a raportat o problemă: %1$s. Încearcă din nou mai târziu sau repornește dispozitivul.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Ofertă indisponibilă</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play nu a oferit acest articol acum. Este posibil să nu fie disponibil pentru contul tău sau regiunea ta încă — te rugăm încearcă din nou mai târziu.</string>
 </resources>

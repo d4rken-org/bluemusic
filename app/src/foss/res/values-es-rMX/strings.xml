@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager no tiene publicidad y no vende datos de usuarios. El desarrollo continuo solo es posible gracias a ti.</string>
     <string name="upgrade_screen_how_title">Cómo ayudar</string>
     <string name="upgrade_screen_how_body">¡Conviértete en un patrocinador y apoya el desarrollo constante de la aplicación! Presiona el botón a continuación para activar todas las funciones adicionales además de abrir mi perfil de Patrocinadores en GitHub.</string>
+    <string name="upgrade_screen_why_title">Ventajas</string>
+    <string name="upgrade_screen_why_body">• Dispositivos ilimitados\n• Acciones de conexión personalizadas\n• Personalización de tema\n• Controles de volumen avanzados\n• Apoya el desarrollo de código abierto 🧙</string>
     <string name="upgrade_screen_sponsor_action">Patrocinador el proyecto</string>
     <string name="upgrade_screen_sponsor_action_hint">La alternativa son los anuncios, las analíticas y Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Gracias por apoyar el desarrollo libre ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Consulta tu estado de colaborador</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Estás usando la versión gratuita</string>
+    <string name="upgrade_screen_status_free_body">Convíertete en patrocinador para desbloquear funciones adicionales y patrocinar el desarrollo continuo.</string>
+    <string name="upgrade_screen_status_free_action">Ver opciones de actualización</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Gracias por tu apoyo</string>
     <string name="upgrade_screen_supporter_status_body">Desbloqueaste todas las funciones adicionales al apoyar el desarrollo de código abierto.</string>

@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">Boresha hadi BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro inatoa matokeo bora zaidi, vipengele vingi zaidi na chaguzi kwa watumiaji wa hali ya juu.</string>
     <string name="upgrade_prompt_upgrade_action">Boresha</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">Boreshwa kwa %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager haina matangazo na haiuzi data ya mtumiaji. Kazi yangu inafadhiliwa na wewe ❤️.</string>
     <string name="upgrade_screen_why_title">Faida</string>
     <string name="upgrade_screen_subscription_trial_action">Anza majaribio ya bure ya siku 14</string>
@@ -50,5 +52,27 @@
     <string name="upgrades_gplay_network_error_description">Haiwezi kuungana na Google Play. Tafadhali angalia muunganisho wako wa mtandao na jaribu tena.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play haipo</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager haiwezi kuunganika na Google Play. Je, Google Play imewekwa na iko ya kisasa? Je, akaunti yako ya Google imeingia? Jaribu kufuta kashe ya programu ya Google Play na kuanzisha upya kifaa chako.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">Haiwezi kufungua Google Play. Inaweza kuwa imefutwa, iliyolemazwa au iliyozuiwa kwenye simu hii.</string>
     <string name="upgrades_no_purchases_found_check_account">Hakuna ununuzi uliopatikana. Je, unatumia akaunti sahihi?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">Chaguo za kuboreshwa</string>
+    <string name="upgrade_screen_offers_body">Chaguo zote zimefungua uwezo sawa wa Pro — chagua yoyote inayokufaa.</string>
+    <string name="upgrade_screen_offers_unavailable_title">Bei haipatikani</string>
+    <string name="upgrade_screen_offers_unavailable_message">Bei hazikuweza kupakia sasa. Angalia Google Play na jaribu tena haraka.</string>
+    <string name="upgrade_screen_benefits_body">• Vifaa bila kikomo\n• Hatua za kuunganisha zilizobadilishwa\n• Ubadilishaji wa mandhari\n• Vidhibiti vya sauti vya juu\n• Kuunga mkono maendeleo ya baadaye ❤️</string>
+    <string name="upgrade_screen_subscription_offer_body">Inaanza na jaribio la bure, kisha inajipi upya kila mwaka. Ghairi wakati wowote katika Google Play.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">Inajipi upya kila mwaka. Ghairi wakati wowote katika Google Play.</string>
+    <string name="upgrade_screen_iap_offer_title">Kufungua milele</string>
+    <string name="upgrade_screen_iap_offer_body">Lipa mara moja na kumiliki Pro milele.</string>
+    <string name="upgrade_screen_owned_hero_title">Wewe ni Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">Unamiliki %1$s milele.</string>
+    <string name="upgrade_screen_restore_body">Tayari kununua Pro kwa akaunti hii? Omba Google Play kuangalia upya ununuzi wako.</string>
+    <string name="upgrade_screen_restore_checked_message">Tuliomba Google Play kuangalia upya ununuzi wa akaunti hii na hatukupata.</string>
+    <string name="upgrade_screen_restore_contact_hint">Bado na tatizo? Wasiliana kutoka kwa akaunti sawa ya Google uliyotumia kununua, jumuisha nambari yako ya agizo la Google Play, na tutakamatia.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">Hatukuweza kumaliza kuangalia na Google Play kwa wakati, kwa hivyo bado hatujui hali ya ununuzi wako — subiri kidogo na jaribu tena.</string>
+    <string name="upgrades_gplay_billing_error_label">Tatizo la ununuzi</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play ilizea tatizo: %1$s. Jaribu tena baadaye au anzisha upya kifaa chako.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">Ofa haipatikani</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play haikutoa kipengee hiki sasa. Inaweza kuwa haijapatikana kwa akaunti yako au eneo lako bado — tafadhali jaribu tena baadaye.</string>
 </resources>

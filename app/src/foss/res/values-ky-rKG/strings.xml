@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager жарнамаларсыз жана пайдалануучулардын мәлиматын сатпайт. Үзгөлтүрүлгөн ишкерлениш тек сиздин аркасында мүмкүн.</string>
     <string name="upgrade_screen_how_title">Калай жардам берүүгө</string>
     <string name="upgrade_screen_how_body">Патрон болуңуз жана ишкерленишти колдоо! Бардык кошумча функцияларды активдөө жана жеке астындагы GitHub Sponsors профилимди ачуу үчүн төмөндөгү баскычты таптаңыз.</string>
+    <string name="upgrade_screen_why_title">Артыкчылыктар</string>
+    <string name="upgrade_screen_why_body">• Чексиз түзмөктөр\n• Жөндөмдүү туташуу аракеттери\n• Тема ишкечтелери\n• Өнүккөн үндү башкаруу\n• Ачык баштапкы коддун өнүктүүлүгүнө колдоо 🧙</string>
     <string name="upgrade_screen_sponsor_action">Ишкерленишти спонсорлоо</string>
     <string name="upgrade_screen_sponsor_action_hint">Альтернатив жарнамалар, аналитика жана Google Play болот 🙁</string>
     <string name="upgrade_screen_thanks_toast">Ачык код ишкерленишти колдоодогунуңуз үчүн рахмат ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Колдоочу статусун көрүңүз</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Сиз бесплатка версиясында болосуз</string>
+    <string name="upgrade_screen_status_free_body">Кошумча функцияларды ачуу жана улантылган өнүктүүлүккө колдоо көрсөтүү үчүн колдоочу болуңуз.</string>
+    <string name="upgrade_screen_status_free_action">Жогорулоо опцияларын карап чыгыңыз</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Колдооңуз үчүн рахмат</string>
     <string name="upgrade_screen_supporter_status_body">Ачык коддуу чулууну колдоо аркылуу сиз бардык кошумча функцияларды ачтыңыз.</string>

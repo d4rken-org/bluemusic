@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">找不到未管理的裝置</string>
     <string name="discover_all_devices_managed_msg">你所有配對的裝置都已管理！需要新的？</string>
     <string name="discover_pair_new_device_action">配對新裝置</string>
+    <string name="discover_device_speaker_desc">此手機本身的揚聲器。當音訊切換回手機時，其音量會被套用，例如在藍牙裝置斷開連線後。</string>
     <!-- Devices -->
     <string name="devices_device_config_label">裝置設定</string>
     <string name="devices_device_config_section_general_label">一般</string>
@@ -311,6 +312,7 @@
     <string name="label_add_device">新增裝置</string>
     <string name="label_just_a_moment_please">請稍候。</string>
     <string name="label_notification_channel_status">狀態</string>
+    <string name="monitor_notification_starting">正在啟動…</string>
     <string name="action_set">設定</string>
     <string name="action_cancel">取消</string>
     <string name="label_invalid_input">無效輸入</string>
@@ -385,6 +387,8 @@
     <string name="general_delete_action">刪除</string>
     <string name="general_cancel_action">取消</string>
     <string name="general_ok_action">確定</string>
+    <string name="general_dismiss_action">關閉</string>
+    <string name="general_progress_loading">正在載入…</string>
     <string name="general_configure_action">設定</string>
     <string name="battery_optimization_hint_title">電池游淡優化</string>
     <string name="battery_optimization_hint_message">電池游淡優化已啟用，可能影響正常運作。請考慮關閉。</string>
@@ -396,6 +400,12 @@
     <string name="dnd_access_hint_title">請勿打擾存取權</string>
     <string name="dnd_access_hint_message">若未取得「請勿打擾」存取權，當您的裝置連接時，將無法套用鈴聲、通知及「請勿打擾」模式設定。</string>
     <string name="dnd_access_fix_action">授予存取權</string>
+    <string name="device_speaker_hint_title">斷開連線後的音量</string>
+    <string name="device_speaker_hint_message">想在藍牙裝置斷開連線時恢復你的音量？將「裝置揚聲器」新增為受管理的裝置 — 當音訊切換回你的手機時，其音量會被套用。</string>
+    <string name="device_speaker_hint_action">新增</string>
+    <string name="review_app_body">你想為 BVM 留下評論嗎？ ❤️</string>
+    <string name="review_app_review_action">評論</string>
+    <string name="review_app_dismiss_action">稍後再說</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">購買已取消</string>
     <string name="error_iap_unavailable_message">應用內購買不可用</string>

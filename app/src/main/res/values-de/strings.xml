@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Keine nicht verwalteten Geräte gefunden</string>
     <string name="discover_all_devices_managed_msg">Alle deine gekoppelten Geräte werden verwaltet! Brauchst du ein neues?</string>
     <string name="discover_pair_new_device_action">Neues Gerät koppeln</string>
+    <string name="discover_device_speaker_desc">Der eigene Lautsprecher dieses Telefons. Seine Lautstärkeeinstellungen werden angewendet, wenn der Ton zum Telefon zurückschaltet, z. B. nachdem dein Bluetooth-Gerät getrennt wurde.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Gerätekonfiguration</string>
     <string name="devices_device_config_section_general_label">Allgemein</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Gerät hinzufügen</string>
     <string name="label_just_a_moment_please">Einen Moment bitte.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="monitor_notification_starting">Wird gestartet…</string>
     <string name="action_set">Übernehmen</string>
     <string name="action_cancel">Abbrechen</string>
     <string name="label_invalid_input">Ungültige Eingabe</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Löschen</string>
     <string name="general_cancel_action">Abbrechen</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Ausblenden</string>
+    <string name="general_progress_loading">Wird geladen…</string>
     <string name="general_configure_action">Konfigurieren</string>
     <string name="battery_optimization_hint_title">Batterieoptimierung</string>
     <string name="battery_optimization_hint_message">Batterieoptimierungen sind aktiviert und können den ordnungsgemäßen Betrieb verhindern. Erwäge, sie zu deaktivieren.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Zugriff auf „Nicht stören“</string>
     <string name="dnd_access_hint_message">Ohne Zugriff auf „Nicht stören“ können Klingelton-, Benachrichtigungs- und DND-Einstellungen nicht angewendet werden, wenn deine Geräte verbunden werden.</string>
     <string name="dnd_access_fix_action">Zugriff gewähren</string>
+    <string name="device_speaker_hint_title">Lautstärke nach Trennung</string>
+    <string name="device_speaker_hint_message">Möchtest du deine Lautstärkeeinstellungen wiederherstellen, wenn ein Bluetooth-Gerät getrennt wird? Füge „Gerätelautsprecher“ als verwaltetes Gerät hinzu – seine Lautstärkeeinstellungen werden angewendet, wenn der Ton zu deinem Telefon zurückschaltet.</string>
+    <string name="device_speaker_hint_action">Hinzufügen</string>
+    <string name="review_app_body">Möchtest du BVM bewerten? ❤️</string>
+    <string name="review_app_review_action">Bewerten</string>
+    <string name="review_app_dismiss_action">Vielleicht später</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Kauf abgebrochen</string>
     <string name="error_iap_unavailable_message">In-App-Käufe sind nicht verfügbar</string>

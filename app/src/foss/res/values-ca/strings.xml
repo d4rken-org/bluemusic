@@ -9,6 +9,8 @@
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager no té anuncis i no ven dades d’usuari. El desenvolupament continuat només és possible gràcies a vosaltres.</string>
     <string name="upgrade_screen_how_title">Com ajudar</string>
     <string name="upgrade_screen_how_body">Convertiu-vos en mecenes i patrocinadors del desenvolupament! Toqueu el botó següent per activar totes les funcions addicionals i obrir el meu perfil de patrocinadors del GitHub.</string>
+    <string name="upgrade_screen_why_title">Avantatges</string>
+    <string name="upgrade_screen_why_body">• Dispositius il·limitats\n• Accions de connexió personalitzades\n• Personalització del tema\n• Controls de volum avançats\n• Suport del desenvolupament de codi obert 🧙</string>
     <string name="upgrade_screen_sponsor_action">Desenvolupament del patrocinador</string>
     <string name="upgrade_screen_sponsor_action_hint">L\'alternativa són els anuncis, les analítiques i Google Play 🙁</string>
     <string name="upgrade_screen_thanks_toast">Gràcies per donar suport al desenvolupament de codi obert ❤️</string>
@@ -16,6 +18,10 @@
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
     <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">Consulteu el vostre estat de col·laborador</string>
+    <!-- Free status view -->
+    <string name="upgrade_screen_status_free_title">Estàs en la versió gratuïta</string>
+    <string name="upgrade_screen_status_free_body">Converteix-te en un partidari per desbloquejar les funcions addicionals i patrocinar el desenvolupament continu.</string>
+    <string name="upgrade_screen_status_free_action">Veure opcions d\'actualització</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Gràcies pel vostre suport</string>
     <string name="upgrade_screen_supporter_status_body">Heu desbloquejat totes les funcions addicionals per donar suport al desenvolupament de codi obert.</string>

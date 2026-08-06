@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">BVM Pro मा अपग्रेड गर्नुहोस्</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ले शक्तिशाली प्रयोगकर्ताहरूका लागि राम्रो परिणाम, थप फिचरहरू र विकल्पहरू प्रदान गर्दछ।</string>
     <string name="upgrade_prompt_upgrade_action">अपग्रेड गर्नुहोस्</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">%1$s मा अपग्रेड गर्नुहोस्</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager मा कुनै विज्ञापन छैन र यसले प्रयोगकर्ताको डेटा बাंड्दैन। मेरो काम तपाईंले गर्नुभएको आर्थिक सहयोगबाट चलिरहेको छ ❤️।</string>
     <string name="upgrade_screen_why_title">फाइदाहरू</string>
     <string name="upgrade_screen_subscription_trial_action">14-दिनको निःशुल्क परीक्षण सुरु गर्नुहोस्</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">Google Play मा जडान गर्न सक्नु भएन। कृपया आफ्नो इन्टरनेट जडान जाँच गर्नुहोस् र फेरि प्रयास गर्नुहोस्।</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play उपलब्ध छैन</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play मा जोडिन सक्दैन। क्षमा गर्नुहोस्, Google Play स्थापित र अद्यतन छ? तपाईंको Google खाता लग इन गरिएको छ? Google Play अ्यापको क्यास साफ गर्नुहोस् र आफ्नो यन्त्र पुनःसुरू गर्नुहोस्।</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">गूगल प्ले खोल्न सकिएन। यो यस डिभाइसमा हराएको, अक्षम गरिएको वा प्रतिबन्धित हो सक्छ।</string>
     <string name="upgrades_no_purchases_found_check_account">कुनै खरिदहरू फेला परेनन्। के तपाईं सही खाता प्रयोग गर्दै हुनुहुन्छ?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">अपग्रेड विकल्पहरू</string>
+    <string name="upgrade_screen_offers_body">दोनै विकल्पले एक जस्तै Pro सुविधाहरू अनलक गर्छन् — आफूलाई सहि जो कुनै छनोट गर्नुहोस्।</string>
+    <string name="upgrade_screen_offers_unavailable_title">मूल्यहरू उपलब्ध छैन</string>
+    <string name="upgrade_screen_offers_unavailable_message">मूल्यहरू अहिले लोड गर्न सकेनन्। Google Play जाँच गर्नुहोस् र एक पल मा फेरि प्रयास गर्नुहोस्।</string>
+    <string name="upgrade_screen_benefits_body">• असीमित उपकरणहरू\n• अनुकूल जडान कार्यहरू\n• विषयवस्तु अनुकूलन\n• उन्नत भलिउम नियन्त्रण\n• भविष्य विकास समर्थन ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">वार्षिक सदस्यता</string>
+    <string name="upgrade_screen_subscription_offer_body">नि: शुल्क परीक्षणबाट सुरु हुन्छ, त्यसपछि वार्षिक नवीनीकरण हुन्छ। Google Play मा कुनै पनि समयमा रद्द गर्नुहोस्।</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">वार्षिक नवीनीकरण हुन्छ। Google Play मा कुनै पनि समयमा रद्द गर्नुहोस्।</string>
+    <string name="upgrade_screen_iap_offer_title">आजीवन अनलक</string>
+    <string name="upgrade_screen_iap_offer_body">एक पटक भुक्तानी गर्नुहोस् र Pro सदैव आफ्नो बनाउनुहोस्।</string>
+    <string name="upgrade_screen_owned_hero_title">तपाई Pro हुनुहुन्छु! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">तपाई %1$s सदैव आफ्नो बनाउनुहुन्छु।</string>
+    <string name="upgrade_screen_owned_hero_sub_body">आपको %1$s सदस्यता सक्रिय छ।</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">आपको सदस्यता नवीनीकरणको लागि सेट गरिएको छैन, त्सैले तपाई अब एक पटकको खरीदमा स्विच गर्न सक्नुहुन्छु। ध्यान दिनुहोस्: यो अलग शुल्क हो जसले आपको सदस्यता रद्द वा फिर्ता नदिइ, दुबैको लागि एक जस्तै Google खाता प्रयोग गर्नुहोस्।</string>
+    <string name="upgrade_screen_owned_iap_locked_note">पहिले Google Play मा आपको नवीनीकरण हुने सदस्यता रद्द गर्नुहोस्, त्यसपछि तपाई एक पटकको खरीदमा स्विच गर्न सक्नुहुन्छु।</string>
+    <string name="upgrade_screen_restore_body">यो खातामा पहिले Pro किनिएको छ? Google Play लाई आपको खरीदहरू पुनः जाँच गर्न सोध्नुहोस्।</string>
+    <string name="upgrade_screen_restore_checked_message">हामीले Google Play लाई यो खातार खरीदहरू पुनः जाँच गर्न सोधेका छौं र कुनै नभेट्टाएका छौं।</string>
+    <string name="upgrade_screen_restore_contact_hint">अझै अलमल छ? जो Google खातासबाट खरीद गर्नुभएको थियो त्यहीबाट सम्पर्क गर्नुहोस्, आपको Google Play अर्डर नम्बर समावेश गर्नुहोस्, र हामी सबै व्यवस्थापन गर्नेछौं।</string>
+    <string name="upgrade_screen_restore_inconclusive_message">हामी समयमा Google Play संग जाँच पूरा गर्न सकेनौं, त्सैले हामी अझै तपाईको खरीद स्थिति थाहा पाएनौं — एक पल दिनुहोस् र फेरि प्रयास गर्नुहोस्।</string>
+    <string name="upgrades_gplay_billing_error_label">खरीद समस्या</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play ले समस्या रिपोर्ट गरेको छ: %1$s। पछि अर्को पटक प्रयास गर्नुहोस् वा आपको उपकरण पुनः सुरु गर्नुहोस्।</string>
+    <string name="upgrades_gplay_offer_unavailable_title">अफर उपलब्ध छैन</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play ले यो वस्तु अहिले अफर गरेको छैन। यो आपको खाता वा क्षेत्रको लागि अभी उपलब्ध नहुन सक्छ — कृपया पछि फेरि प्रयास गर्नुहोस्।</string>
 </resources>

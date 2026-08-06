@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Boshqarilmagan qurilmalar topilmadi</string>
     <string name="discover_all_devices_managed_msg">Barcha juftlashtirilgan qurilmalaringiz boshqarilmoqda! Yangi qurilma kerakmi?</string>
     <string name="discover_pair_new_device_action">Yangi qurilma juftlashtirish</string>
+    <string name="discover_device_speaker_desc">Telefonning o\'z karnaysi. Uning ovoz darajalari audio telefonga qaytganda qo\'llaniladi, masalan, Bluetooth qurilmangiz uzilgandan keyin.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Qurilma sozlamalari</string>
     <string name="devices_device_config_section_general_label">Umumiy</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Qurilma qo\'shish</string>
     <string name="label_just_a_moment_please">Bir lahza, iltimos.</string>
     <string name="label_notification_channel_status">Holat</string>
+    <string name="monitor_notification_starting">Ishga tushmoqda…</string>
     <string name="action_set">O\'rnatish</string>
     <string name="action_cancel">Bekor qilish</string>
     <string name="label_invalid_input">Noto\'g\'ri ma\'lumot</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">O\'chirish</string>
     <string name="general_cancel_action">Bekor qilish</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">Yopish</string>
+    <string name="general_progress_loading">Yuklanmoqda…</string>
     <string name="general_configure_action">Sozlash</string>
     <string name="battery_optimization_hint_title">Batareya optimallashuvi</string>
     <string name="battery_optimization_hint_message">Batareya optimallashtirishlari yoqilgan va to\'g\'ri ishlashga to\'sqinlik qilishi mumkin. Ularni o\'chirishni ko\'ring.</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">Bezovta qilmang rejimiga kirish</string>
     <string name="dnd_access_hint_message">Bezovta qilmang rejimsiz, qo\'ng\'iroq, bildirishnoma va DND rejimi sozlamalari qurilmalaringiz ulanganda qo\'llanilmaydi.</string>
     <string name="dnd_access_fix_action">Ruxsat berish</string>
+    <string name="device_speaker_hint_title">Uzilgandan keyingi ovoz darajalari</string>
+    <string name="device_speaker_hint_message">Bluetooth qurilma uzilganda ovoz darajalari tiklanishini xohlaysizmi? \"Qurilma karnayi\"ni boshqariladigan qurilma sifatida qo\'shing — uning ovoz darajalari audio telefoningizga qaytganda qo\'llaniladi.</string>
+    <string name="device_speaker_hint_action">Qo\'shish</string>
+    <string name="review_app_body">BVM ga sharh qoldirishni xohlaysizmi? ❤️</string>
+    <string name="review_app_review_action">Ko\'rib chiqish</string>
+    <string name="review_app_dismiss_action">Balki keyinroq</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Xarid bekor qilindi</string>
     <string name="error_iap_unavailable_message">Ilovadagi xaridlar mavjud emas</string>

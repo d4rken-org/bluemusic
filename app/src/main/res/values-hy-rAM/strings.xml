@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Կառավարելիք սարքեր չեն գտնվել</string>
     <string name="discover_all_devices_managed_msg">Ձեր բոլոր զուգակցված սարքերը կառավարվում են: Ուզո՞ւմ եք ավելացնել նոր:</string>
     <string name="discover_pair_new_device_action">Զուգակցել նոր սարք</string>
+    <string name="discover_device_speaker_desc">Այս հեռախոսի սեփական բարձրախոս։ Դրա ծավալները կիրառվում են, երբ աուդիոն վերադառնում է հեռախոսին, օր.՞ Bluetooth սարքի անջատվելուց հետո։</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Սարքի կարգաբերում</string>
     <string name="devices_device_config_section_general_label">Ընդհանուր</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Ավելացնել սարք</string>
     <string name="label_just_a_moment_please">Մի վայրկյան, խնդրում եմ:</string>
     <string name="label_notification_channel_status">Կարգավիճակ</string>
+    <string name="monitor_notification_starting">Մեկնարկում է…</string>
     <string name="action_set">Սահմանել</string>
     <string name="action_cancel">Չեղարկել</string>
     <string name="label_invalid_input">Անվավեր մուտք</string>
@@ -390,6 +392,8 @@
     <string name="general_delete_action">Ջնջել</string>
     <string name="general_cancel_action">Չեղարկել</string>
     <string name="general_ok_action">բարի</string>
+    <string name="general_dismiss_action">Մերժել</string>
+    <string name="general_progress_loading">Բեռնում…</string>
     <string name="general_configure_action">Կարգավորել</string>
     <string name="battery_optimization_hint_title">Մարտկոցի օպտիմալացում</string>
     <string name="battery_optimization_hint_message">Մարտկոցի օպտիմալացումները ինկնակակվածն լինելու կարող կան խոչինդոտել նորմալ աշխատանքին։ Մտածեք անջատելու մասին։</string>
@@ -401,6 +405,12 @@
     <string name="dnd_access_hint_title">«Մի անհանգստացրեք» հասանելիություն</string>
     <string name="dnd_access_hint_message">Առանց «Մի անհանգստացրեք» հասանելիության, զնգակի, ծանուցման և DND ռեժիմի կարգավորումները հնարավոր չի լինի կիրառել, երբ ձեր սարքերը միանան:</string>
     <string name="dnd_access_fix_action">Մուտք տալ</string>
+    <string name="device_speaker_hint_title">Ծավալներ անջատվելուց հետո</string>
+    <string name="device_speaker_hint_message">Ցանկանում եք ձեր ծավալները վերականգնել, երբ Bluetooth սարքը անջատվի։ Ավելացրեք \"Սարքի բարձրախոս\" որպես կառավարվող սարք — դրա ծավալները կիրառվում են, երբ աուդիոն վերադառնում է ձեր հեռախոսին։</string>
+    <string name="device_speaker_hint_action">Ավելացնել</string>
+    <string name="review_app_body">Ցանկանա՞ք գնահատական թողնել BVM-ի համար? ❤️</string>
+    <string name="review_app_review_action">Գնահատական</string>
+    <string name="review_app_dismiss_action">Գուցե ավելի ուշ</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Գնումն չեղյալ է</string>
     <string name="error_iap_unavailable_message">Լրացկի գնումները հասանելի չեն</string>

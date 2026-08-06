@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">អ័ពគថ83 ត្រឹមត្រូវ BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro ផ្តល់នួវផលលើសជាង្រើសមុខងារនិងជម្រើសប័កព្រមសម្រាប់សម្រាប់សធ្វី។</string>
     <string name="upgrade_prompt_upgrade_action">វិសិដ្ឋកម្ម</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">លើកកម្ពស់ទៅ %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager មិនមានព្សនា ។។។ ហើយមិនលក់លាយត្រម្វន្តិយរបស់ប្រើបស័រី។ ការការរបស់សម្រាប់របស់ត្រងប្រើទីអ្នក ❤️។</string>
     <string name="upgrade_screen_why_title">អត្ថប្រយោជន៍</string>
     <string name="upgrade_screen_subscription_trial_action">ចាប់ផ្តើមការសាកល្បង 14 ថ្ងៃដោយឥតគិតថ្លៃ</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">មិនអាចភ្ជាប់ទៅ Google Play បានទេ។ សូមពិនិត្យការតភ្ជាប់អ៊ីនធឺណិតរបស់អ្នក ហើយព្យាយាមម្តងទៀត។</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play មិនអាចប្រើបាន</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager មិនអាចភ្ជាប់ទៅ Google Play បានទេ។ តើ Google Play ត្រូវបានដំឡើងហើយទាន់សម័យទេ? តើគណនី Google របស់អ្នកបានចូលហើយទេ? សូមព្យាយាមមើលការសម្អាតឃ្លាំងសម្ងាត់នៃកម្មវិធី Google Play ហើយចាប់ផ្ដើមដំណើរការឧបករណ៍ឡើងវិញ។</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">មិនបានបើក Google Play ទេ។ វាប្រហែលជាបាត់ ឈប់ដំណើរការ ឬត្រូវបានដាក់ឆ្នោតលើឧបករណ៍នេះ។</string>
     <string name="upgrades_no_purchases_found_check_account">រកមិនឃើញការទិញ។ តើអ្នកកំពុងប្រើគណនីត្រឹមត្រូវទេ?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">ជម្រើសលើកកម្ពស់</string>
+    <string name="upgrade_screen_offers_body">ជម្រើសទាំងពីរដោះលែកលក្ខណៈពិសេស Pro ដូចគ្នាបេះបិទ — ជ្រើសរើសមួយដែលសមស្របលោកអ្នក។</string>
+    <string name="upgrade_screen_offers_unavailable_title">តម្លៃលែងមាន</string>
+    <string name="upgrade_screen_offers_unavailable_message">តម្លៃមិនអាចផ្ទុកបានឥឡូវនេះ។ ពិនិត្យ Google Play ហើយព្យាយាមម្តងទៀតក្នុងរយៈពេលដ៏ខ្លី។</string>
+    <string name="upgrade_screen_benefits_body">• ឧបករណ៍មិនមានដែនកំណត់\n• សកម្មភាពភ្ជាប់ដែលផ្ទាល់ខ្លួន\n• ការលៃតម្រូវរូបរាង\n• ការគ្រប់គ្រងសម្លេងលម្អិត\n• គាំទ្របង្ក្រឹងការអភិវឌ្ឍន៍នាពេលអនាគត ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">ការលេខិកលក្ខណ៍ប្រចាំឆ្នាំ</string>
+    <string name="upgrade_screen_subscription_offer_body">ចាប់ផ្តើមជាមួយការសាកល្បងឥតគិតថ្លៃ បន្ទាប់មកបង្កើតឡើងវិញរៀងរាល់ឆ្នាំ។ បោះបង់នៅពេលណាក៏បាននៅក្នុង Google Play។</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">បង្កើតឡើងវិញរៀងរាល់ឆ្នាំ។ បោះបង់នៅពេលណាក៏បាននៅក្នុង Google Play។</string>
+    <string name="upgrade_screen_iap_offer_title">ការដោះលែកមានអាយុកាលជីវិត</string>
+    <string name="upgrade_screen_iap_offer_body">ទូទាត់ម្តងហើយ ហើយមាន Pro រៀងរាល់ដង។</string>
+    <string name="upgrade_screen_owned_hero_title">អ្នក​គឺ Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">អ្នកគឺម្ចាស់ %1$s រៀងរាល់ដង។</string>
+    <string name="upgrade_screen_owned_hero_sub_body">ការលេខិកលក្ខណ៍ %1$s របស់អ្នកកំពុងសកម្ម។</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">ការលេខិកលក្ខណ៍របស់អ្នកមិនត្រូវបានកំណត់ដើម្បីបង្កើតឡើងវិញ ដូច្នេះអ្នកអាចប្តូរទៅការទិញម្តងដងឥឡូវនេះ។ ក្រលម៖ វាគឺជាការគិតថ្លៃដាច់ដោយឡែក ដែលលុបរំលាយ ឬសង្វិញការលេខិកលក្ខណ៍របស់អ្នកនឹងមិនកើតឡើងទេ ដូច្នេះប្រើគណនី Google ដដែលសម្រាប់ទាំងពីរ។</string>
+    <string name="upgrade_screen_owned_iap_locked_note">សូមលុបរំលាយការលេខិកលក្ខណ៍ដែលកំពុងបង្កើតឡើងវិញនៅក្នុង Google Play ដំបូង បន្ទាប់មកអ្នកអាចប្តូរទៅការទិញម្តងមួយដង។</string>
+    <string name="upgrade_screen_restore_body">បានទិញលក្ខណៈពិសេស Pro នៅលើគណនីនេះរួចហើយឬ? សូមស្នើឱ្យ Google Play ពិនិត្យមើលការទិញរបស់អ្នកម្តងទៀត។</string>
+    <string name="upgrade_screen_restore_checked_message">យើងបានស្នើឱ្យ Google Play ពិនិត្យមើលការទិញរបស់គណនីនេះម្តងទៀត ហើយមិនបានរកឃើញ។</string>
+    <string name="upgrade_screen_restore_contact_hint">នៅតែស្ទាក់ស្ទើរឬ? ទាក់ទងពីគណនី Google ដដែលដែលអ្នកបានទិញវា រួមបញ្ចូលលេខលំដាប់ Google Play របស់អ្នក ហើយយើងនឹងដោះស្រាយ។</string>
+    <string name="upgrade_screen_restore_inconclusive_message">យើងមិនអាចបញ្ចប់ការពិនិត្យជាមួយ Google Play ក្នុងរយៈពេលលម្អិតបានទេ ដូច្នេះយើងនៅតែមិនដឹងពីស្ថានភាពនៃការទិញរបស់អ្នក — សូមរង់ចាំបន្តិច ហើយព្យាយាមម្តងទៀត។</string>
+    <string name="upgrades_gplay_billing_error_label">បញ្ហាការទិញ</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play បានរាយការណ៍ពីបញ្ហា: %1$s។ ព្យាយាមម្តងទៀតក្រោយមក ឬចាប់ផ្តើមឧបករណ៍របស់អ្នកម្តងទៀត។</string>
+    <string name="upgrades_gplay_offer_unavailable_title">សម្ពោធលែងមាន</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play មិនបានផ្តល់ជូនធាតុនេះឥឡូវនេះទេ។ វាប្រហែលជាមិនមាននៅលើគណនី ឬតំបន់របស់អ្នកឡើយ — សូមព្យាយាមម្តងទៀតក្រោយមក។</string>
 </resources>

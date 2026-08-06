@@ -7,6 +7,8 @@
     <string name="upgrade_prompt_title">გადაიდგეს BVM Pro-ზე</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro გთავაზობს უკეთეს შედეგადებს, მეტ თვისებასა და პარამეტრებს გამოცდილი მომხმარებისთვის.</string>
     <string name="upgrade_prompt_upgrade_action">გარემონტება</string>
+    <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
+    <string name="upgrade_screen_title_template">დაუგრეჩეთ %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager რეკლამაგარეშია და მომხმარეთა მონაცემებს არ ყიდის. ჩემს სამუშაოს დაფინანსება თქვენია გვიერ გენიათ ❤️.</string>
     <string name="upgrade_screen_why_title">უპირატესობები</string>
     <string name="upgrade_screen_subscription_trial_action">დაიწყეთ უფასო 14-დღიანი საცდელი</string>
@@ -50,5 +52,31 @@
     <string name="upgrades_gplay_network_error_description">ვერ ხერხდება Google Play-სთან დაკავშირება. გთხოვთ, შეამოწმოთ თქვენი ინტერნეტ კავშირი და ხელახლა სცადოთ.</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play მიუწვდომელია</string>
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager-ს არ შეუძლია Google Play-ზე დაკავშირება. დაყენებულია Google Play დაყენებულია და განახლებულია? ეში თქვენი Google ანგარიში შესულია? სცადეთ Google Play აპის ქეშის გასუფთავება და მოწყობილობის გადატვირთვა.</string>
+    <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
+    <string name="upgrades_gplay_not_installed_message">ვერ გამოვხსნეთ Google Play. ის შეიძლება აკლია, გამორთული ან შეზღუდული იყოს ამ მოწყობილობაზე.</string>
     <string name="upgrades_no_purchases_found_check_account">შესყიდვები ვერ მოიძებნა. სწორ ანგარიშს იყენებთ?</string>
+    <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
+    <string name="upgrade_screen_offers_title">განახლების ვარიანტები</string>
+    <string name="upgrade_screen_offers_body">ორივე ვარიანტი გთავაზობთ იმავე Pro ფუნქციებს — აირჩიეთ ის, რომელიც თქვენთვის უფრო კარგია.</string>
+    <string name="upgrade_screen_offers_unavailable_title">ფასები მიუწვდომელია</string>
+    <string name="upgrade_screen_offers_unavailable_message">ფასები ამჯამად ვერ ჩამოირთვა. შეამოწმეთ Google Play და ცოტა ხნის შემდეგ კვლავ სცადეთ.</string>
+    <string name="upgrade_screen_benefits_body">• შეუზღუდავი მოწყობილობები\n• მორგებული კავშირის მოქმედებები\n• თემის მორგება\n• დაწვრილებული ხმის კონტროლი\n• მომავალი განვითარების ხელშეწყობა ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">წლიური გამოწერა</string>
+    <string name="upgrade_screen_subscription_offer_body">იწყება უფასო ტრიალი, შემდეგ აახლოვდება ყოველი წელი. შეგიძლიათ გაუქმება ნებისმიერ დროს Google Play-ში.</string>
+    <string name="upgrade_screen_subscription_offer_body_no_trial">აახლოვდება ყოველი წელი. გაუქმება შესაძლებელია ნებისმიერ დროს Google Play-ში.</string>
+    <string name="upgrade_screen_iap_offer_title">სამუდამო გახსნა</string>
+    <string name="upgrade_screen_iap_offer_body">გადაიხადეთ ერთხელ და Pro სამუდამოდ თქვენი იქნება.</string>
+    <string name="upgrade_screen_owned_hero_title">თქვენ ხართ Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">თქვენ ფლობთ %1$s სამუდამოდ.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">თქვენი %1$s გამოწერა აქტიურია.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">თქვენი გამოწერა არ არის დაყენებული აახლოვებისთვის, ამიტომ ახლა შეგიძლიათ გადაერთოთ ერთჯერადი ყიდვაზე. ყურადღება: ეს არის ცალკე გადახდა, რომელიც არ გააუქმებს ან არ დააბრუნებს თქვენი გამოწერას, ამიტომ გამოიყენეთ ერთი და იგივე Google ანგარიში ორივესთვის.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">პირველ რიგში გაუქმეთ თქვენი აახლოვებული გამოწერა Google Play-ში, შემდეგ შეგიძლიათ გადაერთოთ ერთჯერადი ყიდვაზე.</string>
+    <string name="upgrade_screen_restore_body">უკვე ყიდილი გაქვთ Pro ამ ანგარიშზე? მოითხოვეთ Google Play-ს თქვენი ყიდვების ხელახლა შემოწმება.</string>
+    <string name="upgrade_screen_restore_checked_message">ჩვენ მოვთხოვეთ Google Play-ს ამ ანგარიშის ყიდვების ხელახლა შემოწმება, მაგრამ ვერაფერი ვიპოვეთ.</string>
+    <string name="upgrade_screen_restore_contact_hint">ჯერ კიდევ პრობლემა აქვთ? დაკავშირდით ჩვენთან იმავე Google ანგარიშიდან, რომლითაც ყიდვა გაქვთ, დამატეთ თქვენი Google Play შეკვეთის ნომერი, და ჩვენ მივაგვარებთ.</string>
+    <string name="upgrade_screen_restore_inconclusive_message">ჩვენ ვერ მოვასრულეთ Google Play-ს შემოწმება დროში, ამიტომ ჩვენ ჯერ კიდევ არ ვიცით თქვენი ყიდვის სტატუსი — მოითმინეთ ცოტა ხნა და კვლავ სცადეთ.</string>
+    <string name="upgrades_gplay_billing_error_label">ყიდვის პრობლემა</string>
+    <string name="upgrades_gplay_billing_error_description">Google Play აცნობებს პრობლემის შესახებ: %1$s. ცადეთ კვლავ მოგვიანებით ან გადააქ მოწყობილობა.</string>
+    <string name="upgrades_gplay_offer_unavailable_title">წინადადება მიუწვდომელია</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play ამ ელემენტს ამჯამად არ აძლევს. ის შეიძლება ჯერ არ იყოს ხელმისაწვდომი თქვენი ანგარიშის ან რეგიონის თვალსაზრისით — გთხოვთ მოგვიანებით ხელახლა სცადეთ.</string>
 </resources>
