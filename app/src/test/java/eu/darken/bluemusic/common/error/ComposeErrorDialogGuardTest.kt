@@ -2,9 +2,13 @@ package eu.darken.bluemusic.common.error
 
 import android.app.Activity
 import androidx.activity.ComponentActivity
+import androidx.compose.ui.test.assertCountEquals
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.ca.toCaString
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import io.kotest.matchers.shouldBe
@@ -29,21 +33,32 @@ class ComposeErrorDialogGuardTest : BaseTest() {
 
     private var dismissals = 0
 
-    private class ThrowingFixError(private val onFix: (Activity) -> Unit) : Exception(), HasLocalizedError {
+    private class ThrowingFixError(
+        private val fixErrorMessage: String? = null,
+        private val onFix: (Activity) -> Unit,
+    ) : Exception(), HasLocalizedError {
         override fun getLocalizedError() = LocalizedError(
             throwable = this,
             label = ERROR_TITLE.toCaString(),
             description = ERROR_BODY.toCaString(),
             fixActionLabel = FIX_LABEL.toCaString(),
             fixAction = onFix,
+            fixActionErrorMessage = fixErrorMessage?.toCaString(),
         )
     }
 
-    private class ThrowingInfoError(private val onInfo: (Activity) -> Unit) : Exception(), HasLocalizedError {
+    private class ThrowingInfoError(
+        private val fixErrorMessage: String? = null,
+        private val onInfo: (Activity) -> Unit,
+    ) : Exception(), HasLocalizedError {
         override fun getLocalizedError() = LocalizedError(
             throwable = this,
             label = ERROR_TITLE.toCaString(),
             description = ERROR_BODY.toCaString(),
+            // A fix action alongside, so the info dispatch has a message it could wrongly borrow.
+            fixActionLabel = fixErrorMessage?.let { FIX_LABEL.toCaString() },
+            fixAction = fixErrorMessage?.let { { _: Activity -> } },
+            fixActionErrorMessage = fixErrorMessage?.toCaString(),
             infoActionLabel = INFO_LABEL.toCaString(),
             infoAction = onInfo,
         )
@@ -98,9 +113,47 @@ class ComposeErrorDialogGuardTest : BaseTest() {
         // The info action dismisses too: a latched dialog would greet the user again on the way back.
         dismissals shouldBe 1
     }
+
+    @Test
+    fun `a throwing fix action with its own message keeps the dialog open and shows it inline`() {
+        // A Toast caps at 2 lines and clipped this kind of message; the dialog body has no cap.
+        show(
+            ThrowingFixError(fixErrorMessage = FIX_ERROR_MESSAGE) {
+                throw IllegalStateException("fix action exploded")
+            }
+        )
+
+        composeRule.onNodeWithText(FIX_LABEL).performClick()
+        composeRule.waitForIdle()
+
+        composeRule.onNodeWithText(FIX_ERROR_MESSAGE).assertIsDisplayed()
+        dismissals shouldBe 0
+        // Not latched: the way out stays available while the message is shown.
+        composeRule.onNodeWithText(composeRule.activity.getString(R.string.general_dismiss_action)).performClick()
+        composeRule.waitForIdle()
+        dismissals shouldBe 1
+    }
+
+    @Test
+    fun `a throwing info action never borrows the fix action's failure message`() {
+        // The failure copy belongs to the fix action's dispatch, not to the error: the info button
+        // dispatches without one and must keep the plain log-then-dismiss behaviour.
+        show(
+            ThrowingInfoError(fixErrorMessage = FIX_ERROR_MESSAGE) {
+                throw IllegalStateException("info action exploded")
+            }
+        )
+
+        composeRule.onNodeWithText(INFO_LABEL).performClick()
+        composeRule.waitForIdle()
+
+        dismissals shouldBe 1
+        composeRule.onAllNodesWithText(FIX_ERROR_MESSAGE).assertCountEquals(0)
+    }
 }
 
 private const val ERROR_TITLE = "Test error title"
 private const val ERROR_BODY = "Test error description"
 private const val FIX_LABEL = "Fix it"
 private const val INFO_LABEL = "Tell me more"
+private const val FIX_ERROR_MESSAGE = "Fixing it did not work"
