@@ -20,6 +20,7 @@
     <string name="settings_upgrade_status_desc">Tazama hali yako ya mchangiaji</string>
     <!-- Free status view -->
     <string name="upgrade_screen_status_free_title">Wewe uko kwa toleo la bure</string>
+    <string name="upgrade_screen_status_free_body">Kuwa mfadhili ili kufungua vipengele vya ziada na kuunga mkono maendeleo endelevu.</string>
     <string name="upgrade_screen_status_free_action">Angalia chaguo za kuboreshwa</string>
     <!-- Supporter status view -->
     <string name="upgrade_screen_supporter_status_title">Asante kwa msaada wako</string>

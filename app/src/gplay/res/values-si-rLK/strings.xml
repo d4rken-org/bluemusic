@@ -61,12 +61,16 @@
     <string name="upgrade_screen_offers_unavailable_title">මිල ලබාගත නොහැක</string>
     <string name="upgrade_screen_offers_unavailable_message">මිල දැනින් පූරණය කළ හැකි නොවිණි. Google Play පිරික්සා ගෙන තත්පරයකින් නැවත ප්‍රයාස කරන්න.</string>
     <string name="upgrade_screen_benefits_body">• සීමාවිරහිත උපාංගයන්\n• අභිරුචි සංයෝගනය ක්‍රියා\n• තේමා අභිරුචිකරණ\n• උසස් ශබ්ද පාලන\n• අනාගත සංවර්ධනය සහාය කරන්න ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">වාර්ෂික දිගටි ගිණුම</string>
     <string name="upgrade_screen_subscription_offer_body">නිරීක්ෂණ කාලය සමඟ ආරම්භ වන්න, පසුව වාර්ෂිකව නවීකරණය කරන්න. Google Play හි ඕනෑම අවස්ථාවක අවලංගු කරන්න.</string>
     <string name="upgrade_screen_subscription_offer_body_no_trial">වාර්ෂිකව නවීකරණය කරන්න. Google Play හි ඕනෑම අවස්ථාවක අවලංගු කරන්න.</string>
     <string name="upgrade_screen_iap_offer_title">ජීවිතකාල අගුළු හැරීම</string>
     <string name="upgrade_screen_iap_offer_body">එක්වර ගෙවන්න සහ ඉතිරි කාලය Pro හිමිකරන්න.</string>
     <string name="upgrade_screen_owned_hero_title">ඔබ Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">ඔබ %1$s ඉතිරි කාලය හිමිකරන්න.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">ඔබේ %1$s දිගටි ගිණුම සක්‍රිය.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">ඔබේ දිගටි ගිණුම නවීකරණය කිරීමට සකස්ස කර නැත, එබැවින් ඔබ දැන් එක්වර ගෙවීමට මාරු කළ හැක. අවධාන: එය ඔබේ දිගටි ගිණුම අවලංගු කරන්නේ හෝ ආපසු ගෙවන්නේ නැති වෙනම ගෙවීමක්, එබැවින් සමස්ත Google ගිණුම භාවිතා කරන්න.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Google Play හි ඔබේ නවීකරණ දිගටි ගිණුම අවලංගු කරන්න ප්‍රථමයෙන්, පසුව ඔබ එක්වර ගෙවීමට මාරු කළ හැක.</string>
     <string name="upgrade_screen_restore_body">මේ ගිණුමෙහි දැනටමත් Pro ගෙවා ඇත? Google Play ට ඔබේ ගෙවීම් නැවත පිරික්සීමට ඉල්ලා සිටින්න.</string>
     <string name="upgrade_screen_restore_checked_message">අපි Google Play ට මේ ගිණුමේ ගෙවීම් නැවත පිරික්සීමට ඉල්ලා සිටින කිසිවක් සොයාගෙන නැත.</string>
     <string name="upgrade_screen_restore_contact_hint">තවදුරටත් සිරස්ස? ඔබ ගෙවා ගත් එකම Google ගිණුමෙන් සම්බන්ධ වන්න, ඔබේ Google Play ඇණවුම් අංකය ඇතුළු කරන්න, සහ අපි එය විසඳා ගනිමු.</string>
@@ -74,4 +78,5 @@
     <string name="upgrades_gplay_billing_error_label">ගෙවීමේ ගැටලුව</string>
     <string name="upgrades_gplay_billing_error_description">Google Play ගැටලුවක් වාර්තා කළේය: %1$s. පසුව නැවත ප්‍රයාස කරන්න හෝ ඔබේ උපාංගය නැවත ආරම්භ කරන්න.</string>
     <string name="upgrades_gplay_offer_unavailable_title">ඉදිරිපත්කරණ ලබාගත නොහැක</string>
+    <string name="upgrades_gplay_offer_unavailable_description">Google Play දැනින් මේ අයිතමය ඉදිරිපත් නොකළේය. එය ඔබේ ගිණුම හෝ කලාපය සඳහා තවම ලබාගත නොහැක — කරුණාකර පසුව නැවත ප්‍රයාස කරන්න.</string>
 </resources>

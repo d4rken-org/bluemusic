@@ -392,6 +392,7 @@
     <string name="general_delete_action">حذف کریں</string>
     <string name="general_cancel_action">منسوخ کریں</string>
     <string name="general_ok_action">ٹھیک ہے</string>
+    <string name="general_dismiss_action">برخاست کریں</string>
     <string name="general_progress_loading">لوڈ ہو رہا ہے…</string>
     <string name="general_configure_action">ترتیب دیں</string>
     <string name="battery_optimization_hint_title">بیٹری آپٹیمائزیشن</string>

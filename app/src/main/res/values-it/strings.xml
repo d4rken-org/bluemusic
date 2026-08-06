@@ -392,7 +392,7 @@
     <string name="general_delete_action">Elimina</string>
     <string name="general_cancel_action">Annulla</string>
     <string name="general_ok_action">OK</string>
-    <string name="general_dismiss_action">Rimuovere</string>
+    <string name="general_dismiss_action">Ignora</string>
     <string name="general_progress_loading">Caricamento…</string>
     <string name="general_configure_action">Configura</string>
     <string name="battery_optimization_hint_title">Ottimizzazione batteria</string>

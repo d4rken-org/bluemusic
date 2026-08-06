@@ -61,12 +61,16 @@
     <string name="upgrade_screen_offers_unavailable_title">Bei haipatikani</string>
     <string name="upgrade_screen_offers_unavailable_message">Bei hazikuweza kupakia sasa. Angalia Google Play na jaribu tena haraka.</string>
     <string name="upgrade_screen_benefits_body">• Vifaa bila kikomo\n• Hatua za kuunganisha zilizobadilishwa\n• Ubadilishaji wa mandhari\n• Vidhibiti vya sauti vya juu\n• Kuunga mkono maendeleo ya baadaye ❤️</string>
+    <string name="upgrade_screen_subscription_offer_title">Usajili wa kila mwaka</string>
     <string name="upgrade_screen_subscription_offer_body">Inaanza na jaribio la bure, kisha inajipi upya kila mwaka. Ghairi wakati wowote katika Google Play.</string>
     <string name="upgrade_screen_subscription_offer_body_no_trial">Inajipi upya kila mwaka. Ghairi wakati wowote katika Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Kufungua milele</string>
     <string name="upgrade_screen_iap_offer_body">Lipa mara moja na kumiliki Pro milele.</string>
     <string name="upgrade_screen_owned_hero_title">Wewe ni Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Unamiliki %1$s milele.</string>
+    <string name="upgrade_screen_owned_hero_sub_body">Usajili wako wa %1$s unaendelea.</string>
+    <string name="upgrade_screen_owned_iap_purchase_note">Usajili wako haujawekwa kujirudisha upya, kwa hivyo unaweza kubadili kwenda ununuzi wa mara moja sasa. Kumbuka: ni malipo tofauti ambayo hayataghairi au kurudisha pesa za usajili wako, kwa hivyo tumia akaunti moja ya Google kwa zote mbili.</string>
+    <string name="upgrade_screen_owned_iap_locked_note">Ghairi usajili wako unaojirudisha upya katika Google Play kwanza, kisha unaweza kubadili kwa ununuzi wa mara moja.</string>
     <string name="upgrade_screen_restore_body">Tayari kununua Pro kwa akaunti hii? Omba Google Play kuangalia upya ununuzi wako.</string>
     <string name="upgrade_screen_restore_checked_message">Tuliomba Google Play kuangalia upya ununuzi wa akaunti hii na hatukupata.</string>
     <string name="upgrade_screen_restore_contact_hint">Bado na tatizo? Wasiliana kutoka kwa akaunti sawa ya Google uliyotumia kununua, jumuisha nambari yako ya agizo la Google Play, na tutakamatia.</string>
