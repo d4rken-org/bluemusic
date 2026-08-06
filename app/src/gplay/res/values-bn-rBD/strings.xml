@@ -47,7 +47,7 @@
     <string name="upgrades_gplay_already_owned_error_title">ইতিমধ্যে কেনা হয়েছে</string>
     <string name="upgrades_gplay_already_owned_error_description">আপনার ক্রয় পুনরুদ্ধার করতে \"ক্রয় পুনরুদ্ধার করুন\" অপশনটি ব্যবহার করুন। সমস্যা থেকেই গেলে, Google Play ক্যাশে সাফ করে আপনার ডিভাইস পুনরায় চালু করার চেষ্টা করুন।</string>
     <string name="upgrades_gplay_internal_error_title">Google Play ত্রুটি</string>
-    <string name="upgrades_gplay_internal_error_description">একটি অভ্যন্তরীণ Google Play ত্রুটি ঘটেছে। অনুগ্রহ করে নিম্নলিখিতগুলো চেষ্টা করুন:\n\n• আপনার ডিভাইস পুনরায় চালু করুন\n• Google Play Store ক্যাশে সাফ করুন\n• পরে আবার চেষ্টা করুন</string>
+    <string name="upgrades_gplay_internal_error_description">একটি অভ্যন্তরীণ Google Play ত্রুটি ঘটেছে। অনুগ্রহ করে নিম্নলিখিতগুলো চেষ্টা করুন:\n\n• আপনার ডিভাইস পুনরায় চালু করুন\n• Google Play Store ক্যাশে সাফ করুন\n• পরে আবার চেষ্টা করুন</string>
     <string name="upgrades_gplay_network_error_title">সংযোগ ত্রুটি</string>
     <string name="upgrades_gplay_network_error_description">Google Play-এর সাথে সংযোগ করা যাচ্ছে না। অনুগ্রহ করে আপনার ইন্টারনেট সংযোগ যাচাই করে আবার চেষ্টা করুন।</string>
     <string name="upgrades_gplay_unavailable_error_title">Google Play অনুপলব্ধ৷</string>

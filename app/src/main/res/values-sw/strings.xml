@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Hakuna vifaa visivyodhibitiwa vilivyopatikana</string>
     <string name="discover_all_devices_managed_msg">Vifaa vyako vyote vilivyounganishwa vinadhibitiwa! Unahitaji kipya?</string>
     <string name="discover_pair_new_device_action">Unganisha kifaa kipya</string>
+    <string name="discover_device_speaker_desc">Spikari ya simu yenyewe. Kiwango cha sauti chake kinatumika wakati sauti inaburudika kwa simu, kwa mfano baada ya kifaa chako cha Bluetooth kutengana.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Usanidi wa kifaa</string>
     <string name="devices_device_config_section_general_label">Jumla</string>
@@ -315,6 +316,7 @@
     <string name="label_add_device">Ongeza kifaa</string>
     <string name="label_just_a_moment_please">Subiri kidogo, tafadhali.</string>
     <string name="label_notification_channel_status">Hali</string>
+    <string name="monitor_notification_starting">Inaanza…</string>
     <string name="action_set">Weka</string>
     <string name="action_cancel">Ghairi</string>
     <string name="label_invalid_input">Uingizaji usio halali</string>
@@ -403,6 +405,8 @@
     <string name="dnd_access_hint_title">Ufikiaji wa Usisumbue</string>
     <string name="dnd_access_hint_message">Bila ufikiaji wa Usisumbue, mipangilio ya sauti ya simu, arifa, na hali ya DND haiwezi kutumika wakati vifaa vyako vinapoungana.</string>
     <string name="dnd_access_fix_action">Ruhusu ufikiaji</string>
+    <string name="device_speaker_hint_title">Kiwango cha sauti baada ya kutengana</string>
+    <string name="device_speaker_hint_message">Unataka kiwango cha sauti chako kurudishwa wakati kifaa cha Bluetooth kinatengana? Ongeza \"Spikari ya kifaa\" kama kifaa kilichosimamiwa — kiwango cha sauti chake kinatumika wakati sauti inaburudika kwa simu yako.</string>
     <string name="device_speaker_hint_action">Ongeza</string>
     <string name="review_app_body">Je, ungependa kuacha mapitio ya BVM? ❤️</string>
     <string name="review_app_review_action">Mapitio</string>

@@ -387,6 +387,7 @@
     <string name="general_delete_action">削除</string>
     <string name="general_cancel_action">キャンセル</string>
     <string name="general_ok_action">OK</string>
+    <string name="general_dismiss_action">閉じる</string>
     <string name="general_progress_loading">読み込み中…</string>
     <string name="general_configure_action">設定</string>
     <string name="battery_optimization_hint_title">バッテリー最適化</string>

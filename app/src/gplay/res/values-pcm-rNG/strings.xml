@@ -65,7 +65,9 @@
     <string name="upgrade_screen_subscription_offer_body">E start with free trial first, den e renew every year. Cancel am anytime for Google Play.</string>
     <string name="upgrade_screen_subscription_offer_body_no_trial">E renew every year. Cancel am anytime for Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Forever unlock</string>
+    <string name="upgrade_screen_iap_offer_body">Pay just once and Pro go be yours forever.</string>
     <string name="upgrade_screen_owned_hero_title">You be Pro! ❤️</string>
+    <string name="upgrade_screen_owned_hero_iap_body">You don own %1$s forever.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Your %1$s subscription active.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Your subscription no set to renew, so you fit switch to one-time purchase now. Hear me: e go charge you separate and e no go cancel or refund your subscription, so use di same Google account for both.</string>
     <string name="upgrade_screen_owned_iap_locked_note">Cancel your subscription wey dey renew for Google Play first, den you fit switch to one-time purchase.</string>

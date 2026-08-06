@@ -404,6 +404,7 @@
     <string name="device_speaker_hint_message">Ingin volume Anda dipulihkan saat perangkat Bluetooth terputus? Tambahkan \"Pelantang Perangkat\" sebagai perangkat yang dikelola — volume-nya diterapkan saat audio beralih kembali ke ponsel Anda.</string>
     <string name="device_speaker_hint_action">Tambahkan</string>
     <string name="review_app_body">Bersediakah Anda menulis ulasan untuk BVM? ❤️</string>
+    <string name="review_app_review_action">Ulasan</string>
     <string name="review_app_dismiss_action">Lain kali</string>
     <!-- IAP Error Messages -->
     <string name="error_iap_cancelled_message">Pembelian dibatalkan</string>
