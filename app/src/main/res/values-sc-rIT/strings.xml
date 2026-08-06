@@ -27,6 +27,7 @@
     <string name="discover_no_unmnaged_devices_msg">Nessun dispositivu non gestidu trovàdu</string>
     <string name="discover_all_devices_managed_msg">Totu sos dispositivos accoppiàdos tuos sunt gestidos! Bi cheres unu nou?</string>
     <string name="discover_pair_new_device_action">Accòppia nou dispositivu</string>
+    <string name="discover_device_speaker_desc">Su parlante de sa tua telefonada. Sos volmenes sunt aplicados cuan su sonu cambiat in sa telefonada, p.e. dae su disconnect de sa tua aplicatzione Bluetooth.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Configuratzione de su dispositivu</string>
     <string name="devices_device_config_section_general_label">Generali</string>
@@ -405,6 +406,7 @@
     <string name="dnd_access_hint_message">Sena s\'acesetu Non disturbare, is impostatziones de soneria, notificatziones e modu Non disturbare no podent èssere aplicadas cando is tuos dispositivus si connetant.</string>
     <string name="dnd_access_fix_action">Cuncèdere s\'atzessu</string>
     <string name="device_speaker_hint_title">Volmenes dae su disconnect</string>
+    <string name="device_speaker_hint_message">Boltas sa tua volmenes a essiri restoraus cuan una aplicatzione Bluetooth disconectat? Agiunghe \"Parlante de dispositivo\" comente aplicatzione amministrada — sos volmenes sunt aplicados cuan su sonu cambiat in sa tua telefonada.</string>
     <string name="device_speaker_hint_action">Agiunghe</string>
     <string name="review_app_body">Boles làssare una revisione a BVM? ❤️</string>
     <string name="review_app_review_action">Revisione</string>
