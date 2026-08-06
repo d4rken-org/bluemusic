@@ -1,6 +1,8 @@
 package eu.darken.bluemusic.devices.ui.dashboard.rows
 
 import android.content.Context
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -107,6 +109,43 @@ class ReviewCardTest : BaseComposeRobolectricTest() {
         composeRule.onNodeWithText(reviewAction).performClick()
 
         composeRule.runOnIdle { reviewed shouldBe 2 }
+    }
+
+    @Test
+    fun `a card that left the lazy list comes back unlatched`() {
+        var reviewed = 0
+        var dismissed = 0
+        val visible = mutableStateOf(true)
+        composeRule.setContent {
+            PreviewWrapper {
+                // Mirrors the dashboard host, which renders the card inside a LazyColumn item. That
+                // item is unkeyed in production; the key here only makes the saveable retention
+                // deterministic to reproduce, the retention mechanics are the same either way.
+                LazyColumn {
+                    if (visible.value) {
+                        item(key = "review") {
+                            ReviewCard(onReview = { reviewed++ }, onDismiss = { dismissed++ })
+                        }
+                    }
+                }
+            }
+        }
+
+        composeRule.onNodeWithText(dismissAction).performClick()
+        composeRule.runOnIdle { dismissed shouldBe 1 }
+
+        composeRule.runOnIdle { visible.value = false }
+        composeRule.onNodeWithText(dismissAction).assertDoesNotExist()
+
+        composeRule.runOnIdle { visible.value = true }
+
+        // The card is only removed once the tool stopped asking, so a card that comes back is a
+        // fresh ask and must not inherit the latch of the one that left.
+        composeRule.onNodeWithText(reviewAction).assertIsEnabled()
+        composeRule.onNodeWithText(dismissAction).assertIsEnabled()
+
+        composeRule.onNodeWithText(reviewAction).performClick()
+        composeRule.runOnIdle { reviewed shouldBe 1 }
     }
 
     @Test
