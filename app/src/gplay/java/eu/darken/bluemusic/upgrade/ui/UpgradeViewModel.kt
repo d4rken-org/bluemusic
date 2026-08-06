@@ -21,6 +21,7 @@ import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.upgrade.core.OurSku
 import eu.darken.bluemusic.upgrade.core.UpgradeRepoGplay
 import eu.darken.bluemusic.upgrade.core.billing.GplayServiceUnavailableException
+import eu.darken.bluemusic.upgrade.core.billing.OfferUnavailableBillingException
 import eu.darken.bluemusic.upgrade.core.billing.Sku
 import eu.darken.bluemusic.upgrade.core.billing.SkuDetails
 import kotlinx.coroutines.CancellationException
@@ -176,9 +177,22 @@ class UpgradeViewModel @AssistedInject constructor(
 
         if (done != null) {
             if (iap == null && sub == null) {
-                val serviceUnavailableError = GplayServiceUnavailableException(
-                    done.iap.exceptionOrNull() ?: RuntimeException("IAP and SUB data request failed.")
-                )
+                val iapCause = done.iap.exceptionOrNull()
+                val subCause = done.sub.exceptionOrNull()
+                // Play answered fine and simply has nothing to sell here (region, account
+                // eligibility, pulled product): reporting that as a connectivity failure sends the
+                // user chasing futile advice (clear Play's cache, reboot). Only when BOTH causes
+                // are merchandising — a single connectivity failure can't rule out a real Play
+                // problem, so the conservative "can't reach Play" copy stays correct.
+                val queryError = if (
+                    iapCause is OfferUnavailableBillingException && subCause is OfferUnavailableBillingException
+                ) {
+                    iapCause
+                } else {
+                    GplayServiceUnavailableException(
+                        iapCause ?: RuntimeException("IAP and SUB data request failed.")
+                    )
+                }
                 // Grace users and owners are excluded: during an outage (exactly when grace
                 // matters) they must keep the Loaded presentation with their status/grace card,
                 // not an acquisition-style error state or dialog.
@@ -187,9 +201,9 @@ class UpgradeViewModel @AssistedInject constructor(
                     // toggling) — emit once per failure episode, not once per recombination.
                     if (!hasShownServiceUnavailableError) {
                         hasShownServiceUnavailableError = true
-                        errorEvents.tryEmit(serviceUnavailableError)
+                        errorEvents.tryEmit(queryError)
                     }
-                    return@combine GplayUpgradeUiState.Unavailable(serviceUnavailableError)
+                    return@combine GplayUpgradeUiState.Unavailable(queryError)
                 }
             } else {
                 hasShownServiceUnavailableError = false
