@@ -2,6 +2,8 @@
 <resources>
     <string name="app_name">블루투스 음량 매니저</string>
     <string name="app_name_short">BVM</string>
+    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <!-- General -->
     <string name="general_error_label">오류</string>
     <string name="general_error_no_compatible_app_found_msg">이 요청을 처리할 수 있는 호환 가능한 앱을 찾을 수 없습니다.</string>

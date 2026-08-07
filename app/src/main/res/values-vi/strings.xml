@@ -2,6 +2,8 @@
 <resources>
     <string name="app_name">Quản lý âm lượng Bluetooth</string>
     <string name="app_name_short">BVM</string>
+    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro" on Google Play, "FOSS" on the open-source build). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <!-- General -->
     <string name="general_error_label">Lỗi</string>
     <string name="general_error_no_compatible_app_found_msg">Không tìm thấy ứng dụng tương thích để xử lý yêu cầu này.</string>
