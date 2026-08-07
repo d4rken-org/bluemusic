@@ -62,7 +62,7 @@ import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
-import eu.darken.bluemusic.upgrade.ui.brandTitle
+import eu.darken.bluemusic.upgrade.ui.brandTitleTwoTone
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -115,9 +115,8 @@ fun WidgetConfigurationScreen(
                 )
                 if (state.isPro) {
                     Text(
-                        text = brandTitle(includeQualifier = true, highlightQualifier = true),
+                        text = brandTitleTwoTone(),
                         style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.primary,
                     )
                 } else {
                     Text(

@@ -133,6 +133,25 @@ internal fun brandTitle(includeQualifier: Boolean, highlightQualifier: Boolean):
 internal fun brandTitleText(includeQualifier: Boolean): String =
     brandTitle(includeQualifier = includeQualifier, highlightQualifier = false).text
 
+// The two-tone title the dashboard, settings and widget-config top bars share: app name in the
+// primary role, qualifier in tertiary.
+//
+// The name is spanned explicitly rather than left to inherit a `color` passed on the Text. Both
+// render identically, but only the explicit span is visible to a test — an inherited color lives in
+// three call-site arguments that nothing asserts, so flattening the title to one tone would pass
+// every check. The outer span covers the whole string; the qualifier's own span sits inside it and
+// wins for the range it covers.
+@Composable
+internal fun brandTitleTwoTone(): AnnotatedString {
+    val title = brandTitle(includeQualifier = true, highlightQualifier = true)
+    val baseColor = MaterialTheme.colorScheme.primary
+    return buildAnnotatedString {
+        pushStyle(SpanStyle(color = baseColor))
+        append(title)
+        pop()
+    }
+}
+
 // Composed app title with the flavor postfix highlighted while the upgrade is active — the same
 // "BVM Pro" the dashboard shows.
 @Composable
