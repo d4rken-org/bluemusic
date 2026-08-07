@@ -37,7 +37,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.BlueMusicLinks
-import eu.darken.bluemusic.common.compose.ColoredTitleText
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
@@ -48,6 +47,7 @@ import eu.darken.bluemusic.common.navigation.NavigationDestination
 import eu.darken.bluemusic.common.settings.SettingsBaseItem
 import eu.darken.bluemusic.common.settings.SettingsCategoryHeader
 import eu.darken.bluemusic.common.settings.SettingsDivider
+import eu.darken.bluemusic.upgrade.ui.brandTitle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
@@ -105,10 +105,10 @@ fun SettingsIndexScreen(
                     Column {
                         Text(stringResource(R.string.settings_label))
                         if (state.isUpgraded) {
-                            ColoredTitleText(
-                                fullTitle = stringResource(R.string.app_name_upgraded),
-                                postfix = stringResource(R.string.app_name_upgrade_postfix),
+                            Text(
+                                text = brandTitle(includeQualifier = true, highlightQualifier = true),
                                 style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.primary,
                             )
                         } else {
                             Text(

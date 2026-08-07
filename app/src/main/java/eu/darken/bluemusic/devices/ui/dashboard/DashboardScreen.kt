@@ -58,7 +58,6 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
-import eu.darken.bluemusic.common.compose.ColoredTitleText
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
@@ -77,6 +76,7 @@ import eu.darken.bluemusic.devices.ui.dashboard.rows.EmptyDevicesCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.NotificationPermissionHintCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.ReviewCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.device.ManagedDeviceItem
+import eu.darken.bluemusic.upgrade.ui.brandTitle
 
 @Composable
 fun DevicesScreenHost(vm: DashboardViewModel = hiltViewModel()) {
@@ -292,9 +292,10 @@ private fun ManagedDevicesTopBar(
         scrollBehavior = scrollBehavior,
         title = {
             if (isProVersion) {
-                ColoredTitleText(
-                    fullTitle = stringResource(R.string.app_name_upgraded),
-                    postfix = stringResource(R.string.app_name_upgrade_postfix),
+                Text(
+                    text = brandTitle(includeQualifier = true, highlightQualifier = true),
+                    style = MaterialTheme.typography.headlineSmall,
+                    color = MaterialTheme.colorScheme.primary,
                 )
             } else {
                 Text(text = stringResource(R.string.app_name_short))

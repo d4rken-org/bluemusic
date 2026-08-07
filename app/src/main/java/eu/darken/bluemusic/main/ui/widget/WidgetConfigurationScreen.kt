@@ -60,9 +60,9 @@ import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
-import eu.darken.bluemusic.common.compose.ColoredTitleText
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.upgrade.ui.brandTitle
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -114,10 +114,10 @@ fun WidgetConfigurationScreen(
                     color = MaterialTheme.colorScheme.onSurface,
                 )
                 if (state.isPro) {
-                    ColoredTitleText(
-                        fullTitle = stringResource(R.string.app_name_upgraded),
-                        postfix = stringResource(R.string.app_name_upgrade_postfix),
+                    Text(
+                        text = brandTitle(includeQualifier = true, highlightQualifier = true),
                         style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.primary,
                     )
                 } else {
                     Text(
