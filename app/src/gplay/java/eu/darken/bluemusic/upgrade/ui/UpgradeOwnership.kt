@@ -173,8 +173,8 @@ private fun UpgradeOwnedHero(
                     text = stringResource(
                         if (ownership.hasIap) R.string.upgrade_screen_owned_hero_iap_body
                         else R.string.upgrade_screen_owned_hero_sub_body,
-                        // Same brand the titles compose: the short name plus the flavor postfix.
-                        "${stringResource(R.string.app_name_short)} ${stringResource(R.string.app_name_upgrade_postfix)}",
+                        // Same brand the titles compose, through the same flavor title template.
+                        brandTitleText(includeQualifier = true),
                     ),
                     style = MaterialTheme.typography.bodyMedium,
                 )
