@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_upgraded">BVM Pro</string>
     <string name="app_name_upgrade_postfix">ប្រូ</string>
+    <!-- Upgraded app title. %1$s is the short app name, %2$s the tier qualifier ("Pro"). Reorder or repunctuate for your language; both placeholders must appear exactly once. -->
+    <string name="app_name_upgraded_template">%1$s %2$s</string>
     <string name="upgrade_badge_label">PRO</string>
     <string name="upgrade_feature_requires_pro">ត្រូវការ BVM Pro</string>
     <string name="upgrade_prompt_title">អ័ពគថ83 ត្រឹមត្រូវ BVM Pro</string>
