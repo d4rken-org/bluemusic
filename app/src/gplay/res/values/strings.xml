@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_upgraded">BVM Pro</string>
+    <string name="app_name_upgraded" translatable="false">BVM Pro</string>
     <string name="app_name_upgrade_postfix">Pro</string>
     <string name="upgrade_badge_label">PRO</string>
 
