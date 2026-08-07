@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">הסנכרון של גוגל פליי עשוי לקחת זמן. נסה לאתחל מחדש, לנקות את המטמון של גוגל פליי או פשוט המתן.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">חשבונות מרובים יכולים לבלבל את Google Play. התנתק מחשבונות אחרים או התקן דרך אתר Google Play, מה שמאלץ שיוכים עם חשבון ספציפי.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">הצגת סטטוס ה-Pro שלכם</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">רכישה חד-פעמית</string>

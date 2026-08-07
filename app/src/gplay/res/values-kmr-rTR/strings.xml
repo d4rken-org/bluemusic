@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Hevdengkirina Play Store dibe ku wext bigire. Vegere, cache ya Google Play pak bike an tenê bisekine.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Hesabên gelek dikarin Google Play tevlihev bikin. Ji hesabên din derkeve an bi malpera Google Play saz bike.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Rewşa Pro-ya xwe bibîne</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Kîrîna yek carê</string>

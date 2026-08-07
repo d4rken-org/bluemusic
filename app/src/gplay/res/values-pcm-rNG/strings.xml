@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store synchronization fit take time. Try reboot, clear Google Play cache or just wait.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Multiple accounts fit confuse Google Play. Log out of other accounts or install through di Google Play website, wey go force association with specific account.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">See your Pro status</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">One-time purchase</string>

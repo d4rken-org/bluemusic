@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">La sincronisaziun cun il Play Store po prender temp. Emprova da ristar l\'apparat, da stgular il cache da Google Play u simplamain spetga.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Divers contos pon cunfunder Google Play. Sorta dad autri contos u installa via il website da Google Play, che forza l\'assoziaziun cun in conto specific.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Vesair tiu status Pro</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Cumpaira ina giada</string>

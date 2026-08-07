@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Синхронизацијата на Play Store може да потрае. Обидете се да рестартирате, исчистете ја кеш меморијата на Google Play или едноставно почекајте.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Повеќе сметки можат да го збунат Google Play. Одјавете се од другите сметки или инсталирајте преку веб-страницата на Google Play, што принудува асоцијации со конкретна сметка.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Погледнете го вашиот Pro статус</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Еднократна купувачка</string>

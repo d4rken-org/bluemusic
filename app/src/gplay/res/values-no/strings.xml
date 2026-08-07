@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Synkronisering med Play Butikk kan ta tid. Prøv å starte på nytt, tømme Google Play bufferen, eller bare vent.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Flere kontoer kan forvirre Google Play. Logg ut av andre kontoer eller installer via Google Play-nettstedet, som tvinger assosiasjoner til en spesifikk konto.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Vis Pro-status</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Engangskjøp</string>

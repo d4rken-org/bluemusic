@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">La sinkronigado de Play Store povas daŭri. Provu restarigi, forigi la kaŝmemoron de Google Play aŭ simple atendi.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Multoblaj kontoj povas konfuzi Google Play. Elsalutu el aliaj kontoj aŭ instalu per la retejo de Google Play, kiu devigas asociadon kun specifa konto.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Vidu vian Pro-staton</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Unufoja aĉeto</string>

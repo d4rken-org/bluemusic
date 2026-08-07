@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">প্লে স্টোর সিঙ্ক্রোনাইজেশনে সময় লাগতে পারে। রিবুট করার চেষ্টা করুন, Google Play ক্যাশে সাফ করুন বা অপেক্ষা করুন।</string>
     <string name="upgrade_screen_restore_multiaccount_hint">একাধিক অ্যাকাউন্ট Google Play কে বিভ্রান্ত করতে পারে। অন্যান্য অ্যাকাউন্ট থেকে লগ আউট করুন বা Google Play ওয়েবসাইটের মাধ্যমে ইনস্টল করুন, যা একটি নির্দিষ্ট অ্যাকাউন্টের সাথে যুক্ত হতে বাধ্য করে।</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">আপনার Pro স্ট্যাটাস দেখুন</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">এককালীন ক্রয়</string>

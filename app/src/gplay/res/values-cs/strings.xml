@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Synchronizace Obchodu Play může chvíli trvat. Zkuste restartovat, vymazat mezipaměť Google Play nebo prostě počkat.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Více účtů může zmást Google Play. Odhlaste se z ostatních účtů nebo nainstalujte přes webové stránky Google Play, což vynucuje asociace s konkrétním účtem.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Zobrazit stav Pro</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Jednorázový nákup</string>

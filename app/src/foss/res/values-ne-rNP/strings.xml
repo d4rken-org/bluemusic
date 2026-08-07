@@ -15,7 +15,6 @@
     <string name="upgrade_screen_thanks_toast">खुला स्रोत विकासलाई समर्थन गरेकोमा धन्यवाद ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">फेरि फर्किए? तपाईंको सहयोगले BVM जिवित राख्छ!</string>
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
-    <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">आफ्नो समर्थक स्थिति हेर्नुहोस्</string>
     <!-- Free status view -->
     <string name="upgrade_screen_status_free_title">तपाई नि: शुल्क संस्करण मा हुनुहुन्छु</string>

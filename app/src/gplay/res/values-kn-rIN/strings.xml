@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store ಸಿಂಕ್ರೈನಿಕರಣಕ್ಕೆ ಸಮಯ ಕೆಲವುತ್ತದೆ. ಮರುಬುಟ್ ಮಾಡಿ, Google Play ಕ್ಯಾಚೆ ತೆರವುಮಾಡಿ ಅಥವಾ ಕಾಯಿರಿ.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">ಬಹುಖಾತೆಗಳು Google Play ಅನ್ನು ಗೊಂದಲಗೊಳಿಸಬಹುದು. ಇತರ ಖಾತೆಗಳಿಂದ ಲಾಗ್ ಆಉಟ್ ಮಾಡಿ ಅಥವಾ Google Play ವೆಬ್ ತಾಣದ ಮೂಲಕ ಇನ್ಸ್ಟಾಲ್ ಮಾಡಿ.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">ನಿಮ್ಮ ಪ್ರೋ ಸ್ಥಿತಿ ನೋಡಿ</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">ಏಕ-ಕಾಲೀನ ಖರೀದಿ</string>

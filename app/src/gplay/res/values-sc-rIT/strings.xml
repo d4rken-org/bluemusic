@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Sa sincronizatzione de Play Store podet leare tempus. Proa a torrare a allùghere, limpiare sa cache de Google Play o simplesmente iseta.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Contos mùltiplos podent cunfùndere Google Play. Essi dae àteros contos o installa dae su situ web de Google Play, chi fortza assotziatziones cun unu contu ispetzìficu.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Controlla sa tua situatzione Pro</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Cùmperu de una borta</string>

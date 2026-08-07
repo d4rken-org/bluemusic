@@ -15,7 +15,6 @@
     <string name="upgrade_screen_thanks_toast">ပွင့်လင်းရင်းမြစ် ဖွံ့ဖြိုးတိုးတက်မှုကို ပံ့ပိုးပေးသည့်အတွက် ကျေးဇူးတင်ပါသည် ❤️</string>
     <string name="upgrade_screen_sponsor_too_fast">ပြန်ရောက်လာပြီးလား? သင့၏ ထောက်ပံ့ထားမှုသည် BVM ကို ရှင်သနသောဆီပါ!</string>
     <!-- Settings status row (also defined in the Google Play flavor with Pro wording) -->
-    <string name="settings_upgrade_status_title">BVM FOSS</string>
     <string name="settings_upgrade_status_desc">သင်၏တောက်ခံသူအဆင့်ကိုကြည့်ရှုပါ</string>
     <!-- Free status view -->
     <string name="upgrade_screen_status_free_title">သင်သည် အခမဲ့ဗားရှင်းတွင် ရှိပါသည်</string>

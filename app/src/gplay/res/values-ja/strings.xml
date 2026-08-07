@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Playストアの同期には時間がかかる場合があります。 そのまましばらくお待ちください。改善されない場合は、再起動するか、Playストアのキャッシュを削除してみてください。</string>
     <string name="upgrade_screen_restore_multiaccount_hint">複数のGoogleアカウントでログインしてあると、Playストアで不具合が発生する場合があります。 他のアカウントからログアウトするか、Web版Playストアからインストールすることで、正常にGoogleアカウントとの連携がされます。</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Proステータスを確認</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">1 回限りの購入</string>

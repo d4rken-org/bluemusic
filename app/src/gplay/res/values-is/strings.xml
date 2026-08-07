@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store samstilling getur tekið tíma. Reyndu að endurræsa, hreinsa Google Play skyndiminni eða bara bíða.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Margir reikningar geta ruglað Google Play. Skráðu þig út úr öðrum reikningum eða settu upp í gegnum Google Play vefsíðuna, sem neyðir tengsl við ákveðinn reikning.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Skoða Pro-stöðu þína</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Einskiptiskaup</string>

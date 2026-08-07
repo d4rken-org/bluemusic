@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store senkronizasyonu zaman alabilir. Yeniden başlatmayı, Google Play önbelleğini temizlemeyi deneyin veya sadece bekleyin.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Birden fazla hesap Google Play\'i karıştırabilir. Diğer hesaplardan çıkış yapın veya belirli bir hesapla ilişkilendirmeye zorlayan Google Play web sitesi üzerinden yükleyin.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Pro durumunuzu görüntüleyin</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Tek seferlik satın alma</string>

@@ -47,6 +47,7 @@ import eu.darken.bluemusic.common.navigation.NavigationDestination
 import eu.darken.bluemusic.common.settings.SettingsBaseItem
 import eu.darken.bluemusic.common.settings.SettingsCategoryHeader
 import eu.darken.bluemusic.common.settings.SettingsDivider
+import eu.darken.bluemusic.upgrade.ui.brandTitleText
 import eu.darken.bluemusic.upgrade.ui.brandTitleTwoTone
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
@@ -175,7 +176,7 @@ fun SettingsIndexScreen(
                 SettingsBaseItem(
                     icon = Icons.TwoTone.Stars,
                     title = if (state.isUpgraded) {
-                        stringResource(R.string.settings_upgrade_status_title)
+                        brandTitleText(includeQualifier = true)
                     } else {
                         stringResource(R.string.upgrade_prompt_title)
                     },
