@@ -1,7 +1,9 @@
 package eu.darken.bluemusic.upgrade.ui
 
 import android.content.Context
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.test.core.app.ApplicationProvider
 import eu.darken.bluemusic.R
@@ -65,7 +67,15 @@ class BrandTitleTest : BaseComposeRobolectricTest() {
 
     @Test
     fun `a highlighted qualifier carries exactly one span covering the qualifier only`() {
-        val result = capture { brandTitle(includeQualifier = true, highlightQualifier = true) }
+        lateinit var result: AnnotatedString
+        var tertiary = Color.Unspecified
+        composeRule.setContent {
+            PreviewWrapper {
+                result = brandTitle(includeQualifier = true, highlightQualifier = true)
+                tertiary = MaterialTheme.colorScheme.tertiary
+            }
+        }
+        composeRule.waitForIdle()
 
         result.text shouldBe composed
         result.spanStyles.size shouldBe 1
@@ -73,6 +83,7 @@ class BrandTitleTest : BaseComposeRobolectricTest() {
         // Not just "a span exists" — the bug class this replaces put the highlight on the app name
         // while rendering perfectly correct text.
         result.text.substring(span.start, span.end) shouldBe qualifier
+        span.item.color shouldBe tertiary
     }
 
     // The markers are injected as format arguments, so a template or formatter that mangled them
@@ -90,5 +101,39 @@ class BrandTitleTest : BaseComposeRobolectricTest() {
         val result = capture { AnnotatedString(brandTitleText(includeQualifier = true)) }
 
         result.text shouldBe composed
+    }
+
+    // The two-tone top-bar title. Both colors are asserted by role, and both ranges by content —
+    // the top bars are the surface the original bug shipped on, and a regression that flattened
+    // them to one tone (or swapped which part carries which role) would still render correct text.
+    @Test
+    fun `the two-tone title colors the name primary and the qualifier tertiary`() {
+        lateinit var result: AnnotatedString
+        var primary = Color.Unspecified
+        var tertiary = Color.Unspecified
+        composeRule.setContent {
+            PreviewWrapper {
+                result = brandTitleTwoTone()
+                primary = MaterialTheme.colorScheme.primary
+                tertiary = MaterialTheme.colorScheme.tertiary
+            }
+        }
+        composeRule.waitForIdle()
+
+        result.text shouldBe composed
+        result.spanStyles.size shouldBe 2
+
+        // Outer span first: it is pushed before the inner qualifier span is appended.
+        val base = result.spanStyles[0]
+        base.item.color shouldBe primary
+        base.start shouldBe 0
+        base.end shouldBe result.text.length
+
+        val qualifierSpan = result.spanStyles[1]
+        qualifierSpan.item.color shouldBe tertiary
+        result.text.substring(qualifierSpan.start, qualifierSpan.end) shouldBe qualifier
+
+        // The two roles must actually differ, or "two-tone" is vacuous.
+        (primary == tertiary) shouldBe false
     }
 }

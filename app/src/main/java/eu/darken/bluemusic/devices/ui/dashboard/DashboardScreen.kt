@@ -76,7 +76,7 @@ import eu.darken.bluemusic.devices.ui.dashboard.rows.EmptyDevicesCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.NotificationPermissionHintCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.ReviewCard
 import eu.darken.bluemusic.devices.ui.dashboard.rows.device.ManagedDeviceItem
-import eu.darken.bluemusic.upgrade.ui.brandTitle
+import eu.darken.bluemusic.upgrade.ui.brandTitleTwoTone
 
 @Composable
 fun DevicesScreenHost(vm: DashboardViewModel = hiltViewModel()) {
@@ -293,9 +293,8 @@ private fun ManagedDevicesTopBar(
         title = {
             if (isProVersion) {
                 Text(
-                    text = brandTitle(includeQualifier = true, highlightQualifier = true),
+                    text = brandTitleTwoTone(),
                     style = MaterialTheme.typography.headlineSmall,
-                    color = MaterialTheme.colorScheme.primary,
                 )
             } else {
                 Text(text = stringResource(R.string.app_name_short))

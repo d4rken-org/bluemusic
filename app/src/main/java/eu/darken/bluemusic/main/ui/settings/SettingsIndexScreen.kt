@@ -47,7 +47,7 @@ import eu.darken.bluemusic.common.navigation.NavigationDestination
 import eu.darken.bluemusic.common.settings.SettingsBaseItem
 import eu.darken.bluemusic.common.settings.SettingsCategoryHeader
 import eu.darken.bluemusic.common.settings.SettingsDivider
-import eu.darken.bluemusic.upgrade.ui.brandTitle
+import eu.darken.bluemusic.upgrade.ui.brandTitleTwoTone
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
@@ -106,9 +106,8 @@ fun SettingsIndexScreen(
                         Text(stringResource(R.string.settings_label))
                         if (state.isUpgraded) {
                             Text(
-                                text = brandTitle(includeQualifier = true, highlightQualifier = true),
+                                text = brandTitleTwoTone(),
                                 style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.primary,
                             )
                         } else {
                             Text(
