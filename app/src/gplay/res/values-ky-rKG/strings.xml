@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store синхрондоо уакыт алышы мүмкүн. Чүмүрлөө, Google Play кэшин тазалоону немесе жой күтүүдү бүлкүүнүз карап көрүңүз.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Бирден көп аккаунт Google Play арачан чаташтырат. Башка аккаунттардан чыгыңыз немесе белгилүү аккаунт менен байланышты мәжбүрлеечи Google Play вебсайты аркылу уруксаттырында орнотуңуз.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Сиздин Pro абалын көрүңүз</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Бир жолку сатып алуу</string>

@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Sinkronizacija Trgovine Play može potrajati. Pokušajte ponovno pokrenuti uređaj, očistiti predmemoriju Google Playa ili jednostavno pričekajte.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Više računa može zbuniti Google Play. Odjavite se s drugih računa ili instalirajte putem Google Play web stranice, što prisiljava povezivanje s određenim računom.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Pogledajte svoj Pro status</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Jednokratna kupnja</string>

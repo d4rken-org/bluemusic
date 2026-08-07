@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store ஒத்திசைவு நேரம் எடுக்கலாம். மறுதொடக்கம் செய்ய, Google Play தற்காலிக சேமிப்பை அழிக்க அல்லது காத்திருக்க முயற்சிக்கவும்.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">பல கணக்குகள் Google Playஐ குழப்பலாம். மற்ற கணக்குகளிலிருந்து வெளியேறவும் அல்லது Google Play வலைத்தளம் வழியாக நிறுவவும், இது குறிப்பிட்ட கணக்குடன் தொடர்புகளை கட்டாயப்படுத்துகிறது.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">உங்கள் Pro நிலையைப் பார்க்கவும்</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">ஒரு முறை வாங்குதல்</string>

@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store 同步可能需要時間。嘗試重新啟動、清除 Google Play 快取或只是等待。</string>
     <string name="upgrade_screen_restore_multiaccount_hint">多個帳戶可能會混淆 Google Play。從其他帳戶登出或透過 Google Play 網站安裝，這會強制與特定帳戶建立關聯。</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">檢視您的 Pro 狀態</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">一次購買</string>

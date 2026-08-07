@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Сінхранізацыя з Play Store можа заняць пэўны час. Паспрабуйце перазагрузіцца, ачысціць кэш Google Play або проста пачакаць.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Некалькі ўліковых запісаў могуць заблытаць Google Play. Выйдзіце з іншых уліковых запісаў або ўсталюйце праз вэб-сайт Google Play, які вызначае сувязь з пэўным уліковым запісам.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Праглядзець ваш Pro-статус</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Аднаразовая пакупка</string>

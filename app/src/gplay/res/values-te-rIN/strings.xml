@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store సమకాలీకరణ సమయం పట్టవచ్చు. రీబూట్ చేయడానికి, Google Play కాష్‌ని క్లియర్ చేయడానికి లేదా కేవలం వేచి ఉండటానికి ప్రయత్నించండి.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">బహుళ ఖాతాలు Google Playని గందరగోళానికి గురి చేయవచ్చు. ఇతర ఖాతాల నుండి లాగ్ అవుట్ చేయండి లేదా Google Play వెబ్‌సైట్ ద్వారా ఇన్‌స్టాల్ చేయండి, ఇది నిర్దిష్ట ఖాతాతో అనుబంధాలను బలవంతం చేస్తుంది.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">మీ ప్రో స్థితిని చూడండి</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">ఒకేసారి కొనేయి</string>

@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store sync လုပ်ရန် အချိန်ယူနိုင်ပါသည်။ ပြန်လည်စတင်ခြင်း၊ Google Play cache ရှင်းလင်းခြင်း သို့မဟုတ် ရိုးရိုးစောင့်ဆိုင်းခြင်း ပြုလုပ်ကြည့်ပါ။</string>
     <string name="upgrade_screen_restore_multiaccount_hint">အကောင့်များစွာသည် Google Play ကို ရှုပ်ထွေးစေနိုင်သည်။ အခြားအကောင့်များမှ ထွက်ပါ သို့မဟုတ် Google Play ဝဘ်ဆိုဒ်မှတစ်ဆင့် ထည့်သွင်းပါ၊ ၎င်းသည် သတ်မှတ်ထားသော အကောင့်နှင့် ချိတ်ဆက်မှုကို တွန်းအားပေးသည်။</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">သင်၏Pro အခြေအနေကိုကြည့်ရှုပါ</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">တစ်ကြိမ်တည်း ဝယ်ယူမှု</string>

@@ -103,6 +103,31 @@ class BrandTitleTest : BaseComposeRobolectricTest() {
         result.text shouldBe composed
     }
 
+    // The Settings upgrade row composes its title through brandTitleText, the upgrade screen
+    // through upgradeScreenTitle. The row used to read its own resource key — a hardcoded
+    // per-locale copy of the brand that had drifted from the composed title — so the agreement
+    // between the two surfaces is the property to guard, not any literal.
+    @Test
+    fun `the settings row title agrees with the upgrade screen title`() {
+        lateinit var settingsRow: String
+        lateinit var upgradeFree: AnnotatedString
+        lateinit var upgradeUpgraded: AnnotatedString
+        composeRule.setContent {
+            PreviewWrapper {
+                settingsRow = brandTitleText(includeQualifier = true)
+                upgradeFree = upgradeScreenTitle(upgraded = false)
+                upgradeUpgraded = upgradeScreenTitle(upgraded = true)
+            }
+        }
+        composeRule.waitForIdle()
+
+        settingsRow shouldBe upgradeFree.text
+        settingsRow shouldBe upgradeUpgraded.text
+        settingsRow shouldBe composed
+        // Exactly once: a doubled qualifier would still "agree" across surfaces.
+        Regex(Regex.escape(qualifier)).findAll(settingsRow).count() shouldBe 1
+    }
+
     // The two-tone top-bar title. Both colors are asserted by role, and both ranges by content —
     // the top bars are the surface the original bug shipped on, and a regression that flattened
     // them to one tone (or swapped which part carries which role) would still render correct text.

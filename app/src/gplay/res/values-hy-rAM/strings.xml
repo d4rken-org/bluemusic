@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store համաժամանակեցումը կարող է ժամանակ խլել: Փորձեք վերագործարկել, մաքրել Google Play քեշը կամ պարզապես սպասել:</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Բազմաթիվ հաշիվները կարող են շփոթեցնել Google Play-ին: Դուրս եկեք այլ հաշիվներից կամ տեղադրեք Google Play կայքի միջոցով, որը ստիպում է կապեր կոնկրետ հաշվի հետ:</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Դիտեք ձեր Pro կարգավիճակը</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Միանգամյա գնում</string>

@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinkronisasie kan tyd neem. Probeer herlaai, maak Google Play kas skoon of wag net.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Veelvuldige rekeninge kan Google Play verwar. Meld af van ander rekeninge of installeer deur die Google Play webwerf, wat assosiasies met \'n spesifieke rekening dwing.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Bekyk jou Pro-status</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Eenmalige aankoop</string>

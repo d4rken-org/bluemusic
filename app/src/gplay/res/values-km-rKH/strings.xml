@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">ការធ្វើសមកាលកម្ម Play Store អាចចំណាយពេល។ សាកល្បងចាប់ផ្តើមឡើងវិញ សម្អាតឃ្លាំងសម្ងាត់ Google Play ឬគ្រាន់តែរង់ចាំ។</string>
     <string name="upgrade_screen_restore_multiaccount_hint">គណនីច្រើនអាចធ្វើឱ្យ Google Play ច្រឡំ។ ចេញពីគណនីផ្សេងទៀត ឬដំឡើងតាមរយៈគេហទំព័រ Google Play ដែលបង្ខំការភ្ជាប់ជាមួយគណនីជាក់លាក់។</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">មើលស្ថានភាព Pro របស់អ្នក</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">ការជាវតែម្ដងរួច</string>

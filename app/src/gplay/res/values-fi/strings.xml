@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store -synkronointi voi kestää. Kokeile uudelleenkäynnistystä, Google Play -välimuistin tyhjentämistä tai vain odottamista.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Useat tilit voivat hämmentää Google Playta. Kirjaudu ulos muista tileistä tai asenna Google Play -verkkosivuston kautta, joka pakottaa yhteydet tiettyyn tiliin.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Katso Pro-tilasi</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Kertaostos</string>

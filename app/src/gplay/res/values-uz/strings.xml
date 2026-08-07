@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinxronlashtiruvi vaqt olishi mumkin. Qayta ishga tushirish, Google Play keshini tozalash yoki shunchaki kutishni sinab ko\'ring.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Ko\'p hisoblar Google Play-ni chalkashtirib yuborishi mumkin. Boshqa hisoblardan chiqing yoki Google Play veb-sayti orqali o\'rnating, bu esa ma\'lum bir hisob bilan bog\'lanishni majburiy qiladi.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Pro statusini ko\'ring</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Bir martalik xarid</string>

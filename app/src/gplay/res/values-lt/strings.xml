@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store sinchronizacija gali užtrukti. Pabandykite paleisti iš naujo, išvalyti Google Play talpyklą arba tiesiog palaukti.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Kelios paskyros gali supainioti Google Play. Atsijunkite nuo kitų paskyrų arba įdiekite per Google Play svetainę, kuri priverčia susieti su konkrečia paskyra.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Peržiūrėkite savo Pro būseną</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Vienkartinis pirkimas</string>

@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Đồng bộ hóa Cửa hàng Play có thể mất thời gian. Hãy thử khởi động lại, xóa bộ nhớ đệm của Google Play hoặc chỉ cần đợi.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Nhiều tài khoản có thể gây nhầm lẫn cho Google Play. Đăng xuất khỏi các tài khoản khác hoặc cài đặt thông qua trang web Google Play, trang này buộc liên kết với một tài khoản cụ thể.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Xem trạng thái Pro của bạn</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Thanh toán một lần</string>

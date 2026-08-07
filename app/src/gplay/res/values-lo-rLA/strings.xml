@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">ການຊິງຄ໌ Play Store ອາດໃຊ້ເວລາ. ລອງຣີບູດ, ລ້າງແຄສ Google Play ຫຼືພຽງແຕ່ລໍຖ້າ.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">ບັນຊີຫຼາຍບັນຊີສາມາດເຮັດໃຫ້ Google Play ສັບສົນ. ອອກຈາກລະບົບຈາກບັນຊີອື່ນ ຫຼືຕິດຕັ້ງຜ່ານເວັບໄຊ Google Play, ເຊິ່ງບັງຄັບການເຊື່ອມໂຍງກັບບັນຊີສະເພາະ.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">ເບິ່ງສະຖານະ Pro ຂອງທ່ານ</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">ການຊື້ຄັ້ງດຽວ</string>

@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">A Play Áruház szinkronizálása időbe telhet. Próbáld meg az újraindítást, a Google Play gyorsítótárának törlését vagy egyszerűen várj.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">A több fiók összezavarhatja a Google Play-t. Jelentkezz ki más fiókokból, vagy telepítsd a Google Play weboldalán keresztül, amely kikényszeríti a meghatározott fiókkal való társítást.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Pro állapotod megtekintése</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Egyszeri vásárlás</string>

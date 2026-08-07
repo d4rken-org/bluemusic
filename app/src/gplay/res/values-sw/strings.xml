@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Ulandanishi wa Play Store unaweza kuchukua muda. Jaribu kuanzisha upya, kusafisha akiba ya Google Play au tu subiri.</string>
     <string name="upgrade_screen_restore_multiaccount_hint">Akaunti nyingi zinaweza kuchanganya Google Play. Toka kwenye akaunti zingine au sakinisha kupitia tovuti ya Google Play, ambayo inalazimisha uhusiano na akaunti maalum.</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">Tazama hali ya Pro yako</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">Ununuzi wa mara moja</string>

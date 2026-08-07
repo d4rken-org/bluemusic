@@ -21,7 +21,6 @@
     <string name="upgrade_screen_restore_sync_patience_hint">Play Store सिङ्कमा समय लाग्न सक्छ। रिबुट गर्ने, Google Play क्यास खाली गर्ने वा केवल पर्खने प्रयास गर्नुहोस्।</string>
     <string name="upgrade_screen_restore_multiaccount_hint">धेरै खाताहरूले Google Play लाई भ्रमित गर्न सक्छ। अन्य खाताहरूबाट लग आउट गर्नुहोस् वा Google Play वेबसाइट मार्फत स्थापना गर्नुहोस्, जसले विशिष्ट खातासँग सम्बन्धहरू बल गर्दछ।</string>
     <!-- Settings status row (also defined in the FOSS flavor with FOSS wording) -->
-    <string name="settings_upgrade_status_title">BVM Pro</string>
     <string name="settings_upgrade_status_desc">आफ्नो Pro स्थिति हेर्नुहोस्</string>
     <!-- Pro status view: owned products -->
     <string name="upgrade_screen_owned_iap_title">एक-पटक खरिद</string>
