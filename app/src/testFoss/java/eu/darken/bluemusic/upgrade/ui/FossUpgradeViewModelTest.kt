@@ -212,6 +212,31 @@ class FossUpgradeViewModelTest : BaseTest() {
     }
 
     @Test
+    fun `the non-manage route shows the upgraded status when the sponsor flow completes`() = runTest2(
+        context = testDispatcher,
+    ) {
+        // The view mapping used to gate STATUS_UPGRADED on the manage route, so every other entry
+        // stayed on the sales pitch with a live sponsor button — which reads as "sponsoring didn't
+        // work" to someone who just donated. The auto-close follows, but the status view is what
+        // acknowledges the upgrade.
+        val info = MutableStateFlow(UpgradeRepoFoss.Info())
+        val vm = buildVm(repo = mockRepo(info))
+
+        val pitchView = async { vm.state.first { it.view != null } }
+        vm.bindRoute(Nav.Main.Upgrade())
+        advanceUntilIdle()
+        pitchView.await().view shouldBe FossUpgradeView.PITCH
+
+        val upgradedView = async { vm.state.first { it.view == FossUpgradeView.STATUS_UPGRADED } }
+        info.value = upgradedInfo()
+        advanceUntilIdle()
+
+        upgradedView.await().view shouldBe FossUpgradeView.STATUS_UPGRADED
+        // Auto-close semantics are unchanged: a non-manage entry still leaves once Pro lands.
+        verify(exactly = 1) { navCtrl.up() }
+    }
+
+    @Test
     fun `default route bounces an upgraded user out of the screen`() = runTest2(context = testDispatcher) {
         val vm = buildVm(repo = mockRepo(MutableStateFlow(upgradedInfo())))
 
