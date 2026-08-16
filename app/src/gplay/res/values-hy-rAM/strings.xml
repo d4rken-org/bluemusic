@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Բաժանորդագրությունը դեռ ակտիվ է</string>
     <string name="upgrade_screen_sub_still_renewing_message">Ձեր բաժանորդագրությունը դեռ նախատեսված է երկարաձգվել։ Նախ չեղարկեք այն Google Play-ում, ապա վերադարձեք՝ միանվագ գնումը կատարելու համար — այդպես ձեզանից գումար կրկնակի չի գանձվի։</string>
-    <string name="upgrade_screen_sub_check_failed_message">Մենք չկարողացանք ստուգել ձեր բաժանորդագրության կարգավիճակը։ Ստուգեք ձեր կապը և կրկին փորձեք։</string>
     <string name="upgrades_gplay_already_owned_error_title">Արդեն գնված է</string>
     <string name="upgrades_gplay_already_owned_error_description">Օգտագործեք «Վերականգնել գնումը» տարբերակը՝ ձեր գնումը վերականգնելու համար։ Եթե խնդիրը շարունակվում է, փորձեք մաքրել Google Play-ի քեշը և վերագործարկել ձեր սարքը։</string>
     <string name="upgrades_gplay_internal_error_title">Google Play-ի սխալ</string>

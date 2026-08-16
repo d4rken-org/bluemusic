@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">সাবস্ক্রিপশন এখনও সক্রিয়</string>
     <string name="upgrade_screen_sub_still_renewing_message">আপনার সাবস্ক্রিপশন এখনও নবায়নের জন্য সেট করা আছে। প্রথমে Google Play-তে এটি বাতিল করুন, তারপর একবারের ক্রয় কিনতে ফিরে আসুন — এভাবে আপনার কাছ থেকে দুইবার চার্জ নেওয়া হবে না।</string>
-    <string name="upgrade_screen_sub_check_failed_message">আমরা আপনার সাবস্ক্রিপশন স্ট্যাটাস যাচাই করতে পারিনি। অনুগ্রহ করে আপনার সংযোগ যাচাই করে আবার চেষ্টা করুন।</string>
     <string name="upgrades_gplay_already_owned_error_title">ইতিমধ্যে কেনা হয়েছে</string>
     <string name="upgrades_gplay_already_owned_error_description">আপনার ক্রয় পুনরুদ্ধার করতে \"ক্রয় পুনরুদ্ধার করুন\" অপশনটি ব্যবহার করুন। সমস্যা থেকেই গেলে, Google Play ক্যাশে সাফ করে আপনার ডিভাইস পুনরায় চালু করার চেষ্টা করুন।</string>
     <string name="upgrades_gplay_internal_error_title">Google Play ত্রুটি</string>

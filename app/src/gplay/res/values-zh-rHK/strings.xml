@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">訂閱仍然有效</string>
     <string name="upgrade_screen_sub_still_renewing_message">您的訂閱仍設定為續約。請先在 Google Play 中取消，然後回來購買一次性購買 — 這樣就不會被收費兩次。</string>
-    <string name="upgrade_screen_sub_check_failed_message">我們無法檢查您的訂閱狀態。請檢查您的連線並重試。</string>
     <string name="upgrades_gplay_already_owned_error_title">已購買</string>
     <string name="upgrades_gplay_already_owned_error_description">使用「還原購買」選項來還原您的購買。如果問題仍然存在，請嘗試清除 Google Play 快取並重新啟動您的裝置。</string>
     <string name="upgrades_gplay_internal_error_title">Google Play 錯誤</string>

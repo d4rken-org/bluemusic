@@ -2,7 +2,9 @@ package eu.darken.bluemusic.upgrade.ui
 
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onAllNodesWithText
 import androidx.lifecycle.Lifecycle
+import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.upgrade.core.UpgradeRepoGplay
 import eu.darken.bluemusic.upgrade.core.billing.GplayServiceUnavailableException
@@ -38,6 +40,35 @@ class GplayUpgradeScreenHostTest : BaseTest() {
         every { proUnconfirmedSince } returns MutableStateFlow(0L)
         every { autoRestoreBusy } returns MutableStateFlow(false)
         every { purchaseLaunchSku } returns MutableStateFlow<Sku?>(null)
+    }
+
+    @Test
+    fun `a pending-purchase event puts the informational dialog on screen`() {
+        // Host-level wiring: the ViewModel tests prove the event is emitted, only a real
+        // composition proves it reaches a dialog (and survives as a rememberSaveable flag).
+        val repo = mockRepo()
+        coEvery { repo.querySkus(any()) } returns emptyList()
+        val vm = UpgradeViewModel(
+            manage = false,
+            dispatcherProvider = TestDispatcherProvider(),
+            navCtrl = mockk(relaxed = true),
+            upgradeRepo = repo,
+            webpageTool = mockk(relaxed = true),
+        )
+
+        composeRule.setContent {
+            PreviewWrapper {
+                UpgradeScreenHost(manage = false, vm = vm)
+            }
+        }
+        composeRule.waitForIdle()
+
+        vm.events.tryEmit(UpgradeEvents.PurchasePending)
+
+        val message = composeRule.activity.getString(R.string.upgrade_screen_pending_dialog_message)
+        composeRule.waitUntil {
+            composeRule.onAllNodesWithText(message, substring = true).fetchSemanticsNodes().isNotEmpty()
+        }
     }
 
     @Test

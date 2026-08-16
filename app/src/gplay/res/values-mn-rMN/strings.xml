@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Захиалга идэвхтэй байна</string>
     <string name="upgrade_screen_sub_still_renewing_message">Таны захиалга сэргээгдэхээр тохируулагдсан байна. Эхлээд Google Play-д цуцлана уу, дараа нь нэг удаагийн худалдан авалт хийхээр буцаж ирнэ үү — ингэснээр та хоёр удаа суллагдахгүй.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Бид таны захиалгын статусыг шалгаж чадаагүй. Интернэт холболт шалгаж дахин оролдоно уу.</string>
     <string name="upgrades_gplay_already_owned_error_title">Аль хэдийн худалдан авсан</string>
     <string name="upgrades_gplay_already_owned_error_description">\"Худалдан авалтыг сэргэх\" сонголтыг ашиглан таны худалдан авалтыг сэргээнэ үү. Хэрвээ асуудал үргэлжвэл Google Play-ийн кеш цэвэрлэж, төхөөрөмжөө дахин эхлүүлэхийг оролдоно уу.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play алдаа</string>

@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Tellimus on endiselt kasutusel</string>
     <string name="upgrade_screen_sub_still_renewing_message">Sinu tellimus uueneb endiselt. Tühista see kõigepealt rakenduses Google Play ja tule siis tagasi, et osta ühekordne ost — nii ei arveldata sind kaks korda.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Me ei saanud sinu tellimuse olekut kontrollida. Palun kontrolli oma internetiühendust ja proovi uuesti.</string>
     <string name="upgrades_gplay_already_owned_error_title">Juba ostetud</string>
     <string name="upgrades_gplay_already_owned_error_description">Ostu taastamiseks kasuta „Taasta ost“ valikut. Mure püsimisel ürita tühjendada Google Play vahemälu ja taaskäivitada seadet.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play viga</string>

@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">الاشتراك ما زال نشطًا</string>
     <string name="upgrade_screen_sub_still_renewing_message">اشتراكك لا يزال مُعدًا للتجديد. ألغه في Google Play أولاً، ثم عد لشراء الشراء لمرة واحدة — بهذه الطريقة لن تُخصم منك رسوم مرتين.</string>
-    <string name="upgrade_screen_sub_check_failed_message">لم نتمكن من التحقق من حالة اشتراكك. يُرجى التحقق من اتصالك والمحاولة مرة أخرى.</string>
     <string name="upgrades_gplay_already_owned_error_title">تم الشراء بالفعل</string>
     <string name="upgrades_gplay_already_owned_error_description">استخدم خيار \"استعادة الشراء\" لاستعادة عملية الشراء الخاصة بك. إذا استمرت المشكلة، حاول مسح ذاكرة التخزين المؤقتة لـ Google Play وإعادة تشغيل جهازك.</string>
     <string name="upgrades_gplay_internal_error_title">خطأ في Google Play</string>

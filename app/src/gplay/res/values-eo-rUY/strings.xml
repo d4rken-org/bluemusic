@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abonado daŭre aktiva</string>
     <string name="upgrade_screen_sub_still_renewing_message">Via abonado estas daŭre agordita por renovi. Nuligu ĝin en Google Play unue, poste revenu por aĉeti unufojan aĉeton — tiele vi ne estos ŝarĝita dufoje.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Ni ne povis kontroli vian abonadan staton. Bonvolu kontroli vian konekton kaj provu denove.</string>
     <string name="upgrades_gplay_already_owned_error_title">Jam aĉetita</string>
     <string name="upgrades_gplay_already_owned_error_description">Uzu la \"Rekuperi aĉeton\" eblecon por rekuperi vian aĉeton. Se la problemo daŭras, provu forviŝi la kaŝmemoron de Google Play Store kaj restartigi vian aparaton.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play eraro</string>

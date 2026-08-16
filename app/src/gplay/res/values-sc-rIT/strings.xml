@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">S\'iscritzione est sempre attiva</string>
     <string name="upgrade_screen_sub_still_renewing_message">Sa subscriptione tua est sempre impostada a isrenoare. Cancellàla in Google Play prima, dessos conpora sa compra de unu cunta — asa manera no ti carregant duas bilas.</string>
-    <string name="upgrade_screen_sub_check_failed_message">No podimus cuntullare s\'istadu de sa subscriptione tua. Cuntulla sa connessione tua e tenta anzis.</string>
     <string name="upgrades_gplay_already_owned_error_title">Già conporada</string>
     <string name="upgrades_gplay_already_owned_error_description">Imprea s\'optzione \'Isculà sa compra\' a isculàla. Si su problema perdurat, tenta de scancellare sa cache de Google Play e de ristartare s\'apparatu.</string>
     <string name="upgrades_gplay_internal_error_title">Errore de Google Play</string>

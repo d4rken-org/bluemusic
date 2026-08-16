@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">La subscripció encara està activa</string>
     <string name="upgrade_screen_sub_still_renewing_message">La vostra subscripció encara està configurada per renovar-se. Cancel·leu-la primer a Google Play i després torneu per comprar la compra única; així no us cobraran dues vegades.</string>
-    <string name="upgrade_screen_sub_check_failed_message">No hem pogut comprovar l’estat de la vostra subscripció. Comproveu la vostra connexió i torneu-ho a provar.</string>
     <string name="upgrades_gplay_already_owned_error_title">Ja comprat</string>
     <string name="upgrades_gplay_already_owned_error_description">Feu servir l\'opció «Restaura la compra» per restaurar la compra. Si el problema persisteix, proveu d\'esborrar la memòria cau del Google Play i reinicieu el dispositiu.</string>
     <string name="upgrades_gplay_internal_error_title">Error del Google Play</string>

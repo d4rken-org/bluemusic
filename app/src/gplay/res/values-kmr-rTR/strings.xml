@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Bendavî hîn jî çalak e</string>
     <string name="upgrade_screen_sub_still_renewing_message">Bendavî xwe hîn jî bo nûkirinê mîhenk kiriye. Ew di Google Play de bê yekemîn betal bikin, paşê vegerin û kire xweze bikin — bi vî awayî du caran lê vatin nabe.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Em nikarî rewşa bendavî xwe kontrol bikin. Girêdanê xwe kontrol bikin û dîsa biceribînin.</string>
     <string name="upgrades_gplay_already_owned_error_title">Jixwe kirî ye</string>
     <string name="upgrades_gplay_already_owned_error_description">Vebijarka Kirina Vegerandin bikar bînin da ku kirina xwe vegerandin. Eger pirsgêrk berdewam be, derbasbûna Google Play paqij bikin û amûra xwe dîsa destpê bikin.</string>
     <string name="upgrades_gplay_internal_error_title">Xebata Google Play</string>

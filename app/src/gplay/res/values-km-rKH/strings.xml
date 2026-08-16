@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">ការជាវនៅតែសកម្ម</string>
     <string name="upgrade_screen_sub_still_renewing_message">ការជាវរបស់អ្នកនៅតែត្រូវបានកំណត់ឱ្យបន្តជាថ្មី។ សូមលុបចោលវានៅក្នុង Google Play ជាមុនសិន បន្ទាប់មកត្រឡប់មកទិញការទិញតែម្តងវិញ — ដោយវិធីនេះអ្នកនឹងមិនត្រូវបានគិតប្រាក់ពីរដងទេ។</string>
-    <string name="upgrade_screen_sub_check_failed_message">យើងមិនអាចពិនិត្យស្ថានភាពការជាវរបស់អ្នកបានទេ។ សូមពិនិត្យការតភ្ជាប់របស់អ្នក ហើយព្យាយាមម្តងទៀត។</string>
     <string name="upgrades_gplay_already_owned_error_title">បានទិញរួចហើយ</string>
     <string name="upgrades_gplay_already_owned_error_description">សូមប្រើជម្រើស \"ស្តារការទិញ\" ដើម្បីស្តារការទិញរបស់អ្នក។ ប្រសិនបើបញ្ហានៅតែកើតមាន សូមព្យាយាមសម្អាតឃ្លាំងសម្ងាត់ Google Play ហើយចាប់ផ្តើមឧបករណ៍របស់អ្នកឡើងវិញ។</string>
     <string name="upgrades_gplay_internal_error_title">កំហុស Google Play</string>

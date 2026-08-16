@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Áskrift enn virk</string>
     <string name="upgrade_screen_sub_still_renewing_message">Áskriftin þín er enn stillt á að endurnýjast. Segðu henni upp í Google Play fyrst og komdu svo aftur til að kaupa eingreiðslukaupin — þannig verðurðu ekki rukuð(ur) tvisvar.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Við gátum ekki athugað áskriftarstöðu þína. Athugaðu nettenginguna og reyndu aftur.</string>
     <string name="upgrades_gplay_already_owned_error_title">Þegar keypt</string>
     <string name="upgrades_gplay_already_owned_error_description">Notaðu valkostinn „Endurheimta kaup“ til að endurheimta kaupin þín. Ef vandamálið er viðvarandi skaltu reyna að hreinsa skyndiminni Google Play og endurræsa tækið.</string>
     <string name="upgrades_gplay_internal_error_title">Villa í Google Play</string>

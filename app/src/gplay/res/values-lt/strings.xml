@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Prenumerata vis dar aktyvi</string>
     <string name="upgrade_screen_sub_still_renewing_message">Jūsų prenumerata vis dar bus atnaujinama. Pirmiausia atšaukite ją „Google Play“, tada grįžkite ir įsigykite vienkartinį pirkinį — taip nebūsite apmokestinti du kartus.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Nepavyko patikrinti jūsų prenumeratos būsenos. Patikrinkite ryšį ir bandykite dar kartą.</string>
     <string name="upgrades_gplay_already_owned_error_title">Jau įsigyta</string>
     <string name="upgrades_gplay_already_owned_error_description">Naudokite parinktį „Atkurti pirkinį“, kad atkurtumėte savo pirkinį. Jei problema kartojasi, pabandykite išvalyti „Google Play“ talpyklą ir iš naujo paleisti įrenginį.</string>
     <string name="upgrades_gplay_internal_error_title">„Google Play“ klaida</string>

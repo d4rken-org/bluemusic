@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abonnement fortsatt aktivt</string>
     <string name="upgrade_screen_sub_still_renewing_message">Abonnementet ditt er fortsatt satt til å fornyes. Avbryt det i Google Play først, så kom tilbake for å kjøpe engangskjøp — på den måten blir du ikke belastet to ganger.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Vi kunne ikke sjekke abonnementstatusen din. Vennligst sjekk tilkoblingen din og prøv igjen.</string>
     <string name="upgrades_gplay_already_owned_error_title">Allerede kjøpt</string>
     <string name="upgrades_gplay_already_owned_error_description">Bruk alternativet «Gjenopprette kjøp» for å gjenopprette kjøpet ditt. Hvis problemet vedvarer, prøv å fjerne Google Play-hurtiglagre og start enheten på nytt.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play-feil</string>

@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Подписка всё ещё активна</string>
     <string name="upgrade_screen_sub_still_renewing_message">Ваша подписка всё ещё продлевается. Сначала отмените её в Google Play, а потом вернитесь, чтобы купить разовую покупку — так вы не заплатите дважды.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Не удалось проверить статус вашей подписки. Проверьте подключение и попробуйте снова.</string>
     <string name="upgrades_gplay_already_owned_error_title">Уже приобретено</string>
     <string name="upgrades_gplay_already_owned_error_description">Используйте опцию \"Восстановить покупку\" для восстановления. Если проблема не устранена, попробуйте очистить кэш Google Play и перезагрузить устройство.</string>
     <string name="upgrades_gplay_internal_error_title">Ошибка Google Play</string>

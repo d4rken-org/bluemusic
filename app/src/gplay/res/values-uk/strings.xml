@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Підписка все ще активна</string>
     <string name="upgrade_screen_sub_still_renewing_message">Ваша підписка все ще налаштована на автоматичне поновлення. Спочатку скасуйте її в Google Play, а потім поверніться, щоб придбати одноразову покупку — так з вас не стягнуть плату двічі.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Не вдалося перевірити статус вашої підписки. Перевірте з\'єднання і спробуйте ще раз.</string>
     <string name="upgrades_gplay_already_owned_error_title">Вже придбано</string>
     <string name="upgrades_gplay_already_owned_error_description">Скористайтеся опцією «Відновити покупку», щоб відновити свою покупку. Якщо проблема не зникає, спробуйте очистити кеш Google Play і перезавантажити пристрій.</string>
     <string name="upgrades_gplay_internal_error_title">Помилка Google Play</string>

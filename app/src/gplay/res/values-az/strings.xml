@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abunəlik hələ də aktivdir</string>
     <string name="upgrade_screen_sub_still_renewing_message">Abunəliyiniz hələ də yenilənməyə təyin edilib. Əvvəlcə onu Google Play-də ləğv edin, sonra birdəfəlik alışı almaq üçün geri qayıdın — bu şəkildə iki dəfə ödəniş almayacaqsınız.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Abunəlik statusunuzu yoxlaya bilmədik. Zəhmət olmasa bağlantınızı yoxlayın və yenidən cəhd edin.</string>
     <string name="upgrades_gplay_already_owned_error_title">Artıq alınıb</string>
     <string name="upgrades_gplay_already_owned_error_description">Alışınızı bərpa etmək üçün \"Alışı bərpa et\" seçimindən istifadə edin. Problem davam edərsə, Google Play keşini təmizləməyə və cihazınızı yenidən başlatmağa çalışın.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play xətası</string>

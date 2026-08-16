@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Tilaus on yhä aktiivinen</string>
     <string name="upgrade_screen_sub_still_renewing_message">Tilauksesi uusiutuu yhä automaattisesti. Peruuta se ensin Google Playssa ja palaa sitten ostamaan kertaosto — näin sinulta ei veloiteta kahdesti.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Emme pystyneet tarkistamaan tilauksesi tilaa. Tarkista yhteytesi ja yritä uudelleen.</string>
     <string name="upgrades_gplay_already_owned_error_title">Jo ostettu</string>
     <string name="upgrades_gplay_already_owned_error_description">Käytä \"Palauta ostos\" -toimintoa palauttaaksesi ostoksesi. Jos ongelma jatkuu, tyhjennä Google Play -välimuisti ja käynnistä laite uudelleen.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play -virhe</string>

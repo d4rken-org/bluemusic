@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">စာရင်းသွင်းမှု ပြဲး အလုပ်ဆောင်နေသည်</string>
     <string name="upgrade_screen_sub_still_renewing_message">သင်၏ စာရင်းသွင်းမှုစိ ယခုအခါ အလိုအလျောက်အသစ်ဖြစ်စေရန် သတ်မှတ်ထားသည်။ Google Play တွင် ပထမဆုံ ပယ်ဖျက်ပါ။ ထို့နောက် တစ်ကြိမ်တည်းသည့် ဝယ်ယူမှုကို ဝယ်ယူပါ — သို့မှ သင်သည် အကြိမ်နှစ်ကြိမ် အခြေခြံရီမည်မဟုတ်ပါ။</string>
-    <string name="upgrade_screen_sub_check_failed_message">ကျွန်ုပ်တို့သည် သင်၏ စာရင်းသွင်းမှု အခြေအနေကို မစိစစနိုင်ခဲပါ။ သင်၏ အင်တာနက်ချိတ်ဆက်မှုကို ကျေးဇူးပြီး စစ်ဆပါ၊ ထို့နောက် ထပ်မံကြိုးစားပါ။</string>
     <string name="upgrades_gplay_already_owned_error_title">ယခင်က ဝယ်ယူပြီးပြီ</string>
     <string name="upgrades_gplay_already_owned_error_description">သင်၏ဝယ်ယူမှုကိုပြန်လည်ရယူရန် \"ဝယ်ယူမှုပြန်လည်ရယူ\" ရွေးချယ်မှုကိုအသုံးပြုပါ။ အကယ်၏ပြဲဆနာအဆက်အလက်ရှိပါက Google Play ကက်ရှ်ကိုရှင်လင်းပြီးသင်၏ကိရိယာကိုပြန်စတင်ကြည့်ပါ။</string>
     <string name="upgrades_gplay_internal_error_title">Google Play အမှားအယွင်း</string>

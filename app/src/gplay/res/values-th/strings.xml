@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">การสมัครสมาชิกยังใช้งานอยู่</string>
     <string name="upgrade_screen_sub_still_renewing_message">การสมัครสมาชิกของคุณยังตั้งค่าให้ต่ออายุ ยกเลิกการสมัครใน Google Play ก่อน จากนั้นกลับมาซื้อแบบครั้งเดียว — ด้วยวิธีนี้คุณจะไม่ถูกเรียกเก็บเงินสองครั้ง</string>
-    <string name="upgrade_screen_sub_check_failed_message">เราไม่สามารถตรวจสอบสถานะการสมัครสมาชิกของคุณได้ โปรดตรวจสอบการเชื่อมต่อและลองใหม่</string>
     <string name="upgrades_gplay_already_owned_error_title">ซื้อไปแล้ว</string>
     <string name="upgrades_gplay_already_owned_error_description">ใช้ตัวเลือก \"กู้คืนการซื้อ\" เพื่อกู้คืนการซื้อของคุณ หากปัญหายังคงเกิดขึ้น ให้ลองล้างแคชของ Google Play และรีสตาร์ตอุปกรณ์ของคุณ</string>
     <string name="upgrades_gplay_internal_error_title">ข้อผิดพลาด Google Play</string>

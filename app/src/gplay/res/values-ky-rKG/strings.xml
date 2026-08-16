@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Жазылуу дагы эле активдүү</string>
     <string name="upgrade_screen_sub_still_renewing_message">Сиздин жазылуу дагы эле кайталанууга коюлган. Адегенде аны Google Play\'де жокко чыгарыңыз, андан кийин бир жолу сатып алуу үчүн кайра келиңиз — ошентип эки жолу төлөбойсуңуз.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Биз сиздин жазылуу статусун текшей албадык. Байланышыңызды текшеңиз жана кайра аракет кылыңыз.</string>
     <string name="upgrades_gplay_already_owned_error_title">Мурда сатылып алынган</string>
     <string name="upgrades_gplay_already_owned_error_description">\"Сатып алууну калыбына келтирүү\" опциясын колдонуп, сатып алууңузду калыбына келтириңиз. Эгер проблема сакталса, Google Play кэшин тазалап жана түзмөгүңүздү кайра жүктөп көрүңүз.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play катасы</string>

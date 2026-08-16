@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">I-subscription isaphila</string>
     <string name="upgrade_screen_sub_still_renewing_message">I-subscription yakho isashintshile ngokwazisela iyabuya. Isikisele ku-Google Play kuqala, khona-ke buya ukuthenga okuthengwa kanye — ngale ndlela ngeke ubhalwe kabili.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Asikwazi ukukhexuza isimo se-subscription yakho. Sicela ukhone ukuxhumana kwakho zama futhi.</string>
     <string name="upgrades_gplay_already_owned_error_title">Sekuthengile</string>
     <string name="upgrades_gplay_already_owned_error_description">Sebenzisa inketho \"Lusulula ukuthenga\" ukubuya kwazisela ukuthenga kwakho. Uma inkinga ihlala ikhona, zama okusula i-cache ye-Google Play nokuwutshela isishintshi sakho.</string>
     <string name="upgrades_gplay_internal_error_title">Iphutha le-Google Play</string>

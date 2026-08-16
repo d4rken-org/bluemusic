@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abonimi ende aktiv</string>
     <string name="upgrade_screen_sub_still_renewing_message">Abonimi juaj është ende i caktuar për t\'u rinovuar. Anulojeni atë në Google Play fillimisht, pastaj kthehuni për të blerë blerjen njëherë — kështu nuk do të ngarkoheni dy herë.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Nuk mundëm të kontrollojmë statusin e abonimit tuaj. Ju lutemi kontrolloni lidhjen tuaj dhe provoni përsëri.</string>
     <string name="upgrades_gplay_already_owned_error_title">Tashmë i blerë</string>
     <string name="upgrades_gplay_already_owned_error_description">Përdorni opsionin \"Rikthe blerjen\" për të rikthyer blerjen tuaj. Nëse problemi vazhdon, provoni të fshini memorjen cache të Google Play dhe të ristartoni pajisjen tuaj.</string>
     <string name="upgrades_gplay_internal_error_title">Gabim i Google Play</string>
