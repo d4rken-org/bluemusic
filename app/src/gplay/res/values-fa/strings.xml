@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">اشتراک هنوز فعال است</string>
     <string name="upgrade_screen_sub_still_renewing_message">اشتراک شما هنوز برای تمدید تنظیم شده است. ابتدا آن را در Google Play لغو کنید، سپس برای خرید یک‌باره برگردید — این‌طور دو بار از شما هزینه دریافت نمی‌شود.</string>
-    <string name="upgrade_screen_sub_check_failed_message">نتوانستیم وضعیت اشتراک شما را بررسی کنیم. لطفاً اتصال خود را بررسی کرده و دوباره تلاش کنید.</string>
     <string name="upgrades_gplay_already_owned_error_title">قبلاً خریداری شده</string>
     <string name="upgrades_gplay_already_owned_error_description">برای بازیابی خرید خود از گزینه «بازیابی خرید» استفاده کنید. اگر مشکل ادامه داشت، سعی کنید کش Google Play را پاک کرده و دستگاه خود را دوباره راه‌اندازی کنید.</string>
     <string name="upgrades_gplay_internal_error_title">خطای Google Play</string>

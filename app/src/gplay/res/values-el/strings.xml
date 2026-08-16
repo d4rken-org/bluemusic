@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Η συνδρομή είναι ακόμα ενεργή</string>
     <string name="upgrade_screen_sub_still_renewing_message">Η συνδρομή σου εξακολουθεί να είναι ρυθμισμένη να ανανεωθεί. Ακύρωσέ την πρώτα στο Google Play και μετά επέστρεψε για να αγοράσεις την εφάπαξ αγορά — έτσι δεν θα χρεωθείς δύο φορές.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Δεν μπορέσαμε να ελέγξουμε την κατάσταση της συνδρομής σου. Έλεγξε τη σύνδεσή σου και δοκίμασε ξανά.</string>
     <string name="upgrades_gplay_already_owned_error_title">Ήδη αγορασμένο</string>
     <string name="upgrades_gplay_already_owned_error_description">Χρησιμοποιήστε την επιλογή \"Επαναφορά αγοράς\" για να επαναφέρετε την αγορά σας. Εάν το πρόβλημα παραμένει, δοκιμάστε να καθαρίσετε την προσωρινή μνήμη του Google Play και να επανεκκινήσετε τη συσκευή σας.</string>
     <string name="upgrades_gplay_internal_error_title">Σφάλμα Google Play</string>

@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Gói đăng ký vẫn đang hoạt động</string>
     <string name="upgrade_screen_sub_still_renewing_message">Gói đăng ký của bạn vẫn được đặt để gia hạn. Hãy hủy gói đó trong Google Play trước, sau đó quay lại mua giao dịch một lần — như vậy bạn sẽ không bị tính phí hai lần.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Chúng tôi không thể kiểm tra trạng thái gói đăng ký của bạn. Vui lòng kiểm tra kết nối và thử lại.</string>
     <string name="upgrades_gplay_already_owned_error_title">Đã mua</string>
     <string name="upgrades_gplay_already_owned_error_description">Sử dụng tùy chọn \"Khôi phục giao dịch mua\" để khôi phục giao dịch mua của bạn. Nếu vấn đề vẫn tiếp diễn, hãy thử xóa bộ nhớ đệm Google Play và khởi động lại thiết bị của bạn.</string>
     <string name="upgrades_gplay_internal_error_title">Lỗi Google Play</string>

@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">సబ్‌స్క్రిప్షన్ ఇప్పటికీ క్రియాశీలంగా ఉంది</string>
     <string name="upgrade_screen_sub_still_renewing_message">మీ సబ్‌స్క్రిప్షన్ ఇప్పటికీ పునరావృత్తికి సెట్ చేయబడి ఉంది. Google Play లో దీన్ని ముందుగా రద్దు చేసి, తర్వాత ఒక్కసారి కొనుగోలు కొరకు తిరిగి రండి — ఆ విధంగా మీరు రెండుసార్లు ఛార్జ్ చేయబడరు.</string>
-    <string name="upgrade_screen_sub_check_failed_message">మీ సబ్‌స్క్రిప్షన్ స్థితిని తనిఖీ చేయలేకపోయాము. దయచేసి మీ కనెక్షన్‌ను తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి.</string>
     <string name="upgrades_gplay_already_owned_error_title">ఇప్పటికే కొనుగోలు చేయబడింది</string>
     <string name="upgrades_gplay_already_owned_error_description">మీ కొనుగోలును పునరుద్ధరించడానికి \"కొనుగోలును పునరుద్ధరించండి\" ఎంపికను ఉపయోగించండి. సమస్య కొనసాగితే, Google Play క్యాష్‌ను క్లిఅర్ చేసి మీ పరికరాన్ని పునరారంభించడానికి ప్రయత్నించండి.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play లోపం</string>

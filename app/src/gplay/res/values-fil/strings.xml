@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Aktibo pa rin ang subscription</string>
     <string name="upgrade_screen_sub_still_renewing_message">Naka-set pa rin mag-renew ang iyong subscription. I-cancel muna ito sa Google Play, tapos bumalik para bilhin ang one-time purchase — sa ganoong paraan hindi ka masisingil nang dalawang beses.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Hindi namin nasuri ang status ng iyong subscription. Pakisuri ang iyong koneksyon at subukan ulit.</string>
     <string name="upgrades_gplay_already_owned_error_title">Nabili na</string>
     <string name="upgrades_gplay_already_owned_error_description">Gamitin ang opsyong \"I-restore ang purchase\" para i-restore ang iyong purchase. Kung nagpapatuloy ang isyu, subukang i-clear ang Google Play cache at i-restart ang iyong device.</string>
     <string name="upgrades_gplay_internal_error_title">Error sa Google Play</string>

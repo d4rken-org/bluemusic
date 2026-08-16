@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Suscripción todavía activa</string>
     <string name="upgrade_screen_sub_still_renewing_message">Tu suscripción todavía está configurada para renovarse. Cancelala primero en Google Play y después volvé para comprar la compra única — así no te cobran dos veces.</string>
-    <string name="upgrade_screen_sub_check_failed_message">No pudimos verificar el estado de tu suscripción. Revisá tu conexión y probá de nuevo.</string>
     <string name="upgrades_gplay_already_owned_error_title">Ya comprado</string>
     <string name="upgrades_gplay_already_owned_error_description">Usá la opción \"Restaurar compra\" para restaurar tu compra. Si el problema persiste, probá borrar la caché de Google Play y reiniciar tu dispositivo.</string>
     <string name="upgrades_gplay_internal_error_title">Error de Google Play</string>

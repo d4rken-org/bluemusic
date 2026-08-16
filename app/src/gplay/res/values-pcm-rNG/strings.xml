@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Subscription still active</string>
     <string name="upgrade_screen_sub_still_renewing_message">Your subscription still dey set to renew. Cancel am for Google Play first, then come back buy the one-time purchase — that way dem no go charge you twice.</string>
-    <string name="upgrade_screen_sub_check_failed_message">We no fit check your subscription status. Check your connection and try again.</string>
     <string name="upgrades_gplay_already_owned_error_title">Already purchased</string>
     <string name="upgrades_gplay_already_owned_error_description">Use the \"Restore purchase\" option to restore your purchase. If the problem still dey, try clear Google Play cache and restart your device.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play error</string>

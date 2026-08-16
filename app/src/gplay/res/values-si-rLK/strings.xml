@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">දායකත්ව තවමත් ක්‍රියාකාරී</string>
     <string name="upgrade_screen_sub_still_renewing_message">ඔබේ දායකත්ව තවමත් නැවුම් කිරීමට සකසා ඉන්න. එය ප්‍රථමයෙන් Google Play වලින් අවලංගු කරන්න, ඉන්පසු එක් වතාවක මිලදී ගැනීමට ආපසු එන්න — එසේ ඔබ දෙවරක් අයකර නොමැතිවනු ඇත.</string>
-    <string name="upgrade_screen_sub_check_failed_message">අපි ඔබේ දායකත්ව තත්වය පරීක්ෂා කිරීමට නොහැකි විය. කරුණාකර ඔබේ සම්බන්ධතාවය පරීක්ෂා කරන්න සහ නැවත උත්සාහ කරන්න.</string>
     <string name="upgrades_gplay_already_owned_error_title">දැනටමත් මිලදී ගන්නා ඇත</string>
     <string name="upgrades_gplay_already_owned_error_description">ඔබේ මිලදී ගැනීම පුනෳ ස්ථාපනය කිරීමට \"මිලදී ගැනීම පුනෳ ස්ථාපනය\" විකල්පය භාවිතා කරන්න. ගටළුව නොතීරුවෙන් තිබේ නම්, Google Play කැෂ් ඉවත් කිරීමට සහ ඔබේ ගිණුමිය නැවත ආරම්භ කිරීමට උත්සාහ කරන්න.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play දොෂයක්</string>

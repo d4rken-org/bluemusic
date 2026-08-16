@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">ການສະໝັກສະມາຊິກຍັງເປີດໃຊ້ງານຢູ່</string>
     <string name="upgrade_screen_sub_still_renewing_message">ການສະໝັກສະມາຊິກຂອງທ່ານຍັງຕັ້ງໄວ້ໃຫ້ຕໍ່ອາຍຸຢູ່. ໃຫ້ຍົກເລີກມັນໃນ Google Play ກ່ອນ, ແລ້ວກັບມາຊື້ແບບຄັ້ງດຽວ — ວິທີນີ້ຈະບໍ່ໃຫ້ທ່ານຖືກຮຽກເກັບເງິນສອງເທື່ອ.</string>
-    <string name="upgrade_screen_sub_check_failed_message">ພວກເຮາບໍ່ສາມາດກວດສອບສະຖານະການສະໝັກສະມາຊິກຂອງທ່ານໄດ້. ກະລຸນາກວດເບິ່ງການເຊື່ອມຕໍ່ຂອງທ່ານແລ້ວລອງໃໝ່.</string>
     <string name="upgrades_gplay_already_owned_error_title">ຊື້ແລ້ວ</string>
     <string name="upgrades_gplay_already_owned_error_description">ໃຊ້ຕຽວເລືອກ \"ກູ້ຄືນການຊື້\" ເພື່ອກູ້ຄືນການຊື້ຂອງທ່ານ. ຖ້າບັນໝາຍັງເກີດຂຶ້ນຢູ່, ລອງລ້າງແຄດຊ Google Play ແລ້ວເປີດອຸປະກອນຂອງທ່ານໃໝ່.</string>
     <string name="upgrades_gplay_internal_error_title">ຂໍ້ຜິດພາດ Google Play</string>

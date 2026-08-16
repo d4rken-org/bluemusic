@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Prenumeration fortfarande aktiv</string>
     <string name="upgrade_screen_sub_still_renewing_message">Din prenumeration är fortfarande inställd på att förnya. Avbryt den i Google Play först, kom sedan tillbaka för att köpa engångsköpet — så blir du inte debiterad två gånger.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Vi kunde inte kontrollera din prenumerationsstatus. Kontrollera din anslutning och försök igen.</string>
     <string name="upgrades_gplay_already_owned_error_title">Redan köpt</string>
     <string name="upgrades_gplay_already_owned_error_description">Använd alternativet ”Återställ köp” för att återställa ditt köp. Om problemet kvarstår, försök att rensa Google Play-cacheminnet och starta om enheten.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play-fel</string>

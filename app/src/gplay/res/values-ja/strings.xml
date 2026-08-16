@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">サブスクリプションはまだ有効です</string>
     <string name="upgrade_screen_sub_still_renewing_message">サブスクリプションはまだ更新される設定になっています。まずGoogle Playで解約してから、買い切り購入に戻ってください。そうすれば二重に請求されません。</string>
-    <string name="upgrade_screen_sub_check_failed_message">サブスクリプションの状態を確認できませんでした。接続を確認してもう一度お試しください。</string>
     <string name="upgrades_gplay_already_owned_error_title">購入済みです</string>
     <string name="upgrades_gplay_already_owned_error_description">「購入を復元」オプションを使用して購入を復元してください。問題が解決しない場合は、Google Playのキャッシュを消去してデバイスを再起動してください。</string>
     <string name="upgrades_gplay_internal_error_title">Google Playエラー</string>

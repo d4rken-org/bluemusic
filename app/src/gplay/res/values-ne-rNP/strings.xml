@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">सदस्यता अझै सक्रिय छ</string>
     <string name="upgrade_screen_sub_still_renewing_message">तपाईंको सदस्यता अझै नवीकरण गर्न सेट गरिएको छ। यसलाई पहिले Google Play मा रद्द गर्नुहोस्, त्यसपछि एकबार खरिद गर्न फिर्ता आउनुहोस् — त्यसरी तपाईंलाई दुबै पटक शुल्क लिइने छैन।</string>
-    <string name="upgrade_screen_sub_check_failed_message">हामी तपाईंको सदस्यता स्थिति जाँच गर्न सकेनौँ। कृपया तपाईंको जडान जाँच गर्नुहोस् र फेरी प्रयास गर्नुहोस्।</string>
     <string name="upgrades_gplay_already_owned_error_title">पहिले नै खरिद गरिएको</string>
     <string name="upgrades_gplay_already_owned_error_description">तपाईंको खरिद पुनर्स्थापन गर्न \"खरिद पुनर्स्थापन गर्नुहोस्\" विकल्पको प्रयोग गर्नुहोस्। यदि समस्या कायम रहन्छ भने, Google Play क्यास साफ गर्ने र आफ्नो डिभाइस पुनः सुरु गर्ने प्रयास गर्नुहोस्।</string>
     <string name="upgrades_gplay_internal_error_title">Google Play त्रुटि</string>

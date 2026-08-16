@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">구독이 아직 활성 상태입니다</string>
     <string name="upgrade_screen_sub_still_renewing_message">구독이 아직 자동 갱신으로 설정되어 있습니다. 먼저 Google Play에서 구독을 취소한 다음 돌아와서 일회성 구매를 진행하세요 — 그러면 두 번 청구되지 않습니다.</string>
-    <string name="upgrade_screen_sub_check_failed_message">구독 상태를 확인할 수 없습니다. 연결 상태를 확인하고 다시 시도해 주세요.</string>
     <string name="upgrades_gplay_already_owned_error_title">이미 구매함</string>
     <string name="upgrades_gplay_already_owned_error_description">\"구매 복원\" 옵션을 사용하여 구매 내역을 복원하세요. 문제가 계속되면 Google Play 캐시를 삭제하고 기기를 재시작해 보세요.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play 오류</string>

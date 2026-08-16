@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Az előfizetés még aktív</string>
     <string name="upgrade_screen_sub_still_renewing_message">Az előfizetésed még megújulásra van állítva. Először mondd le a Google Playben, majd gyere vissza, hogy megvedd az egyszeri vásárlást — így nem terhelnek meg kétszer.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Nem sikerült ellenőrizni az előfizetésed állapotát. Ellenőrizd a kapcsolatod, és próbáld újra.</string>
     <string name="upgrades_gplay_already_owned_error_title">Már megvásárolva</string>
     <string name="upgrades_gplay_already_owned_error_description">Használd a „Vásárlás visszaállítása” opciót a vásárlásod visszaállításához. Ha a probléma továbbra is fennáll, próbáld törölni a Google Play gyorsítótárát, és indítsd újra a készüléked.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play hiba</string>

@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Usajili bado ni hai</string>
     <string name="upgrade_screen_sub_still_renewing_message">Usajili wako bado umewekwa kurejea. Ghairi katika Google Play kwanza, kisha rudi kununua kwa mara moja — kwa hiyo hutatozwa mara mbili.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Hatukuweza kuangalia hali ya usajili wako. Tafadhali angalia muunganisho wako na jaribu tena.</string>
     <string name="upgrades_gplay_already_owned_error_title">Tayari umeshanunua</string>
     <string name="upgrades_gplay_already_owned_error_description">Tumia chaguo la \"Rejesha ununuzi\" kurejesha ununuzi wako. Ikiwa tatizo linaendelea, jaribu kuondoa akache ya Google Play na kuanzisha upya kifaa chako.</string>
     <string name="upgrades_gplay_internal_error_title">Hitilafu ya Google Play</string>

@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abbonamento ancora attivo</string>
     <string name="upgrade_screen_sub_still_renewing_message">Il tuo abbonamento è ancora impostato per il rinnovo. Annullalo prima in Google Play, poi torna qui per acquistare l’acquisto una tantum — in questo modo non ti verrà addebitato due volte.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Non siamo riusciti a verificare lo stato del tuo abbonamento. Controlla la tua connessione e riprova.</string>
     <string name="upgrades_gplay_already_owned_error_title">Già acquistato</string>
     <string name="upgrades_gplay_already_owned_error_description">Usa l’opzione \"Ripristina acquisto\" per ripristinare il tuo acquisto. Se il problema persiste, prova a cancellare la cache di Google Play e a riavviare il dispositivo.</string>
     <string name="upgrades_gplay_internal_error_title">Errore di Google Play</string>

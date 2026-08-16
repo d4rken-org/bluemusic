@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">رکنیت ابھی فعال ہے</string>
     <string name="upgrade_screen_sub_still_renewing_message">آپ کی رکنیت ابھی بھی تجدید کے لیے سیٹ ہے۔ پہلے اسے Google Play میں منسوخ کریں، پھر واپس آئیں اور ایک بار کی خریداری کریں — اس طریقے آپ سے دوہری رقم نہیں لی جائے گی۔</string>
-    <string name="upgrade_screen_sub_check_failed_message">ہم آپ کی رکنیت کی حالت کو چیک نہیں کر سکے۔ براہ کرم اپنا کنکشن چیک کریں اور دوبارہ کوشش کریں۔</string>
     <string name="upgrades_gplay_already_owned_error_title">پہلے سے خریدا گیا</string>
     <string name="upgrades_gplay_already_owned_error_description">اپنی خریداری کو بحال کرنے کے لیے \"خریداری بحال کریں\" آپشن استعمال کریں۔ اگر مسئلہ برقرار ہے، تو Google Play کیش صاف کرنے اور اپنے ڈیوائس کو دوبارہ شروع کرنے کی کوشش کریں۔</string>
     <string name="upgrades_gplay_internal_error_title">Google Play خرابی</string>

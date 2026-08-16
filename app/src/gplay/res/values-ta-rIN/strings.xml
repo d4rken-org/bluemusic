@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">சந்தா இன்னும் செயலில் உள்ளது</string>
     <string name="upgrade_screen_sub_still_renewing_message">உங்கள் சந்தா இன்னும் புதுப்பிக்க வைக்கப்பட்டுள்ளது. முதலில் Google Play இல் அதை ரத்து செய்யவும், பிறகு திரும்பி வந்து ஒரு முறை வாங்குவனை வாங்கவும் — அப்படி செய்தால் உங்களிடம் இரண்டு முறை பணம் வசூல் செய்யப்பட மாட்டாது.</string>
-    <string name="upgrade_screen_sub_check_failed_message">உங்கள் சந்தா நிலைமையை நாங்கள் சரிபார்க்க முடியவில்லை. தயவுசெய்து உங்கள் இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சி செய்யவும்.</string>
     <string name="upgrades_gplay_already_owned_error_title">ஏற்கனவே வாங்கப்பட்டது</string>
     <string name="upgrades_gplay_already_owned_error_description">உங்கள் வாங்குதலை மீட்டெடுக்க \"வாங்குதலை மீட்டெடு\" விருப்பத்தைப் பயன்படுத்தவும். சிக்கல் தொடர்ந்திருந்தால், Google Play சேமிப்பை அழிக்க முயற்சி செய்து உங்கள் சாதனத்தை மீண்டும் தொடங்கவும்.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play பிழை</string>

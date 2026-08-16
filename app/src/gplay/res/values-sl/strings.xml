@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Naročnina je še vedno aktivna</string>
     <string name="upgrade_screen_sub_still_renewing_message">Tvoja naročnina je še vedno nastavljena za obnovitev. Najprej jo prekliči v Google Play, nato se vrni in kupi enkratni nakup — na ta način ne boš zaračunan dvakrat.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Nismo mogli preveriti stanja tvoje naročnine. Prosimo, preveri svojo povezavo in poskusi ponovno.</string>
     <string name="upgrades_gplay_already_owned_error_title">Že kupljeno</string>
     <string name="upgrades_gplay_already_owned_error_description">Uporabi možnost »Obnovi nakup«, da obnoviš svoj nakup. Če se težava nadaljuje, poskusi počistiti predpomnilnik Google Play in ponovno zagnati napravo.</string>
     <string name="upgrades_gplay_internal_error_title">Napaka Google Play</string>

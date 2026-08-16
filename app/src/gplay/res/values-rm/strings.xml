@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">L\'abunament è anc activ</string>
     <string name="upgrade_screen_sub_still_renewing_message">Tia abunament è anc sa da renovar. Annulla la avant-maun en Google Play, lura vegn uss a cumprar la commanda unica - uschia na vegn ti na chargiau duas vias.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Nus n\'empruvain a controlleschar il status da tia abunament. Controllescha per plaschair tia connexiun e prouva uss.</string>
     <string name="upgrades_gplay_already_owned_error_title">Gia cumpra</string>
     <string name="upgrades_gplay_already_owned_error_description">Utilisescha l\'opziun \"Restituir la commanda\" per restituir tia commanda. Sche il problem persista, emprouva a stritgar il cache da Google Play e da restartar tia apparat.</string>
     <string name="upgrades_gplay_internal_error_title">Errur da Google Play</string>

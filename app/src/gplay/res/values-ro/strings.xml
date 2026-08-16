@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abonament încă activ</string>
     <string name="upgrade_screen_sub_still_renewing_message">Abonamentul tău este încă setat să se reînnoiască. Anulează-l mai întâi în Google Play, apoi revino să cumperi achiziția unică — așa nu vei fi taxat de două ori.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Nu am putut verifica statusul abonamentului tău. Te rog, verifică conexiunea și încearcă din nou.</string>
     <string name="upgrades_gplay_already_owned_error_title">Deja cumpărat</string>
     <string name="upgrades_gplay_already_owned_error_description">Folosește opțiunea \"Restaurează achiziția\" pentru a restaura achiziția ta. Dacă problema persistă, încearcă să ștergi cache-ul Google Play și să restartezi dispozitivul.</string>
     <string name="upgrades_gplay_internal_error_title">Eroare Google Play</string>

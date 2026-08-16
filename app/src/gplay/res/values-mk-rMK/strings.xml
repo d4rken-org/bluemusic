@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Претплатата е сè уште активна</string>
     <string name="upgrade_screen_sub_still_renewing_message">Вашата претплата е сè уште поставена да се обнови. Прво откажете ја во Google Play, потоа вратете се да ја купите еднократната куповина — на тој начин нема да бидете наплатени двапати.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Не можевме да го провериме вашиот статус на претплата. Ве молиме проверете ја вашата врска и обидете се повторно.</string>
     <string name="upgrades_gplay_already_owned_error_title">Веќе купено</string>
     <string name="upgrades_gplay_already_owned_error_description">Користете ја опцијата „Обнови куповина\" за да ја обновите вашата куповина. Ако проблемот продолжува, обидете се да го исчистите кешот на Google Play Store и да го рестартирате уредот.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play грешка</string>

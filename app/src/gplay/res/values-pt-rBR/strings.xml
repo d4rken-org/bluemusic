@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Assinatura ainda ativa</string>
     <string name="upgrade_screen_sub_still_renewing_message">Sua assinatura ainda está configurada para renovar. Cancele-a no Google Play primeiro, depois volte para comprar a licença única — assim você não será cobrado duas vezes.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Não conseguimos verificar o status de sua assinatura. Verifique sua conexão e tente novamente.</string>
     <string name="upgrades_gplay_already_owned_error_title">Já comprado</string>
     <string name="upgrades_gplay_already_owned_error_description">Use a opção \"Restaurar compra\" para restaurar sua compra. Se o problema persistir, tente limpar o cache do Google Play e reiniciar seu dispositivo.</string>
     <string name="upgrades_gplay_internal_error_title">Erro do Google Play</string>

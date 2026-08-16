@@ -41,7 +41,6 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Obuna hali ham faol</string>
     <string name="upgrade_screen_sub_still_renewing_message">Sizning obunangiz hali ham yangilashga o\'rnatilib boradi. Avval Google Play-da uni bekor qiling, so\'ng bir marta xaridni sotib olish uchun qaytib keling — shu tarzda sizdan ikki marta to\'lov qilinmaydi.</string>
-    <string name="upgrade_screen_sub_check_failed_message">Biz sizning obunaning holatini tekshire olmadik. Iltimos, ulanishni tekshiring va qayta harakat qiling.</string>
     <string name="upgrades_gplay_already_owned_error_title">Allaqachon sotib olingan</string>
     <string name="upgrades_gplay_already_owned_error_description">Xaridingizni tiklash uchun \"Xaridni tiklash\" variantidan foydalaning. Agar muammo davom etsa, Google Play keshini o\'chirib, qurilmangizni qayta ishga tushiring.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play xatosi</string>
