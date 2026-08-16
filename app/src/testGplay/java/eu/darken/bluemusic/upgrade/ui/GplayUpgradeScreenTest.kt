@@ -36,10 +36,22 @@ class GplayUpgradeScreenTest : BaseComposeRobolectricTest() {
         get() = ApplicationProvider.getApplicationContext()
 
     // "BVM Pro" — the composed brand the screen renders for owners, grace users and the pitch.
+    // Composed through the SAME translated template the UI uses, never "name + space + qualifier":
+    // a locale that reorders or repunctuates the two parts would otherwise make the test agree with
+    // itself while disagreeing with the screen.
     private val appNameWithPostfix: String
-        get() = "${context.getString(R.string.app_name_short)} ${context.getString(R.string.app_name_upgrade_postfix)}"
+        get() = context.getString(
+            R.string.app_name_upgraded_template,
+            context.getString(R.string.app_name_short),
+            context.getString(R.string.app_name_upgrade_postfix),
+        )
 
     private fun appNameWithPostfixedHeroBody(bodyRes: Int): String = context.getString(bodyRes, appNameWithPostfix)
+
+    // The ownership headline goes through two translated layers: the outer sentence, formatted with
+    // a brand that is itself composed by the flavor title template.
+    private val ownedHeroTitle: String
+        get() = context.getString(R.string.upgrade_screen_owned_hero_brand_title, appNameWithPostfix)
 
     // What the acquisition top bar must render: the translated pitch pattern with the composed
     // brand formatted into it.
@@ -437,8 +449,9 @@ class GplayUpgradeScreenTest : BaseComposeRobolectricTest() {
         composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_SUBSCRIPTION).assertCountEquals(0)
         composeRule.onAllNodesWithText(context.getString(R.string.upgrade_screen_owned_sub_renewing_body)).assertCountEquals(1)
         composeRule.onAllNodesWithText(appNameWithPostfix).assertCountEquals(1)
-        // The congrats hero names the variant.
+        // The congrats hero names the variant, under a headline that names the tier the user owns.
         composeRule.onAllNodesWithTag(UpgradeScreenTags.GPLAY_OWNED_HERO).assertCountEquals(1)
+        composeRule.onAllNodesWithText(ownedHeroTitle).assertCountEquals(1)
         composeRule.onAllNodesWithText(appNameWithPostfixedHeroBody(R.string.upgrade_screen_owned_hero_sub_body))
             .assertCountEquals(1)
         // The switch path is a visible LOCKED offer: present, disabled, with the unlock condition.
@@ -495,6 +508,26 @@ class GplayUpgradeScreenTest : BaseComposeRobolectricTest() {
         // Owners get the ownership hero instead of the pitch hero: no acquisition preamble card.
         composeRule.onAllNodesWithTag(UpgradeScreenTags.HERO).assertCountEquals(0)
         composeRule.onAllNodesWithText(context.getString(R.string.upgrade_screen_preamble)).assertCountEquals(0)
+    }
+
+    @Test
+    fun `the ownership headline says the user HAS the tier, composed through both templates`() {
+        composeRule.setUpgradeContent {
+            UpgradeScreen(uiState = ownedState(Ownership(hasIap = true)))
+        }
+
+        // Exact-text match on the doubly-composed headline. The copy this replaced told the user
+        // they WERE the tier and hardcoded "Pro" in every locale, so the property to pin is that
+        // the rendered sentence is the outer string formatted with the templated brand -- not any
+        // literal, and not the brand pasted in with an assumed space.
+        composeRule.onAllNodesWithText(ownedHeroTitle).assertCountEquals(1)
+        // The inner layer actually reached the headline.
+        check(ownedHeroTitle.contains(appNameWithPostfix)) {
+            "Expected the composed brand '$appNameWithPostfix' inside the headline, got '$ownedHeroTitle'"
+        }
+        // A call site that forgot the format argument would leak "%1$s" to the user.
+        composeRule.onAllNodesWithText(context.getString(R.string.upgrade_screen_owned_hero_brand_title))
+            .assertCountEquals(0)
     }
 
     @Test

@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Inajipi upya kila mwaka. Ghairi wakati wowote katika Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Kufungua milele</string>
     <string name="upgrade_screen_iap_offer_body">Lipa mara moja na kumiliki Pro milele.</string>
-    <string name="upgrade_screen_owned_hero_title">Wewe ni Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Unamiliki %1$s milele.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Usajili wako wa %1$s unaendelea.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Usajili wako haujawekwa kujirudisha upya, kwa hivyo unaweza kubadili kwenda ununuzi wa mara moja sasa. Kumbuka: ni malipo tofauti ambayo hayataghairi au kurudisha pesa za usajili wako, kwa hivyo tumia akaunti moja ya Google kwa zote mbili.</string>

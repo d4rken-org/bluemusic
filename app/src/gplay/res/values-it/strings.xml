@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Si rinnova annualmente. Puoi disdire in qualsiasi momento in Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Sblocco permanente</string>
     <string name="upgrade_screen_iap_offer_body">Paga una volta e possiedi Pro per sempre.</string>
-    <string name="upgrade_screen_owned_hero_title">Sei Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Possiedi %1$s per sempre.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Il tuo abbonamento %1$s è attivo.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Il tuo abbonamento non è impostato per il rinnovo, quindi puoi passare all\'acquisto una tantum adesso. Attenzione: è un addebito separato che non annullerà o rimborserà l\'abbonamento, quindi usa lo stesso account Google per entrambi.</string>

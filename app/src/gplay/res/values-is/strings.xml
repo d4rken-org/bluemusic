@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Endurnýist ár hvert. Segðu upp hvenær sem er í Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Ævarleigu aðgangur</string>
     <string name="upgrade_screen_iap_offer_body">Borga einu sinni og eiga Pro endalaust.</string>
-    <string name="upgrade_screen_owned_hero_title">Þú ert Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Þú átt %1$s endalaust.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Þín %1$s áskrift er virk.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Þín áskrift er ekki stillt til endurnýjunar, svo þú getur skipt yfir í einfalda kaup nú. Viðvörun: þetta er sérstakt gjald sem mun ekki hætta við eða endurgreiða áskriftina þína, svo notaðu sama Google reikning fyrir bæði.</string>

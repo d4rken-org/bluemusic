@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Atjaunojas katru gadu. Jebkurā brīdī to varat atteikt no Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Mūžīga atbloķēšana</string>
     <string name="upgrade_screen_iap_offer_body">Maksājiet vienreiz un Pro būs jūsu uz mūžu.</string>
-    <string name="upgrade_screen_owned_hero_title">Jūs esat Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Jums pieder %1$s uz mūžu.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Jūsu %1$s abonēšana ir aktīva.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Jūsu abonēšana nav iestatīta atjaunošanai, tāpēc varat pārslēgties uz vienreizēju pirkumu tagad. Pievērsiet uzmanību: tā ir atsevišķa maksāšana, kas neatceļ vai neatgriezīs jūsu abonēšanu, tāpēc izmantojiet vienu un to pašu Google kontu abiem.</string>

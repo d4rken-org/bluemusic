@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">매년 갱신됩니다. Google Play에서 언제든지 취소할 수 있습니다.</string>
     <string name="upgrade_screen_iap_offer_title">평생 잠금 해제</string>
     <string name="upgrade_screen_iap_offer_body">한 번 결제하고 Pro를 영구적으로 소유하세요.</string>
-    <string name="upgrade_screen_owned_hero_title">Pro 버전입니다! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">%1$s를 영구적으로 소유하고 있습니다.</string>
     <string name="upgrade_screen_owned_hero_sub_body">%1$s 구독이 활성화되어 있습니다.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">구독이 자동 갱신으로 설정되지 않았으므로 이제 일회성 구매로 전환할 수 있습니다. 주의: 이것은 구독을 취소하거나 환불하지 않으며 별도로 청구되는 요금이므로 두 결제 모두에 동일한 Google 계정을 사용하세요.</string>

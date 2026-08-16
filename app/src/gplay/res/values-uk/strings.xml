@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Автоматично продовжується щороку. Скасуйте будь-коли в Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Довічне розблокування</string>
     <string name="upgrade_screen_iap_offer_body">Сплатьте один раз і користуйтесь Pro назавжди.</string>
-    <string name="upgrade_screen_owned_hero_title">У вас є Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Ви володієте %1$s назавжди.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Ваша %1$s підписка активна.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Ваша підписка не встановлена на автоматичне продовження, тому ви можете зараз перейти на одноразову покупку. Увага: це окремий платіж, який не скасує вашу поточну підписку та не поверне кошти за неї, тому використовуйте один і той самий обліковий запис Google для обох.</string>

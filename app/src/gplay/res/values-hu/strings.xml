@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Évente megújul. Bármikor törölheted a Google Play-ben.</string>
     <string name="upgrade_screen_iap_offer_title">Élettartam feloldás</string>
     <string name="upgrade_screen_iap_offer_body">Fizess egyszer, és a Pro funkciókat örökre megtartod.</string>
-    <string name="upgrade_screen_owned_hero_title">Pro vagy! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Az %1$s örökre a tiéd.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Az %1$s előfizetésed aktív.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Az előfizetésed nem fog megújulni, így mostantól az egyszeri vásárlásra válthatsz. Figyelem: ez egy külön díj, amely nem szünteti meg és nem adja vissza az előfizetésed, ezért mindkettőhöz ugyanazt a Google-fiókot használd.</string>

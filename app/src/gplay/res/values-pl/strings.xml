@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Odnawiane co roku. Anuluj w dowolnym momencie w Sklepie Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Dożywotne odblokowywanie</string>
     <string name="upgrade_screen_iap_offer_body">Zapłać raz i posiadaj Pro na zawsze.</string>
-    <string name="upgrade_screen_owned_hero_title">Jesteś Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Posiadasz %1$s na zawsze.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Twoja subskrypcja %1$s jest aktywna.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Twoja subskrypcja nie jest ustawiona na odnowienie, więc możesz teraz przełączyć się na jednorazowy zakup. Ostrzeżenie: to oddzielna opłata, która nie anuluje ani nie zwróci pieniędzy z twojej subskrypcji, więc użyj tego samego konta Google dla obu.</string>

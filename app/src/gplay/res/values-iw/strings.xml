@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">מתחדש מדי שנה. בטל בכל עת ב-Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">פתיחה לכל החיים</string>
     <string name="upgrade_screen_iap_offer_body">שלם פעם אחת והחזק Pro לתמיד.</string>
-    <string name="upgrade_screen_owned_hero_title">אתה Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">אתה מחזיק את %1$s לתמיד.</string>
     <string name="upgrade_screen_owned_hero_sub_body">המנוי שלך %1$s פעיל.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">המנוי שלך אינו מוגדר להתחדש, כך שתוכל לעבור לרכישה חד-פעמית עכשיו. זהירות: זו חיוב נפרד שלא יבטל או יחזיר את המנוי שלך, כך השתמש באותו חשבון Google לשניהם.</string>

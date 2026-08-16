@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Werk jaarlik by. Kanselleer enige tyd in Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Lewenslange ontgrendeling</string>
     <string name="upgrade_screen_iap_offer_body">Betaal eenkeer en besit Pro vir altyd.</string>
-    <string name="upgrade_screen_owned_hero_title">Jy is Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Jy besit %1$s vir altyd.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Jou %1$s-inskripsie is aktief.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Jou inskripsie is nie ingestel om te vernuwe nie, so jy kan nou na die eenmalige aankoop oorskakel. Let op: dit is \'n aparte las wat jou inskripsie nie sal kanselleer of terugbetaal nie, so gebruik dieselfde Google-rekening vir albei.</string>

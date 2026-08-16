@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Обнавља се годишње. Откажи у било којем тренутку на Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Доживотна куповина</string>
     <string name="upgrade_screen_iap_offer_body">Плати једном и поседуј Pro заувек.</string>
-    <string name="upgrade_screen_owned_hero_title">Ти си Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Поседујеш %1$s заувек.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Твоја %1$s претплата је активна.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Твоја претплата није подешена за обнављање, па можеш сада прећи на једнократну куповину. Пажња: то је одвојена наплата која неће отказати или вратити твоју претплату, па користи исти Google налог за обоје.</string>

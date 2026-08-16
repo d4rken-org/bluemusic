@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Ανανεώνεται ετησίως. Ακύρωση ανά πάσα στιγμή στο Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Ξεκλείδωμα για πάντα</string>
     <string name="upgrade_screen_iap_offer_body">Πληρώστε μια φορά και κατέχετε Pro για πάντα.</string>
-    <string name="upgrade_screen_owned_hero_title">Είστε Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Κατέχετε %1$s για πάντα.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Η συνδρομή σας %1$s είναι ενεργή.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Η συνδρομή σας δεν έχει ρυθμιστεί για ανανέωση, οπότε μπορείτε να κάνετε εναλλαγή στην αγορά μίας φοράς τώρα. Προσοχή: είναι ξεχωριστή χρέωση που δεν θα ακυρώσει ή επιστρέψει τη συνδρομή σας, επομένως χρησιμοποιήστε το ίδιο λογαριασμό Google και για τα δύο.</string>

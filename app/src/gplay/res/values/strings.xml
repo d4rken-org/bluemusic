@@ -76,7 +76,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Renews yearly. Cancel anytime in Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Lifetime unlock</string>
     <string name="upgrade_screen_iap_offer_body">Pay once and own Pro forever.</string>
-    <string name="upgrade_screen_owned_hero_title">You\'re Pro! ❤️</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">You have %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">You own %1$s forever.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Your %1$s subscription is active.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Your subscription isn\'t set to renew, so you can switch to the one-time purchase now. Heads up: it\'s a separate charge that won\'t cancel or refund your subscription, so use the same Google account for both.</string>

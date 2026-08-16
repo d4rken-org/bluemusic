@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Diperbarui setiap tahun. Batalkan kapan saja di Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Akses seumur hidup</string>
     <string name="upgrade_screen_iap_offer_body">Bayar sekali dan miliki Pro selamanya.</string>
-    <string name="upgrade_screen_owned_hero_title">Anda Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Anda memiliki %1$s selamanya.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Langganan %1$s Anda aktif.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Langganan Anda tidak diatur untuk diperbarui, jadi Anda dapat beralih ke pembelian sekali bayar sekarang. Perhatian: ini adalah tagihan terpisah yang tidak akan membatalkan atau memberikan pengembalian dana untuk langganan Anda, jadi gunakan akun Google yang sama untuk keduanya.</string>

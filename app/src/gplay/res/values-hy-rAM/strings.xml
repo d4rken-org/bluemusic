@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Վերամեկնարկվում տարեկան։ Ցանկացած ժամանակ չեղարկել Google Play-ում։</string>
     <string name="upgrade_screen_iap_offer_title">Ցմահ արձակում</string>
     <string name="upgrade_screen_iap_offer_body">Միանգամ վճարեք և տիրապետեք Pro-ին ընդմեր։</string>
-    <string name="upgrade_screen_owned_hero_title">Դուք Pro եք! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Դուք տիրապետում եք %1$s-ին ընդմեր։</string>
     <string name="upgrade_screen_owned_hero_sub_body">Ձեր %1$s բաժանորդագրությունը ակտիվ է։</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Ձեր բաժանորդագրությունը սահմանված չէ վերամեկնարկվելու համար, այնպես որ դուք կարող եք հիմա անցել միանգամյա ձեռքբերմանը։ Ուշադրություն. դա առանձին վճար է, որը չի չեղարկի կամ հետ չի կտա ձեր բաժանորդագրությունը, այնպես որ օգտագործեք նույն Google հաշիվը երկուսի համար։</string>

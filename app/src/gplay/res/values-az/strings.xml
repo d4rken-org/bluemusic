@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Hər il yenilənir. İstənilən vaxt Google Play-də ləğv edin.</string>
     <string name="upgrade_screen_iap_offer_title">Ömürlük açılış</string>
     <string name="upgrade_screen_iap_offer_body">Bir dəfə ödəyin və Pro-nu əbədi olaraq sahibləşin.</string>
-    <string name="upgrade_screen_owned_hero_title">Siz Pro-sunuz! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Siz %1$s-ni əbədi olaraq sahibləşirsiniz.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Sizin %1$s abonəliyi fəal.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Sizin abonəlikiniz yenilənmək üçün təyin edilməmişdir, buna görə indi bir dəfə alışa keçə bilərsiz. Xahiş edirik qeyd edin: bu, sizin abonəlikinizi ləğv etməyəcək və ya geri qaytarmayacaq ayrı bir ödəniş olacaqdır, buna görə hər ikisi üçün eyni Google hesabını istifadə edin.</string>

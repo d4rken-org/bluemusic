@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Renoviĝas ĉiujare. Nuligu en ajna momento en Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Eterna malŝloseco</string>
     <string name="upgrade_screen_iap_offer_body">Pagu unu fojon kaj posedi Pro por ĉiam.</string>
-    <string name="upgrade_screen_owned_hero_title">Vi estas Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Vi posedas %1$s por ĉiam.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Via %1$s abono estas aktiva.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Via abono ne estas agordita renoviĝi, do vi povas ŝanĝi al la unufoja aĉeto nun. Averto: ĝi estas aparta ĉargo, kiu ne nuligus aŭ repagus vian abonon, do uzu la saman Google-konton por ambaŭ.</string>

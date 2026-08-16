@@ -26,9 +26,15 @@ class FossUpgradeScreenTest : BaseComposeRobolectricTest() {
         get() = ApplicationProvider.getApplicationContext()
 
     // The build-branded title: the short app name plus the flavor postfix, exactly what the shared
-    // title helper composes. Asserted from resources, never as a hardcoded literal.
+    // title helper composes. Built from the same translated template, never "name + space +
+    // qualifier" — a locale that reorders or repunctuates the two parts would otherwise make the
+    // test agree with itself while disagreeing with the screen.
     private val composedFlavorTitle: String
-        get() = "${context.getString(R.string.app_name_short)} ${context.getString(R.string.app_name_upgrade_postfix)}"
+        get() = context.getString(
+            R.string.app_name_upgraded_template,
+            context.getString(R.string.app_name_short),
+            context.getString(R.string.app_name_upgrade_postfix),
+        )
 
     @Test
     fun `renders the pitch content without a duplicated app bar title`() {

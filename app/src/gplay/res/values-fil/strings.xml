@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Nag-renew taun-taon. Maaaring kanselahin anumang oras sa Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Pangmatagalang unlock</string>
     <string name="upgrade_screen_iap_offer_body">Magbayad nang minsan at magmamay-ari ng Pro magpakailanman.</string>
-    <string name="upgrade_screen_owned_hero_title">Pro ka na! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Magmamay-ari ka ng %1$s magpakailanman.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Ang iyong %1$s subscription ay aktibo.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Ang iyong subscription ay hindi itinakda na mag-renew, kaya maaari ka nang lumipat sa one-time purchase ngayon. Abiso: ito ay isang hiwalay na bayad na hindi magkakansel o magbabigay ng refund sa iyong subscription, kaya gamitin ang parehong Google account para sa pareho.</string>

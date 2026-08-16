@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">ປັບປຸງໃໝ່ປະຈໍາປີ. ສາມາດຍົກເລີກໄດ້ທຸກເວລາໃນ Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">ປົ່ອຍໃຫ້ຕະຫຼອດໄປ</string>
     <string name="upgrade_screen_iap_offer_body">ຈ່າຍຄັ້ງດຽວ ແລະເປັນເຈົ້າຂອງ Pro ຕະຫຼອດໄປ.</string>
-    <string name="upgrade_screen_owned_hero_title">ທ່ານເປັນ Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">ທ່ານເປັນເຈົ້າຂອງ %1$s ຕະຫຼອດໄປ.</string>
     <string name="upgrade_screen_owned_hero_sub_body">ການໂຄສະລາ %1$s ຂອງທ່ານໃຊ້ງານຍູ່.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">ໂຄສະລາຂອງທ່ານບໍ່ໄດ້ຕັ້ງໄວ້ເພື່ອປັບປຸງໃໝ່, ດັ່ງນັ້ນທ່ານສາມາດປ່ຝນໄປຊື້ຄັ້ງດຽວໄດ້ດຽວນີ້. ລະວັງ: ມັນເປັນຄ່າໃຊ້ຈ່າຍແຍກຕ່າງໝາກທີ່ຈະບໍ່ຍົກເລີກ ໜືອ ຄືນເງິນໂຄສະລາຂອງທ່ານ, ດັ່ງນັ້ນໃຊ້ Google ບັນຊີ ດຽວກັນສຳລັບທັ້ງສອງ.</string>

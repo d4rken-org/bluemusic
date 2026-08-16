@@ -164,7 +164,11 @@ private fun UpgradeOwnedHero(
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
                 Text(
-                    text = stringResource(R.string.upgrade_screen_owned_hero_title),
+                    text = stringResource(
+                        R.string.upgrade_screen_owned_hero_brand_title,
+                        // Same brand the body below composes, through the same flavor title template.
+                        brandTitleText(includeQualifier = true),
+                    ),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                 )

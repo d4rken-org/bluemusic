@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Fornyes årligt. Annuller når som helst i Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Livstidslås op</string>
     <string name="upgrade_screen_iap_offer_body">Betal én gang og få Pro for evigt.</string>
-    <string name="upgrade_screen_owned_hero_title">Du er Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Du ejer %1$s for evigt.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Dit %1$s-abonnement er aktivt.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Dit abonnement er ikke indstillet til at blive fornyet, så du kan skifte til engangskøbet nu. Pas på: det er en separat afgift, som ikke annullerer eller refunderer dit abonnement, så brug den samme Google-konto til begge dele.</string>
