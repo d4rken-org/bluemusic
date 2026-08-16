@@ -329,14 +329,10 @@
     <string name="label_premium_version">Premium-version</string>
     <string name="general_upgrade_action">Uppgradera</string>
     <string name="common_upgrade_required_label">Uppgradering krävs</string>
-    <string name="description_premium_required_additional_devices">För att hantera ytterligare enheter krävs premiumversionen.</string>
-    <string name="description_premium_required_this_extra_option">Det här extra-alternativet kräver premiumversionen av den här appen.</string>
-    <string name="description_premium_upgrade_explanation">Skaffa premiumversionen för att möjliggöra ytterligare funktioner och för att bidra till utvecklingen.</string>
     <string name="label_premium_version_required">Premium-versionen krävs</string>
     <string name="upgrade_feature_requires_pro">Den här funktionen kräver premiumversionen</string>
     <string name="upgrade_prompt_upgrade_action">Uppgradera</string>
     <string name="description_intro_purpose">Med den här appen kan din Android-enhet komma ihåg volymen för olika Bluetooth-enheter.</string>
-    <string name="description_intro_premium">Om du gillar den här appen, överväg att uppgradera till premiumversionen. Denna stöder utvecklingen och ger dig några extrafunktioner.</string>
     <string name="upgrade_benefit_unlimited_devices">Obegränsade enhetsprofiler</string>
     <string name="upgrade_benefit_connection_actions">Automatisk uppspelning, appstart och anslutningsaviseringar</string>
     <string name="upgrade_benefit_theme_customization">Anpassning av tema, stil och färg</string>

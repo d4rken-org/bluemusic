@@ -329,14 +329,10 @@
     <string name="label_premium_version">Premiumversio</string>
     <string name="general_upgrade_action">Plibonigi</string>
     <string name="common_upgrade_required_label">Apgrejdo necesa</string>
-    <string name="description_premium_required_additional_devices">Administri pliajn aparatojn postulas la premiumversion.</string>
-    <string name="description_premium_required_this_extra_option">Ĉi tiu ekstra opcio postulas la premiumversion de ĉi tiu apo.</string>
-    <string name="description_premium_upgrade_explanation">Akiru la premiumversion por ebligi pliajn funkciojn kaj subteni disvolvadon.</string>
     <string name="label_premium_version_required">Premiumversio bezonata</string>
     <string name="upgrade_feature_requires_pro">Ĉi tiu funkcio postulas la premiumversion</string>
     <string name="upgrade_prompt_upgrade_action">Plibonigi</string>
     <string name="description_intro_purpose">Ĉi tiu apo permesas al via Android-aparato memorigi la volumenon de malsamaj Bluetooth-aparatoj.</string>
-    <string name="description_intro_premium">Se vi ŝatas ĉi tiun apon, konsideru plibonigi al la premiumversio. ĝi subtenas disvolvadon kaj donas al vi kelkajn ekstraajn funkciojn.</string>
     <string name="upgrade_benefit_unlimited_devices">Senlimaj aparataj profiloj</string>
     <string name="upgrade_benefit_connection_actions">Aŭtoludado, lanĉo de aplikaĵo kaj konektaj sciigoj</string>
     <string name="upgrade_benefit_theme_customization">Personagigo de temo, stilo kaj koloro</string>

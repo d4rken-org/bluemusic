@@ -329,14 +329,10 @@
     <string name="label_premium_version">പ്രീമിയം വേർഷൻ</string>
     <string name="general_upgrade_action">അപ്ഗ്രേഡുചെയ്യുക</string>
     <string name="common_upgrade_required_label">അപ്‌ഗ്രേഡ് ആവശ്യമാണ്</string>
-    <string name="description_premium_required_additional_devices">അധിക ഉപകരണങ്ങൾ നിർവ്വഹിക്കണമെങ്കിൽ പ്രീമിയം വേർഷൻ ആവശ്യമാണ്.</string>
-    <string name="description_premium_required_this_extra_option">ഈ അധിക ഓപ്ഷന് ഈ ആപ്പിന്റെ പ്രീമിയം വേർഷൻ ആവശ്യമാണ്.</string>
-    <string name="description_premium_upgrade_explanation">അധിക ഫീചർസ് പ്രവർത്തനക്ഷമമാക്കാനും വികസനം പിന്തുണയ്ക്കാനും പ്രീമിയം വേർഷൻ നേടുക.</string>
     <string name="label_premium_version_required">പ്രീമിയം വേർഷൻ ആവശ്യമാണ്</string>
     <string name="upgrade_feature_requires_pro">ഈ ഫീചർക്ക് പ്രീമിയം വേർഷൻ ആവശ്യമാണ്</string>
     <string name="upgrade_prompt_upgrade_action">അപ്ഗ്രേഡുചെയ്യുക</string>
     <string name="description_intro_purpose">ഈ ആപ്പ് നിങ്ങളുടെ Android ഉപകരണത്തെ വ്യത്യസ്ത Bluetooth ഉപകരണങ്ങളുടെ വോള്യം ഓർക്കാൻ അനുവദിക്കുന്നു.</string>
-    <string name="description_intro_premium">ഈ ആപ്പ് ഇഷ്ടമായാൽ, പ്രീമിയം വേർഷനിലേക്ക് അപ്ഗ്രേഡ് ചെയ്യുന്നത് പരിഗണിക്കുക. ഇത് വികസനത്തെ പിന്തുണയ്ക്കുകയും ചില അധിക ഫീചർസ് നൽകുകയും ചെയ്യുന്നു.</string>
     <string name="upgrade_benefit_unlimited_devices">പരിധിയില്ലാത്ത ഉപകരണ പ്രൊഫൈലുകൾ</string>
     <string name="upgrade_benefit_connection_actions">ഓട്ടോപ്ലേ, ആപ്പ് ലോഞ്ച്, കണക്ഷൻ അലർട്ടുകൾ</string>
     <string name="upgrade_benefit_theme_customization">തീം, ശൈലി, നിറ കസ്റ്റമൈസേഷൻ</string>

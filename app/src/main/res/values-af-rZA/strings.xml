@@ -329,14 +329,10 @@
     <string name="label_premium_version">Premium weergawe</string>
     <string name="general_upgrade_action">Gradeer Op</string>
     <string name="common_upgrade_required_label">Opgradering benodig</string>
-    <string name="description_premium_required_additional_devices">Om bykomende toestelle te beheer vereis die premium weergawe.</string>
-    <string name="description_premium_required_this_extra_option">Hierdie ekstra opsie vereis die premium weergawe van hierdie program.</string>
-    <string name="description_premium_upgrade_explanation">Kry die premium weergawe om bykomende kenmerke te aktiveer en ontwikkeling te ondersteun.</string>
     <string name="label_premium_version_required">Premium weergawe benodig</string>
     <string name="upgrade_feature_requires_pro">Hierdie kenmerk vereis die premium weergawe</string>
     <string name="upgrade_prompt_upgrade_action">Gradeer op</string>
     <string name="description_intro_purpose">Hierdie program laat Android toe om die volume instellings van verskeie Bluetooth toestelle te onthou.</string>
-    <string name="description_intro_premium">Indien jy die program geniet oorweeg dit asb. om op te gradeer na die premium weergawe. Dit ondersteun verdere ontwikkeling en maak \'n paar ekstra eienskappe beskikbaar.</string>
     <string name="upgrade_benefit_unlimited_devices">Onbeperkte toestelprofile</string>
     <string name="upgrade_benefit_connection_actions">Outoafspeel, toepassing-begin en verbindingswaarskuwings</string>
     <string name="upgrade_benefit_theme_customization">Tema-, styl- en kleurasepassing</string>

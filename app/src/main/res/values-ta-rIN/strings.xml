@@ -329,14 +329,10 @@
     <string name="label_premium_version">ப்ரிமியம் பதிப்பு</string>
     <string name="general_upgrade_action">மேம்படுத்து</string>
     <string name="common_upgrade_required_label">மேம்படுத்தல் தேவை</string>
-    <string name="description_premium_required_additional_devices">கூடுதலான சாதனங்களை நிர்வகிக்க ப்ரிமியம் பதிப்பு தேவைப்படுகிறது.</string>
-    <string name="description_premium_required_this_extra_option">இந்த ஏனும் விருப்பமான விளையாட்டு இந்த ஆப்்அின் ப்ரிமியம் பதிப்பை தேவைப்படுகிறது.</string>
-    <string name="description_premium_upgrade_explanation">கூடுதலான சிறப்பியகளை இயக்கி மேம்பாட்டை ஆதரிக்க ப்ரிமியம் பதிப்பைப் பெறும்.</string>
     <string name="label_premium_version_required">ப்ரிமியம் பதிப்பு தேவைய்</string>
     <string name="upgrade_feature_requires_pro">இந்த சிறப்பியுக்கு ப்ரிமியம் பதிப்பு தேவைப்படுகிறது</string>
     <string name="upgrade_prompt_upgrade_action">மேம்படுத்து</string>
     <string name="description_intro_purpose">இந்த ஆப்் உங்கள் Android சாதனம் மாற்றமான Bluetooth சாதனங்களின் ஒலி அளவுகளை நினைவில் வைக்க உதவுகிறது.</string>
-    <string name="description_intro_premium">இந்த ஆப்்அன்னை விரும்பினால், ப்ரிமியம் பதிப்பிற்கு மேம்படுத்தலைப் பரிசீலிக்கவும். இது மேம்பாட்டை ஆதரிக்கிறது மற்றும் சில கூடுதலான சிறப்பியகளைக் கொடுக்கிறது.</string>
     <string name="upgrade_benefit_unlimited_devices">வரம்பற்ற சாதன சுயவிவரங்கள்</string>
     <string name="upgrade_benefit_connection_actions">தானியங்கி இயக்கம், பயன்பாட்டு தொடக்கம் மற்றும் இணைப்பு எச்சரிக்கைகள்</string>
     <string name="upgrade_benefit_theme_customization">தீம், பாணி மற்றும் வண்ண தனிப்பயனாக்கம்</string>

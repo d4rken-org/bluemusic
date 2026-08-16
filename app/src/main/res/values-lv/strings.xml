@@ -333,14 +333,10 @@
     <string name="label_premium_version">Premium versija</string>
     <string name="general_upgrade_action">Jaunināt</string>
     <string name="common_upgrade_required_label">Nepieciešams jauninājums</string>
-    <string name="description_premium_required_additional_devices">Papildu ierīču pārvaldīšana prasa premium versiju.</string>
-    <string name="description_premium_required_this_extra_option">Šī papildu opcija prasa šīs lietotnes premium versiju.</string>
-    <string name="description_premium_upgrade_explanation">Iegūbiet premium versiju, lai iespējotu papildu funkcijas un atbalstītu izstrādi.</string>
     <string name="label_premium_version_required">Nepieciešama premium versija</string>
     <string name="upgrade_feature_requires_pro">Šī funkcija prasa premium versiju</string>
     <string name="upgrade_prompt_upgrade_action">Jaunināt</string>
     <string name="description_intro_purpose">Šī lietotne ļauj jūsu Android ierīcei atcerēties dažādu Bluetooth ierīču skaļumus.</string>
-    <string name="description_intro_premium">Ja jums patika šī lietotne, apsveriet jaunināšanu uz premium versiju. Tas atbalsta izstrādi un snēdz dažas papildu funkcijas.</string>
     <string name="upgrade_benefit_unlimited_devices">Neierobežots ierīcī profilu skaits</string>
     <string name="upgrade_benefit_connection_actions">Automātiskā atskaņošana, lietotnes palaist un savienojuma brīdinājumi</string>
     <string name="upgrade_benefit_theme_customization">Temāta, stila un krāsu pielāgošana</string>

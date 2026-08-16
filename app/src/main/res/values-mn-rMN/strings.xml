@@ -329,14 +329,10 @@
     <string name="label_premium_version">Премиум хувилбар</string>
     <string name="general_upgrade_action">Сайжруулах</string>
     <string name="common_upgrade_required_label">Шинэчлэлт шаардлагатай</string>
-    <string name="description_premium_required_additional_devices">Нэмэлт төхөөрөмжүүд удаалахад премиум хувилбар шаардлагана.</string>
-    <string name="description_premium_required_this_extra_option">Энэ нэмэлт сонголтд энэ аппын премиум хувилбар шаардлагана.</string>
-    <string name="description_premium_upgrade_explanation">Нэмэлт онцлогдох ба хөгжлөлтийг дэмжлэхийн тулд премиум хувилбар аваарай.</string>
     <string name="label_premium_version_required">Премиум хувилбар шаардлагана</string>
     <string name="upgrade_feature_requires_pro">Энэ онцлогд премиум хувилбар шаардлагана</string>
     <string name="upgrade_prompt_upgrade_action">Сайжруулах</string>
     <string name="description_intro_purpose">Энэ апп таны Android төхөөрөмжийд өөр өөр Bluetooth төхөөрөмжийн дууг санаах боломжийг олгодог.</string>
-    <string name="description_intro_premium">Хэрэв энэ апп танд таалагдсан бол, премиум хувилбар рүү шилжээрэй. Тэр хөгжлөлтийг дэмжлээд хэдэх бөгөөд цөөхөн онцлог авчуулна.</string>
     <string name="upgrade_benefit_unlimited_devices">Хязгаалаггүй төхөөрөмжийн профайлууд</string>
     <string name="upgrade_benefit_connection_actions">Автомат тоглуулалт, апп нээх, холбооны мэдэгдэл</string>
     <string name="upgrade_benefit_theme_customization">Тем, хэв болон өнгийн өнгөрөмжийнх тохиргулалт</string>

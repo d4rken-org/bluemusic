@@ -327,14 +327,10 @@ TheNothingGuy</string>
     <string name="label_premium_version">Bản trả phí</string>
     <string name="general_upgrade_action">Nâng cấp</string>
     <string name="common_upgrade_required_label">Yêu cầu nâng cấp</string>
-    <string name="description_premium_required_additional_devices">Quản lý bổ xung các thiết bị yêu cầu phiên bản cao cấp.</string>
-    <string name="description_premium_required_this_extra_option">Tùy chọn bổ xung này yêu cầu phiên bản cao cấp của ứng dụng này.</string>
-    <string name="description_premium_upgrade_explanation">Nhận phiên bản trả phí để kích hoạt các tính năng bổ sung và hỗ trợ phát triển.</string>
     <string name="label_premium_version_required">Yêu cầu phiên bản trả phí</string>
     <string name="upgrade_feature_requires_pro">Tính năng này cần phiên bản trả phí</string>
     <string name="upgrade_prompt_upgrade_action">Nâng cấp</string>
     <string name="description_intro_purpose">Ứng dụng này cho phép Android ghi nhớ mức âm lượng của thiết bị Bluetooth khác nhau.</string>
-    <string name="description_intro_premium">Nếu bạn thích ứng dụng này, hãy cân nhắc nâng cấp lên phiên bản cao cấp. Nó hỗ trợ phát triển và giúp bạn có thêm một vài tính năng.</string>
     <string name="upgrade_benefit_unlimited_devices">Không giới hạn hồ sơ thiết bị</string>
     <string name="upgrade_benefit_connection_actions">Tự phát, mở ứng dụng và cảnh báo kết nối</string>
     <string name="upgrade_benefit_theme_customization">Tùy chỉnh giao diện, kiểu dáng và màu sắc</string>

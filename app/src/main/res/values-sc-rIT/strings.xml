@@ -329,14 +329,10 @@
     <string name="label_premium_version">Versione premium</string>
     <string name="general_upgrade_action">Aggiornamentu</string>
     <string name="common_upgrade_required_label">Aggiornamentu requeridu</string>
-    <string name="description_premium_required_additional_devices">Sa gestione de dispositivos aditzionales richièdet sa versione premium.</string>
-    <string name="description_premium_required_this_extra_option">Cussa optzzione aditzionale richièdet sa versione premium de s\'app.</string>
-    <string name="description_premium_upgrade_explanation">Procùrati sa versione premium pro abilitare funtzionalidades aditzionales e suportare su sviluppu.</string>
     <string name="label_premium_version_required">Versione premium richièsta</string>
     <string name="upgrade_feature_requires_pro">Cussa funtzionalidade richièdet sa versione premium</string>
     <string name="upgrade_prompt_upgrade_action">Aggiornamentu</string>
     <string name="description_intro_purpose">S\'app permìttit a su dispositivu Android tuo de recordare su volume de sos diversos dispositivos Bluetooth.</string>
-    <string name="description_intro_premium">Si ti pìachet s\'app, cunsìdera de aggiornare a sa versione premium. Suportat su sviluppu e ti dat calicunas funtzionalidades aditzionales.</string>
     <string name="upgrade_benefit_unlimited_devices">Profilis de dispositivu illimitaus</string>
     <string name="upgrade_benefit_connection_actions">Riprodutzione automàtica, apertura de app e avisos de connessione</string>
     <string name="upgrade_benefit_theme_customization">Personalizatzione de tema, stile e colore</string>

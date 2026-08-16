@@ -329,14 +329,10 @@
     <string name="label_premium_version">Премиум версия</string>
     <string name="general_upgrade_action">Ъпгрейд</string>
     <string name="common_upgrade_required_label">Необходимо е надграждане</string>
-    <string name="description_premium_required_additional_devices">Управление на допълнителни устройства изисква премиум версия.</string>
-    <string name="description_premium_required_this_extra_option">Тази допълнителна опция изисква премиум версията на приложението.</string>
-    <string name="description_premium_upgrade_explanation">Вземете премиум версията, за да разрешите допълнителните функции и подкрепите развитието.</string>
     <string name="label_premium_version_required">Изисква се премиум версията</string>
     <string name="upgrade_feature_requires_pro">Тази функция изисква премиум версията</string>
     <string name="upgrade_prompt_upgrade_action">Ъпгрейд</string>
     <string name="description_intro_purpose">Приложението позволява вашето устройство да запомни силата на звука за различни Bluetooth устройства.</string>
-    <string name="description_intro_premium">Ако харесвате приложението закупете премиум версията. Тя подкрепя разработката и Ви предоставя екстра функции.</string>
     <string name="upgrade_benefit_unlimited_devices">Неограничени профили на устройства</string>
     <string name="upgrade_benefit_connection_actions">Автоматично пускане, стартиране на приложения и сигнали за връзка</string>
     <string name="upgrade_benefit_theme_customization">Персонализиране на тема, стил и цвят</string>

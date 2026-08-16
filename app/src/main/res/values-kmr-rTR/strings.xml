@@ -329,14 +329,10 @@
     <string name="label_premium_version">Guhertoya premium</string>
     <string name="general_upgrade_action">Nûjen bike</string>
     <string name="common_upgrade_required_label">Bilindkirina pêdivî ye</string>
-    <string name="description_premium_required_additional_devices">Birêvebirin cîhazên zedê guhertoya premium hewce dike.</string>
-    <string name="description_premium_required_this_extra_option">Ev vebijark guhertoya premium hewce dike.</string>
-    <string name="description_premium_upgrade_explanation">Guhertoya premium bistinin da taybetmendên zedê aktif bikin.</string>
     <string name="label_premium_version_required">Guhertoya premium hewce ye</string>
     <string name="upgrade_feature_requires_pro">Ev taybetmend guhertoya premium hewce dike</string>
     <string name="upgrade_prompt_upgrade_action">Nûjen bike</string>
     <string name="description_intro_purpose">Ev bername dihêle cîhaza Android-a we astên dengê cîhazên Bluetooth ji bîr bike.</string>
-    <string name="description_intro_premium">Heger hûn vê bernameê hez bikin, pêşniyar dikin guhertoya premium bistinin. Ew perkifkirinê piştgirî dike û taybetmendên zedê bide we.</string>
     <string name="upgrade_benefit_unlimited_devices">Profîlên cîhazê yên bêsînor</string>
     <string name="upgrade_benefit_connection_actions">Otomatîkî lêdan, vekirin a sepanê û hişyariyên girêdanê</string>
     <string name="upgrade_benefit_theme_customization">Xweşkirina tema, stil û rengî</string>

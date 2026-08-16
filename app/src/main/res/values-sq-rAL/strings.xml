@@ -329,14 +329,10 @@
     <string name="label_premium_version">Versioni premium</string>
     <string name="general_upgrade_action">Ngriti</string>
     <string name="common_upgrade_required_label">Kërkohet përmirësim</string>
-    <string name="description_premium_required_additional_devices">Menaxhimi i pajisjeve shtesë kërkon versionin premium.</string>
-    <string name="description_premium_required_this_extra_option">Ky opsion shtesë kërkon versionin premium të këtij aplikacioni.</string>
-    <string name="description_premium_upgrade_explanation">Mer versionin premium për të aktivizuar veçori shtesë dhe për të mbështetur zhvillimin.</string>
     <string name="label_premium_version_required">Kërkohet versioni premium</string>
     <string name="upgrade_feature_requires_pro">Ky veçori kërkon versionin premium</string>
     <string name="upgrade_prompt_upgrade_action">Ngriti</string>
     <string name="description_intro_purpose">Ky aplikacion lejon pajisjen tuaj Android të mbajë mend volumin e pajisjeve të ndryshme Bluetooth.</string>
-    <string name="description_intro_premium">Nëse të pëlqen ky aplikacion, konsideroj të ngritësh në versionin premium. Kjo mbështet zhvillimin dhe të merr disa veçori shtesë.</string>
     <string name="upgrade_benefit_unlimited_devices">Profile të pakufizuara pajisje</string>
     <string name="upgrade_benefit_connection_actions">Luajtje automatike, hapje aplikacioni dhe njoftime lidhjeje</string>
     <string name="upgrade_benefit_theme_customization">Personalizim i temës, stilit dhe ngjyrës</string>

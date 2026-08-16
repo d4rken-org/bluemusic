@@ -329,14 +329,10 @@
     <string name="label_premium_version">የዘመን ስሪት</string>
     <string name="general_upgrade_action">አሻሽል</string>
     <string name="common_upgrade_required_label">ማሻሻያ ያስፈልጋል</string>
-    <string name="description_premium_required_additional_devices">ተጨማሪ መሳሪያዎችን ማስተዳደር ከፍተኛ ስሪትን ይፈልጋል።</string>
-    <string name="description_premium_required_this_extra_option">ይህ ተጨማሪ ይህን አፕሊኬሰን የዘመን ስሪት ይጠይቃል።</string>
-    <string name="description_premium_upgrade_explanation">ተጨማሪ ባህሪዎችን ለማስቻል እና እድገትን ለመደገፍ ከፍተኛ ስሪትን ያግኙ።</string>
     <string name="label_premium_version_required">የዘመን ስሪት ክድምነት</string>
     <string name="upgrade_feature_requires_pro">ይህ ባ⁚ራ የዘመን ስሪት ይኀላል</string>
     <string name="upgrade_prompt_upgrade_action">አሻሽል</string>
     <string name="description_intro_purpose">ይህ አፕሊኬስን የAndroid መሣሪያዎት የዓይባይት Bluetooth መሣሪያዎችን ድምፅ እንዲያስታወስ ይያዕዝበታለ።</string>
-    <string name="description_intro_premium">ይህ አፕሊኬስን የወደደዱ ባይለ አፓግረብ ይደግፈሥል። የዘመን ስሪት ንድተዊን ይደግፈሡ ተጨማሪ ብካዾችንን ያየዘ፣ቦጥ።</string>
     <string name="upgrade_benefit_unlimited_devices">ያልተወሰኑ የመሳሪያ መገለጫዎች</string>
     <string name="upgrade_benefit_connection_actions">ራስ-ሰር አጫወት፣ መተግበሪያ ማስጀመሪያ እና የግንኙነት ማስጠንቀቂያዎች</string>
     <string name="upgrade_benefit_theme_customization">ጭብጥ፣ ስልት እና የቀለም ብጁ ቅንብር</string>

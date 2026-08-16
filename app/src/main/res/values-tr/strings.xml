@@ -329,14 +329,10 @@
     <string name="label_premium_version">Ücretli Sürüm</string>
     <string name="general_upgrade_action">Yükselt</string>
     <string name="common_upgrade_required_label">Yükseltme gerekli</string>
-    <string name="description_premium_required_additional_devices">Ek cihazları yönetmek, ücretli sürümü gerektirir.</string>
-    <string name="description_premium_required_this_extra_option">Bu ilave seçenek uygulamanın ücretli sürümünü gerektirir.</string>
-    <string name="description_premium_upgrade_explanation">Ek özellikleri etkinleştirmek ve geliştirmeyi desteklemek için premium sürümü edinin.</string>
     <string name="label_premium_version_required">Ücretli sürüm gerekli</string>
     <string name="upgrade_feature_requires_pro">Bu özellik premium sürümü gerektiriyor</string>
     <string name="upgrade_prompt_upgrade_action">Yükselt</string>
     <string name="description_intro_purpose">Bu uygulama, Android cihazınızın farklı Bluetooth cihazlarının ses seviyesini hatırlamasını sağlar.</string>
-    <string name="description_intro_premium">Bu uygulamayı beğendiyseniz, premium sürüme geçmeyi düşünün. Geliştirmeyi destekler ve size birkaç ekstra özellik sağlar.</string>
     <string name="upgrade_benefit_unlimited_devices">Sınırsız cihaz profili</string>
     <string name="upgrade_benefit_connection_actions">Otomatik oynatma, uygulama başlatma ve bağlantı uyarıları</string>
     <string name="upgrade_benefit_theme_customization">Tema, stil ve renk özelleştirmesi</string>

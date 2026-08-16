@@ -329,14 +329,10 @@
     <string name="label_premium_version">প্রিমিয়াম সংস্করণ</string>
     <string name="general_upgrade_action">আপগ্রেড করুন</string>
     <string name="common_upgrade_required_label">আপগ্রেড প্রয়োজন</string>
-    <string name="description_premium_required_additional_devices">অতিরিক্ত ডিভাইস পরিচালনার জন্য প্রিমিয়াম সংস্করণ প্রয়োজন।</string>
-    <string name="description_premium_required_this_extra_option">এই অতিরিক্ত বিকল্পটিতে অ্যাপের প্রিমিয়াম সংস্করণ প্রয়োজন।</string>
-    <string name="description_premium_upgrade_explanation">অতিরিক্ত ফিচার সক্রিয় করতে এবং উন্নয়ন সমর্থন করতে প্রিমিয়াম সংস্করণ পান।</string>
     <string name="label_premium_version_required">প্রিমিয়াম সংস্করণ প্রয়োজন</string>
     <string name="upgrade_feature_requires_pro">এই ফিচারে প্রিমিয়াম সংস্করণ প্রয়োজন</string>
     <string name="upgrade_prompt_upgrade_action">আপগ্রেড করুন</string>
     <string name="description_intro_purpose">এই অ্যাপ আপনার আন্ড্রয়েড ডিভাইসকে বিভিন্ন ব্লুটুথ ডিভাইসের ভলিউম মনে রাখতে দেয়।</string>
-    <string name="description_intro_premium">যদি আপনি এই অ্যাপটি পছন্দ করেন, তাহলে প্রিমিয়াম সংস্করণে আপগ্রেড করার কথা ভাবুন। এটি উন্নয়ন সমর্থন করে এবং কিছু অতিরিক্ত ফিচার দেয়।</string>
     <string name="upgrade_benefit_unlimited_devices">সীমাহীন ডিভাইস প্রোফাইল</string>
     <string name="upgrade_benefit_connection_actions">অটোপ্লে, অ্যাপ লঞ্চ এবং কানেকশন অ্যালার্ট</string>
     <string name="upgrade_benefit_theme_customization">থিম, স্টাইল এবং রঙ কাস্টমাইজেশন</string>

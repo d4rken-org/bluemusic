@@ -329,14 +329,10 @@
     <string name="label_premium_version">Premium-version</string>
     <string name="general_upgrade_action">Opgrader</string>
     <string name="common_upgrade_required_label">Opgradering påkrævet</string>
-    <string name="description_premium_required_additional_devices">Administrering af flere enheder kræver premium-versionen.</string>
-    <string name="description_premium_required_this_extra_option">Dette ekstra alternativ kræver premium-versionen af denne app.</string>
-    <string name="description_premium_upgrade_explanation">Få premium-versionen for at aktivere ekstra funktioner og støtte udviklingen.</string>
     <string name="label_premium_version_required">Premium-versionen påkrævet</string>
     <string name="upgrade_feature_requires_pro">Denne funktion kræver premium-versionen</string>
     <string name="upgrade_prompt_upgrade_action">Opgrader</string>
     <string name="description_intro_purpose">Denne app tillader din Android at huske lydstyrken for forskellige Bluetooth-enheder.</string>
-    <string name="description_intro_premium">Hvis du kan lide denne app, må du gerne vurdere at skifte til premium-versionen. Det støtter udviklingen og giver dig ekstra funktioner.</string>
     <string name="upgrade_benefit_unlimited_devices">Ubegrænsede enhedsprofiler</string>
     <string name="upgrade_benefit_connection_actions">Autoafspilning, app-start og forbindelsesadvarsler</string>
     <string name="upgrade_benefit_theme_customization">Tema-, stil- og farvetilpasning</string>

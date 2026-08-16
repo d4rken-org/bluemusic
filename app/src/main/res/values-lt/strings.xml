@@ -337,14 +337,10 @@
     <string name="label_premium_version">Premium versija</string>
     <string name="general_upgrade_action">Atnaujinti</string>
     <string name="common_upgrade_required_label">Reikalingas atnaujinimas</string>
-    <string name="description_premium_required_additional_devices">Papildomų įrenginių valdymui įsigykite Premium versiją.</string>
-    <string name="description_premium_required_this_extra_option">Papildomam funkcionalumui reikalinga Premium programos versija.</string>
-    <string name="description_premium_upgrade_explanation">Gauti Premium versiją ir įjungti papildomas galimybes. Taip padėsite programai tobulėti.</string>
     <string name="label_premium_version_required">Būtina Premium versija</string>
     <string name="upgrade_feature_requires_pro">Šiai funkcijai reikalinga premium versija</string>
     <string name="upgrade_prompt_upgrade_action">Atnaujinti</string>
     <string name="description_intro_purpose">Ši programa leidžia jūsų Android įrenginiui prisiminti įvairių Bluetooth įrenginių garsumo nustatymus.</string>
-    <string name="description_intro_premium">Jei jums patinka ši programa, apsvarstykite galimybę įsigyti Premium versiją. Tai leis kūrėjui tobulėti bei gausite kelias papildomas funkcijas.</string>
     <string name="upgrade_benefit_unlimited_devices">Neriboti įrenginių profiliai</string>
     <string name="upgrade_benefit_connection_actions">Automatinis paleidimas, programų paleidimas ir prisijungimo pranešimai</string>
     <string name="upgrade_benefit_theme_customization">Temos, stiliaus ir spalvų tinkinimas</string>

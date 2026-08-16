@@ -329,14 +329,10 @@
     <string name="label_premium_version">Prémium verzió</string>
     <string name="general_upgrade_action">Frissítés</string>
     <string name="common_upgrade_required_label">Frissítés szükséges</string>
-    <string name="description_premium_required_additional_devices">További eszközök kezelése megköveteli a prémium verziót.</string>
-    <string name="description_premium_required_this_extra_option">Ez az extra funkció az alkalmazás prémium verzióját igényli.</string>
-    <string name="description_premium_upgrade_explanation">Szerezd meg a prémium verziót a további funkciók és a fejlesztés támogatásához.</string>
     <string name="label_premium_version_required">Prémium verzió szükséges</string>
     <string name="upgrade_feature_requires_pro">Ez a funkció a prémium verziót igényli</string>
     <string name="upgrade_prompt_upgrade_action">Frissítés</string>
     <string name="description_intro_purpose">Ez az alkalmazás lehetővé teszi, hogy az Android készüléked emlékezzen a különböző Bluetooth-eszközök hangerejére.</string>
-    <string name="description_intro_premium">Ha tetszik ez az alkalmazás, fontolja meg a prémium verzióra való frissítést. Támogatja a fejlesztést, és extra funkciókat biztosít.</string>
     <string name="upgrade_benefit_unlimited_devices">Korlátlan eszközprofilok</string>
     <string name="upgrade_benefit_connection_actions">Automatikus lejátszás, alkalmazásindítás és kapcsolódási értesítések</string>
     <string name="upgrade_benefit_theme_customization">Téma, stílus és szín testreszabása</string>

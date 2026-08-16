@@ -329,14 +329,10 @@
     <string name="label_premium_version">Premium versio</string>
     <string name="general_upgrade_action">Päivitä</string>
     <string name="common_upgrade_required_label">Päivitys vaaditaan</string>
-    <string name="description_premium_required_additional_devices">Useamman laitteen hallinta vaatii premium version.</string>
-    <string name="description_premium_required_this_extra_option">Tämä lisäominaisuus vaatii premium version sovelluksesta.</string>
-    <string name="description_premium_upgrade_explanation">Hanki premium versio aktivoidaksesi lisäominaisuuksia ja tukeaksesi kehitystä.</string>
     <string name="label_premium_version_required">Vaatii premium version</string>
     <string name="upgrade_feature_requires_pro">Tämä ominaisuus vaatii premium-version</string>
     <string name="upgrade_prompt_upgrade_action">Päivitä</string>
     <string name="description_intro_purpose">Tämä sovellus mahdollistaa Android laitteesi muistaa erillisten Bluetooth laitteiden äänenvoimakkuuden.</string>
-    <string name="description_intro_premium">Jos pidät tästä sovelluksesta, harkitse päivittäväsi premium versioon. Se tukee kehittämistä ja antaa muutaman lisäominaisuuden.</string>
     <string name="upgrade_benefit_unlimited_devices">Rajattomat laiteprofiillit</string>
     <string name="upgrade_benefit_connection_actions">Automaattinen toisto, sovelluksen käynnistys ja yhteysilmoitukset</string>
     <string name="upgrade_benefit_theme_customization">Teeman, tyylin ja värin mukauttaminen</string>

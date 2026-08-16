@@ -329,14 +329,10 @@
     <string name="label_premium_version">Պրեմիում տարբերակ</string>
     <string name="general_upgrade_action">Թարմացնել</string>
     <string name="common_upgrade_required_label">Անհրաժեշտ է բարելավում</string>
-    <string name="description_premium_required_additional_devices">Լրացուցիչ սարքերի կառավարումը պահանջում է պրեմիում տարբերակ։</string>
-    <string name="description_premium_required_this_extra_option">Այս լրացուցիչ ընտրանքը պահանջում է հավելվածի պրեմիում տարբերակ։</string>
-    <string name="description_premium_upgrade_explanation">Ձեռք բերեք պրեմիում տարբերակը՝ լռացուցիչ հնարավորություններ ակտիվացնելու և զարգացումը աձակցնելու համառ</string>
     <string name="label_premium_version_required">Պահանջվում է պրեմիում տարբերակ</string>
     <string name="upgrade_feature_requires_pro">Այս գործալիթյունը պահանջում է պրեմիում տարբերակ</string>
     <string name="upgrade_prompt_upgrade_action">Թարմացնել</string>
     <string name="description_intro_purpose">Այս հավելվածը թույլ է տալիս ձեր Android սարքին հիշել տարբեր Bluetooth սարքերի ձայնի մակարդակը։</string>
-    <string name="description_intro_premium">Եթե ձեզ դուր է գալիս այս հավելվածը, ապա մտածեք պրեմիում տարբերակին անցնելու մասին։ Դա աջակցում է մշակմանը և ձեզ տալիս է մի քանի լրացուցիչ գործառույթներ։</string>
     <string name="upgrade_benefit_unlimited_devices">Անսահմանափակ սարքի պրոֆիլներ</string>
     <string name="upgrade_benefit_connection_actions">Ավտոնվագարկում, հավելվածի գործարկում և կապի ծանուցումներ</string>
     <string name="upgrade_benefit_theme_customization">Թեմայի, ոճի և գույնի հարմարեցում</string>

@@ -329,14 +329,10 @@
     <string name="label_premium_version">Премиум нускасы</string>
     <string name="general_upgrade_action">Жаңыртуу</string>
     <string name="common_upgrade_required_label">Жаңылануу кажет</string>
-    <string name="description_premium_required_additional_devices">Кошумча түзмөктөрдү башкаруу премиум нускасын талап кылат.</string>
-    <string name="description_premium_required_this_extra_option">Бул кошумча параметр бул колдонмонун премиум нускасын талап кылат.</string>
-    <string name="description_premium_upgrade_explanation">Кошумча функцияларды иштетүү жана иштеп чыгууну колдоо үчүн премиум нускасын алыңыз.</string>
     <string name="label_premium_version_required">Премиум нускасы талап кылынат</string>
     <string name="upgrade_feature_requires_pro">Бул функция премиум нускасын талап кылат</string>
     <string name="upgrade_prompt_upgrade_action">Жаңыртуу</string>
     <string name="description_intro_purpose">Бул колдонмо Android түзмөгүңҿзгө ар кандай Bluetooth түзмөктөрүнүн үн деңгээлдерин эстеп калууга мүмкүндүк берет.</string>
-    <string name="description_intro_premium">Эгер бул колдонмо жакса, премиум нускасына өтүүнү карап көрүңүз. Ал иштеп чыгууну колдойт жана бир нече кошумча функцияларды берет.</string>
     <string name="upgrade_benefit_unlimited_devices">Чексиз түзмөк профилдери</string>
     <string name="upgrade_benefit_connection_actions">Автоойнотуу, колдонмо ишке жүгүртүү жана кошулуу ескертүүләри</string>
     <string name="upgrade_benefit_theme_customization">Тема, стиль жана түс теңдеөлөө</string>

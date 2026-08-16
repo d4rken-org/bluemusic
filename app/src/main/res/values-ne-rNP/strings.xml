@@ -329,14 +329,10 @@
     <string name="label_premium_version">प्रिमियम संस्करण</string>
     <string name="general_upgrade_action">अपग्रेड गर्नुहोस्</string>
     <string name="common_upgrade_required_label">अपग्रेड आवश्यक छ</string>
-    <string name="description_premium_required_additional_devices">थप उपकरणहरू व्यवस्थापन गर्न प्रिमियम संस्करण आवश्यक छ।</string>
-    <string name="description_premium_required_this_extra_option">यो अतिरिक्त विकल्पलाई यस एपको प्रिमियम संस्करण आवश्यक छ।</string>
-    <string name="description_premium_upgrade_explanation">थप सुविधाहरू सक्षम गर्न र विकासलाई समर्थन गर्न प्रिमियम संस्करण प्राप्त गर्नुहोस्।</string>
     <string name="label_premium_version_required">प्रिमियम संस्करण आवश्यक</string>
     <string name="upgrade_feature_requires_pro">यो सुविधालाई प्रिमियम संस्करण आवश्यक छ</string>
     <string name="upgrade_prompt_upgrade_action">अपग्रेड गर्नुहोस्</string>
     <string name="description_intro_purpose">यो एपले तपाईंको Android उपकरणलाई विभिन्न Bluetooth उपकरणहरूको भोल्युम सम्झन दिन्छ।</string>
-    <string name="description_intro_premium">यदि तपाईंलाई यो एप मनपर्छ भने, प्रिमियम संस्करणमा अपग्रेड गर्ने विचार गर्नुहोस्। यसले विकासलाई समर्थन गर्छ र तपाईंलाई केही अतिरिक्त सुविधाहरू दिन्छ।</string>
     <string name="upgrade_benefit_unlimited_devices">असीमित यन्त्र प्रोफाइलहरू</string>
     <string name="upgrade_benefit_connection_actions">अटोप्ले, एप लन्च र कनेक्सन अलर्टहरू</string>
     <string name="upgrade_benefit_theme_customization">थिम, शैली र रङ्ग अनुकूलन</string>

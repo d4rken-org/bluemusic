@@ -329,14 +329,10 @@
     <string name="label_premium_version">Versió prèmium</string>
     <string name="general_upgrade_action">Millora</string>
     <string name="common_upgrade_required_label">Cal actualitzar</string>
-    <string name="description_premium_required_additional_devices">La gestió de dispositius addicionals requereix la versió prèmium.</string>
-    <string name="description_premium_required_this_extra_option">Malauradament, aquesta opció addicional requereix la versió prèmium d\'aquesta aplicació.</string>
-    <string name="description_premium_upgrade_explanation">Obteniu la versió prèmium per activar funcions addicionals i donar suport al desenvolupament.</string>
     <string name="label_premium_version_required">Cal la versió prèmium</string>
     <string name="upgrade_feature_requires_pro">Aquesta funció requereix la versió prèmium</string>
     <string name="upgrade_prompt_upgrade_action">Actualitza</string>
     <string name="description_intro_purpose">Aquesta aplicació permet als dispositius Android recordar el volum de diferents dispositius Bluetooth.</string>
-    <string name="description_intro_premium">Si us agrada aquesta aplicació, tingueu en compte l\'actualització a la versió prèmium. Donareu suport al desenvolupament i obtindreu algunes funcions addicionals.</string>
     <string name="upgrade_benefit_unlimited_devices">Perfils de dispositiu il·limitats</string>
     <string name="upgrade_benefit_connection_actions">Reproducció automàtica, llançament d’aplicacions i alertes de connexió</string>
     <string name="upgrade_benefit_theme_customization">Personalització de tema, estil i color</string>

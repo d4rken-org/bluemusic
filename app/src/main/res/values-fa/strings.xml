@@ -329,14 +329,10 @@
     <string name="label_premium_version">نسخه پریمیوم</string>
     <string name="general_upgrade_action">ارتقاء</string>
     <string name="common_upgrade_required_label">ارتقا لازم است</string>
-    <string name="description_premium_required_additional_devices">مدیریت دستگاه‌های بیشتر نیازمند نسخه پریمیوم است.</string>
-    <string name="description_premium_required_this_extra_option">این گزینه اضافی نیازمند نسخه پریمیوم این برنامه است.</string>
-    <string name="description_premium_upgrade_explanation">نسخه پریمیوم را بگیرید تا ویژگی‌های اضافی فعال و توسعه را حمایت کنید.</string>
     <string name="label_premium_version_required">نسخه پریمیوم لازم است</string>
     <string name="upgrade_feature_requires_pro">این ویژگی نیازمند نسخه پریمیوم است</string>
     <string name="upgrade_prompt_upgrade_action">ارتقاء</string>
     <string name="description_intro_purpose">این برنامه به دستگاه اندروید شما امکان می‌دهد صدای دستگاه‌های بلوتوث مختلف را به خاطر بسپارد.</string>
-    <string name="description_intro_premium">اگر این برنامه را دوست دارید، فکر ارتقاء به نسخه پریمیوم را بکن. توسعه را حمایت کرده و چند ویژگی اضافی هم می‌گیرید.</string>
     <string name="upgrade_benefit_unlimited_devices">پروفایل‌های دستگاه نامحدود</string>
     <string name="upgrade_benefit_connection_actions">پخش خودکار، راه‌اندازی برنامه و هشدارهای اتصال</string>
     <string name="upgrade_benefit_theme_customization">شخصی‌سازی تم، سبک و رنگ</string>

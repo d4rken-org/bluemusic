@@ -329,14 +329,10 @@
     <string name="label_premium_version">Premium versiya</string>
     <string name="general_upgrade_action">Yüksəlt</string>
     <string name="common_upgrade_required_label">Yüksəltmə tələb olunur</string>
-    <string name="description_premium_required_additional_devices">Əlavə cihazları idarə etmək üçün premium versiya lazımdır.</string>
-    <string name="description_premium_required_this_extra_option">Bu ekstra seçim, tətbiqin premium versiyasını tələb edir.</string>
-    <string name="description_premium_upgrade_explanation">Əlavə özəllikləri fəallaşdırmaq və tətbiqin inkişafını dəstəkləmək üçün premium versiyanı alın.</string>
     <string name="label_premium_version_required">Premium versiya tələb olunur</string>
     <string name="upgrade_feature_requires_pro">Bu funksiya premium versiyasını tələb edir</string>
     <string name="upgrade_prompt_upgrade_action">Yüksəlt</string>
     <string name="description_intro_purpose">Bu tətbiq, Android cihazınıza fərqli Bluetooth cihazının səs səviyyəsini xatırlamasına icazə verər.</string>
-    <string name="description_intro_premium">Bu tətbiqi bəyənsəniz, premium versiyaya yüksəltməyi düşünün. Bu, tətbiqin inkişafını dəstəkləyir və sizə bir neçə ekstra özəllik verir.</string>
     <string name="upgrade_benefit_unlimited_devices">Limitsiz cihaz profilləri</string>
     <string name="upgrade_benefit_connection_actions">Avtomatik oynatma, tətbiq işə salma və bağlantı xəbərdaqlıqları</string>
     <string name="upgrade_benefit_theme_customization">Tema, stil və rəng fərdiləşdirməsi</string>

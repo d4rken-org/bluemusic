@@ -329,14 +329,10 @@
     <string name="label_premium_version">Versión Premium</string>
     <string name="general_upgrade_action">Actualizar</string>
     <string name="common_upgrade_required_label">Actualización requirida</string>
-    <string name="description_premium_required_additional_devices">Administrar dispositivos adicionais require a versión Premium.</string>
-    <string name="description_premium_required_this_extra_option">Esta opción extra require a versión Premium da aplicación.</string>
-    <string name="description_premium_upgrade_explanation">Obtén a versión Premium para activar funcionalidades adicionais e contribuír ao desenvolvemento da aplicación.</string>
     <string name="label_premium_version_required">Versión Premium obrigatoria</string>
     <string name="upgrade_feature_requires_pro">Esta funcionalidade require a versión Premium</string>
     <string name="upgrade_prompt_upgrade_action">Actualizar</string>
     <string name="description_intro_purpose">Esta aplicación permite que o teu Android lembre o volume dos diferentes dispositivos bluetooth.</string>
-    <string name="description_intro_premium">Se che gusta esta aplicación, considera a opción de te actualizares á versión Premium. Contribuirás así ao seu desenvolvemento e obterás funcionalidades extra.</string>
     <string name="upgrade_benefit_unlimited_devices">Perfís de dispositivos ilimitados</string>
     <string name="upgrade_benefit_connection_actions">Reprodución automática, inicio de aplicación e alertas de conexión</string>
     <string name="upgrade_benefit_theme_customization">Personalización do tema, estilo e cor</string>

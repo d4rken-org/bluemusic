@@ -329,14 +329,10 @@
     <string name="label_premium_version">Premium versie</string>
     <string name="general_upgrade_action">Upgraden</string>
     <string name="common_upgrade_required_label">Upgrade vereist</string>
-    <string name="description_premium_required_additional_devices">Voor het beheren van extra apparaten, is de premium versie vereist.</string>
-    <string name="description_premium_required_this_extra_option">Deze extra optie vereist helaas de premium-versie van deze app.</string>
-    <string name="description_premium_upgrade_explanation">Koop de premium versie om de ontwikkeling te steunen en verkrijg extra functies.</string>
     <string name="label_premium_version_required">Premium versie vereist</string>
     <string name="upgrade_feature_requires_pro">Deze functie vereist de premium versie</string>
     <string name="upgrade_prompt_upgrade_action">Upgraden</string>
     <string name="description_intro_purpose">Deze app staat je Android toestel toe het volume te onthouden van verschillende Bluetooth-apparaten.</string>
-    <string name="description_intro_premium">Als je deze app goed vind, overweeg om de premium-versie te kopen. Het steunt de ontwikkeling en je krijgt een paar extra functies.</string>
     <string name="upgrade_benefit_unlimited_devices">Onbeperkte apparaatprofielen</string>
     <string name="upgrade_benefit_connection_actions">Autoplay, app starten en verbindingswaarschuwingen</string>
     <string name="upgrade_benefit_theme_customization">Thema-, stijl- en kleurcustomisatie</string>
