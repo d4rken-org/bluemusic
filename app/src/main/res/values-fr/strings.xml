@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Surclasser</string>
     <string name="common_upgrade_required_label">Mise à niveau requise</string>
     <string name="label_premium_version_required">La version Pro est exigée</string>
-    <string name="upgrade_feature_requires_pro">Cette fonctionnalité nécessite la version premium</string>
-    <string name="upgrade_prompt_upgrade_action">Mettre à niveau</string>
     <string name="description_intro_purpose">Cette appli permet à votre appareil Android de mémoriser le volume de différents périphériques Bluetooth.</string>
     <string name="upgrade_benefit_unlimited_devices">Profils d’appareils illimités</string>
     <string name="upgrade_benefit_connection_actions">Lecture automatique, lancement d’appli et alertes de connexion</string>

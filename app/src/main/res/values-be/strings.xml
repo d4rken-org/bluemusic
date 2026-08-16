@@ -338,8 +338,6 @@
     <string name="general_upgrade_action">Абнавіць</string>
     <string name="common_upgrade_required_label">Патрабуецца абнаўленне</string>
     <string name="label_premium_version_required">Патрабуецца прэміум-версія</string>
-    <string name="upgrade_feature_requires_pro">Гэтая функцыя патрабуе прэміум-версіі</string>
-    <string name="upgrade_prompt_upgrade_action">Абнавіць</string>
     <string name="description_intro_purpose">Гэты дадатак дазваляе вашай прыладзе Android запамінаць гучнасць розных прылад Bluetooth.</string>
     <string name="upgrade_benefit_unlimited_devices">Неабмежаваная колькасць профіляў прылад</string>
     <string name="upgrade_benefit_connection_actions">Аўтаўзнаўленне, запуск праграм і абвесткі аб падключэнні</string>

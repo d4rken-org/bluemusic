@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Actualisar</string>
     <string name="common_upgrade_required_label">Actualisaziun necessaria</string>
     <string name="label_premium_version_required">Versiun premium necessaria</string>
-    <string name="upgrade_feature_requires_pro">Questa funcziún dastga la versiun premium</string>
-    <string name="upgrade_prompt_upgrade_action">Actualisar</string>
     <string name="description_intro_purpose">Questa app permetta a tiu apparat Android da memorar il volum da differents apparats Bluetooth.</string>
     <string name="upgrade_benefit_unlimited_devices">Profils d\'apparat senza limita</string>
     <string name="upgrade_benefit_connection_actions">Autoplay, aviadira d\'app ed avis da connexiun</string>

@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">ఏటా పునరుద్ధరిస్తుంది. Google Play లో ఎప్పుడైనా రద్దు చేయవచ్చు.</string>
     <string name="upgrade_screen_iap_offer_title">జీవితకాల అన్‌లాక్</string>
     <string name="upgrade_screen_iap_offer_body">ఒకసారి చెల్లించండి మరియు Pro ను శాశ్వతంగా సొంతం చేసుకోండి.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">మీ వద్ద %1$s ఉంది ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">మీరు %1$s ను శాశ్వతంగా సొంతం చేసుకున్నారు.</string>
     <string name="upgrade_screen_owned_hero_sub_body">మీ %1$s సభ్యత్వం క్రియాశీలంగా ఉంది.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">మీ సభ్యత్వం పునరుద్ధరించటానికి సెట్ చేయబడలేదు, కాబట్టి మీరు ఇప్పుడు ఒకసారి కొనుగోలుకు మారవచ్చు. గమనించండి: ఇది ప్రత్యేక ఛార్జ్, ఇది మీ సభ్యత్వాన్ని రద్దు చేయదు లేదా నిర్వసూల చేయదు, కాబట్టి రెండింటికీ ఒకే Google ఖాతాను ఉపయోగించండి.</string>

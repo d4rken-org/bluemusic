@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Yilga qayta yangilanadi. Google Play\'da istalgan vaqtda bekor qilish mumkin.</string>
     <string name="upgrade_screen_iap_offer_title">Umrbod yoqish</string>
     <string name="upgrade_screen_iap_offer_body">Bir marta to\'lang va abadiy Pro egasi bo\'ling.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Sizda %1$s bor ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Siz %1$s ni abadiy egallaysiz.</string>
     <string name="upgrade_screen_owned_hero_sub_body">%1$s obunangiz faol.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Obunangiz qayta yangilanishga o\'rnatilmagan, shuning uchun endi bir martalik xaridga o\'tishingiz mumkin. Diqqat: bu alohida to\'lov bo\'lib, obunangizni bekor qilmaydi yoki pulini qaytarmaydi, shuning uchun ikkalasi uchun ham bir xil Google hisobidan foydalaning.</string>

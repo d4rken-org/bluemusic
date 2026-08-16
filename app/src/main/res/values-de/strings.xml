@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Upgrade</string>
     <string name="common_upgrade_required_label">Upgrade erforderlich</string>
     <string name="label_premium_version_required">Premium-Version erforderlich</string>
-    <string name="upgrade_feature_requires_pro">Diese Funktion erfordert die Premium-Version</string>
-    <string name="upgrade_prompt_upgrade_action">Upgraden</string>
     <string name="description_intro_purpose">Diese App erlaubt es Deinem Android-Gerät, die Lautstärke verschiedener Bluetooth-Geräte zu speichern.</string>
     <string name="upgrade_benefit_unlimited_devices">Unbegrenzte Geräteprofile</string>
     <string name="upgrade_benefit_connection_actions">Autoplay, App-Start und Verbindungsbenachrichtigungen</string>

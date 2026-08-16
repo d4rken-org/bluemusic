@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Täienda</string>
     <string name="common_upgrade_required_label">Uuendamine nõutav</string>
     <string name="label_premium_version_required">Vaja on tasulist versiooni</string>
-    <string name="upgrade_feature_requires_pro">See funktsioon nõuab tasulist versiooni</string>
-    <string name="upgrade_prompt_upgrade_action">Täienda</string>
     <string name="description_intro_purpose">See rakendus võimaldab teie Androidi seadmel meelde jätta erinevaid sinihammast toetavate seadmete heli.</string>
     <string name="upgrade_benefit_unlimited_devices">Piiramatu arv seadmeprofiile</string>
     <string name="upgrade_benefit_connection_actions">Automaatesitus, rakenduse käivitus ja ühendusmärguanded</string>

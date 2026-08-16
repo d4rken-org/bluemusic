@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">አሻሽል</string>
     <string name="common_upgrade_required_label">ማሻሻያ ያስፈልጋል</string>
     <string name="label_premium_version_required">የዘመን ስሪት ክድምነት</string>
-    <string name="upgrade_feature_requires_pro">ይህ ባ⁚ራ የዘመን ስሪት ይኀላል</string>
-    <string name="upgrade_prompt_upgrade_action">አሻሽል</string>
     <string name="description_intro_purpose">ይህ አፕሊኬስን የAndroid መሣሪያዎት የዓይባይት Bluetooth መሣሪያዎችን ድምፅ እንዲያስታወስ ይያዕዝበታለ።</string>
     <string name="upgrade_benefit_unlimited_devices">ያልተወሰኑ የመሳሪያ መገለጫዎች</string>
     <string name="upgrade_benefit_connection_actions">ራስ-ሰር አጫወት፣ መተግበሪያ ማስጀመሪያ እና የግንኙነት ማስጠንቀቂያዎች</string>

@@ -338,8 +338,6 @@
     <string name="general_upgrade_action">שדרוג</string>
     <string name="common_upgrade_required_label">נדרש שדרוג</string>
     <string name="label_premium_version_required">נדרשת גרסת פרימיום</string>
-    <string name="upgrade_feature_requires_pro">תכונה זו דורשת את גרסת הפרימיום</string>
-    <string name="upgrade_prompt_upgrade_action">שדרג</string>
     <string name="description_intro_purpose">אפליקציה זו מאפשרת למכשיר האנדרואיד שלכם לזכור רמות ווליום של מכשירי Bluetooth שונים.</string>
     <string name="upgrade_benefit_unlimited_devices">פרופילי מכשיר ללא הגבלה</string>
     <string name="upgrade_benefit_connection_actions">ניגון אוטומטי, הפעלת אפליקציה והתראות חיבור</string>

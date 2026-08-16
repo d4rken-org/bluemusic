@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Renova anualmente. Cancela en calquera momento en Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Desbloqueo de por vida</string>
     <string name="upgrade_screen_iap_offer_body">Paga unha vez e terás Pro para sempre.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Tes %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Posees %1$s para sempre.</string>
     <string name="upgrade_screen_owned_hero_sub_body">A túa subscrición de %1$s está activa.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">A túa subscrición non está configurada para renovarse, polo que podes cambiar á compra única agora. Aviso: é un cargo separado que non cancelará nin reembolsará a túa subscrición, polo que usa a mesma conta de Google para as dúas.</string>

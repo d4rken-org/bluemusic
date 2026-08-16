@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">ஆண்டுக்கு புதுப்பிக்கப்படுகிறது. Google Play இல் எந்த நேரத்திலும் ரத்து செய்யலாம்.</string>
     <string name="upgrade_screen_iap_offer_title">வாழ்நாள் திறக்கல்</string>
     <string name="upgrade_screen_iap_offer_body">ஒரு முறை பணம் செலுத்தவும் மற்றும் Pro ஐ என்றென்றும் சொந்தமாக வைத்துக்கொள்ளவும்.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">உங்களிடம் %1$s உள்ளது ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">நீங்கள் %1$s ஐ என்றென்றும் சொந்தமாக வைத்துக்கொள்ளுகிறீர்கள்.</string>
     <string name="upgrade_screen_owned_hero_sub_body">உங்கள் %1$s சந்தா செயல்பாட்டுக்குள் உள்ளது.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">உங்கள் சந்தா புதுப்பிக்க அமைக்கப்படவில்லை, எனவே நீங்கள் இப்போது ஒரு முறை வாங்குதலுக்கு மாற்றலாம். முன்னெச்சரிக்கை: இது உங்கள் சந்தாவை ரத்து செய்யாமல் அல்லது திருப்பி செலுத்தாமல் ஒரு தனிப்பட்ட கட்டணம், எனவே இரண்டிற்கும் ஒரே Google கணக்கைப் பயன்படுத்தவும்.</string>

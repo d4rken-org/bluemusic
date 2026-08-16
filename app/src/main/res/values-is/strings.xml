@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Uppfæra</string>
     <string name="common_upgrade_required_label">Uppfærsla nauðsynleg</string>
     <string name="label_premium_version_required">Íbuðarútgáfa nauðsynleg</string>
-    <string name="upgrade_feature_requires_pro">Þessi eiginleiki krefst íbuðarútgáfunnar</string>
-    <string name="upgrade_prompt_upgrade_action">Uppfæra</string>
     <string name="description_intro_purpose">Þetta forrit leyfir Android tækinu þínu að muna hljóðstyrk mismunandi Bluetooth tækja.</string>
     <string name="upgrade_benefit_unlimited_devices">Ótakmarkaðar tækjasniðmát</string>
     <string name="upgrade_benefit_connection_actions">Sjálfvirk spilun, ræsing forrits og tengingartilkynningar</string>

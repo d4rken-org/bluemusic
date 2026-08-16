@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Жил бүр сэргээгдэнэ. Google Play-ээс ямар ч үед цуцлаж болно.</string>
     <string name="upgrade_screen_iap_offer_title">Бүх нас болгоны түлхүүц задлах</string>
     <string name="upgrade_screen_iap_offer_body">Нэг удаа төлөөд Pro-г бүх нас болгоны эзэмших.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Та %1$s авсан ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Та %1$s-г бүх нас болгоны эзэмшинэ.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Таны %1$s захиалга идэвхтэй байна.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Таны захиалга сэргээгдэхийн тулд тогтоогдоогүй байгаа тул одоо нэг удаа худалдаж авахад шилжүүлж болно. Анхааруулга: энэ нь таны захиалгыг цуцлахгүй эсвэл буцаан олгохгүй тусдаа төлбөр байгаа тул хоёуланд нь ижил Google данс ашигла.</string>

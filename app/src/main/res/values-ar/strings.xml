@@ -346,8 +346,6 @@
     <string name="general_upgrade_action">تحديث</string>
     <string name="common_upgrade_required_label">الترقية مطلوبة</string>
     <string name="label_premium_version_required">يتطلب النسخة الكاملة</string>
-    <string name="upgrade_feature_requires_pro">هذه الميزة تتطلب الإصدار المتميز</string>
-    <string name="upgrade_prompt_upgrade_action">تحديث</string>
     <string name="description_intro_purpose">يسمح هذا التطبيق للأندرويد بتذكر حجم الصوت لمختلف أجهزة البلوتوث.</string>
     <string name="upgrade_benefit_unlimited_devices">ملفات تعريف أجهزة غير محدودة</string>
     <string name="upgrade_benefit_connection_actions">التشغيل التلقائي وإطلاق التطبيق وتنبيهات الاتصال</string>

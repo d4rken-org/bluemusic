@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Diperbaharui setiap tahun. Batalkan pada bila-bila masa di Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Pembukaan seumur hidup</string>
     <string name="upgrade_screen_iap_offer_body">Bayar sekali dan miliki Pro selamanya.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Kamu sudah punya %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Anda memiliki %1$s selamanya.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Langganan %1$s anda aktif.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Langganan anda tidak ditetapkan untuk memperbaharui, jadi anda boleh beralih ke pembelian sekali sahaja sekarang. Perhatian: ia adalah caj berasingan yang tidak akan membatalkan atau mengembalikan wang langganan anda, gunakan akaun Google yang sama untuk kedua-duanya.</string>

@@ -326,8 +326,6 @@
     <string name="general_upgrade_action">アップグレード</string>
     <string name="common_upgrade_required_label">アップグレードが必要</string>
     <string name="label_premium_version_required">プレミアム版が必要です</string>
-    <string name="upgrade_feature_requires_pro">この機能にはプレミアム版が必要です</string>
-    <string name="upgrade_prompt_upgrade_action">アップグレード</string>
     <string name="description_intro_purpose">このアプリは、Android端末がBluetoothデバイスごとに音量を記憶できるようにします。</string>
     <string name="upgrade_benefit_unlimited_devices">無制限のデバイスプロファイル</string>
     <string name="upgrade_benefit_connection_actions">自動再生、アプリ起動、接続通知</string>

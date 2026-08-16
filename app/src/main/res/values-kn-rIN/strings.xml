@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ</string>
     <string name="common_upgrade_required_label">ಅಪ್‌ಗ್ರೇಡ್ ಅಗತ್ಯವಿದೆ</string>
     <string name="label_premium_version_required">ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ ಅಗತ್ಯ</string>
-    <string name="upgrade_feature_requires_pro">ಈ ವೈಶಿಷ್ಟ್ಯಕ್ಕೆ ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ ಅಗತ್ಯ</string>
-    <string name="upgrade_prompt_upgrade_action">ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ</string>
     <string name="description_intro_purpose">ಈ ಅಪ್ಲಿಕೇಶನ್ ನಿಮ್ಮ Android ಸಾಧನಕ್ಕೆ ವಿವಿಧ Bluetooth ಸಾಧನಗಳ ವಾಲ್ಯೂಮ್ ನೆನಪಿಟ್ಟುಕೊಳ್ಳಲು ಅನುಮತಿಸುತ್ತದೆ.</string>
     <string name="upgrade_benefit_unlimited_devices">ಅಪರಿಮಿತ ಸಾಧನ ಪ್ರೊಫೈಲ್‌ಗಳು</string>
     <string name="upgrade_benefit_connection_actions">ಸ್ವಯಂಪ್ಲೇ, ಅಪ್ಲಿಕೇಶನ್ ಲಾಂಚ್ ಮತ್ತು ಸಂಪರ್ಕ ಎಚ್ಚರಿಕೆಗಳು</string>

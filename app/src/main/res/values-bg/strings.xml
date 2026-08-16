@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Ъпгрейд</string>
     <string name="common_upgrade_required_label">Необходимо е надграждане</string>
     <string name="label_premium_version_required">Изисква се премиум версията</string>
-    <string name="upgrade_feature_requires_pro">Тази функция изисква премиум версията</string>
-    <string name="upgrade_prompt_upgrade_action">Ъпгрейд</string>
     <string name="description_intro_purpose">Приложението позволява вашето устройство да запомни силата на звука за различни Bluetooth устройства.</string>
     <string name="upgrade_benefit_unlimited_devices">Неограничени профили на устройства</string>
     <string name="upgrade_benefit_connection_actions">Автоматично пускане, стартиране на приложения и сигнали за връзка</string>

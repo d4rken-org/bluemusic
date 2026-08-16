@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Aggiornamentu</string>
     <string name="common_upgrade_required_label">Aggiornamentu requeridu</string>
     <string name="label_premium_version_required">Versione premium richièsta</string>
-    <string name="upgrade_feature_requires_pro">Cussa funtzionalidade richièdet sa versione premium</string>
-    <string name="upgrade_prompt_upgrade_action">Aggiornamentu</string>
     <string name="description_intro_purpose">S\'app permìttit a su dispositivu Android tuo de recordare su volume de sos diversos dispositivos Bluetooth.</string>
     <string name="upgrade_benefit_unlimited_devices">Profilis de dispositivu illimitaus</string>
     <string name="upgrade_benefit_connection_actions">Riprodutzione automàtica, apertura de app e avisos de connessione</string>

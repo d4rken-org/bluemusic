@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Atsinaujina kasmet. Galite atšaukti bet kada per „Google Play“.</string>
     <string name="upgrade_screen_iap_offer_title">Amžinas atrakinimas</string>
     <string name="upgrade_screen_iap_offer_body">Mokėkite vieną kartą ir turėkite Pro amžinai.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Turi %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Jūs turite %1$s amžinai.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Jūsų %1$s prenumerata yra aktyvi.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Jūsų prenumerata nėra nustatyta atsinaujinti, todėl dabar galite pereiti prie vienkartinio pirkinio. Atkreipkite dėmesį: tai atskiras mokestis, kuris nenutrauks ir negrąžins jūsų prenumeratos, todėl naudokite tą pačią „Google“ paskyrą abiem.</string>

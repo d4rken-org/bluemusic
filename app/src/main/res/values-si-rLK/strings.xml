@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">උසස් කරන්න</string>
     <string name="common_upgrade_required_label">උත්‍යාජනය අවශ්‍යයි</string>
     <string name="label_premium_version_required">Premium අනුවාදය අවශ්‍යයි</string>
-    <string name="upgrade_feature_requires_pro">මෙම ලක්ෂණය premium අනුවාදය අවශ්‍ය කරයි</string>
-    <string name="upgrade_prompt_upgrade_action">උසස් කරන්න</string>
     <string name="description_intro_purpose">මෙම යෙදුම ඔබේ Android උපාංගයට විවිධ Bluetooth උපාංගයන්හි හඩ මට්ටම් මතක් කර ගැනීමට ඉඩ දෙයි.</string>
     <string name="upgrade_benefit_unlimited_devices">අසීමිත උපාංග පැතිකඩ</string>
     <string name="upgrade_benefit_connection_actions">ස්වයංක්‍රීය ධාවනය, යෙදුම් දියත් කිරීම සහ සම්බන්ධ ඇඟවීම්</string>

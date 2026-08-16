@@ -326,8 +326,6 @@
     <string name="general_upgrade_action">វិសិដ្ឋកម្ម</string>
     <string name="common_upgrade_required_label">តម្រូវការធ្វើឱ្យប្រសើរ</string>
     <string name="label_premium_version_required">ត្រូវការកំណែពិសេស</string>
-    <string name="upgrade_feature_requires_pro">មុខងារនេះតម្រូវឡើយមានកំណែពិសេស</string>
-    <string name="upgrade_prompt_upgrade_action">វិសិដ្ឋកម្ម</string>
     <string name="description_intro_purpose">កម្មវិធីនេះអនុញ្ញាតឱ្យឧបករណ៍ Android របស់អ្នកចងចាំកម្រិតសំឡេងនៃឧបករណ៍ Bluetooth ផ្សើៗ។</string>
     <string name="upgrade_benefit_unlimited_devices">ប្រវត្តិរូបឧបករណ៍គ្មានដែនកំណត់</string>
     <string name="upgrade_benefit_connection_actions">ចាកស្វ័យប្រវត្តិ, ការចាប្តើមកម្មវិធី និងការជូនដំណឹងការតភ្ជាប់</string>

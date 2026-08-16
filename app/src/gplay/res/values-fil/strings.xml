@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Nag-renew taun-taon. Maaaring kanselahin anumang oras sa Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Pangmatagalang unlock</string>
     <string name="upgrade_screen_iap_offer_body">Magbayad nang minsan at magmamay-ari ng Pro magpakailanman.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Mayroon kang %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Magmamay-ari ka ng %1$s magpakailanman.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Ang iyong %1$s subscription ay aktibo.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Ang iyong subscription ay hindi itinakda na mag-renew, kaya maaari ka nang lumipat sa one-time purchase ngayon. Abiso: ito ay isang hiwalay na bayad na hindi magkakansel o magbabigay ng refund sa iyong subscription, kaya gamitin ang parehong Google account para sa pareho.</string>

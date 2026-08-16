@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Надградба</string>
     <string name="common_upgrade_required_label">Потребна надградба</string>
     <string name="label_premium_version_required">Потребна е премиум верзија</string>
-    <string name="upgrade_feature_requires_pro">Оваа функција бара премиум верзија</string>
-    <string name="upgrade_prompt_upgrade_action">Надгради</string>
     <string name="description_intro_purpose">Оваа апликација дозволува вашиот Андроид уред го памети нивото на глас на различни Блутут уреди.</string>
     <string name="upgrade_benefit_unlimited_devices">Неограничен број профили на уреди</string>
     <string name="upgrade_benefit_connection_actions">Автоматско пуштање, стартување на апликација и известувања за поврзување</string>

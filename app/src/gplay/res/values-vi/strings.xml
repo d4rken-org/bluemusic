@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Gia hạn hàng năm. Hủy bất kỳ lúc nào trong Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Mở khóa vĩnh viễn</string>
     <string name="upgrade_screen_iap_offer_body">Trả một lần và sở hữu Pro mãi mãi.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Bạn có %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Bạn sở hữu %1$s mãi mãi.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Đăng ký %1$s của bạn đang hoạt động.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Đăng ký của bạn không được đặt để gia hạn, vì vậy bạn có thể chuyển sang mua một lần ngay bây giờ. Chú ý: đây là một khoản phí riêng biệt sẽ không hủy hoặc hoàn lại đăng ký của bạn, vì vậy hãy sử dụng cùng một tài khoản Google cho cả hai.</string>

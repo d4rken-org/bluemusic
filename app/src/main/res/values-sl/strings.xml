@@ -338,8 +338,6 @@
     <string name="general_upgrade_action">Nadgradi</string>
     <string name="common_upgrade_required_label">Zahtevana nadgradnja</string>
     <string name="label_premium_version_required">Zahtevana je premium različica</string>
-    <string name="upgrade_feature_requires_pro">Ta funkcija zahteva premium različico</string>
-    <string name="upgrade_prompt_upgrade_action">Nadgradi</string>
     <string name="description_intro_purpose">Ta aplikacija omogoča vaši napravi Android, da si zapomni glasnost različnih naprav Bluetooth.</string>
     <string name="upgrade_benefit_unlimited_devices">Neomejeni profili naprav</string>
     <string name="upgrade_benefit_connection_actions">Samodejno predvajanje, zagon aplikacij in obvestila o povezavi</string>

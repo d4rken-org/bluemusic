@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Се обновува годишно. Откажете во секој момент преку Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Доживотно одблокување</string>
     <string name="upgrade_screen_iap_offer_body">Платете еднаш и владејте Pro заувек.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Го имаш %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Владеете %1$s заувек.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Вашата %1$s претплата е активна.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Вашата претплата не е поставена да се обновува, така да можете да преминете на еднократна куповина сега. Забелешка: тоа е одделна наплата која нема да ја откаже или врати вашата претплата, затоа користете ја истата Google сметка за обе.</string>

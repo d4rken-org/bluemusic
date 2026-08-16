@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">अपग्रेड करा</string>
     <string name="common_upgrade_required_label">अपग्रेड आवश्यक</string>
     <string name="label_premium_version_required">प्रीमियम आवृत्ती आवश्यक</string>
-    <string name="upgrade_feature_requires_pro">या वैशिष्ट्यासाठी प्रीमियम आवृत्ती आवश्यक आहे</string>
-    <string name="upgrade_prompt_upgrade_action">अपग्रेड करा</string>
     <string name="description_intro_purpose">हा अॅप तुमच्या Android डिव्हाइसला वेगवेगळ्या Bluetooth डिव्हाइसचे व्हॉल्युम लक्षात ठेवण्याची परवानगी देतो.</string>
     <string name="upgrade_benefit_unlimited_devices">अमर्यादित डिव्हाइस प्रोफाइल</string>
     <string name="upgrade_benefit_connection_actions">ऑटोप्ले, अ‍ॅप लॉन्च आणि कनेक्शन सूचना</string>

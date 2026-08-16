@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">மேம்படுத்து</string>
     <string name="common_upgrade_required_label">மேம்படுத்தல் தேவை</string>
     <string name="label_premium_version_required">ப்ரிமியம் பதிப்பு தேவைய்</string>
-    <string name="upgrade_feature_requires_pro">இந்த சிறப்பியுக்கு ப்ரிமியம் பதிப்பு தேவைப்படுகிறது</string>
-    <string name="upgrade_prompt_upgrade_action">மேம்படுத்து</string>
     <string name="description_intro_purpose">இந்த ஆப்் உங்கள் Android சாதனம் மாற்றமான Bluetooth சாதனங்களின் ஒலி அளவுகளை நினைவில் வைக்க உதவுகிறது.</string>
     <string name="upgrade_benefit_unlimited_devices">வரம்பற்ற சாதன சுயவிவரங்கள்</string>
     <string name="upgrade_benefit_connection_actions">தானியங்கி இயக்கம், பயன்பாட்டு தொடக்கம் மற்றும் இணைப்பு எச்சரிக்கைகள்</string>

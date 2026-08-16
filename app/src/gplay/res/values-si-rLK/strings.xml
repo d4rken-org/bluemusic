@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">වාර්ෂිකව නවීකරණය කරන්න. Google Play හි ඕනෑම අවස්ථාවක අවලංගු කරන්න.</string>
     <string name="upgrade_screen_iap_offer_title">ජීවිතකාල අගුළු හැරීම</string>
     <string name="upgrade_screen_iap_offer_body">එක්වර ගෙවන්න සහ ඉතිරි කාලය Pro හිමිකරන්න.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">ඔබට %1$s තිබේ ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">ඔබ %1$s ඉතිරි කාලය හිමිකරන්න.</string>
     <string name="upgrade_screen_owned_hero_sub_body">ඔබේ %1$s දිගටි ගිණුම සක්‍රිය.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">ඔබේ දිගටි ගිණුම නවීකරණය කිරීමට සකස්ස කර නැත, එබැවින් ඔබ දැන් එක්වර ගෙවීමට මාරු කළ හැක. අවධාන: එය ඔබේ දිගටි ගිණුම අවලංගු කරන්නේ හෝ ආපසු ගෙවන්නේ නැති වෙනම ගෙවීමක්, එබැවින් සමස්ත Google ගිණුම භාවිතා කරන්න.</string>

@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Se reînnuiește anual. Anulează oricând în Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Deblocare pe viață</string>
     <string name="upgrade_screen_iap_offer_body">Plătește o dată și deține Pro pentru totdeauna.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Ai %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Deții %1$s pentru totdeauna.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Abonamentul tău %1$s este activ.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Abonamentul tău nu este setat să se reînnuiască, deci poți trece la achiziția unică acum. Atenție: este o taxă separată care nu va anula sau returna abonamentul tău, deci folosește același cont Google pentru ambele.</string>

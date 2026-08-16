@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Atualizar</string>
     <string name="common_upgrade_required_label">Atualização necessária</string>
     <string name="label_premium_version_required">Necessita da versão Premium</string>
-    <string name="upgrade_feature_requires_pro">Esta funcionalidade requer a versão premium</string>
-    <string name="upgrade_prompt_upgrade_action">Atualizar</string>
     <string name="description_intro_purpose">Esta aplicação permite que o seu dispositivo memorize o volume dos diferentes dispositivos Bluetooth.</string>
     <string name="upgrade_benefit_unlimited_devices">Perfis de dispositivos ilimitados</string>
     <string name="upgrade_benefit_connection_actions">Reprodução automática, início de aplicações e alertas de ligação</string>

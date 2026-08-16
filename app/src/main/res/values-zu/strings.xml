@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Thuthukisa</string>
     <string name="common_upgrade_required_label">Ukuphakamisa kuyadingeka</string>
     <string name="label_premium_version_required">Kudingeka inguqulo ye-premium</string>
-    <string name="upgrade_feature_requires_pro">Lesi sici sidinga inguqulo ye-premium</string>
-    <string name="upgrade_prompt_upgrade_action">Thuthukisa</string>
     <string name="description_intro_purpose">Lolu hlelo luvumela idivayisi yakho ye-Android ukukhumbula ivolumu yezidivayisi ezihlukene ze-Bluetooth.</string>
     <string name="upgrade_benefit_unlimited_devices">Amaphrofayela amadivayisi angenamkhawulo</string>
     <string name="upgrade_benefit_connection_actions">Ukudlala ngokuzenzakalela, ukuqalisa uhlelo lokusebenza nezaziso zokulumeka</string>

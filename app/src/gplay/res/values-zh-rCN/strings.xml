@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">每年续订。可随时在Google Play中取消。</string>
     <string name="upgrade_screen_iap_offer_title">终身解锁</string>
     <string name="upgrade_screen_iap_offer_body">一次性付款，永久拥有Pro。</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">你有 %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">你永久拥有%1$s。</string>
     <string name="upgrade_screen_owned_hero_sub_body">你的%1$s订阅已激活。</string>
     <string name="upgrade_screen_owned_iap_purchase_note">你的订阅未设置为续订，因此现在可以切换到一次性购买。提醒：这是单独的一笔费用，不会取消或退款你的订阅，因此请在两者上使用相同的Google账户。</string>

@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">বার্ষিক নবায়ন করুন। Google Play-এ যেকোনো সময় বাতিল করুন।</string>
     <string name="upgrade_screen_iap_offer_title">আজীবন আনলক</string>
     <string name="upgrade_screen_iap_offer_body">একবার পেমেন্ট করুন এবং চিরকাল Pro মালিক হন।</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">আপনার %1$s আছে ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">আপনি %1$s চিরকাল মালিক।</string>
     <string name="upgrade_screen_owned_hero_sub_body">আপনার %1$s সাবস্ক্রিপশন সক্রিয়।</string>
     <string name="upgrade_screen_owned_iap_purchase_note">আপনার সাবস্ক্রিপশন নবায়নের জন্য সেট করা নেই, তাই আপনি এখন এককালীন ক্রয়ে স্যুইচ করতে পারেন। মনোযোগ দিন: এটি একটি আলাদা চার্জ যা আপনার সাবস্ক্রিপশন বাতিল বা রিফান্ড করবে না, তাই উভয়ের জন্য একই Google অ্যাকাউন্ট ব্যবহার করুন।</string>

@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Nûjen bike</string>
     <string name="common_upgrade_required_label">Bilindkirina pêdivî ye</string>
     <string name="label_premium_version_required">Guhertoya premium hewce ye</string>
-    <string name="upgrade_feature_requires_pro">Ev taybetmend guhertoya premium hewce dike</string>
-    <string name="upgrade_prompt_upgrade_action">Nûjen bike</string>
     <string name="description_intro_purpose">Ev bername dihêle cîhaza Android-a we astên dengê cîhazên Bluetooth ji bîr bike.</string>
     <string name="upgrade_benefit_unlimited_devices">Profîlên cîhazê yên bêsînor</string>
     <string name="upgrade_benefit_connection_actions">Otomatîkî lêdan, vekirin a sepanê û hişyariyên girêdanê</string>

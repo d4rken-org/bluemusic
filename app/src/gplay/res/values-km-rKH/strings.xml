@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">បង្កើតឡើងវិញរៀងរាល់ឆ្នាំ។ បោះបង់នៅពេលណាក៏បាននៅក្នុង Google Play។</string>
     <string name="upgrade_screen_iap_offer_title">ការដោះលែកមានអាយុកាលជីវិត</string>
     <string name="upgrade_screen_iap_offer_body">ទូទាត់ម្តងហើយ ហើយមាន Pro រៀងរាល់ដង។</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">អ្នកមាន %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">អ្នកគឺម្ចាស់ %1$s រៀងរាល់ដង។</string>
     <string name="upgrade_screen_owned_hero_sub_body">ការលេខិកលក្ខណ៍ %1$s របស់អ្នកកំពុងសកម្ម។</string>
     <string name="upgrade_screen_owned_iap_purchase_note">ការលេខិកលក្ខណ៍របស់អ្នកមិនត្រូវបានកំណត់ដើម្បីបង្កើតឡើងវិញ ដូច្នេះអ្នកអាចប្តូរទៅការទិញម្តងដងឥឡូវនេះ។ ក្រលម៖ វាគឺជាការគិតថ្លៃដាច់ដោយឡែក ដែលលុបរំលាយ ឬសង្វិញការលេខិកលក្ខណ៍របស់អ្នកនឹងមិនកើតឡើងទេ ដូច្នេះប្រើគណនី Google ដដែលសម្រាប់ទាំងពីរ។</string>

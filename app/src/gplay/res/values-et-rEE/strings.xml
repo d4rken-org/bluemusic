@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Uueneb igal aastal. Saate igal ajal Google Plays loobuda.</string>
     <string name="upgrade_screen_iap_offer_title">Igavene avamine</string>
     <string name="upgrade_screen_iap_offer_body">Maksa üks kord ja omanda Pro igaveseks.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Sul on %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Omad %1$s igaveseks.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Sinu %1$s tellimus on aktiivne.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Sinu tellimus pole seatud uuendamisele, seega saad nüüd ühekordsele ostule üle minna. Tähelepanu: see on eraldi kulumine, mis ei tühista ega refundee sinu tellimust, seega kasuta mõlema jaoks sama Google\'i kontot.</string>

@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Päivitä</string>
     <string name="common_upgrade_required_label">Päivitys vaaditaan</string>
     <string name="label_premium_version_required">Vaatii premium version</string>
-    <string name="upgrade_feature_requires_pro">Tämä ominaisuus vaatii premium-version</string>
-    <string name="upgrade_prompt_upgrade_action">Päivitä</string>
     <string name="description_intro_purpose">Tämä sovellus mahdollistaa Android laitteesi muistaa erillisten Bluetooth laitteiden äänenvoimakkuuden.</string>
     <string name="upgrade_benefit_unlimited_devices">Rajattomat laiteprofiillit</string>
     <string name="upgrade_benefit_connection_actions">Automaattinen toisto, sovelluksen käynnistys ja yhteysilmoitukset</string>

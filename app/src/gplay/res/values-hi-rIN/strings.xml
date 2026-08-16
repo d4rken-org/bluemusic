@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">वार्षिक नवीनीकरण होता है। Google Play में कभी भी रद्द करें।</string>
     <string name="upgrade_screen_iap_offer_title">आजीवन अनलॉक</string>
     <string name="upgrade_screen_iap_offer_body">एक बार भुगतान करें और Pro को हमेशा के लिए रखें।</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">आपका %1$s सक्रिय है ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">आप %1$s को हमेशा के लिए रखते हैं।</string>
     <string name="upgrade_screen_owned_hero_sub_body">आपकी %1$s सदस्यता सक्रिय है।</string>
     <string name="upgrade_screen_owned_iap_purchase_note">आपकी सदस्यता नवीनीकरण के लिए सेट नहीं है, इसलिए आप अब एकबारी खरीद पर स्विच कर सकते हैं। ध्यान दें: यह एक अलग शुल्क है जो आपकी सदस्यता को रद्द या वापस नहीं करेगा, इसलिए दोनों के लिए एक ही Google खाते का उपयोग करें।</string>

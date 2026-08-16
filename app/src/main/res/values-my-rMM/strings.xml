@@ -326,8 +326,6 @@
     <string name="general_upgrade_action">အဆင့်မြှင့်တင်မည်</string>
     <string name="common_upgrade_required_label">အဆင့်မြှင့်တင်ရန် လိုအပ်သည်</string>
     <string name="label_premium_version_required">Premium မျိုးကွဲ လိုအပ်သည်</string>
-    <string name="upgrade_feature_requires_pro">ဤ လုပ်ဆောင်ချက်အတွက် premium မျိုးကွဲ လိုအပ်သည်</string>
-    <string name="upgrade_prompt_upgrade_action">အဆင့်မြှင့်တင်မည်</string>
     <string name="description_intro_purpose">ဤအပ်သည် သင့် Android ကိရိယာကို မတူညီသော Bluetooth ကိရိယာများ၏ အသံကို မှတ်မိစေသည်။</string>
     <string name="upgrade_benefit_unlimited_devices">ကန့်သတ်မှုမရှိသော ကိရိယာ ပရိုဖိုင်များ</string>
     <string name="upgrade_benefit_connection_actions">အလိုအလျောက်ဖွင့်ခြင်း၊ အက်ပ်ဖွင့်ခြင်းနှင့် ချိတ်ဆက်မှု သတိပေးချက်များ</string>

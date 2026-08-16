@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">വർഷത്തിലൊരിക്കൽ പുതുക്കുന്നു. Google Play-ൽ എപ്പോൾ വേണ്ടലും റദ്ദ് ചെയ്യുക.</string>
     <string name="upgrade_screen_iap_offer_title">ജീവിതകാല അൺലോക്ക്</string>
     <string name="upgrade_screen_iap_offer_body">ഒരിക്കൽ നൽകുക നിന്നും Pro നിരന്തരം സ്വാധീനിക്കുക.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">നിങ്ങൾക്ക് %1$s ഉണ്ട് ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">നിങ്ങൾ %1$s നിരന്തരം ഉടമകളാണ്.</string>
     <string name="upgrade_screen_owned_hero_sub_body">നിങ്ങളുടെ %1$s സബ്സ്ക്രിപ്ഷൻ സജീവമാണ്.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">നിങ്ങളുടെ സബ്സ്ക്രിപ്ഷൻ പുതുക്കുന്നതിനായി സജ്ജീകരിച്ചിട്ടില്ല, അതിനാൽ നിങ്ങൾ ഇപ്പോൾ ഒരിക്കൽ വാങ്ങലിലേക്ക് മാറാൻ കഴിയും. ശ്രദ്ധിക്കുക: ഇത് ഒരു വ്യത്യസ്ത ചാർജ് ആണ് അത് നിങ്ങളുടെ സബ്സ്ക്രിപ്ഷൻ റദ്ദ് അല്ലെങ്കിൽ വിനിയോഗം ചെയ്യില്ല, അതിനാൽ രണ്ടിനും ഒരേ Google അക്കൗണ്ട് ഉപയോഗിക്കുക.</string>

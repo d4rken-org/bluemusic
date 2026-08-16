@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Verlängert sich jährlich. Jederzeit über Google Play kündbar.</string>
     <string name="upgrade_screen_iap_offer_title">Einmalkauf</string>
     <string name="upgrade_screen_iap_offer_body">Einmal bezahlen und Pro dauerhaft nutzen.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Du hast %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Du besitzt %1$s für immer.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Dein %1$s-Abonnement ist aktiv.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Dein Abonnement ist nicht auf Verlängerung eingestellt, daher kannst du jetzt zum Einmalkauf wechseln. Achtung: Es ist eine separate Gebühr, die dein Abonnement nicht storniert oder erstattet, daher nutze für beide dasselbe Google-Konto.</string>

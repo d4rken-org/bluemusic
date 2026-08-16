@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">അപ്ഗ്രേഡുചെയ്യുക</string>
     <string name="common_upgrade_required_label">അപ്‌ഗ്രേഡ് ആവശ്യമാണ്</string>
     <string name="label_premium_version_required">പ്രീമിയം വേർഷൻ ആവശ്യമാണ്</string>
-    <string name="upgrade_feature_requires_pro">ഈ ഫീചർക്ക് പ്രീമിയം വേർഷൻ ആവശ്യമാണ്</string>
-    <string name="upgrade_prompt_upgrade_action">അപ്ഗ്രേഡുചെയ്യുക</string>
     <string name="description_intro_purpose">ഈ ആപ്പ് നിങ്ങളുടെ Android ഉപകരണത്തെ വ്യത്യസ്ത Bluetooth ഉപകരണങ്ങളുടെ വോള്യം ഓർക്കാൻ അനുവദിക്കുന്നു.</string>
     <string name="upgrade_benefit_unlimited_devices">പരിധിയില്ലാത്ത ഉപകരണ പ്രൊഫൈലുകൾ</string>
     <string name="upgrade_benefit_connection_actions">ഓട്ടോപ്ലേ, ആപ്പ് ലോഞ്ച്, കണക്ഷൻ അലർട്ടുകൾ</string>

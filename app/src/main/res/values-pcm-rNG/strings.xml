@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Upgrade</string>
     <string name="common_upgrade_required_label">You need upgrade</string>
     <string name="label_premium_version_required">Premium version required</string>
-    <string name="upgrade_feature_requires_pro">Dis feature need di premium version</string>
-    <string name="upgrade_prompt_upgrade_action">Upgrade</string>
     <string name="description_intro_purpose">Dis app go allow your Android device remember di volume of different Bluetooth devices.</string>
     <string name="upgrade_benefit_unlimited_devices">Unlimited device profiles</string>
     <string name="upgrade_benefit_connection_actions">Autoplay, app launch and connection alerts</string>

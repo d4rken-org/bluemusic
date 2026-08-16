@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">နှစ်စဉ်သုံးဆောင်းခွင်။ Google Play တွင် အချိန်မည်သည့်အခါမျိုးတွင် ပယ်ဖျက်နိုင်ပါသည်။</string>
     <string name="upgrade_screen_iap_offer_title">အစဉ်အမြဲဖွင့်လှစ်ခြင်း</string>
     <string name="upgrade_screen_iap_offer_body">တစ်ကြိမ်ငွေချေ ပြီး Pro ကို အစဉ်အမြဲ ပိုင်ဆိုင်ပါ။</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">သင့် %1$s ရှိတယ် ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">သင်သည် %1$s ကို အစဉ်အမြဲ ပိုင်ဆိုင်ပါသည်။</string>
     <string name="upgrade_screen_owned_hero_sub_body">သင်၏ %1$s စာရင်းသွင်းမှု ရှင်သန်လျက်ရှိပါသည်။</string>
     <string name="upgrade_screen_owned_iap_purchase_note">သင်၏စာရင်းသွင်းမှု သုံးဆောင်းရန် သတ်မှတ်မထားသောကြောင့် သုံးဆောင်းခွင်တစ်ကြိမ်သို့ သင်ပြောင်းလဲနိုင်ပါသည်။ သတိပေးချက်- ၎င်းသည် သင်၏စာရင်းသွင်းမှုကို ပယ်ဖျက်ခြင်း သို့မဟုတ် ငွေပြန်အခ်င်းမပေးသည့် သီးခြားငွေချေခြင်းဖြစ်သောကြောင့် နှစ်ခုစလုံးအတွက် တူညီသော Google အကောင့်ကို အသုံးပြုပါ။</string>
