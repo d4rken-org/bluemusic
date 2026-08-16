@@ -334,8 +334,6 @@
     <string name="general_upgrade_action">Nadogradi</string>
     <string name="common_upgrade_required_label">Nadogradnja potrebna</string>
     <string name="label_premium_version_required">Potrebna je premium verzija</string>
-    <string name="upgrade_feature_requires_pro">Ova značajka zahtijeva premium verziju</string>
-    <string name="upgrade_prompt_upgrade_action">Nadogradi</string>
     <string name="description_intro_purpose">Ova aplikacija dopušta Vašem Android uređaju da zapamti glasnoću različitih Bluetooth uređaja.</string>
     <string name="upgrade_benefit_unlimited_devices">Neograničeni profili uređaja</string>
     <string name="upgrade_benefit_connection_actions">Automatska reprodukcija, pokretanje aplikacije i obavijesti o spajanju</string>

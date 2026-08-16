@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Werk jaarlik by. Kanselleer enige tyd in Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Lewenslange ontgrendeling</string>
     <string name="upgrade_screen_iap_offer_body">Betaal eenkeer en besit Pro vir altyd.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Jy het %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Jy besit %1$s vir altyd.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Jou %1$s-inskripsie is aktief.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Jou inskripsie is nie ingestel om te vernuwe nie, so jy kan nou na die eenmalige aankoop oorskakel. Let op: dit is \'n aparte las wat jou inskripsie nie sal kanselleer of terugbetaal nie, so gebruik dieselfde Google-rekening vir albei.</string>

@@ -326,8 +326,6 @@
     <string name="general_upgrade_action">Naik taraf</string>
     <string name="common_upgrade_required_label">Naik taraf diperlukan</string>
     <string name="label_premium_version_required">Versi premium diperlukan</string>
-    <string name="upgrade_feature_requires_pro">Ciri ini memerlukan versi premium</string>
-    <string name="upgrade_prompt_upgrade_action">Naik taraf</string>
     <string name="description_intro_purpose">Apl ini membolehkan peranti Android anda mengingati volum dari peranti Bluetooth yang berbeza.</string>
     <string name="upgrade_benefit_unlimited_devices">Profil peranti tanpa had</string>
     <string name="upgrade_benefit_connection_actions">Main auto, lancar aplikasi dan amaran sambungan</string>

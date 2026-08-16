@@ -326,8 +326,6 @@
     <string name="general_upgrade_action">อัปเกรด</string>
     <string name="common_upgrade_required_label">ต้องอัปเกรด</string>
     <string name="label_premium_version_required">ต้องการรุ่นพรีเมี่ยม</string>
-    <string name="upgrade_feature_requires_pro">คุณสมบัตินี้ต้องใช้เวอร์ชันพรีเมี่ยม</string>
-    <string name="upgrade_prompt_upgrade_action">อัปเกรด</string>
     <string name="description_intro_purpose">แอปนี้ช่วยให้อุปกรณ์ Android ของคุณจดจำระดับเสียงของอุปกรณ์บลูทูธแต่ละตัว</string>
     <string name="upgrade_benefit_unlimited_devices">โปรไฟล์อุปกรณ์ไม่จำกัด</string>
     <string name="upgrade_benefit_connection_actions">เล่นอัตโนมัติ, เปิดแอป และการแจ้งเตือนการเชื่อมต่อ</string>

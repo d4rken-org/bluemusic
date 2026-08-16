@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">ต่ออายุรายปี คุณสามารถยกเลิกได้ตลอดเวลาใน Google Play</string>
     <string name="upgrade_screen_iap_offer_title">ปลดล็อกตลอดชีวิต</string>
     <string name="upgrade_screen_iap_offer_body">จ่ายเพียงครั้งเดียวและเป็นเจ้าของ Pro ตลอดไป</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">คุณมี %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">คุณเป็นเจ้าของ %1$s ตลอดไป</string>
     <string name="upgrade_screen_owned_hero_sub_body">การสมัครสมาชิก %1$s ของคุณใช้งานได้</string>
     <string name="upgrade_screen_owned_iap_purchase_note">การสมัครสมาชิกของคุณไม่ได้ตั้งค่าให้ต่ออายุ ดังนั้นคุณสามารถเปลี่ยนไปเป็นการซื้อครั้งเดียวได้แล้ว โปรดทราบ: เป็นการเรียกเก็บเงินแยกต่างหากซึ่งจะไม่ยกเลิกหรือคืนเงินการสมัครสมาชิกของคุณ ดังนั้นให้ใช้บัญชี Google เดียวกันสำหรับทั้งสองแบบ</string>

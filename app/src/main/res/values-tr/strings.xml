@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Yükselt</string>
     <string name="common_upgrade_required_label">Yükseltme gerekli</string>
     <string name="label_premium_version_required">Ücretli sürüm gerekli</string>
-    <string name="upgrade_feature_requires_pro">Bu özellik premium sürümü gerektiriyor</string>
-    <string name="upgrade_prompt_upgrade_action">Yükselt</string>
     <string name="description_intro_purpose">Bu uygulama, Android cihazınızın farklı Bluetooth cihazlarının ses seviyesini hatırlamasını sağlar.</string>
     <string name="upgrade_benefit_unlimited_devices">Sınırsız cihaz profili</string>
     <string name="upgrade_benefit_connection_actions">Otomatik oynatma, uygulama başlatma ve bağlantı uyarıları</string>

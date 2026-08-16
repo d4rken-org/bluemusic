@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Obnovuje sa každoročne. Zrušte kedykoľvek v Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Doživotné odomknutie</string>
     <string name="upgrade_screen_iap_offer_body">Zaplaťte raz a vlastnite Pro navždy.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Máš %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Vlastníš %1$s navždy.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Vaše predplatné %1$s je aktívne.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Vaše predplatné nie je nastavené na obnovenie, takže teraz môžete prejsť na jednorazový nákup. Upozornenie: ide o samostatný poplatok, ktorý nezruší ani nevráti vaše predplatné, takže na obe položky použite rovnaký účet Google.</string>

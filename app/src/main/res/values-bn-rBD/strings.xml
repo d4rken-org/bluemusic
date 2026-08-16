@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">আপগ্রেড করুন</string>
     <string name="common_upgrade_required_label">আপগ্রেড প্রয়োজন</string>
     <string name="label_premium_version_required">প্রিমিয়াম সংস্করণ প্রয়োজন</string>
-    <string name="upgrade_feature_requires_pro">এই ফিচারে প্রিমিয়াম সংস্করণ প্রয়োজন</string>
-    <string name="upgrade_prompt_upgrade_action">আপগ্রেড করুন</string>
     <string name="description_intro_purpose">এই অ্যাপ আপনার আন্ড্রয়েড ডিভাইসকে বিভিন্ন ব্লুটুথ ডিভাইসের ভলিউম মনে রাখতে দেয়।</string>
     <string name="upgrade_benefit_unlimited_devices">সীমাহীন ডিভাইস প্রোফাইল</string>
     <string name="upgrade_benefit_connection_actions">অটোপ্লে, অ্যাপ লঞ্চ এবং কানেকশন অ্যালার্ট</string>

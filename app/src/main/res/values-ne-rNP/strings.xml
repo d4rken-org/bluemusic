@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">अपग्रेड गर्नुहोस्</string>
     <string name="common_upgrade_required_label">अपग्रेड आवश्यक छ</string>
     <string name="label_premium_version_required">प्रिमियम संस्करण आवश्यक</string>
-    <string name="upgrade_feature_requires_pro">यो सुविधालाई प्रिमियम संस्करण आवश्यक छ</string>
-    <string name="upgrade_prompt_upgrade_action">अपग्रेड गर्नुहोस्</string>
     <string name="description_intro_purpose">यो एपले तपाईंको Android उपकरणलाई विभिन्न Bluetooth उपकरणहरूको भोल्युम सम्झन दिन्छ।</string>
     <string name="upgrade_benefit_unlimited_devices">असीमित यन्त्र प्रोफाइलहरू</string>
     <string name="upgrade_benefit_connection_actions">अटोप्ले, एप लन्च र कनेक्सन अलर्टहरू</string>

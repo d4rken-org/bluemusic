@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Αναβάθμιση</string>
     <string name="common_upgrade_required_label">Απαιτείται αναβάθμιση</string>
     <string name="label_premium_version_required">Απαιτείται η Premium έκδοση</string>
-    <string name="upgrade_feature_requires_pro">Αυτή η λειτουργία απαιτεί την έκδοση premium</string>
-    <string name="upgrade_prompt_upgrade_action">Αναβάθμιση</string>
     <string name="description_intro_purpose">Αυτή η εφαρμογή επιτρέπει στην συσκευή Android σας να θυμάται την ένταση όλων των διαφορετικών συσκευών Bluetooth.</string>
     <string name="upgrade_benefit_unlimited_devices">Απεριόριστα προφίλ συσκευών</string>
     <string name="upgrade_benefit_connection_actions">Αυτόματη αναπαραγωγή, εκκίνηση εφαρμογής και ειδοποιήσεις σύνδεσης</string>

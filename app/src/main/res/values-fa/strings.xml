@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">ارتقاء</string>
     <string name="common_upgrade_required_label">ارتقا لازم است</string>
     <string name="label_premium_version_required">نسخه پریمیوم لازم است</string>
-    <string name="upgrade_feature_requires_pro">این ویژگی نیازمند نسخه پریمیوم است</string>
-    <string name="upgrade_prompt_upgrade_action">ارتقاء</string>
     <string name="description_intro_purpose">این برنامه به دستگاه اندروید شما امکان می‌دهد صدای دستگاه‌های بلوتوث مختلف را به خاطر بسپارد.</string>
     <string name="upgrade_benefit_unlimited_devices">پروفایل‌های دستگاه نامحدود</string>
     <string name="upgrade_benefit_connection_actions">پخش خودکار، راه‌اندازی برنامه و هشدارهای اتصال</string>

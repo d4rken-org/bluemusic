@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">გარემონტება</string>
     <string name="common_upgrade_required_label">საჭიროა განახლება</string>
     <string name="label_premium_version_required">საჭიროა პრემიუმ ვერსია</string>
-    <string name="upgrade_feature_requires_pro">ეს ფუნქცია მოითხოვს პრემიუმ ვერსიას</string>
-    <string name="upgrade_prompt_upgrade_action">გარემონტება</string>
     <string name="description_intro_purpose">ეს აპი საშუალებას აძლევს თქვენს Android მოწყობილობას დაიმახსოვროს სხვადასხვა Bluetooth მოწყობილობის ხმა.</string>
     <string name="upgrade_benefit_unlimited_devices">შეუზღუდავი მოწყობილობის პროფილები</string>
     <string name="upgrade_benefit_connection_actions">ავტომატური დაკვრა, აპის გაშვება და კავშირის შეტყობინებები</string>

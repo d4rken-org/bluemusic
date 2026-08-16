@@ -326,8 +326,6 @@
     <string name="general_upgrade_action">升级</string>
     <string name="common_upgrade_required_label">需要升级</string>
     <string name="label_premium_version_required">需要高级版本</string>
-    <string name="upgrade_feature_requires_pro">此功能需要高级版本</string>
-    <string name="upgrade_prompt_upgrade_action">升级</string>
     <string name="description_intro_purpose">此应用可让您的Android设备，记住来自不同蓝牙设备的音量。</string>
     <string name="upgrade_benefit_unlimited_devices">无限设备配置</string>
     <string name="upgrade_benefit_connection_actions">自动播放、启动应用及连接提醒</string>

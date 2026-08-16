@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Eguneratu</string>
     <string name="common_upgrade_required_label">Berritzea beharrezkoa</string>
     <string name="label_premium_version_required">Premium bertsioa beharrezkoa da</string>
-    <string name="upgrade_feature_requires_pro">Ezaugarri honek premium bertsioa behar du</string>
-    <string name="upgrade_prompt_upgrade_action">Eguneratu</string>
     <string name="description_intro_purpose">Aplikazio honek zure Android gailuari Bluetooth gailu desberdinen bolumena gogoratzeko aukera ematen dio.</string>
     <string name="upgrade_benefit_unlimited_devices">Gailu profil mugagabeak</string>
     <string name="upgrade_benefit_connection_actions">Autoerreproduzioa, aplikazioa abiaraztea eta konexio alertak</string>

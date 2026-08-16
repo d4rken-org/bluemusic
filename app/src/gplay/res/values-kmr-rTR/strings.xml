@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Her sal nûborn dike. Her dem de di Google Play de betal bike.</string>
     <string name="upgrade_screen_iap_offer_title">Azadî ya belavê</string>
     <string name="upgrade_screen_iap_offer_body">Carekî bide û Pro-yî eternê xwedî bike.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Tu %1$s heye ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Tu %1$s eternê xwedî dikî.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Abonementeya %1$s ya te çalak e.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Abonementeya te nabe ku nûborn bibe, ji ber vê tu niha dikarî derbasî kirrîna yekcarî yî. Baldar: ew jor a cuda ye ku nabe ku abonementeya te betal bibe an jî gerîyê bide, ji ber vê hesaba Google ya heman ji bo her du bikarbîne.</string>

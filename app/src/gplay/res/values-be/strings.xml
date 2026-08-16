@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Аднаўляецца кожны год. Адмяніце ў любы час ў Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Развязаны на жыццё</string>
     <string name="upgrade_screen_iap_offer_body">Заплаціце адзін раз і валодайце Pro вечна.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">У цябе ёсць %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Вы валодаеце %1$s вечна.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Ваша падпіска на %1$s актыўна.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Ваша падпіска не наладжана на аднаўленне, таму вы можаце зараз перайсці на адноразавую пакупку. Увага: гэта адзельны платёж, адмена якога не адменіт вашу падпіцу, таму выкарыстоўвайце адзін ліч Google для абодвух.</string>

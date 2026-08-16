@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">అప్‌గ్రేడ్ చేయండి</string>
     <string name="common_upgrade_required_label">అప్‌గ్రేడ్ అవసరం</string>
     <string name="label_premium_version_required">ప్రీమియం వెర్షన్ అవసరం</string>
-    <string name="upgrade_feature_requires_pro">ఈ ఫీచర్‌కు ప్రీమియం వెర్షన్ అవసరం</string>
-    <string name="upgrade_prompt_upgrade_action">అప్‌గ్రేడ్ చేయండి</string>
     <string name="description_intro_purpose">ఈ యాప్ మీ Android పరికరం వేర్వేరు Bluetooth పరికరాల వాల్యూమ్‌ను గుర్తుంచుకోవడానికి అనుమతిస్తుంది.</string>
     <string name="upgrade_benefit_unlimited_devices">అపరిమిత పరికర ప్రొఫైల్‌లు</string>
     <string name="upgrade_benefit_connection_actions">ఆటోప్లే, యాప్ లాంచ్ మరియు కనెక్షన్ అలర్ట్‌లు</string>

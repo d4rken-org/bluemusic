@@ -338,8 +338,6 @@
     <string name="general_upgrade_action">Upgradovat</string>
     <string name="common_upgrade_required_label">Vyžadován upgrade</string>
     <string name="label_premium_version_required">Je vyžadována verze Premium</string>
-    <string name="upgrade_feature_requires_pro">Tato funkce vyžaduje verzi Premium</string>
-    <string name="upgrade_prompt_upgrade_action">Upgradovat</string>
     <string name="description_intro_purpose">Tato aplikace umožňuje zařízení Android zapamatovat si hlasitost různých zařízení Bluetooth.</string>
     <string name="upgrade_benefit_unlimited_devices">Neomezené profily zařízení</string>
     <string name="upgrade_benefit_connection_actions">Automatické přehrávání, spuštění aplikace a upozornění na připojení</string>

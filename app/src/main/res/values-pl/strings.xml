@@ -339,8 +339,6 @@ Karol Szastok (K4r0lSz);</string>
     <string name="general_upgrade_action">Ulepszenie</string>
     <string name="common_upgrade_required_label">Wymagane ulepszenie</string>
     <string name="label_premium_version_required">Wymagana wersja Premium</string>
-    <string name="upgrade_feature_requires_pro">Ta funkcja wymaga wersji premium</string>
-    <string name="upgrade_prompt_upgrade_action">Ulepsz</string>
     <string name="description_intro_purpose">Aplikacja zezwala Androidowi na zapamiętanie głośności dla różnych urządzeń Bluetooth.</string>
     <string name="upgrade_benefit_unlimited_devices">Nieograniczone profile urządzeń</string>
     <string name="upgrade_benefit_connection_actions">Autoodtwarzanie, uruchamianie aplikacji i alerty połączeń</string>

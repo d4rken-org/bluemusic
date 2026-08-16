@@ -338,8 +338,6 @@
     <string name="general_upgrade_action">Upgradovať</string>
     <string name="common_upgrade_required_label">Vyžaduje sa upgrade</string>
     <string name="label_premium_version_required">Vyžaduje sa verzia prémium</string>
-    <string name="upgrade_feature_requires_pro">Táto funkcia vyžaduje prémiovú verziu</string>
-    <string name="upgrade_prompt_upgrade_action">Upgradovať</string>
     <string name="description_intro_purpose">Táto aplikácia umožňuje vášmu Android zariadeniu uložiť hlasitosti pre rôzne Bluetooth zariadenia.</string>
     <string name="upgrade_benefit_unlimited_devices">Neobmedzené profily zariadení</string>
     <string name="upgrade_benefit_connection_actions">Automatické prehrávanie, spustenie aplikácie a upozornenia na pripojenie</string>

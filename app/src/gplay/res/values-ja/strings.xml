@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">毎年更新されます。Google Play からいつでもキャンセルできます。</string>
     <string name="upgrade_screen_iap_offer_title">生涯ロック解除</string>
     <string name="upgrade_screen_iap_offer_body">1 回の支払いで Pro を永遠に所有できます。</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">%1$s です ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">%1$s を永遠に所有しています。</string>
     <string name="upgrade_screen_owned_hero_sub_body">あなたの %1$s サブスクリプションは有効です。</string>
     <string name="upgrade_screen_owned_iap_purchase_note">サブスクリプションが更新されるように設定されていないため、今は 1 回限りの購入に切り替えられます。注意：これは別の課金であり、サブスクリプションのキャンセルや払い戻しは行われません。両方に同じ Google アカウントを使用してください。</string>

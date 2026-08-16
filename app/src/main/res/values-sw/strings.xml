@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Boresha</string>
     <string name="common_upgrade_required_label">Uboreshaji unahitajika</string>
     <string name="label_premium_version_required">Toleo la premium linahitajika</string>
-    <string name="upgrade_feature_requires_pro">Kipengele hiki kinahitaji toleo la premium</string>
-    <string name="upgrade_prompt_upgrade_action">Boresha</string>
     <string name="description_intro_purpose">Programu hii inaruhusu kifaa chako cha Android kukumbuka sauti ya vifaa tofauti vya Bluetooth.</string>
     <string name="upgrade_benefit_unlimited_devices">Wasifu usio na kikomo wa vifaa</string>
     <string name="upgrade_benefit_connection_actions">Kucheza kiotomatiki, uzinduzi wa programu na arifa za muunganisho</string>

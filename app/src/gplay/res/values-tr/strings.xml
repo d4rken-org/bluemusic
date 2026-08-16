@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Yıllık olarak yenilenir. Google Play\'den istediğiniz zaman iptal edin.</string>
     <string name="upgrade_screen_iap_offer_title">Yaşam boyu kilit açma</string>
     <string name="upgrade_screen_iap_offer_body">Bir kez ödeyip Pro\'ya sonsuza kadar sahip olun.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">%1$s\'in var ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">%1$s\'a sonsuza kadar sahipsiniz.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Sizin %1$s aboneliğiniz aktif.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Aboneliğiniz yenilenecek şekilde ayarlanmamış, bu nedenle şimdi tek seferlik satın almaya geçebilirsiniz. Dikkat: bu, aboneliğinizi iptal etmeyecek veya geri ödeme yapmayacak ayrı bir ücrettir, bu nedenle her ikisi için aynı Google hesabını kullanın.</string>

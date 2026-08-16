@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Rinovon çdo vit. Anuloni në çdo kohë në Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Shbllokimi përjetësor</string>
     <string name="upgrade_screen_iap_offer_body">Paguani një herë dhe zotëroni Pro përgjithmonë.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Ke %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Ju zotëroni %1$s përgjithmonë.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Abonamenti juaj %1$s është aktiv.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Abonamenti juaj nuk është caktuar për rinovim, kështu që mund të kaloni në blerje njëherësh tani. Kujdes: është një tarifë e veçantë që nuk do të anulojë ose rimbursojë abonimin tuaj, kështu që përdorni të njëjtin llogari Google për të dyja.</string>

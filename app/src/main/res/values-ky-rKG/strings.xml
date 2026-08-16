@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Жаңыртуу</string>
     <string name="common_upgrade_required_label">Жаңылануу кажет</string>
     <string name="label_premium_version_required">Премиум нускасы талап кылынат</string>
-    <string name="upgrade_feature_requires_pro">Бул функция премиум нускасын талап кылат</string>
-    <string name="upgrade_prompt_upgrade_action">Жаңыртуу</string>
     <string name="description_intro_purpose">Бул колдонмо Android түзмөгүңҿзгө ар кандай Bluetooth түзмөктөрүнүн үн деңгээлдерин эстеп калууга мүмкүндүк берет.</string>
     <string name="upgrade_benefit_unlimited_devices">Чексиз түзмөк профилдери</string>
     <string name="upgrade_benefit_connection_actions">Автоойнотуу, колдонмо ишке жүгүртүү жана кошулуу ескертүүләри</string>

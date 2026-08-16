@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Opgrader</string>
     <string name="common_upgrade_required_label">Opgradering påkrævet</string>
     <string name="label_premium_version_required">Premium-versionen påkrævet</string>
-    <string name="upgrade_feature_requires_pro">Denne funktion kræver premium-versionen</string>
-    <string name="upgrade_prompt_upgrade_action">Opgrader</string>
     <string name="description_intro_purpose">Denne app tillader din Android at huske lydstyrken for forskellige Bluetooth-enheder.</string>
     <string name="upgrade_benefit_unlimited_devices">Ubegrænsede enhedsprofiler</string>
     <string name="upgrade_benefit_connection_actions">Autoafspilning, app-start og forbindelsesadvarsler</string>

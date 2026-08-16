@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">აახლოვდება ყოველი წელი. გაუქმება შესაძლებელია ნებისმიერ დროს Google Play-ში.</string>
     <string name="upgrade_screen_iap_offer_title">სამუდამო გახსნა</string>
     <string name="upgrade_screen_iap_offer_body">გადაიხადეთ ერთხელ და Pro სამუდამოდ თქვენი იქნება.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">თქვენი %1$s აქტიურია ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">თქვენ ფლობთ %1$s სამუდამოდ.</string>
     <string name="upgrade_screen_owned_hero_sub_body">თქვენი %1$s გამოწერა აქტიურია.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">თქვენი გამოწერა არ არის დაყენებული აახლოვებისთვის, ამიტომ ახლა შეგიძლიათ გადაერთოთ ერთჯერადი ყიდვაზე. ყურადღება: ეს არის ცალკე გადახდა, რომელიც არ გააუქმებს ან არ დააბრუნებს თქვენი გამოწერას, ამიტომ გამოიყენეთ ერთი და იგივე Google ანგარიში ორივესთვის.</string>

@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">Actualizar</string>
     <string name="common_upgrade_required_label">Actualización requirida</string>
     <string name="label_premium_version_required">Versión Premium obrigatoria</string>
-    <string name="upgrade_feature_requires_pro">Esta funcionalidade require a versión Premium</string>
-    <string name="upgrade_prompt_upgrade_action">Actualizar</string>
     <string name="description_intro_purpose">Esta aplicación permite que o teu Android lembre o volume dos diferentes dispositivos bluetooth.</string>
     <string name="upgrade_benefit_unlimited_devices">Perfís de dispositivos ilimitados</string>
     <string name="upgrade_benefit_connection_actions">Reprodución automática, inicio de aplicación e alertas de conexión</string>

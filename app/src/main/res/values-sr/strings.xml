@@ -334,8 +334,6 @@
     <string name="general_upgrade_action">Надогради</string>
     <string name="common_upgrade_required_label">Потребна надоградња</string>
     <string name="label_premium_version_required">Потребна премијум верзија</string>
-    <string name="upgrade_feature_requires_pro">Ова функција захтева премијум верзију</string>
-    <string name="upgrade_prompt_upgrade_action">Надогради</string>
     <string name="description_intro_purpose">Ова апликација омогућава твом Андроид уређају да памти јачину звука различитих Bluetooth уређаја.</string>
     <string name="upgrade_benefit_unlimited_devices">Неограничени профили уређаја</string>
     <string name="upgrade_benefit_connection_actions">Аутоматско пуштање, покретање апликације и упозорења о вези</string>

@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Fornyes årlig. Avbryt når som helst i Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Livsvarig opplåsning</string>
     <string name="upgrade_screen_iap_offer_body">Betal en gang og eie Pro for alltid.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Du har %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Du eier %1$s for alltid.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Abonnementet ditt %1$s er aktivt.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Abonnementet ditt er ikke satt til å fornyes, så du kan bytte til engangskjøpet nå. Viktig: det er en separat kostnad som ikke vil avbryte eller refundere abonnementet ditt, så bruk samme Google-konto for begge deler.</string>

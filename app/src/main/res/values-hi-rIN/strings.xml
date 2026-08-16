@@ -330,8 +330,6 @@
     <string name="general_upgrade_action">अपग्रेड</string>
     <string name="common_upgrade_required_label">अपग्रेड आवश्यक है</string>
     <string name="label_premium_version_required">प्रीमियम संस्करण की आवश्यकता है</string>
-    <string name="upgrade_feature_requires_pro">इस फीचर के लिए प्रीमियम वर्जन की आवश्यकता है</string>
-    <string name="upgrade_prompt_upgrade_action">अपग्रेड</string>
     <string name="description_intro_purpose">यह ऐप आपके एंड्रॉइड डिवाइस को विभिन्न ब्लूटूथ उपकरणों की मात्रा याद रखने की अनुमति देता है।</string>
     <string name="upgrade_benefit_unlimited_devices">असीमित डिवाइस प्रोफ़ाइल</string>
     <string name="upgrade_benefit_connection_actions">ऑटोप्ले, ऐप लॉन्च और कनेक्शन अलर्ट</string>

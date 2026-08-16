@@ -64,6 +64,8 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Évente megújul. Bármikor törölheted a Google Play-ben.</string>
     <string name="upgrade_screen_iap_offer_title">Élettartam feloldás</string>
     <string name="upgrade_screen_iap_offer_body">Fizess egyszer, és a Pro funkciókat örökre megtartod.</string>
+    <!-- Ownership hero headline, shown once the upgrade is active. %1$s is the complete localized tier name, e.g. "BVM Pro" - keep it as a placeholder and do not translate its contents. Render the sentence idiomatically if that reads better in your language ("X is active", "Your X access is active"), as long as the placeholder survives. -->
+    <string name="upgrade_screen_owned_hero_brand_title">Megvan %1$s ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Az %1$s örökre a tiéd.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Az %1$s előfizetésed aktív.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Az előfizetésed nem fog megújulni, így mostantól az egyszeri vásárlásra válthatsz. Figyelem: ez egy külön díj, amely nem szünteti meg és nem adja vissza az előfizetésed, ezért mindkettőhöz ugyanazt a Google-fiókot használd.</string>
