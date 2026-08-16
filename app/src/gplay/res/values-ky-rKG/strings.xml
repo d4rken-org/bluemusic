@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Жыл сайын жаңыланат. Google Play-де каалаган убакта жокко чыгарыңыз.</string>
     <string name="upgrade_screen_iap_offer_title">Өмүр бою ачуу</string>
     <string name="upgrade_screen_iap_offer_body">Бирок төлөп, Pro менен өмүр бою ээсинде болуңуз.</string>
-    <string name="upgrade_screen_owned_hero_title">Сиз Pro болосуз! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Сиз %1$s өмүр бою ээси болосуз.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Сиздин %1$s жазылуу активдүү.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Сиздин жазылууңуз жаңыланса да коюлган жок, ошондуктан сиз азыр бир жолу төлөөгө өтүп алаарсыңыз. Көңүл салыңыз: бул жазылууңузду жокко чыгарбайт же сатындыраат эмес жараяа болсо, эки үчүн тең бирдей Google аккаунтун колдонуңуз.</string>

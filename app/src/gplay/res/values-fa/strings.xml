@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">هر سال تجدید می‌شود. در هر زمان در Google Play لغو کنید.</string>
     <string name="upgrade_screen_iap_offer_title">باز کردن دائمی</string>
     <string name="upgrade_screen_iap_offer_body">یک بار پرداخت کنید و Pro را برای همیشه داشته باشید.</string>
-    <string name="upgrade_screen_owned_hero_title">شما Pro هستید! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">شما برای همیشه %1$s را مالک هستید.</string>
     <string name="upgrade_screen_owned_hero_sub_body">اشتراک %1$s شما فعال است.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">اشتراک شما برای تجدید تنظیم نشده است، بنابراین اکنون می‌توانید به خریدهای یک‌باره تغییر دهید. توجه داشته باشید: این یک هزینه جداگانه است که اشتراک شما را لغو یا بازپرداخت نخواهد کرد، بنابراین برای هر دو از همان حساب Google استفاده کنید.</string>

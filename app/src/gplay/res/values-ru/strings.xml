@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Возобновляется ежегодно. Отменить можно в любой момент в Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Пожизненная активация</string>
     <string name="upgrade_screen_iap_offer_body">Оплатите один раз и владейте Pro навсегда.</string>
-    <string name="upgrade_screen_owned_hero_title">Вы Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Вы владеете %1$s навсегда.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Ваша подписка %1$s активна.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Ваша подписка не настроена на продление, поэтому вы можете переключиться на единовременную покупку. Внимание: это отдельный платеж, который не отменит и не вернет вашу подписку, поэтому используйте один и тот же аккаунт Google для обоих вариантов.</string>

@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">يتجدد سنويًا. ألغِ الاشتراك في أي وقت عبر Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">فتح مدى الحياة</string>
     <string name="upgrade_screen_iap_offer_body">ادفع مرة واحدة وامتلك Pro للأبد.</string>
-    <string name="upgrade_screen_owned_hero_title">أنت Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">تمتلك %1$s للأبد.</string>
     <string name="upgrade_screen_owned_hero_sub_body">اشتراك %1$s الخاص بك نشط.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">اشتراكك غير مضبوط على التجديد، لذا يمكنك التبديل إلى الشراء لمرة واحدة الآن. تنبيه: إنها رسوم منفصلة لن تلغي أو ترد اشتراكك، لذا استخدم نفس حساب Google لكليهما.</string>

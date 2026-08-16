@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Аднаўляецца кожны год. Адмяніце ў любы час ў Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Развязаны на жыццё</string>
     <string name="upgrade_screen_iap_offer_body">Заплаціце адзін раз і валодайце Pro вечна.</string>
-    <string name="upgrade_screen_owned_hero_title">Вы Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Вы валодаеце %1$s вечна.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Ваша падпіска на %1$s актыўна.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Ваша падпіска не наладжана на аднаўленне, таму вы можаце зараз перайсці на адноразавую пакупку. Увага: гэта адзельны платёж, адмена якога не адменіт вашу падпіцу, таму выкарыстоўвайце адзін ліч Google для абодвух.</string>

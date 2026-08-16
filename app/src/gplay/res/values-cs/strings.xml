@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Obnovuje se ročně. Zrušit lze kdykoli v Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Trvalé odemčení</string>
     <string name="upgrade_screen_iap_offer_body">Zaplaťte jednou a vlastněte Pro navždy.</string>
-    <string name="upgrade_screen_owned_hero_title">Jste Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Vlastníte %1$s navždy.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Vaše předplatné %1$s je aktivní.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Vaše předplatné není nastaveno na obnovení, takže nyní můžete přejít na jednorázový nákup. Pozor: jedná se o oddělený poplatek, který neodstráni ani nevrátí vaše předplatné, takže pro obě možnosti použijte stejný účet Google.</string>

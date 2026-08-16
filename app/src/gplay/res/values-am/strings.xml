@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">ዓመት ነግ ታደድ. Google Play ውስጥ ማቋረጥ ይችሉ.</string>
     <string name="upgrade_screen_iap_offer_title">ሕይወት ሙሉ ሽቅ</string>
     <string name="upgrade_screen_iap_offer_body">አንድ ጊዜ ክፈል Pro ሕይወት ሙሉ ይሆን።</string>
-    <string name="upgrade_screen_owned_hero_title">እርስዎ Pro ነዎት! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">እርስዎ %1$s ሕይወት ሙሉ ይይዝሉ።</string>
     <string name="upgrade_screen_owned_hero_sub_body">እርስዎ %1$s ደንገስ ንቁ ነው።</string>
     <string name="upgrade_screen_owned_iap_purchase_note">ወደ ደንገስ አሁን ማሪትዎ ተዘጋጅ አለ, ስለዚህ ወደ አንድ ጊዜ ግዢ ቀይር ይችሉ. ተጠንቂ: ይህ አንድ የተለየ ክፈያ ሂሳብ ወይም refund ደንገስ, ስለዚህ ሁለቱም ተመሳሳይ Google ሂሳብ ይጠቀም.</string>

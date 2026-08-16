@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Se renueva anualmente. Cancelá en cualquier momento en Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Desbloqueo de por vida</string>
     <string name="upgrade_screen_iap_offer_body">Pagá una sola vez y tenés Pro para siempre.</string>
-    <string name="upgrade_screen_owned_hero_title">¡Sos Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Tenés %1$s para siempre.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Tu suscripción a %1$s está activa.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Tu suscripción no está configurada para renovarse, así que podés cambiar a la compra única ahora. Aviso: es un cargo separado que no cancelará ni reembolsará tu suscripción, así que usá la misma cuenta de Google para ambas.</string>

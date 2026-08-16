@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Gia hạn hàng năm. Hủy bất kỳ lúc nào trong Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Mở khóa vĩnh viễn</string>
     <string name="upgrade_screen_iap_offer_body">Trả một lần và sở hữu Pro mãi mãi.</string>
-    <string name="upgrade_screen_owned_hero_title">Bạn là Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Bạn sở hữu %1$s mãi mãi.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Đăng ký %1$s của bạn đang hoạt động.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Đăng ký của bạn không được đặt để gia hạn, vì vậy bạn có thể chuyển sang mua một lần ngay bây giờ. Chú ý: đây là một khoản phí riêng biệt sẽ không hủy hoặc hoàn lại đăng ký của bạn, vì vậy hãy sử dụng cùng một tài khoản Google cho cả hai.</string>

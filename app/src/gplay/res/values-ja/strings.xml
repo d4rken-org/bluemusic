@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">毎年更新されます。Google Play からいつでもキャンセルできます。</string>
     <string name="upgrade_screen_iap_offer_title">生涯ロック解除</string>
     <string name="upgrade_screen_iap_offer_body">1 回の支払いで Pro を永遠に所有できます。</string>
-    <string name="upgrade_screen_owned_hero_title">Pro になりました！❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">%1$s を永遠に所有しています。</string>
     <string name="upgrade_screen_owned_hero_sub_body">あなたの %1$s サブスクリプションは有効です。</string>
     <string name="upgrade_screen_owned_iap_purchase_note">サブスクリプションが更新されるように設定されていないため、今は 1 回限りの購入に切り替えられます。注意：これは別の課金であり、サブスクリプションのキャンセルや払い戻しは行われません。両方に同じ Google アカウントを使用してください。</string>

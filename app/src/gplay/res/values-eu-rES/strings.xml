@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Urtean behin berritsi. Atzera dezakezu Google Play-n nahi duzun unean.</string>
     <string name="upgrade_screen_iap_offer_title">Betirako desblokeo</string>
     <string name="upgrade_screen_iap_offer_body">Behin ordaindu eta Pro betirako.</string>
-    <string name="upgrade_screen_owned_hero_title">Pro zara! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">%1$s betirako dituzu.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Zure %1$s harpidetzak aktibo daude.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Zure harpidetza ez dago berritsi ezarrita, beraz orain aldatu dezakezu ordain bakarrean. Kontuan: ordain bakarra berezia da eta ez du zure harpidetzari uko egingo, beraz kontua berean ordaindu beharko duzu.</string>

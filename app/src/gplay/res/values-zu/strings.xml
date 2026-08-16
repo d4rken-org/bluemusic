@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Kutheshwa kabusha ngonyaka. Khansela nganoma iyiphi isikhathi ku-Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Ukuvula ngokusisele</string>
     <string name="upgrade_screen_iap_offer_body">Khokha kanye futhi unabe ne-Pro ngokusisele.</string>
-    <string name="upgrade_screen_owned_hero_title">Ungu-Pro! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Unabe ne-%1$s ngokusisele.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Isikwelekelo se-%1$s sakho siyasebenza.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Isikwelekelo sakho ayisetheka ukubuya, ngakho ungashintshela ekuthengeni kanye manje. Ziqapela: lingubhili elahlukile engezelwe engayikhanseli noma ingayibuyele ngemali isikwelekelo sakho, ngakho sebenzisa i-akhawunti ye-Google efanayo kuzo zombili.</string>

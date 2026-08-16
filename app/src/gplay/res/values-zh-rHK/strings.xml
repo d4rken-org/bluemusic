@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">按年續約。可隨時在 Google Play 中取消。</string>
     <string name="upgrade_screen_iap_offer_title">永久解鎖</string>
     <string name="upgrade_screen_iap_offer_body">一次付款，永久擁有 Pro。</string>
-    <string name="upgrade_screen_owned_hero_title">你已是 Pro！❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">你永久擁有 %1$s。</string>
     <string name="upgrade_screen_owned_hero_sub_body">你的 %1$s 訂閱已啟用。</string>
     <string name="upgrade_screen_owned_iap_purchase_note">你的訂閱未設定續約，所以你現在可以改用一次性購買。提醒：這是單獨收費的，不會取消或退款你的訂閱，所以請對兩者使用相同的 Google 帳戶。</string>

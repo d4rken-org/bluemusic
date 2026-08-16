@@ -64,7 +64,6 @@
     <string name="upgrade_screen_subscription_offer_body_no_trial">Se renouvelle chaque année. Annulez à tout moment dans Google Play.</string>
     <string name="upgrade_screen_iap_offer_title">Déverrouillage à vie</string>
     <string name="upgrade_screen_iap_offer_body">Payez une fois et possédez Pro à jamais.</string>
-    <string name="upgrade_screen_owned_hero_title">Vous êtes Pro ! ❤️</string>
     <string name="upgrade_screen_owned_hero_iap_body">Vous possédez %1$s à jamais.</string>
     <string name="upgrade_screen_owned_hero_sub_body">Votre abonnement %1$s est actif.</string>
     <string name="upgrade_screen_owned_iap_purchase_note">Votre abonnement n\'est pas défini pour se renouveler, vous pouvez donc passer à l\'achat unique maintenant. Attention : c\'est un frais séparé qui n\'annulera ni ne remboursera votre abonnement, alors utilisez le même compte Google pour les deux.</string>
