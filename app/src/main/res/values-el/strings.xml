@@ -329,14 +329,10 @@
     <string name="label_premium_version">Premium έκδοση</string>
     <string name="general_upgrade_action">Αναβάθμιση</string>
     <string name="common_upgrade_required_label">Απαιτείται αναβάθμιση</string>
-    <string name="description_premium_required_additional_devices">Η διαχείριση πρόσθετων συσκευών απαιτεί την έκδοση Premium.</string>
-    <string name="description_premium_required_this_extra_option">Αυτή η επιπλέον επιλογή απαιτεί την έκδοση Premium της εφαρμογής.</string>
-    <string name="description_premium_upgrade_explanation">Αποκτήστε την Premium έκδοση για να ενεργοποιήσετε πρόσθετες λειτουργίες και να υποστηρίξετε την ανάπτυξη της εφαρμογής.</string>
     <string name="label_premium_version_required">Απαιτείται η Premium έκδοση</string>
     <string name="upgrade_feature_requires_pro">Αυτή η λειτουργία απαιτεί την έκδοση premium</string>
     <string name="upgrade_prompt_upgrade_action">Αναβάθμιση</string>
     <string name="description_intro_purpose">Αυτή η εφαρμογή επιτρέπει στην συσκευή Android σας να θυμάται την ένταση όλων των διαφορετικών συσκευών Bluetooth.</string>
-    <string name="description_intro_premium">Αν σας αρέσει αυτή η εφαρμογή, εξετάστε την αναβάθμιση στην έκδοση premium. Υποστηρίζει την ανάπτυξή της και σας φέρνει μερικά επιπλέον χαρακτηριστικά.</string>
     <string name="upgrade_benefit_unlimited_devices">Απεριόριστα προφίλ συσκευών</string>
     <string name="upgrade_benefit_connection_actions">Αυτόματη αναπαραγωγή, εκκίνηση εφαρμογής και ειδοποιήσεις σύνδεσης</string>
     <string name="upgrade_benefit_theme_customization">Προσαρμογή θέματος, στυλ και χρώματος</string>

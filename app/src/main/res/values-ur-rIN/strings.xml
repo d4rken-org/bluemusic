@@ -329,14 +329,10 @@
     <string name="label_premium_version">پریمیم ورژن</string>
     <string name="general_upgrade_action">اپ گریڈ کریں</string>
     <string name="common_upgrade_required_label">اپگریڈ ضروری ہے</string>
-    <string name="description_premium_required_additional_devices">اضافی ڈیوائسیز کی نگرانی کے لیے پریمیم ورژن کی ضرورت ہے۔</string>
-    <string name="description_premium_required_this_extra_option">یہ اضافی آپشن ایپ کے پریمیم ورژن کی ضرورت ہے۔</string>
-    <string name="description_premium_upgrade_explanation">اضافی خصوصیات فعال کرنے اور ترقی کی حمایت کے لیے پریمیم ورژن حاصل کریں۔</string>
     <string name="label_premium_version_required">پریمیم ورژن ضروری ہے</string>
     <string name="upgrade_feature_requires_pro">اس فیچر کے لیے پریمیم ورژن کی ضرورت ہے</string>
     <string name="upgrade_prompt_upgrade_action">اپ گریڈ کریں</string>
     <string name="description_intro_purpose">یہ ایپ آپ کے اینڈرائیڈ ڈیوائس کو مختلف بلوٹوتھ ڈیوائسز کا والیوم یاد رکھنے دیتی ہے۔</string>
-    <string name="description_intro_premium">اگر آپ یہ ایپ پسند کرتے ہیں، صدقہ پریمیم ورژن میں اپ گریڈ کریں۔ یہ ترقی کی حمایت کرتا ہے اور آپ کو چند اضافی خصوصیات ملتی ہیں۔</string>
     <string name="upgrade_benefit_unlimited_devices">لامحدود ڈیوائس پروفائلز</string>
     <string name="upgrade_benefit_connection_actions">آٹوپلے، ایپ لانچ اور کنکشن الرٹس</string>
     <string name="upgrade_benefit_theme_customization">تھیم، اسٹائل اور رنگ کی حسب ضرورت تبدیلی</string>

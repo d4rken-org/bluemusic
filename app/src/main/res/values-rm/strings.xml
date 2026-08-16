@@ -329,14 +329,10 @@
     <string name="label_premium_version">Versiun premium</string>
     <string name="general_upgrade_action">Actualisar</string>
     <string name="common_upgrade_required_label">Actualisaziun necessaria</string>
-    <string name="description_premium_required_additional_devices">Administrar apparats supplementars dastga la versiun premium.</string>
-    <string name="description_premium_required_this_extra_option">Questa opziun supplementara dastga la versiun premium da questa app.</string>
-    <string name="description_premium_upgrade_explanation">Procura la versiun premium per activar funcziuns supplementaras e sustegnair il svilup.</string>
     <string name="label_premium_version_required">Versiun premium necessaria</string>
     <string name="upgrade_feature_requires_pro">Questa funcziún dastga la versiun premium</string>
     <string name="upgrade_prompt_upgrade_action">Actualisar</string>
     <string name="description_intro_purpose">Questa app permetta a tiu apparat Android da memorar il volum da differents apparats Bluetooth.</string>
-    <string name="description_intro_premium">Sch\'ti plascha questa app, considera da far in upgrade a la versiun premium. Ella sustegna il svilup e ta procura pliras funcziuns supplementaras.</string>
     <string name="upgrade_benefit_unlimited_devices">Profils d\'apparat senza limita</string>
     <string name="upgrade_benefit_connection_actions">Autoplay, aviadira d\'app ed avis da connexiun</string>
     <string name="upgrade_benefit_theme_customization">Personalisaziun da tema, stil e colur</string>

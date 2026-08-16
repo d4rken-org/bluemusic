@@ -329,14 +329,10 @@
     <string name="label_premium_version">Premium versiya</string>
     <string name="general_upgrade_action">Yangilash</string>
     <string name="common_upgrade_required_label">Yangilash talab qilinadi</string>
-    <string name="description_premium_required_additional_devices">Qo\'shimcha qurilmalarni boshqarish uchun premium versiya talab qilinadi.</string>
-    <string name="description_premium_required_this_extra_option">Bu qo\'shimcha opsiya uchun ushbu ilovaning premium versiyasi talab qilinadi.</string>
-    <string name="description_premium_upgrade_explanation">Qo\'shimcha funksiyalarni yoqish va rivojlanishni qo\'llab-quvvatlash uchun premium versiyani oling.</string>
     <string name="label_premium_version_required">Premium versiya talab qilinadi</string>
     <string name="upgrade_feature_requires_pro">Bu funksiya uchun premium versiya talab qilinadi</string>
     <string name="upgrade_prompt_upgrade_action">Yangilash</string>
     <string name="description_intro_purpose">Bu ilova Android qurilmangizga turli Bluetooth qurilmalar uchun ovoz darajasini eslab qolish imkonini beradi.</string>
-    <string name="description_intro_premium">Agar bu ilovani yoqsangiz, premium versiyaga o\'tishni o\'ylang. Bu rivojlanishni qo\'llab-quvvatlaydi va bir nechta qo\'shimcha funksiyalarni beradi.</string>
     <string name="upgrade_benefit_unlimited_devices">Cheklanmagan qurilma profillari</string>
     <string name="upgrade_benefit_connection_actions">Avtomatik ijro, ilova ishga tushirish va ulanish ogohlantirishlari</string>
     <string name="upgrade_benefit_theme_customization">Mavzu, uslub va rang sozlamalari</string>

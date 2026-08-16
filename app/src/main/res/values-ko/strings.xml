@@ -325,14 +325,10 @@
     <string name="label_premium_version">프리미엄 버전</string>
     <string name="general_upgrade_action">업그레이드</string>
     <string name="common_upgrade_required_label">업그레이드 필요</string>
-    <string name="description_premium_required_additional_devices">다른 디바이스들을 관리하려면 프리미엄 버전이 필요합니다.</string>
-    <string name="description_premium_required_this_extra_option">이 부가 기능을 이용하려면 프리미엄 버전이 필요합니다.</string>
-    <string name="description_premium_upgrade_explanation">프리미엄 버전을 구매하여 부가 기능들을 활성화하고 앱 개발도 지원할 수 있습니다.</string>
     <string name="label_premium_version_required">프리미엄 버전 필요</string>
     <string name="upgrade_feature_requires_pro">이 기능은 프리미엄 버전이 필요합니다</string>
     <string name="upgrade_prompt_upgrade_action">업그레이드</string>
     <string name="description_intro_purpose">이 앱은 안드로이드 디바이스가 각기 다른 블루투스 디바이스의 음량을 기억하도록 해줍니다.</string>
-    <string name="description_intro_premium">이 앱을 좋아하셨다면, 프리미엄 버전으로 업그레이드하시는 것을 고려해주시기 바랍니다. 개발을 도와주실 수 있을뿐더러 추가 기능도 사용하실 수 있습니다.</string>
     <string name="upgrade_benefit_unlimited_devices">무제한 기기 프로필</string>
     <string name="upgrade_benefit_connection_actions">자동 재생, 앱 실행 및 연결 알림</string>
     <string name="upgrade_benefit_theme_customization">테마, 스타일 및 색상 사용자 지정</string>

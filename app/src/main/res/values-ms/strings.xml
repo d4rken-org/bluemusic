@@ -325,14 +325,10 @@
     <string name="label_premium_version">Versi premium</string>
     <string name="general_upgrade_action">Naik taraf</string>
     <string name="common_upgrade_required_label">Naik taraf diperlukan</string>
-    <string name="description_premium_required_additional_devices">Meguruskan peranti tambahan memerlukan versi premium.</string>
-    <string name="description_premium_required_this_extra_option">Opsyen ekstra ini memerlukan versi premium dari apl ini.</string>
-    <string name="description_premium_upgrade_explanation">Dapatkan versi premium untuk dayakan ciri-ciri tambahan serta menyokong pembangunan.</string>
     <string name="label_premium_version_required">Versi premium diperlukan</string>
     <string name="upgrade_feature_requires_pro">Ciri ini memerlukan versi premium</string>
     <string name="upgrade_prompt_upgrade_action">Naik taraf</string>
     <string name="description_intro_purpose">Apl ini membolehkan peranti Android anda mengingati volum dari peranti Bluetooth yang berbeza.</string>
-    <string name="description_intro_premium">Jika anda sukakan apl ini, pertimbangkan untuk menaik taraf ke versi premium. Ia menyokong pembangunan serta membolehkan anda mendapat beberapa ciri ekstra.</string>
     <string name="upgrade_benefit_unlimited_devices">Profil peranti tanpa had</string>
     <string name="upgrade_benefit_connection_actions">Main auto, lancar aplikasi dan amaran sambungan</string>
     <string name="upgrade_benefit_theme_customization">Penyesuaian tema, gaya dan warna</string>

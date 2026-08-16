@@ -325,14 +325,10 @@
     <string name="label_premium_version">Versi premium</string>
     <string name="general_upgrade_action">Tingkatkan</string>
     <string name="common_upgrade_required_label">Upgrade diperlukan</string>
-    <string name="description_premium_required_additional_devices">Mengelola perangkat tambahan membutuhkan versi premium.</string>
-    <string name="description_premium_required_this_extra_option">Pengaturan tambahan ini membutuhkan versi premium dari aplikasi ini.</string>
-    <string name="description_premium_upgrade_explanation">Dapatkan versi premium untuk mengaktifkan fitur tambahan dan mendukung pengembangan.</string>
     <string name="label_premium_version_required">Versi premium dibutuhkan</string>
     <string name="upgrade_feature_requires_pro">Fitur ini memerlukan versi premium</string>
     <string name="upgrade_prompt_upgrade_action">Tingkatkan</string>
     <string name="description_intro_purpose">Aplikasi ini memungkinkan perangkat Android mengingat volume suara untuk perangkat Bluetooth berbeda.</string>
-    <string name="description_intro_premium">Bila Anda menyukai aplikasi ini, harap untuk mempertimbangkan meningkatkan ke versi premium. Hal ini mendukung pengembangan dan memberikan fitur-fitur tambahan untuk Anda.</string>
     <string name="upgrade_benefit_unlimited_devices">Profil perangkat tak terbatas</string>
     <string name="upgrade_benefit_connection_actions">Putar otomatis, peluncuran aplikasi, dan notifikasi koneksi</string>
     <string name="upgrade_benefit_theme_customization">Kustomisasi tema, gaya, dan warna</string>

@@ -337,14 +337,10 @@
     <string name="label_premium_version">Прэміум-версія</string>
     <string name="general_upgrade_action">Абнавіць</string>
     <string name="common_upgrade_required_label">Патрабуецца абнаўленне</string>
-    <string name="description_premium_required_additional_devices">Кіраванне дадатковымі прыладамі патрабуе прэміум-версіі.</string>
-    <string name="description_premium_required_this_extra_option">Гэтая дадатковая опцыя патрабуе прэміум-версіі гэтага дадатку.</string>
-    <string name="description_premium_upgrade_explanation">Атрымайце прэміум-версію, каб ўключыць дадатковыя функцыі і падтрымаць разпрацоўку.</string>
     <string name="label_premium_version_required">Патрабуецца прэміум-версія</string>
     <string name="upgrade_feature_requires_pro">Гэтая функцыя патрабуе прэміум-версіі</string>
     <string name="upgrade_prompt_upgrade_action">Абнавіць</string>
     <string name="description_intro_purpose">Гэты дадатак дазваляе вашай прыладзе Android запамінаць гучнасць розных прылад Bluetooth.</string>
-    <string name="description_intro_premium">Калі вам падабаецца гэты дадатак, разгледзце магчымасць пераходу на прэміум-версію. Гэта падтрымлівае разпрацоўку і дае вам некалькі дадатковых функцый.</string>
     <string name="upgrade_benefit_unlimited_devices">Неабмежаваная колькасць профіляў прылад</string>
     <string name="upgrade_benefit_connection_actions">Аўтаўзнаўленне, запуск праграм і абвесткі аб падключэнні</string>
     <string name="upgrade_benefit_theme_customization">Наладка тэмы, стылю і колеру</string>

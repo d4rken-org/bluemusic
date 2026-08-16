@@ -329,14 +329,10 @@
     <string name="label_premium_version">პრემიუმ ვერსია</string>
     <string name="general_upgrade_action">გარემონტება</string>
     <string name="common_upgrade_required_label">საჭიროა განახლება</string>
-    <string name="description_premium_required_additional_devices">დამატებითი მოწყობილობების მართვა მოითხოვს პრემიუმ ვერსიას.</string>
-    <string name="description_premium_required_this_extra_option">ეს დამატებითი ვარიანტი მოითხოვს ამ აპის პრემიუმ ვერსიას.</string>
-    <string name="description_premium_upgrade_explanation">მიიღეთ პრემიუმ ვერსია დამატებითი ფუნქციების ჩასართავად და განვითარების მხარდასაჭერად.</string>
     <string name="label_premium_version_required">საჭიროა პრემიუმ ვერსია</string>
     <string name="upgrade_feature_requires_pro">ეს ფუნქცია მოითხოვს პრემიუმ ვერსიას</string>
     <string name="upgrade_prompt_upgrade_action">გარემონტება</string>
     <string name="description_intro_purpose">ეს აპი საშუალებას აძლევს თქვენს Android მოწყობილობას დაიმახსოვროს სხვადასხვა Bluetooth მოწყობილობის ხმა.</string>
-    <string name="description_intro_premium">თუ ეს აპი გიყვართ, განიხილეთ პრემიუმ ვერსიაზე გადასვლა. ეს ეხმარება განვითარებას და გეძლევათ რამდენიმე დამატებითი ფუნქცია.</string>
     <string name="upgrade_benefit_unlimited_devices">შეუზღუდავი მოწყობილობის პროფილები</string>
     <string name="upgrade_benefit_connection_actions">ავტომატური დაკვრა, აპის გაშვება და კავშირის შეტყობინებები</string>
     <string name="upgrade_benefit_theme_customization">თემის, სტილისა და ფერის მორგება</string>

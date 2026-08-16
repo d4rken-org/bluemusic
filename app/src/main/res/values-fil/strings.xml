@@ -329,14 +329,10 @@
     <string name="label_premium_version">Bersyong premium</string>
     <string name="general_upgrade_action">I-upgrade</string>
     <string name="common_upgrade_required_label">Kailangan ng upgrade</string>
-    <string name="description_premium_required_additional_devices">Ang pamamahala sa mga karagdagang device ay nangangailangan ng bersyong premium.</string>
-    <string name="description_premium_required_this_extra_option">Ang dagdag na pagpipiliang ito ay nangangailangan ng bersyong premium ng app na ito.</string>
-    <string name="description_premium_upgrade_explanation">Kunin ang premium na bersyon upang mapagana ang mga karagdagang katangian at suportahan ang paglilinang.</string>
     <string name="label_premium_version_required">Kailangan ang bersyong premium</string>
     <string name="upgrade_feature_requires_pro">Ang feature na ito ay nangangailangan ng bersyong premium</string>
     <string name="upgrade_prompt_upgrade_action">I-upgrade</string>
     <string name="description_intro_purpose">Binibigyang daan ng app na maalala ng iyong Android device ang mga volume ng iba\'t-ibang mga Bluetooth device.</string>
-    <string name="description_intro_premium">Kung nagustuhan mo ang app, mungkahing i-upgrade ito sa premium na bersyon. Nakakasuporta ito sa paglilinang at nakapagbibigay sa iyo ng karagdagang mga katangian.</string>
     <string name="upgrade_benefit_unlimited_devices">Walang limitasyong mga profile ng device</string>
     <string name="upgrade_benefit_connection_actions">Autoplay, paglulunsad ng app at mga alerto sa koneksyon</string>
     <string name="upgrade_benefit_theme_customization">Pag-customize ng tema, estilo at kulay</string>

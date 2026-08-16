@@ -329,14 +329,10 @@
     <string name="label_premium_version">प्रीमियम आवृत्ती</string>
     <string name="general_upgrade_action">अपग्रेड करा</string>
     <string name="common_upgrade_required_label">अपग्रेड आवश्यक</string>
-    <string name="description_premium_required_additional_devices">अतिरिक्त डिव्हाइस व्यवस्थापित करण्यासाठी प्रीमियम आवृत्ती आवश्यक आहे.</string>
-    <string name="description_premium_required_this_extra_option">या अतिरिक्त पर्यायासाठी या अॅपची प्रीमियम आवृत्ती आवश्यक आहे.</string>
-    <string name="description_premium_upgrade_explanation">अतिरिक्त वैशिष्ट्ये सक्षम करण्यासाठी आणि विकासास समर्थन करण्यासाठी प्रीमियम आवृत्ती मिळवा.</string>
     <string name="label_premium_version_required">प्रीमियम आवृत्ती आवश्यक</string>
     <string name="upgrade_feature_requires_pro">या वैशिष्ट्यासाठी प्रीमियम आवृत्ती आवश्यक आहे</string>
     <string name="upgrade_prompt_upgrade_action">अपग्रेड करा</string>
     <string name="description_intro_purpose">हा अॅप तुमच्या Android डिव्हाइसला वेगवेगळ्या Bluetooth डिव्हाइसचे व्हॉल्युम लक्षात ठेवण्याची परवानगी देतो.</string>
-    <string name="description_intro_premium">जर तुम्हाला हा अॅप आवडत असेल, तर प्रीमियम आवृत्तीमध्ये अपग्रेड करण्याचा विचार करा. हे विकासास समर्थन करते आणि तुम्हाला काही अतिरिक्त वैशिष्ट्ये मिळतात.</string>
     <string name="upgrade_benefit_unlimited_devices">अमर्यादित डिव्हाइस प्रोफाइल</string>
     <string name="upgrade_benefit_connection_actions">ऑटोप्ले, अ‍ॅप लॉन्च आणि कनेक्शन सूचना</string>
     <string name="upgrade_benefit_theme_customization">थीम, स्टाइल आणि रंग सानुकूलन</string>

@@ -337,14 +337,10 @@
     <string name="label_premium_version">Премиум-версия</string>
     <string name="general_upgrade_action">Обновление</string>
     <string name="common_upgrade_required_label">Требуется обновление</string>
-    <string name="description_premium_required_additional_devices">Для управления дополнительными устройствами необходима премиум-версия.</string>
-    <string name="description_premium_required_this_extra_option">К сожалению, для этой дополнительной опции требуется премиум-версия данного приложения.</string>
-    <string name="description_premium_upgrade_explanation">Приобретите премиум-версию для включения дополнительных возможностей и поддержки разработки.</string>
     <string name="label_premium_version_required">Необходима премиум-версия</string>
     <string name="upgrade_feature_requires_pro">Эта функция требует премиум-версию</string>
     <string name="upgrade_prompt_upgrade_action">Обновить</string>
     <string name="description_intro_purpose">Приложение позволяет системе Андроид запомнить громкость различных устройств Bluetooth.</string>
-    <string name="description_intro_premium">Если Вам нравится это приложение, рассмотрите возможность обновления до премиум-версии. Это обеспечивает поддержку разработки и предоставляет несколько дополнительных функций.</string>
     <string name="upgrade_benefit_unlimited_devices">Неограниченное количество профилей устройств</string>
     <string name="upgrade_benefit_connection_actions">Автовоспроизведение, запуск приложений и оповещения о подключении</string>
     <string name="upgrade_benefit_theme_customization">Настройка темы, стиля и цвета</string>

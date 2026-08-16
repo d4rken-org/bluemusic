@@ -329,14 +329,10 @@
     <string name="label_premium_version">Versione premium</string>
     <string name="general_upgrade_action">Aggiorna</string>
     <string name="common_upgrade_required_label">Aggiornamento richiesto</string>
-    <string name="description_premium_required_additional_devices">La gestione di più dispositivi richiede la versione premium.</string>
-    <string name="description_premium_required_this_extra_option">Questa opzione extra, sfortunatamente, richiede la versione premium di quest\'app.</string>
-    <string name="description_premium_upgrade_explanation">Ottieni la versione premium per abilitare funzioni aggiuntive e supportare lo sviluppo.</string>
     <string name="label_premium_version_required">È richiesta la versione premium</string>
     <string name="upgrade_feature_requires_pro">Questa funzione richiede la versione premium</string>
     <string name="upgrade_prompt_upgrade_action">Aggiorna</string>
     <string name="description_intro_purpose">Quest\'app consente al tuo dispositivo Android di ricordare il volume di ogni dispositivo Bluetooth.</string>
-    <string name="description_intro_premium">Se quest\'app ti piace, considera l\'acquisto della versione premium. Essa supporta lo sviluppo e ti dà alcune funzioni extra.</string>
     <string name="upgrade_benefit_unlimited_devices">Profili dispositivo illimitati</string>
     <string name="upgrade_benefit_connection_actions">Riproduzione automatica, avvio app e avvisi di connessione</string>
     <string name="upgrade_benefit_theme_customization">Personalizzazione di tema, stile e colori</string>

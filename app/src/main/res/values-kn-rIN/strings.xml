@@ -329,14 +329,10 @@
     <string name="label_premium_version">ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ</string>
     <string name="general_upgrade_action">ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ</string>
     <string name="common_upgrade_required_label">ಅಪ್‌ಗ್ರೇಡ್ ಅಗತ್ಯವಿದೆ</string>
-    <string name="description_premium_required_additional_devices">ಹೆಚ್ಚಿನ ಸಾಧನಗಳನ್ನು ನಿರ್ವಹಿಸಲು ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ ಅಗತ್ಯ.</string>
-    <string name="description_premium_required_this_extra_option">ಈ ಹೆಚ್ಚಿನ ಆಯ್ಕೆಗೆ ಈ ಅಪ್ಲಿಕೇಶನ್ನ ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ ಅಗತ್ಯ.</string>
-    <string name="description_premium_upgrade_explanation">ಹೆಚ್ಚಿನ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಸಕ್ರಿಯಮಾಡಲು ಮತ್ತು ಅಭಿವೃದ್ಧಿ ಬೆಂಬಲಿಸಲು ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ ಪಡೆಯಿ.</string>
     <string name="label_premium_version_required">ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ ಅಗತ್ಯ</string>
     <string name="upgrade_feature_requires_pro">ಈ ವೈಶಿಷ್ಟ್ಯಕ್ಕೆ ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿ ಅಗತ್ಯ</string>
     <string name="upgrade_prompt_upgrade_action">ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ</string>
     <string name="description_intro_purpose">ಈ ಅಪ್ಲಿಕೇಶನ್ ನಿಮ್ಮ Android ಸಾಧನಕ್ಕೆ ವಿವಿಧ Bluetooth ಸಾಧನಗಳ ವಾಲ್ಯೂಮ್ ನೆನಪಿಟ್ಟುಕೊಳ್ಳಲು ಅನುಮತಿಸುತ್ತದೆ.</string>
-    <string name="description_intro_premium">ಈ ಅಪ್ ನಿಮ್ಮಗೆ ಇಷ್ಟವಾದರೆ, ಪ್ರಿಮಿಯಮ್ ಆವೃತ್ತಿಗೆ ದೋಫ್ಗೊಳಿಸುವನ್ನು ಪರಿಗಣಿಸಿ. ಇದು ಅಭಿವೃದ್ಧಿಯನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ ಮತ್ತು ಕೆಲವು ಹೆಚ್ಚಿನ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ತರುತ್ತದೆ.</string>
     <string name="upgrade_benefit_unlimited_devices">ಅಪರಿಮಿತ ಸಾಧನ ಪ್ರೊಫೈಲ್‌ಗಳು</string>
     <string name="upgrade_benefit_connection_actions">ಸ್ವಯಂಪ್ಲೇ, ಅಪ್ಲಿಕೇಶನ್ ಲಾಂಚ್ ಮತ್ತು ಸಂಪರ್ಕ ಎಚ್ಚರಿಕೆಗಳು</string>
     <string name="upgrade_benefit_theme_customization">ಥೀಮ್, ಶೈಲಿ ಮತ್ತು ಬಣ್ಣ ಕಸ್ಟಮೈಸೇಶನ್</string>

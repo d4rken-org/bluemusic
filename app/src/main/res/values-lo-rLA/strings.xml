@@ -325,14 +325,10 @@
     <string name="label_premium_version">ເວີຊັນພຣີເມີຍມ</string>
     <string name="general_upgrade_action">ອັບເກຣດ</string>
     <string name="common_upgrade_required_label">ຕ້ອງການອັບເກຣດ</string>
-    <string name="description_premium_required_additional_devices">ການຈັດການອຸປະກອນເພິ່ມເຕີມຕ້ອງການເວີຊັນພຣີເມີຍມ.</string>
-    <string name="description_premium_required_this_extra_option">ຕ଱ວເລືອກໄ0ພິ່ມໄ0ຕີມນີ້ຕ້ອງການໄ0ວີຊັນພຣີໄ0ມີຍມຂອງໄ0ແອັບນີ້.</string>
-    <string name="description_premium_upgrade_explanation">ຮັບໄ0ວີຊັນພຣີໄ0ມີຍມໄ0ພື່ອໄ0ອີນໃຊ້ງານຟີໄ0ຈີໄ0ພິ່ມໄ0ຕີມໄ1ລະສນັບສະນູນການພັດທນາ.</string>
     <string name="label_premium_version_required">ຕ້ອງການໄ0ວີຊັນພຣີໄ0ມີຍມ</string>
     <string name="upgrade_feature_requires_pro">ຟີເຈີນີ້ຕ້ອງການເວີຊັນພຣີເມີຍມ</string>
     <string name="upgrade_prompt_upgrade_action">ອັບເກຣດ</string>
     <string name="description_intro_purpose">ແອັບນີ້ອະນຸຍາດໃຫ້ອຸປະກອນ Android ຂອງທ່ານຈດຈຳລະດັບສຽງຂອງອຸປະກອນ Bluetooth ຕ່າງๆ</string>
-    <string name="description_intro_premium">ຖ້າທ່ານຊອບແອັບນີ້ ຕິດຕ່ອແບບລະດັບພຣີເມີຍມ. ມັນສນັບສະນູນການພັດທນາແລະໄ4ດ້ການຟີເຈີໄ0ພິ່ມໄ0ຕີມ.</string>
     <string name="upgrade_benefit_unlimited_devices">ໂປຣໄຟລ໌ອຸປະກອນບໍ່ຈຳກັດ</string>
     <string name="upgrade_benefit_connection_actions">ຫຼິ້ນອັດຕະໂນມັດ, ເປີດແອັບ ແລະ ການແຈ້ງເຕືອນການເຊື່ອມຕໍ່</string>
     <string name="upgrade_benefit_theme_customization">ການປັບແຕ່ໝົດໂຖກ, ສໄຕລ໌ ແລະ ສີ</string>

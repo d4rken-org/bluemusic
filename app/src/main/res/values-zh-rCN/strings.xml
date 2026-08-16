@@ -325,14 +325,10 @@
     <string name="label_premium_version">高级版本</string>
     <string name="general_upgrade_action">升级</string>
     <string name="common_upgrade_required_label">需要升级</string>
-    <string name="description_premium_required_additional_devices">管理其他设备需要高级版本。</string>
-    <string name="description_premium_required_this_extra_option">此额外选项需要此应用的高级版本。</string>
-    <string name="description_premium_upgrade_explanation">获取高级版本以启用更多功能并支持开发。</string>
     <string name="label_premium_version_required">需要高级版本</string>
     <string name="upgrade_feature_requires_pro">此功能需要高级版本</string>
     <string name="upgrade_prompt_upgrade_action">升级</string>
     <string name="description_intro_purpose">此应用可让您的Android设备，记住来自不同蓝牙设备的音量。</string>
-    <string name="description_intro_premium">如果您喜欢此应用，请考虑升级到高级版本。 以此支持开发并为您提供一些额外的功能。</string>
     <string name="upgrade_benefit_unlimited_devices">无限设备配置</string>
     <string name="upgrade_benefit_connection_actions">自动播放、启动应用及连接提醒</string>
     <string name="upgrade_benefit_theme_customization">主题、样式和颜色自定义</string>

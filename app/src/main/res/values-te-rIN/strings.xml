@@ -329,14 +329,10 @@
     <string name="label_premium_version">ప్రీమియం వెర్షన్</string>
     <string name="general_upgrade_action">అప్‌గ్రేడ్ చేయండి</string>
     <string name="common_upgrade_required_label">అప్‌గ్రేడ్ అవసరం</string>
-    <string name="description_premium_required_additional_devices">అదనపు పరికరాలను నిర్వహించడానికి ప్రీమియం వెర్షన్ అవసరం.</string>
-    <string name="description_premium_required_this_extra_option">ఈ అదనపు ఎంపికకు ఈ యాప్ యొక్క ప్రీమియం వెర్షన్ అవసరం.</string>
-    <string name="description_premium_upgrade_explanation">అదనపు ఫీచర్లను ఎనేబుల్ చేసి డెవలప్‌మెంట్‌కు మద్దతివ్వడానికి ప్రీమియం వెర్షన్ పొందండి.</string>
     <string name="label_premium_version_required">ప్రీమియం వెర్షన్ అవసరం</string>
     <string name="upgrade_feature_requires_pro">ఈ ఫీచర్‌కు ప్రీమియం వెర్షన్ అవసరం</string>
     <string name="upgrade_prompt_upgrade_action">అప్‌గ్రేడ్ చేయండి</string>
     <string name="description_intro_purpose">ఈ యాప్ మీ Android పరికరం వేర్వేరు Bluetooth పరికరాల వాల్యూమ్‌ను గుర్తుంచుకోవడానికి అనుమతిస్తుంది.</string>
-    <string name="description_intro_premium">మీకు ఈ యాప్ నచ్చినట్లయితే, ప్రీమియం వెర్షన్‌కు అప్‌గ్రేడ్ చేయడాన్ని పరిగణించండి. ఇది డెవలప్‌మెంట్‌కు మద్దతిస్తుంది మరియు కొన్ని అదనపు ఫీచర్లు అందిస్తుంది.</string>
     <string name="upgrade_benefit_unlimited_devices">అపరిమిత పరికర ప్రొఫైల్‌లు</string>
     <string name="upgrade_benefit_connection_actions">ఆటోప్లే, యాప్ లాంచ్ మరియు కనెక్షన్ అలర్ట్‌లు</string>
     <string name="upgrade_benefit_theme_customization">థీమ్, స్టైల్ మరియు రంగు కస్టమైజేషన్</string>

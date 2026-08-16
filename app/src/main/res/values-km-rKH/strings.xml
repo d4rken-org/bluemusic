@@ -325,14 +325,10 @@
     <string name="label_premium_version">កំណែពិសេស</string>
     <string name="general_upgrade_action">វិសិដ្ឋកម្ម</string>
     <string name="common_upgrade_required_label">តម្រូវការធ្វើឱ្យប្រសើរ</string>
-    <string name="description_premium_required_additional_devices">ការគ្រប់គ្រងឧបករណ៍បន្ថែមតម្រូវឡើយមានកំណែពិសេស។</string>
-    <string name="description_premium_required_this_extra_option">ជម្រើសបន្ថែមនេះតម្រូវឡើយមានកំណែពិសេសនៃកម្មវិធីនេះ។</string>
-    <string name="description_premium_upgrade_explanation">ត្រស័យបានកំណែពិសេសដើម្បីបើកមុខងារបន្ថែម និងគាំត្រការអភិវឌ្ញន៍។</string>
     <string name="label_premium_version_required">ត្រូវការកំណែពិសេស</string>
     <string name="upgrade_feature_requires_pro">មុខងារនេះតម្រូវឡើយមានកំណែពិសេស</string>
     <string name="upgrade_prompt_upgrade_action">វិសិដ្ឋកម្ម</string>
     <string name="description_intro_purpose">កម្មវិធីនេះអនុញ្ញាតឱ្យឧបករណ៍ Android របស់អ្នកចងចាំកម្រិតសំឡេងនៃឧបករណ៍ Bluetooth ផ្សើៗ។</string>
-    <string name="description_intro_premium">ប្រសិនបើអ្នកចូលចិត្តកម្មវិធីនេះ សូមពិចារណាធ្វើឡើយប្រសើរជាងឡើងតៅកំណែពិសេស។ វាគាំត្រការអភិវឌ្ញន៍ ហើយអ្នកនឹងត្រស័យបានមុខងារបន្ថែមមួយចំនួន។</string>
     <string name="upgrade_benefit_unlimited_devices">ប្រវត្តិរូបឧបករណ៍គ្មានដែនកំណត់</string>
     <string name="upgrade_benefit_connection_actions">ចាកស្វ័យប្រវត្តិ, ការចាប្តើមកម្មវិធី និងការជូនដំណឹងការតភ្ជាប់</string>
     <string name="upgrade_benefit_theme_customization">ការប្តូររូបរាង, រចនាប័ត្ម និងពណ៍</string>
