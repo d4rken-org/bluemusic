@@ -44,8 +44,11 @@ class UpgradeViewModel @Inject constructor(
 
     // Which presentation the screen shows. The manage route (settings "supporter status" entry)
     // gets a status view first; the pitch only appears once a free user asks for the upgrade
-    // options. Upgrading wins over that choice — completing the sponsor flow from the pitch must
-    // land on the upgraded status, not back on the ask. null until the route is bound.
+    // options. Upgrading wins on EVERY route, not just manage: the pitch with its live sponsor
+    // button reads as "sponsoring didn't work" to a fresh supporter, and the thanks toast alone is
+    // too transient for a money moment to have no receipt behind it. On the non-manage routes the
+    // auto-close below follows a frame later, so this is what the user sees in between.
+    // null until the route is bound.
     internal val state: StateFlow<State> = combine(
         routeFlow,
         upgradeRepo.upgradeInfo,
@@ -57,7 +60,7 @@ class UpgradeViewModel @Inject constructor(
             // free version" on the manage route would be a claim the storage couldn't back. The
             // errorEvents overlay reports the failure instead.
             route.manage && !info.isPro && info.error != null -> null
-            route.manage && info.isPro -> FossUpgradeView.STATUS_UPGRADED
+            info.isPro -> FossUpgradeView.STATUS_UPGRADED
             route.manage && !showOptions -> FossUpgradeView.STATUS_FREE
             else -> FossUpgradeView.PITCH
         }
