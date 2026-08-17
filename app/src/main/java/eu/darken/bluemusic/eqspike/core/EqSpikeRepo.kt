@@ -120,18 +120,20 @@ class EqSpikeRepo @Inject constructor(
             }
 
             var equalizer: Equalizer? = null
+            var pendingEffect: AttachedEffect? = null
             try {
                 equalizer = Equalizer(EFFECT_PRIORITY, sessionId)
                 val originalLevels = (0 until equalizer.numberOfBands).map { equalizer.getBandLevel(it.toShort()) }
                 val originalEnabled = equalizer.enabled
-                val detail = equalizer.applyMuffleProfile(key)
-                val status = equalizer.setEnabled(true)
-                if (status != AudioEffect.SUCCESS) throw IllegalStateException("setEnabled failed: $status")
                 val attached = AttachedEffect(
                     equalizer = equalizer,
                     originalLevels = originalLevels,
                     originalEnabled = originalEnabled,
                 )
+                pendingEffect = attached
+                val detail = equalizer.applyMuffleProfile(key)
+                val status = equalizer.setEnabled(true)
+                if (status != AudioEffect.SUCCESS) throw IllegalStateException("setEnabled failed: $status")
                 equalizer.setControlStatusListener { effect, controlGranted ->
                     synchronized(lock) {
                         val current = effects[key]
@@ -151,7 +153,8 @@ class EqSpikeRepo @Inject constructor(
                 reduce { onControlChanged(it, Instant.now(), packageName, sessionId, initialControl) }
             } catch (e: Throwable) {
                 log(TAG, ERROR) { "attach($key): Failed: ${e.asLog()}" }
-                equalizer?.releaseQuietly()
+                val cleanup = effects.remove(key) ?: pendingEffect
+                if (cleanup != null) cleanup.restoreAndReleaseQuietly() else equalizer?.releaseQuietly()
                 reduce {
                     onAttachFailed(it, Instant.now(), packageName, sessionId, e.message ?: e.toString())
                 }
