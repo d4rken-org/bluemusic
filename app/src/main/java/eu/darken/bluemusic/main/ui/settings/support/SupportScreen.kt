@@ -23,6 +23,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Book
 import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Equalizer
 import androidx.compose.material.icons.twotone.Cancel
 import androidx.compose.material.icons.twotone.CheckCircle
 import androidx.compose.material.icons.twotone.Delete
@@ -56,6 +57,7 @@ import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.BlueMusicLinks
+import eu.darken.bluemusic.common.BuildConfigWrap
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
@@ -201,6 +203,7 @@ fun SupportScreenHost(vm: SupportScreenViewModel = hiltViewModel()) {
             onDeleteSession = { dialog = SupportDialog.DeleteSession(it) },
             onStopRecording = { vm.onDebugLogToggle() },
             onClearLogs = { dialog = SupportDialog.ClearAll },
+            onOpenEqSpike = { vm.openEqSpike() },
         )
     }
 }
@@ -216,6 +219,7 @@ fun SupportScreen(
     onDeleteSession: (String) -> Unit,
     onStopRecording: () -> Unit,
     onClearLogs: () -> Unit,
+    onOpenEqSpike: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -324,6 +328,18 @@ fun SupportScreen(
                             stringResource(R.string.settings_support_stored_logs_empty)
                         },
                         onClick = { showSessionsSheet = true },
+                    )
+                }
+            }
+
+            if (BuildConfigWrap.DEBUG) {
+                item {
+                    SettingsDivider()
+                    SettingsPreferenceItem(
+                        icon = Icons.Filled.Equalizer,
+                        title = "EQ Spike",
+                        subtitle = "Debug: audio effect control session prototype",
+                        onClick = onOpenEqSpike,
                     )
                 }
             }
@@ -523,6 +539,7 @@ private fun SupportScreenPreview() {
             onDeleteSession = {},
             onStopRecording = {},
             onClearLogs = {},
+            onOpenEqSpike = {},
         )
     }
 }
