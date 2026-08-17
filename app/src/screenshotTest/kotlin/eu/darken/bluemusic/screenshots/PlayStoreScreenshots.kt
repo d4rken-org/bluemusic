@@ -34,6 +34,11 @@ fun DeviceConfigTiming() = DeviceConfigTimingContent()
 fun AppLauncher() = AppSelectionContent()
 
 @PreviewTest
+@PlayStoreLocalesSmoke
+@Composable
+fun DeviceEq() = DeviceEqContent()
+
+@PreviewTest
 @PlayStoreLocales
 @Composable
 fun Autoplay() = AutoplayContent()

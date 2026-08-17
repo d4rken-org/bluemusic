@@ -16,6 +16,10 @@ import eu.darken.bluemusic.devices.ui.config.DeviceConfigViewModel
 import eu.darken.bluemusic.devices.ui.dashboard.DashboardViewModel
 import eu.darken.bluemusic.devices.ui.dashboard.DevicesScreen
 import eu.darken.bluemusic.devices.ui.settings.dialogs.AutoplayKeycodesDialog
+import eu.darken.bluemusic.eq.core.EqCapabilities
+import eu.darken.bluemusic.eq.core.EqPresets
+import eu.darken.bluemusic.eq.ui.DeviceEqScreen
+import eu.darken.bluemusic.eq.ui.DeviceEqViewModel
 import eu.darken.bluemusic.main.ui.settings.SettingsIndexScreen
 import eu.darken.bluemusic.main.ui.settings.SettingsViewModel
 
@@ -143,6 +147,41 @@ internal fun AppSelectionContent() {
 }
 
 @Composable
+internal fun DeviceEqContent() {
+    val presets = EqPresets()
+    val capabilities = EqCapabilities.Caps(
+        bandCount = 5,
+        minLevel = -1500,
+        maxLevel = 1500,
+        centerFrequencies = listOf(60_000, 230_000, 910_000, 3_600_000, 14_000_000),
+    )
+    val device = mockDevice1.toManagedDevice(isConnected = true)
+    PreviewWrapper {
+        DeviceEqScreen(
+            state = DeviceEqViewModel.State(
+                device = device.copy(
+                    config = device.config.copy(
+                        eqEnabled = true,
+                        eqBandLevels = listOf(900, 300, 0, -300, 600),
+                    )
+                ),
+                capabilities = capabilities,
+                presets = presets.presets.map {
+                    DeviceEqViewModel.PresetOption(it.id, it.label, presets.levelsFor(it.curve, capabilities))
+                },
+                isProVersion = true,
+            ),
+            onNavigateBack = {},
+            onToggleEnabled = {},
+            onLevelsChanged = {},
+            onLevelsCommitted = {},
+            onPresetSelected = {},
+            onReset = {},
+        )
+    }
+}
+
+@Composable
 internal fun AutoplayContent() {
     PreviewWrapper {
         AutoplayKeycodesDialog(
@@ -189,6 +228,10 @@ private fun DeviceConfigTimingPreview() = DeviceConfigTimingContent()
 @Preview(name = "AppSelection", device = DS)
 @Composable
 private fun AppSelectionPreview() = AppSelectionContent()
+
+@Preview(name = "DeviceEq", device = DS)
+@Composable
+private fun DeviceEqPreview() = DeviceEqContent()
 
 @Preview(name = "Autoplay", device = DS)
 @Composable
