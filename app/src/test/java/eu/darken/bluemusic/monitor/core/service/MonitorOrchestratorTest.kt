@@ -4,6 +4,8 @@ import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.eq.core.EqCoordinator
+import eu.darken.bluemusic.eq.core.EqEligibility
 import eu.darken.bluemusic.monitor.core.audio.RingerModeEvent
 import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
@@ -42,6 +44,9 @@ class MonitorOrchestratorTest : BaseTest() {
     private lateinit var ringerModeTransitionHandler: RingerModeTransitionHandler
     private lateinit var ownerRegistry: AudioStreamOwnerRegistry
     private lateinit var volumeEventDispatcher: VolumeEventDispatcher
+    private lateinit var eqCoordinator: EqCoordinator
+    private lateinit var eqEligibility: EqEligibility
+    private var eqOperational: Boolean = false
 
     private lateinit var devicesSettings: DevicesSettings
     private lateinit var devicesFlow: MutableStateFlow<List<ManagedDevice>>
@@ -84,6 +89,9 @@ class MonitorOrchestratorTest : BaseTest() {
         ringerModeTransitionHandler = mockk(relaxed = true)
         ownerRegistry = mockk(relaxed = true)
         volumeEventDispatcher = mockk(relaxed = true)
+        eqCoordinator = mockk(relaxed = true)
+        eqOperational = false
+        eqEligibility = mockk { coEvery { isOperational() } answers { eqOperational } }
     }
 
     private fun createOrchestrator() = MonitorOrchestrator(
@@ -97,6 +105,8 @@ class MonitorOrchestratorTest : BaseTest() {
         ringerModeTransitionHandler = ringerModeTransitionHandler,
         ownerRegistry = ownerRegistry,
         volumeEventDispatcher = volumeEventDispatcher,
+        eqCoordinator = eqCoordinator,
+        eqEligibility = eqEligibility,
     )
 
     private fun managedDevice(
@@ -104,11 +114,13 @@ class MonitorOrchestratorTest : BaseTest() {
         active: Boolean = true,
         requiresPersistentSession: Boolean = false,
         monitoringDuration: Duration = Duration.ZERO,
+        eqEnabled: Boolean = false,
     ): ManagedDevice = mockk(relaxed = true) {
         every { this@mockk.address } returns address
         every { isActive } returns active
         every { this@mockk.requiresPersistentSession } returns requiresPersistentSession
         every { this@mockk.monitoringDuration } returns monitoringDuration
+        every { this@mockk.eqEnabled } returns eqEnabled
         every { label } returns address
     }
 
@@ -161,6 +173,77 @@ class MonitorOrchestratorTest : BaseTest() {
 
         advanceTimeBy(60_000)
         monitorReturned shouldBe false
+
+        job.cancel()
+    }
+
+    @Test
+    fun `an operational equalizer device keeps monitoring alive`() = runTest {
+        eqOperational = true
+        val device = managedDevice(
+            "AA:BB:CC:DD:EE:FF",
+            active = true,
+            requiresPersistentSession = false,
+            eqEnabled = true,
+        )
+        devicesFlow.value = listOf(device)
+
+        val orchestrator = createOrchestrator()
+        var monitorReturned = false
+
+        val job = launch {
+            orchestrator.monitor(this@runTest) {}
+            monitorReturned = true
+        }
+
+        advanceTimeBy(60_000)
+        monitorReturned shouldBe false
+
+        job.cancel()
+    }
+
+    @Test
+    fun `an equalizer device does not keep monitoring alive while the equalizer is not operational`() = runTest {
+        eqOperational = false
+        val device = managedDevice(
+            "AA:BB:CC:DD:EE:FF",
+            active = true,
+            requiresPersistentSession = false,
+            eqEnabled = true,
+        )
+        devicesFlow.value = listOf(device)
+
+        val orchestrator = createOrchestrator()
+        var monitorReturned = false
+
+        val job = launch {
+            orchestrator.monitor(this@runTest) {}
+            monitorReturned = true
+        }
+
+        advanceTimeBy(20_000)
+        advanceUntilIdle()
+        monitorReturned shouldBe true
+
+        job.cancel()
+    }
+
+    @Test
+    fun `the equalizer session starts with the monitor session and stops when it ends`() = runTest {
+        val device = managedDevice("AA:BB:CC:DD:EE:FF", active = true, requiresPersistentSession = true)
+        devicesFlow.value = listOf(device)
+
+        val orchestrator = createOrchestrator()
+        val job = launch { orchestrator.monitor(this@runTest) {} }
+
+        advanceTimeBy(20_000)
+        coVerify { eqCoordinator.startSession() }
+        coVerify(exactly = 0) { eqCoordinator.stopSession() }
+
+        enabledFlow.value = DevicesSettings.EnabledState(isEnabled = false, toggleEpoch = 1L)
+        advanceUntilIdle()
+
+        coVerify { eqCoordinator.stopSession() }
 
         job.cancel()
     }

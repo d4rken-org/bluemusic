@@ -14,6 +14,8 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
+import eu.darken.bluemusic.eq.core.EqCoordinator
+import eu.darken.bluemusic.eq.core.EqEligibility
 import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
@@ -45,6 +47,8 @@ class MonitorOrchestrator @Inject constructor(
     private val ringerModeTransitionHandler: RingerModeTransitionHandler,
     private val ownerRegistry: AudioStreamOwnerRegistry,
     private val volumeEventDispatcher: VolumeEventDispatcher,
+    private val eqCoordinator: EqCoordinator,
+    private val eqEligibility: EqEligibility,
 ) {
 
     /**
@@ -77,6 +81,7 @@ class MonitorOrchestrator @Inject constructor(
         ownerRegistry.reset()
         ownerRegistry.bootstrap(initialDevices)
         eventDispatcher.resetForNewSession()
+        eqCoordinator.startSession()
 
         onActiveDevicesChanged(initialDevices.filter { it.isActive })
 
@@ -130,7 +135,10 @@ class MonitorOrchestrator @Inject constructor(
                 log(TAG) { "monitor: Currently active devices: ${activeDevices.map { "${it.address}/${it.label}" }}" }
                 onActiveDevicesChanged(activeDevices)
 
-                val stayActive = activeDevices.any { it.requiresPersistentSession }
+                // The equalizer re-attaches on every new effect session, so it needs the session to
+                // stay alive for as long as an eligible device is connected.
+                val stayActive = activeDevices.any { it.requiresPersistentSession } ||
+                        (eqEligibility.isOperational() && activeDevices.any { it.eqEnabled })
 
                 when {
                     activeDevices.isNotEmpty() && stayActive -> {
@@ -170,6 +178,8 @@ class MonitorOrchestrator @Inject constructor(
             deviceMonitorJob.join()
             log(TAG, VERBOSE) { "Monitor job quit" }
         } finally {
+            // Before the owner registry is reset, so the release still sees who owned the streams.
+            eqCoordinator.stopSession()
             monitorJob.cancel()
         }
     }
