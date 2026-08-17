@@ -21,6 +21,9 @@ sealed interface Nav : NavigationDestination {
         data class AppSelection(val addr: DeviceAddr) : Main
 
         @Serializable
+        data class DeviceEq(val addr: DeviceAddr) : Main
+
+        @Serializable
         data object SettingsIndex : Main
 
         @Serializable

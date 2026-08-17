@@ -4,6 +4,8 @@ import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.ca.CaString
 import eu.darken.bluemusic.common.ca.toCaString
 import kotlin.math.roundToInt
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Equalizer presets as normalized curves, independent of what the device's engine offers.
@@ -12,7 +14,8 @@ import kotlin.math.roundToInt
  * the frequency range. Curves are linearly interpolated to the engine's actual band count and then
  * scaled into its gain range, so the same preset works on a 5-band and a 10-band engine.
  */
-class EqPresets {
+@Singleton
+class EqPresets @Inject constructor() {
 
     enum class Id {
         FLAT,

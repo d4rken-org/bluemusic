@@ -21,6 +21,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.ArrowBack
 import androidx.compose.material.icons.automirrored.twotone.Launch
+import androidx.compose.material.icons.filled.Equalizer
 import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.DoNotDisturb
 import androidx.compose.material.icons.twotone.GraphicEq
@@ -461,6 +462,15 @@ fun DeviceConfigScreen(
                             isChecked = device.getVolume(AudioStream.Type.ALARM) != null,
                             icon = AudioStream.Type.ALARM.icon,
                             onCheckedChange = { onAction(ConfigAction.OnToggleVolume(AudioStream.Type.ALARM)) }
+                        )
+
+                        ClickablePreference(
+                            title = stringResource(R.string.devices_device_config_equalizer_label),
+                            description = stringResource(R.string.devices_device_config_equalizer_desc),
+                            icon = Icons.Filled.Equalizer,
+                            onClick = { onAction(ConfigAction.OnEqClicked) },
+                            requiresPro = true,
+                            isProVersion = state.isProVersion
                         )
 
                         Spacer(modifier = Modifier.height(8.dp))
