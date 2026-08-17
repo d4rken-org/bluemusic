@@ -43,12 +43,25 @@ class BackupMappersTest : BaseTest() {
             dndMode = DndMode.PRIORITY_ONLY,
             connectionAlertType = AlertType.SOUND,
             connectionAlertSoundUri = "content://test/123",
+            eqEnabled = true,
+            eqBandLevels = listOf(600, 300, 0, -300, -600),
         )
 
         val backup = entity.toBackup()
         val restored = backup.toEntity()
 
         restored shouldBe entity
+    }
+
+    @Test
+    fun `entity to backup keeps unset band levels null`() {
+        val entity = DeviceConfigEntity(address = "test", eqEnabled = true, eqBandLevels = null)
+
+        val backup = entity.toBackup()
+
+        backup.eqEnabled shouldBe true
+        backup.eqBandLevels shouldBe null
+        backup.toEntity() shouldBe entity
     }
 
     @Test

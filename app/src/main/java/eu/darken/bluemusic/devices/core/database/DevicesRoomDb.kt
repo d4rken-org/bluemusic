@@ -9,10 +9,11 @@ import androidx.room.TypeConverters
     entities = [
         DeviceConfigEntity::class,
     ],
-    version = 4,
+    version = 5,
     autoMigrations = [
         AutoMigration(from = 2, to = 3, spec = Migration2To3::class),
-        AutoMigration(from = 3, to = 4)
+        AutoMigration(from = 3, to = 4),
+        AutoMigration(from = 4, to = 5)
     ],
     exportSchema = true,
 )

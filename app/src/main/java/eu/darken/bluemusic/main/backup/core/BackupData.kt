@@ -43,6 +43,8 @@ data class DeviceConfigBackup(
     val dndMode: String? = null,
     val connectionAlertType: String = "none",
     val connectionAlertSoundUri: String? = null,
+    val eqEnabled: Boolean = false,
+    val eqBandLevels: List<Int>? = null,
 )
 
 @Serializable

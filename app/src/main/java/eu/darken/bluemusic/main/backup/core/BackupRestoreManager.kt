@@ -262,8 +262,8 @@ class BackupRestoreManager @Inject constructor(
 
     companion object {
         private val TAG = logTag("Backup", "Restore", "Manager")
-        const val CURRENT_FORMAT_VERSION = 2
-        val SUPPORTED_FORMAT_VERSIONS = setOf(1, 2)
+        const val CURRENT_FORMAT_VERSION = 3
+        val SUPPORTED_FORMAT_VERSIONS = setOf(1, 2, 3)
         const val BACKUP_JSON_ENTRY = "backup.json"
     }
 }
