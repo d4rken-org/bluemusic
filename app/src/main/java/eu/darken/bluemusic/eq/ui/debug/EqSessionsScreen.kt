@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.eqspike.ui
+package eu.darken.bluemusic.eq.ui.debug
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
@@ -34,45 +33,42 @@ import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.error.ErrorEventHandler
-import eu.darken.bluemusic.eqspike.core.EqSpikeState
-import eu.darken.bluemusic.eqspike.core.SpikeEvent
-import eu.darken.bluemusic.eqspike.core.SpikeSession
+import eu.darken.bluemusic.eq.core.EqEvent
+import eu.darken.bluemusic.eq.core.EqSession
+import eu.darken.bluemusic.eq.core.EqSessionState
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-// Debug-only spike screen, all texts are intentionally hardcoded English and not translated.
+// Debug-only diagnostics screen, all texts are intentionally hardcoded English and not translated.
 
 @Composable
-fun EqSpikeScreenHost(vm: EqSpikeViewModel = hiltViewModel()) {
+fun EqSessionsScreenHost(vm: EqSessionsViewModel = hiltViewModel()) {
     ErrorEventHandler(vm)
 
     val state by vm.state.collectAsStateWithLifecycle()
 
-    EqSpikeScreen(
+    EqSessionsScreen(
         state = state,
-        onListeningToggle = { if (it) vm.startListening() else vm.stopListening() },
+        onListeningToggle = { vm.setListening(it) },
         onClear = { vm.clear() },
-        onAttach = { session -> vm.attach(session.packageName, session.sessionId) },
-        onDetach = { session -> vm.detach(session.packageName, session.sessionId) },
     )
 }
 
 @Composable
-fun EqSpikeScreen(
-    state: EqSpikeState,
+fun EqSessionsScreen(
+    state: EqSessionState,
     onListeningToggle: (Boolean) -> Unit,
     onClear: () -> Unit,
-    onAttach: (SpikeSession) -> Unit,
-    onDetach: (SpikeSession) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
         modifier = modifier,
-        topBar = { TopAppBar(title = { Text("EQ Spike") }) },
+        topBar = { TopAppBar(title = { Text("EQ Sessions") }) },
         contentWindowInsets = WindowInsets.statusBars,
     ) { paddingValues ->
         val navBarPadding = navigationBarBottomPadding()
+        val sessions = state.sessions.values.toList()
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -92,7 +88,7 @@ fun EqSpikeScreen(
                             style = MaterialTheme.typography.titleMedium,
                         )
                         Text(
-                            text = "OPEN/CLOSE_AUDIO_EFFECT_CONTROL_SESSION",
+                            text = "OPEN/CLOSE_AUDIO_EFFECT_CONTROL_SESSION · generation ${state.generation}",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
@@ -111,14 +107,14 @@ fun EqSpikeScreen(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text = "Sessions (${state.sessions.size})",
+                        text = "Sessions (${sessions.size})",
                         style = MaterialTheme.typography.titleSmall,
                     )
                     TextButton(onClick = onClear) { Text("Clear") }
                 }
             }
 
-            if (state.sessions.isEmpty()) {
+            if (sessions.isEmpty()) {
                 item {
                     Text(
                         text = "No sessions seen yet. Start listening, then play something.",
@@ -128,13 +124,7 @@ fun EqSpikeScreen(
                 }
             }
 
-            items(state.sessions, key = { "${it.packageName}:${it.sessionId}" }) { session ->
-                SessionCard(
-                    session = session,
-                    onAttach = { onAttach(session) },
-                    onDetach = { onDetach(session) },
-                )
-            }
+            items(sessions, key = { it.sessionId }) { session -> SessionCard(session) }
 
             item {
                 Spacer(modifier = Modifier.height(8.dp))
@@ -152,59 +142,47 @@ fun EqSpikeScreen(
 }
 
 @Composable
-private fun SessionCard(
-    session: SpikeSession,
-    onAttach: () -> Unit,
-    onDetach: () -> Unit,
-) {
+private fun SessionCard(session: EqSession) {
     Card(modifier = Modifier.fillMaxWidth()) {
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 12.dp, vertical = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
         ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = session.packageName,
-                    style = MaterialTheme.typography.bodyMedium,
-                )
-                Text(
-                    text = buildString {
-                        append("session=${session.sessionId}")
-                        append(" · ")
-                        append(if (session.closed) "closed" else "open")
-                        append(" · ")
-                        append(if (session.attached) "attached" else "detached")
-                        session.hasControl?.let { append(" · control=$it") }
-                    },
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                Text(
-                    text = "opened ${TIME_FORMATTER.format(session.openedAt)}",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-            Spacer(modifier = Modifier.width(8.dp))
-            if (session.attached) {
-                TextButton(onClick = onDetach) { Text("Detach") }
-            } else {
-                TextButton(onClick = onAttach, enabled = !session.closed) { Text("Attach") }
-            }
+            Text(
+                text = session.packageName ?: "unknown package",
+                style = MaterialTheme.typography.bodyMedium,
+            )
+            Text(
+                text = buildString {
+                    append("session=${session.sessionId}")
+                    append(" · gen=${session.generation}")
+                    append(" · ")
+                    append(if (session.closed) "closed" else "open")
+                    append(" · ")
+                    append(if (session.attached) "attached" else "detached")
+                    session.hasControl?.let { append(" · control=$it") }
+                },
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Text(
+                text = "opened ${TIME_FORMATTER.format(session.openedAt)}",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
         }
     }
 }
 
 @Composable
-private fun EventRow(event: SpikeEvent) {
+private fun EventRow(event: EqEvent) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
             text = "${TIME_FORMATTER.format(event.time)}  ${event.type}",
             style = MaterialTheme.typography.bodySmall,
             color = when (event.type) {
-                SpikeEvent.Type.MALFORMED, SpikeEvent.Type.ATTACH_FAILED -> MaterialTheme.colorScheme.error
+                EqEvent.Type.MALFORMED, EqEvent.Type.ATTACH_FAILED -> MaterialTheme.colorScheme.error
                 else -> MaterialTheme.colorScheme.onSurface
             },
         )
@@ -229,39 +207,42 @@ private val TIME_FORMATTER: DateTimeFormatter = DateTimeFormatter
 
 @Preview2
 @Composable
-private fun EqSpikeScreenPreview() {
+private fun EqSessionsScreenPreview() {
     val now = Instant.parse("2026-01-01T10:00:00Z")
     PreviewWrapper {
-        EqSpikeScreen(
-            state = EqSpikeState(
+        EqSessionsScreen(
+            state = EqSessionState(
                 listening = true,
-                sessions = listOf(
-                    SpikeSession(
-                        packageName = "com.spotify.music",
+                generation = 3,
+                sessions = mapOf(
+                    42 to EqSession(
                         sessionId = 42,
+                        generation = 3,
                         openedAt = now,
+                        packageName = "com.spotify.music",
                         attached = true,
                         hasControl = true,
                     ),
-                    SpikeSession(
-                        packageName = "com.soundcloud.android",
+                    7 to EqSession(
                         sessionId = 7,
+                        generation = 3,
                         openedAt = now,
+                        packageName = "com.soundcloud.android",
                         closed = true,
                     ),
                 ),
                 events = listOf(
-                    SpikeEvent(time = now, type = SpikeEvent.Type.LISTENING, detail = "Registered receiver"),
-                    SpikeEvent(
+                    EqEvent(time = now, type = EqEvent.Type.LISTENING, detail = "Registered receiver (gen=3)"),
+                    EqEvent(
                         time = now,
-                        type = SpikeEvent.Type.OPEN,
+                        type = EqEvent.Type.OPEN,
                         packageName = "com.spotify.music",
                         sessionId = 42,
                         detail = "New session",
                     ),
-                    SpikeEvent(
+                    EqEvent(
                         time = now,
-                        type = SpikeEvent.Type.MALFORMED,
+                        type = EqEvent.Type.MALFORMED,
                         packageName = "com.example.bad",
                         detail = "Missing session id extra",
                     ),
@@ -269,8 +250,6 @@ private fun EqSpikeScreenPreview() {
             ),
             onListeningToggle = {},
             onClear = {},
-            onAttach = {},
-            onDetach = {},
         )
     }
 }

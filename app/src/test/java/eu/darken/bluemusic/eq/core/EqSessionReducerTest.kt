@@ -1,0 +1,288 @@
+package eu.darken.bluemusic.eq.core
+
+import io.kotest.matchers.collections.shouldBeEmpty
+import io.kotest.matchers.maps.shouldBeEmpty
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldContain
+import org.junit.jupiter.api.Test
+import testhelpers.BaseTest
+import java.time.Instant
+
+class EqSessionReducerTest : BaseTest() {
+
+    private val reducer = EqSessionReducer()
+    private val t0 = Instant.parse("2026-01-01T10:00:00Z")
+    private fun at(seconds: Long): Instant = t0.plusSeconds(seconds)
+
+    private fun listening(generation: Long = 1L): EqSessionState =
+        reducer.onListeningStarted(EqSessionState(), t0, generation, "on")
+
+    @Test
+    fun `open creates a session`() {
+        val state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+
+        state.sessions.values.single() shouldBe EqSession(
+            sessionId = 42,
+            generation = 1L,
+            openedAt = t0,
+            packageName = "com.spotify.music",
+        )
+        state.events.last().type shouldBe EqEvent.Type.OPEN
+    }
+
+    @Test
+    fun `open with non positive session id is malformed`() {
+        val state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 0)
+
+        state.sessions.shouldBeEmpty()
+        state.events.last().type shouldBe EqEvent.Type.MALFORMED
+    }
+
+    @Test
+    fun `open with negative session id is malformed`() {
+        val state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", -1)
+
+        state.sessions.shouldBeEmpty()
+        state.events.last().type shouldBe EqEvent.Type.MALFORMED
+    }
+
+    @Test
+    fun `open with missing session id extra is malformed`() {
+        val state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", null)
+
+        state.sessions.shouldBeEmpty()
+        state.events.last().type shouldBe EqEvent.Type.MALFORMED
+        state.events.last().sessionId shouldBe null
+    }
+
+    @Test
+    fun `session identity is the session id, the package is only diagnostic`() {
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, null, 42)
+        state.sessions.values.single().packageName shouldBe null
+
+        state = reducer.onOpenBroadcast(state, at(1), 1L, "com.spotify.music", 42)
+
+        state.sessions.values.single().sessionId shouldBe 42
+        state.sessions.values.single().packageName shouldBe "com.spotify.music"
+    }
+
+    @Test
+    fun `duplicate open refreshes the existing session`() {
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        state = reducer.onAttached(state, at(1), 42, "attached")
+        state = reducer.onOpenBroadcast(state, at(2), 1L, "com.spotify.music", 42)
+
+        state.sessions.values.single() shouldBe EqSession(
+            sessionId = 42,
+            generation = 1L,
+            openedAt = at(2),
+            packageName = "com.spotify.music",
+            closed = false,
+            attached = true,
+        )
+        state.events.map { it.type } shouldBe listOf(
+            EqEvent.Type.LISTENING,
+            EqEvent.Type.OPEN,
+            EqEvent.Type.ATTACH,
+            EqEvent.Type.OPEN,
+        )
+    }
+
+    @Test
+    fun `close marks the session closed and drops attachment state`() {
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        state = reducer.onAttached(state, at(1), 42, "attached")
+        state = reducer.onControlChanged(state, at(2), 42, true)
+        state = reducer.onCloseBroadcast(state, at(3), 1L, "com.spotify.music", 42)
+
+        state.sessions.values.single() shouldBe EqSession(
+            sessionId = 42,
+            generation = 1L,
+            openedAt = t0,
+            packageName = "com.spotify.music",
+            closed = true,
+            attached = false,
+            hasControl = null,
+        )
+        state.openSessions.shouldBeEmpty()
+        state.events.last().type shouldBe EqEvent.Type.CLOSE
+    }
+
+    @Test
+    fun `unmatched close only records an event`() {
+        val state = reducer.onCloseBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+
+        state.sessions.shouldBeEmpty()
+        state.events.last().type shouldBe EqEvent.Type.CLOSE
+    }
+
+    @Test
+    fun `close with invalid session id is malformed`() {
+        val state = reducer.onCloseBroadcast(listening(), t0, 1L, "com.spotify.music", 0)
+
+        state.sessions.shouldBeEmpty()
+        state.events.last().type shouldBe EqEvent.Type.MALFORMED
+    }
+
+    @Test
+    fun `reopen after close revives the same session row`() {
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        state = reducer.onCloseBroadcast(state, at(1), 1L, "com.spotify.music", 42)
+        state = reducer.onOpenBroadcast(state, at(2), 1L, "com.spotify.music", 42)
+
+        state.sessions.values.single() shouldBe EqSession(
+            sessionId = 42,
+            generation = 1L,
+            openedAt = at(2),
+            packageName = "com.spotify.music",
+            closed = false,
+        )
+        state.openSessions.map { it.sessionId } shouldBe listOf(42)
+    }
+
+    @Test
+    fun `attach failure clears attachment state`() {
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        state = reducer.onAttached(state, at(1), 42, "attached")
+        state = reducer.onAttachFailed(state, at(2), 42, "boom")
+
+        state.sessions.values.single().attached shouldBe false
+        state.events.last().type shouldBe EqEvent.Type.ATTACH_FAILED
+        state.events.last().detail shouldBe "boom"
+    }
+
+    @Test
+    fun `detach clears attachment state`() {
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        state = reducer.onAttached(state, at(1), 42, "attached")
+        state = reducer.onControlChanged(state, at(2), 42, true)
+        state = reducer.onDetached(state, at(3), 42)
+
+        state.sessions.values.single().attached shouldBe false
+        state.sessions.values.single().hasControl shouldBe null
+        state.events.last().type shouldBe EqEvent.Type.DETACH
+    }
+
+    @Test
+    fun `control change updates the session`() {
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        state = reducer.onAttached(state, at(1), 42, "attached")
+        state = reducer.onControlChanged(state, at(2), 42, false)
+
+        state.sessions.values.single().hasControl shouldBe false
+        state.events.last().detail shouldBe "hasControl=false"
+    }
+
+    // region generation scoping
+
+    @Test
+    fun `starting to listen drops sessions of the previous generation`() {
+        var state = reducer.onOpenBroadcast(listening(1L), t0, 1L, "com.spotify.music", 42)
+        state.sessions.size shouldBe 1
+
+        state = reducer.onListeningStarted(state, at(1), 2L, "on again")
+
+        state.sessions.shouldBeEmpty()
+        state.generation shouldBe 2L
+    }
+
+    @Test
+    fun `stopping listening drops all sessions`() {
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        state = reducer.onListeningStopped(state, at(1), "off")
+
+        state.listening shouldBe false
+        state.sessions.shouldBeEmpty()
+        state.openSessions.shouldBeEmpty()
+    }
+
+    @Test
+    fun `open from a stale generation is ignored`() {
+        val state = reducer.onOpenBroadcast(listening(2L), t0, 1L, "com.spotify.music", 42)
+
+        state.sessions.shouldBeEmpty()
+        state.openSessions.shouldBeEmpty()
+        state.events.last().detail shouldContain "stale generation 1"
+    }
+
+    @Test
+    fun `close from a stale generation does not touch current sessions`() {
+        var state = reducer.onOpenBroadcast(listening(2L), t0, 2L, "com.spotify.music", 42)
+        state = reducer.onCloseBroadcast(state, at(1), 1L, "com.spotify.music", 42)
+
+        state.sessions.values.single().closed shouldBe false
+        state.openSessions.map { it.sessionId } shouldBe listOf(42)
+    }
+
+    @Test
+    fun `listening toggle is tracked`() {
+        var state = reducer.onListeningStarted(EqSessionState(), t0, 1L, "on")
+        state.listening shouldBe true
+
+        state = reducer.onListeningStopped(state, at(1), "off")
+        state.listening shouldBe false
+        state.events.map { it.type } shouldBe listOf(EqEvent.Type.LISTENING, EqEvent.Type.LISTENING)
+    }
+
+    // endregion
+
+    // region event log limits
+
+    @Test
+    fun `event log is a bounded ring buffer`() {
+        var state = listening()
+        repeat(EqSessionState.MAX_EVENTS + 50) { i ->
+            state = reducer.onControlChanged(state, at(i.toLong()), 42, i % 2 == 0)
+        }
+
+        state.events.size shouldBe EqSessionState.MAX_EVENTS
+        state.events.last().time shouldBe at((EqSessionState.MAX_EVENTS + 50 - 1).toLong())
+    }
+
+    @Test
+    fun `malformed events are rate capped per generation`() {
+        var state = listening()
+        repeat(50) { i -> state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.bad.app", 0) }
+
+        val malformed = state.events.count { it.type == EqEvent.Type.MALFORMED }
+        malformed shouldBe EqSessionState.MAX_RATE_CAPPED_EVENTS
+        state.events.count { it.type == EqEvent.Type.SUPPRESSED } shouldBe 1
+        state.malformedCount shouldBe 50
+    }
+
+    @Test
+    fun `open events are rate capped per generation but sessions still track`() {
+        var state = listening()
+        repeat(50) { i -> state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.spotify.music", i + 1) }
+
+        state.sessions.size shouldBe 50
+        state.events.count { it.type == EqEvent.Type.OPEN } shouldBe EqSessionState.MAX_RATE_CAPPED_EVENTS
+        state.events.count { it.type == EqEvent.Type.SUPPRESSED } shouldBe 1
+    }
+
+    @Test
+    fun `rate cap resets with a new generation`() {
+        var state = listening()
+        repeat(50) { i -> state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.bad.app", 0) }
+
+        state = reducer.onListeningStarted(state, at(60), 2L, "on again")
+        state = reducer.onOpenBroadcast(state, at(61), 2L, "com.bad.app", 0)
+
+        state.malformedCount shouldBe 1
+        state.events.last().type shouldBe EqEvent.Type.MALFORMED
+    }
+
+    // endregion
+
+    @Test
+    fun `clear resets sessions and events but keeps listening`() {
+        var state = reducer.onOpenBroadcast(listening(), at(1), 1L, "com.spotify.music", 42)
+        state = reducer.onAttached(state, at(2), 42, "attached")
+
+        val cleared = reducer.clear(state, at(3))
+
+        cleared.listening shouldBe true
+        cleared.sessions.shouldBeEmpty()
+        cleared.events.single() shouldBe EqEvent(time = at(3), type = EqEvent.Type.CLEARED)
+    }
+}

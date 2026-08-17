@@ -203,7 +203,7 @@ fun SupportScreenHost(vm: SupportScreenViewModel = hiltViewModel()) {
             onDeleteSession = { dialog = SupportDialog.DeleteSession(it) },
             onStopRecording = { vm.onDebugLogToggle() },
             onClearLogs = { dialog = SupportDialog.ClearAll },
-            onOpenEqSpike = { vm.openEqSpike() },
+            onOpenEqSessions = { vm.openEqSessions() },
         )
     }
 }
@@ -219,7 +219,7 @@ fun SupportScreen(
     onDeleteSession: (String) -> Unit,
     onStopRecording: () -> Unit,
     onClearLogs: () -> Unit,
-    onOpenEqSpike: () -> Unit,
+    onOpenEqSessions: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -337,9 +337,9 @@ fun SupportScreen(
                     SettingsDivider()
                     SettingsPreferenceItem(
                         icon = Icons.Filled.Equalizer,
-                        title = "EQ Spike",
-                        subtitle = "Debug: audio effect control session prototype",
-                        onClick = onOpenEqSpike,
+                        title = "EQ Sessions",
+                        subtitle = "Debug: audio effect control session diagnostics",
+                        onClick = onOpenEqSessions,
                     )
                 }
             }
@@ -539,7 +539,7 @@ private fun SupportScreenPreview() {
             onDeleteSession = {},
             onStopRecording = {},
             onClearLogs = {},
-            onOpenEqSpike = {},
+            onOpenEqSessions = {},
         )
     }
 }

@@ -27,7 +27,7 @@ sealed interface Nav : NavigationDestination {
         data class Upgrade(val manage: Boolean = false) : Main
 
         @Serializable
-        data object EqSpike : Main
+        data object EqSessions : Main
 
     }
 

@@ -505,4 +505,12 @@
     <string name="widget_config_theme_green_label">Green</string>
     <string name="widget_config_theme_red_label">Red</string>
     <string name="widget_config_theme_custom_label">Custom</string>
+
+    <!-- Equalizer -->
+    <string name="eq_preset_flat_label">Flat</string>
+    <string name="eq_preset_bass_boost_label">Bass boost</string>
+    <string name="eq_preset_bass_reducer_label">Bass reducer</string>
+    <string name="eq_preset_treble_boost_label">Treble boost</string>
+    <string name="eq_preset_vocal_label">Vocal</string>
+    <string name="eq_preset_loudness_label">Loudness</string>
 </resources>

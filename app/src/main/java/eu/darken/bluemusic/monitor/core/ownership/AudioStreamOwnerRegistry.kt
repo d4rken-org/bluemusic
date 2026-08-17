@@ -8,6 +8,9 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -20,6 +23,14 @@ class AudioStreamOwnerRegistry @Inject constructor() {
     private val mutex = Mutex()
     private val entries = mutableMapOf<DeviceAddr, ActiveEntry>()
     private var _generation: Long = 0L
+
+    private val _ownerSnapshots = MutableStateFlow(OwnerSnapshot())
+
+    /**
+     * Current owner group, republished inside every mutating operation so observers never see a
+     * half-applied change.
+     */
+    val ownerSnapshots: StateFlow<OwnerSnapshot> = _ownerSnapshots.asStateFlow()
 
     suspend fun onDeviceConnected(
         address: DeviceAddr,
@@ -45,6 +56,7 @@ class AudioStreamOwnerRegistry @Inject constructor() {
             _generation++
             log(TAG, INFO) { "Ownership changed: gen=$_generation, old=$oldOwnerKey, new=$newOwnerKey" }
         }
+        publishSnapshotLocked()
         log(TAG, VERBOSE) { "onDeviceConnected: $address ($label), groups=${buildGroupsLocked()}" }
         ConnectResult(
             previousOwnerAddresses = previousOwnerAddresses,
@@ -91,6 +103,7 @@ class AudioStreamOwnerRegistry @Inject constructor() {
             log(TAG, INFO) { "Ownership changed on disconnect: gen=$_generation" }
         }
 
+        publishSnapshotLocked()
         log(TAG, VERBOSE) { "resolveDisconnect: $address, wasOwner=$wasInOwnerGroup, before=$ownerGroupBefore, after=$ownerGroupAfter" }
 
         DisconnectResult(
@@ -122,6 +135,7 @@ class AudioStreamOwnerRegistry @Inject constructor() {
                 approximate = true,
             )
         }
+        publishSnapshotLocked()
         log(TAG, VERBOSE) { "bootstrap: groups=${buildGroupsLocked()}" }
     }
 
@@ -142,6 +156,14 @@ class AudioStreamOwnerRegistry @Inject constructor() {
         log(TAG, INFO) { "reset: clearing ${entries.size} entries" }
         entries.clear()
         _generation = 0L
+        publishSnapshotLocked()
+    }
+
+    private fun publishSnapshotLocked() {
+        _ownerSnapshots.value = OwnerSnapshot(
+            ownerAddresses = resolveOwnerGroupLocked()?.entries?.map { it.address } ?: emptyList(),
+            generation = _generation,
+        )
     }
 
     private fun resolveOwnerGroupLocked(): DeviceGroup? {

@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.eqspike.ui
+package eu.darken.bluemusic.eq.ui.debug
 
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
@@ -11,15 +11,15 @@ import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.common.navigation.NavigationEntry
 import javax.inject.Inject
 
-class EqSpikeNavigation @Inject constructor() : NavigationEntry {
+class EqSessionsNavigation @Inject constructor() : NavigationEntry {
     override fun EntryProviderScope<NavKey>.setup() {
-        entry<Nav.Main.EqSpike> {
-            EqSpikeScreenHost()
+        entry<Nav.Main.EqSessions> {
+            EqSessionsScreenHost()
         }
     }
 
     @Module @InstallIn(SingletonComponent::class)
     abstract class Mod {
-        @Binds @IntoSet abstract fun bind(entry: EqSpikeNavigation): NavigationEntry
+        @Binds @IntoSet abstract fun bind(entry: EqSessionsNavigation): NavigationEntry
     }
 }
