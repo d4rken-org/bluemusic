@@ -34,9 +34,19 @@ class EqSpikeRepo @Inject constructor(
 
     private data class EffectKey(val packageName: String, val sessionId: Int)
 
+    /**
+     * The framework shares a single engine per (effect type, session), so our muffle profile may be
+     * mutating settings a player app owns. Keep the pre-attach values to put them back on release.
+     */
+    private data class AttachedEffect(
+        val equalizer: Equalizer,
+        val originalLevels: List<Short>,
+        val originalEnabled: Boolean,
+    )
+
     private val reducer = EqSpikeReducer()
     private val lock = Any()
-    private val effects = mutableMapOf<EffectKey, Equalizer>()
+    private val effects = mutableMapOf<EffectKey, AttachedEffect>()
     private var receiver: BroadcastReceiver? = null
 
     private val _state = MutableStateFlow(EqSpikeState())
@@ -77,18 +87,22 @@ class EqSpikeRepo @Inject constructor(
             val current = receiver
             if (current == null) {
                 log(TAG) { "stopListening(): Not listening" }
-                return@synchronized
+            } else {
+                try {
+                    context.unregisterReceiver(current)
+                } catch (e: Exception) {
+                    log(TAG, WARN) { "stopListening(): Unregister failed: ${e.asLog()}" }
+                }
+                receiver = null
             }
 
-            try {
-                context.unregisterReceiver(current)
-            } catch (e: Exception) {
-                log(TAG, WARN) { "stopListening(): Unregister failed: ${e.asLog()}" }
+            releaseAll().forEach { key ->
+                reduce {
+                    onDetached(it, Instant.now(), key.packageName, key.sessionId, detail = "Stopped listening")
+                }
             }
-            receiver = null
-
-            releaseAll()
-            reduce { onListeningChanged(it, Instant.now(), listening = false, detail = "Unregistered receiver") }
+            val detail = if (current != null) "Unregistered receiver" else "Not listening"
+            reduce { onListeningChanged(it, Instant.now(), listening = false, detail = detail) }
         }
     }
 
@@ -101,21 +115,40 @@ class EqSpikeRepo @Inject constructor(
 
             val key = EffectKey(packageName, sessionId)
             effects.remove(key)?.let {
-                log(TAG) { "attach($key): Replacing existing effect ${it.id}" }
-                it.releaseQuietly()
+                log(TAG) { "attach($key): Replacing existing effect ${it.equalizer.id}" }
+                it.restoreAndReleaseQuietly()
             }
 
             var equalizer: Equalizer? = null
             try {
                 equalizer = Equalizer(EFFECT_PRIORITY, sessionId)
+                val originalLevels = (0 until equalizer.numberOfBands).map { equalizer.getBandLevel(it.toShort()) }
+                val originalEnabled = equalizer.enabled
                 val detail = equalizer.applyMuffleProfile(key)
-                equalizer.setEnabled(true)
-                equalizer.setControlStatusListener { _, controlGranted ->
-                    log(TAG) { "Control status for $key: granted=$controlGranted" }
-                    reduce { onControlChanged(it, Instant.now(), packageName, sessionId, controlGranted) }
+                val status = equalizer.setEnabled(true)
+                if (status != AudioEffect.SUCCESS) throw IllegalStateException("setEnabled failed: $status")
+                val attached = AttachedEffect(
+                    equalizer = equalizer,
+                    originalLevels = originalLevels,
+                    originalEnabled = originalEnabled,
+                )
+                equalizer.setControlStatusListener { effect, controlGranted ->
+                    synchronized(lock) {
+                        val current = effects[key]
+                        if (current == null || current.equalizer !== effect) {
+                            log(TAG, WARN) { "Stale control status for $key: granted=$controlGranted, ignoring" }
+                            return@synchronized
+                        }
+                        log(TAG) { "Control status for $key: granted=$controlGranted" }
+                        reduce { onControlChanged(it, Instant.now(), packageName, sessionId, controlGranted) }
+                    }
                 }
-                effects[key] = equalizer
+                effects[key] = attached
                 reduce { onAttached(it, Instant.now(), packageName, sessionId, detail) }
+
+                // The listener only fires on later ownership changes, so the initial value has to be read.
+                val initialControl = equalizer.hasControl()
+                reduce { onControlChanged(it, Instant.now(), packageName, sessionId, initialControl) }
             } catch (e: Throwable) {
                 log(TAG, ERROR) { "attach($key): Failed: ${e.asLog()}" }
                 equalizer?.releaseQuietly()
@@ -131,7 +164,7 @@ class EqSpikeRepo @Inject constructor(
             val key = EffectKey(packageName, sessionId)
             val effect = effects.remove(key)
             log(TAG) { "detach($key): effect=$effect" }
-            effect?.releaseQuietly()
+            effect?.restoreAndReleaseQuietly()
             reduce {
                 onDetached(
                     it,
@@ -169,7 +202,7 @@ class EqSpikeRepo @Inject constructor(
                     val key = EffectKey(packageName, sessionId)
                     effects.remove(key)?.let {
                         log(TAG) { "onBroadcast(): Releasing effect for closed session $key" }
-                        it.releaseQuietly()
+                        it.restoreAndReleaseQuietly()
                     }
                 }
                 reduce { onCloseBroadcast(it, Instant.now(), packageName, sessionId) }
@@ -200,12 +233,41 @@ class EqSpikeRepo @Inject constructor(
         return "id=$id bands=$bandCount levels=$levels"
     }
 
-    private fun releaseAll() {
+    private fun releaseAll(): List<EffectKey> {
+        val released = effects.keys.toList()
         effects.forEach { (key, effect) ->
             log(TAG) { "releaseAll(): Releasing effect for $key" }
-            effect.releaseQuietly()
+            effect.restoreAndReleaseQuietly()
         }
         effects.clear()
+        return released
+    }
+
+    /**
+     * Puts the engine back the way we found it before letting go of it, otherwise the muffle profile
+     * would stick around for whoever else is using this shared engine.
+     */
+    private fun AttachedEffect.restoreAndReleaseQuietly() {
+        try {
+            if (equalizer.hasControl()) {
+                originalLevels.forEachIndexed { band, level ->
+                    try {
+                        equalizer.setBandLevel(band.toShort(), level)
+                    } catch (e: Exception) {
+                        log(TAG, WARN) { "restore(): setBandLevel($band) failed: ${e.asLog()}" }
+                    }
+                }
+                try {
+                    equalizer.setEnabled(originalEnabled)
+                } catch (e: Exception) {
+                    log(TAG, WARN) { "restore(): setEnabled($originalEnabled) failed: ${e.asLog()}" }
+                }
+            }
+        } catch (e: Exception) {
+            log(TAG, WARN) { "restore() failed: ${e.asLog()}" }
+        } finally {
+            equalizer.releaseQuietly()
+        }
     }
 
     private fun Equalizer.releaseQuietly() = try {
