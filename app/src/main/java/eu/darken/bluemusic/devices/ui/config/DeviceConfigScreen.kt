@@ -2,6 +2,7 @@ package eu.darken.bluemusic.devices.ui.config
 
 import android.os.Build
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -21,7 +22,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.ArrowBack
 import androidx.compose.material.icons.automirrored.twotone.Launch
-import androidx.compose.material.icons.filled.Equalizer
 import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.DoNotDisturb
 import androidx.compose.material.icons.twotone.GraphicEq
@@ -47,6 +47,7 @@ import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -69,6 +70,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.compose.UpgradeBadge
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.hasApiLevel
@@ -464,18 +466,22 @@ fun DeviceConfigScreen(
                             onCheckedChange = { onAction(ConfigAction.OnToggleVolume(AudioStream.Type.ALARM)) }
                         )
 
-                        ClickablePreference(
-                            title = stringResource(R.string.devices_device_config_equalizer_label),
-                            description = stringResource(R.string.devices_device_config_equalizer_desc),
-                            icon = Icons.Filled.Equalizer,
-                            onClick = { onAction(ConfigAction.OnEqClicked) },
-                            requiresPro = true,
-                            isProVersion = state.isProVersion
-                        )
-
                         Spacer(modifier = Modifier.height(8.dp))
                     }
                 }
+            }
+
+            // Equalizer Section
+            item {
+                EqualizerCard(
+                    isEnabled = device.eqEnabled,
+                    isProVersion = state.isProVersion,
+                    onCardClick = { onAction(ConfigAction.OnEqClicked) },
+                    onToggle = { onAction(ConfigAction.OnToggleEq) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                )
             }
 
             // Features Section
@@ -734,6 +740,54 @@ fun DeviceConfigScreen(
             }
 
 
+        }
+    }
+}
+
+// Tapping the card opens the equalizer screen, the switch only flips whether it is applied — so the
+// caveat about app support is body text here instead of a line the user has to open the screen to read.
+@Composable
+private fun EqualizerCard(
+    isEnabled: Boolean,
+    isProVersion: Boolean,
+    onCardClick: () -> Unit,
+    onToggle: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier.clickable { onCardClick() },
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+    ) {
+        Column {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(end = 16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                SectionHeader(
+                    title = stringResource(R.string.devices_device_config_equalizer_label),
+                    modifier = Modifier.padding(top = 8.dp, bottom = 4.dp)
+                )
+
+                if (!isProVersion) UpgradeBadge()
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                Switch(
+                    checked = isEnabled,
+                    onCheckedChange = { onToggle() },
+                )
+            }
+
+            Text(
+                text = stringResource(R.string.devices_device_config_equalizer_desc),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
+
+            Spacer(modifier = Modifier.height(12.dp))
         }
     }
 }

@@ -174,6 +174,16 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 }
             }
 
+            is ConfigAction.OnToggleEq -> {
+                if (!upgradeRepo.isProForUi()) {
+                    events.emit(ConfigEvent.RequiresPro)
+                } else {
+                    deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+                        oldConfig.copy(eqEnabled = !oldConfig.eqEnabled)
+                    }
+                }
+            }
+
             is ConfigAction.OnRename -> {
                 deviceRepo.renameDevice(deviceAddress, action.newName)
             }

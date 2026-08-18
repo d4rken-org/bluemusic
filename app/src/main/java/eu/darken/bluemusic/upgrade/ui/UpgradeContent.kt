@@ -594,6 +594,14 @@ internal fun UpgradeFeatureList(
     }
 }
 
+// The equalizer benefit is its own base string instead of a line inside the flavor's benefit list:
+// a new string falls back to English in every locale right away, while editing an already translated
+// list would hide the app-support caveat everywhere until the translations catch up. And the caveat
+// is exactly what someone has to read BEFORE paying.
+@Composable
+internal fun benefitsWithEqualizer(@StringRes bodyRes: Int): String =
+    "${stringResource(R.string.upgrade_benefit_equalizer)}\n${stringResource(bodyRes)}"
+
 @Composable
 private fun UpgradeFeatureRow(
     text: String,

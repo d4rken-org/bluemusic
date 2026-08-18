@@ -48,7 +48,7 @@
     <string name="devices_device_config_enabled_desc">React to this device when connected</string>
 
     <string name="devices_device_config_equalizer_label">Equalizer</string>
-    <string name="devices_device_config_equalizer_desc">Adjust the sound for this device.</string>
+    <string name="devices_device_config_equalizer_desc">Shape the sound for this device. Only works with apps that support system equalizers, like Spotify or YouTube Music.</string>
 
     <string name="devices_device_config_section_timing_label">Timing</string>
     <string name="devices_device_config_monitoring_duration_label">Monitoring duration</string>
@@ -372,6 +372,7 @@
     <string name="upgrade_benefit_theme_customization">Theme, style and color customization</string>
     <string name="upgrade_benefit_power_controls">Volume lock and rate limiting</string>
     <string name="upgrade_benefit_support">Support independent development</string>
+    <string name="upgrade_benefit_equalizer">• Per-device equalizer (for music apps with system equalizer support)</string>
     <string name="description_intro_tap_the_button">Start by adding your first device.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth is disabled.</string>
     <string name="title_bluetooth_is_off">Bluetooth is Off</string>
