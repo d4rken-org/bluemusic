@@ -386,6 +386,13 @@ class EqCoordinator @Inject constructor(
         log(TAG, INFO) { "Grace period for session $sessionId expired, releasing it" }
         openSessionIds -= sessionId
         controller.detach(sessionId)
+
+        // The released slot may be what a session opened during the grace was turned away for.
+        val target = appliedTarget ?: return@act
+        (openSessionIds - controller.attachedSessionIds()).forEach {
+            log(TAG, INFO) { "Session $it has no effect yet, attaching it into the freed slot" }
+            controller.attach(it, target.levels, target.boostGain)
+        }
     }
 
     /**

@@ -106,8 +106,13 @@ class EqCoordinatorTest : BaseTest() {
             every { attachedSessionIds() } answers { attached.keys.toSet() }
             coEvery { attach(any(), any(), any()) } coAnswers {
                 if (attachDelayMs > 0) delay(attachDelayMs)
-                attached[firstArg()] = secondArg()
-                boosts[firstArg()] = thirdArg()
+                val sessionId = firstArg<Int>()
+                // Mirrors the real controller: past the cap an attach is refused, it replaces nothing.
+                if (sessionId !in attached && attached.size >= EqEffectController.MAX_ATTACHED) {
+                    return@coAnswers
+                }
+                attached[sessionId] = secondArg()
+                boosts[sessionId] = thirdArg()
             }
             coEvery { updateLevels(any()) } coAnswers {
                 val levels = firstArg<List<Int>>()
@@ -400,6 +405,39 @@ class EqCoordinatorTest : BaseTest() {
         attached shouldBe mapOf(11 to listOf(600, 600, 600))
         boosts shouldBe mapOf(11 to 900)
         coVerify(exactly = 1) { controller.attach(11, any(), any()) }
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a session turned away at the cap is attached once a grace period frees a slot`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        val capped = (1..EqEffectController.MAX_ATTACHED).toList()
+        openSessions(*capped.toIntArray())
+        runCurrent()
+        attached.keys shouldBe capped.toSet()
+
+        closeSessions(1)
+        runCurrent()
+
+        val late = EqEffectController.MAX_ATTACHED + 1
+        openSessions(late)
+        runCurrent()
+
+        // The closing session still holds its slot, so there is nothing left for the new one.
+        coVerify(exactly = 1) { controller.attach(late, any(), any()) }
+        attached.keys shouldBe capped.toSet()
+
+        advanceTimeBy(3_000)
+        runCurrent()
+
+        attached.keys shouldBe (capped - 1 + late).toSet()
+        attached[late] shouldBe listOf(300, 0, -300)
 
         coordinator.stopSession(token)
     }
