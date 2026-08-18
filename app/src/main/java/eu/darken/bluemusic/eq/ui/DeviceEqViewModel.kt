@@ -70,8 +70,13 @@ class DeviceEqViewModel @AssistedInject constructor(
     fun toggleEnabled() = launch {
         log(tag) { "toggleEnabled()" }
         persistJob?.cancel()
-        eqCoordinator.previewLevels(deviceAddress, null)
-        deviceRepo.updateDevice(deviceAddress) { it.copy(eqEnabled = !it.eqEnabled) }
+        // In a finally throughout: a cancelled write must not leave a preview curve applied to the
+        // running effects, it would outlive this screen and never be cleared by anyone else.
+        try {
+            deviceRepo.updateDevice(deviceAddress) { it.copy(eqEnabled = !it.eqEnabled) }
+        } finally {
+            eqCoordinator.previewLevels(deviceAddress, null)
+        }
     }
 
     /** Live values while a slider is being dragged: applied to the running effects, not persisted. */
@@ -83,8 +88,11 @@ class DeviceEqViewModel @AssistedInject constructor(
         log(tag) { "onLevelsCommitted($levels)" }
         persistJob?.cancel()
         persistJob = vmScope.launch {
-            deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = levels) }
-            eqCoordinator.previewLevels(deviceAddress, null)
+            try {
+                deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = levels) }
+            } finally {
+                eqCoordinator.previewLevels(deviceAddress, null)
+            }
         }
     }
 
@@ -92,17 +100,29 @@ class DeviceEqViewModel @AssistedInject constructor(
         log(tag) { "applyPreset($id)" }
         // A slider release could still be on its way to the database, its levels are stale now.
         persistJob?.cancel()
-        val capabilities = eqCapabilities.refreshIfNeeded() ?: return@launch
-        val levels = eqPresets.levelsFor(id, capabilities)
-        deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = levels) }
-        eqCoordinator.previewLevels(deviceAddress, null)
+        try {
+            val capabilities = eqCapabilities.refreshIfNeeded() ?: return@launch
+            val levels = eqPresets.levelsFor(id, capabilities)
+            deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = levels) }
+        } finally {
+            eqCoordinator.previewLevels(deviceAddress, null)
+        }
     }
 
     fun reset() = launch {
         log(tag) { "reset()" }
         persistJob?.cancel()
-        deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = null) }
+        try {
+            deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = null) }
+        } finally {
+            eqCoordinator.previewLevels(deviceAddress, null)
+        }
+    }
+
+    override fun onCleared() {
+        // Leaving the screen mid-drag cancels the scope, so nothing else would clear the preview.
         eqCoordinator.previewLevels(deviceAddress, null)
+        super.onCleared()
     }
 
     @AssistedFactory
