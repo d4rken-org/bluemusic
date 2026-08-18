@@ -170,11 +170,13 @@ fun DeviceEqScreen(
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             if (capabilities == null) {
-                item { UnsupportedCard() }
+                item(key = "unsupported") { UnsupportedCard() }
                 return@LazyColumn
             }
 
-            item {
+            // Keyed, because the status row appears and disappears on its own: without stable keys
+            // its insertion would recreate everything below it, disposing a band slider mid-drag.
+            item(key = "enable") {
                 EnableCard(
                     eqEnabled = state.device.eqEnabled,
                     isProVersion = state.isProVersion,
@@ -186,7 +188,7 @@ fun DeviceEqScreen(
             }
 
             state.status?.let { status ->
-                item {
+                item(key = "status") {
                     StatusRow(
                         status = status,
                         modifier = Modifier
@@ -196,7 +198,7 @@ fun DeviceEqScreen(
                 }
             }
 
-            item {
+            item(key = "presets_bands") {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -243,15 +245,15 @@ fun DeviceEqScreen(
                                 onLevelsChanged(updated)
                             },
                             onLevelChangeFinished = { onLevelsCommitted(draggedLevels ?: levels) },
-                            // Narrower than the 16dp the bare screen used: the card already insets the
-                            // row, and the bands need the width back to stay wide enough to grab.
-                            modifier = Modifier.padding(horizontal = 8.dp),
+                            // No padding of its own: the card's own margin is exactly what the row had
+                            // to the screen edge before, so a band keeps the width it needs to be
+                            // grabbable on an engine with many bands.
                         )
                     }
                 }
             }
 
-            item {
+            item(key = "boost") {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -280,7 +282,7 @@ fun DeviceEqScreen(
                 }
             }
 
-            item { InfoCard() }
+            item(key = "info") { InfoCard() }
         }
     }
 }

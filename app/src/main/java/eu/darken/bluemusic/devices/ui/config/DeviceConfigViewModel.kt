@@ -29,7 +29,6 @@ import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.onStart
 import java.time.Duration
 
 
@@ -40,7 +39,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
     private val volumeTool: VolumeTool,
     private val upgradeRepo: UpgradeRepo,
     appRepo: AppRepo,
-    eqCapabilities: EqCapabilities,
+    private val eqCapabilities: EqCapabilities,
     dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
     private val permissionHelper: PermissionHelper,
@@ -58,11 +57,17 @@ class DeviceConfigViewModel @AssistedInject constructor(
 
     val events = SingleEventFlow<ConfigEvent>()
 
+    init {
+        // Probing the engine takes a moment, and the screen is about far more than the equalizer:
+        // the curve preview shows up once the answer is in, nothing waits for it.
+        launch { eqCapabilities.refreshIfNeeded() }
+    }
+
     val state = combine(
         upgradeRepo.upgradeInfo,
         deviceRepo.observeDevice(deviceAddress).filterNotNull(),
         appRepo.apps,
-        eqCapabilities.capabilities.onStart { eqCapabilities.refreshIfNeeded() },
+        eqCapabilities.capabilities,
     ) { upgradeInfo, device, appInfos, eqCaps ->
         val appInfoMap = appInfos.associateBy { it.packageName }
         

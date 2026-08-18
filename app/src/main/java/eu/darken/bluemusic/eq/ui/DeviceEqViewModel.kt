@@ -80,7 +80,15 @@ class DeviceEqViewModel @AssistedInject constructor(
     private var boostJob: Job? = null
 
     private val appCacheLock = Mutex()
-    private val appCache = mutableMapOf<String, EqStatusApp>()
+
+    /**
+     * Bounded, and the least recently used entry goes first: the package names come from an
+     * unverified broadcast, so a misbehaving app must not be able to grow this without end.
+     */
+    private val appCache = object : LinkedHashMap<String, EqStatusApp>(16, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, EqStatusApp>): Boolean =
+            size > APP_CACHE_SIZE
+    }
 
     /**
      * Players announce a CLOSE/OPEN pair around every track change, and the sessions behind them come
@@ -248,5 +256,8 @@ class DeviceEqViewModel @AssistedInject constructor(
     companion object {
         /** How long the session picture has to hold still before the status row follows it. */
         private val STATUS_DEBOUNCE = 400.milliseconds
+
+        /** Upper bound on remembered app resolutions, successful or not. */
+        private const val APP_CACHE_SIZE = 32
     }
 }

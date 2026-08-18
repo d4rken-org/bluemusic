@@ -15,9 +15,11 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -51,7 +53,11 @@ class DeviceConfigViewModelTest : BaseTest() {
     private lateinit var deviceRepo: DeviceRepo
     private lateinit var navCtrl: NavigationController
 
-    private fun TestScope.viewModel(infos: MutableStateFlow<UpgradeRepo.Info>): DeviceConfigViewModel {
+    /** Completed once the equalizer probe is allowed to finish, so a test can hold it open. */
+    private fun TestScope.viewModel(
+        infos: MutableStateFlow<UpgradeRepo.Info>,
+        probeGate: CompletableDeferred<Unit>? = null,
+    ): DeviceConfigViewModel {
         deviceRepo = mockk<DeviceRepo>(relaxed = true).apply {
             every { devices } returns MutableStateFlow(listOf(device))
             coEvery { isManaged(address) } returns true
@@ -67,12 +73,32 @@ class DeviceConfigViewModelTest : BaseTest() {
             },
             eqCapabilities = mockk<EqCapabilities>(relaxed = true).apply {
                 every { capabilities } returns MutableStateFlow(null)
-                coEvery { refreshIfNeeded() } returns null
+                coEvery { refreshIfNeeded() } coAnswers {
+                    probeGate?.await()
+                    null
+                }
             },
             dispatcherProvider = TestDispatcherProvider(UnconfinedTestDispatcher(testScheduler)),
             navCtrl = navCtrl,
             permissionHelper = mockk(relaxed = true),
         )
+    }
+
+    // The equalizer probe talks to the audio framework and can take a moment: the rest of the config
+    // screen has nothing to do with it and must not wait for it.
+    @Test
+    fun `the screen renders while the equalizer probe is still running`() = runTest {
+        val probe = CompletableDeferred<Unit>()
+        val vm = viewModel(fakeUpgradeInfos(FakeUpgradeInfo(isPro = true, isSettled = true)), probeGate = probe)
+
+        val rendered = async { vm.state.filterNotNull().first() }
+        runCurrent()
+
+        rendered.isCompleted shouldBe true
+        rendered.await().eqCapabilities shouldBe null
+
+        probe.complete(Unit)
+        advanceUntilIdle()
     }
 
     @Test
