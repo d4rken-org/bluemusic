@@ -478,6 +478,8 @@
     <string name="devices_indicator_observe">Observe</string>
     <string name="devices_indicator_disconnect">Disconnect</string>
     <string name="devices_indicator_limit">Limit</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Boost</string>
     <string name="devices_indicator_launch">Launch</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>

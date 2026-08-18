@@ -14,8 +14,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.Launch
 import androidx.compose.material.icons.automirrored.twotone.QueueMusic
+import androidx.compose.material.icons.automirrored.twotone.VolumeUp
 import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.DoNotDisturb
+import androidx.compose.material.icons.twotone.Equalizer
 import androidx.compose.material.icons.twotone.GraphicEq
 import androidx.compose.material.icons.twotone.Home
 import androidx.compose.material.icons.twotone.Lock
@@ -57,6 +59,10 @@ fun OptionIndicators(
         if (device.volumeObservingEffective) add(Icons.TwoTone.Visibility to stringResource(R.string.devices_indicator_observe))
         if (device.volumeSaveOnDisconnect) add(Icons.TwoTone.PowerOff to stringResource(R.string.devices_indicator_disconnect))
         if (device.volumeRateLimiterEffective) add(Icons.TwoTone.Speed to stringResource(R.string.devices_indicator_limit))
+        if (device.eqEnabled) add(Icons.TwoTone.Equalizer to stringResource(R.string.devices_indicator_eq))
+        if (device.eqEnabled && (device.eqBoostGain ?: 0) > 0) {
+            add(Icons.AutoMirrored.TwoTone.VolumeUp to stringResource(R.string.devices_indicator_boost))
+        }
         autoplayChip(device)?.let { add(it) }
         if (device.showHomeScreen) add(Icons.TwoTone.Home to stringResource(R.string.devices_indicator_home))
         if (device.dndMode != null) add(Icons.TwoTone.DoNotDisturb to stringResource(R.string.devices_indicator_dnd))
@@ -145,7 +151,8 @@ private fun autoplayChip(device: ManagedDevice): Pair<ImageVector, String>? {
 private fun OptionIndicatorsPreview() {
     PreviewWrapper {
         // The mock device already has these settings enabled by default
-        val mockDevice = MockDevice().toManagedDevice()
+        val base = MockDevice().toManagedDevice()
+        val mockDevice = base.copy(config = base.config.copy(eqEnabled = true, eqBoostGain = 600))
 
         val mockApps = listOf(
             AppInfo(
