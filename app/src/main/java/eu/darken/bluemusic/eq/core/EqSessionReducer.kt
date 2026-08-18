@@ -2,6 +2,7 @@ package eu.darken.bluemusic.eq.core
 
 import eu.darken.bluemusic.eq.core.EqSessionState.Companion.MAX_EVENTS
 import eu.darken.bluemusic.eq.core.EqSessionState.Companion.MAX_RATE_CAPPED_EVENTS
+import eu.darken.bluemusic.eq.core.EqSessionState.Companion.MAX_SESSIONS
 import java.time.Instant
 
 /**
@@ -26,15 +27,21 @@ class EqSessionReducer {
             sessions = emptyMap(),
             malformedCount = 0,
             openCount = 0,
+            sessionCapReported = false,
         )
         .plusEvent(EqEvent(time = now, type = EqEvent.Type.LISTENING, detail = detail))
 
+    /**
+     * Ends the current listening generation. [generation] is the invalidated one the caller moved to
+     * before it unregistered, so a broadcast racing the unregister can only arrive stale.
+     */
     fun onListeningStopped(
         state: EqSessionState,
         now: Instant,
+        generation: Long,
         detail: String,
     ): EqSessionState = state
-        .copy(listening = false, sessions = emptyMap())
+        .copy(listening = false, generation = generation, sessions = emptyMap())
         .plusEvent(EqEvent(time = now, type = EqEvent.Type.LISTENING, detail = detail))
 
     fun onOpenBroadcast(
@@ -48,14 +55,18 @@ class EqSessionReducer {
             is Validation.Malformed -> return state.plusMalformed(now, packageName, sessionId, check.reason)
             is Validation.Valid -> check.sessionId
         }
+        if (!state.listening) return state.plusIgnored(now, EqEvent.Type.OPEN, packageName, session, "Not listening")
         if (generation != state.generation) return state.plusStale(now, EqEvent.Type.OPEN, packageName, session, generation)
 
         val existing = state.sessions[session]
+        if (existing == null && state.sessions.size >= MAX_SESSIONS) {
+            return state.plusSessionCapped(now, packageName, session)
+        }
+
         val updated = when {
             // Last event wins: some apps re-broadcast OPEN for a session we already know about.
             existing != null -> existing.copy(
                 openedAt = now,
-                closed = false,
                 packageName = packageName ?: existing.packageName,
                 generation = generation,
             )
@@ -94,14 +105,16 @@ class EqSessionReducer {
             is Validation.Malformed -> return state.plusMalformed(now, packageName, sessionId, check.reason)
             is Validation.Valid -> check.sessionId
         }
+        if (!state.listening) return state.plusIgnored(now, EqEvent.Type.CLOSE, packageName, session, "Not listening")
         if (generation != state.generation) {
             return state.plusStale(now, EqEvent.Type.CLOSE, packageName, session, generation)
         }
 
         val existing = state.sessions[session]
+        // Dropped, not flagged: a closed session is gone, and keeping rows would grow without bound.
         val sessions = when (existing) {
             null -> state.sessions
-            else -> state.sessions + (session to existing.copy(closed = true, attached = false, hasControl = null))
+            else -> state.sessions - session
         }
 
         return state
@@ -165,6 +178,7 @@ class EqSessionReducer {
         events = listOf(EqEvent(time = now, type = EqEvent.Type.CLEARED)),
         malformedCount = 0,
         openCount = 0,
+        sessionCapReported = false,
     )
 
     private sealed interface Validation {
@@ -206,15 +220,50 @@ class EqSessionReducer {
         packageName: String?,
         sessionId: Int,
         generation: Long,
+    ): EqSessionState = plusIgnored(
+        now = now,
+        type = type,
+        packageName = packageName,
+        sessionId = sessionId,
+        reason = "Ignored, stale generation $generation (current ${this.generation})",
+    )
+
+    private fun EqSessionState.plusIgnored(
+        now: Instant,
+        type: EqEvent.Type,
+        packageName: String?,
+        sessionId: Int,
+        reason: String,
     ): EqSessionState = plusEvent(
         EqEvent(
             time = now,
             type = type,
             packageName = packageName,
             sessionId = sessionId,
-            detail = "Ignored, stale generation $generation (current ${this.generation})",
+            detail = reason,
         )
     )
+
+    /**
+     * Rejects a new session once [MAX_SESSIONS] are tracked and records one notice per generation,
+     * so an app spamming OPEN for fresh session ids can't grow the map without bound.
+     */
+    private fun EqSessionState.plusSessionCapped(
+        now: Instant,
+        packageName: String?,
+        sessionId: Int,
+    ): EqSessionState = when {
+        sessionCapReported -> this
+        else -> copy(sessionCapReported = true).plusEvent(
+            EqEvent(
+                time = now,
+                type = EqEvent.Type.SUPPRESSED,
+                packageName = packageName,
+                sessionId = sessionId,
+                detail = "More than $MAX_SESSIONS sessions this generation, ignoring further new ones",
+            )
+        )
+    }
 
     /**
      * Records [event] until [MAX_RATE_CAPPED_EVENTS] of its kind have been seen in this generation,

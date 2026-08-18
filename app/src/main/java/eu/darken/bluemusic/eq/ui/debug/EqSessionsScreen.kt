@@ -158,8 +158,6 @@ private fun SessionCard(session: EqSession) {
                     append("session=${session.sessionId}")
                     append(" · gen=${session.generation}")
                     append(" · ")
-                    append(if (session.closed) "closed" else "open")
-                    append(" · ")
                     append(if (session.attached) "attached" else "detached")
                     session.hasControl?.let { append(" · control=$it") }
                 },
@@ -228,7 +226,6 @@ private fun EqSessionsScreenPreview() {
                         generation = 3,
                         openedAt = now,
                         packageName = "com.soundcloud.android",
-                        closed = true,
                     ),
                 ),
                 events = listOf(

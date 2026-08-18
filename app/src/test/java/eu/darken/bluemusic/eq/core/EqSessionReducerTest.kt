@@ -77,7 +77,6 @@ class EqSessionReducerTest : BaseTest() {
             generation = 1L,
             openedAt = at(2),
             packageName = "com.spotify.music",
-            closed = false,
             attached = true,
         )
         state.events.map { it.type } shouldBe listOf(
@@ -89,21 +88,13 @@ class EqSessionReducerTest : BaseTest() {
     }
 
     @Test
-    fun `close marks the session closed and drops attachment state`() {
+    fun `close removes the session entirely`() {
         var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
         state = reducer.onAttached(state, at(1), 42, "attached")
         state = reducer.onControlChanged(state, at(2), 42, true)
         state = reducer.onCloseBroadcast(state, at(3), 1L, "com.spotify.music", 42)
 
-        state.sessions.values.single() shouldBe EqSession(
-            sessionId = 42,
-            generation = 1L,
-            openedAt = t0,
-            packageName = "com.spotify.music",
-            closed = true,
-            attached = false,
-            hasControl = null,
-        )
+        state.sessions.shouldBeEmpty()
         state.openSessions.shouldBeEmpty()
         state.events.last().type shouldBe EqEvent.Type.CLOSE
     }
@@ -125,20 +116,80 @@ class EqSessionReducerTest : BaseTest() {
     }
 
     @Test
-    fun `reopen after close revives the same session row`() {
+    fun `reopen after close creates a fresh session row`() {
         var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
-        state = reducer.onCloseBroadcast(state, at(1), 1L, "com.spotify.music", 42)
-        state = reducer.onOpenBroadcast(state, at(2), 1L, "com.spotify.music", 42)
+        state = reducer.onAttached(state, at(1), 42, "attached")
+        state = reducer.onCloseBroadcast(state, at(2), 1L, "com.spotify.music", 42)
+        state = reducer.onOpenBroadcast(state, at(3), 1L, "com.spotify.music", 42)
 
         state.sessions.values.single() shouldBe EqSession(
             sessionId = 42,
             generation = 1L,
-            openedAt = at(2),
+            openedAt = at(3),
             packageName = "com.spotify.music",
-            closed = false,
+            attached = false,
         )
         state.openSessions.map { it.sessionId } shouldBe listOf(42)
     }
+
+    // region session bounds
+
+    @Test
+    fun `tracked sessions are capped and the cap is reported once per generation`() {
+        var state = listening()
+        repeat(EqSessionState.MAX_SESSIONS + 10) { i ->
+            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.bad.app", i + 1)
+        }
+
+        state.sessions.size shouldBe EqSessionState.MAX_SESSIONS
+        state.sessions.keys.maxOrNull() shouldBe EqSessionState.MAX_SESSIONS
+        state.events.count { it.type == EqEvent.Type.SUPPRESSED && it.detail.contains("sessions this generation") } shouldBe 1
+    }
+
+    @Test
+    fun `a session known before the cap still updates while the cap is reached`() {
+        var state = listening()
+        repeat(EqSessionState.MAX_SESSIONS) { i ->
+            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.spotify.music", i + 1)
+        }
+        state = reducer.onOpenBroadcast(state, at(500), 1L, "com.spotify.music", 1)
+
+        state.sessions.size shouldBe EqSessionState.MAX_SESSIONS
+        state.sessions.getValue(1).openedAt shouldBe at(500)
+    }
+
+    @Test
+    fun `closing sessions frees room under the cap again`() {
+        var state = listening()
+        repeat(EqSessionState.MAX_SESSIONS) { i ->
+            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.spotify.music", i + 1)
+        }
+        state = reducer.onOpenBroadcast(state, at(100), 1L, "com.spotify.music", 999)
+        state.sessions.containsKey(999) shouldBe false
+
+        state = reducer.onCloseBroadcast(state, at(101), 1L, "com.spotify.music", 1)
+        state = reducer.onOpenBroadcast(state, at(102), 1L, "com.spotify.music", 999)
+
+        state.sessions.size shouldBe EqSessionState.MAX_SESSIONS
+        state.sessions.containsKey(1) shouldBe false
+        state.sessions.containsKey(999) shouldBe true
+    }
+
+    @Test
+    fun `the cap notice resets with a new generation`() {
+        var state = listening()
+        repeat(EqSessionState.MAX_SESSIONS + 10) { i ->
+            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.bad.app", i + 1)
+        }
+        state.sessionCapReported shouldBe true
+
+        state = reducer.onListeningStarted(state, at(200), 2L, "on again")
+
+        state.sessionCapReported shouldBe false
+        state.sessions.shouldBeEmpty()
+    }
+
+    // endregion
 
     @Test
     fun `attach failure clears attachment state`() {
@@ -189,11 +240,38 @@ class EqSessionReducerTest : BaseTest() {
     @Test
     fun `stopping listening drops all sessions`() {
         var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
-        state = reducer.onListeningStopped(state, at(1), "off")
+        state = reducer.onListeningStopped(state, at(1), 2L, "off")
+
+        state.listening shouldBe false
+        state.generation shouldBe 2L
+        state.sessions.shouldBeEmpty()
+        state.openSessions.shouldBeEmpty()
+    }
+
+    @Test
+    fun `a broadcast arriving after stop does not repopulate state`() {
+        var state = reducer.onOpenBroadcast(listening(1L), t0, 1L, "com.spotify.music", 42)
+        state = reducer.onListeningStopped(state, at(1), 2L, "off")
+
+        // The receiver was still delivering when it was unregistered: same generation it registered with.
+        state = reducer.onOpenBroadcast(state, at(2), 1L, "com.spotify.music", 42)
+        state = reducer.onCloseBroadcast(state, at(3), 1L, "com.spotify.music", 7)
 
         state.listening shouldBe false
         state.sessions.shouldBeEmpty()
         state.openSessions.shouldBeEmpty()
+        state.events.map { it.detail }.takeLast(2) shouldBe listOf("Not listening", "Not listening")
+    }
+
+    @Test
+    fun `broadcasts are rejected while not listening even on a matching generation`() {
+        val stopped = EqSessionState(listening = false, generation = 5L)
+
+        val state = reducer.onOpenBroadcast(stopped, t0, 5L, "com.spotify.music", 42)
+
+        state.sessions.shouldBeEmpty()
+        state.events.last().type shouldBe EqEvent.Type.OPEN
+        state.events.last().detail shouldBe "Not listening"
     }
 
     @Test
@@ -210,7 +288,7 @@ class EqSessionReducerTest : BaseTest() {
         var state = reducer.onOpenBroadcast(listening(2L), t0, 2L, "com.spotify.music", 42)
         state = reducer.onCloseBroadcast(state, at(1), 1L, "com.spotify.music", 42)
 
-        state.sessions.values.single().closed shouldBe false
+        state.sessions.keys shouldBe setOf(42)
         state.openSessions.map { it.sessionId } shouldBe listOf(42)
     }
 
@@ -219,7 +297,7 @@ class EqSessionReducerTest : BaseTest() {
         var state = reducer.onListeningStarted(EqSessionState(), t0, 1L, "on")
         state.listening shouldBe true
 
-        state = reducer.onListeningStopped(state, at(1), "off")
+        state = reducer.onListeningStopped(state, at(1), 2L, "off")
         state.listening shouldBe false
         state.events.map { it.type } shouldBe listOf(EqEvent.Type.LISTENING, EqEvent.Type.LISTENING)
     }

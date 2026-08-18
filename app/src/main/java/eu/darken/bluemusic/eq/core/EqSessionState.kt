@@ -38,7 +38,6 @@ data class EqSession(
     val generation: Long,
     val openedAt: Instant,
     val packageName: String? = null,
-    val closed: Boolean = false,
     val attached: Boolean = false,
     val hasControl: Boolean? = null,
 )
@@ -50,11 +49,13 @@ data class EqSessionState(
     val events: List<EqEvent> = emptyList(),
     val malformedCount: Int = 0,
     val openCount: Int = 0,
+    /** Whether the tracked-session cap was already reported in this generation. */
+    val sessionCapReported: Boolean = false,
 ) {
 
-    /** Sessions of the current listening generation that are still open. */
+    /** Sessions of the current listening generation. Closed ones are removed, not kept around. */
     val openSessions: List<EqSession>
-        get() = sessions.values.filter { it.generation == generation && !it.closed }
+        get() = sessions.values.filter { it.generation == generation }
 
     companion object {
         /** Ring buffer size for the diagnostic event log. */
@@ -62,5 +63,8 @@ data class EqSessionState(
 
         /** Per-generation cap on how many events of a spammable type are recorded. */
         const val MAX_RATE_CAPPED_EVENTS = 20
+
+        /** Upper bound on tracked sessions, a misbehaving app can spam OPEN broadcasts. */
+        const val MAX_SESSIONS = 64
     }
 }

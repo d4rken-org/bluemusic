@@ -69,7 +69,8 @@ class EqSessionTracker @Inject constructor(
                 reduce { onListeningStarted(it, Instant.now(), generation, "Registered receiver (gen=$generation)") }
             } catch (e: Exception) {
                 log(TAG, ERROR) { "startListening(): Registration failed: ${e.asLog()}" }
-                reduce { onListeningStopped(it, Instant.now(), "Registration failed: ${e.message}") }
+                val stopped = ++generationCounter
+                reduce { onListeningStopped(it, Instant.now(), stopped, "Registration failed: ${e.message}") }
             }
         }
     }
@@ -77,9 +78,15 @@ class EqSessionTracker @Inject constructor(
     suspend fun stopListening(): Unit = withContext(dispatcherProvider.Default) {
         synchronized(lock) {
             val current = receiver
-            if (current == null) {
-                log(TAG, VERBOSE) { "stopListening(): Not listening" }
-            } else {
+            if (current == null) log(TAG, VERBOSE) { "stopListening(): Not listening" }
+
+            // Invalidated before the unregister: a broadcast that races it can only arrive on a
+            // generation no receiver holds any more, and is rejected instead of reviving state.
+            val stopped = ++generationCounter
+            val detail = if (current != null) "Unregistered receiver" else "Not listening"
+            reduce { onListeningStopped(it, Instant.now(), stopped, detail) }
+
+            if (current != null) {
                 try {
                     context.unregisterReceiver(current)
                 } catch (e: Exception) {
@@ -87,9 +94,6 @@ class EqSessionTracker @Inject constructor(
                 }
                 receiver = null
             }
-
-            val detail = if (current != null) "Unregistered receiver" else "Not listening"
-            reduce { onListeningStopped(it, Instant.now(), detail) }
         }
     }
 
