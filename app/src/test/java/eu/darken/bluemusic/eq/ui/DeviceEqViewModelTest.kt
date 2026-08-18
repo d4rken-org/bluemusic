@@ -15,10 +15,13 @@ import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceTimeBy
@@ -65,7 +68,11 @@ class DeviceEqViewModelTest : BaseTest() {
         }
     }
 
-    private fun TestScope.viewModel(repo: DeviceRepo, saver: EqConfigSaver) = DeviceEqViewModel(
+    private fun TestScope.viewModel(
+        repo: DeviceRepo,
+        saver: EqConfigSaver,
+        dispatcher: CoroutineDispatcher = UnconfinedTestDispatcher(testScheduler),
+    ) = DeviceEqViewModel(
         deviceAddress = address,
         deviceRepo = repo,
         eqCapabilities = mockk<EqCapabilities>(relaxed = true).apply {
@@ -76,7 +83,7 @@ class DeviceEqViewModelTest : BaseTest() {
         eqCoordinator = mockk<EqCoordinator>(relaxed = true),
         eqConfigSaver = saver,
         upgradeRepo = mockUpgradeRepo(),
-        dispatcherProvider = TestDispatcherProvider(UnconfinedTestDispatcher(testScheduler)),
+        dispatcherProvider = TestDispatcherProvider(dispatcher),
         navCtrl = mockk<NavigationController>(relaxed = true),
     )
 
@@ -105,11 +112,17 @@ class DeviceEqViewModelTest : BaseTest() {
     fun `a committed preset is stored even when the screen is left right away`() = runTest {
         val gate = CompletableDeferred<Unit>()
         val repo = deviceRepo(gate)
-        val vm = viewModel(repo, EqConfigSaver(backgroundScope, repo))
+        // A standard dispatcher: nothing the ViewModel launches gets to run eagerly, which is the
+        // window a chip tap followed by an immediate back press actually falls into.
+        val vm = viewModel(repo, EqConfigSaver(backgroundScope, repo), StandardTestDispatcher(testScheduler))
+
+        backgroundScope.launch { vm.state.collect { } }
+        runCurrent()
+        vm.state.value!!.presets.map { it.id } shouldBe EqPresets().presets.map { it.id }
 
         vm.applyPreset(EqPresets.Id.FLAT)
-        runCurrent()
 
+        // The screen dies before any coroutine of the ViewModel had a chance to run.
         vm.vmScope.cancel()
         runCurrent()
 

@@ -6,6 +6,7 @@ import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.bluemusic.common.ca.CaString
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
+import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.navigation.NavigationController
@@ -111,23 +112,30 @@ class DeviceEqViewModel @AssistedInject constructor(
         }
     }
 
-    fun applyPreset(id: EqPresets.Id) = launch {
+    fun applyPreset(id: EqPresets.Id) {
         log(tag) { "applyPreset($id)" }
+        // The preset chips are only rendered once the capabilities are known, so a missing option means
+        // there is nothing to interpolate the curve against yet.
+        val preset = state.value?.presets?.firstOrNull { it.id == id }
+        if (preset == null) {
+            log(tag, WARN) { "applyPreset($id): No such preset, capabilities aren't loaded" }
+            return
+        }
+        // Flat is the "never configured" state, not a curve of zeroes: storing null keeps the device
+        // out of the equalizer's way entirely.
+        val levels = preset.levels.takeIf { id != EqPresets.Id.FLAT }
         // Only the wait for a slider release is dropped, its write is already queued: the preset is
         // enqueued behind it and therefore still the value that ends up stored.
         persistJob?.cancel()
-        try {
-            // Flat is the "never configured" state, not a curve of zeroes: storing null keeps the device
-            // out of the equalizer's way entirely.
-            if (id == EqPresets.Id.FLAT) {
-                eqConfigSaver.save(deviceAddress) { it.copy(eqBandLevels = null) }.await()
-                return@launch
+        // Like a slider commit, the write goes to the app scope before any coroutine of ours exists,
+        // so tapping a chip and leaving the screen in the same moment cannot lose it.
+        val write = eqConfigSaver.save(deviceAddress) { it.copy(eqBandLevels = levels) }
+        persistJob = vmScope.launch {
+            try {
+                write.await()
+            } finally {
+                eqCoordinator.previewLevels(deviceAddress, null)
             }
-            val capabilities = eqCapabilities.refreshIfNeeded() ?: return@launch
-            val levels = eqPresets.levelsFor(id, capabilities)
-            eqConfigSaver.save(deviceAddress) { it.copy(eqBandLevels = levels) }.await()
-        } finally {
-            eqCoordinator.previewLevels(deviceAddress, null)
         }
     }
 
