@@ -252,13 +252,69 @@ class EqCoordinatorTest : BaseTest() {
 
         attached.shouldBeEmpty()
         coVerify { controller.detachAll() }
-        coVerify { tracker.stopListening() }
+        // A disconnect is not a reason to forget about the apps that are playing: the device can
+        // come back without any of them announcing their session again.
+        trackerFlow.value.listening shouldBe true
+        coVerify(exactly = 0) { tracker.stopListening() }
+
+        coordinator.stopSession(token)
+    }
+
+    // region listening outlives the target
+
+    @Test
+    fun `disabling the equalizer for the owner lets go of the effects but keeps listening`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+        val generationBefore = trackerFlow.value.generation
+
+        devicesFlow.value = listOf(device("AA", eqEnabled = false))
+        runCurrent()
+
+        attached.shouldBeEmpty()
+        // The app announced its session once. Letting go of what we know about it here is what used
+        // to force the user to restart playback after every toggle.
+        trackerFlow.value.listening shouldBe true
+        trackerFlow.value.generation shouldBe generationBefore
+        coVerify(exactly = 0) { tracker.stopListening() }
 
         coordinator.stopSession(token)
     }
 
     @Test
-    fun `disabling the equalizer for the owner releases everything`() = runTest {
+    fun `re-enabling the equalizer attaches to a session that never announced itself again`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        devicesFlow.value = listOf(device("AA", eqEnabled = false))
+        runCurrent()
+        attached.shouldBeEmpty()
+
+        // No new broadcast: the music keeps playing through the same session the whole time.
+        devicesFlow.value = listOf(device("AA"))
+        runCurrent()
+
+        attached shouldBe mapOf(11 to listOf(300, 0, -300))
+        coVerify(exactly = 2) { controller.attach(11, any(), any()) }
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a session that closes while the equalizer is off is not attached again`() = runTest {
         val coordinator = createCoordinator(backgroundScope)
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
@@ -270,11 +326,98 @@ class EqCoordinatorTest : BaseTest() {
 
         devicesFlow.value = listOf(device("AA", eqEnabled = false))
         runCurrent()
+        // The user stopped the music while the equalizer was off, so this session is really gone.
+        closeSessions(11)
+        runCurrent()
+
+        devicesFlow.value = listOf(device("AA"))
+        runCurrent()
 
         attached.shouldBeEmpty()
+        coVerify(exactly = 1) { controller.attach(11, any(), any()) }
 
         coordinator.stopSession(token)
     }
+
+    @Test
+    fun `a session waiting out its grace period when the equalizer is disabled counts as closed`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+
+        closeSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        devicesFlow.value = listOf(device("AA", eqEnabled = false))
+        runCurrent()
+        attached.shouldBeEmpty()
+
+        devicesFlow.value = listOf(device("AA"))
+        advanceTimeBy(5_000)
+        runCurrent()
+
+        // Only the audio kept that session around, and there is no audio of ours on it anymore.
+        attached.shouldBeEmpty()
+        coVerify(exactly = 1) { controller.attach(11, any(), any()) }
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a session announced while nothing was enabled is attached on the first switch-on`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA", eqEnabled = false))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+
+        // Nothing wants the equalizer yet, but the announcements are worth having.
+        trackerFlow.value.listening shouldBe true
+        openSessions(11)
+        runCurrent()
+        attached.shouldBeEmpty()
+        coVerify(exactly = 0) { controller.attach(any(), any(), any()) }
+
+        devicesFlow.value = listOf(device("AA"))
+        runCurrent()
+
+        attached shouldBe mapOf(11 to listOf(300, 0, -300))
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `losing the equalizer engine mid session stops listening and clears everything`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        hasEngineFlow.value = false
+        runCurrent()
+
+        attached.shouldBeEmpty()
+        trackerFlow.value.listening shouldBe false
+        coVerify { controller.detachAll() }
+        coVerify { tracker.stopListening() }
+        coordinator.targetAddress.value shouldBe null
+
+        coordinator.stopSession(token)
+    }
+
+    // endregion
 
     @Test
     fun `the most recently connected config wins inside a grouped owner`() = runTest {
@@ -981,6 +1124,7 @@ class EqCoordinatorTest : BaseTest() {
         attached.shouldBeEmpty()
         trackerFlow.value.listening shouldBe false
         coVerify(exactly = 0) { controller.attach(any(), any(), any()) }
+        coVerify(exactly = 0) { tracker.startListening() }
 
         coordinator.stopSession(token)
     }
@@ -998,7 +1142,10 @@ class EqCoordinatorTest : BaseTest() {
         runCurrent()
 
         attached.shouldBeEmpty()
+        // Nothing to attach with, so there is nothing to listen for either.
+        trackerFlow.value.listening shouldBe false
         coVerify(exactly = 0) { controller.attach(any(), any(), any()) }
+        coVerify(exactly = 0) { tracker.startListening() }
 
         coordinator.stopSession(token)
     }

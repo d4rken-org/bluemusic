@@ -44,9 +44,15 @@ import kotlin.time.Duration.Companion.seconds
 /**
  * Decides when the equalizer runs, with which levels and how much volume boost.
  *
- * While a device that owns the audio streams has the equalizer enabled, we listen for effect
- * session broadcasts and attach our curve to every session cooperating apps announce. Losing
- * ownership, disabling the feature, or the monitor session ending releases everything again.
+ * We listen for effect session broadcasts for as long as this device could run the equalizer at all
+ * (a usable engine and an entitled user), and attach our curve to every session cooperating apps
+ * announce while a device that owns the audio streams has the feature enabled.
+ *
+ * Listening deliberately outlives the target: apps announce their session once, when they start
+ * playing. Dropping what we know about them the moment nothing is enabled would mean the user has
+ * to restart playback after every toggle before the equalizer has anything to attach to again.
+ * Losing the engine or the entitlement, the diagnostics override, or the monitor session ending
+ * still tear everything down.
  *
  * A broadcast CLOSE only starts a [CLOSE_GRACE] timer instead of releasing right away: players
  * announce a close/open pair around every track change while keeping the same session, and letting
@@ -73,6 +79,17 @@ class EqCoordinator @Inject constructor(
         val address: DeviceAddr,
         val levels: List<Int>,
         val boostGain: Int,
+    )
+
+    /**
+     * What the inputs add up to: whether the equalizer could run at all, and what it should run with.
+     *
+     * Both travel together through the actor, so the listener's lifecycle and the effects can never
+     * be decided from two views of the world that don't match.
+     */
+    private data class Desired(
+        val operational: Boolean,
+        val target: Target?,
     )
 
     /** Transient edits of the config screen, `null` fields fall back to what is stored. */
@@ -110,6 +127,12 @@ class EqCoordinator @Inject constructor(
             field = value
             _targetAddress.value = value?.address
         }
+
+    /**
+     * Whether the equalizer could run at all right now, as last seen by the actor. It decides
+     * whether the listener belongs up, which is no longer the same question as having a target.
+     */
+    private var isOperational = false
 
     /** Session ids the transition stream told us about, only touched from inside the actor. */
     private val openSessionIds = mutableSetOf<Int>()
@@ -235,20 +258,23 @@ class EqCoordinator @Inject constructor(
             upgradeRepo.upgradeInfo.map { reconciled || it.isPro }.distinctUntilChanged(),
         ) { hasEngine, entitled -> hasEngine && entitled }.distinctUntilChanged()
 
-        val targets = combine(
+        val desired = combine(
             deviceRepo.devices,
             ownerRegistry.ownerSnapshots,
             operational,
             devicesSettings.enabledState.map { it.isEnabled }.distinctUntilChanged(),
             previewFlow,
-        ) { devices, owner, isOperational, appEnabled, preview ->
-            resolveTarget(devices, owner, isOperational, appEnabled, preview)
+        ) { devices, owner, canRun, appEnabled, preview ->
+            Desired(
+                operational = canRun,
+                target = resolveTarget(devices, owner, canRun, appEnabled, preview),
+            )
         }.distinctUntilChanged()
 
         coroutineScope {
             val sessionScope = this
             launch { consumeTransitions(token, sessionScope) }
-            targets.collect { target -> applyTarget(token, target) }
+            desired.collect { applyDesired(token, it) }
         }
     }
 
@@ -300,14 +326,16 @@ class EqCoordinator @Inject constructor(
         return Target(address = chosen.address, levels = levels, boostGain = boostGain)
     }
 
-    private suspend fun applyTarget(token: Long, target: Target?) = act("target($target)", token) {
-        if (target == null) {
+    private suspend fun applyDesired(token: Long, desired: Desired) = act("desired($desired)", token) {
+        isOperational = desired.operational
+
+        if (!desired.operational) {
             if (appliedTarget == null && controller.attachedSessionIds().isEmpty() && !tracker.state.value.listening) {
                 return@act
             }
-            log(TAG, INFO) { "No eligible owner, releasing everything" }
+            log(TAG, INFO) { "The equalizer can't run here, releasing everything" }
             appliedTarget = null
-            cancelPendingReleases("No eligible owner")
+            cancelPendingReleases("Not operational")
             openSessionIds.clear()
             controller.detachAll()
             tracker.stopListening()
@@ -319,6 +347,21 @@ class EqCoordinator @Inject constructor(
             cancelPendingReleases("New listening generation")
             openSessionIds.clear()
             tracker.startListening()
+        }
+
+        val target = desired.target
+        if (target == null) {
+            if (appliedTarget == null && controller.attachedSessionIds().isEmpty()) return@act
+            log(TAG, INFO) { "No eligible owner, letting go of the effects but staying tuned" }
+            appliedTarget = null
+            // A session that already broadcast CLOSE was only held for the sake of uninterrupted
+            // audio. With nothing attached there is nothing left to hold, so it counts as closed.
+            pendingReleases.keys.forEach { openSessionIds -= it }
+            cancelPendingReleases("No eligible owner")
+            // The sessions themselves stay known: they are still open, we are just not on them, and
+            // the app won't announce them a second time when the equalizer comes back.
+            controller.detachAll()
+            return@act
         }
 
         val previous = appliedTarget
@@ -428,10 +471,13 @@ class EqCoordinator @Inject constructor(
         openSessionIds.clear()
         controller.detachAll()
         tracker.stopListening()
-        if (appliedTarget != null) tracker.startListening()
+        // Tied to what the system can do, not to what is applied: a lost edge must not cost us the
+        // listener for as long as no device happens to have the equalizer enabled.
+        if (isOperational) tracker.startListening()
     }
 
     private suspend fun release(reason: String) = act("release($reason)") {
+        isOperational = false
         appliedTarget = null
         cancelPendingReleases(reason)
         openSessionIds.clear()
