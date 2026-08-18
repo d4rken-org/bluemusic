@@ -53,6 +53,9 @@ class DeviceConfigViewModelTest : BaseTest() {
     private lateinit var deviceRepo: DeviceRepo
     private lateinit var navCtrl: NavigationController
 
+    /** How often the fake equalizer probe was entered. */
+    private var probeRuns = 0
+
     /** Completed once the equalizer probe is allowed to finish, so a test can hold it open. */
     private fun TestScope.viewModel(
         infos: MutableStateFlow<UpgradeRepo.Info>,
@@ -74,6 +77,7 @@ class DeviceConfigViewModelTest : BaseTest() {
             eqCapabilities = mockk<EqCapabilities>(relaxed = true).apply {
                 every { capabilities } returns MutableStateFlow(null)
                 coEvery { refreshIfNeeded() } coAnswers {
+                    probeRuns++
                     probeGate?.await()
                     null
                 }
@@ -93,6 +97,10 @@ class DeviceConfigViewModelTest : BaseTest() {
 
         val rendered = async { vm.state.filterNotNull().first() }
         runCurrent()
+
+        // The probe has to be running, or this would pass just as happily without one.
+        probeRuns shouldBe 1
+        probe.isCompleted shouldBe false
 
         rendered.isCompleted shouldBe true
         rendered.await().eqCapabilities shouldBe null

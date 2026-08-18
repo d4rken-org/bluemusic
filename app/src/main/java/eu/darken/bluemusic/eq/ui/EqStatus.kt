@@ -1,7 +1,6 @@
 package eu.darken.bluemusic.eq.ui
 
 import android.graphics.drawable.Drawable
-import androidx.compose.runtime.Stable
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.eq.core.EqSessionState
 
@@ -11,10 +10,9 @@ import eu.darken.bluemusic.eq.core.EqSessionState
  * [label] and [icon] stay `null` until they are resolved, and when the package cannot be resolved at
  * all: the raw package name arrives on an unverified broadcast and is never shown to the user.
  *
- * Stable rather than immutable: the [Drawable] is a mutable type, but the one we load here is only
- * ever drawn, never mutated after creation.
+ * Deliberately not marked stable: [Drawable] is mutable, and a promise Compose can't verify is worth
+ * less than the recompositions it would save on a row this small.
  */
-@Stable
 data class EqStatusApp(
     val packageName: String,
     val label: String? = null,
