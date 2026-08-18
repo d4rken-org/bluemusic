@@ -166,8 +166,10 @@ fun DeviceEqScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
                 .horizontalCutoutPadding(),
-            contentPadding = PaddingValues(top = 8.dp, bottom = 16.dp + navBarPadding),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            // One scale for the whole screen: 16dp inside a card, 8dp between things that belong
+            // together, 12dp between separate groups (and between the cards themselves).
+            contentPadding = PaddingValues(top = 12.dp, bottom = 16.dp + navBarPadding),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             if (capabilities == null) {
                 item(key = "unsupported") { UnsupportedCard() }
@@ -191,9 +193,11 @@ fun DeviceEqScreen(
                 item(key = "status") {
                     StatusRow(
                         status = status,
+                        // Lines up with the text inside the cards: 16dp card margin plus their 16dp
+                        // inner padding.
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 24.dp),
+                            .padding(horizontal = 32.dp),
                     )
                 }
             }
@@ -205,10 +209,12 @@ fun DeviceEqScreen(
                         .padding(horizontal = 16.dp),
                     elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                 ) {
-                    Column(modifier = Modifier.padding(bottom = 12.dp)) {
+                    Column(modifier = Modifier.padding(bottom = 16.dp)) {
+                        // SectionHeader brings 8dp of its own, so 8 more make the 16dp the card
+                        // starts with everywhere else.
                         SectionHeader(
                             title = stringResource(R.string.eq_bands_label),
-                            modifier = Modifier.padding(top = 8.dp, bottom = 4.dp),
+                            modifier = Modifier.padding(top = 8.dp),
                         )
                         val context = LocalContext.current
                         FlowRow(
@@ -216,6 +222,7 @@ fun DeviceEqScreen(
                                 .fillMaxWidth()
                                 .padding(horizontal = 16.dp),
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
                             state.presets.forEach { preset ->
                                 FilterChip(
@@ -260,7 +267,7 @@ fun DeviceEqScreen(
                         .padding(horizontal = 16.dp),
                     elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
                 ) {
-                    Column(modifier = Modifier.padding(bottom = 12.dp)) {
+                    Column(modifier = Modifier.padding(bottom = 16.dp)) {
                         BoostSectionHeader()
 
                         BoostSlider(
@@ -276,7 +283,7 @@ fun DeviceEqScreen(
                             text = stringResource(R.string.eq_boost_hint),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            modifier = Modifier.padding(horizontal = 16.dp),
+                            modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp),
                         )
                     }
                 }
@@ -356,7 +363,7 @@ private fun BoostSectionHeader() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
@@ -478,10 +485,10 @@ private fun InfoCard() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = 16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
     ) {
-        Row(modifier = Modifier.padding(12.dp)) {
+        Row(modifier = Modifier.padding(16.dp)) {
             Icon(
                 imageVector = Icons.TwoTone.Info,
                 contentDescription = null,

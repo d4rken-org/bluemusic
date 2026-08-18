@@ -100,7 +100,7 @@ fun EqBandRow(
                     .height(TRACK_HEIGHT),
             ) {
                 Canvas(modifier = Modifier.fillMaxSize()) {
-                    val inset = THUMB_RADIUS.toPx()
+                    val inset = TRACK_INSET.toPx()
                     val zeroY = levelToY(0, minLevel, maxLevel, size.height, inset)
                     val gutter = ZERO_LABEL_GUTTER.toPx()
                     drawLine(
@@ -193,7 +193,7 @@ private fun EqBandSlider(
                 }
             }
             .pointerInput(minLevel, maxLevel) {
-                val inset = THUMB_RADIUS.toPx()
+                val inset = TRACK_INSET.toPx()
                 awaitEachGesture {
                     val down = awaitFirstDown(requireUnconsumed = false)
                     // The gesture keeps its own idea of what it last emitted, the composed level lags
@@ -226,7 +226,7 @@ private fun EqBandSlider(
             },
     ) {
         Canvas(modifier = Modifier.fillMaxSize()) {
-            val inset = THUMB_RADIUS.toPx()
+            val inset = TRACK_INSET.toPx()
             val centerX = size.width / 2f
             val topY = inset
             val bottomY = size.height - inset
@@ -276,6 +276,15 @@ private fun yToLevel(y: Float, minLevel: Int, maxLevel: Int, heightPx: Float, in
 private val TRACK_HEIGHT = 180.dp
 private val TRACK_WIDTH = 4.dp
 private val THUMB_RADIUS = 8.dp
+
+/**
+ * How far the ends of the travel stay away from the edges of the drawing area.
+ *
+ * A thumb at the very end of its range was drawn exactly on the edge before, which reads as a
+ * cut-off circle: the room past the thumb radius keeps it whole at both extremes.
+ */
+private val TRACK_INSET = THUMB_RADIUS + 3.dp
+
 private val MIN_BAND_WIDTH = 48.dp
 private val ZERO_LINE_WIDTH = 1.dp
 private val ZERO_LABEL_GUTTER = 32.dp
@@ -298,6 +307,22 @@ private fun EqBandRowPreview() {
     PreviewWrapper {
         EqBandRow(
             bands = previewBands(listOf(900, 300, 0, -300, 600)),
+            minLevel = -1500,
+            maxLevel = 1500,
+            onLevelChange = { _, _ -> },
+            onLevelChangeFinished = {},
+            modifier = Modifier.padding(horizontal = 16.dp),
+        )
+    }
+}
+
+/** The ends of the range: both thumbs have to be whole circles, not half ones on the edge. */
+@Preview2
+@Composable
+private fun EqBandRowExtremesPreview() {
+    PreviewWrapper {
+        EqBandRow(
+            bands = previewBands(listOf(1500, -1500, 0, 1500, -1500)),
             minLevel = -1500,
             maxLevel = 1500,
             onLevelChange = { _, _ -> },

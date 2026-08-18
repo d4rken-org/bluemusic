@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -100,16 +101,22 @@ private fun EqPill(
             .fillMaxHeight(),
     ) {
         val radius = size.width / 2f
+        // Everything is drawn a hair inside the cell, so neither the track nor a full band ever
+        // lands on the pixel boundary and gets shaved off by antialiasing.
+        val edge = TRACK_EDGE.toPx()
+        val trackHeight = (size.height - 2 * edge).coerceAtLeast(0f)
         drawRoundRect(
             color = trackColor,
+            topLeft = Offset(0f, edge),
+            size = Size(size.width, trackHeight),
             cornerRadius = CornerRadius(radius, radius),
         )
 
         val centerY = size.height / 2f
         // The round cap reaches half a pill width past the endpoint, so the travel stops that far
-        // from the edge and a full band ends flush with the track. The bounce is clamped along the
+        // from the track's end and a full band fills it exactly. The bounce is clamped along the
         // way: an overshoot would otherwise push the fill out of its own track.
-        val travel = (centerY - radius).coerceAtLeast(0f)
+        val travel = (trackHeight / 2f - radius).coerceAtLeast(0f)
         val end = centerY - animated.value.coerceIn(-1f, 1f) * travel
         drawLine(
             color = fillColor,
@@ -136,6 +143,9 @@ private fun levelFraction(level: Int, minLevel: Int, maxLevel: Int): Float = whe
 private val GRAPH_HEIGHT = 48.dp
 private val PILL_WIDTH = 10.dp
 private val PILL_SPACING = 8.dp
+
+/** Safety margin between the pills and the edges of the cell they are drawn in. */
+private val TRACK_EDGE = 1.dp
 private const val TRACK_ALPHA_ENABLED = 0.1f
 private const val TRACK_ALPHA_DISABLED = 0.08f
 
