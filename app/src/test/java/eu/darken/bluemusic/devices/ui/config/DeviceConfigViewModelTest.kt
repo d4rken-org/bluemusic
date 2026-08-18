@@ -134,6 +134,29 @@ class DeviceConfigViewModelTest : BaseTest() {
     }
 
     @Test
+    fun `the equalizer switch is gated too`() = runTest {
+        val vm = viewModel(fakeUpgradeInfos(FakeUpgradeInfo(isPro = false, isSettled = true)))
+
+        val event = async { vm.events.first() }
+        runCurrent()
+        vm.handleAction(ConfigAction.OnToggleEq)
+        advanceUntilIdle()
+
+        event.await() shouldBe ConfigEvent.RequiresPro
+        coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+    }
+
+    @Test
+    fun `a pro user can flip the equalizer switch`() = runTest {
+        val vm = viewModel(fakeUpgradeInfos(FakeUpgradeInfo(isPro = true, isSettled = true)))
+
+        vm.handleAction(ConfigAction.OnToggleEq)
+        advanceUntilIdle()
+
+        coVerify { deviceRepo.updateDevice(address, any()) }
+    }
+
+    @Test
     fun `the volume lock toggle routes a late-settling pro user through`() = runTest {
         val infos = fakeUpgradeInfos(FakeUpgradeInfo(isPro = false, isSettled = false))
         val vm = viewModel(infos)
