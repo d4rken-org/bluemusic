@@ -15,13 +15,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.twotone.Info
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -195,12 +196,19 @@ fun DeviceEqScreen(
                 )
             }
 
-            itemsIndexed(levels) { index, level ->
-                BandSlider(
-                    frequencyLabel = formatFrequency(capabilities.centerFrequencies.getOrElse(index) { 0 }),
-                    level = level,
-                    capabilities = capabilities,
-                    onLevelChange = { newLevel ->
+            item {
+                val bands = levels.mapIndexed { index, level ->
+                    EqBandUi(
+                        frequencyLabel = formatFrequency(capabilities.centerFrequencies.getOrElse(index) { 0 }),
+                        gainLabel = formatGain(level),
+                        level = level,
+                    )
+                }
+                EqBandRow(
+                    bands = bands,
+                    minLevel = capabilities.minLevel,
+                    maxLevel = capabilities.maxLevel,
+                    onLevelChange = { index, newLevel ->
                         val updated = levels.toMutableList().also { it[index] = newLevel }
                         draggedLevels = updated
                         onLevelsChanged(updated)
@@ -210,11 +218,10 @@ fun DeviceEqScreen(
             }
 
             item {
-                SectionHeader(
-                    title = stringResource(R.string.eq_boost_label),
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
-                )
+                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
             }
+
+            item { BoostSectionHeader() }
 
             item {
                 BoostSlider(
@@ -242,38 +249,24 @@ fun DeviceEqScreen(
 }
 
 @Composable
-private fun BandSlider(
-    frequencyLabel: String,
-    level: Int,
-    capabilities: EqCapabilities.Caps,
-    onLevelChange: (Int) -> Unit,
-    onLevelChangeFinished: () -> Unit,
-) {
+private fun BoostSectionHeader() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp),
+            .padding(start = 32.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(
-            text = frequencyLabel,
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.width(64.dp),
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.VolumeUp,
+            contentDescription = null,
+            modifier = Modifier.size(20.dp),
+            tint = MaterialTheme.colorScheme.primary,
         )
-        Slider(
-            value = level.toFloat(),
-            onValueChange = { onLevelChange(it.roundToInt()) },
-            onValueChangeFinished = onLevelChangeFinished,
-            valueRange = capabilities.minLevel.toFloat()..capabilities.maxLevel.toFloat(),
-            modifier = Modifier.weight(1f),
-        )
+        Spacer(modifier = Modifier.width(8.dp))
         Text(
-            text = formatGain(level),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            textAlign = TextAlign.End,
-            modifier = Modifier.width(64.dp),
+            text = stringResource(R.string.eq_boost_label),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.primary,
         )
     }
 }
