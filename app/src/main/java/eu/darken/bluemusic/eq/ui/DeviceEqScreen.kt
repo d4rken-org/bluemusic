@@ -30,6 +30,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalMinimumInteractiveComponentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
@@ -37,6 +38,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -49,6 +51,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.drawable.toBitmap
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -217,23 +220,27 @@ fun DeviceEqScreen(
                             modifier = Modifier.padding(top = 8.dp),
                         )
                         val context = LocalContext.current
-                        FlowRow(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp),
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            verticalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            state.presets.forEach { preset ->
-                                FilterChip(
-                                    selected = levels == preset.levels,
-                                    onClick = { onPresetSelected(preset.id) },
-                                    label = { Text(preset.label.get(context)) },
-                                )
+                        // The chips are only as tall as they look: the 48dp touch target Material
+                        // reserves around them blew the gaps in this block wide open.
+                        CompositionLocalProvider(LocalMinimumInteractiveComponentSize provides Dp.Unspecified) {
+                            FlowRow(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                verticalArrangement = Arrangement.spacedBy(8.dp),
+                            ) {
+                                state.presets.forEach { preset ->
+                                    FilterChip(
+                                        selected = levels == preset.levels,
+                                        onClick = { onPresetSelected(preset.id) },
+                                        label = { Text(preset.label.get(context)) },
+                                    )
+                                }
                             }
                         }
 
-                        Spacer(modifier = Modifier.height(12.dp))
+                        Spacer(modifier = Modifier.height(8.dp))
 
                         val bands = levels.mapIndexed { index, level ->
                             EqBandUi(
@@ -252,9 +259,10 @@ fun DeviceEqScreen(
                                 onLevelsChanged(updated)
                             },
                             onLevelChangeFinished = { onLevelsCommitted(draggedLevels ?: levels) },
-                            // No padding of its own: the card's own margin is exactly what the row had
-                            // to the screen edge before, so a band keeps the width it needs to be
-                            // grabbable on an engine with many bands.
+                            // Only a little inset: the card's margin already stands in for most of
+                            // what the row had to the screen edge, and every dp taken here comes out
+                            // of the band columns.
+                            modifier = Modifier.padding(horizontal = 8.dp),
                         )
                     }
                 }

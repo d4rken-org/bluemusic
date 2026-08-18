@@ -3,6 +3,7 @@ package eu.darken.bluemusic.eq.ui
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -60,7 +60,9 @@ data class EqBandUi(
  * convention the curve is read by.
  *
  * The row uses every bit of width it is given: horizontal padding is the caller's, so a row nested
- * in a card can keep the bands as wide as they are on the bare screen.
+ * in a card can keep the bands as wide as they are on the bare screen. The bands share what is left
+ * of that width evenly, and each column is a full-height drag target, so a many-band engine gets
+ * narrower columns instead of a row that runs off the screen.
  */
 @Composable
 fun EqBandRow(
@@ -80,7 +82,10 @@ fun EqBandRow(
     val textMeasurer = rememberTextMeasurer()
 
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
-        Column(modifier = modifier.fillMaxWidth()) {
+        Column(
+            modifier = modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(LABEL_SPACING),
+        ) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 Spacer(modifier = Modifier.width(ZERO_LABEL_GUTTER))
                 bands.forEach { band ->
@@ -103,10 +108,13 @@ fun EqBandRow(
                     val inset = TRACK_INSET.toPx()
                     val zeroY = levelToY(0, minLevel, maxLevel, size.height, inset)
                     val gutter = ZERO_LABEL_GUTTER.toPx()
+                    // The bands split what is left of the width evenly, so the line can stop under
+                    // the last slider instead of running out to the edge of whatever holds us.
+                    val columnWidth = (size.width - gutter) / bands.size
                     drawLine(
                         color = zeroLineColor,
                         start = Offset(gutter, zeroY),
-                        end = Offset(size.width, zeroY),
+                        end = Offset(gutter + columnWidth * (bands.size - 0.5f), zeroY),
                         strokeWidth = ZERO_LINE_WIDTH.toPx(),
                     )
                     // Measured LTR like the rest of the row, an RTL locale would otherwise flip the unit
@@ -137,7 +145,6 @@ fun EqBandRow(
                             onLevelChangeFinished = onLevelChangeFinished,
                             modifier = Modifier
                                 .weight(1f)
-                                .widthIn(min = MIN_BAND_WIDTH)
                                 .fillMaxHeight(),
                         )
                     }
@@ -273,9 +280,9 @@ private fun yToLevel(y: Float, minLevel: Int, maxLevel: Int, heightPx: Float, in
     return (minLevel + fraction * (maxLevel - minLevel)).roundToInt()
 }
 
-private val TRACK_HEIGHT = 180.dp
-private val TRACK_WIDTH = 4.dp
-private val THUMB_RADIUS = 8.dp
+private val TRACK_HEIGHT = 140.dp
+private val TRACK_WIDTH = 6.dp
+private val THUMB_RADIUS = 9.dp
 
 /**
  * How far the ends of the travel stay away from the edges of the drawing area.
@@ -285,7 +292,9 @@ private val THUMB_RADIUS = 8.dp
  */
 private val TRACK_INSET = THUMB_RADIUS + 3.dp
 
-private val MIN_BAND_WIDTH = 48.dp
+/** Between the gain labels, the sliders and the frequency labels. */
+private val LABEL_SPACING = 8.dp
+
 private val ZERO_LINE_WIDTH = 1.dp
 private val ZERO_LABEL_GUTTER = 32.dp
 private val ZERO_LABEL_SPACING = 4.dp
@@ -311,7 +320,7 @@ private fun EqBandRowPreview() {
             maxLevel = 1500,
             onLevelChange = { _, _ -> },
             onLevelChangeFinished = {},
-            modifier = Modifier.padding(horizontal = 16.dp),
+            modifier = Modifier.padding(horizontal = 8.dp),
         )
     }
 }
@@ -327,7 +336,7 @@ private fun EqBandRowExtremesPreview() {
             maxLevel = 1500,
             onLevelChange = { _, _ -> },
             onLevelChangeFinished = {},
-            modifier = Modifier.padding(horizontal = 16.dp),
+            modifier = Modifier.padding(horizontal = 8.dp),
         )
     }
 }
@@ -342,7 +351,7 @@ private fun EqBandRowFlatPreview() {
             maxLevel = 1500,
             onLevelChange = { _, _ -> },
             onLevelChangeFinished = {},
-            modifier = Modifier.padding(horizontal = 16.dp),
+            modifier = Modifier.padding(horizontal = 8.dp),
         )
     }
 }
