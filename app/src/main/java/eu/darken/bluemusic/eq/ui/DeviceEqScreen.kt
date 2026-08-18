@@ -53,6 +53,7 @@ import eu.darken.bluemusic.common.error.ErrorEventHandler
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.ui.config.components.SectionHeader
 import eu.darken.bluemusic.eq.core.EqCapabilities
+import eu.darken.bluemusic.eq.core.EqEffectController.Companion.MAX_BOOST_GAIN_MB
 import eu.darken.bluemusic.eq.core.EqPresets
 import java.util.Locale
 import kotlin.math.roundToInt
@@ -96,7 +97,7 @@ fun DeviceEqScreen(
 ) {
     val capabilities = state.capabilities
     val storedLevels = capabilities.levelsOf(state.device.eqBandLevels)
-    val storedBoost = (state.device.eqBoostGain ?: 0).coerceIn(0, MAX_BOOST_GAIN)
+    val storedBoost = (state.device.eqBoostGain ?: 0).coerceIn(0, MAX_BOOST_GAIN_MB)
 
     // Slider drags only live here, they are handed to the ViewModel as a preview and persisted on release.
     var draggedLevels by remember { mutableStateOf<List<Int>?>(null) }
@@ -293,7 +294,7 @@ private fun BoostSlider(
             value = gain.toFloat(),
             onValueChange = { onGainChange(it.roundToInt()) },
             onValueChangeFinished = onGainChangeFinished,
-            valueRange = 0f..MAX_BOOST_GAIN.toFloat(),
+            valueRange = 0f..MAX_BOOST_GAIN_MB.toFloat(),
             steps = BOOST_STEPS,
             modifier = Modifier.weight(1f),
         )
@@ -399,9 +400,6 @@ private fun formatGain(millibel: Int): String =
 @Composable
 private fun formatBoost(millibel: Int): String =
     stringResource(R.string.eq_gain_db_label, String.format(Locale.getDefault(), "%.1f", millibel / 100f))
-
-/** Upper end of the boost slider in millibel, +10 dB. */
-private const val MAX_BOOST_GAIN = 1000
 
 /** Slider stops between the ends, so the slider moves in 1 dB steps. */
 private const val BOOST_STEPS = 9

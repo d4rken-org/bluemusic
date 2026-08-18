@@ -36,6 +36,14 @@ internal fun resolveBandLevels(
 }
 
 /**
+ * Resolves what boost we are willing to hand to a [LoudnessEnhancer].
+ *
+ * The slider can only produce `0..[EqEffectController.MAX_BOOST_GAIN_MB]`, but a restored backup can
+ * carry any [Int], so an oversized or negative gain is clamped instead of reaching the engine raw.
+ */
+internal fun resolveBoostGain(stored: Int): Int = stored.coerceIn(0, EqEffectController.MAX_BOOST_GAIN_MB)
+
+/**
  * Owns the actual [Equalizer] and [LoudnessEnhancer] instances attached to other apps' audio sessions.
  *
  * The framework shares a single engine per (effect type, session), so our levels mutate settings a
@@ -76,6 +84,7 @@ class EqEffectController @Inject constructor(
      * a stored curve that doesn't match the engine's band count is dropped in favour of a flat one.
      */
     suspend fun attach(sessionId: Int, levels: List<Int>, boostGain: Int): Unit = withContext(dispatcherProvider.Default) {
+        val boost = resolveBoostGain(boostGain)
         synchronized(lock) {
             if (sessionId <= 0) {
                 tracker.onAttachFailed(sessionId, "Invalid session id")
@@ -123,12 +132,12 @@ class EqEffectController @Inject constructor(
                 }
 
                 // Non-fatal: an enhancer we cannot get costs the boost, not the curve.
-                val booster = if (boostGain > 0) createBooster(sessionId, boostGain) else null
+                val booster = if (boost > 0) createBooster(sessionId, boost) else null
                 val boosted = attached.copy(booster = booster)
                 pendingEffect = boosted
 
                 effects[sessionId] = boosted
-                tracker.onAttached(sessionId, detail + boostDetail(boostGain, booster))
+                tracker.onAttached(sessionId, detail + boostDetail(boost, booster))
 
                 // The listener only fires on later ownership changes, so the initial value has to be read.
                 tracker.onControlChanged(sessionId, equalizer.hasControl())
@@ -161,12 +170,13 @@ class EqEffectController @Inject constructor(
      * loudness enhancer as the value crosses zero.
      */
     suspend fun updateBoost(gain: Int): Unit = withContext(dispatcherProvider.Default) {
+        val boost = resolveBoostGain(gain)
         synchronized(lock) {
             if (effects.isEmpty()) return@synchronized
-            log(TAG, VERBOSE) { "updateBoost($gain): ${effects.size} effects" }
+            log(TAG, VERBOSE) { "updateBoost($boost): ${effects.size} effects" }
             effects.keys.toList().forEach { sessionId ->
                 val effect = effects[sessionId] ?: return@forEach
-                effects[sessionId] = effect.withBoost(sessionId, gain)
+                effects[sessionId] = effect.withBoost(sessionId, boost)
             }
         }
     }
@@ -351,5 +361,8 @@ class EqEffectController @Inject constructor(
 
         /** Upper bound on concurrently attached effects, a misbehaving app can spam OPEN broadcasts. */
         const val MAX_ATTACHED = 8
+
+        /** Highest boost we hand to a loudness enhancer in millibel, +10 dB. Also the slider's top end. */
+        const val MAX_BOOST_GAIN_MB = 1000
     }
 }
