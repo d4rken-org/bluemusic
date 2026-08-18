@@ -272,6 +272,15 @@ dependencies {
     implementation("androidx.room:room-ktx:2.8.4")
     ksp("androidx.room:room-compiler:2.8.4")
 
+    // Was already on the runtime classpath transitively (Glance); pinned explicitly at the
+    // resolved version because we now compile against it. At 2.7.x CoroutineWorker,
+    // OneTimeWorkRequestBuilder and Operation.await() live in the -ktx artifact.
+    implementation("androidx.work:work-runtime:2.7.1")
+    implementation("androidx.work:work-runtime-ktx:2.7.1")
+
+    implementation("androidx.hilt:hilt-work:1.3.0")
+    ksp("androidx.hilt:hilt-compiler:1.3.0")
+
 
 
     implementation("androidx.activity:activity-ktx:1.12.4")
