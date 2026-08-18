@@ -13,7 +13,6 @@ import io.kotest.matchers.maps.shouldBeEmpty
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.coVerify
-import io.mockk.coVerifyOrder
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.CoroutineScope
@@ -310,8 +309,10 @@ class EqCoordinatorTest : BaseTest() {
         coordinator.stopSession(token)
     }
 
+    // region close grace
+
     @Test
-    fun `a closed session is released`() = runTest {
+    fun `a closed session is released once its grace period is over`() = runTest {
         val coordinator = createCoordinator(backgroundScope)
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
@@ -324,14 +325,25 @@ class EqCoordinatorTest : BaseTest() {
         closeSessions(11)
         runCurrent()
 
+        // The player may be between tracks, so the effect stays for now.
+        attached.keys shouldBe setOf(11, 22)
+        coVerify(exactly = 0) { controller.detach(11) }
+
+        advanceTimeBy(2_999)
+        runCurrent()
+        attached.keys shouldBe setOf(11, 22)
+
+        advanceTimeBy(1)
+        runCurrent()
+
         attached.keys shouldBe setOf(22)
-        coVerify { controller.detach(11) }
+        coVerify(exactly = 1) { controller.detach(11) }
 
         coordinator.stopSession(token)
     }
 
     @Test
-    fun `a session closing and reopening at once detaches then attaches fresh`() = runTest {
+    fun `a session reopening within the grace period keeps its effect`() = runTest {
         val coordinator = createCoordinator(backgroundScope)
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
@@ -342,20 +354,105 @@ class EqCoordinatorTest : BaseTest() {
         runCurrent()
         attached.keys shouldBe setOf(11)
 
-        // Both edges land between two recomputes: a snapshot of open ids would look unchanged.
+        // What a track change looks like: the same session id closes and comes right back.
         closeSessions(11)
+        runCurrent()
+        advanceTimeBy(1_000)
+        runCurrent()
         openSessions(11)
         runCurrent()
 
         attached shouldBe mapOf(11 to listOf(300, 0, -300))
-        coVerifyOrder {
-            controller.attach(11, listOf(300, 0, -300), 0)
-            controller.detach(11)
-            controller.attach(11, listOf(300, 0, -300), 0)
-        }
+        coVerify(exactly = 0) { controller.detach(11) }
+        coVerify(exactly = 1) { controller.attach(11, any(), any()) }
+
+        // The grace of the closed edge must not fire behind the reopened session.
+        advanceTimeBy(5_000)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
 
         coordinator.stopSession(token)
     }
+
+    @Test
+    fun `an edit during the grace period reaches the closed session`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA", boostGain = 200))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+
+        closeSessions(11)
+        runCurrent()
+
+        devicesFlow.value = listOf(device("AA", levels = listOf(600, 600, 600), boostGain = 900))
+        runCurrent()
+
+        attached shouldBe mapOf(11 to listOf(600, 600, 600))
+        boosts shouldBe mapOf(11 to 900)
+
+        openSessions(11)
+        runCurrent()
+
+        attached shouldBe mapOf(11 to listOf(600, 600, 600))
+        boosts shouldBe mapOf(11 to 900)
+        coVerify(exactly = 1) { controller.attach(11, any(), any()) }
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `losing the owner during the grace period releases right away`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+
+        closeSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        ownerFlow.value = OwnerSnapshot(emptyList(), generation = 2)
+        runCurrent()
+
+        // No waiting: the device is gone, the grace is only for players juggling sessions.
+        attached.shouldBeEmpty()
+        coVerify { controller.detachAll() }
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `stopping the session during the grace period releases right away`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+
+        closeSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        coordinator.stopSession(token)
+        runCurrent()
+
+        attached.shouldBeEmpty()
+        coVerify { controller.detachAll() }
+        coVerify { tracker.stopListening() }
+    }
+
+    // endregion
 
     @Test
     fun `a lost edge releases everything and restarts listening`() = runTest {

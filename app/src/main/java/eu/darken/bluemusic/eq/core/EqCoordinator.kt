@@ -23,6 +23,7 @@ import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -44,6 +45,11 @@ import kotlin.time.Duration.Companion.seconds
  * While a device that owns the audio streams has the equalizer enabled, we listen for effect
  * session broadcasts and attach our curve to every session cooperating apps announce. Losing
  * ownership, disabling the feature, or the monitor session ending releases everything again.
+ *
+ * A broadcast CLOSE only starts a [CLOSE_GRACE] timer instead of releasing right away: players
+ * announce a close/open pair around every track change while keeping the same session, and letting
+ * go in between costs the listener a moment of un-equalized audio. Every deliberate teardown still
+ * releases immediately.
  *
  * All desired-state changes go through one serialized actor tagged with the session token they were
  * computed for, so work from a session that has already ended can never re-attach after its release.
@@ -77,6 +83,13 @@ class EqCoordinator @Inject constructor(
             get() = levels == null && boostGain == null
     }
 
+    /** A session that broadcast CLOSE and is kept attached until its grace timer fires. */
+    private data class PendingRelease(
+        val job: Job,
+        /** What the session was running with when it closed, to spot edits made while it waited. */
+        val target: Target?,
+    )
+
     private val previewFlow = MutableStateFlow<Preview?>(null)
 
     private val actorLock = Mutex()
@@ -84,6 +97,9 @@ class EqCoordinator @Inject constructor(
 
     /** Session ids the transition stream told us about, only touched from inside the actor. */
     private val openSessionIds = mutableSetOf<Int>()
+
+    /** Closed sessions we still hold, keyed by session id. Only touched from inside the actor. */
+    private val pendingReleases = mutableMapOf<Int, PendingRelease>()
 
     private val sessionLock = Mutex()
     private var sessionJob: Job? = null
@@ -178,6 +194,7 @@ class EqCoordinator @Inject constructor(
 
     /** Manual listening override for the diagnostics screen. */
     suspend fun setListening(enabled: Boolean) = act("setListening($enabled)") {
+        cancelPendingReleases("setListening($enabled)")
         openSessionIds.clear()
         if (enabled) {
             tracker.startListening()
@@ -213,7 +230,8 @@ class EqCoordinator @Inject constructor(
         }.distinctUntilChanged()
 
         coroutineScope {
-            launch { consumeTransitions(token) }
+            val sessionScope = this
+            launch { consumeTransitions(token, sessionScope) }
             targets.collect { target -> applyTarget(token, target) }
         }
     }
@@ -225,11 +243,11 @@ class EqCoordinator @Inject constructor(
      * everything is released and a fresh listening generation is started instead of carrying the
      * wrong state forward.
      */
-    private suspend fun consumeTransitions(token: Long) {
+    private suspend fun consumeTransitions(token: Long, sessionScope: CoroutineScope) {
         while (currentCoroutineContext().isActive) {
             val stream = tracker.transitions()
             try {
-                for (transition in stream) applyTransition(token, transition)
+                for (transition in stream) applyTransition(token, transition, sessionScope)
                 log(TAG, WARN) { "Transition stream closed, restarting" }
             } catch (e: CancellationException) {
                 throw e
@@ -273,6 +291,7 @@ class EqCoordinator @Inject constructor(
             }
             log(TAG, INFO) { "No eligible owner, releasing everything" }
             appliedTarget = null
+            cancelPendingReleases("No eligible owner")
             openSessionIds.clear()
             controller.detachAll()
             tracker.stopListening()
@@ -281,6 +300,7 @@ class EqCoordinator @Inject constructor(
 
         if (!tracker.state.value.listening) {
             // A fresh generation knows no sessions yet, they arrive as OPEN transitions.
+            cancelPendingReleases("New listening generation")
             openSessionIds.clear()
             tracker.startListening()
         }
@@ -288,6 +308,8 @@ class EqCoordinator @Inject constructor(
         val previous = appliedTarget
         appliedTarget = target
 
+        // Sessions waiting out their grace stay in both sets, so they reconcile like any other one:
+        // an edit reaches them, and neither branch below touches them.
         val attached = controller.attachedSessionIds()
         val live = (attached intersect openSessionIds).isNotEmpty()
         if (live && previous?.levels != target.levels) controller.updateLevels(target.levels)
@@ -297,7 +319,7 @@ class EqCoordinator @Inject constructor(
         (openSessionIds - attached).forEach { controller.attach(it, target.levels, target.boostGain) }
     }
 
-    private suspend fun applyTransition(token: Long, transition: EqTransition) =
+    private suspend fun applyTransition(token: Long, transition: EqTransition, sessionScope: CoroutineScope) =
         act("transition($transition)", token) {
             val state = tracker.state.value
             if (!state.listening || transition.generation != state.generation) {
@@ -305,23 +327,81 @@ class EqCoordinator @Inject constructor(
                 return@act
             }
 
+            val sessionId = transition.sessionId
             when (transition.type) {
                 EqTransition.Type.OPEN -> {
-                    openSessionIds += transition.sessionId
+                    if (resurrect(sessionId)) return@act
+                    openSessionIds += sessionId
                     val target = appliedTarget ?: return@act
-                    // Always a fresh attach: a reopened id is a new engine, not the one we held.
-                    controller.attach(transition.sessionId, target.levels, target.boostGain)
+                    // A fresh id is a fresh engine, not the one we held for it before.
+                    controller.attach(sessionId, target.levels, target.boostGain)
                 }
 
                 EqTransition.Type.CLOSE -> {
-                    openSessionIds -= transition.sessionId
-                    controller.detach(transition.sessionId)
+                    if (sessionId !in openSessionIds || sessionId !in controller.attachedSessionIds()) {
+                        // Nothing of ours is playing through it, so there is nothing to keep alive.
+                        openSessionIds -= sessionId
+                        controller.detach(sessionId)
+                        return@act
+                    }
+                    if (pendingReleases.containsKey(sessionId)) {
+                        log(TAG, VERBOSE) { "Session $sessionId is already pending release" }
+                        return@act
+                    }
+                    log(TAG, INFO) { "Session $sessionId closed, holding its effect for $CLOSE_GRACE" }
+                    val job = sessionScope.launch {
+                        delay(CLOSE_GRACE)
+                        expireGrace(token, sessionId)
+                    }
+                    pendingReleases[sessionId] = PendingRelease(job = job, target = appliedTarget)
                 }
             }
         }
 
+    /**
+     * Takes [sessionId] back out of its grace period when it reopens, returning whether it was
+     * pending at all.
+     *
+     * The engine behind a reopened id is the one we already configured, so it is kept as is instead
+     * of being torn down and set up again. Only an edit made while it waited still has to land.
+     */
+    private suspend fun resurrect(sessionId: Int): Boolean {
+        val pending = pendingReleases.remove(sessionId) ?: return false
+        pending.job.cancel()
+
+        if (sessionId !in controller.attachedSessionIds()) {
+            log(TAG, WARN) { "Session $sessionId reopened but its effect is gone, attaching again" }
+            return false
+        }
+
+        log(TAG, INFO) { "Session $sessionId reopened within the grace period, keeping its effect" }
+        val target = appliedTarget ?: return true
+        if (pending.target?.levels != target.levels) controller.updateLevels(target.levels)
+        if (pending.target?.boostGain != target.boostGain) controller.updateBoost(target.boostGain)
+        return true
+    }
+
+    private suspend fun expireGrace(token: Long, sessionId: Int) = act("graceExpired($sessionId)", token) {
+        if (pendingReleases.remove(sessionId) == null) return@act
+        log(TAG, INFO) { "Grace period for session $sessionId expired, releasing it" }
+        openSessionIds -= sessionId
+        controller.detach(sessionId)
+    }
+
+    /**
+     * Drops every grace timer without releasing anything: the caller is a teardown that lets go of
+     * the effects itself.
+     */
+    private fun cancelPendingReleases(reason: String) {
+        if (pendingReleases.isEmpty()) return
+        log(TAG, INFO) { "Releasing ${pendingReleases.size} session(s) ahead of their grace period: $reason" }
+        pendingReleases.values.forEach { it.job.cancel() }
+        pendingReleases.clear()
+    }
+
     /** Drops everything we think we know and starts over on a fresh listening generation. */
     private suspend fun restartListening(token: Long) = act("restartListening()", token) {
+        cancelPendingReleases("Restarting listening")
         openSessionIds.clear()
         controller.detachAll()
         tracker.stopListening()
@@ -330,6 +410,7 @@ class EqCoordinator @Inject constructor(
 
     private suspend fun release(reason: String) = act("release($reason)") {
         appliedTarget = null
+        cancelPendingReleases(reason)
         openSessionIds.clear()
         previewFlow.value = null
         controller.detachAll()
@@ -356,6 +437,9 @@ class EqCoordinator @Inject constructor(
     companion object {
         private val TAG = logTag("Eq", "Coordinator")
         private val ENTITLEMENT_TIMEOUT = 3.seconds
+
+        /** How long a session that broadcast CLOSE keeps its effect in case it comes right back. */
+        private val CLOSE_GRACE = 3.seconds
 
         /** [activeToken] value while no session is running. Real tokens start at 1. */
         private const val NO_SESSION = 0L
