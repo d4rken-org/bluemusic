@@ -46,7 +46,7 @@ class MonitorOrchestratorTest : BaseTest() {
     private lateinit var volumeEventDispatcher: VolumeEventDispatcher
     private lateinit var eqCoordinator: EqCoordinator
     private lateinit var eqEligibility: EqEligibility
-    private var eqOperational: Boolean = false
+    private lateinit var eqOperationalFlow: MutableStateFlow<Boolean>
 
     private lateinit var devicesSettings: DevicesSettings
     private lateinit var devicesFlow: MutableStateFlow<List<ManagedDevice>>
@@ -90,8 +90,8 @@ class MonitorOrchestratorTest : BaseTest() {
         ownerRegistry = mockk(relaxed = true)
         volumeEventDispatcher = mockk(relaxed = true)
         eqCoordinator = mockk(relaxed = true)
-        eqOperational = false
-        eqEligibility = mockk { coEvery { isOperational() } answers { eqOperational } }
+        eqOperationalFlow = MutableStateFlow(false)
+        eqEligibility = mockk { every { operational } returns eqOperationalFlow }
     }
 
     private fun createOrchestrator() = MonitorOrchestrator(
@@ -179,7 +179,7 @@ class MonitorOrchestratorTest : BaseTest() {
 
     @Test
     fun `an operational equalizer device keeps monitoring alive`() = runTest {
-        eqOperational = true
+        eqOperationalFlow.value = true
         val device = managedDevice(
             "AA:BB:CC:DD:EE:FF",
             active = true,
@@ -204,7 +204,7 @@ class MonitorOrchestratorTest : BaseTest() {
 
     @Test
     fun `an equalizer device does not keep monitoring alive while the equalizer is not operational`() = runTest {
-        eqOperational = false
+        eqOperationalFlow.value = false
         val device = managedDevice(
             "AA:BB:CC:DD:EE:FF",
             active = true,
@@ -223,6 +223,38 @@ class MonitorOrchestratorTest : BaseTest() {
 
         advanceTimeBy(20_000)
         advanceUntilIdle()
+        monitorReturned shouldBe true
+
+        job.cancel()
+    }
+
+    @Test
+    fun `losing equalizer eligibility mid-session stops the monitor`() = runTest {
+        eqOperationalFlow.value = true
+        val device = managedDevice(
+            "AA:BB:CC:DD:EE:FF",
+            active = true,
+            requiresPersistentSession = false,
+            eqEnabled = true,
+        )
+        devicesFlow.value = listOf(device)
+
+        val orchestrator = createOrchestrator()
+        var monitorReturned = false
+
+        val job = launch {
+            orchestrator.monitor(this@runTest) {}
+            monitorReturned = true
+        }
+
+        advanceTimeBy(60_000)
+        monitorReturned shouldBe false
+
+        // The only reason to stay alive is gone, the idle shutdown has to take over.
+        eqOperationalFlow.value = false
+        advanceTimeBy(20_000)
+        advanceUntilIdle()
+
         monitorReturned shouldBe true
 
         job.cancel()

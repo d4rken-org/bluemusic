@@ -23,6 +23,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.filter
@@ -125,11 +126,16 @@ class MonitorOrchestrator @Inject constructor(
             .catch { log(TAG, WARN) { "Event monitor flow failed:\n${it.asLog()}" } }
             .launchIn(monitorScope)
 
-        val deviceMonitorJob = deviceRepo.devices
+        // Eligibility is an input, not a one-shot sample: losing it while the equalizer is the only
+        // reason to stay alive has to recompute the shutdown decision instead of keeping us up.
+        val deviceMonitorJob = combine(
+            deviceRepo.devices,
+            eqEligibility.operational,
+        ) { devices, eqOperational -> devices to eqOperational }
             .setupCommonEventHandlers(TAG) { "Devices monitor" }
             .distinctUntilChanged()
             .throttleLatest(3000)
-            .flatMapLatest { devices ->
+            .flatMapLatest { (devices, eqOperational) ->
                 val activeDevices = devices.filter { it.isActive }
 
                 log(TAG) { "monitor: Currently active devices: ${activeDevices.map { "${it.address}/${it.label}" }}" }
@@ -138,7 +144,7 @@ class MonitorOrchestrator @Inject constructor(
                 // The equalizer re-attaches on every new effect session, so it needs the session to
                 // stay alive for as long as an eligible device is connected.
                 val stayActive = activeDevices.any { it.requiresPersistentSession } ||
-                        (eqEligibility.isOperational() && activeDevices.any { it.eqEnabled })
+                        (eqOperational && activeDevices.any { it.eqEnabled })
 
                 when {
                     activeDevices.isNotEmpty() && stayActive -> {
