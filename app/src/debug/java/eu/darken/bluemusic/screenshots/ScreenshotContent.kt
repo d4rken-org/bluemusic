@@ -172,11 +172,9 @@ internal fun DeviceEqContent() {
                 isProVersion = true,
             ),
             onNavigateBack = {},
-            onToggleEnabled = {},
             onLevelsChanged = {},
             onLevelsCommitted = {},
             onPresetSelected = {},
-            onReset = {},
         )
     }
 }

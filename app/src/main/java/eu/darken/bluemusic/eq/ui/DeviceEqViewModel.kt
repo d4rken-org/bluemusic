@@ -67,18 +67,6 @@ class DeviceEqViewModel @AssistedInject constructor(
         )
     }.asStateFlow()
 
-    fun toggleEnabled() = launch {
-        log(tag) { "toggleEnabled()" }
-        persistJob?.cancel()
-        // In a finally throughout: a cancelled write must not leave a preview curve applied to the
-        // running effects, it would outlive this screen and never be cleared by anyone else.
-        try {
-            deviceRepo.updateDevice(deviceAddress) { it.copy(eqEnabled = !it.eqEnabled) }
-        } finally {
-            eqCoordinator.previewLevels(deviceAddress, null)
-        }
-    }
-
     /** Live values while a slider is being dragged: applied to the running effects, not persisted. */
     fun onLevelsChanged(levels: List<Int>) {
         eqCoordinator.previewLevels(deviceAddress, levels)
@@ -88,6 +76,8 @@ class DeviceEqViewModel @AssistedInject constructor(
         log(tag) { "onLevelsCommitted($levels)" }
         persistJob?.cancel()
         persistJob = vmScope.launch {
+            // In a finally throughout: a cancelled write must not leave a preview curve applied to the
+            // running effects, it would outlive this screen and never be cleared by anyone else.
             try {
                 deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = levels) }
             } finally {
@@ -101,19 +91,15 @@ class DeviceEqViewModel @AssistedInject constructor(
         // A slider release could still be on its way to the database, its levels are stale now.
         persistJob?.cancel()
         try {
+            // Flat is the "never configured" state, not a curve of zeroes: storing null keeps the device
+            // out of the equalizer's way entirely.
+            if (id == EqPresets.Id.FLAT) {
+                deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = null) }
+                return@launch
+            }
             val capabilities = eqCapabilities.refreshIfNeeded() ?: return@launch
             val levels = eqPresets.levelsFor(id, capabilities)
             deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = levels) }
-        } finally {
-            eqCoordinator.previewLevels(deviceAddress, null)
-        }
-    }
-
-    fun reset() = launch {
-        log(tag) { "reset()" }
-        persistJob?.cancel()
-        try {
-            deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = null) }
         } finally {
             eqCoordinator.previewLevels(deviceAddress, null)
         }

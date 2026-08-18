@@ -19,7 +19,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.twotone.Info
-import androidx.compose.material.icons.twotone.RestartAlt
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilterChip
@@ -29,7 +28,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -54,7 +52,6 @@ import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.error.ErrorEventHandler
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.ui.config.components.SectionHeader
-import eu.darken.bluemusic.devices.ui.config.components.SwitchPreference
 import eu.darken.bluemusic.eq.core.EqCapabilities
 import eu.darken.bluemusic.eq.core.EqPresets
 import java.util.Locale
@@ -76,11 +73,9 @@ fun DeviceEqScreenHost(
         DeviceEqScreen(
             state = it,
             onNavigateBack = { vm.navUp() },
-            onToggleEnabled = { vm.toggleEnabled() },
             onLevelsChanged = { levels -> vm.onLevelsChanged(levels) },
             onLevelsCommitted = { levels -> vm.onLevelsCommitted(levels) },
             onPresetSelected = { preset -> vm.applyPreset(preset) },
-            onReset = { vm.reset() },
         )
     }
 }
@@ -90,11 +85,9 @@ fun DeviceEqScreenHost(
 fun DeviceEqScreen(
     state: DeviceEqViewModel.State,
     onNavigateBack: () -> Unit,
-    onToggleEnabled: () -> Unit,
     onLevelsChanged: (List<Int>) -> Unit,
     onLevelsCommitted: (List<Int>) -> Unit,
     onPresetSelected: (EqPresets.Id) -> Unit,
-    onReset: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val capabilities = state.capabilities
@@ -104,8 +97,6 @@ fun DeviceEqScreen(
     var draggedLevels by remember { mutableStateOf<List<Int>?>(null) }
     LaunchedEffect(storedLevels) { draggedLevels = null }
     val levels = draggedLevels ?: storedLevels
-
-    val controlsEnabled = capabilities != null && state.device.eqEnabled
 
     Scaffold(
         modifier = modifier,
@@ -132,17 +123,6 @@ fun DeviceEqScreen(
                         )
                     }
                 },
-                actions = {
-                    TextButton(onClick = onReset, enabled = controlsEnabled) {
-                        Icon(
-                            imageVector = Icons.TwoTone.RestartAlt,
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp),
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(stringResource(R.string.eq_reset_action))
-                    }
-                },
             )
         },
         contentWindowInsets = WindowInsets.statusBars,
@@ -156,25 +136,15 @@ fun DeviceEqScreen(
             contentPadding = PaddingValues(top = 8.dp, bottom = 16.dp + navBarPadding),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            item {
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
-                ) {
-                    SwitchPreference(
-                        title = stringResource(R.string.eq_enabled_label),
-                        description = stringResource(R.string.eq_enabled_desc),
-                        isChecked = state.device.eqEnabled,
-                        onCheckedChange = { if (capabilities != null) onToggleEnabled() },
-                    )
-                }
-            }
-
             if (capabilities == null) {
                 item { UnsupportedCard() }
                 return@LazyColumn
+            }
+
+            // The sliders stay editable while the equalizer is off, so the hint is the only thing telling
+            // the user why nothing they change is audible yet.
+            if (!state.device.eqEnabled) {
+                item { DisabledHintCard() }
             }
 
             item {
@@ -200,7 +170,6 @@ fun DeviceEqScreen(
                                 FilterChip(
                                     selected = levels == preset.levels,
                                     onClick = { onPresetSelected(preset.id) },
-                                    enabled = controlsEnabled,
                                     label = { Text(preset.label.get(context)) },
                                 )
                             }
@@ -221,7 +190,6 @@ fun DeviceEqScreen(
                     frequencyLabel = formatFrequency(capabilities.centerFrequencies.getOrElse(index) { 0 }),
                     level = level,
                     capabilities = capabilities,
-                    enabled = controlsEnabled,
                     onLevelChange = { newLevel ->
                         val updated = levels.toMutableList().also { it[index] = newLevel }
                         draggedLevels = updated
@@ -241,7 +209,6 @@ private fun BandSlider(
     frequencyLabel: String,
     level: Int,
     capabilities: EqCapabilities.Caps,
-    enabled: Boolean,
     onLevelChange: (Int) -> Unit,
     onLevelChangeFinished: () -> Unit,
 ) {
@@ -262,7 +229,6 @@ private fun BandSlider(
             onValueChange = { onLevelChange(it.roundToInt()) },
             onValueChangeFinished = onLevelChangeFinished,
             valueRange = capabilities.minLevel.toFloat()..capabilities.maxLevel.toFloat(),
-            enabled = enabled,
             modifier = Modifier.weight(1f),
         )
         Text(
@@ -288,6 +254,29 @@ private fun UnsupportedCard() {
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onErrorContainer,
             modifier = Modifier.padding(16.dp),
+        )
+    }
+}
+
+@Composable
+private fun DisabledHintCard() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            imageVector = Icons.TwoTone.Info,
+            contentDescription = null,
+            modifier = Modifier.size(16.dp),
+            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(
+            text = stringResource(R.string.eq_disabled_hint),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
     }
 }
@@ -374,11 +363,9 @@ private fun DeviceEqScreenPreview() {
         DeviceEqScreen(
             state = previewState(),
             onNavigateBack = {},
-            onToggleEnabled = {},
             onLevelsChanged = {},
             onLevelsCommitted = {},
             onPresetSelected = {},
-            onReset = {},
         )
     }
 }
@@ -390,11 +377,9 @@ private fun DeviceEqScreenDisabledPreview() {
         DeviceEqScreen(
             state = previewState(eqEnabled = false, levels = null),
             onNavigateBack = {},
-            onToggleEnabled = {},
             onLevelsChanged = {},
             onLevelsCommitted = {},
             onPresetSelected = {},
-            onReset = {},
         )
     }
 }
@@ -406,11 +391,9 @@ private fun DeviceEqScreenUnsupportedPreview() {
         DeviceEqScreen(
             state = previewState(capabilities = null, eqEnabled = false, levels = null),
             onNavigateBack = {},
-            onToggleEnabled = {},
             onLevelsChanged = {},
             onLevelsCommitted = {},
             onPresetSelected = {},
-            onReset = {},
         )
     }
 }
