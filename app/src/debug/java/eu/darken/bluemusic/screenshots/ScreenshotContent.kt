@@ -104,7 +104,7 @@ internal fun DeviceConfigReactionContent() {
             onAction = {},
             onNavigateBack = {},
             snackbarHostState = remember { SnackbarHostState() },
-            listState = rememberLazyListState(initialFirstVisibleItemIndex = 3),
+            listState = rememberLazyListState(initialFirstVisibleItemIndex = 4),
         )
     }
 }
@@ -121,7 +121,7 @@ internal fun DeviceConfigTimingContent() {
             onAction = {},
             onNavigateBack = {},
             snackbarHostState = remember { SnackbarHostState() },
-            listState = rememberLazyListState(initialFirstVisibleItemIndex = 4),
+            listState = rememberLazyListState(initialFirstVisibleItemIndex = 5),
         )
     }
 }
