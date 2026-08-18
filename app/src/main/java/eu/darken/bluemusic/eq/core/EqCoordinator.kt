@@ -123,20 +123,24 @@ class EqCoordinator @Inject constructor(
     /**
      * Releases every effect and stops listening, but only for the session [token] identifies. A
      * caller whose session was already replaced no-ops instead of tearing down the newer one.
+     *
+     * The whole teardown runs under [sessionLock], so [startSession] cannot install a new token
+     * while a previous stop is still cancelling and releasing. The cancelled job's own release runs
+     * inside its `finally`, which [cancelAndJoin] waits for, so it can never outlive the join.
      */
     suspend fun stopSession(token: Long) = withContext(NonCancellable) {
-        val job = sessionLock.withLock {
+        sessionLock.withLock {
             val active = activeToken.get()
             if (active != token) {
                 log(TAG, INFO) { "stopSession($token): Not the active session ($active), ignoring" }
-                return@withContext
+                return@withLock
             }
+            log(TAG, INFO) { "stopSession($token)" }
             activeToken.set(NO_SESSION)
-            sessionJob.also { sessionJob = null }
+            sessionJob?.cancelAndJoin()
+            release("Session $token stopped")
+            sessionJob = null
         }
-        log(TAG, INFO) { "stopSession($token)" }
-        job?.cancelAndJoin()
-        release("Session $token stopped")
     }
 
     /**

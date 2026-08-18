@@ -53,6 +53,7 @@ class EqCoordinatorTest : BaseTest() {
     /** What the fake controller currently has attached, keyed by session id. */
     private lateinit var attached: MutableMap<Int, List<Int>>
     private var attachDelayMs = 0L
+    private var detachAllDelayMs = 0L
 
     @BeforeEach
     fun setup() {
@@ -65,6 +66,7 @@ class EqCoordinatorTest : BaseTest() {
         upgradeInfos = fakeUpgradeInfos(FakeUpgradeInfo(isPro = true))
         attached = mutableMapOf()
         attachDelayMs = 0L
+        detachAllDelayMs = 0L
 
         deviceRepo = mockk { every { devices } returns devicesFlow }
         ownerRegistry = mockk { every { ownerSnapshots } returns ownerFlow }
@@ -108,7 +110,10 @@ class EqCoordinatorTest : BaseTest() {
                 attached.keys.forEach { attached[it] = levels }
             }
             coEvery { detach(any()) } coAnswers { attached.remove(firstArg()) }
-            coEvery { detachAll() } coAnswers { attached.clear() }
+            coEvery { detachAll() } coAnswers {
+                if (detachAllDelayMs > 0) delay(detachAllDelayMs)
+                attached.clear()
+            }
         }
     }
 
@@ -485,6 +490,53 @@ class EqCoordinatorTest : BaseTest() {
         (second > first) shouldBe true
 
         // The replaced session released on its way out, the new one attaches again.
+        openSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        coordinator.stopSession(second)
+        runCurrent()
+        attached.shouldBeEmpty()
+    }
+
+    @Test
+    fun `a session cannot start while a previous stop is still tearing down`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val first = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        // The teardown of the first session hangs while releasing.
+        detachAllDelayMs = 1_000L
+        val stopping = launch { coordinator.stopSession(first) }
+        advanceTimeBy(100)
+        runCurrent()
+        stopping.isCompleted shouldBe false
+
+        var second = 0L
+        val starting = launch { second = coordinator.startSession() }
+        advanceTimeBy(100)
+        runCurrent()
+
+        // No new token may exist while the old session is still releasing, or that release would
+        // tear down state the new session already built.
+        starting.isCompleted shouldBe false
+        second shouldBe 0L
+
+        detachAllDelayMs = 0L
+        advanceTimeBy(5_000)
+        runCurrent()
+
+        stopping.isCompleted shouldBe true
+        starting.isCompleted shouldBe true
+        (second > first) shouldBe true
+
+        // The old teardown is done, so it cannot release what the new session attaches.
         openSessions(11)
         runCurrent()
         attached.keys shouldBe setOf(11)
