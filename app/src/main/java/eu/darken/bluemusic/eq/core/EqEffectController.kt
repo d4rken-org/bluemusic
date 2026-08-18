@@ -2,6 +2,7 @@ package eu.darken.bluemusic.eq.core
 
 import android.media.audiofx.AudioEffect
 import android.media.audiofx.Equalizer
+import android.media.audiofx.LoudnessEnhancer
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
@@ -13,6 +14,7 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.math.roundToInt
 
 /**
  * Resolves what to actually write to an engine with [bandCount] bands and a `[minLevel]..[maxLevel]`
@@ -34,11 +36,12 @@ internal fun resolveBandLevels(
 }
 
 /**
- * Owns the actual [Equalizer] instances attached to other apps' audio sessions.
+ * Owns the actual [Equalizer] and [LoudnessEnhancer] instances attached to other apps' audio sessions.
  *
  * The framework shares a single engine per (effect type, session), so our levels mutate settings a
  * player app may own. Every attach snapshots the engine's original band levels and enabled flag,
- * and every release path puts them back before letting go.
+ * and every release path puts them back before letting go. The enhancer is treated the same way:
+ * its target gain and enabled flag are snapshotted and restored.
  */
 @Singleton
 class EqEffectController @Inject constructor(
@@ -50,6 +53,14 @@ class EqEffectController @Inject constructor(
         val equalizer: Equalizer,
         val originalLevels: List<Short>,
         val originalEnabled: Boolean,
+        val booster: AttachedBooster? = null,
+    )
+
+    /** The loudness enhancer of a session, present only while a boost is configured. */
+    private data class AttachedBooster(
+        val enhancer: LoudnessEnhancer,
+        val originalTargetGain: Float,
+        val originalEnabled: Boolean,
     )
 
     private val lock = Any()
@@ -58,12 +69,13 @@ class EqEffectController @Inject constructor(
     fun attachedSessionIds(): Set<Int> = synchronized(lock) { effects.keys.toSet() }
 
     /**
-     * Attaches an equalizer to [sessionId] and applies [levels].
+     * Attaches an equalizer to [sessionId], applies [levels] and, when [boostGain] is positive, also
+     * attaches a loudness enhancer with that gain in millibel.
      *
      * [levels] is what the user configured. It is validated against the instance we actually get:
      * a stored curve that doesn't match the engine's band count is dropped in favour of a flat one.
      */
-    suspend fun attach(sessionId: Int, levels: List<Int>): Unit = withContext(dispatcherProvider.Default) {
+    suspend fun attach(sessionId: Int, levels: List<Int>, boostGain: Int): Unit = withContext(dispatcherProvider.Default) {
         synchronized(lock) {
             if (sessionId <= 0) {
                 tracker.onAttachFailed(sessionId, "Invalid session id")
@@ -110,8 +122,13 @@ class EqEffectController @Inject constructor(
                     }
                 }
 
-                effects[sessionId] = attached
-                tracker.onAttached(sessionId, detail)
+                // Non-fatal: an enhancer we cannot get costs the boost, not the curve.
+                val booster = if (boostGain > 0) createBooster(sessionId, boostGain) else null
+                val boosted = attached.copy(booster = booster)
+                pendingEffect = boosted
+
+                effects[sessionId] = boosted
+                tracker.onAttached(sessionId, detail + boostDetail(boostGain, booster))
 
                 // The listener only fires on later ownership changes, so the initial value has to be read.
                 tracker.onControlChanged(sessionId, equalizer.hasControl())
@@ -135,6 +152,21 @@ class EqEffectController @Inject constructor(
                 } catch (e: Exception) {
                     log(TAG, WARN) { "updateLevels($sessionId) failed: ${e.asLog()}" }
                 }
+            }
+        }
+    }
+
+    /**
+     * Applies [gain] in millibel to every currently attached effect, creating or releasing the
+     * loudness enhancer as the value crosses zero.
+     */
+    suspend fun updateBoost(gain: Int): Unit = withContext(dispatcherProvider.Default) {
+        synchronized(lock) {
+            if (effects.isEmpty()) return@synchronized
+            log(TAG, VERBOSE) { "updateBoost($gain): ${effects.size} effects" }
+            effects.keys.toList().forEach { sessionId ->
+                val effect = effects[sessionId] ?: return@forEach
+                effects[sessionId] = effect.withBoost(sessionId, gain)
             }
         }
     }
@@ -188,10 +220,70 @@ class EqEffectController @Inject constructor(
     }
 
     /**
+     * Moves this effect to [gain]: the enhancer is created when the boost turns positive, released
+     * when it drops to zero, and retargeted in between. A failure keeps the equalizer as it is.
+     */
+    private fun AttachedEffect.withBoost(sessionId: Int, gain: Int): AttachedEffect {
+        if (gain <= 0) {
+            booster?.restoreAndReleaseQuietly()
+            return copy(booster = null)
+        }
+
+        val current = booster ?: return copy(booster = createBooster(sessionId, gain))
+
+        return try {
+            current.enhancer.applyGain(gain)
+            log(TAG, VERBOSE) { "updateBoost($sessionId): gain=$gain" }
+            this
+        } catch (e: Exception) {
+            log(TAG, WARN) { "updateBoost($sessionId) failed: ${e.asLog()}" }
+            this
+        }
+    }
+
+    /**
+     * Creates a loudness enhancer for [sessionId] at [gain], or `null` when the device won't give us
+     * one. The enhancer is optional: a session keeps its curve either way.
+     */
+    private fun createBooster(sessionId: Int, gain: Int): AttachedBooster? = try {
+        val enhancer = LoudnessEnhancer(sessionId)
+        // Shared engine again, so the snapshot has to exist before the first write.
+        val booster = AttachedBooster(
+            enhancer = enhancer,
+            originalTargetGain = enhancer.targetGain,
+            originalEnabled = enhancer.enabled,
+        )
+        try {
+            enhancer.applyGain(gain)
+            log(TAG, VERBOSE) { "createBooster($sessionId): id=${enhancer.id} gain=$gain" }
+            booster
+        } catch (e: Throwable) {
+            booster.restoreAndReleaseQuietly()
+            throw e
+        }
+    } catch (e: Throwable) {
+        log(TAG, WARN) { "createBooster($sessionId, $gain): Failed, continuing without boost: ${e.asLog()}" }
+        null
+    }
+
+    private fun LoudnessEnhancer.applyGain(gain: Int) {
+        setTargetGain(gain)
+        val status = setEnabled(true)
+        if (status != AudioEffect.SUCCESS) throw IllegalStateException("Boost setEnabled failed: $status")
+    }
+
+    private fun boostDetail(boostGain: Int, booster: AttachedBooster?): String = when {
+        boostGain <= 0 -> ""
+        booster == null -> " boost=failed"
+        else -> " boost=${boostGain}mB"
+    }
+
+    /**
      * Puts the engine back the way we found it before letting go of it, otherwise our curve would
      * stick around for whoever else is using this shared engine.
      */
     private fun AttachedEffect.restoreAndReleaseQuietly() {
+        booster?.restoreAndReleaseQuietly()
         try {
             if (equalizer.hasControl()) {
                 originalLevels.forEachIndexed { band, level ->
@@ -214,10 +306,38 @@ class EqEffectController @Inject constructor(
         }
     }
 
+    /** Same contract as the equalizer's restore: the enhancer engine is shared with whoever else uses it. */
+    private fun AttachedBooster.restoreAndReleaseQuietly() {
+        try {
+            if (enhancer.hasControl()) {
+                try {
+                    enhancer.setTargetGain(originalTargetGain.roundToInt())
+                } catch (e: Exception) {
+                    log(TAG, WARN) { "restoreBoost(): setTargetGain($originalTargetGain) failed: ${e.asLog()}" }
+                }
+                try {
+                    enhancer.setEnabled(originalEnabled)
+                } catch (e: Exception) {
+                    log(TAG, WARN) { "restoreBoost(): setEnabled($originalEnabled) failed: ${e.asLog()}" }
+                }
+            }
+        } catch (e: Exception) {
+            log(TAG, WARN) { "restoreBoost() failed: ${e.asLog()}" }
+        } finally {
+            enhancer.releaseQuietly()
+        }
+    }
+
     private fun Equalizer.releaseQuietly() = try {
         release()
     } catch (e: Exception) {
         log(TAG, WARN) { "release() failed: ${e.asLog()}" }
+    }
+
+    private fun LoudnessEnhancer.releaseQuietly() = try {
+        release()
+    } catch (e: Exception) {
+        log(TAG, WARN) { "Boost release() failed: ${e.asLog()}" }
     }
 
     companion object {

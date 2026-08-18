@@ -52,6 +52,9 @@ class EqCoordinatorTest : BaseTest() {
 
     /** What the fake controller currently has attached, keyed by session id. */
     private lateinit var attached: MutableMap<Int, List<Int>>
+
+    /** The boost gain each attached session currently runs with. */
+    private lateinit var boosts: MutableMap<Int, Int>
     private var attachDelayMs = 0L
     private var detachAllDelayMs = 0L
 
@@ -65,6 +68,7 @@ class EqCoordinatorTest : BaseTest() {
         transitions = Channel(EqSessionTracker.TRANSITION_BUFFER)
         upgradeInfos = fakeUpgradeInfos(FakeUpgradeInfo(isPro = true))
         attached = mutableMapOf()
+        boosts = mutableMapOf()
         attachDelayMs = 0L
         detachAllDelayMs = 0L
 
@@ -101,18 +105,27 @@ class EqCoordinatorTest : BaseTest() {
 
         controller = mockk(relaxed = true) {
             every { attachedSessionIds() } answers { attached.keys.toSet() }
-            coEvery { attach(any(), any()) } coAnswers {
+            coEvery { attach(any(), any(), any()) } coAnswers {
                 if (attachDelayMs > 0) delay(attachDelayMs)
                 attached[firstArg()] = secondArg()
+                boosts[firstArg()] = thirdArg()
             }
             coEvery { updateLevels(any()) } coAnswers {
                 val levels = firstArg<List<Int>>()
                 attached.keys.forEach { attached[it] = levels }
             }
-            coEvery { detach(any()) } coAnswers { attached.remove(firstArg()) }
+            coEvery { updateBoost(any()) } coAnswers {
+                val gain = firstArg<Int>()
+                attached.keys.forEach { boosts[it] = gain }
+            }
+            coEvery { detach(any()) } coAnswers {
+                boosts.remove(firstArg())
+                attached.remove(firstArg())
+            }
             coEvery { detachAll() } coAnswers {
                 if (detachAllDelayMs > 0) delay(detachAllDelayMs)
                 attached.clear()
+                boosts.clear()
             }
         }
     }
@@ -133,6 +146,7 @@ class EqCoordinatorTest : BaseTest() {
         address: DeviceAddr,
         eqEnabled: Boolean = true,
         levels: List<Int>? = listOf(300, 0, -300),
+        boostGain: Int? = null,
         lastConnected: Long = 1_000L,
         connected: Boolean = true,
         isEnabled: Boolean = true,
@@ -147,6 +161,7 @@ class EqCoordinatorTest : BaseTest() {
             address = address,
             eqEnabled = eqEnabled,
             eqBandLevels = levels,
+            eqBoostGain = boostGain,
             lastConnected = lastConnected,
             isEnabled = isEnabled,
         ),
@@ -195,7 +210,7 @@ class EqCoordinatorTest : BaseTest() {
         runCurrent()
 
         attached.shouldBeEmpty()
-        coVerify(exactly = 0) { controller.attach(any(), any()) }
+        coVerify(exactly = 0) { controller.attach(any(), any(), any()) }
 
         coordinator.stopSession(token)
     }
@@ -334,9 +349,9 @@ class EqCoordinatorTest : BaseTest() {
 
         attached shouldBe mapOf(11 to listOf(300, 0, -300))
         coVerifyOrder {
-            controller.attach(11, listOf(300, 0, -300))
+            controller.attach(11, listOf(300, 0, -300), 0)
             controller.detach(11)
-            controller.attach(11, listOf(300, 0, -300))
+            controller.attach(11, listOf(300, 0, -300), 0)
         }
 
         coordinator.stopSession(token)
@@ -409,6 +424,150 @@ class EqCoordinatorTest : BaseTest() {
 
         coordinator.stopSession(token)
     }
+
+    // region volume boost
+
+    @Test
+    fun `the owner's boost is attached along with the levels`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA", boostGain = 600))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11, 12)
+        runCurrent()
+
+        boosts shouldBe mapOf(11 to 600, 12 to 600)
+        coVerify { controller.attach(11, listOf(300, 0, -300), 600) }
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `an unset boost attaches as none`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA", boostGain = null))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+
+        boosts shouldBe mapOf(11 to 0)
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `changing the stored boost updates the attached sessions`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA", boostGain = 200))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+        boosts shouldBe mapOf(11 to 200)
+
+        devicesFlow.value = listOf(device("AA", boostGain = 900))
+        runCurrent()
+
+        boosts shouldBe mapOf(11 to 900)
+        coVerify { controller.updateBoost(900) }
+        // The curve did not change, so it must not be rewritten along the way.
+        coVerify(exactly = 0) { controller.updateLevels(any()) }
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a boost preview applies live and is dropped when it is cleared`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA", boostGain = 100))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+        boosts shouldBe mapOf(11 to 100)
+
+        coordinator.previewBoost("AA", 1000)
+        runCurrent()
+        boosts shouldBe mapOf(11 to 1000)
+        coVerify { controller.updateBoost(1000) }
+
+        coordinator.previewBoost("AA", null)
+        runCurrent()
+        boosts shouldBe mapOf(11 to 100)
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a boost preview for another device is ignored`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA", boostGain = 100))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+
+        coordinator.previewBoost("BB", 1000)
+        runCurrent()
+
+        boosts shouldBe mapOf(11 to 100)
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `previewing levels and boost together keeps both`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA", boostGain = 100))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+
+        coordinator.previewBoost("AA", 800)
+        runCurrent()
+        coordinator.previewLevels("AA", listOf(1200, 1200, 1200))
+        runCurrent()
+
+        attached shouldBe mapOf(11 to listOf(1200, 1200, 1200))
+        boosts shouldBe mapOf(11 to 800)
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a session opening during a boost preview attaches with the previewed boost`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA", boostGain = 100))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        coordinator.previewBoost("AA", 700)
+        runCurrent()
+
+        openSessions(11)
+        runCurrent()
+
+        boosts shouldBe mapOf(11 to 700)
+
+        coordinator.stopSession(token)
+    }
+
+    // endregion
 
     @Test
     fun `an attach still in flight when ownership is lost does not survive the release`() = runTest {
@@ -589,7 +748,7 @@ class EqCoordinatorTest : BaseTest() {
 
         attached.shouldBeEmpty()
         trackerFlow.value.listening shouldBe false
-        coVerify(exactly = 0) { controller.attach(any(), any()) }
+        coVerify(exactly = 0) { controller.attach(any(), any(), any()) }
 
         coordinator.stopSession(token)
     }
@@ -607,7 +766,7 @@ class EqCoordinatorTest : BaseTest() {
         runCurrent()
 
         attached.shouldBeEmpty()
-        coVerify(exactly = 0) { controller.attach(any(), any()) }
+        coVerify(exactly = 0) { controller.attach(any(), any(), any()) }
 
         coordinator.stopSession(token)
     }

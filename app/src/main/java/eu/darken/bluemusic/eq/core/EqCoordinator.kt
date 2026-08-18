@@ -27,6 +27,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
@@ -38,7 +39,7 @@ import javax.inject.Singleton
 import kotlin.time.Duration.Companion.seconds
 
 /**
- * Decides when the equalizer runs and with which levels.
+ * Decides when the equalizer runs, with which levels and how much volume boost.
  *
  * While a device that owns the audio streams has the equalizer enabled, we listen for effect
  * session broadcasts and attach our curve to every session cooperating apps announce. Losing
@@ -63,12 +64,18 @@ class EqCoordinator @Inject constructor(
     data class Target(
         val address: DeviceAddr,
         val levels: List<Int>,
+        val boostGain: Int,
     )
 
+    /** Transient edits of the config screen, `null` fields fall back to what is stored. */
     private data class Preview(
         val address: DeviceAddr,
-        val levels: List<Int>,
-    )
+        val levels: List<Int>? = null,
+        val boostGain: Int? = null,
+    ) {
+        val isEmpty: Boolean
+            get() = levels == null && boostGain == null
+    }
 
     private val previewFlow = MutableStateFlow<Preview?>(null)
 
@@ -144,12 +151,29 @@ class EqCoordinator @Inject constructor(
     }
 
     /**
-     * Transient levels for live preview while a slider is being dragged. They bypass persistence and
-     * only apply while [address] is the device the equalizer is currently running for.
+     * Transient levels for live preview while a band slider is being dragged. They bypass persistence
+     * and only apply while [address] is the device the equalizer is currently running for.
      */
     fun previewLevels(address: DeviceAddr, levels: List<Int>?) {
         log(TAG, VERBOSE) { "previewLevels($address, $levels)" }
-        previewFlow.value = levels?.let { Preview(address, it) }
+        updatePreview(address) { it.copy(levels = levels) }
+    }
+
+    /** Transient boost gain for live preview while the boost slider is being dragged. */
+    fun previewBoost(address: DeviceAddr, boostGain: Int?) {
+        log(TAG, VERBOSE) { "previewBoost($address, $boostGain)" }
+        updatePreview(address) { it.copy(boostGain = boostGain) }
+    }
+
+    /**
+     * Bands and boost are dragged one at a time but preview together, so an edit for another device
+     * replaces the preview instead of merging into it.
+     */
+    private fun updatePreview(address: DeviceAddr, update: (Preview) -> Preview) {
+        previewFlow.update { current ->
+            val base = current?.takeIf { it.address == address } ?: Preview(address)
+            update(base).takeUnless { it.isEmpty }
+        }
     }
 
     /** Manual listening override for the diagnostics screen. */
@@ -235,11 +259,11 @@ class EqCoordinator @Inject constructor(
             log(TAG) { "Owner group has ${candidates.size} equalizer configs, using ${chosen.address}" }
         }
 
-        val levels = preview?.takeIf { it.address == chosen.address }?.levels
-            ?: chosen.eqBandLevels
-            ?: emptyList()
+        val active = preview?.takeIf { it.address == chosen.address }
+        val levels = active?.levels ?: chosen.eqBandLevels ?: emptyList()
+        val boostGain = active?.boostGain ?: chosen.eqBoostGain ?: 0
 
-        return Target(address = chosen.address, levels = levels)
+        return Target(address = chosen.address, levels = levels, boostGain = boostGain)
     }
 
     private suspend fun applyTarget(token: Long, target: Target?) = act("target($target)", token) {
@@ -261,14 +285,16 @@ class EqCoordinator @Inject constructor(
             tracker.startListening()
         }
 
-        val levelsChanged = appliedTarget?.levels != target.levels
+        val previous = appliedTarget
         appliedTarget = target
 
         val attached = controller.attachedSessionIds()
-        if (levelsChanged && (attached intersect openSessionIds).isNotEmpty()) controller.updateLevels(target.levels)
+        val live = (attached intersect openSessionIds).isNotEmpty()
+        if (live && previous?.levels != target.levels) controller.updateLevels(target.levels)
+        if (live && previous?.boostGain != target.boostGain) controller.updateBoost(target.boostGain)
 
         (attached - openSessionIds).forEach { controller.detach(it) }
-        (openSessionIds - attached).forEach { controller.attach(it, target.levels) }
+        (openSessionIds - attached).forEach { controller.attach(it, target.levels, target.boostGain) }
     }
 
     private suspend fun applyTransition(token: Long, transition: EqTransition) =
@@ -284,7 +310,7 @@ class EqCoordinator @Inject constructor(
                     openSessionIds += transition.sessionId
                     val target = appliedTarget ?: return@act
                     // Always a fresh attach: a reopened id is a new engine, not the one we held.
-                    controller.attach(transition.sessionId, target.levels)
+                    controller.attach(transition.sessionId, target.levels, target.boostGain)
                 }
 
                 EqTransition.Type.CLOSE -> {
