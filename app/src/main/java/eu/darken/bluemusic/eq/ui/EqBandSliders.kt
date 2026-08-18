@@ -195,23 +195,34 @@ private fun EqBandSlider(
             }
             .pointerInput(minLevel, maxLevel) {
                 val inset = THUMB_RADIUS.toPx()
-                // Every position change is consumed, otherwise the surrounding list would read the
-                // vertical drag as a scroll and take the gesture away mid-curve.
-                fun emit(change: PointerInputChange) {
-                    change.consume()
-                    val level = yToLevel(change.position.y, minLevel, maxLevel, size.height.toFloat(), inset)
-                    if (level != currentLevel) currentOnLevelChange(level)
-                }
                 awaitEachGesture {
                     val down = awaitFirstDown(requireUnconsumed = false)
-                    emit(down)
-                    while (true) {
-                        val event = awaitPointerEvent()
-                        val change = event.changes.firstOrNull { it.id == down.id } ?: break
-                        if (!change.pressed) break
-                        if (change.positionChanged()) emit(change)
+                    // The gesture keeps its own idea of what it last emitted, the composed level lags
+                    // behind a fast drag and would swallow the emission for a level the finger left
+                    // and came back to before recomposition.
+                    var lastEmittedLevel = currentLevel
+                    // Every position change is consumed, otherwise the surrounding list would read the
+                    // vertical drag as a scroll and take the gesture away mid-curve.
+                    fun emit(change: PointerInputChange) {
+                        change.consume()
+                        val level = yToLevel(change.position.y, minLevel, maxLevel, size.height.toFloat(), inset)
+                        if (level == lastEmittedLevel) return
+                        lastEmittedLevel = level
+                        currentOnLevelChange(level)
                     }
-                    currentOnFinished()
+                    try {
+                        emit(down)
+                        while (true) {
+                            val event = awaitPointerEvent()
+                            val change = event.changes.firstOrNull { it.id == down.id } ?: break
+                            if (!change.pressed) break
+                            if (change.positionChanged()) emit(change)
+                        }
+                    } finally {
+                        // Cancellation from outside the gesture loop (rotation, disposal mid-drag) has to
+                        // end the live preview too, the value would otherwise stay unpersisted.
+                        currentOnFinished()
+                    }
                 }
             },
     ) {
