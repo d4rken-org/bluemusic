@@ -70,8 +70,10 @@ class EqSessionReducerTest : BaseTest() {
     fun `duplicate open refreshes the existing session`() {
         var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42).state
         state = reducer.onAttached(state, at(1), 42, "attached")
-        state = reducer.onOpenBroadcast(state, at(2), 1L, "com.spotify.music", 42).state
+        val duplicate = reducer.onOpenBroadcast(state, at(2), 1L, "com.spotify.music", 42)
+        state = duplicate.state
 
+        duplicate.transition shouldBe null
         state.sessions.values.single() shouldBe EqSession(
             sessionId = 42,
             generation = 1L,
@@ -159,6 +161,16 @@ class EqSessionReducerTest : BaseTest() {
             EqTransition(EqTransition.Type.CLOSE, 42, 1L),
             EqTransition(EqTransition.Type.OPEN, 42, 1L),
         )
+    }
+
+    @Test
+    fun `a duplicate open produces no transition and keeps the session`() {
+        val opened = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        val duplicate = reducer.onOpenBroadcast(opened.state, at(1), 1L, "com.spotify.music", 42)
+
+        duplicate.transition shouldBe null
+        duplicate.state.sessions.keys shouldBe setOf(42)
+        duplicate.state.events.last().detail shouldContain "Duplicate open"
     }
 
     @Test

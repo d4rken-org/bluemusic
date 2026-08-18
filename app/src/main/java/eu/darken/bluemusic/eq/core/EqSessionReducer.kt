@@ -102,9 +102,14 @@ class EqSessionReducer {
                     type = EqEvent.Type.OPEN,
                     packageName = packageName,
                     sessionId = session,
-                    detail = if (existing != null) "Reopened" else "New session",
+                    detail = if (existing != null) "Duplicate open" else "New session",
                 ),
             )
+        // A duplicate OPEN for a row we already hold is the same engine announcing itself again.
+        // Only the diagnostics are refreshed: emitting a transition would make the coordinator
+        // detach and re-attach a working effect. A genuine reopen arrives after a CLOSE, which
+        // removes the row, so it still produces a transition here.
+        if (existing != null) return Reduction(newState)
         return Reduction(newState, EqTransition(EqTransition.Type.OPEN, session, generation))
     }
 
