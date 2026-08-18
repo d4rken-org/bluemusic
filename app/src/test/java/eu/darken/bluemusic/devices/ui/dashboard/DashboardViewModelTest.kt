@@ -18,8 +18,16 @@ import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.NewDeviceCreator
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
+import eu.darken.bluemusic.eq.core.EqCoordinator
+import eu.darken.bluemusic.eq.core.EqEligibility
+import eu.darken.bluemusic.eq.core.EqSession
+import eu.darken.bluemusic.eq.core.EqSessionState
+import eu.darken.bluemusic.eq.ui.EqAppResolver
+import eu.darken.bluemusic.eq.ui.EqStatus
+import eu.darken.bluemusic.eq.ui.EqStatusApp
 import eu.darken.bluemusic.main.core.GeneralSettings
 import io.kotest.matchers.shouldBe
+import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.every
@@ -28,12 +36,16 @@ import io.mockk.slot
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.advanceUntilIdle
+import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
+import java.time.Instant
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
@@ -59,6 +71,11 @@ class DashboardViewModelTest : BaseTest() {
     private lateinit var speakerProvider: SpeakerDeviceProvider
     private lateinit var reviewTool: ReviewTool
     private lateinit var reviewStates: MutableStateFlow<ReviewTool.State>
+
+    private lateinit var eqCoordinator: EqCoordinator
+    private lateinit var eqTargetAddress: MutableStateFlow<DeviceAddr?>
+    private lateinit var eqSessions: MutableStateFlow<EqSessionState>
+    private lateinit var eqEligibility: EqEligibility
 
     private lateinit var batteryHintDismissed: DataStoreValue<Boolean>
     private lateinit var android10HintDismissed: DataStoreValue<Boolean>
@@ -88,6 +105,16 @@ class DashboardViewModelTest : BaseTest() {
             every { state } returns reviewStates
             coJustRun { dismiss() }
             coJustRun { reviewNow(any()) }
+        }
+
+        eqTargetAddress = MutableStateFlow(null)
+        eqSessions = MutableStateFlow(EqSessionState())
+        eqCoordinator = mockk<EqCoordinator>().apply {
+            every { targetAddress } returns eqTargetAddress
+            every { sessionState } returns eqSessions
+        }
+        eqEligibility = mockk<EqEligibility>().apply {
+            every { hasEngine } returns MutableStateFlow(true)
         }
 
         devicesFlow = MutableStateFlow(emptyList())
@@ -148,6 +175,11 @@ class DashboardViewModelTest : BaseTest() {
         deviceCreator = deviceCreator,
         speakerProvider = speakerProvider,
         reviewTool = reviewTool,
+        eqAppResolver = mockk<EqAppResolver>().apply {
+            coEvery { resolved(any()) } answers { firstArg() }
+        },
+        eqCoordinator = eqCoordinator,
+        eqEligibility = eqEligibility,
         dispatcherProvider = TestDispatcherProvider(UnconfinedTestDispatcher(testScheduler)),
         navCtrl = navCtrl,
         appRepo = appRepo,
@@ -158,6 +190,7 @@ class DashboardViewModelTest : BaseTest() {
         keepAwake: Boolean = false,
         showHomeScreen: Boolean = false,
         launchPkgs: List<String> = emptyList(),
+        eqEnabled: Boolean = false,
     ): ManagedDevice = ManagedDevice(
         isConnected = true,
         device = SourceDeviceWrapper(
@@ -173,6 +206,7 @@ class DashboardViewModelTest : BaseTest() {
             keepAwake = keepAwake,
             showHomeScreen = showHomeScreen,
             launchPkgs = launchPkgs,
+            eqEnabled = eqEnabled,
         ),
     )
 
@@ -433,6 +467,89 @@ class DashboardViewModelTest : BaseTest() {
         coVerify { reviewTool.reviewNow(capture(activitySlot)) }
         activitySlot.captured shouldBe activity
     }
+
+    // region equalizer status
+
+    /** One controlled session, the way an app that cooperates with the system equalizer reports it. */
+    private fun playingSessions(packageName: String = "com.spotify.music") = EqSessionState(
+        listening = true,
+        generation = 1L,
+        sessions = mapOf(
+            11 to EqSession(
+                sessionId = 11,
+                generation = 1L,
+                openedAt = Instant.EPOCH,
+                packageName = packageName,
+                attached = true,
+                hasControl = true,
+            )
+        ),
+    )
+
+    /** The state once the status debounce has run out. */
+    private fun TestScope.settledState(): DashboardViewModel.State {
+        val vm = viewModel()
+        backgroundScope.launch { vm.state.collect { } }
+        runCurrent()
+        advanceTimeBy(500)
+        runCurrent()
+        return vm.state.value!!
+    }
+
+    @Test
+    fun `the device the equalizer runs for gets a status`() = runTest(UnconfinedTestDispatcher()) {
+        devicesFlow.value = listOf(device(eqEnabled = true))
+        eqTargetAddress.value = "AA:BB:CC:DD:EE:FF"
+        eqSessions.value = playingSessions()
+
+        settledState().eqStatus shouldBe DashboardViewModel.EqStatusFor(
+            address = "AA:BB:CC:DD:EE:FF",
+            status = EqStatus.Active(
+                app = EqStatusApp("com.spotify.music"),
+                multiple = false,
+                since = Instant.EPOCH,
+            ),
+        )
+    }
+
+    @Test
+    fun `a device that is not the equalizer target gets no status`() = runTest(UnconfinedTestDispatcher()) {
+        devicesFlow.value = listOf(device(eqEnabled = true))
+        // The equalizer runs for a device that isn't on the dashboard list at all.
+        eqTargetAddress.value = "11:22:33:44:55:66"
+        eqSessions.value = playingSessions()
+
+        settledState().eqStatus shouldBe null
+    }
+
+    @Test
+    fun `no target at all means no status`() = runTest(UnconfinedTestDispatcher()) {
+        devicesFlow.value = listOf(device(eqEnabled = true))
+        eqSessions.value = playingSessions()
+
+        settledState().eqStatus shouldBe null
+    }
+
+    @Test
+    fun `a target with the equalizer switched off gets no status`() = runTest(UnconfinedTestDispatcher()) {
+        devicesFlow.value = listOf(device(eqEnabled = false))
+        eqTargetAddress.value = "AA:BB:CC:DD:EE:FF"
+        eqSessions.value = playingSessions()
+
+        settledState().eqStatus shouldBe null
+    }
+
+    @Test
+    fun `without an equalizer engine there is no status`() = runTest(UnconfinedTestDispatcher()) {
+        every { eqEligibility.hasEngine } returns MutableStateFlow(false)
+        devicesFlow.value = listOf(device(eqEnabled = true))
+        eqTargetAddress.value = "AA:BB:CC:DD:EE:FF"
+        eqSessions.value = playingSessions()
+
+        settledState().eqStatus shouldBe null
+    }
+
+    // endregion
 
     companion object {
         private const val SPEAKER_ADDR = "self:speaker:main"

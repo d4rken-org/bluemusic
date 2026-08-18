@@ -26,19 +26,33 @@ import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.NewDeviceCreator
 import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.devices.core.updateVolume
+import eu.darken.bluemusic.eq.core.EqCoordinator
+import eu.darken.bluemusic.eq.core.EqEligibility
+import eu.darken.bluemusic.eq.ui.EqAppResolver
+import eu.darken.bluemusic.eq.ui.EqStatus
+import eu.darken.bluemusic.eq.ui.deriveEqStatus
 import eu.darken.bluemusic.main.core.GeneralSettings
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.receiveAsFlow
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.milliseconds
 
+@OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
 @HiltViewModel
 class DashboardViewModel @Inject constructor(
     private val permissionHelper: PermissionHelper,
@@ -51,6 +65,9 @@ class DashboardViewModel @Inject constructor(
     private val deviceCreator: NewDeviceCreator,
     private val speakerProvider: SpeakerDeviceProvider,
     private val reviewTool: ReviewTool,
+    private val eqAppResolver: EqAppResolver,
+    eqCoordinator: EqCoordinator,
+    eqEligibility: EqEligibility,
     dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
     appRepo: AppRepo,
@@ -118,6 +135,32 @@ class DashboardViewModel @Inject constructor(
         permissionHelper.getDndAccessHint(isDismissed, hasDevicesNeedingDnd)
     }
 
+    /**
+     * At most one device can have the equalizer running, so the dashboard only ever tracks that one.
+     *
+     * Debounced like the equalizer screen's own row: players announce a close/open pair around every
+     * track change, and the dashboard has no business flickering along with it.
+     */
+    private val eqStatusFlow: Flow<EqStatusFor?> = combine(
+        devicesFlow,
+        eqEligibility.hasEngine,
+        eqCoordinator.targetAddress,
+        eqCoordinator.sessionState,
+    ) { devices, hasEngine, targetAddress, sessionState ->
+        val address = targetAddress ?: return@combine null
+        val device = devices.firstOrNull { it.address == address } ?: return@combine null
+        deriveEqStatus(
+            deviceAddress = address,
+            eqEnabled = device.eqEnabled,
+            hasCapabilities = hasEngine,
+            targetAddress = targetAddress,
+            sessionState = sessionState,
+        )?.let { EqStatusFor(address, it) }
+    }
+        .distinctUntilChanged()
+        .debounce(EQ_STATUS_DEBOUNCE)
+        .mapLatest { statusFor -> statusFor?.let { it.copy(status = eqAppResolver.resolved(it.status)) } }
+
     private val devicesWithAppsFlow = combine(
         devicesFlow,
         appRepo.apps
@@ -149,7 +192,10 @@ class DashboardViewModel @Inject constructor(
             if (e is kotlinx.coroutines.CancellationException) throw e
             emit(ReviewTool.State())
         },
-    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint, dndHint, lockedDevices, speakerHintDismissed, review ->
+        // Seeded, so the debounce and the equalizer engine probe behind it can never hold up the
+        // dashboard itself.
+        eqStatusFlow.onStart { emit(null) },
+    ) { upgradeInfo, bluetoothState, devicesWithApps, batteryHint, overlayHint, notificationHint, dndHint, lockedDevices, speakerHintDismissed, review, eqStatus ->
         val showSpeakerHint = !speakerHintDismissed &&
             devicesWithApps.any { it.device.type != SourceDevice.Type.PHONE_SPEAKER } &&
             devicesWithApps.none { it.device.type == SourceDevice.Type.PHONE_SPEAKER }
@@ -178,12 +224,19 @@ class DashboardViewModel @Inject constructor(
                 !notificationHint.shouldShow &&
                 !showSpeakerHint &&
                 devicesWithApps.isNotEmpty(),
+            eqStatus = eqStatus,
         )
     }.asStateFlow()
 
     data class DeviceWithApps(
         val device: ManagedDevice,
         val launchApps: List<AppInfo>
+    )
+
+    /** What the equalizer is doing, and which device it is doing it for. */
+    data class EqStatusFor(
+        val address: DeviceAddr,
+        val status: EqStatus,
     )
 
     data class State(
@@ -202,6 +255,7 @@ class DashboardViewModel @Inject constructor(
         val dndAccessIntent: Intent? = null,
         val showSpeakerHint: Boolean = false,
         val showReviewCard: Boolean = false,
+        val eqStatus: EqStatusFor? = null,
     ) {
         // Convenience property for backwards compatibility
         val devices: List<ManagedDevice> get() = devicesWithApps.map { it.device }
@@ -319,5 +373,10 @@ class DashboardViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    companion object {
+        /** How long the session picture has to hold still before the dashboard follows it. */
+        private val EQ_STATUS_DEBOUNCE = 400.milliseconds
     }
 }
