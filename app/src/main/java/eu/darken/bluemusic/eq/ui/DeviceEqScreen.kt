@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -22,7 +23,6 @@ import androidx.compose.material.icons.twotone.Info
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilterChip
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -167,7 +167,7 @@ fun DeviceEqScreen(
                 ) {
                     Column(modifier = Modifier.padding(bottom = 12.dp)) {
                         SectionHeader(
-                            title = stringResource(R.string.eq_presets_label),
+                            title = stringResource(R.string.eq_bands_label),
                             modifier = Modifier.padding(top = 8.dp, bottom = 4.dp),
                         )
                         val context = LocalContext.current
@@ -185,62 +185,61 @@ fun DeviceEqScreen(
                                 )
                             }
                         }
+
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        val bands = levels.mapIndexed { index, level ->
+                            EqBandUi(
+                                frequencyLabel = formatFrequency(capabilities.centerFrequencies.getOrElse(index) { 0 }),
+                                gainLabel = formatGain(level),
+                                level = level,
+                            )
+                        }
+                        EqBandRow(
+                            bands = bands,
+                            minLevel = capabilities.minLevel,
+                            maxLevel = capabilities.maxLevel,
+                            onLevelChange = { index, newLevel ->
+                                val updated = levels.toMutableList().also { it[index] = newLevel }
+                                draggedLevels = updated
+                                onLevelsChanged(updated)
+                            },
+                            onLevelChangeFinished = { onLevelsCommitted(draggedLevels ?: levels) },
+                            // Narrower than the 16dp the bare screen used: the card already insets the
+                            // row, and the bands need the width back to stay wide enough to grab.
+                            modifier = Modifier.padding(horizontal = 8.dp),
+                        )
                     }
                 }
             }
 
             item {
-                SectionHeader(
-                    title = stringResource(R.string.eq_bands_label),
-                    modifier = Modifier.padding(horizontal = 16.dp),
-                )
-            }
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+                ) {
+                    Column(modifier = Modifier.padding(bottom = 12.dp)) {
+                        BoostSectionHeader()
 
-            item {
-                val bands = levels.mapIndexed { index, level ->
-                    EqBandUi(
-                        frequencyLabel = formatFrequency(capabilities.centerFrequencies.getOrElse(index) { 0 }),
-                        gainLabel = formatGain(level),
-                        level = level,
-                    )
+                        BoostSlider(
+                            gain = boost,
+                            onGainChange = { newGain ->
+                                draggedBoost = newGain
+                                onBoostChanged(newGain)
+                            },
+                            onGainChangeFinished = { onBoostCommitted(draggedBoost ?: boost) },
+                        )
+
+                        Text(
+                            text = stringResource(R.string.eq_boost_hint),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(horizontal = 16.dp),
+                        )
+                    }
                 }
-                EqBandRow(
-                    bands = bands,
-                    minLevel = capabilities.minLevel,
-                    maxLevel = capabilities.maxLevel,
-                    onLevelChange = { index, newLevel ->
-                        val updated = levels.toMutableList().also { it[index] = newLevel }
-                        draggedLevels = updated
-                        onLevelsChanged(updated)
-                    },
-                    onLevelChangeFinished = { onLevelsCommitted(draggedLevels ?: levels) },
-                )
-            }
-
-            item {
-                HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
-            }
-
-            item { BoostSectionHeader() }
-
-            item {
-                BoostSlider(
-                    gain = boost,
-                    onGainChange = { newGain ->
-                        draggedBoost = newGain
-                        onBoostChanged(newGain)
-                    },
-                    onGainChangeFinished = { onBoostCommitted(draggedBoost ?: boost) },
-                )
-            }
-
-            item {
-                Text(
-                    text = stringResource(R.string.eq_boost_hint),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(horizontal = 16.dp),
-                )
             }
 
             item { InfoCard() }
@@ -253,7 +252,7 @@ private fun BoostSectionHeader() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 32.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
+            .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(

@@ -58,6 +58,9 @@ data class EqBandUi(
  * The classic equalizer curve: one vertical slider per band, lowest frequency on the left,
  * max gain at the top. The row is laid out left-to-right in every locale, bass-left is the
  * convention the curve is read by.
+ *
+ * The row uses every bit of width it is given: horizontal padding is the caller's, so a row nested
+ * in a card can keep the bands as wide as they are on the bare screen.
  */
 @Composable
 fun EqBandRow(
@@ -77,11 +80,7 @@ fun EqBandRow(
     val textMeasurer = rememberTextMeasurer()
 
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
-        Column(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-        ) {
+        Column(modifier = modifier.fillMaxWidth()) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 Spacer(modifier = Modifier.width(ZERO_LABEL_GUTTER))
                 bands.forEach { band ->
@@ -303,6 +302,7 @@ private fun EqBandRowPreview() {
             maxLevel = 1500,
             onLevelChange = { _, _ -> },
             onLevelChangeFinished = {},
+            modifier = Modifier.padding(horizontal = 16.dp),
         )
     }
 }
@@ -317,6 +317,7 @@ private fun EqBandRowFlatPreview() {
             maxLevel = 1500,
             onLevelChange = { _, _ -> },
             onLevelChangeFinished = {},
+            modifier = Modifier.padding(horizontal = 16.dp),
         )
     }
 }

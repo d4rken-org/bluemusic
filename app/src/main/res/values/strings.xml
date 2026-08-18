@@ -514,7 +514,6 @@
 
     <!-- Equalizer -->
     <string name="eq_screen_title">Equalizer</string>
-    <string name="eq_presets_label">Presets</string>
     <string name="eq_bands_label">Bands</string>
     <string name="eq_disabled_hint">The equalizer is off for this device, you can turn it on in the device settings.</string>
     <string name="eq_boost_label">Volume boost</string>
