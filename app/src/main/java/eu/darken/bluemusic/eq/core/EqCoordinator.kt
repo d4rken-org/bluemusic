@@ -134,6 +134,16 @@ class EqCoordinator @Inject constructor(
      */
     private var isOperational = false
 
+    /**
+     * Set while the diagnostics screen turned the listener off by hand. Nothing but the screen
+     * itself may undo that, a restart or a config change would otherwise re-register behind the
+     * user's back.
+     */
+    private var isListeningSuppressed = false
+
+    /** The pending re-registration attempt after a failed one. Only touched from inside the actor. */
+    private var listenRetryJob: Job? = null
+
     /** Session ids the transition stream told us about, only touched from inside the actor. */
     private val openSessionIds = mutableSetOf<Int>()
 
@@ -234,7 +244,9 @@ class EqCoordinator @Inject constructor(
     /** Manual listening override for the diagnostics screen. */
     suspend fun setListening(enabled: Boolean) = act("setListening($enabled)") {
         cancelPendingReleases("setListening($enabled)")
+        cancelListenRetry("setListening($enabled)")
         openSessionIds.clear()
+        isListeningSuppressed = !enabled
         if (enabled) {
             tracker.startListening()
         } else {
@@ -274,7 +286,7 @@ class EqCoordinator @Inject constructor(
         coroutineScope {
             val sessionScope = this
             launch { consumeTransitions(token, sessionScope) }
-            desired.collect { applyDesired(token, it) }
+            desired.collect { applyDesired(token, it, sessionScope) }
         }
     }
 
@@ -296,7 +308,7 @@ class EqCoordinator @Inject constructor(
             } catch (e: Exception) {
                 log(TAG, WARN) { "Transition stream failed, restarting: ${e.asLog()}" }
             }
-            restartListening(token)
+            restartListening(token, sessionScope)
         }
     }
 
@@ -326,56 +338,97 @@ class EqCoordinator @Inject constructor(
         return Target(address = chosen.address, levels = levels, boostGain = boostGain)
     }
 
-    private suspend fun applyDesired(token: Long, desired: Desired) = act("desired($desired)", token) {
-        isOperational = desired.operational
+    private suspend fun applyDesired(token: Long, desired: Desired, sessionScope: CoroutineScope) =
+        act("desired($desired)", token) {
+            isOperational = desired.operational
 
-        if (!desired.operational) {
-            if (appliedTarget == null && controller.attachedSessionIds().isEmpty() && !tracker.state.value.listening) {
+            if (!desired.operational) {
+                cancelListenRetry("Not operational")
+                if (appliedTarget == null && controller.attachedSessionIds().isEmpty() && !tracker.state.value.listening) {
+                    return@act
+                }
+                log(TAG, INFO) { "The equalizer can't run here, releasing everything" }
+                appliedTarget = null
+                cancelPendingReleases("Not operational")
+                openSessionIds.clear()
+                controller.detachAll()
+                tracker.stopListening()
                 return@act
             }
-            log(TAG, INFO) { "The equalizer can't run here, releasing everything" }
-            appliedTarget = null
-            cancelPendingReleases("Not operational")
-            openSessionIds.clear()
-            controller.detachAll()
-            tracker.stopListening()
-            return@act
+
+            // The manual override owns the listener until the diagnostics screen hands it back.
+            if (!isListeningSuppressed && !tracker.state.value.listening) {
+                // A fresh generation knows no sessions yet, they arrive as OPEN transitions.
+                cancelPendingReleases("New listening generation")
+                openSessionIds.clear()
+                tracker.startListening()
+                ensureListening(token, sessionScope)
+            }
+
+            val target = desired.target
+            if (target == null) {
+                if (appliedTarget == null && controller.attachedSessionIds().isEmpty()) return@act
+                log(TAG, INFO) { "No eligible owner, letting go of the effects but staying tuned" }
+                appliedTarget = null
+                // A session that already broadcast CLOSE was only held for the sake of uninterrupted
+                // audio. With nothing attached there is nothing left to hold, so it counts as closed.
+                pendingReleases.keys.forEach { openSessionIds -= it }
+                cancelPendingReleases("No eligible owner")
+                // The sessions themselves stay known: they are still open, we are just not on them,
+                // and the app won't announce them a second time when the equalizer comes back.
+                controller.detachAll()
+                return@act
+            }
+
+            val previous = appliedTarget
+            appliedTarget = target
+
+            // Sessions waiting out their grace stay in both sets, so they reconcile like any other
+            // one: an edit reaches them, and neither branch below touches them.
+            val attached = controller.attachedSessionIds()
+            val live = (attached intersect openSessionIds).isNotEmpty()
+            if (live && previous?.levels != target.levels) controller.updateLevels(target.levels)
+            if (live && previous?.boostGain != target.boostGain) controller.updateBoost(target.boostGain)
+
+            (attached - openSessionIds).forEach { controller.detach(it) }
+            (openSessionIds - attached).forEach { controller.attach(it, target.levels, target.boostGain) }
         }
 
-        if (!tracker.state.value.listening) {
-            // A fresh generation knows no sessions yet, they arrive as OPEN transitions.
-            cancelPendingReleases("New listening generation")
-            openSessionIds.clear()
-            tracker.startListening()
+    /**
+     * Keeps the listener coming back after a failed registration.
+     *
+     * The tracker swallows a registration failure and simply stays off, and the inputs may not
+     * change again for a long time: without a retry of our own, every session announced in the
+     * meantime is missed, and those announcements only happen once.
+     */
+    private fun ensureListening(token: Long, sessionScope: CoroutineScope) {
+        if (tracker.state.value.listening) {
+            cancelListenRetry("Listening is up")
+            return
         }
-
-        val target = desired.target
-        if (target == null) {
-            if (appliedTarget == null && controller.attachedSessionIds().isEmpty()) return@act
-            log(TAG, INFO) { "No eligible owner, letting go of the effects but staying tuned" }
-            appliedTarget = null
-            // A session that already broadcast CLOSE was only held for the sake of uninterrupted
-            // audio. With nothing attached there is nothing left to hold, so it counts as closed.
-            pendingReleases.keys.forEach { openSessionIds -= it }
-            cancelPendingReleases("No eligible owner")
-            // The sessions themselves stay known: they are still open, we are just not on them, and
-            // the app won't announce them a second time when the equalizer comes back.
-            controller.detachAll()
-            return@act
+        if (listenRetryJob?.isActive == true) return
+        log(TAG, WARN) { "Could not start listening, retrying in $LISTEN_RETRY" }
+        listenRetryJob = sessionScope.launch {
+            delay(LISTEN_RETRY)
+            retryListening(token, sessionScope)
         }
+    }
 
-        val previous = appliedTarget
-        appliedTarget = target
+    private suspend fun retryListening(token: Long, sessionScope: CoroutineScope) = act("retryListening()", token) {
+        listenRetryJob = null
+        if (!isOperational || isListeningSuppressed || tracker.state.value.listening) return@act
+        log(TAG, INFO) { "Trying to start listening again" }
+        cancelPendingReleases("Listening retry")
+        openSessionIds.clear()
+        tracker.startListening()
+        ensureListening(token, sessionScope)
+    }
 
-        // Sessions waiting out their grace stay in both sets, so they reconcile like any other one:
-        // an edit reaches them, and neither branch below touches them.
-        val attached = controller.attachedSessionIds()
-        val live = (attached intersect openSessionIds).isNotEmpty()
-        if (live && previous?.levels != target.levels) controller.updateLevels(target.levels)
-        if (live && previous?.boostGain != target.boostGain) controller.updateBoost(target.boostGain)
-
-        (attached - openSessionIds).forEach { controller.detach(it) }
-        (openSessionIds - attached).forEach { controller.attach(it, target.levels, target.boostGain) }
+    private fun cancelListenRetry(reason: String) {
+        val job = listenRetryJob ?: return
+        log(TAG, INFO) { "Dropping the pending listening retry: $reason" }
+        job.cancel()
+        listenRetryJob = null
     }
 
     private suspend fun applyTransition(token: Long, transition: EqTransition, sessionScope: CoroutineScope) =
@@ -466,20 +519,26 @@ class EqCoordinator @Inject constructor(
     }
 
     /** Drops everything we think we know and starts over on a fresh listening generation. */
-    private suspend fun restartListening(token: Long) = act("restartListening()", token) {
-        cancelPendingReleases("Restarting listening")
-        openSessionIds.clear()
-        controller.detachAll()
-        tracker.stopListening()
-        // Tied to what the system can do, not to what is applied: a lost edge must not cost us the
-        // listener for as long as no device happens to have the equalizer enabled.
-        if (isOperational) tracker.startListening()
-    }
+    private suspend fun restartListening(token: Long, sessionScope: CoroutineScope) =
+        act("restartListening()", token) {
+            cancelPendingReleases("Restarting listening")
+            openSessionIds.clear()
+            controller.detachAll()
+            tracker.stopListening()
+            // Tied to what the system can do, not to what is applied: a lost edge must not cost us
+            // the listener for as long as no device happens to have the equalizer enabled. A manual
+            // override still wins, a restart is not the user handing the listener back.
+            if (!isOperational || isListeningSuppressed) return@act
+            tracker.startListening()
+            ensureListening(token, sessionScope)
+        }
 
     private suspend fun release(reason: String) = act("release($reason)") {
         isOperational = false
+        isListeningSuppressed = false
         appliedTarget = null
         cancelPendingReleases(reason)
+        cancelListenRetry(reason)
         openSessionIds.clear()
         previewFlow.value = null
         controller.detachAll()
@@ -509,6 +568,9 @@ class EqCoordinator @Inject constructor(
 
         /** How long a session that broadcast CLOSE keeps its effect in case it comes right back. */
         private val CLOSE_GRACE = 3.seconds
+
+        /** How long to wait before registering the broadcast receiver again after a failed try. */
+        private val LISTEN_RETRY = 5.seconds
 
         /** [activeToken] value while no session is running. Real tokens start at 1. */
         private const val NO_SESSION = 0L

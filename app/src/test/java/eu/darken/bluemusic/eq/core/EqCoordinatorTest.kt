@@ -57,6 +57,9 @@ class EqCoordinatorTest : BaseTest() {
     private var attachDelayMs = 0L
     private var detachAllDelayMs = 0L
 
+    /** Mirrors a receiver registration the framework refuses: the tracker ends up not listening. */
+    private var startListeningFails = false
+
     @BeforeEach
     fun setup() {
         devicesFlow = MutableStateFlow(emptyList())
@@ -70,6 +73,7 @@ class EqCoordinatorTest : BaseTest() {
         boosts = mutableMapOf()
         attachDelayMs = 0L
         detachAllDelayMs = 0L
+        startListeningFails = false
 
         deviceRepo = mockk { every { devices } returns devicesFlow }
         ownerRegistry = mockk { every { ownerSnapshots } returns ownerFlow }
@@ -87,8 +91,9 @@ class EqCoordinatorTest : BaseTest() {
                 this@EqCoordinatorTest.transitions
             }
             coEvery { startListening() } coAnswers {
+                // A failed registration is swallowed by the tracker: a new generation, still off.
                 trackerFlow.value = trackerFlow.value.copy(
-                    listening = true,
+                    listening = !startListeningFails,
                     generation = trackerFlow.value.generation + 1,
                     sessions = emptyMap(),
                 )
@@ -394,6 +399,42 @@ class EqCoordinatorTest : BaseTest() {
     }
 
     @Test
+    fun `a close, a toggle off and back on, then a fresh open attaches again`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+
+        closeSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        devicesFlow.value = listOf(device("AA", eqEnabled = false))
+        runCurrent()
+        attached.shouldBeEmpty()
+
+        devicesFlow.value = listOf(device("AA"))
+        runCurrent()
+        attached.shouldBeEmpty()
+
+        // The player announces its session again, and that is all it takes.
+        openSessions(11)
+        runCurrent()
+        attached shouldBe mapOf(11 to listOf(300, 0, -300))
+
+        // The grace timer of the close from before must not fire behind the fresh attach.
+        advanceTimeBy(5_000)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
     fun `losing the equalizer engine mid session stops listening and clears everything`() = runTest {
         val coordinator = createCoordinator(backgroundScope)
         devicesFlow.value = listOf(device("AA"))
@@ -413,6 +454,112 @@ class EqCoordinatorTest : BaseTest() {
         coVerify { controller.detachAll() }
         coVerify { tracker.stopListening() }
         coordinator.targetAddress.value shouldBe null
+
+        coordinator.stopSession(token)
+    }
+
+    // endregion
+
+    // region listening resilience
+
+    @Test
+    fun `a lost edge restarts listening even while nothing has the equalizer enabled`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA", eqEnabled = false))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        trackerFlow.value.listening shouldBe true
+        val generationBefore = trackerFlow.value.generation
+
+        transitions.close(EqTransitionOverflow("boom"))
+        runCurrent()
+
+        // Nothing is applied, and that is precisely when the announcements matter most.
+        trackerFlow.value.listening shouldBe true
+        (trackerFlow.value.generation > generationBefore) shouldBe true
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a manual listening stop survives a restart and a config change`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        trackerFlow.value.listening shouldBe true
+
+        coordinator.setListening(false)
+        runCurrent()
+        trackerFlow.value.listening shouldBe false
+
+        // A drained transition stream restarts listening, but not against the user's decision.
+        transitions.close(EqTransitionOverflow("boom"))
+        runCurrent()
+        trackerFlow.value.listening shouldBe false
+
+        devicesFlow.value = listOf(device("AA", levels = listOf(600, 600, 600)))
+        runCurrent()
+        trackerFlow.value.listening shouldBe false
+
+        coordinator.setListening(true)
+        runCurrent()
+        trackerFlow.value.listening shouldBe true
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a failed registration is retried until it works`() = runTest {
+        startListeningFails = true
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        trackerFlow.value.listening shouldBe false
+
+        // The retry reschedules itself for as long as registering keeps failing.
+        advanceTimeBy(6_000)
+        runCurrent()
+        trackerFlow.value.listening shouldBe false
+
+        startListeningFails = false
+        advanceTimeBy(6_000)
+        runCurrent()
+
+        trackerFlow.value.listening shouldBe true
+
+        // And the sessions announced from here on are attached like any other.
+        openSessions(11)
+        runCurrent()
+        attached shouldBe mapOf(11 to listOf(300, 0, -300))
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a manual listening stop is not undone by a pending retry`() = runTest {
+        startListeningFails = true
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        trackerFlow.value.listening shouldBe false
+
+        coordinator.setListening(false)
+        startListeningFails = false
+        advanceTimeBy(10_000)
+        runCurrent()
+
+        trackerFlow.value.listening shouldBe false
 
         coordinator.stopSession(token)
     }
@@ -1146,6 +1293,36 @@ class EqCoordinatorTest : BaseTest() {
         trackerFlow.value.listening shouldBe false
         coVerify(exactly = 0) { controller.attach(any(), any(), any()) }
         coVerify(exactly = 0) { tracker.startListening() }
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `regaining the engine listens again without attaching anything stale`() = runTest {
+        hasEngineFlow.value = false
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        trackerFlow.value.listening shouldBe false
+
+        // An app announced its session while we had no engine to attach with.
+        openSessions(11)
+        runCurrent()
+
+        hasEngineFlow.value = true
+        runCurrent()
+
+        // A fresh generation: what was announced before we could listen is not ours to attach to.
+        trackerFlow.value.listening shouldBe true
+        attached.shouldBeEmpty()
+        coVerify(exactly = 0) { controller.attach(any(), any(), any()) }
+
+        openSessions(22)
+        runCurrent()
+        attached shouldBe mapOf(22 to listOf(300, 0, -300))
 
         coordinator.stopSession(token)
     }
