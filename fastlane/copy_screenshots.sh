@@ -30,15 +30,16 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Map composable function names to fastlane screenshot filenames
+# Names are zero-padded: Play orders the screenshots by filename, and "10_" would sort before "2_".
 declare -A SCREEN_MAP=(
-    [DashboardLight]="1_dashboard_light"
-    [DashboardDark]="2_dashboard_dark"
-    [DeviceConfigTop]="3_device_config_top"
-    [DeviceConfigReaction]="4_device_config_reaction"
-    [DeviceConfigTiming]="5_device_config_timing"
-    [AppLauncher]="6_app_launcher"
-    [Autoplay]="7_autoplay"
-    [Settings]="8_settings"
+    [DashboardLight]="01_dashboard_light"
+    [DashboardDark]="02_dashboard_dark"
+    [DeviceEq]="03_equalizer"
+    [DeviceConfigTop]="04_device_config_top"
+    [DeviceConfigReaction]="05_device_config_reaction"
+    [AppLauncher]="06_app_launcher"
+    [Autoplay]="07_autoplay"
+    [Settings]="08_settings"
 )
 
 if [[ ! -d "$REFERENCE_DIR" ]]; then

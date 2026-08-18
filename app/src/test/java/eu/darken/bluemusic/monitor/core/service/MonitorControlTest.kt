@@ -6,6 +6,7 @@ import eu.darken.bluemusic.common.startServiceCompat
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.eq.core.EqEligibility
 import eu.darken.bluemusic.monitor.ui.MonitorNotifications
 import io.mockk.Runs
 import io.mockk.coEvery
@@ -32,6 +33,8 @@ class MonitorControlTest : BaseTest() {
     private lateinit var deviceRepo: DeviceRepo
     private lateinit var devicesSettings: DevicesSettings
     private lateinit var monitorNotifications: MonitorNotifications
+    private lateinit var eqEligibility: EqEligibility
+    private lateinit var eqOperationalFlow: MutableStateFlow<Boolean>
     private lateinit var devicesFlow: MutableStateFlow<List<ManagedDevice>>
     private lateinit var enabledFlow: MutableStateFlow<DevicesSettings.EnabledState>
     private lateinit var fakeIntent: Intent
@@ -44,6 +47,8 @@ class MonitorControlTest : BaseTest() {
         deviceRepo = mockk(relaxed = true) {
             every { devices } returns devicesFlow
         }
+        eqOperationalFlow = MutableStateFlow(false)
+        eqEligibility = mockk { every { operational } returns eqOperationalFlow }
         enabledFlow = MutableStateFlow(DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 0L))
         devicesSettings = mockk {
             every { enabledState } returns enabledFlow
@@ -70,9 +75,11 @@ class MonitorControlTest : BaseTest() {
     private fun device(
         active: Boolean,
         requiresPersistentSession: Boolean,
+        eqEnabled: Boolean = false,
     ): ManagedDevice = mockk(relaxed = true) {
         every { isActive } returns active
         every { this@mockk.requiresPersistentSession } returns requiresPersistentSession
+        every { this@mockk.eqEnabled } returns eqEnabled
     }
 
     private fun runTestWithControl(testBody: suspend kotlinx.coroutines.test.TestScope.() -> Unit) =
@@ -81,6 +88,7 @@ class MonitorControlTest : BaseTest() {
                 appScope = backgroundScope,
                 context = context,
                 deviceRepo = deviceRepo,
+                eqEligibility = eqEligibility,
                 devicesSettings = devicesSettings,
                 monitorNotifications = monitorNotifications,
             )
@@ -154,12 +162,29 @@ class MonitorControlTest : BaseTest() {
     }
 
     @Test
+    fun `active device with the equalizer enabled triggers service start`() = runTestWithControl {
+        eqOperationalFlow.value = true
+        devicesFlow.value = listOf(device(active = true, requiresPersistentSession = false, eqEnabled = true))
+
+        verify(atLeast = 1) { context.startServiceCompat(fakeIntent) }
+    }
+
+    @Test
+    fun `equalizer device does NOT trigger a start while the equalizer is not operational`() = runTestWithControl {
+        eqOperationalFlow.value = false
+        devicesFlow.value = listOf(device(active = true, requiresPersistentSession = false, eqEnabled = true))
+
+        verify(exactly = 0) { context.startServiceCompat(any()) }
+    }
+
+    @Test
     fun `startMonitor swallows a rejected service start`() = runTest(UnconfinedTestDispatcher()) {
         every { context.startServiceCompat(any()) } throws IllegalStateException("Not allowed to start service")
         val control = MonitorControl(
             appScope = backgroundScope,
             context = context,
             deviceRepo = deviceRepo,
+            eqEligibility = eqEligibility,
             devicesSettings = devicesSettings,
             monitorNotifications = monitorNotifications,
         )
@@ -176,6 +201,7 @@ class MonitorControlTest : BaseTest() {
             appScope = backgroundScope,
             context = context,
             deviceRepo = deviceRepo,
+            eqEligibility = eqEligibility,
             devicesSettings = devicesSettings,
             monitorNotifications = monitorNotifications,
         )

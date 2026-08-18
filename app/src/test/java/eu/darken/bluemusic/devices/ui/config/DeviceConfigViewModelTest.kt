@@ -8,15 +8,18 @@ import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
+import eu.darken.bluemusic.eq.core.EqCapabilities
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -50,7 +53,14 @@ class DeviceConfigViewModelTest : BaseTest() {
     private lateinit var deviceRepo: DeviceRepo
     private lateinit var navCtrl: NavigationController
 
-    private fun TestScope.viewModel(infos: MutableStateFlow<UpgradeRepo.Info>): DeviceConfigViewModel {
+    /** How often the fake equalizer probe was entered. */
+    private var probeRuns = 0
+
+    /** Completed once the equalizer probe is allowed to finish, so a test can hold it open. */
+    private fun TestScope.viewModel(
+        infos: MutableStateFlow<UpgradeRepo.Info>,
+        probeGate: CompletableDeferred<Unit>? = null,
+    ): DeviceConfigViewModel {
         deviceRepo = mockk<DeviceRepo>(relaxed = true).apply {
             every { devices } returns MutableStateFlow(listOf(device))
             coEvery { isManaged(address) } returns true
@@ -64,10 +74,39 @@ class DeviceConfigViewModelTest : BaseTest() {
             appRepo = mockk<eu.darken.bluemusic.common.apps.AppRepo>(relaxed = true).apply {
                 every { apps } returns MutableStateFlow(emptySet())
             },
+            eqCapabilities = mockk<EqCapabilities>(relaxed = true).apply {
+                every { capabilities } returns MutableStateFlow(null)
+                coEvery { refreshIfNeeded() } coAnswers {
+                    probeRuns++
+                    probeGate?.await()
+                    null
+                }
+            },
             dispatcherProvider = TestDispatcherProvider(UnconfinedTestDispatcher(testScheduler)),
             navCtrl = navCtrl,
             permissionHelper = mockk(relaxed = true),
         )
+    }
+
+    // The equalizer probe talks to the audio framework and can take a moment: the rest of the config
+    // screen has nothing to do with it and must not wait for it.
+    @Test
+    fun `the screen renders while the equalizer probe is still running`() = runTest {
+        val probe = CompletableDeferred<Unit>()
+        val vm = viewModel(fakeUpgradeInfos(FakeUpgradeInfo(isPro = true, isSettled = true)), probeGate = probe)
+
+        val rendered = async { vm.state.filterNotNull().first() }
+        runCurrent()
+
+        // The probe has to be running, or this would pass just as happily without one.
+        probeRuns shouldBe 1
+        probe.isCompleted shouldBe false
+
+        rendered.isCompleted shouldBe true
+        rendered.await().eqCapabilities shouldBe null
+
+        probe.complete(Unit)
+        advanceUntilIdle()
     }
 
     @Test
@@ -108,6 +147,51 @@ class DeviceConfigViewModelTest : BaseTest() {
 
         event.await() shouldBe ConfigEvent.RequiresPro
         verify(exactly = 0) { navCtrl.goTo(Nav.Main.AppSelection(address), any(), any()) }
+    }
+
+    // The equalizer screen is where the feature is explained and switched on, so a free user has to
+    // get there: its own switch does the upselling.
+    @Test
+    fun `a free user reaches the equalizer screen`() = runTest {
+        val vm = viewModel(fakeUpgradeInfos(FakeUpgradeInfo(isPro = false, isSettled = true)))
+
+        vm.handleAction(ConfigAction.OnEqClicked)
+        advanceUntilIdle()
+
+        verify { navCtrl.goTo(Nav.Main.DeviceEq(address), any(), any()) }
+    }
+
+    @Test
+    fun `a pro user reaches the equalizer screen`() = runTest {
+        val vm = viewModel(fakeUpgradeInfos(FakeUpgradeInfo(isPro = true, isSettled = true)))
+
+        vm.handleAction(ConfigAction.OnEqClicked)
+        advanceUntilIdle()
+
+        verify { navCtrl.goTo(Nav.Main.DeviceEq(address), any(), any()) }
+    }
+
+    @Test
+    fun `the equalizer switch is gated too`() = runTest {
+        val vm = viewModel(fakeUpgradeInfos(FakeUpgradeInfo(isPro = false, isSettled = true)))
+
+        val event = async { vm.events.first() }
+        runCurrent()
+        vm.handleAction(ConfigAction.OnToggleEq)
+        advanceUntilIdle()
+
+        event.await() shouldBe ConfigEvent.RequiresPro
+        coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+    }
+
+    @Test
+    fun `a pro user can flip the equalizer switch`() = runTest {
+        val vm = viewModel(fakeUpgradeInfos(FakeUpgradeInfo(isPro = true, isSettled = true)))
+
+        vm.handleAction(ConfigAction.OnToggleEq)
+        advanceUntilIdle()
+
+        coVerify { deviceRepo.updateDevice(address, any()) }
     }
 
     @Test

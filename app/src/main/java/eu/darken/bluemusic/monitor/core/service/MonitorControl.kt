@@ -15,13 +15,13 @@ import eu.darken.bluemusic.common.hasApiLevel
 import eu.darken.bluemusic.common.startServiceCompat
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
+import eu.darken.bluemusic.eq.core.EqEligibility
 import eu.darken.bluemusic.monitor.ui.MonitorNotifications
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -31,6 +31,7 @@ class MonitorControl @Inject constructor(
     @AppScope private val appScope: CoroutineScope,
     @ApplicationContext private val context: Context,
     deviceRepo: DeviceRepo,
+    eqEligibility: EqEligibility,
     private val devicesSettings: DevicesSettings,
     @Suppress("unused") // Eagerly inits the singleton so notification channel + PendingIntent IPC
     monitorNotifications: MonitorNotifications, // run before any startForegroundService() call
@@ -39,13 +40,15 @@ class MonitorControl @Inject constructor(
     init {
         var lastToggleEpoch: Long? = null
         combine(
-            deviceRepo.devices.map { devices ->
-                devices.any { device ->
-                    device.isActive && device.requiresPersistentSession
-                }
-            },
+            deviceRepo.devices,
+            eqEligibility.operational,
             devicesSettings.enabledState,
-        ) { needsService, enabledState -> needsService to enabledState }
+        ) { devices, eqOperational, enabledState ->
+            val needsService = devices.any { device ->
+                device.isActive && device.requiresPersistentSession
+            } || (eqOperational && devices.any { device -> device.isActive && device.eqEnabled })
+            needsService to enabledState
+        }
             .distinctUntilChanged()
             .setupCommonEventHandlers(TAG) { "Device monitor" }
             .onEach { (needsService, enabledState) ->

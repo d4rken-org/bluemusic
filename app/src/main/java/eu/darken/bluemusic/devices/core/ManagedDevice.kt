@@ -73,6 +73,12 @@ data class ManagedDevice(
         get() = config.connectionAlertType
     val connectionAlertSoundUri: String?
         get() = config.connectionAlertSoundUri
+    val eqEnabled: Boolean
+        get() = config.eqEnabled
+    val eqBandLevels: List<Int>?
+        get() = config.eqBandLevels
+    val eqBoostGain: Int?
+        get() = config.eqBoostGain
     /**
      * True when this device requires the foreground service to keep running for ongoing work.
      *
@@ -107,8 +113,12 @@ data class ManagedDevice(
     private val defaultMonitoringDuration: Duration = Duration.ofSeconds(4)
     private val defaultAdjustmentDelay: Duration = Duration.ofMillis(250)
 
-    fun toCompactString(): String =
-        "ManagedDevice($address/$label, active=$isActive, connected=$isConnected)"
+    fun toCompactString(): String = buildString {
+        append("ManagedDevice($address/$label, active=$isActive, connected=$isConnected")
+        if (eqEnabled) append(", eq=${eqBandLevels ?: "flat"}")
+        if (eqBoostGain != null && eqBoostGain != 0) append(", boost=$eqBoostGain")
+        append(")")
+    }
 
     override fun toString(): String {
         return "ManagedDevice(isActive=$isActive, isConnected=$isConnected, isEnabled=$isEnabled, address=$address, last=$lastConnected, config=$config)"

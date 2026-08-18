@@ -23,8 +23,9 @@ fun DeviceConfigTop() = DeviceConfigTopContent()
 @Composable
 fun DeviceConfigReaction() = DeviceConfigReactionContent()
 
+// Not published anymore, but still worth a cheap render to catch layout breakage in the timing card.
 @PreviewTest
-@PlayStoreLocales
+@PlayStoreLocalesSmoke
 @Composable
 fun DeviceConfigTiming() = DeviceConfigTimingContent()
 
@@ -32,6 +33,11 @@ fun DeviceConfigTiming() = DeviceConfigTimingContent()
 @PlayStoreLocales
 @Composable
 fun AppLauncher() = AppSelectionContent()
+
+@PreviewTest
+@PlayStoreLocales
+@Composable
+fun DeviceEq() = DeviceEqContent()
 
 @PreviewTest
 @PlayStoreLocales

@@ -43,6 +43,9 @@ import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.ui.dashboard.DashboardAction
+import eu.darken.bluemusic.eq.ui.EqStatus
+import eu.darken.bluemusic.eq.ui.EqStatusApp
+import eu.darken.bluemusic.eq.ui.EqStatusRow
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode.Companion.fromFloat
@@ -59,6 +62,7 @@ fun ManagedDeviceItem(
     onNavigateToConfig: () -> Unit,
     isOnlyDevice: Boolean = false,
     isLocked: Boolean = false,
+    eqStatus: EqStatus? = null,
 ) {
     var expanded by remember { mutableStateOf(device.isActive || isOnlyDevice) }
 
@@ -176,6 +180,17 @@ fun ManagedDeviceItem(
                         .padding(bottom = 12.dp)
                 )
 
+                // Only what is actually happening: waiting for an app or running for another device
+                // is nothing the dashboard needs to talk about.
+                if (eqStatus is EqStatus.Active || eqStatus is EqStatus.NoControl) {
+                    EqStatusRow(
+                        status = eqStatus,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 12.dp)
+                    )
+                }
+
                 val hasAnyVolumes = AudioStream.Type.entries.any { device.getVolume(it) != null }
 
                 if (!hasAnyVolumes) {
@@ -281,6 +296,23 @@ private fun ManagedDeviceItemExpandedPreview() {
             device = MockDevice().toManagedDevice(isConnected = true),
             onDeviceAction = {},
             onNavigateToConfig = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun ManagedDeviceItemEqActivePreview() {
+    PreviewWrapper {
+        ManagedDeviceItem(
+            device = MockDevice().toManagedDevice(isConnected = true),
+            onDeviceAction = {},
+            onNavigateToConfig = {},
+            eqStatus = EqStatus.Active(
+                app = EqStatusApp("com.spotify.music", label = "Spotify"),
+                multiple = false,
+                since = Instant.ofEpochMilli(1_700_000_000_000),
+            ),
         )
     }
 }

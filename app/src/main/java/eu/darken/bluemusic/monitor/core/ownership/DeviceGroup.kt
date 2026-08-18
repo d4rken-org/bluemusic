@@ -24,6 +24,17 @@ data class ConnectResult(
     val ownershipChanged: Boolean,
 )
 
+/**
+ * Observable view of who currently owns the audio streams.
+ *
+ * Ownership is topological, one group owns all streams at a time (see
+ * [AudioStreamOwnerRegistry.ownerAddressesFor]), so a single address list covers every stream.
+ */
+data class OwnerSnapshot(
+    val ownerAddresses: List<DeviceAddr> = emptyList(),
+    val generation: Long = 0L,
+)
+
 data class DisconnectResult(
     val wasInOwnerGroup: Boolean,
     val ownerGroupBefore: List<DeviceAddr>,

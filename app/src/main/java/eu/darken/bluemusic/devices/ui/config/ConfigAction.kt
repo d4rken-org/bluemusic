@@ -22,6 +22,8 @@ sealed interface ConfigAction {
     data object OnToggleVisibleAdjustments : ConfigAction
     data object OnToggleShowHomeScreen : ConfigAction
     data object OnLaunchAppClicked : ConfigAction
+    data object OnEqClicked : ConfigAction
+    data object OnToggleEq : ConfigAction
     data object OnEditMonitoringDurationClicked : ConfigAction
     data object OnEditReactionDelayClicked : ConfigAction
     data object OnEditAdjustmentDelayClicked : ConfigAction

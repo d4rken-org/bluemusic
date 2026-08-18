@@ -23,7 +23,7 @@ class BackupDataTest : BaseTest() {
     }
 
     private fun createMaximalFixture() = AppBackup(
-        formatVersion = 2,
+        formatVersion = 4,
         appVersion = "3.3.1",
         appVersionCode = 33100L,
         createdAt = "2026-04-16T14:30:00Z",
@@ -57,6 +57,9 @@ class BackupDataTest : BaseTest() {
                 dndMode = "priority_only",
                 connectionAlertType = "sound",
                 connectionAlertSoundUri = "content://media/external/audio/123",
+                eqEnabled = true,
+                eqBandLevels = listOf(600, 300, 0, -300, -600),
+                eqBoostGain = 500,
             ),
             DeviceConfigBackup(
                 address = "11:22:33:44:55:66",
@@ -94,7 +97,7 @@ class BackupDataTest : BaseTest() {
 
         actualJson.toComparableJson() shouldBe """
             {
-                "formatVersion": 2,
+                "formatVersion": 4,
                 "appVersion": "3.3.1",
                 "appVersionCode": 33100,
                 "createdAt": "2026-04-16T14:30:00Z",
@@ -133,7 +136,16 @@ class BackupDataTest : BaseTest() {
                         "visibleAdjustments": false,
                         "dndMode": "priority_only",
                         "connectionAlertType": "sound",
-                        "connectionAlertSoundUri": "content://media/external/audio/123"
+                        "connectionAlertSoundUri": "content://media/external/audio/123",
+                        "eqEnabled": true,
+                        "eqBandLevels": [
+                            600,
+                            300,
+                            0,
+                            -300,
+                            -600
+                        ],
+                        "eqBoostGain": 500
                     },
                     {
                         "address": "11:22:33:44:55:66",
@@ -150,7 +162,8 @@ class BackupDataTest : BaseTest() {
                         "autoplayKeycodes": [],
                         "isEnabled": true,
                         "visibleAdjustments": true,
-                        "connectionAlertType": "none"
+                        "connectionAlertType": "none",
+                        "eqEnabled": false
                     }
                 ],
                 "devicesSettings": {
@@ -236,6 +249,87 @@ class BackupDataTest : BaseTest() {
     }
 
     @Test
+    fun `v2 payload without the equalizer fields decodes with the equalizer off`() {
+        val jsonString = """
+        {
+            "formatVersion": 2,
+            "appVersion": "3.3.1",
+            "createdAt": "2026-04-16T14:30:00Z",
+            "deviceConfigs": [{
+                "address": "AA:BB:CC:DD:EE:FF",
+                "musicVolume": 0.75,
+                "connectionAlertType": "sound"
+            }]
+        }
+        """.trimIndent()
+
+        val backup = json.decodeFromString(AppBackup.serializer(), jsonString)
+        backup.formatVersion shouldBe 2
+        backup.deviceConfigs.single().eqEnabled shouldBe false
+        backup.deviceConfigs.single().eqBandLevels shouldBe null
+        backup.deviceConfigs.single().eqBoostGain shouldBe null
+    }
+
+    @Test
+    fun `equalizer fields survive a round-trip`() {
+        val original = AppBackup(
+            formatVersion = 4,
+            appVersion = "3.4.0",
+            createdAt = "2026-04-16T14:30:00Z",
+            deviceConfigs = listOf(
+                DeviceConfigBackup(
+                    address = "AA:BB:CC:DD:EE:FF",
+                    eqEnabled = true,
+                    eqBandLevels = listOf(-1500, -700, 0, 700, 1500),
+                    eqBoostGain = 1000,
+                ),
+                DeviceConfigBackup(
+                    address = "11:22:33:44:55:66",
+                    eqEnabled = true,
+                    eqBandLevels = null,
+                    eqBoostGain = null,
+                ),
+                DeviceConfigBackup(
+                    address = "22:33:44:55:66:77",
+                    eqEnabled = true,
+                    eqBoostGain = 0,
+                ),
+            ),
+        )
+
+        val restored = json.decodeFromString(AppBackup.serializer(), json.encodeToString(AppBackup.serializer(), original))
+
+        restored shouldBe original
+        restored.deviceConfigs[0].eqBandLevels shouldBe listOf(-1500, -700, 0, 700, 1500)
+        restored.deviceConfigs[0].eqBoostGain shouldBe 1000
+        restored.deviceConfigs[1].eqBandLevels shouldBe null
+        restored.deviceConfigs[1].eqBoostGain shouldBe null
+        restored.deviceConfigs[2].eqBoostGain shouldBe 0
+    }
+
+    @Test
+    fun `v3 payload without the boost field decodes without a boost`() {
+        val jsonString = """
+        {
+            "formatVersion": 3,
+            "appVersion": "3.4.0",
+            "createdAt": "2026-04-16T14:30:00Z",
+            "deviceConfigs": [{
+                "address": "AA:BB:CC:DD:EE:FF",
+                "eqEnabled": true,
+                "eqBandLevels": [600, 300, 0]
+            }]
+        }
+        """.trimIndent()
+
+        val backup = json.decodeFromString(AppBackup.serializer(), jsonString)
+        backup.formatVersion shouldBe 3
+        backup.deviceConfigs.single().eqEnabled shouldBe true
+        backup.deviceConfigs.single().eqBandLevels shouldBe listOf(600, 300, 0)
+        backup.deviceConfigs.single().eqBoostGain shouldBe null
+    }
+
+    @Test
     fun `DeviceConfigBackup defaults match entity defaults`() {
         val defaults = DeviceConfigBackup(address = "test")
         defaults.volumeLock shouldBe false
@@ -246,6 +340,7 @@ class BackupDataTest : BaseTest() {
         defaults.autoplayKeycodes shouldBe emptyList()
         defaults.showHomeScreen shouldBe false
         defaults.visibleAdjustments shouldBe true
+        defaults.eqBoostGain shouldBe null
     }
 
     @Test

@@ -132,6 +132,13 @@ configure<ApplicationExtension> {
         getByName("test") {
             resources.directories.add("src/main/assets")
         }
+        getByName("debug") {
+            // Room's MigrationTestHelper loads the exported schemas through the asset manager.
+            // For local unit tests AGP points Robolectric at the app variant's merged assets
+            // (mergeFossDebugAssets), not at the unit test source set, so the schemas have to
+            // ride along with the debug build type. Release/beta builds don't get them.
+            assets.directories.add("$projectDir/schemas")
+        }
         getByName("androidTest") {
             assets.directories.add("$projectDir/schemas")
         }
@@ -271,6 +278,7 @@ dependencies {
     implementation("androidx.room:room-runtime:2.8.4")
     implementation("androidx.room:room-ktx:2.8.4")
     ksp("androidx.room:room-compiler:2.8.4")
+    testImplementation("androidx.room:room-testing:2.8.4")
 
     // Was already on the runtime classpath transitively (Glance); pinned explicitly at the
     // resolved version because we now compile against it. At 2.7.x CoroutineWorker,

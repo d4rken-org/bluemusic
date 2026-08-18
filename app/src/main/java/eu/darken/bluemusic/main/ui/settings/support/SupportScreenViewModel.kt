@@ -73,6 +73,10 @@ class SupportScreenViewModel @Inject constructor(
         navTo(Nav.Settings.ContactSupport)
     }
 
+    fun openEqSessions() {
+        navTo(Nav.Main.EqSessions)
+    }
+
     fun onDebugLogToggle() = launch {
         if (stater.value().isRecording) {
             doStopDebugLog()

@@ -268,6 +268,9 @@ fun DevicesScreen(
                             onNavigateToConfig = { onDeviceConfig(deviceWithApps.device.address) },
                             isOnlyDevice = state.devicesWithApps.size == 1,
                             isLocked = deviceWithApps.device.address in state.lockedDevices,
+                            eqStatus = state.eqStatus
+                                ?.takeIf { it.address == deviceWithApps.device.address }
+                                ?.status,
                         )
                     }
                 }

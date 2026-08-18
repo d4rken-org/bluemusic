@@ -14,6 +14,8 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
+import eu.darken.bluemusic.eq.core.EqCoordinator
+import eu.darken.bluemusic.eq.core.EqEligibility
 import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
@@ -21,6 +23,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.filter
@@ -45,6 +48,8 @@ class MonitorOrchestrator @Inject constructor(
     private val ringerModeTransitionHandler: RingerModeTransitionHandler,
     private val ownerRegistry: AudioStreamOwnerRegistry,
     private val volumeEventDispatcher: VolumeEventDispatcher,
+    private val eqCoordinator: EqCoordinator,
+    private val eqEligibility: EqEligibility,
 ) {
 
     /**
@@ -77,6 +82,7 @@ class MonitorOrchestrator @Inject constructor(
         ownerRegistry.reset()
         ownerRegistry.bootstrap(initialDevices)
         eventDispatcher.resetForNewSession()
+        val eqSessionToken = eqCoordinator.startSession()
 
         onActiveDevicesChanged(initialDevices.filter { it.isActive })
 
@@ -120,17 +126,25 @@ class MonitorOrchestrator @Inject constructor(
             .catch { log(TAG, WARN) { "Event monitor flow failed:\n${it.asLog()}" } }
             .launchIn(monitorScope)
 
-        val deviceMonitorJob = deviceRepo.devices
+        // Eligibility is an input, not a one-shot sample: losing it while the equalizer is the only
+        // reason to stay alive has to recompute the shutdown decision instead of keeping us up.
+        val deviceMonitorJob = combine(
+            deviceRepo.devices,
+            eqEligibility.operational,
+        ) { devices, eqOperational -> devices to eqOperational }
             .setupCommonEventHandlers(TAG) { "Devices monitor" }
             .distinctUntilChanged()
             .throttleLatest(3000)
-            .flatMapLatest { devices ->
+            .flatMapLatest { (devices, eqOperational) ->
                 val activeDevices = devices.filter { it.isActive }
 
                 log(TAG) { "monitor: Currently active devices: ${activeDevices.map { "${it.address}/${it.label}" }}" }
                 onActiveDevicesChanged(activeDevices)
 
-                val stayActive = activeDevices.any { it.requiresPersistentSession }
+                // The equalizer re-attaches on every new effect session, so it needs the session to
+                // stay alive for as long as an eligible device is connected.
+                val stayActive = activeDevices.any { it.requiresPersistentSession } ||
+                        (eqOperational && activeDevices.any { it.eqEnabled })
 
                 when {
                     activeDevices.isNotEmpty() && stayActive -> {
@@ -170,6 +184,9 @@ class MonitorOrchestrator @Inject constructor(
             deviceMonitorJob.join()
             log(TAG, VERBOSE) { "Monitor job quit" }
         } finally {
+            // Before the owner registry is reset, so the release still sees who owned the streams.
+            // Only our own session is stopped: a newer monitor session may already have replaced it.
+            eqCoordinator.stopSession(eqSessionToken)
             monitorJob.cancel()
         }
     }

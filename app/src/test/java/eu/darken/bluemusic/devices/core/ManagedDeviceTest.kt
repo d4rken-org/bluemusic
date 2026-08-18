@@ -4,6 +4,8 @@ import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldContain
+import io.kotest.matchers.string.shouldNotContain
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.BeforeEach
@@ -274,6 +276,58 @@ class ManagedDeviceTest : BaseTest() {
     fun `monitoringDuration uses config value when set`() {
         create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", monitoringDuration = 10000L))
             .monitoringDuration shouldBe Duration.ofSeconds(10)
+    }
+
+    // endregion
+
+    // region equalizer
+
+    @Test
+    fun `equalizer defaults to off without levels`() {
+        create().eqEnabled shouldBe false
+        create().eqBandLevels shouldBe null
+        create().eqBoostGain shouldBe null
+    }
+
+    @Test
+    fun `equalizer accessors read the config`() {
+        val device = create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                eqEnabled = true,
+                eqBandLevels = listOf(600, 0, -600),
+                eqBoostGain = 400,
+            )
+        )
+        device.eqEnabled shouldBe true
+        device.eqBandLevels shouldBe listOf(600, 0, -600)
+        device.eqBoostGain shouldBe 400
+    }
+
+    @Test
+    fun `equalizer alone does not require a persistent session`() {
+        create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", eqEnabled = true))
+            .requiresPersistentSession shouldBe false
+    }
+
+    @Test
+    fun `toCompactString mentions the equalizer only when enabled`() {
+        create().toCompactString() shouldBe "ManagedDevice(AA:BB:CC:DD:EE:FF/Device Label, active=true, connected=true)"
+
+        create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", eqEnabled = true))
+            .toCompactString() shouldContain "eq=flat"
+
+        create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", eqEnabled = true, eqBandLevels = listOf(300, 0)))
+            .toCompactString() shouldContain "eq=[300, 0]"
+    }
+
+    @Test
+    fun `toCompactString mentions the boost only when there is one`() {
+        create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", eqEnabled = true, eqBoostGain = 0))
+            .toCompactString() shouldNotContain "boost="
+
+        create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", eqEnabled = true, eqBoostGain = 500))
+            .toCompactString() shouldContain "boost=500"
     }
 
     // endregion

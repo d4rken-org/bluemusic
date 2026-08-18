@@ -160,7 +160,7 @@ private fun UpgradePitchContent(
             title = stringResource(R.string.upgrade_screen_why_title),
             icon = Icons.TwoTone.AutoAwesome,
         ) {
-            UpgradeFeatureList(text = stringResource(R.string.upgrade_screen_why_body))
+            UpgradeFeatureList(text = benefitsWithEqualizer(R.string.upgrade_screen_why_body))
         }
 
         UpgradeSectionCard(
