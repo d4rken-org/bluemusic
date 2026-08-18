@@ -41,8 +41,8 @@ import kotlin.time.Duration.Companion.seconds
  * session broadcasts and attach our curve to every session cooperating apps announce. Losing
  * ownership, disabling the feature, or the monitor session ending releases everything again.
  *
- * All desired-state changes go through one serialized actor with a sequence check, so a recompute
- * that was computed before a newer release can never re-attach after it.
+ * All desired-state changes go through one serialized actor tagged with the session token they were
+ * computed for, so work from a session that has already ended can never re-attach after its release.
  */
 @Singleton
 class EqCoordinator @Inject constructor(
@@ -70,41 +70,67 @@ class EqCoordinator @Inject constructor(
     private val previewFlow = MutableStateFlow<Preview?>(null)
 
     private val actorLock = Mutex()
-    private val sequence = AtomicLong(0L)
-    private var appliedSequence = 0L
     private var appliedTarget: Target? = null
 
     private val sessionLock = Mutex()
     private var sessionJob: Job? = null
+    private var sessionCounter = 0L
+
+    /** The token of the session that is allowed to act right now, [NO_SESSION] while none runs. */
+    private val activeToken = AtomicLong(NO_SESSION)
 
     val sessionState = tracker.state
 
-    /** Starts reacting to ownership and config changes. Called when a monitor session starts. */
-    suspend fun startSession() = sessionLock.withLock {
-        if (sessionJob?.isActive == true) {
-            log(TAG, VERBOSE) { "startSession(): Already running" }
-            return@withLock
-        }
-        log(TAG, INFO) { "startSession()" }
-        sessionJob = appScope.launch(dispatcherProvider.Default) {
-            try {
-                runSession()
-            } catch (e: CancellationException) {
-                throw e
-            } catch (e: Exception) {
-                log(TAG, WARN) { "Session failed: ${e.asLog()}" }
-            } finally {
-                withContext(NonCancellable) { release("Session ended") }
+    /**
+     * Starts reacting to ownership and config changes. Called when a monitor session starts.
+     *
+     * A session that is still running is cancelled and joined first, so the returned token always
+     * belongs to the only session that can act from here on.
+     */
+    suspend fun startSession(): Long = withContext(NonCancellable) {
+        sessionLock.withLock {
+            sessionJob?.let { previous ->
+                log(TAG, INFO) { "startSession(): Replacing the running session" }
+                activeToken.set(NO_SESSION)
+                previous.cancelAndJoin()
             }
+
+            val token = ++sessionCounter
+            activeToken.set(token)
+            log(TAG, INFO) { "startSession(): token=$token" }
+
+            sessionJob = appScope.launch(dispatcherProvider.Default) {
+                try {
+                    runSession(token)
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    log(TAG, WARN) { "Session failed: ${e.asLog()}" }
+                } finally {
+                    withContext(NonCancellable) { release("Session $token ended") }
+                }
+            }
+            token
         }
     }
 
-    /** Releases every effect and stops listening. Safe to call more than once. */
-    suspend fun stopSession() = withContext(NonCancellable) {
-        val job = sessionLock.withLock { sessionJob.also { sessionJob = null } }
-        log(TAG, INFO) { "stopSession()" }
+    /**
+     * Releases every effect and stops listening, but only for the session [token] identifies. A
+     * caller whose session was already replaced no-ops instead of tearing down the newer one.
+     */
+    suspend fun stopSession(token: Long) = withContext(NonCancellable) {
+        val job = sessionLock.withLock {
+            val active = activeToken.get()
+            if (active != token) {
+                log(TAG, INFO) { "stopSession($token): Not the active session ($active), ignoring" }
+                return@withContext
+            }
+            activeToken.set(NO_SESSION)
+            sessionJob.also { sessionJob = null }
+        }
+        log(TAG, INFO) { "stopSession($token)" }
         job?.cancelAndJoin()
-        release("Session stopped")
+        release("Session $token stopped")
     }
 
     /**
@@ -129,7 +155,7 @@ class EqCoordinator @Inject constructor(
 
     suspend fun clearDiagnostics() = tracker.clear()
 
-    private suspend fun runSession() {
+    private suspend fun runSession(token: Long) {
         // GPlay cold start reports non-Pro until billing settles, so reconcile once (fail-open)
         // before trusting the cached entitlement flow for the rest of the session.
         if (!upgradeRepo.isProSettled(ENTITLEMENT_TIMEOUT)) {
@@ -153,7 +179,7 @@ class EqCoordinator @Inject constructor(
 
         targets
             .combine(openSessionIds) { target, sessionIds -> target to sessionIds }
-            .collect { (target, sessionIds) -> submit(target, sessionIds) }
+            .collect { (target, sessionIds) -> submit(token, target, sessionIds) }
     }
 
     private fun resolveTarget(
@@ -182,7 +208,11 @@ class EqCoordinator @Inject constructor(
         return Target(address = chosen.address, levels = levels)
     }
 
-    private suspend fun submit(target: Target?, sessionIds: List<Int>) = act("apply($target, $sessionIds)") {
+    private suspend fun submit(
+        token: Long,
+        target: Target?,
+        sessionIds: List<Int>,
+    ) = act("apply($target, $sessionIds)", token) {
         if (target == null) {
             if (appliedTarget == null && controller.attachedSessionIds().isEmpty() && !tracker.state.value.listening) {
                 return@act
@@ -217,18 +247,18 @@ class EqCoordinator @Inject constructor(
     }
 
     /**
-     * Runs [block] on the single actor. Work computed before a newer change was already applied is
-     * dropped instead of being applied out of order.
+     * Runs [block] on the single actor. Work tagged with a [token] that is no longer the active
+     * session's is dropped, so an attach that was computed before a release cannot outlive it.
+     * Untagged work (releases, the diagnostics override) always applies.
      */
-    private suspend fun act(label: String, block: suspend () -> Unit) {
-        val seq = sequence.incrementAndGet()
+    private suspend fun act(label: String, token: Long? = null, block: suspend () -> Unit) {
         actorLock.withLock {
-            if (seq <= appliedSequence) {
-                log(TAG, WARN) { "Dropping stale $label (seq=$seq, applied=$appliedSequence)" }
+            val active = activeToken.get()
+            if (token != null && token != active) {
+                log(TAG, WARN) { "Dropping stale $label (token=$token, active=$active)" }
                 return
             }
-            appliedSequence = seq
-            log(TAG, VERBOSE) { "Applying $label (seq=$seq)" }
+            log(TAG, VERBOSE) { "Applying $label" }
             block()
         }
     }
@@ -236,5 +266,8 @@ class EqCoordinator @Inject constructor(
     companion object {
         private val TAG = logTag("Eq", "Coordinator")
         private val ENTITLEMENT_TIMEOUT = 3.seconds
+
+        /** [activeToken] value while no session is running. Real tokens start at 1. */
+        private const val NO_SESSION = 0L
     }
 }

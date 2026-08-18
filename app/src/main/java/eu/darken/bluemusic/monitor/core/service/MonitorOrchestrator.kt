@@ -81,7 +81,7 @@ class MonitorOrchestrator @Inject constructor(
         ownerRegistry.reset()
         ownerRegistry.bootstrap(initialDevices)
         eventDispatcher.resetForNewSession()
-        eqCoordinator.startSession()
+        val eqSessionToken = eqCoordinator.startSession()
 
         onActiveDevicesChanged(initialDevices.filter { it.isActive })
 
@@ -179,7 +179,8 @@ class MonitorOrchestrator @Inject constructor(
             log(TAG, VERBOSE) { "Monitor job quit" }
         } finally {
             // Before the owner registry is reset, so the release still sees who owned the streams.
-            eqCoordinator.stopSession()
+            // Only our own session is stopped: a newer monitor session may already have replaced it.
+            eqCoordinator.stopSession(eqSessionToken)
             monitorJob.cancel()
         }
     }

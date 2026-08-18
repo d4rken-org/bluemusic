@@ -238,12 +238,12 @@ class MonitorOrchestratorTest : BaseTest() {
 
         advanceTimeBy(20_000)
         coVerify { eqCoordinator.startSession() }
-        coVerify(exactly = 0) { eqCoordinator.stopSession() }
+        coVerify(exactly = 0) { eqCoordinator.stopSession(any()) }
 
         enabledFlow.value = DevicesSettings.EnabledState(isEnabled = false, toggleEpoch = 1L)
         advanceUntilIdle()
 
-        coVerify { eqCoordinator.stopSession() }
+        coVerify { eqCoordinator.stopSession(any()) }
 
         job.cancel()
     }

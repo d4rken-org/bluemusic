@@ -142,7 +142,7 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
         openSessions(11, 12)
         runCurrent()
@@ -150,7 +150,7 @@ class EqCoordinatorTest : BaseTest() {
         attached shouldBe mapOf(11 to listOf(300, 0, -300), 12 to listOf(300, 0, -300))
         coVerify { tracker.startListening() }
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 
     @Test
@@ -159,14 +159,14 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA", eqEnabled = false))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         openSessions(11)
         runCurrent()
 
         attached.shouldBeEmpty()
         coVerify(exactly = 0) { controller.attach(any(), any()) }
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 
     @Test
@@ -175,14 +175,14 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA", levels = null))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
         openSessions(11)
         runCurrent()
 
         attached shouldBe mapOf(11 to emptyList())
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 
     @Test
@@ -191,7 +191,7 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
         openSessions(11)
         runCurrent()
@@ -204,7 +204,7 @@ class EqCoordinatorTest : BaseTest() {
         coVerify { controller.detachAll() }
         coVerify { tracker.stopListening() }
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 
     @Test
@@ -213,7 +213,7 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
         openSessions(11)
         runCurrent()
@@ -223,7 +223,7 @@ class EqCoordinatorTest : BaseTest() {
 
         attached.shouldBeEmpty()
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 
     @Test
@@ -235,14 +235,14 @@ class EqCoordinatorTest : BaseTest() {
         )
         ownerFlow.value = OwnerSnapshot(listOf("LEFT", "RIGHT"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
         openSessions(11)
         runCurrent()
 
         attached shouldBe mapOf(11 to listOf(900, 900, 900))
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 
     @Test
@@ -251,7 +251,7 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
         openSessions(11)
         runCurrent()
@@ -261,7 +261,7 @@ class EqCoordinatorTest : BaseTest() {
 
         attached.keys shouldBe setOf(11, 22)
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 
     @Test
@@ -270,7 +270,7 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
         openSessions(11, 22)
         runCurrent()
@@ -281,7 +281,7 @@ class EqCoordinatorTest : BaseTest() {
         attached.keys shouldBe setOf(22)
         coVerify { controller.detach(11) }
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 
     @Test
@@ -290,7 +290,7 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
         openSessions(11)
         runCurrent()
@@ -306,7 +306,7 @@ class EqCoordinatorTest : BaseTest() {
 
         attached.shouldBeEmpty()
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 
     @Test
@@ -315,7 +315,7 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
         openSessions(11)
         runCurrent()
@@ -325,7 +325,7 @@ class EqCoordinatorTest : BaseTest() {
 
         attached shouldBe mapOf(11 to listOf(300, 0, -300))
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 
     @Test
@@ -335,7 +335,7 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
 
         // Attach is slow: ownership is lost while it is still running.
@@ -347,7 +347,7 @@ class EqCoordinatorTest : BaseTest() {
 
         attached.shouldBeEmpty()
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 
     @Test
@@ -356,12 +356,12 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
         openSessions(11)
         runCurrent()
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
         runCurrent()
 
         attached.shouldBeEmpty()
@@ -375,12 +375,12 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
         openSessions(11)
         runCurrent()
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
 
         // Inputs keep changing after the session ended, nothing may re-attach.
         devicesFlow.value = listOf(device("AA", levels = listOf(600, 600, 600)))
@@ -392,6 +392,57 @@ class EqCoordinatorTest : BaseTest() {
     }
 
     @Test
+    fun `starting a session again replaces the previous one`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val first = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        val second = coordinator.startSession()
+        runCurrent()
+        (second > first) shouldBe true
+
+        // The replaced session released on its way out, the new one attaches again.
+        openSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        coordinator.stopSession(second)
+        runCurrent()
+        attached.shouldBeEmpty()
+    }
+
+    @Test
+    fun `stopping with a stale token leaves the running session alone`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val first = coordinator.startSession()
+        runCurrent()
+        val second = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        // The monitor session that owned `first` shuts down late, its stop must not tear this down.
+        coordinator.stopSession(first)
+        runCurrent()
+
+        attached.keys shouldBe setOf(11)
+
+        coordinator.stopSession(second)
+        runCurrent()
+        attached.shouldBeEmpty()
+    }
+
+    @Test
     fun `a non pro user never starts attaching`() = runTest {
         upgradeInfos.value = FakeUpgradeInfo(isPro = false, isSettled = true)
         operationalFlow.value = false
@@ -399,14 +450,14 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         openSessions(11)
         runCurrent()
 
         attached.shouldBeEmpty()
         coVerify(exactly = 0) { controller.attach(any(), any()) }
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 
     @Test
@@ -415,7 +466,7 @@ class EqCoordinatorTest : BaseTest() {
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
-        coordinator.startSession()
+        val token = coordinator.startSession()
         runCurrent()
         openSessions(11)
         runCurrent()
@@ -425,6 +476,6 @@ class EqCoordinatorTest : BaseTest() {
 
         attached.shouldBeEmpty()
 
-        coordinator.stopSession()
+        coordinator.stopSession(token)
     }
 }
