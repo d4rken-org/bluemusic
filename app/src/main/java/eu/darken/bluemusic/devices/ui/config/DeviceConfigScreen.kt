@@ -800,42 +800,46 @@ private fun EqualizerCard(
             )
 
             // Without an engine there is no curve to draw: the equalizer screen explains why.
-            if (capabilities != null) {
-                Spacer(modifier = Modifier.height(12.dp))
-                EqMiniGraph(
-                    levels = capabilities.levelsOf(bandLevels),
-                    minLevel = capabilities.minLevel,
-                    maxLevel = capabilities.maxLevel,
-                    isEnabled = isEnabled,
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
-            }
-
             val boost = boostGain ?: 0
-            if (boost > 0) {
+            if (capabilities != null || boost > 0) {
+                Spacer(modifier = Modifier.height(12.dp))
                 Row(
-                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.TwoTone.VolumeUp,
-                        contentDescription = null,
-                        modifier = Modifier.size(16.dp),
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = stringResource(
-                            R.string.devices_device_config_equalizer_boost_label,
-                            formatGain(boost),
-                        ),
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
+                    if (capabilities != null) {
+                        EqMiniGraph(
+                            levels = capabilities.levelsOf(bandLevels),
+                            minLevel = capabilities.minLevel,
+                            maxLevel = capabilities.maxLevel,
+                            isEnabled = isEnabled,
+                        )
+                        Spacer(modifier = Modifier.weight(1f))
+                    }
+
+                    if (boost > 0) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.TwoTone.VolumeUp,
+                            contentDescription = null,
+                            modifier = Modifier.size(16.dp),
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = stringResource(
+                                R.string.devices_device_config_equalizer_boost_label,
+                                formatGain(boost),
+                            ),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
                 }
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }
@@ -908,11 +912,24 @@ private fun EqualizerCardPreview() {
                     .padding(horizontal = 16.dp, vertical = 8.dp)
             )
             EqualizerCard(
+                isEnabled = true,
+                isProVersion = true,
+                capabilities = eqPreviewCaps,
+                bandLevels = listOf(1500, -1500, 1500, -1500, 0),
+                boostGain = 900,
+                onCardClick = {},
+                onToggle = {},
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+            )
+            // No engine yet, so only the boost the user configured has anything to say.
+            EqualizerCard(
                 isEnabled = false,
                 isProVersion = false,
                 capabilities = null,
                 bandLevels = null,
-                boostGain = null,
+                boostGain = 300,
                 onCardClick = {},
                 onToggle = {},
                 modifier = Modifier
