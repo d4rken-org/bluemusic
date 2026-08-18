@@ -515,7 +515,8 @@
     <!-- Equalizer -->
     <string name="eq_screen_title">Equalizer</string>
     <string name="eq_bands_label">Bands</string>
-    <string name="eq_disabled_hint">The equalizer is off for this device, you can turn it on in the device settings.</string>
+    <string name="eq_enable_label">Use the equalizer</string>
+    <string name="eq_disabled_hint">Off, your settings are saved but won\'t affect audio yet.</string>
     <string name="eq_boost_label">Volume boost</string>
     <string name="eq_boost_hint">Makes everything louder on top of the bands. A lot of boost can distort the sound.</string>
     <string name="eq_unsupported_msg">This phone doesn\'t offer an equalizer we can use.</string>

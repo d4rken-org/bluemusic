@@ -9,9 +9,11 @@ import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.flow.SingleEventFlow
 import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
+import eu.darken.bluemusic.common.upgrade.isProForUi
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
@@ -34,7 +36,7 @@ class DeviceEqViewModel @AssistedInject constructor(
     private val eqPresets: EqPresets,
     private val eqCoordinator: EqCoordinator,
     private val eqConfigSaver: EqConfigSaver,
-    upgradeRepo: UpgradeRepo,
+    private val upgradeRepo: UpgradeRepo,
     dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
 ) : ViewModel4(dispatcherProvider, logTag("Eq", "Device", "VM"), navCtrl) {
@@ -45,6 +47,12 @@ class DeviceEqViewModel @AssistedInject constructor(
         val presets: List<PresetOption> = emptyList(),
         val isProVersion: Boolean = false,
     )
+
+    sealed interface Event {
+        data object RequiresPro : Event
+    }
+
+    val events = SingleEventFlow<Event>()
 
     /** A preset already interpolated to the engine we have, so the UI can match and apply it directly. */
     data class PresetOption(
@@ -70,6 +78,22 @@ class DeviceEqViewModel @AssistedInject constructor(
             isProVersion = upgradeInfo.isPro,
         )
     }.asStateFlow()
+
+    /**
+     * Entitlement is checked here instead of against the state field: the state can still carry a
+     * cold-start "not pro" from before billing settled, and that must not cost a paying user the
+     * switch.
+     */
+    fun onToggleEq() = launch {
+        if (!upgradeRepo.isProForUi()) {
+            log(tag) { "onToggleEq(): Not pro" }
+            events.emit(Event.RequiresPro)
+            return@launch
+        }
+        deviceRepo.updateDevice(deviceAddress) { oldConfig ->
+            oldConfig.copy(eqEnabled = !oldConfig.eqEnabled)
+        }
+    }
 
     /** Live values while a slider is being dragged: applied to the running effects, not persisted. */
     fun onLevelsChanged(levels: List<Int>) {

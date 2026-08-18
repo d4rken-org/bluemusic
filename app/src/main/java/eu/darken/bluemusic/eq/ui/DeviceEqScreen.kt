@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
@@ -28,6 +29,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -40,6 +42,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -48,9 +51,11 @@ import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.common.compose.UpgradeBadge
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
 import eu.darken.bluemusic.common.compose.navigationBarBottomPadding
 import eu.darken.bluemusic.common.error.ErrorEventHandler
+import eu.darken.bluemusic.common.navigation.Nav
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.ui.config.components.SectionHeader
 import eu.darken.bluemusic.eq.core.EqCapabilities
@@ -71,10 +76,19 @@ fun DeviceEqScreenHost(
 
     val state by vm.state.collectAsStateWithLifecycle()
 
+    LaunchedEffect(vm.events) {
+        vm.events.collect { event ->
+            when (event) {
+                is DeviceEqViewModel.Event.RequiresPro -> vm.navTo(Nav.Main.Upgrade())
+            }
+        }
+    }
+
     state?.let {
         DeviceEqScreen(
             state = it,
             onNavigateBack = { vm.navUp() },
+            onToggleEq = { vm.onToggleEq() },
             onLevelsChanged = { levels -> vm.onLevelsChanged(levels) },
             onLevelsCommitted = { levels -> vm.onLevelsCommitted(levels) },
             onPresetSelected = { preset -> vm.applyPreset(preset) },
@@ -89,6 +103,7 @@ fun DeviceEqScreenHost(
 fun DeviceEqScreen(
     state: DeviceEqViewModel.State,
     onNavigateBack: () -> Unit,
+    onToggleEq: () -> Unit,
     onLevelsChanged: (List<Int>) -> Unit,
     onLevelsCommitted: (List<Int>) -> Unit,
     onPresetSelected: (EqPresets.Id) -> Unit,
@@ -152,10 +167,15 @@ fun DeviceEqScreen(
                 return@LazyColumn
             }
 
-            // The sliders stay editable while the equalizer is off, so the hint is the only thing telling
-            // the user why nothing they change is audible yet.
-            if (!state.device.eqEnabled) {
-                item { DisabledHintCard() }
+            item {
+                EnableCard(
+                    eqEnabled = state.device.eqEnabled,
+                    isProVersion = state.isProVersion,
+                    onToggleEq = onToggleEq,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                )
             }
 
             item {
@@ -317,26 +337,55 @@ private fun UnsupportedCard() {
     }
 }
 
+/**
+ * The whole row is one toggle target, so the switch itself takes no click of its own: two
+ * accessibility actions for the same thing would only be read out twice.
+ */
 @Composable
-private fun DisabledHintCard() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp),
-        verticalAlignment = Alignment.CenterVertically,
+private fun EnableCard(
+    eqEnabled: Boolean,
+    isProVersion: Boolean,
+    onToggleEq: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier,
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
     ) {
-        Icon(
-            imageVector = Icons.TwoTone.Info,
-            contentDescription = null,
-            modifier = Modifier.size(16.dp),
-            tint = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            text = stringResource(R.string.eq_disabled_hint),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .toggleable(
+                    value = eqEnabled,
+                    role = Role.Switch,
+                    onValueChange = { onToggleEq() },
+                )
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.eq_enable_label),
+                    style = MaterialTheme.typography.titleMedium,
+                )
+                // The sliders stay editable while the equalizer is off, so this is the only thing
+                // telling the user why nothing they change is audible yet.
+                if (!eqEnabled) {
+                    Text(
+                        text = stringResource(R.string.eq_disabled_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+            if (!isProVersion) {
+                UpgradeBadge(modifier = Modifier.padding(horizontal = 8.dp))
+            }
+            Switch(
+                checked = eqEnabled,
+                onCheckedChange = null,
+            )
+        }
     }
 }
 
@@ -408,6 +457,7 @@ private fun previewState(
     eqEnabled: Boolean = true,
     levels: List<Int>? = listOf(900, 300, 0, -300, 600),
     boostGain: Int? = 300,
+    isProVersion: Boolean = true,
 ): DeviceEqViewModel.State {
     val device = MockDevice(label = "Sony WH-1000XM5", address = "AA:BB:CC:DD:EE:01")
         .toManagedDevice(isConnected = true)
@@ -425,7 +475,7 @@ private fun previewState(
                 presets.presets.map { DeviceEqViewModel.PresetOption(it.id, it.label, presets.levelsFor(it.curve, caps)) }
             }
         } ?: emptyList(),
-        isProVersion = true,
+        isProVersion = isProVersion,
     )
 }
 
@@ -436,6 +486,7 @@ private fun DeviceEqScreenPreview() {
         DeviceEqScreen(
             state = previewState(),
             onNavigateBack = {},
+            onToggleEq = {},
             onLevelsChanged = {},
             onLevelsCommitted = {},
             onPresetSelected = {},
@@ -452,6 +503,24 @@ private fun DeviceEqScreenDisabledPreview() {
         DeviceEqScreen(
             state = previewState(eqEnabled = false, levels = null, boostGain = null),
             onNavigateBack = {},
+            onToggleEq = {},
+            onLevelsChanged = {},
+            onLevelsCommitted = {},
+            onPresetSelected = {},
+            onBoostChanged = {},
+            onBoostCommitted = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun DeviceEqScreenFreePreview() {
+    PreviewWrapper {
+        DeviceEqScreen(
+            state = previewState(eqEnabled = false, levels = null, boostGain = null, isProVersion = false),
+            onNavigateBack = {},
+            onToggleEq = {},
             onLevelsChanged = {},
             onLevelsCommitted = {},
             onPresetSelected = {},
@@ -468,6 +537,7 @@ private fun DeviceEqScreenUnsupportedPreview() {
         DeviceEqScreen(
             state = previewState(capabilities = null, eqEnabled = false, levels = null, boostGain = null),
             onNavigateBack = {},
+            onToggleEq = {},
             onLevelsChanged = {},
             onLevelsCommitted = {},
             onPresetSelected = {},

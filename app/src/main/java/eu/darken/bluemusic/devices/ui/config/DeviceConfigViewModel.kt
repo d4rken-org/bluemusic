@@ -166,13 +166,9 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 }
             }
 
-            is ConfigAction.OnEqClicked -> {
-                if (!upgradeRepo.isProForUi()) {
-                    events.emit(ConfigEvent.RequiresPro)
-                } else {
-                    navTo(Nav.Main.DeviceEq(deviceAddress))
-                }
-            }
+            // Not gated: the equalizer screen is where the feature is explained and enabled, the
+            // upsell happens there when the switch is flipped.
+            is ConfigAction.OnEqClicked -> navTo(Nav.Main.DeviceEq(deviceAddress))
 
             is ConfigAction.OnToggleEq -> {
                 if (!upgradeRepo.isProForUi()) {
