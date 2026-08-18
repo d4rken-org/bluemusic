@@ -2,7 +2,6 @@ package eu.darken.bluemusic.devices.ui.config
 
 import android.os.Build
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -755,7 +754,8 @@ private fun EqualizerCard(
     modifier: Modifier = Modifier,
 ) {
     Card(
-        modifier = modifier.clickable { onCardClick() },
+        onClick = onCardClick,
+        modifier = modifier,
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column {
