@@ -22,6 +22,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.ArrowBack
 import androidx.compose.material.icons.twotone.CheckCircle
 import androidx.compose.material.icons.twotone.WarningAmber
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
@@ -624,15 +625,35 @@ private fun UpgradeFeatureRow(
 internal fun UpgradeHintText(
     text: String,
     modifier: Modifier = Modifier,
+    // Muted against a neutral surface by default. A tinted card must pass its own "on" color:
+    // onSurfaceVariant is a surface role and washes out badly on a filled container.
+    color: Color = MaterialTheme.colorScheme.onSurfaceVariant,
 ) {
     Text(
         text = text,
         style = MaterialTheme.typography.labelSmall,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        color = color,
         textAlign = TextAlign.Center,
         modifier = modifier.fillMaxWidth(),
     )
 }
+
+// Buttons on a tertiaryContainer card. The default primary fill has almost the same luminance as
+// the container in the dark theme, so it separates by hue alone. Swapping the container/content
+// pair borrows whatever contrast the theme's own tertiary pair has, which is the best a role
+// swap can do — it cannot improve on an under-contrast palette.
+// The disabled pair is spelled out too. Material3's default disabled fill is onSurface at 12%,
+// which on a tinted card is almost entirely the card showing through — the button stops being a
+// shape and anything drawn on it (the busy spinner) loses its background. These buttons are
+// disabled only while their operation runs, so the disabled state has to stay readable: an opaque
+// fill and a lightly dimmed label, rather than the usual near-invisible treatment.
+@Composable
+internal fun tertiaryCardButtonColors(): ButtonColors = ButtonDefaults.buttonColors(
+    containerColor = MaterialTheme.colorScheme.onTertiaryContainer,
+    contentColor = MaterialTheme.colorScheme.tertiaryContainer,
+    disabledContainerColor = MaterialTheme.colorScheme.onTertiaryContainer,
+    disabledContentColor = MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.8f),
+)
 
 @Composable
 internal fun UpgradeActionCard(
