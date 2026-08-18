@@ -245,25 +245,30 @@ class EqEffectController @Inject constructor(
      * Creates a loudness enhancer for [sessionId] at [gain], or `null` when the device won't give us
      * one. The enhancer is optional: a session keeps its curve either way.
      */
-    private fun createBooster(sessionId: Int, gain: Int): AttachedBooster? = try {
-        val enhancer = LoudnessEnhancer(sessionId)
-        // Shared engine again, so the snapshot has to exist before the first write.
-        val booster = AttachedBooster(
-            enhancer = enhancer,
-            originalTargetGain = enhancer.targetGain,
-            originalEnabled = enhancer.enabled,
-        )
-        try {
-            enhancer.applyGain(gain)
-            log(TAG, VERBOSE) { "createBooster($sessionId): id=${enhancer.id} gain=$gain" }
+    private fun createBooster(sessionId: Int, gain: Int): AttachedBooster? {
+        var enhancer: LoudnessEnhancer? = null
+        var pendingBooster: AttachedBooster? = null
+        return try {
+            enhancer = LoudnessEnhancer(sessionId)
+            // Shared engine again, so the snapshot has to exist before the first write.
+            val booster = AttachedBooster(
+                enhancer = enhancer,
+                originalTargetGain = enhancer.targetGain,
+                originalEnabled = enhancer.enabled,
+            )
+            // From here on the failure path has to restore, not just release.
+            pendingBooster = booster
+
+            booster.enhancer.applyGain(gain)
+            log(TAG, VERBOSE) { "createBooster($sessionId): id=${booster.enhancer.id} gain=$gain" }
             booster
         } catch (e: Throwable) {
-            booster.restoreAndReleaseQuietly()
-            throw e
+            // A snapshot read that throws leaves an engine we own but have nothing to restore from.
+            val cleanup = pendingBooster
+            if (cleanup != null) cleanup.restoreAndReleaseQuietly() else enhancer?.releaseQuietly()
+            log(TAG, WARN) { "createBooster($sessionId, $gain): Failed, continuing without boost: ${e.asLog()}" }
+            null
         }
-    } catch (e: Throwable) {
-        log(TAG, WARN) { "createBooster($sessionId, $gain): Failed, continuing without boost: ${e.asLog()}" }
-        null
     }
 
     private fun LoudnessEnhancer.applyGain(gain: Int) {
