@@ -178,6 +178,7 @@ private fun UpgradePitchContent(
         ) {
             Button(
                 onClick = onGithubSponsors,
+                colors = tertiaryCardButtonColors(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .testTag(UpgradeScreenTags.FOSS_SPONSOR),
@@ -185,7 +186,10 @@ private fun UpgradePitchContent(
                 Text(stringResource(R.string.upgrade_screen_sponsor_action))
             }
 
-            UpgradeHintText(text = stringResource(R.string.upgrade_screen_sponsor_action_hint))
+            UpgradeHintText(
+                text = stringResource(R.string.upgrade_screen_sponsor_action_hint),
+                color = MaterialTheme.colorScheme.onTertiaryContainer,
+            )
         }
     }
 }

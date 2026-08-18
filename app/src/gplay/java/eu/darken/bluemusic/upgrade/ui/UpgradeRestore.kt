@@ -14,6 +14,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -49,6 +50,9 @@ internal fun UpgradeRestoreSection(
         } else {
             null
         },
+        // The header icon defaults to the primary accent, which is near-invisible on the tinted
+        // container.
+        iconTint = if (emphasized) MaterialTheme.colorScheme.onTertiaryContainer else Color.Unspecified,
     ) {
         if (emphasized) {
             // Plain Text: the tinted container brings its own content color, the muted
@@ -64,6 +68,7 @@ internal fun UpgradeRestoreSection(
             Button(
                 onClick = onRestore,
                 enabled = busy == null,
+                colors = tertiaryCardButtonColors(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .testTag(restoreTag),

@@ -389,7 +389,9 @@ private fun WarningCard(text: String) {
             Icon(
                 imageVector = Icons.TwoTone.Warning,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.tertiary,
+                // Not `tertiary`: it sits at nearly the same luminance as the tertiaryContainer
+                // fill behind it, so the icon disappears.
+                tint = MaterialTheme.colorScheme.onTertiaryContainer,
             )
             Spacer(modifier = Modifier.padding(horizontal = 6.dp))
             Text(
@@ -414,7 +416,9 @@ private fun ResultSection(result: BackupRestoreViewModel.OperationResult) {
                 Icon(
                     imageVector = Icons.TwoTone.CheckCircle,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary,
+                    // Not `primary`: it is nearly the same color as the primaryContainer fill
+                    // behind it, so the icon disappears.
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
                 )
                 Spacer(modifier = Modifier.padding(horizontal = 8.dp))
                 Text(
