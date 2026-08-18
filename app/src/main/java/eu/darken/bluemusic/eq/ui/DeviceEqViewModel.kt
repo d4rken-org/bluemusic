@@ -16,6 +16,7 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.observeDevice
 import eu.darken.bluemusic.eq.core.EqCapabilities
+import eu.darken.bluemusic.eq.core.EqConfigSaver
 import eu.darken.bluemusic.eq.core.EqCoordinator
 import eu.darken.bluemusic.eq.core.EqPresets
 import kotlinx.coroutines.Job
@@ -31,6 +32,7 @@ class DeviceEqViewModel @AssistedInject constructor(
     private val eqCapabilities: EqCapabilities,
     private val eqPresets: EqPresets,
     private val eqCoordinator: EqCoordinator,
+    private val eqConfigSaver: EqConfigSaver,
     upgradeRepo: UpgradeRepo,
     dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
@@ -76,11 +78,14 @@ class DeviceEqViewModel @AssistedInject constructor(
     fun onLevelsCommitted(levels: List<Int>) {
         log(tag) { "onLevelsCommitted($levels)" }
         persistJob?.cancel()
+        // The write itself runs on the app scope, so leaving the screen right after a slider release
+        // cannot lose it. This job only waits for it to sequence the preview clear.
+        val write = eqConfigSaver.save(deviceAddress) { it.copy(eqBandLevels = levels) }
         persistJob = vmScope.launch {
-            // In a finally throughout: a cancelled write must not leave a preview curve applied to the
+            // In a finally throughout: a cancelled wait must not leave a preview curve applied to the
             // running effects, it would outlive this screen and never be cleared by anyone else.
             try {
-                deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = levels) }
+                write.await()
             } finally {
                 eqCoordinator.previewLevels(deviceAddress, null)
             }
@@ -95,10 +100,11 @@ class DeviceEqViewModel @AssistedInject constructor(
     fun onBoostCommitted(gain: Int) {
         log(tag) { "onBoostCommitted($gain)" }
         boostJob?.cancel()
+        // No boost is the "never configured" state, storing null keeps the enhancer out of it.
+        val write = eqConfigSaver.save(deviceAddress) { it.copy(eqBoostGain = gain.takeIf { value -> value > 0 }) }
         boostJob = vmScope.launch {
             try {
-                // No boost is the "never configured" state, storing null keeps the enhancer out of it.
-                deviceRepo.updateDevice(deviceAddress) { it.copy(eqBoostGain = gain.takeIf { value -> value > 0 }) }
+                write.await()
             } finally {
                 eqCoordinator.previewBoost(deviceAddress, null)
             }
@@ -107,18 +113,19 @@ class DeviceEqViewModel @AssistedInject constructor(
 
     fun applyPreset(id: EqPresets.Id) = launch {
         log(tag) { "applyPreset($id)" }
-        // A slider release could still be on its way to the database, its levels are stale now.
+        // Only the wait for a slider release is dropped, its write is already queued: the preset is
+        // enqueued behind it and therefore still the value that ends up stored.
         persistJob?.cancel()
         try {
             // Flat is the "never configured" state, not a curve of zeroes: storing null keeps the device
             // out of the equalizer's way entirely.
             if (id == EqPresets.Id.FLAT) {
-                deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = null) }
+                eqConfigSaver.save(deviceAddress) { it.copy(eqBandLevels = null) }.await()
                 return@launch
             }
             val capabilities = eqCapabilities.refreshIfNeeded() ?: return@launch
             val levels = eqPresets.levelsFor(id, capabilities)
-            deviceRepo.updateDevice(deviceAddress) { it.copy(eqBandLevels = levels) }
+            eqConfigSaver.save(deviceAddress) { it.copy(eqBandLevels = levels) }.await()
         } finally {
             eqCoordinator.previewLevels(deviceAddress, null)
         }
