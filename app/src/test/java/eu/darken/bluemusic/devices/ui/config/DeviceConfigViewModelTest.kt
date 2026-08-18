@@ -8,6 +8,7 @@ import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
+import eu.darken.bluemusic.eq.core.EqCapabilities
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -64,6 +65,10 @@ class DeviceConfigViewModelTest : BaseTest() {
             appRepo = mockk<eu.darken.bluemusic.common.apps.AppRepo>(relaxed = true).apply {
                 every { apps } returns MutableStateFlow(emptySet())
             },
+            eqCapabilities = mockk<EqCapabilities>(relaxed = true).apply {
+                every { capabilities } returns MutableStateFlow(null)
+                coEvery { refreshIfNeeded() } returns null
+            },
             dispatcherProvider = TestDispatcherProvider(UnconfinedTestDispatcher(testScheduler)),
             navCtrl = navCtrl,
             permissionHelper = mockk(relaxed = true),
@@ -110,17 +115,16 @@ class DeviceConfigViewModelTest : BaseTest() {
         verify(exactly = 0) { navCtrl.goTo(Nav.Main.AppSelection(address), any(), any()) }
     }
 
+    // The equalizer screen is where the feature is explained and switched on, so a free user has to
+    // get there: its own switch does the upselling.
     @Test
-    fun `the equalizer route is gated too`() = runTest {
+    fun `a free user reaches the equalizer screen`() = runTest {
         val vm = viewModel(fakeUpgradeInfos(FakeUpgradeInfo(isPro = false, isSettled = true)))
 
-        val event = async { vm.events.first() }
-        runCurrent()
         vm.handleAction(ConfigAction.OnEqClicked)
         advanceUntilIdle()
 
-        event.await() shouldBe ConfigEvent.RequiresPro
-        verify(exactly = 0) { navCtrl.goTo(Nav.Main.DeviceEq(address), any(), any()) }
+        verify { navCtrl.goTo(Nav.Main.DeviceEq(address), any(), any()) }
     }
 
     @Test

@@ -21,6 +21,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.twotone.ArrowBack
 import androidx.compose.material.icons.automirrored.twotone.Launch
+import androidx.compose.material.icons.automirrored.twotone.VolumeUp
 import androidx.compose.material.icons.twotone.BatteryFull
 import androidx.compose.material.icons.twotone.DoNotDisturb
 import androidx.compose.material.icons.twotone.GraphicEq
@@ -68,6 +69,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.bluetooth.core.MockDevice
+import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.common.compose.UpgradeBadge
 import eu.darken.bluemusic.common.compose.horizontalCutoutPadding
@@ -88,6 +90,10 @@ import eu.darken.bluemusic.devices.ui.config.dialogs.TimingDialog
 import eu.darken.bluemusic.devices.ui.AutoplayKeycodes
 import eu.darken.bluemusic.devices.ui.icon
 import eu.darken.bluemusic.devices.ui.settings.dialogs.AutoplayKeycodesDialog
+import eu.darken.bluemusic.eq.core.EqCapabilities
+import eu.darken.bluemusic.eq.core.levelsOf
+import eu.darken.bluemusic.eq.ui.EqMiniGraph
+import eu.darken.bluemusic.eq.ui.formatGain
 import eu.darken.bluemusic.monitor.core.alert.AlertType
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.DndMode
@@ -475,6 +481,9 @@ fun DeviceConfigScreen(
                 EqualizerCard(
                     isEnabled = device.eqEnabled,
                     isProVersion = state.isProVersion,
+                    capabilities = state.eqCapabilities,
+                    bandLevels = device.eqBandLevels,
+                    boostGain = device.eqBoostGain,
                     onCardClick = { onAction(ConfigAction.OnEqClicked) },
                     onToggle = { onAction(ConfigAction.OnToggleEq) },
                     modifier = Modifier
@@ -743,12 +752,15 @@ fun DeviceConfigScreen(
     }
 }
 
-// Tapping the card opens the equalizer screen, the switch only flips whether it is applied — so the
+// Tapping the card opens the equalizer screen, the switch only flips whether it is applied, so the
 // caveat about app support is body text here instead of a line the user has to open the screen to read.
 @Composable
 private fun EqualizerCard(
     isEnabled: Boolean,
     isProVersion: Boolean,
+    capabilities: EqCapabilities.Caps?,
+    bandLevels: List<Int>?,
+    boostGain: Int?,
     onCardClick: () -> Unit,
     onToggle: () -> Unit,
     modifier: Modifier = Modifier,
@@ -787,6 +799,42 @@ private fun EqualizerCard(
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
 
+            // Without an engine there is no curve to draw: the equalizer screen explains why.
+            if (capabilities != null) {
+                Spacer(modifier = Modifier.height(12.dp))
+                EqMiniGraph(
+                    levels = capabilities.levelsOf(bandLevels),
+                    minLevel = capabilities.minLevel,
+                    maxLevel = capabilities.maxLevel,
+                    isEnabled = isEnabled,
+                    modifier = Modifier.padding(horizontal = 16.dp)
+                )
+            }
+
+            val boost = boostGain ?: 0
+            if (boost > 0) {
+                Row(
+                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.TwoTone.VolumeUp,
+                        contentDescription = null,
+                        modifier = Modifier.size(16.dp),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = stringResource(
+                            R.string.devices_device_config_equalizer_boost_label,
+                            formatGain(boost),
+                        ),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+
             Spacer(modifier = Modifier.height(12.dp))
         }
     }
@@ -818,6 +866,58 @@ private fun FeatureOverriddenByVolumeLockCard() {
                 text = stringResource(R.string.devices_device_config_volume_lock_override_desc),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSecondaryContainer,
+            )
+        }
+    }
+}
+
+private val eqPreviewCaps = EqCapabilities.Caps(
+    bandCount = 5,
+    minLevel = -1500,
+    maxLevel = 1500,
+    centerFrequencies = listOf(60_000, 230_000, 910_000, 3_600_000, 14_000_000),
+)
+
+@Preview2
+@Composable
+private fun EqualizerCardPreview() {
+    PreviewWrapper {
+        Column {
+            EqualizerCard(
+                isEnabled = true,
+                isProVersion = true,
+                capabilities = eqPreviewCaps,
+                bandLevels = listOf(900, 300, 0, -300, 600),
+                boostGain = 300,
+                onCardClick = {},
+                onToggle = {},
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+            )
+            EqualizerCard(
+                isEnabled = false,
+                isProVersion = true,
+                capabilities = eqPreviewCaps,
+                bandLevels = null,
+                boostGain = null,
+                onCardClick = {},
+                onToggle = {},
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+            )
+            EqualizerCard(
+                isEnabled = false,
+                isProVersion = false,
+                capabilities = null,
+                bandLevels = null,
+                boostGain = null,
+                onCardClick = {},
+                onToggle = {},
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
             )
         }
     }

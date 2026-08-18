@@ -67,6 +67,7 @@ import eu.darken.bluemusic.devices.ui.config.components.SectionHeader
 import eu.darken.bluemusic.eq.core.EqCapabilities
 import eu.darken.bluemusic.eq.core.EqEffectController.Companion.MAX_BOOST_GAIN_MB
 import eu.darken.bluemusic.eq.core.EqPresets
+import eu.darken.bluemusic.eq.core.levelsOf
 import java.util.Locale
 import kotlin.math.roundToInt
 
@@ -495,13 +496,6 @@ private fun InfoCard() {
     }
 }
 
-/** Stored levels, falling back to flat when they don't fit the engine we have. */
-private fun EqCapabilities.Caps?.levelsOf(stored: List<Int>?): List<Int> {
-    if (this == null) return emptyList()
-    if (stored == null || stored.size != bandCount) return List(bandCount) { 0 }
-    return stored
-}
-
 @Composable
 private fun formatFrequency(milliHertz: Int): String {
     val hertz = milliHertz / 1000
@@ -515,8 +509,9 @@ private fun formatFrequency(milliHertz: Int): String {
     return stringResource(R.string.eq_frequency_khz_label, formatted)
 }
 
+/** A band gain the way the equalizer screen writes it, e.g. `+3.0 dB`. */
 @Composable
-private fun formatGain(millibel: Int): String =
+internal fun formatGain(millibel: Int): String =
     stringResource(R.string.eq_gain_db_label, String.format(Locale.getDefault(), "%+.1f", millibel / 100f))
 
 @Composable

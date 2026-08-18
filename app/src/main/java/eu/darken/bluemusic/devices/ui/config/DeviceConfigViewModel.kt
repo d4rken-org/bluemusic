@@ -23,11 +23,13 @@ import eu.darken.bluemusic.devices.core.observeDevice
 import eu.darken.bluemusic.devices.core.ToggleResult
 import eu.darken.bluemusic.devices.core.toggleVolumeLock
 import eu.darken.bluemusic.devices.core.updateVolume
+import eu.darken.bluemusic.eq.core.EqCapabilities
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.onStart
 import java.time.Duration
 
 
@@ -38,6 +40,7 @@ class DeviceConfigViewModel @AssistedInject constructor(
     private val volumeTool: VolumeTool,
     private val upgradeRepo: UpgradeRepo,
     appRepo: AppRepo,
+    eqCapabilities: EqCapabilities,
     dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
     private val permissionHelper: PermissionHelper,
@@ -49,7 +52,8 @@ class DeviceConfigViewModel @AssistedInject constructor(
         val isLoading: Boolean = true,
         val error: String? = null,
         val launchAppLabel: String? = null,
-        val launchAppLabels: List<String> = emptyList()
+        val launchAppLabels: List<String> = emptyList(),
+        val eqCapabilities: EqCapabilities.Caps? = null,
     )
 
     val events = SingleEventFlow<ConfigEvent>()
@@ -57,8 +61,9 @@ class DeviceConfigViewModel @AssistedInject constructor(
     val state = combine(
         upgradeRepo.upgradeInfo,
         deviceRepo.observeDevice(deviceAddress).filterNotNull(),
-        appRepo.apps
-    ) { upgradeInfo, device, appInfos ->
+        appRepo.apps,
+        eqCapabilities.capabilities.onStart { eqCapabilities.refreshIfNeeded() },
+    ) { upgradeInfo, device, appInfos, eqCaps ->
         val appInfoMap = appInfos.associateBy { it.packageName }
         
         // For backward compatibility, show first app if any
@@ -74,7 +79,8 @@ class DeviceConfigViewModel @AssistedInject constructor(
             device = device,
             isProVersion = upgradeInfo.isPro,
             launchAppLabel = launchAppLabel,
-            launchAppLabels = launchAppLabels
+            launchAppLabels = launchAppLabels,
+            eqCapabilities = eqCaps,
         )
     }.asStateFlow()
 

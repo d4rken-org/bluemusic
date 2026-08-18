@@ -99,3 +99,12 @@ class EqCapabilities @Inject constructor(
         private const val PROBE_PRIORITY = 0
     }
 }
+
+/**
+ * The stored curve as the UI should draw it: a curve that doesn't fit the engine we have falls back
+ * to flat, exactly like the one we would write to the effect.
+ */
+fun EqCapabilities.Caps?.levelsOf(stored: List<Int>?): List<Int> {
+    if (this == null) return emptyList()
+    return resolveBandLevels(stored ?: emptyList(), bandCount, minLevel, maxLevel)
+}

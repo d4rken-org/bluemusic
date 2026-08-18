@@ -48,7 +48,8 @@
     <string name="devices_device_config_enabled_desc">React to this device when connected</string>
 
     <string name="devices_device_config_equalizer_label">Equalizer</string>
-    <string name="devices_device_config_equalizer_desc">Shape the sound for this device. Only works with apps that support system equalizers, like Spotify or YouTube Music.</string>
+    <string name="devices_device_config_equalizer_desc">Tune equalizer bands and volume boost for this device. Only works with music apps that support Android\'s system equalizer.</string>
+    <string name="devices_device_config_equalizer_boost_label">Volume boost: %1$s</string>
 
     <string name="devices_device_config_section_timing_label">Timing</string>
     <string name="devices_device_config_monitoring_duration_label">Monitoring duration</string>
@@ -515,6 +516,7 @@
     <!-- Equalizer -->
     <string name="eq_screen_title">Equalizer</string>
     <string name="eq_bands_label">Bands</string>
+    <string name="eq_mini_graph_desc">Configured equalizer bands</string>
     <string name="eq_enable_label">Use the equalizer</string>
     <string name="eq_disabled_hint">Off, your settings are saved but won\'t affect audio yet.</string>
     <string name="eq_status_active_label">EQ active for %1$s</string>
