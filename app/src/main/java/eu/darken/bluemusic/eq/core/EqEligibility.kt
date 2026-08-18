@@ -20,8 +20,19 @@ class EqEligibility @Inject constructor(
     private val upgradeRepo: UpgradeRepo,
 ) {
 
+    /**
+     * Whether this device has a usable equalizer engine, entitlement aside.
+     *
+     * Exposed on its own because the coordinator pairs it with its own reconciled entitlement, which
+     * is more forgiving than the cached one during a billing hiccup.
+     */
+    val hasEngine: Flow<Boolean> = eqCapabilities.capabilities
+        .onStart { eqCapabilities.refreshIfNeeded() }
+        .map { it != null }
+        .distinctUntilChanged()
+
     val operational: Flow<Boolean> = combine(
-        eqCapabilities.capabilities.onStart { eqCapabilities.refreshIfNeeded() }.map { it != null },
+        hasEngine,
         upgradeRepo.upgradeInfo.map { it.isPro },
     ) { hasEngine, isPro ->
         hasEngine && isPro

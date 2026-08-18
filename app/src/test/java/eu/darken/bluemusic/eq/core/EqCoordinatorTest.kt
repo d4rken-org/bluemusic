@@ -44,7 +44,7 @@ class EqCoordinatorTest : BaseTest() {
 
     private lateinit var devicesFlow: MutableStateFlow<List<ManagedDevice>>
     private lateinit var ownerFlow: MutableStateFlow<OwnerSnapshot>
-    private lateinit var operationalFlow: MutableStateFlow<Boolean>
+    private lateinit var hasEngineFlow: MutableStateFlow<Boolean>
     private lateinit var enabledFlow: MutableStateFlow<DevicesSettings.EnabledState>
     private lateinit var trackerFlow: MutableStateFlow<EqSessionState>
     private lateinit var transitions: Channel<EqTransition>
@@ -58,7 +58,7 @@ class EqCoordinatorTest : BaseTest() {
     fun setup() {
         devicesFlow = MutableStateFlow(emptyList())
         ownerFlow = MutableStateFlow(OwnerSnapshot())
-        operationalFlow = MutableStateFlow(true)
+        hasEngineFlow = MutableStateFlow(true)
         enabledFlow = MutableStateFlow(DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 0L))
         trackerFlow = MutableStateFlow(EqSessionState())
         transitions = Channel(EqSessionTracker.TRANSITION_BUFFER)
@@ -68,7 +68,7 @@ class EqCoordinatorTest : BaseTest() {
 
         deviceRepo = mockk { every { devices } returns devicesFlow }
         ownerRegistry = mockk { every { ownerSnapshots } returns ownerFlow }
-        eligibility = mockk { every { operational } returns operationalFlow }
+        eligibility = mockk { every { hasEngine } returns hasEngineFlow }
         devicesSettings = mockk { every { enabledState } returns enabledFlow }
         upgradeRepo = mockk(relaxed = true) { every { upgradeInfo } returns upgradeInfos }
 
@@ -519,15 +519,38 @@ class EqCoordinatorTest : BaseTest() {
         attached.shouldBeEmpty()
     }
 
+    // region entitlement
+
     @Test
     fun `a non pro user never starts attaching`() = runTest {
         upgradeInfos.value = FakeUpgradeInfo(isPro = false, isSettled = true)
-        operationalFlow.value = false
         val coordinator = createCoordinator(backgroundScope)
         devicesFlow.value = listOf(device("AA"))
         ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
 
         val token = coordinator.startSession()
+        // Billing is connected and says no purchase, so the reconciliation denies once it runs out.
+        advanceTimeBy(5_000)
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+
+        attached.shouldBeEmpty()
+        trackerFlow.value.listening shouldBe false
+        coVerify(exactly = 0) { controller.attach(any(), any()) }
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a device without an equalizer engine never starts attaching`() = runTest {
+        hasEngineFlow.value = false
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
         openSessions(11)
         runCurrent()
 
@@ -536,6 +559,54 @@ class EqCoordinatorTest : BaseTest() {
 
         coordinator.stopSession(token)
     }
+
+    @Test
+    fun `billing that never settles does not keep the session idle`() = runTest {
+        upgradeInfos.value = FakeUpgradeInfo(isPro = false, isSettled = false)
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        advanceTimeBy(5_000)
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+
+        // Fail-open: an outage must not cost a paying user the feature for the whole session.
+        attached shouldBe mapOf(11 to listOf(300, 0, -300))
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `an upgrade during the session activates the equalizer without a restart`() = runTest {
+        upgradeInfos.value = FakeUpgradeInfo(isPro = false, isSettled = true)
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        advanceTimeBy(5_000)
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+        attached.shouldBeEmpty()
+
+        upgradeInfos.value = FakeUpgradeInfo(isPro = true, isSettled = true)
+        runCurrent()
+
+        trackerFlow.value.listening shouldBe true
+
+        openSessions(11)
+        runCurrent()
+
+        attached shouldBe mapOf(11 to listOf(300, 0, -300))
+
+        coordinator.stopSession(token)
+    }
+
+    // endregion
 
     @Test
     fun `a disabled app releases everything`() = runTest {

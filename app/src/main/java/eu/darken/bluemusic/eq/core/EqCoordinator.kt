@@ -163,21 +163,25 @@ class EqCoordinator @Inject constructor(
     suspend fun clearDiagnostics() = tracker.clear()
 
     private suspend fun runSession(token: Long) {
-        // GPlay cold start reports non-Pro until billing settles, so reconcile once (fail-open)
-        // before trusting the cached entitlement flow for the rest of the session.
-        if (!upgradeRepo.isProSettled(ENTITLEMENT_TIMEOUT)) {
-            log(TAG, INFO) { "Not entitled to the equalizer, session stays idle" }
-            return
-        }
+        // GPlay cold start reports non-Pro until billing settles, so reconcile once (fail-open). The
+        // answer only ever adds entitlement: a session that started while billing was down must not
+        // stay idle for its whole lifetime, and a purchase made while it runs has to take effect.
+        val reconciled = upgradeRepo.isProSettled(ENTITLEMENT_TIMEOUT)
+        log(TAG, INFO) { "Session $token entitlement reconciled: $reconciled" }
+
+        val operational = combine(
+            eligibility.hasEngine,
+            upgradeRepo.upgradeInfo.map { reconciled || it.isPro }.distinctUntilChanged(),
+        ) { hasEngine, entitled -> hasEngine && entitled }.distinctUntilChanged()
 
         val targets = combine(
             deviceRepo.devices,
             ownerRegistry.ownerSnapshots,
-            eligibility.operational,
+            operational,
             devicesSettings.enabledState.map { it.isEnabled }.distinctUntilChanged(),
             previewFlow,
-        ) { devices, owner, operational, appEnabled, preview ->
-            resolveTarget(devices, owner, operational, appEnabled, preview)
+        ) { devices, owner, isOperational, appEnabled, preview ->
+            resolveTarget(devices, owner, isOperational, appEnabled, preview)
         }.distinctUntilChanged()
 
         coroutineScope {
