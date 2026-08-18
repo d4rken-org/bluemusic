@@ -1,6 +1,5 @@
 package eu.darken.bluemusic.eq.ui
 
-import android.content.pm.PackageManager
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -8,7 +7,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.bluemusic.common.ca.CaString
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
-import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.SingleEventFlow
@@ -35,9 +33,6 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.withContext
 import kotlin.time.Duration.Companion.milliseconds
 
 @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
@@ -50,8 +45,8 @@ class DeviceEqViewModel @AssistedInject constructor(
     private val eqCoordinator: EqCoordinator,
     private val eqConfigSaver: EqConfigSaver,
     private val upgradeRepo: UpgradeRepo,
-    private val packageManager: PackageManager,
-    private val dispatcherProvider: DispatcherProvider,
+    private val eqAppResolver: EqAppResolver,
+    dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
 ) : ViewModel4(dispatcherProvider, logTag("Eq", "Device", "VM"), navCtrl) {
 
@@ -79,17 +74,6 @@ class DeviceEqViewModel @AssistedInject constructor(
     private var persistJob: Job? = null
     private var boostJob: Job? = null
 
-    private val appCacheLock = Mutex()
-
-    /**
-     * Bounded, and the least recently used entry goes first: the package names come from an
-     * unverified broadcast, so a misbehaving app must not be able to grow this without end.
-     */
-    private val appCache = object : LinkedHashMap<String, EqStatusApp>(16, 0.75f, true) {
-        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, EqStatusApp>): Boolean =
-            size > APP_CACHE_SIZE
-    }
-
     /**
      * Players announce a CLOSE/OPEN pair around every track change, and the sessions behind them come
      * and go with it. Debounced so the row states what is going on instead of flickering along.
@@ -110,7 +94,7 @@ class DeviceEqViewModel @AssistedInject constructor(
     }
         .distinctUntilChanged()
         .debounce(STATUS_DEBOUNCE)
-        .mapLatest { status -> status.withResolvedApp() }
+        .mapLatest { status -> status?.let { eqAppResolver.resolved(it) } }
 
     val state = combine(
         deviceRepo.observeDevice(deviceAddress).filterNotNull(),
@@ -128,34 +112,6 @@ class DeviceEqViewModel @AssistedInject constructor(
             status = status,
         )
     }.asStateFlow()
-
-    private suspend fun EqStatus?.withResolvedApp(): EqStatus? = when (this) {
-        is EqStatus.Active -> copy(app = app?.resolve())
-        is EqStatus.NoControl -> copy(app = app?.resolve())
-        else -> this
-    }
-
-    /**
-     * Turns a package name into something we can show. A package we can't resolve stays unresolved:
-     * the name itself comes from an unverified broadcast and is not ours to display.
-     */
-    private suspend fun EqStatusApp.resolve(): EqStatusApp = appCacheLock.withLock {
-        appCache.getOrPut(packageName) {
-            withContext(dispatcherProvider.IO) {
-                try {
-                    val appInfo = packageManager.getApplicationInfo(packageName, 0)
-                    EqStatusApp(
-                        packageName = packageName,
-                        label = appInfo.loadLabel(packageManager).toString(),
-                        icon = appInfo.loadIcon(packageManager),
-                    )
-                } catch (e: Exception) {
-                    log(tag, WARN) { "Failed to resolve $packageName: ${e.asLog()}" }
-                    EqStatusApp(packageName)
-                }
-            }
-        }
-    }
 
     /**
      * Entitlement is checked here instead of against the state field: the state can still carry a
@@ -256,8 +212,5 @@ class DeviceEqViewModel @AssistedInject constructor(
     companion object {
         /** How long the session picture has to hold still before the status row follows it. */
         private val STATUS_DEBOUNCE = 400.milliseconds
-
-        /** Upper bound on remembered app resolutions, successful or not. */
-        private const val APP_CACHE_SIZE = 32
     }
 }

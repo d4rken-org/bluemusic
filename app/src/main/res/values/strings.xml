@@ -522,6 +522,10 @@
     <string name="eq_status_active_label">EQ active for %1$s</string>
     <string name="eq_status_active_multiple_label">EQ active for multiple apps</string>
     <string name="eq_status_no_control_label">%1$s was detected, but the EQ couldn\'t take control</string>
+    <string name="eq_status_no_control_headline">%1$s was detected</string>
+    <string name="eq_status_no_control_detail">The EQ couldn\'t take control of its audio</string>
+    <string name="eq_status_multiple_recent_label">Most recent: %1$s</string>
+    <string name="eq_status_since_label">Session started %1$s</string>
     <string name="eq_status_waiting_label">Waiting for a supported music app, start playback to hear the effect</string>
     <string name="eq_status_inactive_label">Not active for this device right now</string>
     <string name="eq_status_generic_app_label">a music app</string>

@@ -3,6 +3,7 @@ package eu.darken.bluemusic.eq.ui
 import android.graphics.drawable.Drawable
 import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.eq.core.EqSessionState
+import java.time.Instant
 
 /**
  * The app behind an effect session.
@@ -19,7 +20,12 @@ data class EqStatusApp(
     val icon: Drawable? = null,
 )
 
-/** What the equalizer is doing right now for the device the screen belongs to. */
+/**
+ * What the equalizer is doing right now for the device the screen belongs to.
+ *
+ * `since` is when the session was announced to us, which is all we know: an app opens its session
+ * when it gets ready to play, not necessarily when the first note comes out.
+ */
 sealed interface EqStatus {
     /** Another device (or none at all) owns the audio, so nothing we do here is audible. */
     data object InactiveForDevice : EqStatus
@@ -28,10 +34,17 @@ sealed interface EqStatus {
     data object Waiting : EqStatus
 
     /** At least one session is attached and ours to control. */
-    data class Active(val app: EqStatusApp?, val multiple: Boolean) : EqStatus
+    data class Active(
+        val app: EqStatusApp?,
+        val multiple: Boolean,
+        val since: Instant? = null,
+    ) : EqStatus
 
     /** Sessions exist, but the framework kept control of their engine. */
-    data class NoControl(val app: EqStatusApp?) : EqStatus
+    data class NoControl(
+        val app: EqStatusApp?,
+        val since: Instant? = null,
+    ) : EqStatus
 }
 
 /**
@@ -55,16 +68,18 @@ internal fun deriveEqStatus(
 
     val controlling = sessions.filter { it.attached && it.hasControl == true }
     if (controlling.isEmpty()) {
-        val newest = sessions.maxByOrNull { it.openedAt }?.packageName
-        return EqStatus.NoControl(app = newest?.let { EqStatusApp(it) })
+        val newest = sessions.maxByOrNull { it.openedAt }
+        return EqStatus.NoControl(
+            app = newest?.packageName?.let { EqStatusApp(it) },
+            since = newest?.openedAt,
+        )
     }
 
-    val primary = controlling
-        .filter { it.packageName != null }
-        .maxByOrNull { it.openedAt }
-        ?.packageName
+    val primary = controlling.filter { it.packageName != null }.maxByOrNull { it.openedAt }
     return EqStatus.Active(
-        app = primary?.let { EqStatusApp(it) },
+        app = primary?.packageName?.let { EqStatusApp(it) },
         multiple = controlling.mapNotNull { it.packageName }.distinct().size > 1,
+        // A session we can't name still tells us when it started.
+        since = (primary ?: controlling.maxByOrNull { it.openedAt })?.openedAt,
     )
 }

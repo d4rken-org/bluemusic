@@ -80,25 +80,25 @@ class EqStatusTest : BaseTest() {
     @Test
     fun `an attached session we control is active`() {
         derive(sessionState = sessionState(session(11))) shouldBe
-                EqStatus.Active(EqStatusApp("com.spotify.music"), multiple = false)
+                EqStatus.Active(EqStatusApp("com.spotify.music"), multiple = false, since = Instant.EPOCH)
     }
 
     @Test
     fun `a session we are not attached to has no control`() {
         derive(sessionState = sessionState(session(11, attached = false))) shouldBe
-                EqStatus.NoControl(EqStatusApp("com.spotify.music"))
+                EqStatus.NoControl(EqStatusApp("com.spotify.music"), since = Instant.EPOCH)
     }
 
     @Test
     fun `an attached session whose engine we don't control has no control`() {
         derive(sessionState = sessionState(session(11, hasControl = false))) shouldBe
-                EqStatus.NoControl(EqStatusApp("com.spotify.music"))
+                EqStatus.NoControl(EqStatusApp("com.spotify.music"), since = Instant.EPOCH)
     }
 
     @Test
     fun `an unanswered control state has no control`() {
         derive(sessionState = sessionState(session(11, hasControl = null))) shouldBe
-                EqStatus.NoControl(EqStatusApp("com.spotify.music"))
+                EqStatus.NoControl(EqStatusApp("com.spotify.music"), since = Instant.EPOCH)
     }
 
     @Test
@@ -107,7 +107,10 @@ class EqStatusTest : BaseTest() {
             session(11, packageName = "com.old.player", hasControl = false, openedAt = Instant.ofEpochMilli(1_000)),
             session(12, packageName = "com.new.player", hasControl = false, openedAt = Instant.ofEpochMilli(5_000)),
         )
-        derive(sessionState = state) shouldBe EqStatus.NoControl(EqStatusApp("com.new.player"))
+        derive(sessionState = state) shouldBe EqStatus.NoControl(
+            app = EqStatusApp("com.new.player"),
+            since = Instant.ofEpochMilli(5_000),
+        )
     }
 
     @Test
@@ -116,7 +119,11 @@ class EqStatusTest : BaseTest() {
             session(11, openedAt = Instant.ofEpochMilli(1_000)),
             session(12, openedAt = Instant.ofEpochMilli(5_000)),
         )
-        derive(sessionState = state) shouldBe EqStatus.Active(EqStatusApp("com.spotify.music"), multiple = false)
+        derive(sessionState = state) shouldBe EqStatus.Active(
+            app = EqStatusApp("com.spotify.music"),
+            multiple = false,
+            since = Instant.ofEpochMilli(5_000),
+        )
     }
 
     @Test
@@ -128,13 +135,14 @@ class EqStatusTest : BaseTest() {
         derive(sessionState = state) shouldBe EqStatus.Active(
             app = EqStatusApp("com.google.android.apps.youtube.music"),
             multiple = true,
+            since = Instant.ofEpochMilli(5_000),
         )
     }
 
     @Test
     fun `a session without a package name gets no app`() {
         derive(sessionState = sessionState(session(11, packageName = null))) shouldBe
-                EqStatus.Active(app = null, multiple = false)
+                EqStatus.Active(app = null, multiple = false, since = Instant.EPOCH)
     }
 
     @Test
@@ -143,7 +151,12 @@ class EqStatusTest : BaseTest() {
             session(11, packageName = "com.spotify.music", openedAt = Instant.ofEpochMilli(1_000)),
             session(12, packageName = null, openedAt = Instant.ofEpochMilli(5_000)),
         )
-        derive(sessionState = state) shouldBe EqStatus.Active(EqStatusApp("com.spotify.music"), multiple = false)
+        // The nameless session is newer, but the time we show belongs to the app we can name.
+        derive(sessionState = state) shouldBe EqStatus.Active(
+            app = EqStatusApp("com.spotify.music"),
+            multiple = false,
+            since = Instant.ofEpochMilli(1_000),
+        )
     }
 
     @Test
@@ -152,6 +165,10 @@ class EqStatusTest : BaseTest() {
             session(11, packageName = "com.silent.app", hasControl = false, openedAt = Instant.ofEpochMilli(5_000)),
             session(12, packageName = "com.spotify.music", openedAt = Instant.ofEpochMilli(1_000)),
         )
-        derive(sessionState = state) shouldBe EqStatus.Active(EqStatusApp("com.spotify.music"), multiple = false)
+        derive(sessionState = state) shouldBe EqStatus.Active(
+            app = EqStatusApp("com.spotify.music"),
+            multiple = false,
+            since = Instant.ofEpochMilli(1_000),
+        )
     }
 }

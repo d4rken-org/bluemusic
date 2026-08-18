@@ -87,7 +87,9 @@ class DeviceEqViewModelTest : BaseTest() {
         },
         eqConfigSaver = saver,
         upgradeRepo = mockUpgradeRepo(),
-        packageManager = mockk(relaxed = true),
+        eqAppResolver = mockk<EqAppResolver>().apply {
+            coEvery { resolved(any()) } answers { firstArg() }
+        },
         dispatcherProvider = TestDispatcherProvider(dispatcher),
         navCtrl = mockk<NavigationController>(relaxed = true),
     )

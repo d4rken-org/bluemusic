@@ -1,7 +1,5 @@
 package eu.darken.bluemusic.eq.ui
 
-import android.graphics.drawable.Drawable
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -13,7 +11,6 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -24,7 +21,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.twotone.Info
-import androidx.compose.material.icons.twotone.MusicNote
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilterChip
@@ -46,14 +42,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.core.graphics.drawable.toBitmap
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.R
@@ -71,6 +65,9 @@ import eu.darken.bluemusic.eq.core.EqCapabilities
 import eu.darken.bluemusic.eq.core.EqEffectController.Companion.MAX_BOOST_GAIN_MB
 import eu.darken.bluemusic.eq.core.EqPresets
 import eu.darken.bluemusic.eq.core.levelsOf
+import java.text.DateFormat
+import java.time.Instant
+import java.util.Date
 import java.util.Locale
 import kotlin.math.roundToInt
 
@@ -194,13 +191,11 @@ fun DeviceEqScreen(
 
             state.status?.let { status ->
                 item(key = "status") {
-                    StatusRow(
+                    StatusCard(
                         status = status,
-                        // Lines up with the text inside the cards: 16dp card margin plus their 16dp
-                        // inner padding.
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 32.dp),
+                            .padding(horizontal = 16.dp),
                     )
                 }
             }
@@ -303,67 +298,67 @@ fun DeviceEqScreen(
 }
 
 /**
- * What the equalizer is doing right now. The row keeps a fixed minimum height so the content below
- * it doesn't jump around while sessions come and go.
+ * What the equalizer is doing right now, with whatever the session tells us on top of the one-liner.
  */
 @Composable
-private fun StatusRow(
+private fun StatusCard(
     status: EqStatus,
     modifier: Modifier = Modifier,
 ) {
-    val app = when (status) {
-        is EqStatus.Active -> status.app
-        is EqStatus.NoControl -> status.app
-        else -> null
-    }
-    val appLabel = app?.label ?: stringResource(R.string.eq_status_generic_app_label)
-    val text = when (status) {
-        is EqStatus.Active -> when {
-            status.multiple -> stringResource(R.string.eq_status_active_multiple_label)
-            else -> stringResource(R.string.eq_status_active_label, appLabel)
-        }
-
-        is EqStatus.NoControl -> stringResource(R.string.eq_status_no_control_label, appLabel)
-        EqStatus.Waiting -> stringResource(R.string.eq_status_waiting_label)
-        EqStatus.InactiveForDevice -> stringResource(R.string.eq_status_inactive_label)
-    }
-
-    Row(
-        modifier = modifier.heightIn(min = STATUS_ROW_HEIGHT),
-        verticalAlignment = Alignment.CenterVertically,
+    Card(
+        modifier = modifier,
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
     ) {
-        StatusIcon(icon = app?.icon)
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            EqAppIcon(icon = status.app?.icon, size = STATUS_ICON_SIZE)
+            Spacer(modifier = Modifier.width(16.dp))
+            Column {
+                Text(
+                    text = statusHeadline(status),
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+                statusDetails(status).forEach { detail ->
+                    Text(
+                        text = detail,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+        }
     }
 }
 
+/**
+ * Same wording as the compact row, except for a session we hold without control: there the card has
+ * room to say what happened underneath instead of squeezing it into one line.
+ */
 @Composable
-private fun StatusIcon(icon: Drawable?) {
-    if (icon == null) {
-        Icon(
-            imageVector = Icons.TwoTone.MusicNote,
-            contentDescription = null,
-            modifier = Modifier.size(STATUS_ICON_SIZE),
-            tint = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        return
+private fun statusHeadline(status: EqStatus): String = when (status) {
+    is EqStatus.NoControl -> stringResource(R.string.eq_status_no_control_headline, eqAppLabel(status.app))
+    else -> eqStatusLine(status)
+}
+
+/** Only what the sessions actually told us, in the order it matters. */
+@Composable
+private fun statusDetails(status: EqStatus): List<String> = buildList {
+    if (status is EqStatus.NoControl) add(stringResource(R.string.eq_status_no_control_detail))
+
+    // With several apps in play the headline can't name one, so the most recent one goes here.
+    val mostRecent = (status as? EqStatus.Active)?.takeIf { it.multiple }?.app?.label
+    if (mostRecent != null) add(stringResource(R.string.eq_status_multiple_recent_label, mostRecent))
+
+    val since = when (status) {
+        is EqStatus.Active -> status.since
+        is EqStatus.NoControl -> status.since
+        else -> null
     }
-    val bitmap = remember(icon) {
-        icon.toBitmap(
-            width = icon.intrinsicWidth.coerceAtLeast(1),
-            height = icon.intrinsicHeight.coerceAtLeast(1),
-        ).asImageBitmap()
-    }
-    Image(
-        bitmap = bitmap,
-        contentDescription = null,
-        modifier = Modifier.size(STATUS_ICON_SIZE),
-    )
+    if (since != null) add(stringResource(R.string.eq_status_since_label, formatSessionStart(since)))
 }
 
 @Composable
@@ -538,8 +533,18 @@ private fun formatBoost(millibel: Int): String =
 /** Slider stops between the ends, so the slider moves in 1 dB steps. */
 private const val BOOST_STEPS = 9
 
-private val STATUS_ROW_HEIGHT = 32.dp
-private val STATUS_ICON_SIZE = 20.dp
+private val STATUS_ICON_SIZE = 40.dp
+
+/**
+ * When the app announced its session, which is not the same as when it started playing: only the
+ * time of day, the whole thing is about what is going on right now.
+ */
+@Composable
+private fun formatSessionStart(since: Instant): String = remember(since) {
+    DateFormat.getTimeInstance(DateFormat.SHORT).format(Date(since.toEpochMilli()))
+}
+
+private val previewSessionStart: Instant = Instant.ofEpochMilli(1_700_000_000_000)
 
 private val previewCaps = EqCapabilities.Caps(
     bandCount = 5,
@@ -554,7 +559,11 @@ private fun previewState(
     levels: List<Int>? = listOf(900, 300, 0, -300, 600),
     boostGain: Int? = 300,
     isProVersion: Boolean = true,
-    status: EqStatus? = EqStatus.Active(EqStatusApp("com.spotify.music", label = "Spotify"), multiple = false),
+    status: EqStatus? = EqStatus.Active(
+        app = EqStatusApp("com.spotify.music", label = "Spotify"),
+        multiple = false,
+        since = previewSessionStart,
+    ),
 ): DeviceEqViewModel.State {
     val device = MockDevice(label = "Sony WH-1000XM5", address = "AA:BB:CC:DD:EE:01")
         .toManagedDevice(isConnected = true)
@@ -596,6 +605,29 @@ private fun DeviceEqScreenPreview() {
 
 @Preview2
 @Composable
+private fun DeviceEqScreenMultipleAppsPreview() {
+    PreviewWrapper {
+        DeviceEqScreen(
+            state = previewState(
+                status = EqStatus.Active(
+                    app = EqStatusApp("com.spotify.music", label = "Spotify"),
+                    multiple = true,
+                    since = previewSessionStart,
+                ),
+            ),
+            onNavigateBack = {},
+            onToggleEq = {},
+            onLevelsChanged = {},
+            onLevelsCommitted = {},
+            onPresetSelected = {},
+            onBoostChanged = {},
+            onBoostCommitted = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
 private fun DeviceEqScreenWaitingPreview() {
     PreviewWrapper {
         DeviceEqScreen(
@@ -616,7 +648,12 @@ private fun DeviceEqScreenWaitingPreview() {
 private fun DeviceEqScreenNoControlPreview() {
     PreviewWrapper {
         DeviceEqScreen(
-            state = previewState(status = EqStatus.NoControl(app = null)),
+            state = previewState(
+                status = EqStatus.NoControl(
+                    app = EqStatusApp("com.spotify.music", label = "Spotify"),
+                    since = previewSessionStart,
+                ),
+            ),
             onNavigateBack = {},
             onToggleEq = {},
             onLevelsChanged = {},
