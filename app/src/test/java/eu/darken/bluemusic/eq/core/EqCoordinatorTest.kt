@@ -544,6 +544,67 @@ class EqCoordinatorTest : BaseTest() {
     }
 
     @Test
+    fun `handing the listener back re-applies the target without any other change`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        coordinator.targetAddress.value shouldBe "AA"
+
+        coordinator.setListening(false)
+        runCurrent()
+        coordinator.targetAddress.value shouldBe null
+
+        coordinator.setListening(true)
+        runCurrent()
+
+        // Nothing about the devices changed, so nothing will re-emit: switching listening back on
+        // has to bring the target with it or the equalizer stays deaf.
+        trackerFlow.value.listening shouldBe true
+        coordinator.targetAddress.value shouldBe "AA"
+
+        openSessions(11)
+        runCurrent()
+        attached shouldBe mapOf(11 to listOf(300, 0, -300))
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a manual re-enable that fails to register is retried`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+
+        coordinator.setListening(false)
+        runCurrent()
+
+        startListeningFails = true
+        coordinator.setListening(true)
+        runCurrent()
+        trackerFlow.value.listening shouldBe false
+        // The target is back even though the registration didn't take.
+        coordinator.targetAddress.value shouldBe "AA"
+
+        startListeningFails = false
+        advanceTimeBy(6_000)
+        runCurrent()
+
+        trackerFlow.value.listening shouldBe true
+
+        openSessions(11)
+        runCurrent()
+        attached shouldBe mapOf(11 to listOf(300, 0, -300))
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
     fun `a manual listening stop is not undone by a pending retry`() = runTest {
         startListeningFails = true
         val coordinator = createCoordinator(backgroundScope)
