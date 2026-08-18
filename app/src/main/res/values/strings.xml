@@ -515,6 +515,8 @@
     <string name="eq_presets_label">Presets</string>
     <string name="eq_bands_label">Bands</string>
     <string name="eq_disabled_hint">The equalizer is off for this device, you can turn it on in the device settings.</string>
+    <string name="eq_boost_label">Volume boost</string>
+    <string name="eq_boost_hint">Makes everything louder on top of the bands. A lot of boost can distort the sound.</string>
     <string name="eq_unsupported_msg">This phone doesn\'t offer an equalizer we can use.</string>
     <string name="eq_info_msg">Works with apps that support system equalizers, e.g. Spotify or YouTube Music. It affects all audio from those apps while this device is active. If something is already playing, restart playback to hear the change.</string>
     <string name="eq_frequency_hz_label">%1$s Hz</string>

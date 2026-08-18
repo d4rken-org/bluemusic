@@ -76,6 +76,8 @@ fun DeviceEqScreenHost(
             onLevelsChanged = { levels -> vm.onLevelsChanged(levels) },
             onLevelsCommitted = { levels -> vm.onLevelsCommitted(levels) },
             onPresetSelected = { preset -> vm.applyPreset(preset) },
+            onBoostChanged = { gain -> vm.onBoostChanged(gain) },
+            onBoostCommitted = { gain -> vm.onBoostCommitted(gain) },
         )
     }
 }
@@ -88,15 +90,22 @@ fun DeviceEqScreen(
     onLevelsChanged: (List<Int>) -> Unit,
     onLevelsCommitted: (List<Int>) -> Unit,
     onPresetSelected: (EqPresets.Id) -> Unit,
+    onBoostChanged: (Int) -> Unit,
+    onBoostCommitted: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val capabilities = state.capabilities
     val storedLevels = capabilities.levelsOf(state.device.eqBandLevels)
+    val storedBoost = (state.device.eqBoostGain ?: 0).coerceIn(0, MAX_BOOST_GAIN)
 
     // Slider drags only live here, they are handed to the ViewModel as a preview and persisted on release.
     var draggedLevels by remember { mutableStateOf<List<Int>?>(null) }
     LaunchedEffect(storedLevels) { draggedLevels = null }
     val levels = draggedLevels ?: storedLevels
+
+    var draggedBoost by remember { mutableStateOf<Int?>(null) }
+    LaunchedEffect(storedBoost) { draggedBoost = null }
+    val boost = draggedBoost ?: storedBoost
 
     Scaffold(
         modifier = modifier,
@@ -199,6 +208,33 @@ fun DeviceEqScreen(
                 )
             }
 
+            item {
+                SectionHeader(
+                    title = stringResource(R.string.eq_boost_label),
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                )
+            }
+
+            item {
+                BoostSlider(
+                    gain = boost,
+                    onGainChange = { newGain ->
+                        draggedBoost = newGain
+                        onBoostChanged(newGain)
+                    },
+                    onGainChangeFinished = { onBoostCommitted(draggedBoost ?: boost) },
+                )
+            }
+
+            item {
+                Text(
+                    text = stringResource(R.string.eq_boost_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                )
+            }
+
             item { InfoCard() }
         }
     }
@@ -233,6 +269,36 @@ private fun BandSlider(
         )
         Text(
             text = formatGain(level),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.End,
+            modifier = Modifier.width(64.dp),
+        )
+    }
+}
+
+@Composable
+private fun BoostSlider(
+    gain: Int,
+    onGainChange: (Int) -> Unit,
+    onGainChangeFinished: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Slider(
+            value = gain.toFloat(),
+            onValueChange = { onGainChange(it.roundToInt()) },
+            onValueChangeFinished = onGainChangeFinished,
+            valueRange = 0f..MAX_BOOST_GAIN.toFloat(),
+            steps = BOOST_STEPS,
+            modifier = Modifier.weight(1f),
+        )
+        Text(
+            text = formatBoost(gain),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.End,
@@ -330,6 +396,16 @@ private fun formatFrequency(milliHertz: Int): String {
 private fun formatGain(millibel: Int): String =
     stringResource(R.string.eq_gain_db_label, String.format(Locale.getDefault(), "%+.1f", millibel / 100f))
 
+@Composable
+private fun formatBoost(millibel: Int): String =
+    stringResource(R.string.eq_gain_db_label, String.format(Locale.getDefault(), "%.1f", millibel / 100f))
+
+/** Upper end of the boost slider in millibel, +10 dB. */
+private const val MAX_BOOST_GAIN = 1000
+
+/** Slider stops between the ends, so the slider moves in 1 dB steps. */
+private const val BOOST_STEPS = 9
+
 private val previewCaps = EqCapabilities.Caps(
     bandCount = 5,
     minLevel = -1500,
@@ -341,11 +417,18 @@ private fun previewState(
     capabilities: EqCapabilities.Caps? = previewCaps,
     eqEnabled: Boolean = true,
     levels: List<Int>? = listOf(900, 300, 0, -300, 600),
+    boostGain: Int? = 300,
 ): DeviceEqViewModel.State {
     val device = MockDevice(label = "Sony WH-1000XM5", address = "AA:BB:CC:DD:EE:01")
         .toManagedDevice(isConnected = true)
     return DeviceEqViewModel.State(
-        device = device.copy(config = device.config.copy(eqEnabled = eqEnabled, eqBandLevels = levels)),
+        device = device.copy(
+            config = device.config.copy(
+                eqEnabled = eqEnabled,
+                eqBandLevels = levels,
+                eqBoostGain = boostGain,
+            )
+        ),
         capabilities = capabilities,
         presets = EqPresets().let { presets ->
             capabilities?.let { caps ->
@@ -366,6 +449,8 @@ private fun DeviceEqScreenPreview() {
             onLevelsChanged = {},
             onLevelsCommitted = {},
             onPresetSelected = {},
+            onBoostChanged = {},
+            onBoostCommitted = {},
         )
     }
 }
@@ -375,11 +460,13 @@ private fun DeviceEqScreenPreview() {
 private fun DeviceEqScreenDisabledPreview() {
     PreviewWrapper {
         DeviceEqScreen(
-            state = previewState(eqEnabled = false, levels = null),
+            state = previewState(eqEnabled = false, levels = null, boostGain = null),
             onNavigateBack = {},
             onLevelsChanged = {},
             onLevelsCommitted = {},
             onPresetSelected = {},
+            onBoostChanged = {},
+            onBoostCommitted = {},
         )
     }
 }
@@ -389,11 +476,13 @@ private fun DeviceEqScreenDisabledPreview() {
 private fun DeviceEqScreenUnsupportedPreview() {
     PreviewWrapper {
         DeviceEqScreen(
-            state = previewState(capabilities = null, eqEnabled = false, levels = null),
+            state = previewState(capabilities = null, eqEnabled = false, levels = null, boostGain = null),
             onNavigateBack = {},
             onLevelsChanged = {},
             onLevelsCommitted = {},
             onPresetSelected = {},
+            onBoostChanged = {},
+            onBoostCommitted = {},
         )
     }
 }

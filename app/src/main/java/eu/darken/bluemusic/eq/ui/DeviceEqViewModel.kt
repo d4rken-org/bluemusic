@@ -51,6 +51,7 @@ class DeviceEqViewModel @AssistedInject constructor(
     )
 
     private var persistJob: Job? = null
+    private var boostJob: Job? = null
 
     val state = combine(
         deviceRepo.observeDevice(deviceAddress).filterNotNull(),
@@ -86,6 +87,24 @@ class DeviceEqViewModel @AssistedInject constructor(
         }
     }
 
+    /** Live boost while the slider is being dragged: applied to the running effects, not persisted. */
+    fun onBoostChanged(gain: Int) {
+        eqCoordinator.previewBoost(deviceAddress, gain)
+    }
+
+    fun onBoostCommitted(gain: Int) {
+        log(tag) { "onBoostCommitted($gain)" }
+        boostJob?.cancel()
+        boostJob = vmScope.launch {
+            try {
+                // No boost is the "never configured" state, storing null keeps the enhancer out of it.
+                deviceRepo.updateDevice(deviceAddress) { it.copy(eqBoostGain = gain.takeIf { value -> value > 0 }) }
+            } finally {
+                eqCoordinator.previewBoost(deviceAddress, null)
+            }
+        }
+    }
+
     fun applyPreset(id: EqPresets.Id) = launch {
         log(tag) { "applyPreset($id)" }
         // A slider release could still be on its way to the database, its levels are stale now.
@@ -108,6 +127,7 @@ class DeviceEqViewModel @AssistedInject constructor(
     override fun onCleared() {
         // Leaving the screen mid-drag cancels the scope, so nothing else would clear the preview.
         eqCoordinator.previewLevels(deviceAddress, null)
+        eqCoordinator.previewBoost(deviceAddress, null)
         super.onCleared()
     }
 

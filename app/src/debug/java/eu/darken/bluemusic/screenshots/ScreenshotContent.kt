@@ -163,6 +163,7 @@ internal fun DeviceEqContent() {
                     config = device.config.copy(
                         eqEnabled = true,
                         eqBandLevels = listOf(900, 300, 0, -300, 600),
+                        eqBoostGain = 300,
                     )
                 ),
                 capabilities = capabilities,
@@ -175,6 +176,8 @@ internal fun DeviceEqContent() {
             onLevelsChanged = {},
             onLevelsCommitted = {},
             onPresetSelected = {},
+            onBoostChanged = {},
+            onBoostCommitted = {},
         )
     }
 }
