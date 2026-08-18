@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.eq.ui
 
+import android.content.pm.PackageManager
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -7,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.bluemusic.common.ca.CaString
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
+import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.SingleEventFlow
@@ -22,12 +24,23 @@ import eu.darken.bluemusic.eq.core.EqCapabilities
 import eu.darken.bluemusic.eq.core.EqConfigSaver
 import eu.darken.bluemusic.eq.core.EqCoordinator
 import eu.darken.bluemusic.eq.core.EqPresets
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
+import kotlin.time.Duration.Companion.milliseconds
 
+@OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
 @HiltViewModel(assistedFactory = DeviceEqViewModel.Factory::class)
 class DeviceEqViewModel @AssistedInject constructor(
     @Assisted private val deviceAddress: DeviceAddr,
@@ -37,7 +50,8 @@ class DeviceEqViewModel @AssistedInject constructor(
     private val eqCoordinator: EqCoordinator,
     private val eqConfigSaver: EqConfigSaver,
     private val upgradeRepo: UpgradeRepo,
-    dispatcherProvider: DispatcherProvider,
+    private val packageManager: PackageManager,
+    private val dispatcherProvider: DispatcherProvider,
     navCtrl: NavigationController,
 ) : ViewModel4(dispatcherProvider, logTag("Eq", "Device", "VM"), navCtrl) {
 
@@ -46,6 +60,7 @@ class DeviceEqViewModel @AssistedInject constructor(
         val capabilities: EqCapabilities.Caps?,
         val presets: List<PresetOption> = emptyList(),
         val isProVersion: Boolean = false,
+        val status: EqStatus? = null,
     )
 
     sealed interface Event {
@@ -64,11 +79,37 @@ class DeviceEqViewModel @AssistedInject constructor(
     private var persistJob: Job? = null
     private var boostJob: Job? = null
 
+    private val appCacheLock = Mutex()
+    private val appCache = mutableMapOf<String, EqStatusApp>()
+
+    /**
+     * Players announce a CLOSE/OPEN pair around every track change, and the sessions behind them come
+     * and go with it. Debounced so the row states what is going on instead of flickering along.
+     */
+    private val statusFlow: Flow<EqStatus?> = combine(
+        deviceRepo.observeDevice(deviceAddress).filterNotNull(),
+        eqCapabilities.capabilities,
+        eqCoordinator.targetAddress,
+        eqCoordinator.sessionState,
+    ) { device, capabilities, targetAddress, sessionState ->
+        deriveEqStatus(
+            deviceAddress = deviceAddress,
+            eqEnabled = device.eqEnabled,
+            hasCapabilities = capabilities != null,
+            targetAddress = targetAddress,
+            sessionState = sessionState,
+        )
+    }
+        .distinctUntilChanged()
+        .debounce(STATUS_DEBOUNCE)
+        .mapLatest { status -> status.withResolvedApp() }
+
     val state = combine(
         deviceRepo.observeDevice(deviceAddress).filterNotNull(),
         eqCapabilities.capabilities.onStart { eqCapabilities.refreshIfNeeded() },
         upgradeRepo.upgradeInfo,
-    ) { device, capabilities, upgradeInfo ->
+        statusFlow.onStart { emit(null) },
+    ) { device, capabilities, upgradeInfo, status ->
         State(
             device = device,
             capabilities = capabilities,
@@ -76,8 +117,37 @@ class DeviceEqViewModel @AssistedInject constructor(
                 eqPresets.presets.map { PresetOption(it.id, it.label, eqPresets.levelsFor(it.curve, caps)) }
             } ?: emptyList(),
             isProVersion = upgradeInfo.isPro,
+            status = status,
         )
     }.asStateFlow()
+
+    private suspend fun EqStatus?.withResolvedApp(): EqStatus? = when (this) {
+        is EqStatus.Active -> copy(app = app?.resolve())
+        is EqStatus.NoControl -> copy(app = app?.resolve())
+        else -> this
+    }
+
+    /**
+     * Turns a package name into something we can show. A package we can't resolve stays unresolved:
+     * the name itself comes from an unverified broadcast and is not ours to display.
+     */
+    private suspend fun EqStatusApp.resolve(): EqStatusApp = appCacheLock.withLock {
+        appCache.getOrPut(packageName) {
+            withContext(dispatcherProvider.IO) {
+                try {
+                    val appInfo = packageManager.getApplicationInfo(packageName, 0)
+                    EqStatusApp(
+                        packageName = packageName,
+                        label = appInfo.loadLabel(packageManager).toString(),
+                        icon = appInfo.loadIcon(packageManager),
+                    )
+                } catch (e: Exception) {
+                    log(tag, WARN) { "Failed to resolve $packageName: ${e.asLog()}" }
+                    EqStatusApp(packageName)
+                }
+            }
+        }
+    }
 
     /**
      * Entitlement is checked here instead of against the state field: the state can still carry a
@@ -173,5 +243,10 @@ class DeviceEqViewModel @AssistedInject constructor(
     @AssistedFactory
     interface Factory {
         fun create(deviceAddress: DeviceAddr): DeviceEqViewModel
+    }
+
+    companion object {
+        /** How long the session picture has to hold still before the status row follows it. */
+        private val STATUS_DEBOUNCE = 400.milliseconds
     }
 }

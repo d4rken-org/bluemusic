@@ -25,6 +25,8 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
@@ -93,7 +95,21 @@ class EqCoordinator @Inject constructor(
     private val previewFlow = MutableStateFlow<Preview?>(null)
 
     private val actorLock = Mutex()
+
+    private val _targetAddress = MutableStateFlow<DeviceAddr?>(null)
+
+    /** The device the equalizer is currently running for, `null` while nothing is applied. */
+    val targetAddress: StateFlow<DeviceAddr?> = _targetAddress.asStateFlow()
+
+    /**
+     * Published along with every assignment: they all happen inside the actor, so the flow can never
+     * disagree with what is actually applied.
+     */
     private var appliedTarget: Target? = null
+        set(value) {
+            field = value
+            _targetAddress.value = value?.address
+        }
 
     /** Session ids the transition stream told us about, only touched from inside the actor. */
     private val openSessionIds = mutableSetOf<Int>()

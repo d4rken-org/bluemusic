@@ -314,6 +314,103 @@ class EqCoordinatorTest : BaseTest() {
         coordinator.stopSession(token)
     }
 
+    // region target address
+
+    @Test
+    fun `the device the equalizer runs for is published`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        coordinator.targetAddress.value shouldBe null
+
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+
+        // Published from the applied target, so it is set before any app opens a session.
+        coordinator.targetAddress.value shouldBe "AA"
+
+        openSessions(11)
+        runCurrent()
+        coordinator.targetAddress.value shouldBe "AA"
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `losing the owner clears the published device`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        coordinator.targetAddress.value shouldBe "AA"
+
+        ownerFlow.value = OwnerSnapshot(emptyList(), generation = 2)
+        runCurrent()
+
+        coordinator.targetAddress.value shouldBe null
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `another device taking over is published`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"), device("BB"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        coordinator.targetAddress.value shouldBe "AA"
+
+        ownerFlow.value = OwnerSnapshot(listOf("BB"), generation = 2)
+        runCurrent()
+
+        coordinator.targetAddress.value shouldBe "BB"
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `stopping the session clears the published device`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+        coordinator.targetAddress.value shouldBe "AA"
+
+        coordinator.stopSession(token)
+        runCurrent()
+
+        coordinator.targetAddress.value shouldBe null
+    }
+
+    @Test
+    fun `turning listening off clears the published device`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        coordinator.targetAddress.value shouldBe "AA"
+
+        coordinator.setListening(false)
+        runCurrent()
+
+        coordinator.targetAddress.value shouldBe null
+
+        coordinator.stopSession(token)
+    }
+
+    // endregion
+
     // region close grace
 
     @Test

@@ -1,5 +1,7 @@
 package eu.darken.bluemusic.eq.ui
 
+import android.graphics.drawable.Drawable
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -11,6 +13,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -21,6 +24,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.twotone.Info
+import androidx.compose.material.icons.twotone.MusicNote
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilterChip
@@ -40,11 +44,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.core.graphics.drawable.toBitmap
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.darken.bluemusic.R
@@ -178,6 +184,17 @@ fun DeviceEqScreen(
                 )
             }
 
+            state.status?.let { status ->
+                item {
+                    StatusRow(
+                        status = status,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 24.dp),
+                    )
+                }
+            }
+
             item {
                 Card(
                     modifier = Modifier
@@ -265,6 +282,70 @@ fun DeviceEqScreen(
             item { InfoCard() }
         }
     }
+}
+
+/**
+ * What the equalizer is doing right now. The row keeps a fixed minimum height so the content below
+ * it doesn't jump around while sessions come and go.
+ */
+@Composable
+private fun StatusRow(
+    status: EqStatus,
+    modifier: Modifier = Modifier,
+) {
+    val app = when (status) {
+        is EqStatus.Active -> status.app
+        is EqStatus.NoControl -> status.app
+        else -> null
+    }
+    val appLabel = app?.label ?: stringResource(R.string.eq_status_generic_app_label)
+    val text = when (status) {
+        is EqStatus.Active -> when {
+            status.multiple -> stringResource(R.string.eq_status_active_multiple_label)
+            else -> stringResource(R.string.eq_status_active_label, appLabel)
+        }
+
+        is EqStatus.NoControl -> stringResource(R.string.eq_status_no_control_label, appLabel)
+        EqStatus.Waiting -> stringResource(R.string.eq_status_waiting_label)
+        EqStatus.InactiveForDevice -> stringResource(R.string.eq_status_inactive_label)
+    }
+
+    Row(
+        modifier = modifier.heightIn(min = STATUS_ROW_HEIGHT),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        StatusIcon(icon = app?.icon)
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+    }
+}
+
+@Composable
+private fun StatusIcon(icon: Drawable?) {
+    if (icon == null) {
+        Icon(
+            imageVector = Icons.TwoTone.MusicNote,
+            contentDescription = null,
+            modifier = Modifier.size(STATUS_ICON_SIZE),
+            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        return
+    }
+    val bitmap = remember(icon) {
+        icon.toBitmap(
+            width = icon.intrinsicWidth.coerceAtLeast(1),
+            height = icon.intrinsicHeight.coerceAtLeast(1),
+        ).asImageBitmap()
+    }
+    Image(
+        bitmap = bitmap,
+        contentDescription = null,
+        modifier = Modifier.size(STATUS_ICON_SIZE),
+    )
 }
 
 @Composable
@@ -445,6 +526,9 @@ private fun formatBoost(millibel: Int): String =
 /** Slider stops between the ends, so the slider moves in 1 dB steps. */
 private const val BOOST_STEPS = 9
 
+private val STATUS_ROW_HEIGHT = 32.dp
+private val STATUS_ICON_SIZE = 20.dp
+
 private val previewCaps = EqCapabilities.Caps(
     bandCount = 5,
     minLevel = -1500,
@@ -458,6 +542,7 @@ private fun previewState(
     levels: List<Int>? = listOf(900, 300, 0, -300, 600),
     boostGain: Int? = 300,
     isProVersion: Boolean = true,
+    status: EqStatus? = EqStatus.Active(EqStatusApp("com.spotify.music", label = "Spotify"), multiple = false),
 ): DeviceEqViewModel.State {
     val device = MockDevice(label = "Sony WH-1000XM5", address = "AA:BB:CC:DD:EE:01")
         .toManagedDevice(isConnected = true)
@@ -476,6 +561,7 @@ private fun previewState(
             }
         } ?: emptyList(),
         isProVersion = isProVersion,
+        status = status,
     )
 }
 
@@ -498,10 +584,44 @@ private fun DeviceEqScreenPreview() {
 
 @Preview2
 @Composable
+private fun DeviceEqScreenWaitingPreview() {
+    PreviewWrapper {
+        DeviceEqScreen(
+            state = previewState(status = EqStatus.Waiting),
+            onNavigateBack = {},
+            onToggleEq = {},
+            onLevelsChanged = {},
+            onLevelsCommitted = {},
+            onPresetSelected = {},
+            onBoostChanged = {},
+            onBoostCommitted = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
+private fun DeviceEqScreenNoControlPreview() {
+    PreviewWrapper {
+        DeviceEqScreen(
+            state = previewState(status = EqStatus.NoControl(app = null)),
+            onNavigateBack = {},
+            onToggleEq = {},
+            onLevelsChanged = {},
+            onLevelsCommitted = {},
+            onPresetSelected = {},
+            onBoostChanged = {},
+            onBoostCommitted = {},
+        )
+    }
+}
+
+@Preview2
+@Composable
 private fun DeviceEqScreenDisabledPreview() {
     PreviewWrapper {
         DeviceEqScreen(
-            state = previewState(eqEnabled = false, levels = null, boostGain = null),
+            state = previewState(eqEnabled = false, levels = null, boostGain = null, status = null),
             onNavigateBack = {},
             onToggleEq = {},
             onLevelsChanged = {},
@@ -518,7 +638,7 @@ private fun DeviceEqScreenDisabledPreview() {
 private fun DeviceEqScreenFreePreview() {
     PreviewWrapper {
         DeviceEqScreen(
-            state = previewState(eqEnabled = false, levels = null, boostGain = null, isProVersion = false),
+            state = previewState(eqEnabled = false, levels = null, boostGain = null, isProVersion = false, status = null),
             onNavigateBack = {},
             onToggleEq = {},
             onLevelsChanged = {},
@@ -535,7 +655,7 @@ private fun DeviceEqScreenFreePreview() {
 private fun DeviceEqScreenUnsupportedPreview() {
     PreviewWrapper {
         DeviceEqScreen(
-            state = previewState(capabilities = null, eqEnabled = false, levels = null, boostGain = null),
+            state = previewState(capabilities = null, eqEnabled = false, levels = null, boostGain = null, status = null),
             onNavigateBack = {},
             onToggleEq = {},
             onLevelsChanged = {},

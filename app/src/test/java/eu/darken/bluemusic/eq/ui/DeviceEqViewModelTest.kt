@@ -10,6 +10,7 @@ import eu.darken.bluemusic.eq.core.EqCapabilities
 import eu.darken.bluemusic.eq.core.EqConfigSaver
 import eu.darken.bluemusic.eq.core.EqCoordinator
 import eu.darken.bluemusic.eq.core.EqPresets
+import eu.darken.bluemusic.eq.core.EqSessionState
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.every
@@ -80,9 +81,13 @@ class DeviceEqViewModelTest : BaseTest() {
             coEvery { refreshIfNeeded() } returns caps
         },
         eqPresets = EqPresets(),
-        eqCoordinator = mockk<EqCoordinator>(relaxed = true),
+        eqCoordinator = mockk<EqCoordinator>(relaxed = true).apply {
+            every { targetAddress } returns MutableStateFlow(address)
+            every { sessionState } returns MutableStateFlow(EqSessionState())
+        },
         eqConfigSaver = saver,
         upgradeRepo = mockUpgradeRepo(),
+        packageManager = mockk(relaxed = true),
         dispatcherProvider = TestDispatcherProvider(dispatcher),
         navCtrl = mockk<NavigationController>(relaxed = true),
     )
