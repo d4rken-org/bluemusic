@@ -104,6 +104,13 @@ data class DeviceConfigEntity(
      */
     @ColumnInfo(name = "eq_band_levels")
     val eqBandLevels: List<Int>? = null,
+
+    /**
+     * Extra loudness in millibel on top of the curve. `null` or `0` means no boost.
+     * Only applies while [eqEnabled] is set, the same toggle governs both.
+     */
+    @ColumnInfo(name = "eq_boost_gain")
+    val eqBoostGain: Int? = null,
 ) {
 
     fun toCompactString(): String = buildString {
@@ -127,6 +134,7 @@ data class DeviceConfigEntity(
         if (dndMode != null) append(", dnd=$dndMode")
         if (connectionAlertType != AlertType.NONE) append(", alert=$connectionAlertType")
         if (eqEnabled) append(", eq=${eqBandLevels ?: "flat"}")
+        if (eqBoostGain != null && eqBoostGain != 0) append(", boost=$eqBoostGain")
         append(")")
     }
 

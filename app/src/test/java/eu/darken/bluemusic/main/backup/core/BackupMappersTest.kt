@@ -45,6 +45,7 @@ class BackupMappersTest : BaseTest() {
             connectionAlertSoundUri = "content://test/123",
             eqEnabled = true,
             eqBandLevels = listOf(600, 300, 0, -300, -600),
+            eqBoostGain = 700,
         )
 
         val backup = entity.toBackup()
@@ -61,6 +62,17 @@ class BackupMappersTest : BaseTest() {
 
         backup.eqEnabled shouldBe true
         backup.eqBandLevels shouldBe null
+        backup.eqBoostGain shouldBe null
+        backup.toEntity() shouldBe entity
+    }
+
+    @Test
+    fun `entity to backup carries the volume boost`() {
+        val entity = DeviceConfigEntity(address = "test", eqEnabled = true, eqBoostGain = 1000)
+
+        val backup = entity.toBackup()
+
+        backup.eqBoostGain shouldBe 1000
         backup.toEntity() shouldBe entity
     }
 

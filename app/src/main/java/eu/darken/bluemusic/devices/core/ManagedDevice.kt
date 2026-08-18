@@ -77,6 +77,8 @@ data class ManagedDevice(
         get() = config.eqEnabled
     val eqBandLevels: List<Int>?
         get() = config.eqBandLevels
+    val eqBoostGain: Int?
+        get() = config.eqBoostGain
     /**
      * True when this device requires the foreground service to keep running for ongoing work.
      *
@@ -114,6 +116,7 @@ data class ManagedDevice(
     fun toCompactString(): String = buildString {
         append("ManagedDevice($address/$label, active=$isActive, connected=$isConnected")
         if (eqEnabled) append(", eq=${eqBandLevels ?: "flat"}")
+        if (eqBoostGain != null && eqBoostGain != 0) append(", boost=$eqBoostGain")
         append(")")
     }
 

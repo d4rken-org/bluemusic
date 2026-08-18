@@ -35,6 +35,7 @@ fun DeviceConfigEntity.toBackup(): DeviceConfigBackup = DeviceConfigBackup(
     connectionAlertSoundUri = connectionAlertSoundUri,
     eqEnabled = eqEnabled,
     eqBandLevels = eqBandLevels,
+    eqBoostGain = eqBoostGain,
 )
 
 fun DeviceConfigBackup.toEntity(): DeviceConfigEntity = DeviceConfigEntity(
@@ -68,6 +69,7 @@ fun DeviceConfigBackup.toEntity(): DeviceConfigEntity = DeviceConfigEntity(
     connectionAlertSoundUri = connectionAlertSoundUri,
     eqEnabled = eqEnabled,
     eqBandLevels = eqBandLevels,
+    eqBoostGain = eqBoostGain,
 )
 
 /**

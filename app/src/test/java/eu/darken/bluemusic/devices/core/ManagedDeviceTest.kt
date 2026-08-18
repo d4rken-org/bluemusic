@@ -5,6 +5,7 @@ import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
+import io.kotest.matchers.string.shouldNotContain
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.BeforeEach
@@ -285,6 +286,7 @@ class ManagedDeviceTest : BaseTest() {
     fun `equalizer defaults to off without levels`() {
         create().eqEnabled shouldBe false
         create().eqBandLevels shouldBe null
+        create().eqBoostGain shouldBe null
     }
 
     @Test
@@ -294,10 +296,12 @@ class ManagedDeviceTest : BaseTest() {
                 address = "AA:BB:CC:DD:EE:FF",
                 eqEnabled = true,
                 eqBandLevels = listOf(600, 0, -600),
+                eqBoostGain = 400,
             )
         )
         device.eqEnabled shouldBe true
         device.eqBandLevels shouldBe listOf(600, 0, -600)
+        device.eqBoostGain shouldBe 400
     }
 
     @Test
@@ -315,6 +319,15 @@ class ManagedDeviceTest : BaseTest() {
 
         create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", eqEnabled = true, eqBandLevels = listOf(300, 0)))
             .toCompactString() shouldContain "eq=[300, 0]"
+    }
+
+    @Test
+    fun `toCompactString mentions the boost only when there is one`() {
+        create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", eqEnabled = true, eqBoostGain = 0))
+            .toCompactString() shouldNotContain "boost="
+
+        create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", eqEnabled = true, eqBoostGain = 500))
+            .toCompactString() shouldContain "boost=500"
     }
 
     // endregion
