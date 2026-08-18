@@ -25,6 +25,27 @@ data class EqEvent(
 }
 
 /**
+ * A validated session edge, in the order the broadcasts arrived.
+ *
+ * The coordinator acts on these instead of diffing a snapshot of open session ids: a CLOSE followed
+ * immediately by an OPEN for the same id is two edges, while both snapshots look identical.
+ */
+data class EqTransition(
+    val type: Type,
+    val sessionId: Int,
+    val generation: Long,
+) {
+    enum class Type {
+        OPEN,
+        CLOSE,
+        ;
+    }
+}
+
+/** Thrown into the transition stream when an edge could not be buffered and was lost. */
+class EqTransitionOverflow(message: String) : IllegalStateException(message)
+
+/**
  * An audio effect control session another app told us about.
  *
  * Identity is [sessionId] alone: `EXTRA_PACKAGE_NAME` is diagnostic only, some apps don't send it

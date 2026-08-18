@@ -19,7 +19,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `open creates a session`() {
-        val state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        val state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42).state
 
         state.sessions.values.single() shouldBe EqSession(
             sessionId = 42,
@@ -32,7 +32,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `open with non positive session id is malformed`() {
-        val state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 0)
+        val state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 0).state
 
         state.sessions.shouldBeEmpty()
         state.events.last().type shouldBe EqEvent.Type.MALFORMED
@@ -40,7 +40,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `open with negative session id is malformed`() {
-        val state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", -1)
+        val state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", -1).state
 
         state.sessions.shouldBeEmpty()
         state.events.last().type shouldBe EqEvent.Type.MALFORMED
@@ -48,7 +48,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `open with missing session id extra is malformed`() {
-        val state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", null)
+        val state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", null).state
 
         state.sessions.shouldBeEmpty()
         state.events.last().type shouldBe EqEvent.Type.MALFORMED
@@ -57,10 +57,10 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `session identity is the session id, the package is only diagnostic`() {
-        var state = reducer.onOpenBroadcast(listening(), t0, 1L, null, 42)
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, null, 42).state
         state.sessions.values.single().packageName shouldBe null
 
-        state = reducer.onOpenBroadcast(state, at(1), 1L, "com.spotify.music", 42)
+        state = reducer.onOpenBroadcast(state, at(1), 1L, "com.spotify.music", 42).state
 
         state.sessions.values.single().sessionId shouldBe 42
         state.sessions.values.single().packageName shouldBe "com.spotify.music"
@@ -68,9 +68,9 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `duplicate open refreshes the existing session`() {
-        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42).state
         state = reducer.onAttached(state, at(1), 42, "attached")
-        state = reducer.onOpenBroadcast(state, at(2), 1L, "com.spotify.music", 42)
+        state = reducer.onOpenBroadcast(state, at(2), 1L, "com.spotify.music", 42).state
 
         state.sessions.values.single() shouldBe EqSession(
             sessionId = 42,
@@ -89,10 +89,10 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `close removes the session entirely`() {
-        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42).state
         state = reducer.onAttached(state, at(1), 42, "attached")
         state = reducer.onControlChanged(state, at(2), 42, true)
-        state = reducer.onCloseBroadcast(state, at(3), 1L, "com.spotify.music", 42)
+        state = reducer.onCloseBroadcast(state, at(3), 1L, "com.spotify.music", 42).state
 
         state.sessions.shouldBeEmpty()
         state.openSessions.shouldBeEmpty()
@@ -101,7 +101,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `unmatched close only records an event`() {
-        val state = reducer.onCloseBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        val state = reducer.onCloseBroadcast(listening(), t0, 1L, "com.spotify.music", 42).state
 
         state.sessions.shouldBeEmpty()
         state.events.last().type shouldBe EqEvent.Type.CLOSE
@@ -109,7 +109,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `close with invalid session id is malformed`() {
-        val state = reducer.onCloseBroadcast(listening(), t0, 1L, "com.spotify.music", 0)
+        val state = reducer.onCloseBroadcast(listening(), t0, 1L, "com.spotify.music", 0).state
 
         state.sessions.shouldBeEmpty()
         state.events.last().type shouldBe EqEvent.Type.MALFORMED
@@ -117,10 +117,10 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `reopen after close creates a fresh session row`() {
-        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42).state
         state = reducer.onAttached(state, at(1), 42, "attached")
-        state = reducer.onCloseBroadcast(state, at(2), 1L, "com.spotify.music", 42)
-        state = reducer.onOpenBroadcast(state, at(3), 1L, "com.spotify.music", 42)
+        state = reducer.onCloseBroadcast(state, at(2), 1L, "com.spotify.music", 42).state
+        state = reducer.onOpenBroadcast(state, at(3), 1L, "com.spotify.music", 42).state
 
         state.sessions.values.single() shouldBe EqSession(
             sessionId = 42,
@@ -132,13 +132,63 @@ class EqSessionReducerTest : BaseTest() {
         state.openSessions.map { it.sessionId } shouldBe listOf(42)
     }
 
+    // region transitions
+
+    @Test
+    fun `an accepted open produces an open transition`() {
+        val reduction = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+
+        reduction.transition shouldBe EqTransition(EqTransition.Type.OPEN, 42, 1L)
+    }
+
+    @Test
+    fun `an accepted close produces a close transition, even unmatched`() {
+        val reduction = reducer.onCloseBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+
+        reduction.transition shouldBe EqTransition(EqTransition.Type.CLOSE, 42, 1L)
+    }
+
+    @Test
+    fun `a close followed by an open of the same id produces both transitions`() {
+        val opened = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        val closed = reducer.onCloseBroadcast(opened.state, at(1), 1L, "com.spotify.music", 42)
+        val reopened = reducer.onOpenBroadcast(closed.state, at(2), 1L, "com.spotify.music", 42)
+
+        listOf(opened, closed, reopened).map { it.transition } shouldBe listOf(
+            EqTransition(EqTransition.Type.OPEN, 42, 1L),
+            EqTransition(EqTransition.Type.CLOSE, 42, 1L),
+            EqTransition(EqTransition.Type.OPEN, 42, 1L),
+        )
+    }
+
+    @Test
+    fun `rejected broadcasts produce no transition`() {
+        val malformed = reducer.onOpenBroadcast(listening(), t0, 1L, "com.bad.app", 0)
+        val stale = reducer.onOpenBroadcast(listening(2L), t0, 1L, "com.spotify.music", 42)
+        val stopped = reducer.onCloseBroadcast(EqSessionState(generation = 1L), t0, 1L, "com.spotify.music", 42)
+
+        listOf(malformed, stale, stopped).map { it.transition } shouldBe listOf(null, null, null)
+    }
+
+    @Test
+    fun `a capped open produces no transition`() {
+        var state = listening()
+        repeat(EqSessionState.MAX_SESSIONS) { i ->
+            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.spotify.music", i + 1).state
+        }
+
+        reducer.onOpenBroadcast(state, at(100), 1L, "com.spotify.music", 999).transition shouldBe null
+    }
+
+    // endregion
+
     // region session bounds
 
     @Test
     fun `tracked sessions are capped and the cap is reported once per generation`() {
         var state = listening()
         repeat(EqSessionState.MAX_SESSIONS + 10) { i ->
-            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.bad.app", i + 1)
+            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.bad.app", i + 1).state
         }
 
         state.sessions.size shouldBe EqSessionState.MAX_SESSIONS
@@ -150,9 +200,9 @@ class EqSessionReducerTest : BaseTest() {
     fun `a session known before the cap still updates while the cap is reached`() {
         var state = listening()
         repeat(EqSessionState.MAX_SESSIONS) { i ->
-            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.spotify.music", i + 1)
+            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.spotify.music", i + 1).state
         }
-        state = reducer.onOpenBroadcast(state, at(500), 1L, "com.spotify.music", 1)
+        state = reducer.onOpenBroadcast(state, at(500), 1L, "com.spotify.music", 1).state
 
         state.sessions.size shouldBe EqSessionState.MAX_SESSIONS
         state.sessions.getValue(1).openedAt shouldBe at(500)
@@ -162,13 +212,13 @@ class EqSessionReducerTest : BaseTest() {
     fun `closing sessions frees room under the cap again`() {
         var state = listening()
         repeat(EqSessionState.MAX_SESSIONS) { i ->
-            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.spotify.music", i + 1)
+            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.spotify.music", i + 1).state
         }
-        state = reducer.onOpenBroadcast(state, at(100), 1L, "com.spotify.music", 999)
+        state = reducer.onOpenBroadcast(state, at(100), 1L, "com.spotify.music", 999).state
         state.sessions.containsKey(999) shouldBe false
 
-        state = reducer.onCloseBroadcast(state, at(101), 1L, "com.spotify.music", 1)
-        state = reducer.onOpenBroadcast(state, at(102), 1L, "com.spotify.music", 999)
+        state = reducer.onCloseBroadcast(state, at(101), 1L, "com.spotify.music", 1).state
+        state = reducer.onOpenBroadcast(state, at(102), 1L, "com.spotify.music", 999).state
 
         state.sessions.size shouldBe EqSessionState.MAX_SESSIONS
         state.sessions.containsKey(1) shouldBe false
@@ -179,7 +229,7 @@ class EqSessionReducerTest : BaseTest() {
     fun `the cap notice resets with a new generation`() {
         var state = listening()
         repeat(EqSessionState.MAX_SESSIONS + 10) { i ->
-            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.bad.app", i + 1)
+            state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.bad.app", i + 1).state
         }
         state.sessionCapReported shouldBe true
 
@@ -193,7 +243,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `attach failure clears attachment state`() {
-        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42).state
         state = reducer.onAttached(state, at(1), 42, "attached")
         state = reducer.onAttachFailed(state, at(2), 42, "boom")
 
@@ -204,7 +254,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `detach clears attachment state`() {
-        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42).state
         state = reducer.onAttached(state, at(1), 42, "attached")
         state = reducer.onControlChanged(state, at(2), 42, true)
         state = reducer.onDetached(state, at(3), 42)
@@ -216,7 +266,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `control change updates the session`() {
-        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42).state
         state = reducer.onAttached(state, at(1), 42, "attached")
         state = reducer.onControlChanged(state, at(2), 42, false)
 
@@ -228,7 +278,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `starting to listen drops sessions of the previous generation`() {
-        var state = reducer.onOpenBroadcast(listening(1L), t0, 1L, "com.spotify.music", 42)
+        var state = reducer.onOpenBroadcast(listening(1L), t0, 1L, "com.spotify.music", 42).state
         state.sessions.size shouldBe 1
 
         state = reducer.onListeningStarted(state, at(1), 2L, "on again")
@@ -239,7 +289,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `stopping listening drops all sessions`() {
-        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42)
+        var state = reducer.onOpenBroadcast(listening(), t0, 1L, "com.spotify.music", 42).state
         state = reducer.onListeningStopped(state, at(1), 2L, "off")
 
         state.listening shouldBe false
@@ -250,12 +300,12 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `a broadcast arriving after stop does not repopulate state`() {
-        var state = reducer.onOpenBroadcast(listening(1L), t0, 1L, "com.spotify.music", 42)
+        var state = reducer.onOpenBroadcast(listening(1L), t0, 1L, "com.spotify.music", 42).state
         state = reducer.onListeningStopped(state, at(1), 2L, "off")
 
         // The receiver was still delivering when it was unregistered: same generation it registered with.
-        state = reducer.onOpenBroadcast(state, at(2), 1L, "com.spotify.music", 42)
-        state = reducer.onCloseBroadcast(state, at(3), 1L, "com.spotify.music", 7)
+        state = reducer.onOpenBroadcast(state, at(2), 1L, "com.spotify.music", 42).state
+        state = reducer.onCloseBroadcast(state, at(3), 1L, "com.spotify.music", 7).state
 
         state.listening shouldBe false
         state.sessions.shouldBeEmpty()
@@ -267,7 +317,7 @@ class EqSessionReducerTest : BaseTest() {
     fun `broadcasts are rejected while not listening even on a matching generation`() {
         val stopped = EqSessionState(listening = false, generation = 5L)
 
-        val state = reducer.onOpenBroadcast(stopped, t0, 5L, "com.spotify.music", 42)
+        val state = reducer.onOpenBroadcast(stopped, t0, 5L, "com.spotify.music", 42).state
 
         state.sessions.shouldBeEmpty()
         state.events.last().type shouldBe EqEvent.Type.OPEN
@@ -276,7 +326,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `open from a stale generation is ignored`() {
-        val state = reducer.onOpenBroadcast(listening(2L), t0, 1L, "com.spotify.music", 42)
+        val state = reducer.onOpenBroadcast(listening(2L), t0, 1L, "com.spotify.music", 42).state
 
         state.sessions.shouldBeEmpty()
         state.openSessions.shouldBeEmpty()
@@ -285,8 +335,8 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `close from a stale generation does not touch current sessions`() {
-        var state = reducer.onOpenBroadcast(listening(2L), t0, 2L, "com.spotify.music", 42)
-        state = reducer.onCloseBroadcast(state, at(1), 1L, "com.spotify.music", 42)
+        var state = reducer.onOpenBroadcast(listening(2L), t0, 2L, "com.spotify.music", 42).state
+        state = reducer.onCloseBroadcast(state, at(1), 1L, "com.spotify.music", 42).state
 
         state.sessions.keys shouldBe setOf(42)
         state.openSessions.map { it.sessionId } shouldBe listOf(42)
@@ -320,7 +370,7 @@ class EqSessionReducerTest : BaseTest() {
     @Test
     fun `malformed events are rate capped per generation`() {
         var state = listening()
-        repeat(50) { i -> state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.bad.app", 0) }
+        repeat(50) { i -> state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.bad.app", 0).state }
 
         val malformed = state.events.count { it.type == EqEvent.Type.MALFORMED }
         malformed shouldBe EqSessionState.MAX_RATE_CAPPED_EVENTS
@@ -331,7 +381,7 @@ class EqSessionReducerTest : BaseTest() {
     @Test
     fun `open events are rate capped per generation but sessions still track`() {
         var state = listening()
-        repeat(50) { i -> state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.spotify.music", i + 1) }
+        repeat(50) { i -> state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.spotify.music", i + 1).state }
 
         state.sessions.size shouldBe 50
         state.events.count { it.type == EqEvent.Type.OPEN } shouldBe EqSessionState.MAX_RATE_CAPPED_EVENTS
@@ -341,10 +391,10 @@ class EqSessionReducerTest : BaseTest() {
     @Test
     fun `rate cap resets with a new generation`() {
         var state = listening()
-        repeat(50) { i -> state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.bad.app", 0) }
+        repeat(50) { i -> state = reducer.onOpenBroadcast(state, at(i.toLong()), 1L, "com.bad.app", 0).state }
 
         state = reducer.onListeningStarted(state, at(60), 2L, "on again")
-        state = reducer.onOpenBroadcast(state, at(61), 2L, "com.bad.app", 0)
+        state = reducer.onOpenBroadcast(state, at(61), 2L, "com.bad.app", 0).state
 
         state.malformedCount shouldBe 1
         state.events.last().type shouldBe EqEvent.Type.MALFORMED
@@ -354,7 +404,7 @@ class EqSessionReducerTest : BaseTest() {
 
     @Test
     fun `clear resets sessions and events but keeps listening`() {
-        var state = reducer.onOpenBroadcast(listening(), at(1), 1L, "com.spotify.music", 42)
+        var state = reducer.onOpenBroadcast(listening(), at(1), 1L, "com.spotify.music", 42).state
         state = reducer.onAttached(state, at(2), 42, "attached")
 
         val cleared = reducer.clear(state, at(3))

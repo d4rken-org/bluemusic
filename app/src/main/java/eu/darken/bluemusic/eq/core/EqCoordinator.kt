@@ -21,10 +21,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -71,6 +74,9 @@ class EqCoordinator @Inject constructor(
 
     private val actorLock = Mutex()
     private var appliedTarget: Target? = null
+
+    /** Session ids the transition stream told us about, only touched from inside the actor. */
+    private val openSessionIds = mutableSetOf<Int>()
 
     private val sessionLock = Mutex()
     private var sessionJob: Job? = null
@@ -144,6 +150,7 @@ class EqCoordinator @Inject constructor(
 
     /** Manual listening override for the diagnostics screen. */
     suspend fun setListening(enabled: Boolean) = act("setListening($enabled)") {
+        openSessionIds.clear()
         if (enabled) {
             tracker.startListening()
         } else {
@@ -173,13 +180,32 @@ class EqCoordinator @Inject constructor(
             resolveTarget(devices, owner, operational, appEnabled, preview)
         }.distinctUntilChanged()
 
-        val openSessionIds = tracker.state
-            .map { state -> state.openSessions.map { it.sessionId } }
-            .distinctUntilChanged()
+        coroutineScope {
+            launch { consumeTransitions(token) }
+            targets.collect { target -> applyTarget(token, target) }
+        }
+    }
 
-        targets
-            .combine(openSessionIds) { target, sessionIds -> target to sessionIds }
-            .collect { (target, sessionIds) -> submit(token, target, sessionIds) }
+    /**
+     * Applies session edges in the order they arrived.
+     *
+     * The stream ending means an edge was lost, and our idea of what is open is wrong from there on:
+     * everything is released and a fresh listening generation is started instead of carrying the
+     * wrong state forward.
+     */
+    private suspend fun consumeTransitions(token: Long) {
+        while (currentCoroutineContext().isActive) {
+            val stream = tracker.transitions()
+            try {
+                for (transition in stream) applyTransition(token, transition)
+                log(TAG, WARN) { "Transition stream closed, restarting" }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                log(TAG, WARN) { "Transition stream failed, restarting: ${e.asLog()}" }
+            }
+            restartListening(token)
+        }
     }
 
     private fun resolveTarget(
@@ -208,39 +234,69 @@ class EqCoordinator @Inject constructor(
         return Target(address = chosen.address, levels = levels)
     }
 
-    private suspend fun submit(
-        token: Long,
-        target: Target?,
-        sessionIds: List<Int>,
-    ) = act("apply($target, $sessionIds)", token) {
+    private suspend fun applyTarget(token: Long, target: Target?) = act("target($target)", token) {
         if (target == null) {
             if (appliedTarget == null && controller.attachedSessionIds().isEmpty() && !tracker.state.value.listening) {
                 return@act
             }
             log(TAG, INFO) { "No eligible owner, releasing everything" }
             appliedTarget = null
+            openSessionIds.clear()
             controller.detachAll()
             tracker.stopListening()
             return@act
         }
 
-        if (!tracker.state.value.listening) tracker.startListening()
-
-        val attached = controller.attachedSessionIds()
-        val wanted = sessionIds.toSet()
-
-        (attached - wanted).forEach { controller.detach(it) }
+        if (!tracker.state.value.listening) {
+            // A fresh generation knows no sessions yet, they arrive as OPEN transitions.
+            openSessionIds.clear()
+            tracker.startListening()
+        }
 
         val levelsChanged = appliedTarget?.levels != target.levels
         appliedTarget = target
 
-        if (levelsChanged && (attached intersect wanted).isNotEmpty()) controller.updateLevels(target.levels)
+        val attached = controller.attachedSessionIds()
+        if (levelsChanged && (attached intersect openSessionIds).isNotEmpty()) controller.updateLevels(target.levels)
 
-        (wanted - attached).forEach { controller.attach(it, target.levels) }
+        (attached - openSessionIds).forEach { controller.detach(it) }
+        (openSessionIds - attached).forEach { controller.attach(it, target.levels) }
+    }
+
+    private suspend fun applyTransition(token: Long, transition: EqTransition) =
+        act("transition($transition)", token) {
+            val state = tracker.state.value
+            if (!state.listening || transition.generation != state.generation) {
+                log(TAG, VERBOSE) { "Dropping $transition, now at gen=${state.generation} listening=${state.listening}" }
+                return@act
+            }
+
+            when (transition.type) {
+                EqTransition.Type.OPEN -> {
+                    openSessionIds += transition.sessionId
+                    val target = appliedTarget ?: return@act
+                    // Always a fresh attach: a reopened id is a new engine, not the one we held.
+                    controller.attach(transition.sessionId, target.levels)
+                }
+
+                EqTransition.Type.CLOSE -> {
+                    openSessionIds -= transition.sessionId
+                    controller.detach(transition.sessionId)
+                }
+            }
+        }
+
+    /** Drops everything we think we know and starts over on a fresh listening generation. */
+    private suspend fun restartListening(token: Long) = act("restartListening()", token) {
+        openSessionIds.clear()
+        controller.detachAll()
+        tracker.stopListening()
+        if (appliedTarget != null) tracker.startListening()
     }
 
     private suspend fun release(reason: String) = act("release($reason)") {
         appliedTarget = null
+        openSessionIds.clear()
         previewFlow.value = null
         controller.detachAll()
         tracker.stopListening()

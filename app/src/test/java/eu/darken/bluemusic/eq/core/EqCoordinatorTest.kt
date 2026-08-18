@@ -13,9 +13,11 @@ import io.kotest.matchers.maps.shouldBeEmpty
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.coVerify
+import io.mockk.coVerifyOrder
 import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -45,6 +47,7 @@ class EqCoordinatorTest : BaseTest() {
     private lateinit var operationalFlow: MutableStateFlow<Boolean>
     private lateinit var enabledFlow: MutableStateFlow<DevicesSettings.EnabledState>
     private lateinit var trackerFlow: MutableStateFlow<EqSessionState>
+    private lateinit var transitions: Channel<EqTransition>
     private lateinit var upgradeInfos: MutableStateFlow<UpgradeRepo.Info>
 
     /** What the fake controller currently has attached, keyed by session id. */
@@ -58,6 +61,7 @@ class EqCoordinatorTest : BaseTest() {
         operationalFlow = MutableStateFlow(true)
         enabledFlow = MutableStateFlow(DevicesSettings.EnabledState(isEnabled = true, toggleEpoch = 0L))
         trackerFlow = MutableStateFlow(EqSessionState())
+        transitions = Channel(EqSessionTracker.TRANSITION_BUFFER)
         upgradeInfos = fakeUpgradeInfos(FakeUpgradeInfo(isPro = true))
         attached = mutableMapOf()
         attachDelayMs = 0L
@@ -70,11 +74,26 @@ class EqCoordinatorTest : BaseTest() {
 
         tracker = mockk(relaxed = true) {
             every { state } returns trackerFlow
+            // Mirrors the tracker: a stream that was closed is replaced by a fresh one.
+            every { transitions() } answers {
+                if (this@EqCoordinatorTest.transitions.isClosedForSend) {
+                    this@EqCoordinatorTest.transitions = Channel(EqSessionTracker.TRANSITION_BUFFER)
+                }
+                this@EqCoordinatorTest.transitions
+            }
             coEvery { startListening() } coAnswers {
-                trackerFlow.value = trackerFlow.value.copy(listening = true, generation = trackerFlow.value.generation + 1)
+                trackerFlow.value = trackerFlow.value.copy(
+                    listening = true,
+                    generation = trackerFlow.value.generation + 1,
+                    sessions = emptyMap(),
+                )
             }
             coEvery { stopListening() } coAnswers {
-                trackerFlow.value = trackerFlow.value.copy(listening = false, sessions = emptyMap())
+                trackerFlow.value = trackerFlow.value.copy(
+                    listening = false,
+                    generation = trackerFlow.value.generation + 1,
+                    sessions = emptyMap(),
+                )
             }
         }
 
@@ -128,12 +147,19 @@ class EqCoordinatorTest : BaseTest() {
         ),
     )
 
-    private fun openSessions(vararg ids: Int) {
-        trackerFlow.value = trackerFlow.value.copy(
-            sessions = ids.associateWith { id ->
-                EqSession(sessionId = id, generation = trackerFlow.value.generation, openedAt = Instant.EPOCH)
-            }
-        )
+    /** Emits OPEN edges for [ids] on the current listening generation, like a player app would. */
+    private fun openSessions(vararg ids: Int) = ids.forEach { id ->
+        transitions.trySend(EqTransition(EqTransition.Type.OPEN, id, trackerFlow.value.generation))
+        trackerFlow.value = trackerFlow.value.let { state ->
+            state.copy(
+                sessions = state.sessions + (id to EqSession(id, state.generation, Instant.EPOCH))
+            )
+        }
+    }
+
+    private fun closeSessions(vararg ids: Int) = ids.forEach { id ->
+        transitions.trySend(EqTransition(EqTransition.Type.CLOSE, id, trackerFlow.value.generation))
+        trackerFlow.value = trackerFlow.value.let { it.copy(sessions = it.sessions - id) }
     }
 
     @Test
@@ -256,7 +282,7 @@ class EqCoordinatorTest : BaseTest() {
         openSessions(11)
         runCurrent()
 
-        openSessions(11, 22)
+        openSessions(22)
         runCurrent()
 
         attached.keys shouldBe setOf(11, 22)
@@ -275,11 +301,62 @@ class EqCoordinatorTest : BaseTest() {
         openSessions(11, 22)
         runCurrent()
 
-        openSessions(22)
+        closeSessions(11)
         runCurrent()
 
         attached.keys shouldBe setOf(22)
         coVerify { controller.detach(11) }
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a session closing and reopening at once detaches then attaches fresh`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+
+        // Both edges land between two recomputes: a snapshot of open ids would look unchanged.
+        closeSessions(11)
+        openSessions(11)
+        runCurrent()
+
+        attached shouldBe mapOf(11 to listOf(300, 0, -300))
+        coVerifyOrder {
+            controller.attach(11, listOf(300, 0, -300))
+            controller.detach(11)
+            controller.attach(11, listOf(300, 0, -300))
+        }
+
+        coordinator.stopSession(token)
+    }
+
+    @Test
+    fun `a lost edge releases everything and restarts listening`() = runTest {
+        val coordinator = createCoordinator(backgroundScope)
+        devicesFlow.value = listOf(device("AA"))
+        ownerFlow.value = OwnerSnapshot(listOf("AA"), generation = 1)
+
+        val token = coordinator.startSession()
+        runCurrent()
+        openSessions(11)
+        runCurrent()
+        attached.keys shouldBe setOf(11)
+        val generationBefore = trackerFlow.value.generation
+
+        // The tracker gave up on the stream because it could not buffer an edge.
+        transitions.close(EqTransitionOverflow("boom"))
+        runCurrent()
+
+        attached.shouldBeEmpty()
+        trackerFlow.value.listening shouldBe true
+        (trackerFlow.value.generation > generationBefore) shouldBe true
 
         coordinator.stopSession(token)
     }

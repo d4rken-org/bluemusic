@@ -44,23 +44,36 @@ class EqSessionReducer {
         .copy(listening = false, generation = generation, sessions = emptyMap())
         .plusEvent(EqEvent(time = now, type = EqEvent.Type.LISTENING, detail = detail))
 
+    /**
+     * A rejected broadcast only produces a diagnostic event. An accepted one also produces the
+     * [EqTransition] the coordinator has to act on, so acceptance is decided in exactly one place.
+     */
+    data class Reduction(
+        val state: EqSessionState,
+        val transition: EqTransition? = null,
+    )
+
     fun onOpenBroadcast(
         state: EqSessionState,
         now: Instant,
         generation: Long,
         packageName: String?,
         sessionId: Int?,
-    ): EqSessionState {
+    ): Reduction {
         val session = when (val check = validate(sessionId)) {
-            is Validation.Malformed -> return state.plusMalformed(now, packageName, sessionId, check.reason)
+            is Validation.Malformed -> return Reduction(state.plusMalformed(now, packageName, sessionId, check.reason))
             is Validation.Valid -> check.sessionId
         }
-        if (!state.listening) return state.plusIgnored(now, EqEvent.Type.OPEN, packageName, session, "Not listening")
-        if (generation != state.generation) return state.plusStale(now, EqEvent.Type.OPEN, packageName, session, generation)
+        if (!state.listening) {
+            return Reduction(state.plusIgnored(now, EqEvent.Type.OPEN, packageName, session, "Not listening"))
+        }
+        if (generation != state.generation) {
+            return Reduction(state.plusStale(now, EqEvent.Type.OPEN, packageName, session, generation))
+        }
 
         val existing = state.sessions[session]
         if (existing == null && state.sessions.size >= MAX_SESSIONS) {
-            return state.plusSessionCapped(now, packageName, session)
+            return Reduction(state.plusSessionCapped(now, packageName, session))
         }
 
         val updated = when {
@@ -79,7 +92,7 @@ class EqSessionReducer {
             )
         }
 
-        return state
+        val newState = state
             .copy(sessions = state.sessions + (session to updated), openCount = state.openCount + 1)
             .plusRateCapped(
                 count = state.openCount,
@@ -92,6 +105,7 @@ class EqSessionReducer {
                     detail = if (existing != null) "Reopened" else "New session",
                 ),
             )
+        return Reduction(newState, EqTransition(EqTransition.Type.OPEN, session, generation))
     }
 
     fun onCloseBroadcast(
@@ -100,14 +114,16 @@ class EqSessionReducer {
         generation: Long,
         packageName: String?,
         sessionId: Int?,
-    ): EqSessionState {
+    ): Reduction {
         val session = when (val check = validate(sessionId)) {
-            is Validation.Malformed -> return state.plusMalformed(now, packageName, sessionId, check.reason)
+            is Validation.Malformed -> return Reduction(state.plusMalformed(now, packageName, sessionId, check.reason))
             is Validation.Valid -> check.sessionId
         }
-        if (!state.listening) return state.plusIgnored(now, EqEvent.Type.CLOSE, packageName, session, "Not listening")
+        if (!state.listening) {
+            return Reduction(state.plusIgnored(now, EqEvent.Type.CLOSE, packageName, session, "Not listening"))
+        }
         if (generation != state.generation) {
-            return state.plusStale(now, EqEvent.Type.CLOSE, packageName, session, generation)
+            return Reduction(state.plusStale(now, EqEvent.Type.CLOSE, packageName, session, generation))
         }
 
         val existing = state.sessions[session]
@@ -117,7 +133,7 @@ class EqSessionReducer {
             else -> state.sessions - session
         }
 
-        return state
+        val newState = state
             .copy(sessions = sessions)
             .plusEvent(
                 EqEvent(
@@ -128,7 +144,16 @@ class EqSessionReducer {
                     detail = if (existing != null) "Session closed" else "Unmatched close",
                 )
             )
+        // Forwarded even when unmatched: the coordinator may still hold an effect for that id.
+        return Reduction(newState, EqTransition(EqTransition.Type.CLOSE, session, generation))
     }
+
+    /** Records that the transition stream lost an edge, the coordinator rebuilds from scratch. */
+    fun onTransitionsLost(
+        state: EqSessionState,
+        now: Instant,
+        detail: String,
+    ): EqSessionState = state.plusEvent(EqEvent(time = now, type = EqEvent.Type.SUPPRESSED, detail = detail))
 
     fun onAttached(
         state: EqSessionState,
