@@ -2,6 +2,7 @@
 
 **Mga Feature:**
 * Itakda ang musika, tawag, ringtone, at notification volumes bawat device  
+* Equalizer bawat device na may mga preset at volume boost  
 * Awtomatikong magpadala ng mga media command tulad ng Play o Next  
 * Mag-launch ng mga app sa pagkonekta  
 * Panatilihing gising ang screen  
@@ -10,8 +11,6 @@
 
 Walang ads, walang tracking. Open-source.  
 Ang ilang mga extras ay nangangailangan ng bayad na upgrade para suportahan ang development.
-
-**Tandaan:** Hindi kayang palakasin ng app na ito ang volume o lampasan ang mga limitasyon ng system volume.
 
 **Mga Pahintulot:**
 * **Internet** – para sa mga opsyonal na bug report  

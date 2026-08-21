@@ -2,6 +2,7 @@
 
 **Funcții:**
 * Setează volumul pentru muzică, apeluri, ton de apel şi notificări per dispozitiv  
+* Egalizator per dispozitiv cu presetări și amplificare a volumului  
 * Trimite automat comenzi media precum Play sau Next  
 * Lansează aplicații la conectare  
 * Menține ecranul activ  
@@ -10,8 +11,6 @@
 
 Fără reclame, fără urmărire. Open-source.  
 Unele funcții extra necesită o actualizare plătită pentru a sprijini dezvoltarea.
-
-**Notă:** Această aplicație nu poate amplifica volumul sau depăşi limitele de volum ale sistemului.
 
 **Permisiuni:**
 * **Internet** – pentru rapoarte opționale de erori  

@@ -2,6 +2,7 @@ Le gestionnaire de volume Bluetooth peut réagir aux périphériques Bluetooth q
 
 **Fonctionnalités :**
 * Régler le volume de la musique, des appels, des sonneries et des notifications.  
+* Égaliseur par appareil avec préréglages et boost de volume  
 * Envoyer les commandes « Lecture » ou » Suivant » aux médias.  
 * Ouvrir une appli précise.  
 * Garder l’écran allumé.  
@@ -10,8 +11,6 @@ Le gestionnaire de volume Bluetooth peut réagir aux périphériques Bluetooth q
 
 Pas de pub, pas de suivi. Open-source.  
 Certaines fonctionnalités supplémentaires nécessitent une mise à niveau payante pour soutenir le développement.
-
-Cette appli peut « augmenter » votre volume ou changer le volume si vous ne pouvez pas le changer manuellement grâce aux boutons de volume de votre appareil. Explication des permissions : * « Internet » pour les relevés de bogues.
 
 **Autorisations :**
 * **Internet** – pour les rapports de bugs optionnels  

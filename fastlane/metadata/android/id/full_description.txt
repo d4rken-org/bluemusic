@@ -2,6 +2,7 @@
 
 **Fitur:**
 * Atur volume musik, panggilan, nada dering, dan notifikasi per perangkat  
+* Ekualisir per perangkat dengan preset dan penguatan volume  
 * Kirim perintah media otomatis seperti Putar atau Berikutnya  
 * Buka aplikasi saat tersambung  
 * Jaga layar tetap menyala  
@@ -10,8 +11,6 @@
 
 Tanpa iklan, tanpa pelacakan. Open-source.  
 Beberapa fitur tambahan memerlukan upgrade berbayar untuk mendukung pengembangan.
-
-**Catatan:** Aplikasi ini tidak dapat meningkatkan volume atau mengesampingkan batas volume sistem.
 
 **Izin:**
 * **Internet** – untuk laporan bug opsional  

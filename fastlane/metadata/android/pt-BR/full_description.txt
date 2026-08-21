@@ -2,6 +2,7 @@ O Bluetooth Volume Manager pode reagir a dispositivos Bluetooth conectando ou de
 
 **Recursos:**
 * Ajuste de volume de música, chamada, toque e notificação.  
+* Equalizador por dispositivo com predefinições e reforço de volume  
 * Envio automático de comandos de mídia como Reproduzir ou Próximo  
 * Abrir apps ao conectar  
 * Mantém a tela ligada.  
@@ -10,8 +11,6 @@ O Bluetooth Volume Manager pode reagir a dispositivos Bluetooth conectando ou de
 
 Sem anúncios, sem rastreamento. Código aberto.  
 Alguns extras requerem uma atualização paga para apoiar o desenvolvimento.
-
-Recursos disponíveis: * Enviando comandos 'Reproduzir' ou 'Próximo'. * Abrir um aplicativo específico. * Impedir que o volume seja alterado. * Restaurando os níveis de volume anteriores após a desconexão. Este app não pode "impulsionar" seu volume ou alterar o seu volume se você não puder alterá-lo manualmente através dos botões de volume do seu dispositivo.
 
 **Permissões:**
 * 'Internet' para relatórios de erros.  

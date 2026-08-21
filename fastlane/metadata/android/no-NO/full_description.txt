@@ -2,6 +2,7 @@
 
 **Funksjoner:**
 * Sett musikk-, samtale-, ringetone- og varslingsvolum per enhet  
+* Equalizer per enhet med forhåndsinnstillinger og volumforsterkning  
 * Send mediekommandoer automatisk som Spill av eller Neste  
 * Start apper ved tilkobling  
 * Hold skjermen aktiv  
@@ -10,8 +11,6 @@
 
 Ingen annonser, ingen sporing. Åpen kildekode.  
 Noen tilleggsfunksjoner krever en betalt oppgradering for å støtte utviklingen.
-
-**Merk:** Denne appen kan ikke øke volumet eller overstyre systemets volumgrenser.
 
 **Tillatelser:**
 * **Internett** – for valgfrie feilrapporter  

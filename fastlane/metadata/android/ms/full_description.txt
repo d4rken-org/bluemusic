@@ -2,6 +2,7 @@
 
 **Ciri-ciri:**
 * Tetapkan kelantangan muzik, panggilan, nada dering, dan pemberitahuan bagi setiap peranti  
+* Penyama setiap peranti dengan praset dan penambahan kelantangan  
 * Hantar arahan media secara automatik seperti Main atau Seterusnya  
 * Lancarkan apl semasa sambungan  
 * Pastikan skrin terjaga  
@@ -10,8 +11,6 @@
 
 Tiada iklan, tiada penjejakan. Sumber terbuka.  
 Sesetengah tambahan memerlukan naik taraf berbayar untuk menyokong pembangunan.
-
-**Nota:** Apl ini tidak boleh menambah kelantangan atau mengatasi had kelantangan sistem.
 
 **Kebenaran:**
 * **Internet** – untuk laporan pepijat pilihan  

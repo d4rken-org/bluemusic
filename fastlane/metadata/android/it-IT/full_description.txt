@@ -2,6 +2,7 @@
 
 **Funzionalità:**
 * Imposta il volume di musica, chiamate, suonerie e notifiche per ogni dispositivo  
+* Equalizzatore per dispositivo con preset e boost del volume  
 * Invia automaticamente comandi multimediali come Play o Successivo  
 * Avvia app alla connessione  
 * Mantieni lo schermo attivo  
@@ -10,8 +11,6 @@
 
 Nessuna pubblicità, nessun tracciamento. Open-source.  
 Alcune funzioni extra richiedono un aggiornamento a pagamento per supportare lo sviluppo.
-
-**Nota:** Quest’app non può aumentare il volume oltre i limiti di sistema.
 
 **Permessi:**
 * 'Internet' per le segnalazioni di bug.  

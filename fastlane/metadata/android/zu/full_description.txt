@@ -2,6 +2,7 @@
 
 **Izici:**
 * Setha amavolumu omuziki, ocingo, ukhalo lwefoni, nezaziso ngokwedivayisi  
+* I-equalizer ngosistimu enamapulesithe kanye nokukhulisa ivolumu  
 * Thumela ngokuzenzakalelayo imiyalo yemidiya njengo-Play noma okulandelayo  
 * Vula izinhlelo uma uxhuma  
 * Gcina isikrini siphapheme  
@@ -10,8 +11,6 @@
 
 Azikho izikhangiso, akunagcwanekezo. Imithi eveliwe.  
 Ezinye izinto ezengeziwe zidinga ukuthenga okukhokhelwa ukusekela ukuthuthukiswa.
-
-**Qaphela:** Lolu hlelo alukwazi ukwandisa ivolumu noma ukubhukuza imingcele yamavolumu yesistem.
 
 **Izimvume:**
 * **I-Intanethi** – yamibiko yezibhagi engakhethekile  

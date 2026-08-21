@@ -2,6 +2,7 @@
 
 **Funktioner:**
 * Indstil musik-, opkalds-, ringetone- og notifikationslydstyrke per enhed  
+* Equalizer pr. enhed med forudindstillinger og lydstyrkeforstærkning  
 * Send automatisk mediekommandoer som Afspil eller Næste  
 * Start apps ved tilslutning  
 * Hold skærmen tændt  
@@ -10,8 +11,6 @@
 
 Ingen reklamer, ingen sporing. Open source.  
 Nogle ekstra funktioner kræver en betalt opgradering for at støtte udviklingen.
-
-**Bemærk:** Denne app kan ikke forstærke lydstyrken eller tilsidesætte systemets lydstyrkegraenser.
 
 **Tilladelser:**
 * **Internet** – til valgfri fejlrapporter  

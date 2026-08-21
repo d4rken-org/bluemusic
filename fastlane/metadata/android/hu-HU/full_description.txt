@@ -2,6 +2,7 @@ A **Bluetooth Volume Manager** megjegyzi az egyes Bluetooth-eszközök hangerős
 
 **Funkciók:**
 * Zene, hívás, csengetés és értesítési hangerő beállítása eszközönként  
+* Eszközönkénti hangszínszabályzó előbeállításokkal és hangerőfokozással  
 * Médiaparancsok automatikus küldése, például Lejátszás vagy Következő  
 * Alkalmazások indítása csatlakozáskor  
 * Képernyő ébren tartása  
@@ -10,8 +11,6 @@ A **Bluetooth Volume Manager** megjegyzi az egyes Bluetooth-eszközök hangerős
 
 Nincs hirdetés, nincs nyomon követés. Nyílt forráskódú.  
 Néhány extra funkció fizetős frissítést igényel a fejlesztés támogatásához.
-
-**Megjegyzés:** Ez az alkalmazás nem tudja növelni a hangerőt a rendszer korlátain túl.
 
 **Engedélyek:**
 * **Internet** – opcionális hibajeléntésekhez  

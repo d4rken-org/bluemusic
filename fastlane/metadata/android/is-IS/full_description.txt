@@ -2,6 +2,7 @@
 
 **Eiginleikar:**
 * Stilltu tónlist, símtöl, hringitón og tilkynningahljóðstyrk í hverju tæki  
+* Tónjafnari fyrir hvert tæki með forstillingum og hljóðstyrksaukningu  
 * Senda sjálfkrafa miðlunarskipanir eins og Spila eða Næsta  
 * Ræsa forrit við tengingu  
 * Halda skjánum vakandi  
@@ -10,8 +11,6 @@
 
 Engar auglýsingar, engin rakning. Opinn hugbúnaður.  
 Sum aukaatriði krefjast greidds uppfærslu til að styðja þróun.
-
-**Athugas.:** Þetta forrit getur ekki aukið hljóðstyrk eða hnekkt takmörkum á hljóðstyrk kerfisins.
 
 **Leyfi:**
 * **Internet** – fyrir valfrjálsar villutilkynningar  

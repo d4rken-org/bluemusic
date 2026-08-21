@@ -2,6 +2,7 @@
 
 **Funcziuns:**
 * Fixar ils volums da musica, cloms, sonneria e notificaziuns per apparat  
+* Equalizer per apparat cun preselecziúns ed in augment da volum  
 * Trametter automaticamain comondas media sco Play u Next  
 * Avrir applicaziuns sin connectar  
 * Mantegnair l'ecran svegl  
@@ -10,8 +11,6 @@
 
 Nagins reclams, nagina surveglianza. Open-source.  
 Alchinas funcziuns extras dovran ina actualisaziun pajada per sustegnair il svilup.
-
-**Remartga:** Quest'applicaziun na po betg augmentar il volum u superar ils limits da volum dal sistem.
 
 **Permissiuns:**
 * **Internet** – per rapports d'errurs opziunals  

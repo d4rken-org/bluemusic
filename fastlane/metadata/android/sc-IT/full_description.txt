@@ -2,6 +2,7 @@
 
 **Caraterìsticas:**
 * Configura su volume de mùsica, telefonate, suoneria e notificas pro ognunu dispositivu  
+* Equalizadore pro cada aparatu cun presets e aumento de volume  
 * Inviat in modu automàticu cumandos multimediales comente Reproduzi o Suighente  
 * Abrit aplicatziones cando si connètet  
 * Mantenat sa pantalla ativa  
@@ -10,8 +11,6 @@
 
 Perunu pubblitzidade, perunu seguimentu. Codixi abertu.  
 Alcunas funtziones extras riquerint un'aggiornamentu pagadu pro sustènnere s'isvilupu.
-
-**Nota:** Custa app no podet alzare su volume o superare sos lìmites de volume de su sistema.
 
 **Permissos:**
 * **Internet** – pro informes de errores optzionales  

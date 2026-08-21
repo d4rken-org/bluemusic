@@ -2,6 +2,7 @@
 
 **Funkcioj:**
 * Agordi muzikan, vok-, sonorila kaj sciig-volumenoĵn por ĉiu aparato  
+* Aparatspecifa egalizilo kun antaŭagordoj kaj voluma pliigaĵo  
 * Aŭtom-sendi media-komandojn kiel Ludi aŭ Sekva  
 * Lanki aplikaĵojn por konektado  
 * Konservi ekranon veka  
@@ -10,8 +11,6 @@
 
 Neniaj reklamoj, neniu spuriĉo. Malfermita kodo.  
 Kelkaj aldonaĵoj postulas pagitan plibonigon por subteni disvolvadon.
-
-**Noto:** Či tiu aplikaĵo ne povas plibonigi volumon aŭ superaĝi sistemaj volumenlimoj.
 
 **Permesoj:**
 * **Interreto** – por laŭvolaj cimraportoj  

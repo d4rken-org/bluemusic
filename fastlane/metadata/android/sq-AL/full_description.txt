@@ -2,6 +2,7 @@
 
 **Veçritë:**
 * Caktoni volumin e muzikës, thirrjeve, ziles dhe njoftimeve për çdo pajisje  
+* Ekualizator për çdo pajisje me cilësime të paracaktuara dhe përforcim volumi  
 * Dërgoni automatikisht komandat e medias si Luaj ose Tjetra  
 * Hapni aplikacionet kur lidheni  
 * Mbajeni ekranin të ndezur  
@@ -10,8 +11,6 @@
 
 Pa reklama, pa gjurmim. Me burim të hapur.  
 Disa shtesa kërkojnë një përmirësim me pagesë për të mbështetur zhvillimin.
-
-**Shënim:** Ky aplikacion nuk mund të rrisë volumin mbi kufjtë e sistemit.
 
 **Lejet:**
 * **Internet** – për raporte opsionale të defekteve  

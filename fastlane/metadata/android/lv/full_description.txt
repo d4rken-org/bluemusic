@@ -2,6 +2,7 @@
 
 **Iespējas:**
 * Mūzikas, zvana, zvanīšanas skaņas un paziņojumu skaļuma iestatīšana katrai ierīcei  
+* Katrai ierīcei individuāls ekvaizeris ar sākotnējiem iestatījumiem un skaļuma pastiprinājumu  
 * Automātiska informācijas nedēju komandu, piemēram, "Atskaņot" vai "Nākamais", sūtīšana  
 * Lietotņu palaišana pēc savienošanās  
 * Ekrāna izslēgšanās novēršana  
@@ -10,8 +11,6 @@
 
 Bez reklāmām un izsekošanas. Atvērts pirmkods.  
 Dažām papildu iespējam ir nepieciešama maksas uzlabošana, lai atbalstītu izstrādi.
-
-**Piezīme:** šī lietotne nevar pastiprināt skaļumu vai aizstāt sistēmas skaļuma ierobežojumus.
 
 **Atļaujas:**
 * **Internets** - kļūdu ziņojumiem (pēc izvēles)  

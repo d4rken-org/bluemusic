@@ -2,6 +2,7 @@ Bluetooth Volume Manager, bağlanan veya bağlantıyı kesen Bluetooth cihazlar�
 
 **Özellikler:**
 * Müzik, çağrı, zil sesi ve bildirim ses ayarı.  
+* Hazır ayarlar ve ses yükseltme özellikli cihaz başına ekolayzer  
 * 'Oynat' veya 'Sonraki' medya komutlarını gönderme.  
 * Belirli bir uygulamayı açma.  
 * Ekranı uyanık tutmak.  
@@ -10,8 +11,6 @@ Bluetooth Volume Manager, bağlanan veya bağlantıyı kesen Bluetooth cihazlar�
 
 Reklam yok, takip yok. Açık kaynak.  
 Bazı ek özellikler, geliştirmeyi desteklemek için ücretli bir yükseltme gerektirir.
-
-**Not:** Bu uygulama ses seviyesini artıramaz veya sistem ses sınırlarını aşamaz.
 
 **İzinler:**
 * 'İnternet' hata raporları için.  

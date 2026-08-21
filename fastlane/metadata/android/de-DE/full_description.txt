@@ -2,6 +2,7 @@
 
 **Funktionen:**
 * Setze Musik, Anruf, Klingelton und Benachrichtigungslautstärke pro Gerät  
+* Equalizer pro Gerät mit Voreinstellungen und Lautstärkeverstärkung  
 * Medienbefehle wie 'Abspielen' oder 'Nächstes' automatisch senden  
 * Apps beim Verbinden starten  
 * Bildschirm eingeschaltet lassen.  
@@ -10,8 +11,6 @@
 
 Keine Werbung, kein Tracking. Open-Source.  
 Einige Extras erfordern ein kostenpflichtiges Upgrade zur Unterstützung der Entwicklung.
-
-**Hinweis:** Diese App kann die Lautstärke nicht über die Systemgrenzen anheben.
 
 **Berechtigungen:**
 * 'Internet' für Fehlerberichte.  

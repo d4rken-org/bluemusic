@@ -2,6 +2,7 @@
 
 **Xüsusiyyətlər:**
 * Hər cihaz üçün musiqi, zəng, zil səsi və bildiris səs səviyyələrini təyin edin  
+* Hazır ayarlar və səs güçləndiricisi ilə cihaz üzrə ekvalayzər  
 * Play və ya Növbəti kimi media əmrlərini avtomatik göndərin  
 * Qoşulma zamanı tətbiqliś salın  
 * Ekranı açıq saxlayın  
@@ -10,8 +11,6 @@
 
 Reklam yoxdur, izləmə yoxdur. Açıq mənbəli.  
 Bəzi əlavə funksiyalar inkışafı dəstəkləmək üçün pullu yüksəltmə tələb edir.
-
-**Qəyd:** Bu tətbiq səsi artıra və ya sistem səs həddlərini dəyişdərə bilməz.
 
 **İcazələr:**
 * **İnternet** – isteğə bağlı xəta hesabatları üçün  

@@ -2,6 +2,7 @@
 
 **Ominaisuudet:**
 * Aseta musiikki-, puhelu-, soittomelodi- ja ilmoitusäänenvoimakkuudet laitteittain  
+* Laitekohtainen taajuuskorjain esiasetuksilla ja äänenvoimakkuuden tehostuksella  
 * Lähetä automaattisesti mediakomentoihin, kuten Toista tai Seuraava  
 * Käynnistä sovelluksia yhdistettäessä  
 * Pidä näyttö päällä  
@@ -10,8 +11,6 @@
 
 Ei mainoksia, ei seurantaa. Avoimen lähdekoodin.  
 Jotkin lisäominaisuudet vaativat maksullisen päivityksen kehityksen tukemiseksi.
-
-**Huom:** Tämä sovellus ei voi tehostaa äänenvoimakkuutta tai ohittaa järjestelmän äänenvoimakkuusrajoja.
 
 **Käyttöoikeudet:**
 * **Internet** – valinnaisia virheraportteja varten  

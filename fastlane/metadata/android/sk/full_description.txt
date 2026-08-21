@@ -2,6 +2,7 @@
 
 **Funkcie:**
 * Nastavenie hlasitosti hudby, hovorov, zvonenia a upozornení pre každé zariadenie  
+* Ekvalizér pre jednotlivé zariadenia s predvoľami a zosilnením hlasitosti  
 * Automatické odosielanie mediálnych príkazov ako Prehráť alebo Ďalší  
 * Spustenie aplikácií pri pripojení  
 * Udržanie obrazovky zapnutej  
@@ -10,8 +11,6 @@
 
 Žiadne reklamy, žiadne sledovanie. Open-source.  
 Niektoré doplňky vyžadujú platený upgrade na podporu vývoja.
-
-**Poznámka:** Táto aplikácia nemôže zvýšiť hlasitosť ani presiahnuť systémové limity hlasitosti.
 
 **Oprávnenia:**
 * **Internet** – pre voliťteľné hlásenia chýb  
