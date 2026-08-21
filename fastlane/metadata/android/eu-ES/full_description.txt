@@ -2,6 +2,7 @@
 
 **Ezaugarriak:**
 * Ezarri musika, dei, tonu eta jakinarazpen bolumenak gailu bakoitzeko  
+* Gailuaren ekualizatzailea aurrezarrekin eta bolumearen indarrarekin  
 * Bidali automatikoki multimedia komandoak Erreproduzitu edo Hurrengoa bezalakoak  
 * Abiarazi aplikazioak konektatzean  
 * Mantendu pantaila esnai  
@@ -10,8 +11,6 @@
 
 Ez iragarkirik, ez jarraipenik. Kode irekikoa.  
 Gehigarri batzuek ordainpeko berritze bat behar dute garapena laguntzeko.
-
-**Oharra:** Aplikazio honek ezin du bolumena igo edo sistemaren bolumen mugak gainidatzi.
 
 **Baimenak:**
 * **Internet** – hautazko errore txostenetarako  

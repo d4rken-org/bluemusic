@@ -2,6 +2,7 @@
 
 **Tính năng:**
 * Đặt âm lượng nhạc, cuộc gọi, nhạc chuông và thông báo cho từng thiết bị  
+* Bộ cân bằng theo thiết bị với các cài đặt sẵn và tăng âm lượng  
 * Tự động gửi lệnh phương tiện như Phát hoặc Tiếp theo  
 * Mở ứng dụng khi kết nối  
 * Giữ màn hình luôn sáng  
@@ -10,8 +11,6 @@
 
 Không quảng cáo, không theo dõi. Mã nguồn mở.  
 Một số tính năng bổ sung yêu cầu nâng cấp có trả phí để hỗ trợ phát triển.
-
-**Lưu ý:** Ứng dụng này không thể tăng âm lượng vượt giới hạn hoặc ghi đè giới hạn âm lượng hệ thống.
 
 **Quyền:**
 * **Internet** – để báo cáo lỗi tùy chọn  

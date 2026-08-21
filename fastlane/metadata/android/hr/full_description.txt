@@ -2,6 +2,7 @@
 
 **Značajke:**
 * Postavljanje glasnoće glazbe, poziva, melodije zvona i obavijesti po uređaju  
+* Ekvilajzer po uređaju s predefiniranim postavkama i pojačanjem glasnoće  
 * Automatsko slanje medijskih naredbi poput Reprodukcija ili Sljedeća  
 * Pokretanje aplikacija pri spajanju  
 * Zadržavanje zaslona aktivnim  
@@ -10,8 +11,6 @@
 
 Bez oglasa, bez praćenja. Otvoreni kod.  
 Neki dodaci zahtijevaju plaćenu nadogradnju za podršku razvoju.
-
-**Napomena:** Ova aplikacija ne može pojačati glasnoću niti nadjačati ograničenja sistemske glasnoće.
 
 **Dozvole:**
 * **Internet** – za opcionalna izvješća o greškama  

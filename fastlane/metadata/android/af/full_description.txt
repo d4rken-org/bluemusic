@@ -2,6 +2,7 @@
 
 **Funksies:**
 * Stel musiek-, oproepe-, luitoon- en kennisgewingvolumes per toestel in  
+* Gelykmaker per toestel met voorafinstellings en volumeversterking  
 * Stuur media-opdragte soos Speel of Volgende outomaties  
 * Lanseer toepassings by koppeling  
 * Hou skerm wakker  
@@ -10,8 +11,6 @@
 
 Geen advertensies, geen opsporing. Oopbron.  
 Sommige ekstra's vereis 'n betaalde opgradeer om ontwikkeling te ondersteun.
-
-**Let wel:** Hierdie toepassing kan nie volume verhoog of stelselvolumegrense oorskry nie.
 
 **Toestemmings:**
 * **Internet** – vir opsionele foutverslae  

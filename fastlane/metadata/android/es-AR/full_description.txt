@@ -2,6 +2,7 @@
 
 **Funciones:**
 * Configurá el volumen de música, llamadas, tono y notificaciones por dispositivo  
+* Ecualizador por dispositivo con preajustes y refuerzo de volumen  
 * Enviar comandos de medios automáticamente como Play o Siguiente  
 * Abrir apps al conectar  
 * Mantener la pantalla activa  
@@ -10,8 +11,6 @@
 
 Sin anuncios, sin seguimiento. Código abierto.  
 Algunos extras requieren una actualización paga para apoyar el desarrollo.
-
-**Nota:** Esta app no puede aumentar el volumen ni superar los límites de volumen del sistema.
 
 **Permisos:**
 * **Internet** – para reportes de errores opcionales  

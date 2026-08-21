@@ -2,6 +2,7 @@ Menadżer głośności Bluetooth może reagować na podłączanie i rozłączani
 
 **Funkcje:**
 * Dostosowanie głośności muzyki, połączeń, dzwonków i powiadomień.  
+* Korektor dla każdego urządzenia z ustawieniami wstępnymi i wzmocnieniem głośności  
 * Automatyczne wysyłanie poleceń multimedialnych, takich jak Odtwórz lub Następny  
 * Uruchamianie wybranej aplikacji.  
 * Utrzymywanie wybudzonego ekranu.  
@@ -10,8 +11,6 @@ Menadżer głośności Bluetooth może reagować na podłączanie i rozłączani
 
 Bez reklam, bez śledzenia. Otwarte oprogramowanie.  
 Niektóre dodatki wymagają płatnej aktualizacji, aby wspierać rozwój.
-
-**Uwaga:** Ta aplikacja nie może zwiększyć głośności powyżej systemowych limitów.
 
 **Uprawnienia:**
 * 'Internet' dla zgłaszania błędów.  

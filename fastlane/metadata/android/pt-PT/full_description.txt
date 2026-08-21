@@ -2,6 +2,7 @@ O **Bluetooth Volume Manager** memoriza os níveis de volume para cada um dos se
 
 **Funcionalidades:**
 Pode configurar o volume das músicas e das chamadas de voz.  
+* Equalizador por dispositivo com predefinições e reforço de volume  
 * Envio automático de comandos de media como Reproduzir ou Seguinte  
 * Abrir apps ao ligar  
 * Manter ecrã ativo  
@@ -10,8 +11,6 @@ Pode configurar o volume das músicas e das chamadas de voz.
 
 Sem anúncios, sem rastreio. Código aberto.  
 Alguns extras requerem uma atualização paga para apoiar o desenvolvimento.
-
-**Nota:** Esta app não consegue aumentar o volume acima dos limites do sistema.
 
 **Permissões:**
 * 'Internet' para enviar relatórios de erro.  

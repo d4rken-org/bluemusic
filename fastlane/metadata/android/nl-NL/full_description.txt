@@ -2,6 +2,7 @@ Bluetooth Volume Manager kan reageren op Bluetooth apparaten die verbinding make
 
 **Functies:**
 * Muziek, gesprek, beltoon en berichtvolume aanpassen.  
+* Per-apparaat-equalizer met voorinstellingen en volumeverhoging  
 * Automatisch mediaopdrachten verzenden zoals Afspelen of Volgende  
 * Apps starten bij verbinding  
 * Scherm wakker houden.  
@@ -10,8 +11,6 @@ Bluetooth Volume Manager kan reageren op Bluetooth apparaten die verbinding make
 
 Geen advertenties, geen tracking. Open-source.  
 Sommige extra's vereisen een betaalde upgrade om de ontwikkeling te ondersteunen.
-
-* Voorkomen dat het volume wordt gewijzigd. Deze app kan uw volume niet "verhogen" of het volume wijzigen als u het niet handmatig kunt wijzigen via de volumeknoppen van uw apparaat.
 
 **Rechten:**
 * 'Internet' voor bug-rapporten.  

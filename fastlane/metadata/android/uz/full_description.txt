@@ -2,6 +2,7 @@
 
 **Funksiyalar:**
 * Har qurilma uchun musiqa, qo'ng'iroq, jiringlash va bildirishnoma ovozlarini o'rnatish  
+* Tayyor sozlamalar va tovushni kuchaytirish bilan har bir qurilma uchun ekvalayzer  
 * O'ynash yoki Keyingisi kabi media buyruqlarini avtomatik yuborish  
 * Ulanganda ilovalarni ishga tushirish  
 * Ekranni uyg'oq saqlash  
@@ -10,8 +11,6 @@
 
 Reklama yo'q, kuzatuv yo'q. Ochiq kodli.  
 Ba'zi qo'shimcha funksiyalar rivojlanishni qo'llab-quvvatlash uchun pullik yangilashni talab qiladi.
-
-**Eslatma:** Bu ilova ovozni kuchaytirolmaydi yoki tizim ovoz chegaralarini o'zgartirolmaydi.
 
 **Ruxsatlar:**
 * **Internet** – ixtiyoriy xato hisobotlari uchun  

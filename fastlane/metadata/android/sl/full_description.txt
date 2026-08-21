@@ -2,6 +2,7 @@
 
 **Funkcije:**
 * Nastavite glasnost glasbe, klicev, zvonjenja in obvestil za vsako napravo  
+* Izenačevalnik za posamezno napravo z vnaprej nastavljenimi profili in ojačanjem glasnosti  
 * Samodejno pošljite medijske ukaze, kot sta Predvajaj ali Naprej  
 * Zagon aplikacij ob priklopu  
 * Ohranite zaslon aktiven  
@@ -10,8 +11,6 @@
 
 Brez oglasov, brez sledenja. Odprtokodna.  
 Nekateri dodatki zahtevajo plačljivo nadgradnjo za podporo razvoju.
-
-**Opomba:** Ta aplikacija ne more povečati glasnosti prek sistemskih omejitev.
 
 **Dovoljenja:**
 * **Internet** – za neobvezna poročila o napakah  

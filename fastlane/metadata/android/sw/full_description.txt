@@ -2,6 +2,7 @@
 
 **Vipengele:**
 * Weka sauti za muziki, simu, mlio na arifa kwa kila kifaa  
+* Kisawazishi cha kila kifaa chenye mipangilio ya awali na ongezeko la sauti  
 * Tuma kiotomatiki amri za midia kama Cheza au Inayofuata  
 * Zindua programu unapounganisha  
 * Weka skrini iwe macho  
@@ -10,8 +11,6 @@
 
 Hakuna matangazo, hakuna ufuatiliaji. Chanzo huria.  
 Baadhi ya ziada zinahitaji uboreshaji wa malipo kusaidia maendeleo.
-
-**Kumbuka:** Programu hii haiwezi kuongeza sauti au kubatilisha mipaka ya sauti ya mfumo.
 
 **Ruhusa:**
 * **Intaneti** – kwa ripoti za hitilafu za hiari  

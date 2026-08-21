@@ -2,6 +2,7 @@
 
 **Característiques:**
 * Configura el volum de música, trucades, to de trucada i notificacions per dispositiu  
+* Equalizador per dispositiu amb presets i una potència de volum  
 * Envia automàticament ordres multimèdia com Reproduir o Següent  
 * Obre aplicacions en connectar-se  
 * Manté la pantalla activa  
@@ -10,8 +11,6 @@
 
 Sense anuncis, sense seguiment. Codi obert.  
 Alguns extres requereixen una actualització de pagament per donar suport al desenvolupament.
-
-**Nota:** Aquesta aplicació no pot augmentar el volum ni superar els límits de volum del sistema.
 
 **Permisos:**
 * **Internet** – per a informes d’errors opcionals  

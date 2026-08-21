@@ -2,6 +2,7 @@ El administrador del volumen Bluetooth puede reaccionar a la conexión o descone
 
 **Características:**
 * Ajuste del volumen de la música, las llamadas, los tonos de llamada y las notificaciones.  
+* Ecualizador por dispositivo con preajustes y refuerzo de volumen  
 * Envío de los comandos multimedia "Reproducir" o "Siguiente".  
 * Abrir una aplicación específica.  
 * Mantener la pantalla encendida.  
@@ -10,8 +11,6 @@ El administrador del volumen Bluetooth puede reaccionar a la conexión o descone
 
 Sin anuncios, sin rastreo. Código abierto.  
 Algunos extras requieren una actualización de pago para financiar el desarrollo.
-
-Esta aplicación no puede "aumentar" el volumen o cambiarlo si no puedes hacerlo manualmente a través de los botones del volumen de tu dispositivo.
 
 **Permisos:**
 * 'Internet' para informes de errores.  

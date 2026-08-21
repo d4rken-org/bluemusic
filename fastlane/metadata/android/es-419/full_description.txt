@@ -2,6 +2,7 @@
 
 **Funciones:**
 * Ajusta los volúmenes de música, llamadas, tono de llamada y notificaciones por dispositivo  
+* Ecualizador por dispositivo con preajustes y aumento de volumen  
 * Envía automáticamente comandos de medios como Reproducir o Siguiente  
 * Abrir apps al conectar  
 * Mantener pantalla activa  
@@ -10,8 +11,6 @@
 
 Sin publicidad, sin rastreo. Código abierto.  
 Algunas funciones extra requieren una actualización de pago para apoyar el desarrollo.
-
-**Nota:** Esta app no puede aumentar el volumen ni anular los límites de volumen del sistema.
 
 **Permisos:**
 * **Internet** – para informes de errores opcionales  

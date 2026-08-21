@@ -2,6 +2,7 @@
 
 **Võimalused:**
 * Seadista muusika, kõne, helina ja teavituste helitugevus iga seadme jaoks eraldi  
+* Seadmepõhine ekvalaiser koos eelseadetega ja helitugevuse võimendusega  
 * Saada automaatselt meediakorraldusi nagu Esita või Järgmine  
 * Käivita rakendusi ühendamisel  
 * Hoia ekraan ärkvel  
@@ -10,8 +11,6 @@
 
 Reklaame pole, jälgimist pole. Avatud lähtekoodik.  
 Mõned lisafunktsioonid nõuavad arenduse toetamiseks tasulist uuendust.
-
-**Märkus:** See rakendus ei suuda helitugevust suurendada ega süsteemi helitugevuse piiranguid ületada.
 
 **Load:**
 * **Internet** – valikuliste veaaruannete jaoks  
