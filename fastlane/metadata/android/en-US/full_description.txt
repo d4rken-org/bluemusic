@@ -2,6 +2,7 @@
 
 **Features:**
 * Set music, call, ringtone, and notification volumes per device  
+* Per-device equalizer with presets and a volume boost  
 * Auto-send media commands like Play or Next  
 * Launch apps on connect  
 * Keep screen awake  
@@ -10,8 +11,6 @@
 
 No ads, no tracking. Open-source.  
 Some extras require a paid upgrade to support development.
-
-**Note:** This app can't boost volume or override system volume limits.
 
 **Permissions:**
 * **Internet** – for optional bug reports  
