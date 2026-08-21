@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">S\'iscritzione est sempre attiva</string>
     <string name="upgrade_screen_sub_still_renewing_message">Sa subscriptione tua est sempre impostada a isrenoare. Cancellàla in Google Play prima, dessos conpora sa compra de unu cunta — asa manera no ti carregant duas bilas.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Non potzomus verìficare is compras tuus cun Google Play. Per favore, verìfica sa connessiòne tua e tenta ancora.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Pagamentu in ispittu</string>
+    <string name="upgrade_screen_pending_card_body">Google Play est ancora elaborende su pagamentu tuu. Pro si disblochiat in automaticu cando su pagamentu si cumpiat. Calchunos metodus de pagamentu tobot sa tempada, non at cosa iscantzelada chi ti at bisognu de fai.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play at atotu una compra cusu pagamentu est ancora in elaboratzione. Pro si disblochiat in automaticu cando su pagamentu si cumpiat.</string>
     <string name="upgrades_gplay_already_owned_error_title">Già conporada</string>
     <string name="upgrades_gplay_already_owned_error_description">Imprea s\'optzione \'Isculà sa compra\' a isculàla. Si su problema perdurat, tenta de scancellare sa cache de Google Play e de ristartare s\'apparatu.</string>
     <string name="upgrades_gplay_internal_error_title">Errore de Google Play</string>

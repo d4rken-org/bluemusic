@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Izena aldatu</string>
     <string name="devices_device_config_enabled_label">Gaituta</string>
     <string name="devices_device_config_enabled_desc">Gailu honi konektatzen denean erantzun</string>
+    <string name="devices_device_config_equalizer_label">Ekualizatzailea</string>
+    <string name="devices_device_config_equalizer_desc">Doitu ekualizatzailearen bandak eta bolumearen indarra gailu honen arabera. Android-en sistemaren ekualizatzaileak onartzen dituzten musikaren aplikazioekin baino ez du funtzionatzen.</string>
+    <string name="devices_device_config_equalizer_boost_label">Bolumearen indarra: %1$s</string>
     <string name="devices_device_config_section_timing_label">Denbora-tartea</string>
     <string name="devices_device_config_monitoring_duration_label">Monitorizazio iraupena</string>
     <string name="devices_device_config_monitoring_duration_desc">Doikuntzak egin ondorengo iraupena milisegundotan, zeinean edozein bolumen aldaketa gehiago blokeatuta egongo diren.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Gehitu gailua</string>
     <string name="label_just_a_moment_please">Mesedez, itxoin une bat.</string>
     <string name="label_notification_channel_status">Egoera</string>
+    <string name="label_notification_channel_setup">Ezarpena beharrezkoa</string>
     <string name="monitor_notification_starting">Hasieratzen…</string>
     <string name="action_set">Ezarri</string>
     <string name="action_cancel">Utzi</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Gaia, estiloa eta koloreen pertsonalizazioa</string>
     <string name="upgrade_benefit_power_controls">Bolumen blokeoa eta abiadura murriztea</string>
     <string name="upgrade_benefit_support">Garapen independentea babestu</string>
+    <string name="upgrade_benefit_equalizer">• Gailuaren ekualizatzailea (sistema-ekualizatzaileak onartzen dituzten musikaren aplikazioetarako)</string>
     <string name="description_intro_tap_the_button">Hasi zure lehen gailua gehituz.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth desgaituta dago.</string>
     <string name="title_bluetooth_is_off">Bluetooth itzalita dago</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Desgaitu optimizazioak</string>
     <string name="android10_applaunch_hint_title">Beste aplikazioen gainean bistaratzea baimena</string>
     <string name="android10_applaunch_hint_message">Android 10+ bertsioak baimena berezian behar du aplikazioak abiarazteko, hasierako pantaila erakusteko edo pantaila esnatzeko atzeko planoan konektatzearen ondoren. Eman \"Beste aplikazioen gainean bistaratzea\" baimena.</string>
+    <string name="android10_applaunch_oem_hint">Fabrikatzaile batzuek baimena gehiago behar dute honetaz gainera. Baimena eman ondoren ez badago lanean, bilatu atzeko leihoa edo atzean abiaratzeko ezarpena zure telefonoaren aplikazioaren baimenetan.</string>
     <string name="notification_permission_hint_title">Jakinarazpen baimena</string>
     <string name="notification_permission_hint_message">Eman jakinarazpen baimena egoera eguneraketak ikusteko bolumenak doitzen direnean.</string>
     <string name="dnd_access_hint_title">Ez molestatzeko sarbidea</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Behatu</string>
     <string name="devices_indicator_disconnect">Deskonektatu</string>
     <string name="devices_indicator_limit">Muga</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Indarra</string>
     <string name="devices_indicator_launch">Abiarazi</string>
     <string name="devices_indicator_home">Hasiera</string>
     <string name="devices_indicator_dnd">EMN</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Berdea</string>
     <string name="widget_config_theme_red_label">Gorria</string>
     <string name="widget_config_theme_custom_label">Pertsonalizatua</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Ekualizatzailea</string>
+    <string name="eq_bands_label">Bandak</string>
+    <string name="eq_mini_graph_desc">Konfiguratutako ekualizatzailearen bandak</string>
+    <string name="eq_enable_label">Erabili ekualizatzailea</string>
+    <string name="eq_disabled_hint">Itzalita, zure ezarpenak gordeta daude baina ez dute oraindik audioa eragingo.</string>
+    <string name="eq_status_active_label">EQ aktibo %1$s-rako</string>
+    <string name="eq_status_active_multiple_label">EQ aktibo aplikazio batzuentzat</string>
+    <string name="eq_status_no_control_label">%1$s detektatu egin zen, baina ekualizatzaileak ezin zuen kontrola hartu</string>
+    <string name="eq_status_no_control_headline">%1$s detektatu egin zen</string>
+    <string name="eq_status_no_control_detail">Ekualizatzaileak ezin zuen bere audioa kontrola hartu</string>
+    <string name="eq_status_multiple_recent_label">Azkenekoa: %1$s</string>
+    <string name="eq_status_since_label">Saioa %1$s hasi zen</string>
+    <string name="eq_status_waiting_label">Onartutako musikaren aplikazioaren zain, abiarazi erreprodukzioa efektua entzuteko</string>
+    <string name="eq_status_inactive_label">Ez dago aktibo gailu honetan orain</string>
+    <string name="eq_status_generic_app_label">musikaren aplikazio bat</string>
+    <string name="eq_boost_label">Bolumearen indarra</string>
+    <string name="eq_boost_hint">Bandak gainean dena handiago egiten du. Indarra handia soinua deformatu dezake.</string>
+    <string name="eq_unsupported_msg">Telefono honek ez du erabil dezakegun ekualizatzailerik.</string>
+    <string name="eq_info_msg">Sistemaren ekualizatzaileak onartzen dituzten aplikazioekin funtzionatzen du, adibidez Spotify edo YouTube Music. Gailu honek aktibo dagoen bitartean aplikazio horien audioa guzia eragiten du. Zerbait dagoeneko erreproduzitzen ari bada, berrabiarazi erreprodukzioa aldaketa entzuteko.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Laua</string>
+    <string name="eq_preset_bass_boost_label">Beheko indarra</string>
+    <string name="eq_preset_bass_reducer_label">Beheko murrizlea</string>
+    <string name="eq_preset_treble_boost_label">Goiko indarra</string>
+    <string name="eq_preset_vocal_label">Bozezkoa</string>
+    <string name="eq_preset_loudness_label">Altutasuna</string>
 </resources>

@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">名前変更</string>
     <string name="devices_device_config_enabled_label">有効</string>
     <string name="devices_device_config_enabled_desc">接続時にこのデバイスに反応する</string>
+    <string name="devices_device_config_equalizer_label">イコライザー</string>
+    <string name="devices_device_config_equalizer_desc">このデバイスのイコライザーバンドと音量ブーストを調整します。Androidのシステムイコライザーに対応した音楽アプリでのみ動作します。</string>
+    <string name="devices_device_config_equalizer_boost_label">音量ブースト: %1$s</string>
     <string name="devices_device_config_section_timing_label">タイミング</string>
     <string name="devices_device_config_monitoring_duration_label">モニタリング間隔</string>
     <string name="devices_device_config_monitoring_duration_desc">いったん調整が完了した後、それ以上の音量変更がブロックされる時間をミリ秒単位で指定します。</string>
@@ -314,6 +317,7 @@
     <string name="label_add_device">デバイスを追加</string>
     <string name="label_just_a_moment_please">少々お待ちください。</string>
     <string name="label_notification_channel_status">状態</string>
+    <string name="label_notification_channel_setup">設定が必要です</string>
     <string name="monitor_notification_starting">起動中…</string>
     <string name="action_set">セット</string>
     <string name="action_cancel">キャンセル</string>
@@ -332,6 +336,7 @@
     <string name="upgrade_benefit_theme_customization">テーマ、スタイル、カラーのカスタマイズ</string>
     <string name="upgrade_benefit_power_controls">ボリュームロックとレート制限</string>
     <string name="upgrade_benefit_support">独立開発をサポート</string>
+    <string name="upgrade_benefit_equalizer">・デバイスごとのイコライザー(システムイコライザー対応の音楽アプリ用)</string>
     <string name="description_intro_tap_the_button">まずあなたの最初のデバイスを追加します。</string>
     <string name="description_bluetooth_is_disabled">Bluetoothが無効です。</string>
     <string name="title_bluetooth_is_off">Bluetoothがオフです</string>
@@ -391,6 +396,7 @@
     <string name="battery_optimization_fix_action">最適化を無効にする</string>
     <string name="android10_applaunch_hint_title">他のアプリの上に重ねて表示権限</string>
     <string name="android10_applaunch_hint_message">Android 10以降では、バックグラウンドからアプリを起動したり、ホーム画面を表示したり、画面をオンにするために特別な権限が必要です。「他のアプリの上に重ねて表示」権限を付与してください。</string>
+    <string name="android10_applaunch_oem_hint">メーカーによっては、これに加えてもう一つの権限が必要な場合があります。許可してもまだ動作しない場合は、端末のアプリ権限内にあるバックグラウンドポップアップまたはバックグラウンド起動の設定を確認してください。</string>
     <string name="notification_permission_hint_title">通知許可</string>
     <string name="notification_permission_hint_message">音量調整時に状態更新を見るために通知許可を与えてください。</string>
     <string name="dnd_access_hint_title">サイレントモードへのアクセス</string>
@@ -425,6 +431,8 @@
     <string name="devices_indicator_observe">監視</string>
     <string name="devices_indicator_disconnect">切断</string>
     <string name="devices_indicator_limit">制限</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">ブースト</string>
     <string name="devices_indicator_launch">起動</string>
     <string name="devices_indicator_home">ホーム</string>
     <string name="devices_indicator_dnd">おやすみ</string>
@@ -453,4 +461,33 @@
     <string name="widget_config_theme_green_label">緑</string>
     <string name="widget_config_theme_red_label">赤</string>
     <string name="widget_config_theme_custom_label">カスタム</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">イコライザー</string>
+    <string name="eq_bands_label">バンド</string>
+    <string name="eq_mini_graph_desc">設定済みのイコライザーバンド</string>
+    <string name="eq_enable_label">イコライザーを使用</string>
+    <string name="eq_disabled_hint">オフです。設定は保存されますが、まだ音声には反映されません。</string>
+    <string name="eq_status_active_label">%1$s でEQが有効です</string>
+    <string name="eq_status_active_multiple_label">複数のアプリでEQが有効です</string>
+    <string name="eq_status_no_control_label">%1$s を検出しましたが、EQが制御を取得できませんでした</string>
+    <string name="eq_status_no_control_headline">%1$s を検出しました</string>
+    <string name="eq_status_no_control_detail">EQがその音声の制御を取得できませんでした</string>
+    <string name="eq_status_multiple_recent_label">最新: %1$s</string>
+    <string name="eq_status_since_label">セッション開始: %1$s</string>
+    <string name="eq_status_waiting_label">対応する音楽アプリを待機中です。再生を開始すると効果を確認できます</string>
+    <string name="eq_status_inactive_label">現在このデバイスでは無効です</string>
+    <string name="eq_status_generic_app_label">音楽アプリ</string>
+    <string name="eq_boost_label">音量ブースト</string>
+    <string name="eq_boost_hint">バンドに加えて全体をより大きくします。ブーストを上げすぎると音が歪むことがあります。</string>
+    <string name="eq_unsupported_msg">この端末には利用可能なイコライザーがありません。</string>
+    <string name="eq_info_msg">システムイコライザーに対応したアプリ(SpotifyやYouTube Musicなど)で動作します。このデバイスが有効な間、これらのアプリからのすべての音声に影響します。すでに再生中の場合は、変更を反映するために再生を再開してください。</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">フラット</string>
+    <string name="eq_preset_bass_boost_label">低音ブースト</string>
+    <string name="eq_preset_bass_reducer_label">低音カット</string>
+    <string name="eq_preset_treble_boost_label">高音ブースト</string>
+    <string name="eq_preset_vocal_label">ボーカル</string>
+    <string name="eq_preset_loudness_label">ラウドネス</string>
 </resources>

@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">שנה שם</string>
     <string name="devices_device_config_enabled_label">מופעל</string>
     <string name="devices_device_config_enabled_desc">הגב למכשיר זה כאשר הוא מחובר</string>
+    <string name="devices_device_config_equalizer_label">אקוולייזר</string>
+    <string name="devices_device_config_equalizer_desc">כוונן את רצועות האקולייזר והגברת עוצמת הקול עבור מכשיר זה. פועל רק עם אפליקציות מוזיקה שתומכות באקולייזר המערכת של Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">הגברת עוצמת קול: %1$s</string>
     <string name="devices_device_config_section_timing_label">תזמון</string>
     <string name="devices_device_config_monitoring_duration_label">משך ניטור</string>
     <string name="devices_device_config_monitoring_duration_desc">משך במילישניות, לאחר ביצוע התאמות, במהלכו כל שינוי עוצמה נוסף ייחסם.</string>
@@ -326,6 +329,7 @@
     <string name="label_add_device">הוספת התקן</string>
     <string name="label_just_a_moment_please">אנא המתינו.</string>
     <string name="label_notification_channel_status">מצב</string>
+    <string name="label_notification_channel_setup">נדרשת הגדרה</string>
     <string name="monitor_notification_starting">מתחיל…</string>
     <string name="action_set">קביעה</string>
     <string name="action_cancel">ביטול</string>
@@ -344,6 +348,7 @@
     <string name="upgrade_benefit_theme_customization">התאמה אישית של ערכת נושא, סגנון וצבע</string>
     <string name="upgrade_benefit_power_controls">נעילת עוצמת קול והגבלת קצב</string>
     <string name="upgrade_benefit_support">תמוך בפיתוח עצמאי</string>
+    <string name="upgrade_benefit_equalizer">• אקולייזר לכל מכשיר (עבור אפליקציות מוזיקה עם תמיכה באקולייזר מערכת)</string>
     <string name="description_intro_tap_the_button">התחילו על ידי הוספת המכשיר הראשון שלכם.</string>
     <string name="description_bluetooth_is_disabled">בלוטות\' מנוטרל.</string>
     <string name="title_bluetooth_is_off">בלוטוס כבוי</string>
@@ -406,6 +411,7 @@
     <string name="battery_optimization_fix_action">השבת אימוצים</string>
     <string name="android10_applaunch_hint_title">הרשאת הצגה מעל אפליקציות</string>
     <string name="android10_applaunch_hint_message">Android 10 ומעלה דורש הרשאה מיוחדת כדי להפעיל אפליקציות, להציג את מסך הבית או להעיר את המסך מהרקע בעת התחברות. הענק את הרשאת \"הצגה מעל אפליקציות אחרות\".</string>
+    <string name="android10_applaunch_oem_hint">חלק מהיצרנים דורשים הרשאה נוספת מעבר לזו. אם זה עדיין לא עובד לאחר האישור, חפש הגדרת חלון קופץ ברקע או הפעלה ברקע בהרשאות האפליקציה בטלפון שלך.</string>
     <string name="notification_permission_hint_title">הרשאת התראות</string>
     <string name="notification_permission_hint_message">העניקו הרשאת התראות כדי לראות עדכוני מצב כאשר מתאימים עוצמות.</string>
     <string name="dnd_access_hint_title">גישה למצב \"נא לא להפריע\"</string>
@@ -440,6 +446,8 @@
     <string name="devices_indicator_observe">צפייה</string>
     <string name="devices_indicator_disconnect">ניתוק</string>
     <string name="devices_indicator_limit">הגבלה</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">הגברה</string>
     <string name="devices_indicator_launch">הפעלה</string>
     <string name="devices_indicator_home">בית</string>
     <string name="devices_indicator_dnd">נא לא להפריע</string>
@@ -468,4 +476,33 @@
     <string name="widget_config_theme_green_label">ירוק</string>
     <string name="widget_config_theme_red_label">אדום</string>
     <string name="widget_config_theme_custom_label">מותאם אישית</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">אקוולייזר</string>
+    <string name="eq_bands_label">רצועות</string>
+    <string name="eq_mini_graph_desc">רצועות אקולייזר מוגדרות</string>
+    <string name="eq_enable_label">השתמש באקולייזר</string>
+    <string name="eq_disabled_hint">כבוי, ההגדרות שלך נשמרות אך לא ישפיעו על השמע בינתיים.</string>
+    <string name="eq_status_active_label">EQ פעיל עבור %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ פעיל עבור מספר אפליקציות</string>
+    <string name="eq_status_no_control_label">%1$s זוהה, אך ה-EQ לא הצליח לקבל שליטה</string>
+    <string name="eq_status_no_control_headline">%1$s זוהה</string>
+    <string name="eq_status_no_control_detail">ה-EQ לא הצליח לקבל שליטה על השמע שלו</string>
+    <string name="eq_status_multiple_recent_label">האחרון ביותר: %1$s</string>
+    <string name="eq_status_since_label">ההפעלה החלה %1$s</string>
+    <string name="eq_status_waiting_label">ממתין לאפליקציית מוזיקה נתמכת, התחל השמעה כדי לשמוע את האפקט</string>
+    <string name="eq_status_inactive_label">לא פעיל עבור מכשיר זה כרגע</string>
+    <string name="eq_status_generic_app_label">אפליקציית מוזיקה</string>
+    <string name="eq_boost_label">הגברת עוצמת קול</string>
+    <string name="eq_boost_hint">מגביר הכול מעבר לרצועות. הגברה גדולה מדי עלולה לעוות את הצליל.</string>
+    <string name="eq_unsupported_msg">הטלפון הזה לא מציע אקולייזר שנוכל להשתמש בו.</string>
+    <string name="eq_info_msg">פועל עם אפליקציות שתומכות באקולייזרים של המערכת, כגון Spotify או YouTube Music. זה משפיע על כל השמע מאותן האפליקציות כאשר מכשיר זה פעיל. אם כבר מתנגן משהו, הפעל מחדש את ההשמעה כדי לשמוע את השינוי.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">שטוח</string>
+    <string name="eq_preset_bass_boost_label">הגברת בס</string>
+    <string name="eq_preset_bass_reducer_label">הפחתת בס</string>
+    <string name="eq_preset_treble_boost_label">הגברת טרבל</string>
+    <string name="eq_preset_vocal_label">ווקאל</string>
+    <string name="eq_preset_loudness_label">עוצמה</string>
 </resources>

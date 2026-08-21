@@ -42,6 +42,8 @@
     <string name="devices_device_config_rename_device_action">ເປລີ່ຍຊື່</string>
     <string name="devices_device_config_enabled_label">ເອີນໃຊ້ງານ</string>
     <string name="devices_device_config_enabled_desc">ຕອບສນອງຕ່ອອຸປະກອນນີ້ເມື່ອຕ່ອ</string>
+    <string name="devices_device_config_equalizer_desc">ປັບແຕ່ງແຖບອີຄິວອລາຍເຊີ ແລະ ການເພີ່ມສຽງດັງສຳລັບອຸປະກອນນີ້. ໃຊ້ໄດ້ສະເພາະກັບແອັບເພງທີ່ຮອງຮັບອີຄິວອລາຍເຊີລະບົບຂອງ Android ເທົ່ານັ້ນ.</string>
+    <string name="devices_device_config_equalizer_boost_label">ການເພີ່ມສຽງດັງ: %1$s</string>
     <string name="devices_device_config_section_timing_label">ເວລາ</string>
     <string name="devices_device_config_monitoring_duration_label">ນານແກ່ການຕິດຕາມ</string>
     <string name="devices_device_config_monitoring_duration_desc">ຄວາມຖີ່ເປັນມິລລິວິນາທີ ຫລັງຈາກການປັບການປໍປວ່າແລ້ວ ຊ່ວງເວລາທີ່ການປໍບວນລະດັບສຽງເພິ່ມເຕີມຈະຖືກບໍ່ອະນຸຍາດ.</string>
@@ -314,6 +316,7 @@
     <string name="label_add_device">ເພີ່ມອຸປະກອນ</string>
     <string name="label_just_a_moment_please">ສ଱ກຄູ່ ກະລຸນາ.</string>
     <string name="label_notification_channel_status">ສະຖານະ</string>
+    <string name="label_notification_channel_setup">ຕ້ອງຕັ້ງຄ່າ</string>
     <string name="monitor_notification_starting">ກຳລັງເລີ່ມຕົ້ນ...</string>
     <string name="action_set">ຕັ້ງ</string>
     <string name="action_cancel">ຍົກເລີກ</string>
@@ -332,6 +335,7 @@
     <string name="upgrade_benefit_theme_customization">ການປັບແຕ່ໝົດໂຖກ, ສໄຕລ໌ ແລະ ສີ</string>
     <string name="upgrade_benefit_power_controls">ການລັອກລະດັບສຽງ ແລະ ການຈຳກັດອັດຕະ</string>
     <string name="upgrade_benefit_support">ສະໝັບສະໝູນການພັດທະນາອິດສະຫຼະ</string>
+    <string name="upgrade_benefit_equalizer">• ອີຄິວອລາຍເຊີສະເພາະແຕ່ລະອຸປະກອນ (ສຳລັບແອັບເພງທີ່ຮອງຮັບອີຄິວອລາຍເຊີລະບົບ)</string>
     <string name="description_intro_tap_the_button">ເລີ່ມດ້ວຍການໄ0ພີ່ມອຸປະກອນໄ1ລກຂອງທ່ານ.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ຖືກປິດ.</string>
     <string name="title_bluetooth_is_off">Bluetooth ປິດອຍູ່</string>
@@ -391,6 +395,7 @@
     <string name="battery_optimization_fix_action">ປິດການອຫນຸເທ</string>
     <string name="android10_applaunch_hint_title">ການອະນຸຍາດສະແດງຜົນຢູ່ຕໍ່ໜ້າແອັບ</string>
     <string name="android10_applaunch_hint_message">Android 10+ ຕ້ອງການການອະນຸຍາດພິເສດເພື່ອເປີດແອັບ ສະແດງໜ້າຈໍຫຼັກ ຫຼືປຸກໜ້າຈໍຈາກພື້ນຫຼັງເມື່ອເຊື່ອມຕໍ່. ໃຫ້ການອະນຸຍາດ \"ສະແດງຜົນຢູ່ຕໍ່ໜ້າແອັບອື່ນໆ\".</string>
+    <string name="android10_applaunch_oem_hint">ຜູ້ຜະລິດບາງລາຍຕ້ອງການສິດອະນຸຍາດເພີ່ມເຕີມນອກເໜືອຈາກອັນນີ້. ຖ້າຍັງໃຊ້ບໍ່ໄດ້ຫຼັງຈາກອະນຸຍາດແລ້ວ, ໃຫ້ຊອກຫາການຕັ້ງຄ່າປັອບອັບພື້ນຫຼັງ ຫຼື ການເປີດແອັບພື້ນຫຼັງໃນສິດອະນຸຍາດແອັບຂອງໂທລະສັບເຈົ້າ.</string>
     <string name="notification_permission_hint_title">ສິດທິ່ການແຈ້ງ</string>
     <string name="notification_permission_hint_message">ມອບສິດທິ່ການແຈ້ງເພື່ອເຫັນການອັບເດດສະຖານະເມື່ອປັບລະດັບສຽງ.</string>
     <string name="dnd_access_hint_title">ການເຂົ້າເຖິງ Do Not Disturb</string>
@@ -425,6 +430,8 @@
     <string name="devices_indicator_observe">ສັງເກດ</string>
     <string name="devices_indicator_disconnect">ຕັດການຕ່ອ</string>
     <string name="devices_indicator_limit">ຈຳກັດ</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">ເພີ່ມສຽງ</string>
     <string name="devices_indicator_launch">ເປີດ</string>
     <string name="devices_indicator_home">ຫນ້າຫລັກ</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -453,4 +460,32 @@
     <string name="widget_config_theme_green_label">ສີຂຽວ</string>
     <string name="widget_config_theme_red_label">ສີແດງ</string>
     <string name="widget_config_theme_custom_label">ກຳນົດເອງ</string>
+    <!-- Equalizer -->
+    <string name="eq_bands_label">ແຖບ</string>
+    <string name="eq_mini_graph_desc">ແຖບອີຄິວອລາຍເຊີທີ່ຕັ້ງຄ່າໄວ້</string>
+    <string name="eq_enable_label">ໃຊ້ອີຄິວອລາຍເຊີ</string>
+    <string name="eq_disabled_hint">ປິດຢູ່, ການຕັ້ງຄ່າຂອງເຈົ້າຖືກບັນທຶກໄວ້ແຕ່ຍັງບໍ່ມີຜົນຕໍ່ສຽງ.</string>
+    <string name="eq_status_active_label">EQ ເປີດໃຊ້ງານສຳລັບ %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ ເປີດໃຊ້ງານສຳລັບຫຼາຍແອັບ</string>
+    <string name="eq_status_no_control_label">ກວດພົບ %1$s ແລ້ວ ແຕ່ EQ ບໍ່ສາມາດຄວບຄຸມໄດ້</string>
+    <string name="eq_status_no_control_headline">ກວດພົບ %1$s ແລ້ວ</string>
+    <string name="eq_status_no_control_detail">EQ ບໍ່ສາມາດຄວບຄຸມສຽງຂອງມັນໄດ້</string>
+    <string name="eq_status_multiple_recent_label">ຫຼ້າສຸດ: %1$s</string>
+    <string name="eq_status_since_label">ເລີ່ມເຊດຊັນ %1$s</string>
+    <string name="eq_status_waiting_label">ກຳລັງລໍຖ້າແອັບເພງທີ່ຮອງຮັບ, ເລີ່ມຫຼິ້ນເພື່ອຟັງຜົນກະທົບ</string>
+    <string name="eq_status_inactive_label">ບໍ່ໄດ້ເປີດໃຊ້ງານສຳລັບອຸປະກອນນີ້ໃນຕອນນີ້</string>
+    <string name="eq_status_generic_app_label">ແອັບເພງ</string>
+    <string name="eq_boost_label">ການເພີ່ມສຽງດັງ</string>
+    <string name="eq_boost_hint">ເຮັດໃຫ້ທຸກຢ່າງດັງຂຶ້ນນອກເໜືອຈາກແຖບຄວາມຖີ່. ການເພີ່ມສຽງດັງຫຼາຍເກີນໄປອາດເຮັດໃຫ້ສຽງແຕກ.</string>
+    <string name="eq_unsupported_msg">ໂທລະສັບເຄື່ອງນີ້ບໍ່ມີອີຄິວອລາຍເຊີທີ່ພວກເຮົາສາມາດໃຊ້ໄດ້.</string>
+    <string name="eq_info_msg">ໃຊ້ໄດ້ກັບແອັບທີ່ຮອງຮັບອີຄິວອລາຍເຊີລະບົບ, ເຊັ່ນ Spotify ຫຼື YouTube Music. ມັນມີຜົນຕໍ່ສຽງທັງໝົດຈາກແອັບເຫຼົ່ານັ້ນໃນຂະນະທີ່ອຸປະກອນນີ້ເປີດໃຊ້ງານຢູ່. ຖ້າມີບາງຢ່າງກຳລັງຫຼິ້ນຢູ່ແລ້ວ, ໃຫ້ເລີ່ມຫຼິ້ນໃໝ່ເພື່ອຟັງການປ່ຽນແປງ.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">ປົກກະຕິ</string>
+    <string name="eq_preset_bass_boost_label">ເພີ່ມສຽງເບສ</string>
+    <string name="eq_preset_bass_reducer_label">ຫຼຸດສຽງເບສ</string>
+    <string name="eq_preset_treble_boost_label">ເພີ່ມສຽງແຫຼມ</string>
+    <string name="eq_preset_vocal_label">ສຽງຮ້ອງ</string>
+    <string name="eq_preset_loudness_label">ຄວາມດັງ</string>
 </resources>

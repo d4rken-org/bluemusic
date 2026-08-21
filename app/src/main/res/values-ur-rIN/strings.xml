@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">نام بدلیں</string>
     <string name="devices_device_config_enabled_label">فعال</string>
     <string name="devices_device_config_enabled_desc">اس ڈیوائس کے منسلک ہونے پر ردعمل ظاہر کریں</string>
+    <string name="devices_device_config_equalizer_label">ایکولائزر</string>
+    <string name="devices_device_config_equalizer_desc">اس ڈیوائس کے لیے ایکولائزر بینڈز اور آواز کی بلندی کو سیٹ کریں۔ صرف ان موسیقی ایپس کے ساتھ کام کرتا ہے جو Android کے نظام ایکولائزر کو سپورٹ کرتے ہیں۔</string>
+    <string name="devices_device_config_equalizer_boost_label">والیوم بوسٹ: %1$s</string>
     <string name="devices_device_config_section_timing_label">وقت</string>
     <string name="devices_device_config_monitoring_duration_label">نگرانی کی مدت</string>
     <string name="devices_device_config_monitoring_duration_desc">ملی سیکنڈ میں ایک مدت، ایڈجسٹمنٹ کے بعد، جس کے دوران مزید والیوم تبدیلیاں بلاک کی جائیں گی۔</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">ڈیوائس شامل کریں</string>
     <string name="label_just_a_moment_please">بس ایک لمحہ۔</string>
     <string name="label_notification_channel_status">حیثیت</string>
+    <string name="label_notification_channel_setup">سیٹ اپ ضروری ہے</string>
     <string name="monitor_notification_starting">شروع ہو رہا ہے…</string>
     <string name="action_set">سیٹ کریں</string>
     <string name="action_cancel">منسوخ کریں</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">تھیم، اسٹائل اور رنگ کی حسب ضرورت تبدیلی</string>
     <string name="upgrade_benefit_power_controls">والیوم لاک اور ریٹ لمیٹنگ</string>
     <string name="upgrade_benefit_support">آزاد ترقی کو سپورٹ کریں</string>
+    <string name="upgrade_benefit_equalizer">• فی ڈیوائس ایکولائزر (نظام ایکولائزر والی موسیقی ایپس کے لیے)</string>
     <string name="description_intro_tap_the_button">اپنی پہلی ڈیوائس شامل کرکے شروع کریں۔</string>
     <string name="description_bluetooth_is_disabled">بلوٹوتھ غیر فعال ہے.</string>
     <string name="title_bluetooth_is_off">بلوٹوتھ بند ہے</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">آپٹیمائزیشنز بند کریں</string>
     <string name="android10_applaunch_hint_title">ایپس پر ڈسپلے کی اجازت</string>
     <string name="android10_applaunch_hint_message">Android 10+ کو ایپس شروع کرنے، ہوم اسکرین دکھانے، یا پس منظر سے منسلک ہونے پر اسکرین کو جگا کرنے کے لیے ایک خصوصی اجازت کی ضرورت ہے۔ \"دوسری ایپلیکیشنوں پر ڈسپلے\" کی اجازت دیں۔</string>
+    <string name="android10_applaunch_oem_hint">کچھ موبائل فیکٹریز کو اس کے علاوہ ایک دوسری اجازت کی ضرورت ہے۔ اجازت دینے کے بعد بھی اگر کام نہ کرے تو اپنے فون کی ایپ کی اجازتوں میں پس منظر کے پاپ اپ یا لانچ کی سیٹنگ تلاش کریں۔</string>
     <string name="notification_permission_hint_title">نوٹیفیکیشن کی اجازت</string>
     <string name="notification_permission_hint_message">والیوم ایڈجسٹ کرتے وقت سٹیٹس اپڈیٹس دیکھنے کے لیے نوٹیفیکیشن کی اجازت دیں۔</string>
     <string name="dnd_access_hint_title">ڈو ناٹ ڈسٹرب رسائی</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">نگرانی</string>
     <string name="devices_indicator_disconnect">ڈسکنیکٹ</string>
     <string name="devices_indicator_limit">حد</string>
+    <string name="devices_indicator_eq">ای کیو</string>
+    <string name="devices_indicator_boost">بوسٹ</string>
     <string name="devices_indicator_launch">شروع کریں</string>
     <string name="devices_indicator_home">ہوم</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">سبز</string>
     <string name="widget_config_theme_red_label">سرخ</string>
     <string name="widget_config_theme_custom_label">کسٹم</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">ایکولائزر</string>
+    <string name="eq_bands_label">بینڈز</string>
+    <string name="eq_mini_graph_desc">کنفیگر شدہ ایکولائزر بینڈز</string>
+    <string name="eq_enable_label">ایکولائزر استعمال کریں</string>
+    <string name="eq_disabled_hint">بند ہے، آپ کی سیٹنگز محفوظ ہیں لیکن ابھی آڈیو کو متاثر نہیں کریں گی۔</string>
+    <string name="eq_status_active_label">%1$s کے لیے ای کیو فعال ہے</string>
+    <string name="eq_status_active_multiple_label">متعدد ایپس کے لیے ای کیو فعال</string>
+    <string name="eq_status_no_control_label">%1$s کا پتہ چلا، لیکن ای کیو اس پر کنٹرول نہیں لے سکی</string>
+    <string name="eq_status_no_control_headline">%1$s کا پتہ چلا</string>
+    <string name="eq_status_no_control_detail">ای کیو نے آڈیو پر کنٹرول نہیں لیا</string>
+    <string name="eq_status_multiple_recent_label">سب سے حالیہ: %1$s</string>
+    <string name="eq_status_since_label">سیشن %1$s شروع ہوا</string>
+    <string name="eq_status_waiting_label">سپورٹ شدہ موسیقی ایپ کا انتظار ہے، اثر سننے کے لیے چلانا شروع کریں</string>
+    <string name="eq_status_inactive_label">اس وقت اس ڈیوائس کے لیے فعال نہیں</string>
+    <string name="eq_status_generic_app_label">ایک موسیقی ایپ</string>
+    <string name="eq_boost_label">والیوم بوسٹ</string>
+    <string name="eq_boost_hint">بینڈز کے علاوہ سب کچھ تیز کرتا ہے۔ بہت زیادہ بوسٹ آواز کو خراب کر سکتا ہے۔</string>
+    <string name="eq_unsupported_msg">یہ فون ایسا ایکولائزر فراہم نہیں کرتا جو ہم استعمال کر سکیں۔</string>
+    <string name="eq_info_msg">ان ایپس کے ساتھ کام کرتا ہے جو نظام ایکولائزر کو سپورٹ کرتے ہیں، مثال کے طور پر Spotify یا YouTube Music۔ یہ ان ایپس سے تمام آڈیو کو متاثر کرتا ہے جب یہ ڈیوائس فعال ہو۔ اگر کوئی چیز پہلے سے بج رہی ہے تو تبدیلی سننے کے لیے دوبارہ چلائیں۔</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">برابر</string>
+    <string name="eq_preset_bass_boost_label">بیس میں اضافہ</string>
+    <string name="eq_preset_bass_reducer_label">بیس میں کمی</string>
+    <string name="eq_preset_treble_boost_label">ٹریبل میں اضافہ</string>
+    <string name="eq_preset_vocal_label">صوت</string>
+    <string name="eq_preset_loudness_label">بلندی</string>
 </resources>

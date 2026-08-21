@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">رکنیت ابھی فعال ہے</string>
     <string name="upgrade_screen_sub_still_renewing_message">آپ کی رکنیت ابھی بھی تجدید کے لیے سیٹ ہے۔ پہلے اسے Google Play میں منسوخ کریں، پھر واپس آئیں اور ایک بار کی خریداری کریں — اس طریقے آپ سے دوہری رقم نہیں لی جائے گی۔</string>
+    <string name="upgrade_screen_purchase_check_failed_message">ہم آپ کی خریداریوں کو Google Play سے چیک نہیں کر سکے۔ براہ کرم اپنے انٹرنیٹ کنکشن کو چیک کریں اور دوبارہ کوشش کریں۔</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">ادائیگی زیرِ التوا</string>
+    <string name="upgrade_screen_pending_card_body">Google Play ابھی آپ کی ادائیگی کو پروسیس کر رہا ہے۔ Pro خود بخود کھل جاتا ہے جب ادائیگی مکمل ہو جاتی ہے۔ کچھ ادائیگی کے طریقے کچھ وقت لیتے ہیں، آپ کو کچھ اور کرنے کی ضرورت نہیں۔</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play نے ایک خریداری ڈھونڈی جس کی ادائیگی ابھی پروسیس ہو رہی ہے۔ Pro خود بخود کھل جاتا ہے جب ادائیگی مکمل ہو جاتی ہے۔</string>
     <string name="upgrades_gplay_already_owned_error_title">پہلے سے خریدا گیا</string>
     <string name="upgrades_gplay_already_owned_error_description">اپنی خریداری کو بحال کرنے کے لیے \"خریداری بحال کریں\" آپشن استعمال کریں۔ اگر مسئلہ برقرار ہے، تو Google Play کیش صاف کرنے اور اپنے ڈیوائس کو دوبارہ شروع کرنے کی کوشش کریں۔</string>
     <string name="upgrades_gplay_internal_error_title">Google Play خرابی</string>

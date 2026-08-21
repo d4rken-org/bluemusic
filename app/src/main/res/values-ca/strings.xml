@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Reanomena</string>
     <string name="devices_device_config_enabled_label">Activat</string>
     <string name="devices_device_config_enabled_desc">Reacciona a aquest dispositiu quan es connecti</string>
+    <string name="devices_device_config_equalizer_label">Equalitzador</string>
+    <string name="devices_device_config_equalizer_desc">Ajusta les bandes de l\'equalizador i la potència de volum per a aquest dispositiu. Només funciona amb aplicacions de música que admeten l\'equalizador del sistema d\'Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Potència de volum: %1$s</string>
     <string name="devices_device_config_section_timing_label">Temporització</string>
     <string name="devices_device_config_monitoring_duration_label">Durada del seguiment</string>
     <string name="devices_device_config_monitoring_duration_desc">Una durada en mil·lisegons, després que s\'hagin realitzat les configuracions, durant les quals es bloquejaran els canvis de volum addicionals.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Afegeix un dispositiu</string>
     <string name="label_just_a_moment_please">Un moment.</string>
     <string name="label_notification_channel_status">Estat</string>
+    <string name="label_notification_channel_setup">Cal configurar</string>
     <string name="monitor_notification_starting">Iniciant…</string>
     <string name="action_set">Estableix</string>
     <string name="action_cancel">Cancel·la</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Personalització de tema, estil i color</string>
     <string name="upgrade_benefit_power_controls">Bloqueig de volum i limitació de velocitat</string>
     <string name="upgrade_benefit_support">Dóna suport al desenvolupament independent</string>
+    <string name="upgrade_benefit_equalizer">• Equalizador per dispositiu (per a aplicacions de música amb suport d\'equalizador del sistema)</string>
     <string name="description_intro_tap_the_button">Comenceu afegint el primer dispositiu.</string>
     <string name="description_bluetooth_is_disabled">El Bluetooth està desactivat.</string>
     <string name="title_bluetooth_is_off">El Bluetooth està apagat</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Desactiva les optimitzacions</string>
     <string name="android10_applaunch_hint_title">Permís de mostrar sobre altres aplicacions</string>
     <string name="android10_applaunch_hint_message">Android 10+ necessita un permís especial per llançar aplicacions, mostrar la pantalla d\'inici o despertar la pantalla des de segon pla quan es connecta un dispositiu. Concedeix el permís «Mostrar sobre altres aplicacions».</string>
+    <string name="android10_applaunch_oem_hint">Alguns fabricants requereixen un permís addicional. Si segueix sense funcionar després de concedir-lo, busca una finestra emergent de fons o una configuració de llançament en segon pla als permisos de l\'aplicació del telèfon.</string>
     <string name="notification_permission_hint_title">Permís de notificació</string>
     <string name="notification_permission_hint_message">Concedeix el permís de notificació per veure actualitzacions d\'estat quan s\'ajusten els volums.</string>
     <string name="dnd_access_hint_title">Accés a No molestar</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Observar</string>
     <string name="devices_indicator_disconnect">Desconnectar</string>
     <string name="devices_indicator_limit">Límit</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Potència</string>
     <string name="devices_indicator_launch">Iniciar</string>
     <string name="devices_indicator_home">Inici</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Verd</string>
     <string name="widget_config_theme_red_label">Vermell</string>
     <string name="widget_config_theme_custom_label">Personalitzat</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Equalitzador</string>
+    <string name="eq_bands_label">Bandes</string>
+    <string name="eq_mini_graph_desc">Bandes de l\'equalizador configurades</string>
+    <string name="eq_enable_label">Usa l\'equalizador</string>
+    <string name="eq_disabled_hint">Desactivat, els teus paràmetres estan desats però no afectaran l\'àudio de moment.</string>
+    <string name="eq_status_active_label">EQ actiu per a %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ actiu per a diverses aplicacions</string>
+    <string name="eq_status_no_control_label">%1$s va ser detectat, però l\'EQ no va poder controlar l\'àudio</string>
+    <string name="eq_status_no_control_headline">%1$s va ser detectat</string>
+    <string name="eq_status_no_control_detail">L\'EQ no va poder controlar el seu àudio</string>
+    <string name="eq_status_multiple_recent_label">Més recent: %1$s</string>
+    <string name="eq_status_since_label">Sessió iniciada fa %1$s</string>
+    <string name="eq_status_waiting_label">Esperant una aplicació de música compatible, inicia la reproducció per sentir l\'efecte</string>
+    <string name="eq_status_inactive_label">No està actiu per a aquest dispositiu en aquest moment</string>
+    <string name="eq_status_generic_app_label">una aplicació de música</string>
+    <string name="eq_boost_label">Potència de volum</string>
+    <string name="eq_boost_hint">Fa que tot sigui més fort a sobre de les bandes. Molt de potència pot distorsionar el so.</string>
+    <string name="eq_unsupported_msg">Aquest telèfon no ofereix un equalizador que podem utilitzar.</string>
+    <string name="eq_info_msg">Funciona amb aplicacions que admeten equalizadors del sistema, p. ex. Spotify o YouTube Music. Afecta tot l\'àudio d\'aquestes aplicacions mentre aquest dispositiu està actiu. Si ja hi ha quelcom en reproducció, reinicia la reproducció per sentir el canvi.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Pla</string>
+    <string name="eq_preset_bass_boost_label">Potència de greus</string>
+    <string name="eq_preset_bass_reducer_label">Reductor de greus</string>
+    <string name="eq_preset_treble_boost_label">Potència d\'aguts</string>
+    <string name="eq_preset_vocal_label">Vocal</string>
+    <string name="eq_preset_loudness_label">Sonoritat</string>
 </resources>

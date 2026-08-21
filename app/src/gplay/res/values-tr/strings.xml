@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abonelik hâlâ aktif</string>
     <string name="upgrade_screen_sub_still_renewing_message">Aboneliğiniz hâlâ yenilenecek şekilde ayarlı. Önce Google Play\'de iptal edin, ardından tek seferlik satın almayı yapmak için geri dönün — böylece iki kez ücretlendirilmezsiniz.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Satın almalarını Google Play ile kontrol edemedik. Lütfen bağlantını kontrol edip tekrar dene.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Ödeme bekleniyor</string>
+    <string name="upgrade_screen_pending_card_body">Google Play ödemeni hâlâ işliyor. Ödeme tamamlandığında Pro kendiliğinden açılır. Bazı ödeme yöntemleri biraz zaman alabilir, başka bir şey yapmana gerek yok.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play, ödemesi hâlâ işlenmekte olan bir satın alma buldu. Ödeme tamamlandığında Pro kendiliğinden açılır.</string>
     <string name="upgrades_gplay_already_owned_error_title">Zaten satın alındı</string>
     <string name="upgrades_gplay_already_owned_error_description">\"Satın almayı geri yükle\" seçeneğini kullanarak satın alımınızı geri yükleyin. Sorun devam ederse, Google Play Store önbelleğini temizleyin ve cihazınızı yeniden başlatın.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play hatası</string>

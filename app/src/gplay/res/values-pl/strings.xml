@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Subskrypcja nadal aktywna</string>
     <string name="upgrade_screen_sub_still_renewing_message">Twoja subskrypcja nadal jest ustawiona na odnawianie. Najpierw anuluj ją w Google Play, a potem wróć, aby kupić wersję jednorazową — dzięki temu unikniesz podwójnej opłaty.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Nie mogliśmy sprawdzić twoich zakupów w Google Play. Sprawdź połączenie i spróbuj ponownie.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Oczekiwanie na płatność</string>
+    <string name="upgrade_screen_pending_card_body">Sklep Google Play nadal przetwarza twoją płatność. Wersja Pro odblokuje się automatycznie po zaksięgowaniu płatności. Niektóre metody płatności mogą wymagać trochę czasu. Nie musisz nic więcej robić.</string>
+    <string name="upgrade_screen_pending_dialog_message">Sklep Google Play znalazł zakup, którego płatność nadal jest przetwarzana. Wersja Pro odblokowuje się automatycznie po zaksięgowaniu płatności.</string>
     <string name="upgrades_gplay_already_owned_error_title">Już zakupiono</string>
     <string name="upgrades_gplay_already_owned_error_description">Użyj opcji \"Przywróć zakup\", aby przywrócić zakup. Jeśli problem będzie się powtarzał, spróbuj wyczyścić pamięć podręczną Google Play i ponownie uruchomić urządzenie.</string>
     <string name="upgrades_gplay_internal_error_title">Błąd Google Play</string>

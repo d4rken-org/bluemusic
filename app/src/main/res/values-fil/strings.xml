@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Palitan ng pangalan</string>
     <string name="devices_device_config_enabled_label">Pinagana</string>
     <string name="devices_device_config_enabled_desc">Tumugon sa device na ito kapag nakakonekta</string>
+    <string name="devices_device_config_equalizer_label">Equalizer</string>
+    <string name="devices_device_config_equalizer_desc">I-tune ang mga band ng equalizer at volume boost para sa device na ito. Gumagana lamang ito sa mga music app na sumusuporta sa system equalizer ng Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Volume boost: %1$s</string>
     <string name="devices_device_config_section_timing_label">Timing</string>
     <string name="devices_device_config_monitoring_duration_label">Tagal ng pagmo-monitor</string>
     <string name="devices_device_config_monitoring_duration_desc">Isang tagal sa millisecond, pagkatapos magsagawa ng mga pagsasaayos, kung saan ang anumang karagdagang pagbabago ng volume ay mabloblockan.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Magdagdag ng device</string>
     <string name="label_just_a_moment_please">Sandali lang, pakiusap.</string>
     <string name="label_notification_channel_status">Katayuan</string>
+    <string name="label_notification_channel_setup">Kailangan ng pag-setup</string>
     <string name="monitor_notification_starting">Nagsisimula…</string>
     <string name="action_set">I-set</string>
     <string name="action_cancel">Kanselahin</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Pag-customize ng tema, estilo at kulay</string>
     <string name="upgrade_benefit_power_controls">Volume lock at rate limiting</string>
     <string name="upgrade_benefit_support">Suportahan ang independiyenteng pag-unlad</string>
+    <string name="upgrade_benefit_equalizer">• Equalizer bawat device (para sa mga music app na sumusuporta sa system equalizer)</string>
     <string name="description_intro_tap_the_button">Magsimula sa pamamagitan ng pagdagdag ng iyong unang device.</string>
     <string name="description_bluetooth_is_disabled">Hindi pinagana ang bluetooth.</string>
     <string name="title_bluetooth_is_off">Naka-off ang Bluetooth</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">I-disable ang optimizations</string>
     <string name="android10_applaunch_hint_title">Pahintulot na ipakita sa ibabaw ng ibang apps</string>
     <string name="android10_applaunch_hint_message">Ang Android 10+ ay nangangailangan ng espesyal na pahintulot upang ilunsad ang mga app, ipakita ang home screen, o gisingin ang screen mula sa background kapag kumonekta. Ibigay ang pahintulot na \"Ipakita sa ibabaw ng ibang apps\".</string>
+    <string name="android10_applaunch_oem_hint">May mga manufacturer na nangangailangan ng pangalawang permiso bukod dito. Kung hindi pa rin gumagana pagkatapos payagan, hanapin ang setting para sa background pop-up o background launch sa mga permiso ng app sa iyong telepono.</string>
     <string name="notification_permission_hint_title">Permiso sa notification</string>
     <string name="notification_permission_hint_message">Bigyan ng notification permission para makita ang mga update sa katayuan kapag nagbabago ng volume.</string>
     <string name="dnd_access_hint_title">Access sa Do Not Disturb</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Obserbahan</string>
     <string name="devices_indicator_disconnect">I-disconnect</string>
     <string name="devices_indicator_limit">Limitado</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Boost</string>
     <string name="devices_indicator_launch">Ilunsad</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Berde</string>
     <string name="widget_config_theme_red_label">Pula</string>
     <string name="widget_config_theme_custom_label">Custom</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Equalizer</string>
+    <string name="eq_bands_label">Mga Band</string>
+    <string name="eq_mini_graph_desc">Mga naka-configure na band ng equalizer</string>
+    <string name="eq_enable_label">Gamitin ang equalizer</string>
+    <string name="eq_disabled_hint">Naka-off, naka-save ang iyong mga setting pero hindi pa ito makakaapekto sa audio.</string>
+    <string name="eq_status_active_label">Aktibo ang EQ para sa %1$s</string>
+    <string name="eq_status_active_multiple_label">Aktibo ang EQ para sa maraming app</string>
+    <string name="eq_status_no_control_label">Na-detect ang %1$s, pero hindi makontrol ng EQ</string>
+    <string name="eq_status_no_control_headline">Na-detect ang %1$s</string>
+    <string name="eq_status_no_control_detail">Hindi makontrol ng EQ ang audio nito</string>
+    <string name="eq_status_multiple_recent_label">Pinakabago: %1$s</string>
+    <string name="eq_status_since_label">Nagsimula ang session %1$s</string>
+    <string name="eq_status_waiting_label">Hinihintay ang suportadong music app, simulan ang pag-playback para marinig ang epekto</string>
+    <string name="eq_status_inactive_label">Hindi aktibo para sa device na ito sa ngayon</string>
+    <string name="eq_status_generic_app_label">isang music app</string>
+    <string name="eq_boost_label">Volume boost</string>
+    <string name="eq_boost_hint">Ginagawang mas malakas ang lahat bukod pa sa mga band. Maaaring mag-distort ang tunog kung sobra ang boost.</string>
+    <string name="eq_unsupported_msg">Walang equalizer na magagamit sa telepong ito.</string>
+    <string name="eq_info_msg">Gumagana sa mga app na sumusuporta sa system equalizer, hal. Spotify o YouTube Music. Naaapektuhan nito ang lahat ng audio mula sa mga app na iyon habang aktibo ang device na ito. Kung may pinapatugtog na, i-restart ang playback para marinig ang pagbabago.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Flat</string>
+    <string name="eq_preset_bass_boost_label">Bass boost</string>
+    <string name="eq_preset_bass_reducer_label">Pagbawas ng Bass</string>
+    <string name="eq_preset_treble_boost_label">Treble boost</string>
+    <string name="eq_preset_vocal_label">Vocal</string>
+    <string name="eq_preset_loudness_label">Loudness</string>
 </resources>

@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">訂閱仍然有效</string>
     <string name="upgrade_screen_sub_still_renewing_message">您的訂閱仍設定為續約。請先在 Google Play 中取消，然後回來購買一次性購買 — 這樣就不會被收費兩次。</string>
+    <string name="upgrade_screen_purchase_check_failed_message">無法透過 Google Play 檢查你的購買項目。請檢查連線並再試一次。</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">付款待處理</string>
+    <string name="upgrade_screen_pending_card_body">Google Play 仍在處理你的付款。付款完成後，Pro 版本會自動解鎖。某些付款方式可能需要一段時間，你不需要做任何其他操作。</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play 發現一筆購買項目的付款仍在處理中。付款完成後，Pro 版本會自動解鎖。</string>
     <string name="upgrades_gplay_already_owned_error_title">已購買</string>
     <string name="upgrades_gplay_already_owned_error_description">使用「還原購買」選項來還原您的購買。如果問題仍然存在，請嘗試清除 Google Play 快取並重新啟動您的裝置。</string>
     <string name="upgrades_gplay_internal_error_title">Google Play 錯誤</string>

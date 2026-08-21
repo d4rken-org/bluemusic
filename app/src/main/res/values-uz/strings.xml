@@ -42,6 +42,8 @@
     <string name="devices_device_config_rename_device_action">Qayta nomlash</string>
     <string name="devices_device_config_enabled_label">Yoqilgan</string>
     <string name="devices_device_config_enabled_desc">Bu qurilma ulanganda munosabat bildirish</string>
+    <string name="devices_device_config_equalizer_desc">Ushbu qurilma uchun ekvalayzer diapazonlari va tovush balandligini oshirishni sozlang. Faqat Android tizim ekvalayzerini qo\'llab-quvvatlaydigan musiqa ilovalarida ishlaydi.</string>
+    <string name="devices_device_config_equalizer_boost_label">Tovushni kuchaytirish: %1$s</string>
     <string name="devices_device_config_section_timing_label">Vaqt</string>
     <string name="devices_device_config_monitoring_duration_label">Monitoring davomiyligi</string>
     <string name="devices_device_config_monitoring_duration_desc">Sozlamalar amalga oshirilgandan keyin, keyingi ovoz o\'zgarishlari bloklanadigan millisoniyalardagi davomiylik.</string>
@@ -318,6 +320,7 @@
     <string name="label_add_device">Qurilma qo\'shish</string>
     <string name="label_just_a_moment_please">Bir lahza, iltimos.</string>
     <string name="label_notification_channel_status">Holat</string>
+    <string name="label_notification_channel_setup">Sozlash talab qilinadi</string>
     <string name="monitor_notification_starting">Ishga tushmoqda…</string>
     <string name="action_set">O\'rnatish</string>
     <string name="action_cancel">Bekor qilish</string>
@@ -336,6 +339,7 @@
     <string name="upgrade_benefit_theme_customization">Mavzu, uslub va rang sozlamalari</string>
     <string name="upgrade_benefit_power_controls">Ovoz qulfi va tezlik cheklash</string>
     <string name="upgrade_benefit_support">Mustaqil rivojlanishni qo\'llab-quvvatlash</string>
+    <string name="upgrade_benefit_equalizer">• Har bir qurilma uchun ekvalayzer (tizim ekvalayzerini qo\'llab-quvvatlaydigan musiqa ilovalari uchun)</string>
     <string name="description_intro_tap_the_button">Birinchi qurilmangizni qo\'shib boshlang.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth o\'chirilgan.</string>
     <string name="title_bluetooth_is_off">Bluetooth o\'chiq</string>
@@ -396,6 +400,7 @@
     <string name="battery_optimization_fix_action">Optimallashtirishlarni o\'chirish</string>
     <string name="android10_applaunch_hint_title">Ilovalar ustida ko\'rsatish ruxsati</string>
     <string name="android10_applaunch_hint_message">Android 10+ ilovalarni ishga tushirish, bosh ekranni ko\'rsatish yoki orqa fondan ekranni uyg\'otish uchun maxsus ruxsatni talab qiladi. \"Boshqa ilovalar ustida ko\'rsatish\" ruxsatini bering.</string>
+    <string name="android10_applaunch_oem_hint">Ba\'zi ishlab chiqaruvchilar bundan tashqari qo\'shimcha ruxsat talab qiladi. Ruxsat berilgandan keyin ham ishlamasa, telefoningizning ilova ruxsatlarida fon rejimida ochilish yoki fon oynasi sozlamasini qidiring.</string>
     <string name="notification_permission_hint_title">Bildirishnoma ruxsati</string>
     <string name="notification_permission_hint_message">Ovoz sozlanayotganda holat yangilanishlarini ko\'rish uchun bildirishnoma ruxsatini bering.</string>
     <string name="dnd_access_hint_title">Bezovta qilmang rejimiga kirish</string>
@@ -430,6 +435,8 @@
     <string name="devices_indicator_observe">Kuzatish</string>
     <string name="devices_indicator_disconnect">Uzilish</string>
     <string name="devices_indicator_limit">Cheklash</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Kuchaytirish</string>
     <string name="devices_indicator_launch">Ishga tushirish</string>
     <string name="devices_indicator_home">Uy</string>
     <string name="devices_indicator_dnd">BQQ</string>
@@ -458,4 +465,32 @@
     <string name="widget_config_theme_green_label">Yashil</string>
     <string name="widget_config_theme_red_label">Qizil</string>
     <string name="widget_config_theme_custom_label">Maxsus</string>
+    <!-- Equalizer -->
+    <string name="eq_bands_label">Diapazonlar</string>
+    <string name="eq_mini_graph_desc">Sozlangan ekvalayzer diapazonlari</string>
+    <string name="eq_enable_label">Ekvalayzerdan foydalanish</string>
+    <string name="eq_disabled_hint">O\'chiq, sozlamalaringiz saqlanadi, lekin hozircha ovozga ta\'sir qilmaydi.</string>
+    <string name="eq_status_active_label">%1$s uchun EQ faol</string>
+    <string name="eq_status_active_multiple_label">Bir nechta ilovalar uchun EQ faol</string>
+    <string name="eq_status_no_control_label">%1$s aniqlandi, ammo EQ boshqaruvni qo\'lga ololmadi</string>
+    <string name="eq_status_no_control_headline">%1$s aniqlandi</string>
+    <string name="eq_status_no_control_detail">EQ uning ovoziga boshqaruvni qo\'lga ololmadi</string>
+    <string name="eq_status_multiple_recent_label">Eng oxirgisi: %1$s</string>
+    <string name="eq_status_since_label">Sessiya %1$s boshlandi</string>
+    <string name="eq_status_waiting_label">Qo\'llab-quvvatlanadigan musiqa ilovasi kutilmoqda, effektni eshitish uchun ijroni boshlang</string>
+    <string name="eq_status_inactive_label">Hozirda ushbu qurilma uchun faol emas</string>
+    <string name="eq_status_generic_app_label">musiqa ilovasi</string>
+    <string name="eq_boost_label">Tovushni kuchaytirish</string>
+    <string name="eq_boost_hint">Diapazonlar ustiga hamma narsani balandroq qiladi. Ko\'p kuchaytirish ovozni buzishi mumkin.</string>
+    <string name="eq_unsupported_msg">Bu telefon biz foydalanishimiz mumkin bo\'lgan ekvalayzerni taklif etmaydi.</string>
+    <string name="eq_info_msg">Tizim ekvalayzerlarini qo\'llab-quvvatlaydigan ilovalarda ishlaydi, masalan Spotify yoki YouTube Music. Ushbu qurilma faol bo\'lganda bu ilovalardagi barcha ovozga ta\'sir qiladi. Agar allaqachon biror narsa ijro etilayotgan bo\'lsa, o\'zgarishni eshitish uchun ijroni qayta boshlang.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Tekis</string>
+    <string name="eq_preset_bass_boost_label">Bosni kuchaytirish</string>
+    <string name="eq_preset_bass_reducer_label">Bosni kamaytirish</string>
+    <string name="eq_preset_treble_boost_label">Yuqori chastotani kuchaytirish</string>
+    <string name="eq_preset_vocal_label">Vokal</string>
+    <string name="eq_preset_loudness_label">Balandlik</string>
 </resources>

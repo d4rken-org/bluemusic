@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Yenidən adlandır</string>
     <string name="devices_device_config_enabled_label">Fəal</string>
     <string name="devices_device_config_enabled_desc">Bağlantı qurulduqda bu cihaza cavab ver</string>
+    <string name="devices_device_config_equalizer_label">Ekvalayzər</string>
+    <string name="devices_device_config_equalizer_desc">Bu cihaz üçün ekvalayzerin frekans bandlarını və səs güçləndiricisini ayarlayın. Yalnız Android sisteminin ekvalayzeri dəstəkləyən musiqi tətbiqləri ilə işləyir.</string>
+    <string name="devices_device_config_equalizer_boost_label">Səs güçləndiricisi: %1$s</string>
     <string name="devices_device_config_section_timing_label">Zamanlama</string>
     <string name="devices_device_config_monitoring_duration_label">İzləmə müddəti</string>
     <string name="devices_device_config_monitoring_duration_desc">Nizamlamalar edildikdən sonra millisaniyə növündə müddət, bu vaxt digər səs səviyyəsi dəyişiklikləri əngəllənər.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Cihaz əlavə et</string>
     <string name="label_just_a_moment_please">Bir dəqiqə, zəhmət olmasa.</string>
     <string name="label_notification_channel_status">Vəziyyət</string>
+    <string name="label_notification_channel_setup">Qurulum tələb olunur</string>
     <string name="monitor_notification_starting">Başladılır…</string>
     <string name="action_set">Tənzimlə</string>
     <string name="action_cancel">İmtina</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Tema, stil və rəng fərdiləşdirməsi</string>
     <string name="upgrade_benefit_power_controls">Səs kilidi və sürət məhdudiyyəti</string>
     <string name="upgrade_benefit_support">Müstəqil inkəşafı dəstəkləyin</string>
+    <string name="upgrade_benefit_equalizer">• Cihaz üzrə ekvalayzər (sistem ekvalayzeri dəstəkləyən musiqi tətbiqləri üçün)</string>
     <string name="description_intro_tap_the_button">İlk cihazınızı əlavə edərək başlayın.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth sıradan çıxarıldı.</string>
     <string name="title_bluetooth_is_off">Bluetooth Söndürülüb</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Optimallaşdırmanı söndür</string>
     <string name="android10_applaunch_hint_title">Digər tətbiqlərin üzərində göstəriş icazəsi</string>
     <string name="android10_applaunch_hint_message">Android 10+ tətbiqləri başlatmaq, ana ekranı göstərmək və ya fonda cihaz qoşulduqda ekranı oyandırmaq üçün xüsusi icazə lazımdır. \"Digər tətbiqlərin üzərində göstəriş\" icazəsini verin.</string>
+    <string name="android10_applaunch_oem_hint">Bəzi istehsalçılar buna əlavə ikinci icazə tələb edirlər. İcazə verdikdən sonra da işləməsə, telefonunuzun tətbiq icazələrində fon başlatma ilə bağlı popup-u və ya parametri axtarın.</string>
     <string name="notification_permission_hint_title">Bildiriş icazəsi</string>
     <string name="notification_permission_hint_message">Səs tənzimləmələri zamanı vəziyyət yeniləmələrini görmək üçün bildiriş icazəsi ver.</string>
     <string name="dnd_access_hint_title">Narahat etməyin rejiminə giriş</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">İzlə</string>
     <string name="devices_indicator_disconnect">Bağlantını kəs</string>
     <string name="devices_indicator_limit">Məhdud</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Güçləndir</string>
     <string name="devices_indicator_launch">Başlat</string>
     <string name="devices_indicator_home">Əsas ekran</string>
     <string name="devices_indicator_dnd">NE</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Yaşıl</string>
     <string name="widget_config_theme_red_label">Qırmızı</string>
     <string name="widget_config_theme_custom_label">Fərdi</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Ekvalayzər</string>
+    <string name="eq_bands_label">Bandalar</string>
+    <string name="eq_mini_graph_desc">Qonfigurə edilmiş ekvalayzerin bandaları</string>
+    <string name="eq_enable_label">Ekvalayzerdən istifadə edin</string>
+    <string name="eq_disabled_hint">Söndürülüb, sizin ayarlarınız saxlanıldı ancaq hələlik səsə təsir etməyəcək.</string>
+    <string name="eq_status_active_label">EQ %1$s üçün fəal</string>
+    <string name="eq_status_active_multiple_label">EQ çoxlu tətbiqlər üçün fəal</string>
+    <string name="eq_status_no_control_label">%1$s aşkarlandı, ancaq EQ idarəni ələ keçirə bilmədi</string>
+    <string name="eq_status_no_control_headline">%1$s aşkarlandı</string>
+    <string name="eq_status_no_control_detail">EQ onun səsinin idarəsinə sahib ola bilmədi</string>
+    <string name="eq_status_multiple_recent_label">Ən son: %1$s</string>
+    <string name="eq_status_since_label">Sessiya %1$s başlandı</string>
+    <string name="eq_status_waiting_label">Dəstəklənən bir musiqi tətbiqini gözləyin, effekti eşitmək üçün oynatmağa başlayın</string>
+    <string name="eq_status_inactive_label">Bu cihaz üçün indi fəal deyil</string>
+    <string name="eq_status_generic_app_label">bir musiqi tətbiqi</string>
+    <string name="eq_boost_label">Səs güçləndiricisi</string>
+    <string name="eq_boost_hint">Bandaların üstündə hər şeyi daha yüksək səslə edir. Həddindən artıq güçləndirmə səsi təhrif edə bilər.</string>
+    <string name="eq_unsupported_msg">Bu telefon istifadə edə biləcəyimiz ekvalayzeri təklif etmir.</string>
+    <string name="eq_info_msg">Sistem ekvalayzerlərini dəstəkləyən tətbiqlərlə işləyir (məsələn Spotify, YouTube Music). Bu cihaz fəal olarkən bu tətbiqlərdən gələn bütün səsə təsir edir. Əgər bir şey artıq oxunursa, dəyişikliyi eşitmək üçün oynatmağı yenidən başlayın.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Düz</string>
+    <string name="eq_preset_bass_boost_label">Bas güçləndiricisi</string>
+    <string name="eq_preset_bass_reducer_label">Bas azaldıcısı</string>
+    <string name="eq_preset_treble_boost_label">Diskant güçləndiricisi</string>
+    <string name="eq_preset_vocal_label">Vokal</string>
+    <string name="eq_preset_loudness_label">Səs gücü</string>
 </resources>

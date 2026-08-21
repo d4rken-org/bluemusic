@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Langganan masih aktif</string>
     <string name="upgrade_screen_sub_still_renewing_message">Langganan anda masih ditetapkan untuk diperbaharui. Batalkan ia di Google Play terlebih dahulu, kemudian kembali untuk membeli pembelian satu kali — dengan cara itu anda tidak akan dikenakan bayaran dua kali.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Kami tidak dapat menyemak pembelian kamu dengan Google Play. Sila semak sambungan kamu dan cuba lagi.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Pembayaran belum selesai</string>
+    <string name="upgrade_screen_pending_card_body">Google Play masih memproses pembayaran kamu. Pro akan dibuka kunci dengan sendirinya sebaik sahaja pembayaran selesai. Sesetengah kaedah pembayaran mengambil masa, kamu tidak perlu melakukan apa-apa lagi.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play menemui pembelian yang pembayarannya masih diproses. Pro akan dibuka kunci dengan sendirinya sebaik sahaja pembayaran selesai.</string>
     <string name="upgrades_gplay_already_owned_error_title">Sudah dibeli</string>
     <string name="upgrades_gplay_already_owned_error_description">Gunakan pilihan \"Pulih pembelian\" untuk memulihkan pembelian anda. Jika masalah berterusan, cuba hapuskan cache Google Play dan mulai semula peranti anda.</string>
     <string name="upgrades_gplay_internal_error_title">Ralat Google Play</string>

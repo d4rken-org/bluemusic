@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">ስም ሐይር</string>
     <string name="devices_device_config_enabled_label">ተችሏል</string>
     <string name="devices_device_config_enabled_desc">መሣሪያው ሲጸራ አስተጵብ እንዲደርገስ</string>
+    <string name="devices_device_config_equalizer_label">ኣዯካሉ</string>
+    <string name="devices_device_config_equalizer_desc">ለዚህ መሣሪያ የኢኩዌላይዘር ባንዶችን እና የድምጽ ማጎልበቻን ያስተካክሉ። Android ስርዓት ኢኩዌላይዘርን ከሚደግፉ የሙዚቃ መተግበሪያዎች ጋር ብቻ ይሰራል።</string>
+    <string name="devices_device_config_equalizer_boost_label">የድምጽ ማጎልበቻ፦ %1$s</string>
     <string name="devices_device_config_section_timing_label">ጊዜዓ</string>
     <string name="devices_device_config_monitoring_duration_label">የቀቴር ደርጃት</string>
     <string name="devices_device_config_monitoring_duration_desc">ምመሳፚዎች ሲገቡ መስተካኪያ ደርጃት በሚሌሰቆበት። ተጨማሪ ሉላ ተጨማሪዎች ይየዚለቡ።</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">መሣሪያ አክብቢ</string>
     <string name="label_just_a_moment_please">ንዘት ይበዐዘብ።</string>
     <string name="label_notification_channel_status">ሁኔተት</string>
+    <string name="label_notification_channel_setup">ማዋቀር ያስፈልጋል</string>
     <string name="monitor_notification_starting">ገና ጀምሮ…</string>
     <string name="action_set">አድርግ</string>
     <string name="action_cancel">ሰርዝ</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">ጭብጥ፣ ስልት እና የቀለም ብጁ ቅንብር</string>
     <string name="upgrade_benefit_power_controls">የድምፅ ቁልፍ እና የፍጥነት ገደብ</string>
     <string name="upgrade_benefit_support">ገለልተኛ ልማትን ይደግፉ</string>
+    <string name="upgrade_benefit_equalizer">• በመሣሪያ ደረጃ ኢኩዌላይዘር (ስርዓት ኢኩዌላይዘር ድጋፍ ላላቸው የሙዚቃ መተግበሪያዎች)</string>
     <string name="description_intro_tap_the_button">መረሻትዎን መሣሪያ አክብቢባብ ዘርኵ።</string>
     <string name="description_bluetooth_is_disabled">ብሉቱዝ ጠፍቷል.</string>
     <string name="title_bluetooth_is_off">Bluetooth ይዘጋል</string>
@@ -397,6 +402,7 @@
     <string name="battery_optimization_fix_action">አመ፥ት አታካል</string>
     <string name="android10_applaunch_hint_title">መተግበሪያ ላይ ጣቢያ ማሳያ ፍቃድ</string>
     <string name="android10_applaunch_hint_message">አንድሮይድ 10+ ወይም በላይ መተግበሪያ ለጀመር፣ መነሻ ስክሪን ለማሳየት፣ ወይም ተገናኙ በሚሆንበት ጊዜ ስክሪን ከስርዓተ ኃላፍ ለመነቅስ ልዩ ፍቃድ ይፈልጋል። \"መተግበሪያ ላይ ጣቢያ ማሳያ\" ፍቃድ ይስጡ።</string>
+    <string name="android10_applaunch_oem_hint">አንዳንድ አምራቾች ከዚህ በተጨማሪ ሁለተኛ ፈቃድ ይፈልጋሉ። ከሰጡ በኋላም የማይሰራ ከሆነ፣ በስልክዎ የመተግበሪያ ፈቃዶች ውስጥ ስለ ጀርባ ብቅ ባይ ወይም ስለ ጀርባ ማስጀመሪያ ቅንብር ይመልከቱ።</string>
     <string name="notification_permission_hint_title">የክርዘት እዋዀ</string>
     <string name="notification_permission_hint_message">ድምጣዎችን በሚካካልበት ሁኔተት ለማወቀት የክርዘት እዋዀ ክርድ ይስጀዘ።</string>
     <string name="dnd_access_hint_title">አትረብሽ ፍቃድ</string>
@@ -431,6 +437,8 @@
     <string name="devices_indicator_observe">ታይ</string>
     <string name="devices_indicator_disconnect">ተለይ</string>
     <string name="devices_indicator_limit">ወሰን</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">ማጎልበቻ</string>
     <string name="devices_indicator_launch">ዘርድ</string>
     <string name="devices_indicator_home">የምር በራ</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -459,4 +467,33 @@
     <string name="widget_config_theme_green_label">አረንጋዴ</string>
     <string name="widget_config_theme_red_label">ቀይ</string>
     <string name="widget_config_theme_custom_label">ብጁ</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">ኣዯካሉ</string>
+    <string name="eq_bands_label">ባንዶች</string>
+    <string name="eq_mini_graph_desc">የተዋቀሩ የኢኩዌላይዘር ባንዶች</string>
+    <string name="eq_enable_label">ኢኩዌላይዘርን ይጠቀሙ</string>
+    <string name="eq_disabled_hint">ጠፍቷል፣ ቅንብሮችዎ ተቀምጠዋል ግን እስካሁን በድምጽ ላይ ተጽዕኖ አያሳድሩም።</string>
+    <string name="eq_status_active_label">ኢኩዌላይዘር ለ%1$s ገባሪ ነው</string>
+    <string name="eq_status_active_multiple_label">ኢኩዌላይዘር ለበርካታ መተግበሪያዎች ገባሪ ነው</string>
+    <string name="eq_status_no_control_label">%1$s ተገኝቷል፣ ነገር ግን ኢኩዌላይዘር ቁጥጥር ማድረግ አልቻለም</string>
+    <string name="eq_status_no_control_headline">%1$s ተገኝቷል</string>
+    <string name="eq_status_no_control_detail">ኢኩዌላይዘር የድምጹን ቁጥጥር ማድረግ አልቻለም</string>
+    <string name="eq_status_multiple_recent_label">የቅርብ ጊዜ፦ %1$s</string>
+    <string name="eq_status_since_label">ክፍለ-ጊዜ የተጀመረው %1$s</string>
+    <string name="eq_status_waiting_label">የሚደገፍ የሙዚቃ መተግበሪያ በመጠበቅ ላይ፣ ውጤቱን ለመስማት ማጫወት ይጀምሩ</string>
+    <string name="eq_status_inactive_label">አሁን ለዚህ መሣሪያ ገባሪ አይደለም</string>
+    <string name="eq_status_generic_app_label">የሙዚቃ መተግበሪያ</string>
+    <string name="eq_boost_label">የድምጽ ማጎልበቻ</string>
+    <string name="eq_boost_hint">ከባንዶቹ በተጨማሪ ሁሉንም ነገር ድምጹን ከፍ ያደርገዋል። ብዙ ማጎልበት ድምጹን ሊያዛባ ይችላል።</string>
+    <string name="eq_unsupported_msg">ይህ ስልክ ልንጠቀምበት የምንችል ኢኩዌላይዘር አያቀርብም።</string>
+    <string name="eq_info_msg">ስርዓት ኢኩዌላይዘሮችን ከሚደግፉ መተግበሪያዎች ጋር ይሰራል፣ ለምሳሌ Spotify ወይም YouTube Music። ይህ መሣሪያ ገባሪ ሆኖ ሳለ ከእነዚያ መተግበሪያዎች የሚመጣውን ድምጽ ሁሉ ይነካል። ነገር አስቀድሞ እየተጫወተ ከሆነ፣ ለውጡን ለመስማት ማጫወቱን እንደገና ይጀምሩ።</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">ጠፍጣፋ</string>
+    <string name="eq_preset_bass_boost_label">የባስ ማጎልበቻ</string>
+    <string name="eq_preset_bass_reducer_label">የባስ መቀነሻ</string>
+    <string name="eq_preset_treble_boost_label">የትሬብል ማጎልበቻ</string>
+    <string name="eq_preset_vocal_label">ቮካል</string>
+    <string name="eq_preset_loudness_label">ላውድነስ</string>
 </resources>

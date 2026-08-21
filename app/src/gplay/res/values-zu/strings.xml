@@ -41,6 +41,10 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">I-subscription isaphila</string>
     <string name="upgrade_screen_sub_still_renewing_message">I-subscription yakho isashintshile ngokwazisela iyabuya. Isikisele ku-Google Play kuqala, khona-ke buya ukuthenga okuthengwa kanye — ngale ndlela ngeke ubhalwe kabili.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Okukhokha kulindile</string>
+    <string name="upgrade_screen_pending_card_body">Google Play ibakhela okokukhokha okungenamanje. I-Pro izivula yodwa uma okokukhokha sidlula. Eminye indlela yokukhokha ithatha isikhathi, akukho nokuningi okudingeka ukwenzele.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play kutholakele itengo lapho okokukhokha kusabakhela. I-Pro izivula yodwa uma okokukhokha sidlula.</string>
     <string name="upgrades_gplay_already_owned_error_title">Sekuthengile</string>
     <string name="upgrades_gplay_already_owned_error_description">Sebenzisa inketho \"Lusulula ukuthenga\" ukubuya kwazisela ukuthenga kwakho. Uma inkinga ihlala ikhona, zama okusula i-cache ye-Google Play nokuwutshela isishintshi sakho.</string>
     <string name="upgrades_gplay_internal_error_title">Iphutha le-Google Play</string>

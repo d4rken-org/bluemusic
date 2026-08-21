@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Gi nytt navn</string>
     <string name="devices_device_config_enabled_label">Aktivert</string>
     <string name="devices_device_config_enabled_desc">Reager på denne enheten når den kobles til</string>
+    <string name="devices_device_config_equalizer_label">Equalizer</string>
+    <string name="devices_device_config_equalizer_desc">Juster equalizerbånd og volumforsterkning for denne enheten. Fungerer bare med musikkapper som støtter Androids systemequalizer.</string>
+    <string name="devices_device_config_equalizer_boost_label">Volumforsterkning: %1$s</string>
     <string name="devices_device_config_section_timing_label">Timing</string>
     <string name="devices_device_config_monitoring_duration_label">Overvåker varighet</string>
     <string name="devices_device_config_monitoring_duration_desc">En varighet i millisekunder, etter at justeringer er gjort, der eventuelle videre volumendringer vil bli blokkert.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Legg til enhet</string>
     <string name="label_just_a_moment_please">Bare et øyeblikk.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="label_notification_channel_setup">Oppsett kreves</string>
     <string name="monitor_notification_starting">Starter opp…</string>
     <string name="action_set">Sett</string>
     <string name="action_cancel">Avbryt</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Tilpasning av tema, stil og farge</string>
     <string name="upgrade_benefit_power_controls">Volumlås og hastighetsbegrensning</string>
     <string name="upgrade_benefit_support">Støtt uavhengig utvikling</string>
+    <string name="upgrade_benefit_equalizer">• Equalizer per enhet (for musikkapper med støtte for systemequalizer)</string>
     <string name="description_intro_tap_the_button">Start ved å legge til din første enhet.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth er deaktivert.</string>
     <string name="title_bluetooth_is_off">Bluetooth er av</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Deaktiver optimaliseringer</string>
     <string name="android10_applaunch_hint_title">Tillatelse for å vise over apper</string>
     <string name="android10_applaunch_hint_message">Android 10+ trenger en spesiell tillatelse for å starte apper, vise startskjermen eller vekke skjermen fra bakgrunnen når en enhet kobles til. Gi tillatelsen \"Vis over andre apper\".</string>
+    <string name="android10_applaunch_oem_hint">Noen produsenter krever en ekstra tillatelse i tillegg til denne. Hvis det fortsatt ikke fungerer etter at du har gitt tillatelse, se etter en innstilling for sprettoppvinduer eller oppstart i bakgrunnen blant apptillatelsene på telefonen din.</string>
     <string name="notification_permission_hint_title">Varslingstillatelse</string>
     <string name="notification_permission_hint_message">Gi varslingstillatelse for å se statusoppdateringer når volum justeres.</string>
     <string name="dnd_access_hint_title">Ikke forstyrr-tilgang</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Observer</string>
     <string name="devices_indicator_disconnect">Koble fra</string>
     <string name="devices_indicator_limit">Begrens</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Forsterkning</string>
     <string name="devices_indicator_launch">Start</string>
     <string name="devices_indicator_home">Hjem</string>
     <string name="devices_indicator_dnd">IF</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Grønn</string>
     <string name="widget_config_theme_red_label">Rød</string>
     <string name="widget_config_theme_custom_label">Egendefinert</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Equalizer</string>
+    <string name="eq_bands_label">Bånd</string>
+    <string name="eq_mini_graph_desc">Konfigurerte equalizerbånd</string>
+    <string name="eq_enable_label">Bruk equalizeren</string>
+    <string name="eq_disabled_hint">Av, innstillingene dine er lagret, men påvirker ikke lyden ennå.</string>
+    <string name="eq_status_active_label">EQ aktiv for %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ aktiv for flere apper</string>
+    <string name="eq_status_no_control_label">%1$s ble oppdaget, men EQ-en kunne ikke ta kontroll</string>
+    <string name="eq_status_no_control_headline">%1$s ble oppdaget</string>
+    <string name="eq_status_no_control_detail">EQ-en kunne ikke ta kontroll over lyden</string>
+    <string name="eq_status_multiple_recent_label">Sist brukt: %1$s</string>
+    <string name="eq_status_since_label">Økten startet %1$s</string>
+    <string name="eq_status_waiting_label">Venter på en støttet musikkapp, start avspilling for å høre effekten</string>
+    <string name="eq_status_inactive_label">Ikke aktiv for denne enheten akkurat nå</string>
+    <string name="eq_status_generic_app_label">en musikkapp</string>
+    <string name="eq_boost_label">Volumforsterkning</string>
+    <string name="eq_boost_hint">Gjør alt høyere i tillegg til båndene. Mye forsterkning kan forvrenge lyden.</string>
+    <string name="eq_unsupported_msg">Denne telefonen tilbyr ikke en equalizer vi kan bruke.</string>
+    <string name="eq_info_msg">Fungerer med apper som støtter systemequalizere, for eksempel Spotify eller YouTube Music. Den påvirker all lyd fra disse appene mens denne enheten er aktiv. Hvis noe allerede spilles av, må du starte avspillingen på nytt for å høre endringen.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Flat</string>
+    <string name="eq_preset_bass_boost_label">Bassforsterkning</string>
+    <string name="eq_preset_bass_reducer_label">Bassreduksjon</string>
+    <string name="eq_preset_treble_boost_label">Diskantforsterkning</string>
+    <string name="eq_preset_vocal_label">Vokal</string>
+    <string name="eq_preset_loudness_label">Loudness</string>
 </resources>

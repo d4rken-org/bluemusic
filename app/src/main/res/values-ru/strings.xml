@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Переименовать</string>
     <string name="devices_device_config_enabled_label">Включено</string>
     <string name="devices_device_config_enabled_desc">Реагировать на это устройство при подключении</string>
+    <string name="devices_device_config_equalizer_label">Эквалайзер</string>
+    <string name="devices_device_config_equalizer_desc">Настрой полосы эквалайзера и усиление громкости для этого устройства. Работает только с музыкальными приложениями, поддерживающими системный эквалайзер Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Усиление громкости: %1$s</string>
     <string name="devices_device_config_section_timing_label">Тайминги</string>
     <string name="devices_device_config_monitoring_duration_label">Длительность мониторинга</string>
     <string name="devices_device_config_monitoring_duration_desc">Продолжительность в миллисекундах после внесения изменений, во время которой будут блокироваться любые дальнейшие изменения громкости.</string>
@@ -326,6 +329,7 @@
     <string name="label_add_device">Добавить устройство</string>
     <string name="label_just_a_moment_please">Минуточку, пожалуйста.</string>
     <string name="label_notification_channel_status">Состояние</string>
+    <string name="label_notification_channel_setup">Требуется настройка</string>
     <string name="monitor_notification_starting">Запуск…</string>
     <string name="action_set">Установка</string>
     <string name="action_cancel">Отмена</string>
@@ -344,6 +348,7 @@
     <string name="upgrade_benefit_theme_customization">Настройка темы, стиля и цвета</string>
     <string name="upgrade_benefit_power_controls">Блокировка громкости и ограничение скорости</string>
     <string name="upgrade_benefit_support">Поддержать независимую разработку</string>
+    <string name="upgrade_benefit_equalizer">• Эквалайзер для каждого устройства (для музыкальных приложений с поддержкой системного эквалайзера)</string>
     <string name="description_intro_tap_the_button">Начните с добавления первого устройства.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth отключен.</string>
     <string name="title_bluetooth_is_off">Bluetooth выключен</string>
@@ -406,6 +411,7 @@
     <string name="battery_optimization_fix_action">Отключить оптимизацию</string>
     <string name="android10_applaunch_hint_title">Разрешение «Поверх других приложений»</string>
     <string name="android10_applaunch_hint_message">Android 10+ требует специального разрешения для запуска приложений, отображения главного экрана или пробуждения экрана из фона при подключении. Выдай разрешение «Поверх других приложений».</string>
+    <string name="android10_applaunch_oem_hint">Некоторым производителям требуется ещё одно разрешение в дополнение к этому. Если после его предоставления всё ещё не работает, поищи в настройках приложений телефона параметр всплывающих окон или запуска в фоне.</string>
     <string name="notification_permission_hint_title">Разрешение на уведомления</string>
     <string name="notification_permission_hint_message">Предоставь разрешение на уведомления, чтобы видеть обновления статуса при настройке громкости.</string>
     <string name="dnd_access_hint_title">Доступ к режиму «Не беспокоить»</string>
@@ -440,6 +446,8 @@
     <string name="devices_indicator_observe">Набл</string>
     <string name="devices_indicator_disconnect">Откл</string>
     <string name="devices_indicator_limit">Огр</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Усиление</string>
     <string name="devices_indicator_launch">Зап</string>
     <string name="devices_indicator_home">Дом</string>
     <string name="devices_indicator_dnd">НБ</string>
@@ -468,4 +476,33 @@
     <string name="widget_config_theme_green_label">Зелёный</string>
     <string name="widget_config_theme_red_label">Красный</string>
     <string name="widget_config_theme_custom_label">Пользовательский</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Эквалайзер</string>
+    <string name="eq_bands_label">Полосы</string>
+    <string name="eq_mini_graph_desc">Настроенные полосы эквалайзера</string>
+    <string name="eq_enable_label">Использовать эквалайзер</string>
+    <string name="eq_disabled_hint">Выключено: настройки сохранены, но пока не влияют на звук.</string>
+    <string name="eq_status_active_label">EQ активен для %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ активен для нескольких приложений</string>
+    <string name="eq_status_no_control_label">%1$s обнаружено, но EQ не смог взять управление</string>
+    <string name="eq_status_no_control_headline">%1$s обнаружено</string>
+    <string name="eq_status_no_control_detail">EQ не смог взять управление звуком</string>
+    <string name="eq_status_multiple_recent_label">Последнее: %1$s</string>
+    <string name="eq_status_since_label">Сеанс начат %1$s</string>
+    <string name="eq_status_waiting_label">Ожидание поддерживаемого музыкального приложения. Запусти воспроизведение, чтобы услышать эффект</string>
+    <string name="eq_status_inactive_label">Сейчас не активен для этого устройства</string>
+    <string name="eq_status_generic_app_label">музыкальное приложение</string>
+    <string name="eq_boost_label">Усиление громкости</string>
+    <string name="eq_boost_hint">Делает всё громче поверх настроек полос. Сильное усиление может искажать звук.</string>
+    <string name="eq_unsupported_msg">Этот телефон не предоставляет эквалайзер, который можно использовать.</string>
+    <string name="eq_info_msg">Работает с приложениями, поддерживающими системные эквалайзеры, например Spotify или YouTube Music. Влияет на весь звук из этих приложений, пока это устройство активно. Если что-то уже играет, перезапусти воспроизведение, чтобы услышать изменения.</string>
+    <string name="eq_frequency_hz_label">%1$s Гц</string>
+    <string name="eq_frequency_khz_label">%1$s кГц</string>
+    <string name="eq_gain_db_label">%1$s дБ</string>
+    <string name="eq_preset_flat_label">Плоский</string>
+    <string name="eq_preset_bass_boost_label">Усиление баса</string>
+    <string name="eq_preset_bass_reducer_label">Снижение баса</string>
+    <string name="eq_preset_treble_boost_label">Усиление высоких частот</string>
+    <string name="eq_preset_vocal_label">Вокал</string>
+    <string name="eq_preset_loudness_label">Громкость</string>
 </resources>

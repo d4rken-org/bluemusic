@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">सदस्यता अजूनही सक्रिय आहे</string>
     <string name="upgrade_screen_sub_still_renewing_message">आपली सदस्यता अजूनही नवीन करण्यासाठी सेट आहे. प्रथम ते Google Play मध्ये रद्द करा, नंतर एकवेळी खरेदी खरेदी करण्यासाठी परत या — अशा प्रकारे आपल्याला दोनदा शुल्क लागणार नाही.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">आम्ही Google Play सह तुमच्या खरेदी तपासू शकलो नाही. कृपया तुमचे कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">पेमेंट प्रलंबित</string>
+    <string name="upgrade_screen_pending_card_body">Google Play अजूनही तुमचे पेमेंट प्रक्रिया करत आहे. पेमेंट पूर्ण झाल्यावर Pro आपोआप अनलॉक होईल. काही पेमेंट पद्धतींना थोडा वेळ लागतो, तुम्हाला आणखी काही करण्याची गरज नाही.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play ला अशी खरेदी आढळली जिचे पेमेंट अजूनही प्रक्रिया होत आहे. पेमेंट पूर्ण झाल्यावर Pro आपोआप अनलॉक होईल.</string>
     <string name="upgrades_gplay_already_owned_error_title">आधीच खरेदी केली</string>
     <string name="upgrades_gplay_already_owned_error_description">आपली खरेदी पुनर्संचयित करण्यासाठी \"खरेदी पुनर्संचयित करा\" पर्याय वापरा. समस्या कायम राहिल्यास, Google Play कॅश साफ करण्याचा प्रयत्न करा आणि आपले डिव्हाइस पुनरारंभ करा.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play त्रुटी</string>

@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">സബ്സ്ക്രിപ്ഷൻ ഇപ്പോഴും സജീവമാണ്</string>
     <string name="upgrade_screen_sub_still_renewing_message">നിങ്ങളുടെ സബ്സ്ക്രിപ്ഷൻ പുതുക്കാൻ സജ്ജമായിരിക്കുന്നു. Google Play-ൽ ആദ്യം അത് റദ്ദ് ചെയ്യുക, പിന്നെ ഒറിക്കലുളള വാങ്ങലിനായി തിരികെ വരിക — ഈ വിധത്തിൽ നിങ്ങൾക്ക് രണ്ടുതവണ ചാർജ് ചെയ്യപ്പെടുകയില്ല.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Google Play-യിൽ നിങ്ങളുടെ വാങ്ങലുകൾ പരിശോധിക്കാൻ ഞങ്ങൾക്ക് കഴിഞ്ഞില്ല. നിങ്ങളുടെ കണക്ഷൻ പരിശോധിച്ച് വീണ്ടും ശ്രമിക്കുക.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">പേയ്‌മെന്റ് തീർപ്പുകൽപ്പിക്കാത്തത്</string>
+    <string name="upgrade_screen_pending_card_body">Google Play ഇപ്പോഴും നിങ്ങളുടെ പേയ്‌മെന്റ് പ്രോസസ്സ് ചെയ്യുകയാണ്. പേയ്‌മെന്റ് പൂർത്തിയാകുമ്പോൾ Pro സ്വയമേവ അൺലോക്ക് ആകും. ചില പേയ്‌മെന്റ് രീതികൾക്ക് അൽപ്പം സമയമെടുക്കും, നിങ്ങൾ വേറൊന്നും ചെയ്യേണ്ടതില്ല.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play പേയ്‌മെന്റ് ഇപ്പോഴും പ്രോസസ്സ് ചെയ്തുകൊണ്ടിരിക്കുന്ന ഒരു വാങ്ങൽ കണ്ടെത്തി. പേയ്‌മെന്റ് പൂർത്തിയാകുമ്പോൾ Pro സ്വയമേവ അൺലോക്ക് ആകും.</string>
     <string name="upgrades_gplay_already_owned_error_title">ഇതിനകം വാങ്ങിയിരിക്കുന്നു</string>
     <string name="upgrades_gplay_already_owned_error_description">നിങ്ങളുടെ വാങ്ങൽ പുനരുദ്ധരിക്കാൻ \"വാങ്ങൽ പുനരുദ്ധരിക്കുക\" ഓപ്ഷൻ ഉപയോഗിക്കുക. പ്രശ്നം തുടരുന്നുണ്ടെങ്കിൽ, Google Play കാഷെ നീക്കം ചെയ്യുകയോ നിങ്ങളുടെ ഡിവൈസ് പുനരാരംഭിക്കുകയോ ചെയ്തു നോക്കുക.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play പിശക്</string>

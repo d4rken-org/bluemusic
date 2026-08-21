@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Naročnina je še vedno aktivna</string>
     <string name="upgrade_screen_sub_still_renewing_message">Tvoja naročnina je še vedno nastavljena za obnovitev. Najprej jo prekliči v Google Play, nato se vrni in kupi enkratni nakup — na ta način ne boš zaračunan dvakrat.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Tvojih nakupov nismo mogli preveriti pri Google Play. Preveri povezavo in poskusi znova.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Plačilo v obdelavi</string>
+    <string name="upgrade_screen_pending_card_body">Google Play še vedno obdeluje tvoje plačilo. Pro se odklene samodejno, ko bo plačilo izvedeno. Nekateri načini plačila trajajo dlje, ni ti treba storiti ničesar drugega.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play je našel nakup, katerega plačilo se še obdeluje. Pro se odklene samodejno, ko bo plačilo izvedeno.</string>
     <string name="upgrades_gplay_already_owned_error_title">Že kupljeno</string>
     <string name="upgrades_gplay_already_owned_error_description">Uporabi možnost »Obnovi nakup«, da obnoviš svoj nakup. Če se težava nadaljuje, poskusi počistiti predpomnilnik Google Play in ponovno zagnati napravo.</string>
     <string name="upgrades_gplay_internal_error_title">Napaka Google Play</string>

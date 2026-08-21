@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">重命名</string>
     <string name="devices_device_config_enabled_label">已啟用</string>
     <string name="devices_device_config_enabled_desc">連接時回應此裝置</string>
+    <string name="devices_device_config_equalizer_label">均衡器</string>
+    <string name="devices_device_config_equalizer_desc">調整此裝置的均衡器頻段和音量增強。只適用於支援 Android 系統均衡器的音樂應用程式。</string>
+    <string name="devices_device_config_equalizer_boost_label">音量增強：%1$s</string>
     <string name="devices_device_config_section_timing_label">時間設定</string>
     <string name="devices_device_config_monitoring_duration_label">監測持續時間</string>
     <string name="devices_device_config_monitoring_duration_desc">完成調整後，阻止進一步音量變化的持續時間（毫秒）。</string>
@@ -314,6 +317,7 @@
     <string name="label_add_device">新增裝置</string>
     <string name="label_just_a_moment_please">請稍候。</string>
     <string name="label_notification_channel_status">狀態</string>
+    <string name="label_notification_channel_setup">需要設定</string>
     <string name="monitor_notification_starting">正在啟動…</string>
     <string name="action_set">設定</string>
     <string name="action_cancel">取消</string>
@@ -332,6 +336,7 @@
     <string name="upgrade_benefit_theme_customization">主題、樣式及顏色自訂</string>
     <string name="upgrade_benefit_power_controls">音量鎖定及速率限制</string>
     <string name="upgrade_benefit_support">支持獨立開發</string>
+    <string name="upgrade_benefit_equalizer">• 每部裝置的均衡器（適用於支援系統均衡器的音樂應用程式）</string>
     <string name="description_intro_tap_the_button">從新增你的第一個裝置開始。</string>
     <string name="description_bluetooth_is_disabled">藍牙已停用.</string>
     <string name="title_bluetooth_is_off">藍牙已關閉</string>
@@ -391,6 +396,7 @@
     <string name="battery_optimization_fix_action">關閉游淡優化</string>
     <string name="android10_applaunch_hint_title">在其他應用程式上層顯示權限</string>
     <string name="android10_applaunch_hint_message">Android 10 以上版本需要特殊權限才能啟動應用程式、顯示首頁或在背景連接時喚醒螢幕。請授予「在其他應用程式上層顯示」權限。</string>
+    <string name="android10_applaunch_oem_hint">某些製造商需要另一項權限。如果授予後仍然無法運作，請在手機的應用程式權限中尋找背景彈出視窗或背景啟動設定。</string>
     <string name="notification_permission_hint_title">通知權限</string>
     <string name="notification_permission_hint_message">授予通知權限，以在調整音量時查看狀態更新。</string>
     <string name="dnd_access_hint_title">請勿打擾存取權</string>
@@ -425,6 +431,8 @@
     <string name="devices_indicator_observe">監測</string>
     <string name="devices_indicator_disconnect">斷開</string>
     <string name="devices_indicator_limit">限制</string>
+    <string name="devices_indicator_eq">均衡器</string>
+    <string name="devices_indicator_boost">增強</string>
     <string name="devices_indicator_launch">啟動</string>
     <string name="devices_indicator_home">主畫面</string>
     <string name="devices_indicator_dnd">勿打擾</string>
@@ -453,4 +461,33 @@
     <string name="widget_config_theme_green_label">綠色</string>
     <string name="widget_config_theme_red_label">紅色</string>
     <string name="widget_config_theme_custom_label">自訂</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">均衡器</string>
+    <string name="eq_bands_label">頻段</string>
+    <string name="eq_mini_graph_desc">已設定的均衡器頻段</string>
+    <string name="eq_enable_label">使用均衡器</string>
+    <string name="eq_disabled_hint">關閉，你的設定已儲存但尚未影響音訊。</string>
+    <string name="eq_status_active_label">均衡器已啟動，作用於 %1$s</string>
+    <string name="eq_status_active_multiple_label">均衡器已啟動，作用於多個應用程式</string>
+    <string name="eq_status_no_control_label">偵測到 %1$s，但均衡器無法取得控制權</string>
+    <string name="eq_status_no_control_headline">偵測到 %1$s</string>
+    <string name="eq_status_no_control_detail">均衡器無法取得其音訊的控制權</string>
+    <string name="eq_status_multiple_recent_label">最近使用：%1$s</string>
+    <string name="eq_status_since_label">工作階段開始於 %1$s</string>
+    <string name="eq_status_waiting_label">等待支援的音樂應用程式，開始播放以聽取效果</string>
+    <string name="eq_status_inactive_label">目前對此裝置未啟動</string>
+    <string name="eq_status_generic_app_label">一個音樂應用程式</string>
+    <string name="eq_boost_label">音量增強</string>
+    <string name="eq_boost_hint">除了頻段調整，還能使一切變得更響。過多的增強會使聲音失真。</string>
+    <string name="eq_unsupported_msg">此手機沒有提供我們可以使用的均衡器。</string>
+    <string name="eq_info_msg">適用於支援系統均衡器的應用程式，例如 Spotify 或 YouTube Music。當此裝置啟動時，會影響這些應用程式的所有音訊。如果已有內容正在播放，請重新啟動播放以聽取變化。</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">平坦</string>
+    <string name="eq_preset_bass_boost_label">低音增強</string>
+    <string name="eq_preset_bass_reducer_label">低音減弱</string>
+    <string name="eq_preset_treble_boost_label">高音增強</string>
+    <string name="eq_preset_vocal_label">人聲</string>
+    <string name="eq_preset_loudness_label">響度</string>
 </resources>

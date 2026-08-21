@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Az előfizetés még aktív</string>
     <string name="upgrade_screen_sub_still_renewing_message">Az előfizetésed még megújulásra van állítva. Először mondd le a Google Playben, majd gyere vissza, hogy megvedd az egyszeri vásárlást — így nem terhelnek meg kétszer.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">A vásárlásaidat nem tudtuk ellenőrizni a Google Play-vel. Kérlek, ellenőrizd az internetkapcsolatod, és próbáld újra.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Fizetés függőben</string>
+    <string name="upgrade_screen_pending_card_body">A Google Play még feldolgozza a fizetésed. A Pro verzió magától feloldódik, amint a fizetés megtörténik. Egyes fizetési módok időt igényelnek, nincs más teendőd.</string>
+    <string name="upgrade_screen_pending_dialog_message">A Google Play talált egy vásárlást, amelyiknek a fizetése még feldolgozás alatt van. A Pro verzió magától feloldódik, amint a fizetés megtörténik.</string>
     <string name="upgrades_gplay_already_owned_error_title">Már megvásárolva</string>
     <string name="upgrades_gplay_already_owned_error_description">Használd a „Vásárlás visszaállítása” opciót a vásárlásod visszaállításához. Ha a probléma továbbra is fennáll, próbáld törölni a Google Play gyorsítótárát, és indítsd újra a készüléked.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play hiba</string>

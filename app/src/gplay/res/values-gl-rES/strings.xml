@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Subscrición aínda activa</string>
     <string name="upgrade_screen_sub_still_renewing_message">A túa subscrición aínda está configurada para renovarse. Cancélaa primeiro en Google Play e despois volve para mercar a compra única — así non se che cobrará dúas veces.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Non puidemos comprobar as túas compras con Google Play. Comproba a túa conexión e téntao de novo.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Pagamento pendente</string>
+    <string name="upgrade_screen_pending_card_body">Google Play aínda está a procesar o teu pagamento. Pro desbloquéase automaticamente en canto se complete o pagamento. Algúns métodos de pagamento tardan un tempo, non tes que facer nada máis.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play atopou unha compra cuxo pagamento aínda se está a procesar. Pro desbloquéase automaticamente en canto se complete o pagamento.</string>
     <string name="upgrades_gplay_already_owned_error_title">Xa mercado</string>
     <string name="upgrades_gplay_already_owned_error_description">Usa a opción \"Restaurar compra\" para restaurar a túa compra. Se o problema persiste, tenta limpar a caché de Google Play e reiniciar o teu dispositivo.</string>
     <string name="upgrades_gplay_internal_error_title">Erro de Google Play</string>

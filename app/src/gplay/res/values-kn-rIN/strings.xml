@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">ಸದಸ್ಯತ್ವ ಇನ್ನೂ ಸಕ್ರಿಯವಾಗಿದೆ</string>
     <string name="upgrade_screen_sub_still_renewing_message">ನಿಮ್ಮ ಸದಸ್ಯತ್ವ ನವೀಕರಣ ಮಾಡಲು ಇನ್ನೂ ಹೊಂದಿಸಲಾಗಿದೆ. ಇದನ್ನು ಮೊದಲು Google Play ನಲ್ಲಿ ರದ್ದುಗೊಳಿಸಿ, ನಂತರ ಏಕಕಾಲೀನ ಖರೀದಿಗಾಗಿ ಹಿಂತಿರುಗಿ — ಆ ರೀತಿಯಲ್ಲಿ ನಿಮಗೆ ಎರಡು ಬಾರಿ ಚಾರ್ಜ್ ಆಗುವುದಿಲ್ಲ.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">ನಾವು ಗೂಗಲ್ ಪ್ಲೇ ಜೊತೆ ನಿಮ್ಮ ಖರೀದಿಗಳನ್ನು ಪರಿಶೀಲಿಸಲಾಗಲಿಲ್ಲ. ದಯಕೊರೆ ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">ಪಾವತಿ ಬಾಕಿ</string>
+    <string name="upgrade_screen_pending_card_body">ಗೂಗಲ್ ಪ್ಲೇ ನಿಮ್ಮ ಪಾವತಿಯನ್ನು ಇನ್ನೂ ಪ್ರಕ್ರಿಯೆ ಮಾಡುತ್ತಿದೆ. ಪಾವತಿ ನಡೆದ ನಂತರ ಪ್ರೋ ಸ್ವಯಂ ಅನ್ಲಾಕ್ ಆಗುತ್ತದೆ. ಕೆಲವು ಪಾವತಿ ವಿಧಾನಗಳು ಸಮಯ ತೆಗೆದುಕೊಳ್ಳುತ್ತವೆ, ನೀವು ಮಾಡಬೇಕಾದ ಬೇರೆ ಯಾವುದೂ ಇಲ್ಲ.</string>
+    <string name="upgrade_screen_pending_dialog_message">ಗೂಗಲ್ ಪ್ಲೇ ಒಂದು ಖರೀದಿ ಕಂಡುಹಿಡಿದಿದೆ ಅದರ ಪಾವತಿ ಇನ್ನೂ ಪ್ರಕ್ರಿಯೆ ಮಾಡಲಾಗುತ್ತಿದೆ. ಪಾವತಿ ನಡೆದ ನಂತರ ಪ್ರೋ ಸ್ವಯಂ ಅನ್ಲಾಕ್ ಆಗುತ್ತದೆ.</string>
     <string name="upgrades_gplay_already_owned_error_title">ಈಗಾಗಲೇ ಖರೀದಿಸಲಾಗಿದೆ</string>
     <string name="upgrades_gplay_already_owned_error_description">ನಿಮ್ಮ ಖರೀದಿ ಮರುಸ್ಥಾಪಿಸಲು \"ಖರೀದಿ ಮರುಸ್ಥಾಪಿಸಿ\" ಆಯ್ಕೆ ಬಳಸಿ. ಸಮಸ್ಯೆ ಪುನರಾವರ್ತಿತವಾಗುತ್ತಲೇ ಇದ್ದರೆ, Google Play ಕ್ಯಾಶೆ ಸ್ವಚ್ಛ ಮಾಡಲು ಪ್ರಯತ್ನಿಸಿ ಮತ್ತು ನಿಮ್ಮ ಸಾಧನವನ್ನು ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಿ.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play ದೋಷ</string>

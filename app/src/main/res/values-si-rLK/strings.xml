@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">නම් කරන්න</string>
     <string name="devices_device_config_enabled_label">සබල කර ඇත</string>
     <string name="devices_device_config_enabled_desc">සම්බන්ධ වූ විට මෙම උපාංගයට ප්‍රතිචාර දක්වන්න</string>
+    <string name="devices_device_config_equalizer_label">ශ්‍රව්‍ය සමකාරකය</string>
+    <string name="devices_device_config_equalizer_desc">මෙම උපාංගය සඳහා සමකාරකයේ කලාප සහ හඬ පරිමාව වැඩි කිරීම සකසන්න. Android හි පද්ධති සමකාරකයට සහාය දක්වන සංගීත යෙදුම් සමඟ පමණක් ක්‍රියා කරයි.</string>
+    <string name="devices_device_config_equalizer_boost_label">හඬ පරිමාව වැඩි කිරීම: %1$s</string>
     <string name="devices_device_config_section_timing_label">කාල ගණනය</string>
     <string name="devices_device_config_monitoring_duration_label">අධීක්ෂණ කාලය</string>
     <string name="devices_device_config_monitoring_duration_desc">ගැලපුම් සිදු කළ පසු, ඒකක මිලි-තත්පර ගණනක කාලයක් තුළ, ඉදිරි ශ්‍රව්‍ය ශක්තිය වෙනස් කිරීම් අවහිර කෙරේ.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">උපාංගය එකතු කරන්න</string>
     <string name="label_just_a_moment_please">ටිකක් ඉන්න.</string>
     <string name="label_notification_channel_status">තත්වය</string>
+    <string name="label_notification_channel_setup">සැකසීම අවශ්‍යයි</string>
     <string name="monitor_notification_starting">ආරම්භ කරමින්…</string>
     <string name="action_set">සකසන්න</string>
     <string name="action_cancel">අවලංගු කරන්න</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">තේමාව, ශැලිය සහ වර්ණ අභිරුඩිකරණය</string>
     <string name="upgrade_benefit_power_controls">ශබ්ද අගුල සහ වේග සීමාව</string>
     <string name="upgrade_benefit_support">ස්වාධීන සංවර්ධනයට සහාය දෙන්න</string>
+    <string name="upgrade_benefit_equalizer">• උපාංගය අනුව සමකාරකය (පද්ධති සමකාරක සහාය සහිත සංගීත යෙදුම් සඳහා)</string>
     <string name="description_intro_tap_the_button">ඔබේ පළමු උපාංගය එකතු කිරීමෙන් ආරම්භ කරන්න.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth අක්‍රිය කර ඇත.</string>
     <string name="title_bluetooth_is_off">Bluetooth ක්‍රියාවිරහිත</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">ප්‍රශස්තකරණ අක්‍රිය කරන්න</string>
     <string name="android10_applaunch_hint_title">යෙදුම් වලට වඩා පෙන්වන්න අවසරය</string>
     <string name="android10_applaunch_hint_message">Android 10+ ට යෙදුම් ආරම්භ කිරීම, මුල් තිරය පෙන්වීම, හෝ සංයොගයේදී පසුබිම මිට තිරය ජාග්‍රත් කිරීම සඳහා විශේෂ අවසරයක් අවශ්‍ය වේ. \"අනෙකුත් යෙදුම්ට වඩා ඉහළින් ප්‍රදර්ශනය\" අවසරය ලබා දෙන්න.</string>
+    <string name="android10_applaunch_oem_hint">සමහර නිෂ්පාදකයන් මෙයට අමතරව දෙවන අවසරයක් අවශ්‍ය කරයි. එය ලබා දුන් පසුවත් ක්‍රියා නොකරන්නේ නම්, ඔබේ දුරකථනයේ යෙදුම් අවසර තුළ පසුබිම් උත්පතන හෝ පසුබිම් දියත් කිරීමේ සැකසුමක් සොයන්න.</string>
     <string name="notification_permission_hint_title">දැනුම්දීම් අවසරය</string>
     <string name="notification_permission_hint_message">හඩ සකසීමේදී තත්ව යාවත්කාලීන දැකීමට දැනුම්දීම් අවසරය ලබා දෙන්න.</string>
     <string name="dnd_access_hint_title">බාධා නොකරන්න ප්‍රවේශය</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">නිරීක්ෂණය</string>
     <string name="devices_indicator_disconnect">විසන්ධිය</string>
     <string name="devices_indicator_limit">සීමාව</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">වර්ධනය</string>
     <string name="devices_indicator_launch">දියත් කිරීම</string>
     <string name="devices_indicator_home">මුල්</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">කොළ</string>
     <string name="widget_config_theme_red_label">රතු</string>
     <string name="widget_config_theme_custom_label">අභිරුඩි</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">ශ්‍රව්‍ය සමකාරකය</string>
+    <string name="eq_bands_label">කලාප</string>
+    <string name="eq_mini_graph_desc">සකසන ලද සමකාරක කලාප</string>
+    <string name="eq_enable_label">සමකාරකය භාවිත කරන්න</string>
+    <string name="eq_disabled_hint">අක්‍රියයි, ඔබේ සැකසුම් සුරකින ලද නමුත් තවම ශබ්දයට බලපාන්නේ නැත.</string>
+    <string name="eq_status_active_label">%1$s සඳහා EQ සක්‍රියයි</string>
+    <string name="eq_status_active_multiple_label">බහු යෙදුම් සඳහා EQ සක්‍රියයි</string>
+    <string name="eq_status_no_control_label">%1$s අනාවරණය විය, නමුත් EQ හට පාලනය ලබාගත නොහැකි විය</string>
+    <string name="eq_status_no_control_headline">%1$s අනාවරණය විය</string>
+    <string name="eq_status_no_control_detail">EQ හට එහි ශබ්දයේ පාලනය ලබාගත නොහැකි විය</string>
+    <string name="eq_status_multiple_recent_label">මෑතම: %1$s</string>
+    <string name="eq_status_since_label">සැසිය ආරම්භ විය %1$s</string>
+    <string name="eq_status_waiting_label">සහාය දක්වන සංගීත යෙදුමක් සඳහා රැඳී සිටිමින්, ප්‍රතිඵලය ඇසීමට ධාවනය ආරම්භ කරන්න</string>
+    <string name="eq_status_inactive_label">දැනට මෙම උපාංගය සඳහා සක්‍රීය නොවේ</string>
+    <string name="eq_status_generic_app_label">සංගීත යෙදුමක්</string>
+    <string name="eq_boost_label">හඬ පරිමාව වැඩි කිරීම</string>
+    <string name="eq_boost_hint">කලාප වලට අමතරව සියල්ල ශබ්දයෙන් වැඩි කරයි. වැඩි වර්ධනයක් ශබ්දය විකෘති කළ හැක.</string>
+    <string name="eq_unsupported_msg">මෙම දුරකථනය අප භාවිත කළ හැකි සමකාරකයක් ලබා නොදෙයි.</string>
+    <string name="eq_info_msg">පද්ධති සමකාරකයන්ට සහාය දක්වන යෙදුම් සමඟ ක්‍රියා කරයි, උදා. Spotify හෝ YouTube Music. මෙම උපාංගය සක්‍රීයව ඇති අතරතුර එම යෙදුම් වලින් එන සියලු ශබ්දයට එය බලපායි. දැනටමත් යමක් වාදනය වෙමින් පවතී නම්, වෙනස ඇසීමට ධාවනය නැවත ආරම්භ කරන්න.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">සමතලා</string>
+    <string name="eq_preset_bass_boost_label">බේස් වර්ධනය</string>
+    <string name="eq_preset_bass_reducer_label">බේස් අඩු කිරීම</string>
+    <string name="eq_preset_treble_boost_label">ට්‍රෙබල් වර්ධනය</string>
+    <string name="eq_preset_vocal_label">හඬ</string>
+    <string name="eq_preset_loudness_label">ශබ්ද තීව්‍රතාව</string>
 </resources>

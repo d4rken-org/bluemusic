@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Μετονομασία</string>
     <string name="devices_device_config_enabled_label">Ενεργοποιημένη</string>
     <string name="devices_device_config_enabled_desc">Αντίδραση σε αυτή τη συσκευή όταν συνδέεται</string>
+    <string name="devices_device_config_equalizer_label">Ισοσταθμιστής</string>
+    <string name="devices_device_config_equalizer_desc">Ρύθμισε τις ζώνες του εξισωτή και την ενίσχυση έντασης για αυτή τη συσκευή. Λειτουργεί μόνο με εφαρμογές μουσικής που υποστηρίζουν τον εξισωτή του συστήματος Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Ενίσχυση έντασης: %1$s</string>
     <string name="devices_device_config_section_timing_label">Χρονισμός</string>
     <string name="devices_device_config_monitoring_duration_label">Διάρκεια παρακολούθησης</string>
     <string name="devices_device_config_monitoring_duration_desc">Διάρκεια σε χιλιοστά του δευτερολέπτου, μετά από τις προσαρμογές, κατά τη διάρκεια των οποίων θα μπλοκάρονται τυχόν αλλαγές έντασης.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Προσθήκη συσκευής</string>
     <string name="label_just_a_moment_please">Μια στιγμή, παρακαλώ.</string>
     <string name="label_notification_channel_status">Κατάσταση</string>
+    <string name="label_notification_channel_setup">Απαιτείται ρύθμιση</string>
     <string name="monitor_notification_starting">Εκκίνηση…</string>
     <string name="action_set">Ορισμός</string>
     <string name="action_cancel">Ακύρωση</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Προσαρμογή θέματος, στυλ και χρώματος</string>
     <string name="upgrade_benefit_power_controls">Κλείδωμα έντασης και περιορισμός ρυθμού</string>
     <string name="upgrade_benefit_support">Υποστήριξη ανεξάρτητης ανάπτυξης</string>
+    <string name="upgrade_benefit_equalizer">• Εξισωτής ανά συσκευή (για εφαρμογές μουσικής με υποστήριξη εξισωτή συστήματος)</string>
     <string name="description_intro_tap_the_button">Ξεκινήστε προσθέτοντας την πρώτη συσκευή σας.</string>
     <string name="description_bluetooth_is_disabled">Το Bluetooth είναι απενεργοποιημένο.</string>
     <string name="title_bluetooth_is_off">Το Bluetooth είναι απενεργοποιημένο</string>
@@ -397,6 +402,7 @@
     <string name="battery_optimization_fix_action">Απενεργοποίηση βελτιστοποιήσεων</string>
     <string name="android10_applaunch_hint_title">Άδεια εμφάνισης πάνω από εφαρμογές</string>
     <string name="android10_applaunch_hint_message">Android 10+ χρειάζεται ειδική άδεια για να ενεργοποιήσει εφαρμογές, να εμφανίσει την αρχική οθόνη ή να ενεργοποιήσει την οθόνη από το παρασκήνιο κατά τη σύνδεση. Χορήγησε την άδεια \"Εμφάνιση πάνω από άλλες εφαρμογές\".</string>
+    <string name="android10_applaunch_oem_hint">Ορισμένοι κατασκευαστές χρειάζονται μια δεύτερη άδεια επιπλέον αυτής. Εάν δεν λειτουργεί ακόμα μετά την παραχώρηση, ψάξε για ένα αναδυόμενο παράθυρο στο παρασκήνιο ή ρύθμιση εκκίνησης στο παρασκήνιο στις άδειες της εφαρμογής.</string>
     <string name="notification_permission_hint_title">Άδεια ειδοποιήσεων</string>
     <string name="notification_permission_hint_message">Χορηγήστε άδεια ειδοποιήσεων για να βλέπετε ενημερώσεις κατάστασης κατά τη ρύθμιση εντάσεων.</string>
     <string name="dnd_access_hint_title">Πρόσβαση «Μην ενοχλείτε»</string>
@@ -431,6 +437,8 @@
     <string name="devices_indicator_observe">Παρακολούθηση</string>
     <string name="devices_indicator_disconnect">Αποσύνδεση</string>
     <string name="devices_indicator_limit">Όριο</string>
+    <string name="devices_indicator_eq">Εξισωτής</string>
+    <string name="devices_indicator_boost">Ενίσχυση</string>
     <string name="devices_indicator_launch">Εκκίνηση</string>
     <string name="devices_indicator_home">Αρχική</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -459,4 +467,33 @@
     <string name="widget_config_theme_green_label">Πράσινο</string>
     <string name="widget_config_theme_red_label">Κόκκινο</string>
     <string name="widget_config_theme_custom_label">Προσαρμοσμένο</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Ισοσταθμιστής</string>
+    <string name="eq_bands_label">Ζώνες</string>
+    <string name="eq_mini_graph_desc">Ρυθμισμένες ζώνες εξισωτή</string>
+    <string name="eq_enable_label">Χρήση του εξισωτή</string>
+    <string name="eq_disabled_hint">Απενεργοποιημένο, οι ρυθμίσεις σας έχουν αποθηκευτεί αλλά δεν θα επηρεάσουν τον ήχο ακόμα.</string>
+    <string name="eq_status_active_label">Εξισωτής ενεργός για %1$s</string>
+    <string name="eq_status_active_multiple_label">Εξισωτής ενεργός για πολλές εφαρμογές</string>
+    <string name="eq_status_no_control_label">%1$s ανιχνεύθηκε, αλλά ο εξισωτής δεν μπόρεσε να πάρει τον έλεγχο</string>
+    <string name="eq_status_no_control_headline">%1$s ανιχνεύθηκε</string>
+    <string name="eq_status_no_control_detail">Ο εξισωτής δεν μπόρεσε να πάρει τον έλεγχο του ήχου του</string>
+    <string name="eq_status_multiple_recent_label">Πιο πρόσφατη: %1$s</string>
+    <string name="eq_status_since_label">Η συνεδρία ξεκίνησε %1$s</string>
+    <string name="eq_status_waiting_label">Αναμονή για μια υποστηριζόμενη εφαρμογή μουσικής, ξεκίνησε την αναπαραγωγή για να ακούσεις το αποτέλεσμα</string>
+    <string name="eq_status_inactive_label">Δεν είναι ενεργή για αυτή τη συσκευή αυτή τη στιγμή</string>
+    <string name="eq_status_generic_app_label">μια εφαρμογή μουσικής</string>
+    <string name="eq_boost_label">Ενίσχυση έντασης</string>
+    <string name="eq_boost_hint">Κάνει όλα τα πράγματα πιο δυνατά επιπλέον των ζωνών. Πολλή ενίσχυση μπορεί να παραμορφώσει τον ήχο.</string>
+    <string name="eq_unsupported_msg">Αυτό το τηλέφωνο δεν προσφέρει έναν εξισωτή που μπορούμε να χρησιμοποιήσουμε.</string>
+    <string name="eq_info_msg">Λειτουργεί με εφαρμογές που υποστηρίζουν εξισωτές συστήματος, π.χ. Spotify ή YouTube Music. Επηρεάζει όλο τον ήχο από αυτές τις εφαρμογές ενώ αυτή η συσκευή είναι ενεργή. Αν κάτι αναπαράγεται ήδη, επανεκκίνησε την αναπαραγωγή για να ακούσεις την αλλαγή.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Ίσια</string>
+    <string name="eq_preset_bass_boost_label">Ενίσχυση μπάσων</string>
+    <string name="eq_preset_bass_reducer_label">Μείωση μπάσων</string>
+    <string name="eq_preset_treble_boost_label">Ενίσχυση οξέων</string>
+    <string name="eq_preset_vocal_label">Φωνή</string>
+    <string name="eq_preset_loudness_label">Ένταση</string>
 </resources>

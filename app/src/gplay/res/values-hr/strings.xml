@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Pretplata je i dalje aktivna</string>
     <string name="upgrade_screen_sub_still_renewing_message">Vaša pretplata je i dalje postavljena za obnavljanje. Prvo je otkažite u Google Playu, a zatim se vratite kako biste kupili jednokratnu kupnju — tako vam neće biti naplaćeno dvaput.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Nismo mogli provjeriti tvoje kupnje putem Google Playa. Provjeri vezu i pokušaj ponovno.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Plaćanje u tijeku</string>
+    <string name="upgrade_screen_pending_card_body">Google Play još uvijek obrađuje tvoje plaćanje. Pro se automatski otključava čim plaćanje bude završeno. Neki načini plaćanja traju malo dulje, ne moraš ništa dodatno poduzeti.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play je pronašao kupnju čije se plaćanje još obrađuje. Pro se automatski otključava čim plaćanje bude završeno.</string>
     <string name="upgrades_gplay_already_owned_error_title">Već kupljeno</string>
     <string name="upgrades_gplay_already_owned_error_description">Upotrijebite opciju \"Vrati kupnju\" kako biste vratili svoju kupnju. Ako se problem nastavi, pokušajte očistiti predmemoriju Google Playa i ponovno pokrenuti uređaj.</string>
     <string name="upgrades_gplay_internal_error_title">Greška Google Playa</string>

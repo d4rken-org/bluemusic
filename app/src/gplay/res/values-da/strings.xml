@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abonnement stadig aktivt</string>
     <string name="upgrade_screen_sub_still_renewing_message">Dit abonnement er stadig indstillet til at blive fornyet. Annuller det i Google Play først, og kom derefter tilbage for at købe engangskøbet — på den måde bliver du ikke opkrævet to gange.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Vi kunne ikke tjekke dine køb hos Google Play. Tjek din forbindelse, og prøv igen.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Betaling afventer</string>
+    <string name="upgrade_screen_pending_card_body">Google Play behandler stadig din betaling. Pro låses automatisk op, når betalingen er gennemført. Nogle betalingsmetoder tager lidt tid, du behøver ikke gøre andet.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play fandt et køb, hvor betalingen stadig behandles. Pro låses automatisk op, når betalingen er gennemført.</string>
     <string name="upgrades_gplay_already_owned_error_title">Allerede købt</string>
     <string name="upgrades_gplay_already_owned_error_description">Brug indstillingen \"Gendan køb\" for at gendanne dit køb. Hvis problemet fortsætter, så prøv at rydde Google Play-cachen og genstarte din enhed.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play-fejl</string>

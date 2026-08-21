@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">تغییر نام</string>
     <string name="devices_device_config_enabled_label">فعال</string>
     <string name="devices_device_config_enabled_desc">هنگام اتصال این دستگاه واکنش نشان بده</string>
+    <string name="devices_device_config_equalizer_label">اکوالایزر</string>
+    <string name="devices_device_config_equalizer_desc">باندهای اکولایزر و افزایش صدا را برای این دستگاه تنظیم کنید. تنها با برنامه‌های موسیقی که از اکولایزر سیستمی اندروید پشتیبانی می‌کنند کار می‌کند.</string>
+    <string name="devices_device_config_equalizer_boost_label">افزایش صدا: %1$s</string>
     <string name="devices_device_config_section_timing_label">زمان‌بندی</string>
     <string name="devices_device_config_monitoring_duration_label">مدت پایش</string>
     <string name="devices_device_config_monitoring_duration_desc">مدتی به میلی‌ثانیه که پس از اعمال تنظیمات، تغییرات بیشتر صدا مسدود خواهد شد.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">افزودن دستگاه</string>
     <string name="label_just_a_moment_please">یه لحظه صبر کن.</string>
     <string name="label_notification_channel_status">وضعیت</string>
+    <string name="label_notification_channel_setup">نیاز به راه‌اندازی</string>
     <string name="monitor_notification_starting">در حال شروع…</string>
     <string name="action_set">تنظیم</string>
     <string name="action_cancel">لفو</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">شخصی‌سازی تم، سبک و رنگ</string>
     <string name="upgrade_benefit_power_controls">قفل صدا و محدودسازی نرخ</string>
     <string name="upgrade_benefit_support">حمایت از توسعه مستقل</string>
+    <string name="upgrade_benefit_equalizer">• اکولایزر مخصوص هر دستگاه (برای برنامه‌های موسیقی دارای پشتیبانی از اکولایزر سیستمی)</string>
     <string name="description_intro_tap_the_button">با اضافه کردن اولین دستگاهت شروع کن.</string>
     <string name="description_bluetooth_is_disabled">بلوتوث غیرفعال است.</string>
     <string name="title_bluetooth_is_off">بلوتوث خاموش است</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">غیرفعال‌سازی بهینه‌سازی‌ها</string>
     <string name="android10_applaunch_hint_title">اجازه نمایش روی برنامه‌های دیگر</string>
     <string name="android10_applaunch_hint_message">اندروید ۱۰ به بعد نیاز به اجازه خاصی دارد تا برنامه‌ها را اجرا کند، صفحه‌ی خانه را نمایش دهد، یا صفحه را از پس‌زمینه بیدار کند هنگام اتصال. اجازه «نمایش روی برنامه‌های دیگر» را بدهید.</string>
+    <string name="android10_applaunch_oem_hint">برخی سازندگان علاوه بر این مجوز، به یک مجوز دوم نیز نیاز دارند. اگر بعد از اعطای آن هنوز کار نمی‌کند، در تنظیمات مجوزهای برنامه‌های گوشی خود به دنبال گزینه‌ای برای پاپ‌آپ در پس‌زمینه یا اجرای در پس‌زمینه بگردید.</string>
     <string name="notification_permission_hint_title">مجوز اعلان</string>
     <string name="notification_permission_hint_message">برای مشاهده به‌روزرسانی وضعیت حین تنظیم صدا، مجوز اعلان بدهید.</string>
     <string name="dnd_access_hint_title">دسترسی به مزاحم نشوید</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">نظارت</string>
     <string name="devices_indicator_disconnect">قطع اتصال</string>
     <string name="devices_indicator_limit">محدودیت</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">افزایش</string>
     <string name="devices_indicator_launch">راه‌اندازی</string>
     <string name="devices_indicator_home">خانه</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">سبز</string>
     <string name="widget_config_theme_red_label">قرمز</string>
     <string name="widget_config_theme_custom_label">سفارشی</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">اکوالایزر</string>
+    <string name="eq_bands_label">باندها</string>
+    <string name="eq_mini_graph_desc">باندهای پیکربندی‌شده اکولایزر</string>
+    <string name="eq_enable_label">استفاده از اکولایزر</string>
+    <string name="eq_disabled_hint">خاموش است؛ تنظیمات شما ذخیره شده‌اند اما هنوز روی صدا تأثیر نمی‌گذارند.</string>
+    <string name="eq_status_active_label">اکولایزر برای %1$s فعال است</string>
+    <string name="eq_status_active_multiple_label">اکولایزر برای چند برنامه فعال است</string>
+    <string name="eq_status_no_control_label">%1$s شناسایی شد، اما اکولایزر نتوانست کنترل آن را در دست بگیرد</string>
+    <string name="eq_status_no_control_headline">%1$s شناسایی شد</string>
+    <string name="eq_status_no_control_detail">اکولایزر نتوانست کنترل صدای آن را در دست بگیرد</string>
+    <string name="eq_status_multiple_recent_label">آخرین: %1$s</string>
+    <string name="eq_status_since_label">نشست از %1$s آغاز شد</string>
+    <string name="eq_status_waiting_label">در انتظار یک برنامه موسیقی پشتیبانی‌شده؛ برای شنیدن تأثیر، پخش را شروع کنید</string>
+    <string name="eq_status_inactive_label">در حال حاضر برای این دستگاه فعال نیست</string>
+    <string name="eq_status_generic_app_label">یک برنامه موسیقی</string>
+    <string name="eq_boost_label">افزایش صدا</string>
+    <string name="eq_boost_hint">همه چیز را علاوه بر باندها بلندتر می‌کند. افزایش زیاد می‌تواند صدا را مخدوش کند.</string>
+    <string name="eq_unsupported_msg">این گوشی اکولایزری ارائه نمی‌دهد که بتوانیم از آن استفاده کنیم.</string>
+    <string name="eq_info_msg">با برنامه‌هایی که از اکولایزرهای سیستمی پشتیبانی می‌کنند، مانند Spotify یا YouTube Music، کار می‌کند. تا زمانی که این دستگاه فعال است، روی همهٔ صدای آن برنامه‌ها تأثیر می‌گذارد. اگر چیزی در حال پخش است، برای شنیدن تغییر، پخش را دوباره شروع کنید.</string>
+    <string name="eq_frequency_hz_label">%1$s هرتز</string>
+    <string name="eq_frequency_khz_label">%1$s کیلوهرتز</string>
+    <string name="eq_gain_db_label">%1$s دسی‌بل</string>
+    <string name="eq_preset_flat_label">صاف</string>
+    <string name="eq_preset_bass_boost_label">تقویت بم</string>
+    <string name="eq_preset_bass_reducer_label">کاهش بم</string>
+    <string name="eq_preset_treble_boost_label">تقویت زیر</string>
+    <string name="eq_preset_vocal_label">وکال</string>
+    <string name="eq_preset_loudness_label">بلندی</string>
 </resources>

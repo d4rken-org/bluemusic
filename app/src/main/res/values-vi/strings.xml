@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Đổi tên</string>
     <string name="devices_device_config_enabled_label">Được kích hoạt</string>
     <string name="devices_device_config_enabled_desc">Phản ứng với thiết bị này khi được kết nối</string>
+    <string name="devices_device_config_equalizer_label">Bộ cân bằng âm</string>
+    <string name="devices_device_config_equalizer_desc">Điều chỉnh các dải bộ cân bằng và tăng âm lượng cho thiết bị này. Chỉ hoạt động với các ứng dụng nhạc hỗ trợ bộ cân bằng hệ thống của Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Tăng âm lượng: %1$s</string>
     <string name="devices_device_config_section_timing_label">Thời gian</string>
     <string name="devices_device_config_monitoring_duration_label">Thời gian giám sát</string>
     <string name="devices_device_config_monitoring_duration_desc">Thời lượng tính bằng mili giây, sau khi điều chỉnh đã được thực hiện, trong đó mọi thay đổi âm lượng tiếp theo sẽ bị chặn.</string>
@@ -316,6 +319,7 @@ TheNothingGuy</string>
     <string name="label_add_device">Thêm thiết bị</string>
     <string name="label_just_a_moment_please">Xin chờ một chút.</string>
     <string name="label_notification_channel_status">Trạng thái</string>
+    <string name="label_notification_channel_setup">Cần thiết lập</string>
     <string name="monitor_notification_starting">Khởi động…</string>
     <string name="action_set">Đặt</string>
     <string name="action_cancel">Hủy bỏ</string>
@@ -334,6 +338,7 @@ TheNothingGuy</string>
     <string name="upgrade_benefit_theme_customization">Tùy chỉnh giao diện, kiểu dáng và màu sắc</string>
     <string name="upgrade_benefit_power_controls">Khóa âm lượng và giới hạn tốc độ</string>
     <string name="upgrade_benefit_support">Hỗ trợ phát triển độc lập</string>
+    <string name="upgrade_benefit_equalizer">• Bộ cân bằng theo thiết bị (cho ứng dụng nhạc hỗ trợ bộ cân bằng hệ thống)</string>
     <string name="description_intro_tap_the_button">Bắt đầu bằng cách thêm thiết bị đầu tiên của bạn.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth bị tắt.</string>
     <string name="title_bluetooth_is_off">Bluetooth đã tắt</string>
@@ -394,6 +399,7 @@ TheNothingGuy</string>
     <string name="battery_optimization_fix_action">Tắt tối ưu hóa</string>
     <string name="android10_applaunch_hint_title">Quyền hiển thị trên ứng dụng khác</string>
     <string name="android10_applaunch_hint_message">Android 10+ cần một quyền đặc biệt để khởi chạy ứng dụng, hiển thị màn hình chính hoặc đánh thức màn hình từ nền khi kết nối. Cấp quyền \"Hiển thị trên ứng dụng khác\".</string>
+    <string name="android10_applaunch_oem_hint">Một số nhà sản xuất cần thêm một quyền nữa. Nếu vẫn không hoạt động sau khi cấp quyền, hãy tìm kiếm cửa sổ bật lên ở chế độ nền hoặc cài đặt khởi chạy ở chế độ nền trong quyền ứng dụng của điện thoại bạn.</string>
     <string name="notification_permission_hint_title">Quyền thông báo</string>
     <string name="notification_permission_hint_message">Cấp quyền thông báo để xem cập nhật trạng thái khi điều chỉnh âm lượng.</string>
     <string name="dnd_access_hint_title">Quyền truy cập Không làm phiền</string>
@@ -428,6 +434,8 @@ TheNothingGuy</string>
     <string name="devices_indicator_observe">Quan sát</string>
     <string name="devices_indicator_disconnect">Ngắt kết nối</string>
     <string name="devices_indicator_limit">Giới hạn</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Tăng âm</string>
     <string name="devices_indicator_launch">Mở</string>
     <string name="devices_indicator_home">Màn hình chính</string>
     <string name="devices_indicator_dnd">KTR</string>
@@ -456,4 +464,33 @@ TheNothingGuy</string>
     <string name="widget_config_theme_green_label">Xanh lá</string>
     <string name="widget_config_theme_red_label">Đỏ</string>
     <string name="widget_config_theme_custom_label">Tùy chỉnh</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Bộ cân bằng âm</string>
+    <string name="eq_bands_label">Dải</string>
+    <string name="eq_mini_graph_desc">Các dải bộ cân bằng đã được cấu hình</string>
+    <string name="eq_enable_label">Sử dụng bộ cân bằng</string>
+    <string name="eq_disabled_hint">Tắt, cài đặt của bạn đã được lưu nhưng chưa ảnh hưởng đến âm thanh.</string>
+    <string name="eq_status_active_label">EQ hoạt động cho %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ hoạt động cho nhiều ứng dụng</string>
+    <string name="eq_status_no_control_label">%1$s đã được phát hiện, nhưng bộ cân bằng không thể kiểm soát</string>
+    <string name="eq_status_no_control_headline">%1$s đã được phát hiện</string>
+    <string name="eq_status_no_control_detail">Bộ cân bằng không thể kiểm soát âm thanh của nó</string>
+    <string name="eq_status_multiple_recent_label">Gần đây nhất: %1$s</string>
+    <string name="eq_status_since_label">Phiên bắt đầu %1$s</string>
+    <string name="eq_status_waiting_label">Đang chờ ứng dụng nhạc được hỗ trợ, bắt đầu phát nhạc để nghe hiệu ứng</string>
+    <string name="eq_status_inactive_label">Không hoạt động cho thiết bị này lúc này</string>
+    <string name="eq_status_generic_app_label">một ứng dụng nhạc</string>
+    <string name="eq_boost_label">Tăng âm lượng</string>
+    <string name="eq_boost_hint">Làm cho mọi thứ to hơn ngoài các dải. Tăng âm nhiều có thể làm méo âm thanh.</string>
+    <string name="eq_unsupported_msg">Điện thoại này không cung cấp bộ cân bằng mà chúng tôi có thể sử dụng.</string>
+    <string name="eq_info_msg">Hoạt động với các ứng dụng hỗ trợ bộ cân bằng hệ thống, ví dụ như Spotify hoặc YouTube Music. Nó ảnh hưởng đến tất cả âm thanh từ các ứng dụng đó khi thiết bị này hoạt động. Nếu có gì đó đang phát, hãy phát lại để nghe thay đổi.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Bằng phẳng</string>
+    <string name="eq_preset_bass_boost_label">Tăng bass</string>
+    <string name="eq_preset_bass_reducer_label">Giảm bass</string>
+    <string name="eq_preset_treble_boost_label">Tăng cao tần</string>
+    <string name="eq_preset_vocal_label">Giọng hát</string>
+    <string name="eq_preset_loudness_label">Độ to</string>
 </resources>

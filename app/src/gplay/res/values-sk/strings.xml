@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Predplatné je stále aktívne</string>
     <string name="upgrade_screen_sub_still_renewing_message">Vaše predplatné je stále nastavené na obnovenie. Najprv ho zrušte v službe Google Play, potom sa vráťte a kúpte si jednorazový nákup – tak vás nebudeme účtovať dvakrát.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Nemohli sme skontrolovať tvoje nákupy v Google Play. Prosím, skontroluj svoje pripojenie a skús znova.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Platba čaká</string>
+    <string name="upgrade_screen_pending_card_body">Google Play stále spracováva tvoju platbu. Pro sa odomkne automaticky, keď prejde platba. Niektoré spôsoby platby trvajú dlhšie, nie je nič ďalšie, čo musíš robiť.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play našiel nákup, ktorého platba sa stále spracováva. Pro sa odomkne automaticky, keď prejde platba.</string>
     <string name="upgrades_gplay_already_owned_error_title">Už zakúpené</string>
     <string name="upgrades_gplay_already_owned_error_description">Použite možnosť „Obnoviť nákup“ na obnovenie vašej kúpy. Ak problém pretrváva, skúste vyčistiť vyrovnávaciu pamäť služby Google Play a reštartujte zariadenie.</string>
     <string name="upgrades_gplay_internal_error_title">Chyba Google Play</string>

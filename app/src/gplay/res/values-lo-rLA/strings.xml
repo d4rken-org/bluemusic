@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">ການສະໝັກສະມາຊິກຍັງເປີດໃຊ້ງານຢູ່</string>
     <string name="upgrade_screen_sub_still_renewing_message">ການສະໝັກສະມາຊິກຂອງທ່ານຍັງຕັ້ງໄວ້ໃຫ້ຕໍ່ອາຍຸຢູ່. ໃຫ້ຍົກເລີກມັນໃນ Google Play ກ່ອນ, ແລ້ວກັບມາຊື້ແບບຄັ້ງດຽວ — ວິທີນີ້ຈະບໍ່ໃຫ້ທ່ານຖືກຮຽກເກັບເງິນສອງເທື່ອ.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">ພວກເຮົາບໍ່ສາມາດກວດສອບການຊື້ຂອງເຈົ້າກັບ Google Play ໄດ້. ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ຂອງເຈົ້າ ແລ້ວລອງໃໝ່ອີກຄັ້ງ.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">ການຊຳລະເງິນກຳລັງດຳເນີນການ</string>
+    <string name="upgrade_screen_pending_card_body">Google Play ຍັງກຳລັງດຳເນີນການຊຳລະເງິນຂອງເຈົ້າຢູ່. Pro ຈະປົດລັອກເອງເມື່ອການຊຳລະເງິນສຳເລັດ. ວິທີການຊຳລະເງິນບາງຢ່າງໃຊ້ເວລາດົນ, ເຈົ້າບໍ່ຕ້ອງເຮັດຫຍັງເພີ່ມ.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play ພົບການຊື້ທີ່ການຊຳລະເງິນຍັງກຳລັງດຳເນີນການຢູ່. Pro ຈະປົດລັອກເອງເມື່ອການຊຳລະເງິນສຳເລັດ.</string>
     <string name="upgrades_gplay_already_owned_error_title">ຊື້ແລ້ວ</string>
     <string name="upgrades_gplay_already_owned_error_description">ໃຊ້ຕຽວເລືອກ \"ກູ້ຄືນການຊື້\" ເພື່ອກູ້ຄືນການຊື້ຂອງທ່ານ. ຖ້າບັນໝາຍັງເກີດຂຶ້ນຢູ່, ລອງລ້າງແຄດຊ Google Play ແລ້ວເປີດອຸປະກອນຂອງທ່ານໃໝ່.</string>
     <string name="upgrades_gplay_internal_error_title">ຂໍ້ຜິດພາດ Google Play</string>

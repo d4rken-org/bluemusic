@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">പുനർനാമകരണം</string>
     <string name="devices_device_config_enabled_label">പ്രവർത്തനക്ഷമം</string>
     <string name="devices_device_config_enabled_desc">കണക്‌റ് ചെയ്യുമ്പോൾ ഈ ഉപകരണത്തിനോട് പ്രതികരിക്കുക</string>
+    <string name="devices_device_config_equalizer_label">ഇക്വലൈസർ</string>
+    <string name="devices_device_config_equalizer_desc">ഈ ഉപകരണത്തിനായി ഇക്വലൈസർ ബാൻഡുകളും വോളിയം ബൂസ്റ്റും ക്രമീകരിക്കുക. Android-ന്റെ സിസ്റ്റം ഇക്വലൈസർ പിന്തുണയ്ക്കുന്ന മ്യൂസിക് ആപ്പുകളിൽ മാത്രം പ്രവർത്തിക്കും.</string>
+    <string name="devices_device_config_equalizer_boost_label">വോളിയം ബൂസ്റ്റ്: %1$s</string>
     <string name="devices_device_config_section_timing_label">സമയക്രമം</string>
     <string name="devices_device_config_monitoring_duration_label">നിരീക്ഷണ ദൈർഘ്യം</string>
     <string name="devices_device_config_monitoring_duration_desc">ക്രമീകരണങ്ങൾ വരുത്തിയ ശേഷം, കൂടുതൽ വോള്യം മാറ്റങ്ങൾ തടയുന്ന സമയ ദൈർഘ്യം മില്ലിസെക്കൻഡിൽ.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">ഉപകരണം ചേർക്കുക</string>
     <string name="label_just_a_moment_please">ഒരു നിമിഷം, ദയവായി.</string>
     <string name="label_notification_channel_status">നില</string>
+    <string name="label_notification_channel_setup">സജ്ജീകരണം ആവശ്യമാണ്</string>
     <string name="monitor_notification_starting">ആരംഭിക്കുന്നു…</string>
     <string name="action_set">സജ്ജീകരിക്കുക</string>
     <string name="action_cancel">റദ്ദ്ചെയ്യുക</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">തീം, ശൈലി, നിറ കസ്റ്റമൈസേഷൻ</string>
     <string name="upgrade_benefit_power_controls">വോളിയം ലോക്കും റേറ്റ് ലിമിറ്റിങ്ങും</string>
     <string name="upgrade_benefit_support">സ്വതന്ത്ര വികസനം പിന്തുനക്കുക</string>
+    <string name="upgrade_benefit_equalizer">• പ്രതി-ഉപകരണ ഇക്വലൈസർ (സിസ്റ്റം ഇക്വലൈസർ പിന്തുണയുള്ള മ്യൂസിക് ആപ്പുകൾക്കായി)</string>
     <string name="description_intro_tap_the_button">നിങ്ങളുടെ ആദ്യ ഉപകരണം ചേർത്ത് ആരംഭിക്കുക.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth പ്രവർത്തനരഹിതമാക്കിയിരിക്കുന്നു.</string>
     <string name="title_bluetooth_is_off">Bluetooth ഓഫ്ഫ് ആണ്</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">ഒപ്റ്റിമൈസേഷനുകൾ പ്രവർത്തനരഹിതമാക്കുക</string>
     <string name="android10_applaunch_hint_title">ആപ്പുകൾക്കു മുകളിൽ പ്രദർശിപ്പിക്കാനുള്ള അനുമതി</string>
     <string name="android10_applaunch_hint_message">ആപ്പുകൾ സമാരംഭിക്കാനോ, ഹോം സ്ക്രീൻ കാണിക്കാനോ, അല്ലെങ്കിൽ കണക്റ്റ് ചെയ്യുമ്പോൾ പശ്ചാത്തലത്തിൽ നിന്ന് സ്ക്രീൻ ഉണർത്താനോ Android 10+ ന് പ്രത്യേക അനുമതി ആവശ്യമാണ്. \"മറ്റ് ആപ്പുകൾക്കു മുകളിൽ പ്രദർശിപ്പിക്കുക\" അനുമതി നൽകുക.</string>
+    <string name="android10_applaunch_oem_hint">ചില നിർമ്മാതാക്കൾക്ക് ഇതിനു പുറമെ രണ്ടാമത്തെ അനുമതി കൂടി വേണ്ടിവരും. അനുവദിച്ചതിനു ശേഷവും ഇത് പ്രവർത്തിക്കുന്നില്ലെങ്കിൽ, നിങ്ങളുടെ ഫോണിന്റെ ആപ്പ് അനുമതികളിൽ ബാക്ഗ്രൗണ്ട് പോപ്പ്-അപ്പ് അല്ലെങ്കിൽ ബാക്ഗ്രൗണ്ട് ലോഞ്ച് സെറ്റിംഗ് പരിശോധിക്കുക.</string>
     <string name="notification_permission_hint_title">അധിസൂചന അനുമതി</string>
     <string name="notification_permission_hint_message">വോള്യം ക്രമീകരിക്കുമ്പോൾ സ്റ്റേറ്റസ് അപ്ഡേറ്റുകൾ കാണാൻ അധിസൂചന അനുമതി നൽകുക.</string>
     <string name="dnd_access_hint_title">സ്ക്രീൻ കിളയ്ക്കൾ മറക്കീ അക്സെസ് (Do Not Disturb)</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">നിരീക്ഷിക്കുക</string>
     <string name="devices_indicator_disconnect">വിച്ഛേദിക്കുക</string>
     <string name="devices_indicator_limit">പരിധി</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">ബൂസ്റ്റ്</string>
     <string name="devices_indicator_launch">തുറക്കുക</string>
     <string name="devices_indicator_home">ഹോം</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">പച്ച</string>
     <string name="widget_config_theme_red_label">ചുവപ്പ്</string>
     <string name="widget_config_theme_custom_label">കസ്റ്റം</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">ഇക്വലൈസർ</string>
+    <string name="eq_bands_label">ബാൻഡുകൾ</string>
+    <string name="eq_mini_graph_desc">ക്രമീകരിച്ച ഇക്വലൈസർ ബാൻഡുകൾ</string>
+    <string name="eq_enable_label">ഇക്വലൈസർ ഉപയോഗിക്കുക</string>
+    <string name="eq_disabled_hint">ഓഫ്, നിങ്ങളുടെ ക്രമീകരണങ്ങൾ സേവ് ചെയ്തിട്ടുണ്ട്, പക്ഷേ ഇപ്പോൾ ഓഡിയോയെ ബാധിക്കില്ല.</string>
+    <string name="eq_status_active_label">%1$s-നായി EQ സജീവമാണ്</string>
+    <string name="eq_status_active_multiple_label">ഒന്നിലധികം ആപ്പുകൾക്കായി EQ സജീവമാണ്</string>
+    <string name="eq_status_no_control_label">%1$s കണ്ടെത്തി, പക്ഷേ EQ-ക്ക് നിയന്ത്രണം ഏറ്റെടുക്കാൻ കഴിഞ്ഞില്ല</string>
+    <string name="eq_status_no_control_headline">%1$s കണ്ടെത്തി</string>
+    <string name="eq_status_no_control_detail">EQ-ക്ക് അതിന്റെ ഓഡിയോയുടെ നിയന്ത്രണം ഏറ്റെടുക്കാൻ കഴിഞ്ഞില്ല</string>
+    <string name="eq_status_multiple_recent_label">ഏറ്റവും പുതിയത്: %1$s</string>
+    <string name="eq_status_since_label">സെഷൻ ആരംഭിച്ചത് %1$s</string>
+    <string name="eq_status_waiting_label">പിന്തുണയുള്ള ഒരു മ്യൂസിക് ആപ്പിനായി കാത്തിരിക്കുന്നു, ഇഫക്റ്റ് കേൾക്കാൻ പ്ലേബാക്ക് ആരംഭിക്കുക</string>
+    <string name="eq_status_inactive_label">ഇപ്പോൾ ഈ ഉപകരണത്തിന് സജീവമല്ല</string>
+    <string name="eq_status_generic_app_label">ഒരു മ്യൂസിക് ആപ്പ്</string>
+    <string name="eq_boost_label">വോളിയം ബൂസ്റ്റ്</string>
+    <string name="eq_boost_hint">ബാൻഡുകൾക്ക് പുറമെ എല്ലാം കൂടുതൽ ഉച്ചത്തിലാക്കുന്നു. കൂടുതൽ ബൂസ്റ്റ് ശബ്ദത്തെ വികലമാക്കാം.</string>
+    <string name="eq_unsupported_msg">ഈ ഫോൺ ഞങ്ങൾക്ക് ഉപയോഗിക്കാൻ കഴിയുന്ന ഒരു ഇക്വലൈസർ നൽകുന്നില്ല.</string>
+    <string name="eq_info_msg">സിസ്റ്റം ഇക്വലൈസറുകളെ പിന്തുണയ്ക്കുന്ന ആപ്പുകളിൽ പ്രവർത്തിക്കുന്നു, ഉദാ. Spotify അല്ലെങ്കിൽ YouTube Music. ഈ ഉപകരണം സജീവമായിരിക്കുമ്പോൾ ആ ആപ്പുകളിൽ നിന്നുള്ള എല്ലാ ഓഡിയോയെയും ഇത് ബാധിക്കുന്നു. എന്തെങ്കിലും ഇതിനകം പ്ലേ ചെയ്യുന്നുണ്ടെങ്കിൽ, മാറ്റം കേൾക്കാൻ പ്ലേബാക്ക് പുനരാരംഭിക്കുക.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">ഫ്ലാറ്റ്</string>
+    <string name="eq_preset_bass_boost_label">ബേസ് ബൂസ്റ്റ്</string>
+    <string name="eq_preset_bass_reducer_label">ബേസ് റിഡ്യൂസർ</string>
+    <string name="eq_preset_treble_boost_label">ട്രെബിൾ ബൂസ്റ്റ്</string>
+    <string name="eq_preset_vocal_label">വോക്കൽ</string>
+    <string name="eq_preset_loudness_label">ലൗഡ്‌നെസ്</string>
 </resources>

@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">გადარქმევა</string>
     <string name="devices_device_config_enabled_label">ჩართული</string>
     <string name="devices_device_config_enabled_desc">რეაგირება ამ მოწყობილობაზე დაკავშირებისას</string>
+    <string name="devices_device_config_equalizer_label">ეკვალაიზერი</string>
+    <string name="devices_device_config_equalizer_desc">გააკორექტირე ეკვალაიზერის ზოლები და ხმის გაძლიერება ამ მოწყობილობისთვის. მხოლოდ მუშაობს მუსიკის აპებთან, რომლებიც მხარს უჭერენ Android-ის სისტემის ეკვალაიზერს.</string>
+    <string name="devices_device_config_equalizer_boost_label">ხმის გაძლიერება: %1$s</string>
     <string name="devices_device_config_section_timing_label">დრო</string>
     <string name="devices_device_config_monitoring_duration_label">მონიტორინგის ხანგრძლივობა</string>
     <string name="devices_device_config_monitoring_duration_desc">ხანგრძლივობა მილიწამებში, რეგულირებების შემდეგ, რომლის განმავლობაში ნებისმიერი შემდგომი ხმის ცვლილება დაიბლოკება.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">მოწყობილობის დამატება</string>
     <string name="label_just_a_moment_please">ერთი წუთი, გთხოვთ.</string>
     <string name="label_notification_channel_status">სტატუსი</string>
+    <string name="label_notification_channel_setup">დაყენება აუცილებელია</string>
     <string name="monitor_notification_starting">იწყება…</string>
     <string name="action_set">დაყენება</string>
     <string name="action_cancel">გაუქმება</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">თემის, სტილისა და ფერის მორგება</string>
     <string name="upgrade_benefit_power_controls">ხმის დაბლოკვა და სიჩქარის შეზღუდვა</string>
     <string name="upgrade_benefit_support">დამოუკიდებელი განვითარების მხარდაჭერა</string>
+    <string name="upgrade_benefit_equalizer">• მოწყობილობაზე თითოეული ეკვალაიზერი (სისტემის ეკვალაიზერი მხარდამჭერი მუსიკის აპებისთვის)</string>
     <string name="description_intro_tap_the_button">დაიწყეთ პირველი მოწყობილობის დამატებით.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth გათიშულია.</string>
     <string name="title_bluetooth_is_off">Bluetooth გამორთულია</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">ოპტიმიზაციების გამორთვა</string>
     <string name="android10_applaunch_hint_title">აპების თავზე ჩვენების ნებართვა</string>
     <string name="android10_applaunch_hint_message">Android 10+-ს სჭირდება სპეციალური ნებართვა აპლიკაციების გასაშვებად, მთავარი ეკრანის საჩვენებლად ან ფონიდან ეკრანის გასაღვიძებლად კავშირისას. მიანიჭე \"აპების თავზე ჩვენება\" ნებართვა.</string>
+    <string name="android10_applaunch_oem_hint">ზოგიერთი მწარმოებელი ამ ზემოთ დამატებით ნებართვას მოითხოვს. თუ ის კვლავ არ მუშაობს ნებართვის მინიჭების შემდეგ, მოიძებნე ფონური pop-up ან ფონური გაშვების პარამეტრი თქვენი ტელეფონის აპლიკაციის ნებართვებში.</string>
     <string name="notification_permission_hint_title">შეტყობინებების ნებართვა</string>
     <string name="notification_permission_hint_message">მიეცით შეტყობინებების ნებართვა სტატუსის განახლებების სანახავად ხმის რეგულირებისას.</string>
     <string name="dnd_access_hint_title">\"არ შეაწუხოთ\" წვდომა</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">დაკვირვება</string>
     <string name="devices_indicator_disconnect">გათიშვება</string>
     <string name="devices_indicator_limit">ლიმიტი</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">გაძლიერება</string>
     <string name="devices_indicator_launch">გაშვება</string>
     <string name="devices_indicator_home">მთავარი</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">მწვანე</string>
     <string name="widget_config_theme_red_label">წითელი</string>
     <string name="widget_config_theme_custom_label">მორგებული</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">ეკვალაიზერი</string>
+    <string name="eq_bands_label">ზოლები</string>
+    <string name="eq_mini_graph_desc">კონფიგურირებული ეკვალაიზერის ზოლები</string>
+    <string name="eq_enable_label">გამოიყენე ეკვალაიზერი</string>
+    <string name="eq_disabled_hint">გამორთული, თქვენი პარამეტრები შენახულია, მაგრამ აუდიოზე ჯერ გავლენას არ მოახდენს.</string>
+    <string name="eq_status_active_label">EQ აქტიური %1$s-ისთვის</string>
+    <string name="eq_status_active_multiple_label">EQ აქტიური რამდენიმე აპლიკაციისთვის</string>
+    <string name="eq_status_no_control_label">%1$s გამოვლინდა, მაგრამ EQ-მ კონტროლი ვერ აიღო</string>
+    <string name="eq_status_no_control_headline">%1$s გამოვლინდა</string>
+    <string name="eq_status_no_control_detail">EQ-მ აუდიოს კონტროლი ვერ აიღო</string>
+    <string name="eq_status_multiple_recent_label">ყველაზე ბოლოს: %1$s</string>
+    <string name="eq_status_since_label">სესია დაიწყო %1$s</string>
+    <string name="eq_status_waiting_label">ელოდება მხარდამჭერ მუსიკის აპს, დაიწყე დასმა ეფექტის სმენისთვის</string>
+    <string name="eq_status_inactive_label">ამ მოწყობილობისთვის ამ დროს არ არის აქტიური</string>
+    <string name="eq_status_generic_app_label">მუსიკის აპი</string>
+    <string name="eq_boost_label">ხმის გაძლიერება</string>
+    <string name="eq_boost_hint">ხდის ყველაფერს ხმამაღლობით ზოლების თავზე. მეტი გაძლიერება შეიძლება დაამახინჯოს ხმა.</string>
+    <string name="eq_unsupported_msg">ეს ტელეფონი არ გთავაზობს ეკვალაიზერს, რომელსაც შეგვიძლია გამოვიყენოთ.</string>
+    <string name="eq_info_msg">მუშაობს აპებთან, რომლებიც მხარს უჭერენ სისტემის ეკვალაიზერებს, მაგ. Spotify ან YouTube Music. ეს მოქმედებს ამ აპებიდან ყველა აუდიოზე, რადგან ეს მოწყობილობა აქტიურია. თუ რაც-რომ უკვე დასმულია, გადაიწყე დასმა ცვლილების სმენისთვის.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">ბრტყელი</string>
+    <string name="eq_preset_bass_boost_label">ბასის გაძლიერება</string>
+    <string name="eq_preset_bass_reducer_label">ბასის შემცირება</string>
+    <string name="eq_preset_treble_boost_label">ზემაღალი ხმის გაძლიერება</string>
+    <string name="eq_preset_vocal_label">ვოკალი</string>
+    <string name="eq_preset_loudness_label">ხმამაღლობა</string>
 </resources>

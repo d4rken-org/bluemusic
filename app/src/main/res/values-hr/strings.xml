@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Preimenuj</string>
     <string name="devices_device_config_enabled_label">Omogućeno</string>
     <string name="devices_device_config_enabled_desc">Reagiraj na ovaj uređaj kada se poveže</string>
+    <string name="devices_device_config_equalizer_label">Ekvilajzer</string>
+    <string name="devices_device_config_equalizer_desc">Prilagodi pojaseve ekvilajzera i pojačanje glasnoće za ovaj uređaj. Radi samo s glazbenim aplikacijama koje podržavaju Androidov sustavni ekvilajzer.</string>
+    <string name="devices_device_config_equalizer_boost_label">Pojačanje glasnoće: %1$s</string>
     <string name="devices_device_config_section_timing_label">Vremenski raspored</string>
     <string name="devices_device_config_monitoring_duration_label">Trajanje praćenja</string>
     <string name="devices_device_config_monitoring_duration_desc">Trajanje u milisekundama, nakon što su podešavanja postavljena, tijekom čega će sve promjene u glasnoći biti blokirane.</string>
@@ -322,6 +325,7 @@
     <string name="label_add_device">Dodaj uređaj</string>
     <string name="label_just_a_moment_please">Samo trenutak.</string>
     <string name="label_notification_channel_status">Stanje</string>
+    <string name="label_notification_channel_setup">Potrebno je postavljanje</string>
     <string name="monitor_notification_starting">Pokretanje…</string>
     <string name="action_set">Postavi</string>
     <string name="action_cancel">Odustani</string>
@@ -340,6 +344,7 @@
     <string name="upgrade_benefit_theme_customization">Prilagodba teme, stila i boja</string>
     <string name="upgrade_benefit_power_controls">Zaključavanje glasnoće i ograničenje brzine</string>
     <string name="upgrade_benefit_support">Podržite neovisni razvoj</string>
+    <string name="upgrade_benefit_equalizer">• Ekvilajzer po uređaju (za glazbene aplikacije s podrškom za sustavni ekvilajzer)</string>
     <string name="description_intro_tap_the_button">Započnite dodavanjem svog prvog uređaja.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth je onemogućen.</string>
     <string name="title_bluetooth_is_off">Bluetooth je isključen</string>
@@ -401,6 +406,7 @@
     <string name="battery_optimization_fix_action">Onemogući optimizacije</string>
     <string name="android10_applaunch_hint_title">Dozvola za prikaz preko aplikacija</string>
     <string name="android10_applaunch_hint_message">Android 10+ treba posebnu dozvolu za pokretanje aplikacija, prikaz početnog zaslona ili buđenje zaslona iz pozadine pri povezivanju. Dozvoli \"Prikaz preko ostalih aplikacija\".</string>
+    <string name="android10_applaunch_oem_hint">Neki proizvođači zahtijevaju dodatnu dozvolu uz ovu. Ako ni nakon odobravanja ne radi, potraži postavku za skočne prozore ili pokretanje u pozadini u dozvolama aplikacija na svom telefonu.</string>
     <string name="notification_permission_hint_title">Dopuštenje za obavijesti</string>
     <string name="notification_permission_hint_message">Dajte dopuštenje za obavijesti kako biste vidjeli ažuriranja stanja pri prilagodbi glasnoće.</string>
     <string name="dnd_access_hint_title">Pristup načinu Ne uznemiravaj</string>
@@ -435,6 +441,8 @@
     <string name="devices_indicator_observe">Prati</string>
     <string name="devices_indicator_disconnect">Odspoji</string>
     <string name="devices_indicator_limit">Ograničenje</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Pojačanje</string>
     <string name="devices_indicator_launch">Pokretanje</string>
     <string name="devices_indicator_home">Početna</string>
     <string name="devices_indicator_dnd">NEM</string>
@@ -463,4 +471,33 @@
     <string name="widget_config_theme_green_label">Zelena</string>
     <string name="widget_config_theme_red_label">Crvena</string>
     <string name="widget_config_theme_custom_label">Prilagođeno</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Ekvilajzer</string>
+    <string name="eq_bands_label">Pojasevi</string>
+    <string name="eq_mini_graph_desc">Konfigurirani pojasevi ekvilajzera</string>
+    <string name="eq_enable_label">Koristi ekvilajzer</string>
+    <string name="eq_disabled_hint">Isključeno, tvoje postavke su spremljene, ali još ne utječu na zvuk.</string>
+    <string name="eq_status_active_label">EQ aktivan za %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ aktivan za više aplikacija</string>
+    <string name="eq_status_no_control_label">Otkriven je %1$s, ali EQ nije mogao preuzeti kontrolu</string>
+    <string name="eq_status_no_control_headline">Otkriven je %1$s</string>
+    <string name="eq_status_no_control_detail">EQ nije mogao preuzeti kontrolu nad zvukom te aplikacije</string>
+    <string name="eq_status_multiple_recent_label">Najnovije: %1$s</string>
+    <string name="eq_status_since_label">Sesija započeta %1$s</string>
+    <string name="eq_status_waiting_label">Čeka se podržana glazbena aplikacija, pokreni reprodukciju da čuješ učinak</string>
+    <string name="eq_status_inactive_label">Trenutno nije aktivan za ovaj uređaj</string>
+    <string name="eq_status_generic_app_label">glazbena aplikacija</string>
+    <string name="eq_boost_label">Pojačanje glasnoće</string>
+    <string name="eq_boost_hint">Sve čini glasnijim uz pojaseve. Previše pojačanja može izobličiti zvuk.</string>
+    <string name="eq_unsupported_msg">Ovaj telefon ne nudi ekvilajzer koji možemo koristiti.</string>
+    <string name="eq_info_msg">Radi s aplikacijama koje podržavaju sustavne ekvilajzere, npr. Spotify ili YouTube Music. Utječe na sav zvuk iz tih aplikacija dok je ovaj uređaj aktivan. Ako se nešto već reproducira, ponovno pokreni reprodukciju da čuješ promjenu.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Ravno</string>
+    <string name="eq_preset_bass_boost_label">Pojačanje basa</string>
+    <string name="eq_preset_bass_reducer_label">Smanjenje basa</string>
+    <string name="eq_preset_treble_boost_label">Pojačanje visokih tonova</string>
+    <string name="eq_preset_vocal_label">Vokal</string>
+    <string name="eq_preset_loudness_label">Glasnoća</string>
 </resources>

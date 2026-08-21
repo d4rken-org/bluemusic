@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abunəlik hələ də aktivdir</string>
     <string name="upgrade_screen_sub_still_renewing_message">Abunəliyiniz hələ də yenilənməyə təyin edilib. Əvvəlcə onu Google Play-də ləğv edin, sonra birdəfəlik alışı almaq üçün geri qayıdın — bu şəkildə iki dəfə ödəniş almayacaqsınız.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Google Play ilə alışlarınızı yoxlaya bilmədik. Lütfən bağlantınızı yoxlayın və yenidən cəhd edin.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Ödəniş gözləntidə</string>
+    <string name="upgrade_screen_pending_card_body">Google Play hələ ödənişinizi emal edir. Ödəniş keçdikdən sonra Pro öz-özünə açılır. Bəzi ödəniş metodları vaxt tələb edir, başqa heç nə etməniz lazım deyil.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play ödənişi hələ emal olunan bir alışı tapdı. Ödəniş keçdikdən sonra Pro öz-özünə açılacaq.</string>
     <string name="upgrades_gplay_already_owned_error_title">Artıq alınıb</string>
     <string name="upgrades_gplay_already_owned_error_description">Alışınızı bərpa etmək üçün \"Alışı bərpa et\" seçimindən istifadə edin. Problem davam edərsə, Google Play keşini təmizləməyə və cihazınızı yenidən başlatmağa çalışın.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play xətası</string>

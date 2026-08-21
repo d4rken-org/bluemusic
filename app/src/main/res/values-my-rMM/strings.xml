@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">အမည်ပြောင်းမည်</string>
     <string name="devices_device_config_enabled_label">ဖွင့်ထားသည်</string>
     <string name="devices_device_config_enabled_desc">ဤကိရိယာ ချိတ်ဆက်သောအခါ တုံ့ပြန်မည်</string>
+    <string name="devices_device_config_equalizer_label">အိကွလိုင်ဇာ</string>
+    <string name="devices_device_config_equalizer_desc">ဤကိရိယာအတွက် ညီမျှစာစီစဉ်ဖြင့်အကွက်များနှင့် အသံအတိုးကို ချိန်ညှိပါ။ Android စနစ်ညီမျှစာစီစဉ်ကို ခိုင်လုံစွာကိုင်တွယ်သည့် ဂီတအက်ပ်များကျွန်းမှသာ အလုပ်လုပ်ပါသည်။</string>
+    <string name="devices_device_config_equalizer_boost_label">အသံအတိုး - %1$s</string>
     <string name="devices_device_config_section_timing_label">အချိန်ကိုက်မှု</string>
     <string name="devices_device_config_monitoring_duration_label">စောင့်ကြည့်ချိန်</string>
     <string name="devices_device_config_monitoring_duration_desc">ချိန်ညှိမှုများ ပြုလုပ်ပြီးနောက် နောက်ထပ် အသံပြောင်းလဲမှုများကို ပိတ်ဆို့ထားမည့် မီလီဆင့် အချိန်ကာလ။</string>
@@ -314,6 +317,7 @@
     <string name="label_add_device">ကိရိယာ ထည့်မည်</string>
     <string name="label_just_a_moment_please">ခဏစောင့်ပါ</string>
     <string name="label_notification_channel_status">အခြေအနေ</string>
+    <string name="label_notification_channel_setup">အစ်တင်တည်ဆောက်ခြင်း လိုအပ်ပါသည်</string>
     <string name="monitor_notification_starting">စတင်နေပါသည်…</string>
     <string name="action_set">သတ်မှတ်မည်</string>
     <string name="action_cancel">ပယ်ဖျက်</string>
@@ -332,6 +336,7 @@
     <string name="upgrade_benefit_theme_customization">အပြင်အဆင်၊ ပုံစံနှင့် အရောင် စိတ်ကြိုက်ပြင်ဆင်မှု</string>
     <string name="upgrade_benefit_power_controls">အသံအတိုးအကျယ် လော့ခ်နှင့် နှုန်ကန့်သတ်ခြင်း</string>
     <string name="upgrade_benefit_support">လွတ်လပ်သော ဖန်တီးမှုကို ပံ့ပိုးပါ</string>
+    <string name="upgrade_benefit_equalizer">• ကိရိယာအလိုက် ညီမျှစာစီစဉ် (စနစ်ညီမျှစာစီစဉ်ပံ့ပိုးပေးသည့် ဂီတအက်ပ်များအတွက်)</string>
     <string name="description_intro_tap_the_button">ပထမဆုံး ကိရိယာ ထည့်ခြင်းဖြင့် စတင်ပါ။</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ပိတ်ထားသည်။</string>
     <string name="title_bluetooth_is_off">Bluetooth ပိတ်ထားသည်</string>
@@ -391,6 +396,7 @@
     <string name="battery_optimization_fix_action">ပိုမိုကောင်းမွန်အောင် ပြုလုပ်ခြင်း ပိတ်မည်</string>
     <string name="android10_applaunch_hint_title">အခြားအက်ပ်များအပေါ်တွင်ပြသခွင့်ပြုချက်</string>
     <string name="android10_applaunch_hint_message">Android 10+ တွင်အက်ပ်များစတင်ခြင်း၊ပင်မမျက်နှာပြင်ကိုပြသခြင်းသို့မဟုတ်ချိတ်ဆက်စဉ်နောက်ခံမှမျက်နှာပြင်နိုးထားစေရန်အတွက်အထူးခွင့်ပြုချက်လိုအပ်သည်။ \"အခြားအက်ပ်များအပေါ်တွင်ပြသခွင့်ပြုချက်\" ကိုပေးအပ်ပါ။</string>
+    <string name="android10_applaunch_oem_hint">အချို့ထုတ်လုပ်သူများသည် ဒုတိယခွင့်ပြုချက် လိုအပ်ပါသည်။ ခွင့်ပြုချက်ပေးပြီးနောက်လည်း အလုပ်မလုပ်ပါကျ အကျအောင်စက်၏ အက်ပ်ခွင့်ပြုချက်များတွင် နောက်ခံပပ်အပ်ပ်သို့မဟုတ် နောက်ခံစတင်ခွင့်ပြုချက်ကိုရှာဖွေပါ။</string>
     <string name="notification_permission_hint_title">အကြောင်းကြားချက် ခွင့်ပြုချက်</string>
     <string name="notification_permission_hint_message">အသံ ချိန်ညှိမှု ပြုလုပ်စဉ် အခြေအနေ မွမ်းမံချက်များ ကြည့်ရှုရန် အကြောင်းကြားချက် ခွင့်ပြုချက် ပေးပါ။</string>
     <string name="dnd_access_hint_title">မနှောင့်ယှက်ရ ဝင်ရောက်ခွင့်</string>
@@ -425,6 +431,8 @@
     <string name="devices_indicator_observe">စောင့်ကြည့်</string>
     <string name="devices_indicator_disconnect">ဖြတ်တောက်</string>
     <string name="devices_indicator_limit">ကန့်သတ်</string>
+    <string name="devices_indicator_eq">ညီမျှစာစီစဉ်</string>
+    <string name="devices_indicator_boost">အတိုး</string>
     <string name="devices_indicator_launch">စတင်</string>
     <string name="devices_indicator_home">ပင်မ</string>
     <string name="devices_indicator_dnd">မနှောင့်ယှက်နှင့်</string>
@@ -453,4 +461,33 @@
     <string name="widget_config_theme_green_label">စိမ်းရောင်</string>
     <string name="widget_config_theme_red_label">နီရောင်</string>
     <string name="widget_config_theme_custom_label">စိတ်ကြိုက်</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">အိကွလိုင်ဇာ</string>
+    <string name="eq_bands_label">အကွက်များ</string>
+    <string name="eq_mini_graph_desc">ထည့သွင်းစီစဉ်ထားသည့် ညီမျှစာစီစဉ်အကွက်များ</string>
+    <string name="eq_enable_label">ညီမျှစာစီစဉ်အားသုံးစွဲပါ</string>
+    <string name="eq_disabled_hint">ပိတ်ထားခြင်း၊ သင့် အပြင်သွင်းချက်များသည် သိမ်းဆည်းထားသာ်လည်း သေချာပှဩင်း အသံအတ်သက်ရောက်စေမည်မဟုတ်ပါ။</string>
+    <string name="eq_status_active_label">ညီမျှစာစီစဉ် %1$s အတွက် စတင်နေသည်</string>
+    <string name="eq_status_active_multiple_label">ညီမျှစာစီစဉ် အများအပြားအက်ပ်များအတွက် စတင်နေသည်</string>
+    <string name="eq_status_no_control_label">%1$s ကိုရှာတွဲ့သို့လည်း ညီမျှစာစီစဉ်သည် ထိန်းချုပ်မှုကို မခွင့်ပြုပါ</string>
+    <string name="eq_status_no_control_headline">%1$s ကိုရှာတွဲ့သည်</string>
+    <string name="eq_status_no_control_detail">ညီမျှစာစီစဉ်သည် အသံအားထိန်းချုပ်မှုကို မခွင့်ပြုပါ</string>
+    <string name="eq_status_multiple_recent_label">နောက်ဆုံး - %1$s</string>
+    <string name="eq_status_since_label">အထွက်စတင်သည် %1$s</string>
+    <string name="eq_status_waiting_label">ခိုင်လုံသည့် ဂီတအက်ပ်များအတွက် စောင့်ဆိိုင်းသည်။ အကျိုးသက်ရိုက်မှုကိုကြားရန် ပလေခုခံကိုစတင်ပါ</string>
+    <string name="eq_status_inactive_label">ယခုအခါ ဤကိရိယာအတွက် စတင်မနေပါ</string>
+    <string name="eq_status_generic_app_label">ဂီတအက်ပ်</string>
+    <string name="eq_boost_label">အသံအတိုး</string>
+    <string name="eq_boost_hint">အကွက်များအပေါ်သည့် အရာအားလုံးကိုပိုမိုကြီးမားစေပါသည်။ အတိုးများများသည် အသံအားပုံပျက်စေနိုင်ပါသည်။</string>
+    <string name="eq_unsupported_msg">ဤအကျအောင်စက်သည် ကျွန်ုပ်တို့သုံးစွဲနိုင်သည့် ညီမျှစာစီစဉ်ပစ္စည်းကိုမပေးလိုပါ။</string>
+    <string name="eq_info_msg">စနစ်ညီမျှစာစီစဉ်အားခိုင်လုံစွာကိုင်တွယ်သည့် အက်ပ်များ ဥပမာ Spotify သို့မဟုတ် YouTube Music နှင့်အလုပ်လုပ်ပါသည်။ ဤကိရိယာကျေးဇူးတင်သည့်အခါ ထိုအက်ပ်များမှအသံအားလုံးကိုအကျိုးသက်ရောက်စေပါသည်။ အရာခိုင်လုံသည့်အခါ ပြောင်းလဲမှုကိုကြားရန် ပလေခုခံကိုပြန်စတင်ပါ။</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">အညီ</string>
+    <string name="eq_preset_bass_boost_label">အောက်အသံအတိုး</string>
+    <string name="eq_preset_bass_reducer_label">အောက်အသံလျှော့ခွင်</string>
+    <string name="eq_preset_treble_boost_label">အပေါ်အသံအတိုး</string>
+    <string name="eq_preset_vocal_label">အသံသီခွင်း</string>
+    <string name="eq_preset_loudness_label">အသံအခြင်း</string>
 </resources>

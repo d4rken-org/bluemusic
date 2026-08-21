@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">La subscripció encara està activa</string>
     <string name="upgrade_screen_sub_still_renewing_message">La vostra subscripció encara està configurada per renovar-se. Cancel·leu-la primer a Google Play i després torneu per comprar la compra única; així no us cobraran dues vegades.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">No vam poder comprovar les teves compres a Google Play. Comprova la connexió i intenta-ho de nou.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Pagament pendent</string>
+    <string name="upgrade_screen_pending_card_body">Google Play segueix processant el teu pagament. Pro es desbloqueja per si sol una vegada que el pagament es processa. Alguns mètodes de pagament triguen una estona, no cal que facis res més.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play va trobar una compra el pagament de la qual segueix sent processat. Pro es desbloqueja per si sol una vegada que el pagament es processa.</string>
     <string name="upgrades_gplay_already_owned_error_title">Ja comprat</string>
     <string name="upgrades_gplay_already_owned_error_description">Feu servir l\'opció «Restaura la compra» per restaurar la compra. Si el problema persisteix, proveu d\'esborrar la memòria cau del Google Play i reinicieu el dispositiu.</string>
     <string name="upgrades_gplay_internal_error_title">Error del Google Play</string>

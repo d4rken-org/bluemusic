@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">সাবস্ক্রিপশন এখনও সক্রিয়</string>
     <string name="upgrade_screen_sub_still_renewing_message">আপনার সাবস্ক্রিপশন এখনও নবায়নের জন্য সেট করা আছে। প্রথমে Google Play-তে এটি বাতিল করুন, তারপর একবারের ক্রয় কিনতে ফিরে আসুন — এভাবে আপনার কাছ থেকে দুইবার চার্জ নেওয়া হবে না।</string>
+    <string name="upgrade_screen_purchase_check_failed_message">আমরা Google Play এর সাথে আপনার ক্রয় চেক করতে পারিনি। অনুগ্রহ করে আপনার সংযোগ চেক করুন এবং আবার চেষ্টা করুন।</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">পেমেন্ট অপেক্ষমাণ</string>
+    <string name="upgrade_screen_pending_card_body">Google Play এখনও আপনার পেমেন্ট প্রক্রিয়া করছে। পেমেন্ট সম্পন্ন হলে Pro নিজেই আনলক হয়ে যাবে। কিছু পেমেন্ট পদ্ধতির সময় লাগে, আর কিছুই করার নেই।</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play একটি ক্রয় খুঁজে পেয়েছে যার পেমেন্ট এখনও প্রক্রিয়া করা হচ্ছে। পেমেন্ট সম্পন্ন হলে Pro নিজেই আনলক হয়ে যাবে।</string>
     <string name="upgrades_gplay_already_owned_error_title">ইতিমধ্যে কেনা হয়েছে</string>
     <string name="upgrades_gplay_already_owned_error_description">আপনার ক্রয় পুনরুদ্ধার করতে \"ক্রয় পুনরুদ্ধার করুন\" অপশনটি ব্যবহার করুন। সমস্যা থেকেই গেলে, Google Play ক্যাশে সাফ করে আপনার ডিভাইস পুনরায় চালু করার চেষ্টা করুন।</string>
     <string name="upgrades_gplay_internal_error_title">Google Play ত্রুটি</string>

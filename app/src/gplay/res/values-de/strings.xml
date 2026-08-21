@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abo noch aktiv</string>
     <string name="upgrade_screen_sub_still_renewing_message">Dein Abo wird noch verlängert. Kündige es zuerst in Google Play und komm dann zurück, um den einmaligen Kauf zu tätigen — so wirst du nicht doppelt belastet.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Wir konnten deine Käufe nicht bei Google Play überprüfen. Bitte überprüfe deine Verbindung und versuche es erneut.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Zahlung ausstehend</string>
+    <string name="upgrade_screen_pending_card_body">Google Play verarbeitet deine Zahlung noch. Pro wird automatisch freigeschaltet, sobald die Zahlung abgeschlossen ist. Manche Zahlungsmethoden dauern etwas länger, du musst nichts weiter tun.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play hat einen Kauf gefunden, dessen Zahlung noch verarbeitet wird. Pro wird automatisch freigeschaltet, sobald die Zahlung abgeschlossen ist.</string>
     <string name="upgrades_gplay_already_owned_error_title">Bereits gekauft</string>
     <string name="upgrades_gplay_already_owned_error_description">Verwende die Option \"Auswahl wiederherstellen\", um Deinen Kauf wiederherzustellen. Falls das Problem weiterhin besteht, versuche den Google Play Cache zu leeren und Dein Gerät neu zu starten.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play Fehler</string>

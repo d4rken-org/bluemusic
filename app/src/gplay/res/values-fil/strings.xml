@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Aktibo pa rin ang subscription</string>
     <string name="upgrade_screen_sub_still_renewing_message">Naka-set pa rin mag-renew ang iyong subscription. I-cancel muna ito sa Google Play, tapos bumalik para bilhin ang one-time purchase — sa ganoong paraan hindi ka masisingil nang dalawang beses.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Hindi namin masuri ang iyong mga binili gamit ang Google Play. Pakisuri ang iyong koneksyon at subukan muli.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Nakabinbin ang Pagbabayad</string>
+    <string name="upgrade_screen_pending_card_body">Pinoproseso pa ng Google Play ang iyong bayad. Awtomatikong mabubuksan ang Pro kapag natapos na ang bayad. Nagtatagal ang ilang paraan ng pagbabayad, wala ka nang kailangang gawin pa.</string>
+    <string name="upgrade_screen_pending_dialog_message">May nakitang binili ang Google Play na pinoproseso pa ang bayad. Awtomatikong mabubuksan ang Pro kapag natapos na ang bayad.</string>
     <string name="upgrades_gplay_already_owned_error_title">Nabili na</string>
     <string name="upgrades_gplay_already_owned_error_description">Gamitin ang opsyong \"I-restore ang purchase\" para i-restore ang iyong purchase. Kung nagpapatuloy ang isyu, subukang i-clear ang Google Play cache at i-restart ang iyong device.</string>
     <string name="upgrades_gplay_internal_error_title">Error sa Google Play</string>

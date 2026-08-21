@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Nimeä uudelleen</string>
     <string name="devices_device_config_enabled_label">Käytössä</string>
     <string name="devices_device_config_enabled_desc">Reagoi tähän laitteeseen, kun se yhdistää</string>
+    <string name="devices_device_config_equalizer_label">Taajuuskorjain</string>
+    <string name="devices_device_config_equalizer_desc">Säädä tämän laitteen taajuuskaistoja ja äänenvoimakkuuden tehostusta. Toimii vain musiikkisovelluksissa, jotka tukevat Androidin järjestelmän taajuuskorjainta.</string>
+    <string name="devices_device_config_equalizer_boost_label">Äänenvoimakkuuden tehostus: %1$s</string>
     <string name="devices_device_config_section_timing_label">Ajoitus</string>
     <string name="devices_device_config_monitoring_duration_label">Monitoroinnin kesto</string>
     <string name="devices_device_config_monitoring_duration_desc">Aikajakson millisekunteissa muutosten jälkeen, minkä aikana uudet äänentaso muutokset estetään.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Lisää laite</string>
     <string name="label_just_a_moment_please">Pieni hetki, odotathan.</string>
     <string name="label_notification_channel_status">Tila</string>
+    <string name="label_notification_channel_setup">Määritys vaaditaan</string>
     <string name="monitor_notification_starting">Käynnistetään…</string>
     <string name="action_set">Aseta</string>
     <string name="action_cancel">Peruuta</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Teeman, tyylin ja värin mukauttaminen</string>
     <string name="upgrade_benefit_power_controls">Äänenvoimakkuuden lukitus ja nopeusrajoitus</string>
     <string name="upgrade_benefit_support">Tue itsenäistä kehitystä</string>
+    <string name="upgrade_benefit_equalizer">• Laitekohtainen taajuuskorjain (musiikkisovelluksille, jotka tukevat järjestelmän taajuuskorjainta)</string>
     <string name="description_intro_tap_the_button">Aloita lisäämällä ensimmäinen laitteesi.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ei ole käytössä.</string>
     <string name="title_bluetooth_is_off">Bluetooth on pois päältä</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Poista optimointi käytöstä</string>
     <string name="android10_applaunch_hint_title">Näyttö muiden sovellusten päällä -oikeus</string>
     <string name="android10_applaunch_hint_message">Android 10+ vaatii erityisen oikeuden sovellusten käynnistämiseen, kotinäytön näyttämiseen tai näytön herättämiseen taustalla yhteyden muodostuessa. Myönnä \"Näyttö muiden sovellusten päällä\" -oikeus.</string>
+    <string name="android10_applaunch_oem_hint">Jotkin valmistajat vaativat tämän lisäksi toisen luvan. Jos se ei toimi vieläkään luvan myöntämisen jälkeen, etsi puhelimesi sovellusluvista taustalla näkyvien ponnahdusikkunoiden tai taustakäynnistyksen asetusta.</string>
     <string name="notification_permission_hint_title">Ilmoituskäyttöoikeus</string>
     <string name="notification_permission_hint_message">Myönnä ilmoituskäyttöoikeus nähdäksesi tilatuspäivitykset äänenvoimakkuuksia säädettäessä.</string>
     <string name="dnd_access_hint_title">Älä häiritse -käyttöoikeus</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Tarkkailu</string>
     <string name="devices_indicator_disconnect">Katkaise</string>
     <string name="devices_indicator_limit">Rajaus</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Tehostus</string>
     <string name="devices_indicator_launch">Käynnistä</string>
     <string name="devices_indicator_home">Koti</string>
     <string name="devices_indicator_dnd">ÄH</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Vihreä</string>
     <string name="widget_config_theme_red_label">Punainen</string>
     <string name="widget_config_theme_custom_label">Mukautettu</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Taajuuskorjain</string>
+    <string name="eq_bands_label">Kaistat</string>
+    <string name="eq_mini_graph_desc">Määritetyt taajuuskorjaimen kaistat</string>
+    <string name="eq_enable_label">Käytä taajuuskorjainta</string>
+    <string name="eq_disabled_hint">Pois päältä. Asetuksesi on tallennettu, mutta ne eivät vielä vaikuta ääneen.</string>
+    <string name="eq_status_active_label">EQ aktiivinen sovellukselle %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ aktiivinen useille sovelluksille</string>
+    <string name="eq_status_no_control_label">%1$s havaittiin, mutta EQ ei saanut hallintaa</string>
+    <string name="eq_status_no_control_headline">%1$s havaittiin</string>
+    <string name="eq_status_no_control_detail">EQ ei saanut hallintaa sen äänestä</string>
+    <string name="eq_status_multiple_recent_label">Viimeisin: %1$s</string>
+    <string name="eq_status_since_label">Istunto alkoi %1$s</string>
+    <string name="eq_status_waiting_label">Odottaa tuettua musiikkisovellusta, aloita toisto kuullaksesi vaikutuksen</string>
+    <string name="eq_status_inactive_label">Ei tällä hetkellä käytössä tälle laitteelle</string>
+    <string name="eq_status_generic_app_label">musiikkisovellus</string>
+    <string name="eq_boost_label">Äänenvoimakkuuden tehostus</string>
+    <string name="eq_boost_hint">Tekee kaikesta äänekkäämpää kaistojen lisäksi. Suuri tehostus voi säröyttää äänen.</string>
+    <string name="eq_unsupported_msg">Tämä puhelin ei tarjoa taajuuskorjainta, jota voimme käyttää.</string>
+    <string name="eq_info_msg">Toimii sovelluksissa, jotka tukevat järjestelmän taajuuskorjaimia, esim. Spotify tai YouTube Music. Se vaikuttaa kaikkeen näiden sovellusten ääneen, kun tämä laite on aktiivinen. Jos jotain soi jo, käynnistä toisto uudelleen kuullaksesi muutoksen.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Tasainen</string>
+    <string name="eq_preset_bass_boost_label">Bassotehostus</string>
+    <string name="eq_preset_bass_reducer_label">Bassonvaimennus</string>
+    <string name="eq_preset_treble_boost_label">Diskanttitehostus</string>
+    <string name="eq_preset_vocal_label">Laulu</string>
+    <string name="eq_preset_loudness_label">Äänekkyys</string>
 </resources>

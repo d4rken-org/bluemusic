@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Badilisha jina</string>
     <string name="devices_device_config_enabled_label">Imewashwa</string>
     <string name="devices_device_config_enabled_desc">Jibu kwa kifaa hiki kinapounganishwa</string>
+    <string name="devices_device_config_equalizer_label">Ikwalaiza</string>
+    <string name="devices_device_config_equalizer_desc">Rekebisha bendi za kisawazishi (EQ) na ongezeko la sauti kwa kifaa hiki. Hufanya kazi tu na programu za muziki zinazotumia kisawazishi cha mfumo cha Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Ongezeko la sauti: %1$s</string>
     <string name="devices_device_config_section_timing_label">Muda</string>
     <string name="devices_device_config_monitoring_duration_label">Muda wa ufuatiliaji</string>
     <string name="devices_device_config_monitoring_duration_desc">Muda kwa milisekunde, baada ya marekebisho kufanywa, ambapo mabadiliko yoyote zaidi ya sauti yatazuiwa.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Ongeza kifaa</string>
     <string name="label_just_a_moment_please">Subiri kidogo, tafadhali.</string>
     <string name="label_notification_channel_status">Hali</string>
+    <string name="label_notification_channel_setup">Usanidi unahitajika</string>
     <string name="monitor_notification_starting">Inaanza…</string>
     <string name="action_set">Weka</string>
     <string name="action_cancel">Ghairi</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Ubinafsishaji wa mandhari, mtindo na rangi</string>
     <string name="upgrade_benefit_power_controls">Kufuli cha sauti na ukomo wa kiwango</string>
     <string name="upgrade_benefit_support">Saidia maendeleo ya kujitegemea</string>
+    <string name="upgrade_benefit_equalizer">• Kisawazishi cha kila kifaa (kwa programu za muziki zinazotumia kisawazishi cha mfumo)</string>
     <string name="description_intro_tap_the_button">Anza kwa kuongeza kifaa chako cha kwanza.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth imezimwa.</string>
     <string name="title_bluetooth_is_off">Bluetooth Imezimwa</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Zima uboreshaji</string>
     <string name="android10_applaunch_hint_title">Ruhusa ya kuonyesha juu ya programu</string>
     <string name="android10_applaunch_hint_message">Android 10+ inahitaji ruhusa maalum kuzindua programu, kuonyesha skrini ya nyumbani, au kuamsha skrini kutoka mandharinyuma wakati wa uunganisho. Toa ruhusa ya \"Kuonyesha juu ya programu zingine\".</string>
+    <string name="android10_applaunch_oem_hint">Baadhi ya watengenezaji wanahitaji ruhusa ya pili zaidi ya hii. Ikiwa bado haifanyi kazi baada ya kuruhusu, tafuta mpangilio wa dirisha ibukizi la chinichini au uzinduzi wa chinichini katika ruhusa za programu za simu yako.</string>
     <string name="notification_permission_hint_title">Ruhusa ya arifa</string>
     <string name="notification_permission_hint_message">Toa ruhusa ya arifa kuona masasisho ya hali wakati wa kubadilisha sauti.</string>
     <string name="dnd_access_hint_title">Ufikiaji wa Usisumbue</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Angalia</string>
     <string name="devices_indicator_disconnect">Tenga</string>
     <string name="devices_indicator_limit">Kizuizi</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Ongezeko</string>
     <string name="devices_indicator_launch">Zindua</string>
     <string name="devices_indicator_home">Nyumbani</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Kijani</string>
     <string name="widget_config_theme_red_label">Nyekundu</string>
     <string name="widget_config_theme_custom_label">Desturi</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Ikwalaiza</string>
+    <string name="eq_bands_label">Bendi</string>
+    <string name="eq_mini_graph_desc">Bendi za kisawazishi zilizowekwa</string>
+    <string name="eq_enable_label">Tumia kisawazishi</string>
+    <string name="eq_disabled_hint">Imezimwa, mipangilio yako imehifadhiwa lakini haitaathiri sauti bado.</string>
+    <string name="eq_status_active_label">EQ inatumika kwa %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ inatumika kwa programu nyingi</string>
+    <string name="eq_status_no_control_label">%1$s imegunduliwa, lakini EQ haikuweza kuchukua udhibiti</string>
+    <string name="eq_status_no_control_headline">%1$s imegunduliwa</string>
+    <string name="eq_status_no_control_detail">EQ haikuweza kuchukua udhibiti wa sauti yake</string>
+    <string name="eq_status_multiple_recent_label">Ya hivi karibuni: %1$s</string>
+    <string name="eq_status_since_label">Kipindi kilianza %1$s</string>
+    <string name="eq_status_waiting_label">Inasubiri programu ya muziki inayotumika, anzisha uchezaji ili kusikia athari</string>
+    <string name="eq_status_inactive_label">Haitumiki kwa kifaa hiki kwa sasa</string>
+    <string name="eq_status_generic_app_label">programu ya muziki</string>
+    <string name="eq_boost_label">Ongezeko la sauti</string>
+    <string name="eq_boost_hint">Hufanya kila kitu kuwa na sauti kubwa zaidi ya bendi. Ongezeko kubwa linaweza kuharibu ubora wa sauti.</string>
+    <string name="eq_unsupported_msg">Simu hii haina kisawazishi tunachoweza kutumia.</string>
+    <string name="eq_info_msg">Hufanya kazi na programu zinazotumia visawazishi vya mfumo, mfano Spotify au YouTube Music. Huathiri sauti zote kutoka programu hizo wakati kifaa hiki kinatumika. Ikiwa kitu tayari kinachezwa, anzisha upya uchezaji ili kusikia mabadiliko.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Bapa</string>
+    <string name="eq_preset_bass_boost_label">Ongezeko la besi</string>
+    <string name="eq_preset_bass_reducer_label">Punguzo la besi</string>
+    <string name="eq_preset_treble_boost_label">Ongezeko la sauti za juu</string>
+    <string name="eq_preset_vocal_label">Sauti</string>
+    <string name="eq_preset_loudness_label">Ukubwa wa sauti</string>
 </resources>

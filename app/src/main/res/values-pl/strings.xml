@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Zmień nazwę</string>
     <string name="devices_device_config_enabled_label">Włączone</string>
     <string name="devices_device_config_enabled_desc">Reaguj na to urządzenie po podłączeniu</string>
+    <string name="devices_device_config_equalizer_label">Korektor</string>
+    <string name="devices_device_config_equalizer_desc">Dostosuj pasma korektora i wzmocnienie głośności dla tego urządzenia. Działa tylko z aplikacjami muzycznymi obsługującymi systemowy korektor Androida.</string>
+    <string name="devices_device_config_equalizer_boost_label">Wzmocnienie głośności: %1$s</string>
     <string name="devices_device_config_section_timing_label">Czas</string>
     <string name="devices_device_config_monitoring_duration_label">Monitoring czasu trwania</string>
     <string name="devices_device_config_monitoring_duration_desc">Czas trwania w milisekundach, po wykonaniu dostosowania, w czasie którego kolejne zmiany zostaną zablokowane.</string>
@@ -327,6 +330,7 @@ Karol Szastok (K4r0lSz);</string>
     <string name="label_add_device">Dodaj urządzenie</string>
     <string name="label_just_a_moment_please">Chwileczkę.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="label_notification_channel_setup">Wymagana konfiguracja</string>
     <string name="monitor_notification_starting">Uruchamianie…</string>
     <string name="action_set">Ustaw</string>
     <string name="action_cancel">Anuluj</string>
@@ -345,6 +349,7 @@ Karol Szastok (K4r0lSz);</string>
     <string name="upgrade_benefit_theme_customization">Personalizacja motywu, stylu i kolorów</string>
     <string name="upgrade_benefit_power_controls">Blokada głośności i ograniczanie szybkości</string>
     <string name="upgrade_benefit_support">Wspieraj niezależny rozwój</string>
+    <string name="upgrade_benefit_equalizer">• Korektor dla każdego urządzenia (dla aplikacji muzycznych obsługujących systemowy korektor)</string>
     <string name="description_intro_tap_the_button">Rozpocznij od dodania pierwszego urządzenia.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth jest wyłączony.</string>
     <string name="title_bluetooth_is_off">Bluetooth jest wyłączony</string>
@@ -407,6 +412,7 @@ Karol Szastok (K4r0lSz);</string>
     <string name="battery_optimization_fix_action">Wyłącz optymalizacje</string>
     <string name="android10_applaunch_hint_title">Uprawnienie do wyświetlania nad aplikacjami</string>
     <string name="android10_applaunch_hint_message">Android 10+ wymaga specjalnego uprawnienia do uruchamiania aplikacji, wyświetlania ekranu głównego lub włączania ekranu z tła po podłączeniu. Udziel uprawnienia „Wyświetlanie nad innymi aplikacjami”.</string>
+    <string name="android10_applaunch_oem_hint">Niektórzy producenci wymagają dodatkowego uprawnienia oprócz tego. Jeśli nadal nie działa po jego przyznaniu, poszukaj ustawienia wyskakujących okienek w tle lub uruchamiania w tle w uprawnieniach aplikacji swojego telefonu.</string>
     <string name="notification_permission_hint_title">Uprawnienie do powiadomień</string>
     <string name="notification_permission_hint_message">Przyznaj uprawnienie do powiadomień, aby widzieć aktualizacje stanu podczas dostosowywania głośności.</string>
     <string name="dnd_access_hint_title">Dostęp do trybu Nie przeszkadzać</string>
@@ -441,6 +447,8 @@ Karol Szastok (K4r0lSz);</string>
     <string name="devices_indicator_observe">Obserwuj</string>
     <string name="devices_indicator_disconnect">Rozłącz</string>
     <string name="devices_indicator_limit">Limit</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Wzmocnienie</string>
     <string name="devices_indicator_launch">Uruchom</string>
     <string name="devices_indicator_home">Dom</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -469,4 +477,33 @@ Karol Szastok (K4r0lSz);</string>
     <string name="widget_config_theme_green_label">Zielony</string>
     <string name="widget_config_theme_red_label">Czerwony</string>
     <string name="widget_config_theme_custom_label">Niestandardowy</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Korektor</string>
+    <string name="eq_bands_label">Pasma</string>
+    <string name="eq_mini_graph_desc">Skonfigurowane pasma korektora</string>
+    <string name="eq_enable_label">Używaj korektora</string>
+    <string name="eq_disabled_hint">Wyłączony, twoje ustawienia są zapisane, ale nie wpływają jeszcze na dźwięk.</string>
+    <string name="eq_status_active_label">Korektor aktywny dla %1$s</string>
+    <string name="eq_status_active_multiple_label">Korektor aktywny dla kilku aplikacji</string>
+    <string name="eq_status_no_control_label">Wykryto %1$s, ale korektor nie mógł przejąć kontroli</string>
+    <string name="eq_status_no_control_headline">Wykryto %1$s</string>
+    <string name="eq_status_no_control_detail">Korektor nie mógł przejąć kontroli nad dźwiękiem</string>
+    <string name="eq_status_multiple_recent_label">Ostatnio: %1$s</string>
+    <string name="eq_status_since_label">Sesja rozpoczęta %1$s</string>
+    <string name="eq_status_waiting_label">Oczekiwanie na obsługiwaną aplikację muzyczną, rozpocznij odtwarzanie, aby usłyszeć efekt</string>
+    <string name="eq_status_inactive_label">Obecnie nieaktywny dla tego urządzenia</string>
+    <string name="eq_status_generic_app_label">aplikacja muzyczna</string>
+    <string name="eq_boost_label">Wzmocnienie głośności</string>
+    <string name="eq_boost_hint">Sprawia, że wszystko jest głośniejsze, niezależnie od pasm. Zbyt duże wzmocnienie może zniekształcić dźwięk.</string>
+    <string name="eq_unsupported_msg">Ten telefon nie oferuje korektora, którego moglibyśmy użyć.</string>
+    <string name="eq_info_msg">Działa z aplikacjami obsługującymi systemowe korektory, np. Spotify lub YouTube Music. Wpływa na cały dźwięk z tych aplikacji, gdy to urządzenie jest aktywne. Jeśli coś już gra, uruchom odtwarzanie ponownie, aby usłyszeć zmianę.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Płaski</string>
+    <string name="eq_preset_bass_boost_label">Wzmocnienie basów</string>
+    <string name="eq_preset_bass_reducer_label">Redukcja basów</string>
+    <string name="eq_preset_treble_boost_label">Wzmocnienie wysokich tonów</string>
+    <string name="eq_preset_vocal_label">Wokal</string>
+    <string name="eq_preset_loudness_label">Głośność</string>
 </resources>

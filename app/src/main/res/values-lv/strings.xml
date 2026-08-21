@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Pārdēvēt</string>
     <string name="devices_device_config_enabled_label">Iespējots</string>
     <string name="devices_device_config_enabled_desc">Reģģēt uz šo ierīci, kad tā ir pievienota</string>
+    <string name="devices_device_config_equalizer_label">Ekvālaizators</string>
+    <string name="devices_device_config_equalizer_desc">Pielāgo ekvaizera joslas un skaļuma pastiprinājumu šai ierīcei. Darbojas tikai ar mūzikas lietotnēm, kas atbalsta Android sistēmas ekvaizeru.</string>
+    <string name="devices_device_config_equalizer_boost_label">Skaļuma pastiprinājums: %1$s</string>
     <string name="devices_device_config_section_timing_label">Laiks</string>
     <string name="devices_device_config_monitoring_duration_label">Uzraudzības ilgums</string>
     <string name="devices_device_config_monitoring_duration_desc">Ilgums milisekundēs, pēc ko tiek veikti pielagošanas, kuras laikā tiks bloķētas jebkādas turpmākas skaļuma izmaiņas.</string>
@@ -322,6 +325,7 @@
     <string name="label_add_device">Pievienot ierīci</string>
     <string name="label_just_a_moment_please">Uzgaņiet, lūdzu.</string>
     <string name="label_notification_channel_status">Stāvoklis</string>
+    <string name="label_notification_channel_setup">Nepieciešama iestatīšana</string>
     <string name="monitor_notification_starting">Uzsāk...</string>
     <string name="action_set">Iestatīt</string>
     <string name="action_cancel">Atcelt</string>
@@ -340,6 +344,7 @@
     <string name="upgrade_benefit_theme_customization">Temāta, stila un krāsu pielāgošana</string>
     <string name="upgrade_benefit_power_controls">Skaļuma bloķēšana un ātruma ierobežošana</string>
     <string name="upgrade_benefit_support">Atbalstīt neatkarīgu izstrādi</string>
+    <string name="upgrade_benefit_equalizer">• Katrai ierīcei individuāls ekvaizeris (mūzikas lietotnēm ar sistēmas ekvaizera atbalstu)</string>
     <string name="description_intro_tap_the_button">Sāciet, pievienojot savu pirmo ierīci.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ir atspējots.</string>
     <string name="title_bluetooth_is_off">Bluetooth ir izslēgts</string>
@@ -401,6 +406,7 @@
     <string name="battery_optimization_fix_action">Atspējot optimizācijas</string>
     <string name="android10_applaunch_hint_title">Rādīšanas virs lietotnēm atļauja</string>
     <string name="android10_applaunch_hint_message">Android 10+ nepieciešama īpaša atļauja, lai palaistu lietotnes, rādītu sākuma ekrānu vai pamodinātu ekrānu no fona, kad savienojas ierīce. Piešķiriet atļauju „Rādīšana virs citām lietotnēm“.</string>
+    <string name="android10_applaunch_oem_hint">Dažiem ražotājiem papildus šai ir nepieciešama vēl viena atļauja. Ja pēc tās piešķiršanas joprojām nedarbojas, tālruņa lietotņu atļaujās meklē iestatījumu par uznirstošo logu vai palaišanu fonā.</string>
     <string name="notification_permission_hint_title">Paziņojumu atļauja</string>
     <string name="notification_permission_hint_message">Piešķiriet paziņojumu atļauju, lai redzetu stāvokļa atjauninājumus, pielāgojot skaļumus.</string>
     <string name="dnd_access_hint_title">Netraukt piekļuves</string>
@@ -435,6 +441,8 @@
     <string name="devices_indicator_observe">Novērot</string>
     <string name="devices_indicator_disconnect">Atvienot</string>
     <string name="devices_indicator_limit">Ierobežot</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Pastiprinājums</string>
     <string name="devices_indicator_launch">Palaist</string>
     <string name="devices_indicator_home">Sākums</string>
     <string name="devices_indicator_dnd">NTR</string>
@@ -463,4 +471,33 @@
     <string name="widget_config_theme_green_label">Zaļa</string>
     <string name="widget_config_theme_red_label">Sarkana</string>
     <string name="widget_config_theme_custom_label">Pielāgots</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Ekvālaizators</string>
+    <string name="eq_bands_label">Joslas</string>
+    <string name="eq_mini_graph_desc">Konfigurētās ekvaizera joslas</string>
+    <string name="eq_enable_label">Izmantot ekvaizeru</string>
+    <string name="eq_disabled_hint">Izslēgts, tavi iestatījumi ir saglabāti, bet vēl neietekmē audio.</string>
+    <string name="eq_status_active_label">EQ aktīvs lietotnei %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ aktīvs vairākām lietotnēm</string>
+    <string name="eq_status_no_control_label">Tika atklāta %1$s, bet EQ nevarēja pārņemt kontroli</string>
+    <string name="eq_status_no_control_headline">Tika atklāta %1$s</string>
+    <string name="eq_status_no_control_detail">EQ nevarēja pārņemt kontroli pār tās audio</string>
+    <string name="eq_status_multiple_recent_label">Jaunākā: %1$s</string>
+    <string name="eq_status_since_label">Sesija sākta %1$s</string>
+    <string name="eq_status_waiting_label">Gaida atbalstītu mūzikas lietotni, sāc atskaņošanu, lai dzirdētu efektu</string>
+    <string name="eq_status_inactive_label">Pašlaik nav aktīvs šai ierīcei</string>
+    <string name="eq_status_generic_app_label">mūzikas lietotne</string>
+    <string name="eq_boost_label">Skaļuma pastiprinājums</string>
+    <string name="eq_boost_hint">Padara visu skaļāku papildus joslām. Liels pastiprinājums var izkropļot skaņu.</string>
+    <string name="eq_unsupported_msg">Šis tālrunis nenodrošina ekvaizeru, ko varam izmantot.</string>
+    <string name="eq_info_msg">Darbojas ar lietotnēm, kas atbalsta sistēmas ekvaizerus, piemēram, Spotify vai YouTube Music. Tas ietekmē visu audio no šīm lietotnēm, kamēr šī ierīce ir aktīva. Ja kaut kas jau atskaņojas, restartē atskaņošanu, lai dzirdētu izmaiņas.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Lineārs</string>
+    <string name="eq_preset_bass_boost_label">Basu pastiprinājums</string>
+    <string name="eq_preset_bass_reducer_label">Basu samazinājums</string>
+    <string name="eq_preset_treble_boost_label">Augsto toņu pastiprinājums</string>
+    <string name="eq_preset_vocal_label">Vokāls</string>
+    <string name="eq_preset_loudness_label">Skaļums</string>
 </resources>
