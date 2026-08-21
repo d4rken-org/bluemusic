@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abonimi ende aktiv</string>
     <string name="upgrade_screen_sub_still_renewing_message">Abonimi juaj është ende i caktuar për t\'u rinovuar. Anulojeni atë në Google Play fillimisht, pastaj kthehuni për të blerë blerjen njëherë — kështu nuk do të ngarkoheni dy herë.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Nuk mundëm të kontrollojmë blerjet e tua me Google Play. Kontrollo lidhjen tënde dhe provo përsëri.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Pagesa në pritje</string>
+    <string name="upgrade_screen_pending_card_body">Google Play po e përpunon ende pagesën tënde. Pro shkyçet automatikisht sapo pagesa të kryhet. Disa metoda pagese marrin kohë, nuk ka asgjë tjetër që duhet të bësh.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play gjeti një blerje, pagesa e së cilës ende po përpunohet. Pro shkyçet automatikisht sapo pagesa të kryhet.</string>
     <string name="upgrades_gplay_already_owned_error_title">Tashmë i blerë</string>
     <string name="upgrades_gplay_already_owned_error_description">Përdorni opsionin \"Rikthe blerjen\" për të rikthyer blerjen tuaj. Nëse problemi vazhdon, provoni të fshini memorjen cache të Google Play dhe të ristartoni pajisjen tuaj.</string>
     <string name="upgrades_gplay_internal_error_title">Gabim i Google Play</string>

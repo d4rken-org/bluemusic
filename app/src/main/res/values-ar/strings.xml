@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">إعادة تسمية</string>
     <string name="devices_device_config_enabled_label">مفعل</string>
     <string name="devices_device_config_enabled_desc">التفاعل مع هذا الجهاز عند الاتصال</string>
+    <string name="devices_device_config_equalizer_label">المعادل الصوتي</string>
+    <string name="devices_device_config_equalizer_desc">اضبط نطاقات موازن الصوت ومستوى تعزيز الصوت لهذا الجهاز. يعمل فقط مع تطبيقات الموسيقى التي تدعم موازن نظام أندرويد.</string>
+    <string name="devices_device_config_equalizer_boost_label">تعزيز الصوت: %1$s</string>
     <string name="devices_device_config_section_timing_label">التوقيت</string>
     <string name="devices_device_config_monitoring_duration_label">مدة المراقبة</string>
     <string name="devices_device_config_monitoring_duration_desc">مدة بالملي ثانية، بعد إجراء التعديلات، يتم خلالها حظر أي تغييرات إضافية في مستوى الصوت.</string>
@@ -334,6 +337,7 @@
     <string name="label_add_device">إضافة جهاز</string>
     <string name="label_just_a_moment_please">لحظة فقط، من فضلك.</string>
     <string name="label_notification_channel_status">الحالة</string>
+    <string name="label_notification_channel_setup">الإعداد مطلوب</string>
     <string name="monitor_notification_starting">جاري البدء…</string>
     <string name="action_set">ضبط</string>
     <string name="action_cancel">إلغاء</string>
@@ -352,6 +356,7 @@
     <string name="upgrade_benefit_theme_customization">تخصيص السمة والنمط واللون</string>
     <string name="upgrade_benefit_power_controls">قفل الصوت والحد من المعدل</string>
     <string name="upgrade_benefit_support">دعم التطوير المستقل</string>
+    <string name="upgrade_benefit_equalizer">• موازن صوت لكل جهاز على حدة (لتطبيقات الموسيقى التي تدعم موازن النظام)</string>
     <string name="description_intro_tap_the_button">ابدأ أولا بإضافة جهازك.</string>
     <string name="description_bluetooth_is_disabled">البلوتوث غير مفعل.</string>
     <string name="title_bluetooth_is_off">البلوتوث مغلق</string>
@@ -416,6 +421,7 @@
     <string name="battery_optimization_fix_action">تعطيل التحسينات</string>
     <string name="android10_applaunch_hint_title">إذن العرض فوق التطبيقات</string>
     <string name="android10_applaunch_hint_message">Android 10 والإصدارات الأحدث بحاجة إلى إذن خاص لتشغيل التطبيقات أو عرض الشاشة الرئيسية أو إيقاظ الشاشة من الخلفية عند الاتصال. امنح إذن \"العرض فوق التطبيقات الأخرى\".</string>
+    <string name="android10_applaunch_oem_hint">تحتاج بعض الشركات المصنّعة إلى إذن إضافي بجانب هذا الإذن. إذا استمرت المشكلة بعد منح الإذن، ابحث عن إعداد النوافذ المنبثقة في الخلفية أو التشغيل في الخلفية ضمن أذونات التطبيقات في هاتفك.</string>
     <string name="notification_permission_hint_title">إذن الإشعارات</string>
     <string name="notification_permission_hint_message">امنح إذن الإشعارات لرؤية تحديثات الحالة عند ضبط مستويات الصوت.</string>
     <string name="dnd_access_hint_title">وصول وضع عدم الإزعاج</string>
@@ -450,6 +456,8 @@
     <string name="devices_indicator_observe">مراقبة</string>
     <string name="devices_indicator_disconnect">قطع</string>
     <string name="devices_indicator_limit">حد</string>
+    <string name="devices_indicator_eq">موازن</string>
+    <string name="devices_indicator_boost">تعزيز</string>
     <string name="devices_indicator_launch">تشغيل</string>
     <string name="devices_indicator_home">الرئيسية</string>
     <string name="devices_indicator_dnd">عدم الإزعاج</string>
@@ -478,4 +486,33 @@
     <string name="widget_config_theme_green_label">أخضر</string>
     <string name="widget_config_theme_red_label">أحمر</string>
     <string name="widget_config_theme_custom_label">مخصص</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">المعادل الصوتي</string>
+    <string name="eq_bands_label">النطاقات</string>
+    <string name="eq_mini_graph_desc">نطاقات الموازن المضبوطة</string>
+    <string name="eq_enable_label">استخدام الموازن</string>
+    <string name="eq_disabled_hint">معطّل، إعداداتك محفوظة لكنها لن تؤثر على الصوت بعد.</string>
+    <string name="eq_status_active_label">الموازن نشط لـ%1$s</string>
+    <string name="eq_status_active_multiple_label">الموازن نشط لعدة تطبيقات</string>
+    <string name="eq_status_no_control_label">تم اكتشاف %1$s، لكن تعذّر على الموازن التحكم فيه</string>
+    <string name="eq_status_no_control_headline">تم اكتشاف %1$s</string>
+    <string name="eq_status_no_control_detail">تعذّر على الموازن التحكم في صوته</string>
+    <string name="eq_status_multiple_recent_label">الأحدث: %1$s</string>
+    <string name="eq_status_since_label">بدأت الجلسة %1$s</string>
+    <string name="eq_status_waiting_label">في انتظار تطبيق موسيقى مدعوم، ابدأ التشغيل لسماع التأثير</string>
+    <string name="eq_status_inactive_label">غير نشط لهذا الجهاز حاليًا</string>
+    <string name="eq_status_generic_app_label">تطبيق موسيقى</string>
+    <string name="eq_boost_label">تعزيز الصوت</string>
+    <string name="eq_boost_hint">يجعل كل شيء أعلى صوتًا إضافة إلى النطاقات. التعزيز الكبير قد يشوّه الصوت.</string>
+    <string name="eq_unsupported_msg">لا يوفر هذا الهاتف موازن صوت يمكننا استخدامه.</string>
+    <string name="eq_info_msg">يعمل مع التطبيقات التي تدعم موازنات النظام، مثل Spotify أو YouTube Music. يؤثر على كل الصوت الصادر من تلك التطبيقات أثناء نشاط هذا الجهاز. إذا كان هناك تشغيل جارٍ بالفعل، أعد بدء التشغيل لسماع التغيير.</string>
+    <string name="eq_frequency_hz_label">%1$s هرتز</string>
+    <string name="eq_frequency_khz_label">%1$s كيلوهرتز</string>
+    <string name="eq_gain_db_label">%1$s ديسيبل</string>
+    <string name="eq_preset_flat_label">مسطّح</string>
+    <string name="eq_preset_bass_boost_label">تعزيز الجهير</string>
+    <string name="eq_preset_bass_reducer_label">تقليل الجهير</string>
+    <string name="eq_preset_treble_boost_label">تعزيز الحدة</string>
+    <string name="eq_preset_vocal_label">غنائي</string>
+    <string name="eq_preset_loudness_label">الجهارة</string>
 </resources>

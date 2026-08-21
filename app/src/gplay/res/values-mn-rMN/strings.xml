@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Захиалга идэвхтэй байна</string>
     <string name="upgrade_screen_sub_still_renewing_message">Таны захиалга сэргээгдэхээр тохируулагдсан байна. Эхлээд Google Play-д цуцлана уу, дараа нь нэг удаагийн худалдан авалт хийхээр буцаж ирнэ үү — ингэснээр та хоёр удаа суллагдахгүй.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Бид таны худалдан авалтыг Google Play-тэй шалгаж чадсангүй. Холболтоо шалгаад дахин оролдоно уу.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Төлбөр хүлээгдэж байна</string>
+    <string name="upgrade_screen_pending_card_body">Google Play таны төлбөрийг одоо ч боловсруулж байна. Төлбөр амжилттай хийгдмэгц Pro автоматаар нээгдэнэ. Зарим төлбөрийн аргууд удаан хугацаа шаардаж болзошгүй, танд өөр юу ч хийх шаардлагагүй.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play таны төлбөр нь одоо ч боловсруулагдаж байгаа худалдан авалтыг олжээ. Төлбөр амжилттай хийгдмэгц Pro автоматаар нээгдэнэ.</string>
     <string name="upgrades_gplay_already_owned_error_title">Аль хэдийн худалдан авсан</string>
     <string name="upgrades_gplay_already_owned_error_description">\"Худалдан авалтыг сэргэх\" сонголтыг ашиглан таны худалдан авалтыг сэргээнэ үү. Хэрвээ асуудал үргэлжвэл Google Play-ийн кеш цэвэрлэж, төхөөрөмжөө дахин эхлүүлэхийг оролдоно уу.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play алдаа</string>

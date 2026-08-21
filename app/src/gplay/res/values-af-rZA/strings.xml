@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Subskripsie steeds aktief</string>
     <string name="upgrade_screen_sub_still_renewing_message">Jou subskripsie is steeds gestel om te hernu. Kanselleer dit eers in Google Play, kom dan terug om die eenmalige aankoop te koop — so word jy nie twee keer gehef nie.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Ons kon nie jou aankope by Google Play nagaan nie. Gaan asseblief jou verbinding na en probeer weer.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Betaling hangende</string>
+    <string name="upgrade_screen_pending_card_body">Google Play verwerk steeds jou betaling. Pro ontsluit outomaties sodra die betaling deurgegaan het. Sommige betaalmetodes neem \'n rukkie, jy hoef niks anders te doen nie.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play het \'n aankoop gevind waarvan die betaling steeds verwerk word. Pro ontsluit outomaties sodra die betaling deurgegaan het.</string>
     <string name="upgrades_gplay_already_owned_error_title">Reeds gekoop</string>
     <string name="upgrades_gplay_already_owned_error_description">Gebruik die \"Herstel aankoop\"-opsie om jou aankoop te herstel. As die probleem voortduur, probeer om die Google Play-kas skoon te maak en jou toestel te herbegin.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play-fout</string>

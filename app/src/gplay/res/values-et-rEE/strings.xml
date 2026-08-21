@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Tellimus on endiselt kasutusel</string>
     <string name="upgrade_screen_sub_still_renewing_message">Sinu tellimus uueneb endiselt. Tühista see kõigepealt rakenduses Google Play ja tule siis tagasi, et osta ühekordne ost — nii ei arveldata sind kaks korda.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Ei õnnestunud kontrollida sinu oste Google Play kaudu. Palun kontrolli oma internetühendust ja proovi uuesti.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Makse ootel</string>
+    <string name="upgrade_screen_pending_card_body">Google Play töötleb endiselt sinu makset. Pro avaneb automaatselt, kui makse läbib. Mõne makseviisi puhul võtab see aega, sul pole vaja midagi muud teha.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play leidis ostu, mille makse on veel töötlemisel. Pro avaneb automaatselt, kui makse läbib.</string>
     <string name="upgrades_gplay_already_owned_error_title">Juba ostetud</string>
     <string name="upgrades_gplay_already_owned_error_description">Ostu taastamiseks kasuta „Taasta ost“ valikut. Mure püsimisel ürita tühjendada Google Play vahemälu ja taaskäivitada seadet.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play viga</string>

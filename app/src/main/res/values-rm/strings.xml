@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Renominar</string>
     <string name="devices_device_config_enabled_label">Activà</string>
     <string name="devices_device_config_enabled_desc">Reagir sin quest apparat cura ch\'el è connectà</string>
+    <string name="devices_device_config_equalizer_label">Egalisader</string>
+    <string name="devices_device_config_equalizer_desc">Regla las bandas da l\'equalizer e l\'augment da volum per quest apparat. Funcziunescha mo cun applicaziuns da musica che sustegnan l\'equalizer da sistem d\'Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Augment da volum: %1$s</string>
     <string name="devices_device_config_section_timing_label">Temporisaziún</string>
     <string name="devices_device_config_monitoring_duration_label">Durada da surveglianza</string>
     <string name="devices_device_config_monitoring_duration_desc">Ina durada en millisecunds, suenter ch\'ils adattaments han vegnì fatgs, durant la quala ulteriuras midadas da volum vegnan bloccadas.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Agiuntar apparat</string>
     <string name="label_just_a_moment_please">In mument, per plaschair.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="label_notification_channel_setup">Configuraziun necessaria</string>
     <string name="monitor_notification_starting">Davart uschieus…</string>
     <string name="action_set">Fixar</string>
     <string name="action_cancel">Interrumper</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Personalisaziun da tema, stil e colur</string>
     <string name="upgrade_benefit_power_controls">Blocco dal volumen e limitaziun da debit</string>
     <string name="upgrade_benefit_support">Sustegn al svilup independent</string>
+    <string name="upgrade_benefit_equalizer">• Equalizer per apparat (per applicaziuns da musica cun sustegn da l\'equalizer da sistem)</string>
     <string name="description_intro_tap_the_button">Cumenza cun agiuntar tiu emprim apparat.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth è deactivà.</string>
     <string name="title_bluetooth_is_off">Bluetooth è deactivà</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Deactivar optimisaziuns</string>
     <string name="android10_applaunch_hint_title">Permission da visualisaziun davart apps</string>
     <string name="android10_applaunch_hint_message">Android 10+ necessita ina permission speziala per pudair avrir apps, mussar la fanestra da start u svegliar l\'ecran dal fund cun ina connexiun. Permetta la permission «Visualisaziun davart otras apps».</string>
+    <string name="android10_applaunch_oem_hint">Tscherts fabricants pretendan in\'autra autorisaziun ultra da questa. Sche quai na funcziuna anc adina betg suenter avair concedì l\'autorisaziun, tschercha en las autorisaziuns d\'applicaziun da tes telefon in parameter per finestras pop-up en fund u per lantschadas en fund.</string>
     <string name="notification_permission_hint_title">Permissiun da notificaziún</string>
     <string name="notification_permission_hint_message">Conceder la permissiun da notificaziún per vair actualisaziuns da status cura ch\'ins adattescha ils volumes.</string>
     <string name="dnd_access_hint_title">Access a «Na disturbar»</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Observar</string>
     <string name="devices_indicator_disconnect">Disconnectar</string>
     <string name="devices_indicator_limit">Limitar</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Augment</string>
     <string name="devices_indicator_launch">Aviar</string>
     <string name="devices_indicator_home">Pagina principala</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Verd</string>
     <string name="widget_config_theme_red_label">Cotschen</string>
     <string name="widget_config_theme_custom_label">Persunalisà</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Egalisader</string>
+    <string name="eq_bands_label">Bandas</string>
+    <string name="eq_mini_graph_desc">Bandas da l\'equalizer configuradas</string>
+    <string name="eq_enable_label">Utilisar l\'equalizer</string>
+    <string name="eq_disabled_hint">Deactivà, tes parameters èn memorisads, ma na influenzeschan anc betg l\'audio.</string>
+    <string name="eq_status_active_label">EQ activ per %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ activ per pliras applicaziuns</string>
+    <string name="eq_status_no_control_label">%1$s è vegnì scuvert, ma l\'EQ n\'ha betg pudì surpigliar il control</string>
+    <string name="eq_status_no_control_headline">%1$s è vegnì scuvert</string>
+    <string name="eq_status_no_control_detail">L\'EQ n\'ha betg pudì surpigliar il control da ses audio</string>
+    <string name="eq_status_multiple_recent_label">L\'ultim: %1$s</string>
+    <string name="eq_status_since_label">Sesida cumenzada %1$s</string>
+    <string name="eq_status_waiting_label">Spetgond in\'applicaziun da musica sustegnida, cumenza la reproducziun per udir l\'effect</string>
+    <string name="eq_status_inactive_label">Actualmain betg activ per quest apparat</string>
+    <string name="eq_status_generic_app_label">in\'applicaziun da musica</string>
+    <string name="eq_boost_label">Augment da volum</string>
+    <string name="eq_boost_hint">Renda tut pli ault sur las bandas. Memia bler augment po distorschair il tun.</string>
+    <string name="eq_unsupported_msg">Quest telefon n\'offra nagin equalizer che nus pudain utilisar.</string>
+    <string name="eq_info_msg">Funcziunescha cun applicaziuns che sustegnan equalizers da sistem, p.ex. Spotify u YouTube Music. Quai influenzescha tut l\'audio da questas applicaziuns entant che quest apparat è activ. Sche insatge vegn gia reproducì, reaviar la reproducziun per udir la midada.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Plat</string>
+    <string name="eq_preset_bass_boost_label">Augment dals bass</string>
+    <string name="eq_preset_bass_reducer_label">Reducziun dals bass</string>
+    <string name="eq_preset_treble_boost_label">Augment dals auts tuns</string>
+    <string name="eq_preset_vocal_label">Vocal</string>
+    <string name="eq_preset_loudness_label">Loudness</string>
 </resources>

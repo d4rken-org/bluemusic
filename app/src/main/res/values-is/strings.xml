@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Endurnefna</string>
     <string name="devices_device_config_enabled_label">Virkt</string>
     <string name="devices_device_config_enabled_desc">Bregaðast við þessu tæki þegar það er tengt</string>
+    <string name="devices_device_config_equalizer_label">Jöfnun</string>
+    <string name="devices_device_config_equalizer_desc">Stilltu tíðnisvið og hljóðstyrksaukningu tónjafnarans fyrir þetta tæki. Virkar aðeins með tónlistarforritum sem styðja kerfistónjafnara Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Hljóðstyrksaukning: %1$s</string>
     <string name="devices_device_config_section_timing_label">Tímasetning</string>
     <string name="devices_device_config_monitoring_duration_label">Eftirlitslengd</string>
     <string name="devices_device_config_monitoring_duration_desc">Lengd í millisekúndum, eftir að leiðréttingar hafa verið gerðar, þar sem allar frekari hljóðstyrkbreytingar verða læstar.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Bæta við tæki</string>
     <string name="label_just_a_moment_please">Augnablik, takk.</string>
     <string name="label_notification_channel_status">Staða</string>
+    <string name="label_notification_channel_setup">Uppsetning nauðsynleg</string>
     <string name="monitor_notification_starting">Ræsir…</string>
     <string name="action_set">Stilla</string>
     <string name="action_cancel">Hætta við</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Þma, stíll og litabreyting</string>
     <string name="upgrade_benefit_power_controls">Hljóðstyrkslás og takmarkanir á hraða</string>
     <string name="upgrade_benefit_support">Stuðja óháða þrróun</string>
+    <string name="upgrade_benefit_equalizer">• Tónjafnari fyrir hvert tæki (fyrir tónlistarforrit með stuðning við kerfistónjafnara)</string>
     <string name="description_intro_tap_the_button">Byrjaðu á þeim að bæta við fyrsta tækinu þinnu.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth er óvirkt.</string>
     <string name="title_bluetooth_is_off">Bluetooth er slökkt</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Slökkva á fínstillingum</string>
     <string name="android10_applaunch_hint_title">Birta yfir öðrum öppum heimild</string>
     <string name="android10_applaunch_hint_message">Android 10+ þarf sérstaka heimild til að ræsa öpp, sýna heimaskjáinn eða vekja skjáinn úr bakgrunni þegar tæki tengist. Veittu „Birta yfir öðrum öppum“ heimild.</string>
+    <string name="android10_applaunch_oem_hint">Sumir framleiðendur þurfa aukalega heimild til viðbótar við þessa. Ef þetta virkar samt ekki eftir að hafa veitt heimildina skaltu leita að stillingu fyrir sprettiglugga í bakgrunni eða ræsingu í bakgrunni í heimildum forrita í símanum þínum.</string>
     <string name="notification_permission_hint_title">Tilkynningaleyfi</string>
     <string name="notification_permission_hint_message">Veittu tilkynningaleyfi til að sjá stöðuuppfærslur þgar hljóðstyrkar eru stilltir.</string>
     <string name="dnd_access_hint_title">Aðgangur að „Trufla ekki“</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Fylgjast með</string>
     <string name="devices_indicator_disconnect">Aftengja</string>
     <string name="devices_indicator_limit">Takmarka</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Aukning</string>
     <string name="devices_indicator_launch">Ræsa</string>
     <string name="devices_indicator_home">Heim</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Grænn</string>
     <string name="widget_config_theme_red_label">Rauður</string>
     <string name="widget_config_theme_custom_label">Sérsniðinn</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Jöfnun</string>
+    <string name="eq_bands_label">Tíðnisvið</string>
+    <string name="eq_mini_graph_desc">Stillt tíðnisvið tónjafnara</string>
+    <string name="eq_enable_label">Nota tónjafnara</string>
+    <string name="eq_disabled_hint">Slökkt, stillingar þínar eru vistaðar en hafa ekki áhrif á hljóð ennþá.</string>
+    <string name="eq_status_active_label">Tónjafnari virkur fyrir %1$s</string>
+    <string name="eq_status_active_multiple_label">Tónjafnari virkur fyrir mörg forrit</string>
+    <string name="eq_status_no_control_label">%1$s fannst, en tónjafnarinn gat ekki tekið yfir stjórn</string>
+    <string name="eq_status_no_control_headline">%1$s fannst</string>
+    <string name="eq_status_no_control_detail">Tónjafnarinn gat ekki tekið yfir stjórn á hljóði þess</string>
+    <string name="eq_status_multiple_recent_label">Nýjast: %1$s</string>
+    <string name="eq_status_since_label">Lota hófst %1$s</string>
+    <string name="eq_status_waiting_label">Bíður eftir studdu tónlistarforriti, ræstu afspilun til að heyra áhrifin</string>
+    <string name="eq_status_inactive_label">Ekki virkt fyrir þetta tæki núna</string>
+    <string name="eq_status_generic_app_label">tónlistarforrit</string>
+    <string name="eq_boost_label">Hljóðstyrksaukning</string>
+    <string name="eq_boost_hint">Gerir allt hærra til viðbótar við tíðnisviðin. Mikil aukning getur brenglað hljóðið.</string>
+    <string name="eq_unsupported_msg">Þessi sími er ekki með tónjafnara sem við getum notað.</string>
+    <string name="eq_info_msg">Virkar með forritum sem styðja kerfistónjafnara, t.d. Spotify eða YouTube Music. Þetta hefur áhrif á allt hljóð frá þeim forritum á meðan þetta tæki er virkt. Ef eitthvað er þegar í spilun skaltu endurræsa afspilun til að heyra breytinguna.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Flatt</string>
+    <string name="eq_preset_bass_boost_label">Bassaaukning</string>
+    <string name="eq_preset_bass_reducer_label">Bassaminnkun</string>
+    <string name="eq_preset_treble_boost_label">Diskantaukning</string>
+    <string name="eq_preset_vocal_label">Rödd</string>
+    <string name="eq_preset_loudness_label">Hljóðstyrkur</string>
 </resources>

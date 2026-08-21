@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">पुनर्नाम गर्नुहोस्</string>
     <string name="devices_device_config_enabled_label">सक्षम</string>
     <string name="devices_device_config_enabled_desc">जडान भएमा यस उपकरणमा प्रतिक्रिया दिनुहोस्</string>
+    <string name="devices_device_config_equalizer_label">इक्वलाइजर</string>
+    <string name="devices_device_config_equalizer_desc">यस यन्त्रका लागि इक्वलाइजर ब्यान्ड र भोल्युम बुस्ट मिलाऊ। यो एन्ड्रोइडको सिस्टम इक्वलाइजर समर्थन गर्ने संगीत एपहरूसँग मात्र काम गर्छ।</string>
+    <string name="devices_device_config_equalizer_boost_label">भोल्युम बुस्ट: %1$s</string>
     <string name="devices_device_config_section_timing_label">समय</string>
     <string name="devices_device_config_monitoring_duration_label">निगरानी अवधि</string>
     <string name="devices_device_config_monitoring_duration_desc">मिलिसेकेन्डमा एउटा अवधि, समायोजन गरिसकेपछि, जसमा थप भोल्युम परिवर्तनहरू अवरुद्ध हुनेछन्।</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">उपकरण थप्नुहोस्</string>
     <string name="label_just_a_moment_please">एक क्षण पर्खनुहोस्।</string>
     <string name="label_notification_channel_status">स्थिति</string>
+    <string name="label_notification_channel_setup">सेटअप आवश्यक</string>
     <string name="monitor_notification_starting">सुरु हो दै…</string>
     <string name="action_set">सेट गर्नुहोस्</string>
     <string name="action_cancel">रद्द गर्नुहोस्</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">थिम, शैली र रङ्ग अनुकूलन</string>
     <string name="upgrade_benefit_power_controls">भोल्युम लक र दर सीमाकरण</string>
     <string name="upgrade_benefit_support">स्वतन्त्र विकासलाई सहयोग गर्नुहोस्</string>
+    <string name="upgrade_benefit_equalizer">• प्रति-यन्त्र इक्वलाइजर (सिस्टम इक्वलाइजर समर्थन गर्ने संगीत एपहरूका लागि)</string>
     <string name="description_intro_tap_the_button">आफ्नो पहिलो उपकरण थपेर सुरु गर्नुहोस्।</string>
     <string name="description_bluetooth_is_disabled">ब्लुटुथ असक्षम पारिएको छ.</string>
     <string name="title_bluetooth_is_off">Bluetooth बन्द छ</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">अप्टिमाइजेसनहरू अक्षम गर्नुहोस्</string>
     <string name="android10_applaunch_hint_title">अन्य एपहरूमाथि प्रदर्शन अनुमति</string>
     <string name="android10_applaunch_hint_message">Android 10+ लाई एपहरू सुरु गर्न, होम स्क्रिन देखाउन, वा जोडिएको बेला पृष्ठभूमिबाट स्क्रिन जगाउन विशेष अनुमति चाहिन्छ। \"अन्य एपहरूमाथि प्रदर्शन\" अनुमति दिनुहोस्।</string>
+    <string name="android10_applaunch_oem_hint">केही निर्माताहरूलाई यसबाहेक अर्को अनुमति पनि चाहिन्छ। अनुमति दिइसक्दा पनि काम नगरे, तिम्रो फोनको एप अनुमतिहरूमा ब्याकग्राउन्ड पप-अप वा ब्याकग्राउन्ड लन्च सेटिङ खोज।</string>
     <string name="notification_permission_hint_title">सूचना अनुमति</string>
     <string name="notification_permission_hint_message">भोल्युमहरू समायोजन गर्दा स्थिति अद्यावधिकहरू हेर्न सूचना अनुमति दिनुहोस्।</string>
     <string name="dnd_access_hint_title">बाधा नगर्नुहोस् पहुँच</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">अवलोकन गर्नुस्</string>
     <string name="devices_indicator_disconnect">विच्छेद गर्नुस्</string>
     <string name="devices_indicator_limit">सीमा</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">बुस्ट</string>
     <string name="devices_indicator_launch">सुरू गर्नुस्</string>
     <string name="devices_indicator_home">गृह</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">हरियो</string>
     <string name="widget_config_theme_red_label">रातो</string>
     <string name="widget_config_theme_custom_label">कस्टम</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">इक्वलाइजर</string>
+    <string name="eq_bands_label">ब्यान्डहरू</string>
+    <string name="eq_mini_graph_desc">कन्फिगर गरिएका इक्वलाइजर ब्यान्डहरू</string>
+    <string name="eq_enable_label">इक्वलाइजर प्रयोग गर</string>
+    <string name="eq_disabled_hint">बन्द, तिम्रा सेटिङहरू सुरक्षित छन् तर अहिलेसम्म अडियोमा असर पार्दैनन्।</string>
+    <string name="eq_status_active_label">%1$s का लागि EQ सक्रिय</string>
+    <string name="eq_status_active_multiple_label">धेरै एपहरूका लागि EQ सक्रिय</string>
+    <string name="eq_status_no_control_label">%1$s फेला पर्यो, तर EQ ले नियन्त्रण लिन सकेन</string>
+    <string name="eq_status_no_control_headline">%1$s फेला पर्यो</string>
+    <string name="eq_status_no_control_detail">EQ ले यसको अडियोको नियन्त्रण लिन सकेन</string>
+    <string name="eq_status_multiple_recent_label">सबैभन्दा हालसालैको: %1$s</string>
+    <string name="eq_status_since_label">सत्र %1$s मा सुरु भयो</string>
+    <string name="eq_status_waiting_label">समर्थित संगीत एपको प्रतीक्षामा, प्रभाव सुन्न प्लेब्याक सुरु गर</string>
+    <string name="eq_status_inactive_label">अहिले यो यन्त्रका लागि सक्रिय छैन</string>
+    <string name="eq_status_generic_app_label">संगीत एप</string>
+    <string name="eq_boost_label">भोल्युम बुस्ट</string>
+    <string name="eq_boost_hint">यसले ब्यान्डहरूमाथि सबै कुरा ठूलो बनाउछ। धेरै बुस्टले आवाज बिगार्न सक्छ।</string>
+    <string name="eq_unsupported_msg">यो फोनले हामीले प्रयोग गर्न सक्ने इक्वलाइजर उपलब्ध गराउँदैन।</string>
+    <string name="eq_info_msg">यसले सिस्टम इक्वलाइजर समर्थन गर्ने एपहरूसँग काम गर्छ, जस्तै Spotify वा YouTube Music। यो यन्त्र सक्रिय हुँदा यसले ती एपहरूको सबै अडियोमा असर पार्छ। केही पहिले नै बजिरहेको छ भने, परिवर्तन सुन्न प्लेब्याक पुनः सुरु गर।</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">फ्ल्याट</string>
+    <string name="eq_preset_bass_boost_label">बास बुस्ट</string>
+    <string name="eq_preset_bass_reducer_label">बास घटाउने</string>
+    <string name="eq_preset_treble_boost_label">ट्रेबल बुस्ट</string>
+    <string name="eq_preset_vocal_label">भोकल</string>
+    <string name="eq_preset_loudness_label">लाउडनेस</string>
 </resources>

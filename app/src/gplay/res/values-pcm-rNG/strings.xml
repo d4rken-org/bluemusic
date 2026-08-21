@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Subscription still active</string>
     <string name="upgrade_screen_sub_still_renewing_message">Your subscription still dey set to renew. Cancel am for Google Play first, then come back buy the one-time purchase — that way dem no go charge you twice.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">We no fit check your purchases with Google Play. Abeg check your connection try again.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Payment dey pending</string>
+    <string name="upgrade_screen_pending_card_body">Google Play still dey process your payment. Pro go unlock by itself once di payment go through. Some payment methods dey take small time, nothing else you need do.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play don see one purchase wey dem still dey process di payment. Pro go unlock by itself once di payment go through.</string>
     <string name="upgrades_gplay_already_owned_error_title">Already purchased</string>
     <string name="upgrades_gplay_already_owned_error_description">Use the \"Restore purchase\" option to restore your purchase. If the problem still dey, try clear Google Play cache and restart your device.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play error</string>

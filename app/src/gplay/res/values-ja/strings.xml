@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">サブスクリプションはまだ有効です</string>
     <string name="upgrade_screen_sub_still_renewing_message">サブスクリプションはまだ更新される設定になっています。まずGoogle Playで解約してから、買い切り購入に戻ってください。そうすれば二重に請求されません。</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Google Playで購入情報を確認できませんでした。接続を確認してもう一度お試しください。</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">支払い処理中</string>
+    <string name="upgrade_screen_pending_card_body">Google Playで支払いを処理中です。支払いが完了すると自動的にProがアンロックされます。決済方法によっては時間がかかる場合がありますが、それ以外に必要な操作はありません。</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Playで支払いが処理中の購入が見つかりました。支払いが完了すると自動的にProがアンロックされます。</string>
     <string name="upgrades_gplay_already_owned_error_title">購入済みです</string>
     <string name="upgrades_gplay_already_owned_error_description">「購入を復元」オプションを使用して購入を復元してください。問題が解決しない場合は、Google Playのキャッシュを消去してデバイスを再起動してください。</string>
     <string name="upgrades_gplay_internal_error_title">Google Playエラー</string>

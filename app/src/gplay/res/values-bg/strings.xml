@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Абонаментът все още е активен</string>
     <string name="upgrade_screen_sub_still_renewing_message">Абонаментът ви все още е зададен за подновяване. Първо го отменете в Google Play, а след това се върнете, за да купите еднократната покупка — така няма да бъдете таксувани два пъти.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Не успяхме да проверим покупките ти в Google Play. Моля, провери връзката си и опитай отново.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Плащането е в изчакване</string>
+    <string name="upgrade_screen_pending_card_body">Google Play все още обработва плащането ти. Pro версията се отключва автоматично, щом плащането бъде завършено. Някои методи на плащане отнемат известно време, няма нужда да правиш нищо друго.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play откри покупка, чието плащане все още се обработва. Pro версията се отключва автоматично, щом плащането бъде завършено.</string>
     <string name="upgrades_gplay_already_owned_error_title">Вече закупено</string>
     <string name="upgrades_gplay_already_owned_error_description">Използвайте опцията „Възстановяване на покупка“, за да възстановите покупката си. Ако проблемът продължи, опитайте да изчистите кеша на Google Play и да рестартирате устройството си.</string>
     <string name="upgrades_gplay_internal_error_title">Грешка в Google Play</string>

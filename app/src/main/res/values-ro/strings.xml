@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Redenumește</string>
     <string name="devices_device_config_enabled_label">Activat</string>
     <string name="devices_device_config_enabled_desc">Reacționează la acest dispozitiv când este conectat</string>
+    <string name="devices_device_config_equalizer_label">Egalizator</string>
+    <string name="devices_device_config_equalizer_desc">Reglează benzile egalizatorului și amplificarea volumului pentru acest dispozitiv. Funcționează doar cu aplicații muzicale care acceptă egalizatorul de sistem Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Amplificare volum: %1$s</string>
     <string name="devices_device_config_section_timing_label">Temporizare</string>
     <string name="devices_device_config_monitoring_duration_label">Durata de monitorizare</string>
     <string name="devices_device_config_monitoring_duration_desc">O durată în milisecunde, după ce au fost făcute ajustările, timp în care orice alte schimbări de volum vor fi blocate.</string>
@@ -322,6 +325,7 @@
     <string name="label_add_device">Adaugă dispozitiv</string>
     <string name="label_just_a_moment_please">O clipă, te rog.</string>
     <string name="label_notification_channel_status">Stare</string>
+    <string name="label_notification_channel_setup">Configurare necesară</string>
     <string name="monitor_notification_starting">Se pornește…</string>
     <string name="action_set">Setează</string>
     <string name="action_cancel">Anulează</string>
@@ -340,6 +344,7 @@
     <string name="upgrade_benefit_theme_customization">Personalizare temă, stil și culori</string>
     <string name="upgrade_benefit_power_controls">Blocare volum și limitare rată</string>
     <string name="upgrade_benefit_support">Susține dezvoltarea independentă</string>
+    <string name="upgrade_benefit_equalizer">• Egalizator per dispozitiv (pentru aplicații muzicale cu suport pentru egalizatorul de sistem)</string>
     <string name="description_intro_tap_the_button">Începe prin adăugarea primului tău dispozitiv.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth este dezactivat.</string>
     <string name="title_bluetooth_is_off">Bluetooth este Oprit</string>
@@ -401,6 +406,7 @@
     <string name="battery_optimization_fix_action">Dezactivează optimizările</string>
     <string name="android10_applaunch_hint_title">Permisiunea Afișare peste alte aplicații</string>
     <string name="android10_applaunch_hint_message">Android 10+ necesită o permisiune specială pentru a lansa aplicații, a arăta ecranul de start sau a trezi ecranul din fundal când se conectează un dispozitiv. Acordă permisiunea \"Afișare peste alte aplicații\".</string>
+    <string name="android10_applaunch_oem_hint">Unii producători necesită o a doua permisiune pe lângă aceasta. Dacă tot nu funcționează după acordare, caută o setare pentru pop-up-uri sau pornire în fundal în permisiunile aplicațiilor telefonului tău.</string>
     <string name="notification_permission_hint_title">Permisiune notificări</string>
     <string name="notification_permission_hint_message">Acordă permisiunea pentru notificări pentru a vedea actualizări de stare când se ajustează volumele.</string>
     <string name="dnd_access_hint_title">Acces la Nu deranja</string>
@@ -435,6 +441,8 @@
     <string name="devices_indicator_observe">Observare</string>
     <string name="devices_indicator_disconnect">Deconectare</string>
     <string name="devices_indicator_limit">Limită</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Amplificare</string>
     <string name="devices_indicator_launch">Lansare</string>
     <string name="devices_indicator_home">Acasă</string>
     <string name="devices_indicator_dnd">DNT</string>
@@ -463,4 +471,33 @@
     <string name="widget_config_theme_green_label">Verde</string>
     <string name="widget_config_theme_red_label">Roșu</string>
     <string name="widget_config_theme_custom_label">Personalizat</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Egalizator</string>
+    <string name="eq_bands_label">Benzi</string>
+    <string name="eq_mini_graph_desc">Benzi de egalizator configurate</string>
+    <string name="eq_enable_label">Folosește egalizatorul</string>
+    <string name="eq_disabled_hint">Dezactivat, setările tale sunt salvate, dar nu vor afecta încă sunetul.</string>
+    <string name="eq_status_active_label">EQ activ pentru %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ activ pentru mai multe aplicații</string>
+    <string name="eq_status_no_control_label">%1$s a fost detectată, dar EQ nu a putut prelua controlul</string>
+    <string name="eq_status_no_control_headline">%1$s a fost detectată</string>
+    <string name="eq_status_no_control_detail">EQ nu a putut prelua controlul sunetului acesteia</string>
+    <string name="eq_status_multiple_recent_label">Cea mai recentă: %1$s</string>
+    <string name="eq_status_since_label">Sesiune pornită %1$s</string>
+    <string name="eq_status_waiting_label">Se așteaptă o aplicație muzicală compatibilă, pornește redarea pentru a auzi efectul</string>
+    <string name="eq_status_inactive_label">Nu este activ pentru acest dispozitiv acum</string>
+    <string name="eq_status_generic_app_label">o aplicație muzicală</string>
+    <string name="eq_boost_label">Amplificare volum</string>
+    <string name="eq_boost_hint">Face totul mai puternic, în plus față de benzi. Prea multă amplificare poate distorsiona sunetul.</string>
+    <string name="eq_unsupported_msg">Acest telefon nu oferă un egalizator pe care îl putem folosi.</string>
+    <string name="eq_info_msg">Funcționează cu aplicații care acceptă egalizatoare de sistem, de ex. Spotify sau YouTube Music. Afectează tot sunetul acelor aplicații cât timp acest dispozitiv este activ. Dacă ceva rulează deja, repornește redarea pentru a auzi schimbarea.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Plat</string>
+    <string name="eq_preset_bass_boost_label">Amplificare bas</string>
+    <string name="eq_preset_bass_reducer_label">Reducere bas</string>
+    <string name="eq_preset_treble_boost_label">Amplificare înalte</string>
+    <string name="eq_preset_vocal_label">Voce</string>
+    <string name="eq_preset_loudness_label">Intensitate</string>
 </resources>

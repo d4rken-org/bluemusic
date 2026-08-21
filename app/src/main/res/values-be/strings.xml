@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Перайменаваць</string>
     <string name="devices_device_config_enabled_label">Уключана</string>
     <string name="devices_device_config_enabled_desc">Рэагаваць на гэту прыладу пры падключэнні</string>
+    <string name="devices_device_config_equalizer_label">Эквалайзер</string>
+    <string name="devices_device_config_equalizer_desc">Налаштуй паласы эквалайзера і ўсіленне громкасці для гэтай прылады. Працуе толькі з музычнымі прыкладаннямі, якія падтрымліваюць сістэмны эквалайзер Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Ўсіленне громкасці: %1$s</string>
     <string name="devices_device_config_section_timing_label">Час</string>
     <string name="devices_device_config_monitoring_duration_label">Працягласць маніторынгу</string>
     <string name="devices_device_config_monitoring_duration_desc">Працягласць у мілісекундах пасля выкананых рэгулёвак, на працягу якой любыя далейшыя змены гучнасці будуць заблакіраваны.</string>
@@ -326,6 +329,7 @@
     <string name="label_add_device">Дадаць прыладу</string>
     <string name="label_just_a_moment_please">Хвіліначку, калі ласка.</string>
     <string name="label_notification_channel_status">Стан</string>
+    <string name="label_notification_channel_setup">Неабходна наладка</string>
     <string name="monitor_notification_starting">Запускаюцца…</string>
     <string name="action_set">Усталяваць</string>
     <string name="action_cancel">Скасаваць</string>
@@ -344,6 +348,7 @@
     <string name="upgrade_benefit_theme_customization">Наладка тэмы, стылю і колеру</string>
     <string name="upgrade_benefit_power_controls">Блакіроўка гучнасці і абмежаванне хуткасці</string>
     <string name="upgrade_benefit_support">Падтрымаць незалежную распрацоўку</string>
+    <string name="upgrade_benefit_equalizer">• Эквалайзер кожнай прылады (для музычных прыкладанняў з падтрымкай сістэмнага эквалайзера)</string>
     <string name="description_intro_tap_the_button">Пачніце з дадання вашай першай прылады.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth адключаны.</string>
     <string name="title_bluetooth_is_off">Bluetooth выключаны</string>
@@ -440,6 +445,8 @@
     <string name="devices_indicator_observe">Назіраць</string>
     <string name="devices_indicator_disconnect">Адключыць</string>
     <string name="devices_indicator_limit">Абмежаванне</string>
+    <string name="devices_indicator_eq">ЭК</string>
+    <string name="devices_indicator_boost">Ўсіленне</string>
     <string name="devices_indicator_launch">Запусціць</string>
     <string name="devices_indicator_home">Дадому</string>
     <string name="devices_indicator_dnd">Не турбаваць</string>
@@ -468,4 +475,33 @@
     <string name="widget_config_theme_green_label">Зялёны</string>
     <string name="widget_config_theme_red_label">Чырвоны</string>
     <string name="widget_config_theme_custom_label">Уласны</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Эквалайзер</string>
+    <string name="eq_bands_label">Паласы</string>
+    <string name="eq_mini_graph_desc">Налаштаваныя паласы эквалайзера</string>
+    <string name="eq_enable_label">Ужыць эквалайзер</string>
+    <string name="eq_disabled_hint">Адключана, твае налады захаваныя, але яшчэ не ўплывяюць на аўдыё.</string>
+    <string name="eq_status_active_label">ЭК актыўны для %1$s</string>
+    <string name="eq_status_active_multiple_label">ЭК актыўны для некалькіх прыкладанняў</string>
+    <string name="eq_status_no_control_label">%1$s была выяўлена, але ЭК не змог захапіць кантроль</string>
+    <string name="eq_status_no_control_headline">%1$s была выяўлена</string>
+    <string name="eq_status_no_control_detail">ЭК не змог захапіць кантроль над яго аўдыё</string>
+    <string name="eq_status_multiple_recent_label">Нядаўна: %1$s</string>
+    <string name="eq_status_since_label">Сеанс пачаўся %1$s</string>
+    <string name="eq_status_waiting_label">Чаканне падтрымліваемай музычнай прыкладанні, пачні прайграванне, каб пачуць эфект</string>
+    <string name="eq_status_inactive_label">Зараз не актыўны для гэтай прылады</string>
+    <string name="eq_status_generic_app_label">музычнае прыкладанне</string>
+    <string name="eq_boost_label">Ўсіленне громкасці</string>
+    <string name="eq_boost_hint">Робіць ўсё гучнейшым на верх паласоў. Шмат ўсіленне можа ісказіць гук.</string>
+    <string name="eq_unsupported_msg">Гэты тэлефон не прапануе эквалайзер, які мы можам выкарыстоўваць.</string>
+    <string name="eq_info_msg">Працуе з прыкладаннямі, якія падтрымліваюць сістэмныя эквалайзеры, напр. Spotify або YouTube Music. Гэта ўплывае на ўсё аўдыё з тых прыкладанняў, пакуль гэта прыстасаванне актыўнае. Калі што-то ўжо прайграецца, перапусці прайграванне, каб пачуць змену.</string>
+    <string name="eq_frequency_hz_label">%1$s Гц</string>
+    <string name="eq_frequency_khz_label">%1$s кГц</string>
+    <string name="eq_gain_db_label">%1$s дБ</string>
+    <string name="eq_preset_flat_label">Плоскі</string>
+    <string name="eq_preset_bass_boost_label">Ўсіленне басу</string>
+    <string name="eq_preset_bass_reducer_label">Зніжэнне басу</string>
+    <string name="eq_preset_treble_boost_label">Ўсіленне высокіх частот</string>
+    <string name="eq_preset_vocal_label">Вокал</string>
+    <string name="eq_preset_loudness_label">Громкасць</string>
 </resources>

@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abonnement toujours actif</string>
     <string name="upgrade_screen_sub_still_renewing_message">Votre abonnement est toujours configuré pour se renouveler. Annulez-le d’abord dans Google Play, puis revenez acheter l’achat unique — ainsi vous ne serez pas facturé deux fois.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Nous n\'avons pas pu vérifier tes achats avec Google Play. Vérifie ta connexion et réessaie.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Paiement en attente</string>
+    <string name="upgrade_screen_pending_card_body">Google Play traite encore ton paiement. La version Pro se débloque automatiquement une fois le paiement effectué. Certains modes de paiement prennent du temps, tu n\'as rien d\'autre à faire.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play a trouvé un achat dont le paiement est encore en cours de traitement. La version Pro se débloque automatiquement une fois le paiement effectué.</string>
     <string name="upgrades_gplay_already_owned_error_title">Déjà acheté</string>
     <string name="upgrades_gplay_already_owned_error_description">Utilisez l\'option « Rétablir l’achat ». Si le problème persiste, essayez de vider le cache de Google Play et de redémarrer votre appareil.</string>
     <string name="upgrades_gplay_internal_error_title">Erreur Google Play</string>

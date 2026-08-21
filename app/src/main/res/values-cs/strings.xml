@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Přejmenovat</string>
     <string name="devices_device_config_enabled_label">Povoleno</string>
     <string name="devices_device_config_enabled_desc">Reagovat na toto zařízení při připojení</string>
+    <string name="devices_device_config_equalizer_label">Ekvalizér</string>
+    <string name="devices_device_config_equalizer_desc">Nastavte frekvenční pásy a zesílení hlasitosti pro toto zařízení. Funguje pouze s hudebními aplikacemi, které podporují systémový ekvalizér Androidu.</string>
+    <string name="devices_device_config_equalizer_boost_label">Zesílení hlasitosti: %1$s</string>
     <string name="devices_device_config_section_timing_label">Časování</string>
     <string name="devices_device_config_monitoring_duration_label">Délka sledování</string>
     <string name="devices_device_config_monitoring_duration_desc">Délka v milisekundách po provedení úprav, během které budou blokovány jakékoli další změny hlasitosti.</string>
@@ -326,6 +329,7 @@
     <string name="label_add_device">Přidat zařízení</string>
     <string name="label_just_a_moment_please">Chviličku prosím.</string>
     <string name="label_notification_channel_status">Stav</string>
+    <string name="label_notification_channel_setup">Vyžadováno nastavení</string>
     <string name="monitor_notification_starting">Spouštění…</string>
     <string name="action_set">Nastavit</string>
     <string name="action_cancel">Zrušit</string>
@@ -344,6 +348,7 @@
     <string name="upgrade_benefit_theme_customization">Přizpůsobení motivu, stylu a barev</string>
     <string name="upgrade_benefit_power_controls">Zámek hlasitosti a omezení rychlosti</string>
     <string name="upgrade_benefit_support">Podpora nezávislého vývoje</string>
+    <string name="upgrade_benefit_equalizer">• Ekvalizér pro jednotlivá zařízení (pro hudební aplikace s podporou systémového ekvalizéru)</string>
     <string name="description_intro_tap_the_button">Začněte přidáním prvního zařízení.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth je vypnuto.</string>
     <string name="title_bluetooth_is_off">Bluetooth je vypnuto</string>
@@ -406,6 +411,7 @@
     <string name="battery_optimization_fix_action">Vypnout optimalizace</string>
     <string name="android10_applaunch_hint_title">Oprávnění \"Zobrazit přes ostatní aplikace\"</string>
     <string name="android10_applaunch_hint_message">Android 10+ vyžaduje zvláštní oprávnění ke spuštění aplikací, zobrazení domovské obrazovky nebo probuzení obrazovky z pozadí při připojení. Udělte oprávnění \"Zobrazit přes ostatní aplikace\".</string>
+    <string name="android10_applaunch_oem_hint">Někteří výrobci vyžadují další oprávnění navíc k tomuto. Pokud to stále nefunguje po udělení oprávnění, hledejte v oprávněních aplikací vašeho telefonu nastavení pro pop-up na pozadí nebo spouštění na pozadí.</string>
     <string name="notification_permission_hint_title">Oprávnění pro oznámení</string>
     <string name="notification_permission_hint_message">Udělte oprávnění k zobrazování aktualizací stavu při nastavování hlasitosti.</string>
     <string name="dnd_access_hint_title">Přístup k režimu Nerušit</string>
@@ -440,6 +446,8 @@
     <string name="devices_indicator_observe">Sledovat</string>
     <string name="devices_indicator_disconnect">Odpojit</string>
     <string name="devices_indicator_limit">Limit</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Zesílení</string>
     <string name="devices_indicator_launch">Spustit</string>
     <string name="devices_indicator_home">Domů</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -468,4 +476,33 @@
     <string name="widget_config_theme_green_label">Zelená</string>
     <string name="widget_config_theme_red_label">Červená</string>
     <string name="widget_config_theme_custom_label">Vlastní</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Ekvalizér</string>
+    <string name="eq_bands_label">Pásy</string>
+    <string name="eq_mini_graph_desc">Nakonfigurované frekvenční pásy ekvalizéru</string>
+    <string name="eq_enable_label">Používat ekvalizér</string>
+    <string name="eq_disabled_hint">Vypnuto. Tvá nastavení jsou uložena, ale zatím neovlivní zvuk.</string>
+    <string name="eq_status_active_label">EQ je aktivní pro %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ je aktivní pro více aplikací</string>
+    <string name="eq_status_no_control_label">%1$s byla zjištěna, ale ekvalizér nemohl získat kontrolu</string>
+    <string name="eq_status_no_control_headline">%1$s byla zjištěna</string>
+    <string name="eq_status_no_control_detail">Ekvalizér nemohl převzít kontrolu nad zvukem</string>
+    <string name="eq_status_multiple_recent_label">Nejnovější: %1$s</string>
+    <string name="eq_status_since_label">Přehrávání začalo %1$s</string>
+    <string name="eq_status_waiting_label">Čeká se na podporovanou hudební aplikaci. Spusť přehrávání a efekt uslyšíš.</string>
+    <string name="eq_status_inactive_label">Momentálně není aktivní pro toto zařízení</string>
+    <string name="eq_status_generic_app_label">hudební aplikace</string>
+    <string name="eq_boost_label">Zesílení hlasitosti</string>
+    <string name="eq_boost_hint">Zvyšuje hlasitost navíc k frekvenčním páům. Velké zesílení může zvuk zkreslovat.</string>
+    <string name="eq_unsupported_msg">Tvůj telefon nenabízí ekvalizér, který bychom mohli použít.</string>
+    <string name="eq_info_msg">Funguje s aplikacemi, které podporují systémové ekvalizéry, např. Spotify nebo YouTube Music. Ovlivňuje veškerý zvuk z těchto aplikací, pokud je toto zařízení aktivní. Pokud něco už hraje, znovu spusť přehrávání a změnu uslyšíš.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Plochý</string>
+    <string name="eq_preset_bass_boost_label">Zesílení basů</string>
+    <string name="eq_preset_bass_reducer_label">Redukce basů</string>
+    <string name="eq_preset_treble_boost_label">Zesílení výšek</string>
+    <string name="eq_preset_vocal_label">Vokál</string>
+    <string name="eq_preset_loudness_label">Hlasitost</string>
 </resources>

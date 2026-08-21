@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Biguheze</string>
     <string name="devices_device_config_enabled_label">Aktif</string>
     <string name="devices_device_config_enabled_desc">Dema ev cîhaz bi hestek bibe bersivê bide</string>
+    <string name="devices_device_config_equalizer_label">Equalêzer</string>
+    <string name="devices_device_config_equalizer_desc">Ji bo vê amûrê bendên hevsengker û bilindkirina dengî saz bike. Tenê bi sepanên muzîkê yên ku hevsengkera pergala Androidê piştgirî dikin dixebite.</string>
+    <string name="devices_device_config_equalizer_boost_label">Bilindkirina dengî: %1$s</string>
     <string name="devices_device_config_section_timing_label">Demîng</string>
     <string name="devices_device_config_monitoring_duration_label">Demînga çavdêriyê</string>
     <string name="devices_device_config_monitoring_duration_desc">Demîngek bi milisaniyê, piştî ku rastkarîn hatine kirin, ku guherîna dengê ya din were asteng kirin.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Cîhazê bizêde bike</string>
     <string name="label_just_a_moment_please">Wax bikin, ji kerema xwe.</string>
     <string name="label_notification_channel_status">Dema niha</string>
+    <string name="label_notification_channel_setup">Sazkirin pêwîst e</string>
     <string name="monitor_notification_starting">Vegu tê de…</string>
     <string name="action_set">Saz bike</string>
     <string name="action_cancel">Betal bike</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Xweşkirina tema, stil û rengî</string>
     <string name="upgrade_benefit_power_controls">Kilîda dengbêjiyê û sînorkirina rêjeyê</string>
     <string name="upgrade_benefit_support">Piştgirî ji pêşvebrina serbixwe re bike</string>
+    <string name="upgrade_benefit_equalizer">• Hevsengkerê taybet ji bo her amûrê (ji bo sepanên muzîkê yên bi piştgiriya hevsengkera pergalê)</string>
     <string name="description_intro_tap_the_button">Bi zêdekirina cîhaza xwe ya yekemî dest pê bikin.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth neçalak e.</string>
     <string name="title_bluetooth_is_off">Bluetooth neaktîf e</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Optimîzasyon bitebitandin</string>
     <string name="android10_applaunch_hint_title">Destûra nîşandana li ser sepanan</string>
     <string name="android10_applaunch_hint_message">Android 10+ destûrek taybet pêwist dike ji bo ku sepanan veke, ekrana malê nîşan bide, an jî ekranê di paşerojê de hişyar bike dema girêdanê. Destûra \"Nîşandana li ser sepanan\" bide.</string>
+    <string name="android10_applaunch_oem_hint">Hin hilberîner ji bilî vê mafê hîn mafek din jî hewce dikin. Heke piştî dayîna wê jî hîn nexebite, li mîhengên sepanan ên têlefona xwe li mîhenga \'derketina di paşxanê de\' an \'destpêkirina di paşxanê de\' binêre.</string>
     <string name="notification_permission_hint_title">Destvîrîna agahdar</string>
     <string name="notification_permission_hint_message">Destvîrîna agahdar bide da zabanîn dema deng tê rastkar kirin bibîne.</string>
     <string name="dnd_access_hint_title">Destresa Nexwazîna Acizkarî</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Guh bide</string>
     <string name="devices_indicator_disconnect">Veçe</string>
     <string name="devices_indicator_limit">Sînor</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Bilindkirin</string>
     <string name="devices_indicator_launch">Bixebite</string>
     <string name="devices_indicator_home">Ekrana Malê</string>
     <string name="devices_indicator_dnd">NXW</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Kesk</string>
     <string name="widget_config_theme_red_label">Sor</string>
     <string name="widget_config_theme_custom_label">Taybet</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Equalêzer</string>
+    <string name="eq_bands_label">Bend</string>
+    <string name="eq_mini_graph_desc">Bendên hevsengkerê yên sazkirî</string>
+    <string name="eq_enable_label">Hevsengkerê bikar bîne</string>
+    <string name="eq_disabled_hint">Girtî ye, mîhengên te hatine tomarkirin lê hê bandorê li ser dengî nakin.</string>
+    <string name="eq_status_active_label">EQ ji bo %1$s çalak e</string>
+    <string name="eq_status_active_multiple_label">EQ ji bo çend sepanan çalak e</string>
+    <string name="eq_status_no_control_label">%1$s hate dîtin, lê EQ nikarî kontrolê bigire</string>
+    <string name="eq_status_no_control_headline">%1$s hate dîtin</string>
+    <string name="eq_status_no_control_detail">EQ nikarî kontrola dengê wê bigire</string>
+    <string name="eq_status_multiple_recent_label">Ya herî dawî: %1$s</string>
+    <string name="eq_status_since_label">Danişîn di %1$s de dest pê kir</string>
+    <string name="eq_status_waiting_label">Li benda sepanek muzîkê ya piştgirîkirî ye, ji bo bihîstina bandorê lêdanê dest pê bike</string>
+    <string name="eq_status_inactive_label">Niha ji bo vê amûrê ne çalak e</string>
+    <string name="eq_status_generic_app_label">sepanek muzîkê</string>
+    <string name="eq_boost_label">Bilindkirina dengî</string>
+    <string name="eq_boost_hint">Li ser bendan her tiştî bilindtir dike. Zêdekirina zêde dikare dengî xira bike.</string>
+    <string name="eq_unsupported_msg">Ev têlefon hevsengkerek ku em bikar bînin pişkêş nake.</string>
+    <string name="eq_info_msg">Bi sepanên ku hevsengkeran pergalê piştgirî dikin dixebite, mînak Spotify an YouTube Music. Dema ev amûr çalak be, bandorê li hemû dengên van sepanan dike. Heke tiştek jixwe tê lêdan, ji bo bihîstina guhertinê lêdanê ji nû ve dest pê bike.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Sade</string>
+    <string name="eq_preset_bass_boost_label">Bilindkirina Bas</string>
+    <string name="eq_preset_bass_reducer_label">Kêmkirina Bas</string>
+    <string name="eq_preset_treble_boost_label">Bilindkirina Tîz</string>
+    <string name="eq_preset_vocal_label">Deng</string>
+    <string name="eq_preset_loudness_label">Bilindahî</string>
 </resources>

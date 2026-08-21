@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Hernoem</string>
     <string name="devices_device_config_enabled_label">Geaktiveer</string>
     <string name="devices_device_config_enabled_desc">Reageer op hierdie toestel wanneer gekoppel</string>
+    <string name="devices_device_config_equalizer_label">Egaliseerder</string>
+    <string name="devices_device_config_equalizer_desc">Stel die gelykmakerbande en volumeversterking vir hierdie toestel af. Werk net met musiek-toepassings wat Android se stelselgelykmaker ondersteun.</string>
+    <string name="devices_device_config_equalizer_boost_label">Volumeversterking: %1$s</string>
     <string name="devices_device_config_section_timing_label">Tydsberekening</string>
     <string name="devices_device_config_monitoring_duration_label">Moniterings-duur</string>
     <string name="devices_device_config_monitoring_duration_desc">\'n Duur in millisekondes, nadat aanpassings gemaak is, waartydens verdere volumeveranderinge geblokkeer word.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Voeg toestel by</string>
     <string name="label_just_a_moment_please">Net \'n oomblik, asseblief.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="label_notification_channel_setup">Opstelling vereis</string>
     <string name="monitor_notification_starting">Begin…</string>
     <string name="action_set">Stel</string>
     <string name="action_cancel">Kanselleer</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Tema-, styl- en kleurasepassing</string>
     <string name="upgrade_benefit_power_controls">Volumeslot en koersbeperking</string>
     <string name="upgrade_benefit_support">Ondersteun onafhanklike ontwikkeling</string>
+    <string name="upgrade_benefit_equalizer">• Gelykmaker per toestel (vir musiek-toepassings met stelselgelykmaker-ondersteuning)</string>
     <string name="description_intro_tap_the_button">Begin deur jou eerste toestel by te voeg.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth is gedeaktiveer.</string>
     <string name="title_bluetooth_is_off">Bluetooth is af</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Deaktiveer optimiserings</string>
     <string name="android10_applaunch_hint_title">Vertoon oor toepassings-toestemming</string>
     <string name="android10_applaunch_hint_message">Android 10+ benodig \'n spesiale toestemming om toepassings te laai, die tuis-skerm te wys, of die skerm vanuit die agtergrond wakker te maak wanneer \'n toestel koppel. Ken die \"Vertoon oor ander toepassings\"-toestemming toe.</string>
+    <string name="android10_applaunch_oem_hint">Sommige vervaardigers vereis \'n tweede toestemming bo-op hierdie een. As dit steeds nie werk nadat jy dit toegestaan het nie, soek na \'n agtergrond-opspring- of agtergrondlanseringsinstelling in jou foon se toepassingtoestemmings.</string>
     <string name="notification_permission_hint_title">Kennisgewing-toestemming</string>
     <string name="notification_permission_hint_message">Verleen kennisgewing-toestemming om statusopdaterings te sien terwyl volumes aangepas word.</string>
     <string name="dnd_access_hint_title">Moenie Steur Nie-toegang</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Waarneem</string>
     <string name="devices_indicator_disconnect">Ontkoppel</string>
     <string name="devices_indicator_limit">Beperk</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Versterking</string>
     <string name="devices_indicator_launch">Laai</string>
     <string name="devices_indicator_home">Tuis</string>
     <string name="devices_indicator_dnd">MS</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Groen</string>
     <string name="widget_config_theme_red_label">Rooi</string>
     <string name="widget_config_theme_custom_label">Aangepas</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Egaliseerder</string>
+    <string name="eq_bands_label">Bande</string>
+    <string name="eq_mini_graph_desc">Gekonfigureerde gelykmakerbande</string>
+    <string name="eq_enable_label">Gebruik die gelykmaker</string>
+    <string name="eq_disabled_hint">Af, jou instellings word gestoor maar sal die oudio nog nie beïnvloed nie.</string>
+    <string name="eq_status_active_label">EQ aktief vir %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ aktief vir verskeie toepassings</string>
+    <string name="eq_status_no_control_label">%1$s is opgespoor, maar die EQ kon nie beheer oorneem nie</string>
+    <string name="eq_status_no_control_headline">%1$s is opgespoor</string>
+    <string name="eq_status_no_control_detail">Die EQ kon nie beheer oor sy oudio oorneem nie</string>
+    <string name="eq_status_multiple_recent_label">Mees onlangse: %1$s</string>
+    <string name="eq_status_since_label">Sessie het %1$s begin</string>
+    <string name="eq_status_waiting_label">Wag vir \'n ondersteunde musiek-toepassing, begin terugspeel om die effek te hoor</string>
+    <string name="eq_status_inactive_label">Nie tans aktief vir hierdie toestel nie</string>
+    <string name="eq_status_generic_app_label">\'n musiek-toepassing</string>
+    <string name="eq_boost_label">Volumeversterking</string>
+    <string name="eq_boost_hint">Maak alles harder bo-op die bande. Te veel versterking kan die klank vervorm.</string>
+    <string name="eq_unsupported_msg">Hierdie foon bied nie \'n gelykmaker wat ons kan gebruik nie.</string>
+    <string name="eq_info_msg">Werk met toepassings wat stelselgelykmakers ondersteun, bv. Spotify of YouTube Music. Dit beïnvloed alle oudio van daardie toepassings terwyl hierdie toestel aktief is. As iets reeds speel, herbegin die terugspeel om die verandering te hoor.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Plat</string>
+    <string name="eq_preset_bass_boost_label">Bas-versterking</string>
+    <string name="eq_preset_bass_reducer_label">Bas-verminderaar</string>
+    <string name="eq_preset_treble_boost_label">Diskant-versterking</string>
+    <string name="eq_preset_vocal_label">Stem</string>
+    <string name="eq_preset_loudness_label">Luidheid</string>
 </resources>

@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">ምዝገባ ገና ንቁ ነው</string>
     <string name="upgrade_screen_sub_still_renewing_message">ምዝገባዎ ገና እንደገና ለማደስ ተዘጋጅቶ ነው። በመጀመሪያ በGoogle Play ውስጥ ሰርዙት፣ ከዚያም ወደዚህ ተመለሱ አንድ ጊዜ ግዢ ለመግዛት - በዚህ መንገድ ሁለት ጊዜ ክፍያ አይወስዱም።</string>
+    <string name="upgrade_screen_purchase_check_failed_message">ግዢዎችዎን ከGoogle Play ጋር ማረጋገጥ አልቻልንም። እባክዎ ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">ክፍያ በመጠባበቅ ላይ</string>
+    <string name="upgrade_screen_pending_card_body">Google Play አሁንም ክፍያዎን በማስኬድ ላይ ነው። ክፍያው ከተጠናቀቀ በኋላ Pro በራሱ ይከፈታል። አንዳንድ የክፍያ ዘዴዎች ጊዜ ይወስዳሉ፣ ሌላ ማድረግ ያለብዎት ነገር የለም።</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play ክፍያው አሁንም እየተካሄደ ያለ ግዢ አግኝቷል። ክፍያው ከተጠናቀቀ በኋላ Pro በራሱ ይከፈታል።</string>
     <string name="upgrades_gplay_already_owned_error_title">ተገዛ ነው</string>
     <string name="upgrades_gplay_already_owned_error_description">\'ግዢ ወደ ኋላ መመለስ\' አማራጭ ተጠቀም ግዢዎን ለመመለስ። ችግሩ ካልተፈታ፣ Google Play ካሽ ይጽደ እና መሳሪያዎን ድጋሚ ያስጀምሩ።</string>
     <string name="upgrades_gplay_internal_error_title">Google Play ስህተት</string>

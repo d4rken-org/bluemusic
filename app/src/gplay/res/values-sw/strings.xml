@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Usajili bado ni hai</string>
     <string name="upgrade_screen_sub_still_renewing_message">Usajili wako bado umewekwa kurejea. Ghairi katika Google Play kwanza, kisha rudi kununua kwa mara moja — kwa hiyo hutatozwa mara mbili.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Hatukuweza kuangalia manunuzi yako na Google Play. Tafadhali angalia muunganisho wako kisha ujaribu tena.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Malipo yanasubiri</string>
+    <string name="upgrade_screen_pending_card_body">Google Play bado inachakata malipo yako. Pro itafunguliwa yenyewe mara malipo yatakapokamilika. Njia zingine za malipo huchukua muda, hakuna kitu kingine unachohitaji kufanya.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play imepata ununuzi ambao malipo yake bado yanachakatwa. Pro itafunguliwa yenyewe mara malipo yatakapokamilika.</string>
     <string name="upgrades_gplay_already_owned_error_title">Tayari umeshanunua</string>
     <string name="upgrades_gplay_already_owned_error_description">Tumia chaguo la \"Rejesha ununuzi\" kurejesha ununuzi wako. Ikiwa tatizo linaendelea, jaribu kuondoa akache ya Google Play na kuanzisha upya kifaa chako.</string>
     <string name="upgrades_gplay_internal_error_title">Hitilafu ya Google Play</string>

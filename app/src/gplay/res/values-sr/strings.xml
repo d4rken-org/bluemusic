@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Претплата је још увек активна</string>
     <string name="upgrade_screen_sub_still_renewing_message">Ваша претплата је још увек подешена да се обнови. Прво је откажите у Google Play, а затим се вратите да купите једнократну куповину — на тај начин вам неће бити наплаћено два пута.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Не можемо да проверимо твоје куповине са Google Play. Молимо, провери твоју повезаност и покушај поново.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Плаћање на чекању</string>
+    <string name="upgrade_screen_pending_card_body">Google Play још увек обрађује твоје плаћање. Pro се аутоматски откључава када плаћање буде успешно. Неке методе плаћања требају више времена, нема ничега другог што требаш да урадиш.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play је пронашао куповину чије је плаћање још у обради. Pro се аутоматски откључава када плаћање буде успешно.</string>
     <string name="upgrades_gplay_already_owned_error_title">Већ купљено</string>
     <string name="upgrades_gplay_already_owned_error_description">Користите опцију „Врати куповину” да вратите вашу куповину. Ако проблем настави, покушајте да очистите кеш Google Play-а и поново покренете уређај.</string>
     <string name="upgrades_gplay_internal_error_title">Грешка Google Play</string>

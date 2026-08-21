@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Перейменувати</string>
     <string name="devices_device_config_enabled_label">Увімкнено</string>
     <string name="devices_device_config_enabled_desc">Реагувати на цей пристрій при підключенні</string>
+    <string name="devices_device_config_equalizer_label">Еквалайзер</string>
+    <string name="devices_device_config_equalizer_desc">Налаштуйте смуги еквалайзера та підсилення гучності для цього пристрою. Працює тільки з музичними програмами, які підтримують системний еквалайзер Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Підсилення гучності: %1$s</string>
     <string name="devices_device_config_section_timing_label">Синхронізація</string>
     <string name="devices_device_config_monitoring_duration_label">Тривалість моніторингу</string>
     <string name="devices_device_config_monitoring_duration_desc">Тривалість у мілісекундах після внесення змін, протягом якої будь-які подальші зміни гучності будуть заблоковані.</string>
@@ -326,6 +329,7 @@
     <string name="label_add_device">Додати пристрій</string>
     <string name="label_just_a_moment_please">Хвилинку...</string>
     <string name="label_notification_channel_status">Стан</string>
+    <string name="label_notification_channel_setup">Потрібно налаштування</string>
     <string name="monitor_notification_starting">Запуск…</string>
     <string name="action_set">Налаштувати</string>
     <string name="action_cancel">Скасувати</string>
@@ -344,6 +348,7 @@
     <string name="upgrade_benefit_theme_customization">Налаштування теми, стилю та кольорів</string>
     <string name="upgrade_benefit_power_controls">Блокування гучності та обмеження частоти</string>
     <string name="upgrade_benefit_support">Підтримати незалежну розробку</string>
+    <string name="upgrade_benefit_equalizer">• Еквалайзер для кожного пристрою (для музичних програм з підтримкою системного еквалайзера)</string>
     <string name="description_intro_tap_the_button">Розпочнімо з додавання Вашого першого пристрою.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth вимкнений.</string>
     <string name="title_bluetooth_is_off">Bluetooth вимкнено</string>
@@ -406,6 +411,7 @@
     <string name="battery_optimization_fix_action">Вимкнути оптимізації</string>
     <string name="android10_applaunch_hint_title">Дозвіл на відображення поверх інших додатків</string>
     <string name="android10_applaunch_hint_message">Android 10+ потребує спеціального дозволу для запуску програм, відображення домашнього екрана або пробудження екрана з тла при підключенні. Надайте дозвіл «Поверх інших додатків».</string>
+    <string name="android10_applaunch_oem_hint">Деякі виробники потребують додаткового дозволу. Якщо це не допоможе, в дозволах програм свого телефону шукай налаштування для фонового запуску або спливаючого вікна.</string>
     <string name="notification_permission_hint_title">Дозвіл на сповіщення</string>
     <string name="notification_permission_hint_message">Надай дозвіл на сповіщення, щоб бачити оновлення стану при регулюванні гучності.</string>
     <string name="dnd_access_hint_title">Доступ до режиму «Не турбувати»</string>
@@ -440,6 +446,8 @@
     <string name="devices_indicator_observe">Спостереження</string>
     <string name="devices_indicator_disconnect">Відключення</string>
     <string name="devices_indicator_limit">Обмеження</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Підсилення</string>
     <string name="devices_indicator_launch">Запуск</string>
     <string name="devices_indicator_home">Головна</string>
     <string name="devices_indicator_dnd">НТ</string>
@@ -468,4 +476,33 @@
     <string name="widget_config_theme_green_label">Зелений</string>
     <string name="widget_config_theme_red_label">Червоний</string>
     <string name="widget_config_theme_custom_label">Власний</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Еквалайзер</string>
+    <string name="eq_bands_label">Смуги</string>
+    <string name="eq_mini_graph_desc">Налаштовані смуги еквалайзера</string>
+    <string name="eq_enable_label">Використовувати еквалайзер</string>
+    <string name="eq_disabled_hint">Вимкнено, твої параметри збережені, але ще не впливають на звук.</string>
+    <string name="eq_status_active_label">EQ активний для %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ активний для кількох програм</string>
+    <string name="eq_status_no_control_label">Виявлено %1$s, але EQ не міг взяти контроль</string>
+    <string name="eq_status_no_control_headline">Виявлено %1$s</string>
+    <string name="eq_status_no_control_detail">EQ не міг взяти контроль над своїм звуком</string>
+    <string name="eq_status_multiple_recent_label">Найновіший: %1$s</string>
+    <string name="eq_status_since_label">Сеанс розпочався %1$s</string>
+    <string name="eq_status_waiting_label">Очікування на підтримувану музичну програму, запусти відтворення, щоб почути ефект</string>
+    <string name="eq_status_inactive_label">Зараз неактивний для цього пристрою</string>
+    <string name="eq_status_generic_app_label">музична програма</string>
+    <string name="eq_boost_label">Підсилення гучності</string>
+    <string name="eq_boost_hint">Робить усе гучнішим на додачу до смуг. Велике підсилення може спотворити звук.</string>
+    <string name="eq_unsupported_msg">Цей телефон не пропонує еквалайзер, який ми можемо використати.</string>
+    <string name="eq_info_msg">Працює з програмами, які підтримують системні еквалайзери, наприклад Spotify або YouTube Music. Це впливає на весь звук від цих програм, поки цей пристрій активний. Якщо щось вже відтворюється, перезапусти відтворення, щоб почути зміну.</string>
+    <string name="eq_frequency_hz_label">%1$s Гц</string>
+    <string name="eq_frequency_khz_label">%1$s кГц</string>
+    <string name="eq_gain_db_label">%1$s дБ</string>
+    <string name="eq_preset_flat_label">Плоский</string>
+    <string name="eq_preset_bass_boost_label">Підсилення басу</string>
+    <string name="eq_preset_bass_reducer_label">Зменшення басу</string>
+    <string name="eq_preset_treble_boost_label">Підсилення верхніх частот</string>
+    <string name="eq_preset_vocal_label">Вокал</string>
+    <string name="eq_preset_loudness_label">Гучність</string>
 </resources>

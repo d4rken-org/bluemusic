@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Բաժանորդագրությունը դեռ ակտիվ է</string>
     <string name="upgrade_screen_sub_still_renewing_message">Ձեր բաժանորդագրությունը դեռ նախատեսված է երկարաձգվել։ Նախ չեղարկեք այն Google Play-ում, ապա վերադարձեք՝ միանվագ գնումը կատարելու համար — այդպես ձեզանից գումար կրկնակի չի գանձվի։</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Google Play-ի հետ չկարողացանք ստուգել ձեր գնումները: Խնդրում ենք ստուգել կապը և կրկին փորձել:</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Վճարումը սպասման մեջ է</string>
+    <string name="upgrade_screen_pending_card_body">Google Play-ը դեռ մշակում է ձեր վճարումը: Pro տարբերակը ինքնաբերաբար կբացվի, երբ վճարումն ավարտվի: Որոշ վճարման եղանակներ որոշ ժամանակ են պահանջում, ձեզանից այլ բան պետք չէ անել:</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play-ը գտել է գնում, որի վճարումը դեռ մշակվում է: Pro տարբերակը ինքնաբերաբար կբացվի, երբ վճարումն ավարտվի:</string>
     <string name="upgrades_gplay_already_owned_error_title">Արդեն գնված է</string>
     <string name="upgrades_gplay_already_owned_error_description">Օգտագործեք «Վերականգնել գնումը» տարբերակը՝ ձեր գնումը վերականգնելու համար։ Եթե խնդիրը շարունակվում է, փորձեք մաքրել Google Play-ի քեշը և վերագործարկել ձեր սարքը։</string>
     <string name="upgrades_gplay_internal_error_title">Google Play-ի սխալ</string>

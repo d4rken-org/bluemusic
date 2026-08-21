@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Renomear</string>
     <string name="devices_device_config_enabled_label">Ativado</string>
     <string name="devices_device_config_enabled_desc">Reagir a este dispositivo quando conectado</string>
+    <string name="devices_device_config_equalizer_label">Equalizador</string>
+    <string name="devices_device_config_equalizer_desc">Ajusta as bandas do equalizador e o reforço de volume para este dispositivo. Só funciona com apps de música que suportam o equalizador de sistema do Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Reforço de volume: %1$s</string>
     <string name="devices_device_config_section_timing_label">Temporização</string>
     <string name="devices_device_config_monitoring_duration_label">Duração da monitorização</string>
     <string name="devices_device_config_monitoring_duration_desc">Uma duração em milissegundos, após os ajustes terem sido feitos, durante a qual quaisquer alterações de volume adicionais serão bloqueadas.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Adicionar dispositivo</string>
     <string name="label_just_a_moment_please">Aguarde um pouco.</string>
     <string name="label_notification_channel_status">Estado</string>
+    <string name="label_notification_channel_setup">Configuração necessária</string>
     <string name="monitor_notification_starting">A iniciar…</string>
     <string name="action_set">Definir</string>
     <string name="action_cancel">Cancelar</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Personalização de tema, estilo e cor</string>
     <string name="upgrade_benefit_power_controls">Bloqueio de volume e limitação de velocidade</string>
     <string name="upgrade_benefit_support">Apoiar o desenvolvimento independente</string>
+    <string name="upgrade_benefit_equalizer">• Equalizador por dispositivo (para apps de música com suporte ao equalizador de sistema)</string>
     <string name="description_intro_tap_the_button">Deve começar por adicionar o seu dispositivo.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth está desativado.</string>
     <string name="title_bluetooth_is_off">Bluetooth está desligado</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Desativar otimizações</string>
     <string name="android10_applaunch_hint_title">Permissão de sobreposição a outras apps</string>
     <string name="android10_applaunch_hint_message">Android 10+ requer uma permissão especial para iniciar aplicações, mostrar o ecrã inicial ou acordar o ecrã a partir de segundo plano ao conectar. Conceda a permissão \"Sobreposição a outras apps\".</string>
+    <string name="android10_applaunch_oem_hint">Alguns fabricantes exigem uma segunda permissão além desta. Se continuar sem funcionar depois de a conceder, procura uma definição de pop-up em segundo plano ou de início em segundo plano nas permissões de apps do teu telemóvel.</string>
     <string name="notification_permission_hint_title">Permissão de notificação</string>
     <string name="notification_permission_hint_message">Concede permissão de notificação para veres atualizações de estado ao ajustar volumes.</string>
     <string name="dnd_access_hint_title">Acesso ao Não Incomodar</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Observar</string>
     <string name="devices_indicator_disconnect">Desconectar</string>
     <string name="devices_indicator_limit">Limite</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Reforço</string>
     <string name="devices_indicator_launch">Iniciar</string>
     <string name="devices_indicator_home">Início</string>
     <string name="devices_indicator_dnd">NI</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Verde</string>
     <string name="widget_config_theme_red_label">Vermelho</string>
     <string name="widget_config_theme_custom_label">Personalizado</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Equalizador</string>
+    <string name="eq_bands_label">Bandas</string>
+    <string name="eq_mini_graph_desc">Bandas do equalizador configuradas</string>
+    <string name="eq_enable_label">Usar o equalizador</string>
+    <string name="eq_disabled_hint">Desativado, as tuas definições estão guardadas mas ainda não afetam o áudio.</string>
+    <string name="eq_status_active_label">EQ ativo para %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ ativo para várias apps</string>
+    <string name="eq_status_no_control_label">%1$s foi detetado, mas o EQ não conseguiu assumir o controlo</string>
+    <string name="eq_status_no_control_headline">%1$s foi detetado</string>
+    <string name="eq_status_no_control_detail">O EQ não conseguiu assumir o controlo do áudio</string>
+    <string name="eq_status_multiple_recent_label">Mais recente: %1$s</string>
+    <string name="eq_status_since_label">Sessão iniciada %1$s</string>
+    <string name="eq_status_waiting_label">A aguardar uma app de música suportada, inicia a reprodução para ouvir o efeito</string>
+    <string name="eq_status_inactive_label">Não está ativo para este dispositivo neste momento</string>
+    <string name="eq_status_generic_app_label">uma app de música</string>
+    <string name="eq_boost_label">Reforço de volume</string>
+    <string name="eq_boost_hint">Torna tudo mais alto além das bandas. Um reforço elevado pode distorcer o som.</string>
+    <string name="eq_unsupported_msg">Este telemóvel não oferece um equalizador que possamos usar.</string>
+    <string name="eq_info_msg">Funciona com apps que suportam equalizadores de sistema, por exemplo o Spotify ou o YouTube Music. Afeta todo o áudio dessas apps enquanto este dispositivo estiver ativo. Se já estiver algo a tocar, reinicia a reprodução para ouvir a alteração.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Plano</string>
+    <string name="eq_preset_bass_boost_label">Reforço de graves</string>
+    <string name="eq_preset_bass_reducer_label">Redutor de graves</string>
+    <string name="eq_preset_treble_boost_label">Reforço de agudos</string>
+    <string name="eq_preset_vocal_label">Vocal</string>
+    <string name="eq_preset_loudness_label">Sonoridade</string>
 </resources>

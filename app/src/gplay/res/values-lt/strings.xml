@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Prenumerata vis dar aktyvi</string>
     <string name="upgrade_screen_sub_still_renewing_message">Jūsų prenumerata vis dar bus atnaujinama. Pirmiausia atšaukite ją „Google Play“, tada grįžkite ir įsigykite vienkartinį pirkinį — taip nebūsite apmokestinti du kartus.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Nepavyko patikrinti tavo pirkinių su „Google Play“. Patikrink interneto ryšį ir bandyk dar kartą.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Laukiama mokėjimo</string>
+    <string name="upgrade_screen_pending_card_body">„Google Play“ vis dar apdoroja tavo mokėjimą. „Pro“ funkcijos atsiras automatiškai, kai mokėjimas bus atliktas. Kai kurie mokėjimo būdai užtrunka, tau daugiau nieko nereikia daryti.</string>
+    <string name="upgrade_screen_pending_dialog_message">„Google Play“ rado pirkinį, kurio mokėjimas dar apdorojamas. „Pro“ funkcijos atsiras automatiškai, kai mokėjimas bus atliktas.</string>
     <string name="upgrades_gplay_already_owned_error_title">Jau įsigyta</string>
     <string name="upgrades_gplay_already_owned_error_description">Naudokite parinktį „Atkurti pirkinį“, kad atkurtumėte savo pirkinį. Jei problema kartojasi, pabandykite išvalyti „Google Play“ talpyklą ir iš naujo paleisti įrenginį.</string>
     <string name="upgrades_gplay_internal_error_title">„Google Play“ klaida</string>

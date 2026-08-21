@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">การสมัครสมาชิกยังใช้งานอยู่</string>
     <string name="upgrade_screen_sub_still_renewing_message">การสมัครสมาชิกของคุณยังตั้งค่าให้ต่ออายุ ยกเลิกการสมัครใน Google Play ก่อน จากนั้นกลับมาซื้อแบบครั้งเดียว — ด้วยวิธีนี้คุณจะไม่ถูกเรียกเก็บเงินสองครั้ง</string>
+    <string name="upgrade_screen_purchase_check_failed_message">เราไม่สามารถตรวจสอบการซื้อของคุณกับ Google Play ได้ กรุณาตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">การชำระเงินอยู่ระหว่างดำเนินการ</string>
+    <string name="upgrade_screen_pending_card_body">Google Play กำลังดำเนินการชำระเงินของคุณ Pro จะปลดล็อกโดยอัตโนมัติเมื่อการชำระเงินเสร็จสมบูรณ์ วิธีการชำระเงินบางแบบอาจใช้เวลาสักครู่ คุณไม่ต้องทำอะไรเพิ่มเติม</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play พบการซื้อที่การชำระเงินยังอยู่ระหว่างดำเนินการ Pro จะปลดล็อกโดยอัตโนมัติเมื่อการชำระเงินเสร็จสมบูรณ์</string>
     <string name="upgrades_gplay_already_owned_error_title">ซื้อไปแล้ว</string>
     <string name="upgrades_gplay_already_owned_error_description">ใช้ตัวเลือก \"กู้คืนการซื้อ\" เพื่อกู้คืนการซื้อของคุณ หากปัญหายังคงเกิดขึ้น ให้ลองล้างแคชของ Google Play และรีสตาร์ตอุปกรณ์ของคุณ</string>
     <string name="upgrades_gplay_internal_error_title">ข้อผิดพลาด Google Play</string>

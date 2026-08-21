@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">ಮರುನಾಮಕರಿಸಿ</string>
     <string name="devices_device_config_enabled_label">ಸಕ್ರಿಯವಾಗಿದೆ</string>
     <string name="devices_device_config_enabled_desc">ಜೋಡಿಗೊಂಡಾಗ ಈ ಸಾಧನಕ್ಕೆ ಪ್ರತಿಕ್ರಿಯಿಸಿ</string>
+    <string name="devices_device_config_equalizer_label">ಇಕ್ವಲೈಯರ್</string>
+    <string name="devices_device_config_equalizer_desc">ಈ ಸಾಧನಕ್ಕೆ ಸಮಾನಕಾರೀ ಬ್ಯಾಂಡ್‌ಗಳು ಮತ್ತು ಸಂಪುಟ ವರ್ಧನೆಯನ್ನು ಟ್ಯೂನ್ ಮಾಡಿ. ಆಂಡ್ರಾಯ್ಡ್‌ನ ವ್ಯವಸ್ಥೆಯ ಸಮಾನಕಾರೀಯನ್ನು ಬೆಂಬಲಿಸುವ ಸಂಗೀತ ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಜೊತೆ ಮಾತ್ರ ಕಾರ್ಯ ಮಾಡುತ್ತದೆ.</string>
+    <string name="devices_device_config_equalizer_boost_label">ಸಂಪುಟ ವರ್ಧನೆ: %1$s</string>
     <string name="devices_device_config_section_timing_label">ಸಮಯಸೂಚನೆ</string>
     <string name="devices_device_config_monitoring_duration_label">ಮೇಲ್ವಿಚಾರಣೆ ಅವಧಿ</string>
     <string name="devices_device_config_monitoring_duration_desc">ಮಿಲಿಸೆಕಂಡ್ಗಳಲ್ಲಿನ ಅವಧಿ, ಸರಿಹೊಂದಿಕೆಗಳನ್ನು ಮಾಡಿದ ನಂತರ, ಯಾವುದೇ ಈಚೆಗಿನ ವಾಲ್ಯೂಮ್ ಬದಲಾವಣೆಗಳನ್ನು ತಡೆಯಲಾಗುತ್ತದೆ.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">ಸಾಧನ ಸೇರಿಸಿ</string>
     <string name="label_just_a_moment_please">ಒಂದು ಕ್ಷಣ, ದಯವಿಟ್ಟು.</string>
     <string name="label_notification_channel_status">ಸ್ಥಿತಿ</string>
+    <string name="label_notification_channel_setup">ಸೆಟಪ್ ಅಗತ್ಯ</string>
     <string name="monitor_notification_starting">ಪ್ರಾರಂಭಿಸುತ್ತಿದೆ…</string>
     <string name="action_set">ಹೊಂದಿಸಿ</string>
     <string name="action_cancel">ರದ್ದುಮಾಡಿ</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">ಥೀಮ್, ಶೈಲಿ ಮತ್ತು ಬಣ್ಣ ಕಸ್ಟಮೈಸೇಶನ್</string>
     <string name="upgrade_benefit_power_controls">ವಾಲ್ಯೂಮ್ ಲಾಕ್ ಮತ್ತು ದರ ಮಿತಿ</string>
     <string name="upgrade_benefit_support">ಸ್ವತಂತ್ರ ಅಭಿವೃದ್ಧಿಯನ್ನು ಬೆಂಬಲಿಸಿ</string>
+    <string name="upgrade_benefit_equalizer">• ಪ್ರತಿ-ಸಾಧನ ಸಮಾನಕಾರೀ (ವ್ಯವಸ್ಥೆಯ ಸಮಾನಕಾರೀ ಬೆಂಬಲದೊಂದಿಗೆ ಸಂಗೀತ ಅಪ್ಲಿಕೇಶನ್‌ಗಳಿಗೆ)</string>
     <string name="description_intro_tap_the_button">ನಿಮ್ಮ ಮೊದಲ ಸಾಧನ ಸೇರಿಸುವೊದರಿಂದ ಪ್ರಾರಂಭಿಸಿ.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ.</string>
     <string name="title_bluetooth_is_off">Bluetooth ಆಫ್ ಆಗಿದೆ</string>
@@ -397,6 +402,7 @@
     <string name="battery_optimization_fix_action">ಆಪ್ಟಿಮೈಜೇಶನ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ</string>
     <string name="android10_applaunch_hint_title">ಇತರ ಆ್ಯಪ್‌ಗಳ ಮೇಲೆ ಪ್ರದರ್ಶನ ಅನುಮತಿ</string>
     <string name="android10_applaunch_hint_message">Android 10+ ಗೆ ಆ್ಯಪ್‌ಗಳನ್ನು ಪ್ರಾರಂಭಿಸಲು, ಮುಖಪುಟವನ್ನು ತೋರಿಸಲು ಅಥವಾ ಸಂಪರ್ಕವಾದಾಗ ಹಿನ್ನೆಲೆಯಿಂದ ಪರದೆಯನ್ನು ಜಾಗೃತಗೊಳಿಸಲು ವಿಶೇಷ ಅನುಮತಿ ಅಗತ್ಯ. \"ಇತರ ಆ್ಯಪ್‌ಗಳ ಮೇಲೆ ಪ್ರದರ್ಶನ\" ಅನುಮತಿ ನೀಡಿ.</string>
+    <string name="android10_applaunch_oem_hint">ಕೆಲವು ತಯಾರಕರು ಇದರ ಮೇಲೆ ಎರಡನೇ ಅನುಮತಿಯ ಅಗತ್ಯವಿದೆ. ನೀಡಿದ ನಂತರವೂ ಇದು ಕೆಲಸ ಮಾಡದಿದ್ದರೆ, ನಿಮ್ಮ ಫೋನ್‌ನ ಅಪ್ಲಿಕೇಶನ್ ಅನುಮತಿಗಳಲ್ಲಿ ಹಿನ್ನೆಲೆ ಪಾಪ್-ಅಪ್ ಅಥವಾ ಹಿನ್ನೆಲೆ ಪ್ರಾರಂಭ ಸೆಟ್ಟಿಂಗ್‌ನೊಂದಿಗೆ ಹುಡುಕಿ.</string>
     <string name="notification_permission_hint_title">ಅಧಿಸೂಚನೆ ಅನುಮತಿ</string>
     <string name="notification_permission_hint_message">ವಾಲ್ಯೂಮ್ ಸರಿಯಾಸುವಾಗ ಸ್ಟೇಟಸ್ ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ನೋಡಲು ಅಧಿಸೂಚನೆ ಅನುಮತಿ ನೀಡಿ</string>
     <string name="dnd_access_hint_title">ಡೂ ನಾಟ್ ಡಿಸ್ಟರ್ಬ್ ಪ್ರವೇಶ</string>
@@ -431,6 +437,8 @@
     <string name="devices_indicator_observe">ಗಮನಿಸು</string>
     <string name="devices_indicator_disconnect">ಸಂಪರ್ಕ ಕೆಡಿಸು</string>
     <string name="devices_indicator_limit">ಮಿತಿ</string>
+    <string name="devices_indicator_eq">ಸಮಾನ</string>
+    <string name="devices_indicator_boost">ವರ್ಧನೆ</string>
     <string name="devices_indicator_launch">ಪ್ರಾರಂಭಿಸು</string>
     <string name="devices_indicator_home">ಮುಖಪುಟ</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -459,4 +467,33 @@
     <string name="widget_config_theme_green_label">ಹಸಿರು</string>
     <string name="widget_config_theme_red_label">ಕೆಂಪು</string>
     <string name="widget_config_theme_custom_label">ಕಸ್ಟಮ್</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">ಇಕ್ವಲೈಯರ್</string>
+    <string name="eq_bands_label">ಬ್ಯಾಂಡ್‌ಗಳು</string>
+    <string name="eq_mini_graph_desc">ಕಾನ್ಫಿಗರ್ ಮಾಡಿದ ಸಮಾನಕಾರೀ ಬ್ಯಾಂಡ್‌ಗಳು</string>
+    <string name="eq_enable_label">ಸಮಾನಕಾರೀಯನ್ನು ಬಳಸಿ</string>
+    <string name="eq_disabled_hint">ಆಫ್, ನಿಮ್ಮ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಉಳಿಸಲಾಗಿವೆ ಆದರೆ ಇನ್ನೂ ಆಡಿಯೋವನ್ನು ಪ್ರಭಾವಿತ ಮಾಡುವುದಿಲ್ಲ.</string>
+    <string name="eq_status_active_label">%1$s ಗೆ ಸಮಾನ ಸಕ್ರಿಯ</string>
+    <string name="eq_status_active_multiple_label">ಬಹು ಅಪ್ಲಿಕೇಶನ್‌ಗಳಿಗೆ ಸಮಾನ ಸಕ್ರಿಯ</string>
+    <string name="eq_status_no_control_label">%1$s ಕಂಡುಹಿಡಿಯಲಾಯಿತು, ಆದರೆ ಸಮಾನವು ನಿಯಂತ್ರಣ ತೆಗೆದುಕೊಳ್ಳಲಾಗಲಿಲ್ಲ</string>
+    <string name="eq_status_no_control_headline">%1$s ಕಂಡುಹಿಡಿಯಲಾಯಿತು</string>
+    <string name="eq_status_no_control_detail">ಸಮಾನವು ಅದರ ಆಡಿಯೋವನ್ನು ನಿಯಂತ್ರಿಸಲಾಗಲಿಲ್ಲ</string>
+    <string name="eq_status_multiple_recent_label">ಅತ್ಯಂತ ಇತ್ತೀಚಿನ: %1$s</string>
+    <string name="eq_status_since_label">ಸೆಷನ್ ಪ್ರಾರಂಭ %1$s</string>
+    <string name="eq_status_waiting_label">ಬೆಂಬಲಿತ ಸಂಗೀತ ಅಪ್ಲಿಕೇಶನ್‌ಗಾಗಿ ಕಾಯುತ್ತಿದೆ, ಪರಿಣಾಮವನ್ನು ಕೇಳಲು ಪ್ಲೇಬ್ಯಾಕ್ ಪ್ರಾರಂಭ ಮಾಡಿ</string>
+    <string name="eq_status_inactive_label">ಈ ಸಾಧನದ ಜೊತೆ ಸದ್ಯ ಸಕ್ರಿಯವಲ್ಲ</string>
+    <string name="eq_status_generic_app_label">ಒಂದು ಸಂಗೀತ ಅಪ್ಲಿಕೇಶನ್</string>
+    <string name="eq_boost_label">ಸಂಪುಟ ವರ್ಧನೆ</string>
+    <string name="eq_boost_hint">ಬ್ಯಾಂಡ್‌ಗಳ ಮೇಲೆ ಎಲ್ಲವನ್ನೂ ಜೋರಾಗಿ ಮಾಡುತ್ತದೆ. ಬಹಳ ವರ್ಧನೆ ಧ್ವನಿಯನ್ನು ವಿಕೃತ ಮಾಡಬಹುದು.</string>
+    <string name="eq_unsupported_msg">ಈ ಫೋನ್ ನಾವು ಬಳಸಬಹುದಾದ ಸಮಾನಕಾರೀಯನ್ನು ನೀಡುವುದಿಲ್ಲ.</string>
+    <string name="eq_info_msg">ವ್ಯವಸ್ಥೆಯ ಸಮಾನಕಾರೀಗಳನ್ನು ಬೆಂಬಲಿಸುವ ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಜೊತೆ ಕಾರ್ಯ ಮಾಡುತ್ತದೆ, ಉದಾಹರಣೆ ಸ್ಪಾಟಿಫೈ ಅಥವಾ ಯೂಟ್ಯೂಬ್ ಸಂಗೀತ. ಈ ಸಾಧನ ಸಕ್ರಿಯವಾಗಿರುವಾಗ ಇದು ಆ ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಎಲ್ಲಾ ಆಡಿಯೋವನ್ನು ಪ್ರಭಾವಿತ ಮಾಡುತ್ತದೆ. ಏನಾದರೂ ಈಗಾಗಲೇ ಚಲಿತವಾಗಿದ್ದರೆ, ಬದಲಾವಣೆಯನ್ನು ಕೇಳಲು ಪ್ಲೇಬ್ಯಾಕ್ ಅನ್ನು ಮರುಪ್ರಾರಂಭ ಮಾಡಿ.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">ಸಮತಲ</string>
+    <string name="eq_preset_bass_boost_label">ಬಾಸ್ ವರ್ಧನೆ</string>
+    <string name="eq_preset_bass_reducer_label">ಬಾಸ್ ಕಡಿಮೆ</string>
+    <string name="eq_preset_treble_boost_label">ಟ್ರೆಬಲ್ ವರ್ಧನೆ</string>
+    <string name="eq_preset_vocal_label">ಕಂಠ</string>
+    <string name="eq_preset_loudness_label">ಜೋರಾಗಿರುವಿಕೆ</string>
 </resources>

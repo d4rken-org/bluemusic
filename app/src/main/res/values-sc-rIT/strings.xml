@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Rinòmina</string>
     <string name="devices_device_config_enabled_label">Abilitàdu</string>
     <string name="devices_device_config_enabled_desc">Reagessi a custu dispositivu cando si connèttet</string>
+    <string name="devices_device_config_equalizer_label">Equalizadore</string>
+    <string name="devices_device_config_equalizer_desc">Ajusta is bandas de s\'equalizadore e l\'aumento de volume pro custu aparatu. Funtzionat solamente cun aplicatziones de mùsica chi sustentant s\'equalizadore de sistema Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Aumento de volume: %1$s</string>
     <string name="devices_device_config_section_timing_label">Temporizatzione</string>
     <string name="devices_device_config_monitoring_duration_label">Durada de su monitoràgiu</string>
     <string name="devices_device_config_monitoring_duration_desc">Una durada in millisecundos, dòpo chi sunt fatos sos aggiustamentos, durante sa cale calsiasi àteru cambiu de volume serà bloccàdu.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Aggiunghe dispositivu</string>
     <string name="label_just_a_moment_please">Unu momentu, prite.</string>
     <string name="label_notification_channel_status">Istadu</string>
+    <string name="label_notification_channel_setup">Cunfiguratzione iscantzelada</string>
     <string name="monitor_notification_starting">Iniciende…</string>
     <string name="action_set">Imposta</string>
     <string name="action_cancel">Annùlla</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Personalizatzione de tema, stile e colore</string>
     <string name="upgrade_benefit_power_controls">Blocu de volume e limitatzione de velotzidade</string>
     <string name="upgrade_benefit_support">Sostieni su svilupu indipendente</string>
+    <string name="upgrade_benefit_equalizer">• Equalizadore pro cada aparatu (pro aplicatziones de mùsica cun sustegnu de s\'equalizadore de sistema)</string>
     <string name="description_intro_tap_the_button">Cumintzat aggiungèndende su primu dispositivu tuo.</string>
     <string name="description_bluetooth_is_disabled">Su Bluetooth est disabilitàdu.</string>
     <string name="title_bluetooth_is_off">Su Bluetooth est isgèliu</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Disabilita sas ottimizatziones</string>
     <string name="android10_applaunch_hint_title">Permissione de mustrare subra de apps</string>
     <string name="android10_applaunch_hint_message">Android 10+ at bisongiu de una permissione speciale pro aviare apps, mustrare sa pantalla printzipale o ischidare sa schermida dae su background cando unu dispositivu si connectat. Cuncede sa permissione \"Mustrare subra de áteras apps\".</string>
+    <string name="android10_applaunch_oem_hint">Calchunos costruttores de telemonus hanno bisognu de una segunda permissu in prus. Si non funtzionat ancora, circa pro una notìfica o cunfiguratzione de funde in is permissus de su telemoniu.</string>
     <string name="notification_permission_hint_title">Permissu de notìfigas</string>
     <string name="notification_permission_hint_message">Contzèddi su permissu de notìfigas pro vìdere aggiornamentos de istadu cando si aggiùstant sos volumes.</string>
     <string name="dnd_access_hint_title">Acesetu Non disturbare</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Osserva</string>
     <string name="devices_indicator_disconnect">Disconnètti</string>
     <string name="devices_indicator_limit">Limita</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Aumento</string>
     <string name="devices_indicator_launch">Làntzia</string>
     <string name="devices_indicator_home">Pantalla printzipale</string>
     <string name="devices_indicator_dnd">SND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Birde</string>
     <string name="widget_config_theme_red_label">Ruggiu</string>
     <string name="widget_config_theme_custom_label">Personalizadu</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Equalizadore</string>
+    <string name="eq_bands_label">Bandas</string>
+    <string name="eq_mini_graph_desc">Bandas de s\'equalizadore cunfiguradas</string>
+    <string name="eq_enable_label">Imprea s\'equalizadore</string>
+    <string name="eq_disabled_hint">Disattivadu, is cunfiguratziones tuus sunt isalvadas ma non aferan su sonu ancora.</string>
+    <string name="eq_status_active_label">EQ ativu pro %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ ativu pro múltiplas aplicatziones</string>
+    <string name="eq_status_no_control_label">%1$s fuit detectadu, ma s\'EQ non potit tómmiri su controlu</string>
+    <string name="eq_status_no_control_headline">%1$s fuit detectadu</string>
+    <string name="eq_status_no_control_detail">S\'EQ non potit tómmiri su controlu de su sonu</string>
+    <string name="eq_status_multiple_recent_label">Prus recente: %1$s</string>
+    <string name="eq_status_since_label">Sessione comintzada %1$s</string>
+    <string name="eq_status_waiting_label">Aspetende una aplicatzione de mùsica sustentada, umpeza sa riprodutzione pro oda su efettu</string>
+    <string name="eq_status_inactive_label">Non ativu pro custu aparatu in custu momentu</string>
+    <string name="eq_status_generic_app_label">una aplicatzione de mùsica</string>
+    <string name="eq_boost_label">Aumento de volume</string>
+    <string name="eq_boost_hint">Fai tottu prus altu in prus de is bandas. Meda aumento podit distòrbiri su sonu.</string>
+    <string name="eq_unsupported_msg">Custu telemoniu non oferit un equalizadore chi potzamus imprea.</string>
+    <string name="eq_info_msg">Funtzionat cun is aplicatziones chi sustentant equalizadores de sistema, pro esempiu Spotify o YouTube Music. Aferat tottu su sonu de aquellas aplicatziones cando custu aparatu est ativu. Si calchuna cosa est giai in riprodutzione, ricuminza sa riprodutzione pro oda su cambiu.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Pianu</string>
+    <string name="eq_preset_bass_boost_label">Aumento de bassu</string>
+    <string name="eq_preset_bass_reducer_label">Riduttore de bassu</string>
+    <string name="eq_preset_treble_boost_label">Aumento de acutu</string>
+    <string name="eq_preset_vocal_label">Vocale</string>
+    <string name="eq_preset_loudness_label">Sonoridade</string>
 </resources>

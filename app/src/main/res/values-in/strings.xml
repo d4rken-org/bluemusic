@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Ubah nama</string>
     <string name="devices_device_config_enabled_label">Diaktifkan</string>
     <string name="devices_device_config_enabled_desc">Bereaksi terhadap perangkat ini saat terhubung</string>
+    <string name="devices_device_config_equalizer_label">Ekualisir</string>
+    <string name="devices_device_config_equalizer_desc">Sesuaikan band ekualisir dan penguatan volume untuk perangkat ini. Hanya berfungsi dengan aplikasi musik yang mendukung ekualisir sistem Android.</string>
+    <string name="devices_device_config_equalizer_boost_label">Penguatan volume: %1$s</string>
     <string name="devices_device_config_section_timing_label">Waktu</string>
     <string name="devices_device_config_monitoring_duration_label">Durasi pengawasan</string>
     <string name="devices_device_config_monitoring_duration_desc">Durasi dalam milidetik, setelah penyesuaian telah dibuat, perubahan volume lebih lanjut akan dicegah.</string>
@@ -314,6 +317,7 @@
     <string name="label_add_device">Tambah perangkat</string>
     <string name="label_just_a_moment_please">Mohon tunggu.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="label_notification_channel_setup">Pengaturan diperlukan</string>
     <string name="monitor_notification_starting">Memulai…</string>
     <string name="action_set">Atur</string>
     <string name="action_cancel">Batal</string>
@@ -332,6 +336,7 @@
     <string name="upgrade_benefit_theme_customization">Kustomisasi tema, gaya, dan warna</string>
     <string name="upgrade_benefit_power_controls">Kunci volume dan pembatasan laju</string>
     <string name="upgrade_benefit_support">Dukung pengembangan independen</string>
+    <string name="upgrade_benefit_equalizer">• Ekualisir per perangkat (untuk aplikasi musik dengan dukungan ekualisir sistem)</string>
     <string name="description_intro_tap_the_button">Mulai dengan menambah perangkat pertama Anda.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth dimatikan.</string>
     <string name="title_bluetooth_is_off">Bluetooth Mati</string>
@@ -391,6 +396,7 @@
     <string name="battery_optimization_fix_action">Nonaktifkan optimasi</string>
     <string name="android10_applaunch_hint_title">Izin tampilkan di atas aplikasi lain</string>
     <string name="android10_applaunch_hint_message">Android 10+ memerlukan izin khusus untuk meluncurkan aplikasi, menampilkan layar utama, atau membangunkan layar dari latar belakang saat perangkat terhubung. Berikan izin \"Tampilkan di atas aplikasi lain\".</string>
+    <string name="android10_applaunch_oem_hint">Beberapa produsen memerlukan izin tambahan selain yang ini. Jika masih tidak berfungsi setelah memberikan izin, cari pop-up latar belakang atau pengaturan peluncuran latar belakang di izin aplikasi ponsel.</string>
     <string name="notification_permission_hint_title">Izin notifikasi</string>
     <string name="notification_permission_hint_message">Berikan izin notifikasi untuk melihat update status saat menyesuaikan volume.</string>
     <string name="dnd_access_hint_title">Akses Jangan Ganggu</string>
@@ -425,6 +431,8 @@
     <string name="devices_indicator_observe">Pantau</string>
     <string name="devices_indicator_disconnect">Putus</string>
     <string name="devices_indicator_limit">Batas</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Penguatan</string>
     <string name="devices_indicator_launch">Buka</string>
     <string name="devices_indicator_home">Beranda</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -453,4 +461,33 @@
     <string name="widget_config_theme_green_label">Hijau</string>
     <string name="widget_config_theme_red_label">Merah</string>
     <string name="widget_config_theme_custom_label">Kustom</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Ekualisir</string>
+    <string name="eq_bands_label">Band</string>
+    <string name="eq_mini_graph_desc">Band ekualisir yang dikonfigurasi</string>
+    <string name="eq_enable_label">Gunakan ekualisir</string>
+    <string name="eq_disabled_hint">Mati, pengaturan tersimpan tetapi belum akan mempengaruhi audio.</string>
+    <string name="eq_status_active_label">EQ aktif untuk %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ aktif untuk beberapa aplikasi</string>
+    <string name="eq_status_no_control_label">%1$s terdeteksi, tetapi EQ tidak dapat mengendalikan</string>
+    <string name="eq_status_no_control_headline">%1$s terdeteksi</string>
+    <string name="eq_status_no_control_detail">EQ tidak dapat mengendalikan audionya</string>
+    <string name="eq_status_multiple_recent_label">Paling baru: %1$s</string>
+    <string name="eq_status_since_label">Sesi dimulai %1$s</string>
+    <string name="eq_status_waiting_label">Menunggu aplikasi musik yang didukung, mulai pemutaran untuk mendengar efeknya</string>
+    <string name="eq_status_inactive_label">Tidak aktif untuk perangkat ini sekarang</string>
+    <string name="eq_status_generic_app_label">aplikasi musik</string>
+    <string name="eq_boost_label">Penguatan volume</string>
+    <string name="eq_boost_hint">Membuat semuanya lebih keras di atas band. Banyak penguatan dapat mendistorsi suara.</string>
+    <string name="eq_unsupported_msg">Ponsel ini tidak menawarkan ekualisir yang dapat kami gunakan.</string>
+    <string name="eq_info_msg">Bekerja dengan aplikasi yang mendukung ekualisir sistem, misalnya Spotify atau YouTube Music. Ini mempengaruhi semua audio dari aplikasi tersebut saat perangkat ini aktif. Jika sesuatu sudah diputar, mulai ulang pemutaran untuk mendengar perubahannya.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Datar</string>
+    <string name="eq_preset_bass_boost_label">Penguatan bass</string>
+    <string name="eq_preset_bass_reducer_label">Pengurangan bass</string>
+    <string name="eq_preset_treble_boost_label">Penguatan treble</string>
+    <string name="eq_preset_vocal_label">Vokal</string>
+    <string name="eq_preset_loudness_label">Kenyaringan</string>
 </resources>

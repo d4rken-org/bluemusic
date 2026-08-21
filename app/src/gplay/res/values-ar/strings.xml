@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">الاشتراك ما زال نشطًا</string>
     <string name="upgrade_screen_sub_still_renewing_message">اشتراكك لا يزال مُعدًا للتجديد. ألغه في Google Play أولاً، ثم عد لشراء الشراء لمرة واحدة — بهذه الطريقة لن تُخصم منك رسوم مرتين.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">تعذّر علينا التحقق من مشترياتك عبر Google Play. يُرجى التحقق من اتصالك والمحاولة مرة أخرى.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">الدفع قيد الانتظار</string>
+    <string name="upgrade_screen_pending_card_body">لا يزال Google Play يعالج عملية الدفع الخاصة بك. سيتم فتح إصدار Pro تلقائيًا بمجرد اكتمال الدفع. تستغرق بعض طرق الدفع بعض الوقت، ولا يلزمك فعل أي شيء آخر.</string>
+    <string name="upgrade_screen_pending_dialog_message">عثر Google Play على عملية شراء لا تزال عملية الدفع الخاصة بها قيد المعالجة. سيتم فتح إصدار Pro تلقائيًا بمجرد اكتمال الدفع.</string>
     <string name="upgrades_gplay_already_owned_error_title">تم الشراء بالفعل</string>
     <string name="upgrades_gplay_already_owned_error_description">استخدم خيار \"استعادة الشراء\" لاستعادة عملية الشراء الخاصة بك. إذا استمرت المشكلة، حاول مسح ذاكرة التخزين المؤقتة لـ Google Play وإعادة تشغيل جهازك.</string>
     <string name="upgrades_gplay_internal_error_title">خطأ في Google Play</string>

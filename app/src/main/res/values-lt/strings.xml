@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Pervadinti</string>
     <string name="devices_device_config_enabled_label">Įjungta</string>
     <string name="devices_device_config_enabled_desc">Reaguoti į šį įrenginį kai jis prijungtas</string>
+    <string name="devices_device_config_equalizer_label">Ekvalaizeris</string>
+    <string name="devices_device_config_equalizer_desc">Reguliuok šio įrenginio ekvalaizerio juostas ir garsumo padidinimą. Veikia tik su muzikos programėlėmis, palaikančiomis „Android“ sistemos ekvalaizerį.</string>
+    <string name="devices_device_config_equalizer_boost_label">Garsumo padidinimas: %1$s</string>
     <string name="devices_device_config_section_timing_label">Laiko nustatymai</string>
     <string name="devices_device_config_monitoring_duration_label">Stebėjimo trukmė</string>
     <string name="devices_device_config_monitoring_duration_desc">Trukmė milisekundėmis po reguliavimų, per kurią jokie papildomi garsumo pokyčiai nebus vykdomi.</string>
@@ -326,6 +329,7 @@
     <string name="label_add_device">Pridėti įrenginį</string>
     <string name="label_just_a_moment_please">Luktelkite.</string>
     <string name="label_notification_channel_status">Būsena</string>
+    <string name="label_notification_channel_setup">Reikalinga sąranka</string>
     <string name="monitor_notification_starting">Pradedama…</string>
     <string name="action_set">Nustatyti</string>
     <string name="action_cancel">Atšaukti</string>
@@ -344,6 +348,7 @@
     <string name="upgrade_benefit_theme_customization">Temos, stiliaus ir spalvų tinkinimas</string>
     <string name="upgrade_benefit_power_controls">Garso užraktas ir greičio ribojimas</string>
     <string name="upgrade_benefit_support">Palaikykite nepriklausomą kūrimą</string>
+    <string name="upgrade_benefit_equalizer">• Ekvalaizeris kiekvienam įrenginiui (muzikos programėlėms, palaikančioms sistemos ekvalaizerį)</string>
     <string name="description_intro_tap_the_button">Pradėkite pridėdami pirmą įrenginį.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth išjungtas.</string>
     <string name="title_bluetooth_is_off">Bluetooth išjungtas</string>
@@ -406,6 +411,7 @@
     <string name="battery_optimization_fix_action">Išjungti optimizavimą</string>
     <string name="android10_applaunch_hint_title">Rodyti virš kitų programų leidimas</string>
     <string name="android10_applaunch_hint_message">Android 10+ reikalingas specialus leidimas paleisti programas, parodyti pagrindinį ekraną arba pažadinti ekraną iš fono, kai prijungiamas įrenginys. Suteikite „Rodyti virš kitų programų“ leidimą.</string>
+    <string name="android10_applaunch_oem_hint">Kai kuriems gamintojams reikia dar vieno leidimo, be šio. Jei suteikus leidimą vis tiek neveikia, savo telefono programėlių leidimuose ieškok nustatymo, susijusio su iškylančiaisiais langais arba paleidimu fone.</string>
     <string name="notification_permission_hint_title">Pranešimų leidimas</string>
     <string name="notification_permission_hint_message">Suteikite pranešimų leidimą, kad matytumėte būsenos atnaujinimus reguliuojant garsumus.</string>
     <string name="dnd_access_hint_title">Prieiga prie režimo Netrukdyti</string>
@@ -440,6 +446,8 @@
     <string name="devices_indicator_observe">Stebėjimas</string>
     <string name="devices_indicator_disconnect">Atjungimas</string>
     <string name="devices_indicator_limit">Limitas</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Padidinimas</string>
     <string name="devices_indicator_launch">Paleidimas</string>
     <string name="devices_indicator_home">Pradžia</string>
     <string name="devices_indicator_dnd">NT</string>
@@ -468,4 +476,33 @@
     <string name="widget_config_theme_green_label">Žalia</string>
     <string name="widget_config_theme_red_label">Raudona</string>
     <string name="widget_config_theme_custom_label">Pasirinktinė</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Ekvalaizeris</string>
+    <string name="eq_bands_label">Juostos</string>
+    <string name="eq_mini_graph_desc">Sukonfigūruotos ekvalaizerio juostos</string>
+    <string name="eq_enable_label">Naudoti ekvalaizerį</string>
+    <string name="eq_disabled_hint">Išjungta, tavo nustatymai išsaugoti, bet garsui kol kas neturi įtakos.</string>
+    <string name="eq_status_active_label">EQ aktyvus: %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ aktyvus keliose programėlėse</string>
+    <string name="eq_status_no_control_label">Aptikta %1$s, bet EQ nepavyko perimti valdymo</string>
+    <string name="eq_status_no_control_headline">Aptikta %1$s</string>
+    <string name="eq_status_no_control_detail">EQ nepavyko perimti garso valdymo</string>
+    <string name="eq_status_multiple_recent_label">Naujausia: %1$s</string>
+    <string name="eq_status_since_label">Sesija pradėta %1$s</string>
+    <string name="eq_status_waiting_label">Laukiama palaikomos muzikos programėlės, paleisk grojimą, kad išgirstum efektą</string>
+    <string name="eq_status_inactive_label">Šiuo metu neaktyvus šiam įrenginiui</string>
+    <string name="eq_status_generic_app_label">muzikos programėlė</string>
+    <string name="eq_boost_label">Garsumo padidinimas</string>
+    <string name="eq_boost_hint">Padaro viską garsčiau papildomai prie juostų. Didelis padidinimas gali iškraipyti garsą.</string>
+    <string name="eq_unsupported_msg">Šis telefonas nesiūlo ekvalaizerio, kurį galėtume naudoti.</string>
+    <string name="eq_info_msg">Veikia su programėlėmis, palaikančiomis sistemos ekvalaizerius, pvz., „Spotify“ ar „YouTube Music“. Tai veikia visą tų programėlių garsą, kol šis įrenginys yra aktyvus. Jei kažkas jau groja, paleisk grojimą iš naujo, kad išgirstum pakeitimą.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Plokščias</string>
+    <string name="eq_preset_bass_boost_label">Žemų dažnių padidinimas</string>
+    <string name="eq_preset_bass_reducer_label">Žemų dažnių sumažinimas</string>
+    <string name="eq_preset_treble_boost_label">Aukštų dažnių padidinimas</string>
+    <string name="eq_preset_vocal_label">Vokalas</string>
+    <string name="eq_preset_loudness_label">Garsumas</string>
 </resources>

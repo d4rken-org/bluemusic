@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Abonament încă activ</string>
     <string name="upgrade_screen_sub_still_renewing_message">Abonamentul tău este încă setat să se reînnoiască. Anulează-l mai întâi în Google Play, apoi revino să cumperi achiziția unică — așa nu vei fi taxat de două ori.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Nu am putut verifica achizițiile tale cu Google Play. Verifică-ți conexiunea și încearcă din nou.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Plată în așteptare</string>
+    <string name="upgrade_screen_pending_card_body">Google Play încă procesează plata ta. Pro se deblochează automat de îndată ce plata este finalizată. Unele metode de plată durează mai mult, nu mai trebuie să faci nimic altceva.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play a găsit o achiziție a cărei plată este încă în curs de procesare. Pro se deblochează automat de îndată ce plata este finalizată.</string>
     <string name="upgrades_gplay_already_owned_error_title">Deja cumpărat</string>
     <string name="upgrades_gplay_already_owned_error_description">Folosește opțiunea \"Restaurează achiziția\" pentru a restaura achiziția ta. Dacă problema persistă, încearcă să ștergi cache-ul Google Play și să restartezi dispozitivul.</string>
     <string name="upgrades_gplay_internal_error_title">Eroare Google Play</string>

@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Rename</string>
     <string name="devices_device_config_enabled_label">Enabled</string>
     <string name="devices_device_config_enabled_desc">React to dis device when e connect</string>
+    <string name="devices_device_config_equalizer_label">Equalizer</string>
+    <string name="devices_device_config_equalizer_desc">Adjust equalizer bands and volume boost for dis device. E go only work with music apps wey support Android system equalizer.</string>
+    <string name="devices_device_config_equalizer_boost_label">Volume boost: %1$s</string>
     <string name="devices_device_config_section_timing_label">Timing</string>
     <string name="devices_device_config_monitoring_duration_label">Monitoring duration</string>
     <string name="devices_device_config_monitoring_duration_desc">Duration in milliseconds, afta adjustments don happen, wey any further volume changes go block.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Add device</string>
     <string name="label_just_a_moment_please">Wait small, abeg.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="label_notification_channel_setup">Setup dey required</string>
     <string name="monitor_notification_starting">Dey start…</string>
     <string name="action_set">Set</string>
     <string name="action_cancel">Cancel</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Theme, style and color customization</string>
     <string name="upgrade_benefit_power_controls">Volume lock and rate limiting</string>
     <string name="upgrade_benefit_support">Support independent development</string>
+    <string name="upgrade_benefit_equalizer">• Equalizer for each device (for music apps wey support system equalizer)</string>
     <string name="description_intro_tap_the_button">Start by adding your first device.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth don off.</string>
     <string name="title_bluetooth_is_off">Bluetooth dey Off</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Disable optimizations</string>
     <string name="android10_applaunch_hint_title">Permission to show on top of other apps</string>
     <string name="android10_applaunch_hint_message">Android 10+ need special permission to launch apps, show di home screen, or wake screen from background when device don connect. Give \"Display over other apps\" permission.</string>
+    <string name="android10_applaunch_oem_hint">Some manufacturers dey need another permission on top dis one. If e still no work after you grant am, check for background pop-up or background launch setting for your phone app permissions.</string>
     <string name="notification_permission_hint_title">Notification permission</string>
     <string name="notification_permission_hint_message">Grant notification permission to see status updates when dem dey adjust volumes.</string>
     <string name="dnd_access_hint_title">Do Not Disturb access</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Observe</string>
     <string name="devices_indicator_disconnect">Disconnect</string>
     <string name="devices_indicator_limit">Limit</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Boost</string>
     <string name="devices_indicator_launch">Launch</string>
     <string name="devices_indicator_home">Home</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Green</string>
     <string name="widget_config_theme_red_label">Red</string>
     <string name="widget_config_theme_custom_label">Custom</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Equalizer</string>
+    <string name="eq_bands_label">Bands</string>
+    <string name="eq_mini_graph_desc">Equalizer bands wey don set</string>
+    <string name="eq_enable_label">Use di equalizer</string>
+    <string name="eq_disabled_hint">E don off, your settings don save but e no go affect audio yet.</string>
+    <string name="eq_status_active_label">EQ dey active for %1$s</string>
+    <string name="eq_status_active_multiple_label">EQ dey active for many apps</string>
+    <string name="eq_status_no_control_label">We see %1$s, but di EQ no fit take control</string>
+    <string name="eq_status_no_control_headline">We see %1$s</string>
+    <string name="eq_status_no_control_detail">Di EQ no fit take control of e audio</string>
+    <string name="eq_status_multiple_recent_label">Di latest one: %1$s</string>
+    <string name="eq_status_since_label">Session start %1$s</string>
+    <string name="eq_status_waiting_label">E dey wait for music app wey e support, start play music make you hear di effect</string>
+    <string name="eq_status_inactive_label">E no dey active for dis device right now</string>
+    <string name="eq_status_generic_app_label">one music app</string>
+    <string name="eq_boost_label">Volume boost</string>
+    <string name="eq_boost_hint">E dey make everything louder on top di bands. Too much boost fit spoil di sound.</string>
+    <string name="eq_unsupported_msg">Dis phone no get equalizer wey we fit use.</string>
+    <string name="eq_info_msg">E dey work with apps wey support system equalizers, like Spotify or YouTube Music. E dey affect all audio from dose apps while dis device dey active. If something dey play already, restart di play make you hear di change.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Flat</string>
+    <string name="eq_preset_bass_boost_label">Bass boost</string>
+    <string name="eq_preset_bass_reducer_label">Bass reducer</string>
+    <string name="eq_preset_treble_boost_label">Treble boost</string>
+    <string name="eq_preset_vocal_label">Vocal</string>
+    <string name="eq_preset_loudness_label">Loudness</string>
 </resources>

@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">Підписка все ще активна</string>
     <string name="upgrade_screen_sub_still_renewing_message">Ваша підписка все ще налаштована на автоматичне поновлення. Спочатку скасуйте її в Google Play, а потім поверніться, щоб придбати одноразову покупку — так з вас не стягнуть плату двічі.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">Ми не змогли перевірити твої покупки в Google Play. Перевір своє з\'єднання та спробуй ще раз.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">Очікування платежу</string>
+    <string name="upgrade_screen_pending_card_body">Google Play все ще обробляє твій платіж. Pro розблокується автоматично, як тільки платіж пройде. Деякі способи оплати займають час, тобі більше нічого не потрібно робити.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play знайшла покупку, платіж за якою все ще обробляється. Pro розблокується автоматично, як тільки платіж пройде.</string>
     <string name="upgrades_gplay_already_owned_error_title">Вже придбано</string>
     <string name="upgrades_gplay_already_owned_error_description">Скористайтеся опцією «Відновити покупку», щоб відновити свою покупку. Якщо проблема не зникає, спробуйте очистити кеш Google Play і перезавантажити пристрій.</string>
     <string name="upgrades_gplay_internal_error_title">Помилка Google Play</string>

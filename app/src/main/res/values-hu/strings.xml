@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Átnevezés</string>
     <string name="devices_device_config_enabled_label">Engedélyezve</string>
     <string name="devices_device_config_enabled_desc">Reagáljon erre az eszközre, amikor csatlakozik</string>
+    <string name="devices_device_config_equalizer_label">Hangszínszabályzó</string>
+    <string name="devices_device_config_equalizer_desc">Beállíthatod az eszköz hangszínszabályzó-sávjait és hangerő-fokozását. Csak azokkal a zenealkalmazásokkal működik, amelyek támogatják az Android rendszer-hangszínszabályzóját.</string>
+    <string name="devices_device_config_equalizer_boost_label">Hangerőfokozás: %1$s</string>
     <string name="devices_device_config_section_timing_label">Időzítés</string>
     <string name="devices_device_config_monitoring_duration_label">Figyelési időtartam</string>
     <string name="devices_device_config_monitoring_duration_desc">Időtartam ezredmásodpercben a beállítások után, amíg minden további hangerőváltozás blokkolva lesz.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Eszköz hozzáadása</string>
     <string name="label_just_a_moment_please">Egy pillanat, kérlek.</string>
     <string name="label_notification_channel_status">Állapot</string>
+    <string name="label_notification_channel_setup">Beállítás szükséges</string>
     <string name="monitor_notification_starting">Indítás…</string>
     <string name="action_set">Beállítás</string>
     <string name="action_cancel">Mégse</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Téma, stílus és szín testreszabása</string>
     <string name="upgrade_benefit_power_controls">Hangerőzár és sebességkorlátozás</string>
     <string name="upgrade_benefit_support">Független fejlesztés támogatása</string>
+    <string name="upgrade_benefit_equalizer">• Eszközönkénti hangszínszabályzó (zenealkalmazások rendszer-hangszínszabályzó-támogatása esetén)</string>
     <string name="description_intro_tap_the_button">Kezdéshez adj hozzá az első eszközt.</string>
     <string name="description_bluetooth_is_disabled">A Bluetooth ki van kapcsolva.</string>
     <string name="title_bluetooth_is_off">A Bluetooth ki van kapcsolva</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Optimalizálás letiltása</string>
     <string name="android10_applaunch_hint_title">Megjelenítés más alkalmazások felett engedély</string>
     <string name="android10_applaunch_hint_message">Az Android 10+ verzióhoz speciális engedély szükséges az alkalmazások indításához, a kezdőképernyő megjelenítéséhez vagy a képernyő felébresztéséhez háttérből csatlakozáskor. Add meg a \"Megjelenítés más alkalmazások felett\" engedélyt.</string>
+    <string name="android10_applaunch_oem_hint">Egyes gyártók ezen felül egy második engedélyt igényelnek. Ha még az engedély megadása után sem működik, keress a telefonod alkalmazásengedélyei között egy felugró ablakra vagy háttérben történő indítási beállításra.</string>
     <string name="notification_permission_hint_title">Értesítési engedély</string>
     <string name="notification_permission_hint_message">Add meg az értesítési engedélyt az állapotfrissítések látásához hangerőbeállításkor.</string>
     <string name="dnd_access_hint_title">Ne zavarj hozzáférés</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Megfigyelés</string>
     <string name="devices_indicator_disconnect">Lecsatlakozás</string>
     <string name="devices_indicator_limit">Korlát</string>
+    <string name="devices_indicator_eq">Hangszín</string>
+    <string name="devices_indicator_boost">Fokozás</string>
     <string name="devices_indicator_launch">Indítás</string>
     <string name="devices_indicator_home">Főképernyő</string>
     <string name="devices_indicator_dnd">NZ</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Zöld</string>
     <string name="widget_config_theme_red_label">Piros</string>
     <string name="widget_config_theme_custom_label">Egyéni</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Hangszínszabályzó</string>
+    <string name="eq_bands_label">Sávok</string>
+    <string name="eq_mini_graph_desc">Beállított hangszínszabályzó-sávok</string>
+    <string name="eq_enable_label">A hangszínszabályzó használata</string>
+    <string name="eq_disabled_hint">Ki van kapcsolva, a beállításaid mentve vannak, de még nem befolyásolják a hangot.</string>
+    <string name="eq_status_active_label">Hangszín aktív a %1$s alkalmazásban</string>
+    <string name="eq_status_active_multiple_label">Hangszín aktív több alkalmazásnál</string>
+    <string name="eq_status_no_control_label">A %1$s észlelve lett, de a hangszínszabályzó nem tudta átvenni az irányítást</string>
+    <string name="eq_status_no_control_headline">A %1$s észlelve lett</string>
+    <string name="eq_status_no_control_detail">A hangszínszabályzó nem tudta átvenni a hanganyag irányítását</string>
+    <string name="eq_status_multiple_recent_label">Legutóbbi: %1$s</string>
+    <string name="eq_status_since_label">A munkamenet %1$s kezdődött</string>
+    <string name="eq_status_waiting_label">Támogatott zenealkalmazásra vár, indíts el lejátszást, hogy meghallhasd az effektust</string>
+    <string name="eq_status_inactive_label">Jelenleg nem aktív ehhez az eszközhöz</string>
+    <string name="eq_status_generic_app_label">egy zenealkalmazás</string>
+    <string name="eq_boost_label">Hangerőfokozás</string>
+    <string name="eq_boost_hint">Mindent hangosabbá tesz a sávok felett. Túl sok fokozás torzíthatja a hangot.</string>
+    <string name="eq_unsupported_msg">Ez a telefon nem kínál olyan hangszínszabályzót, amit használhatnánk.</string>
+    <string name="eq_info_msg">Működik a rendszer-hangszínszabályzót támogató alkalmazásokkal, pl. Spotify vagy YouTube Music. Az összes hangot érinti ezen alkalmazásokból, amíg ez az eszköz aktív. Ha valami már lejátszódik, indítsd újra a lejátszást, hogy meghallhasd a változást.</string>
+    <string name="eq_frequency_hz_label">%1$s Hz</string>
+    <string name="eq_frequency_khz_label">%1$s kHz</string>
+    <string name="eq_gain_db_label">%1$s dB</string>
+    <string name="eq_preset_flat_label">Lapos</string>
+    <string name="eq_preset_bass_boost_label">Basszus fokozás</string>
+    <string name="eq_preset_bass_reducer_label">Basszus csökkentés</string>
+    <string name="eq_preset_treble_boost_label">Magassáv fokozás</string>
+    <string name="eq_preset_vocal_label">Énekesítés</string>
+    <string name="eq_preset_loudness_label">Hangosság</string>
 </resources>

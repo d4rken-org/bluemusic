@@ -42,6 +42,9 @@
     <string name="devices_device_config_rename_device_action">Өөрчлөх</string>
     <string name="devices_device_config_enabled_label">Идэвхүүлсэн</string>
     <string name="devices_device_config_enabled_desc">Холбогдсон үед энэ төхөөрөмжийд хариулах</string>
+    <string name="devices_device_config_equalizer_label">Эквалайзер</string>
+    <string name="devices_device_config_equalizer_desc">Энэ төхөөрөмжид эквалайзерын зурвасууд болон дуу ихэсгэлтийг тохируулна уу. Зөвхөн Android-ийн систем эквалайзерыг дэмждэг хөгжмийн апп-уудтай ажиллана.</string>
+    <string name="devices_device_config_equalizer_boost_label">Дуу ихэсгэлт: %1$s</string>
     <string name="devices_device_config_section_timing_label">Цаг хугацаа</string>
     <string name="devices_device_config_monitoring_duration_label">Хяналтын хугацаа</string>
     <string name="devices_device_config_monitoring_duration_desc">Тохиргуулалт хийгдсэний дараах миллисекундын хугацаа, янэ цаг дууны хэмжээгийн цын өөрчлөлтийг хаах болно.</string>
@@ -318,6 +321,7 @@
     <string name="label_add_device">Төхөөрөмжий нэмэх</string>
     <string name="label_just_a_moment_please">Нэг зураар хүлээнүү.</string>
     <string name="label_notification_channel_status">Төлөв</string>
+    <string name="label_notification_channel_setup">Тохиргоо шаардлагатай</string>
     <string name="monitor_notification_starting">Эхэлж байна…</string>
     <string name="action_set">Тохируулах</string>
     <string name="action_cancel">Цуцлах</string>
@@ -336,6 +340,7 @@
     <string name="upgrade_benefit_theme_customization">Тем, хэв болон өнгийн өнгөрөмжийнх тохиргулалт</string>
     <string name="upgrade_benefit_power_controls">Дууны түгжээ болон хурдаасыйн хязаалалт</string>
     <string name="upgrade_benefit_support">Бие хөгжлөлтийн хөгжлөлтийг дэмжлээх</string>
+    <string name="upgrade_benefit_equalizer">• Төхөөрөмж бүрийн эквалайзер (систем эквалайзерыг дэмждэг хөгжмийн апп-уудад)</string>
     <string name="description_intro_tap_the_button">Эхлээд анхны төхөөрөмжийгӝэ нэмж эхлээ.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth идэвхгүй байна.</string>
     <string name="title_bluetooth_is_off">Bluetooth унтраассан</string>
@@ -396,6 +401,7 @@
     <string name="battery_optimization_fix_action">Оптимчлалалтыг унтраах</string>
     <string name="android10_applaunch_hint_title">Бусад аппын дээр харуулах зөвшөөрөл</string>
     <string name="android10_applaunch_hint_message">Android 10+ нь апп нээх, үндсэн дэлгэцийг харуулах, эсвэл холбогдоход дэвсгэрээс дэлгэцийг сэрээхийн тулд тусгай зөвшөөрөл шаарддаг. \"Бусад аппын дээр харуулах\" зөвшөөрлийг өгнө үү.</string>
+    <string name="android10_applaunch_oem_hint">Зарим үйлдвэрлэгчид энэ зөвшөөрлөөс гадна дахин нэг зөвшөөрөл шаарддаг. Зөвшөөрсний дараа ч ажиллахгүй бол утасныхаа апп-ын зөвшөөрлүүдээс дэвсгэр цонх эсвэл дэвсгэрт ажиллах тохиргоог хайж олоорой.</string>
     <string name="notification_permission_hint_title">Мэдэгдэлгэийн зөвшөөрөл</string>
     <string name="notification_permission_hint_message">Дууг тохиргуулахад төлөвийн шинэчлэл үзэхийн тулд мэдэгдэлгэийн зөвшөөрөл олго.</string>
     <string name="dnd_access_hint_title">Тасалдахгүй горимт авах эрх</string>
@@ -430,6 +436,8 @@
     <string name="devices_indicator_observe">Ажиглах</string>
     <string name="devices_indicator_disconnect">Салгах</string>
     <string name="devices_indicator_limit">Хязгаалалт</string>
+    <string name="devices_indicator_eq">EQ</string>
+    <string name="devices_indicator_boost">Ихэсгэлт</string>
     <string name="devices_indicator_launch">Ажиллуулах</string>
     <string name="devices_indicator_home">Дэлгэц</string>
     <string name="devices_indicator_dnd">DND</string>
@@ -458,4 +466,33 @@
     <string name="widget_config_theme_green_label">Ногоон</string>
     <string name="widget_config_theme_red_label">Улаан</string>
     <string name="widget_config_theme_custom_label">Дурьмалах</string>
+    <!-- Equalizer -->
+    <string name="eq_screen_title">Эквалайзер</string>
+    <string name="eq_bands_label">Зурвасууд</string>
+    <string name="eq_mini_graph_desc">Тохируулсан эквалайзерын зурвасууд</string>
+    <string name="eq_enable_label">Эквалайзер ашиглах</string>
+    <string name="eq_disabled_hint">Унтраалттай, таны тохиргоо хадгалагдсан ч дуунд одоохондоо нөлөөлөхгүй.</string>
+    <string name="eq_status_active_label">%1$s-д EQ идэвхтэй</string>
+    <string name="eq_status_active_multiple_label">Олон апп-д EQ идэвхтэй</string>
+    <string name="eq_status_no_control_label">%1$s илэрсэн ч EQ хяналтаа авч чадсангүй</string>
+    <string name="eq_status_no_control_headline">%1$s илэрлээ</string>
+    <string name="eq_status_no_control_detail">EQ дууных нь хяналтыг авч чадсангүй</string>
+    <string name="eq_status_multiple_recent_label">Хамгийн сүүлийнх: %1$s</string>
+    <string name="eq_status_since_label">Ажиллагаа эхэлсэн: %1$s</string>
+    <string name="eq_status_waiting_label">Дэмжигдсэн хөгжмийн апп хүлээж байна, эффектийг сонсохын тулд тоглуулалт эхлүүлнэ үү</string>
+    <string name="eq_status_inactive_label">Одоогоор энэ төхөөрөмжид идэвхгүй байна</string>
+    <string name="eq_status_generic_app_label">хөгжмийн апп</string>
+    <string name="eq_boost_label">Дуу ихэсгэлт</string>
+    <string name="eq_boost_hint">Зурвасуудаас гадна бүх зүйлийг чангаруулна. Их хэмжээний ихэсгэлт дууг гажуудуулж болзошгүй.</string>
+    <string name="eq_unsupported_msg">Энэ утас ашиглаж болох эквалайзер санал болгодоггүй.</string>
+    <string name="eq_info_msg">Систем эквалайзерыг дэмждэг апп-уудтай ажиллана, жишээ нь Spotify эсвэл YouTube Music. Энэ төхөөрөмж идэвхтэй байх хугацаанд тухайн апп-уудын бүх дуунд нөлөөлнэ. Хэрэв аль хэдийн тоглуулж байгаа бол өөрчлөлтийг сонсохын тулд тоглуулалтыг дахин эхлүүлнэ үү.</string>
+    <string name="eq_frequency_hz_label">%1$s Гц</string>
+    <string name="eq_frequency_khz_label">%1$s кГц</string>
+    <string name="eq_gain_db_label">%1$s дБ</string>
+    <string name="eq_preset_flat_label">Тэгш</string>
+    <string name="eq_preset_bass_boost_label">Басс ихэсгэлт</string>
+    <string name="eq_preset_bass_reducer_label">Басс багасгагч</string>
+    <string name="eq_preset_treble_boost_label">Өндөр давтамжийн ихэсгэлт</string>
+    <string name="eq_preset_vocal_label">Дуу хоолой</string>
+    <string name="eq_preset_loudness_label">Чанга байдал</string>
 </resources>

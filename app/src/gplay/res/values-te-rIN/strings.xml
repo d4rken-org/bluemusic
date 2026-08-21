@@ -41,6 +41,11 @@
     <!-- Fail-closed switch gate dialogs -->
     <string name="upgrade_screen_sub_still_renewing_title">సబ్‌స్క్రిప్షన్ ఇప్పటికీ క్రియాశీలంగా ఉంది</string>
     <string name="upgrade_screen_sub_still_renewing_message">మీ సబ్‌స్క్రిప్షన్ ఇప్పటికీ పునరావృత్తికి సెట్ చేయబడి ఉంది. Google Play లో దీన్ని ముందుగా రద్దు చేసి, తర్వాత ఒక్కసారి కొనుగోలు కొరకు తిరిగి రండి — ఆ విధంగా మీరు రెండుసార్లు ఛార్జ్ చేయబడరు.</string>
+    <string name="upgrade_screen_purchase_check_failed_message">మీ కొనుగోళ్లను Google Play సహా తనిఖీ చేయలేకపోయాము. దయచేసి మీ కనెక్షన్‌ను తనిఖీ చేసి మళ్ళీ ప్రయత్నించండి.</string>
+    <!-- Google Play is still processing a payment (cash, carrier billing, bank transfer) -->
+    <string name="upgrade_screen_pending_card_title">పేమెంట్ పెండింగ్‌లో ఉంది</string>
+    <string name="upgrade_screen_pending_card_body">Google Play ఇప్పటికీ మీ పేమెంట్‌ను ప్రక్రియ చేస్తోంది. పేమెంట్ చేసిన తర్వాత ప్రో స్వయంచాలకంగా అన్లాక్ చేస్తుంది. కొన్ని పేమెంట్ పద్ధతులు కొంత సమయం తీసుకుంటాయి, మీరు మరేమీ చేయవలసిన అవసరం లేదు.</string>
+    <string name="upgrade_screen_pending_dialog_message">Google Play ఒక కొనుగోలును కనుగొన్నది, దీని పేమెంట్ ఇప్పటికీ ప్రక్రియ చేయబడుతోంది. పేమెంట్ చేసిన తర్వాత ప్రో స్వయంచాలకంగా అన్లాక్ చేస్తుంది.</string>
     <string name="upgrades_gplay_already_owned_error_title">ఇప్పటికే కొనుగోలు చేయబడింది</string>
     <string name="upgrades_gplay_already_owned_error_description">మీ కొనుగోలును పునరుద్ధరించడానికి \"కొనుగోలును పునరుద్ధరించండి\" ఎంపికను ఉపయోగించండి. సమస్య కొనసాగితే, Google Play క్యాష్‌ను క్లిఅర్ చేసి మీ పరికరాన్ని పునరారంభించడానికి ప్రయత్నించండి.</string>
     <string name="upgrades_gplay_internal_error_title">Google Play లోపం</string>
