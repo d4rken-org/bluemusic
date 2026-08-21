@@ -441,6 +441,7 @@
     <string name="battery_optimization_fix_action">Disable optimizations</string>
     <string name="android10_applaunch_hint_title">Display over apps permission</string>
     <string name="android10_applaunch_hint_message">Android 10+ needs a special permission to launch apps, show the home screen, or wake the screen from the background on connect. Grant "Display over other apps" permission.</string>
+    <string name="android10_applaunch_oem_hint">Some manufacturers need a second permission on top of this one. If it still doesn\'t work after granting, look for a background pop-up or background launch setting in your phone\'s app permissions.</string>
     <string name="notification_permission_hint_title">Notification permission</string>
     <string name="notification_permission_hint_message">Grant notification permission to see status updates when adjusting volumes.</string>
     <string name="dnd_access_hint_title">Do Not Disturb access</string>

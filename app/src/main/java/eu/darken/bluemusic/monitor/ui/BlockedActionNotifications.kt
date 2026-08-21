@@ -54,11 +54,18 @@ class BlockedActionNotifications @Inject constructor(
         )
 
         val message = context.getString(R.string.android10_applaunch_hint_message)
+
+        // Several OEM skins gate background launches behind a second toggle of their own (MIUI's
+        // "Display pop-up windows while running in background" is the common one) and keep
+        // reporting canDrawOverlays()=true regardless, so the app cannot detect that state. Once
+        // the user grants the Android permission this notification stops firing while the launch
+        // still fails, so the caveat has to be here, before they grant it, rather than after.
+        val oemHint = context.getString(R.string.android10_applaunch_oem_hint)
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification_small)
             .setContentTitle(context.getString(R.string.android10_applaunch_hint_title))
             .setContentText(message)
-            .setStyle(NotificationCompat.BigTextStyle().bigText(message))
+            .setStyle(NotificationCompat.BigTextStyle().bigText("$message\n\n$oemHint"))
             .setContentIntent(settingsPi)
             .setAutoCancel(true)
             .setOnlyAlertOnce(true)
