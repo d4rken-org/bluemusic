@@ -8,6 +8,7 @@ import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.monitor.core.BackgroundActivityGuard
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import kotlinx.coroutines.delay
@@ -16,7 +17,8 @@ import javax.inject.Singleton
 
 @Singleton
 class AppLaunchModule @Inject constructor(
-    private val appRepo: AppRepo
+    private val appRepo: AppRepo,
+    private val backgroundActivityGuard: BackgroundActivityGuard,
 ) : ConnectionModule {
 
     override val tag: String
@@ -33,6 +35,8 @@ class AppLaunchModule @Inject constructor(
         if (!isApplicable(event)) return
         val device = event.device
         val appsToLaunch = device.launchPkgs
+
+        if (!backgroundActivityGuard.canStartActivityOrNotify("app launch ($appsToLaunch)")) return
 
         log(TAG) { "Launching ${appsToLaunch.size} apps: $appsToLaunch" }
 

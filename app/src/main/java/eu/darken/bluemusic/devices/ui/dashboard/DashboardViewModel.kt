@@ -32,6 +32,7 @@ import eu.darken.bluemusic.eq.ui.EqAppResolver
 import eu.darken.bluemusic.eq.ui.EqStatus
 import eu.darken.bluemusic.eq.ui.deriveEqStatus
 import eu.darken.bluemusic.main.core.GeneralSettings
+import eu.darken.bluemusic.monitor.core.BackgroundActivityGuard
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
@@ -66,6 +67,7 @@ class DashboardViewModel @Inject constructor(
     private val speakerProvider: SpeakerDeviceProvider,
     private val reviewTool: ReviewTool,
     private val eqAppResolver: EqAppResolver,
+    private val backgroundActivityGuard: BackgroundActivityGuard,
     eqCoordinator: EqCoordinator,
     eqEligibility: EqEligibility,
     dispatcherProvider: DispatcherProvider,
@@ -100,6 +102,10 @@ class DashboardViewModel @Inject constructor(
         generalSettings.isAndroid10AppLaunchHintDismissed.flow,
         devicesFlow
     ) { _, isDismissed, devices ->
+        // Piggyback on this poll to retire the blocked-action notification: granting the permission
+        // from the system settings or the hint card below doesn't otherwise reach the monitor until
+        // the next connect event, which can be hours away.
+        backgroundActivityGuard.syncNotificationState()
         val hasDevicesNeedingOverlay = devices.any { it.launchPkgs.isNotEmpty() || it.showHomeScreen || it.keepAwake }
         val hint = permissionHelper.getOverlayPermissionHint(isDismissed, hasDevicesNeedingOverlay)
         hint

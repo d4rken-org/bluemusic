@@ -178,6 +178,7 @@ class DashboardViewModelTest : BaseTest() {
         eqAppResolver = mockk<EqAppResolver>().apply {
             coEvery { resolved(any()) } answers { firstArg() }
         },
+        backgroundActivityGuard = mockk(relaxed = true),
         eqCoordinator = eqCoordinator,
         eqEligibility = eqEligibility,
         dispatcherProvider = TestDispatcherProvider(UnconfinedTestDispatcher(testScheduler)),

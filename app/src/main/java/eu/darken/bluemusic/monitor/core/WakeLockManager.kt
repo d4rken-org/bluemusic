@@ -12,7 +12,6 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.common.permissions.PermissionHelper
 import eu.darken.bluemusic.monitor.core.screenwake.ScreenWakeActivity
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
@@ -23,7 +22,7 @@ import javax.inject.Singleton
 @Singleton
 class WakeLockManager @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val permissionHelper: PermissionHelper,
+    private val backgroundActivityGuard: BackgroundActivityGuard,
 ) {
     private val powerManager by lazy { context.getSystemService(Context.POWER_SERVICE) as PowerManager }
     private val keyguardManager by lazy { context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager }
@@ -69,22 +68,23 @@ class WakeLockManager @Inject constructor(
     fun releaseBlocking() = runBlocking { setWakeLock(false) }
 
     fun wakeScreenNow() {
-        // Background activity launch (BAL) restrictions only apply on API 29+ (Android 10+).
-        // On API 23-28 a transparent activity launch from a foreground service is permitted
-        // without SYSTEM_ALERT_WINDOW. Skipping only when the OS would actually reject the
-        // launch avoids silently no-oping on Android 6-9 where the dashboard hint is also
-        // gated off.
-        if (permissionHelper.needsOverlayPermission()) {
-            log(TAG, WARN) { "Skipping screen wake: overlay permission not granted (Android 10+)." }
-            return
-        }
         // Skip the wake-and-hold round-trip when the device is already in active use
         // (interactive AND not behind the keyguard). On the lockscreen we still wake
         // so the launched app can surface above the keyguard.
+        //
+        // This has to come before the BAL guard: no activity start was going to happen here, so
+        // running the guard first would raise a "your action was blocked" notification for a wake
+        // that was never needed in the first place.
         if (powerManager.isInteractive && !keyguardManager.isKeyguardLocked) {
             log(TAG, VERBOSE) { "Screen on and unlocked; skipping wake." }
             return
         }
+        // Background activity launch (BAL) restrictions only apply on API 29+ (Android 10+).
+        // On API 23-28 a transparent activity launch from a foreground service is permitted
+        // without SYSTEM_ALERT_WINDOW. The guard skips only when the OS would actually reject
+        // the launch, so this doesn't silently no-op on Android 6-9 where the dashboard hint is
+        // also gated off.
+        if (!backgroundActivityGuard.canStartActivityOrNotify("screen wake")) return
         try {
             val intent = Intent(context, ScreenWakeActivity::class.java).apply {
                 addFlags(
