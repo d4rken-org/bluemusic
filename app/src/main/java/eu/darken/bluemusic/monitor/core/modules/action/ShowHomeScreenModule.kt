@@ -8,6 +8,7 @@ import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.monitor.core.BackgroundActivityGuard
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import javax.inject.Inject
@@ -16,6 +17,7 @@ import javax.inject.Singleton
 @Singleton
 class ShowHomeScreenModule @Inject internal constructor(
     private val appRepo: AppRepo,
+    private val backgroundActivityGuard: BackgroundActivityGuard,
 ) : ConnectionModule {
 
     override val tag: String
@@ -31,6 +33,8 @@ class ShowHomeScreenModule @Inject internal constructor(
     override suspend fun handle(event: DeviceEvent) {
         if (!isApplicable(event)) return
         val device = event.device
+
+        if (!backgroundActivityGuard.canStartActivityOrNotify("show home screen (${device.label})")) return
 
         log(TAG) { "Showing home screen for device: ${device.label}" }
         appRepo.goToHomeScreen()

@@ -355,6 +355,7 @@
     <string name="label_add_device">Add device</string>
     <string name="label_just_a_moment_please">Just a moment, please.</string>
     <string name="label_notification_channel_status">Status</string>
+    <string name="label_notification_channel_setup">Setup required</string>
     <string name="monitor_notification_starting">Starting up…</string>
     <string name="action_set">Set</string>
     <string name="action_cancel">Cancel</string>
