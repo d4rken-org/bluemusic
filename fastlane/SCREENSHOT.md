@@ -55,9 +55,18 @@ when that is about to happen.
 ```bash
 cd fastlane
 bundle exec fastlane validate_listing    # dry run, changes nothing on the store
-bundle exec fastlane screenshots_only    # screenshots -> production listing
 bundle exec fastlane listing_only        # title + short/full descriptions
+bundle exec fastlane screenshots_only    # screenshots -> production listing
 ```
+
+**`listing_only` has to run before `screenshots_only`.** Play refuses to attach a screenshot to a
+language that has no listing yet, and `screenshots_only` skips metadata, so for a locale being
+published for the first time the title is never sent and the whole edit is rejected with
+`This app has no title for language <locale>`. Uploading the text first creates the listing.
+
+`validate_listing` does not catch this, because it sends metadata and screenshots in one edit and
+the title is therefore present. It checks that the content is acceptable, not that the two upload
+lanes are ordered correctly.
 
 Play edits are transactional: a run that dies partway commits nothing, so a transient API error is
 safe to just re-run.

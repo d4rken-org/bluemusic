@@ -34,6 +34,8 @@ Files updated by every release:
 
 > **`lane :screenshots_only` needs a regeneration first.** Only `en-US` screenshots are committed; the rest are rendered on demand (`fastlane/SCREENSHOT.md`). `supply` skips a locale that has no local screenshots instead of failing, so running the lane on a fresh clone refreshes en-US and silently leaves every other language stale. `lane :validate_listing` sends the same payload to Play without committing it.
 
+> **Run `lane :listing_only` before `lane :screenshots_only`.** Play rejects a screenshot for a language that has no listing yet, and `screenshots_only` skips metadata, so a locale being published for the first time fails the edit with `This app has no title for language <locale>`. Uploading the text first creates the listing. `validate_listing` does not catch this — it sends both in a single edit, so the title is always present there.
+
 ## Validation guards
 
 - **`check-release-tooling`** in `code-checks.yml`: runs `shellcheck`, `bats`, and a live `--mode=check` on every PR.
