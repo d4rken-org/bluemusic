@@ -15,6 +15,48 @@ fastlane_version "2.175.0"
 
 default_platform :android
 
+# Builds a Play-ready view of the metadata tree and returns its path for supply's metadata_path.
+#
+# supply forwards every directory under metadata_path to the Play API without checking it first, so
+# a locale Play has no listing language for fails the whole upload. The repo carries more locales
+# than Play accepts on purpose, because F-Droid and IzzyOnDroid read the same tree.
+#
+# The keep-set is read from supply's own ALL_LANGUAGES rather than spelled out here, because a
+# second copy of that list silently goes stale: too narrow and a translated listing never gets
+# published, too wide and the upload fails.
+#
+# The staged tree is symlinks, so it is cheap and metadata/ is never modified.
+def play_metadata_path
+  require 'supply'
+
+  # fastlane runs lanes with the working directory set to the fastlane folder, while supply's own
+  # metadata_path default is written relative to the repo root. Probe for the tree rather than
+  # trusting either convention, and hand supply absolute paths so it cannot matter downstream.
+  root = ['.', 'fastlane'].map { |dir| File.absolute_path(dir) }
+                          .find { |dir| Dir.exist?(File.join(dir, 'metadata/android')) }
+  UI.user_error!('Could not locate fastlane/metadata/android') if root.nil?
+
+  source = File.join(root, 'metadata/android')
+  stage_root = File.join(root, '.upload')
+  stage = File.join(stage_root, 'metadata/android')
+  supported = Supply::Languages::ALL_LANGUAGES.map { |lang| lang.tr('_', '-') }
+
+  FileUtils.rm_rf(stage_root)
+  FileUtils.mkdir_p(stage)
+
+  locales = Dir.children(source).select { |entry| File.directory?(File.join(source, entry)) }
+  kept, dropped = locales.sort.partition { |locale| supported.include?(locale) }
+  kept.each { |locale| FileUtils.ln_s(File.join(source, locale), File.join(stage, locale)) }
+
+  UI.message("Staged #{kept.size} Play locales for upload")
+  UI.message("Not a Play listing language, skipped: #{dropped.join(', ')}") unless dropped.empty?
+
+  missing = kept.reject { |locale| Dir.exist?(File.join(source, locale, 'images/phoneScreenshots')) }
+  UI.important("Play locales with no screenshots: #{missing.join(', ')}") unless missing.empty?
+
+  stage
+end
+
 platform :android do
   before_all do
   	#ensure_git_status_clean
@@ -22,12 +64,12 @@ platform :android do
 
   lane :beta do
     gradle(task: 'clean assembleBeta')
-    sh "bash ./remove_unsupported_languages.sh"
   	supply(
         track: 'beta',
         package_name: 'eu.darken.bluemusic',
         rollout: '0.10',
         mapping: 'app/build/outputs/mapping/gplayBeta/mapping.txt',
+        metadata_path: play_metadata_path,
         skip_upload_changelogs: 'false',
         skip_upload_images: 'true',
         skip_upload_screenshots: 'true',
@@ -38,12 +80,12 @@ platform :android do
 
   lane :production do
     gradle(task: 'clean assembleRelease')
-    sh "bash ./remove_unsupported_languages.sh"
     supply(
         track: 'beta',
         package_name: 'eu.darken.bluemusic',
         rollout: '0.10',
         mapping: 'app/build/outputs/mapping/gplayRelease/mapping.txt',
+        metadata_path: play_metadata_path,
         skip_upload_changelogs: 'false',
         skip_upload_images: 'true',
         skip_upload_screenshots: 'true',
@@ -53,10 +95,10 @@ platform :android do
   end
 
   lane :listing_only do
-    sh "bash ./remove_unsupported_languages.sh"
     supply(
         track: 'production',
         package_name: 'eu.darken.bluemusic',
+        metadata_path: play_metadata_path,
         skip_upload_apk: 'true',
         skip_upload_images: 'true',
         skip_upload_screenshots: 'true',
@@ -66,15 +108,33 @@ platform :android do
   end
 
   lane :screenshots_only do
-    sh "bash ./remove_unsupported_languages.sh"
     supply(
         track: 'production',
         package_name: 'eu.darken.bluemusic',
+        metadata_path: play_metadata_path,
         skip_upload_apk: 'true',
         skip_upload_aab: 'true',
         skip_upload_metadata: 'true',
         skip_upload_changelogs: 'true',
         skip_upload_images: 'true',
+        skip_upload_screenshots: 'false',
+    )
+  end
+
+  # Sends the same payload as listing_only + screenshots_only, but asks Play to validate the edit
+  # instead of committing it. Nothing on the store changes. Use this to confirm every locale is
+  # accepted before running the two upload lanes.
+  lane :validate_listing do
+    supply(
+        track: 'production',
+        package_name: 'eu.darken.bluemusic',
+        metadata_path: play_metadata_path,
+        validate_only: true,
+        skip_upload_apk: 'true',
+        skip_upload_aab: 'true',
+        skip_upload_changelogs: 'true',
+        skip_upload_images: 'true',
+        skip_upload_metadata: 'false',
         skip_upload_screenshots: 'false',
     )
   end
