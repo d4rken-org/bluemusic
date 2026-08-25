@@ -35,3 +35,12 @@ fastlane/README.md
 _site/
 .jekyll-cache/
 vendor/bundle/
+# fastlane upload staging tree (built by play_metadata_path in the Fastfile)
+fastlane/.upload/
+
+# Store screenshots are generated, not authored: fastlane/generate_screenshots.sh renders all of
+# them in a few minutes, and committing ~80MB of PNGs per regeneration is what the history does not
+# need. Regenerate before uploading, see fastlane/SCREENSHOT.md.
+# en-US is the exception because README.md hotlinks it from the default branch.
+fastlane/metadata/android/*/images/
+!fastlane/metadata/android/en-US/images/

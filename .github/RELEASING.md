@@ -32,6 +32,8 @@ Files updated by every release:
 
 > **Surprising convention:** `lane :production` in the Fastfile uploads to the **beta** track in Play (not `production`). Manual promotion to GA is done via Play Console. `lane :listing_only` and `lane :screenshots_only` are the paths that touch the `production` track, and they are metadata-only.
 
+> **`lane :screenshots_only` needs a regeneration first.** Only `en-US` screenshots are committed; the rest are rendered on demand (`fastlane/SCREENSHOT.md`). `supply` skips a locale that has no local screenshots instead of failing, so running the lane on a fresh clone refreshes en-US and silently leaves every other language stale. `lane :validate_listing` sends the same payload to Play without committing it.
+
 ## Validation guards
 
 - **`check-release-tooling`** in `code-checks.yml`: runs `shellcheck`, `bats`, and a live `--mode=check` on every PR.
