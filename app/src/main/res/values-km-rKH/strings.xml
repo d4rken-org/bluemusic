@@ -42,7 +42,6 @@
     <string name="devices_device_config_rename_device_action">ប្តូរឈ្មោះ</string>
     <string name="devices_device_config_enabled_label">បានបើក</string>
     <string name="devices_device_config_enabled_desc">ប្រតិកម្មទៅកាន់ឧបករណ៍នេះពេលភ្ជាប់</string>
-    <string name="devices_device_config_equalizer_label">ប្រប័ន្ធ Equalizer</string>
     <string name="devices_device_config_equalizer_desc">កែសម្រួលបន្ទះ equalizer និងការបង្កើនកម្រិតសំឡេងសម្រាប់ឧបករណ៍នេះ។ ដំណើរការតែជាមួយកម្មវិធីតន្ត្រីដែលគាំទ្រ equalizer ប្រព័ន្ធរបស់ Android ប៉ុណ្ណោះ។</string>
     <string name="devices_device_config_equalizer_boost_label">ការបង្កើនកម្រិតសំឡេង៖ %1$s</string>
     <string name="devices_device_config_section_timing_label">ពេលវេលា</string>
@@ -473,7 +472,6 @@
     <string name="widget_config_theme_red_label">ក្រហម</string>
     <string name="widget_config_theme_custom_label">ផ្តាលខ្លួន</string>
     <!-- Equalizer -->
-    <string name="eq_screen_title">ប្រប័ន្ធ Equalizer</string>
     <string name="eq_bands_label">បន្ទះ</string>
     <string name="eq_mini_graph_desc">បន្ទះ equalizer ដែលបានកំណត់</string>
     <string name="eq_enable_label">ប្រើ equalizer</string>

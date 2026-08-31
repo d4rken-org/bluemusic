@@ -42,7 +42,6 @@
     <string name="devices_device_config_rename_device_action">ስም ሐይር</string>
     <string name="devices_device_config_enabled_label">ተችሏል</string>
     <string name="devices_device_config_enabled_desc">መሣሪያው ሲጸራ አስተጵብ እንዲደርገስ</string>
-    <string name="devices_device_config_equalizer_label">ኣዯካሉ</string>
     <string name="devices_device_config_equalizer_desc">ለዚህ መሣሪያ የኢኩዌላይዘር ባንዶችን እና የድምጽ ማጎልበቻን ያስተካክሉ። Android ስርዓት ኢኩዌላይዘርን ከሚደግፉ የሙዚቃ መተግበሪያዎች ጋር ብቻ ይሰራል።</string>
     <string name="devices_device_config_equalizer_boost_label">የድምጽ ማጎልበቻ፦ %1$s</string>
     <string name="devices_device_config_section_timing_label">ጊዜዓ</string>
@@ -479,7 +478,6 @@
     <string name="widget_config_theme_red_label">ቀይ</string>
     <string name="widget_config_theme_custom_label">ብጁ</string>
     <!-- Equalizer -->
-    <string name="eq_screen_title">ኣዯካሉ</string>
     <string name="eq_bands_label">ባንዶች</string>
     <string name="eq_mini_graph_desc">የተዋቀሩ የኢኩዌላይዘር ባንዶች</string>
     <string name="eq_enable_label">ኢኩዌላይዘርን ይጠቀሙ</string>
