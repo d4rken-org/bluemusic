@@ -34,6 +34,7 @@ fun VolumeInputDialog(
     streamLabel: String,
     currentPercentage: Int,
     minValue: Int = 0,
+    maxValue: Int = 100,
     onConfirm: (Float) -> Unit,
     onDismiss: () -> Unit,
 ) {
@@ -43,7 +44,7 @@ fun VolumeInputDialog(
     }
 
     val parsed = textFieldValue.text.trim().toIntOrNull()
-    val isValid = parsed != null && parsed in minValue..100
+    val isValid = parsed != null && parsed in minValue..maxValue
 
     val focusRequester = remember { FocusRequester() }
     LaunchedEffect(Unit) { focusRequester.requestFocus() }
@@ -77,7 +78,7 @@ fun VolumeInputDialog(
                 )
                 if (textFieldValue.text.isNotEmpty() && !isValid) {
                     Text(
-                        text = stringResource(R.string.devices_volume_input_error, minValue, 100),
+                        text = stringResource(R.string.devices_volume_input_error, minValue, maxValue),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.error,
                         modifier = Modifier.padding(top = 4.dp),

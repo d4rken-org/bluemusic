@@ -9,6 +9,8 @@ import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerModeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeBand
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
 import io.kotest.matchers.shouldBe
@@ -23,6 +25,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 
 class RingerModeTransitionHandlerTest : BaseTest() {
 
@@ -41,9 +44,17 @@ class RingerModeTransitionHandlerTest : BaseTest() {
     private val observationGate = VolumeObservationGate()
     private val ownerRegistry = eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry()
 
+    // The enforcer only needs the stream bounds, so it runs on its own AudioManager while the
+    // handler's VolumeTool stays a mock for call verification.
+    private val boundsAudioManager = mockk<AudioManager>(relaxed = true).also {
+        every { it.getStreamMaxVolume(any()) } returns 15
+    }
+    private val limitEnforcer = VolumeLimitEnforcer(VolumeTool(boundsAudioManager), normalRingerTool())
+
     private val handler = RingerModeTransitionHandler(
         deviceRepo = deviceRepo,
         volumeTool = volumeTool,
+        limitEnforcer = limitEnforcer,
         observationGate = observationGate,
         ownerRegistry = ownerRegistry,
     )
@@ -56,13 +67,40 @@ class RingerModeTransitionHandlerTest : BaseTest() {
     @Test
     fun `transition to NORMAL suppresses notification and re-applies stored volume`() = runTest {
         setActiveDevice(notificationVolume = 0.6f)
+        every {
+            volumeTool.resolveBoundedLevel(AudioStream.Id.STREAM_NOTIFICATION, 0.6f, null, null)
+        } returns 4
 
         handler.handle(RingerModeEvent(oldMode = RingerMode.SILENT, newMode = RingerMode.NORMAL))
 
         coVerify(exactly = 1) {
             volumeTool.changeVolume(
                 streamId = AudioStream.Id.STREAM_NOTIFICATION,
-                percent = 0.6f,
+                targetLevel = 4,
+                visible = false,
+            )
+        }
+    }
+
+    @Test
+    fun `transition to NORMAL re-applies the level the band allows`() = runTest {
+        setActiveDevice(notificationVolume = 0.6f, volumeLimit = true, notificationVolumeMax = 0.3f)
+        every {
+            volumeTool.resolveBoundedLevel(
+                AudioStream.Id.STREAM_NOTIFICATION,
+                0.6f,
+                VolumeBand(min = null, max = 0.3f),
+                // 0.3 of a 0..15 stream floors to level 4
+                0..4,
+            )
+        } returns 2
+
+        handler.handle(RingerModeEvent(oldMode = RingerMode.SILENT, newMode = RingerMode.NORMAL))
+
+        coVerify(exactly = 1) {
+            volumeTool.changeVolume(
+                streamId = AudioStream.Id.STREAM_NOTIFICATION,
+                targetLevel = 2,
                 visible = false,
             )
         }
@@ -246,6 +284,8 @@ class RingerModeTransitionHandlerTest : BaseTest() {
     private suspend fun setActiveDevice(
         ringVolume: Float? = 0.5f,
         notificationVolume: Float? = null,
+        volumeLimit: Boolean = false,
+        notificationVolumeMax: Float? = null,
     ) {
         devicesFlow.value = listOf(
             ManagedDevice(
@@ -256,6 +296,8 @@ class RingerModeTransitionHandlerTest : BaseTest() {
                     lastConnected = 0L,
                     ringVolume = ringVolume,
                     notificationVolume = notificationVolume,
+                    volumeLimit = volumeLimit,
+                    notificationVolumeMax = notificationVolumeMax,
                     isEnabled = true,
                 ),
             )
@@ -267,5 +309,49 @@ class RingerModeTransitionHandlerTest : BaseTest() {
             receivedAtElapsedMs = 1000L,
             sequence = 0L,
         )
+    }
+
+    @Test
+    fun `grouped earbuds - the strictest notification ceiling reaches the write`() = runTest {
+        val budL = "AA:BB:CC:DD:EE:01"
+        val budR = "AA:BB:CC:DD:EE:02"
+
+        fun bud(addr: String, notificationVolumeMax: Float) = ManagedDevice(
+            isConnected = true,
+            device = SourceDeviceWrapper(
+                address = addr,
+                alias = "Buds3 Pro",
+                name = "Buds3 Pro",
+                deviceType = SourceDevice.Type.HEADPHONES,
+                isConnected = true,
+            ),
+            config = DeviceConfigEntity(
+                address = addr,
+                ringVolume = 0.5f,
+                notificationVolume = 0.6f,
+                volumeLimit = true,
+                notificationVolumeMax = notificationVolumeMax,
+                isEnabled = true,
+            ),
+        )
+
+        // The looser member is first, so an iteration-order bug would pick level 12, not 3.
+        devicesFlow.value = listOf(bud(budL, 0.8f), bud(budR, 0.2f))
+        ownerRegistry.onDeviceConnected(budL, "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+        ownerRegistry.onDeviceConnected(budR, "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1002L, 1L)
+
+        every {
+            volumeTool.resolveBoundedLevel(AudioStream.Id.STREAM_NOTIFICATION, 0.6f, any(), 0..3)
+        } returns 3
+
+        handler.handle(RingerModeEvent(oldMode = RingerMode.SILENT, newMode = RingerMode.NORMAL))
+
+        coVerify(exactly = 1) {
+            volumeTool.changeVolume(
+                streamId = AudioStream.Id.STREAM_NOTIFICATION,
+                targetLevel = 3,
+                visible = false,
+            )
+        }
     }
 }

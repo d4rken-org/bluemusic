@@ -60,6 +60,7 @@ class DeviceConfigViewModelTest : BaseTest() {
     private fun TestScope.viewModel(
         infos: MutableStateFlow<UpgradeRepo.Info>,
         probeGate: CompletableDeferred<Unit>? = null,
+        device: ManagedDevice = this@DeviceConfigViewModelTest.device,
     ): DeviceConfigViewModel {
         deviceRepo = mockk<DeviceRepo>(relaxed = true).apply {
             every { devices } returns MutableStateFlow(listOf(device))
@@ -206,4 +207,5 @@ class DeviceConfigViewModelTest : BaseTest() {
 
         coVerify { deviceRepo.updateDevice(address, any()) }
     }
+
 }

@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
@@ -22,7 +23,8 @@ class MusicVolumeModule @Inject constructor(
     observationGate: VolumeObservationGate,
     ownerRegistry: AudioStreamOwnerRegistry,
     deviceRepo: DeviceRepo,
-) : BaseVolumeModule(volumeTool, volumeObserver, observationGate, ownerRegistry, deviceRepo) {
+    limitEnforcer: VolumeLimitEnforcer,
+) : BaseVolumeModule(volumeTool, volumeObserver, observationGate, ownerRegistry, deviceRepo, limitEnforcer) {
 
     override val type: AudioStream.Type = AudioStream.Type.MUSIC
 

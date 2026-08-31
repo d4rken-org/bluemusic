@@ -16,7 +16,9 @@ import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.eq.core.EqCoordinator
 import eu.darken.bluemusic.eq.core.EqEligibility
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import kotlinx.coroutines.CoroutineScope
@@ -48,6 +50,7 @@ class MonitorOrchestrator @Inject constructor(
     private val ringerModeTransitionHandler: RingerModeTransitionHandler,
     private val ownerRegistry: AudioStreamOwnerRegistry,
     private val volumeEventDispatcher: VolumeEventDispatcher,
+    private val limitEnforcer: VolumeLimitEnforcer,
     private val eqCoordinator: EqCoordinator,
     private val eqEligibility: EqEligibility,
 ) {
@@ -141,6 +144,8 @@ class MonitorOrchestrator @Inject constructor(
                 log(TAG) { "monitor: Currently active devices: ${activeDevices.map { "${it.address}/${it.label}" }}" }
                 onActiveDevicesChanged(activeDevices)
 
+                enforceVolumeLimits(activeDevices)
+
                 // The equalizer re-attaches on every new effect session, so it needs the session to
                 // stay alive for as long as an eligible device is connected.
                 val stayActive = activeDevices.any { it.requiresPersistentSession } ||
@@ -188,6 +193,26 @@ class MonitorOrchestrator @Inject constructor(
             // Only our own session is stopped: a newer monitor session may already have replaced it.
             eqCoordinator.stopSession(eqSessionToken)
             monitorJob.cancel()
+        }
+    }
+
+    /**
+     * Enabling a limit, editing a bound or restoring a backup only writes to Room and produces no
+     * volume event, so an already connected device would otherwise keep its out-of-band level until
+     * the next volume change or reconnect.
+     */
+    private suspend fun enforceVolumeLimits(activeDevices: List<ManagedDevice>) {
+        val boundedStreams = activeDevices
+            .flatMap { device ->
+                AudioStream.Type.entries
+                    .filter { device.getVolumeBand(it) != null }
+                    .map { device.getStreamId(it) }
+            }
+            .toSet()
+
+        for (streamId in boundedStreams) {
+            val ownerAddresses = ownerRegistry.ownerAddressesFor(streamId).toSet()
+            limitEnforcer.enforce(streamId, activeDevices, ownerAddresses)
         }
     }
 

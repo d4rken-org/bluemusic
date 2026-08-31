@@ -271,6 +271,7 @@ fun DevicesScreen(
                             eqStatus = state.eqStatus
                                 ?.takeIf { it.address == deviceWithApps.device.address }
                                 ?.status,
+                            volumeBands = deviceWithApps.volumeBands,
                         )
                     }
                 }

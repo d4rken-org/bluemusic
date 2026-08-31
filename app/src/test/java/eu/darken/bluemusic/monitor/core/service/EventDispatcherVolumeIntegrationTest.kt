@@ -13,6 +13,7 @@ import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.connection.CallVolumeModule
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
@@ -33,6 +34,7 @@ import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 import testhelpers.coroutine.asDispatcherProvider
 import testhelpers.time.FakeMonotonicClock
 
@@ -173,6 +175,7 @@ class EventDispatcherVolumeIntegrationTest : BaseTest() {
         }
         val volumeUpdateModule = VolumeUpdateModule(
             volumeTool = volumeTool,
+            limitEnforcer = VolumeLimitEnforcer(volumeTool, normalRingerTool()),
             ringerTool = ringerTool,
             deviceRepo = deviceRepo,
             observationGate = observationGate,
@@ -184,6 +187,7 @@ class EventDispatcherVolumeIntegrationTest : BaseTest() {
             observationGate = observationGate,
             ownerRegistry = ownerRegistry,
             deviceRepo = deviceRepo,
+            limitEnforcer = VolumeLimitEnforcer(volumeTool, normalRingerTool()),
         )
         private val tracker by lazy {
             EventTypeDedupTracker(

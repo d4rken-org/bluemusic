@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.monitor.core.modules.volume
 
+import android.media.AudioManager
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
@@ -8,6 +9,7 @@ import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.audio.levelToPercentage
@@ -19,18 +21,21 @@ import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
 import io.mockk.slot
+import io.mockk.verify
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 
 class VolumeUpdateModuleTest : BaseTest() {
 
     private val address = "AA:BB:CC:DD:EE:FF"
 
     private lateinit var volumeTool: VolumeTool
+    private lateinit var limitEnforcer: VolumeLimitEnforcer
     private lateinit var ringerTool: RingerTool
     private lateinit var deviceRepo: DeviceRepo
     private lateinit var observationGate: VolumeObservationGate
@@ -58,6 +63,14 @@ class VolumeUpdateModuleTest : BaseTest() {
     @BeforeEach
     fun setup() {
         volumeTool = mockk(relaxed = true)
+        // The enforcer needs real level math; the module's own VolumeTool stays a mock so the
+        // tests can control what a live hardware read would return.
+        limitEnforcer = VolumeLimitEnforcer(
+            VolumeTool(mockk<AudioManager>(relaxed = true).also {
+                every { it.getStreamMaxVolume(any()) } returns 15
+            }),
+            normalRingerTool(),
+        )
         ringerTool = mockk(relaxed = true)
         deviceRepo = mockk(relaxed = true)
         observationGate = VolumeObservationGate()
@@ -83,6 +96,7 @@ class VolumeUpdateModuleTest : BaseTest() {
 
     private fun createModule() = VolumeUpdateModule(
         volumeTool = volumeTool,
+        limitEnforcer = limitEnforcer,
         ringerTool = ringerTool,
         deviceRepo = deviceRepo,
         observationGate = observationGate,
@@ -98,6 +112,8 @@ class VolumeUpdateModuleTest : BaseTest() {
         volumeObserving: Boolean = true,
         volumeLock: Boolean = false,
         volumeRateLimiter: Boolean = false,
+        volumeLimit: Boolean = false,
+        musicVolumeMax: Float? = null,
         lastConnected: Long = 0L,
     ): DeviceConfigEntity = DeviceConfigEntity(
         address = address,
@@ -109,6 +125,8 @@ class VolumeUpdateModuleTest : BaseTest() {
         volumeObserving = volumeObserving,
         volumeLock = volumeLock,
         volumeRateLimiter = volumeRateLimiter,
+        volumeLimit = volumeLimit,
+        musicVolumeMax = musicVolumeMax,
         lastConnected = lastConnected,
     )
 
@@ -914,6 +932,76 @@ class VolumeUpdateModuleTest : BaseTest() {
                 receivedAtElapsedMs = 1000L,
                 sequence = 0L,
             )
+        }
+    }
+    // ------------------------------------------------------------------------
+    // Volume limit band: a cap is derivable from the event, so it never needs a
+    // live hardware read (issue #232).
+    // ------------------------------------------------------------------------
+    @Nested
+    inner class VolumeLimitBand {
+        @Test
+        fun `an in-band event keeps the event snapshot instead of reading the hardware`() = runTest {
+            val module = createModule()
+            // cap 0.8 -> levels 0..12, so the event's 11 is inside the band
+            val cfg = config(musicVolume = 0.1f, volumeLimit = true, musicVolumeMax = 0.8f)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            val result = runTransform(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false),
+                cfg,
+                // What a live read would return if the route had already torn down.
+                hardwareLevel = 0,
+            )
+
+            result.musicVolume shouldBe levelToPercentage(11, 0, 15)
+            verify(exactly = 0) { volumeTool.getCurrentVolume(AudioStream.Id.STREAM_MUSIC) }
+        }
+
+        @Test
+        fun `an out-of-band event persists the capped level without a live read`() = runTest {
+            val module = createModule()
+            // cap 0.5 -> levels 0..7, so the event's 15 is above the ceiling
+            val cfg = config(musicVolume = 0.1f, volumeLimit = true, musicVolumeMax = 0.5f)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            val result = runTransform(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 15, self = false),
+                cfg,
+                hardwareLevel = 0,
+            )
+
+            result.musicVolume shouldBe levelToPercentage(7, 0, 15)
+            verify(exactly = 0) { volumeTool.getCurrentVolume(AudioStream.Id.STREAM_MUSIC) }
+        }
+
+        @Test
+        fun `an eligible rate limiter still takes the live read on a capped stream`() = runTest {
+            val module = createModule()
+            val cfg = config(
+                musicVolume = 0.1f,
+                volumeRateLimiter = true,
+                volumeLimit = true,
+                musicVolumeMax = 0.5f,
+            )
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            val result = runTransform(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 15, self = false),
+                cfg,
+                hardwareLevel = 6,
+            )
+
+            result.musicVolume shouldBe levelToPercentage(6, 0, 15)
         }
     }
 }

@@ -21,6 +21,7 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.observeDevice
 import eu.darken.bluemusic.devices.core.ToggleResult
+import eu.darken.bluemusic.devices.core.toggleVolumeLimit
 import eu.darken.bluemusic.devices.core.toggleVolumeLock
 import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.eq.core.EqCapabilities
@@ -250,6 +251,15 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 val result = deviceRepo.toggleVolumeLock(deviceAddress, upgradeRepo)
                 if (result == ToggleResult.NOT_PRO) events.emit(ConfigEvent.RequiresPro)
             }
+
+            is ConfigAction.OnToggleVolumeLimit -> {
+                val result = deviceRepo.toggleVolumeLimit(deviceAddress, upgradeRepo)
+                if (result == ToggleResult.NOT_PRO) events.emit(ConfigEvent.RequiresPro)
+            }
+
+            // Not gated: the limit screen is where the bounds are set and the switch is explained,
+            // the upsell happens there when it is flipped.
+            is ConfigAction.OnVolumeLimitClicked -> navTo(Nav.Main.DeviceVolumeLimit(deviceAddress))
 
             is ConfigAction.OnToggleVolumeObserving -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
                 oldConfig.copy(

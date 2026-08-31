@@ -6,7 +6,9 @@ import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import android.media.AudioManager
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeBand
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
@@ -16,17 +18,20 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 
 class VolumeLockModuleTest : BaseTest() {
 
     private val address = "AA:BB:CC:DD:EE:FF"
 
     private lateinit var volumeModeTool: VolumeModeTool
+    private lateinit var limitEnforcer: VolumeLimitEnforcer
     private lateinit var deviceRepo: DeviceRepo
     private lateinit var ownerRegistry: AudioStreamOwnerRegistry
     private lateinit var sourceDevice: SourceDevice
@@ -35,6 +40,13 @@ class VolumeLockModuleTest : BaseTest() {
     @BeforeEach
     fun setup() {
         volumeModeTool = mockk(relaxed = true)
+        // The enforcer only needs the stream bounds; the module's VolumeModeTool stays a mock.
+        limitEnforcer = VolumeLimitEnforcer(
+            VolumeTool(mockk<AudioManager>(relaxed = true).also {
+                every { it.getStreamMaxVolume(any()) } returns 15
+            }),
+            normalRingerTool(),
+        )
         deviceRepo = mockk(relaxed = true)
         ownerRegistry = AudioStreamOwnerRegistry()
         devicesFlow = MutableStateFlow(emptyList())
@@ -54,6 +66,7 @@ class VolumeLockModuleTest : BaseTest() {
 
     private fun createModule() = VolumeLockModule(
         volumeModeTool = volumeModeTool,
+        limitEnforcer = limitEnforcer,
         deviceRepo = deviceRepo,
         ownerRegistry = ownerRegistry,
     )
@@ -67,6 +80,8 @@ class VolumeLockModuleTest : BaseTest() {
         alarmVolume: Float? = null,
         volumeLock: Boolean = false,
         isEnabled: Boolean = true,
+        volumeLimit: Boolean = false,
+        musicVolumeMax: Float? = null,
     ): DeviceConfigEntity = DeviceConfigEntity(
         address = addr,
         musicVolume = musicVolume,
@@ -76,6 +91,8 @@ class VolumeLockModuleTest : BaseTest() {
         alarmVolume = alarmVolume,
         volumeLock = volumeLock,
         isEnabled = isEnabled,
+        volumeLimit = volumeLimit,
+        musicVolumeMax = musicVolumeMax,
     )
 
     private fun managedDevice(
@@ -236,6 +253,50 @@ class VolumeLockModuleTest : BaseTest() {
     }
 
     @Test
+    fun `lock restores the stored target through the band`() = runTest {
+        val module = createModule()
+        val cfg = config(musicVolume = 1f, volumeLock = true, volumeLimit = true, musicVolumeMax = 0.5f)
+        seedOwner(managedDevice(cfg))
+
+        coEvery { volumeModeTool.apply(any(), any(), any(), any(), any(), any(), any()) } returns true
+
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false))
+
+        coVerify(exactly = 1) {
+            volumeModeTool.apply(
+                streamId = AudioStream.Id.STREAM_MUSIC,
+                streamType = AudioStream.Type.MUSIC,
+                volumeMode = VolumeMode.Normal(1f),
+                visible = false,
+                band = VolumeBand(min = null, max = 0.5f),
+                allowedLevels = 0..7,
+            )
+        }
+    }
+
+    @Test
+    fun `a locked stream never applies a level above the band`() = runTest {
+        // Synthesis: real VolumeTool and VolumeModeTool, so the level that reaches AudioManager is
+        // the one the band allows, not the stored 100%.
+        val audioManager = mockk<AudioManager>(relaxed = true)
+        every { audioManager.getStreamMaxVolume(any()) } returns 15
+        every { audioManager.getStreamVolume(any()) } returns 15
+        val realVolumeTool = VolumeTool(audioManager).apply { clock = { 1000L } }
+        val module = VolumeLockModule(
+            volumeModeTool = VolumeModeTool(realVolumeTool, mockk(relaxed = true)),
+            limitEnforcer = VolumeLimitEnforcer(realVolumeTool, normalRingerTool()),
+            deviceRepo = deviceRepo,
+            ownerRegistry = ownerRegistry,
+        )
+        val cfg = config(musicVolume = 1f, volumeLock = true, volumeLimit = true, musicVolumeMax = 0.5f)
+        seedOwner(managedDevice(cfg))
+
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 15, self = false))
+
+        verify(exactly = 1) { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, 7, 0) }
+    }
+
+    @Test
     fun `late observer event for self write does not re-engage lock`() = runTest {
         // Synthesis: real VolumeTool + fake clock. A slider drag writes level 11,
         // the observer fires 600ms later, and wasUs() must classify it as self
@@ -247,7 +308,7 @@ class VolumeLockModuleTest : BaseTest() {
         val realVolumeTool = VolumeTool(audioManager).apply {
             clock = { fakeTime }
         }
-        val module = VolumeLockModule(volumeModeTool, deviceRepo, ownerRegistry)
+        val module = VolumeLockModule(volumeModeTool, limitEnforcer, deviceRepo, ownerRegistry)
         val cfg = config(musicVolume = 0.5f, volumeLock = true)
         seedOwner(managedDevice(cfg))
 
@@ -259,5 +320,55 @@ class VolumeLockModuleTest : BaseTest() {
 
         isSelf shouldBe true
         coVerify(exactly = 0) { volumeModeTool.apply(any(), any(), any(), any()) }
+    }
+
+    @Test
+    fun `grouped earbuds - the strictest ceiling in the group is what gets applied`() = runTest {
+        // Synthesis: real VolumeTool and VolumeModeTool, so the level reaching AudioManager is the
+        // one the group allows. The looser member is listed first, so an iteration-order bug would
+        // let level 12 through.
+        val audioManager = mockk<AudioManager>(relaxed = true)
+        every { audioManager.getStreamMaxVolume(any()) } returns 15
+        every { audioManager.getStreamVolume(any()) } returns 15
+        val realVolumeTool = VolumeTool(audioManager).apply { clock = { 1000L } }
+        val module = VolumeLockModule(
+            volumeModeTool = VolumeModeTool(realVolumeTool, mockk(relaxed = true)),
+            limitEnforcer = VolumeLimitEnforcer(realVolumeTool, normalRingerTool()),
+            deviceRepo = deviceRepo,
+            ownerRegistry = ownerRegistry,
+        )
+
+        val budL = "AA:BB:CC:DD:EE:01"
+        val budR = "AA:BB:CC:DD:EE:02"
+        fun budSource(addr: String): SourceDevice = mockk {
+            every { this@mockk.address } returns addr
+            every { label } returns "Buds3 Pro"
+            every { deviceType } returns SourceDevice.Type.HEADPHONES
+            every { getStreamId(AudioStream.Type.MUSIC) } returns AudioStream.Id.STREAM_MUSIC
+            every { getStreamId(AudioStream.Type.CALL) } returns AudioStream.Id.STREAM_VOICE_CALL
+            every { getStreamId(AudioStream.Type.RINGTONE) } returns AudioStream.Id.STREAM_RINGTONE
+            every { getStreamId(AudioStream.Type.NOTIFICATION) } returns AudioStream.Id.STREAM_NOTIFICATION
+            every { getStreamId(AudioStream.Type.ALARM) } returns AudioStream.Id.STREAM_ALARM
+        }
+
+        devicesFlow.value = listOf(
+            managedDevice(
+                config(addr = budL, musicVolume = 1f, volumeLock = true, volumeLimit = true, musicVolumeMax = 0.8f),
+                device = budSource(budL),
+            ),
+            managedDevice(
+                config(addr = budR, musicVolume = 1f, volumeLock = true, volumeLimit = true, musicVolumeMax = 0.4f),
+                device = budSource(budR),
+            ),
+        )
+        ownerRegistry.onDeviceConnected(budL, "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+        ownerRegistry.onDeviceConnected(budR, "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1002L, 1L)
+
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 15, self = false))
+
+        verify(atLeast = 1) { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, 6, 0) }
+        verify(exactly = 0) {
+            audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, match { it != 6 }, any())
+        }
     }
 }

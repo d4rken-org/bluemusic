@@ -9,6 +9,7 @@ import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.audio.levelToPercentage
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
@@ -23,6 +24,7 @@ import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 import testhelpers.time.FakeMonotonicClock
 
 /**
@@ -195,12 +197,14 @@ class VolumeRateLimiterPersistIntegrationTest : BaseTest() {
             setOf(
                 VolumeRateLimiterModule(
                     volumeTool = volumeTool,
+                    limitEnforcer = VolumeLimitEnforcer(volumeTool, normalRingerTool()),
                     deviceRepo = deviceRepo,
                     ownerRegistry = ownerRegistry,
                     clock = clock,
                 ),
                 VolumeUpdateModule(
                     volumeTool = volumeTool,
+                    limitEnforcer = VolumeLimitEnforcer(volumeTool, normalRingerTool()),
                     ringerTool = ringerTool,
                     deviceRepo = deviceRepo,
                     observationGate = observationGate,

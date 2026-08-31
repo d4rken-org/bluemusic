@@ -1,6 +1,7 @@
 package eu.darken.bluemusic.main.backup.core
 
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
+import eu.darken.bluemusic.devices.core.requireValidVolumeLimit
 import eu.darken.bluemusic.monitor.core.alert.AlertType
 import eu.darken.bluemusic.monitor.core.audio.DndMode
 
@@ -22,6 +23,17 @@ fun DeviceConfigEntity.toBackup(): DeviceConfigBackup = DeviceConfigBackup(
     volumeRateLimitIncreaseMs = volumeRateLimitIncreaseMs,
     volumeRateLimitDecreaseMs = volumeRateLimitDecreaseMs,
     volumeSaveOnDisconnect = volumeSaveOnDisconnect,
+    volumeLimit = volumeLimit,
+    musicVolumeMin = musicVolumeMin,
+    musicVolumeMax = musicVolumeMax,
+    callVolumeMin = callVolumeMin,
+    callVolumeMax = callVolumeMax,
+    ringVolumeMin = ringVolumeMin,
+    ringVolumeMax = ringVolumeMax,
+    notificationVolumeMin = notificationVolumeMin,
+    notificationVolumeMax = notificationVolumeMax,
+    alarmVolumeMin = alarmVolumeMin,
+    alarmVolumeMax = alarmVolumeMax,
     keepAwake = keepAwake,
     nudgeVolume = nudgeVolume,
     autoplay = autoplay,
@@ -56,6 +68,17 @@ fun DeviceConfigBackup.toEntity(): DeviceConfigEntity = DeviceConfigEntity(
     volumeRateLimitIncreaseMs = volumeRateLimitIncreaseMs,
     volumeRateLimitDecreaseMs = volumeRateLimitDecreaseMs,
     volumeSaveOnDisconnect = volumeSaveOnDisconnect,
+    volumeLimit = volumeLimit,
+    musicVolumeMin = musicVolumeMin,
+    musicVolumeMax = musicVolumeMax,
+    callVolumeMin = callVolumeMin,
+    callVolumeMax = callVolumeMax,
+    ringVolumeMin = ringVolumeMin,
+    ringVolumeMax = ringVolumeMax,
+    notificationVolumeMin = notificationVolumeMin,
+    notificationVolumeMax = notificationVolumeMax,
+    alarmVolumeMin = alarmVolumeMin,
+    alarmVolumeMax = alarmVolumeMax,
     keepAwake = keepAwake,
     nudgeVolume = nudgeVolume,
     autoplay = autoplay,
@@ -85,4 +108,15 @@ fun DeviceConfigBackup.detectUnknownEnums(): List<String> = buildList {
     if (AlertType.fromKey(connectionAlertType) == AlertType.NONE && connectionAlertType != "none") {
         add("Unknown alert type '$connectionAlertType' for device $address, defaulting to none")
     }
+}
+
+/**
+ * @throws IllegalArgumentException when any stored min/max pair could never be applied
+ */
+fun DeviceConfigBackup.requireValidVolumeLimits() {
+    requireValidVolumeLimit(musicVolumeMin, musicVolumeMax)
+    requireValidVolumeLimit(callVolumeMin, callVolumeMax)
+    requireValidVolumeLimit(ringVolumeMin, ringVolumeMax)
+    requireValidVolumeLimit(notificationVolumeMin, notificationVolumeMax)
+    requireValidVolumeLimit(alarmVolumeMin, alarmVolumeMax)
 }

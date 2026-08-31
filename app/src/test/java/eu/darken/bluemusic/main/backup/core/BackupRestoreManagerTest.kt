@@ -9,6 +9,7 @@ import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.devices.core.database.DeviceDatabase
 import eu.darken.bluemusic.main.core.GeneralSettings
 import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.types.shouldBeInstanceOf
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.shouldBe
@@ -343,6 +344,86 @@ class BackupRestoreManagerTest : BaseTest() {
         }
         coVerify(exactly = 0) { devicesSettings.applyBackup(any()) }
         coVerify(exactly = 0) { generalSettings.applyBackup(any()) }
+    }
+
+    @Test
+    fun `parseBackup rejects an inverted volume limit pair as malformed`() = runTest {
+        val (uri, file) = tempUri("inverted.zip")
+        val backup = AppBackup(
+            formatVersion = 1,
+            appVersion = "1.0.0",
+            createdAt = "2026-01-01T00:00:00Z",
+            deviceConfigs = listOf(
+                DeviceConfigBackup(
+                    address = "AA:AA:AA:AA:AA:AA",
+                    volumeLimit = true,
+                    musicVolumeMin = 0.8f,
+                    musicVolumeMax = 0.2f,
+                ),
+            ),
+        )
+        ZipOutputStream(FileOutputStream(file)).use { zip ->
+            zip.putNextEntry(ZipEntry("backup.json"))
+            zip.write(json.encodeToString(AppBackup.serializer(), backup).toByteArray())
+            zip.closeEntry()
+        }
+
+        val error = shouldThrow<BackupError.MalformedBackup> {
+            manager.parseBackup(uri)
+        }
+        error.cause.shouldBeInstanceOf<IllegalArgumentException>()
+        error.message!!.contains("AA:AA:AA:AA:AA:AA") shouldBe true
+    }
+
+    @Test
+    fun `parseBackup rejects an out-of-range volume limit bound`() = runTest {
+        val (uri, file) = tempUri("outofrange.zip")
+        val backup = AppBackup(
+            formatVersion = 1,
+            appVersion = "1.0.0",
+            createdAt = "2026-01-01T00:00:00Z",
+            deviceConfigs = listOf(
+                DeviceConfigBackup(
+                    address = "AA:AA:AA:AA:AA:AA",
+                    volumeLimit = true,
+                    alarmVolumeMax = 1.5f,
+                ),
+            ),
+        )
+        ZipOutputStream(FileOutputStream(file)).use { zip ->
+            zip.putNextEntry(ZipEntry("backup.json"))
+            zip.write(json.encodeToString(AppBackup.serializer(), backup).toByteArray())
+            zip.closeEntry()
+        }
+
+        shouldThrow<BackupError.MalformedBackup> {
+            manager.parseBackup(uri)
+        }
+    }
+
+    @Test
+    fun `parseBackup accepts a pinned volume limit where min equals max`() = runTest {
+        val (uri, file) = tempUri("pinned.zip")
+        val backup = AppBackup(
+            formatVersion = 1,
+            appVersion = "1.0.0",
+            createdAt = "2026-01-01T00:00:00Z",
+            deviceConfigs = listOf(
+                DeviceConfigBackup(
+                    address = "AA:AA:AA:AA:AA:AA",
+                    volumeLimit = true,
+                    musicVolumeMin = 0.4f,
+                    musicVolumeMax = 0.4f,
+                ),
+            ),
+        )
+        ZipOutputStream(FileOutputStream(file)).use { zip ->
+            zip.putNextEntry(ZipEntry("backup.json"))
+            zip.write(json.encodeToString(AppBackup.serializer(), backup).toByteArray())
+            zip.closeEntry()
+        }
+
+        manager.parseBackup(uri).backup.deviceConfigs.single().musicVolumeMax shouldBe 0.4f
     }
 
     private fun buildBackup(devices: List<DeviceConfigBackup>): AppBackup = AppBackup(

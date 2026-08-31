@@ -5,6 +5,7 @@ import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.alert.AlertType
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.DndMode
+import eu.darken.bluemusic.monitor.core.audio.VolumeBand
 import java.time.Duration
 import java.time.Instant
 
@@ -59,6 +60,8 @@ data class ManagedDevice(
         get() = config.volumeRateLimitDecreaseMs ?: 500L
     val volumeSaveOnDisconnect: Boolean
         get() = config.volumeSaveOnDisconnect
+    val volumeLimit: Boolean
+        get() = config.volumeLimit
     val autoplay: Boolean
         get() = config.autoplay
     val autoplayKeycodes: List<Int>
@@ -80,9 +83,17 @@ data class ManagedDevice(
     val eqBoostGain: Int?
         get() = config.eqBoostGain
     /**
+     * True when at least one stream is actually bounded, i.e. the toggle is on AND a stream that
+     * this device manages carries a bound. The toggle alone is a normal state: the UI only offers
+     * the per-stream bounds once it is on.
+     */
+    val hasEffectiveVolumeLimit: Boolean
+        get() = volumeLimit && AudioStream.Type.entries.any { getVolumeBand(it) != null }
+
+    /**
      * True when this device requires the foreground service to keep running for ongoing work.
      *
-     * - Volume monitoring (lock / observing / rate-limiter) needs continuous re-enforcement.
+     * - Volume monitoring (lock / observing / rate-limiter / limit) needs continuous re-enforcement.
      * - Keep-awake needs the partial CPU wakelock held until disconnect.
      *
      * One-shot features (autoplay, app launch, connection alert, show home screen) are NOT
@@ -90,7 +101,7 @@ data class ManagedDevice(
      * after the post-dispatch idle grace.
      */
     val requiresPersistentSession: Boolean
-        get() = volumeLock || volumeObserving || volumeRateLimiter || keepAwake
+        get() = volumeLock || volumeObserving || volumeRateLimiter || keepAwake || hasEffectiveVolumeLimit
 
     fun getVolume(type: AudioStream.Type): Float? = when (type) {
         AudioStream.Type.MUSIC -> config.musicVolume
@@ -98,6 +109,37 @@ data class ManagedDevice(
         AudioStream.Type.RINGTONE -> config.ringVolume
         AudioStream.Type.NOTIFICATION -> config.notificationVolume
         AudioStream.Type.ALARM -> config.alarmVolume
+    }
+
+    fun getVolumeMin(type: AudioStream.Type): Float? = when (type) {
+        AudioStream.Type.MUSIC -> config.musicVolumeMin
+        AudioStream.Type.CALL -> config.callVolumeMin
+        AudioStream.Type.RINGTONE -> config.ringVolumeMin
+        AudioStream.Type.NOTIFICATION -> config.notificationVolumeMin
+        AudioStream.Type.ALARM -> config.alarmVolumeMin
+    }
+
+    fun getVolumeMax(type: AudioStream.Type): Float? = when (type) {
+        AudioStream.Type.MUSIC -> config.musicVolumeMax
+        AudioStream.Type.CALL -> config.callVolumeMax
+        AudioStream.Type.RINGTONE -> config.ringVolumeMax
+        AudioStream.Type.NOTIFICATION -> config.notificationVolumeMax
+        AudioStream.Type.ALARM -> config.alarmVolumeMax
+    }
+
+    /**
+     * The bounds that apply to [type], or null when nothing should be bounded: the limit is off,
+     * the stream isn't managed by this device, the stored target is a Silent/Vibrate sentinel (an
+     * explicit user choice) or corrupt, or no bound is set.
+     */
+    fun getVolumeBand(type: AudioStream.Type): VolumeBand? {
+        if (!volumeLimit) return null
+        val target = getVolume(type) ?: return null
+        if (target !in 0f..1f) return null
+        val min = getVolumeMin(type)
+        val max = getVolumeMax(type)
+        if (min == null && max == null) return null
+        return VolumeBand(min = min, max = max)
     }
 
     fun getStreamId(type: AudioStream.Type): AudioStream.Id = device.getStreamId(type)

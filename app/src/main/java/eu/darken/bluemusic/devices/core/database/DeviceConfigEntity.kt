@@ -60,6 +60,39 @@ data class DeviceConfigEntity(
 
     @ColumnInfo(name = "volume_save_on_disconnect", defaultValue = "false")
     val volumeSaveOnDisconnect: Boolean = false,
+
+    @ColumnInfo(name = "volume_limit", defaultValue = "false")
+    val volumeLimit: Boolean = false,
+
+    @ColumnInfo(name = "music_volume_min")
+    val musicVolumeMin: Float? = null,
+
+    @ColumnInfo(name = "music_volume_max")
+    val musicVolumeMax: Float? = null,
+
+    @ColumnInfo(name = "call_volume_min")
+    val callVolumeMin: Float? = null,
+
+    @ColumnInfo(name = "call_volume_max")
+    val callVolumeMax: Float? = null,
+
+    @ColumnInfo(name = "ring_volume_min")
+    val ringVolumeMin: Float? = null,
+
+    @ColumnInfo(name = "ring_volume_max")
+    val ringVolumeMax: Float? = null,
+
+    @ColumnInfo(name = "notification_volume_min")
+    val notificationVolumeMin: Float? = null,
+
+    @ColumnInfo(name = "notification_volume_max")
+    val notificationVolumeMax: Float? = null,
+
+    @ColumnInfo(name = "alarm_volume_min")
+    val alarmVolumeMin: Float? = null,
+
+    @ColumnInfo(name = "alarm_volume_max")
+    val alarmVolumeMax: Float? = null,
     
     @ColumnInfo(name = "keep_awake")
     val keepAwake: Boolean = false,
@@ -125,6 +158,12 @@ data class DeviceConfigEntity(
         if (volumeObserving) append(", observing")
         if (volumeRateLimiter) append(", rateLimiter")
         if (volumeSaveOnDisconnect) append(", saveOnDisconnect")
+        if (volumeLimit) append(", limit")
+        if (musicVolumeMin != null || musicVolumeMax != null) append(", musicLimit=$musicVolumeMin..$musicVolumeMax")
+        if (callVolumeMin != null || callVolumeMax != null) append(", callLimit=$callVolumeMin..$callVolumeMax")
+        if (ringVolumeMin != null || ringVolumeMax != null) append(", ringLimit=$ringVolumeMin..$ringVolumeMax")
+        if (notificationVolumeMin != null || notificationVolumeMax != null) append(", notifLimit=$notificationVolumeMin..$notificationVolumeMax")
+        if (alarmVolumeMin != null || alarmVolumeMax != null) append(", alarmLimit=$alarmVolumeMin..$alarmVolumeMax")
         if (keepAwake) append(", keepAwake")
         if (nudgeVolume) append(", nudge")
         if (autoplay) append(", autoplay")

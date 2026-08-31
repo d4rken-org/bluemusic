@@ -42,13 +42,15 @@ class VolumeModeTool @Inject constructor(
         volumeMode: VolumeMode,
         visible: Boolean,
         delay: Duration = Duration.ZERO,
+        band: VolumeBand? = null,
+        allowedLevels: IntRange? = null,
     ): Boolean {
         alignSystemState(streamType, volumeMode)
 
         return when (volumeMode) {
             is VolumeMode.Normal -> volumeTool.changeVolume(
                 streamId = streamId,
-                percent = volumeMode.percentage,
+                targetLevel = volumeTool.resolveBoundedLevel(streamId, volumeMode.percentage, band, allowedLevels),
                 visible = visible,
                 delay = delay,
             )

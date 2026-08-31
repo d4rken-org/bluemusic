@@ -65,6 +65,7 @@ class MonitorNotifications @Inject constructor(
             var locking = false
             var waking = false
             var limiting = false
+            var bounding = false
 
             for (dev in devices) {
                 if (!dev.isActive) continue
@@ -88,6 +89,11 @@ class MonitorNotifications @Inject constructor(
                     limiting = true
                     log(TAG) { "Keep running because the device to be rate limited: ${dev.address}/${dev.label}" }
                     extraFlags.add(context.getString(R.string.devices_device_config_volume_rate_limiter_label))
+                }
+                if (!bounding && dev.hasEffectiveVolumeLimit) {
+                    bounding = true
+                    log(TAG) { "Keep running because the device has a volume limit: ${dev.address}/${dev.label}" }
+                    extraFlags.add(context.getString(R.string.devices_device_config_volume_limit_label))
                 }
             }
             val msg = extraFlags.joinToString(", ")

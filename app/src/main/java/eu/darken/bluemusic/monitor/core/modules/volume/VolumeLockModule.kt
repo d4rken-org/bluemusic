@@ -11,6 +11,7 @@ import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
@@ -21,6 +22,7 @@ import javax.inject.Singleton
 @Singleton
 internal class VolumeLockModule @Inject constructor(
     private val volumeModeTool: VolumeModeTool,
+    private val limitEnforcer: VolumeLimitEnforcer,
     private val deviceRepo: DeviceRepo,
     private val ownerRegistry: AudioStreamOwnerRegistry,
 ) : VolumeModule {
@@ -39,7 +41,16 @@ internal class VolumeLockModule @Inject constructor(
         val ownerAddresses = ownerRegistry.ownerAddressesFor(id).toSet()
         if (ownerAddresses.isEmpty()) return
 
-        deviceRepo.currentDevices()
+        val devices = deviceRepo.currentDevices()
+        // Resolved across the group, not per device: the lock write is a self event, so
+        // VolumeLimitModule never gets to correct a level that only honoured one member's cap.
+        val allowedLevels = limitEnforcer.allowedLevels(
+            streamId = id,
+            devices = devices,
+            ownerAddresses = ownerAddresses,
+        )
+
+        devices
             .filter { device ->
                 device.isActive
                         && device.volumeLock
@@ -61,6 +72,8 @@ internal class VolumeLockModule @Inject constructor(
                         streamType = type,
                         volumeMode = mode,
                         visible = false,
+                        band = device.getVolumeBand(type),
+                        allowedLevels = allowedLevels,
                     )
                 ) {
                     log(TAG) { "Engaged volume lock for $type ($mode) due to ${device.address}/${device.label}" }

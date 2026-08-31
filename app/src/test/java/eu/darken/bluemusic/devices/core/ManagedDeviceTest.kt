@@ -3,6 +3,8 @@ package eu.darken.bluemusic.devices.core
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeBand
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.string.shouldNotContain
@@ -97,6 +99,29 @@ class ManagedDeviceTest : BaseTest() {
     fun `requiresPersistentSession - keepAwake true`() {
         create(config = DeviceConfigEntity(address = "AA:BB:CC:DD:EE:FF", keepAwake = true))
             .requiresPersistentSession shouldBe true
+    }
+
+    @Test
+    fun `requiresPersistentSession - an effective volume limit true`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLimit = true,
+                musicVolume = 0.5f,
+                musicVolumeMax = 0.5f,
+            )
+        ).requiresPersistentSession shouldBe true
+    }
+
+    @Test
+    fun `requiresPersistentSession - the limit toggle without bounds does NOT flip true`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLimit = true,
+                musicVolume = 0.5f,
+            )
+        ).requiresPersistentSession shouldBe false
     }
 
     @Test
@@ -288,6 +313,118 @@ class ManagedDeviceTest : BaseTest() {
         create().eqBandLevels shouldBe null
         create().eqBoostGain shouldBe null
     }
+
+    // region volume limit
+
+    @Test
+    fun `getVolumeBand - null while the toggle is off`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                musicVolume = 0.5f,
+                musicVolumeMax = 0.5f,
+            )
+        ).getVolumeBand(AudioStream.Type.MUSIC) shouldBe null
+    }
+
+    @Test
+    fun `getVolumeBand - null for a stream this device does not manage`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLimit = true,
+                musicVolume = null,
+                musicVolumeMax = 0.5f,
+            )
+        ).getVolumeBand(AudioStream.Type.MUSIC) shouldBe null
+    }
+
+    @Test
+    fun `getVolumeBand - null for a Silent or Vibrate target`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLimit = true,
+                ringVolume = VolumeMode.LEGACY_SILENT_VALUE,
+                ringVolumeMax = 0.5f,
+            )
+        ).getVolumeBand(AudioStream.Type.RINGTONE) shouldBe null
+
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLimit = true,
+                ringVolume = VolumeMode.LEGACY_VIBRATE_VALUE,
+                ringVolumeMax = 0.5f,
+            )
+        ).getVolumeBand(AudioStream.Type.RINGTONE) shouldBe null
+    }
+
+    @Test
+    fun `getVolumeBand - null when no bound is set`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLimit = true,
+                musicVolume = 0.5f,
+            )
+        ).getVolumeBand(AudioStream.Type.MUSIC) shouldBe null
+    }
+
+    @Test
+    fun `getVolumeBand - carries the configured bounds`() {
+        val device = create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLimit = true,
+                musicVolume = 0.5f,
+                musicVolumeMin = 0.2f,
+                alarmVolume = 0.5f,
+                alarmVolumeMax = 0.7f,
+            )
+        )
+
+        device.getVolumeBand(AudioStream.Type.MUSIC) shouldBe VolumeBand(min = 0.2f, max = null)
+        device.getVolumeBand(AudioStream.Type.ALARM) shouldBe VolumeBand(min = null, max = 0.7f)
+        device.getVolumeBand(AudioStream.Type.CALL) shouldBe null
+    }
+
+    @Test
+    fun `hasEffectiveVolumeLimit - false while only the toggle is on`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLimit = true,
+                musicVolume = 0.5f,
+            )
+        ).hasEffectiveVolumeLimit shouldBe false
+    }
+
+    @Test
+    fun `hasEffectiveVolumeLimit - true once a managed stream is bounded`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLimit = true,
+                alarmVolume = 0.5f,
+                alarmVolumeMax = 0.7f,
+            )
+        ).hasEffectiveVolumeLimit shouldBe true
+    }
+
+    @Test
+    fun `hasEffectiveVolumeLimit - false when the bounded stream is unmanaged`() {
+        create(
+            config = DeviceConfigEntity(
+                address = "AA:BB:CC:DD:EE:FF",
+                volumeLimit = true,
+                alarmVolume = null,
+                alarmVolumeMax = 0.7f,
+            )
+        ).hasEffectiveVolumeLimit shouldBe false
+    }
+
+    // endregion
 
     @Test
     fun `equalizer accessors read the config`() {

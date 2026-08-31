@@ -11,6 +11,7 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.hasApiLevel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -18,6 +19,9 @@ import kotlinx.coroutines.time.delay
 import java.time.Duration
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.math.abs
+import kotlin.math.ceil
+import kotlin.math.floor
 import kotlin.math.roundToInt
 
 
@@ -30,6 +34,31 @@ fun levelToPercentage(current: Int, min: Int, max: Int): Float {
 fun percentageToLevel(percentage: Float, min: Int, max: Int): Int {
     return (min + (max - min) * percentage).roundToInt()
 }
+
+/**
+ * Float32 percentages don't land exactly on level boundaries: 0.6f on a 25 step stream evaluates
+ * to 15.000001, and a raw ceil would turn that into 16. Snap to a whole level when we are within
+ * representation error of one.
+ */
+private fun scaledLevel(percentage: Float, min: Int, max: Int): Double {
+    val scaled = min + (max - min).toDouble() * percentage
+    val rounded = Math.round(scaled).toDouble()
+    return if (abs(scaled - rounded) < LEVEL_EPSILON) rounded else scaled
+}
+
+/** For upper bounds: the highest level that still stays at or below [percentage]. */
+fun percentageToLevelFloor(percentage: Float, min: Int, max: Int): Int {
+    if (max <= min) return min
+    return floor(scaledLevel(percentage, min, max)).toInt().coerceIn(min, max)
+}
+
+/** For lower bounds: the lowest level that still stays at or above [percentage]. */
+fun percentageToLevelCeil(percentage: Float, min: Int, max: Int): Int {
+    if (max <= min) return min
+    return ceil(scaledLevel(percentage, min, max)).toInt().coerceIn(min, max)
+}
+
+private const val LEVEL_EPSILON = 1e-4
 
 @Singleton
 class VolumeTool @Inject constructor(
@@ -46,7 +75,7 @@ class VolumeTool @Inject constructor(
     }
 
     fun getMinVolume(streamId: AudioStream.Id): Int {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) return 0
+        if (!hasApiLevel(Build.VERSION_CODES.P)) return 0
         return try {
             audioManager.getStreamMinVolume(streamId.id)
         } catch (_: IllegalArgumentException) {
@@ -210,6 +239,39 @@ class VolumeTool @Inject constructor(
         AudioDeviceInfo.TYPE_BLE_SPEAKER -> "BLE_SPEAKER"
         AudioDeviceInfo.TYPE_BLE_BROADCAST -> "BLE_BROADCAST"
         else -> "OTHER"
+    }
+
+    /**
+     * The levels [band] permits on [streamId]. On a degenerate band (the floor sits above the
+     * ceiling) the maximum wins, it is the safety bound.
+     */
+    fun bandLevels(streamId: AudioStream.Id, band: VolumeBand): IntRange {
+        val streamMin = getMinVolume(streamId)
+        val streamMax = getMaxVolume(streamId)
+        val upper = band.max?.let { percentageToLevelFloor(it, streamMin, streamMax) } ?: streamMax
+        val lower = minOf(band.min?.let { percentageToLevelCeil(it, streamMin, streamMax) } ?: streamMin, upper)
+        return lower..upper
+    }
+
+    /**
+     * The single definition of which level may be written. Every apply path goes through here so
+     * no two of them can disagree about what a band allows.
+     *
+     * [allowedLevels] is the owner group's resolved range and wins over [band], which only carries
+     * one device's bounds: for a grouped pair with different bounds the group's stricter ceiling is
+     * the one that has to hold.
+     */
+    fun resolveBoundedLevel(
+        streamId: AudioStream.Id,
+        percent: Float,
+        band: VolumeBand?,
+        allowedLevels: IntRange? = null,
+    ): Int {
+        val target = percentageToLevel(percent, getMinVolume(streamId), getMaxVolume(streamId))
+        if (allowedLevels != null) return target.coerceIn(allowedLevels.first, allowedLevels.last)
+        if (band == null || band.isUnbounded) return target
+        val allowed = bandLevels(streamId, band)
+        return target.coerceIn(allowed.first, allowed.last)
     }
 
     suspend fun lowerByOne(streamId: AudioStream.Id, visible: Boolean): Boolean {

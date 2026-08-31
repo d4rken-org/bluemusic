@@ -1,14 +1,19 @@
 package eu.darken.bluemusic.monitor.core.service
 
 import eu.darken.bluemusic.bluetooth.core.BluetoothRepo
+import eu.darken.bluemusic.bluetooth.core.SourceDevice
+import eu.darken.bluemusic.bluetooth.core.SourceDeviceWrapper
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.eq.core.EqCoordinator
 import eu.darken.bluemusic.eq.core.EqEligibility
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerModeEvent
 import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import io.kotest.matchers.shouldBe
@@ -44,6 +49,7 @@ class MonitorOrchestratorTest : BaseTest() {
     private lateinit var ringerModeTransitionHandler: RingerModeTransitionHandler
     private lateinit var ownerRegistry: AudioStreamOwnerRegistry
     private lateinit var volumeEventDispatcher: VolumeEventDispatcher
+    private lateinit var limitEnforcer: VolumeLimitEnforcer
     private lateinit var eqCoordinator: EqCoordinator
     private lateinit var eqEligibility: EqEligibility
     private lateinit var eqOperationalFlow: MutableStateFlow<Boolean>
@@ -89,6 +95,7 @@ class MonitorOrchestratorTest : BaseTest() {
         ringerModeTransitionHandler = mockk(relaxed = true)
         ownerRegistry = mockk(relaxed = true)
         volumeEventDispatcher = mockk(relaxed = true)
+        limitEnforcer = mockk(relaxed = true)
         eqCoordinator = mockk(relaxed = true)
         eqOperationalFlow = MutableStateFlow(false)
         eqEligibility = mockk { every { operational } returns eqOperationalFlow }
@@ -105,6 +112,7 @@ class MonitorOrchestratorTest : BaseTest() {
         ringerModeTransitionHandler = ringerModeTransitionHandler,
         ownerRegistry = ownerRegistry,
         volumeEventDispatcher = volumeEventDispatcher,
+        limitEnforcer = limitEnforcer,
         eqCoordinator = eqCoordinator,
         eqEligibility = eqEligibility,
     )
@@ -471,6 +479,45 @@ class MonitorOrchestratorTest : BaseTest() {
 
         // Initial callback + at least one update
         (callbackInvocations.size >= 2) shouldBe true
+
+        job.cancel()
+    }
+
+    // --- Volume limits ---
+
+    @Test
+    fun `an effective limit on an active device is enforced when the device list emits`() = runTest {
+        // Enabling a limit, editing a bound or restoring a backup produces no volume event, so this
+        // is the only path that applies it to a device that is already connected.
+        val address = "AA:BB:CC:DD:EE:FF"
+        val device = ManagedDevice(
+            isConnected = true,
+            device = SourceDeviceWrapper(
+                address = address,
+                alias = "Test Device",
+                name = "Test Device",
+                deviceType = SourceDevice.Type.HEADPHONES,
+                isConnected = true,
+            ),
+            config = DeviceConfigEntity(
+                address = address,
+                musicVolume = 1f,
+                volumeLimit = true,
+                musicVolumeMax = 0.5f,
+                isEnabled = true,
+            ),
+        )
+        devicesFlow.value = listOf(device)
+        coEvery { ownerRegistry.ownerAddressesFor(AudioStream.Id.STREAM_MUSIC) } returns listOf(address)
+
+        val orchestrator = createOrchestrator()
+        val job = launch { orchestrator.monitor(this@runTest) {} }
+
+        advanceTimeBy(1_000)
+
+        coVerify(atLeast = 1) {
+            limitEnforcer.enforce(AudioStream.Id.STREAM_MUSIC, listOf(device), setOf(address))
+        }
 
         job.cancel()
     }

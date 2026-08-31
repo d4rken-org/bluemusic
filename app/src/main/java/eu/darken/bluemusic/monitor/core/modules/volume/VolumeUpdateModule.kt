@@ -19,6 +19,7 @@ import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.RouteVerdict
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.audio.levelToPercentage
@@ -34,6 +35,7 @@ import javax.inject.Singleton
 @Singleton
 class VolumeUpdateModule @Inject constructor(
     private val volumeTool: VolumeTool,
+    private val limitEnforcer: VolumeLimitEnforcer,
     private val ringerTool: RingerTool,
     private val deviceRepo: DeviceRepo,
     private val observationGate: VolumeObservationGate,
@@ -133,17 +135,34 @@ class VolumeUpdateModule @Inject constructor(
         val min = volumeTool.getMinVolume(id)
         val max = volumeTool.getMaxVolume(id)
 
-        // If VolumeRateLimiterModule (priority 5) was eligible to act on this stream, it may have
-        // already corrected the jump this event reports, and its own write only produces a `self`
-        // event we'd ignore — so persist the live hardware level instead of the event's value.
-        // Without an eligible limiter we keep the event's snapshot: a later live read could catch
-        // an unrelated route change instead (issue #232).
-        val limiterMayHaveIntervened = allActive.any {
-            it.volumeRateLimiterEffective && it.address in ownerAddresses && it.getStreamType(id) != null
+        val rateLimiterEligible = allActive.any { dev ->
+            if (dev.address !in ownerAddresses) return@any false
+            if (dev.getStreamType(id) == null) return@any false
+            dev.volumeRateLimiterEffective
         }
-        val effectiveVolume = if (limiterMayHaveIntervened) volumeTool.getCurrentVolume(id) else event.newVolume
+        val allowedLevels = limitEnforcer.allowedLevels(
+            streamId = id,
+            devices = allActive,
+            ownerAddresses = ownerAddresses,
+        )
+
+        val effectiveVolume = when {
+            // VolumeRateLimiterModule (priority 5) may have already reverted or step-limited the
+            // jump this event reports, and its own write only produces a `self` event we'd ignore.
+            // Only its outcome needs a live read; what it settled on isn't derivable from the event.
+            rateLimiterEligible -> volumeTool.getCurrentVolume(id)
+            // No cap, or the event is inside it: keep the event's snapshot. A live read here could
+            // pick up a route that has already torn down and attribute the phone speaker's level to
+            // this device (issue #232).
+            allowedLevels == null || event.newVolume in allowedLevels -> event.newVolume
+            // Out of band: VolumeLimitModule (priority 7) has already pulled the hardware to this
+            // very level, so we can persist it without reading anything back. Persisting the
+            // out-of-band target instead would show 100% in the UI while the hardware sits at the
+            // cap, and re-apply that target once the cap is removed.
+            else -> event.newVolume.coerceIn(allowedLevels.first, allowedLevels.last)
+        }
         if (effectiveVolume != event.newVolume) {
-            log(TAG, DEBUG) { "Hardware level for $id is $effectiveVolume, not event's ${event.newVolume}, persisting hardware level" }
+            log(TAG, DEBUG) { "Persisting $effectiveVolume for $id instead of the event's ${event.newVolume}" }
         }
         val percentage = levelToPercentage(effectiveVolume, min, max)
 

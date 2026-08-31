@@ -82,6 +82,8 @@ import eu.darken.bluemusic.devices.ui.config.components.DeviceHeaderCard
 import eu.darken.bluemusic.devices.ui.config.components.DeviceStatusCard
 import eu.darken.bluemusic.devices.ui.config.components.SectionHeader
 import eu.darken.bluemusic.devices.ui.config.components.SwitchPreference
+import eu.darken.bluemusic.devices.ui.config.components.VolumeLimitCard
+import eu.darken.bluemusic.devices.ui.config.components.volumeLimitSummaries
 import eu.darken.bluemusic.devices.ui.config.dialogs.ConnectionAlertDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.DeleteDeviceDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.DndModeDialog
@@ -486,6 +488,20 @@ fun DeviceConfigScreen(
                     boostGain = device.eqBoostGain,
                     onCardClick = { onAction(ConfigAction.OnEqClicked) },
                     onToggle = { onAction(ConfigAction.OnToggleEq) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                )
+            }
+
+            // Volume Limit Section
+            item {
+                VolumeLimitCard(
+                    isEnabled = device.volumeLimit,
+                    isProVersion = state.isProVersion,
+                    summaries = device.volumeLimitSummaries(),
+                    onCardClick = { onAction(ConfigAction.OnVolumeLimitClicked) },
+                    onToggle = { onAction(ConfigAction.OnToggleVolumeLimit) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 8.dp)

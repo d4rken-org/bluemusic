@@ -1,7 +1,5 @@
-package eu.darken.bluemusic.eq.core
+package eu.darken.bluemusic.devices.core
 
-import eu.darken.bluemusic.devices.core.DeviceAddr
-import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
@@ -21,7 +19,7 @@ import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 
 @OptIn(ExperimentalCoroutinesApi::class)
-class EqConfigSaverTest : BaseTest() {
+class DeviceConfigSaverTest : BaseTest() {
 
     private val address: DeviceAddr = "AA:BB:CC:DD:EE:FF"
 
@@ -44,11 +42,11 @@ class EqConfigSaverTest : BaseTest() {
     @Test
     fun `a write survives the scope that submitted it`() = runTest {
         val gate = CompletableDeferred<Unit>()
-        val saver = EqConfigSaver(backgroundScope, deviceRepo(gate = gate))
+        val saver = DeviceConfigSaver(backgroundScope, deviceRepo(gate = gate))
 
         val write = saver.save(address) { it.copy(eqBoostGain = 400) }
 
-        // What the equalizer screen does: a job waits for the write to sequence the preview clear.
+        // What a screen does: a job waits for the write to sequence its own follow-up work.
         val callerScope = CoroutineScope(Job() + UnconfinedTestDispatcher(testScheduler))
         callerScope.launch { write.await() }
         runCurrent()
@@ -67,7 +65,7 @@ class EqConfigSaverTest : BaseTest() {
     @Test
     fun `two rapid commits are applied in submission order`() = runTest {
         // The first write is the slow one, so anything but a queue would let the second one overtake it.
-        val saver = EqConfigSaver(backgroundScope, deviceRepo(delayFor = { gain -> if (gain == 100) 1_000L else 0L }))
+        val saver = DeviceConfigSaver(backgroundScope, deviceRepo(delayFor = { gain -> if (gain == 100) 1_000L else 0L }))
 
         saver.save(address) { it.copy(eqBoostGain = 100) }
         saver.save(address) { it.copy(eqBoostGain = 200) }
@@ -82,7 +80,7 @@ class EqConfigSaverTest : BaseTest() {
         val repo = mockk<DeviceRepo>(relaxed = true).apply {
             coEvery { updateDevice(any(), any()) } throws IllegalStateException("nope")
         }
-        val saver = EqConfigSaver(backgroundScope, repo)
+        val saver = DeviceConfigSaver(backgroundScope, repo)
 
         val write = saver.save(address) { it.copy(eqBoostGain = 400) }
         advanceTimeBy(5_000)

@@ -47,6 +47,7 @@ import eu.darken.bluemusic.eq.ui.EqStatus
 import eu.darken.bluemusic.eq.ui.EqStatusApp
 import eu.darken.bluemusic.eq.ui.EqStatusRow
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeBand
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode.Companion.fromFloat
 import java.text.DateFormat
@@ -63,6 +64,7 @@ fun ManagedDeviceItem(
     isOnlyDevice: Boolean = false,
     isLocked: Boolean = false,
     eqStatus: EqStatus? = null,
+    volumeBands: Map<AudioStream.Type, VolumeBand> = emptyMap(),
 ) {
     var expanded by remember { mutableStateOf(device.isActive || isOnlyDevice) }
 
@@ -226,6 +228,7 @@ fun ManagedDeviceItem(
                                     onDeviceAction(DashboardAction.AdjustVolume(device.address, streamType, newMode))
                                 },
                                 isLocked = isLocked,
+                                band = volumeBands[streamType],
                             )
                         } else {
                             VolumeControl(
@@ -242,6 +245,7 @@ fun ManagedDeviceItem(
                                     )
                                 },
                                 isLocked = isLocked,
+                                band = volumeBands[streamType],
                             )
                         }
                     }
