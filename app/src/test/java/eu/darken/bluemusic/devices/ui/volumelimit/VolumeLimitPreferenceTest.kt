@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.devices.ui.config.components
+package eu.darken.bluemusic.devices.ui.volumelimit
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.MusicNote

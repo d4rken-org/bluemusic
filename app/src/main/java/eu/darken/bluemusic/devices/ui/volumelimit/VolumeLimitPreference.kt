@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.devices.ui.config.components
+package eu.darken.bluemusic.devices.ui.volumelimit
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,9 +19,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import kotlin.math.roundToInt
 
 /**
  * Picks the lowest and highest volume a stream may reach.
@@ -87,6 +91,30 @@ fun VolumeLimitPreference(
         )
     }
 }
+
+@Composable
+internal fun getStreamLabel(type: AudioStream.Type): String = when (type) {
+    AudioStream.Type.MUSIC -> stringResource(R.string.devices_stream_music_label)
+    AudioStream.Type.CALL -> stringResource(R.string.devices_audio_stream_call_label)
+    AudioStream.Type.RINGTONE -> stringResource(R.string.devices_audio_stream_ring_label)
+    AudioStream.Type.NOTIFICATION -> stringResource(R.string.devices_audio_stream_notification_label)
+    AudioStream.Type.ALARM -> stringResource(R.string.devices_audio_stream_alarm_label)
+}
+
+@Composable
+internal fun getVolumeLimitDescription(min: Float?, max: Float?): String = when {
+    min != null && max != null -> stringResource(
+        R.string.devices_device_config_volume_limit_range_desc,
+        min.toPercent(),
+        max.toPercent(),
+    )
+
+    min != null -> stringResource(R.string.devices_device_config_volume_limit_min_desc, min.toPercent())
+    max != null -> stringResource(R.string.devices_device_config_volume_limit_max_desc, max.toPercent())
+    else -> stringResource(R.string.devices_device_config_volume_limit_unset_desc)
+}
+
+private fun Float.toPercent(): Int = (this * 100).roundToInt()
 
 @Preview2
 @Composable

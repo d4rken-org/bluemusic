@@ -7,8 +7,6 @@ import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.darken.bluemusic.common.apps.AppRepo
 import eu.darken.bluemusic.common.coroutine.DispatcherProvider
-import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
-import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.common.flow.SingleEventFlow
@@ -22,7 +20,6 @@ import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.observeDevice
-import eu.darken.bluemusic.devices.core.setVolumeLimit
 import eu.darken.bluemusic.devices.core.ToggleResult
 import eu.darken.bluemusic.devices.core.toggleVolumeLimit
 import eu.darken.bluemusic.devices.core.toggleVolumeLock
@@ -57,8 +54,6 @@ class DeviceConfigViewModel @AssistedInject constructor(
         val launchAppLabel: String? = null,
         val launchAppLabels: List<String> = emptyList(),
         val eqCapabilities: EqCapabilities.Caps? = null,
-        /** Steps a managed stream offers, absent when the level count couldn't be determined. */
-        val volumeStepCounts: Map<AudioStream.Type, Int> = emptyMap(),
     )
 
     val events = SingleEventFlow<ConfigEvent>()
@@ -92,27 +87,8 @@ class DeviceConfigViewModel @AssistedInject constructor(
             launchAppLabel = launchAppLabel,
             launchAppLabels = launchAppLabels,
             eqCapabilities = eqCaps,
-            volumeStepCounts = volumeStepCounts(device),
         )
     }.asStateFlow()
-
-    /**
-     * Steps between a stream's lowest and highest hardware level, i.e. `max - min`. Lets the limit
-     * slider land on levels the device actually has instead of on percentages that resolve to one.
-     */
-    private fun volumeStepCounts(device: ManagedDevice): Map<AudioStream.Type, Int> = AudioStream.Type.entries
-        .filter { device.getVolume(it) != null }
-        .mapNotNull { type ->
-            val streamId = device.getStreamId(type)
-            val span = try {
-                volumeTool.getMaxVolume(streamId) - volumeTool.getMinVolume(streamId)
-            } catch (e: Exception) {
-                log(tag, WARN) { "Can't determine level count for $type: ${e.asLog()}" }
-                null
-            }
-            span?.takeIf { it > 0 }?.let { type to it }
-        }
-        .toMap()
 
     private suspend fun currentState(): State = state.filterNotNull().first()
 
@@ -281,9 +257,9 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 if (result == ToggleResult.NOT_PRO) events.emit(ConfigEvent.RequiresPro)
             }
 
-            is ConfigAction.OnEditVolumeLimit -> {
-                deviceRepo.setVolumeLimit(deviceAddress, action.type, action.min, action.max)
-            }
+            // Not gated: the limit screen is where the bounds are set and the switch is explained,
+            // the upsell happens there when it is flipped.
+            is ConfigAction.OnVolumeLimitClicked -> navTo(Nav.Main.DeviceVolumeLimit(deviceAddress))
 
             is ConfigAction.OnToggleVolumeObserving -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->
                 oldConfig.copy(

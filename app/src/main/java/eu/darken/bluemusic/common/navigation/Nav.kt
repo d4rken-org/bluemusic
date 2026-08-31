@@ -24,6 +24,9 @@ sealed interface Nav : NavigationDestination {
         data class DeviceEq(val addr: DeviceAddr) : Main
 
         @Serializable
+        data class DeviceVolumeLimit(val addr: DeviceAddr) : Main
+
+        @Serializable
         data object SettingsIndex : Main
 
         @Serializable

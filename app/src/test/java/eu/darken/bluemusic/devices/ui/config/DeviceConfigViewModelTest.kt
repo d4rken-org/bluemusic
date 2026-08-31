@@ -9,8 +9,6 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.eq.core.EqCapabilities
-import eu.darken.bluemusic.monitor.core.audio.AudioStream
-import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -63,7 +61,6 @@ class DeviceConfigViewModelTest : BaseTest() {
         infos: MutableStateFlow<UpgradeRepo.Info>,
         probeGate: CompletableDeferred<Unit>? = null,
         device: ManagedDevice = this@DeviceConfigViewModelTest.device,
-        volumeTool: VolumeTool = mockk(relaxed = true),
     ): DeviceConfigViewModel {
         deviceRepo = mockk<DeviceRepo>(relaxed = true).apply {
             every { devices } returns MutableStateFlow(listOf(device))
@@ -73,7 +70,7 @@ class DeviceConfigViewModelTest : BaseTest() {
         return DeviceConfigViewModel(
             deviceAddress = address,
             deviceRepo = deviceRepo,
-            volumeTool = volumeTool,
+            volumeTool = mockk(relaxed = true),
             upgradeRepo = mockUpgradeRepo(infos),
             appRepo = mockk<eu.darken.bluemusic.common.apps.AppRepo>(relaxed = true).apply {
                 every { apps } returns MutableStateFlow(emptySet())
@@ -211,38 +208,4 @@ class DeviceConfigViewModelTest : BaseTest() {
         coVerify { deviceRepo.updateDevice(address, any()) }
     }
 
-    // The limit slider snaps to hardware levels, so it needs each managed stream's step count.
-    @Test
-    fun `the step counts cover managed streams`() = runTest {
-        val volumeTool = mockk<VolumeTool>(relaxed = true).apply {
-            every { getMinVolume(AudioStream.Id.STREAM_MUSIC) } returns 0
-            every { getMaxVolume(AudioStream.Id.STREAM_MUSIC) } returns 15
-            // A stream without travel offers nothing to pick between.
-            every { getMinVolume(AudioStream.Id.STREAM_ALARM) } returns 7
-            every { getMaxVolume(AudioStream.Id.STREAM_ALARM) } returns 7
-        }
-        val vm = viewModel(
-            infos = fakeUpgradeInfos(FakeUpgradeInfo(isPro = true, isSettled = true)),
-            device = device.copy(
-                config = device.config.copy(musicVolume = 0.5f, alarmVolume = 0.5f)
-            ),
-            volumeTool = volumeTool,
-        )
-
-        vm.state.filterNotNull().first().volumeStepCounts shouldBe mapOf(AudioStream.Type.MUSIC to 15)
-    }
-
-    @Test
-    fun `an unmeasurable stream is left out of the step counts`() = runTest {
-        val volumeTool = mockk<VolumeTool>(relaxed = true).apply {
-            every { getMaxVolume(AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE) } throws IllegalArgumentException("no such stream")
-        }
-        val vm = viewModel(
-            infos = fakeUpgradeInfos(FakeUpgradeInfo(isPro = true, isSettled = true)),
-            device = device.copy(config = device.config.copy(callVolume = 0.5f)),
-            volumeTool = volumeTool,
-        )
-
-        vm.state.filterNotNull().first().volumeStepCounts shouldBe emptyMap()
-    }
 }

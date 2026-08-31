@@ -18,7 +18,7 @@ sealed interface ConfigAction {
     data object OnToggleVolumeSaveOnDisconnect : ConfigAction
     data object OnToggleVolumeRateLimiter : ConfigAction
     data object OnToggleVolumeLimit : ConfigAction
-    data class OnEditVolumeLimit(val type: AudioStream.Type, val min: Float?, val max: Float?) : ConfigAction
+    data object OnVolumeLimitClicked : ConfigAction
     data object OnToggleKeepAwake : ConfigAction
     data object OnToggleNudgeVolume : ConfigAction
     data object OnToggleVisibleAdjustments : ConfigAction

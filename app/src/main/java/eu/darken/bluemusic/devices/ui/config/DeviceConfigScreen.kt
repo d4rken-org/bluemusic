@@ -82,7 +82,8 @@ import eu.darken.bluemusic.devices.ui.config.components.DeviceHeaderCard
 import eu.darken.bluemusic.devices.ui.config.components.DeviceStatusCard
 import eu.darken.bluemusic.devices.ui.config.components.SectionHeader
 import eu.darken.bluemusic.devices.ui.config.components.SwitchPreference
-import eu.darken.bluemusic.devices.ui.config.components.VolumeLimitPreference
+import eu.darken.bluemusic.devices.ui.config.components.VolumeLimitCard
+import eu.darken.bluemusic.devices.ui.config.components.volumeLimitSummaries
 import eu.darken.bluemusic.devices.ui.config.dialogs.ConnectionAlertDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.DeleteDeviceDialog
 import eu.darken.bluemusic.devices.ui.config.dialogs.DndModeDialog
@@ -99,7 +100,6 @@ import eu.darken.bluemusic.monitor.core.alert.AlertType
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.DndMode
 import java.time.Duration
-import kotlin.math.roundToInt
 
 
 @Composable
@@ -331,30 +331,6 @@ private fun getDndModeDescription(mode: DndMode?): String {
 }
 
 @Composable
-private fun getStreamLabel(type: AudioStream.Type): String = when (type) {
-    AudioStream.Type.MUSIC -> stringResource(R.string.devices_stream_music_label)
-    AudioStream.Type.CALL -> stringResource(R.string.devices_audio_stream_call_label)
-    AudioStream.Type.RINGTONE -> stringResource(R.string.devices_audio_stream_ring_label)
-    AudioStream.Type.NOTIFICATION -> stringResource(R.string.devices_audio_stream_notification_label)
-    AudioStream.Type.ALARM -> stringResource(R.string.devices_audio_stream_alarm_label)
-}
-
-@Composable
-private fun getVolumeLimitDescription(min: Float?, max: Float?): String = when {
-    min != null && max != null -> stringResource(
-        R.string.devices_device_config_volume_limit_range_desc,
-        min.toPercent(),
-        max.toPercent(),
-    )
-
-    min != null -> stringResource(R.string.devices_device_config_volume_limit_min_desc, min.toPercent())
-    max != null -> stringResource(R.string.devices_device_config_volume_limit_max_desc, max.toPercent())
-    else -> stringResource(R.string.devices_device_config_volume_limit_unset_desc)
-}
-
-private fun Float.toPercent(): Int = (this * 100).roundToInt()
-
-@Composable
 private fun getConnectionAlertDescription(type: AlertType): String {
     return when (type) {
         AlertType.NONE -> stringResource(R.string.connection_alert_type_none)
@@ -518,6 +494,20 @@ fun DeviceConfigScreen(
                 )
             }
 
+            // Volume Limit Section
+            item {
+                VolumeLimitCard(
+                    isEnabled = device.volumeLimit,
+                    isProVersion = state.isProVersion,
+                    summaries = device.volumeLimitSummaries(),
+                    onCardClick = { onAction(ConfigAction.OnVolumeLimitClicked) },
+                    onToggle = { onAction(ConfigAction.OnToggleVolumeLimit) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                )
+            }
+
             // Features Section
             item {
                 Card(
@@ -541,41 +531,6 @@ fun DeviceConfigScreen(
                             requiresPro = true,
                             isProVersion = state.isProVersion
                         )
-
-                        SwitchPreference(
-                            title = stringResource(R.string.devices_device_config_volume_limit_label),
-                            description = stringResource(R.string.devices_device_config_volume_limit_desc),
-                            isChecked = device.volumeLimit,
-                            icon = Icons.AutoMirrored.TwoTone.VolumeUp,
-                            onCheckedChange = { onAction(ConfigAction.OnToggleVolumeLimit) },
-                            requiresPro = true,
-                            isProVersion = state.isProVersion
-                        )
-
-                        if (device.volumeLimit) {
-                            // Bounds only apply to streams this device manages.
-                            AudioStream.Type.entries
-                                .filter { device.getVolume(it) != null }
-                                .forEach { streamType ->
-                                    VolumeLimitPreference(
-                                        title = stringResource(
-                                            R.string.devices_device_config_volume_limit_stream_label,
-                                            getStreamLabel(streamType)
-                                        ),
-                                        description = getVolumeLimitDescription(
-                                            device.getVolumeMin(streamType),
-                                            device.getVolumeMax(streamType),
-                                        ),
-                                        icon = streamType.icon,
-                                        min = device.getVolumeMin(streamType),
-                                        max = device.getVolumeMax(streamType),
-                                        stepCount = state.volumeStepCounts[streamType],
-                                        onLimitChange = { min, max ->
-                                            onAction(ConfigAction.OnEditVolumeLimit(streamType, min, max))
-                                        },
-                                    )
-                                }
-                        }
 
                         SwitchPreference(
                             title = stringResource(R.string.devices_device_config_volume_observe_label),
