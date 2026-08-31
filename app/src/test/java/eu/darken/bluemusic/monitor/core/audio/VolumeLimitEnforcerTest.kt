@@ -33,8 +33,9 @@ class VolumeLimitEnforcerTest : BaseTest() {
         every { audioManager.setStreamVolume(any(), any(), any()) } answers {
             audioLevels[toStreamId(firstArg())] = secondArg()
         }
+        every { audioManager.ringerMode } returns AudioManager.RINGER_MODE_NORMAL
         volumeTool = VolumeTool(audioManager).apply { clock = { 1000L } }
-        enforcer = VolumeLimitEnforcer(volumeTool)
+        enforcer = VolumeLimitEnforcer(volumeTool, RingerTool(audioManager))
     }
 
     private fun device(
@@ -46,6 +47,8 @@ class VolumeLimitEnforcerTest : BaseTest() {
         volumeLimit: Boolean = true,
         musicVolumeMin: Float? = null,
         musicVolumeMax: Float? = null,
+        notificationVolume: Float? = null,
+        notificationVolumeMin: Float? = null,
     ) = ManagedDevice(
         isConnected = connected,
         device = SourceDeviceWrapper(
@@ -61,6 +64,8 @@ class VolumeLimitEnforcerTest : BaseTest() {
             volumeLimit = volumeLimit,
             musicVolumeMin = musicVolumeMin,
             musicVolumeMax = musicVolumeMax,
+            notificationVolume = notificationVolume,
+            notificationVolumeMin = notificationVolumeMin,
             isEnabled = isEnabled,
         ),
     )
@@ -159,6 +164,39 @@ class VolumeLimitEnforcerTest : BaseTest() {
         enforcer.enforce(streamId, listOf(dev), setOf(address)) shouldBe true
 
         audioLevels[streamId] shouldBe volumeTool.resolveBoundedLevel(streamId, 1f, band)
+    }
+
+    @Test
+    fun `a minimum bound is not enforced while the phone vibrates`() = runTest {
+        // The stored target is a normal level, not a Silent/Vibrate sentinel: only the live ringer
+        // mode can tell us that the 0 on the hardware is the user switching to Vibrate.
+        every { audioManager.ringerMode } returns AudioManager.RINGER_MODE_VIBRATE
+        val notificationId = AudioStream.Id.STREAM_NOTIFICATION
+        audioLevels[notificationId] = 0
+        val dev = device(notificationVolume = 0.5f, notificationVolumeMin = 0.2f)
+
+        enforcer.enforce(notificationId, listOf(dev), setOf(address)) shouldBe false
+        audioLevels[notificationId] shouldBe 0
+    }
+
+    @Test
+    fun `a minimum bound is enforced while the ringer is normal`() = runTest {
+        val notificationId = AudioStream.Id.STREAM_NOTIFICATION
+        audioLevels[notificationId] = 0
+        val dev = device(notificationVolume = 0.5f, notificationVolumeMin = 0.2f)
+
+        enforcer.enforce(notificationId, listOf(dev), setOf(address)) shouldBe true
+        audioLevels[notificationId] shouldBe 3
+    }
+
+    @Test
+    fun `music is still enforced while the phone is silent`() = runTest {
+        every { audioManager.ringerMode } returns AudioManager.RINGER_MODE_SILENT
+        audioLevels[streamId] = 15
+        val dev = device(musicVolumeMax = 0.5f)
+
+        enforcer.enforce(streamId, listOf(dev), setOf(address)) shouldBe true
+        audioLevels[streamId] shouldBe 7
     }
 
     private fun toStreamId(id: Int): AudioStream.Id = AudioStream.Id.entries.first { it.id == id }

@@ -25,6 +25,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 
 class RingerModeTransitionHandlerTest : BaseTest() {
 
@@ -48,7 +49,7 @@ class RingerModeTransitionHandlerTest : BaseTest() {
     private val boundsAudioManager = mockk<AudioManager>(relaxed = true).also {
         every { it.getStreamMaxVolume(any()) } returns 15
     }
-    private val limitEnforcer = VolumeLimitEnforcer(VolumeTool(boundsAudioManager))
+    private val limitEnforcer = VolumeLimitEnforcer(VolumeTool(boundsAudioManager), normalRingerTool())
 
     private val handler = RingerModeTransitionHandler(
         deviceRepo = deviceRepo,

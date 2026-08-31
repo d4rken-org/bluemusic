@@ -21,6 +21,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 import testhelpers.time.FakeMonotonicClock
 
 class VolumeRateLimiterModuleTest : BaseTest() {
@@ -44,7 +45,8 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         limitEnforcer = VolumeLimitEnforcer(
             VolumeTool(mockk<AudioManager>(relaxed = true).also {
                 every { it.getStreamMaxVolume(any()) } returns 15
-            })
+            }),
+            normalRingerTool(),
         )
         deviceRepo = mockk(relaxed = true)
         ownerRegistry = eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry()

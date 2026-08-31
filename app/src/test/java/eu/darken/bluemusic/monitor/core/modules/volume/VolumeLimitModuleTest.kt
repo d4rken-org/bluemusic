@@ -21,6 +21,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 
 class VolumeLimitModuleTest : BaseTest() {
 
@@ -54,7 +55,7 @@ class VolumeLimitModuleTest : BaseTest() {
     }
 
     private fun createModule() = VolumeLimitModule(
-        limitEnforcer = VolumeLimitEnforcer(volumeTool),
+        limitEnforcer = VolumeLimitEnforcer(volumeTool, normalRingerTool()),
         deviceRepo = deviceRepo,
         ownerRegistry = ownerRegistry,
     )

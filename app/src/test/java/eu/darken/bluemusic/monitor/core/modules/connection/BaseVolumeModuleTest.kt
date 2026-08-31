@@ -32,6 +32,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 import java.time.Duration
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -74,7 +75,7 @@ class BaseVolumeModuleTest : BaseTest() {
         val conversions = VolumeTool(mockk<AudioManager>(relaxed = true).also {
             every { it.getStreamMaxVolume(any()) } returns maxLevel
         })
-        limitEnforcer = VolumeLimitEnforcer(conversions)
+        limitEnforcer = VolumeLimitEnforcer(conversions, normalRingerTool())
         every { volumeTool.resolveBoundedLevel(any(), any(), any(), any()) } answers {
             conversions.resolveBoundedLevel(firstArg(), secondArg(), thirdArg(), arg(3))
         }

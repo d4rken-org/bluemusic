@@ -32,6 +32,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 import java.time.Duration
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -94,7 +95,7 @@ class BaseVolumeWithModesModuleTest : BaseTest() {
         every { deviceRepo.devices } returns devicesFlow
         val module = object : BaseVolumeWithModesModule(
             volumeTool, volumeObserver, observationGate, registry, deviceRepo,
-            VolumeLimitEnforcer(volumeTool),
+            VolumeLimitEnforcer(volumeTool, normalRingerTool()),
             volumeModeTool, ringerTool, ringerModeObserver,
         ) {
             override val type = AudioStream.Type.RINGTONE

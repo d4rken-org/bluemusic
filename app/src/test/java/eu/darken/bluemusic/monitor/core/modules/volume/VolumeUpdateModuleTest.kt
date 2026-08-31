@@ -28,6 +28,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 
 class VolumeUpdateModuleTest : BaseTest() {
 
@@ -67,7 +68,8 @@ class VolumeUpdateModuleTest : BaseTest() {
         limitEnforcer = VolumeLimitEnforcer(
             VolumeTool(mockk<AudioManager>(relaxed = true).also {
                 every { it.getStreamMaxVolume(any()) } returns 15
-            })
+            }),
+            normalRingerTool(),
         )
         ringerTool = mockk(relaxed = true)
         deviceRepo = mockk(relaxed = true)

@@ -57,6 +57,7 @@ import java.time.Instant
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 import testhelpers.coroutine.TestDispatcherProvider
 import testhelpers.upgrade.FakeUpgradeInfo
 import testhelpers.upgrade.fakeUpgradeInfos
@@ -110,7 +111,8 @@ class DashboardViewModelTest : BaseTest() {
         limitEnforcer = VolumeLimitEnforcer(
             VolumeTool(mockk<AudioManager>(relaxed = true).also {
                 every { it.getStreamMaxVolume(any()) } returns 15
-            })
+            }),
+            normalRingerTool(),
         )
         deviceCreator = mockk(relaxed = true)
         speakerProvider = mockk(relaxed = true)

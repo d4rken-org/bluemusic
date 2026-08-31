@@ -24,6 +24,7 @@ import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 import testhelpers.time.FakeMonotonicClock
 
 /**
@@ -196,14 +197,14 @@ class VolumeRateLimiterPersistIntegrationTest : BaseTest() {
             setOf(
                 VolumeRateLimiterModule(
                     volumeTool = volumeTool,
-                    limitEnforcer = VolumeLimitEnforcer(volumeTool),
+                    limitEnforcer = VolumeLimitEnforcer(volumeTool, normalRingerTool()),
                     deviceRepo = deviceRepo,
                     ownerRegistry = ownerRegistry,
                     clock = clock,
                 ),
                 VolumeUpdateModule(
                     volumeTool = volumeTool,
-                    limitEnforcer = VolumeLimitEnforcer(volumeTool),
+                    limitEnforcer = VolumeLimitEnforcer(volumeTool, normalRingerTool()),
                     ringerTool = ringerTool,
                     deviceRepo = deviceRepo,
                     observationGate = observationGate,

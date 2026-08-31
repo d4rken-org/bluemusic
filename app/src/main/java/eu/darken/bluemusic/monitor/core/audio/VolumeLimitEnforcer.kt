@@ -11,6 +11,7 @@ import javax.inject.Singleton
 @Singleton
 class VolumeLimitEnforcer @Inject constructor(
     private val volumeTool: VolumeTool,
+    private val ringerTool: RingerTool,
 ) {
 
     /**
@@ -74,6 +75,15 @@ class VolumeLimitEnforcer @Inject constructor(
             return false
         }
 
+        val ringerMode = ringerTool.getCurrentRingerMode()
+        if (ringerMode != RingerMode.NORMAL && isRingerControlled(streamId, devices, ownerAddresses)) {
+            // Silent/Vibrate zeroes the ringer and notification streams. A minimum bound would
+            // otherwise pull them straight back up and let notifications sound while the phone
+            // shows Vibrate. The ceiling needs no attention here: 0 is below every ceiling.
+            log(TAG, VERBOSE) { "Ringer mode is $ringerMode, not enforcing $streamId" }
+            return false
+        }
+
         val current = volumeTool.getCurrentVolume(streamId)
         if (current in allowed) {
             log(TAG, VERBOSE) { "Level $current is within $allowed for $streamId" }
@@ -86,6 +96,19 @@ class VolumeLimitEnforcer @Inject constructor(
         val target = current.coerceIn(allowed.first, allowed.last)
         log(TAG) { "Correcting $streamId from $current to $target (band=$allowed, $members)" }
         return volumeTool.changeVolume(streamId = streamId, targetLevel = target, visible = false)
+    }
+
+    /** True when a bounded owner maps [streamId] to a stream the ringer mode controls. */
+    private fun isRingerControlled(
+        streamId: AudioStream.Id,
+        devices: Collection<ManagedDevice>,
+        ownerAddresses: Set<DeviceAddr>,
+    ): Boolean = devices.any { device ->
+        if (device.bandFor(streamId, ownerAddresses) == null) return@any false
+        when (device.getStreamType(streamId)) {
+            AudioStream.Type.RINGTONE, AudioStream.Type.NOTIFICATION -> true
+            else -> false
+        }
     }
 
     private fun ManagedDevice.bandFor(streamId: AudioStream.Id, ownerAddresses: Set<DeviceAddr>): VolumeBand? {

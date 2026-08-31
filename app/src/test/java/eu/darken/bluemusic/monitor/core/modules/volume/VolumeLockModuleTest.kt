@@ -24,6 +24,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
+import testhelpers.audio.normalRingerTool
 
 class VolumeLockModuleTest : BaseTest() {
 
@@ -43,7 +44,8 @@ class VolumeLockModuleTest : BaseTest() {
         limitEnforcer = VolumeLimitEnforcer(
             VolumeTool(mockk<AudioManager>(relaxed = true).also {
                 every { it.getStreamMaxVolume(any()) } returns 15
-            })
+            }),
+            normalRingerTool(),
         )
         deviceRepo = mockk(relaxed = true)
         ownerRegistry = AudioStreamOwnerRegistry()
@@ -282,7 +284,7 @@ class VolumeLockModuleTest : BaseTest() {
         val realVolumeTool = VolumeTool(audioManager).apply { clock = { 1000L } }
         val module = VolumeLockModule(
             volumeModeTool = VolumeModeTool(realVolumeTool, mockk(relaxed = true)),
-            limitEnforcer = VolumeLimitEnforcer(realVolumeTool),
+            limitEnforcer = VolumeLimitEnforcer(realVolumeTool, normalRingerTool()),
             deviceRepo = deviceRepo,
             ownerRegistry = ownerRegistry,
         )
@@ -331,7 +333,7 @@ class VolumeLockModuleTest : BaseTest() {
         val realVolumeTool = VolumeTool(audioManager).apply { clock = { 1000L } }
         val module = VolumeLockModule(
             volumeModeTool = VolumeModeTool(realVolumeTool, mockk(relaxed = true)),
-            limitEnforcer = VolumeLimitEnforcer(realVolumeTool),
+            limitEnforcer = VolumeLimitEnforcer(realVolumeTool, normalRingerTool()),
             deviceRepo = deviceRepo,
             ownerRegistry = ownerRegistry,
         )
