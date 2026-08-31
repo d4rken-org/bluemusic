@@ -49,9 +49,10 @@ fun VolumeControl(
 ) {
     val bandMin = band?.min?.coerceIn(0f, 1f) ?: 0f
     val bandMax = band?.max?.coerceIn(0f, 1f) ?: 1f
-    // A band whose bounds meet leaves no travel, so the slider keeps its full track and the value
-    // is pinned instead.
-    val sliderRange = if (bandMax > bandMin) bandMin..bandMax else 0f..1f
+    // A band whose bounds meet leaves no travel: the slider keeps its full track with the value
+    // pinned, and goes disabled so it doesn't look like a control that just refuses to move.
+    val hasTravel = bandMax > bandMin
+    val sliderRange = if (hasTravel) bandMin..bandMax else 0f..1f
 
     var sliderValue by remember(volume, bandMin, bandMax) {
         mutableStateOf((volume ?: 0.5f).coerceIn(bandMin, bandMax))
@@ -87,7 +88,7 @@ fun VolumeControl(
                 },
                 valueRange = sliderRange,
                 modifier = Modifier.weight(1f),
-                enabled = volume != null && !isLocked
+                enabled = volume != null && !isLocked && hasTravel
             )
             val canTap = volume != null && !isLocked
 
@@ -209,6 +210,21 @@ private fun VolumeControlPreview() {
                 volume = 0.75f,
                 onVolumeChange = {},
                 isLocked = true,
+                modifier = Modifier.padding(vertical = 4.dp)
+            )
+
+            Text(
+                text = "Pinned Band (no travel)",
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
+            )
+
+            VolumeControl(
+                streamType = AudioStream.Type.MUSIC,
+                label = "Music",
+                volume = 0.75f,
+                onVolumeChange = {},
+                band = VolumeBand(min = 0.4f, max = 0.4f),
                 modifier = Modifier.padding(vertical = 4.dp)
             )
         }
