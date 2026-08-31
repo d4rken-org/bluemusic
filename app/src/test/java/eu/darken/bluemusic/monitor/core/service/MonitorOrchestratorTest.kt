@@ -9,6 +9,7 @@ import eu.darken.bluemusic.eq.core.EqEligibility
 import eu.darken.bluemusic.monitor.core.audio.RingerModeEvent
 import eu.darken.bluemusic.monitor.core.audio.RingerModeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import io.kotest.matchers.shouldBe
@@ -44,6 +45,7 @@ class MonitorOrchestratorTest : BaseTest() {
     private lateinit var ringerModeTransitionHandler: RingerModeTransitionHandler
     private lateinit var ownerRegistry: AudioStreamOwnerRegistry
     private lateinit var volumeEventDispatcher: VolumeEventDispatcher
+    private lateinit var limitEnforcer: VolumeLimitEnforcer
     private lateinit var eqCoordinator: EqCoordinator
     private lateinit var eqEligibility: EqEligibility
     private lateinit var eqOperationalFlow: MutableStateFlow<Boolean>
@@ -89,6 +91,7 @@ class MonitorOrchestratorTest : BaseTest() {
         ringerModeTransitionHandler = mockk(relaxed = true)
         ownerRegistry = mockk(relaxed = true)
         volumeEventDispatcher = mockk(relaxed = true)
+        limitEnforcer = mockk(relaxed = true)
         eqCoordinator = mockk(relaxed = true)
         eqOperationalFlow = MutableStateFlow(false)
         eqEligibility = mockk { every { operational } returns eqOperationalFlow }
@@ -105,6 +108,7 @@ class MonitorOrchestratorTest : BaseTest() {
         ringerModeTransitionHandler = ringerModeTransitionHandler,
         ownerRegistry = ownerRegistry,
         volumeEventDispatcher = volumeEventDispatcher,
+        limitEnforcer = limitEnforcer,
         eqCoordinator = eqCoordinator,
         eqEligibility = eqEligibility,
     )

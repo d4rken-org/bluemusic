@@ -1,5 +1,6 @@
 package eu.darken.bluemusic.monitor.core.modules.connection
 
+import android.media.AudioManager
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDeviceWrapper
 import eu.darken.bluemusic.devices.core.DeviceRepo
@@ -65,6 +66,17 @@ class BaseVolumeModuleTest : BaseTest() {
     @BeforeEach
     fun setup() {
         volumeTool = mockk(relaxed = true)
+        // Level resolution is VolumeTool's own logic; the module tests need it to behave like the
+        // real thing, so they can assert on the level that actually gets written.
+        val conversions = VolumeTool(mockk<AudioManager>(relaxed = true).also {
+            every { it.getStreamMaxVolume(any()) } returns maxLevel
+        })
+        every { volumeTool.resolveBoundedLevel(any(), any(), any()) } answers {
+            conversions.resolveBoundedLevel(firstArg(), secondArg(), thirdArg())
+        }
+        every { volumeTool.bandLevels(any(), any()) } answers {
+            conversions.bandLevels(firstArg(), secondArg())
+        }
         volumeEvents = MutableSharedFlow()
         volumeObserver = mockk<VolumeObserver>().also {
             every { it.volumes } returns volumeEvents
@@ -78,6 +90,8 @@ class BaseVolumeModuleTest : BaseTest() {
         )
 
         every { device.getStreamId(AudioStream.Type.MUSIC) } returns streamId
+        // A relaxed mock would hand out a child VolumeBand instead of "no limit configured".
+        every { device.getVolumeBand(any()) } returns null
         every { device.monitoringDuration } returns Duration.ofSeconds(4)
         every { volumeTool.getMaxVolume(streamId) } returns maxLevel
     }
@@ -94,13 +108,13 @@ class BaseVolumeModuleTest : BaseTest() {
         job.join()
 
         // No volume events emitted → no re-enforcement calls
-        coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>()) }
+        coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Int>()) }
     }
 
     @Test
     fun `monitor re-enforces when external platform write changes the level`() = runTest(UnconfinedTestDispatcher()) {
         every { volumeTool.hasRecentTarget(streamId, targetLevel) } returns true
-        coEvery { volumeTool.changeVolume(streamId, targetPercentage) } returns true
+        coEvery { volumeTool.changeVolume(streamId, targetLevel) } returns true
 
         val job = launch { module.callMonitor(device, VolumeMode.Normal(targetPercentage)) }
 
@@ -110,7 +124,7 @@ class BaseVolumeModuleTest : BaseTest() {
         advanceTimeBy(4_001)
         job.join()
 
-        coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, targetPercentage) }
+        coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, targetLevel) }
     }
 
     @Test
@@ -126,7 +140,7 @@ class BaseVolumeModuleTest : BaseTest() {
         job.join()
 
         // Should not try to re-enforce when we're already at target
-        coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>()) }
+        coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Int>()) }
     }
 
     @Test
@@ -143,7 +157,7 @@ class BaseVolumeModuleTest : BaseTest() {
         job.join()
 
         // Should NOT re-enforce — yield to the external writer
-        coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>()) }
+        coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Int>()) }
     }
 
     @Test
@@ -151,7 +165,7 @@ class BaseVolumeModuleTest : BaseTest() {
         module.callMonitor(device, VolumeMode.Silent)
 
         verify(exactly = 0) { volumeTool.hasRecentTarget(any(), any()) }
-        coVerify(exactly = 0) { volumeTool.changeVolume(any(), any<Float>()) }
+        coVerify(exactly = 0) { volumeTool.changeVolume(any(), any<Int>()) }
     }
 
     @Test
@@ -167,7 +181,7 @@ class BaseVolumeModuleTest : BaseTest() {
         job.join()
 
         // Should not react to ALARM events when monitoring MUSIC
-        coVerify(exactly = 0) { volumeTool.changeVolume(any(), any<Float>()) }
+        coVerify(exactly = 0) { volumeTool.changeVolume(any(), any<Int>()) }
     }
 
     // --- handle() integration ---
@@ -177,7 +191,7 @@ class BaseVolumeModuleTest : BaseTest() {
         val event = DeviceEvent.Disconnected(device)
         module.handle(event)
 
-        coVerify(exactly = 0) { volumeTool.changeVolume(any(), any<Float>()) }
+        coVerify(exactly = 0) { volumeTool.changeVolume(any(), any<Int>()) }
     }
 
     @Test
@@ -188,7 +202,7 @@ class BaseVolumeModuleTest : BaseTest() {
         val event = DeviceEvent.Connected(device)
         module.handle(event)
 
-        coVerify(exactly = 0) { volumeTool.changeVolume(any(), any<Float>()) }
+        coVerify(exactly = 0) { volumeTool.changeVolume(any(), any<Int>()) }
     }
 
     // --- Ownership generation + device re-resolve tests ---
@@ -207,6 +221,9 @@ class BaseVolumeModuleTest : BaseTest() {
         musicVolume: Float? = 0.44f,
         actionDelayMs: Long = 2000L,
         monitoringDurationMs: Long = 4000L,
+        volumeLimit: Boolean = false,
+        musicVolumeMin: Float? = null,
+        musicVolumeMax: Float? = null,
     ): ManagedDevice = ManagedDevice(
         isConnected = true,
         device = testSourceDevice,
@@ -215,6 +232,9 @@ class BaseVolumeModuleTest : BaseTest() {
             musicVolume = musicVolume,
             actionDelay = actionDelayMs,
             monitoringDuration = monitoringDurationMs,
+            volumeLimit = volumeLimit,
+            musicVolumeMin = musicVolumeMin,
+            musicVolumeMax = musicVolumeMax,
             isEnabled = true,
         ),
     )
@@ -249,13 +269,13 @@ class BaseVolumeModuleTest : BaseTest() {
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
             every { volumeTool.hasRecentTarget(streamId, any()) } returns true
-            coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns true
 
             val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
             advanceTimeBy(5000) // past monitoring
             job.join()
 
-            coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) }
+            coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) }
         }
 
         @Test
@@ -270,7 +290,7 @@ class BaseVolumeModuleTest : BaseTest() {
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
             every { volumeTool.hasRecentTarget(streamId, any()) } returns true
-            coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns true
 
             val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
 
@@ -286,7 +306,7 @@ class BaseVolumeModuleTest : BaseTest() {
             job.join()
 
             // Should NOT re-enforce because generation changed → yield
-            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>()) }
+            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Int>()) }
         }
 
         @Test
@@ -303,7 +323,7 @@ class BaseVolumeModuleTest : BaseTest() {
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
             // hasRecentTarget false when monitor checks
             every { volumeTool.hasRecentTarget(streamId, targetLevel) } returns false
-            coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns true
 
             val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
 
@@ -315,7 +335,7 @@ class BaseVolumeModuleTest : BaseTest() {
             job.join()
 
             // Should NOT re-enforce — hasRecentTarget yield
-            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>()) }
+            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Int>()) }
         }
     }
 
@@ -364,7 +384,7 @@ class BaseVolumeModuleTest : BaseTest() {
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
             every { volumeTool.hasRecentTarget(streamId, any()) } returns true
-            coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns true
 
             // Both start monitoring
             val job1 = launch { mod1.handle(DeviceEvent.Connected(dev)) }
@@ -401,15 +421,16 @@ class BaseVolumeModuleTest : BaseTest() {
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
             every { volumeTool.hasRecentTarget(streamId, any()) } returns true
-            coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns true
 
             val job = launch { mod.handle(DeviceEvent.Connected(initialDev)) }
             advanceTimeBy(5000) // Past monitor
             job.join()
 
-            // setInitial should use the re-resolved volume (0.8), not the event's snapshot (0.44)
-            coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, 0.8f, any(), any()) }
-            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, 0.44f, any(), any()) }
+            // setInitial should use the re-resolved volume (0.8 = level 12), not the event's
+            // snapshot (0.44 = level 7)
+            coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, 12, any(), any()) }
+            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, targetLevel, any(), any()) }
         }
 
         @Test
@@ -429,8 +450,8 @@ class BaseVolumeModuleTest : BaseTest() {
             job.join()
 
             // No setInitial (device no longer exists)
-            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>()) }
-            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) }
+            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Int>()) }
+            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) }
             // Gate unsuppressed
             observationGate.isSuppressed(streamId) shouldBe false
         }
@@ -452,8 +473,8 @@ class BaseVolumeModuleTest : BaseTest() {
             advanceTimeBy(1500)
             job.join()
 
-            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>()) }
-            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) }
+            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Int>()) }
+            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) }
             observationGate.isSuppressed(streamId) shouldBe false
         }
 
@@ -471,7 +492,7 @@ class BaseVolumeModuleTest : BaseTest() {
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
             every { volumeTool.hasRecentTarget(streamId, targetLevel) } returns true
-            coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns true
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns true
 
             val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
 
@@ -483,8 +504,8 @@ class BaseVolumeModuleTest : BaseTest() {
             advanceTimeBy(4500)
             job.join()
 
-            // Should re-enforce with the original target (0.44f)
-            coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, 0.44f) }
+            // Should re-enforce with the original target (0.44f = level 7)
+            coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, targetLevel) }
         }
     }
 
@@ -520,7 +541,7 @@ class BaseVolumeModuleTest : BaseTest() {
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
             every { volumeTool.getCurrentVolume(streamId) } returns targetLevel
             // changeVolume returns false (already at target) → enters nudge branch
-            coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns false
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns false
             coEvery { volumeTool.lowerByOne(streamId, false) } returns true
             coEvery { volumeTool.increaseByOne(streamId, false) } returns true
 
@@ -546,7 +567,7 @@ class BaseVolumeModuleTest : BaseTest() {
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
             every { volumeTool.getCurrentVolume(streamId) } returns targetLevel
-            coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns false
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns false
             coEvery { volumeTool.lowerByOne(streamId, true) } returns true
             coEvery { volumeTool.increaseByOne(streamId, true) } returns true
 
@@ -573,7 +594,7 @@ class BaseVolumeModuleTest : BaseTest() {
 
             every { volumeTool.getMaxVolume(streamId) } returns maxLevel
             every { volumeTool.getCurrentVolume(streamId) } returns targetLevel
-            coEvery { volumeTool.changeVolume(streamId, any<Float>(), any(), any()) } returns false
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns false
             coEvery { volumeTool.lowerByOne(streamId, false) } returns false
             coEvery { volumeTool.increaseByOne(streamId, false) } returns true
 
@@ -586,6 +607,115 @@ class BaseVolumeModuleTest : BaseTest() {
             coVerify(exactly = 1) { volumeTool.increaseByOne(streamId, false) }
             coVerify(exactly = 0) { volumeTool.lowerByOne(streamId, true) }
             coVerify(exactly = 0) { volumeTool.increaseByOne(streamId, true) }
+        }
+    }
+
+    @Nested
+    inner class VolumeLimit {
+
+        @Test
+        fun `setInitial applies the capped level, not the stored target`() = runTest(UnconfinedTestDispatcher()) {
+            val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
+            val registry = AudioStreamOwnerRegistry()
+            val (mod, _) = createModuleWithDeps(registry, devicesFlow)
+
+            val dev = realDevice(
+                musicVolume = 1f,
+                actionDelayMs = 0L,
+                volumeLimit = true,
+                musicVolumeMax = 0.5f,
+            )
+            devicesFlow.value = listOf(dev)
+            registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+
+            every { volumeTool.hasRecentTarget(streamId, any()) } returns true
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns true
+
+            val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
+            advanceTimeBy(5000)
+            job.join()
+
+            coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, 7, any(), any()) }
+            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, maxLevel, any(), any()) }
+        }
+
+        @Test
+        fun `setInitial lifts the applied level to the floor of the band`() = runTest(UnconfinedTestDispatcher()) {
+            val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
+            val registry = AudioStreamOwnerRegistry()
+            val (mod, _) = createModuleWithDeps(registry, devicesFlow)
+
+            val dev = realDevice(
+                musicVolume = 0.1f,
+                actionDelayMs = 0L,
+                volumeLimit = true,
+                musicVolumeMin = 0.4f,
+            )
+            devicesFlow.value = listOf(dev)
+            registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+
+            every { volumeTool.hasRecentTarget(streamId, any()) } returns true
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns true
+
+            val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
+            advanceTimeBy(5000)
+            job.join()
+
+            coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, 6, any(), any()) }
+        }
+
+        @Test
+        fun `monitor re-enforces the capped level`() = runTest(UnconfinedTestDispatcher()) {
+            val dev = realDevice(musicVolume = 1f, volumeLimit = true, musicVolumeMax = 0.5f)
+
+            every { volumeTool.hasRecentTarget(streamId, 7) } returns true
+            coEvery { volumeTool.changeVolume(streamId, 7) } returns true
+
+            val job = launch { module.callMonitor(dev, VolumeMode.Normal(1f)) }
+
+            volumeEvents.emit(VolumeEvent(streamId, 7, maxLevel, self = false))
+
+            advanceTimeBy(4_001)
+            job.join()
+
+            coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, 7) }
+            coVerify(exactly = 0) { volumeTool.changeVolume(streamId, maxLevel) }
+        }
+
+        @Test
+        fun `nudge does not step out of the band`() = runTest(UnconfinedTestDispatcher()) {
+            val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
+            val registry = AudioStreamOwnerRegistry()
+            val (mod, _) = createModuleWithDeps(registry, devicesFlow)
+
+            // Band is a single level, so neither nudge direction is allowed.
+            val dev = ManagedDevice(
+                isConnected = true,
+                device = testSourceDevice,
+                config = DeviceConfigEntity(
+                    address = testAddress,
+                    musicVolume = 0.5f,
+                    actionDelay = 0L,
+                    monitoringDuration = 0L,
+                    isEnabled = true,
+                    nudgeVolume = true,
+                    volumeLimit = true,
+                    musicVolumeMin = 0.4f,
+                    musicVolumeMax = 0.44f,
+                ),
+            )
+            devicesFlow.value = listOf(dev)
+            registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+
+            every { volumeTool.getCurrentVolume(streamId) } returns 6
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns false
+
+            val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
+            advanceTimeBy(1_000)
+            job.join()
+
+            coVerify(exactly = 0) { volumeTool.lowerByOne(streamId, any()) }
+            coVerify(exactly = 0) { volumeTool.increaseByOne(streamId, any()) }
         }
     }
 }

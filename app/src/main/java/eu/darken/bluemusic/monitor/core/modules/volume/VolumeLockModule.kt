@@ -61,6 +61,7 @@ internal class VolumeLockModule @Inject constructor(
                         streamType = type,
                         volumeMode = mode,
                         visible = false,
+                        band = device.getVolumeBand(type),
                     )
                 ) {
                     log(TAG) { "Engaged volume lock for $type ($mode) due to ${device.address}/${device.label}" }

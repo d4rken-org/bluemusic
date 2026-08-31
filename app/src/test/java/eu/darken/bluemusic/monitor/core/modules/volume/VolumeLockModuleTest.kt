@@ -6,6 +6,7 @@ import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import android.media.AudioManager
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeBand
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
@@ -16,6 +17,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
@@ -67,6 +69,8 @@ class VolumeLockModuleTest : BaseTest() {
         alarmVolume: Float? = null,
         volumeLock: Boolean = false,
         isEnabled: Boolean = true,
+        volumeLimit: Boolean = false,
+        musicVolumeMax: Float? = null,
     ): DeviceConfigEntity = DeviceConfigEntity(
         address = addr,
         musicVolume = musicVolume,
@@ -76,6 +80,8 @@ class VolumeLockModuleTest : BaseTest() {
         alarmVolume = alarmVolume,
         volumeLock = volumeLock,
         isEnabled = isEnabled,
+        volumeLimit = volumeLimit,
+        musicVolumeMax = musicVolumeMax,
     )
 
     private fun managedDevice(
@@ -233,6 +239,48 @@ class VolumeLockModuleTest : BaseTest() {
                 visible = false,
             )
         }
+    }
+
+    @Test
+    fun `lock restores the stored target through the band`() = runTest {
+        val module = createModule()
+        val cfg = config(musicVolume = 1f, volumeLock = true, volumeLimit = true, musicVolumeMax = 0.5f)
+        seedOwner(managedDevice(cfg))
+
+        coEvery { volumeModeTool.apply(any(), any(), any(), any(), any(), any()) } returns true
+
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 11, self = false))
+
+        coVerify(exactly = 1) {
+            volumeModeTool.apply(
+                streamId = AudioStream.Id.STREAM_MUSIC,
+                streamType = AudioStream.Type.MUSIC,
+                volumeMode = VolumeMode.Normal(1f),
+                visible = false,
+                band = VolumeBand(min = null, max = 0.5f),
+            )
+        }
+    }
+
+    @Test
+    fun `a locked stream never applies a level above the band`() = runTest {
+        // Synthesis: real VolumeTool and VolumeModeTool, so the level that reaches AudioManager is
+        // the one the band allows, not the stored 100%.
+        val audioManager = mockk<AudioManager>(relaxed = true)
+        every { audioManager.getStreamMaxVolume(any()) } returns 15
+        every { audioManager.getStreamVolume(any()) } returns 15
+        val realVolumeTool = VolumeTool(audioManager).apply { clock = { 1000L } }
+        val module = VolumeLockModule(
+            volumeModeTool = VolumeModeTool(realVolumeTool, mockk(relaxed = true)),
+            deviceRepo = deviceRepo,
+            ownerRegistry = ownerRegistry,
+        )
+        val cfg = config(musicVolume = 1f, volumeLock = true, volumeLimit = true, musicVolumeMax = 0.5f)
+        seedOwner(managedDevice(cfg))
+
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 15, self = false))
+
+        verify(exactly = 1) { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, 7, 0) }
     }
 
     @Test

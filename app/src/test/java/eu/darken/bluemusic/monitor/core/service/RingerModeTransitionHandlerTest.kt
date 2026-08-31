@@ -9,6 +9,7 @@ import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerModeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeBand
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
 import io.kotest.matchers.shouldBe
@@ -56,13 +57,38 @@ class RingerModeTransitionHandlerTest : BaseTest() {
     @Test
     fun `transition to NORMAL suppresses notification and re-applies stored volume`() = runTest {
         setActiveDevice(notificationVolume = 0.6f)
+        every {
+            volumeTool.resolveBoundedLevel(AudioStream.Id.STREAM_NOTIFICATION, 0.6f, null)
+        } returns 4
 
         handler.handle(RingerModeEvent(oldMode = RingerMode.SILENT, newMode = RingerMode.NORMAL))
 
         coVerify(exactly = 1) {
             volumeTool.changeVolume(
                 streamId = AudioStream.Id.STREAM_NOTIFICATION,
-                percent = 0.6f,
+                targetLevel = 4,
+                visible = false,
+            )
+        }
+    }
+
+    @Test
+    fun `transition to NORMAL re-applies the level the band allows`() = runTest {
+        setActiveDevice(notificationVolume = 0.6f, volumeLimit = true, notificationVolumeMax = 0.3f)
+        every {
+            volumeTool.resolveBoundedLevel(
+                AudioStream.Id.STREAM_NOTIFICATION,
+                0.6f,
+                VolumeBand(min = null, max = 0.3f),
+            )
+        } returns 2
+
+        handler.handle(RingerModeEvent(oldMode = RingerMode.SILENT, newMode = RingerMode.NORMAL))
+
+        coVerify(exactly = 1) {
+            volumeTool.changeVolume(
+                streamId = AudioStream.Id.STREAM_NOTIFICATION,
+                targetLevel = 2,
                 visible = false,
             )
         }
@@ -246,6 +272,8 @@ class RingerModeTransitionHandlerTest : BaseTest() {
     private suspend fun setActiveDevice(
         ringVolume: Float? = 0.5f,
         notificationVolume: Float? = null,
+        volumeLimit: Boolean = false,
+        notificationVolumeMax: Float? = null,
     ) {
         devicesFlow.value = listOf(
             ManagedDevice(
@@ -256,6 +284,8 @@ class RingerModeTransitionHandlerTest : BaseTest() {
                     lastConnected = 0L,
                     ringVolume = ringVolume,
                     notificationVolume = notificationVolume,
+                    volumeLimit = volumeLimit,
+                    notificationVolumeMax = notificationVolumeMax,
                     isEnabled = true,
                 ),
             )

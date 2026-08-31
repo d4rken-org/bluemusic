@@ -133,15 +133,19 @@ class VolumeUpdateModule @Inject constructor(
         val min = volumeTool.getMinVolume(id)
         val max = volumeTool.getMaxVolume(id)
 
-        // If VolumeRateLimiterModule (priority 5) was eligible to act on this stream, it may have
-        // already corrected the jump this event reports, and its own write only produces a `self`
-        // event we'd ignore — so persist the live hardware level instead of the event's value.
-        // Without an eligible limiter we keep the event's snapshot: a later live read could catch
+        // If VolumeRateLimiterModule (priority 5) or VolumeLimitModule (priority 7) was eligible to
+        // act on this stream, it may have already corrected the jump this event reports, and its own
+        // write only produces a `self` event we'd ignore — so persist the live hardware level instead
+        // of the event's value. Persisting an out-of-band target would show 100% in the UI while the
+        // hardware sits at the cap, and re-apply that target once the cap is removed.
+        // Without an eligible corrector we keep the event's snapshot: a later live read could catch
         // an unrelated route change instead (issue #232).
-        val limiterMayHaveIntervened = allActive.any {
-            it.volumeRateLimiterEffective && it.address in ownerAddresses && it.getStreamType(id) != null
+        val correctorMayHaveIntervened = allActive.any { dev ->
+            if (dev.address !in ownerAddresses) return@any false
+            val streamType = dev.getStreamType(id) ?: return@any false
+            dev.volumeRateLimiterEffective || dev.getVolumeBand(streamType) != null
         }
-        val effectiveVolume = if (limiterMayHaveIntervened) volumeTool.getCurrentVolume(id) else event.newVolume
+        val effectiveVolume = if (correctorMayHaveIntervened) volumeTool.getCurrentVolume(id) else event.newVolume
         if (effectiveVolume != event.newVolume) {
             log(TAG, DEBUG) { "Hardware level for $id is $effectiveVolume, not event's ${event.newVolume}, persisting hardware level" }
         }

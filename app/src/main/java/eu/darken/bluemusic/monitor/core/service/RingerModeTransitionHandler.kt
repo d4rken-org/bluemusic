@@ -79,7 +79,11 @@ class RingerModeTransitionHandler @Inject constructor(
                 log(TAG, INFO) { "Re-applying stored notification volume ($storedNotification) for ${primaryDevice.label}" }
                 volumeTool.changeVolume(
                     streamId = streamId,
-                    percent = storedNotification,
+                    targetLevel = volumeTool.resolveBoundedLevel(
+                        streamId = streamId,
+                        percent = storedNotification,
+                        band = primaryDevice.getVolumeBand(AudioStream.Type.NOTIFICATION),
+                    ),
                     visible = false,
                 )
             }
