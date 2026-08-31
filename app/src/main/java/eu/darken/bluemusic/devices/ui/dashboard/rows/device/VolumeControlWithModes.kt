@@ -58,9 +58,10 @@ fun VolumeControlWithModes(
 
     val bandMin = band?.min?.coerceIn(0f, 1f) ?: 0f
     val bandMax = band?.max?.coerceIn(0f, 1f) ?: 1f
-    // A band whose bounds meet leaves no travel, so the slider keeps its full track and the value
-    // is pinned instead.
-    val sliderRange = if (bandMax > bandMin) bandMin..bandMax else 0f..1f
+    // A band whose bounds meet leaves no travel: the slider keeps its full track with the value
+    // pinned, and goes disabled so it doesn't look like a control that just refuses to move.
+    val hasTravel = bandMax > bandMin
+    val sliderRange = if (hasTravel) bandMin..bandMax else 0f..1f
 
     var sliderValue by remember(volumeMode, bandMin, bandMax) {
         mutableFloatStateOf(
@@ -203,7 +204,7 @@ fun VolumeControlWithModes(
                                 onVolumeChange(VolumeMode.Normal(sliderValue))
                             }
                         },
-                        enabled = volumeMode != null && !isLocked,
+                        enabled = volumeMode != null && !isLocked && hasTravel,
                         colors = SliderDefaults.colors(
                             thumbColor = MaterialTheme.colorScheme.primary,
                             activeTrackColor = MaterialTheme.colorScheme.primary
