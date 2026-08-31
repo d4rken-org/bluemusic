@@ -30,6 +30,8 @@ import eu.darken.bluemusic.main.core.GeneralSettings
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeBand
 import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
+import eu.darken.bluemusic.monitor.core.audio.VolumeMode
+import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import io.kotest.matchers.shouldBe
@@ -73,6 +75,7 @@ class DashboardViewModelTest : BaseTest() {
     private lateinit var appRepo: AppRepo
     private lateinit var navCtrl: NavigationController
 
+    private lateinit var volumeModeTool: VolumeModeTool
     private lateinit var limitEnforcer: VolumeLimitEnforcer
     private lateinit var ownerRegistry: AudioStreamOwnerRegistry
     private lateinit var deviceCreator: NewDeviceCreator
@@ -102,6 +105,7 @@ class DashboardViewModelTest : BaseTest() {
         devicesSettings = mockk(relaxed = true)
         appRepo = mockk(relaxed = true)
         navCtrl = mockk(relaxed = true)
+        volumeModeTool = mockk(relaxed = true)
         ownerRegistry = AudioStreamOwnerRegistry()
         limitEnforcer = VolumeLimitEnforcer(
             VolumeTool(mockk<AudioManager>(relaxed = true).also {
@@ -181,7 +185,7 @@ class DashboardViewModelTest : BaseTest() {
     private fun TestScope.viewModel() = DashboardViewModel(
         permissionHelper = permissionHelper,
         deviceRepo = deviceRepo,
-        volumeModeTool = mockk(relaxed = true),
+        volumeModeTool = volumeModeTool,
         limitEnforcer = limitEnforcer,
         ownerRegistry = ownerRegistry,
         upgradeRepo = upgradeRepo,
@@ -640,4 +644,50 @@ class DashboardViewModelTest : BaseTest() {
         bands[ownerAddr] shouldBe VolumeBand(min = 0f, max = 0.4f)
         bands[otherAddr] shouldBe VolumeBand(min = null, max = 0.8f)
     }
+
+    @Test
+    fun `adjusting a device outside the owner group never reaches the hardware`() =
+        runTest(UnconfinedTestDispatcher()) {
+            val ownerAddr = "AA:BB:CC:DD:EE:01"
+            val otherAddr = "11:22:33:44:55:66"
+
+            fun config(addr: String, musicVolumeMax: Float) = DeviceConfigEntity(
+                address = addr,
+                isEnabled = true,
+                musicVolume = 0.1f,
+                volumeLimit = true,
+                musicVolumeMax = musicVolumeMax,
+            )
+
+            fun dev(addr: String, name: String, musicVolumeMax: Float) = ManagedDevice(
+                isConnected = true,
+                device = SourceDeviceWrapper(
+                    address = addr,
+                    alias = name,
+                    name = name,
+                    deviceType = SourceDevice.Type.HEADPHONES,
+                    isConnected = true,
+                ),
+                config = config(addr, musicVolumeMax),
+            )
+
+            devicesFlow.value = listOf(dev(ownerAddr, "AirPods", 0.4f), dev(otherAddr, "Speaker", 0.8f))
+            ownerRegistry.onDeviceConnected(otherAddr, "Speaker", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+            ownerRegistry.onDeviceConnected(ownerAddr, "AirPods", SourceDevice.Type.HEADPHONES, 5000L, 1L)
+
+            val update = slot<(DeviceConfigEntity) -> DeviceConfigEntity>()
+            coJustRun { deviceRepo.updateDevice(otherAddr, capture(update)) }
+
+            viewModel().action(
+                DashboardAction.AdjustVolume(otherAddr, AudioStream.Type.MUSIC, VolumeMode.Normal(0.8f))
+            )
+            advanceUntilIdle()
+
+            // Its own target is stored, ready for when it becomes the routed device.
+            update.captured(config(otherAddr, 0.8f)).musicVolume shouldBe 0.8f
+            // The routed group's hardware stays untouched.
+            coVerify(exactly = 0) {
+                volumeModeTool.apply(any(), any(), any(), any(), any(), any(), any())
+            }
+        }
 }

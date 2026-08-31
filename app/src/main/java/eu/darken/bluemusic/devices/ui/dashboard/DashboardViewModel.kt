@@ -394,6 +394,11 @@ class DashboardViewModel @Inject constructor(
                 if (device?.isActive != true) return@launch
 
                 val streamId = device.getStreamId(action.type)
+                val ownerAddresses = ownerRegistry.ownerAddressesFor(streamId).toSet()
+                // Only the routed device may touch the hardware. A non-owner's slider moves its
+                // stored target, which is applied when that device becomes the routed one.
+                if (device.address !in ownerAddresses) return@launch
+
                 volumeModeTool.apply(
                     streamId = streamId,
                     streamType = action.type,
@@ -403,7 +408,7 @@ class DashboardViewModel @Inject constructor(
                     allowedLevels = limitEnforcer.allowedLevels(
                         streamId = streamId,
                         devices = deviceRepo.currentDevices(),
-                        ownerAddresses = ownerRegistry.ownerAddressesFor(streamId).toSet(),
+                        ownerAddresses = ownerAddresses,
                     ),
                 )
             }
