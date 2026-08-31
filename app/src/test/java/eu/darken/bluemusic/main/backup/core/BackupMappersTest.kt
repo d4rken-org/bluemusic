@@ -46,6 +46,17 @@ class BackupMappersTest : BaseTest() {
             eqEnabled = true,
             eqBandLevels = listOf(600, 300, 0, -300, -600),
             eqBoostGain = 700,
+            volumeLimit = true,
+            musicVolumeMin = 0.1f,
+            musicVolumeMax = 0.5f,
+            callVolumeMin = 0.2f,
+            callVolumeMax = 0.6f,
+            ringVolumeMin = 0.3f,
+            ringVolumeMax = 0.7f,
+            notificationVolumeMin = 0.4f,
+            notificationVolumeMax = 0.8f,
+            alarmVolumeMin = 0.5f,
+            alarmVolumeMax = 0.9f,
         )
 
         val backup = entity.toBackup()
@@ -73,6 +84,19 @@ class BackupMappersTest : BaseTest() {
         val backup = entity.toBackup()
 
         backup.eqBoostGain shouldBe 1000
+        backup.toEntity() shouldBe entity
+    }
+
+    @Test
+    fun `entity to backup keeps unset volume bounds null`() {
+        val entity = DeviceConfigEntity(address = "test", volumeLimit = true, musicVolumeMax = 0.5f)
+
+        val backup = entity.toBackup()
+
+        backup.volumeLimit shouldBe true
+        backup.musicVolumeMax shouldBe 0.5f
+        backup.musicVolumeMin shouldBe null
+        backup.alarmVolumeMax shouldBe null
         backup.toEntity() shouldBe entity
     }
 

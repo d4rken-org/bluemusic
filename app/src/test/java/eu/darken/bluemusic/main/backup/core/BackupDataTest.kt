@@ -23,7 +23,7 @@ class BackupDataTest : BaseTest() {
     }
 
     private fun createMaximalFixture() = AppBackup(
-        formatVersion = 4,
+        formatVersion = 5,
         appVersion = "3.3.1",
         appVersionCode = 33100L,
         createdAt = "2026-04-16T14:30:00Z",
@@ -46,6 +46,17 @@ class BackupDataTest : BaseTest() {
                 volumeRateLimitIncreaseMs = 100L,
                 volumeRateLimitDecreaseMs = 200L,
                 volumeSaveOnDisconnect = true,
+                volumeLimit = true,
+                musicVolumeMin = 0.1f,
+                musicVolumeMax = 0.5f,
+                callVolumeMin = null,
+                callVolumeMax = 0.8f,
+                ringVolumeMin = 0.2f,
+                ringVolumeMax = null,
+                notificationVolumeMin = null,
+                notificationVolumeMax = null,
+                alarmVolumeMin = 0.3f,
+                alarmVolumeMax = 0.9f,
                 keepAwake = true,
                 nudgeVolume = true,
                 autoplay = true,
@@ -97,7 +108,7 @@ class BackupDataTest : BaseTest() {
 
         actualJson.toComparableJson() shouldBe """
             {
-                "formatVersion": 4,
+                "formatVersion": 5,
                 "appVersion": "3.3.1",
                 "appVersionCode": 33100,
                 "createdAt": "2026-04-16T14:30:00Z",
@@ -120,6 +131,13 @@ class BackupDataTest : BaseTest() {
                         "volumeRateLimitIncreaseMs": 100,
                         "volumeRateLimitDecreaseMs": 200,
                         "volumeSaveOnDisconnect": true,
+                        "volumeLimit": true,
+                        "musicVolumeMin": 0.1,
+                        "musicVolumeMax": 0.5,
+                        "callVolumeMax": 0.8,
+                        "ringVolumeMin": 0.2,
+                        "alarmVolumeMin": 0.3,
+                        "alarmVolumeMax": 0.9,
                         "keepAwake": true,
                         "nudgeVolume": true,
                         "autoplay": true,
@@ -154,6 +172,7 @@ class BackupDataTest : BaseTest() {
                         "volumeObserving": false,
                         "volumeRateLimiter": false,
                         "volumeSaveOnDisconnect": false,
+                        "volumeLimit": false,
                         "keepAwake": false,
                         "nudgeVolume": false,
                         "autoplay": false,
@@ -330,6 +349,55 @@ class BackupDataTest : BaseTest() {
     }
 
     @Test
+    fun `v4 payload without the volume limit fields decodes with the limit off`() {
+        val jsonString = """
+        {
+            "formatVersion": 4,
+            "appVersion": "3.4.0",
+            "createdAt": "2026-04-16T14:30:00Z",
+            "deviceConfigs": [{
+                "address": "AA:BB:CC:DD:EE:FF",
+                "musicVolume": 0.75,
+                "eqEnabled": true,
+                "eqBoostGain": 500
+            }]
+        }
+        """.trimIndent()
+
+        val backup = json.decodeFromString(AppBackup.serializer(), jsonString)
+        backup.formatVersion shouldBe 4
+        backup.deviceConfigs.single().volumeLimit shouldBe false
+        backup.deviceConfigs.single().musicVolumeMin shouldBe null
+        backup.deviceConfigs.single().musicVolumeMax shouldBe null
+        backup.deviceConfigs.single().alarmVolumeMax shouldBe null
+    }
+
+    @Test
+    fun `volume limit fields survive a round-trip`() {
+        val original = AppBackup(
+            formatVersion = 5,
+            appVersion = "3.5.0",
+            createdAt = "2026-04-16T14:30:00Z",
+            deviceConfigs = listOf(
+                DeviceConfigBackup(
+                    address = "AA:BB:CC:DD:EE:FF",
+                    volumeLimit = true,
+                    musicVolumeMin = 0.1f,
+                    musicVolumeMax = 0.5f,
+                    alarmVolumeMax = 0.9f,
+                ),
+            ),
+        )
+
+        val restored = json.decodeFromString(AppBackup.serializer(), json.encodeToString(AppBackup.serializer(), original))
+
+        restored shouldBe original
+        restored.deviceConfigs.single().musicVolumeMin shouldBe 0.1f
+        restored.deviceConfigs.single().musicVolumeMax shouldBe 0.5f
+        restored.deviceConfigs.single().alarmVolumeMin shouldBe null
+    }
+
+    @Test
     fun `DeviceConfigBackup defaults match entity defaults`() {
         val defaults = DeviceConfigBackup(address = "test")
         defaults.volumeLock shouldBe false
@@ -341,6 +409,9 @@ class BackupDataTest : BaseTest() {
         defaults.showHomeScreen shouldBe false
         defaults.visibleAdjustments shouldBe true
         defaults.eqBoostGain shouldBe null
+        defaults.volumeLimit shouldBe false
+        defaults.musicVolumeMin shouldBe null
+        defaults.musicVolumeMax shouldBe null
     }
 
     @Test
