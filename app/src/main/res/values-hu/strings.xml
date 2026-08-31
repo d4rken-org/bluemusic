@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Hangerő zárolás</string>
     <string name="devices_device_config_volume_lock_desc">Minden hangerőváltozás, amit nem ezen az alkalmazáson keresztül csináltak, visszaállításra kerül, amíg ez az eszköz csatlakoztatva van.</string>
     <string name="devices_device_config_volume_lock_override_desc">A hangerőzár jelenleg felülbírálja ezt a funkciót.</string>
+    <string name="devices_device_config_volume_limit_label">Hangerőkorlát</string>
+    <string name="devices_device_config_volume_limit_desc">Az eszköz hangerejét egy tartományon belül tartja, például sosem lesz hangosabb 50%-nál.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Korlát: %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% és %2$d%% között</string>
+    <string name="devices_device_config_volume_limit_min_desc">Legalább %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Legfeljebb %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Nincs korlát beállítva</string>
+    <string name="devices_volume_limit_screen_title">Hangerőkorlát</string>
+    <string name="devices_volume_limit_disabled_hint">Kikapcsolva, a korlátok mentve vannak, de még nem lesznek alkalmazva.</string>
+    <string name="devices_volume_limit_band_bar_desc">Megengedett hangerőtartomány</string>
+    <string name="devices_volume_limit_no_streams_msg">Ez az eszköz még nem kezel semmilyen hangerőt. Kapcsolj be egyet az eszköz beállításainak \"Hangerő\" szakaszában, hogy korlátot állíthass be.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Hangerő sebességlimitáló</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Korlátozzad a hangerőváltozások gyakoriságát, hogy elkerüld a gyors vagy túlzott hangerőbeállításokat.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Hangerő emelés késleltetése</string>

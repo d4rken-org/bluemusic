@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Səs kilidi</string>
     <string name="devices_device_config_volume_lock_desc">Bu tətbiq üzərindən edilməyən istənilən səs dəyişiklikləri bu cihazla bağlantı qurularkən geri qaytarılacaqdır.</string>
     <string name="devices_device_config_volume_lock_override_desc">Səs kilidi hazırda bu funksiyanı ləğv edir.</string>
+    <string name="devices_device_config_volume_limit_label">Səs məhdudiyyəti</string>
+    <string name="devices_device_config_volume_limit_desc">Bu cihazın səsini bir diapazon içərisində saxlayın, məsələn 50%-dən artıq olmayın.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s üçün məhdudiyyət</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% ilə %2$d%% arasında</string>
+    <string name="devices_device_config_volume_limit_min_desc">Ən azı %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Ən çox %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Məhdudiyyət təyin edilmədi</string>
+    <string name="devices_volume_limit_screen_title">Səs məhdudiyyəti</string>
+    <string name="devices_volume_limit_disabled_hint">Söndürülüb, limitləriniz saxlanılıb, lakin hələ tətbiq edilməyəcəkdir.</string>
+    <string name="devices_volume_limit_band_bar_desc">İcazə verilən səs diapazonu</string>
+    <string name="devices_volume_limit_no_streams_msg">Bu cihaz hələ heç bir səsi idarə etmir. Limitini təyin etmək üçün cihaz ayarlarında \"Səs\"in altında birini aktiv edin.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Səs tezliyinin məhdudlaşdırıcısı</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Sürətli və ya artıq səs tənzimləmələrini qarşılamaq üçün səs dəyişikliklərinin tezliyini məhdudlaşdır.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Səs artırma gecikməsi</string>

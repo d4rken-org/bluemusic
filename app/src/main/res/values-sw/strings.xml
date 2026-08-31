@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Kufuli la sauti</string>
     <string name="devices_device_config_volume_lock_desc">Mabadiliko yoyote ya sauti ambayo hayakufanywa kupitia programu hii yatafutwa wakati kifaa hiki kimeunganishwa.</string>
     <string name="devices_device_config_volume_lock_override_desc">Kufuli cha sauti kwa sasa kinazidi kipengele hiki.</string>
+    <string name="devices_device_config_volume_limit_label">Kikomo cha sauti</string>
+    <string name="devices_device_config_volume_limit_desc">Badilisha sauti ya kifaa hiki kuwa ndani ya kiwango, kwa mfano: si kali kuliko 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Kikomo kwa %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Kati ya %1$d%% hadi %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Angalau %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Si zaidi ya %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Hakuna kikomo kilichowekwa</string>
+    <string name="devices_volume_limit_screen_title">Kikomo cha sauti</string>
+    <string name="devices_volume_limit_disabled_hint">Imezimwa, vikomo vyako vimehifadhiwa lakini havitatumiwa kwa sasa.</string>
+    <string name="devices_volume_limit_band_bar_desc">Kiwango cha sauti kililoruhusiwa</string>
+    <string name="devices_volume_limit_no_streams_msg">Kifaa hiki hakichezi kwa sauti yoyote kwa sasa. Washa moja chini ya \"Sauti\" katika mipango ya kifaa kuainisha kikomo.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Kizuizi cha kiwango cha sauti</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Zuia mara kwa mara ya mabadiliko ya sauti ili kuzuia marekebisho ya haraka au ya kupita kiasi.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ucheleweshaji wa kuongeza sauti</string>

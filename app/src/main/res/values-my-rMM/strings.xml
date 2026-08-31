@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">အသံ သော့ခတ်</string>
     <string name="devices_device_config_volume_lock_desc">ဤကိရိယာ ချိတ်ဆက်နေစဉ် ဤအပ်မှတစ်ဆင့် မဟုတ်သော အသံပြောင်းလဲမှုများ ပြန်ထူးထားမည်။</string>
     <string name="devices_device_config_volume_lock_override_desc">အသံအတိုးအကျယ် လော့ခ်သည် လောလောဆယ် ဤအင်္ဂါရပ်ကို အစားထိုးနေသည်။</string>
+    <string name="devices_device_config_volume_limit_label">အသံအတိုးအကျယ် ကန့်သတ်ချက်</string>
+    <string name="devices_device_config_volume_limit_desc">ဤစက်ပစ္စည်း၏ အသံအတိုးအကျယ်ကို အပိုင်းအခြားအတွင်း ထားရှိပါ၊ ဥပမာ - ၅၀% ထက် အဘယ်အခါမျှ ပိုမမြင့်စေရန်။</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s အတွက် ကန့်သတ်ချက်</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% နှင့် %2$d%% ကြားတွင်</string>
+    <string name="devices_device_config_volume_limit_min_desc">အနည်းဆုံး %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">အများဆုံး %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">ကန့်သတ်ချက် မသတ်မှတ်ရသေးပါ</string>
+    <string name="devices_volume_limit_screen_title">အသံအတိုးအကျယ် ကန့်သတ်ချက်</string>
+    <string name="devices_volume_limit_disabled_hint">ပိတ်ထားသည်၊ သင့်ကန့်သတ်ချက်များကို သိမ်းဆည်းထားသော်လည်း လောလောဆယ် အသုံးမပြုသေးပါ။</string>
+    <string name="devices_volume_limit_band_bar_desc">ခွင့်ပြုထားသော အသံအတိုးအကျယ် အပိုင်းအခြား</string>
+    <string name="devices_volume_limit_no_streams_msg">ဤစက်ပစ္စည်းသည် အသံအတိုးအကျယ်များကို လက်ရှိတွင် စီမံမထားသဲးပါ။ ၎င်းအတွက် ကန့်သတ်ချက်တစ်ခု သတ်မှတ်ရန် စက်ပစ္စည်ဆက်တင်များရှိ \"အသံအတိုးအကျယ်\" အောက်တွင် တစ်ခုခုကို ဖွင့်ပါ။</string>
     <string name="devices_device_config_volume_rate_limiter_label">အသံအတိုးအကျယ်နှုန်းကန့်သတ်ကိရိယာ</string>
     <string name="devices_device_config_volume_rate_limiter_desc">အသံအတိုးအကျယ်ပြောင်းလဲမှုများ၏ကြိမ်ဆင်းသက်မှုကိုကန့်သတ်ပြီးမြန်လျှင်သို့မဟုတ်အလွန်အကျွံအသံထိန်းချုပ်မှုများကိုကာကွယ်ပါ။</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">အသံအတိုးအကျယ်တိုးစည်းမျဉ်း</string>

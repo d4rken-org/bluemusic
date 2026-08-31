@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Kilîda dengê</string>
     <string name="devices_device_config_volume_lock_desc">Her guherîna dengê ku ne ji vê bernameê hatibe kirin dema ev cîhaz bi hestek be were vegerandin.</string>
     <string name="devices_device_config_volume_lock_override_desc">Kilîda dengbêjiyê niha vê taybetmendiyê derbas dike.</string>
+    <string name="devices_device_config_volume_limit_label">Sînorkirina Sedê</string>
+    <string name="devices_device_config_volume_limit_desc">Sedê vê cihazê di rêzikek de bigire, mîsalî: ne gava zûtir ji 50% be.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Sînor bo %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Di navbera %1$d%% û %2$d%% de</string>
+    <string name="devices_device_config_volume_limit_min_desc">Hindik %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Herî zêde %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Sînor tune</string>
+    <string name="devices_volume_limit_screen_title">Sînorkirina Sedê</string>
+    <string name="devices_volume_limit_disabled_hint">Veqetîn, sînorên we hatine pêçandin lê hê ne tên sepandin.</string>
+    <string name="devices_volume_limit_band_bar_desc">Rêzikê sedê ya desthelpî</string>
+    <string name="devices_volume_limit_no_streams_msg">Ev cihaz heya niha henî sedê neparêzdike. Yekî li sazûmendiyên cihazê di nava \'Sedê\' de vebike da ku sînor bo wê danî.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Sînorkerê leza dengê</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Frekansa guherînên dengê sînor bike ji bo pêşgîrîna ji guherînên dengê zûr an zêde.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Derengiya bilindkirina dengê</string>

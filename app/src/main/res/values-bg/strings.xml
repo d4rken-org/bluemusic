@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Заключване на звука</string>
     <string name="devices_device_config_volume_lock_desc">Всякакви промени в силата на звука, направени извън приложението, ще бъдат отменени докато устройството е свързано.</string>
     <string name="devices_device_config_volume_lock_override_desc">Заключването на силата на звука в момента замества тази функция.</string>
+    <string name="devices_device_config_volume_limit_label">Ограничение на силата на звука</string>
+    <string name="devices_device_config_volume_limit_desc">Задръж силата на звука на това устройство в определен диапазон, напр. никога по-силна от 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Ограничение за %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Между %1$d%% и %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Поне %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Най-много %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Няма зададено ограничение</string>
+    <string name="devices_volume_limit_screen_title">Ограничение на силата на звука</string>
+    <string name="devices_volume_limit_disabled_hint">Изключено, ограниченията ти са запазени, но все още няма да се прилагат.</string>
+    <string name="devices_volume_limit_band_bar_desc">Разрешен диапазон на силата на звука</string>
+    <string name="devices_volume_limit_no_streams_msg">Това устройство все още не управлява сила на звука. Включи опция в „Сила на звука“ в настройките на устройството, за да зададеш ограничение за нея.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ограничител на честотата на силата на звука</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ограничава честотата на промените в силата на звука, за да се предотврати бързо или прекомерно регулиране.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Забавяне на увеличението на силата на звука</string>

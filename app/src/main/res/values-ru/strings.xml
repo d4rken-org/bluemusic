@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Блокировка громкости</string>
     <string name="devices_device_config_volume_lock_desc">Любые изменения громкости, не сделанные через это приложение, будут возвращены, к умолчаниям, пока это устройство подключено.</string>
     <string name="devices_device_config_volume_lock_override_desc">Блокировка громкости в данный момент переопределяет эту функцию.</string>
+    <string name="devices_device_config_volume_limit_label">Ограничение громкости</string>
+    <string name="devices_device_config_volume_limit_desc">Держи громкость этого устройства в заданном диапазоне, например, не громче 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Ограничение для %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">От %1$d%% до %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Не менее %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Не более %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Ограничение не задано</string>
+    <string name="devices_volume_limit_screen_title">Ограничение громкости</string>
+    <string name="devices_volume_limit_disabled_hint">Выключено: твои ограничения сохранены, но пока не применяются.</string>
+    <string name="devices_volume_limit_band_bar_desc">Допустимый диапазон громкости</string>
+    <string name="devices_volume_limit_no_streams_msg">Это устройство пока не управляет ни одной громкостью. Включи нужную в разделе «Громкость» в настройках устройства, чтобы задать для неё ограничение.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ограничитель частоты громкости</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ограничивает частоту изменений громкости для предотвращения быстрых или чрезмерных настроек.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Задержка увеличения громкости</string>

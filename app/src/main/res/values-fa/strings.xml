@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">قفل صدا</string>
     <string name="devices_device_config_volume_lock_desc">هرگونه تغییر صدایی که توسط این برنامه انجام نشده، حین اتصال این دستگاه برگشت داده خواهد شد.</string>
     <string name="devices_device_config_volume_lock_override_desc">قفل صدا در حال حاضر این ویژگی را لغو می‌کند.</string>
+    <string name="devices_device_config_volume_limit_label">محدودیت میزان صدا</string>
+    <string name="devices_device_config_volume_limit_desc">میزان صدای این دستگاه را در یک محدوده نگه دارید، مثلاً هرگز بلندتر از ۵۰٪ نشود.</string>
+    <string name="devices_device_config_volume_limit_stream_label">محدودیت برای %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">بین %1$d%% و %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">حداقل %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">حداکثر %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">هیچ محدودیتی تنظیم نشده است</string>
+    <string name="devices_volume_limit_screen_title">محدودیت میزان صدا</string>
+    <string name="devices_volume_limit_disabled_hint">خاموش است، محدودیت‌های شما ذخیره شده‌اند اما هنوز اعمال نمی‌شوند.</string>
+    <string name="devices_volume_limit_band_bar_desc">محدوده مجاز میزان صدا</string>
+    <string name="devices_volume_limit_no_streams_msg">این دستگاه هنوز هیچ میزان صدایی را مدیریت نمی‌کند. برای تنظیم محدودیت، یکی را در بخش «میزان صدا» در تنظیمات دستگاه روشن کنید.</string>
     <string name="devices_device_config_volume_rate_limiter_label">محدودیت،‌گذار تغییر صدا</string>
     <string name="devices_device_config_volume_rate_limiter_desc">فرکانس تغییرات صدا را محدود کن تا از تغییرات سریع یا افراطی جلوگیری شود.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">تأخیر افزایش صدا</string>

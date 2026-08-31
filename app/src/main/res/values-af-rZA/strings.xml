@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Volume-slot</string>
     <string name="devices_device_config_volume_lock_desc">Enige volumeveranderinge wat nie deur hierdie program gemaak is nie, sal teruggestel word terwyl hierdie toestel gekoppel is.</string>
     <string name="devices_device_config_volume_lock_override_desc">Volumeslot oorheers tans hierdie funksie.</string>
+    <string name="devices_device_config_volume_limit_label">Volumelimiet</string>
+    <string name="devices_device_config_volume_limit_desc">Hou die volume van hierdie toestel binne \'n reeks, byv. nooit harder as 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Limiet vir %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Tussen %1$d%% en %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Minstens %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Hoogstens %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Geen limiet ingestel</string>
+    <string name="devices_volume_limit_screen_title">Volumelimiet</string>
+    <string name="devices_volume_limit_disabled_hint">Af, jou limiete is gered maar sal nog nie toegepas word nie.</string>
+    <string name="devices_volume_limit_band_bar_desc">Toegelate volumebereik</string>
+    <string name="devices_volume_limit_no_streams_msg">Hierdie toestel beheer nog geen volumes nie. Skakel een aan onder \"Volume\" in die toestelstellings om \'n limiet daarvoor in te stel.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volume spoedbegrenzer</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Beperk die frekwensie van volumeveranderinge om vinnige of buitensporige volumejusteringe te voorkom.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volume verhogingsvertraging</string>

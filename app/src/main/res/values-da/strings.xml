@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Lydstyrkelås</string>
     <string name="devices_device_config_volume_lock_desc">Alle lydstyrkeændringer ikke lavet gennem denne app vil blive tilbageført mens denne enhed er tilsluttet.</string>
     <string name="devices_device_config_volume_lock_override_desc">Lydstyrkelås tilsidesætter i øjeblikket denne funktion.</string>
+    <string name="devices_device_config_volume_limit_label">Lydstyrkelimit</string>
+    <string name="devices_device_config_volume_limit_desc">Hold enhedens lydstyrke inden for et område, f.eks. aldrig højere end 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Begrænsning for %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Mellem %1$d%% og %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Mindst %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Højst %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Ingen begrænsning angivet</string>
+    <string name="devices_volume_limit_screen_title">Lydstyrkelimit</string>
+    <string name="devices_volume_limit_disabled_hint">Slået fra, dine begrænsninger er gemt, men bliver ikke anvendt endnu.</string>
+    <string name="devices_volume_limit_band_bar_desc">Tilladt lydstyrkeområde</string>
+    <string name="devices_volume_limit_no_streams_msg">Denne enhed administrerer endnu ikke nogen lydstyrker. Slå en til under \"Lydstyrke\" i enhedens indstillinger for at angive en begrænsning for den.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Lydstyrke-begrenzer</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Begræns hyppigheden af lydstyrkeændringer for at forhindre hurtige eller overdrevne lydstyrkeindstillinger.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Lydstyrkeforøgelsesforsinkelse</string>

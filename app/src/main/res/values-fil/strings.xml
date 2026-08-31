@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Lock ang volume</string>
     <string name="devices_device_config_volume_lock_desc">Ang anumang pagbabago ng volume na hindi ginawa sa pamamagitan ng app na ito ay ibabalik habang nakakonekta ang device na ito.</string>
     <string name="devices_device_config_volume_lock_override_desc">Kasalukuyang nino-override ng volume lock ang feature na ito.</string>
+    <string name="devices_device_config_volume_limit_label">Limitasyon ng Volume</string>
+    <string name="devices_device_config_volume_limit_desc">Panatilihin ang volume ng device na ito sa loob ng isang hanay, halimbawa hindi kailanman higit sa 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Limitasyon para sa %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Sa pagitan ng %1$d%% at %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Hindi bababa sa %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Hindi higit sa %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Walang itinakdang limitasyon</string>
+    <string name="devices_volume_limit_screen_title">Limitasyon ng Volume</string>
+    <string name="devices_volume_limit_disabled_hint">Naka-off, ang iyong mga limitasyon ay na-save ngunit hindi pa ma-aapply.</string>
+    <string name="devices_volume_limit_band_bar_desc">Pinapayagang hanay ng volume</string>
+    <string name="devices_volume_limit_no_streams_msg">Ang device na ito ay hindi pa namamahala ng kahit anong volume. I-turn on ang isa sa ilalim ng \"Volume\" sa device settings upang magtakda ng limitasyon para dito.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitador ng rate ng volume</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limitahan ang frequency ng mga pagbabago sa volume upang maiwasan ang mabilis o sobrang pagsasaayos ng volume.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Pagkaantala sa pagtaas ng volume</string>

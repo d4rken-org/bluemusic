@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Skaļuma bloktāze</string>
     <string name="devices_device_config_volume_lock_desc">Jebkādas skaļuma izmaiņas, kas nav veiktas caur šo lietotni, tiks atatstatas atpakaļ, kamēr šī ierīce ir pievienota.</string>
     <string name="devices_device_config_volume_lock_override_desc">Skaļuma bloķēšana pašlaik ignorē šo funkciju.</string>
+    <string name="devices_device_config_volume_limit_label">Skaļuma ierobežojums</string>
+    <string name="devices_device_config_volume_limit_desc">Ierobežo šīs ierīces skaļumu noteiktā diapazonā, piemēram, nekad ne skaļāk par 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s ierobežojums</string>
+    <string name="devices_device_config_volume_limit_range_desc">No %1$d%% līdz %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Vismaz %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Ne vairāk kā %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Ierobežojums nav iestatīts</string>
+    <string name="devices_volume_limit_screen_title">Skaļuma ierobežojums</string>
+    <string name="devices_volume_limit_disabled_hint">Izslēgts, tavi ierobežojumi ir saglabāti, bet vēl netiek piemēroti.</string>
+    <string name="devices_volume_limit_band_bar_desc">Atļautais skaļuma diapazons</string>
+    <string name="devices_volume_limit_no_streams_msg">Šī ierīce vēl nepārvalda nevienu skaļumu. Ieslēdz kādu sadaļā \"Skaļums\" ierīces iestatījumos, lai iestatītu tam ierobežojumu.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Skaļuma ātruma ierobežotājs</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ierobežot skaļuma izmaiņu biežumu, lai novērstu ātras vai pārmērīgas skaļuma korekcijas.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Skaļuma palielinošanas aizture</string>

@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Κλείδωμα έντασης</string>
     <string name="devices_device_config_volume_lock_desc">Οποιεσδήποτε αλλαγές έντασης που δεν έχουν γίνει μέσω αυτής της εφαρμογής, θα επανέλθουν όσο αυτή η συσκευή είναι συνδεδεμένη.</string>
     <string name="devices_device_config_volume_lock_override_desc">Το κλείδωμα έντασης παρακάμπτει αυτήν τη λειτουργία αυτή τη στιγμή.</string>
+    <string name="devices_device_config_volume_limit_label">Όριο έντασης</string>
+    <string name="devices_device_config_volume_limit_desc">Διατήρησε την ένταση αυτής της συσκευής μέσα σε ένα εύρος, π.χ. ποτέ πιο δυνατά από 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Όριο για %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Μεταξύ %1$d%% και %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Τουλάχιστον %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Το πολύ %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Δεν έχει οριστεί όριο</string>
+    <string name="devices_volume_limit_screen_title">Όριο έντασης</string>
+    <string name="devices_volume_limit_disabled_hint">Απενεργοποιημένο, τα όριά σου αποθηκεύονται αλλά δεν θα εφαρμοστούν ακόμα.</string>
+    <string name="devices_volume_limit_band_bar_desc">Επιτρεπόμενο εύρος έντασης</string>
+    <string name="devices_volume_limit_no_streams_msg">Αυτή η συσκευή δεν διαχειρίζεται ακόμα καμία ένταση. Ενεργοποίησε μία στο \"Ένταση\" στις ρυθμίσεις συσκευής για να ορίσεις όριο.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Περιοριστής ρυθμού έντασης</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Περιορίστε τη συχνότητα των αλλαγών έντασης για να αποτρέψετε γρήγορες ή υπερβολικές προσαρμογές έντασης.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Καθυστέρηση αύξησης έντασης</string>

@@ -71,6 +71,17 @@
     <string name="devices_device_config_volume_lock_label">ການຖົງລະດັບສຽງ</string>
     <string name="devices_device_config_volume_lock_desc">ການປ່ຽນແປງລະດັບສຽງທີ່ບໍ່ໄດ້ທຳຜ່ານແອັບນີ້ຈະຖືກກູ້ຄືນໃນຂະທີ່ອຸປະກອນນີ້ຕ່ອອຍູ່.</string>
     <string name="devices_device_config_volume_lock_override_desc">ການລັອກລະດັບສຽງກຳລັງແທນທີ່ຄຸນສົມບັດນີ້ຢູ່.</string>
+    <string name="devices_device_config_volume_limit_label">ຂີດຈຳກັດລະດັບສຽງ</string>
+    <string name="devices_device_config_volume_limit_desc">ຮັກສາລະດັບສຽງຂອງອຸປະກອນນີ້ໃຫ້ຢູ່ໃນຂອບເຂດທີ່ກຳນົດ, ຕົວຢ່າງ: ບໍ່ໃຫ້ດັງເກີນ 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">ຂີດຈຳກັດສຳລັບ %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">ລະຫວ່າງ %1$d%% ຫາ %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">ຢ່າງໜ້ອຍ %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">ຢ່າງຫຼາຍທີ່ສຸດ %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">ບໍ່ໄດ້ຕັ້ງຂີດຈຳກັດ</string>
+    <string name="devices_volume_limit_screen_title">ຂີດຈຳກັດລະດັບສຽງ</string>
+    <string name="devices_volume_limit_disabled_hint">ປິດຢູ່, ຂີດຈຳກັດຂອງທ່ານຖືກບັນທຶກໄວ້ແລ້ວແຕ່ຍັງບໍ່ຖືກນຳໃຊ້.</string>
+    <string name="devices_volume_limit_band_bar_desc">ຂອບເຂດລະດັບສຽງທີ່ອະນຸຍາດ</string>
+    <string name="devices_volume_limit_no_streams_msg">ອຸປະກອນນີ້ຍັງບໍ່ໄດ້ຈັດການລະດັບສຽງໃດເທື່ອ. ເປີດການນຳໃຊ້ໜຶ່ງອັນພາຍໃຕ້ \"ລະດັບສຽງ\" ໃນການຕັ້ງຄ່າອຸປະກອນ ເພື່ອຕັ້ງຂີດຈຳກັດໃຫ້ມັນ.</string>
     <string name="devices_device_config_volume_rate_limiter_label">ຕັວຈຳກັດອັດຕາລະດັບສຽງ</string>
     <string name="devices_device_config_volume_rate_limiter_desc">ຈຳກັດຄວາມຖີ່ແຜນຂອງການປ່ຽນແປງລະດັບສຽງ ເພື່ອປ້ອງກັນການປັບລະດັບສຽງຢ່າງເຣັຈ ຫລືອແມ່ນ້ອຍເກີນ.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ການຊັກຊ້າການເພີ່ມລະດັບສຽງ</string>

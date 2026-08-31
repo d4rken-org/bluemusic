@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">ล็อกระดับเสียง</string>
     <string name="devices_device_config_volume_lock_desc">การเปลี่ยนแปลงระดับเสียงที่ไม่ได้ทำผ่านแอปนี้จะถูกย้อนกลับขณะที่อุปกรณ์นี้เชื่อมต่ออยู่</string>
     <string name="devices_device_config_volume_lock_override_desc">การล็อกระดับเสียงกำลังแทนที่ฟีเจอร์นี้อยู่</string>
+    <string name="devices_device_config_volume_limit_label">จำกัดระดับเสียง</string>
+    <string name="devices_device_config_volume_limit_desc">จำกัดระดับเสียงของอุปกรณ์นี้ให้อยู่ในช่วงที่กำหนด เช่น ไม่ดังเกิน 50%</string>
+    <string name="devices_device_config_volume_limit_stream_label">ขีดจำกัดสำหรับ %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">ระหว่าง %1$d%% ถึง %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">อย่างน้อย %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">อย่างมาก %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">ไม่ได้ตั้งขีดจำกัด</string>
+    <string name="devices_volume_limit_screen_title">จำกัดระดับเสียง</string>
+    <string name="devices_volume_limit_disabled_hint">ปิดอยู่ ขีดจำกัดของคุณถูกบันทึกไว้แต่ยังไม่มีผลใช้งาน</string>
+    <string name="devices_volume_limit_band_bar_desc">ช่วงระดับเสียงที่อนุญาต</string>
+    <string name="devices_volume_limit_no_streams_msg">อุปกรณ์นี้ยังไม่มีการจัดการระดับเสียงใด ๆ เปิดใช้งานอย่างใดอย่างหนึ่งภายใต้ \"ระดับเสียง\" ในการตั้งค่าอุปกรณ์เพื่อกำหนดขีดจำกัด</string>
     <string name="devices_device_config_volume_rate_limiter_label">ตัวจำกัดอัตราเสียง</string>
     <string name="devices_device_config_volume_rate_limiter_desc">จำกัดความถี่ของการเปลี่ยนแปลงระดับเสียงเพื่อป้องกันการปรับระดับเสียงอย่างรวดเร็วหรือมากเกินไป</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ความล่าช้าการเพิ่มระดับเสียง</string>

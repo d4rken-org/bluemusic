@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Bloqueo de volume</string>
     <string name="devices_device_config_volume_lock_desc">Calquera cambio de volume non realizado a través desta aplicación reverterase mentres este dispositivo está conectado.</string>
     <string name="devices_device_config_volume_lock_override_desc">O bloqueo de volume substitúe actualmente esta función.</string>
+    <string name="devices_device_config_volume_limit_label">Límite de volume</string>
+    <string name="devices_device_config_volume_limit_desc">Mantén o volume deste dispositivo dentro dun rango, por exemplo, nunca máis alto que o 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Límite para %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Entre %1$d%% e %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Polo menos %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Como máximo %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Sen límite establecido</string>
+    <string name="devices_volume_limit_screen_title">Límite de volume</string>
+    <string name="devices_volume_limit_disabled_hint">Desactivado, os teus límites están gardados pero non se aplicarán aínda.</string>
+    <string name="devices_volume_limit_band_bar_desc">Rango de volume permitido</string>
+    <string name="devices_volume_limit_no_streams_msg">Este dispositivo aínda non xestiona ningún volume. Activa un en «Volume» na configuración do dispositivo para establecer un límite.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitador de taxa de volumen</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limita a frecuencia de cambios de volume para evitar axustes rápidos ou excesivos.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Atraso de aumento de volumen</string>

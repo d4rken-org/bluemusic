@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">भोल्युम लक</string>
     <string name="devices_device_config_volume_lock_desc">यो उपकरण जडान भएको बेला यस एपबाट नगरिएका कुनै पनि भोल्युम परिवर्तनहरू फिर्ता हुनेछन्।</string>
     <string name="devices_device_config_volume_lock_override_desc">भोल्युम लक हाल यो सुविधालाई ओभरराइड गर्दैछ।</string>
+    <string name="devices_device_config_volume_limit_label">आवाजको सीमा</string>
+    <string name="devices_device_config_volume_limit_desc">यस उपकरणको आवाज एक दायरा भित्रै राख्नुहोस्, उदाहरणको लागि कहिले पनि 50% भन्दा ठूलो नहुनुहोस्।</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s को लागि सीमा</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% र %2$d%% बीचमा</string>
+    <string name="devices_device_config_volume_limit_min_desc">कमीमा %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">अधिकमा %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">कुनै सीमा निर्धारित छैन</string>
+    <string name="devices_volume_limit_screen_title">आवाजको सीमा</string>
+    <string name="devices_volume_limit_disabled_hint">बन्द, तपाईंको सीमाहरू सुरक्षित गरिएको छ तर अझै लागू हुने छैन।</string>
+    <string name="devices_volume_limit_band_bar_desc">अनुमत आवाज दायरा</string>
+    <string name="devices_volume_limit_no_streams_msg">यस उपकरणले अझै कुनै आवाज व्यवस्थापन गर्दैन। यसको लागि सीमा निर्धारित गर्न उपकरण सेटिङहरूको \"आवाज\" अन्तर्गत कुनै एकलाई सक्रिय गर्नुहोस्।</string>
     <string name="devices_device_config_volume_rate_limiter_label">भोल्युम दर सीमक</string>
     <string name="devices_device_config_volume_rate_limiter_desc">द्रुत वा अत्यधिक भोल्युम समायोजनलाई रोक्नको लागि भोल्युम परिवर्तनको आवृत्ति सीमित गर्नुहोस्।</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">भोल्युम वृद्धि विलम्ब</string>

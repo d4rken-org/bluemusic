@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Закључавање јачине</string>
     <string name="devices_device_config_volume_lock_desc">Све промене јачине звука направљене ван ове апликације биће враћене док је овај уређај повезан.</string>
     <string name="devices_device_config_volume_lock_override_desc">Закључавање јачине звука тренутно замењује ову функцију.</string>
+    <string name="devices_device_config_volume_limit_label">Ограничење јачине звука</string>
+    <string name="devices_device_config_volume_limit_desc">Задржи јачину звука овог уређаја у оквиру опсега, нпр. никада гласније од 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Ограничење за %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Између %1$d%% и %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Најмање %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Највише %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Ограничење није постављено</string>
+    <string name="devices_volume_limit_screen_title">Ограничење јачине звука</string>
+    <string name="devices_volume_limit_disabled_hint">Искључено, твоја ограничења су сачувана, али још увек неће бити примењена.</string>
+    <string name="devices_volume_limit_band_bar_desc">Дозвољен опсег јачине звука</string>
+    <string name="devices_volume_limit_no_streams_msg">Овај уређај још увек не управља ниједном јачином звука. Укључи неку у делу „Јачина звука” у подешавањима уређаја да би поставио ограничење за њу.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ограничавач брзине јачине</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ограничи учесталост промена јачине звука да би се спречили брзи или прекомерни прелази јачине.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Кашњење повећања јачине</string>

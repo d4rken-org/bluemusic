@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">හඩ අගුලන්න</string>
     <string name="devices_device_config_volume_lock_desc">මෙම යෙදුම හරහා නොකළ ඕනෑම හඩ වෙනස්කමක් මෙම උපාංගය සම්බන්ධ වී ඇති ඕනෑම දිනෙ ආපසු හැරෙනු ඇත.</string>
     <string name="devices_device_config_volume_lock_override_desc">වර්තමානයේ ශබ්ද අගුල මෙම විශේෂාංගය ඉක්මවා යයි.</string>
+    <string name="devices_device_config_volume_limit_label">හඬ පරිමා සීමාව</string>
+    <string name="devices_device_config_volume_limit_desc">මෙම උපාංගයේ හඬ පරිමාව පරාසයක් තුළ තබා ගන්න, උදා. කිසි විටෙකත් 50% ට වඩා ශබ්දයෙන් නොවේ.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s සඳහා සීමාව</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% සහ %2$d%% අතර</string>
+    <string name="devices_device_config_volume_limit_min_desc">අවම වශයෙන් %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">උපරිම වශයෙන් %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">සීමාවක් සකසා නැත</string>
+    <string name="devices_volume_limit_screen_title">හඬ පරිමා සීමාව</string>
+    <string name="devices_volume_limit_disabled_hint">අක්‍රියයි, ඔබේ සීමා සුරකින ලද නමුත් තවම යොදනු නොලැබේ.</string>
+    <string name="devices_volume_limit_band_bar_desc">අවසර ලත් හඬ පරිමා පරාසය</string>
+    <string name="devices_volume_limit_no_streams_msg">මෙම උපාංගය තවම කිසිදු හඬ පරිමාවක් කළමනාකරණය නොකරයි. එයට සීමාවක් සැකසීමට උපාංග සැකසීම් තුළ \"හඬ පරිමාව\" යටතේ එකක් ක්‍රියාත්මක කරන්න.</string>
     <string name="devices_device_config_volume_rate_limiter_label">හඩ වේගය සීමාකාරක</string>
     <string name="devices_device_config_volume_rate_limiter_desc">වේග හඩ වෙනස්කම් වලට සීමාකරණ ක්‍රියාවලිය තිබිය, ශීඝ්‍ර හෝ අධික හඩ සකසීම් වළක්වන්න.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">හඩ වැඩිකිරීම ප්‍රමාණකාරකතාව</string>

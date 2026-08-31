@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Garsumo užraktas</string>
     <string name="devices_device_config_volume_lock_desc">Visi garsumo pokyčiai, neatliekami per šią programą, bus atstatyti kol šis įrenginys prijungtas.</string>
     <string name="devices_device_config_volume_lock_override_desc">Garso užraktas šiuo metu nepaisys šios funkcijos.</string>
+    <string name="devices_device_config_volume_limit_label">Garsumo riba</string>
+    <string name="devices_device_config_volume_limit_desc">Apribok šio įrenginio garsumą tam tikrame diapazone, pvz., niekada garsiau nei 50 %.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s riba</string>
+    <string name="devices_device_config_volume_limit_range_desc">Nuo %1$d %% iki %2$d %%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Bent %1$d %%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Ne daugiau kaip %1$d %%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Riba nenustatyta</string>
+    <string name="devices_volume_limit_screen_title">Garsumo riba</string>
+    <string name="devices_volume_limit_disabled_hint">Išjungta, tavo ribos išsaugotos, bet dar nebus taikomos.</string>
+    <string name="devices_volume_limit_band_bar_desc">Leidžiamas garsumo diapazonas</string>
+    <string name="devices_volume_limit_no_streams_msg">Šis įrenginys dar nevaldo jokių garsumų. Įjunk vieną skiltyje „Garsumas“ įrenginio nustatymuose, kad nustatytum jam ribą.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Garsumo keitimo limitavimas</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Riboti garsumo keitimo dažnumą, kad išvengtumėte greitų ar per didelių garsumo reguliavimų.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Garsumo kėlimo delsa</string>

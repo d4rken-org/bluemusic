@@ -71,6 +71,17 @@
     <string name="devices_device_config_volume_lock_label">Ovoz qulfi</string>
     <string name="devices_device_config_volume_lock_desc">Bu qurilma ulanganda ushbu ilova orqali amalga oshirilmagan barcha ovoz o\'zgarishlari bekor qilinadi.</string>
     <string name="devices_device_config_volume_lock_override_desc">Ovoz qulfi hozirda bu funksiyani bekor qilmoqda.</string>
+    <string name="devices_device_config_volume_limit_label">Ovoz chegarasi</string>
+    <string name="devices_device_config_volume_limit_desc">Ushbu qurilmaning ovozini ma\'lum oraliqda saqlang, masalan, hech qachon 50% dan yuqori bo\'lmasin.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s uchun chegara</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% va %2$d%% orasida</string>
+    <string name="devices_device_config_volume_limit_min_desc">Kamida %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Eng ko\'p %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Chegara o\'rnatilmagan</string>
+    <string name="devices_volume_limit_screen_title">Ovoz chegarasi</string>
+    <string name="devices_volume_limit_disabled_hint">O\'chirilgan, sizning chegaralaringiz saqlanadi, lekin hali qo\'llanilmaydi.</string>
+    <string name="devices_volume_limit_band_bar_desc">Ruxsat qilingan ovoz oralig\'i</string>
+    <string name="devices_volume_limit_no_streams_msg">Ushbu qurilma hali hech qanday ovozni boshqarmaydi. Uning uchun chegara o\'rnatash uchun qurilma sozlamalarida \"Ovoz\" ostida birini yoqing.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ovoz tezligi cheklagichi</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Tez yoki haddan ziyod ovoz o\'zgarishlarining oldini olish uchun ovoz o\'zgarishlari chastotasini cheklash.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ovoz oshirish kechikishi</string>

@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Гласот е заклучен</string>
     <string name="devices_device_config_volume_lock_desc">Сите промени на гласот што не се направени преку оваа апликација ќе бидат вратени додека е поврзан овој уред.</string>
     <string name="devices_device_config_volume_lock_override_desc">Заклучувањето на јачина на звук моментално го прескокнува овој функционал.</string>
+    <string name="devices_device_config_volume_limit_label">Ограничување на јачината на звук</string>
+    <string name="devices_device_config_volume_limit_desc">Задржи ја јачината на звук на овој уред во опсег, на пр. никогаш погласно од 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Ограничување за %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Помеѓу %1$d%% и %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Најмалку %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Најмногу %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Нема поставено ограничување</string>
+    <string name="devices_volume_limit_screen_title">Ограничување на јачината на звук</string>
+    <string name="devices_volume_limit_disabled_hint">Исклучено, твоите ограничувања се зачувани, но сè уште нема да се применуваат.</string>
+    <string name="devices_volume_limit_band_bar_desc">Дозволен опсег на јачина на звук</string>
+    <string name="devices_volume_limit_no_streams_msg">Овој уред сè уште не управува со ниту една јачина на звук. Вклучи некоја под „Јачина на звук“ во поставките на уредот за да поставиш ограничување за неа.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ограничувач на фреквенција на јачина на звук</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ограничува фреквенција на промени во јачина на звук за да се спречи брзо или прекомерно подесување.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Заостану при зголемување на јачина на звук</string>

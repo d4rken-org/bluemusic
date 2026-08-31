@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Bolumen blokeoa</string>
     <string name="devices_device_config_volume_lock_desc">Aplikazio honek ez dituen bolumen aldaketak atzera egingo dira gailu hau konektatuta dagoen bitartean.</string>
     <string name="devices_device_config_volume_lock_override_desc">Bolumen blokeoak gaur egun funtzio hau gainidazten du.</string>
+    <string name="devices_device_config_volume_limit_label">Bolumen muga</string>
+    <string name="devices_device_config_volume_limit_desc">Mantendu gailu honen bolumena tartearen barruan, adibidez, inoiz ez 50.% baino altuago.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Muga %1$sentzat</string>
+    <string name="devices_device_config_volume_limit_range_desc">Bien %1$d%% eta %2$d%% artean</string>
+    <string name="devices_device_config_volume_limit_min_desc">Gutxienez %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Gehienez %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Mugarik ez dago ezarrita</string>
+    <string name="devices_volume_limit_screen_title">Bolumen muga</string>
+    <string name="devices_volume_limit_disabled_hint">Desaktibaturik, zure mugak gordetzen dira baina oraindik ez dira aplikatuko.</string>
+    <string name="devices_volume_limit_band_bar_desc">Baimendutako bolumen tartea</string>
+    <string name="devices_volume_limit_no_streams_msg">Gailu honek ez du bolumenik kudeatu oraindik. Aktibatu bat \"Bolumena\" gailuen ezarpenetan, berari muga bat ezartzeko.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Bolumen maiztasun mugatzailea</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Mugatu bolumen aldaketen maiztasuna azkarregi edo gehiegizko bolumen doikuntzak saihesteko.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Bolumen igoera atzeratzea</string>

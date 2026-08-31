@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Үн кулпусу</string>
     <string name="devices_device_config_volume_lock_desc">Бул колдонмо аркылуу менен жасалбаган үн өзгөртүүлөрү бул түзмөк туташып турганда кайтарылып берилет.</string>
     <string name="devices_device_config_volume_lock_override_desc">Үн кулпусу азыр бул функцияны жокко чыгарат.</string>
+    <string name="devices_device_config_volume_limit_label">Үндүн чектемеси</string>
+    <string name="devices_device_config_volume_limit_desc">Бул түхүүнүн үнүн диапазонда сактап туруу, мисалы, эч убакта 50% дан жогору болбошу.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s үчүн чектеме</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% менен %2$d%% ортосунда</string>
+    <string name="devices_device_config_volume_limit_min_desc">Кеминде %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Эң көп %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Чектеме белгиленген жок</string>
+    <string name="devices_volume_limit_screen_title">Үндүн чектемеси</string>
+    <string name="devices_volume_limit_disabled_hint">Өчүк, сиздин чектемелер сакталды, бирок азырынча колдонулбаган.</string>
+    <string name="devices_volume_limit_band_bar_desc">Уруксат берилген үндүн диапазону</string>
+    <string name="devices_volume_limit_no_streams_msg">Бул түхүү азырынча эч кандай үндүн деңгээлин башкарбайт. Чектеме белгилөө үчүн түхүүнүн ырастамаларынан \"Үндүн\" кысмында бирөөнүн күйгүзүңүз.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Үн ылдамдыгын чектөүчү</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Тез же ашыкча үн тууралоолорунун алдын алуу үчүн үн өзгөртүүлөрүнүн жыштыгын чектөүү.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Үн жогорулатуу кечиктирүүсү</string>

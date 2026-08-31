@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">വോള്യം ലോക്ക്</string>
     <string name="devices_device_config_volume_lock_desc">ഈ ഉപകരണം കണക്‌റ് ആയിരിക്കുമ്പോൾ ഈ ആപ്പ് വഴിയല്ലാതെ വരുത്തുന്ന വോള്യം മാറ്റങ്ങൾ പഴയപടിയാകും.</string>
     <string name="devices_device_config_volume_lock_override_desc">വോളിയം ലോക്ക് നിലവിൽ ഈ ഫീച്ചർ ഓവർറൈഡ് ചെയ്യുന്നു.</string>
+    <string name="devices_device_config_volume_limit_label">വോളിയം പരിധി</string>
+    <string name="devices_device_config_volume_limit_desc">ഈ ഉപകരണത്തിന്റെ വോളിയം ഒരു പരിധിയ്ക്കുള്ളിൽ നിലനിർത്തുക, ഉദാഹരണത്തിന് കൂടിയത് 50% വരെ.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s ന്റെ പരിധി</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% നും %2$d%% നും ഇടയിൽ</string>
+    <string name="devices_device_config_volume_limit_min_desc">കുറഞ്ഞത് %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">കൂടിയത് %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">പരിധി നിർണയിച്ചിട്ടില്ല</string>
+    <string name="devices_volume_limit_screen_title">വോളിയം പരിധി</string>
+    <string name="devices_volume_limit_disabled_hint">നിഷ്ക്രിയ, നിങ്ങളുടെ പരിധികൾ സംരക്ഷിക്കപ്പെട്ടിരിക്കുന്നു എന്നാൽ ഇനിയും പ്രയോഗിക്കപ്പെടുകയില്ല.</string>
+    <string name="devices_volume_limit_band_bar_desc">അനുവദിച്ച വോളിയം പരിധി</string>
+    <string name="devices_volume_limit_no_streams_msg">ഈ ഉപകരണം ഇതുവരെ ഏതെങ്കിലും വോളിയം കൈകാര്യം ചെയ്യുന്നില്ല. ഇതിനായി പരിധി നിർണയിക്കാൻ ഡിവൈസ് സെറ്റിംഗുകളിലെ \"വോളിയം\" കീഴിൽ ഒന്ന് ഓൺ ചെയ്യുക.</string>
     <string name="devices_device_config_volume_rate_limiter_label">വോള്യം നിരക്ക് നിയന്ത്രണി</string>
     <string name="devices_device_config_volume_rate_limiter_desc">അതിവേഗ അല്ലെങ്കിൽ അമിത വോള്യം ക്രമീകരണങ്ങൾ തടയാൻ വോള്യം മാറ്റങ്ങളുടെ ആവൃത്തി പരിമിതപ്പെടുത്തുക.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">വോള്യം വർദ്ധന കാലതാമസം</string>

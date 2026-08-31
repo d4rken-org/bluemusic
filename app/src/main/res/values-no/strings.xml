@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Volumlås</string>
     <string name="devices_device_config_volume_lock_desc">Eventuelle volumendringer som ikke gjøres gjennom denne appen, blir tilbakestilt mens denne enheten er tilkoblet.</string>
     <string name="devices_device_config_volume_lock_override_desc">Volumelås overstyrer for øyeblikket denne funksjonen.</string>
+    <string name="devices_device_config_volume_limit_label">Volumbegrensning</string>
+    <string name="devices_device_config_volume_limit_desc">Holde volumet på denne enheten innenfor et område, f.eks. aldri høyere enn 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Grense for %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Mellom %1$d%% og %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Minst %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Maksimalt %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Ingen grense satt</string>
+    <string name="devices_volume_limit_screen_title">Volumbegrensning</string>
+    <string name="devices_volume_limit_disabled_hint">Av, dine grenser er lagret men blir ikke brukt ennå.</string>
+    <string name="devices_volume_limit_band_bar_desc">Tillatt volumområde</string>
+    <string name="devices_volume_limit_no_streams_msg">Denne enheten styrer ikke noen volumer ennå. Slå på en under «Volum» i enhetsinnstillingene for å sette en grense for det.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volumbegrenser</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Begrens hyppigheten av volumendringer for å forhindre raske eller overdrevne volumjusteringer.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volumøkningsforsinkelse</string>

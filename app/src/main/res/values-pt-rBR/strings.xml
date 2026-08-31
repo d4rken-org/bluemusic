@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Bloqueio de volume</string>
     <string name="devices_device_config_volume_lock_desc">Qualquer alteração de volume não feita através deste aplicativo será revertida enquanto este dispositivo estiver conectado.</string>
     <string name="devices_device_config_volume_lock_override_desc">O bloqueio de volume está substituindo este recurso no momento.</string>
+    <string name="devices_device_config_volume_limit_label">Limite de volume</string>
+    <string name="devices_device_config_volume_limit_desc">Manter o volume deste dispositivo dentro de um intervalo, por exemplo, nunca acima de 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Limite para %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Entre %1$d%% e %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Pelo menos %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">No máximo %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Sem limite definido</string>
+    <string name="devices_volume_limit_screen_title">Limite de volume</string>
+    <string name="devices_volume_limit_disabled_hint">Desativado. Seus limites estão salvos, mas ainda não serão aplicados.</string>
+    <string name="devices_volume_limit_band_bar_desc">Intervalo de volume permitido</string>
+    <string name="devices_volume_limit_no_streams_msg">Este dispositivo não gerencia nenhum volume ainda. Ative um em \"Volume\" nas configurações do dispositivo para definir um limite para ele.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitador de taxa de volume</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limita a frequência de mudanças de volume para prevenir ajustes rápidos ou excessivos.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Atraso de aumento de volume</string>

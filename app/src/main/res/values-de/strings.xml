@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Lautstärkesperre</string>
     <string name="devices_device_config_volume_lock_desc">Alle nicht über diese App vorgenommenen Lautstärkeänderungen werden zurückgesetzt, während dieses Gerät verbunden ist.</string>
     <string name="devices_device_config_volume_lock_override_desc">Lautstärkesperre überschreibt diese Funktion derzeit.</string>
+    <string name="devices_device_config_volume_limit_label">Volumenbegrenzung</string>
+    <string name="devices_device_config_volume_limit_desc">Halte die Lautstärke dieses Geräts in einem Bereich, z.B. nie lauter als 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Begrenzung für %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Zwischen %1$d%% und %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Mindestens %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Höchstens %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Keine Begrenzung eingestellt</string>
+    <string name="devices_volume_limit_screen_title">Volumenbegrenzung</string>
+    <string name="devices_volume_limit_disabled_hint">Aus, deine Begrenzungen sind gespeichert, werden aber noch nicht angewendet.</string>
+    <string name="devices_volume_limit_band_bar_desc">Erlaubter Lautstärkebereich</string>
+    <string name="devices_volume_limit_no_streams_msg">Dieses Gerät verwaltet noch keine Lautstärken. Schalte eine unter \"Lautstärke\" in den Geräteeinstellungen ein, um eine Begrenzung dafür zu setzen.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Lautstärke-Begrenzer</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Begrenzt die Häufigkeit von Lautstärkeänderungen, um schnelle oder übermäßige Lautstärke-Anpassungen zu verhindern.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Erhöhungsverzögerung</string>

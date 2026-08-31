@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">ចាក់សោកម្រិតសំឡេង</string>
     <string name="devices_device_config_volume_lock_desc">ការផ្លាស់ប្តូរកម្រិតសំឡេងណាមួយដែលមិនធ្វើតាមរយៈស្រងកម្មវិធីនេះ នឹងត្រូវបានដំណើរការពេលឧបករណ៍នេះភ្ជាប់។</string>
     <string name="devices_device_config_volume_lock_override_desc">ការចាក់សោសំឡេងបច្ចុប្បន្នបដិសេធមុខងារនេះ។</string>
+    <string name="devices_device_config_volume_limit_label">ដែនកំណត់សំឡេង</string>
+    <string name="devices_device_config_volume_limit_desc">រក្សាកម្រិតសំឡេងឧបករណ៍នេះឱ្យនៅក្នុងចន្លោះកំណត់ ឧទាហរណ៍ មិនឱ្យខ្លាំងជាង 50%។</string>
+    <string name="devices_device_config_volume_limit_stream_label">ដែនកំណត់សម្រាប់ %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">ចន្លោះពី %1$d%% ដល់ %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">យ៉ាងតិច %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">យ៉ាងច្រើន %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">មិនបានកំណត់ដែនកំណត់ទេ</string>
+    <string name="devices_volume_limit_screen_title">ដែនកំណត់សំឡេង</string>
+    <string name="devices_volume_limit_disabled_hint">បិទ ដែនកំណត់របស់អ្នកត្រូវបានរក្សាទុក ប៉ុន្តែមិនទាន់ត្រូវបានអនុវត្តទេ។</string>
+    <string name="devices_volume_limit_band_bar_desc">ចន្លោះកម្រិតសំឡេងដែលអនុញ្ញាត</string>
+    <string name="devices_volume_limit_no_streams_msg">ឧបករណ៍នេះមិនទាន់គ្រប់គ្រងកម្រិតសំឡេងណាមួយនៅឡើយទេ។ បើកមួយក្រោម \"សំឡេង\" នៅក្នុងការកំណត់ឧបករណ៍ ដើម្បីកំណត់ដែនកំណត់សម្រាប់វា។</string>
     <string name="devices_device_config_volume_rate_limiter_label">កម្មវិធីកំណត់ល្បើឞកម្រិតសំឡេង</string>
     <string name="devices_device_config_volume_rate_limiter_desc">កំណត់ប្រើកង់នៃការផ្លាស់ប្តូរកម្រិតសំឡេង ដើម្បីការពារការកែតម្រូវកម្រិតសំឡេងលើន អែឡ្វើហួសប្រមាណ។</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ការពន្យារពេលការបង្កើនកម្រិតសំឡេង</string>

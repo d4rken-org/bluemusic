@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Bloccar il volum</string>
     <string name="devices_device_config_volume_lock_desc">Tut las midadas da volum betg fatgas tras questa app vegnan revocadas cura che quest apparat è connectà.</string>
     <string name="devices_device_config_volume_lock_override_desc">Il blocco dal volumen surpassa actualmain questa funcziun.</string>
+    <string name="devices_device_config_volume_limit_label">Limita da volum</string>
+    <string name="devices_device_config_volume_limit_desc">Restrenscha il volum da quest apparat en in secturi, p.ex. mai pli ault che 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Limita per %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Tranter %1$d%% e %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Almain %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Al maximum %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Nagina limita definida</string>
+    <string name="devices_volume_limit_screen_title">Limita da volum</string>
+    <string name="devices_volume_limit_disabled_hint">Deactivà, tias limitas èn memorisadas, ma na vegnan anc betg applitgadas.</string>
+    <string name="devices_volume_limit_band_bar_desc">Secturi da volum permess</string>
+    <string name="devices_volume_limit_no_streams_msg">Quest apparat na administrescha anc nagin volum. Activescha in sut «Volum» en las suandanzas da l\'apparat per definir ina limita per el.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitatur da frequenza da volum</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limitar la frequenza da midadas da volum per evitar adattaments da volum rapidamain u excessivamain.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Retard d\'augmentaziún da volum</string>

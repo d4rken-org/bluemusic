@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">ஒலி பூட்டு</string>
     <string name="devices_device_config_volume_lock_desc">இந்த சாதனம் இணைக்கப்பட்டிருக்கும்போது இந்த ஆப் அன்றி மாற்றப்பட்ட ஒலி மாற்றங்கள் உதாரணமாக மாற்றப்படும்.</string>
     <string name="devices_device_config_volume_lock_override_desc">தொகுதி பூட்டு தற்போது இந்த அம்சத்தை மேலெழுதுகிறது.</string>
+    <string name="devices_device_config_volume_limit_label">ஒலியளவு வரம்பு</string>
+    <string name="devices_device_config_volume_limit_desc">இந்தச் சாதனத்தின் ஒலியளவை ஒரு வரம்பிற்குள் வைத்திருங்கள், எடுத்துக்காட்டாக 50%-க்கு மேல் இருக்காதவாறு.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s க்கான வரம்பு</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% முதல் %2$d%% வரை</string>
+    <string name="devices_device_config_volume_limit_min_desc">குறைந்தது %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">அதிகபட்சம் %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">வரம்பு அமைக்கப்படவில்லை</string>
+    <string name="devices_volume_limit_screen_title">ஒலியளவு வரம்பு</string>
+    <string name="devices_volume_limit_disabled_hint">முடக்கப்பட்டுள்ளது, உங்கள் வரம்புகள் சேமிக்கப்பட்டுள்ளன, ஆனால் இன்னும் பயன்படுத்தப்படாது.</string>
+    <string name="devices_volume_limit_band_bar_desc">அனுமதிக்கப்பட்ட ஒலியளவு வரம்பு</string>
+    <string name="devices_volume_limit_no_streams_msg">இந்தச் சாதனம் இன்னும் எந்த ஒலியளவையும் நிர்வகிக்கவில்லை. அதற்கு வரம்பு அமைக்க, சாதன அமைப்புகளில் \"ஒலியளவு\" என்பதன் கீழ் ஒன்றை இயக்கவும்.</string>
     <string name="devices_device_config_volume_rate_limiter_label">ஒலி விகித கட்டுப்பாடு</string>
     <string name="devices_device_config_volume_rate_limiter_desc">விரைவாக மற்றும் அதிகமாக ஒலி சரிசெய்த்தல்களைத் தடுக்க ஒலி மாற்றங்களின் அலைவீச்சைக் கட்டுப்படுத்து.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ஒலி ஐர்த்தல் தாமதம்</string>

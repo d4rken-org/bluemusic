@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">音量鎖定</string>
     <string name="devices_device_config_volume_lock_desc">裝置連接期間，任何非通過此應用進行的音量變化將被撤銷。</string>
     <string name="devices_device_config_volume_lock_override_desc">音量鎖定目前覆蓋了此功能。</string>
+    <string name="devices_device_config_volume_limit_label">音量限制</string>
+    <string name="devices_device_config_volume_limit_desc">將此裝置的音量限制在指定範圍內，例如最高不超過 50%。</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s 的限制</string>
+    <string name="devices_device_config_volume_limit_range_desc">介於 %1$d%% 至 %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">至少 %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">最多 %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">未設定限制</string>
+    <string name="devices_volume_limit_screen_title">音量限制</string>
+    <string name="devices_volume_limit_disabled_hint">已關閉，你的限制已儲存但暫未生效。</string>
+    <string name="devices_volume_limit_band_bar_desc">允許的音量範圍</string>
+    <string name="devices_volume_limit_no_streams_msg">此裝置還沒管理任何音量。請在裝置設定的「音量」中啟用其中一個，以便設定限制。</string>
     <string name="devices_device_config_volume_rate_limiter_label">音量限流器</string>
     <string name="devices_device_config_volume_rate_limiter_desc">限制音量變化频率，以防止快速或過度的音量調整。</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">音量增加延遲</string>

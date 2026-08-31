@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Verrouillage du volume</string>
     <string name="devices_device_config_volume_lock_desc">Tout changement de volume qui ne sera pas effectué grâce à cette appli sera annulé tant que cet appareil est connecté.</string>
     <string name="devices_device_config_volume_lock_override_desc">Le verrou de volume remplace actuellement cette fonctionnalité.</string>
+    <string name="devices_device_config_volume_limit_label">Limite de volume</string>
+    <string name="devices_device_config_volume_limit_desc">Limiter le volume de cet appareil à une plage, par exemple jamais plus fort que 50 %.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Limite pour %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Entre %1$d %% et %2$d %%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Au moins %1$d %%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Au maximum %1$d %%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Aucune limite définie</string>
+    <string name="devices_volume_limit_screen_title">Limite de volume</string>
+    <string name="devices_volume_limit_disabled_hint">Désactivé, tes limites sont sauvegardées mais ne seront pas appliquées pour le moment.</string>
+    <string name="devices_volume_limit_band_bar_desc">Plage de volume autorisée</string>
+    <string name="devices_volume_limit_no_streams_msg">Cet appareil ne gère aucun volume pour le moment. Active-en un sous « Volume » dans les paramètres de l\'appareil pour définir une limite.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limiteur de débit de volume</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limite la fréquence des changements de volume pour prévenir les ajustements rapides ou excessifs.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Délai d\'augmentation du volume</string>

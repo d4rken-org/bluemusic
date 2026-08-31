@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Bloccu de volume</string>
     <string name="devices_device_config_volume_lock_desc">Calsiasi cambiu de volume non fatu tramite s\'app serrà reversìdu mentre custu dispositivu est connètidu.</string>
     <string name="devices_device_config_volume_lock_override_desc">Su blocu de volume annullat custu funtzionamentu in custu momentu.</string>
+    <string name="devices_device_config_volume_limit_label">Limite de volumene</string>
+    <string name="devices_device_config_volume_limit_desc">Mantene su volumene de custu dispositivu intr\'una gamma, p.e. mai prus forte de su 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Limite pro %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Tra %1$d%% e %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Almenu %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Massimu %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Nessunu limite impostadu</string>
+    <string name="devices_volume_limit_screen_title">Limite de volumene</string>
+    <string name="devices_volume_limit_disabled_hint">Istintu, sos limites tuos sunt sarvaus ma non ant a valer ancora.</string>
+    <string name="devices_volume_limit_band_bar_desc">Gamma de volumene permisa</string>
+    <string name="devices_volume_limit_no_streams_msg">Custu dispositivu non gestione ancora nessunu volumene. Abilita unu in \"Volumene\" in sos impostamentos del dispositivu pro impostare unu limite.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitatore de frequèntzia de volume</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limita sa frequèntzia de sos cambios de volume pro prevènnere aggiustamentos ràpidos o ecèssivos.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ritàrdu de augmentu de volume</string>

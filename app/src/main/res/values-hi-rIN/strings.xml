@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">वॉल्यूम लॉक</string>
     <string name="devices_device_config_volume_lock_desc">इस उपकरण के माध्यम से नहीं किए गए किसी भी मात्रा परिवर्तन को वापस कर दिया जाएगा, जबकि यह उपकरण जुड़ा हुआ है।</string>
     <string name="devices_device_config_volume_lock_override_desc">वॉल्यूम लॉक अभी इस सुविधा को ओवरराइड कर रहा है।</string>
+    <string name="devices_device_config_volume_limit_label">वॉल्यूम सीमा</string>
+    <string name="devices_device_config_volume_limit_desc">इस डिवाइस की आवाज़ को एक सीमा में रखें, जैसे कभी 50% से ज़्यादा न हो।</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s के लिए सीमा</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% और %2$d%% के बीच</string>
+    <string name="devices_device_config_volume_limit_min_desc">कम से कम %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">अधिकतम %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">कोई सीमा निर्धारित नहीं</string>
+    <string name="devices_volume_limit_screen_title">वॉल्यूम सीमा</string>
+    <string name="devices_volume_limit_disabled_hint">बंद है, आपकी सीमाएं सहेजी गई हैं लेकिन अभी लागू नहीं होंगी।</string>
+    <string name="devices_volume_limit_band_bar_desc">अनुमत वॉल्यूम रेंज</string>
+    <string name="devices_volume_limit_no_streams_msg">यह डिवाइस अभी किसी भी वॉल्यूम को प्रबंधित नहीं करता है। डिवाइस सेटिंग में \"वॉल्यूम\" के तहत एक को चालू करें ताकि इसके लिए सीमा निर्धारित की जा सके।</string>
     <string name="devices_device_config_volume_rate_limiter_label">वॉल्यूम दर सीमक</string>
     <string name="devices_device_config_volume_rate_limiter_desc">वॉल्यूम परिवर्तनों की आवृत्ति को सीमित करें ताकि तेज़ या अत्यधिक वॉल्यूम समायोजन को रोका जा सके।</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">वॉल्यूम बढ़ाने में देरी</string>

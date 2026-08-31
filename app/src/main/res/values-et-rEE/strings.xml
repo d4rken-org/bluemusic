@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Helitugevuse lukustamine</string>
     <string name="devices_device_config_volume_lock_desc">Kõik selle rakenduse välised heli muudatused tühistatakse, kui seade on ühendatud.</string>
     <string name="devices_device_config_volume_lock_override_desc">Helitugevuse lukk tühistab praegu selle funktsiooni.</string>
+    <string name="devices_device_config_volume_limit_label">Helitugevuse piirang</string>
+    <string name="devices_device_config_volume_limit_desc">Hoia selle seadme helitugevust vahemikus, näiteks mitte kunagi kõvemamalt kui 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s piirang</string>
+    <string name="devices_device_config_volume_limit_range_desc">Vahemikus %1$d%% kuni %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Vähemalt %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Kõige rohkem %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Piirangut pole määratud</string>
+    <string name="devices_volume_limit_screen_title">Helitugevuse piirang</string>
+    <string name="devices_volume_limit_disabled_hint">Välja lülitatud, piirangud on salvestatud, kuid neid ei rakendata veel.</string>
+    <string name="devices_volume_limit_band_bar_desc">Lubatud helitugevuse vahemik</string>
+    <string name="devices_volume_limit_no_streams_msg">See seade ei halda veel ühtegi helitugevust. Lülita üks sisse jaotises \"Helitugevus\" seadme seadetes, et määrata sellele piirang.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Helitugevuse määra piirang</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Piirita helitugevuse muutuste sagedust, et vältida kiiret või liigset muutmist.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Helitugevuse tõstmise viivitus</string>

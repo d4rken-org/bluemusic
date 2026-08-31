@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Bloqueo de volumen</string>
     <string name="devices_device_config_volume_lock_desc">Cualquier cambio de volumen no realizado a través de esta aplicación se revertirá mientras este dispositivo esté conectado.</string>
     <string name="devices_device_config_volume_lock_override_desc">El bloqueo de volumen anula actualmente esta función.</string>
+    <string name="devices_device_config_volume_limit_label">Límite de volumen</string>
+    <string name="devices_device_config_volume_limit_desc">Limita el volumen de este dispositivo a un rango, p. ej. nunca más fuerte que el 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Límite para %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Entre %1$d%% y %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Mínimo %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Máximo %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Sin límite establecido</string>
+    <string name="devices_volume_limit_screen_title">Límite de volumen</string>
+    <string name="devices_volume_limit_disabled_hint">Desactivado, tus límites se guardan pero aún no se aplicarán.</string>
+    <string name="devices_volume_limit_band_bar_desc">Rango de volumen permitido</string>
+    <string name="devices_volume_limit_no_streams_msg">Este dispositivo aún no gestiona ningún volumen. Activa uno en \"Volumen\" en la configuración del dispositivo para establecer un límite para ello.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitador de velocidad de volumen</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limita la frecuencia de cambios de volumen para prevenir ajustes rápidos o excesivos de volumen.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Retraso de aumento de volumen</string>
