@@ -281,17 +281,6 @@ class DeviceConfigViewModel @AssistedInject constructor(
                 if (result == ToggleResult.NOT_PRO) events.emit(ConfigEvent.RequiresPro)
             }
 
-            is ConfigAction.OnEditVolumeLimitClicked -> {
-                val device = currentState().device
-                events.emit(
-                    ConfigEvent.ShowVolumeLimitDialog(
-                        type = action.type,
-                        currentMin = device.getVolumeMin(action.type),
-                        currentMax = device.getVolumeMax(action.type),
-                    )
-                )
-            }
-
             is ConfigAction.OnEditVolumeLimit -> {
                 deviceRepo.setVolumeLimit(deviceAddress, action.type, action.min, action.max)
             }

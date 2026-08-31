@@ -86,9 +86,6 @@
     <string name="devices_device_config_volume_limit_min_desc">At least %1$d%%</string>
     <string name="devices_device_config_volume_limit_max_desc">At most %1$d%%</string>
     <string name="devices_device_config_volume_limit_unset_desc">No limit set</string>
-    <string name="devices_device_config_volume_limit_dialog_desc">Set the lowest and highest volume in percent. Leave a field empty for no limit in that direction.</string>
-    <string name="devices_device_config_volume_limit_dialog_min_label">Minimum (%)</string>
-    <string name="devices_device_config_volume_limit_dialog_max_label">Maximum (%)</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volume rate limiter</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limit the frequency of volume changes to prevent rapid or excessive volume adjustments.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volume increase delay</string>
