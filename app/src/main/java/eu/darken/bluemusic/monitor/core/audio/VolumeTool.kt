@@ -11,6 +11,7 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
+import eu.darken.bluemusic.common.hasApiLevel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -74,7 +75,7 @@ class VolumeTool @Inject constructor(
     }
 
     fun getMinVolume(streamId: AudioStream.Id): Int {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) return 0
+        if (!hasApiLevel(Build.VERSION_CODES.P)) return 0
         return try {
             audioManager.getStreamMinVolume(streamId.id)
         } catch (_: IllegalArgumentException) {
