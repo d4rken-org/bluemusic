@@ -8,6 +8,7 @@ import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
@@ -46,6 +47,7 @@ class BaseVolumeModuleTest : BaseTest() {
     private lateinit var volumeObserver: VolumeObserver
     private lateinit var observationGate: VolumeObservationGate
     private lateinit var device: ManagedDevice
+    private lateinit var limitEnforcer: VolumeLimitEnforcer
     private lateinit var module: TestVolumeModule
 
     private class TestVolumeModule(
@@ -54,7 +56,8 @@ class BaseVolumeModuleTest : BaseTest() {
         observationGate: VolumeObservationGate,
         ownerRegistry: AudioStreamOwnerRegistry,
         deviceRepo: DeviceRepo,
-    ) : BaseVolumeModule(volumeTool, volumeObserver, observationGate, ownerRegistry, deviceRepo) {
+        limitEnforcer: VolumeLimitEnforcer,
+    ) : BaseVolumeModule(volumeTool, volumeObserver, observationGate, ownerRegistry, deviceRepo, limitEnforcer) {
         override val type = AudioStream.Type.MUSIC
         override val priority = 10
 
@@ -71,8 +74,9 @@ class BaseVolumeModuleTest : BaseTest() {
         val conversions = VolumeTool(mockk<AudioManager>(relaxed = true).also {
             every { it.getStreamMaxVolume(any()) } returns maxLevel
         })
-        every { volumeTool.resolveBoundedLevel(any(), any(), any()) } answers {
-            conversions.resolveBoundedLevel(firstArg(), secondArg(), thirdArg())
+        limitEnforcer = VolumeLimitEnforcer(conversions)
+        every { volumeTool.resolveBoundedLevel(any(), any(), any(), any()) } answers {
+            conversions.resolveBoundedLevel(firstArg(), secondArg(), thirdArg(), arg(3))
         }
         every { volumeTool.bandLevels(any(), any()) } answers {
             conversions.bandLevels(firstArg(), secondArg())
@@ -87,6 +91,7 @@ class BaseVolumeModuleTest : BaseTest() {
             volumeTool, volumeObserver, observationGate,
             AudioStreamOwnerRegistry(),
             mockk(relaxed = true),
+            limitEnforcer,
         )
 
         every { device.getStreamId(AudioStream.Type.MUSIC) } returns streamId
@@ -245,7 +250,7 @@ class BaseVolumeModuleTest : BaseTest() {
     ): Pair<TestVolumeModule, AudioStreamOwnerRegistry> {
         val deviceRepo = mockk<DeviceRepo>(relaxed = true)
         every { deviceRepo.devices } returns devicesFlow
-        val mod = TestVolumeModule(volumeTool, volumeObserver, observationGate, registry, deviceRepo)
+        val mod = TestVolumeModule(volumeTool, volumeObserver, observationGate, registry, deviceRepo, limitEnforcer)
         return mod to registry
     }
 
@@ -375,8 +380,8 @@ class BaseVolumeModuleTest : BaseTest() {
             val deviceRepo = mockk<DeviceRepo>(relaxed = true)
             every { deviceRepo.devices } returns devicesFlow
             // Two independent module instances sharing the same gate
-            val mod1 = TestVolumeModule(volumeTool, volumeObserver, observationGate, registry, deviceRepo)
-            val mod2 = TestVolumeModule(volumeTool, volumeObserver, observationGate, registry, deviceRepo)
+            val mod1 = TestVolumeModule(volumeTool, volumeObserver, observationGate, registry, deviceRepo, limitEnforcer)
+            val mod2 = TestVolumeModule(volumeTool, volumeObserver, observationGate, registry, deviceRepo, limitEnforcer)
 
             val dev = realDevice(actionDelayMs = 0L, monitoringDurationMs = 2000L)
             devicesFlow.value = listOf(dev)
@@ -681,6 +686,52 @@ class BaseVolumeModuleTest : BaseTest() {
             coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, 7) }
             coVerify(exactly = 0) { volumeTool.changeVolume(streamId, maxLevel) }
         }
+
+        @Test
+        fun `grouped earbuds - setInitial applies the strictest ceiling in the group`() =
+            runTest(UnconfinedTestDispatcher()) {
+                val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
+                val registry = AudioStreamOwnerRegistry()
+                val (mod, _) = createModuleWithDeps(registry, devicesFlow)
+
+                fun bud(addr: String, musicVolumeMax: Float) = ManagedDevice(
+                    isConnected = true,
+                    device = SourceDeviceWrapper(
+                        address = addr,
+                        alias = "Buds3 Pro",
+                        name = "Buds3 Pro",
+                        deviceType = SourceDevice.Type.HEADPHONES,
+                        isConnected = true,
+                    ),
+                    config = DeviceConfigEntity(
+                        address = addr,
+                        musicVolume = 1f,
+                        actionDelay = 0L,
+                        monitoringDuration = 0L,
+                        volumeLimit = true,
+                        musicVolumeMax = musicVolumeMax,
+                        isEnabled = true,
+                    ),
+                )
+
+                val budL = "AA:BB:CC:DD:EE:01"
+                val budR = "AA:BB:CC:DD:EE:02"
+                // The looser member is served first, so a per-device band would write level 12.
+                val connecting = bud(budL, 0.8f)
+                devicesFlow.value = listOf(connecting, bud(budR, 0.4f))
+                registry.onDeviceConnected(budL, "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+                registry.onDeviceConnected(budR, "Buds3 Pro", SourceDevice.Type.HEADPHONES, 1002L, 1L)
+
+                every { volumeTool.hasRecentTarget(streamId, any()) } returns true
+                coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns true
+
+                val job = launch { mod.handle(DeviceEvent.Connected(connecting)) }
+                advanceTimeBy(5000)
+                job.join()
+
+                coVerify(atLeast = 1) { volumeTool.changeVolume(streamId, 6, any(), any()) }
+                coVerify(exactly = 0) { volumeTool.changeVolume(streamId, 12, any(), any()) }
+            }
 
         @Test
         fun `nudge does not step out of the band`() = runTest(UnconfinedTestDispatcher()) {

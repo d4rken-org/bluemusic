@@ -7,8 +7,10 @@ import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
+import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode.Companion.fromFloat
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
@@ -28,6 +30,7 @@ abstract class BaseVolumeModule(
     private val observationGate: VolumeObservationGate,
     protected val ownerRegistry: AudioStreamOwnerRegistry,
     private val deviceRepo: DeviceRepo,
+    private val limitEnforcer: VolumeLimitEnforcer,
 ) : ConnectionModule {
 
     abstract val type: AudioStream.Type
@@ -78,6 +81,22 @@ abstract class BaseVolumeModule(
         }
     }
 
+    /**
+     * The bounds of the whole owner group, not just the connecting device: a grouped pair with
+     * different caps must land on the strictest one no matter which member's connect event we are
+     * serving. The write is a self event, so [eu.darken.bluemusic.monitor.core.modules.volume.VolumeLimitModule]
+     * never gets a chance to correct it afterwards.
+     */
+    private suspend fun allowedLevels(streamId: AudioStream.Id): IntRange? {
+        val ownerAddresses = ownerRegistry.ownerAddressesFor(streamId).toSet()
+        if (ownerAddresses.isEmpty()) return null
+        return limitEnforcer.allowedLevels(
+            streamId = streamId,
+            devices = deviceRepo.currentDevices(),
+            ownerAddresses = ownerAddresses,
+        )
+    }
+
     protected open suspend fun setInitial(device: ManagedDevice, volumeMode: VolumeMode) {
         log(tag, INFO) { "Setting initial volume ($volumeMode) for ${device.address}/${device.label}" }
 
@@ -89,10 +108,11 @@ abstract class BaseVolumeModule(
 
         val streamId = device.getStreamId(type)
         val band = device.getVolumeBand(type)
+        val allowedLevels = allowedLevels(streamId)
 
         val changed = volumeTool.changeVolume(
             streamId = streamId,
-            targetLevel = volumeTool.resolveBoundedLevel(streamId, volumeMode.percentage, band),
+            targetLevel = volumeTool.resolveBoundedLevel(streamId, volumeMode.percentage, band, allowedLevels),
             visible = device.visibleAdjustments,
             delay = device.adjustmentDelay
         )
@@ -105,7 +125,7 @@ abstract class BaseVolumeModule(
             log(tag, VERBOSE) { "Current volume is $currentVolume and we will lower then raise it." }
             val visible = device.visibleAdjustments
             // The nudge must not step out of the band, not even for the 500ms it takes to step back.
-            val allowed = band?.let { volumeTool.bandLevels(streamId, it) }
+            val allowed = allowedLevels ?: band?.let { volumeTool.bandLevels(streamId, it) }
             val mayLower = allowed == null || currentVolume > allowed.first
             val mayRaise = allowed == null || currentVolume < allowed.last
 
@@ -150,7 +170,12 @@ abstract class BaseVolumeModule(
         }
 
         val streamId = device.getStreamId(type)
-        val targetLevel = volumeTool.resolveBoundedLevel(streamId, volumeMode.percentage, device.getVolumeBand(type))
+        val targetLevel = volumeTool.resolveBoundedLevel(
+            streamId = streamId,
+            percent = volumeMode.percentage,
+            band = device.getVolumeBand(type),
+            allowedLevels = allowedLevels(streamId),
+        )
 
         log(tag, INFO) { "Monitoring volume (target=$volumeMode, level=$targetLevel) for ${device.address}/${device.label}" }
 

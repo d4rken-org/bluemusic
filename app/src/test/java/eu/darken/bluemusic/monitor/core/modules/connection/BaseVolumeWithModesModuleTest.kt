@@ -13,6 +13,7 @@ import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
@@ -93,6 +94,7 @@ class BaseVolumeWithModesModuleTest : BaseTest() {
         every { deviceRepo.devices } returns devicesFlow
         val module = object : BaseVolumeWithModesModule(
             volumeTool, volumeObserver, observationGate, registry, deviceRepo,
+            VolumeLimitEnforcer(volumeTool),
             volumeModeTool, ringerTool, ringerModeObserver,
         ) {
             override val type = AudioStream.Type.RINGTONE

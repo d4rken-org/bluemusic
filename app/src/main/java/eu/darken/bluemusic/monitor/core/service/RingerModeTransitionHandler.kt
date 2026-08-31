@@ -10,6 +10,7 @@ import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerModeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
@@ -21,6 +22,7 @@ import javax.inject.Singleton
 class RingerModeTransitionHandler @Inject constructor(
     private val deviceRepo: DeviceRepo,
     private val volumeTool: VolumeTool,
+    private val limitEnforcer: VolumeLimitEnforcer,
     private val observationGate: VolumeObservationGate,
     private val ownerRegistry: AudioStreamOwnerRegistry,
 ) {
@@ -29,8 +31,8 @@ class RingerModeTransitionHandler @Inject constructor(
         log(TAG, VERBOSE) { "handle: $event" }
 
         val ownerAddresses = ownerRegistry.ownerAddressesFor(AudioStream.Id.STREAM_RINGTONE).toSet()
-        val ownerDevices = deviceRepo.currentDevices()
-            .filter { it.isActive && it.address in ownerAddresses }
+        val allDevices = deviceRepo.currentDevices()
+        val ownerDevices = allDevices.filter { it.isActive && it.address in ownerAddresses }
 
         if (ownerDevices.isEmpty()) {
             log(TAG, INFO) { "No owner devices for ringtone, skipping." }
@@ -83,6 +85,13 @@ class RingerModeTransitionHandler @Inject constructor(
                         streamId = streamId,
                         percent = storedNotification,
                         band = primaryDevice.getVolumeBand(AudioStream.Type.NOTIFICATION),
+                        // The primary device is only the config source; the whole group's bounds
+                        // decide what may reach the notification stream.
+                        allowedLevels = limitEnforcer.allowedLevels(
+                            streamId = streamId,
+                            devices = allDevices,
+                            ownerAddresses = ownerRegistry.ownerAddressesFor(streamId).toSet(),
+                        ),
                     ),
                     visible = false,
                 )

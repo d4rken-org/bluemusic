@@ -255,9 +255,19 @@ class VolumeTool @Inject constructor(
     /**
      * The single definition of which level may be written. Every apply path goes through here so
      * no two of them can disagree about what a band allows.
+     *
+     * [allowedLevels] is the owner group's resolved range and wins over [band], which only carries
+     * one device's bounds: for a grouped pair with different bounds the group's stricter ceiling is
+     * the one that has to hold.
      */
-    fun resolveBoundedLevel(streamId: AudioStream.Id, percent: Float, band: VolumeBand?): Int {
+    fun resolveBoundedLevel(
+        streamId: AudioStream.Id,
+        percent: Float,
+        band: VolumeBand?,
+        allowedLevels: IntRange? = null,
+    ): Int {
         val target = percentageToLevel(percent, getMinVolume(streamId), getMaxVolume(streamId))
+        if (allowedLevels != null) return target.coerceIn(allowedLevels.first, allowedLevels.last)
         if (band == null || band.isUnbounded) return target
         val allowed = bandLevels(streamId, band)
         return target.coerceIn(allowed.first, allowed.last)

@@ -13,6 +13,7 @@ import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeObserver
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.connection.CallVolumeModule
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
@@ -184,6 +185,7 @@ class EventDispatcherVolumeIntegrationTest : BaseTest() {
             observationGate = observationGate,
             ownerRegistry = ownerRegistry,
             deviceRepo = deviceRepo,
+            limitEnforcer = VolumeLimitEnforcer(volumeTool),
         )
         private val tracker by lazy {
             EventTypeDedupTracker(

@@ -24,6 +24,7 @@ import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.DevicesSettings
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.NewDeviceCreator
+import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.getDevice
 import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.eq.core.EqCoordinator
@@ -34,8 +35,11 @@ import eu.darken.bluemusic.eq.ui.deriveEqStatus
 import eu.darken.bluemusic.main.core.GeneralSettings
 import eu.darken.bluemusic.monitor.core.BackgroundActivityGuard
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeBand
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeModeTool
+import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.channels.Channel
@@ -59,6 +63,8 @@ class DashboardViewModel @Inject constructor(
     private val permissionHelper: PermissionHelper,
     private val deviceRepo: DeviceRepo,
     private val volumeModeTool: VolumeModeTool,
+    private val limitEnforcer: VolumeLimitEnforcer,
+    private val ownerRegistry: AudioStreamOwnerRegistry,
     private val upgradeRepo: UpgradeRepo,
     bluetoothSource: BluetoothRepo,
     private val generalSettings: GeneralSettings,
@@ -169,15 +175,29 @@ class DashboardViewModel @Inject constructor(
 
     private val devicesWithAppsFlow = combine(
         devicesFlow,
-        appRepo.apps
-    ) { devices, appInfos ->
+        appRepo.apps,
+        ownerRegistry.ownerSnapshots,
+    ) { devices, appInfos, ownerSnapshot ->
         val appInfoMap = appInfos.associateBy { it.packageName }
+        val ownerAddresses = ownerSnapshot.ownerAddresses.toSet()
         devices.map { device ->
             DeviceWithApps(
                 device = device,
                 launchApps = device.launchPkgs.mapNotNull { pkgName ->
                     appInfoMap[pkgName]
-                }
+                },
+                volumeBands = AudioStream.Type.entries.mapNotNull { type ->
+                    val band = if (device.address in ownerAddresses) {
+                        // Same range [DashboardAction.AdjustVolume] will write through, so the
+                        // travel the slider offers is the travel the hardware will accept.
+                        limitEnforcer.allowedBand(device.getStreamId(type), devices, ownerAddresses)
+                    } else {
+                        // Not an owner: nothing is applied to the hardware, its own bounds are
+                        // all that describe what it will be restored to.
+                        device.getVolumeBand(type)
+                    }
+                    band?.let { type to it }
+                }.toMap(),
             )
         }
     }
@@ -236,7 +256,9 @@ class DashboardViewModel @Inject constructor(
 
     data class DeviceWithApps(
         val device: ManagedDevice,
-        val launchApps: List<AppInfo>
+        val launchApps: List<AppInfo> = emptyList(),
+        /** Per stream travel the sliders may offer, already resolved across the owner group. */
+        val volumeBands: Map<AudioStream.Type, VolumeBand> = emptyMap(),
     )
 
     /** What the equalizer is doing, and which device it is doing it for. */
@@ -371,12 +393,18 @@ class DashboardViewModel @Inject constructor(
                 val device = deviceRepo.getDevice(action.addr)
                 if (device?.isActive != true) return@launch
 
+                val streamId = device.getStreamId(action.type)
                 volumeModeTool.apply(
-                    streamId = device.getStreamId(action.type),
+                    streamId = streamId,
                     streamType = action.type,
                     volumeMode = action.volumeMode,
                     visible = device.visibleAdjustments,
                     band = device.getVolumeBand(action.type),
+                    allowedLevels = limitEnforcer.allowedLevels(
+                        streamId = streamId,
+                        devices = deviceRepo.currentDevices(),
+                        ownerAddresses = ownerRegistry.ownerAddressesFor(streamId).toSet(),
+                    ),
                 )
             }
         }
