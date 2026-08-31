@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Bloqueig de volum</string>
     <string name="devices_device_config_volume_lock_desc">Qualsevol canvi de volum que no s\'hagi fet a través d\'aquesta aplicació es revertirà mentre aquest dispositiu estigui connectat.</string>
     <string name="devices_device_config_volume_lock_override_desc">El bloqueig de volum substitueix actualment aquesta funció.</string>
+    <string name="devices_device_config_volume_limit_label">Límit de volum</string>
+    <string name="devices_device_config_volume_limit_desc">Mantén el volum d\'aquest dispositiu dins d\'un interval, per exemple, mai més fort del 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Límit per a %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Entre %1$d%% i %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Com a mínim %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Com a màxim %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Sense límit establert</string>
+    <string name="devices_volume_limit_screen_title">Límit de volum</string>
+    <string name="devices_volume_limit_disabled_hint">Desactivat, els teus límits estan desats però encara no s\'aplicaran.</string>
+    <string name="devices_volume_limit_band_bar_desc">Interval de volum permès</string>
+    <string name="devices_volume_limit_no_streams_msg">Aquest dispositiu encara no gestiona cap volum. Activa\'n un a \"Volum\" a la configuració del dispositiu per establir-hi un límit.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitador de taxa de volum</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limita la freqüència dels canvis de volum per evitar ajustaments ràpids o excessius.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Retard d\'augment de volum</string>

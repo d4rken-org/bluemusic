@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Volumena ŝloso</string>
     <string name="devices_device_config_volume_lock_desc">Ĉiuj volumenŝanĝoj nefaritaj per ĉi tiu apo estos malfaritaj dum ĉi tiu aparato estas konektita.</string>
     <string name="devices_device_config_volume_lock_override_desc">Volumŝloso aktuale superregas ĉi tiun funkcion.</string>
+    <string name="devices_device_config_volume_limit_label">Limito de soniĝo</string>
+    <string name="devices_device_config_volume_limit_desc">Tenu la soniĝon de ĉi tiu aparato en intervalo, ekz. neniam pli laŭte ol 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Limito por %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Inter %1$d%% kaj %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Almenaŭ %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Maksimume %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Neniu limito establita</string>
+    <string name="devices_volume_limit_screen_title">Limito de soniĝo</string>
+    <string name="devices_volume_limit_disabled_hint">Malŝalte, viaj limitoj estas konservitaj sed ankoraŭ ne estos aplikataj.</string>
+    <string name="devices_volume_limit_band_bar_desc">Permesata intervalo de soniĝo</string>
+    <string name="devices_volume_limit_no_streams_msg">Ĉi tiu aparato ankoraŭ ne administras iujn volumojn. ŝaltu unu sub \"Sono\" en la agordoj de la aparato por agordi limon por ĝi.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volumena rapida limigilo</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limigi la frekvencon de volumenŝanĝoj por malhelpi rapidajn aŭ trooajn volumenĝustigojn.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volumena pliigo-prokrasto</string>

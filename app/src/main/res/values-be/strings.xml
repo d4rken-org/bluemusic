@@ -72,6 +72,14 @@
     <string name="devices_device_config_volume_lock_label">Блакіроўка гучнасці</string>
     <string name="devices_device_config_volume_lock_desc">Любыя змены гучнасці, зробленыя не чараз гэты дадатак, будуць адменены, пакуль гэта прылада падключана.</string>
     <string name="devices_device_config_volume_lock_override_desc">Блакіроўка гучнасці цяпер перавызначае гэтую функцыю.</string>
+    <string name="devices_device_config_volume_limit_label">Абмежаванне гучнасці</string>
+    <string name="devices_device_config_volume_limit_desc">Трымай гучнасць гэтага прыбора ў межах дыяпазону, напр. не больш чым 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Абмежаванне для %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Ад %1$d%% да %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Не менш %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Не больш %1$d%%</string>
+    <string name="devices_volume_limit_screen_title">Абмежаванне гучнасці</string>
+    <string name="devices_volume_limit_band_bar_desc">Дазволены дыяпазон гучнасці</string>
     <string name="devices_device_config_volume_rate_limiter_label">Абмяжальнік частаты змены гучнасці</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Абмяжыць частату змен гучнасці для прадухілення хуткіх або надмерных рэгулёвак.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Затрымка павышэння гучнасці</string>

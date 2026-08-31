@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">נעילת ווליום</string>
     <string name="devices_device_config_volume_lock_desc">כל שינויי עוצמה שלא בוצעו דרך אפליקציה זו יוחזרו כאשר המכשיר מחובר.</string>
     <string name="devices_device_config_volume_lock_override_desc">נעילת עוצמת הקול מבטלת כרגע תכונה זו.</string>
+    <string name="devices_device_config_volume_limit_label">הגבלת עוצמה</string>
+    <string name="devices_device_config_volume_limit_desc">שמור את עוצמת הקול של ההתקן בטווח מסוים, למשל לעולם לא יותר מ-50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">הגבלה עבור %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">בין %1$d%% ל-%2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">לפחות %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">לכל היותר %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">לא הוגדרה הגבלה</string>
+    <string name="devices_volume_limit_screen_title">הגבלת עוצמה</string>
+    <string name="devices_volume_limit_disabled_hint">כבוי, ההגבלות שלך שמורות אך עדיין לא יחולו.</string>
+    <string name="devices_volume_limit_band_bar_desc">טווח עוצמה מותר</string>
+    <string name="devices_volume_limit_no_streams_msg">ההתקן הזה עדיין לא מנהל אף עוצמה. הפעל אחת תחת \"עוצמה\" בהגדרות ההתקן כדי להגדיר לה הגבלה.</string>
     <string name="devices_device_config_volume_rate_limiter_label">מנקה קצב עוצמה</string>
     <string name="devices_device_config_volume_rate_limiter_desc">הגבלת תכיפות שינויי עוצמה כדי למנוע התאמות עוצמה מהירות או מוגזמות.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">השהיית הגדלת עוצמה</string>
@@ -106,7 +117,6 @@
     <plurals name="devices_indicator_auto_count">
         <item quantity="one">%d פקודה</item>
         <item quantity="two">%d פקודות</item>
-        <item quantity="many">%d פקודות</item>
         <item quantity="other">%d פקודות</item>
     </plurals>
     <string name="cd_autoplay_keycode_move_up">הזז למעלה</string>
@@ -207,7 +217,6 @@
     <plurals name="settings_support_debuglog_folder_desc">
         <item quantity="one">%1$d סשן בשימוש %2$s</item>
         <item quantity="two">%1$d סשנים בשימוש %2$s</item>
-        <item quantity="many">%1$d סשנים בשימוש %2$s</item>
         <item quantity="other">%1$d סשנים בשימוש %2$s</item>
     </plurals>
     <string name="settings_support_debuglog_folder_empty_desc">אין לוגי ניפוי באגים שמורים</string>
@@ -267,7 +276,6 @@
     <plurals name="debug_log_screen_log_files_ready">
         <item quantity="one">%1$d קובץ מוכן (%2$s)</item>
         <item quantity="two">%1$d קבצים מוכנים (%2$s)</item>
-        <item quantity="many">%1$d קבצים מוכנים (%2$s)</item>
         <item quantity="other">%1$d קבצים מוכנים (%2$s)</item>
     </plurals>
     <string name="debug_log_screen_discard_action">ותר</string>
@@ -310,7 +318,6 @@
     <plurals name="contact_word_count">
         <item quantity="one">%1$d / %2$d מילה</item>
         <item quantity="two">%1$d / %2$d מילים</item>
-        <item quantity="many">%1$d / %2$d מילים</item>
         <item quantity="other">%1$d / %2$d מילים</item>
     </plurals>
     <string name="contact_welcome_msg">אני קורא כל הודעה בעצמי ועושה כמיטב יכולתי להשיב, אך מכיוון שאני עובד לבד, זה עשוי לקחת קצת זמן. תודה על הסבלנות.</string>
@@ -397,7 +404,6 @@
     <plurals name="discover_device_limit_banner">
         <item quantity="one">גרסה חינמית: %1$d מתוך %2$d מכשיר</item>
         <item quantity="two">גרסה חינמית: %1$d מתוך %2$d מכשירים</item>
-        <item quantity="many">גרסה חינמית: %1$d מתוך %2$d מכשירים</item>
         <item quantity="other">גרסה חינמית: %1$d מתוך %2$d מכשירים</item>
     </plurals>
     <string name="general_delete_action">מחק</string>

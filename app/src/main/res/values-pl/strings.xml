@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Blokada głośności</string>
     <string name="devices_device_config_volume_lock_desc">Jakiekolwiek zmiany, które nie będą wprowadzane przez aplikację, zostaną cofnięte, gdy urządzenie jest podłączone.</string>
     <string name="devices_device_config_volume_lock_override_desc">Blokada głośności aktualnie zastępuje tę funkcję.</string>
+    <string name="devices_device_config_volume_limit_label">Limit głośności</string>
+    <string name="devices_device_config_volume_limit_desc">Utrzymaj głośność tego urządzenia w określonym zakresie, np. nigdy głośniej niż 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Limit dla %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Od %1$d%% do %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Co najmniej %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Co najwyżej %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Brak ustawionego limitu</string>
+    <string name="devices_volume_limit_screen_title">Limit głośności</string>
+    <string name="devices_volume_limit_disabled_hint">Wyłączone, twoje limity są zapisane, ale nie będą jeszcze stosowane.</string>
+    <string name="devices_volume_limit_band_bar_desc">Dozwolony zakres głośności</string>
+    <string name="devices_volume_limit_no_streams_msg">To urządzenie jeszcze nie zarządza żadnymi głośnościami. Włącz jedną w sekcji \"Głośność\" w ustawieniach urządzenia, aby ustawić dla niej limit.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ogranicznik częstotliwości głośności</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ogranicza częstotliwość zmian głośności, aby zapobiec szybkim lub nadmiernym regulacjom.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Opóźnienie zwiększenia głośności</string>

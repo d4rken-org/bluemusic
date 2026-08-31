@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Kunci volume</string>
     <string name="devices_device_config_volume_lock_desc">Perubahan volume yang tidak buat melalui aplikasi ini akan dikembalikan ketika perangkat ini tersambung.</string>
     <string name="devices_device_config_volume_lock_override_desc">Kunci volume saat ini menimpa fitur ini.</string>
+    <string name="devices_device_config_volume_limit_label">Batas volume</string>
+    <string name="devices_device_config_volume_limit_desc">Jaga volume perangkat ini dalam rentang tertentu, misalnya tidak pernah lebih keras dari 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Batas untuk %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Antara %1$d%% dan %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Minimal %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Maksimal %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Tidak ada batas yang ditetapkan</string>
+    <string name="devices_volume_limit_screen_title">Batas volume</string>
+    <string name="devices_volume_limit_disabled_hint">Nonaktif, batas kamu tersimpan tetapi belum diterapkan.</string>
+    <string name="devices_volume_limit_band_bar_desc">Rentang volume yang diizinkan</string>
+    <string name="devices_volume_limit_no_streams_msg">Perangkat ini belum mengatur volume apa pun. Aktifkan salah satu di bawah \"Volume\" pada pengaturan perangkat untuk menetapkan batas untuknya.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Pembatas laju volume</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Batasi frekuensi perubahan volume untuk mencegah penyesuaian volume yang cepat atau berlebihan.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Penundaan peningkatan volume</string>

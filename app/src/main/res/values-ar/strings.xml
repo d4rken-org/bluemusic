@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">قفل الصوت</string>
     <string name="devices_device_config_volume_lock_desc">سيتم التراجع عن أي تغييرات في مستوى الصوت لم تُجرَ عبر هذا التطبيق أثناء اتصال هذا الجهاز.</string>
     <string name="devices_device_config_volume_lock_override_desc">قفل الصوت يتجاوز هذه الميزة حاليًا.</string>
+    <string name="devices_device_config_volume_limit_label">حد مستوى الصوت</string>
+    <string name="devices_device_config_volume_limit_desc">حافظ على مستوى صوت هذا الجهاز ضمن نطاق معين، مثلاً ألا يتجاوز 50٪ أبداً.</string>
+    <string name="devices_device_config_volume_limit_stream_label">الحد الخاص بـ %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">بين %1$d%% و%2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">%1$d%% على الأقل</string>
+    <string name="devices_device_config_volume_limit_max_desc">%1$d%% كحد أقصى</string>
+    <string name="devices_device_config_volume_limit_unset_desc">لم يتم تعيين حد</string>
+    <string name="devices_volume_limit_screen_title">حد مستوى الصوت</string>
+    <string name="devices_volume_limit_disabled_hint">متوقف، تم حفظ حدودك لكن لن يتم تطبيقها بعد.</string>
+    <string name="devices_volume_limit_band_bar_desc">نطاق مستوى الصوت المسموح به</string>
+    <string name="devices_volume_limit_no_streams_msg">لا يدير هذا الجهاز أي مستويات صوت حتى الآن. فعّل واحداً ضمن \"مستوى الصوت\" في إعدادات الجهاز لتعيين حد له.</string>
     <string name="devices_device_config_volume_rate_limiter_label">منظم معدل الصوت</string>
     <string name="devices_device_config_volume_rate_limiter_desc">تحديد تكرار تغييرات الصوت لمنع التعديلات السريعة أو المفرطة على الصوت.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">تأخير زيادة الصوت</string>

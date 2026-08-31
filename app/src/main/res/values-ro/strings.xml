@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Blocare volum</string>
     <string name="devices_device_config_volume_lock_desc">Orice schimbări de volum care nu sunt făcute prin această aplicație vor fi revenite cât timp acest dispozitiv este conectat.</string>
     <string name="devices_device_config_volume_lock_override_desc">Blocarea volumului suprascrie în prezent această funcție.</string>
+    <string name="devices_device_config_volume_limit_label">Limită de volum</string>
+    <string name="devices_device_config_volume_limit_desc">Menține volumul acestui dispozitiv într-un interval, de exemplu niciodată mai tare de 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Limită pentru %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Între %1$d%% și %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Cel puțin %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Cel mult %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Nicio limită setată</string>
+    <string name="devices_volume_limit_screen_title">Limită de volum</string>
+    <string name="devices_volume_limit_disabled_hint">Dezactivat, limitele tale sunt salvate, dar nu vor fi aplicate încă.</string>
+    <string name="devices_volume_limit_band_bar_desc">Interval de volum permis</string>
+    <string name="devices_volume_limit_no_streams_msg">Acest dispozitiv nu gestionează niciun volum încă. Activează unul la „Volum” în setările dispozitivului pentru a-i seta o limită.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitator de rată volum</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limitează frecvența schimbărilor de volum pentru a preveni ajustările rapide sau excesive.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Întârziere creștere volum</string>

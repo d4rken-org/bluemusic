@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">ভলিউম লক</string>
     <string name="devices_device_config_volume_lock_desc">ডিভাইস সংযুক্ত থাকাকালীন এই অ্যাপের বাইরে করা যেকোনো ভলিউম পরিবর্তন পূরবাত্রবাদ হবে।</string>
     <string name="devices_device_config_volume_lock_override_desc">ভলিউম লক বর্তমানে এই ফিচারটি ওভাররাইড করছে।</string>
+    <string name="devices_device_config_volume_limit_label">ভলিউম সীমা</string>
+    <string name="devices_device_config_volume_limit_desc">এই ডিভাইসের ভলিউম একটি পরিসীমার মধ্যে রাখুন, যেমন কখনো 50% এর বেশি নয়।</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s এর জন্য সীমা</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% এবং %2$d%% এর মধ্যে</string>
+    <string name="devices_device_config_volume_limit_min_desc">কমপক্ষে %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">সর্বাধিক %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">কোনো সীমা নির্ধারিত হয়নি</string>
+    <string name="devices_volume_limit_screen_title">ভলিউম সীমা</string>
+    <string name="devices_volume_limit_disabled_hint">বন্ধ, আপনার সীমাগুলি সংরক্ষিত কিন্তু এখনও প্রয়োগ হবে না।</string>
+    <string name="devices_volume_limit_band_bar_desc">অনুমোদিত ভলিউম পরিসীমা</string>
+    <string name="devices_volume_limit_no_streams_msg">এই ডিভাইসটি এখনও কোনও ভলিউম পরিচালনা করে না। একটি সীমা নির্ধারণ করতে ডিভাইস সেটিংসে \"ভলিউম\" এর অধীনে একটি চালু করুন।</string>
     <string name="devices_device_config_volume_rate_limiter_label">ভলিউম রেট লিমিটার</string>
     <string name="devices_device_config_volume_rate_limiter_desc">দ্রুত বা অতিরিক্ত ভলিউম সমন্বয় প্রতিরোধ করতে ভলিউম পরিবর্তনের হার সীমিত করুন।</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ভলিউম বাড়ানোর বিরতি</string>

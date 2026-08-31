@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Volume lock</string>
     <string name="devices_device_config_volume_lock_desc">Any volume changes wey dis app no make go revert while dis device dey connected.</string>
     <string name="devices_device_config_volume_lock_override_desc">Volume lock dey override dis feature for now.</string>
+    <string name="devices_device_config_volume_limit_label">Volume limit</string>
+    <string name="devices_device_config_volume_limit_desc">Make sure di volume of dis device stay inside one range, e.g. e no go pass 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Limit for %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Between %1$d%% and %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">At least %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">At most %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">No limit dey set</string>
+    <string name="devices_volume_limit_screen_title">Volume limit</string>
+    <string name="devices_volume_limit_disabled_hint">E dey off, your limits don save but dem no go apply yet.</string>
+    <string name="devices_volume_limit_band_bar_desc">Volume range wey dey allowed</string>
+    <string name="devices_volume_limit_no_streams_msg">Dis device no dey manage any volume yet. Turn one on under \"Volume\" for di device settings to set limit for am.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volume rate limiter</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limit how often volume changes dey happen to prevent quick or excessive volume adjustments.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volume increase delay</string>

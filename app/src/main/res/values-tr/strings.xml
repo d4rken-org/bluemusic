@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Ses kilidi</string>
     <string name="devices_device_config_volume_lock_desc">Bu uygulama üzerinden yapılmayan ses değişiklikleri bu cihaz bağlıyken geri döndürülecektir.</string>
     <string name="devices_device_config_volume_lock_override_desc">Ses kilidi şu anda bu özelliği geçersiz kılıyor.</string>
+    <string name="devices_device_config_volume_limit_label">Ses seviyesi sınırı</string>
+    <string name="devices_device_config_volume_limit_desc">Bu cihazın ses seviyesini bir aralıkta tut, örneğin asla %50\'den yüksek olmasın.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s için sınır</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% ile %2$d%% arasında</string>
+    <string name="devices_device_config_volume_limit_min_desc">En az %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">En fazla %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Sınır belirlenmedi</string>
+    <string name="devices_volume_limit_screen_title">Ses seviyesi sınırı</string>
+    <string name="devices_volume_limit_disabled_hint">Kapalı, sınırların kaydedildi ancak henüz uygulanmayacak.</string>
+    <string name="devices_volume_limit_band_bar_desc">İzin verilen ses seviyesi aralığı</string>
+    <string name="devices_volume_limit_no_streams_msg">Bu cihaz henüz hiçbir ses seviyesini yönetmiyor. Bunun için bir sınır belirlemek üzere cihaz ayarlarındaki \"Ses Seviyesi\" bölümünden birini aç.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ses hızı sınırlayıcı</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Hızlı veya aşırı ses ayarlamalarını önlemek için ses değişikliklerinin sıklığını sınırla.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ses artırma gecikmesi</string>

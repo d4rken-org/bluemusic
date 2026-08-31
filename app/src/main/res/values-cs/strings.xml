@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Uzamknutí hlasitosti</string>
     <string name="devices_device_config_volume_lock_desc">Všechny změny hlasitosti, které nebyly provedeny pomocí této aplikace, budou při připojení tohoto zařízení zrušeny.</string>
     <string name="devices_device_config_volume_lock_override_desc">Tuto funkci v současné době přepisuje zámek hlasitosti.</string>
+    <string name="devices_device_config_volume_limit_label">Omezení hlasitosti</string>
+    <string name="devices_device_config_volume_limit_desc">Udržuj hlasitost tohoto zařízení v určitém rozsahu, např. nikdy hlasitěji než 50 %.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Omezení pro %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Mezi %1$d %% a %2$d %%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Alespoň %1$d %%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Nejvýše %1$d %%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Bez omezení</string>
+    <string name="devices_volume_limit_screen_title">Omezení hlasitosti</string>
+    <string name="devices_volume_limit_disabled_hint">Vypnuto, tvá omezení jsou uložena, ale zatím se nepoužijí.</string>
+    <string name="devices_volume_limit_band_bar_desc">Povolený rozsah hlasitosti</string>
+    <string name="devices_volume_limit_no_streams_msg">Toto zařízení zatím nespravuje žádné hlasitosti. Zapni některou v nastavení zařízení pod položkou „Hlasitost“, abys pro ni mohl nastavit omezení.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Omezovač hlasitosti</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Omezte četnost změn hlasitosti, abyste zabránili náhlým nebo přílišným změnám hlasitosti.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Zpoždění zvýšení hlasitosti</string>

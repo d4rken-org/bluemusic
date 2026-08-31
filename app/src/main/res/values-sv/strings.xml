@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Volymlås</string>
     <string name="devices_device_config_volume_lock_desc">Alla volymförändringar som inte görs via denna app kommer att återställas medan denna enhet är ansluten.</string>
     <string name="devices_device_config_volume_lock_override_desc">Volymspärr åsidosätter den här funktionen för tillfället.</string>
+    <string name="devices_device_config_volume_limit_label">Volymgräns</string>
+    <string name="devices_device_config_volume_limit_desc">Håll volymen för den här enheten inom ett intervall, t.ex. aldrig högre än 50 %.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Gräns för %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Mellan %1$d %% och %2$d %%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Minst %1$d %%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Högst %1$d %%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Ingen gräns inställd</string>
+    <string name="devices_volume_limit_screen_title">Volymgräns</string>
+    <string name="devices_volume_limit_disabled_hint">Av, dina gränser sparas men tillämpas inte än.</string>
+    <string name="devices_volume_limit_band_bar_desc">Tillåtet volymintervall</string>
+    <string name="devices_volume_limit_no_streams_msg">Den här enheten hanterar inga volymer än. Slå på en under \"Volym\" i enhetsinställningarna för att ange en gräns för den.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Volymhastighetsbegränsare</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Begränsa frekvensen av volymförändringar för att förhindra snabba eller överdrivna volymjusteringar.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Volymökningsfördröjning</string>

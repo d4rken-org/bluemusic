@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Khóa âm lượng</string>
     <string name="devices_device_config_volume_lock_desc">Mọi thay đổi âm lượng không được thực hiện thông qua ứng dụng này sẽ được hoàn nguyên trong khi thiết bị này được kết nối.</string>
     <string name="devices_device_config_volume_lock_override_desc">Khóa âm lượng hiện đang ghi đè tính năng này.</string>
+    <string name="devices_device_config_volume_limit_label">Giới hạn âm lượng</string>
+    <string name="devices_device_config_volume_limit_desc">Giữ âm lượng của thiết bị này trong một phạm vi, ví dụ không bao giờ lớn hơn 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Giới hạn cho %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Từ %1$d%% đến %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Ít nhất %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Tối đa %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Chưa đặt giới hạn</string>
+    <string name="devices_volume_limit_screen_title">Giới hạn âm lượng</string>
+    <string name="devices_volume_limit_disabled_hint">Tắt, các giới hạn của bạn được lưu nhưng sẽ không được áp dụng.</string>
+    <string name="devices_volume_limit_band_bar_desc">Phạm vi âm lượng được phép</string>
+    <string name="devices_volume_limit_no_streams_msg">Thiết bị này chưa quản lý bất kỳ âm lượng nào. Bật một trong \"Âm lượng\" trong cài đặt thiết bị để đặt giới hạn cho nó.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Giới hạn tốc độ âm lượng</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Giới hạn tần suất thay đổi âm lượng để ngăn chặn điều chỉnh âm lượng nhanh chóng hoặc quá mức.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Độ trễ tăng âm lượng</string>

@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">వాల్యూమ్ లాక్</string>
     <string name="devices_device_config_volume_lock_desc">ఈ పరికరం కనెక్ట్ అయి ఉన్నప్పుడు ఈ యాప్ ద్వారా చేయని ఏదైనా వాల్యూమ్ మార్పులు రద్దు చేయబడతాయి.</string>
     <string name="devices_device_config_volume_lock_override_desc">వాల్యూమ్ లాక్ ప్రస్తుతం ఈ ఫీచర్‌ను ఓవర్‌రైడ్ చేస్తోంది.</string>
+    <string name="devices_device_config_volume_limit_label">సంపుటి పరిమితి</string>
+    <string name="devices_device_config_volume_limit_desc">ఈ పరికరం యొక్క సంపుటిని ఒక పరిధిలో ఉంచండి, ఉదాహరణకు ఎప్పుడూ 50% కంటే ఎక్కువ కాదు।</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s కోసం పరిమితి</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% మరియు %2$d%% మధ్య</string>
+    <string name="devices_device_config_volume_limit_min_desc">కనీసం %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">గరిష్టంగా %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">ఎటువంటి పరిమితి సెట్ చేయబడలేదు</string>
+    <string name="devices_volume_limit_screen_title">సంపుటి పరిమితి</string>
+    <string name="devices_volume_limit_disabled_hint">ఆఫ్‌, మీ పరిమితులు సంరక్షించబడ్డాయి కానీ ఇంకా వర్తించబడవు.</string>
+    <string name="devices_volume_limit_band_bar_desc">అనుమతించిన సంపుటి పరిధి</string>
+    <string name="devices_volume_limit_no_streams_msg">ఈ పరికరం ఇంకా ఎటువంటి సంపుటిలను నిర్వహించదు. దీని కోసం పరిమితి సెట్ చేయడానికి పరికర సెట్టింగ్‌లోని \"సంపుటి\" కింద ఏదైనా ఆన్ చేయండి.</string>
     <string name="devices_device_config_volume_rate_limiter_label">వాల్యూమ్ రేట్ లిమిటర్</string>
     <string name="devices_device_config_volume_rate_limiter_desc">వేగంగా లేదా అధికంగా వాల్యూమ్ సర్దుబాట్లు జరగకుండా నిరోధించడానికి వాల్యూమ్ మార్పుల పౌనఃపున్యాన్ని పరిమితం చేయండి.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">వాల్యూమ్ పెరుగుదల జాప్యం</string>

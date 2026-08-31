@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">ხმის ჩაკეტვა</string>
     <string name="devices_device_config_volume_lock_desc">ამ აპის გარეშე განხორციელებული ნებისმიერი ხმის ცვლილება გაუქმდება სანამ ეს მოწყობილობა დაკავშირებულია.</string>
     <string name="devices_device_config_volume_lock_override_desc">მოცულობის დაბლოკვა ამჟამად უგულებელყოფს ამ ფუნქციას.</string>
+    <string name="devices_device_config_volume_limit_label">ხმის სიმძლავრის ლიმიტი</string>
+    <string name="devices_device_config_volume_limit_desc">შეინახეთ ამ მოწყობილობის ხმის სიმძლავრე დიაპაზონში, მაგალითად, არასოდეს 50%-ზე მეტი.</string>
+    <string name="devices_device_config_volume_limit_stream_label">ლიმიტი %1$s-ისთვის</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%%-დან %2$d%%-მდე</string>
+    <string name="devices_device_config_volume_limit_min_desc">მინიმუმ %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">მაქსიმუმ %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">ლიმიტი დაყენებული არ არის</string>
+    <string name="devices_volume_limit_screen_title">ხმის სიმძლავრის ლიმიტი</string>
+    <string name="devices_volume_limit_disabled_hint">გამორთული, თქვენი ლიმიტები შენახულია, მაგრამ ჯერ არ გამოიყენება.</string>
+    <string name="devices_volume_limit_band_bar_desc">დაშვებული ხმის სიმძლავრის დიაპაზონი</string>
+    <string name="devices_volume_limit_no_streams_msg">ეს მოწყობილობა ხმის სიმძლავრის რომელიმე ტიპს ჯერ არ აკონტროლებს. მოწყობილობის პარამეტრებში \"ხმის სიმძლავრა\" განყოფილებაში ერთი ჩართეთ ლიმიტის დასაყენებლად.</string>
     <string name="devices_device_config_volume_rate_limiter_label">ხმის სიჩქარის შემზღუდველი</string>
     <string name="devices_device_config_volume_rate_limiter_desc">შეზღუდე ხმის ცვლილებების სიხშირე სწრაფი ან ჭარბი ხმის რეგულირებების თავიდან ასაცილებლად.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ხმის გაზრდის შეფერხება</string>

@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Hljóðstyrkslás</string>
     <string name="devices_device_config_volume_lock_desc">Allar hljóðstyrksbreytingar sem þetta forrit gerir ekki verða afturkallaðar meðan þetta tæki er tengt.</string>
     <string name="devices_device_config_volume_lock_override_desc">Hljóðstyrkslás hnekkir þessum eiginleika eins og er.</string>
+    <string name="devices_device_config_volume_limit_label">Hljóðstyrksmörk</string>
+    <string name="devices_device_config_volume_limit_desc">Haltu hljóðstyrk þessarar tækju innan marks, til dæmis aldrei hærri en 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Mörk fyrir %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Milli %1$d%% og %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Að minnsta kosti %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Að hámarki %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Engin mörk sett</string>
+    <string name="devices_volume_limit_screen_title">Hljóðstyrksmörk</string>
+    <string name="devices_volume_limit_disabled_hint">Slökkt, mörk þín eru vistuð en verða ekki notuð ennþá.</string>
+    <string name="devices_volume_limit_band_bar_desc">Leyfilt hljóðstyrkssvið</string>
+    <string name="devices_volume_limit_no_streams_msg">Þessi tæki stýra ekki neinum hljóðstyrki ennþá. Kveiktu á einum undir \"Hljóðstyrkur\" í stillingunum tækisins til að setja mörk fyrir það.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Hljóðstyrkstakmarkari</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Takmarka tíðni hljóðstyrksbreytinga til að koma í veg fyrir hraðar eða óhóflegar hljóðstyrksleiðréttingar.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Seinkun hljóðstyrkshaekkunar</string>

@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Bloqueo de volumen</string>
     <string name="devices_device_config_volume_lock_desc">Los cambios de volumen no realizados a través de esta app se revertirán mientras este dispositivo esté conectado.</string>
     <string name="devices_device_config_volume_lock_override_desc">El bloqueo de volumen anula esta función actualmente.</string>
+    <string name="devices_device_config_volume_limit_label">Límite de volumen</string>
+    <string name="devices_device_config_volume_limit_desc">Mantené el volumen de este dispositivo dentro de un rango, por ejemplo, que nunca supere el 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Límite para %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Entre %1$d%% y %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Al menos %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Como máximo %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Sin límite configurado</string>
+    <string name="devices_volume_limit_screen_title">Límite de volumen</string>
+    <string name="devices_volume_limit_disabled_hint">Desactivado, tus límites están guardados pero todavía no se van a aplicar.</string>
+    <string name="devices_volume_limit_band_bar_desc">Rango de volumen permitido</string>
+    <string name="devices_volume_limit_no_streams_msg">Este dispositivo todavía no administra ningún volumen. Activá uno en \"Volumen\" dentro de la configuración del dispositivo para establecerle un límite.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitador de velocidad de volumen</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limita la frecuencia de cambios de volumen para evitar ajustes rápidos o excesivos.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Retraso de subida de volumen</string>

@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">व्हॉल्युम लॉक</string>
     <string name="devices_device_config_volume_lock_desc">या अॅपद्वारे न केलेले कोणतेही व्हॉल्युम बदल हे डिव्हाइस कनेक्ट असताना परत केले जातील.</string>
     <string name="devices_device_config_volume_lock_override_desc">व्हॉल्युम लॉक सध्या या वैशिष्ट्याला ओव्हरराइड करत आहे.</string>
+    <string name="devices_device_config_volume_limit_label">आवाज मर्यादा</string>
+    <string name="devices_device_config_volume_limit_desc">या डिव्हाइसचा आवाज एका मर्यादेत ठेवा, उदा. कधीही 50% पेक्षा जास्त नाही.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s साठी मर्यादा</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% आणि %2$d%% च्या दरम्यान</string>
+    <string name="devices_device_config_volume_limit_min_desc">किमान %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">जास्तीत जास्त %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">कोणतीही मर्यादा सेट केलेली नाही</string>
+    <string name="devices_volume_limit_screen_title">आवाज मर्यादा</string>
+    <string name="devices_volume_limit_disabled_hint">बंद, तुमच्या मर्यादा सेव्ह झाल्या आहेत पण अजून लागू केल्या जाणार नाहीत.</string>
+    <string name="devices_volume_limit_band_bar_desc">अनुमत आवाज श्रेणी</string>
+    <string name="devices_volume_limit_no_streams_msg">हे डिव्हाइस अजून कोणताही आवाज व्यवस्थापित करत नाही. त्यासाठी मर्यादा सेट करण्यासाठी डिव्हाइस सेटिंग्जमधील \"आवाज\" खाली एखादा चालू करा.</string>
     <string name="devices_device_config_volume_rate_limiter_label">व्हॉल्युम दर मर्यादक</string>
     <string name="devices_device_config_volume_rate_limiter_desc">जलद किंवा अत्याधिक व्हॉल्युम समायोजन टाळण्यासाठी व्हॉल्युम बदलांची वारंवारिता मर्यादित करा.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">व्हॉल्युम वाढ विलंब</string>

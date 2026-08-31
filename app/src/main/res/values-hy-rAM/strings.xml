@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Ծավալի կողպեք</string>
     <string name="devices_device_config_volume_lock_desc">Ծավալի բոլոր փոփոխությունները, որոնք կատարված չեն այս հավելվածի կողմից, կվերականգնվեն, մինչ այս սարքը կապակցված է:</string>
     <string name="devices_device_config_volume_lock_override_desc">Ձայնի կողպեքն այժմ գերակայում է այս գործառույթի նկատմամբ:</string>
+    <string name="devices_device_config_volume_limit_label">Ձայնի սահմանաչափ</string>
+    <string name="devices_device_config_volume_limit_desc">Պահիր այս սարքի ձայնի ուժգնությունը որոշակի միջակայքում, օրինակ՝ երբեք 50%-ից բարձր չլինի։</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s-ի սահմանաչափը</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%%-ի և %2$d%%-ի միջև</string>
+    <string name="devices_device_config_volume_limit_min_desc">Առնվազն %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Առավելագույնը %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Սահմանաչափ սահմանված չէ</string>
+    <string name="devices_volume_limit_screen_title">Ձայնի սահմանաչափ</string>
+    <string name="devices_volume_limit_disabled_hint">Անջատված է, քո սահմանաչափերը պահպանված են, բայց դեռ չեն կիրառվի։</string>
+    <string name="devices_volume_limit_band_bar_desc">Թույլատրելի ձայնի միջակայք</string>
+    <string name="devices_volume_limit_no_streams_msg">Այս սարքը դեռ չի կառավարում որևէ ձայն։ Միացրու մեկը «Ձայն» բաժնում՝ սարքի կարգավորումներում, որպեսզի սահմանես դրա համար սահմանաչափ՝</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ծավալի արագության սահմանիչ</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Սահմանափակել ծավալի փոփոխությունների հաճախականությունը՝ արագ կամ ավելցուկային ծավալի ճշգրտումները կանխելու համար:</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ծավալի բարձրացման ուշացում</string>

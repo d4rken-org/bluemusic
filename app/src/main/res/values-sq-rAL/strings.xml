@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Zbritje e volumit</string>
     <string name="devices_device_config_volume_lock_desc">Çdo ndryshim i volumit jo i bërë përmes këtij aplikacioni do të kthehet ndërsa kjo pajisje lidhet.</string>
     <string name="devices_device_config_volume_lock_override_desc">Bllokimi i volumit aktualisht mbishkruan këtë funksion.</string>
+    <string name="devices_device_config_volume_limit_label">Kufiri i volumit</string>
+    <string name="devices_device_config_volume_limit_desc">Mbaje volumin e këtij pajisjeje brenda një intervali, p.sh. asnjëherë më i lartë se 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Kufiri për %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Midis %1$d%% dhe %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Të paktën %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Më së shumti %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Nuk është caktuar asnjë kufi</string>
+    <string name="devices_volume_limit_screen_title">Kufiri i volumit</string>
+    <string name="devices_volume_limit_disabled_hint">Çaktivizuar, kufijtë e tu janë ruajtur por nuk do të zbatohen ende.</string>
+    <string name="devices_volume_limit_band_bar_desc">Intervali i lejuar i volumit</string>
+    <string name="devices_volume_limit_no_streams_msg">Kjo pajisje nuk menaxhon ende asnjë volum. Aktivizo një te \"Volumi\" në cilësimet e pajisjes për t\'i caktuar një kufi.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Limitues norma vëllimi</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Limito frekuencën e ndryshimeve të volumit për të parandaluar përshtatjet e shpejta ose të tepërta të volumit.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Vonesa rritjeje vëllimi</string>

@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Ukuvala ivolumu</string>
     <string name="devices_device_config_volume_lock_desc">Noma yiziphi izinguquko zamavolumu ezingenziwanga ngalolu hlelo zizobuyiselwa ngenkathi le divayisi ixhunyiwe.</string>
     <string name="devices_device_config_volume_lock_override_desc">Ukukhiya kwamazwi manje kweqile lesi sici.</string>
+    <string name="devices_device_config_volume_limit_label">Umkhawulo wevolumu</string>
+    <string name="devices_device_config_volume_limit_desc">Gcina ivolumu yale divayisi ngaphakathi kobubanzi, isibonelo, ayisoze ibe phakamile kungo-50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Umkhawulo we-%1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Phakathi kwe-%1$d%% kanye ne-%2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Okungenani %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Kungenani %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Awekho umkhawulo omiselwe</string>
+    <string name="devices_volume_limit_screen_title">Umkhawulo wevolumu</string>
+    <string name="devices_volume_limit_disabled_hint">Ayikho, imihawulo yakho igcinwe kodwa ayisayikusetshenziswa okwesikhashana.</string>
+    <string name="devices_volume_limit_band_bar_desc">Ububanzi bevolumu obuvumelekile</string>
+    <string name="devices_volume_limit_no_streams_msg">Le divayisi ayiphatheli ivolumu okwesikhashana. Vula eyodwa ngaphansi kwe-\"Ivolumu\" ezilungiselelisweni zedivayisi ukuze umisel umkhawulo wayo.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Umkhawuli wesivinini samavolumu</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Maweza inani lezinguquko zamavolumu ukuvimbela ukuhlela okuphazulukayo noma okweqayo.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Ukubambezeleka kwanda kweVolumu</string>

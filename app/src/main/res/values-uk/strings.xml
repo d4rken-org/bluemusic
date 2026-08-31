@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Блокування гучності</string>
     <string name="devices_device_config_volume_lock_desc">Будь-які зміни гучності, зроблені не через цей додаток, будуть скасовані, поки пристрій під\'єднаний.</string>
     <string name="devices_device_config_volume_lock_override_desc">Блокування гучності наразі перевизначає цю функцію.</string>
+    <string name="devices_device_config_volume_limit_label">Обмеження гучності</string>
+    <string name="devices_device_config_volume_limit_desc">Утримуй гучність цього пристрою в межах діапазону, наприклад, не голосніше 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Обмеження для %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Від %1$d%% до %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Не менше %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Не більше %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Обмеження не встановлено</string>
+    <string name="devices_volume_limit_screen_title">Обмеження гучності</string>
+    <string name="devices_volume_limit_disabled_hint">Вимкнено, твої обмеження збережені, але поки не застосовуються.</string>
+    <string name="devices_volume_limit_band_bar_desc">Дозволений діапазон гучності</string>
+    <string name="devices_volume_limit_no_streams_msg">Цей пристрій ще не керує жодною гучністю. Увімкни одну в розділі «Гучність» у налаштуваннях пристрою, щоб встановити для неї обмеження.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Обмежувач частоти гучності</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Обмежує частоту змін гучності, щоб запобігти швидким або надмірним регулюванням.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Затримка збільшення гучності</string>

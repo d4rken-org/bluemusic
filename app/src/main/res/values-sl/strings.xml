@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Zaklepanje glasnosti</string>
     <string name="devices_device_config_volume_lock_desc">Vse spremembe glasnosti, ki niso bile narejene prek te aplikacije, bodo vrnjene, medtem ko je ta naprava priklopljena.</string>
     <string name="devices_device_config_volume_lock_override_desc">Zaklepanje glasnosti trenutno preglasi to funkcijo.</string>
+    <string name="devices_device_config_volume_limit_label">Omejitev glasnosti</string>
+    <string name="devices_device_config_volume_limit_desc">Ohrani glasnost te naprave v določenem razponu, npr. nikoli nad 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Omejitev za %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Med %1$d%% in %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Najmanj %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Največ %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Brez omejitve</string>
+    <string name="devices_volume_limit_screen_title">Omejitev glasnosti</string>
+    <string name="devices_volume_limit_disabled_hint">Izključeno, tvoje omejitve so shranjene, vendar še ne veljajo.</string>
+    <string name="devices_volume_limit_band_bar_desc">Dovoljen razpon glasnosti</string>
+    <string name="devices_volume_limit_no_streams_msg">Ta naprava še ne upravlja nobene glasnosti. Vključi eno pod »Glasnost« v nastavitvah naprave, da nastaviš omejitev zanjo.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Omejevalnik hitrosti glasnosti</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Omejite pogostost sprememb glasnosti, da preprečite hitre ali prekomerne prilagoditve glasnosti.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Zamik povečevanja glasnosti</string>

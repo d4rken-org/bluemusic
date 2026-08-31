@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Äänenvoimakkuuden lukitus</string>
     <string name="devices_device_config_volume_lock_desc">Kaikki äänenvoimakkuusmuutokset, joita ei tehdä tämän sovelluksen kautta, kumotaan kun tämä laite on yhdistettynä.</string>
     <string name="devices_device_config_volume_lock_override_desc">Äänenvoimakkuuden lukitus ohittaa tällä hetkellä tämän ominaisuuden.</string>
+    <string name="devices_device_config_volume_limit_label">Äänenvoimakkuuden raja</string>
+    <string name="devices_device_config_volume_limit_desc">Pidä tämän laitteen äänenvoimakkuus välillä, esim. ei koskaan yli 50 %.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Rajoitus: %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Välillä %1$d %% ja %2$d %%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Vähintään %1$d %%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Enintään %1$d %%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Ei rajoitusta</string>
+    <string name="devices_volume_limit_screen_title">Äänenvoimakkuuden raja</string>
+    <string name="devices_volume_limit_disabled_hint">Pois päältä, rajasi ovat tallennettu mutta niitä ei sovelleta vielä.</string>
+    <string name="devices_volume_limit_band_bar_desc">Sallittu äänialue</string>
+    <string name="devices_volume_limit_no_streams_msg">Tämä laite ei vielä hallitse mitään äänenvoimakkuuksia. Ota yksi käyttöön laitteen asetuksista kohdasta \"Ääni\" määrittääksesi rajan.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Äänenvoimakkuuden nopeus rajaus</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Rajoita äänenvoimakkuus muutokset estääksesi nopeat tai liian suuret säädöt.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Äänenvoimakkuuden nosto viive</string>

@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">ವಾಲ್ಯೂಮ್ ಲಾಕ್</string>
     <string name="devices_device_config_volume_lock_desc">ಈ ಸಾಧನ ಜೋಡಿಗೊಂಡಿರುವಾಗ ಈ ಅಪ್ಲಿಕೇಶನ್ ಮೂಲಕ ಮಾಡೞಯದ ಯಾವುದೇ ವಾಲ್ಯೂಮ್ ಬದಲಾವಣೆಗಳನ್ನು ವೆನಕ್ಕೆ ತಿರುಗಿಸಲಾಗುತ್ತದೆ.</string>
     <string name="devices_device_config_volume_lock_override_desc">ವಾಲ್ಯೂಮ್ ಲಾಕ್ ಪ್ರಸ್ತುತ ಈ ವೈಶಿಷ್ಟ್ಯವನ್ನು ಅತಿಕ್ರಮಿಸುತ್ತಿದೆ.</string>
+    <string name="devices_device_config_volume_limit_label">ವಾಲ್ಯೂಮ್ ಮಿತಿ</string>
+    <string name="devices_device_config_volume_limit_desc">ಈ ಸಾಧನದ ವಾಲ್ಯೂಮ್ ಅನ್ನು ಒಂದು ವ್ಯಾಪ್ತಿಯೊಳಗೆ ಇರಿಸಿ, ಉದಾ. 50% ಗಿಂತ ಎಂದಿಗೂ ಜೋರಾಗಿ ಇರಬಾರದು.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s ಗಾಗಿ ಮಿತಿ</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% ಮತ್ತು %2$d%% ನಡುವೆ</string>
+    <string name="devices_device_config_volume_limit_min_desc">ಕನಿಷ್ಠ %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">ಗರಿಷ್ಠ %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">ಯಾವುದೇ ಮಿತಿ ಹೊಂದಿಸಿಲ್ಲ</string>
+    <string name="devices_volume_limit_screen_title">ವಾಲ್ಯೂಮ್ ಮಿತಿ</string>
+    <string name="devices_volume_limit_disabled_hint">ಆಫ್ ಆಗಿದೆ, ನಿಮ್ಮ ಮಿತಿಗಳನ್ನು ಉಳಿಸಲಾಗಿದೆ ಆದರೆ ಇನ್ನೂ ಅನ್ವಯಿಸಲಾಗುವುದಿಲ್ಲ.</string>
+    <string name="devices_volume_limit_band_bar_desc">ಅನುಮತಿಸಲಾದ ವಾಲ್ಯೂಮ್ ವ್ಯಾಪ್ತಿ</string>
+    <string name="devices_volume_limit_no_streams_msg">ಈ ಸಾಧನವು ಇನ್ನೂ ಯಾವುದೇ ವಾಲ್ಯೂಮ್‌ಗಳನ್ನು ನಿರ್ವಹಿಸುತ್ತಿಲ್ಲ. ಅದಕ್ಕೆ ಮಿತಿ ಹೊಂದಿಸಲು ಸಾಧನ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ \"ವಾಲ್ಯೂಮ್\" ಅಡಿಯಲ್ಲಿ ಒಂದನ್ನು ಆನ್ ಮಾಡಿ.</string>
     <string name="devices_device_config_volume_rate_limiter_label">ವಾಲ್ಯೂಮ್ ದರ ನಿಯಂತ್ರಕ</string>
     <string name="devices_device_config_volume_rate_limiter_desc">ತ್ವರಿತ ಅಥವಾ ಅತಿರಿಕ್ತ ವಾಲ್ಯೂಮ್ ಸರಿಹೊಂದಿಕೆಗಳನ್ನು ತಡೆಗಟ್ಟಲು ವಾಲ್ಯೂಮ್ ಬದಲಾವಣೆಗಳ ಆವೃತ್ತಿಯನ್ನು ಸಿಮಿತಗೊಳಿಸಿ.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">ವಾಲ್ಯೂಮ್ ಹೆಚ್ಚಳಿಕೆ ವಿಳಂಬ</string>

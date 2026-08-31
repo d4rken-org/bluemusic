@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Zaključavanje glasnoće</string>
     <string name="devices_device_config_volume_lock_desc">Bilo kakve promjene u glasnoći napravljene kroz aplikaciju će biti vraćene dok je ovaj uređaj povezan.</string>
     <string name="devices_device_config_volume_lock_override_desc">Zaključavanje glasnoće trenutno nadjačava ovu značajku.</string>
+    <string name="devices_device_config_volume_limit_label">Ograničenje glasnoće</string>
+    <string name="devices_device_config_volume_limit_desc">Zadrži glasnoću ovog uređaja u određenom rasponu, npr. nikad ne više od 50%.</string>
+    <string name="devices_device_config_volume_limit_stream_label">Ograničenje za %1$s</string>
+    <string name="devices_device_config_volume_limit_range_desc">Između %1$d%% i %2$d%%</string>
+    <string name="devices_device_config_volume_limit_min_desc">Najmanje %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Najviše %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Nema ograničenja</string>
+    <string name="devices_volume_limit_screen_title">Ograničenje glasnoće</string>
+    <string name="devices_volume_limit_disabled_hint">Isključeno, tvoja ograničenja su spremljena ali se još neće primjenjivati.</string>
+    <string name="devices_volume_limit_band_bar_desc">Dozvoljeni raspon glasnoće</string>
+    <string name="devices_volume_limit_no_streams_msg">Ovaj uređaj još ne upravlja niti jednom glasnoćom. Uključi jednu u odjeljku \"Glasnoće\" u postavkama uređaja da bi se moglo postaviti ograničenje.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Ograničnik frekvencije glasnoće</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Ograničava frekvenciju promjena glasnoće kako bi se izbjegla brza ili pretjerana podešavanja.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Kašnjenje povećanja glasnoće</string>

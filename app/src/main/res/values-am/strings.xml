@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">የድምፅ መዘጋያ</string>
     <string name="devices_device_config_volume_lock_desc">ይህ አፕሊኬሰን ካልመኃ የተደረጉት የድምፅ ለውጦች ይህ መሣሪያ ሲጸራ እንዳለ ይመለሳካል።</string>
     <string name="devices_device_config_volume_lock_override_desc">የድምፅ ቁልፍ በአሁኑ ጊዜ ይህን ባህሪ ይሽራል።</string>
+    <string name="devices_device_config_volume_limit_label">ድምጽ ገደብ</string>
+    <string name="devices_device_config_volume_limit_desc">የዚህ መሳሪያ ድምጽ በተወሰነ ክልል ውስጥ ይጠብቁ፣ ለምሳሌ ከ50% በላይ በጭራሽ።</string>
+    <string name="devices_device_config_volume_limit_stream_label">ለ%1$s ገደብ</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% እና %2$d%% መካከል</string>
+    <string name="devices_device_config_volume_limit_min_desc">ቢያንስ %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">ከ%1$d%% አያልፍ</string>
+    <string name="devices_device_config_volume_limit_unset_desc">ገደብ አልተቀመጠም</string>
+    <string name="devices_volume_limit_screen_title">ድምጽ ገደብ</string>
+    <string name="devices_volume_limit_disabled_hint">ጠፍቷል፣ የእርስዎ ገደቦች ተቀምጠዋል ግን ገና አይተገበሩም።</string>
+    <string name="devices_volume_limit_band_bar_desc">የተፈቀደ ድምጽ ክልል</string>
+    <string name="devices_volume_limit_no_streams_msg">ይህ መሳሪያ ገና ምንም ድምጽ አያስተዳድርም። ለእሱ ገደብ ለማቀናጀት በመሳሪያው ቅንብሮች ውስጥ \"ድምጽ\" ስር አንዱን ያብሩ።</string>
     <string name="devices_device_config_volume_rate_limiter_label">የድምፅ መጥርተኛ</string>
     <string name="devices_device_config_volume_rate_limiter_desc">የድምፅ ለውጦች እድገትን አኪዶ ወይም መትብቹ የድምፅ ምስተካኪያዎችን ለመልያት።</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">የድምፅ መቀገል ሴንትር</string>

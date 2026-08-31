@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">والیوم لاک</string>
     <string name="devices_device_config_volume_lock_desc">جب یہ ڈیوائس منسلک ہو تو اس ایپ کے علاوہ کئی گئی کوئی بھی والیوم تبدیلی واپس کر دی جائے گی۔</string>
     <string name="devices_device_config_volume_lock_override_desc">والیوم لاک فی الحال اس فیچر کو اوور رائڈ کر رہا ہے۔</string>
+    <string name="devices_device_config_volume_limit_label">آواز کی حد</string>
+    <string name="devices_device_config_volume_limit_desc">اس ڈیوائس کی آواز کو ایک حد کے اندر رکھیں، مثال کے طور پر 50% سے زیادہ نہ ہو۔</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s کے لیے حد</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%% اور %2$d%% کے درمیان</string>
+    <string name="devices_device_config_volume_limit_min_desc">کم از کم %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">زیادہ سے زیادہ %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">کوئی حد مقرر نہیں</string>
+    <string name="devices_volume_limit_screen_title">آواز کی حد</string>
+    <string name="devices_volume_limit_disabled_hint">بند ہے، آپ کی حدود محفوظ ہیں لیکن ابھی لاگو نہیں ہوں گی۔</string>
+    <string name="devices_volume_limit_band_bar_desc">اجازت شدہ آواز کی حد</string>
+    <string name="devices_volume_limit_no_streams_msg">یہ ڈیوائس ابھی کسی بھی آواز کو منظم نہیں کرتا۔ اس کے لیے حد مقرر کرنے کے لیے ڈیوائس کی ترتیبات میں \"آواز\" کے تحت کوئی ایک چالو کریں۔</string>
     <string name="devices_device_config_volume_rate_limiter_label">والیوم ریٹ لیمیٹر</string>
     <string name="devices_device_config_volume_rate_limiter_desc">تیز یا زیادہ والیوم ایڈجسٹمنٹ سے بچنے کے لیے والیوم تبدیلیوں کی فریکوئنسی محدود کریں۔</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">والیوم اضافہ تاخیر</string>

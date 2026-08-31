@@ -72,6 +72,17 @@
     <string name="devices_device_config_volume_lock_label">Дууны түгжийн цооц</string>
     <string name="devices_device_config_volume_lock_desc">Энэ төхөөрөмжий холбогдсон байхад энэ аппаас бус дууны өөрчлөлтийг буцаан тохиргуулана.</string>
     <string name="devices_device_config_volume_lock_override_desc">Дууны түгжээ одоо энэ функцийг дарж байна.</string>
+    <string name="devices_device_config_volume_limit_label">Дууны хэмжээний хязгаар</string>
+    <string name="devices_device_config_volume_limit_desc">Энэ төхөөрөмжийн дууны түвшинг тодорхой хязгаарт байлгах, жишээ нь хэзээ ч 50%-иас чанга болгохгүй.</string>
+    <string name="devices_device_config_volume_limit_stream_label">%1$s-н хязгаар</string>
+    <string name="devices_device_config_volume_limit_range_desc">%1$d%%-с %2$d%%-ийн хооронд</string>
+    <string name="devices_device_config_volume_limit_min_desc">Хамгийн багадаа %1$d%%</string>
+    <string name="devices_device_config_volume_limit_max_desc">Хамгийн ихдээ %1$d%%</string>
+    <string name="devices_device_config_volume_limit_unset_desc">Хязгаар тохируулаагүй байна</string>
+    <string name="devices_volume_limit_screen_title">Дууны хэмжээний хязгаар</string>
+    <string name="devices_volume_limit_disabled_hint">Унтраалттай байна, таны хязгаарууд хадгалагдсан ч одоохондоо хэрэгжихгүй.</string>
+    <string name="devices_volume_limit_band_bar_desc">Зөвшөөрөгдсөн дууны хязгаар</string>
+    <string name="devices_volume_limit_no_streams_msg">Энэ төхөөрөмж одоогоор ямар ч дууны түвшинг удирдахгүй байна. Хязгаар тохируулахын тулд төхөөрөмжийн тохиргоо дахь \"Дуу\" хэсэгт нэгийг нь асаана уу.</string>
     <string name="devices_device_config_volume_rate_limiter_label">Дууны өөрчлөлтийн хүчгэгүй</string>
     <string name="devices_device_config_volume_rate_limiter_desc">Хүнцэрэгч эсвэл дууны өөрчлөлтыг сэргийлэхийн тулд дууны өөрчлөлтийн давтамжийг хязгаалах.</string>
     <string name="devices_device_config_volume_rate_limit_increase_duration_label">Дууг нэмэхийн хоцорлолт</string>
