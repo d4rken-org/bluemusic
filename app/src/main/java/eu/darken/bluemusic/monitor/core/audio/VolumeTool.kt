@@ -5,6 +5,7 @@ import android.media.AudioDeviceInfo
 import android.media.AudioManager
 import android.os.Build
 import android.os.SystemClock
+import androidx.annotation.RequiresApi
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
@@ -101,17 +102,25 @@ class VolumeTool @Inject constructor(
     }
 
     /**
-     * Diagnostic only (issue #232): describes the active media output route.
-     * On some Android 16 builds the audio route tears down ~2s before
-     * ACL_DISCONNECTED, so the phone speaker's volume gets attributed to the
-     * disconnecting BT device. Logging this alongside volume changes lets a
-     * debug log reveal whether media is still routed to Bluetooth at that moment.
+     * Where media (USAGE_MEDIA/CONTENT_TYPE_MUSIC) would play right now.
      *
+     * [isBluetooth] is null when the query can't answer: below API 33 there is no
+     * active-route API, and an empty device list carries no information.
+     * [addresses] is empty when the platform withholds identities (BLUETOOTH_CONNECT
+     * not granted returns blank addresses).
+     */
+    data class MediaRoute(
+        val isBluetooth: Boolean?,
+        val addresses: Set<String>,
+        val description: String,
+    )
+
+    /**
      * API 33+ returns the predicted active route; below that only the connected
      * output list is available (labelled accordingly, not the active route).
      */
     @Suppress("DEPRECATION") // isBluetoothA2dpOn/ScoOn are deprecated but still the routing signal we want to log
-    fun describeActiveMediaRoute(): String {
+    fun queryActiveMediaRoute(): MediaRoute {
         val start = clock()
         return try {
             val a2dp = audioManager.isBluetoothA2dpOn
@@ -122,15 +131,40 @@ class VolumeTool @Inject constructor(
                     .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                     .build()
                 val devices = audioManager.getAudioDevicesForAttributes(attrs)
-                formatMediaRoute(active = true, devices = devices, a2dp = a2dp, sco = sco, queryMs = clock() - start)
+                MediaRoute(
+                    isBluetooth = bluetoothRouteFrom(active = true, devices = devices),
+                    addresses = addressesFrom(devices),
+                    description = formatMediaRoute(active = true, devices = devices, a2dp = a2dp, sco = sco, queryMs = clock() - start),
+                )
             } else {
                 val outputs = audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS).toList()
-                formatMediaRoute(active = false, devices = outputs, a2dp = a2dp, sco = sco, queryMs = clock() - start)
+                MediaRoute(
+                    isBluetooth = bluetoothRouteFrom(active = false, devices = outputs),
+                    addresses = emptySet(),
+                    description = formatMediaRoute(active = false, devices = outputs, a2dp = a2dp, sco = sco, queryMs = clock() - start),
+                )
             }
         } catch (e: Exception) {
-            "route-query-failed: ${e.javaClass.simpleName}: ${e.message}"
+            MediaRoute(
+                isBluetooth = null,
+                addresses = emptySet(),
+                description = "route-query-failed: ${e.javaClass.simpleName}: ${e.message}",
+            )
         }
     }
+
+    fun describeActiveMediaRoute(): String = queryActiveMediaRoute().description
+
+    internal fun bluetoothRouteFrom(active: Boolean, devices: List<AudioDeviceInfo>): Boolean? {
+        if (!active) return null
+        if (devices.isEmpty()) return null
+        return devices.any { it.type in BLUETOOTH_OUTPUT_TYPES }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.P)
+    internal fun addressesFrom(devices: List<AudioDeviceInfo>): Set<String> = devices
+        .mapNotNull { it.address?.trim()?.takeIf { addr -> addr.isNotEmpty() } }
+        .toSet()
 
     // Separated from the platform query so the formatting can be unit-tested in
     // plain JVM without Robolectric. `active` = predicted route (API 33+),
@@ -265,5 +299,16 @@ class VolumeTool @Inject constructor(
 
     companion object {
         private val TAG = logTag("Audio", "StreamHelper")
+
+        // ASHA hearing aids and LE Audio outputs are Bluetooth devices too, an omission here
+        // would permanently block volume management for those device classes.
+        private val BLUETOOTH_OUTPUT_TYPES = setOf(
+            AudioDeviceInfo.TYPE_BLUETOOTH_A2DP,
+            AudioDeviceInfo.TYPE_BLUETOOTH_SCO,
+            AudioDeviceInfo.TYPE_HEARING_AID,
+            AudioDeviceInfo.TYPE_BLE_HEADSET,
+            AudioDeviceInfo.TYPE_BLE_SPEAKER,
+            AudioDeviceInfo.TYPE_BLE_BROADCAST,
+        )
     }
 }

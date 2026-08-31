@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
+import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
@@ -16,10 +17,12 @@ import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
+import eu.darken.bluemusic.monitor.core.audio.RouteVerdict
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.audio.levelToPercentage
 import eu.darken.bluemusic.monitor.core.audio.percentageToLevel
+import eu.darken.bluemusic.monitor.core.audio.routeVerdict
 import eu.darken.bluemusic.monitor.core.modules.ConnectionModule
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
 import eu.darken.bluemusic.monitor.core.modules.SettlePolicy
@@ -63,8 +66,16 @@ class VolumeDisconnectModule @Inject constructor(
         }
 
         log(TAG, INFO) { "Saving volumes on disconnect for device ${device.label}" }
-        // Diagnostic (issue #232): live route now, to compare against the pre-reroute snapshot.
-        log(TAG, INFO) { "Media route at disconnect-save for ${device.label}: ${volumeTool.describeActiveMediaRoute()}" }
+        val route = event.volumeSnapshot?.route
+        log(TAG, INFO) { "Media route at disconnect for ${device.label}: ${route?.description}" }
+        // Media is the only stream the route query can speak for (it asks
+        // USAGE_MEDIA/CONTENT_TYPE_MUSIC), so a disagreeing route drops MUSIC alone and the
+        // remaining streams still save as usual.
+        val musicVerdict = routeVerdict(
+            route = route,
+            isPhoneSpeaker = device.type == SourceDevice.Type.PHONE_SPEAKER,
+            ownerAddresses = setOf(device.address),
+        )
 
         // TODO: RingerTool.getCurrentRingerMode() falls back to NORMAL on unknown
         // Android modes. If Android ever adds a new ringer mode, this module will
@@ -78,6 +89,14 @@ class VolumeDisconnectModule @Inject constructor(
         // (e.g. events from FakeSpeakerEventDebouncer or test harnesses).
         val snapshots = AudioStream.Type.entries.mapNotNull { type ->
             if (device.getVolume(type) == null) return@mapNotNull null
+
+            if (type == AudioStream.Type.MUSIC && musicVerdict == RouteVerdict.DISAGREE) {
+                log(TAG, INFO) {
+                    "Route disagrees with ${device.address}/${device.label}, skipping $type " +
+                        "(route=${route?.description}, routedTo=${route?.addresses})"
+                }
+                return@mapNotNull null
+            }
 
             val streamId = device.getStreamId(type)
             val snapshotLevel = event.volumeSnapshot?.levels?.get(streamId)
