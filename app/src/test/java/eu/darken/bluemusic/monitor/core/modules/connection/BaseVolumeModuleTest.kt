@@ -769,5 +769,44 @@ class BaseVolumeModuleTest : BaseTest() {
             coVerify(exactly = 0) { volumeTool.lowerByOne(streamId, any()) }
             coVerify(exactly = 0) { volumeTool.increaseByOne(streamId, any()) }
         }
+
+        @Test
+        fun `the nudge does not step back out of the band`() = runTest(UnconfinedTestDispatcher()) {
+            val devicesFlow = MutableStateFlow<List<ManagedDevice>>(emptyList())
+            val registry = AudioStreamOwnerRegistry()
+            val (mod, _) = createModuleWithDeps(registry, devicesFlow)
+
+            // Band is levels 3..7.
+            val dev = ManagedDevice(
+                isConnected = true,
+                device = testSourceDevice,
+                config = DeviceConfigEntity(
+                    address = testAddress,
+                    musicVolume = 0.33f,
+                    actionDelay = 0L,
+                    monitoringDuration = 0L,
+                    isEnabled = true,
+                    nudgeVolume = true,
+                    volumeLimit = true,
+                    musicVolumeMin = 0.2f,
+                    musicVolumeMax = 0.5f,
+                ),
+            )
+            devicesFlow.value = listOf(dev)
+            registry.onDeviceConnected(testAddress, "TestDevice", SourceDevice.Type.HEADPHONES, 1000L, 0L)
+
+            // Something outside the app raises the volume to the cap during the 500ms pause, so the
+            // relative step back would land at 8.
+            every { volumeTool.getCurrentVolume(streamId) } returnsMany listOf(5, 7)
+            coEvery { volumeTool.changeVolume(streamId, any<Int>(), any(), any()) } returns false
+            coEvery { volumeTool.lowerByOne(streamId, any()) } returns true
+
+            val job = launch { mod.handle(DeviceEvent.Connected(dev)) }
+            advanceTimeBy(1_000)
+            job.join()
+
+            coVerify(exactly = 1) { volumeTool.lowerByOne(streamId, any()) }
+            coVerify(exactly = 0) { volumeTool.increaseByOne(streamId, any()) }
+        }
     }
 }

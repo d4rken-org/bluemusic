@@ -132,11 +132,21 @@ abstract class BaseVolumeModule(
             if (mayLower && volumeTool.lowerByOne(streamId, visible)) {
                 log(tag, VERBOSE) { "Volume was nudged lower, now nudging higher, to previous value." }
                 delay(500)
-                volumeTool.increaseByOne(streamId, visible)
+                // Both legs re-check: the step back is relative to a live read, and an external
+                // change during the pause would otherwise carry it out of the band.
+                if (allowed == null || volumeTool.getCurrentVolume(streamId) < allowed.last) {
+                    volumeTool.increaseByOne(streamId, visible)
+                } else {
+                    log(tag, VERBOSE) { "Volume moved to the top of $allowed during the nudge, not stepping back." }
+                }
             } else if (mayRaise && volumeTool.increaseByOne(streamId, visible)) {
                 log(tag, VERBOSE) { "Volume was nudged higher, now nudging lower, to previous value." }
                 delay(500)
-                volumeTool.lowerByOne(streamId, visible)
+                if (allowed == null || volumeTool.getCurrentVolume(streamId) > allowed.first) {
+                    volumeTool.lowerByOne(streamId, visible)
+                } else {
+                    log(tag, VERBOSE) { "Volume moved to the bottom of $allowed during the nudge, not stepping back." }
+                }
             }
         }
     }
