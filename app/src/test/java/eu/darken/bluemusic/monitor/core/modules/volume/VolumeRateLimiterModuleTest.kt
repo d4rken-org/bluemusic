@@ -8,6 +8,7 @@ import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import io.kotest.matchers.shouldBe
 import io.mockk.coEvery
@@ -28,6 +29,7 @@ class VolumeRateLimiterModuleTest : BaseTest() {
 
     private lateinit var clock: FakeMonotonicClock
     private lateinit var volumeTool: VolumeTool
+    private lateinit var limitEnforcer: VolumeLimitEnforcer
     private lateinit var deviceRepo: DeviceRepo
     private lateinit var ownerRegistry: eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
     private lateinit var sourceDevice: SourceDevice
@@ -37,6 +39,13 @@ class VolumeRateLimiterModuleTest : BaseTest() {
     fun setup() {
         clock = FakeMonotonicClock(now = 1000L)
         volumeTool = mockk(relaxed = true)
+        // The enforcer only reads the stream bounds, so it can run on its own AudioManager while
+        // the module's own VolumeTool stays a mock for write verification.
+        limitEnforcer = VolumeLimitEnforcer(
+            VolumeTool(mockk<AudioManager>(relaxed = true).also {
+                every { it.getStreamMaxVolume(any()) } returns 15
+            })
+        )
         deviceRepo = mockk(relaxed = true)
         ownerRegistry = eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry()
         devicesFlow = MutableStateFlow(emptyList())
@@ -56,6 +65,7 @@ class VolumeRateLimiterModuleTest : BaseTest() {
 
     private fun createModule() = VolumeRateLimiterModule(
         volumeTool = volumeTool,
+        limitEnforcer = limitEnforcer,
         deviceRepo = deviceRepo,
         ownerRegistry = ownerRegistry,
         clock = clock,
@@ -112,6 +122,9 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         decreaseMs: Long? = null,
         rateLimiter: Boolean = true,
         volumeLock: Boolean = false,
+        volumeLimit: Boolean = false,
+        musicVolumeMin: Float? = null,
+        musicVolumeMax: Float? = null,
     ): ManagedDevice = ManagedDevice(
         isConnected = true,
         device = groupedSource(addr, "Buds3 Pro"),
@@ -123,6 +136,9 @@ class VolumeRateLimiterModuleTest : BaseTest() {
             musicVolume = 0.5f,
             volumeRateLimitIncreaseMs = increaseMs,
             volumeRateLimitDecreaseMs = decreaseMs,
+            volumeLimit = volumeLimit,
+            musicVolumeMin = musicVolumeMin,
+            musicVolumeMax = musicVolumeMax,
         ),
     )
 
@@ -499,6 +515,7 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         }
         val module = VolumeRateLimiterModule(
             volumeTool = realVolumeTool,
+            limitEnforcer = limitEnforcer,
             deviceRepo = deviceRepo,
             ownerRegistry = ownerRegistry,
             clock = object : MonotonicClock {
@@ -519,5 +536,87 @@ class VolumeRateLimiterModuleTest : BaseTest() {
         isSelf shouldBe true
         verify(exactly = 1) { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, 11, 0) }
         verify(exactly = 0) { audioManager.setStreamVolume(AudioStream.Id.STREAM_MUSIC.id, match { it != 11 }, any()) }
+    }
+
+    // ------------------------------------------------------------------------
+    // Volume limit band: no level the limiter writes or remembers may leave it.
+    // ------------------------------------------------------------------------
+
+    @Test
+    fun `step-limited write stays inside the band`() = runTest {
+        // max=0.5 of 0..15 → ceiling level 7
+        val capped = groupedDevice(
+            "AA:BB:CC:DD:EE:01",
+            volumeLimit = true,
+            musicVolumeMax = 0.5f,
+        )
+        seedGroup(listOf(capped))
+
+        coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
+
+        val module = createModule()
+        // Reference 7 is already at the ceiling, so the +1 step would land on 8.
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 7, newVolume = 12, self = false))
+
+        coVerify(exactly = 1) { volumeTool.changeVolume(streamId = AudioStream.Id.STREAM_MUSIC, targetLevel = 7) }
+        coVerify(exactly = 0) { volumeTool.changeVolume(streamId = any(), targetLevel = match { it > 7 }) }
+    }
+
+    @Test
+    fun `rate-limit revert to an out-of-band reference is coerced into the band`() = runTest {
+        val capped = groupedDevice(
+            "AA:BB:CC:DD:EE:01",
+            increaseMs = 1000L,
+            decreaseMs = 1000L,
+            volumeLimit = true,
+            musicVolumeMax = 0.5f,
+        )
+        seedGroup(listOf(capped))
+
+        coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
+
+        val module = createModule()
+        // First event establishes state; oldVolume 12 predates the cap.
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 12, newVolume = 13, self = false))
+        // Inside the 1000ms window → revert to the reference, which must not be 12.
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 13, newVolume = 15, self = false))
+
+        coVerify(exactly = 0) { volumeTool.changeVolume(streamId = any(), targetLevel = match { it > 7 }) }
+        coVerify { volumeTool.changeVolume(streamId = AudioStream.Id.STREAM_MUSIC, targetLevel = 7) }
+    }
+
+    @Test
+    fun `an in-band single step is still accepted without a write`() = runTest {
+        val capped = groupedDevice(
+            "AA:BB:CC:DD:EE:01",
+            volumeLimit = true,
+            musicVolumeMax = 0.5f,
+        )
+        seedGroup(listOf(capped))
+
+        coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
+
+        val module = createModule()
+        module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 5, newVolume = 6, self = false))
+
+        coVerify(exactly = 0) { volumeTool.changeVolume(streamId = any(), targetLevel = any()) }
+    }
+
+    @Test
+    fun `the strictest ceiling in the group bounds the write`() = runTest {
+        for (strictFirst in listOf(true, false)) {
+            setup()
+            val loose = groupedDevice("AA:BB:CC:DD:EE:01", volumeLimit = true, musicVolumeMax = 0.8f)
+            val strict = groupedDevice("AA:BB:CC:DD:EE:02", volumeLimit = true, musicVolumeMax = 0.4f)
+            seedGroup(if (strictFirst) listOf(strict, loose) else listOf(loose, strict))
+
+            coEvery { volumeTool.changeVolume(streamId = any(), targetLevel = any()) } returns true
+
+            val module = createModule()
+            // Reference 6 is the strict ceiling (0.4 * 15 = 6), the step would go to 7.
+            module.handle(VolumeEvent(AudioStream.Id.STREAM_MUSIC, oldVolume = 6, newVolume = 12, self = false))
+
+            coVerify(exactly = 0) { volumeTool.changeVolume(streamId = any(), targetLevel = match { it > 6 }) }
+        }
     }
 }
