@@ -267,6 +267,7 @@ class VolumeLockModuleTest : BaseTest() {
                 volumeMode = VolumeMode.Normal(1f),
                 visible = false,
                 band = VolumeBand(min = null, max = 0.5f),
+                allowedLevels = 0..7,
             )
         }
     }
