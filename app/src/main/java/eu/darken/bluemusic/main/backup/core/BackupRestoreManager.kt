@@ -149,6 +149,19 @@ class BackupRestoreManager @Inject constructor(
             throw BackupError.UnsupportedFormatVersion(backup.formatVersion)
         }
 
+        // Before anything is offered for restore: an inverted min/max pair would be written
+        // straight into the entity and then crash the dashboard on `coerceIn(min, max)`.
+        backup.deviceConfigs.forEach { deviceBackup ->
+            try {
+                deviceBackup.requireValidVolumeLimits()
+            } catch (e: IllegalArgumentException) {
+                log(TAG, WARN) { "Invalid volume limits for ${deviceBackup.address}: ${e.message}" }
+                throw BackupError.MalformedBackup(
+                    IllegalArgumentException("Device ${deviceBackup.address}: ${e.message}", e)
+                )
+            }
+        }
+
         val versionMismatch = backup.appVersionCode != BuildConfigWrap.VERSION_CODE
         val enumWarnings = collectEnumWarnings(backup)
 
