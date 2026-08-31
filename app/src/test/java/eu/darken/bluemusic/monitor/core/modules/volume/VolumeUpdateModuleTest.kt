@@ -38,6 +38,23 @@ class VolumeUpdateModuleTest : BaseTest() {
     private lateinit var sourceDevice: SourceDevice
     private lateinit var devicesFlow: MutableStateFlow<List<ManagedDevice>>
 
+    private val unknownRoute = VolumeTool.MediaRoute(
+        isBluetooth = null,
+        addresses = emptySet(),
+        description = "availableOnly=[none]",
+    )
+    private val speakerRoute = VolumeTool.MediaRoute(
+        isBluetooth = false,
+        addresses = emptySet(),
+        description = "predicted=[SPEAKER#2]",
+    )
+
+    private fun btRoute(vararg addresses: String) = VolumeTool.MediaRoute(
+        isBluetooth = true,
+        addresses = addresses.toSet(),
+        description = "predicted=[BT_A2DP#8]",
+    )
+
     @BeforeEach
     fun setup() {
         volumeTool = mockk(relaxed = true)
@@ -50,6 +67,7 @@ class VolumeUpdateModuleTest : BaseTest() {
         coEvery { deviceRepo.updateDevice(any(), any()) } just Runs
         every { volumeTool.getMinVolume(any()) } returns 0
         every { volumeTool.getMaxVolume(any()) } returns 15
+        every { volumeTool.queryActiveMediaRoute() } returns unknownRoute
 
         sourceDevice = mockk {
             every { this@mockk.address } returns this@VolumeUpdateModuleTest.address
@@ -443,10 +461,14 @@ class VolumeUpdateModuleTest : BaseTest() {
     // Multi-device characterization: documents current fan-out behavior
     // ------------------------------------------------------------------------
 
-    private fun makeSourceDevice(addr: String, name: String): SourceDevice = mockk {
+    private fun makeSourceDevice(
+        addr: String,
+        name: String,
+        type: SourceDevice.Type = SourceDevice.Type.HEADPHONES,
+    ): SourceDevice = mockk {
         every { this@mockk.address } returns addr
         every { label } returns name
-        every { deviceType } returns SourceDevice.Type.HEADPHONES
+        every { deviceType } returns type
         every { getStreamId(AudioStream.Type.MUSIC) } returns AudioStream.Id.STREAM_MUSIC
         every { getStreamId(AudioStream.Type.CALL) } returns AudioStream.Id.STREAM_VOICE_CALL
         every { getStreamId(AudioStream.Type.RINGTONE) } returns AudioStream.Id.STREAM_RINGTONE
@@ -727,6 +749,147 @@ class VolumeUpdateModuleTest : BaseTest() {
             )
 
             result.musicVolume shouldBe levelToPercentage(11, 0, 15)
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Route/owner agreement — the owner registry only sees ACL broadcasts, the
+    // media route is the second opinion on who is actually playing.
+    // ------------------------------------------------------------------------
+    @Nested
+    inner class RouteAgreement {
+
+        private val speakerAddress = "00:00:00:00:00:00"
+
+        @Test
+        fun `music change is dropped when media no longer routes to the bluetooth owner`() = runTest {
+            val module = createModule()
+            val cfg = config(musicVolume = 0.1f)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            handleObserved(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false, route = speakerRoute),
+            )
+
+            coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+        }
+
+        @Test
+        fun `music change persists when the route names the owner`() = runTest {
+            val module = createModule()
+            val cfg = config(musicVolume = 0.1f)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            val result = runTransform(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false, route = btRoute(address)),
+                cfg,
+            )
+
+            result.musicVolume shouldBe levelToPercentage(11, 0, 15)
+        }
+
+        @Test
+        fun `music change persists when the route can not classify itself`() = runTest {
+            val module = createModule()
+            val cfg = config(musicVolume = 0.1f)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            handleObserved(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false, route = unknownRoute),
+            )
+
+            coVerify(exactly = 1) { deviceRepo.updateDevice(address, any()) }
+        }
+
+        @Test
+        fun `call change persists while media routes to the speaker`() = runTest {
+            // HFP car kit with media audio disabled: it owns the call volume even
+            // though music plays through the phone.
+            val module = createModule()
+            val cfg = config(callVolume = 0.1f)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            handleObserved(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_VOICE_CALL, 5, 11, self = false, route = speakerRoute),
+            )
+
+            coVerify(exactly = 1) { deviceRepo.updateDevice(address, any()) }
+        }
+
+        @Test
+        fun `music change is dropped for the phone speaker while media routes to bluetooth`() = runTest {
+            val module = createModule()
+            seedSpeaker()
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            handleObserved(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false, route = btRoute("AA:BB:CC:DD:EE:01")),
+            )
+
+            coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+        }
+
+        @Test
+        fun `music change persists for the phone speaker while media routes to the speaker`() = runTest {
+            val module = createModule()
+            seedSpeaker()
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            handleObserved(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false, route = speakerRoute),
+            )
+
+            coVerify(exactly = 1) { deviceRepo.updateDevice(speakerAddress, any()) }
+        }
+
+        @Test
+        fun `music change is dropped when the route still names the previous device`() = runTest {
+            val module = createModule()
+            val cfg = config(musicVolume = 0.1f)
+            seedActive(managedDevice(cfg))
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            handleObserved(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false, route = btRoute("AA:BB:CC:DD:EE:01")),
+            )
+
+            coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+        }
+
+        private suspend fun seedSpeaker() {
+            val speaker = makeSourceDevice(speakerAddress, "Phone speaker", SourceDevice.Type.PHONE_SPEAKER)
+            val cfg = DeviceConfigEntity(
+                address = speakerAddress,
+                musicVolume = 0.1f,
+                volumeObserving = true,
+                lastConnected = 0L,
+            )
+            devicesFlow.value = listOf(ManagedDevice(isConnected = true, device = speaker, config = cfg))
+            ownerRegistry.onDeviceConnected(
+                address = speakerAddress,
+                label = "Phone speaker",
+                deviceType = SourceDevice.Type.PHONE_SPEAKER,
+                receivedAtElapsedMs = 1000L,
+                sequence = 0L,
+            )
         }
     }
 }

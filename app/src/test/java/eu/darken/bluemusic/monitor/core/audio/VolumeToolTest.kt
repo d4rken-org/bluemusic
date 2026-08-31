@@ -261,9 +261,10 @@ class VolumeToolTest : BaseTest() {
 
     // The API 33+ predicted branch can't run in plain JVM (AudioAttributes.Builder
     // is a stub), so the formatting is verified directly via the extracted helper.
-    private fun audioDevice(type: Int, product: CharSequence?): AudioDeviceInfo = mockk {
+    private fun audioDevice(type: Int, product: CharSequence?, addr: String = ""): AudioDeviceInfo = mockk {
         every { getType() } returns type
         every { productName } returns product
+        every { getAddress() } returns addr
     }
 
     @Test
@@ -293,6 +294,68 @@ class VolumeToolTest : BaseTest() {
     fun `formatMediaRoute reports none and availableOnly suffix`() {
         volumeTool.formatMediaRoute(active = false, devices = emptyList(), a2dp = false, sco = false, queryMs = 0) shouldBe
             "availableOnly=[none] a2dpOn=false scoOn=false queryMs=0 (no active-route API < API33)"
+    }
+
+    @Test
+    fun `bluetoothRouteFrom is true for every bluetooth output type`() {
+        listOf(
+            AudioDeviceInfo.TYPE_BLUETOOTH_A2DP,
+            AudioDeviceInfo.TYPE_BLUETOOTH_SCO,
+            AudioDeviceInfo.TYPE_HEARING_AID,
+            AudioDeviceInfo.TYPE_BLE_HEADSET,
+            AudioDeviceInfo.TYPE_BLE_SPEAKER,
+            AudioDeviceInfo.TYPE_BLE_BROADCAST,
+        ).forEach { type ->
+            volumeTool.bluetoothRouteFrom(active = true, devices = listOf(audioDevice(type, null))) shouldBe true
+        }
+    }
+
+    @Test
+    fun `bluetoothRouteFrom is true when any routed device is bluetooth`() {
+        val devices = listOf(
+            audioDevice(AudioDeviceInfo.TYPE_BUILTIN_SPEAKER, null),
+            audioDevice(AudioDeviceInfo.TYPE_BLUETOOTH_A2DP, null),
+        )
+
+        volumeTool.bluetoothRouteFrom(active = true, devices = devices) shouldBe true
+    }
+
+    @Test
+    fun `bluetoothRouteFrom is false for speaker and wired outputs`() {
+        volumeTool.bluetoothRouteFrom(
+            active = true,
+            devices = listOf(audioDevice(AudioDeviceInfo.TYPE_BUILTIN_SPEAKER, null)),
+        ) shouldBe false
+
+        volumeTool.bluetoothRouteFrom(
+            active = true,
+            devices = listOf(audioDevice(AudioDeviceInfo.TYPE_WIRED_HEADPHONES, null)),
+        ) shouldBe false
+    }
+
+    @Test
+    fun `bluetoothRouteFrom is unknown for an empty device list`() {
+        volumeTool.bluetoothRouteFrom(active = true, devices = emptyList()) shouldBe null
+    }
+
+    @Test
+    fun `bluetoothRouteFrom is unknown below API33`() {
+        volumeTool.bluetoothRouteFrom(
+            active = false,
+            devices = listOf(audioDevice(AudioDeviceInfo.TYPE_BLUETOOTH_A2DP, null)),
+        ) shouldBe null
+    }
+
+    @Test
+    fun `addressesFrom keeps non-blank addresses only`() {
+        val devices = listOf(
+            audioDevice(AudioDeviceInfo.TYPE_BLUETOOTH_A2DP, null, "AA:BB:CC:DD:EE:FF"),
+            audioDevice(AudioDeviceInfo.TYPE_BUILTIN_SPEAKER, null, "   "),
+            audioDevice(AudioDeviceInfo.TYPE_BLE_HEADSET, null, ""),
+            audioDevice(AudioDeviceInfo.TYPE_BLE_SPEAKER, null, "11:22:33:44:55:66"),
+        )
+
+        volumeTool.addressesFrom(devices) shouldBe setOf("AA:BB:CC:DD:EE:FF", "11:22:33:44:55:66")
     }
 
     private fun toStreamId(id: Int): AudioStream.Id {

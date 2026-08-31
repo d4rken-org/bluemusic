@@ -10,6 +10,7 @@ import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.modules.DeviceEvent
+import eu.darken.bluemusic.monitor.core.service.BluetoothEventQueue
 import io.kotest.matchers.shouldBe
 import io.mockk.Runs
 import io.mockk.coEvery
@@ -20,6 +21,7 @@ import io.mockk.mockk
 import io.mockk.slot
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
 
@@ -83,6 +85,17 @@ class VolumeDisconnectModuleTest : BaseTest() {
     private fun mockStream(id: AudioStream.Id, current: Int, max: Int) {
         every { volumeTool.getCurrentVolume(id) } returns current
         every { volumeTool.getMaxVolume(id) } returns max
+    }
+
+    private fun speakerSourceDevice(): SourceDevice = mockk {
+        every { this@mockk.address } returns this@VolumeDisconnectModuleTest.address
+        every { label } returns "Phone speaker"
+        every { deviceType } returns SourceDevice.Type.PHONE_SPEAKER
+        every { getStreamId(AudioStream.Type.MUSIC) } returns AudioStream.Id.STREAM_MUSIC
+        every { getStreamId(AudioStream.Type.CALL) } returns AudioStream.Id.STREAM_VOICE_CALL
+        every { getStreamId(AudioStream.Type.RINGTONE) } returns AudioStream.Id.STREAM_RINGTONE
+        every { getStreamId(AudioStream.Type.NOTIFICATION) } returns AudioStream.Id.STREAM_NOTIFICATION
+        every { getStreamId(AudioStream.Type.ALARM) } returns AudioStream.Id.STREAM_ALARM
     }
 
     /**
@@ -572,5 +585,111 @@ class VolumeDisconnectModuleTest : BaseTest() {
         // Should not throw. 0.5 * 25 = 12.5 → round → 13. Drift-suppressed.
         val result = runTransform(module, DeviceEvent.Disconnected(device), cfg)
         result.musicVolume shouldBe 0.5f
+    }
+
+    // ------------------------------------------------------------------------
+    // Route/owner agreement — on some devices ACL_DISCONNECTED arrives after the
+    // media route has already left the device, so the snapshot carries the route
+    // classification taken at broadcast time.
+    // ------------------------------------------------------------------------
+    @Nested
+    inner class RouteAgreement {
+
+        private fun route(isBluetooth: Boolean?, vararg addresses: String) = VolumeTool.MediaRoute(
+            isBluetooth = isBluetooth,
+            addresses = addresses.toSet(),
+            description = "test-route",
+        )
+
+        private fun disconnectEvent(route: VolumeTool.MediaRoute?, device: ManagedDevice) = DeviceEvent.Disconnected(
+            device = device,
+            volumeSnapshot = BluetoothEventQueue.VolumeSnapshot(levels = emptyMap(), route = route),
+        )
+
+        private fun allStreamsConfig() = config(
+            musicVolume = 0.5f,
+            callVolume = 0.5f,
+            ringVolume = 0.5f,
+            notificationVolume = 0.5f,
+            alarmVolume = 0.5f,
+        )
+
+        private fun mockAllStreams() {
+            AudioStream.Id.entries.forEach { mockStream(it, current = 11, max = 25) }
+        }
+
+        @Test
+        fun `disagreeing route drops music but keeps the other streams`() = runTest {
+            val module = createModule()
+            val cfg = allStreamsConfig()
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+            mockAllStreams()
+
+            val result = runTransform(module, disconnectEvent(route(false), managedDevice(cfg)), cfg)
+
+            result.musicVolume shouldBe 0.5f
+            result.callVolume shouldBe (11f / 25f)
+            result.ringVolume shouldBe (11f / 25f)
+            result.notificationVolume shouldBe (11f / 25f)
+            result.alarmVolume shouldBe (11f / 25f)
+        }
+
+        @Test
+        fun `route naming the device saves every stream`() = runTest {
+            val module = createModule()
+            val cfg = allStreamsConfig()
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+            mockAllStreams()
+
+            val result = runTransform(module, disconnectEvent(route(true, address), managedDevice(cfg)), cfg)
+
+            result.musicVolume shouldBe (11f / 25f)
+            result.callVolume shouldBe (11f / 25f)
+        }
+
+        @Test
+        fun `unknown route saves every stream`() = runTest {
+            val module = createModule()
+            val cfg = allStreamsConfig()
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+            mockAllStreams()
+
+            val result = runTransform(module, disconnectEvent(route(null), managedDevice(cfg)), cfg)
+
+            result.musicVolume shouldBe (11f / 25f)
+            result.callVolume shouldBe (11f / 25f)
+        }
+
+        @Test
+        fun `bluetooth route drops music for the phone speaker`() = runTest {
+            val module = createModule()
+            val cfg = allStreamsConfig()
+            val speaker = ManagedDevice(isConnected = true, device = speakerSourceDevice(), config = cfg)
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+            mockAllStreams()
+
+            val result = runTransform(
+                module,
+                disconnectEvent(route(true, "AA:BB:CC:DD:EE:01"), speaker),
+                cfg,
+            )
+
+            result.musicVolume shouldBe 0.5f
+            result.callVolume shouldBe (11f / 25f)
+        }
+
+        @Test
+        fun `speaker route saves every stream for the phone speaker`() = runTest {
+            val module = createModule()
+            val cfg = allStreamsConfig()
+            val speaker = ManagedDevice(isConnected = true, device = speakerSourceDevice(), config = cfg)
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+            mockAllStreams()
+
+            val result = runTransform(module, disconnectEvent(route(false), speaker), cfg)
+
+            result.musicVolume shouldBe (11f / 25f)
+            result.callVolume shouldBe (11f / 25f)
+        }
     }
 }
