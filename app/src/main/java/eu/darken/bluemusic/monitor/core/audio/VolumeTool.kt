@@ -133,7 +133,7 @@ class VolumeTool @Inject constructor(
                 val devices = audioManager.getAudioDevicesForAttributes(attrs)
                 MediaRoute(
                     isBluetooth = bluetoothRouteFrom(active = true, devices = devices),
-                    addresses = addressesFrom(devices),
+                    addresses = bluetoothAddressesFrom(devices),
                     description = formatMediaRoute(active = true, devices = devices, a2dp = a2dp, sco = sco, queryMs = clock() - start),
                 )
             } else {
@@ -163,6 +163,13 @@ class VolumeTool @Inject constructor(
     internal fun addressesFrom(devices: List<AudioDeviceInfo>): Set<String> = devices
         .mapNotNull { it.address?.trim()?.takeIf { addr -> addr.isNotEmpty() } }
         .toSet()
+
+    // Only Bluetooth outputs can match an owner address. A USB output on the same route
+    // reports `card=1;device=0`, which would make the set non-empty even when every
+    // Bluetooth output on it came back with a blank address (BLUETOOTH_CONNECT denied).
+    @RequiresApi(Build.VERSION_CODES.P)
+    internal fun bluetoothAddressesFrom(devices: List<AudioDeviceInfo>): Set<String> =
+        addressesFrom(devices.filter { it.type in BLUETOOTH_OUTPUT_TYPES })
 
     // Separated from the platform query so the formatting can be unit-tested in
     // plain JVM without Robolectric. `active` = predicted route (API 33+),

@@ -358,6 +358,26 @@ class VolumeToolTest : BaseTest() {
         volumeTool.addressesFrom(devices) shouldBe setOf("AA:BB:CC:DD:EE:FF", "11:22:33:44:55:66")
     }
 
+    @Test
+    fun `bluetoothAddressesFrom keeps bluetooth output addresses only`() {
+        val devices = listOf(
+            audioDevice(AudioDeviceInfo.TYPE_BLUETOOTH_A2DP, null, "AA:BB:CC:DD:EE:FF"),
+            audioDevice(AudioDeviceInfo.TYPE_USB_HEADSET, null, "card=1;device=0"),
+        )
+
+        volumeTool.bluetoothAddressesFrom(devices) shouldBe setOf("AA:BB:CC:DD:EE:FF")
+    }
+
+    @Test
+    fun `bluetoothAddressesFrom is empty when the bluetooth output has no address`() {
+        val devices = listOf(
+            audioDevice(AudioDeviceInfo.TYPE_BLUETOOTH_A2DP, null, ""),
+            audioDevice(AudioDeviceInfo.TYPE_USB_HEADSET, null, "card=1;device=0"),
+        )
+
+        volumeTool.bluetoothAddressesFrom(devices) shouldBe emptySet<String>()
+    }
+
     private fun toStreamId(id: Int): AudioStream.Id {
         return AudioStream.Id.entries.first { it.id == id }
     }
