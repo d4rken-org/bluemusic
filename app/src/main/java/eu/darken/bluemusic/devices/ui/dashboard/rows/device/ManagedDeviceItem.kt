@@ -226,6 +226,7 @@ fun ManagedDeviceItem(
                                     onDeviceAction(DashboardAction.AdjustVolume(device.address, streamType, newMode))
                                 },
                                 isLocked = isLocked,
+                                band = device.getVolumeBand(streamType),
                             )
                         } else {
                             VolumeControl(
@@ -242,6 +243,7 @@ fun ManagedDeviceItem(
                                     )
                                 },
                                 isLocked = isLocked,
+                                band = device.getVolumeBand(streamType),
                             )
                         }
                     }

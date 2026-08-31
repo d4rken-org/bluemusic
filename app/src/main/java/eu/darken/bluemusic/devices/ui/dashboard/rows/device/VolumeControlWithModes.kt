@@ -39,6 +39,7 @@ import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.AudioStream.SOUND_MODE_SILENT
 import eu.darken.bluemusic.monitor.core.audio.AudioStream.SOUND_MODE_VIBRATE
+import eu.darken.bluemusic.monitor.core.audio.VolumeBand
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode.Companion.fromFloat
 import kotlin.math.roundToInt
@@ -51,16 +52,23 @@ fun VolumeControlWithModes(
     onVolumeChange: (VolumeMode) -> Unit,
     modifier: Modifier = Modifier,
     isLocked: Boolean = false,
+    band: VolumeBand? = null,
 ) {
     val haptics = LocalHapticFeedback.current
 
-    var sliderValue by remember(volumeMode) {
+    val bandMin = band?.min?.coerceIn(0f, 1f) ?: 0f
+    val bandMax = band?.max?.coerceIn(0f, 1f) ?: 1f
+    // A band whose bounds meet leaves no travel, so the slider keeps its full track and the value
+    // is pinned instead.
+    val sliderRange = if (bandMax > bandMin) bandMin..bandMax else 0f..1f
+
+    var sliderValue by remember(volumeMode, bandMin, bandMax) {
         mutableFloatStateOf(
             when (volumeMode) {
-                null -> 0.5f
+                null -> 0.5f.coerceIn(bandMin, bandMax)
                 is VolumeMode.Silent -> SOUND_MODE_SILENT
                 is VolumeMode.Vibrate -> SOUND_MODE_VIBRATE
-                is VolumeMode.Normal -> volumeMode.percentage
+                is VolumeMode.Normal -> volumeMode.percentage.coerceIn(bandMin, bandMax)
             }
         )
     }
@@ -145,7 +153,8 @@ fun VolumeControlWithModes(
                                 if (!isLocked) {
                                     Modifier.clickable {
                                         haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                                        sliderValue = if (sliderValue < 0) 0.5f else sliderValue
+                                        sliderValue = (if (sliderValue < 0) 0.5f else sliderValue)
+                                            .coerceIn(bandMin, bandMax)
                                         onVolumeChange(VolumeMode.Normal(sliderValue))
                                     }
                                 } else {
@@ -181,12 +190,13 @@ fun VolumeControlWithModes(
                     )
                 } else {
                     Slider(
-                        value = if (sliderValue < 0) 0f else sliderValue,
+                        value = sliderValue.coerceIn(sliderRange.start, sliderRange.endInclusive),
                         onValueChange = { newValue ->
                             if (newValue > 0.01f) {
-                                sliderValue = newValue
+                                sliderValue = newValue.coerceIn(bandMin, bandMax)
                             }
                         },
+                        valueRange = sliderRange,
                         onValueChangeFinished = {
                             if (sliderValue > 0.01f) {
                                 haptics.performHapticFeedback(HapticFeedbackType.LongPress)
@@ -244,7 +254,8 @@ fun VolumeControlWithModes(
         VolumeInputDialog(
             streamLabel = label,
             currentPercentage = (volumeMode.percentage * 100).roundToInt(),
-            minValue = 1,
+            minValue = maxOf(1, (bandMin * 100).roundToInt()),
+            maxValue = (bandMax * 100).roundToInt(),
             onConfirm = { newVolume ->
                 sliderValue = newVolume
                 onVolumeChange(VolumeMode.Normal(newVolume))

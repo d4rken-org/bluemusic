@@ -20,7 +20,9 @@ import eu.darken.bluemusic.devices.core.DeviceAddr
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.observeDevice
+import eu.darken.bluemusic.devices.core.setVolumeLimit
 import eu.darken.bluemusic.devices.core.ToggleResult
+import eu.darken.bluemusic.devices.core.toggleVolumeLimit
 import eu.darken.bluemusic.devices.core.toggleVolumeLock
 import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.eq.core.EqCapabilities
@@ -249,6 +251,26 @@ class DeviceConfigViewModel @AssistedInject constructor(
             is ConfigAction.OnToggleVolumeLock -> {
                 val result = deviceRepo.toggleVolumeLock(deviceAddress, upgradeRepo)
                 if (result == ToggleResult.NOT_PRO) events.emit(ConfigEvent.RequiresPro)
+            }
+
+            is ConfigAction.OnToggleVolumeLimit -> {
+                val result = deviceRepo.toggleVolumeLimit(deviceAddress, upgradeRepo)
+                if (result == ToggleResult.NOT_PRO) events.emit(ConfigEvent.RequiresPro)
+            }
+
+            is ConfigAction.OnEditVolumeLimitClicked -> {
+                val device = currentState().device
+                events.emit(
+                    ConfigEvent.ShowVolumeLimitDialog(
+                        type = action.type,
+                        currentMin = device.getVolumeMin(action.type),
+                        currentMax = device.getVolumeMax(action.type),
+                    )
+                )
+            }
+
+            is ConfigAction.OnEditVolumeLimit -> {
+                deviceRepo.setVolumeLimit(deviceAddress, action.type, action.min, action.max)
             }
 
             is ConfigAction.OnToggleVolumeObserving -> deviceRepo.updateDevice(deviceAddress) { oldConfig ->

@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeBand
 import kotlin.math.roundToInt
 
 @Composable
@@ -44,8 +45,17 @@ fun VolumeControl(
     onVolumeChange: (Float) -> Unit,
     modifier: Modifier = Modifier,
     isLocked: Boolean = false,
+    band: VolumeBand? = null,
 ) {
-    var sliderValue by remember(volume) { mutableStateOf(volume ?: 0.5f) }
+    val bandMin = band?.min?.coerceIn(0f, 1f) ?: 0f
+    val bandMax = band?.max?.coerceIn(0f, 1f) ?: 1f
+    // A band whose bounds meet leaves no travel, so the slider keeps its full track and the value
+    // is pinned instead.
+    val sliderRange = if (bandMax > bandMin) bandMin..bandMax else 0f..1f
+
+    var sliderValue by remember(volume, bandMin, bandMax) {
+        mutableStateOf((volume ?: 0.5f).coerceIn(bandMin, bandMax))
+    }
     var showVolumeInput by remember { mutableStateOf(false) }
 
     Column(modifier = modifier.alpha(if (isLocked) 0.5f else 1f)) {
@@ -70,11 +80,12 @@ fun VolumeControl(
             Slider(
                 value = sliderValue,
                 onValueChange = { newValue ->
-                    sliderValue = newValue
+                    sliderValue = newValue.coerceIn(bandMin, bandMax)
                 },
                 onValueChangeFinished = {
                     onVolumeChange(sliderValue)
                 },
+                valueRange = sliderRange,
                 modifier = Modifier.weight(1f),
                 enabled = volume != null && !isLocked
             )
@@ -114,6 +125,8 @@ fun VolumeControl(
         VolumeInputDialog(
             streamLabel = label,
             currentPercentage = (volume * 100).roundToInt(),
+            minValue = (bandMin * 100).roundToInt(),
+            maxValue = (bandMax * 100).roundToInt(),
             onConfirm = { newVolume ->
                 sliderValue = newVolume
                 onVolumeChange(newVolume)

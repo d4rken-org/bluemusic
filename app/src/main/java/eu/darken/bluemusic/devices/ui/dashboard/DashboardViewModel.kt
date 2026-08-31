@@ -376,6 +376,7 @@ class DashboardViewModel @Inject constructor(
                     streamType = action.type,
                     volumeMode = action.volumeMode,
                     visible = device.visibleAdjustments,
+                    band = device.getVolumeBand(action.type),
                 )
             }
         }
