@@ -2,14 +2,18 @@ package eu.darken.bluemusic.monitor.core.audio
 
 import android.media.AudioDeviceInfo
 import android.media.AudioManager
+import eu.darken.bluemusic.common.BuildWrap
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.mockkObject
+import io.mockk.unmockkObject
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.currentTime
 import kotlinx.coroutines.test.runTest
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import testhelpers.BaseTest
@@ -40,6 +44,17 @@ class VolumeToolTest : BaseTest() {
         volumeTool = VolumeTool(audioManager).apply {
             clock = { fakeTime }
         }
+    }
+
+    @AfterEach
+    fun teardown() {
+        unmockkObject(BuildWrap.VERSION)
+    }
+
+    private fun fakeSdk(level: Int) {
+        mockkObject(BuildWrap.VERSION)
+        every { BuildWrap.VERSION.SDK_INT } returns level
+        every { BuildWrap.VERSION.CODENAME } returns "REL"
     }
 
     @Test
@@ -406,6 +421,41 @@ class VolumeToolTest : BaseTest() {
 
         volumeTool.bandLevels(AudioStream.Id.STREAM_MUSIC, band) shouldBe 3..3
         volumeTool.resolveBoundedLevel(AudioStream.Id.STREAM_MUSIC, 1f, band) shouldBe 3
+    }
+
+    /**
+     * getMinVolume deliberately answers STREAM_BLUETOOTH_HANDSFREE with STREAM_VOICE_CALL's
+     * minimum, the platform rejects the handsfree stream type itself. The limit slider's stops and
+     * the enforcement in bandLevels both have to keep consuming that same minimum: if they drift
+     * apart, a stop the user picks silently resolves to a different level.
+     */
+    @Test
+    fun `handsfree limit slider stops match the levels bandLevels can enforce`() {
+        fakeSdk(28)
+        val stream = AudioStream.Id.STREAM_BLUETOOTH_HANDSFREE
+        every { audioManager.getStreamMinVolume(stream.id) } throws IllegalArgumentException("Bad stream type 6")
+        every { audioManager.getStreamMinVolume(AudioStream.Id.STREAM_VOICE_CALL.id) } returns 1
+        every { audioManager.getStreamMaxVolume(stream.id) } returns 15
+
+        // DeviceConfigViewModel publishes `max - min` as the step count and the RangeSlider takes
+        // it as `steps = stepCount - 1`, which leaves stepCount + 1 selectable stops.
+        val stepCount = volumeTool.getMaxVolume(stream) - volumeTool.getMinVolume(stream)
+        val sliderStops = stepCount + 1
+
+        val enforceableLevels = (0..1000)
+            .map { it / 1000f }
+            .flatMap {
+                listOf(
+                    volumeTool.bandLevels(stream, VolumeBand(min = it, max = null)).first,
+                    volumeTool.bandLevels(stream, VolumeBand(min = null, max = it)).last,
+                )
+            }
+            .toSet()
+
+        sliderStops shouldBe enforceableLevels.size
+        // Pins the proxy itself: without it the minimum falls back to 0 and both sides would agree
+        // on a grid the stream doesn't have.
+        enforceableLevels shouldBe (1..15).toSet()
     }
 
     private fun toStreamId(id: Int): AudioStream.Id {
