@@ -65,7 +65,8 @@ class VolumeUpdateModule @Inject constructor(
             return
         }
 
-        val allActive = deviceRepo.currentDevices().filter { it.isActive }
+        val allDevices = deviceRepo.currentDevices()
+        val allActive = allDevices.filter { it.isActive }
 
         val candidates = allActive.filter { dev ->
             if (dev.address !in ownerAddresses) return@filter false
@@ -95,11 +96,13 @@ class VolumeUpdateModule @Inject constructor(
         // MUSIC is gated: the route query asks USAGE_MEDIA/CONTENT_TYPE_MUSIC, which says nothing
         // about who owns call, ringtone, notification or alarm audio.
         val agreeing = if (id == AudioStream.Id.STREAM_MUSIC) {
+            val knownAddresses = allDevices.map { it.address }.toSet()
             stable.filter { dev ->
                 val verdict = routeVerdict(
                     route = event.route,
                     isPhoneSpeaker = dev.type == SourceDevice.Type.PHONE_SPEAKER,
                     ownerAddresses = ownerAddresses,
+                    knownAddresses = knownAddresses,
                 )
                 when (verdict) {
                     RouteVerdict.DISAGREE -> {

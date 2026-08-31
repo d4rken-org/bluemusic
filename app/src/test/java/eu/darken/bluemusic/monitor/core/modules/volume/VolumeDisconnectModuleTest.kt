@@ -19,6 +19,7 @@ import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
 import io.mockk.slot
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
@@ -33,12 +34,15 @@ class VolumeDisconnectModuleTest : BaseTest() {
     private lateinit var ringerTool: RingerTool
     private lateinit var deviceRepo: DeviceRepo
     private lateinit var sourceDevice: SourceDevice
+    private lateinit var devicesFlow: MutableStateFlow<List<ManagedDevice>>
 
     @BeforeEach
     fun setup() {
         volumeTool = mockk(relaxed = true)
         ringerTool = mockk(relaxed = true)
         deviceRepo = mockk(relaxed = true)
+        devicesFlow = MutableStateFlow(emptyList())
+        every { deviceRepo.devices } returns devicesFlow
         coEvery { deviceRepo.updateDevice(any(), any()) } just Runs
 
         sourceDevice = mockk {
@@ -694,6 +698,46 @@ class VolumeDisconnectModuleTest : BaseTest() {
                 ),
             )
             val result = runTransform(module, event, cfg)
+
+            result.musicVolume shouldBe (11f / 25f)
+            result.callVolume shouldBe (11f / 25f)
+        }
+
+        @Test
+        fun `route naming a different managed device drops music`() = runTest {
+            val module = createModule()
+            val cfg = allStreamsConfig()
+            val otherAddress = "AA:BB:CC:DD:EE:03"
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+            mockAllStreams()
+            devicesFlow.value = listOf(
+                managedDevice(cfg),
+                ManagedDevice(
+                    isConnected = true,
+                    device = mockk(relaxed = true),
+                    config = DeviceConfigEntity(address = otherAddress),
+                ),
+            )
+
+            val result = runTransform(module, disconnectEvent(route(true, otherAddress), managedDevice(cfg)), cfg)
+
+            result.musicVolume shouldBe 0.5f
+            result.callVolume shouldBe (11f / 25f)
+        }
+
+        @Test
+        fun `route naming no managed device saves every stream`() = runTest {
+            val module = createModule()
+            val cfg = allStreamsConfig()
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+            mockAllStreams()
+            devicesFlow.value = listOf(managedDevice(cfg))
+
+            val result = runTransform(
+                module,
+                disconnectEvent(route(true, "AA:BB:CC:DD:EE:03"), managedDevice(cfg)),
+                cfg,
+            )
 
             result.musicVolume shouldBe (11f / 25f)
             result.callVolume shouldBe (11f / 25f)

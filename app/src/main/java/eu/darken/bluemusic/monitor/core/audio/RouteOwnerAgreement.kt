@@ -10,9 +10,12 @@ enum class RouteVerdict {
 /**
  * Does the media route agree that [ownerAddresses] (or the phone speaker) owns what is playing?
  *
- * Route says BT_A2DP 'AA:BB' while the owner group is ["AA:BB"] -> AGREE.
- * Route says SPEAKER while the owner group is ["AA:BB"] -> DISAGREE.
- * Route says BT_A2DP 'CC:DD' while the owner group is ["AA:BB"] -> DISAGREE.
+ * [knownAddresses] are all addresses BVM manages, owners included.
+ *
+ * Route BT_A2DP 'AA:BB', owners ["AA:BB"] -> AGREE.
+ * Route SPEAKER, owners ["AA:BB"] -> DISAGREE.
+ * Route BT_A2DP 'CC:DD', owners ["AA:BB"], known ["AA:BB", "CC:DD"] -> DISAGREE.
+ * Route BT_A2DP 'CC:DD', owners ["AA:BB"], known ["AA:BB"] -> AGREE.
  *
  * UNKNOWN whenever the route can't classify itself, so an uninformative query never blocks.
  */
@@ -20,6 +23,7 @@ fun routeVerdict(
     route: VolumeTool.MediaRoute?,
     isPhoneSpeaker: Boolean,
     ownerAddresses: Set<String>,
+    knownAddresses: Set<String>,
 ): RouteVerdict {
     if (route == null) return RouteVerdict.UNKNOWN
     val routedToBluetooth = route.isBluetooth ?: return RouteVerdict.UNKNOWN
@@ -32,5 +36,11 @@ fun routeVerdict(
     if (routed.isEmpty()) return RouteVerdict.AGREE
 
     val owners = ownerAddresses.map { it.lowercase() }.toSet()
-    return if (routed.any { it in owners }) RouteVerdict.AGREE else RouteVerdict.DISAGREE
+    if (routed.any { it in owners }) return RouteVerdict.AGREE
+
+    // Owner addresses come from ACL broadcasts, the route address comes from the audio
+    // framework: an LE Audio set member or a hearing aid can report a third address that
+    // belongs to no device BVM knows. That says nothing, so it counts as agreement.
+    val others = knownAddresses.map { it.lowercase() }.toSet() - owners
+    return if (routed.any { it in others }) RouteVerdict.DISAGREE else RouteVerdict.AGREE
 }

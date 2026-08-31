@@ -12,6 +12,7 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.WARN
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.devices.core.DeviceRepo
+import eu.darken.bluemusic.devices.core.currentDevices
 import eu.darken.bluemusic.devices.core.getVolume
 import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
@@ -79,6 +80,7 @@ class VolumeDisconnectModule @Inject constructor(
             route = route,
             isPhoneSpeaker = device.type == SourceDevice.Type.PHONE_SPEAKER,
             ownerAddresses = ownerAddresses,
+            knownAddresses = deviceRepo.currentDevices().map { it.address }.toSet(),
         )
 
         // TODO: RingerTool.getCurrentRingerMode() falls back to NORMAL on unknown

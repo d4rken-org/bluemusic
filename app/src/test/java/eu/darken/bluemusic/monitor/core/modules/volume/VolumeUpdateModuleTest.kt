@@ -863,6 +863,30 @@ class VolumeUpdateModuleTest : BaseTest() {
             val module = createModule()
             val cfg = config(musicVolume = 0.1f)
             seedActive(managedDevice(cfg))
+            // Handoff between two BVM-managed devices: the previous one is already
+            // disconnected but the route still names it.
+            val previousAddress = "AA:BB:CC:DD:EE:01"
+            devicesFlow.value = devicesFlow.value + ManagedDevice(
+                isConnected = false,
+                device = makeSourceDevice(previousAddress, "Previous Device"),
+                config = DeviceConfigEntity(address = previousAddress, musicVolume = 0.1f),
+            )
+
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+
+            handleObserved(
+                module,
+                VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false, route = btRoute(previousAddress)),
+            )
+
+            coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+        }
+
+        @Test
+        fun `music change persists when the route names no device BVM manages`() = runTest {
+            val module = createModule()
+            val cfg = config(musicVolume = 0.1f)
+            seedActive(managedDevice(cfg))
 
             every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
 
@@ -871,7 +895,7 @@ class VolumeUpdateModuleTest : BaseTest() {
                 VolumeEvent(AudioStream.Id.STREAM_MUSIC, 5, 11, self = false, route = btRoute("AA:BB:CC:DD:EE:01")),
             )
 
-            coVerify(exactly = 0) { deviceRepo.updateDevice(any(), any()) }
+            coVerify(exactly = 1) { deviceRepo.updateDevice(address, any()) }
         }
 
         private suspend fun seedSpeaker() {
