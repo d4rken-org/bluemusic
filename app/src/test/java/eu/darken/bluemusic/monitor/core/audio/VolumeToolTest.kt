@@ -378,6 +378,36 @@ class VolumeToolTest : BaseTest() {
         volumeTool.bluetoothAddressesFrom(devices) shouldBe emptySet<String>()
     }
 
+    @Test
+    fun `resolveBoundedLevel without a band passes the target through`() {
+        volumeTool.resolveBoundedLevel(AudioStream.Id.STREAM_MUSIC, 1f, null) shouldBe 15
+        volumeTool.resolveBoundedLevel(AudioStream.Id.STREAM_MUSIC, 0.5f, null) shouldBe 8
+        volumeTool.resolveBoundedLevel(AudioStream.Id.STREAM_MUSIC, 0.5f, VolumeBand(null, null)) shouldBe 8
+    }
+
+    @Test
+    fun `resolveBoundedLevel clamps in both directions`() {
+        val band = VolumeBand(min = 0.2f, max = 0.5f)
+
+        volumeTool.resolveBoundedLevel(AudioStream.Id.STREAM_MUSIC, 1f, band) shouldBe 7
+        volumeTool.resolveBoundedLevel(AudioStream.Id.STREAM_MUSIC, 0f, band) shouldBe 3
+        volumeTool.resolveBoundedLevel(AudioStream.Id.STREAM_MUSIC, 0.4f, band) shouldBe 6
+    }
+
+    @Test
+    fun `bandLevels resolves an open bound to the stream bound`() {
+        volumeTool.bandLevels(AudioStream.Id.STREAM_MUSIC, VolumeBand(min = null, max = 0.5f)) shouldBe 0..7
+        volumeTool.bandLevels(AudioStream.Id.STREAM_MUSIC, VolumeBand(min = 0.2f, max = null)) shouldBe 3..15
+    }
+
+    @Test
+    fun `bandLevels lets the maximum win over a conflicting minimum`() {
+        val band = VolumeBand(min = 0.8f, max = 0.2f)
+
+        volumeTool.bandLevels(AudioStream.Id.STREAM_MUSIC, band) shouldBe 3..3
+        volumeTool.resolveBoundedLevel(AudioStream.Id.STREAM_MUSIC, 1f, band) shouldBe 3
+    }
+
     private fun toStreamId(id: Int): AudioStream.Id {
         return AudioStream.Id.entries.first { it.id == id }
     }
