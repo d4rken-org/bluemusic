@@ -15,11 +15,11 @@ import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.common.upgrade.isProForUi
 import eu.darken.bluemusic.devices.core.DeviceAddr
+import eu.darken.bluemusic.devices.core.DeviceConfigSaver
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.observeDevice
 import eu.darken.bluemusic.eq.core.EqCapabilities
-import eu.darken.bluemusic.eq.core.EqConfigSaver
 import eu.darken.bluemusic.eq.core.EqCoordinator
 import eu.darken.bluemusic.eq.core.EqPresets
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -43,7 +43,7 @@ class DeviceEqViewModel @AssistedInject constructor(
     private val eqCapabilities: EqCapabilities,
     private val eqPresets: EqPresets,
     private val eqCoordinator: EqCoordinator,
-    private val eqConfigSaver: EqConfigSaver,
+    private val configSaver: DeviceConfigSaver,
     private val upgradeRepo: UpgradeRepo,
     private val eqAppResolver: EqAppResolver,
     dispatcherProvider: DispatcherProvider,
@@ -139,7 +139,7 @@ class DeviceEqViewModel @AssistedInject constructor(
         persistJob?.cancel()
         // The write itself runs on the app scope, so leaving the screen right after a slider release
         // cannot lose it. This job only waits for it to sequence the preview clear.
-        val write = eqConfigSaver.save(deviceAddress) { it.copy(eqBandLevels = levels) }
+        val write = configSaver.save(deviceAddress) { it.copy(eqBandLevels = levels) }
         persistJob = vmScope.launch {
             // In a finally throughout: a cancelled wait must not leave a preview curve applied to the
             // running effects, it would outlive this screen and never be cleared by anyone else.
@@ -160,7 +160,7 @@ class DeviceEqViewModel @AssistedInject constructor(
         log(tag) { "onBoostCommitted($gain)" }
         boostJob?.cancel()
         // No boost is the "never configured" state, storing null keeps the enhancer out of it.
-        val write = eqConfigSaver.save(deviceAddress) { it.copy(eqBoostGain = gain.takeIf { value -> value > 0 }) }
+        val write = configSaver.save(deviceAddress) { it.copy(eqBoostGain = gain.takeIf { value -> value > 0 }) }
         boostJob = vmScope.launch {
             try {
                 write.await()
@@ -187,7 +187,7 @@ class DeviceEqViewModel @AssistedInject constructor(
         persistJob?.cancel()
         // Like a slider commit, the write goes to the app scope before any coroutine of ours exists,
         // so tapping a chip and leaving the screen in the same moment cannot lose it.
-        val write = eqConfigSaver.save(deviceAddress) { it.copy(eqBandLevels = levels) }
+        val write = configSaver.save(deviceAddress) { it.copy(eqBandLevels = levels) }
         persistJob = vmScope.launch {
             try {
                 write.await()

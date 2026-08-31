@@ -14,12 +14,13 @@ import eu.darken.bluemusic.common.navigation.NavigationController
 import eu.darken.bluemusic.common.ui.ViewModel4
 import eu.darken.bluemusic.common.upgrade.UpgradeRepo
 import eu.darken.bluemusic.devices.core.DeviceAddr
+import eu.darken.bluemusic.devices.core.DeviceConfigSaver
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.ToggleResult
 import eu.darken.bluemusic.devices.core.observeDevice
-import eu.darken.bluemusic.devices.core.setVolumeLimit
 import eu.darken.bluemusic.devices.core.toggleVolumeLimit
+import eu.darken.bluemusic.devices.core.withVolumeLimit
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import kotlinx.coroutines.flow.combine
@@ -29,6 +30,7 @@ import kotlinx.coroutines.flow.filterNotNull
 class VolumeLimitViewModel @AssistedInject constructor(
     @Assisted private val deviceAddress: DeviceAddr,
     private val deviceRepo: DeviceRepo,
+    private val configSaver: DeviceConfigSaver,
     private val upgradeRepo: UpgradeRepo,
     private val volumeTool: VolumeTool,
     dispatcherProvider: DispatcherProvider,
@@ -82,9 +84,11 @@ class VolumeLimitViewModel @AssistedInject constructor(
         if (result == ToggleResult.NOT_PRO) events.emit(Event.RequiresPro)
     }
 
-    fun onLimitChanged(type: AudioStream.Type, min: Float?, max: Float?) = launch {
+    fun onLimitChanged(type: AudioStream.Type, min: Float?, max: Float?) {
         log(tag) { "onLimitChanged($type, $min, $max)" }
-        deviceRepo.setVolumeLimit(deviceAddress, type, min, max)
+        // Handed over on the caller's thread and written on the app scope: releasing a thumb and
+        // leaving the screen in the same moment would otherwise cancel the value just committed.
+        configSaver.save(deviceAddress) { it.withVolumeLimit(type, min, max) }
     }
 
     @AssistedFactory

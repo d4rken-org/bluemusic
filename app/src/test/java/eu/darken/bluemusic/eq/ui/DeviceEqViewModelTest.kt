@@ -3,11 +3,11 @@ package eu.darken.bluemusic.eq.ui
 import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.bluetooth.core.SourceDeviceWrapper
 import eu.darken.bluemusic.common.navigation.NavigationController
+import eu.darken.bluemusic.devices.core.DeviceConfigSaver
 import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.ManagedDevice
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import eu.darken.bluemusic.eq.core.EqCapabilities
-import eu.darken.bluemusic.eq.core.EqConfigSaver
 import eu.darken.bluemusic.eq.core.EqCoordinator
 import eu.darken.bluemusic.eq.core.EqPresets
 import eu.darken.bluemusic.eq.core.EqSessionState
@@ -71,7 +71,7 @@ class DeviceEqViewModelTest : BaseTest() {
 
     private fun TestScope.viewModel(
         repo: DeviceRepo,
-        saver: EqConfigSaver,
+        saver: DeviceConfigSaver,
         dispatcher: CoroutineDispatcher = UnconfinedTestDispatcher(testScheduler),
     ) = DeviceEqViewModel(
         deviceAddress = address,
@@ -85,7 +85,7 @@ class DeviceEqViewModelTest : BaseTest() {
             every { targetAddress } returns MutableStateFlow(address)
             every { sessionState } returns MutableStateFlow(EqSessionState())
         },
-        eqConfigSaver = saver,
+        configSaver = saver,
         upgradeRepo = mockUpgradeRepo(),
         eqAppResolver = mockk<EqAppResolver>().apply {
             coEvery { resolved(any()) } answers { firstArg() }
@@ -98,7 +98,7 @@ class DeviceEqViewModelTest : BaseTest() {
     fun `a committed curve is stored even when the screen is left right away`() = runTest {
         val gate = CompletableDeferred<Unit>()
         val repo = deviceRepo(gate)
-        val vm = viewModel(repo, EqConfigSaver(backgroundScope, repo))
+        val vm = viewModel(repo, DeviceConfigSaver(backgroundScope, repo))
 
         vm.onLevelsCommitted(listOf(300, 0, -300))
         runCurrent()
@@ -121,7 +121,7 @@ class DeviceEqViewModelTest : BaseTest() {
         val repo = deviceRepo(gate)
         // A standard dispatcher: nothing the ViewModel launches gets to run eagerly, which is the
         // window a chip tap followed by an immediate back press actually falls into.
-        val vm = viewModel(repo, EqConfigSaver(backgroundScope, repo), StandardTestDispatcher(testScheduler))
+        val vm = viewModel(repo, DeviceConfigSaver(backgroundScope, repo), StandardTestDispatcher(testScheduler))
 
         backgroundScope.launch { vm.state.collect { } }
         runCurrent()

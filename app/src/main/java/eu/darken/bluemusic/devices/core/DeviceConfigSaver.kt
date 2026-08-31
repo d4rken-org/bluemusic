@@ -1,4 +1,4 @@
-package eu.darken.bluemusic.eq.core
+package eu.darken.bluemusic.devices.core
 
 import eu.darken.bluemusic.common.coroutine.AppScope
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.ERROR
@@ -6,8 +6,6 @@ import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
 import eu.darken.bluemusic.common.debug.logging.asLog
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
-import eu.darken.bluemusic.devices.core.DeviceAddr
-import eu.darken.bluemusic.devices.core.DeviceRepo
 import eu.darken.bluemusic.devices.core.database.DeviceConfigEntity
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
@@ -19,7 +17,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * Persists equalizer edits on the app scope instead of the screen's.
+ * Persists device config edits on the app scope instead of the screen's.
  *
  * Releasing a slider and navigating back in the same moment would otherwise cancel the write the user
  * just committed: it ran in the ViewModel's scope, which dies with the screen. Every edit is handed to
@@ -27,7 +25,7 @@ import javax.inject.Singleton
  * can never be overtaken by an earlier one.
  */
 @Singleton
-class EqConfigSaver @Inject constructor(
+class DeviceConfigSaver @Inject constructor(
     @param:AppScope private val appScope: CoroutineScope,
     private val deviceRepo: DeviceRepo,
 ) {
@@ -77,6 +75,6 @@ class EqConfigSaver @Inject constructor(
     }
 
     companion object {
-        private val TAG = logTag("Eq", "ConfigSaver")
+        private val TAG = logTag("Devices", "ConfigSaver")
     }
 }

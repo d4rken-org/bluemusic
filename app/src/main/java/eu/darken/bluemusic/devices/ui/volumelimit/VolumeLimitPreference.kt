@@ -12,6 +12,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RangeSlider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -46,7 +47,15 @@ fun VolumeLimitPreference(
 ) {
     val start = (min ?: 0f).coerceIn(0f, 1f)
     val end = (max ?: 1f).coerceIn(start, 1f)
-    var range by remember(min, max) { mutableStateOf(start..end) }
+    var range by remember { mutableStateOf(start..end) }
+    var dragging by remember { mutableStateOf(false) }
+
+    // The stored bounds arrive as an echo of this screen's own write, so a change can land in the middle
+    // of the next gesture. Adopting it there would pull the thumbs out from under the finger and make the
+    // release commit the old band.
+    LaunchedEffect(start, end) {
+        if (!dragging) range = start..end
+    }
 
     Column(
         modifier = modifier
@@ -75,9 +84,13 @@ fun VolumeLimitPreference(
         }
         RangeSlider(
             value = range,
-            onValueChange = { range = it },
+            onValueChange = {
+                dragging = true
+                range = it
+            },
             // Writing on every frame of a drag would hit the database dozens of times per gesture.
             onValueChangeFinished = {
+                dragging = false
                 // A thumb at its extreme is no bound at all: 0% and 100% resolve to the stream's own
                 // bounds. Storing them as values would keep the foreground service alive for a band
                 // that constrains nothing.
