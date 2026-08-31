@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoSet
+import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.DEBUG
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.INFO
 import eu.darken.bluemusic.common.debug.logging.Logging.Priority.VERBOSE
@@ -16,11 +17,13 @@ import eu.darken.bluemusic.devices.core.updateVolume
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
+import eu.darken.bluemusic.monitor.core.audio.RouteVerdict
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
 import eu.darken.bluemusic.monitor.core.audio.VolumeMode
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.audio.levelToPercentage
 import eu.darken.bluemusic.monitor.core.audio.percentageToLevel
+import eu.darken.bluemusic.monitor.core.audio.routeVerdict
 import eu.darken.bluemusic.monitor.core.modules.VolumeModule
 import eu.darken.bluemusic.monitor.core.ownership.AudioStreamOwnerRegistry
 import java.time.Duration
@@ -54,8 +57,7 @@ class VolumeUpdateModule @Inject constructor(
         }
 
         log(TAG, DEBUG) { "Volume change $event" }
-        // Diagnostic (issue #232): route at the moment we decide to persist.
-        log(TAG, DEBUG) { "Media route for $id: ${volumeTool.describeActiveMediaRoute()}" }
+        log(TAG, DEBUG) { "Media route for $id: ${event.route?.description}" }
 
         val ownerAddresses = ownerRegistry.ownerAddressesFor(id).toSet()
         if (ownerAddresses.isEmpty()) {
@@ -63,7 +65,8 @@ class VolumeUpdateModule @Inject constructor(
             return
         }
 
-        val allActive = deviceRepo.currentDevices().filter { it.isActive }
+        val allDevices = deviceRepo.currentDevices()
+        val allActive = allDevices.filter { it.isActive }
 
         val candidates = allActive.filter { dev ->
             if (dev.address !in ownerAddresses) return@filter false
@@ -88,6 +91,44 @@ class VolumeUpdateModule @Inject constructor(
             return
         }
 
+        // The owner registry is driven by ACL broadcasts alone; on some devices the media route
+        // leaves the Bluetooth device over a second before ACL_DISCONNECTED (issue #232). Only
+        // MUSIC is gated: the route query asks USAGE_MEDIA/CONTENT_TYPE_MUSIC, which says nothing
+        // about who owns call, ringtone, notification or alarm audio.
+        val agreeing = if (id == AudioStream.Id.STREAM_MUSIC) {
+            val knownAddresses = allDevices.map { it.address }.toSet()
+            stable.filter { dev ->
+                val verdict = routeVerdict(
+                    route = event.route,
+                    isPhoneSpeaker = dev.type == SourceDevice.Type.PHONE_SPEAKER,
+                    ownerAddresses = ownerAddresses,
+                    knownAddresses = knownAddresses,
+                )
+                when (verdict) {
+                    RouteVerdict.DISAGREE -> {
+                        log(TAG, INFO) {
+                            "Route disagrees with owner, skipping $id=${event.newVolume} for " +
+                                "${dev.address}/${dev.label} (route=${event.route?.description}, " +
+                                "routedTo=${event.route?.addresses}, owners=$ownerAddresses)"
+                        }
+                        false
+                    }
+
+                    RouteVerdict.UNKNOWN -> {
+                        log(TAG, INFO) {
+                            "No usable route classification for $id, persisting for " +
+                                "${dev.address}/${dev.label} (route=${event.route?.description})"
+                        }
+                        true
+                    }
+
+                    RouteVerdict.AGREE -> true
+                }
+            }
+        } else {
+            stable
+        }
+
         val ringerMode = ringerTool.getCurrentRingerMode()
         val min = volumeTool.getMinVolume(id)
         val max = volumeTool.getMaxVolume(id)
@@ -106,7 +147,7 @@ class VolumeUpdateModule @Inject constructor(
         }
         val percentage = levelToPercentage(effectiveVolume, min, max)
 
-        stable.forEach { dev ->
+        agreeing.forEach { dev ->
             val streamType = dev.getStreamType(id)!!
 
             val mode: VolumeMode? = when (streamType) {

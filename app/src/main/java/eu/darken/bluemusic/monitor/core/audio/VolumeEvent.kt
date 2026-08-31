@@ -5,4 +5,5 @@ data class VolumeEvent(
     val oldVolume: Int,
     val newVolume: Int,
     val self: Boolean,
+    val route: VolumeTool.MediaRoute? = null,
 )

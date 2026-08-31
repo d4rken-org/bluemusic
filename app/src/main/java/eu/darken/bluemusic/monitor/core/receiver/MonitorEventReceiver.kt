@@ -62,26 +62,27 @@ class MonitorEventReceiver : BroadcastReceiver() {
             return
         }
 
-        // Capture volume snapshot synchronously before any async processing.
-        // At this point (~2ms after broadcast), audio routing hasn't changed
-        // yet. By the time the coroutine runs (~80ms+), Android will have
-        // rerouted and getStreamVolume() returns the new device's values.
+        // Capture volumes and the media route synchronously, as early after the broadcast as
+        // possible (~2ms), before the coroutine below runs (~80ms+) and getStreamVolume() reports
+        // the next device's values. Routing may already have moved by then: on some devices
+        // ACL_DISCONNECTED arrives after media has left the Bluetooth device, so the route is
+        // recorded alongside the levels instead of assumed.
         // Needed for both DISCONNECTED (real device save-on-disconnect) and
         // CONNECTED (the synthetic FakeSpeaker DISCONNECTED side effect).
-        val volumeSnapshot = BluetoothEventQueue.VolumeSnapshot(
-            levels = AudioStream.Id.entries.associateWith { id ->
-                BluetoothEventQueue.VolumeSnapshot.Level(
-                    current = volumeTool.getCurrentVolume(id),
-                    min = volumeTool.getMinVolume(id),
-                    max = volumeTool.getMaxVolume(id),
-                )
-            }
-        )
+        // The route only judges MUSIC, so it is queried right after that level: the other streams
+        // cost ~15 AudioManager calls, enough of a window for a reroute to slip in between.
+        val musicLevel = volumeTool.getCurrentVolume(AudioStream.Id.STREAM_MUSIC)
+        val route = volumeTool.queryActiveMediaRoute()
+        val levels = AudioStream.Id.entries.associateWith { id ->
+            BluetoothEventQueue.VolumeSnapshot.Level(
+                current = if (id == AudioStream.Id.STREAM_MUSIC) musicLevel else volumeTool.getCurrentVolume(id),
+                min = volumeTool.getMinVolume(id),
+                max = volumeTool.getMaxVolume(id),
+            )
+        }
+        val volumeSnapshot = BluetoothEventQueue.VolumeSnapshot(levels = levels, route = route)
 
-        // Diagnostic (issue #232): capture the active media route at broadcast time,
-        // synchronously, to reveal whether it already reports the phone speaker
-        // during the pre-disconnect window.
-        log(TAG, DEBUG) { "Route at broadcast (action=${intent.action}): ${volumeTool.describeActiveMediaRoute()}" }
+        log(TAG, DEBUG) { "Route at broadcast (action=${intent.action}): ${route.description}" }
 
         val pendingResult = goAsync()
 

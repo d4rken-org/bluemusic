@@ -5,6 +5,7 @@ import eu.darken.bluemusic.bluetooth.core.SourceDevice
 import eu.darken.bluemusic.common.debug.logging.log
 import eu.darken.bluemusic.common.debug.logging.logTag
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
+import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import java.util.concurrent.atomic.AtomicLong
@@ -62,7 +63,10 @@ class BluetoothEventQueue @Inject constructor() {
         }
     }
 
-    data class VolumeSnapshot(val levels: Map<AudioStream.Id, Level>) {
+    data class VolumeSnapshot(
+        val levels: Map<AudioStream.Id, Level>,
+        val route: VolumeTool.MediaRoute? = null,
+    ) {
         data class Level(val current: Int, val min: Int, val max: Int)
     }
 
