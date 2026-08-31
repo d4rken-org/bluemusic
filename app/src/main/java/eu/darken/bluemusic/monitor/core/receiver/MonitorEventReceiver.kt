@@ -69,14 +69,17 @@ class MonitorEventReceiver : BroadcastReceiver() {
         // recorded alongside the levels instead of assumed.
         // Needed for both DISCONNECTED (real device save-on-disconnect) and
         // CONNECTED (the synthetic FakeSpeaker DISCONNECTED side effect).
+        // The route only judges MUSIC, so it is queried right after that level: the other streams
+        // cost ~15 AudioManager calls, enough of a window for a reroute to slip in between.
+        val musicLevel = volumeTool.getCurrentVolume(AudioStream.Id.STREAM_MUSIC)
+        val route = volumeTool.queryActiveMediaRoute()
         val levels = AudioStream.Id.entries.associateWith { id ->
             BluetoothEventQueue.VolumeSnapshot.Level(
-                current = volumeTool.getCurrentVolume(id),
+                current = if (id == AudioStream.Id.STREAM_MUSIC) musicLevel else volumeTool.getCurrentVolume(id),
                 min = volumeTool.getMinVolume(id),
                 max = volumeTool.getMaxVolume(id),
             )
         }
-        val route = volumeTool.queryActiveMediaRoute()
         val volumeSnapshot = BluetoothEventQueue.VolumeSnapshot(levels = levels, route = route)
 
         log(TAG, DEBUG) { "Route at broadcast (action=${intent.action}): ${route.description}" }
