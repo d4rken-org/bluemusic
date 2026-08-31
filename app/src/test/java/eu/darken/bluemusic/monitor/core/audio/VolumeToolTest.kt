@@ -237,15 +237,15 @@ class VolumeToolTest : BaseTest() {
         )
     }
 
-    // In a pure-JVM test Build.VERSION.SDK_INT is 0, so describeActiveMediaRoute
+    // In a pure-JVM test Build.VERSION.SDK_INT is 0, so queryActiveMediaRoute
     // takes the < API33 fallback branch (getDevices + a2dp/sco booleans).
     @Test
-    fun `describeActiveMediaRoute falls back to available outputs below API33`() = runTest {
+    fun `queryActiveMediaRoute falls back to available outputs below API33`() = runTest {
         every { audioManager.getDevices(AudioManager.GET_DEVICES_OUTPUTS) } returns emptyArray()
         every { audioManager.isBluetoothA2dpOn } returns false
         every { audioManager.isBluetoothScoOn } returns false
 
-        val result = volumeTool.describeActiveMediaRoute()
+        val result = volumeTool.queryActiveMediaRoute().description
 
         result shouldContain "availableOnly=[none]"
         result shouldContain "a2dpOn=false"
@@ -253,10 +253,10 @@ class VolumeToolTest : BaseTest() {
     }
 
     @Test
-    fun `describeActiveMediaRoute swallows route-query failures`() = runTest {
+    fun `queryActiveMediaRoute swallows route-query failures`() = runTest {
         every { audioManager.getDevices(any()) } throws SecurityException("nope")
 
-        volumeTool.describeActiveMediaRoute() shouldBe "route-query-failed: SecurityException: nope"
+        volumeTool.queryActiveMediaRoute().description shouldBe "route-query-failed: SecurityException: nope"
     }
 
     // The API 33+ predicted branch can't run in plain JVM (AudioAttributes.Builder

@@ -153,8 +153,6 @@ class VolumeTool @Inject constructor(
         }
     }
 
-    fun describeActiveMediaRoute(): String = queryActiveMediaRoute().description
-
     internal fun bluetoothRouteFrom(active: Boolean, devices: List<AudioDeviceInfo>): Boolean? {
         if (!active) return null
         if (devices.isEmpty()) return null
