@@ -174,6 +174,7 @@ class EventDispatcherVolumeIntegrationTest : BaseTest() {
         }
         val volumeUpdateModule = VolumeUpdateModule(
             volumeTool = volumeTool,
+            limitEnforcer = VolumeLimitEnforcer(volumeTool),
             ringerTool = ringerTool,
             deviceRepo = deviceRepo,
             observationGate = observationGate,

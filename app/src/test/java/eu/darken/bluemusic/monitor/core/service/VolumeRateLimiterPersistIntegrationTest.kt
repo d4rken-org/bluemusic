@@ -9,6 +9,7 @@ import eu.darken.bluemusic.monitor.core.audio.AudioStream
 import eu.darken.bluemusic.monitor.core.audio.RingerMode
 import eu.darken.bluemusic.monitor.core.audio.RingerTool
 import eu.darken.bluemusic.monitor.core.audio.VolumeEvent
+import eu.darken.bluemusic.monitor.core.audio.VolumeLimitEnforcer
 import eu.darken.bluemusic.monitor.core.audio.VolumeTool
 import eu.darken.bluemusic.monitor.core.audio.levelToPercentage
 import eu.darken.bluemusic.monitor.core.modules.volume.VolumeObservationGate
@@ -195,12 +196,14 @@ class VolumeRateLimiterPersistIntegrationTest : BaseTest() {
             setOf(
                 VolumeRateLimiterModule(
                     volumeTool = volumeTool,
+                    limitEnforcer = VolumeLimitEnforcer(volumeTool),
                     deviceRepo = deviceRepo,
                     ownerRegistry = ownerRegistry,
                     clock = clock,
                 ),
                 VolumeUpdateModule(
                     volumeTool = volumeTool,
+                    limitEnforcer = VolumeLimitEnforcer(volumeTool),
                     ringerTool = ringerTool,
                     deviceRepo = deviceRepo,
                     observationGate = observationGate,
