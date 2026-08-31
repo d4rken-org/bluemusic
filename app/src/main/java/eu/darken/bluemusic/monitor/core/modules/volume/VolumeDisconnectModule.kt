@@ -68,13 +68,17 @@ class VolumeDisconnectModule @Inject constructor(
         log(TAG, INFO) { "Saving volumes on disconnect for device ${device.label}" }
         val route = event.volumeSnapshot?.route
         log(TAG, INFO) { "Media route at disconnect for ${device.label}: ${route?.description}" }
+        // The whole owner group counts as agreement: when grouped bud A disconnects, the route
+        // may already name its still-connected sibling B, and B's level is A's level too.
+        val ownerAddresses = disconnectResult?.ownerGroupBefore?.toSet()?.takeIf { it.isNotEmpty() }
+            ?: setOf(device.address)
         // Media is the only stream the route query can speak for (it asks
         // USAGE_MEDIA/CONTENT_TYPE_MUSIC), so a disagreeing route drops MUSIC alone and the
         // remaining streams still save as usual.
         val musicVerdict = routeVerdict(
             route = route,
             isPhoneSpeaker = device.type == SourceDevice.Type.PHONE_SPEAKER,
-            ownerAddresses = setOf(device.address),
+            ownerAddresses = ownerAddresses,
         )
 
         // TODO: RingerTool.getCurrentRingerMode() falls back to NORMAL on unknown

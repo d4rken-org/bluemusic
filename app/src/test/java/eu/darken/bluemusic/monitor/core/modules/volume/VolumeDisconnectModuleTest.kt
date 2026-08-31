@@ -679,6 +679,27 @@ class VolumeDisconnectModuleTest : BaseTest() {
         }
 
         @Test
+        fun `route naming a sibling of the owner group saves every stream`() = runTest {
+            val module = createModule()
+            val cfg = allStreamsConfig()
+            val sibling = "AA:BB:CC:DD:EE:02"
+            every { ringerTool.getCurrentRingerMode() } returns RingerMode.NORMAL
+            mockAllStreams()
+
+            val event = disconnectEvent(route(true, sibling), managedDevice(cfg)).copy(
+                disconnectResult = eu.darken.bluemusic.monitor.core.ownership.DisconnectResult(
+                    wasInOwnerGroup = true,
+                    ownerGroupBefore = listOf(address, sibling),
+                    ownerGroupAfter = listOf(sibling),
+                ),
+            )
+            val result = runTransform(module, event, cfg)
+
+            result.musicVolume shouldBe (11f / 25f)
+            result.callVolume shouldBe (11f / 25f)
+        }
+
+        @Test
         fun `speaker route saves every stream for the phone speaker`() = runTest {
             val module = createModule()
             val cfg = allStreamsConfig()
