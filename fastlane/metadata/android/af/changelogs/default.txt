@@ -1,5 +1,5 @@
-🐛 Foutoplossings, 🚀 prestasieverhogings, dalk selfs ✨ nuwe funksies.
+Bugoplossings en klein verbeteringe, sodat jou volumes betroubaar omskakel op nuwe Android-weergawes en toestelle.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Wat het verander in hierdie weergawe: bluemusic.darken.eu/changelog
 
-Ter inligting: Dis net ek hier — dankie vir jou begrip as antwoorde 'n rukkie neem. ¯\_(ツ)_/¯
+Iets het stukkend geword of tree vreemd op na opdatering? Sê vir my via Instellings > Ondersteuning. Dit is 'n eenpersoonprojek, dus antwoorde kan 'n rukkie duur, maar elke rapport word gelees.

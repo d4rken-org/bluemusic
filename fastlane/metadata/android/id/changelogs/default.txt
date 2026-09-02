@@ -1,5 +1,5 @@
-🐛 Perbaikan bug, 🚀 peningkatan kinerja, mungkin juga ✨ fitur baru.
+Perbaikan bug dan peningkatan kecil agar volume terus berganti dengan andal di Android dan perangkat baru.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Yang berubah: bluemusic.darken.eu/changelog
 
-FYI: Hanya saya di sini — terima kasih atas pengertiannya jika balasan butuh waktu sedikit. ¯\_(ツ)_/¯
+Ada yang rusak atau berperilaku aneh setelah update? Hubungi saya via Setelan > Dukungan. Ini proyek satu orang, jadi balasan bisa butuh waktu, tapi setiap laporan akan dibaca.

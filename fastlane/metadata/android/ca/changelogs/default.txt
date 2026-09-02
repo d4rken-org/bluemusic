@@ -1,5 +1,5 @@
-🐛 Correccions d'errors, 🚀 millores de rendiment, potser fins i tot ✨ noves funcions.
+Correccions d'errors i petites millores perquè els canvis de volum continuin funcionant de forma fiable en noves versions d'Android i dispositius.
 
-Registre de canvis: https://bluemusic.darken.eu/changelog
+Què ha canviat en aquesta versió: bluemusic.darken.eu/changelog
 
-Per a la vostra informació: només sóc jo aquí — gràcies per la vostra comprensió si les respostes triguen una mica. ¯\_(ツ)_/¯
+Alguna cosa s'ha trencat o es comporta de manera estranya després d'actualitzar? Avisa'm via Configuració > Suport. És un projecte d'una sola persona, així que les respostes trigaran una mica, però es llegeix cada informe.

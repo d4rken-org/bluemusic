@@ -1,5 +1,5 @@
-🐛 Bugfixes, 🚀 prestatieverbeteringen, misschien zelfs ✨ nieuwe functies.
+Bugfixes en kleine verbeteringen, zodat je volumes betrouwbaar blijven schakelen op nieuwe Android-versies en apparaten.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Wat is er veranderd in deze versie: bluemusic.darken.eu/changelog
 
-Ter info: Ik ben hier alleen — bedankt voor je begrip als antwoorden wat langer duren. ¯\_(ツ)_/¯
+Iets kapot of raar gedrag na het updaten? Laat het me weten via Instellingen > Ondersteuning. Het is een eenpersoonsproject, dus antwoorden kunnen wat langer duren, maar elk rapport wordt gelezen.

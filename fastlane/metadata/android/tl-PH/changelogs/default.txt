@@ -1,5 +1,5 @@
-🐛 Mga pag-aayos ng bug, 🚀 pagpapahusay ng pagganap, marahil ay ✨ mga bagong tampok din.
+Mga pag-aayos ng bug at pagpapabuti, para ang iyong volume ay maaasahang lumipat sa mga bagong bersyon ng Android at aparato.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Ano ang nagbago sa bersyong ito: bluemusic.darken.eu/changelog
 
-FYI: Ako lang mag-isa dito — salamat sa pag-unawa kung matagal bago makasagot. ¯\_(ツ)_/¯
+May bagay na nag-break o nag-weird pagkatapos mag-update? Sabihin sa akin sa pamamagitan ng Mga Setting > Suporta. Isa lang ang tao dito, kaya baka matagal ang reply, pero lahat ng ulat ay binabasa.

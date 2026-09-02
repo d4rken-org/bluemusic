@@ -1,5 +1,5 @@
-🐛 Poprawki błędów, 🚀 zwiększenie wydajności, a może nawet ✨ nowe funkcje.
+Poprawki błędów i drobne ulepszenia, aby przełączanie głośności działało niezawodnie na nowych wersjach Androida i urządzeniach.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Co się zmieniło: bluemusic.darken.eu/changelog
 
-Do wiadomości: Jestem tu sam — dziękuję za zrozumienie, jeśli odpowiedzi zajmą chwilę. ¯\_(ツ)_/¯
+Coś się zepsuło lub działa dziwnie po aktualizacji? Daj mi znać przez Ustawienia > Pomoc. Projekt jednej osoby, więc odpowiedzi mogą trwać chwilę, ale każdy raport będzie przeczytany.

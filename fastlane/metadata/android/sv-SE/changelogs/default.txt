@@ -1,5 +1,5 @@
-🐛 Buggfixar, 🚀 prestandaförbättringar, kanske till och med ✨ nya funktioner.
+Buggfixar och små förbättringar, så dina volymer fortsätter att växla tillförlitligt på nya Android-versioner och enheter.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Vad som ändrades i versionen: bluemusic.darken.eu/changelog
 
-FYI: Det är bara jag här — tack för din förståelse om svar dröjer lite. ¯\_(ツ)_/¯
+Något fungerar inte eller beter sig konstigt efter uppdatering? Berätta för mig via Inställningar > Stöd. Det är bara jag här, så svar kan ta lite tid, men alla rapporter läses.

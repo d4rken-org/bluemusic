@@ -1,5 +1,5 @@
-🐛 Veaparandused, 🚀 jõudluse parandused, võib-olla isegi ✨ uued funktsioonid.
+Veaparandused ja väikesed parandused, et helitasemed jääksid eri seadmetes ja Android-versioonidega usaldusväärselt.
 
-Muudatuste logi: https://bluemusic.darken.eu/changelog
+Muudatuste logi: bluemusic.darken.eu/changelog
 
-Infoks: Olen siin üksi — tänan mõistva suhtumise eest, kui vastused veidi aega võtavad. ¯\_(ツ)_/¯
+Midagi läks paigast pärast uuendamist? Räägi mulle Seaded > Abi kaudu. Üksinda arendatav projekt, seega vastused võivad veidi aega võtta, kuid iga teade loetakse läbi.

@@ -1,5 +1,5 @@
-🐛 Pembetulan pepijat, 🚀 peningkatan prestasi, mungkin juga ✨ ciri baharu.
+Pembetulan pepijat dan peningkatan kecil, supaya volum terus bertukar dengan andal di versi Android dan peranti baharu.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Apa yang berubah dalam versi ini: bluemusic.darken.eu/changelog
 
-Makluman: Hanya saya di sini — terima kasih kerana memahami jika balasan mengambil sedikit masa. ¯\_(ツ)_/¯
+Ada sesuatu yang rosak atau berkelakuan pelik selepas mengemas kini? Beritahu saya melalui Tetapan > Bantuan. Ini adalah projek satu orang, jadi balasan mungkin memerlukan sedikit masa, tetapi setiap laporan akan dibaca.

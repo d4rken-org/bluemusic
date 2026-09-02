@@ -1,5 +1,5 @@
-🐛 Opravy chýb, 🚀 zvýšenie výkonu, možno dokonca ✨ nové funkcie.
+Opravy chýb a malé vylepšenia, aby sa hlasitosti spoľahlivo prepínali na všetkých verziách Androidu a zariadeniach.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Čo sa v tejto verzii zmenilo: bluemusic.darken.eu/changelog
 
-Pre informáciu: Som tu len ja — ďakujem za pochopenie, ak odpovede trvajú trochu dlhšie. ¯\_(ツ)_/¯
+Niečo sa pokazilo alebo sa chová zvláštne po aktualizácii? Dajte mi vedieť cez Nastavenia > Podpora. Je to jednoosobový projekt, odpovede môžu trvať chvíľu, ale každá správa sa číta.

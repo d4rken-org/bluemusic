@@ -1,5 +1,5 @@
-🐛 Virheenkorjauksia, 🚀 suorituskyvyn parannuksia, ehkä jopa ✨ uusia ominaisuuksia.
+Virheenkorjauksia ja pieniä parannuksia, jotta äänenvoimakkuuksien vaihtaminen toimii luotettavasti uusissa Android-versioissa ja laitteissa.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Mitä muuttui tässä versiossa: bluemusic.darken.eu/changelog
 
-Tiedoksi: Olen täällä yksin — kiitos ymmärryksestä, jos vastaaminen kestää. ¯\_(ツ)_/¯
+Jokin ei toimi tai käyttäytyminen on outoa päivityksen jälkeen? Kerro minulle Asetukset > Tuki -kautta. Tämä on yhden henkilön projekti, joten vastaaminen voi kestää, mutta jokainen palaute luetaan.

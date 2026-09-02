@@ -1,5 +1,5 @@
-🐛 Hata düzeltmeleri, 🚀 performans iyileştirmeleri, hatta ✨ yeni özellikler.
+Hata düzeltmeleri ve küçük iyileştirmeler, böylece ses seviyeleriniz yeni Android sürümleri ve cihazlarda güvenilir kalır.
 
-Değişiklik Günlüğü: https://bluemusic.darken.eu/changelog
+Bu sürümde neler değişti: bluemusic.darken.eu/changelog
 
-Bilginize: Burada yalnızım — yanıtların biraz zaman alması durumunda anlayışınız için teşekkür ederim. ¯\_(ツ)_/¯
+Güncelleme sonrasında bir şeyler kırıldı veya garip davranıyor mu? Ayarlar > Destek aracılığıyla bana anlat. Tek kişilik bir proje olduğu için yanıtlar biraz zaman alabilir, ama her rapor okunur.
