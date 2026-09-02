@@ -1,5 +1,5 @@
-🐛 Klaidų pataisymai, 🚀 našumo padidinimai, galbūt net ✨ naujos funkcijos.
+Klaidų pataisymai ir nedideli patobulinimai, kad tavo garsumai patikimai keistųsi naujose „Android" versijose ir įrenginiuose.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Kas pasikeitė šioje versijoje: bluemusic.darken.eu/changelog
 
-Informacijai: Aš čia vienas — ačiū už supratimą, jei atsakymai užtruks. ¯\_(ツ)_/¯
+Kažkas nustojo veikti arba elgiasi keistai po atnaujinimo? Pasakyk man per Nustatymai > Pagalba. Tai vieno žmogaus projektas, todėl atsakymai gali šiek tiek užtrukti, bet kiekvienas pranešimas skaitomas.

@@ -1,5 +1,5 @@
-🐛 Hibajavítások, 🚀 teljesítményjavítások, talán még ✨ új funkciók is.
+Hibajavítások és kisebb fejlesztések, hogy a hangerők megbízhatóan váltakozzanak az új Android-verziók és eszközök között.
 
-Változásnapló: https://bluemusic.darken.eu/changelog
+Mi változott ebben a verzióban: bluemusic.darken.eu/changelog
 
-FYI: Csak én vagyok itt — köszönöm a megértést, ha a válaszok kicsit tovább tartanak. ¯\_(ツ)_/¯
+Valami elromlott vagy furcsán működik az update után? Üzenj nekem a Beállítások > Támogatás-on. Ez egy személyes projekt, szóval a válaszok kicsit időbe telhetnek, de minden üzenet elolvasásra kerül.

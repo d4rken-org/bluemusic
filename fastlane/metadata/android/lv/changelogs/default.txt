@@ -1,5 +1,5 @@
-🐛 Kļūdu labojumi, 🚀 veiktspējas uzlabojumi, iespējams, pat ✨ jaunas funkcijas.
+Kļūdu labojumi un mazi uzlabojumi, lai skaļums turpinātu pārslēgties uzticami uz jauniem Android versijām un ierīcēm.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Kas mainījies šajā versijā: bluemusic.darken.eu/changelog
 
-Info: Esmu šeit viens — paldies par sapratni, ja atbildes prasa nedaudz laika. ¯\_(ツ)_/¯
+Kaut kas neizdarbojās vai izskatās nepareizi pēc atjaunināšanas? Paziņo man caur Iestatījumi > Atbalsts. Tas ir vienas personas projekts, tāpēc atbildes var prasīt kādu laiku, bet katrs ziņojums tiek izlasīts.

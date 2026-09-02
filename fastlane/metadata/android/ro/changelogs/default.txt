@@ -1,5 +1,5 @@
-🐛 Corecții de erori, 🚀 îmbunătățiri de performanță, poate chiar ✨ funcții noi.
+Corecții de erori și mici îmbunătățiri, ca volumele să se schimbe corect pe versiuni noi de Android și dispozitive.
 
-Jurnal de modificări: https://bluemusic.darken.eu/changelog
+Ce s-a schimbat în această versiune: bluemusic.darken.eu/changelog
 
-Pentru informare: Sunt singur aici — mulțumesc pentru înțelegere dacă răspunsurile durează puțin. ¯\_(ツ)_/¯
+Ceva nu funcționează cum trebuie după actualizare? Spune-mi prin Setări > Suport. Este un proiect de o singură persoană, deci răspunsurile pot dura puțin, dar fiecare raport e citit.

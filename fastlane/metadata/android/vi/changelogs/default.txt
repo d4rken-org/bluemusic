@@ -1,5 +1,5 @@
-🐛 Sửa lỗi, 🚀 tăng hiệu suất, thậm chí có thể ✨ các tính năng mới.
+Sửa lỗi và cải tiến nhỏ để âm lượng chuyển đổi đáng tin cậy trên các phiên bản Android và thiết bị mới.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Có gì thay đổi trong phiên bản này: bluemusic.darken.eu/changelog
 
-FYI: Chỉ có mình tôi ở đây — cảm ơn bạn đã thông cảm nếu phản hồi mất một chút thời gian. ¯\_(ツ)_/¯
+Có điều gì bị lỗi hoặc hoạt động kỳ lạ sau cập nhật? Hãy cho tôi biết qua Cài đặt > Hỗ trợ. Đây là một dự án cá nhân, vì vậy phản hồi có thể mất một chút thời gian, nhưng mọi báo cáo đều được đọc.

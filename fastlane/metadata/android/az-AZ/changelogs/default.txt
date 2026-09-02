@@ -1,5 +1,5 @@
-🐛 Xəta düzəlişləri, 🚀 performans artımları, bəlkə də ✨ yeni funksiyalar.
+Xətalar düzəldildi, kiçik yaxşılaşdırmalar aparıldı. Bununla da səs səviyyələriniz yeni Android versiyalarında və cihazlarda etibarlı şəkildə dəyişir.
 
-Dəyişikliklər: https://bluemusic.darken.eu/changelog
+Bu versiyada nə dəyişdi: bluemusic.darken.eu/changelog
 
-Məlumat üçün: Burada təkəm — cavablar bir az geciksə anlayış göstərdiyiniz üçün təşəkkürlər. ¯\_(ツ)_/¯
+Yeniləmədən sonra nəsə qırıldı ya da qəribə davranır? Mənə Ayarlar > Dəstək vasitəsilə xəbər verin. Bu bir şəxs layihəsidir, ona görə cavablar bir az vaxt tələb edə bilər, lakin hər bir raport oxunur.

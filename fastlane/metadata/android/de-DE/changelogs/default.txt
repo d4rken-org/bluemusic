@@ -1,5 +1,5 @@
-🐛 Fehlerbehebungen, 🚀 Leistungssteigerungen, vielleicht sogar ✨ neue Funktionen.
+Fehlerbehebungen und kleine Verbesserungen, damit deine Lautstärken auf neuen Android-Versionen und Geräten zuverlässig umschalten.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Änderungen in dieser Version: bluemusic.darken.eu/changelog
 
-FYI: Ich bin hier allein — danke für dein Verständnis, wenn Antworten etwas dauern. ¯\_(ツ)_/¯
+Etwas funktioniert nicht oder verhält sich merkwürdig nach dem Update? Schreib mir über Einstellungen > Support. Ich bin hier allein, daher können Antworten etwas dauern, aber jeden Bericht lese ich.

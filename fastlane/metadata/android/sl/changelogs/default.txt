@@ -1,5 +1,5 @@
-🐛 Popravki napak, 🚀 izboljšave zmogljivosti, morda celo ✨ nove funkcije.
+Popravki napak in manjše izboljšave, da se glasnost zanesljivo nastavi na novih različicah Androida in napravah.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Kaj se je spremenilo v tej različici: bluemusic.darken.eu/changelog
 
-Za informacijo: Tukaj sem sam — hvala za razumevanje, če odgovori trajajo nekaj časa. ¯\_(ツ)_/¯
+Se ti je kaj pokvarilo ali se obnaša čudno po posodabljanju? Javi mi prek Nastavitve > Podpora. To je projekt ene osebe, zato odgovori lahko trajajo malo dlje, vendar je vsako poročilo prebrano.

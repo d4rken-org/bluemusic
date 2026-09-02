@@ -1,5 +1,5 @@
-🐛 Fejlrettelser, 🚀 ydelsesforbedringer, måske endda ✨ nye funktioner.
+Fejlrettelser og små forbedringer, så dine lydstyrker skifter pålideligt på nye Android-versioner og enheder.
 
-Changelog: https://bluemusic.darken.eu/changelog
+Hvad der ændrede sig i denne version: bluemusic.darken.eu/changelog
 
-FYI: Det er bare mig her — tak for din forståelse, hvis svar tager lidt tid. ¯\_(ツ)_/¯
+Hvis noget ikke virker eller opfører sig underligt efter opdateringen? Fortæl det mig via Indstillinger > Support. Det er et enmandsprojekt, så svar kan tage lidt tid, men alle rapporter bliver læst.

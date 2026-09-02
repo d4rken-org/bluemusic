@@ -1,5 +1,5 @@
-🐛 Bug wey dem don fix, 🚀 go make am dey work beta, maybe even ✨ new tins.
+Bug fix and improvement so your volume dey switch proper for new Android version and device dem.
 
-Changelog: https://bluemusic.darken.eu/changelog
+What don change for this version: bluemusic.darken.eu/changelog
 
-FYI: Na me one-man dey here — thanks for understanding if replies go take small time. ¯\_(ツ)_/¯
+Something break or dey act funny after update? Tell me via Settings > Support. Na one-man project dey here, so reply fit take small time, but I go read every report.
