@@ -1,4 +1,4 @@
-Correcciones de errores y pequeñas mejoras para que tu volumen siga cambiando correctamente en nuevas versiones de Android y dispositivos.
+Correcciones de errores y pequeñas mejoras para que tus dispositivos tengan el volumen correcto cada vez que se conectan.
 
 Cambios de esta versión: bluemusic.darken.eu/changelog
 

@@ -1,4 +1,4 @@
-Veaparandused ja väikesed parandused, et helitasemed jääksid eri seadmetes ja Android-versioonidega usaldusväärselt.
+Veaparandused ja väikesed täiustused, et su seadmed saaksid iga ühendumise korral õige helitaseme.
 
 Muudatuste logi: bluemusic.darken.eu/changelog
 

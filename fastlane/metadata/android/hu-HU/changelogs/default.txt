@@ -1,4 +1,4 @@
-Hibajavítások és kisebb fejlesztések, hogy a hangerők megbízhatóan váltakozzanak az új Android-verziók és eszközök között.
+Hibajavítások és kisebb fejlesztések, hogy az eszközeid az összekapcsolódáskor mindig a megfelelő hangerőt kapják.
 
 Mi változott ebben a verzióban: bluemusic.darken.eu/changelog
 

@@ -1,4 +1,4 @@
-Feilrettinger og små forbedringer, slik at volumene dine fortsetter å bytte pålitelig på nye Android-versjoner og enheter.
+Feilrettinger og små forbedringer, slik at enhetene dine får riktig volum hver gang de kobler til.
 
 Hva som endret seg i denne versjonen: bluemusic.darken.eu/changelog
 

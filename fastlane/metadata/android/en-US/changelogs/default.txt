@@ -1,4 +1,4 @@
-Bug fixes and small improvements, so your volumes keep switching reliably on new Android versions and devices.
+Bug fixes and small improvements, so your devices get the right volume every time they connect.
 
 What changed in this version: bluemusic.darken.eu/changelog
 

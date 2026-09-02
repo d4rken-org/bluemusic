@@ -1,4 +1,4 @@
-Curretziones de bug e pagu mèngius, ita sa comutazione de volumenes funtzionet segura in is versiones noas de Android e dispositivos.
+Curretziones de bug e pagu mèngius, ita is dispositivos tuos agant sa volúmene corretta cando si collegant.
 
 Ite at cambiadu in sa versione: bluemusic.darken.eu/changelog
 

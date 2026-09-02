@@ -1,4 +1,4 @@
-Kļūdu labojumi un mazi uzlabojumi, lai skaļums turpinātu pārslēgties uzticami uz jauniem Android versijām un ierīcēm.
+Kļūdu labojumi un mazi uzlabojumi, lai jūsu ierīcēm ikreiz pieslēdzoties būtu pareizais skaļums.
 
 Kas mainījies šajā versijā: bluemusic.darken.eu/changelog
 

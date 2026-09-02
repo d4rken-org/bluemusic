@@ -1,4 +1,4 @@
-Hata düzeltmeleri ve küçük iyileştirmeler, böylece ses seviyeleriniz yeni Android sürümleri ve cihazlarda güvenilir kalır.
+Hata düzeltmeleri ve küçük iyileştirmeler, böylece cihazlarınız her bağlandığında doğru sesi alır.
 
 Bu sürümde neler değişti: bluemusic.darken.eu/changelog
 

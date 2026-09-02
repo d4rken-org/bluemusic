@@ -1,4 +1,4 @@
-Correzioni di bug e piccoli miglioramenti, così i tuoi volumi continuano a funzionare bene su nuovi Android e dispositivi.
+Correzioni di bug e piccoli miglioramenti, così i tuoi dispositivi avranno il volume giusto ogni volta che si connettono.
 
 Novità di questa versione: bluemusic.darken.eu/changelog
 

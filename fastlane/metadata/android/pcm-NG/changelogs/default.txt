@@ -1,4 +1,4 @@
-Bug fix and improvement so your volume dey switch proper for new Android version and device dem.
+Bug fix and small improvement so your device dem dey get right volume every time dem dey connect.
 
 What don change for this version: bluemusic.darken.eu/changelog
 

@@ -1,4 +1,4 @@
-Fehlerbehebungen und kleine Verbesserungen, damit deine Lautstärken auf neuen Android-Versionen und Geräten zuverlässig umschalten.
+Fehlerbehebungen und kleine Verbesserungen, damit deine Geräte beim Verbinden jedes Mal die richtige Lautstärke bekommen.
 
 Änderungen in dieser Version: bluemusic.darken.eu/changelog
 

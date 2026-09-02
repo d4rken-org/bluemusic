@@ -1,4 +1,4 @@
-Xətalar düzəldildi, kiçik yaxşılaşdırmalar aparıldı. Bununla da səs səviyyələriniz yeni Android versiyalarında və cihazlarda etibarlı şəkildə dəyişir.
+Xətalar düzəldildi, kiçik yaxşılaşdırmalar aparıldı. Bununla cihazlarınız hər dəfə qoşuldukda düzgün səs səviyyəsini alır.
 
 Bu versiyada nə dəyişdi: bluemusic.darken.eu/changelog
 

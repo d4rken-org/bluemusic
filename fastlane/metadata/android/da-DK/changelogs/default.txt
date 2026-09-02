@@ -1,4 +1,4 @@
-Fejlrettelser og små forbedringer, så dine lydstyrker skifter pålideligt på nye Android-versioner og enheder.
+Fejlrettelser og små forbedringer, så dine enheder får den rigtige lydstyrke hver gang de forbinder.
 
 Hvad der ændrede sig i denne version: bluemusic.darken.eu/changelog
 
