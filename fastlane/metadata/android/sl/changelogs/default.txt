@@ -1,4 +1,4 @@
-Popravki napak in manjše izboljšave, da se glasnost zanesljivo nastavi na novih različicah Androida in napravah.
+Popravki napak in manjše izboljšave, da dobi naprava pravo glasnost vsakič, ko se poveže.
 
 Kaj se je spremenilo v tej različici: bluemusic.darken.eu/changelog
 

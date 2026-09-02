@@ -1,4 +1,4 @@
-Bugfixes en kleine verbeteringen, zodat je volumes betrouwbaar blijven schakelen op nieuwe Android-versies en apparaten.
+Bugfixes en kleine verbeteringen, zodat je apparaten steeds het juiste volume krijgen wanneer ze verbinden.
 
 Wat is er veranderd in deze versie: bluemusic.darken.eu/changelog
 

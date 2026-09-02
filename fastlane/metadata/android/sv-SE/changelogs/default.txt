@@ -1,4 +1,4 @@
-Buggfixar och små förbättringar, så dina volymer fortsätter att växla tillförlitligt på nya Android-versioner och enheter.
+Buggfixar och små förbättringar, så dina enheter får rätt volym varje gång de ansluter.
 
 Vad som ändrades i versionen: bluemusic.darken.eu/changelog
 

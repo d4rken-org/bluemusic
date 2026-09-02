@@ -1,4 +1,4 @@
-Sửa lỗi và cải tiến nhỏ để âm lượng chuyển đổi đáng tin cậy trên các phiên bản Android và thiết bị mới.
+Sửa lỗi và cải tiến nhỏ để các thiết bị của bạn luôn nhận được âm lượng chính xác mỗi khi kết nối.
 
 Có gì thay đổi trong phiên bản này: bluemusic.darken.eu/changelog
 

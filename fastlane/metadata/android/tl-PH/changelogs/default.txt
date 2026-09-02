@@ -1,4 +1,4 @@
-Mga pag-aayos ng bug at pagpapabuti, para ang iyong volume ay maaasahang lumipat sa mga bagong bersyon ng Android at aparato.
+Mga pag-aayos ng bug at pagpapabuti, para sa bawat koneksyon ng iyong mga aparato ay may tamang volume.
 
 Ano ang nagbago sa bersyong ito: bluemusic.darken.eu/changelog
 

@@ -1,4 +1,4 @@
-Opravy chýb a malé vylepšenia, aby sa hlasitosti spoľahlivo prepínali na všetkých verziách Androidu a zariadeniach.
+Opravy chýb a malé vylepšenia, aby tvoje zariadenia mali správnu hlasitosť zakaždým, keď sa pripoja.
 
 Čo sa v tejto verzii zmenilo: bluemusic.darken.eu/changelog
 

@@ -1,4 +1,4 @@
-Poprawki błędów i drobne ulepszenia, aby przełączanie głośności działało niezawodnie na nowych wersjach Androida i urządzeniach.
+Poprawki błędów i drobne ulepszenia, aby Twoje urządzenia zawsze miały prawidłową głośność po połączeniu.
 
 Co się zmieniło: bluemusic.darken.eu/changelog
 

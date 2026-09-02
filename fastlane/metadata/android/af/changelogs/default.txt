@@ -1,4 +1,4 @@
-Bugoplossings en klein verbeteringe, sodat jou volumes betroubaar omskakel op nuwe Android-weergawes en toestelle.
+Bugoplossings en klein verbeteringe, sodat jou toestelle die regte volume kry elke keer wanneer hulle verbind.
 
 Wat het verander in hierdie weergawe: bluemusic.darken.eu/changelog
 

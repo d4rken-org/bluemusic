@@ -1,4 +1,4 @@
-Ispravci grešaka i mala poboljšanja kako bi se glasnoće pouzdano mijenjale na novim verzijama Androida i uređajima.
+Ispravke grešaka i mala poboljšanja kako bi uređaji imali pravu glasnoću svaki put kada se spoje.
 
 Što se promijenilo u ovoj verziji: bluemusic.darken.eu/changelog
 

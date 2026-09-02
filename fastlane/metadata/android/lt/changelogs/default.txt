@@ -1,4 +1,4 @@
-Klaidų pataisymai ir nedideli patobulinimai, kad tavo garsumai patikimai keistųsi naujose „Android" versijose ir įrenginiuose.
+Klaidų pataisymai ir nedideli patobulinimai, kad tavo įrenginiai kiekvieną kartą prisijungus gautų teisingą garsumą.
 
 Kas pasikeitė šioje versijoje: bluemusic.darken.eu/changelog
 

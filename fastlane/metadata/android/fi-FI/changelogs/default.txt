@@ -1,4 +1,4 @@
-Virheenkorjauksia ja pieniä parannuksia, jotta äänenvoimakkuuksien vaihtaminen toimii luotettavasti uusissa Android-versioissa ja laitteissa.
+Virheenkorjauksia ja pieniä parannuksia, jotta laitteet saavat oikean äänenvoimakkuuden aina kun ne yhdistyvät.
 
 Mitä muuttui tässä versiossa: bluemusic.darken.eu/changelog
 

@@ -1,4 +1,4 @@
-Pembetulan pepijat dan peningkatan kecil, supaya volum terus bertukar dengan andal di versi Android dan peranti baharu.
+Pembetulan pepijat dan peningkatan kecil, supaya peranti anda mendapat volum yang betul setiap kali ia bersambung.
 
 Apa yang berubah dalam versi ini: bluemusic.darken.eu/changelog
 

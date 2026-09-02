@@ -1,4 +1,4 @@
-Perbaikan bug dan peningkatan kecil agar volume terus berganti dengan andal di Android dan perangkat baru.
+Perbaikan bug dan peningkatan kecil agar perangkat Anda mendapat volume yang tepat setiap kali terhubung.
 
 Yang berubah: bluemusic.darken.eu/changelog
 
