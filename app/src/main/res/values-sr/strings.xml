@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Неке функције су се промениле током ажурирања. Молим проверите подешавања вашег уређаја да бисте сигурни да је све исправно подешено.</string>
     <string name="onboarding_rewrite_action">Настави</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Ниједан неуправљан уређај није понађен</string>
     <string name="discover_all_devices_managed_msg">Сви ваши спарени уређаји су већ управљани! Требате нови?</string>
     <string name="discover_pair_new_device_action">Упари нови уређај</string>
     <string name="discover_device_speaker_desc">Сопствени звучник телефона. Јачине звука се примењују када се звук врати на телефон, нпр. након што се твој Bluetooth уређај откачи.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Конфигурација уређаја</string>
-    <string name="devices_device_config_section_general_label">Oпште</string>
     <string name="devices_device_config_remove_device_label">Заборави уређај</string>
-    <string name="devices_device_config_remove_device_desc">Заборавља уређај из ове апликације и брише његову конфигурацију. Ово не испарује уређај.</string>
     <string name="devices_device_config_remove_device_action">Заборави</string>
     <string name="devices_device_config_remove_device_confirmation">Заборавити %s са списка управљаних уређаја?</string>
-    <string name="devices_device_config_rename_device_label">Преименуј уређај</string>
-    <string name="devices_device_config_rename_device_desc">Преименује овај уређај у овој апликацији, а ако је могуће и у систему.</string>
     <string name="devices_device_config_rename_device_action">Преименуј</string>
     <string name="devices_device_config_enabled_label">Омогућено</string>
     <string name="devices_device_config_enabled_desc">Реагуј на овај уређај кад је повезан</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Команде аутоматског пуштања</string>
     <string name="devices_device_config_autoplay_keycodes_order">Редослед команди</string>
     <string name="devices_device_config_autoplay_keycodes_label">Команде</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Подеси које команде да се шаљу и којим редоследом</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Нема конфигурисаних команди</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Додај команду</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Максимум %1$d команди</string>
@@ -122,7 +116,6 @@
     <string name="cd_autoplay_keycode_move_up">Помери горе</string>
     <string name="cd_autoplay_keycode_move_down">Помери доле</string>
     <string name="cd_autoplay_keycode_remove">Уклони</string>
-    <string name="devices_device_config_section_volumes_label">Јачине</string>
     <string name="devices_device_config_section_volume_label">Јачина</string>
     <string name="devices_device_config_alarm_volume_label">Јачина аларма</string>
     <string name="devices_device_config_alarm_volume_desc">Неке апликације за аларм уместо тога користе јачину музике.</string>
@@ -156,8 +149,6 @@
     <string name="devices_audio_stream_ring_label">Звон</string>
     <string name="devices_audio_stream_notification_label">Обавештење</string>
     <string name="devices_audio_stream_alarm_label">Аларм</string>
-    <string name="devices_neverseen_label">Никад није виђен</string>
-    <string name="devices_state_connected_label">Повезан</string>
     <string name="devices_last_connected_label">Последња веза: %s</string>
     <string name="devices_currently_connected_label">Тренутно повезан</string>
     <string name="devices_device_disabled_label">Уређај онемогућен</string>
@@ -192,10 +183,7 @@
     <string name="devices_settings_desc">Подешавања која утичу на све управљане уређаје.</string>
     <string name="label_app_enabled">Апликација укључена</string>
     <string name="description_app_enabled">Прекида способност апликације да реагује на догађаје јачине и Bluetooth догађаје.</string>
-    <string name="label_visible_volume_adjustments">Видљива подешавања</string>
-    <string name="description_visible_volume_adjustments">Прикажи системски прозор јачине звука док ова апликација врши подешавања.</string>
     <string name="label_volume_listener">Прати промене</string>
-    <string name="description_volume_listener">Остај активан док је уређај повезан и сачувај промене јачине звука које нису направљене овом апликацијом.</string>
     <string name="label_boot_restore">Врати након покретања</string>
     <string name="description_boot_restore">Врати јачину након покретања/поновног покретања ако је Bluetooth уређај повезан.</string>
     <!-- Settings/Support-->
@@ -205,23 +193,11 @@
     <string name="settings_support_wiki_description">Научи како ефикасно користити BVM</string>
     <string name="settings_support_issue_tracker_description">Јавно праћење проблема за извештаје о грешкама и будућим захтевима.</string>
     <string name="settings_support_issue_tracker_label">Праћење проблема</string>
-    <string name="settings_support_debuglog_label">Извештај о грешкама</string>
     <string name="settings_support_debuglog_desc">Снимите све што апликација ради у текстуалну датотеку коју можете да делите.</string>
-    <string name="settings_support_debuglog_recording_desc">Тренутно снимају се информације отклањања. Додирни за заустављање снимања.</string>
-    <string name="settings_support_debuglog_path">Пут записа: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Врло кратко снимање</string>
     <string name="settings_support_debuglog_short_recording_msg">То је било врло кратко снимање. Дебаг записи су снимци, не снимци тренутног стања — репродукуј проблем док је снимање активно да би запис био користан.</string>
     <string name="settings_support_debuglog_short_recording_continue">Настави снимање</string>
     <string name="settings_support_debuglog_short_recording_stop">Ипак заустави</string>
-    <string name="settings_support_debuglog_folder_label">Фасцикла са дебаг записима</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d сесија користи %2$s</item>
-        <item quantity="few">%1$d сесије користе %2$s</item>
-        <item quantity="other">%1$d сесија користи %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Нема сачуваних дебаг записа</string>
-    <string name="settings_support_debuglog_folder_delete_title">Избрисати све дебаг записе?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Ово ће трајно избрисати све сачуване сесије дебаг записа.</string>
     <string name="settings_support_discord_label">Дискорд</string>
     <string name="settings_support_discord_description">Место за дружење и постављање питања.</string>
     <!-- Settings/Acks-->
@@ -230,16 +206,12 @@
     <string name="settings_acks_translation_header">Превод</string>
     <string name="settings_acks_translators_title">Преводиоци</string>
     <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">Преведи BVM</string>
-    <string name="settings_acks_translate_desc">Помози превођење BVM на свој језик</string>
     <string name="settings_acks_thanks_header">Хвала</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">За подршку превођења пројеката отвореног кода</string>
     <string name="settings_licenses_label">Лиценце</string>
     <string name="settings_translation_label">Превод</string>
     <string name="settings_translation_desc">Помози превођење апликације на свој омиљени језик</string>
-    <string name="settings_sponsor_development_title">Спонзориши развој</string>
-    <string name="settings_sponsor_development_summary">Постаните покровитељ и омогућите даљи развој.</string>
     <string name="settings_privacy_policy_label">Политика приватности</string>
     <string name="settings_privacy_policy_desc">Одговорно поступање са подацима.</string>
     <string name="changelog_label">Дневник измена</string>
@@ -261,10 +233,8 @@
     <string name="backup_restore_success_restore">Враћање завршено — %1$d уређаја враћено, %2$d прескочено.</string>
     <string name="backup_restore_version_warning">Ова резервна копија је направљена са верзијом %1$s. Тренутно користите %2$s. Нека подешавања можда неће бити правилно враћена.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Обавештења о отклањању грешака</string>
     <string name="debug_log_consent_title">Извештај о грешкама</string>
     <string name="debug_log_consent_explanation">Ова функција снима све што апликација ради у датотеку коју можете поделити. Генерисана датотека садржи осетљиве информације (нпр. имена датотека и инсталиране апликације). Делите је само са поузданим странама (нпр. програмером који решава проблем).</string>
-    <string name="debug_log_recording_progress">Снимање дневника за отклањање грешака</string>
     <string name="debug_log_record_action">Сними</string>
     <string name="debug_log_stop_action">Заустави снимање</string>
     <string name="debug_log_screen_title">Снимач дебаг записа</string>
@@ -280,7 +250,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Одбаци</string>
     <string name="debug_log_screen_keep_action">Задржи</string>
-    <string name="debug_log_compressing_label">Компресија…</string>
     <string name="debug_log_file_label">Снимљена датотека евиденције</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Запис послат?</string>
@@ -308,7 +277,6 @@
     <string name="contact_description_question_hint">Опиши своје питање детаљно.</string>
     <string name="contact_category_section_label">Категорија</string>
     <string name="contact_debug_log_label">Извештај о грешкама</string>
-    <string name="contact_debug_log_select_hint">Изабери дебаг запис за прилог</string>
     <string name="contact_debug_log_picker_hint">Приложи дебаг запис да би помогао/ла брже дијагностиковање проблема.</string>
     <string name="contact_debug_log_picker_empty">Нема доступних дебаг записа. Сними пре некога.</string>
     <string name="contact_expected_behavior_label">Очекивано понашање</string>
@@ -323,82 +291,32 @@
     <string name="contact_welcome_msg">Сваку поруку прочитам сам и трудим се да одговорим, али пошто радим на томе сам, може да потраје мало времена. Хвала на стрпљењу.</string>
     <string name="contact_footer_msg">Твоја порука ће бити послата путем имејла. Информације о уређају и подешавању се прилажу аутоматски.</string>
     <string name="contact_no_email_app_msg">Нема апликације за имејл на овом уређају.</string>
-    <string name="contact_attachment_missing_msg">Датотека дебаг записа више не постоји</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Сачувани дебаг записи</string>
     <string name="settings_support_stored_logs_desc">%1$d сесија (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Нема сачуваних дебаг записа</string>
-    <string name="settings_support_stored_logs_delete_title">Избрисати сачуване записе?</string>
-    <string name="settings_support_stored_logs_delete_msg">Ово ће избрисати свих %1$d сачуваних сесија дебаг записа.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Сачувани дебаг записи избрисани</string>
-    <string name="label_bug_reports">Извештаји о грешкама</string>
-    <string name="description_bug_reports">Аутоматско извештавање о грешкама и рушењима.</string>
     <string name="label_add_device">Додај уређај</string>
-    <string name="label_just_a_moment_please">Моментице, молим.</string>
     <string name="label_notification_channel_status">Статус</string>
     <string name="label_notification_channel_setup">Потребна подешавања</string>
     <string name="monitor_notification_starting">Покретање…</string>
     <string name="action_set">Постави</string>
     <string name="action_cancel">Откажи</string>
-    <string name="label_invalid_input">Неисправан унос</string>
     <string name="action_reset">Ресетуј</string>
     <string name="label_no_connected_devices">Ниједан уређај није повезан</string>
-    <string name="label_status_idle">Неактиван</string>
-    <string name="label_status_adjusting_volumes">Подешавање јачина</string>
-    <string name="label_premium_version">Премијум верзија</string>
     <string name="general_upgrade_action">Надогради</string>
     <string name="common_upgrade_required_label">Потребна надоградња</string>
-    <string name="label_premium_version_required">Потребна премијум верзија</string>
-    <string name="description_intro_purpose">Ова апликација омогућава твом Андроид уређају да памти јачину звука различитих Bluetooth уређаја.</string>
-    <string name="upgrade_benefit_unlimited_devices">Неограничени профили уређаја</string>
-    <string name="upgrade_benefit_connection_actions">Аутоматско пуштање, покретање апликације и упозорења о вези</string>
-    <string name="upgrade_benefit_theme_customization">Прилагођавање теме, стила и боје</string>
-    <string name="upgrade_benefit_power_controls">Закључавање јачине звука и ограничавање брзине</string>
-    <string name="upgrade_benefit_support">Подржите независни развој</string>
     <string name="upgrade_benefit_equalizer">• Еквалајзер по уређају (за апликације за музику са подршком за системски еквалајзер)</string>
-    <string name="description_intro_tap_the_button">Почни додавањем свог првог уређаја.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth је онемогућен.</string>
     <string name="title_bluetooth_is_off">Bluetooth је искључен</string>
     <string name="action_enable_bluetooth">Укључи Bluetooth</string>
     <string name="title_bluetooth_permission_required">Потребна Bluetooth дозвола</string>
     <string name="description_bluetooth_permission_required">Ова апликација треба Bluetooth дозволу да би управљала јачинама звука твојих уређаја.</string>
     <string name="action_grant_permission">Додели дозволу</string>
-    <string name="label_status_listening_for_changes">Слуша промене јачине</string>
     <string name="action_exit">Излаз</string>
-    <string name="action_start">Покрени</string>
-    <string name="label_welcome">Добродошли</string>
-    <string name="description_intro_contact">Не оклевај да ме контактираш ако имаш питања или идеју за нову функцију.</string>
-    <string name="label_translation">Превод</string>
-    <string name="description_help_translate">Помози ми да апликација буде доступна на другим језицима.</string>
     <string name="label_device_speaker">Звучник уређаја</string>
-    <string name="label_keyevent_playpause">Пуштаи/Паузирај</string>
-    <string name="label_keyevent_play">Пусти</string>
-    <string name="label_keyevent_next">Следеће</string>
-    <string name="label_install_id">Инсталиран ИД</string>
     <string name="message_copied_to_clipboard">Копирано у међуспремник</string>
-    <string name="label_thanks">Хвала</string>
-    <string name="label_licenses">Лиценце</string>
-    <string name="description_ring_volume_additional_permission">Додатне дозволе су неопходне да би се променила јачина звона.</string>
-    <string name="label_missing_permissions">Недостају дозволе</string>
-    <string name="action_grant">Додели</string>
-    <string name="label_advanced">Напредно</string>
-    <string name="label_exclude_health">Искључи здравствене профиле</string>
-    <string name="description_exclude_health">Неки Андроид уређаји зависе приликом прегледа \'Health Device\' Bluetooth профила (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Искључи GATT сервер профиле</string>
-    <string name="label_exclude_gatt">Искључи GATT профиле</string>
-    <string name="description_exclude_gattserver">Не прегледај Bluetooth профиле типа \'Generic Attribute\' (GATT) сервер.</string>
-    <string name="description_exclude_gatt">Не прегледај Bluetooth профиле типа \'Generic Attribute\' (GATT) клијент.</string>
-    <string name="description_waiting_for_devicex">Чека да %s заврши повезивање</string>
-    <string name="action_undo">Опозови</string>
-    <string name="action_show">Прикажи</string>
     <string name="action_dismiss">Одбаци</string>
-    <string name="action_fix">Поправи</string>
-    <string name="battery_optimizations_issue_description">Оптимизација батерије је омогућена за ову апликацију и може спречити пријем Bluetooth догађаја. Размотри искључивање оптимизације ако имаш проблема.</string>
     <string name="label_bluetooth_settings">Bluetooth подешавања</string>
-    <string name="android10_applaunch_issue_description">Андроид 10 ограничава начин покретања апликација из позадине. Да би омогућио/ла отварање апликација кад се Bluetooth уређај повеже, додели дозволу „Приказ преко других апликација“ (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Изворни код</string>
-    <string name="android13_notification_permission_description">Додели овој апликацији дозволу за постављање обавештења. Омогућава приказивање обавештења кад је апликација активна и врши подешавања јачине звука.</string>
-    <string name="privacy_policy_label">Политика приватности</string>
     <string name="managed_devices_empty_message">Ниједан Bluetooth уређај није подешен.\nДодирни + да додаш свој први уређај.</string>
     <string name="label_pro_feature">Премијум функција</string>
     <plurals name="discover_device_limit_banner">
@@ -430,21 +348,15 @@
     <string name="review_app_review_action">Оцени</string>
     <string name="review_app_dismiss_action">Можда касније</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Куповина отказана</string>
-    <string name="error_iap_unavailable_message">Куповине у апликацији нису доступне</string>
-    <string name="error_generic_message">Дошло је до грешке. Покушај поново.</string>
-    <string name="error_iap_owned_message">Већ поседујеш ову ставку</string>
     <string name="label_no_devices_title">Нема уређаја</string>
     <string name="bluemusic_mascot_description">Икона апликације</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Изабери апликације</string>
     <string name="devices_app_selection_search_hint">Претражи апликације…</string>
-    <string name="devices_app_selection_currently_selected">Тренутно изабрано</string>
     <string name="devices_app_selection_selected_count">%d апликација изабрано</string>
     <string name="general_navigate_back_action">Навигација назад</string>
     <string name="general_reset_action">Ресетуј</string>
     <string name="general_clear_action">Очисти</string>
-    <string name="general_save_action">Сачувај</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Закључај</string>
     <string name="devices_indicator_awake">Будан</string>
@@ -454,7 +366,6 @@
     <string name="devices_indicator_limit">Ограничи</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Подсилење</string>
-    <string name="devices_indicator_launch">Покрени</string>
     <string name="devices_indicator_home">Почетак</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Упозорење</string>

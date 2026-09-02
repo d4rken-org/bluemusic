@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Disa veçori kanë ndryshuar gjatë përditësimit. Ju lutemi kontrolloni cilësimet e pajisjes tuaj për të siguruar që gjithçka është konfiguruar saktë.</string>
     <string name="onboarding_rewrite_action">Vazhdo</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Nuk u gjetën pajisje të pamenaxhuara</string>
     <string name="discover_all_devices_managed_msg">Të gjitha pajisjet e tua të çiftuara janë të menaxhuara! Ke nevojë për një të re?</string>
     <string name="discover_pair_new_device_action">Çiftua pajisje të re</string>
     <string name="discover_device_speaker_desc">Altoparlanti i vetë i këtij telefoni. Volumet e tij zbatohen kur audio kthehet në telefon, p.sh. pasi pajisja juaj Bluetooth shkëputohet.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Konfigurimi i pajisjes</string>
-    <string name="devices_device_config_section_general_label">Përgjithshta</string>
     <string name="devices_device_config_remove_device_label">Harro pajisje</string>
-    <string name="devices_device_config_remove_device_desc">Harron pajisjen nga ky aplikacion dhe fshi konfigurimin e saj. Kjo nuk e çiftuan pajisjen.</string>
     <string name="devices_device_config_remove_device_action">Harro</string>
     <string name="devices_device_config_remove_device_confirmation">Harro %s nga pajisjet e menaxhuara?</string>
-    <string name="devices_device_config_rename_device_label">Riemëro pajisje</string>
-    <string name="devices_device_config_rename_device_desc">Riemëro këtë pajisje brenda këtij aplikacioni, dhe nëse është e mundur, brenda sistemit.</string>
     <string name="devices_device_config_rename_device_action">Riemëro</string>
     <string name="devices_device_config_enabled_label">Aktivizuar</string>
     <string name="devices_device_config_enabled_desc">Reago ndaj kësaj pajisjeje kur lidhet</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Komandat e luajtjes automatike</string>
     <string name="devices_device_config_autoplay_keycodes_order">Sekuenca e komandave</string>
     <string name="devices_device_config_autoplay_keycodes_label">Komandat</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Konfiguroni cilat komanda të dërgoni dhe në çfarë rendi</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Nuk ka komanda të konfiguruara</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Shto komandë</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Maksimumi %1$d komanda</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Lëviz lart</string>
     <string name="cd_autoplay_keycode_move_down">Lëviz poshtë</string>
     <string name="cd_autoplay_keycode_remove">Hiq</string>
-    <string name="devices_device_config_section_volumes_label">Volumet</string>
     <string name="devices_device_config_section_volume_label">Vëllimi</string>
     <string name="devices_device_config_alarm_volume_label">Vëllimi i alarmit</string>
     <string name="devices_device_config_alarm_volume_desc">Disa aplikacione alarmi përdorin volumin e muzikës në vend.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">Zile</string>
     <string name="devices_audio_stream_notification_label">Njoftim</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="devices_neverseen_label">Kurrë i parë</string>
-    <string name="devices_state_connected_label">I lidhur</string>
     <string name="devices_last_connected_label">I lidhur për herë të fundit: %s</string>
     <string name="devices_currently_connected_label">Aktualisht i lidhur</string>
     <string name="devices_device_disabled_label">Pajisja e çaktivizuar</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Cilësimet që ndikojnë në të gjitha pajisjet e menaxhuara.</string>
     <string name="label_app_enabled">Aplikacioni i aktivizuar</string>
     <string name="description_app_enabled">Aktivizohej aftësinë e aplikacionit për t\'iu përgjigjur ngjarjeve të volumit dhe Bluetooth.</string>
-    <string name="label_visible_volume_adjustments">Përshtatje të dukshme</string>
-    <string name="description_visible_volume_adjustments">Shfaq dritaren e volumit të sistemit ndërsa ky aplikacion bën përshtatje.</string>
     <string name="label_volume_listener">Mbikëqyr ndryshimet</string>
-    <string name="description_volume_listener">Qëndro aktiv ndërsa pajisja lidhet dhe ruaj ndryshimet e volumit që nuk janë shkaktuar nga ky aplikacion.</string>
     <string name="label_boot_restore">Restauro në nisje</string>
     <string name="description_boot_restore">Restauro volumin pas nisjes/rishisjes nëse pajisja Bluetooth lidhet.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">Mëso si të përdorësh BVM në mënyrë efektive</string>
     <string name="settings_support_issue_tracker_description">Një ndjekës publik i problemeve për raporte gabimesh dhe kërkesa përmes veçorish.</string>
     <string name="settings_support_issue_tracker_label">Ndjekës problemesh</string>
-    <string name="settings_support_debuglog_label">Regjistri i gabimit</string>
     <string name="settings_support_debuglog_desc">Regjistro gjithçka që bën aplikacioni në një skedar teksti që mund të ndarë.</string>
-    <string name="settings_support_debuglog_recording_desc">Aktualisht po regjistrohen informacione të debugging. Prekni për të ndaluar regjistrimin.</string>
-    <string name="settings_support_debuglog_path">Rruga regjistri: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Regjistrim shumë i shkurtër</string>
     <string name="settings_support_debuglog_short_recording_msg">Ishte një regjistrim shumë i shkurtër. Regjistrat e debugging janë regjistrime, jo fotografi — riprodhoni problemin ndërkohë që regjistrimi është aktiv që regjistri të jetë i dobishëm.</string>
     <string name="settings_support_debuglog_short_recording_continue">Vazhdo regjistrimin</string>
     <string name="settings_support_debuglog_short_recording_stop">Ndaloje gjithsesi</string>
-    <string name="settings_support_debuglog_folder_label">Dosja e regjistrit të debugging</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d seancë duke përdorur %2$s</item>
-        <item quantity="other">%1$d seanca duke përdorur %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Nuk ka regjistër debugging të ruajtur</string>
-    <string name="settings_support_debuglog_folder_delete_title">Fshi të gjithë regjistrat e debugging?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Kjo do të fshijë përgjithmonë të gjitha seancat e ruajtura të regjistrit të debugging.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Një vend për të qëndruar dhe për të bërë pyetje.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Përkthim</string>
     <string name="settings_acks_translators_title">Përkthyesit</string>
     <string name="settings_acks_translators_people">Luan; Scarface (LuanGX@gmail.com)</string>
-    <string name="settings_acks_translate_title">Përkthej BVM</string>
-    <string name="settings_acks_translate_desc">Ndihmo të përkthej BVM në gjuhën tuaj</string>
     <string name="settings_acks_thanks_header">Falenderim</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Për mbështetjen e përkthimit të projekteve me kod të hapur</string>
     <string name="settings_licenses_label">Licencat</string>
     <string name="settings_translation_label">Përkthimi</string>
     <string name="settings_translation_desc">Ndihmoni në përkthimin e aplikacionit në gjuhën tuaj të preferuar</string>
-    <string name="settings_sponsor_development_title">Shpenzo zhvillimin</string>
-    <string name="settings_sponsor_development_summary">Bëhu patron dhe mundëso zhvillimin e vazhdueshëm.</string>
     <string name="settings_privacy_policy_label">Politika e privatësisë</string>
     <string name="settings_privacy_policy_desc">Trajtim përgjegjës i të dhënave.</string>
     <string name="changelog_label">Ndryshimet regjistri</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Rivendosja u përfundua — %1$d pajisje u rivendosën, %2$d u kapërcyen.</string>
     <string name="backup_restore_version_warning">Ky rezervim u krijua me versionin %1$s. Ju po përdorni %2$s. Disa cilësime mund të mos rivendosen saktë.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Njoftimet e debugging</string>
     <string name="debug_log_consent_title">Regjistri i gabimit</string>
     <string name="debug_log_consent_explanation">Ky veçori regjistron gjithçka që bën aplikacioni në një skedar të ndarë. Skedari i gjeneruar përmban informacione të ndjeshme (p.sh. emra skedarësh dhe aplikacione të instaluara). Ndaj vetëm me palë të besuara (p.sh. një zhvilluesi që gjidhjet një problem).</string>
-    <string name="debug_log_recording_progress">Regjistri i regjistrimit të debugging</string>
     <string name="debug_log_record_action">Regjistro</string>
     <string name="debug_log_stop_action">Ndaloni regjistrimin</string>
     <string name="debug_log_screen_title">Rejistues i Regjistrit të Debugging</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Hedh</string>
     <string name="debug_log_screen_keep_action">Mbaj</string>
-    <string name="debug_log_compressing_label">Duke kompresuar…</string>
     <string name="debug_log_file_label">Skedari i regjistrit të regjistruar</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Regjistri u dërgua?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Përshkruaj pyetjen tënde në detaje.</string>
     <string name="contact_category_section_label">Kategoria</string>
     <string name="contact_debug_log_label">Regjistri i debugging</string>
-    <string name="contact_debug_log_select_hint">Zgjidh një regjistër debugging për të bashkangjitur</string>
     <string name="contact_debug_log_picker_hint">Bashkangji një regjistër debugging për të ndihmuar diagnostikimin e problemit më shpejt.</string>
     <string name="contact_debug_log_picker_empty">Nuk ka regjistër debugging të disponueshëm. Regjistro njërin fillimisht.</string>
     <string name="contact_expected_behavior_label">Sjellja e pritshme</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">Lexoj çdo mesazh vetë dhe bëj çmos të përgjigjem, por meqë punoj vetëm, mund të duhet pak kohë. Faleminderit për durim.</string>
     <string name="contact_footer_msg">Mesazhi yt do të dërgohet me email. Informacioni i pajisjes dhe i konfigurimit bashkëngjitet automatikisht.</string>
     <string name="contact_no_email_app_msg">Nuk u gjet asnjë aplikacion emaili në këtë pajisje.</string>
-    <string name="contact_attachment_missing_msg">Skedari i regjistrit të debugging nuk ekziston më</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Regjistrat e ruajtur të debugging</string>
     <string name="settings_support_stored_logs_desc">%1$d seanca (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Nuk ka regjistër të ruajtur debugging</string>
-    <string name="settings_support_stored_logs_delete_title">Fshi regjistrat e ruajtur?</string>
-    <string name="settings_support_stored_logs_delete_msg">Kjo do të fshijë të gjitha %1$d seancat e ruajtura të regjistrit të debugging.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Regjistrat e ruajtur të debugging u fshinë</string>
-    <string name="label_bug_reports">Raportet e gabimeve</string>
-    <string name="description_bug_reports">Raportim automatik i gabimeve dhe kërcimit.</string>
     <string name="label_add_device">Shto pajisje</string>
-    <string name="label_just_a_moment_please">Shëndete, një moment.</string>
     <string name="label_notification_channel_status">Statusi</string>
     <string name="label_notification_channel_setup">Kërkohet konfigurim</string>
     <string name="monitor_notification_starting">Po nisen…</string>
     <string name="action_set">Vendos</string>
     <string name="action_cancel">Anulo</string>
-    <string name="label_invalid_input">Hyrje e pavlefshme</string>
     <string name="action_reset">Zgjojë</string>
     <string name="label_no_connected_devices">Nuk ka paisje të lidhur</string>
-    <string name="label_status_idle">Nëpërmjet</string>
-    <string name="label_status_adjusting_volumes">Përshtatje e volumeve</string>
-    <string name="label_premium_version">Versioni premium</string>
     <string name="general_upgrade_action">Ngriti</string>
     <string name="common_upgrade_required_label">Kërkohet përmirësim</string>
-    <string name="label_premium_version_required">Kërkohet versioni premium</string>
-    <string name="description_intro_purpose">Ky aplikacion lejon pajisjen tuaj Android të mbajë mend volumin e pajisjeve të ndryshme Bluetooth.</string>
-    <string name="upgrade_benefit_unlimited_devices">Profile të pakufizuara pajisje</string>
-    <string name="upgrade_benefit_connection_actions">Luajtje automatike, hapje aplikacioni dhe njoftime lidhjeje</string>
-    <string name="upgrade_benefit_theme_customization">Personalizim i temës, stilit dhe ngjyrës</string>
-    <string name="upgrade_benefit_power_controls">Bllokimi i volumit dhe kufizimi i shpejtësisë</string>
-    <string name="upgrade_benefit_support">Mbështetni zhvillimin e pavarur</string>
     <string name="upgrade_benefit_equalizer">• Ekualizator për çdo pajisje (për aplikacione muzike me mbështetje për ekualizatorin e sistemit)</string>
-    <string name="description_intro_tap_the_button">Filloje duke shtuar pajisjen tuaj të parë.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth është i çaktivizuar.</string>
     <string name="title_bluetooth_is_off">Bluetooth është Mbyllur</string>
     <string name="action_enable_bluetooth">Aktivizo Bluetooth</string>
     <string name="title_bluetooth_permission_required">Leja Bluetooth Kërkohej</string>
     <string name="description_bluetooth_permission_required">Ky aplikacion ka nevojë për lejen e Bluetooth për të menaxhuar volumet e pajisjes tuaj.</string>
     <string name="action_grant_permission">Jep Lejë</string>
-    <string name="label_status_listening_for_changes">Dëgjim ndryshimesh vëllimi</string>
     <string name="action_exit">Dalje</string>
-    <string name="action_start">Fillimi</string>
-    <string name="label_welcome">Mirëse</string>
-    <string name="description_intro_contact">Mos ngurro të më kontaktosh nëse ke pyetje ose edhe një ide për një veçori të re.</string>
-    <string name="label_translation">Përkthim</string>
-    <string name="description_help_translate">Më ndihmo të bëj këtë aplikacion të disponueshëm në gjuhë të tjera.</string>
     <string name="label_device_speaker">Altoparlanti i pajisjes</string>
-    <string name="label_keyevent_playpause">Luaj-Pauzo</string>
-    <string name="label_keyevent_play">Luaj</string>
-    <string name="label_keyevent_next">Tjetri</string>
-    <string name="label_install_id">Instali ID</string>
     <string name="message_copied_to_clipboard">Kopjuar në clipboard</string>
-    <string name="label_thanks">Falenderim</string>
-    <string name="label_licenses">Licencat</string>
-    <string name="description_ring_volume_additional_permission">Lejet shtesë janë të nevojshme për ndryshimin e volumit të ziles.</string>
-    <string name="label_missing_permissions">Lejet që mungojnë</string>
-    <string name="action_grant">Jep</string>
-    <string name="label_advanced">Përparimtari</string>
-    <string name="label_exclude_health">Përjashtimi i profileve të shëndetit</string>
-    <string name="description_exclude_health">Disa pajisje Android varen kur kërkojnë \'Pajisje Shëndetit\' Bluetooth profilit (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Përjashtimi i profileve të serverit GATT</string>
-    <string name="label_exclude_gatt">Përjashtimi i profileve GATT</string>
-    <string name="description_exclude_gattserver">Mos kërkuaj profilet e Bluetooth të llojit \'Atributi Përgjithshëm\' (GATT) server.</string>
-    <string name="description_exclude_gatt">Mos kërkuaj profilet e Bluetooth të llojit \'Atributi Përgjithshëm\' (GATT) klient.</string>
-    <string name="description_waiting_for_devicex">Duke pritur %s për të përfunduar lidhjen</string>
-    <string name="action_undo">Zhbëj</string>
-    <string name="action_show">Shfaq</string>
     <string name="action_dismiss">Përjasho</string>
-    <string name="action_fix">Zgjidh</string>
-    <string name="battery_optimizations_issue_description">Optimizatat e baterisë janë të aktivizuara për këtë aplikacion dhe mund ta parandalojnë atë të marrë ngjarje Bluetooth. Konsideroni çaktivizimin e optimizimeve nëse po përjetoni probleme.</string>
     <string name="label_bluetooth_settings">Cilësimet e Bluetooth</string>
-    <string name="android10_applaunch_issue_description">Android 10 kufizon se si aplikacionet mund të lancohen nga foni. Për të lejuar hapjen e aplikacioneve kur lidhet pajisje Bluetooth, jepni lejën \"Shfaq mbi aplikacionet e tjera\" (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Kodi burim</string>
-    <string name="android13_notification_permission_description">Jepeni këtij aplikacioni lejen për të postuar njoftimet. Kjo lejon shfaqjen e një njoftimi kur ky aplikacion është aktiv dhe bëhen përshtatje të volumit.</string>
-    <string name="privacy_policy_label">Politika e privatësisë</string>
     <string name="managed_devices_empty_message">Nuk ka paisje Bluetooth të konfiguruar.\nPrekni butonin + për të shtuar pajisjen tuaj të parë.</string>
     <string name="label_pro_feature">Veçori premium</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">Rishikimi</string>
     <string name="review_app_dismiss_action">Ndoshta më vonë</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Blerjeja u anulua</string>
-    <string name="error_iap_unavailable_message">Blerjet brenda aplikacionit nuk janë të disponueshme</string>
-    <string name="error_generic_message">Ndodhi një gabim. Ju lutemi provoni përsëri.</string>
-    <string name="error_iap_owned_message">Ju tashmë zotërojnë këtë artikull</string>
     <string name="label_no_devices_title">Nuk ka Paisjesh</string>
     <string name="bluemusic_mascot_description">Ikona e aplikacionit</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Zgjidh Aplikacionet</string>
     <string name="devices_app_selection_search_hint">Kërkoni aplikacionet…</string>
-    <string name="devices_app_selection_currently_selected">Aktualisht i zgjedhur</string>
     <string name="devices_app_selection_selected_count">%d aplikacione të përzgjedhur</string>
     <string name="general_navigate_back_action">Navigo mbrapa</string>
     <string name="general_reset_action">Zgjojë</string>
     <string name="general_clear_action">Pastro</string>
-    <string name="general_save_action">Ruaj</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Bllokimi</string>
     <string name="devices_indicator_awake">Zgjuar</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">Kufiri</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Përforcim</string>
-    <string name="devices_indicator_launch">Lance</string>
     <string name="devices_indicator_home">Shtëpi</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">Alarm</string>

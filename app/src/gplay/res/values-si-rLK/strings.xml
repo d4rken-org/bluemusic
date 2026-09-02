@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">BVM Pro අවශ්‍යයි</string>
     <string name="upgrade_prompt_title">BVM Pro වෙත උත්‍යෝජනය කරන්න</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro වඩා හොඳ ප්‍රතිඵල, වැඩි විශේෂාංග සහ බලවත් පරිශීලකයින් සඳහා විකල්ප ලබා දෙයි.</string>
-    <string name="upgrade_prompt_upgrade_action">වැඩිදියුණු කරන්න</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">%1$s වෙත උත්තර කරන්න</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager හි දැන්වීම් නොමැති අතර පරිශීලක දත්ත විකුණන්නේ නැත. මගේ වැඩ ඔබ විසින් මූල්‍යාධාර සපයයි ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager හට Google Play වෙත සම්බන්ධ වීමට නොහැකිය. Google Play ස්ථාපිත කර යාවත්කාලීන ද? ඔබේ Google ගිණුම පිවිසී ද? Google Play යෙදුමේ හැඹිලිය ඉවත් කර ඔබේ උපාංගය නැවත ආරම්භ කිරීමට උත්සාහ කරන්න.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Google Play විවෘත කිරීමට නොහැකි විය. එය මෙම උපාංගයේ අතුරුදහන්, අබල හෝ සීමා කර ඇත.</string>
-    <string name="upgrades_no_purchases_found_check_account">කිසිදු මිලදී ගැනීමක් හමු නොවිණි. ඔබ නිවැරදි ගිණුම භාවිතා කරන්නේද?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">උත්තරණ විකල්පයන්</string>
     <string name="upgrade_screen_offers_body">දෙවිධ විකල්පයන්ම එකම ප්‍රෝ ගුණාංගයන් අගුළු ඇරයි — ඔබට සුදුසු එකක් තෝරන්න.</string>

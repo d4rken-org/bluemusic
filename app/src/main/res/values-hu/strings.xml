@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Néhány eszközbeállítás visszaállítódhatott a frissítés során. Kérlek ellenőrizd az eszközkonfigurációkat.</string>
     <string name="onboarding_rewrite_action">Folytatás</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Nem találhatók nem kezelt eszközök</string>
     <string name="discover_all_devices_managed_msg">Minden párosított eszközöd kezelt! Kell egy új?</string>
     <string name="discover_pair_new_device_action">Új eszköz párosítása</string>
     <string name="discover_device_speaker_desc">A telefon beépített hangszórója. Hangereje akkor érvényesül, amikor a hang visszakapcsolódik a telefonra, például a Bluetooth-eszköz lecsatlakozása után.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Eszköz beállítása</string>
-    <string name="devices_device_config_section_general_label">Általános</string>
     <string name="devices_device_config_remove_device_label">Eszköz elfelejtése</string>
-    <string name="devices_device_config_remove_device_desc">Elfelejti az eszközt ebből az alkalmazásból és törli annak beállításait. Ez nem szünteti meg az eszköz Bluetooth párosítását.</string>
     <string name="devices_device_config_remove_device_action">Elfelejt</string>
     <string name="devices_device_config_remove_device_confirmation">Elfelejted a(z) %s eszközt a kezelt eszközök közül?</string>
-    <string name="devices_device_config_rename_device_label">Eszköz átnevezése</string>
-    <string name="devices_device_config_rename_device_desc">Nevezd át ezt az eszközt az alkalmazáson belül, és ha lehetséges, a rendszer szintjén is.</string>
     <string name="devices_device_config_rename_device_action">Átnevezés</string>
     <string name="devices_device_config_enabled_label">Engedélyezve</string>
     <string name="devices_device_config_enabled_desc">Reagáljon erre az eszközre, amikor csatlakozik</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Automatikus lejátszási parancsok</string>
     <string name="devices_device_config_autoplay_keycodes_order">Parancssorozat</string>
     <string name="devices_device_config_autoplay_keycodes_label">Parancsok</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Beállíthatod, hogy mely parancsokat küldje el és milyen sorrendben</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Nincs beállított parancs</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Parancs hozzáadása</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Maximum %1$d parancs</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Fel</string>
     <string name="cd_autoplay_keycode_move_down">Le</string>
     <string name="cd_autoplay_keycode_remove">Eltávolítás</string>
-    <string name="devices_device_config_section_volumes_label">Hangerő</string>
     <string name="devices_device_config_section_volume_label">Hangerő</string>
     <string name="devices_device_config_alarm_volume_label">Ébresztő hangereje</string>
     <string name="devices_device_config_alarm_volume_desc">Néhány ébresztő alkalmazás a zene hangerőt használja helyette.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">Csengő</string>
     <string name="devices_audio_stream_notification_label">Értesítés</string>
     <string name="devices_audio_stream_alarm_label">Ébresztő</string>
-    <string name="devices_neverseen_label">Soha nem látott</string>
-    <string name="devices_state_connected_label">Csatlakozva</string>
     <string name="devices_last_connected_label">Utoljára csatlakozva: %s</string>
     <string name="devices_currently_connected_label">Jelenleg csatlakozva</string>
     <string name="devices_device_disabled_label">Eszköz letiltva</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Beállítások, amelyek az összes kezelt eszközre hatnak.</string>
     <string name="label_app_enabled">Alkalmazás engedélyezve</string>
     <string name="description_app_enabled">Az alkalmazás reagálási képességét kapcsolja be a hangerő és a Bluetooth eseményekre.</string>
-    <string name="label_visible_volume_adjustments">Látható beállítások</string>
-    <string name="description_visible_volume_adjustments">Jelenítsd meg a rendszer hangerő ablakát, miközben az alkalmazás hangerőbeállításokat végez.</string>
     <string name="label_volume_listener">Változások megfigyelése</string>
-    <string name="description_volume_listener">Az alkalmazás maradjon aktív, miközben az eszköz csatlakoztatva van, és mentse a hangerőváltozásokat, amelyeket az alkalmazás nem okozott.</string>
     <string name="label_boot_restore">Rendszer indulásakor visszaállít</string>
     <string name="description_boot_restore">A hangerő visszaállítása újraindítás után, ha egy Bluetooth eszköz csatlakozik.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">Tanuld meg, hogyan használd hatékonyan a BVM-et</string>
     <string name="settings_support_issue_tracker_description">Nyilvános hibajelentő rendszer hibák és funkciókérések számára.</string>
     <string name="settings_support_issue_tracker_label">Hibajelentő rendszer</string>
-    <string name="settings_support_debuglog_label">Hibakeresési napló</string>
     <string name="settings_support_debuglog_desc">Rögzítsd mindent, amit az alkalmazás csinál egy szöveges fájlba, amit meg tudsz osztani.</string>
-    <string name="settings_support_debuglog_recording_desc">Jelenleg hibakeresési információkat rögzít. Koppints a rögzítés leállításához.</string>
-    <string name="settings_support_debuglog_path">Napló útvonala: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Nagyon rövid felvétel</string>
     <string name="settings_support_debuglog_short_recording_msg">Ez egy nagyon rövid felvétel volt. A hibakeresési naplók felvételek, nem pillanatképek — reprodukáld a problémát felvétel közben, hogy a napló hasznos legyen.</string>
     <string name="settings_support_debuglog_short_recording_continue">Felvétel folytatása</string>
     <string name="settings_support_debuglog_short_recording_stop">Leállítás mindenképpen</string>
-    <string name="settings_support_debuglog_folder_label">Hibakeresési napló mappa</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d munkamenet, %2$s használatával</item>
-        <item quantity="other">%1$d munkamenet, %2$s használatával</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Nincsenek tárolt hibakeresési naplók</string>
-    <string name="settings_support_debuglog_folder_delete_title">Törli az összes hibakeresési naplót?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Ez véglegesen törli az összes tárolt hibakeresési napló munkamenetet.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Egy hely, ahol lógni és kérdéseket feltenni lehet.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Fordítás</string>
     <string name="settings_acks_translators_title">Fordítók</string>
     <string name="settings_acks_translators_people">Személy1;Személy2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">BVM fordítása</string>
-    <string name="settings_acks_translate_desc">Segíts lefordítani a BVM-et a te nyelvedre</string>
     <string name="settings_acks_thanks_header">Köszönet</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">A nyílt forráskódú projektek fordításának támogatásáért</string>
     <string name="settings_licenses_label">Licencek</string>
     <string name="settings_translation_label">Fordítás</string>
     <string name="settings_translation_desc">Segítsd az alkalmazás lefordítását a kedvenc nyelvedre</string>
-    <string name="settings_sponsor_development_title">Fejlesztés támogatása</string>
-    <string name="settings_sponsor_development_summary">Válj támogatóvá és tedd lehetővé a folyamatos fejlesztést.</string>
     <string name="settings_privacy_policy_label">Adatvédelmi irányelvek</string>
     <string name="settings_privacy_policy_desc">Adatok felelősségteljes kezelése.</string>
     <string name="changelog_label">Változásnapló</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Visszaállítás kész – %1$d eszköz visszaállítva, %2$d kihagyva.</string>
     <string name="backup_restore_version_warning">Ez a mentés a(z) %1$s verzióval készült. Jelenleg a(z) %2$s fut. Néhány beállítás esetleg nem áll vissza megfelelően.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Hibakeresési értesítések</string>
     <string name="debug_log_consent_title">Hibakeresési napló</string>
     <string name="debug_log_consent_explanation">Ez a funkció mindent rögzít, amit az alkalmazás csinál egy megosztható fájlba. A létrehozott fájl érzékeny információkat tartalmaz (pl. fájlnevek és telepített alkalmazások). Csak megbízható felekkel oszd meg (pl. egy fejlesztővel, aki hibaelhárítást végz).</string>
-    <string name="debug_log_recording_progress">Hibakeresési napló rögzítése</string>
     <string name="debug_log_record_action">Rögzítés</string>
     <string name="debug_log_stop_action">Rögzítés leállítása</string>
     <string name="debug_log_screen_title">Hibakeresési napló rögzítő</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Eldobás</string>
     <string name="debug_log_screen_keep_action">Megtartás</string>
-    <string name="debug_log_compressing_label">Tömörítés…</string>
     <string name="debug_log_file_label">Rögzített naplófájl</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Napló elküldve?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Írd le részletesen a kérdésedet.</string>
     <string name="contact_category_section_label">Kategória</string>
     <string name="contact_debug_log_label">Hibakeresési napló</string>
-    <string name="contact_debug_log_select_hint">Válassz hibakeresési naplót a csatoláshoz</string>
     <string name="contact_debug_log_picker_hint">Csatolj hibakeresési naplót, hogy gyorsabban lehessen diagnosztizálni a problémát.</string>
     <string name="contact_debug_log_picker_empty">Nincs elérhető hibakeresési napló. Először rögzíts egyet.</string>
     <string name="contact_expected_behavior_label">Várt viselkedés</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">Minden üzenetet személyesen olvasok el és mindent megteszek, hogy válaszoljak, de mivel egyedül dolgozom, ez eltarthat egy kicsit. Köszönöm a türelmedet.</string>
     <string name="contact_footer_msg">Az üzeneted e-mailben kerül elküldésre. Az eszköz és beállítási adatok automatikusan csatolva lesznek.</string>
     <string name="contact_no_email_app_msg">Ezen az eszközön nem található e-mail alkalmazás.</string>
-    <string name="contact_attachment_missing_msg">A hibakeresési napló fájl már nem létezik</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Tárolt hibakeresési naplók</string>
     <string name="settings_support_stored_logs_desc">%1$d munkamenet (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Nincsenek tárolt hibakeresési naplók</string>
-    <string name="settings_support_stored_logs_delete_title">Törli a tárolt naplókat?</string>
-    <string name="settings_support_stored_logs_delete_msg">Ez törli az összes %1$d tárolt hibakeresési napló munkamenetet.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Tárolt hibakeresési naplók törölve</string>
-    <string name="label_bug_reports">Hibajelentés</string>
-    <string name="description_bug_reports">Automatikus hiba- és összeomlás jelentés.</string>
     <string name="label_add_device">Eszköz hozzáadása</string>
-    <string name="label_just_a_moment_please">Egy pillanat, kérlek.</string>
     <string name="label_notification_channel_status">Állapot</string>
     <string name="label_notification_channel_setup">Beállítás szükséges</string>
     <string name="monitor_notification_starting">Indítás…</string>
     <string name="action_set">Beállítás</string>
     <string name="action_cancel">Mégse</string>
-    <string name="label_invalid_input">Érvénytelen adat</string>
     <string name="action_reset">Visszaállítás</string>
     <string name="label_no_connected_devices">Nincs csatlakoztatott eszköz</string>
-    <string name="label_status_idle">Üresjárat</string>
-    <string name="label_status_adjusting_volumes">Hangerő beállítása</string>
-    <string name="label_premium_version">Prémium verzió</string>
     <string name="general_upgrade_action">Frissítés</string>
     <string name="common_upgrade_required_label">Frissítés szükséges</string>
-    <string name="label_premium_version_required">Prémium verzió szükséges</string>
-    <string name="description_intro_purpose">Ez az alkalmazás lehetővé teszi, hogy az Android készüléked emlékezzen a különböző Bluetooth-eszközök hangerejére.</string>
-    <string name="upgrade_benefit_unlimited_devices">Korlátlan eszközprofilok</string>
-    <string name="upgrade_benefit_connection_actions">Automatikus lejátszás, alkalmazásindítás és kapcsolódási értesítések</string>
-    <string name="upgrade_benefit_theme_customization">Téma, stílus és szín testreszabása</string>
-    <string name="upgrade_benefit_power_controls">Hangerőzár és sebességkorlátozás</string>
-    <string name="upgrade_benefit_support">Független fejlesztés támogatása</string>
     <string name="upgrade_benefit_equalizer">• Eszközönkénti hangszínszabályzó (zenealkalmazások rendszer-hangszínszabályzó-támogatása esetén)</string>
-    <string name="description_intro_tap_the_button">Kezdéshez adj hozzá az első eszközt.</string>
     <string name="description_bluetooth_is_disabled">A Bluetooth ki van kapcsolva.</string>
     <string name="title_bluetooth_is_off">A Bluetooth ki van kapcsolva</string>
     <string name="action_enable_bluetooth">Bluetooth bekapcsolása</string>
     <string name="title_bluetooth_permission_required">Bluetooth engedély szükséges</string>
     <string name="description_bluetooth_permission_required">Ez az alkalmazás Bluetooth engedélyt igényel az eszközök hangerőszintjének kezeléséhez.</string>
     <string name="action_grant_permission">Engedély megadása</string>
-    <string name="label_status_listening_for_changes">Figyeli a hangerőszabályzást</string>
     <string name="action_exit">Kilépés</string>
-    <string name="action_start">Indítás</string>
-    <string name="label_welcome">Üdvözlet</string>
-    <string name="description_intro_contact">Ne habozz kapcsolatba lépni velem, ha kérdésed van vagy egy új funkcióra van ötleted.</string>
-    <string name="label_translation">Fordítás</string>
-    <string name="description_help_translate">Segíts, hogy ezt az alkalmazást más nyelveken is elérhetővé tegyük.</string>
     <string name="label_device_speaker">Készülék hangszóró</string>
-    <string name="label_keyevent_playpause">Lejátszás/szünet</string>
-    <string name="label_keyevent_play">Lejátszás</string>
-    <string name="label_keyevent_next">Következő</string>
-    <string name="label_install_id">Telepítési azonosító</string>
     <string name="message_copied_to_clipboard">Vágólapra másolva</string>
-    <string name="label_thanks">Köszönet</string>
-    <string name="label_licenses">Licencek</string>
-    <string name="description_ring_volume_additional_permission">További engedélyek szükségesek a csengetési hangerő megváltoztatásához.</string>
-    <string name="label_missing_permissions">Hiányzó engedélyek</string>
-    <string name="action_grant">Engedélyez</string>
-    <string name="label_advanced">Haladó</string>
-    <string name="label_exclude_health">Egészségügyi profilok kizárása</string>
-    <string name="description_exclude_health">Néhány Android-eszköz lefagy, amikor felkeresi az \&quot;Egészségügyi eszköz\&quot; Bluetooth-profilokat (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">GATT szerver profilok kizárása</string>
-    <string name="label_exclude_gatt">GATT profilok kizárása</string>
-    <string name="description_exclude_gattserver">Ne lekérdezze a \"Generic Attribute\" (GATT) szerver típusú Bluetooth profilokat.</string>
-    <string name="description_exclude_gatt">Ne lekérdezze a \"Generic Attribute\" (GATT) kliens típusú Bluetooth profilokat.</string>
-    <string name="description_waiting_for_devicex">Várakozás a(z) %s kapcsolat befejezésére</string>
-    <string name="action_undo">Visszavonás</string>
-    <string name="action_show">Mutatás</string>
     <string name="action_dismiss">Bezárás</string>
-    <string name="action_fix">Javítás</string>
-    <string name="battery_optimizations_issue_description">Az akkumulátor optimalizálás engedélyezett ennél az alkalmazásnál és megakadályozhatja a Bluetooth események fogadását. Fontold meg az optimalizálás letiltását, ha problémákat tapasztalsz.</string>
     <string name="label_bluetooth_settings">Bluetooth beállítások</string>
-    <string name="android10_applaunch_issue_description">Az Android 10 korlátozza, hogyan indíthatók el alkalmazások a háttérből. Az alkalmazások megnyitásának engedélyezéséhez Bluetooth eszköz csatlakozásakor add meg a &quot;Megjelenítés más alkalmazások felett&quot; engedélyt (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Forráskód</string>
-    <string name="android13_notification_permission_description">Add meg ennek az alkalmazásnak az értesítések küldéséhez szükséges engedélyt. Ez lehetővé teszi az értesítés megjelenítését, amikor az alkalmazás aktív és hangerőbeállításokat végez.</string>
-    <string name="privacy_policy_label">Adatvédelmi irányelvek</string>
     <string name="managed_devices_empty_message">Nincsenek Bluetooth eszközök konfigurálva.\nKoppints a + gombra az első eszköz hozzáadásához.</string>
     <string name="label_pro_feature">Prémium funkció</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">Áttekintés</string>
     <string name="review_app_dismiss_action">Talán később</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Vásárlás megszakítva</string>
-    <string name="error_iap_unavailable_message">Az alkalmazáson belüli vásárlások nem elérhetőek</string>
-    <string name="error_generic_message">Hiba történt. Kérlek próbáld újra.</string>
-    <string name="error_iap_owned_message">Már birtoklod ezt a tételt</string>
     <string name="label_no_devices_title">Nincsenek eszközök</string>
     <string name="bluemusic_mascot_description">Alkalmazás ikon</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Alkalmazások kiválasztása</string>
     <string name="devices_app_selection_search_hint">Alkalmazások keresése…</string>
-    <string name="devices_app_selection_currently_selected">Jelenleg kiválasztott</string>
     <string name="devices_app_selection_selected_count">%d alkalmazás kiválasztva</string>
     <string name="general_navigate_back_action">Visszanavigálás</string>
     <string name="general_reset_action">Visszaállítás</string>
     <string name="general_clear_action">Törlés</string>
-    <string name="general_save_action">Mentés</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Zárolás</string>
     <string name="devices_indicator_awake">Ébren</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">Korlát</string>
     <string name="devices_indicator_eq">Hangszín</string>
     <string name="devices_indicator_boost">Fokozás</string>
-    <string name="devices_indicator_launch">Indítás</string>
     <string name="devices_indicator_home">Főképernyő</string>
     <string name="devices_indicator_dnd">NZ</string>
     <string name="devices_indicator_alert">Értesítés</string>

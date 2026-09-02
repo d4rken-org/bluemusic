@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Bu güncelleme sırasında bazı cihaz ayarları sıfırlanmış olabilir. Lütfen cihaz yapılandırmalarını kontrol et.</string>
     <string name="onboarding_rewrite_action">Devam Et</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Yönetilmeyen cihaz bulunamadı</string>
     <string name="discover_all_devices_managed_msg">Tüm eşleştirilmiş cihazların yönetiliyor! Yeni bir tane mi lazım?</string>
     <string name="discover_pair_new_device_action">Yeni cihaz eşleştir</string>
     <string name="discover_device_speaker_desc">Telefonun kendi hoparlörü. Ses telefona geri döndüğünde (örneğin Bluetooth cihazınızın bağlantısı kesildiğinde) ses seviyeleri uygulanır.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Cihaz yapılandırması</string>
-    <string name="devices_device_config_section_general_label">Genel</string>
     <string name="devices_device_config_remove_device_label">Cihazı unut</string>
-    <string name="devices_device_config_remove_device_desc">Cihazı bu uygulamadan unutur ve yapılandırmasını siler. Bu, cihazın eşleşmesini bozmaz.</string>
     <string name="devices_device_config_remove_device_action">Unut</string>
     <string name="devices_device_config_remove_device_confirmation">%s\'ü yönetilen cihazlardan unutulsun mu?</string>
-    <string name="devices_device_config_rename_device_label">Cihazı yeniden adlandır</string>
-    <string name="devices_device_config_rename_device_desc">Bu cihazı bu uygulama içinde ve mümkünse sistem içinde yeniden adlandır.</string>
     <string name="devices_device_config_rename_device_action">Yeniden Adlandır</string>
     <string name="devices_device_config_enabled_label">Etkin</string>
     <string name="devices_device_config_enabled_desc">Bağlandığında bu cihaza tepki ver</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Otomatik oynatma komutları</string>
     <string name="devices_device_config_autoplay_keycodes_order">Komut sırası</string>
     <string name="devices_device_config_autoplay_keycodes_label">Komutlar</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Hangi komutların gönderileceğini ve hangi sırayla gönderileceğini yapılandırın</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Komut yapılandırılmadı</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Komut ekle</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Maksimum %1$d komut</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Yukarı taşı</string>
     <string name="cd_autoplay_keycode_move_down">Aşağı taşı</string>
     <string name="cd_autoplay_keycode_remove">Kaldır</string>
-    <string name="devices_device_config_section_volumes_label">Ses Düzeyleri</string>
     <string name="devices_device_config_section_volume_label">Ses</string>
     <string name="devices_device_config_alarm_volume_label">Alarm ses yüksekliği</string>
     <string name="devices_device_config_alarm_volume_desc">Bazı alarm uygulamaları bunun yerine müzik sesini kullanır.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">Zil</string>
     <string name="devices_audio_stream_notification_label">Bildirim</string>
     <string name="devices_audio_stream_alarm_label">Alarm Sesi</string>
-    <string name="devices_neverseen_label">Hiç görülmedi</string>
-    <string name="devices_state_connected_label">Bağlandı</string>
     <string name="devices_last_connected_label">Son bağlantı: %s</string>
     <string name="devices_currently_connected_label">Şu anda bağlı</string>
     <string name="devices_device_disabled_label">Cihaz devre dışı</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Tüm yönetilen cihazları etkileyen ayarlar.</string>
     <string name="label_app_enabled">Uygulama aktif</string>
     <string name="description_app_enabled">Uygulamanın ses düzeyine ve Bluetooth olaylarına tepki verme yeteneğini değiştirir.</string>
-    <string name="label_visible_volume_adjustments">Görünür ayarlamalar</string>
-    <string name="description_visible_volume_adjustments">Bu uygulama ayarlamalar yaparken sistemin ses düzeyi penceresini göster.</string>
     <string name="label_volume_listener">Değişiklikleri gözlemle</string>
-    <string name="description_volume_listener">Bir cihaz bağlıyken aktif kalın ve bu uygulamanın neden olmadığı ses seviyesi değişikliklerini kaydedin.</string>
     <string name="label_boot_restore">Cihaz açılırken başlat</string>
     <string name="description_boot_restore">Bluetooth cihazı bağlıysa, önyükleme / yeniden başlatma sonrasında sesi geri yükleyin.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">BVM\'i etkili bir şekilde nasıl kullanacağını öğren</string>
     <string name="settings_support_issue_tracker_description">Hata raporları ve özellik istekleri için halka açık sorun takipçisi.</string>
     <string name="settings_support_issue_tracker_label">Sorun takipçisi</string>
-    <string name="settings_support_debuglog_label">Hata ayıklama kayıtı</string>
     <string name="settings_support_debuglog_desc">Uygulamanın yaptığı her şeyi paylaşabileceğin bir metin dosyasına kaydet.</string>
-    <string name="settings_support_debuglog_recording_desc">Şu anda hata ayıklama bilgileri kaydediliyor. Kaydı durdurmak için dokun.</string>
-    <string name="settings_support_debuglog_path">Kayıt yolu: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Çok kısa kayıt</string>
     <string name="settings_support_debuglog_short_recording_msg">Bu çok kısa bir kayıttı. Hata ayıklama günlükleri anlık görüntü değil, kayıttır — günlüğün kullanışlı olması için kayıt etkinken sorunu yeniden üret.</string>
     <string name="settings_support_debuglog_short_recording_continue">Kaydetmeye devam et</string>
     <string name="settings_support_debuglog_short_recording_stop">Yine de durdur</string>
-    <string name="settings_support_debuglog_folder_label">Hata ayıklama günlüğü klasörü</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%2$s kullanan %1$d oturum</item>
-        <item quantity="other">%2$s kullanan %1$d oturum</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Hata ayıklama günlüğü saklanmıyor</string>
-    <string name="settings_support_debuglog_folder_delete_title">Tüm hata ayıklama günlükleri silinsin mi?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Bu işlem tüm saklanan hata ayıklama günlüğü oturumlarını kalıcı olarak siler.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Takılıp soru sorabileceğin bir yer.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Çeviri</string>
     <string name="settings_acks_translators_title">Çevirmenler</string>
     <string name="settings_acks_translators_people">Kişi1;Kişi2(isteğe.bağlı@email.com)</string>
-    <string name="settings_acks_translate_title">BVM\'i Çevir</string>
-    <string name="settings_acks_translate_desc">BVM\'i diline çevirmene yardım et</string>
     <string name="settings_acks_thanks_header">Teşekkürler</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Açık kaynaklı projelerin çevirisini desteklediği için</string>
     <string name="settings_licenses_label">Lisanslar</string>
     <string name="settings_translation_label">Çeviri</string>
     <string name="settings_translation_desc">Uygulamayı en sevdiğiniz dile çevirmeye yardımcı olun</string>
-    <string name="settings_sponsor_development_title">Geliştirmeyi destekle</string>
-    <string name="settings_sponsor_development_summary">Patron ol ve geliştirmenin devam etmesini sağla.</string>
     <string name="settings_privacy_policy_label">Gizlilik politikası</string>
     <string name="settings_privacy_policy_desc">Verileri sorumlu bir şekilde işleme.</string>
     <string name="changelog_label">Değişiklik günlüğü</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Geri yükleme tamamlandı — %1$d cihaz geri yüklendi, %2$d atlandı.</string>
     <string name="backup_restore_version_warning">Bu yedek %1$s sürümüyle oluşturuldu. Siz %2$s çalıştırıyorsunuz. Bazı ayarlar doğru geri yüklenmeyebilir.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Hata ayıklama bildirimleri</string>
     <string name="debug_log_consent_title">Hata ayıklama kayıtı</string>
     <string name="debug_log_consent_explanation">Bu özellik uygulamanın yaptığı her şeyi paylaşılabilir bir dosyaya kaydeder. Oluşturulan dosya hassas bilgiler içerir (dosya adları ve yüklü uygulamalar gibi). Sadece güvenilir kişilerle paylaş (sorun gidermesi yapan geliştirici gibi).</string>
-    <string name="debug_log_recording_progress">Hata ayıklama kayıtı alınıyor</string>
     <string name="debug_log_record_action">Kaydet</string>
     <string name="debug_log_stop_action">Kaydı durdur</string>
     <string name="debug_log_screen_title">Hata Ayıklama Kayıtçısı</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Vazgeç</string>
     <string name="debug_log_screen_keep_action">Sakla</string>
-    <string name="debug_log_compressing_label">Sıkıştırılıyor…</string>
     <string name="debug_log_file_label">Kaydedilen kayıt dosyası</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Günlük gönderildi mi?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Sorunuzu ayrıntılı olarak açıkla.</string>
     <string name="contact_category_section_label">Kategori</string>
     <string name="contact_debug_log_label">Hata ayıklama günlüğü</string>
-    <string name="contact_debug_log_select_hint">Eklemek için bir hata ayıklama günlüğü seç</string>
     <string name="contact_debug_log_picker_hint">Sorunu daha hızlı teşhis etmeye yardımcı olmak için hata ayıklama günlüğü ekle.</string>
     <string name="contact_debug_log_picker_empty">Kullanılabilir hata ayıklama günlüğü yok. Önce bir tane kaydet.</string>
     <string name="contact_expected_behavior_label">Beklenen davranış</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">Her mesajı kendim okuyorum ve elimden geldiğince cevaplamaya çalışıyorum, ancak bunu tek başıma yaptığım için biraz zaman alabilir. Sabrın için teşekkürler.</string>
     <string name="contact_footer_msg">Mesajın e-posta ile gönderilecek. Cihaz ve kurulum bilgileri otomatik olarak eklenir.</string>
     <string name="contact_no_email_app_msg">Bu cihazda e-posta uygulaması bulunamadı.</string>
-    <string name="contact_attachment_missing_msg">Hata ayıklama günlüğü dosyası artık mevcut değil</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Saklanan hata ayıklama günlükleri</string>
     <string name="settings_support_stored_logs_desc">%1$d oturum (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Saklanan hata ayıklama günlüğü yok</string>
-    <string name="settings_support_stored_logs_delete_title">Saklanan günlükler silinsin mi?</string>
-    <string name="settings_support_stored_logs_delete_msg">Bu işlem saklanan tüm %1$d hata ayıklama günlüğü oturumunu siler.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Saklanan hata ayıklama günlükleri silindi</string>
-    <string name="label_bug_reports">Hata raporları</string>
-    <string name="description_bug_reports">Otomatik hata ve çökme bildirimi.</string>
     <string name="label_add_device">Cihaz ekle</string>
-    <string name="label_just_a_moment_please">Bir dakika, lütfen.</string>
     <string name="label_notification_channel_status">Durum</string>
     <string name="label_notification_channel_setup">Kurulum gerekli</string>
     <string name="monitor_notification_starting">Başlatılıyor…</string>
     <string name="action_set">Ayarla</string>
     <string name="action_cancel">İptal</string>
-    <string name="label_invalid_input">Geçersiz giriş</string>
     <string name="action_reset">Sıfırla</string>
     <string name="label_no_connected_devices">Bağlı cihaz bulunamadı</string>
-    <string name="label_status_idle">Boşta</string>
-    <string name="label_status_adjusting_volumes">Ses düzeyini ayarla</string>
-    <string name="label_premium_version">Ücretli Sürüm</string>
     <string name="general_upgrade_action">Yükselt</string>
     <string name="common_upgrade_required_label">Yükseltme gerekli</string>
-    <string name="label_premium_version_required">Ücretli sürüm gerekli</string>
-    <string name="description_intro_purpose">Bu uygulama, Android cihazınızın farklı Bluetooth cihazlarının ses seviyesini hatırlamasını sağlar.</string>
-    <string name="upgrade_benefit_unlimited_devices">Sınırsız cihaz profili</string>
-    <string name="upgrade_benefit_connection_actions">Otomatik oynatma, uygulama başlatma ve bağlantı uyarıları</string>
-    <string name="upgrade_benefit_theme_customization">Tema, stil ve renk özelleştirmesi</string>
-    <string name="upgrade_benefit_power_controls">Ses kilidi ve hız sınırlama</string>
-    <string name="upgrade_benefit_support">Bağımsız geliştirmeyi destekle</string>
     <string name="upgrade_benefit_equalizer">• Cihaz başına ekolayzer (sistem ekolayzer desteği olan müzik uygulamaları için)</string>
-    <string name="description_intro_tap_the_button">İlk aygıtınızı ekleyerek başlayın.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth devre dışı.</string>
     <string name="title_bluetooth_is_off">Bluetooth Kapalı</string>
     <string name="action_enable_bluetooth">Bluetooth\'u Etkinleştir</string>
     <string name="title_bluetooth_permission_required">Bluetooth İzni Gerekli</string>
     <string name="description_bluetooth_permission_required">Bu uygulamanın cihaz seslerini yönetmek için Bluetooth iznine ihtiyacı var.</string>
     <string name="action_grant_permission">İzin Ver</string>
-    <string name="label_status_listening_for_changes">Ses değişimi için dinleniyor</string>
     <string name="action_exit">Çıkış</string>
-    <string name="action_start">Başlat</string>
-    <string name="label_welcome">Hoşgeldiniz</string>
-    <string name="description_intro_contact">Yeni bir özellik için sorularınız veya bir fikriniz varsa benimle iletişime geçmekten çekinmeyin.</string>
-    <string name="label_translation">Çeviri</string>
-    <string name="description_help_translate">Bu uygulamayı diğer diller için kullanılabilir yapmama yardım edin.</string>
     <string name="label_device_speaker">Cihaz hoparlörü</string>
-    <string name="label_keyevent_playpause">Oynat/Duraklat</string>
-    <string name="label_keyevent_play">Oynat</string>
-    <string name="label_keyevent_next">Sonraki</string>
-    <string name="label_install_id">Kurulum ID</string>
     <string name="message_copied_to_clipboard">Panoya kopyalandı</string>
-    <string name="label_thanks">Teşekkürler</string>
-    <string name="label_licenses">Lisanslar</string>
-    <string name="description_ring_volume_additional_permission">Zil sesini değiştirmek için ek izinler gereklidir.</string>
-    <string name="label_missing_permissions">Eksik izinler</string>
-    <string name="action_grant">Yetkilendir</string>
-    <string name="label_advanced">Gelişmiş</string>
-    <string name="label_exclude_health">Sağlık profillerini dışla</string>
-    <string name="description_exclude_health">Bazı Android cihazlar \'Sağlık Cihazı\' Bluetooth profillerine bakarken takılıyor (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">GATT sunucu profillerini dışla</string>
-    <string name="label_exclude_gatt">GATT profillerini dışla</string>
-    <string name="description_exclude_gattserver">\'Generic Attribute\' (GATT) sunucusunun Bluetooth profillerini sorgulama.</string>
-    <string name="description_exclude_gatt">\'Generic Attribute\' (GATT) istemcisinin Bluetooth profillerini sorgulamayın.</string>
-    <string name="description_waiting_for_devicex">Bağlantının tamamlanması için %s bekleniyor</string>
-    <string name="action_undo">Geri al</string>
-    <string name="action_show">Göster</string>
     <string name="action_dismiss">Reddet</string>
-    <string name="action_fix">Düzelt</string>
-    <string name="battery_optimizations_issue_description">Batarya iyileştirmeleri bu uygulama için etkindir ve bu, Bluetooth olaylarını almasını engelleyebilir. Sorun yaşıyorsanız optimizasyonları devre dışı bırakmayı deneyin.</string>
     <string name="label_bluetooth_settings">Bluetooth ayarları</string>
-    <string name="android10_applaunch_issue_description">Android 10, uygulamaların arka planda nasıl başlatılabileceğini kısıtlar. Bir Bluetooth cihazı bağlandığında uygulamaların açılmasına izin vermek için \&quot;Diğer uygulamalar üzerinde görüntüleme\&quot; iznini verin (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Kaynak kodu</string>
-    <string name="android13_notification_permission_description">Bu uygulamaya bildirim gönderme izni ver. Bu, uygulama aktifken ve ses ayarlamaları yapılırken bildirim gösterilmesini sağlar.</string>
-    <string name="privacy_policy_label">Gizlilik politikası</string>
     <string name="managed_devices_empty_message">Hiçbir Bluetooth cihazı yapılandırılmamış.\nİlk cihazını eklemek için + düğmesine dokun.</string>
     <string name="label_pro_feature">Premium özellik</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">Değerlendir</string>
     <string name="review_app_dismiss_action">Belki daha sonra</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Satın alma iptal edildi</string>
-    <string name="error_iap_unavailable_message">Uygulama içi satın almalar mevcut değil</string>
-    <string name="error_generic_message">Bir hata oluştu. Lütfen tekrar dene.</string>
-    <string name="error_iap_owned_message">Bu öğeye zaten sahipsin</string>
     <string name="label_no_devices_title">Cihaz Yok</string>
     <string name="bluemusic_mascot_description">Uygulama Simgesi</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Uygulamaları Seç</string>
     <string name="devices_app_selection_search_hint">Uygulamaları ara…</string>
-    <string name="devices_app_selection_currently_selected">Şu anda seçili</string>
     <string name="devices_app_selection_selected_count">%d uygulama seçildi</string>
     <string name="general_navigate_back_action">Geri git</string>
     <string name="general_reset_action">Sıfırla</string>
     <string name="general_clear_action">Temizle</string>
-    <string name="general_save_action">Kaydet</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Kilit</string>
     <string name="devices_indicator_awake">Uyanık</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">Sınır</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Yükseltme</string>
-    <string name="devices_indicator_launch">Başlat</string>
     <string name="devices_indicator_home">Ana sayfa</string>
     <string name="devices_indicator_dnd">RE</string>
     <string name="devices_indicator_alert">Uyarı</string>

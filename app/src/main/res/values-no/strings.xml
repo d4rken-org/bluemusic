@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Noen enhetsinnstillinger kan ha blitt tilbakestilt under denne oppdateringen. Sjekk enhetskonfigurasjonene dine.</string>
     <string name="onboarding_rewrite_action">Fortsett</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Ingen uhåndterte enheter funnet</string>
     <string name="discover_all_devices_managed_msg">Alle de parkoblede enhetene dine håndteres allerede! Trenger du en ny en?</string>
     <string name="discover_pair_new_device_action">Koble til ny enhet</string>
     <string name="discover_device_speaker_desc">Denne telefonens egen høyttaler. Volumene brukes når lyden byttes tilbake til telefonen, f.eks. etter at Bluetooth-enheten din kobles fra.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Enhetskonfigurasjon</string>
-    <string name="devices_device_config_section_general_label">Generelt</string>
     <string name="devices_device_config_remove_device_label">Glem enhet</string>
-    <string name="devices_device_config_remove_device_desc">Glemmer enheten fra denne appen og sletter konfigurasjonen. Dette kobler ikke fra enheten.</string>
     <string name="devices_device_config_remove_device_action">Glem</string>
     <string name="devices_device_config_remove_device_confirmation">Glem %s fra administrerte enheter?</string>
-    <string name="devices_device_config_rename_device_label">Gi nytt navn til enhet</string>
-    <string name="devices_device_config_rename_device_desc">Gi denne enheten et nytt navn i denne appen, og hvis mulig, i systemet.</string>
     <string name="devices_device_config_rename_device_action">Gi nytt navn</string>
     <string name="devices_device_config_enabled_label">Aktivert</string>
     <string name="devices_device_config_enabled_desc">Reager på denne enheten når den kobles til</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Autoplay-kommandoer</string>
     <string name="devices_device_config_autoplay_keycodes_order">Kommandosekvens</string>
     <string name="devices_device_config_autoplay_keycodes_label">Kommandoer</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Konfigurer hvilke kommandoer som skal sendes og i hvilken rekkefølge</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Ingen kommandoer konfigurert</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Legg til kommando</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Maksimalt %1$d kommandoer</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Flytt opp</string>
     <string name="cd_autoplay_keycode_move_down">Flytt ned</string>
     <string name="cd_autoplay_keycode_remove">Fjern</string>
-    <string name="devices_device_config_section_volumes_label">Volumer</string>
     <string name="devices_device_config_section_volume_label">Volum</string>
     <string name="devices_device_config_alarm_volume_label">Alarmvolum</string>
     <string name="devices_device_config_alarm_volume_desc">Noen alarm-apper bruker musikkvolumet i stedet.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">Ringing</string>
     <string name="devices_audio_stream_notification_label">Varsling</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="devices_neverseen_label">Aldri sett</string>
-    <string name="devices_state_connected_label">Tilkoblet</string>
     <string name="devices_last_connected_label">Sist tilkoblet: %s</string>
     <string name="devices_currently_connected_label">Nå tilkoblet</string>
     <string name="devices_device_disabled_label">Enhet deaktivert</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Innstillinger som påvirker alle administrerte enheter.</string>
     <string name="label_app_enabled">App aktivert</string>
     <string name="description_app_enabled">Veksler appens evne til å reagere på volum og Bluetooth hendelser.</string>
-    <string name="label_visible_volume_adjustments">Synlige justeringer</string>
-    <string name="description_visible_volume_adjustments">Vis systemets volumvindu når denne appen gjør endringer.</string>
     <string name="label_volume_listener">Observer endringer</string>
-    <string name="description_volume_listener">Forbli aktiv mens en enhet er koblet til og lagre volumendringer som ikke har blitt forårsaket av denne appen.</string>
     <string name="label_boot_restore">Gjenopprett på oppstart</string>
     <string name="description_boot_restore">Gjenopprett volum etter oppstart/omstart hvis en Bluetooth-enhet er tilkoblet.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">Lær hvordan du bruker BVM effektivt</string>
     <string name="settings_support_issue_tracker_description">En offentlig problemtracker for feilrapporter og funksjonsønsker.</string>
     <string name="settings_support_issue_tracker_label">Problemtracker</string>
-    <string name="settings_support_debuglog_label">Feilsøkingslogg</string>
     <string name="settings_support_debuglog_desc">Ta opp alt appen gjør i en tekstfil som du kan dele.</string>
-    <string name="settings_support_debuglog_recording_desc">Tar nå opp feilsøkingsinformasjon. Trykk for å stoppe opptaket.</string>
-    <string name="settings_support_debuglog_path">Loggsti: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Veldig kort opptak</string>
     <string name="settings_support_debuglog_short_recording_msg">Det var et veldig kort opptak. Feilsøkingslogger er opptak, ikke øyeblikksbilder — reproduser problemet mens opptaket er aktivt for at loggen skal være nyttig.</string>
     <string name="settings_support_debuglog_short_recording_continue">Fortsett opptak</string>
     <string name="settings_support_debuglog_short_recording_stop">Stopp uansett</string>
-    <string name="settings_support_debuglog_folder_label">Feilsøkingslogg-mappe</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d økt bruker %2$s</item>
-        <item quantity="other">%1$d økter bruker %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Ingen feilsøkingslogger lagret</string>
-    <string name="settings_support_debuglog_folder_delete_title">Slette alle feilsøkingslogger?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Dette vil slette alle lagrede feilsøkingslogg-økter permanent.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Et sted å henge på og stille spørsmål.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Oversettelse</string>
     <string name="settings_acks_translators_title">Oversettere</string>
     <string name="settings_acks_translators_people">Kristoffer Vassbø (kristoffer@vassbo.net)</string>
-    <string name="settings_acks_translate_title">Oversett BVM</string>
-    <string name="settings_acks_translate_desc">Hjelp med å oversette BVM til ditt språk</string>
     <string name="settings_acks_thanks_header">Takk</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">For å støtte oversetting av åpen kildekode-prosjekter</string>
     <string name="settings_licenses_label">Lisenser</string>
     <string name="settings_translation_label">Oversetting</string>
     <string name="settings_translation_desc">Hjelp til med å oversette appen til ditt favorittspråk</string>
-    <string name="settings_sponsor_development_title">Sponsør utvikling</string>
-    <string name="settings_sponsor_development_summary">Bli en patron og gjør fortsatt utvikling mulig.</string>
     <string name="settings_privacy_policy_label">Personvernregler</string>
     <string name="settings_privacy_policy_desc">Håndtere data ansvarlig.</string>
     <string name="changelog_label">Endringslogg</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Gjenoppretting fullført — %1$d enheter gjenopprettet, %2$d hoppet over.</string>
     <string name="backup_restore_version_warning">Denne sikkerhetskopien ble opprettet med versjon %1$s. Du kjører %2$s. Noen innstillinger gjenopprettes kanskje ikke riktig.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Feilsøkingsvarsler</string>
     <string name="debug_log_consent_title">Feilsøkingslogg</string>
     <string name="debug_log_consent_explanation">Denne funksjonen registrerer alt appen gjør i en delbar fil. Den genererte filen inneholder sensitiv informasjon (f.eks. filnavn og installerte apper). Del den bare med pålitelige parter (f.eks. en utvikler som feilsøker et problem).</string>
-    <string name="debug_log_recording_progress">Tar opp feilsøkingslogg</string>
     <string name="debug_log_record_action">Ta opp</string>
     <string name="debug_log_stop_action">Stopp opptak</string>
     <string name="debug_log_screen_title">Feilsøkingslogg-opptaker</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Forkast</string>
     <string name="debug_log_screen_keep_action">Behold</string>
-    <string name="debug_log_compressing_label">Komprimerer…</string>
     <string name="debug_log_file_label">Innspilt loggfil</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Logg sendt?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Beskriv spørsmålet ditt i detalj.</string>
     <string name="contact_category_section_label">Kategori</string>
     <string name="contact_debug_log_label">Feilsøkingslogg</string>
-    <string name="contact_debug_log_select_hint">Velg en feilsøkingslogg å legge ved</string>
     <string name="contact_debug_log_picker_hint">Legg ved en feilsøkingslogg for å hjelpe med å diagnostisere problemet raskere.</string>
     <string name="contact_debug_log_picker_empty">Ingen feilsøkingslogger tilgjengelig. Ta opp en først.</string>
     <string name="contact_expected_behavior_label">Forventet oppførsel</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">Jeg leser alle meldinger selv og gjør mitt beste for å svare, men siden jeg jobber alene, kan det ta litt tid. Takk for tålmodigheten.</string>
     <string name="contact_footer_msg">Meldingen din vil bli sendt via e-post. Enhets- og oppsettsinformasjon vedlegges automatisk.</string>
     <string name="contact_no_email_app_msg">Ingen e-postapp funnet på denne enheten.</string>
-    <string name="contact_attachment_missing_msg">Feilsøkingslogg-filen eksisterer ikke lenger</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Lagrede feilsøkingslogger</string>
     <string name="settings_support_stored_logs_desc">%1$d økter (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Ingen lagrede feilsøkingslogger</string>
-    <string name="settings_support_stored_logs_delete_title">Slette lagrede logger?</string>
-    <string name="settings_support_stored_logs_delete_msg">Alle %1$d lagrede feilsøkingslogg-økter vil bli slettet.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Lagrede feilsøkingslogger slettet</string>
-    <string name="label_bug_reports">Feilrapporter</string>
-    <string name="description_bug_reports">Automatisk feil og krasjrapportering.</string>
     <string name="label_add_device">Legg til enhet</string>
-    <string name="label_just_a_moment_please">Bare et øyeblikk.</string>
     <string name="label_notification_channel_status">Status</string>
     <string name="label_notification_channel_setup">Oppsett kreves</string>
     <string name="monitor_notification_starting">Starter opp…</string>
     <string name="action_set">Sett</string>
     <string name="action_cancel">Avbryt</string>
-    <string name="label_invalid_input">Ugyldig inndata</string>
     <string name="action_reset">Tilbakestill</string>
     <string name="label_no_connected_devices">Ingen enheter tilkoblet</string>
-    <string name="label_status_idle">Inaktiv</string>
-    <string name="label_status_adjusting_volumes">Justerer volumer</string>
-    <string name="label_premium_version">Premiumversjon</string>
     <string name="general_upgrade_action">Oppgrader</string>
     <string name="common_upgrade_required_label">Oppgradering kreves</string>
-    <string name="label_premium_version_required">Premiumversjon krevet</string>
-    <string name="description_intro_purpose">Denne appen lar din Android-enhet huske volumet av forskjellige Bluetooth enheter.</string>
-    <string name="upgrade_benefit_unlimited_devices">Ubegrenset antall enhetsprofiler</string>
-    <string name="upgrade_benefit_connection_actions">Autoavspilling, appstart og tilkoblingsvarsler</string>
-    <string name="upgrade_benefit_theme_customization">Tilpasning av tema, stil og farge</string>
-    <string name="upgrade_benefit_power_controls">Volumlås og hastighetsbegrensning</string>
-    <string name="upgrade_benefit_support">Støtt uavhengig utvikling</string>
     <string name="upgrade_benefit_equalizer">• Equalizer per enhet (for musikkapper med støtte for systemequalizer)</string>
-    <string name="description_intro_tap_the_button">Start ved å legge til din første enhet.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth er deaktivert.</string>
     <string name="title_bluetooth_is_off">Bluetooth er av</string>
     <string name="action_enable_bluetooth">Aktiver Bluetooth</string>
     <string name="title_bluetooth_permission_required">Bluetooth-tillatelse kreves</string>
     <string name="description_bluetooth_permission_required">Denne appen trenger Bluetooth-tillatelse for å administrere enhetsvolumet ditt.</string>
     <string name="action_grant_permission">Gi tillatelse</string>
-    <string name="label_status_listening_for_changes">Lytter etter volumendringer</string>
     <string name="action_exit">Avslutt</string>
-    <string name="action_start">Start</string>
-    <string name="label_welcome">Velkommen</string>
-    <string name="description_intro_contact">Ikke nøl med å kontakte meg hvis du har noen spørsmål eller en idé om en ny funksjon.</string>
-    <string name="label_translation">Oversetting</string>
-    <string name="description_help_translate">Hjelp meg med å gjøre denne appen tilgjengelig på andre språk.</string>
     <string name="label_device_speaker">Enhetshøyttaler</string>
-    <string name="label_keyevent_playpause">Spill-Pause</string>
-    <string name="label_keyevent_play">Spill</string>
-    <string name="label_keyevent_next">Neste</string>
-    <string name="label_install_id">Installerings ID</string>
     <string name="message_copied_to_clipboard">Kopiert til utklippstavlen</string>
-    <string name="label_thanks">Takk</string>
-    <string name="label_licenses">Lisenser</string>
-    <string name="description_ring_volume_additional_permission">Tilleggstillatelser er nødvendige for å endre ringevolumet.</string>
-    <string name="label_missing_permissions">Mangler tillatelser</string>
-    <string name="action_grant">Gi</string>
-    <string name="label_advanced">Avansert</string>
-    <string name="label_exclude_health">Ekskluder helseprofiler</string>
-    <string name="description_exclude_health">Noen Android enheter henger seg opp når de ser etter \'Helse Enhet\' Bluetooth profiler (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Utelat GATT server profiler</string>
-    <string name="label_exclude_gatt">Utelat GATT profiler</string>
-    <string name="description_exclude_gattserver">Ikke spør etter Bluetooth-profiler av typen \'Generisk Attributt\' (GATT) server.</string>
-    <string name="description_exclude_gatt">Ikke spør etter Bluetooth-profiler av typen \'Generisk Attributt\' (GATT) klient.</string>
-    <string name="description_waiting_for_devicex">Venter på %s for å fullføre tilkoblingen</string>
-    <string name="action_undo">Angre</string>
-    <string name="action_show">Vis</string>
     <string name="action_dismiss">Avvis</string>
-    <string name="action_fix">Reparer</string>
-    <string name="battery_optimizations_issue_description">Batterioptimalisering er aktivert for denne appen og kan forhindre at den mottar Bluetooth-hendelser. Vurder å deaktivere optimaliseringer hvis du opplever problemer.</string>
     <string name="label_bluetooth_settings">Bluetooth-innstillinger</string>
-    <string name="android10_applaunch_issue_description">Android 10 begrenser hvordan apper kan åpnes fra bakgrunnen. For å tillate åpning av apper når en Bluetooth-enhet kobles til, gir du tillatelsen \&quot;Ligge over andre apper\&quot; (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Kildekode</string>
-    <string name="android13_notification_permission_description">Gi denne appen tillatelse til å sende varsler. Dette gjør det mulig å vise et varsel når denne appen er aktiv og volumjusteringer gjøres.</string>
-    <string name="privacy_policy_label">Personvernregler</string>
     <string name="managed_devices_empty_message">Ingen Bluetooth-enheter konfigurert.\nTrykk på +-knappen for å legge til din første enhet.</string>
     <string name="label_pro_feature">Premiumfunksjon</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">Anmeldelse</string>
     <string name="review_app_dismiss_action">Kanskje senere</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Kjøp avbrutt</string>
-    <string name="error_iap_unavailable_message">Kjøp i appen er ikke tilgjengelig</string>
-    <string name="error_generic_message">En feil oppstod. Vennligst prøv igjen.</string>
-    <string name="error_iap_owned_message">Du eier allerede denne varen</string>
     <string name="label_no_devices_title">Ingen enheter</string>
     <string name="bluemusic_mascot_description">App-ikon</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Velg apper</string>
     <string name="devices_app_selection_search_hint">Søk etter apper…</string>
-    <string name="devices_app_selection_currently_selected">Valgt for øyeblikket</string>
     <string name="devices_app_selection_selected_count">%d apper valgt</string>
     <string name="general_navigate_back_action">Naviger tilbake</string>
     <string name="general_reset_action">Tilbakestill</string>
     <string name="general_clear_action">Tøm</string>
-    <string name="general_save_action">Lagre</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Lås</string>
     <string name="devices_indicator_awake">Våken</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">Begrens</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Forsterkning</string>
-    <string name="devices_indicator_launch">Start</string>
     <string name="devices_indicator_home">Hjem</string>
     <string name="devices_indicator_dnd">IF</string>
     <string name="devices_indicator_alert">Varsel</string>

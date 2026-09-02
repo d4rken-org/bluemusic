@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">在此更新过程中，某些设备设置可能已被重置。请检查您的设备配置。</string>
     <string name="onboarding_rewrite_action">继续</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">没有找到未管理的设备</string>
     <string name="discover_all_devices_managed_msg">你所有配对的设备都已管理！需要新的吗？</string>
     <string name="discover_pair_new_device_action">配对新设备</string>
     <string name="discover_device_speaker_desc">此手机自己的扬声器。当音频切换回手机时（例如蓝牙设备断开连接后），将应用其音量。</string>
     <!-- Devices -->
     <string name="devices_device_config_label">设备配置</string>
-    <string name="devices_device_config_section_general_label">常规</string>
     <string name="devices_device_config_remove_device_label">忘记设备</string>
-    <string name="devices_device_config_remove_device_desc">从此应用中忘记设备并删除其配置。这不会取消配对设备。</string>
     <string name="devices_device_config_remove_device_action">忘记</string>
     <string name="devices_device_config_remove_device_confirmation">从管理设备中忘记 %s？</string>
-    <string name="devices_device_config_rename_device_label">重命名设备</string>
-    <string name="devices_device_config_rename_device_desc">在此应用内重命名此设备，如果可能的话，也在系统内重命名。</string>
     <string name="devices_device_config_rename_device_action">重命名</string>
     <string name="devices_device_config_enabled_label">已启用</string>
     <string name="devices_device_config_enabled_desc">连接此设备时作出反应</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">自动播放命令</string>
     <string name="devices_device_config_autoplay_keycodes_order">命令序列</string>
     <string name="devices_device_config_autoplay_keycodes_label">命令</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">配置要发送的命令及其顺序</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">未配置命令</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">添加命令</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">最多 %1$d 条命令</string>
@@ -120,7 +114,6 @@
     <string name="cd_autoplay_keycode_move_up">上移</string>
     <string name="cd_autoplay_keycode_move_down">下移</string>
     <string name="cd_autoplay_keycode_remove">删除</string>
-    <string name="devices_device_config_section_volumes_label">音量</string>
     <string name="devices_device_config_section_volume_label">音量</string>
     <string name="devices_device_config_alarm_volume_label">闹钟音量</string>
     <string name="devices_device_config_alarm_volume_desc">一些闹钟应用使用媒体音量。</string>
@@ -154,8 +147,6 @@
     <string name="devices_audio_stream_ring_label">铃声</string>
     <string name="devices_audio_stream_notification_label">通知</string>
     <string name="devices_audio_stream_alarm_label">闹钟</string>
-    <string name="devices_neverseen_label">设备未曾连接</string>
-    <string name="devices_state_connected_label">设备已连接</string>
     <string name="devices_last_connected_label">最后连接：%s</string>
     <string name="devices_currently_connected_label">当前已连接</string>
     <string name="devices_device_disabled_label">设备已禁用</string>
@@ -190,10 +181,7 @@
     <string name="devices_settings_desc">影响所有管理设备的设置。</string>
     <string name="label_app_enabled">应用已启用</string>
     <string name="description_app_enabled">切换应用对音量和蓝牙事件的反应能力。</string>
-    <string name="label_visible_volume_adjustments">可见调整</string>
-    <string name="description_visible_volume_adjustments">此应用进行调整时显示系统音量窗口。</string>
     <string name="label_volume_listener">监听变化</string>
-    <string name="description_volume_listener">设备连接时保持活动状态，并保存非此应用引起的音量变化。</string>
     <string name="label_boot_restore">开机恢复</string>
     <string name="description_boot_restore">开机/重启后如果蓝牙设备已连接，则恢复音量。</string>
     <!-- Settings/Support-->
@@ -203,21 +191,11 @@
     <string name="settings_support_wiki_description">学习如何有效使用 BVM</string>
     <string name="settings_support_issue_tracker_description">用于错误报告和功能请求的公开问题跟踪器。</string>
     <string name="settings_support_issue_tracker_label">问题跟踪器</string>
-    <string name="settings_support_debuglog_label">调试日志</string>
     <string name="settings_support_debuglog_desc">将应用的所有操作记录到可分享的文本文件中。</string>
-    <string name="settings_support_debuglog_recording_desc">正在记录调试信息。点击停止记录。</string>
-    <string name="settings_support_debuglog_path">日志路径：%1$s</string>
     <string name="settings_support_debuglog_short_recording_title">录制时间很短</string>
     <string name="settings_support_debuglog_short_recording_msg">这次录制非常短。调试日志是录制，而不是快照 — 在录制活跃时重现问题，日志才能有用。</string>
     <string name="settings_support_debuglog_short_recording_continue">继续录制</string>
     <string name="settings_support_debuglog_short_recording_stop">仍然停止</string>
-    <string name="settings_support_debuglog_folder_label">调试日志文件夹</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="other">%1$d 个会话使用 %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">没有存储的调试日志</string>
-    <string name="settings_support_debuglog_folder_delete_title">删除所有调试日志？</string>
-    <string name="settings_support_debuglog_folder_delete_msg">这将永久删除所有已存储的调试日志会话。</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">一个闲逛和提问的地方。</string>
     <!-- Settings/Acks-->
@@ -226,16 +204,12 @@
     <string name="settings_acks_translation_header">翻译</string>
     <string name="settings_acks_translators_title">翻译者</string>
     <string name="settings_acks_translators_people">用户一;用户二(optional@email.com)</string>
-    <string name="settings_acks_translate_title">翻译 BVM</string>
-    <string name="settings_acks_translate_desc">帮助将 BVM 翻译成您的语言</string>
     <string name="settings_acks_thanks_header">感谢</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">支持开源项目的翻译</string>
     <string name="settings_licenses_label">许可证</string>
     <string name="settings_translation_label">翻译</string>
     <string name="settings_translation_desc">帮助将应用翻译成你喜欢的语言</string>
-    <string name="settings_sponsor_development_title">赞助开发</string>
-    <string name="settings_sponsor_development_summary">成为赞助者，使持续开发成为可能。</string>
     <string name="settings_privacy_policy_label">隐私政策</string>
     <string name="settings_privacy_policy_desc">负责任地处理数据。</string>
     <string name="changelog_label">更新日志</string>
@@ -257,10 +231,8 @@
     <string name="backup_restore_success_restore">恢复完成 — 已恢复 %1$d 台设备，跳过 %2$d 台。</string>
     <string name="backup_restore_version_warning">此备份是使用版本 %1$s 创建的。您当前运行的是 %2$s。部分设置可能无法正确恢复。</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">调试通知</string>
     <string name="debug_log_consent_title">调试日志</string>
     <string name="debug_log_consent_explanation">此功能将应用的所有操作记录到可分享的文件中。生成的文件包含敏感信息（例如文件名和安装的应用）。仅与信任的方分享（例如正在解决问题的开发人员）。</string>
-    <string name="debug_log_recording_progress">正在记录调试日志</string>
     <string name="debug_log_record_action">记录</string>
     <string name="debug_log_stop_action">停止记录</string>
     <string name="debug_log_screen_title">调试日志记录器</string>
@@ -274,7 +246,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">丢弃</string>
     <string name="debug_log_screen_keep_action">保留</string>
-    <string name="debug_log_compressing_label">压缩中…</string>
     <string name="debug_log_file_label">已记录的日志文件</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">日志已发送？</string>
@@ -302,7 +273,6 @@
     <string name="contact_description_question_hint">详细描述您的问题。</string>
     <string name="contact_category_section_label">类别</string>
     <string name="contact_debug_log_label">调试日志</string>
-    <string name="contact_debug_log_select_hint">选择要附加的调试日志</string>
     <string name="contact_debug_log_picker_hint">附加调试日志以帮助更快地诊断问题。</string>
     <string name="contact_debug_log_picker_empty">没有可用的调试日志。请先录制一个。</string>
     <string name="contact_expected_behavior_label">预期行为</string>
@@ -315,82 +285,32 @@
     <string name="contact_welcome_msg">我亲自阅读每条消息并尽力回复，但由于我是一个人在做这件事，可能需要一点时间。感谢您的耐心。</string>
     <string name="contact_footer_msg">您的消息将通过电子邮件发送。设备和设置信息会自动附加。</string>
     <string name="contact_no_email_app_msg">此设备上未找到电子邮件应用。</string>
-    <string name="contact_attachment_missing_msg">调试日志文件不再存在</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">已存储的调试日志</string>
     <string name="settings_support_stored_logs_desc">%1$d 个会话 (%2$s)</string>
     <string name="settings_support_stored_logs_empty">没有已存储的调试日志</string>
-    <string name="settings_support_stored_logs_delete_title">删除存储的日志？</string>
-    <string name="settings_support_stored_logs_delete_msg">这将删除全部 %1$d 个已存储的调试日志会话。</string>
-    <string name="settings_support_stored_logs_deleted_msg">已存储的调试日志已删除</string>
-    <string name="label_bug_reports">错误报告</string>
-    <string name="description_bug_reports">自动发送缺陷和崩溃报告。</string>
     <string name="label_add_device">添加设备</string>
-    <string name="label_just_a_moment_please">请稍等一下。</string>
     <string name="label_notification_channel_status">状态</string>
     <string name="label_notification_channel_setup">需要设置</string>
     <string name="monitor_notification_starting">正在启动…</string>
     <string name="action_set">应用</string>
     <string name="action_cancel">取消</string>
-    <string name="label_invalid_input">输入的内容无效</string>
     <string name="action_reset">重置</string>
     <string name="label_no_connected_devices">没有设备连接</string>
-    <string name="label_status_idle">空闲</string>
-    <string name="label_status_adjusting_volumes">调整音量</string>
-    <string name="label_premium_version">高级版本</string>
     <string name="general_upgrade_action">升级</string>
     <string name="common_upgrade_required_label">需要升级</string>
-    <string name="label_premium_version_required">需要高级版本</string>
-    <string name="description_intro_purpose">此应用可让您的Android设备，记住来自不同蓝牙设备的音量。</string>
-    <string name="upgrade_benefit_unlimited_devices">无限设备配置</string>
-    <string name="upgrade_benefit_connection_actions">自动播放、启动应用及连接提醒</string>
-    <string name="upgrade_benefit_theme_customization">主题、样式和颜色自定义</string>
-    <string name="upgrade_benefit_power_controls">音量锁定和速率限制</string>
-    <string name="upgrade_benefit_support">支持独立开发</string>
     <string name="upgrade_benefit_equalizer">• 独立设备均衡器（适用于支持系统均衡器的音乐应用）</string>
-    <string name="description_intro_tap_the_button">首先添加您的第一个设备。</string>
     <string name="description_bluetooth_is_disabled">蓝牙已禁用。</string>
     <string name="title_bluetooth_is_off">蓝牙已关闭</string>
     <string name="action_enable_bluetooth">启用蓝牙</string>
     <string name="title_bluetooth_permission_required">需要蓝牙权限</string>
     <string name="description_bluetooth_permission_required">此应用需要蓝牙权限来管理您的设备音量。</string>
     <string name="action_grant_permission">授予权限</string>
-    <string name="label_status_listening_for_changes">侦听音量变化</string>
     <string name="action_exit">退出</string>
-    <string name="action_start">启动</string>
-    <string name="label_welcome">欢迎</string>
-    <string name="description_intro_contact">如果您对新功能有任何疑问或想法，请随时与我联系。</string>
-    <string name="label_translation">翻译</string>
-    <string name="description_help_translate">帮助我翻译此应用为其他语言。</string>
     <string name="label_device_speaker">设备扬声器</string>
-    <string name="label_keyevent_playpause">播放-暂停</string>
-    <string name="label_keyevent_play">播放</string>
-    <string name="label_keyevent_next">下一个</string>
-    <string name="label_install_id">安装 ID</string>
     <string name="message_copied_to_clipboard">已复制到剪切板</string>
-    <string name="label_thanks">致谢</string>
-    <string name="label_licenses">许可证</string>
-    <string name="description_ring_volume_additional_permission">需要额外的权限才能更改铃声音量。</string>
-    <string name="label_missing_permissions">缺少权限</string>
-    <string name="action_grant">授予</string>
-    <string name="label_advanced">高级</string>
-    <string name="label_exclude_health">排除安全的配置文件</string>
-    <string name="description_exclude_health">一些 Android 设备在查找“Health Device”蓝牙配置文件时挂起 （HDP，0×1400）。</string>
-    <string name="label_exclude_gattserver">排除 GATT 服务器配置文件</string>
-    <string name="label_exclude_gatt">排除 GATT 配置文件</string>
-    <string name="description_exclude_gattserver">不要查询“通用属性”（GATT）服务器类型的蓝牙配置文件。</string>
-    <string name="description_exclude_gatt">不要查询“通用属性”（GATT）客户端类型的蓝牙配置文件。</string>
-    <string name="description_waiting_for_devicex">等待 %s 完成连接</string>
-    <string name="action_undo">撤销</string>
-    <string name="action_show">显示</string>
     <string name="action_dismiss">忽略</string>
-    <string name="action_fix">修复</string>
-    <string name="battery_optimizations_issue_description">为此应用启用了电池优化，可能会阻止其接收蓝牙事件。 如果遇到问题，请考虑禁用对此程序的电池优化。</string>
     <string name="label_bluetooth_settings">蓝牙设置</string>
-    <string name="android10_applaunch_issue_description">Android 10 限制如何从后台启动应用。要允许在蓝牙设备连接时打开应用，请授予\&quot;在其他应用上显示\&quot;的权限（SYSTEM_ALERT_WINDOW）。</string>
-    <string name="label_opensource">源代码</string>
-    <string name="android13_notification_permission_description">授予此应用发送通知的权限。这使得在此应用活动和调整音量时能够显示通知。</string>
-    <string name="privacy_policy_label">隐私政策</string>
     <string name="managed_devices_empty_message">没有配置蓝牙设备。\n点击 + 按钮添加您的第一个设备。</string>
     <string name="label_pro_feature">高级功能</string>
     <plurals name="discover_device_limit_banner">
@@ -420,21 +340,15 @@
     <string name="review_app_review_action">评论</string>
     <string name="review_app_dismiss_action">稍后再说</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">购买已取消</string>
-    <string name="error_iap_unavailable_message">应用内购买不可用</string>
-    <string name="error_generic_message">发生错误。请重试。</string>
-    <string name="error_iap_owned_message">您已拥有此项目</string>
     <string name="label_no_devices_title">没有设备</string>
     <string name="bluemusic_mascot_description">应用图标</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">选择应用</string>
     <string name="devices_app_selection_search_hint">搜索应用…</string>
-    <string name="devices_app_selection_currently_selected">当前已选择</string>
     <string name="devices_app_selection_selected_count">已选择 %d 个应用</string>
     <string name="general_navigate_back_action">返回</string>
     <string name="general_reset_action">重置</string>
     <string name="general_clear_action">清除</string>
-    <string name="general_save_action">保存</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">锁定</string>
     <string name="devices_indicator_awake">唤醒</string>
@@ -444,7 +358,6 @@
     <string name="devices_indicator_limit">限制</string>
     <string name="devices_indicator_eq">均衡器</string>
     <string name="devices_indicator_boost">增强</string>
-    <string name="devices_indicator_launch">启动</string>
     <string name="devices_indicator_home">主页</string>
     <string name="devices_indicator_dnd">勿扰</string>
     <string name="devices_indicator_alert">提醒</string>

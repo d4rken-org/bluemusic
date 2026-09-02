@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">BVM Pro szükséges</string>
     <string name="upgrade_prompt_title">Frissítés BVM Pro-ra</string>
     <string name="upgrade_prompt_body">A Bluetooth Volume Manager Pro jobb eredményeket, több funkciót és lehetőséget kínál a haladó felhasználóknak.</string>
-    <string name="upgrade_prompt_upgrade_action">Frissítés</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">Frissítés a %1$s-re</string>
     <string name="upgrade_screen_preamble">A Bluetooth Volume Manager nem tartalmaz hirdetéseket, és nem értékesít felhasználói adatokat. A munkámat te finanszírozód ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">A Bluetooth Volume Manager nem tud csatlakozni a Google Playhez. Telepítve és naprакész a Google Play? Be vagy jelentkezve a Google-fiókodba? Próbáld meg törölni a Google Play alkalmazás gyorsítótárát és indítsd újra az eszközt.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Nem sikerült megnyitni a Google Play-t. Lehetséges, hogy az eszközön hiányzik, letiltott vagy korlátozott.</string>
-    <string name="upgrades_no_purchases_found_check_account">Nem található vásárlás. A megfelelő fiókot használja?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">Frissítési lehetőségek</string>
     <string name="upgrade_screen_offers_body">Mindkét lehetőség ugyanazokat a Pro funkciókat oldja fel – válaszd azt, amelyik jobban passzol hozzád.</string>

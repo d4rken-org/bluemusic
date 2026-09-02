@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">BVM Pro талап кылат</string>
     <string name="upgrade_prompt_title">BVM Pro га өтүү</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro күчтүү пайдалануучулар үчүн жакшыраак натыйжаларды, көбүрөк функцияларды жана мүмкүнчүлүктөрдү сунат.</string>
-    <string name="upgrade_prompt_upgrade_action">Жаңыртуу</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">%1$s сунуштуу жогорулоо</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager жарнамаларсыз жана пайдалануучулардын мәлиматын сатпайт. Менин жумушум сиздин қаржыланат ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager Google Play га байлана албайт. Google Play орнотулган жана жаңыртылганбы? Google аккаунтыңызга киргенбе? Google Play кэшин тазалап, түзмөгүңүздү кайра чүмүрлөө көрүңүз.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Google Play ачуу мүмкүн болбоду. Бул түзмөктө жок, өчүк же чектелген болушу мүмкүн.</string>
-    <string name="upgrades_no_purchases_found_check_account">Эч кандай сатып алуулар табылган жок. Туура каттоо эсебин колдонуп жатасызбы?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">Жогорулоо опциялары</string>
     <string name="upgrade_screen_offers_body">Эки опция тең бирдей Pro функцияларын ачат — сизге ылайык болгонду тандаңыз.</string>

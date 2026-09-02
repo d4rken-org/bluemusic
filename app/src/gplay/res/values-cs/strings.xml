@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">Vyžaduje BVM Pro</string>
     <string name="upgrade_prompt_title">Upgradovat na BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro nabízí lepší výsledky, více funkcí a možností pro zkušené uživatele.</string>
-    <string name="upgrade_prompt_upgrade_action">Upgradovat</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">Upgradovat na %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager neobsahuje žádné reklamy a neprodává data uživatelů. Moje práce je financována vámi ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager se nemůže připojit ke Google Play. Je Google Play nainstalován a aktuální? Jste přihlášeni ke svému účtu Google? Zkuste vymazat mezipaměť aplikace Google Play a restartovat zařízení.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Nebylo možné otevřít Google Play. Aplikace na tomto zařízení může být chybějící, zakázaná nebo omezená.</string>
-    <string name="upgrades_no_purchases_found_check_account">Nebyly nalezeny žádné nákupy. Používáte správný účet?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">Možnosti upgradu</string>
     <string name="upgrade_screen_offers_body">Obě možnosti odemykají stejné funkce Pro — vyberte si, která vám vyhovuje.</string>

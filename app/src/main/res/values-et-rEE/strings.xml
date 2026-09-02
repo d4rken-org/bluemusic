@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Mõned seadme seaded võivad selle värskenduse käigus olla lähtestatud. Palun kontrolli oma seadmete konfiguratsioone.</string>
     <string name="onboarding_rewrite_action">Jätka</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Haldamata seadmeid ei leitud</string>
     <string name="discover_all_devices_managed_msg">Kõik sinu seotud seadmed on hallatud! Vajad uut?</string>
     <string name="discover_pair_new_device_action">Seo uus seade</string>
     <string name="discover_device_speaker_desc">Telefoni enda kõlar. Selle helitugevused rakendatakse, kui heli lülitub tagasi telefoni, nt pärast Bluetooth-seadme lahtiühendamist.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Seadme seaded</string>
-    <string name="devices_device_config_section_general_label">Üldine</string>
     <string name="devices_device_config_remove_device_label">Unusta seade</string>
-    <string name="devices_device_config_remove_device_desc">Unustab seadme sellest rakendusest ja kustutab selle seaded. See ei tühista seadme sidumist.</string>
     <string name="devices_device_config_remove_device_action">Unusta</string>
     <string name="devices_device_config_remove_device_confirmation">Unustada %s hallatud seadmetest?</string>
-    <string name="devices_device_config_rename_device_label">Nimeta seade ümber</string>
-    <string name="devices_device_config_rename_device_desc">Nimeta seade selles rakenduses ümber, ja võimalusel ka süsteemis.</string>
     <string name="devices_device_config_rename_device_action">Nimeta ümber</string>
     <string name="devices_device_config_enabled_label">Lubatud</string>
     <string name="devices_device_config_enabled_desc">Reageeri sellele seadmele ühendamisel</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Automaatesitus käsud</string>
     <string name="devices_device_config_autoplay_keycodes_order">Käskude järjekord</string>
     <string name="devices_device_config_autoplay_keycodes_label">Käsud</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Seadista, milliseid käske saata ja mis järjekorras</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Käske pole seadistatud</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Lisa käsk</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Maksimaalselt %1$d käsku</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Liiguta üles</string>
     <string name="cd_autoplay_keycode_move_down">Liiguta alla</string>
     <string name="cd_autoplay_keycode_remove">Eemalda</string>
-    <string name="devices_device_config_section_volumes_label">Helid</string>
     <string name="devices_device_config_section_volume_label">Helitugevus</string>
     <string name="devices_device_config_alarm_volume_label">Häire helitugevus</string>
     <string name="devices_device_config_alarm_volume_desc">Osa häirerakendustest kasutavad hoopis muusika heli.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">Helin</string>
     <string name="devices_audio_stream_notification_label">Teavitus</string>
     <string name="devices_audio_stream_alarm_label">Häire</string>
-    <string name="devices_neverseen_label">Esmakordne</string>
-    <string name="devices_state_connected_label">Ühendatud</string>
     <string name="devices_last_connected_label">Viimati ühendatud: %s</string>
     <string name="devices_currently_connected_label">Praegu ühendatud</string>
     <string name="devices_device_disabled_label">Seade keelatud</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Seaded, mis mõjutavad kõiki hallatud seadmeid.</string>
     <string name="label_app_enabled">Rakendus lubatud</string>
     <string name="description_app_enabled">Lubab rakendustel reageerida heli ja sinihambaga seotud sündmustele.</string>
-    <string name="label_visible_volume_adjustments">Muudatuste nägemine</string>
-    <string name="description_visible_volume_adjustments">Kuva süsteemi heli aken hetkel, mil rakendus teeb muudatusi.</string>
     <string name="label_volume_listener">Jälgi muudatusi</string>
-    <string name="description_volume_listener">Olge tähelepanelik, kui seadet ühendatakse ja salvestatakse heli muudatusi, mis ei pärine praegusest rakendusest.</string>
     <string name="label_boot_restore">Taasta käivitumisel</string>
     <string name="description_boot_restore">Taasta heli pärast käivitumist/taaskäivitumist, kui sinihammast toetavad seadet ühendatakse.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">Õpi BVM-i tõhusalt kasutama</string>
     <string name="settings_support_issue_tracker_description">Avalik probleemijälgija veateadete ja funktsioonipäringute jaoks.</string>
     <string name="settings_support_issue_tracker_label">Probleemijälgija</string>
-    <string name="settings_support_debuglog_label">Silumislogi</string>
     <string name="settings_support_debuglog_desc">Salvesta kõik, mida rakendus teeb, tekstifaili, mida saad jagada.</string>
-    <string name="settings_support_debuglog_recording_desc">Salvestatakse silumisteavet. Puuduta salvestamise peatamiseks.</string>
-    <string name="settings_support_debuglog_path">Logi asukoht: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Väga lühike salvestus</string>
     <string name="settings_support_debuglog_short_recording_msg">See oli väga lühike salvestus. Silumislogid on salvestused, mitte hetktõmmised — reprodutseeri probleem salvestamise ajal, et logi oleks kasulik.</string>
     <string name="settings_support_debuglog_short_recording_continue">Jätka salvestamist</string>
     <string name="settings_support_debuglog_short_recording_stop">Peata ikkagi</string>
-    <string name="settings_support_debuglog_folder_label">Silumislogi kaust</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d seanss, kasutab %2$s</item>
-        <item quantity="other">%1$d seanssi, kasutab %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Silumisloge pole salvestatud</string>
-    <string name="settings_support_debuglog_folder_delete_title">Kustuta kõik silumislogid?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">See kustutab jäädavalt kõik salvestatud silumislogi seansid.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Koht, kus saad vestelda ja küsimusi esitada.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Tõlge</string>
     <string name="settings_acks_translators_title">Tõlkijad</string>
     <string name="settings_acks_translators_people">Olav Mägi(olav.magi@gmail.com)</string>
-    <string name="settings_acks_translate_title">Tõlgi BVM-i</string>
-    <string name="settings_acks_translate_desc">Aita tõlkida BVM-i oma keelde</string>
     <string name="settings_acks_thanks_header">Tänud</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Avatud lähtekoodiga projektide tõlkimise toetamise eest</string>
     <string name="settings_licenses_label">Litsentsid</string>
     <string name="settings_translation_label">Tõlge</string>
     <string name="settings_translation_desc">Aita rakendust oma lemmikkeelde tõlkida</string>
-    <string name="settings_sponsor_development_title">Toeta arendust</string>
-    <string name="settings_sponsor_development_summary">Saa patrooniks ja tee jätkuv arendus võimalikuks.</string>
     <string name="settings_privacy_policy_label">Privaatsuspoliitika</string>
     <string name="settings_privacy_policy_desc">Andmete vastutustundlik käitlemine.</string>
     <string name="changelog_label">Muudatuste logi</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Taastamine lõpetatud — %1$d seadet taastatud, %2$d vahele jäetud.</string>
     <string name="backup_restore_version_warning">See varukoopia loodi versiooniga %1$s. Sul on käimas %2$s. Mõned sätted ei pruugi õigesti taastuda.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Silumisteavitused</string>
     <string name="debug_log_consent_title">Silumislogi</string>
     <string name="debug_log_consent_explanation">See funktsioon salvestab kõik, mida rakendus teeb, jagatavasse faili. Loodud fail sisaldab tundlikku teavet (nt failinimed ja installitud rakendused). Jaga seda ainult usaldusväärsetele isikutele (nt arendajale probleemi lahendamisel).</string>
-    <string name="debug_log_recording_progress">Silumislogi salvestamine</string>
     <string name="debug_log_record_action">Salvesta</string>
     <string name="debug_log_stop_action">Peata salvestamine</string>
     <string name="debug_log_screen_title">Silumislogi salvestaja</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Hülga</string>
     <string name="debug_log_screen_keep_action">Hoia alles</string>
-    <string name="debug_log_compressing_label">Tihendamine…</string>
     <string name="debug_log_file_label">Salvestatud logifail</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Logi saadetud?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Kirjelda oma küsimust üksikasjalikult.</string>
     <string name="contact_category_section_label">Kategooria</string>
     <string name="contact_debug_log_label">Silumislogi</string>
-    <string name="contact_debug_log_select_hint">Vali manustamiseks silumislogi</string>
     <string name="contact_debug_log_picker_hint">Lisa silumislogi, et aidata probleemi kiiremini diagnoosida.</string>
     <string name="contact_debug_log_picker_empty">Silumisloge pole saadaval. Salvesta esmalt üks.</string>
     <string name="contact_expected_behavior_label">Oodatav käitumine</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">Loen iga sõnumi ise läbi ja teen kõik, et vastata, kuid kuna töötan üksi, võib see veidi aega võtta. Tänan kannatlikkuse eest.</string>
     <string name="contact_footer_msg">Sinu sõnum saadetakse e-kirjaga. Seadme ja seadistuse teave lisatakse automaatselt.</string>
     <string name="contact_no_email_app_msg">Sellel seadmel ei leitud meilirakendust.</string>
-    <string name="contact_attachment_missing_msg">Silumislogi fail pole enam olemas</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Salvestatud silumislogid</string>
     <string name="settings_support_stored_logs_desc">%1$d seanssi (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Salvestatud silumisloge pole</string>
-    <string name="settings_support_stored_logs_delete_title">Kustuta salvestatud logid?</string>
-    <string name="settings_support_stored_logs_delete_msg">See kustutab kõik %1$d salvestatud silumislogi seanssi.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Salvestatud silumislogid kustutatud</string>
-    <string name="label_bug_reports">Veateatised</string>
-    <string name="description_bug_reports">Veast ja kokkujooksmisest automaatselt teatamine.</string>
     <string name="label_add_device">Lisa seade</string>
-    <string name="label_just_a_moment_please">Palun oodake üks hetk.</string>
     <string name="label_notification_channel_status">Olek</string>
     <string name="label_notification_channel_setup">Seadistamine vajalik</string>
     <string name="monitor_notification_starting">Käivitamine…</string>
     <string name="action_set">Määra</string>
     <string name="action_cancel">Tühista</string>
-    <string name="label_invalid_input">Vigane sisend</string>
     <string name="action_reset">Lähtesta</string>
     <string name="label_no_connected_devices">Ühtegi seadet pole ühendatud</string>
-    <string name="label_status_idle">Ootel</string>
-    <string name="label_status_adjusting_volumes">Helide reguleerimine</string>
-    <string name="label_premium_version">Tasuline versioon</string>
     <string name="general_upgrade_action">Täienda</string>
     <string name="common_upgrade_required_label">Uuendamine nõutav</string>
-    <string name="label_premium_version_required">Vaja on tasulist versiooni</string>
-    <string name="description_intro_purpose">See rakendus võimaldab teie Androidi seadmel meelde jätta erinevaid sinihammast toetavate seadmete heli.</string>
-    <string name="upgrade_benefit_unlimited_devices">Piiramatu arv seadmeprofiile</string>
-    <string name="upgrade_benefit_connection_actions">Automaatesitus, rakenduse käivitus ja ühendusmärguanded</string>
-    <string name="upgrade_benefit_theme_customization">Teema, stiili ja värvi kohandamine</string>
-    <string name="upgrade_benefit_power_controls">Helitugevuse lukk ja piiramise määr</string>
-    <string name="upgrade_benefit_support">Toeta iseseisvat arendust</string>
     <string name="upgrade_benefit_equalizer">• Seadmepõhine ekvalaiser (muusikarakendustele, mis toetavad süsteemi ekvalaiserit)</string>
-    <string name="description_intro_tap_the_button">Alustage lisades üks seade.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth on välja lülitatud.</string>
     <string name="title_bluetooth_is_off">Bluetooth on väljas</string>
     <string name="action_enable_bluetooth">Lülita Bluetooth sisse</string>
     <string name="title_bluetooth_permission_required">Bluetoothi luba on vajalik</string>
     <string name="description_bluetooth_permission_required">See rakendus vajab Bluetoothi luba, et hallata seadme helitugevust.</string>
     <string name="action_grant_permission">Anna luba</string>
-    <string name="label_status_listening_for_changes">Heli muudatuste ootel</string>
     <string name="action_exit">Välju</string>
-    <string name="action_start">Alusta</string>
-    <string name="label_welcome">Tere tulemast</string>
-    <string name="description_intro_contact">Küsimuste korral ja uute võimaluste soovitamiseks võtke kindlasti minuga ühendust.</string>
-    <string name="label_translation">Tõlge</string>
-    <string name="description_help_translate">Aita mul seda rakendust kasutada muus keeles.</string>
     <string name="label_device_speaker">Seadme kõlar</string>
-    <string name="label_keyevent_playpause">Esita-peata</string>
-    <string name="label_keyevent_play">Esita</string>
-    <string name="label_keyevent_next">Järgmine</string>
-    <string name="label_install_id">Paigaldamise ID</string>
     <string name="message_copied_to_clipboard">Kopeeritud lõikelauale</string>
-    <string name="label_thanks">Tänan</string>
-    <string name="label_licenses">Litsentsid</string>
-    <string name="description_ring_volume_additional_permission">Helina heli muutmine nõuab lisalubasid.</string>
-    <string name="label_missing_permissions">Puuduvad load</string>
-    <string name="action_grant">Luba</string>
-    <string name="label_advanced">Lisavalikud</string>
-    <string name="label_exclude_health">Eira tervise profiile</string>
-    <string name="description_exclude_health">Osa Android seadmetest jooksevad kokku „Tervise seadme„ sinihamba profiilide otsimisel (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Eira GATT-serveri profiilid</string>
-    <string name="label_exclude_gatt">Eira GATT-profiilid</string>
-    <string name="description_exclude_gattserver">Ära otsi „Generic Attribute\" (GATT) serveri sinihamba profiile.</string>
-    <string name="description_exclude_gatt">Ära otsi „Generic Attribute\" (GATT) sinihamba profilee.</string>
-    <string name="description_waiting_for_devicex">Oodatakse, millal saabub ühendus seadmega %s</string>
-    <string name="action_undo">Tühista</string>
-    <string name="action_show">Näita</string>
     <string name="action_dismiss">Loobu</string>
-    <string name="action_fix">Paranda</string>
-    <string name="battery_optimizations_issue_description">Sellele rakendusele kehtib aku optimeerimine, mis võib sel rakendusel ennetada sinihamba sündmuste vastuvõtmist. Probleemide ilmnemisel kaalu optimeerimise keelamist.</string>
     <string name="label_bluetooth_settings">Bluetoothi ​​sätted</string>
-    <string name="android10_applaunch_issue_description">Android 10 piirab rakenduste taustal käivitamist. Rakenduste avamiseks sinihambaga seadme ühendamisel anna nõusolek „Näita teiste rakenduste peal\" (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Lähtekood</string>
-    <string name="android13_notification_permission_description">Anna sellele rakendusele luba teavituste saatmiseks. See võimaldab kuvada teavituse, kui rakendus on aktiivne ja helitugevust reguleeritakse.</string>
-    <string name="privacy_policy_label">Privaatsuspoliitika</string>
     <string name="managed_devices_empty_message">Ühtegi Bluetooth-seadet pole seadistatud.\nPuuduta nuppu +, et lisada oma esimene seade.</string>
     <string name="label_pro_feature">Tasuline funktsioon</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">Arvustus</string>
     <string name="review_app_dismiss_action">Võib-olla hiljem</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Ost tühistatud</string>
-    <string name="error_iap_unavailable_message">Rakendusesisesed ostud pole saadaval</string>
-    <string name="error_generic_message">Tekkis viga. Proovi uuesti.</string>
-    <string name="error_iap_owned_message">See ese on sul juba olemas</string>
     <string name="label_no_devices_title">Seadmeid pole</string>
     <string name="bluemusic_mascot_description">Rakenduse ikoon</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Vali rakendused</string>
     <string name="devices_app_selection_search_hint">Otsi rakendusi…</string>
-    <string name="devices_app_selection_currently_selected">Hetkel valitud</string>
     <string name="devices_app_selection_selected_count">%d rakendust valitud</string>
     <string name="general_navigate_back_action">Navigeeri tagasi</string>
     <string name="general_reset_action">Lähtesta</string>
     <string name="general_clear_action">Tühjenda</string>
-    <string name="general_save_action">Salvesta</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Lukk</string>
     <string name="devices_indicator_awake">Ärkvel</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">Piira</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Võimendus</string>
-    <string name="devices_indicator_launch">Käivita</string>
     <string name="devices_indicator_home">Avakuva</string>
     <string name="devices_indicator_dnd">MS</string>
     <string name="devices_indicator_alert">Teavitus</string>

@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">Krefst BVM Pro</string>
     <string name="upgrade_prompt_title">Uppfæra í BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro býður upp á betri niðurstöður, fleiri eiginleika og valkosti fyrir öfluga notendur.</string>
-    <string name="upgrade_prompt_upgrade_action">Uppfæra</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">Uppfæra í %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager birtir engar auglýsingar og selur ekki notendagögn. Verk mitt er fjármagnaö af þér ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager getur ekki tengst Google Play. Er Google Play uppsett og uppfært? Ertu skráður inn á Google reikninginn? Prófaðu að hreinsa skyndiminnni Google Play forritsins og endurræsa tækið þit.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Gat ekki opnað Google Play. Það gæti verið að vantast, óvirkjað eða takmarkað á þessu tæki.</string>
-    <string name="upgrades_no_purchases_found_check_account">Engin kaup fundust. Ertu að nota réttan reikning?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">Uppfærslumöguleikar</string>
     <string name="upgrade_screen_offers_body">Báðir valkostir opna sömu Pro eiginleika — veldu þann sem hentar þér best.</string>

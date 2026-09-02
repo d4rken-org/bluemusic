@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Algumas configurações de dispositivos podem ter sido redefinidas durante esta atualização. Por favor, verifique suas configurações de dispositivos.</string>
     <string name="onboarding_rewrite_action">Continuar</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Nenhum dispositivo não gerenciado encontrado</string>
     <string name="discover_all_devices_managed_msg">Todos os seus dispositivos pareados já estão gerenciados! Precisa de um novo?</string>
     <string name="discover_pair_new_device_action">Parear novo dispositivo</string>
     <string name="discover_device_speaker_desc">O próprio alto-falante do telefone. Seus volumes são aplicados quando o áudio volta ao telefone, por ex. após seu dispositivo Bluetooth desconectar.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Configuração do dispositivo</string>
-    <string name="devices_device_config_section_general_label">Geral</string>
     <string name="devices_device_config_remove_device_label">Esquecer dispositivo</string>
-    <string name="devices_device_config_remove_device_desc">Remove o dispositivo deste app e exclui sua configuração. Isso não despareia o dispositivo.</string>
     <string name="devices_device_config_remove_device_action">Esquecer</string>
     <string name="devices_device_config_remove_device_confirmation">Esquecer %s dos dispositivos gerenciados?</string>
-    <string name="devices_device_config_rename_device_label">Renomear dispositivo</string>
-    <string name="devices_device_config_rename_device_desc">Renomeia este dispositivo no app e, se possível, no sistema.</string>
     <string name="devices_device_config_rename_device_action">Renomear</string>
     <string name="devices_device_config_enabled_label">Habilitado</string>
     <string name="devices_device_config_enabled_desc">Reagir a este dispositivo quando conectado</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Comandos de reprodução automática</string>
     <string name="devices_device_config_autoplay_keycodes_order">Sequência de comandos</string>
     <string name="devices_device_config_autoplay_keycodes_label">Comandos</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Configure quais comandos enviar e em que ordem</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Nenhum comando configurado</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Adicionar comando</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Máximo de %1$d comandos</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Mover para cima</string>
     <string name="cd_autoplay_keycode_move_down">Mover para baixo</string>
     <string name="cd_autoplay_keycode_remove">Remover</string>
-    <string name="devices_device_config_section_volumes_label">Volumes</string>
     <string name="devices_device_config_section_volume_label">Volume</string>
     <string name="devices_device_config_alarm_volume_label">Volume do alarme</string>
     <string name="devices_device_config_alarm_volume_desc">Em vez disso, alguns aplicativos de alarme usam o volume da música.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">Toque</string>
     <string name="devices_audio_stream_notification_label">Notificação</string>
     <string name="devices_audio_stream_alarm_label">Alarme</string>
-    <string name="devices_neverseen_label">Nunca visto</string>
-    <string name="devices_state_connected_label">Conectado</string>
     <string name="devices_last_connected_label">Última conexão: %s</string>
     <string name="devices_currently_connected_label">Conectado atualmente</string>
     <string name="devices_device_disabled_label">Dispositivo desabilitado</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Configurações que afetam todos os dispositivos gerenciados.</string>
     <string name="label_app_enabled">Aplicativo ativo</string>
     <string name="description_app_enabled">Ativa/desativa a capacidade do aplicativo para reagir as ocorrências de volume e Bluetooth.</string>
-    <string name="label_visible_volume_adjustments">Ajustes visíveis</string>
-    <string name="description_visible_volume_adjustments">Mostra a janela de volume do sistema enquanto este aplicativo faz ajustes.</string>
     <string name="label_volume_listener">Acompanhar as mudanças</string>
-    <string name="description_volume_listener">Mantenha-se ativo enquanto um dispositivo estiver conectado e salve as alterações de volume que não forem decorrente deste aplicativo.</string>
     <string name="label_boot_restore">Restaurar ao ligar</string>
     <string name="description_boot_restore">Restaura o volume após a inicialização/reinicialização caso um dispositivo Bluetooth esteja conectado.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">Aprenda como usar o BVM efetivamente</string>
     <string name="settings_support_issue_tracker_description">Um rastreador público de problemas para relatórios de bugs e solicitações de recursos.</string>
     <string name="settings_support_issue_tracker_label">Rastreador de problemas</string>
-    <string name="settings_support_debuglog_label">Log de debug</string>
     <string name="settings_support_debuglog_desc">Grava tudo que o app está fazendo em um arquivo de texto que você pode compartilhar.</string>
-    <string name="settings_support_debuglog_recording_desc">Gravando informações de debug atualmente. Toque para parar a gravação.</string>
-    <string name="settings_support_debuglog_path">Caminho do log: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Gravação muito curta</string>
     <string name="settings_support_debuglog_short_recording_msg">Foi uma gravação muito curta. Os logs de debug são gravações, não instantâneos — reproduza o problema enquanto a gravação está ativa para que o log seja útil.</string>
     <string name="settings_support_debuglog_short_recording_continue">Continuar gravando</string>
     <string name="settings_support_debuglog_short_recording_stop">Parar mesmo assim</string>
-    <string name="settings_support_debuglog_folder_label">Pasta de logs de debug</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d sessão usando %2$s</item>
-        <item quantity="other">%1$d sessões usando %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Nenhum log de debug armazenado</string>
-    <string name="settings_support_debuglog_folder_delete_title">Excluir todos os logs de debug?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Isso excluirá permanentemente todas as sessões de logs de debug armazenadas.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Um lugar para conversar e fazer perguntas.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Tradução</string>
     <string name="settings_acks_translators_title">Tradutores</string>
     <string name="settings_acks_translators_people">Natanaelrj(natanael.caetano@gmail.com)</string>
-    <string name="settings_acks_translate_title">Traduzir BVM</string>
-    <string name="settings_acks_translate_desc">Ajude a traduzir o BVM para seu idioma</string>
     <string name="settings_acks_thanks_header">Agradecimentos</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Por apoiar a tradução de projetos de código aberto</string>
     <string name="settings_licenses_label">Licenças</string>
     <string name="settings_translation_label">Tradução</string>
     <string name="settings_translation_desc">Ajude a traduzir o app para seu idioma favorito</string>
-    <string name="settings_sponsor_development_title">Patrocinar desenvolvimento</string>
-    <string name="settings_sponsor_development_summary">Torne-se um padrinho e torne possível o desenvolvimento contínuo.</string>
     <string name="settings_privacy_policy_label">Política de privacidade</string>
     <string name="settings_privacy_policy_desc">Tratamento responsável de dados.</string>
     <string name="changelog_label">Histórico de mudanças</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Restauração concluída — %1$d dispositivos restaurados, %2$d ignorados.</string>
     <string name="backup_restore_version_warning">Este backup foi criado com a versão %1$s. Você está usando a %2$s. Algumas configurações podem não ser restauradas corretamente.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Notificações de debug</string>
     <string name="debug_log_consent_title">Log de debug</string>
     <string name="debug_log_consent_explanation">Este recurso grava tudo que o app está fazendo em um arquivo compartilhável. O arquivo gerado contém informações sensíveis (ex: nomes de arquivos e apps instalados). Compartilhe apenas com partes confiáveis (ex: um desenvolvedor investigando um problema).</string>
-    <string name="debug_log_recording_progress">Gravando log de debug</string>
     <string name="debug_log_record_action">Gravar</string>
     <string name="debug_log_stop_action">Parar gravação</string>
     <string name="debug_log_screen_title">Gravador de Log de Debug</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Descartar</string>
     <string name="debug_log_screen_keep_action">Manter</string>
-    <string name="debug_log_compressing_label">Comprimindo…</string>
     <string name="debug_log_file_label">Arquivo de log gravado</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Log enviado?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Descreva sua pergunta em detalhes.</string>
     <string name="contact_category_section_label">Categoria</string>
     <string name="contact_debug_log_label">Log de debug</string>
-    <string name="contact_debug_log_select_hint">Selecione um log de debug para anexar</string>
     <string name="contact_debug_log_picker_hint">Anexe um log de debug para ajudar a diagnosticar o problema mais rapidamente.</string>
     <string name="contact_debug_log_picker_empty">Nenhum log de debug disponível. Grave um primeiro.</string>
     <string name="contact_expected_behavior_label">Comportamento esperado</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">Leio cada mensagem pessoalmente e faço o meu melhor para responder, mas como trabalho nisso sozinho, pode demorar um pouco. Obrigado pela sua paciência.</string>
     <string name="contact_footer_msg">Sua mensagem será enviada por e-mail. Informações do dispositivo e configuração são anexadas automaticamente.</string>
     <string name="contact_no_email_app_msg">Nenhum app de e-mail encontrado neste dispositivo.</string>
-    <string name="contact_attachment_missing_msg">O arquivo de log de debug não existe mais</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Logs de debug armazenados</string>
     <string name="settings_support_stored_logs_desc">%1$d sessões (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Nenhum log de debug armazenado</string>
-    <string name="settings_support_stored_logs_delete_title">Excluir logs armazenados?</string>
-    <string name="settings_support_stored_logs_delete_msg">Isso excluirá todas as %1$d sessões de logs de debug armazenadas.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Logs de debug armazenados excluídos</string>
-    <string name="label_bug_reports">Relatório de erros</string>
-    <string name="description_bug_reports">Relatório automático de erros e falhas.</string>
     <string name="label_add_device">Adicionar dispositivo</string>
-    <string name="label_just_a_moment_please">Um momento, por favor.</string>
     <string name="label_notification_channel_status">Status</string>
     <string name="label_notification_channel_setup">Configuração necessária</string>
     <string name="monitor_notification_starting">Iniciando…</string>
     <string name="action_set">Definir</string>
     <string name="action_cancel">Cancelar</string>
-    <string name="label_invalid_input">Entrada inválida</string>
     <string name="action_reset">Redefinir</string>
     <string name="label_no_connected_devices">Nenhum dispositivo conectado</string>
-    <string name="label_status_idle">Inativo</string>
-    <string name="label_status_adjusting_volumes">Ajustando volumes</string>
-    <string name="label_premium_version">Versão Premium</string>
     <string name="general_upgrade_action">Atualizar</string>
     <string name="common_upgrade_required_label">Atualização necessária</string>
-    <string name="label_premium_version_required">Requer versão Premium</string>
-    <string name="description_intro_purpose">Este aplicativo possibilita ao seu dispositivo Android memorizar o volume de diferentes dispositivos Bluetooth.</string>
-    <string name="upgrade_benefit_unlimited_devices">Perfis de dispositivos ilimitados</string>
-    <string name="upgrade_benefit_connection_actions">Reprodução automática, lançamento de aplicativos e alertas de conexão</string>
-    <string name="upgrade_benefit_theme_customization">Personalização de tema, estilo e cor</string>
-    <string name="upgrade_benefit_power_controls">Bloqueio de volume e limitação de taxa</string>
-    <string name="upgrade_benefit_support">Apoiar o desenvolvimento independente</string>
     <string name="upgrade_benefit_equalizer">• Equalizador por dispositivo (para apps de música com suporte ao equalizador do sistema)</string>
-    <string name="description_intro_tap_the_button">Comece adicionando seu primeiro dispositivo.</string>
     <string name="description_bluetooth_is_disabled">O Bluetooth está desativado.</string>
     <string name="title_bluetooth_is_off">Bluetooth está Desligado</string>
     <string name="action_enable_bluetooth">Ativar Bluetooth</string>
     <string name="title_bluetooth_permission_required">Permissão de Bluetooth Necessária</string>
     <string name="description_bluetooth_permission_required">Este app precisa de permissão Bluetooth para gerenciar os volumes dos seus dispositivos.</string>
     <string name="action_grant_permission">Conceder Permissão</string>
-    <string name="label_status_listening_for_changes">Atento às mudanças de volume</string>
     <string name="action_exit">Sair</string>
-    <string name="action_start">Iniciar</string>
-    <string name="label_welcome">Bem-vindo</string>
-    <string name="description_intro_contact">Não hesite em contactar-me se tiver dúvidas ou mesmo uma ideia para um novo recurso.</string>
-    <string name="label_translation">Tradução</string>
-    <string name="description_help_translate">Ajude-me a disponibilizar este aplicativo em outros idiomas.</string>
     <string name="label_device_speaker">Alto-falante do dispositivo</string>
-    <string name="label_keyevent_playpause">Reproduzir/Pausar</string>
-    <string name="label_keyevent_play">Reproduzir</string>
-    <string name="label_keyevent_next">Avançar</string>
-    <string name="label_install_id">Identificador de Instalação</string>
     <string name="message_copied_to_clipboard">Copiado para área de transferência</string>
-    <string name="label_thanks">Agradecimentos</string>
-    <string name="label_licenses">Licenças</string>
-    <string name="description_ring_volume_additional_permission">Permissões adicionais são necessárias para alterar o volume do toque.</string>
-    <string name="label_missing_permissions">Permissões inexistentes</string>
-    <string name="action_grant">Conceder</string>
-    <string name="label_advanced">Avançadas</string>
-    <string name="label_exclude_health">Excluir perfis de saúde</string>
-    <string name="description_exclude_health">Alguns dispositivos Android travam ao procurar perfis Bluetooth de \'Dispositivos de Saúde\' (HDP, 0x1400).</string>
-    <string name="label_exclude_gattserver">Excluir perfis de servidor GATT</string>
-    <string name="label_exclude_gatt">Excluir perfis GATT</string>
-    <string name="description_exclude_gattserver">Não consultar perfis Bluetooth de servidores do tipo \'Atributo Genérico\' (GATT).</string>
-    <string name="description_exclude_gatt">Não consultar perfis Bluetooth de clientes do tipo \'Atributo Genérico\' (GATT).</string>
-    <string name="description_waiting_for_devicex">Aguardando %s para completar a conexão</string>
-    <string name="action_undo">Desfazer</string>
-    <string name="action_show">Mostrar</string>
     <string name="action_dismiss">Dispensar</string>
-    <string name="action_fix">Corrigir</string>
-    <string name="battery_optimizations_issue_description">Otimizações de bateria estão habilitadas para este aplicativo e podem impedi-lo de receber eventos de Bluetooth. Considere desativar as otimizações, se você estiver enfrentando problemas.</string>
     <string name="label_bluetooth_settings">Configurações do Bluetooth</string>
-    <string name="android10_applaunch_issue_description">O Android 10 restringe como apps podem ser iniciados a partir de segundo plano. Para permitir a abertura de aplicativos quando um dispositivo Bluetooth se conectar, conceda a permissão \&quot;Exibição sobre outros apps\&quot; (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">Código fonte</string>
-    <string name="android13_notification_permission_description">Conceda a este app permissão para postar notificações. Isso habilita exibir uma notificação quando este app estiver ativo e ajustes de volume estiverem sendo feitos.</string>
-    <string name="privacy_policy_label">Política de privacidade</string>
     <string name="managed_devices_empty_message">Nenhum dispositivo Bluetooth configurado.\nToque no botão + para adicionar seu primeiro dispositivo.</string>
     <string name="label_pro_feature">Recurso premium</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">Avaliar</string>
     <string name="review_app_dismiss_action">Talvez depois</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Compra cancelada</string>
-    <string name="error_iap_unavailable_message">Compras no app não estão disponíveis</string>
-    <string name="error_generic_message">Ocorreu um erro. Tente novamente.</string>
-    <string name="error_iap_owned_message">Você já possui este item</string>
     <string name="label_no_devices_title">Nenhum Dispositivo</string>
     <string name="bluemusic_mascot_description">Ícone do App</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Selecionar Aplicativos</string>
     <string name="devices_app_selection_search_hint">Buscar aplicativos…</string>
-    <string name="devices_app_selection_currently_selected">Atualmente selecionados</string>
     <string name="devices_app_selection_selected_count">%d aplicativos selecionados</string>
     <string name="general_navigate_back_action">Voltar</string>
     <string name="general_reset_action">Redefinir</string>
     <string name="general_clear_action">Limpar</string>
-    <string name="general_save_action">Salvar</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Bloquear</string>
     <string name="devices_indicator_awake">Ativo</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">Limite</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Reforço</string>
-    <string name="devices_indicator_launch">Abrir</string>
     <string name="devices_indicator_home">Início</string>
     <string name="devices_indicator_dnd">NP</string>
     <string name="devices_indicator_alert">Alerta</string>

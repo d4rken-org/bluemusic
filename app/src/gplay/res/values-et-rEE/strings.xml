@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">Vajab BVM Pro versiooni</string>
     <string name="upgrade_prompt_title">Uuenda BVM Pro-ks</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro pakub paremaid tulemusi, rohkem funktsioone ja valikuid edasijõudnutele.</string>
-    <string name="upgrade_prompt_upgrade_action">Täienda</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">Täienda %1$s-le</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manageris pole reklaame ja see ei müü kasutajaandmeid. Minu tööd toetate teie ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager ei suuda ühenduda Google Playga. Kas Google Play on paigaldatud ja ajakohane? Kas olete Google\'i kontole sisse logitud? Proovige tühjendada Google Play rakenduse vahemälu ja taaskäivitada seade.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">Google Play avamine nurjus. See võib olla selles seadmes puudu, keelatud või piiratud.</string>
-    <string name="upgrades_no_purchases_found_check_account">Oste ei leitud. Kas kasutate õiget kontot?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">Täiendamise valikud</string>
     <string name="upgrade_screen_offers_body">Mõlemad valikud avavad täpselt samad Pro funktsioonid — vali, milline sulle sobib.</string>

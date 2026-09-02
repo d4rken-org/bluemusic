@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">اپڈیٹ کے دوران کچھ خصوصیات تبدیل ہو گئی ہیں۔ براہ کرم اپنی ڈیوائس کی ترتیبات چیک کریں تاکہ یقین ہو کہ سب کچھ درست طریقے سے ترتیب دیا گیا ہے۔</string>
     <string name="onboarding_rewrite_action">جاری رکھیں</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">کوئی غیر منظم ڈیوائس نہیں ملی</string>
     <string name="discover_all_devices_managed_msg">آپ کی تمام جوڑی گئی ڈیوائسیں منظم ہیں! کوئی نئی ڈیوائس چاہیے؟</string>
     <string name="discover_pair_new_device_action">نئی ڈیوائس جوڑیں</string>
     <string name="discover_device_speaker_desc">یہ فون کا اپنا اسپیکر۔ جب آڈیو فون پر واپس آتا ہے تو اس کے حجم کو لاگو کیا جاتا ہے، مثال کے طور پر آپ کے Bluetooth ڈیوائس کے منقطع ہونے کے بعد۔</string>
     <!-- Devices -->
     <string name="devices_device_config_label">ڈیوائس کی ترتیب</string>
-    <string name="devices_device_config_section_general_label">عمومی</string>
     <string name="devices_device_config_remove_device_label">ڈیوائس بھول جائیں</string>
-    <string name="devices_device_config_remove_device_desc">اس ایپ سے ڈیوائس کو بھول جاتا ہے اور اس کی ترتیب حذف کر دیتا ہے۔ یہ ڈیوائس کو غیر جوڑا نہیں کرتا۔</string>
     <string name="devices_device_config_remove_device_action">بھول جائیں</string>
     <string name="devices_device_config_remove_device_confirmation">%s کو منظم ڈیوائسز سے بھول جائیں؟</string>
-    <string name="devices_device_config_rename_device_label">ڈیوائس کا نام بدلیں</string>
-    <string name="devices_device_config_rename_device_desc">اس ایپ میں اور اگر ممکن ہو تو سسٹم میں بھی اس ڈیوائس کا نام بدلیں۔</string>
     <string name="devices_device_config_rename_device_action">نام بدلیں</string>
     <string name="devices_device_config_enabled_label">فعال</string>
     <string name="devices_device_config_enabled_desc">اس ڈیوائس کے منسلک ہونے پر ردعمل ظاہر کریں</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">آٹو پلے کمانڈز</string>
     <string name="devices_device_config_autoplay_keycodes_order">کمانڈ ترتیب</string>
     <string name="devices_device_config_autoplay_keycodes_label">کمانڈز</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">ترتیب دیں کہ کون سی کمانڈز بھیجنی ہیں اور کس ترتیب میں</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">کوئی کمانڈ ترتیب نہیں دی گئی</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">کمانڈ شامل کریں</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">زیادہ سے زیادہ %1$d کمانڈز</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">اوپر منتقل کریں</string>
     <string name="cd_autoplay_keycode_move_down">نیچے منتقل کریں</string>
     <string name="cd_autoplay_keycode_remove">ہٹائیں</string>
-    <string name="devices_device_config_section_volumes_label">والیومز</string>
     <string name="devices_device_config_section_volume_label">والیوم</string>
     <string name="devices_device_config_alarm_volume_label">الارم والیوم</string>
     <string name="devices_device_config_alarm_volume_desc">کچھ الارم ایپس میوزک والیوم بجائے استعمال کرتی ہیں۔</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">رنگٹون</string>
     <string name="devices_audio_stream_notification_label">نوٹیفیکیشن</string>
     <string name="devices_audio_stream_alarm_label">الارم</string>
-    <string name="devices_neverseen_label">کبھی نہیں دیکھی</string>
-    <string name="devices_state_connected_label">منسلک</string>
     <string name="devices_last_connected_label">آخری کنیکشن: %s</string>
     <string name="devices_currently_connected_label">ابھی منسلک ہے</string>
     <string name="devices_device_disabled_label">ڈیوائس معطل</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">تمام منظم ڈیوائسز کو متاثر کرنے والی ترتیبات۔</string>
     <string name="label_app_enabled">ایپ فعال</string>
     <string name="description_app_enabled">والیوم اور بلوٹوتھ واقعات پر ایپ کی ردعمل کی صلاحیت کو ٹوگل کرتا ہے۔</string>
-    <string name="label_visible_volume_adjustments">نظر آنے والی ایڈجسٹمنٹس</string>
-    <string name="description_visible_volume_adjustments">جب یہ ایپ ایڈجسٹمنٹ کرے تو سسٹم والیوم ونڈو دکھائیں۔</string>
     <string name="label_volume_listener">تبدیلیاں مشاہدہ کریں</string>
-    <string name="description_volume_listener">جب کوئی ڈیوائس منسلک ہو فعال رہیں اور والیوم تبدیلیاں محفوظ کریں جو اس ایپ سے نہیں ہوئیۚ۔</string>
     <string name="label_boot_restore">بوٹ پر بحال کریں</string>
     <string name="description_boot_restore">اگر بلوٹوتھ ڈیوائس منسلک ہو تو بوٹینگ/ریبوٹینگ کے بعد والیوم بحال کریں۔</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">BVM کو مؤثر طریقے سے استعمال کرنا سیکھیں</string>
     <string name="settings_support_issue_tracker_description">بگ رپورٹس اور فیچر کی درخواستوں کے لیے عوامی ایشو ٹریکر۔</string>
     <string name="settings_support_issue_tracker_label">ایشو ٹریکر</string>
-    <string name="settings_support_debuglog_label">ڈیبگ لاگ</string>
     <string name="settings_support_debuglog_desc">ایپ جو کچھ بھی کر رہی ہے اس کا تمام ریکارڈ ایک ٹیکسٹ فائل میں محفوظ کریں جسے آپ شیئر کر سکتے ہیں۔</string>
-    <string name="settings_support_debuglog_recording_desc">ابھی ڈیبگ معلومات ریکارڈ ہو رہی ہے۔ ریکارڈنگ روکنے کے لیے ٹیپ کریں۔</string>
-    <string name="settings_support_debuglog_path">لاگ المقام: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">بہت مختصر ریکارڈنگ</string>
     <string name="settings_support_debuglog_short_recording_msg">یہ بہت مختصر ریکارڈنگ تھی۔ ڈیبگ لاگ ریکارڈنگز ہیں، اسنیپشٹس نہیں — لاگ کو مفید بنانے کے لیے ریکارڈنگ فعال ہونے دوران مسئلہ دوبارہ پیدا کریں۔</string>
     <string name="settings_support_debuglog_short_recording_continue">ریکارڈنگ جاری رکھیں</string>
     <string name="settings_support_debuglog_short_recording_stop">بہرحال روکیں</string>
-    <string name="settings_support_debuglog_folder_label">ڈیبگ لاگ فولڈر</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d سیشن %2$s استعمال کر رہا ہے</item>
-        <item quantity="other">%1$d سیشنز %2$s استعمال کر رہے ہیں</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">کوئی ڈیبگ لاگز محفوظ نہیں</string>
-    <string name="settings_support_debuglog_folder_delete_title">تمام ڈیبگ لاگز حذف کریں؟</string>
-    <string name="settings_support_debuglog_folder_delete_msg">یہ تمام محفوظ ڈیبگ لاگ سیشنز مستقل طور پر حذف کر دے گا۔</string>
     <string name="settings_support_discord_label">ڈسکارڈ</string>
     <string name="settings_support_discord_description">گفتگو کرنے اور سوالات پوچھنے کی جگہ۔</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">ترجمہ</string>
     <string name="settings_acks_translators_title">مترجمین</string>
     <string name="settings_acks_translators_people">شخص1;شخص2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">BVM ترجمہ کریں</string>
-    <string name="settings_acks_translate_desc">BVM کو اپنی زبان میں ترجمہ کرنے میں مدد کریں</string>
     <string name="settings_acks_thanks_header">شکریہ</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">اوپن سورس منصوبوں کے ترجمہ کی حمایت کرنے کے لیے</string>
     <string name="settings_licenses_label">لائسنسز</string>
     <string name="settings_translation_label">ترجمہ</string>
     <string name="settings_translation_desc">ایپ کو اپنی پسندیدہ زبان میں ترجمہ کرنے میں مدد کریں</string>
-    <string name="settings_sponsor_development_title">ڈیولپمنٹ کو سپانسر کریں</string>
-    <string name="settings_sponsor_development_summary">سرپرست بنیں اور مسلسل ترقی کو ممکن بنائیں۔</string>
     <string name="settings_privacy_policy_label">پرائیویسی پالیسی</string>
     <string name="settings_privacy_policy_desc">ڈیٹا کو ذمہ داری سے سنبھالنا۔</string>
     <string name="changelog_label">تبدیلیوں کی فہرست</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">بحالی مکمل — %1$d ڈیوائسز بحال کیے گیے، %2$d چھوڑ دیے گیے۔</string>
     <string name="backup_restore_version_warning">یہ بیک اپ ورژن %1$s سے بنایا گیا تھا۔ آپ %2$s چلا رہے ہیں۔ کچھ سیٹنگز صحیح طریقے سے بحال نہیں ہو سکتیں۔</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">ڈیبگ نوٹیفکیشنز</string>
     <string name="debug_log_consent_title">ڈیبگ لاگ</string>
     <string name="debug_log_consent_explanation">یہ فیچر ایپ کی تمام کارروائیوں کو ایک شیئر کرنے والی فائل میں ریکارڈ کرتا ہے۔ بنایا گیا فائل حساس معلومات پر مشتمل ہے (جیسے فائل نام اور انسٹال شدہ ایپس)۔ صرف قابل اعتماد افراد کے ساتھ شیئر کریں (جیسے کسی مسئلے کو حل کرنے والا ڈیولپر)۔</string>
-    <string name="debug_log_recording_progress">ڈیبگ لاگ ریکارڈ کر رہا ہے</string>
     <string name="debug_log_record_action">ریکارڈ</string>
     <string name="debug_log_stop_action">ریکارڈنگ بند کریں</string>
     <string name="debug_log_screen_title">ڈیبگ لاگ ریکارڈر</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">رد کریں</string>
     <string name="debug_log_screen_keep_action">رکھیں</string>
-    <string name="debug_log_compressing_label">کمپریس ہو رہا ہے…</string>
     <string name="debug_log_file_label">ریکارڈ شدہ لاگ فائل</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">لاگ بھیجی؟</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">اپنے سوال کو تفصیل سے بیان کریں۔</string>
     <string name="contact_category_section_label">زمرہ</string>
     <string name="contact_debug_log_label">ڈیبگ لاگ</string>
-    <string name="contact_debug_log_select_hint">منسلک کرنے کے لیے ڈیبگ لاگ منتخب کریں</string>
     <string name="contact_debug_log_picker_hint">مسئلہ تیزی سے تشخیص کرنے کے لیے ڈیبگ لاگ منسلک کریں۔</string>
     <string name="contact_debug_log_picker_empty">کوئی ڈیبگ لاگ دستیاب نہیں۔ پہلے ایک ریکارڈ کریں۔</string>
     <string name="contact_expected_behavior_label">متوقع طرز عمل</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">میں ہر پیغام خود پڑھتا ہےں اور جواب دینے کی بہترین کوشش کرتا ہے، لیکن کیونکہ میں اکیلا کام کرتا ہےں، تھوڑا وقت لگ سکتا ہے۔ آپ کی صبر کا شکریہ۔</string>
     <string name="contact_footer_msg">آپ کا پیغام ایمیل کے ذریعے بھیجا جائے گا۔ ڈیوائس اور سیٹاپ کی معلومات خودکار منسلک ہو جاتی ہے۔</string>
     <string name="contact_no_email_app_msg">اس ڈیوائس پر کوئی ایمیل ایپ نہیں ملی۔</string>
-    <string name="contact_attachment_missing_msg">ڈیبگ لاگ فائل موجود نہیں ہے</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">محفوظ ڈیبگ لاگز</string>
     <string name="settings_support_stored_logs_desc">%1$d سیشنز (%2$s)</string>
     <string name="settings_support_stored_logs_empty">کوئی محفوظ ڈیبگ لاگز نہیں</string>
-    <string name="settings_support_stored_logs_delete_title">محفوظ لاگز حذف کریں؟</string>
-    <string name="settings_support_stored_logs_delete_msg">یہ تمام %1$d محفوظ ڈیبگ لاگ سیشنز حذف کر دے گا۔</string>
-    <string name="settings_support_stored_logs_deleted_msg">محفوظ ڈیبگ لاگز حذف ہو گئیں</string>
-    <string name="label_bug_reports">بگ رپورٹس</string>
-    <string name="description_bug_reports">خودکار بگ اور کریش رپورٹنگ۔</string>
     <string name="label_add_device">ڈیوائس شامل کریں</string>
-    <string name="label_just_a_moment_please">بس ایک لمحہ۔</string>
     <string name="label_notification_channel_status">حیثیت</string>
     <string name="label_notification_channel_setup">سیٹ اپ ضروری ہے</string>
     <string name="monitor_notification_starting">شروع ہو رہا ہے…</string>
     <string name="action_set">سیٹ کریں</string>
     <string name="action_cancel">منسوخ کریں</string>
-    <string name="label_invalid_input">غلط ان پٹ</string>
     <string name="action_reset">ری سیٹ کریں</string>
     <string name="label_no_connected_devices">کوئی ڈیوائس منسلک نہیں</string>
-    <string name="label_status_idle">خالی</string>
-    <string name="label_status_adjusting_volumes">والیومز ایڈجسٹ ہو رہی ہیں</string>
-    <string name="label_premium_version">پریمیم ورژن</string>
     <string name="general_upgrade_action">اپ گریڈ کریں</string>
     <string name="common_upgrade_required_label">اپگریڈ ضروری ہے</string>
-    <string name="label_premium_version_required">پریمیم ورژن ضروری ہے</string>
-    <string name="description_intro_purpose">یہ ایپ آپ کے اینڈرائیڈ ڈیوائس کو مختلف بلوٹوتھ ڈیوائسز کا والیوم یاد رکھنے دیتی ہے۔</string>
-    <string name="upgrade_benefit_unlimited_devices">لامحدود ڈیوائس پروفائلز</string>
-    <string name="upgrade_benefit_connection_actions">آٹوپلے، ایپ لانچ اور کنکشن الرٹس</string>
-    <string name="upgrade_benefit_theme_customization">تھیم، اسٹائل اور رنگ کی حسب ضرورت تبدیلی</string>
-    <string name="upgrade_benefit_power_controls">والیوم لاک اور ریٹ لمیٹنگ</string>
-    <string name="upgrade_benefit_support">آزاد ترقی کو سپورٹ کریں</string>
     <string name="upgrade_benefit_equalizer">• فی ڈیوائس ایکولائزر (نظام ایکولائزر والی موسیقی ایپس کے لیے)</string>
-    <string name="description_intro_tap_the_button">اپنی پہلی ڈیوائس شامل کرکے شروع کریں۔</string>
     <string name="description_bluetooth_is_disabled">بلوٹوتھ غیر فعال ہے.</string>
     <string name="title_bluetooth_is_off">بلوٹوتھ بند ہے</string>
     <string name="action_enable_bluetooth">بلوٹوتھ فعال کریں</string>
     <string name="title_bluetooth_permission_required">بلوٹوتھ کی اجازت ضروری ہے</string>
     <string name="description_bluetooth_permission_required">اس ایپ کو آپ کی ڈیوائس والیوم منظم کرنے کے لیے بلوٹوتھ کی اجازت کی ضرورت ہے۔</string>
     <string name="action_grant_permission">اجازت دیں</string>
-    <string name="label_status_listening_for_changes">والیوم تبدیلیاں سننا</string>
     <string name="action_exit">باہر نکلیں</string>
-    <string name="action_start">شروع</string>
-    <string name="label_welcome">خوش آمدید</string>
-    <string name="description_intro_contact">اگر آپ کو کوئی سوال ہے یا نئے فیچر کا خیال ہے تو بےجھجھک مجھ سے رابطہ کریں۔</string>
-    <string name="label_translation">ترجمہ</string>
-    <string name="description_help_translate">اس ایپ کو دوسری زبانوں میں دستیاب بنانے میں میری مدد کریں۔</string>
     <string name="label_device_speaker">ڈیوائس اسپیکر</string>
-    <string name="label_keyevent_playpause">پلے-ٹھہراؤ</string>
-    <string name="label_keyevent_play">چلائیں</string>
-    <string name="label_keyevent_next">آگے</string>
-    <string name="label_install_id">انسٹال ID</string>
     <string name="message_copied_to_clipboard">کلپ بورڈ پر کاپی ہو گئی</string>
-    <string name="label_thanks">شکریہ</string>
-    <string name="label_licenses">لائسنسز</string>
-    <string name="description_ring_volume_additional_permission">رنگٹون والیوم تبدیل کرنے کے لیے اضافی اجازتیں ضروری ہیں۔</string>
-    <string name="label_missing_permissions">اجازتیں غائب</string>
-    <string name="action_grant">دیں</string>
-    <string name="label_advanced">جدید تر</string>
-    <string name="label_exclude_health">ہیلتھ پروفائلز خارج کریں</string>
-    <string name="description_exclude_health">کچھ اینڈرائیڈ ڈیوائسیز \'ہیلتھ ڈیوائس\' بلوٹوتھ پروفائلز (HDP, 0x1400) دیکھنے پر ہینگ ہو جاتی ہیں۔</string>
-    <string name="label_exclude_gattserver">GATT سرور پروفائلز خارج کریں</string>
-    <string name="label_exclude_gatt">GATT پروفائلز خارج کریں</string>
-    <string name="description_exclude_gattserver">\'جنیریک ایٹریبیوٹ\' (GATT) سرور قسم کے بلوٹوتھ پروفائلز کو قوئی نہیں کریں۔</string>
-    <string name="description_exclude_gatt">\'جنیریک ایٹریبیوٹ\' (GATT) کلائنٹ قسم کے بلوٹوتھ پروفائلز کو قوئی نہیں کریں۔</string>
-    <string name="description_waiting_for_devicex">%s کے منسلکی مکمل ہونے کا انتظار</string>
-    <string name="action_undo">واپس کریں</string>
-    <string name="action_show">دکھائیں</string>
     <string name="action_dismiss">بار کریں</string>
-    <string name="action_fix">حل کریں</string>
-    <string name="battery_optimizations_issue_description">اس ایپ کے لیے بیٹری آپٹیمائزیشنز فعال ہیں اور بلوٹوتھ واقعات ملنے سے روک سکتی ہیں۔ اگر مسائل ہیں تو آپٹیمائزیشنز بند کرنے کی کوشش کریں۔</string>
     <string name="label_bluetooth_settings">بلوٹوتھ ترتیبات</string>
-    <string name="android10_applaunch_issue_description">اینڈرائیڈ 10 بیک گراؤنڈ سے ایپس کیسے شروع ہوں پر پابندی لگاتا ہے۔ بلوٹوتھ ڈیوائس منسلک ہونے پر ایپس کھولنے کی اجازت دینے کے لیے \'دوسری ایپس کے اوپر دکھائیں\' (SYSTEM_ALERT_WINDOW) اجازت دیں۔</string>
-    <string name="label_opensource">سورس کوڈ</string>
-    <string name="android13_notification_permission_description">اس ایپ کو نوٹیفیکیشنز پوسٹ کرنے کی اجازت دیں۔ یہ ایپ کے فعال ہونے اور والیوم ایڈجسٹمنٹ کے دوران نوٹیفیکیشن دکھانے کو ممکن بناتا ہے۔</string>
-    <string name="privacy_policy_label">پرائیویسی پالیسی</string>
     <string name="managed_devices_empty_message">کوئی بلوٹوتھ ڈیوائس ترتیب نہیں۔\nاپنی پہلی ڈیوائس شامل کرنے کے لیے + بٹن ٹیپ کریں۔</string>
     <string name="label_pro_feature">پریمیم فیچر</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">ریویو</string>
     <string name="review_app_dismiss_action">شاید بعد میں</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">خریداری منسوخ</string>
-    <string name="error_iap_unavailable_message">این ایپ خریداری دستیاب نہیں</string>
-    <string name="error_generic_message">ایک غلطی ہوئی۔ براہ کرم دوبارہ کوشش کریں۔</string>
-    <string name="error_iap_owned_message">یہ آئٹم پہلے سے آپ کے پاس ہے</string>
     <string name="label_no_devices_title">کوئی ڈیوائس نہیں</string>
     <string name="bluemusic_mascot_description">ایپ آئیکن</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">ایپس منتخب کریں</string>
     <string name="devices_app_selection_search_hint">ایپس تلاش کریں…</string>
-    <string name="devices_app_selection_currently_selected">ابھی منتخب</string>
     <string name="devices_app_selection_selected_count">%d ایپس منتخب</string>
     <string name="general_navigate_back_action">واپس نیویگیٹ کریں</string>
     <string name="general_reset_action">ری سیٹ کریں</string>
     <string name="general_clear_action">صاف کریں</string>
-    <string name="general_save_action">محفوظ کریں</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">لاک</string>
     <string name="devices_indicator_awake">جگا</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">حد</string>
     <string name="devices_indicator_eq">ای کیو</string>
     <string name="devices_indicator_boost">بوسٹ</string>
-    <string name="devices_indicator_launch">شروع کریں</string>
     <string name="devices_indicator_home">ہوم</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">الرٹ</string>

@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">Hin taybetmendî di dema nûvekirinê de guherîne. Ji kerema xwe mîhengên cîhaza xwe kontrol bikin da ku her tişt rast hatibe mîheng kirin.</string>
     <string name="onboarding_rewrite_action">Berdewam bike</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">Ti cîhazên nebirêvebir nehatin dîtin</string>
     <string name="discover_all_devices_managed_msg">Hemû cîhazên weya hevbestekirî tên birêvebirin! Ji nûvekiyek hewce dike?</string>
     <string name="discover_pair_new_device_action">Cîhazekî nû hevbeste bike</string>
     <string name="discover_device_speaker_desc">Bipêjek xwe ya vê telefon. Helûskên wê dema deng vegerê telefon di sepandin, mînakî piştî ku amûra Bluetooth-a te veqetiya.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">Mîhengkarîn cîhazê</string>
-    <string name="devices_device_config_section_general_label">Gishtgir</string>
     <string name="devices_device_config_remove_device_label">Cîhazê ji bîr bike</string>
-    <string name="devices_device_config_remove_device_desc">Cîhazê ji vê bernameê ji bîr dike û mîhengkarîn wê jê dike. Ev cîhaz ji hevbestê bernabide.</string>
     <string name="devices_device_config_remove_device_action">Ji bîr bike</string>
     <string name="devices_device_config_remove_device_confirmation">%s ji cîhazên birêvebirî jê bibin?</string>
-    <string name="devices_device_config_rename_device_label">Cîhazê biguheze</string>
-    <string name="devices_device_config_rename_device_desc">Navê vê cîhazê di vê bernameê de, û heger gengaz be, di sîstemê de biguherîne.</string>
     <string name="devices_device_config_rename_device_action">Biguheze</string>
     <string name="devices_device_config_enabled_label">Aktif</string>
     <string name="devices_device_config_enabled_desc">Dema ev cîhaz bi hestek bibe bersivê bide</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">Fermanên lîstina xweser</string>
     <string name="devices_device_config_autoplay_keycodes_order">Rêza fermanan</string>
     <string name="devices_device_config_autoplay_keycodes_label">Ferman</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">Mîheng bike ku kîjan ferman bişîne û bi çi rêzê</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">Hîç ferman nehatiye mîhengkirin</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">Fermanê zêde bike</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">Herî zêde %1$d ferman</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">Bibe jor</string>
     <string name="cd_autoplay_keycode_move_down">Bibe xwar</string>
     <string name="cd_autoplay_keycode_remove">Rake</string>
-    <string name="devices_device_config_section_volumes_label">Deng</string>
     <string name="devices_device_config_section_volume_label">Deng</string>
     <string name="devices_device_config_alarm_volume_label">Dengê alarmê</string>
     <string name="devices_device_config_alarm_volume_desc">Hin bernamên alarmê dengê mûzikê li xwe diguheranin.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">Zengil</string>
     <string name="devices_audio_stream_notification_label">Agahdarî</string>
     <string name="devices_audio_stream_alarm_label">Alarm</string>
-    <string name="devices_neverseen_label">Hên nehatî dîtin</string>
-    <string name="devices_state_connected_label">Bi hestek</string>
     <string name="devices_last_connected_label">Dawiya hevbestê: %s</string>
     <string name="devices_currently_connected_label">Niha bi hestek e</string>
     <string name="devices_device_disabled_label">Cîhaz neaktîf</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">Mîhengên ku hemû cîhazên birêvebir tê de bandor dikin.</string>
     <string name="label_app_enabled">Bername aktif</string>
     <string name="description_app_enabled">Kamala bersivê bernameê ji rûyderîn deng û Bluetooth sûk dike.</string>
-    <string name="label_visible_volume_adjustments">Rastkarîn diyar</string>
-    <string name="description_visible_volume_adjustments">Pencereya dengê sîstemê nîşan bide dema vê bernameê rastkarîn dike.</string>
     <string name="label_volume_listener">Guherînên bihîstin</string>
-    <string name="description_volume_listener">Aktif bimîne dema cîhazek bi hestek be û guherînên dengê ku ne ji vê bernameê ne hatine parastin bike.</string>
     <string name="label_boot_restore">Piştî bootê vegerîne</string>
     <string name="description_boot_restore">Dengê piştî bootkirinê vegerîne heger cîhazek Bluetooth bi hestek be.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">Fam bikin ka BVM bi bandorî çawa bikarîne</string>
     <string name="settings_support_issue_tracker_description">Nivîskar pirsgirêkan a gelîrî ji bo raportên bug û daxwazên taybetmendê.</string>
     <string name="settings_support_issue_tracker_label">Şopînera pirsgirêkan</string>
-    <string name="settings_support_debuglog_label">Tomara çareserkirinê</string>
     <string name="settings_support_debuglog_desc">Her tiştê ku sepan dike di pelek nivîskî de tomar bike ku hûn dikarin parve bikin.</string>
-    <string name="settings_support_debuglog_recording_desc">Niha agahdarîna debugê tê tomarkirin. Jî bikînin da were sekinandin.</string>
-    <string name="settings_support_debuglog_path">Riya tomare: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">Tomarkirina pir kin</string>
     <string name="settings_support_debuglog_short_recording_msg">Ev tomarkirinek pir kin bû. Pirsgirêk di dema tomarkirinê de ji nû ve hilberînin da ku tomar karêdek be.</string>
     <string name="settings_support_debuglog_short_recording_continue">Tomarkirina berdewam bike</string>
     <string name="settings_support_debuglog_short_recording_stop">Were sekinandin</string>
-    <string name="settings_support_debuglog_folder_label">Pergala tomarên debug</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d danistin bi %2$s</item>
-        <item quantity="other">%1$d danistin bi %2$s</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Ti tomarên debug ne hatine hilandin</string>
-    <string name="settings_support_debuglog_folder_delete_title">Hemû tomarên debug jê bibin?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">Ev hemû danistinên tomarên debug yên hilandi bi domî jê dike.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">Cîhek ji bo hevdîtin û pirsînê.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">Werger</string>
     <string name="settings_acks_translators_title">Wergêr</string>
     <string name="settings_acks_translators_people">Person1;Person2(optional@email.com)</string>
-    <string name="settings_acks_translate_title">BVM wergerîne</string>
-    <string name="settings_acks_translate_desc">BVM wergertina zimana xwe bikin</string>
     <string name="settings_acks_thanks_header">Spas</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">Ji bo pishtgirîna wergertina projeyanê çavkaniya vekirî</string>
     <string name="settings_licenses_label">Lîsans</string>
     <string name="settings_translation_label">Werger</string>
     <string name="settings_translation_desc">Aliyarîna wergertina bernameê bo zimana xwe ya bijartî bikin</string>
-    <string name="settings_sponsor_development_title">Perkeftîna perkîfîtkirinê</string>
-    <string name="settings_sponsor_development_summary">Bibin patron û perkeftîna berdewam gengaz bikin.</string>
     <string name="settings_privacy_policy_label">Polîtîkaya nepenîtiyê</string>
     <string name="settings_privacy_policy_desc">Bi berpirsiyarî daneyan bi rêve bibin.</string>
     <string name="changelog_label">Tomara guhertinan</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">Vegerandin qediya — %1$d cîhaz hat vegerandin, %2$d hat derbaskirin.</string>
     <string name="backup_restore_version_warning">Ev backup bi guhertoya %1$s hat çêkirin. Tu %2$s xebitandî. Hin mîheng dibe ku rast neyên vegerandin.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">Agahdariyên çareserkirinê</string>
     <string name="debug_log_consent_title">Tomara çareserkirinê</string>
     <string name="debug_log_consent_explanation">Ev taybetmend hemû tishtên bernameê têrî dike li dosyeyek parvekirbar tomar dike. Dosyeya hatiyê jidaykirin agahdarîyên hesas dihewine. Tenê bi aliyanê mîbawer re biparize.</string>
-    <string name="debug_log_recording_progress">Tomara çareserkirinê tê tomarkirin</string>
     <string name="debug_log_record_action">Tomar bike</string>
     <string name="debug_log_stop_action">Tomarkirinê rawestîne</string>
     <string name="debug_log_screen_title">Tomarkarê Tomarên Debug</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">Avêtin</string>
     <string name="debug_log_screen_keep_action">Bimîne</string>
-    <string name="debug_log_compressing_label">Zav dike...</string>
     <string name="debug_log_file_label">Pela tomara tomarkirî</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">Tomar hatîşandin?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">Pirsiyara xwe bi huzurmend rave bikin.</string>
     <string name="contact_category_section_label">Kategoriyê</string>
     <string name="contact_debug_log_label">Tomara çareserkirinê</string>
-    <string name="contact_debug_log_select_hint">Tomara debugê pir vekêr hilbijerin</string>
     <string name="contact_debug_log_picker_hint">Tomara debugê pir vek bikin da pirsgirêk zútir were tê bigihastin.</string>
     <string name="contact_debug_log_picker_empty">Ti tomarên debug tune ne. Yekemî tomar bikin.</string>
     <string name="contact_expected_behavior_label">Tevgera jê hatî hevîn</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">Ez her peyam dixwenim. Spas.</string>
     <string name="contact_footer_msg">Peyama we bi posta elektronikî têşandin. Agahdarîyên cîhaz bixweber dibin.</string>
     <string name="contact_no_email_app_msg">Li vê cîhazê ti bername posta elektronikî nehate dîtin.</string>
-    <string name="contact_attachment_missing_msg">Dosyeya tomara debug tune</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">Tomarên debug hilandî</string>
     <string name="settings_support_stored_logs_desc">%1$d danistin (%2$s)</string>
     <string name="settings_support_stored_logs_empty">Ti tomar debug ne hilandî</string>
-    <string name="settings_support_stored_logs_delete_title">Tomarên hilandî jê bibin?</string>
-    <string name="settings_support_stored_logs_delete_msg">Ev hemû %1$d danistinên tomar debugê hilandî jê dike.</string>
-    <string name="settings_support_stored_logs_deleted_msg">Tomarên debug hilandî hatin jê kirin</string>
-    <string name="label_bug_reports">Raportên bug</string>
-    <string name="description_bug_reports">Tomarkirinê bixweber a bug û xirap bûnê.</string>
     <string name="label_add_device">Cîhazê bizêde bike</string>
-    <string name="label_just_a_moment_please">Wax bikin, ji kerema xwe.</string>
     <string name="label_notification_channel_status">Dema niha</string>
     <string name="label_notification_channel_setup">Sazkirin pêwîst e</string>
     <string name="monitor_notification_starting">Vegu tê de…</string>
     <string name="action_set">Saz bike</string>
     <string name="action_cancel">Betal bike</string>
-    <string name="label_invalid_input">Ketina ne derbasdar</string>
     <string name="action_reset">Ji nû ve saz bike</string>
     <string name="label_no_connected_devices">Ti cîhaz bi hestek ninin</string>
-    <string name="label_status_idle">Betal</string>
-    <string name="label_status_adjusting_volumes">Dengê tê rastkar kirin</string>
-    <string name="label_premium_version">Guhertoya premium</string>
     <string name="general_upgrade_action">Nûjen bike</string>
     <string name="common_upgrade_required_label">Bilindkirina pêdivî ye</string>
-    <string name="label_premium_version_required">Guhertoya premium hewce ye</string>
-    <string name="description_intro_purpose">Ev bername dihêle cîhaza Android-a we astên dengê cîhazên Bluetooth ji bîr bike.</string>
-    <string name="upgrade_benefit_unlimited_devices">Profîlên cîhazê yên bêsînor</string>
-    <string name="upgrade_benefit_connection_actions">Otomatîkî lêdan, vekirin a sepanê û hişyariyên girêdanê</string>
-    <string name="upgrade_benefit_theme_customization">Xweşkirina tema, stil û rengî</string>
-    <string name="upgrade_benefit_power_controls">Kilîda dengbêjiyê û sînorkirina rêjeyê</string>
-    <string name="upgrade_benefit_support">Piştgirî ji pêşvebrina serbixwe re bike</string>
     <string name="upgrade_benefit_equalizer">• Hevsengkerê taybet ji bo her amûrê (ji bo sepanên muzîkê yên bi piştgiriya hevsengkera pergalê)</string>
-    <string name="description_intro_tap_the_button">Bi zêdekirina cîhaza xwe ya yekemî dest pê bikin.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth neçalak e.</string>
     <string name="title_bluetooth_is_off">Bluetooth neaktîf e</string>
     <string name="action_enable_bluetooth">Bluetooth aktif bike</string>
     <string name="title_bluetooth_permission_required">Destvîrîna Bluetooth Hewce Ye</string>
     <string name="description_bluetooth_permission_required">Ev bername destvîrîna Bluetooth hewce dike da astên dengê cîhazên we birêve bike.</string>
     <string name="action_grant_permission">Destvîrî bide</string>
-    <string name="label_status_listening_for_changes">Li guherînên dengê guh didin</string>
     <string name="action_exit">Derketin</string>
-    <string name="action_start">Dest pê bike</string>
-    <string name="label_welcome">Bi xêr hatî</string>
-    <string name="description_intro_contact">Heger pirsiyar hebin, ji kerema xwe pêwendî bikin.</string>
-    <string name="label_translation">Werger</string>
-    <string name="description_help_translate">Aliyarîna min bikin da bername di zimanên din de berdest be.</string>
     <string name="label_device_speaker">Bilindkera cîhazê</string>
-    <string name="label_keyevent_playpause">Lêdan-Sekinandin</string>
-    <string name="label_keyevent_play">Lêdan</string>
-    <string name="label_keyevent_next">Berdewam</string>
-    <string name="label_install_id">Nasnameya sazkirinê</string>
     <string name="message_copied_to_clipboard">Ji panberê hate kop kirin</string>
-    <string name="label_thanks">Spas</string>
-    <string name="label_licenses">Lîsans</string>
-    <string name="description_ring_volume_additional_permission">Destvîrîn zedê ji bo guhertin dengê zengilê hewce ne.</string>
-    <string name="label_missing_permissions">Destvîrîn kêm</string>
-    <string name="action_grant">Bide</string>
-    <string name="label_advanced">Pêştir</string>
-    <string name="label_exclude_health">Profil tenduristî ji nav bibe</string>
-    <string name="description_exclude_health">Hin cîhaz Android dema profil Bluetooth ya Tenduristî (HDP, 0x1400) têşander kirin, dixêwin.</string>
-    <string name="label_exclude_gattserver">Profil server GATT ji nav bibe</string>
-    <string name="label_exclude_gatt">Profil GATT ji nav bibe</string>
-    <string name="description_exclude_gattserver">Profil Bluetooth ya tipa GATT server têşander nake.</string>
-    <string name="description_exclude_gatt">Profil Bluetooth ya tipa GATT mûverî têşander nake.</string>
-    <string name="description_waiting_for_devicex">Sekinandina %s da hevbest tê xelas kirin</string>
-    <string name="action_undo">Vegerîne</string>
-    <string name="action_show">Nîşan bide</string>
     <string name="action_dismiss">Berde</string>
-    <string name="action_fix">Sax bike</string>
-    <string name="battery_optimizations_issue_description">Optimîzasyona battery aktif e û dibe ku wergirtina rûdaner Bluetooth asteng bike. Optimîzasyona bitebitandin heger pirsgirêk hês dibin.</string>
     <string name="label_bluetooth_settings">Mîhengên Bluetooth</string>
-    <string name="android10_applaunch_issue_description">Android 10 sînor dide ser destpêkirina bername ji pavenkê. Da bernameyan biweke dema cîhazek Bluetooth bi hestek dibe, destvîrîna \'Nîşan li ser bernameên din\' bide.</string>
-    <string name="label_opensource">Koda çavkaniê</string>
-    <string name="android13_notification_permission_description">Destvîrîna vê bernameê bide da agahdar birste.</string>
-    <string name="privacy_policy_label">Polîtîkaya nepenîtiyê</string>
     <string name="managed_devices_empty_message">Ti cîhaz Bluetooth nehatîn mîheng kirin.</string>
     <string name="label_pro_feature">Taybetmenda premium</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">Pîrsguhek</string>
     <string name="review_app_dismiss_action">Paşê dibe</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">Kirîn hatî betal kirin</string>
-    <string name="error_iap_unavailable_message">Kirêna di bernameê de berdest nîne</string>
-    <string name="error_generic_message">Xeletîyeke peyda bû. Ji kerema xwe dîsa biceribinin.</string>
-    <string name="error_iap_owned_message">Ev tiştanek we jixwe xwedîê</string>
     <string name="label_no_devices_title">Ti Cîhaz</string>
     <string name="bluemusic_mascot_description">Nîşana Bernameê</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">Bernameyan Hilbijerin</string>
     <string name="devices_app_selection_search_hint">Bernameyan bigerin…</string>
-    <string name="devices_app_selection_currently_selected">Niha hatîn hilbijartin</string>
     <string name="devices_app_selection_selected_count">%d bername hatîn hilbijartin</string>
     <string name="general_navigate_back_action">Ber bi paş ve here</string>
     <string name="general_reset_action">Ji nû ve saz bike</string>
     <string name="general_clear_action">Pªk bike</string>
-    <string name="general_save_action">Tomar bike</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">Kilîd</string>
     <string name="devices_indicator_awake">Hişyar</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">Sînor</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">Bilindkirin</string>
-    <string name="devices_indicator_launch">Bixebite</string>
     <string name="devices_indicator_home">Ekrana Malê</string>
     <string name="devices_indicator_dnd">NXW</string>
     <string name="devices_indicator_alert">Agahdarî</string>

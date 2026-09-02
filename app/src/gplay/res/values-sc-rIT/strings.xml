@@ -5,7 +5,6 @@
     <string name="upgrade_feature_requires_pro">Riquerit BVM Pro</string>
     <string name="upgrade_prompt_title">Addobba a BVM Pro</string>
     <string name="upgrade_prompt_body">Bluetooth Volume Manager Pro oferit risultados mègius, prus caraterìsticas e optziones pro utentes avantzados.</string>
-    <string name="upgrade_prompt_upgrade_action">Agiornare</string>
     <!-- Upgrade screen title. %1$s is the app name with its Pro postfix, e.g. "BVM Pro" - keep it as a placeholder, it is inserted styled and must not be translated. -->
     <string name="upgrade_screen_title_template">Umpadu a %1$s</string>
     <string name="upgrade_screen_preamble">Bluetooth Volume Manager non tenet publitzidade e non bendet datos de sos utentes. Su traballu meu est finantziadu dae bois ❤️.</string>
@@ -56,7 +55,6 @@
     <string name="upgrades_gplay_unavailable_error_description">Bluetooth Volume Manager non podet si connètere a Google Play. Google Play est installadu e agiornadu? Su contu Google tuo est intradu? Proa a limpiare sa cache de s\'aplicatzione Google Play e a torrare a allùghere su dispositivu tuo.</string>
     <!-- Toast shown when the "Google Play" button of an error dialog can't open Google Play's app info, e.g. Google Play is missing or blocked on this device. "Google Play" is a brand name, keep it untranslated. -->
     <string name="upgrades_gplay_not_installed_message">No at po abri Google Play. At po esser mancu, disabilidu o restrintu in custu dispositivu.</string>
-    <string name="upgrades_no_purchases_found_check_account">Perunu cùmperu agatadu. Ses impreande su contu giustu?</string>
     <!-- Upgrade screen: offers, ownership and restore (canonical UI parity) -->
     <string name="upgrade_screen_offers_title">Optziones de umpadu</string>
     <string name="upgrade_screen_offers_body">Ambas as optziones isbalumant sa mesma funtzionalidades Pro — iscolzi chini ti cumenti.</string>

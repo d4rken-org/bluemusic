@@ -3,7 +3,6 @@
     <string name="upgrade_feature_requires_pro">Nangangailangan ng BVM FOSS</string>
     <string name="upgrade_prompt_title">I-upgrade sa BVM FOSS</string>
     <string name="upgrade_prompt_body">I-unlock ang mga karagdagang feature at maging patron para suportahan ang patuloy na development!</string>
-    <string name="upgrade_prompt_upgrade_action">I-upgrade</string>
     <string name="upgrade_screen_title">I-upgrade sa BVM FOSS</string>
     <string name="upgrade_screen_preamble">Walang mga ads ang Bluetooth Volume Manager at hindi nagbebenta ng data ng user. Ang patuloy na development ay posible lamang dahil sa inyo.</string>
     <string name="upgrade_screen_how_title">Paano tumulong</string>

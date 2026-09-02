@@ -26,19 +26,14 @@
     <string name="onboarding_rewrite_features">განახლების დროს ზოგიერთი ფუნქცია შეიცვალა. გთხოვთ შეამოწმოთ მოწყობილობის პარამეტრები, რათა დარწმუნდეთ, რომ ყველაფერი სწორად არის კონფიგურირებული.</string>
     <string name="onboarding_rewrite_action">გაგრძელება</string>
     <!-- Discover -->
-    <string name="discover_no_unmnaged_devices_msg">მართვის გარეშე მოწყობილობები ვერ მოიძებნა</string>
     <string name="discover_all_devices_managed_msg">ყველა თქვენი დაწყვილებული მოწყობილობა მართვის ქვეშაა! გჭირდებათ ახალი?</string>
     <string name="discover_pair_new_device_action">ახალი მოწყობილობის დაწყვილება</string>
     <string name="discover_device_speaker_desc">ამ ტელეფონის საკუთარი სპიკერი. მისი ხმის დონე გამოიყენება, როდესაც აუდიო ტელეფონზე დაბრუნდება, მაგ., თქვენი Bluetooth მოწყობილობის გათიშვის შემდეგ.</string>
     <!-- Devices -->
     <string name="devices_device_config_label">მოწყობილობის კონფიგურაცია</string>
-    <string name="devices_device_config_section_general_label">ზოგადი</string>
     <string name="devices_device_config_remove_device_label">მოწყობილობის დავიწყება</string>
-    <string name="devices_device_config_remove_device_desc">ავიწყებს მოწყობილობას ამ აპიდან და შლის მის კონფიგურაციას. ეს არ აუქმებს მოწყობილობის დაწყვილებას.</string>
     <string name="devices_device_config_remove_device_action">დავიწყება</string>
     <string name="devices_device_config_remove_device_confirmation">დავიწყოთ %s მართვადი მოწყობილობებიდან?</string>
-    <string name="devices_device_config_rename_device_label">მოწყობილობის გადარქმევა</string>
-    <string name="devices_device_config_rename_device_desc">გადარქვათ ამ მოწყობილობას სახელი ამ აპში, და თუ შესაძლებელია, სისტემაშიც.</string>
     <string name="devices_device_config_rename_device_action">გადარქმევა</string>
     <string name="devices_device_config_enabled_label">ჩართული</string>
     <string name="devices_device_config_enabled_desc">რეაგირება ამ მოწყობილობაზე დაკავშირებისას</string>
@@ -94,7 +89,6 @@
     <string name="devices_device_config_autoplay_keycodes_title">ავტოდაკვრის ბრძანებები</string>
     <string name="devices_device_config_autoplay_keycodes_order">ბრძანებების თანმიმდევრობა</string>
     <string name="devices_device_config_autoplay_keycodes_label">ბრძანებები</string>
-    <string name="devices_device_config_autoplay_keycodes_desc">კონფიგურაცია, თუ რომელი ბრძანებები გაიგზავნოს და რა თანმიმდევრობით</string>
     <string name="devices_device_config_autoplay_keycodes_none_set">ბრძანებები არ არის კონფიგურირებული</string>
     <string name="devices_device_config_autoplay_keycodes_add_action">ბრძანების დამატება</string>
     <string name="devices_device_config_autoplay_keycodes_max_reached">მაქსიმუმ %1$d ბრძანება</string>
@@ -121,7 +115,6 @@
     <string name="cd_autoplay_keycode_move_up">ზემოთ გადატანა</string>
     <string name="cd_autoplay_keycode_move_down">ქვემოთ გადატანა</string>
     <string name="cd_autoplay_keycode_remove">ამოშლა</string>
-    <string name="devices_device_config_section_volumes_label">ხმები</string>
     <string name="devices_device_config_section_volume_label">ხმა</string>
     <string name="devices_device_config_alarm_volume_label">მაღვიძარის ხმა</string>
     <string name="devices_device_config_alarm_volume_desc">ზოგიერთი მაღვიძარა-აპი სამაგიეროდ მუსიკის ხმას იყენებს.</string>
@@ -155,8 +148,6 @@
     <string name="devices_audio_stream_ring_label">ზარის მელოდია</string>
     <string name="devices_audio_stream_notification_label">შეტყობინება</string>
     <string name="devices_audio_stream_alarm_label">მაღვიძარა</string>
-    <string name="devices_neverseen_label">არასდროს დანახული</string>
-    <string name="devices_state_connected_label">დაკავშირებული</string>
     <string name="devices_last_connected_label">ბოლოს დაკავშირება: %s</string>
     <string name="devices_currently_connected_label">ამჯამად დაკავშირებული</string>
     <string name="devices_device_disabled_label">მოწყობილობა გამორთულია</string>
@@ -191,10 +182,7 @@
     <string name="devices_settings_desc">პარამეტრები, რომლებიც ყველა მართვად მოწყობილობაზე მოქმედებს.</string>
     <string name="label_app_enabled">აპი ჩართულია</string>
     <string name="description_app_enabled">ჩართავს/გამორთავს აპის ხმასთან და Bluetooth მოვლენებთან რეაგირების შესაძლებლობას.</string>
-    <string name="label_visible_volume_adjustments">ხილული რეგულირებები</string>
-    <string name="description_visible_volume_adjustments">ამ აპის მიერ რეგულირებების გაკეთებისას სისტემის ხმის ფანჯრის ჩვენება.</string>
     <string name="label_volume_listener">ცვლილებების დაკვირვება</string>
-    <string name="description_volume_listener">დარჩე აქტიური სანამ მოწყობილობა დაკავშირებულია და შეინახე ხმის ცვლილებები, რომლებიც ამ აპს არ გამოუწვევია.</string>
     <string name="label_boot_restore">ჩართვისას აღდგენა</string>
     <string name="description_boot_restore">ხმის აღდგენა ჩართვის/გადაჩართვის შემდეგ თუ Bluetooth მოწყობილობა დაკავშირებულია.</string>
     <!-- Settings/Support-->
@@ -204,22 +192,11 @@
     <string name="settings_support_wiki_description">ისწავლე BVM-ის ეფექტური გამოყენება</string>
     <string name="settings_support_issue_tracker_description">საჯარო საკითხების ტრეკერი შეცდომების შესახებ მოხსენებებისა და მახასიათებლების მოთხოვნებისთვის.</string>
     <string name="settings_support_issue_tracker_label">შეცდომის ტრეკერი</string>
-    <string name="settings_support_debuglog_label">გამართვის ჟურნალი</string>
     <string name="settings_support_debuglog_desc">ჩაწერეთ ყველაფერი, რასაც აპლიკაცია აკეთებს ტექსტურ ფაილში, რომლის გაზიარებაც შეგიძლიათ.</string>
-    <string name="settings_support_debuglog_recording_desc">ამჯამად ჩაიწერება debug ინფორმაცია. შეეხეთ ჩაწერის შეჩერებისთვის.</string>
-    <string name="settings_support_debuglog_path">ლოგის გზა: %1$s</string>
     <string name="settings_support_debuglog_short_recording_title">ძალიან მოკლე ჩაწერა</string>
     <string name="settings_support_debuglog_short_recording_msg">ეს ძალიან მოკლე ჩაწერა იყო. Debug ლოგები ჩაწერებია, არა სნეფშოტები — გამეორეთ პრობლემა ჩაწერის დროს, რომ ლოგი სასარგებლო იყოს.</string>
     <string name="settings_support_debuglog_short_recording_continue">ჩაწერის გაგრძელება</string>
     <string name="settings_support_debuglog_short_recording_stop">მაინც შეჩერება</string>
-    <string name="settings_support_debuglog_folder_label">Debug ლოგის საქაღალდე</string>
-    <plurals name="settings_support_debuglog_folder_desc">
-        <item quantity="one">%1$d სესია %2$s-ის გამოყენებით</item>
-        <item quantity="other">%1$d სესია %2$s-ის გამოყენებით</item>
-    </plurals>
-    <string name="settings_support_debuglog_folder_empty_desc">Debug ლოგები შენახული არ არის</string>
-    <string name="settings_support_debuglog_folder_delete_title">წაიშალოს ყველა debug ლოგი?</string>
-    <string name="settings_support_debuglog_folder_delete_msg">ეს სამუდამოდ წაშლის ყველა შენახულ debug ლოგის სესიას.</string>
     <string name="settings_support_discord_label">Discord</string>
     <string name="settings_support_discord_description">ადგილი დასასვენებლად და კითხვების დასმისთვის.</string>
     <!-- Settings/Acks-->
@@ -228,16 +205,12 @@
     <string name="settings_acks_translation_header">თარგმანი</string>
     <string name="settings_acks_translators_title">მთარგმნელები</string>
     <string name="settings_acks_translators_people">პირი1;პირი2(სურვილისამებრ@email.com)</string>
-    <string name="settings_acks_translate_title">BVM-ის თარგმნა</string>
-    <string name="settings_acks_translate_desc">დაეხმარე BVM-ის შენს ენაზე თარგმნაში</string>
     <string name="settings_acks_thanks_header">მადლობა</string>
     <string name="settings_acks_crowdin_title">crowdin.com</string>
     <string name="settings_acks_crowdin_desc">ღია კოდის პროექტების თარგმანის მხარდაჭერისთვის</string>
     <string name="settings_licenses_label">ლიცენზიები</string>
     <string name="settings_translation_label">თარგმანი</string>
     <string name="settings_translation_desc">დაეხმარე აპის შენს საყვარელ ენაზე თარგმნაში</string>
-    <string name="settings_sponsor_development_title">სპონსორის განვითარება</string>
-    <string name="settings_sponsor_development_summary">გახდი მფარველი და განაგრძე განვითარება შესაძლებელი.</string>
     <string name="settings_privacy_policy_label">Კონფიდენციალურობის პოლიტიკა</string>
     <string name="settings_privacy_policy_desc">მონაცემების პასუხისმგებლობით დამუშავება.</string>
     <string name="changelog_label">ცვლილებების ჟურნალი</string>
@@ -259,10 +232,8 @@
     <string name="backup_restore_success_restore">აღდგენა დასრულდა — %1$d მოწყობილობა აღდგენილია, %2$d გამოტოვებულია.</string>
     <string name="backup_restore_version_warning">ეს სარეზერვო ასლი შეიქმნა ვერსიით %1$s. თქვენ იყენებთ %2$s. ზოგიერთერი პარამეტრი შეიძლება სწორად ვერ აღდგეს.</string>
     <!-- Debug Log -->
-    <string name="debug_notification_channel_label">გამართვის შეტყობინებები</string>
     <string name="debug_log_consent_title">გამართვის ჟურნალი</string>
     <string name="debug_log_consent_explanation">ეს ფუნქცია ჩაწერს ყველაფერს, რასაც აპი აკეთებს გასაზიარებელ ფაილში. გენერირებული ფაილი შეიცავს სენსიტიურ ინფორმაციას (მაგ. ფაილების სახელები და დაინსტალირებული აპები). გაუზიარეთ ის მხოლოდ სანდო მხარეებს (მაგ. დეველოპერს, რომელიც პრობლემას აგვარებს).</string>
-    <string name="debug_log_recording_progress">გამართვის ჟურნალის ჩაწერა</string>
     <string name="debug_log_record_action">ჩაწერა</string>
     <string name="debug_log_stop_action">ჩაწერის შეჩერება</string>
     <string name="debug_log_screen_title">Debug ლოგის ჩამწერი</string>
@@ -277,7 +248,6 @@
     </plurals>
     <string name="debug_log_screen_discard_action">უარყოფა</string>
     <string name="debug_log_screen_keep_action">შენარჩუნება</string>
-    <string name="debug_log_compressing_label">შეკუმშვა…</string>
     <string name="debug_log_file_label">ჩაწერილი ჟურნალის ფაილი</string>
     <!-- Debug Log Sessions -->
     <string name="support_debuglog_sent_title">ლოგი გაიგზავნა?</string>
@@ -305,7 +275,6 @@
     <string name="contact_description_question_hint">დეტალურად აღწერეთ თქვენი კითხვა.</string>
     <string name="contact_category_section_label">კატეგორია</string>
     <string name="contact_debug_log_label">გამართვის ჟურნალი</string>
-    <string name="contact_debug_log_select_hint">აირჩიეთ debug ლოგი მისამაგრებლად</string>
     <string name="contact_debug_log_picker_hint">მიამაგრეთ debug ლოგი პრობლემის უფრო სწრაფი დიაგნოზისთვის.</string>
     <string name="contact_debug_log_picker_empty">Debug ლოგები ხელმისაწვდომი არ არის. ჯერ ჩაწერეთ ერთი.</string>
     <string name="contact_expected_behavior_label">მოსალოდნელი ქცევა</string>
@@ -319,82 +288,32 @@
     <string name="contact_welcome_msg">მე თვითონ ვკითხულობ ყველა შეტყობინებას და ვცდილობ პასუხი გავცე, მაგრამ ვინაიდან ამ პროექტზე მარტო ვმუშაობ, შეიძლება ცოტა დრო დასჭირდეს. გმადლობთ მოთმინებისთვის.</string>
     <string name="contact_footer_msg">თქვენი შეტყობინება ელ-ფოსტით გაიგზავნება. მოწყობილობისა და კონფიგურაციის ინფორმაცია ავტომატურად ემაგრება.</string>
     <string name="contact_no_email_app_msg">ამ მოწყობილობაზე ელ-ფოსტის აპი ვერ მოიძებნა.</string>
-    <string name="contact_attachment_missing_msg">Debug ლოგის ფაილი აღარ არსებობს</string>
     <!-- Support/Stored Logs -->
     <string name="settings_support_stored_logs_label">შენახული debug ლოგები</string>
     <string name="settings_support_stored_logs_desc">%1$d სესია (%2$s)</string>
     <string name="settings_support_stored_logs_empty">შენახული debug ლოგები არ არის</string>
-    <string name="settings_support_stored_logs_delete_title">წაიშალოს შენახული ლოგები?</string>
-    <string name="settings_support_stored_logs_delete_msg">ეს წაშლის ყველა %1$d შენახულ debug ლოგის სესიას.</string>
-    <string name="settings_support_stored_logs_deleted_msg">შენახული debug ლოგები წაიშალა</string>
-    <string name="label_bug_reports">შეცდომების ანგარიშები</string>
-    <string name="description_bug_reports">ავტომატური შეცდომების და კრეშის ანგარიში.</string>
     <string name="label_add_device">მოწყობილობის დამატება</string>
-    <string name="label_just_a_moment_please">ერთი წუთი, გთხოვთ.</string>
     <string name="label_notification_channel_status">სტატუსი</string>
     <string name="label_notification_channel_setup">დაყენება აუცილებელია</string>
     <string name="monitor_notification_starting">იწყება…</string>
     <string name="action_set">დაყენება</string>
     <string name="action_cancel">გაუქმება</string>
-    <string name="label_invalid_input">არასწორი შეყვანა</string>
     <string name="action_reset">გადატვირთვა</string>
     <string name="label_no_connected_devices">მოწყობილობები არ არის დაკავშირებული</string>
-    <string name="label_status_idle">უქმი</string>
-    <string name="label_status_adjusting_volumes">ხმების რეგულირება</string>
-    <string name="label_premium_version">პრემიუმ ვერსია</string>
     <string name="general_upgrade_action">გარემონტება</string>
     <string name="common_upgrade_required_label">საჭიროა განახლება</string>
-    <string name="label_premium_version_required">საჭიროა პრემიუმ ვერსია</string>
-    <string name="description_intro_purpose">ეს აპი საშუალებას აძლევს თქვენს Android მოწყობილობას დაიმახსოვროს სხვადასხვა Bluetooth მოწყობილობის ხმა.</string>
-    <string name="upgrade_benefit_unlimited_devices">შეუზღუდავი მოწყობილობის პროფილები</string>
-    <string name="upgrade_benefit_connection_actions">ავტომატური დაკვრა, აპის გაშვება და კავშირის შეტყობინებები</string>
-    <string name="upgrade_benefit_theme_customization">თემის, სტილისა და ფერის მორგება</string>
-    <string name="upgrade_benefit_power_controls">ხმის დაბლოკვა და სიჩქარის შეზღუდვა</string>
-    <string name="upgrade_benefit_support">დამოუკიდებელი განვითარების მხარდაჭერა</string>
     <string name="upgrade_benefit_equalizer">• მოწყობილობაზე თითოეული ეკვალაიზერი (სისტემის ეკვალაიზერი მხარდამჭერი მუსიკის აპებისთვის)</string>
-    <string name="description_intro_tap_the_button">დაიწყეთ პირველი მოწყობილობის დამატებით.</string>
     <string name="description_bluetooth_is_disabled">Bluetooth გათიშულია.</string>
     <string name="title_bluetooth_is_off">Bluetooth გამორთულია</string>
     <string name="action_enable_bluetooth">Bluetooth-ის ჩართვა</string>
     <string name="title_bluetooth_permission_required">საჭიროა Bluetooth-ის ნებართვა</string>
     <string name="description_bluetooth_permission_required">ამ აპს სჭირდება Bluetooth-ის ნებართვა თქვენი მოწყობილობის ხმების სამართავად.</string>
     <string name="action_grant_permission">ნებართვის მიცემა</string>
-    <string name="label_status_listening_for_changes">ხმის ცვლილებების მოსმენა</string>
     <string name="action_exit">გამოსვლა</string>
-    <string name="action_start">დაწყება</string>
-    <string name="label_welcome">მოგესალმებით</string>
-    <string name="description_intro_contact">ნუ მოგერიდებათ ჩემი დაკავშირება თუ გაქვთ კითხვები ან თუნდაც ახალი ფუნქციის იდეა.</string>
-    <string name="label_translation">თარგმანი</string>
-    <string name="description_help_translate">დამეხმარე ეს აპი სხვა ენებზე ხელმისაწვდომი გავხადო.</string>
     <string name="label_device_speaker">მოწყობილობის დინამიკი</string>
-    <string name="label_keyevent_playpause">დაკვრა-პაუზა</string>
-    <string name="label_keyevent_play">დაკვრა</string>
-    <string name="label_keyevent_next">შემდეგი</string>
-    <string name="label_install_id">დააინსტალირების ID</string>
     <string name="message_copied_to_clipboard">ბუფერში დაკოპირდა</string>
-    <string name="label_thanks">მადლობა</string>
-    <string name="label_licenses">ლიცენზიები</string>
-    <string name="description_ring_volume_additional_permission">ზარის ხმის შეცვლისთვის საჭიროა დამატებითი ნებართვები.</string>
-    <string name="label_missing_permissions">ნებართვები არ არის</string>
-    <string name="action_grant">მიცემა</string>
-    <string name="label_advanced">გაფართოებული</string>
-    <string name="label_exclude_health">ჯანმრთელობის პროფილების გამორიცხვა</string>
-    <string name="description_exclude_health">ზოგიერთი Android მოწყობილობა იყინება \'Health Device\' Bluetooth პროფილების (HDP, 0x1400) ძიებისას.</string>
-    <string name="label_exclude_gattserver">GATT სერვერის პროფილების გამორიცხვა</string>
-    <string name="label_exclude_gatt">GATT პროფილების გამორიცხვა</string>
-    <string name="description_exclude_gattserver">არ მოიძიოს \'Generic Attribute\' (GATT) სერვერის ტიპის Bluetooth პროფილები.</string>
-    <string name="description_exclude_gatt">არ მოიძიოს \'Generic Attribute\' (GATT) კლიენტის ტიპის Bluetooth პროფილები.</string>
-    <string name="description_waiting_for_devicex">ველოდება %s-ის კავშირის დასრულებას</string>
-    <string name="action_undo">დაბრუნება</string>
-    <string name="action_show">ჩვენება</string>
     <string name="action_dismiss">გაუქმება</string>
-    <string name="action_fix">შეკეთება</string>
-    <string name="battery_optimizations_issue_description">ბატარეის ოპტიმიზაციები ჩართულია ამ აპისთვის და შეიძლება ხელი შეუშალოს Bluetooth მოვლენების მიღებას. განიხილეთ ოპტიმიზაციების გამორთვა პრობლემების შემთხვევაში.</string>
     <string name="label_bluetooth_settings">Bluetooth-ის პარამეტრები</string>
-    <string name="android10_applaunch_issue_description">Android 10 ზღუდავს როგორ შეიძლება გაეშვას აპები ფონიდან. Bluetooth მოწყობილობის დაკავშირებისას აპების გახსნის დასაშვებლად, მიეცით ნებართვა \"სხვა აპებზე ჩვენება\" (SYSTEM_ALERT_WINDOW).</string>
-    <string name="label_opensource">წყაროს კოდი</string>
-    <string name="android13_notification_permission_description">მიეცით ამ აპს ნებართვა შეტყობინებების გამოსაქვეყნებლად. ეს საშუალებას იძლევს შეტყობინება ჩაჩვენდეს როცა ეს აპი აქტიურია და ხმის რეგულირება ხდება.</string>
-    <string name="privacy_policy_label">Კონფიდენციალურობის პოლიტიკა</string>
     <string name="managed_devices_empty_message">Bluetooth მოწყობილობები კონფიგურირებული არ არის.\nშეეხეთ + ღილაკს პირველი მოწყობილობის დასამატებლად.</string>
     <string name="label_pro_feature">პრემიუმ ფუნქცია</string>
     <plurals name="discover_device_limit_banner">
@@ -425,21 +344,15 @@
     <string name="review_app_review_action">მიმოხილვა</string>
     <string name="review_app_dismiss_action">შესაძლოა მოგვიანებით</string>
     <!-- IAP Error Messages -->
-    <string name="error_iap_cancelled_message">შეძენა გაუქმდა</string>
-    <string name="error_iap_unavailable_message">აპში შეძენა ხელმისაწვდომი არ არის</string>
-    <string name="error_generic_message">შეცდომა მოხდა. გთხოვთ, სცადეთ თავიდან.</string>
-    <string name="error_iap_owned_message">ეს ელემენტი უკვე გაქვთ</string>
     <string name="label_no_devices_title">მოწყობილობები არ არის</string>
     <string name="bluemusic_mascot_description">აპის ხატულა</string>
     <!-- App Selection -->
     <string name="devices_app_selection_title">აპების არჩევა</string>
     <string name="devices_app_selection_search_hint">აპების ძებნა…</string>
-    <string name="devices_app_selection_currently_selected">ამჟამად არჩეული</string>
     <string name="devices_app_selection_selected_count">არჩეულია %d აპი</string>
     <string name="general_navigate_back_action">უკან გადასვლა</string>
     <string name="general_reset_action">გადატვირთვა</string>
     <string name="general_clear_action">გასუფთავება</string>
-    <string name="general_save_action">შენახვა</string>
     <!-- Device option indicators -->
     <string name="devices_indicator_lock">დაბლოკვა</string>
     <string name="devices_indicator_awake">გაღვიძებული</string>
@@ -449,7 +362,6 @@
     <string name="devices_indicator_limit">ლიმიტი</string>
     <string name="devices_indicator_eq">EQ</string>
     <string name="devices_indicator_boost">გაძლიერება</string>
-    <string name="devices_indicator_launch">გაშვება</string>
     <string name="devices_indicator_home">მთავარი</string>
     <string name="devices_indicator_dnd">DND</string>
     <string name="devices_indicator_alert">გაფრთხილება</string>
