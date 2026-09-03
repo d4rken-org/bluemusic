@@ -24,6 +24,7 @@ import androidx.compose.material.icons.twotone.Lock
 import androidx.compose.material.icons.twotone.NotificationsActive
 import androidx.compose.material.icons.twotone.PowerOff
 import androidx.compose.material.icons.twotone.Speed
+import androidx.compose.material.icons.twotone.UnfoldLess
 import androidx.compose.material.icons.twotone.Visibility
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -59,6 +60,7 @@ fun OptionIndicators(
         if (device.volumeObservingEffective) add(Icons.TwoTone.Visibility to stringResource(R.string.devices_indicator_observe))
         if (device.volumeSaveOnDisconnect) add(Icons.TwoTone.PowerOff to stringResource(R.string.devices_indicator_disconnect))
         if (device.volumeRateLimiterEffective) add(Icons.TwoTone.Speed to stringResource(R.string.devices_indicator_limit))
+        if (device.hasEffectiveVolumeLimit) add(Icons.TwoTone.UnfoldLess to stringResource(R.string.devices_indicator_volume_range))
         if (device.eqEnabled) add(Icons.TwoTone.Equalizer to stringResource(R.string.devices_indicator_eq))
         if (device.eqEnabled && (device.eqBoostGain ?: 0) > 0) {
             add(Icons.AutoMirrored.TwoTone.VolumeUp to stringResource(R.string.devices_indicator_boost))
@@ -152,7 +154,7 @@ private fun OptionIndicatorsPreview() {
     PreviewWrapper {
         // The mock device already has these settings enabled by default
         val base = MockDevice().toManagedDevice()
-        val mockDevice = base.copy(config = base.config.copy(eqEnabled = true, eqBoostGain = 600))
+        val mockDevice = base.copy(config = base.config.copy(eqEnabled = true, eqBoostGain = 600, volumeLimit = true, musicVolumeMin = 0.2f, musicVolumeMax = 0.7f))
 
         val mockApps = listOf(
             AppInfo(
