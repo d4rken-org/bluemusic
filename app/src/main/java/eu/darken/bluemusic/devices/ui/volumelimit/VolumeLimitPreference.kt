@@ -25,8 +25,10 @@ import androidx.compose.ui.unit.dp
 import eu.darken.bluemusic.R
 import eu.darken.bluemusic.common.compose.Preview2
 import eu.darken.bluemusic.common.compose.PreviewWrapper
+import eu.darken.bluemusic.devices.core.normalizeVolumeLimitMax
+import eu.darken.bluemusic.devices.core.normalizeVolumeLimitMin
+import eu.darken.bluemusic.devices.core.toVolumePercent
 import eu.darken.bluemusic.monitor.core.audio.AudioStream
-import kotlin.math.roundToInt
 
 /**
  * Picks the lowest and highest volume a stream may reach.
@@ -37,7 +39,6 @@ import kotlin.math.roundToInt
 @Composable
 fun VolumeLimitPreference(
     title: String,
-    description: String,
     icon: ImageVector,
     min: Float?,
     max: Float?,
@@ -75,8 +76,9 @@ fun VolumeLimitPreference(
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface
                 )
+                val (boundMin, boundMax) = range.toBounds()
                 Text(
-                    text = description,
+                    text = getVolumeLimitDescription(boundMin, boundMax),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -91,19 +93,17 @@ fun VolumeLimitPreference(
             // Writing on every frame of a drag would hit the database dozens of times per gesture.
             onValueChangeFinished = {
                 dragging = false
-                // A thumb at its extreme is no bound at all: 0% and 100% resolve to the stream's own
-                // bounds. Storing them as values would keep the foreground service alive for a band
-                // that constrains nothing.
-                onLimitChange(
-                    range.start.takeIf { it > 0f },
-                    range.endInclusive.takeIf { it < 1f },
-                )
+                val (newMin, newMax) = range.toBounds()
+                onLimitChange(newMin, newMax)
             },
             valueRange = 0f..1f,
             steps = stepCount?.let { it - 1 } ?: 0,
         )
     }
 }
+
+private fun ClosedFloatingPointRange<Float>.toBounds(): Pair<Float?, Float?> =
+    normalizeVolumeLimitMin(start) to normalizeVolumeLimitMax(endInclusive)
 
 @Composable
 internal fun getStreamLabel(type: AudioStream.Type): String = when (type) {
@@ -118,16 +118,14 @@ internal fun getStreamLabel(type: AudioStream.Type): String = when (type) {
 internal fun getVolumeLimitDescription(min: Float?, max: Float?): String = when {
     min != null && max != null -> stringResource(
         R.string.devices_device_config_volume_limit_range_desc,
-        min.toPercent(),
-        max.toPercent(),
+        min.toVolumePercent(),
+        max.toVolumePercent(),
     )
 
-    min != null -> stringResource(R.string.devices_device_config_volume_limit_min_desc, min.toPercent())
-    max != null -> stringResource(R.string.devices_device_config_volume_limit_max_desc, max.toPercent())
+    min != null -> stringResource(R.string.devices_device_config_volume_limit_min_desc, min.toVolumePercent())
+    max != null -> stringResource(R.string.devices_device_config_volume_limit_max_desc, max.toVolumePercent())
     else -> stringResource(R.string.devices_device_config_volume_limit_unset_desc)
 }
-
-private fun Float.toPercent(): Int = (this * 100).roundToInt()
 
 @Preview2
 @Composable
@@ -136,7 +134,6 @@ private fun VolumeLimitPreferencePreview() {
         Column {
             VolumeLimitPreference(
                 title = "Limit for Music",
-                description = "Between 20% and 70%",
                 icon = Icons.TwoTone.MusicNote,
                 min = 0.2f,
                 max = 0.7f,
@@ -145,7 +142,6 @@ private fun VolumeLimitPreferencePreview() {
             )
             VolumeLimitPreference(
                 title = "Limit for Call",
-                description = "No limit set",
                 icon = Icons.TwoTone.Phone,
                 min = null,
                 max = null,

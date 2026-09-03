@@ -159,10 +159,6 @@ fun VolumeLimitScreen(
                                     R.string.devices_device_config_volume_limit_stream_label,
                                     getStreamLabel(streamType),
                                 ),
-                                description = getVolumeLimitDescription(
-                                    device.getVolumeMin(streamType),
-                                    device.getVolumeMax(streamType),
-                                ),
                                 icon = streamType.icon,
                                 min = device.getVolumeMin(streamType),
                                 max = device.getVolumeMax(streamType),
