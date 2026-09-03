@@ -169,6 +169,39 @@ class BackupMappersTest : BaseTest() {
         backup.detectUnknownEnums().shouldBeEmpty()
     }
 
+    // A backup written before bounds were normalized can carry a band that constrains nothing.
+    @Test
+    fun `backup to entity drops bounds at the stream extremes`() {
+        val backup = DeviceConfigBackup(
+            address = "test",
+            volumeLimit = true,
+            musicVolume = 0.5f,
+            musicVolumeMin = 0f,
+            musicVolumeMax = 1f,
+        )
+
+        val entity = backup.toEntity()
+
+        entity.musicVolumeMin shouldBe null
+        entity.musicVolumeMax shouldBe null
+    }
+
+    @Test
+    fun `backup to entity keeps ordinary bounds`() {
+        val backup = DeviceConfigBackup(
+            address = "test",
+            volumeLimit = true,
+            musicVolume = 0.5f,
+            musicVolumeMin = 0.2f,
+            musicVolumeMax = 0.6f,
+        )
+
+        val entity = backup.toEntity()
+
+        entity.musicVolumeMin shouldBe 0.2f
+        entity.musicVolumeMax shouldBe 0.6f
+    }
+
     @Test
     fun `minimal entity round-trips correctly`() {
         val entity = DeviceConfigEntity(address = "FF:EE:DD:CC:BB:AA")

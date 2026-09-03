@@ -136,8 +136,8 @@ data class ManagedDevice(
         if (!volumeLimit) return null
         val target = getVolume(type) ?: return null
         if (target !in 0f..1f) return null
-        val min = getVolumeMin(type)
-        val max = getVolumeMax(type)
+        val min = normalizeVolumeLimitMin(getVolumeMin(type))
+        val max = normalizeVolumeLimitMax(getVolumeMax(type))
         if (min == null && max == null) return null
         return VolumeBand(min = min, max = max)
     }
